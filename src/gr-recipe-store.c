@@ -35,6 +35,7 @@ struct _GrRecipeStore
 
         char **todays;
         char **picks;
+        char **chefs;
 
         char *user;
 };
@@ -51,6 +52,7 @@ gr_recipe_store_finalize (GObject *object)
         g_clear_pointer (&self->authors, g_hash_table_unref);
         g_strfreev (self->todays);
         g_strfreev (self->picks);
+        g_strfreev (self->chefs);
         g_free (self->user);
 
         G_OBJECT_CLASS (gr_recipe_store_parent_class)->finalize (object);
@@ -203,6 +205,13 @@ load_recipes (GrRecipeStore *self)
                         g_clear_error (&error);
                 }
 
+		if (image_path && image_path[0] != '\0' && image_path[0] != '/') {
+			char *tmp;
+			tmp = get_db_path (image_path);
+			g_free (image_path);
+			image_path = tmp;
+		}
+
                 recipe = g_hash_table_lookup (self->recipes, name);
                 if (recipe == NULL) {
                         recipe = gr_recipe_new ();
@@ -236,6 +245,7 @@ save_recipes (GrRecipeStore *self)
         const char *key;
         GrRecipe *recipe;
         g_autoptr(GError) error = NULL;
+	char *tmp;
 
         keyfile = g_key_file_new ();
 
@@ -271,6 +281,15 @@ save_recipes (GrRecipeStore *self)
                               "diets", &diets,
                               "image-path", &image_path,
                               NULL);
+
+		tmp = get_db_path ("");
+		if (g_str_has_prefix (image_path, tmp)) {
+			char *tmp2;
+			tmp2 = g_strdup (image_path + strlen (tmp) + 1);
+			g_free (image_path);
+			image_path = tmp2;
+		}
+		g_free (tmp);
 
                 g_key_file_set_string (keyfile, key, "Name", name ? name : "");
                 g_key_file_set_string (keyfile, key, "Author", author ? author : "");
@@ -320,7 +339,15 @@ load_picks (GrRecipeStore *self)
         self->todays = g_key_file_get_string_list (keyfile, "Content", "Todays", NULL, &error);
         if (error) {
                 if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
-                        g_warning ("Failed to load picks: %s", error->message);
+                        g_warning ("Failed to load todays: %s", error->message);
+                }
+                g_clear_error (&error);
+        }
+
+        self->chefs = g_key_file_get_string_list (keyfile, "Content", "Chefs", NULL, &error);
+        if (error) {
+                if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
+                        g_warning ("Failed to load chefs: %s", error->message);
                 }
                 g_clear_error (&error);
         }
@@ -387,6 +414,13 @@ load_authors (GrRecipeStore *self)
                         g_clear_error (&error);
                 }
 
+		if (image_path && image_path[0] != '\0' && image_path[0] != '/') {
+			char *tmp;
+			tmp = get_db_path (image_path);
+			g_free (image_path);
+			image_path = tmp;
+		}
+
                 author = g_hash_table_lookup (self->authors, name);
                 if (author == NULL) {
                         author = gr_author_new ();
@@ -411,6 +445,7 @@ save_authors (GrRecipeStore *store)
         const char *key;
         GrAuthor *author;
         g_autoptr(GError) error = NULL;
+	char *tmp;
 
         keyfile = g_key_file_new ();
 
@@ -429,6 +464,15 @@ save_authors (GrRecipeStore *store)
                               "description", &description,
                               "image-path", &image_path,
                               NULL);
+
+		tmp = get_db_path ("");
+		if (g_str_has_prefix (image_path, tmp)) {
+			char *tmp2;
+			tmp2 = g_strdup (image_path + strlen (tmp) + 1);
+			g_free (image_path);
+			image_path = tmp2;
+		}
+		g_free (tmp);
 
                 g_key_file_set_string (keyfile, key, "Name", name ? name : "");
                 g_key_file_set_string (keyfile, key, "Fullname", fullname ? fullname : "");
@@ -757,3 +801,18 @@ gr_recipe_store_update_user (GrRecipeStore  *self,
 
         return ret;
 }
+
+gboolean
+gr_recipe_store_author_is_featured (GrRecipeStore *self,
+                                    GrAuthor      *author)
+{
+        g_autofree char *name = NULL;
+
+        if (self->chefs == NULL)
+                return FALSE;
+
+        g_object_get (author, "name", &name, NULL);
+
+        return g_strv_contains ((const char *const*)self->chefs, name);
+}
+
