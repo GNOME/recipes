@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="recipes">
+  <!-- interface-requires gtk+ 3.10 -->
+  <template class="GrChefTile" parent="GtkBox">
+    <property name="visible">True</property>
+    <property name="orientation">vertical</property>
+    <property name="spacing">6</property>
+    <child>
+      <object class="GtkButton" id="button">
+        <property name="visible">True</property>
+        <property name="halign">center</property>
+        <property name="valign">center</property>
+        <style>
+          <class name="image-button"/>
+          <class name="circular"/>
+          <class name="chef"/>
+        </style>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label">
+        <property name="visible">True</property>
+        <attributes>
+          <attribute name="weight" value="bold"/>
+        </attributes>
+      </object>
+    </child>
+  </template>
+</interface>

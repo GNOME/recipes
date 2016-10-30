@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="recipes">
+  <!-- interface-requires gtk+ 3.8 -->
+  <object class="GtkAdjustment" id="serves_adjustment">
+    <property name="lower">1</property>
+    <property name="upper">99</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <template class="GrEditPage" parent="GtkBox">
+    <property name="visible">True</property>
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="GtkOverlay">
+        <property name="visible">1</property>
+        <child type="overlay">
+          <object class="GtkRevealer" id="error_revealer">
+            <property name="visible">1</property>
+            <property name="halign">center</property>
+            <property name="valign">start</property>
+            <child>
+              <object class="GtkFrame">
+                <property name="visible">1</property>
+                <style>
+                  <class name="app-notification"/>
+                </style>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">1</property>
+                    <property name="spacing">20</property>
+                    <property name="margin">10</property>
+                    <child>
+                      <object class="GtkLabel" id="error_label">
+                        <property name="visible">1</property>
+                        <property name="hexpand">1</property>
+                        <property name="halign">start</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton">
+                        <property name="visible">1</property>
+                        <property name="focus-on-click">0</property>
+                        <property name="relief">none</property>
+                        <signal name="clicked" handler="dismiss_error" swapped="yes"/>
+                        <style>
+                          <class name="image-button"/>
+                        </style>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">1</property>
+                            <property name="icon-name">window-close-symbolic</property>
+                            <property name="icon-size">1</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow">
+            <property name="visible">1</property>
+            <property name="expand">1</property>
+            <property name="hscrollbar-policy">never</property>
+            <child>
+              <object class="GtkGrid">
+                <property name="visible">1</property>
+                <property name="halign">center</property>
+                <property name="valign">start</property>
+                <property name="row-spacing">20</property>
+                <property name="column-spacing">40</property>
+                <property name="margin">40</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="label" translatable="yes">Name your recipe</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="name_entry">
+                    <property name="visible">1</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="label" translatable="yes">Serves</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSpinButton" id="serves_spin">
+                    <property name="visible">1</property>
+                    <property name="adjustment">serves_adjustment</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="visible">1</property>
+                    <signal name="clicked" handler="image_button_clicked" swapped="yes"/>
+                    <child>
+                      <object class="GtkImage" id="image">
+                        <property name="visible">1</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">0</property>
+                    <property name="height">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="label" translatable="yes">Cuisine</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="label" translatable="yes">Category</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText" id="cuisine_combo">
+                    <property name="visible">1</property>
+                    <property name="has-entry">1</property>
+                    <items>
+                      <item translatable="yes" id="american">American</item>
+                      <item translatable="yes" id="chinese">Chinese</item>
+                      <item translatable="yes" id="indian">Indian</item>
+                      <item translatable="yes" id="italian">Italian</item>
+                      <item translatable="yes" id="french">French</item>
+                      <item translatable="yes" id="mexican">Mexican</item>
+                      <item translatable="yes" id="turkish">Turkish</item>
+                      <item translatable="yes" id="mediterranean">Mediterranean</item>
+                    </items>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">5</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText" id="category_combo">
+                    <property name="visible">1</property>
+                    <property name="has-entry">1</property>
+                    <items>
+                      <item translatable="yes" id="breakfast">Breakfast</item>
+                      <item translatable="yes" id="dessert">Dessert</item>
+                      <item translatable="yes" id="entree">Entree</item>
+                      <item translatable="yes" id="salad">Salad</item>
+                      <item translatable="yes" id="soup">Soup</item>
+                    </items>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">5</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="label" translatable="yes">Preparation time</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">6</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="label">Cooking time</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">6</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText" id="prep_time_combo">
+                    <property name="visible">1</property>
+                    <property name="has-entry">1</property>
+                    <items>
+                      <item translatable="yes" id="Quick">Quick</item>
+                      <item translatable="yes" id="Less than 5 minutes">Less than 5 minutes</item>
+                      <item translatable="yes" id="Less than 15 minutes">Less than 15 minutes</item>
+                      <item translatable="yes" id="15 to 30 minutes">15 to 30 minutes</item>
+                      <item translatable="yes" id="One hour">One hour</item>
+                      <item translatable="yes" id="More than an hour">More than an hour</item>
+                    </items>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">7</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText" id="cook_time_combo">
+                    <property name="visible">1</property>
+                    <property name="has-entry">1</property>
+                    <items>
+                      <item translatable="yes" id="Quick">Quick</item>
+                      <item translatable="yes" id="Less than 5 minutes">Less than 5 minutes</item>
+                      <item translatable="yes" id="Less than 15 minutes">Less than 15 minutes</item>
+                      <item translatable="yes" id="15 to 30 minutes">15 to 30 minutes</item>
+                      <item translatable="yes" id="One hour">One hour</item>
+                      <item translatable="yes" id="More than an hour">More than an hour</item>
+                    </items>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">7</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="label" translatable="yes">Ingredients</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">8</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkScrolledWindow">
+                    <property name="visible">1</property>
+                    <property name="shadow-type">in</property>
+                    <property name="min-content-height">120</property>
+                    <property name="max-content-height">120</property>
+                    <child>
+                      <object class="GtkTextView" id="ingredients_field">
+                        <property name="visible">1</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">9</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">1</property>
+                    <child>
+                      <object class="GtkCheckButton" id="gluten_free_check">
+                        <property name="visible">1</property>
+                        <property name="label" translatable="yes">Gluten free</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="nut_free_check">
+                        <property name="visible">1</property>
+                        <property name="label" translatable="yes">Nut free</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="vegan_check">
+                        <property name="visible">1</property>
+                        <property name="label" translatable="yes">Vegan</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="vegetarian_check">
+                        <property name="visible">1</property>
+                        <property name="label" translatable="yes">Vegetarian</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="milk_free_check">
+                        <property name="visible">1</property>
+                        <property name="label" translatable="yes">Milk free</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">10</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="label" translatable="yes">Instructions</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">11</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkScrolledWindow">
+                    <property name="visible">1</property>
+                    <property name="shadow-type">in</property>
+                    <property name="min-content-height">120</property>
+                    <property name="max-content-height">120</property>
+                    <child>
+                      <object class="GtkTextView" id="instructions_field">
+                        <property name="visible">1</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">12</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="label" translatable="yes">Additional notes</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">13</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkScrolledWindow">
+                    <property name="visible">1</property>
+                    <property name="shadow-type">in</property>
+                    <property name="min-content-height">120</property>
+                    <property name="max-content-height">120</property>
+                    <child>
+                      <object class="GtkTextView" id="notes_field">
+                        <property name="visible">1</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">14</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

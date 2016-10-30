@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="recipes">
+  <!-- interface-requires gtk+ 3.8 -->
+  <template class="GrRecipesPage" parent="GtkBox">
+    <property name="visible">True</property>
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="GtkLabel">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">Today</property>
+        <property name="xalign">0</property>
+        <style><class name="heading"/></style>
+      </object>
+    </child>
+    <child>
+      <object class="GsHidingBox" id="today_box">
+        <property name="visible">True</property>
+        <property name="spacing">20</property>
+        <property name="halign">start</property>
+        <property name="margin-start">20</property>
+        <property name="margin-end">20</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">GNOME's Pick</property>
+        <property name="xalign">0</property>
+        <style><class name="heading"/></style>
+      </object>
+    </child>
+    <child>
+      <object class="GsHidingBox" id="pick_box">
+        <property name="visible">True</property>
+        <property name="spacing">20</property>
+        <property name="halign">start</property>
+        <property name="margin-start">20</property>
+        <property name="margin-end">20</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">Special Diets</property>
+        <property name="xalign">0</property>
+        <style><class name="heading"/></style>
+      </object>
+    </child>
+    <child>
+      <object class="GsHidingBox" id="diet_box">
+        <property name="visible">True</property>
+        <property name="spacing">20</property>
+        <property name="halign">start</property>
+        <property name="margin-start">20</property>
+        <property name="margin-end">20</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">Featured GNOME Chefs</property>
+        <property name="xalign">0</property>
+        <style><class name="heading"/></style>
+      </object>
+    </child>
+    <child>
+      <object class="GsHidingBox" id="chefs_box">
+        <property name="visible">True</property>
+        <property name="spacing">20</property>
+        <property name="halign">start</property>
+        <property name="margin-start">20</property>
+        <property name="margin-end">20</property>
+        <property name="margin-bottom">20</property>
+      </object>
+    </child>
+  </template>
+</interface>
