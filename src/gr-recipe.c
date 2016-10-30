@@ -142,7 +142,7 @@ gr_recipe_get_property (GObject    *object,
                 break;
 
           case PROP_DIETS:
-                g_value_set_enum (value, priv->diets);
+                g_value_set_flags (value, priv->diets);
                 break;
 
           default:
@@ -213,7 +213,7 @@ gr_recipe_set_property (GObject      *object,
                   break;
 
           case PROP_DIETS:
-                  priv->diets = g_value_get_enum (value);
+                  priv->diets = g_value_get_flags (value);
                   break;
 
           default:
@@ -291,9 +291,9 @@ gr_recipe_class_init (GrRecipeClass *klass)
                                      G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_NOTES, pspec);
 
-        pspec = g_param_spec_enum ("diets", NULL, NULL,
-                                   GR_TYPE_DIETS, 0,
-                                   G_PARAM_READWRITE);
+        pspec = g_param_spec_flags ("diets", NULL, NULL,
+                                    GR_TYPE_DIETS, 0,
+                                    G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_DIETS, pspec);
 }
 

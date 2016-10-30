@@ -32,12 +32,12 @@ struct _GrRecipeClass
 	GObjectClass parent;
 };
 
-typedef enum {
-	GR_DIET_GLUTEN_FREE,
-	GR_DIET_NUT_FREE,
-	GR_DIET_VEGAN,
-	GR_DIET_VEGETARIAN,
-	GR_DIET_MILK_FREE
+typedef enum { /*< flags >*/
+	GR_DIET_GLUTEN_FREE   =  1,
+	GR_DIET_NUT_FREE      =  2,
+	GR_DIET_VEGAN         =  4,
+	GR_DIET_VEGETARIAN    =  8,
+	GR_DIET_MILK_FREE     = 16
 } GrDiets;
 
 GrRecipe *gr_recipe_new (void);
