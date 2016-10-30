@@ -58,6 +58,9 @@ GrAuthor *gr_recipe_store_get_author (GrRecipeStore *self,
 char **gr_recipe_store_get_author_keys (GrRecipeStore *self,
                                         guint         *length);
 
+gboolean gr_recipe_store_author_is_featured (GrRecipeStore *self,
+                                             GrAuthor      *author);
+
 const char *gr_recipe_store_get_user_key (GrRecipeStore *self);
 
 gboolean gr_recipe_store_update_user (GrRecipeStore  *self,

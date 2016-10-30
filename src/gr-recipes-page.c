@@ -180,13 +180,15 @@ populate_authors_from_store (GrRecipesPage *self)
         keys = gr_recipe_store_get_author_keys (store, &length);
         for (i = 0; i < length; i++) {
                 g_autoptr(GrAuthor) author = NULL;
-                GtkWidget *tile;
 
                 author = gr_recipe_store_get_author (store, keys[i]);
 
-                tile = gr_chef_tile_new (author);
-                gtk_widget_show (tile);
-                gtk_container_add (GTK_CONTAINER (self->chefs_box), tile);
+		if (gr_recipe_store_author_is_featured (store, author)) {
+			GtkWidget *tile;
+			tile = gr_chef_tile_new (author);
+			gtk_widget_show (tile);
+			gtk_container_add (GTK_CONTAINER (self->chefs_box), tile);
+		}
 	}
 }
 
