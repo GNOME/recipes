@@ -61,14 +61,14 @@ typedef struct {
 } Cuisine;
 
 static Cuisine cuisines[] = {
-        { "american", N_("American"), N_("American cuisine has burgers"), "data/italian-2.png" },
-        { "chinese", N_("Chinese"), N_("Good stuff"), "data/italian-2.png" },
-        { "indian", N_("Indian"), N_("Spice stuff"), "data/italian-2.png" },
-        { "italian", N_("Italian"), N_("Pizza, pasta, pesto - we love it all. Top it off with an esspresso and a gelato. Perfect!"), "data/italian-2.png" },
-        { "french", N_("French"), N_("Yep"), "data/italian-2.png" },
-        { "mexican", N_("Mexican"), N_("Tacos"), "data/italian-2.png" },
-        { "turkish", N_("Turkish"), N_("Yummy"), "data/italian-2.png" },
-        { "mediterranean", N_("Mediterranean"), N_("The mediterranean quisine has a lot to offer, and is legendary for being very healthy too. Expect to see olives, yoghurt and garlic."), "data/italian-2.png" },
+        { "american", N_("American"), N_("American cuisine has burgers"), NULL },
+        { "chinese", N_("Chinese"), N_("Good stuff"), NULL },
+        { "indian", N_("Indian"), N_("Spice stuff"), NULL },
+        { "italian", N_("Italian"), N_("Pizza, pasta, pesto - we love it all. Top it off with an esspresso and a gelato. Perfect!"), NULL },
+        { "french", N_("French"), N_("Yep"), NULL },
+        { "mexican", N_("Mexican"), N_("Tacos"), NULL },
+        { "turkish", N_("Turkish"), N_("Yummy"), NULL },
+        { "mediterranean", N_("Mediterranean"), N_("The mediterranean quisine has a lot to offer, and is legendary for being very healthy too. Expect to see olives, yoghurt and garlic."), NULL },
 };
 
 
@@ -77,6 +77,7 @@ cuisine_tile_set_cuisine (GrCuisineTile *tile,
                           const char    *cuisine)
 {
         Cuisine *c = NULL;
+        const char *path;
         int i;
 
 	g_free (tile->cuisine);
@@ -96,7 +97,11 @@ cuisine_tile_set_cuisine (GrCuisineTile *tile,
         gtk_label_set_label (GTK_LABEL (tile->description), _(c->description));
         gtk_label_set_label (GTK_LABEL (tile->description2), _(c->description));
 
-        if (c->image_path) {
+        path = c->image_path;
+        if (path == NULL)
+                path = "resource:/org/gnome/Recipes/italian.png";
+
+        if (path) {
 	        GtkStyleContext *context;
         	g_autofree char *css = NULL;
 	        g_autoptr(GtkCssProvider) provider = NULL;
@@ -106,7 +111,7 @@ cuisine_tile_set_cuisine (GrCuisineTile *tile,
                                        "  background: url('%s');\n"
                                        "  background-repeat: no-repeat;\n"
                                        "  background-size: 100%;\n"
-                                       "}", c->image_path);
+                                       "}", path);
         	provider = gtk_css_provider_new ();
 	        gtk_css_provider_load_from_data (provider, css, -1, NULL);
         	context = gtk_widget_get_style_context (GTK_WIDGET (tile));
