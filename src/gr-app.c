@@ -86,10 +86,10 @@ gr_app_startup (GApplication *app)
                                                quit_accels);
 
         css_provider = gtk_css_provider_new ();
-        if (g_file_test ("gr-app.css", G_FILE_TEST_EXISTS))
-          gtk_css_provider_load_from_path (css_provider, "gr-app.css", NULL);
+        if (g_file_test ("recipes.css", G_FILE_TEST_EXISTS))
+          gtk_css_provider_load_from_path (css_provider, "recipes.css", NULL);
         else
-          gtk_css_provider_load_from_resource (css_provider, "/org/gnome/Recipes/gr-app.css");
+          gtk_css_provider_load_from_resource (css_provider, "/org/gnome/Recipes/recipes.css");
         gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
                                                    GTK_STYLE_PROVIDER (css_provider),
                                                    GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);

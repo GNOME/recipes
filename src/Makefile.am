@@ -47,10 +47,10 @@ BUILT_SOURCES = \
 	types.h			\
 	types.c
 
-resource_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/gr-app.gresource.xml)
+resource_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/recipes.gresource.xml)
 
-resources.c: gr-app.gresource.xml $(resource_files)
-	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $(srcdir)/gr-app.gresource.xml \
+resources.c: recipes.gresource.xml $(resource_files)
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $(srcdir)/recipes.gresource.xml \
                 --target=$@ --sourcedir=$(srcdir) --generate-source
 
 types.h: types.h.template gr-recipe.h
