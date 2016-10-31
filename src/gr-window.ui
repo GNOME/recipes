@@ -52,6 +52,34 @@
           </packing>
         </child>
         <child>
+          <object class="GtkHeaderBar" id="list_header">
+            <property name="visible">True</property>
+            <property name="show-close-button">True</property>
+	    <child>
+	      <object class="GtkButton">
+		<property name="visible">True</property>
+                <signal name="clicked" handler="back_to_main" swapped="yes"/>
+		<style>
+		  <class name="image-button"/>
+		</style>
+		<child>
+		  <object class="GtkImage">
+		    <property name="visible">True</property>
+		    <property name="icon-name">go-previous-symbolic</property>
+		    <property name="icon-size">1</property>
+		  </object>
+		</child>
+	      </object>
+	      <packing>
+		<property name="pack-type">start</property>
+	      </packing>
+	    </child>
+          </object>
+          <packing>
+            <property name="name">list</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkHeaderBar" id="details_header">
             <property name="visible">True</property>
             <property name="show-close-button">True</property>
@@ -146,6 +174,13 @@
               <packing>
                 <property name="name">recipes</property>
                 <property name="title" translatable="yes">Recipes</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GrListPage" id="list_page">
+              </object>
+              <packing>
+                <property name="name">list</property>
               </packing>
             </child>
             <child>

@@ -21,6 +21,7 @@
 #include "gr-window.h"
 #include "gr-details-page.h"
 #include "gr-edit-page.h"
+#include "gr-list-page.h"
 
 struct _GrWindow
 {
@@ -33,6 +34,8 @@ struct _GrWindow
         GtkWidget *details_page;
         GtkWidget *edit_header;
         GtkWidget *edit_page;
+        GtkWidget *list_header;
+        GtkWidget *list_page;
 };
 
 G_DEFINE_TYPE (GrWindow, gr_window, GTK_TYPE_APPLICATION_WINDOW)
@@ -94,6 +97,8 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, details_page);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, edit_header);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, edit_page);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, list_header);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, list_page);
 
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), new_recipe);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), back_to_main);
@@ -126,7 +131,7 @@ gr_window_show_recipe (GrWindow *window,
 }
 
 void
-gr_window_show_list (GrWindow *window)
+gr_window_show_main (GrWindow *window)
 {
         back_to_main (window);
 }
@@ -145,3 +150,32 @@ gr_window_edit_recipe (GrWindow *window,
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_stack), "edit");
         gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "edit");
 }
+
+void
+gr_window_show_diet (GrWindow   *window,
+                     const char *title,
+                     GrDiets     diet)
+{
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->list_header), title);
+	gr_list_page_populate_from_diet (GR_LIST_PAGE (window->list_page), diet);
+
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_stack), "list");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "list");
+}
+
+void
+gr_window_show_chef (GrWindow *window,
+                     GrAuthor *chef)
+{
+	g_autofree char *title = NULL;
+	g_autofree char *name = NULL;
+
+	g_object_get (chef, "name", &name, NULL);
+	title = g_strdup_printf (_("Recipes by %s"), name);
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->list_header), title);
+	gr_list_page_populate_from_chef (GR_LIST_PAGE (window->list_page), chef);
+
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_stack), "list");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "list");
+}
+

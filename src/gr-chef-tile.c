@@ -26,6 +26,7 @@
 
 #include "gr-chef-tile.h"
 #include "gr-utils.h"
+#include "gr-window.h"
 
 struct _GrChefTile
 {
@@ -39,6 +40,15 @@ struct _GrChefTile
 
 
 G_DEFINE_TYPE (GrChefTile, gr_chef_tile, GTK_TYPE_BOX)
+
+static void
+show_list (GrChefTile *tile)
+{
+        GtkWidget *window;
+
+        window = gtk_widget_get_ancestor (GTK_WIDGET (tile), GR_TYPE_WINDOW);
+        gr_window_show_chef (GR_WINDOW (window), tile->author);
+}
 
 static void
 chef_tile_finalize (GObject *object)
@@ -70,6 +80,8 @@ gr_chef_tile_class_init (GrChefTileClass *klass)
 
         gtk_widget_class_bind_template_child (widget_class, GrChefTile, label);
         gtk_widget_class_bind_template_child (widget_class, GrChefTile, button);
+
+        gtk_widget_class_bind_template_callback (widget_class, show_list);
 }
 
 static void

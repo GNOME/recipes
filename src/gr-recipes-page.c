@@ -31,6 +31,7 @@
 #include "gr-chef-tile.h"
 #include "gr-recipe-store.h"
 #include "gr-app.h"
+#include "gr-utils.h"
 
 
 struct _GrRecipesPage
@@ -101,34 +102,21 @@ static void
 populate_static (GrRecipesPage *self)
 {
         int i;
-        const char *category[] = {
-                "Gluten free recipes",
-                "Nut free recipes",
-                "Vegan recipes",
-                "Vegetarian recipes",
-                "Milk-free recipes"
+	GrDiets diets[5] = {
+                GR_DIET_GLUTEN_FREE,
+                GR_DIET_NUT_FREE,
+                GR_DIET_VEGAN,
+                GR_DIET_VEGETARIAN,
+                GR_DIET_MILK_FREE
         };
 
         for (i = 0; i < 5; i++) {
                 GtkWidget *tile;
 
-                tile = gr_category_tile_new (category[i]);
-
+                tile = gr_category_tile_new (diets[i]);
                 gtk_widget_show (tile);
                 gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
         }
-}
-
-static void
-remove_all (GtkContainer *container)
-{
-        GList *children, *l;
-
-        children = gtk_container_get_children (container);
-        for (l = children; l; l = l->next) {
-                gtk_container_remove (container, GTK_WIDGET (l->data));
-        }
-        g_list_free (children);
 }
 
 static void
@@ -139,8 +127,8 @@ populate_recipes_from_store (GrRecipesPage *self)
         guint length;
         int i;
 
-        remove_all (GTK_CONTAINER (self->today_box));
-        remove_all (GTK_CONTAINER (self->pick_box));
+        container_remove_all (GTK_CONTAINER (self->today_box));
+        container_remove_all (GTK_CONTAINER (self->pick_box));
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
@@ -173,7 +161,7 @@ populate_authors_from_store (GrRecipesPage *self)
         guint length;
         int i;
 
-        remove_all (GTK_CONTAINER (self->chefs_box));
+        container_remove_all (GTK_CONTAINER (self->chefs_box));
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 

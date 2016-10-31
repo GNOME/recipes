@@ -32,6 +32,8 @@ recipes_SOURCES = \
 	gr-utils.c		\
 	gr-preferences.h	\
 	gr-preferences.c	\
+	gr-list-page.h		\
+	gr-list-page.c		\
 	resources.c		\
 	types.h			\
 	types.c

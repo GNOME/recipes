@@ -25,11 +25,13 @@
 #include <gtk/gtk.h>
 
 #include "gr-category-tile.h"
+#include "gr-window.h"
 
 struct _GrCategoryTile
 {
         GtkButton        parent_instance;
 
+	GrDiets diet;
         char *category;
         GtkWidget  *label;
         GtkWidget  *image;
@@ -37,18 +39,42 @@ struct _GrCategoryTile
 
 G_DEFINE_TYPE (GrCategoryTile, gr_category_tile, GTK_TYPE_BUTTON)
 
-const char *
-gr_category_tile_get_category (GrCategoryTile *tile)
+static void
+show_list (GrCategoryTile *tile)
 {
-        return tile->category;
+        GtkWidget *window;
+
+        window = gtk_widget_get_ancestor (GTK_WIDGET (tile), GR_TYPE_WINDOW);
+        gr_window_show_diet (GR_WINDOW (window), gtk_label_get_label (GTK_LABEL (tile->label)), tile->diet);
 }
 
-void
-gr_category_tile_set_category (GrCategoryTile *tile, const char *category)
+static void
+category_tile_set_category (GrCategoryTile *tile, GrDiets diet)
 {
-        g_free (tile->category);
-        tile->category = g_strdup (category);
-        gtk_label_set_label (GTK_LABEL (tile->label), tile->category);
+	const char *label;
+
+	tile->diet = diet;
+	switch (diet) {
+	case GR_DIET_GLUTEN_FREE:
+		label = _("Gluten free recipes");
+		break;
+	case GR_DIET_NUT_FREE:
+		label = _("Nut free recipes");
+		break;
+	case GR_DIET_VEGAN:
+		label = _("Vegan recipes");
+		break;
+	case GR_DIET_VEGETARIAN:
+		label = _("Vegetarian recipes");
+		break;
+	case GR_DIET_MILK_FREE:
+		label = _("Milk freerecipes");
+		break;
+	default:
+		label = _("Other dietary restrictions");
+		break;
+	}
+        gtk_label_set_label (GTK_LABEL (tile->label), label);
 }
 
 static void
@@ -80,15 +106,17 @@ gr_category_tile_class_init (GrCategoryTileClass *klass)
 
         gtk_widget_class_bind_template_child (widget_class, GrCategoryTile, label);
         gtk_widget_class_bind_template_child (widget_class, GrCategoryTile, image);
+
+	gtk_widget_class_bind_template_callback (widget_class, show_list);
 }
 
 GtkWidget *
-gr_category_tile_new (const char *category)
+gr_category_tile_new (GrDiets diet)
 {
         GrCategoryTile *tile;
 
         tile = g_object_new (GR_TYPE_CATEGORY_TILE, NULL);
-        gr_category_tile_set_category (tile, category);
+        category_tile_set_category (tile, diet);
 
         return GTK_WIDGET (tile);
 }

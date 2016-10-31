@@ -57,3 +57,16 @@ get_data_dir (void)
 
         return dir;
 }
+
+void
+container_remove_all (GtkContainer *container)
+{
+        GList *children, *l;
+
+        children = gtk_container_get_children (container);
+        for (l = children; l; l = l->next) {
+                gtk_container_remove (container, GTK_WIDGET (l->data));
+        }
+        g_list_free (children);
+}
+

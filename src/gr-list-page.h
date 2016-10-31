@@ -1,5 +1,4 @@
-
-/* gr-utils.h:
+/* gr-list-page.h:
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *
@@ -13,7 +12,7 @@
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * GNU General Public License for more edit.
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
@@ -23,15 +22,19 @@
 #pragma once
 
 #include <gtk/gtk.h>
+#include "gr-recipe.h"
+#include "gr-author.h"
 
 G_BEGIN_DECLS
 
-GdkPixbuf *load_pixbuf_at_size (const char *path,
-                                int         width,
-                                int         height);
+#define GR_TYPE_LIST_PAGE (gr_list_page_get_type ())
 
-char *get_data_dir (void);
+G_DECLARE_FINAL_TYPE (GrListPage, gr_list_page, GR, LIST_PAGE, GtkBox)
 
-void container_remove_all (GtkContainer *container);
+GtkWidget	*gr_list_page_new (void);
+void             gr_list_page_populate_from_diet (GrListPage *self,
+                                                  GrDiets     diet);
+void             gr_list_page_populate_from_chef (GrListPage *self,
+                                                  GrAuthor   *chef);
 
 G_END_DECLS

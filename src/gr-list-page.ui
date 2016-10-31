@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="recipes">
+  <!-- interface-requires gtk+ 3.8 -->
+  <template class="GrListPage" parent="GtkBox">
+    <property name="visible">True</property>
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="GtkScrolledWindow">
+        <property name="visible">1</property>
+        <property name="expand">1</property>
+        <property name="hscrollbar-policy">never</property>
+        <child>
+          <object class="GtkFlowBox" id="flow_box">
+            <property name="visible">1</property>
+            <property name="valign">start</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

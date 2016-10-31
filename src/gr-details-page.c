@@ -63,7 +63,7 @@ delete_recipe (GrDetailsPage *page)
 	g_set_object (&page->author, NULL);
 
         window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
-        gr_window_show_list (GR_WINDOW (window));
+        gr_window_show_main (GR_WINDOW (window));
 }
 
 static void

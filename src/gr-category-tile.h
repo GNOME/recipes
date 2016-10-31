@@ -22,6 +22,7 @@
 #pragma once
 
 #include <gtk/gtk.h>
+#include "gr-recipe.h"
 
 G_BEGIN_DECLS
 
@@ -29,9 +30,6 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrCategoryTile, gr_category_tile, GR, CATEGORY_TILE, GtkButton)
 
-GtkWidget       *gr_category_tile_new                       (const char     *category);
-const char      *gr_category_tile_get_category              (GrCategoryTile *tile);
-void             gr_category_tile_set_category              (GrCategoryTile *tile,
-                                                             const char     *category);
+GtkWidget       *gr_category_tile_new                       (GrDiets diet);
 
 G_END_DECLS
