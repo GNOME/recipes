@@ -227,6 +227,7 @@ oven</property>
                     <property name="visible">1</property>
                     <property name="valign">end</property>
                     <property name="halign">end</property>
+                    <signal name="activate-link" handler="more_recipes" swapped="yes"/>
                   </object>
                 </child>
               </object>

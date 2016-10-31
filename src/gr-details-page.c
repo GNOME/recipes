@@ -75,6 +75,17 @@ edit_recipe (GrDetailsPage *page)
         gr_window_edit_recipe (GR_WINDOW (window), page->recipe);
 }
 
+static gboolean
+more_recipes (GrDetailsPage *page)
+{
+        GtkWidget *window;
+        
+        window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
+        gr_window_show_chef (GR_WINDOW (window), page->author);
+
+	return TRUE;
+}
+
 static void
 details_page_finalize (GObject *object)
 {
@@ -116,6 +127,7 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
 
         gtk_widget_class_bind_template_callback (widget_class, edit_recipe);
         gtk_widget_class_bind_template_callback (widget_class, delete_recipe);
+        gtk_widget_class_bind_template_callback (widget_class, more_recipes);
 }
 
 GtkWidget *
