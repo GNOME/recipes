@@ -36,6 +36,7 @@ struct _GrWindow
         GtkWidget *edit_page;
         GtkWidget *list_header;
         GtkWidget *list_page;
+        GtkWidget *cuisines_page;
 };
 
 G_DEFINE_TYPE (GrWindow, gr_window, GTK_TYPE_APPLICATION_WINDOW)
@@ -99,6 +100,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, edit_page);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, list_header);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, list_page);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, cuisines_page);
 
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), new_recipe);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), back_to_main);

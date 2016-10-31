@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="recipes">
+  <!-- interface-requires gtk+ 3.8 -->
+  <template class="GrCuisinesPage" parent="GtkBox">
+    <property name="visible">True</property>
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="GtkScrolledWindow">
+        <property name="visible">1</property>
+        <property name="expand">1</property>
+        <property name="hscrollbar-policy">never</property>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">1</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkLabel" id="cuisines_heading">
+                <property name="visible">1</property>
+                <property name="label" translatable="yes">GNOME recipes all over the world</property>
+                <property name="xalign">0</property>
+                <style> <class name="heading"/> </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox" id="top_tile">
+                <property name="visible">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkFlowBox" id="flow_box">
+                <property name="visible">1</property>
+                <property name="halign">start</property>
+                <property name="valign">start</property>
+                <property name="min-children-per-line">4</property>
+                <property name="column-spacing">10</property>
+                <property name="row-spacing">10</property>
+                <property name="margin">20</property>
+                <property name="selection-mode">none</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

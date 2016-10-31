@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="recipes">
+  <!-- interface-requires gtk+ 3.10 -->
+  <template class="GrCuisineTile" parent="GtkButton">
+    <property name="visible">True</property>
+    <signal name="clicked" handler="show_details" swapped="True"/>
+    <style>
+      <class name="view"/>
+      <class name="tile"/>
+      <class name="cuisine"/>
+    </style>
+    <child>
+      <object class="GtkEventBox" id="eboxbox">
+        <property name="visible">1</property>
+        <child>
+          <object class="GtkBox" id="box">
+            <property name="visible">1</property>
+            <property name="orientation">vertical</property>
+            <child type="center">
+              <object class="GtkLabel" id="title">
+                <property name="visible">1</property>
+                <property name="valign">start</property>
+                <property name="xalign">0</property>
+                <property name="ellipsize">end</property>
+                <property name="width-chars">15</property>
+                <property name="max-width-chars">15</property>
+                <style>
+                  <class name="cuisine"/>
+                  <class name="tile"/>
+                  <class name="heading"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="description2">
+                <property name="visible">1</property>
+                <property name="valign">start</property>
+                <property name="vexpand">True</property>
+                <property name="yalign">0</property>
+                <property name="xalign">0</property>
+                <property name="margin">6</property>
+                <property name="width-chars">16</property>
+                <property name="max-width-chars">16</property>
+                <property name="ellipsize">end</property>
+                <property name="lines">3</property>
+                <property name="opacity">0</property>
+              </object>
+              <packing>
+                <property name="pack-type">start</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="description">
+                <property name="visible">1</property>
+                <property name="valign">start</property>
+                <property name="vexpand">True</property>
+                <property name="yalign">0</property>
+                <property name="xalign">0</property>
+                <property name="margin">6</property>
+                <property name="width-chars">16</property>
+                <property name="max-width-chars">16</property>
+                <property name="ellipsize">end</property>
+                <property name="lines">3</property>
+              </object>
+              <packing>
+                <property name="pack-type">end</property>
+              </packing>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>
