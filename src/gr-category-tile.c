@@ -56,10 +56,10 @@ category_tile_set_category (GrCategoryTile *tile, GrDiets diet)
 	tile->diet = diet;
 	switch (diet) {
 	case GR_DIET_GLUTEN_FREE:
-		label = _("Gluten free recipes");
+		label = _("Gluten-free recipes");
 		break;
 	case GR_DIET_NUT_FREE:
-		label = _("Nut free recipes");
+		label = _("Nut-free recipes");
 		break;
 	case GR_DIET_VEGAN:
 		label = _("Vegan recipes");
@@ -68,7 +68,7 @@ category_tile_set_category (GrCategoryTile *tile, GrDiets diet)
 		label = _("Vegetarian recipes");
 		break;
 	case GR_DIET_MILK_FREE:
-		label = _("Milk freerecipes");
+		label = _("Milk-free recipes");
 		break;
 	default:
 		label = _("Other dietary restrictions");

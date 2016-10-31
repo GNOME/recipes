@@ -96,8 +96,6 @@ gr_recipes_page_new (void)
         return GTK_WIDGET (page);
 }
 
-
-/* Some filler data */
 static void
 populate_static (GrRecipesPage *self)
 {
