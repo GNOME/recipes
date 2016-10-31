@@ -3,19 +3,30 @@
   <!-- interface-requires gtk+ 3.8 -->
   <template class="GrCuisinePage" parent="GtkBox">
     <property name="visible">True</property>
-    <property name="orientation">vertical</property>
+    <property name="orientation">horizontal</property>
+    <child>
+      <object class="GtkScrolledWindow">
+        <property name="visible">1</property>
+        <property name="hscrollbar-policy">never</property>
+        <property name="vscrollbar-policy">automatic</property>
+        <child>
+          <object class="GtkListBox" id="sidebar">
+            <property name="visible">1</property>
+            <property name="vexpand">1</property>
+          </object>
+        </child>
+      </object>
+    </child>
     <child>
       <object class="GtkScrolledWindow">
         <property name="visible">1</property>
         <property name="expand">1</property>
-        <property name="hscrollbar-policy">never</property>
+        <property name="hscrollbar-policy">automatic</property>
+        <property name="vscrollbar-policy">automatic</property>
         <child>
-          <object class="GtkFlowBox" id="flow_box">
-            <property name="visible">1</property>
-            <property name="valign">start</property>
-            <property name="column-spacing">10</property>
-            <property name="row-spacing">10</property>
-            <property name="margin">20</property>
+          <object class="GtkBox" id="category_box">
+            <property name="visible">True</property>
+            <property name="orientation">vertical</property>
           </object>
         </child>
       </object>
