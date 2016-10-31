@@ -45,12 +45,13 @@ G_DEFINE_TYPE (GrCuisineTile, gr_cuisine_tile, GTK_TYPE_BUTTON)
 static void
 show_details (GrCuisineTile *tile)
 {
-#if 0
         GtkWidget *window;
+        const char *title;
+
+        title = gtk_label_get_label (GTK_LABEL (tile->title));
 
         window = gtk_widget_get_ancestor (GTK_WIDGET (tile), GR_TYPE_WINDOW);
-        gr_window_show_cuisine (GR_WINDOW (window), tile->cuisine);
-#endif
+        gr_window_show_cuisine (GR_WINDOW (window), tile->cuisine, title);
 }
 
 typedef struct {

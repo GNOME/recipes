@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="recipes">
+  <!-- interface-requires gtk+ 3.8 -->
+  <template class="GrCuisinePage" parent="GtkBox">
+    <property name="visible">True</property>
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="GtkScrolledWindow">
+        <property name="visible">1</property>
+        <property name="expand">1</property>
+        <property name="hscrollbar-policy">never</property>
+        <child>
+          <object class="GtkFlowBox" id="flow_box">
+            <property name="visible">1</property>
+            <property name="valign">start</property>
+            <property name="column-spacing">10</property>
+            <property name="row-spacing">10</property>
+            <property name="margin">20</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

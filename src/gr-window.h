@@ -40,5 +40,8 @@ void      gr_window_show_diet (GrWindow   *window,
                                GrDiets     diet);
 void      gr_window_show_chef (GrWindow   *window,
                                GrAuthor   *author);
+void      gr_window_show_cuisine (GrWindow   *window,
+                                  const char *cuisine,
+                                  const char *title);
 
 G_END_DECLS

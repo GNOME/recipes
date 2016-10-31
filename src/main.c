@@ -24,6 +24,7 @@
 #include "gr-edit-page.h"
 #include "gr-list-page.h"
 #include "gr-cuisines-page.h"
+#include "gr-cuisine-page.h"
 
 int main (int argc, char *argv[])
 {
@@ -36,6 +37,7 @@ int main (int argc, char *argv[])
   g_type_ensure (GR_TYPE_EDIT_PAGE);
   g_type_ensure (GR_TYPE_LIST_PAGE);
   g_type_ensure (GR_TYPE_CUISINES_PAGE);
+  g_type_ensure (GR_TYPE_CUISINE_PAGE);
 
   app = G_APPLICATION (gr_app_new ());
 
