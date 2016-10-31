@@ -80,6 +80,52 @@
           </packing>
         </child>
         <child>
+          <object class="GtkHeaderBar" id="search_header">
+            <property name="visible">True</property>
+            <property name="show-close-button">True</property>
+	    <child>
+	      <object class="GtkButton">
+		<property name="visible">True</property>
+                <signal name="clicked" handler="back_to_main" swapped="yes"/>
+		<style>
+		  <class name="image-button"/>
+		</style>
+		<child>
+		  <object class="GtkImage">
+		    <property name="visible">True</property>
+		    <property name="icon-name">go-previous-symbolic</property>
+		    <property name="icon-size">1</property>
+		  </object>
+		</child>
+	      </object>
+	      <packing>
+		<property name="pack-type">start</property>
+	      </packing>
+	    </child>
+	    <child>
+	      <object class="GtkToggleButton" id="search_button2">
+		<property name="visible">True</property>
+		<style>
+		  <class name="image-button"/>
+		</style>
+		<child>
+		  <object class="GtkImage">
+		    <property name="visible">True</property>
+		    <property name="icon-name">edit-find-symbolic</property>
+		    <property name="icon-size">1</property>
+		  </object>
+		</child>
+	      </object>
+	      <packing>
+		<property name="pack-type">end</property>
+	      </packing>
+	    </child>
+          </object>
+          <packing>
+            <property name="name">search</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkHeaderBar" id="details_header">
             <property name="visible">True</property>
             <property name="show-close-button">True</property>
@@ -180,11 +226,11 @@
       </object>
     </child>
     <child>
-      <object class="GtkBox" id="content_box">
+      <object class="GtkBox">
         <property name="visible">True</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkSearchBar" id="search_bar">
+          <object class="GtkSearchBar"  id="search_bar">
             <property name="visible">True</property>
             <child>
               <object class="GtkSearchEntry" id="search_entry">
@@ -209,6 +255,13 @@
               </object>
               <packing>
                 <property name="name">list</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GrSearchPage" id="search_page">
+              </object>
+              <packing>
+                <property name="name">search</property>
               </packing>
             </child>
             <child>
