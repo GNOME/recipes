@@ -70,9 +70,21 @@ recipe_tile_set_recipe (GrRecipeTile *tile, GrRecipe *recipe)
                       NULL);
 
 	if (image_path != NULL && image_path[0] != '\0') {
-                g_autoptr(GdkPixbuf) pixbuf = NULL;
-		pixbuf = load_pixbuf_at_size (image_path, 164, 164);
-        	gtk_image_set_from_pixbuf (GTK_IMAGE (tile->image), pixbuf);
+	        GtkStyleContext *context;
+	        g_autofree char *css = NULL;
+	        g_autoptr(GtkCssProvider) provider = NULL;
+                css = g_strdup_printf ("image.recipe {\n"
+                                       "  background: url('%s');\n"
+                                       "  background-size: 100%;\n"
+                                       "  background-repeat: no-repeat;\n"
+                                       "  border-radius: 6px;\n"
+                                       "}", image_path);
+	        provider = gtk_css_provider_new ();
+        	gtk_css_provider_load_from_data (provider, css, -1, NULL);
+        	context = gtk_widget_get_style_context (tile->image);
+        	gtk_style_context_add_provider (context,
+                	                        GTK_STYLE_PROVIDER (provider),
+                        	                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 	}
 	else {
 		gtk_image_clear (GTK_IMAGE (tile->image));
