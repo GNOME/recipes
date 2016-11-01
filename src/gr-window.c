@@ -23,6 +23,7 @@
 #include "gr-edit-page.h"
 #include "gr-list-page.h"
 #include "gr-cuisine-page.h"
+#include "gr-search-page.h"
 
 struct _GrWindow
 {
@@ -109,6 +110,9 @@ search_changed (GrWindow *window)
                 gtk_stack_set_visible_child_name (GTK_STACK (window->header_stack), "search");
                 gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "search");
         }
+
+        gr_search_page_update_search (GR_SEARCH_PAGE (window->search_page),
+                                      gtk_entry_get_text (GTK_ENTRY (window->search_entry)));
 }
 
 GrWindow *

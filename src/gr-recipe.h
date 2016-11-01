@@ -42,4 +42,6 @@ typedef enum { /*< flags >*/
 
 GrRecipe *gr_recipe_new (void);
 
+gboolean  gr_recipe_matches (GrRecipe *recipe, const char *term);
+
 G_END_DECLS

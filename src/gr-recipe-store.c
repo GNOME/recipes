@@ -100,7 +100,7 @@ load_recipes (GrRecipeStore *self)
                 g_autofree char *image_path = NULL;
                 int serves;
                 GrDiets diets;
-                
+
                 g_clear_error (&error);
 
                 name = g_key_file_get_string (keyfile, groups[i], "Name", &error);

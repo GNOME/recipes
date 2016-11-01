@@ -140,3 +140,9 @@ gr_recipe_tile_new (GrRecipe *recipe)
 
         return GTK_WIDGET (tile);
 }
+
+GrRecipe *
+gr_recipe_tile_get_recipe (GrRecipeTile *tile)
+{
+        return tile->recipe;
+}

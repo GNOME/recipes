@@ -32,9 +32,7 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (GrSearchPage, gr_search_page, GR, SEARCH_PAGE, GtkBox)
 
 GtkWidget	*gr_search_page_new (void);
-void             gr_search_page_populate_from_diet (GrSearchPage *self,
-                                                  GrDiets     diet);
-void             gr_search_page_populate_from_chef (GrSearchPage *self,
-                                                  GrAuthor   *chef);
+void             gr_search_page_update_search (GrSearchPage *self,
+                                               const char *term);
 
 G_END_DECLS

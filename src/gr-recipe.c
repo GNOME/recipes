@@ -39,6 +39,10 @@ typedef struct
         char *instructions;
         char *notes;
 	GrDiets diets;
+
+        char *cf_name;
+        char *cf_description;
+        char *cf_ingredients;
 } GrRecipePrivate;
 
 G_DEFINE_TYPE_WITH_PRIVATE (GrRecipe, gr_recipe, G_TYPE_OBJECT)
@@ -78,6 +82,10 @@ gr_recipe_finalize (GObject *object)
         g_free (priv->instructions);
         g_free (priv->notes);
         g_free (priv->image_path);
+
+        g_free (priv->cf_name);
+        g_free (priv->cf_description);
+        g_free (priv->cf_ingredients);
 
         G_OBJECT_CLASS (gr_recipe_parent_class)->finalize (object);
 }
@@ -169,11 +177,13 @@ gr_recipe_set_property (GObject      *object,
           case PROP_NAME:
                   g_free (priv->name);
                   priv->name = g_value_dup_string (value);
+                  priv->cf_name = g_utf8_casefold (priv->name, -1);
                   break;
 
           case PROP_DESCRIPTION:
                   g_free (priv->description);
                   priv->description = g_value_dup_string (value);
+                  priv->cf_description = g_utf8_casefold (priv->description, -1);
                   break;
 
           case PROP_IMAGE_PATH:
@@ -202,6 +212,7 @@ gr_recipe_set_property (GObject      *object,
 
           case PROP_INGREDIENTS:
                   priv->ingredients = g_value_dup_string (value);
+                  priv->cf_ingredients = g_utf8_casefold (priv->ingredients, -1);
                   break;
 
           case PROP_INSTRUCTIONS:
@@ -317,4 +328,18 @@ GrRecipe *
 gr_recipe_new (void)
 {
         return g_object_new (GR_TYPE_RECIPE, NULL);
+}
+
+/* term is assumed to be g_utf8_casefold'ed */
+gboolean
+gr_recipe_matches (GrRecipe *self, const char *term)
+{
+        GrRecipePrivate *priv = gr_recipe_get_instance_private (self);
+
+        if (strstr (priv->cf_name, term) != NULL ||
+            strstr (priv->cf_description, term) != NULL ||
+            strstr (priv->cf_ingredients, term) != NULL)
+                return TRUE;
+
+        return FALSE;
 }
