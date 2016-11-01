@@ -58,7 +58,7 @@
 	    <child>
 	      <object class="GtkButton">
 		<property name="visible">True</property>
-                <signal name="clicked" handler="back_to_main" swapped="yes"/>
+                <signal name="clicked" handler="go_back" swapped="yes"/>
 		<style>
 		  <class name="image-button"/>
 		</style>
@@ -86,7 +86,7 @@
 	    <child>
 	      <object class="GtkButton">
 		<property name="visible">True</property>
-                <signal name="clicked" handler="back_to_main" swapped="yes"/>
+                <signal name="clicked" handler="go_back" swapped="yes"/>
 		<style>
 		  <class name="image-button"/>
 		</style>
@@ -132,7 +132,7 @@
 	    <child>
 	      <object class="GtkButton">
 		<property name="visible">True</property>
-                <signal name="clicked" handler="back_to_main" swapped="yes"/>
+                <signal name="clicked" handler="go_back" swapped="yes"/>
 		<style>
 		  <class name="image-button"/>
 		</style>
@@ -161,7 +161,7 @@
 	    <child>
 	      <object class="GtkButton">
 		<property name="visible">True</property>
-                <signal name="clicked" handler="back_to_main" swapped="yes"/>
+                <signal name="clicked" handler="go_back" swapped="yes"/>
 		<style>
 		  <class name="image-button"/>
 		</style>
@@ -202,7 +202,7 @@
 	    <child>
 	      <object class="GtkButton">
 		<property name="visible">True</property>
-                <signal name="clicked" handler="back_to_cuisines" swapped="yes"/>
+                <signal name="clicked" handler="go_back" swapped="yes"/>
 		<style>
 		  <class name="image-button"/>
 		</style>
