@@ -3,6 +3,7 @@
   <!-- interface-requires gtk+ 3.10 -->
   <template class="GrBigCuisineTile" parent="GtkButton">
     <property name="visible">True</property>
+    <signal name="clicked" handler="show_details" swapped="True"/>
     <property name="halign">fill</property>
     <style>
       <class name="cuisine"/>
