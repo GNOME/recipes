@@ -244,7 +244,7 @@ gr_window_init (GrWindow *self)
         g_signal_connect_swapped (self->search_entry, "search-changed", G_CALLBACK (search_changed), self);
         g_signal_connect_swapped (self->search_entry, "stop-search", G_CALLBACK (stop_search), self);
         g_signal_connect (self->search_button2, "notify::active", G_CALLBACK (maybe_stop_search), self);
-	g_signal_connect (self, "key-press-event", G_CALLBACK (window_keypress_handler), NULL);
+	g_signal_connect_after (self, "key-press-event", G_CALLBACK (window_keypress_handler), NULL);
 }
 
 void
