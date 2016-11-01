@@ -29,6 +29,7 @@
 #include "gr-recipe.h"
 #include "gr-app.h"
 #include "gr-utils.h"
+#include "gr-ingredients.h"
 #include "gr-cuisine.h"
 #include "gr-category.h"
 
@@ -117,7 +118,7 @@ image_button_clicked (GrEditPage *page)
         gtk_file_filter_set_name (filter, _("Image files"));
         gtk_file_filter_add_pixbuf_formats (filter);
         gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), filter);
-        gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (chooser), filter);       
+        gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (chooser), filter);
 
         g_signal_connect (chooser, "response", G_CALLBACK (file_chooser_response), page);
 
@@ -169,6 +170,26 @@ populate_category_combo (GrEditPage *page)
 }
 
 static void
+ingredients_changed (GrEditPage *page)
+{
+        GtkWidget *sw;
+        GtkStyleContext *context;
+
+        sw = gtk_widget_get_ancestor (page->ingredients_field, GTK_TYPE_SCROLLED_WINDOW);
+        context = gtk_widget_get_style_context (sw);
+        gtk_style_context_remove_class (context, "error");
+}
+
+static void
+connect_ingredients_signals (GrEditPage *page)
+{
+        GtkTextBuffer *buffer;
+
+        buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (page->ingredients_field));
+        g_signal_connect_swapped (buffer, "changed", G_CALLBACK (ingredients_changed), page);
+}
+
+static void
 gr_edit_page_init (GrEditPage *page)
 {
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
@@ -176,6 +197,8 @@ gr_edit_page_init (GrEditPage *page)
 
         populate_cuisine_combo (page);
         populate_category_combo (page);
+
+        connect_ingredients_signals (page);
 }
 
 static void
@@ -366,6 +389,10 @@ gr_edit_page_edit (GrEditPage *page,
 	page->author = g_strdup (author);
 }
 
+static gboolean validate_ingredients (GrEditPage  *page,
+                                      const char  *ingredients,
+                                      GError     **error);
+
 gboolean
 gr_edit_page_save (GrEditPage *page)
 {
@@ -392,14 +419,17 @@ gr_edit_page_save (GrEditPage *page)
         prep_time = get_combo_value (GTK_COMBO_BOX (page->prep_time_combo));
         cook_time = get_combo_value (GTK_COMBO_BOX (page->cook_time_combo));
         serves = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (page->serves_spin));
-        ingredients = get_text_view_text (GTK_TEXT_VIEW (page->ingredients_field)); 
-        instructions = get_text_view_text (GTK_TEXT_VIEW (page->instructions_field)); 
-        notes = get_text_view_text (GTK_TEXT_VIEW (page->notes_field)); 
+        ingredients = get_text_view_text (GTK_TEXT_VIEW (page->ingredients_field));
+        instructions = get_text_view_text (GTK_TEXT_VIEW (page->instructions_field));
+        notes = get_text_view_text (GTK_TEXT_VIEW (page->notes_field));
         diets = (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->gluten_free_check)) ? GR_DIET_GLUTEN_FREE : 0) |
                 (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->nut_free_check)) ? GR_DIET_NUT_FREE : 0) |
                 (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->vegan_check)) ? GR_DIET_VEGAN : 0) |
                (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->vegetarian_check)) ? GR_DIET_VEGETARIAN : 0) |
                 (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->milk_free_check)) ? GR_DIET_MILK_FREE : 0);
+
+        if (!validate_ingredients (page, ingredients, &error))
+                goto error;
 
         recipe = g_object_new (GR_TYPE_RECIPE,
                                "name", name,
@@ -421,15 +451,37 @@ gr_edit_page_save (GrEditPage *page)
         else
                 ret = gr_recipe_store_update (store, recipe, page->old_name, &error);
 
-        if (!ret) {
-                gtk_label_set_label (GTK_LABEL (page->error_label), error->message);
-                gtk_revealer_set_reveal_child (GTK_REVEALER (page->error_revealer), TRUE);
-
-                return FALSE;
-        }
+        if (!ret)
+                goto error;
 
         g_free (page->old_name);
         page->old_name = NULL;
 
         return TRUE;
+
+error:
+        gtk_label_set_label (GTK_LABEL (page->error_label), error->message);
+        gtk_revealer_set_reveal_child (GTK_REVEALER (page->error_revealer), TRUE);
+
+        return FALSE;
+}
+
+static gboolean
+validate_ingredients (GrEditPage  *page,
+                      const char  *ingredients,
+                      GError     **error)
+{
+        if (!gr_ingredients_validate (ingredients, error)) {
+                GtkWidget *sw;
+                GtkStyleContext *context;
+
+                sw = gtk_widget_get_ancestor (page->ingredients_field, GTK_TYPE_SCROLLED_WINDOW);
+                context = gtk_widget_get_style_context (sw);
+                gtk_style_context_add_class (context, "error");
+
+                return FALSE;
+        }
+        else {
+                return TRUE;
+        }
 }

@@ -48,6 +48,8 @@ recipes_SOURCES = \
 	gr-cuisine.c		\
 	cr-category.h		\
 	gr-category.c		\
+	gr-ingredients.h	\
+	gr-ingredients.c	\
 	resources.c		\
 	types.h			\
 	types.c
