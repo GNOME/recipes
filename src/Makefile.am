@@ -40,8 +40,12 @@ recipes_SOURCES = \
 	gr-cuisines-page.c	\
 	gr-cuisine-tile.h	\
 	gr-cuisine-tile.c	\
+	gr-big-cuisine-tile.h	\
+	gr-big-cuisine-tile.c	\
 	gr-cuisine-page.h	\
 	gr-cuisine-page.c	\
+	gr-cuisine.h		\
+	gr-cuisine.c		\
 	resources.c		\
 	types.h			\
 	types.c

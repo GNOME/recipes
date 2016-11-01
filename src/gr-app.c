@@ -22,6 +22,7 @@
 #include "gr-window.h"
 #include "gr-preferences.h"
 #include "gr-recipe-store.h"
+#include "gr-cuisine.h"
 
 struct _GrApp
 {
@@ -75,6 +76,7 @@ gr_app_startup (GApplication *app)
 {
         const gchar *quit_accels[2] = { "<Ctrl>Q", NULL };
         g_autoptr(GtkCssProvider) css_provider = NULL;
+        g_autofree char *css = NULL;
 
         G_APPLICATION_CLASS (gr_app_parent_class)->startup (app);
 
@@ -90,6 +92,13 @@ gr_app_startup (GApplication *app)
           gtk_css_provider_load_from_path (css_provider, "recipes.css", NULL);
         else
           gtk_css_provider_load_from_resource (css_provider, "/org/gnome/Recipes/recipes.css");
+        gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+                                                   GTK_STYLE_PROVIDER (css_provider),
+                                                   GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+        g_object_unref (css_provider);
+        css_provider = gtk_css_provider_new ();
+        css = gr_cuisine_get_css ();
+        gtk_css_provider_load_from_data (css_provider, css, -1, NULL);
         gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
                                                    GTK_STYLE_PROVIDER (css_provider),
                                                    GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);

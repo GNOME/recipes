@@ -30,13 +30,15 @@
 #include "gr-app.h"
 #include "gr-utils.h"
 #include "gr-cuisine-tile.h"
+#include "gr-big-cuisine-tile.h"
+#include "gr-cuisine.h"
 
 
 struct _GrCuisinesPage
 {
         GtkBox        parent_instance;
 
-        GtkWidget *top_tile;
+        GtkWidget *top_box;
         GtkWidget *flow_box;
 };
 
@@ -52,22 +54,25 @@ static void
 gr_cuisines_page_init (GrCuisinesPage *page)
 {
 	GtkWidget *tile;
-        const char *cuisines[] = {
-                "american",
-                "chinese",
-                "indian",
-                "italian",
-                "french",
-                "mexican",
-                "mediterranean",
-                "turkish"
-        };
+        const char **cuisines;
+        int length;
         int i;
+        int pos;
 
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
         gtk_widget_init_template (GTK_WIDGET (page));
 
-        for (i = 0; i < G_N_ELEMENTS(cuisines); i++) {
+        cuisines = gr_cuisine_get_names (&length);
+        pos = g_random_int_range (0, length);
+
+        tile = gr_big_cuisine_tile_new (cuisines[pos]);
+	gtk_widget_show (tile);
+        gtk_container_add (GTK_CONTAINER (page->top_box), tile);
+
+        for (i = 0; i < length; i++) {
+                if (i == pos)
+                        continue;
+
 	        tile = gr_cuisine_tile_new (cuisines[i]);
 	        gtk_widget_show (tile);
 	        gtk_container_add (GTK_CONTAINER (page->flow_box), tile);
@@ -84,7 +89,7 @@ gr_cuisines_page_class_init (GrCuisinesPageClass *klass)
 
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-cuisines-page.ui");
 
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrCuisinesPage, top_tile);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrCuisinesPage, top_box);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrCuisinesPage, flow_box);
 }
 

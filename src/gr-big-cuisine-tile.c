@@ -1,4 +1,4 @@
-/* gr-cuisine-tile.c:
+/* gr-big-cuisine-tile.c:
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *
@@ -25,75 +25,72 @@
 #include <gtk/gtk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 
-#include "gr-cuisine-tile.h"
+#include "gr-big-cuisine-tile.h"
+#include "gr-cuisine.h"
 #include "gr-window.h"
 #include "gr-utils.h"
-#include "gr-cuisine.h"
 
-struct _GrCuisineTile
+struct _GrBigCuisineTile
 {
         GtkButton parent_instance;
 
 	char *cuisine;
 
         GtkWidget *title;
-        GtkWidget *description;
-        GtkWidget *description2;
+        GtkWidget *subtitle;
 };
 
-G_DEFINE_TYPE (GrCuisineTile, gr_cuisine_tile, GTK_TYPE_BUTTON)
+G_DEFINE_TYPE (GrBigCuisineTile, gr_big_cuisine_tile, GTK_TYPE_BUTTON)
 
 static void
-show_details (GrCuisineTile *tile)
+show_details (GrBigCuisineTile *tile)
 {
+#if 0
         GtkWidget *window;
-        const char *title;
-
-        title = gtk_label_get_label (GTK_LABEL (tile->title));
 
         window = gtk_widget_get_ancestor (GTK_WIDGET (tile), GR_TYPE_WINDOW);
-        gr_window_show_cuisine (GR_WINDOW (window), tile->cuisine, title);
+        gr_window_show_cuisine (GR_WINDOW (window), tile->cuisine);
+#endif
 }
 
 static void
-cuisine_tile_set_cuisine (GrCuisineTile *tile,
-                          const char    *cuisine)
+big_cuisine_tile_set_cuisine (GrBigCuisineTile *tile,
+                              const char    *cuisine)
 {
         const char *title;
         const char *description;
         GtkStyleContext *context;
 
-	g_free (tile->cuisine);
-	tile->cuisine = g_strdup (cuisine);
+        g_free (tile->cuisine);
+        tile->cuisine = g_strdup (cuisine);
 
         gr_cuisine_get_data (cuisine, &title, &description);
         if (title == NULL)
                 return;
 
         gtk_label_set_label (GTK_LABEL (tile->title), title);
-        gtk_label_set_label (GTK_LABEL (tile->description), description);
-        gtk_label_set_label (GTK_LABEL (tile->description2), description);
+        gtk_label_set_label (GTK_LABEL (tile->subtitle), description);
 
         context = gtk_widget_get_style_context (GTK_WIDGET (tile));
         gtk_style_context_add_class (context, cuisine);
         context = gtk_widget_get_style_context (GTK_WIDGET (tile->title));
         gtk_style_context_add_class (context, cuisine);
-        context = gtk_widget_get_style_context (GTK_WIDGET (tile->description));
+        context = gtk_widget_get_style_context (GTK_WIDGET (tile->subtitle));
         gtk_style_context_add_class (context, cuisine);
 }
 
 static void
-cuisine_tile_finalize (GObject *object)
+big_cuisine_tile_finalize (GObject *object)
 {
-        GrCuisineTile *tile = GR_CUISINE_TILE (object);
+        GrBigCuisineTile *tile = GR_BIG_CUISINE_TILE (object);
 
         g_clear_pointer (&tile->cuisine, g_free);
 
-        G_OBJECT_CLASS (gr_cuisine_tile_parent_class)->finalize (object);
+        G_OBJECT_CLASS (gr_big_cuisine_tile_parent_class)->finalize (object);
 }
 
 static void
-gr_cuisine_tile_init (GrCuisineTile *tile)
+gr_big_cuisine_tile_init (GrBigCuisineTile *tile)
 {
         gtk_widget_set_has_window (GTK_WIDGET (tile), FALSE);
         gtk_widget_init_template (GTK_WIDGET (tile));
@@ -102,29 +99,28 @@ gr_cuisine_tile_init (GrCuisineTile *tile)
 }
 
 static void
-gr_cuisine_tile_class_init (GrCuisineTileClass *klass)
+gr_big_cuisine_tile_class_init (GrBigCuisineTileClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
         GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-        object_class->finalize = cuisine_tile_finalize;
+        object_class->finalize = big_cuisine_tile_finalize;
 
-        gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-cuisine-tile.ui");
+        gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-big-cuisine-tile.ui");
 
-        gtk_widget_class_bind_template_child (widget_class, GrCuisineTile, title);
-        gtk_widget_class_bind_template_child (widget_class, GrCuisineTile, description);
-        gtk_widget_class_bind_template_child (widget_class, GrCuisineTile, description2);
+        gtk_widget_class_bind_template_child (widget_class, GrBigCuisineTile, title);
+        gtk_widget_class_bind_template_child (widget_class, GrBigCuisineTile, subtitle);
 
         gtk_widget_class_bind_template_callback (widget_class, show_details);
 }
 
 GtkWidget *
-gr_cuisine_tile_new (const char *cuisine)
+gr_big_cuisine_tile_new (const char *cuisine)
 {
-        GrCuisineTile *tile;
+        GrBigCuisineTile *tile;
 
-        tile = g_object_new (GR_TYPE_CUISINE_TILE, NULL);
-        cuisine_tile_set_cuisine (GR_CUISINE_TILE (tile), cuisine);
+        tile = g_object_new (GR_TYPE_BIG_CUISINE_TILE, NULL);
+        big_cuisine_tile_set_cuisine (GR_BIG_CUISINE_TILE (tile), cuisine);
 
         return GTK_WIDGET (tile);
 }
