@@ -128,7 +128,7 @@ add_recipe (GrWindow *window)
 static void
 stop_search (GrWindow *window)
 {
-        go_back (window);
+	gr_window_go_back (window);
 }
 
 static void
@@ -156,6 +156,29 @@ search_changed (GrWindow *window)
 
         gr_search_page_update_search (GR_SEARCH_PAGE (window->search_page),
                                       gtk_entry_get_text (GTK_ENTRY (window->search_entry)));
+}
+
+static gboolean
+window_keypress_handler (GtkWidget *widget, GdkEvent *event, gpointer data)
+{
+	GrWindow *window = GR_WINDOW (widget);
+        GtkWidget *w;
+
+        /* handle ctrl+f shortcut */
+        if (event->type == GDK_KEY_PRESS) {
+                GdkEventKey *e = (GdkEventKey *) event;
+                if ((e->state & GDK_CONTROL_MASK) > 0 && e->keyval == GDK_KEY_f) {
+                        if (!gtk_search_bar_get_search_mode (GTK_SEARCH_BAR (window->search_bar))) {
+                                gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (window->search_bar), TRUE);
+				gtk_widget_grab_focus (window->search_entry);
+                        } else {
+                                gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (window->search_bar), FALSE);
+                        }
+                        return GDK_EVENT_PROPAGATE;
+                }
+        }
+
+        return gtk_search_bar_handle_event (GTK_SEARCH_BAR (window->search_bar), event);
 }
 
 GrWindow *
@@ -221,14 +244,15 @@ gr_window_init (GrWindow *self)
         g_signal_connect_swapped (self->search_entry, "search-changed", G_CALLBACK (search_changed), self);
         g_signal_connect_swapped (self->search_entry, "stop-search", G_CALLBACK (stop_search), self);
         g_signal_connect (self->search_button2, "notify::active", G_CALLBACK (maybe_stop_search), self);
+	g_signal_connect (self, "key-press-event", G_CALLBACK (window_keypress_handler), NULL);
 }
 
 void
 gr_window_go_back (GrWindow *window)
 {
 	if (g_queue_is_empty (window->back_entry_stack)) {
-        	gtk_stack_set_visible_child_name (GTK_STACK (window->header_stack), "main");
-        	gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "main");
+        	gtk_stack_set_visible_child_name (GTK_STACK (window->header_stack), "recipes");
+        	gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "recipes");
 	}
 	else {
 		go_back (window);
