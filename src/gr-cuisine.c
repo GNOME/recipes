@@ -24,7 +24,7 @@
 #include <glib.h>
 #include <glib/gi18n.h>
 
-const char *names[] = {
+static const char *names[] = {
         "american",
         "chinese",
         "indian",

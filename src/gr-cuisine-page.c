@@ -30,6 +30,14 @@
 #include "gr-recipe-tile.h"
 #include "gr-app.h"
 #include "gr-utils.h"
+#include "gr-category.h"
+
+typedef struct {
+        const char *name;
+        GtkWidget *item;
+        GtkWidget *label;
+        GtkWidget *box;
+} Category;
 
 struct _GrCuisinePage
 {
@@ -37,6 +45,10 @@ struct _GrCuisinePage
 
         GtkWidget *sidebar;
         GtkWidget *category_box;
+
+        int n_categories;
+        Category *categories;
+        Category *other;
 };
 
 G_DEFINE_TYPE (GrCuisinePage, gr_cuisine_page, GTK_TYPE_BOX)
@@ -46,45 +58,36 @@ cuisine_page_finalize (GObject *object)
 {
         GrCuisinePage *self = GR_CUISINE_PAGE (object);
 
+        g_clear_pointer (&self->categories, g_free);
+
         G_OBJECT_CLASS (gr_cuisine_page_parent_class)->finalize (object);
 }
-
-typedef struct {
-        const char *name;
-        const char *title;
-        GtkWidget *item;
-        GtkWidget *label;
-        GtkWidget *box;
-} Category;
-
-static Category categories[] = {
-        { "entree", N_("Main course"), NULL, NULL, NULL },
-        { "snacks", N_("Snacks"), NULL, NULL, NULL },
-        { "breakfast", N_("Breakfast"), NULL, NULL, NULL },
-        { "side", N_("Side dishes"), NULL, NULL, NULL },
-        { "dessert", N_("Desserts"), NULL, NULL, NULL },
-        { "cake", N_("Cakes and baking"), NULL, NULL, NULL },
-        { "drinks", N_("Drinks and cocktails"), NULL, NULL, NULL },
-        { "pizza", N_("Pizza"), NULL, NULL, NULL },
-        { "pasta", N_("Pasta"), NULL, NULL, NULL },
-        { "other", N_("Other"), NULL, NULL, NULL },
-};
 
 static void
 populate_initially (GrCuisinePage *self)
 {
+        const char **names;
+        const char *title;
+        int length;
         int i;
 
-        for (i = 0; i < G_N_ELEMENTS (categories); i++) {
+        names = gr_category_get_names (&length);
+
+        self->n_categories = length;
+        self->categories = g_new (Category, length);
+
+        for (i = 0; i < length; i++) {
                 GtkWidget *item, *label, *box;
 
-                item = gtk_label_new (_(categories[i].title));
+                title = gr_category_get_title (names[i]);
+
+                item = gtk_label_new (title);
                 g_object_set (item, "xalign", 0, NULL);
                 gtk_widget_show (item);
                 gtk_style_context_add_class (gtk_widget_get_style_context (item), "sidebar");
                 gtk_list_box_insert (GTK_LIST_BOX (self->sidebar), item, -1);
 
-                label = gtk_label_new (_(categories[i].title));
+                label = gtk_label_new (title);
                 g_object_set (label, "xalign", 0, NULL);
                 gtk_style_context_add_class (gtk_widget_get_style_context (label), "heading");
                 gtk_widget_show (label);
@@ -94,9 +97,13 @@ populate_initially (GrCuisinePage *self)
                 gtk_widget_show (box);
                 gtk_container_add (GTK_CONTAINER (self->category_box), box);
 
-                categories[i].item = item;
-                categories[i].label = label;
-                categories[i].box = box;
+                self->categories[i].name = names[i];
+                self->categories[i].item = item;
+                self->categories[i].label = label;
+                self->categories[i].box = box;
+
+                if (strcmp (names[i], "other") == 0)
+                        self->other = &self->categories[i];
         }
 }
 
@@ -142,11 +149,11 @@ gr_cuisine_page_set_cuisine (GrCuisinePage *self, const char *cuisine)
         int i, j;
         GtkContainer *box;
 
-        for (i = 0; i < G_N_ELEMENTS (categories); i++) {
-                container_remove_all (GTK_CONTAINER (categories[i].box));
-                gtk_widget_hide (categories[i].item);
-                gtk_widget_hide (categories[i].label);
-                gtk_widget_hide (categories[i].box);
+        for (i = 0; i < self->n_categories; i++) {
+                container_remove_all (GTK_CONTAINER (self->categories[i].box));
+                gtk_widget_hide (self->categories[i].item);
+                gtk_widget_hide (self->categories[i].label);
+                gtk_widget_hide (self->categories[i].box);
         }
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
@@ -170,16 +177,13 @@ gr_cuisine_page_set_cuisine (GrCuisinePage *self, const char *cuisine)
                 if (g_strcmp0 (cuisine, cuisine2) != 0)
                         continue;
 
-                c = NULL;
-                for (i = 0; i < G_N_ELEMENTS (categories); i++) {
-                        if (strcmp (categories[i].name, category) == 0) {
-                                c = &categories[i];
+                c = self->other;
+                for (i = 0; i < self->n_categories; i++) {
+                        if (strcmp (self->categories[i].name, category) == 0) {
+                                c = &self->categories[i];
                                 break;
                         }
                 }
-
-                if (c == NULL)
-                        c = &categories[G_N_ELEMENTS (categories) - 1];
 
                 gtk_widget_show (c->item);
                 gtk_widget_show (c->label);

@@ -30,6 +30,7 @@
 #include "gr-app.h"
 #include "gr-utils.h"
 #include "gr-cuisine.h"
+#include "gr-category.h"
 
 
 struct _GrEditPage
@@ -153,12 +154,28 @@ populate_cuisine_combo (GrEditPage *page)
 }
 
 static void
+populate_category_combo (GrEditPage *page)
+{
+        const char **names;
+        int length;
+        int i;
+
+        names = gr_category_get_names (&length);
+        for (i = 0; i < length; i++) {
+                gtk_combo_box_text_append (GTK_COMBO_BOX_TEXT (page->category_combo),
+                                           names[i],
+                                           gr_category_get_title (names[i]));
+        }
+}
+
+static void
 gr_edit_page_init (GrEditPage *page)
 {
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
         gtk_widget_init_template (GTK_WIDGET (page));
 
         populate_cuisine_combo (page);
+        populate_category_combo (page);
 }
 
 static void
