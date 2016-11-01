@@ -58,6 +58,32 @@ preferences_activated (GSimpleAction *action,
 }
 
 static void
+about_activated (GSimpleAction *action,
+                 GVariant      *parameter,
+                 gpointer       app)
+{
+        GtkWindow *win;
+        const char *authors[] = {
+                "Emel Elvin Yıldız",
+                "Matthias Clasen",
+                NULL
+        };
+
+        win = gtk_application_get_active_window (GTK_APPLICATION (app));
+        gtk_show_about_dialog (GTK_WINDOW (win),
+                               "program-name", "GNOME Recipes",
+                               "version", PACKAGE_VERSION,
+                               "copyright", "© 2016 Matthias Clasen",
+                               "license-type", GTK_LICENSE_GPL_3_0,
+                               "comments", _("GNOME loves to cook"),
+                               "authors", authors,
+                               "logo-icon-name", "missing-image",
+                               "title", _("About GNOME Recipes"),
+                               NULL);
+
+}
+
+static void
 quit_activated (GSimpleAction *action,
                 GVariant      *parameter,
                 gpointer       app)
@@ -68,6 +94,7 @@ quit_activated (GSimpleAction *action,
 static GActionEntry app_entries[] =
 {
         { "preferences", preferences_activated, NULL, NULL, NULL },
+        { "about", about_activated, NULL, NULL, NULL },
         { "quit", quit_activated, NULL, NULL, NULL }
 };
 
