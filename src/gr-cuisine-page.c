@@ -37,6 +37,7 @@ typedef struct {
         GtkWidget *item;
         GtkWidget *label;
         GtkWidget *box;
+        gboolean filled;
 } Category;
 
 struct _GrCuisinePage
@@ -107,11 +108,36 @@ populate_initially (GrCuisinePage *self)
         }
 }
 
+static gboolean
+filter_sidebar (GtkListBoxRow *row,
+                gpointer       user_data)
+{
+        GrCuisinePage *page = user_data;
+        GtkWidget *item;
+        int i;
+
+        item = gtk_bin_get_child (GTK_BIN (row));
+        for (i = 0; i < page->n_categories; i++) {
+                if (page->categories[i].item == item) {
+                        return page->categories[i].filled;
+                        break;
+                }
+        }
+
+        return TRUE;
+}
+
 static void
 gr_cuisine_page_init (GrCuisinePage *page)
 {
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
         gtk_widget_init_template (GTK_WIDGET (page));
+
+        gtk_list_box_set_filter_func (GTK_LIST_BOX (page->sidebar),
+                                      filter_sidebar,
+                                      page,
+                                      NULL);
+
         populate_initially (page);
 }
 
@@ -151,9 +177,9 @@ gr_cuisine_page_set_cuisine (GrCuisinePage *self, const char *cuisine)
 
         for (i = 0; i < self->n_categories; i++) {
                 container_remove_all (GTK_CONTAINER (self->categories[i].box));
-                gtk_widget_hide (self->categories[i].item);
                 gtk_widget_hide (self->categories[i].label);
                 gtk_widget_hide (self->categories[i].box);
+                self->categories[i].filled = FALSE;
         }
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
@@ -185,14 +211,15 @@ gr_cuisine_page_set_cuisine (GrCuisinePage *self, const char *cuisine)
                         }
                 }
 
-                gtk_widget_show (c->item);
                 gtk_widget_show (c->label);
                 gtk_widget_show (c->box);
+                self->categories[i].filled = TRUE;
 
                 tile = gr_recipe_tile_new (recipe);
                 gtk_widget_show (tile);
                 gtk_container_add (GTK_CONTAINER (c->box), tile);
         }
 
+        gtk_list_box_invalidate_filter (GTK_LIST_BOX (self->sidebar));
         gtk_list_box_unselect_all (GTK_LIST_BOX (self->sidebar));
 }
