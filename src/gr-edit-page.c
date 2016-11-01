@@ -44,6 +44,7 @@ struct _GrEditPage
         GtkWidget *category_combo;
         GtkWidget *prep_time_combo;
         GtkWidget *cook_time_combo;
+        GtkWidget *ingredient_editor;
         GtkWidget *ingredients_field;
         GtkWidget *instructions_field;
         GtkWidget *notes_field;
@@ -53,6 +54,7 @@ struct _GrEditPage
         GtkWidget *vegan_check;
         GtkWidget *vegetarian_check;
         GtkWidget *milk_free_check;
+        GtkWidget *edit_revealer;
         GtkWidget *image;
         char *image_path;
 
@@ -117,11 +119,18 @@ image_button_clicked (GrEditPage *page)
         gtk_file_filter_set_name (filter, _("Image files"));
         gtk_file_filter_add_pixbuf_formats (filter);
         gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), filter);
-        gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (chooser), filter);       
+        gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (chooser), filter);
 
         g_signal_connect (chooser, "response", G_CALLBACK (file_chooser_response), page);
 
         gtk_native_dialog_show (GTK_NATIVE_DIALOG (chooser));
+}
+
+static void
+ingredients_focus (GrEditPage *page)
+{
+        gtk_revealer_set_reveal_child (GTK_REVEALER (page->edit_revealer),
+                                       gtk_widget_has_focus (page->ingredients_field));
 }
 
 static void
@@ -168,6 +177,67 @@ populate_category_combo (GrEditPage *page)
         }
 }
 
+static gboolean
+is_ancestor (GtkWidget *parent, GtkWidget *child)
+{
+        while (child) {
+                child = gtk_widget_get_parent (child);
+                if (parent == child)
+                        return TRUE;
+        }
+
+        return FALSE;
+}
+
+static void
+focus_changed (GtkWindow *window, GtkWidget *focus, GrEditPage *page)
+{
+        gboolean show_editor;
+g_print ("focus changed\n");
+
+        show_editor = page->ingredients_field == focus ||
+                      is_ancestor (page->ingredient_editor, focus);
+
+        gtk_revealer_set_reveal_child (GTK_REVEALER (page->edit_revealer), show_editor);
+}
+
+static void
+visible_child_changed (GObject *parent, GParamSpec *pspec, GtkWidget *widget)
+{
+        GrEditPage *page = GR_EDIT_PAGE (widget);
+        GtkWidget *toplevel;
+        gulong id;
+
+        toplevel = gtk_widget_get_ancestor (widget, GTK_TYPE_WINDOW);
+
+        if (gtk_stack_get_visible_child (GTK_STACK (parent)) == widget) {
+g_print ("connecting ::set-focus handler\n");
+                id = g_signal_connect (toplevel, "set-focus", G_CALLBACK (focus_changed), page);
+                g_object_set_data (G_OBJECT (page), "set_focus_handler", GSIZE_TO_POINTER (id));
+                gtk_revealer_set_transition_type (GTK_REVEALER (page->edit_revealer), GTK_REVEALER_TRANSITION_TYPE_NONE);
+                gtk_revealer_set_reveal_child (GTK_REVEALER (page->edit_revealer), FALSE);
+                gtk_revealer_set_transition_type (GTK_REVEALER (page->edit_revealer), GTK_REVEALER_TRANSITION_TYPE_SLIDE_UP);
+        }
+        else {
+g_print ("disconnecting ::set-focus handler\n");
+                id = GPOINTER_TO_SIZE (g_object_get_data (G_OBJECT (page), "set_focus_handler"));
+                g_signal_handler_disconnect (toplevel, id);
+        }
+}
+
+static void
+parent_set (GtkWidget *widget)
+{
+        GrEditPage *page = GR_EDIT_PAGE (widget);
+        GtkWidget *parent;
+
+        parent = gtk_widget_get_parent (widget);
+
+        if (GTK_IS_STACK (parent))
+                g_signal_connect (parent, "notify::visible-child",
+                                  G_CALLBACK (visible_child_changed), page);
+}
+
 static void
 gr_edit_page_init (GrEditPage *page)
 {
@@ -176,6 +246,7 @@ gr_edit_page_init (GrEditPage *page)
 
         populate_cuisine_combo (page);
         populate_category_combo (page);
+        g_signal_connect (page, "parent-set", G_CALLBACK (parent_set), NULL);
 }
 
 static void
@@ -197,6 +268,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, cook_time_combo);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, serves_spin);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, ingredients_field);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, ingredient_editor);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, instructions_field);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, notes_field);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, gluten_free_check);
@@ -205,9 +277,11 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, vegetarian_check);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, milk_free_check);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, image);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, edit_revealer);
 
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), image_button_clicked);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), dismiss_error);
+        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), ingredients_focus);
 }
 
 GtkWidget *
