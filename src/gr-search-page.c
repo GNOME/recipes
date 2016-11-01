@@ -42,6 +42,8 @@ struct _GrSearchPage
 
 G_DEFINE_TYPE (GrSearchPage, gr_search_page, GTK_TYPE_BOX)
 
+static void connect_store_signals (GrSearchPage *page);
+
 static void
 search_page_finalize (GObject *object)
 {
@@ -57,6 +59,7 @@ gr_search_page_init (GrSearchPage *page)
 {
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
         gtk_widget_init_template (GTK_WIDGET (page));
+	connect_store_signals (page);
 }
 
 static void
@@ -135,4 +138,30 @@ gr_search_page_update_search (GrSearchPage *page, const char *term)
 
         g_free (page->term);
         page->term = g_strdup (term);
+}
+
+static void
+search_page_reload (GrSearchPage *page)
+{
+	g_autofree char *term = NULL;
+
+	term = page->term;
+	page->term = NULL;
+
+  	container_remove_all (GTK_CONTAINER (page->flow_box));
+
+	gr_search_page_update_search (page, term);
+}
+
+static void
+connect_store_signals (GrSearchPage *page)
+{
+        GrRecipeStore *store;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+        /* FIXME: inefficient */
+        g_signal_connect_swapped (store, "recipe-added", G_CALLBACK (search_page_reload), page);
+        g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (search_page_reload), page);
+        g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (search_page_reload), page);
 }

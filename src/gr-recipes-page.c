@@ -190,5 +190,4 @@ connect_store_signals (GrRecipesPage *page)
         g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (populate_recipes_from_store), page);
         g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (populate_recipes_from_store), page);
         g_signal_connect_swapped (store, "chefs-changed", G_CALLBACK (populate_chefs_from_store), page);
-
 }

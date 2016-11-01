@@ -27,6 +27,7 @@
 #include "gr-cuisine-page.h"
 #include "gr-recipe-store.h"
 #include "gr-recipe.h"
+#include "gr-cuisine.h"
 #include "gr-recipe-tile.h"
 #include "gr-app.h"
 #include "gr-utils.h"
@@ -44,6 +45,8 @@ struct _GrCuisinePage
 {
         GtkBox     parent_instance;
 
+	char *cuisine;
+
         GtkWidget *sidebar;
         GtkWidget *category_box;
 
@@ -54,11 +57,14 @@ struct _GrCuisinePage
 
 G_DEFINE_TYPE (GrCuisinePage, gr_cuisine_page, GTK_TYPE_BOX)
 
+static void connect_store_signals (GrCuisinePage *page);
+
 static void
 cuisine_page_finalize (GObject *object)
 {
         GrCuisinePage *self = GR_CUISINE_PAGE (object);
 
+	g_clear_pointer (&self->cuisine, g_free);
         g_clear_pointer (&self->categories, g_free);
 
         G_OBJECT_CLASS (gr_cuisine_page_parent_class)->finalize (object);
@@ -139,6 +145,7 @@ gr_cuisine_page_init (GrCuisinePage *page)
                                       NULL);
 
         populate_initially (page);
+	connect_store_signals (page);
 }
 
 static void
@@ -174,6 +181,11 @@ gr_cuisine_page_set_cuisine (GrCuisinePage *self, const char *cuisine)
         guint length;
         int i, j;
         GtkContainer *box;
+
+	if (self->cuisine != cuisine) {
+		g_free (self->cuisine);
+		self->cuisine = g_strdup (cuisine);
+	}
 
         for (i = 0; i < self->n_categories; i++) {
                 container_remove_all (GTK_CONTAINER (self->categories[i].box));
@@ -222,4 +234,23 @@ gr_cuisine_page_set_cuisine (GrCuisinePage *self, const char *cuisine)
 
         gtk_list_box_invalidate_filter (GTK_LIST_BOX (self->sidebar));
         gtk_list_box_unselect_all (GTK_LIST_BOX (self->sidebar));
+}
+
+static void
+cuisine_page_reload (GrCuisinePage *page)
+{
+	gr_cuisine_page_set_cuisine (page, page->cuisine);
+}
+
+static void
+connect_store_signals (GrCuisinePage *page)
+{
+        GrRecipeStore *store;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+        /* FIXME: inefficient */
+        g_signal_connect_swapped (store, "recipe-added", G_CALLBACK (cuisine_page_reload), page);
+        g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (cuisine_page_reload), page);
+        g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (cuisine_page_reload), page);
 }

@@ -36,15 +36,22 @@ struct _GrListPage
 {
         GtkBox     parent_instance;
 
+	GrChef *chef;
+	GrDiets diet;
+
         GtkWidget *flow_box;
 };
 
 G_DEFINE_TYPE (GrListPage, gr_list_page, GTK_TYPE_BOX)
 
+static void connect_store_signals (GrListPage *page);
+
 static void
 list_page_finalize (GObject *object)
 {
         GrListPage *self = GR_LIST_PAGE (object);
+
+	g_clear_object (&self->chef);
 
         G_OBJECT_CLASS (gr_list_page_parent_class)->finalize (object);
 }
@@ -54,6 +61,7 @@ gr_list_page_init (GrListPage *page)
 {
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
         gtk_widget_init_template (GTK_WIDGET (page));
+	connect_store_signals (page);
 }
 
 static void
@@ -87,6 +95,9 @@ gr_list_page_populate_from_diet (GrListPage *self, GrDiets diet)
 	guint length;
 	int i;
 
+	self->diet = diet;
+	g_clear_object (&self->chef);
+
 	container_remove_all (GTK_CONTAINER (self->flow_box));
 
 	store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
@@ -117,6 +128,9 @@ gr_list_page_populate_from_chef (GrListPage *self, GrChef *chef)
 	guint length;
 	int i;
 
+	self->diet = 0;
+	g_set_object (&self->chef, chef);
+
 	container_remove_all (GTK_CONTAINER (self->flow_box));
 
 	g_object_get (chef, "name", &name, NULL);
@@ -138,4 +152,26 @@ gr_list_page_populate_from_chef (GrListPage *self, GrChef *chef)
 		gtk_widget_show (tile);
 		gtk_container_add (GTK_CONTAINER (self->flow_box), tile);
 	}
+}
+
+static void
+list_page_reload (GrListPage *page)
+{
+	if (page->chef)
+		gr_list_page_populate_from_chef (page, page->chef);
+	else
+		gr_list_page_populate_from_diet (page, page->diet);
+}
+
+static void
+connect_store_signals (GrListPage *page)
+{
+        GrRecipeStore *store;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+        /* FIXME: inefficient */
+        g_signal_connect_swapped (store, "recipe-added", G_CALLBACK (list_page_reload), page);
+        g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (list_page_reload), page);
+        g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (list_page_reload), page);
 }
