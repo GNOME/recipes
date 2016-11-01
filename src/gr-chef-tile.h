@@ -22,7 +22,7 @@
 #pragma once
 
 #include <gtk/gtk.h>
-#include "gr-author.h"
+#include "gr-chef.h"
 
 G_BEGIN_DECLS
 
@@ -30,6 +30,6 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrChefTile, gr_chef_tile, GR, CHEF_TILE, GtkBox)
 
-GtkWidget	*gr_chef_tile_new (GrAuthor *author);
+GtkWidget	*gr_chef_tile_new (GrChef *chef);
 
 G_END_DECLS

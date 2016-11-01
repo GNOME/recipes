@@ -36,7 +36,7 @@ struct _GrDetailsPage
         GtkBox        parent_instance;
 
         GrRecipe  *recipe;
-        GrAuthor  *author;
+        GrChef    *chef;
         GtkWidget *recipe_image;
         GtkWidget *prep_time_label;
         GtkWidget *cook_time_label;
@@ -60,7 +60,7 @@ delete_recipe (GrDetailsPage *page)
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
         gr_recipe_store_remove (store, page->recipe);
         g_set_object (&page->recipe, NULL);
-	g_set_object (&page->author, NULL);
+	g_set_object (&page->chef, NULL);
 
         window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
         gr_window_show_main (GR_WINDOW (window));
@@ -70,7 +70,7 @@ static void
 edit_recipe (GrDetailsPage *page)
 {
         GtkWidget *window;
-        
+
         window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
         gr_window_edit_recipe (GR_WINDOW (window), page->recipe);
 }
@@ -79,9 +79,9 @@ static gboolean
 more_recipes (GrDetailsPage *page)
 {
         GtkWidget *window;
-        
+
         window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
-        gr_window_show_chef (GR_WINDOW (window), page->author);
+        gr_window_show_chef (GR_WINDOW (window), page->chef);
 
 	return TRUE;
 }
@@ -92,7 +92,7 @@ details_page_finalize (GObject *object)
         GrDetailsPage *self = GR_DETAILS_PAGE (object);
 
         g_clear_object (&self->recipe);
-        g_clear_object (&self->author);
+        g_clear_object (&self->chef);
 
         G_OBJECT_CLASS (gr_details_page_parent_class)->finalize (object);
 }
@@ -157,7 +157,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         char *tmp;
 	g_autoptr(GdkPixbuf) pixbuf = NULL;
 	GrRecipeStore *store;
-	g_autoptr(GrAuthor) chef = NULL;
+	g_autoptr(GrChef) chef = NULL;
 	g_autofree char *author_desc = NULL;
 
         g_set_object (&page->recipe, recipe); 
@@ -175,9 +175,9 @@ gr_details_page_set_recipe (GrDetailsPage *page,
                       NULL);
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
-	chef = gr_recipe_store_get_author (store, author);
+	chef = gr_recipe_store_get_chef (store, author);
 
-	g_set_object (&page->author, chef);
+	g_set_object (&page->chef, chef);
 
 	pixbuf = load_pixbuf_at_size (image_path, 256, 256);
 	gtk_image_set_from_pixbuf (GTK_IMAGE (page->recipe_image), pixbuf);
@@ -193,8 +193,8 @@ gr_details_page_set_recipe (GrDetailsPage *page,
 
         gtk_label_set_label (GTK_LABEL (page->description_label), description);
 
-	if (page->author)
-		g_object_get (page->author, "description", &author_desc, NULL);
+	if (page->chef)
+		g_object_get (page->chef, "description", &author_desc, NULL);
 
 	if (author_desc)
         	tmp = g_strdup_printf ("About GNOME chef %s:\n%s", author, author_desc);
@@ -202,7 +202,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         	tmp = g_strdup_printf ("A recipe by GNOME chef %s", author);
         gtk_label_set_label (GTK_LABEL (page->chef_label), tmp);
 	g_free (tmp);
-        
+
         tmp = g_strdup_printf ("More recipes by %s", author);
         gtk_button_set_label (GTK_BUTTON (page->chef_link), tmp);
         g_free (tmp);

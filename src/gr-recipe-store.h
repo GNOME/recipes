@@ -20,7 +20,7 @@
 
 #include <glib-object.h>
 #include "gr-recipe.h"
-#include "gr-author.h"
+#include "gr-chef.h"
 
 G_BEGIN_DECLS
 
@@ -43,8 +43,8 @@ gboolean gr_recipe_store_remove (GrRecipeStore *self,
 GrRecipe *gr_recipe_store_get (GrRecipeStore *self,
                                const char    *name);
 
-char **gr_recipe_store_get_keys (GrRecipeStore *self,
-                                 guint         *length);
+char **gr_recipe_store_get_recipe_keys (GrRecipeStore *self,
+                                        guint         *length);
 
 gboolean gr_recipe_store_is_todays (GrRecipeStore *self,
                                     GrRecipe      *recipe);
@@ -52,19 +52,19 @@ gboolean gr_recipe_store_is_todays (GrRecipeStore *self,
 gboolean gr_recipe_store_is_pick (GrRecipeStore *self,
                                   GrRecipe      *recipe);
 
-GrAuthor *gr_recipe_store_get_author (GrRecipeStore *self,
-                                      const char    *name);
+GrChef *gr_recipe_store_get_chef (GrRecipeStore *self,
+                                  const char    *name);
 
-char **gr_recipe_store_get_author_keys (GrRecipeStore *self,
-                                        guint         *length);
+char **gr_recipe_store_get_chef_keys (GrRecipeStore *self,
+                                      guint         *length);
 
-gboolean gr_recipe_store_author_is_featured (GrRecipeStore *self,
-                                             GrAuthor      *author);
+gboolean gr_recipe_store_chef_is_featured (GrRecipeStore *self,
+                                           GrChef        *chef);
 
 const char *gr_recipe_store_get_user_key (GrRecipeStore *self);
 
 gboolean gr_recipe_store_update_user (GrRecipeStore  *self,
-                                      GrAuthor       *author,
+                                      GrChef         *chef,
                                       GError        **error);
 
 G_END_DECLS

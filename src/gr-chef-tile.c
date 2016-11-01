@@ -32,7 +32,7 @@ struct _GrChefTile
 {
         GtkBox      parent_instance;
 
-	GrAuthor   *author;
+	GrChef     *chef;
 
         GtkWidget  *label;
         GtkWidget  *button;
@@ -47,7 +47,7 @@ show_list (GrChefTile *tile)
         GtkWidget *window;
 
         window = gtk_widget_get_ancestor (GTK_WIDGET (tile), GR_TYPE_WINDOW);
-        gr_window_show_chef (GR_WINDOW (window), tile->author);
+        gr_window_show_chef (GR_WINDOW (window), tile->chef);
 }
 
 static void
@@ -55,7 +55,7 @@ chef_tile_finalize (GObject *object)
 {
         GrChefTile *tile = GR_CHEF_TILE (object);
 
-	g_clear_object (&tile->author);
+	g_clear_object (&tile->chef);
 
         G_OBJECT_CLASS (gr_chef_tile_parent_class)->finalize (object);
 }
@@ -85,7 +85,7 @@ gr_chef_tile_class_init (GrChefTileClass *klass)
 }
 
 static void
-chef_tile_set_author (GrChefTile *tile, GrAuthor *author)
+chef_tile_set_chef (GrChefTile *tile, GrChef *chef)
 {
 	g_autofree char *name = NULL;
         g_autofree char *image_path = NULL;
@@ -94,9 +94,9 @@ chef_tile_set_author (GrChefTile *tile, GrAuthor *author)
 	g_autofree char *css = NULL;
 	g_autoptr(GtkCssProvider) provider = NULL;
 
-	g_set_object (&tile->author, author);
+	g_set_object (&tile->chef, chef);
 
-	g_object_get (author,
+	g_object_get (chef,
                       "name", &name,
                       "image-path", &image_path,
                       NULL);
@@ -129,12 +129,12 @@ chef_tile_set_author (GrChefTile *tile, GrAuthor *author)
 }
 
 GtkWidget *
-gr_chef_tile_new (GrAuthor *author)
+gr_chef_tile_new (GrChef *chef)
 {
         GrChefTile *tile;
 
         tile = g_object_new (GR_TYPE_CHEF_TILE, NULL);
-	chef_tile_set_author (tile, author);	
+	chef_tile_set_chef (tile, chef);
 
         return GTK_WIDGET (tile);
 }

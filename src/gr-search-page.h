@@ -22,8 +22,6 @@
 #pragma once
 
 #include <gtk/gtk.h>
-#include "gr-recipe.h"
-#include "gr-author.h"
 
 G_BEGIN_DECLS
 

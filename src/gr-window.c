@@ -227,7 +227,7 @@ gr_window_show_diet (GrWindow   *window,
 
 void
 gr_window_show_chef (GrWindow *window,
-                     GrAuthor *chef)
+                     GrChef  *chef)
 {
 	g_autofree char *title = NULL;
 	g_autofree char *name = NULL;

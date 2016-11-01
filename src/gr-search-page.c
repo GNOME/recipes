@@ -118,7 +118,7 @@ gr_search_page_update_search (GrSearchPage *page, const char *term)
                 container_remove_all (GTK_CONTAINER (page->flow_box));
 
                 store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
-                keys = gr_recipe_store_get_keys (store, &length);
+                keys = gr_recipe_store_get_recipe_keys (store, &length);
 
                 for (i = 0; i < length; i++) {
                         g_autoptr(GrRecipe) recipe = NULL;

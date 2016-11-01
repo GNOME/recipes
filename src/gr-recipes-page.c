@@ -48,7 +48,7 @@ G_DEFINE_TYPE (GrRecipesPage, gr_recipes_page, GTK_TYPE_BOX)
 
 static void populate_static (GrRecipesPage *page);
 static void populate_recipes_from_store (GrRecipesPage *page);
-static void populate_authors_from_store (GrRecipesPage *page);
+static void populate_chefs_from_store (GrRecipesPage *page);
 static void connect_store_signals (GrRecipesPage *page);
 
 static void
@@ -65,7 +65,7 @@ gr_recipes_page_init (GrRecipesPage *page)
 
         populate_static (page);
         populate_recipes_from_store (page);
-        populate_authors_from_store (page);
+        populate_chefs_from_store (page);
         connect_store_signals (page);
 }
 
@@ -130,7 +130,7 @@ populate_recipes_from_store (GrRecipesPage *self)
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        keys = gr_recipe_store_get_keys (store, &length);
+        keys = gr_recipe_store_get_recipe_keys (store, &length);
 
         for (i = 0; i < length; i++) {
                 g_autoptr(GrRecipe) recipe = NULL;
@@ -152,7 +152,7 @@ populate_recipes_from_store (GrRecipesPage *self)
 }
 
 static void
-populate_authors_from_store (GrRecipesPage *self)
+populate_chefs_from_store (GrRecipesPage *self)
 {
         GrRecipeStore *store;
         g_autofree char **keys = NULL;
@@ -163,15 +163,15 @@ populate_authors_from_store (GrRecipesPage *self)
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        keys = gr_recipe_store_get_author_keys (store, &length);
+        keys = gr_recipe_store_get_chef_keys (store, &length);
         for (i = 0; i < length; i++) {
-                g_autoptr(GrAuthor) author = NULL;
+                g_autoptr(GrChef) chef = NULL;
 
-                author = gr_recipe_store_get_author (store, keys[i]);
+                chef = gr_recipe_store_get_chef (store, keys[i]);
 
-		if (gr_recipe_store_author_is_featured (store, author)) {
+		if (gr_recipe_store_chef_is_featured (store, chef)) {
 			GtkWidget *tile;
-			tile = gr_chef_tile_new (author);
+			tile = gr_chef_tile_new (chef);
 			gtk_widget_show (tile);
 			gtk_container_add (GTK_CONTAINER (self->chefs_box), tile);
 		}
@@ -189,5 +189,6 @@ connect_store_signals (GrRecipesPage *page)
         g_signal_connect_swapped (store, "recipe-added", G_CALLBACK (populate_recipes_from_store), page);
         g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (populate_recipes_from_store), page);
         g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (populate_recipes_from_store), page);
-        g_signal_connect_swapped (store, "authors-changed", G_CALLBACK (populate_authors_from_store), page);
+        g_signal_connect_swapped (store, "chefs-changed", G_CALLBACK (populate_chefs_from_store), page);
+
 }

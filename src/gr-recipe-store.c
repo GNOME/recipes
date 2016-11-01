@@ -31,11 +31,11 @@ struct _GrRecipeStore
         GObject parent;
 
         GHashTable *recipes;
-        GHashTable *authors;
+        GHashTable *chefs;
 
         char **todays;
         char **picks;
-        char **chefs;
+        char **featured_chefs;
 
         char *user;
 };
@@ -49,10 +49,10 @@ gr_recipe_store_finalize (GObject *object)
         GrRecipeStore *self = GR_RECIPE_STORE (object);
 
         g_clear_pointer (&self->recipes, g_hash_table_unref);
-        g_clear_pointer (&self->authors, g_hash_table_unref);
+        g_clear_pointer (&self->chefs, g_hash_table_unref);
         g_strfreev (self->todays);
         g_strfreev (self->picks);
-        g_strfreev (self->chefs);
+        g_strfreev (self->featured_chefs);
         g_free (self->user);
 
         G_OBJECT_CLASS (gr_recipe_store_parent_class)->finalize (object);
@@ -344,7 +344,7 @@ load_picks (GrRecipeStore *self)
                 g_clear_error (&error);
         }
 
-        self->chefs = g_key_file_get_string_list (keyfile, "Content", "Chefs", NULL, &error);
+        self->featured_chefs = g_key_file_get_string_list (keyfile, "Content", "Chefs", NULL, &error);
         if (error) {
                 if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
                         g_warning ("Failed to load chefs: %s", error->message);
@@ -354,7 +354,7 @@ load_picks (GrRecipeStore *self)
 }
 
 static void
-load_authors (GrRecipeStore *self)
+load_chefs (GrRecipeStore *self)
 {
         g_autoptr(GKeyFile) keyfile = NULL;
         g_autoptr(GError) error = NULL;
@@ -365,34 +365,37 @@ load_authors (GrRecipeStore *self)
 
         keyfile = g_key_file_new ();
 
-        path = get_db_path ("authors.db");
+        path = get_db_path ("chefs.db");
+        /* Just since my example dataset has authors.db */
+        if (!g_file_test (path, G_FILE_TEST_EXISTS))
+                path = get_db_path ("authors.db");
 
         if (!g_key_file_load_from_file (keyfile, path, G_KEY_FILE_NONE, &error)) {
                 if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
-                        g_error ("failed to load authors db: %s", error->message);
+                        g_error ("failed to load chefs db: %s", error->message);
                 return;
         }
 
         groups = g_key_file_get_groups (keyfile, &length);
         for (i = 0; i < length; i++) {
-                GrAuthor *author;
+                GrChef *chef;
                 g_autofree char *name = NULL;
                 g_autofree char *fullname = NULL;
                 g_autofree char *description = NULL;
                 g_autofree char *image_path = NULL;
-                
+
                 g_clear_error (&error);
 
                 name = g_key_file_get_string (keyfile, groups[i], "Name", &error);
                 if (error) {
-                        g_warning ("Failed to load author %s: %s", groups[i], error->message);
+                        g_warning ("Failed to load chef %s: %s", groups[i], error->message);
                         g_clear_error (&error);
                         continue;
                 }
                 fullname = g_key_file_get_string (keyfile, groups[i], "Fullname", &error);
                 if (error) {
                         if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
-                                g_warning ("Failed to load author %s: %s", groups[i], error->message);
+                                g_warning ("Failed to load chef %s: %s", groups[i], error->message);
                                 continue;
                         }
                         g_clear_error (&error);
@@ -400,7 +403,7 @@ load_authors (GrRecipeStore *self)
                 description = g_key_file_get_string (keyfile, groups[i], "Description", &error);
                 if (error) {
                         if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
-                                g_warning ("Failed to load author %s: %s", groups[i], error->message);
+                                g_warning ("Failed to load chef %s: %s", groups[i], error->message);
                                 continue;
                         }
                         g_clear_error (&error);
@@ -408,7 +411,7 @@ load_authors (GrRecipeStore *self)
                 image_path = g_key_file_get_string (keyfile, groups[i], "Image", &error);
                 if (error) {
                         if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
-                                g_warning ("Failed to load recipe %s: %s", groups[i], error->message);
+                                g_warning ("Failed to load chef %s: %s", groups[i], error->message);
                                 continue;
                         }
                         g_clear_error (&error);
@@ -421,13 +424,13 @@ load_authors (GrRecipeStore *self)
 			image_path = tmp;
 		}
 
-                author = g_hash_table_lookup (self->authors, name);
-                if (author == NULL) {
-                        author = gr_author_new ();
-                        g_hash_table_insert (self->authors, g_strdup (name), author);
+                chef = g_hash_table_lookup (self->chefs, name);
+                if (chef == NULL) {
+                        chef = gr_chef_new ();
+                        g_hash_table_insert (self->chefs, g_strdup (name), chef);
                 }
 
-                g_object_set (author,
+                g_object_set (chef,
                               "name", name,
                               "fullname", fullname,
                               "description", description,
@@ -437,28 +440,28 @@ load_authors (GrRecipeStore *self)
 }
 
 static void
-save_authors (GrRecipeStore *store)
+save_chefs (GrRecipeStore *store)
 {
         g_autoptr(GKeyFile) keyfile = NULL;
         g_autofree char *path = NULL;
         GHashTableIter iter;
         const char *key;
-        GrAuthor *author;
+        GrChef *chef;
         g_autoptr(GError) error = NULL;
 	char *tmp;
 
         keyfile = g_key_file_new ();
 
-        path = get_db_path ("authors.db");
+        path = get_db_path ("chefs.db");
 
-        g_hash_table_iter_init (&iter, store->authors);
-        while (g_hash_table_iter_next (&iter, (gpointer *)&key, (gpointer *)&author)) {
+        g_hash_table_iter_init (&iter, store->chefs);
+        while (g_hash_table_iter_next (&iter, (gpointer *)&key, (gpointer *)&chef)) {
                 g_autofree char *name = NULL;
                 g_autofree char *fullname = NULL;
                 g_autofree char *description = NULL;
                 g_autofree char *image_path = NULL;
 
-                g_object_get (author,
+                g_object_get (chef,
                               "name", &name,
                               "fullname", &fullname,
                               "description", &description,
@@ -481,7 +484,7 @@ save_authors (GrRecipeStore *store)
         }
 
         if (!g_key_file_save_to_file (keyfile, path, &error)) {
-                g_error ("Failed to save authors database: %s", error->message);
+                g_error ("Failed to save chefs database: %s", error->message);
         }
 }
 
@@ -527,18 +530,18 @@ static void
 gr_recipe_store_init (GrRecipeStore *self)
 {
         self->recipes = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);
-        self->authors = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);
+        self->chefs = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);
 
         load_recipes (self);
+        load_chefs (self);
         load_picks (self);
-        load_authors (self);
         load_user (self);
 }
 
 static guint add_signal;
 static guint remove_signal;
 static guint changed_signal;
-static guint authors_changed_signal;
+static guint chefs_changed_signal;
 
 static void
 gr_recipe_store_class_init (GrRecipeStoreClass *klass)
@@ -568,13 +571,13 @@ gr_recipe_store_class_init (GrRecipeStoreClass *klass)
                                        NULL, NULL,
                                        NULL,
                                        G_TYPE_NONE, 1, GR_TYPE_RECIPE);
-        authors_changed_signal = g_signal_new ("authors-changed",
-                                               G_TYPE_FROM_CLASS (object_class),
-                                               G_SIGNAL_RUN_LAST,
-                                               0,
-                                               NULL, NULL,
-                                               NULL,
-                                               G_TYPE_NONE, 0);
+        chefs_changed_signal = g_signal_new ("chefs-changed",
+                                             G_TYPE_FROM_CLASS (object_class),
+                                             G_SIGNAL_RUN_LAST,
+                                             0,
+                                             NULL, NULL,
+                                             NULL,
+                                             G_TYPE_NONE, 0);
 }
 
 GrRecipeStore *
@@ -687,8 +690,8 @@ gr_recipe_store_get (GrRecipeStore *self,
 }
 
 char **
-gr_recipe_store_get_keys (GrRecipeStore *self,
-                          guint         *length)
+gr_recipe_store_get_recipe_keys (GrRecipeStore *self,
+                                 guint         *length)
 {
         return (char **)g_hash_table_get_keys_as_array (self->recipes, length);
 }
@@ -721,25 +724,25 @@ gr_recipe_store_is_pick (GrRecipeStore *self,
         return g_strv_contains ((const char *const*)self->picks, name);
 }
 
-GrAuthor *
-gr_recipe_store_get_author (GrRecipeStore *self,
-                            const char    *name)
+GrChef *
+gr_recipe_store_get_chef (GrRecipeStore *self,
+                          const char    *name)
 {
-        GrAuthor *author;
+        GrChef *chef;
 
-        author = g_hash_table_lookup (self->authors, name);
+        chef = g_hash_table_lookup (self->chefs, name);
 
-        if (author)
-                return g_object_ref (author);
+        if (chef)
+                return g_object_ref (chef);
 
         return NULL;
 }
 
 char **
-gr_recipe_store_get_author_keys (GrRecipeStore *self,
-                                 guint         *length)
+gr_recipe_store_get_chef_keys (GrRecipeStore *self,
+                               guint         *length)
 {
-        return (char **)g_hash_table_get_keys_as_array (self->authors, length);
+        return (char **)g_hash_table_get_keys_as_array (self->chefs, length);
 }
 
 const char *
@@ -749,48 +752,48 @@ gr_recipe_store_get_user_key (GrRecipeStore *self)
 }
 
 static gboolean
-recipe_store_set_author (GrRecipeStore  *self,
-                         GrAuthor       *author,
-                         GError        **error)
+recipe_store_set_chef (GrRecipeStore  *self,
+                       GrChef         *chef,
+                       GError        **error)
 {
         g_autofree char *name = NULL;
 
-        g_object_get (author, "name", &name, NULL);
+        g_object_get (chef, "name", &name, NULL);
         if (name == NULL || name[0] == '\0') {
                 g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
                              _("You need to provide a name"));
                 return FALSE;
         }
 
-        if (g_hash_table_contains (self->authors, name)) {
+        if (g_hash_table_contains (self->chefs, name)) {
                 g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
                              _("Sorry, this name is taken"));
                 return FALSE;
         }
 
-        g_hash_table_insert (self->authors, g_strdup (name), g_object_ref (author));
+        g_hash_table_insert (self->chefs, g_strdup (name), g_object_ref (chef));
 
-        g_signal_emit (self, authors_changed_signal, 0);
-        save_authors (self);
+        g_signal_emit (self, chefs_changed_signal, 0);
+        save_chefs (self);
 
         return TRUE;
 }
 
 gboolean
 gr_recipe_store_update_user (GrRecipeStore  *self,
-                             GrAuthor       *author,
+                             GrChef         *chef,
                              GError        **error)
 {
         g_autofree char *name = NULL;
         gboolean ret = TRUE;
 
-        g_object_get (author, "name", &name, NULL);
+        g_object_get (chef, "name", &name, NULL);
 
         if (name != NULL && name[0] != '\0') {
                 if (g_strcmp0 (name, self->user) == 0) {
-                        g_hash_table_remove (self->authors, name);
+                        g_hash_table_remove (self->chefs, name);
                 }
-                ret = recipe_store_set_author (self, author, error);
+                ret = recipe_store_set_chef (self, chef, error);
         }
 
         if (ret) {
@@ -803,16 +806,16 @@ gr_recipe_store_update_user (GrRecipeStore  *self,
 }
 
 gboolean
-gr_recipe_store_author_is_featured (GrRecipeStore *self,
-                                    GrAuthor      *author)
+gr_recipe_store_chef_is_featured (GrRecipeStore *self,
+                                  GrChef        *chef)
 {
         g_autofree char *name = NULL;
 
-        if (self->chefs == NULL)
+        if (self->featured_chefs == NULL)
                 return FALSE;
 
-        g_object_get (author, "name", &name, NULL);
+        g_object_get (chef, "name", &name, NULL);
 
-        return g_strv_contains ((const char *const*)self->chefs, name);
+        return g_strv_contains ((const char *const*)self->featured_chefs, name);
 }
 

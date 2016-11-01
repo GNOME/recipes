@@ -19,7 +19,7 @@
 #include "config.h"
 #include <glib/gi18n.h>
 #include "gr-preferences.h"
-#include "gr-author.h"
+#include "gr-chef.h"
 #include "gr-recipe-store.h"
 #include "gr-app.h"
 #include "gr-utils.h"
@@ -114,7 +114,7 @@ gr_preferences_finalize (GObject *object)
 static gboolean
 save_preferences (GrPreferences *self, GError **error)
 {
-	g_autoptr(GrAuthor) author = NULL;
+	g_autoptr(GrChef) chef = NULL;
 	GrRecipeStore *store;
 	const char *name;
 	const char *fullname;
@@ -123,17 +123,17 @@ save_preferences (GrPreferences *self, GError **error)
 	name = gtk_entry_get_text (GTK_ENTRY (self->name));
 	fullname = gtk_entry_get_text (GTK_ENTRY (self->fullname));
 	description = gtk_entry_get_text (GTK_ENTRY (self->description));
-	
-	author = g_object_new (GR_TYPE_AUTHOR,
-			       "name", name,
-                               "fullname", fullname,
-                               "description", description,
-                               "image-path", self->image_path,
-                               NULL);
+
+	chef = g_object_new (GR_TYPE_CHEF,
+			     "name", name,
+                             "fullname", fullname,
+                             "description", description,
+                             "image-path", self->image_path,
+                             NULL);
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        return gr_recipe_store_update_user (store, author, error);
+        return gr_recipe_store_update_user (store, chef, error);
 }
 
 static gboolean
@@ -154,7 +154,7 @@ static void
 gr_preferences_init (GrPreferences *self)
 {
 	GrRecipeStore *store;
-	g_autoptr(GrAuthor) author = NULL;
+	g_autoptr(GrChef) chef = NULL;
 	const char *name;
 
   	gtk_widget_init_template (GTK_WIDGET (self));
@@ -165,15 +165,15 @@ gr_preferences_init (GrPreferences *self)
 	gtk_entry_set_text (GTK_ENTRY (self->name), name ? name : "");
 
 	if (name != NULL && name[0] != '\0')
-		author = gr_recipe_store_get_author (store, name);
+		chef = gr_recipe_store_get_chef (store, name);
 
-	if (author) {
+	if (chef) {
 		g_autofree char *name2 = NULL;
 		g_autofree char *fullname = NULL;
 		g_autofree char *description = NULL;
 		g_autofree char *image_path = NULL;
 
-		g_object_get (author,
+		g_object_get (chef,
 			      "name", &name2,
 			      "fullname", &fullname,
 			      "description", &description,

@@ -12,18 +12,18 @@ recipes_SOURCES = \
 	gr-recipes-page.c	\
 	gs-hiding-box.h 	\
 	gs-hiding-box.c 	\
-	gr-recipe.c 		\
 	gr-recipe.h 		\
-	gr-author.c 		\
-	gr-author.h 		\
-	gr-recipe-store.c 	\
+	gr-recipe.c 		\
+	gr-chef.h 		\
+	gr-chef.c 		\
 	gr-recipe-store.h	\
-	gr-recipe-tile.c 	\
+	gr-recipe-store.c 	\
 	gr-recipe-tile.h 	\
-	gr-category-tile.c 	\
+	gr-recipe-tile.c 	\
 	gr-category-tile.h 	\
-	gr-chef-tile.c 		\
+	gr-category-tile.c 	\
 	gr-chef-tile.h 		\
+	gr-chef-tile.c 		\
 	gr-details-page.h	\
 	gr-details-page.c	\
 	gr-edit-page.h		\

@@ -1,4 +1,4 @@
-/* gr-author.h
+/* gr-chef.h
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *
@@ -23,15 +23,15 @@
 
 G_BEGIN_DECLS
 
-#define GR_TYPE_AUTHOR (gr_author_get_type())
+#define GR_TYPE_CHEF (gr_chef_get_type())
 
-G_DECLARE_DERIVABLE_TYPE (GrAuthor, gr_author, GR, AUTHOR, GObject)
+G_DECLARE_DERIVABLE_TYPE (GrChef, gr_chef, GR, CHEF, GObject)
 
-struct _GrAuthorClass
+struct _GrChefClass
 {
 	GObjectClass parent;
 };
 
-GrAuthor *gr_author_new (void);
+GrChef *gr_chef_new (void);
 
 G_END_DECLS

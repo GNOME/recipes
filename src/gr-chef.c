@@ -1,4 +1,4 @@
-/* gr-author.c
+/* gr-chef.c
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *
@@ -18,7 +18,7 @@
 
 #include "config.h"
 #include <glib/gi18n.h>
-#include "gr-author.h"
+#include "gr-chef.h"
 #include "types.h"
 #include <string.h>
 #include <gtk/gtk.h>
@@ -29,9 +29,9 @@ typedef struct
         char *fullname;
         char *description;
         char *image_path;
-} GrAuthorPrivate;
+} GrChefPrivate;
 
-G_DEFINE_TYPE_WITH_PRIVATE (GrAuthor, gr_author, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GrChef, gr_chef, G_TYPE_OBJECT)
 
 enum {
         PROP_0,
@@ -43,27 +43,27 @@ enum {
 };
 
 static void
-gr_author_finalize (GObject *object)
+gr_chef_finalize (GObject *object)
 {
-        GrAuthor *self = GR_AUTHOR (object);
-        GrAuthorPrivate *priv = gr_author_get_instance_private (self);
+        GrChef *self = GR_CHEF (object);
+        GrChefPrivate *priv = gr_chef_get_instance_private (self);
 
         g_free (priv->name);
         g_free (priv->fullname);
         g_free (priv->description);
         g_free (priv->image_path);
 
-        G_OBJECT_CLASS (gr_author_parent_class)->finalize (object);
+        G_OBJECT_CLASS (gr_chef_parent_class)->finalize (object);
 }
 
 static void
-gr_author_get_property (GObject    *object,
+gr_chef_get_property (GObject    *object,
                         guint       prop_id,
                         GValue     *value,
                         GParamSpec *pspec)
 {
-        GrAuthor *self = GR_AUTHOR (object);
-        GrAuthorPrivate *priv = gr_author_get_instance_private (self);
+        GrChef *self = GR_CHEF (object);
+        GrChefPrivate *priv = gr_chef_get_instance_private (self);
 
         switch (prop_id)
           {
@@ -89,13 +89,13 @@ gr_author_get_property (GObject    *object,
 }
 
 static void
-gr_author_set_property (GObject      *object,
+gr_chef_set_property (GObject      *object,
                         guint         prop_id,
                         const GValue *value,
                         GParamSpec   *pspec)
 {
-        GrAuthor *self = GR_AUTHOR (object);
-        GrAuthorPrivate *priv = gr_author_get_instance_private (self);
+        GrChef *self = GR_CHEF (object);
+        GrChefPrivate *priv = gr_chef_get_instance_private (self);
 
         switch (prop_id)
           {
@@ -124,14 +124,14 @@ gr_author_set_property (GObject      *object,
 }
 
 static void
-gr_author_class_init (GrAuthorClass *klass)
+gr_chef_class_init (GrChefClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
         GParamSpec *pspec;
 
-        object_class->finalize = gr_author_finalize;
-        object_class->get_property = gr_author_get_property;
-        object_class->set_property = gr_author_set_property;
+        object_class->finalize = gr_chef_finalize;
+        object_class->get_property = gr_chef_get_property;
+        object_class->set_property = gr_chef_set_property;
 
         pspec = g_param_spec_string ("name", NULL, NULL,
                                      NULL,
@@ -155,13 +155,13 @@ gr_author_class_init (GrAuthorClass *klass)
 }
 
 static void
-gr_author_init (GrAuthor *self)
+gr_chef_init (GrChef *self)
 {
-        GrAuthorPrivate *priv = gr_author_get_instance_private (self);
+        GrChefPrivate *priv = gr_chef_get_instance_private (self);
 }
 
-GrAuthor *
-gr_author_new (void)
+GrChef *
+gr_chef_new (void)
 {
-        return g_object_new (GR_TYPE_AUTHOR, NULL);
+        return g_object_new (GR_TYPE_CHEF, NULL);
 }

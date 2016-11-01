@@ -158,7 +158,7 @@ gr_cuisine_page_set_cuisine (GrCuisinePage *self, const char *cuisine)
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        keys = gr_recipe_store_get_keys (store, &length);
+        keys = gr_recipe_store_get_recipe_keys (store, &length);
         for (j = 0; j < length; j++) {
                 g_autoptr(GrRecipe) recipe = NULL;
                 g_autofree char *name = NULL;

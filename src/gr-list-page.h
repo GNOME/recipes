@@ -23,7 +23,7 @@
 
 #include <gtk/gtk.h>
 #include "gr-recipe.h"
-#include "gr-author.h"
+#include "gr-chef.h"
 
 G_BEGIN_DECLS
 
@@ -35,6 +35,6 @@ GtkWidget	*gr_list_page_new (void);
 void             gr_list_page_populate_from_diet (GrListPage *self,
                                                   GrDiets     diet);
 void             gr_list_page_populate_from_chef (GrListPage *self,
-                                                  GrAuthor   *chef);
+                                                  GrChef     *chef);
 
 G_END_DECLS

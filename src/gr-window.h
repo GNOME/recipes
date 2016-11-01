@@ -15,11 +15,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-   
+
 #pragma once
 
 #include "gr-app.h"
 #include "gr-recipe.h"
+#include "gr-chef.h"
 
 G_BEGIN_DECLS
 
@@ -39,7 +40,7 @@ void      gr_window_show_diet (GrWindow   *window,
                                const char *title,
                                GrDiets     diet);
 void      gr_window_show_chef (GrWindow   *window,
-                               GrAuthor   *author);
+                               GrChef     *chef);
 void      gr_window_show_cuisine (GrWindow   *window,
                                   const char *cuisine,
                                   const char *title);
