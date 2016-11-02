@@ -26,6 +26,8 @@
         <child>
           <object class="GtkBox" id="category_box">
             <property name="visible">True</property>
+            <property name="margin-start">20</property>
+            <property name="margin-end">20</property>
             <property name="orientation">vertical</property>
           </object>
         </child>
