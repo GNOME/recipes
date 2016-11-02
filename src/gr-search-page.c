@@ -108,7 +108,7 @@ gr_search_page_update_search (GrSearchPage *page, const char *term)
         guint length;
         int i;
 
-        if (strlen (term) < 3)
+        if (term == NULL || strlen (term) < 3)
                 return;
 
         cf_term = g_utf8_casefold (term, -1);
