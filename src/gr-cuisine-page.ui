@@ -13,12 +13,13 @@
           <object class="GtkListBox" id="sidebar">
             <property name="visible">1</property>
             <property name="vexpand">1</property>
+            <signal name="row-selected" handler="row_selected" swapped="yes"/>
           </object>
         </child>
       </object>
     </child>
     <child>
-      <object class="GtkScrolledWindow">
+      <object class="GtkScrolledWindow" id="scrolled_window">
         <property name="visible">1</property>
         <property name="expand">1</property>
         <property name="hscrollbar-policy">automatic</property>

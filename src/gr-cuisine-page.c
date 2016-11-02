@@ -48,6 +48,7 @@ struct _GrCuisinePage
 	char *cuisine;
 
         GtkWidget *sidebar;
+        GtkWidget *scrolled_window;
         GtkWidget *category_box;
 
         int n_categories;
@@ -58,6 +59,43 @@ struct _GrCuisinePage
 G_DEFINE_TYPE (GrCuisinePage, gr_cuisine_page, GTK_TYPE_BOX)
 
 static void connect_store_signals (GrCuisinePage *page);
+
+static void
+row_selected (GrCuisinePage *page, GtkListBoxRow *row)
+{
+        GtkWidget *item;
+	int i;
+	int category;
+	GtkAdjustment *adj;
+	GtkAllocation alloc;
+
+        if (row == NULL)
+                return; /* FIXME: scroll to top */
+
+		g_print ("got row\n");
+
+	category = -1;
+        item = gtk_bin_get_child (GTK_BIN (row));
+        for (i = 0; i < page->n_categories; i++) {
+                if (page->categories[i].item == item) {
+                        category = i;
+			break;
+                }
+        }
+
+	if (category < 0)
+		return;
+
+	g_print ("is row %d\n", category);
+
+	adj = gtk_scrolled_window_get_hadjustment (GTK_SCROLLED_WINDOW (page->scrolled_window));
+	gtk_adjustment_set_value (adj, gtk_adjustment_get_lower (adj));
+
+	adj = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (page->scrolled_window));
+	gtk_widget_get_allocation (page->categories[category].label, &alloc);
+	g_print ("scrolling to %d\n", alloc.y);
+	gtk_adjustment_set_value (adj, alloc.y - 10);
+}
 
 static void
 cuisine_page_finalize (GObject *object)
@@ -159,7 +197,10 @@ gr_cuisine_page_class_init (GrCuisinePageClass *klass)
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-cuisine-page.ui");
 
         gtk_widget_class_bind_template_child (widget_class, GrCuisinePage, sidebar);
+        gtk_widget_class_bind_template_child (widget_class, GrCuisinePage, scrolled_window);
         gtk_widget_class_bind_template_child (widget_class, GrCuisinePage, category_box);
+
+	gtk_widget_class_bind_template_callback (widget_class, row_selected);
 }
 
 GtkWidget *
