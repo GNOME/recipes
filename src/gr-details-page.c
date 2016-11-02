@@ -54,6 +54,8 @@ struct _GrDetailsPage
 
 G_DEFINE_TYPE (GrDetailsPage, gr_details_page, GTK_TYPE_BOX)
 
+static void connect_store_signals (GrDetailsPage *page);
+
 static void
 delete_recipe (GrDetailsPage *page)
 {
@@ -121,6 +123,7 @@ gr_details_page_init (GrDetailsPage *page)
 {
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
         gtk_widget_init_template (GTK_WIDGET (page));
+	connect_store_signals (page);
 }
 
 static void
@@ -228,4 +231,26 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         tmp = g_strdup_printf (_("More recipes by %s"), author);
         gtk_button_set_label (GTK_BUTTON (page->chef_link), tmp);
         g_free (tmp);
+}
+
+static void
+details_page_reload (GrDetailsPage *page, GrRecipe *recipe)
+{
+	g_autofree char *name;
+	g_autofree char *new_name;
+
+	g_object_get (page->recipe, "name", &name, NULL);
+	g_object_get (recipe, "name", &new_name, NULL);
+	if (strcmp (name, new_name) == 0)
+		gr_details_page_set_recipe (page, recipe);
+}
+
+static void
+connect_store_signals (GrDetailsPage *page)
+{
+        GrRecipeStore *store;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+        g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (details_page_reload), page);
 }
