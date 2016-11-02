@@ -70,9 +70,7 @@ row_selected (GrCuisinePage *page, GtkListBoxRow *row)
 	GtkAllocation alloc;
 
         if (row == NULL)
-                return; /* FIXME: scroll to top */
-
-		g_print ("got row\n");
+                return;
 
 	category = -1;
         item = gtk_bin_get_child (GTK_BIN (row));
@@ -86,15 +84,12 @@ row_selected (GrCuisinePage *page, GtkListBoxRow *row)
 	if (category < 0)
 		return;
 
-	g_print ("is row %d\n", category);
-
 	adj = gtk_scrolled_window_get_hadjustment (GTK_SCROLLED_WINDOW (page->scrolled_window));
 	gtk_adjustment_set_value (adj, gtk_adjustment_get_lower (adj));
 
 	adj = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (page->scrolled_window));
 	gtk_widget_get_allocation (page->categories[category].label, &alloc);
-	g_print ("scrolling to %d\n", alloc.y);
-	gtk_adjustment_set_value (adj, alloc.y - 10);
+	gtk_adjustment_set_value (adj, alloc.y);
 }
 
 static void
