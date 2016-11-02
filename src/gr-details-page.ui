@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="recipes">
   <!-- interface-requires gtk+ 3.8 -->
+  <object class="GtkAdjustment" id="serves_adjustment">
+    <property name="lower">1</property>
+    <property name="upper">99</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
   <template class="GrDetailsPage" parent="GtkBox">
     <property name="visible">True</property>
     <property name="orientation">vertical</property>
@@ -177,9 +183,14 @@ oven</property>
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="serves_label">
+              <object class="GtkSpinButton" id="serves_spin">
                 <property name="visible">1</property>
                 <property name="xalign">0</property>
+                <property name="halign">start</property>
+                <property name="valign">center</property>
+                <property name="adjustment">serves_adjustment</property>
+                <property name="width-chars">2</property>
+                <signal name="value-changed" handler="serves_value_changed" swapped="yes"/>
               </object>
               <packing>
                 <property name="left-attach">2</property>

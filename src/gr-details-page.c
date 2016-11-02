@@ -29,6 +29,7 @@
 #include "gr-app.h"
 #include "gr-window.h"
 #include "gr-utils.h"
+#include "gr-ingredients.h"
 
 
 struct _GrDetailsPage
@@ -40,13 +41,15 @@ struct _GrDetailsPage
         GtkWidget *recipe_image;
         GtkWidget *prep_time_label;
         GtkWidget *cook_time_label;
-        GtkWidget *serves_label;
+        GtkWidget *serves_spin;
         GtkWidget *description_label;
         GtkWidget *chef_label;
         GtkWidget *chef_link;
         GtkWidget *ingredients_label;
         GtkWidget *instructions_label;
         GtkWidget *notes_label;
+
+        GrIngredients *ingredients;
 };
 
 G_DEFINE_TYPE (GrDetailsPage, gr_details_page, GTK_TYPE_BOX)
@@ -87,12 +90,28 @@ more_recipes (GrDetailsPage *page)
 }
 
 static void
+serves_value_changed (GrDetailsPage *page)
+{
+        int serves;
+        int new_value;
+        g_autofree char *text = NULL;
+
+        new_value = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (page->serves_spin));
+        g_object_get (page->recipe, "serves", &serves, NULL);
+
+        text = gr_ingredients_scale (page->ingredients, new_value, serves);
+
+        gtk_label_set_label (GTK_LABEL (page->ingredients_label), text);
+}
+
+static void
 details_page_finalize (GObject *object)
 {
         GrDetailsPage *self = GR_DETAILS_PAGE (object);
 
         g_clear_object (&self->recipe);
         g_clear_object (&self->chef);
+        g_clear_object (&self->ingredients);
 
         G_OBJECT_CLASS (gr_details_page_parent_class)->finalize (object);
 }
@@ -117,7 +136,7 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, recipe_image);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, prep_time_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, cook_time_label);
-        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, serves_label);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, serves_spin);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, description_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, chef_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, chef_link);
@@ -128,6 +147,7 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, edit_recipe);
         gtk_widget_class_bind_template_callback (widget_class, delete_recipe);
         gtk_widget_class_bind_template_callback (widget_class, more_recipes);
+        gtk_widget_class_bind_template_callback (widget_class, serves_value_changed);
 }
 
 GtkWidget *
@@ -159,8 +179,9 @@ gr_details_page_set_recipe (GrDetailsPage *page,
 	GrRecipeStore *store;
 	g_autoptr(GrChef) chef = NULL;
 	g_autofree char *author_desc = NULL;
+        g_autoptr(GrIngredients) ing = NULL;
 
-        g_set_object (&page->recipe, recipe); 
+        g_set_object (&page->recipe, recipe);
 
         g_object_get (recipe,
                       "image-path", &image_path,
@@ -176,8 +197,10 @@ gr_details_page_set_recipe (GrDetailsPage *page,
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 	chef = gr_recipe_store_get_chef (store, author);
-
 	g_set_object (&page->chef, chef);
+
+        ing = gr_ingredients_new (ingredients);
+        g_set_object (&page->ingredients, ing);
 
 	pixbuf = load_pixbuf_at_size (image_path, 256, 256);
 	gtk_image_set_from_pixbuf (GTK_IMAGE (page->recipe_image), pixbuf);
@@ -187,9 +210,8 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         gtk_label_set_label (GTK_LABEL (page->instructions_label), instructions);
         gtk_label_set_label (GTK_LABEL (page->notes_label), notes);
 
-        tmp = g_strdup_printf ("%d", serves);
-        gtk_label_set_label (GTK_LABEL (page->serves_label), tmp);
-        g_free (tmp);
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), serves);
+        gtk_widget_set_sensitive (page->serves_spin, ing != NULL);
 
         gtk_label_set_label (GTK_LABEL (page->description_label), description);
 
@@ -197,13 +219,13 @@ gr_details_page_set_recipe (GrDetailsPage *page,
 		g_object_get (page->chef, "description", &author_desc, NULL);
 
 	if (author_desc)
-        	tmp = g_strdup_printf ("About GNOME chef %s:\n%s", author, author_desc);
+        	tmp = g_strdup_printf (_("About GNOME chef %s:\n%s"), author, author_desc);
 	else
-        	tmp = g_strdup_printf ("A recipe by GNOME chef %s", author);
+        	tmp = g_strdup_printf (_("A recipe by GNOME chef %s"), author);
         gtk_label_set_label (GTK_LABEL (page->chef_label), tmp);
 	g_free (tmp);
 
-        tmp = g_strdup_printf ("More recipes by %s", author);
+        tmp = g_strdup_printf (_("More recipes by %s"), author);
         gtk_button_set_label (GTK_BUTTON (page->chef_link), tmp);
         g_free (tmp);
 }

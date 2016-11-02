@@ -25,6 +25,17 @@
 
 G_BEGIN_DECLS
 
-gboolean gr_ingredients_validate (const char *text, GError **error);
+#define GR_TYPE_INGREDIENTS (gr_ingredients_get_type ())
+
+G_DECLARE_FINAL_TYPE (GrIngredients, gr_ingredients, GR, INGREDIENTS, GObject)
+
+GrIngredients       *gr_ingredients_new      (const char  *text);
+
+gboolean             gr_ingredients_validate (const char  *text,
+                                              GError     **error);
+
+gchar               *gr_ingredients_scale    (GrIngredients *ingredients,
+                                              int            num,
+                                              int            denom);
 
 G_END_DECLS
