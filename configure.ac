@@ -110,6 +110,7 @@ AC_CONFIG_FILES([
 	Makefile
 	src/Makefile
 	data/Makefile
+	tests/Makefile
 	po/Makefile.in
 ],[],
 [API_VERSION='$API_VERSION'])
