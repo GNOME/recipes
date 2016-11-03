@@ -18,28 +18,30 @@
 
 #include <gtk/gtk.h>
 #include "gr-app.h"
-#include "gs-hiding-box.h"
-#include "gr-recipes-page.h"
+#include "gr-cuisine-page.h"
+#include "gr-cuisines-page.h"
 #include "gr-details-page.h"
 #include "gr-edit-page.h"
+#include "gr-ingredients-page.h"
 #include "gr-list-page.h"
+#include "gr-recipes-page.h"
 #include "gr-search-page.h"
-#include "gr-cuisines-page.h"
-#include "gr-cuisine-page.h"
+#include "gs-hiding-box.h"
 
 int main (int argc, char *argv[])
 {
   g_autoptr(GApplication) app = NULL;
   int status;
 
-  g_type_ensure (GS_TYPE_HIDING_BOX);
-  g_type_ensure (GR_TYPE_RECIPES_PAGE);
+  g_type_ensure (GR_TYPE_CUISINE_PAGE);
+  g_type_ensure (GR_TYPE_CUISINES_PAGE);
   g_type_ensure (GR_TYPE_DETAILS_PAGE);
   g_type_ensure (GR_TYPE_EDIT_PAGE);
+  g_type_ensure (GR_TYPE_INGREDIENTS_PAGE);
   g_type_ensure (GR_TYPE_LIST_PAGE);
   g_type_ensure (GR_TYPE_SEARCH_PAGE);
-  g_type_ensure (GR_TYPE_CUISINES_PAGE);
-  g_type_ensure (GR_TYPE_CUISINE_PAGE);
+  g_type_ensure (GR_TYPE_RECIPES_PAGE);
+  g_type_ensure (GS_TYPE_HIDING_BOX);
 
   app = G_APPLICATION (gr_app_new ());
 

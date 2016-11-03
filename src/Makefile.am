@@ -32,6 +32,8 @@ recipes_SOURCES = \
 	gs-hiding-box.c 	\
 	gr-ingredients.h	\
 	gr-ingredients.c	\
+	gr-ingredients-page.h	\
+	gr-ingredients-page.c	\
 	gr-list-page.h		\
 	gr-list-page.c		\
 	gr-preferences.h	\
