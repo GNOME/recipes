@@ -30,19 +30,20 @@ load_pixbuf_at_size (const char *path,
         GdkPixbuf *pixbuf;
         int dest_x, dest_y, dest_width, dest_height;
 
-        original = gdk_pixbuf_new_from_file_at_scale (path, width, height, TRUE, NULL);
-
         pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, width, height);
         gdk_pixbuf_fill (pixbuf, 0x00000000);
 
-        dest_width = gdk_pixbuf_get_width (original);
-        dest_height = gdk_pixbuf_get_height (original);
-        dest_x = (width - dest_width) / 2;
-        dest_y = (height - dest_height) / 2;
+        original = gdk_pixbuf_new_from_file_at_scale (path, width, height, TRUE, NULL);
+        if (original) {
+                dest_width = gdk_pixbuf_get_width (original);
+                dest_height = gdk_pixbuf_get_height (original);
+                dest_x = (width - dest_width) / 2;
+                dest_y = (height - dest_height) / 2;
 
-        gdk_pixbuf_composite (original, pixbuf,
-                              dest_x, dest_y, dest_width, dest_height,
-                              0, 0, 1.0, 1.0, GDK_INTERP_NEAREST, 255);
+                gdk_pixbuf_composite (original, pixbuf,
+                                      dest_x, dest_y, dest_width, dest_height,
+                                      0, 0, 1.0, 1.0, GDK_INTERP_NEAREST, 255);
+        }
 
         return pixbuf;
 }
