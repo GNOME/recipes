@@ -113,9 +113,9 @@ gr_search_page_update_search (GrSearchPage *page, const char *term)
 
         cf_term = g_utf8_casefold (term, -1);
 
-        if (page->term && g_str_has_prefix (term, page->term)) {
+        if (page->term && g_str_has_prefix (cf_term, page->term)) {
                 /* narrowing search */
-                gtk_container_forall (GTK_CONTAINER (page->flow_box), check_match, (gpointer)term);
+                gtk_container_forall (GTK_CONTAINER (page->flow_box), check_match, (gpointer)cf_term);
         }
         else {
                 container_remove_all (GTK_CONTAINER (page->flow_box));
@@ -128,7 +128,7 @@ gr_search_page_update_search (GrSearchPage *page, const char *term)
                         GtkWidget *tile;
 
                         recipe = gr_recipe_store_get (store, keys[i]);
-                        if (gr_recipe_matches (recipe, term)) {
+                        if (gr_recipe_matches (recipe, cf_term)) {
                                 tile = gr_recipe_tile_new (recipe);
                                 gtk_widget_show (tile);
                                 gtk_container_add (GTK_CONTAINER (page->flow_box), tile);
@@ -137,7 +137,7 @@ gr_search_page_update_search (GrSearchPage *page, const char *term)
         }
 
         g_free (page->term);
-        page->term = g_strdup (term);
+        page->term = g_strdup (cf_term);
 }
 
 static void

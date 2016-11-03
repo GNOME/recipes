@@ -24,6 +24,7 @@
 #include "gr-list-page.h"
 #include "gr-cuisine-page.h"
 #include "gr-search-page.h"
+#include "gr-ingredients-page.h"
 
 struct _GrWindow
 {
@@ -46,6 +47,7 @@ struct _GrWindow
         GtkWidget *cuisines_page;
         GtkWidget *cuisine_header;
         GtkWidget *cuisine_page;
+	GtkWidget *ingredients_page;
 
         GQueue *back_entry_stack;
 };
@@ -139,6 +141,15 @@ maybe_stop_search (GtkButton *button, GParamSpec *pspec, GrWindow *window)
 }
 
 static void
+switch_to_search (GrWindow *window)
+{
+    	gtk_header_bar_set_title (GTK_HEADER_BAR (window->search_header), _("Search"));
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (window->search_button2), TRUE);
+     	gtk_stack_set_visible_child_name (GTK_STACK (window->header_stack), "search");
+     	gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "search");
+}
+
+static void
 search_changed (GrWindow *window)
 {
         const char *visible;
@@ -147,15 +158,32 @@ search_changed (GrWindow *window)
 
         if (strcmp (visible, "search") != 0) {
 		save_back_entry (window);
-
-                gtk_header_bar_set_title (GTK_HEADER_BAR (window->search_header), _("Search"));
-                gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (window->search_button2), TRUE);
-                gtk_stack_set_visible_child_name (GTK_STACK (window->header_stack), "search");
-                gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "search");
+		switch_to_search (window);
         }
 
         gr_search_page_update_search (GR_SEARCH_PAGE (window->search_page),
                                       gtk_entry_get_text (GTK_ENTRY (window->search_entry)));
+}
+
+static void
+search_mode_enabled (GrWindow *window, GParamSpec *pspec)
+{
+        const char *visible;
+	g_autofree char *terms = NULL;
+
+        visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
+
+	if (!gtk_search_bar_get_search_mode (GTK_SEARCH_BAR (window->search_bar)))
+		return;
+
+        if (strcmp (visible, "ingredients") != 0)
+		return;
+
+	save_back_entry (window);
+	switch_to_search (window);
+
+	terms = gr_ingredients_page_get_search_terms (GR_INGREDIENTS_PAGE (window->ingredients_page));
+	gtk_entry_set_text (GTK_ENTRY (window->search_entry), terms);
 }
 
 static gboolean
@@ -224,6 +252,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, cuisines_page);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, cuisine_header);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, cuisine_page);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, ingredients_page);
 
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), new_recipe);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), go_back);
@@ -241,6 +270,7 @@ gr_window_init (GrWindow *self)
                                 self->search_bar, "search-mode-enabled",
                                 G_BINDING_BIDIRECTIONAL);
 
+        g_signal_connect_swapped (self->search_bar, "notify::search-mode-enabled", G_CALLBACK (search_mode_enabled), self);
         g_signal_connect_swapped (self->search_entry, "search-changed", G_CALLBACK (search_changed), self);
         g_signal_connect_swapped (self->search_entry, "stop-search", G_CALLBACK (stop_search), self);
         g_signal_connect (self->search_button2, "notify::active", G_CALLBACK (maybe_stop_search), self);

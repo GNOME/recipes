@@ -225,6 +225,42 @@ ingredients_page_reload (GrIngredientsPage *page)
 }
 
 static void
+collect_selected (GtkWidget *widget,
+                  gpointer   data)
+{
+	GString *s = data;
+	GtkWidget *label;
+
+	if (!gtk_flow_box_child_is_selected (GTK_FLOW_BOX_CHILD (widget)))
+		return;
+
+	label = gtk_bin_get_child (GTK_BIN (widget));
+
+	if (s->len > 0)
+		g_string_append (s, " ");
+
+	g_string_append (s, "i:");
+	g_string_append (s, gtk_label_get_label (GTK_LABEL (label)));
+}
+
+char *
+gr_ingredients_page_get_search_terms (GrIngredientsPage *page)
+{
+	GString *s;
+	GHashTableIter iter;
+	Category *category;
+
+	s = g_string_new ("");
+
+	g_hash_table_iter_init (&iter, page->categories);
+	while (g_hash_table_iter_next (&iter, NULL, (gpointer *)&category)) {
+		gtk_container_foreach (GTK_CONTAINER (category->box), collect_selected, s);
+	}
+
+	return g_string_free (s, FALSE);
+}
+
+static void
 connect_store_signals (GrIngredientsPage *page)
 {
         GrRecipeStore *store;

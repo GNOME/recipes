@@ -33,4 +33,6 @@ G_DECLARE_FINAL_TYPE (GrIngredientsPage, gr_ingredients_page, GR, INGREDIENTS_PA
 
 GtkWidget	*gr_ingredients_page_new (void);
 
+char            *gr_ingredients_page_get_search_terms (GrIngredientsPage *page);
+
 G_END_DECLS

@@ -235,6 +235,7 @@
             <child>
               <object class="GtkSearchEntry" id="search_entry">
                 <property name="visible">True</property>
+		<property name="width-request">500</property>
               </object>
             </child>
           </object>
@@ -280,7 +281,7 @@
               </packing>
             </child>
             <child>
-              <object class="GrIngredientsPage">
+              <object class="GrIngredientsPage" id="ingredients_page">
               </object>
               <packing>
                 <property name="name">ingredients</property>

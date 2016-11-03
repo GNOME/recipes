@@ -335,15 +335,29 @@ gboolean
 gr_recipe_matches (GrRecipe *self, const char *term)
 {
         GrRecipePrivate *priv = gr_recipe_get_instance_private (self);
+	g_auto(GStrv) terms = NULL;
+	int i;
 
-        if (priv->cf_name && strstr (priv->cf_name, term) != NULL)
-                return TRUE;
+	terms = g_strsplit (term, " ", -1);
 
-        if (priv->cf_description && strstr (priv->cf_description, term) != NULL)
-                return TRUE;
+	for (i = 0; terms[i]; i++) {
+		if (g_str_has_prefix (term, "i:")) {
+	        	if (!priv->cf_ingredients || strstr (priv->cf_ingredients, term + 2) == NULL)
+        		        return FALSE;
+			continue;
+		}
 
-        if (priv->cf_ingredients && strstr (priv->cf_ingredients, term) != NULL)
-                return TRUE;
+        	if (priv->cf_name && strstr (priv->cf_name, term) == NULL)
+                	continue;
 
-        return FALSE;
+        	if (priv->cf_description && strstr (priv->cf_description, term) == NULL)
+                	continue;
+
+        	if (priv->cf_ingredients && strstr (priv->cf_ingredients, term) == NULL)
+                	continue;
+
+		return FALSE;
+	}
+
+        return TRUE;
 }
