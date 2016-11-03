@@ -336,9 +336,13 @@ gr_recipe_matches (GrRecipe *self, const char *term)
 {
         GrRecipePrivate *priv = gr_recipe_get_instance_private (self);
 
-        if (strstr (priv->cf_name, term) != NULL ||
-            strstr (priv->cf_description, term) != NULL ||
-            strstr (priv->cf_ingredients, term) != NULL)
+        if (priv->cf_name && strstr (priv->cf_name, term) != NULL)
+                return TRUE;
+
+        if (priv->cf_description && strstr (priv->cf_description, term) != NULL)
+                return TRUE;
+
+        if (priv->cf_ingredients && strstr (priv->cf_ingredients, term) != NULL)
                 return TRUE;
 
         return FALSE;
