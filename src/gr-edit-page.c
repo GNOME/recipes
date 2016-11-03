@@ -41,6 +41,7 @@ struct _GrEditPage
         GtkWidget *error_revealer;
         GtkWidget *error_label;
         GtkWidget *name_entry;
+        GtkWidget *description_entry;
         GtkWidget *cuisine_combo;
         GtkWidget *category_combo;
         GtkWidget *prep_time_combo;
@@ -214,6 +215,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, error_revealer);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, error_label);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, name_entry);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, description_entry);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, cuisine_combo);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, category_combo);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, prep_time_combo);
@@ -300,6 +302,7 @@ gr_edit_page_clear (GrEditPage *page)
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         gtk_entry_set_text (GTK_ENTRY (page->name_entry), "");
+        gtk_entry_set_text (GTK_ENTRY (page->description_entry), "");
         set_combo_value (GTK_COMBO_BOX (page->cuisine_combo), "");
         set_combo_value (GTK_COMBO_BOX (page->category_combo), "");
         set_combo_value (GTK_COMBO_BOX (page->prep_time_combo), "");
@@ -332,6 +335,7 @@ gr_edit_page_edit (GrEditPage *page,
 {
         GtkTextBuffer *buffer;
         g_autofree char *name = NULL;
+        g_autofree char *description = NULL;
         g_autofree char *cuisine = NULL;
         g_autofree char *category = NULL;
         g_autofree char *prep_time = NULL;
@@ -347,6 +351,7 @@ gr_edit_page_edit (GrEditPage *page,
 
         g_object_get (recipe,
                       "name", &name,
+                      "description", &description,
                       "cuisine", &cuisine,
                       "category", &category,
                       "prep-time", &prep_time,
@@ -361,6 +366,7 @@ gr_edit_page_edit (GrEditPage *page,
                       NULL);
 
         gtk_entry_set_text (GTK_ENTRY (page->name_entry), name);
+        gtk_entry_set_text (GTK_ENTRY (page->description_entry), description);
         set_combo_value (GTK_COMBO_BOX (page->cuisine_combo), cuisine);
         set_combo_value (GTK_COMBO_BOX (page->category_combo), category);
         set_combo_value (GTK_COMBO_BOX (page->prep_time_combo), prep_time);
@@ -397,6 +403,7 @@ gboolean
 gr_edit_page_save (GrEditPage *page)
 {
         const char *name;
+        const char *description;
         g_autofree char *cuisine = NULL;
         g_autofree char *category = NULL;
         g_autofree char *prep_time = NULL;
@@ -414,6 +421,7 @@ gr_edit_page_save (GrEditPage *page)
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         name = gtk_entry_get_text (GTK_ENTRY (page->name_entry));
+        description = gtk_entry_get_text (GTK_ENTRY (page->description_entry));
         cuisine = get_combo_value (GTK_COMBO_BOX (page->cuisine_combo));
         category = get_combo_value (GTK_COMBO_BOX (page->category_combo));
         prep_time = get_combo_value (GTK_COMBO_BOX (page->prep_time_combo));
@@ -433,6 +441,7 @@ gr_edit_page_save (GrEditPage *page)
 
         recipe = g_object_new (GR_TYPE_RECIPE,
                                "name", name,
+                               "description", description,
 			       "author", page->author,
                                "cuisine", cuisine,
                                "category", category,
