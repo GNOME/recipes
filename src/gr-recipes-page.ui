@@ -49,6 +49,7 @@
     <child>
       <object class="GtkFlowBox" id="diet_box">
         <property name="visible">True</property>
+        <property name="selection-mode">none</property>
         <property name="row-spacing">20</property>
         <property name="column-spacing">20</property>
         <property name="halign">start</property>
