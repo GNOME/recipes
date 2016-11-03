@@ -55,30 +55,36 @@ struct _GrIngredients
 
 G_DEFINE_TYPE (GrIngredients, gr_ingredients, G_TYPE_OBJECT)
 
+static void
+skip_whitespace (char **line)
+{
+        while (g_ascii_isspace (**line))
+                (*line)++;
+}
+
 static gboolean
 parse_as_fraction (Ingredient  *ing,
-                   char        *string,
+                   char       **string,
                    GError     **error)
 {
-        g_auto(GStrv) parts = NULL;
         guint64 num, denom;
         char *end = NULL;
 
-        parts = g_strsplit (string, "/", 2);
-
-        num = g_ascii_strtoull (parts[0], &end, 10);
-        if (end != NULL && end[0] != '\0') {
+        num = g_ascii_strtoull (*string, &end, 10);
+        if (end[0] != '/') {
                 g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
                              _("Could not parse %s as a fraction"), string);
                 return FALSE;
         }
+        *string = end + 1;
 
-        denom = g_ascii_strtoull (parts[1], &end, 10);
-        if (end != NULL && end[0] != '\0') {
+        denom = g_ascii_strtoull (*string, &end, 10);
+        if (end != NULL && end[0] != '\0' && !g_ascii_isspace (end[0])) {
                 g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
                              _("Could not parse %s as a fraction"), string);
                 return FALSE;
         }
+        *string = end;
 
         ing->fraction = TRUE;
         ing->num = num;
@@ -87,67 +93,113 @@ parse_as_fraction (Ingredient  *ing,
         return TRUE;
 }
 
+typedef struct {
+  const char *string;
+  int value;
+} NumberForm;
+
+static NumberForm numberforms[] = {
+  { "a dozen", 12 },
+  { "a",        1 },
+  { "an",       1 },
+  { "one",      1 },
+  { "two",      2 },
+  { "three",    3 },
+  { "four",     4 },
+  { "five",     5 },
+  { "six",      6 },
+  { "seven",    7 },
+  { "eight",    8 },
+  { "nine",     9 },
+  { "ten",     10 },
+  { "eleven",  11 },
+  { "twelve",  12 }
+};
+
 static gboolean
 parse_as_number (Ingredient  *ing,
-                 char        *string,
+                 char       **string,
                  GError     **error)
 {
         double value;
         gint64 ival;
         char *end = NULL;
+        int i;
 
-        ival = g_ascii_strtoll (string, &end, 10);
-        if (end == NULL || end[0] == '\0') {
+        for (i = 0; i < G_N_ELEMENTS (numberforms); i++) {
+                if (g_str_has_prefix (*string, numberforms[i].string) &&
+                    g_ascii_isspace ((*string)[strlen(numberforms[i].string)])) {
+                        ing->fraction = TRUE;
+                        ing->num = numberforms[i].value;
+                        ing->denom = 1;
+                        *string += strlen(numberforms[i].string);
+                        return TRUE;
+                }
+        }
+
+        ival = g_ascii_strtoll (*string, &end, 10);
+        if (end == NULL || end[0] == '\0' || g_ascii_isspace (end[0])) {
                 ing->fraction = TRUE;
                 ing->num = ival;
                 ing->denom = 1;
+                *string = end;
                 return TRUE;
         }
 
-        if (strchr (string, '/'))
+        if (strchr (*string, '/'))
                 return parse_as_fraction (ing, string, error);
 
-        value = g_strtod (string, &end);
+        value = g_strtod (*string, &end);
 
-        if (end != NULL && end[0] != '\0') {
+        if (end != NULL && end[0] != '\0' && !g_ascii_isspace (end[0])) {
                 g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                             _("Could not parse %s as a number"), string);
+                             _("Could not parse %s as a number"), *string);
                 return FALSE;
         }
 
+        *string = end;
         ing->fraction = FALSE;
         ing->value = value;
 
         return TRUE;
 }
 
-static const char * const units[] = {
-        "g",
-        "kg",
-        "l",
-        "liter",
-        "liters",
-        "pound",
-        "pounds",
-        "box",
-        "boxes",
-        NULL
+typedef struct {
+  const char *unit;
+  const char *names[4];
+} Unit;
+
+static Unit units[] = {
+  { "g",  { "g", "gram", "grams", NULL} },
+  { "kg", { "kg", "kilogram", "kilograms", NULL } },
+  { "l",  { "l", "liter", "liters", NULL } },
+  { "lb", { "lb", "pound", "pounds", NULL } },
+  { "box", { "box", "boxes", NULL, NULL } },
 };
 
 static gboolean
 parse_as_unit (Ingredient  *ing,
-               char        *string,
+               char       **string,
                GError     **error)
 {
-        if (!g_strv_contains (units, string)) {
-                g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                             _("I don't know this unit: %s"), string);
-                return FALSE;
+        int i, j;
+
+        for (i = 0; i < G_N_ELEMENTS (units); i++) {
+                for (j = 0; units[i].names[j]; j++) {
+                        if (g_str_has_prefix (*string, units[i].names[j]) &&
+                            g_ascii_isspace ((*string)[strlen (units[i].names[j])])) {
+                                ing->unit = g_strdup (units[i].unit);
+                                *string += strlen (units[i].names[j]);
+                                return TRUE;
+                        }
+                }
         }
 
-        ing->unit = g_strdup (string);
+        g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                     _("I don't know this unit: %s"), string);
 
-        return TRUE;
+        return FALSE;
+
 }
 
 static gboolean
@@ -155,25 +207,26 @@ gr_ingredients_add_one (GrIngredients  *ingredients,
                         char           *line,
                         GError        **error)
 {
-        g_auto(GStrv) strings = NULL;
         Ingredient *ing;
 
-        ing= g_new0 (Ingredient, 1);
+        if (line[0] == '\0')
+                return TRUE;
+
+        ing = g_new0 (Ingredient, 1);
 
         line = g_strstrip (line);
-        strings = g_strsplit (line, " ", 3);
 
-        if (!parse_as_number (ing, strings[0], error)) {
+        if (!parse_as_number (ing, &line, error)) {
                 ingredient_free (ing);
                 return FALSE;
         }
 
-        if (g_strv_length (strings) == 2)
-                ing->name = g_strdup (strings[1]);
-        else if (parse_as_unit (ing, strings[1], NULL))
-                ing->name = g_strdup (strings[2]);
-        else
-                ing->name = g_strconcat (strings[1], " ", strings[2], NULL);
+        skip_whitespace (&line);
+
+        if (parse_as_unit (ing, &line, NULL))
+                skip_whitespace (&line);
+
+        ing->name = g_strdup (line);
 
         ingredients->ingredients = g_list_append (ingredients->ingredients, ing);
 
