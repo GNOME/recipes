@@ -283,7 +283,7 @@ save_recipes (GrRecipeStore *self)
                               NULL);
 
 		tmp = get_db_path ("");
-		if (g_str_has_prefix (image_path, tmp)) {
+		if (image_path && g_str_has_prefix (image_path, tmp)) {
 			char *tmp2;
 			tmp2 = g_strdup (image_path + strlen (tmp) + 1);
 			g_free (image_path);
