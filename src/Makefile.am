@@ -6,50 +6,50 @@ recipes_SOURCES = \
 	main.c 			\
 	gr-app.h 		\
 	gr-app.c 		\
-	gr-window.h 		\
-	gr-window.c 		\
-	gr-recipes-page.h	\
-	gr-recipes-page.c	\
-	gs-hiding-box.h 	\
-	gs-hiding-box.c 	\
-	gr-recipe.h 		\
-	gr-recipe.c 		\
-	gr-chef.h 		\
-	gr-chef.c 		\
-	gr-recipe-store.h	\
-	gr-recipe-store.c 	\
-	gr-recipe-tile.h 	\
-	gr-recipe-tile.c 	\
+	gr-big-cuisine-tile.h	\
+	gr-big-cuisine-tile.c	\
+	gr-category.h		\
+	gr-category.c		\
 	gr-category-tile.h 	\
 	gr-category-tile.c 	\
+	gr-chef.h 		\
+	gr-chef.c 		\
 	gr-chef-tile.h 		\
 	gr-chef-tile.c 		\
+	gr-cuisine.h		\
+	gr-cuisine.c		\
+	gr-cuisine-page.h	\
+	gr-cuisine-page.c	\
+	gr-cuisine-tile.h	\
+	gr-cuisine-tile.c	\
+	gr-cuisines-page.h	\
+	gr-cuisines-page.c	\
 	gr-details-page.h	\
 	gr-details-page.c	\
 	gr-edit-page.h		\
 	gr-edit-page.c		\
-	gr-utils.h		\
-	gr-utils.c		\
-	gr-preferences.h	\
-	gr-preferences.c	\
-	gr-list-page.h		\
-	gr-list-page.c		\
-	gr-search-page.h	\
-	gr-search-page.c	\
-	gr-cuisines-page.h	\
-	gr-cuisines-page.c	\
-	gr-cuisine-tile.h	\
-	gr-cuisine-tile.c	\
-	gr-big-cuisine-tile.h	\
-	gr-big-cuisine-tile.c	\
-	gr-cuisine-page.h	\
-	gr-cuisine-page.c	\
-	gr-cuisine.h		\
-	gr-cuisine.c		\
-	cr-category.h		\
-	gr-category.c		\
+	gs-hiding-box.h 	\
+	gs-hiding-box.c 	\
 	gr-ingredients.h	\
 	gr-ingredients.c	\
+	gr-list-page.h		\
+	gr-list-page.c		\
+	gr-preferences.h	\
+	gr-preferences.c	\
+	gr-recipe.h 		\
+	gr-recipe.c 		\
+	gr-recipe-store.h 	\
+	gr-recipe-store.c 	\
+	gr-recipe-tile.h 	\
+	gr-recipe-tile.c 	\
+	gr-recipes-page.h	\
+	gr-recipes-page.c	\
+	gr-search-page.h	\
+	gr-search-page.c	\
+	gr-utils.h		\
+	gr-utils.c		\
+	gr-window.h 		\
+	gr-window.c 		\
 	resources.c		\
 	types.h			\
 	types.c
