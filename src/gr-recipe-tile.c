@@ -29,6 +29,7 @@
 #include "gr-window.h"
 #include "gr-utils.h"
 
+
 struct _GrRecipeTile
 {
         GtkButton parent_instance;

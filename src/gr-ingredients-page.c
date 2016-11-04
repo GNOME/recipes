@@ -1,4 +1,4 @@
-/* gr-ingredientspage.c:
+/* gr-ingredients-page.c:
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *
@@ -31,6 +31,7 @@
 #include "gr-app.h"
 #include "gr-utils.h"
 
+
 typedef struct {
 	char *name;
 	GtkWidget *item;
@@ -50,7 +51,7 @@ category_free (gpointer data)
 
 struct _GrIngredientsPage
 {
-        GtkBox     parent_instance;
+        GtkBox parent_instance;
 
         GtkWidget *main_box;
 	GtkWidget *letter_box;

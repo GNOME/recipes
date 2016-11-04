@@ -17,11 +17,14 @@
  */
 
 #include "config.h"
+
+#include <string.h>
 #include <glib/gi18n.h>
+#include <gtk/gtk.h>
+
 #include "gr-chef.h"
 #include "types.h"
-#include <string.h>
-#include <gtk/gtk.h>
+
 
 typedef struct
 {
@@ -58,69 +61,67 @@ gr_chef_finalize (GObject *object)
 
 static void
 gr_chef_get_property (GObject    *object,
-                        guint       prop_id,
-                        GValue     *value,
-                        GParamSpec *pspec)
+                      guint       prop_id,
+                      GValue     *value,
+                      GParamSpec *pspec)
 {
         GrChef *self = GR_CHEF (object);
         GrChefPrivate *priv = gr_chef_get_instance_private (self);
 
-        switch (prop_id)
-          {
-          case PROP_NAME:
+        switch (prop_id) {
+        case PROP_NAME:
                 g_value_set_string (value, priv->name);
                 break;
 
-          case PROP_FULLNAME:
+        case PROP_FULLNAME:
                 g_value_set_string (value, priv->fullname);
                 break;
 
-          case PROP_DESCRIPTION:
+        case PROP_DESCRIPTION:
                 g_value_set_string (value, priv->description);
                 break;
 
-          case PROP_IMAGE_PATH:
+        case PROP_IMAGE_PATH:
                 g_value_set_string (value, priv->image_path);
                 break;
 
-          default:
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-          }
+        default:
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        }
 }
 
 static void
 gr_chef_set_property (GObject      *object,
-                        guint         prop_id,
-                        const GValue *value,
-                        GParamSpec   *pspec)
+                      guint         prop_id,
+                      const GValue *value,
+                      GParamSpec   *pspec)
 {
         GrChef *self = GR_CHEF (object);
         GrChefPrivate *priv = gr_chef_get_instance_private (self);
 
-        switch (prop_id)
-          {
-          case PROP_NAME:
-                  g_free (priv->name);
-                  priv->name = g_value_dup_string (value);
-                  break;
+        switch (prop_id) {
+        case PROP_NAME:
+                g_free (priv->name);
+                priv->name = g_value_dup_string (value);
+                break;
 
-          case PROP_FULLNAME:
-                  g_free (priv->fullname);
-                  priv->fullname = g_value_dup_string (value);
-                  break;
+        case PROP_FULLNAME:
+                g_free (priv->fullname);
+                priv->fullname = g_value_dup_string (value);
+                break;
 
-          case PROP_DESCRIPTION:
-                  g_free (priv->description);
-                  priv->description = g_value_dup_string (value);
-                  break;
+        case PROP_DESCRIPTION:
+                g_free (priv->description);
+                priv->description = g_value_dup_string (value);
+                break;
 
-          case PROP_IMAGE_PATH:
-                  priv->image_path = g_value_dup_string (value);
-                  break;
+        case PROP_IMAGE_PATH:
+                priv->image_path = g_value_dup_string (value);
+                break;
 
-          default:
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-          }
+        default:
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        }
 }
 
 static void
@@ -157,7 +158,6 @@ gr_chef_class_init (GrChefClass *klass)
 static void
 gr_chef_init (GrChef *self)
 {
-        GrChefPrivate *priv = gr_chef_get_instance_private (self);
 }
 
 GrChef *

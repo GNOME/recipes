@@ -16,7 +16,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "config.h"
+
 #include <gtk/gtk.h>
+
 #include "gr-app.h"
 #include "gr-cuisine-page.h"
 #include "gr-cuisines-page.h"
@@ -28,9 +31,11 @@
 #include "gr-search-page.h"
 #include "gs-hiding-box.h"
 
-int main (int argc, char *argv[])
+
+int
+main (int argc, char *argv[])
 {
-  g_autoptr(GApplication) app = NULL;
+  g_autoptr (GApplication) app = NULL;
   int status;
 
   g_type_ensure (GR_TYPE_CUISINE_PAGE);

@@ -36,7 +36,7 @@
 
 struct _GrRecipesPage
 {
-        GtkBox        parent_instance;
+        GtkBox parent_instance;
 
         GtkWidget *today_box;
         GtkWidget *pick_box;

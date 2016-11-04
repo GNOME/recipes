@@ -16,9 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gr-utils.h"
-
 #include "config.h"
+
+#include "gr-utils.h"
 
 
 GdkPixbuf *
@@ -70,4 +70,3 @@ container_remove_all (GtkContainer *container)
         }
         g_list_free (children);
 }
-

@@ -28,14 +28,15 @@
 #include "gr-utils.h"
 #include "gr-window.h"
 
+
 struct _GrChefTile
 {
-        GtkBox      parent_instance;
+        GtkBox parent_instance;
 
-	GrChef     *chef;
+	GrChef *chef;
 
-        GtkWidget  *label;
-        GtkWidget  *button;
+        GtkWidget *label;
+        GtkWidget *button;
 };
 
 
@@ -115,9 +116,9 @@ chef_tile_set_chef (GrChefTile *tile, GrChef *chef)
 				       "  background: rgb(%d,%d,%d);\n"
                         	       "  min-width: 64px;\n"
                         	       "  min-height: 64px;\n"
-                               	       "}", 
-                                       g_random_int_range (0, 255), 
-                                       g_random_int_range (0, 255), 
+                               	       "}",
+                                       g_random_int_range (0, 255),
+                                       g_random_int_range (0, 255),
                                        g_random_int_range (0, 255));
 
 	provider = gtk_css_provider_new ();

@@ -34,10 +34,11 @@
 
 struct _GrDetailsPage
 {
-        GtkBox        parent_instance;
+        GtkBox parent_instance;
 
-        GrRecipe  *recipe;
-        GrChef    *chef;
+        GrRecipe *recipe;
+        GrChef *chef;
+
         GtkWidget *recipe_image;
         GtkWidget *prep_time_label;
         GtkWidget *cook_time_label;

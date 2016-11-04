@@ -21,6 +21,7 @@
 
 #include "config.h"
 
+#include <string.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
@@ -32,6 +33,7 @@
 #include "gr-app.h"
 #include "gr-utils.h"
 #include "gr-category.h"
+
 
 typedef struct {
         const char *name;
@@ -159,7 +161,6 @@ filter_sidebar (GtkListBoxRow *row,
         for (i = 0; i < page->n_categories; i++) {
                 if (page->categories[i].item == item) {
                         return page->categories[i].filled;
-                        break;
                 }
         }
 

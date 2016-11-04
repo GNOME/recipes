@@ -34,9 +34,10 @@
 
 struct _GrSearchPage
 {
-        GtkBox     parent_instance;
+        GtkBox parent_instance;
 
         GtkWidget *flow_box;
+
         char *term;
 };
 

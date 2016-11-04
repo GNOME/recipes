@@ -36,7 +36,12 @@
 
 struct _GrEditPage
 {
-        GtkBox     parent_instance;
+        GtkBox parent_instance;
+
+        char *image_path;
+        gboolean fail_if_exists;
+        char *old_name;
+        char *author;
 
         GtkWidget *error_revealer;
         GtkWidget *error_label;
@@ -56,11 +61,6 @@ struct _GrEditPage
         GtkWidget *vegetarian_check;
         GtkWidget *milk_free_check;
         GtkWidget *image;
-        char *image_path;
-
-        gboolean fail_if_exists;
-        char *old_name;
-        char *author;
 };
 
 G_DEFINE_TYPE (GrEditPage, gr_edit_page, GTK_TYPE_BOX)

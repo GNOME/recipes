@@ -17,14 +17,16 @@
  */
 
 #include "config.h"
-#include <glib/gi18n.h>
-#include <sys/statfs.h>
 
+#include <sys/statfs.h>
 #include <glib.h>
+#include <glib/gi18n.h>
 #include <glib/gstdio.h>
+
 #include "gr-recipe-store.h"
 #include "gr-recipe.h"
 #include "gr-utils.h"
+
 
 struct _GrRecipeStore
 {
@@ -36,7 +38,6 @@ struct _GrRecipeStore
         char **todays;
         char **picks;
         char **featured_chefs;
-
         char *user;
 };
 

@@ -17,7 +17,9 @@
  */
 
 #include "config.h"
+
 #include <glib/gi18n.h>
+
 #include "gr-window.h"
 #include "gr-details-page.h"
 #include "gr-edit-page.h"
@@ -25,6 +27,7 @@
 #include "gr-cuisine-page.h"
 #include "gr-search-page.h"
 #include "gr-ingredients-page.h"
+
 
 struct _GrWindow
 {
@@ -370,4 +373,3 @@ gr_window_show_cuisine (GrWindow   *window,
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_stack), "cuisine");
         gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "cuisine");
 }
-

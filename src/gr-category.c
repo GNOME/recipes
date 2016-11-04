@@ -20,9 +20,12 @@
  */
 
 #include "config.h"
-#include "gr-category.h"
+
 #include <glib.h>
 #include <glib/gi18n.h>
+
+#include "gr-category.h"
+
 
 static const char *names[] = {
         "entree",
@@ -55,7 +58,7 @@ const char **
 gr_category_get_names (int *length)
 {
         if (length)
-                *length = G_N_ELEMENTS(names) - 1;
+                *length = G_N_ELEMENTS (names) - 1;
 
         return names;
 }

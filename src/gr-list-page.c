@@ -34,7 +34,7 @@
 
 struct _GrListPage
 {
-        GtkBox     parent_instance;
+        GtkBox parent_instance;
 
 	GrChef *chef;
 	GrDiets diet;

@@ -17,9 +17,12 @@
  */
 
 #include "config.h"
+
 #include <glib.h>
 #include <glib/gi18n.h>
+
 #include "gr-ingredients.h"
+
 
 /* Parsing ingredients is tricky business. We operate under the following
  * assumptions:
@@ -170,7 +173,7 @@ typedef struct {
 } Unit;
 
 static Unit units[] = {
-  { "g",  { "g", "gram", "grams", NULL} },
+  { "g",  { "g", "gram", "grams", NULL } },
   { "kg", { "kg", "kilogram", "kilograms", NULL } },
   { "l",  { "l", "liter", "liters", NULL } },
   { "lb", { "lb", "pound", "pounds", NULL } },

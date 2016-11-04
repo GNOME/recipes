@@ -23,12 +23,12 @@
 
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
-#include <gdk-pixbuf/gdk-pixbuf.h>
 
 #include "gr-cuisine-tile.h"
 #include "gr-window.h"
 #include "gr-utils.h"
 #include "gr-cuisine.h"
+
 
 struct _GrCuisineTile
 {

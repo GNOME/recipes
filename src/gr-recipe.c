@@ -17,11 +17,13 @@
  */
 
 #include "config.h"
+
+#include <string.h>
 #include <glib/gi18n.h>
+#include <gtk/gtk.h>
+
 #include "gr-recipe.h"
 #include "types.h"
-#include <string.h>
-#include <gtk/gtk.h>
 
 typedef struct
 {
@@ -99,63 +101,62 @@ gr_recipe_get_property (GObject    *object,
         GrRecipe *self = GR_RECIPE (object);
         GrRecipePrivate *priv = gr_recipe_get_instance_private (self);
 
-        switch (prop_id)
-          {
-          case PROP_AUTHOR:
+        switch (prop_id) {
+        case PROP_AUTHOR:
                 g_value_set_string (value, priv->author);
                 break;
 
-          case PROP_NAME:
+        case PROP_NAME:
                 g_value_set_string (value, priv->name);
                 break;
 
-          case PROP_DESCRIPTION:
+        case PROP_DESCRIPTION:
                 g_value_set_string (value, priv->description);
                 break;
 
-          case PROP_IMAGE_PATH:
+        case PROP_IMAGE_PATH:
                 g_value_set_string (value, priv->image_path);
                 break;
 
-          case PROP_CATEGORY:
+        case PROP_CATEGORY:
                 g_value_set_string (value, priv->category);
                 break;
 
-          case PROP_CUISINE:
+        case PROP_CUISINE:
                 g_value_set_string (value, priv->cuisine);
                 break;
 
-          case PROP_PREP_TIME:
+        case PROP_PREP_TIME:
                 g_value_set_string (value, priv->prep_time);
                 break;
 
-          case PROP_COOK_TIME:
+        case PROP_COOK_TIME:
                 g_value_set_string (value, priv->cook_time);
                 break;
 
-          case PROP_SERVES:
+        case PROP_SERVES:
                 g_value_set_int (value, priv->serves);
                 break;
 
-          case PROP_INGREDIENTS:
+        case PROP_INGREDIENTS:
                 g_value_set_string (value, priv->ingredients);
                 break;
 
-          case PROP_INSTRUCTIONS:
+        case PROP_INSTRUCTIONS:
                 g_value_set_string (value, priv->instructions);
                 break;
 
-          case PROP_NOTES:
+        case PROP_NOTES:
                 g_value_set_string (value, priv->notes);
                 break;
 
-          case PROP_DIETS:
+        case PROP_DIETS:
                 g_value_set_flags (value, priv->diets);
                 break;
 
-          default:
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-          }
+        default:
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        }
 }
 
 static void
@@ -167,69 +168,68 @@ gr_recipe_set_property (GObject      *object,
         GrRecipe *self = GR_RECIPE (object);
         GrRecipePrivate *priv = gr_recipe_get_instance_private (self);
 
-        switch (prop_id)
-          {
-          case PROP_AUTHOR:
-                  g_free (priv->author);
-                  priv->author = g_value_dup_string (value);
-                  break;
+        switch (prop_id) {
+        case PROP_AUTHOR:
+                g_free (priv->author);
+                priv->author = g_value_dup_string (value);
+                break;
 
-          case PROP_NAME:
-                  g_free (priv->name);
-                  priv->name = g_value_dup_string (value);
-                  priv->cf_name = g_utf8_casefold (priv->name, -1);
-                  break;
+        case PROP_NAME:
+                g_free (priv->name);
+                priv->name = g_value_dup_string (value);
+                priv->cf_name = g_utf8_casefold (priv->name, -1);
+                break;
 
-          case PROP_DESCRIPTION:
-                  g_free (priv->description);
-                  priv->description = g_value_dup_string (value);
-                  priv->cf_description = g_utf8_casefold (priv->description, -1);
-                  break;
+        case PROP_DESCRIPTION:
+                g_free (priv->description);
+                priv->description = g_value_dup_string (value);
+                priv->cf_description = g_utf8_casefold (priv->description, -1);
+                break;
 
-          case PROP_IMAGE_PATH:
-                  priv->image_path = g_value_dup_string (value);
-                  break;
+        case PROP_IMAGE_PATH:
+                priv->image_path = g_value_dup_string (value);
+                break;
 
-          case PROP_CATEGORY:
-                  priv->category = g_value_dup_string (value);
-                  break;
+        case PROP_CATEGORY:
+                priv->category = g_value_dup_string (value);
+                break;
 
-          case PROP_CUISINE:
-                  priv->cuisine = g_value_dup_string (value);
-                  break;
+        case PROP_CUISINE:
+                priv->cuisine = g_value_dup_string (value);
+                break;
 
-          case PROP_PREP_TIME:
-                  priv->prep_time = g_value_dup_string (value);
-                  break;
+        case PROP_PREP_TIME:
+                priv->prep_time = g_value_dup_string (value);
+                break;
 
-          case PROP_COOK_TIME:
-                  priv->cook_time = g_value_dup_string (value);
-                  break;
+        case PROP_COOK_TIME:
+                priv->cook_time = g_value_dup_string (value);
+                break;
 
-          case PROP_SERVES:
-                  priv->serves = g_value_get_int (value);
-                  break;
+        case PROP_SERVES:
+                priv->serves = g_value_get_int (value);
+                break;
 
-          case PROP_INGREDIENTS:
-                  priv->ingredients = g_value_dup_string (value);
-                  priv->cf_ingredients = g_utf8_casefold (priv->ingredients, -1);
-                  break;
+        case PROP_INGREDIENTS:
+                priv->ingredients = g_value_dup_string (value);
+                priv->cf_ingredients = g_utf8_casefold (priv->ingredients, -1);
+                break;
 
-          case PROP_INSTRUCTIONS:
-                  priv->instructions = g_value_dup_string (value);
-                  break;
+        case PROP_INSTRUCTIONS:
+                priv->instructions = g_value_dup_string (value);
+                break;
 
-          case PROP_NOTES:
-                  priv->notes = g_value_dup_string (value);
-                  break;
+        case PROP_NOTES:
+                priv->notes = g_value_dup_string (value);
+                break;
 
-          case PROP_DIETS:
-                  priv->diets = g_value_get_flags (value);
-                  break;
+        case PROP_DIETS:
+                priv->diets = g_value_get_flags (value);
+                break;
 
-          default:
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-          }
+        default:
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        }
 }
 
 static void
@@ -347,13 +347,13 @@ gr_recipe_matches (GrRecipe *self, const char *term)
 			continue;
 		}
 
-        	if (priv->cf_name && strstr (priv->cf_name, term) == NULL)
+        	if (priv->cf_name && strstr (priv->cf_name, term) != NULL)
                 	continue;
 
-        	if (priv->cf_description && strstr (priv->cf_description, term) == NULL)
+        	if (priv->cf_description && strstr (priv->cf_description, term) != NULL)
                 	continue;
 
-        	if (priv->cf_ingredients && strstr (priv->cf_ingredients, term) == NULL)
+        	if (priv->cf_ingredients && strstr (priv->cf_ingredients, term) != NULL)
                 	continue;
 
 		return FALSE;

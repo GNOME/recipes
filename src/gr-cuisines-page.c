@@ -24,8 +24,8 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
-#include "gr-recipe.h"
 #include "gr-cuisines-page.h"
+#include "gr-recipe.h"
 #include "gr-recipe-store.h"
 #include "gr-app.h"
 #include "gr-utils.h"
@@ -36,7 +36,7 @@
 
 struct _GrCuisinesPage
 {
-        GtkBox        parent_instance;
+        GtkBox parent_instance;
 
         GtkWidget *top_box;
         GtkWidget *flow_box;

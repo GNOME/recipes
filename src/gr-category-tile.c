@@ -27,14 +27,16 @@
 #include "gr-category-tile.h"
 #include "gr-window.h"
 
+
 struct _GrCategoryTile
 {
-        GtkButton        parent_instance;
+        GtkButton parent_instance;
 
 	GrDiets diet;
         char *category;
-        GtkWidget  *label;
-        GtkWidget  *image;
+
+        GtkWidget *label;
+        GtkWidget *image;
 };
 
 G_DEFINE_TYPE (GrCategoryTile, gr_category_tile, GTK_TYPE_BUTTON)

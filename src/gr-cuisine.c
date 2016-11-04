@@ -20,9 +20,12 @@
  */
 
 #include "config.h"
-#include "gr-cuisine.h"
+
 #include <glib.h>
 #include <glib/gi18n.h>
+
+#include "gr-cuisine.h"
+
 
 static const char *names[] = {
         "american",
