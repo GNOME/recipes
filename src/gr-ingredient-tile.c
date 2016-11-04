@@ -32,10 +32,10 @@ struct _GrIngredientTile
 {
         GtkBox parent_instance;
 
-	char *ingredient;
+        char *ingredient;
 
         GtkWidget *label;
-        GtkWidget *button;
+        GtkWidget *image;
 };
 
 
@@ -46,7 +46,7 @@ ingredient_tile_finalize (GObject *object)
 {
         GrIngredientTile *tile = GR_INGREDIENT_TILE (object);
 
-	g_clear_pointer(&tile->ingredient, g_free);
+        g_clear_pointer(&tile->ingredient, g_free);
 
         G_OBJECT_CLASS (gr_ingredient_tile_parent_class)->finalize (object);
 }
@@ -70,21 +70,21 @@ gr_ingredient_tile_class_init (GrIngredientTileClass *klass)
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-ingredient-tile.ui");
 
         gtk_widget_class_bind_template_child (widget_class, GrIngredientTile, label);
-        gtk_widget_class_bind_template_child (widget_class, GrIngredientTile, button);
+        gtk_widget_class_bind_template_child (widget_class, GrIngredientTile, image);
 }
 
 static void
 ingredient_tile_set_ingredient (GrIngredientTile *tile, const char *ingredient)
 {
         const char *image_path;
-	GtkStyleContext *context;
-	g_autofree char *css = NULL;
-	g_autoptr(GtkCssProvider) provider = NULL;
+        GtkStyleContext *context;
+        g_autofree char *css = NULL;
+        g_autoptr(GtkCssProvider) provider = NULL;
 
         g_free (tile->ingredient);
         tile->ingredient = g_strdup (ingredient);
 
-	gtk_label_set_label (GTK_LABEL (tile->label), ingredient);
+        gtk_label_set_label (GTK_LABEL (tile->label), ingredient);
         if (ingredient[0] == 'A')
                 image_path = "resource:/org/gnome/Recipes/almonds.png";
         else if (ingredient[0] == 'B')
@@ -95,27 +95,27 @@ ingredient_tile_set_ingredient (GrIngredientTile *tile, const char *ingredient)
                 image_path = "resource:/org/gnome/Recipes/biscotti.png";
 
 
-	if (image_path != NULL && image_path[0] != '\0')
-	  	css = g_strdup_printf ("button.ingredient {\n"
-                	               "  background: url('%s');\n"
-                        	       "  background-size: 100%;\n"
-                        	       "  min-width: 128px;\n"
-                        	       "  min-height: 64px;\n"
-                               	       "}", image_path);
-	else
-		css = g_strdup_printf ("button.ingredient {\n"
-				       "  background: rgb(%d,%d,%d);\n"
-                        	       "  min-width: 128px;\n"
-                        	       "  min-height: 64px;\n"
-                               	       "}",
+        if (image_path != NULL && image_path[0] != '\0')
+                css = g_strdup_printf ("image.ingredient {\n"
+                                       "  background: url('%s');\n"
+                                       "  background-size: 100%;\n"
+                                       "  min-width: 128px;\n"
+                                       "  min-height: 64px;\n"
+                                       "}", image_path);
+        else
+                css = g_strdup_printf ("image.ingredient {\n"
+                                       "  background: rgb(%d,%d,%d);\n"
+                                       "  min-width: 128px;\n"
+                                       "  min-height: 64px;\n"
+                                       "}",
                                        g_random_int_range (0, 255),
                                        g_random_int_range (0, 255),
                                        g_random_int_range (0, 255));
 
-	provider = gtk_css_provider_new ();
-	gtk_css_provider_load_from_data (provider, css, -1, NULL);
-	context = gtk_widget_get_style_context (tile->button);
-	gtk_style_context_add_provider (context,
+        provider = gtk_css_provider_new ();
+        gtk_css_provider_load_from_data (provider, css, -1, NULL);
+        context = gtk_widget_get_style_context (tile->image);
+        gtk_style_context_add_provider (context,
                                         GTK_STYLE_PROVIDER (provider),
                                         GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
@@ -126,7 +126,7 @@ gr_ingredient_tile_new (const char *ingredient)
         GrIngredientTile *tile;
 
         tile = g_object_new (GR_TYPE_INGREDIENT_TILE, NULL);
-	ingredient_tile_set_ingredient (tile, ingredient);
+        ingredient_tile_set_ingredient (tile, ingredient);
 
         return GTK_WIDGET (tile);
 }

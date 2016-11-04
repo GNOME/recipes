@@ -31,6 +31,7 @@
 #include "gr-app.h"
 #include "gr-utils.h"
 #include "gr-ingredient-tile.h"
+#include "gr-window.h"
 
 
 typedef struct {
@@ -94,6 +95,19 @@ row_activated (GrIngredientsPage *page, GtkListBoxRow *row)
 }
 
 static void
+ingredient_activated (GrIngredientsPage *page, GtkFlowBoxChild *item)
+{
+        GtkWidget *window;
+        GtkWidget *tile;
+        const char *ingredient;
+
+        window = gtk_widget_get_ancestor (GTK_WIDGET (page), GR_TYPE_WINDOW);
+        tile = gtk_bin_get_child (GTK_BIN (item));
+        ingredient = gr_ingredient_tile_get_ingredient (GR_INGREDIENT_TILE (tile));
+        gr_window_show_search_by_ingredients (GR_WINDOW (window), ingredient);
+}
+
+static void
 ingredients_page_finalize (GObject *object)
 {
         GrIngredientsPage *page = GR_INGREDIENTS_PAGE (object);
@@ -131,9 +145,10 @@ populate_initially (GrIngredientsPage *self)
                 gtk_container_add (GTK_CONTAINER (self->main_box), label);
 
                 box = gtk_flow_box_new ();
-		gtk_flow_box_set_selection_mode (GTK_FLOW_BOX (box), GTK_SELECTION_MULTIPLE);
+		gtk_flow_box_set_selection_mode (GTK_FLOW_BOX (box), GTK_SELECTION_NONE);
                 gtk_widget_show (box);
                 gtk_container_add (GTK_CONTAINER (self->main_box), box);
+                g_signal_connect_swapped (box, "child-activated", G_CALLBACK (ingredient_activated), self);
 
 		category = g_new (Category, 1);
                 category->name = g_strdup (letter);
@@ -171,6 +186,7 @@ gr_ingredients_page_class_init (GrIngredientsPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrIngredientsPage, scrolled_window);
 
 	gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), row_activated);
+	gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), ingredient_activated);
 }
 
 GtkWidget *

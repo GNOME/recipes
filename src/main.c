@@ -26,6 +26,7 @@
 #include "gr-details-page.h"
 #include "gr-edit-page.h"
 #include "gr-ingredients-page.h"
+#include "gr-ingredients-search-page.h"
 #include "gr-list-page.h"
 #include "gr-recipes-page.h"
 #include "gr-search-page.h"
@@ -43,6 +44,7 @@ main (int argc, char *argv[])
   g_type_ensure (GR_TYPE_DETAILS_PAGE);
   g_type_ensure (GR_TYPE_EDIT_PAGE);
   g_type_ensure (GR_TYPE_INGREDIENTS_PAGE);
+  g_type_ensure (GR_TYPE_INGREDIENTS_SEARCH_PAGE);
   g_type_ensure (GR_TYPE_LIST_PAGE);
   g_type_ensure (GR_TYPE_SEARCH_PAGE);
   g_type_ensure (GR_TYPE_RECIPES_PAGE);

@@ -27,13 +27,18 @@
 #include "gr-cuisine-page.h"
 #include "gr-search-page.h"
 #include "gr-ingredients-page.h"
+#include "gr-ingredients-search-page.h"
 
 
 struct _GrWindow
 {
         GtkApplicationWindow parent_instance;
 
-        GtkWidget *search_button;
+        GtkWidget *search_button_stack;
+        GtkWidget *recipes_search_button;
+        GtkWidget *recipes_search_button2;
+        GtkWidget *ingredients_search_button;
+        GtkWidget *ingredients_search_button2;
         GtkWidget *search_bar;
         GtkWidget *search_entry;
         GtkWidget *header_stack;
@@ -44,13 +49,12 @@ struct _GrWindow
         GtkWidget *edit_page;
         GtkWidget *list_header;
         GtkWidget *list_page;
-        GtkWidget *search_header;
-        GtkWidget *search_button2;
         GtkWidget *search_page;
         GtkWidget *cuisines_page;
         GtkWidget *cuisine_header;
         GtkWidget *cuisine_page;
 	GtkWidget *ingredients_page;
+	GtkWidget *ingredients_search_page;
 
         GQueue *back_entry_stack;
 };
@@ -146,10 +150,51 @@ maybe_stop_search (GtkButton *button, GParamSpec *pspec, GrWindow *window)
 static void
 switch_to_search (GrWindow *window)
 {
-    	gtk_header_bar_set_title (GTK_HEADER_BAR (window->search_header), _("Search"));
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (window->search_button2), TRUE);
+        save_back_entry (window);
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (window->recipes_search_button2), TRUE);
      	gtk_stack_set_visible_child_name (GTK_STACK (window->header_stack), "search");
      	gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "search");
+}
+
+static void
+switch_to_ingredients_search (GrWindow *window)
+{
+        save_back_entry (window);
+     	gtk_stack_set_visible_child_name (GTK_STACK (window->header_stack), "ingredients-search");
+     	gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "ingredients-search");
+}
+
+static void
+ingredients_search_clicked (GtkButton *button, GrWindow *window)
+{
+        if ((GtkWidget *)button == window->ingredients_search_button)
+                switch_to_ingredients_search (window);
+        else
+                gr_window_go_back (window);
+}
+
+static void
+visible_page_changed (GrWindow *window)
+{
+        const char *visible;
+
+        visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
+
+        if (strcmp (visible, "ingredients") == 0) {
+                g_signal_handlers_block_by_func (window->ingredients_search_button, ingredients_search_clicked, window);
+	        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (window->ingredients_search_button), FALSE);
+                gtk_stack_set_visible_child_name (GTK_STACK (window->search_button_stack), "ingredients");
+                g_signal_handlers_unblock_by_func (window->ingredients_search_button, ingredients_search_clicked, window);
+        }
+        else if (strcmp (visible, "ingredients-search") == 0) {
+                g_signal_handlers_block_by_func (window->ingredients_search_button2, ingredients_search_clicked, window);
+	        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (window->ingredients_search_button2), TRUE);
+                gtk_stack_set_visible_child_name (GTK_STACK (window->search_button_stack), "ingredients");
+                g_signal_handlers_unblock_by_func (window->ingredients_search_button2, ingredients_search_clicked, window);
+        }
+        else {
+                gtk_stack_set_visible_child_name (GTK_STACK (window->search_button_stack), "recipes");
+        }
 }
 
 static void
@@ -159,10 +204,8 @@ search_changed (GrWindow *window)
 
         visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
 
-        if (strcmp (visible, "search") != 0) {
-		save_back_entry (window);
+        if (strcmp (visible, "search") != 0)
 		switch_to_search (window);
-        }
 
         gr_search_page_update_search (GR_SEARCH_PAGE (window->search_page),
                                       gtk_entry_get_text (GTK_ENTRY (window->search_entry)));
@@ -172,7 +215,7 @@ static void
 search_mode_enabled (GrWindow *window, GParamSpec *pspec)
 {
         const char *visible;
-	g_autofree char *terms = NULL;
+        g_autofree char *terms = NULL;
 
         visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
 
@@ -180,13 +223,12 @@ search_mode_enabled (GrWindow *window, GParamSpec *pspec)
 		return;
 
         if (strcmp (visible, "ingredients") != 0)
-		return;
+               return;
 
-	save_back_entry (window);
-	switch_to_search (window);
+       switch_to_search (window);
 
-	terms = gr_ingredients_page_get_search_terms (GR_INGREDIENTS_PAGE (window->ingredients_page));
-	gtk_entry_set_text (GTK_ENTRY (window->search_entry), terms);
+       terms = gr_ingredients_page_get_search_terms (GR_INGREDIENTS_PAGE (window->ingredients_page));
+       gtk_entry_set_text (GTK_ENTRY (window->search_entry), terms);
 }
 
 static gboolean
@@ -194,6 +236,11 @@ window_keypress_handler (GtkWidget *widget, GdkEvent *event, gpointer data)
 {
 	GrWindow *window = GR_WINDOW (widget);
         GtkWidget *w;
+        const char *visible;
+
+        visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
+        if (strcmp (visible, "ingredients-search") == 0)
+                return GDK_EVENT_PROPAGATE;
 
         /* handle ctrl+f shortcut */
         if (event->type == GDK_KEY_PRESS) {
@@ -238,7 +285,11 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (klass),
                                                      "/org/gnome/Recipes/gr-window.ui");
 
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, search_button);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, search_button_stack);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, recipes_search_button);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, recipes_search_button2);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, ingredients_search_button);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, ingredients_search_button2);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, search_bar);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, search_entry);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, header_stack);
@@ -249,17 +300,17 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, edit_page);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, list_header);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, list_page);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, search_header);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, search_button2);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, search_page);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, cuisines_page);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, cuisine_header);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, cuisine_page);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, ingredients_page);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, ingredients_search_page);
 
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), new_recipe);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), go_back);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), add_recipe);
+        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), visible_page_changed);
 }
 
 static void
@@ -269,14 +320,16 @@ gr_window_init (GrWindow *self)
 
 	self->back_entry_stack = g_queue_new ();
 
-        g_object_bind_property (self->search_button, "active",
+        g_object_bind_property (self->recipes_search_button, "active",
                                 self->search_bar, "search-mode-enabled",
                                 G_BINDING_BIDIRECTIONAL);
 
         g_signal_connect_swapped (self->search_bar, "notify::search-mode-enabled", G_CALLBACK (search_mode_enabled), self);
         g_signal_connect_swapped (self->search_entry, "search-changed", G_CALLBACK (search_changed), self);
         g_signal_connect_swapped (self->search_entry, "stop-search", G_CALLBACK (stop_search), self);
-        g_signal_connect (self->search_button2, "notify::active", G_CALLBACK (maybe_stop_search), self);
+        g_signal_connect (self->recipes_search_button2, "notify::active", G_CALLBACK (maybe_stop_search), self);
+        g_signal_connect (self->ingredients_search_button, "clicked", G_CALLBACK (ingredients_search_clicked), self);
+        g_signal_connect (self->ingredients_search_button2, "clicked", G_CALLBACK (ingredients_search_clicked), self);
 	g_signal_connect_after (self, "key-press-event", G_CALLBACK (window_keypress_handler), NULL);
 }
 
@@ -373,3 +426,13 @@ gr_window_show_cuisine (GrWindow   *window,
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_stack), "cuisine");
         gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "cuisine");
 }
+
+void
+gr_window_show_search_by_ingredients (GrWindow   *window,
+                                      const char *ingredient)
+{
+        gr_ingredients_search_page_set_ingredient (GR_INGREDIENTS_SEARCH_PAGE (window->ingredients_search_page),
+                                                   ingredient);
+        switch_to_ingredients_search (window);
+}
+

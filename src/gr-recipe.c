@@ -30,7 +30,7 @@ typedef struct
         char *name;
         char *author;
         char *description;
-	char *image_path;
+        char *image_path;
 
         char *cuisine;
         char *category;
@@ -40,7 +40,7 @@ typedef struct
         char *ingredients;
         char *instructions;
         char *notes;
-	GrDiets diets;
+        GrDiets diets;
 
         char *cf_name;
         char *cf_description;
@@ -321,7 +321,7 @@ gr_recipe_init (GrRecipe *self)
         priv->prep_time = g_strdup ("no time at all");
         priv->cook_time = g_strdup ("no time at all");
         priv->serves = 1;
-	priv->diets = 0;
+        priv->diets = 0;
 }
 
 GrRecipe *
@@ -335,29 +335,36 @@ gboolean
 gr_recipe_matches (GrRecipe *self, const char *term)
 {
         GrRecipePrivate *priv = gr_recipe_get_instance_private (self);
-	g_auto(GStrv) terms = NULL;
-	int i;
+        g_auto(GStrv) terms = NULL;
+        int i;
 
-	terms = g_strsplit (term, " ", -1);
+        terms = g_strsplit (term, " ", -1);
 
-	for (i = 0; terms[i]; i++) {
-		if (g_str_has_prefix (term, "i:")) {
-	        	if (!priv->cf_ingredients || strstr (priv->cf_ingredients, term + 2) == NULL)
-        		        return FALSE;
-			continue;
-		}
+        for (i = 0; terms[i]; i++) {
+                if (g_str_has_prefix (terms[i], "i+:")) {
+                        if (!priv->cf_ingredients || strstr (priv->cf_ingredients, terms[i] + 3) == NULL) {
+                                return FALSE;
+                        }
+                        continue;
+                }
+                else if (g_str_has_prefix (terms[i], "i-:")) {
+                        if (priv->cf_ingredients && strstr (priv->cf_ingredients, terms[i] + 3) != NULL) {
+                                return FALSE;
+                        }
+                        continue;
+                }
 
-        	if (priv->cf_name && strstr (priv->cf_name, term) != NULL)
-                	continue;
+                if (priv->cf_name && strstr (priv->cf_name, terms[i]) != NULL)
+                        continue;
 
-        	if (priv->cf_description && strstr (priv->cf_description, term) != NULL)
-                	continue;
+                if (priv->cf_description && strstr (priv->cf_description, terms[i]) != NULL)
+                        continue;
 
-        	if (priv->cf_ingredients && strstr (priv->cf_ingredients, term) != NULL)
-                	continue;
+                if (priv->cf_ingredients && strstr (priv->cf_ingredients, terms[i]) != NULL)
+                        continue;
 
-		return FALSE;
-	}
+                return FALSE;
+        }
 
         return TRUE;
 }
