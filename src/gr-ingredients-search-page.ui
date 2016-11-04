@@ -22,6 +22,7 @@
                 <property name="margin">40</property>
                 <property name="placeholder-text" translatable="yes">Ingredient</property>
                 <signal name="search-changed" handler="search_changed" swapped="yes"/>
+                <signal name="activate" handler="search_activate" swapped="yes"/>
               </object>
             </child>
             <child type="center">
@@ -70,6 +71,15 @@
           <object class="GtkListBox" id="ingredients_list">
             <property name="visible">1</property>
             <property name="selection-mode">none</property>
+            <child type="placeholder">
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="label" translatable="yes">No match</property>
+                <attributes>
+                  <attribute name="style" value="italic"/>
+                </attributes>
+              </object>
+            </child>
           </object>
         </child>
       </object>

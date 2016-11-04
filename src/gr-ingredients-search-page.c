@@ -67,6 +67,41 @@ struct _GrIngredientsSearchPage
 
 G_DEFINE_TYPE (GrIngredientsSearchPage, gr_ingredients_search_page, GTK_TYPE_BOX)
 
+static void update_search (GrIngredientsSearchPage *page);
+
+static void
+remove_tile (GrIngredientSearchTile *tile, gpointer data)
+{
+        GrIngredientsSearchPage *page = data;
+
+        gtk_container_remove (GTK_CONTAINER (page->terms_box), GTK_WIDGET (tile));
+        update_search (page);
+}
+
+static void
+tile_changed (GrIngredientSearchTile *tile, gpointer data)
+{
+        GrIngredientsSearchPage *page = data;
+
+        update_search (page);
+}
+
+static void
+add_ingredient (GrIngredientsSearchPage *page,
+                const char              *ingredient)
+{
+        GtkWidget *tile;
+
+        tile = gr_ingredient_search_tile_new (ingredient);
+        g_signal_connect (tile, "remove-tile", G_CALLBACK (remove_tile), page);
+        g_signal_connect (tile, "tile-changed", G_CALLBACK (tile_changed), page);
+
+        gtk_widget_show (tile);
+        gtk_container_add (GTK_CONTAINER (page->terms_box), tile);
+
+        update_search (page);
+}
+
 static void
 search_changed (GrIngredientsSearchPage *page)
 {
@@ -82,6 +117,24 @@ search_changed (GrIngredientsSearchPage *page)
         page->cf_term = g_utf8_casefold (gtk_entry_get_text (GTK_ENTRY (page->search_entry)), -1);
         gtk_list_box_invalidate_filter (GTK_LIST_BOX (page->ingredients_list));
         gtk_widget_show (page->ingredients_popover);
+}
+
+static void
+search_activate (GrIngredientsSearchPage *page)
+{
+        const char *term;
+
+        term = gtk_entry_get_text (GTK_ENTRY (page->search_entry));
+        if (strlen (term) < 2) {
+                gtk_widget_error_bell (page->search_entry);
+                return;
+        }
+
+        add_ingredient (page, term);
+
+        gtk_entry_set_text (GTK_ENTRY (page->search_entry), "");
+        gtk_widget_hide (page->ingredients_popover);
+        gtk_widget_grab_focus (page->search_entry);
 }
 
 static void
@@ -175,39 +228,6 @@ update_search (GrIngredientsSearchPage *page)
 }
 
 static void
-remove_tile (GrIngredientSearchTile *tile, gpointer data)
-{
-        GrIngredientsSearchPage *page = data;
-
-        gtk_container_remove (GTK_CONTAINER (page->terms_box), GTK_WIDGET (tile));
-        update_search (page);
-}
-
-static void
-tile_changed (GrIngredientSearchTile *tile, gpointer data)
-{
-        GrIngredientsSearchPage *page = data;
-
-        update_search (page);
-}
-
-static void
-add_ingredient (GrIngredientsSearchPage *page,
-                const char              *ingredient)
-{
-        GtkWidget *tile;
-
-        tile = gr_ingredient_search_tile_new (ingredient);
-        g_signal_connect (tile, "remove-tile", G_CALLBACK (remove_tile), page);
-        g_signal_connect (tile, "tile-changed", G_CALLBACK (tile_changed), page);
-
-        gtk_widget_show (tile);
-        gtk_container_add (GTK_CONTAINER (page->terms_box), tile);
-
-        update_search (page);
-}
-
-static void
 row_activated (GtkListBox              *list,
                GtkListBoxRow           *row,
                GrIngredientsSearchPage *page)
@@ -266,6 +286,7 @@ populate_popover (GrIngredientsSearchPage *page)
                 g_object_set_data_full (G_OBJECT (label), "casefolded", cf, g_free);
 
                 gtk_label_set_xalign (GTK_LABEL (label), 0);
+                g_object_set (label, "margin", 6, NULL);
                 gtk_widget_show (label);
                 gtk_container_add (GTK_CONTAINER (page->ingredients_list), label);
         }
@@ -302,6 +323,7 @@ gr_ingredients_search_page_class_init (GrIngredientsSearchPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsSearchPage, ingredients_list);
 
         gtk_widget_class_bind_template_callback (widget_class, search_changed);
+        gtk_widget_class_bind_template_callback (widget_class, search_activate);
 }
 
 GtkWidget *
