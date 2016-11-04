@@ -145,6 +145,8 @@ ingredient_search_tile_set_ingredient (GrIngredientSearchTile *tile, const char 
                 image_path = "resource:/org/gnome/Recipes/carrots.png";
         else if (ingredient[0] == 'D')
                 image_path = "resource:/org/gnome/Recipes/biscotti.png";
+        else
+                image_path = NULL;
 
 
 	if (image_path != NULL && image_path[0] != '\0')
