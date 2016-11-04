@@ -30,6 +30,7 @@
 #include "gr-recipe-tile.h"
 #include "gr-app.h"
 #include "gr-utils.h"
+#include "gr-ingredient-tile.h"
 
 
 typedef struct {
@@ -192,7 +193,7 @@ ingredients_page_reload (GrIngredientsPage *page)
 		"Garlic", "Eggs",
 		"Mustard", "Mayonnaise", "Couscous", "Parsley", "Potatos", "Peppers", "Silantro", "Tomatos",
 		"Squash", "Honey", "Wine", "Vinegar", "Oranges", "Dates", "Figs", "Lemons", "Tangerines",
-		"Onions", "Yoghurt", "Zinfandel",
+		"Onions", "Yoghurt", "Zinfandel", "Carrots"
 	};
 	int i;
 	Category *category;
@@ -209,7 +210,7 @@ ingredients_page_reload (GrIngredientsPage *page)
 			g_print ("no such category: %s", letter);
 			continue;
 		}
-		tile = gtk_label_new (ingredients[i]);
+		tile = gr_ingredient_tile_new (ingredients[i]);
 		gtk_widget_show (tile);
 
 		gtk_container_add (GTK_CONTAINER (category->box), tile);
@@ -230,18 +231,18 @@ collect_selected (GtkWidget *widget,
                   gpointer   data)
 {
 	GString *s = data;
-	GtkWidget *label;
+	GtkWidget *tile;
 
 	if (!gtk_flow_box_child_is_selected (GTK_FLOW_BOX_CHILD (widget)))
 		return;
 
-	label = gtk_bin_get_child (GTK_BIN (widget));
+	tile = gtk_bin_get_child (GTK_BIN (widget));
 
 	if (s->len > 0)
 		g_string_append (s, " ");
 
 	g_string_append (s, "i:");
-	g_string_append (s, gtk_label_get_label (GTK_LABEL (label)));
+	g_string_append (s, gr_ingredient_tile_get_ingredient (GR_INGREDIENT_TILE (tile)));
 }
 
 char *

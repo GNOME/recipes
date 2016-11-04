@@ -30,6 +30,8 @@ recipes_SOURCES = \
 	gr-edit-page.c		\
 	gs-hiding-box.h 	\
 	gs-hiding-box.c 	\
+	gr-ingredient-tile.h	\
+	gr-ingredient-tile.c	\
 	gr-ingredients.h	\
 	gr-ingredients.c	\
 	gr-ingredients-page.h	\
