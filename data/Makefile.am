@@ -28,5 +28,5 @@ ingredients_DATA = \
 	Biscotti.png 	\
 	Carrot.png
 
-pkgdatadir_DATA = \
+pkgdata_DATA = \
 	picks.db
