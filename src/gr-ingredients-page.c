@@ -274,6 +274,29 @@ gr_ingredients_page_get_search_terms (GrIngredientsPage *page)
 	return g_string_free (s, FALSE);
 }
 
+void
+gr_ingredients_page_scroll (GrIngredientsPage *page,
+                            const char        *str)
+{
+        Category *category;
+        GtkAdjustment *adj;
+        GtkAllocation alloc;
+        gunichar ch;
+        char buf[6] = { 0, };
+
+        ch = g_utf8_get_char (str);
+        ch = g_unichar_toupper (ch);
+        g_unichar_to_utf8 (ch, buf);
+
+        category = (Category *)g_hash_table_lookup (page->categories, buf);
+	if (!category)
+		return;
+
+	adj = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (page->scrolled_window));
+	gtk_widget_get_allocation (category->label, &alloc);
+	gtk_adjustment_set_value (adj, alloc.y);
+}
+
 static void
 connect_store_signals (GrIngredientsPage *page)
 {

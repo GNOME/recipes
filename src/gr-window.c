@@ -239,7 +239,12 @@ window_keypress_handler (GtkWidget *widget, GdkEvent *event, gpointer data)
         const char *visible;
 
         visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
-        if (strcmp (visible, "ingredients-search") == 0)
+        if (strcmp (visible, "ingredients") == 0) {
+                gr_ingredients_page_scroll (GR_INGREDIENTS_PAGE (window->ingredients_page),
+                                            ((GdkEventKey*)event)->string);
+                return GDK_EVENT_STOP;
+        }
+        else if (strcmp (visible, "ingredients-search") == 0)
                 return GDK_EVENT_PROPAGATE;
 
         /* handle ctrl+f shortcut */
