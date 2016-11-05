@@ -167,8 +167,10 @@ switch_to_ingredients_search (GrWindow *window)
 static void
 ingredients_search_clicked (GtkButton *button, GrWindow *window)
 {
-        if ((GtkWidget *)button == window->ingredients_search_button)
+        if ((GtkWidget *)button == window->ingredients_search_button) {
+	        gr_ingredients_search_page_set_ingredient (GR_INGREDIENTS_SEARCH_PAGE (window->ingredients_search_page), NULL);
                 switch_to_ingredients_search (window);
+	}
         else
                 gr_window_go_back (window);
 }
@@ -443,8 +445,7 @@ void
 gr_window_show_search_by_ingredients (GrWindow   *window,
                                       const char *ingredient)
 {
-        gr_ingredients_search_page_set_ingredient (GR_INGREDIENTS_SEARCH_PAGE (window->ingredients_search_page),
-                                                   ingredient);
+        gr_ingredients_search_page_set_ingredient (GR_INGREDIENTS_SEARCH_PAGE (window->ingredients_search_page), ingredient);
         switch_to_ingredients_search (window);
 }
 
