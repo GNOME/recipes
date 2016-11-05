@@ -5,19 +5,65 @@
     <property name="visible">True</property>
     <property name="orientation">vertical</property>
     <child>
-      <object class="GtkScrolledWindow">
+      <object class="GtkStack" id="search_stack">
         <property name="visible">1</property>
-        <property name="expand">1</property>
-        <property name="hscrollbar-policy">never</property>
         <child>
-          <object class="GtkFlowBox" id="flow_box">
+          <object class="GtkBox">
             <property name="visible">1</property>
-            <property name="valign">start</property>
-            <property name="column-spacing">10</property>
-            <property name="row-spacing">10</property>
-            <property name="margin">20</property>
-            <property name="selection-mode">none</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="orientation">vertical</property>
+            <property name="spacing">10</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">1</property>
+                <property name="icon-name">edit-find-symbolic</property>
+                <property name="pixel-size">128</property>
+                <style> <class name="dim-label"/> </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="label" translatable="yes">No recipes found</property>
+                <style> <class name="dim-label"/> </style>
+                <attributes>
+                  <attribute name="scale" value="1.2"/>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="label" translatable="yes">Try a different search</property>
+                <style> <class name="dim-label"/> </style>
+              </object>
+            </child>
           </object>
+          <packing>
+            <property name="name">empty</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow">
+            <property name="visible">1</property>
+            <property name="expand">1</property>
+            <property name="hscrollbar-policy">never</property>
+            <child>
+              <object class="GtkFlowBox" id="flow_box">
+                <property name="visible">1</property>
+                <property name="valign">start</property>
+                <property name="column-spacing">10</property>
+                <property name="row-spacing">10</property>
+                <property name="margin">20</property>
+                <property name="selection-mode">none</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="name">list</property>
+          </packing>
         </child>
       </object>
     </child>

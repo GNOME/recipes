@@ -36,6 +36,7 @@ struct _GrSearchPage
 {
         GtkBox parent_instance;
 
+        GtkWidget *search_stack;
         GtkWidget *flow_box;
 
         char *term;
@@ -74,6 +75,7 @@ gr_search_page_class_init (GrSearchPageClass *klass)
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-search-page.ui");
 
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrSearchPage, flow_box);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrSearchPage, search_stack);
 }
 
 GtkWidget *
@@ -86,18 +88,25 @@ gr_search_page_new (void)
         return GTK_WIDGET (page);
 }
 
+typedef struct {
+  const char *term;
+  gboolean filled;
+} CheckData;
+
 static void
 check_match (GtkWidget *child, gpointer data)
 {
         GtkWidget *tile;
         GrRecipe *recipe;
-        const char *term = data;
+        CheckData *check_data = data;
 
         tile = gtk_bin_get_child (GTK_BIN (child));
         recipe = gr_recipe_tile_get_recipe (GR_RECIPE_TILE (tile));
 
-        if (!gr_recipe_matches (recipe, term))
+        if (!gr_recipe_matches (recipe, check_data->term))
                 gtk_container_remove (GTK_CONTAINER (gtk_widget_get_parent (child)), child);
+        else
+                check_data->filled = TRUE;
 }
 
 void
@@ -108,15 +117,23 @@ gr_search_page_update_search (GrSearchPage *page, const char *term)
         g_autofree char *cf_term = NULL;
         guint length;
         int i;
+        gboolean filled = FALSE;
 
-        if (term == NULL || strlen (term) < 3)
+        if (term == NULL || strlen (term) < 3) {
+                gtk_stack_set_visible_child_name (GTK_STACK (page->search_stack), "list");
                 return;
+        }
 
         cf_term = g_utf8_casefold (term, -1);
 
         if (page->term && g_str_has_prefix (cf_term, page->term)) {
+                CheckData data;
+
+                data.term = cf_term;
+                data.filled = FALSE;
                 /* narrowing search */
-                gtk_container_forall (GTK_CONTAINER (page->flow_box), check_match, (gpointer)cf_term);
+                gtk_container_forall (GTK_CONTAINER (page->flow_box), check_match, &data);
+                filled = data.filled;
         }
         else {
                 container_remove_all (GTK_CONTAINER (page->flow_box));
@@ -133,9 +150,12 @@ gr_search_page_update_search (GrSearchPage *page, const char *term)
                                 tile = gr_recipe_tile_new (recipe);
                                 gtk_widget_show (tile);
                                 gtk_container_add (GTK_CONTAINER (page->flow_box), tile);
+                                filled = TRUE;
                         }
                 }
         }
+
+        gtk_stack_set_visible_child_name (GTK_STACK (page->search_stack), filled ? "list" : "empty");
 
         g_free (page->term);
         page->term = g_strdup (cf_term);
