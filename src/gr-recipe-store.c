@@ -78,7 +78,7 @@ load_recipes (GrRecipeStore *self, const char *dir)
                 if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
                         g_error ("Failed to load recipe db: %s", error->message);
                 else
-                        g_message ("No recipe db at %s", path);
+                        g_message ("No recipe db at: %s", path);
                 return;
         }
         g_message ("Load recipe db: %s", path);
@@ -324,13 +324,13 @@ load_picks (GrRecipeStore *self, const char *dir)
 
         if (!g_key_file_load_from_file (keyfile, path, G_KEY_FILE_NONE, &error)) {
                 if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
-                        g_error ("Failed to load picks: %s", error->message);
+                        g_error ("Failed to load picks db: %s", error->message);
                 else
-                        g_message ("No picks at %s", path);
+                        g_message ("No picks db at: %s", path);
                 return;
         }
 
-        g_message ("Load picks: %s", path);
+        g_message ("Load picks db: %s", path);
 
         self->picks = g_key_file_get_string_list (keyfile, "Content", "Picks", NULL, &error);
         if (error) {
@@ -380,7 +380,7 @@ load_chefs (GrRecipeStore *self, const char *dir)
                 if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
                         g_error ("Failed to load chefs db: %s", error->message);
                 else
-                        g_message ("No chefs db at %s", path);
+                        g_message ("No chefs db at: %s", path);
                 return;
         }
 
@@ -511,7 +511,7 @@ load_user (GrRecipeStore *self, const char *dir)
                 if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
                         g_error ("Failed to load user id: %s", error->message);
                 else
-                        g_message ("No user id at %s", path);
+                        g_message ("No user id at: %s", path);
                 return;
         }
 
@@ -563,6 +563,9 @@ gr_recipe_store_init (GrRecipeStore *self)
         load_recipes (self, dir);
         load_chefs (self, dir);
         load_user (self, dir);
+
+        g_message ("%d recipes loaded", g_hash_table_size (self->recipes));
+        g_message ("%d chefs loaded", g_hash_table_size (self->chefs));
 }
 
 static guint add_signal;
