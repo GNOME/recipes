@@ -48,15 +48,23 @@ load_pixbuf_at_size (const char *path,
         return pixbuf;
 }
 
-char *
-get_data_dir (void)
+const char *
+get_user_data_dir (void)
 {
-        char *dir;
+        static char *dir = NULL;
 
-        dir = g_build_filename (g_get_user_data_dir (), "recipes", NULL);
-        g_mkdir_with_parents (dir, 0755);
+        if (!dir) {
+                dir = g_build_filename (g_get_user_data_dir (), "recipes", NULL);
+                g_mkdir_with_parents (dir, 0755);
+        }
 
-        return dir;
+        return (const char *)dir;
+}
+
+const char *
+get_pkg_data_dir (void)
+{
+        return PKG_DATA_DIR;
 }
 
 void

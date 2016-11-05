@@ -25,6 +25,7 @@
 #include <glib/gi18n.h>
 
 #include "gr-ingredient.h"
+#include "gr-utils.h"
 
 
 static const char *names_[] = {
@@ -203,5 +204,5 @@ gr_ingredient_get_image (const char *name)
 
         filename = g_strconcat (name, ".png", NULL);
 
-        return g_build_filename (PKG_DATA_DIR, "images", filename, NULL);
+        return g_build_filename (get_pkg_data_dir (), "ingredients", filename, NULL);
 }

@@ -60,14 +60,8 @@ gr_recipe_store_finalize (GObject *object)
         G_OBJECT_CLASS (gr_recipe_store_parent_class)->finalize (object);
 }
 
-static char *
-get_db_path (const char *kind)
-{
-        return g_build_filename (get_data_dir (), kind, NULL);
-}
-
 static void
-load_recipes (GrRecipeStore *self)
+load_recipes (GrRecipeStore *self, const char *dir)
 {
         g_autoptr(GKeyFile) keyfile = NULL;
         g_autoptr(GError) error = NULL;
@@ -78,13 +72,16 @@ load_recipes (GrRecipeStore *self)
 
         keyfile = g_key_file_new ();
 
-        path = get_db_path ("recipes.db");
+        path = g_build_filename (dir, "recipes.db", NULL);
 
         if (!g_key_file_load_from_file (keyfile, path, G_KEY_FILE_NONE, &error)) {
                 if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
-                        g_error ("failed to load recipe db: %s", error->message);
+                        g_error ("Failed to load recipe db: %s", error->message);
+                else
+                        g_message ("No recipe db at %s", path);
                 return;
         }
+        g_message ("Load recipe db: %s", path);
 
         groups = g_key_file_get_groups (keyfile, &length);
         for (i = 0; i < length; i++) {
@@ -209,7 +206,7 @@ load_recipes (GrRecipeStore *self)
 
 		if (image_path && image_path[0] != '\0' && image_path[0] != '/') {
 			char *tmp;
-			tmp = get_db_path (image_path);
+			tmp = g_build_filename (dir, image_path, NULL);
 			g_free (image_path);
 			image_path = tmp;
 		}
@@ -234,7 +231,7 @@ load_recipes (GrRecipeStore *self)
                               "serves", serves,
                               "diets", diets,
                               "image-path", image_path,
-                              NULL); 
+                              NULL);
         }
 }
 
@@ -247,11 +244,13 @@ save_recipes (GrRecipeStore *self)
         const char *key;
         GrRecipe *recipe;
         g_autoptr(GError) error = NULL;
-	char *tmp;
+	const char *tmp;
 
         keyfile = g_key_file_new ();
 
-        path = get_db_path ("recipes.db");
+        path = g_build_filename (get_user_data_dir (), "recipes.db", NULL);
+
+        g_message ("Save recipe db: %s", path);
 
         g_hash_table_iter_init (&iter, self->recipes);
         while (g_hash_table_iter_next (&iter, (gpointer *)&key, (gpointer *)&recipe)) {
@@ -284,14 +283,13 @@ save_recipes (GrRecipeStore *self)
                               "image-path", &image_path,
                               NULL);
 
-		tmp = get_db_path ("");
+		tmp = get_user_data_dir ();
 		if (image_path && g_str_has_prefix (image_path, tmp)) {
 			char *tmp2;
 			tmp2 = g_strdup (image_path + strlen (tmp) + 1);
 			g_free (image_path);
 			image_path = tmp2;
 		}
-		g_free (tmp);
 
                 g_key_file_set_string (keyfile, key, "Name", name ? name : "");
                 g_key_file_set_string (keyfile, key, "Author", author ? author : "");
@@ -314,7 +312,7 @@ save_recipes (GrRecipeStore *self)
 }
 
 static void
-load_picks (GrRecipeStore *self)
+load_picks (GrRecipeStore *self, const char *dir)
 {
         g_autofree char *path = NULL;
         g_autoptr(GKeyFile) keyfile = NULL;
@@ -322,13 +320,17 @@ load_picks (GrRecipeStore *self)
 
         keyfile = g_key_file_new ();
 
-        path = get_db_path ("picks.db");
+        path = g_build_filename (dir, "picks.db", NULL);
 
         if (!g_key_file_load_from_file (keyfile, path, G_KEY_FILE_NONE, &error)) {
                 if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
-                        g_error ("failed to load picks: %s", error->message);
+                        g_error ("Failed to load picks: %s", error->message);
+                else
+                        g_message ("No picks at %s", path);
                 return;
         }
+
+        g_message ("Load picks: %s", path);
 
         self->picks = g_key_file_get_string_list (keyfile, "Content", "Picks", NULL, &error);
         if (error) {
@@ -356,7 +358,7 @@ load_picks (GrRecipeStore *self)
 }
 
 static void
-load_chefs (GrRecipeStore *self)
+load_chefs (GrRecipeStore *self, const char *dir)
 {
         g_autoptr(GKeyFile) keyfile = NULL;
         g_autoptr(GError) error = NULL;
@@ -367,16 +369,22 @@ load_chefs (GrRecipeStore *self)
 
         keyfile = g_key_file_new ();
 
-        path = get_db_path ("chefs.db");
+        path = g_build_filename (dir, "chefs.db", NULL);
         /* Just since my example dataset has authors.db */
-        if (!g_file_test (path, G_FILE_TEST_EXISTS))
-                path = get_db_path ("authors.db");
+        if (!g_file_test (path, G_FILE_TEST_EXISTS)) {
+                g_free (path);
+                path = g_build_filename (dir, "authors.db", NULL);
+        }
 
         if (!g_key_file_load_from_file (keyfile, path, G_KEY_FILE_NONE, &error)) {
                 if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
-                        g_error ("failed to load chefs db: %s", error->message);
+                        g_error ("Failed to load chefs db: %s", error->message);
+                else
+                        g_message ("No chefs db at %s", path);
                 return;
         }
+
+        g_message ("Load chefs db: %s", path);
 
         groups = g_key_file_get_groups (keyfile, &length);
         for (i = 0; i < length; i++) {
@@ -421,7 +429,7 @@ load_chefs (GrRecipeStore *self)
 
 		if (image_path && image_path[0] != '\0' && image_path[0] != '/') {
 			char *tmp;
-			tmp = get_db_path (image_path);
+			tmp = g_build_filename (dir, image_path, NULL);
 			g_free (image_path);
 			image_path = tmp;
 		}
@@ -437,7 +445,7 @@ load_chefs (GrRecipeStore *self)
                               "fullname", fullname,
                               "description", description,
                               "image-path", image_path,
-                              NULL); 
+                              NULL);
         }
 }
 
@@ -450,11 +458,13 @@ save_chefs (GrRecipeStore *store)
         const char *key;
         GrChef *chef;
         g_autoptr(GError) error = NULL;
-	char *tmp;
+	const char *tmp;
 
         keyfile = g_key_file_new ();
 
-        path = get_db_path ("chefs.db");
+        path = g_build_filename (get_user_data_dir (), "chefs.db", NULL);
+
+        g_message ("Save chefs db: %s", path);
 
         g_hash_table_iter_init (&iter, store->chefs);
         while (g_hash_table_iter_next (&iter, (gpointer *)&key, (gpointer *)&chef)) {
@@ -470,14 +480,13 @@ save_chefs (GrRecipeStore *store)
                               "image-path", &image_path,
                               NULL);
 
-		tmp = get_db_path ("");
+                tmp = get_user_data_dir ();
 		if (g_str_has_prefix (image_path, tmp)) {
 			char *tmp2;
 			tmp2 = g_strdup (image_path + strlen (tmp) + 1);
 			g_free (image_path);
 			image_path = tmp2;
 		}
-		g_free (tmp);
 
                 g_key_file_set_string (keyfile, key, "Name", name ? name : "");
                 g_key_file_set_string (keyfile, key, "Fullname", fullname ? fullname : "");
@@ -491,18 +500,22 @@ save_chefs (GrRecipeStore *store)
 }
 
 static void
-load_user (GrRecipeStore *self)
+load_user (GrRecipeStore *self, const char *dir)
 {
         g_autofree char *path = NULL;
         g_autofree char *contents = NULL;
         g_autoptr(GError) error = NULL;
 
-        path = get_db_path ("user");
+        path = g_build_filename (dir, "user", NULL);
         if (!g_file_get_contents (path, &contents, NULL, &error)) {
                 if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
                         g_error ("Failed to load user id: %s", error->message);
+                else
+                        g_message ("No user id at %s", path);
                 return;
         }
+
+        g_message ("Load user id: %s", path);
 
         self->user = g_strdup (contents);
 
@@ -515,7 +528,10 @@ save_user (GrRecipeStore *self)
 {
         g_autofree char *path = NULL;
 
-        path = get_db_path ("user");
+        path = g_build_filename (get_user_data_dir (), "user", NULL);
+
+        g_message ("Save user id: %s", path);
+
         if (self->user == NULL || self->user[0] == '\0') {
                 g_unlink (path);
         }
@@ -531,13 +547,22 @@ save_user (GrRecipeStore *self)
 static void
 gr_recipe_store_init (GrRecipeStore *self)
 {
+        const char *dir;
+
         self->recipes = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);
         self->chefs = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);
 
-        load_recipes (self);
-        load_chefs (self);
-        load_picks (self);
-        load_user (self);
+        /* First load preinstalled data */
+        dir = get_pkg_data_dir ();
+        load_recipes (self, dir);
+        load_chefs (self, dir);
+        load_picks (self, dir);
+
+        /* Now load saved data */
+        dir = get_user_data_dir ();
+        load_recipes (self, dir);
+        load_chefs (self, dir);
+        load_user (self, dir);
 }
 
 static guint add_signal;
