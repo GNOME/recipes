@@ -13,6 +13,7 @@
     <child>
       <object class="GtkBox">
         <property name="visible">1</property>
+        <property name="expand">1</property>
         <style>
           <class name="view"/>
         </style>
@@ -22,7 +23,8 @@
             <property name="margin">40</property>
             <property name="row-spacing">20</property>
             <property name="column-spacing">20</property>
-            <property name="expand">1</property>
+            <property name="halign">center</property>
+            <property name="valign">start</property>
             <child>
               <object class="GtkButton">
                 <property name="visible">1</property>
