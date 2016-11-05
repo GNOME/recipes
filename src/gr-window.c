@@ -195,6 +195,10 @@ visible_page_changed (GrWindow *window)
         else {
                 gtk_stack_set_visible_child_name (GTK_STACK (window->search_button_stack), "recipes");
         }
+
+        if (strcmp (visible, "search") != 0) {
+	        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (window->recipes_search_button), FALSE);
+        }
 }
 
 static void
