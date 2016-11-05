@@ -16,6 +16,16 @@ imagedir = $(appdatadir)/images
 
 image_DATA = \
 	Almond.png 	\
+	Amaretti.png	\
+	Anchovis.png	\
+	Apple.png	\
+	Apricot.png	\
+	Artichoke.png	\
+	Asparagus.png	\
+	Aubergine.png	\
 	Bacon.png 	\
+	Bagel.png	\
+	Banana.png	\
+	Basil.png	\
 	Biscotti.png 	\
 	Carrot.png
