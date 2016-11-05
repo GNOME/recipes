@@ -248,7 +248,10 @@ window_keypress_handler (GtkWidget *widget, GdkEvent *event, gpointer data)
                                             ((GdkEventKey*)event)->string);
                 return GDK_EVENT_STOP;
         }
-        else if (strcmp (visible, "ingredients-search") == 0)
+
+        if (strcmp (visible, "recipes") != 0 &&
+            strcmp (visible, "cuisines") != 0 &&
+            strcmp (visible, "search") != 0)
                 return GDK_EVENT_PROPAGATE;
 
         /* handle ctrl+f shortcut */
