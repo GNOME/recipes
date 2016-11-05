@@ -35,20 +35,20 @@
 
 
 typedef struct {
-	char *name;
-	GtkWidget *item;
-	GtkWidget *label;
-	GtkWidget *box;
-	gboolean filled;
+        char *name;
+        GtkWidget *item;
+        GtkWidget *label;
+        GtkWidget *box;
+        gboolean filled;
 } Category;
 
 static void
 category_free (gpointer data)
 {
-	Category *category = data;
+        Category *category = data;
 
-	g_free (category->name);
-	g_free (category);
+        g_free (category->name);
+        g_free (category);
 }
 
 struct _GrIngredientsPage
@@ -56,10 +56,10 @@ struct _GrIngredientsPage
         GtkBox parent_instance;
 
         GtkWidget *main_box;
-	GtkWidget *letter_box;
-	GtkWidget *scrolled_window;
+        GtkWidget *letter_box;
+        GtkWidget *scrolled_window;
 
-	GHashTable *categories;
+        GHashTable *categories;
 };
 
 G_DEFINE_TYPE (GrIngredientsPage, gr_ingredients_page, GTK_TYPE_BOX)
@@ -71,19 +71,19 @@ static void
 row_activated (GrIngredientsPage *page, GtkListBoxRow *row)
 {
         GtkWidget *item;
-	int i;
-	GtkAdjustment *adj;
-	GtkAllocation alloc;
-	Category *category = NULL;
+        int i;
+        GtkAdjustment *adj;
+        GtkAllocation alloc;
+        Category *category = NULL;
 
         item = gtk_bin_get_child (GTK_BIN (row));
         category = (Category *)g_object_get_data (G_OBJECT (item), "category");
-	if (!category)
-		return;
+        if (!category)
+                return;
 
-	adj = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (page->scrolled_window));
-	gtk_widget_get_allocation (category->label, &alloc);
-	gtk_adjustment_set_value (adj, alloc.y);
+        adj = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (page->scrolled_window));
+        gtk_widget_get_allocation (category->label, &alloc);
+        gtk_adjustment_set_value (adj, alloc.y);
 }
 
 static void
@@ -104,7 +104,7 @@ ingredients_page_finalize (GObject *object)
 {
         GrIngredientsPage *page = GR_INGREDIENTS_PAGE (object);
 
-	g_clear_pointer (&page->categories, g_hash_table_unref);
+        g_clear_pointer (&page->categories, g_hash_table_unref);
 
         G_OBJECT_CLASS (gr_ingredients_page_parent_class)->finalize (object);
 }
@@ -112,19 +112,19 @@ ingredients_page_finalize (GObject *object)
 static void
 populate_initially (GrIngredientsPage *self)
 {
-	const char *alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	int i;
+        const char *alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        int i;
 
-	self->categories = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, category_free);
+        self->categories = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, category_free);
 
         for (i = 0; i < strlen (alphabet); i++) {
-		g_autofree char *letter = NULL;
+                g_autofree char *letter = NULL;
                 GtkWidget *item, *label, *box;
-		Category *category;
+                Category *category;
 
-		category = g_new (Category, 1);
+                category = g_new (Category, 1);
 
-		letter = g_strdup_printf ("%c", alphabet[i]);
+                letter = g_strdup_printf ("%c", alphabet[i]);
 
                 item = gtk_label_new (letter);
                 g_object_set_data (G_OBJECT (item), "category", category);
@@ -140,7 +140,7 @@ populate_initially (GrIngredientsPage *self)
                 gtk_container_add (GTK_CONTAINER (self->main_box), label);
 
                 box = gtk_flow_box_new ();
-		gtk_flow_box_set_selection_mode (GTK_FLOW_BOX (box), GTK_SELECTION_NONE);
+                gtk_flow_box_set_selection_mode (GTK_FLOW_BOX (box), GTK_SELECTION_NONE);
                 gtk_widget_show (box);
                 gtk_container_add (GTK_CONTAINER (self->main_box), box);
                 g_signal_connect_swapped (box, "child-activated", G_CALLBACK (ingredient_activated), self);
@@ -149,9 +149,9 @@ populate_initially (GrIngredientsPage *self)
                 category->item = item;
                 category->label = label;
                 category->box = box;
-		category->filled = FALSE;
+                category->filled = FALSE;
 
-		g_hash_table_insert (self->categories, g_strdup (letter), category);
+                g_hash_table_insert (self->categories, g_strdup (letter), category);
         }
 }
 
@@ -160,9 +160,9 @@ gr_ingredients_page_init (GrIngredientsPage *page)
 {
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
         gtk_widget_init_template (GTK_WIDGET (page));
-	populate_initially (page);
-	ingredients_page_reload (page);
-	connect_store_signals (page);
+        populate_initially (page);
+        ingredients_page_reload (page);
+        connect_store_signals (page);
 }
 
 static void
@@ -179,8 +179,8 @@ gr_ingredients_page_class_init (GrIngredientsPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrIngredientsPage, letter_box);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrIngredientsPage, scrolled_window);
 
-	gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), row_activated);
-	gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), ingredient_activated);
+        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), row_activated);
+        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), ingredient_activated);
 }
 
 GtkWidget *
@@ -196,18 +196,24 @@ gr_ingredients_page_new (void)
 static void
 ingredients_page_reload (GrIngredientsPage *page)
 {
-	int i;
-	Category *category;
-	GHashTableIter iter;
+        int i;
+        Category *category;
+        GHashTableIter iter;
         char **ingredients;
         GrRecipeStore *store;
         guint length;
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
+        g_hash_table_iter_init (&iter, page->categories);
+        while (g_hash_table_iter_next (&iter, NULL, (gpointer *)&category)) {
+                container_remove_all (GTK_CONTAINER (category->box));
+                category->filled = FALSE;
+        }
+
         ingredients = gr_recipe_store_get_all_ingredients (store, &length);
-	for (i = 0; i < length; i++) {
-		GtkWidget *tile;
+        for (i = 0; i < length; i++) {
+                GtkWidget *tile;
                 gunichar ch;
                 char buf[6] = { 0, };
 
@@ -215,63 +221,63 @@ ingredients_page_reload (GrIngredientsPage *page)
                 ch = g_unichar_toupper (ch);
                 g_unichar_to_utf8 (ch, buf);
 
-		category = g_hash_table_lookup (page->categories, buf);
+                category = g_hash_table_lookup (page->categories, buf);
 
-		if (!category) {
-			g_print ("no such category: %s", buf);
-			continue;
-		}
-		tile = gr_ingredient_tile_new (ingredients[i]);
-		gtk_widget_show (tile);
+                if (!category) {
+                        g_print ("no such category: %s", buf);
+                        continue;
+                }
+                tile = gr_ingredient_tile_new (ingredients[i]);
+                gtk_widget_show (tile);
 
-		gtk_container_add (GTK_CONTAINER (category->box), tile);
-		category->filled = TRUE;
-	}
+                gtk_container_add (GTK_CONTAINER (category->box), tile);
+                category->filled = TRUE;
+        }
         g_strfreev (ingredients);
 
-	g_hash_table_iter_init (&iter, page->categories);
-	while (g_hash_table_iter_next (&iter, NULL, (gpointer *)&category)) {
-		gtk_widget_set_visible (category->label, category->filled);
-		gtk_widget_set_visible (category->box, category->filled);
-		gtk_label_set_label (GTK_LABEL (category->item), category->filled ? category->name : "⋯");
-		gtk_list_box_row_set_activatable (GTK_LIST_BOX_ROW (gtk_widget_get_parent (category->item)), category->filled);
-		}
+        g_hash_table_iter_init (&iter, page->categories);
+        while (g_hash_table_iter_next (&iter, NULL, (gpointer *)&category)) {
+                gtk_widget_set_visible (category->label, category->filled);
+                gtk_widget_set_visible (category->box, category->filled);
+                gtk_label_set_label (GTK_LABEL (category->item), category->filled ? category->name : "⋯");
+                gtk_list_box_row_set_activatable (GTK_LIST_BOX_ROW (gtk_widget_get_parent (category->item)), category->filled);
+        }
 }
 
 static void
 collect_selected (GtkWidget *widget,
                   gpointer   data)
 {
-	GString *s = data;
-	GtkWidget *tile;
+        GString *s = data;
+        GtkWidget *tile;
 
-	if (!gtk_flow_box_child_is_selected (GTK_FLOW_BOX_CHILD (widget)))
-		return;
+        if (!gtk_flow_box_child_is_selected (GTK_FLOW_BOX_CHILD (widget)))
+                return;
 
-	tile = gtk_bin_get_child (GTK_BIN (widget));
+        tile = gtk_bin_get_child (GTK_BIN (widget));
 
-	if (s->len > 0)
-		g_string_append (s, " ");
+        if (s->len > 0)
+                g_string_append (s, " ");
 
-	g_string_append (s, "i:");
-	g_string_append (s, gr_ingredient_tile_get_ingredient (GR_INGREDIENT_TILE (tile)));
+        g_string_append (s, "i:");
+        g_string_append (s, gr_ingredient_tile_get_ingredient (GR_INGREDIENT_TILE (tile)));
 }
 
 char *
 gr_ingredients_page_get_search_terms (GrIngredientsPage *page)
 {
-	GString *s;
-	GHashTableIter iter;
-	Category *category;
+        GString *s;
+        GHashTableIter iter;
+        Category *category;
 
-	s = g_string_new ("");
+        s = g_string_new ("");
 
-	g_hash_table_iter_init (&iter, page->categories);
-	while (g_hash_table_iter_next (&iter, NULL, (gpointer *)&category)) {
-		gtk_container_foreach (GTK_CONTAINER (category->box), collect_selected, s);
-	}
+        g_hash_table_iter_init (&iter, page->categories);
+        while (g_hash_table_iter_next (&iter, NULL, (gpointer *)&category)) {
+                gtk_container_foreach (GTK_CONTAINER (category->box), collect_selected, s);
+        }
 
-	return g_string_free (s, FALSE);
+        return g_string_free (s, FALSE);
 }
 
 void
@@ -289,12 +295,12 @@ gr_ingredients_page_scroll (GrIngredientsPage *page,
         g_unichar_to_utf8 (ch, buf);
 
         category = (Category *)g_hash_table_lookup (page->categories, buf);
-	if (!category)
-		return;
+        if (!category)
+                return;
 
-	adj = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (page->scrolled_window));
-	gtk_widget_get_allocation (category->label, &alloc);
-	gtk_adjustment_set_value (adj, alloc.y);
+        adj = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (page->scrolled_window));
+        gtk_widget_get_allocation (category->label, &alloc);
+        gtk_adjustment_set_value (adj, alloc.y);
 }
 
 static void
