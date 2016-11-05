@@ -232,14 +232,10 @@ gr_ingredients_list_add_one (GrIngredientsList  *ingredients,
                 skip_whitespace (&line);
 
         s = gr_ingredient_find (line);
-        if (s) {
-g_print ("found ingredient: %s -> %s\n", line, s);
+        if (s)
                 ing->name = g_strdup (s);
-        }
-        else {
-g_print ("not found ingredient: %s\n", line);
+        else
                 ing->name = g_strdup (line);
-        }
 
         ingredients->ingredients = g_list_append (ingredients->ingredients, ing);
 

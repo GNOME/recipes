@@ -31,6 +31,8 @@
 #include "gr-utils.h"
 #include "gr-ingredients-search-page.h"
 #include "gr-ingredient-search-tile.h"
+#include "gr-ingredient.h"
+
 
 typedef struct {
         GrIngredientsSearchPage *page;
@@ -265,18 +267,11 @@ filter_ingredients_list (GtkListBoxRow *row,
 static void
 populate_popover (GrIngredientsSearchPage *page)
 {
-        const char *ingredients[] = {
-                "Almond", "Amaretti", "Apple", "Apricot", "Anchovis", "Artichoke", "Asparagus", "Aubergine",
-                "Bacon", "Banana", "Baked Beans", "Basil", "Beans", "Bagel", "Basmati rice", "Bay leaf",
-                "Beef mince", "Berry", "Beetroot", "Biscotti", "Beef sausage", "Beef stock", "Bilberries",
-                "Garlic", "Eggs",
-                "Mustard", "Mayonnaise", "Couscous", "Parsley", "Potatos", "Peppers", "Silantro", "Tomatos",
-                "Squash", "Honey", "Wine", "Vinegar", "Oranges", "Dates", "Figs", "Lemons", "Tangerines",
-                "Onions", "Yoghurt", "Zinfandel", "Carrots"
-        };
         int i;
+        const char **ingredients;
 
-        for (i = 0; i < G_N_ELEMENTS (ingredients); i++) {
+        ingredients = gr_ingredient_get_names (NULL);
+        for (i = 0; ingredients[i]; i++) {
                 GtkWidget *label;
                 gchar *cf;
 
