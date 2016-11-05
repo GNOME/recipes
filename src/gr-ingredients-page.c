@@ -112,7 +112,7 @@ ingredients_page_finalize (GObject *object)
 static void
 populate_initially (GrIngredientsPage *self)
 {
-        const char *alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const char *alphabet = _("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
         int i;
 
         self->categories = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, category_free);
