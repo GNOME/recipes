@@ -342,6 +342,12 @@ oven</property>
         <child>
           <object class="GtkButton">
             <property name="visible">1</property>
+            <property name="label" translatable="yes">Share</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton">
+            <property name="visible">1</property>
             <property name="label" translatable="yes">Delete</property>
 	    <signal name="clicked" handler="delete_recipe" swapped="true"/>
           </object>
