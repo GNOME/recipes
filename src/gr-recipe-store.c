@@ -26,6 +26,7 @@
 #include "gr-recipe-store.h"
 #include "gr-recipe.h"
 #include "gr-utils.h"
+#include "gr-ingredients-list.h"
 
 
 struct _GrRecipeStore
@@ -818,5 +819,42 @@ gr_recipe_store_chef_is_featured (GrRecipeStore *self,
         g_object_get (chef, "name", &name, NULL);
 
         return g_strv_contains ((const char *const*)self->featured_chefs, name);
+}
+
+char **
+gr_recipe_store_get_all_ingredients (GrRecipeStore *self, guint *length)
+{
+        GHashTableIter iter;
+        GrRecipe *recipe;
+        GHashTable *ingreds;
+        char **result;
+        int i;
+
+        ingreds = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
+
+        g_hash_table_iter_init (&iter, self->recipes);
+        while (g_hash_table_iter_next (&iter, NULL, (gpointer *)&recipe)) {
+                g_autofree char *ingredients = NULL;
+                GrIngredientsList *list = NULL;
+                g_autofree char **ret = NULL;
+
+                g_object_get (recipe, "ingredients", &ingredients, NULL);
+
+                if (!ingredients || ingredients[0] == '\0')
+                        continue;
+
+                list = gr_ingredients_list_new (ingredients);
+                ret = gr_ingredients_list_get_ingredients (list);
+                for (i = 0; ret[i]; i++)
+                        g_hash_table_add (ingreds, ret[i]);
+
+                g_object_unref (list);
+        }
+
+        result = (char **)g_hash_table_get_keys_as_array (ingreds, length);
+        g_hash_table_steal_all (ingreds);
+        g_hash_table_unref (ingreds);
+
+        return result;
 }
 

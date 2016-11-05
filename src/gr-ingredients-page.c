@@ -74,18 +74,10 @@ row_activated (GrIngredientsPage *page, GtkListBoxRow *row)
 	int i;
 	GtkAdjustment *adj;
 	GtkAllocation alloc;
-	GHashTableIter iter;
 	Category *category = NULL;
 
         item = gtk_bin_get_child (GTK_BIN (row));
-	g_hash_table_iter_init (&iter, page->categories);
-	while (g_hash_table_iter_next (&iter, NULL, (gpointer *)&category)) {
-		if (category->item == item)
-			break;
-		else
-			category = NULL;
-	}
-
+        category = (Category *)g_object_get_data (G_OBJECT (item), "category");
 	if (!category)
 		return;
 
@@ -130,9 +122,12 @@ populate_initially (GrIngredientsPage *self)
                 GtkWidget *item, *label, *box;
 		Category *category;
 
+		category = g_new (Category, 1);
+
 		letter = g_strdup_printf ("%c", alphabet[i]);
 
                 item = gtk_label_new (letter);
+                g_object_set_data (G_OBJECT (item), "category", category);
                 g_object_set (item, "xalign", 0.5, NULL);
                 gtk_widget_show (item);
                 gtk_style_context_add_class (gtk_widget_get_style_context (item), "letterbar");
@@ -150,7 +145,6 @@ populate_initially (GrIngredientsPage *self)
                 gtk_container_add (GTK_CONTAINER (self->main_box), box);
                 g_signal_connect_swapped (box, "child-activated", G_CALLBACK (ingredient_activated), self);
 
-		category = g_new (Category, 1);
                 category->name = g_strdup (letter);
                 category->item = item;
                 category->label = label;
@@ -202,28 +196,29 @@ gr_ingredients_page_new (void)
 static void
 ingredients_page_reload (GrIngredientsPage *page)
 {
-	const char *ingredients[] = {
-		"Almond", "Amaretti", "Apple", "Apricot", "Anchovis", "Artichoke", "Asparagus", "Aubergine",
-		"Bacon", "Banana", "Baked Beans", "Basil", "Beans", "Bagel", "Basmati rice", "Bay leaf",
-		"Beef mince", "Berry", "Beetroot", "Biscotti", "Beef sausage", "Beef stock", "Bilberries",
-		"Garlic", "Eggs",
-		"Mustard", "Mayonnaise", "Couscous", "Parsley", "Potatos", "Peppers", "Silantro", "Tomatos",
-		"Squash", "Honey", "Wine", "Vinegar", "Oranges", "Dates", "Figs", "Lemons", "Tangerines",
-		"Onions", "Yoghurt", "Zinfandel", "Carrots"
-	};
 	int i;
 	Category *category;
 	GHashTableIter iter;
+        char **ingredients;
+        GrRecipeStore *store;
+        guint length;
 
-	for (i = 0; i < G_N_ELEMENTS (ingredients); i++) {
-		g_autofree char *letter = NULL;
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+        ingredients = gr_recipe_store_get_all_ingredients (store, &length);
+	for (i = 0; i < length; i++) {
 		GtkWidget *tile;
+                gunichar ch;
+                char buf[6] = { 0, };
 
-		letter = g_strdup_printf ("%c", ingredients[i][0]);
-		category = g_hash_table_lookup (page->categories, letter);
+                ch = g_utf8_get_char (ingredients[i]);
+                ch = g_unichar_toupper (ch);
+                g_unichar_to_utf8 (ch, buf);
+
+		category = g_hash_table_lookup (page->categories, buf);
 
 		if (!category) {
-			g_print ("no such category: %s", letter);
+			g_print ("no such category: %s", buf);
 			continue;
 		}
 		tile = gr_ingredient_tile_new (ingredients[i]);
@@ -232,6 +227,7 @@ ingredients_page_reload (GrIngredientsPage *page)
 		gtk_container_add (GTK_CONTAINER (category->box), tile);
 		category->filled = TRUE;
 	}
+        g_strfreev (ingredients);
 
 	g_hash_table_iter_init (&iter, page->categories);
 	while (g_hash_table_iter_next (&iter, NULL, (gpointer *)&category)) {

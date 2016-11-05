@@ -1,4 +1,4 @@
-/* gr-ingredients.h:
+/* gr-ingredients-list.h:
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *
@@ -25,17 +25,18 @@
 
 G_BEGIN_DECLS
 
-#define GR_TYPE_INGREDIENTS (gr_ingredients_get_type ())
+#define GR_TYPE_INGREDIENTS_LIST (gr_ingredients_list_get_type ())
 
-G_DECLARE_FINAL_TYPE (GrIngredients, gr_ingredients, GR, INGREDIENTS, GObject)
+G_DECLARE_FINAL_TYPE (GrIngredientsList, gr_ingredients_list, GR, INGREDIENTS_LIST, GObject)
 
-GrIngredients       *gr_ingredients_new      (const char  *text);
+GrIngredientsList *gr_ingredients_list_new      (const char  *text);
 
-gboolean             gr_ingredients_validate (const char  *text,
-                                              GError     **error);
+gboolean           gr_ingredients_list_validate (const char  *text,
+                                                 GError     **error);
 
-gchar               *gr_ingredients_scale    (GrIngredients *ingredients,
-                                              int            num,
-                                              int            denom);
+gchar             *gr_ingredients_list_scale    (GrIngredientsList *ingredients,
+                                                 int                num,
+                                                 int                denom);
 
+gchar **           gr_ingredients_list_get_ingredients (GrIngredientsList *ingredients);
 G_END_DECLS

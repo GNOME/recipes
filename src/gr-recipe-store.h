@@ -67,4 +67,7 @@ gboolean gr_recipe_store_update_user (GrRecipeStore  *self,
                                       GrChef         *chef,
                                       GError        **error);
 
+char **gr_recipe_store_get_all_ingredients (GrRecipeStore *self,
+                                            guint         *length);
+
 G_END_DECLS

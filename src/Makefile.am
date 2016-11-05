@@ -1,6 +1,6 @@
 bin_PROGRAMS = recipes
 
-recipes_CFLAGS = $(RECIPES_CFLAGS)
+recipes_CFLAGS = $(RECIPES_CFLAGS) -DPKG_DATA_DIR=\"$(pkgdatadir)\" -O0 -ggdb
 recipes_LDADD = $(RECIPES_LIBS)
 recipes_SOURCES = \
 	main.c 			\
@@ -30,12 +30,14 @@ recipes_SOURCES = \
 	gr-edit-page.c		\
 	gs-hiding-box.h 	\
 	gs-hiding-box.c 	\
+	gr-ingredient.h		\
+	gr-ingredient.c		\
 	gr-ingredient-search-tile.h	\
 	gr-ingredient-search-tile.c	\
 	gr-ingredient-tile.h	\
 	gr-ingredient-tile.c	\
-	gr-ingredients.h	\
-	gr-ingredients.c	\
+	gr-ingredients-list.h	\
+	gr-ingredients-list.c	\
 	gr-ingredients-search-page.h	\
 	gr-ingredients-search-page.c	\
 	gr-ingredients-page.h	\

@@ -29,7 +29,7 @@
 #include "gr-recipe.h"
 #include "gr-app.h"
 #include "gr-utils.h"
-#include "gr-ingredients.h"
+#include "gr-ingredients-list.h"
 #include "gr-cuisine.h"
 #include "gr-category.h"
 
@@ -480,7 +480,7 @@ validate_ingredients (GrEditPage  *page,
                       const char  *ingredients,
                       GError     **error)
 {
-        if (!gr_ingredients_validate (ingredients, error)) {
+        if (!gr_ingredients_list_validate (ingredients, error)) {
                 GtkWidget *sw;
                 GtkStyleContext *context;
 

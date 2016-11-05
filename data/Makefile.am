@@ -9,3 +9,13 @@ desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
 %.desktop: %.desktop.in
 	msgfmt --desktop -d $(top_srcdir)/po --template $< -o $@
+
+appdatadir = $(datadir)/recipes
+
+imagedir = $(appdatadir)/images
+
+image_DATA = \
+	Almond.png 	\
+	Bacon.png 	\
+	Biscotti.png 	\
+	Carrot.png

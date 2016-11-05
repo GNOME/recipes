@@ -25,6 +25,7 @@
 #include <gtk/gtk.h>
 
 #include "gr-ingredient-tile.h"
+#include "gr-ingredient.h"
 #include "gr-utils.h"
 
 
@@ -76,26 +77,28 @@ gr_ingredient_tile_class_init (GrIngredientTileClass *klass)
 static void
 ingredient_tile_set_ingredient (GrIngredientTile *tile, const char *ingredient)
 {
-        const char *image_path;
+        const char *ing;
+        g_autofree char *image_path = NULL;
         GtkStyleContext *context;
         g_autofree char *css = NULL;
         g_autoptr(GtkCssProvider) provider = NULL;
 
+        ing = gr_ingredient_find (ingredient);
+        if (ing == NULL) {
+                ing = ingredient;
+                image_path = NULL;
+        }
+        else {
+                image_path = gr_ingredient_get_image (ing);
+        }
+
         g_free (tile->ingredient);
-        tile->ingredient = g_strdup (ingredient);
+        tile->ingredient = g_strdup (ing);
 
-        gtk_label_set_label (GTK_LABEL (tile->label), ingredient);
-        if (ingredient[0] == 'A')
-                image_path = "resource:/org/gnome/Recipes/almonds.png";
-        else if (ingredient[0] == 'B')
-                image_path = "resource:/org/gnome/Recipes/bacon.png";
-        else if (ingredient[0] == 'C')
-                image_path = "resource:/org/gnome/Recipes/carrots.png";
-        else if (ingredient[0] == 'D')
-                image_path = "resource:/org/gnome/Recipes/biscotti.png";
+        gtk_label_set_label (GTK_LABEL (tile->label), ing);
 
-
-        if (image_path != NULL && image_path[0] != '\0')
+        if (image_path != NULL &&
+            g_file_test (image_path, G_FILE_TEST_EXISTS))
                 css = g_strdup_printf ("image.ingredient {\n"
                                        "  background: url('%s');\n"
                                        "  background-size: 100%;\n"

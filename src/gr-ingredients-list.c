@@ -1,4 +1,4 @@
-/* gr-ingredients.c
+/* gr-ingredients-list.c
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *
@@ -21,7 +21,8 @@
 #include <glib.h>
 #include <glib/gi18n.h>
 
-#include "gr-ingredients.h"
+#include "gr-ingredients-list.h"
+#include "gr-ingredient.h"
 
 
 /* Parsing ingredients is tricky business. We operate under the following
@@ -49,14 +50,14 @@ ingredient_free (Ingredient *ing)
         g_free (ing);
 }
 
-struct _GrIngredients
+struct _GrIngredientsList
 {
         GObject parent_instance;
 
         GList *ingredients;
 };
 
-G_DEFINE_TYPE (GrIngredients, gr_ingredients, G_TYPE_OBJECT)
+G_DEFINE_TYPE (GrIngredientsList, gr_ingredients_list, G_TYPE_OBJECT)
 
 static void
 skip_whitespace (char **line)
@@ -131,11 +132,11 @@ parse_as_number (Ingredient  *ing,
 
         for (i = 0; i < G_N_ELEMENTS (numberforms); i++) {
                 if (g_str_has_prefix (*string, numberforms[i].string) &&
-                    g_ascii_isspace ((*string)[strlen(numberforms[i].string)])) {
+                    g_ascii_isspace ((*string)[strlen (numberforms[i].string)])) {
                         ing->fraction = TRUE;
                         ing->num = numberforms[i].value;
                         ing->denom = 1;
-                        *string += strlen(numberforms[i].string);
+                        *string += strlen (numberforms[i].string);
                         return TRUE;
                 }
         }
@@ -206,11 +207,12 @@ parse_as_unit (Ingredient  *ing,
 }
 
 static gboolean
-gr_ingredients_add_one (GrIngredients  *ingredients,
-                        char           *line,
-                        GError        **error)
+gr_ingredients_list_add_one (GrIngredientsList  *ingredients,
+                             char               *line,
+                             GError            **error)
 {
         Ingredient *ing;
+        const char *s;
 
         if (line[0] == '\0')
                 return TRUE;
@@ -229,7 +231,15 @@ gr_ingredients_add_one (GrIngredients  *ingredients,
         if (parse_as_unit (ing, &line, NULL))
                 skip_whitespace (&line);
 
-        ing->name = g_strdup (line);
+        s = gr_ingredient_find (line);
+        if (s) {
+g_print ("found ingredient: %s -> %s\n", line, s);
+                ing->name = g_strdup (s);
+        }
+        else {
+g_print ("not found ingredient: %s\n", line);
+                ing->name = g_strdup (line);
+        }
 
         ingredients->ingredients = g_list_append (ingredients->ingredients, ing);
 
@@ -237,9 +247,9 @@ gr_ingredients_add_one (GrIngredients  *ingredients,
 }
 
 static gboolean
-gr_ingredients_populate (GrIngredients  *ingredients,
-                         const char     *text,
-                         GError        **error)
+gr_ingredients_list_populate (GrIngredientsList  *ingredients,
+                              const char         *text,
+                              GError            **error)
 {
         g_auto(GStrv) lines = NULL;
         int i;
@@ -247,7 +257,7 @@ gr_ingredients_populate (GrIngredients  *ingredients,
         lines = g_strsplit (text, "\n", 0);
 
         for (i = 0; lines[i]; i++) {
-                if (!gr_ingredients_add_one (ingredients, lines[i], error))
+                if (!gr_ingredients_list_add_one (ingredients, lines[i], error))
                         return FALSE;
         }
 
@@ -256,48 +266,48 @@ gr_ingredients_populate (GrIngredients  *ingredients,
 }
 
 static void
-ingredients_finalize (GObject *object)
+ingredients_list_finalize (GObject *object)
 {
-        GrIngredients *self = GR_INGREDIENTS (object);
+        GrIngredientsList *self = GR_INGREDIENTS_LIST (object);
 
         g_list_free_full (self->ingredients, (GDestroyNotify)ingredient_free);
 
-        G_OBJECT_CLASS (gr_ingredients_parent_class)->finalize (object);
+        G_OBJECT_CLASS (gr_ingredients_list_parent_class)->finalize (object);
 }
 
 static void
-gr_ingredients_init (GrIngredients *ingredients)
+gr_ingredients_list_init (GrIngredientsList *ingredients)
 {
 }
 
 static void
-gr_ingredients_class_init (GrIngredientsClass *klass)
+gr_ingredients_list_class_init (GrIngredientsListClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-        object_class->finalize = ingredients_finalize;
+        object_class->finalize = ingredients_list_finalize;
 }
 
-GrIngredients *
-gr_ingredients_new (const char *text)
+GrIngredientsList *
+gr_ingredients_list_new (const char *text)
 {
-        GrIngredients *ingredients;
+        GrIngredientsList *ingredients;
 
-        ingredients = g_object_new (GR_TYPE_INGREDIENTS, NULL);
-        gr_ingredients_populate (ingredients, text, NULL);
+        ingredients = g_object_new (GR_TYPE_INGREDIENTS_LIST, NULL);
+        gr_ingredients_list_populate (ingredients, text, NULL);
 
         return ingredients;
 }
 
 gboolean
-gr_ingredients_validate (const char  *text,
-                         GError     **error)
+gr_ingredients_list_validate (const char  *text,
+                              GError     **error)
 {
-        g_autoptr(GrIngredients) ingredients = NULL;
+        g_autoptr(GrIngredientsList) ingredients = NULL;
 
-        ingredients = g_object_new (GR_TYPE_INGREDIENTS, NULL);
+        ingredients = g_object_new (GR_TYPE_INGREDIENTS_LIST, NULL);
 
-        return gr_ingredients_populate (ingredients, text, error);
+        return gr_ingredients_list_populate (ingredients, text, error);
 }
 
 int
@@ -392,7 +402,7 @@ format_scaled_number (Ingredient *ing, int num, int denom)
 }
 
 static void
-ingredient_scale_one (Ingredient *ing, int num, int denom, GString *s)
+ingredient_scale (Ingredient *ing, int num, int denom, GString *s)
 {
         g_autofree char *scaled = NULL;
 
@@ -408,9 +418,9 @@ ingredient_scale_one (Ingredient *ing, int num, int denom, GString *s)
 }
 
 char *
-gr_ingredients_scale (GrIngredients *ingredients,
-                      int            num,
-                      int            denom)
+gr_ingredients_list_scale (GrIngredientsList *ingredients,
+                           int                num,
+                           int                denom)
 {
         GString *s;
         GList *l;
@@ -420,8 +430,24 @@ gr_ingredients_scale (GrIngredients *ingredients,
         for (l = ingredients->ingredients; l; l = l->next) {
                 Ingredient *ing = (Ingredient *)l->data;
 
-                ingredient_scale_one (ing, num, denom, s);
+                ingredient_scale (ing, num, denom, s);
         }
 
         return g_string_free (s, FALSE);
+}
+
+char **
+gr_ingredients_list_get_ingredients (GrIngredientsList *ingredients)
+{
+        char **ret;
+        int i;
+        GList *l;
+
+        ret = g_new0 (char *, g_list_length (ingredients->ingredients) + 1);
+        for (i = 0, l = ingredients->ingredients; l; i++, l = l->next) {
+                Ingredient *ing = (Ingredient *)l->data;
+                ret[i] = g_strdup (ing->name);
+        }
+
+        return ret;
 }

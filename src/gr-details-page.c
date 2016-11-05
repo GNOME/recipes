@@ -29,7 +29,7 @@
 #include "gr-app.h"
 #include "gr-window.h"
 #include "gr-utils.h"
-#include "gr-ingredients.h"
+#include "gr-ingredients-list.h"
 
 
 struct _GrDetailsPage
@@ -50,7 +50,7 @@ struct _GrDetailsPage
         GtkWidget *instructions_label;
         GtkWidget *notes_label;
 
-        GrIngredients *ingredients;
+        GrIngredientsList *ingredients;
 };
 
 G_DEFINE_TYPE (GrDetailsPage, gr_details_page, GTK_TYPE_BOX)
@@ -102,7 +102,7 @@ serves_value_changed (GrDetailsPage *page)
         new_value = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (page->serves_spin));
         g_object_get (page->recipe, "serves", &serves, NULL);
 
-        text = gr_ingredients_scale (page->ingredients, new_value, serves);
+        text = gr_ingredients_list_scale (page->ingredients, new_value, serves);
 
         gtk_label_set_label (GTK_LABEL (page->ingredients_label), text);
 }
@@ -183,7 +183,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         GrRecipeStore *store;
         g_autoptr(GrChef) chef = NULL;
         g_autofree char *author_desc = NULL;
-        g_autoptr(GrIngredients) ing = NULL;
+        g_autoptr(GrIngredientsList) ing = NULL;
 
         g_set_object (&page->recipe, recipe);
 
@@ -203,7 +203,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         chef = gr_recipe_store_get_chef (store, author);
         g_set_object (&page->chef, chef);
 
-        ing = gr_ingredients_new (ingredients);
+        ing = gr_ingredients_list_new (ingredients);
         g_set_object (&page->ingredients, ing);
 
         if (image_path) {
