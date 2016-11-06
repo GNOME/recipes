@@ -237,6 +237,28 @@ search_mode_enabled (GrWindow *window, GParamSpec *pspec)
        gtk_entry_set_text (GTK_ENTRY (window->search_entry), terms);
 }
 
+static void
+start_or_stop_cooking (GtkButton *button,
+                       GrWindow  *window)
+{
+	GtkStyleContext *context;
+	gboolean cooking;
+
+	context = gtk_widget_get_style_context (GTK_WIDGET (button));
+
+	cooking = gr_details_page_is_cooking (GR_DETAILS_PAGE (window->details_page));
+	cooking = !cooking;
+	gr_details_page_set_cooking (GR_DETAILS_PAGE (window->details_page), cooking);
+	if (cooking) {
+		gtk_button_set_label (button, _("Stop cooking"));
+		gtk_style_context_remove_class (context, "suggested-action");
+	}
+	else {
+		gtk_button_set_label (button, _("Start cooking"));
+		gtk_style_context_add_class (context, "suggested-action");
+	}
+}
+
 static gboolean
 window_keypress_handler (GtkWidget *widget, GdkEvent *event, gpointer data)
 {
@@ -325,6 +347,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), go_back);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), add_recipe);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), visible_page_changed);
+        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), start_or_stop_cooking);
 }
 
 static void

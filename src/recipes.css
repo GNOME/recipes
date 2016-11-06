@@ -22,3 +22,11 @@ box.searchbar {
 button.circular.small {
         padding: 0px;
 }
+
+image.checkmark.checked {
+	color: inherit;
+}
+
+image.checkmark:not(.checked) {
+	color: transparent;
+}

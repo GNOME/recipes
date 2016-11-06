@@ -38,6 +38,8 @@ struct _GrDetailsPage
 
         GrRecipe *recipe;
         GrChef *chef;
+        GrIngredientsList *ingredients;
+	gboolean cooking;
 
         GtkWidget *recipe_image;
         GtkWidget *prep_time_label;
@@ -49,13 +51,45 @@ struct _GrDetailsPage
         GtkWidget *ingredients_label;
         GtkWidget *instructions_label;
         GtkWidget *notes_label;
-
-        GrIngredientsList *ingredients;
+        GtkWidget *cooking_revealer;
+        GtkWidget *ingredients_check;
+        GtkWidget *preheat_check;
+        GtkWidget *instructions_check;
 };
 
 G_DEFINE_TYPE (GrDetailsPage, gr_details_page, GTK_TYPE_BOX)
 
 static void connect_store_signals (GrDetailsPage *page);
+
+static void
+set_cooking (GrDetailsPage *page,
+             gboolean       cooking)
+{
+	if (cooking == page->cooking)
+		return;
+
+	page->cooking = cooking;
+	gtk_revealer_set_reveal_child (GTK_REVEALER (page->cooking_revealer), cooking);
+}
+
+static void
+start_or_stop_cooking (GtkButton     *button,
+                       GrDetailsPage *page)
+{
+	if (page->cooking) {
+		gtk_revealer_set_reveal_child (GTK_REVEALER (page->cooking_revealer), FALSE);
+		gtk_button_set_label (button, _("Start cooking"));
+	}
+	else {
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->ingredients_check), FALSE);
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->preheat_check), FALSE);
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->instructions_check), FALSE);
+		gtk_revealer_set_reveal_child (GTK_REVEALER (page->cooking_revealer), TRUE);
+		gtk_button_set_label (button, _("Stop cooking"));
+	}
+
+	page->cooking = !page->cooking;
+}
 
 static void
 delete_recipe (GrDetailsPage *page)
@@ -147,10 +181,15 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, ingredients_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, instructions_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, notes_label);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, cooking_revealer);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, ingredients_check);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, instructions_check);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, preheat_check);
 
         gtk_widget_class_bind_template_callback (widget_class, edit_recipe);
         gtk_widget_class_bind_template_callback (widget_class, delete_recipe);
         gtk_widget_class_bind_template_callback (widget_class, more_recipes);
+        gtk_widget_class_bind_template_callback (widget_class, start_or_stop_cooking);
         gtk_widget_class_bind_template_callback (widget_class, serves_value_changed);
 }
 
@@ -257,3 +296,17 @@ connect_store_signals (GrDetailsPage *page)
 
         g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (details_page_reload), page);
 }
+
+gboolean
+gr_details_page_is_cooking (GrDetailsPage *page)
+{
+	return page->cooking;
+}
+
+void
+gr_details_page_set_cooking (GrDetailsPage *page,
+			     gboolean       cooking)
+{
+	set_cooking (page, cooking);
+}
+

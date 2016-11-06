@@ -222,6 +222,17 @@
                 <property name="pack-type">start</property>
               </packing>
             </child>
+	    <child>
+              <object class="GtkButton">
+		<property name="visible">1</property>
+		<property name="label" translatable="yes">Start cooking</property>
+		<style> <class name="suggested-action"/> </style>
+		<signal name="clicked" handler="start_or_stop_cooking"/>
+	      </object>
+              <packing>
+		<property name="pack-type">end</property>
+	      </packing>
+	    </child>
           </object>
           <packing>
             <property name="name">details</property>
