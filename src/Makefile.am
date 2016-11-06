@@ -56,6 +56,8 @@ recipes_SOURCES = \
 	gr-recipes-page.c	\
 	gr-search-page.h	\
 	gr-search-page.c	\
+	gr-toggle-button.h	\
+	gr-toggle-button.c	\
 	gr-utils.h		\
 	gr-utils.c		\
 	gr-window.h 		\
