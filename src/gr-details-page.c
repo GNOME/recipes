@@ -175,7 +175,6 @@ timer_complete (GrDetailsPage *page)
 
 	app = g_application_get_default ();
 
-g_print ("sending notification\n");
 	notification = g_notification_new (_("Time is up!"));
 	g_notification_set_body (notification, _("Your cooking timer has expired."));
 

@@ -79,7 +79,6 @@ tick_cb (GtkWidget     *widget,
 
         gtk_widget_queue_resize (widget);
 
-	//g_print ("now %ld start time %ld end time %ld\n", now, timer->start_time, timer->start_time + timer->duration);
         if (now - timer->start_time >= timer->duration) {
 		timer_complete (timer);
 	}
@@ -97,13 +96,11 @@ set_active (GrTimer  *timer,
         timer->active = active;
 
         if (active) {
-		g_print ("start timer\n");
 		timer->start_time = g_get_monotonic_time ();
                 timer->tick_id = gtk_widget_add_tick_callback (GTK_WIDGET (timer), tick_cb, NULL, NULL);
         }
         else {
                 if (timer->tick_id) {
-			g_print ("stop timer\n");
                         gtk_widget_remove_tick_callback (GTK_WIDGET (timer), timer->tick_id);
                         timer->tick_id = 0;
                 }
