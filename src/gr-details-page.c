@@ -55,6 +55,10 @@ struct _GrDetailsPage
         GtkWidget *ingredients_check;
         GtkWidget *preheat_check;
         GtkWidget *instructions_check;
+        GtkWidget *timer_button;
+        GtkWidget *timer;
+        GtkWidget *timer_stack;
+        GtkWidget *timer_popover;
 };
 
 G_DEFINE_TYPE (GrDetailsPage, gr_details_page, GTK_TYPE_BOX)
@@ -142,6 +146,43 @@ serves_value_changed (GrDetailsPage *page)
 }
 
 static void
+start_timer (GrDetailsPage *page)
+{
+	gboolean active;
+
+	g_object_get (page->timer, "active", &active, NULL);
+	if (active) {
+		g_object_set (page->timer, "active", FALSE, NULL);
+		gtk_stack_set_visible_child_name (GTK_STACK (page->timer_stack), "icon");
+		gtk_button_set_label (GTK_BUTTON (page->timer_button), _("Start"));
+	}
+	else {
+		g_object_set (page->timer, "active", TRUE, NULL);
+		gtk_stack_set_visible_child_name (GTK_STACK (page->timer_stack), "timer");
+		gtk_button_set_label (GTK_BUTTON (page->timer_button), _("Stop"));
+	}
+	gtk_popover_popdown (GTK_POPOVER (page->timer_popover));
+}
+
+static void
+timer_complete (GrDetailsPage *page)
+{
+	GApplication *app;
+	GNotification *notification;
+
+	gtk_stack_set_visible_child_name (GTK_STACK (page->timer_stack), "icon");
+	gtk_button_set_label (GTK_BUTTON (page->timer_button), _("Start"));
+
+	app = g_application_get_default ();
+
+g_print ("sending notification\n");
+	notification = g_notification_new (_("Time is up!"));
+	g_notification_set_body (notification, _("Your cooking timer has expired."));
+
+	g_application_send_notification (app, "timer", notification);
+}
+
+static void
 details_page_finalize (GObject *object)
 {
         GrDetailsPage *self = GR_DETAILS_PAGE (object);
@@ -185,12 +226,18 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, ingredients_check);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, instructions_check);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, preheat_check);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, timer_button);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, timer);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, timer_stack);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, timer_popover);
 
         gtk_widget_class_bind_template_callback (widget_class, edit_recipe);
         gtk_widget_class_bind_template_callback (widget_class, delete_recipe);
         gtk_widget_class_bind_template_callback (widget_class, more_recipes);
         gtk_widget_class_bind_template_callback (widget_class, start_or_stop_cooking);
         gtk_widget_class_bind_template_callback (widget_class, serves_value_changed);
+        gtk_widget_class_bind_template_callback (widget_class, start_timer);
+        gtk_widget_class_bind_template_callback (widget_class, timer_complete);
 }
 
 GtkWidget *

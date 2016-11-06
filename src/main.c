@@ -30,6 +30,7 @@
 #include "gr-list-page.h"
 #include "gr-recipes-page.h"
 #include "gr-search-page.h"
+#include "gr-timer.h"
 #include "gr-toggle-button.h"
 #include "gs-hiding-box.h"
 
@@ -49,6 +50,7 @@ main (int argc, char *argv[])
   g_type_ensure (GR_TYPE_LIST_PAGE);
   g_type_ensure (GR_TYPE_SEARCH_PAGE);
   g_type_ensure (GR_TYPE_RECIPES_PAGE);
+  g_type_ensure (GR_TYPE_TIMER);
   g_type_ensure (GR_TYPE_TOGGLE_BUTTON);
   g_type_ensure (GS_TYPE_HIDING_BOX);
 

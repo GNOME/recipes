@@ -62,10 +62,37 @@ followed</property>
               </packing>
             </child>
             <child>
-	            <object class="GtkButton">
-	      			  <property name="visible">1</property>
-	      			  <property name="valign">center</property>
-                <property name="label" translatable="yes">Timer</property>
+              <object class="GtkMenuButton">
+                <property name="visible">1</property>
+                <property name="relief">none</property>
+                <property name="popover">timer_popover</property>
+                <child>
+                  <object class="GtkStack" id="timer_stack">
+                    <property name="visible">1</property>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">1</property>
+                        <property name="icon-name">alarm-symbolic</property>
+                        <property name="pixel-size">24</property>
+                      </object>
+                      <packing>
+                        <property name="name">icon</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GrTimer" id="timer">
+                        <property name="visible">1</property>
+                        <property name="active">0</property>
+                        <property name="duration">20000000</property>
+                        <property name="valign">center</property>
+                        <signal name="complete" handler="timer_complete" swapped="yes"/>
+                      </object>
+                      <packing>
+                        <property name="name">timer</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
               </object>
             </child>
           </object>
@@ -333,4 +360,19 @@ followed</property>
       </packing>
     </child>
   </template>
+  <object class="GtkPopover" id="timer_popover">
+    <child>
+      <object class="GtkBox">
+        <property name="visible">1</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkButton" id="timer_button">
+            <property name="visible">1</property>
+            <property name="label">Start</property>
+            <signal name="clicked" handler="start_timer" swapped="yes"/>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
 </interface>
