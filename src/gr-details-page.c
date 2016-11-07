@@ -75,27 +75,19 @@ set_cooking (GrDetailsPage *page,
 	if (cooking == page->cooking)
 		return;
 
-	page->cooking = cooking;
-	gtk_revealer_set_reveal_child (GTK_REVEALER (page->cooking_revealer), cooking);
-}
-
-static void
-start_or_stop_cooking (GtkButton     *button,
-                       GrDetailsPage *page)
-{
-	if (page->cooking) {
-		gtk_revealer_set_reveal_child (GTK_REVEALER (page->cooking_revealer), FALSE);
-		gtk_button_set_label (button, _("Start cooking"));
+	if (cooking) {
+		g_object_set (page->ingredients_check, "active", FALSE, NULL);
+		g_object_set (page->preheat_check, "active", FALSE, NULL);
+		g_object_set (page->instructions_check, "active", FALSE, NULL);
+		gtk_stack_set_visible_child_name (GTK_STACK (page->timer_stack), "icon");
+		gtk_revealer_set_reveal_child (GTK_REVEALER (page->cooking_revealer), TRUE);
 	}
 	else {
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->ingredients_check), FALSE);
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->preheat_check), FALSE);
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->instructions_check), FALSE);
-		gtk_revealer_set_reveal_child (GTK_REVEALER (page->cooking_revealer), TRUE);
-		gtk_button_set_label (button, _("Stop cooking"));
+ 		g_object_set (page->timer, "active", FALSE, NULL);
+		gtk_revealer_set_reveal_child (GTK_REVEALER (page->cooking_revealer), FALSE);
 	}
 
-	page->cooking = !page->cooking;
+	page->cooking = cooking;
 }
 
 static void
@@ -301,7 +293,6 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, edit_recipe);
         gtk_widget_class_bind_template_callback (widget_class, delete_recipe);
         gtk_widget_class_bind_template_callback (widget_class, more_recipes);
-        gtk_widget_class_bind_template_callback (widget_class, start_or_stop_cooking);
         gtk_widget_class_bind_template_callback (widget_class, serves_value_changed);
         gtk_widget_class_bind_template_callback (widget_class, start_timer);
         gtk_widget_class_bind_template_callback (widget_class, timer_complete);
