@@ -364,15 +364,47 @@ followed</property>
     <child>
       <object class="GtkBox">
         <property name="visible">1</property>
+        <property name="margin">12</property>
+        <property name="spacing">12</property>
         <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">1</property>
+            <property name="xalign">0</property>
+            <property name="label" translatable="yes">Duration</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">1</property>
+            <property name="orientation">horizontal</property>
+            <child>
+              <object class="GtkSpinButton" id="time_spin">
+                <property name="visible">1</property>
+                <property name="adjustment">time_adjustment</property>
+                <property name="width-chars">5</property>
+                <signal name="input" handler="time_spin_input"/>
+                <signal name="output" handler="time_spin_output"/>
+              </object>
+            </child>
+          </object>
+        </child>
         <child>
           <object class="GtkButton" id="timer_button">
             <property name="visible">1</property>
-            <property name="label">Start</property>
+            <property name="label" translatable="yes">Start</property>
+            <property name="halign">end</property>
             <signal name="clicked" handler="start_timer" swapped="yes"/>
           </object>
         </child>
       </object>
     </child>
+  </object>
+  <object class="GtkAdjustment" id="time_adjustment">
+    <property name="lower">0</property>
+    <property name="upper">1440</property>
+    <property name="page_size">0</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">15</property>
   </object>
 </interface>

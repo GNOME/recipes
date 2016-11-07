@@ -1,7 +1,7 @@
 bin_PROGRAMS = recipes
 
 recipes_CFLAGS = $(RECIPES_CFLAGS) -DPKG_DATA_DIR=\"$(pkgdatadir)\" -O0 -ggdb
-recipes_LDADD = $(RECIPES_LIBS)
+recipes_LDADD = $(RECIPES_LIBS) -lm
 recipes_SOURCES = \
 	main.c 			\
 	gr-app.h 		\

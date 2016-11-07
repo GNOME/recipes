@@ -21,6 +21,8 @@
 
 #include "config.h"
 
+#include <stdlib.h>
+#include <math.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
@@ -59,6 +61,7 @@ struct _GrDetailsPage
         GtkWidget *timer;
         GtkWidget *timer_stack;
         GtkWidget *timer_popover;
+        GtkWidget *time_spin;
 };
 
 G_DEFINE_TYPE (GrDetailsPage, gr_details_page, GTK_TYPE_BOX)
@@ -155,11 +158,19 @@ start_timer (GrDetailsPage *page)
 		g_object_set (page->timer, "active", FALSE, NULL);
 		gtk_stack_set_visible_child_name (GTK_STACK (page->timer_stack), "icon");
 		gtk_button_set_label (GTK_BUTTON (page->timer_button), _("Start"));
+                gtk_widget_set_sensitive (page->time_spin, TRUE);
 	}
 	else {
-		g_object_set (page->timer, "active", TRUE, NULL);
+                int minutes;
+
+                minutes = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (page->time_spin));
+		g_object_set (page->timer,
+                              "active", TRUE,
+                              "duration", minutes * 60000000,
+                              NULL);
 		gtk_stack_set_visible_child_name (GTK_STACK (page->timer_stack), "timer");
 		gtk_button_set_label (GTK_BUTTON (page->timer_button), _("Stop"));
+                gtk_widget_set_sensitive (page->time_spin, FALSE);
 	}
 	gtk_popover_popdown (GTK_POPOVER (page->timer_popover));
 }
@@ -172,6 +183,7 @@ timer_complete (GrDetailsPage *page)
 
 	gtk_stack_set_visible_child_name (GTK_STACK (page->timer_stack), "icon");
 	gtk_button_set_label (GTK_BUTTON (page->timer_button), _("Start"));
+        gtk_widget_set_sensitive (page->time_spin, TRUE);
 
 	app = g_application_get_default ();
 
@@ -179,6 +191,61 @@ timer_complete (GrDetailsPage *page)
 	g_notification_set_body (notification, _("Your cooking timer has expired."));
 
 	g_application_send_notification (app, "timer", notification);
+}
+
+static int
+time_spin_input (GtkSpinButton *spin_button,
+                 double        *new_val)
+{
+  	const char *text;
+  	char **str;
+  	gboolean found = FALSE;
+  	int hours;
+  	int minutes;
+  	char *endh;
+  	char *endm;
+
+  	text = gtk_entry_get_text (GTK_ENTRY (spin_button));
+  	str = g_strsplit (text, ":", 2);
+
+  	if (g_strv_length (str) == 2) {
+      		hours = strtol (str[0], &endh, 10);
+      		minutes = strtol (str[1], &endm, 10);
+      		if (!*endh && !*endm &&
+                    0 <= hours && hours < 24 &&
+                    0 <= minutes && minutes < 60) {
+                        *new_val = hours * 60 + minutes;
+                        found = TRUE;
+                }
+        }
+
+        g_strfreev (str);
+
+        if (!found) {
+                *new_val = 0.0;
+                return GTK_INPUT_ERROR;
+        }
+
+        return TRUE;
+}
+
+static int
+time_spin_output (GtkSpinButton *spin_button)
+{
+        GtkAdjustment *adjustment;
+        char *buf;
+        double hours;
+        double minutes;
+
+        adjustment = gtk_spin_button_get_adjustment (spin_button);
+        hours = gtk_adjustment_get_value (adjustment) / 60.0;
+        minutes = (hours - floor (hours)) * 60.0;
+        buf = g_strdup_printf ("%02.0f:%02.0f", floor (hours), floor (minutes + 0.5));
+        if (strcmp (buf, gtk_entry_get_text (GTK_ENTRY (spin_button))))
+                gtk_entry_set_text (GTK_ENTRY (spin_button), buf);
+        g_free (buf);
+
+        return TRUE;
 }
 
 static void
@@ -229,6 +296,7 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, timer);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, timer_stack);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, timer_popover);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, time_spin);
 
         gtk_widget_class_bind_template_callback (widget_class, edit_recipe);
         gtk_widget_class_bind_template_callback (widget_class, delete_recipe);
@@ -237,6 +305,8 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, serves_value_changed);
         gtk_widget_class_bind_template_callback (widget_class, start_timer);
         gtk_widget_class_bind_template_callback (widget_class, timer_complete);
+        gtk_widget_class_bind_template_callback (widget_class, time_spin_input);
+        gtk_widget_class_bind_template_callback (widget_class, time_spin_output);
 }
 
 GtkWidget *
