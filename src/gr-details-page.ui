@@ -100,215 +100,222 @@ followed</property>
       </object>
     </child>
     <child>
-      <object class="GtkBox">
+      <object class="GtkScrolledWindow">
         <property name="visible">1</property>
-        <property name="expand">1</property>
-        <style>
-          <class name="view"/>
-        </style>
+        <property name="hscrollbar-policy">never</property>
         <child>
-          <object class="GtkGrid">
+          <object class="GtkBox">
             <property name="visible">1</property>
-            <property name="margin">40</property>
-            <property name="row-spacing">20</property>
-            <property name="column-spacing">20</property>
-            <property name="halign">center</property>
-            <property name="valign">start</property>
+            <property name="expand">1</property>
+            <style>
+              <class name="view"/>
+            </style>
             <child>
-              <object class="GtkImage" id="recipe_image">
+              <object class="GtkGrid">
                 <property name="visible">1</property>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">1</property>
-                <property name="height">4</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">1</property>
-                <property name="label" translatable="yes">Preparation time:</property>
-                <property name="xalign">0</property>
-              </object>
-              <packing>
-                <property name="left-attach">1</property>
-                <property name="top-attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="prep_time_label">
-                <property name="visible">1</property>
-                <property name="xalign">0</property>
-              </object>
-              <packing>
-                <property name="left-attach">2</property>
-                <property name="top-attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">1</property>
-                <property name="label" translatable="yes">Cooking time:</property>
-                <property name="xalign">0</property>
-              </object>
-              <packing>
-                <property name="left-attach">1</property>
-                <property name="top-attach">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="cook_time_label">
-                <property name="visible">1</property>
-                <property name="xalign">0</property>
-              </object>
-              <packing>
-                <property name="left-attach">2</property>
-                <property name="top-attach">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">1</property>
-                <property name="label" translatable="yes">Serves:</property>
-                <property name="xalign">0</property>
-              </object>
-              <packing>
-                <property name="left-attach">1</property>
-                <property name="top-attach">3</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSpinButton" id="serves_spin">
-                <property name="visible">1</property>
-                <property name="halign">start</property>
-                <property name="valign">center</property>
-                <property name="adjustment">serves_adjustment</property>
-                <property name="width-chars">2</property>
-                <signal name="value-changed" handler="serves_value_changed" swapped="yes"/>
-              </object>
-              <packing>
-                <property name="left-attach">2</property>
-                <property name="top-attach">3</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">1</property>
-                <property name="label" translatable="yes">Description:</property>
-                <property name="xalign">0</property>
-              </object>
-              <packing>
-                <property name="left-attach">1</property>
-                <property name="top-attach">4</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="description_label">
-                <property name="visible">1</property>
-                <property name="xalign">0</property>
-              </object>
-              <packing>
-                <property name="left-attach">2</property>
-                <property name="top-attach">4</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkBox">
-                <property name="visible">1</property>
-                <property name="orientation">vertical</property>
+                <property name="margin">40</property>
+                <property name="row-spacing">20</property>
+                <property name="column-spacing">20</property>
+                <property name="halign">center</property>
+                <property name="valign">start</property>
                 <child>
-                  <object class="GtkLabel" id="chef_label">
+                  <object class="GtkImage" id="recipe_image">
                     <property name="visible">1</property>
-                    <property name="xalign">0</property>
-                    <property name="yalign">0</property>
                     <property name="valign">start</property>
                   </object>
                   <packing>
-                    <property name="expand">1</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">1</property>
+                    <property name="height">4</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLinkButton" id="chef_link">
+                  <object class="GtkLabel">
                     <property name="visible">1</property>
-                    <property name="valign">end</property>
-                    <property name="halign">end</property>
-                    <signal name="activate-link" handler="more_recipes" swapped="yes"/>
+                    <property name="label" translatable="yes">Preparation time:</property>
+                    <property name="xalign">0</property>
                   </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="prep_time_label">
+                    <property name="visible">1</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">2</property>
+                    <property name="top-attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="label" translatable="yes">Cooking time:</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="cook_time_label">
+                    <property name="visible">1</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">2</property>
+                    <property name="top-attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="label" translatable="yes">Serves:</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSpinButton" id="serves_spin">
+                    <property name="visible">1</property>
+                    <property name="halign">start</property>
+                    <property name="valign">center</property>
+                    <property name="adjustment">serves_adjustment</property>
+                    <property name="width-chars">2</property>
+                    <signal name="value-changed" handler="serves_value_changed" swapped="yes"/>
+                  </object>
+                  <packing>
+                    <property name="left-attach">2</property>
+                    <property name="top-attach">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="label" translatable="yes">Description:</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="description_label">
+                    <property name="visible">1</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">2</property>
+                    <property name="top-attach">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">1</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkLabel" id="chef_label">
+                        <property name="visible">1</property>
+                        <property name="xalign">0</property>
+                        <property name="yalign">0</property>
+                        <property name="valign">start</property>
+                      </object>
+                      <packing>
+                        <property name="expand">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLinkButton" id="chef_link">
+                        <property name="visible">1</property>
+                        <property name="valign">end</property>
+                        <property name="halign">end</property>
+                        <signal name="activate-link" handler="more_recipes" swapped="yes"/>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left-attach">3</property>
+                    <property name="top-attach">1</property>
+                    <property name="height">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="label" translatable="yes">Ingredients</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">5</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="ingredients_label">
+                    <property name="visible">1</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">6</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="label" translatable="yes">Instructions</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">7</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="instructions_label">
+                    <property name="visible">1</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">8</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="label" translatable="yes">Additional notes</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">9</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="notes_label">
+                    <property name="visible">1</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">10</property>
+                  </packing>
                 </child>
               </object>
               <packing>
-                <property name="left-attach">3</property>
-                <property name="top-attach">1</property>
-                <property name="height">4</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">1</property>
-                <property name="label" translatable="yes">Ingredients</property>
-                <property name="xalign">0</property>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">5</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="ingredients_label">
-                <property name="visible">1</property>
-                <property name="xalign">0</property>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">6</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">1</property>
-                <property name="label" translatable="yes">Instructions</property>
-                <property name="xalign">0</property>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">7</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="instructions_label">
-                <property name="visible">1</property>
-                <property name="xalign">0</property>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">8</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">1</property>
-                <property name="label" translatable="yes">Additional notes</property>
-                <property name="xalign">0</property>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">9</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="notes_label">
-                <property name="visible">1</property>
-                <property name="xalign">0</property>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">10</property>
+                <property name="expand">1</property>
               </packing>
             </child>
           </object>
-          <packing>
-            <property name="expand">1</property>
-          </packing>
         </child>
       </object>
     </child>
@@ -377,7 +384,6 @@ followed</property>
         <child>
           <object class="GtkBox">
             <property name="visible">1</property>
-            <property name="orientation">horizontal</property>
             <child>
               <object class="GtkSpinButton" id="time_spin">
                 <property name="visible">1</property>
@@ -401,10 +407,8 @@ followed</property>
     </child>
   </object>
   <object class="GtkAdjustment" id="time_adjustment">
-    <property name="lower">0</property>
     <property name="upper">1440</property>
-    <property name="page_size">0</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">15</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">15</property>
   </object>
 </interface>
