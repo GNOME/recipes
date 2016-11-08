@@ -32,6 +32,7 @@
 #include "gr-ingredients-list.h"
 #include "gr-cuisine.h"
 #include "gr-category.h"
+#include "gr-images.h"
 
 
 struct _GrEditPage
@@ -60,7 +61,11 @@ struct _GrEditPage
         GtkWidget *vegan_check;
         GtkWidget *vegetarian_check;
         GtkWidget *milk_free_check;
-        GtkWidget *image;
+        GtkWidget *images;
+        GtkWidget *add_image_button;
+        GtkWidget *remove_image_button;
+        GtkWidget *rotate_image_right_button;
+        GtkWidget *rotate_image_left_button;
 };
 
 G_DEFINE_TYPE (GrEditPage, gr_edit_page, GTK_TYPE_BOX)
@@ -72,58 +77,41 @@ dismiss_error (GrEditPage *page)
 }
 
 static void
-update_image (GrEditPage *page)
+images_changed (GrEditPage *page)
 {
-        if (page->image_path != NULL && page->image_path[0] != '\0') {
-		g_autoptr(GdkPixbuf) pixbuf = NULL;
-                pixbuf = load_pixbuf_at_size (page->image_path, 164, 164);
-                gtk_image_set_from_pixbuf (GTK_IMAGE (page->image), pixbuf);
-		gtk_style_context_remove_class (gtk_widget_get_style_context (page->image), "dim-label");
-        }
-        else {
-		gtk_image_set_from_icon_name (GTK_IMAGE (page->image), "camera-photo-symbolic", 1);
-		gtk_image_set_pixel_size (GTK_IMAGE (page->image), 96);
-		gtk_style_context_add_class (gtk_widget_get_style_context (page->image), "dim-label");
-        }
+        g_auto(GStrv) images = NULL;
+        int length;
+
+        g_object_get (page->images, "images", &images, NULL);
+        length = g_strv_length (images);
+        gtk_widget_set_sensitive (page->add_image_button, length < 4);
+        gtk_widget_set_sensitive (page->remove_image_button, length > 0);
+        gtk_widget_set_sensitive (page->rotate_image_left_button, length > 0);
+        gtk_widget_set_sensitive (page->rotate_image_right_button, length > 0);
 }
 
 static void
-file_chooser_response (GtkNativeDialog *self,
-                       gint             response_id,
-                       GrEditPage      *page)
+add_image (GrEditPage *page)
 {
-        if (response_id == GTK_RESPONSE_ACCEPT) {
-                g_autoptr(GdkPixbuf) pixbuf = NULL;
-                g_free (page->image_path);
-                page->image_path = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (self));
-		update_image (page);
-        }
+        gr_images_add_image (GR_IMAGES (page->images));
 }
 
 static void
-image_button_clicked (GrEditPage *page)
+remove_image (GrEditPage *page)
 {
-        GtkWidget *window;
-        GtkFileChooserNative *chooser;
-        g_autoptr(GtkFileFilter) filter = NULL;
+        gr_images_remove_image (GR_IMAGES (page->images));
+}
 
-        window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
-        chooser = gtk_file_chooser_native_new (_("Select an Image"),
-                                               GTK_WINDOW (window),
-                                               GTK_FILE_CHOOSER_ACTION_OPEN,
-                                               _("Open"),
-                                               _("Cancel"));
-        gtk_native_dialog_set_modal (GTK_NATIVE_DIALOG (chooser), TRUE);
+static void
+rotate_image_left (GrEditPage *page)
+{
+        gr_images_rotate_image (GR_IMAGES (page->images), 90);
+}
 
-        filter = gtk_file_filter_new ();
-        gtk_file_filter_set_name (filter, _("Image files"));
-        gtk_file_filter_add_mime_type (filter, "image/*");
-        gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), filter);
-        gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (chooser), filter);
-
-        g_signal_connect (chooser, "response", G_CALLBACK (file_chooser_response), page);
-
-        gtk_native_dialog_show (GTK_NATIVE_DIALOG (chooser));
+static void
+rotate_image_right (GrEditPage *page)
+{
+        gr_images_rotate_image (GR_IMAGES (page->images), 270);
 }
 
 static void
@@ -229,10 +217,18 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, vegan_check);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, vegetarian_check);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, milk_free_check);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, image);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, images);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, add_image_button);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, remove_image_button);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, rotate_image_left_button);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, rotate_image_right_button);
 
-        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), image_button_clicked);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), dismiss_error);
+        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), add_image);
+        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), remove_image);
+        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), rotate_image_left);
+        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), rotate_image_right);
+        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), images_changed);
 }
 
 GtkWidget *
@@ -298,6 +294,7 @@ gr_edit_page_clear (GrEditPage *page)
 {
         GtkTextBuffer *buffer;
         GrRecipeStore *store;
+        const char *paths[1] = { NULL };
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
@@ -321,7 +318,7 @@ gr_edit_page_clear (GrEditPage *page)
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->milk_free_check), FALSE);
 
 	g_clear_pointer (&page->image_path, g_free);
-	update_image (page);
+        g_object_set (page->images, "images", paths, NULL);
 
 	g_free (page->author);
 	page->author = g_strdup (gr_recipe_store_get_user_key (store));
@@ -385,7 +382,7 @@ gr_edit_page_edit (GrEditPage *page,
 
 	g_free (page->image_path);
         page->image_path = g_strdup (image_path);
-	update_image (page);
+	//update_image (page);
 
         page->fail_if_exists = FALSE;
         g_free (page->old_name);

@@ -115,14 +115,8 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton">
-                    <property name="visible">1</property>
-                    <signal name="clicked" handler="image_button_clicked" swapped="yes"/>
-                    <child>
-                      <object class="GtkImage" id="image">
-                        <property name="visible">1</property>
-                      </object>
-                    </child>
+                  <object class="GrImages" id="images">
+                    <signal name="notify::images" handler="images_changed" swapped="yes"/>
                   </object>
                   <packing>
                     <property name="left-attach">1</property>
@@ -139,7 +133,113 @@
                   <packing>
                     <property name="left-attach">0</property>
                     <property name="top-attach">4</property>
-                    <property name="width">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">1</property>
+                    <property name="orientation">horizontal</property>
+                    <property name="spacing">10</property>
+                    <child>
+                      <object class="GtkButton" id="add_image_button">
+                        <property name="visible">1</property>
+                        <property name="halign">center</property>
+                        <property name="valign">start</property>
+                        <property name="tooltip-text" translatable="yes">Add an image</property>
+                        <style>
+                          <class name="image-button"/>
+                          <class name="circular"/>
+                          <class name="dim-label"/>
+                        </style>
+                        <signal name="clicked" handler="add_image" swapped="yes"/>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">1</property>
+                            <property name="icon-name">list-add-symbolic</property>
+                            <property name="pixel-size">20</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="remove_image_button">
+                        <property name="visible">1</property>
+                        <property name="halign">center</property>
+                        <property name="valign">start</property>
+                        <property name="tooltip-text" translatable="yes">Remove image</property>
+                        <style>
+                          <class name="image-button"/>
+                          <class name="circular"/>
+                          <class name="dim-label"/>
+                        </style>
+                        <signal name="clicked" handler="remove_image" swapped="yes"/>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">1</property>
+                            <property name="icon-name">edit-delete-symbolic</property>
+                            <property name="pixel-size">20</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="rotate_image_left_button">
+                        <property name="visible">1</property>
+                        <property name="halign">center</property>
+                        <property name="valign">start</property>
+                        <property name="tooltip-text" translatable="yes">Rotate image</property>
+                        <style>
+                          <class name="image-button"/>
+                          <class name="circular"/>
+                          <class name="dim-label"/>
+                        </style>
+                        <signal name="clicked" handler="rotate_image_left" swapped="yes"/>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">1</property>
+                            <property name="icon-name">object-rotate-left-symbolic</property>
+                            <property name="pixel-size">20</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="rotate_image_right_button">
+                        <property name="visible">1</property>
+                        <property name="halign">center</property>
+                        <property name="valign">start</property>
+                        <property name="tooltip-text" translatable="yes">Rotate image</property>
+                        <style>
+                          <class name="image-button"/>
+                          <class name="circular"/>
+                          <class name="dim-label"/>
+                        </style>
+                        <signal name="clicked" handler="rotate_image_right" swapped="yes"/>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">1</property>
+                            <property name="icon-name">object-rotate-right-symbolic</property>
+                            <property name="pixel-size">20</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">4</property>
                   </packing>
                 </child>
                 <child>

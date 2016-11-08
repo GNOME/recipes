@@ -33,6 +33,7 @@
 #include "gr-timer.h"
 #include "gr-toggle-button.h"
 #include "gs-hiding-box.h"
+#include "gr-images.h"
 
 
 int
@@ -45,6 +46,7 @@ main (int argc, char *argv[])
   g_type_ensure (GR_TYPE_CUISINES_PAGE);
   g_type_ensure (GR_TYPE_DETAILS_PAGE);
   g_type_ensure (GR_TYPE_EDIT_PAGE);
+  g_type_ensure (GR_TYPE_IMAGES);
   g_type_ensure (GR_TYPE_INGREDIENTS_PAGE);
   g_type_ensure (GR_TYPE_INGREDIENTS_SEARCH_PAGE);
   g_type_ensure (GR_TYPE_LIST_PAGE);

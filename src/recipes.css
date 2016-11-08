@@ -30,3 +30,8 @@ image.checkmark.checked {
 image.checkmark:not(.checked) {
 	color: transparent;
 }
+
+image.framed {
+  border: 1px solid #222222;
+  border-radius: 4px;
+}

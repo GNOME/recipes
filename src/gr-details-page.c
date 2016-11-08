@@ -353,7 +353,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         g_set_object (&page->ingredients, ing);
 
         if (image_path) {
-                pixbuf = load_pixbuf_at_size (image_path, 256, 256);
+                pixbuf = load_pixbuf_fit_size (image_path, 0, 256, 256);
                 gtk_image_set_from_pixbuf (GTK_IMAGE (page->recipe_image), pixbuf);
         }
         gtk_label_set_label (GTK_LABEL (page->prep_time_label), prep_time);
