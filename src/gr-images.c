@@ -23,6 +23,28 @@
 #include "gr-images.h"
 #include "gr-utils.h"
 
+static void
+gr_rotated_image_clear (gpointer data)
+{
+        GrRotatedImage *image = data;
+
+        g_clear_pointer (&image->path, g_free);
+        image->angle = 0;
+}
+
+static gpointer
+gr_rotated_image_copy (gpointer data)
+{
+        GrRotatedImage *image = data;
+        GrRotatedImage *copy;
+
+        copy = g_new (GrRotatedImage, 1);
+        copy->path = g_strdup (image->path);
+        copy->angle = image->angle;
+
+        return copy;
+}
+
 struct _GrImages
 {
 	GtkBox parent_instance;
@@ -32,8 +54,7 @@ struct _GrImages
         GtkWidget *image1;
         GtkWidget *image2;
 
-	char **images;
-        int *angles;
+        GArray *images;
 };
 
 G_DEFINE_TYPE (GrImages, gr_images, GTK_TYPE_BOX)
@@ -53,57 +74,41 @@ gr_images_new (void)
 }
 
 static void
-set_thumb_image (GtkImage   *image,
-                 const char *path,
-                 int         angle)
+set_thumb_image (GtkImage       *image,
+                 GrRotatedImage *ri)
 {
         g_autoptr(GdkPixbuf) pixbuf = NULL;
 
-        pixbuf = load_pixbuf_fill_size (path, angle, 48, 32);
+        pixbuf = load_pixbuf_fill_size (ri->path, ri->angle, 48, 32);
         gtk_image_set_from_pixbuf (image, pixbuf);
-        g_object_set_data_full (G_OBJECT (image), "path", g_strdup (path), g_free);
-        g_object_set_data (G_OBJECT (image), "angle", GINT_TO_POINTER (angle));
+        g_object_set_data_full (G_OBJECT (image), "path", g_strdup (ri->path), g_free);
+        g_object_set_data (G_OBJECT (image), "angle", GINT_TO_POINTER (ri->angle));
 }
 
 static void
-add_image (GrImages   *images,
-           const char *path,
-           gboolean    select)
+add_image (GrImages       *images,
+           GrRotatedImage *ri,
+           gboolean        select)
 {
         GtkWidget *image;
         char **paths;
         int *angles;
-        int length;
         int i;
 
         image = gtk_image_new ();
         gtk_widget_show (image);
         gtk_container_add (GTK_CONTAINER (images->switcher), image);
 
-        set_thumb_image (GTK_IMAGE (image), path, 0);
+        set_thumb_image (GTK_IMAGE (image), ri);
 
-        length = g_strv_length (images->images);
-        paths = g_new (char*, length + 2);
-        angles = g_new (int, length + 2);
-        for (i = 0; i < length; i++) {
-                paths[i] = images->images[i];
-                angles[i] = images->angles[i];
-        }
-        paths[length] = g_strdup (path);
-        paths[length + 1] = NULL;
-        angles[length] = 0;
-        angles[length + 1] = 0;
+        g_array_append_vals (images->images, ri, 1);
+        ri = &g_array_index (images->images, GrRotatedImage, images->images->len - 1);
+        ri->path = g_strdup (ri->path);
 
-        g_free (images->images);
-        images->images = paths;
-
-        g_free (images->angles);
-        images->angles = angles;
-
-        if (length >= 1)
+        if (images->images->len >= 1)
                 gtk_widget_show (images->switcher);
 
-        if (length == 0)
+        if (images->images->len == 0)
                 gtk_list_box_select_row (GTK_LIST_BOX (images->switcher),
                                          gtk_list_box_get_row_at_index (GTK_LIST_BOX (images->switcher), 0));
         else if (select)
@@ -114,28 +119,26 @@ add_image (GrImages   *images,
 }
 
 static void
-set_images (GrImages    *images,
-            const char **paths)
+set_images (GrImages *images,
+            GArray   *array)
 {
         int i;
 
         g_object_freeze_notify (G_OBJECT (images));
 
         container_remove_all (GTK_CONTAINER (images->switcher));
-        g_strfreev (images->images);
-        images->images = g_new0 (char *, 1);
-        g_free (images->angles);
-        images->angles = NULL;
+        g_array_remove_range (images->images, 0, images->images->len);
 
         g_object_notify (G_OBJECT (images), "images");
 
-        if (g_strv_length ((char **)paths) == 0) {
+        if (array->len == 0) {
                 gtk_widget_hide (images->switcher);
                 gtk_stack_set_visible_child_name (GTK_STACK (images->stack), "placeholder");
         }
 
-        for (i = 0; paths[i]; i++) {
-                add_image (images, paths[i], FALSE);
+        for (i = 0; i < array->len; i++) {
+                GrRotatedImage *ri = &g_array_index (array, GrRotatedImage, i);
+                add_image (images, ri, FALSE);
         }
 
         g_object_thaw_notify (G_OBJECT (images));
@@ -147,9 +150,14 @@ file_chooser_response (GtkNativeDialog *self,
                        GrImages        *images)
 {
         if (response_id == GTK_RESPONSE_ACCEPT) {
-                g_autofree char *path = NULL;
-                path = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (self));
-                add_image (images, path, TRUE);
+                GrRotatedImage ri;
+
+                ri.path = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (self));
+                ri.angle = 0;
+
+                add_image (images, &ri, TRUE);
+
+                g_free (ri.path);
         }
 }
 
@@ -201,16 +209,9 @@ gr_images_remove_image (GrImages *images)
         idx = gtk_list_box_row_get_index (row);
 
         gtk_container_remove (GTK_CONTAINER (images->switcher), GTK_WIDGET (row));
+        g_array_remove_index (images->images, idx);
 
-        g_free (images->images[idx]);
-        for (i = idx; images->images[i]; i++) {
-                images->images[i] = images->images[i+1];
-                images->angles[i] = images->angles[i+1];
-        }
-
-        length = g_strv_length (images->images);
-
-        if (idx < length) {
+        if (idx < images->images->len) {
                 row = gtk_list_box_get_row_at_index (GTK_LIST_BOX (images->switcher), idx);
                 gtk_list_box_select_row (GTK_LIST_BOX (images->switcher), row);
         }
@@ -219,9 +220,9 @@ gr_images_remove_image (GrImages *images)
                 gtk_list_box_select_row (GTK_LIST_BOX (images->switcher), row);
         }
 
-        if (length == 0)
+        if (images->images->len == 0)
                 gtk_stack_set_visible_child_name (GTK_STACK (images->stack), "placeholder");
-        if (length <= 1)
+        if (images->images->len <= 1)
                 gtk_widget_hide (images->switcher);
 
         g_object_notify (G_OBJECT (images), "images");
@@ -263,6 +264,7 @@ gr_images_rotate_image (GrImages *images,
         GtkListBoxRow *row;
         GtkWidget *image;
         int idx;
+        GrRotatedImage *ri;
 
         g_assert (angle == 0 || angle == 90 || angle == 180 || angle == 270);
 
@@ -271,11 +273,14 @@ gr_images_rotate_image (GrImages *images,
                 return;
 
         idx = gtk_list_box_row_get_index (row);
-        images->angles[idx] = (images->angles[idx] + angle) % 360;
-        g_print ("angle now %d]n", images->angles[idx]);
+
+        g_print ("angle was %d, adding %d\n", ri->angle, angle);
+        ri = &g_array_index (images->images, GrRotatedImage, idx);
+        ri->angle = (ri->angle + angle) % 360;
+        g_print ("angle now %d\n", ri->angle);
 
         image = gtk_bin_get_child (GTK_BIN (row));
-        set_thumb_image (GTK_IMAGE (image), images->images[idx], images->angles[idx]);
+        set_thumb_image (GTK_IMAGE (image), ri);
 
         row_selected (GTK_LIST_BOX (images->switcher), row, images);
 }
@@ -285,7 +290,7 @@ gr_images_finalize (GObject *object)
 {
 	GrImages *self = (GrImages *)object;
 
-        g_strfreev (self->images);
+        g_array_free (self->images, TRUE);
 
 	G_OBJECT_CLASS (gr_images_parent_class)->finalize (object);
 }
@@ -320,7 +325,7 @@ gr_images_set_property (GObject      *object,
 	switch (prop_id)
 	  {
           case PROP_IMAGES:
-                  set_images (self, (const char **) g_value_get_boxed (value));
+                  set_images (self, (GArray *) g_value_get_boxed (value));
                   break;
 
 	  default:
@@ -340,7 +345,7 @@ gr_images_class_init (GrImagesClass *klass)
 	object_class->set_property = gr_images_set_property;
 
         pspec = g_param_spec_boxed ("images", NULL, NULL,
-                                    G_TYPE_STRV,
+                                    G_TYPE_ARRAY,
                                     G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_IMAGES, pspec);
 
@@ -362,5 +367,6 @@ gr_images_init (GrImages *self)
         gtk_widget_init_template (GTK_WIDGET (self));
         gtk_stack_set_visible_child_name (GTK_STACK (self->stack), "placeholder");
 
-        self->images = g_new0 (char *, 1);
+        self->images = g_array_new (TRUE, TRUE, sizeof (GrRotatedImage));
+        g_array_set_clear_func (self->images, gr_rotated_image_clear);
 }

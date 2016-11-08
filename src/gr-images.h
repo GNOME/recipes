@@ -22,7 +22,10 @@
 
 G_BEGIN_DECLS
 
-#define GR_TYPE_ROTATED_IMAGE_ARRAY (gr_rotated_image_array_get_type ())
+typedef struct {
+	char *path;
+	int angle;
+} GrRotatedImage;
 
 #define GR_TYPE_IMAGES (gr_images_get_type())
 

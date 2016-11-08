@@ -79,11 +79,11 @@ dismiss_error (GrEditPage *page)
 static void
 images_changed (GrEditPage *page)
 {
-        g_auto(GStrv) images = NULL;
+        g_autoptr(GArray) images = NULL;
         int length;
 
         g_object_get (page->images, "images", &images, NULL);
-        length = g_strv_length (images);
+        length = images->len;
         gtk_widget_set_sensitive (page->add_image_button, length < 4);
         gtk_widget_set_sensitive (page->remove_image_button, length > 0);
         gtk_widget_set_sensitive (page->rotate_image_left_button, length > 0);
