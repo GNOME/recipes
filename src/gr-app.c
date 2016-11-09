@@ -81,7 +81,7 @@ about_activated (GSimpleAction *action,
                                "license-type", GTK_LICENSE_GPL_3_0,
                                "comments", _("GNOME loves to cook"),
                                "authors", authors,
-                               "logo-icon-name", "missing-image",
+                               "logo-icon-name", "org.gnome.Recipes",
                                "title", _("About GNOME Recipes"),
                                NULL);
 
