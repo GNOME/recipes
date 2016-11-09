@@ -4,6 +4,7 @@ feature: keep a 'cooked this recipe n times' counter
 feature: unit conversion and preferences
 data: collect data for cuisines
 data: collect data for ingredients
+code: add getters to avoid a lot of allocation
 code: improve search implementation
 code: reconsider storage with a proper db
 code: move header bars to page types, somehow
