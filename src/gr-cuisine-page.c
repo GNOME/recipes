@@ -236,18 +236,16 @@ gr_cuisine_page_set_cuisine (GrCuisinePage *self, const char *cuisine)
         keys = gr_recipe_store_get_recipe_keys (store, &length);
         for (j = 0; j < length; j++) {
                 g_autoptr(GrRecipe) recipe = NULL;
-                g_autofree char *name = NULL;
-                g_autofree char *cuisine2 = NULL;
-                g_autofree char *category = NULL;
+                const char *name;
+                const char *cuisine2;
+                const char *category;
                 GtkWidget *tile;
                 Category *c;
 
                 recipe = gr_recipe_store_get (store, keys[j]);
-                g_object_get (recipe,
-                              "name", &name,
-                              "cuisine", &cuisine2,
-                              "category", &category,
-                              NULL);
+                name = gr_recipe_get_name (recipe);
+                cuisine2 = gr_recipe_get_cuisine (recipe);
+                category = gr_recipe_get_category (recipe);
 
                 if (g_strcmp0 (cuisine, cuisine2) != 0)
                         continue;

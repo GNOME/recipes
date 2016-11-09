@@ -109,7 +109,7 @@ gr_list_page_populate_from_diet (GrListPage *self, GrDiets diet)
 		GrDiets diets;
 
 		recipe = gr_recipe_store_get (store, keys[i]);
-		g_object_get (recipe, "diets", &diets, NULL);
+                diets = gr_recipe_get_diets (recipe);
 		if ((diets & diet) == 0)
 			continue;
 
@@ -123,7 +123,7 @@ void
 gr_list_page_populate_from_chef (GrListPage *self, GrChef *chef)
 {
 	GrRecipeStore *store;
-	g_autofree char *name = NULL;
+	const char *name;
 	g_autofree char **keys = NULL;
 	guint length;
 	int i;
@@ -133,18 +133,19 @@ gr_list_page_populate_from_chef (GrListPage *self, GrChef *chef)
 
 	container_remove_all (GTK_CONTAINER (self->flow_box));
 
-	g_object_get (chef, "name", &name, NULL);
+        name = gr_chef_get_name (chef);
 
 	store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
 	keys = gr_recipe_store_get_recipe_keys (store, &length);
 	for (i = 0; i < length; i++) {
 		g_autoptr(GrRecipe) recipe = NULL;
-		g_autofree char *author = NULL;
+		const char *author;
 		GtkWidget *tile;
 
 		recipe = gr_recipe_store_get (store, keys[i]);
-		g_object_get (recipe, "author", &author, NULL);
+                author = gr_recipe_get_author (recipe);
+
 		if (g_strcmp0 (name, author) != 0)
 			continue;
 

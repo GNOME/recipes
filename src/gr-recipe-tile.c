@@ -56,19 +56,20 @@ show_details (GrRecipeTile *tile)
 static void
 recipe_tile_set_recipe (GrRecipeTile *tile, GrRecipe *recipe)
 {
+        const char *name;
+        const char *author;
         g_autofree char *image_path = NULL;
-        g_autofree char *name = NULL;
         g_autofree char *tmp = NULL;
-        g_autofree char *author = NULL;
         g_autoptr(GArray) images = NULL;
 
         g_set_object (&tile->recipe, recipe);
         if (!recipe)
                 return;
 
+        name = gr_recipe_get_name (recipe);
+        author = gr_recipe_get_author (recipe);
+
         g_object_get (recipe,
-                      "name", &name,
-                      "author", &author,
                       "images", &images,
                       NULL);
 

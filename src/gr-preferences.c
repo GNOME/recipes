@@ -172,19 +172,16 @@ gr_preferences_init (GrPreferences *self)
 		chef = gr_recipe_store_get_chef (store, name);
 
 	if (chef) {
-		g_autofree char *name2 = NULL;
-		g_autofree char *fullname = NULL;
-		g_autofree char *description = NULL;
-		g_autofree char *image_path = NULL;
+		const char *fullname;
+		const char *description;
+		const char *image_path;
 
-		g_object_get (chef,
-			      "name", &name2,
-			      "fullname", &fullname,
-			      "description", &description,
-			      "image-path", &image_path,
-			      NULL);
+                name = gr_chef_get_name (chef);
+                fullname = gr_chef_get_fullname (chef);
+                description = gr_chef_get_description (chef);
+                image_path = gr_chef_get_image (chef);
 
-		gtk_entry_set_text (GTK_ENTRY (self->name), name2 ? name2 : "");
+		gtk_entry_set_text (GTK_ENTRY (self->name), name ? name : "");
 		gtk_entry_set_text (GTK_ENTRY (self->fullname), fullname ? fullname : "");
 		gtk_entry_set_text (GTK_ENTRY (self->description), description ? description : "");
 

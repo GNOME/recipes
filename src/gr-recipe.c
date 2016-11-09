@@ -389,3 +389,98 @@ gr_recipe_matches (GrRecipe *self, const char *term)
 
         return TRUE;
 }
+
+const char *
+gr_recipe_get_name (GrRecipe *recipe)
+{
+        GrRecipePrivate *priv = gr_recipe_get_instance_private (recipe);
+
+        return priv->name;
+}
+const char *
+gr_recipe_get_author (GrRecipe *recipe)
+{
+        GrRecipePrivate *priv = gr_recipe_get_instance_private (recipe);
+
+        return priv->author;
+}
+
+const char *
+gr_recipe_get_description (GrRecipe *recipe)
+{
+        GrRecipePrivate *priv = gr_recipe_get_instance_private (recipe);
+
+        return priv->description;
+}
+
+int
+gr_recipe_get_serves (GrRecipe *recipe)
+{
+        GrRecipePrivate *priv = gr_recipe_get_instance_private (recipe);
+
+        return priv->serves;
+}
+
+const char *
+gr_recipe_get_cuisine (GrRecipe *recipe)
+{
+        GrRecipePrivate *priv = gr_recipe_get_instance_private (recipe);
+
+        return priv->cuisine;
+}
+
+const char *
+gr_recipe_get_category (GrRecipe *recipe)
+{
+        GrRecipePrivate *priv = gr_recipe_get_instance_private (recipe);
+
+        return priv->category;
+}
+
+const char *
+gr_recipe_get_prep_time (GrRecipe *recipe)
+{
+        GrRecipePrivate *priv = gr_recipe_get_instance_private (recipe);
+
+        return priv->prep_time;
+}
+
+const char *
+gr_recipe_get_cook_time (GrRecipe *recipe)
+{
+        GrRecipePrivate *priv = gr_recipe_get_instance_private (recipe);
+
+        return priv->cook_time;
+}
+
+GrDiets
+gr_recipe_get_diets (GrRecipe *recipe)
+{
+        GrRecipePrivate *priv = gr_recipe_get_instance_private (recipe);
+
+        return priv->diets;
+}
+
+const char *
+gr_recipe_get_ingredients (GrRecipe *recipe)
+{
+        GrRecipePrivate *priv = gr_recipe_get_instance_private (recipe);
+
+        return priv->ingredients;
+}
+
+const char *
+gr_recipe_get_instructions (GrRecipe *recipe)
+{
+        GrRecipePrivate *priv = gr_recipe_get_instance_private (recipe);
+
+        return priv->instructions;
+}
+
+const char *
+gr_recipe_get_notes (GrRecipe *recipe)
+{
+        GrRecipePrivate *priv = gr_recipe_get_instance_private (recipe);
+
+        return priv->notes;
+}

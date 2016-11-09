@@ -99,10 +99,10 @@ static void
 set_cooking (GrDetailsPage *page,
              gboolean       cooking)
 {
-        g_autofree char *name;
+        const char *name;
         CookingData *cd;
 
-        g_object_get (page->recipe, "name", &name, NULL);
+        name = gr_recipe_get_name (page->recipe);
 
         cd = g_hash_table_lookup (page->cooking, name);
 
@@ -171,7 +171,7 @@ serves_value_changed (GrDetailsPage *page)
         g_autofree char *text = NULL;
 
         new_value = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (page->serves_spin));
-        g_object_get (page->recipe, "serves", &serves, NULL);
+        serves = gr_recipe_get_serves (page->recipe);
 
         text = gr_ingredients_list_scale (page->ingredients, new_value, serves);
 
@@ -283,10 +283,10 @@ check_clicked (GtkWidget     *button,
                GrDetailsPage *page)
 {
         CookingData *cd;
-        g_autofree char *name = NULL;
+        const char *name;
         gboolean active;
 
-        g_object_get (page->recipe, "name", &name, NULL);
+        name = gr_recipe_get_name (page->recipe);
         cd = g_hash_table_lookup (page->cooking, name);
 
         g_assert (cd);
@@ -379,12 +379,13 @@ void
 gr_details_page_set_recipe (GrDetailsPage *page,
                             GrRecipe      *recipe)
 {
-        g_autofree char *name = NULL;
-        g_autofree char *prep_time = NULL;
-        g_autofree char *cook_time = NULL;
+        const char *name;
+        const char *author;
+        const char *description;
+        const char *author_desc;
+        const char *prep_time;
+        const char *cook_time;
         int serves;
-        g_autofree char *description = NULL;
-        g_autofree char *author = NULL;
         g_autofree char *ingredients = NULL;
         g_autofree char *instructions = NULL;
         g_autofree char *notes = NULL;
@@ -392,21 +393,21 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         g_autoptr(GdkPixbuf) pixbuf = NULL;
         GrRecipeStore *store;
         g_autoptr(GrChef) chef = NULL;
-        g_autofree char *author_desc = NULL;
         g_autoptr(GrIngredientsList) ing = NULL;
         g_autoptr(GArray) images = NULL;
         gboolean cooking;
 
         g_set_object (&page->recipe, recipe);
 
+        name = gr_recipe_get_name (recipe);
+        author = gr_recipe_get_author (recipe);
+        description = gr_recipe_get_description (recipe);
+        serves = gr_recipe_get_serves (recipe);
+        prep_time = gr_recipe_get_prep_time (recipe);
+        cook_time = gr_recipe_get_cook_time (recipe);
+
         g_object_get (recipe,
-                      "name", &name,
                       "images", &images,
-                      "prep-time", &prep_time,
-                      "cook-time", &cook_time,
-                      "serves", &serves,
-                      "description", &description,
-                      "author", &author,
                       "ingredients", &ingredients,
                       "instructions", &instructions,
                       "notes", &notes,
@@ -432,7 +433,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         gtk_label_set_label (GTK_LABEL (page->description_label), description);
 
         if (page->chef)
-                g_object_get (page->chef, "description", &author_desc, NULL);
+                author_desc = gr_chef_get_description (page->chef);
 
         if (author_desc)
                 tmp = g_strdup_printf (_("About GNOME chef %s:\n%s"), author, author_desc);
@@ -450,13 +451,14 @@ gr_details_page_set_recipe (GrDetailsPage *page,
 }
 
 static void
-details_page_reload (GrDetailsPage *page, GrRecipe *recipe)
+details_page_reload (GrDetailsPage *page,
+                     GrRecipe      *recipe)
 {
-        g_autofree char *name;
-        g_autofree char *new_name;
+        const char *name;
+        const char *new_name;
 
-        g_object_get (page->recipe, "name", &name, NULL);
-        g_object_get (recipe, "name", &new_name, NULL);
+        name = gr_recipe_get_name (page->recipe);
+        new_name = gr_recipe_get_name (recipe);
         if (strcmp (name, new_name) == 0)
                 gr_details_page_set_recipe (page, recipe);
 }

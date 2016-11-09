@@ -396,7 +396,7 @@ void
 gr_window_show_recipe (GrWindow *window,
                        GrRecipe *recipe)
 {
-        g_autofree char *name = NULL;
+        const char *name;
 
 	save_back_entry (window);
 
@@ -406,7 +406,7 @@ gr_window_show_recipe (GrWindow *window,
 
         gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (window->search_bar), FALSE);
 
-        g_object_get (recipe, "name", &name, NULL);
+        name = gr_recipe_get_name (recipe);
         gtk_header_bar_set_title (GTK_HEADER_BAR (window->details_header), name);
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_stack), "details");
@@ -417,13 +417,13 @@ void
 gr_window_edit_recipe (GrWindow *window,
                        GrRecipe *recipe)
 {
-        g_autofree char *name = NULL;
+        const char *name;
 
 	save_back_entry (window);
 
         gr_edit_page_edit (GR_EDIT_PAGE (window->edit_page), recipe);
 
-        g_object_get (recipe, "name", &name, NULL);
+        name = gr_recipe_get_name (recipe);
         gtk_header_bar_set_title (GTK_HEADER_BAR (window->edit_header), name);
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_stack), "edit");
@@ -449,11 +449,11 @@ gr_window_show_chef (GrWindow *window,
                      GrChef  *chef)
 {
 	g_autofree char *title = NULL;
-	g_autofree char *name = NULL;
+	const char *name;
 
 	save_back_entry (window);
 
-	g_object_get (chef, "name", &name, NULL);
+        name = gr_chef_get_name (chef);
 	title = g_strdup_printf (_("Recipes by %s"), name);
         gtk_header_bar_set_title (GTK_HEADER_BAR (window->list_header), title);
 	gr_list_page_populate_from_chef (GR_LIST_PAGE (window->list_page), chef);
@@ -468,7 +468,6 @@ gr_window_show_cuisine (GrWindow   *window,
                         const char *title)
 {
 	save_back_entry (window);
-
         gr_cuisine_page_set_cuisine (GR_CUISINE_PAGE (window->cuisine_page), cuisine);
         gtk_header_bar_set_title (GTK_HEADER_BAR (window->cuisine_header), title);
 

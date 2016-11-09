@@ -303,16 +303,16 @@ save_recipes (GrRecipeStore *self)
 
         g_hash_table_iter_init (&iter, self->recipes);
         while (g_hash_table_iter_next (&iter, (gpointer *)&key, (gpointer *)&recipe)) {
-                g_autofree char *name = NULL;
-                g_autofree char *author = NULL;
-                g_autofree char *description = NULL;
-                g_autofree char *cuisine = NULL;
-                g_autofree char *category = NULL;
-                g_autofree char *prep_time = NULL;
-                g_autofree char *cook_time = NULL;
-                g_autofree char *ingredients = NULL;
-                g_autofree char *instructions = NULL;
-                g_autofree char *notes = NULL;
+                const char *name;
+                const char *author;
+                const char *description;
+                const char *cuisine;
+                const char *category;
+                const char *prep_time;
+                const char *cook_time;
+                const char *ingredients;
+                const char *instructions;
+                const char *notes;
                 g_autoptr(GArray) images = NULL;
                 int serves;
                 GrDiets diets;
@@ -320,20 +320,20 @@ save_recipes (GrRecipeStore *self)
                 g_autofree int *angles = NULL;
                 int i;
 
-                g_object_get (recipe,
-                              "name", &name,
-                              "author", &author,
-                              "description", &description,
-                              "cuisine", &cuisine,
-                              "category", &category,
-                              "prep-time", &prep_time,
-                              "cook-time", &cook_time,
-                              "ingredients", &ingredients,
-                              "instructions", &instructions,
-                              "serves", &serves,
-                              "diets", &diets,
-                              "images", &images,
-                              NULL);
+                name = gr_recipe_get_name (recipe);
+                author = gr_recipe_get_author (recipe);
+                description = gr_recipe_get_description (recipe);
+                serves = gr_recipe_get_serves (recipe);
+                cuisine = gr_recipe_get_cuisine (recipe);
+                category = gr_recipe_get_category (recipe);
+                prep_time = gr_recipe_get_prep_time (recipe);
+                cook_time = gr_recipe_get_cook_time (recipe);
+                diets = gr_recipe_get_diets (recipe);
+                ingredients = gr_recipe_get_ingredients (recipe);
+                instructions = gr_recipe_get_instructions (recipe);
+                notes = gr_recipe_get_notes (recipe);
+
+                g_object_get (recipe, "images", &images, NULL);
 
                 tmp = get_user_data_dir ();
                 paths = g_new0 (char *, images->len + 1);
@@ -525,30 +525,29 @@ save_chefs (GrRecipeStore *store)
 
         g_hash_table_iter_init (&iter, store->chefs);
         while (g_hash_table_iter_next (&iter, (gpointer *)&key, (gpointer *)&chef)) {
-                g_autofree char *name = NULL;
-                g_autofree char *fullname = NULL;
-                g_autofree char *description = NULL;
-                g_autofree char *image_path = NULL;
+                const char *name;
+                const char *fullname;
+                const char *description;
+                const char *image_path;
 
-                g_object_get (chef,
-                              "name", &name,
-                              "fullname", &fullname,
-                              "description", &description,
-                              "image-path", &image_path,
-                              NULL);
+                name = gr_chef_get_name (chef);
+                fullname = gr_chef_get_fullname (chef);
+                description = gr_chef_get_description (chef);
+                image_path = gr_chef_get_image (chef);
 
                 tmp = get_user_data_dir ();
                 if (g_str_has_prefix (image_path, tmp)) {
-                        char *tmp2;
+                        g_autofree char *tmp2 = NULL;
+
                         tmp2 = g_strdup (image_path + strlen (tmp) + 1);
-                        g_free (image_path);
-                        image_path = tmp2;
+                        g_key_file_set_string (keyfile, key, "Image", tmp2);
                 }
+                else
+                        g_key_file_set_string (keyfile, key, "Image", image_path ? image_path : "");
 
                 g_key_file_set_string (keyfile, key, "Name", name ? name : "");
                 g_key_file_set_string (keyfile, key, "Fullname", fullname ? fullname : "");
                 g_key_file_set_string (keyfile, key, "Description", description ? description : "");
-                g_key_file_set_string (keyfile, key, "Image", image_path ? image_path : "");
         }
 
         if (!g_key_file_save_to_file (keyfile, path, &error)) {
@@ -679,9 +678,9 @@ recipe_store_set (GrRecipeStore  *self,
                   gboolean        fail_if_exists,
                   GError        **error)
 {
-        g_autofree char *name = NULL;
+        const char *name;
 
-        g_object_get (recipe, "name", &name, NULL);
+        name = gr_recipe_get_name (recipe);
         if (name == NULL || name[0] == '\0') {
                 g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
                              _("You need to provide a name for the recipe"));
@@ -722,11 +721,12 @@ gr_recipe_store_update (GrRecipeStore  *self,
                         GError        **error)
 {
         gboolean ret;
-        g_autofree char *name = NULL;
+        const char *name;
 
         g_object_ref (recipe);
 
-        g_object_get (recipe, "name", &name, NULL);
+        name = gr_recipe_get_name (recipe);
+
         if (g_strcmp0 (name, old_name) != 0) {
                 g_hash_table_remove (self->recipes, old_name);
                 ret = recipe_store_set (self, recipe, TRUE, error);
@@ -744,10 +744,10 @@ gboolean
 gr_recipe_store_remove (GrRecipeStore *self,
                         GrRecipe      *recipe)
 {
-        g_autofree char *name = NULL;
+        const char *name;
         gboolean ret = FALSE;
 
-        g_object_get (recipe, "name", &name, NULL);
+        name = gr_recipe_get_name (recipe);
 
         g_object_ref (recipe);
 
@@ -787,12 +787,12 @@ gboolean
 gr_recipe_store_is_todays (GrRecipeStore *self,
                            GrRecipe      *recipe)
 {
-        g_autofree char *name = NULL;
+        const char *name;
 
         if (self->todays == NULL)
                 return FALSE;
 
-        g_object_get (recipe, "name", &name, NULL);
+        name = gr_recipe_get_name (recipe);
 
         return g_strv_contains ((const char *const*)self->todays, name);
 }
@@ -801,12 +801,12 @@ gboolean
 gr_recipe_store_is_pick (GrRecipeStore *self,
                          GrRecipe      *recipe)
 {
-        g_autofree char *name = NULL;
+        const char *name;
 
         if (self->picks == NULL)
                 return FALSE;
 
-        g_object_get (recipe, "name", &name, NULL);
+        name = gr_recipe_get_name (recipe);
 
         return g_strv_contains ((const char *const*)self->picks, name);
 }
@@ -843,9 +843,10 @@ recipe_store_set_chef (GrRecipeStore  *self,
                        GrChef         *chef,
                        GError        **error)
 {
-        g_autofree char *name = NULL;
+        const char *name;
 
-        g_object_get (chef, "name", &name, NULL);
+        name = gr_chef_get_name (chef);
+
         if (name == NULL || name[0] == '\0') {
                 g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
                              _("You need to provide a name"));
@@ -871,10 +872,10 @@ gr_recipe_store_update_user (GrRecipeStore  *self,
                              GrChef         *chef,
                              GError        **error)
 {
-        g_autofree char *name = NULL;
+        const char *name;
         gboolean ret = TRUE;
 
-        g_object_get (chef, "name", &name, NULL);
+        name = gr_chef_get_name (chef);
 
         if (name != NULL && name[0] != '\0') {
                 if (g_strcmp0 (name, self->user) == 0) {
@@ -896,12 +897,12 @@ gboolean
 gr_recipe_store_chef_is_featured (GrRecipeStore *self,
                                   GrChef        *chef)
 {
-        g_autofree char *name = NULL;
+        const char *name;
 
         if (self->featured_chefs == NULL)
                 return FALSE;
 
-        g_object_get (chef, "name", &name, NULL);
+        name = gr_chef_get_name (chef);
 
         return g_strv_contains ((const char *const*)self->featured_chefs, name);
 }
@@ -919,11 +920,11 @@ gr_recipe_store_get_all_ingredients (GrRecipeStore *self, guint *length)
 
         g_hash_table_iter_init (&iter, self->recipes);
         while (g_hash_table_iter_next (&iter, NULL, (gpointer *)&recipe)) {
-                g_autofree char *ingredients = NULL;
+                const char *ingredients;
                 GrIngredientsList *list = NULL;
                 g_autofree char **ret = NULL;
 
-                g_object_get (recipe, "ingredients", &ingredients, NULL);
+                ingredients = gr_recipe_get_ingredients (recipe);
 
                 if (!ingredients || ingredients[0] == '\0')
                         continue;

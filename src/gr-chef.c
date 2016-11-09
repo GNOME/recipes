@@ -165,3 +165,35 @@ gr_chef_new (void)
 {
         return g_object_new (GR_TYPE_CHEF, NULL);
 }
+
+const char *
+gr_chef_get_name (GrChef *chef)
+{
+        GrChefPrivate *priv = gr_chef_get_instance_private (chef);
+
+        return priv->name;
+}
+
+const char *
+gr_chef_get_fullname (GrChef *chef)
+{
+        GrChefPrivate *priv = gr_chef_get_instance_private (chef);
+
+        return priv->fullname;
+}
+
+const char *
+gr_chef_get_description (GrChef *chef)
+{
+        GrChefPrivate *priv = gr_chef_get_instance_private (chef);
+
+        return priv->description;
+}
+
+const char *
+gr_chef_get_image (GrChef *chef)
+{
+        GrChefPrivate *priv = gr_chef_get_instance_private (chef);
+
+        return priv->image_path;
+}

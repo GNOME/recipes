@@ -88,8 +88,8 @@ gr_chef_tile_class_init (GrChefTileClass *klass)
 static void
 chef_tile_set_chef (GrChefTile *tile, GrChef *chef)
 {
-	g_autofree char *name = NULL;
-        g_autofree char *image_path = NULL;
+	const char *name;
+        const char *image_path;
 	g_autoptr(GdkPixbuf) pixbuf = NULL;
 	GtkStyleContext *context;
 	g_autofree char *css = NULL;
@@ -97,10 +97,8 @@ chef_tile_set_chef (GrChefTile *tile, GrChef *chef)
 
 	g_set_object (&tile->chef, chef);
 
-	g_object_get (chef,
-                      "name", &name,
-                      "image-path", &image_path,
-                      NULL);
+        name = gr_chef_get_name (chef);
+        image_path = gr_chef_get_image (chef);
 
 	gtk_label_set_label (GTK_LABEL (tile->label), name);
 

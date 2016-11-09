@@ -329,37 +329,36 @@ gr_edit_page_edit (GrEditPage *page,
                    GrRecipe   *recipe)
 {
         GtkTextBuffer *buffer;
-        g_autofree char *name = NULL;
-        g_autofree char *description = NULL;
-        g_autofree char *cuisine = NULL;
-        g_autofree char *category = NULL;
-        g_autofree char *prep_time = NULL;
-        g_autofree char *cook_time = NULL;
+        const char *name;
+        const char *author;
+        const char *description;
+        const char *cuisine;
+        const char *category;
+        const char *prep_time;
+        const char *cook_time;
         int serves;
-        g_autofree char *ingredients = NULL;
-        g_autofree char *instructions = NULL;
-        g_autofree char *notes = NULL;
+        const char *ingredients;
+        const char *instructions;
+        const char *notes;
         g_autofree char *image_path = NULL;
-        g_autofree char *author = NULL;
         g_autoptr(GdkPixbuf) pixbuf = NULL;
         GrDiets diets;
         g_autoptr(GArray) images = NULL;
 
-        g_object_get (recipe,
-                      "name", &name,
-                      "description", &description,
-                      "cuisine", &cuisine,
-                      "category", &category,
-                      "prep-time", &prep_time,
-                      "cook-time", &cook_time,
-                      "serves", &serves,
-                      "ingredients", &ingredients,
-                      "instructions", &instructions,
-                      "notes", &notes,
-                      "diets", &diets,
-                      "images", &images,
-                      "author", &author,
-                      NULL);
+        name = gr_recipe_get_name (recipe);
+        author = gr_recipe_get_author (recipe);
+        description = gr_recipe_get_description (recipe);
+        serves = gr_recipe_get_serves (recipe);
+        cuisine = gr_recipe_get_cuisine (recipe);
+        category = gr_recipe_get_category (recipe);
+        prep_time = gr_recipe_get_prep_time (recipe);
+        cook_time = gr_recipe_get_cook_time (recipe);
+        diets = gr_recipe_get_diets (recipe);
+        ingredients = gr_recipe_get_ingredients (recipe);
+        instructions = gr_recipe_get_instructions (recipe);
+        notes = gr_recipe_get_notes (recipe);
+
+        g_object_get (recipe, "images", &images, NULL);
 
         gtk_entry_set_text (GTK_ENTRY (page->name_entry), name);
         gtk_entry_set_text (GTK_ENTRY (page->description_entry), description);

@@ -31,6 +31,10 @@ struct _GrChefClass
 	GObjectClass parent;
 };
 
-GrChef *gr_chef_new (void);
+GrChef     *gr_chef_new             (void);
+const char *gr_chef_get_name        (GrChef *chef);
+const char *gr_chef_get_fullname    (GrChef *chef);
+const char *gr_chef_get_description (GrChef *chef);
+const char *gr_chef_get_image       (GrChef *chef);
 
 G_END_DECLS

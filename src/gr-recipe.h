@@ -42,6 +42,20 @@ typedef enum { /*< flags >*/
 
 GrRecipe *gr_recipe_new (void);
 
-gboolean  gr_recipe_matches (GrRecipe *recipe, const char *term);
+const char *gr_recipe_get_name         (GrRecipe   *recipe);
+const char *gr_recipe_get_author       (GrRecipe   *recipe);
+const char *gr_recipe_get_description  (GrRecipe   *recipe);
+int         gr_recipe_get_serves       (GrRecipe   *recipe);
+const char *gr_recipe_get_cuisine      (GrRecipe   *recipe);
+const char *gr_recipe_get_category     (GrRecipe   *recipe);
+const char *gr_recipe_get_prep_time    (GrRecipe   *recipe);
+const char *gr_recipe_get_cook_time    (GrRecipe   *recipe);
+GrDiets     gr_recipe_get_diets        (GrRecipe   *recipe);
+const char *gr_recipe_get_ingredients  (GrRecipe   *recipe);
+const char *gr_recipe_get_instructions (GrRecipe   *recipe);
+const char *gr_recipe_get_notes        (GrRecipe   *recipe);
+
+gboolean    gr_recipe_matches          (GrRecipe   *recipe,
+				        const char *term);
 
 G_END_DECLS
