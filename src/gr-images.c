@@ -305,10 +305,8 @@ gr_images_rotate_image (GrImages *images,
 
         idx = gtk_list_box_row_get_index (row);
 
-        g_print ("angle was %d, adding %d\n", ri->angle, angle);
         ri = &g_array_index (images->images, GrRotatedImage, idx);
         ri->angle = (ri->angle + angle) % 360;
-        g_print ("angle now %d\n", ri->angle);
 
         image = gtk_bin_get_child (GTK_BIN (row));
         set_thumb_image (GTK_IMAGE (image), ri);
