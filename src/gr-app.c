@@ -70,8 +70,16 @@ about_activated (GSimpleAction *action,
         const char *authors[] = {
                 "Emel Elvin Yıldız",
                 "Matthias Clasen",
+                "Jakub Steiner",
                 NULL
         };
+        g_autoptr(GdkPixbuf) logo = NULL;
+
+        logo = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+                                         "org.gnome.Recipes",
+                                         256,
+                                         GTK_ICON_LOOKUP_FORCE_SIZE,
+                                         NULL);
 
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
         gtk_show_about_dialog (GTK_WINDOW (win),
@@ -81,7 +89,7 @@ about_activated (GSimpleAction *action,
                                "license-type", GTK_LICENSE_GPL_3_0,
                                "comments", _("GNOME loves to cook"),
                                "authors", authors,
-                               "logo-icon-name", "org.gnome.Recipes",
+                               "logo", logo,
                                "title", _("About GNOME Recipes"),
                                NULL);
 
