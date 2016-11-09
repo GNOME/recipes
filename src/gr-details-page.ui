@@ -32,6 +32,7 @@
                 <property name="relief">none</property>
                 <property name="label" translatable="yes">Ingredients
 gathered</property>
+                <signal name="clicked" handler="check_clicked"/>
               </object>
               <packing>
                 <property name="expand">1</property>
@@ -44,6 +45,7 @@ gathered</property>
                 <property name="relief">none</property>
                 <property name="label" translatable="yes">Oven
 preheated</property>
+                <signal name="clicked" handler="check_clicked"/>
               </object>
               <packing>
                 <property name="expand">1</property>
@@ -56,6 +58,7 @@ preheated</property>
                 <property name="relief">none</property>
                 <property name="label" translatable="yes">Instructions
 followed</property>
+                <signal name="clicked" handler="check_clicked"/>
               </object>
               <packing>
                 <property name="expand">1</property>

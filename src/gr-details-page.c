@@ -34,6 +34,33 @@
 #include "gr-ingredients-list.h"
 
 
+typedef struct {
+        gboolean ingredients;
+        gboolean preheat;
+        gboolean instructions;
+} CookingData;
+
+static CookingData *
+cooking_data_new (void)
+{
+        CookingData *cd;
+
+        cd = g_new (CookingData, 1);
+        cd->ingredients = FALSE;
+        cd->preheat = FALSE;
+        cd->instructions = FALSE;
+
+        return cd;
+}
+
+static void
+cooking_data_free (gpointer data)
+{
+        CookingData *cd = data;
+
+        g_free (cd);
+}
+
 struct _GrDetailsPage
 {
         GtkBox parent_instance;
@@ -41,7 +68,7 @@ struct _GrDetailsPage
         GrRecipe *recipe;
         GrChef *chef;
         GrIngredientsList *ingredients;
-	gboolean cooking;
+        GHashTable *cooking;
 
         GtkWidget *recipe_image;
         GtkWidget *prep_time_label;
@@ -72,22 +99,33 @@ static void
 set_cooking (GrDetailsPage *page,
              gboolean       cooking)
 {
-	if (cooking == page->cooking)
-		return;
+        g_autofree char *name;
+        CookingData *cd;
+
+        g_object_get (page->recipe, "name", &name, NULL);
+
+        cd = g_hash_table_lookup (page->cooking, name);
 
 	if (cooking) {
-		g_object_set (page->ingredients_check, "active", FALSE, NULL);
-		g_object_set (page->preheat_check, "active", FALSE, NULL);
-		g_object_set (page->instructions_check, "active", FALSE, NULL);
+                if (!cd) {
+                        cd = cooking_data_new ();
+                        g_hash_table_insert (page->cooking, g_strdup (name), cd);
+                }
+
+		g_object_set (page->ingredients_check, "active", cd->ingredients, NULL);
+		g_object_set (page->preheat_check, "active", cd->preheat, NULL);
+		g_object_set (page->instructions_check, "active", cd->instructions, NULL);
+
 		gtk_stack_set_visible_child_name (GTK_STACK (page->timer_stack), "icon");
 		gtk_revealer_set_reveal_child (GTK_REVEALER (page->cooking_revealer), TRUE);
 	}
 	else {
+                if (cd)
+                        g_hash_table_remove (page->cooking, name);
+
  		g_object_set (page->timer, "active", FALSE, NULL);
 		gtk_revealer_set_reveal_child (GTK_REVEALER (page->cooking_revealer), FALSE);
 	}
-
-	page->cooking = cooking;
 }
 
 static void
@@ -241,6 +279,29 @@ time_spin_output (GtkSpinButton *spin_button)
 }
 
 static void
+check_clicked (GtkWidget     *button,
+               GrDetailsPage *page)
+{
+        CookingData *cd;
+        g_autofree char *name = NULL;
+        gboolean active;
+
+        g_object_get (page->recipe, "name", &name, NULL);
+        cd = g_hash_table_lookup (page->cooking, name);
+
+        g_assert (cd);
+
+        g_object_get (button, "active", &active, NULL);
+
+        if (button == page->ingredients_check)
+                cd->ingredients = active;
+        else if (button == page->preheat_check)
+                cd->preheat = active;
+        else if (button == page->instructions_check)
+                cd->instructions = active;
+}
+
+static void
 details_page_finalize (GObject *object)
 {
         GrDetailsPage *self = GR_DETAILS_PAGE (object);
@@ -248,6 +309,7 @@ details_page_finalize (GObject *object)
         g_clear_object (&self->recipe);
         g_clear_object (&self->chef);
         g_clear_object (&self->ingredients);
+        g_clear_pointer (&self->cooking, g_hash_table_unref);
 
         G_OBJECT_CLASS (gr_details_page_parent_class)->finalize (object);
 }
@@ -258,6 +320,7 @@ gr_details_page_init (GrDetailsPage *page)
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
         gtk_widget_init_template (GTK_WIDGET (page));
         connect_store_signals (page);
+        page->cooking = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, cooking_data_free);
 }
 
 static void
@@ -298,6 +361,7 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, timer_complete);
         gtk_widget_class_bind_template_callback (widget_class, time_spin_input);
         gtk_widget_class_bind_template_callback (widget_class, time_spin_output);
+        gtk_widget_class_bind_template_callback (widget_class, check_clicked);
 }
 
 GtkWidget *
@@ -315,7 +379,7 @@ void
 gr_details_page_set_recipe (GrDetailsPage *page,
                             GrRecipe      *recipe)
 {
-        g_autofree char *image_path = NULL;
+        g_autofree char *name = NULL;
         g_autofree char *prep_time = NULL;
         g_autofree char *cook_time = NULL;
         int serves;
@@ -331,10 +395,12 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         g_autofree char *author_desc = NULL;
         g_autoptr(GrIngredientsList) ing = NULL;
         g_autoptr(GArray) images = NULL;
+        gboolean cooking;
 
         g_set_object (&page->recipe, recipe);
 
         g_object_get (recipe,
+                      "name", &name,
                       "images", &images,
                       "prep-time", &prep_time,
                       "cook-time", &cook_time,
@@ -378,6 +444,9 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         tmp = g_strdup_printf (_("More recipes by %s"), author);
         gtk_button_set_label (GTK_BUTTON (page->chef_link), tmp);
         g_free (tmp);
+
+        cooking = g_hash_table_lookup (page->cooking, name) != NULL;
+        set_cooking (page, cooking);
 }
 
 static void
@@ -405,7 +474,7 @@ connect_store_signals (GrDetailsPage *page)
 gboolean
 gr_details_page_is_cooking (GrDetailsPage *page)
 {
-	return page->cooking;
+	return gtk_revealer_get_reveal_child (GTK_REVEALER (page->cooking_revealer));
 }
 
 void

@@ -223,11 +223,11 @@
               </packing>
             </child>
 	    <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="cooking_button">
 		<property name="visible">1</property>
 		<property name="label" translatable="yes">Start cooking</property>
 		<style> <class name="suggested-action"/> </style>
-		<signal name="clicked" handler="start_or_stop_cooking"/>
+		<signal name="clicked" handler="start_or_stop_cooking" swapped="yes"/>
 	      </object>
               <packing>
 		<property name="pack-type">end</property>
