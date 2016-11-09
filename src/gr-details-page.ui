@@ -119,8 +119,9 @@ followed</property>
                 <property name="halign">center</property>
                 <property name="valign">start</property>
                 <child>
-                  <object class="GtkImage" id="recipe_image">
+                  <object class="GrImages" id="recipe_image">
                     <property name="visible">1</property>
+                    <property name="flip">1</property>
                     <property name="valign">start</property>
                   </object>
                   <packing>

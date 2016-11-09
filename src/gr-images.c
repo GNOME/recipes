@@ -45,6 +45,17 @@ gr_rotated_image_copy (gpointer data)
         return copy;
 }
 
+GArray *
+gr_rotated_image_array_new (void)
+{
+        GArray *a;
+
+        a = g_array_new (TRUE, TRUE, sizeof (GrRotatedImage));
+        g_array_set_clear_func (a, gr_rotated_image_clear);
+
+        return a;
+}
+
 struct _GrImages
 {
 	GtkBox parent_instance;
@@ -55,12 +66,14 @@ struct _GrImages
         GtkWidget *image2;
 
         GArray *images;
+        gboolean flip;
 };
 
 G_DEFINE_TYPE (GrImages, gr_images, GTK_TYPE_BOX)
 
 enum {
 	PROP_0,
+        PROP_FLIP,
         PROP_IMAGES,
 	N_PROPS
 };
@@ -105,7 +118,7 @@ add_image (GrImages       *images,
         ri = &g_array_index (images->images, GrRotatedImage, images->images->len - 1);
         ri->path = g_strdup (ri->path);
 
-        if (images->images->len >= 1)
+        if (images->images->len > 1)
                 gtk_widget_show (images->switcher);
 
         if (images->images->len == 0)
@@ -131,17 +144,35 @@ set_images (GrImages *images,
 
         g_object_notify (G_OBJECT (images), "images");
 
-        if (array->len == 0) {
-                gtk_widget_hide (images->switcher);
-                gtk_stack_set_visible_child_name (GTK_STACK (images->stack), "placeholder");
-        }
+        gtk_widget_hide (images->switcher);
 
         for (i = 0; i < array->len; i++) {
                 GrRotatedImage *ri = &g_array_index (array, GrRotatedImage, i);
                 add_image (images, ri, FALSE);
         }
 
+        if (array->len == 0)
+                gtk_stack_set_visible_child_name (GTK_STACK (images->stack), "placeholder");
+        else
+                gtk_list_box_select_row (GTK_LIST_BOX (images->switcher),
+                                         gtk_list_box_get_row_at_index (GTK_LIST_BOX (images->switcher), 0));
+
         g_object_thaw_notify (G_OBJECT (images));
+}
+
+static void
+set_flip (GrImages *images,
+          gboolean  flip)
+{
+        if (images->flip == flip)
+                return;
+
+        images->flip = flip;
+
+        gtk_container_child_set (GTK_CONTAINER (images), images->switcher, "pack-type", flip ? GTK_PACK_END : GTK_PACK_START, NULL);
+        gtk_container_child_set (GTK_CONTAINER (images), images->stack, "pack-type", flip ? GTK_PACK_END : GTK_PACK_START, NULL);
+
+        g_object_notify (G_OBJECT (images), "flip");
 }
 
 static void
@@ -305,6 +336,10 @@ gr_images_get_property (GObject    *object,
 
 	switch (prop_id)
 	  {
+          case PROP_FLIP:
+                  g_value_set_boolean (value, self->flip);
+                  break;
+
           case PROP_IMAGES:
                   g_value_set_boxed (value, self->images);
                   break;
@@ -324,6 +359,10 @@ gr_images_set_property (GObject      *object,
 
 	switch (prop_id)
 	  {
+          case PROP_FLIP:
+                  set_flip (self, g_value_get_boolean (value));
+                  break;
+
           case PROP_IMAGES:
                   set_images (self, (GArray *) g_value_get_boxed (value));
                   break;
@@ -349,6 +388,10 @@ gr_images_class_init (GrImagesClass *klass)
                                     G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_IMAGES, pspec);
 
+        pspec = g_param_spec_boolean ("flip", NULL, NULL,
+                                      FALSE,
+                                      G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_FLIP, pspec);
 
 	gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-images.ui");
 
@@ -367,6 +410,5 @@ gr_images_init (GrImages *self)
         gtk_widget_init_template (GTK_WIDGET (self));
         gtk_stack_set_visible_child_name (GTK_STACK (self->stack), "placeholder");
 
-        self->images = g_array_new (TRUE, TRUE, sizeof (GrRotatedImage));
-        g_array_set_clear_func (self->images, gr_rotated_image_clear);
+        self->images = gr_rotated_image_array_new ();
 }

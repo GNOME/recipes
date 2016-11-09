@@ -48,22 +48,24 @@ load_pixbuf_fit_size (const char *path,
         gdk_pixbuf_fill (pixbuf, 0x00000000);
 
         original = gdk_pixbuf_new_from_file_at_size (path, load_width, load_height, NULL);
-        if (original) {
-                if (angle != 0) {
-                        g_autoptr(GdkPixbuf) pb = NULL;
-                        pb = gdk_pixbuf_rotate_simple (original, angle);
-                        g_set_object (&original, pb);
-                }
-
-                dest_width = gdk_pixbuf_get_width (original);
-                dest_height = gdk_pixbuf_get_height (original);
-                dest_x = (width - dest_width) / 2;
-                dest_y = (height - dest_height) / 2;
-
-                gdk_pixbuf_composite (original, pixbuf,
-                                      dest_x, dest_y, dest_width, dest_height,
-                                      dest_x, dest_y, 1.0, 1.0, GDK_INTERP_BILINEAR, 255);
+        if (!original) {
+                g_warning ("Failed to load image %s", path);
+                return pixbuf;
         }
+        if (angle != 0) {
+                g_autoptr(GdkPixbuf) pb = NULL;
+                pb = gdk_pixbuf_rotate_simple (original, angle);
+                g_set_object (&original, pb);
+        }
+
+        dest_width = gdk_pixbuf_get_width (original);
+        dest_height = gdk_pixbuf_get_height (original);
+        dest_x = (width - dest_width) / 2;
+        dest_y = (height - dest_height) / 2;
+
+        gdk_pixbuf_composite (original, pixbuf,
+                              dest_x, dest_y, dest_width, dest_height,
+                              dest_x, dest_y, 1.0, 1.0, GDK_INTERP_BILINEAR, 255);
 
         return pixbuf;
 }
@@ -91,6 +93,14 @@ load_pixbuf_fill_size (const char *path,
         }
 
         original = gdk_pixbuf_new_from_file_at_scale (path, -1, load_height, TRUE, NULL);
+        if (!original) {
+                GdkPixbuf *pixbuf;
+                g_warning ("Failed to load image %s", path);
+                pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, width, height);
+                gdk_pixbuf_fill (pixbuf, 0x00000000);
+                return pixbuf;
+        }
+
         if (angle != 0) {
                 g_autoptr(GdkPixbuf) pb = NULL;
                 pb = gdk_pixbuf_rotate_simple (original, angle);
@@ -107,9 +117,6 @@ load_pixbuf_fill_size (const char *path,
                         g_set_object (&original, pb);
                 }
         }
-
-        g_print ("fit '%s' in %dx%d: %dx%d\n", path, width, height,
-                 gdk_pixbuf_get_width (original), gdk_pixbuf_get_height (original));
 
         g_assert (gdk_pixbuf_get_width (original) >= width &&
                   gdk_pixbuf_get_height (original) >= height);

@@ -23,6 +23,7 @@
 #include <gtk/gtk.h>
 
 #include "gr-recipe.h"
+#include "gr-images.h"
 #include "types.h"
 
 typedef struct
@@ -30,7 +31,7 @@ typedef struct
         char *name;
         char *author;
         char *description;
-        char *image_path;
+        GArray *images;
 
         char *cuisine;
         char *category;
@@ -54,7 +55,7 @@ enum {
         PROP_NAME,
         PROP_AUTHOR,
         PROP_DESCRIPTION,
-        PROP_IMAGE_PATH,
+        PROP_IMAGES,
         PROP_CUISINE,
         PROP_CATEGORY,
         PROP_PREP_TIME,
@@ -83,7 +84,7 @@ gr_recipe_finalize (GObject *object)
         g_free (priv->ingredients);
         g_free (priv->instructions);
         g_free (priv->notes);
-        g_free (priv->image_path);
+        g_array_free (priv->images, TRUE);
 
         g_free (priv->cf_name);
         g_free (priv->cf_description);
@@ -114,8 +115,8 @@ gr_recipe_get_property (GObject    *object,
                 g_value_set_string (value, priv->description);
                 break;
 
-        case PROP_IMAGE_PATH:
-                g_value_set_string (value, priv->image_path);
+        case PROP_IMAGES:
+                g_value_set_boxed (value, priv->images);
                 break;
 
         case PROP_CATEGORY:
@@ -160,6 +161,24 @@ gr_recipe_get_property (GObject    *object,
 }
 
 static void
+set_images (GrRecipe *recipe,
+            GArray   *images)
+{
+        GrRecipePrivate *priv = gr_recipe_get_instance_private (recipe);
+        int i;
+
+        g_array_remove_range (priv->images, 0, priv->images->len);
+        for (i = 0; i < images->len; i++) {
+                GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, i);
+                g_array_append_vals (priv->images, ri, 1);
+                ri = &g_array_index (priv->images, GrRotatedImage, i);
+                ri->path = g_strdup (ri->path);
+        }
+
+        g_object_notify (G_OBJECT (recipe), "images");
+}
+
+static void
 gr_recipe_set_property (GObject      *object,
                         guint         prop_id,
                         const GValue *value,
@@ -186,8 +205,8 @@ gr_recipe_set_property (GObject      *object,
                 priv->cf_description = g_utf8_casefold (priv->description, -1);
                 break;
 
-        case PROP_IMAGE_PATH:
-                priv->image_path = g_value_dup_string (value);
+        case PROP_IMAGES:
+                set_images (self, (GArray *) g_value_get_boxed (value));
                 break;
 
         case PROP_CATEGORY:
@@ -257,10 +276,10 @@ gr_recipe_class_init (GrRecipeClass *klass)
                                      G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_DESCRIPTION, pspec);
 
-        pspec = g_param_spec_string ("image-path", NULL, NULL,
-                                     NULL,
+        pspec = g_param_spec_boxed ("images", NULL, NULL,
+                                     G_TYPE_ARRAY,
                                      G_PARAM_READWRITE);
-        g_object_class_install_property (object_class, PROP_IMAGE_PATH, pspec);
+        g_object_class_install_property (object_class, PROP_IMAGES, pspec);
 
         pspec = g_param_spec_string ("category", NULL, NULL,
                                      NULL,
@@ -322,6 +341,8 @@ gr_recipe_init (GrRecipe *self)
         priv->cook_time = g_strdup ("no time at all");
         priv->serves = 1;
         priv->diets = 0;
+
+        priv->images = gr_rotated_image_array_new ();
 }
 
 GrRecipe *

@@ -39,7 +39,6 @@ struct _GrEditPage
 {
         GtkBox parent_instance;
 
-        char *image_path;
         gboolean fail_if_exists;
         char *old_name;
         char *author;
@@ -121,7 +120,6 @@ edit_page_finalize (GObject *object)
 
         g_free (self->old_name);
         g_free (self->author);
-        g_free (self->image_path);
 
         G_OBJECT_CLASS (gr_edit_page_parent_class)->finalize (object);
 }
@@ -186,7 +184,6 @@ gr_edit_page_init (GrEditPage *page)
 
         populate_cuisine_combo (page);
         populate_category_combo (page);
-
         connect_ingredients_signals (page);
 }
 
@@ -294,7 +291,7 @@ gr_edit_page_clear (GrEditPage *page)
 {
         GtkTextBuffer *buffer;
         GrRecipeStore *store;
-        const char *paths[1] = { NULL };
+        GArray *images;
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
@@ -317,8 +314,9 @@ gr_edit_page_clear (GrEditPage *page)
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->vegetarian_check), FALSE);
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->milk_free_check), FALSE);
 
-	g_clear_pointer (&page->image_path, g_free);
-        g_object_set (page->images, "images", paths, NULL);
+        images = gr_rotated_image_array_new ();
+        g_object_set (page->images, "images", images, NULL);
+        g_array_unref (images);
 
 	g_free (page->author);
 	page->author = g_strdup (gr_recipe_store_get_user_key (store));
@@ -345,6 +343,7 @@ gr_edit_page_edit (GrEditPage *page,
         g_autofree char *author = NULL;
         g_autoptr(GdkPixbuf) pixbuf = NULL;
         GrDiets diets;
+        g_autoptr(GArray) images = NULL;
 
         g_object_get (recipe,
                       "name", &name,
@@ -358,7 +357,7 @@ gr_edit_page_edit (GrEditPage *page,
                       "instructions", &instructions,
                       "notes", &notes,
                       "diets", &diets,
-                      "image-path", &image_path,
+                      "images", &images,
                       "author", &author,
                       NULL);
 
@@ -380,9 +379,7 @@ gr_edit_page_edit (GrEditPage *page,
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->vegetarian_check), (diets & GR_DIET_VEGETARIAN) != 0);
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->milk_free_check), (diets & GR_DIET_MILK_FREE) != 0);
 
-	g_free (page->image_path);
-        page->image_path = g_strdup (image_path);
-	//update_image (page);
+        g_object_set (page->images, "images", images, NULL);
 
         page->fail_if_exists = FALSE;
         g_free (page->old_name);
@@ -414,6 +411,8 @@ gr_edit_page_save (GrEditPage *page)
         g_autoptr(GError) error = NULL;
         gboolean ret;
         GrDiets diets;
+        const char *image_path;
+        g_autoptr(GArray) images = NULL;
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
@@ -436,6 +435,8 @@ gr_edit_page_save (GrEditPage *page)
         if (!validate_ingredients (page, ingredients, &error))
                 goto error;
 
+        g_object_get (page->images, "images", &images, NULL);
+
         recipe = g_object_new (GR_TYPE_RECIPE,
                                "name", name,
                                "description", description,
@@ -449,7 +450,7 @@ gr_edit_page_save (GrEditPage *page)
                                "instructions", instructions,
                                "notes", notes,
                                "diets", diets,
-                               "image-path", page->image_path,
+                               "images", images,
                                NULL);
 
         if (page->fail_if_exists)

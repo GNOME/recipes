@@ -49,7 +49,7 @@
       <object class="GtkListBox" id="switcher">
         <property name="visible">0</property>
         <property name="selection-mode">browse</property>
-        <style> <class name="background"/> </style>
+        <style> <class name="image-switcher"/> </style>
         <signal name="row-selected" handler="row_selected"/>
       </object>
     </child>

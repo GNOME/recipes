@@ -27,6 +27,8 @@ typedef struct {
 	int angle;
 } GrRotatedImage;
 
+GArray *gr_rotated_image_array_new (void);
+
 #define GR_TYPE_IMAGES (gr_images_get_type())
 
 G_DECLARE_FINAL_TYPE (GrImages, gr_images, GR, IMAGES, GtkBox)

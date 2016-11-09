@@ -28,6 +28,7 @@
 #include "gr-recipe-tile.h"
 #include "gr-window.h"
 #include "gr-utils.h"
+#include "gr-images.h"
 
 
 struct _GrRecipeTile
@@ -59,6 +60,7 @@ recipe_tile_set_recipe (GrRecipeTile *tile, GrRecipe *recipe)
         g_autofree char *name = NULL;
         g_autofree char *tmp = NULL;
         g_autofree char *author = NULL;
+        g_autoptr(GArray) images = NULL;
 
         g_set_object (&tile->recipe, recipe);
         if (!recipe)
@@ -67,19 +69,20 @@ recipe_tile_set_recipe (GrRecipeTile *tile, GrRecipe *recipe)
         g_object_get (recipe,
                       "name", &name,
                       "author", &author,
-                      "image-path", &image_path,
+                      "images", &images,
                       NULL);
 
-	if (image_path != NULL && image_path[0] != '\0') {
+        if (images->len > 0) {
 	        GtkStyleContext *context;
 	        g_autofree char *css = NULL;
 	        g_autoptr(GtkCssProvider) provider = NULL;
+                GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, 0);
                 css = g_strdup_printf ("image.recipe {\n"
                                        "  background: url('%s');\n"
                                        "  background-size: 100%;\n"
                                        "  background-repeat: no-repeat;\n"
                                        "  border-radius: 6px;\n"
-                                       "}", image_path);
+                                       "}", ri->path);
 	        provider = gtk_css_provider_new ();
         	gtk_css_provider_load_from_data (provider, css, -1, NULL);
         	context = gtk_widget_get_style_context (tile->image);

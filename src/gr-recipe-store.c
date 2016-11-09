@@ -27,6 +27,7 @@
 #include "gr-recipe.h"
 #include "gr-utils.h"
 #include "gr-ingredients-list.h"
+#include "gr-images.h"
 
 
 struct _GrRecipeStore
@@ -67,8 +68,8 @@ load_recipes (GrRecipeStore *self, const char *dir)
         g_autoptr(GError) error = NULL;
         g_autofree char *path = NULL;
         g_auto(GStrv) groups = NULL;
-        gsize length;
-        int i;
+        gsize length, length2, length3;
+        int i, j;
 
         keyfile = g_key_file_new ();
 
@@ -97,8 +98,12 @@ load_recipes (GrRecipeStore *self, const char *dir)
                 g_autofree char *instructions = NULL;
                 g_autofree char *notes = NULL;
                 g_autofree char *image_path = NULL;
+                g_auto(GStrv) paths = NULL;
+                g_autofree int *angles = NULL;
                 int serves;
                 GrDiets diets;
+                g_autoptr(GArray) images = NULL;
+                GrRotatedImage ri;
 
                 g_clear_error (&error);
 
@@ -187,6 +192,26 @@ load_recipes (GrRecipeStore *self, const char *dir)
                         }
                         g_clear_error (&error);
                 }
+                paths = g_key_file_get_string_list (keyfile, groups[i], "Images", &length2, &error);
+                if (error) {
+                        if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
+                                g_warning ("Failed to load recipe %s: %s", groups[i], error->message);
+                                continue;
+                        }
+                        g_clear_error (&error);
+                }
+                angles = g_key_file_get_integer_list (keyfile, groups[i], "Angles", &length3, &error);
+                if (error) {
+                        if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
+                                g_warning ("Failed to load recipe %s: %s", groups[i], error->message);
+                                continue;
+                        }
+                        g_clear_error (&error);
+                }
+                if (length2 != length3) {
+                        g_warning ("Failed to load recipe %s: Images and Angles length mismatch", groups[i]);
+                        continue;
+                }
                 serves = g_key_file_get_integer (keyfile, groups[i], "Serves", &error);
                 if (error) {
                         if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
@@ -204,12 +229,36 @@ load_recipes (GrRecipeStore *self, const char *dir)
                         g_clear_error (&error);
                 }
 
-		if (image_path && image_path[0] != '\0' && image_path[0] != '/') {
-			char *tmp;
-			tmp = g_build_filename (dir, image_path, NULL);
-			g_free (image_path);
-			image_path = tmp;
-		}
+                if (image_path && image_path[0] != '\0' && image_path[0] != '/') {
+                        char *tmp;
+                        tmp = g_build_filename (dir, image_path, NULL);
+                        g_free (image_path);
+                        image_path = tmp;
+                }
+                if (paths) {
+                        for (j = 0; paths[j]; j++) {
+                                if (paths[j][0] != '/') {
+                                        char *tmp;
+                                        tmp = g_build_filename (dir, paths[j], NULL);
+                                        g_free (paths[j]);
+                                        paths[j] = tmp;
+                                }
+                        }
+                }
+
+                images = gr_rotated_image_array_new ();
+                if (paths) {
+                        for (j = 0; paths[j]; j++) {
+                                ri.path = g_strdup (paths[j]);
+                                ri.angle = angles[j];
+                                g_array_append_val (images, ri);
+                        }
+                }
+                else if (image_path) {
+                        ri.path = g_strdup (image_path);
+                        ri.angle = 0;
+                        g_array_append_val (images, ri);
+                }
 
                 recipe = g_hash_table_lookup (self->recipes, name);
                 if (recipe == NULL) {
@@ -230,7 +279,7 @@ load_recipes (GrRecipeStore *self, const char *dir)
                               "notes", notes,
                               "serves", serves,
                               "diets", diets,
-                              "image-path", image_path,
+                              "images", images,
                               NULL);
         }
 }
@@ -244,7 +293,7 @@ save_recipes (GrRecipeStore *self)
         const char *key;
         GrRecipe *recipe;
         g_autoptr(GError) error = NULL;
-	const char *tmp;
+        const char *tmp;
 
         keyfile = g_key_file_new ();
 
@@ -264,9 +313,12 @@ save_recipes (GrRecipeStore *self)
                 g_autofree char *ingredients = NULL;
                 g_autofree char *instructions = NULL;
                 g_autofree char *notes = NULL;
-                g_autofree char *image_path = NULL;
+                g_autoptr(GArray) images = NULL;
                 int serves;
                 GrDiets diets;
+                g_auto(GStrv) paths = NULL;
+                g_autofree int *angles = NULL;
+                int i;
 
                 g_object_get (recipe,
                               "name", &name,
@@ -280,16 +332,20 @@ save_recipes (GrRecipeStore *self)
                               "instructions", &instructions,
                               "serves", &serves,
                               "diets", &diets,
-                              "image-path", &image_path,
+                              "images", &images,
                               NULL);
 
-		tmp = get_user_data_dir ();
-		if (image_path && g_str_has_prefix (image_path, tmp)) {
-			char *tmp2;
-			tmp2 = g_strdup (image_path + strlen (tmp) + 1);
-			g_free (image_path);
-			image_path = tmp2;
-		}
+                tmp = get_user_data_dir ();
+                paths = g_new0 (char *, images->len + 1);
+                angles = g_new0 (int, images->len);
+                for (i = 0; i < images->len; i++) {
+                        GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, i);
+                        if (g_str_has_prefix (ri->path, tmp))
+                                paths[i] = g_strdup (ri->path + strlen (tmp) + 1);
+                        else
+                                paths[i] = g_strdup (ri->path);
+                        angles[i] = ri->angle;
+                }
 
                 g_key_file_set_string (keyfile, key, "Name", name ? name : "");
                 g_key_file_set_string (keyfile, key, "Author", author ? author : "");
@@ -301,9 +357,10 @@ save_recipes (GrRecipeStore *self)
                 g_key_file_set_string (keyfile, key, "Ingredients", ingredients ? ingredients : "");
                 g_key_file_set_string (keyfile, key, "Instructions", instructions ? instructions : "");
                 g_key_file_set_string (keyfile, key, "Notes", notes ? notes : "");
-                g_key_file_set_string (keyfile, key, "Image", image_path ? image_path : "");
                 g_key_file_set_integer (keyfile, key, "Serves", serves);
                 g_key_file_set_integer (keyfile, key, "Diets", diets);
+                g_key_file_set_string_list (keyfile, key, "Images", (const char * const *)paths, images->len);
+                g_key_file_set_integer_list (keyfile, key, "Angles", angles, images->len);
         }
 
         if (!g_key_file_save_to_file (keyfile, path, &error)) {
@@ -427,12 +484,12 @@ load_chefs (GrRecipeStore *self, const char *dir)
                         g_clear_error (&error);
                 }
 
-		if (image_path && image_path[0] != '\0' && image_path[0] != '/') {
-			char *tmp;
-			tmp = g_build_filename (dir, image_path, NULL);
-			g_free (image_path);
-			image_path = tmp;
-		}
+                if (image_path && image_path[0] != '\0' && image_path[0] != '/') {
+                        char *tmp;
+                        tmp = g_build_filename (dir, image_path, NULL);
+                        g_free (image_path);
+                        image_path = tmp;
+                }
 
                 chef = g_hash_table_lookup (self->chefs, name);
                 if (chef == NULL) {
@@ -458,7 +515,7 @@ save_chefs (GrRecipeStore *store)
         const char *key;
         GrChef *chef;
         g_autoptr(GError) error = NULL;
-	const char *tmp;
+        const char *tmp;
 
         keyfile = g_key_file_new ();
 
@@ -481,12 +538,12 @@ save_chefs (GrRecipeStore *store)
                               NULL);
 
                 tmp = get_user_data_dir ();
-		if (g_str_has_prefix (image_path, tmp)) {
-			char *tmp2;
-			tmp2 = g_strdup (image_path + strlen (tmp) + 1);
-			g_free (image_path);
-			image_path = tmp2;
-		}
+                if (g_str_has_prefix (image_path, tmp)) {
+                        char *tmp2;
+                        tmp2 = g_strdup (image_path + strlen (tmp) + 1);
+                        g_free (image_path);
+                        image_path = tmp2;
+                }
 
                 g_key_file_set_string (keyfile, key, "Name", name ? name : "");
                 g_key_file_set_string (keyfile, key, "Fullname", fullname ? fullname : "");

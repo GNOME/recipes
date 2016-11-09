@@ -330,11 +330,12 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         g_autoptr(GrChef) chef = NULL;
         g_autofree char *author_desc = NULL;
         g_autoptr(GrIngredientsList) ing = NULL;
+        g_autoptr(GArray) images = NULL;
 
         g_set_object (&page->recipe, recipe);
 
         g_object_get (recipe,
-                      "image-path", &image_path,
+                      "images", &images,
                       "prep-time", &prep_time,
                       "cook-time", &cook_time,
                       "serves", &serves,
@@ -352,10 +353,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         ing = gr_ingredients_list_new (ingredients);
         g_set_object (&page->ingredients, ing);
 
-        if (image_path) {
-                pixbuf = load_pixbuf_fit_size (image_path, 0, 256, 256);
-                gtk_image_set_from_pixbuf (GTK_IMAGE (page->recipe_image), pixbuf);
-        }
+        g_object_set (page->recipe_image, "images", images, NULL);
         gtk_label_set_label (GTK_LABEL (page->prep_time_label), prep_time);
         gtk_label_set_label (GTK_LABEL (page->cook_time_label), cook_time);
         gtk_label_set_label (GTK_LABEL (page->ingredients_label), ingredients);
