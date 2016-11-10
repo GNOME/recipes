@@ -446,7 +446,7 @@ gr_window_show_diet (GrWindow   *window,
 
 void
 gr_window_show_chef (GrWindow *window,
-                     GrChef  *chef)
+                     GrChef   *chef)
 {
 	g_autofree char *title = NULL;
 	const char *name;
@@ -455,6 +455,45 @@ gr_window_show_chef (GrWindow *window,
 
         name = gr_chef_get_name (chef);
 	title = g_strdup_printf (_("Recipes by %s"), name);
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->list_header), title);
+	gr_list_page_populate_from_chef (GR_LIST_PAGE (window->list_page), chef);
+
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_stack), "list");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "list");
+}
+
+void
+gr_window_show_favorites (GrWindow *window)
+{
+	const char *title;
+
+	save_back_entry (window);
+
+	title = _("Favorite recipes");
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->list_header), title);
+	gr_list_page_populate_from_favorites (GR_LIST_PAGE (window->list_page));
+
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_stack), "list");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "list");
+}
+
+void
+gr_window_show_myself (GrWindow *window)
+{
+	const char *title;
+	const char *name;
+        g_autoptr(GrChef) chef = NULL;
+        GrRecipeStore *store;
+
+        save_back_entry (window);
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+        name = gr_recipe_store_get_user_key (store);
+        title = _("My own recipes");
+        chef = gr_recipe_store_get_chef (store, name);
+        g_print ("myself: %s %p\n", name, chef);
+
         gtk_header_bar_set_title (GTK_HEADER_BAR (window->list_header), title);
 	gr_list_page_populate_from_chef (GR_LIST_PAGE (window->list_page), chef);
 

@@ -36,5 +36,6 @@ void             gr_list_page_populate_from_diet (GrListPage *self,
                                                   GrDiets     diet);
 void             gr_list_page_populate_from_chef (GrListPage *self,
                                                   GrChef     *chef);
+void             gr_list_page_populate_from_favorites (GrListPage *self);
 
 G_END_DECLS

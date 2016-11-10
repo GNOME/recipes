@@ -32,6 +32,7 @@
 #include "gr-recipe-store.h"
 #include "gr-app.h"
 #include "gr-utils.h"
+#include "gr-window.h"
 
 
 struct _GrRecipesPage
@@ -98,6 +99,33 @@ gr_recipes_page_new (void)
 }
 
 static void
+category_clicked (GrCategoryTile *tile,
+                  GrRecipesPage  *page)
+{
+        GtkWidget *window;
+        GrDiets diet;
+        const char *name;
+        const char *label;
+
+        window = gtk_widget_get_ancestor (GTK_WIDGET (tile), GR_TYPE_WINDOW);
+
+        diet = gr_category_tile_get_diet (tile);
+        name = gr_category_tile_get_category (tile);
+        label = gr_category_tile_get_label (tile);
+        g_print ("category: %d %s %s\n", diet, name, label);
+
+        if (diet) {
+                gr_window_show_diet (GR_WINDOW (window), label, diet);
+        }
+        else if (strcmp (name, "favorites") == 0) {
+                gr_window_show_favorites (GR_WINDOW (window));
+        }
+        else if (strcmp (name, "mine") == 0) {
+                gr_window_show_myself (GR_WINDOW (window));
+        }
+}
+
+static void
 populate_static (GrRecipesPage *self)
 {
         int i;
@@ -108,13 +136,23 @@ populate_static (GrRecipesPage *self)
                 GR_DIET_VEGETARIAN,
                 GR_DIET_MILK_FREE
         };
+        GtkWidget *tile;
+
+        tile = gr_category_tile_new_with_label ("mine", _("My recipes"));
+        gtk_widget_show (tile);
+        gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
+        g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);
+
+        tile = gr_category_tile_new_with_label ("favorites", _("Favorites"));
+        gtk_widget_show (tile);
+        gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
+        g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);
 
         for (i = 0; i < 5; i++) {
-                GtkWidget *tile;
-
                 tile = gr_category_tile_new (diets[i]);
                 gtk_widget_show (tile);
                 gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
+                g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);
         }
 }
 

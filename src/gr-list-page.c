@@ -38,6 +38,7 @@ struct _GrListPage
 
 	GrChef *chef;
 	GrDiets diet;
+        gboolean favorites;
 
         GtkWidget *flow_box;
 };
@@ -97,6 +98,7 @@ gr_list_page_populate_from_diet (GrListPage *self, GrDiets diet)
 
 	self->diet = diet;
 	g_clear_object (&self->chef);
+        self->favorites = FALSE;
 
 	container_remove_all (GTK_CONTAINER (self->flow_box));
 
@@ -130,6 +132,7 @@ gr_list_page_populate_from_chef (GrListPage *self, GrChef *chef)
 
 	self->diet = 0;
 	g_set_object (&self->chef, chef);
+        self->favorites = FALSE;
 
 	container_remove_all (GTK_CONTAINER (self->flow_box));
 
@@ -155,13 +158,47 @@ gr_list_page_populate_from_chef (GrListPage *self, GrChef *chef)
 	}
 }
 
+void
+gr_list_page_populate_from_favorites (GrListPage *self)
+{
+	GrRecipeStore *store;
+	g_autofree char **keys = NULL;
+	guint length;
+	int i;
+
+	self->diet = 0;
+        g_clear_object (&self->chef);
+        self->favorites = TRUE;
+
+	container_remove_all (GTK_CONTAINER (self->flow_box));
+
+	store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+	keys = gr_recipe_store_get_recipe_keys (store, &length);
+	for (i = 0; i < length; i++) {
+		g_autoptr(GrRecipe) recipe = NULL;
+		const char *author;
+		GtkWidget *tile;
+
+		recipe = gr_recipe_store_get (store, keys[i]);
+                if (!gr_recipe_store_is_favorite (store, recipe))
+			continue;
+
+		tile = gr_recipe_tile_new (recipe);
+		gtk_widget_show (tile);
+		gtk_container_add (GTK_CONTAINER (self->flow_box), tile);
+	}
+}
+
 static void
 list_page_reload (GrListPage *page)
 {
 	if (page->chef)
 		gr_list_page_populate_from_chef (page, page->chef);
-	else
+	else if (page->diet)
 		gr_list_page_populate_from_diet (page, page->diet);
+        else if (page->favorites)
+		gr_list_page_populate_from_favorites (page);
 }
 
 static void

@@ -30,6 +30,11 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrCategoryTile, gr_category_tile, GR, CATEGORY_TILE, GtkButton)
 
-GtkWidget       *gr_category_tile_new                       (GrDiets diet);
+GtkWidget       *gr_category_tile_new            (GrDiets         diet);
+GtkWidget       *gr_category_tile_new_with_label (const char     *category,
+						  const char     *label);
+GrDiets          gr_category_tile_get_diet       (GrCategoryTile *tile);
+const char      *gr_category_tile_get_category   (GrCategoryTile *tile);
+const char      *gr_category_tile_get_label      (GrCategoryTile *tile);
 
 G_END_DECLS

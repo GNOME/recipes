@@ -42,15 +42,6 @@ struct _GrCategoryTile
 G_DEFINE_TYPE (GrCategoryTile, gr_category_tile, GTK_TYPE_BUTTON)
 
 static void
-show_list (GrCategoryTile *tile)
-{
-        GtkWidget *window;
-
-        window = gtk_widget_get_ancestor (GTK_WIDGET (tile), GR_TYPE_WINDOW);
-        gr_window_show_diet (GR_WINDOW (window), gtk_label_get_label (GTK_LABEL (tile->label)), tile->diet);
-}
-
-static void
 category_tile_set_category (GrCategoryTile *tile, GrDiets diet)
 {
 	const char *label;
@@ -94,6 +85,7 @@ gr_category_tile_init (GrCategoryTile *tile)
 {
         gtk_widget_set_has_window (GTK_WIDGET (tile), FALSE);
         gtk_widget_init_template (GTK_WIDGET (tile));
+        tile->diet = 0;
 }
 
 static void
@@ -108,8 +100,6 @@ gr_category_tile_class_init (GrCategoryTileClass *klass)
 
         gtk_widget_class_bind_template_child (widget_class, GrCategoryTile, label);
         gtk_widget_class_bind_template_child (widget_class, GrCategoryTile, image);
-
-	gtk_widget_class_bind_template_callback (widget_class, show_list);
 }
 
 GtkWidget *
@@ -121,4 +111,35 @@ gr_category_tile_new (GrDiets diet)
         category_tile_set_category (tile, diet);
 
         return GTK_WIDGET (tile);
+}
+
+GtkWidget *
+gr_category_tile_new_with_label (const char *category,
+                                 const char *label)
+{
+        GrCategoryTile *tile;
+
+        tile = g_object_new (GR_TYPE_CATEGORY_TILE, NULL);
+        gtk_label_set_label (GTK_LABEL (tile->label), label);
+        tile->category = g_strdup (category);
+
+        return GTK_WIDGET (tile);
+}
+
+GrDiets
+gr_category_tile_get_diet (GrCategoryTile *tile)
+{
+        return tile->diet;
+}
+
+const char *
+gr_category_tile_get_category (GrCategoryTile *tile)
+{
+        return tile->category;
+}
+
+const char *
+gr_category_tile_get_label (GrCategoryTile *tile)
+{
+        return gtk_label_get_label (GTK_LABEL (tile->label));
 }

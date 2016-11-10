@@ -3,7 +3,6 @@
   <!-- interface-requires gtk+ 3.10 -->
   <template class="GrCategoryTile" parent="GtkButton">
     <property name="visible">True</property>
-    <signal name="clicked" handler="show_list" swapped="yes"/>
     <style>
       <class name="view"/>
       <class name="tile"/>
