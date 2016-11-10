@@ -42,6 +42,7 @@ struct _GrRecipesPage
         GtkWidget *pick_box;
         GtkWidget *diet_box;
         GtkWidget *chefs_box;
+        GtkWidget *favorites_box;
 };
 
 G_DEFINE_TYPE (GrRecipesPage, gr_recipes_page, GTK_TYPE_BOX)
@@ -131,7 +132,6 @@ populate_recipes_from_store (GrRecipesPage *self)
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         keys = gr_recipe_store_get_recipe_keys (store, &length);
-
         for (i = 0; i < length; i++) {
                 g_autoptr(GrRecipe) recipe = NULL;
                 GtkWidget *tile;
@@ -148,6 +148,8 @@ populate_recipes_from_store (GrRecipesPage *self)
                         gtk_widget_show (tile);
                         gtk_container_add (GTK_CONTAINER (self->pick_box), tile);
                 }
+
+
         }
 }
 

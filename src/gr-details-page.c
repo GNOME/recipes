@@ -302,6 +302,18 @@ check_clicked (GtkWidget     *button,
 }
 
 static void
+cook_it_later (GrDetailsPage *page)
+{
+        GrRecipeStore *store;
+        const char *name;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        name = gr_recipe_get_name (page->recipe);
+
+        gr_recipe_store_add_favorite (store, name);
+}
+
+static void
 details_page_finalize (GObject *object)
 {
         GrDetailsPage *self = GR_DETAILS_PAGE (object);
@@ -362,6 +374,7 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, time_spin_input);
         gtk_widget_class_bind_template_callback (widget_class, time_spin_output);
         gtk_widget_class_bind_template_callback (widget_class, check_clicked);
+        gtk_widget_class_bind_template_callback (widget_class, cook_it_later);
 }
 
 GtkWidget *
