@@ -351,45 +351,6 @@ gr_recipe_new (void)
         return g_object_new (GR_TYPE_RECIPE, NULL);
 }
 
-/* term is assumed to be g_utf8_casefold'ed */
-gboolean
-gr_recipe_matches (GrRecipe *self, const char *term)
-{
-        GrRecipePrivate *priv = gr_recipe_get_instance_private (self);
-        g_auto(GStrv) terms = NULL;
-        int i;
-
-        terms = g_strsplit (term, " ", -1);
-
-        for (i = 0; terms[i]; i++) {
-                if (g_str_has_prefix (terms[i], "i+:")) {
-                        if (!priv->cf_ingredients || strstr (priv->cf_ingredients, terms[i] + 3) == NULL) {
-                                return FALSE;
-                        }
-                        continue;
-                }
-                else if (g_str_has_prefix (terms[i], "i-:")) {
-                        if (priv->cf_ingredients && strstr (priv->cf_ingredients, terms[i] + 3) != NULL) {
-                                return FALSE;
-                        }
-                        continue;
-                }
-
-                if (priv->cf_name && strstr (priv->cf_name, terms[i]) != NULL)
-                        continue;
-
-                if (priv->cf_description && strstr (priv->cf_description, terms[i]) != NULL)
-                        continue;
-
-                if (priv->cf_ingredients && strstr (priv->cf_ingredients, terms[i]) != NULL)
-                        continue;
-
-                return FALSE;
-        }
-
-        return TRUE;
-}
-
 const char *
 gr_recipe_get_name (GrRecipe *recipe)
 {
@@ -397,6 +358,7 @@ gr_recipe_get_name (GrRecipe *recipe)
 
         return priv->name;
 }
+
 const char *
 gr_recipe_get_author (GrRecipe *recipe)
 {
@@ -484,3 +446,49 @@ gr_recipe_get_notes (GrRecipe *recipe)
 
         return priv->notes;
 }
+
+/* term is assumed to be g_utf8_casefold'ed */
+gboolean
+gr_recipe_matches (GrRecipe *self, const char *term)
+{
+        GrRecipePrivate *priv = gr_recipe_get_instance_private (self);
+        g_auto(GStrv) terms = NULL;
+        int i;
+
+        terms = g_strsplit (term, " ", -1);
+
+        for (i = 0; terms[i]; i++) {
+                if (g_str_has_prefix (terms[i], "i+:")) {
+                        if (!priv->cf_ingredients || strstr (priv->cf_ingredients, terms[i] + 3) == NULL) {
+                                return FALSE;
+                        }
+                        continue;
+                }
+                else if (g_str_has_prefix (terms[i], "i-:")) {
+                        if (priv->cf_ingredients && strstr (priv->cf_ingredients, terms[i] + 3) != NULL) {
+                                return FALSE;
+                        }
+                        continue;
+                }
+                else if (g_str_has_prefix (terms[i], "by:")) {
+                        if (!priv->author || strstr (priv->author, terms[i] + 3) == NULL) {
+                                return FALSE;
+                        }
+                        continue;
+                }
+
+                if (priv->cf_name && strstr (priv->cf_name, terms[i]) != NULL)
+                        continue;
+
+                if (priv->cf_description && strstr (priv->cf_description, terms[i]) != NULL)
+                        continue;
+
+                if (priv->cf_ingredients && strstr (priv->cf_ingredients, terms[i]) != NULL)
+                        continue;
+
+                return FALSE;
+        }
+
+        return TRUE;
+}
+
