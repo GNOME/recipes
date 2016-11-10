@@ -39,6 +39,7 @@ struct _GrRecipeStore
 
         char **todays;
         char **picks;
+        char **favorites;
         char **featured_chefs;
         char *user;
 };
@@ -55,6 +56,7 @@ gr_recipe_store_finalize (GObject *object)
         g_clear_pointer (&self->chefs, g_hash_table_unref);
         g_strfreev (self->todays);
         g_strfreev (self->picks);
+        g_strfreev (self->favorites);
         g_strfreev (self->featured_chefs);
         g_free (self->user);
 
@@ -415,6 +417,58 @@ load_picks (GrRecipeStore *self, const char *dir)
 }
 
 static void
+load_favorites (GrRecipeStore *self, const char *dir)
+{
+        g_autofree char *path = NULL;
+        g_autoptr(GKeyFile) keyfile = NULL;
+        g_autoptr(GError) error = NULL;
+
+        keyfile = g_key_file_new ();
+
+        path = g_build_filename (dir, "favorites.db", NULL);
+
+        if (!g_key_file_load_from_file (keyfile, path, G_KEY_FILE_NONE, &error)) {
+                if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
+                        g_error ("Failed to load favorites db: %s", error->message);
+                else
+                        g_message ("No favorites db at: %s", path);
+                return;
+        }
+
+        g_message ("Load favorites db: %s", path);
+
+        self->favorites = g_key_file_get_string_list (keyfile, "Content", "Favorites", NULL, &error);
+        if (error) {
+                if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
+                        g_warning ("Failed to load favorites: %s", error->message);
+                }
+                g_clear_error (&error);
+        }
+}
+
+static void
+save_favorites (GrRecipeStore *self)
+{
+        g_autoptr(GKeyFile) keyfile = NULL;
+        g_autofree char *path = NULL;
+        const char *key;
+        g_autoptr(GError) error = NULL;
+        const char *tmp;
+
+        keyfile = g_key_file_new ();
+
+        path = g_build_filename (get_user_data_dir (), "favorites.db", NULL);
+
+        g_message ("Save favorites db: %s", path);
+
+        g_key_file_set_string_list (keyfile, "Content", "Favorites", (const char * const *)self->favorites, g_strv_length (self->favorites));
+
+        if (!g_key_file_save_to_file (keyfile, path, &error)) {
+                g_error ("Failed to save recipe database: %s", error->message);
+        }
+}
+
+static void
 load_chefs (GrRecipeStore *self, const char *dir)
 {
         g_autoptr(GKeyFile) keyfile = NULL;
@@ -617,6 +671,7 @@ gr_recipe_store_init (GrRecipeStore *self)
         /* Now load saved data */
         dir = get_user_data_dir ();
         load_recipes (self, dir);
+        load_favorites (self, dir);
         load_chefs (self, dir);
         load_user (self, dir);
 
@@ -944,3 +999,69 @@ gr_recipe_store_get_all_ingredients (GrRecipeStore *self, guint *length)
         return result;
 }
 
+void
+gr_recipe_store_add_favorite (GrRecipeStore *self,
+                              GrRecipe      *recipe)
+{
+        char **strv;
+        int length;
+        int i;
+        const char *name;
+
+        name = gr_recipe_get_name (recipe);
+
+        if (g_strv_contains ((const char * const*)self->favorites, name))
+                return;
+
+        length = g_strv_length (self->favorites);
+        strv = g_new (char *, length + 2);
+        strv[0] = g_strdup (name);
+        for (i = 0; i < length; i++)
+                strv[i + 1] = self->favorites[i];
+        strv[length + 1] = NULL;
+
+        g_free (self->favorites);
+        self->favorites = strv;
+
+        save_favorites (self);
+
+        g_signal_emit (self, changed_signal, 0, recipe);
+}
+
+void
+gr_recipe_store_remove_favorite (GrRecipeStore *self,
+                                 GrRecipe      *recipe)
+{
+        int i, j;
+        const char *name;
+
+        name = gr_recipe_get_name (recipe);
+
+        for (i = 0; self->favorites[i]; i++) {
+                if (strcmp (self->favorites[i], name) == 0) {
+                        g_free (self->favorites[i]);
+                        for (j = i; self->favorites[j]; j++) {
+                                self->favorites[j] = self->favorites[j + 1];
+                        }
+                        break;
+                }
+        }
+
+        save_favorites (self);
+
+        g_signal_emit (self, changed_signal, 0, recipe);
+}
+
+gboolean
+gr_recipe_store_is_favorite (GrRecipeStore *self,
+                             GrRecipe      *recipe)
+{
+        const char *name;
+
+        if (self->favorites == NULL)
+                return FALSE;
+
+        name = gr_recipe_get_name (recipe);
+
+        return g_strv_contains ((const char *const*)self->favorites, name);
+}
