@@ -60,3 +60,6 @@ install-update-icon-cache:
 uninstall-update-icon-cache:
 	$(AM_V_at)$(POST_UNINSTALL)
 	test -n "$(DESTDIR)" || $(update_icon_cache) "$(iconthemedir)"
+
+servicedir = $(datadir)/dbus-1/services
+service_DATA = org.gnome.Recipes.service
