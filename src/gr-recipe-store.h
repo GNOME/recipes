@@ -70,4 +70,11 @@ gboolean gr_recipe_store_update_user (GrRecipeStore  *self,
 char **gr_recipe_store_get_all_ingredients (GrRecipeStore *self,
                                             guint         *length);
 
+void gr_recipe_store_add_favorite (GrRecipeStore *self,
+                                   const char    *name);
+void gr_recipe_store_remvoe_favorite (GrRecipeStore *self,
+                                      const char    *name);
+gboolean gr_recipe_store_is_favorite (GrRecipeStore *self,
+                                      const char    *name);
+
 G_END_DECLS
