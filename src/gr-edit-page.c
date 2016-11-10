@@ -87,6 +87,10 @@ images_changed (GrEditPage *page)
         gtk_widget_set_sensitive (page->remove_image_button, length > 0);
         gtk_widget_set_sensitive (page->rotate_image_left_button, length > 0);
         gtk_widget_set_sensitive (page->rotate_image_right_button, length > 0);
+
+        gtk_container_child_set (GTK_CONTAINER (gtk_widget_get_parent (page->images)), page->images,
+                                 "width", length >= 2 ? 2 : 1,
+                                 NULL);
 }
 
 static void

@@ -395,6 +395,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         g_autoptr(GrIngredientsList) ing = NULL;
         g_autoptr(GArray) images = NULL;
         gboolean cooking;
+        int left, width;
 
         g_set_object (&page->recipe, recipe);
 
@@ -416,6 +417,20 @@ gr_details_page_set_recipe (GrDetailsPage *page,
 
         ing = gr_ingredients_list_new (ingredients);
         g_set_object (&page->ingredients, ing);
+
+        if (images->len >= 2) {
+                width = 2;
+                left = -1;
+        }
+        else {
+                width = 1;
+                left = 0;
+        }
+        gtk_container_child_set (GTK_CONTAINER (gtk_widget_get_parent (page->recipe_image)),
+                                 page->recipe_image,
+                                 "width", width,
+                                 "left-attach", left,
+                                 NULL);
 
         g_object_set (page->recipe_image, "images", images, NULL);
         gtk_label_set_label (GTK_LABEL (page->prep_time_label), prep_time);
