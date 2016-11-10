@@ -89,6 +89,7 @@ struct _GrDetailsPage
         GtkWidget *timer_stack;
         GtkWidget *timer_popover;
         GtkWidget *time_spin;
+        GtkWidget *favorite_button;
 };
 
 G_DEFINE_TYPE (GrDetailsPage, gr_details_page, GTK_TYPE_BOX)
@@ -307,7 +308,10 @@ cook_it_later (GrDetailsPage *page)
         GrRecipeStore *store;
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
-        gr_recipe_store_add_favorite (store, page->recipe);
+        if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->favorite_button)))
+                gr_recipe_store_add_favorite (store, page->recipe);
+        else
+                gr_recipe_store_remove_favorite (store, page->recipe);
 }
 
 static void
@@ -361,6 +365,7 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, timer_stack);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, timer_popover);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, time_spin);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, favorite_button);
 
         gtk_widget_class_bind_template_callback (widget_class, edit_recipe);
         gtk_widget_class_bind_template_callback (widget_class, delete_recipe);
@@ -405,6 +410,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         g_autoptr(GrIngredientsList) ing = NULL;
         g_autoptr(GArray) images = NULL;
         gboolean cooking;
+        gboolean favorite;
         int left, width;
 
         g_set_object (&page->recipe, recipe);
@@ -469,6 +475,9 @@ gr_details_page_set_recipe (GrDetailsPage *page,
 
         cooking = g_hash_table_lookup (page->cooking, name) != NULL;
         set_cooking (page, cooking);
+
+        favorite = gr_recipe_store_is_favorite (store, recipe);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->favorite_button), favorite);
 }
 
 static void

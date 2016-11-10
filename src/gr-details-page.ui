@@ -344,10 +344,10 @@ followed</property>
       <object class="GtkActionBar">
         <property name="visible">1</property>
         <child>
-          <object class="GtkButton">
+          <object class="GtkToggleButton" id="favorite_button">
             <property name="visible">1</property>
             <property name="label" translatable="yes">Cook it later</property>
-            <signal name="clicked" handler="cook_it_later" swapped="yes"/>
+            <signal name="toggled" handler="cook_it_later" swapped="yes"/>
           </object>
         </child>
         <child>
