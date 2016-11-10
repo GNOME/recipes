@@ -85,6 +85,7 @@ gr_recipes_page_class_init (GrRecipesPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, pick_box);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, diet_box);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, chefs_box);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, favorites_box);
 }
 
 GtkWidget *
@@ -128,6 +129,7 @@ populate_recipes_from_store (GrRecipesPage *self)
 
         container_remove_all (GTK_CONTAINER (self->today_box));
         container_remove_all (GTK_CONTAINER (self->pick_box));
+        container_remove_all (GTK_CONTAINER (self->favorites_box));
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
@@ -149,6 +151,12 @@ populate_recipes_from_store (GrRecipesPage *self)
                         gtk_container_add (GTK_CONTAINER (self->pick_box), tile);
                 }
 
+                if (gr_recipe_store_is_favorite (store, recipe)) {
+                        g_print ("favorite added\n");
+                        tile = gr_recipe_tile_new (recipe);
+                        gtk_widget_show (tile);
+                        gtk_container_add (GTK_CONTAINER (self->favorites_box), tile);
+                }
 
         }
 }
