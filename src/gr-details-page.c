@@ -382,13 +382,12 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         const char *name;
         const char *author;
         const char *description;
-        const char *author_desc;
         const char *prep_time;
         const char *cook_time;
         int serves;
-        g_autofree char *ingredients = NULL;
-        g_autofree char *instructions = NULL;
-        g_autofree char *notes = NULL;
+        const char *ingredients;
+        const char *instructions;
+        const char *notes;
         char *tmp;
         g_autoptr(GdkPixbuf) pixbuf = NULL;
         GrRecipeStore *store;
@@ -405,13 +404,11 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         serves = gr_recipe_get_serves (recipe);
         prep_time = gr_recipe_get_prep_time (recipe);
         cook_time = gr_recipe_get_cook_time (recipe);
+        ingredients = gr_recipe_get_ingredients (recipe);
+        instructions = gr_recipe_get_instructions (recipe);
+        notes = gr_recipe_get_notes (recipe);
 
-        g_object_get (recipe,
-                      "images", &images,
-                      "ingredients", &ingredients,
-                      "instructions", &instructions,
-                      "notes", &notes,
-                      NULL);
+        g_object_get (recipe, "images", &images, NULL);
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
         chef = gr_recipe_store_get_chef (store, author);
@@ -433,10 +430,9 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         gtk_label_set_label (GTK_LABEL (page->description_label), description);
 
         if (page->chef)
-                author_desc = gr_chef_get_description (page->chef);
-
-        if (author_desc)
-                tmp = g_strdup_printf (_("About GNOME chef %s:\n%s"), author, author_desc);
+                tmp = g_strdup_printf (_("About GNOME chef %s:\n%s"),
+                                       author,
+                                       gr_chef_get_description (page->chef));
         else
                 tmp = g_strdup_printf (_("A recipe by GNOME chef %s"), author);
         gtk_label_set_label (GTK_LABEL (page->chef_label), tmp);
