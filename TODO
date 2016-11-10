@@ -1,8 +1,8 @@
 feature: allow timers to run in the background
 feature: keep a 'cooked this recipe n times' counter
-feature: unit conversion and preferences
 feature: keep creation and modification times for recipes, and sort by date
-feature: all removing a recipe from favorites again
+feature: allow removing a recipe from favorites again
+feature: bio section for featured chefs
 data: collect data for cuisines
 data: collect data for ingredients
 code: improve search implementation
@@ -10,7 +10,7 @@ code: reconsider storage with a proper db
 code: move header bars to page types, somehow
 code: rationalize names: diet vs category
 visual: better tiles
-feature: implement sharing
-feature: implement printing
+feature: unit conversion and preferences
 feature: shopping lists
-feature: bio section for featured chefs
+feature: implement printing
+feature: implement sharing
