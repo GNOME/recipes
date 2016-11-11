@@ -25,20 +25,23 @@ struct _GrTimer
 {
 	GtkWidget parent_instance;
 
-	gboolean active;
+        char *name;
+        gboolean active;
         guint64 duration;
 	guint64 start_time;
-        guint tick_id;
-	int size;
+        guint64 remaining;
+        guint completion_id;
+        guint remaining_id;
 };
 
-G_DEFINE_TYPE (GrTimer, gr_timer, GTK_TYPE_WIDGET)
+G_DEFINE_TYPE (GrTimer, gr_timer, G_TYPE_OBJECT)
 
 enum {
 	PROP_0,
+        PROP_NAME,
 	PROP_ACTIVE,
 	PROP_DURATION,
-	PROP_SIZE,
+        PROP_REMAINING,
 	N_PROPS
 };
 
@@ -52,36 +55,68 @@ enum {
 static guint signals[LAST_SIGNAL] = { 0, };
 
 GrTimer *
-gr_timer_new (void)
+gr_timer_new (const char *name)
 {
-	return g_object_new (GR_TYPE_TIMER, NULL);
+	return g_object_new (GR_TYPE_TIMER,
+                             "name", name,
+                             NULL);
+}
+
+const char *
+gr_timer_get_name (GrTimer *timer)
+{
+        return timer->name;
+}
+
+guint64
+gr_timer_get_start_time (GrTimer *timer)
+{
+        return timer->start_time;
+}
+
+guint64
+gr_timer_get_duration (GrTimer *timer)
+{
+        return timer->duration;
+}
+
+guint64
+gr_timer_get_remaining (GrTimer *timer)
+{
+        return timer->remaining;
+}
+
+gboolean
+gr_timer_get_active (GrTimer *timer)
+{
+        return timer->active;
 }
 
 static void set_active (GrTimer  *timer,
                         gboolean  active);
 
-static void
-timer_complete (GrTimer *timer)
+static gboolean
+timer_complete (gpointer data)
 {
+        GrTimer *timer = data;
+
 	set_active (timer, FALSE);
 	g_signal_emit (timer, signals[COMPLETE], 0);
+
+        return G_SOURCE_REMOVE;
 }
 
 static gboolean
-tick_cb (GtkWidget     *widget,
-         GdkFrameClock *frame_clock,
-         gpointer       user_data)
+remaining_update (gpointer data)
 {
-        GrTimer *timer = GR_TIMER (widget);
+        GrTimer *timer = data;
         guint64 now;
 
-        now = gdk_frame_clock_get_frame_time (frame_clock);
+        now = g_get_monotonic_time ();
 
-        gtk_widget_queue_resize (widget);
+        timer->remaining = timer->start_time + timer->duration - now;
 
-        if (now - timer->start_time >= timer->duration) {
-		timer_complete (timer);
-	}
+        g_object_notify (G_OBJECT (timer), "remaining");
 
         return G_SOURCE_CONTINUE;
 }
@@ -97,16 +132,15 @@ set_active (GrTimer  *timer,
 
         if (active) {
 		timer->start_time = g_get_monotonic_time ();
-                timer->tick_id = gtk_widget_add_tick_callback (GTK_WIDGET (timer), tick_cb, NULL, NULL);
+                timer->completion_id = g_timeout_add (timer->duration / 1000, timer_complete, timer);
+                timer->remaining_id = g_timeout_add_seconds (1, remaining_update, timer);
         }
-        else {
-                if (timer->tick_id) {
-                        gtk_widget_remove_tick_callback (GTK_WIDGET (timer), timer->tick_id);
-                        timer->tick_id = 0;
-                }
+        else if (timer->completion_id) {
+                g_source_remove (timer->completion_id);
+                timer->completion_id = 0;
+                g_source_remove (timer->remaining_id);
+                timer->remaining_id = 0;
         }
-
-	gtk_widget_queue_draw (GTK_WIDGET (timer));
 
         g_object_notify (G_OBJECT (timer), "active");
 }
@@ -120,18 +154,15 @@ set_duration (GrTimer *timer,
 }
 
 static void
-set_size (GrTimer *timer,
-          int      size)
-{
-	timer->size = size;
-	gtk_widget_queue_resize (GTK_WIDGET (timer));
-	g_object_notify (G_OBJECT (timer), "size");
-}
-
-static void
 gr_timer_finalize (GObject *object)
 {
-	GrTimer *self = (GrTimer *)object;
+	GrTimer *timer = GR_TIMER (object);
+
+        if (timer->completion_id)
+                g_source_remove (timer->completion_id);
+        if (timer->remaining_id)
+                g_source_remove (timer->remaining_id);
+        g_free (timer->name);
 
 	G_OBJECT_CLASS (gr_timer_parent_class)->finalize (object);
 }
@@ -145,7 +176,11 @@ gr_timer_get_property (GObject    *object,
 	GrTimer *self = GR_TIMER (object);
 
 	switch (prop_id)
-	  {
+          {
+          case PROP_NAME:
+                  g_value_set_string (value, self->name);
+                  break;
+
           case PROP_ACTIVE:
                   g_value_set_boolean (value, self->active);
                   break;
@@ -154,8 +189,8 @@ gr_timer_get_property (GObject    *object,
                   g_value_set_uint64 (value, self->duration);
                   break;
 
-          case PROP_SIZE:
-                  g_value_set_int (value, self->size);
+          case PROP_REMAINING:
+                  g_value_set_uint64 (value, self->remaining);
                   break;
 
 	  default:
@@ -172,7 +207,11 @@ gr_timer_set_property (GObject      *object,
 	GrTimer *self = GR_TIMER (object);
 
 	switch (prop_id)
-	  {
+          {
+          case PROP_NAME:
+                  self->name = g_value_dup_string (value);
+                  break;
+
           case PROP_ACTIVE:
                   set_active (self, g_value_get_boolean (value));
                   break;
@@ -181,90 +220,19 @@ gr_timer_set_property (GObject      *object,
                   set_duration (self, g_value_get_uint64 (value));
                   break;
 
-          case PROP_SIZE:
-                  set_size (self, g_value_get_int (value));
-                  break;
-
 	  default:
 	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 	  }
 }
 
 static void
-gr_timer_get_preferred_width (GtkWidget *widget,
-                              gint      *minimum,
-                              gint      *natural)
-{
-	GrTimer *timer = GR_TIMER (widget);
-
-	*minimum = *natural = timer->size;
-}
-
-static void
-gr_timer_get_preferred_height (GtkWidget *widget,
-                               gint      *minimum,
-                               gint      *natural)
-{
-	GrTimer *timer = GR_TIMER (widget);
-
-	*minimum = *natural = timer->size;
-}
-
-static gboolean
-gr_timer_draw (GtkWidget *widget, cairo_t *cr)
-{
-	GrTimer *timer = GR_TIMER (widget);
-	GtkStyleContext *context;
-  	gint width, height;
-        double xc, yc;
-        double radius;
-        double angle1, angle2;
-        guint64 now;
-
-  	context = gtk_widget_get_style_context (widget);
-  	width = gtk_widget_get_allocated_width (widget);
-  	height = gtk_widget_get_allocated_height (widget);
-
-  	gtk_render_background (context, cr, 0, 0, width, height);
-  	gtk_render_frame (context, cr, 0, 0, width, height);
-
-        now = g_get_monotonic_time ();
-
-        cairo_set_source_rgb (cr, 0, 0, 0);
-        xc = width / 2;
-        yc = height / 2;
-        radius = width / 2;
-
-	if (timer->active) {
-        	angle1 = ((now - timer->start_time) * 2 * M_PI / timer->duration) + (3 * M_PI / 2);
-        	angle2 = 3 * M_PI / 2;
-
-	        cairo_arc (cr, xc, yc, radius, angle1, angle2);
-        	cairo_line_to (cr, xc, yc);
-	}
-	else {
-		cairo_arc (cr, xc, yc, radius, 0, 2 * M_PI);
-	}
-
-        cairo_close_path (cr);
-        cairo_fill (cr);
-
-  	return FALSE;
-}
-
-static void
 gr_timer_class_init (GrTimerClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
 	object_class->finalize = gr_timer_finalize;
 	object_class->get_property = gr_timer_get_property;
 	object_class->set_property = gr_timer_set_property;
-
-	widget_class->get_preferred_width = gr_timer_get_preferred_width;
-	widget_class->get_preferred_height = gr_timer_get_preferred_height;
-	widget_class->draw = gr_timer_draw;
 
 	signals[COMPLETE] = g_signal_new ("complete",
                                           G_TYPE_FROM_CLASS (object_class),
@@ -284,20 +252,21 @@ gr_timer_class_init (GrTimerClass *klass)
                                          g_param_spec_uint64 ("duration", NULL, NULL,
                                                               0, G_MAXUINT64, 0,
                                                               G_PARAM_READWRITE));
-
         g_object_class_install_property (object_class,
-                                         PROP_SIZE,
-                                         g_param_spec_int ("size", NULL, NULL,
-                                                           1, G_MAXINT, 32,
-                                                           G_PARAM_READWRITE));
+                                         PROP_REMAINING,
+                                         g_param_spec_uint64 ("remaining", NULL, NULL,
+                                                              0, G_MAXUINT64, 0,
+                                                              G_PARAM_READABLE));
+        g_object_class_install_property (object_class,
+                                         PROP_NAME,
+                                         g_param_spec_string ("name", NULL, NULL,
+                                                              NULL,
+                                                              G_PARAM_READWRITE));
 }
 
 static void
 gr_timer_init (GrTimer *self)
 {
-	gtk_widget_set_has_window (GTK_WIDGET (self), FALSE);
-	gtk_widget_set_can_focus (GTK_WIDGET (self), FALSE);
-	self->size = 32;
 	self->active = FALSE;
 	self->duration = 0;
 }

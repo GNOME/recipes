@@ -32,16 +32,36 @@
 #include "gr-window.h"
 #include "gr-utils.h"
 #include "gr-ingredients-list.h"
+#include "gr-timer.h"
 
 
 typedef struct {
         gboolean ingredients;
         gboolean preheat;
         gboolean instructions;
+        GrTimer *timer;
 } CookingData;
 
+static void
+timer_complete (GrTimer *timer)
+{
+	GApplication *app;
+	GNotification *notification;
+        g_autofree char *body = NULL;
+
+	app = g_application_get_default ();
+
+        body = g_strdup_printf (_("Your cooking timer for “%s” has expired."),
+                                gr_timer_get_name (timer));
+
+	notification = g_notification_new (_("Time is up!"));
+	g_notification_set_body (notification, body);
+
+	g_application_send_notification (app, "timer", notification);
+}
+
 static CookingData *
-cooking_data_new (void)
+cooking_data_new (const char *name)
 {
         CookingData *cd;
 
@@ -49,6 +69,9 @@ cooking_data_new (void)
         cd->ingredients = FALSE;
         cd->preheat = FALSE;
         cd->instructions = FALSE;
+        cd->timer = gr_timer_new (name);
+
+        g_signal_connect (cd->timer, "complete", G_CALLBACK (timer_complete), NULL);
 
         return cd;
 }
@@ -58,6 +81,7 @@ cooking_data_free (gpointer data)
 {
         CookingData *cd = data;
 
+        g_object_unref (cd->timer);
         g_free (cd);
 }
 
@@ -84,17 +108,65 @@ struct _GrDetailsPage
         GtkWidget *ingredients_check;
         GtkWidget *preheat_check;
         GtkWidget *instructions_check;
-        GtkWidget *timer_button;
         GtkWidget *timer;
         GtkWidget *timer_stack;
         GtkWidget *timer_popover;
         GtkWidget *time_spin;
         GtkWidget *favorite_button;
+        GtkWidget *duration_stack;
+        GtkWidget *remaining_time_label;
 };
 
 G_DEFINE_TYPE (GrDetailsPage, gr_details_page, GTK_TYPE_BOX)
 
 static void connect_store_signals (GrDetailsPage *page);
+
+static void
+timer_active_changed (GrTimer       *timer,
+                      GParamSpec    *pspec,
+                      GrDetailsPage *page)
+{
+        if (strcmp (gr_timer_get_name (timer), gr_recipe_get_name (page->recipe)) != 0)
+                return;
+
+        if (gr_timer_get_active (timer)) {
+		gtk_stack_set_visible_child_name (GTK_STACK (page->timer_stack), "timer");
+		gtk_stack_set_visible_child_name (GTK_STACK (page->duration_stack), "stop");
+        }
+        else {
+        	gtk_stack_set_visible_child_name (GTK_STACK (page->timer_stack), "icon");
+		gtk_stack_set_visible_child_name (GTK_STACK (page->duration_stack), "start");
+        }
+}
+
+static void
+timer_remaining_changed (GrTimer       *timer,
+                         GParamSpec    *pspec,
+                         GrDetailsPage *page)
+{
+        guint64 remaining;
+        guint hours, minutes, seconds;
+        g_autofree char *buf;
+
+        g_print ("time remaining changed\n");
+        if (strcmp (gr_timer_get_name (timer), gr_recipe_get_name (page->recipe)) != 0)
+                return;
+
+        remaining = gr_timer_get_remaining (timer);
+        g_print ("%ld\n", remaining);
+
+        seconds = remaining / (1000 * 1000);
+        g_print ("seconds %d\n", seconds);
+
+        hours = seconds / (60 * 60);
+        seconds -= hours * 60 * 60;
+        minutes = seconds / 60;
+        seconds -= minutes * 60;
+
+        g_print ("%d %d %d\n", hours, minutes, seconds);
+        buf = g_strdup_printf ("%02d:%02d:%02d", hours, minutes, seconds);
+        gtk_label_set_label (GTK_LABEL (page->remaining_time_label), buf);
+}
 
 static void
 set_cooking (GrDetailsPage *page,
@@ -109,22 +181,28 @@ set_cooking (GrDetailsPage *page,
 
 	if (cooking) {
                 if (!cd) {
-                        cd = cooking_data_new ();
+                        cd = cooking_data_new (name);
                         g_hash_table_insert (page->cooking, g_strdup (name), cd);
                 }
 
 		g_object_set (page->ingredients_check, "active", cd->ingredients, NULL);
 		g_object_set (page->preheat_check, "active", cd->preheat, NULL);
 		g_object_set (page->instructions_check, "active", cd->instructions, NULL);
-
-		gtk_stack_set_visible_child_name (GTK_STACK (page->timer_stack), "icon");
+                g_object_set (page->timer, "timer", cd->timer, NULL);
+                g_signal_connect (cd->timer, "notify::active", G_CALLBACK (timer_active_changed), page);
+                timer_active_changed (cd->timer, NULL, page);
+                g_signal_connect (cd->timer, "notify::remaining", G_CALLBACK (timer_remaining_changed), page);
+                timer_remaining_changed (cd->timer, NULL, page);
 		gtk_revealer_set_reveal_child (GTK_REVEALER (page->cooking_revealer), TRUE);
 	}
 	else {
-                if (cd)
+                if (cd) {
+                        g_signal_handlers_disconnect_by_func (cd->timer, G_CALLBACK (timer_active_changed), page);
+                        g_signal_handlers_disconnect_by_func (cd->timer, G_CALLBACK (timer_remaining_changed), page);
                         g_hash_table_remove (page->cooking, name);
+                }
 
- 		g_object_set (page->timer, "active", FALSE, NULL);
+ 		g_object_set (page->timer, "timer", NULL, NULL);
 		gtk_revealer_set_reveal_child (GTK_REVEALER (page->cooking_revealer), FALSE);
 	}
 }
@@ -180,48 +258,31 @@ serves_value_changed (GrDetailsPage *page)
 }
 
 static void
-start_timer (GrDetailsPage *page)
+start_or_stop_timer (GrDetailsPage *page)
 {
-	gboolean active;
+        int minutes;
+        const char *name;
+        CookingData *cd;
 
-	g_object_get (page->timer, "active", &active, NULL);
-	if (active) {
-		g_object_set (page->timer, "active", FALSE, NULL);
-		gtk_stack_set_visible_child_name (GTK_STACK (page->timer_stack), "icon");
-		gtk_button_set_label (GTK_BUTTON (page->timer_button), _("Start"));
-                gtk_widget_set_sensitive (page->time_spin, TRUE);
+        name = gr_recipe_get_name (page->recipe);
+
+        cd = g_hash_table_lookup (page->cooking, name);
+
+        g_assert (cd && cd->timer);
+
+	if (gr_timer_get_active (cd->timer)) {
+                g_object_set (cd->timer, "active", FALSE, NULL);
 	}
 	else {
-                int minutes;
 
                 minutes = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (page->time_spin));
-		g_object_set (page->timer,
+		g_object_set (cd->timer,
+                              "duration", minutes * 60 * 1000 * 1000,
                               "active", TRUE,
-                              "duration", minutes * 60000000,
                               NULL);
-		gtk_stack_set_visible_child_name (GTK_STACK (page->timer_stack), "timer");
-		gtk_button_set_label (GTK_BUTTON (page->timer_button), _("Stop"));
-                gtk_widget_set_sensitive (page->time_spin, FALSE);
 	}
+
 	gtk_popover_popdown (GTK_POPOVER (page->timer_popover));
-}
-
-static void
-timer_complete (GrDetailsPage *page)
-{
-	GApplication *app;
-	GNotification *notification;
-
-	gtk_stack_set_visible_child_name (GTK_STACK (page->timer_stack), "icon");
-	gtk_button_set_label (GTK_BUTTON (page->timer_button), _("Start"));
-        gtk_widget_set_sensitive (page->time_spin, TRUE);
-
-	app = g_application_get_default ();
-
-	notification = g_notification_new (_("Time is up!"));
-	g_notification_set_body (notification, _("Your cooking timer has expired."));
-
-	g_application_send_notification (app, "timer", notification);
 }
 
 static int
@@ -249,6 +310,13 @@ time_spin_input (GtkSpinButton *spin_button,
                         found = TRUE;
                 }
         }
+        else {
+                minutes = strtol (str[0], &endm, 10);
+                if (!*endm) {
+                        *new_val = minutes;
+                        found = TRUE;
+                }
+        }
 
         g_strfreev (str);
 
@@ -256,6 +324,8 @@ time_spin_input (GtkSpinButton *spin_button,
                 *new_val = 0.0;
                 return GTK_INPUT_ERROR;
         }
+
+        g_print ("new value %f\n", *new_val);
 
         return TRUE;
 }
@@ -360,19 +430,19 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, ingredients_check);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, instructions_check);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, preheat_check);
-        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, timer_button);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, timer);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, timer_stack);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, timer_popover);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, time_spin);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, favorite_button);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, duration_stack);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, remaining_time_label);
 
         gtk_widget_class_bind_template_callback (widget_class, edit_recipe);
         gtk_widget_class_bind_template_callback (widget_class, delete_recipe);
         gtk_widget_class_bind_template_callback (widget_class, more_recipes);
         gtk_widget_class_bind_template_callback (widget_class, serves_value_changed);
-        gtk_widget_class_bind_template_callback (widget_class, start_timer);
-        gtk_widget_class_bind_template_callback (widget_class, timer_complete);
+        gtk_widget_class_bind_template_callback (widget_class, start_or_stop_timer);
         gtk_widget_class_bind_template_callback (widget_class, time_spin_input);
         gtk_widget_class_bind_template_callback (widget_class, time_spin_output);
         gtk_widget_class_bind_template_callback (widget_class, check_clicked);

@@ -85,10 +85,7 @@ followed</property>
                     <child>
                       <object class="GrTimerWidget" id="timer">
                         <property name="visible">1</property>
-                        <property name="active">0</property>
-                        <property name="duration">20000000</property>
                         <property name="valign">center</property>
-                        <signal name="complete" handler="timer_complete" swapped="yes"/>
                       </object>
                       <packing>
                         <property name="name">timer</property>
@@ -116,7 +113,6 @@ followed</property>
             <child>
               <object class="GtkGrid">
                 <property name="visible">1</property>
-                <property name="margin-start">0</property>
                 <property name="margin-end">48</property>
                 <property name="margin-top">48</property>
                 <property name="margin-bottom">48</property>
@@ -391,21 +387,21 @@ followed</property>
   </template>
   <object class="GtkPopover" id="timer_popover">
     <child>
-      <object class="GtkBox">
+      <object class="GtkStack" id="duration_stack">
         <property name="visible">1</property>
-        <property name="margin">12</property>
-        <property name="spacing">12</property>
-        <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">1</property>
-            <property name="xalign">0</property>
-            <property name="label" translatable="yes">Duration</property>
-          </object>
-        </child>
         <child>
           <object class="GtkBox">
             <property name="visible">1</property>
+            <property name="margin">12</property>
+            <property name="spacing">12</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="xalign">0</property>
+                <property name="label" translatable="yes">Duration</property>
+              </object>
+            </child>
             <child>
               <object class="GtkSpinButton" id="time_spin">
                 <property name="visible">1</property>
@@ -415,15 +411,53 @@ followed</property>
                 <signal name="output" handler="time_spin_output"/>
               </object>
             </child>
+            <child>
+              <object class="GtkButton">
+                <property name="visible">1</property>
+                <property name="label" translatable="yes">Start</property>
+                <property name="halign">end</property>
+                <property name="valign">end</property>
+                <signal name="clicked" handler="start_or_stop_timer" swapped="yes"/>
+              </object>
+            </child>
           </object>
+          <packing>
+            <property name="name">start</property>
+          </packing>
         </child>
         <child>
-          <object class="GtkButton" id="timer_button">
+          <object class="GtkBox">
             <property name="visible">1</property>
-            <property name="label" translatable="yes">Start</property>
-            <property name="halign">end</property>
-            <signal name="clicked" handler="start_timer" swapped="yes"/>
+            <property name="margin">12</property>
+            <property name="spacing">12</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="xalign">0</property>
+                <property name="label" translatable="yes">Remaining time</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="remaining_time_label">
+                <property name="visible">1</property>
+                <property name="xalign">0</property>
+                <property name="halign">center</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton">
+                <property name="visible">1</property>
+                <property name="label" translatable="yes">Stop</property>
+                <property name="halign">end</property>
+                <property name="valign">end</property>
+                <signal name="clicked" handler="start_or_stop_timer" swapped="yes"/>
+              </object>
+            </child>
           </object>
+          <packing>
+            <property name="name">stop</property>
+          </packing>
         </child>
       </object>
     </child>
