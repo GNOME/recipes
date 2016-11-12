@@ -128,13 +128,13 @@ populate_initially (GrIngredientsPage *self)
 
                 item = gtk_label_new (letter);
                 g_object_set_data (G_OBJECT (item), "category", category);
-                g_object_set (item, "xalign", 0.5, NULL);
+                gtk_label_set_xalign (GTK_LABEL (item), 0.5);
                 gtk_widget_show (item);
                 gtk_style_context_add_class (gtk_widget_get_style_context (item), "letterbar");
                 gtk_list_box_insert (GTK_LIST_BOX (self->letter_box), item, -1);
 
                 label = gtk_label_new (letter);
-                g_object_set (label, "xalign", 0, NULL);
+                gtk_label_set_xalign (GTK_LABEL (item), 0);
                 gtk_style_context_add_class (gtk_widget_get_style_context (label), "heading");
                 gtk_widget_show (label);
                 gtk_container_add (GTK_CONTAINER (self->main_box), label);
