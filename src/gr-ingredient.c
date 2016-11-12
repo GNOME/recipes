@@ -128,6 +128,56 @@ static const char *plurals[] = {
         NULL
 };
 
+static const char *negations[] = {
+        N_("no Almond"),
+        N_("no Amaretti"),
+        N_("no Apple"),
+        N_("no Apricot"),
+        N_("no Anchovis"),
+        N_("no Artichoke"),
+        N_("no Asparagus"),
+        N_("no Aubergine"),
+        N_("no Bacon"),
+        N_("no Banana"),
+        N_("no Baked Beans"),
+        N_("no Basil"),
+        N_("no Beans"),
+        N_("no Bagel"),
+        N_("no Basmati rice"),
+        N_("no Bay leaf"),
+        N_("no Beef mince"),
+        N_("no Berry"),
+        N_("no Beetroot"),
+        N_("no Biscotti"),
+        N_("no Beef sausage"),
+        N_("no Beef stock"),
+        N_("no Bilberry"),
+        N_("no Carrot"),
+        N_("no Couscous"),
+        N_("no Date"),
+        N_("no Egg"),
+        N_("no Fig"),
+        N_("no Garlic"),
+        N_("no Honey"),
+        N_("no Lemon"),
+        N_("no Mayonnaise"),
+        N_("no Mustard"),
+        N_("no Onion"),
+        N_("no Orange"),
+        N_("no Parsley"),
+        N_("no Pepper"),
+        N_("no Potatoe"),
+        N_("no Silantro"),
+        N_("no Squash"),
+        N_("no Tangerine"),
+        N_("no Tomato"),
+        N_("no Vinegar"),
+        N_("no Wine"),
+        N_("no Yoghurt"),
+        N_("no Zinfandel"),
+        NULL
+};
+
 static char **names;
 static char **cf_names;
 static char **cf_plurals;
@@ -187,9 +237,23 @@ gr_ingredient_get_plural (const char *name)
 {
         int i;
 
-        for (i = 0; i < G_N_ELEMENTS (names); i++) {
+        for (i = 0; names[i]; i++) {
                 if (g_strcmp0 (name, names[i]) == 0) {
                         return _(plurals[i]);
+                }
+        }
+
+        return NULL;
+}
+
+const char *
+gr_ingredient_get_negation (const char *name)
+{
+        int i;
+
+        for (i = 0; names[i]; i++) {
+                if (g_strcmp0 (name, names[i]) == 0) {
+                        return _(negations[i]);
                 }
         }
 

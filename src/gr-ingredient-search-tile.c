@@ -56,15 +56,10 @@ toggle_exclusion (GtkButton *button, GrIngredientSearchTile *tile)
 {
         tile->exclude = !tile->exclude;
 
-        if (tile->exclude) {
-                g_autofree char *text;
-
-                text = g_strdup_printf (_("no %s"), tile->ingredient);
-                gtk_button_set_label (button, text);
-        }
-        else {
+        if (tile->exclude)
+                gtk_button_set_label (button, gr_ingredient_get_negation (tile->ingredient));
+        else
                 gtk_button_set_label (button, tile->ingredient);
-        }
 
         g_signal_emit (tile, signals[TILE_CHANGED], 0);
 }
