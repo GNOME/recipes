@@ -96,7 +96,7 @@ recipe_tile_set_recipe (GrRecipeTile *tile, GrRecipe *recipe)
 	}
         gtk_label_set_label (GTK_LABEL (tile->label), name);
 
-        tmp = g_strdup_printf ("by %s", author);
+        tmp = g_strdup_printf (_("by %s"), author);
 
         gtk_label_set_label (GTK_LABEL (tile->author), tmp);
 }
