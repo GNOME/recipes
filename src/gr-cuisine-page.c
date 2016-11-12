@@ -124,13 +124,13 @@ populate_initially (GrCuisinePage *self)
                 title = gr_category_get_title (names[i]);
 
                 item = gtk_label_new (title);
-                g_object_set (item, "xalign", 0, NULL);
+                gtk_label_set_xalign (GTK_LABEL (item), 0);
                 gtk_widget_show (item);
                 gtk_style_context_add_class (gtk_widget_get_style_context (item), "sidebar");
                 gtk_list_box_insert (GTK_LIST_BOX (self->sidebar), item, -1);
 
                 label = gtk_label_new (title);
-                g_object_set (label, "xalign", 0, NULL);
+                gtk_label_set_xalign (GTK_LABEL (label), 0);
                 gtk_style_context_add_class (gtk_widget_get_style_context (label), "heading");
                 gtk_widget_show (label);
                 gtk_container_add (GTK_CONTAINER (self->category_box), label);
@@ -173,13 +173,10 @@ gr_cuisine_page_init (GrCuisinePage *page)
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
         gtk_widget_init_template (GTK_WIDGET (page));
 
-        gtk_list_box_set_filter_func (GTK_LIST_BOX (page->sidebar),
-                                      filter_sidebar,
-                                      page,
-                                      NULL);
-
         populate_initially (page);
 	connect_store_signals (page);
+
+        gtk_list_box_set_filter_func (GTK_LIST_BOX (page->sidebar), filter_sidebar, page, NULL);
 }
 
 static void
