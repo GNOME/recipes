@@ -146,24 +146,21 @@ timer_remaining_changed (GrTimer       *timer,
 {
         guint64 remaining;
         guint hours, minutes, seconds;
-        g_autofree char *buf;
+        g_autofree char *buf = NULL;
 
         g_print ("time remaining changed\n");
         if (strcmp (gr_timer_get_name (timer), gr_recipe_get_name (page->recipe)) != 0)
                 return;
 
         remaining = gr_timer_get_remaining (timer);
-        g_print ("%ld\n", remaining);
 
         seconds = remaining / (1000 * 1000);
-        g_print ("seconds %d\n", seconds);
 
         hours = seconds / (60 * 60);
         seconds -= hours * 60 * 60;
         minutes = seconds / 60;
         seconds -= minutes * 60;
 
-        g_print ("%d %d %d\n", hours, minutes, seconds);
         buf = g_strdup_printf ("%02d:%02d:%02d", hours, minutes, seconds);
         gtk_label_set_label (GTK_LABEL (page->remaining_time_label), buf);
 }
@@ -586,3 +583,78 @@ gr_details_page_set_cooking (GrDetailsPage *page,
 	set_cooking (page, cooking);
 }
 
+static void
+remaining_changed (GrTimer    *timer,
+                   GParamSpec *pspec,
+                   GtkWidget  *widget)
+{
+        if (GTK_IS_LABEL (widget)) {
+                guint64 remaining;
+                guint seconds, minutes, hours;
+                g_autofree char *buf = NULL;
+
+                remaining = gr_timer_get_remaining (timer);
+
+                seconds = remaining / (1000 * 1000);
+
+                hours = seconds / (60 * 60);
+                seconds -= hours * 60 * 60;
+                minutes = seconds / 60;
+                seconds -= minutes * 60;
+
+                buf = g_strdup_printf ("%02d:%02d:%02d", hours, minutes, seconds);
+                gtk_label_set_label (GTK_LABEL (widget), buf);
+        }
+        else if (GTK_IS_PROGRESS_BAR (widget)) {
+                double fraction;
+                fraction = 1.0 * (gr_timer_get_duration (timer) - gr_timer_get_remaining (timer)) / gr_timer_get_duration (timer);
+                gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (widget), fraction);
+        }
+}
+void
+gr_details_page_show_timers (GrDetailsPage *page)
+{
+        GtkWidget *dialog;
+        GtkWindow *parent;
+        GHashTableIter iter;
+        const char *name;
+        CookingData *cd;
+
+        parent = GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (page)));
+        dialog = gtk_dialog_new_with_buttons ("Currently cooking",
+                                        parent,
+                                        GTK_DIALOG_MODAL|
+                                        GTK_DIALOG_DESTROY_WITH_PARENT|
+                                        GTK_DIALOG_USE_HEADER_BAR,
+                                        NULL);
+        g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
+
+        g_hash_table_iter_init (&iter, page->cooking);
+        while (g_hash_table_iter_next (&iter, (gpointer *)&name, (gpointer *)&cd)) {
+                GtkWidget *box, *label, *progress;
+                double fraction;
+
+                box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+                gtk_widget_show (box);
+                label = gtk_label_new (name);
+                gtk_widget_show (label);
+                gtk_label_set_xalign (GTK_LABEL (label), 0);
+                gtk_container_add (GTK_CONTAINER (box), label);
+                progress = gtk_progress_bar_new ();
+                gtk_widget_set_hexpand (progress, TRUE);
+                gtk_widget_show (progress);
+                fraction = 1.0 * (gr_timer_get_duration (cd->timer) - gr_timer_get_remaining (cd->timer)) / gr_timer_get_duration (cd->timer);
+                gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (progress), fraction);
+                gtk_container_add (GTK_CONTAINER (box), progress);
+                label = gtk_label_new ("");
+                gtk_widget_show (label);
+                gtk_label_set_xalign (GTK_LABEL (label), 0);
+                gtk_container_add (GTK_CONTAINER (box), label);
+                g_signal_connect_object (cd->timer, "notify::remaining", G_CALLBACK (remaining_changed), label, 0);
+                g_signal_connect_object (cd->timer, "notify::remaining", G_CALLBACK (remaining_changed), progress, 0);
+
+                gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), box);
+        }
+
+        gtk_window_present (GTK_WINDOW (dialog));
+}

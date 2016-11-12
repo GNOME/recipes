@@ -62,6 +62,17 @@ preferences_activated (GSimpleAction *action,
 }
 
 static void
+timers_activated (GSimpleAction *action,
+                  GVariant      *parameter,
+                  gpointer       app)
+{
+  	GtkWindow *win;
+
+  	win = gtk_application_get_active_window (GTK_APPLICATION (app));
+        gr_window_show_timers (GR_WINDOW (win));
+}
+
+static void
 about_activated (GSimpleAction *action,
                  GVariant      *parameter,
                  gpointer       app)
@@ -106,6 +117,7 @@ quit_activated (GSimpleAction *action,
 static GActionEntry app_entries[] =
 {
         { "preferences", preferences_activated, NULL, NULL, NULL },
+        { "timers", timers_activated, NULL, NULL, NULL },
         { "about", about_activated, NULL, NULL, NULL },
         { "quit", quit_activated, NULL, NULL, NULL }
 };

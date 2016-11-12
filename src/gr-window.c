@@ -522,3 +522,8 @@ gr_window_show_search_by_ingredients (GrWindow   *window,
         switch_to_ingredients_search (window);
 }
 
+void
+gr_window_show_timers (GrWindow *window)
+{
+        gr_details_page_show_timers (GR_DETAILS_PAGE (window->details_page));
+}

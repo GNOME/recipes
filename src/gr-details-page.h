@@ -40,5 +40,6 @@ gboolean         gr_details_page_is_cooking  (GrDetailsPage *page);
 void             gr_details_page_set_cooking (GrDetailsPage *page,
 					      gboolean       cooking);
 
+void             gr_details_page_show_timers (GrDetailsPage *page);
 
 G_END_DECLS
