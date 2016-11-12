@@ -46,7 +46,7 @@ static void
 timer_complete (GrTimer *timer)
 {
 	GApplication *app;
-	GNotification *notification;
+	g_autoptr(GNotification) notification = NULL;
         g_autofree char *body = NULL;
 
 	app = g_application_get_default ();
