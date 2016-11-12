@@ -210,18 +210,22 @@ gr_recipe_set_property (GObject      *object,
                 break;
 
         case PROP_CATEGORY:
+                g_free (priv->category);
                 priv->category = g_value_dup_string (value);
                 break;
 
         case PROP_CUISINE:
+                g_free (priv->cuisine);
                 priv->cuisine = g_value_dup_string (value);
                 break;
 
         case PROP_PREP_TIME:
+                g_free (priv->prep_time);
                 priv->prep_time = g_value_dup_string (value);
                 break;
 
         case PROP_COOK_TIME:
+                g_free (priv->cook_time);
                 priv->cook_time = g_value_dup_string (value);
                 break;
 
@@ -230,15 +234,19 @@ gr_recipe_set_property (GObject      *object,
                 break;
 
         case PROP_INGREDIENTS:
+                g_free (priv->ingredients);
+                g_free (priv->cf_ingredients);
                 priv->ingredients = g_value_dup_string (value);
                 priv->cf_ingredients = g_utf8_casefold (priv->ingredients, -1);
                 break;
 
         case PROP_INSTRUCTIONS:
+                g_free (priv->instructions);
                 priv->instructions = g_value_dup_string (value);
                 break;
 
         case PROP_NOTES:
+                g_free (priv->notes);
                 priv->notes = g_value_dup_string (value);
                 break;
 
