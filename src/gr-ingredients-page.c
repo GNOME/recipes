@@ -112,28 +112,34 @@ ingredients_page_finalize (GObject *object)
 static void
 populate_initially (GrIngredientsPage *self)
 {
-        const char *alphabet = _("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
         int i;
+        g_autofree gunichar *alphabet = NULL;
+        glong length;
 
         self->categories = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, category_free);
 
-        for (i = 0; i < strlen (alphabet); i++) {
+        alphabet = g_utf8_to_ucs4_fast (_("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), -1, &length);
+
+        for (i = 0; i < length; i++) {
                 g_autofree char *letter = NULL;
                 GtkWidget *item, *label, *box;
                 Category *category;
+                char buf[6];
+                int len;
 
                 category = g_new (Category, 1);
 
-                letter = g_strdup_printf ("%c", alphabet[i]);
+                len = g_unichar_to_utf8 (alphabet[i], buf);
+                buf[len] = '\0';
 
-                item = gtk_label_new (letter);
+                item = gtk_label_new (buf);
                 g_object_set_data (G_OBJECT (item), "category", category);
                 gtk_label_set_xalign (GTK_LABEL (item), 0.5);
                 gtk_widget_show (item);
                 gtk_style_context_add_class (gtk_widget_get_style_context (item), "letterbar");
                 gtk_list_box_insert (GTK_LIST_BOX (self->letter_box), item, -1);
 
-                label = gtk_label_new (letter);
+                label = gtk_label_new (buf);
                 gtk_label_set_xalign (GTK_LABEL (item), 0);
                 gtk_style_context_add_class (gtk_widget_get_style_context (label), "heading");
                 gtk_widget_show (label);
@@ -146,13 +152,13 @@ populate_initially (GrIngredientsPage *self)
                 gtk_container_add (GTK_CONTAINER (self->main_box), box);
                 g_signal_connect_swapped (box, "child-activated", G_CALLBACK (ingredient_activated), self);
 
-                category->name = g_strdup (letter);
+                category->name = g_strdup (buf);
                 category->item = item;
                 category->label = label;
                 category->box = box;
                 category->filled = FALSE;
 
-                g_hash_table_insert (self->categories, g_strdup (letter), category);
+                g_hash_table_insert (self->categories, g_strdup (buf), category);
         }
 }
 
@@ -224,10 +230,9 @@ ingredients_page_reload (GrIngredientsPage *page)
 
                 category = g_hash_table_lookup (page->categories, buf);
 
-                if (!category) {
-                        g_print ("no such category: %s", buf);
+                if (!category)
                         continue;
-                }
+
                 tile = gr_ingredient_tile_new (ingredients[i]);
                 gtk_widget_show (tile);
 
