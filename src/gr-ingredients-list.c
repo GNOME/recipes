@@ -177,6 +177,7 @@ static Unit units[] = {
   { "g",  { "g", "gram", "grams", NULL } },
   { "kg", { "kg", "kilogram", "kilograms", NULL } },
   { "l",  { "l", "liter", "liters", NULL } },
+  { "ml", { "ml", "milliliter", "milliliters", NULL } },
   { "lb", { "lb", "pound", "pounds", NULL } },
   { "box", { "box", "boxes", NULL, NULL } },
 };
