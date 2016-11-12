@@ -19,6 +19,7 @@
 #include "config.h"
 
 #include <gtk/gtk.h>
+#include <libintl.h>
 
 #include "gr-app.h"
 #include "gr-cuisine-page.h"
@@ -55,6 +56,10 @@ main (int argc, char *argv[])
   g_type_ensure (GR_TYPE_TIMER_WIDGET);
   g_type_ensure (GR_TYPE_TOGGLE_BUTTON);
   g_type_ensure (GS_TYPE_HIDING_BOX);
+
+  bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+  bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+  textdomain (GETTEXT_PACKAGE);
 
   app = G_APPLICATION (gr_app_new ());
 

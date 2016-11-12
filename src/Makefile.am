@@ -1,6 +1,10 @@
 bin_PROGRAMS = recipes
 
-recipes_CFLAGS = $(RECIPES_CFLAGS) -DPKG_DATA_DIR=\"$(pkgdatadir)\" -O0 -ggdb
+recipes_CFLAGS = $(RECIPES_CFLAGS) 	\
+	-DPKGDATADIR=\"$(pkgdatadir)\" 	\
+	-DLOCALEDIR=\"$(localedir)\" 	\
+	-O0 -ggdb
+
 recipes_LDADD = $(RECIPES_LIBS) -lm
 recipes_SOURCES = \
 	main.c 			\

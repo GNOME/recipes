@@ -146,7 +146,7 @@ get_user_data_dir (void)
 const char *
 get_pkg_data_dir (void)
 {
-        return PKG_DATA_DIR;
+        return PKGDATADIR;
 }
 
 void
