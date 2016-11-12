@@ -148,22 +148,18 @@ timer_remaining_changed (GrTimer       *timer,
         guint hours, minutes, seconds;
         g_autofree char *buf;
 
-        g_print ("time remaining changed\n");
         if (strcmp (gr_timer_get_name (timer), gr_recipe_get_name (page->recipe)) != 0)
                 return;
 
         remaining = gr_timer_get_remaining (timer);
-        g_print ("%ld\n", remaining);
 
         seconds = remaining / (1000 * 1000);
-        g_print ("seconds %d\n", seconds);
 
         hours = seconds / (60 * 60);
         seconds -= hours * 60 * 60;
         minutes = seconds / 60;
         seconds -= minutes * 60;
 
-        g_print ("%d %d %d\n", hours, minutes, seconds);
         buf = g_strdup_printf ("%02d:%02d:%02d", hours, minutes, seconds);
         gtk_label_set_label (GTK_LABEL (page->remaining_time_label), buf);
 }
@@ -324,8 +320,6 @@ time_spin_input (GtkSpinButton *spin_button,
                 *new_val = 0.0;
                 return GTK_INPUT_ERROR;
         }
-
-        g_print ("new value %f\n", *new_val);
 
         return TRUE;
 }

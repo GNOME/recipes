@@ -492,7 +492,6 @@ gr_window_show_myself (GrWindow *window)
         name = gr_recipe_store_get_user_key (store);
         title = _("My own recipes");
         chef = gr_recipe_store_get_chef (store, name);
-        g_print ("myself: %s %p\n", name, chef);
 
         gtk_header_bar_set_title (GTK_HEADER_BAR (window->list_header), title);
 	gr_list_page_populate_from_chef (GR_LIST_PAGE (window->list_page), chef);

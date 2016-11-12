@@ -112,17 +112,13 @@ category_clicked (GrCategoryTile *tile,
         diet = gr_category_tile_get_diet (tile);
         name = gr_category_tile_get_category (tile);
         label = gr_category_tile_get_label (tile);
-        g_print ("category: %d %s %s\n", diet, name, label);
 
-        if (diet) {
+        if (diet)
                 gr_window_show_diet (GR_WINDOW (window), label, diet);
-        }
-        else if (strcmp (name, "favorites") == 0) {
+        else if (strcmp (name, "favorites") == 0)
                 gr_window_show_favorites (GR_WINDOW (window));
-        }
-        else if (strcmp (name, "mine") == 0) {
+        else if (strcmp (name, "mine") == 0)
                 gr_window_show_myself (GR_WINDOW (window));
-        }
 }
 
 static void
