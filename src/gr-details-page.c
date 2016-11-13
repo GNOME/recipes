@@ -48,6 +48,7 @@ timer_complete (GrTimer *timer)
 	GApplication *app;
 	g_autoptr(GNotification) notification = NULL;
         g_autofree char *body = NULL;
+        g_autofree char *action = NULL;
 
 	app = g_application_get_default ();
 
@@ -56,6 +57,8 @@ timer_complete (GrTimer *timer)
 
 	notification = g_notification_new (_("Time is up!"));
 	g_notification_set_body (notification, body);
+        action = g_strdup_printf ("app.timer-expired::%s", gr_timer_get_name (timer));
+        g_notification_set_default_action (notification, action);
 
 	g_application_send_notification (app, "timer", notification);
 }
@@ -146,7 +149,7 @@ timer_remaining_changed (GrTimer       *timer,
 {
         guint64 remaining;
         guint hours, minutes, seconds;
-        g_autofree char *buf;
+        g_autofree char *buf = NULL;
 
         if (strcmp (gr_timer_get_name (timer), gr_recipe_get_name (page->recipe)) != 0)
                 return;
@@ -256,7 +259,6 @@ serves_value_changed (GrDetailsPage *page)
 static void
 start_or_stop_timer (GrDetailsPage *page)
 {
-        int minutes;
         const char *name;
         CookingData *cd;
 
@@ -270,10 +272,11 @@ start_or_stop_timer (GrDetailsPage *page)
                 g_object_set (cd->timer, "active", FALSE, NULL);
 	}
 	else {
+                int seconds;
 
-                minutes = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (page->time_spin));
+                seconds = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (page->time_spin));
 		g_object_set (cd->timer,
-                              "duration", minutes * 60 * 1000 * 1000,
+                              "duration", seconds * 1000 * 1000,
                               "active", TRUE,
                               NULL);
 	}
@@ -286,35 +289,78 @@ time_spin_input (GtkSpinButton *spin_button,
                  double        *new_val)
 {
   	const char *text;
-  	char **str;
   	gboolean found = FALSE;
-  	int hours;
-  	int minutes;
-  	char *endh;
-  	char *endm;
 
   	text = gtk_entry_get_text (GTK_ENTRY (spin_button));
-  	str = g_strsplit (text, ":", 2);
+        if (!strchr (text, ':')) {
+                g_auto(GStrv) str = NULL;
+                int num;
+                char *endn;
 
-  	if (g_strv_length (str) == 2) {
-      		hours = strtol (str[0], &endh, 10);
-      		minutes = strtol (str[1], &endm, 10);
-      		if (!*endh && !*endm &&
-                    0 <= hours && hours < 24 &&
-                    0 <= minutes && minutes < 60) {
-                        *new_val = hours * 60 + minutes;
-                        found = TRUE;
+                str = g_strsplit (text, " ", 2);
+                num = strtol (str[0], &endn, 10);
+                if (!*endn) {
+                        if (str[1] == NULL) {
+                                *new_val = num; /* minutes */
+                                found = TRUE;
+                        }
+                        else if (strcmp (str[1], _("hour")) == 0 ||
+                                 strcmp (str[1], _("hours")) == 0 ||
+                                 strcmp (str[1], C_("hour abbreviation", "h")) == 0) {
+                                *new_val = num * 3600; /* hours */
+                                found = TRUE;
+                        }
+                        else if (strcmp (str[1], _("minute")) == 0 ||
+                                 strcmp (str[1], _("minutes")) == 0 ||
+                                 strcmp (str[1], C_("minute abbreviation", "min")) == 0 ||
+                                 strcmp (str[1], C_("minute abbreviation", "m")) == 0) {
+                                *new_val = num * 60;
+                                found = TRUE;
+                        }
+                        else if (strcmp (str[1], _("second")) == 0 ||
+                                 strcmp (str[1], _("seconds")) == 0 ||
+                                 strcmp (str[1], C_("minute abbreviation", "sec")) == 0 ||
+                                 strcmp (str[1], C_("minute abbreviation", "s")) == 0) {
+                                *new_val = num;
+                                found = TRUE;
+                        }
                 }
         }
         else {
-                minutes = strtol (str[0], &endm, 10);
-                if (!*endm) {
-                        *new_val = minutes;
-                        found = TRUE;
+                g_auto(GStrv) str = NULL;
+  	        int hours;
+  	        int minutes;
+  	        int seconds;
+  	        char *endh;
+  	        char *endm;
+  	        char *ends;
+
+  	        str = g_strsplit (text, ":", 3);
+
+  	        if (g_strv_length (str) == 3) {
+      		        hours = strtol (str[0], &endh,10);
+              		minutes = strtol (str[1], &endm, 10);
+              		seconds = strtol (str[2], &ends, 10);
+      	        	if (!*endh && !*endm && !*ends &&
+                            0 <= hours && hours < 24 &&
+                            0 <=  minutes && minutes < 60 &&
+                            0 <= seconds && seconds < 60) {
+g_print ("%d %d %d\n", hours, minutes, seconds);
+                                *new_val = (hours * 60 + minutes) * 60 + seconds;
+                                found = TRUE;
+                        }
+                }
+                else if (g_strv_length (str) == 2) {
+      		        hours = strtol (str[0], &endh, 10);
+              		minutes = strtol (str[1], &endm, 10);
+      	        	if (!*endh && !*endm &&
+                            0 <= hours && hours < 24 &&
+                            0 <=  minutes && minutes < 60) {
+                                *new_val = (hours * 60 + minutes) * 60;
+                                found = TRUE;
+                        }
                 }
         }
-
-        g_strfreev (str);
 
         if (!found) {
                 *new_val = 0.0;
@@ -331,11 +377,13 @@ time_spin_output (GtkSpinButton *spin_button)
         char *buf;
         double hours;
         double minutes;
+        double seconds;
 
         adjustment = gtk_spin_button_get_adjustment (spin_button);
-        hours = gtk_adjustment_get_value (adjustment) / 60.0;
+        hours = gtk_adjustment_get_value (adjustment) / 3600.0;
         minutes = (hours - floor (hours)) * 60.0;
-        buf = g_strdup_printf ("%02.0f:%02.0f", floor (hours), floor (minutes + 0.5));
+        seconds = (minutes - floor (minutes)) * 60.0;
+        buf = g_strdup_printf ("%02.0f:%02.0f:%02.0f", floor (hours), floor (minutes), floor (seconds + 0.5));
         if (strcmp (buf, gtk_entry_get_text (GTK_ENTRY (spin_button))))
                 gtk_entry_set_text (GTK_ENTRY (spin_button), buf);
         g_free (buf);

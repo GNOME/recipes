@@ -53,12 +53,12 @@ preferences_activated (GSimpleAction *action,
                        GVariant      *parameter,
                        gpointer       app)
 {
-	GrPreferences *prefs;
-  	GtkWindow *win;
+        GrPreferences *prefs;
+        GtkWindow *win;
 
-  	win = gtk_application_get_active_window (GTK_APPLICATION (app));
-  	prefs = gr_preferences_new (win);
-  	gtk_window_present (GTK_WINDOW (prefs));
+        win = gtk_application_get_active_window (GTK_APPLICATION (app));
+        prefs = gr_preferences_new (win);
+        gtk_window_present (GTK_WINDOW (prefs));
 }
 
 static void
@@ -103,10 +103,28 @@ quit_activated (GSimpleAction *action,
         g_application_quit (G_APPLICATION (app));
 }
 
+static void
+timer_expired (GSimpleAction *action,
+               GVariant      *parameter,
+               gpointer       app)
+{
+        GtkWindow *win;
+        const char *name;
+        g_autoptr(GrRecipe) recipe = NULL;
+
+        win = gtk_application_get_active_window (GTK_APPLICATION (app));
+        name = g_variant_get_string (parameter, NULL);
+        recipe = gr_recipe_store_get (GR_APP (app)->store, name);
+        if (recipe)
+                gr_window_show_recipe (GR_WINDOW (win), recipe);
+        gtk_window_present (win);
+}
+
 static GActionEntry app_entries[] =
 {
         { "preferences", preferences_activated, NULL, NULL, NULL },
         { "about", about_activated, NULL, NULL, NULL },
+        { "timer-expired", timer_expired, "s", NULL, NULL },
         { "quit", quit_activated, NULL, NULL, NULL }
 };
 
@@ -146,10 +164,12 @@ gr_app_startup (GApplication *app)
 static void
 gr_app_activate (GApplication *app)
 {
-        GrWindow *win;
+        GtkWindow *win;
 
-        win = gr_window_new (GR_APP (app));
-        gtk_window_present (GTK_WINDOW (win));
+        win = gtk_application_get_active_window (GTK_APPLICATION (app));
+        if (!win)
+                win = GTK_WINDOW (gr_window_new (GR_APP (app)));
+        gtk_window_present (win);
 }
 
 static void
