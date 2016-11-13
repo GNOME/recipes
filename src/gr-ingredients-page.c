@@ -31,6 +31,7 @@
 #include "gr-app.h"
 #include "gr-utils.h"
 #include "gr-ingredient-tile.h"
+#include "gr-ingredient.h"
 #include "gr-window.h"
 
 
@@ -221,10 +222,16 @@ ingredients_page_reload (GrIngredientsPage *page)
         ingredients = gr_recipe_store_get_all_ingredients (store, &length);
         for (i = 0; i < length; i++) {
                 GtkWidget *tile;
+                const char *ing;
                 gunichar ch;
                 char buf[6] = { 0, };
 
-                ch = g_utf8_get_char (ingredients[i]);
+                ing = gr_ingredient_find (ingredients[i]);
+                if (!ing) {
+                        ing = ingredients[i];
+                }
+
+                ch = g_utf8_get_char (ing);
                 ch = g_unichar_toupper (ch);
                 g_unichar_to_utf8 (ch, buf);
 
@@ -233,7 +240,7 @@ ingredients_page_reload (GrIngredientsPage *page)
                 if (!category)
                         continue;
 
-                tile = gr_ingredient_tile_new (ingredients[i]);
+                tile = gr_ingredient_tile_new (ing);
                 gtk_widget_show (tile);
 
                 gtk_container_add (GTK_CONTAINER (category->box), tile);
