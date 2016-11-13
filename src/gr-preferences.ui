@@ -66,7 +66,7 @@
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">1</property>
-                    <property name="label">Recipe Author Information</property>
+                    <property name="label" translatable="yes">Recipe Author Information</property>
                     <property name="xalign">0</property>
                     <style>
                       <class name="heading"/>
@@ -93,7 +93,7 @@
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">1</property>
-                        <property name="label">_Short Name:</property>
+                        <property name="label" translatable="yes">_Short Name:</property>
                         <property name="use-underline">1</property>
                         <property name="mnemonic-widget">name</property>
                         <property name="xalign">1</property>
@@ -115,7 +115,7 @@
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">1</property>
-                        <property name="label">_Name:</property>
+                        <property name="label" translatable="yes">_Name:</property>
                         <property name="use-underline">1</property>
                         <property name="mnemonic-widget">fullname</property>
                         <property name="xalign">1</property>
@@ -137,7 +137,7 @@
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">1</property>
-                        <property name="label">_Description:</property>
+                        <property name="label" translatable="yes">_Description:</property>
                         <property name="use-underline">1</property>
                         <property name="mnemonic-widget">description</property>
                         <property name="xalign">1</property>
@@ -159,7 +159,7 @@
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">1</property>
-                        <property name="label">_Picture:</property>
+                        <property name="label" translatable="yes">_Picture:</property>
                         <property name="use-underline">1</property>
                         <property name="mnemonic-widget">button</property>
                         <property name="xalign">1</property>
