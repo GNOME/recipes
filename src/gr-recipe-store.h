@@ -80,5 +80,7 @@ gboolean gr_recipe_store_has_diet (GrRecipeStore *self,
 				   GrDiets        diet);
 gboolean gr_recipe_store_has_chef (GrRecipeStore *self,
                                    GrChef        *chef);
+gboolean gr_recipe_store_has_cuisine (GrRecipeStore *self,
+                                      const char    *cuisine);
 
 G_END_DECLS

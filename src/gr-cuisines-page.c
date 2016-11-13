@@ -54,15 +54,29 @@ static void
 gr_cuisines_page_init (GrCuisinesPage *page)
 {
 	GtkWidget *tile;
-        const char **cuisines;
+        const char **all_cuisines;
+        g_autofree char **cuisines = NULL;
         int length;
-        int i;
+        int i, j;
         int pos;
+        GrRecipeStore *store;
 
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
         gtk_widget_init_template (GTK_WIDGET (page));
 
-        cuisines = gr_cuisine_get_names (&length);
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+        all_cuisines = gr_cuisine_get_names (&length);
+        cuisines = g_new0 (char *, g_strv_length ((char **)all_cuisines) + 1);
+        for (i = 0, j = 0; all_cuisines[i]; i++) {
+                if (!gr_recipe_store_has_cuisine (store, all_cuisines[i]))
+                        continue;
+
+                cuisines[j++] = (char *)all_cuisines[i];
+        }
+
+        length = g_strv_length (cuisines);
+
         pos = g_random_int_range (0, length);
 
         tile = gr_big_cuisine_tile_new (cuisines[pos]);

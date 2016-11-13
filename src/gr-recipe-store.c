@@ -1097,3 +1097,19 @@ gr_recipe_store_has_chef (GrRecipeStore *self,
 
         return FALSE;
 }
+
+gboolean
+gr_recipe_store_has_cuisine (GrRecipeStore *self,
+                             const char    *cuisine)
+{
+        GHashTableIter iter;
+        GrRecipe *recipe;
+
+        g_hash_table_iter_init (&iter, self->recipes);
+        while (g_hash_table_iter_next (&iter, NULL, (gpointer *)&recipe)) {
+                if (strcmp (cuisine, gr_recipe_get_cuisine (recipe)) == 0)
+                        return TRUE;
+        }
+
+        return FALSE;
+}
