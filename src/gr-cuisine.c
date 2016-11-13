@@ -52,6 +52,18 @@ static const char *titles[] = {
         N_("Mediterranean")
 };
 
+static const char *full_titles[] = {
+        N_("American Cuisine"),
+        N_("Chinese Cuisine"),
+        N_("Indian Cuisine"),
+        N_("Italian Cuisine"),
+        N_("French Cuisine"),
+        N_("Greek Cuisine"),
+        N_("Mexican Cuisine"),
+        N_("Turkish Cuisine"),
+        N_("Mediterranean Cuisine")
+};
+
 static const char *descriptions[] = {
         N_("American cuisine has burgers"),
         N_("Good stuff"),
@@ -76,6 +88,7 @@ gr_cuisine_get_names (int *length)
 void
 gr_cuisine_get_data (const char  *name,
                      const char **title,
+                     const char **full_title,
                      const char **description)
 {
         int i;
@@ -84,6 +97,8 @@ gr_cuisine_get_data (const char  *name,
                 if (g_strcmp0 (name, names[i]) == 0) {
                         if (title)
                                 *title = _(titles[i]);
+                        if (full_title)
+                                *full_title = _(full_titles[i]);
                         if (description)
                                 *description = _(descriptions[i]);
                         return;

@@ -49,7 +49,7 @@ show_details (GrCuisineTile *tile)
         GtkWidget *window;
         const char *title;
 
-        title = gtk_label_get_label (GTK_LABEL (tile->title));
+        gr_cuisine_get_data (tile->cuisine, NULL, &title, NULL);
 
         window = gtk_widget_get_ancestor (GTK_WIDGET (tile), GR_TYPE_WINDOW);
         gr_window_show_cuisine (GR_WINDOW (window), tile->cuisine, title);
@@ -66,7 +66,7 @@ cuisine_tile_set_cuisine (GrCuisineTile *tile,
 	g_free (tile->cuisine);
 	tile->cuisine = g_strdup (cuisine);
 
-        gr_cuisine_get_data (cuisine, &title, &description);
+        gr_cuisine_get_data (cuisine, &title, NULL, &description);
         if (title == NULL)
                 return;
 

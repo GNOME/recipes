@@ -138,7 +138,7 @@ populate_cuisine_combo (GrEditPage *page)
 
         names = gr_cuisine_get_names (&length);
         for (i = 0; i < length; i++) {
-                gr_cuisine_get_data (names[i], &title, NULL);
+                gr_cuisine_get_data (names[i], &title, NULL, NULL);
                 gtk_combo_box_text_append (GTK_COMBO_BOX_TEXT (page->cuisine_combo),
                                            names[i],
                                            title);

@@ -28,6 +28,7 @@ G_BEGIN_DECLS
 const char **gr_cuisine_get_names (int *length);
 void         gr_cuisine_get_data  (const char  *name,
                                    const char **title,
+                                   const char **full_title,
                                    const char **description);
 char *       gr_cuisine_get_css   (void);
 
