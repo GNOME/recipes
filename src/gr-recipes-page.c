@@ -211,7 +211,8 @@ populate_chefs_from_store (GrRecipesPage *self)
 
                 chef = gr_recipe_store_get_chef (store, keys[i]);
 
-		if (gr_recipe_store_chef_is_featured (store, chef)) {
+		if (gr_recipe_store_chef_is_featured (store, chef) &&
+                    gr_recipe_store_has_chef (store, chef)) {
 			GtkWidget *tile;
 			tile = gr_chef_tile_new (chef);
 			gtk_widget_show (tile);

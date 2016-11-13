@@ -1081,3 +1081,19 @@ gr_recipe_store_has_diet (GrRecipeStore *self,
 
         return FALSE;
 }
+
+gboolean
+gr_recipe_store_has_chef (GrRecipeStore *self,
+                          GrChef        *chef)
+{
+        GHashTableIter iter;
+        GrRecipe *recipe;
+
+        g_hash_table_iter_init (&iter, self->recipes);
+        while (g_hash_table_iter_next (&iter, NULL, (gpointer *)&recipe)) {
+                if (strcmp (gr_chef_get_name (chef), gr_recipe_get_author (recipe)) == 0)
+                        return TRUE;
+        }
+
+        return FALSE;
+}
