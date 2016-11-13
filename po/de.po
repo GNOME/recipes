@@ -3,13 +3,12 @@
 # This file is distributed under the same license as the recipes package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes 0.1.0\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=recipes\n"
-"POT-Creation-Date: 2016-11-12 18:58-0500\n"
+"POT-Creation-Date: 2016-11-12 21:28-0500\n"
 "PO-Revision-Date: 2016-11-12 16:20-0500\n"
 "Last-Translator: Matthias Clasen <mclasen@redhat.com>\n"
 "Language-Team: None\n"
@@ -218,11 +217,31 @@ msgstr "Kein Treffer"
 msgid "Preferences"
 msgstr "Einstellungen"
 
+#: src/gr-preferences.ui:69
+msgid "Recipe Author Information"
+msgstr "Rezept Autor Information"
+
 #: src/gr-preferences.ui:82
 msgid "This data may be shared with other users if you share your recipes."
 msgstr ""
 "Diese Daten können mit anderen Benutzern geteilt werden, wenn Sie Rezepte "
 "weitergeben"
+
+#: src/gr-preferences.ui:96
+msgid "_Short Name:"
+msgstr "_Name:"
+
+#: src/gr-preferences.ui:118
+msgid "_Name:"
+msgstr "_Voller Name:"
+
+#: src/gr-preferences.ui:140
+msgid "_Description:"
+msgstr "_Beschreibung:"
+
+#: src/gr-preferences.ui:162
+msgid "_Picture:"
+msgstr "B_ild:"
 
 #: src/gr-recipes-page.ui:10
 msgid "Today"
@@ -393,18 +412,54 @@ msgid "Mediterranean"
 msgstr "Mediteranisch"
 
 #: src/gr-cuisine.c:56
+msgid "American Cuisine"
+msgstr "Amerikanische Küche"
+
+#: src/gr-cuisine.c:57
+msgid "Chinese Cuisine"
+msgstr "Chinesische Küche"
+
+#: src/gr-cuisine.c:58
+msgid "Indian Cuisine"
+msgstr "Indische Küche"
+
+#: src/gr-cuisine.c:59
+msgid "Italian Cuisine"
+msgstr "Italienische Küche"
+
+#: src/gr-cuisine.c:60
+msgid "French Cuisine"
+msgstr "Französische Küche"
+
+#: src/gr-cuisine.c:61
+msgid "Greek Cuisine"
+msgstr "Griechische Küche"
+
+#: src/gr-cuisine.c:62
+msgid "Mexican Cuisine"
+msgstr "Mexikanische Küche"
+
+#: src/gr-cuisine.c:63
+msgid "Turkish Cuisine"
+msgstr "Türkische Küche"
+
+#: src/gr-cuisine.c:64
+msgid "Mediterranean Cuisine"
+msgstr "Mediteranische Küche"
+
+#: src/gr-cuisine.c:68
 msgid "American cuisine has burgers"
 msgstr "Die amerikanische Küche hat Burger"
 
-#: src/gr-cuisine.c:57
+#: src/gr-cuisine.c:69
 msgid "Good stuff"
 msgstr "Gute Sachen"
 
-#: src/gr-cuisine.c:58
+#: src/gr-cuisine.c:70
 msgid "Spice stuff"
 msgstr "Scharfes Zeug"
 
-#: src/gr-cuisine.c:59
+#: src/gr-cuisine.c:71
 msgid ""
 "Pizza, pasta, pesto - we love it all. Top it off with an esspresso and a "
 "gelato. Perfect!"
@@ -412,19 +467,19 @@ msgstr ""
 "Pizza, Nudeln, Pesto - wir lieben es alles. Am Ende noch einen Espresso und "
 "ein Eis. Perfekt!"
 
-#: src/gr-cuisine.c:60 src/gr-cuisine.c:61
+#: src/gr-cuisine.c:72 src/gr-cuisine.c:73
 msgid "Yep"
 msgstr "Jaja"
 
-#: src/gr-cuisine.c:62
+#: src/gr-cuisine.c:74
 msgid "Tacos"
 msgstr "Tacos"
 
-#: src/gr-cuisine.c:63
+#: src/gr-cuisine.c:75
 msgid "Yummy"
 msgstr "Lecker"
 
-#: src/gr-cuisine.c:64
+#: src/gr-cuisine.c:76
 msgid ""
 "The mediterranean quisine has a lot to offer, and is legendary for being "
 "very healthy too. Expect to see olives, yoghurt and garlic."
@@ -955,7 +1010,7 @@ msgstr "Konnte %s nicht als Zahl auffassen"
 msgid "I don't know this unit: %s"
 msgstr "Ich kenne diese Einheit nicht: %s"
 
-#: src/gr-ingredients-page.c:121
+#: src/gr-ingredients-page.c:122
 msgid "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 msgstr "ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ"
 
