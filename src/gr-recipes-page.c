@@ -133,6 +133,7 @@ populate_static (GrRecipesPage *self)
                 GR_DIET_MILK_FREE
         };
         GtkWidget *tile;
+        GrRecipeStore *store;
 
         tile = gr_category_tile_new_with_label ("mine", _("My recipes"));
         gtk_widget_show (tile);
@@ -144,7 +145,12 @@ populate_static (GrRecipesPage *self)
         gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
         g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);
 
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
         for (i = 0; i < 5; i++) {
+                if (!gr_recipe_store_has_diet (store, diets[i]))
+                        continue;
+
                 tile = gr_category_tile_new (diets[i]);
                 gtk_widget_show (tile);
                 gtk_container_add (GTK_CONTAINER (self->diet_box), tile);

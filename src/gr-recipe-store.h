@@ -76,5 +76,7 @@ void gr_recipe_store_remove_favorite (GrRecipeStore *self,
                                       GrRecipe      *recipe);
 gboolean gr_recipe_store_is_favorite (GrRecipeStore *self,
                                       GrRecipe      *recipe);
+gboolean gr_recipe_store_has_diet (GrRecipeStore *self,
+				   GrDiets        diet);
 
 G_END_DECLS
