@@ -42,6 +42,8 @@ typedef struct
         char *instructions;
         char *notes;
         GrDiets diets;
+        GDateTime *ctime;
+        GDateTime *mtime;
 
         char *cf_name;
         char *cf_description;
@@ -65,6 +67,8 @@ enum {
         PROP_INSTRUCTIONS,
         PROP_NOTES,
         PROP_DIETS,
+        PROP_CTIME,
+        PROP_MTIME,
         N_PROPS
 };
 
@@ -155,9 +159,26 @@ gr_recipe_get_property (GObject    *object,
                 g_value_set_flags (value, priv->diets);
                 break;
 
+        case PROP_CTIME:
+                g_value_set_boxed (value, priv->ctime);
+                break;
+
+        case PROP_MTIME:
+                g_value_set_boxed (value, priv->mtime);
+                break;
+
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
         }
+}
+
+static void
+update_mtime (GrRecipe *recipe)
+{
+        GrRecipePrivate *priv = gr_recipe_get_instance_private (recipe);
+
+        g_date_time_unref (priv->mtime);
+        priv->mtime = g_date_time_new_now_utc ();
 }
 
 static void
@@ -191,46 +212,55 @@ gr_recipe_set_property (GObject      *object,
         case PROP_AUTHOR:
                 g_free (priv->author);
                 priv->author = g_value_dup_string (value);
+                update_mtime (self);
                 break;
 
         case PROP_NAME:
                 g_free (priv->name);
                 priv->name = g_value_dup_string (value);
                 priv->cf_name = g_utf8_casefold (priv->name, -1);
+                update_mtime (self);
                 break;
 
         case PROP_DESCRIPTION:
                 g_free (priv->description);
                 priv->description = g_value_dup_string (value);
                 priv->cf_description = g_utf8_casefold (priv->description, -1);
+                update_mtime (self);
                 break;
 
         case PROP_IMAGES:
                 set_images (self, (GArray *) g_value_get_boxed (value));
+                update_mtime (self);
                 break;
 
         case PROP_CATEGORY:
                 g_free (priv->category);
                 priv->category = g_value_dup_string (value);
+                update_mtime (self);
                 break;
 
         case PROP_CUISINE:
                 g_free (priv->cuisine);
                 priv->cuisine = g_value_dup_string (value);
+                update_mtime (self);
                 break;
 
         case PROP_PREP_TIME:
                 g_free (priv->prep_time);
                 priv->prep_time = g_value_dup_string (value);
+                update_mtime (self);
                 break;
 
         case PROP_COOK_TIME:
                 g_free (priv->cook_time);
                 priv->cook_time = g_value_dup_string (value);
+                update_mtime (self);
                 break;
 
         case PROP_SERVES:
                 priv->serves = g_value_get_int (value);
+                update_mtime (self);
                 break;
 
         case PROP_INGREDIENTS:
@@ -238,20 +268,36 @@ gr_recipe_set_property (GObject      *object,
                 g_free (priv->cf_ingredients);
                 priv->ingredients = g_value_dup_string (value);
                 priv->cf_ingredients = g_utf8_casefold (priv->ingredients, -1);
+                update_mtime (self);
                 break;
 
         case PROP_INSTRUCTIONS:
                 g_free (priv->instructions);
                 priv->instructions = g_value_dup_string (value);
+                update_mtime (self);
                 break;
 
         case PROP_NOTES:
                 g_free (priv->notes);
                 priv->notes = g_value_dup_string (value);
+                update_mtime (self);
                 break;
 
         case PROP_DIETS:
                 priv->diets = g_value_get_flags (value);
+                update_mtime (self);
+                break;
+
+        case PROP_CTIME:
+                g_date_time_unref (priv->ctime);
+                priv->ctime = g_value_get_boxed (value);
+                g_date_time_ref (priv->ctime);
+                break;
+
+        case PROP_MTIME:
+                g_date_time_unref (priv->mtime);
+                priv->mtime = g_value_get_boxed (value);
+                g_date_time_ref (priv->mtime);
                 break;
 
         default:
@@ -333,6 +379,16 @@ gr_recipe_class_init (GrRecipeClass *klass)
                                     GR_TYPE_DIETS, 0,
                                     G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_DIETS, pspec);
+
+        pspec = g_param_spec_boxed ("ctime", NULL, NULL,
+                                    G_TYPE_DATE_TIME,
+                                    G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
+        g_object_class_install_property (object_class, PROP_CTIME, pspec);
+
+        pspec = g_param_spec_boxed ("mtime", NULL, NULL,
+                                    G_TYPE_DATE_TIME,
+                                    G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_MTIME, pspec);
 }
 
 static void
@@ -340,16 +396,8 @@ gr_recipe_init (GrRecipe *self)
 {
         GrRecipePrivate *priv = gr_recipe_get_instance_private (self);
 
-        priv->author = g_strdup ("Anonymous");
-        priv->name = g_strdup ("Plain Bagel");
-        priv->description = g_strdup ("Just a plain bagel, not much to say");
-        priv->category = g_strdup ("entree");
-        priv->cuisine = g_strdup ("american");
-        priv->prep_time = g_strdup ("no time at all");
-        priv->cook_time = g_strdup ("no time at all");
-        priv->serves = 1;
-        priv->diets = 0;
-
+        priv->ctime = g_date_time_new_now_utc ();
+        priv->mtime = g_date_time_new_now_utc ();
         priv->images = gr_rotated_image_array_new ();
 }
 
@@ -455,6 +503,22 @@ gr_recipe_get_notes (GrRecipe *recipe)
         return priv->notes;
 }
 
+GDateTime *
+gr_recipe_get_ctime (GrRecipe *recipe)
+{
+        GrRecipePrivate *priv = gr_recipe_get_instance_private (recipe);
+
+        return priv->ctime;
+}
+
+GDateTime *
+gr_recipe_get_mtime (GrRecipe *recipe)
+{
+        GrRecipePrivate *priv = gr_recipe_get_instance_private (recipe);
+
+        return priv->mtime;
+}
+
 /* term is assumed to be g_utf8_casefold'ed */
 gboolean
 gr_recipe_matches (GrRecipe *self, const char *term)
@@ -499,4 +563,3 @@ gr_recipe_matches (GrRecipe *self, const char *term)
 
         return TRUE;
 }
-

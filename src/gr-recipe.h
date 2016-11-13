@@ -55,6 +55,9 @@ const char *gr_recipe_get_ingredients  (GrRecipe   *recipe);
 const char *gr_recipe_get_instructions (GrRecipe   *recipe);
 const char *gr_recipe_get_notes        (GrRecipe   *recipe);
 
+GDateTime  *gr_recipe_get_ctime        (GrRecipe  *recipe);
+GDateTime  *gr_recipe_get_mtime        (GrRecipe *recipe);
+
 gboolean    gr_recipe_matches          (GrRecipe   *recipe,
 				        const char *term);
 
