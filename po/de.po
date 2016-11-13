@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: recipes 0.1.0\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=recipes\n"
-"POT-Creation-Date: 2016-11-12 18:24-0500\n"
+"POT-Creation-Date: 2016-11-12 18:58-0500\n"
 "PO-Revision-Date: 2016-11-12 16:20-0500\n"
 "Last-Translator: Matthias Clasen <mclasen@redhat.com>\n"
 "Language-Team: None\n"
@@ -756,10 +756,189 @@ msgstr "Joghurts"
 msgid "Zinfandels"
 msgstr "Zinfandels"
 
-#: src/gr-ingredient-search-tile.c:62
-#, c-format
-msgid "no %s"
-msgstr "kein %s"
+#: src/gr-ingredient.c:132
+msgid "no Almond"
+msgstr "ohne Mandel"
+
+#: src/gr-ingredient.c:133
+msgid "no Amaretti"
+msgstr "ohne Amaretti"
+
+#: src/gr-ingredient.c:134
+msgid "no Apple"
+msgstr "ohne Apfel"
+
+#: src/gr-ingredient.c:135
+msgid "no Apricot"
+msgstr "ohne Aprikose"
+
+#: src/gr-ingredient.c:136
+msgid "no Anchovis"
+msgstr "ohne Anchovis"
+
+#: src/gr-ingredient.c:137
+msgid "no Artichoke"
+msgstr "ohne Artischocke"
+
+#: src/gr-ingredient.c:138
+msgid "no Asparagus"
+msgstr "ohne Spargel"
+
+#: src/gr-ingredient.c:139
+msgid "no Aubergine"
+msgstr "ohne Aubergine"
+
+#: src/gr-ingredient.c:140
+msgid "no Bacon"
+msgstr "ohne Speck"
+
+#: src/gr-ingredient.c:141
+msgid "no Banana"
+msgstr "ohne Banane"
+
+#: src/gr-ingredient.c:142
+msgid "no Baked Beans"
+msgstr "ohne gebackene Bohnen"
+
+#: src/gr-ingredient.c:143
+msgid "no Basil"
+msgstr "ohne Basilikum"
+
+#: src/gr-ingredient.c:144
+msgid "no Beans"
+msgstr "ohne Bohnen"
+
+#: src/gr-ingredient.c:145
+msgid "no Bagel"
+msgstr "ohne Brötchen"
+
+#: src/gr-ingredient.c:146
+msgid "no Basmati rice"
+msgstr "ohne Basmati Reis"
+
+#: src/gr-ingredient.c:147
+msgid "no Bay leaf"
+msgstr "ohne Lorbeerblatt"
+
+#: src/gr-ingredient.c:148
+msgid "no Beef mince"
+msgstr "ohne Hackfleisch"
+
+#: src/gr-ingredient.c:149
+msgid "no Berry"
+msgstr "ohne Beeren"
+
+#: src/gr-ingredient.c:150
+msgid "no Beetroot"
+msgstr "ohne Rote Bete"
+
+#: src/gr-ingredient.c:151
+msgid "no Biscotti"
+msgstr "ohne Biscotti"
+
+#: src/gr-ingredient.c:152
+msgid "no Beef sausage"
+msgstr "ohne Bratwurst"
+
+#: src/gr-ingredient.c:153
+msgid "no Beef stock"
+msgstr "ohne Rinderbrühe"
+
+#: src/gr-ingredient.c:154
+msgid "no Bilberry"
+msgstr "ohne Heidelbeere"
+
+#: src/gr-ingredient.c:155
+msgid "no Carrot"
+msgstr "ohne Karotte"
+
+#: src/gr-ingredient.c:156
+msgid "no Couscous"
+msgstr "ohne Couscous"
+
+#: src/gr-ingredient.c:157
+msgid "no Date"
+msgstr "ohne Datteln"
+
+#: src/gr-ingredient.c:158
+msgid "no Egg"
+msgstr "ohne Ei"
+
+#: src/gr-ingredient.c:159
+msgid "no Fig"
+msgstr "ohne Feigen"
+
+#: src/gr-ingredient.c:160
+msgid "no Garlic"
+msgstr "kein Knoblauch"
+
+#: src/gr-ingredient.c:161
+msgid "no Honey"
+msgstr "ohne Honig"
+
+#: src/gr-ingredient.c:162
+msgid "no Lemon"
+msgstr "ohne Zitrone"
+
+#: src/gr-ingredient.c:163
+msgid "no Mayonnaise"
+msgstr "ohne Mayonnaise"
+
+#: src/gr-ingredient.c:164
+msgid "no Mustard"
+msgstr "ohne Senf"
+
+#: src/gr-ingredient.c:165
+msgid "no Onion"
+msgstr "ohne Zwiebeln"
+
+#: src/gr-ingredient.c:166
+msgid "no Orange"
+msgstr "ohne Apfelsine"
+
+#: src/gr-ingredient.c:167
+msgid "no Parsley"
+msgstr "ohne Petersilie"
+
+#: src/gr-ingredient.c:168
+msgid "no Pepper"
+msgstr "ohne Paprika"
+
+#: src/gr-ingredient.c:169
+msgid "no Potatoe"
+msgstr "ohne Kartoffeln"
+
+#: src/gr-ingredient.c:170
+msgid "no Silantro"
+msgstr "ohne Silantro"
+
+#: src/gr-ingredient.c:171
+msgid "no Squash"
+msgstr "ohne Kürbis"
+
+#: src/gr-ingredient.c:172
+msgid "no Tangerine"
+msgstr "ohne Mandarine"
+
+#: src/gr-ingredient.c:173
+msgid "no Tomato"
+msgstr "ohne Tomate"
+
+#: src/gr-ingredient.c:174
+msgid "no Vinegar"
+msgstr "ohne Essig"
+
+#: src/gr-ingredient.c:175
+msgid "no Wine"
+msgstr "ohne Wein"
+
+#: src/gr-ingredient.c:176
+msgid "no Yoghurt"
+msgstr "ohne Joghurt"
+
+#: src/gr-ingredient.c:177
+msgid "no Zinfandel"
+msgstr "ohne Zinfandel"
 
 #: src/gr-ingredients-list.c:80 src/gr-ingredients-list.c:88
 #, c-format
@@ -771,12 +950,12 @@ msgstr "Konnte %s nicht als Bruch auffassen"
 msgid "Could not parse %s as a number"
 msgstr "Konnte %s nicht als Zahl auffassen"
 
-#: src/gr-ingredients-list.c:203
+#: src/gr-ingredients-list.c:204
 #, c-format
 msgid "I don't know this unit: %s"
 msgstr "Ich kenne diese Einheit nicht: %s"
 
-#: src/gr-ingredients-page.c:115
+#: src/gr-ingredients-page.c:121
 msgid "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 msgstr "ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ"
 
