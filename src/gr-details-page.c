@@ -118,6 +118,8 @@ struct _GrDetailsPage
         GtkWidget *favorite_button;
         GtkWidget *duration_stack;
         GtkWidget *remaining_time_label;
+        GtkWidget *created_label;
+        GtkWidget *modified_label;
 };
 
 G_DEFINE_TYPE (GrDetailsPage, gr_details_page, GTK_TYPE_BOX)
@@ -479,6 +481,8 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, favorite_button);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, duration_stack);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, remaining_time_label);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, created_label);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, modified_label);
 
         gtk_widget_class_bind_template_callback (widget_class, edit_recipe);
         gtk_widget_class_bind_template_callback (widget_class, delete_recipe);
@@ -524,6 +528,8 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         gboolean cooking;
         gboolean favorite;
         int left, width;
+        GDateTime *ctime;
+        GDateTime *mtime;
 
         g_set_object (&page->recipe, recipe);
 
@@ -536,6 +542,8 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         ingredients = gr_recipe_get_ingredients (recipe);
         instructions = gr_recipe_get_instructions (recipe);
         notes = gr_recipe_get_notes (recipe);
+        ctime = gr_recipe_get_ctime (recipe);
+        mtime = gr_recipe_get_mtime (recipe);
 
         g_object_get (recipe, "images", &images, NULL);
 
@@ -571,6 +579,14 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         gtk_widget_set_sensitive (page->serves_spin, ing != NULL);
 
         gtk_label_set_label (GTK_LABEL (page->description_label), description);
+
+        tmp = g_date_time_format (ctime, _("Created on %c"));
+        gtk_label_set_label (GTK_LABEL (page->created_label), tmp);
+        g_free (tmp);
+
+        tmp = g_date_time_format (mtime, _("Last modified on %c"));
+        gtk_label_set_label (GTK_LABEL (page->modified_label), tmp);
+        g_free (tmp);
 
         if (page->chef)
                 tmp = g_strdup_printf (_("About GNOME chef %s:\n%s"),
