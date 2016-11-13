@@ -41,12 +41,11 @@ struct _GrCategoryTile
 
 G_DEFINE_TYPE (GrCategoryTile, gr_category_tile, GTK_TYPE_BUTTON)
 
-static void
-category_tile_set_category (GrCategoryTile *tile, GrDiets diet)
+static const char *
+get_category_title (GrDiets diet)
 {
-	const char *label;
+        const char *label;
 
-	tile->diet = diet;
 	switch (diet) {
 	case GR_DIET_GLUTEN_FREE:
 		label = _("Gluten-free recipes");
@@ -67,7 +66,17 @@ category_tile_set_category (GrCategoryTile *tile, GrDiets diet)
 		label = _("Other dietary restrictions");
 		break;
 	}
-        gtk_label_set_label (GTK_LABEL (tile->label), label);
+
+        return label;
+}
+
+static void
+category_tile_set_category (GrCategoryTile *tile, GrDiets diet)
+{
+	const char *label;
+
+	tile->diet = diet;
+        gtk_label_set_label (GTK_LABEL (tile->label), get_category_title (diet));
 }
 
 static void
