@@ -179,6 +179,8 @@ gr_list_page_populate_from_chef (GrListPage *self, GrChef *chef)
         gboolean filled;
         char *tmp;
 
+	store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
 	self->diet = 0;
 	g_set_object (&self->chef, chef);
         self->favorites = FALSE;
@@ -187,13 +189,14 @@ gr_list_page_populate_from_chef (GrListPage *self, GrChef *chef)
         tmp = g_strdup_printf (_("No recipes by chef %s found"), gr_chef_get_name (chef));
         gtk_label_set_label (GTK_LABEL (self->empty_title), tmp);
         g_free (tmp);
-        gtk_label_set_label (GTK_LABEL (self->empty_subtitle), _("Sorry about this."));
+        if (strcmp (gr_chef_get_name (chef), gr_recipe_store_get_user_key (store)) == 0)
+                gtk_label_set_label (GTK_LABEL (self->empty_subtitle), _("You could add one using the “New Recipe” button."));
+        else
+                gtk_label_set_label (GTK_LABEL (self->empty_subtitle), _("Sorry about this."));
         gtk_stack_set_visible_child_name (GTK_STACK (self->list_stack), "empty");
         filled = FALSE;
 
         name = gr_chef_get_name (chef);
-
-	store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
 	keys = gr_recipe_store_get_recipe_keys (store, &length);
 	for (i = 0; i < length; i++) {
