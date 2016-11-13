@@ -39,9 +39,7 @@ struct _GrEditPage
 {
         GtkBox parent_instance;
 
-        gboolean fail_if_exists;
-        char *old_name;
-        char *author;
+        GrRecipe *recipe;
 
         GtkWidget *error_revealer;
         GtkWidget *error_label;
@@ -122,8 +120,7 @@ edit_page_finalize (GObject *object)
 {
         GrEditPage *self = GR_EDIT_PAGE (object);
 
-        g_free (self->old_name);
-        g_free (self->author);
+        g_clear_object (&self->recipe);
 
         G_OBJECT_CLASS (gr_edit_page_parent_class)->finalize (object);
 }
@@ -294,10 +291,7 @@ void
 gr_edit_page_clear (GrEditPage *page)
 {
         GtkTextBuffer *buffer;
-        GrRecipeStore *store;
         GArray *images;
-
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         gtk_entry_set_text (GTK_ENTRY (page->name_entry), "");
         gtk_entry_set_text (GTK_ENTRY (page->description_entry), "");
@@ -322,10 +316,7 @@ gr_edit_page_clear (GrEditPage *page)
         g_object_set (page->images, "images", images, NULL);
         g_array_unref (images);
 
-	g_free (page->author);
-	page->author = g_strdup (gr_recipe_store_get_user_key (store));
-
-        page->fail_if_exists = TRUE;
+        g_clear_object (&page->recipe);
 }
 
 void
@@ -334,7 +325,6 @@ gr_edit_page_edit (GrEditPage *page,
 {
         GtkTextBuffer *buffer;
         const char *name;
-        const char *author;
         const char *description;
         const char *cuisine;
         const char *category;
@@ -350,7 +340,6 @@ gr_edit_page_edit (GrEditPage *page,
         g_autoptr(GArray) images = NULL;
 
         name = gr_recipe_get_name (recipe);
-        author = gr_recipe_get_author (recipe);
         description = gr_recipe_get_description (recipe);
         serves = gr_recipe_get_serves (recipe);
         cuisine = gr_recipe_get_cuisine (recipe);
@@ -384,12 +373,7 @@ gr_edit_page_edit (GrEditPage *page,
 
         g_object_set (page->images, "images", images, NULL);
 
-        page->fail_if_exists = FALSE;
-        g_free (page->old_name);
-        page->old_name = g_strdup (name);
-
-	g_free (page->author);
-	page->author = g_strdup (author);
+        g_set_object (&page->recipe, recipe);
 }
 
 static gboolean validate_ingredients (GrEditPage  *page,
@@ -410,12 +394,12 @@ gr_edit_page_save (GrEditPage *page)
         g_autofree char *instructions = NULL;
         g_autofree char *notes = NULL;
         GrRecipeStore *store;
-        g_autoptr(GrRecipe) recipe = NULL;
         g_autoptr(GError) error = NULL;
-        gboolean ret;
+        gboolean ret = TRUE;
         GrDiets diets;
         const char *image_path;
         g_autoptr(GArray) images = NULL;
+        g_autoptr(GDateTime) now = NULL;
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
@@ -440,38 +424,61 @@ gr_edit_page_save (GrEditPage *page)
 
         g_object_get (page->images, "images", &images, NULL);
 
-        recipe = g_object_new (GR_TYPE_RECIPE,
-                               "name", name,
-                               "description", description,
-			       "author", page->author,
-                               "cuisine", cuisine,
-                               "category", category,
-                               "prep-time", prep_time,
-                               "cook-time", cook_time,
-                               "serves", serves,
-                               "ingredients", ingredients,
-                               "instructions", instructions,
-                               "notes", notes,
-                               "diets", diets,
-                               "images", images,
-                               NULL);
+        if (page->recipe) {
+                g_autofree char *old_name = NULL;
 
-        if (page->fail_if_exists)
+                old_name = g_strdup (gr_recipe_get_name (page->recipe));
+                g_object_set (page->recipe,
+                              "name", name,
+                              "description", description,
+                              "cuisine", cuisine,
+                              "category", category,
+                              "prep-time", prep_time,
+                              "cook-time", cook_time,
+                              "serves", serves,
+                              "ingredients", ingredients,
+                              "instructions", instructions,
+                              "notes", notes,
+                              "diets", diets,
+                              "images", images,
+                              NULL);
+                ret = gr_recipe_store_update (store, page->recipe, old_name, &error);
+        }
+        else {
+                g_autoptr(GrRecipe) recipe = NULL;
+                const char *author;
+
+	        author = gr_recipe_store_get_user_key (store);
+                recipe = g_object_new (GR_TYPE_RECIPE,
+                                       "name", name,
+                                       "description", description,
+		        	       "author", author,
+                                       "cuisine", cuisine,
+                                       "category", category,
+                                       "prep-time", prep_time,
+                                       "cook-time", cook_time,
+                                       "serves", serves,
+                                       "ingredients", ingredients,
+                                       "instructions", instructions,
+                                       "notes", notes,
+                                       "diets", diets,
+                                       "images", images,
+                                       NULL);
                 ret = gr_recipe_store_add (store, recipe, &error);
-        else
-                ret = gr_recipe_store_update (store, recipe, page->old_name, &error);
+        }
 
         if (!ret)
                 goto error;
 
-        g_free (page->old_name);
-        page->old_name = NULL;
+        g_clear_object (&page->recipe);
 
         return TRUE;
 
 error:
         gtk_label_set_label (GTK_LABEL (page->error_label), error->message);
         gtk_revealer_set_reveal_child (GTK_REVEALER (page->error_revealer), TRUE);
+
+        g_clear_object (&page->recipe);
 
         return FALSE;
 }
