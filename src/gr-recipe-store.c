@@ -18,6 +18,7 @@
 
 #include "config.h"
 
+#include <stdlib.h>
 #include <sys/statfs.h>
 #include <glib.h>
 #include <glib/gi18n.h>
@@ -63,6 +64,60 @@ gr_recipe_store_finalize (GObject *object)
         G_OBJECT_CLASS (gr_recipe_store_parent_class)->finalize (object);
 }
 
+static char *
+date_time_to_string (GDateTime *dt)
+{
+        return g_strdup_printf ("%d-%d-%d %d:%d:%d",
+                                g_date_time_get_year (dt),
+                                g_date_time_get_month (dt),
+                                g_date_time_get_day_of_month (dt),
+                                g_date_time_get_hour (dt),
+                                g_date_time_get_minute (dt),
+                                g_date_time_get_second (dt));
+}
+
+static GDateTime *
+date_time_from_string (const char *string)
+{
+        g_auto(GStrv) s = NULL;
+        g_auto(GStrv) s1 = NULL;
+        g_auto(GStrv) s2 = NULL;
+        int year, month, day, hour, minute, second;
+        char *endy, *endm, *endd, *endh, *endmi, *ends;
+
+        s = g_strsplit (string, " ", -1);
+        if (g_strv_length (s) != 2)
+                return NULL;
+
+        s1 = g_strsplit (s[0], "-", -1);
+        if (g_strv_length (s1) != 3)
+                return NULL;
+
+        s2 = g_strsplit (s[1], ":", -1);
+        if (g_strv_length (s1) != 3)
+                return NULL;
+
+        year = strtol (s1[0], &endy, 10);
+        month = strtol (s1[1], &endm, 10);
+        day = strtol (s1[2], &endd, 10);
+
+        hour = strtol (s2[0], &endh, 10);
+        minute = strtol (s2[1], &endmi, 10);
+        second = strtol (s2[2], &ends, 10);
+
+        if (!*endy && !*endm && !*endd &&
+            !*endh && !*endmi && !*ends &&
+            0 < month && month <= 12 &&
+            0 < day && day <= 31 &&
+            0 <= hour && hour < 24 &&
+            0 <= minute && minute < 60 &&
+            0 <= second && second < 60)
+                    return g_date_time_new_utc (year, month, day,
+                                                hour, minute, second);
+
+        return NULL;
+}
+
 static void
 load_recipes (GrRecipeStore *self, const char *dir)
 {
@@ -106,6 +161,9 @@ load_recipes (GrRecipeStore *self, const char *dir)
                 GrDiets diets;
                 g_autoptr(GArray) images = NULL;
                 GrRotatedImage ri;
+                g_autoptr(GDateTime) ctime = NULL;
+                g_autoptr(GDateTime) mtime = NULL;
+                char *tmp;
 
                 g_clear_error (&error);
 
@@ -262,27 +320,84 @@ load_recipes (GrRecipeStore *self, const char *dir)
                         g_array_append_val (images, ri);
                 }
 
-                recipe = g_hash_table_lookup (self->recipes, name);
-                if (recipe == NULL) {
-                        recipe = gr_recipe_new ();
-                        g_hash_table_insert (self->recipes, g_strdup (name), recipe);
+                tmp = g_key_file_get_string (keyfile, groups[i], "Created", &error);
+                if (error) {
+                        if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
+                                g_warning ("Failed to load recipe %s: %s", groups[i], error->message);
+                                continue;
+                        }
+                        g_clear_error (&error);
+                }
+                if (tmp) {
+                        ctime = date_time_from_string (tmp);
+                        if (!ctime) {
+                                g_warning ("Failed to load recipe %s: Couldn't parse Created key", groups[i]);
+                                continue;
+                        }
+                        g_free (tmp);
+                }
+                else {
+                        ctime = g_date_time_new_now_utc ();
                 }
 
-                g_object_set (recipe,
-                              "name", name,
-                              "author", author,
-                              "description", description,
-                              "cuisine", cuisine,
-                              "category", category,
-                              "prep-time", prep_time,
-                              "cook-time", cook_time,
-                              "ingredients", ingredients,
-                              "instructions", instructions,
-                              "notes", notes,
-                              "serves", serves,
-                              "diets", diets,
-                              "images", images,
-                              NULL);
+                tmp = g_key_file_get_string (keyfile, groups[i], "Modified", &error);
+                if (error) {
+                        if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
+                                g_warning ("Failed to load recipe %s: %s", groups[i], error->message);
+                                continue;
+                        }
+                        g_clear_error (&error);
+                }
+                if (tmp) {
+                        mtime = date_time_from_string (tmp);
+                        if (!mtime) {
+                                g_warning ("Failed to load recipe %s: Couldn't parse Modified key", groups[i]);
+                                continue;
+                        }
+                        g_free (tmp);
+                }
+                else {
+                        mtime = g_date_time_new_now_utc ();
+                }
+
+                recipe = g_hash_table_lookup (self->recipes, name);
+                if (recipe) {
+                        g_object_set (recipe,
+                                      "name", name,
+                                      "author", author,
+                                      "description", description,
+                                      "cuisine", cuisine,
+                                      "category", category,
+                                      "prep-time", prep_time,
+                                      "cook-time", cook_time,
+                                      "ingredients", ingredients,
+                                      "instructions", instructions,
+                                      "notes", notes,
+                                      "serves", serves,
+                                      "diets", diets,
+                                      "images", images,
+                                      NULL);
+                }
+                else {
+                        recipe = g_object_new (GR_TYPE_RECIPE,
+                                               "name", name,
+                                               "author", author,
+                                               "description", description,
+                                               "cuisine", cuisine,
+                                               "category", category,
+                                               "prep-time", prep_time,
+                                               "cook-time", cook_time,
+                                               "ingredients", ingredients,
+                                               "instructions", instructions,
+                                               "notes", notes,
+                                               "serves", serves,
+                                               "diets", diets,
+                                               "images", images,
+                                               "ctime", ctime,
+                                               "mtime", mtime,
+                                               NULL);
+                        g_hash_table_insert (self->recipes, g_strdup (name), recipe);
+                }
         }
 }
 
@@ -320,6 +435,8 @@ save_recipes (GrRecipeStore *self)
                 GrDiets diets;
                 g_auto(GStrv) paths = NULL;
                 g_autofree int *angles = NULL;
+                GDateTime *ctime;
+                GDateTime *mtime;
                 int i;
 
                 name = gr_recipe_get_name (recipe);
@@ -334,12 +451,14 @@ save_recipes (GrRecipeStore *self)
                 ingredients = gr_recipe_get_ingredients (recipe);
                 instructions = gr_recipe_get_instructions (recipe);
                 notes = gr_recipe_get_notes (recipe);
+                ctime = gr_recipe_get_ctime (recipe);
+                mtime = gr_recipe_get_mtime (recipe);
 
                 g_object_get (recipe, "images", &images, NULL);
 
                 tmp = get_user_data_dir ();
                 paths = g_new0 (char *, images->len + 1);
-                angles = g_new0 (int, images->len);
+                angles = g_new0 (int, images->len + 1);
                 for (i = 0; i < images->len; i++) {
                         GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, i);
                         if (g_str_has_prefix (ri->path, tmp))
@@ -363,6 +482,14 @@ save_recipes (GrRecipeStore *self)
                 g_key_file_set_integer (keyfile, key, "Diets", diets);
                 g_key_file_set_string_list (keyfile, key, "Images", (const char * const *)paths, images->len);
                 g_key_file_set_integer_list (keyfile, key, "Angles", angles, images->len);
+                if (ctime) {
+                        g_autofree char *tmp = date_time_to_string (ctime);
+                        g_key_file_set_string (keyfile, key, "Created", tmp);
+                }
+                if (mtime) {
+                        g_autofree char *tmp = date_time_to_string (mtime);
+                        g_key_file_set_string (keyfile, key, "Modified", tmp);
+                }
         }
 
         if (!g_key_file_save_to_file (keyfile, path, &error)) {
@@ -727,46 +854,36 @@ gr_recipe_store_new (void)
         return g_object_new (GR_TYPE_RECIPE_STORE, NULL);
 }
 
-static gboolean
-recipe_store_set (GrRecipeStore  *self,
-                  GrRecipe       *recipe,
-                  gboolean        fail_if_exists,
-                  GError        **error)
-{
-        const char *name;
-
-        name = gr_recipe_get_name (recipe);
-        if (name == NULL || name[0] == '\0') {
-                g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                             _("You need to provide a name for the recipe"));
-                return FALSE;
-        }
-
-        if (fail_if_exists &&
-            g_hash_table_contains (self->recipes, name)) {
-                g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                             _("A recipe with this name already exists"));
-                return FALSE;
-        }
-
-        if (g_hash_table_insert (self->recipes, g_strdup (name), g_object_ref (recipe))) {
-                g_signal_emit (self, add_signal, 0, recipe);
-        }
-        else {
-                g_signal_emit (self, changed_signal, 0, recipe);
-        }
-
-        save_recipes (self);
-
-        return TRUE;
-}
-
 gboolean
 gr_recipe_store_add (GrRecipeStore  *self,
                      GrRecipe       *recipe,
                      GError        **error)
 {
-        return recipe_store_set (self, recipe, TRUE, error);
+        const char *name;
+
+        g_object_ref (recipe);
+
+        name = gr_recipe_get_name (recipe);
+
+        if (name == NULL || name[0] == '\0') {
+                g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                             _("You need to provide a name for the recipe"));
+                return FALSE;
+        }
+        if (g_hash_table_contains (self->recipes, name)) {
+                g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                             _("A recipe with this name already exists"));
+                return FALSE;
+        }
+
+        g_hash_table_insert (self->recipes, g_strdup (name), g_object_ref (recipe));
+        g_signal_emit (self, add_signal, 0, recipe);
+
+        save_recipes (self);
+
+        g_object_unref (recipe);
+
+        return TRUE;
 }
 
 gboolean
@@ -775,24 +892,38 @@ gr_recipe_store_update (GrRecipeStore  *self,
                         const char     *old_name,
                         GError        **error)
 {
-        gboolean ret;
         const char *name;
+        GrRecipe *old;
 
         g_object_ref (recipe);
 
         name = gr_recipe_get_name (recipe);
 
-        if (g_strcmp0 (name, old_name) != 0) {
-                g_hash_table_remove (self->recipes, old_name);
-                ret = recipe_store_set (self, recipe, TRUE, error);
+        if (name == NULL || name[0] == '\0') {
+                g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                             _("You need to provide a name for the recipe"));
+                return FALSE;
         }
-        else {
-                ret = recipe_store_set (self, recipe, FALSE, error);
+        if (strcmp (name, old_name) != 0 &&
+            g_hash_table_contains (self->recipes, name)) {
+                g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                             _("A recipe with this name already exists"));
+                return FALSE;
         }
+
+        old = g_hash_table_lookup (self->recipes, old_name);
+        g_assert (recipe == old);
+
+        g_hash_table_remove (self->recipes, old_name);
+        g_hash_table_insert (self->recipes, g_strdup (name), g_object_ref (recipe));
+
+        g_signal_emit (self, changed_signal, 0, recipe);
+
+        save_recipes (self);
 
         g_object_unref (recipe);
 
-        return ret;
+        return TRUE;
 }
 
 gboolean
