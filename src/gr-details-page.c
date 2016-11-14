@@ -356,7 +356,6 @@ time_spin_input (GtkSpinButton *spin_button,
                             0 <= hours && hours < 24 &&
                             0 <=  minutes && minutes < 60 &&
                             0 <= seconds && seconds < 60) {
-g_print ("%d %d %d\n", hours, minutes, seconds);
                                 *new_val = (hours * 60 + minutes) * 60 + seconds;
                                 found = TRUE;
                         }
