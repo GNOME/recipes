@@ -83,4 +83,10 @@ gboolean gr_recipe_store_has_chef (GrRecipeStore *self,
 gboolean gr_recipe_store_has_cuisine (GrRecipeStore *self,
                                       const char    *cuisine);
 
+void gr_recipe_store_add_cooked (GrRecipeStore *store,
+				 GrRecipe      *recipe);
+
+int  gr_recipe_store_get_cooked (GrRecipeStore *store,
+				 GrRecipe      *recipe);
+
 G_END_DECLS

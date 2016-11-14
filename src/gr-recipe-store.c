@@ -37,6 +37,7 @@ struct _GrRecipeStore
 
         GHashTable *recipes;
         GHashTable *chefs;
+        GHashTable *cooked;
 
         char **todays;
         char **picks;
@@ -55,6 +56,7 @@ gr_recipe_store_finalize (GObject *object)
 
         g_clear_pointer (&self->recipes, g_hash_table_unref);
         g_clear_pointer (&self->chefs, g_hash_table_unref);
+        g_clear_pointer (&self->cooked, g_hash_table_unref);
         g_strfreev (self->todays);
         g_strfreev (self->picks);
         g_strfreev (self->favorites);
@@ -596,6 +598,83 @@ save_favorites (GrRecipeStore *self)
 }
 
 static void
+load_cooked (GrRecipeStore *store, const char *dir)
+{
+        g_autoptr(GKeyFile) keyfile = NULL;
+        g_autoptr(GError) error = NULL;
+        g_autofree char *path = NULL;
+        g_auto(GStrv) groups = NULL;
+        gsize length;
+        int i;
+
+        keyfile = g_key_file_new ();
+
+        path = g_build_filename (dir, "cooked.db", NULL);
+        if (!g_key_file_load_from_file (keyfile, path, G_KEY_FILE_NONE, &error)) {
+                if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
+                        g_error ("Failed to load cooked db: %s", error->message);
+                else
+                        g_message ("No cooked db at: %s", path);
+                return;
+        }
+
+        g_message ("Load cooked db: %s", path);
+
+        groups = g_key_file_get_groups (keyfile, &length);
+        for (i = 0; i < length; i++) {
+                g_autofree char *name = NULL;
+                int count;
+
+                g_clear_error (&error);
+
+                name = g_key_file_get_string (keyfile, groups[i], "Name", &error);
+                if (error) {
+                        g_warning ("Failed to load cooked entry %s: %s", groups[i], error->message);
+                        g_clear_error (&error);
+                        continue;
+                }
+                count = g_key_file_get_integer (keyfile, groups[i], "Count", &error);
+                if (error) {
+                        g_warning ("Failed to load cooked entry %s: %s", groups[i], error->message);
+                        g_clear_error (&error);
+                        continue;
+                }
+
+                g_hash_table_insert (store->cooked, g_strdup (name), GINT_TO_POINTER (count));
+        }
+}
+
+static void
+save_cooked (GrRecipeStore *store)
+{
+        g_autoptr(GKeyFile) keyfile = NULL;
+        g_autofree char *path = NULL;
+        GHashTableIter iter;
+        const char *name;
+        gpointer value;
+        g_autoptr(GError) error = NULL;
+
+        keyfile = g_key_file_new ();
+
+        path = g_build_filename (get_user_data_dir (), "cooked.db", NULL);
+
+        g_message ("Save cooked db: %s", path);
+
+        g_hash_table_iter_init (&iter, store->cooked);
+        while (g_hash_table_iter_next (&iter, (gpointer *)&name, (gpointer *)&value)) {
+                int count;
+                count = GPOINTER_TO_INT (value);
+
+                g_key_file_set_string (keyfile, name, "Name", name);
+                g_key_file_set_integer (keyfile, name, "Count", count);
+        }
+
+        if (!g_key_file_save_to_file (keyfile, path, &error)) {
+                g_error ("Failed to save cooked database: %s", error->message);
+        }
+}
+
+static void
 load_chefs (GrRecipeStore *self, const char *dir)
 {
         g_autoptr(GKeyFile) keyfile = NULL;
@@ -788,6 +867,7 @@ gr_recipe_store_init (GrRecipeStore *self)
 
         self->recipes = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);
         self->chefs = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);
+        self->cooked = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
 
         /* First load preinstalled data */
         dir = get_pkg_data_dir ();
@@ -799,6 +879,7 @@ gr_recipe_store_init (GrRecipeStore *self)
         dir = get_user_data_dir ();
         load_recipes (self, dir);
         load_favorites (self, dir);
+        load_cooked (self, dir);
         load_chefs (self, dir);
         load_user (self, dir);
 
@@ -1244,3 +1325,32 @@ gr_recipe_store_has_cuisine (GrRecipeStore *self,
 
         return FALSE;
 }
+
+void
+gr_recipe_store_add_cooked (GrRecipeStore *store,
+                            GrRecipe      *recipe)
+{
+        int count;
+        const char *name;
+
+        name = gr_recipe_get_name (recipe);
+
+        count = GPOINTER_TO_INT (g_hash_table_lookup (store->cooked, name));
+        count++;
+
+        g_hash_table_insert (store->cooked, g_strdup (name), GINT_TO_POINTER (count));
+
+        save_cooked (store);
+}
+
+int
+gr_recipe_store_get_cooked (GrRecipeStore *store,
+                            GrRecipe      *recipe)
+{
+        const char *name;
+
+        name = gr_recipe_get_name (recipe);
+
+        return GPOINTER_TO_INT (g_hash_table_lookup (store->cooked, name));
+}
+
