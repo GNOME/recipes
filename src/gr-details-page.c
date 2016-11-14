@@ -49,18 +49,26 @@ timer_complete (GrTimer *timer)
 	g_autoptr(GNotification) notification = NULL;
         g_autofree char *body = NULL;
         g_autofree char *action = NULL;
+        GrRecipeStore *store;
+        g_autoptr(GrRecipe) recipe = NULL;
+        const char *name;
 
 	app = g_application_get_default ();
 
-        body = g_strdup_printf (_("Your cooking timer for “%s” has expired."),
-                                gr_timer_get_name (timer));
+        name = gr_timer_get_name (timer);
+
+        body = g_strdup_printf (_("Your cooking timer for “%s” has expired."), name);
 
 	notification = g_notification_new (_("Time is up!"));
 	g_notification_set_body (notification, body);
-        action = g_strdup_printf ("app.timer-expired::%s", gr_timer_get_name (timer));
+        action = g_strdup_printf ("app.timer-expired::%s", name);
         g_notification_set_default_action (notification, action);
 
 	g_application_send_notification (app, "timer", notification);
+
+        store = gr_app_get_recipe_store (GR_APP (app));
+        recipe = gr_recipe_store_get (store, name);
+        gr_recipe_store_add_cooked (store, recipe);
 }
 
 static CookingData *
@@ -120,6 +128,7 @@ struct _GrDetailsPage
         GtkWidget *remaining_time_label;
         GtkWidget *created_label;
         GtkWidget *modified_label;
+        GtkWidget *cooked_label;
 };
 
 G_DEFINE_TYPE (GrDetailsPage, gr_details_page, GTK_TYPE_BOX)
@@ -483,6 +492,7 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, remaining_time_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, created_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, modified_label);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, cooked_label);
 
         gtk_widget_class_bind_template_callback (widget_class, edit_recipe);
         gtk_widget_class_bind_template_callback (widget_class, delete_recipe);
@@ -530,6 +540,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         int left, width;
         GDateTime *ctime;
         GDateTime *mtime;
+        int cooked;
 
         g_set_object (&page->recipe, recipe);
 
@@ -550,6 +561,8 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
         chef = gr_recipe_store_get_chef (store, author);
         g_set_object (&page->chef, chef);
+
+        cooked = gr_recipe_store_get_cooked (store, recipe);
 
         ing = gr_ingredients_list_new (ingredients);
         g_set_object (&page->ingredients, ing);
@@ -600,6 +613,16 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         tmp = g_strdup_printf (_("More recipes by %s"), author);
         gtk_button_set_label (GTK_BUTTON (page->chef_link), tmp);
         g_free (tmp);
+
+        if (cooked > 0) {
+                gtk_widget_show (page->cooked_label);
+                tmp = g_strdup_printf (ngettext ("You've cooked this recipe before",
+                                                 "You've cooked this recipe %d times", cooked), cooked);
+                gtk_label_set_label (GTK_LABEL (page->cooked_label), tmp);
+                g_free (tmp);
+        }
+        else
+                gtk_widget_hide (page->cooked_label);
 
         cooking = g_hash_table_lookup (page->cooking, name) != NULL;
         set_cooking (page, cooking);

@@ -273,6 +273,17 @@ followed</property>
                   </packing>
                 </child>
                 <child>
+                  <object class="GtkLabel" id="cooked_label">
+                    <property name="visible">1</property>
+                    <property name="label" translatable="yes">Cooked 5 times</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">3</property>
+                    <property name="top-attach">5</property>
+                  </packing>
+                </child>
+                <child>
                   <object class="GtkLabel" id="ingredients_label">
                     <property name="visible">1</property>
                     <property name="xalign">0</property>
