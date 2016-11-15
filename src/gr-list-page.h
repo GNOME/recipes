@@ -30,11 +30,12 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrListPage, gr_list_page, GR, LIST_PAGE, GtkBox)
 
-GtkWidget	*gr_list_page_new (void);
-void             gr_list_page_populate_from_diet (GrListPage *self,
-                                                  GrDiets     diet);
-void             gr_list_page_populate_from_chef (GrListPage *self,
-                                                  GrChef     *chef);
-void             gr_list_page_populate_from_favorites (GrListPage *self);
+GtkWidget      *gr_list_page_new                     (void);
+
+void            gr_list_page_populate_from_diet      (GrListPage *self,
+                                                      GrDiets     diet);
+void            gr_list_page_populate_from_chef      (GrListPage *self,
+                                                      GrChef     *chef);
+void            gr_list_page_populate_from_favorites (GrListPage *self);
 
 G_END_DECLS

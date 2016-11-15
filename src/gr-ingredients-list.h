@@ -28,14 +28,13 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrIngredientsList, gr_ingredients_list, GR, INGREDIENTS_LIST, GObject)
 
-GrIngredientsList *gr_ingredients_list_new      (const char  *text);
+GrIngredientsList *gr_ingredients_list_new             (const char         *text);
 
-gboolean           gr_ingredients_list_validate (const char  *text,
-                                                 GError     **error);
+gboolean           gr_ingredients_list_validate        (const char         *text,
+                                                        GError            **error);
+gchar             *gr_ingredients_list_scale           (GrIngredientsList  *ingredients,
+                                                        int                 num,
+                                                        int                 denom);
+gchar            **gr_ingredients_list_get_ingredients (GrIngredientsList  *ingredients);
 
-gchar             *gr_ingredients_list_scale    (GrIngredientsList *ingredients,
-                                                 int                num,
-                                                 int                denom);
-
-gchar **           gr_ingredients_list_get_ingredients (GrIngredientsList *ingredients);
 G_END_DECLS

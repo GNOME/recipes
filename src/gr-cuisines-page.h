@@ -28,6 +28,6 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrCuisinesPage, gr_cuisines_page, GR, CUISINES_PAGE, GtkBox)
 
-GtkWidget	*gr_cuisines_page_new (void);
+GtkWidget       *gr_cuisines_page_new (void);
 
 G_END_DECLS

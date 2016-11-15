@@ -30,10 +30,10 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrIngredientsPage, gr_ingredients_page, GR, INGREDIENTS_PAGE, GtkBox)
 
-GtkWidget	*gr_ingredients_page_new (void);
+GtkWidget      *gr_ingredients_page_new              (void);
 
-char            *gr_ingredients_page_get_search_terms (GrIngredientsPage *page);
-void             gr_ingredients_page_scroll           (GrIngredientsPage *page,
-                                                       const char        *str);
+char           *gr_ingredients_page_get_search_terms (GrIngredientsPage *page);
+void            gr_ingredients_page_scroll           (GrIngredientsPage *page,
+                                                      const char        *str);
 
 G_END_DECLS

@@ -1,4 +1,4 @@
-/* gr-timer.h
+/* gr-timer.h:
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *
@@ -28,13 +28,13 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrTimer, gr_timer, GR, TIMER, GObject)
 
-GrTimer    *gr_timer_new      (const char *name);
+GrTimer    *gr_timer_new            (const char *name);
 
-const char *gr_timer_get_name       (GrTimer *timer);
-gboolean    gr_timer_get_active     (GrTimer *timer);
-guint64     gr_timer_get_start_time (GrTimer *timer);
-guint64     gr_timer_get_duration   (GrTimer *timer);
-guint64     gr_timer_get_remaining  (GrTimer *timer);
+const char *gr_timer_get_name       (GrTimer    *timer);
+gboolean    gr_timer_get_active     (GrTimer    *timer);
+guint64     gr_timer_get_start_time (GrTimer    *timer);
+guint64     gr_timer_get_duration   (GrTimer    *timer);
+guint64     gr_timer_get_remaining  (GrTimer    *timer);
 
 G_END_DECLS
 

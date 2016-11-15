@@ -30,25 +30,24 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrWindow, gr_window, GR, WINDOW, GtkApplicationWindow)
 
-GrWindow *gr_window_new (GrApp *app);
+GrWindow       *gr_window_new                        (GrApp      *app);
 
-void      gr_window_show_recipe (GrWindow *window,
-                                 GrRecipe *recipe);
-void      gr_window_edit_recipe (GrWindow *window,
-                                 GrRecipe *recipe);
-
-void      gr_window_go_back   (GrWindow   *window);
-void      gr_window_show_diet (GrWindow   *window,
-                               const char *title,
-                               GrDiets     diet);
-void      gr_window_show_chef (GrWindow   *window,
-                               GrChef     *chef);
-void      gr_window_show_myself (GrWindow   *window);
-void      gr_window_show_favorites (GrWindow   *window);
-void      gr_window_show_cuisine (GrWindow   *window,
-                                  const char *cuisine,
-                                  const char *title);
-void      gr_window_show_search_by_ingredients (GrWindow   *window,
-                                                const char *ingredient);
+void            gr_window_show_recipe                (GrWindow   *window,
+                                                      GrRecipe   *recipe);
+void            gr_window_edit_recipe                (GrWindow   *window,
+                                                      GrRecipe   *recipe);
+void            gr_window_go_back                    (GrWindow   *window);
+void            gr_window_show_diet                  (GrWindow   *window,
+                                                      const char *title,
+                                                      GrDiets     diet);
+void            gr_window_show_chef                  (GrWindow   *window,
+                                                      GrChef     *chef);
+void            gr_window_show_myself                (GrWindow   *window);
+void            gr_window_show_favorites             (GrWindow   *window);
+void            gr_window_show_cuisine               (GrWindow   *window,
+                                                      const char *cuisine,
+                                                      const char *title);
+void            gr_window_show_search_by_ingredients (GrWindow   *window,
+                                                      const char *ingredient);
 
 G_END_DECLS

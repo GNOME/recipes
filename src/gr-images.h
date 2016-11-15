@@ -35,12 +35,12 @@ GArray *gr_rotated_image_array_new (void);
 
 G_DECLARE_FINAL_TYPE (GrImages, gr_images, GR, IMAGES, GtkBox)
 
-GrImages *gr_images_new (void);
+GrImages       *gr_images_new          (void);
 
-void      gr_images_add_image    (GrImages *image);
-void      gr_images_remove_image (GrImages *image);
-void      gr_images_rotate_image (GrImages *image,
-				  gint      angle);
+void            gr_images_add_image    (GrImages *image);
+void            gr_images_remove_image (GrImages *image);
+void            gr_images_rotate_image (GrImages *image,
+                                        gint      angle);
 
 G_END_DECLS
 

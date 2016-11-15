@@ -30,65 +30,52 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrRecipeStore, gr_recipe_store, GR, RECIPE_STORE, GObject)
 
-GrRecipeStore *gr_recipe_store_new (void);
+GrRecipeStore  *gr_recipe_store_new                 (void);
 
-gboolean gr_recipe_store_add (GrRecipeStore  *self,
-                              GrRecipe       *recipe,
-                              GError        **error);
-gboolean gr_recipe_store_update (GrRecipeStore  *self,
-                                 GrRecipe       *recipe,
-                                 const char     *old_name,
-                                 GError        **error);
-gboolean gr_recipe_store_remove (GrRecipeStore *self,
-				 GrRecipe      *recipe);
-
-GrRecipe *gr_recipe_store_get (GrRecipeStore *self,
-                               const char    *name);
-
-char **gr_recipe_store_get_recipe_keys (GrRecipeStore *self,
-                                        guint         *length);
-
-gboolean gr_recipe_store_is_todays (GrRecipeStore *self,
-                                    GrRecipe      *recipe);
-
-gboolean gr_recipe_store_is_pick (GrRecipeStore *self,
-                                  GrRecipe      *recipe);
-
-GrChef *gr_recipe_store_get_chef (GrRecipeStore *self,
-                                  const char    *name);
-
-char **gr_recipe_store_get_chef_keys (GrRecipeStore *self,
-                                      guint         *length);
-
-gboolean gr_recipe_store_chef_is_featured (GrRecipeStore *self,
-                                           GrChef        *chef);
-
-const char *gr_recipe_store_get_user_key (GrRecipeStore *self);
-
-gboolean gr_recipe_store_update_user (GrRecipeStore  *self,
-                                      GrChef         *chef,
-                                      GError        **error);
-
-char **gr_recipe_store_get_all_ingredients (GrRecipeStore *self,
-                                            guint         *length);
-
-void gr_recipe_store_add_favorite (GrRecipeStore *self,
-                                   GrRecipe      *recipe);
-void gr_recipe_store_remove_favorite (GrRecipeStore *self,
-                                      GrRecipe      *recipe);
-gboolean gr_recipe_store_is_favorite (GrRecipeStore *self,
-                                      GrRecipe      *recipe);
-gboolean gr_recipe_store_has_diet (GrRecipeStore *self,
-				   GrDiets        diet);
-gboolean gr_recipe_store_has_chef (GrRecipeStore *self,
-                                   GrChef        *chef);
-gboolean gr_recipe_store_has_cuisine (GrRecipeStore *self,
-                                      const char    *cuisine);
-
-void gr_recipe_store_add_cooked (GrRecipeStore *store,
-				 GrRecipe      *recipe);
-
-int  gr_recipe_store_get_cooked (GrRecipeStore *store,
-				 GrRecipe      *recipe);
+gboolean        gr_recipe_store_add                 (GrRecipeStore  *self,
+                                                     GrRecipe       *recipe,
+                                                     GError        **error);
+gboolean        gr_recipe_store_update              (GrRecipeStore  *self,
+                                                     GrRecipe       *recipe,
+                                                     const char     *old_name,
+                                                     GError        **error);
+gboolean        gr_recipe_store_remove              (GrRecipeStore  *self,
+				                     GrRecipe       *recipe);
+GrRecipe       *gr_recipe_store_get                 (GrRecipeStore  *self,
+                                                     const char     *name);
+char          **gr_recipe_store_get_recipe_keys     (GrRecipeStore  *self,
+                                                     guint          *length);
+gboolean        gr_recipe_store_is_todays           (GrRecipeStore  *self,
+                                                     GrRecipe       *recipe);
+gboolean        gr_recipe_store_is_pick             (GrRecipeStore  *self,
+                                                     GrRecipe       *recipe);
+GrChef         *gr_recipe_store_get_chef            (GrRecipeStore  *self,
+                                                     const char     *name);
+char          **gr_recipe_store_get_chef_keys       (GrRecipeStore  *self,
+                                                     guint          *length);
+gboolean        gr_recipe_store_chef_is_featured    (GrRecipeStore  *self,
+                                                     GrChef         *chef);
+const char     *gr_recipe_store_get_user_key        (GrRecipeStore  *self);
+gboolean        gr_recipe_store_update_user         (GrRecipeStore  *self,
+                                                     GrChef         *chef,
+                                                     GError        **error);
+char          **gr_recipe_store_get_all_ingredients (GrRecipeStore  *self,
+                                                     guint          *length);
+void            gr_recipe_store_add_favorite        (GrRecipeStore  *self,
+                                                     GrRecipe       *recipe);
+void            gr_recipe_store_remove_favorite     (GrRecipeStore  *self,
+                                                     GrRecipe       *recipe);
+gboolean        gr_recipe_store_is_favorite         (GrRecipeStore  *self,
+                                                     GrRecipe       *recipe);
+gboolean        gr_recipe_store_has_diet            (GrRecipeStore  *self,
+				                     GrDiets         diet);
+gboolean        gr_recipe_store_has_chef            (GrRecipeStore  *self,
+                                                     GrChef         *chef);
+gboolean        gr_recipe_store_has_cuisine         (GrRecipeStore  *self,
+                                                     const char     *cuisine);
+void            gr_recipe_store_add_cooked          (GrRecipeStore  *store,
+				                     GrRecipe       *recipe);
+int             gr_recipe_store_get_cooked          (GrRecipeStore  *store,
+				                     GrRecipe       *recipe);
 
 G_END_DECLS

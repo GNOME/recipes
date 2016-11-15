@@ -28,7 +28,7 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrCuisinePage, gr_cuisine_page, GR, CUISINE_PAGE, GtkBox)
 
-GtkWidget	*gr_cuisine_page_new (void);
+GtkWidget       *gr_cuisine_page_new         (void);
 void             gr_cuisine_page_set_cuisine (GrCuisinePage *self,
                                               const char    *cuisine);
 

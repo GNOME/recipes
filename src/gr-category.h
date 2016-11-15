@@ -25,7 +25,7 @@
 
 G_BEGIN_DECLS
 
-const char **gr_category_get_names (int *length);
-const char * gr_category_get_title (const char  *name);
+const char **gr_category_get_names (int        *length);
+const char  *gr_category_get_title (const char *name);
 
 G_END_DECLS

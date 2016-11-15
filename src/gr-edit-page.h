@@ -29,7 +29,7 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrEditPage, gr_edit_page, GR, EDIT_PAGE, GtkBox)
 
-GtkWidget	*gr_edit_page_new (void);
+GtkWidget       *gr_edit_page_new (void);
 
 void             gr_edit_page_clear (GrEditPage *page);
 void             gr_edit_page_edit  (GrEditPage *page,

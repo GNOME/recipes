@@ -28,6 +28,6 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrPreferences, gr_preferences, GR, PREFERENCES, GtkDialog)
 
-GrPreferences *gr_preferences_new (GtkWindow *win);
+GrPreferences  *gr_preferences_new (GtkWindow *win);
 
 G_END_DECLS

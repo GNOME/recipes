@@ -28,7 +28,7 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrIngredientTile, gr_ingredient_tile, GR, INGREDIENT_TILE, GtkBox)
 
-GtkWidget	*gr_ingredient_tile_new            (const char       *ingredient);
-const char      *gr_ingredient_tile_get_ingredient (GrIngredientTile *tile);
+GtkWidget      *gr_ingredient_tile_new            (const char       *ingredient);
+const char     *gr_ingredient_tile_get_ingredient (GrIngredientTile *tile);
 
 G_END_DECLS

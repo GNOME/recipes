@@ -30,14 +30,13 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrDetailsPage, gr_details_page, GR, DETAILS_PAGE, GtkBox)
 
-GtkWidget	*gr_details_page_new (void);
+GtkWidget       *gr_details_page_new         (void);
 
-void             gr_details_page_set_recipe (GrDetailsPage *page,
-                                             GrRecipe      *recipe);
+void             gr_details_page_set_recipe  (GrDetailsPage *page,
+                                              GrRecipe      *recipe);
 
 gboolean         gr_details_page_is_cooking  (GrDetailsPage *page);
 void             gr_details_page_set_cooking (GrDetailsPage *page,
-					      gboolean       cooking);
-
+                                              gboolean       cooking);
 
 G_END_DECLS

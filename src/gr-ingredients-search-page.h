@@ -28,8 +28,8 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrIngredientsSearchPage, gr_ingredients_search_page, GR, INGREDIENTS_SEARCH_PAGE, GtkBox)
 
-GtkWidget	*gr_ingredients_search_page_new (void);
-void             gr_ingredients_search_page_set_ingredient (GrIngredientsSearchPage *page,
-                                                            const char              *ingredient);
+GtkWidget      *gr_ingredients_search_page_new            (void);
+void            gr_ingredients_search_page_set_ingredient (GrIngredientsSearchPage *page,
+                                                           const char              *ingredient);
 
 G_END_DECLS

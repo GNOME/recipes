@@ -24,11 +24,10 @@
 
 G_BEGIN_DECLS
 
-GdkPixbuf *load_pixbuf_fit_size (const char *path,
-			     	 int         angle,
-                                 int         width,
-                                 int         height);
-
+GdkPixbuf *load_pixbuf_fit_size  (const char *path,
+			     	  int         angle,
+                                  int         width,
+                                  int         height);
 GdkPixbuf *load_pixbuf_fill_size (const char *path,
 				  int         angle,
                                   int         width,
@@ -37,6 +36,6 @@ GdkPixbuf *load_pixbuf_fill_size (const char *path,
 const char *get_pkg_data_dir  (void);
 const char *get_user_data_dir (void);
 
-void container_remove_all (GtkContainer *container);
+void    container_remove_all (GtkContainer *container);
 
 G_END_DECLS
