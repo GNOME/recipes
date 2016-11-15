@@ -35,8 +35,8 @@ struct _GrListPage
 {
         GtkBox parent_instance;
 
-	GrChef *chef;
-	GrDiets diet;
+        GrChef *chef;
+        GrDiets diet;
         gboolean favorites;
 
         GtkWidget *list_stack;
@@ -54,7 +54,7 @@ list_page_finalize (GObject *object)
 {
         GrListPage *self = GR_LIST_PAGE (object);
 
-	g_clear_object (&self->chef);
+        g_clear_object (&self->chef);
 
         G_OBJECT_CLASS (gr_list_page_parent_class)->finalize (object);
 }
@@ -64,7 +64,7 @@ gr_list_page_init (GrListPage *page)
 {
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
         gtk_widget_init_template (GTK_WIDGET (page));
-	connect_store_signals (page);
+        connect_store_signals (page);
 }
 
 static void
@@ -99,44 +99,45 @@ get_category_title (GrDiets diet)
         const char *label;
 
 	switch (diet) {
-	case GR_DIET_GLUTEN_FREE:
-		label = _("Gluten-free recipes");
-		break;
-	case GR_DIET_NUT_FREE:
-		label = _("Nut-free recipes");
-		break;
-	case GR_DIET_VEGAN:
-		label = _("Vegan recipes");
-		break;
-	case GR_DIET_VEGETARIAN:
-		label = _("Vegetarian recipes");
-		break;
-	case GR_DIET_MILK_FREE:
-		label = _("Milk-free recipes");
-		break;
-	default:
-		label = _("Other dietary restrictions");
-		break;
-	}
+        case GR_DIET_GLUTEN_FREE:
+                label = _("Gluten-free recipes");
+                break;
+        case GR_DIET_NUT_FREE:
+                label = _("Nut-free recipes");
+                break;
+        case GR_DIET_VEGAN:
+                label = _("Vegan recipes");
+                break;
+        case GR_DIET_VEGETARIAN:
+                label = _("Vegetarian recipes");
+                break;
+        case GR_DIET_MILK_FREE:
+                label = _("Milk-free recipes");
+                break;
+        default:
+                label = _("Other dietary restrictions");
+                break;
+}
 
         return label;
 }
 
 void
-gr_list_page_populate_from_diet (GrListPage *self, GrDiets diet)
+gr_list_page_populate_from_diet (GrListPage *self,
+                                 GrDiets     diet)
 {
-	GrRecipeStore *store;
-	g_autofree char **keys = NULL;
-	guint length;
-	int i;
+        GrRecipeStore *store;
+        g_autofree char **keys = NULL;
+        guint length;
+        int i;
         gboolean filled;
         char *tmp;
 
-	self->diet = diet;
-	g_clear_object (&self->chef);
+        self->diet = diet;
+        g_clear_object (&self->chef);
         self->favorites = FALSE;
 
-	container_remove_all (GTK_CONTAINER (self->flow_box));
+        container_remove_all (GTK_CONTAINER (self->flow_box));
         tmp = g_strdup_printf (_("No %s found"), get_category_title (diet));
         gtk_label_set_label (GTK_LABEL (self->empty_title), tmp);
         g_free (tmp);
@@ -144,47 +145,48 @@ gr_list_page_populate_from_diet (GrListPage *self, GrDiets diet)
         gtk_stack_set_visible_child_name (GTK_STACK (self->list_stack), "empty");
         filled = FALSE;
 
-	store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-	keys = gr_recipe_store_get_recipe_keys (store, &length);
-	for (i = 0; i < length; i++) {
-		g_autoptr(GrRecipe) recipe = NULL;
-		GtkWidget *tile;
-		GrDiets diets;
+        keys = gr_recipe_store_get_recipe_keys (store, &length);
+        for (i = 0; i < length; i++) {
+                g_autoptr(GrRecipe) recipe = NULL;
+                GtkWidget *tile;
+                GrDiets diets;
 
-		recipe = gr_recipe_store_get (store, keys[i]);
+        	recipe = gr_recipe_store_get (store, keys[i]);
                 diets = gr_recipe_get_diets (recipe);
-		if ((diets & diet) == 0)
-			continue;
+                if ((diets & diet) == 0)
+                        continue;
 
-		tile = gr_recipe_tile_new (recipe);
-		gtk_widget_show (tile);
-		gtk_container_add (GTK_CONTAINER (self->flow_box), tile);
+                tile = gr_recipe_tile_new (recipe);
+                gtk_widget_show (tile);
+                gtk_container_add (GTK_CONTAINER (self->flow_box), tile);
                 filled = TRUE;
-	}
+        }
 
         if (filled)
-          gtk_stack_set_visible_child_name (GTK_STACK (self->list_stack), "list");
+                gtk_stack_set_visible_child_name (GTK_STACK (self->list_stack), "list");
 }
 
 void
-gr_list_page_populate_from_chef (GrListPage *self, GrChef *chef)
+gr_list_page_populate_from_chef (GrListPage *self,
+                                 GrChef     *chef)
 {
-	GrRecipeStore *store;
-	const char *name;
-	g_autofree char **keys = NULL;
-	guint length;
-	int i;
+        GrRecipeStore *store;
+        const char *name;
+        g_autofree char **keys = NULL;
+        guint length;
+        int i;
         gboolean filled;
         char *tmp;
 
-	store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-	self->diet = 0;
-	g_set_object (&self->chef, chef);
+        self->diet = 0;
+        g_set_object (&self->chef, chef);
         self->favorites = FALSE;
 
-	container_remove_all (GTK_CONTAINER (self->flow_box));
+        container_remove_all (GTK_CONTAINER (self->flow_box));
         tmp = g_strdup_printf (_("No recipes by chef %s found"), gr_chef_get_name (chef));
         gtk_label_set_label (GTK_LABEL (self->empty_title), tmp);
         g_free (tmp);
@@ -197,78 +199,77 @@ gr_list_page_populate_from_chef (GrListPage *self, GrChef *chef)
 
         name = gr_chef_get_name (chef);
 
-	keys = gr_recipe_store_get_recipe_keys (store, &length);
-	for (i = 0; i < length; i++) {
-		g_autoptr(GrRecipe) recipe = NULL;
-		const char *author;
-		GtkWidget *tile;
+        keys = gr_recipe_store_get_recipe_keys (store, &length);
+        for (i = 0; i < length; i++) {
+                g_autoptr(GrRecipe) recipe = NULL;
+                const char *author;
+                GtkWidget *tile;
 
-		recipe = gr_recipe_store_get (store, keys[i]);
+                recipe = gr_recipe_store_get (store, keys[i]);
                 author = gr_recipe_get_author (recipe);
 
-		if (g_strcmp0 (name, author) != 0)
-			continue;
+                if (g_strcmp0 (name, author) != 0)
+                        continue;
 
-		tile = gr_recipe_tile_new (recipe);
-		gtk_widget_show (tile);
-		gtk_container_add (GTK_CONTAINER (self->flow_box), tile);
-                filled = TRUE;
-	}
+                tile = gr_recipe_tile_new (recipe);
+                gtk_widget_show (tile);
+                gtk_container_add (GTK_CONTAINER (self->flow_box), tile);
+        }
 
         if (filled)
-          gtk_stack_set_visible_child_name (GTK_STACK (self->list_stack), "list");
+                gtk_stack_set_visible_child_name (GTK_STACK (self->list_stack), "list");
 }
 
 void
 gr_list_page_populate_from_favorites (GrListPage *self)
 {
-	GrRecipeStore *store;
-	g_autofree char **keys = NULL;
-	guint length;
-	int i;
+        GrRecipeStore *store;
+        g_autofree char **keys = NULL;
+        guint length;
+        int i;
         gboolean filled;
 
-	self->diet = 0;
+        self->diet = 0;
         g_clear_object (&self->chef);
         self->favorites = TRUE;
 
-	container_remove_all (GTK_CONTAINER (self->flow_box));
+        container_remove_all (GTK_CONTAINER (self->flow_box));
         gtk_label_set_label (GTK_LABEL (self->empty_title), _("No favorite recipes found"));
         gtk_label_set_label (GTK_LABEL (self->empty_subtitle), _("Use the “Cook later” button to mark recipes as favorites."));
         gtk_stack_set_visible_child_name (GTK_STACK (self->list_stack), "empty");
         filled = FALSE;
 
-	store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-	keys = gr_recipe_store_get_recipe_keys (store, &length);
-	for (i = 0; i < length; i++) {
-		g_autoptr(GrRecipe) recipe = NULL;
-		const char *author;
-		GtkWidget *tile;
+        keys = gr_recipe_store_get_recipe_keys (store, &length);
+        for (i = 0; i < length; i++) {
+                g_autoptr(GrRecipe) recipe = NULL;
+                const char *author;
+                GtkWidget *tile;
 
-		recipe = gr_recipe_store_get (store, keys[i]);
+                recipe = gr_recipe_store_get (store, keys[i]);
                 if (!gr_recipe_store_is_favorite (store, recipe))
-			continue;
+                        continue;
 
-		tile = gr_recipe_tile_new (recipe);
-		gtk_widget_show (tile);
-		gtk_container_add (GTK_CONTAINER (self->flow_box), tile);
+                tile = gr_recipe_tile_new (recipe);
+                gtk_widget_show (tile);
+                gtk_container_add (GTK_CONTAINER (self->flow_box), tile);
                 filled = TRUE;
-	}
+        }
 
         if (filled)
-          gtk_stack_set_visible_child_name (GTK_STACK (self->list_stack), "list");
+                gtk_stack_set_visible_child_name (GTK_STACK (self->list_stack), "list");
 }
 
 static void
 list_page_reload (GrListPage *page)
 {
-	if (page->chef)
-		gr_list_page_populate_from_chef (page, page->chef);
-	else if (page->diet)
-		gr_list_page_populate_from_diet (page, page->diet);
+        if (page->chef)
+                gr_list_page_populate_from_chef (page, page->chef);
+        else if (page->diet)
+                gr_list_page_populate_from_diet (page, page->diet);
         else if (page->favorites)
-		gr_list_page_populate_from_favorites (page);
+                gr_list_page_populate_from_favorites (page);
 }
 
 static void

@@ -25,12 +25,12 @@
 
 struct _GrTimer
 {
-	GtkWidget parent_instance;
+        GtkWidget parent_instance;
 
         char *name;
         gboolean active;
         guint64 duration;
-	guint64 start_time;
+        guint64 start_time;
         guint64 remaining;
         guint completion_id;
         guint remaining_id;
@@ -39,19 +39,19 @@ struct _GrTimer
 G_DEFINE_TYPE (GrTimer, gr_timer, G_TYPE_OBJECT)
 
 enum {
-	PROP_0,
+        PROP_0,
         PROP_NAME,
-	PROP_ACTIVE,
-	PROP_DURATION,
+        PROP_ACTIVE,
+        PROP_DURATION,
         PROP_REMAINING,
-	N_PROPS
+        N_PROPS
 };
 
 static GParamSpec *properties [N_PROPS];
 
 enum {
-	COMPLETE,
-	LAST_SIGNAL
+        COMPLETE,
+        LAST_SIGNAL
 };
 
 static guint signals[LAST_SIGNAL] = { 0, };
@@ -59,7 +59,7 @@ static guint signals[LAST_SIGNAL] = { 0, };
 GrTimer *
 gr_timer_new (const char *name)
 {
-	return g_object_new (GR_TYPE_TIMER,
+        return g_object_new (GR_TYPE_TIMER,
                              "name", name,
                              NULL);
 }
@@ -102,8 +102,8 @@ timer_complete (gpointer data)
 {
         GrTimer *timer = data;
 
-	set_active (timer, FALSE);
-	g_signal_emit (timer, signals[COMPLETE], 0);
+        set_active (timer, FALSE);
+        g_signal_emit (timer, signals[COMPLETE], 0);
 
         return G_SOURCE_REMOVE;
 }
@@ -133,7 +133,7 @@ set_active (GrTimer  *timer,
         timer->active = active;
 
         if (active) {
-		timer->start_time = g_get_monotonic_time ();
+                timer->start_time = g_get_monotonic_time ();
                 timer->completion_id = g_timeout_add (timer->duration / 1000, timer_complete, timer);
                 timer->remaining_id = g_timeout_add_seconds (1, remaining_update, timer);
         }
@@ -149,7 +149,7 @@ set_active (GrTimer  *timer,
 
 static void
 set_duration (GrTimer *timer,
-              guint  duration)
+              guint    duration)
 {
         timer->duration = duration;
         g_object_notify (G_OBJECT (timer), "duration");
@@ -158,7 +158,7 @@ set_duration (GrTimer *timer,
 static void
 gr_timer_finalize (GObject *object)
 {
-	GrTimer *timer = GR_TIMER (object);
+        GrTimer *timer = GR_TIMER (object);
 
         if (timer->completion_id)
                 g_source_remove (timer->completion_id);
@@ -166,7 +166,7 @@ gr_timer_finalize (GObject *object)
                 g_source_remove (timer->remaining_id);
         g_free (timer->name);
 
-	G_OBJECT_CLASS (gr_timer_parent_class)->finalize (object);
+        G_OBJECT_CLASS (gr_timer_parent_class)->finalize (object);
 }
 
 static void
@@ -177,7 +177,7 @@ gr_timer_get_property (GObject    *object,
 {
 	GrTimer *self = GR_TIMER (object);
 
-	switch (prop_id)
+        switch (prop_id)
           {
           case PROP_NAME:
                   g_value_set_string (value, self->name);
@@ -195,9 +195,9 @@ gr_timer_get_property (GObject    *object,
                   g_value_set_uint64 (value, self->remaining);
                   break;
 
-	  default:
-	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-	  }
+          default:
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+          }
 }
 
 static void
@@ -208,7 +208,7 @@ gr_timer_set_property (GObject      *object,
 {
 	GrTimer *self = GR_TIMER (object);
 
-	switch (prop_id)
+        switch (prop_id)
           {
           case PROP_NAME:
                   self->name = g_value_dup_string (value);
@@ -222,24 +222,24 @@ gr_timer_set_property (GObject      *object,
                   set_duration (self, g_value_get_uint64 (value));
                   break;
 
-	  default:
-	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-	  }
+          default:
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+          }
 }
 
 static void
 gr_timer_class_init (GrTimerClass *klass)
 {
-	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+        GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-	object_class->finalize = gr_timer_finalize;
-	object_class->get_property = gr_timer_get_property;
-	object_class->set_property = gr_timer_set_property;
+        object_class->finalize = gr_timer_finalize;
+        object_class->get_property = gr_timer_get_property;
+        object_class->set_property = gr_timer_set_property;
 
-	signals[COMPLETE] = g_signal_new ("complete",
+        signals[COMPLETE] = g_signal_new ("complete",
                                           G_TYPE_FROM_CLASS (object_class),
                                           G_SIGNAL_RUN_LAST,
-					  0,
+                                          0,
                   			  NULL, NULL,
                   		          NULL,
                   			  G_TYPE_NONE, 0);
@@ -269,6 +269,6 @@ gr_timer_class_init (GrTimerClass *klass)
 static void
 gr_timer_init (GrTimer *self)
 {
-	self->active = FALSE;
-	self->duration = 0;
+        self->active = FALSE;
+        self->duration = 0;
 }

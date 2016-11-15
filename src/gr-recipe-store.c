@@ -123,7 +123,8 @@ date_time_from_string (const char *string)
 }
 
 static void
-load_recipes (GrRecipeStore *self, const char *dir)
+load_recipes (GrRecipeStore *self,
+              const char    *dir)
 {
         g_autoptr(GKeyFile) keyfile = NULL;
         g_autoptr(GError) error = NULL;
@@ -502,7 +503,8 @@ save_recipes (GrRecipeStore *self)
 }
 
 static void
-load_picks (GrRecipeStore *self, const char *dir)
+load_picks (GrRecipeStore *self,
+            const char    *dir)
 {
         g_autofree char *path = NULL;
         g_autoptr(GKeyFile) keyfile = NULL;
@@ -548,7 +550,8 @@ load_picks (GrRecipeStore *self, const char *dir)
 }
 
 static void
-load_favorites (GrRecipeStore *self, const char *dir)
+load_favorites (GrRecipeStore *self,
+                const char    *dir)
 {
         g_autofree char *path = NULL;
         g_autoptr(GKeyFile) keyfile = NULL;
@@ -600,7 +603,8 @@ save_favorites (GrRecipeStore *self)
 }
 
 static void
-load_cooked (GrRecipeStore *store, const char *dir)
+load_cooked (GrRecipeStore *store,
+             const char    *dir)
 {
         g_autoptr(GKeyFile) keyfile = NULL;
         g_autoptr(GError) error = NULL;
@@ -677,7 +681,8 @@ save_cooked (GrRecipeStore *store)
 }
 
 static void
-load_chefs (GrRecipeStore *self, const char *dir)
+load_chefs (GrRecipeStore *self,
+            const char    *dir)
 {
         g_autoptr(GKeyFile) keyfile = NULL;
         g_autoptr(GError) error = NULL;
@@ -818,7 +823,8 @@ save_chefs (GrRecipeStore *store)
 }
 
 static void
-load_user (GrRecipeStore *self, const char *dir)
+load_user (GrRecipeStore *self,
+           const char    *dir)
 {
         g_autofree char *path = NULL;
         g_autofree char *contents = NULL;
@@ -1355,4 +1361,3 @@ gr_recipe_store_get_cooked (GrRecipeStore *store,
 
         return GPOINTER_TO_INT (g_hash_table_lookup (store->cooked, name));
 }
-

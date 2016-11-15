@@ -33,14 +33,15 @@
 #include "gr-ingredient.h"
 
 
-typedef struct {
+typedef struct
+{
         GrIngredientsSearchPage *page;
         GrRecipeStore *store;
         char *cf_term;
         char **keys;
         int length;
         int pos;
-	gboolean filled;
+        gboolean filled;
 } SearchParams;
 
 static void
@@ -62,7 +63,7 @@ struct _GrIngredientsSearchPage
         GtkWidget *flow_box;
         GtkWidget *terms_box;
         GtkWidget *search_entry;
-	GtkWidget *search_stack;
+        GtkWidget *search_stack;
 
         char *cf_term;
         guint search;
@@ -82,7 +83,8 @@ remove_tile (GrIngredientSearchTile *tile, gpointer data)
 }
 
 static void
-tile_changed (GrIngredientSearchTile *tile, gpointer data)
+tile_changed (GrIngredientSearchTile *tile,
+              gpointer                data)
 {
         GrIngredientsSearchPage *page = data;
 
@@ -164,7 +166,7 @@ update_search_idle (gpointer data)
                 container_remove_all (GTK_CONTAINER (params->page->flow_box));
                 terms = gtk_container_get_children (GTK_CONTAINER (params->page->terms_box));
                 if (terms == NULL) {
-		        gtk_stack_set_visible_child_name (GTK_STACK (params->page->search_stack), "list");
+                        gtk_stack_set_visible_child_name (GTK_STACK (params->page->search_stack), "list");
                         return G_SOURCE_REMOVE;
                 }
 
@@ -207,17 +209,17 @@ update_search_idle (gpointer data)
                                 tile = gr_recipe_tile_new (recipe);
                                 gtk_widget_show (tile);
                                 gtk_container_add (GTK_CONTAINER (params->page->flow_box), tile);
-			        params->filled = TRUE;
+                                params->filled = TRUE;
                         }
                 }
         }
 
-	if (params->pos < params->length)
-		return G_SOURCE_CONTINUE;
+        if (params->pos < params->length)
+                return G_SOURCE_CONTINUE;
 
-	gtk_stack_set_visible_child_name (GTK_STACK (params->page->search_stack), params->filled ? "list" : "empty");
+        gtk_stack_set_visible_child_name (GTK_STACK (params->page->search_stack), params->filled ? "list" : "empty");
 
-	return G_SOURCE_REMOVE;
+        return G_SOURCE_REMOVE;
 }
 
 static void
@@ -346,7 +348,7 @@ gr_ingredients_search_page_set_ingredient (GrIngredientsSearchPage *page,
                                            const char              *ingredient)
 {
         container_remove_all (GTK_CONTAINER (page->terms_box));
-	gtk_stack_set_visible_child_name (GTK_STACK (page->search_stack), "list");
-	if (ingredient)
+        gtk_stack_set_visible_child_name (GTK_STACK (page->search_stack), "list");
+        if (ingredient)
         	add_ingredient (page, ingredient);
 }

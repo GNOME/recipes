@@ -71,7 +71,8 @@ get_category_title (GrDiets diet)
 }
 
 static void
-category_tile_set_category (GrCategoryTile *tile, GrDiets diet)
+category_tile_set_category (GrCategoryTile *tile,
+                            GrDiets         diet)
 {
 	const char *label;
 

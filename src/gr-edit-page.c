@@ -69,7 +69,7 @@ G_DEFINE_TYPE (GrEditPage, gr_edit_page, GTK_TYPE_BOX)
 static void
 dismiss_error (GrEditPage *page)
 {
-	gtk_revealer_set_reveal_child (GTK_REVEALER (page->error_revealer), FALSE);
+        gtk_revealer_set_reveal_child (GTK_REVEALER (page->error_revealer), FALSE);
 }
 
 static void
@@ -451,7 +451,7 @@ gr_edit_page_save (GrEditPage *page)
                 recipe = g_object_new (GR_TYPE_RECIPE,
                                        "name", name,
                                        "description", description,
-		        	       "author", author,
+                                       "author", author,
                                        "cuisine", cuisine,
                                        "category", category,
                                        "prep-time", prep_time,

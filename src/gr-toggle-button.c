@@ -25,21 +25,21 @@
 
 struct _GrToggleButton
 {
-	GtkButton parent_instance;
+        GtkButton parent_instance;
 
         GtkWidget *label;
         GtkWidget *image;
 
-	gboolean active;
+        gboolean active;
 };
 
 G_DEFINE_TYPE (GrToggleButton, gr_toggle_button, GTK_TYPE_BUTTON)
 
 enum {
-	PROP_0,
-	PROP_ACTIVE,
-	PROP_LABEL,
-	N_PROPS
+        PROP_0,
+        PROP_ACTIVE,
+        PROP_LABEL,
+        N_PROPS
 };
 
 static GParamSpec *properties [N_PROPS];
@@ -47,15 +47,15 @@ static GParamSpec *properties [N_PROPS];
 GrToggleButton *
 gr_toggle_button_new (void)
 {
-	return g_object_new (GR_TYPE_TOGGLE_BUTTON, NULL);
+        return g_object_new (GR_TYPE_TOGGLE_BUTTON, NULL);
 }
 
 static void
 gr_toggle_button_finalize (GObject *object)
 {
-	GrToggleButton *self = (GrToggleButton *)object;
+        GrToggleButton *self = (GrToggleButton *)object;
 
-	G_OBJECT_CLASS (gr_toggle_button_parent_class)->finalize (object);
+        G_OBJECT_CLASS (gr_toggle_button_parent_class)->finalize (object);
 }
 
 static void
@@ -95,21 +95,21 @@ gr_toggle_button_get_property (GObject    *object,
                                GValue     *value,
                                GParamSpec *pspec)
 {
-	GrToggleButton *self = GR_TOGGLE_BUTTON (object);
+        GrToggleButton *self = GR_TOGGLE_BUTTON (object);
 
-	switch (prop_id)
-	  {
+        switch (prop_id)
+          {
           case PROP_LABEL:
-                  g_value_set_string (value, gtk_label_get_label (GTK_LABEL (self->label)));
-                  break;
+                g_value_set_string (value, gtk_label_get_label (GTK_LABEL (self->label)));
+                break;
 
           case PROP_ACTIVE:
-                  g_value_set_boolean (value, self->active);
-                  break;
+                g_value_set_boolean (value, self->active);
+                break;
 
-	  default:
-	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-	  }
+          default:
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+          }
 }
 
 static void
@@ -118,32 +118,32 @@ gr_toggle_button_set_property (GObject      *object,
                                const GValue *value,
                                GParamSpec   *pspec)
 {
-	GrToggleButton *self = GR_TOGGLE_BUTTON (object);
+        GrToggleButton *self = GR_TOGGLE_BUTTON (object);
 
-	switch (prop_id)
-	  {
+        switch (prop_id)
+          {
           case PROP_LABEL:
-		  gtk_label_set_label (GTK_LABEL (self->label), g_value_get_string (value));
-                  break;
+                gtk_label_set_label (GTK_LABEL (self->label), g_value_get_string (value));
+                break;
 
           case PROP_ACTIVE:
-                  set_active (self, g_value_get_boolean (value));
-                  break;
+                set_active (self, g_value_get_boolean (value));
+                break;
 
-	  default:
-	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-	  }
+          default:
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+          }
 }
 
 static void
 gr_toggle_button_class_init (GrToggleButtonClass *klass)
 {
-	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+        GObjectClass *object_class = G_OBJECT_CLASS (klass);
         GtkButtonClass *button_class = GTK_BUTTON_CLASS (klass);
 
-	object_class->finalize = gr_toggle_button_finalize;
-	object_class->get_property = gr_toggle_button_get_property;
-	object_class->set_property = gr_toggle_button_set_property;
+        object_class->finalize = gr_toggle_button_finalize;
+        object_class->get_property = gr_toggle_button_get_property;
+        object_class->set_property = gr_toggle_button_set_property;
 
         button_class->clicked = clicked;
 

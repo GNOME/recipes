@@ -34,7 +34,8 @@
 #include "gr-window.h"
 
 
-typedef struct {
+typedef struct
+{
         char *name;
         GtkWidget *item;
         GtkWidget *label;
@@ -68,7 +69,8 @@ static void ingredients_page_reload (GrIngredientsPage *page);
 static void connect_store_signals (GrIngredientsPage *page);
 
 static void
-row_activated (GrIngredientsPage *page, GtkListBoxRow *row)
+row_activated (GrIngredientsPage *page,
+               GtkListBoxRow     *row)
 {
         GtkWidget *item;
         int i;

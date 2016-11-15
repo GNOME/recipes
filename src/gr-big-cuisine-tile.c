@@ -34,7 +34,7 @@ struct _GrBigCuisineTile
 {
         GtkButton parent_instance;
 
-	char *cuisine;
+        char *cuisine;
 
         GtkWidget *title;
         GtkWidget *subtitle;
@@ -56,7 +56,7 @@ show_details (GrBigCuisineTile *tile)
 
 static void
 big_cuisine_tile_set_cuisine (GrBigCuisineTile *tile,
-                              const char    *cuisine)
+                              const char       *cuisine)
 {
         const char *title;
         const char *description;

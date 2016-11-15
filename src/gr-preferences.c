@@ -34,14 +34,14 @@ struct _GrPreferences
 {
         GtkDialog parent_instance;
 
-	GtkWidget *name;
-	GtkWidget *fullname;
-	GtkWidget *description;
-	GtkWidget *image;
-	GtkWidget *error_revealer;
-	GtkWidget *error_label;
+        GtkWidget *name;
+        GtkWidget *fullname;
+        GtkWidget *description;
+        GtkWidget *image;
+        GtkWidget *error_revealer;
+        GtkWidget *error_label;
 
-	char *image_path;
+        char *image_path;
 };
 
 G_DEFINE_TYPE (GrPreferences, gr_preferences, GTK_TYPE_DIALOG)
@@ -112,26 +112,27 @@ gr_preferences_finalize (GObject *object)
 {
         GrPreferences *self = GR_PREFERENCES (object);
 
-	g_free (self->image_path);
+        g_free (self->image_path);
 
         G_OBJECT_CLASS (gr_preferences_parent_class)->finalize (object);
 }
 
 static gboolean
-save_preferences (GrPreferences *self, GError **error)
+save_preferences (GrPreferences  *self,
+                  GError        **error)
 {
-	g_autoptr(GrChef) chef = NULL;
-	GrRecipeStore *store;
-	const char *name;
-	const char *fullname;
-	const char *description;
+        g_autoptr(GrChef) chef = NULL;
+        GrRecipeStore *store;
+        const char *name;
+        const char *fullname;
+        const char *description;
 
-	name = gtk_entry_get_text (GTK_ENTRY (self->name));
-	fullname = gtk_entry_get_text (GTK_ENTRY (self->fullname));
-	description = gtk_entry_get_text (GTK_ENTRY (self->description));
+        name = gtk_entry_get_text (GTK_ENTRY (self->name));
+        fullname = gtk_entry_get_text (GTK_ENTRY (self->fullname));
+        description = gtk_entry_get_text (GTK_ENTRY (self->description));
 
-	chef = g_object_new (GR_TYPE_CHEF,
-			     "name", name,
+        chef = g_object_new (GR_TYPE_CHEF,
+                             "name", name,
                              "fullname", fullname,
                              "description", description,
                              "image-path", self->image_path,
@@ -145,54 +146,54 @@ save_preferences (GrPreferences *self, GError **error)
 static gboolean
 window_close (GrPreferences *self)
 {
-	g_autoptr(GError) error = NULL;
+        g_autoptr(GError) error = NULL;
 
-	if (!save_preferences (self, &error)) {
+        if (!save_preferences (self, &error)) {
                 gtk_label_set_label (GTK_LABEL (self->error_label), error->message);
                 gtk_revealer_set_reveal_child (GTK_REVEALER (self->error_revealer), TRUE);
-		return TRUE;
-	}
+        return TRUE;
+        }
 
-	return FALSE;
+        return FALSE;
 }
 
 static void
 gr_preferences_init (GrPreferences *self)
 {
-	GrRecipeStore *store;
-	g_autoptr(GrChef) chef = NULL;
-	const char *name;
+        GrRecipeStore *store;
+        g_autoptr(GrChef) chef = NULL;
+        const char *name;
 
-  	gtk_widget_init_template (GTK_WIDGET (self));
+        gtk_widget_init_template (GTK_WIDGET (self));
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-	name = gr_recipe_store_get_user_key (store);
-	gtk_entry_set_text (GTK_ENTRY (self->name), name ? name : "");
+        name = gr_recipe_store_get_user_key (store);
+        gtk_entry_set_text (GTK_ENTRY (self->name), name ? name : "");
 
-	if (name != NULL && name[0] != '\0')
-		chef = gr_recipe_store_get_chef (store, name);
+        if (name != NULL && name[0] != '\0')
+                chef = gr_recipe_store_get_chef (store, name);
 
-	if (chef) {
-		const char *fullname;
-		const char *description;
-		const char *image_path;
+        if (chef) {
+                const char *fullname;
+                const char *description;
+                const char *image_path;
 
                 name = gr_chef_get_name (chef);
                 fullname = gr_chef_get_fullname (chef);
                 description = gr_chef_get_description (chef);
                 image_path = gr_chef_get_image (chef);
 
-		gtk_entry_set_text (GTK_ENTRY (self->name), name ? name : "");
-		gtk_entry_set_text (GTK_ENTRY (self->fullname), fullname ? fullname : "");
-		gtk_entry_set_text (GTK_ENTRY (self->description), description ? description : "");
+                gtk_entry_set_text (GTK_ENTRY (self->name), name ? name : "");
+                gtk_entry_set_text (GTK_ENTRY (self->fullname), fullname ? fullname : "");
+                gtk_entry_set_text (GTK_ENTRY (self->description), description ? description : "");
 
-		self->image_path = g_strdup (image_path);
-	}
+                self->image_path = g_strdup (image_path);
+        }
 
-	update_image (self);
+        update_image (self);
 
-	g_signal_connect_swapped (self, "delete-event", G_CALLBACK (window_close), self);
+        g_signal_connect_swapped (self, "delete-event", G_CALLBACK (window_close), self);
 }
 
 static void
@@ -205,12 +206,12 @@ gr_preferences_class_init (GrPreferencesClass *klass)
   	gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (klass),
                                                      "/org/gnome/Recipes/gr-preferences.ui");
 
-	gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrPreferences, name);
-	gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrPreferences, fullname);
-	gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrPreferences, description);
-	gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrPreferences, image);
-	gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrPreferences, error_revealer);
-	gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrPreferences, error_label);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrPreferences, name);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrPreferences, fullname);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrPreferences, description);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrPreferences, image);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrPreferences, error_revealer);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrPreferences, error_label);
 
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), dismiss_error);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), image_button_clicked);

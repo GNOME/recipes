@@ -53,7 +53,8 @@ show_details (GrRecipeTile *tile)
 }
 
 static void
-recipe_tile_set_recipe (GrRecipeTile *tile, GrRecipe *recipe)
+recipe_tile_set_recipe (GrRecipeTile *tile,
+                        GrRecipe     *recipe)
 {
         const char *name;
         const char *author;
@@ -73,9 +74,9 @@ recipe_tile_set_recipe (GrRecipeTile *tile, GrRecipe *recipe)
                       NULL);
 
         if (images->len > 0) {
-	        GtkStyleContext *context;
-	        g_autofree char *css = NULL;
-	        g_autoptr(GtkCssProvider) provider = NULL;
+                GtkStyleContext *context;
+                g_autofree char *css = NULL;
+                g_autoptr(GtkCssProvider) provider = NULL;
                 GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, 0);
                 css = g_strdup_printf ("image.recipe {\n"
                                        "  background: url('%s');\n"
@@ -83,16 +84,16 @@ recipe_tile_set_recipe (GrRecipeTile *tile, GrRecipe *recipe)
                                        "  background-repeat: no-repeat;\n"
                                        "  border-radius: 6px;\n"
                                        "}", ri->path);
-	        provider = gtk_css_provider_new ();
+                provider = gtk_css_provider_new ();
         	gtk_css_provider_load_from_data (provider, css, -1, NULL);
         	context = gtk_widget_get_style_context (tile->image);
         	gtk_style_context_add_provider (context,
                 	                        GTK_STYLE_PROVIDER (provider),
                         	                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
-	}
-	else {
-		gtk_image_clear (GTK_IMAGE (tile->image));
-	}
+        }
+        else {
+                gtk_image_clear (GTK_IMAGE (tile->image));
+        }
         gtk_label_set_label (GTK_LABEL (tile->label), name);
 
         tmp = g_strdup_printf (_("by %s"), author);

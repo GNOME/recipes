@@ -60,7 +60,7 @@ gr_search_page_init (GrSearchPage *page)
 {
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
         gtk_widget_init_template (GTK_WIDGET (page));
-	connect_store_signals (page);
+        connect_store_signals (page);
 }
 
 static void
@@ -87,13 +87,15 @@ gr_search_page_new (void)
         return GTK_WIDGET (page);
 }
 
-typedef struct {
-  const char *term;
-  gboolean filled;
+typedef struct
+{
+        const char *term;
+        gboolean filled;
 } CheckData;
 
 static void
-check_match (GtkWidget *child, gpointer data)
+check_match (GtkWidget *child,
+             gpointer   data)
 {
         GtkWidget *tile;
         GrRecipe *recipe;
@@ -109,7 +111,8 @@ check_match (GtkWidget *child, gpointer data)
 }
 
 void
-gr_search_page_update_search (GrSearchPage *page, const char *term)
+gr_search_page_update_search (GrSearchPage *page,
+                              const char   *term)
 {
         GrRecipeStore *store;
         g_autofree char **keys = NULL;
@@ -163,14 +166,14 @@ gr_search_page_update_search (GrSearchPage *page, const char *term)
 static void
 search_page_reload (GrSearchPage *page)
 {
-	g_autofree char *term = NULL;
+        g_autofree char *term = NULL;
 
-	term = page->term;
-	page->term = NULL;
+        term = page->term;
+        page->term = NULL;
 
-  	container_remove_all (GTK_CONTAINER (page->flow_box));
+        container_remove_all (GTK_CONTAINER (page->flow_box));
 
-	gr_search_page_update_search (page, term);
+        gr_search_page_update_search (page, term);
 }
 
 static void

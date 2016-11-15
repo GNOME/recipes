@@ -32,7 +32,7 @@ struct _GrIngredientSearchTile
 {
         GtkBox parent_instance;
 
-	char *ingredient;
+        char *ingredient;
         gboolean exclude;
 
         GtkWidget *image;
@@ -74,7 +74,7 @@ ingredient_search_tile_finalize (GObject *object)
 {
         GrIngredientSearchTile *tile = GR_INGREDIENT_SEARCH_TILE (object);
 
-	g_clear_pointer (&tile->ingredient, g_free);
+        g_clear_pointer (&tile->ingredient, g_free);
 
         G_OBJECT_CLASS (gr_ingredient_search_tile_parent_class)->finalize (object);
 }
@@ -125,9 +125,9 @@ ingredient_search_tile_set_ingredient (GrIngredientSearchTile *tile, const char 
 {
         const char *ing;
         g_autofree char *image_path = NULL;
-	GtkStyleContext *context;
-	g_autofree char *css = NULL;
-	g_autoptr(GtkCssProvider) provider = NULL;
+        GtkStyleContext *context;
+        g_autofree char *css = NULL;
+        g_autoptr(GtkCssProvider) provider = NULL;
 
         ing = gr_ingredient_find (ingredient);
         if (ing == NULL) {
@@ -141,19 +141,19 @@ ingredient_search_tile_set_ingredient (GrIngredientSearchTile *tile, const char 
         g_free (tile->ingredient);
         tile->ingredient = g_strdup (ing);
 
-	gtk_button_set_label (GTK_BUTTON (tile->button), ingredient);
+        gtk_button_set_label (GTK_BUTTON (tile->button), ingredient);
 
-	if (image_path != NULL &&
+        if (image_path != NULL &&
             g_file_test (image_path, G_FILE_TEST_EXISTS))
-	  	css = g_strdup_printf ("image.ingredient {\n"
+                css = g_strdup_printf ("image.ingredient {\n"
                 	               "  background: url('%s');\n"
                         	       "  background-size: 100%;\n"
                         	       "  min-width: 96px;\n"
                         	       "  min-height: 48px;\n"
                                	       "}", image_path);
-	else
-		css = g_strdup_printf ("image.ingredient {\n"
-				       "  background: rgb(%d,%d,%d);\n"
+        else
+                css = g_strdup_printf ("image.ingredient {\n"
+                                       "  background: rgb(%d,%d,%d);\n"
                         	       "  min-width: 96px;\n"
                         	       "  min-height: 48px;\n"
                                	       "}",
@@ -161,10 +161,10 @@ ingredient_search_tile_set_ingredient (GrIngredientSearchTile *tile, const char 
                                        g_random_int_range (0, 255),
                                        g_random_int_range (0, 255));
 
-	provider = gtk_css_provider_new ();
-	gtk_css_provider_load_from_data (provider, css, -1, NULL);
-	context = gtk_widget_get_style_context (tile->image);
-	gtk_style_context_add_provider (context,
+        provider = gtk_css_provider_new ();
+        gtk_css_provider_load_from_data (provider, css, -1, NULL);
+        context = gtk_widget_get_style_context (tile->image);
+        gtk_style_context_add_provider (context,
                                         GTK_STYLE_PROVIDER (provider),
                                         GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 }

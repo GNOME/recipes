@@ -34,7 +34,8 @@
 #include "gr-category.h"
 
 
-typedef struct {
+typedef struct
+{
         const char *name;
         GtkWidget *item;
         GtkWidget *label;
@@ -46,7 +47,7 @@ struct _GrCuisinePage
 {
         GtkBox     parent_instance;
 
-	char *cuisine;
+        char *cuisine;
 
         GtkWidget *sidebar;
         GtkWidget *scrolled_window;
@@ -62,23 +63,24 @@ G_DEFINE_TYPE (GrCuisinePage, gr_cuisine_page, GTK_TYPE_BOX)
 static void connect_store_signals (GrCuisinePage *page);
 
 static void
-row_selected (GrCuisinePage *page, GtkListBoxRow *row)
+row_selected (GrCuisinePage *page,
+              GtkListBoxRow *row)
 {
         GtkWidget *item;
-	int i;
-	int category;
-	GtkAdjustment *adj;
-	GtkAllocation alloc;
+        int i;
+        int category;
+        GtkAdjustment *adj;
+        GtkAllocation alloc;
 
         if (row == NULL)
                 return;
 
-	category = -1;
+        category = -1;
         item = gtk_bin_get_child (GTK_BIN (row));
         for (i = 0; i < page->n_categories; i++) {
                 if (page->categories[i].item == item) {
                         category = i;
-			break;
+                        break;
                 }
         }
 
@@ -206,7 +208,8 @@ gr_cuisine_page_new (void)
 }
 
 void
-gr_cuisine_page_set_cuisine (GrCuisinePage *self, const char *cuisine)
+gr_cuisine_page_set_cuisine (GrCuisinePage *self,
+                             const char    *cuisine)
 {
         GrRecipeStore *store;
         g_autofree char *name = NULL;
@@ -215,10 +218,10 @@ gr_cuisine_page_set_cuisine (GrCuisinePage *self, const char *cuisine)
         int i, j;
         GtkContainer *box;
 
-	if (self->cuisine != cuisine) {
-		g_free (self->cuisine);
-		self->cuisine = g_strdup (cuisine);
-	}
+        if (self->cuisine != cuisine) {
+                g_free (self->cuisine);
+                self->cuisine = g_strdup (cuisine);
+        }
 
         for (i = 0; i < self->n_categories; i++) {
                 container_remove_all (GTK_CONTAINER (self->categories[i].box));

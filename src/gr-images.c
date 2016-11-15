@@ -60,7 +60,7 @@ gr_rotated_image_array_new (void)
 
 struct _GrImages
 {
-	GtkBox parent_instance;
+        GtkBox parent_instance;
 
         GtkWidget *stack;
         GtkWidget *switcher;
@@ -74,10 +74,10 @@ struct _GrImages
 G_DEFINE_TYPE (GrImages, gr_images, GTK_TYPE_BOX)
 
 enum {
-	PROP_0,
+        PROP_0,
         PROP_FLIP,
         PROP_IMAGES,
-	N_PROPS
+        N_PROPS
 };
 
 static GParamSpec *properties [N_PROPS];
@@ -85,7 +85,7 @@ static GParamSpec *properties [N_PROPS];
 GrImages *
 gr_images_new (void)
 {
-	return g_object_new (GR_TYPE_IMAGES, NULL);
+        return g_object_new (GR_TYPE_IMAGES, NULL);
 }
 
 static void
@@ -319,11 +319,11 @@ gr_images_rotate_image (GrImages *images,
 static void
 gr_images_finalize (GObject *object)
 {
-	GrImages *self = (GrImages *)object;
+        GrImages *self = (GrImages *)object;
 
         g_array_free (self->images, TRUE);
 
-	G_OBJECT_CLASS (gr_images_parent_class)->finalize (object);
+        G_OBJECT_CLASS (gr_images_parent_class)->finalize (object);
 }
 
 static void
@@ -332,10 +332,10 @@ gr_images_get_property (GObject    *object,
                         GValue     *value,
                         GParamSpec *pspec)
 {
-	GrImages *self = GR_IMAGES (object);
+        GrImages *self = GR_IMAGES (object);
 
-	switch (prop_id)
-	  {
+        switch (prop_id)
+          {
           case PROP_FLIP:
                   g_value_set_boolean (value, self->flip);
                   break;
@@ -345,8 +345,8 @@ gr_images_get_property (GObject    *object,
                   break;
 
 	  default:
-	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-	  }
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+          }
 }
 
 static void
@@ -355,10 +355,10 @@ gr_images_set_property (GObject      *object,
                         const GValue *value,
                         GParamSpec   *pspec)
 {
-	GrImages *self = GR_IMAGES (object);
+        GrImages *self = GR_IMAGES (object);
 
-	switch (prop_id)
-	  {
+        switch (prop_id)
+          {
           case PROP_FLIP:
                   set_flip (self, g_value_get_boolean (value));
                   break;
@@ -367,21 +367,21 @@ gr_images_set_property (GObject      *object,
                   set_images (self, (GArray *) g_value_get_boxed (value));
                   break;
 
-	  default:
-	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+          default:
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 	  }
 }
 
 static void
 gr_images_class_init (GrImagesClass *klass)
 {
-	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+        GObjectClass *object_class = G_OBJECT_CLASS (klass);
+        GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
         GParamSpec *pspec;
 
-	object_class->finalize = gr_images_finalize;
-	object_class->get_property = gr_images_get_property;
-	object_class->set_property = gr_images_set_property;
+        object_class->finalize = gr_images_finalize;
+        object_class->get_property = gr_images_get_property;
+        object_class->set_property = gr_images_set_property;
 
         pspec = g_param_spec_boxed ("images", NULL, NULL,
                                     G_TYPE_ARRAY,
@@ -393,7 +393,7 @@ gr_images_class_init (GrImagesClass *klass)
                                       G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_FLIP, pspec);
 
-	gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-images.ui");
+        gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-images.ui");
 
         gtk_widget_class_bind_template_child (widget_class, GrImages, stack);
         gtk_widget_class_bind_template_child (widget_class, GrImages, switcher);
@@ -406,7 +406,7 @@ gr_images_class_init (GrImagesClass *klass)
 static void
 gr_images_init (GrImages *self)
 {
-	gtk_widget_set_has_window (GTK_WIDGET (self), FALSE);
+        gtk_widget_set_has_window (GTK_WIDGET (self), FALSE);
         gtk_widget_init_template (GTK_WIDGET (self));
         gtk_stack_set_visible_child_name (GTK_STACK (self->stack), "placeholder");
 

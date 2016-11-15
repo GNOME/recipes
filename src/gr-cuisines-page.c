@@ -52,7 +52,7 @@ cuisines_page_finalize (GObject *object)
 static void
 gr_cuisines_page_init (GrCuisinesPage *page)
 {
-	GtkWidget *tile;
+        GtkWidget *tile;
         const char **all_cuisines;
         g_autofree char **cuisines = NULL;
         int length;
@@ -86,9 +86,9 @@ gr_cuisines_page_init (GrCuisinesPage *page)
                 if (i == pos)
                         continue;
 
-	        tile = gr_cuisine_tile_new (cuisines[i]);
-	        gtk_widget_show (tile);
-	        gtk_container_add (GTK_CONTAINER (page->flow_box), tile);
+                tile = gr_cuisine_tile_new (cuisines[i]);
+                gtk_widget_show (tile);
+                gtk_container_add (GTK_CONTAINER (page->flow_box), tile);
         }
 }
 

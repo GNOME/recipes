@@ -26,10 +26,10 @@
 
 struct _GrTimerWidget
 {
-	GtkWidget parent_instance;
+        GtkWidget parent_instance;
 
         GrTimer *timer;
-	int size;
+        int size;
         guint tick_id;
         gulong handler_id;
 };
@@ -37,10 +37,10 @@ struct _GrTimerWidget
 G_DEFINE_TYPE (GrTimerWidget, gr_timer_widget, GTK_TYPE_WIDGET)
 
 enum {
-	PROP_0,
-	PROP_TIMER,
-	PROP_SIZE,
-	N_PROPS
+        PROP_0,
+        PROP_TIMER,
+        PROP_SIZE,
+        N_PROPS
 };
 
 static GParamSpec *properties [N_PROPS];
@@ -48,7 +48,7 @@ static GParamSpec *properties [N_PROPS];
 GrTimerWidget *
 gr_timer_widget_new (void)
 {
-	return g_object_new (GR_TYPE_TIMER_WIDGET, NULL);
+        return g_object_new (GR_TYPE_TIMER_WIDGET, NULL);
 }
 
 static void set_active (GrTimerWidget  *timer,
@@ -84,7 +84,7 @@ timer_active_changed (GrTimer       *timer,
                 self->tick_id = 0;
         }
 
-	gtk_widget_queue_draw (GTK_WIDGET (self));
+        gtk_widget_queue_draw (GTK_WIDGET (self));
 }
 
 static void
@@ -114,19 +114,19 @@ static void
 set_size (GrTimerWidget *timer,
           int            size)
 {
-	timer->size = size;
-	gtk_widget_queue_resize (GTK_WIDGET (timer));
-	g_object_notify (G_OBJECT (timer), "size");
+        timer->size = size;
+        gtk_widget_queue_resize (GTK_WIDGET (timer));
+        g_object_notify (G_OBJECT (timer), "size");
 }
 
 static void
 gr_timer_widget_finalize (GObject *object)
 {
-	GrTimerWidget *self = GR_TIMER_WIDGET (object);
+        GrTimerWidget *self = GR_TIMER_WIDGET (object);
 
         g_clear_object (&self->timer);
 
-	G_OBJECT_CLASS (gr_timer_widget_parent_class)->finalize (object);
+        G_OBJECT_CLASS (gr_timer_widget_parent_class)->finalize (object);
 }
 
 static void
@@ -135,10 +135,10 @@ gr_timer_widget_get_property (GObject    *object,
                               GValue     *value,
                               GParamSpec *pspec)
 {
-	GrTimerWidget *self = GR_TIMER_WIDGET (object);
+        GrTimerWidget *self = GR_TIMER_WIDGET (object);
 
-	switch (prop_id)
-	  {
+        switch (prop_id)
+          {
           case PROP_TIMER:
                   g_value_set_object (value, self->timer);
                   break;
@@ -147,9 +147,9 @@ gr_timer_widget_get_property (GObject    *object,
                   g_value_set_int (value, self->size);
                   break;
 
-	  default:
-	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-	  }
+          default:
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+          }
 }
 
 static void
@@ -158,10 +158,10 @@ gr_timer_widget_set_property (GObject      *object,
                               const GValue *value,
                               GParamSpec   *pspec)
 {
-	GrTimerWidget *self = GR_TIMER_WIDGET (object);
+        GrTimerWidget *self = GR_TIMER_WIDGET (object);
 
-	switch (prop_id)
-	  {
+        switch (prop_id)
+          {
           case PROP_TIMER:
                   set_timer (self, g_value_get_object (value));
                   break;
@@ -170,9 +170,9 @@ gr_timer_widget_set_property (GObject      *object,
                   set_size (self, g_value_get_int (value));
                   break;
 
-	  default:
-	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-	  }
+          default:
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+          }
 }
 
 static void
@@ -180,9 +180,9 @@ gr_timer_widget_get_preferred_width (GtkWidget *widget,
                                      gint      *minimum,
                                      gint      *natural)
 {
-	GrTimerWidget *timer = GR_TIMER_WIDGET (widget);
+        GrTimerWidget *timer = GR_TIMER_WIDGET (widget);
 
-	*minimum = *natural = timer->size;
+        *minimum = *natural = timer->size;
 }
 
 static void
@@ -190,17 +190,18 @@ gr_timer_widget_get_preferred_height (GtkWidget *widget,
                                       gint      *minimum,
                                       gint      *natural)
 {
-	GrTimerWidget *timer = GR_TIMER_WIDGET (widget);
+        GrTimerWidget *timer = GR_TIMER_WIDGET (widget);
 
-	*minimum = *natural = timer->size;
+        *minimum = *natural = timer->size;
 }
 
 static gboolean
-gr_timer_widget_draw (GtkWidget *widget, cairo_t *cr)
+gr_timer_widget_draw (GtkWidget *widget,
+                      cairo_t   *cr)
 {
-	GrTimerWidget *timer = GR_TIMER_WIDGET (widget);
-	GtkStyleContext *context;
-  	gint width, height;
+        GrTimerWidget *timer = GR_TIMER_WIDGET (widget);
+        GtkStyleContext *context;
+        gint width, height;
         double xc, yc;
         double radius;
         double angle1, angle2;
@@ -224,16 +225,16 @@ gr_timer_widget_draw (GtkWidget *widget, cairo_t *cr)
         yc = height / 2;
         radius = width / 2;
 
-	if (active) {
+        if (active) {
         	angle1 = ((now - gr_timer_get_start_time (timer->timer)) * 2 * M_PI / gr_timer_get_duration (timer->timer)) + (3 * M_PI / 2);
         	angle2 = 3 * M_PI / 2;
 
-	        cairo_arc (cr, xc, yc, radius, angle1, angle2);
+                cairo_arc (cr, xc, yc, radius, angle1, angle2);
         	cairo_line_to (cr, xc, yc);
-	}
-	else {
-		cairo_arc (cr, xc, yc, radius, 0, 2 * M_PI);
-	}
+        }
+        else {
+                cairo_arc (cr, xc, yc, radius, 0, 2 * M_PI);
+        }
 
         cairo_close_path (cr);
         cairo_fill (cr);
@@ -244,16 +245,16 @@ gr_timer_widget_draw (GtkWidget *widget, cairo_t *cr)
 static void
 gr_timer_widget_class_init (GrTimerWidgetClass *klass)
 {
-	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+        GObjectClass *object_class = G_OBJECT_CLASS (klass);
+        GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-	object_class->finalize = gr_timer_widget_finalize;
-	object_class->get_property = gr_timer_widget_get_property;
-	object_class->set_property = gr_timer_widget_set_property;
+        object_class->finalize = gr_timer_widget_finalize;
+        object_class->get_property = gr_timer_widget_get_property;
+        object_class->set_property = gr_timer_widget_set_property;
 
-	widget_class->get_preferred_width = gr_timer_widget_get_preferred_width;
-	widget_class->get_preferred_height = gr_timer_widget_get_preferred_height;
-	widget_class->draw = gr_timer_widget_draw;
+        widget_class->get_preferred_width = gr_timer_widget_get_preferred_width;
+        widget_class->get_preferred_height = gr_timer_widget_get_preferred_height;
+        widget_class->draw = gr_timer_widget_draw;
 
         g_object_class_install_property (object_class,
                                          PROP_TIMER,
@@ -271,7 +272,7 @@ gr_timer_widget_class_init (GrTimerWidgetClass *klass)
 static void
 gr_timer_widget_init (GrTimerWidget *self)
 {
-	gtk_widget_set_has_window (GTK_WIDGET (self), FALSE);
-	gtk_widget_set_can_focus (GTK_WIDGET (self), FALSE);
-	self->size = 32;
+        gtk_widget_set_has_window (GTK_WIDGET (self), FALSE);
+        gtk_widget_set_can_focus (GTK_WIDGET (self), FALSE);
+        self->size = 32;
 }

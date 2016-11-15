@@ -33,7 +33,7 @@ struct _GrCuisineTile
 {
         GtkButton parent_instance;
 
-	char *cuisine;
+        char *cuisine;
 
         GtkWidget *title;
         GtkWidget *description;
@@ -62,8 +62,8 @@ cuisine_tile_set_cuisine (GrCuisineTile *tile,
         const char *description;
         GtkStyleContext *context;
 
-	g_free (tile->cuisine);
-	tile->cuisine = g_strdup (cuisine);
+        g_free (tile->cuisine);
+        tile->cuisine = g_strdup (cuisine);
 
         gr_cuisine_get_data (cuisine, &title, NULL, &description);
         if (title == NULL)
@@ -97,7 +97,7 @@ gr_cuisine_tile_init (GrCuisineTile *tile)
         gtk_widget_set_has_window (GTK_WIDGET (tile), FALSE);
         gtk_widget_init_template (GTK_WIDGET (tile));
 
-	tile->cuisine = NULL;
+        tile->cuisine = NULL;
 }
 
 static void

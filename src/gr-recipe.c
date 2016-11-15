@@ -523,7 +523,8 @@ gr_recipe_get_mtime (GrRecipe *recipe)
 
 /* term is assumed to be g_utf8_casefold'ed */
 gboolean
-gr_recipe_matches (GrRecipe *self, const char *term)
+gr_recipe_matches (GrRecipe   *self,
+                   const char *term)
 {
         GrRecipePrivate *priv = gr_recipe_get_instance_private (self);
         g_auto(GStrv) terms = NULL;

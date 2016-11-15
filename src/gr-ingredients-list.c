@@ -36,7 +36,8 @@
  * - All remaining words make up the name of the integredient
  */
 
-typedef struct {
+typedef struct
+{
         gboolean fraction;
         int num, denom;
         gdouble value;
@@ -100,26 +101,26 @@ parse_as_fraction (Ingredient  *ing,
 }
 
 typedef struct {
-  const char *string;
-  int value;
+        const char *string;
+        int value;
 } NumberForm;
 
 static NumberForm numberforms[] = {
-  { "a dozen", 12 },
-  { "a",        1 },
-  { "an",       1 },
-  { "one",      1 },
-  { "two",      2 },
-  { "three",    3 },
-  { "four",     4 },
-  { "five",     5 },
-  { "six",      6 },
-  { "seven",    7 },
-  { "eight",    8 },
-  { "nine",     9 },
-  { "ten",     10 },
-  { "eleven",  11 },
-  { "twelve",  12 }
+        { "a dozen", 12 },
+        { "a",        1 },
+        { "an",       1 },
+        { "one",      1 },
+        { "two",      2 },
+        { "three",    3 },
+        { "four",     4 },
+        { "five",     5 },
+        { "six",      6 },
+        { "seven",    7 },
+        { "eight",    8 },
+        { "nine",     9 },
+        { "ten",     10 },
+        { "eleven",  11 },
+        { "twelve",  12 }
 };
 
 static gboolean
@@ -171,17 +172,17 @@ parse_as_number (Ingredient  *ing,
 }
 
 typedef struct {
-  const char *unit;
-  const char *names[4];
+        const char *unit;
+        const char *names[4];
 } Unit;
 
 static Unit units[] = {
-  { "g",  { "g", "gram", "grams", NULL } },
-  { "kg", { "kg", "kilogram", "kilograms", NULL } },
-  { "l",  { "l", "liter", "liters", NULL } },
-  { "ml", { "ml", "milliliter", "milliliters", NULL } },
-  { "lb", { "lb", "pound", "pounds", NULL } },
-  { "box", { "box", "boxes", NULL, NULL } },
+        { "g",  { "g", "gram", "grams", NULL } },
+        { "kg", { "kg", "kilogram", "kilograms", NULL } },
+        { "l",  { "l", "liter", "liters", NULL } },
+        { "ml", { "ml", "milliliter", "milliliters", NULL } },
+        { "lb", { "lb", "pound", "pounds", NULL } },
+        { "box", { "box", "boxes", NULL, NULL } },
 };
 
 static gboolean
