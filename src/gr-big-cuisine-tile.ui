@@ -9,58 +9,56 @@
       <class name="cuisine"/>
       <class name="big"/>
     </style>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">1</property>
+        <property name="hexpand">1</property>
+        <property name="homogeneous">1</property>
         <child>
-          <object class="GtkBox">
-            <property name="visible">True</property>
-            <property name="hexpand">True</property>
-            <property name="homogeneous">True</property>
+          <object class="GtkEventBox" id="box">
+            <property name="visible">1</property>
+            <property name="height-request">160</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox" id="box2">
+            <property name="visible">1</property>
+            <property name="orientation">vertical</property>
+            <property name="margin">40</property>
             <child>
-              <object class="GtkEventBox" id="box">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="visible_window">True</property>
-                <property name="height_request">160</property>
+              <object class="GtkLabel" id="title">
+                <property name="visible">1</property>
+                <property name="xalign">0</property>
+                <property name="halign">start</property>
+                <property name="valign">end</property>
+                <property name="wrap">1</property>
+                <style>
+                  <class name="cuisine"/>
+                  <class name="big"/>
+                  <class name="heading"/>
+                </style>
               </object>
+              <packing>
+                <property name="expand">1</property>
+              </packing>
             </child>
             <child>
-              <object class="GtkBox" id="box2">
-                <property name="visible">True</property>
-                <property name="orientation">vertical</property>
-                <property name="margin">40</property>
-                <child>
-                  <object class="GtkLabel" id="title">
-                    <property name="visible">True</property>
-                    <property name="xalign">0</property>
-                    <property name="halign">start</property>
-                    <property name="valign">end</property>
-                    <property name="wrap">True</property>
-                    <style>
-                      <class name="cuisine"/>
-                      <class name="big"/>
-                      <class name="heading"/>
-                    </style>
-                  </object>
-                  <packing>
-                    <property name="expand">True</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="subtitle">
-                    <property name="visible">True</property>
-                    <property name="wrap">True</property>
-                    <property name="xalign">0</property>
-                    <property name="halign">start</property>
-                    <property name="valign">start</property>
-                    <style>
-                      <class name="cuisine"/>
-                      <class name="big"/>
-                      <class name="subtitle"/>
-                    </style>
-                  </object>
-                </child>
+              <object class="GtkLabel" id="subtitle">
+                <property name="visible">1</property>
+                <property name="wrap">1</property>
+                <property name="xalign">0</property>
+                <property name="halign">start</property>
+                <property name="valign">start</property>
+                <style>
+                  <class name="cuisine"/>
+                  <class name="big"/>
+                  <class name="subtitle"/>
+                </style>
               </object>
             </child>
           </object>
+        </child>
+      </object>
     </child>
   </template>
 </interface>

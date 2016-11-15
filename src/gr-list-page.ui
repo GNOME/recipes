@@ -19,14 +19,18 @@
                 <property name="visible">1</property>
                 <property name="icon-name">org.gnome.Recipes-symbolic</property>
                 <property name="pixel-size">128</property>
-                <style> <class name="dim-label"/> </style>
+                <style>
+                  <class name="dim-label"/>
+                </style>
               </object>
             </child>
             <child>
               <object class="GtkLabel" id="empty_title">
                 <property name="visible">1</property>
                 <property name="label" translatable="yes">No recipes found</property>
-                <style> <class name="dim-label"/> </style>
+                <style>
+                  <class name="dim-label"/>
+                </style>
                 <attributes>
                   <attribute name="scale" value="1.2"/>
                   <attribute name="weight" value="bold"/>
@@ -37,7 +41,9 @@
               <object class="GtkLabel" id="empty_subtitle">
                 <property name="visible">1</property>
                 <property name="label" translatable="yes">There are no recipes here yet.</property>
-                <style> <class name="dim-label"/> </style>
+                <style>
+                  <class name="dim-label"/>
+                </style>
               </object>
             </child>
           </object>

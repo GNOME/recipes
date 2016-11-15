@@ -6,10 +6,12 @@
     <property name="orientation">vertical</property>
     <child>
       <object class="GtkLabel">
-        <property name="visible">True</property>
+        <property name="visible">1</property>
         <property name="label" translatable="yes">Today</property>
         <property name="xalign">0</property>
-        <style><class name="heading"/></style>
+        <style>
+          <class name="heading"/>
+        </style>
       </object>
     </child>
     <child>
@@ -23,10 +25,12 @@
     </child>
     <child>
       <object class="GtkLabel">
-        <property name="visible">True</property>
-        <property name="label" translatable="yes">GNOME's Pick</property>
+        <property name="visible">1</property>
+        <property name="label" translatable="yes">GNOME&apos;s Pick</property>
         <property name="xalign">0</property>
-        <style><class name="heading"/></style>
+        <style>
+          <class name="heading"/>
+        </style>
       </object>
     </child>
     <child>
@@ -40,15 +44,17 @@
     </child>
     <child>
       <object class="GtkLabel">
-        <property name="visible">True</property>
+        <property name="visible">1</property>
         <property name="label" translatable="yes">Categories</property>
         <property name="xalign">0</property>
-        <style><class name="heading"/></style>
+        <style>
+          <class name="heading"/>
+        </style>
       </object>
     </child>
     <child>
       <object class="GtkFlowBox" id="diet_box">
-        <property name="visible">True</property>
+        <property name="visible">1</property>
         <property name="selection-mode">none</property>
         <property name="row-spacing">20</property>
         <property name="column-spacing">20</property>
@@ -61,10 +67,12 @@
     </child>
     <child>
       <object class="GtkLabel">
-        <property name="visible">True</property>
+        <property name="visible">1</property>
         <property name="label" translatable="yes">Featured GNOME Chefs</property>
         <property name="xalign">0</property>
-        <style><class name="heading"/></style>
+        <style>
+          <class name="heading"/>
+        </style>
       </object>
     </child>
     <child>

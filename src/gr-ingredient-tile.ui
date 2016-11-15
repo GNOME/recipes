@@ -7,7 +7,7 @@
     <property name="spacing">6</property>
     <child>
       <object class="GtkImage" id="image">
-        <property name="visible">True</property>
+        <property name="visible">1</property>
         <property name="halign">center</property>
         <property name="valign">center</property>
         <style>
@@ -17,7 +17,7 @@
     </child>
     <child>
       <object class="GtkLabel" id="label">
-        <property name="visible">True</property>
+        <property name="visible">1</property>
         <attributes>
           <attribute name="weight" value="bold"/>
         </attributes>

@@ -7,39 +7,36 @@
     <property name="resizable">1</property>
     <child type="titlebar">
       <object class="GtkStack" id="header_stack">
-        <property name="visible">True</property>
+        <property name="visible">1</property>
         <child>
           <object class="GtkHeaderBar">
-            <property name="visible">True</property>
-            <property name="show-close-button">True</property>
+            <property name="visible">1</property>
+            <property name="show-close-button">1</property>
             <child>
               <object class="GtkButton" id="new_recipe_button">
-                <property name="visible">True</property>
+                <property name="visible">1</property>
                 <property name="label" translatable="yes">New Recipe</property>
                 <signal name="clicked" handler="new_recipe" swapped="yes"/>
               </object>
-              <packing>
-                <property name="pack-type">start</property>
-              </packing>
             </child>
             <child type="title">
               <object class="GtkStackSwitcher">
-                <property name="visible">True</property>
+                <property name="visible">1</property>
                 <property name="stack">main_stack</property>
               </object>
             </child>
             <child>
               <object class="GtkStack" id="search_button_stack">
-                <property name="visible">True</property>
+                <property name="visible">1</property>
                 <child>
                   <object class="GtkToggleButton" id="recipes_search_button">
-                    <property name="visible">True</property>
+                    <property name="visible">1</property>
                     <style>
                       <class name="image-button"/>
                     </style>
                     <child>
                       <object class="GtkImage">
-                        <property name="visible">True</property>
+                        <property name="visible">1</property>
                         <property name="icon-name">edit-find-symbolic</property>
                         <property name="icon-size">1</property>
                       </object>
@@ -51,13 +48,13 @@
                 </child>
                 <child>
                   <object class="GtkToggleButton" id="ingredients_search_button">
-                    <property name="visible">True</property>
+                    <property name="visible">1</property>
                     <style>
                       <class name="image-button"/>
                     </style>
                     <child>
                       <object class="GtkImage">
-                        <property name="visible">True</property>
+                        <property name="visible">1</property>
                         <property name="icon-name">edit-find-symbolic</property>
                         <property name="icon-size">1</property>
                       </object>
@@ -79,26 +76,23 @@
         </child>
         <child>
           <object class="GtkHeaderBar" id="list_header">
-            <property name="visible">True</property>
-            <property name="show-close-button">True</property>
+            <property name="visible">1</property>
+            <property name="show-close-button">1</property>
             <child>
               <object class="GtkButton">
-                <property name="visible">True</property>
+                <property name="visible">1</property>
                 <signal name="clicked" handler="go_back" swapped="yes"/>
                 <style>
                   <class name="image-button"/>
                 </style>
                 <child>
                   <object class="GtkImage">
-                    <property name="visible">True</property>
+                    <property name="visible">1</property>
                     <property name="icon-name">go-previous-symbolic</property>
                     <property name="icon-size">1</property>
                   </object>
                 </child>
               </object>
-              <packing>
-                <property name="pack-type">start</property>
-              </packing>
             </child>
           </object>
           <packing>
@@ -107,37 +101,34 @@
         </child>
         <child>
           <object class="GtkHeaderBar" id="search_header">
-            <property name="visible">True</property>
+            <property name="visible">1</property>
             <property name="title" translatable="yes">Search</property>
-            <property name="show-close-button">True</property>
+            <property name="show-close-button">1</property>
             <child>
               <object class="GtkButton">
-                <property name="visible">True</property>
+                <property name="visible">1</property>
                 <signal name="clicked" handler="go_back" swapped="yes"/>
                 <style>
                   <class name="image-button"/>
                 </style>
                 <child>
                   <object class="GtkImage">
-                    <property name="visible">True</property>
+                    <property name="visible">1</property>
                     <property name="icon-name">go-previous-symbolic</property>
                     <property name="icon-size">1</property>
                   </object>
                 </child>
               </object>
-              <packing>
-                <property name="pack-type">start</property>
-              </packing>
             </child>
             <child>
               <object class="GtkToggleButton" id="recipes_search_button2">
-                <property name="visible">True</property>
+                <property name="visible">1</property>
                 <style>
                   <class name="image-button"/>
                 </style>
                 <child>
                   <object class="GtkImage">
-                    <property name="visible">True</property>
+                    <property name="visible">1</property>
                     <property name="icon-name">edit-find-symbolic</property>
                     <property name="icon-size">1</property>
                   </object>
@@ -154,37 +145,34 @@
         </child>
         <child>
           <object class="GtkHeaderBar" id="ingredients_search_header">
-            <property name="visible">True</property>
-            <property name="show-close-button">True</property>
+            <property name="visible">1</property>
+            <property name="show-close-button">1</property>
             <property name="title" translatable="yes">Search by Ingredients</property>
             <child>
               <object class="GtkButton">
-                <property name="visible">True</property>
+                <property name="visible">1</property>
                 <signal name="clicked" handler="go_back" swapped="yes"/>
                 <style>
                   <class name="image-button"/>
                 </style>
                 <child>
                   <object class="GtkImage">
-                    <property name="visible">True</property>
+                    <property name="visible">1</property>
                     <property name="icon-name">go-previous-symbolic</property>
                     <property name="icon-size">1</property>
                   </object>
                 </child>
               </object>
-              <packing>
-                <property name="pack-type">start</property>
-              </packing>
             </child>
             <child>
               <object class="GtkToggleButton" id="ingredients_search_button2">
-                <property name="visible">True</property>
+                <property name="visible">1</property>
                 <style>
                   <class name="image-button"/>
                 </style>
                 <child>
                   <object class="GtkImage">
-                    <property name="visible">True</property>
+                    <property name="visible">1</property>
                     <property name="icon-name">edit-find-symbolic</property>
                     <property name="icon-size">1</property>
                   </object>
@@ -201,38 +189,37 @@
         </child>
         <child>
           <object class="GtkHeaderBar" id="details_header">
-            <property name="visible">True</property>
-            <property name="show-close-button">True</property>
+            <property name="visible">1</property>
+            <property name="show-close-button">1</property>
             <child>
               <object class="GtkButton">
-                <property name="visible">True</property>
+                <property name="visible">1</property>
                 <signal name="clicked" handler="go_back" swapped="yes"/>
                 <style>
                   <class name="image-button"/>
                 </style>
                 <child>
                   <object class="GtkImage">
-                    <property name="visible">True</property>
+                    <property name="visible">1</property>
                     <property name="icon-name">go-previous-symbolic</property>
                     <property name="icon-size">1</property>
                   </object>
                 </child>
               </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="cooking_button">
+                <property name="visible">1</property>
+                <property name="label" translatable="yes">Start cooking</property>
+                <style>
+                  <class name="suggested-action"/>
+                </style>
+                <signal name="clicked" handler="start_or_stop_cooking" swapped="yes"/>
+              </object>
               <packing>
-                <property name="pack-type">start</property>
+                <property name="pack-type">end</property>
               </packing>
             </child>
-	    <child>
-              <object class="GtkButton" id="cooking_button">
-		<property name="visible">1</property>
-		<property name="label" translatable="yes">Start cooking</property>
-		<style> <class name="suggested-action"/> </style>
-		<signal name="clicked" handler="start_or_stop_cooking" swapped="yes"/>
-	      </object>
-              <packing>
-		<property name="pack-type">end</property>
-	      </packing>
-	    </child>
           </object>
           <packing>
             <property name="name">details</property>
@@ -240,31 +227,28 @@
         </child>
         <child>
           <object class="GtkHeaderBar" id="edit_header">
-            <property name="visible">True</property>
-            <property name="show-close-button">True</property>
+            <property name="visible">1</property>
+            <property name="show-close-button">1</property>
             <property name="title" translatable="yes">Add a new recipe</property>
             <child>
               <object class="GtkButton">
-                <property name="visible">True</property>
+                <property name="visible">1</property>
                 <signal name="clicked" handler="go_back" swapped="yes"/>
                 <style>
                   <class name="image-button"/>
                 </style>
                 <child>
                   <object class="GtkImage">
-                    <property name="visible">True</property>
+                    <property name="visible">1</property>
                     <property name="icon-name">go-previous-symbolic</property>
                     <property name="icon-size">1</property>
                   </object>
                 </child>
               </object>
-              <packing>
-                <property name="pack-type">start</property>
-              </packing>
             </child>
             <child>
               <object class="GtkButton">
-                <property name="visible">True</property>
+                <property name="visible">1</property>
                 <property name="label" translatable="yes">Save</property>
                 <signal name="clicked" handler="add_recipe" swapped="yes"/>
                 <style>
@@ -274,7 +258,7 @@
               <packing>
                 <property name="pack-type">end</property>
               </packing>
-            </child> 
+            </child>
           </object>
           <packing>
             <property name="name">edit</property>
@@ -282,26 +266,23 @@
         </child>
         <child>
           <object class="GtkHeaderBar" id="cuisine_header">
-            <property name="visible">True</property>
-            <property name="show-close-button">True</property>
+            <property name="visible">1</property>
+            <property name="show-close-button">1</property>
             <child>
               <object class="GtkButton">
-                <property name="visible">True</property>
+                <property name="visible">1</property>
                 <signal name="clicked" handler="go_back" swapped="yes"/>
                 <style>
                   <class name="image-button"/>
                 </style>
                 <child>
                   <object class="GtkImage">
-                    <property name="visible">True</property>
+                    <property name="visible">1</property>
                     <property name="icon-name">go-previous-symbolic</property>
                     <property name="icon-size">1</property>
                   </object>
                 </child>
               </object>
-              <packing>
-                <property name="pack-type">start</property>
-              </packing>
             </child>
           </object>
           <packing>
@@ -312,14 +293,14 @@
     </child>
     <child>
       <object class="GtkBox">
-        <property name="visible">True</property>
+        <property name="visible">1</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkSearchBar"  id="search_bar">
-            <property name="visible">True</property>
+          <object class="GtkSearchBar" id="search_bar">
+            <property name="visible">1</property>
             <child>
               <object class="GtkSearchEntry" id="search_entry">
-                <property name="visible">True</property>
+                <property name="visible">1</property>
                 <property name="width-request">500</property>
               </object>
             </child>
@@ -327,70 +308,61 @@
         </child>
         <child>
           <object class="GtkStack" id="main_stack">
-            <property name="visible">True</property>
+            <property name="visible">1</property>
             <signal name="notify::visible-child-name" handler="visible_page_changed" swapped="yes"/>
             <child>
-              <object class="GrRecipesPage">
-              </object>
+              <object class="GrRecipesPage"/>
               <packing>
                 <property name="name">recipes</property>
                 <property name="title" translatable="yes">Recipes</property>
               </packing>
             </child>
             <child>
-              <object class="GrListPage" id="list_page">
-              </object>
+              <object class="GrListPage" id="list_page"/>
               <packing>
                 <property name="name">list</property>
               </packing>
             </child>
             <child>
-              <object class="GrSearchPage" id="search_page">
-              </object>
+              <object class="GrSearchPage" id="search_page"/>
               <packing>
                 <property name="name">search</property>
               </packing>
             </child>
             <child>
-              <object class="GrCuisinesPage" id="cuisines_page">
-              </object>
+              <object class="GrCuisinesPage" id="cuisines_page"/>
               <packing>
                 <property name="name">cuisines</property>
                 <property name="title" translatable="yes">Cuisines</property>
               </packing>
             </child>
             <child>
-              <object class="GrCuisinePage" id="cuisine_page">
-              </object>
+              <object class="GrCuisinePage" id="cuisine_page"/>
               <packing>
                 <property name="name">cuisine</property>
               </packing>
             </child>
             <child>
-              <object class="GrIngredientsPage" id="ingredients_page">
-              </object>
+              <object class="GrIngredientsPage" id="ingredients_page"/>
               <packing>
                 <property name="name">ingredients</property>
                 <property name="title" translatable="yes">Ingredients</property>
               </packing>
             </child>
             <child>
-              <object class="GrIngredientsSearchPage" id="ingredients_search_page">
-              </object>
+              <object class="GrIngredientsSearchPage" id="ingredients_search_page"/>
               <packing>
                 <property name="name">ingredients-search</property>
               </packing>
             </child>
             <child>
-              <object class="GrDetailsPage" id="details_page">
-              </object>
+              <object class="GrDetailsPage" id="details_page"/>
               <packing>
                 <property name="name">details</property>
               </packing>
             </child>
             <child>
-              <object class="GrEditPage" id="edit_page">
-              </object>
+              <object class="GrEditPage" id="edit_page"/>
               <packing>
                 <property name="name">edit</property>
               </packing>

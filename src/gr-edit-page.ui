@@ -75,7 +75,6 @@
                 <property name="margin-top">40</property>
                 <property name="margin-bottom">40</property>
                 <property name="margin-start">48</property>
-                <property name="margin-end">0</property>
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">1</property>
@@ -141,7 +140,6 @@
                 <child>
                   <object class="GtkBox">
                     <property name="visible">1</property>
-                    <property name="orientation">horizontal</property>
                     <property name="spacing">10</property>
                     <child>
                       <object class="GtkButton" id="add_image_button">
@@ -261,7 +259,6 @@
                     <property name="width">2</property>
                   </packing>
                 </child>
-
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">1</property>

@@ -35,7 +35,7 @@
               <object class="GtkLabel" id="description2">
                 <property name="visible">1</property>
                 <property name="valign">start</property>
-                <property name="vexpand">True</property>
+                <property name="vexpand">1</property>
                 <property name="yalign">0</property>
                 <property name="xalign">0</property>
                 <property name="margin">6</property>
@@ -45,15 +45,12 @@
                 <property name="lines">3</property>
                 <property name="opacity">0</property>
               </object>
-              <packing>
-                <property name="pack-type">start</property>
-              </packing>
             </child>
             <child>
               <object class="GtkLabel" id="description">
                 <property name="visible">1</property>
                 <property name="valign">start</property>
-                <property name="vexpand">True</property>
+                <property name="vexpand">1</property>
                 <property name="yalign">0</property>
                 <property name="xalign">0</property>
                 <property name="margin">6</property>

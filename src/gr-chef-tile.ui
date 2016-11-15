@@ -7,10 +7,10 @@
     <property name="spacing">6</property>
     <child>
       <object class="GtkButton" id="button">
-        <property name="visible">True</property>
+        <property name="visible">1</property>
         <property name="halign">center</property>
         <property name="valign">center</property>
-	<signal name="clicked" handler="show_list" swapped="yes"/>
+        <signal name="clicked" handler="show_list" swapped="yes"/>
         <style>
           <class name="image-button"/>
           <class name="circular"/>
@@ -20,7 +20,7 @@
     </child>
     <child>
       <object class="GtkLabel" id="label">
-        <property name="visible">True</property>
+        <property name="visible">1</property>
         <attributes>
           <attribute name="weight" value="bold"/>
         </attributes>

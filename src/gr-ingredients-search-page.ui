@@ -7,12 +7,12 @@
     <child>
       <object class="GtkBox">
         <property name="visible">1</property>
-        <property name="orientation">horizontal</property>
-        <style> <class name="searchbar"/> </style>
+        <style>
+          <class name="searchbar"/>
+        </style>
         <child>
           <object class="GtkBox">
             <property name="visible">1</property>
-            <property name="orientation">horizontal</property>
             <property name="spacing">6</property>
             <property name="hexpand">1</property>
             <child>
@@ -52,14 +52,18 @@
                 <property name="visible">1</property>
                 <property name="icon-name">edit-find-symbolic</property>
                 <property name="pixel-size">128</property>
-                <style> <class name="dim-label"/> </style>
+                <style>
+                  <class name="dim-label"/>
+                </style>
               </object>
             </child>
             <child>
               <object class="GtkLabel">
                 <property name="visible">1</property>
                 <property name="label" translatable="yes">No recipes found</property>
-                <style> <class name="dim-label"/> </style>
+                <style>
+                  <class name="dim-label"/>
+                </style>
                 <attributes>
                   <attribute name="scale" value="1.2"/>
                   <attribute name="weight" value="bold"/>
@@ -70,7 +74,9 @@
               <object class="GtkLabel">
                 <property name="visible">1</property>
                 <property name="label" translatable="yes">Try a different search</property>
-                <style> <class name="dim-label"/> </style>
+                <style>
+                  <class name="dim-label"/>
+                </style>
               </object>
             </child>
           </object>
@@ -78,43 +84,37 @@
             <property name="name">empty</property>
           </packing>
         </child>
-
-    <child>
-      <object class="GtkScrolledWindow">
-        <property name="visible">1</property>
-        <property name="expand">1</property>
-        <property name="hscrollbar-policy">never</property>
         <child>
-          <object class="GtkFlowBox" id="flow_box">
+          <object class="GtkScrolledWindow">
             <property name="visible">1</property>
-            <property name="valign">start</property>
-            <property name="column-spacing">10</property>
-            <property name="row-spacing">10</property>
-            <property name="margin">20</property>
-            <property name="selection-mode">none</property>
+            <property name="expand">1</property>
+            <property name="hscrollbar-policy">never</property>
+            <child>
+              <object class="GtkFlowBox" id="flow_box">
+                <property name="visible">1</property>
+                <property name="valign">start</property>
+                <property name="column-spacing">10</property>
+                <property name="row-spacing">10</property>
+                <property name="margin">20</property>
+                <property name="selection-mode">none</property>
+              </object>
+            </child>
           </object>
-        </child>
-      </object>
-	      <packing>
+          <packing>
             <property name="name">list</property>
           </packing>
-    </child>
-
+        </child>
       </object>
     </child>
-
   </template>
   <object class="GtkPopover" id="ingredients_popover">
-    <property name="visible">0</property>
     <property name="modal">0</property>
     <property name="relative-to">search_entry</property>
     <property name="position">bottom</property>
-    <property name="constrain-to">window</property>
     <child>
       <object class="GtkScrolledWindow">
         <property name="visible">1</property>
         <property name="hscrollbar-policy">never</property>
-        <property name="vscrollbar-policy">automatic</property>
         <property name="propagate-natural-height">1</property>
         <child>
           <object class="GtkListBox" id="ingredients_list">
