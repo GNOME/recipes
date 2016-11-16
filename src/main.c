@@ -42,30 +42,30 @@
 int
 main (int argc, char *argv[])
 {
-  g_autoptr (GApplication) app = NULL;
-  int status;
+        g_autoptr (GApplication) app = NULL;
+        int status;
 
-  g_type_ensure (GR_TYPE_CUISINE_PAGE);
-  g_type_ensure (GR_TYPE_CUISINES_PAGE);
-  g_type_ensure (GR_TYPE_DETAILS_PAGE);
-  g_type_ensure (GR_TYPE_EDIT_PAGE);
-  g_type_ensure (GR_TYPE_IMAGES);
-  g_type_ensure (GR_TYPE_INGREDIENTS_PAGE);
-  g_type_ensure (GR_TYPE_INGREDIENTS_SEARCH_PAGE);
-  g_type_ensure (GR_TYPE_LIST_PAGE);
-  g_type_ensure (GR_TYPE_SEARCH_PAGE);
-  g_type_ensure (GR_TYPE_RECIPES_PAGE);
-  g_type_ensure (GR_TYPE_TIMER_WIDGET);
-  g_type_ensure (GR_TYPE_TOGGLE_BUTTON);
-  g_type_ensure (GS_TYPE_HIDING_BOX);
+        g_type_ensure (GR_TYPE_CUISINE_PAGE);
+        g_type_ensure (GR_TYPE_CUISINES_PAGE);
+        g_type_ensure (GR_TYPE_DETAILS_PAGE);
+        g_type_ensure (GR_TYPE_EDIT_PAGE);
+        g_type_ensure (GR_TYPE_IMAGES);
+        g_type_ensure (GR_TYPE_INGREDIENTS_PAGE);
+        g_type_ensure (GR_TYPE_INGREDIENTS_SEARCH_PAGE);
+        g_type_ensure (GR_TYPE_LIST_PAGE);
+        g_type_ensure (GR_TYPE_SEARCH_PAGE);
+        g_type_ensure (GR_TYPE_RECIPES_PAGE);
+        g_type_ensure (GR_TYPE_TIMER_WIDGET);
+        g_type_ensure (GR_TYPE_TOGGLE_BUTTON);
+        g_type_ensure (GS_TYPE_HIDING_BOX);
 
-  bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
-  bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-  textdomain (GETTEXT_PACKAGE);
+        bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+        bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+        textdomain (GETTEXT_PACKAGE);
 
-  app = G_APPLICATION (gr_app_new ());
+        app = G_APPLICATION (gr_app_new ());
 
-  status = g_application_run (app, argc, argv);
+        status = g_application_run (app, argc, argv);
 
-  return status;
+        return status;
 }
