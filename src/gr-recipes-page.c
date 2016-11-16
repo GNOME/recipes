@@ -47,7 +47,7 @@ struct _GrRecipesPage
 
 G_DEFINE_TYPE (GrRecipesPage, gr_recipes_page, GTK_TYPE_BOX)
 
-static void populate_static (GrRecipesPage *page);
+static void populate_diets_from_store (GrRecipesPage *page);
 static void populate_recipes_from_store (GrRecipesPage *page);
 static void populate_chefs_from_store (GrRecipesPage *page);
 static void connect_store_signals (GrRecipesPage *page);
@@ -64,7 +64,7 @@ gr_recipes_page_init (GrRecipesPage *page)
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
         gtk_widget_init_template (GTK_WIDGET (page));
 
-        populate_static (page);
+        populate_diets_from_store (page);
         populate_recipes_from_store (page);
         populate_chefs_from_store (page);
         connect_store_signals (page);
@@ -121,7 +121,7 @@ category_clicked (GrCategoryTile *tile,
 }
 
 static void
-populate_static (GrRecipesPage *self)
+populate_diets_from_store (GrRecipesPage *self)
 {
         int i;
         GrDiets diets[5] = {
@@ -133,6 +133,8 @@ populate_static (GrRecipesPage *self)
         };
         GtkWidget *tile;
         GrRecipeStore *store;
+
+        container_remove_all (GTK_CONTAINER (self->diet_box));
 
         tile = gr_category_tile_new_with_label ("mine", _("My recipes"));
         gtk_widget_show (tile);
@@ -193,6 +195,13 @@ populate_recipes_from_store (GrRecipesPage *self)
 }
 
 static void
+repopulate_recipes (GrRecipesPage *self)
+{
+        populate_recipes_from_store (self);
+        populate_diets_from_store (self);
+}
+
+static void
 populate_chefs_from_store (GrRecipesPage *self)
 {
         GrRecipeStore *store;
@@ -228,8 +237,8 @@ connect_store_signals (GrRecipesPage *page)
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         /* FIXME: inefficient */
-        g_signal_connect_swapped (store, "recipe-added", G_CALLBACK (populate_recipes_from_store), page);
-        g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (populate_recipes_from_store), page);
-        g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (populate_recipes_from_store), page);
+        g_signal_connect_swapped (store, "recipe-added", G_CALLBACK (repopulate_recipes), page);
+        g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (repopulate_recipes), page);
+        g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (repopulate_recipes), page);
         g_signal_connect_swapped (store, "chefs-changed", G_CALLBACK (populate_chefs_from_store), page);
 }
