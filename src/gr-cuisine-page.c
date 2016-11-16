@@ -52,6 +52,7 @@ struct _GrCuisinePage
         GtkWidget *sidebar;
         GtkWidget *scrolled_window;
         GtkWidget *category_box;
+        GtkWidget *stack;
 
         int n_categories;
         Category *categories;
@@ -193,6 +194,7 @@ gr_cuisine_page_class_init (GrCuisinePageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrCuisinePage, sidebar);
         gtk_widget_class_bind_template_child (widget_class, GrCuisinePage, scrolled_window);
         gtk_widget_class_bind_template_child (widget_class, GrCuisinePage, category_box);
+        gtk_widget_class_bind_template_child (widget_class, GrCuisinePage, stack);
 
 	gtk_widget_class_bind_template_callback (widget_class, row_selected);
 }
@@ -217,6 +219,7 @@ gr_cuisine_page_set_cuisine (GrCuisinePage *self,
         guint length;
         int i, j;
         GtkContainer *box;
+        gboolean has_recipe = FALSE;
 
         if (self->cuisine != cuisine) {
                 g_free (self->cuisine);
@@ -264,6 +267,15 @@ gr_cuisine_page_set_cuisine (GrCuisinePage *self,
                 tile = gr_recipe_tile_new (recipe);
                 gtk_widget_show (tile);
                 gtk_container_add (GTK_CONTAINER (c->box), tile);
+
+                has_recipe = TRUE;
+        }
+
+        if (has_recipe) {
+                gtk_stack_set_visible_child_name (GTK_STACK (self->stack), "cuisine");
+        }
+        else {
+                gtk_stack_set_visible_child_name (GTK_STACK (self->stack), "empty");
         }
 
         gtk_list_box_invalidate_filter (GTK_LIST_BOX (self->sidebar));
