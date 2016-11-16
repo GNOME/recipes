@@ -84,13 +84,11 @@ file_chooser_response (GtkNativeDialog *self,
 static void
 image_button_clicked (GrPreferences *self)
 {
-        GtkWidget *window;
         GtkFileChooserNative *chooser;
         g_autoptr(GtkFileFilter) filter = NULL;
 
-        window = gtk_widget_get_ancestor (GTK_WIDGET (self), GTK_TYPE_APPLICATION_WINDOW);
         chooser = gtk_file_chooser_native_new (_("Select an Image"),
-                                               GTK_WINDOW (window),
+                                               GTK_WINDOW (self),
                                                GTK_FILE_CHOOSER_ACTION_OPEN,
                                                _("Open"),
                                                _("Cancel"));
@@ -98,7 +96,7 @@ image_button_clicked (GrPreferences *self)
 
         filter = gtk_file_filter_new ();
         gtk_file_filter_set_name (filter, _("Image files"));
-        gtk_file_filter_add_pixbuf_formats (filter);
+        gtk_file_filter_add_mime_type (filter, "image/*");
         gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), filter);
         gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (chooser), filter);
 
