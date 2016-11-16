@@ -35,20 +35,11 @@ struct _GrChefTile
         GrChef *chef;
 
         GtkWidget *label;
-        GtkWidget *button;
+        GtkWidget *image;
 };
 
 
 G_DEFINE_TYPE (GrChefTile, gr_chef_tile, GTK_TYPE_BOX)
-
-static void
-show_list (GrChefTile *tile)
-{
-        GtkWidget *window;
-
-        window = gtk_widget_get_ancestor (GTK_WIDGET (tile), GR_TYPE_WINDOW);
-        gr_window_show_chef (GR_WINDOW (window), tile->chef);
-}
 
 static void
 chef_tile_finalize (GObject *object)
@@ -79,9 +70,7 @@ gr_chef_tile_class_init (GrChefTileClass *klass)
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-chef-tile.ui");
 
         gtk_widget_class_bind_template_child (widget_class, GrChefTile, label);
-        gtk_widget_class_bind_template_child (widget_class, GrChefTile, button);
-
-        gtk_widget_class_bind_template_callback (widget_class, show_list);
+        gtk_widget_class_bind_template_child (widget_class, GrChefTile, image);
 }
 
 static void
@@ -103,14 +92,14 @@ chef_tile_set_chef (GrChefTile *tile,
         gtk_label_set_label (GTK_LABEL (tile->label), name);
 
         if (image_path != NULL && image_path[0] != '\0')
-                css = g_strdup_printf ("button.chef {\n"
+                css = g_strdup_printf ("image.chef {\n"
                 	               "  background: url('%s');\n"
                         	       "  background-size: 64px;\n"
                         	       "  min-width: 64px;\n"
                         	       "  min-height: 64px;\n"
                                	       "}", image_path);
 	else
-                css = g_strdup_printf ("button.chef {\n"
+                css = g_strdup_printf ("image.chef {\n"
 				       "  background: rgb(%d,%d,%d);\n"
                         	       "  min-width: 64px;\n"
                         	       "  min-height: 64px;\n"
@@ -121,7 +110,7 @@ chef_tile_set_chef (GrChefTile *tile,
 
         provider = gtk_css_provider_new ();
         gtk_css_provider_load_from_data (provider, css, -1, NULL);
-        context = gtk_widget_get_style_context (tile->button);
+        context = gtk_widget_get_style_context (tile->image);
         gtk_style_context_add_provider (context,
                                         GTK_STYLE_PROVIDER (provider),
                                         GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
@@ -136,4 +125,10 @@ gr_chef_tile_new (GrChef *chef)
         chef_tile_set_chef (tile, chef);
 
         return GTK_WIDGET (tile);
+}
+
+GrChef *
+gr_chef_tile_get_chef (GrChefTile *tile)
+{
+        return tile->chef;
 }

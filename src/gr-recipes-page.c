@@ -53,6 +53,21 @@ static void populate_chefs_from_store (GrRecipesPage *page);
 static void connect_store_signals (GrRecipesPage *page);
 
 static void
+show_chef_list (GtkFlowBox      *box,
+                GtkFlowBoxChild *child,
+                GrRecipesPage   *page)
+{
+        GtkWidget *tile;
+        GtkWidget *window;
+        GrChef *chef;
+
+        tile = gtk_bin_get_child (GTK_BIN (child));
+        chef = gr_chef_tile_get_chef (GR_CHEF_TILE (tile));
+        window = gtk_widget_get_ancestor (GTK_WIDGET (tile), GR_TYPE_WINDOW);
+        gr_window_show_chef (GR_WINDOW (window), chef);
+}
+
+static void
 recipes_page_finalize (GObject *object)
 {
         G_OBJECT_CLASS (gr_recipes_page_parent_class)->finalize (object);
@@ -85,6 +100,8 @@ gr_recipes_page_class_init (GrRecipesPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, pick_box);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, diet_box);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, chefs_box);
+
+        gtk_widget_class_bind_template_callback (widget_class, show_chef_list);
 }
 
 GtkWidget *
