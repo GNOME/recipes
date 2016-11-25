@@ -193,11 +193,6 @@ populate_diets_from_store (GrRecipesPage *self)
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         for (i = 0; i < 5; i++) {
-#if 0
-                if (!gr_recipe_store_has_diet (store, diets[i]))
-                        continue;
-#endif
-
                 tile = gr_category_tile_new (diets[i]);
                 gtk_widget_show (tile);
                 g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);
