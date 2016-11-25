@@ -59,11 +59,17 @@
             <child>
               <object class="GtkFlowBox" id="flow_box">
                 <property name="visible">1</property>
+                <property name="halign">center</property>
                 <property name="valign">start</property>
-                <property name="column-spacing">10</property>
-                <property name="row-spacing">10</property>
-                <property name="margin">20</property>
+                <property name="column-spacing">20</property>
+                <property name="row-spacing">20</property>
+                <property name="margin-top">20</property>
+                <property name="margin-bottom">20</property>
+                <property name="margin-start">80</property>
+                <property name="margin-end">80</property>
                 <property name="selection-mode">none</property>
+                <property name="min-children-per-line">3</property>
+                <property name="max-children-per-line">3</property>
               </object>
             </child>
           </object>
