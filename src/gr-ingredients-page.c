@@ -77,15 +77,23 @@ row_activated (GrIngredientsPage *page,
         GtkAdjustment *adj;
         GtkAllocation alloc;
         Category *category = NULL;
+        double page_increment, value;
 
         item = gtk_bin_get_child (GTK_BIN (row));
         category = (Category *)g_object_get_data (G_OBJECT (item), "category");
         if (!category)
                 return;
 
+
         adj = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (page->scrolled_window));
         gtk_widget_get_allocation (category->label, &alloc);
-        gtk_adjustment_set_value (adj, alloc.y);
+        page_increment = gtk_adjustment_get_page_increment (adj);
+        value = gtk_adjustment_get_value (adj);
+        gtk_adjustment_set_page_increment (adj, alloc.y - value);
+
+        g_signal_emit_by_name (page->scrolled_window, "scroll-child", GTK_SCROLL_PAGE_FORWARD, FALSE);
+
+        gtk_adjustment_set_page_increment (adj, page_increment);
 }
 
 static void
