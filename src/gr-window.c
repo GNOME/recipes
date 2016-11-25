@@ -28,6 +28,7 @@
 #include "gr-list-page.h"
 #include "gr-cuisine-page.h"
 #include "gr-search-page.h"
+#include "gr-recipes-page.h"
 #include "gr-ingredients-page.h"
 #include "gr-ingredients-search-page.h"
 
@@ -45,6 +46,7 @@ struct _GrWindow
         GtkWidget *search_entry;
         GtkWidget *header_stack;
         GtkWidget *main_stack;
+        GtkWidget *recipes_page;
         GtkWidget *details_header;
         GtkWidget *details_page;
         GtkWidget *edit_header;
@@ -208,6 +210,10 @@ visible_page_changed (GrWindow *window)
         if (strcmp (visible, "search") != 0) {
                 gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (window->recipes_search_button), FALSE);
         }
+
+        if (strcmp (visible, "recipes") == 0) {
+                gr_recipes_page_set_categories_expanded (GR_RECIPES_PAGE (window->recipes_page), FALSE);
+        }
 }
 
 static void
@@ -348,6 +354,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, search_entry);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, header_stack);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, main_stack);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, recipes_page);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, details_header);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, details_page);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, edit_header);

@@ -28,6 +28,9 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrRecipesPage, gr_recipes_page, GR, RECIPES_PAGE, GtkBox)
 
-GtkWidget      *gr_recipes_page_new (void);
+GtkWidget      *gr_recipes_page_new                     (void);
+
+void            gr_recipes_page_set_categories_expanded (GrRecipesPage *page,
+                                                         gboolean       expanded);
 
 G_END_DECLS

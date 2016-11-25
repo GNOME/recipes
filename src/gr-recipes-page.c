@@ -71,11 +71,21 @@ show_chef_list (GtkFlowBox      *box,
         gr_window_show_chef (GR_WINDOW (window), chef);
 }
 
+void
+gr_recipes_page_set_categories_expanded (GrRecipesPage *page,
+                                         gboolean       expanded)
+{
+        gtk_revealer_set_transition_duration (GTK_REVEALER (page->categories_expander), expanded ? 250 : 0);
+        gtk_revealer_set_transition_duration (GTK_REVEALER (page->diet_more), expanded ? 250 : 0);
+
+        gtk_revealer_set_reveal_child (GTK_REVEALER (page->categories_expander), !expanded);
+        gtk_revealer_set_reveal_child (GTK_REVEALER (page->diet_more), expanded);
+}
+
 static void
 expander_button_clicked (GrRecipesPage *page)
 {
-        gtk_revealer_set_reveal_child (GTK_REVEALER (page->categories_expander), FALSE);
-        gtk_revealer_set_reveal_child (GTK_REVEALER (page->diet_more), TRUE);
+        gr_recipes_page_set_categories_expanded (page, TRUE);
 }
 
 static void
