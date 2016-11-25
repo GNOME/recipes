@@ -31,6 +31,8 @@ recipes_SOURCES = \
 	gr-cuisines-page.c	\
 	gr-details-page.h	\
 	gr-details-page.c	\
+	gr-diet-row.h		\
+	gr-diet-row.c		\
 	gr-edit-page.h		\
 	gr-edit-page.c		\
 	gr-images.h		\
@@ -51,6 +53,8 @@ recipes_SOURCES = \
 	gr-ingredients-page.c	\
 	gr-list-page.h		\
 	gr-list-page.c		\
+	gr-meal-row.h		\
+	gr-meal-row.c		\
 	gr-preferences.h	\
 	gr-preferences.c	\
 	gr-recipe.h 		\

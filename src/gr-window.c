@@ -22,6 +22,8 @@
 
 #include <glib/gi18n.h>
 
+#include <libgd/gd.h>
+
 #include "gr-window.h"
 #include "gr-details-page.h"
 #include "gr-edit-page.h"
@@ -29,6 +31,11 @@
 #include "gr-cuisine-page.h"
 #include "gr-search-page.h"
 #include "gr-recipes-page.h"
+#include "gr-ingredient.h"
+#include "gr-category.h"
+#include "gr-ingredient-row.h"
+#include "gr-diet-row.h"
+#include "gr-meal-row.h"
 #include "gr-ingredients-page.h"
 #include "gr-ingredients-search-page.h"
 
@@ -60,6 +67,15 @@ struct _GrWindow
         GtkWidget *ingredients_page;
         GtkWidget *ingredients_search_page;
         GtkWidget *cooking_button;
+        GtkWidget *meal_search_revealer;
+        GtkWidget *meal_search_button;
+        GtkWidget *meal_list;
+        GtkWidget *diet_search_revealer;
+        GtkWidget *diet_search_button;
+        GtkWidget *diet_list;
+        GtkWidget *ing_search_revealer;
+        GtkWidget *ing_search_button;
+        GtkWidget *ingredients_list;
 
         GQueue *back_entry_stack;
 };
@@ -220,14 +236,66 @@ static void
 search_changed (GrWindow *window)
 {
         const char *visible;
+        g_autoptr(GString) s = NULL;
+        GList *children, *l;
 
         visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
 
         if (strcmp (visible, "search") != 0)
                 switch_to_search (window);
 
-        gr_search_page_update_search (GR_SEARCH_PAGE (window->search_page),
-                                      gtk_entry_get_text (GTK_ENTRY (window->search_entry)));
+        s = g_string_new (gtk_entry_get_text (GTK_ENTRY (window->search_entry)));
+
+        children = gtk_container_get_children (GTK_CONTAINER (window->meal_list));
+        for (l = children; l; l = l->next) {
+                GtkWidget *row = l->data;
+                g_autofree char *term = NULL;
+
+                if (!GR_IS_MEAL_ROW (row))
+                        continue;
+
+                term = gr_meal_row_get_search_term (GR_MEAL_ROW (row));
+                if (term) {
+                        g_string_append_c (s, ' ');
+                        g_string_append (s, term);
+                }
+        }
+        g_list_free (children);
+
+        children = gtk_container_get_children (GTK_CONTAINER (window->diet_list));
+        for (l = children; l; l = l->next) {
+                GtkWidget *row = l->data;
+                g_autofree char *term = NULL;
+
+                if (!GR_IS_DIET_ROW (row))
+                        continue;
+
+                term = gr_diet_row_get_search_term (GR_DIET_ROW (row));
+                if (term) {
+                        g_string_append_c (s, ' ');
+                        g_string_append (s, term);
+                }
+        }
+        g_list_free (children);
+
+        children = gtk_container_get_children (GTK_CONTAINER (window->ingredients_list));
+        for (l = children; l; l = l->next) {
+                GtkWidget *row = l->data;
+                g_autofree char *term = NULL;
+
+                if (!GR_IS_INGREDIENT_ROW (row))
+                        continue;
+
+                term = gr_ingredient_row_get_search_term (GR_INGREDIENT_ROW (row));
+                if (term) {
+                        g_string_append_c (s, ' ');
+                        g_string_append (s, term);
+                }
+        }
+        g_list_free (children);
+
+g_print ("search term: %s\n", s->str);
+        gr_search_page_update_search (GR_SEARCH_PAGE (window->search_page), s->str);
 }
 
 static void
@@ -319,6 +387,140 @@ window_keypress_handler (GtkWidget *widget,
         return gtk_search_bar_handle_event (GTK_SEARCH_BAR (window->search_bar), event);
 }
 
+static void
+tag_clicked (GdTaggedEntry    *entry,
+             GdTaggedEntryTag *tag,
+             GrWindow         *self)
+{
+        GtkWidget *row;
+        gboolean include, exclude;
+
+        row = GTK_WIDGET (g_object_get_data (G_OBJECT (tag), "row"));
+        if (GR_IS_INGREDIENT_ROW (row)) {
+                g_object_get (row, "include", &include, "exclude", &exclude, NULL);
+                g_object_set (row, "include", !include, "exclude", !exclude, NULL);
+        }
+}
+
+static void
+tag_button_clicked (GdTaggedEntry    *entry,
+                    GdTaggedEntryTag *tag,
+                    GrWindow         *self)
+{
+        GtkWidget *row;
+
+        row = GTK_WIDGET (g_object_get_data (G_OBJECT (tag), "row"));
+        if (GR_IS_INGREDIENT_ROW (row)) {
+                g_object_set (row, "include", FALSE, "exclude", FALSE, NULL);
+        }
+        else {
+                g_object_set (row, "include", FALSE, NULL);
+        }
+}
+
+static void
+show_meal_search_list (GrWindow *self)
+{
+        gtk_widget_hide (self->meal_search_button);
+        gtk_widget_show (self->meal_search_revealer);
+        gtk_revealer_set_reveal_child (GTK_REVEALER (self->meal_search_revealer), TRUE);
+}
+
+static void
+hide_meal_search_list (GrWindow *self,
+                       gboolean  animate)
+{
+        gtk_widget_show (self->meal_search_button);
+        if (!animate)
+                gtk_revealer_set_transition_type (GTK_REVEALER (self->meal_search_revealer),
+                                                  GTK_REVEALER_TRANSITION_TYPE_NONE);
+        gtk_revealer_set_reveal_child (GTK_REVEALER (self->meal_search_revealer), FALSE);
+        if (!animate)
+                gtk_revealer_set_transition_type (GTK_REVEALER (self->meal_search_revealer),
+                                                  GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN);
+}
+
+static void
+show_diet_search_list (GrWindow *self)
+{
+        gtk_widget_hide (self->diet_search_button);
+        gtk_widget_show (self->diet_search_revealer);
+        gtk_revealer_set_reveal_child (GTK_REVEALER (self->diet_search_revealer), TRUE);
+}
+
+static void
+hide_diet_search_list (GrWindow *self,
+                       gboolean  animate)
+{
+        gtk_widget_show (self->diet_search_button);
+        if (!animate)
+                gtk_revealer_set_transition_type (GTK_REVEALER (self->diet_search_revealer),
+                                                  GTK_REVEALER_TRANSITION_TYPE_NONE);
+        gtk_revealer_set_reveal_child (GTK_REVEALER (self->diet_search_revealer), FALSE);
+        if (!animate)
+                gtk_revealer_set_transition_type (GTK_REVEALER (self->diet_search_revealer),
+                                                  GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN);
+}
+
+static void
+show_ingredients_search_list (GrWindow *self)
+{
+        gtk_widget_hide (self->ing_search_button);
+        gtk_widget_show(self->ing_search_revealer);
+        gtk_revealer_set_reveal_child (GTK_REVEALER (self->ing_search_revealer), TRUE);
+}
+
+static void
+hide_ingredients_search_list (GrWindow *self,
+                              gboolean  animate)
+{
+        gtk_widget_show (self->ing_search_button);
+        if (!animate)
+                gtk_revealer_set_transition_type (GTK_REVEALER (self->ing_search_revealer),
+                                                  GTK_REVEALER_TRANSITION_TYPE_NONE);
+        gtk_revealer_set_reveal_child (GTK_REVEALER (self->ing_search_revealer), FALSE);
+        if (!animate)
+                gtk_revealer_set_transition_type (GTK_REVEALER (self->ing_search_revealer),
+                                                  GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN);
+}
+
+static void
+meal_search_button_clicked (GtkButton *button,
+                            GrWindow  *self)
+{
+        hide_diet_search_list (self, TRUE);
+        hide_ingredients_search_list (self, TRUE);
+        show_meal_search_list (self);
+}
+
+static void
+diet_search_button_clicked (GtkButton *button,
+                            GrWindow  *self)
+{
+        hide_meal_search_list (self, TRUE);
+        hide_ingredients_search_list (self, TRUE);
+        show_diet_search_list (self);
+}
+
+static void
+ing_search_button_clicked (GtkButton *button,
+                           GrWindow  *self)
+{
+        hide_meal_search_list (self, TRUE);
+        hide_diet_search_list (self, TRUE);
+        show_ingredients_search_list (self);
+}
+
+static void
+search_popover_notify (GObject    *object,
+                       GParamSpec *pspec,
+                       GrWindow   *self)
+{
+        hide_meal_search_list (self, FALSE);
+        hide_diet_search_list (self, FALSE);
+        hide_ingredients_search_list (self, FALSE);
+}
+
 GrWindow *
 gr_window_new (GrApp *app)
 {
@@ -368,12 +570,250 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, ingredients_page);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, ingredients_search_page);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, cooking_button);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, meal_search_revealer);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, meal_search_button);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, meal_list);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, diet_search_revealer);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, diet_search_button);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, diet_list);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, ing_search_revealer);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, ing_search_button);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, ingredients_list);
 
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), new_recipe);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), go_back);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), add_recipe);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), visible_page_changed);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), start_or_stop_cooking);
+        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), tag_clicked);
+        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), tag_button_clicked);
+        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), meal_search_button_clicked);
+        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), diet_search_button_clicked);
+        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), ing_search_button_clicked);
+        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), search_popover_notify);
+}
+
+static void
+ing_row_activated (GtkListBox *list, GtkListBoxRow *row, GrWindow *self)
+{
+        gboolean include, exclude;
+
+        if (!GR_IS_INGREDIENT_ROW (row)) {
+                GList *children, *l;
+
+                children = gtk_container_get_children (GTK_CONTAINER (list));
+                for (l = children; l; l = l->next) {
+                        row = l->data;
+                        if (GR_IS_INGREDIENT_ROW (row)) {
+                                g_object_set (row, "include", FALSE, "exclude", FALSE, NULL);
+                        }
+                }
+
+                g_list_free (children);
+
+                hide_ingredients_search_list (self, TRUE);
+
+                return;
+        }
+
+        g_object_get (row, "include", &include, "exclude", &exclude, NULL);
+
+        if (!include && !exclude)
+                g_object_set (row, "include", TRUE, "exclude", FALSE, NULL);
+        else if (include && !exclude)
+                g_object_set (row, "include", FALSE, "exclude", TRUE, NULL);
+        else
+                g_object_set (row, "include", FALSE, "exclude", FALSE, NULL);
+}
+
+static void
+ing_header_func (GtkListBoxRow *row,
+                 GtkListBoxRow *before,
+                 gpointer       data)
+{
+        GrWindow *self = data;
+
+        if (before != NULL && !GR_IS_INGREDIENT_ROW (before))
+                gtk_list_box_row_set_header (row, gtk_separator_new (GTK_ORIENTATION_HORIZONTAL));
+        else
+                gtk_list_box_row_set_header (row, NULL);
+}
+
+static void
+populate_ingredients_list (GrWindow *self)
+{
+        int i;
+        const char **ingredients;
+        GtkWidget *row;
+
+        row = gtk_label_new (_("Anything"));
+        g_object_set (row, "margin", 6, NULL);
+        gtk_label_set_xalign (GTK_LABEL (row), 0);
+        gtk_widget_show (row);
+        gtk_container_add (GTK_CONTAINER (self->ingredients_list), row);
+
+        ingredients = gr_ingredient_get_names (NULL);
+        for (i = 0; ingredients[i]; i++) {
+                row = GTK_WIDGET (gr_ingredient_row_new (ingredients[i]));
+                gtk_widget_show (row);
+                gtk_container_add (GTK_CONTAINER (self->ingredients_list), row);
+                gr_ingredient_row_set_entry (GR_INGREDIENT_ROW (row),
+                                             GD_TAGGED_ENTRY (self->search_entry));
+        }
+
+        gtk_list_box_set_header_func (GTK_LIST_BOX (self->ingredients_list),
+                                      ing_header_func, self, NULL);
+
+        g_signal_connect (self->ingredients_list, "row-activated", G_CALLBACK (ing_row_activated), self);
+}
+
+static void
+diet_row_activated (GtkListBox *list, GtkListBoxRow *row, GrWindow *self)
+{
+        gboolean include;
+
+        if (!GR_IS_DIET_ROW (row)) {
+                GList *children, *l;
+
+                children = gtk_container_get_children (GTK_CONTAINER (list));
+                for (l = children; l; l = l->next) {
+                        row = l->data;
+                        if (GR_IS_DIET_ROW (row)) {
+                                g_object_set (row, "include", FALSE, NULL);
+                        }
+                }
+                g_list_free (children);
+
+                hide_diet_search_list (self, TRUE);
+
+                return;
+        }
+
+        g_object_get (row, "include", &include, NULL);
+        g_object_set (row, "include", !include, NULL);
+}
+
+static void
+diet_header_func (GtkListBoxRow *row,
+                  GtkListBoxRow *before,
+                  gpointer       data)
+{
+        GrWindow *self = data;
+
+        if (before != NULL && !GR_IS_DIET_ROW (before))
+                gtk_list_box_row_set_header (row, gtk_separator_new (GTK_ORIENTATION_HORIZONTAL));
+        else
+                gtk_list_box_row_set_header (row, NULL);
+}
+
+static void
+populate_diets_list (GrWindow *self)
+{
+        int i;
+        GtkWidget *row;
+
+        row = gtk_label_new (_("No restrictions"));
+        g_object_set (row, "margin", 6, NULL);
+        gtk_label_set_xalign (GTK_LABEL (row), 0);
+        gtk_widget_show (row);
+        gtk_container_add (GTK_CONTAINER (self->diet_list), row);
+
+        row = GTK_WIDGET (gr_diet_row_new (GR_DIET_GLUTEN_FREE));
+        gtk_widget_show (row);
+        gtk_container_add (GTK_CONTAINER (self->diet_list), row);
+        gr_diet_row_set_entry (GR_DIET_ROW (row), GD_TAGGED_ENTRY (self->search_entry));
+
+        row = GTK_WIDGET (gr_diet_row_new (GR_DIET_NUT_FREE));
+        gtk_widget_show (row);
+        gtk_container_add (GTK_CONTAINER (self->diet_list), row);
+        gr_diet_row_set_entry (GR_DIET_ROW (row), GD_TAGGED_ENTRY (self->search_entry));
+
+        row = GTK_WIDGET (gr_diet_row_new (GR_DIET_VEGAN));
+        gtk_widget_show (row);
+        gtk_container_add (GTK_CONTAINER (self->diet_list), row);
+        gr_diet_row_set_entry (GR_DIET_ROW (row), GD_TAGGED_ENTRY (self->search_entry));
+
+        row = GTK_WIDGET (gr_diet_row_new (GR_DIET_VEGETARIAN));
+        gtk_widget_show (row);
+        gtk_container_add (GTK_CONTAINER (self->diet_list), row);
+        gr_diet_row_set_entry (GR_DIET_ROW (row), GD_TAGGED_ENTRY (self->search_entry));
+
+        row = GTK_WIDGET (gr_diet_row_new (GR_DIET_MILK_FREE));
+        gtk_widget_show (row);
+        gtk_container_add (GTK_CONTAINER (self->diet_list), row);
+        gr_diet_row_set_entry (GR_DIET_ROW (row), GD_TAGGED_ENTRY (self->search_entry));
+
+        gtk_list_box_set_header_func (GTK_LIST_BOX (self->diet_list),
+                                      diet_header_func, self, NULL);
+
+        g_signal_connect (self->diet_list, "row-activated", G_CALLBACK (diet_row_activated), self);
+}
+
+static void
+meal_row_activated (GtkListBox *list, GtkListBoxRow *row, GrWindow *self)
+{
+        gboolean include;
+
+        if (!GR_IS_MEAL_ROW (row)) {
+                GList *children, *l;
+
+                children = gtk_container_get_children (GTK_CONTAINER (list));
+                for (l = children; l; l = l->next) {
+                        row = l->data;
+                        if (GR_IS_MEAL_ROW (row)) {
+                                g_object_set (row, "include", FALSE, NULL);
+                        }
+                }
+                g_list_free (children);
+
+                hide_meal_search_list (self, TRUE);
+
+                return;
+        }
+
+        g_object_get (row, "include", &include, NULL);
+        g_object_set (row, "include", !include, NULL);
+}
+
+static void
+meal_header_func (GtkListBoxRow *row,
+                  GtkListBoxRow *before,
+                  gpointer       data)
+{
+        GrWindow *self = data;
+
+        if (before != NULL && !GR_IS_MEAL_ROW (before))
+                gtk_list_box_row_set_header (row, gtk_separator_new (GTK_ORIENTATION_HORIZONTAL));
+        else
+                gtk_list_box_row_set_header (row, NULL);
+}
+
+static void
+populate_meals_list (GrWindow *self)
+{
+        int i;
+        const char **names;
+        GtkWidget *row;
+        int length;
+
+        row = gtk_label_new (_("Any meal"));
+        g_object_set (row, "margin", 6, NULL);
+        gtk_label_set_xalign (GTK_LABEL (row), 0);
+        gtk_widget_show (row);
+        gtk_container_add (GTK_CONTAINER (self->meal_list), row);
+
+        names = gr_category_get_names (&length);
+        for (i = 0; i < length; i++) {
+                row = GTK_WIDGET (gr_meal_row_new (names[i]));
+                gtk_widget_show (row);
+                gtk_container_add (GTK_CONTAINER (self->meal_list), row);
+                gr_meal_row_set_entry (GR_MEAL_ROW (row), GD_TAGGED_ENTRY (self->search_entry));
+        }
+
+        gtk_list_box_set_header_func (GTK_LIST_BOX (self->meal_list),
+                                      meal_header_func, self, NULL);
+
+        g_signal_connect (self->meal_list, "row-activated", G_CALLBACK (meal_row_activated), self);
 }
 
 static void
@@ -394,6 +834,12 @@ gr_window_init (GrWindow *self)
         g_signal_connect (self->ingredients_search_button, "clicked", G_CALLBACK (ingredients_search_clicked), self);
         g_signal_connect (self->ingredients_search_button2, "clicked", G_CALLBACK (ingredients_search_clicked), self);
         g_signal_connect_after (self, "key-press-event", G_CALLBACK (window_keypress_handler), NULL);
+
+        gtk_search_bar_connect_entry (GTK_SEARCH_BAR (self->search_bar), GTK_ENTRY (self->search_entry));
+
+        populate_meals_list (self);
+        populate_diets_list (self);
+        populate_ingredients_list (self);
 }
 
 void

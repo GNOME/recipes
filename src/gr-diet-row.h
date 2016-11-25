@@ -1,4 +1,4 @@
-/* gr-ingredient-row.h
+/* gr-diet-row.h
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *
@@ -20,18 +20,19 @@
 
 #include <gtk/gtk.h>
 #include <libgd/gd.h>
+#include "gr-recipe.h"
 
 G_BEGIN_DECLS
 
-#define GR_TYPE_INGREDIENT_ROW (gr_ingredient_row_get_type())
+#define GR_TYPE_DIET_ROW (gr_diet_row_get_type())
 
-G_DECLARE_FINAL_TYPE (GrIngredientRow, gr_ingredient_row, GR, INGREDIENT_ROW, GtkListBoxRow)
+G_DECLARE_FINAL_TYPE (GrDietRow, gr_diet_row, GR, DIET_ROW, GtkListBoxRow)
 
-GrIngredientRow *gr_ingredient_row_new       (const char *ingredient);
+GrDietRow *gr_diet_row_new       (GrDiets          diet);
 
-void             gr_ingredient_row_set_entry (GrIngredientRow *row,
-                                              GdTaggedEntry   *entry);
+void       gr_diet_row_set_entry (GrDietRow       *row,
+                                  GdTaggedEntry   *entry);
 
-char *           gr_ingredient_row_get_search_term (GrIngredientRow *row);
+char *     gr_diet_row_get_search_term (GrDietRow *row);
 
 G_END_DECLS

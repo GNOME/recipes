@@ -16,7 +16,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "config.h"
+
+#include <glib.h>
+#include <glib/gi18n.h>
+
 #include "gr-ingredient-row.h"
+
 
 struct _GrIngredientRow
 {
@@ -30,6 +36,9 @@ struct _GrIngredientRow
 
         gboolean include;
         gboolean exclude;
+
+        GdTaggedEntry *entry;
+        GdTaggedEntryTag *tag;
 };
 
 G_DEFINE_TYPE (GrIngredientRow, gr_ingredient_row, GTK_TYPE_LIST_BOX_ROW)
@@ -48,6 +57,10 @@ static void
 gr_ingredient_row_finalize (GObject *object)
 {
         GrIngredientRow *self = (GrIngredientRow *)object;
+
+        g_clear_object (&self->tag);
+        g_free (self->ingredient);
+        g_free (self->cf_ingredient);
 
         G_OBJECT_CLASS (gr_ingredient_row_parent_class)->finalize (object);
 }
@@ -89,7 +102,60 @@ update_image (GrIngredientRow *self)
         }
         else
                 gtk_widget_set_opacity (self->image, 0);
+}
 
+static void
+update_label (GrIngredientRow *self)
+{
+        gtk_label_set_label (GTK_LABEL (self->label), self->ingredient);
+}
+
+static void
+update_tag (GrIngredientRow *self)
+{
+        if (!self->entry)
+                return;
+
+        if (!self->include && !self->exclude) {
+                if (self->tag) {
+                        gd_tagged_entry_remove_tag (self->entry, self->tag);
+                        g_clear_object (&self->tag);
+                        g_signal_emit_by_name (self->entry, "search-changed", 0);
+                }
+                return;
+        }
+
+        if ((self->include || self->exclude) && !self->tag) {
+                self->tag = gd_tagged_entry_tag_new ("");
+                gd_tagged_entry_add_tag (self->entry, self->tag);
+                g_object_set_data (G_OBJECT (self->tag), "row", self);
+        }
+
+        if (self->include) {
+                gd_tagged_entry_tag_set_label (self->tag, self->ingredient);
+        }
+        else if (self->exclude) {
+                g_autofree char *tmp = NULL;
+                tmp = g_strdup_printf (_("no %s"), self->ingredient);
+                gd_tagged_entry_tag_set_label (self->tag, tmp);
+        }
+
+        g_signal_emit_by_name (self->entry, "search-changed", 0);
+}
+
+static void
+gr_ingredient_row_notify (GObject *object, GParamSpec *pspec)
+{
+        GrIngredientRow *self = GR_INGREDIENT_ROW (object);
+
+        if (pspec->param_id == PROP_INGREDIENT)
+                update_label (self);
+
+        if (pspec->param_id == PROP_INCLUDE ||
+            pspec->param_id == PROP_EXCLUDE)
+                update_image (self);
+
+        update_tag (self);
 }
 
 static void
@@ -107,15 +173,12 @@ gr_ingredient_row_set_property (GObject      *object,
                   self->ingredient = g_value_dup_string (value);
                   g_free (self->cf_ingredient);
                   self->cf_ingredient = g_utf8_casefold (self->ingredient, -1);
-                  gtk_label_set_label (GTK_LABEL (self->label), self->ingredient);
                   break;
           case PROP_INCLUDE:
                   self->include = g_value_get_boolean (value);
-                  update_image (self);
                   break;
           case PROP_EXCLUDE:
                   self->exclude = g_value_get_boolean (value);
-                  update_image (self);
                   break;
           default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -132,6 +195,7 @@ gr_ingredient_row_class_init (GrIngredientRowClass *klass)
         object_class->finalize = gr_ingredient_row_finalize;
         object_class->get_property = gr_ingredient_row_get_property;
         object_class->set_property = gr_ingredient_row_set_property;
+        object_class->notify = gr_ingredient_row_notify;
 
         pspec = g_param_spec_string ("ingredient", NULL, NULL,
                                      NULL,
@@ -167,4 +231,25 @@ gr_ingredient_row_new (const char *ingredient)
         return GR_INGREDIENT_ROW (g_object_new (GR_TYPE_INGREDIENT_ROW,
                                                 "ingredient", ingredient,
                                                 NULL));
+}
+
+void
+gr_ingredient_row_set_entry (GrIngredientRow *row,
+                             GdTaggedEntry   *entry)
+{
+        row->entry = entry;
+        update_tag (row);
+}
+
+char *
+gr_ingredient_row_get_search_term (GrIngredientRow *row)
+{
+        if (row->include) {
+                return g_strconcat ("i+:", row->cf_ingredient, NULL);
+        }
+        else if (row->exclude) {
+                return g_strconcat ("i-:", row->cf_ingredient, NULL);
+        }
+        else
+                return NULL;
 }

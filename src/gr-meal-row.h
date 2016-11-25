@@ -1,4 +1,4 @@
-/* gr-ingredient-row.h
+/* gr-meal-row.h
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *
@@ -23,15 +23,15 @@
 
 G_BEGIN_DECLS
 
-#define GR_TYPE_INGREDIENT_ROW (gr_ingredient_row_get_type())
+#define GR_TYPE_MEAL_ROW (gr_meal_row_get_type())
 
-G_DECLARE_FINAL_TYPE (GrIngredientRow, gr_ingredient_row, GR, INGREDIENT_ROW, GtkListBoxRow)
+G_DECLARE_FINAL_TYPE (GrMealRow, gr_meal_row, GR, MEAL_ROW, GtkListBoxRow)
 
-GrIngredientRow *gr_ingredient_row_new       (const char *ingredient);
+GrMealRow *gr_meal_row_new       (const char *meal);
 
-void             gr_ingredient_row_set_entry (GrIngredientRow *row,
-                                              GdTaggedEntry   *entry);
+void       gr_meal_row_set_entry (GrMealRow       *row,
+                                  GdTaggedEntry   *entry);
 
-char *           gr_ingredient_row_get_search_term (GrIngredientRow *row);
+char *     gr_meal_row_get_search_term (GrMealRow *row);
 
 G_END_DECLS
