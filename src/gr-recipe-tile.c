@@ -62,7 +62,7 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
         g_autofree char *image_path = NULL;
         g_autofree char *tmp = NULL;
         g_autoptr(GArray) images = NULL;
-        g_autofree char *color = NULL;
+        const char *color;
 
         g_set_object (&tile->recipe, recipe);
         if (!recipe)
@@ -82,10 +82,13 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
                                        "  background-repeat: no-repeat;\n", ri->path);
                 gr_utils_widget_set_css_simple (tile->box, css);
 
-                g_object_get (recipe, "color", &color, NULL);
+                if (ri->dark_text)
+                        color = "black";
+                else
+                        color = "white";
         }
         else {
-                color = g_strdup_printf ("black");
+                color = "black";
         }
 
         if (color) {
