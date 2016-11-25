@@ -27,6 +27,7 @@ G_BEGIN_DECLS
 typedef struct {
 	char *path;
 	int angle;
+        gboolean dark_text;
 } GrRotatedImage;
 
 GArray *gr_rotated_image_array_new (void);

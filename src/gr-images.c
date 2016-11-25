@@ -32,6 +32,7 @@ gr_rotated_image_clear (gpointer data)
 
         g_clear_pointer (&image->path, g_free);
         image->angle = 0;
+        image->dark_text = FALSE;
 }
 
 static gpointer
@@ -43,6 +44,7 @@ gr_rotated_image_copy (gpointer data)
         copy = g_new (GrRotatedImage, 1);
         copy->path = g_strdup (image->path);
         copy->angle = image->angle;
+        copy->dark_text = image->dark_text;
 
         return copy;
 }
@@ -184,9 +186,14 @@ file_chooser_response (GtkNativeDialog *self,
 {
         if (response_id == GTK_RESPONSE_ACCEPT) {
                 GrRotatedImage ri;
+                const char *dark;
 
                 ri.path = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (self));
                 ri.angle = 0;
+
+                dark = gtk_file_chooser_get_choice (GTK_FILE_CHOOSER (self), "dark");
+
+                ri.dark_text = strcmp (dark, "true") == 0;
 
                 add_image (images, &ri, TRUE);
 
@@ -214,6 +221,7 @@ open_filechooser (GrImages *images)
         gtk_file_filter_add_mime_type (filter, "image/*");
         gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), filter);
         gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (chooser), filter);
+        gtk_file_chooser_add_choice (GTK_FILE_CHOOSER (chooser), "dark", _("Use dark text"), NULL, NULL);
 
         g_signal_connect (chooser, "response", G_CALLBACK (file_chooser_response), images);
 
