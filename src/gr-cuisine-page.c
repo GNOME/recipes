@@ -72,6 +72,7 @@ row_selected (GrCuisinePage *page,
         int category;
         GtkAdjustment *adj;
         GtkAllocation alloc;
+        double page_increment, value;
 
         if (row == NULL)
                 return;
@@ -88,12 +89,15 @@ row_selected (GrCuisinePage *page,
 	if (category < 0)
 		return;
 
-	adj = gtk_scrolled_window_get_hadjustment (GTK_SCROLLED_WINDOW (page->scrolled_window));
-	gtk_adjustment_set_value (adj, gtk_adjustment_get_lower (adj));
-
 	adj = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (page->scrolled_window));
 	gtk_widget_get_allocation (page->categories[category].label, &alloc);
-	gtk_adjustment_set_value (adj, alloc.y);
+        page_increment = gtk_adjustment_get_page_increment (adj);
+        value = gtk_adjustment_get_value (adj);
+        gtk_adjustment_set_page_increment (adj, alloc.y - value);
+
+        g_signal_emit_by_name (page->scrolled_window, "scroll-child", GTK_SCROLL_PAGE_FORWARD, FALSE);
+
+        gtk_adjustment_set_page_increment (adj, page_increment);
 }
 
 static void
