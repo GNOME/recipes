@@ -162,13 +162,13 @@ load_recipes (GrRecipeStore *self,
                 g_autofree char *image_path = NULL;
                 g_auto(GStrv) paths = NULL;
                 g_autofree int *angles = NULL;
+                g_autofree gboolean *dark = NULL;
                 int serves;
                 GrDiets diets;
                 g_autoptr(GArray) images = NULL;
                 GrRotatedImage ri;
                 g_autoptr(GDateTime) ctime = NULL;
                 g_autoptr(GDateTime) mtime = NULL;
-                g_autofree char *color = NULL;
                 char *tmp;
 
                 g_clear_error (&error);
@@ -250,14 +250,6 @@ load_recipes (GrRecipeStore *self,
                         }
                         g_clear_error (&error);
                 }
-                color = g_key_file_get_string (keyfile, groups[i], "Color", &error);
-                if (error) {
-                        if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
-                                g_warning ("Failed to load recipe %s: %s", groups[i], error->message);
-                                continue;
-                        }
-                        g_clear_error (&error);
-                }
                 image_path = g_key_file_get_string (keyfile, groups[i], "Image", &error);
                 if (error) {
                         if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
@@ -284,6 +276,18 @@ load_recipes (GrRecipeStore *self,
                 }
                 if (length2 != length3) {
                         g_warning ("Failed to load recipe %s: Images and Angles length mismatch", groups[i]);
+                        continue;
+                }
+                dark = g_key_file_get_boolean_list (keyfile, groups[i], "DarkText", &length3, &error);
+                if (error) {
+                        if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
+                                g_warning ("Failed to load recipe %s: %s", groups[i], error->message);
+                                continue;
+                        }
+                        g_clear_error (&error);
+                }
+                if (length2 != length3) {
+                        g_warning ("Failed to load recipe %s: Images and DarkText length mismatch", groups[i]);
                         continue;
                 }
                 serves = g_key_file_get_integer (keyfile, groups[i], "Serves", &error);
@@ -325,12 +329,14 @@ load_recipes (GrRecipeStore *self,
                         for (j = 0; paths[j]; j++) {
                                 ri.path = g_strdup (paths[j]);
                                 ri.angle = angles[j];
+                                ri.dark_text = dark[j];
                                 g_array_append_val (images, ri);
                         }
                 }
                 else if (image_path) {
                         ri.path = g_strdup (image_path);
                         ri.angle = 0;
+                        ri.dark_text = FALSE;
                         g_array_append_val (images, ri);
                 }
 
@@ -390,7 +396,6 @@ load_recipes (GrRecipeStore *self,
                                       "serves", serves,
                                       "diets", diets,
                                       "images", images,
-                                      "color", color,
                                       NULL);
                 }
                 else {
@@ -408,7 +413,6 @@ load_recipes (GrRecipeStore *self,
                                                "serves", serves,
                                                "diets", diets,
                                                "images", images,
-                                               "color", color,
                                                "ctime", ctime,
                                                "mtime", mtime,
                                                NULL);
@@ -446,12 +450,12 @@ save_recipes (GrRecipeStore *self)
                 const char *ingredients;
                 const char *instructions;
                 const char *notes;
-                g_autofree char *color = NULL;
                 g_autoptr(GArray) images = NULL;
                 int serves;
                 GrDiets diets;
                 g_auto(GStrv) paths = NULL;
                 g_autofree int *angles = NULL;
+                g_autofree gboolean *dark = NULL;
                 GDateTime *ctime;
                 GDateTime *mtime;
                 int i;
@@ -471,14 +475,12 @@ save_recipes (GrRecipeStore *self)
                 ctime = gr_recipe_get_ctime (recipe);
                 mtime = gr_recipe_get_mtime (recipe);
 
-                g_object_get (recipe,
-                              "images", &images,
-                              "color", &color,
-                              NULL);
+                g_object_get (recipe, "images", &images, NULL);
 
                 tmp = get_user_data_dir ();
                 paths = g_new0 (char *, images->len + 1);
                 angles = g_new0 (int, images->len + 1);
+                dark = g_new0 (gboolean, images->len + 1);
                 for (i = 0; i < images->len; i++) {
                         GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, i);
                         if (g_str_has_prefix (ri->path, tmp))
@@ -486,6 +488,7 @@ save_recipes (GrRecipeStore *self)
                         else
                                 paths[i] = g_strdup (ri->path);
                         angles[i] = ri->angle;
+                        dark[i] = ri->dark_text;
                 }
 
                 g_key_file_set_string (keyfile, key, "Name", name ? name : "");
@@ -498,11 +501,11 @@ save_recipes (GrRecipeStore *self)
                 g_key_file_set_string (keyfile, key, "Ingredients", ingredients ? ingredients : "");
                 g_key_file_set_string (keyfile, key, "Instructions", instructions ? instructions : "");
                 g_key_file_set_string (keyfile, key, "Notes", notes ? notes : "");
-                g_key_file_set_string (keyfile, key, "Color", color ? color : "#fff");
                 g_key_file_set_integer (keyfile, key, "Serves", serves);
                 g_key_file_set_integer (keyfile, key, "Diets", diets);
                 g_key_file_set_string_list (keyfile, key, "Images", (const char * const *)paths, images->len);
                 g_key_file_set_integer_list (keyfile, key, "Angles", angles, images->len);
+                g_key_file_set_integer_list (keyfile, key, "DarkText", dark, images->len);
                 if (ctime) {
                         g_autofree char *tmp = date_time_to_string (ctime);
                         g_key_file_set_string (keyfile, key, "Created", tmp);
