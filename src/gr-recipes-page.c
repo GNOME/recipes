@@ -43,6 +43,10 @@ struct _GrRecipesPage
         GtkWidget *diet_box;
         GtkWidget *chefs_box;
         GtkWidget *favorites_box;
+        GtkWidget *categories_expander;
+        GtkWidget *diet_more;
+        GtkWidget *diet_box2;
+        GtkWidget *scrolled_win;
 };
 
 G_DEFINE_TYPE (GrRecipesPage, gr_recipes_page, GTK_TYPE_BOX)
@@ -65,6 +69,13 @@ show_chef_list (GtkFlowBox      *box,
         chef = gr_chef_tile_get_chef (GR_CHEF_TILE (tile));
         window = gtk_widget_get_ancestor (GTK_WIDGET (tile), GR_TYPE_WINDOW);
         gr_window_show_chef (GR_WINDOW (window), chef);
+}
+
+static void
+expander_button_clicked (GrRecipesPage *page)
+{
+        gtk_revealer_set_reveal_child (GTK_REVEALER (page->categories_expander), FALSE);
+        gtk_revealer_set_reveal_child (GTK_REVEALER (page->diet_more), TRUE);
 }
 
 static void
@@ -100,8 +111,13 @@ gr_recipes_page_class_init (GrRecipesPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, pick_box);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, diet_box);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, chefs_box);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, categories_expander);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, diet_box2);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, diet_more);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, scrolled_win);
 
         gtk_widget_class_bind_template_callback (widget_class, show_chef_list);
+        gtk_widget_class_bind_template_callback (widget_class, expander_button_clicked);
 }
 
 GtkWidget *
@@ -166,13 +182,19 @@ populate_diets_from_store (GrRecipesPage *self)
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         for (i = 0; i < 5; i++) {
+#if 0
                 if (!gr_recipe_store_has_diet (store, diets[i]))
                         continue;
+#endif
 
                 tile = gr_category_tile_new (diets[i]);
                 gtk_widget_show (tile);
-                gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
                 g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);
+
+                if (i < 4)
+                        gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
+                else
+                        gtk_container_add (GTK_CONTAINER (self->diet_box2), tile);
         }
 }
 
@@ -183,6 +205,8 @@ populate_recipes_from_store (GrRecipesPage *self)
         g_autofree char **keys = NULL;
         guint length;
         int i;
+        int todays;
+        int picks;
 
         container_remove_all (GTK_CONTAINER (self->today_box));
         container_remove_all (GTK_CONTAINER (self->pick_box));
@@ -190,21 +214,31 @@ populate_recipes_from_store (GrRecipesPage *self)
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         keys = gr_recipe_store_get_recipe_keys (store, &length);
+        todays = 0;
+        picks = 0;
         for (i = 0; i < length; i++) {
                 g_autoptr(GrRecipe) recipe = NULL;
                 GtkWidget *tile;
 
                 recipe = gr_recipe_store_get (store, keys[i]);
 
-                if (gr_recipe_store_is_todays (store, recipe)) {
+                if (todays < 3 && gr_recipe_store_is_todays (store, recipe)) {
                         tile = gr_recipe_tile_new (recipe);
                         gtk_widget_show (tile);
-                        gtk_container_add (GTK_CONTAINER (self->today_box), tile);
+                        if (todays == 0) {
+                                gtk_grid_attach (GTK_GRID (self->today_box), tile, 0, 0, 2, 1);
+                                todays += 2;
+                        }
+                        else {
+                                gtk_grid_attach (GTK_GRID (self->today_box), tile, todays, 0, 1, 1);
+                                todays += 1;
+                        }
                 }
-                else if (gr_recipe_store_is_pick (store, recipe)) {
+                else if (picks < 3 && gr_recipe_store_is_pick (store, recipe)) {
                         tile = gr_recipe_tile_new (recipe);
                         gtk_widget_show (tile);
-                        gtk_container_add (GTK_CONTAINER (self->pick_box), tile);
+                        gtk_grid_attach (GTK_GRID (self->pick_box), tile, picks, 0, 1, 1);
+                        picks++;
                 }
 
 

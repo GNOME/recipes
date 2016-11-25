@@ -5,89 +5,177 @@
     <property name="visible">True</property>
     <property name="orientation">vertical</property>
     <child>
-      <object class="GtkLabel">
+      <object class="GtkScrolledWindow" id="scrolled_win">
         <property name="visible">1</property>
-        <property name="label" translatable="yes">Today</property>
-        <property name="xalign">0</property>
-        <style>
-          <class name="heading"/>
-        </style>
-      </object>
-    </child>
-    <child>
-      <object class="GsHidingBox" id="today_box">
-        <property name="visible">True</property>
-        <property name="spacing">20</property>
-        <property name="halign">start</property>
-        <property name="margin-start">20</property>
-        <property name="margin-end">20</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkLabel">
-        <property name="visible">1</property>
-        <property name="label" translatable="yes">GNOME&apos;s Pick</property>
-        <property name="xalign">0</property>
-        <style>
-          <class name="heading"/>
-        </style>
-      </object>
-    </child>
-    <child>
-      <object class="GsHidingBox" id="pick_box">
-        <property name="visible">True</property>
-        <property name="spacing">20</property>
-        <property name="halign">start</property>
-        <property name="margin-start">20</property>
-        <property name="margin-end">20</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkLabel">
-        <property name="visible">1</property>
-        <property name="label" translatable="yes">Categories</property>
-        <property name="xalign">0</property>
-        <style>
-          <class name="heading"/>
-        </style>
-      </object>
-    </child>
-    <child>
-      <object class="GtkFlowBox" id="diet_box">
-        <property name="visible">1</property>
-        <property name="selection-mode">none</property>
-        <property name="row-spacing">20</property>
-        <property name="column-spacing">20</property>
-        <property name="halign">start</property>
-        <property name="valign">start</property>
-        <property name="min-children-per-line">4</property>
-        <property name="margin-start">20</property>
-        <property name="margin-end">20</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkLabel">
-        <property name="visible">1</property>
-        <property name="label" translatable="yes">Featured GNOME Chefs</property>
-        <property name="xalign">0</property>
-        <style>
-          <class name="heading"/>
-        </style>
-      </object>
-    </child>
-    <child>
-      <object class="GtkFlowBox" id="chefs_box">
-        <property name="visible">True</property>
-        <property name="selection-mode">none</property>
-        <property name="row-spacing">20</property>
-        <property name="column-spacing">20</property>
-        <property name="halign">start</property>
-        <property name="valign">start</property>
-        <property name="margin-start">20</property>
-        <property name="margin-end">20</property>
-        <property name="margin-bottom">20</property>
-        <property name="min-children-per-line">4</property>
-        <signal name="child-activated" handler="show_chef_list"/>
+        <property name="hscrollbar-policy">never</property>
+        <property name="vscrollbar-policy">automatic</property>
+        <property name="propagate-natural-height">1</property>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">1</property>
+            <property name="orientation">vertical</property>
+            <property name="margin-start">80</property>
+            <property name="margin-end">80</property>
+            <property name="halign">center</property>
+            <property name="valign">start</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="label" translatable="yes">Today</property>
+                <property name="xalign">0</property>
+                <style>
+                  <class name="heading"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkGrid" id="today_box">
+                <property name="visible">1</property>
+                <property name="row-spacing">20</property>
+                <property name="column-spacing">20</property>
+                <property name="row-homogeneous">1</property>
+                <property name="column-homogeneous">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="label" translatable="yes">Editor&apos;s Picks</property>
+                <property name="xalign">0</property>
+                <style>
+                  <class name="heading"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkGrid" id="pick_box">
+                <property name="visible">1</property>
+                <property name="row-spacing">20</property>
+                <property name="column-spacing">20</property>
+                <property name="row-homogeneous">1</property>
+                <property name="column-homogeneous">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="label" translatable="yes">Categories</property>
+                <property name="xalign">0</property>
+                <style>
+                  <class name="heading"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkFlowBox" id="diet_box">
+                <property name="visible">1</property>
+                <property name="row-spacing">20</property>
+                <property name="column-spacing">20</property>
+                <property name="homogeneous">1</property>
+                <property name="min-children-per-line">3</property>
+                <property name="max-children-per-line">3</property>
+                <property name="selection-mode">none</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkRevealer" id="diet_more">
+                <property name="visible">1</property>
+                <property name="transition-type">slide-up</property>
+                <property name="margin-top">10</property>
+                <child>
+                  <object class="GtkFlowBox" id="diet_box2">
+                    <property name="visible">1</property>
+                    <property name="margin-top">10</property>
+                    <property name="row-spacing">20</property>
+                    <property name="column-spacing">20</property>
+                    <property name="homogeneous">1</property>
+                    <property name="min-children-per-line">3</property>
+                    <property name="max-children-per-line">3</property>
+                    <property name="selection-mode">none</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkRevealer" id="categories_expander">
+                <property name="visible">1</property>
+                <property name="transition-type">slide-up</property>
+                <property name="reveal-child">1</property>
+                <child>
+                  <object class="GtkBox" id="categories_expander_box">
+                    <property name="visible">1</property>
+                    <property name="margin-start">24</property>
+                    <property name="margin-end">24</property>
+                    <property name="margin-bottom">12</property>
+                    <child>
+                      <object class="GtkSeparator" id="categories_expander_lsep">
+                        <property name="visible">1</property>
+                        <property name="expand">1</property>
+                        <property name="valign">center</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="categories_expander_button">
+                        <property name="visible">1</property>
+                        <property name="can-focus">1</property>
+                        <property name="margin-start">9</property>
+                        <property name="margin-end">9</property>
+                        <property name="valign">center</property>
+                        <signal name="clicked" handler="expander_button_clicked" swapped="yes"/>
+                        <style>
+                          <class name="circular"/>
+                        </style>
+                        <child>
+                          <object class="GtkImage" id="categories_expander_image">
+                            <property name="visible">1</property>
+                            <property name="icon-name">view-more-symbolic</property>
+                            <property name="icon-size">1</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSeparator" id="categories_expander_rsep">
+                        <property name="visible">1</property>
+                        <property name="expand">1</property>
+                        <property name="valign">center</property>
+                      </object>
+                      <packing>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="label" translatable="yes">Featured GNOME Chefs</property>
+                <property name="xalign">0</property>
+                <style>
+                  <class name="heading"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkFlowBox" id="chefs_box">
+                <property name="visible">1</property>
+                <property name="selection-mode">none</property>
+                <property name="row-spacing">20</property>
+                <property name="column-spacing">20</property>
+                <property name="halign">start</property>
+                <property name="valign">start</property>
+                <property name="margin-bottom">20</property>
+                <property name="min-children-per-line">4</property>
+                <signal name="child-activated" handler="show_chef_list"/>
+              </object>
+            </child>
+          </object>
+        </child>
       </object>
     </child>
   </template>
