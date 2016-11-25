@@ -168,6 +168,7 @@ load_recipes (GrRecipeStore *self,
                 GrRotatedImage ri;
                 g_autoptr(GDateTime) ctime = NULL;
                 g_autoptr(GDateTime) mtime = NULL;
+                g_autofree char *color = NULL;
                 char *tmp;
 
                 g_clear_error (&error);
@@ -242,6 +243,14 @@ load_recipes (GrRecipeStore *self,
                         g_clear_error (&error);
                 }
                 notes = g_key_file_get_string (keyfile, groups[i], "Notes", &error);
+                if (error) {
+                        if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
+                                g_warning ("Failed to load recipe %s: %s", groups[i], error->message);
+                                continue;
+                        }
+                        g_clear_error (&error);
+                }
+                color = g_key_file_get_string (keyfile, groups[i], "Color", &error);
                 if (error) {
                         if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
                                 g_warning ("Failed to load recipe %s: %s", groups[i], error->message);
@@ -381,6 +390,7 @@ load_recipes (GrRecipeStore *self,
                                       "serves", serves,
                                       "diets", diets,
                                       "images", images,
+                                      "color", color,
                                       NULL);
                 }
                 else {
@@ -398,6 +408,7 @@ load_recipes (GrRecipeStore *self,
                                                "serves", serves,
                                                "diets", diets,
                                                "images", images,
+                                               "color", color,
                                                "ctime", ctime,
                                                "mtime", mtime,
                                                NULL);
@@ -435,6 +446,7 @@ save_recipes (GrRecipeStore *self)
                 const char *ingredients;
                 const char *instructions;
                 const char *notes;
+                g_autofree char *color = NULL;
                 g_autoptr(GArray) images = NULL;
                 int serves;
                 GrDiets diets;
@@ -459,7 +471,10 @@ save_recipes (GrRecipeStore *self)
                 ctime = gr_recipe_get_ctime (recipe);
                 mtime = gr_recipe_get_mtime (recipe);
 
-                g_object_get (recipe, "images", &images, NULL);
+                g_object_get (recipe,
+                              "images", &images,
+                              "color", &color,
+                              NULL);
 
                 tmp = get_user_data_dir ();
                 paths = g_new0 (char *, images->len + 1);
@@ -483,6 +498,7 @@ save_recipes (GrRecipeStore *self)
                 g_key_file_set_string (keyfile, key, "Ingredients", ingredients ? ingredients : "");
                 g_key_file_set_string (keyfile, key, "Instructions", instructions ? instructions : "");
                 g_key_file_set_string (keyfile, key, "Notes", notes ? notes : "");
+                g_key_file_set_string (keyfile, key, "Color", color ? color : "#fff");
                 g_key_file_set_integer (keyfile, key, "Serves", serves);
                 g_key_file_set_integer (keyfile, key, "Diets", diets);
                 g_key_file_set_string_list (keyfile, key, "Images", (const char * const *)paths, images->len);

@@ -34,6 +34,7 @@ typedef struct
         char *author;
         char *description;
         GArray *images;
+        char *color;
 
         char *cuisine;
         char *category;
@@ -71,6 +72,7 @@ enum {
         PROP_DIETS,
         PROP_CTIME,
         PROP_MTIME,
+        PROP_COLOR,
         N_PROPS
 };
 
@@ -91,6 +93,7 @@ gr_recipe_finalize (GObject *object)
         g_free (priv->instructions);
         g_free (priv->notes);
         g_array_free (priv->images, TRUE);
+        g_free (priv->color);
 
         g_free (priv->cf_name);
         g_free (priv->cf_description);
@@ -167,6 +170,10 @@ gr_recipe_get_property (GObject    *object,
 
         case PROP_MTIME:
                 g_value_set_boxed (value, priv->mtime);
+                break;
+
+        case PROP_COLOR:
+                g_value_set_string (value, priv->color);
                 break;
 
         default:
@@ -302,6 +309,12 @@ gr_recipe_set_property (GObject      *object,
                 g_date_time_ref (priv->mtime);
                 break;
 
+        case PROP_COLOR:
+                g_free (priv->color);
+                priv->color = g_value_dup_string (value);
+                update_mtime (self);
+                break;
+
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
         }
@@ -391,6 +404,11 @@ gr_recipe_class_init (GrRecipeClass *klass)
                                     G_TYPE_DATE_TIME,
                                     G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_MTIME, pspec);
+
+        pspec = g_param_spec_string ("color", NULL, NULL,
+                                     NULL,
+                                     G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_COLOR, pspec);
 }
 
 static void
@@ -401,6 +419,7 @@ gr_recipe_init (GrRecipe *self)
         priv->ctime = g_date_time_new_now_utc ();
         priv->mtime = g_date_time_new_now_utc ();
         priv->images = gr_rotated_image_array_new ();
+        priv->color = g_strdup ("#fff");
 }
 
 GrRecipe *
