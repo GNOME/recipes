@@ -35,7 +35,6 @@
 #include "gr-search-page.h"
 #include "gr-timer-widget.h"
 #include "gr-toggle-button.h"
-#include "gs-hiding-box.h"
 #include "gr-images.h"
 
 
@@ -57,7 +56,6 @@ main (int argc, char *argv[])
         g_type_ensure (GR_TYPE_RECIPES_PAGE);
         g_type_ensure (GR_TYPE_TIMER_WIDGET);
         g_type_ensure (GR_TYPE_TOGGLE_BUTTON);
-        g_type_ensure (GS_TYPE_HIDING_BOX);
 
         bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
         bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
