@@ -26,6 +26,7 @@
 
 #include "gr-category-tile.h"
 #include "gr-window.h"
+#include "gr-utils.h"
 
 
 struct _GrCategoryTile
@@ -68,6 +69,40 @@ get_category_title (GrDiets diet)
 	}
 
         return label;
+}
+
+static const char *colors[] = {
+        "#215d9c",
+        "#297bcc",
+        "#29cc5d",
+        "#c4a000",
+        "#75505b",
+        "#cc0000",
+        "#4e9a06",
+        "#9c29ca",
+        "#729fcf",
+        "#ac5500",
+        "#2944cc",
+        "#44cc29"
+};
+
+static const char *
+get_category_color (GrDiets diets)
+{
+	switch (diets) {
+        case GR_DIET_GLUTEN_FREE: return colors[0];
+	case GR_DIET_NUT_FREE:    return colors[1];
+	case GR_DIET_VEGAN:       return colors[2];
+	case GR_DIET_VEGETARIAN:  return colors[3];
+	case GR_DIET_MILK_FREE:   return colors[4];
+	default:                  return colors[5];
+	}
+}
+
+static const char *
+get_category_color_for_label (const char *label)
+{
+        return colors[g_str_hash (label) % G_N_ELEMENTS (colors)];
 }
 
 static void
@@ -116,9 +151,13 @@ GtkWidget *
 gr_category_tile_new (GrDiets diet)
 {
         GrCategoryTile *tile;
+        g_autofree char *css;
 
         tile = g_object_new (GR_TYPE_CATEGORY_TILE, NULL);
         category_tile_set_category (tile, diet);
+
+        css = g_strdup_printf ("border-bottom: 3px solid %s", get_category_color (diet));
+        gr_utils_widget_set_css_simple (GTK_WIDGET (tile), css);
 
         return GTK_WIDGET (tile);
 }
@@ -128,10 +167,14 @@ gr_category_tile_new_with_label (const char *category,
                                  const char *label)
 {
         GrCategoryTile *tile;
+        g_autofree char *css;
 
         tile = g_object_new (GR_TYPE_CATEGORY_TILE, NULL);
         gtk_label_set_label (GTK_LABEL (tile->label), label);
         tile->category = g_strdup (category);
+
+        css = g_strdup_printf ("border-bottom: 3px solid %s", get_category_color_for_label (label));
+        gr_utils_widget_set_css_simple (GTK_WIDGET (tile), css);
 
         return GTK_WIDGET (tile);
 }
