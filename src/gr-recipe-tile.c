@@ -39,6 +39,7 @@ struct _GrRecipeTile
         GtkWidget *label;
         GtkWidget *author;
         GtkWidget *image;
+        GtkWidget *box;
 };
 
 G_DEFINE_TYPE (GrRecipeTile, gr_recipe_tile, GTK_TYPE_BUTTON)
@@ -61,6 +62,7 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
         g_autofree char *image_path = NULL;
         g_autofree char *tmp = NULL;
         g_autoptr(GArray) images = NULL;
+        g_autofree char *color = NULL;
 
         g_set_object (&tile->recipe, recipe);
         if (!recipe)
@@ -69,35 +71,40 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
         name = gr_recipe_get_name (recipe);
         author = gr_recipe_get_author (recipe);
 
-        g_object_get (recipe,
-                      "images", &images,
-                      NULL);
+        g_object_get (recipe, "images", &images, NULL);
 
         if (images->len > 0) {
-                GtkStyleContext *context;
                 g_autofree char *css = NULL;
-                g_autoptr(GtkCssProvider) provider = NULL;
                 GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, 0);
-                css = g_strdup_printf ("image.recipe {\n"
-                                       "  background: url('%s');\n"
+
+                css = g_strdup_printf ("  background: url('%s');\n"
                                        "  background-size: 100%;\n"
-                                       "  background-repeat: no-repeat;\n"
-                                       "  border-radius: 6px;\n"
-                                       "}", ri->path);
-                provider = gtk_css_provider_new ();
-        	gtk_css_provider_load_from_data (provider, css, -1, NULL);
-        	context = gtk_widget_get_style_context (tile->image);
-        	gtk_style_context_add_provider (context,
-                	                        GTK_STYLE_PROVIDER (provider),
-                        	                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+                                       "  background-repeat: no-repeat;\n", ri->path);
+                gr_utils_widget_set_css_simple (tile->box, css);
+
+                g_object_get (recipe, "color", &color, NULL);
         }
         else {
-                gtk_image_clear (GTK_IMAGE (tile->image));
+                color = g_strdup_printf ("black");
         }
+
+        if (color) {
+                g_autofree char *css = NULL;
+                css = g_strdup_printf (" color: %s;\n"
+                                       " margin: 0 20px 0 20px;\n"
+                                       " font-weight: bold;\n"
+                                       " font-size: 24pt;\n", color);
+                gr_utils_widget_set_css_simple (tile->label, css);
+
+                g_free (css);
+                css = g_strdup_printf (" color: %s;\n"
+                                       " margin: 10px 20px 20px 20px;\n"
+                                       " font-size: 12pt;\n", color);
+                gr_utils_widget_set_css_simple (tile->author, css);
+        }
+
         gtk_label_set_label (GTK_LABEL (tile->label), name);
-
         tmp = g_strdup_printf (_("by %s"), author);
-
         gtk_label_set_label (GTK_LABEL (tile->author), tmp);
 }
 
@@ -131,6 +138,7 @@ gr_recipe_tile_class_init (GrRecipeTileClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrRecipeTile, label);
         gtk_widget_class_bind_template_child (widget_class, GrRecipeTile, author);
         gtk_widget_class_bind_template_child (widget_class, GrRecipeTile, image);
+        gtk_widget_class_bind_template_child (widget_class, GrRecipeTile, box);
 
         gtk_widget_class_bind_template_callback (widget_class, show_details);
 }
