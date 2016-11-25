@@ -38,4 +38,7 @@ const char *get_user_data_dir (void);
 
 void    container_remove_all (GtkContainer *container);
 
+void gr_utils_widget_set_css_simple (GtkWidget  *widget,
+                                     const char *css);
+
 G_END_DECLS
