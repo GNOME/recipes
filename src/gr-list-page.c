@@ -214,6 +214,8 @@ gr_list_page_populate_from_chef (GrListPage *self,
                 tile = gr_recipe_tile_new (recipe);
                 gtk_widget_show (tile);
                 gtk_container_add (GTK_CONTAINER (self->flow_box), tile);
+
+                filled = TRUE;
         }
 
         if (filled)
