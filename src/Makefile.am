@@ -36,6 +36,8 @@ recipes_SOURCES = \
 	gr-images.c		\
 	gr-ingredient.h		\
 	gr-ingredient.c		\
+	gr-ingredient-row.h	\
+	gr-ingredient-row.c	\
 	gr-ingredient-search-tile.h	\
 	gr-ingredient-search-tile.c	\
 	gr-ingredient-tile.h	\

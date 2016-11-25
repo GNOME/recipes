@@ -1,0 +1,170 @@
+/* gr-ingredient-row.c:
+ *
+ * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include "gr-ingredient-row.h"
+
+struct _GrIngredientRow
+{
+        GtkListBoxRow parent_instance;
+
+        GtkWidget *label;
+        GtkWidget *image;
+
+        char *ingredient;
+        char *cf_ingredient;
+
+        gboolean include;
+        gboolean exclude;
+};
+
+G_DEFINE_TYPE (GrIngredientRow, gr_ingredient_row, GTK_TYPE_LIST_BOX_ROW)
+
+enum {
+        PROP_0,
+        PROP_INGREDIENT,
+        PROP_INCLUDE,
+        PROP_EXCLUDE,
+        N_PROPS
+};
+
+static GParamSpec *properties [N_PROPS];
+
+static void
+gr_ingredient_row_finalize (GObject *object)
+{
+        GrIngredientRow *self = (GrIngredientRow *)object;
+
+        G_OBJECT_CLASS (gr_ingredient_row_parent_class)->finalize (object);
+}
+
+static void
+gr_ingredient_row_get_property (GObject    *object,
+                                guint       prop_id,
+                                GValue     *value,
+                                GParamSpec *pspec)
+{
+        GrIngredientRow *self = GR_INGREDIENT_ROW (object);
+
+        switch (prop_id)
+          {
+          case PROP_INGREDIENT:
+                  g_value_set_string (value, self->ingredient);
+                  break;
+          case PROP_INCLUDE:
+                  g_value_set_boolean (value, self->include);
+                  break;
+          case PROP_EXCLUDE:
+                  g_value_set_boolean (value, self->exclude);
+                  break;
+          default:
+            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+          }
+}
+
+static void
+update_image (GrIngredientRow *self)
+{
+        if (self->include) {
+                gtk_widget_set_opacity (self->image, 1);
+                gtk_image_set_from_icon_name (GTK_IMAGE (self->image), "object-select-symbolic", 1);
+        }
+        else if (self->exclude) {
+                gtk_widget_set_opacity (self->image, 1);
+                gtk_image_set_from_icon_name (GTK_IMAGE (self->image), "window-close-symbolic", 1);
+        }
+        else
+                gtk_widget_set_opacity (self->image, 0);
+
+}
+
+static void
+gr_ingredient_row_set_property (GObject      *object,
+                                guint         prop_id,
+                                const GValue *value,
+                                GParamSpec   *pspec)
+{
+        GrIngredientRow *self = GR_INGREDIENT_ROW (object);
+
+        switch (prop_id)
+          {
+          case PROP_INGREDIENT:
+                  g_free (self->ingredient);
+                  self->ingredient = g_value_dup_string (value);
+                  g_free (self->cf_ingredient);
+                  self->cf_ingredient = g_utf8_casefold (self->ingredient, -1);
+                  gtk_label_set_label (GTK_LABEL (self->label), self->ingredient);
+                  break;
+          case PROP_INCLUDE:
+                  self->include = g_value_get_boolean (value);
+                  update_image (self);
+                  break;
+          case PROP_EXCLUDE:
+                  self->exclude = g_value_get_boolean (value);
+                  update_image (self);
+                  break;
+          default:
+            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+          }
+}
+
+static void
+gr_ingredient_row_class_init (GrIngredientRowClass *klass)
+{
+        GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+        GObjectClass *object_class = G_OBJECT_CLASS (klass);
+        GParamSpec *pspec;
+
+        object_class->finalize = gr_ingredient_row_finalize;
+        object_class->get_property = gr_ingredient_row_get_property;
+        object_class->set_property = gr_ingredient_row_set_property;
+
+        pspec = g_param_spec_string ("ingredient", NULL, NULL,
+                                     NULL,
+                                     G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_INGREDIENT, pspec);
+
+        pspec = g_param_spec_boolean ("include", NULL, NULL,
+                                      FALSE,
+                                      G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_INCLUDE, pspec);
+
+        pspec = g_param_spec_boolean ("exclude", NULL, NULL,
+                                      FALSE,
+                                      G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_EXCLUDE, pspec);
+
+        gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-ingredient-row.ui");
+
+        gtk_widget_class_bind_template_child (widget_class, GrIngredientRow, label);
+        gtk_widget_class_bind_template_child (widget_class, GrIngredientRow, image);
+}
+
+static void
+gr_ingredient_row_init (GrIngredientRow *self)
+{
+        gtk_widget_set_has_window (GTK_WIDGET (self), FALSE);
+        gtk_widget_init_template (GTK_WIDGET (self));
+}
+
+GrIngredientRow *
+gr_ingredient_row_new (const char *ingredient)
+{
+        return GR_INGREDIENT_ROW (g_object_new (GR_TYPE_INGREDIENT_ROW,
+                                                "ingredient", ingredient,
+                                                NULL));
+}
