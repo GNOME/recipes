@@ -141,7 +141,12 @@ populate_initially (GrCuisinePage *self)
                 gtk_widget_show (label);
                 gtk_container_add (GTK_CONTAINER (self->category_box), label);
 
-                box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 20);
+                box = gtk_flow_box_new ();
+                gtk_flow_box_set_homogeneous (GTK_FLOW_BOX (box), TRUE);
+                gtk_flow_box_set_row_spacing (GTK_FLOW_BOX (box), 20);
+                gtk_flow_box_set_column_spacing (GTK_FLOW_BOX (box), 20);
+                gtk_flow_box_set_min_children_per_line (GTK_FLOW_BOX (box), 3);
+                gtk_flow_box_set_max_children_per_line (GTK_FLOW_BOX (box), 3);
                 gtk_widget_show (box);
                 gtk_container_add (GTK_CONTAINER (self->category_box), box);
 
