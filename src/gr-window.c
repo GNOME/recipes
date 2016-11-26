@@ -241,7 +241,6 @@ search_changed (GrWindow *window)
         const char *visible;
         g_autoptr(GString) s = NULL;
         g_autoptr(GString) s2 = NULL;
-        int terms;
         GList *children, *l;
 
         visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
@@ -252,7 +251,6 @@ search_changed (GrWindow *window)
         s = g_string_new (gtk_entry_get_text (GTK_ENTRY (window->search_entry)));
 
         s2 = g_string_new ("");
-        terms = 0;
 
         children = gtk_container_get_children (GTK_CONTAINER (window->meal_list));
         for (l = children; l; l = l->next) {
@@ -271,24 +269,19 @@ search_changed (GrWindow *window)
 
                 label = gr_meal_row_get_label (GR_MEAL_ROW (row));
                 if (label) {
-                        if (terms > 0)
+                        if (s2->len > 0)
                                 g_string_append (s2, ", ");
-                        if (terms >= 3)
-                                g_string_append (s2, "…");
-                        else
-                                g_string_append (s2, label);
-                        terms++;
+                        g_string_append (s2, label);
                 }
         }
         g_list_free (children);
 
-        if (terms == 0)
+        if (s2->len == 0)
                 g_string_append (s2, _("Any meal"));
 
         gtk_label_set_label (GTK_LABEL (window->meal_search_button_label), s2->str);
 
         g_string_truncate (s2, 0);
-        terms = 0;
 
         children = gtk_container_get_children (GTK_CONTAINER (window->diet_list));
         for (l = children; l; l = l->next) {
@@ -307,24 +300,19 @@ search_changed (GrWindow *window)
 
                 label = gr_diet_row_get_label (GR_DIET_ROW (row));
                 if (label) {
-                        if (terms > 0)
+                        if (s2->len > 0)
                                 g_string_append (s2, ", ");
-                        if (terms >= 3)
-                                g_string_append (s2, "…");
-                        else
-                                g_string_append (s2, label);
-                        terms++;
+                        g_string_append (s2, label);
                 }
         }
         g_list_free (children);
 
-        if (terms == 0)
+        if (s2->len == 0)
                 g_string_append (s2, _("No restrictions"));
 
         gtk_label_set_label (GTK_LABEL (window->diet_search_button_label), s2->str);
 
         g_string_truncate (s2, 0);
-        terms = 0;
 
         children = gtk_container_get_children (GTK_CONTAINER (window->ingredients_list));
         for (l = children; l; l = l->next) {
@@ -343,18 +331,14 @@ search_changed (GrWindow *window)
 
                 label = gr_ingredient_row_get_label (GR_INGREDIENT_ROW (row));
                 if (label) {
-                        if (terms > 0)
+                        if (s2->len > 0)
                                 g_string_append (s2, ", ");
-                        if (terms >= 3)
-                                g_string_append (s2, "…");
-                        else
-                                g_string_append (s2, label);
-                        terms++;
+                        g_string_append (s2, label);
                 }
         }
         g_list_free (children);
 
-        if (terms == 0)
+        if (s2->len == 0)
                 g_string_append (s2, _("Anything"));
 
         gtk_label_set_label (GTK_LABEL (window->ing_search_button_label), s2->str);

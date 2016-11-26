@@ -444,6 +444,7 @@
           <object class="GtkLabel">
             <property name="visible">1</property>
             <property name="xalign">0</property>
+            <property name="width-chars">30</property>
             <property name="margin-bottom">10</property>
             <property name="label" translatable="yes">Meal</property>
             <style> <class name="dim-label"/> </style>
@@ -462,6 +463,8 @@
                   <object class="GtkLabel" id="meal_search_button_label">
                     <property name="visible">1</property>
                     <property name="xalign">0</property>
+                    <property name="ellipsize">end</property>
+                    <property name="max-width-chars">25</property>
                     <property name="label" translatable="yes">Any meal</property>
                   </object>
                   <packing>
@@ -504,6 +507,7 @@
           <object class="GtkLabel">
             <property name="visible">1</property>
             <property name="xalign">0</property>
+            <property name="width-chars">30</property>
             <property name="margin-bottom">10</property>
             <property name="label" translatable="yes">Dietary restrictions</property>
             <style> <class name="dim-label"/> </style>
@@ -522,6 +526,8 @@
                   <object class="GtkLabel" id="diet_search_button_label">
                     <property name="visible">1</property>
                     <property name="xalign">0</property>
+                    <property name="ellipsize">end</property>
+                    <property name="max-width-chars">25</property>
                     <property name="label" translatable="yes">No restrictions</property>
                   </object>
                   <packing>
@@ -565,6 +571,7 @@
             <property name="visible">1</property>
             <property name="xalign">0</property>
             <property name="margin-bottom">10</property>
+            <property name="width-chars">30</property>
             <property name="label" translatable="yes">Ingredients</property>
             <style> <class name="dim-label"/> </style>
           </object>
@@ -582,6 +589,8 @@
                   <object class="GtkLabel" id="ing_search_button_label">
                     <property name="visible">1</property>
                     <property name="xalign">0</property>
+                    <property name="ellipsize">end</property>
+                    <property name="max-width-chars">25</property>
                     <property name="label" translatable="yes">Anything</property>
                   </object>
                   <packing>
