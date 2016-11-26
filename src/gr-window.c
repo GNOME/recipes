@@ -69,12 +69,15 @@ struct _GrWindow
         GtkWidget *cooking_button;
         GtkWidget *meal_search_revealer;
         GtkWidget *meal_search_button;
+        GtkWidget *meal_search_button_label;
         GtkWidget *meal_list;
         GtkWidget *diet_search_revealer;
         GtkWidget *diet_search_button;
+        GtkWidget *diet_search_button_label;
         GtkWidget *diet_list;
         GtkWidget *ing_search_revealer;
         GtkWidget *ing_search_button;
+        GtkWidget *ing_search_button_label;
         GtkWidget *ingredients_list;
 
         GQueue *back_entry_stack;
@@ -237,6 +240,8 @@ search_changed (GrWindow *window)
 {
         const char *visible;
         g_autoptr(GString) s = NULL;
+        g_autoptr(GString) s2 = NULL;
+        int terms;
         GList *children, *l;
 
         visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
@@ -246,10 +251,14 @@ search_changed (GrWindow *window)
 
         s = g_string_new (gtk_entry_get_text (GTK_ENTRY (window->search_entry)));
 
+        s2 = g_string_new ("");
+        terms = 0;
+
         children = gtk_container_get_children (GTK_CONTAINER (window->meal_list));
         for (l = children; l; l = l->next) {
                 GtkWidget *row = l->data;
                 g_autofree char *term = NULL;
+                g_autofree char *label = NULL;
 
                 if (!GR_IS_MEAL_ROW (row))
                         continue;
@@ -259,13 +268,33 @@ search_changed (GrWindow *window)
                         g_string_append_c (s, ' ');
                         g_string_append (s, term);
                 }
+
+                label = gr_meal_row_get_label (GR_MEAL_ROW (row));
+                if (label) {
+                        if (terms > 0)
+                                g_string_append (s2, ", ");
+                        if (terms >= 3)
+                                g_string_append (s2, "…");
+                        else
+                                g_string_append (s2, label);
+                        terms++;
+                }
         }
         g_list_free (children);
+
+        if (terms == 0)
+                g_string_append (s2, _("Any meal"));
+
+        gtk_label_set_label (GTK_LABEL (window->meal_search_button_label), s2->str);
+
+        g_string_truncate (s2, 0);
+        terms = 0;
 
         children = gtk_container_get_children (GTK_CONTAINER (window->diet_list));
         for (l = children; l; l = l->next) {
                 GtkWidget *row = l->data;
                 g_autofree char *term = NULL;
+                g_autofree char *label = NULL;
 
                 if (!GR_IS_DIET_ROW (row))
                         continue;
@@ -275,13 +304,33 @@ search_changed (GrWindow *window)
                         g_string_append_c (s, ' ');
                         g_string_append (s, term);
                 }
+
+                label = gr_diet_row_get_label (GR_DIET_ROW (row));
+                if (label) {
+                        if (terms > 0)
+                                g_string_append (s2, ", ");
+                        if (terms >= 3)
+                                g_string_append (s2, "…");
+                        else
+                                g_string_append (s2, label);
+                        terms++;
+                }
         }
         g_list_free (children);
+
+        if (terms == 0)
+                g_string_append (s2, _("No restrictions"));
+
+        gtk_label_set_label (GTK_LABEL (window->diet_search_button_label), s2->str);
+
+        g_string_truncate (s2, 0);
+        terms = 0;
 
         children = gtk_container_get_children (GTK_CONTAINER (window->ingredients_list));
         for (l = children; l; l = l->next) {
                 GtkWidget *row = l->data;
                 g_autofree char *term = NULL;
+                g_autofree char *label = NULL;
 
                 if (!GR_IS_INGREDIENT_ROW (row))
                         continue;
@@ -291,8 +340,24 @@ search_changed (GrWindow *window)
                         g_string_append_c (s, ' ');
                         g_string_append (s, term);
                 }
+
+                label = gr_ingredient_row_get_label (GR_INGREDIENT_ROW (row));
+                if (label) {
+                        if (terms > 0)
+                                g_string_append (s2, ", ");
+                        if (terms >= 3)
+                                g_string_append (s2, "…");
+                        else
+                                g_string_append (s2, label);
+                        terms++;
+                }
         }
         g_list_free (children);
+
+        if (terms == 0)
+                g_string_append (s2, _("Anything"));
+
+        gtk_label_set_label (GTK_LABEL (window->ing_search_button_label), s2->str);
 
         gr_search_page_update_search (GR_SEARCH_PAGE (window->search_page), s->str);
 }
@@ -571,12 +636,15 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, cooking_button);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, meal_search_revealer);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, meal_search_button);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, meal_search_button_label);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, meal_list);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, diet_search_revealer);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, diet_search_button);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, diet_search_button_label);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, diet_list);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, ing_search_revealer);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, ing_search_button);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, ing_search_button_label);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, ingredients_list);
 
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), new_recipe);

@@ -441,6 +441,15 @@
         <property name="margin">20</property>
         <property name="orientation">vertical</property>
         <child>
+          <object class="GtkLabel">
+            <property name="visible">1</property>
+            <property name="xalign">0</property>
+            <property name="margin-bottom">10</property>
+            <property name="label" translatable="yes">Meal</property>
+            <style> <class name="dim-label"/> </style>
+          </object>
+        </child>
+        <child>
           <object class="GtkButton" id="meal_search_button">
             <property name="visible">1</property>
             <signal name="clicked" handler="meal_search_button_clicked"/>
@@ -450,10 +459,10 @@
                 <property name="orientation">horizontal</property>
                 <property name="spacing">10</property>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="meal_search_button_label">
                     <property name="visible">1</property>
                     <property name="xalign">0</property>
-                    <property name="label" translatable="yes">Meal</property>
+                    <property name="label" translatable="yes">Any meal</property>
                   </object>
                   <packing>
                     <property name="expand">1</property>
@@ -492,6 +501,15 @@
           </object>
         </child>
         <child>
+          <object class="GtkLabel">
+            <property name="visible">1</property>
+            <property name="xalign">0</property>
+            <property name="margin-bottom">10</property>
+            <property name="label" translatable="yes">Dietary restrictions</property>
+            <style> <class name="dim-label"/> </style>
+          </object>
+        </child>
+        <child>
           <object class="GtkButton" id="diet_search_button">
             <property name="visible">1</property>
             <signal name="clicked" handler="diet_search_button_clicked"/>
@@ -501,10 +519,10 @@
                 <property name="orientation">horizontal</property>
                 <property name="spacing">10</property>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="diet_search_button_label">
                     <property name="visible">1</property>
                     <property name="xalign">0</property>
-                    <property name="label" translatable="yes">Diet</property>
+                    <property name="label" translatable="yes">No restrictions</property>
                   </object>
                   <packing>
                     <property name="expand">1</property>
@@ -543,6 +561,15 @@
           </object>
         </child>
         <child>
+          <object class="GtkLabel">
+            <property name="visible">1</property>
+            <property name="xalign">0</property>
+            <property name="margin-bottom">10</property>
+            <property name="label" translatable="yes">Ingredients</property>
+            <style> <class name="dim-label"/> </style>
+          </object>
+        </child>
+        <child>
           <object class="GtkButton" id="ing_search_button">
             <property name="visible">1</property>
             <signal name="clicked" handler="ing_search_button_clicked"/>
@@ -552,10 +579,10 @@
                 <property name="orientation">horizontal</property>
                 <property name="spacing">10</property>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="ing_search_button_label">
                     <property name="visible">1</property>
                     <property name="xalign">0</property>
-                    <property name="label" translatable="yes">Ingredients</property>
+                    <property name="label" translatable="yes">Anything</property>
                   </object>
                   <packing>
                     <property name="expand">1</property>
