@@ -4,6 +4,11 @@
   <template class="GrCuisinesPage" parent="GtkBox">
     <property name="visible">True</property>
     <property name="orientation">vertical</property>
+    <child internal-child="accessible">
+      <object class="AtkObject">
+        <property name="accessible-name" translatable="yes">Cuisines page</property>
+      </object>
+    </child>
     <child>
       <object class="GtkScrolledWindow">
         <property name="visible">1</property>

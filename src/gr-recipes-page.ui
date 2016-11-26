@@ -4,6 +4,11 @@
   <template class="GrRecipesPage" parent="GtkBox">
     <property name="visible">True</property>
     <property name="orientation">vertical</property>
+    <child internal-child="accessible">
+      <object class="AtkObject">
+        <property name="accessible-name" translatable="yes">Recipes page</property>
+      </object>
+    </child>
     <child>
       <object class="GtkScrolledWindow" id="scrolled_win">
         <property name="visible">1</property>
@@ -19,10 +24,13 @@
             <property name="halign">center</property>
             <property name="valign">start</property>
             <child>
-              <object class="GtkLabel">
+              <object class="GtkLabel" id="today_label">
                 <property name="visible">1</property>
                 <property name="label" translatable="yes">Today</property>
                 <property name="xalign">0</property>
+                <accessibility>
+                  <relation target="today_box" type="label-for"/>
+                </accessibility>
                 <style>
                   <class name="heading"/>
                 </style>
@@ -35,13 +43,19 @@
                 <property name="column-spacing">20</property>
                 <property name="row-homogeneous">1</property>
                 <property name="column-homogeneous">1</property>
+                <accessibility>
+                  <relation target="today_label" type="labelled-by"/>
+                </accessibility>
               </object>
             </child>
             <child>
-              <object class="GtkLabel">
+              <object class="GtkLabel" id="pick_label">
                 <property name="visible">1</property>
                 <property name="label" translatable="yes">Editor&apos;s Picks</property>
                 <property name="xalign">0</property>
+                <accessibility>
+                  <relation target="pick_box" type="label-for"/>
+                </accessibility>
                 <style>
                   <class name="heading"/>
                 </style>
@@ -54,13 +68,19 @@
                 <property name="column-spacing">20</property>
                 <property name="row-homogeneous">1</property>
                 <property name="column-homogeneous">1</property>
+                <accessibility>
+                  <relation target="pick_label" type="labelled-by"/>
+                </accessibility>
               </object>
             </child>
             <child>
-              <object class="GtkLabel">
+              <object class="GtkLabel" id="diet_label">
                 <property name="visible">1</property>
                 <property name="label" translatable="yes">Categories</property>
                 <property name="xalign">0</property>
+                <accessibility>
+                  <relation target="diet_box" type="label-for"/>
+                </accessibility>
                 <style>
                   <class name="heading"/>
                 </style>
@@ -75,6 +95,9 @@
                 <property name="min-children-per-line">3</property>
                 <property name="max-children-per-line">3</property>
                 <property name="selection-mode">none</property>
+                <accessibility>
+                  <relation target="diet_label" type="labelled-by"/>
+                </accessibility>
               </object>
             </child>
             <child>
@@ -152,10 +175,13 @@
               </object>
             </child>
             <child>
-              <object class="GtkLabel">
+              <object class="GtkLabel" id="chefs_label">
                 <property name="visible">1</property>
                 <property name="label" translatable="yes">Featured GNOME Chefs</property>
                 <property name="xalign">0</property>
+                <accessibility>
+                  <relation target="chefs_box" type="label-for"/>
+                </accessibility>
                 <style>
                   <class name="heading"/>
                 </style>
@@ -172,6 +198,9 @@
                 <property name="margin-bottom">20</property>
                 <property name="min-children-per-line">4</property>
                 <signal name="child-activated" handler="show_chef_list"/>
+                <accessibility>
+                  <relation target="chefs_label" type="labelled-by"/>
+                </accessibility>
               </object>
             </child>
           </object>

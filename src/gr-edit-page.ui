@@ -78,7 +78,9 @@
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">1</property>
-                    <property name="label" translatable="yes">Name your recipe</property>
+                    <property name="use-underline">1</property>
+                    <property name="mnemonic-widget">name_entry</property>
+                    <property name="label" translatable="yes">_Name your recipe</property>
                     <property name="xalign">0</property>
                   </object>
                   <packing>
@@ -98,7 +100,9 @@
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">1</property>
-                    <property name="label" translatable="yes">Serves</property>
+                    <property name="use-underline">1</property>
+                    <property name="mnemonic-widget">serves_spin</property>
+                    <property name="label" translatable="yes">_Serves</property>
                     <property name="xalign">0</property>
                   </object>
                   <packing>
@@ -119,6 +123,12 @@
                 <child>
                   <object class="GrImages" id="images">
                     <signal name="notify::images" handler="images_changed" swapped="yes"/>
+                    <accessibility>
+                      <relation target="add_image_button" type="controlled-by"/>
+                      <relation target="remove_image_button" type="controlled-by"/>
+                      <relation target="rotate_image_left_button" type="controlled-by"/>
+                      <relation target="rotate_image_right_button" type="controlled-by"/>
+                    </accessibility>
                   </object>
                   <packing>
                     <property name="left-attach">1</property>
@@ -129,7 +139,9 @@
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">1</property>
-                    <property name="label" translatable="yes">Description</property>
+                    <property name="use-underline">1</property>
+                    <property name="mnemonic-widget">description_entry</property>
+                    <property name="label" translatable="yes">_Description</property>
                     <property name="xalign">0</property>
                   </object>
                   <packing>
@@ -147,6 +159,9 @@
                         <property name="halign">center</property>
                         <property name="valign">start</property>
                         <property name="tooltip-text" translatable="yes">Add an image</property>
+                        <accessibility>
+                          <relation target="images" type="controller-for"/>
+                        </accessibility>
                         <style>
                           <class name="image-button"/>
                           <class name="circular"/>
@@ -171,6 +186,9 @@
                         <property name="halign">center</property>
                         <property name="valign">start</property>
                         <property name="tooltip-text" translatable="yes">Remove image</property>
+                        <accessibility>
+                          <relation target="images" type="controller-for"/>
+                        </accessibility>
                         <style>
                           <class name="image-button"/>
                           <class name="circular"/>
@@ -195,6 +213,9 @@
                         <property name="halign">center</property>
                         <property name="valign">start</property>
                         <property name="tooltip-text" translatable="yes">Rotate image</property>
+                        <accessibility>
+                          <relation target="images" type="controller-for"/>
+                        </accessibility>
                         <style>
                           <class name="image-button"/>
                           <class name="circular"/>
@@ -219,6 +240,9 @@
                         <property name="halign">center</property>
                         <property name="valign">start</property>
                         <property name="tooltip-text" translatable="yes">Rotate image</property>
+                        <accessibility>
+                          <relation target="images" type="controller-for"/>
+                        </accessibility>
                         <style>
                           <class name="image-button"/>
                           <class name="circular"/>
@@ -262,7 +286,9 @@
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">1</property>
-                    <property name="label" translatable="yes">Cuisine</property>
+                    <property name="use-underline">1</property>
+                    <property name="mnemonic-widget">cuisine_combo</property>
+                    <property name="label" translatable="yes">_Cuisine</property>
                     <property name="xalign">0</property>
                   </object>
                   <packing>
@@ -273,7 +299,9 @@
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">1</property>
-                    <property name="label" translatable="yes">Category</property>
+                    <property name="use-underline">1</property>
+                    <property name="mnemonic-widget">category_combo</property>
+                    <property name="label" translatable="yes">Ca_tegory</property>
                     <property name="xalign">0</property>
                   </object>
                   <packing>
@@ -304,7 +332,9 @@
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">1</property>
-                    <property name="label" translatable="yes">Preparation time</property>
+                    <property name="use-underline">1</property>
+                    <property name="mnemonic-widget">prep_time_combo</property>
+                    <property name="label" translatable="yes">_Preparation time</property>
                     <property name="xalign">0</property>
                   </object>
                   <packing>
@@ -315,7 +345,9 @@
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">1</property>
-                    <property name="label">Cooking time</property>
+                    <property name="use-underline">1</property>
+                    <property name="mnemonic-widget">cook_time_combo</property>
+                    <property name="label">C_ooking time</property>
                     <property name="xalign">0</property>
                   </object>
                   <packing>
@@ -360,7 +392,9 @@
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">1</property>
-                    <property name="label" translatable="yes">Ingredients</property>
+                    <property name="use-underline">1</property>
+                    <property name="mnemonic-widget">ingredients_field</property>
+                    <property name="label" translatable="yes">_Ingredients</property>
                     <property name="xalign">0</property>
                   </object>
                   <packing>
@@ -428,7 +462,9 @@
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">1</property>
-                    <property name="label" translatable="yes">Instructions</property>
+                    <property name="use-underline">1</property>
+                    <property name="mnemonic-widget">instructions_field</property>
+                    <property name="label" translatable="yes">In_structions</property>
                     <property name="xalign">0</property>
                   </object>
                   <packing>
@@ -456,7 +492,9 @@
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">1</property>
-                    <property name="label" translatable="yes">Additional notes</property>
+                    <property name="use-underline">1</property>
+                    <property name="mnemonic-widget">notes_field</property>
+                    <property name="label" translatable="yes">_Additional notes</property>
                     <property name="xalign">0</property>
                   </object>
                   <packing>

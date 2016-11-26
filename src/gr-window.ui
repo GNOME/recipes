@@ -15,7 +15,8 @@
             <child>
               <object class="GtkButton" id="new_recipe_button">
                 <property name="visible">1</property>
-                <property name="label" translatable="yes">New Recipe</property>
+                <property name="use-underline">1</property>
+                <property name="label" translatable="yes">_New Recipe</property>
                 <signal name="clicked" handler="new_recipe" swapped="yes"/>
               </object>
             </child>
@@ -31,6 +32,11 @@
                 <child>
                   <object class="GtkToggleButton" id="recipes_search_button">
                     <property name="visible">1</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject">
+                        <property name="accessible-name" translatable="yes">Search</property>
+                      </object>
+                    </child>
                     <style>
                       <class name="image-button"/>
                     </style>
@@ -49,6 +55,11 @@
                 <child>
                   <object class="GtkToggleButton" id="ingredients_search_button">
                     <property name="visible">1</property>
+                    <child internal-child="accessible">
+                      <object class="AtkObject">
+                        <property name="accessible-name" translatable="yes">Search</property>
+                      </object>
+                    </child>
                     <style>
                       <class name="image-button"/>
                     </style>
@@ -82,6 +93,11 @@
               <object class="GtkButton">
                 <property name="visible">1</property>
                 <signal name="clicked" handler="go_back" swapped="yes"/>
+                <child internal-child="accessible">
+                  <object class="AtkObject">
+                    <property name="accessible-name" translatable="yes">Go back</property>
+                  </object>
+                </child>
                 <style>
                   <class name="image-button"/>
                 </style>
@@ -108,6 +124,11 @@
               <object class="GtkButton">
                 <property name="visible">1</property>
                 <signal name="clicked" handler="go_back" swapped="yes"/>
+                <child internal-child="accessible">
+                  <object class="AtkObject">
+                    <property name="accessible-name" translatable="yes">Go back</property>
+                  </object>
+                </child>
                 <style>
                   <class name="image-button"/>
                 </style>
@@ -123,6 +144,11 @@
             <child>
               <object class="GtkToggleButton" id="recipes_search_button2">
                 <property name="visible">1</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject">
+                    <property name="accessible-name" translatable="yes">Search</property>
+                  </object>
+                </child>
                 <style>
                   <class name="image-button"/>
                 </style>
@@ -167,6 +193,11 @@
             <child>
               <object class="GtkToggleButton" id="ingredients_search_button2">
                 <property name="visible">1</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject">
+                    <property name="accessible-name" translatable="yes">Search</property>
+                  </object>
+                </child>
                 <style>
                   <class name="image-button"/>
                 </style>
@@ -194,6 +225,11 @@
             <child>
               <object class="GtkButton">
                 <property name="visible">1</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject">
+                    <property name="accessible-name" translatable="yes">Go back</property>
+                  </object>
+                </child>
                 <signal name="clicked" handler="go_back" swapped="yes"/>
                 <style>
                   <class name="image-button"/>
@@ -249,7 +285,8 @@
             <child>
               <object class="GtkButton">
                 <property name="visible">1</property>
-                <property name="label" translatable="yes">Save</property>
+                <property name="use-underline">1</property>
+                <property name="label" translatable="yes">_Save</property>
                 <signal name="clicked" handler="add_recipe" swapped="yes"/>
                 <style>
                   <class name="suggested-action"/>
@@ -271,6 +308,11 @@
             <child>
               <object class="GtkButton">
                 <property name="visible">1</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject">
+                    <property name="accessible-name" translatable="yes">Go back</property>
+                  </object>
+                </child>
                 <signal name="clicked" handler="go_back" swapped="yes"/>
                 <style>
                   <class name="image-button"/>
