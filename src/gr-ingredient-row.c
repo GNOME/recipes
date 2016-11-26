@@ -127,6 +127,7 @@ update_tag (GrIngredientRow *self)
 
         if ((self->include || self->exclude) && !self->tag) {
                 self->tag = gd_tagged_entry_tag_new ("");
+                gd_tagged_entry_tag_set_style (self->tag, "ingredient-tag");
                 gd_tagged_entry_add_tag (self->entry, self->tag);
                 g_object_set_data (G_OBJECT (self->tag), "row", self);
         }
