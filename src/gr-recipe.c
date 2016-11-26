@@ -551,6 +551,35 @@ gr_recipe_matches (GrRecipe   *self,
                         }
                         continue;
                 }
+                else if (g_str_has_prefix (terms[i], "me:")) {
+                        if (!priv->category || strstr (priv->category, terms[i] + 3) == NULL) {
+                                return FALSE;
+                        }
+                        continue;
+                }
+                else if (g_str_has_prefix (terms[i], "di:")) {
+                        struct { GrDiets diet; const char *term; } diets[] = {
+                                { GR_DIET_GLUTEN_FREE, "gluten-free" },
+                                { GR_DIET_NUT_FREE,    "nut-free" },
+                                { GR_DIET_VEGAN,       "vegan" },
+                                { GR_DIET_VEGETARIAN,  "vegetarian" },
+                                { GR_DIET_MILK_FREE,   "milk-free" },
+                                { 0, NULL }
+                        };
+                        GrDiets d = 0;
+                        int j;
+
+                        for (j = 0; diets[j].term; j++) {
+                                if (strstr (diets[j].term, terms[i] + 3)) {
+                                        d |= diets[j].diet;
+                                }
+                        }
+
+                        if (!(priv->diets & d))
+                                return FALSE;
+
+                        continue;
+                }
 
                 if (priv->cf_name && strstr (priv->cf_name, terms[i]) != NULL)
                         continue;
