@@ -19,9 +19,9 @@ dnl ***********************************************************************
 AC_INIT([recipes],[package_version],[bug_report_url])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_SRCDIR([NEWS])
-AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_AUX_DIR([build-aux])
-AC_SUBST([ACLOCAL_AMFLAGS], "-I m4")
+AC_CONFIG_MACRO_DIRS([m4])
+AC_SUBST([ACLOCAL_AMFLAGS], "-I m4 -I libgd")
 AC_CANONICAL_HOST
 
 
@@ -96,6 +96,8 @@ dnl ***********************************************************************
 PKG_CHECK_MODULES(RECIPES, [gio-2.0 >= 2.42 gtk+-3.0 >= 3.20])
 
 
+LIBGD_INIT([tagged-entry])
+
 dnl ***********************************************************************
 dnl Initialize Libtool
 dnl ***********************************************************************
@@ -108,6 +110,7 @@ dnl Process .in Files
 dnl ***********************************************************************
 AC_CONFIG_FILES([
 	Makefile
+        libgd/Makefile
 	src/Makefile
 	data/Makefile
 	tests/Makefile

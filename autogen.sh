@@ -12,6 +12,8 @@ cd $srcdir
 	exit 1
 }
 
+git submodule update --init --recursive
+
 # shellcheck disable=SC2016
 PKG_NAME=$(autoconf --trace 'AC_INIT:$1' configure.ac)
 

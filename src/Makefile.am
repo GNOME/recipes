@@ -3,9 +3,10 @@ bin_PROGRAMS = recipes
 recipes_CFLAGS = $(RECIPES_CFLAGS) 	\
 	-DPKGDATADIR=\"$(pkgdatadir)\" 	\
 	-DLOCALEDIR=\"$(localedir)\" 	\
+	-I "$(top_srcdir)/libgd"	\
 	-O0 -ggdb
 
-recipes_LDADD = $(RECIPES_LIBS) -lm
+recipes_LDADD = $(RECIPES_LIBS) -lm $(top_builddir)/libgd/libgd.la
 recipes_SOURCES = \
 	main.c 			\
 	gr-app.h 		\

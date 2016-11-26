@@ -1,4 +1,4 @@
-SUBDIRS = data src po tests
+SUBDIRS = libgd data src po tests
 
 EXTRA_DIST = AUTHORS
 
@@ -32,5 +32,7 @@ GITIGNOREFILES = \
 	gtk-doc.make \
 	INSTALL \
 	$(NULL)
+
+ACLOCAL_AMFLAGS=-I m4 -I libgd
 
 -include $(top_srcdir)/git.mk
