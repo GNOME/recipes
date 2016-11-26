@@ -294,7 +294,6 @@ search_changed (GrWindow *window)
         }
         g_list_free (children);
 
-g_print ("search term: %s\n", s->str);
         gr_search_page_update_search (GR_SEARCH_PAGE (window->search_page), s->str);
 }
 
