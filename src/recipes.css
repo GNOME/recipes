@@ -76,6 +76,21 @@ image.chef.circular {
     color: @diet_tag_fg;
 }
 
+.diet-tag.button,
+.diet-tag.button:hover,
+.diet-tag.button:active,
+.diet-tag.button:active:hover {
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+    border-image: none;
+    border-width: 0;
+}
+
+.diet-tag.button:hover {
+    color: shade(@diet_tag_bg, 2.10);
+}
+
 @define-color meal_tag_bg #65a434;
 @define-color meal_tag_fg #ffffff;
 
@@ -94,5 +109,55 @@ image.chef.circular {
 .meal-tag:hover {
     background-color: shade(@meal_tag_bg, 1.10);
     color: @meal_tag_fg;
+}
+
+.meal-tag.button,
+.meal-tag.button:hover,
+.meal-tag.button:active,
+.meal-tag.button:active:hover {
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+    border-image: none;
+    border-width: 0;
+}
+
+.meal-tag.button:hover {
+    color: shade(@meal_tag_bg, 2.10);
+}
+
+@define-color ingredient_tag_bg #3465a4;
+@define-color ingredient_tag_fg #ffffff;
+
+.ingredient-tag {
+    background-image: none;
+    background-color: @ingredient_tag_bg;
+    color: @ingredient_tag_fg;
+
+    border-radius: 4px;
+    border-width: 0;
+
+    margin: 2px;
+    padding: 4px;
+}
+
+.ingredient-tag:hover {
+    background-color: shade(@ingredient_tag_bg, 1.10);
+    color: @ingrdient_tag_fg;
+}
+
+.ingredient-tag.button,
+.ingredient-tag.button:hover,
+.ingredient-tag.button:active,
+.ingredient-tag.button:active:hover {
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+    border-image: none;
+    border-width: 0;
+}
+
+.ingredient-tag.button:hover {
+    color: shade(@ingredient_tag_bg, 2.10);
 }
 
