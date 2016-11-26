@@ -27,11 +27,12 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrMealRow, gr_meal_row, GR, MEAL_ROW, GtkListBoxRow)
 
-GrMealRow *gr_meal_row_new       (const char *meal);
+GrMealRow   *gr_meal_row_new       (const char *meal);
 
-void       gr_meal_row_set_entry (GrMealRow       *row,
-                                  GdTaggedEntry   *entry);
+void         gr_meal_row_set_entry (GrMealRow       *row,
+                                    GdTaggedEntry   *entry);
 
-char *     gr_meal_row_get_search_term (GrMealRow *row);
+char *      gr_meal_row_get_search_term (GrMealRow *row);
+char *      gr_meal_row_get_label       (GrMealRow *row);
 
 G_END_DECLS

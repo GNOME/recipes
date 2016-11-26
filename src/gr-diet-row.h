@@ -28,11 +28,12 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrDietRow, gr_diet_row, GR, DIET_ROW, GtkListBoxRow)
 
-GrDietRow *gr_diet_row_new       (GrDiets          diet);
+GrDietRow  *gr_diet_row_new       (GrDiets          diet);
 
-void       gr_diet_row_set_entry (GrDietRow       *row,
-                                  GdTaggedEntry   *entry);
+void        gr_diet_row_set_entry (GrDietRow       *row,
+                                   GdTaggedEntry   *entry);
 
-char *     gr_diet_row_get_search_term (GrDietRow *row);
+char *      gr_diet_row_get_search_term (GrDietRow *row);
+char *      gr_diet_row_get_label       (GrDietRow *row);
 
 G_END_DECLS

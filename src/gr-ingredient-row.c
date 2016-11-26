@@ -253,3 +253,14 @@ gr_ingredient_row_get_search_term (GrIngredientRow *row)
         else
                 return NULL;
 }
+
+char *
+gr_ingredient_row_get_label (GrIngredientRow *row)
+{
+        if (row->include)
+                return g_strdup (row->ingredient);
+        else if (row->exclude)
+                return g_strdup_printf (_("no %s"), row->ingredient);
+        else
+                return NULL;
+}

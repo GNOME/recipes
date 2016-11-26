@@ -253,3 +253,12 @@ gr_diet_row_get_search_term (GrDietRow *row)
 
         return NULL;
 }
+
+char *
+gr_diet_row_get_label (GrDietRow *row)
+{
+        if (row->include)
+                return g_strdup (gtk_label_get_label (GTK_LABEL (row->label)));
+        else
+                return NULL;
+}
