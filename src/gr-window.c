@@ -93,10 +93,7 @@ save_back_entry (GrWindow *window)
         entry->page = g_strdup (gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack)));
         entry->header = g_strdup (gtk_stack_get_visible_child_name (GTK_STACK (window->header_stack)));
         if (strcmp (entry->page, "search") == 0)
-                {
                 entry->search = g_strdup (gr_query_editor_get_query (GR_QUERY_EDITOR (window->search_bar)));
-                g_print ("saved search: %s\n", entry->search);
-                }
         else
                 entry->search = NULL;
 
@@ -115,9 +112,7 @@ go_back (GrWindow *window)
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_stack), entry->header);
         gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), entry->page);
         if (strcmp (entry->page, "search") == 0) {
-                g_print ("setting search mode\n");
                 gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (window->search_bar), TRUE);
-                g_print ("setting search term: %s\n", entry->search);
                 gr_query_editor_set_query (GR_QUERY_EDITOR (window->search_bar), entry->search);
         }
         else {
