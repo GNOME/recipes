@@ -1601,9 +1601,9 @@ gr_recipe_search_finalize (GObject *object)
 {
         GrRecipeSearch *search = (GrRecipeSearch *)object;
 
-        gr_recipe_search_stop (search);
-        g_object_unref (search->store);
+        stop_search (search);
         g_free (search->query);
+        g_object_unref (search->store);
 
         G_OBJECT_CLASS (gr_recipe_search_parent_class)->finalize (object);
 }
