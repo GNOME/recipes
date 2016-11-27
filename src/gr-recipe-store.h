@@ -78,4 +78,15 @@ void            gr_recipe_store_add_cooked          (GrRecipeStore  *store,
 int             gr_recipe_store_get_cooked          (GrRecipeStore  *store,
 				                     GrRecipe       *recipe);
 
+#define GR_TYPE_RECIPE_SEARCH (gr_recipe_search_get_type())
+
+G_DECLARE_FINAL_TYPE (GrRecipeSearch, gr_recipe_search, GR, RECIPE_SEARCH, GObject)
+
+GrRecipeSearch *gr_recipe_search_new       (void);
+
+void            gr_recipe_search_set_query (GrRecipeSearch *search,
+                                            const char     *query);
+const char *    gr_recipe_search_get_query (GrRecipeSearch *search);
+void            gr_recipe_search_stop      (GrRecipeSearch *search);
+
 G_END_DECLS

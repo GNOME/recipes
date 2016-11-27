@@ -31,6 +31,7 @@
 #include "gr-utils.h"
 #include "gr-ingredients-list.h"
 #include "gr-images.h"
+#include "gr-app.h"
 
 
 struct _GrRecipeStore
@@ -1379,4 +1380,306 @@ gr_recipe_store_get_cooked (GrRecipeStore *store,
         name = gr_recipe_get_name (recipe);
 
         return GPOINTER_TO_INT (g_hash_table_lookup (store->cooked, name));
+}
+
+/*** search implementation ***/
+
+struct _GrRecipeSearch
+{
+        GObject parent_instance;
+
+        GrRecipeStore *store;
+
+        char *query;
+
+        gulong idle;
+        GHashTableIter iter;
+
+        GList *results;
+        GList *pending;
+        int n_pending;
+
+        gboolean running;
+};
+
+enum {
+        STARTED,
+        HITS_ADDED,
+        HITS_REMOVED,
+        FINISHED,
+        LAST_SEARCH_SIGNAL
+};
+
+static guint search_signals[LAST_SEARCH_SIGNAL];
+
+G_DEFINE_TYPE (GrRecipeSearch, gr_recipe_search, G_TYPE_OBJECT)
+
+GrRecipeSearch *
+gr_recipe_search_new (void)
+{
+        GrRecipeSearch *search;
+
+        search = GR_RECIPE_SEARCH (g_object_new (GR_TYPE_RECIPE_SEARCH, NULL));
+
+        search->store = g_object_ref (gr_app_get_recipe_store (GR_APP (g_application_get_default ())));
+
+        return search;
+}
+
+static void
+add_pending (GrRecipeSearch *search,
+             GrRecipe       *recipe)
+{
+        search->pending = g_list_prepend (search->pending, recipe);
+        search->n_pending++;
+}
+
+static void
+clear_pending (GrRecipeSearch *search)
+{
+        search->results = g_list_concat (search->results, search->pending);
+        search->pending = NULL;
+        search->n_pending = 0;
+}
+
+static void
+send_pending (GrRecipeSearch *search)
+{
+        g_signal_emit (search, search_signals[HITS_ADDED], 0, search->pending);
+        clear_pending (search);
+}
+
+static void
+clear_results (GrRecipeSearch *search)
+{
+        g_list_free (search->results);
+        search->results = NULL;
+}
+
+static gboolean
+search_idle (gpointer data)
+{
+        GrRecipeSearch *search = data;
+        int count;
+        const char *key;
+        GrRecipe *recipe;
+
+        count = 0;
+        while (g_hash_table_iter_next (&search->iter, (gpointer *)&key, (gpointer *)&recipe)) {
+                count++;
+
+                if (gr_recipe_matches (recipe, search->query))
+                        add_pending (search, recipe);
+
+                if (search->n_pending > 2) {
+                        send_pending (search);
+                        return G_SOURCE_CONTINUE;
+                }
+
+                if (count == 9) {
+                        return G_SOURCE_CONTINUE;
+                }
+        }
+
+        if (search->n_pending > 0)
+                send_pending (search);
+
+        g_signal_emit (search, search_signals[FINISHED], 0);
+        search->idle = 0;
+
+        return G_SOURCE_REMOVE;
+}
+
+static void
+start_search (GrRecipeSearch *search)
+{
+        if (search->query == NULL) {
+                g_warning ("No query set");
+                return;
+        }
+
+        if (search->idle == 0) {
+                g_hash_table_iter_init (&search->iter, search->store->recipes);
+                clear_pending (search);
+                clear_results (search);
+                search->idle = g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, search_idle, search, NULL);
+                g_signal_emit (search, search_signals[STARTED], 0);
+        }
+}
+
+static void
+stop_search (GrRecipeSearch *search)
+{
+        send_pending (search);
+        clear_results (search);
+        if (search->idle != 0) {
+                g_source_remove (search->idle);
+                search->idle = 0;
+        }
+}
+
+static void
+refilter_existing_results (GrRecipeSearch *search)
+{
+        GList *l;
+        GList *rejected, *accepted;
+
+        /* FIXME: do this incrementally */
+
+        rejected = NULL;
+        accepted = NULL;
+        for (l = search->results; l; l = l->next) {
+                GrRecipe *recipe = l->data;
+
+                if (gr_recipe_matches (recipe, search->query))
+                        accepted = g_list_append (accepted, recipe);
+                else
+                        rejected = g_list_append (rejected, recipe);
+        }
+
+        g_list_free (search->results);
+        search->results = accepted;
+        if (rejected) {
+                g_signal_emit (search, search_signals[HITS_REMOVED], 0, rejected);
+                g_list_free (rejected);
+        }
+
+        if (search->idle == 0) {
+                g_signal_emit (search, search_signals[FINISHED], 0);
+        }
+}
+
+static gboolean
+query_is_narrowing (GrRecipeSearch *search,
+                    const char     *query)
+{
+        /* FIXME: can be more precise */
+        return search->query && g_str_has_prefix (query, search->query);
+}
+
+void
+gr_recipe_search_stop (GrRecipeSearch *search)
+{
+        stop_search (search);
+        g_clear_pointer (&search->query, g_free);
+}
+
+void
+gr_recipe_search_set_query (GrRecipeSearch *search,
+                            const char     *query)
+{
+        gboolean narrowing;
+
+        if (query == NULL) {
+                stop_search (search);
+                g_clear_pointer (&search->query, g_free);
+                return;
+        }
+
+        narrowing = query_is_narrowing (search, query);
+
+        g_free (search->query);
+        search->query = g_strdup (query);
+
+        if (narrowing) {
+                refilter_existing_results (search);
+        }
+        else {
+                stop_search (search);
+                start_search (search);
+        }
+}
+
+const char *
+gr_recipe_search_get_query (GrRecipeSearch *search)
+{
+        return search->query;
+}
+
+static void
+gr_recipe_search_finalize (GObject *object)
+{
+        GrRecipeSearch *search = (GrRecipeSearch *)object;
+
+        gr_recipe_search_stop (search);
+        g_object_unref (search->store);
+        g_free (search->query);
+
+        G_OBJECT_CLASS (gr_recipe_search_parent_class)->finalize (object);
+}
+
+static void
+gr_recipe_search_class_init (GrRecipeSearchClass *klass)
+{
+        GObjectClass *object_class = G_OBJECT_CLASS (klass);
+
+        object_class->finalize = gr_recipe_search_finalize;
+
+        /**
+         * GrRecipeSearch::started:
+         *
+         * Gets emitted whenever a new set of results is started.
+         * Users are expected to clear their list of results.
+         */
+        search_signals[STARTED] =
+                g_signal_new ("started",
+                              G_TYPE_FROM_CLASS (klass),
+                              G_SIGNAL_RUN_LAST,
+                              0,
+                              NULL, NULL,
+                              NULL,
+                              G_TYPE_NONE, 0);
+
+        /**
+         * GrRecipeSearch::hits-added:
+         *
+         * Gets emitted whenever more results are added to the total result set.
+         * Users are expeted to update their list of results.
+         */
+        search_signals[HITS_ADDED] =
+                g_signal_new ("hits-added",
+                              G_TYPE_FROM_CLASS (klass),
+                              G_SIGNAL_RUN_LAST,
+                              0,
+                              NULL, NULL,
+                              NULL,
+                              G_TYPE_NONE, 1,
+                              G_TYPE_POINTER);
+
+        /**
+         * GrRecipeSearch::hits-removed:
+         *
+         * Gets emitted when existing results are removed from the total result set.
+         * This can happen when a narrower query is set.
+         * Users are expeted to update their list of results.
+         */
+        search_signals[HITS_REMOVED] =
+                g_signal_new ("hits-removed",
+                              G_TYPE_FROM_CLASS (klass),
+                              G_SIGNAL_RUN_LAST,
+                              0,
+                              NULL, NULL,
+                              NULL,
+                              G_TYPE_NONE, 1,
+                              G_TYPE_POINTER);
+
+        /**
+         * GrRecipeSearch::finished:
+         *
+         * Indicates that no more ::hits-added or ::hits-removed signals will be
+         * emitted until the query is changed.
+         */
+        search_signals[FINISHED] =
+                g_signal_new ("finished",
+                              G_TYPE_FROM_CLASS (klass),
+                              G_SIGNAL_RUN_LAST,
+                              0,
+                              NULL, NULL,
+                              NULL,
+                              G_TYPE_NONE, 0);
+}
+
+static void
+gr_recipe_search_init (GrRecipeSearch *self)
+{
 }

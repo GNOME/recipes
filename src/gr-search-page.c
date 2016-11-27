@@ -37,8 +37,9 @@ struct _GrSearchPage
 
         GtkWidget *search_stack;
         GtkWidget *flow_box;
+        int count;
 
-        char *term;
+        GrRecipeSearch *search;
 };
 
 G_DEFINE_TYPE (GrSearchPage, gr_search_page, GTK_TYPE_BOX)
@@ -50,9 +51,66 @@ search_page_finalize (GObject *object)
 {
         GrSearchPage *self = GR_SEARCH_PAGE (object);
 
-        g_clear_pointer (&self->term, g_free);
+        g_clear_object (&self->search);
 
         G_OBJECT_CLASS (gr_search_page_parent_class)->finalize (object);
+}
+
+static void
+search_started (GrRecipeSearch *search,
+                GrSearchPage   *page)
+{
+        container_remove_all (GTK_CONTAINER (page->flow_box));
+        page->count = 0;
+}
+
+static void
+search_hits_added (GrRecipeSearch *search,
+                   GList          *hits,
+                   GrSearchPage   *page)
+{
+        GList *l;
+
+        for (l = hits; l; l = l->next) {
+                GrRecipe *recipe = l->data;
+                GtkWidget *tile;
+
+                tile = gr_recipe_tile_new (recipe);
+                gtk_widget_show (tile);
+                gtk_container_add (GTK_CONTAINER (page->flow_box), tile);
+
+                page->count++;
+        }
+}
+
+static void
+search_hits_removed (GrRecipeSearch *search,
+                     GList          *hits,
+                     GrSearchPage   *page)
+{
+        GList *children, *l;
+
+        children = gtk_container_get_children (GTK_CONTAINER (page->flow_box));
+        for (l = children; l; l = l->next) {
+                GtkWidget *item = l->data;
+                GtkWidget *tile;
+                GrRecipe *recipe;
+
+                tile = gtk_bin_get_child (GTK_BIN (item));
+                recipe = gr_recipe_tile_get_recipe (GR_RECIPE_TILE (tile));
+                if (g_list_find (hits, recipe)) {
+                        gtk_container_remove (GTK_CONTAINER (page->flow_box), item);
+                        page->count--;
+                }
+        }
+}
+
+static void
+search_finished (GrRecipeSearch *search,
+                 GrSearchPage   *page)
+{
+        gtk_stack_set_visible_child_name (GTK_STACK (page->search_stack),
+                                          page->count > 0 ? "list" : "empty");
 }
 
 static void
@@ -61,6 +119,12 @@ gr_search_page_init (GrSearchPage *page)
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
         gtk_widget_init_template (GTK_WIDGET (page));
         connect_store_signals (page);
+
+        page->search = gr_recipe_search_new ();
+        g_signal_connect (page->search, "started", G_CALLBACK (search_started), page);
+        g_signal_connect (page->search, "hits-added", G_CALLBACK (search_hits_added), page);
+        g_signal_connect (page->search, "hits-removed", G_CALLBACK (search_hits_removed), page);
+        g_signal_connect (page->search, "finished", G_CALLBACK (search_finished), page);
 }
 
 static void
@@ -114,67 +178,23 @@ void
 gr_search_page_update_search (GrSearchPage *page,
                               const char   *term)
 {
-        GrRecipeStore *store;
-        g_autofree char **keys = NULL;
         g_autofree char *cf_term = NULL;
-        guint length;
-        int i;
-        gboolean filled = FALSE;
+
+        gtk_stack_set_visible_child_name (GTK_STACK (page->search_stack), "list");
 
         if (term == NULL || strlen (term) < 3) {
                 container_remove_all (GTK_CONTAINER (page->flow_box));
-                gtk_stack_set_visible_child_name (GTK_STACK (page->search_stack), "list");
                 return;
         }
 
         cf_term = g_utf8_casefold (term, -1);
-
-        if (page->term && g_str_has_prefix (cf_term, page->term)) {
-                CheckData data;
-
-                data.term = cf_term;
-                data.filled = FALSE;
-                /* narrowing search */
-                gtk_container_forall (GTK_CONTAINER (page->flow_box), check_match, &data);
-                filled = data.filled;
-        }
-        else {
-                container_remove_all (GTK_CONTAINER (page->flow_box));
-
-                store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
-                keys = gr_recipe_store_get_recipe_keys (store, &length);
-
-                for (i = 0; i < length; i++) {
-                        g_autoptr(GrRecipe) recipe = NULL;
-                        GtkWidget *tile;
-
-                        recipe = gr_recipe_store_get (store, keys[i]);
-                        if (gr_recipe_matches (recipe, cf_term)) {
-                                tile = gr_recipe_tile_new (recipe);
-                                gtk_widget_show (tile);
-                                gtk_container_add (GTK_CONTAINER (page->flow_box), tile);
-                                filled = TRUE;
-                        }
-                }
-        }
-
-        gtk_stack_set_visible_child_name (GTK_STACK (page->search_stack), filled ? "list" : "empty");
-
-        g_free (page->term);
-        page->term = g_strdup (cf_term);
+        gr_recipe_search_set_query (page->search, cf_term);
 }
 
 static void
 search_page_reload (GrSearchPage *page)
 {
-        g_autofree char *term = NULL;
-
-        term = page->term;
-        page->term = NULL;
-
-        container_remove_all (GTK_CONTAINER (page->flow_box));
-
-        gr_search_page_update_search (page, term);
+        gr_search_page_update_search (page, gr_recipe_search_get_query (page->search));
 }
 
 static void
