@@ -92,13 +92,9 @@ gr_ingredient_row_get_property (GObject    *object,
 static void
 update_image (GrIngredientRow *self)
 {
-        if (self->include) {
+        if (self->include || self->exclude) {
                 gtk_widget_set_opacity (self->image, 1);
                 gtk_image_set_from_icon_name (GTK_IMAGE (self->image), "object-select-symbolic", 1);
-        }
-        else if (self->exclude) {
-                gtk_widget_set_opacity (self->image, 1);
-                gtk_image_set_from_icon_name (GTK_IMAGE (self->image), "window-close-symbolic", 1);
         }
         else
                 gtk_widget_set_opacity (self->image, 0);
@@ -107,7 +103,15 @@ update_image (GrIngredientRow *self)
 static void
 update_label (GrIngredientRow *self)
 {
-        gtk_label_set_label (GTK_LABEL (self->label), self->ingredient);
+        if (self->include)
+                gtk_label_set_label (GTK_LABEL (self->label), self->ingredient);
+        else if (self->exclude) {
+                g_autofree char *tmp;
+                tmp = g_strdup_printf (_("no %s"), self->ingredient);
+                gtk_label_set_label (GTK_LABEL (self->label), tmp);
+        }
+        else
+                gtk_label_set_label (GTK_LABEL (self->label), self->ingredient);
 }
 
 static void
@@ -153,8 +157,10 @@ gr_ingredient_row_notify (GObject *object, GParamSpec *pspec)
                 update_label (self);
 
         if (pspec->param_id == PROP_INCLUDE ||
-            pspec->param_id == PROP_EXCLUDE)
+            pspec->param_id == PROP_EXCLUDE) {
+                update_label (self);
                 update_image (self);
+        }
 
         update_tag (self);
 }
