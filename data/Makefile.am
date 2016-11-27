@@ -11,6 +11,7 @@ desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 	msgfmt --desktop -d $(top_srcdir)/po --template $< -o $@
 
 ingredientsdir = $(pkgdatadir)/ingredients
+imagesdir = $(pkgdatadir)/images
 
 ingredients_DATA = \
 	Almond.png 	\
@@ -28,8 +29,25 @@ ingredients_DATA = \
 	Biscotti.png 	\
 	Carrot.png
 
+images_DATA = \
+	alex.png		\
+	bagel.jpg		\
+	burger-fries.jpg	\
+	coffee.jpg		\
+	elvin.jpg		\
+	food.jpg		\
+	mclasen.jpg		\
+	meatballs.jpg		\
+	pesto.jpg		\
+	pizza.jpg		\
+	plain-bagel.jpg		\
+	salad.jpg		\
+	spring-rolls.jpg
+
 pkgdata_DATA = \
-	picks.db
+	chefs.db	\
+	picks.db	\
+	recipes.db
 
 iconthemedir = $(datadir)/icons/hicolor
 
