@@ -31,13 +31,8 @@
 #include "gr-cuisine-page.h"
 #include "gr-search-page.h"
 #include "gr-recipes-page.h"
-#include "gr-ingredient.h"
-#include "gr-category.h"
-#include "gr-ingredient-row.h"
-#include "gr-diet-row.h"
-#include "gr-meal-row.h"
-#include "gr-query-editor.h"
 #include "gr-ingredients-page.h"
+#include "gr-query-editor.h"
 
 
 struct _GrWindow
@@ -220,29 +215,6 @@ search_changed (GrWindow *window)
 }
 
 static void
-search_mode_enabled (GrWindow   *window,
-                     GParamSpec *pspec)
-{
-        const char *visible;
-        g_autofree char *terms = NULL;
-
-        visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
-
-        if (!gtk_search_bar_get_search_mode (GTK_SEARCH_BAR (window->search_bar)))
-                return;
-
-        if (strcmp (visible, "ingredients") != 0)
-               return;
-
-       switch_to_search (window);
-
-#if 0
-       terms = gr_ingredients_page_get_search_terms (GR_INGREDIENTS_PAGE (window->ingredients_page));
-       gtk_entry_set_text (GTK_ENTRY (window->search_entry), terms);
-#endif
-}
-
-static void
 update_cooking_button (GrWindow *window,
                        gboolean  cooking)
 {
@@ -384,7 +356,6 @@ gr_window_init (GrWindow *self)
 
         g_signal_connect_swapped (self->search_bar, "changed", G_CALLBACK (search_changed), self);
         g_signal_connect_swapped (self->search_bar, "cancel", G_CALLBACK (stop_search), self);
-        g_signal_connect_swapped (self->search_bar, "notify::search-mode-enabled", G_CALLBACK (search_mode_enabled), self);
         g_signal_connect_after (self, "key-press-event", G_CALLBACK (window_keypress_handler), NULL);
 }
 
