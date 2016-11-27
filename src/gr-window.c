@@ -282,6 +282,15 @@ window_keypress_handler (GtkWidget *widget,
 }
 
 static void
+window_mapped_handler (GtkWidget *widget)
+{
+        GrWindow *window = GR_WINDOW (widget);
+
+        gtk_window_set_resizable (GTK_WINDOW (window), TRUE);
+        gr_recipes_page_set_categories_expanded (GR_RECIPES_PAGE (window->recipes_page), FALSE);
+}
+
+static void
 hide_or_show_header_end_stack (GObject    *object,
                                GParamSpec *pspec,
                                GrWindow   *window)
@@ -344,6 +353,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, search_changed);
         gtk_widget_class_bind_template_callback (widget_class, stop_search);
         gtk_widget_class_bind_template_callback (widget_class, window_keypress_handler);
+        gtk_widget_class_bind_template_callback (widget_class, window_mapped_handler);
 }
 
 static void
@@ -379,7 +389,7 @@ gr_window_show_recipe (GrWindow *window,
         update_cooking_button (window, gr_details_page_is_cooking (GR_DETAILS_PAGE (window->details_page)));
 
         gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (window->search_bar), FALSE);
- 
+
         gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), gr_recipe_get_name (recipe));
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");

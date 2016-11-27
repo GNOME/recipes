@@ -75,6 +75,10 @@ void
 gr_recipes_page_set_categories_expanded (GrRecipesPage *page,
                                          gboolean       expanded)
 {
+        gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (page->scrolled_win),
+                                        GTK_POLICY_NEVER,
+                                        GTK_POLICY_AUTOMATIC);
+
         gtk_revealer_set_transition_duration (GTK_REVEALER (page->categories_expander), expanded ? 250 : 0);
         gtk_revealer_set_transition_duration (GTK_REVEALER (page->diet_more), expanded ? 250 : 0);
 

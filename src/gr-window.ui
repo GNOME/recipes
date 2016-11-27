@@ -2,10 +2,9 @@
 <interface domain="recipes">
   <!-- interface-requires gtk+ 3.8 -->
   <template class="GrWindow" parent="GtkApplicationWindow">
-    <property name="default-width">1024</property>
-    <property name="default-height">768</property>
-    <property name="resizable">1</property>
+    <property name="resizable">0</property>
     <signal name="key-press-event" handler="window_keypress_handler" after="yes"/>
+    <signal name="map" handler="window_mapped_handler" after="yes"/>
     <child type="titlebar">
       <object class="GtkHeaderBar" id="header">
         <property name="visible">1</property>
