@@ -265,3 +265,9 @@ gr_ingredient_row_get_label (GrIngredientRow *row)
         else
                 return NULL;
 }
+
+const char *
+gr_ingredient_row_get_ingredient (GrIngredientRow *row)
+{
+        return row->ingredient;
+}

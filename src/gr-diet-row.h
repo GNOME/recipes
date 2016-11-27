@@ -35,5 +35,6 @@ void        gr_diet_row_set_entry (GrDietRow       *row,
 
 char *      gr_diet_row_get_search_term (GrDietRow *row);
 char *      gr_diet_row_get_label       (GrDietRow *row);
+const char *gr_diet_row_get_diet        (GrDietRow *row);
 
 G_END_DECLS

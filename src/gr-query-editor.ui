@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="recipes">
+  <!-- interface-requires gtk+ 3.8 -->
+  <template class="GrQueryEditor" parent="GtkSearchBar">
+    <child>
+      <object class="GtkBox">
+        <property name="visible">1</property>
+        <property name="orientation">horizontal</property>
+        <style>
+          <class name="linked"/>
+        </style>
+        <child>
+          <object class="GdTaggedEntry" id="entry">
+            <property name="visible">1</property>
+            <property name="width-request">500</property>
+            <signal name="tag-clicked" handler="tag_clicked"/>
+            <signal name="tag-button-clicked" handler="tag_button_clicked"/>
+            <signal name="key-press-event" handler="entry_key_press_event_cb"/>
+            <signal name="activate" handler="entry_activate_cb"/>
+            <signal name="search-changed" handler="entry_changed_cb"/>
+            <signal name="stop-search" handler="stop_search_cb"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkMenuButton">
+            <property name="visible">1</property>
+            <property name="popover">popover</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+  <object class="GtkPopover" id="popover">
+    <property name="modal">0</property>
+    <property name="position">bottom</property>
+    <property name="constrain-to">window</property>
+    <property name="width-request">250</property>
+    <signal name="notify::visible" handler="search_popover_notify"/>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">1</property>
+        <property name="margin">20</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">1</property>
+            <property name="xalign">0</property>
+            <property name="width-chars">30</property>
+            <property name="margin-bottom">10</property>
+            <property name="label" translatable="yes">Meal</property>
+            <style> <class name="dim-label"/> </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="meal_search_button">
+            <property name="visible">1</property>
+            <signal name="clicked" handler="meal_search_button_clicked"/>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">1</property>
+                <property name="orientation">horizontal</property>
+                <property name="spacing">10</property>
+                <child>
+                  <object class="GtkLabel" id="meal_search_button_label">
+                    <property name="visible">1</property>
+                    <property name="xalign">0</property>
+                    <property name="ellipsize">end</property>
+                    <property name="max-width-chars">25</property>
+                    <property name="label" translatable="yes">Any meal</property>
+                  </object>
+                  <packing>
+                    <property name="expand">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">1</property>
+                    <property name="icon-name">pan-down-symbolic</property>
+                    <property name="icon-size">1</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkRevealer" id="meal_search_revealer">
+            <property name="visible">1</property>
+            <property name="transition-type">slide-down</property>
+            <property name="margin-bottom">20</property>
+            <child>
+              <object class="GtkScrolledWindow">
+                <property name="visible">1</property>
+                <property name="shadow-type">in</property>
+                <property name="hscrollbar-policy">never</property>
+                <property name="vscrollbar-policy">never</property>
+                <child>
+                  <object class="GtkListBox" id="meal_list">
+                    <property name="visible">1</property>
+                    <property name="selection-mode">none</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">1</property>
+            <property name="xalign">0</property>
+            <property name="width-chars">30</property>
+            <property name="margin-bottom">10</property>
+            <property name="label" translatable="yes">Dietary restrictions</property>
+            <style> <class name="dim-label"/> </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="diet_search_button">
+            <property name="visible">1</property>
+            <signal name="clicked" handler="diet_search_button_clicked"/>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">1</property>
+                <property name="orientation">horizontal</property>
+                <property name="spacing">10</property>
+                <child>
+                  <object class="GtkLabel" id="diet_search_button_label">
+                    <property name="visible">1</property>
+                    <property name="xalign">0</property>
+                    <property name="ellipsize">end</property>
+                    <property name="max-width-chars">25</property>
+                    <property name="label" translatable="yes">No restrictions</property>
+                  </object>
+                  <packing>
+                    <property name="expand">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">1</property>
+                    <property name="icon-name">pan-down-symbolic</property>
+                    <property name="icon-size">1</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkRevealer" id="diet_search_revealer">
+            <property name="visible">1</property>
+            <property name="transition-type">slide-down</property>
+            <property name="margin-bottom">20</property>
+            <child>
+              <object class="GtkScrolledWindow">
+                <property name="visible">1</property>
+                <property name="shadow-type">in</property>
+                <property name="hscrollbar-policy">never</property>
+                <property name="vscrollbar-policy">never</property>
+                <child>
+                  <object class="GtkListBox" id="diet_list">
+                    <property name="visible">1</property>
+                    <property name="selection-mode">none</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">1</property>
+            <property name="xalign">0</property>
+            <property name="margin-bottom">10</property>
+            <property name="width-chars">30</property>
+            <property name="label" translatable="yes">Ingredients</property>
+            <style> <class name="dim-label"/> </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="ing_search_button">
+            <property name="visible">1</property>
+            <signal name="clicked" handler="ing_search_button_clicked"/>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">1</property>
+                <property name="orientation">horizontal</property>
+                <property name="spacing">10</property>
+                <child>
+                  <object class="GtkLabel" id="ing_search_button_label">
+                    <property name="visible">1</property>
+                    <property name="xalign">0</property>
+                    <property name="ellipsize">end</property>
+                    <property name="max-width-chars">25</property>
+                    <property name="label" translatable="yes">Anything</property>
+                  </object>
+                  <packing>
+                    <property name="expand">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">1</property>
+                    <property name="icon-name">pan-down-symbolic</property>
+                    <property name="icon-size">1</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkRevealer" id="ing_search_revealer">
+            <property name="visible">1</property>
+            <property name="transition-type">slide-down</property>
+            <child>
+              <object class="GtkScrolledWindow">
+                <property name="visible">1</property>
+                <property name="shadow-type">in</property>
+                <property name="hscrollbar-policy">never</property>
+                <property name="vscrollbar-policy">automatic</property>
+                <property name="propagate-natural-height">1</property>
+                <property name="max-content-height">300</property>
+                <child>
+                  <object class="GtkListBox" id="ing_list">
+                    <property name="visible">1</property>
+                    <property name="selection-mode">none</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

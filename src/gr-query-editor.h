@@ -1,4 +1,4 @@
-/* gr-meal-row.h
+/* gr-query-editor.h
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *
@@ -19,21 +19,17 @@
 #pragma once
 
 #include <gtk/gtk.h>
-#include <libgd/gd.h>
 
 G_BEGIN_DECLS
 
-#define GR_TYPE_MEAL_ROW (gr_meal_row_get_type())
+#define GR_TYPE_QUERY_EDITOR (gr_query_editor_get_type())
 
-G_DECLARE_FINAL_TYPE (GrMealRow, gr_meal_row, GR, MEAL_ROW, GtkListBoxRow)
+G_DECLARE_FINAL_TYPE (GrQueryEditor, gr_query_editor, GR, QUERY_EDITOR, GtkSearchBar)
 
-GrMealRow   *gr_meal_row_new       (const char *meal);
+GrQueryEditor *gr_query_editor_new (void);
 
-void         gr_meal_row_set_entry (GrMealRow       *row,
-                                    GdTaggedEntry   *entry);
-
-const char *gr_meal_row_get_meal        (GrMealRow *row);
-char *      gr_meal_row_get_search_term (GrMealRow *row);
-char *      gr_meal_row_get_label       (GrMealRow *row);
+char *         gr_query_editor_get_query (GrQueryEditor *editor);
+void           gr_query_editor_set_query (GrQueryEditor *editor,
+                                          const char    *query);
 
 G_END_DECLS

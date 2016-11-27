@@ -260,3 +260,9 @@ gr_meal_row_get_label (GrMealRow *row)
         else
                 return NULL;
 }
+
+const char *
+gr_meal_row_get_meal (GrMealRow *row)
+{
+        return row->meal;
+}

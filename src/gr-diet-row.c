@@ -32,6 +32,7 @@ struct _GrDietRow
         GtkWidget *label;
         GtkWidget *image;
 
+        char *diet_name;
         GrDiets diet;
 
         gboolean include;
@@ -234,24 +235,30 @@ gr_diet_row_set_entry (GrDietRow     *row,
 char *
 gr_diet_row_get_search_term (GrDietRow *row)
 {
-        if (row->include) {
-                switch (row->diet)
-                  {
-                  case GR_DIET_GLUTEN_FREE:
-                        return g_strconcat ("di:", "gluten-free", NULL);
-                  case GR_DIET_NUT_FREE:
-                        return g_strconcat ("di:", "nut-free", NULL);
-                  case GR_DIET_VEGAN:
-                        return g_strconcat ("di:", "vegan", NULL);
-                  case GR_DIET_VEGETARIAN:
-                        return g_strconcat ("di:", "vegetarian", NULL);
-                  case GR_DIET_MILK_FREE:
-                        return g_strconcat ("di:", "milk-free", NULL);
-                  default:;
-                  }
-        }
+        if (row->include)
+                return g_strconcat ("di:", gr_diet_row_get_diet (row), NULL);
+        else
+                return NULL;
+}
 
-        return NULL;
+const char *
+gr_diet_row_get_diet (GrDietRow *row)
+{
+        switch (row->diet)
+          {
+          case GR_DIET_GLUTEN_FREE:
+                return "gluten-free";
+          case GR_DIET_NUT_FREE:
+                return "nut-free";
+          case GR_DIET_VEGAN:
+                return "vegan";
+          case GR_DIET_VEGETARIAN:
+                return "vegetarian";
+          case GR_DIET_MILK_FREE:
+                return "milk-free";
+          default:
+                return NULL;
+          }
 }
 
 char *

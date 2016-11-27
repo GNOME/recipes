@@ -41,14 +41,10 @@ recipes_SOURCES = \
 	gr-ingredient.c		\
 	gr-ingredient-row.h	\
 	gr-ingredient-row.c	\
-	gr-ingredient-search-tile.h	\
-	gr-ingredient-search-tile.c	\
 	gr-ingredient-tile.h	\
 	gr-ingredient-tile.c	\
 	gr-ingredients-list.h	\
 	gr-ingredients-list.c	\
-	gr-ingredients-search-page.h	\
-	gr-ingredients-search-page.c	\
 	gr-ingredients-page.h	\
 	gr-ingredients-page.c	\
 	gr-list-page.h		\
@@ -57,6 +53,8 @@ recipes_SOURCES = \
 	gr-meal-row.c		\
 	gr-preferences.h	\
 	gr-preferences.c	\
+	gr-query-editor.h	\
+	gr-query-editor.c	\
 	gr-recipe.h 		\
 	gr-recipe.c 		\
 	gr-recipe-store.h 	\
