@@ -5,6 +5,7 @@
     <property name="default-width">1024</property>
     <property name="default-height">768</property>
     <property name="resizable">1</property>
+    <signal name="key-press-event" handler="window_keypress_handler" after="yes"/>
     <child type="titlebar">
       <object class="GtkHeaderBar" id="header">
         <property name="visible">1</property>
@@ -83,7 +84,7 @@
             <property name="hhomogeneous">0</property>
             <signal name="notify::visible-child-name" handler="hide_or_show_header_end_stack"/>
             <child>
-              <object class="GtkToggleButton" id="recipes_search_button">
+              <object class="GtkToggleButton" id="search_button">
                 <property name="visible">1</property>
                 <style>
                   <class name="image-button"/>
@@ -154,6 +155,9 @@
         <child>
           <object class="GrQueryEditor" id="search_bar">
             <property name="visible">1</property>
+            <property name="search-mode-enabled" bind-source="search_button" bind-property="active" bind-flags="bidirectional"/>
+            <signal name="changed" handler="search_changed" swapped="yes"/>
+            <signal name="cancel" handler="stop_search" swapped="yes"/>
           </object>
         </child>
         <child>

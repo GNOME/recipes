@@ -43,7 +43,8 @@ struct _GrWindow
         GtkWidget *header_start_stack;
         GtkWidget *header_title_stack;
         GtkWidget *header_end_stack;
-        GtkWidget *recipes_search_button;
+        GtkWidget *search_button;
+        GtkWidget *cooking_button;
         GtkWidget *search_bar;
         GtkWidget *main_stack;
         GtkWidget *recipes_page;
@@ -54,7 +55,6 @@ struct _GrWindow
         GtkWidget *cuisines_page;
         GtkWidget *cuisine_page;
         GtkWidget *ingredients_page;
-        GtkWidget *cooking_button;
 
         GQueue *back_entry_stack;
 };
@@ -191,7 +191,7 @@ visible_page_changed (GrWindow *window)
         visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
 
         if (strcmp (visible, "search") != 0) {
-                gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (window->recipes_search_button), FALSE);
+                gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (window->search_button), FALSE);
         }
 
         if (strcmp (visible, "recipes") == 0) {
@@ -281,6 +281,17 @@ window_keypress_handler (GtkWidget *widget,
         return gtk_search_bar_handle_event (GTK_SEARCH_BAR (window->search_bar), event);
 }
 
+static void
+hide_or_show_header_end_stack (GObject    *object,
+                               GParamSpec *pspec,
+                               GrWindow   *window)
+{
+        const char *visible;
+
+        visible = gtk_stack_get_visible_child_name (GTK_STACK (window->header_end_stack));
+        gtk_widget_set_visible (window->header_end_stack, strcmp (visible, "list") != 0);
+}
+
 GrWindow *
 gr_window_new (GrApp *app)
 {
@@ -298,65 +309,48 @@ gr_window_finalize (GObject *object)
 }
 
 static void
-hide_or_show_header_end_stack (GObject    *object,
-                               GParamSpec *pspec,
-                               GrWindow   *window)
-{
-        const char *visible;
-
-        visible = gtk_stack_get_visible_child_name (GTK_STACK (window->header_end_stack));
-        gtk_widget_set_visible (window->header_end_stack, strcmp (visible, "list") != 0);
-}
-
-static void
 gr_window_class_init (GrWindowClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
+        GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
         object_class->finalize = gr_window_finalize;
 
-        gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (klass),
-                                                     "/org/gnome/Recipes/gr-window.ui");
+        gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-window.ui");
 
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, recipes_search_button);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, header);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, header_start_stack);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, header_title_stack);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, header_end_stack);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, search_bar);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, main_stack);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, recipes_page);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, details_page);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, edit_page);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, list_page);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, search_page);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, cuisines_page);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, cuisine_page);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, ingredients_page);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrWindow, cooking_button);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, header);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, header_start_stack);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, header_title_stack);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, header_end_stack);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, search_button);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, cooking_button);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, search_bar);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, main_stack);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, recipes_page);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, details_page);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, edit_page);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, list_page);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, search_page);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, cuisines_page);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, cuisine_page);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, ingredients_page);
 
-        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), new_recipe);
-        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), go_back);
-        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), add_recipe);
-        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), visible_page_changed);
-        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), start_or_stop_cooking);
-        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), hide_or_show_header_end_stack);
+        gtk_widget_class_bind_template_callback (widget_class, new_recipe);
+        gtk_widget_class_bind_template_callback (widget_class, go_back);
+        gtk_widget_class_bind_template_callback (widget_class, add_recipe);
+        gtk_widget_class_bind_template_callback (widget_class, visible_page_changed);
+        gtk_widget_class_bind_template_callback (widget_class, start_or_stop_cooking);
+        gtk_widget_class_bind_template_callback (widget_class, hide_or_show_header_end_stack);
+        gtk_widget_class_bind_template_callback (widget_class, search_changed);
+        gtk_widget_class_bind_template_callback (widget_class, stop_search);
+        gtk_widget_class_bind_template_callback (widget_class, window_keypress_handler);
 }
 
 static void
 gr_window_init (GrWindow *self)
 {
         gtk_widget_init_template (GTK_WIDGET (self));
-
         self->back_entry_stack = g_queue_new ();
-
-        g_object_bind_property (self->recipes_search_button, "active",
-                                self->search_bar, "search-mode-enabled",
-                                G_BINDING_BIDIRECTIONAL);
-
-        g_signal_connect_swapped (self->search_bar, "changed", G_CALLBACK (search_changed), self);
-        g_signal_connect_swapped (self->search_bar, "cancel", G_CALLBACK (stop_search), self);
-        g_signal_connect_after (self, "key-press-event", G_CALLBACK (window_keypress_handler), NULL);
 }
 
 void
