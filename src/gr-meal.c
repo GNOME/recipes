@@ -1,4 +1,4 @@
-/* gr-category.c:
+/* gr-meal.c:
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *
@@ -24,7 +24,7 @@
 #include <glib.h>
 #include <glib/gi18n.h>
 
-#include "gr-category.h"
+#include "gr-meal.h"
 
 
 static const char *names[] = {
@@ -55,7 +55,7 @@ static const char *titles[] = {
 };
 
 const char **
-gr_category_get_names (int *length)
+gr_meal_get_names (int *length)
 {
         if (length)
                 *length = G_N_ELEMENTS (names) - 1;
@@ -64,7 +64,7 @@ gr_category_get_names (int *length)
 }
 
 const char *
-gr_category_get_title (const char *name)
+gr_meal_get_title (const char *name)
 {
         int i;
 

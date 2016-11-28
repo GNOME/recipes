@@ -31,7 +31,7 @@
 #include "gr-recipe-tile.h"
 #include "gr-app.h"
 #include "gr-utils.h"
-#include "gr-category.h"
+#include "gr-meal.h"
 
 
 typedef struct
@@ -119,7 +119,7 @@ populate_initially (GrCuisinePage *self)
         int length;
         int i;
 
-        names = gr_category_get_names (&length);
+        names = gr_meal_get_names (&length);
 
         self->n_categories = length;
         self->categories = g_new (Category, length);
@@ -127,7 +127,7 @@ populate_initially (GrCuisinePage *self)
         for (i = 0; i < length; i++) {
                 GtkWidget *item, *label, *box;
 
-                title = gr_category_get_title (names[i]);
+                title = gr_meal_get_title (names[i]);
 
                 item = gtk_label_new (title);
                 gtk_label_set_xalign (GTK_LABEL (item), 0);

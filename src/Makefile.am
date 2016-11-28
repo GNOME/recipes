@@ -13,8 +13,6 @@ recipes_SOURCES = \
 	gr-app.c 		\
 	gr-big-cuisine-tile.h	\
 	gr-big-cuisine-tile.c	\
-	gr-category.h		\
-	gr-category.c		\
 	gr-category-tile.h 	\
 	gr-category-tile.c 	\
 	gr-chef.h 		\
@@ -49,6 +47,8 @@ recipes_SOURCES = \
 	gr-ingredients-page.c	\
 	gr-list-page.h		\
 	gr-list-page.c		\
+	gr-meal.h		\
+	gr-meal.c		\
 	gr-meal-row.h		\
 	gr-meal-row.c		\
 	gr-preferences.h	\

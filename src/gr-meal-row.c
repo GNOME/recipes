@@ -21,7 +21,7 @@
 #include <glib.h>
 #include <glib/gi18n.h>
 
-#include "gr-category.h"
+#include "gr-meal.h"
 #include "gr-meal-row.h"
 
 
@@ -95,7 +95,7 @@ update_image (GrMealRow *self)
 static void
 update_label (GrMealRow *self)
 {
-        gtk_label_set_label (GTK_LABEL (self->label), gr_category_get_title (self->meal));
+        gtk_label_set_label (GTK_LABEL (self->label), gr_meal_get_title (self->meal));
 }
 
 static void

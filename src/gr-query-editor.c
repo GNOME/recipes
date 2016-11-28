@@ -22,7 +22,7 @@
 
 #include "gr-query-editor.h"
 #include "gr-ingredient.h"
-#include "gr-category.h"
+#include "gr-meal.h"
 #include "gr-ingredient-row.h"
 #include "gr-meal-row.h"
 #include "gr-diet-row.h"
@@ -390,7 +390,7 @@ populate_meals_list (GrQueryEditor *self)
         gtk_widget_show (row);
         gtk_container_add (GTK_CONTAINER (self->meal_list), row);
 
-        names = gr_category_get_names (&length);
+        names = gr_meal_get_names (&length);
         for (i = 0; i < length; i++) {
                 row = GTK_WIDGET (gr_meal_row_new (names[i]));
                 gtk_widget_show (row);

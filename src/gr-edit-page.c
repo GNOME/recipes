@@ -30,7 +30,7 @@
 #include "gr-utils.h"
 #include "gr-ingredients-list.h"
 #include "gr-cuisine.h"
-#include "gr-category.h"
+#include "gr-meal.h"
 #include "gr-images.h"
 
 
@@ -148,11 +148,11 @@ populate_category_combo (GrEditPage *page)
         int length;
         int i;
 
-        names = gr_category_get_names (&length);
+        names = gr_meal_get_names (&length);
         for (i = 0; i < length; i++) {
                 gtk_combo_box_text_append (GTK_COMBO_BOX_TEXT (page->category_combo),
                                            names[i],
-                                           gr_category_get_title (names[i]));
+                                           gr_meal_get_title (names[i]));
         }
 }
 
