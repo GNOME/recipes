@@ -63,7 +63,6 @@ static void entry_activate_cb       (GtkWidget     *entry,
                                      GrQueryEditor *editor);
 static void entry_changed_cb        (GtkWidget      *entry,
                                      GrQueryEditor *editor);
-static void gr_query_editor_changed (GrQueryEditor *editor);
 
 G_DEFINE_TYPE (GrQueryEditor, gr_query_editor, GTK_TYPE_SEARCH_BAR)
 
@@ -71,8 +70,6 @@ enum {
         PROP_0,
         N_PROPS
 };
-
-static GParamSpec *properties [N_PROPS];
 
 GrQueryEditor *
 gr_query_editor_new (void)
@@ -213,8 +210,6 @@ ing_header_func (GtkListBoxRow *row,
                  GtkListBoxRow *before,
                  gpointer       data)
 {
-        GrQueryEditor *self = data;
-
         if (before != NULL && !GR_IS_INGREDIENT_ROW (before))
                 gtk_list_box_row_set_header (row, gtk_separator_new (GTK_ORIENTATION_HORIZONTAL));
         else
@@ -284,8 +279,6 @@ diet_header_func (GtkListBoxRow *row,
                   GtkListBoxRow *before,
                   gpointer       data)
 {
-        GrQueryEditor *self = data;
-
         if (before != NULL && !GR_IS_DIET_ROW (before))
                 gtk_list_box_row_set_header (row, gtk_separator_new (GTK_ORIENTATION_HORIZONTAL));
         else
@@ -295,7 +288,6 @@ diet_header_func (GtkListBoxRow *row,
 static void
 populate_diets_list (GrQueryEditor *self)
 {
-        int i;
         GtkWidget *row;
 
         row = gtk_label_new (_("No restrictions"));
@@ -368,8 +360,6 @@ meal_header_func (GtkListBoxRow *row,
                   GtkListBoxRow *before,
                   gpointer       data)
 {
-        GrQueryEditor *self = data;
-
         if (before != NULL && !GR_IS_MEAL_ROW (before))
                 gtk_list_box_row_set_header (row, gtk_separator_new (GTK_ORIENTATION_HORIZONTAL));
         else
@@ -466,7 +456,6 @@ static void
 entry_changed_cb (GtkWidget     *entry,
                   GrQueryEditor *editor)
 {
-        const char *visible;
         g_autoptr(GString) s = NULL;
         g_autoptr(GString) s2 = NULL;
         GList *children, *l;
@@ -595,8 +584,6 @@ gr_query_editor_get_property (GObject    *object,
                               GValue     *value,
                               GParamSpec *pspec)
 {
-        GrQueryEditor *self = GR_QUERY_EDITOR (object);
-
         switch (prop_id)
           {
           default:
@@ -610,8 +597,6 @@ gr_query_editor_set_property (GObject      *object,
                               const GValue *value,
                               GParamSpec   *pspec)
 {
-        GrQueryEditor *self = GR_QUERY_EDITOR (object);
-
         switch (prop_id)
           {
           default:

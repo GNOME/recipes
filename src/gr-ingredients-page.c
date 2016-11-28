@@ -73,7 +73,6 @@ row_activated (GrIngredientsPage *page,
                GtkListBoxRow     *row)
 {
         GtkWidget *item;
-        int i;
         GtkAdjustment *adj;
         GtkAllocation alloc;
         Category *category = NULL;

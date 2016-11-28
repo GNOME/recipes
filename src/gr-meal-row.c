@@ -49,8 +49,6 @@ enum {
         N_PROPS
 };
 
-static GParamSpec *properties [N_PROPS];
-
 static void
 gr_meal_row_finalize (GObject *object)
 {

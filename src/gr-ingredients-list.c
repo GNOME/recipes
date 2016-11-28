@@ -80,7 +80,7 @@ parse_as_fraction (Ingredient  *ing,
         num = g_ascii_strtoull (*string, &end, 10);
         if (end[0] != '/') {
                 g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                             _("Could not parse %s as a fraction"), string);
+                             _("Could not parse %s as a fraction"), *string);
                 return FALSE;
         }
         *string = end + 1;
@@ -88,7 +88,7 @@ parse_as_fraction (Ingredient  *ing,
         denom = g_ascii_strtoull (*string, &end, 10);
         if (end != NULL && end[0] != '\0' && !g_ascii_isspace (end[0])) {
                 g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                             _("Could not parse %s as a fraction"), string);
+                             _("Could not parse %s as a fraction"), *string);
                 return FALSE;
         }
         *string = end;

@@ -35,6 +35,7 @@ gr_rotated_image_clear (gpointer data)
         image->dark_text = FALSE;
 }
 
+#if 0
 static gpointer
 gr_rotated_image_copy (gpointer data)
 {
@@ -48,6 +49,7 @@ gr_rotated_image_copy (gpointer data)
 
         return copy;
 }
+#endif
 
 GArray *
 gr_rotated_image_array_new (void)
@@ -82,8 +84,6 @@ enum {
         N_PROPS
 };
 
-static GParamSpec *properties [N_PROPS];
-
 GrImages *
 gr_images_new (void)
 {
@@ -108,9 +108,6 @@ add_image (GrImages       *images,
            gboolean        select)
 {
         GtkWidget *image;
-        char **paths;
-        int *angles;
-        int i;
 
         image = gtk_image_new ();
         gtk_widget_show (image);
@@ -240,8 +237,6 @@ gr_images_remove_image (GrImages *images)
         GtkListBoxRow *row;
         g_auto(GStrv) paths = NULL;
         int idx;
-        int i;
-        int length;
 
         row = gtk_list_box_get_selected_row (GTK_LIST_BOX (images->switcher));
         if (row == NULL)
@@ -274,7 +269,6 @@ row_selected (GtkListBox    *switcher,
               GtkListBoxRow *row,
               GrImages      *images)
 {
-        GtkWidget *image;
         const char *path;
         const char *vis;
         g_autoptr (GdkPixbuf) pixbuf = NULL;

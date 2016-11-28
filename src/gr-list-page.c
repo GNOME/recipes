@@ -246,7 +246,6 @@ gr_list_page_populate_from_favorites (GrListPage *self)
         keys = gr_recipe_store_get_recipe_keys (store, &length);
         for (i = 0; i < length; i++) {
                 g_autoptr(GrRecipe) recipe = NULL;
-                const char *author;
                 GtkWidget *tile;
 
                 recipe = gr_recipe_store_get (store, keys[i]);

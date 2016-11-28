@@ -42,20 +42,10 @@ enum {
         N_PROPS
 };
 
-static GParamSpec *properties [N_PROPS];
-
 GrToggleButton *
 gr_toggle_button_new (void)
 {
         return g_object_new (GR_TYPE_TOGGLE_BUTTON, NULL);
-}
-
-static void
-gr_toggle_button_finalize (GObject *object)
-{
-        GrToggleButton *self = (GrToggleButton *)object;
-
-        G_OBJECT_CLASS (gr_toggle_button_parent_class)->finalize (object);
 }
 
 static void
@@ -141,7 +131,6 @@ gr_toggle_button_class_init (GrToggleButtonClass *klass)
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
         GtkButtonClass *button_class = GTK_BUTTON_CLASS (klass);
 
-        object_class->finalize = gr_toggle_button_finalize;
         object_class->get_property = gr_toggle_button_get_property;
         object_class->set_property = gr_toggle_button_set_property;
 

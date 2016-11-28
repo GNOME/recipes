@@ -109,8 +109,6 @@ static void
 category_tile_set_category (GrCategoryTile *tile,
                             GrDiets         diet)
 {
-	const char *label;
-
 	tile->diet = diet;
         gtk_label_set_label (GTK_LABEL (tile->label), get_category_title (diet));
 }

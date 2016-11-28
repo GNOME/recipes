@@ -131,12 +131,12 @@ gr_cuisine_get_css (void)
                 g_string_append_printf (s, "button.cuisine.%s {\n"
                                            "  background: url('%s');\n"
                                            "  background-repeat: no-repeat;\n"
-                                           "  background-size: 100%;\n"
+                                           "  background-size: 100%%;\n"
                                            "}\n", names[i], "resource:/org/gnome/Recipes/italian.png");
                 g_string_append_printf (s, "button.big.cuisine.%s {\n"
                                            "  background: url('%s');\n"
                                            "  background-repeat: no-repeat;\n"
-                                           "  background-size: 100%;\n"
+                                           "  background-size: 100%%;\n"
                                            "}\n", names[i], "resource:/org/gnome/Recipes/big-italian.png");
         }
 

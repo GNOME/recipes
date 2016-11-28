@@ -157,6 +157,7 @@ typedef struct
         gboolean filled;
 } CheckData;
 
+#if 0
 static void
 check_match (GtkWidget *child,
              gpointer   data)
@@ -173,6 +174,7 @@ check_match (GtkWidget *child,
         else
                 check_data->filled = TRUE;
 }
+#endif
 
 void
 gr_search_page_update_search (GrSearchPage *page,

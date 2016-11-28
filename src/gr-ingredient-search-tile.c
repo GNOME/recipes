@@ -91,7 +91,6 @@ gr_ingredient_search_tile_class_init (GrIngredientSearchTileClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
         GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-        GParamSpec *pspec;
 
         object_class->finalize = ingredient_search_tile_finalize;
 
@@ -147,7 +146,7 @@ ingredient_search_tile_set_ingredient (GrIngredientSearchTile *tile, const char 
             g_file_test (image_path, G_FILE_TEST_EXISTS))
                 css = g_strdup_printf ("image.ingredient {\n"
                 	               "  background: url('%s');\n"
-                        	       "  background-size: 100%;\n"
+                        	       "  background-size: 100%%;\n"
                         	       "  min-width: 96px;\n"
                         	       "  min-height: 48px;\n"
                                	       "}", image_path);
