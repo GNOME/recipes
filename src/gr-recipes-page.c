@@ -31,6 +31,7 @@
 #include "gr-recipe-store.h"
 #include "gr-app.h"
 #include "gr-utils.h"
+#include "gr-meal.h"
 #include "gr-window.h"
 
 
@@ -51,7 +52,7 @@ struct _GrRecipesPage
 
 G_DEFINE_TYPE (GrRecipesPage, gr_recipes_page, GTK_TYPE_BOX)
 
-static void populate_diets_from_store (GrRecipesPage *page);
+static void populate_categories_from_store (GrRecipesPage *page);
 static void populate_recipes_from_store (GrRecipesPage *page);
 static void populate_chefs_from_store (GrRecipesPage *page);
 static void connect_store_signals (GrRecipesPage *page);
@@ -104,7 +105,7 @@ gr_recipes_page_init (GrRecipesPage *page)
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
         gtk_widget_init_template (GTK_WIDGET (page));
 
-        populate_diets_from_store (page);
+        populate_categories_from_store (page);
         populate_recipes_from_store (page);
         populate_chefs_from_store (page);
         connect_store_signals (page);
@@ -164,10 +165,26 @@ category_clicked (GrCategoryTile *tile,
                 gr_window_show_favorites (GR_WINDOW (window));
         else if (strcmp (name, "mine") == 0)
                 gr_window_show_myself (GR_WINDOW (window));
+        else
+                gr_window_show_meal (GR_WINDOW (window), name);
 }
 
 static void
-populate_diets_from_store (GrRecipesPage *self)
+add_category (GrRecipesPage *self,
+              GtkWidget     *tile)
+{
+        GList *children;
+
+        children = gtk_container_get_children (GTK_CONTAINER (self->diet_box));
+        if (g_list_length (children) < 6)
+                gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
+        else
+                gtk_container_add (GTK_CONTAINER (self->diet_box2), tile);
+        g_list_free (children);
+}
+
+static void
+populate_categories_from_store (GrRecipesPage *self)
 {
         int i;
         GrDiets diets[5] = {
@@ -178,29 +195,38 @@ populate_diets_from_store (GrRecipesPage *self)
                 GR_DIET_MILK_FREE
         };
         GtkWidget *tile;
+        const char * const *names;
+        int length;
 
         container_remove_all (GTK_CONTAINER (self->diet_box));
         container_remove_all (GTK_CONTAINER (self->diet_box2));
 
         tile = gr_category_tile_new_with_label ("mine", _("My recipes"));
         gtk_widget_show (tile);
-        gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
         g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);
+        add_category (self, tile);
 
         tile = gr_category_tile_new_with_label ("favorites", _("Favorites"));
         gtk_widget_show (tile);
-        gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
         g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);
+        add_category (self, tile);
 
         for (i = 0; i < G_N_ELEMENTS (diets); i++) {
                 tile = gr_category_tile_new (diets[i]);
                 gtk_widget_show (tile);
                 g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);
+                add_category (self, tile);
+        }
 
-                if (i < 4)
-                        gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
-                else
-                        gtk_container_add (GTK_CONTAINER (self->diet_box2), tile);
+        names = gr_meal_get_names (&length);
+        for (i = 0; i < length; i++) {
+                if (strcmp (names[i], "other") == 0)
+                        continue;
+
+                tile = gr_category_tile_new_with_label (names[i], gr_meal_get_title (names[i]));
+                gtk_widget_show (tile);
+                g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);
+                add_category (self, tile);
         }
 }
 
@@ -255,7 +281,7 @@ static void
 repopulate_recipes (GrRecipesPage *self)
 {
         populate_recipes_from_store (self);
-        populate_diets_from_store (self);
+        populate_categories_from_store (self);
 }
 
 static void

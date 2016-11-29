@@ -32,6 +32,7 @@
 #include "gr-search-page.h"
 #include "gr-recipes-page.h"
 #include "gr-ingredients-page.h"
+#include "gr-meal.h"
 #include "gr-query-editor.h"
 
 
@@ -487,6 +488,23 @@ gr_window_show_myself (GrWindow *window)
         gr_list_page_populate_from_chef (GR_LIST_PAGE (window->list_page), chef);
 
         gtk_header_bar_set_title (GTK_HEADER_BAR (window->header ), _("My own recipes"));
+
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
+
+        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "list");
+}
+
+void
+gr_window_show_meal (GrWindow   *window,
+                     const char *meal)
+{
+        save_back_entry (window);
+
+        gr_list_page_populate_from_meal (GR_LIST_PAGE (window->list_page), meal);
+
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), gr_meal_get_title (meal));
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");

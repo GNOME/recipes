@@ -44,6 +44,8 @@ void            gr_window_show_chef                  (GrWindow   *window,
                                                       GrChef     *chef);
 void            gr_window_show_myself                (GrWindow   *window);
 void            gr_window_show_favorites             (GrWindow   *window);
+void            gr_window_show_meal                  (GrWindow   *window,
+                                                      const char *meal);
 void            gr_window_show_cuisine               (GrWindow   *window,
                                                       const char *cuisine,
                                                       const char *title);

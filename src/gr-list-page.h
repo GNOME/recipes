@@ -37,5 +37,7 @@ void            gr_list_page_populate_from_diet      (GrListPage *self,
 void            gr_list_page_populate_from_chef      (GrListPage *self,
                                                       GrChef     *chef);
 void            gr_list_page_populate_from_favorites (GrListPage *self);
+void            gr_list_page_populate_from_meal      (GrListPage *self,
+                                                      const char *meal);
 
 G_END_DECLS

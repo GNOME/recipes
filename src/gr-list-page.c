@@ -28,6 +28,7 @@
 #include "gr-recipe.h"
 #include "gr-recipe-tile.h"
 #include "gr-app.h"
+#include "gr-meal.h"
 #include "gr-utils.h"
 
 
@@ -38,6 +39,7 @@ struct _GrListPage
         GrChef *chef;
         GrDiets diet;
         gboolean favorites;
+        char *meal;
 
         GtkWidget *list_stack;
         GtkWidget *flow_box;
@@ -50,11 +52,20 @@ G_DEFINE_TYPE (GrListPage, gr_list_page, GTK_TYPE_BOX)
 static void connect_store_signals (GrListPage *page);
 
 static void
+clear_page (GrListPage *self)
+{
+        g_clear_object (&self->chef);
+        self->diet = 0;
+        self->favorites = FALSE;
+        g_clear_pointer (&self->meal, g_free);
+}
+
+static void
 list_page_finalize (GObject *object)
 {
         GrListPage *self = GR_LIST_PAGE (object);
 
-        g_clear_object (&self->chef);
+        clear_page (self);
 
         G_OBJECT_CLASS (gr_list_page_parent_class)->finalize (object);
 }
@@ -133,9 +144,8 @@ gr_list_page_populate_from_diet (GrListPage *self,
         gboolean filled;
         char *tmp;
 
+        clear_page (self);
         self->diet = diet;
-        g_clear_object (&self->chef);
-        self->favorites = FALSE;
 
         container_remove_all (GTK_CONTAINER (self->flow_box));
         tmp = g_strdup_printf (_("No %s found"), get_category_title (diet));
@@ -182,9 +192,8 @@ gr_list_page_populate_from_chef (GrListPage *self,
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        self->diet = 0;
+        clear_page (self);
         g_set_object (&self->chef, chef);
-        self->favorites = FALSE;
 
         container_remove_all (GTK_CONTAINER (self->flow_box));
         tmp = g_strdup_printf (_("No recipes by chef %s found"), gr_chef_get_name (chef));
@@ -231,8 +240,7 @@ gr_list_page_populate_from_favorites (GrListPage *self)
         int i;
         gboolean filled;
 
-        self->diet = 0;
-        g_clear_object (&self->chef);
+        clear_page (self);
         self->favorites = TRUE;
 
         container_remove_all (GTK_CONTAINER (self->flow_box));
@@ -262,6 +270,50 @@ gr_list_page_populate_from_favorites (GrListPage *self)
                 gtk_stack_set_visible_child_name (GTK_STACK (self->list_stack), "list");
 }
 
+void
+gr_list_page_populate_from_meal (GrListPage *self,
+                                 const char *meal)
+{
+        GrRecipeStore *store;
+        g_autofree char **keys = NULL;
+        guint length;
+        int i;
+        gboolean filled;
+        g_autofree char *tmp = NULL;
+
+        clear_page (self);
+        self->meal = g_strdup (meal);
+
+        container_remove_all (GTK_CONTAINER (self->flow_box));
+
+        tmp = g_strdup_printf (_("No recipes for %s found"), gr_meal_get_title (meal));
+        gtk_label_set_label (GTK_LABEL (self->empty_title), tmp);
+        gtk_label_set_label (GTK_LABEL (self->empty_subtitle), _("You could add one using the “New Recipe” button."));
+        gtk_stack_set_visible_child_name (GTK_STACK (self->list_stack), "empty");
+        filled = FALSE;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+        keys = gr_recipe_store_get_recipe_keys (store, &length);
+        for (i = 0; i < length; i++) {
+                g_autoptr(GrRecipe) recipe = NULL;
+                const char *author;
+                GtkWidget *tile;
+
+                recipe = gr_recipe_store_get (store, keys[i]);
+                if (g_strcmp0 (gr_recipe_get_category (recipe), meal) != 0)
+                        continue;
+
+                tile = gr_recipe_tile_new (recipe);
+                gtk_widget_show (tile);
+                gtk_container_add (GTK_CONTAINER (self->flow_box), tile);
+                filled = TRUE;
+        }
+
+        if (filled)
+                gtk_stack_set_visible_child_name (GTK_STACK (self->list_stack), "list");
+}
+
 static void
 list_page_reload (GrListPage *page)
 {
@@ -271,6 +323,8 @@ list_page_reload (GrListPage *page)
                 gr_list_page_populate_from_diet (page, page->diet);
         else if (page->favorites)
                 gr_list_page_populate_from_favorites (page);
+        else if (page->meal)
+                gr_list_page_populate_from_meal (page, page->meal);
 }
 
 static void
