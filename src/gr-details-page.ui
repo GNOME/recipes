@@ -381,6 +381,7 @@ followed</property>
           <object class="GtkButton">
             <property name="visible">1</property>
             <property name="label" translatable="yes">Print</property>
+            <signal name="clicked" handler="print_recipe" swapped="yes"/>
           </object>
         </child>
         <child>

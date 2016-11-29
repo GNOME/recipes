@@ -57,6 +57,8 @@ recipes_SOURCES = \
 	gr-query-editor.c	\
 	gr-recipe.h 		\
 	gr-recipe.c 		\
+	gr-recipe-printer.h	\
+	gr-recipe-printer.c	\
 	gr-recipe-store.h 	\
 	gr-recipe-store.c 	\
 	gr-recipe-tile.h 	\
