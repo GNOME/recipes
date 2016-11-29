@@ -197,6 +197,7 @@ gr_app_new (void)
 {
         return g_object_new (GR_TYPE_APP,
                              "application-id", "org.gnome.Recipes",
+                             "flags", G_APPLICATION_CAN_OVERRIDE_APP_ID,
                              NULL);
 }
 
