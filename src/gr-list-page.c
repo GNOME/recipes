@@ -190,7 +190,7 @@ gr_list_page_populate_from_chef (GrListPage *self,
         tmp = g_strdup_printf (_("No recipes by chef %s found"), gr_chef_get_name (chef));
         gtk_label_set_label (GTK_LABEL (self->empty_title), tmp);
         g_free (tmp);
-        if (strcmp (gr_chef_get_name (chef), gr_recipe_store_get_user_key (store)) == 0)
+        if (g_strcmp0 (gr_chef_get_name (chef), gr_recipe_store_get_user_key (store)) == 0)
                 gtk_label_set_label (GTK_LABEL (self->empty_subtitle), _("You could add one using the “New Recipe” button."));
         else
                 gtk_label_set_label (GTK_LABEL (self->empty_subtitle), _("Sorry about this."));
