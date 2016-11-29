@@ -148,8 +148,15 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkEntry" id="description">
+                      <object class="GtkScrolledWindow">
                         <property name="visible">1</property>
+                        <property name="shadow-type">in</property>
+                        <property name="min-content-height">60</property>
+                        <child>
+                          <object class="GtkTextView" id="description">
+                            <property name="visible">1</property>
+                          </object>
+                        </child>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>

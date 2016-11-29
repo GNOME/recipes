@@ -123,11 +123,15 @@ save_preferences (GrPreferences  *self,
         GrRecipeStore *store;
         const char *name;
         const char *fullname;
-        const char *description;
+        g_autofree char *description = NULL;
+        GtkTextBuffer *buffer;
+        GtkTextIter start, end;
 
         name = gtk_entry_get_text (GTK_ENTRY (self->name));
         fullname = gtk_entry_get_text (GTK_ENTRY (self->fullname));
-        description = gtk_entry_get_text (GTK_ENTRY (self->description));
+        buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->description));
+        gtk_text_buffer_get_bounds (buffer, &start, &end);
+        description = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
 
         chef = g_object_new (GR_TYPE_CHEF,
                              "name", name,
@@ -184,7 +188,8 @@ gr_preferences_init (GrPreferences *self)
 
                 gtk_entry_set_text (GTK_ENTRY (self->name), name ? name : "");
                 gtk_entry_set_text (GTK_ENTRY (self->fullname), fullname ? fullname : "");
-                gtk_entry_set_text (GTK_ENTRY (self->description), description ? description : "");
+                gtk_text_buffer_set_text (gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->description)),
+                                          description ? description : "", -1);
 
                 self->image_path = g_strdup (image_path);
         }
