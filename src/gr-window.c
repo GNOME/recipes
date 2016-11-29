@@ -160,6 +160,7 @@ stop_search (GrWindow *window)
         gr_window_go_back (window);
 }
 
+#if 0
 static void
 maybe_stop_search (GtkButton  *button,
                    GParamSpec *pspec,
@@ -168,6 +169,7 @@ maybe_stop_search (GtkButton  *button,
         if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button)))
                 stop_search (window);
 }
+#endif
 
 static void
 switch_to_search (GrWindow *window)
@@ -250,7 +252,6 @@ window_keypress_handler (GtkWidget *widget,
                          gpointer   data)
 {
         GrWindow *window = GR_WINDOW (widget);
-        GtkWidget *w;
         const char *visible;
 
         visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
@@ -473,7 +474,6 @@ gr_window_show_favorites (GrWindow *window)
 void
 gr_window_show_myself (GrWindow *window)
 {
-        const char *title;
         const char *name;
         g_autoptr(GrChef) chef = NULL;
         GrRecipeStore *store;

@@ -78,7 +78,7 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
                 GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, 0);
 
                 css = g_strdup_printf ("  background: url('%s');\n"
-                                       "  background-size: 100%;\n"
+                                       "  background-size: 100%%;\n"
                                        "  background-repeat: no-repeat;\n", ri->path);
                 gr_utils_widget_set_css_simple (tile->box, css);
 

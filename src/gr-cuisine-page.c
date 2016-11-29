@@ -223,11 +223,9 @@ gr_cuisine_page_set_cuisine (GrCuisinePage *self,
                              const char    *cuisine)
 {
         GrRecipeStore *store;
-        g_autofree char *name = NULL;
         g_autofree char **keys = NULL;
         guint length;
         int i, j;
-        GtkContainer *box;
         gboolean has_recipe = FALSE;
 
         if (self->cuisine != cuisine) {
@@ -247,14 +245,12 @@ gr_cuisine_page_set_cuisine (GrCuisinePage *self,
         keys = gr_recipe_store_get_recipe_keys (store, &length);
         for (j = 0; j < length; j++) {
                 g_autoptr(GrRecipe) recipe = NULL;
-                const char *name;
                 const char *cuisine2;
                 const char *category;
                 GtkWidget *tile;
                 Category *c;
 
                 recipe = gr_recipe_store_get (store, keys[j]);
-                name = gr_recipe_get_name (recipe);
                 cuisine2 = gr_recipe_get_cuisine (recipe);
                 category = gr_recipe_get_category (recipe);
 

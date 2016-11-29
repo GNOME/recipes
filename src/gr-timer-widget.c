@@ -43,16 +43,11 @@ enum {
         N_PROPS
 };
 
-static GParamSpec *properties [N_PROPS];
-
 GrTimerWidget *
 gr_timer_widget_new (void)
 {
         return g_object_new (GR_TYPE_TIMER_WIDGET, NULL);
 }
-
-static void set_active (GrTimerWidget  *timer,
-                        gboolean        active);
 
 static gboolean
 tick_cb (GtkWidget     *widget,
@@ -61,7 +56,7 @@ tick_cb (GtkWidget     *widget,
 {
         GrTimerWidget *timer = GR_TIMER_WIDGET (widget);
 
-        gtk_widget_queue_resize (widget);
+        gtk_widget_queue_resize (GTK_WIDGET (timer));
 
         return G_SOURCE_CONTINUE;
 }

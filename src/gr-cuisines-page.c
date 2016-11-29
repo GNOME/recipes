@@ -81,7 +81,7 @@ populate_cuisines (GrCuisinesPage *page)
                 g_clear_pointer (&page->featured, g_free);
 
         length = g_strv_length (cuisines);
-        if (!page->featured) {
+        if (!page->featured && length > 0) {
                 pos = g_random_int_range (0, length);
                 page->featured = g_strdup (cuisines[pos]);
         }

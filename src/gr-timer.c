@@ -47,8 +47,6 @@ enum {
         N_PROPS
 };
 
-static GParamSpec *properties [N_PROPS];
-
 enum {
         COMPLETE,
         LAST_SIGNAL

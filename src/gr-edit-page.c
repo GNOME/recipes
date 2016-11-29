@@ -322,7 +322,6 @@ void
 gr_edit_page_edit (GrEditPage *page,
                    GrRecipe   *recipe)
 {
-        GtkTextBuffer *buffer;
         const char *name;
         const char *description;
         const char *cuisine;
@@ -396,9 +395,7 @@ gr_edit_page_save (GrEditPage *page)
         g_autoptr(GError) error = NULL;
         gboolean ret = TRUE;
         GrDiets diets;
-        const char *image_path;
         g_autoptr(GArray) images = NULL;
-        g_autoptr(GDateTime) now = NULL;
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 

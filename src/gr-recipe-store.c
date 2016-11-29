@@ -309,7 +309,6 @@ load_recipes (GrRecipeStore *self,
                 }
 
                 if (image_path && image_path[0] != '\0' && image_path[0] != '/') {
-                        char *tmp;
                         tmp = g_build_filename (dir, image_path, NULL);
                         g_free (image_path);
                         image_path = tmp;
@@ -317,7 +316,6 @@ load_recipes (GrRecipeStore *self,
                 if (paths) {
                         for (j = 0; paths[j]; j++) {
                                 if (paths[j][0] != '/') {
-                                        char *tmp;
                                         tmp = g_build_filename (dir, paths[j], NULL);
                                         g_free (paths[j]);
                                         paths[j] = tmp;
@@ -508,12 +506,12 @@ save_recipes (GrRecipeStore *self)
                 g_key_file_set_integer_list (keyfile, key, "Angles", angles, images->len);
                 g_key_file_set_integer_list (keyfile, key, "DarkText", dark, images->len);
                 if (ctime) {
-                        g_autofree char *tmp = date_time_to_string (ctime);
-                        g_key_file_set_string (keyfile, key, "Created", tmp);
+                        g_autofree char *created = date_time_to_string (ctime);
+                        g_key_file_set_string (keyfile, key, "Created", created);
                 }
                 if (mtime) {
-                        g_autofree char *tmp = date_time_to_string (mtime);
-                        g_key_file_set_string (keyfile, key, "Modified", tmp);
+                        g_autofree char *modified = date_time_to_string (mtime);
+                        g_key_file_set_string (keyfile, key, "Modified", modified);
                 }
         }
 
@@ -605,9 +603,7 @@ save_favorites (GrRecipeStore *self)
 {
         g_autoptr(GKeyFile) keyfile = NULL;
         g_autofree char *path = NULL;
-        const char *key;
         g_autoptr(GError) error = NULL;
-        const char *tmp;
 
         keyfile = g_key_file_new ();
 

@@ -115,7 +115,6 @@ gr_recipes_page_class_init (GrRecipesPageClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
         GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-        GParamSpec *pspec;
 
         object_class->finalize = recipes_page_finalize;
 
@@ -179,7 +178,6 @@ populate_diets_from_store (GrRecipesPage *self)
                 GR_DIET_MILK_FREE
         };
         GtkWidget *tile;
-        GrRecipeStore *store;
 
         container_remove_all (GTK_CONTAINER (self->diet_box));
         container_remove_all (GTK_CONTAINER (self->diet_box2));
@@ -194,9 +192,7 @@ populate_diets_from_store (GrRecipesPage *self)
         gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
         g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
-
-        for (i = 0; i < 5; i++) {
+        for (i = 0; i < G_N_ELEMENTS (diets); i++) {
                 tile = gr_category_tile_new (diets[i]);
                 gtk_widget_show (tile);
                 g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);

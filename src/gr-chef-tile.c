@@ -63,7 +63,6 @@ gr_chef_tile_class_init (GrChefTileClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
         GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-        GParamSpec *pspec;
 
         object_class->finalize = chef_tile_finalize;
 
@@ -79,7 +78,6 @@ chef_tile_set_chef (GrChefTile *tile,
 {
         const char *name;
         const char *image_path;
-        g_autoptr(GdkPixbuf) pixbuf = NULL;
         GtkStyleContext *context;
         g_autofree char *css = NULL;
         g_autoptr(GtkCssProvider) provider = NULL;

@@ -80,4 +80,10 @@ uninstall-update-icon-cache:
 	test -n "$(DESTDIR)" || $(update_icon_cache) "$(iconthemedir)"
 
 servicedir = $(datadir)/dbus-1/services
-service_DATA = org.gnome.Recipes.service
+service_in_files = org.gnome.Recipes.service.in
+service_DATA = $(service_in_files:.service.in=.service)
+
+$(service_DATA): $(service_in_files) Makefile
+	@sed -e "s|\@bindir\@|$(bindir)|" $< > $@
+
+GITIGNOREFILES = $(service_DATA)
