@@ -71,6 +71,7 @@ about_activated (GSimpleAction *action,
                 "Emel Elvin Yıldız",
                 "Matthias Clasen",
                 "Jakub Steiner",
+                "Christian Hergert",
                 NULL
         };
         g_autoptr(GdkPixbuf) logo = NULL;
