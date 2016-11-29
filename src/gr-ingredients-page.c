@@ -149,7 +149,7 @@ populate_initially (GrIngredientsPage *self)
                 gtk_list_box_insert (GTK_LIST_BOX (self->letter_box), item, -1);
 
                 label = gtk_label_new (buf);
-                gtk_label_set_xalign (GTK_LABEL (item), 0);
+                gtk_label_set_xalign (GTK_LABEL (label), 0);
                 gtk_style_context_add_class (gtk_widget_get_style_context (label), "heading");
                 gtk_widget_show (label);
                 gtk_container_add (GTK_CONTAINER (self->main_box), label);
