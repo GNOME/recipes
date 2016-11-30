@@ -44,8 +44,10 @@ struct _GrQueryEditor
         GtkWidget *ing_search_revealer;
         GtkWidget *ing_search_button;
         GtkWidget *ing_search_button_label;
+        GtkWidget *ing_filter_entry;
         GtkWidget *ing_list;
 
+        char *ing_term;
         char *query;
 };
 
@@ -216,6 +218,71 @@ ing_header_func (GtkListBoxRow *row,
                 gtk_list_box_row_set_header (row, NULL);
 }
 
+static gboolean
+ing_filter_func (GtkListBoxRow *row,
+                 gpointer       data)
+{
+        GrQueryEditor *self = data;
+        const char *cf;
+
+        if (!GR_IS_INGREDIENT_ROW (row))
+                return TRUE;
+
+        if (!self->ing_term)
+                return TRUE;
+
+        cf = gr_ingredient_row_get_filter_term (GR_INGREDIENT_ROW (row));
+
+        return g_str_has_prefix (cf, self->ing_term);
+}
+
+static void
+ing_filter_changed (GrQueryEditor *self)
+{
+        const char *term;
+
+        term = gtk_entry_get_text (GTK_ENTRY (self->ing_filter_entry));
+        g_free (self->ing_term);
+        self->ing_term = g_utf8_casefold (term, -1);
+        gtk_list_box_invalidate_filter (GTK_LIST_BOX (self->ing_list));
+}
+
+static void
+ing_filter_stop (GrQueryEditor *self)
+{
+        gtk_entry_set_text (GTK_ENTRY (self->ing_filter_entry), "");
+}
+
+static void
+ing_filter_activated (GrQueryEditor *self)
+{
+        GList *children, *l;
+        GtkWidget *row;
+
+        row = NULL;
+        children = gtk_container_get_children (GTK_CONTAINER (self->ing_list));
+        for (l = children; l; l = l->next) {
+                GtkWidget *r = l->data;
+
+                if (!GR_IS_INGREDIENT_ROW (r))
+                        continue;
+
+                if (!ing_filter_func (GTK_LIST_BOX_ROW (r), self))
+                        continue;
+
+                if (row != NULL) {
+                        /* more than one match, don't activate */
+                        g_list_free (children);
+                        return;
+                }
+
+                row = r;
+        }
+        g_list_free (children);
+
+        gtk_widget_activate (row);
+}
+
 static void
 populate_ingredients_list (GrQueryEditor *self)
 {
@@ -241,6 +308,9 @@ populate_ingredients_list (GrQueryEditor *self)
 
         gtk_list_box_set_header_func (GTK_LIST_BOX (self->ing_list),
                                       ing_header_func, self, NULL);
+
+        gtk_list_box_set_filter_func (GTK_LIST_BOX (self->ing_list),
+                                      ing_filter_func, self, NULL);
 
         g_signal_connect (self->ing_list, "row-activated",
                           G_CALLBACK (ing_row_activated), self);
@@ -574,6 +644,7 @@ gr_query_editor_finalize (GObject *object)
         GrQueryEditor *self = (GrQueryEditor *)object;
 
         g_free (self->query);
+        g_free (self->ing_term);
 
         G_OBJECT_CLASS (gr_query_editor_parent_class)->finalize (object);
 }
@@ -673,6 +744,7 @@ gr_query_editor_class_init (GrQueryEditorClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrQueryEditor, ing_search_revealer);
         gtk_widget_class_bind_template_child (widget_class, GrQueryEditor, ing_search_button);
         gtk_widget_class_bind_template_child (widget_class, GrQueryEditor, ing_search_button_label);
+        gtk_widget_class_bind_template_child (widget_class, GrQueryEditor, ing_filter_entry);
         gtk_widget_class_bind_template_child (widget_class, GrQueryEditor, ing_list);
 
         gtk_widget_class_bind_template_callback (widget_class, tag_clicked);
@@ -685,6 +757,9 @@ gr_query_editor_class_init (GrQueryEditorClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, entry_changed_cb);
         gtk_widget_class_bind_template_callback (widget_class, entry_activate_cb);
         gtk_widget_class_bind_template_callback (widget_class, stop_search_cb);
+        gtk_widget_class_bind_template_callback (widget_class, ing_filter_changed);
+        gtk_widget_class_bind_template_callback (widget_class, ing_filter_stop);
+        gtk_widget_class_bind_template_callback (widget_class, ing_filter_activated);
 }
 
 static void

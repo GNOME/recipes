@@ -5,7 +5,6 @@
     <child>
       <object class="GtkBox">
         <property name="visible">1</property>
-        <property name="orientation">horizontal</property>
         <style>
           <class name="linked"/>
         </style>
@@ -33,7 +32,6 @@
   <object class="GtkPopover" id="popover">
     <property name="modal">0</property>
     <property name="position">bottom</property>
-    <property name="constrain-to">window</property>
     <property name="width-request">250</property>
     <signal name="notify::visible" handler="search_popover_notify"/>
     <child>
@@ -48,7 +46,9 @@
             <property name="width-chars">30</property>
             <property name="margin-bottom">10</property>
             <property name="label" translatable="yes">Meal</property>
-            <style> <class name="dim-label"/> </style>
+            <style>
+              <class name="dim-label"/>
+            </style>
           </object>
         </child>
         <child>
@@ -58,7 +58,6 @@
             <child>
               <object class="GtkBox">
                 <property name="visible">1</property>
-                <property name="orientation">horizontal</property>
                 <property name="spacing">10</property>
                 <child>
                   <object class="GtkLabel" id="meal_search_button_label">
@@ -86,7 +85,6 @@
         <child>
           <object class="GtkRevealer" id="meal_search_revealer">
             <property name="visible">1</property>
-            <property name="transition-type">slide-down</property>
             <property name="margin-bottom">20</property>
             <child>
               <object class="GtkScrolledWindow">
@@ -111,7 +109,9 @@
             <property name="width-chars">30</property>
             <property name="margin-bottom">10</property>
             <property name="label" translatable="yes">Dietary restrictions</property>
-            <style> <class name="dim-label"/> </style>
+            <style>
+              <class name="dim-label"/>
+            </style>
           </object>
         </child>
         <child>
@@ -121,7 +121,6 @@
             <child>
               <object class="GtkBox">
                 <property name="visible">1</property>
-                <property name="orientation">horizontal</property>
                 <property name="spacing">10</property>
                 <child>
                   <object class="GtkLabel" id="diet_search_button_label">
@@ -149,7 +148,6 @@
         <child>
           <object class="GtkRevealer" id="diet_search_revealer">
             <property name="visible">1</property>
-            <property name="transition-type">slide-down</property>
             <property name="margin-bottom">20</property>
             <child>
               <object class="GtkScrolledWindow">
@@ -174,7 +172,9 @@
             <property name="margin-bottom">10</property>
             <property name="width-chars">30</property>
             <property name="label" translatable="yes">Ingredients</property>
-            <style> <class name="dim-label"/> </style>
+            <style>
+              <class name="dim-label"/>
+            </style>
           </object>
         </child>
         <child>
@@ -184,7 +184,6 @@
             <child>
               <object class="GtkBox">
                 <property name="visible">1</property>
-                <property name="orientation">horizontal</property>
                 <property name="spacing">10</property>
                 <child>
                   <object class="GtkLabel" id="ing_search_button_label">
@@ -212,19 +211,33 @@
         <child>
           <object class="GtkRevealer" id="ing_search_revealer">
             <property name="visible">1</property>
-            <property name="transition-type">slide-down</property>
             <child>
-              <object class="GtkScrolledWindow">
+              <object class="GtkBox">
                 <property name="visible">1</property>
-                <property name="shadow-type">in</property>
-                <property name="hscrollbar-policy">never</property>
-                <property name="vscrollbar-policy">automatic</property>
-                <property name="propagate-natural-height">1</property>
-                <property name="max-content-height">300</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">10</property>
                 <child>
-                  <object class="GtkListBox" id="ing_list">
+                  <object class="GtkSearchEntry" id="ing_filter_entry">
                     <property name="visible">1</property>
-                    <property name="selection-mode">none</property>
+                    <property name="placeholder-text" translatable="yes">Search…</property>
+                    <signal name="search-changed" handler="ing_filter_changed" swapped="yes"/>
+                    <signal name="stop-search" handler="ing_filter_stop" swapped="yes"/>
+                    <signal name="activate" handler="ing_filter_activated" swapped="yes"/>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkScrolledWindow">
+                    <property name="visible">1</property>
+                    <property name="shadow-type">in</property>
+                    <property name="hscrollbar-policy">never</property>
+                    <property name="propagate-natural-height">1</property>
+                    <property name="max-content-height">300</property>
+                    <child>
+                      <object class="GtkListBox" id="ing_list">
+                        <property name="visible">1</property>
+                        <property name="selection-mode">none</property>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
