@@ -35,5 +35,6 @@ void             gr_ingredient_row_set_entry (GrIngredientRow *row,
 char *           gr_ingredient_row_get_search_term (GrIngredientRow *row);
 char *           gr_ingredient_row_get_label (GrIngredientRow *row);
 const char *     gr_ingredient_row_get_ingredient (GrIngredientRow *row);
+const char *     gr_ingredient_row_get_filter_term (GrIngredientRow *row);
 
 G_END_DECLS

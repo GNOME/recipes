@@ -259,6 +259,13 @@ gr_ingredient_row_get_search_term (GrIngredientRow *row)
                 return NULL;
 }
 
+
+const char *
+gr_ingredient_row_get_filter_term (GrIngredientRow *row)
+{
+        return row->cf_ingredient;
+}
+
 char *
 gr_ingredient_row_get_label (GrIngredientRow *row)
 {
