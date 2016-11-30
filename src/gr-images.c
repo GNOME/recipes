@@ -279,7 +279,7 @@ row_selected (GtkListBox    *switcher,
 
         path = (const char *) g_object_get_data (G_OBJECT (gtk_bin_get_child (GTK_BIN (row))), "path");
         angle = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (gtk_bin_get_child (GTK_BIN (row))), "angle"));
-        pixbuf = load_pixbuf_fit_size (path, angle, 128, 128);
+        pixbuf = load_pixbuf_fit_size (path, angle, 128, 128, TRUE);
 
         vis = gtk_stack_get_visible_child_name (GTK_STACK (images->stack));
         if (strcmp (vis, "image1") == 0) {

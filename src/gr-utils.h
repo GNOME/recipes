@@ -27,7 +27,8 @@ G_BEGIN_DECLS
 GdkPixbuf *load_pixbuf_fit_size  (const char *path,
 			     	  int         angle,
                                   int         width,
-                                  int         height);
+                                  int         height,
+                                  gboolean    pad);
 GdkPixbuf *load_pixbuf_fill_size (const char *path,
 				  int         angle,
                                   int         width,

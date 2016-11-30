@@ -30,7 +30,8 @@ GdkPixbuf *
 load_pixbuf_fit_size (const char *path,
                       int         angle,
                       int         width,
-                      int         height)
+                      int         height,
+                      gboolean    pad)
 {
         g_autoptr(GdkPixbuf) original = NULL;
         GdkPixbuf *pixbuf;
@@ -61,14 +62,19 @@ load_pixbuf_fit_size (const char *path,
                 g_set_object (&original, pb);
         }
 
-        dest_width = gdk_pixbuf_get_width (original);
-        dest_height = gdk_pixbuf_get_height (original);
-        dest_x = (width - dest_width) / 2;
-        dest_y = (height - dest_height) / 2;
+        if (pad) {
+                dest_width = gdk_pixbuf_get_width (original);
+                dest_height = gdk_pixbuf_get_height (original);
+                dest_x = (width - dest_width) / 2;
+                dest_y = (height - dest_height) / 2;
 
-        gdk_pixbuf_composite (original, pixbuf,
-                              dest_x, dest_y, dest_width, dest_height,
-                              dest_x, dest_y, 1.0, 1.0, GDK_INTERP_BILINEAR, 255);
+                gdk_pixbuf_composite (original, pixbuf,
+                                      dest_x, dest_y, dest_width, dest_height,
+                                      dest_x, dest_y, 1.0, 1.0, GDK_INTERP_BILINEAR, 255);
+        }
+        else {
+                g_set_object (&pixbuf, original);
+        }
 
         return pixbuf;
 }

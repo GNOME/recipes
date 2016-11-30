@@ -264,7 +264,7 @@ draw_page (GtkPrintOperation *operation,
 
         g_object_get (printer->recipe, "images", &images, NULL);
         ri = &g_array_index (images, GrRotatedImage, 0);
-        pixbuf = load_pixbuf_fit_size (ri->path, ri->angle, width / 2, height / 4);
+        pixbuf = load_pixbuf_fit_size (ri->path, ri->angle, width / 2, height / 4, FALSE);
 
         gdk_cairo_set_source_pixbuf (cr, pixbuf, width - gdk_pixbuf_get_width (pixbuf), y);
         cairo_paint (cr);
