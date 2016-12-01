@@ -34,6 +34,8 @@ struct _GrRecipePrinter
         PangoLayout *title_layout;
         PangoLayout *left_layout;
         PangoLayout *bottom_layout;
+        GdkPixbuf *image;
+        GList *page_breaks;
 
         GrRecipe *recipe;
 };
@@ -115,7 +117,7 @@ begin_print (GtkPrintOperation *operation,
              GtkPrintContext   *context,
              GrRecipePrinter   *printer)
 {
-        int width, height;
+        double width, height;
         PangoFontDescription *title_font;
         PangoFontDescription *body_font;
         PangoAttrList *attrs;
@@ -123,10 +125,24 @@ begin_print (GtkPrintOperation *operation,
         char **ingredients;
         int length;
         int i;
+        double page_height;
+        GList *page_breaks;
         g_autoptr(GString) s = NULL;
+        g_autoptr(GArray) images = NULL;
+        GrRotatedImage *ri;
+        PangoRectangle title_rect;
+        PangoRectangle left_rect;
+        int num_lines;
+        int line;
 
         width = gtk_print_context_get_width (context);
         height = gtk_print_context_get_height (context);
+
+        g_object_get (printer->recipe, "images", &images, NULL);
+        if (images && images->len > 0) {
+                ri = &g_array_index (images, GrRotatedImage, 0);
+                printer->image = load_pixbuf_fit_size (ri->path, ri->angle, width / 2, height / 4, FALSE);
+        }
 
         title_font = pango_font_description_from_string ("Cantarell Bold 24");
         body_font = pango_font_description_from_string ("Cantarell 18");
@@ -134,18 +150,23 @@ begin_print (GtkPrintOperation *operation,
         printer->title_layout = gtk_print_context_create_pango_layout (context);
         pango_layout_set_font_description (printer->title_layout, title_font);
 
-        pango_layout_set_text (printer->title_layout, gr_recipe_get_name (printer->recipe), -1);
+        s = g_string_new ("");
+        g_string_append (s, gr_recipe_get_name (printer->recipe));
+        g_string_append (s, "\n\n");
+
+        pango_layout_set_text (printer->title_layout, s->str, s->len);
 
         printer->left_layout = gtk_print_context_create_pango_layout (context);
         pango_layout_set_width (printer->left_layout, (width / 2) * PANGO_SCALE);
         pango_layout_set_font_description (printer->left_layout, body_font);
 
-        s = g_string_new ("");
+        g_string_truncate (s, 0);
 
         g_string_append_printf (s, "%s %s\n", _("Author:"), gr_recipe_get_author (printer->recipe));
         g_string_append_printf (s, "%s %s\n", _("Preparation:"), gr_recipe_get_prep_time (printer->recipe));
         g_string_append_printf (s, "%s %s\n", _("Cooking:"), gr_recipe_get_cook_time (printer->recipe));
-        g_string_append_printf (s, "%s %d", _("Serves:"), gr_recipe_get_serves (printer->recipe));
+        g_string_append_printf (s, "%s %d\n", _("Serves:"), gr_recipe_get_serves (printer->recipe));
+        g_string_append (s, "\n");
 
         pango_layout_set_text (printer->left_layout, s->str, s->len);
 
@@ -215,7 +236,40 @@ begin_print (GtkPrintOperation *operation,
         pango_layout_set_attributes (printer->bottom_layout, attrs);
         pango_attr_list_unref (attrs);
 
-        gtk_print_operation_set_n_pages (operation, 1);
+        /* TODO: we assume only the bottom layout will break across pages */
+
+        num_lines = pango_layout_get_line_count (printer->bottom_layout);
+
+        pango_layout_get_extents (printer->title_layout, NULL, &title_rect);
+        pango_layout_get_extents (printer->left_layout, NULL, &left_rect);
+
+        if (printer->image)
+                page_height = title_rect.height/1024.0 + MAX (left_rect.height/1024.0, gdk_pixbuf_get_height (printer->image) + 10);
+        else
+                page_height = title_rect.height/1024.0 + left_rect.height/1024.0;
+
+        page_breaks = NULL;
+
+        for (line = 0; line < num_lines; line++) {
+                PangoLayoutLine *layout_line;
+                PangoRectangle logical_rect;
+                double line_height;
+
+                layout_line = pango_layout_get_line (printer->bottom_layout, line);
+                pango_layout_line_get_extents (layout_line, NULL, &logical_rect);
+                line_height = logical_rect.height / 1024.0;
+                if (page_height + line_height > height) {
+g_print ("page break at line %d: %f + %f > %f\n", page_height, line_height, height);
+                        page_breaks = g_list_prepend (page_breaks, GINT_TO_POINTER (line));
+                        page_height = 0;
+                }
+
+                page_height += line_height;
+        }
+
+        page_breaks = g_list_reverse (page_breaks);
+        gtk_print_operation_set_n_pages (operation, g_list_length (page_breaks) + 1);
+        printer->page_breaks = page_breaks;
 
         pango_font_description_free (title_font);
         pango_font_description_free (body_font);
@@ -230,6 +284,9 @@ end_print (GtkPrintOperation *operation,
         g_clear_object (&printer->left_layout);
         g_clear_object (&printer->bottom_layout);
         g_clear_object (&printer->recipe);
+        g_clear_object (&printer->image);
+        g_list_free (printer->page_breaks);
+        printer->page_breaks = NULL;
 }
 
 static void
@@ -245,45 +302,81 @@ draw_page (GtkPrintOperation *operation,
         g_autoptr(GArray) images = NULL;
         GrRotatedImage *ri;
         g_autoptr(GdkPixbuf) pixbuf = NULL;
-        int y;
+        int start, end, i;
+        PangoLayoutIter *iter;
+        double start_pos;
+        GList *pagebreak;
 
         cr = gtk_print_context_get_cairo_context (context);
 
         width = gtk_print_context_get_width (context);
         height = gtk_print_context_get_height (context);
 
-        cairo_set_source_rgb (cr, 0, 0, 0);
+        if (page_nr == 0) {
+                cairo_set_source_rgb (cr, 0, 0, 0);
 
-        pango_layout_get_extents (printer->title_layout, NULL, &logical_rect);
-        baseline = pango_layout_get_baseline (printer->title_layout);
+                pango_layout_get_extents (printer->title_layout, NULL, &logical_rect);
+                baseline = pango_layout_get_baseline (printer->title_layout);
 
-        cairo_move_to (cr, logical_rect.x / 1024.0 + (width - logical_rect.width / 1024.0) / 2, baseline / 1024.0 - logical_rect.y / 1024.0);
-        pango_cairo_show_layout (cr, printer->title_layout);
+                cairo_move_to (cr, logical_rect.x / 1024.0 + (width - logical_rect.width / 1024.0) / 2, baseline / 1024.0 - logical_rect.y / 1024.0);
+                pango_cairo_show_layout (cr, printer->title_layout);
 
-        y = baseline / 1024.0 - logical_rect.y / 1024.0 + logical_rect.height / 1024.0 + 10;
+                start_pos = baseline / 1024.0 - logical_rect.y / 1024.0 + logical_rect.height / 1024.0;
 
-        g_object_get (printer->recipe, "images", &images, NULL);
-        ri = &g_array_index (images, GrRotatedImage, 0);
-        pixbuf = load_pixbuf_fit_size (ri->path, ri->angle, width / 2, height / 4, FALSE);
+                if (printer->image) {
+                        gdk_cairo_set_source_pixbuf (cr, printer->image, width - gdk_pixbuf_get_width (printer->image), start_pos);
+                        cairo_paint (cr);
+                }
 
-        gdk_cairo_set_source_pixbuf (cr, pixbuf, width - gdk_pixbuf_get_width (pixbuf), y);
-        cairo_paint (cr);
+                cairo_set_source_rgb (cr, 0, 0, 0);
 
-        cairo_set_source_rgb (cr, 0, 0, 0);
+                pango_layout_get_extents (printer->left_layout, NULL, &logical_rect);
+                baseline = pango_layout_get_baseline (printer->left_layout);
 
-        pango_layout_get_extents (printer->left_layout, NULL, &logical_rect);
-        baseline = pango_layout_get_baseline (printer->left_layout);
+                cairo_move_to (cr, logical_rect.x / 1024.0, start_pos + baseline / 1024.0 - logical_rect.y / 1024.0);
+                pango_cairo_show_layout (cr, printer->left_layout);
 
-        cairo_move_to (cr, logical_rect.x / 1024.0, y + baseline / 1024.0 - logical_rect.y / 1024.0);
-        pango_cairo_show_layout (cr, printer->left_layout);
+                if (printer->image)
+                        start_pos += MAX (gdk_pixbuf_get_height (printer->image) + 10, baseline / 1024.0 - logical_rect.y / 1024.0 + logical_rect.height / 1024.0);
+                else
+                        start_pos += baseline / 1024.0 - logical_rect.y / 1024.0 + logical_rect.height / 1024.0;
 
-        y += MAX (gdk_pixbuf_get_height (pixbuf), baseline / 1024.0 - logical_rect.y / 1024.0 + logical_rect.height / 1024.0) + 10;
+                start = 0;
+        }
+        else {
+                pagebreak = g_list_nth (printer->page_breaks, page_nr - 1);
+                start = GPOINTER_TO_INT (pagebreak->data);
+                start_pos = 0;
+        }
 
-        pango_layout_get_extents (printer->bottom_layout, NULL, &logical_rect);
-        baseline = pango_layout_get_baseline (printer->bottom_layout);
+        pagebreak = g_list_nth (printer->page_breaks, page_nr);
+        if (pagebreak == NULL)
+                end = pango_layout_get_line_count (printer->bottom_layout);
+        else
+                end = GPOINTER_TO_INT (pagebreak->data);
 
-        cairo_move_to (cr, logical_rect.x / 1024.0, y + baseline / 1024.0 - logical_rect.y / 1024.0);
-        pango_cairo_show_layout (cr, printer->bottom_layout);
+        i = 0;
+        iter = pango_layout_get_iter (printer->bottom_layout);
+        do {
+                PangoRectangle logical_rect;
+                PangoLayoutLine *line;
+                int baseline;
+
+                if (i >= start) {
+                        line = pango_layout_iter_get_line (iter);
+                        pango_layout_iter_get_line_extents (iter, NULL, &logical_rect);
+                        baseline = pango_layout_iter_get_baseline (iter);
+                        if (i == start)
+                                start_pos -= logical_rect.y / 1024.0;
+
+                        cairo_move_to (cr, logical_rect.x / 1024.0, baseline / 1024.0 + start_pos);
+                        pango_cairo_show_layout_line (cr, line);
+                }
+                i++;
+
+        } while (i < end && pango_layout_iter_next_line (iter));
+
+        pango_layout_iter_free (iter);
 }
 
 static void
