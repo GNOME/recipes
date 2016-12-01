@@ -330,8 +330,8 @@ time_spin_input (GtkSpinButton *spin_button,
                         }
                         else if (strcmp (str[1], _("second")) == 0 ||
                                  strcmp (str[1], _("seconds")) == 0 ||
-                                 strcmp (str[1], C_("minute abbreviation", "sec")) == 0 ||
-                                 strcmp (str[1], C_("minute abbreviation", "s")) == 0) {
+                                 strcmp (str[1], C_("second abbreviation", "sec")) == 0 ||
+                                 strcmp (str[1], C_("second abbreviation", "s")) == 0) {
                                 *new_val = num;
                                 found = TRUE;
                         }
