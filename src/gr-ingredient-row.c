@@ -22,6 +22,7 @@
 #include <glib/gi18n.h>
 
 #include "gr-ingredient-row.h"
+#include "gr-ingredient.h"
 
 
 struct _GrIngredientRow
@@ -103,11 +104,8 @@ update_label (GrIngredientRow *self)
 {
         if (self->include)
                 gtk_label_set_label (GTK_LABEL (self->label), self->ingredient);
-        else if (self->exclude) {
-                g_autofree char *tmp;
-                tmp = g_strdup_printf (_("no %s"), self->ingredient);
-                gtk_label_set_label (GTK_LABEL (self->label), tmp);
-        }
+        else if (self->exclude)
+                gtk_label_set_label (GTK_LABEL (self->label), gr_ingredient_get_negation (self->ingredient));
         else
                 gtk_label_set_label (GTK_LABEL (self->label), self->ingredient);
 }
@@ -134,14 +132,11 @@ update_tag (GrIngredientRow *self)
                 g_object_set_data (G_OBJECT (self->tag), "row", self);
         }
 
-        if (self->include) {
+        if (self->include)
                 gd_tagged_entry_tag_set_label (self->tag, self->ingredient);
-        }
-        else if (self->exclude) {
-                g_autofree char *tmp = NULL;
-                tmp = g_strdup_printf (_("no %s"), self->ingredient);
-                gd_tagged_entry_tag_set_label (self->tag, tmp);
-        }
+        else if (self->exclude)
+                gd_tagged_entry_tag_set_label (self->tag,
+                                               gr_ingredient_get_negation (self->ingredient));
 
         g_signal_emit_by_name (self->entry, "search-changed", 0);
 }
@@ -272,7 +267,7 @@ gr_ingredient_row_get_label (GrIngredientRow *row)
         if (row->include)
                 return g_strdup (row->ingredient);
         else if (row->exclude)
-                return g_strdup_printf (_("no %s"), row->ingredient);
+                return g_strdup (gr_ingredient_get_negation (row->ingredient));
         else
                 return NULL;
 }
