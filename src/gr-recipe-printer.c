@@ -42,59 +42,9 @@ struct _GrRecipePrinter
 
 G_DEFINE_TYPE (GrRecipePrinter, gr_recipe_printer, G_TYPE_OBJECT)
 
-enum {
-        PROP_0,
-        N_PROPS
-};
-
-static GParamSpec *properties [N_PROPS];
-
-static void
-gr_recipe_printer_finalize (GObject *object)
-{
-        GrRecipePrinter *self = (GrRecipePrinter *)object;
-
-        G_OBJECT_CLASS (gr_recipe_printer_parent_class)->finalize (object);
-}
-
-static void
-gr_recipe_printer_get_property (GObject    *object,
-                                guint       prop_id,
-                                GValue     *value,
-                                GParamSpec *pspec)
-{
-        GrRecipePrinter *self = GR_RECIPE_PRINTER (object);
-
-        switch (prop_id)
-          {
-          default:
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-          }
-}
-
-static void
-gr_recipe_printer_set_property (GObject      *object,
-                                guint         prop_id,
-                                const GValue *value,
-                                GParamSpec   *pspec)
-{
-        GrRecipePrinter *self = GR_RECIPE_PRINTER (object);
-
-        switch (prop_id)
-          {
-          default:
-            G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-          }
-}
-
 static void
 gr_recipe_printer_class_init (GrRecipePrinterClass *klass)
 {
-        GObjectClass *object_class = G_OBJECT_CLASS (klass);
-
-        object_class->finalize = gr_recipe_printer_finalize;
-        object_class->get_property = gr_recipe_printer_get_property;
-        object_class->set_property = gr_recipe_printer_set_property;
 }
 
 static void
@@ -110,6 +60,8 @@ gr_recipe_printer_new (GtkWindow *parent)
         printer = g_object_new (GR_TYPE_RECIPE_PRINTER, NULL);
 
         printer->window = parent;
+
+        return printer;
 }
 
 static void
@@ -259,7 +211,6 @@ begin_print (GtkPrintOperation *operation,
                 pango_layout_line_get_extents (layout_line, NULL, &logical_rect);
                 line_height = logical_rect.height / 1024.0;
                 if (page_height + line_height > height) {
-g_print ("page break at line %d: %f + %f > %f\n", page_height, line_height, height);
                         page_breaks = g_list_prepend (page_breaks, GINT_TO_POINTER (line));
                         page_height = 0;
                 }
@@ -298,9 +249,8 @@ draw_page (GtkPrintOperation *operation,
         cairo_t *cr;
         PangoRectangle logical_rect;
         int baseline;
-        int width, height;
+        int width;
         g_autoptr(GArray) images = NULL;
-        GrRotatedImage *ri;
         g_autoptr(GdkPixbuf) pixbuf = NULL;
         int start, end, i;
         PangoLayoutIter *iter;
@@ -310,7 +260,6 @@ draw_page (GtkPrintOperation *operation,
         cr = gtk_print_context_get_cairo_context (context);
 
         width = gtk_print_context_get_width (context);
-        height = gtk_print_context_get_height (context);
 
         if (page_nr == 0) {
                 cairo_set_source_rgb (cr, 0, 0, 0);
