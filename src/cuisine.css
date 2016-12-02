@@ -1,0 +1,45 @@
+label.big.cuisine.heading,
+label.cuisine.heading {
+  color: white;
+  margin: 0 20px 0 20px;
+  font-weight: bold;
+  font-size: 24pt;
+}
+
+label.big.cuisine,
+label.cuisine {
+  color: white;
+  margin: 5px 20px 5px 20px;
+  font-size: 12pt;
+}
+
+label.cuisine.heading.mediterranean,
+label.cuisine.mediterranean {
+  color: black;
+}
+
+.cuisine.view.tile {
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.cuisine.view.tile.american { background: url('resource:/org/gnome/Recipes/american.png'); }
+.cuisine.view.tile.chinese { background: url('resource:/org/gnome/Recipes/chinese.png'); }
+.cuisine.view.tile.indian { background: url('resource:/org/gnome/Recipes/indian.png'); }
+.cuisine.view.tile.italian { background: url('resource:/org/gnome/Recipes/italian.png'); }
+.cuisine.view.tile.french { background: url('resource:/org/gnome/Recipes/french.png'); }
+.cuisine.view.tile.greek { background: url('resource:/org/gnome/Recipes/greek.png'); }
+.cuisine.view.tile.mexican { background: url('resource:/org/gnome/Recipes/mexican.png'); }
+.cuisine.view.tile.mediterranean { background: url('resource:/org/gnome/Recipes/mediterranean.png'); }
+.cuisine.view.tile.turkish { background: url('resource:/org/gnome/Recipes/turkish.png'); }
+
+.cuisine.big.view.tile.american { background: url('resource:/org/gnome/Recipes/big-american.png'); }
+.cuisine.big.view.tile.chinese { background: url('resource:/org/gnome/Recipes/big-chinese.png'); }
+.cuisine.big.view.tile.indian { background: url('resource:/org/gnome/Recipes/big-indian.png'); }
+.cuisine.big.view.tile.italian { background: url('resource:/org/gnome/Recipes/big-italian.png'); }
+.cuisine.big.view.tile.french { background: url('resource:/org/gnome/Recipes/big-french.png'); }
+.cuisine.big.view.tile.greek { background: url('resource:/org/gnome/Recipes/big-greek.png'); }
+.cuisine.big.view.tile.mexican { background: url('resource:/org/gnome/Recipes/big-mexican.png'); }
+.cuisine.big.view.tile.mediterranean { background: url('resource:/org/gnome/Recipes/big-mediterranean.png'); }
+.cuisine.big.view.tile.turkish { background: url('resource:/org/gnome/Recipes/big-turkish.png'); }
+
