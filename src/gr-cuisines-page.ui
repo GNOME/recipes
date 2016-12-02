@@ -96,11 +96,6 @@
                 </child>
               </object>
             </child>
-            <child>
-              <object class="GtkRevealer" id="seasonal_expander">
-                <property name="visible">1</property>
-                <property name="transition-type">slide-up</property>
-                <property name="reveal-child">1</property>
                 <child>
                   <object class="GtkBox" id="seasonal_expander_box">
                     <property name="visible">1</property>
@@ -121,14 +116,16 @@
                         <property name="margin-start">9</property>
                         <property name="margin-end">9</property>
                         <property name="valign">center</property>
+                        <property name="relief">none</property>
                         <signal name="clicked" handler="expander_button_clicked" swapped="yes"/>
                         <style>
+                          <class name="image-cutton"/>
                           <class name="circular"/>
                         </style>
                         <child>
                           <object class="GtkImage" id="seasonal_expander_image">
                             <property name="visible">1</property>
-                            <property name="icon-name">view-more-symbolic</property>
+                            <property name="icon-name">pan-down-symbolic</property>
                             <property name="icon-size">1</property>
                           </object>
                         </child>
@@ -147,8 +144,6 @@
                         <property name="position">2</property>
                       </packing>
                     </child>
-                  </object>
-                </child>
               </object>
             </child>
           </object>

@@ -44,7 +44,7 @@ struct _GrCuisinesPage
         GtkWidget *seasonal_box;
         GtkWidget *seasonal_box2;
         GtkWidget *seasonal_more;
-        GtkWidget *seasonal_expander;
+        GtkWidget *seasonal_expander_image;
 
         char *featured;
 };
@@ -61,28 +61,44 @@ cuisines_page_finalize (GObject *object)
         G_OBJECT_CLASS (gr_cuisines_page_parent_class)->finalize (object);
 }
 
-void
-gr_cuisines_page_set_seasonal_expanded (GrCuisinesPage *page,
-                                        gboolean        expanded)
+static void
+set_seasonal_expanded (GrCuisinesPage *page,
+                       gboolean        expanded)
 {
 /*
         gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (page->scrolled_win),
                                         GTK_POLICY_NEVER,
                                         GTK_POLICY_AUTOMATIC);
 */
-        gtk_revealer_set_transition_duration (GTK_REVEALER (page->seasonal_expander), expanded ? 250 : 0);
         gtk_revealer_set_transition_duration (GTK_REVEALER (page->seasonal_more), expanded ? 250 : 0);
 
-        gtk_revealer_set_reveal_child (GTK_REVEALER (page->seasonal_expander), !expanded);
         gtk_revealer_set_reveal_child (GTK_REVEALER (page->seasonal_more), expanded);
+        gtk_image_set_from_icon_name (GTK_IMAGE (page->seasonal_expander_image),
+                                      expanded ? "pan-up-symbolic" : "pan-down-symbolic", 1);
+}
+
+void
+gr_cuisines_page_unexpand (GrCuisinesPage *page)
+{
+        GtkRevealerTransitionType transition;
+
+        transition = gtk_revealer_get_transition_type (GTK_REVEALER (page->seasonal_more));
+        gtk_revealer_set_transition_type (GTK_REVEALER (page->seasonal_more),
+                                          GTK_REVEALER_TRANSITION_TYPE_NONE);
+
+        set_seasonal_expanded (page, FALSE);
+
+        gtk_revealer_set_transition_type (GTK_REVEALER (page->seasonal_more), transition);
 }
 
 static void
 expander_button_clicked (GrCuisinesPage *page)
 {
-        gr_cuisines_page_set_seasonal_expanded (page, TRUE);
-}
+        gboolean expanded;
 
+        expanded = gtk_revealer_get_reveal_child (GTK_REVEALER (page->seasonal_more));
+        set_seasonal_expanded (page, !expanded);
+}
 
 static void
 populate_cuisines (GrCuisinesPage *page)
@@ -202,7 +218,7 @@ gr_cuisines_page_class_init (GrCuisinesPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrCuisinesPage, seasonal_box);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrCuisinesPage, seasonal_box2);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrCuisinesPage, seasonal_more);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrCuisinesPage, seasonal_expander);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrCuisinesPage, seasonal_expander_image);
 
          gtk_widget_class_bind_template_callback (widget_class, expander_button_clicked);
 }

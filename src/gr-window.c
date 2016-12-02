@@ -198,11 +198,11 @@ visible_page_changed (GrWindow *window)
         }
 
         if (strcmp (visible, "recipes") == 0) {
-                gr_recipes_page_set_categories_expanded (GR_RECIPES_PAGE (window->recipes_page), FALSE);
+                gr_recipes_page_unexpand (GR_RECIPES_PAGE (window->recipes_page));
         }
 
         if (strcmp (visible, "cuisines") == 0) {
-                gr_cuisines_page_set_seasonal_expanded (GR_CUISINES_PAGE (window->cuisines_page), FALSE);
+                gr_cuisines_page_unexpand (GR_CUISINES_PAGE (window->cuisines_page));
         }
 }
 
@@ -293,7 +293,8 @@ window_mapped_handler (GtkWidget *widget)
         GrWindow *window = GR_WINDOW (widget);
 
         gtk_window_set_resizable (GTK_WINDOW (window), TRUE);
-        gr_recipes_page_set_categories_expanded (GR_RECIPES_PAGE (window->recipes_page), FALSE);
+        gr_recipes_page_unexpand (GR_RECIPES_PAGE (window->recipes_page));
+        gr_cuisines_page_unexpand (GR_CUISINES_PAGE (window->cuisines_page));
 }
 
 static void

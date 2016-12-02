@@ -43,7 +43,7 @@ struct _GrRecipesPage
         GtkWidget *diet_box;
         GtkWidget *chefs_box;
         GtkWidget *favorites_box;
-        GtkWidget *categories_expander;
+        GtkWidget *categories_expander_image;
         GtkWidget *diet_more;
         GtkWidget *diet_box2;
         GtkWidget *scrolled_win;
@@ -71,25 +71,40 @@ show_chef_list (GtkFlowBox      *box,
         gr_window_show_chef (GR_WINDOW (window), chef);
 }
 
-void
-gr_recipes_page_set_categories_expanded (GrRecipesPage *page,
-                                         gboolean       expanded)
+static void
+set_categories_expanded (GrRecipesPage *page,
+                         gboolean       expanded)
 {
         gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (page->scrolled_win),
                                         GTK_POLICY_NEVER,
                                         GTK_POLICY_AUTOMATIC);
 
-        gtk_revealer_set_transition_duration (GTK_REVEALER (page->categories_expander), expanded ? 250 : 0);
-        gtk_revealer_set_transition_duration (GTK_REVEALER (page->diet_more), expanded ? 250 : 0);
-
-        gtk_revealer_set_reveal_child (GTK_REVEALER (page->categories_expander), !expanded);
         gtk_revealer_set_reveal_child (GTK_REVEALER (page->diet_more), expanded);
+        gtk_image_set_from_icon_name (GTK_IMAGE (page->categories_expander_image),
+                                      expanded ? "pan-up-symbolic" : "pan-down-symbolic", 1);
+}
+
+void
+gr_recipes_page_unexpand (GrRecipesPage *page)
+{
+        GtkRevealerTransitionType transition;
+
+        transition = gtk_revealer_get_transition_type (GTK_REVEALER (page->diet_more));
+        gtk_revealer_set_transition_type (GTK_REVEALER (page->diet_more),
+                                          GTK_REVEALER_TRANSITION_TYPE_NONE);
+
+        set_categories_expanded (page, FALSE);
+
+        gtk_revealer_set_transition_type (GTK_REVEALER (page->diet_more), transition);
 }
 
 static void
 expander_button_clicked (GrRecipesPage *page)
 {
-        gr_recipes_page_set_categories_expanded (page, TRUE);
+        gboolean expanded;
+
+        expanded = gtk_revealer_get_reveal_child (GTK_REVEALER (page->diet_more));
+        set_categories_expanded (page, !expanded);
 }
 
 static void
@@ -124,7 +139,7 @@ gr_recipes_page_class_init (GrRecipesPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, pick_box);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, diet_box);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, chefs_box);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, categories_expander);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, categories_expander_image);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, diet_box2);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, diet_more);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, scrolled_win);
