@@ -15,50 +15,52 @@ label.cuisine {
 
 }
 
+/* Can be overridden for individual tiles like this:
 label.cuisine.heading.mediterranean,
 label.cuisine.mediterranean {
   color: black;
 }
+*/
 
 .cuisine.view.tile {
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: 50%;
   border-width: 0;
-  min-width: 396px; /* FIXME: avoid smaller columns */  
+  min-width: 396px; /* FIXME: avoid smaller columns */
 }
 
 
-.cuisine.view.tile.american { 
+.cuisine.view.tile.american {
   background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8)),
-              url('resource:/org/gnome/Recipes/american.png'); 
+              url('resource:/org/gnome/Recipes/american.png');
 }
 
-.cuisine.view.tile.chinese { 
+.cuisine.view.tile.chinese {
   background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8)),
               url('resource:/org/gnome/Recipes/chinese.png');
 }
-.cuisine.view.tile.indian { 
+.cuisine.view.tile.indian {
   background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8)),
   url('resource:/org/gnome/Recipes/indian.png');
 }
-.cuisine.view.tile.italian { 
+.cuisine.view.tile.italian {
   background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8)),
               url('resource:/org/gnome/Recipes/italian.png');
 }
-.cuisine.view.tile.french { 
+.cuisine.view.tile.french {
   background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8)),
               url('resource:/org/gnome/Recipes/french.png');
 }
-.cuisine.view.tile.greek { 
+.cuisine.view.tile.greek {
   background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8)),
               url('resource:/org/gnome/Recipes/greek.png');
 }
-.cuisine.view.tile.mexican { 
+.cuisine.view.tile.mexican {
   background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8)),
               url('resource:/org/gnome/Recipes/mexican.png');
 }
-.cuisine.view.tile.mediterranean { 
+.cuisine.view.tile.mediterranean {
   background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8)),
               url('resource:/org/gnome/Recipes/mediterranean.png');
 }
