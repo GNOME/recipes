@@ -67,6 +67,8 @@ recipes_SOURCES = \
 	gr-recipes-page.c	\
 	gr-search-page.h	\
 	gr-search-page.c	\
+	gr-season.h		\
+	gr-season.c		\
 	gr-timer.h		\
 	gr-timer.c		\
 	gr-timer-widget.h	\

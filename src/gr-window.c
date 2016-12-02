@@ -519,13 +519,13 @@ gr_window_show_cuisine (GrWindow   *window,
 }
 
 void
-gr_window_show_seasonal (GrWindow   *window,
-                         const char *seasonal,
-                         const char *title)
+gr_window_show_season (GrWindow   *window,
+                       const char *season,
+                       const char *title)
 {
 	save_back_entry (window);
 
-        //gr_list_page_populate_from_seasonal (GR_LIST_PAGE (window->list_page), seasonal);
+        gr_list_page_populate_from_season (GR_LIST_PAGE (window->list_page), season);
 
         gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), title);
 

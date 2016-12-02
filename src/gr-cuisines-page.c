@@ -31,6 +31,7 @@
 #include "gr-cuisine-tile.h"
 #include "gr-big-cuisine-tile.h"
 #include "gr-cuisine.h"
+#include "gr-season.h"
 #include "gr-category-tile.h"
 #include "gr-window.h"
 
@@ -141,15 +142,15 @@ seasonal_clicked (GrCategoryTile *tile,
                   GrCuisinesPage *page)
 {
         GtkWidget *window;
-        const char *seasonal;
+        const char *season;
         const char *title;
 
         window = gtk_widget_get_ancestor (GTK_WIDGET (tile), GR_TYPE_WINDOW);
 
-        seasonal = gr_category_tile_get_category (tile);
+        season = gr_category_tile_get_category (tile);
         title = gr_category_tile_get_label (tile);
 
-        gr_window_show_seasonal (GR_WINDOW (window), seasonal, title);
+        gr_window_show_season (GR_WINDOW (window), season, title);
 }
 
 static void
@@ -157,44 +158,22 @@ populate_seasonal (GrCuisinesPage *self)
 {
         int i;
         GtkWidget *tile;
+        const char * const *names;
+        int length;
 
         container_remove_all (GTK_CONTAINER (self->seasonal_box));
         container_remove_all (GTK_CONTAINER (self->seasonal_box2));
 
-        tile = gr_category_tile_new_with_label ("thanksgiving", _("Thanksgiving"));
-        gtk_widget_show (tile);
-        gtk_container_add (GTK_CONTAINER (self->seasonal_box), tile);
-        g_signal_connect (tile, "clicked", G_CALLBACK (seasonal_clicked), self);
-
-        tile = gr_category_tile_new_with_label ("christmas", _("Christmas"));
-        gtk_widget_show (tile);
-        gtk_container_add (GTK_CONTAINER (self->seasonal_box), tile);
-        g_signal_connect (tile, "clicked", G_CALLBACK (seasonal_clicked), self);
-
-        tile = gr_category_tile_new_with_label ("newyears", _("New Years"));
-        gtk_widget_show (tile);
-        gtk_container_add (GTK_CONTAINER (self->seasonal_box), tile);
-        g_signal_connect (tile, "clicked", G_CALLBACK (seasonal_clicked), self);
-
-        tile = gr_category_tile_new_with_label ("spring", _("Spring"));
-        gtk_widget_show (tile);
-        gtk_container_add (GTK_CONTAINER (self->seasonal_box2), tile);
-        g_signal_connect (tile, "clicked", G_CALLBACK (seasonal_clicked), self);
-
-        tile = gr_category_tile_new_with_label ("summer", _("Summer"));
-        gtk_widget_show (tile);
-        gtk_container_add (GTK_CONTAINER (self->seasonal_box2), tile);
-        g_signal_connect (tile, "clicked", G_CALLBACK (seasonal_clicked), self);
-
-        tile = gr_category_tile_new_with_label ("fall", _("Fall"));
-        gtk_widget_show (tile);
-        gtk_container_add (GTK_CONTAINER (self->seasonal_box2), tile);
-        g_signal_connect (tile, "clicked", G_CALLBACK (seasonal_clicked), self);
-
-        tile = gr_category_tile_new_with_label ("winter", _("Winter"));
-        gtk_widget_show (tile);
-        gtk_container_add (GTK_CONTAINER (self->seasonal_box2), tile);
-        g_signal_connect (tile, "clicked", G_CALLBACK (seasonal_clicked), self);
+        names = gr_season_get_names (&length);
+        for (i = 0; i < length; i++) {
+                tile = gr_category_tile_new_with_label (names[i], gr_season_get_title (names[i]));
+                gtk_widget_show (tile);
+                g_signal_connect (tile, "clicked", G_CALLBACK (seasonal_clicked), self);
+                if (i < 3)
+                        gtk_container_add (GTK_CONTAINER (self->seasonal_box), tile);
+                else
+                        gtk_container_add (GTK_CONTAINER (self->seasonal_box2), tile);
+        }
 }
 
 static void connect_store_signals (GrCuisinesPage *page);
