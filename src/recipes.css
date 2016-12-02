@@ -1,7 +1,7 @@
 /* headings on the recipes page */
 label.heading {
 	font: 20px Cantarell;
-        padding: 20px 0 10px 0;
+  padding: 20px 0 10px 0;
 }
 
 label.sidebar {
@@ -11,16 +11,16 @@ label.sidebar {
 }
 
 scrolledwindow.error {
-        border: 1px solid red;
-        background: red;
+  border: 1px solid red;
+  background: red;
 }
 
 box.searchbar {
-        border-bottom: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 button.circular.small {
-        padding: 0px;
+  padding: 0px;
 }
 
 image.checkmark.checked {
@@ -45,46 +45,46 @@ image.chef.circular {
 }
 
 .view.tile {
-        padding: 0;
-        box-shadow: inset 0 1px @theme_base_color, 0 1px 1px alpha(black,0.4);
-        border: 1px solid mix(@theme_base_color,@theme_fg_color,0.3);
+  padding: 0;
+  box-shadow: inset 0 1px @theme_base_color, 0 1px 1px alpha(black,0.4);
+  border: 1px solid mix(@theme_base_color,@theme_fg_color,0.3);
 }
 .recipe.view.tile {
-        color: mix(@theme_base_color,@theme_fg_color,0.1);
-        background-image: -gtk-recolor(url('resource:///org/gnome/Recipes/org.gnome.Recipes-symbolic.symbolic.png'));
-        background-size: 100%;
-        background-position: 80px -80px;
+  color: mix(@theme_base_color,@theme_fg_color,0.1);
+  background-image: -gtk-recolor(url('resource:///org/gnome/Recipes/org.gnome.Recipes-symbolic.symbolic.png'));
+  background-size: 100%;
+  background-position: 80px -80px;
 }
 
 @define-color diet_tag_bg #cc1212;
 @define-color diet_tag_fg #ffffff;
 
 .diet-tag {
-    background-image: none;
-    background-color: @diet_tag_bg;
-    color: @diet_tag_fg;
+  background-image: none;
+  background-color: @diet_tag_bg;
+  color: @diet_tag_fg;
 
-    border-radius: 4px;
-    border-width: 0;
+  border-radius: 4px;
+  border-width: 0;
 
-    margin: 2px;
-    padding: 4px;
+  margin: 2px;
+  padding: 4px;
 }
 
 .diet-tag:hover {
-    background-color: shade(@diet_tag_bg, 1.10);
-    color: @diet_tag_fg;
+  background-color: shade(@diet_tag_bg, 1.10);
+  color: @diet_tag_fg;
 }
 
 .diet-tag.button,
 .diet-tag.button:hover,
 .diet-tag.button:active,
 .diet-tag.button:active:hover {
-    background-color: transparent;
-    background-image: none;
-    box-shadow: none;
-    border-image: none;
-    border-width: 0;
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  border-image: none;
+  border-width: 0;
 }
 
 .diet-tag.button:hover {
@@ -95,15 +95,15 @@ image.chef.circular {
 @define-color meal_tag_fg #ffffff;
 
 .meal-tag {
-    background-image: none;
-    background-color: @meal_tag_bg;
-    color: @meal_tag_fg;
+  background-image: none;
+  background-color: @meal_tag_bg;
+  color: @meal_tag_fg;
 
-    border-radius: 4px;
-    border-width: 0;
+  border-radius: 4px;
+  border-width: 0;
 
-    margin: 2px;
-    padding: 4px;
+  margin: 2px;
+  padding: 4px;
 }
 
 .meal-tag:hover {
@@ -115,11 +115,11 @@ image.chef.circular {
 .meal-tag.button:hover,
 .meal-tag.button:active,
 .meal-tag.button:active:hover {
-    background-color: transparent;
-    background-image: none;
-    box-shadow: none;
-    border-image: none;
-    border-width: 0;
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  border-image: none;
+  border-width: 0;
 }
 
 .meal-tag.button:hover {
@@ -130,15 +130,15 @@ image.chef.circular {
 @define-color ingredient_tag_fg #ffffff;
 
 .ingredient-tag {
-    background-image: none;
-    background-color: @ingredient_tag_bg;
-    color: @ingredient_tag_fg;
+  background-image: none;
+  background-color: @ingredient_tag_bg;
+  color: @ingredient_tag_fg;
 
-    border-radius: 4px;
-    border-width: 0;
+  border-radius: 4px;
+  border-width: 0;
 
-    margin: 2px;
-    padding: 4px;
+  margin: 2px;
+  padding: 4px;
 }
 
 .ingredient-tag:hover {
@@ -150,14 +150,14 @@ image.chef.circular {
 .ingredient-tag.button:hover,
 .ingredient-tag.button:active,
 .ingredient-tag.button:active:hover {
-    background-color: transparent;
-    background-image: none;
-    box-shadow: none;
-    border-image: none;
-    border-width: 0;
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  border-image: none;
+  border-width: 0;
 }
 
 .ingredient-tag.button:hover {
-    color: shade(@ingredient_tag_bg, 2.10);
+  color: shade(@ingredient_tag_bg, 2.10);
 }
 
