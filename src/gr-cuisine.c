@@ -33,9 +33,9 @@ static const char *names[] = {
         "italian",
         "french",
         "greek",
+        "mediterranean",
         "mexican",
         "turkish",
-        "mediterranean",
         NULL
 };
 
@@ -46,9 +46,9 @@ static const char *titles[] = {
         N_("Italian"),
         N_("French"),
         N_("Greek"),
+        N_("Mediterranean"),
         N_("Mexican"),
         N_("Turkish"),
-        N_("Mediterranean")
 };
 
 static const char *full_titles[] = {
@@ -58,9 +58,9 @@ static const char *full_titles[] = {
         N_("Italian Cuisine"),
         N_("French Cuisine"),
         N_("Greek Cuisine"),
+        N_("Mediterranean Cuisine"),
         N_("Mexican Cuisine"),
         N_("Turkish Cuisine"),
-        N_("Mediterranean Cuisine")
 };
 
 static const char *descriptions[] = {
@@ -101,6 +101,7 @@ static const char *descriptions[] = {
            "ingredients include olives, cheese, eggplant (aubergine), zucchini (courgette), lemon "
            "juice, vegetables, herbs, bread and yoghurt. The most commonly used grain is wheat; barley "
            "is also used. Common dessert ingredients include nuts, honey, fruits, and filo pastry."),
+        N_("The mediterranean quisine has a lot to offer, and is legendary for being very healthy too. Expect to see olives, yoghurt and garlic."),
         N_("Mexican cuisine is primarily a fusion of indigenous Mesoamerican cooking with European, "
            "especially Spanish, elements added after the Spanish conquest of the Aztec Empire in the "
            "16th century. The staples are native foods, such as corn, beans, avocados, tomatoes, and "
@@ -112,7 +113,6 @@ static const char *descriptions[] = {
            "the heritage of Ottoman cuisine. It is the mixture and refinement of Central Asian, Middle "
            "Eastern and Balkan cuisines. Therefore it is impossible to fit Turkish cuisine into a short "
            "list."),
-        N_("The mediterranean quisine has a lot to offer, and is legendary for being very healthy too. Expect to see olives, yoghurt and garlic."),
 };
 
 const char **
@@ -153,37 +153,14 @@ gr_cuisine_get_data (const char  *name,
 char *
 gr_cuisine_get_css (void)
 {
-        GString *s;
-        int i;
+        g_autoptr(GFile) file = NULL;
+        char *css;
 
-        s = g_string_new ("label.cuisine.heading {\n"
-                          "  color: white;\n"
-                          "  margin: 0 20px 0 20px;\n"
-                          "  font-weight: bold;\n"
-                          "  font-size: 24pt;\n"
-                          "}\n");
-        g_string_append (s, "label.cuisine {\n"
-                            "  color: white;\n"
-                            "  margin: 5px 20px 5px 20px;\n"
-                            "  font-size: 12pt;\n"
-                            "}\n");
-        g_string_append (s, "label.cuisine.heading.mediterranean,\n"
-                            "label.cuisine.mediterranean {\n"
-                            "  color: black;\n"
-                            "}\n");
+        if (g_file_test ("cuisine.css", G_FILE_TEST_EXISTS))
+                file = g_file_new_for_path ("cuisine.css");
+        else
+                file = g_file_new_for_uri ("resource:///org/gnome/Recipes/cuisine.css");
+        g_file_load_contents (file, NULL, &css, NULL, NULL, NULL);
 
-        for (i = 0; names[i]; i++) {
-                g_string_append_printf (s, ".cuisine.view.tile.%s {\n"
-                                           "  background: url('resource:/org/gnome/Recipes/%s.png');\n"
-                                           "  background-repeat: no-repeat;\n"
-                                           "  background-size: 100%%;\n"
-                                           "}\n", names[i], names[i]);
-                g_string_append_printf (s, ".cuisine.big.view.tile.%s {\n"
-                                           "  background: url('resource:/org/gnome/Recipes/big-%s.png');\n"
-                                           "  background-repeat: no-repeat;\n"
-                                           "  background-size: 100%%;\n"
-                                           "}\n", names[i], names[i]);
-        }
-
-        return g_string_free (s, FALSE);
+        return css;
 }
