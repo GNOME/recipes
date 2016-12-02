@@ -102,7 +102,7 @@
                     <property name="visible">1</property>
                     <property name="use-underline">1</property>
                     <property name="mnemonic-widget">serves_spin</property>
-                    <property name="label" translatable="yes">_Serves</property>
+                    <property name="label" translatable="yes">Ser_ves</property>
                     <property name="xalign">0</property>
                   </object>
                   <packing>
@@ -140,7 +140,7 @@
                   <object class="GtkLabel">
                     <property name="visible">1</property>
                     <property name="use-underline">1</property>
-                    <property name="mnemonic-widget">description_entry</property>
+                    <property name="mnemonic-widget">description_field</property>
                     <property name="label" translatable="yes">_Description</property>
                     <property name="xalign">0</property>
                   </object>
@@ -274,8 +274,15 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="description_entry">
+                  <object class="GtkScrolledWindow">
                     <property name="visible">1</property>
+                    <property name="shadow-type">in</property>
+                    <property name="min-content-height">60</property>
+                    <child>
+                      <object class="GtkTextView" id="description_field">
+                        <property name="visible">1</property>
+                      </object>
+                    </child>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
@@ -334,7 +341,7 @@
                     <property name="visible">1</property>
                     <property name="use-underline">1</property>
                     <property name="mnemonic-widget">season_combo</property>
-                    <property name="label" translatable="yes">_Season</property>
+                    <property name="label" translatable="yes">S_eason</property>
                     <property name="xalign">0</property>
                   </object>
                   <packing>
@@ -487,7 +494,7 @@
                     <property name="visible">1</property>
                     <property name="use-underline">1</property>
                     <property name="mnemonic-widget">instructions_field</property>
-                    <property name="label" translatable="yes">In_structions</property>
+                    <property name="label" translatable="yes">Instr_uctions</property>
                     <property name="xalign">0</property>
                   </object>
                   <packing>

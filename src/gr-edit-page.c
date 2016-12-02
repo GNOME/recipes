@@ -44,7 +44,7 @@ struct _GrEditPage
         GtkWidget *error_revealer;
         GtkWidget *error_label;
         GtkWidget *name_entry;
-        GtkWidget *description_entry;
+        GtkWidget *description_field;
         GtkWidget *cuisine_combo;
         GtkWidget *category_combo;
         GtkWidget *season_combo;
@@ -218,7 +218,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, error_revealer);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, error_label);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, name_entry);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, description_entry);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, description_field);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, cuisine_combo);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, category_combo);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, season_combo);
@@ -312,19 +312,16 @@ gr_edit_page_clear (GrEditPage *page)
         GArray *images;
 
         gtk_entry_set_text (GTK_ENTRY (page->name_entry), "");
-        gtk_entry_set_text (GTK_ENTRY (page->description_entry), "");
+        set_text_view_text (GTK_TEXT_VIEW (page->description_field), "");
         set_combo_value (GTK_COMBO_BOX (page->cuisine_combo), "");
         set_combo_value (GTK_COMBO_BOX (page->category_combo), "");
         set_combo_value (GTK_COMBO_BOX (page->season_combo), "");
         set_combo_value (GTK_COMBO_BOX (page->prep_time_combo), "");
         set_combo_value (GTK_COMBO_BOX (page->cook_time_combo), "");
         gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), 1);
-        buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (page->ingredients_field));
-        gtk_text_buffer_set_text (buffer, "", -1);
-        buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (page->instructions_field));
-        gtk_text_buffer_set_text (buffer, "", -1);
-        buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (page->notes_field));
-        gtk_text_buffer_set_text (buffer, "", -1);
+        set_text_view_text (GTK_TEXT_VIEW (page->ingredients_field), "");
+        set_text_view_text (GTK_TEXT_VIEW (page->instructions_field), "");
+        set_text_view_text (GTK_TEXT_VIEW (page->notes_field), "");
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->gluten_free_check), FALSE);
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->nut_free_check), FALSE);
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->vegan_check), FALSE);
@@ -374,14 +371,13 @@ gr_edit_page_edit (GrEditPage *page,
         g_object_get (recipe, "images", &images, NULL);
 
         gtk_entry_set_text (GTK_ENTRY (page->name_entry), name);
-        gtk_entry_set_text (GTK_ENTRY (page->description_entry), description);
+        set_text_view_text (GTK_TEXT_VIEW (page->description_field), description);
         set_combo_value (GTK_COMBO_BOX (page->cuisine_combo), cuisine);
         set_combo_value (GTK_COMBO_BOX (page->category_combo), category);
         set_combo_value (GTK_COMBO_BOX (page->season_combo), season);
         set_combo_value (GTK_COMBO_BOX (page->prep_time_combo), prep_time);
         set_combo_value (GTK_COMBO_BOX (page->cook_time_combo), cook_time);
         gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), serves);
-
         set_text_view_text (GTK_TEXT_VIEW (page->ingredients_field), ingredients);
         set_text_view_text (GTK_TEXT_VIEW (page->instructions_field), instructions);
         set_text_view_text (GTK_TEXT_VIEW (page->notes_field), notes);
@@ -424,7 +420,7 @@ gr_edit_page_save (GrEditPage *page)
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         name = gtk_entry_get_text (GTK_ENTRY (page->name_entry));
-        description = gtk_entry_get_text (GTK_ENTRY (page->description_entry));
+        description = get_text_view_text (GTK_TEXT_VIEW (page->description_field));
         cuisine = get_combo_value (GTK_COMBO_BOX (page->cuisine_combo));
         category = get_combo_value (GTK_COMBO_BOX (page->category_combo));
         season = get_combo_value (GTK_COMBO_BOX (page->season_combo));
