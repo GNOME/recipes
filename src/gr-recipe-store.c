@@ -154,6 +154,7 @@ load_recipes (GrRecipeStore *self,
                 g_autofree char *author = NULL;
                 g_autofree char *description = NULL;
                 g_autofree char *cuisine = NULL;
+                g_autofree char *season = NULL;
                 g_autofree char *category = NULL;
                 g_autofree char *prep_time = NULL;
                 g_autofree char *cook_time = NULL;
@@ -198,6 +199,14 @@ load_recipes (GrRecipeStore *self,
                         g_clear_error (&error);
                 }
                 cuisine = g_key_file_get_string (keyfile, groups[i], "Cuisine", &error);
+                if (error) {
+                        if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
+                                g_warning ("Failed to load recipe %s: %s", groups[i], error->message);
+                                continue;
+                        }
+                        g_clear_error (&error);
+                }
+                season = g_key_file_get_string (keyfile, groups[i], "Season", &error);
                 if (error) {
                         if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
                                 g_warning ("Failed to load recipe %s: %s", groups[i], error->message);
@@ -386,6 +395,7 @@ load_recipes (GrRecipeStore *self,
                                       "author", author,
                                       "description", description,
                                       "cuisine", cuisine,
+                                      "season", season,
                                       "category", category,
                                       "prep-time", prep_time,
                                       "cook-time", cook_time,
@@ -403,6 +413,7 @@ load_recipes (GrRecipeStore *self,
                                                "author", author,
                                                "description", description,
                                                "cuisine", cuisine,
+                                               "season", season,
                                                "category", category,
                                                "prep-time", prep_time,
                                                "cook-time", cook_time,
@@ -443,6 +454,7 @@ save_recipes (GrRecipeStore *self)
                 const char *author;
                 const char *description;
                 const char *cuisine;
+                const char *season;
                 const char *category;
                 const char *prep_time;
                 const char *cook_time;
@@ -464,6 +476,7 @@ save_recipes (GrRecipeStore *self)
                 description = gr_recipe_get_description (recipe);
                 serves = gr_recipe_get_serves (recipe);
                 cuisine = gr_recipe_get_cuisine (recipe);
+                season = gr_recipe_get_season (recipe);
                 category = gr_recipe_get_category (recipe);
                 prep_time = gr_recipe_get_prep_time (recipe);
                 cook_time = gr_recipe_get_cook_time (recipe);
@@ -494,6 +507,7 @@ save_recipes (GrRecipeStore *self)
                 g_key_file_set_string (keyfile, key, "Author", author ? author : "");
                 g_key_file_set_string (keyfile, key, "Description", description ? description : "");
                 g_key_file_set_string (keyfile, key, "Cuisine", cuisine ? cuisine : "");
+                g_key_file_set_string (keyfile, key, "Season", season ? season : "");
                 g_key_file_set_string (keyfile, key, "Category", category ? category : "");
                 g_key_file_set_string (keyfile, key, "PrepTime", prep_time ? prep_time : "");
                 g_key_file_set_string (keyfile, key, "CookTime", cook_time ? cook_time : "");

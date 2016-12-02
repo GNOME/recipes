@@ -36,6 +36,7 @@ typedef struct
         GArray *images;
 
         char *cuisine;
+        char *season;
         char *category;
         char *prep_time;
         char *cook_time;
@@ -61,6 +62,7 @@ enum {
         PROP_DESCRIPTION,
         PROP_IMAGES,
         PROP_CUISINE,
+        PROP_SEASON,
         PROP_CATEGORY,
         PROP_PREP_TIME,
         PROP_COOK_TIME,
@@ -84,6 +86,7 @@ gr_recipe_finalize (GObject *object)
         g_free (priv->author);
         g_free (priv->description);
         g_free (priv->cuisine);
+        g_free (priv->season);
         g_free (priv->category);
         g_free (priv->prep_time);
         g_free (priv->cook_time);
@@ -131,6 +134,10 @@ gr_recipe_get_property (GObject    *object,
 
         case PROP_CUISINE:
                 g_value_set_string (value, priv->cuisine);
+                break;
+
+        case PROP_SEASON:
+                g_value_set_string (value, priv->season);
                 break;
 
         case PROP_PREP_TIME:
@@ -248,6 +255,12 @@ gr_recipe_set_property (GObject      *object,
                 update_mtime (self);
                 break;
 
+        case PROP_SEASON:
+                g_free (priv->season);
+                priv->season = g_value_dup_string (value);
+                update_mtime (self);
+                break;
+
         case PROP_PREP_TIME:
                 g_free (priv->prep_time);
                 priv->prep_time = g_value_dup_string (value);
@@ -346,6 +359,11 @@ gr_recipe_class_init (GrRecipeClass *klass)
                                      NULL,
                                      G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_CUISINE, pspec);
+
+        pspec = g_param_spec_string ("season", NULL, NULL,
+                                     NULL,
+                                     G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_SEASON, pspec);
 
         pspec = g_param_spec_string ("prep-time", NULL, NULL,
                                      NULL,
@@ -447,6 +465,14 @@ gr_recipe_get_cuisine (GrRecipe *recipe)
         GrRecipePrivate *priv = gr_recipe_get_instance_private (recipe);
 
         return priv->cuisine;
+}
+
+const char *
+gr_recipe_get_season (GrRecipe *recipe)
+{
+        GrRecipePrivate *priv = gr_recipe_get_instance_private (recipe);
+
+        return priv->season;
 }
 
 const char *

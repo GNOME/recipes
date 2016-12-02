@@ -49,6 +49,7 @@ const char     *gr_recipe_get_author       (GrRecipe   *recipe);
 const char     *gr_recipe_get_description  (GrRecipe   *recipe);
 int             gr_recipe_get_serves       (GrRecipe   *recipe);
 const char     *gr_recipe_get_cuisine      (GrRecipe   *recipe);
+const char     *gr_recipe_get_season       (GrRecipe   *recipe);
 const char     *gr_recipe_get_category     (GrRecipe   *recipe);
 const char     *gr_recipe_get_prep_time    (GrRecipe   *recipe);
 const char     *gr_recipe_get_cook_time    (GrRecipe   *recipe);
