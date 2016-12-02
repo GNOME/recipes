@@ -28,6 +28,7 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrCuisineTile, gr_cuisine_tile, GR, CUISINE_TILE, GtkButton)
 
-GtkWidget       *gr_cuisine_tile_new (const char *cuisine);
+GtkWidget       *gr_cuisine_tile_new (const char *cuisine,
+                                      gboolean    big);
 
 G_END_DECLS

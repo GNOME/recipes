@@ -37,7 +37,6 @@ struct _GrCuisineTile
 
         GtkWidget *title;
         GtkWidget *description;
-        GtkWidget *description2;
 };
 
 G_DEFINE_TYPE (GrCuisineTile, gr_cuisine_tile, GTK_TYPE_BUTTON)
@@ -56,7 +55,8 @@ show_details (GrCuisineTile *tile)
 
 static void
 cuisine_tile_set_cuisine (GrCuisineTile *tile,
-                          const char    *cuisine)
+                          const char    *cuisine,
+                          gboolean       big)
 {
         const char *title;
         const char *description;
@@ -71,14 +71,21 @@ cuisine_tile_set_cuisine (GrCuisineTile *tile,
 
         gtk_label_set_label (GTK_LABEL (tile->title), title);
         gtk_label_set_label (GTK_LABEL (tile->description), description);
-        gtk_label_set_label (GTK_LABEL (tile->description2), description);
+        if (big)
+                gtk_label_set_lines (GTK_LABEL (tile->description), 3);
 
         context = gtk_widget_get_style_context (GTK_WIDGET (tile));
         gtk_style_context_add_class (context, cuisine);
+        if (big)
+                gtk_style_context_add_class (context, "big");
         context = gtk_widget_get_style_context (GTK_WIDGET (tile->title));
         gtk_style_context_add_class (context, cuisine);
+        if (big)
+                gtk_style_context_add_class (context, "big");
         context = gtk_widget_get_style_context (GTK_WIDGET (tile->description));
         gtk_style_context_add_class (context, cuisine);
+        if (big)
+                gtk_style_context_add_class (context, "big");
 }
 
 static void
@@ -112,18 +119,18 @@ gr_cuisine_tile_class_init (GrCuisineTileClass *klass)
 
         gtk_widget_class_bind_template_child (widget_class, GrCuisineTile, title);
         gtk_widget_class_bind_template_child (widget_class, GrCuisineTile, description);
-        gtk_widget_class_bind_template_child (widget_class, GrCuisineTile, description2);
 
         gtk_widget_class_bind_template_callback (widget_class, show_details);
 }
 
 GtkWidget *
-gr_cuisine_tile_new (const char *cuisine)
+gr_cuisine_tile_new (const char *cuisine,
+                     gboolean    big)
 {
         GrCuisineTile *tile;
 
         tile = g_object_new (GR_TYPE_CUISINE_TILE, NULL);
-        cuisine_tile_set_cuisine (GR_CUISINE_TILE (tile), cuisine);
+        cuisine_tile_set_cuisine (GR_CUISINE_TILE (tile), cuisine, big);
 
         return GTK_WIDGET (tile);
 }

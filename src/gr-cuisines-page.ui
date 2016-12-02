@@ -21,34 +21,134 @@
             <property name="orientation">vertical</property>
             <property name="halign">center</property>
             <property name="valign">start</property>
-            <property name="margin-top">20</property>
-            <property name="margin-bottom">20</property>
+            <property name="margin-bottom">80</property>
             <property name="margin-start">80</property>
             <property name="margin-end">80</property>
             <child>
-              <object class="GtkLabel" id="cuisines_heading">
+              <object class="GtkLabel" id="cuisine_label">
                 <property name="visible">1</property>
-                <property name="label" translatable="yes">GNOME recipes all over the world</property>
+                <property name="label" translatable="yes">World Cuisines</property>
                 <property name="xalign">0</property>
+                <accessibility>
+                  <relation target="top_box" type="label-for"/>
+                </accessibility>
                 <style>
                   <class name="heading"/>
                 </style>
               </object>
             </child>
             <child>
-              <object class="GtkBox" id="top_box">
+              <object class="GtkGrid" id="top_box">
                 <property name="visible">1</property>
+                <property name="halign">center</property>
+                <property name="column-spacing">20</property>
+                <property name="row-spacing">20</property>
+                <property name="row-homogeneous">1</property>
+                <property name="column-homogeneous">1</property>
+                <accessibility>
+                  <relation target="cuisine_label" type="labelled-by"/>
+                </accessibility>
               </object>
             </child>
             <child>
-              <object class="GtkFlowBox" id="flow_box">
+              <object class="GtkLabel" id="seasonal_label">
                 <property name="visible">1</property>
-                <property name="margin-top">20</property>
+                <property name="label" translatable="yes">Seasonal</property>
+                <property name="xalign">0</property>
+                <accessibility>
+                  <relation target="seasonal_box" type="label-for"/>
+                </accessibility>
+                <style>
+                  <class name="heading"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkFlowBox" id="seasonal_box">
+                <property name="visible">1</property>
+                <property name="row-spacing">20</property>
+                <property name="column-spacing">20</property>
+                <property name="homogeneous">1</property>
                 <property name="min-children-per-line">3</property>
                 <property name="max-children-per-line">3</property>
-                <property name="column-spacing">20</property>
-                <property name="row-spacing">20</property>
                 <property name="selection-mode">none</property>
+                <accessibility>
+                  <relation target="seasonal_label" type="labelled-by"/>
+                </accessibility>
+              </object>
+            </child>
+            <child>
+              <object class="GtkRevealer" id="seasonal_more">
+                <property name="visible">1</property>
+                <property name="transition-type">slide-up</property>
+                <property name="margin-top">10</property>
+                <child>
+                  <object class="GtkFlowBox" id="seasonal_box2">
+                    <property name="visible">1</property>
+                    <property name="margin-top">10</property>
+                    <property name="row-spacing">20</property>
+                    <property name="column-spacing">20</property>
+                    <property name="homogeneous">1</property>
+                    <property name="min-children-per-line">3</property>
+                    <property name="max-children-per-line">3</property>
+                    <property name="selection-mode">none</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkRevealer" id="seasonal_expander">
+                <property name="visible">1</property>
+                <property name="transition-type">slide-up</property>
+                <property name="reveal-child">1</property>
+                <child>
+                  <object class="GtkBox" id="seasonal_expander_box">
+                    <property name="visible">1</property>
+                    <property name="margin-start">24</property>
+                    <property name="margin-end">24</property>
+                    <property name="margin-bottom">12</property>
+                    <child>
+                      <object class="GtkSeparator" id="seasonal_expander_lsep">
+                        <property name="visible">1</property>
+                        <property name="expand">1</property>
+                        <property name="valign">center</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="seasonal_expander_button">
+                        <property name="visible">1</property>
+                        <property name="can-focus">1</property>
+                        <property name="margin-start">9</property>
+                        <property name="margin-end">9</property>
+                        <property name="valign">center</property>
+                        <signal name="clicked" handler="expander_button_clicked" swapped="yes"/>
+                        <style>
+                          <class name="circular"/>
+                        </style>
+                        <child>
+                          <object class="GtkImage" id="seasonal_expander_image">
+                            <property name="visible">1</property>
+                            <property name="icon-name">view-more-symbolic</property>
+                            <property name="icon-size">1</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSeparator" id="seasonal_expander_rsep">
+                        <property name="visible">1</property>
+                        <property name="expand">1</property>
+                        <property name="valign">center</property>
+                      </object>
+                      <packing>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
               </object>
             </child>
           </object>

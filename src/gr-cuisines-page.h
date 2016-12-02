@@ -30,4 +30,8 @@ G_DECLARE_FINAL_TYPE (GrCuisinesPage, gr_cuisines_page, GR, CUISINES_PAGE, GtkBo
 
 GtkWidget       *gr_cuisines_page_new (void);
 
+void             gr_cuisines_page_set_seasonal_expanded (GrCuisinesPage *page,
+                                                         gboolean        expanded);
+
+
 G_END_DECLS

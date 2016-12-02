@@ -64,14 +64,54 @@ static const char *full_titles[] = {
 };
 
 static const char *descriptions[] = {
-        N_("American cuisine has burgers"),
-        N_("Good stuff"),
-        N_("Spice stuff"),
-        N_("Pizza, pasta, pesto - we love it all. Top it off with an esspresso and a gelato. Perfect!"),
-        N_("Yep"),
-        N_("Yep"),
-        N_("Tacos"),
-        N_("Yummy"),
+        N_("The cuisine of the United States reflects its history. The European colonization of the "
+           "Americas yielded the introduction of a number of ingredients and cooking styles to the "
+           "latter. The various styles continued expanding well into the 19th and 20th centuries, "
+           "proportional to the influx of immigrants from many foreign nations; such influx developed "
+           "a rich diversity in food preparation throughout the country."),
+        N_("Chinese cuisine includes styles originating from the diverse regions of China, as well as "
+           "from Chinese people in other parts of the world including most Asian nations. The history "
+           "of Chinese cuisine in China stretches back for thousands of years and has changed from "
+           "period to period and in each region according to climate, imperial fashions, and local "
+           "preferences. Over time, techniques and ingredients from the cuisines of other cultures "
+           "were integrated into the cuisine of the Chinese people due both to imperial expansion and "
+           "from the trade with nearby regions in pre-modern times, and from Europe and the New World "
+           "in the modern period."),
+        N_("Indian cuisine encompasses a wide variety of regional and traditional cuisines native to "
+           "India. Given the range of diversity in soil type, climate, culture, ethnic group and "
+           "occupations, these cuisines vary significantly from each other and use locally available "
+           "spices, herbs, vegetables and fruits. Indian food is also heavily influenced by religious "
+           "and cultural choices and traditions. There has also been Middle Eastern and Central Asian "
+           "influence on North Indian cuisine from the years of Mughal rule. Indian cuisine has been "
+           "and is still evolving, as a result of the nation's cultural interactions with other "
+           "societies."),
+        N_("Italian cuisine is characterized by its simplicity, with many dishes having only four to "
+           "eight ingredients. Italian cooks rely chiefly on the quality of the ingredients rather "
+           "than on elaborate preparation. Ingredients and dishes vary by region. Many dishes that "
+           "were once regional, however, have proliferated with variations throughout the country."),
+        N_("French cuisine was codified in the 20th century by Auguste Escoffier to become the modern "
+           "haute cuisine; Escoffier, however, left out much of the local culinary character to be "
+           "found in the regions of France and was considered difficult to execute by home cooks. "
+           "Gastro-tourism and the Guide Michelin helped to acquaint people with the rich bourgeois "
+           "and peasant cuisine of the French countryside starting in the 20th century. Gascon cuisine "
+           "has also had great influence over the cuisine in the southwest of France. Many dishes that "
+           "were once regional have proliferated in variations across the country."),
+        N_("Contemporary Greek cookery makes wide use of vegetables, olive oil, grains, fish, wine, "
+           "and meat (white and red, including lamb, poultry, rabbit and pork). Other important "
+           "ingredients include olives, cheese, eggplant (aubergine), zucchini (courgette), lemon "
+           "juice, vegetables, herbs, bread and yoghurt. The most commonly used grain is wheat; barley "
+           "is also used. Common dessert ingredients include nuts, honey, fruits, and filo pastry."),
+        N_("Mexican cuisine is primarily a fusion of indigenous Mesoamerican cooking with European, "
+           "especially Spanish, elements added after the Spanish conquest of the Aztec Empire in the "
+           "16th century. The staples are native foods, such as corn, beans, avocados, tomatoes, and "
+           "chili peppers, along with rice, which was brought by the Spanish. Europeans introduced a "
+           "large number of other foods, the most important of which were meats from domesticated "
+           "animals (beef, pork, chicken, goat, and sheep), dairy products (especially cheese), and "
+           "various herbs and spices."),
+        N_("You can find a great variety of mouth watering dishes in Turkish cuisine, which is mostly "
+           "the heritage of Ottoman cuisine. It is the mixture and refinement of Central Asian, Middle "
+           "Eastern and Balkan cuisines. Therefore it is impossible to fit Turkish cuisine into a short "
+           "list."),
         N_("The mediterranean quisine has a lot to offer, and is legendary for being very healthy too. Expect to see olives, yoghurt and garlic."),
 };
 
@@ -116,28 +156,33 @@ gr_cuisine_get_css (void)
         GString *s;
         int i;
 
-        s = g_string_new ("button.tile.cuisine {\n"
-                          "  padding: 0;\n"
-                          "  border-radius: 6px;\n"
-                          "}\n"
-                          "label.cuisine.heading {\n"
-                          "  font: 20px Cantarell;\n"
+        s = g_string_new ("label.cuisine.heading {\n"
                           "  color: white;\n"
-                          "  background: rgb(50,50,50);\n"
-                          "  padding: 6px;\n"
+                          "  margin: 0 20px 0 20px;\n"
+                          "  font-weight: bold;\n"
+                          "  font-size: 24pt;\n"
                           "}\n");
+        g_string_append (s, "label.cuisine {\n"
+                            "  color: white;\n"
+                            "  margin: 5px 20px 5px 20px;\n"
+                            "  font-size: 12pt;\n"
+                            "}\n");
+        g_string_append (s, "label.cuisine.heading.mediterranean,\n"
+                            "label.cuisine.mediterranean {\n"
+                            "  color: black;\n"
+                            "}\n");
 
         for (i = 0; names[i]; i++) {
-                g_string_append_printf (s, "button.cuisine.%s {\n"
-                                           "  background: url('%s');\n"
+                g_string_append_printf (s, ".cuisine.view.tile.%s {\n"
+                                           "  background: url('resource:/org/gnome/Recipes/%s.png');\n"
                                            "  background-repeat: no-repeat;\n"
                                            "  background-size: 100%%;\n"
-                                           "}\n", names[i], "resource:/org/gnome/Recipes/italian.png");
-                g_string_append_printf (s, "button.big.cuisine.%s {\n"
-                                           "  background: url('%s');\n"
+                                           "}\n", names[i], names[i]);
+                g_string_append_printf (s, ".cuisine.big.view.tile.%s {\n"
+                                           "  background: url('resource:/org/gnome/Recipes/big-%s.png');\n"
                                            "  background-repeat: no-repeat;\n"
                                            "  background-size: 100%%;\n"
-                                           "}\n", names[i], "resource:/org/gnome/Recipes/big-italian.png");
+                                           "}\n", names[i], names[i]);
         }
 
         return g_string_free (s, FALSE);

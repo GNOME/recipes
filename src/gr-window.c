@@ -31,6 +31,7 @@
 #include "gr-cuisine-page.h"
 #include "gr-search-page.h"
 #include "gr-recipes-page.h"
+#include "gr-cuisines-page.h"
 #include "gr-ingredients-page.h"
 #include "gr-query-editor.h"
 
@@ -198,6 +199,10 @@ visible_page_changed (GrWindow *window)
 
         if (strcmp (visible, "recipes") == 0) {
                 gr_recipes_page_set_categories_expanded (GR_RECIPES_PAGE (window->recipes_page), FALSE);
+        }
+
+        if (strcmp (visible, "cuisines") == 0) {
+                gr_cuisines_page_set_seasonal_expanded (GR_CUISINES_PAGE (window->cuisines_page), FALSE);
         }
 }
 
@@ -511,6 +516,24 @@ gr_window_show_cuisine (GrWindow   *window,
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "cuisine");
+}
+
+void
+gr_window_show_seasonal (GrWindow   *window,
+                         const char *seasonal,
+                         const char *title)
+{
+	save_back_entry (window);
+
+        //gr_list_page_populate_from_seasonal (GR_LIST_PAGE (window->list_page), seasonal);
+
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), title);
+
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
+
+        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "list");
 }
 
 void
