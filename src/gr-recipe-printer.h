@@ -18,9 +18,6 @@
 
 #pragma once
 
-#ifndef GR_RECIPE_PRINTER_H
-#define GR_RECIPE_PRINTER_H
-
 #include <gtk/gtk.h>
 #include "gr-recipe.h"
 
@@ -36,6 +33,3 @@ void             gr_recipe_printer_print (GrRecipePrinter *printer,
                                           GrRecipe        *recipe);
 
 G_END_DECLS
-
-#endif /* GR_RECIPE_PRINTER_H */
-
