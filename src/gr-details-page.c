@@ -33,6 +33,7 @@
 #include "gr-ingredients-list.h"
 #include "gr-timer.h"
 #include "gr-recipe-printer.h"
+#include "gr-recipe-exporter.h"
 
 
 typedef struct
@@ -107,6 +108,7 @@ struct _GrDetailsPage
         GHashTable *cooking;
 
         GrRecipePrinter *printer;
+        GrRecipeExporter *exporter;
 
         GtkWidget *recipe_image;
         GtkWidget *prep_time_label;
@@ -266,6 +268,22 @@ print_recipe (GrDetailsPage *page)
         }
 
         gr_recipe_printer_print (page->printer, page->recipe);
+}
+
+static void
+export_recipe (GrDetailsPage *page)
+{
+        g_autoptr(GFile) file = NULL;
+
+        if (!page->exporter) {
+                GtkWidget *window;
+
+                window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
+                page->exporter = gr_recipe_exporter_new (GTK_WINDOW (window));
+        }
+
+        file = g_file_new_for_path (g_get_tmp_dir ());
+        gr_recipe_exporter_export_to (page->exporter, page->recipe, file);
 }
 
 static void
@@ -461,6 +479,7 @@ details_page_finalize (GObject *object)
         g_clear_object (&self->chef);
         g_clear_object (&self->ingredients);
         g_clear_object (&self->printer);
+        g_clear_object (&self->exporter);
         g_clear_pointer (&self->cooking, g_hash_table_unref);
 
         G_OBJECT_CLASS (gr_details_page_parent_class)->finalize (object);
@@ -514,6 +533,7 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, delete_recipe);
         gtk_widget_class_bind_template_callback (widget_class, more_recipes);
         gtk_widget_class_bind_template_callback (widget_class, print_recipe);
+        gtk_widget_class_bind_template_callback (widget_class, export_recipe);
         gtk_widget_class_bind_template_callback (widget_class, serves_value_changed);
         gtk_widget_class_bind_template_callback (widget_class, start_or_stop_timer);
         gtk_widget_class_bind_template_callback (widget_class, time_spin_input);

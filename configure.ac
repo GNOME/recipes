@@ -79,6 +79,7 @@ VAPIGEN_CHECK
 
 
 AX_COMPILER_FLAGS
+AC_USE_SYSTEM_EXTENSIONS
 
 
 dnl ***********************************************************************
@@ -93,7 +94,7 @@ AX_CHECK_COMPILE_FLAG([-std=gnu11],
 dnl ***********************************************************************
 dnl Check for required packages
 dnl ***********************************************************************
-PKG_CHECK_MODULES(RECIPES, [gio-2.0 >= 2.42 gtk+-3.0 >= 3.20])
+PKG_CHECK_MODULES(RECIPES, [gio-2.0 >= 2.42 gtk+-3.0 >= 3.20 gnome-autoar-0])
 
 
 LIBGD_INIT([tagged-entry])

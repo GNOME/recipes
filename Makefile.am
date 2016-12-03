@@ -19,6 +19,16 @@ AUTHORS:
 @GENERATE_CHANGELOG_RULES@
 dist-hook: dist-ChangeLog
 
+lib_LTLIBRARIES =
+noinst_LTLIBRARIES = libglnx.la
+libglnx_srcpath := $(srcdir)/libglnx
+libglnx_cflags := \
+        $(RECIPES_CFLAGS) \
+        "-I$(libglnx_srcpath)" \
+        $(NULL)
+libglnx_libs := $(RECIPES_LIBS)
+include libglnx/Makefile-libglnx.am.inc
+
 
 GITIGNOREFILES = \
 	**/*.swp \

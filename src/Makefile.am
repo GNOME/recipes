@@ -4,9 +4,14 @@ recipes_CFLAGS = $(RECIPES_CFLAGS) 	\
 	-DPKGDATADIR=\"$(pkgdatadir)\" 	\
 	-DLOCALEDIR=\"$(localedir)\" 	\
 	-I "$(top_srcdir)/libgd"	\
+	-I "$(top_srcdir)/libglnx"	\
 	-O0 -ggdb
 
-recipes_LDADD = $(RECIPES_LIBS) -lm $(top_builddir)/libgd/libgd.la
+recipes_LDADD = $(RECIPES_LIBS)			\
+		-lm				\
+		$(top_builddir)/libgd/libgd.la	\
+		$(top_builddir)/libglnx.la
+
 recipes_SOURCES = \
 	main.c 			\
 	gr-app.h 		\
@@ -57,6 +62,8 @@ recipes_SOURCES = \
 	gr-query-editor.c	\
 	gr-recipe.h 		\
 	gr-recipe.c 		\
+	gr-recipe-exporter.h 	\
+	gr-recipe-exporter.c	\
 	gr-recipe-printer.h	\
 	gr-recipe-printer.c	\
 	gr-recipe-store.h 	\
