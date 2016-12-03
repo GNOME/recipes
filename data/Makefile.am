@@ -14,35 +14,35 @@ ingredientsdir = $(pkgdatadir)/ingredients
 imagesdir = $(pkgdatadir)/images
 
 ingredients_DATA = \
-	Almond.png 	\
-	Amaretti.png	\
-	Anchovis.png	\
-	Apple.png	\
-	Apricot.png	\
-	Artichoke.png	\
-	Asparagus.png	\
-	Aubergine.png	\
-	Bacon.png 	\
-	Bagel.png	\
-	Banana.png	\
-	Basil.png	\
-	Biscotti.png 	\
-	Carrot.png
+	ingredients/Almond.png 		\
+	ingredients/Amaretti.png	\
+	ingredients/Anchovis.png	\
+	ingredients/Apple.png		\
+	ingredients/Apricot.png		\
+	ingredients/Artichoke.png	\
+	ingredients/Asparagus.png	\
+	ingredients/Aubergine.png	\
+	ingredients/Bacon.png 		\
+	ingredients/Bagel.png		\
+	ingredients/Banana.png		\
+	ingredients/Basil.png		\
+	ingredients/Biscotti.png 	\
+	ingredients/Carrot.png
 
 images_DATA = \
-	alex.png		\
-	bagel.jpg		\
-	burger-fries.jpg	\
-	coffee.jpg		\
-	elvin.jpg		\
-	food.jpg		\
-	mclasen.jpg		\
-	meatballs.jpg		\
-	pesto.jpg		\
-	pizza.jpg		\
-	plain-bagel.jpg		\
-	salad.jpg		\
-	spring-rolls.jpg
+	images/alex.png			\
+	images/bagel.jpg		\
+	images/burger-fries.jpg		\
+	images/coffee.jpg		\
+	images/elvin.jpg		\
+	images/food.jpg			\
+	images/mclasen.jpg		\
+	images/meatballs.jpg		\
+	images/pesto.jpg		\
+	images/pizza.jpg		\
+	images/plain-bagel.jpg		\
+	images/salad.jpg		\
+	images/spring-rolls.jpg
 
 pkgdata_DATA = \
 	chefs.db	\

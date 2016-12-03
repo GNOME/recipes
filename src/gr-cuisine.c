@@ -154,12 +154,22 @@ char *
 gr_cuisine_get_css (void)
 {
         g_autoptr(GFile) file = NULL;
+        const char *path;
         char *css;
 
-        if (g_file_test ("cuisine.css", G_FILE_TEST_EXISTS))
-                file = g_file_new_for_path ("cuisine.css");
-        else
-                file = g_file_new_for_uri ("resource:///org/gnome/Recipes/cuisine.css");
+        if (g_file_test ("cuisine.css", G_FILE_TEST_EXISTS)) {
+                path = "cuisine.css";
+                file = g_file_new_for_path (path);
+        }
+        if (g_file_test ("src/cuisine.css", G_FILE_TEST_EXISTS)) {
+                path = "src/cuisine.css";
+                file = g_file_new_for_path (path);
+        }
+        else {
+                path = "resource:///org/gnome/Recipes/cuisine.css";
+                file = g_file_new_for_uri (path);
+        }
+        g_message ("Load CSS from: %s", path);
         g_file_load_contents (file, NULL, &css, NULL, NULL, NULL);
 
         return css;

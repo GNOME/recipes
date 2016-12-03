@@ -135,7 +135,9 @@ gr_app_startup (GApplication *app)
 {
         const gchar *quit_accels[2] = { "<Ctrl>Q", NULL };
         g_autoptr(GtkCssProvider) css_provider = NULL;
+        g_autoptr(GFile) file = NULL;
         g_autofree char *css = NULL;
+        const char *path;
 
         G_APPLICATION_CLASS (gr_app_parent_class)->startup (app);
 
@@ -147,14 +149,25 @@ gr_app_startup (GApplication *app)
                                                quit_accels);
 
         css_provider = gtk_css_provider_new ();
-        if (g_file_test ("recipes.css", G_FILE_TEST_EXISTS))
-          gtk_css_provider_load_from_path (css_provider, "recipes.css", NULL);
-        else
-          gtk_css_provider_load_from_resource (css_provider, "/org/gnome/Recipes/recipes.css");
+        if (g_file_test ("recipes.css", G_FILE_TEST_EXISTS)) {
+                path = "recipes.css";
+                file = g_file_new_for_path (path);
+        }
+        else if (g_file_test ("src/recipes.css", G_FILE_TEST_EXISTS)) {
+                path = "src/recipes.css";
+                file = g_file_new_for_path (path);
+        }
+        else {
+                path = "resource:///org/gnome/Recipes/recipes.css";
+                file = g_file_new_for_uri (path);
+        }
+        g_message ("Load CSS from: %s", path);
+        gtk_css_provider_load_from_file (css_provider, file, NULL);
         gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
                                                    GTK_STYLE_PROVIDER (css_provider),
                                                    GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
         g_object_unref (css_provider);
+
         css_provider = gtk_css_provider_new ();
         css = gr_cuisine_get_css ();
         gtk_css_provider_load_from_data (css_provider, css, -1, NULL);

@@ -123,7 +123,7 @@ date_time_from_string (const char *string)
         return NULL;
 }
 
-static void
+static gboolean
 load_recipes (GrRecipeStore *self,
               const char    *dir)
 {
@@ -143,7 +143,7 @@ load_recipes (GrRecipeStore *self,
                         g_error ("Failed to load recipe db: %s", error->message);
                 else
                         g_message ("No recipe db at: %s", path);
-                return;
+                return FALSE;
         }
         g_message ("Load recipe db: %s", path);
 
@@ -429,6 +429,8 @@ load_recipes (GrRecipeStore *self,
                         g_hash_table_insert (self->recipes, g_strdup (name), recipe);
                 }
         }
+
+        return TRUE;
 }
 
 static void
@@ -534,7 +536,7 @@ save_recipes (GrRecipeStore *self)
         }
 }
 
-static void
+static gboolean
 load_picks (GrRecipeStore *self,
             const char    *dir)
 {
@@ -551,7 +553,7 @@ load_picks (GrRecipeStore *self,
                         g_error ("Failed to load picks db: %s", error->message);
                 else
                         g_message ("No picks db at: %s", path);
-                return;
+                return FALSE;
         }
 
         g_message ("Load picks db: %s", path);
@@ -579,6 +581,8 @@ load_picks (GrRecipeStore *self,
                 }
                 g_clear_error (&error);
         }
+
+        return TRUE;
 }
 
 static void
@@ -710,7 +714,7 @@ save_cooked (GrRecipeStore *store)
         }
 }
 
-static void
+static gboolean
 load_chefs (GrRecipeStore *self,
             const char    *dir)
 {
@@ -735,7 +739,7 @@ load_chefs (GrRecipeStore *self,
                         g_error ("Failed to load chefs db: %s", error->message);
                 else
                         g_message ("No chefs db at: %s", path);
-                return;
+                return FALSE;
         }
 
         g_message ("Load chefs db: %s", path);
@@ -801,6 +805,8 @@ load_chefs (GrRecipeStore *self,
                               "image-path", image_path,
                               NULL);
         }
+
+        return TRUE;
 }
 
 static void
@@ -902,6 +908,8 @@ static void
 gr_recipe_store_init (GrRecipeStore *self)
 {
         const char *dir;
+        g_autofree char *current_dir = NULL;
+        g_autofree char *uninstalled_dir = NULL;
 
         self->recipes = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);
         self->chefs = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);
@@ -909,9 +917,15 @@ gr_recipe_store_init (GrRecipeStore *self)
 
         /* First load preinstalled data */
         dir = get_pkg_data_dir ();
-        load_recipes (self, dir);
-        load_chefs (self, dir);
-        load_picks (self, dir);
+        current_dir = g_get_current_dir ();
+        uninstalled_dir = g_build_filename (current_dir, "data", NULL);
+
+        if (!load_recipes (self, dir))
+                load_recipes (self, uninstalled_dir);
+        if (!load_chefs (self, dir))
+                load_chefs (self, uninstalled_dir);
+        if (!load_picks (self, dir))
+                load_picks (self, uninstalled_dir);
 
         /* Now load saved data */
         dir = get_user_data_dir ();

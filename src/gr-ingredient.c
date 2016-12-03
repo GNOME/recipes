@@ -280,8 +280,17 @@ gr_ingredient_get_image (const char *name)
                 }
         }
 
-        if (filename)
-                return g_build_filename (get_pkg_data_dir (), "ingredients", filename, NULL);
+        if (filename) {
+                g_autofree char *current_dir = NULL;
+                char *path;
+
+                path = g_build_filename (get_pkg_data_dir (), "ingredients", filename, NULL);
+                if (g_file_test (path, G_FILE_TEST_EXISTS))
+                        return path;
+                g_free (path);
+                current_dir = g_get_current_dir ();
+                return g_build_filename (current_dir, "data", "ingredients", filename, NULL);
+        }
 
         return NULL;
 }
