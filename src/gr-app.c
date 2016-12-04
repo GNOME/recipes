@@ -130,7 +130,6 @@ import_activated (GSimpleAction *action,
                   gpointer       app)
 {
         GtkWindow *win;
-g_print ("inmport activated\n");
 
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
         gtk_window_present (win);
