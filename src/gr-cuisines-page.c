@@ -108,7 +108,7 @@ populate_cuisines (GrCuisinesPage *page)
         int length;
         int i, j;
         GrRecipeStore *store;
-        int pos;
+        int pos = 0;
         int tiles;
 
         container_remove_all (GTK_CONTAINER (page->top_box));
