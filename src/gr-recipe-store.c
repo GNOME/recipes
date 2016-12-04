@@ -358,11 +358,11 @@ load_recipes (GrRecipeStore *self,
                 }
                 if (tmp) {
                         ctime = date_time_from_string (tmp);
+                        g_free (tmp);
                         if (!ctime) {
                                 g_warning ("Failed to load recipe %s: Couldn't parse Created key", groups[i]);
                                 continue;
                         }
-                        g_free (tmp);
                 }
                 else {
                         ctime = g_date_time_new_now_utc ();
@@ -378,11 +378,11 @@ load_recipes (GrRecipeStore *self,
                 }
                 if (tmp) {
                         mtime = date_time_from_string (tmp);
+                        g_free (tmp);
                         if (!mtime) {
                                 g_warning ("Failed to load recipe %s: Couldn't parse Modified key", groups[i]);
                                 continue;
                         }
-                        g_free (tmp);
                 }
                 else {
                         mtime = g_date_time_new_now_utc ();

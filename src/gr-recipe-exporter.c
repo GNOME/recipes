@@ -3,6 +3,7 @@
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *
  * Licensed under the GNU General Public License Version 3
+    <file preprocess="xml-stripblanks">gr-big-cuisine-tile.ui</file>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -253,7 +254,6 @@ prepare_export (GrRecipeExporter  *exporter,
                 j++;
         }
 
-
         g_key_file_set_string (keyfile, key, "Name", name ? name : "");
         g_key_file_set_string (keyfile, key, "Author", author ? author : "");
         g_key_file_set_string (keyfile, key, "Description", description ? description : "");
@@ -295,9 +295,12 @@ prepare_export (GrRecipeExporter  *exporter,
                 return FALSE;
         }
 
-        g_free (path);
-        path = g_build_filename (exporter->dir, "chefs.db", NULL);
+        g_clear_pointer (&path, g_free);
+        g_clear_pointer (&name, g_free);
+        g_clear_pointer (&description, g_free);
+        g_clear_pointer (&keyfile, g_key_file_unref);
 
+        path = g_build_filename (exporter->dir, "chefs.db", NULL);
         keyfile = g_key_file_new ();
 
         key = name = gr_chef_get_name (chef);

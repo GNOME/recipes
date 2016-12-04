@@ -98,6 +98,8 @@ gr_recipe_finalize (GObject *object)
         g_free (priv->cf_name);
         g_free (priv->cf_description);
         g_free (priv->cf_ingredients);
+        g_date_time_unref (priv->mtime);
+        g_date_time_unref (priv->ctime);
 
         G_OBJECT_CLASS (gr_recipe_parent_class)->finalize (object);
 }
@@ -226,6 +228,7 @@ gr_recipe_set_property (GObject      *object,
 
         case PROP_NAME:
                 g_free (priv->name);
+                g_free (priv->cf_name);
                 priv->name = g_value_dup_string (value);
                 priv->cf_name = g_utf8_casefold (priv->name, -1);
                 update_mtime (self);
@@ -233,6 +236,7 @@ gr_recipe_set_property (GObject      *object,
 
         case PROP_DESCRIPTION:
                 g_free (priv->description);
+                g_free (priv->cf_description);
                 priv->description = g_value_dup_string (value);
                 priv->cf_description = g_utf8_casefold (priv->description, -1);
                 update_mtime (self);
