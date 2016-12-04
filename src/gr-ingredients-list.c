@@ -1,4 +1,4 @@
-/* gr-ingredients-list.c
+/* gr-ingredients-list.c:
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *

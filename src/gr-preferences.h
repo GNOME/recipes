@@ -1,4 +1,4 @@
-/* gr-preferences.h
+/* gr-preferences.h:
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-   
+
 #pragma once
 
 #include <gtk/gtk.h>

@@ -1,4 +1,4 @@
-/* gr-recipe-store.c
+/* gr-recipe-store.c:
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *

@@ -1,4 +1,4 @@
-/* gr-preferences.c
+/* gr-preferences.c:
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *

@@ -1,4 +1,4 @@
-/* gr-recipe.h
+/* gr-recipe.h:
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *

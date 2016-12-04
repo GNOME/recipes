@@ -1,4 +1,4 @@
-/* gr-images.c
+/* gr-images.c:
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *
@@ -34,22 +34,6 @@ gr_rotated_image_clear (gpointer data)
         image->angle = 0;
         image->dark_text = FALSE;
 }
-
-#if 0
-static gpointer
-gr_rotated_image_copy (gpointer data)
-{
-        GrRotatedImage *image = data;
-        GrRotatedImage *copy;
-
-        copy = g_new (GrRotatedImage, 1);
-        copy->path = g_strdup (image->path);
-        copy->angle = image->angle;
-        copy->dark_text = image->dark_text;
-
-        return copy;
-}
-#endif
 
 GArray *
 gr_rotated_image_array_new (void)
