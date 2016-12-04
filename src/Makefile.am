@@ -1,11 +1,13 @@
 bin_PROGRAMS = recipes
 
-recipes_CFLAGS = $(RECIPES_CFLAGS) 	\
+recipes_CFLAGS = \
+	$(WARN_CFLAGS) 			\
+	-Wno-sign-compare		\
+	$(RECIPES_CFLAGS) 		\
 	-DPKGDATADIR=\"$(pkgdatadir)\" 	\
 	-DLOCALEDIR=\"$(localedir)\" 	\
 	-I "$(top_srcdir)/libgd"	\
-	-I "$(top_srcdir)/libglnx"	\
-	-O0 -ggdb
+	-I "$(top_srcdir)/libglnx"
 
 recipes_LDADD = $(RECIPES_LIBS)			\
 		-lm				\
