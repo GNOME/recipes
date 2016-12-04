@@ -188,6 +188,26 @@ gr_app_activate (GApplication *app)
 }
 
 static void
+gr_app_open (GApplication  *app,
+             GFile        **files,
+             gint           n_files,
+             const char    *hint)
+{
+        GtkWindow *win;
+
+        if (n_files > 1)
+                g_warning ("Can only open one file at a time.");
+
+        win = gtk_application_get_active_window (GTK_APPLICATION (app));
+        if (!win)
+                win = GTK_WINDOW (gr_window_new (GR_APP (app)));
+
+        gr_window_load_recipe (GR_WINDOW (win), files[0]);
+
+        gtk_window_present (win);
+}
+
+static void
 gr_app_init (GrApp *self)
 {
         self->store = gr_recipe_store_new ();
@@ -203,6 +223,7 @@ gr_app_class_init (GrAppClass *klass)
 
         application_class->startup = gr_app_startup;
         application_class->activate = gr_app_activate;
+        application_class->open = gr_app_open;
 }
 
 GrApp *
@@ -210,7 +231,7 @@ gr_app_new (void)
 {
         return g_object_new (GR_TYPE_APP,
                              "application-id", "org.gnome.Recipes",
-                             "flags", G_APPLICATION_CAN_OVERRIDE_APP_ID,
+                             "flags", G_APPLICATION_HANDLES_OPEN | G_APPLICATION_CAN_OVERRIDE_APP_ID,
                              NULL);
 }
 

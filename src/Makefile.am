@@ -64,6 +64,8 @@ recipes_SOURCES = \
 	gr-recipe.c 		\
 	gr-recipe-exporter.h 	\
 	gr-recipe-exporter.c	\
+	gr-recipe-importer.h 	\
+	gr-recipe-importer.c	\
 	gr-recipe-printer.h	\
 	gr-recipe-printer.c	\
 	gr-recipe-store.h 	\

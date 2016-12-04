@@ -34,6 +34,7 @@
 #include "gr-cuisines-page.h"
 #include "gr-ingredients-page.h"
 #include "gr-query-editor.h"
+#include "gr-recipe-importer.h"
 
 
 struct _GrWindow
@@ -56,6 +57,8 @@ struct _GrWindow
         GtkWidget *cuisines_page;
         GtkWidget *cuisine_page;
         GtkWidget *ingredients_page;
+
+        GrRecipeImporter *importer;
 
         GQueue *back_entry_stack;
 };
@@ -321,6 +324,8 @@ gr_window_finalize (GObject *object)
 
         g_queue_free_full (self->back_entry_stack, (GDestroyNotify)back_entry_free);
 
+        g_clear_object (&self->importer);
+
         G_OBJECT_CLASS (gr_window_parent_class)->finalize (object);
 }
 
@@ -421,6 +426,27 @@ gr_window_edit_recipe (GrWindow *window,
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "edit");
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "edit");
+}
+
+static void
+done_cb (GrRecipeImporter *importer,
+         GrRecipe         *recipe,
+         GrWindow         *window)
+{
+        if (recipe)
+                gr_window_show_recipe (window, recipe);
+}
+
+void
+gr_window_load_recipe (GrWindow *window,
+                       GFile    *file)
+{
+      if (!window->importer) {
+                window->importer = gr_recipe_importer_new (GTK_WINDOW (window));
+                g_signal_connect (window->importer, "done", G_CALLBACK (done_cb), window);
+        }
+
+        gr_recipe_importer_import_from (window->importer, file);
 }
 
 void
