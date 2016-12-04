@@ -161,7 +161,7 @@ gr_cuisine_get_css (void)
                 path = "cuisine.css";
                 file = g_file_new_for_path (path);
         }
-        if (g_file_test ("src/cuisine.css", G_FILE_TEST_EXISTS)) {
+        else if (g_file_test ("src/cuisine.css", G_FILE_TEST_EXISTS)) {
                 path = "src/cuisine.css";
                 file = g_file_new_for_path (path);
         }
