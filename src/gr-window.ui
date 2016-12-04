@@ -31,6 +31,7 @@
                 <style>
                   <class name="image-button"/>
                 </style>
+                <accelerator key="Left" modifiers="GDK_MOD1_MASK" signal="activate"/>
                 <child internal-child="accessible">
                   <object class="AtkObject">
                     <property name="accessible-name" translatable="yes">Go back</property>
@@ -108,7 +109,8 @@
             <child>
               <object class="GtkButton" id="cooking_button">
                 <property name="visible">1</property>
-                <property name="label" translatable="yes">Start cooking</property>
+                <property name="use-underline">1</property>
+                <property name="label" translatable="yes">_Start cooking</property>
                 <signal name="clicked" handler="start_or_stop_cooking" swapped="yes"/>
                 <style>
                   <class name="suggested-action"/>
