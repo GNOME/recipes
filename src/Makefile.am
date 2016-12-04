@@ -18,8 +18,6 @@ recipes_SOURCES = \
 	main.c 			\
 	gr-app.h 		\
 	gr-app.c 		\
-	gr-big-cuisine-tile.h	\
-	gr-big-cuisine-tile.c	\
 	gr-category-tile.h 	\
 	gr-category-tile.c 	\
 	gr-chef.h 		\

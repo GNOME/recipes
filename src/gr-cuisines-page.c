@@ -29,7 +29,6 @@
 #include "gr-app.h"
 #include "gr-utils.h"
 #include "gr-cuisine-tile.h"
-#include "gr-big-cuisine-tile.h"
 #include "gr-cuisine.h"
 #include "gr-season.h"
 #include "gr-category-tile.h"
