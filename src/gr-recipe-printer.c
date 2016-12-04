@@ -307,18 +307,18 @@ draw_page (GtkPrintOperation *operation,
         i = 0;
         iter = pango_layout_get_iter (printer->bottom_layout);
         do {
-                PangoRectangle logical_rect;
+                PangoRectangle rect;
                 PangoLayoutLine *line;
-                int baseline;
+                int base;
 
                 if (i >= start) {
                         line = pango_layout_iter_get_line (iter);
-                        pango_layout_iter_get_line_extents (iter, NULL, &logical_rect);
-                        baseline = pango_layout_iter_get_baseline (iter);
+                        pango_layout_iter_get_line_extents (iter, NULL, &rect);
+                        base = pango_layout_iter_get_baseline (iter);
                         if (i == start)
-                                start_pos -= logical_rect.y / 1024.0;
+                                start_pos -= rect.y / 1024.0;
 
-                        cairo_move_to (cr, logical_rect.x / 1024.0, baseline / 1024.0 + start_pos);
+                        cairo_move_to (cr, rect.x / 1024.0, base / 1024.0 + start_pos);
                         pango_cairo_show_layout_line (cr, line);
                 }
                 i++;
