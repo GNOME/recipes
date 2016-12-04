@@ -1,4 +1,4 @@
-SUBDIRS = libgd data src po tests
+SUBDIRS = . libgd data src po tests
 
 EXTRA_DIST = AUTHORS
 
@@ -28,7 +28,6 @@ libglnx_cflags := \
         $(NULL)
 libglnx_libs := $(RECIPES_LIBS)
 include libglnx/Makefile-libglnx.am.inc
-
 
 GITIGNOREFILES = \
 	**/*.swp \
