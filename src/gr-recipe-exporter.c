@@ -157,18 +157,6 @@ decide_dest_cb (AutoarCompressor *compressor,
         g_set_object (&exporter->dest, file);
 }
 
-static char *
-date_time_to_string (GDateTime *dt)
-{
-        return g_strdup_printf ("%d-%d-%d %d:%d:%d",
-                                g_date_time_get_year (dt),
-                                g_date_time_get_month (dt),
-                                g_date_time_get_day_of_month (dt),
-                                g_date_time_get_hour (dt),
-                                g_date_time_get_minute (dt),
-                                g_date_time_get_second (dt));
-}
-
 static gboolean
 prepare_export (GrRecipeExporter  *exporter,
                 GError           **error)

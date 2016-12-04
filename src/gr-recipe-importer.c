@@ -94,48 +94,6 @@ gr_recipe_importer_new (GtkWindow *parent)
         return importer;
 }
 
-static GDateTime *
-date_time_from_string (const char *string)
-{
-        g_auto(GStrv) s = NULL;
-        g_auto(GStrv) s1 = NULL;
-        g_auto(GStrv) s2 = NULL;
-        int year, month, day, hour, minute, second;
-        char *endy, *endm, *endd, *endh, *endmi, *ends;
-
-        s = g_strsplit (string, " ", -1);
-        if (g_strv_length (s) != 2)
-                return NULL;
-
-        s1 = g_strsplit (s[0], "-", -1);
-        if (g_strv_length (s1) != 3)
-                return NULL;
-
-        s2 = g_strsplit (s[1], ":", -1);
-        if (g_strv_length (s1) != 3)
-                return NULL;
-
-        year = strtol (s1[0], &endy, 10);
-        month = strtol (s1[1], &endm, 10);
-        day = strtol (s1[2], &endd, 10);
-
-        hour = strtol (s2[0], &endh, 10);
-        minute = strtol (s2[1], &endmi, 10);
-        second = strtol (s2[2], &ends, 10);
-
-        if (!*endy && !*endm && !*endd &&
-            !*endh && !*endmi && !*ends &&
-            0 < month && month <= 12 &&
-            0 < day && day <= 31 &&
-            0 <= hour && hour < 24 &&
-            0 <= minute && minute < 60 &&
-            0 <= second && second < 60)
-                    return g_date_time_new_utc (year, month, day,
-                                                hour, minute, second);
-
-        return NULL;
-}
-
 static void
 cleanup_import (GrRecipeImporter *importer)
 {
