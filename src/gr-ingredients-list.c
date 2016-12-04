@@ -310,7 +310,7 @@ gr_ingredients_list_validate (const char  *text,
         return gr_ingredients_list_populate (ingredients, text, error);
 }
 
-int
+static int
 gcd (int m, int n)
 {
         int r;

@@ -28,4 +28,6 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrToggleButton, gr_toggle_button, GR, TOGGLE_BUTTON, GtkButton)
 
+GrToggleButton * gr_toggle_button_new (void);
+
 G_END_DECLS
