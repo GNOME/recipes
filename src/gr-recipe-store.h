@@ -49,6 +49,9 @@ gboolean        gr_recipe_store_is_todays           (GrRecipeStore  *self,
                                                      GrRecipe       *recipe);
 gboolean        gr_recipe_store_is_pick             (GrRecipeStore  *self,
                                                      GrRecipe       *recipe);
+gboolean        gr_recipe_store_add_chef            (GrRecipeStore  *self,
+                                                     GrChef         *chef,
+                                                     GError        **error);
 GrChef         *gr_recipe_store_get_chef            (GrRecipeStore  *self,
                                                      const char     *name);
 char          **gr_recipe_store_get_chef_keys       (GrRecipeStore  *self,

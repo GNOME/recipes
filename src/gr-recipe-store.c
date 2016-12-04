@@ -1157,10 +1157,10 @@ gr_recipe_store_get_user_key (GrRecipeStore *self)
         return self->user;
 }
 
-static gboolean
-recipe_store_set_chef (GrRecipeStore  *self,
-                       GrChef         *chef,
-                       GError        **error)
+gboolean
+gr_recipe_store_add_chef (GrRecipeStore  *self,
+                          GrChef         *chef,
+                          GError        **error)
 {
         const char *name;
 
@@ -1200,7 +1200,7 @@ gr_recipe_store_update_user (GrRecipeStore  *self,
                 if (g_strcmp0 (name, self->user) == 0) {
                         g_hash_table_remove (self->chefs, name);
                 }
-                ret = recipe_store_set_chef (self, chef, error);
+                ret = gr_recipe_store_add_chef (self, chef, error);
         }
 
         if (ret) {
