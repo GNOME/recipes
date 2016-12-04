@@ -437,16 +437,51 @@ done_cb (GrRecipeImporter *importer,
                 gr_window_show_recipe (window, recipe);
 }
 
-void
-gr_window_load_recipe (GrWindow *window,
-                       GFile    *file)
+static void
+do_import (GrWindow *window,
+           GFile    *file)
 {
-      if (!window->importer) {
+        if (!window->importer) {
                 window->importer = gr_recipe_importer_new (GTK_WINDOW (window));
                 g_signal_connect (window->importer, "done", G_CALLBACK (done_cb), window);
         }
 
         gr_recipe_importer_import_from (window->importer, file);
+}
+
+static void
+file_chooser_response (GtkNativeDialog *self,
+                       int              response_id,
+                       GrWindow        *window)
+{
+        if (response_id == GTK_RESPONSE_ACCEPT) {
+                g_autoptr(GFile) file = NULL;
+                file = gtk_file_chooser_get_file (GTK_FILE_CHOOSER (self));
+                do_import (window, file);
+        }
+}
+
+void
+gr_window_load_recipe (GrWindow *window,
+                       GFile    *file)
+{
+        GtkFileChooserNative *chooser;
+
+        if (file) {
+                do_import (window, file);
+                return;
+        }
+
+        chooser = gtk_file_chooser_native_new (_("Select a recipe file"),
+                                               GTK_WINDOW (window),
+                                               GTK_FILE_CHOOSER_ACTION_OPEN,
+                                               _("Open"),
+                                               _("Cancel"));
+        gtk_native_dialog_set_modal (GTK_NATIVE_DIALOG (chooser), TRUE);
+
+        g_signal_connect (chooser, "response", G_CALLBACK (file_chooser_response), window);
+
+        gtk_native_dialog_show (GTK_NATIVE_DIALOG (chooser));
 }
 
 void
