@@ -308,7 +308,6 @@ set_text_view_text (GtkTextView *textview,
 void
 gr_edit_page_clear (GrEditPage *page)
 {
-        GtkTextBuffer *buffer;
         GArray *images;
 
         gtk_entry_set_text (GTK_ENTRY (page->name_entry), "");

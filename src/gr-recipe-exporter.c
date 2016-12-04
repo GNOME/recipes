@@ -190,7 +190,6 @@ prepare_export (GrRecipeExporter  *exporter,
         GrDiets diets;
         GDateTime *ctime;
         GDateTime *mtime;
-        GList *sources = NULL;
         g_autoptr(GrChef) chef = NULL;
         GrRecipeStore *store;
         g_autoptr(GArray) images = NULL;
@@ -343,7 +342,6 @@ gr_recipe_exporter_export_to (GrRecipeExporter *exporter,
                               GFile            *file)
 {
         g_autoptr(GFile) output = NULL;
-        GList *sources;
         g_autoptr(GError) error = NULL;
 
         g_set_object (&exporter->recipe, recipe);

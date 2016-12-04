@@ -179,7 +179,6 @@ finish_import (GrRecipeImporter  *importer,
         g_autoptr(GKeyFile) keyfile = NULL;
         g_autofree char *path = NULL;
         g_auto(GStrv) groups = NULL;
-        const char *key;
         g_autofree char *name = NULL;
         g_autofree char *fullname = NULL;
         g_autofree char *author = NULL;

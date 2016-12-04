@@ -261,7 +261,6 @@ gr_list_page_populate_from_season (GrListPage *self,
         for (i = 0; i < length; i++) {
                 g_autoptr(GrRecipe) recipe = NULL;
                 GtkWidget *tile;
-                const char *season;
 
         	recipe = gr_recipe_store_get (store, keys[i]);
                 if (g_strcmp0 (self->season, gr_recipe_get_season (recipe)) != 0)
