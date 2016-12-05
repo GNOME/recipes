@@ -1,4 +1,5 @@
 data/org.gnome.Recipes.desktop.in
+src/chef-conflict-dialog.ui
 src/gr-category-tile.ui
 src/gr-chef-tile.ui
 src/gr-cuisine-tile.ui
@@ -18,6 +19,7 @@ src/gr-recipe-tile.ui
 src/gr-search-page.ui
 src/gr-window.ui
 src/menus.ui
+src/recipe-conflict-dialog.ui
 src/gr-app.c
 src/gr-meal.c
 src/gr-category-tile.c
@@ -28,7 +30,9 @@ src/gr-cuisine-page.c
 src/gr-cuisines-page.c
 src/gr-cuisine-tile.c
 src/gr-details-page.c
+src/gr-diet-row.c
 src/gr-edit-page.c
+src/gr-images.c
 src/gr-ingredient.c
 src/gr-ingredient-search-tile.c
 src/gr-ingredient-tile.c
@@ -38,9 +42,13 @@ src/gr-list-page.c
 src/gr-preferences.c
 src/gr-query-editor.c
 src/gr-recipe.c
+src/gr-recipe-exporter.c
+src/gr-recipe-importer.c
+src/gr-recipe-printer.c
 src/gr-recipes-page.c
 src/gr-recipe-store.c
 src/gr-recipe-tile.c
 src/gr-search-page.c
+src/gr-season.c
 src/gr-utils.c
 src/gr-window.c
