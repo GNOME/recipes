@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="recipes">
+  <object class="GtkDialog" id="dialog">
+    <property name="use-header-bar">1</property>
+    <property name="modal">1</property>
+    <property name="destroy-with-parent">1</property>
+    <child type="action">
+      <object class="GtkButton" id="button_same">
+        <property name="visible">1</property>
+        <property name="label" translatable="yes">Merge</property>
+      </object>
+    </child>
+    <child type="action">
+      <object class="GtkButton" id="button_rename">
+        <property name="visible">1</property>
+        <property name="sensitive">0</property>
+        <property name="label" translatable="yes">Rename</property>
+      </object>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <child>
+          <object class="GtkGrid">
+            <property name="visible">1</property>
+            <property name="margin">20</property>
+            <property name="row-spacing">10</property>
+            <property name="column-spacing">10</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="label" translatable="yes">Existing Chef</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">-1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="label" translatable="yes">Imported Chef</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="left-attach">3</property>
+                <property name="top-attach">-1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="xalign">1</property>
+                <property name="label" translatable="yes">Short Name:</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="opacity">0</property>
+                <property name="xalign">1</property>
+                <property name="label" translatable="yes">Short Name:</property>
+              </object>
+              <packing>
+                <property name="left-attach">4</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="xalign">1</property>
+                <property name="label" translatable="yes">Name:</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="opacity">0</property>
+                <property name="xalign">1</property>
+                <property name="label" translatable="yes">Name:</property>
+              </object>
+              <packing>
+                <property name="left-attach">4</property>
+                <property name="top-attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="xalign">1</property>
+                <property name="label" translatable="yes">Description:</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="opacity">0</property>
+                <property name="xalign">1</property>
+                <property name="label" translatable="yes">Description:</property>
+              </object>
+              <packing>
+                <property name="left-attach">4</property>
+                <property name="top-attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="xalign">1</property>
+                <property name="label" translatable="yes">Picture:</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="opacity">0</property>
+                <property name="xalign">1</property>
+                <property name="label" translatable="yes">Picture:</property>
+              </object>
+              <packing>
+                <property name="left-attach">4</property>
+                <property name="top-attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="old_chef_name">
+                <property name="visible">1</property>
+                <property name="editable">0</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="old_chef_fullname">
+                <property name="visible">1</property>
+                <property name="editable">0</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow">
+                <property name="visible">1</property>
+                <property name="shadow-type">in</property>
+                <property name="min-content-height">60</property>
+                <child>
+                  <object class="GtkTextView" id="old_chef_description">
+                    <property name="visible">1</property>
+                    <property name="editable">0</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="old_chef_picture">
+                <property name="visible">1</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSeparator">
+                <property name="visible">1</property>
+                <property name="orientation">vertical</property>
+              </object>
+              <packing>
+                <property name="left-attach">2</property>
+                <property name="top-attach">-1</property>
+                <property name="height">5</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="new_chef_name">
+                <property name="visible">1</property>
+              </object>
+              <packing>
+                <property name="left-attach">3</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="new_chef_fullname">
+                <property name="visible">1</property>
+                <property name="editable">0</property>
+              </object>
+              <packing>
+                <property name="left-attach">3</property>
+                <property name="top-attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow">
+                <property name="visible">1</property>
+                <property name="shadow-type">in</property>
+                <property name="min-content-height">60</property>
+                <child>
+                  <object class="GtkTextView" id="new_chef_description">
+                    <property name="visible">1</property>
+                    <property name="editable">0</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="left-attach">3</property>
+                <property name="top-attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="new_chef_picture">
+                <property name="visible">1</property>
+              </object>
+              <packing>
+                <property name="left-attach">3</property>
+                <property name="top-attach">3</property>
+              </packing>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="cancel">button_same</action-widget>
+      <action-widget response="apply">button_rename</action-widget>
+    </action-widgets>
+    <initial-focus name="new_chef_name"/>
+  </object>
+</interface>

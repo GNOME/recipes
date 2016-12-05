@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="recipes">
+  <object class="GtkDialog" id="dialog">
+    <property name="use-header-bar">1</property>
+    <property name="modal">1</property>
+    <property name="destroy-with-parent">1</property>
+    <child type="action">
+      <object class="GtkButton" id="button_same">
+        <property name="visible">1</property>
+        <property name="label" translatable="yes">Cancel</property>
+      </object>
+    </child>
+    <child type="action">
+      <object class="GtkButton" id="button_rename">
+        <property name="visible">1</property>
+        <property name="sensitive">0</property>
+        <property name="label" translatable="yes">Rename</property>
+      </object>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="margin">20</property>
+        <property name="spacing">20</property>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">1</property>
+            <property name="label" translatable="yes">A recipe with this name already exists.</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">1</property>
+            <property name="orientation">horizontal</property>
+            <property name="spacing">10</property>
+            <child>
+              <object class="GtkLabel" id="label">
+                <property name="visible">1</property>
+                <property name="label" translatable="yes">Name:</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkEntry" id="name_entry">
+                <property name="visible">1</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="cancel">button_same</action-widget>
+      <action-widget response="apply">button_rename</action-widget>
+    </action-widgets>
+    <initial-focus name="name_entry"/>
+  </object>
+</interface>
