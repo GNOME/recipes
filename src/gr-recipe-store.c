@@ -785,7 +785,7 @@ save_chefs (GrRecipeStore *store)
                 image_path = gr_chef_get_image (chef);
 
                 tmp = get_user_data_dir ();
-                if (g_str_has_prefix (image_path, tmp)) {
+                if (image_path && g_str_has_prefix (image_path, tmp)) {
                         g_autofree char *tmp2 = NULL;
 
                         tmp2 = g_strdup (image_path + strlen (tmp) + 1);
@@ -805,6 +805,31 @@ save_chefs (GrRecipeStore *store)
 }
 
 static void
+ensure_user (GrRecipeStore *self)
+{
+        g_autoptr(GrChef) chef = NULL;
+        g_autoptr(GError) error = NULL;
+
+        self->user = g_strdup (g_get_user_name ());
+        chef = g_hash_table_lookup (self->chefs, self->user);
+        if (chef) {
+                g_message ("Found chef for user name: %s", self->user);
+                g_object_ref (chef);
+        }
+        else {
+                g_message ("Create chef for user name: %s", self->user);
+                // TODO get the users avatar - needs an account portal
+                chef = g_object_new (GR_TYPE_CHEF,
+                                     "name", self->user,
+                                     "fullname", g_get_real_name (),
+                                     NULL);
+        }
+        if (!gr_recipe_store_update_user (self, chef, &error)) {
+                g_warning ("Failed to store chef for user name: %s", error->message);
+        }
+}
+
+static void
 load_user (GrRecipeStore *self,
            const char    *dir)
 {
@@ -817,7 +842,7 @@ load_user (GrRecipeStore *self,
                 if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
                         g_error ("Failed to load user id: %s", error->message);
                 else
-                        g_message ("No user id at: %s", path);
+                        ensure_user (self);
                 return;
         }
 
@@ -1142,11 +1167,14 @@ gr_recipe_store_update_user (GrRecipeStore  *self,
 
         name = gr_chef_get_name (chef);
 
+g_print ("update_user from chef: %s\n", name);
         if (name != NULL && name[0] != '\0') {
+                g_object_ref (chef);
                 if (g_strcmp0 (name, self->user) == 0) {
                         g_hash_table_remove (self->chefs, name);
                 }
                 ret = gr_recipe_store_add_chef (self, chef, error);
+                g_object_unref (chef);
         }
 
         if (ret) {
