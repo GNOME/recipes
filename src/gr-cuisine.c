@@ -101,7 +101,7 @@ static const char *descriptions[] = {
            "ingredients include olives, cheese, eggplant (aubergine), zucchini (courgette), lemon "
            "juice, vegetables, herbs, bread and yoghurt. The most commonly used grain is wheat; barley "
            "is also used. Common dessert ingredients include nuts, honey, fruits, and filo pastry."),
-        N_("The mediterranean quisine has a lot to offer, and is legendary for being very healthy too. Expect to see olives, yoghurt and garlic."),
+        N_("The mediterranean cuisine has a lot to offer, and is legendary for being very healthy too. Expect to see olives, yoghurt and garlic."),
         N_("Mexican cuisine is primarily a fusion of indigenous Mesoamerican cooking with European, "
            "especially Spanish, elements added after the Spanish conquest of the Aztec Empire in the "
            "16th century. The staples are native foods, such as corn, beans, avocados, tomatoes, and "
