@@ -87,3 +87,6 @@ $(service_DATA): $(service_in_files) Makefile
 	@sed -e "s|\@bindir\@|$(bindir)|" $< > $@
 
 GITIGNOREFILES = $(service_DATA)
+
+appdatadir = $(datadir)/appdata
+appdata_DATA = appdata/org.gnome.Recipes.appdata.xml

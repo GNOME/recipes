@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>org.gnome.Recipes.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0+</project_license>
+  <name>Recipes</name>
+  <summary>GNOME loves to cook</summary>
+  <description>
+    <p>GNOME Recipes is an easy-to-use application that will help you to discover what to cook today,
+       tomorrow, rest of the week and for your special occasions. It also lets you store your own
+       recipes, and share them with your friends.</p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://git.gnome.org/browse/recipes/plain/data/appdata/recipes.png</image>
+      <caption>Initial screen for the application</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://git.gnome.org/browse/recipes/plain/data/appdata/cuisines.png</image>
+      <caption>The cuisines page</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://git.gnome.org/browse/recipes/plain/data/appdata/cuisine.png</image>
+      <caption>An individual cuisine</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://git.gnome.org/browse/recipes/plain/data/appdata/details.png</image>
+      <caption>An individual recipe</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://git.gnome.org/browse/recipes/plain/data/appdata/edit.png</image>
+      <caption>Creating a new recipe</caption>
+    </screenshot>
+  </screenshots>
+  <releases>
+    <release version="0.2.0" date="2016-12-02">
+      <description>
+        <p>Initial release</p>
+      </description>
+    </release>
+  </releases>
+  <kudos>
+    <kudo>AppMenu</kudo>
+    <kudo>ModernToolkit</kudo>
+  </kudos>
+  <url type="homepage">https://wiki.gnome.org/Apps/MultiWriter</url>
+  <url type="bugtracker">https://bugzilla.gnome.org/browse.cgi?product=gnome-recipes</url>
+  <translation type="gettext">recipes</translation>
+</component>
