@@ -805,56 +805,6 @@ save_chefs (GrRecipeStore *store)
 }
 
 static void
-ensure_user (GrRecipeStore *self)
-{
-        g_autoptr(GrChef) chef = NULL;
-        g_autoptr(GError) error = NULL;
-
-        self->user = g_strdup (g_get_user_name ());
-        chef = g_hash_table_lookup (self->chefs, self->user);
-        if (chef) {
-                g_message ("Found chef for user name: %s", self->user);
-                g_object_ref (chef);
-        }
-        else {
-                g_message ("Create chef for user name: %s", self->user);
-                // TODO get the users avatar - needs an account portal
-                chef = g_object_new (GR_TYPE_CHEF,
-                                     "name", self->user,
-                                     "fullname", g_get_real_name (),
-                                     NULL);
-        }
-        if (!gr_recipe_store_update_user (self, chef, &error)) {
-                g_warning ("Failed to store chef for user name: %s", error->message);
-        }
-}
-
-static void
-load_user (GrRecipeStore *self,
-           const char    *dir)
-{
-        g_autofree char *path = NULL;
-        g_autofree char *contents = NULL;
-        g_autoptr(GError) error = NULL;
-
-        path = g_build_filename (dir, "user", NULL);
-        if (!g_file_get_contents (path, &contents, NULL, &error)) {
-                if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
-                        g_error ("Failed to load user id: %s", error->message);
-                else
-                        ensure_user (self);
-                return;
-        }
-
-        g_message ("Load user id: %s", path);
-
-        self->user = g_strdup (contents);
-
-        if (self->user[strlen (self->user) - 1] == '\n')
-                self->user[strlen (self->user) - 1] = '\0';
-}
-
-static void
 save_user (GrRecipeStore *self)
 {
         g_autofree char *path = NULL;
@@ -873,6 +823,33 @@ save_user (GrRecipeStore *self)
                         g_error ("Failed to save user id: %s", error->message);
                 }
         }
+}
+
+static void
+load_user (GrRecipeStore *self,
+           const char    *dir)
+{
+        g_autofree char *path = NULL;
+        g_autofree char *contents = NULL;
+        g_autoptr(GError) error = NULL;
+
+        path = g_build_filename (dir, "user", NULL);
+        if (!g_file_get_contents (path, &contents, NULL, &error)) {
+                if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
+                        g_error ("Failed to load user id: %s", error->message);
+                else {
+                        self->user = g_strdup (g_get_user_name ());
+                        save_user (self);
+                }
+                return;
+        }
+
+        g_message ("Load user id: %s", path);
+
+        self->user = g_strdup (contents);
+
+        if (self->user[strlen (self->user) - 1] == '\n')
+                self->user[strlen (self->user) - 1] = '\0';
 }
 
 static void
