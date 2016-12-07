@@ -24,6 +24,14 @@ AC_CONFIG_MACRO_DIRS([m4])
 AC_SUBST([ACLOCAL_AMFLAGS], "-I m4 -I libgd")
 AC_CANONICAL_HOST
 
+dnl ***********************************************************************
+dnl Add extra debugging with --enable-debug and --enable-compile-warnings
+dnl ***********************************************************************
+AX_CHECK_ENABLE_DEBUG([no],[]
+                      [G_DISABLE_ASSERT G_DISABLE_CHECKS G_DISABLE_CAST_CHECKS])
+
+AC_USE_SYSTEM_EXTENSIONS
+
 
 dnl ***********************************************************************
 dnl Make version information available to autoconf files
@@ -41,13 +49,6 @@ AM_SILENT_RULES([yes])
 AM_INIT_AUTOMAKE([1.11 foreign subdir-objects tar-ustar no-dist-gzip dist-xz -Wno-portability])
 AM_MAINTAINER_MODE([enable])
 AX_GENERATE_CHANGELOG
-
-
-dnl ***********************************************************************
-dnl Add extra debugging with --enable-debug and --enable-compile-warnings
-dnl ***********************************************************************
-AX_CHECK_ENABLE_DEBUG([no],[]
-                      [G_DISABLE_ASSERT G_DISABLE_CHECKS G_DISABLE_CAST_CHECKS])
 
 
 dnl ***********************************************************************
@@ -79,7 +80,6 @@ VAPIGEN_CHECK
 
 
 AX_COMPILER_FLAGS
-AC_USE_SYSTEM_EXTENSIONS
 
 
 dnl ***********************************************************************
