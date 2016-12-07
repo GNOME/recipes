@@ -1,5 +1,6 @@
-
 -include $(top_srcdir)/git.mk
+
+EXTRA_DIST =
 
 desktopdir = $(datadir)/applications
 
@@ -9,6 +10,8 @@ desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
 %.desktop: %.desktop.in
 	msgfmt --desktop -d $(top_srcdir)/po --template $< -o $@
+
+EXTRA_DIST += $(desktop_in_files)
 
 ingredientsdir = $(pkgdatadir)/ingredients
 imagesdir = $(pkgdatadir)/images
@@ -89,4 +92,12 @@ $(service_DATA): $(service_in_files) Makefile
 GITIGNOREFILES = $(service_DATA)
 
 appdatadir = $(datadir)/appdata
-appdata_DATA = appdata/org.gnome.Recipes.appdata.xml
+
+appdata_in_files = appdata/org.gnome.Recipes.appdata.xml.in
+
+appdata_DATA = $(appdata_in_files:.appdata.xml.in=.appdata.xml)
+
+%.appdata.xml: %.appdata.xml.in
+	msgfmt --xml -d $(top_srcdir)/po --template $< -o $@
+
+EXTRA_DIST += $(appdata_in_files)
