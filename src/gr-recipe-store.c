@@ -1144,7 +1144,6 @@ gr_recipe_store_update_user (GrRecipeStore  *self,
 
         name = gr_chef_get_name (chef);
 
-g_print ("update_user from chef: %s\n", name);
         if (name != NULL && name[0] != '\0') {
                 g_object_ref (chef);
                 if (g_strcmp0 (name, self->user) == 0) {
