@@ -90,12 +90,18 @@ recipes_SOURCES = \
 	gr-window.c 		\
 	resources.c		\
 	types.h			\
-	types.c
+	types.c			\
+	gr-shell-search-provider.h \
+	gr-shell-search-provider.c \
+	gr-shell-search-provider-dbus.h \
+	gr-shell-search-provider-dbus.c
 
 BUILT_SOURCES = \
 	resources.c		\
 	types.h			\
-	types.c
+	types.c			\
+	gr-shell-search-provider-dbus.h \
+	gr-shell-search-provider-dbus.c
 
 resource_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/recipes.gresource.xml)
 
@@ -112,6 +118,16 @@ types.c: types.c.template gr-recipe.h
 	$(AM_V_GEN) ($(GLIB_MKENUMS) --template types.c.template gr-recipe.h ) > xgen-ec && \
 	cp xgen-ec $@ && \
 	rm -f xgen-ec
+
+gr-shell-search-provider-dbus.h gr-shell-search-provider-dbus.c: Makefile.am $(srcdir)/shell-search-provider-dbus-interfaces.xml
+	$(AM_V_GEN) gdbus-codegen \
+		--interface-prefix org.gnome. \
+		--c-namespace Gr \
+		--generate-c-code gr-shell-search-provider-dbus \
+		$(srcdir)/shell-search-provider-dbus-interfaces.xml
+
+searchproviderdir = $(datadir)/gnome-shell/search-providers
+searchprovider_DATA = org.gnome.Recipes-search-provider.ini
 
 EXTRA_DIST = \
 	$(resource_files)	\

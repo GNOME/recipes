@@ -28,6 +28,7 @@
 #include "gr-preferences.h"
 #include "gr-recipe-store.h"
 #include "gr-cuisine.h"
+#include "gr-shell-search-provider.h"
 
 
 struct _GrApp
@@ -35,6 +36,7 @@ struct _GrApp
         GtkApplication parent_instance;
 
         GrRecipeStore *store;
+        GrShellSearchProvider *search_provider;
 };
 
 G_DEFINE_TYPE (GrApp, gr_app, GTK_TYPE_APPLICATION)
@@ -48,6 +50,17 @@ gr_app_finalize (GObject *object)
         g_clear_object (&self->store);
 
         G_OBJECT_CLASS (gr_app_parent_class)->finalize (object);
+}
+
+static void
+gr_app_activate (GApplication *app)
+{
+        GtkWindow *win;
+
+        win = gtk_application_get_active_window (GTK_APPLICATION (app));
+        if (!win)
+                win = GTK_WINDOW (gr_window_new (GR_APP (app)));
+        gtk_window_present (win);
 }
 
 static void
@@ -136,11 +149,47 @@ import_activated (GSimpleAction *action,
         gr_window_load_recipe (GR_WINDOW (win), NULL);
 }
 
+static void
+details_activated (GSimpleAction *action,
+                   GVariant      *parameter,
+                   gpointer       application)
+{
+        GrApp *app = GR_APP (application);
+        GtkWindow *win;
+        const char *id, *search;
+        g_autoptr(GrRecipe) recipe = NULL;
+
+        g_variant_get (parameter, "(&s&s)", &id, &search);
+
+        gr_app_activate (G_APPLICATION (app));
+        win = gtk_application_get_active_window (GTK_APPLICATION (app));
+        recipe = gr_recipe_store_get (app->store, id);
+        gr_window_show_recipe (GR_WINDOW (win), recipe);
+}
+
+static void
+search_activated (GSimpleAction *action,
+                  GVariant      *parameter,
+                  gpointer       application)
+{
+        GrApp *app = GR_APP (application);
+        GtkWindow *win;
+        const char *search;
+
+        g_variant_get (parameter, "&s", &search);
+
+        win = gtk_application_get_active_window (GTK_APPLICATION (app));
+        gr_app_activate (G_APPLICATION (app));
+        gr_window_show_search (GR_WINDOW (win), search);
+}
+
 static GActionEntry app_entries[] =
 {
         { "preferences", preferences_activated, NULL, NULL, NULL },
         { "about", about_activated, NULL, NULL, NULL },
         { "import", import_activated, NULL, NULL, NULL },
+        { "details", details_activated, "(ss)", NULL, NULL },
+        { "search", search_activated, "s", NULL, NULL },
         { "timer-expired", timer_expired, "s", NULL, NULL },
         { "quit", quit_activated, NULL, NULL, NULL }
 };
@@ -192,17 +241,6 @@ gr_app_startup (GApplication *app)
 }
 
 static void
-gr_app_activate (GApplication *app)
-{
-        GtkWindow *win;
-
-        win = gtk_application_get_active_window (GTK_APPLICATION (app));
-        if (!win)
-                win = GTK_WINDOW (gr_window_new (GR_APP (app)));
-        gtk_window_present (win);
-}
-
-static void
 gr_app_open (GApplication  *app,
              GFile        **files,
              gint           n_files,
@@ -222,6 +260,34 @@ gr_app_open (GApplication  *app,
         gtk_window_present (win);
 }
 
+static gboolean
+gr_app_dbus_register (GApplication    *application,
+                      GDBusConnection *connection,
+                      const gchar     *object_path,
+                      GError         **error)
+{
+        GrApp *app = GR_APP (application);
+
+        app->search_provider = gr_shell_search_provider_new ();
+        gr_shell_search_provider_setup (app->search_provider, app->store);
+
+        return gr_shell_search_provider_register (app->search_provider, connection, error);
+}
+
+static void
+gr_app_dbus_unregister (GApplication    *application,
+                        GDBusConnection *connection,
+                        const gchar     *object_path)
+{
+        GrApp *app = GR_APP (application);
+
+        if (app->search_provider != NULL) {
+                gr_shell_search_provider_unregister (app->search_provider);
+                g_clear_object (&app->search_provider);
+        }
+}
+
+
 static void
 gr_app_init (GrApp *self)
 {
@@ -239,6 +305,8 @@ gr_app_class_init (GrAppClass *klass)
         application_class->startup = gr_app_startup;
         application_class->activate = gr_app_activate;
         application_class->open = gr_app_open;
+        application_class->dbus_register = gr_app_dbus_register;
+        application_class->dbus_unregister = gr_app_dbus_unregister;
 }
 
 GrApp *

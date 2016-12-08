@@ -38,6 +38,8 @@ void            gr_window_edit_recipe                (GrWindow   *window,
                                                       GrRecipe   *recipe);
 void            gr_window_load_recipe                (GrWindow   *window,
                                                       GFile      *file);
+void            gr_window_show_search                (GrWindow   *window,
+                                                      const char *terms);
 void            gr_window_go_back                    (GrWindow   *window);
 void            gr_window_show_diet                  (GrWindow   *window,
                                                       const char *title,

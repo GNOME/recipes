@@ -189,6 +189,15 @@ switch_to_search (GrWindow *window)
      	gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "search");
 }
 
+void
+gr_window_show_search (GrWindow   *window,
+                       const char *search)
+{
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (window->search_button), TRUE);
+        switch_to_search (window);
+        gr_query_editor_set_query (GR_QUERY_EDITOR (window->search_bar), search);
+}
+
 static void
 visible_page_changed (GrWindow *window)
 {
