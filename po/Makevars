@@ -58,6 +58,12 @@ MSGID_BUGS_ADDRESS =
 # message catalogs shall be used.  It is usually empty.
 EXTRA_LOCALE_CATEGORIES =
 
+# This tells whether the $(DOMAIN).pot file contains messages with an 'msgctxt'•
+# # context.  Possible values are "yes" and "no".  Set this to yes if the•
+# # package uses functions taking also a message context, like pgettext(), or•
+# # if in $(XGETTEXT_OPTIONS) you define keywords with a context argument.•
+USE_MSGCTXT = yes
+
 # Ignore the timestamp of the .pot file, as git clones do not have
 # deterministic timestamps, and .po files are updated by translators
 # (only) in GNOME projects.
