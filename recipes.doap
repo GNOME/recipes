@@ -6,9 +6,15 @@
 
   <name xml:lang="en">Recipes</name>
   <shortdesc xml:lang="en">GNOME likes to cook</shortdesc>
-  <description>An easy to use app that will help you to discover what to cook today, tomorrow, the rest of the week and for your special occasions.</description>
-  <homepage rdf:resource="https://wiki.gnome.org/Apps/Potential/Recipe App" />
+  <description xml:lang="en">
+    An easy to use app that will help you to discover what to cook today, tomorrow,
+    the rest of the week and for your special occasions.
+  </description>
   <programming-language>C</programming-language>
+
+  <category rdf:resource="http://api.gnome.org/doap-extensions#apps" />
+  <homepage rdf:resource="https://wiki.gnome.org/Apps/Potential/Recipe App" />
+  <bug-database rdf:resource="https://bugzilla.gnome.org/browse.cgi?product=recipes" />
 
   <maintainer>
     <foaf:Person>
@@ -17,4 +23,7 @@
       <gnome:userid>matthiasc</gnome:userid>
     </foaf:Person>
   </maintainer>
+
+  <license rdf:resource="http://www.gnu.org/licenses/gpl-3.0.txt" />
+
 </Project>
