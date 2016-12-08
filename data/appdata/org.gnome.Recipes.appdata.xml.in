@@ -6,9 +6,15 @@
   <name>Recipes</name>
   <summary>GNOME loves to cook</summary>
   <description>
-    <p>GNOME Recipes is an easy-to-use application that will help you to discover what to cook today,
-       tomorrow, rest of the week and for your special occasions. It also lets you store your own
-       recipes, and share them with your friends.</p>
+    <p>
+       GNOME Recipes is an easy-to-use application that will help you to discover what to cook
+       today, tomorrow, rest of the week and for your special occasions.
+    </p>
+    <p>
+       Recipes comes with a collection of recipes that have been collected by GNOME contributors
+       from all over the world. It also lets you store your own recipes, and share them with your
+       friends.
+    </p>
   </description>
   <screenshots>
     <screenshot type="default">
@@ -41,9 +47,15 @@
   </releases>
   <kudos>
     <kudo>AppMenu</kudo>
+    <kudo>HiDpiIcon</kudo>
     <kudo>ModernToolkit</kudo>
+    <kudo>Notification</kudo>
   </kudos>
-  <url type="homepage">https://wiki.gnome.org/Apps/MultiWriter</url>
-  <url type="bugtracker">https://bugzilla.gnome.org/browse.cgi?product=gnome-recipes</url>
+  <url type="homepage">https://wiki.gnome.org/Design/Apps/Potential/Recipe App</url>
+  <url type="donation">https://www.gnome.org/friends</url>
+  <url type="bugtracker">https://bugzilla.gnome.org/browse.cgi?product=recipes</url>
   <translation type="gettext">recipes</translation>
+  <update_contact>matthias.clasen_at_gmail.com</update_contact>
+  <project_group>GNOME</project_group>
+  <developer_name>The GNOME Project</developer_name>
 </component>
