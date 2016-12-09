@@ -49,7 +49,7 @@ image.chef.circular {
   padding: 0;
   text-shadow: none;
   border: 1px solid @borders;
-  background: #fff;
+  background: @theme_base_color;
   border-radius: 0;
 }
 .recipe.view.tile {
