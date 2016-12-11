@@ -106,21 +106,21 @@ typedef struct {
 } NumberForm;
 
 static NumberForm numberforms[] = {
-        { "a dozen", 12 },
-        { "a",        1 },
-        { "an",       1 },
-        { "one",      1 },
-        { "two",      2 },
-        { "three",    3 },
-        { "four",     4 },
-        { "five",     5 },
-        { "six",      6 },
-        { "seven",    7 },
-        { "eight",    8 },
-        { "nine",     9 },
-        { "ten",     10 },
-        { "eleven",  11 },
-        { "twelve",  12 }
+        { NC_("number", "a dozen"), 12 },
+        { NC_("number", "a"),        1 },
+        { NC_("number", "an"),       1 },
+        { NC_("number", "one"),      1 },
+        { NC_("number", "two"),      2 },
+        { NC_("number", "three"),    3 },
+        { NC_("number", "four"),     4 },
+        { NC_("number", "five"),     5 },
+        { NC_("number", "six"),      6 },
+        { NC_("number", "seven"),    7 },
+        { NC_("number", "eight"),    8 },
+        { NC_("number", "nine"),     9 },
+        { NC_("number", "ten"),     10 },
+        { NC_("number", "eleven"),  11 },
+        { NC_("number", "twelve"),  12 }
 };
 
 static gboolean
@@ -134,12 +134,15 @@ parse_as_number (Ingredient  *ing,
         int i;
 
         for (i = 0; i < G_N_ELEMENTS (numberforms); i++) {
-                if (g_str_has_prefix (*string, numberforms[i].string) &&
-                    g_ascii_isspace ((*string)[strlen (numberforms[i].string)])) {
+                const char *nf;
+
+                nf = g_dpgettext2 (NULL, "number", numberforms[i].string);
+                if (g_str_has_prefix (*string, nf) &&
+                    g_ascii_isspace ((*string)[strlen (nf)])) {
                         ing->fraction = TRUE;
                         ing->num = numberforms[i].value;
                         ing->denom = 1;
-                        *string += strlen (numberforms[i].string);
+                        *string += strlen (nf);
                         return TRUE;
                 }
         }
@@ -177,12 +180,12 @@ typedef struct {
 } Unit;
 
 static Unit units[] = {
-        { "g",  { "g", "gram", "grams", NULL } },
-        { "kg", { "kg", "kilogram", "kilograms", NULL } },
-        { "l",  { "l", "liter", "liters", NULL } },
-        { "ml", { "ml", "milliliter", "milliliters", NULL } },
-        { "lb", { "lb", "pound", "pounds", NULL } },
-        { "box", { "box", "boxes", NULL, NULL } },
+        { "g",  { NC_("unit", "g"), NC_("unit", "gram"), NC_("unit", "grams"), NULL } },
+        { "kg", { NC_("unit", "kg"), NC_("unit", "kilogram"), NC_("unit", "kilograms"), NULL } },
+        { "l",  { NC_("unit", "l"), NC_("unit", "liter"), NC_("unit", "liters"), NULL } },
+        { "ml", { NC_("unit", "ml"), NC_("unit", "milliliter"), NC_("unit", "milliliters"), NULL } },
+        { "lb", { NC_("unit", "lb"), NC_("unit", "pound"), NC_("unit", "pounds"), NULL } },
+        { "box", { NC_("unit", "box"), NC_("unit", "boxes"), NULL, NULL } },
 };
 
 static gboolean
@@ -194,10 +197,13 @@ parse_as_unit (Ingredient  *ing,
 
         for (i = 0; i < G_N_ELEMENTS (units); i++) {
                 for (j = 0; units[i].names[j]; j++) {
-                        if (g_str_has_prefix (*string, units[i].names[j]) &&
-                            g_ascii_isspace ((*string)[strlen (units[i].names[j])])) {
+                        const char *nu;
+
+                        nu = g_dpgettext2 (NULL, "unit", units[i].names[j]);
+                        if (g_str_has_prefix (*string, nu) &&
+                            g_ascii_isspace ((*string)[strlen (nu)])) {
                                 ing->unit = g_strdup (units[i].unit);
-                                *string += strlen (units[i].names[j]);
+                                *string += strlen (nu);
                                 return TRUE;
                         }
                 }
