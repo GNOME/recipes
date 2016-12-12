@@ -83,7 +83,7 @@ static const char *descriptions[] = {
            "spices, herbs, vegetables and fruits. Indian food is also heavily influenced by religious "
            "and cultural choices and traditions. There has also been Middle Eastern and Central Asian "
            "influence on North Indian cuisine from the years of Mughal rule. Indian cuisine has been "
-           "and is still evolving, as a result of the nation's cultural interactions with other "
+           "and is still evolving, as a result of the nation’s cultural interactions with other "
            "societies."),
         N_("Italian cuisine is characterized by its simplicity, with many dishes having only four to "
            "eight ingredients. Italian cooks rely chiefly on the quality of the ingredients rather "

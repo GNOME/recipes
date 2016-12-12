@@ -114,14 +114,14 @@ completed_cb (AutoarCompressor *compressor,
         g_autofree char *path =  NULL;
 
         path = g_file_get_path (exporter->dest);
-        g_message (_("The recipe %s has been exported as ‘%s’"),
+        g_message (_("The recipe %s has been exported as “%s”"),
                    gr_recipe_get_name (exporter->recipe), path);
 
         dialog = gtk_message_dialog_new (exporter->window,
                                          GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,
                                          GTK_MESSAGE_INFO,
                                          GTK_BUTTONS_OK,
-                                         _("The recipe %s has been exported as ‘%s’"),
+                                         _("The recipe %s has been exported as “%s”"),
                                          gr_recipe_get_name (exporter->recipe), path);
         g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
         gtk_widget_show (dialog);

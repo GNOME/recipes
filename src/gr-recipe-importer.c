@@ -408,7 +408,7 @@ import_recipe (GrRecipeImporter *importer)
                if (!importer->recipe_ctime) {
                         g_free (tmp);
                         g_set_error (&error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                                     _("Failed to load recipe: Couldn't parse Created key"));
+                                     _("Failed to load recipe: Couldn’t parse Created key"));
                         error_cb (importer->extractor, error, importer);
                         return;
                 }
@@ -419,7 +419,7 @@ import_recipe (GrRecipeImporter *importer)
                if (!importer->recipe_mtime) {
                         g_free (tmp);
                         g_set_error (&error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                                     _("Failed to load recipe: Couldn't parse Modified key"));
+                                     _("Failed to load recipe: Couldn’t parse Modified key"));
                         error_cb (importer->extractor, error, importer);
                         return;
                 }

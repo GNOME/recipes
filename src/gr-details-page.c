@@ -682,8 +682,8 @@ gr_details_page_set_recipe (GrDetailsPage *page,
 
         if (cooked > 0) {
                 gtk_widget_show (page->cooked_label);
-                tmp = g_strdup_printf (ngettext ("You've cooked this recipe before",
-                                                 "You've cooked this recipe %d times", cooked), cooked);
+                tmp = g_strdup_printf (ngettext ("You’ve cooked this recipe before",
+                                                 "You’ve cooked this recipe %d times", cooked), cooked);
                 gtk_label_set_label (GTK_LABEL (page->cooked_label), tmp);
                 g_free (tmp);
         }

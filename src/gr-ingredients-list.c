@@ -210,7 +210,7 @@ parse_as_unit (Ingredient  *ing,
         }
 
         g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                     _("I don't know this unit: %s"), *string);
+                     _("I don’t know this unit: %s"), *string);
 
         return FALSE;
 
