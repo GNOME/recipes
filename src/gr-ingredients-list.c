@@ -183,6 +183,7 @@ static Unit units[] = {
         { "g",  { NC_("unit", "g"), NC_("unit", "gram"), NC_("unit", "grams"), NULL } },
         { "kg", { NC_("unit", "kg"), NC_("unit", "kilogram"), NC_("unit", "kilograms"), NULL } },
         { "l",  { NC_("unit", "l"), NC_("unit", "liter"), NC_("unit", "liters"), NULL } },
+        { "dl", { NC_("unit", "dl"), NC_("unit", "deciliter"), NC_("unit", "deciliters"), NULL } },
         { "ml", { NC_("unit", "ml"), NC_("unit", "milliliter"), NC_("unit", "milliliters"), NULL } },
         { "lb", { NC_("unit", "lb"), NC_("unit", "pound"), NC_("unit", "pounds"), NULL } },
         { "box", { NC_("unit", "box"), NC_("unit", "boxes"), NULL, NULL } },
