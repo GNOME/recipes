@@ -45,6 +45,13 @@ struct _GrListPage
         GtkWidget *flow_box;
         GtkWidget *empty_title;
         GtkWidget *empty_subtitle;
+
+        GtkWidget *chef_box;
+        GtkWidget *chef_image;
+        GtkWidget *chef_fullname;
+        GtkWidget *chef_name;
+        GtkWidget *chef_description;
+        GtkWidget *chef_heading;
 };
 
 G_DEFINE_TYPE (GrListPage, gr_list_page, GTK_TYPE_BOX)
@@ -92,6 +99,12 @@ gr_list_page_class_init (GrListPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, list_stack);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, empty_title);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, empty_subtitle);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, chef_box);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, chef_image);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, chef_fullname);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, chef_name);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, chef_description);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, chef_heading);
 }
 
 GtkWidget *
@@ -147,6 +160,9 @@ gr_list_page_populate_from_diet (GrListPage *self,
         clear_data (self);
         self->diet = diet;
 
+        gtk_widget_hide (self->chef_box);
+        gtk_widget_hide (self->chef_heading);
+
         container_remove_all (GTK_CONTAINER (self->flow_box));
         tmp = g_strdup_printf (_("No %s found"), get_category_title (diet));
         gtk_label_set_label (GTK_LABEL (self->empty_title), tmp);
@@ -189,10 +205,23 @@ gr_list_page_populate_from_chef (GrListPage *self,
         int i;
         gboolean filled;
         char *tmp;
+        g_autoptr(GdkPixbuf) pixbuf = NULL;
 
         g_object_ref (chef);
         clear_data (self);
         self->chef = chef;
+
+        gtk_widget_show (self->chef_box);
+        gtk_widget_show (self->chef_heading);
+
+        gtk_label_set_label (GTK_LABEL (self->chef_fullname), gr_chef_get_fullname (chef));
+        gtk_label_set_label (GTK_LABEL (self->chef_name), gr_chef_get_name (chef));
+        gtk_label_set_label (GTK_LABEL (self->chef_description), gr_chef_get_description (chef));
+        pixbuf = load_pixbuf_fit_size (gr_chef_get_image (chef), 0, 64, 64, FALSE);
+        gtk_image_set_from_pixbuf (GTK_IMAGE (self->chef_image), pixbuf);
+        tmp = g_strdup_printf (_("Recipes by %s"), gr_chef_get_name (chef));
+        gtk_label_set_label (GTK_LABEL (self->chef_heading), tmp);
+        g_free (tmp);
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
@@ -247,6 +276,9 @@ gr_list_page_populate_from_season (GrListPage *self,
         clear_data (self);
         self->season = tmp;
 
+        gtk_widget_hide (self->chef_box);
+        gtk_widget_hide (self->chef_heading);
+
         container_remove_all (GTK_CONTAINER (self->flow_box));
         tmp = g_strdup_printf (_("No recipes for %s found"), gr_season_get_title (self->season));
         gtk_label_set_label (GTK_LABEL (self->empty_title), tmp);
@@ -287,6 +319,9 @@ gr_list_page_populate_from_favorites (GrListPage *self)
 
         clear_data (self);
         self->favorites = TRUE;
+
+        gtk_widget_hide (self->chef_box);
+        gtk_widget_hide (self->chef_heading);
 
         container_remove_all (GTK_CONTAINER (self->flow_box));
         gtk_label_set_label (GTK_LABEL (self->empty_title), _("No favorite recipes found"));

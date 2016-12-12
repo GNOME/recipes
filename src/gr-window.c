@@ -521,7 +521,7 @@ gr_window_show_chef (GrWindow *window,
 
         gr_list_page_populate_from_chef (GR_LIST_PAGE (window->list_page), chef);
 
-        title = g_strdup_printf (_("Recipes by %s"), gr_chef_get_name (chef));
+        title = g_strdup_printf (_("Chef %s"), gr_chef_get_name (chef));
         gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), title);
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
