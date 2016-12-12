@@ -456,11 +456,12 @@ followed</property>
               </object>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="start_button">
                 <property name="visible">1</property>
                 <property name="label" translatable="yes">Start</property>
                 <property name="halign">end</property>
                 <property name="valign">end</property>
+                <property name="sensitive">False</property>
                 <signal name="clicked" handler="start_or_stop_timer" swapped="yes"/>
               </object>
             </child>

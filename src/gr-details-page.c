@@ -128,6 +128,7 @@ struct _GrDetailsPage
         GtkWidget *timer_stack;
         GtkWidget *timer_popover;
         GtkWidget *time_spin;
+        GtkWidget *start_button;
         GtkWidget *favorite_button;
         GtkWidget *duration_stack;
         GtkWidget *remaining_time_label;
@@ -485,6 +486,20 @@ details_page_finalize (GObject *object)
         G_OBJECT_CLASS (gr_details_page_parent_class)->finalize (object);
 }
 
+static gboolean
+gdouble_to_boolean (GBinding     *binding,
+                    const GValue *from_value,
+                    GValue       *to_value,
+                    gpointer      user_data)
+{
+  if (g_value_get_double (from_value))
+    g_value_set_boolean (to_value, TRUE);
+  else
+    g_value_set_boolean (to_value, FALSE);
+
+  return TRUE;
+}
+
 static void
 gr_details_page_init (GrDetailsPage *page)
 {
@@ -492,6 +507,14 @@ gr_details_page_init (GrDetailsPage *page)
         gtk_widget_init_template (GTK_WIDGET (page));
         connect_store_signals (page);
         page->cooking = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, cooking_data_free);
+
+        g_object_bind_property_full (page->time_spin, "value",
+                                     page->start_button, "sensitive",
+                                     0,
+                                     gdouble_to_boolean,
+                                     NULL,
+                                     NULL,
+                                     NULL);
 }
 
 static void
@@ -522,6 +545,7 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, timer_stack);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, timer_popover);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, time_spin);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, start_button);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, favorite_button);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, duration_stack);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, remaining_time_label);
