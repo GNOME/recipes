@@ -34,6 +34,8 @@ recipes_SOURCES = \
 	gr-cuisines-page.c	\
 	gr-details-page.h	\
 	gr-details-page.c	\
+	gr-diet.h		\
+	gr-diet.c		\
 	gr-diet-row.h		\
 	gr-diet-row.c		\
 	gr-edit-page.h		\
@@ -109,13 +111,13 @@ resources.c: recipes.gresource.xml $(resource_files)
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $(srcdir)/recipes.gresource.xml \
                 --target=$@ --sourcedir=$(srcdir) --generate-source
 
-types.h: types.h.template gr-recipe.h
-	$(AM_V_GEN) ($(GLIB_MKENUMS) --template types.h.template gr-recipe.h ) > xgen-eh && \
+types.h: types.h.template gr-diet.h
+	$(AM_V_GEN) ($(GLIB_MKENUMS) --template types.h.template gr-diet.h ) > xgen-eh && \
 	cp xgen-eh $@ && \
 	rm -f xgen-eh
 
-types.c: types.c.template gr-recipe.h
-	$(AM_V_GEN) ($(GLIB_MKENUMS) --template types.c.template gr-recipe.h ) > xgen-ec && \
+types.c: types.c.template gr-diet.h
+	$(AM_V_GEN) ($(GLIB_MKENUMS) --template types.c.template gr-diet.h ) > xgen-ec && \
 	cp xgen-ec $@ && \
 	rm -f xgen-ec
 

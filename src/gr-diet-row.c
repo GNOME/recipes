@@ -25,6 +25,7 @@
 
 #include "types.h"
 #include "gr-diet-row.h"
+#include "gr-diet.h"
 
 
 struct _GrDietRow
