@@ -30,6 +30,7 @@
 #include "gr-app.h"
 #include "gr-utils.h"
 #include "gr-season.h"
+#include "gr-category-tile.h"
 
 
 struct _GrListPage
@@ -51,7 +52,8 @@ struct _GrListPage
         GtkWidget *chef_fullname;
         GtkWidget *chef_name;
         GtkWidget *chef_description;
-        GtkWidget *chef_heading;
+        GtkWidget *heading;
+        GtkWidget *diet_description;
 };
 
 G_DEFINE_TYPE (GrListPage, gr_list_page, GTK_TYPE_BOX)
@@ -104,7 +106,8 @@ gr_list_page_class_init (GrListPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, chef_fullname);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, chef_name);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, chef_description);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, chef_heading);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, heading);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, diet_description);
 }
 
 GtkWidget *
@@ -161,7 +164,11 @@ gr_list_page_populate_from_diet (GrListPage *self,
         self->diet = diet;
 
         gtk_widget_hide (self->chef_box);
-        gtk_widget_hide (self->chef_heading);
+        gtk_widget_show (self->diet_description);
+        gtk_widget_show (self->heading);
+
+        gtk_label_set_label (GTK_LABEL (self->heading), gr_diet_get_label (diet));
+        gtk_label_set_markup (GTK_LABEL (self->diet_description), gr_diet_get_description (diet));
 
         container_remove_all (GTK_CONTAINER (self->flow_box));
         tmp = g_strdup_printf (_("No %s found"), get_category_title (diet));
@@ -212,7 +219,8 @@ gr_list_page_populate_from_chef (GrListPage *self,
         self->chef = chef;
 
         gtk_widget_show (self->chef_box);
-        gtk_widget_show (self->chef_heading);
+        gtk_widget_show (self->heading);
+        gtk_widget_hide (self->diet_description);
 
         gtk_label_set_label (GTK_LABEL (self->chef_fullname), gr_chef_get_fullname (chef));
         gtk_label_set_label (GTK_LABEL (self->chef_name), gr_chef_get_name (chef));
@@ -220,7 +228,7 @@ gr_list_page_populate_from_chef (GrListPage *self,
         pixbuf = load_pixbuf_fit_size (gr_chef_get_image (chef), 0, 64, 64, FALSE);
         gtk_image_set_from_pixbuf (GTK_IMAGE (self->chef_image), pixbuf);
         tmp = g_strdup_printf (_("Recipes by %s"), gr_chef_get_name (chef));
-        gtk_label_set_label (GTK_LABEL (self->chef_heading), tmp);
+        gtk_label_set_label (GTK_LABEL (self->heading), tmp);
         g_free (tmp);
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
@@ -277,7 +285,8 @@ gr_list_page_populate_from_season (GrListPage *self,
         self->season = tmp;
 
         gtk_widget_hide (self->chef_box);
-        gtk_widget_hide (self->chef_heading);
+        gtk_widget_hide (self->heading);
+        gtk_widget_hide (self->diet_description);
 
         container_remove_all (GTK_CONTAINER (self->flow_box));
         tmp = g_strdup_printf (_("No recipes for %s found"), gr_season_get_title (self->season));
@@ -321,7 +330,8 @@ gr_list_page_populate_from_favorites (GrListPage *self)
         self->favorites = TRUE;
 
         gtk_widget_hide (self->chef_box);
-        gtk_widget_hide (self->chef_heading);
+        gtk_widget_hide (self->heading);
+        gtk_widget_hide (self->diet_description);
 
         container_remove_all (GTK_CONTAINER (self->flow_box));
         gtk_label_set_label (GTK_LABEL (self->empty_title), _("No favorite recipes found"));
