@@ -196,6 +196,7 @@ gr_timer_widget_draw (GtkWidget *widget,
 {
         GrTimerWidget *timer = GR_TIMER_WIDGET (widget);
         GtkStyleContext *context;
+        GdkRGBA color;
         gint width, height;
         double xc, yc;
         double radius;
@@ -215,7 +216,8 @@ gr_timer_widget_draw (GtkWidget *widget,
 
         now = g_get_monotonic_time ();
 
-        cairo_set_source_rgb (cr, 0, 0, 0);
+        gtk_style_context_get_color (context, gtk_widget_get_state_flags (widget), &color);
+        gdk_cairo_set_source_rgba (cr, &color);
         xc = width / 2;
         yc = height / 2;
         radius = width / 2;
