@@ -647,9 +647,14 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         gtk_label_set_label (GTK_LABEL (page->chef_label), tmp);
         g_free (tmp);
 
-        tmp = g_strdup_printf (_("More recipes by %s"), author);
-        gtk_button_set_label (GTK_BUTTON (page->chef_link), tmp);
-        g_free (tmp);
+        if (page->chef) {
+                gtk_widget_show (page->chef_link);
+                tmp = g_strdup_printf (_("More recipes by %s"), author);
+                gtk_button_set_label (GTK_BUTTON (page->chef_link), tmp);
+                g_free (tmp);
+        }
+        else
+                gtk_widget_hide (page->chef_link);
 
         if (cooked > 0) {
                 gtk_widget_show (page->cooked_label);
