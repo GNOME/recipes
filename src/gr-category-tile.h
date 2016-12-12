@@ -36,4 +36,7 @@ GrDiets          gr_category_tile_get_diet       (GrCategoryTile *tile);
 const char      *gr_category_tile_get_category   (GrCategoryTile *tile);
 const char      *gr_category_tile_get_label      (GrCategoryTile *tile);
 
+const char      *gr_diet_get_label (GrDiets diet);
+const char      *gr_diet_get_description (GrDiets diet);
+
 G_END_DECLS

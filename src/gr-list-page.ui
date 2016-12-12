@@ -132,7 +132,16 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="chef_heading">
+                  <object class="GtkLabel" id="diet_description">
+                    <property name="visible">1</property>
+                    <property name="xalign">0</property>
+                    <property name="wrap">1</property>
+                    <property name="margin-top">20</property>
+                    <property name="margin-bottom">20</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="heading">
                     <property name="visible">1</property>
                     <property name="xalign">0</property>
                     <style>
