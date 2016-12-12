@@ -168,7 +168,7 @@ gr_list_page_populate_from_diet (GrListPage *self,
         gtk_widget_show (self->heading);
 
         gtk_label_set_label (GTK_LABEL (self->heading), gr_diet_get_label (diet));
-        gtk_label_set_label (GTK_LABEL (self->diet_description), gr_diet_get_description (diet));
+        gtk_label_set_markup (GTK_LABEL (self->diet_description), gr_diet_get_description (diet));
 
         container_remove_all (GTK_CONTAINER (self->flow_box));
         tmp = g_strdup_printf (_("No %s found"), get_category_title (diet));
