@@ -174,7 +174,7 @@ file_chooser_response (GtkNativeDialog *self,
 
                 dark = gtk_file_chooser_get_choice (GTK_FILE_CHOOSER (self), "dark");
 
-                ri.dark_text = strcmp (dark, "true") == 0;
+                ri.dark_text = g_strcmp0 (dark, "true") == 0;
 
                 add_image (images, &ri, TRUE);
 
