@@ -284,8 +284,6 @@ prepare_export (GrRecipeExporter  *exporter,
         }
 
         g_clear_pointer (&path, g_free);
-        g_clear_pointer (&name, g_free);
-        g_clear_pointer (&description, g_free);
         g_clear_pointer (&keyfile, g_key_file_unref);
 
         path = g_build_filename (exporter->dir, "chefs.db", NULL);
