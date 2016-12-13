@@ -14,7 +14,7 @@ The main objects of interest are
 - cuisines
 - chefs
 
-The design can be found here: https://wiki.gnome.org/Design/Apps/Potential/Recipe%20App
+The design can be found here: https://wiki.gnome.org/Design/Apps/Recipes
 
 Building
 --------
