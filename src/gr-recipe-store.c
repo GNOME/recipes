@@ -953,9 +953,9 @@ gr_recipe_store_new (void)
 }
 
 gboolean
-gr_recipe_store_add (GrRecipeStore  *self,
-                     GrRecipe       *recipe,
-                     GError        **error)
+gr_recipe_store_add_recipe (GrRecipeStore  *self,
+                            GrRecipe       *recipe,
+                            GError        **error)
 {
         const char *name;
 
@@ -985,10 +985,10 @@ gr_recipe_store_add (GrRecipeStore  *self,
 }
 
 gboolean
-gr_recipe_store_update (GrRecipeStore  *self,
-                        GrRecipe       *recipe,
-                        const char     *old_name,
-                        GError        **error)
+gr_recipe_store_update_recipe (GrRecipeStore  *self,
+                               GrRecipe       *recipe,
+                               const char     *old_name,
+                               GError        **error)
 {
         const char *name;
         GrRecipe *old;
@@ -1025,8 +1025,8 @@ gr_recipe_store_update (GrRecipeStore  *self,
 }
 
 gboolean
-gr_recipe_store_remove (GrRecipeStore *self,
-                        GrRecipe      *recipe)
+gr_recipe_store_remove_recipe (GrRecipeStore *self,
+                               GrRecipe      *recipe)
 {
         const char *name;
         gboolean ret = FALSE;
@@ -1047,8 +1047,8 @@ gr_recipe_store_remove (GrRecipeStore *self,
 }
 
 GrRecipe *
-gr_recipe_store_get (GrRecipeStore *self,
-                     const char    *name)
+gr_recipe_store_get_recipe (GrRecipeStore *self,
+                            const char    *name)
 {
         GrRecipe *recipe;
 
@@ -1068,8 +1068,8 @@ gr_recipe_store_get_recipe_keys (GrRecipeStore *self,
 }
 
 gboolean
-gr_recipe_store_is_todays (GrRecipeStore *self,
-                           GrRecipe      *recipe)
+gr_recipe_store_recipe_is_todays (GrRecipeStore *self,
+                                  GrRecipe      *recipe)
 {
         const char *name;
 
@@ -1082,8 +1082,8 @@ gr_recipe_store_is_todays (GrRecipeStore *self,
 }
 
 gboolean
-gr_recipe_store_is_pick (GrRecipeStore *self,
-                         GrRecipe      *recipe)
+gr_recipe_store_recipe_is_pick (GrRecipeStore *self,
+                                GrRecipe      *recipe)
 {
         const char *name;
 

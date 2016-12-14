@@ -184,7 +184,7 @@ gr_list_page_populate_from_diet (GrListPage *self,
                 GtkWidget *tile;
                 GrDiets diets;
 
-                recipe = gr_recipe_store_get (store, keys[i]);
+                recipe = gr_recipe_store_get_recipe (store, keys[i]);
                 diets = gr_recipe_get_diets (recipe);
                 if ((diets & diet) == 0)
                         continue;
@@ -277,7 +277,7 @@ gr_list_page_populate_from_chef (GrListPage *self,
                 const char *author;
                 GtkWidget *tile;
 
-                recipe = gr_recipe_store_get (store, keys[i]);
+                recipe = gr_recipe_store_get_recipe (store, keys[i]);
                 author = gr_recipe_get_author (recipe);
 
                 if (g_strcmp0 (id, author) != 0)
@@ -328,7 +328,7 @@ gr_list_page_populate_from_season (GrListPage *self,
                 g_autoptr(GrRecipe) recipe = NULL;
                 GtkWidget *tile;
 
-                recipe = gr_recipe_store_get (store, keys[i]);
+                recipe = gr_recipe_store_get_recipe (store, keys[i]);
                 if (g_strcmp0 (self->season, gr_recipe_get_season (recipe)) != 0)
                         continue;
 
@@ -371,7 +371,7 @@ gr_list_page_populate_from_favorites (GrListPage *self)
                 g_autoptr(GrRecipe) recipe = NULL;
                 GtkWidget *tile;
 
-                recipe = gr_recipe_store_get (store, keys[i]);
+                recipe = gr_recipe_store_get_recipe (store, keys[i]);
                 if (!gr_recipe_store_is_favorite (store, recipe))
                         continue;
 

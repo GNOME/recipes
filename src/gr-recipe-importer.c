@@ -280,7 +280,7 @@ do_import_recipe (GrRecipeImporter *importer)
                       "mtime", importer->recipe_mtime,
                       NULL);
 
-        if (!gr_recipe_store_add (store, recipe, &error)) {
+        if (!gr_recipe_store_add_recipe (store, recipe, &error)) {
                 error_cb (importer->extractor, error, importer);
                 return;
         }
@@ -320,7 +320,7 @@ recipe_name_changed (GtkEntry         *entry,
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         name = gtk_entry_get_text (entry);
-        recipe = gr_recipe_store_get (store, name);
+        recipe = gr_recipe_store_get_recipe (store, name);
 
         dialog = gtk_widget_get_ancestor (GTK_WIDGET (entry), GTK_TYPE_DIALOG);
         g_object_set_data_full (G_OBJECT (dialog), "name", g_strdup (name), g_free);
@@ -450,7 +450,7 @@ import_recipe (GrRecipeImporter *importer)
                 return;
         }
 
-        recipe = gr_recipe_store_get (store, importer->recipe_name);
+        recipe = gr_recipe_store_get_recipe (store, importer->recipe_name);
         if (!recipe) {
                 g_message ("Recipe %s not yet known; importing", importer->recipe_name);
                 do_import_recipe (importer);

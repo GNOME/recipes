@@ -717,7 +717,7 @@ gr_edit_page_save (GrEditPage *page)
                               "diets", diets,
                               "images", images,
                               NULL);
-                ret = gr_recipe_store_update (store, page->recipe, old_name, &error);
+                ret = gr_recipe_store_update_recipe (store, page->recipe, old_name, &error);
         }
         else {
                 g_autoptr(GrRecipe) recipe = NULL;
@@ -742,7 +742,7 @@ gr_edit_page_save (GrEditPage *page)
                                        "diets", diets,
                                        "images", images,
                                        NULL);
-                ret = gr_recipe_store_add (store, recipe, &error);
+                ret = gr_recipe_store_add_recipe (store, recipe, &error);
         }
 
         if (!ret)

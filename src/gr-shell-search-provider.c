@@ -202,7 +202,7 @@ handle_get_result_metas (GrShellSearchProvider2 *skeleton,
                 if (g_hash_table_lookup (self->metas_cache, results[i]))
                         continue;
 
-                recipe = gr_recipe_store_get (self->store, results[i]);
+                recipe = gr_recipe_store_get_recipe (self->store, results[i]);
                 if (recipe == NULL) {
                         g_warning ("failed to find %s", results[i]);
                         continue;

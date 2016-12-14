@@ -241,9 +241,9 @@ populate_recipes_from_store (GrRecipesPage *self)
                 g_autoptr(GrRecipe) recipe = NULL;
                 GtkWidget *tile;
 
-                recipe = gr_recipe_store_get (store, keys[i]);
+                recipe = gr_recipe_store_get_recipe (store, keys[i]);
 
-                if (todays < 3 && gr_recipe_store_is_todays (store, recipe)) {
+                if (todays < 3 && gr_recipe_store_recipe_is_todays (store, recipe)) {
                         tile = gr_recipe_tile_new (recipe);
                         gtk_widget_show (tile);
                         if (todays == 0) {
@@ -255,7 +255,7 @@ populate_recipes_from_store (GrRecipesPage *self)
                                 todays += 1;
                         }
                 }
-                else if (picks < 3 && gr_recipe_store_is_pick (store, recipe)) {
+                else if (picks < 3 && gr_recipe_store_recipe_is_pick (store, recipe)) {
                         tile = gr_recipe_tile_new (recipe);
                         gtk_widget_show (tile);
                         gtk_grid_attach (GTK_GRID (self->pick_box), tile, picks, 0, 1, 1);

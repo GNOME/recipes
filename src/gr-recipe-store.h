@@ -32,28 +32,28 @@ G_DECLARE_FINAL_TYPE (GrRecipeStore, gr_recipe_store, GR, RECIPE_STORE, GObject)
 
 GrRecipeStore  *gr_recipe_store_new                 (void);
 
-gboolean        gr_recipe_store_add                 (GrRecipeStore  *self,
+gboolean        gr_recipe_store_add_recipe          (GrRecipeStore  *self,
                                                      GrRecipe       *recipe,
                                                      GError        **error);
-gboolean        gr_recipe_store_update              (GrRecipeStore  *self,
+gboolean        gr_recipe_store_update_recipe       (GrRecipeStore  *self,
                                                      GrRecipe       *recipe,
-                                                     const char     *old_name,
+                                                     const char     *old_id,
                                                      GError        **error);
-gboolean        gr_recipe_store_remove              (GrRecipeStore  *self,
+gboolean        gr_recipe_store_remove_recipe       (GrRecipeStore  *self,
                                                      GrRecipe       *recipe);
-GrRecipe       *gr_recipe_store_get                 (GrRecipeStore  *self,
-                                                     const char     *name);
+GrRecipe       *gr_recipe_store_get_recipe          (GrRecipeStore  *self,
+                                                     const char     *id);
 char          **gr_recipe_store_get_recipe_keys     (GrRecipeStore  *self,
                                                      guint          *length);
-gboolean        gr_recipe_store_is_todays           (GrRecipeStore  *self,
+gboolean        gr_recipe_store_recipe_is_todays    (GrRecipeStore  *self,
                                                      GrRecipe       *recipe);
-gboolean        gr_recipe_store_is_pick             (GrRecipeStore  *self,
+gboolean        gr_recipe_store_recipe_is_pick      (GrRecipeStore  *self,
                                                      GrRecipe       *recipe);
 gboolean        gr_recipe_store_add_chef            (GrRecipeStore  *self,
                                                      GrChef         *chef,
                                                      GError        **error);
 GrChef         *gr_recipe_store_get_chef            (GrRecipeStore  *self,
-                                                     const char     *name);
+                                                     const char     *id);
 char          **gr_recipe_store_get_chef_keys       (GrRecipeStore  *self,
                                                      guint          *length);
 gboolean        gr_recipe_store_chef_is_featured    (GrRecipeStore  *self,

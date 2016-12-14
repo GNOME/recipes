@@ -134,7 +134,7 @@ timer_expired (GSimpleAction *action,
 
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
         name = g_variant_get_string (parameter, NULL);
-        recipe = gr_recipe_store_get (GR_APP (app)->store, name);
+        recipe = gr_recipe_store_get_recipe (GR_APP (app)->store, name);
         if (recipe)
                 gr_window_show_recipe (GR_WINDOW (win), recipe);
         gtk_window_present (win);
@@ -166,7 +166,7 @@ details_activated (GSimpleAction *action,
 
         gr_app_activate (G_APPLICATION (app));
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
-        recipe = gr_recipe_store_get (app->store, id);
+        recipe = gr_recipe_store_get_recipe (app->store, id);
         gr_window_show_recipe (GR_WINDOW (win), recipe);
 }
 

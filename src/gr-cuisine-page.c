@@ -250,7 +250,7 @@ gr_cuisine_page_set_cuisine (GrCuisinePage *self,
                 GtkWidget *tile;
                 Category *c;
 
-                recipe = gr_recipe_store_get (store, keys[j]);
+                recipe = gr_recipe_store_get_recipe (store, keys[j]);
                 cuisine2 = gr_recipe_get_cuisine (recipe);
                 category = gr_recipe_get_category (recipe);
 

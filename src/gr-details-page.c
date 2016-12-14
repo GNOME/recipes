@@ -70,7 +70,7 @@ timer_complete (GrTimer *timer)
         g_application_send_notification (app, "timer", notification);
 
         store = gr_app_get_recipe_store (GR_APP (app));
-        recipe = gr_recipe_store_get (store, name);
+        recipe = gr_recipe_store_get_recipe (store, name);
         gr_recipe_store_add_cooked (store, recipe);
 }
 
@@ -228,7 +228,7 @@ delete_recipe (GrDetailsPage *page)
         GtkWidget *window;
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
-        gr_recipe_store_remove (store, page->recipe);
+        gr_recipe_store_remove_recipe (store, page->recipe);
         g_set_object (&page->recipe, NULL);
         g_set_object (&page->chef, NULL);
 
