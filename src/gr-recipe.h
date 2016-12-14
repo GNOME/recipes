@@ -32,7 +32,7 @@ G_DECLARE_DERIVABLE_TYPE (GrRecipe, gr_recipe, GR, RECIPE, GObject)
 
 struct _GrRecipeClass
 {
-	GObjectClass parent;
+        GObjectClass parent;
 };
 
 GrRecipe       *gr_recipe_new              (void);

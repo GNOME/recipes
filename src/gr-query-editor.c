@@ -1,4 +1,4 @@
-/* gr-query-editor.c
+/* gr-query-editor.c:
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *

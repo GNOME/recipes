@@ -123,7 +123,7 @@ get_category_title (GrDiets diet)
 {
         const char *label;
 
-	switch (diet) {
+        switch (diet) {
         case GR_DIET_GLUTEN_FREE:
                 label = _("Gluten-free recipes");
                 break;
@@ -184,7 +184,7 @@ gr_list_page_populate_from_diet (GrListPage *self,
                 GtkWidget *tile;
                 GrDiets diets;
 
-        	recipe = gr_recipe_store_get (store, keys[i]);
+                recipe = gr_recipe_store_get (store, keys[i]);
                 diets = gr_recipe_get_diets (recipe);
                 if ((diets & diet) == 0)
                         continue;
@@ -328,7 +328,7 @@ gr_list_page_populate_from_season (GrListPage *self,
                 g_autoptr(GrRecipe) recipe = NULL;
                 GtkWidget *tile;
 
-        	recipe = gr_recipe_store_get (store, keys[i]);
+                recipe = gr_recipe_store_get (store, keys[i]);
                 if (g_strcmp0 (self->season, gr_recipe_get_season (recipe)) != 0)
                         continue;
 

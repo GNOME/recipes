@@ -173,7 +173,7 @@ gr_timer_get_property (GObject    *object,
                        GValue     *value,
                        GParamSpec *pspec)
 {
-	GrTimer *self = GR_TIMER (object);
+        GrTimer *self = GR_TIMER (object);
 
         switch (prop_id)
           {
@@ -204,7 +204,7 @@ gr_timer_set_property (GObject      *object,
                        const GValue *value,
                        GParamSpec   *pspec)
 {
-	GrTimer *self = GR_TIMER (object);
+        GrTimer *self = GR_TIMER (object);
 
         switch (prop_id)
           {
@@ -238,9 +238,9 @@ gr_timer_class_init (GrTimerClass *klass)
                                           G_TYPE_FROM_CLASS (object_class),
                                           G_SIGNAL_RUN_LAST,
                                           0,
-                  			  NULL, NULL,
-                  		          NULL,
-                  			  G_TYPE_NONE, 0);
+                                          NULL, NULL,
+                                          NULL,
+                                          G_TYPE_NONE, 0);
 
         g_object_class_install_property (object_class,
                                          PROP_ACTIVE,

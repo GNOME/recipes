@@ -86,11 +86,11 @@ row_selected (GrCuisinePage *page,
                 }
         }
 
-	if (category < 0)
-		return;
+        if (category < 0)
+                return;
 
-	adj = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (page->scrolled_window));
-	gtk_widget_get_allocation (page->categories[category].label, &alloc);
+        adj = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (page->scrolled_window));
+        gtk_widget_get_allocation (page->categories[category].label, &alloc);
         page_increment = gtk_adjustment_get_page_increment (adj);
         value = gtk_adjustment_get_value (adj);
         gtk_adjustment_set_page_increment (adj, alloc.y - value);
@@ -105,7 +105,7 @@ cuisine_page_finalize (GObject *object)
 {
         GrCuisinePage *self = GR_CUISINE_PAGE (object);
 
-	g_clear_pointer (&self->cuisine, g_free);
+        g_clear_pointer (&self->cuisine, g_free);
         g_clear_pointer (&self->categories, g_free);
 
         G_OBJECT_CLASS (gr_cuisine_page_parent_class)->finalize (object);
@@ -185,7 +185,7 @@ gr_cuisine_page_init (GrCuisinePage *page)
         gtk_widget_init_template (GTK_WIDGET (page));
 
         populate_initially (page);
-	connect_store_signals (page);
+        connect_store_signals (page);
 
         gtk_list_box_set_filter_func (GTK_LIST_BOX (page->sidebar), filter_sidebar, page, NULL);
 }
@@ -205,7 +205,7 @@ gr_cuisine_page_class_init (GrCuisinePageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrCuisinePage, category_box);
         gtk_widget_class_bind_template_child (widget_class, GrCuisinePage, stack);
 
-	gtk_widget_class_bind_template_callback (widget_class, row_selected);
+        gtk_widget_class_bind_template_callback (widget_class, row_selected);
 }
 
 GtkWidget *
@@ -290,7 +290,7 @@ gr_cuisine_page_set_cuisine (GrCuisinePage *self,
 static void
 cuisine_page_reload (GrCuisinePage *page)
 {
-	gr_cuisine_page_set_cuisine (page, page->cuisine);
+        gr_cuisine_page_set_cuisine (page, page->cuisine);
 }
 
 static void

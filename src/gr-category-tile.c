@@ -33,7 +33,7 @@ struct _GrCategoryTile
 {
         GtkButton parent_instance;
 
-	GrDiets diet;
+        GrDiets diet;
         char *category;
 
         GtkWidget *label;
@@ -60,14 +60,14 @@ static const char *colors[] = {
 static const char *
 get_category_color (GrDiets diets)
 {
-	switch (diets) {
+        switch (diets) {
         case GR_DIET_GLUTEN_FREE: return colors[0];
-	case GR_DIET_NUT_FREE:    return colors[1];
-	case GR_DIET_VEGAN:       return colors[2];
-	case GR_DIET_VEGETARIAN:  return colors[3];
-	case GR_DIET_MILK_FREE:   return colors[4];
-	default:                  return colors[5];
-	}
+        case GR_DIET_NUT_FREE:    return colors[1];
+        case GR_DIET_VEGAN:       return colors[2];
+        case GR_DIET_VEGETARIAN:  return colors[3];
+        case GR_DIET_MILK_FREE:   return colors[4];
+        default:                  return colors[5];
+        }
 }
 
 static const char *
@@ -80,7 +80,7 @@ static void
 category_tile_set_category (GrCategoryTile *tile,
                             GrDiets         diet)
 {
-	tile->diet = diet;
+        tile->diet = diet;
         gtk_label_set_label (GTK_LABEL (tile->label), gr_diet_get_label (diet));
 }
 

@@ -723,7 +723,7 @@ gr_edit_page_save (GrEditPage *page)
                 g_autoptr(GrRecipe) recipe = NULL;
                 const char *author;
 
-	        author = gr_recipe_store_get_user_key (store);
+                author = gr_recipe_store_get_user_key (store);
                 ensure_user_chef (store, page);
                 recipe = g_object_new (GR_TYPE_RECIPE,
                                        "name", name,

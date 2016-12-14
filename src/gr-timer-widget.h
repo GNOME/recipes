@@ -31,4 +31,3 @@ G_DECLARE_FINAL_TYPE (GrTimerWidget, gr_timer_widget, GR, TIMER_WIDGET, GtkWidge
 GrTimerWidget * gr_timer_widget_new (void);
 
 G_END_DECLS
-

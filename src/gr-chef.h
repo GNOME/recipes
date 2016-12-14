@@ -30,7 +30,7 @@ G_DECLARE_DERIVABLE_TYPE (GrChef, gr_chef, GR, CHEF, GObject)
 
 struct _GrChefClass
 {
-	GObjectClass parent;
+        GObjectClass parent;
 };
 
 GrChef          *gr_chef_new             (void);

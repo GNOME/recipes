@@ -145,17 +145,17 @@ ingredient_search_tile_set_ingredient (GrIngredientSearchTile *tile, const char 
         if (image_path != NULL &&
             g_file_test (image_path, G_FILE_TEST_EXISTS))
                 css = g_strdup_printf ("image.ingredient {\n"
-                	               "  background: url('%s');\n"
-                        	       "  background-size: 100%%;\n"
-                        	       "  min-width: 96px;\n"
-                        	       "  min-height: 48px;\n"
-                               	       "}", image_path);
+                                       "  background: url('%s');\n"
+                                       "  background-size: 100%%;\n"
+                                       "  min-width: 96px;\n"
+                                       "  min-height: 48px;\n"
+                                       "}", image_path);
         else
                 css = g_strdup_printf ("image.ingredient {\n"
                                        "  background: rgb(%d,%d,%d);\n"
-                        	       "  min-width: 96px;\n"
-                        	       "  min-height: 48px;\n"
-                               	       "}",
+                                       "  min-width: 96px;\n"
+                                       "  min-height: 48px;\n"
+                                       "}",
                                        g_random_int_range (0, 255),
                                        g_random_int_range (0, 255),
                                        g_random_int_range (0, 255));

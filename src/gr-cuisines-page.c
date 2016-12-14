@@ -134,8 +134,8 @@ populate_cuisines (GrCuisinesPage *page)
         }
 
         tile = gr_cuisine_tile_new (page->featured, TRUE);
-	gtk_widget_show (tile);
-	gtk_widget_set_halign (tile, GTK_ALIGN_FILL);
+        gtk_widget_show (tile);
+        gtk_widget_set_halign (tile, GTK_ALIGN_FILL);
         gtk_grid_attach (GTK_GRID (page->top_box), tile, 0, 0, 2, 1);
 
         tiles = 0;
@@ -145,7 +145,7 @@ populate_cuisines (GrCuisinesPage *page)
 
                 tile = gr_cuisine_tile_new (cuisines[i], FALSE);
                 gtk_widget_show (tile);
-	        gtk_widget_set_halign (tile, GTK_ALIGN_FILL);
+                gtk_widget_set_halign (tile, GTK_ALIGN_FILL);
                 gtk_grid_attach (GTK_GRID (page->top_box), tile, tiles % 2, 1 + tiles / 2, 1, 1);
 
                 tiles++;

@@ -40,7 +40,7 @@ gboolean        gr_recipe_store_update              (GrRecipeStore  *self,
                                                      const char     *old_name,
                                                      GError        **error);
 gboolean        gr_recipe_store_remove              (GrRecipeStore  *self,
-				                     GrRecipe       *recipe);
+                                                     GrRecipe       *recipe);
 GrRecipe       *gr_recipe_store_get                 (GrRecipeStore  *self,
                                                      const char     *name);
 char          **gr_recipe_store_get_recipe_keys     (GrRecipeStore  *self,
@@ -71,15 +71,15 @@ void            gr_recipe_store_remove_favorite     (GrRecipeStore  *self,
 gboolean        gr_recipe_store_is_favorite         (GrRecipeStore  *self,
                                                      GrRecipe       *recipe);
 gboolean        gr_recipe_store_has_diet            (GrRecipeStore  *self,
-				                     GrDiets         diet);
+                                                     GrDiets         diet);
 gboolean        gr_recipe_store_has_chef            (GrRecipeStore  *self,
                                                      GrChef         *chef);
 gboolean        gr_recipe_store_has_cuisine         (GrRecipeStore  *self,
                                                      const char     *cuisine);
 void            gr_recipe_store_add_cooked          (GrRecipeStore  *store,
-				                     GrRecipe       *recipe);
+                                                     GrRecipe       *recipe);
 int             gr_recipe_store_get_cooked          (GrRecipeStore  *store,
-				                     GrRecipe       *recipe);
+                                                     GrRecipe       *recipe);
 
 #define GR_TYPE_RECIPE_SEARCH (gr_recipe_search_get_type())
 

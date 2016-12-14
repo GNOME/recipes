@@ -91,17 +91,17 @@ chef_tile_set_chef (GrChefTile *tile,
 
         if (image_path != NULL && image_path[0] != '\0')
                 css = g_strdup_printf ("image.chef {\n"
-                	               "  background: url('%s');\n"
-                        	       "  background-size: 64px;\n"
-                        	       "  min-width: 64px;\n"
-                        	       "  min-height: 64px;\n"
-                               	       "}", image_path);
-	else
+                                       "  background: url('%s');\n"
+                                       "  background-size: 64px;\n"
+                                       "  min-width: 64px;\n"
+                                       "  min-height: 64px;\n"
+                                       "}", image_path);
+        else
                 css = g_strdup_printf ("image.chef {\n"
-				       "  background: rgb(%d,%d,%d);\n"
-                        	       "  min-width: 64px;\n"
-                        	       "  min-height: 64px;\n"
-                               	       "}",
+                                       "  background: rgb(%d,%d,%d);\n"
+                                       "  min-width: 64px;\n"
+                                       "  min-height: 64px;\n"
+                                       "}",
                                        g_random_int_range (0, 255),
                                        g_random_int_range (0, 255),
                                        g_random_int_range (0, 255));

@@ -330,7 +330,7 @@ gr_images_get_property (GObject    *object,
                   g_value_set_boxed (value, self->images);
                   break;
 
-	  default:
+          default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
           }
 }
@@ -355,7 +355,7 @@ gr_images_set_property (GObject      *object,
 
           default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-	  }
+          }
 }
 
 static void

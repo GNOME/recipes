@@ -152,7 +152,7 @@ timer_active_changed (GrTimer       *timer,
                 gtk_stack_set_visible_child_name (GTK_STACK (page->duration_stack), "stop");
         }
         else {
-        	gtk_stack_set_visible_child_name (GTK_STACK (page->timer_stack), "icon");
+                gtk_stack_set_visible_child_name (GTK_STACK (page->timer_stack), "icon");
                 gtk_stack_set_visible_child_name (GTK_STACK (page->duration_stack), "start");
         }
 }
@@ -332,10 +332,10 @@ static int
 time_spin_input (GtkSpinButton *spin_button,
                  double        *new_val)
 {
-  	const char *text;
-  	gboolean found = FALSE;
+        const char *text;
+        gboolean found = FALSE;
 
-  	text = gtk_entry_get_text (GTK_ENTRY (spin_button));
+        text = gtk_entry_get_text (GTK_ENTRY (spin_button));
         if (!strchr (text, ':')) {
                 g_auto(GStrv) str = NULL;
                 int num;
@@ -372,20 +372,20 @@ time_spin_input (GtkSpinButton *spin_button,
         }
         else {
                 g_auto(GStrv) str = NULL;
-  	        int hours;
-  	        int minutes;
-  	        int seconds;
-  	        char *endh;
-  	        char *endm;
-  	        char *ends;
+                int hours;
+                int minutes;
+                int seconds;
+                char *endh;
+                char *endm;
+                char *ends;
 
-  	        str = g_strsplit (text, ":", 3);
+                str = g_strsplit (text, ":", 3);
 
-  	        if (g_strv_length (str) == 3) {
-      		        hours = strtol (str[0], &endh,10);
-              		minutes = strtol (str[1], &endm, 10);
-              		seconds = strtol (str[2], &ends, 10);
-      	        	if (!*endh && !*endm && !*ends &&
+                if (g_strv_length (str) == 3) {
+                        hours = strtol (str[0], &endh,10);
+                        minutes = strtol (str[1], &endm, 10);
+                        seconds = strtol (str[2], &ends, 10);
+                        if (!*endh && !*endm && !*ends &&
                             0 <= hours && hours < 24 &&
                             0 <=  minutes && minutes < 60 &&
                             0 <= seconds && seconds < 60) {
@@ -394,9 +394,9 @@ time_spin_input (GtkSpinButton *spin_button,
                         }
                 }
                 else if (g_strv_length (str) == 2) {
-      		        hours = strtol (str[0], &endh, 10);
-              		minutes = strtol (str[1], &endm, 10);
-      	        	if (!*endh && !*endm &&
+                        hours = strtol (str[0], &endh, 10);
+                        minutes = strtol (str[1], &endm, 10);
+                        if (!*endh && !*endm &&
                             0 <= hours && hours < 24 &&
                             0 <=  minutes && minutes < 60) {
                                 *new_val = (hours * 60 + minutes) * 60;

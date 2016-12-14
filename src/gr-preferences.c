@@ -210,7 +210,7 @@ gr_preferences_class_init (GrPreferencesClass *klass)
 
         object_class->finalize = gr_preferences_finalize;
 
-  	gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (klass),
+        gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (klass),
                                                      "/org/gnome/Recipes/gr-preferences.ui");
 
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrPreferences, fullname);

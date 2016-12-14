@@ -182,11 +182,11 @@ switch_to_search (GrWindow *window)
 
         gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Search"));
 
-     	gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
-     	gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
-     	gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "search");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "search");
 
-     	gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "search");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "search");
 }
 
 void
@@ -388,11 +388,11 @@ void
 gr_window_go_back (GrWindow *window)
 {
         if (g_queue_is_empty (window->back_entry_stack)) {
-        	gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "main");
-        	gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "main");
-        	gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "search");
+                gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "main");
+                gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "main");
+                gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "search");
 
-        	gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "recipes");
+                gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "recipes");
         }
         else {
                 go_back (window);
@@ -576,7 +576,7 @@ gr_window_show_cuisine (GrWindow   *window,
                         const char *cuisine,
                         const char *title)
 {
-	save_back_entry (window);
+        save_back_entry (window);
 
         gr_cuisine_page_set_cuisine (GR_CUISINE_PAGE (window->cuisine_page), cuisine);
 
@@ -594,7 +594,7 @@ gr_window_show_season (GrWindow   *window,
                        const char *season,
                        const char *title)
 {
-	save_back_entry (window);
+        save_back_entry (window);
 
         gr_list_page_populate_from_season (GR_LIST_PAGE (window->list_page), season);
 

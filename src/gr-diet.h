@@ -26,11 +26,11 @@
 G_BEGIN_DECLS
 
 typedef enum { /*< flags >*/
-	GR_DIET_GLUTEN_FREE   =  1,
-	GR_DIET_NUT_FREE      =  2,
-	GR_DIET_VEGAN         =  4,
-	GR_DIET_VEGETARIAN    =  8,
-	GR_DIET_MILK_FREE     = 16
+        GR_DIET_GLUTEN_FREE   =  1,
+        GR_DIET_NUT_FREE      =  2,
+        GR_DIET_VEGAN         =  4,
+        GR_DIET_VEGETARIAN    =  8,
+        GR_DIET_MILK_FREE     = 16
 } GrDiets;
 
 

@@ -207,12 +207,12 @@ gr_timer_widget_draw (GtkWidget *widget,
         if (timer->timer)
                 active = gr_timer_get_active (timer->timer);
 
-  	context = gtk_widget_get_style_context (widget);
-  	width = gtk_widget_get_allocated_width (widget);
-  	height = gtk_widget_get_allocated_height (widget);
+        context = gtk_widget_get_style_context (widget);
+        width = gtk_widget_get_allocated_width (widget);
+        height = gtk_widget_get_allocated_height (widget);
 
-  	gtk_render_background (context, cr, 0, 0, width, height);
-  	gtk_render_frame (context, cr, 0, 0, width, height);
+        gtk_render_background (context, cr, 0, 0, width, height);
+        gtk_render_frame (context, cr, 0, 0, width, height);
 
         now = g_get_monotonic_time ();
 
@@ -223,11 +223,11 @@ gr_timer_widget_draw (GtkWidget *widget,
         radius = width / 2;
 
         if (active) {
-        	angle1 = ((now - gr_timer_get_start_time (timer->timer)) * 2 * M_PI / gr_timer_get_duration (timer->timer)) + (3 * M_PI / 2);
-        	angle2 = 3 * M_PI / 2;
+                angle1 = ((now - gr_timer_get_start_time (timer->timer)) * 2 * M_PI / gr_timer_get_duration (timer->timer)) + (3 * M_PI / 2);
+                angle2 = 3 * M_PI / 2;
 
                 cairo_arc (cr, xc, yc, radius, angle1, angle2);
-        	cairo_line_to (cr, xc, yc);
+                cairo_line_to (cr, xc, yc);
         }
         else {
                 cairo_arc (cr, xc, yc, radius, 0, 2 * M_PI);
@@ -236,7 +236,7 @@ gr_timer_widget_draw (GtkWidget *widget,
         cairo_close_path (cr);
         cairo_fill (cr);
 
-  	return FALSE;
+        return FALSE;
 }
 
 static void

@@ -31,4 +31,3 @@ GrApp         *gr_app_new              (void);
 GrRecipeStore *gr_app_get_recipe_store (GrApp *app);
 
 G_END_DECLS
-
