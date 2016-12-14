@@ -294,82 +294,13 @@
                   <object class="GtkLabel">
                     <property name="visible">1</property>
                     <property name="use-underline">1</property>
-                    <property name="mnemonic-widget">cuisine_combo</property>
-                    <property name="label" translatable="yes">_Cuisine</property>
-                    <property name="xalign">0</property>
-                  </object>
-                  <packing>
-                    <property name="left-attach">0</property>
-                    <property name="top-attach">6</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">1</property>
-                    <property name="use-underline">1</property>
-                    <property name="mnemonic-widget">category_combo</property>
-                    <property name="label" translatable="yes">_Meal</property>
-                    <property name="xalign">0</property>
-                  </object>
-                  <packing>
-                    <property name="left-attach">1</property>
-                    <property name="top-attach">6</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkComboBoxText" id="cuisine_combo">
-                    <property name="visible">1</property>
-                    <property name="has-entry">1</property>
-                  </object>
-                  <packing>
-                    <property name="left-attach">0</property>
-                    <property name="top-attach">7</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkComboBoxText" id="category_combo">
-                    <property name="visible">1</property>
-                    <property name="has-entry">1</property>
-                  </object>
-                  <packing>
-                    <property name="left-attach">1</property>
-                    <property name="top-attach">7</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">1</property>
-                    <property name="use-underline">1</property>
-                    <property name="mnemonic-widget">season_combo</property>
-                    <property name="label" translatable="yes">S_eason</property>
-                    <property name="xalign">0</property>
-                  </object>
-                  <packing>
-                    <property name="left-attach">0</property>
-                    <property name="top-attach">8</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkComboBoxText" id="season_combo">
-                    <property name="visible">1</property>
-                    <property name="has-entry">1</property>
-                  </object>
-                  <packing>
-                    <property name="left-attach">0</property>
-                    <property name="top-attach">9</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">1</property>
-                    <property name="use-underline">1</property>
                     <property name="mnemonic-widget">prep_time_combo</property>
                     <property name="label" translatable="yes">_Preparation time</property>
                     <property name="xalign">0</property>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
-                    <property name="top-attach">10</property>
+                    <property name="top-attach">6</property>
                   </packing>
                 </child>
                 <child>
@@ -382,7 +313,7 @@
                   </object>
                   <packing>
                     <property name="left-attach">1</property>
-                    <property name="top-attach">10</property>
+                    <property name="top-attach">6</property>
                   </packing>
                 </child>
                 <child>
@@ -399,7 +330,7 @@
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
-                    <property name="top-attach">11</property>
+                    <property name="top-attach">7</property>
                   </packing>
                 </child>
                 <child>
@@ -412,6 +343,104 @@
                       <item translatable="yes" id="30 to 45 minutes">30 to 45 minutes</item>
                       <item translatable="yes" id="45 minutes to an hour">45 minutes to an hour</item>
                       <item translatable="yes" id="More than an hour">More than an hour</item>
+                    </items>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">7</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="use-underline">1</property>
+                    <property name="mnemonic-widget">cuisine_combo</property>
+                    <property name="label" translatable="yes">_Cuisine</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">8</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="use-underline">1</property>
+                    <property name="mnemonic-widget">category_combo</property>
+                    <property name="label" translatable="yes">_Meal</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">8</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText" id="cuisine_combo">
+                    <property name="visible">1</property>
+                    <property name="has-entry">1</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">9</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText" id="category_combo">
+                    <property name="visible">1</property>
+                    <property name="has-entry">1</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">9</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="use-underline">1</property>
+                    <property name="mnemonic-widget">season_combo</property>
+                    <property name="label" translatable="yes">S_eason</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">10</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="use-underline">1</property>
+                    <property name="mnemonic-widget">spiciness_combo</property>
+                    <property name="label" translatable="yes">S_piciness</property>
+                    <property name="xalign">0</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">10</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText" id="season_combo">
+                    <property name="visible">1</property>
+                    <property name="has-entry">1</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">11</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText" id="spiciness_combo">
+                    <property name="visible">1</property>
+                    <property name="has-entry">0</property>
+                    <items>
+                      <item translatable="yes" id="mild">Mild</item>
+                      <item translatable="yes" id="spicy">Somewhat spicy</item>
+                      <item translatable="yes" id="hot">Hot</item>
+                      <item translatable="yes" id="extreme">Very spicy</item>
                     </items>
                   </object>
                   <packing>

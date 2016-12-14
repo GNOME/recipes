@@ -56,6 +56,7 @@ struct _GrEditPage
         GtkWidget *cuisine_combo;
         GtkWidget *category_combo;
         GtkWidget *season_combo;
+        GtkWidget *spiciness_combo;
         GtkWidget *prep_time_combo;
         GtkWidget *cook_time_combo;
         GtkWidget *ingredients_field;
@@ -235,6 +236,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, prep_time_combo);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, cook_time_combo);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, serves_spin);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, spiciness_combo);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, ingredients_field);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, instructions_field);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, notes_field);
@@ -315,6 +317,37 @@ set_text_view_text (GtkTextView *textview,
         gtk_text_buffer_set_text (buffer, text ? text : "", -1);
 }
 
+static void
+set_spiciness (GrEditPage *page,
+               int         spiciness)
+{
+        if (spiciness < 25)
+                gtk_combo_box_set_active_id (GTK_COMBO_BOX (page->spiciness_combo), "mild");
+        else if (spiciness < 50)
+                gtk_combo_box_set_active_id (GTK_COMBO_BOX (page->spiciness_combo), "spicy");
+        else if (spiciness < 75)
+                gtk_combo_box_set_active_id (GTK_COMBO_BOX (page->spiciness_combo), "hot");
+        else
+                gtk_combo_box_set_active_id (GTK_COMBO_BOX (page->spiciness_combo), "extreme");
+}
+
+static int
+get_spiciness (GrEditPage *page)
+{
+        const char *s;
+
+        s = gtk_combo_box_get_active_id (GTK_COMBO_BOX (page->spiciness_combo));
+
+        if (strcmp (s, "mild") == 0)
+                return 15;
+        else if (strcmp (s, "spicy") == 0)
+                return 40;
+        else if (strcmp (s, "hot") == 0)
+                return 65;
+        else
+                return 90;
+}
+
 void
 gr_edit_page_clear (GrEditPage *page)
 {
@@ -328,6 +361,7 @@ gr_edit_page_clear (GrEditPage *page)
         set_combo_value (GTK_COMBO_BOX (page->prep_time_combo), "");
         set_combo_value (GTK_COMBO_BOX (page->cook_time_combo), "");
         gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), 1);
+        set_spiciness (page, 0);
         set_text_view_text (GTK_TEXT_VIEW (page->ingredients_field), "");
         set_text_view_text (GTK_TEXT_VIEW (page->instructions_field), "");
         set_text_view_text (GTK_TEXT_VIEW (page->notes_field), "");
@@ -356,6 +390,7 @@ gr_edit_page_edit (GrEditPage *page,
         const char *prep_time;
         const char *cook_time;
         int serves;
+        int spiciness;
         const char *ingredients;
         const char *instructions;
         const char *notes;
@@ -367,6 +402,7 @@ gr_edit_page_edit (GrEditPage *page,
         name = gr_recipe_get_name (recipe);
         description = gr_recipe_get_description (recipe);
         serves = gr_recipe_get_serves (recipe);
+        spiciness = gr_recipe_get_spiciness (recipe);
         cuisine = gr_recipe_get_cuisine (recipe);
         category = gr_recipe_get_category (recipe);
         season = gr_recipe_get_season (recipe);
@@ -386,6 +422,7 @@ gr_edit_page_edit (GrEditPage *page,
         set_combo_value (GTK_COMBO_BOX (page->season_combo), season);
         set_combo_value (GTK_COMBO_BOX (page->prep_time_combo), prep_time);
         set_combo_value (GTK_COMBO_BOX (page->cook_time_combo), cook_time);
+        set_spiciness (page, spiciness);
         gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), serves);
         set_text_view_text (GTK_TEXT_VIEW (page->ingredients_field), ingredients);
         set_text_view_text (GTK_TEXT_VIEW (page->instructions_field), instructions);
@@ -625,6 +662,7 @@ gr_edit_page_save (GrEditPage *page)
         g_autofree char *prep_time = NULL;
         g_autofree char *cook_time = NULL;
         int serves;
+        int spiciness;
         g_autofree char *ingredients = NULL;
         g_autofree char *instructions = NULL;
         g_autofree char *notes = NULL;
@@ -643,6 +681,7 @@ gr_edit_page_save (GrEditPage *page)
         season = get_combo_value (GTK_COMBO_BOX (page->season_combo));
         prep_time = get_combo_value (GTK_COMBO_BOX (page->prep_time_combo));
         cook_time = get_combo_value (GTK_COMBO_BOX (page->cook_time_combo));
+        spiciness = get_spiciness (page);
         serves = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (page->serves_spin));
         ingredients = get_text_view_text (GTK_TEXT_VIEW (page->ingredients_field));
         instructions = get_text_view_text (GTK_TEXT_VIEW (page->instructions_field));
@@ -671,6 +710,7 @@ gr_edit_page_save (GrEditPage *page)
                               "prep-time", prep_time,
                               "cook-time", cook_time,
                               "serves", serves,
+                              "spiciness", spiciness,
                               "ingredients", ingredients,
                               "instructions", instructions,
                               "notes", notes,
@@ -695,6 +735,7 @@ gr_edit_page_save (GrEditPage *page)
                                        "prep-time", prep_time,
                                        "cook-time", cook_time,
                                        "serves", serves,
+                                       "spiciness", spiciness,
                                        "ingredients", ingredients,
                                        "instructions", instructions,
                                        "notes", notes,
