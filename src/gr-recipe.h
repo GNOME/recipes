@@ -51,7 +51,7 @@ const char     *gr_recipe_get_ingredients  (GrRecipe   *recipe);
 const char     *gr_recipe_get_instructions (GrRecipe   *recipe);
 const char     *gr_recipe_get_notes        (GrRecipe   *recipe);
 gboolean        gr_recipe_contains_garlic  (GrRecipe   *recipe);
-gboolean        gr_recipe_is_spicy         (GrRecipe   *recipe);
+int             gr_recipe_get_spiciness    (GrRecipe   *recipe);
 GDateTime      *gr_recipe_get_ctime        (GrRecipe   *recipe);
 GDateTime      *gr_recipe_get_mtime        (GrRecipe   *recipe);
 

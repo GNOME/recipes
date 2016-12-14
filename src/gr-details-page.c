@@ -635,13 +635,15 @@ populate_ingredients (GrDetailsPage *page,
         }
 
         gtk_widget_hide (page->warning_box);
+        gtk_widget_hide (page->garlic_warning);
+        gtk_widget_hide (page->spicy_warning);
 
         if (gr_recipe_contains_garlic (page->recipe)) {
                 gtk_widget_show (page->warning_box);
                 gtk_widget_show (page->garlic_warning);
         }
 
-        if (gr_recipe_is_spicy (page->recipe)) {
+        if (gr_recipe_get_spiciness (page->recipe) > 50) {
                 gtk_widget_show (page->warning_box);
                 gtk_widget_show (page->spicy_warning);
         }

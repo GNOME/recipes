@@ -53,7 +53,7 @@ typedef struct
         char *cf_ingredients;
 
         gboolean garlic;
-        gboolean spicy;
+        int spiciness;
 } GrRecipePrivate;
 
 G_DEFINE_TYPE_WITH_PRIVATE (GrRecipe, gr_recipe, G_TYPE_OBJECT)
@@ -72,7 +72,7 @@ enum {
         PROP_SERVES,
         PROP_INGREDIENTS,
         PROP_INSTRUCTIONS,
-        PROP_SPICY,
+        PROP_SPICINESS,
         PROP_NOTES,
         PROP_DIETS,
         PROP_CTIME,
@@ -158,8 +158,8 @@ gr_recipe_get_property (GObject    *object,
                 g_value_set_int (value, priv->serves);
                 break;
 
-        case PROP_SPICY:
-                g_value_set_boolean (value, priv->spicy);
+        case PROP_SPICINESS:
+                g_value_set_int (value, priv->spiciness);
                 break;
 
         case PROP_INGREDIENTS:
@@ -290,8 +290,8 @@ gr_recipe_set_property (GObject      *object,
                 update_mtime (self);
                 break;
 
-        case PROP_SPICY:
-                priv->spicy = g_value_get_boolean (value);
+        case PROP_SPICINESS:
+                priv->spiciness = g_value_get_int (value);
                 update_mtime (self);
                 break;
 
@@ -389,10 +389,10 @@ gr_recipe_class_init (GrRecipeClass *klass)
                                      G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_SEASON, pspec);
 
-        pspec = g_param_spec_boolean ("spicy", NULL, NULL,
-                                      FALSE,
-                                      G_PARAM_READWRITE);
-        g_object_class_install_property (object_class, PROP_SPICY, pspec);
+        pspec = g_param_spec_int ("spiciness", NULL, NULL,
+                                  0, 100, 0,
+                                  G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_SPICINESS, pspec);
 
         pspec = g_param_spec_string ("prep-time", NULL, NULL,
                                      NULL,
@@ -568,12 +568,12 @@ gr_recipe_contains_garlic (GrRecipe *recipe)
         return priv->garlic;
 }
 
-gboolean
-gr_recipe_is_spicy (GrRecipe *recipe)
+int
+gr_recipe_get_spiciness (GrRecipe *recipe)
 {
         GrRecipePrivate *priv = gr_recipe_get_instance_private (recipe);
 
-        return priv->spicy;
+        return priv->spiciness;
 }
 
 GDateTime *
