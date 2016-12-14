@@ -647,8 +647,6 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         g_autoptr(GArray) images = NULL;
         gboolean cooking;
         gboolean favorite;
-        g_autofree char *tmp = NULL;
-        g_autofree char *link = NULL;
 
         g_set_object (&page->recipe, recipe);
 
@@ -676,10 +674,6 @@ gr_details_page_set_recipe (GrDetailsPage *page,
                               NULL);
         }
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
-        chef = gr_recipe_store_get_chef (store, author);
-        g_set_object (&page->chef, chef);
-
         ing = gr_ingredients_list_new (ingredients);
         g_set_object (&page->ingredients, ing);
 
@@ -695,12 +689,26 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         cooking = g_hash_table_lookup (page->cooking, name) != NULL;
         set_cooking (page, cooking);
 
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
         favorite = gr_recipe_store_is_favorite (store, recipe);
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->favorite_button), favorite);
 
-        link = g_strdup_printf ("<a href=\"chef\">%s</a>", gr_recipe_get_author (recipe));
-        tmp = g_strdup_printf (_("Recipe by %s"), link);
-        gtk_label_set_markup (GTK_LABEL (page->chef_label), tmp);
+        chef = gr_recipe_store_get_chef (store, author);
+        g_set_object (&page->chef, chef);
+
+        if (chef) {
+                g_autofree char *tmp = NULL;
+                g_autofree char *link = NULL;
+
+                link = g_strdup_printf ("<a href=\"chef\">%s</a>", gr_chef_get_nickname (chef));
+                tmp = g_strdup_printf (_("Recipe by %s"), link);
+                gtk_widget_show (page->chef_label);
+                gtk_label_set_markup (GTK_LABEL (page->chef_label), tmp);
+        }
+        else {
+                gtk_widget_hide (page->chef_label);
+        }
 }
 
 static void
