@@ -14,7 +14,6 @@
               <object class="GtkScrolledWindow">
                 <property name="visible">1</property>
                 <property name="hscrollbar-policy">never</property>
-                <property name="vscrollbar-policy">automatic</property>
                 <child>
                   <object class="GtkListBox" id="sidebar">
                     <property name="visible">1</property>
@@ -29,7 +28,6 @@
                 <property name="visible">1</property>
                 <property name="expand">1</property>
                 <property name="hscrollbar-policy">never</property>
-                <property name="vscrollbar-policy">automatic</property>
                 <child>
                   <object class="GtkBox" id="category_box">
                     <property name="visible">1</property>

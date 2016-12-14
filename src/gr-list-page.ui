@@ -66,51 +66,51 @@
                 <property name="margin-end">80</property>
                 <child>
                   <object class="GtkGrid" id="chef_grid">
+                    <property name="visible">1</property>
+                    <property name="margin-top">20</property>
+                    <property name="column-spacing">20</property>
+                    <property name="row-spacing">20</property>
+                    <child>
+                      <object class="GtkImage" id="chef_image">
                         <property name="visible">1</property>
-                        <property name="margin-top">20</property>
-                        <property name="column-spacing">20</property>
-                        <property name="row-spacing">20</property>
-                        <child>
-                          <object class="GtkImage" id="chef_image">
-                            <property name="visible">1</property>
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <style>
-                              <class name="image-button"/>
-                              <class name="circular"/>
-                              <class name="chef"/>
-                            </style>
-                          </object>
-                          <packing>
-                            <property name="left-attach">0</property>
-                            <property name="top-attach">0</property>
-                            <property name="height">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="chef_fullname">
-                            <property name="visible">1</property>
-                            <property name="xalign">0</property>
-                            <attributes>
-                              <attribute name="scale" value="1.44"/>
-                            </attributes>
-                          </object>
-                          <packing>
-                            <property name="left-attach">1</property>
-                            <property name="top-attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="chef_description">
-                            <property name="visible">1</property>
-                            <property name="xalign">0</property>
-                            <property name="wrap">1</property>
-                          </object>
-                          <packing>
-                            <property name="left-attach">1</property>
-                            <property name="top-attach">1</property>
-                          </packing>
-                        </child>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <style>
+                          <class name="image-button"/>
+                          <class name="circular"/>
+                          <class name="chef"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">0</property>
+                        <property name="height">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="chef_fullname">
+                        <property name="visible">1</property>
+                        <property name="xalign">0</property>
+                        <attributes>
+                          <attribute name="scale" value="1.44"/>
+                        </attributes>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="chef_description">
+                        <property name="visible">1</property>
+                        <property name="xalign">0</property>
+                        <property name="wrap">1</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">1</property>
+                      </packing>
+                    </child>
                   </object>
                 </child>
                 <child>

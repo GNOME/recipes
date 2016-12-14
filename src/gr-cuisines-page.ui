@@ -14,7 +14,6 @@
         <property name="visible">1</property>
         <property name="expand">1</property>
         <property name="hscrollbar-policy">never</property>
-        <property name="vscrollbar-policy">automatic</property>
         <child>
           <object class="GtkBox">
             <property name="visible">1</property>
@@ -96,54 +95,54 @@
                 </child>
               </object>
             </child>
+            <child>
+              <object class="GtkBox" id="seasonal_expander_box">
+                <property name="visible">1</property>
+                <property name="margin-start">24</property>
+                <property name="margin-end">24</property>
+                <property name="margin-bottom">12</property>
                 <child>
-                  <object class="GtkBox" id="seasonal_expander_box">
+                  <object class="GtkSeparator" id="seasonal_expander_lsep">
                     <property name="visible">1</property>
-                    <property name="margin-start">24</property>
-                    <property name="margin-end">24</property>
-                    <property name="margin-bottom">12</property>
+                    <property name="expand">1</property>
+                    <property name="valign">center</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="seasonal_expander_button">
+                    <property name="visible">1</property>
+                    <property name="can-focus">1</property>
+                    <property name="margin-start">9</property>
+                    <property name="margin-end">9</property>
+                    <property name="valign">center</property>
+                    <property name="relief">none</property>
+                    <signal name="clicked" handler="expander_button_clicked" swapped="yes"/>
+                    <style>
+                      <class name="image-cutton"/>
+                      <class name="circular"/>
+                    </style>
                     <child>
-                      <object class="GtkSeparator" id="seasonal_expander_lsep">
+                      <object class="GtkImage" id="seasonal_expander_image">
                         <property name="visible">1</property>
-                        <property name="expand">1</property>
-                        <property name="valign">center</property>
+                        <property name="icon-name">pan-down-symbolic</property>
+                        <property name="icon-size">1</property>
                       </object>
                     </child>
-                    <child>
-                      <object class="GtkButton" id="seasonal_expander_button">
-                        <property name="visible">1</property>
-                        <property name="can-focus">1</property>
-                        <property name="margin-start">9</property>
-                        <property name="margin-end">9</property>
-                        <property name="valign">center</property>
-                        <property name="relief">none</property>
-                        <signal name="clicked" handler="expander_button_clicked" swapped="yes"/>
-                        <style>
-                          <class name="image-cutton"/>
-                          <class name="circular"/>
-                        </style>
-                        <child>
-                          <object class="GtkImage" id="seasonal_expander_image">
-                            <property name="visible">1</property>
-                            <property name="icon-name">pan-down-symbolic</property>
-                            <property name="icon-size">1</property>
-                          </object>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkSeparator" id="seasonal_expander_rsep">
-                        <property name="visible">1</property>
-                        <property name="expand">1</property>
-                        <property name="valign">center</property>
-                      </object>
-                      <packing>
-                        <property name="position">2</property>
-                      </packing>
-                    </child>
+                  </object>
+                  <packing>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSeparator" id="seasonal_expander_rsep">
+                    <property name="visible">1</property>
+                    <property name="expand">1</property>
+                    <property name="valign">center</property>
+                  </object>
+                  <packing>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
               </object>
             </child>
           </object>
