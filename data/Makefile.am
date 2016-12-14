@@ -35,17 +35,21 @@ ingredients_DATA = \
 images_DATA = \
 	images/alex.png			\
 	images/bagel.jpg		\
+	images/Bastian.jpg		\
 	images/burger-fries.jpg		\
 	images/coffee.jpg		\
 	images/elvin.jpg		\
 	images/food.jpg			\
+	images/halfline.jpg		\
 	images/mclasen.jpg		\
 	images/meatballs.jpg		\
 	images/pesto.jpg		\
 	images/pizza.jpg		\
 	images/plain-bagel.jpg		\
 	images/salad.jpg		\
-	images/spring-rolls.jpg
+	images/spring-rolls.jpg		\
+	images/tofuscramble.jpg		\
+	images/wholesale-crackers.jpg
 
 pkgdata_DATA = \
 	chefs.db	\
