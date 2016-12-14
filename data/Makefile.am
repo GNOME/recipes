@@ -65,12 +65,38 @@ appsicon48dir = $(iconthemedir)/48x48/apps
 appsicon512dir = $(iconthemedir)/512x512/apps
 appsiconsymbolicdir = $(iconthemedir)/symbolic/apps
 
-dist_appsicon16_DATA = icons/16x16/org.gnome.Recipes.png icons/16x16/org.gnome.Recipes-symbolic.symbolic.png
-dist_appsicon24_DATA = icons/24x24/org.gnome.Recipes.png icons/24x24/org.gnome.Recipes-symbolic.symbolic.png
-dist_appsicon32_DATA = icons/32x32/org.gnome.Recipes.png icons/32x32/org.gnome.Recipes-symbolic.symbolic.png
-dist_appsicon48_DATA = icons/48x48/org.gnome.Recipes.png icons/48x48/org.gnome.Recipes-symbolic.symbolic.png
-dist_appsicon512_DATA = icons/512x512/org.gnome.Recipes.png icons/512x512/org.gnome.Recipes-symbolic.symbolic.png
-dist_appsiconsymbolic_DATA = icons/symbolic/org.gnome.Recipes-symbolic.svg
+dist_appsicon16_DATA = \
+	icons/16x16/org.gnome.Recipes.png 			\
+	icons/16x16/org.gnome.Recipes-symbolic.symbolic.png	\
+	icons/16x16/garlic-content-symbolic.symbolic.png	\
+	icons/16x16/spicy-content-symbolic.symbolic.png
+
+dist_appsicon24_DATA = \
+	icons/24x24/org.gnome.Recipes.png 			\
+	icons/24x24/org.gnome.Recipes-symbolic.symbolic.png	\
+	icons/24x24/garlic-content-symbolic.symbolic.png	\
+	icons/24x24/spicy-content-symbolic.symbolic.png
+
+dist_appsicon32_DATA = \
+	icons/32x32/org.gnome.Recipes.png 			\
+	icons/32x32/org.gnome.Recipes-symbolic.symbolic.png	\
+	icons/32x32/garlic-content-symbolic.symbolic.png	\
+	icons/32x32/spicy-content-symbolic.symbolic.png
+
+dist_appsicon48_DATA = \
+	icons/48x48/org.gnome.Recipes.png 			\
+	icons/48x48/org.gnome.Recipes-symbolic.symbolic.png	\
+	icons/48x48/garlic-content-symbolic.symbolic.png	\
+	icons/48x48/spicy-content-symbolic.symbolic.png
+
+dist_appsicon512_DATA = \
+	icons/512x512/org.gnome.Recipes.png 			\
+	icons/512x512/org.gnome.Recipes-symbolic.symbolic.png
+
+dist_appsiconsymbolic_DATA = \
+	icons/symbolic/org.gnome.Recipes-symbolic.svg	\
+	icons/symbolic/garlic-content-symbolic.svg	\
+	icons/symbolic/spicy-content-symbolic.svg
 
 update_icon_cache = gtk-update-icon-cache --ignore-theme-index --force
 
