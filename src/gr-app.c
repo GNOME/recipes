@@ -89,6 +89,7 @@ about_activated (GSimpleAction *action,
                 "Christian Hergert",
                 "Matthew Leeds",
                 "Mohammed Sadiq",
+                "Sam Hewitt",
                 NULL
         };
         g_autoptr(GdkPixbuf) logo = NULL;
