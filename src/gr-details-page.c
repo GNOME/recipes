@@ -30,6 +30,7 @@
 #include "gr-app.h"
 #include "gr-window.h"
 #include "gr-utils.h"
+#include "gr-images.h"
 #include "gr-ingredients-list.h"
 #include "gr-timer.h"
 #include "gr-recipe-printer.h"
@@ -114,12 +115,8 @@ struct _GrDetailsPage
         GtkWidget *prep_time_label;
         GtkWidget *cook_time_label;
         GtkWidget *serves_spin;
-        GtkWidget *description_label;
-        GtkWidget *chef_label;
-        GtkWidget *chef_link;
-        GtkWidget *ingredients_label;
+        GtkWidget *ingredients_list;
         GtkWidget *instructions_label;
-        GtkWidget *notes_label;
         GtkWidget *cooking_revealer;
         GtkWidget *ingredients_check;
         GtkWidget *preheat_check;
@@ -132,9 +129,7 @@ struct _GrDetailsPage
         GtkWidget *favorite_button;
         GtkWidget *duration_stack;
         GtkWidget *remaining_time_label;
-        GtkWidget *created_label;
-        GtkWidget *modified_label;
-        GtkWidget *cooked_label;
+        GtkWidget *chef_label;
 };
 
 G_DEFINE_TYPE (GrDetailsPage, gr_details_page, GTK_TYPE_BOX)
@@ -287,19 +282,19 @@ export_recipe (GrDetailsPage *page)
         gr_recipe_exporter_export_to (page->exporter, page->recipe, file);
 }
 
+static void populate_ingredients (GrDetailsPage *page,
+                                  int            num,
+                                  int            denom);
+
 static void
 serves_value_changed (GrDetailsPage *page)
 {
         int serves;
         int new_value;
-        g_autofree char *text = NULL;
 
         new_value = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (page->serves_spin));
         serves = gr_recipe_get_serves (page->recipe);
-
-        text = gr_ingredients_list_scale (page->ingredients, new_value, serves);
-
-        gtk_label_set_label (GTK_LABEL (page->ingredients_label), text);
+        populate_ingredients (page, new_value, serves);
 }
 
 static void
@@ -501,6 +496,21 @@ gdouble_to_boolean (GBinding     *binding,
 }
 
 static void
+all_headers (GtkListBoxRow *row,
+             GtkListBoxRow *before,
+             gpointer       user_data)
+{
+        GtkWidget *header;
+
+        header = gtk_list_box_row_get_header (row);
+        if (header)
+                return;
+
+        header = gtk_separator_new (GTK_ORIENTATION_HORIZONTAL);
+        gtk_list_box_row_set_header (row, header);
+}
+
+static void
 gr_details_page_init (GrDetailsPage *page)
 {
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
@@ -515,6 +525,9 @@ gr_details_page_init (GrDetailsPage *page)
                                      NULL,
                                      NULL,
                                      NULL);
+
+        gtk_list_box_set_header_func (GTK_LIST_BOX (page->ingredients_list),
+                                      all_headers, NULL, NULL);
 }
 
 static void
@@ -531,12 +544,8 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, prep_time_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, cook_time_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, serves_spin);
-        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, description_label);
-        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, chef_label);
-        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, chef_link);
-        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, ingredients_label);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, ingredients_list);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, instructions_label);
-        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, notes_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, cooking_revealer);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, ingredients_check);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, instructions_check);
@@ -549,9 +558,7 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, favorite_button);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, duration_stack);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, remaining_time_label);
-        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, created_label);
-        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, modified_label);
-        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, cooked_label);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, chef_label);
 
         gtk_widget_class_bind_template_callback (widget_class, edit_recipe);
         gtk_widget_class_bind_template_callback (widget_class, delete_recipe);
@@ -576,6 +583,51 @@ gr_details_page_new (void)
         return GTK_WIDGET (page);
 }
 
+static void
+populate_ingredients (GrDetailsPage *page,
+                      int            num,
+                      int            denom)
+{
+        g_autoptr(GtkSizeGroup) group = NULL;
+        g_auto(GStrv) ings = NULL;
+        int i;
+
+        group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+        container_remove_all (GTK_CONTAINER (page->ingredients_list));
+        ings = gr_ingredients_list_get_ingredients (page->ingredients);
+        for (i = 0; ings[i]; i++) {
+                GtkWidget *row;
+                GtkWidget *box;
+                GtkWidget *label;
+                g_autofree char *s = NULL;
+
+                box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+                gtk_widget_show (box);
+
+                s = gr_ingredients_list_scale_unit (page->ingredients, ings[i], num, denom);
+                label = gtk_label_new (s);
+                g_object_set (label,
+                              "visible", TRUE,
+                              "xalign", 0.0,
+                              "margin", 10,
+                              NULL);
+                gtk_style_context_add_class (gtk_widget_get_style_context (label), "dim-label");
+                gtk_container_add (GTK_CONTAINER (box), label);
+                gtk_size_group_add_widget (group, label);
+
+                label = gtk_label_new (ings[i]);
+                g_object_set (label,
+                              "visible", TRUE,
+                              "xalign", 0.0,
+                              "margin", 10,
+                              NULL);
+                gtk_container_add (GTK_CONTAINER (box), label);
+
+                gtk_container_add (GTK_CONTAINER (page->ingredients_list), box);
+                row = gtk_widget_get_parent (box);
+                gtk_list_box_row_set_activatable (GTK_LIST_BOX_ROW (row), FALSE);
+        }
+}
 
 void
 gr_details_page_set_recipe (GrDetailsPage *page,
@@ -583,14 +635,11 @@ gr_details_page_set_recipe (GrDetailsPage *page,
 {
         const char *name;
         const char *author;
-        const char *description;
         const char *prep_time;
         const char *cook_time;
         int serves;
         const char *ingredients;
         const char *instructions;
-        const char *notes;
-        char *tmp;
         g_autoptr(GdkPixbuf) pixbuf = NULL;
         GrRecipeStore *store;
         g_autoptr(GrChef) chef = NULL;
@@ -598,103 +647,60 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         g_autoptr(GArray) images = NULL;
         gboolean cooking;
         gboolean favorite;
-        int left, width;
-        GDateTime *ctime;
-        GDateTime *mtime;
-        int cooked;
+        g_autofree char *tmp = NULL;
+        g_autofree char *link = NULL;
 
         g_set_object (&page->recipe, recipe);
 
         name = gr_recipe_get_name (recipe);
         author = gr_recipe_get_author (recipe);
-        description = gr_recipe_get_description (recipe);
         serves = gr_recipe_get_serves (recipe);
         prep_time = gr_recipe_get_prep_time (recipe);
         cook_time = gr_recipe_get_cook_time (recipe);
         ingredients = gr_recipe_get_ingredients (recipe);
         instructions = gr_recipe_get_instructions (recipe);
-        notes = gr_recipe_get_notes (recipe);
-        ctime = gr_recipe_get_ctime (recipe);
-        mtime = gr_recipe_get_mtime (recipe);
 
         g_object_get (recipe, "images", &images, NULL);
+        if (images->len > 0) {
+                g_autofree char *css = NULL;
+                GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, 0);
+                g_autoptr(GdkPixbuf) pb = gdk_pixbuf_new_from_file (ri->path, NULL);
+
+                css = g_strdup_printf ("  background: url('%s');\n"
+                                       "  background-size: 100%%;\n"
+                                       "  background-repeat: no-repeat;\n", ri->path);
+                gr_utils_widget_set_css_simple (page->recipe_image, css);
+                g_object_set (page->recipe_image,
+                              "width-request", 360,
+                              "height-request", (int)((360.0 / gdk_pixbuf_get_width (pb)) * gdk_pixbuf_get_height (pb)),
+                              NULL);
+        }
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
         chef = gr_recipe_store_get_chef (store, author);
         g_set_object (&page->chef, chef);
 
-        cooked = gr_recipe_store_get_cooked (store, recipe);
-
         ing = gr_ingredients_list_new (ingredients);
         g_set_object (&page->ingredients, ing);
 
-        if (images->len >= 2) {
-                width = 2;
-                left = -1;
-        }
-        else {
-                width = 1;
-                left = 0;
-        }
-        gtk_container_child_set (GTK_CONTAINER (gtk_widget_get_parent (page->recipe_image)),
-                                 page->recipe_image,
-                                 "width", width,
-                                 "left-attach", left,
-                                 NULL);
+        populate_ingredients (page, serves, serves);
 
-        g_object_set (page->recipe_image, "images", images, NULL);
         gtk_label_set_label (GTK_LABEL (page->prep_time_label), prep_time);
         gtk_label_set_label (GTK_LABEL (page->cook_time_label), cook_time);
-        gtk_label_set_label (GTK_LABEL (page->ingredients_label), ingredients);
         gtk_label_set_label (GTK_LABEL (page->instructions_label), instructions);
-        gtk_label_set_label (GTK_LABEL (page->notes_label), notes);
 
         gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), serves);
         gtk_widget_set_sensitive (page->serves_spin, ing != NULL);
-
-        gtk_label_set_label (GTK_LABEL (page->description_label), description);
-
-        tmp = g_date_time_format (ctime, _("Created on %c"));
-        gtk_label_set_label (GTK_LABEL (page->created_label), tmp);
-        g_free (tmp);
-
-        tmp = g_date_time_format (mtime, _("Last modified on %c"));
-        gtk_label_set_label (GTK_LABEL (page->modified_label), tmp);
-        g_free (tmp);
-
-        if (page->chef)
-                tmp = g_strdup_printf (_("About GNOME chef %s:\n%s"),
-                                       author,
-                                       gr_chef_get_description (page->chef));
-        else
-                tmp = g_strdup_printf (_("A recipe by GNOME chef %s"), author);
-        gtk_label_set_label (GTK_LABEL (page->chef_label), tmp);
-        g_free (tmp);
-
-        if (page->chef) {
-                gtk_widget_show (page->chef_link);
-                tmp = g_strdup_printf (_("More recipes by %s"), author);
-                gtk_button_set_label (GTK_BUTTON (page->chef_link), tmp);
-                g_free (tmp);
-        }
-        else
-                gtk_widget_hide (page->chef_link);
-
-        if (cooked > 0) {
-                gtk_widget_show (page->cooked_label);
-                tmp = g_strdup_printf (ngettext ("You’ve cooked this recipe before",
-                                                 "You’ve cooked this recipe %d times", cooked), cooked);
-                gtk_label_set_label (GTK_LABEL (page->cooked_label), tmp);
-                g_free (tmp);
-        }
-        else
-                gtk_widget_hide (page->cooked_label);
 
         cooking = g_hash_table_lookup (page->cooking, name) != NULL;
         set_cooking (page, cooking);
 
         favorite = gr_recipe_store_is_favorite (store, recipe);
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->favorite_button), favorite);
+
+        link = g_strdup_printf ("<a href=\"chef\">%s</a>", gr_recipe_get_author (recipe));
+        tmp = g_strdup_printf (_("Recipe by %s"), link);
+        gtk_label_set_markup (GTK_LABEL (page->chef_label), tmp);
 }
 
 static void
