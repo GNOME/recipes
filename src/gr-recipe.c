@@ -32,6 +32,7 @@ struct _GrRecipe
 {
         GObject parent_instance;
 
+        char *id;
         char *name;
         char *author;
         char *description;
@@ -62,6 +63,7 @@ G_DEFINE_TYPE (GrRecipe, gr_recipe, G_TYPE_OBJECT)
 
 enum {
         PROP_0,
+        PROP_ID,
         PROP_NAME,
         PROP_AUTHOR,
         PROP_DESCRIPTION,
@@ -87,6 +89,7 @@ gr_recipe_finalize (GObject *object)
 {
         GrRecipe *self = GR_RECIPE (object);
 
+        g_free (self->id);
         g_free (self->name);
         g_free (self->author);
         g_free (self->description);
@@ -118,6 +121,10 @@ gr_recipe_get_property (GObject    *object,
         GrRecipe *self = GR_RECIPE (object);
 
         switch (prop_id) {
+        case PROP_ID:
+                g_value_set_string (value, self->id);
+                break;
+
         case PROP_AUTHOR:
                 g_value_set_string (value, self->author);
                 break;
@@ -224,6 +231,12 @@ gr_recipe_set_property (GObject      *object,
         GrRecipe *self = GR_RECIPE (object);
 
         switch (prop_id) {
+        case PROP_ID:
+                g_free (self->id);
+                self->id = g_value_dup_string (value);
+                update_mtime (self);
+                break;
+
         case PROP_AUTHOR:
                 g_free (self->author);
                 self->author = g_value_dup_string (value);
@@ -350,6 +363,11 @@ gr_recipe_class_init (GrRecipeClass *klass)
         object_class->get_property = gr_recipe_get_property;
         object_class->set_property = gr_recipe_set_property;
 
+        pspec = g_param_spec_string ("id", NULL, NULL,
+                                     NULL,
+                                     G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_ID, pspec);
+
         pspec = g_param_spec_string ("author", NULL, NULL,
                                      NULL,
                                      G_PARAM_READWRITE);
@@ -448,6 +466,12 @@ GrRecipe *
 gr_recipe_new (void)
 {
         return g_object_new (GR_TYPE_RECIPE, NULL);
+}
+
+const char *
+gr_recipe_get_id (GrRecipe *recipe)
+{
+        return recipe->id;
 }
 
 const char *

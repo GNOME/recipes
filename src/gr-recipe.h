@@ -32,6 +32,7 @@ G_DECLARE_FINAL_TYPE (GrRecipe, gr_recipe, GR, RECIPE, GObject)
 
 GrRecipe       *gr_recipe_new              (void);
 
+const char     *gr_recipe_get_id           (GrRecipe   *recipe);
 const char     *gr_recipe_get_name         (GrRecipe   *recipe);
 const char     *gr_recipe_get_author       (GrRecipe   *recipe);
 const char     *gr_recipe_get_description  (GrRecipe   *recipe);
