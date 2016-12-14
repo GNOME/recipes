@@ -39,6 +39,28 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.3.0" data="2016-12-15">
+      <description>
+        <p>
+          This is another early release, to address problems people found with
+          the 0.2.0 flatpak, and with the export function. A number of general
+          improvements found their way into this release as well:
+        </p>
+        <ul>
+          <li>Handle conflicts during recipe import</li>
+          <li>Use Account portal (if available) to prepopulate user data</li>
+          <li>Add a GNOME shell search provider</li>
+          <li>Add several contributed recipes. Thanks, Ray and Bastian!</li>
+          <li>Fix problems with the dark theme</li>
+          <li>Add information about chefs to the page listing their recipes</li>
+          <li>Add information about dietary restricitons to the page listing their recipes</li>
+          <li>Improve the ingredient parser to recognize more units</li>
+          <li>Redesign the recipe details page</li>
+          <li>Fix several crashes</li>
+        </ul>
+        <p>This release also adds and updates translations for several languages.</p>
+      </description>
+    </release>
     <release version="0.2.0" date="2016-12-02">
       <description>
         <p>Initial release</p>
