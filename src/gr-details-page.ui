@@ -124,10 +124,46 @@ followed</property>
                   </object>
                 </child>
                 <child>
-                  <object class="GtkListBox" id="ingredients_list">
+                  <object class="GtkBox">
                     <property name="visible">1</property>
-                    <property name="selection-mode">none</property>
-                    <style> <class name="frame"/> </style>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">6</property>
+                    <child>
+                      <object class="GtkBox" id="warning_box">
+                        <property name="orientation">horizontal</property>
+                        <property name="spacing">6</property>
+                        <child>
+                          <object class="GtkImage" id="garlic_warning">
+                            <property name="icon-name">garlic-content-symbolic</property>
+                            <property name="tooltip-text" translatable="yes">Contains garlic</property>
+                            <property name="icon-size">1</property>
+                          </object>
+                          <packing>
+                            <property name="pack-type">end</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkImage" id="spicy_warning">
+                            <property name="icon-name">spicy-content-symbolic</property>
+                            <property name="tooltip-text" translatable="yes">Spicy</property>
+                            <property name="icon-size">1</property>
+                          </object>
+                          <packing>
+                            <property name="pack-type">end</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="fill">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkListBox" id="ingredients_list">
+                        <property name="visible">1</property>
+                        <property name="selection-mode">none</property>
+                        <style> <class name="frame"/> </style>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>

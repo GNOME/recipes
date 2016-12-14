@@ -115,6 +115,9 @@ struct _GrDetailsPage
         GtkWidget *prep_time_label;
         GtkWidget *cook_time_label;
         GtkWidget *serves_spin;
+        GtkWidget *warning_box;
+        GtkWidget *spicy_warning;
+        GtkWidget *garlic_warning;
         GtkWidget *ingredients_list;
         GtkWidget *instructions_label;
         GtkWidget *cooking_revealer;
@@ -544,6 +547,9 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, prep_time_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, cook_time_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, serves_spin);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, warning_box);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, spicy_warning);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, garlic_warning);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, ingredients_list);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, instructions_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, cooking_revealer);
@@ -591,6 +597,8 @@ populate_ingredients (GrDetailsPage *page,
         g_autoptr(GtkSizeGroup) group = NULL;
         g_auto(GStrv) ings = NULL;
         int i;
+        gboolean garlic = FALSE;
+        gboolean spicy = TRUE;
 
         group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
         container_remove_all (GTK_CONTAINER (page->ingredients_list));
@@ -600,6 +608,9 @@ populate_ingredients (GrDetailsPage *page,
                 GtkWidget *box;
                 GtkWidget *label;
                 g_autofree char *s = NULL;
+
+                if (strstr (ings[i], "garlic") || strstr (ings[i], "Garlic")) // FIXME
+                  garlic = TRUE;
 
                 box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
                 gtk_widget_show (box);
@@ -626,6 +637,18 @@ populate_ingredients (GrDetailsPage *page,
                 gtk_container_add (GTK_CONTAINER (page->ingredients_list), box);
                 row = gtk_widget_get_parent (box);
                 gtk_list_box_row_set_activatable (GTK_LIST_BOX_ROW (row), FALSE);
+        }
+
+        gtk_widget_hide (page->warning_box);
+
+        if (garlic) {
+                gtk_widget_show (page->warning_box);
+                gtk_widget_show (page->garlic_warning);
+        }
+
+        if (spicy) {
+                gtk_widget_show (page->warning_box);
+                gtk_widget_show (page->spicy_warning);
         }
 }
 
