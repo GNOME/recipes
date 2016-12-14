@@ -63,13 +63,18 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
         g_autofree char *tmp = NULL;
         g_autoptr(GArray) images = NULL;
         const char *color;
+        GrRecipeStore *store;
+        g_autoptr(GrChef) chef = NULL;
 
         g_set_object (&tile->recipe, recipe);
         if (!recipe)
                 return;
 
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
         name = gr_recipe_get_name (recipe);
         author = gr_recipe_get_author (recipe);
+        chef = gr_recipe_store_get_chef (store, author);
 
         g_object_get (recipe, "images", &images, NULL);
 
@@ -107,7 +112,7 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
         }
 
         gtk_label_set_label (GTK_LABEL (tile->label), name);
-        tmp = g_strdup_printf (_("by %s"), author);
+        tmp = g_strdup_printf (_("by %s"), chef ? gr_chef_get_nickname (chef) : _("Anonymous"));
         gtk_label_set_label (GTK_LABEL (tile->author), tmp);
 }
 
