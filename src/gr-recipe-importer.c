@@ -602,7 +602,13 @@ finish_import (GrRecipeImporter *importer)
         keyfile = g_key_file_new ();
         path = g_build_filename (importer->dir, "chefs.db", NULL);
         if (!g_key_file_load_from_file (keyfile, path, G_KEY_FILE_NONE, &error)) {
-                error_cb (importer->extractor, error, importer);
+                if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT)) {
+                        error_cb (importer->extractor, error, importer);
+                        return;
+                }
+
+                importer->chef_name = g_strdup ("anonymous");
+                import_recipe (importer);
                 return;
         }
 
