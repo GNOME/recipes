@@ -187,6 +187,8 @@ static Unit units[] = {
         { "ml", { NC_("unit", "ml"), NC_("unit", "milliliter"), NC_("unit", "milliliters"), NULL } },
         { "lb", { NC_("unit", "lb"), NC_("unit", "pound"), NC_("unit", "pounds"), NULL } },
         { "box", { NC_("unit", "box"), NC_("unit", "boxes"), NULL, NULL } },
+        { "tbsp", { NC_("unit", "tbsp"), NC_("unit", "tablespoon"), NC_("unit", "tablespoons"), NULL } },
+        { "tsp", { NC_("unit", "tsp"), NC_("unit", "teaspoon"), NC_("unit", "teaspoons"), NULL } },
 };
 
 static gboolean
