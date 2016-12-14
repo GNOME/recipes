@@ -646,6 +646,16 @@ populate_ingredients (GrDetailsPage *page,
         if (gr_recipe_get_spiciness (page->recipe) > 50) {
                 gtk_widget_show (page->warning_box);
                 gtk_widget_show (page->spicy_warning);
+                if (gr_recipe_get_spiciness (page->recipe) > 75) {
+                        gtk_widget_set_tooltip_text (page->spicy_warning, _("Very spicy"));
+                        gtk_style_context_add_class (gtk_widget_get_style_context (page->spicy_warning),
+                                                     "very-spicy");
+                }
+                else {
+                        gtk_widget_set_tooltip_text (page->spicy_warning, _("Spicy"));
+                        gtk_style_context_remove_class (gtk_widget_get_style_context (page->spicy_warning),
+                                                        "very-spicy");
+                }
         }
 }
 
