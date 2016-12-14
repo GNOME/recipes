@@ -47,10 +47,9 @@ struct _GrListPage
         GtkWidget *empty_title;
         GtkWidget *empty_subtitle;
 
-        GtkWidget *chef_box;
+        GtkWidget *chef_grid;
         GtkWidget *chef_image;
         GtkWidget *chef_fullname;
-        GtkWidget *chef_name;
         GtkWidget *chef_description;
         GtkWidget *heading;
         GtkWidget *diet_description;
@@ -101,10 +100,9 @@ gr_list_page_class_init (GrListPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, list_stack);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, empty_title);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, empty_subtitle);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, chef_box);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, chef_grid);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, chef_image);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, chef_fullname);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, chef_name);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, chef_description);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, heading);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, diet_description);
@@ -163,7 +161,7 @@ gr_list_page_populate_from_diet (GrListPage *self,
         clear_data (self);
         self->diet = diet;
 
-        gtk_widget_hide (self->chef_box);
+        gtk_widget_hide (self->chef_grid);
         gtk_widget_show (self->diet_description);
         gtk_widget_show (self->heading);
 
@@ -212,29 +210,56 @@ gr_list_page_populate_from_chef (GrListPage *self,
         int i;
         gboolean filled;
         char *tmp;
-        g_autoptr(GdkPixbuf) pixbuf = NULL;
+        const char *image_path;
+        GtkStyleContext *context;
+        g_autofree char *css = NULL;
+        g_autoptr(GtkCssProvider) provider = NULL;
 
         g_object_ref (chef);
         clear_data (self);
         self->chef = chef;
 
-        gtk_widget_show (self->chef_box);
+        gtk_widget_show (self->chef_grid);
         gtk_widget_show (self->heading);
         gtk_widget_hide (self->diet_description);
 
         gtk_label_set_label (GTK_LABEL (self->chef_fullname), gr_chef_get_fullname (chef));
-        gtk_label_set_label (GTK_LABEL (self->chef_name), gr_chef_get_name (chef));
         gtk_label_set_label (GTK_LABEL (self->chef_description), gr_chef_get_description (chef));
-        pixbuf = load_pixbuf_fit_size (gr_chef_get_image (chef), 0, 64, 64, FALSE);
-        gtk_image_set_from_pixbuf (GTK_IMAGE (self->chef_image), pixbuf);
-        tmp = g_strdup_printf (_("Recipes by %s"), gr_chef_get_name (chef));
+
+        image_path = gr_chef_get_image (chef);
+
+        if (image_path != NULL && image_path[0] != '\0')
+                css = g_strdup_printf ("image.chef {\n"
+                                       "  background: url('%s');\n"
+                                       "  background-size: 64px;\n"
+                                       "  min-width: 64px;\n"
+                                       "  min-height: 64px;\n"
+                                       "}", image_path);
+        else
+                css = g_strdup_printf ("image.chef {\n"
+                                       "  background: rgb(%d,%d,%d);\n"
+                                       "  min-width: 64px;\n"
+                                       "  min-height: 64px;\n"
+                                       "}",
+                                       g_random_int_range (0, 255),
+                                       g_random_int_range (0, 255),
+                                       g_random_int_range (0, 255));
+
+        provider = gtk_css_provider_new ();
+        gtk_css_provider_load_from_data (provider, css, -1, NULL);
+        context = gtk_widget_get_style_context (self->chef_image);
+        gtk_style_context_add_provider (context,
+                                        GTK_STYLE_PROVIDER (provider),
+                                        GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+        tmp = g_strdup_printf (_("Recipes by %s"), gr_chef_get_nickname (chef));
         gtk_label_set_label (GTK_LABEL (self->heading), tmp);
         g_free (tmp);
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         container_remove_all (GTK_CONTAINER (self->flow_box));
-        tmp = g_strdup_printf (_("No recipes by chef %s found"), gr_chef_get_name (chef));
+        tmp = g_strdup_printf (_("No recipes by chef %s found"), gr_chef_get_nickname (chef));
         gtk_label_set_label (GTK_LABEL (self->empty_title), tmp);
         g_free (tmp);
         if (g_strcmp0 (gr_chef_get_name (chef), gr_recipe_store_get_user_key (store)) == 0)
@@ -284,7 +309,7 @@ gr_list_page_populate_from_season (GrListPage *self,
         clear_data (self);
         self->season = tmp;
 
-        gtk_widget_hide (self->chef_box);
+        gtk_widget_hide (self->chef_grid);
         gtk_widget_hide (self->heading);
         gtk_widget_hide (self->diet_description);
 
@@ -329,7 +354,7 @@ gr_list_page_populate_from_favorites (GrListPage *self)
         clear_data (self);
         self->favorites = TRUE;
 
-        gtk_widget_hide (self->chef_box);
+        gtk_widget_hide (self->chef_grid);
         gtk_widget_hide (self->heading);
         gtk_widget_hide (self->diet_description);
 
