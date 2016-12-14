@@ -112,6 +112,7 @@ load_recipes (GrRecipeStore *self,
                 g_autofree int *angles = NULL;
                 g_autofree gboolean *dark = NULL;
                 int serves;
+                gboolean spicy;
                 GrDiets diets;
                 g_autoptr(GArray) images = NULL;
                 GrRotatedImage ri;
@@ -254,6 +255,14 @@ load_recipes (GrRecipeStore *self,
                         }
                         g_clear_error (&error);
                 }
+                spicy = g_key_file_get_boolean (keyfile, groups[i], "Spicy", &error);
+                if (error) {
+                        if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
+                                g_warning ("Failed to load recipe %s: %s", groups[i], error->message);
+                                continue;
+                        }
+                        g_clear_error (&error);
+                }
                 diets = g_key_file_get_integer (keyfile, groups[i], "Diets", &error);
                 if (error) {
                         if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
@@ -349,6 +358,7 @@ load_recipes (GrRecipeStore *self,
                                       "instructions", instructions,
                                       "notes", notes,
                                       "serves", serves,
+                                      "spicy", spicy,
                                       "diets", diets,
                                       "images", images,
                                       NULL);
@@ -411,6 +421,7 @@ save_recipes (GrRecipeStore *self)
                 const char *notes;
                 g_autoptr(GArray) images = NULL;
                 int serves;
+                gboolean spicy;
                 GrDiets diets;
                 g_auto(GStrv) paths = NULL;
                 g_autofree int *angles = NULL;
@@ -423,6 +434,7 @@ save_recipes (GrRecipeStore *self)
                 author = gr_recipe_get_author (recipe);
                 description = gr_recipe_get_description (recipe);
                 serves = gr_recipe_get_serves (recipe);
+                spicy = gr_recipe_is_spicy (recipe);
                 cuisine = gr_recipe_get_cuisine (recipe);
                 season = gr_recipe_get_season (recipe);
                 category = gr_recipe_get_category (recipe);
@@ -463,6 +475,7 @@ save_recipes (GrRecipeStore *self)
                 g_key_file_set_string (keyfile, key, "Instructions", instructions ? instructions : "");
                 g_key_file_set_string (keyfile, key, "Notes", notes ? notes : "");
                 g_key_file_set_integer (keyfile, key, "Serves", serves);
+                g_key_file_set_boolean (keyfile, key, "Spicy", spicy);
                 g_key_file_set_integer (keyfile, key, "Diets", diets);
                 g_key_file_set_string_list (keyfile, key, "Images", (const char * const *)paths, images->len);
                 g_key_file_set_integer_list (keyfile, key, "Angles", angles, images->len);
