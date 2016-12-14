@@ -5,7 +5,7 @@ dnl ***********************************************************************
 dnl Define Versioning Information
 dnl ***********************************************************************
 m4_define([major_version],[0])
-m4_define([minor_version],[2])
+m4_define([minor_version],[3])
 m4_define([micro_version],[0])
 m4_define([package_version],[major_version.minor_version.micro_version])
 m4_define([bug_report_url],[https://bugzilla.gnome.org/enter_bug.cgi?product=recipes])
@@ -18,7 +18,7 @@ dnl Initialize autoconf
 dnl ***********************************************************************
 AC_INIT([recipes],[package_version],[bug_report_url])
 AC_CONFIG_HEADERS([config.h])
-AC_CONFIG_SRCDIR([NEWS])
+AC_CONFIG_SRCDIR([configure.ac])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIRS([m4])
 AC_SUBST([ACLOCAL_AMFLAGS], "-I m4 -I libgd")
@@ -71,6 +71,7 @@ AC_PROG_SED
 AC_PATH_PROG([GLIB_GENMARSHAL],[glib-genmarshal])
 AC_PATH_PROG([GLIB_MKENUMS],[glib-mkenums])
 AC_PATH_PROG([GLIB_COMPILE_RESOURCES],[glib-compile-resources])
+AC_PATH_PROG([APPSTREAM_UTIL],[appstream-util])
 PKG_PROG_PKG_CONFIG([0.22])
 GLIB_GSETTINGS
 GOBJECT_INTROSPECTION_CHECK([1.42.0])

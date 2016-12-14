@@ -1,6 +1,6 @@
 SUBDIRS = . libgd data src po tests
 
-EXTRA_DIST = AUTHORS
+EXTRA_DIST = AUTHORS NEWS
 
 AUTHORS:
 	$(AM_V_GEN)if test -d "$(srcdir)/.git"; \
@@ -14,6 +14,15 @@ AUTHORS:
 		|| ( rm -f $@.tmp ; \
 		     echo Failed to generate $@ >&2 ); \
 	else touch $@; fi
+
+NEWS: data/appdata/org.gnome.Recipes.appdata.xml.in
+	$(AM_V_GEN)if test -e $(APPSTREAM_UTIL); then \
+		$(APPSTREAM_UTIL) appdata-to-news $^ > $@; \
+	else \
+		touch $@; \
+	fi
+
+.PHONY: NEWS
 
 # Generate the ChangeLog.
 @GENERATE_CHANGELOG_RULES@
@@ -40,6 +49,7 @@ GITIGNOREFILES = \
 	gtk-doc.m4 \
 	gtk-doc.make \
 	INSTALL \
+	NEWS \
 	$(NULL)
 
 ACLOCAL_AMFLAGS=-I m4 -I libgd
