@@ -597,8 +597,6 @@ populate_ingredients (GrDetailsPage *page,
         g_autoptr(GtkSizeGroup) group = NULL;
         g_auto(GStrv) ings = NULL;
         int i;
-        gboolean garlic = FALSE;
-        gboolean spicy = TRUE;
 
         group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
         container_remove_all (GTK_CONTAINER (page->ingredients_list));
@@ -608,9 +606,6 @@ populate_ingredients (GrDetailsPage *page,
                 GtkWidget *box;
                 GtkWidget *label;
                 g_autofree char *s = NULL;
-
-                if (strstr (ings[i], "garlic") || strstr (ings[i], "Garlic")) // FIXME
-                  garlic = TRUE;
 
                 box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
                 gtk_widget_show (box);
@@ -641,12 +636,12 @@ populate_ingredients (GrDetailsPage *page,
 
         gtk_widget_hide (page->warning_box);
 
-        if (garlic) {
+        if (gr_recipe_contains_garlic (page->recipe)) {
                 gtk_widget_show (page->warning_box);
                 gtk_widget_show (page->garlic_warning);
         }
 
-        if (spicy) {
+        if (gr_recipe_is_spicy (page->recipe)) {
                 gtk_widget_show (page->warning_box);
                 gtk_widget_show (page->spicy_warning);
         }
