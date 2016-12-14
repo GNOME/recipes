@@ -84,7 +84,7 @@ chef_tile_set_chef (GrChefTile *tile,
 
         g_set_object (&tile->chef, chef);
 
-        name = gr_chef_get_name (chef);
+        name = gr_chef_get_nickname (chef);
         image_path = gr_chef_get_image (chef);
 
         gtk_label_set_label (GTK_LABEL (tile->label), name);
