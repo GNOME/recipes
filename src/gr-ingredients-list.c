@@ -409,17 +409,23 @@ format_scaled_number (Ingredient *ing, int num, int denom)
 }
 
 static void
-ingredient_scale (Ingredient *ing, int num, int denom, GString *s)
+ingredient_scale_unit (Ingredient *ing, int num, int denom, GString *s)
 {
         g_autofree char *scaled = NULL;
 
         scaled = format_scaled_number (ing, num, denom);
         g_string_append (s, scaled);
-        g_string_append (s, " ");
         if (ing->unit) {
-                g_string_append (s, ing->unit);
                 g_string_append (s, " ");
+                g_string_append (s, ing->unit);
         }
+}
+
+static void
+ingredient_scale (Ingredient *ing, int num, int denom, GString *s)
+{
+        ingredient_scale_unit (ing, num, denom, s);
+        g_string_append (s, " ");
         g_string_append (s, ing->name);
         g_string_append (s, "\n");
 }
@@ -457,4 +463,28 @@ gr_ingredients_list_get_ingredients (GrIngredientsList *ingredients)
         }
 
         return ret;
+}
+
+char *
+gr_ingredients_list_scale_unit (GrIngredientsList *ingredients,
+                                const char        *name,
+                                int                num,
+                                int                denom)
+{
+        GList *l;
+
+        for (l = ingredients->ingredients; l; l = l->next) {
+                Ingredient *ing = (Ingredient *)l->data;
+
+                if (g_strcmp0 (name, ing->name) == 0) {
+                        GString *s;
+
+                        s = g_string_new ("");
+                        ingredient_scale_unit (ing, num, denom, s);
+
+                        return g_string_free (s, FALSE);
+                }
+        }
+
+        return NULL;
 }

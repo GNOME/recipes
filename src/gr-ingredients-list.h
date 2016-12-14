@@ -32,9 +32,14 @@ GrIngredientsList *gr_ingredients_list_new             (const char         *text
 
 gboolean           gr_ingredients_list_validate        (const char         *text,
                                                         GError            **error);
-gchar             *gr_ingredients_list_scale           (GrIngredientsList  *ingredients,
+char              *gr_ingredients_list_scale           (GrIngredientsList  *ingredients,
                                                         int                 num,
                                                         int                 denom);
-gchar            **gr_ingredients_list_get_ingredients (GrIngredientsList  *ingredients);
+char              *gr_ingredients_list_scale_unit      (GrIngredientsList  *ingredients,
+                                                        const char         *name,
+                                                        int                 num,
+                                                        int                 denom);
+char             **gr_ingredients_list_get_ingredients (GrIngredientsList  *ingredients);
+
 
 G_END_DECLS
