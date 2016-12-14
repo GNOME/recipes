@@ -28,21 +28,23 @@
 #include "types.h"
 
 
-typedef struct
+struct _GrChef
 {
+        GObject parent_instance;
+
+        char *id;
         char *name;
-        char *nickname;
         char *fullname;
         char *description;
         char *image_path;
-} GrChefPrivate;
+};
 
-G_DEFINE_TYPE_WITH_PRIVATE (GrChef, gr_chef, G_TYPE_OBJECT)
+G_DEFINE_TYPE (GrChef, gr_chef, G_TYPE_OBJECT)
 
 enum {
         PROP_0,
+        PROP_ID,
         PROP_NAME,
-        PROP_NICKNAME,
         PROP_FULLNAME,
         PROP_DESCRIPTION,
         PROP_IMAGE_PATH,
@@ -53,13 +55,12 @@ static void
 gr_chef_finalize (GObject *object)
 {
         GrChef *self = GR_CHEF (object);
-        GrChefPrivate *priv = gr_chef_get_instance_private (self);
 
-        g_free (priv->name);
-        g_free (priv->nickname);
-        g_free (priv->fullname);
-        g_free (priv->description);
-        g_free (priv->image_path);
+        g_free (self->id);
+        g_free (self->name);
+        g_free (self->fullname);
+        g_free (self->description);
+        g_free (self->image_path);
 
         G_OBJECT_CLASS (gr_chef_parent_class)->finalize (object);
 }
@@ -71,27 +72,26 @@ gr_chef_get_property (GObject    *object,
                       GParamSpec *pspec)
 {
         GrChef *self = GR_CHEF (object);
-        GrChefPrivate *priv = gr_chef_get_instance_private (self);
 
         switch (prop_id) {
-        case PROP_NAME:
-                g_value_set_string (value, priv->name);
+        case PROP_ID:
+                g_value_set_string (value, self->id);
                 break;
 
-        case PROP_NICKNAME:
-                g_value_set_string (value, priv->nickname);
+        case PROP_NAME:
+                g_value_set_string (value, self->name);
                 break;
 
         case PROP_FULLNAME:
-                g_value_set_string (value, priv->fullname);
+                g_value_set_string (value, self->fullname);
                 break;
 
         case PROP_DESCRIPTION:
-                g_value_set_string (value, priv->description);
+                g_value_set_string (value, self->description);
                 break;
 
         case PROP_IMAGE_PATH:
-                g_value_set_string (value, priv->image_path);
+                g_value_set_string (value, self->image_path);
                 break;
 
         default:
@@ -106,31 +106,30 @@ gr_chef_set_property (GObject      *object,
                       GParamSpec   *pspec)
 {
         GrChef *self = GR_CHEF (object);
-        GrChefPrivate *priv = gr_chef_get_instance_private (self);
 
         switch (prop_id) {
-        case PROP_NAME:
-                g_free (priv->name);
-                priv->name = g_value_dup_string (value);
+        case PROP_ID:
+                g_free (self->id);
+                self->id = g_value_dup_string (value);
                 break;
 
-        case PROP_NICKNAME:
-                g_free (priv->nickname);
-                priv->nickname = g_value_dup_string (value);
+        case PROP_NAME:
+                g_free (self->name);
+                self->name = g_value_dup_string (value);
                 break;
 
         case PROP_FULLNAME:
-                g_free (priv->fullname);
-                priv->fullname = g_value_dup_string (value);
+                g_free (self->fullname);
+                self->fullname = g_value_dup_string (value);
                 break;
 
         case PROP_DESCRIPTION:
-                g_free (priv->description);
-                priv->description = g_value_dup_string (value);
+                g_free (self->description);
+                self->description = g_value_dup_string (value);
                 break;
 
         case PROP_IMAGE_PATH:
-                priv->image_path = g_value_dup_string (value);
+                self->image_path = g_value_dup_string (value);
                 break;
 
         default:
@@ -148,15 +147,15 @@ gr_chef_class_init (GrChefClass *klass)
         object_class->get_property = gr_chef_get_property;
         object_class->set_property = gr_chef_set_property;
 
+        pspec = g_param_spec_string ("id", NULL, NULL,
+                                     NULL,
+                                     G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_ID, pspec);
+
         pspec = g_param_spec_string ("name", NULL, NULL,
                                      NULL,
                                      G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_NAME, pspec);
-
-        pspec = g_param_spec_string ("nickname", NULL, NULL,
-                                     NULL,
-                                     G_PARAM_READWRITE);
-        g_object_class_install_property (object_class, PROP_NICKNAME, pspec);
 
         pspec = g_param_spec_string ("fullname", NULL, NULL,
                                      NULL,
@@ -186,47 +185,37 @@ gr_chef_new (void)
 }
 
 const char *
-gr_chef_get_name (GrChef *chef)
+gr_chef_get_id (GrChef *chef)
 {
-        GrChefPrivate *priv = gr_chef_get_instance_private (chef);
-
-        return priv->name;
+        return chef->id;
 }
 
 const char *
-gr_chef_get_nickname (GrChef *chef)
+gr_chef_get_name (GrChef *chef)
 {
-        GrChefPrivate *priv = gr_chef_get_instance_private (chef);
-
-        if (!priv->nickname) {
+        if (!chef->name) {
                 g_auto(GStrv) strv = NULL;
-                strv = g_strsplit (priv->fullname, " ", 0);
-                priv->nickname = g_strdup (strv[0]);
+                strv = g_strsplit (chef->fullname, " ", 0);
+                chef->name = g_strdup (strv[0]);
         }
 
-        return priv->nickname;
+        return chef->name;
 }
 
 const char *
 gr_chef_get_fullname (GrChef *chef)
 {
-        GrChefPrivate *priv = gr_chef_get_instance_private (chef);
-
-        return priv->fullname;
+        return chef->fullname;
 }
 
 const char *
 gr_chef_get_description (GrChef *chef)
 {
-        GrChefPrivate *priv = gr_chef_get_instance_private (chef);
-
-        return priv->description;
+        return chef->description;
 }
 
 const char *
 gr_chef_get_image (GrChef *chef)
 {
-        GrChefPrivate *priv = gr_chef_get_instance_private (chef);
-
-        return priv->image_path;
+        return chef->image_path;
 }

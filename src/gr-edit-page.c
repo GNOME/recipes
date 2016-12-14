@@ -477,7 +477,7 @@ account_response (GDBusConnection *connection,
                 g_variant_lookup (options, "name", "&s", &name);
                 g_variant_lookup (options, "image", "&s", &uri);
 
-                g_object_set (chef, "name", id, "fullname", name, NULL);
+                g_object_set (chef, "id", id, "fullname", name, NULL);
 
                 if (uri && uri[0]) {
                         g_autoptr(GFile) source = NULL;

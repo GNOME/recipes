@@ -26,16 +26,11 @@ G_BEGIN_DECLS
 
 #define GR_TYPE_CHEF (gr_chef_get_type())
 
-G_DECLARE_DERIVABLE_TYPE (GrChef, gr_chef, GR, CHEF, GObject)
-
-struct _GrChefClass
-{
-        GObjectClass parent;
-};
+G_DECLARE_FINAL_TYPE (GrChef, gr_chef, GR, CHEF, GObject)
 
 GrChef          *gr_chef_new             (void);
+const char      *gr_chef_get_id          (GrChef *chef);
 const char      *gr_chef_get_name        (GrChef *chef);
-const char      *gr_chef_get_nickname    (GrChef *chef);
 const char      *gr_chef_get_fullname    (GrChef *chef);
 const char      *gr_chef_get_description (GrChef *chef);
 const char      *gr_chef_get_image       (GrChef *chef);

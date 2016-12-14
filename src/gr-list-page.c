@@ -204,7 +204,7 @@ gr_list_page_populate_from_chef (GrListPage *self,
                                  GrChef     *chef)
 {
         GrRecipeStore *store;
-        const char *name;
+        const char *id;
         g_autofree char **keys = NULL;
         guint length;
         int i;
@@ -252,24 +252,24 @@ gr_list_page_populate_from_chef (GrListPage *self,
                                         GTK_STYLE_PROVIDER (provider),
                                         GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-        tmp = g_strdup_printf (_("Recipes by %s"), gr_chef_get_nickname (chef));
+        tmp = g_strdup_printf (_("Recipes by %s"), gr_chef_get_name (chef));
         gtk_label_set_label (GTK_LABEL (self->heading), tmp);
         g_free (tmp);
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         container_remove_all (GTK_CONTAINER (self->flow_box));
-        tmp = g_strdup_printf (_("No recipes by chef %s found"), gr_chef_get_nickname (chef));
+        tmp = g_strdup_printf (_("No recipes by chef %s found"), gr_chef_get_name (chef));
         gtk_label_set_label (GTK_LABEL (self->empty_title), tmp);
         g_free (tmp);
-        if (g_strcmp0 (gr_chef_get_name (chef), gr_recipe_store_get_user_key (store)) == 0)
+        if (g_strcmp0 (gr_chef_get_id (chef), gr_recipe_store_get_user_key (store)) == 0)
                 gtk_label_set_label (GTK_LABEL (self->empty_subtitle), _("You could add one using the “New Recipe” button."));
         else
                 gtk_label_set_label (GTK_LABEL (self->empty_subtitle), _("Sorry about this."));
         gtk_stack_set_visible_child_name (GTK_STACK (self->list_stack), "empty");
         filled = FALSE;
 
-        name = gr_chef_get_name (chef);
+        id = gr_chef_get_id (chef);
 
         keys = gr_recipe_store_get_recipe_keys (store, &length);
         for (i = 0; i < length; i++) {
@@ -280,7 +280,7 @@ gr_list_page_populate_from_chef (GrListPage *self,
                 recipe = gr_recipe_store_get (store, keys[i]);
                 author = gr_recipe_get_author (recipe);
 
-                if (g_strcmp0 (name, author) != 0)
+                if (g_strcmp0 (id, author) != 0)
                         continue;
 
                 tile = gr_recipe_tile_new (recipe);

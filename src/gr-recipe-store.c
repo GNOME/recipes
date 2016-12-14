@@ -707,6 +707,7 @@ load_chefs (GrRecipeStore *self,
         groups = g_key_file_get_groups (keyfile, &length);
         for (i = 0; i < length; i++) {
                 GrChef *chef;
+                const char *id;
                 g_autofree char *name = NULL;
                 g_autofree char *fullname = NULL;
                 g_autofree char *description = NULL;
@@ -714,6 +715,7 @@ load_chefs (GrRecipeStore *self,
 
                 g_clear_error (&error);
 
+                id = groups[i];
                 name = g_key_file_get_string (keyfile, groups[i], "Name", &error);
                 if (error) {
                         g_warning ("Failed to load chef %s: %s", groups[i], error->message);
@@ -752,13 +754,14 @@ load_chefs (GrRecipeStore *self,
                         image_path = tmp;
                 }
 
-                chef = g_hash_table_lookup (self->chefs, name);
+                chef = g_hash_table_lookup (self->chefs, id);
                 if (chef == NULL) {
                         chef = gr_chef_new ();
-                        g_hash_table_insert (self->chefs, g_strdup (name), chef);
+                        g_hash_table_insert (self->chefs, g_strdup (id), chef);
                 }
 
                 g_object_set (chef,
+                              "id", id,
                               "name", name,
                               "fullname", fullname,
                               "description", description,
@@ -1124,23 +1127,23 @@ gr_recipe_store_add_chef (GrRecipeStore  *self,
                           GrChef         *chef,
                           GError        **error)
 {
-        const char *name;
+        const char *id;
 
-        name = gr_chef_get_name (chef);
+        id = gr_chef_get_id (chef);
 
-        if (name == NULL || name[0] == '\0') {
+        if (id == NULL || id[0] == '\0') {
                 g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                             _("You need to provide a name"));
+                             _("You need to provide an ID"));
                 return FALSE;
         }
 
-        if (g_hash_table_contains (self->chefs, name)) {
+        if (g_hash_table_contains (self->chefs, id)) {
                 g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                             _("Sorry, this name is taken"));
+                             _("Sorry, this ID is taken"));
                 return FALSE;
         }
 
-        g_hash_table_insert (self->chefs, g_strdup (name), g_object_ref (chef));
+        g_hash_table_insert (self->chefs, g_strdup (id), g_object_ref (chef));
 
         g_signal_emit (self, chefs_changed_signal, 0);
         save_chefs (self);
@@ -1153,15 +1156,15 @@ gr_recipe_store_update_user (GrRecipeStore  *self,
                              GrChef         *chef,
                              GError        **error)
 {
-        const char *name;
+        const char *id;
         gboolean ret = TRUE;
 
-        name = gr_chef_get_name (chef);
+        id = gr_chef_get_id (chef);
 
-        if (name != NULL && name[0] != '\0') {
+        if (id != NULL && id[0] != '\0') {
                 g_object_ref (chef);
-                if (g_strcmp0 (name, self->user) == 0) {
-                        g_hash_table_remove (self->chefs, name);
+                if (g_strcmp0 (id, self->user) == 0) {
+                        g_hash_table_remove (self->chefs, id);
                 }
                 ret = gr_recipe_store_add_chef (self, chef, error);
                 g_object_unref (chef);
@@ -1169,7 +1172,7 @@ gr_recipe_store_update_user (GrRecipeStore  *self,
 
         if (ret) {
                 g_free (self->user);
-                self->user = g_strdup (name);
+                self->user = g_strdup (id);
                 save_user (self);
         }
 
@@ -1180,14 +1183,14 @@ gboolean
 gr_recipe_store_chef_is_featured (GrRecipeStore *self,
                                   GrChef        *chef)
 {
-        const char *name;
+        const char *id;
 
         if (self->featured_chefs == NULL)
                 return FALSE;
 
-        name = gr_chef_get_name (chef);
+        id = gr_chef_get_id (chef);
 
-        return g_strv_contains ((const char *const*)self->featured_chefs, name);
+        return g_strv_contains ((const char *const*)self->featured_chefs, id);
 }
 
 char **
@@ -1319,7 +1322,7 @@ gr_recipe_store_has_chef (GrRecipeStore *self,
 
         g_hash_table_iter_init (&iter, self->recipes);
         while (g_hash_table_iter_next (&iter, NULL, (gpointer *)&recipe)) {
-                if (strcmp (gr_chef_get_name (chef), gr_recipe_get_author (recipe)) == 0)
+                if (strcmp (gr_chef_get_id (chef), gr_recipe_get_author (recipe)) == 0)
                         return TRUE;
         }
 

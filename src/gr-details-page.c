@@ -731,7 +731,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
                 g_autofree char *tmp = NULL;
                 g_autofree char *link = NULL;
 
-                link = g_strdup_printf ("<a href=\"chef\">%s</a>", gr_chef_get_nickname (chef));
+                link = g_strdup_printf ("<a href=\"chef\">%s</a>", gr_chef_get_name (chef));
                 tmp = g_strdup_printf (_("Recipe by %s"), link);
                 gtk_widget_show (page->chef_label);
                 gtk_label_set_markup (GTK_LABEL (page->chef_label), tmp);

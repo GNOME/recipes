@@ -287,7 +287,8 @@ prepare_export (GrRecipeExporter  *exporter,
         path = g_build_filename (exporter->dir, "chefs.db", NULL);
         keyfile = g_key_file_new ();
 
-        key = name = gr_chef_get_name (chef);
+        key = gr_chef_get_id (chef);
+        name = gr_chef_get_name (chef);
         fullname = gr_chef_get_fullname (chef);
         description = gr_chef_get_description (chef);
         image_path = gr_chef_get_image (chef);

@@ -7,14 +7,13 @@
     <child type="action">
       <object class="GtkButton" id="button_same">
         <property name="visible">1</property>
-        <property name="label" translatable="yes">Merge</property>
+        <property name="label" translatable="yes">Same Chef</property>
       </object>
     </child>
     <child type="action">
       <object class="GtkButton" id="button_rename">
         <property name="visible">1</property>
-        <property name="sensitive">0</property>
-        <property name="label" translatable="yes">Rename</property>
+        <property name="label" translatable="yes">Different Chef</property>
       </object>
     </child>
     <child internal-child="vbox">
@@ -212,7 +211,6 @@
             <child>
               <object class="GtkEntry" id="new_chef_fullname">
                 <property name="visible">1</property>
-                <property name="editable">0</property>
               </object>
               <packing>
                 <property name="left-attach">3</property>
@@ -227,7 +225,6 @@
                 <child>
                   <object class="GtkTextView" id="new_chef_description">
                     <property name="visible">1</property>
-                    <property name="editable">0</property>
                   </object>
                 </child>
               </object>

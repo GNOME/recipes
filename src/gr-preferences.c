@@ -121,8 +121,8 @@ save_preferences (GrPreferences  *self,
 {
         g_autoptr(GrChef) chef = NULL;
         GrRecipeStore *store;
+        const char *id;
         const char *name;
-        const char *nickname;
         const char *fullname;
         g_autofree char *description = NULL;
         GtkTextBuffer *buffer;
@@ -130,18 +130,18 @@ save_preferences (GrPreferences  *self,
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        name = gr_recipe_store_get_user_key (store);
+        id = gr_recipe_store_get_user_key (store);
 
-        nickname = gtk_entry_get_text (GTK_ENTRY (self->name));
+        name = gtk_entry_get_text (GTK_ENTRY (self->name));
         fullname = gtk_entry_get_text (GTK_ENTRY (self->fullname));
         buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->description));
         gtk_text_buffer_get_bounds (buffer, &start, &end);
         description = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
 
         chef = g_object_new (GR_TYPE_CHEF,
-                             "name", name,
+                             "id", id,
                              "fullname", fullname,
-                             "nickname", nickname,
+                             "name", name,
                              "description", description,
                              "image-path", self->image_path,
                              NULL);
@@ -168,30 +168,30 @@ gr_preferences_init (GrPreferences *self)
 {
         GrRecipeStore *store;
         g_autoptr(GrChef) chef = NULL;
-        const char *name;
+        const char *id;
 
         gtk_widget_init_template (GTK_WIDGET (self));
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        name = gr_recipe_store_get_user_key (store);
+        id = gr_recipe_store_get_user_key (store);
 
-        if (name != NULL && name[0] != '\0')
-                chef = gr_recipe_store_get_chef (store, name);
+        if (id != NULL && id[0] != '\0')
+                chef = gr_recipe_store_get_chef (store, id);
 
         if (chef) {
                 const char *fullname;
-                const char *nickname;
+                const char *name;
                 const char *description;
                 const char *image_path;
 
                 fullname = gr_chef_get_fullname (chef);
-                nickname = gr_chef_get_nickname (chef);
+                name = gr_chef_get_name (chef);
                 description = gr_chef_get_description (chef);
                 image_path = gr_chef_get_image (chef);
 
                 gtk_entry_set_text (GTK_ENTRY (self->fullname), fullname ? fullname : "");
-                gtk_entry_set_text (GTK_ENTRY (self->name), nickname ? nickname : "");
+                gtk_entry_set_text (GTK_ENTRY (self->name), name ? name : "");
                 gtk_text_buffer_set_text (gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->description)),
                                           description ? description : "", -1);
 
