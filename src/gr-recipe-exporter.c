@@ -278,10 +278,8 @@ prepare_export (GrRecipeExporter  *exporter,
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
         chef = gr_recipe_store_get_chef (store, author);
-        if (!chef) {
-                g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED, _("Chef %s not found"), author);
-                return FALSE;
-        }
+        if (!chef)
+                return TRUE;
 
         g_clear_pointer (&path, g_free);
         g_clear_pointer (&keyfile, g_key_file_unref);
