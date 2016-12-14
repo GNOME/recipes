@@ -28,12 +28,7 @@ G_BEGIN_DECLS
 
 #define GR_TYPE_RECIPE (gr_recipe_get_type())
 
-G_DECLARE_DERIVABLE_TYPE (GrRecipe, gr_recipe, GR, RECIPE, GObject)
-
-struct _GrRecipeClass
-{
-        GObjectClass parent;
-};
+G_DECLARE_FINAL_TYPE (GrRecipe, gr_recipe, GR, RECIPE, GObject)
 
 GrRecipe       *gr_recipe_new              (void);
 
