@@ -51,6 +51,9 @@ typedef struct
         char *cf_name;
         char *cf_description;
         char *cf_ingredients;
+
+        gboolean garlic;
+        gboolean spicy;
 } GrRecipePrivate;
 
 G_DEFINE_TYPE_WITH_PRIVATE (GrRecipe, gr_recipe, G_TYPE_OBJECT)
@@ -69,6 +72,7 @@ enum {
         PROP_SERVES,
         PROP_INGREDIENTS,
         PROP_INSTRUCTIONS,
+        PROP_SPICY,
         PROP_NOTES,
         PROP_DIETS,
         PROP_CTIME,
@@ -152,6 +156,10 @@ gr_recipe_get_property (GObject    *object,
 
         case PROP_SERVES:
                 g_value_set_int (value, priv->serves);
+                break;
+
+        case PROP_SPICY:
+                g_value_set_boolean (value, priv->spicy);
                 break;
 
         case PROP_INGREDIENTS:
@@ -282,12 +290,24 @@ gr_recipe_set_property (GObject      *object,
                 update_mtime (self);
                 break;
 
+        case PROP_SPICY:
+                priv->spicy = g_value_get_boolean (value);
+                update_mtime (self);
+                break;
+
         case PROP_INGREDIENTS:
+                {
+                g_autofree char *cf_garlic = NULL;
+
                 g_free (priv->ingredients);
                 g_free (priv->cf_ingredients);
                 priv->ingredients = g_value_dup_string (value);
                 priv->cf_ingredients = g_utf8_casefold (priv->ingredients, -1);
+
+                cf_garlic = g_utf8_casefold ("Garlic", -1);
+                priv->garlic = (strstr (priv->cf_ingredients, cf_garlic) != NULL);
                 update_mtime (self);
+                }
                 break;
 
         case PROP_INSTRUCTIONS:
@@ -368,6 +388,11 @@ gr_recipe_class_init (GrRecipeClass *klass)
                                      NULL,
                                      G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_SEASON, pspec);
+
+        pspec = g_param_spec_boolean ("spicy", NULL, NULL,
+                                      FALSE,
+                                      G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_SPICY, pspec);
 
         pspec = g_param_spec_string ("prep-time", NULL, NULL,
                                      NULL,
@@ -533,6 +558,22 @@ gr_recipe_get_notes (GrRecipe *recipe)
         GrRecipePrivate *priv = gr_recipe_get_instance_private (recipe);
 
         return priv->notes;
+}
+
+gboolean
+gr_recipe_contains_garlic (GrRecipe *recipe)
+{
+        GrRecipePrivate *priv = gr_recipe_get_instance_private (recipe);
+
+        return priv->garlic;
+}
+
+gboolean
+gr_recipe_is_spicy (GrRecipe *recipe)
+{
+        GrRecipePrivate *priv = gr_recipe_get_instance_private (recipe);
+
+        return priv->spicy;
 }
 
 GDateTime *
