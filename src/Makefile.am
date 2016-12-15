@@ -1,11 +1,15 @@
 bin_PROGRAMS = recipes
 
+commitid := $(shell $(GIT) log -1 --oneline | cut -f1 -d' ')
+
 recipes_CFLAGS = \
 	$(WARN_CFLAGS) 			\
 	-Wno-sign-compare		\
 	$(RECIPES_CFLAGS) 		\
 	-DPKGDATADIR=\"$(pkgdatadir)\" 	\
 	-DLOCALEDIR=\"$(localedir)\" 	\
+	-DCOMMIT_ID=\"$(commitid)\"	\
+	-DMICRO_VERSION=$(MICRO_VERSION) \
 	-I "$(top_srcdir)/libgd"	\
 	-I "$(top_srcdir)/libglnx"
 
@@ -20,7 +24,7 @@ recipes_SOURCES = \
 	gr-app.c 		\
 	gr-category-tile.h 	\
 	gr-category-tile.c 	\
-	gr-chef.h 		\
+	gr-chef.h		\
 	gr-chef.c 		\
 	gr-chef-tile.h 		\
 	gr-chef-tile.c 		\

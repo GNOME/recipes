@@ -30,7 +30,6 @@
 #include "gr-cuisine.h"
 #include "gr-shell-search-provider.h"
 
-
 struct _GrApp
 {
         GtkApplication parent_instance;
@@ -103,7 +102,11 @@ about_activated (GSimpleAction *action,
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
         gtk_show_about_dialog (GTK_WINDOW (win),
                                "program-name", "GNOME Recipes",
+#if MICRO_VERSION % 2 == 1
+                               "version", COMMIT_ID,
+#else
                                "version", PACKAGE_VERSION,
+#endif
                                "copyright", "© 2016 Matthias Clasen",
                                "license-type", GTK_LICENSE_GPL_3_0,
                                "comments", _("GNOME loves to cook"),
