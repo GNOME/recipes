@@ -19,8 +19,12 @@
 #include "config.h"
 #include <locale.h>
 #include <glib.h>
-#include "gr-ingredients.h"
-#include "gr-ingredients.c"
+#include "gr-ingredients-list.h"
+#include "gr-ingredients-list.c"
+#include "gr-ingredient.h"
+#include "gr-ingredient.c"
+#include "gr-utils.h"
+#include "gr-utils.c"
 
 static GString *string;
 
@@ -36,14 +40,14 @@ test_file (const char *filename)
                 return 1;
         }
 
-        if (!gr_ingredients_validate (contents, &error)) {
+        if (!gr_ingredients_list_validate (contents, &error)) {
                 g_string_append_printf (string, "ERROR %s\n", error->message);
         }
         else {
-                g_autoptr(GrIngredients) ingredients = NULL;
+                g_autoptr(GrIngredientsList) ingredients = NULL;
                 GList *l;
 
-                ingredients = gr_ingredients_new (contents);
+                ingredients = gr_ingredients_list_new (contents);
                 for (l = ingredients->ingredients; l; l = l->next) {
                         Ingredient *ing = (Ingredient *)l->data;
                         if (ing->fraction)
