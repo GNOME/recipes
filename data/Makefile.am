@@ -6,17 +6,17 @@ desktopdir = $(datadir)/applications
 
 desktop_in_files = org.gnome.Recipes.desktop.in
 
-desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
+dist_desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
 %.desktop: %.desktop.in
-	msgfmt --desktop -d $(top_srcdir)/po --template $< -o $@
+	$(AM_V_GEN) msgfmt --desktop -d $(top_srcdir)/po --template $< -o $@
 
 EXTRA_DIST += $(desktop_in_files)
 
 ingredientsdir = $(pkgdatadir)/ingredients
 imagesdir = $(pkgdatadir)/images
 
-ingredients_DATA = \
+dist_ingredients_DATA = \
 	ingredients/Almond.png 		\
 	ingredients/Amaretti.png	\
 	ingredients/Anchovis.png	\
@@ -32,7 +32,7 @@ ingredients_DATA = \
 	ingredients/Biscotti.png 	\
 	ingredients/Carrot.png
 
-images_DATA = \
+dist_images_DATA = \
 	images/alex.png			\
 	images/bagel.jpg		\
 	images/Bastian.jpg		\
@@ -51,7 +51,7 @@ images_DATA = \
 	images/tofuscramble.jpg		\
 	images/wholesale-crackers.jpg
 
-pkgdata_DATA = \
+dist_pkgdata_DATA = \
 	chefs.db	\
 	picks.db	\
 	recipes.db
@@ -102,7 +102,6 @@ update_icon_cache = gtk-update-icon-cache --ignore-theme-index --force
 
 install-data-hook: install-update-icon-cache
 uninstall-hook: uninstall-update-icon-cache
-	touch libcheese_la_vala.stamp
 
 install-update-icon-cache:
 	$(AM_V_at)$(POST_INSTALL)
@@ -114,10 +113,12 @@ uninstall-update-icon-cache:
 
 servicedir = $(datadir)/dbus-1/services
 service_in_files = org.gnome.Recipes.service.in
-service_DATA = $(service_in_files:.service.in=.service)
+dist_service_DATA = $(service_in_files:.service.in=.service)
 
 $(service_DATA): $(service_in_files) Makefile
-	@sed -e "s|\@bindir\@|$(bindir)|" $< > $@
+	$(AM_V_GEN) sed -e "s|\@bindir\@|$(bindir)|" $< > $@
+
+EXTRA_DIST += $(service_in_files)
 
 GITIGNOREFILES = $(service_DATA)
 
@@ -125,9 +126,9 @@ appdatadir = $(datadir)/appdata
 
 appdata_in_files = appdata/org.gnome.Recipes.appdata.xml.in
 
-appdata_DATA = $(appdata_in_files:.appdata.xml.in=.appdata.xml)
+dist_appdata_DATA = $(appdata_in_files:.appdata.xml.in=.appdata.xml)
 
 %.appdata.xml: %.appdata.xml.in
-	msgfmt --xml -d $(top_srcdir)/po --template $< -o $@
+	$(AM_V_GEN) mkdir appdata; msgfmt --xml -d $(top_srcdir)/po --template $< -o $@
 
 EXTRA_DIST += $(appdata_in_files)

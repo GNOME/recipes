@@ -143,12 +143,15 @@ gr-shell-search-provider-dbus.h gr-shell-search-provider-dbus.c: Makefile.am $(s
 		$(srcdir)/shell-search-provider-dbus-interfaces.xml
 
 searchproviderdir = $(datadir)/gnome-shell/search-providers
-searchprovider_DATA = org.gnome.Recipes-search-provider.ini
+dist_searchprovider_DATA = org.gnome.Recipes-search-provider.ini
 
 EXTRA_DIST = \
-	$(resource_ui_files)	\
-	$(resource_image_files)	\
-	types.h.template	\
+	shell-search-provider-dbus-interfaces.xml 	\
+	recipes-ui.gresource.xml 			\
+	recipes-images.gresource.xml 			\
+	$(resource_ui_files)				\
+	$(resource_image_files)				\
+	types.h.template				\
 	types.c.template
 
 -include $(top_srcdir)/git.mk

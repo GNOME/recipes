@@ -2,6 +2,8 @@ SUBDIRS = . libgd data src po tests
 
 EXTRA_DIST = AUTHORS NEWS
 
+CLEANFILES = AUTHORS NEWS
+
 AUTHORS:
 	$(AM_V_GEN)if test -d "$(srcdir)/.git"; \
 	then \
