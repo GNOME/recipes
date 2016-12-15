@@ -96,6 +96,7 @@ load_recipes (GrRecipeStore *self,
         groups = g_key_file_get_groups (keyfile, &length);
         for (i = 0; i < length; i++) {
                 GrRecipe *recipe;
+                const char *id;
                 g_autofree char *name = NULL;
                 g_autofree char *author = NULL;
                 g_autofree char *description = NULL;
@@ -122,6 +123,7 @@ load_recipes (GrRecipeStore *self,
 
                 g_clear_error (&error);
 
+                id = groups[i];
                 name = g_key_file_get_string (keyfile, groups[i], "Name", &error);
                 if (error) {
                         g_warning ("Failed to load recipe %s: %s", groups[i], error->message);
@@ -134,7 +136,7 @@ load_recipes (GrRecipeStore *self,
                                 g_warning ("Failed to load recipe %s: %s", groups[i], error->message);
                                 continue;
                         }
-                        author = g_strdup ("Unknown");
+                        author = g_strdup ("anonymous");
                         g_clear_error (&error);
                 }
                 description = g_key_file_get_string (keyfile, groups[i], "Description", &error);
@@ -343,9 +345,10 @@ load_recipes (GrRecipeStore *self,
                         mtime = g_date_time_new_now_utc ();
                 }
 
-                recipe = g_hash_table_lookup (self->recipes, name);
+                recipe = g_hash_table_lookup (self->recipes, id);
                 if (recipe) {
                         g_object_set (recipe,
+                                      "id", id,
                                       "name", name,
                                       "author", author,
                                       "description", description,
@@ -365,6 +368,7 @@ load_recipes (GrRecipeStore *self,
                 }
                 else {
                         recipe = g_object_new (GR_TYPE_RECIPE,
+                                               "id", id,
                                                "name", name,
                                                "author", author,
                                                "description", description,
@@ -383,7 +387,7 @@ load_recipes (GrRecipeStore *self,
                                                "ctime", ctime,
                                                "mtime", mtime,
                                                NULL);
-                        g_hash_table_insert (self->recipes, g_strdup (name), recipe);
+                        g_hash_table_insert (self->recipes, g_strdup (id), recipe);
                 }
         }
 
@@ -957,24 +961,24 @@ gr_recipe_store_add_recipe (GrRecipeStore  *self,
                             GrRecipe       *recipe,
                             GError        **error)
 {
-        const char *name;
+        const char *id;
 
         g_object_ref (recipe);
 
-        name = gr_recipe_get_name (recipe);
+        id = gr_recipe_get_id (recipe);
 
-        if (name == NULL || name[0] == '\0') {
+        if (id == NULL || g_str_has_prefix (id, "_by_")) {
                 g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
                              _("You need to provide a name for the recipe"));
                 return FALSE;
         }
-        if (g_hash_table_contains (self->recipes, name)) {
+        if (g_hash_table_contains (self->recipes, id)) {
                 g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                             _("A recipe with this name already exists"));
+                             _("A recipe with this name and author already exists.\nPlease choose a different name"));
                 return FALSE;
         }
 
-        g_hash_table_insert (self->recipes, g_strdup (name), g_object_ref (recipe));
+        g_hash_table_insert (self->recipes, g_strdup (id), g_object_ref (recipe));
         g_signal_emit (self, add_signal, 0, recipe);
 
         save_recipes (self);
@@ -987,33 +991,33 @@ gr_recipe_store_add_recipe (GrRecipeStore  *self,
 gboolean
 gr_recipe_store_update_recipe (GrRecipeStore  *self,
                                GrRecipe       *recipe,
-                               const char     *old_name,
+                               const char     *old_id,
                                GError        **error)
 {
-        const char *name;
+        const char *id;
         GrRecipe *old;
 
         g_object_ref (recipe);
 
-        name = gr_recipe_get_name (recipe);
+        id = gr_recipe_get_id (recipe);
 
-        if (name == NULL || name[0] == '\0') {
+        if (id == NULL || id[0] == '\0') {
                 g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                             _("You need to provide a name for the recipe"));
+                             _("You need to provide an ID for the recipe"));
                 return FALSE;
         }
-        if (strcmp (name, old_name) != 0 &&
-            g_hash_table_contains (self->recipes, name)) {
+        if (strcmp (id, old_id) != 0 &&
+            g_hash_table_contains (self->recipes, id)) {
                 g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                             _("A recipe with this name already exists"));
+                             _("A recipe with this ID already exists"));
                 return FALSE;
         }
 
-        old = g_hash_table_lookup (self->recipes, old_name);
+        old = g_hash_table_lookup (self->recipes, old_id);
         g_assert (recipe == old);
 
-        g_hash_table_remove (self->recipes, old_name);
-        g_hash_table_insert (self->recipes, g_strdup (name), g_object_ref (recipe));
+        g_hash_table_remove (self->recipes, old_id);
+        g_hash_table_insert (self->recipes, g_strdup (id), g_object_ref (recipe));
 
         g_signal_emit (self, changed_signal, 0, recipe);
 
@@ -1028,14 +1032,14 @@ gboolean
 gr_recipe_store_remove_recipe (GrRecipeStore *self,
                                GrRecipe      *recipe)
 {
-        const char *name;
+        const char *id;
         gboolean ret = FALSE;
 
-        name = gr_recipe_get_name (recipe);
+        id = gr_recipe_get_id (recipe);
 
         g_object_ref (recipe);
 
-        if (g_hash_table_remove (self->recipes, name)) {
+        if (g_hash_table_remove (self->recipes, id)) {
                 g_signal_emit (self, remove_signal, 0, recipe);
                 save_recipes (self);
                 ret = TRUE;
@@ -1048,11 +1052,11 @@ gr_recipe_store_remove_recipe (GrRecipeStore *self,
 
 GrRecipe *
 gr_recipe_store_get_recipe (GrRecipeStore *self,
-                            const char    *name)
+                            const char    *id)
 {
         GrRecipe *recipe;
 
-        recipe = g_hash_table_lookup (self->recipes, name);
+        recipe = g_hash_table_lookup (self->recipes, id);
 
         if (recipe)
                 return g_object_ref (recipe);
@@ -1071,37 +1075,37 @@ gboolean
 gr_recipe_store_recipe_is_todays (GrRecipeStore *self,
                                   GrRecipe      *recipe)
 {
-        const char *name;
+        const char *id;
 
         if (self->todays == NULL)
                 return FALSE;
 
-        name = gr_recipe_get_name (recipe);
+        id = gr_recipe_get_id (recipe);
 
-        return g_strv_contains ((const char *const*)self->todays, name);
+        return g_strv_contains ((const char *const*)self->todays, id);
 }
 
 gboolean
 gr_recipe_store_recipe_is_pick (GrRecipeStore *self,
                                 GrRecipe      *recipe)
 {
-        const char *name;
+        const char *id;
 
         if (self->picks == NULL)
                 return FALSE;
 
-        name = gr_recipe_get_name (recipe);
+        id = gr_recipe_get_id (recipe);
 
-        return g_strv_contains ((const char *const*)self->picks, name);
+        return g_strv_contains ((const char *const*)self->picks, id);
 }
 
 GrChef *
 gr_recipe_store_get_chef (GrRecipeStore *self,
-                          const char    *name)
+                          const char    *id)
 {
         GrChef *chef;
 
-        chef = g_hash_table_lookup (self->chefs, name);
+        chef = g_hash_table_lookup (self->chefs, id);
 
         if (chef)
                 return g_object_ref (chef);
@@ -1194,7 +1198,8 @@ gr_recipe_store_chef_is_featured (GrRecipeStore *self,
 }
 
 char **
-gr_recipe_store_get_all_ingredients (GrRecipeStore *self, guint *length)
+gr_recipe_store_get_all_ingredients (GrRecipeStore *self,
+                                     guint         *length)
 {
         GHashTableIter iter;
         GrRecipe *recipe;
@@ -1237,16 +1242,16 @@ gr_recipe_store_add_favorite (GrRecipeStore *self,
         char **strv;
         int length;
         int i;
-        const char *name;
+        const char *id;
 
-        name = gr_recipe_get_name (recipe);
+        id = gr_recipe_get_id (recipe);
 
-        if (g_strv_contains ((const char * const*)self->favorites, name))
+        if (g_strv_contains ((const char * const*)self->favorites, id))
                 return;
 
         length = g_strv_length (self->favorites);
         strv = g_new (char *, length + 2);
-        strv[0] = g_strdup (name);
+        strv[0] = g_strdup (id);
         for (i = 0; i < length; i++)
                 strv[i + 1] = self->favorites[i];
         strv[length + 1] = NULL;
@@ -1264,12 +1269,12 @@ gr_recipe_store_remove_favorite (GrRecipeStore *self,
                                  GrRecipe      *recipe)
 {
         int i, j;
-        const char *name;
+        const char *id;
 
-        name = gr_recipe_get_name (recipe);
+        id = gr_recipe_get_id (recipe);
 
         for (i = 0; self->favorites[i]; i++) {
-                if (strcmp (self->favorites[i], name) == 0) {
+                if (strcmp (self->favorites[i], id) == 0) {
                         g_free (self->favorites[i]);
                         for (j = i; self->favorites[j]; j++) {
                                 self->favorites[j] = self->favorites[j + 1];
@@ -1287,14 +1292,14 @@ gboolean
 gr_recipe_store_is_favorite (GrRecipeStore *self,
                              GrRecipe      *recipe)
 {
-        const char *name;
+        const char *id;
 
         if (self->favorites == NULL)
                 return FALSE;
 
-        name = gr_recipe_get_name (recipe);
+        id = gr_recipe_get_id (recipe);
 
-        return g_strv_contains ((const char *const*)self->favorites, name);
+        return g_strv_contains ((const char *const*)self->favorites, id);
 }
 
 gboolean
@@ -1350,14 +1355,14 @@ gr_recipe_store_add_cooked (GrRecipeStore *store,
                             GrRecipe      *recipe)
 {
         int count;
-        const char *name;
+        const char *id;
 
-        name = gr_recipe_get_name (recipe);
+        id = gr_recipe_get_id (recipe);
 
-        count = GPOINTER_TO_INT (g_hash_table_lookup (store->cooked, name));
+        count = GPOINTER_TO_INT (g_hash_table_lookup (store->cooked, id));
         count++;
 
-        g_hash_table_insert (store->cooked, g_strdup (name), GINT_TO_POINTER (count));
+        g_hash_table_insert (store->cooked, g_strdup (id), GINT_TO_POINTER (count));
 
         save_cooked (store);
 }
@@ -1366,11 +1371,11 @@ int
 gr_recipe_store_get_cooked (GrRecipeStore *store,
                             GrRecipe      *recipe)
 {
-        const char *name;
+        const char *id;
 
-        name = gr_recipe_get_name (recipe);
+        id = gr_recipe_get_id (recipe);
 
-        return GPOINTER_TO_INT (g_hash_table_lookup (store->cooked, name));
+        return GPOINTER_TO_INT (g_hash_table_lookup (store->cooked, id));
 }
 
 /*** search implementation ***/
