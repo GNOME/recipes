@@ -31,6 +31,7 @@
 #include "gr-window.h"
 #include "gr-utils.h"
 #include "gr-image-editor.h"
+#include "gr-image-viewer.h"
 #include "gr-ingredients-list.h"
 #include "gr-timer.h"
 #include "gr-recipe-printer.h"
@@ -689,20 +690,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         instructions = gr_recipe_get_instructions (recipe);
 
         g_object_get (recipe, "images", &images, NULL);
-        if (images->len > 0) {
-                g_autofree char *css = NULL;
-                GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, 0);
-                g_autoptr(GdkPixbuf) pb = gdk_pixbuf_new_from_file (ri->path, NULL);
-
-                css = g_strdup_printf ("  background: url('%s');\n"
-                                       "  background-size: 100%%;\n"
-                                       "  background-repeat: no-repeat;\n", ri->path);
-                gr_utils_widget_set_css_simple (page->recipe_image, css);
-                g_object_set (page->recipe_image,
-                              "width-request", 360,
-                              "height-request", (int)((360.0 / gdk_pixbuf_get_width (pb)) * gdk_pixbuf_get_height (pb)),
-                              NULL);
-        }
+        gr_image_viewer_set_images (GR_IMAGE_VIEWER (page->recipe_image), images);
 
         ing = gr_ingredients_list_new (ingredients);
         g_set_object (&page->ingredients, ing);
