@@ -651,6 +651,21 @@ ensure_user_chef (GrRecipeStore *store,
         gtk_window_export_handle (GTK_WINDOW (window), window_handle_exported, page);
 }
 
+static char *
+generate_id (const char *name,
+             const char *author)
+{
+        char *s, *q;
+
+        s = g_strconcat (name, "_by_", author, NULL);
+        for (q = s; *q; q = g_utf8_find_next_char (q, NULL)) {
+                if (*q == ']' || *q == '[' || g_ascii_iscntrl (*q))
+                        *q = '_';
+        }
+
+        return s;
+}
+
 gboolean
 gr_edit_page_save (GrEditPage *page)
 {
@@ -698,10 +713,15 @@ gr_edit_page_save (GrEditPage *page)
         g_object_get (page->images, "images", &images, NULL);
 
         if (page->recipe) {
-                g_autofree char *old_name = NULL;
+                g_autofree char *old_id = NULL;
+                g_autofree char *id = NULL;
+                const char *author;
 
-                old_name = g_strdup (gr_recipe_get_name (page->recipe));
+                author = gr_recipe_get_author (page->recipe);
+                id = generate_id (name, author);
+                old_id = g_strdup (gr_recipe_get_id (page->recipe));
                 g_object_set (page->recipe,
+                              "id", id,
                               "name", name,
                               "description", description,
                               "cuisine", cuisine,
@@ -717,15 +737,18 @@ gr_edit_page_save (GrEditPage *page)
                               "diets", diets,
                               "images", images,
                               NULL);
-                ret = gr_recipe_store_update_recipe (store, page->recipe, old_name, &error);
+                ret = gr_recipe_store_update_recipe (store, page->recipe, old_id, &error);
         }
         else {
                 g_autoptr(GrRecipe) recipe = NULL;
                 const char *author;
+                g_autofree char *id = NULL;
 
                 author = gr_recipe_store_get_user_key (store);
                 ensure_user_chef (store, page);
+                id = generate_id (name, author);
                 recipe = g_object_new (GR_TYPE_RECIPE,
+                                       "id", id,
                                        "name", name,
                                        "description", description,
                                        "author", author,
