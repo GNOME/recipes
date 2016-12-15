@@ -1,4 +1,4 @@
-/* gr-images.h:
+/* gr-image-editor.h:
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *
@@ -32,15 +32,15 @@ typedef struct {
 
 GArray *gr_rotated_image_array_new (void);
 
-#define GR_TYPE_IMAGES (gr_images_get_type())
+#define GR_TYPE_IMAGE_EDITOR (gr_image_editor_get_type())
 
-G_DECLARE_FINAL_TYPE (GrImages, gr_images, GR, IMAGES, GtkBox)
+G_DECLARE_FINAL_TYPE (GrImageEditor, gr_image_editor, GR, IMAGE_EDITOR, GtkBox)
 
-GrImages       *gr_images_new          (void);
+GrImageEditor  *gr_image_editor_new          (void);
 
-void            gr_images_add_image    (GrImages *image);
-void            gr_images_remove_image (GrImages *image);
-void            gr_images_rotate_image (GrImages *image,
-                                        gint      angle);
+void            gr_image_editor_add_image    (GrImageEditor *editor);
+void            gr_image_editor_remove_image (GrImageEditor *editor);
+void            gr_image_editor_rotate_image (GrImageEditor *editor,
+                                              gint           angle);
 
 G_END_DECLS

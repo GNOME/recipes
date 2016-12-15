@@ -40,8 +40,8 @@ recipes_SOURCES = \
 	gr-diet-row.c		\
 	gr-edit-page.h		\
 	gr-edit-page.c		\
-	gr-images.h		\
-	gr-images.c		\
+	gr-image-editor.h	\
+	gr-image-editor.c	\
 	gr-ingredient.h		\
 	gr-ingredient.c		\
 	gr-ingredient-row.h	\

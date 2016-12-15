@@ -32,7 +32,7 @@
 #include "gr-cuisine.h"
 #include "gr-meal.h"
 #include "gr-season.h"
-#include "gr-images.h"
+#include "gr-image-editor.h"
 
 #ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
@@ -106,25 +106,25 @@ images_changed (GrEditPage *page)
 static void
 add_image (GrEditPage *page)
 {
-        gr_images_add_image (GR_IMAGES (page->images));
+        gr_image_editor_add_image (GR_IMAGE_EDITOR (page->images));
 }
 
 static void
 remove_image (GrEditPage *page)
 {
-        gr_images_remove_image (GR_IMAGES (page->images));
+        gr_image_editor_remove_image (GR_IMAGE_EDITOR (page->images));
 }
 
 static void
 rotate_image_left (GrEditPage *page)
 {
-        gr_images_rotate_image (GR_IMAGES (page->images), 90);
+        gr_image_editor_rotate_image (GR_IMAGE_EDITOR (page->images), 90);
 }
 
 static void
 rotate_image_right (GrEditPage *page)
 {
-        gr_images_rotate_image (GR_IMAGES (page->images), 270);
+        gr_image_editor_rotate_image (GR_IMAGE_EDITOR (page->images), 270);
 }
 
 static void

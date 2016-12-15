@@ -26,7 +26,7 @@
 #include "glnx-shutil.h"
 
 #include "gr-recipe-exporter.h"
-#include "gr-images.h"
+#include "gr-image-editor.h"
 #include "gr-chef.h"
 #include "gr-recipe.h"
 #include "gr-recipe-store.h"

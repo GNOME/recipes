@@ -23,7 +23,7 @@
 #include <glib/gi18n.h>
 
 #include "gr-recipe-printer.h"
-#include "gr-images.h"
+#include "gr-image-editor.h"
 #include "gr-utils.h"
 
 

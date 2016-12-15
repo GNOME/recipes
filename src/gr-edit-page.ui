@@ -121,7 +121,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GrImages" id="images">
+                  <object class="GrImageEditor" id="images">
                     <signal name="notify::images" handler="images_changed" swapped="yes"/>
                     <accessibility>
                       <relation target="add_image_button" type="controlled-by"/>

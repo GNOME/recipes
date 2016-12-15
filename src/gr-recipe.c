@@ -25,7 +25,7 @@
 #include <gtk/gtk.h>
 
 #include "gr-recipe.h"
-#include "gr-images.h"
+#include "gr-image-editor.h"
 #include "types.h"
 
 struct _GrRecipe

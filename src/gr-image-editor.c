@@ -1,4 +1,4 @@
-/* gr-images.c:
+/* gr-image-editor.c:
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *
@@ -22,7 +22,7 @@
 
 #include <glib/gi18n.h>
 
-#include "gr-images.h"
+#include "gr-image-editor.h"
 #include "gr-utils.h"
 
 static void
@@ -46,7 +46,7 @@ gr_rotated_image_array_new (void)
         return a;
 }
 
-struct _GrImages
+struct _GrImageEditor
 {
         GtkBox parent_instance;
 
@@ -59,7 +59,7 @@ struct _GrImages
         gboolean flip;
 };
 
-G_DEFINE_TYPE (GrImages, gr_images, GTK_TYPE_BOX)
+G_DEFINE_TYPE (GrImageEditor, gr_image_editor, GTK_TYPE_BOX)
 
 enum {
         PROP_0,
@@ -68,10 +68,10 @@ enum {
         N_PROPS
 };
 
-GrImages *
-gr_images_new (void)
+GrImageEditor *
+gr_image_editor_new (void)
 {
-        return g_object_new (GR_TYPE_IMAGES, NULL);
+        return g_object_new (GR_TYPE_IMAGE_EDITOR, NULL);
 }
 
 static void
@@ -87,7 +87,7 @@ set_thumb_image (GtkImage       *image,
 }
 
 static void
-add_image (GrImages       *images,
+add_image (GrImageEditor  *editor,
            GrRotatedImage *ri,
            gboolean        select)
 {
@@ -95,75 +95,75 @@ add_image (GrImages       *images,
 
         image = gtk_image_new ();
         gtk_widget_show (image);
-        gtk_container_add (GTK_CONTAINER (images->switcher), image);
+        gtk_container_add (GTK_CONTAINER (editor->switcher), image);
 
         set_thumb_image (GTK_IMAGE (image), ri);
 
-        g_array_append_vals (images->images, ri, 1);
-        ri = &g_array_index (images->images, GrRotatedImage, images->images->len - 1);
+        g_array_append_vals (editor->images, ri, 1);
+        ri = &g_array_index (editor->images, GrRotatedImage, editor->images->len - 1);
         ri->path = g_strdup (ri->path);
 
-        if (images->images->len > 1)
-                gtk_widget_show (images->switcher);
+        if (editor->images->len > 1)
+                gtk_widget_show (editor->switcher);
 
-        if (images->images->len == 0)
-                gtk_list_box_select_row (GTK_LIST_BOX (images->switcher),
-                                         gtk_list_box_get_row_at_index (GTK_LIST_BOX (images->switcher), 0));
+        if (editor->images->len == 0)
+                gtk_list_box_select_row (GTK_LIST_BOX (editor->switcher),
+                                         gtk_list_box_get_row_at_index (GTK_LIST_BOX (editor->switcher), 0));
         else if (select)
-                gtk_list_box_select_row (GTK_LIST_BOX (images->switcher),
+                gtk_list_box_select_row (GTK_LIST_BOX (editor->switcher),
                                          GTK_LIST_BOX_ROW (gtk_widget_get_parent (image)));
 
-        g_object_notify (G_OBJECT (images), "images");
+        g_object_notify (G_OBJECT (editor), "images");
 }
 
 static void
-set_images (GrImages *images,
-            GArray   *array)
+set_images (GrImageEditor *editor,
+            GArray        *array)
 {
         int i;
 
-        g_object_freeze_notify (G_OBJECT (images));
+        g_object_freeze_notify (G_OBJECT (editor));
 
-        container_remove_all (GTK_CONTAINER (images->switcher));
-        g_array_remove_range (images->images, 0, images->images->len);
+        container_remove_all (GTK_CONTAINER (editor->switcher));
+        g_array_remove_range (editor->images, 0, editor->images->len);
 
-        g_object_notify (G_OBJECT (images), "images");
+        g_object_notify (G_OBJECT (editor), "images");
 
-        gtk_widget_hide (images->switcher);
+        gtk_widget_hide (editor->switcher);
 
         for (i = 0; i < array->len; i++) {
                 GrRotatedImage *ri = &g_array_index (array, GrRotatedImage, i);
-                add_image (images, ri, FALSE);
+                add_image (editor, ri, FALSE);
         }
 
         if (array->len == 0)
-                gtk_stack_set_visible_child_name (GTK_STACK (images->stack), "placeholder");
+                gtk_stack_set_visible_child_name (GTK_STACK (editor->stack), "placeholder");
         else
-                gtk_list_box_select_row (GTK_LIST_BOX (images->switcher),
-                                         gtk_list_box_get_row_at_index (GTK_LIST_BOX (images->switcher), 0));
+                gtk_list_box_select_row (GTK_LIST_BOX (editor->switcher),
+                                         gtk_list_box_get_row_at_index (GTK_LIST_BOX (editor->switcher), 0));
 
-        g_object_thaw_notify (G_OBJECT (images));
+        g_object_thaw_notify (G_OBJECT (editor));
 }
 
 static void
-set_flip (GrImages *images,
-          gboolean  flip)
+set_flip (GrImageEditor *editor,
+          gboolean       flip)
 {
-        if (images->flip == flip)
+        if (editor->flip == flip)
                 return;
 
-        images->flip = flip;
+        editor->flip = flip;
 
-        gtk_container_child_set (GTK_CONTAINER (images), images->switcher, "pack-type", flip ? GTK_PACK_END : GTK_PACK_START, NULL);
-        gtk_container_child_set (GTK_CONTAINER (images), images->stack, "pack-type", flip ? GTK_PACK_END : GTK_PACK_START, NULL);
+        gtk_container_child_set (GTK_CONTAINER (editor), editor->switcher, "pack-type", flip ? GTK_PACK_END : GTK_PACK_START, NULL);
+        gtk_container_child_set (GTK_CONTAINER (editor), editor->stack, "pack-type", flip ? GTK_PACK_END : GTK_PACK_START, NULL);
 
-        g_object_notify (G_OBJECT (images), "flip");
+        g_object_notify (G_OBJECT (editor), "flip");
 }
 
 static void
 file_chooser_response (GtkNativeDialog *self,
                        gint             response_id,
-                       GrImages        *images)
+                       GrImageEditor   *editor)
 {
         if (response_id == GTK_RESPONSE_ACCEPT) {
                 GrRotatedImage ri;
@@ -176,20 +176,20 @@ file_chooser_response (GtkNativeDialog *self,
 
                 ri.dark_text = g_strcmp0 (dark, "true") == 0;
 
-                add_image (images, &ri, TRUE);
+                add_image (editor, &ri, TRUE);
 
                 g_free (ri.path);
         }
 }
 
 static void
-open_filechooser (GrImages *images)
+open_filechooser (GrImageEditor *editor)
 {
         GtkWidget *window;
         GtkFileChooserNative *chooser;
         g_autoptr(GtkFileFilter) filter = NULL;
 
-        window = gtk_widget_get_ancestor (GTK_WIDGET (images), GTK_TYPE_APPLICATION_WINDOW);
+        window = gtk_widget_get_ancestor (GTK_WIDGET (editor), GTK_TYPE_APPLICATION_WINDOW);
         chooser = gtk_file_chooser_native_new (_("Select an Image"),
                                                GTK_WINDOW (window),
                                                GTK_FILE_CHOOSER_ACTION_OPEN,
@@ -204,54 +204,54 @@ open_filechooser (GrImages *images)
         gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (chooser), filter);
         gtk_file_chooser_add_choice (GTK_FILE_CHOOSER (chooser), "dark", _("Use dark text"), NULL, NULL);
 
-        g_signal_connect (chooser, "response", G_CALLBACK (file_chooser_response), images);
+        g_signal_connect (chooser, "response", G_CALLBACK (file_chooser_response), editor);
 
         gtk_native_dialog_show (GTK_NATIVE_DIALOG (chooser));
 }
 
 void
-gr_images_add_image (GrImages *images)
+gr_image_editor_add_image (GrImageEditor *editor)
 {
-        open_filechooser (images);
+        open_filechooser (editor);
 }
 
 void
-gr_images_remove_image (GrImages *images)
+gr_image_editor_remove_image (GrImageEditor *editor)
 {
         GtkListBoxRow *row;
         g_auto(GStrv) paths = NULL;
         int idx;
 
-        row = gtk_list_box_get_selected_row (GTK_LIST_BOX (images->switcher));
+        row = gtk_list_box_get_selected_row (GTK_LIST_BOX (editor->switcher));
         if (row == NULL)
                 return;
 
         idx = gtk_list_box_row_get_index (row);
 
-        gtk_container_remove (GTK_CONTAINER (images->switcher), GTK_WIDGET (row));
-        g_array_remove_index (images->images, idx);
+        gtk_container_remove (GTK_CONTAINER (editor->switcher), GTK_WIDGET (row));
+        g_array_remove_index (editor->images, idx);
 
-        if (idx < images->images->len) {
-                row = gtk_list_box_get_row_at_index (GTK_LIST_BOX (images->switcher), idx);
-                gtk_list_box_select_row (GTK_LIST_BOX (images->switcher), row);
+        if (idx < editor->images->len) {
+                row = gtk_list_box_get_row_at_index (GTK_LIST_BOX (editor->switcher), idx);
+                gtk_list_box_select_row (GTK_LIST_BOX (editor->switcher), row);
         }
         else if (idx > 0) {
-                row = gtk_list_box_get_row_at_index (GTK_LIST_BOX (images->switcher), idx - 1);
-                gtk_list_box_select_row (GTK_LIST_BOX (images->switcher), row);
+                row = gtk_list_box_get_row_at_index (GTK_LIST_BOX (editor->switcher), idx - 1);
+                gtk_list_box_select_row (GTK_LIST_BOX (editor->switcher), row);
         }
 
-        if (images->images->len == 0)
-                gtk_stack_set_visible_child_name (GTK_STACK (images->stack), "placeholder");
-        if (images->images->len <= 1)
-                gtk_widget_hide (images->switcher);
+        if (editor->images->len == 0)
+                gtk_stack_set_visible_child_name (GTK_STACK (editor->stack), "placeholder");
+        if (editor->images->len <= 1)
+                gtk_widget_hide (editor->switcher);
 
-        g_object_notify (G_OBJECT (images), "images");
+        g_object_notify (G_OBJECT (editor), "images");
 }
 
 static void
 row_selected (GtkListBox    *switcher,
               GtkListBoxRow *row,
-              GrImages      *images)
+              GrImageEditor *editor)
 {
         const char *path;
         const char *vis;
@@ -265,20 +265,20 @@ row_selected (GtkListBox    *switcher,
         angle = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (gtk_bin_get_child (GTK_BIN (row))), "angle"));
         pixbuf = load_pixbuf_fit_size (path, angle, 128, 128, TRUE);
 
-        vis = gtk_stack_get_visible_child_name (GTK_STACK (images->stack));
+        vis = gtk_stack_get_visible_child_name (GTK_STACK (editor->stack));
         if (strcmp (vis, "image1") == 0) {
-                gtk_image_set_from_pixbuf (GTK_IMAGE (images->image2), pixbuf);
-                gtk_stack_set_visible_child_name (GTK_STACK (images->stack), "image2");
+                gtk_image_set_from_pixbuf (GTK_IMAGE (editor->image2), pixbuf);
+                gtk_stack_set_visible_child_name (GTK_STACK (editor->stack), "image2");
         }
         else {
-                gtk_image_set_from_pixbuf (GTK_IMAGE (images->image1), pixbuf);
-                gtk_stack_set_visible_child_name (GTK_STACK (images->stack), "image1");
+                gtk_image_set_from_pixbuf (GTK_IMAGE (editor->image1), pixbuf);
+                gtk_stack_set_visible_child_name (GTK_STACK (editor->stack), "image1");
         }
 }
 
 void
-gr_images_rotate_image (GrImages *images,
-                        int       angle)
+gr_image_editor_rotate_image (GrImageEditor *editor,
+                              int            angle)
 {
         GtkListBoxRow *row;
         GtkWidget *image;
@@ -287,38 +287,38 @@ gr_images_rotate_image (GrImages *images,
 
         g_assert (angle == 0 || angle == 90 || angle == 180 || angle == 270);
 
-        row = gtk_list_box_get_selected_row (GTK_LIST_BOX (images->switcher));
+        row = gtk_list_box_get_selected_row (GTK_LIST_BOX (editor->switcher));
         if (row == NULL)
                 return;
 
         idx = gtk_list_box_row_get_index (row);
 
-        ri = &g_array_index (images->images, GrRotatedImage, idx);
+        ri = &g_array_index (editor->images, GrRotatedImage, idx);
         ri->angle = (ri->angle + angle) % 360;
 
         image = gtk_bin_get_child (GTK_BIN (row));
         set_thumb_image (GTK_IMAGE (image), ri);
 
-        row_selected (GTK_LIST_BOX (images->switcher), row, images);
+        row_selected (GTK_LIST_BOX (editor->switcher), row, editor);
 }
 
 static void
-gr_images_finalize (GObject *object)
+gr_image_editor_finalize (GObject *object)
 {
-        GrImages *self = (GrImages *)object;
+        GrImageEditor *self = (GrImageEditor *)object;
 
         g_array_free (self->images, TRUE);
 
-        G_OBJECT_CLASS (gr_images_parent_class)->finalize (object);
+        G_OBJECT_CLASS (gr_image_editor_parent_class)->finalize (object);
 }
 
 static void
-gr_images_get_property (GObject    *object,
-                        guint       prop_id,
-                        GValue     *value,
-                        GParamSpec *pspec)
+gr_image_editor_get_property (GObject    *object,
+                              guint       prop_id,
+                              GValue     *value,
+                              GParamSpec *pspec)
 {
-        GrImages *self = GR_IMAGES (object);
+        GrImageEditor *self = GR_IMAGE_EDITOR (object);
 
         switch (prop_id)
           {
@@ -336,12 +336,12 @@ gr_images_get_property (GObject    *object,
 }
 
 static void
-gr_images_set_property (GObject      *object,
-                        guint         prop_id,
-                        const GValue *value,
-                        GParamSpec   *pspec)
+gr_image_editor_set_property (GObject      *object,
+                              guint         prop_id,
+                              const GValue *value,
+                              GParamSpec   *pspec)
 {
-        GrImages *self = GR_IMAGES (object);
+        GrImageEditor *self = GR_IMAGE_EDITOR (object);
 
         switch (prop_id)
           {
@@ -359,15 +359,15 @@ gr_images_set_property (GObject      *object,
 }
 
 static void
-gr_images_class_init (GrImagesClass *klass)
+gr_image_editor_class_init (GrImageEditorClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
         GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
         GParamSpec *pspec;
 
-        object_class->finalize = gr_images_finalize;
-        object_class->get_property = gr_images_get_property;
-        object_class->set_property = gr_images_set_property;
+        object_class->finalize = gr_image_editor_finalize;
+        object_class->get_property = gr_image_editor_get_property;
+        object_class->set_property = gr_image_editor_set_property;
 
         pspec = g_param_spec_boxed ("images", NULL, NULL,
                                     G_TYPE_ARRAY,
@@ -379,18 +379,18 @@ gr_images_class_init (GrImagesClass *klass)
                                       G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_FLIP, pspec);
 
-        gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-images.ui");
+        gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-image-editor.ui");
 
-        gtk_widget_class_bind_template_child (widget_class, GrImages, stack);
-        gtk_widget_class_bind_template_child (widget_class, GrImages, switcher);
-        gtk_widget_class_bind_template_child (widget_class, GrImages, image1);
-        gtk_widget_class_bind_template_child (widget_class, GrImages, image2);
+        gtk_widget_class_bind_template_child (widget_class, GrImageEditor, stack);
+        gtk_widget_class_bind_template_child (widget_class, GrImageEditor, switcher);
+        gtk_widget_class_bind_template_child (widget_class, GrImageEditor, image1);
+        gtk_widget_class_bind_template_child (widget_class, GrImageEditor, image2);
 
         gtk_widget_class_bind_template_callback (widget_class, row_selected);
 }
 
 static void
-gr_images_init (GrImages *self)
+gr_image_editor_init (GrImageEditor *self)
 {
         gtk_widget_set_has_window (GTK_WIDGET (self), FALSE);
         gtk_widget_init_template (GTK_WIDGET (self));

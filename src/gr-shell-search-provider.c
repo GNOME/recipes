@@ -27,7 +27,7 @@
 
 #include "gr-shell-search-provider-dbus.h"
 #include "gr-shell-search-provider.h"
-#include "gr-images.h"
+#include "gr-image-editor.h"
 #include "gr-utils.h"
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="recipes">
   <!-- interface-requires gtk+ 3.10 -->
-  <template class="GrImages" parent="GtkBox">
+  <template class="GrImageEditor" parent="GtkBox">
     <property name="visible">1</property>
     <property name="orientation">horizontal</property>
     <property name="spacing">4</property>
