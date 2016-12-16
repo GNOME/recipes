@@ -113,6 +113,14 @@ BUILT_SOURCES = \
 	gr-shell-search-provider-dbus.h \
 	gr-shell-search-provider-dbus.c
 
+MAINTAINERCLEANFILES = \
+	resources-ui.c		\
+	resources-images.c	\
+	types.h			\
+	types.c			\
+	gr-shell-search-provider-dbus.h \
+	gr-shell-search-provider-dbus.c
+
 resource_ui_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/recipes-ui.gresource.xml)
 
 resources-ui.c: recipes-ui.gresource.xml $(resource_ui_files)
