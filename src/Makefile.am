@@ -126,12 +126,12 @@ resources-images.c: recipes-images.gresource.xml $(resource_image_files)
 		--target=$@ --sourcedir=$(srcdir) --generate-source
 
 types.h: types.h.template gr-diet.h
-	$(AM_V_GEN) ($(GLIB_MKENUMS) --template types.h.template gr-diet.h ) > xgen-eh && \
+	$(AM_V_GEN) ($(GLIB_MKENUMS) --template $^ ) > xgen-eh && \
 	cp xgen-eh $@ && \
 	rm -f xgen-eh
 
 types.c: types.c.template gr-diet.h
-	$(AM_V_GEN) ($(GLIB_MKENUMS) --template types.c.template gr-diet.h ) > xgen-ec && \
+	$(AM_V_GEN) ($(GLIB_MKENUMS) --template $^ ) > xgen-ec && \
 	cp xgen-ec $@ && \
 	rm -f xgen-ec
 
