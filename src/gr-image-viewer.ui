@@ -88,6 +88,7 @@
           <object class="GtkEventBox" id="event_box">
             <property name="visible">1</property>
             <property name="above-child">1</property>
+            <property name="can-focus">1</property>
             <child>
               <object class="GtkImage" id="image">
                 <property name="visible">1</property>

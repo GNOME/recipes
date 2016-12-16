@@ -24,6 +24,7 @@
 #include "gr-image-editor.h"
 #include "gr-utils.h"
 
+
 struct _GrImageViewer
 {
         GtkEventBox parent_instance;
@@ -134,6 +135,13 @@ hide_buttons (GrImageViewer *viewer)
 }
 
 static void
+show_preview (GrImageViewer *viewer)
+{
+        if (!gtk_revealer_get_child_revealed (GTK_REVEALER (viewer->preview_revealer)))
+                gtk_revealer_set_reveal_child (GTK_REVEALER (viewer->preview_revealer), TRUE);
+}
+
+static void
 hide_preview (GrImageViewer *viewer)
 {
         if (gtk_revealer_get_child_revealed (GTK_REVEALER (viewer->preview_revealer)))
@@ -157,6 +165,13 @@ hide_controls (GrImageViewer *viewer)
 {
         hide_buttons (viewer);
         hide_preview (viewer);
+}
+
+static void
+show_controls (GrImageViewer *viewer)
+{
+        show_buttons (viewer);
+        show_preview (viewer);
 }
 
 static gboolean
@@ -213,6 +228,7 @@ static void
 button_press (GrImageViewer *viewer)
 {
         toggle_preview (viewer);
+        gtk_widget_grab_focus (viewer->event_box);
 }
 
 static void
@@ -245,6 +261,33 @@ preview_selected (GrImageViewer *viewer)
         set_current_image (viewer);
 }
 
+static gboolean
+key_press_event (GtkWidget     *widget,
+                 GdkEvent      *event,
+                 GrImageViewer *viewer)
+{
+        GdkEventKey *key = (GdkEventKey *)event;
+
+        if (key->keyval == GDK_KEY_space) {
+                show_controls (viewer);
+                return TRUE;
+        }
+        if (key->keyval == GDK_KEY_Escape) {
+                hide_controls (viewer);
+                return TRUE;
+        }
+        else if (key->keyval == GDK_KEY_Left) {
+                prev_image (viewer);
+                return TRUE;
+        }
+        else if (key->keyval == GDK_KEY_Right) {
+                next_image (viewer);
+                return TRUE;
+        }
+
+        return FALSE;
+}
+
 static void
 gr_image_viewer_init (GrImageViewer *self)
 {
@@ -255,12 +298,11 @@ gr_image_viewer_init (GrImageViewer *self)
         g_signal_connect (self->event_box, "enter-notify-event", G_CALLBACK (enter_leave_notify), self);
         g_signal_connect (self->event_box, "leave-notify-event", G_CALLBACK (enter_leave_notify), self);
         g_signal_connect (self->event_box, "motion-notify-event", G_CALLBACK (motion_notify), self);
+        g_signal_connect (self->event_box, "key-press-event", G_CALLBACK (key_press_event), self);
 
-#if 1
         self->gesture = gtk_gesture_multi_press_new (self->event_box);
         gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (self->gesture), GTK_PHASE_BUBBLE);
         g_signal_connect_swapped (self->gesture, "pressed", G_CALLBACK (button_press), self);
-#endif
 }
 
 static void
