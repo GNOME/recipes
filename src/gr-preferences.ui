@@ -155,6 +155,7 @@
                         <child>
                           <object class="GtkTextView" id="description">
                             <property name="visible">1</property>
+                            <property name="wrap-mode">word</property>
                           </object>
                         </child>
                       </object>

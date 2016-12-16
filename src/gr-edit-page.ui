@@ -281,6 +281,7 @@
                     <child>
                       <object class="GtkTextView" id="description_field">
                         <property name="visible">1</property>
+                        <property name="wrap-mode">word</property>
                       </object>
                     </child>
                   </object>
@@ -468,6 +469,7 @@
                     <child>
                       <object class="GtkTextView" id="ingredients_field">
                         <property name="visible">1</property>
+                        <property name="wrap-mode">word</property>
                       </object>
                     </child>
                   </object>
@@ -538,6 +540,7 @@
                     <child>
                       <object class="GtkTextView" id="instructions_field">
                         <property name="visible">1</property>
+                        <property name="wrap-mode">word</property>
                       </object>
                     </child>
                   </object>
@@ -568,6 +571,7 @@
                     <child>
                       <object class="GtkTextView" id="notes_field">
                         <property name="visible">1</property>
+                        <property name="wrap-mode">word</property>
                       </object>
                     </child>
                   </object>
