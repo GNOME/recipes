@@ -90,8 +90,49 @@
             <property name="above-child">1</property>
             <property name="can-focus">1</property>
             <child>
-              <object class="GtkImage" id="image">
+              <object class="GtkStack" id="stack">
                 <property name="visible">1</property>
+                <property name="transition-type">crossfade</property>
+                <property name="transition-duration">500</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">1</property>
+                    <property name="width-request">360</property>
+                    <property name="height-request">240</property>
+                    <property name="icon-name">camera-photo-symbolic</property>
+                    <property name="pixel-size">96</property>
+                    <style>
+                      <class name="dim-label"/>
+                      <class name="framed"/>
+                    </style>
+                  </object>
+                  <packing>
+                    <property name="name">placeholder</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkImage" id="image1">
+                    <property name="visible">1</property>
+                    <style>
+                      <class name="framed"/>
+                    </style>
+                  </object>
+                  <packing>
+                    <property name="name">image1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkImage" id="image2">
+                    <property name="visible">1</property>
+                    <style>
+                      <class name="framed"/>
+                    </style>
+                  </object>
+                  <packing>
+                    <property name="name">image2</property>
+                  </packing>
+                </child>
+                <property name="visible-child-name">placeholder</property>
               </object>
             </child>
           </object>

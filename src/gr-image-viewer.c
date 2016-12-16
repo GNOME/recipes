@@ -20,6 +20,8 @@
 
 #include "config.h"
 
+#include <glib/gi18n.h>
+
 #include "gr-image-viewer.h"
 #include "gr-image-editor.h"
 #include "gr-utils.h"
@@ -30,7 +32,9 @@ struct _GrImageViewer
         GtkEventBox parent_instance;
 
         GtkWidget *overlay;
-        GtkWidget *image;
+        GtkWidget *image1;
+        GtkWidget *image2;
+        GtkWidget *stack;
         GtkWidget *event_box;
         GtkWidget *next_revealer;
         GtkWidget *prev_revealer;
@@ -47,6 +51,13 @@ struct _GrImageViewer
 
 
 G_DEFINE_TYPE (GrImageViewer, gr_image_viewer, GTK_TYPE_BOX)
+
+enum {
+        PROP_0,
+        PROP_IMAGES,
+        N_PROPS
+};
+
 
 GrImageViewer *
 gr_image_viewer_new (void)
@@ -80,17 +91,33 @@ set_current_image (GrImageViewer *viewer)
 {
         GtkFlowBoxChild *child;
 
-        if (!viewer->images)
+        if (viewer->index >= viewer->images->len) {
+                gtk_stack_set_visible_child_name (GTK_STACK (viewer->stack), "placeholder");
                 return;
+        }
 
         if (viewer->images->len > viewer->index) {
-                GrRotatedImage *ri = &g_array_index (viewer->images, GrRotatedImage, viewer->index);
-                g_autoptr(GdkPixbuf) pb = load_pixbuf_fill_size (ri->path, ri->angle, 360, 240);
-                gtk_image_set_from_pixbuf (GTK_IMAGE (viewer->image), pb);
+                GrRotatedImage *ri = NULL;
+                g_autoptr(GdkPixbuf) pixbuf = NULL;
+                const char *vis;
+
+                ri = &g_array_index (viewer->images, GrRotatedImage, viewer->index);
+                pixbuf = load_pixbuf_fill_size (ri->path, ri->angle, 360, 240);
+
+                vis = gtk_stack_get_visible_child_name (GTK_STACK (viewer->stack));
+                if (strcmp (vis, "image1") == 0) {
+                        gtk_image_set_from_pixbuf (GTK_IMAGE (viewer->image2), pixbuf);
+                        gtk_stack_set_visible_child_name (GTK_STACK (viewer->stack), "image2");
+                }
+                else {
+                        gtk_image_set_from_pixbuf (GTK_IMAGE (viewer->image1), pixbuf);
+                        gtk_stack_set_visible_child_name (GTK_STACK (viewer->stack), "image1");
+                }
         }
 
         child = gtk_flow_box_get_child_at_index (GTK_FLOW_BOX (viewer->preview_list), viewer->index);
-        gtk_flow_box_select_child (GTK_FLOW_BOX (viewer->preview_list), child);
+        if (child)
+                gtk_flow_box_select_child (GTK_FLOW_BOX (viewer->preview_list), child);
 }
 
 static void
@@ -257,8 +284,10 @@ preview_selected (GrImageViewer *viewer)
 
         child = l->data;
         g_list_free (l);
-        viewer->index = gtk_flow_box_child_get_index (child);
-        set_current_image (viewer);
+        if (viewer->index != gtk_flow_box_child_get_index (child)) {
+                viewer->index = gtk_flow_box_child_get_index (child);
+                set_current_image (viewer);
+        }
 }
 
 static gboolean
@@ -303,6 +332,45 @@ gr_image_viewer_init (GrImageViewer *self)
         self->gesture = gtk_gesture_multi_press_new (self->event_box);
         gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (self->gesture), GTK_PHASE_BUBBLE);
         g_signal_connect_swapped (self->gesture, "pressed", G_CALLBACK (button_press), self);
+        self->images = gr_rotated_image_array_new ();
+}
+
+static void
+gr_image_viewer_get_property (GObject    *object,
+                              guint       prop_id,
+                              GValue     *value,
+                              GParamSpec *pspec)
+{
+        GrImageViewer *self = GR_IMAGE_VIEWER (object);
+
+        switch (prop_id)
+          {
+          case PROP_IMAGES:
+                  g_value_set_boxed (value, self->images);
+                  break;
+
+          default:
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+          }
+}
+
+static void
+gr_image_viewer_set_property (GObject      *object,
+                              guint         prop_id,
+                              const GValue *value,
+                              GParamSpec   *pspec)
+{
+        GrImageViewer *self = GR_IMAGE_VIEWER (object);
+
+        switch (prop_id)
+          {
+          case PROP_IMAGES:
+                  gr_image_viewer_set_images (self, (GArray *) g_value_get_boxed (value));
+                  break;
+
+          default:
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+          }
 }
 
 static void
@@ -310,11 +378,21 @@ gr_image_viewer_class_init (GrImageViewerClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
         GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+        GParamSpec *pspec;
 
         object_class->finalize = gr_image_viewer_finalize;
+        object_class->get_property = gr_image_viewer_get_property;
+        object_class->set_property = gr_image_viewer_set_property;
+
+        pspec = g_param_spec_boxed ("images", NULL, NULL,
+                                    G_TYPE_ARRAY,
+                                    G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_IMAGES, pspec);
 
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-image-viewer.ui");
-        gtk_widget_class_bind_template_child (widget_class, GrImageViewer, image);
+        gtk_widget_class_bind_template_child (widget_class, GrImageViewer, image1);
+        gtk_widget_class_bind_template_child (widget_class, GrImageViewer, image2);
+        gtk_widget_class_bind_template_child (widget_class, GrImageViewer, stack);
         gtk_widget_class_bind_template_child (widget_class, GrImageViewer, event_box);
         gtk_widget_class_bind_template_child (widget_class, GrImageViewer, overlay);
         gtk_widget_class_bind_template_child (widget_class, GrImageViewer, prev_revealer);
@@ -326,18 +404,141 @@ gr_image_viewer_class_init (GrImageViewerClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, preview_selected);
 }
 
+static void
+add_image (GrImageViewer  *viewer,
+           GrRotatedImage *ri,
+           gboolean        select)
+{
+        g_array_append_vals (viewer->images, ri, 1);
+        ri = &g_array_index (viewer->images, GrRotatedImage, viewer->images->len - 1);
+        ri->path = g_strdup (ri->path);
+
+        populate_preview (viewer);
+        if (select)
+                viewer->index = viewer->images->len - 1;
+        set_current_image (viewer);
+
+        g_object_notify (G_OBJECT (viewer), "images");
+}
+
 void
 gr_image_viewer_set_images (GrImageViewer *viewer,
                             GArray        *images)
 {
-        if (viewer->images)
-                g_array_unref (viewer->images);
-        viewer->images = images;
-        if (viewer->images)
-                g_array_ref (viewer->images);
+        int i;
+
+        g_object_freeze_notify (G_OBJECT (viewer));
+
+        g_array_remove_range (viewer->images, 0, viewer->images->len);
+        g_object_notify (G_OBJECT (viewer), "images");
+
+        for (i = 0; i < images->len; i++) {
+                GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, i);
+                add_image (viewer, ri, FALSE);
+        }
 
         populate_preview (viewer);
-
         viewer->index = 0;
         set_current_image (viewer);
+
+        g_object_thaw_notify (G_OBJECT (viewer));
+}
+
+static void
+file_chooser_response (GtkNativeDialog *self,
+                       gint             response_id,
+                       GrImageViewer   *viewer)
+{
+        if (response_id == GTK_RESPONSE_ACCEPT) {
+                GrRotatedImage ri;
+                const char *dark;
+
+                ri.path = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (self));
+                ri.angle = 0;
+
+                dark = gtk_file_chooser_get_choice (GTK_FILE_CHOOSER (self), "dark");
+
+                ri.dark_text = g_strcmp0 (dark, "true") == 0;
+
+                add_image (viewer, &ri, TRUE);
+
+                g_free (ri.path);
+
+                show_controls (viewer);
+        }
+}
+
+static void
+open_filechooser (GrImageViewer *viewer)
+{
+        GtkWidget *window;
+        GtkFileChooserNative *chooser;
+        g_autoptr(GtkFileFilter) filter = NULL;
+
+        window = gtk_widget_get_ancestor (GTK_WIDGET (viewer), GTK_TYPE_APPLICATION_WINDOW);
+        chooser = gtk_file_chooser_native_new (_("Select an Image"),
+                                               GTK_WINDOW (window),
+                                               GTK_FILE_CHOOSER_ACTION_OPEN,
+                                               _("Open"),
+                                               _("Cancel"));
+        gtk_native_dialog_set_modal (GTK_NATIVE_DIALOG (chooser), TRUE);
+
+        filter = gtk_file_filter_new ();
+        gtk_file_filter_set_name (filter, _("Image files"));
+        gtk_file_filter_add_mime_type (filter, "image/*");
+        gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), filter);
+        gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (chooser), filter);
+        gtk_file_chooser_add_choice (GTK_FILE_CHOOSER (chooser), "dark", _("Use dark text"), NULL, NULL);
+
+        g_signal_connect (chooser, "response", G_CALLBACK (file_chooser_response), viewer);
+
+        gtk_native_dialog_show (GTK_NATIVE_DIALOG (chooser));
+}
+
+void
+gr_image_viewer_add_image (GrImageViewer *viewer)
+{
+        open_filechooser (viewer);
+}
+
+void
+gr_image_viewer_remove_image (GrImageViewer *viewer)
+{
+        g_array_remove_index (viewer->images, viewer->index);
+
+        if (viewer->index < viewer->images->len) {
+                populate_preview (viewer);
+                set_current_image (viewer);
+        }
+        else if (viewer->index > 0) {
+                viewer->index -= 1;
+                populate_preview (viewer);
+                set_current_image (viewer);
+        }
+
+        if (viewer->images->len == 0) {
+                gtk_stack_set_visible_child_name (GTK_STACK (viewer->stack), "placeholder");
+                hide_controls (viewer);
+        }
+        else
+                show_controls (viewer);
+
+        g_object_notify (G_OBJECT (viewer), "images");
+}
+
+void
+gr_image_viewer_rotate_image (GrImageViewer *viewer,
+                              int            angle)
+{
+        GrRotatedImage *ri;
+
+        g_assert (angle == 0 || angle == 90 || angle == 180 || angle == 270);
+
+        ri = &g_array_index (viewer->images, GrRotatedImage, viewer->index);
+        ri->angle = (ri->angle + angle) % 360;
+
+        populate_preview (viewer);
+        set_current_image (viewer);
+
+        g_object_notify (G_OBJECT (viewer), "images");
 }
