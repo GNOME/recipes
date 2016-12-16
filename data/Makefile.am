@@ -115,12 +115,12 @@ servicedir = $(datadir)/dbus-1/services
 service_in_files = org.gnome.Recipes.service.in
 dist_service_DATA = $(service_in_files:.service.in=.service)
 
-$(service_DATA): $(service_in_files) Makefile
+$(dist_service_DATA): $(service_in_files) Makefile
 	$(AM_V_GEN) sed -e "s|\@bindir\@|$(bindir)|" $< > $@
 
 EXTRA_DIST += $(service_in_files)
 
-GITIGNOREFILES = $(service_DATA)
+GITIGNOREFILES = $(dist_service_DATA)
 
 appdatadir = $(datadir)/appdata
 
