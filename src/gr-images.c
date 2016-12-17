@@ -1,4 +1,4 @@
-/* gr-image-editor.h:
+/* gr-images.c:
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *
@@ -18,29 +18,27 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
+#include "config.h"
 
-#include <gtk/gtk.h>
+#include "gr-images.h"
 
-G_BEGIN_DECLS
+static void
+gr_rotated_image_clear (gpointer data)
+{
+        GrRotatedImage *image = data;
 
-typedef struct {
-        char *path;
-        int angle;
-        gboolean dark_text;
-} GrRotatedImage;
+        g_clear_pointer (&image->path, g_free);
+        image->angle = 0;
+        image->dark_text = FALSE;
+}
 
-GArray *gr_rotated_image_array_new (void);
+GArray *
+gr_rotated_image_array_new (void)
+{
+        GArray *a;
 
-#define GR_TYPE_IMAGE_EDITOR (gr_image_editor_get_type())
+        a = g_array_new (TRUE, TRUE, sizeof (GrRotatedImage));
+        g_array_set_clear_func (a, gr_rotated_image_clear);
 
-G_DECLARE_FINAL_TYPE (GrImageEditor, gr_image_editor, GR, IMAGE_EDITOR, GtkBox)
-
-GrImageEditor  *gr_image_editor_new          (void);
-
-void            gr_image_editor_add_image    (GrImageEditor *editor);
-void            gr_image_editor_remove_image (GrImageEditor *editor);
-void            gr_image_editor_rotate_image (GrImageEditor *editor,
-                                              gint           angle);
-
-G_END_DECLS
+        return a;
+}

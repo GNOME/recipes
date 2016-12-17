@@ -23,7 +23,7 @@
 #include <glib/gi18n.h>
 
 #include "gr-image-viewer.h"
-#include "gr-image-editor.h"
+#include "gr-images.h"
 #include "gr-utils.h"
 
 

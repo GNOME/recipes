@@ -32,7 +32,7 @@
 #include "gr-cuisine.h"
 #include "gr-meal.h"
 #include "gr-season.h"
-#include "gr-image-editor.h"
+#include "gr-images.h"
 
 #ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
