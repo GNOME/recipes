@@ -225,8 +225,9 @@
                     <child>
                       <object class="GtkScrolledWindow">
                         <property name="visible">1</property>
-                        <property name="shadow-type">in</property>
-                        <property name="min-content-height">240</property>
+                        <property name="shadow-type">none</property>
+                        <property name="hscrollbar-policy">never</property>
+                        <property name="vscrollbar-policy">never</property>
                         <child>
                           <object class="GtkListBox" id="ingredients_list">
                             <property name="visible">1</property>
@@ -242,11 +243,12 @@
                             <child type="placeholder">
                               <object class="GtkLabel">
                                 <property name="visible">1</property>
-                                <property name="margin-start">40</property>
-                                <property name="margin-end">40</property>
+                                <property name="margin-start">20</property>
+                                <property name="margin-end">20</property>
                                 <property name="margin-top">10</property>
                                 <property name="margin-bottom">10</property>
-                                <property name="xalign">0</property>
+                                <property name="halign">fill</property>
+                                <property name="xalign">0.5</property>
                                 <property name="label" translatable="yes">No ingredients added yet</property>
                                 <style> <class name="dim-label"/> </style>
                               </object>
