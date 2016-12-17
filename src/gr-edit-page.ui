@@ -91,6 +91,7 @@
                 <child>
                   <object class="GtkEntry" id="name_entry">
                     <property name="visible">1</property>
+                    <property name="valign">center</property>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
@@ -114,6 +115,7 @@
                   <object class="GtkSpinButton" id="serves_spin">
                     <property name="visible">1</property>
                     <property name="adjustment">serves_adjustment</property>
+                    <property name="valign">center</property>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
@@ -121,7 +123,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GrImageEditor" id="images">
+                  <object class="GrImageViewer" id="images">
                     <signal name="notify::images" handler="images_changed" swapped="yes"/>
                     <accessibility>
                       <relation target="add_image_button" type="controlled-by"/>
