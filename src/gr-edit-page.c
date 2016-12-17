@@ -52,6 +52,7 @@ struct _GrEditPage
 
         GtkWidget *error_revealer;
         GtkWidget *error_label;
+        GtkWidget *name_label;
         GtkWidget *name_entry;
         GtkWidget *cuisine_combo;
         GtkWidget *category_combo;
@@ -78,6 +79,7 @@ struct _GrEditPage
         GtkWidget *new_ingredient_unit;
         GtkWidget *new_ingredient_add_button;
         GtkWidget *remove_ingredient_button;
+        GtkWidget *author_label;
 
         GtkSizeGroup *group;
 
@@ -333,6 +335,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
 
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, error_revealer);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, error_label);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, name_label);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, name_entry);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, cuisine_combo);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, category_combo);
@@ -358,6 +361,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, new_ingredient_amount);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, new_ingredient_unit);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, remove_ingredient_button);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, author_label);
 
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), dismiss_error);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), add_image);
@@ -465,6 +469,7 @@ gr_edit_page_clear (GrEditPage *page)
 {
         GArray *images;
 
+        gtk_label_set_label (GTK_LABEL (page->name_label), _("Name your recipe"));
         gtk_entry_set_text (GTK_ENTRY (page->name_entry), "");
         set_combo_value (GTK_COMBO_BOX (page->cuisine_combo), "");
         set_combo_value (GTK_COMBO_BOX (page->category_combo), "");
@@ -480,6 +485,7 @@ gr_edit_page_clear (GrEditPage *page)
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->vegan_check), FALSE);
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->vegetarian_check), FALSE);
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->milk_free_check), FALSE);
+        gtk_widget_hide (page->author_label);
 
         images = gr_rotated_image_array_new ();
         g_object_set (page->images, "images", images, NULL);
@@ -517,6 +523,7 @@ gr_edit_page_edit (GrEditPage *page,
         const char *season;
         const char *prep_time;
         const char *cook_time;
+        const char *author;
         int serves;
         int spiciness;
         const char *instructions;
@@ -524,6 +531,10 @@ gr_edit_page_edit (GrEditPage *page,
         g_autoptr(GdkPixbuf) pixbuf = NULL;
         GrDiets diets;
         g_autoptr(GArray) images = NULL;
+        g_autoptr(GrChef) chef = NULL;
+        GrRecipeStore *store;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         name = gr_recipe_get_name (recipe);
         serves = gr_recipe_get_serves (recipe);
@@ -535,8 +546,13 @@ gr_edit_page_edit (GrEditPage *page,
         cook_time = gr_recipe_get_cook_time (recipe);
         diets = gr_recipe_get_diets (recipe);
         instructions = gr_recipe_get_instructions (recipe);
+        author = gr_recipe_get_author (recipe);
 
         g_object_get (recipe, "images", &images, NULL);
+
+        chef = gr_recipe_store_get_chef (store, author ? author : "");
+
+        gtk_label_set_label (GTK_LABEL (page->name_label), _("Name"));
 
         gtk_entry_set_text (GTK_ENTRY (page->name_entry), name);
         set_combo_value (GTK_COMBO_BOX (page->cuisine_combo), cuisine);
@@ -558,6 +574,16 @@ gr_edit_page_edit (GrEditPage *page,
 
         g_object_set (page->images, "images", images, NULL);
 
+        if (chef) {
+                g_autofree char *tmp = NULL;
+                tmp = g_strdup_printf (_("Recipe by %s"), gr_chef_get_name (chef));
+                gtk_label_set_label (GTK_LABEL (page->author_label), tmp);
+                gtk_widget_show (page->author_label);
+        }
+        else {
+                gtk_widget_hide (page->author_label);
+        }
+
         g_set_object (&page->recipe, recipe);
 }
 
@@ -573,7 +599,6 @@ account_response (GDBusConnection *connection,
         GrEditPage *page = user_data;
         guint32 response;
         GVariant *options;
-        GrRecipeStore *store;
         g_autoptr(GrChef) chef = NULL;
         g_autoptr(GError) error = NULL;
 
@@ -585,6 +610,7 @@ account_response (GDBusConnection *connection,
                 const char *name;
                 const char *uri;
                 g_autofree char *path = NULL;
+                GrRecipeStore *store;
 
                 store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
                 chef = gr_recipe_store_get_chef (store, gr_recipe_store_get_user_key (store));
