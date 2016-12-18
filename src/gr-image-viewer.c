@@ -79,7 +79,7 @@ gr_image_viewer_finalize (GObject *object)
 {
         GrImageViewer *viewer = GR_IMAGE_VIEWER (object);
 
-        g_array_unref (viewer->images);
+        g_clear_pointer (&viewer->images, g_array_unref);
         remove_hide_timeout (viewer);
         g_clear_object (&viewer->gesture);
 
