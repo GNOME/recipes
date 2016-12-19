@@ -91,7 +91,14 @@ about_activated (GSimpleAction *action,
                 "Sam Hewitt",
                 NULL
         };
+        const char *recipe_authors[] = {
+                "Ray Strode",
+                "Bastian Ilsø",
+                NULL
+        };
+
         g_autoptr(GdkPixbuf) logo = NULL;
+        static gboolean first_time = TRUE;
 
         logo = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
                                          "org.gnome.Recipes",
@@ -115,6 +122,13 @@ about_activated (GSimpleAction *action,
                                "logo", logo,
                                "title", _("About GNOME Recipes"),
                                NULL);
+
+        if (first_time) {
+                first_time = FALSE;
+                gtk_about_dialog_add_credit_section (GTK_ABOUT_DIALOG (g_object_get_data (G_OBJECT (win), "gtk-about-dialog")),
+                                                     _("Recipes by"),
+                                                     recipe_authors);
+        }
 
 }
 
