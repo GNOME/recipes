@@ -682,8 +682,9 @@
         <child>
           <object class="GtkLabel">
             <property name="visible">1</property>
-            <property name="label" translatable="yes">Name your ingredient</property>
+            <property name="label" translatable="yes">Ingredient</property>
             <property name="xalign">0</property>
+            <style> <class name="dim-label"/> </style>
           </object>
         </child>
         <child>
@@ -696,6 +697,7 @@
             <property name="visible">1</property>
             <property name="label" translatable="yes">Amount</property>
             <property name="xalign">0</property>
+            <style> <class name="dim-label"/> </style>
           </object>
         </child>
         <child>
@@ -709,6 +711,7 @@
             <property name="visible">1</property>
             <property name="label" translatable="yes">Units</property>
             <property name="xalign">0</property>
+            <style> <class name="dim-label"/> </style>
           </object>
         </child>
         <child>
