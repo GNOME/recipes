@@ -94,6 +94,7 @@ about_activated (GSimpleAction *action,
         const char *recipe_authors[] = {
                 "Ray Strode",
                 "Bastian Ilsø",
+                "Frederik Fyksen",
                 NULL
         };
 
