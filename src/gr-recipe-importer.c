@@ -238,6 +238,7 @@ do_import_recipe (GrRecipeImporter *importer)
         g_autoptr(GArray) images = NULL;
         g_autoptr(GrRecipe) recipe = NULL;
         g_autoptr(GError) error = NULL;
+        g_autofree char *id = NULL;
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
@@ -261,7 +262,9 @@ do_import_recipe (GrRecipeImporter *importer)
         }
 
         recipe = gr_recipe_new ();
+        id = g_strconcat (importer->recipe_name, "_by_", importer->chef_id, NULL);
         g_object_set (recipe,
+                      "id", id,
                       "name", importer->recipe_name,
                       "author", importer->chef_id,
                       "description", importer->recipe_description,
