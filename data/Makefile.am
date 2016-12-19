@@ -49,7 +49,10 @@ dist_images_DATA = \
 	images/salad.jpg		\
 	images/spring-rolls.jpg		\
 	images/tofuscramble.jpg		\
-	images/wholesale-crackers.jpg
+	images/wholesale-crackers.jpg 	\
+	images/pan_pizza1.png		\
+	images/pan_pizza2.png		\
+	images/pan_pizza3.png
 
 dist_pkgdata_DATA = \
 	chefs.db	\
