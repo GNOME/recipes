@@ -50,6 +50,7 @@ gboolean        gr_recipe_contains_garlic  (GrRecipe   *recipe);
 int             gr_recipe_get_spiciness    (GrRecipe   *recipe);
 GDateTime      *gr_recipe_get_ctime        (GrRecipe   *recipe);
 GDateTime      *gr_recipe_get_mtime        (GrRecipe   *recipe);
+gboolean        gr_recipe_is_readonly      (GrRecipe   *recipe);
 
 gboolean        gr_recipe_matches          (GrRecipe   *recipe,
                                             const char *term);

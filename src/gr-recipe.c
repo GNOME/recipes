@@ -57,6 +57,8 @@ struct _GrRecipe
 
         gboolean garlic;
         int spiciness;
+
+        gboolean readonly;
 };
 
 G_DEFINE_TYPE (GrRecipe, gr_recipe, G_TYPE_OBJECT)
@@ -81,6 +83,7 @@ enum {
         PROP_DIETS,
         PROP_CTIME,
         PROP_MTIME,
+        PROP_READONLY,
         N_PROPS
 };
 
@@ -193,6 +196,10 @@ gr_recipe_get_property (GObject    *object,
                 g_value_set_boxed (value, self->mtime);
                 break;
 
+        case PROP_READONLY:
+                g_value_set_boolean (value, self->readonly);
+                break;
+
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
         }
@@ -229,6 +236,11 @@ gr_recipe_set_property (GObject      *object,
                         GParamSpec   *pspec)
 {
         GrRecipe *self = GR_RECIPE (object);
+
+        if (self->readonly && prop_id != PROP_NOTES) {
+                g_error ("trying to modify a readonly recipe");
+                return;
+        }
 
         switch (prop_id) {
         case PROP_ID:
@@ -348,6 +360,11 @@ gr_recipe_set_property (GObject      *object,
                 g_date_time_ref (self->mtime);
                 break;
 
+        case PROP_READONLY:
+                self->readonly = g_value_get_boolean (value);
+                update_mtime (self);
+                break;
+
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
         }
@@ -452,6 +469,11 @@ gr_recipe_class_init (GrRecipeClass *klass)
                                     G_TYPE_DATE_TIME,
                                     G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_MTIME, pspec);
+
+        pspec = g_param_spec_boolean ("readonly", NULL, NULL,
+                                      FALSE,
+                                      G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_READONLY, pspec);
 }
 
 static void
@@ -574,6 +596,12 @@ GDateTime *
 gr_recipe_get_mtime (GrRecipe *recipe)
 {
         return recipe->mtime;
+}
+
+gboolean
+gr_recipe_is_readonly (GrRecipe *recipe)
+{
+        return recipe->readonly;
 }
 
 /* term is assumed to be g_utf8_casefold'ed */
