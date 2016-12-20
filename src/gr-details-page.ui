@@ -360,7 +360,7 @@ followed</property>
           </packing>
         </child>
         <child>
-          <object class="GtkButton">
+          <object class="GtkButton" id="edit_button">
             <property name="visible">1</property>
             <property name="use-underline">1</property>
             <property name="label" translatable="yes">_Edit</property>

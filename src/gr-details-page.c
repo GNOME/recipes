@@ -134,6 +134,7 @@ struct _GrDetailsPage
         GtkWidget *duration_stack;
         GtkWidget *remaining_time_label;
         GtkWidget *chef_label;
+        GtkWidget *edit_button;
 };
 
 G_DEFINE_TYPE (GrDetailsPage, gr_details_page, GTK_TYPE_BOX)
@@ -566,6 +567,7 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, duration_stack);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, remaining_time_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, chef_label);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, edit_button);
 
         gtk_widget_class_bind_template_callback (widget_class, edit_recipe);
         gtk_widget_class_bind_template_callback (widget_class, delete_recipe);
@@ -727,6 +729,11 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         else {
                 gtk_widget_hide (page->chef_label);
         }
+
+        if (gr_recipe_is_readonly (recipe))
+                gtk_widget_set_sensitive (page->edit_button, FALSE);
+        else
+                gtk_widget_set_sensitive (page->edit_button, TRUE);
 }
 
 static void
