@@ -371,20 +371,32 @@ followed</property>
       <object class="GtkActionBar">
         <property name="visible">1</property>
         <child>
+          <object class="GtkButton" id="edit_button">
+            <property name="visible">1</property>
+            <property name="use-underline">1</property>
+            <property name="label" translatable="yes">_Edit</property>
+            <signal name="clicked" handler="edit_recipe" swapped="true"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="delete_button">
+            <property name="visible">1</property>
+            <property name="use-underline">1</property>
+            <property name="label" translatable="yes">_Delete</property>
+            <style> <class name="destructive-action"/> </style>
+            <signal name="clicked" handler="delete_recipe" swapped="true"/>
+          </object>
+        </child>
+        <child>
           <object class="GtkToggleButton" id="favorite_button">
             <property name="visible">1</property>
             <property name="use-underline">1</property>
             <property name="label" translatable="yes">_Cook it later</property>
             <signal name="toggled" handler="cook_it_later" swapped="yes"/>
           </object>
-        </child>
-        <child>
-          <object class="GtkButton">
-            <property name="visible">1</property>
-            <property name="use-underline">1</property>
-            <property name="label" translatable="yes">_Print</property>
-            <signal name="clicked" handler="print_recipe" swapped="yes"/>
-          </object>
+          <packing>
+            <property name="pack-type">end</property>
+          </packing>
         </child>
         <child>
           <object class="GtkButton">
@@ -393,30 +405,25 @@ followed</property>
             <property name="label" translatable="yes">_Export</property>
             <signal name="clicked" handler="export_recipe" swapped="yes"/>
           </object>
+          <packing>
+            <property name="pack-type">end</property>
+          </packing>
         </child>
         <child>
           <object class="GtkButton">
-            <property name="use-underline">1</property>
-            <property name="label" translatable="yes">_Share</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="delete_button">
             <property name="visible">1</property>
             <property name="use-underline">1</property>
-            <property name="label" translatable="yes">_Delete</property>
-            <signal name="clicked" handler="delete_recipe" swapped="true"/>
+            <property name="label" translatable="yes">_Print</property>
+            <signal name="clicked" handler="print_recipe" swapped="yes"/>
           </object>
           <packing>
             <property name="pack-type">end</property>
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="edit_button">
-            <property name="visible">1</property>
+          <object class="GtkButton">
             <property name="use-underline">1</property>
-            <property name="label" translatable="yes">_Edit</property>
-            <signal name="clicked" handler="edit_recipe" swapped="true"/>
+            <property name="label" translatable="yes">_Share</property>
           </object>
           <packing>
             <property name="pack-type">end</property>

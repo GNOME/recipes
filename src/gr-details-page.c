@@ -797,7 +797,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         }
 
         gtk_text_buffer_set_text (gtk_text_view_get_buffer (GTK_TEXT_VIEW (page->notes_field)),
-                                  notes, -1);
+                                  notes ? notes : "", -1);
 
         if (description && description[0]) {
                 gtk_label_set_label (GTK_LABEL (page->description_label), description);
@@ -808,12 +808,12 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         }
 
         if (gr_recipe_is_readonly (recipe)) {
-                gtk_widget_set_sensitive (page->edit_button, FALSE);
-                gtk_widget_set_sensitive (page->delete_button, FALSE);
+                gtk_widget_hide (page->edit_button);
+                gtk_widget_hide (page->delete_button);
         }
         else {
-                gtk_widget_set_sensitive (page->edit_button, TRUE);
-                gtk_widget_set_sensitive (page->delete_button, TRUE);
+                gtk_widget_show (page->edit_button);
+                gtk_widget_show (page->delete_button);
         }
 }
 
