@@ -71,7 +71,8 @@ gr_recipe_store_finalize (GObject *object)
 
 static gboolean
 load_recipes (GrRecipeStore *self,
-              const char    *dir)
+              const char    *dir,
+              gboolean       readonly)
 {
         g_autoptr(GKeyFile) keyfile = NULL;
         g_autoptr(GError) error = NULL;
@@ -347,24 +348,30 @@ load_recipes (GrRecipeStore *self,
 
                 recipe = g_hash_table_lookup (self->recipes, id);
                 if (recipe) {
-                        g_object_set (recipe,
-                                      "id", id,
-                                      "name", name,
-                                      "author", author,
-                                      "description", description,
-                                      "cuisine", cuisine,
-                                      "season", season,
-                                      "category", category,
-                                      "prep-time", prep_time,
-                                      "cook-time", cook_time,
-                                      "ingredients", ingredients,
-                                      "instructions", instructions,
-                                      "notes", notes,
-                                      "serves", serves,
-                                      "spiciness", spiciness,
-                                      "diets", diets,
-                                      "images", images,
-                                      NULL);
+                        // FIXME: only notes should be set here
+                        if (gr_recipe_is_readonly (recipe))
+                                g_object_set (recipe,
+                                              "notes", notes,
+                                              NULL);
+                        else
+                                g_object_set (recipe,
+                                              "id", id,
+                                              "name", name,
+                                              "author", author,
+                                              "description", description,
+                                              "cuisine", cuisine,
+                                              "season", season,
+                                              "category", category,
+                                              "prep-time", prep_time,
+                                              "cook-time", cook_time,
+                                              "ingredients", ingredients,
+                                              "instructions", instructions,
+                                              "serves", serves,
+                                              "spiciness", spiciness,
+                                              "diets", diets,
+                                              "images", images,
+                                              "readonly", readonly,
+                                              NULL);
                 }
                 else {
                         recipe = g_object_new (GR_TYPE_RECIPE,
@@ -386,6 +393,7 @@ load_recipes (GrRecipeStore *self,
                                                "images", images,
                                                "ctime", ctime,
                                                "mtime", mtime,
+                                               "readonly", readonly,
                                                NULL);
                         g_hash_table_insert (self->recipes, g_strdup (id), recipe);
                 }
@@ -434,6 +442,7 @@ save_recipes (GrRecipeStore *self)
                 GDateTime *ctime;
                 GDateTime *mtime;
                 int i;
+                gboolean readonly;
 
                 name = gr_recipe_get_name (recipe);
                 author = gr_recipe_get_author (recipe);
@@ -451,6 +460,7 @@ save_recipes (GrRecipeStore *self)
                 notes = gr_recipe_get_notes (recipe);
                 ctime = gr_recipe_get_ctime (recipe);
                 mtime = gr_recipe_get_mtime (recipe);
+                readonly = gr_recipe_is_readonly (recipe);
 
                 g_object_get (recipe, "images", &images, NULL);
 
@@ -468,6 +478,13 @@ save_recipes (GrRecipeStore *self)
                         dark[i] = ri->dark_text;
                 }
 
+                // For readonly recipes, we just store notes
+                if (notes && notes[0])
+                        g_key_file_set_string (keyfile, key, "Notes", notes);
+
+                if (readonly)
+                        continue;
+
                 g_key_file_set_string (keyfile, key, "Name", name ? name : "");
                 g_key_file_set_string (keyfile, key, "Author", author ? author : "");
                 g_key_file_set_string (keyfile, key, "Description", description ? description : "");
@@ -478,7 +495,6 @@ save_recipes (GrRecipeStore *self)
                 g_key_file_set_string (keyfile, key, "CookTime", cook_time ? cook_time : "");
                 g_key_file_set_string (keyfile, key, "Ingredients", ingredients ? ingredients : "");
                 g_key_file_set_string (keyfile, key, "Instructions", instructions ? instructions : "");
-                g_key_file_set_string (keyfile, key, "Notes", notes ? notes : "");
                 g_key_file_set_integer (keyfile, key, "Serves", serves);
                 g_key_file_set_integer (keyfile, key, "Spiciness", spiciness);
                 g_key_file_set_integer (keyfile, key, "Diets", diets);
@@ -680,7 +696,8 @@ save_cooked (GrRecipeStore *store)
 
 static gboolean
 load_chefs (GrRecipeStore *self,
-            const char    *dir)
+            const char    *dir,
+            gboolean       readonly)
 {
         g_autoptr(GKeyFile) keyfile = NULL;
         g_autoptr(GError) error = NULL;
@@ -770,6 +787,7 @@ load_chefs (GrRecipeStore *self,
                               "fullname", fullname,
                               "description", description,
                               "image-path", image_path,
+                              "readonly", readonly,
                               NULL);
         }
 
@@ -799,6 +817,9 @@ save_chefs (GrRecipeStore *store)
                 const char *fullname;
                 const char *description;
                 const char *image_path;
+
+                if (gr_chef_is_readonly (chef))
+                        continue;
 
                 name = gr_chef_get_name (chef);
                 fullname = gr_chef_get_fullname (chef);
@@ -889,19 +910,19 @@ gr_recipe_store_init (GrRecipeStore *self)
         current_dir = g_get_current_dir ();
         uninstalled_dir = g_build_filename (current_dir, "data", NULL);
 
-        if (!load_recipes (self, dir))
-                load_recipes (self, uninstalled_dir);
-        if (!load_chefs (self, dir))
-                load_chefs (self, uninstalled_dir);
+        if (!load_recipes (self, dir, TRUE))
+                load_recipes (self, uninstalled_dir, TRUE);
+        if (!load_chefs (self, dir, TRUE))
+                load_chefs (self, uninstalled_dir, TRUE);
         if (!load_picks (self, dir))
                 load_picks (self, uninstalled_dir);
 
         /* Now load saved data */
         dir = get_user_data_dir ();
-        load_recipes (self, dir);
+        load_recipes (self, dir, FALSE);
         load_favorites (self, dir);
         load_cooked (self, dir);
-        load_chefs (self, dir);
+        load_chefs (self, dir, FALSE);
         load_user (self, dir);
 
         g_message ("%d recipes loaded", g_hash_table_size (self->recipes));
