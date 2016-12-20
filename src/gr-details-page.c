@@ -137,6 +137,7 @@ struct _GrDetailsPage
         GtkWidget *edit_button;
         GtkWidget *delete_button;
         GtkWidget *notes_field;
+        GtkWidget *description_label;
 
         guint save_timeout;
 };
@@ -628,6 +629,7 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, edit_button);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, delete_button);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, notes_field);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, description_label);
 
         gtk_widget_class_bind_template_callback (widget_class, edit_recipe);
         gtk_widget_class_bind_template_callback (widget_class, delete_recipe);
@@ -734,6 +736,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         const char *ingredients;
         const char *instructions;
         const char *notes;
+        const char *description;
         g_autoptr(GdkPixbuf) pixbuf = NULL;
         GrRecipeStore *store;
         g_autoptr(GrChef) chef = NULL;
@@ -752,6 +755,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         ingredients = gr_recipe_get_ingredients (recipe);
         instructions = gr_recipe_get_instructions (recipe);
         notes = gr_recipe_get_notes (recipe);
+        description = gr_recipe_get_description (recipe);
 
         g_object_get (recipe, "images", &images, NULL);
         gr_image_viewer_set_images (GR_IMAGE_VIEWER (page->recipe_image), images);
@@ -794,6 +798,14 @@ gr_details_page_set_recipe (GrDetailsPage *page,
 
         gtk_text_buffer_set_text (gtk_text_view_get_buffer (GTK_TEXT_VIEW (page->notes_field)),
                                   notes, -1);
+
+        if (description && description[0]) {
+                gtk_label_set_label (GTK_LABEL (page->description_label), description);
+                gtk_widget_show (page->description_label);
+        }
+        else {
+                gtk_widget_hide (page->description_label);
+        }
 
         if (gr_recipe_is_readonly (recipe)) {
                 gtk_widget_set_sensitive (page->edit_button, FALSE);
