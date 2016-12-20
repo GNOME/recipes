@@ -135,6 +135,10 @@ struct _GrDetailsPage
         GtkWidget *remaining_time_label;
         GtkWidget *chef_label;
         GtkWidget *edit_button;
+        GtkWidget *delete_button;
+        GtkWidget *notes_field;
+
+        guint save_timeout;
 };
 
 G_DEFINE_TYPE (GrDetailsPage, gr_details_page, GTK_TYPE_BOX)
@@ -483,6 +487,11 @@ details_page_finalize (GObject *object)
         g_clear_object (&self->exporter);
         g_clear_pointer (&self->cooking, g_hash_table_unref);
 
+        if (self->save_timeout) {
+                g_source_remove (self->save_timeout);
+                self->save_timeout = 0;
+        }
+
         G_OBJECT_CLASS (gr_details_page_parent_class)->finalize (object);
 }
 
@@ -515,6 +524,53 @@ all_headers (GtkListBoxRow *row,
         gtk_list_box_row_set_header (row, header);
 }
 
+static gboolean
+save_notes (gpointer data)
+{
+        GrDetailsPage *page = data;
+        GtkTextBuffer *buffer;
+        GtkTextIter start, end;
+        g_autofree char *text = NULL;
+        GrRecipeStore *store;
+        g_autofree char *id = NULL;
+        g_autofree char *notes = NULL;
+        g_autoptr(GError) error = NULL;
+
+        buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (page->notes_field));
+        gtk_text_buffer_get_bounds (buffer, &start, &end);
+        text = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
+
+        g_object_get (page->recipe,
+                      "id", &id,
+                      "notes", &notes,
+                      NULL);
+        if (g_strcmp0 (notes, text) == 0)
+                goto out;
+
+        g_object_set (page->recipe, "notes", text, NULL);
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        if (!gr_recipe_store_update_recipe (store, page->recipe, id, &error)) {
+                g_print ("Error: %s\n", error->message);
+        }
+
+out:
+        page->save_timeout = 0;
+
+        return G_SOURCE_REMOVE;
+}
+
+static void
+schedule_save (GtkTextBuffer *buffer, GrDetailsPage *page)
+{
+        if (page->save_timeout) {
+                g_source_remove (page->save_timeout);
+                page->save_timeout = 0;
+        }
+
+        page->save_timeout = g_timeout_add (250, save_notes, page);
+}
+
 static void
 gr_details_page_init (GrDetailsPage *page)
 {
@@ -533,6 +589,8 @@ gr_details_page_init (GrDetailsPage *page)
 
         gtk_list_box_set_header_func (GTK_LIST_BOX (page->ingredients_list),
                                       all_headers, NULL, NULL);
+
+        g_signal_connect (gtk_text_view_get_buffer (GTK_TEXT_VIEW (page->notes_field)), "changed", G_CALLBACK (schedule_save), page);
 }
 
 static void
@@ -568,6 +626,8 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, remaining_time_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, chef_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, edit_button);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, delete_button);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, notes_field);
 
         gtk_widget_class_bind_template_callback (widget_class, edit_recipe);
         gtk_widget_class_bind_template_callback (widget_class, delete_recipe);
@@ -673,6 +733,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         int serves;
         const char *ingredients;
         const char *instructions;
+        const char *notes;
         g_autoptr(GdkPixbuf) pixbuf = NULL;
         GrRecipeStore *store;
         g_autoptr(GrChef) chef = NULL;
@@ -690,6 +751,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         cook_time = gr_recipe_get_cook_time (recipe);
         ingredients = gr_recipe_get_ingredients (recipe);
         instructions = gr_recipe_get_instructions (recipe);
+        notes = gr_recipe_get_notes (recipe);
 
         g_object_get (recipe, "images", &images, NULL);
         gr_image_viewer_set_images (GR_IMAGE_VIEWER (page->recipe_image), images);
@@ -730,10 +792,17 @@ gr_details_page_set_recipe (GrDetailsPage *page,
                 gtk_widget_hide (page->chef_label);
         }
 
-        if (gr_recipe_is_readonly (recipe))
+        gtk_text_buffer_set_text (gtk_text_view_get_buffer (GTK_TEXT_VIEW (page->notes_field)),
+                                  notes, -1);
+
+        if (gr_recipe_is_readonly (recipe)) {
                 gtk_widget_set_sensitive (page->edit_button, FALSE);
-        else
+                gtk_widget_set_sensitive (page->delete_button, FALSE);
+        }
+        else {
                 gtk_widget_set_sensitive (page->edit_button, TRUE);
+                gtk_widget_set_sensitive (page->delete_button, TRUE);
+        }
 }
 
 static void

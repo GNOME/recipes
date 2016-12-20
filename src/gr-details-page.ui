@@ -309,6 +309,45 @@ followed</property>
                     <property name="width">2</property>
                   </packing>
                 </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="label" translatable="yes">Notes</property>
+                    <property name="xalign">0</property>
+                    <style>
+                      <class name="heading"/>
+                    </style>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">6</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkScrolledWindow">
+                    <property name="visible">1</property>
+                    <property name="shadow-type">in</property>
+                    <property name="hscrollbar-policy">never</property>
+                    <property name="vscrollbar-policy">automatic</property>
+                    <property name="min-content-height">240</property>
+                    <child>
+                      <object class="GtkTextView" id="notes_field">
+                        <property name="visible">1</property>
+                        <property name="wrap-mode">word</property>
+                        <property name="top-margin">10</property>
+                        <property name="left-margin">10</property>
+                        <property name="right-margin">10</property>
+                        <property name="bottom-margin">10</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">7</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
               </object>
             </child>
           </object>
@@ -349,7 +388,7 @@ followed</property>
           </object>
         </child>
         <child>
-          <object class="GtkButton">
+          <object class="GtkButton" id="delete_button">
             <property name="visible">1</property>
             <property name="use-underline">1</property>
             <property name="label" translatable="yes">_Delete</property>
