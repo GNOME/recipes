@@ -1,6 +1,6 @@
 bin_PROGRAMS = recipes
 
-commitid := $(shell $(GIT) log -1 --oneline | cut -f1 -d' ')
+commitid := $(shell $(GIT) describe)
 
 recipes_CFLAGS = \
 	$(WARN_CFLAGS) 			\
