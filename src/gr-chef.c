@@ -37,6 +37,8 @@ struct _GrChef
         char *fullname;
         char *description;
         char *image_path;
+
+        gboolean readonly;
 };
 
 G_DEFINE_TYPE (GrChef, gr_chef, G_TYPE_OBJECT)
@@ -48,6 +50,7 @@ enum {
         PROP_FULLNAME,
         PROP_DESCRIPTION,
         PROP_IMAGE_PATH,
+        PROP_READONLY,
         N_PROPS
 };
 
@@ -94,6 +97,10 @@ gr_chef_get_property (GObject    *object,
                 g_value_set_string (value, self->image_path);
                 break;
 
+        case PROP_READONLY:
+                g_value_set_boolean (value, self->readonly);
+                break;
+
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
         }
@@ -130,6 +137,10 @@ gr_chef_set_property (GObject      *object,
 
         case PROP_IMAGE_PATH:
                 self->image_path = g_value_dup_string (value);
+                break;
+
+        case PROP_READONLY:
+                self->readonly = g_value_get_boolean (value);
                 break;
 
         default:
@@ -171,6 +182,11 @@ gr_chef_class_init (GrChefClass *klass)
                                      NULL,
                                      G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_IMAGE_PATH, pspec);
+
+        pspec = g_param_spec_boolean ("readonly", NULL, NULL,
+                                      FALSE,
+                                      G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_READONLY, pspec);
 }
 
 static void
@@ -219,3 +235,10 @@ gr_chef_get_image (GrChef *chef)
 {
         return chef->image_path;
 }
+
+gboolean
+gr_chef_is_readonly (GrChef *chef)
+{
+        return chef->readonly;
+}
+

@@ -34,5 +34,6 @@ const char      *gr_chef_get_name        (GrChef *chef);
 const char      *gr_chef_get_fullname    (GrChef *chef);
 const char      *gr_chef_get_description (GrChef *chef);
 const char      *gr_chef_get_image       (GrChef *chef);
+gboolean         gr_chef_is_readonly     (GrChef *chef);
 
 G_END_DECLS
