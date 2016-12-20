@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=recipes&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2016-12-15 04:36+0000\n"
-"PO-Revision-Date: 2016-12-15 13:21+0100\n"
+"PO-Revision-Date: 2016-12-20 12:27+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -57,41 +57,36 @@ msgstr ""
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:22
 msgid "Initial screen for the application"
-msgstr ""
+msgstr "Pantalla inicial de la aplicación"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:26
-#, fuzzy
 #| msgid "Cuisines page"
 msgid "The cuisines page"
-msgstr "Página de cocinas"
+msgstr "Añadir una página a marcadores"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:30
-#, fuzzy
 #| msgid "Indian Cuisine"
 msgid "An individual cuisine"
-msgstr "Cocina India"
+msgstr "Una cocina individual"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:34
-#, fuzzy
 #| msgid "Add a new recipe"
 msgid "An individual recipe"
-msgstr "Agrega una nueva receta"
+msgstr "Una receta individual"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:38
-#, fuzzy
 #| msgid "Add a new recipe"
 msgid "Creating a new recipe"
-msgstr "Agrega una nueva receta"
+msgstr "Crear una receta nueva"
 
 #: src/chef-conflict-dialog.ui:10
-#, fuzzy
 #| msgid "Imported Chef"
 msgid "Same Chef"
-msgstr "Cocinero Importado"
+msgstr "Mismo cocinero"
 
 #: src/chef-conflict-dialog.ui:16
 msgid "Different Chef"
-msgstr ""
+msgstr "Cocinero diferente"
 
 #: src/chef-conflict-dialog.ui:30
 msgid "Existing Chef"
@@ -186,10 +181,9 @@ msgid "Cooking time"
 msgstr "Tiempo de cocción"
 
 #: src/gr-details-page.ui:273
-#, fuzzy
 #| msgid "Dietary restrictions"
 msgid "Directions"
-msgstr "Restricciones alimentarias"
+msgstr "Pasos"
 
 #: src/gr-details-page.ui:325
 msgid "_Cook it later"
@@ -237,7 +231,7 @@ msgstr "_Nombre de la receta"
 
 #: src/gr-edit-page.ui:105
 msgid "Ser_ves"
-msgstr ""
+msgstr "Racio_nes"
 
 #: src/gr-edit-page.ui:144
 msgid "_Description"
@@ -297,7 +291,7 @@ msgstr "_Estación"
 
 #: src/gr-edit-page.ui:417
 msgid "S_piciness"
-msgstr ""
+msgstr "Sin es_pecias"
 
 #: src/gr-edit-page.ui:439
 msgid "Mild"
@@ -426,7 +420,6 @@ msgid "Today"
 msgstr "Hoy"
 
 #: src/gr-recipes-page.ui:54
-#, fuzzy
 #| msgid "Editor's Picks"
 msgid "Editor’s Picks"
 msgstr "Selección del editor"
@@ -498,7 +491,7 @@ msgstr "Ya existe una receta con este nombre."
 
 #: src/gr-app.c:114
 msgid "translator-credits"
-msgstr ""
+msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2016"
 
 #: src/gr-app.c:116
 msgid "About GNOME Recipes"
@@ -1207,9 +1200,8 @@ msgid "no Apricot"
 msgstr "ohne Aprikose"
 
 #: src/gr-ingredient.c:135
-#, fuzzy
 msgid "no Anchovis"
-msgstr "ohne Anchovis"
+msgstr "sin anchoas"
 
 #: src/gr-ingredient.c:136
 #, fuzzy
@@ -1217,9 +1209,8 @@ msgid "no Artichoke"
 msgstr "ohne Artischocke"
 
 #: src/gr-ingredient.c:137
-#, fuzzy
 msgid "no Asparagus"
-msgstr "ohne Spargel"
+msgstr "sin espárragos"
 
 #: src/gr-ingredient.c:138
 #, fuzzy
@@ -1231,9 +1222,8 @@ msgid "no Bacon"
 msgstr "sin bacon"
 
 #: src/gr-ingredient.c:140
-#, fuzzy
 msgid "no Banana"
-msgstr "ohne Banane"
+msgstr "sin plátano"
 
 #: src/gr-ingredient.c:141
 #, fuzzy
@@ -1256,9 +1246,8 @@ msgid "no Bagel"
 msgstr "ohne Brötchen"
 
 #: src/gr-ingredient.c:145
-#, fuzzy
 msgid "no Basmati rice"
-msgstr "ohne Basmati Reis"
+msgstr "Sin arroz basmati"
 
 #: src/gr-ingredient.c:146
 #, fuzzy
@@ -1286,9 +1275,8 @@ msgid "no Biscotti"
 msgstr "ohne Biscotti"
 
 #: src/gr-ingredient.c:151
-#, fuzzy
 msgid "no Beef sausage"
-msgstr "ohne Bratwurst"
+msgstr "sin salchichas de ternera"
 
 #: src/gr-ingredient.c:152
 #, fuzzy
@@ -1301,9 +1289,8 @@ msgid "no Bilberry"
 msgstr "ohne Heidelbeere"
 
 #: src/gr-ingredient.c:154
-#, fuzzy
 msgid "no Carrot"
-msgstr "ohne Karotte"
+msgstr "sin zanahoria"
 
 #: src/gr-ingredient.c:155
 #, fuzzy
@@ -1376,14 +1363,12 @@ msgid "no Squash"
 msgstr "ohne Kürbis"
 
 #: src/gr-ingredient.c:171
-#, fuzzy
 msgid "no Tangerine"
-msgstr "ohne Mandarine"
+msgstr "sin mandarina"
 
 #: src/gr-ingredient.c:172
-#, fuzzy
 msgid "no Tomato"
-msgstr "ohne Tomate"
+msgstr "sin tomate"
 
 #: src/gr-ingredient.c:173
 msgid "no Vinegar"
@@ -1403,9 +1388,9 @@ msgid "no Zinfandel"
 msgstr "ohne Zinfandel"
 
 #: src/gr-ingredients-list.c:83 src/gr-ingredients-list.c:91
-#, fuzzy, c-format
+#, c-format
 msgid "Could not parse %s as a fraction"
-msgstr "%s no es una fracción válida"
+msgstr "No se puede interpretar «%s» como una fracción"
 
 #: src/gr-ingredients-list.c:109
 msgctxt "number"
@@ -1415,19 +1400,18 @@ msgstr "una docena"
 #: src/gr-ingredients-list.c:110
 msgctxt "number"
 msgid "a"
-msgstr ""
+msgstr "un/una"
 
 #: src/gr-ingredients-list.c:111
 msgctxt "number"
 msgid "an"
-msgstr ""
+msgstr "un/una"
 
 #: src/gr-ingredients-list.c:112
-#, fuzzy
 #| msgid "Honey"
 msgctxt "number"
 msgid "one"
-msgstr "Miel"
+msgstr "un/una"
 
 #: src/gr-ingredients-list.c:113
 msgctxt "number"
@@ -1485,9 +1469,9 @@ msgid "twelve"
 msgstr "doce"
 
 #: src/gr-ingredients-list.c:166
-#, fuzzy, c-format
+#, c-format
 msgid "Could not parse %s as a number"
-msgstr "%s no es un número válido"
+msgstr "No se pudo inerpretar %s como un número"
 
 #: src/gr-ingredients-list.c:183
 msgctxt "unit"
@@ -1542,12 +1526,12 @@ msgstr "dl"
 #: src/gr-ingredients-list.c:186
 msgctxt "unit"
 msgid "deciliter"
-msgstr ""
+msgstr "decilitro"
 
 #: src/gr-ingredients-list.c:186
 msgctxt "unit"
 msgid "deciliters"
-msgstr ""
+msgstr "decilitro"
 
 #: src/gr-ingredients-list.c:187
 #| msgctxt "minute abbreviation"
@@ -1559,12 +1543,12 @@ msgstr "ml"
 #: src/gr-ingredients-list.c:187
 msgctxt "unit"
 msgid "milliliter"
-msgstr ""
+msgstr "mililitro"
 
 #: src/gr-ingredients-list.c:187
 msgctxt "unit"
 msgid "milliliters"
-msgstr ""
+msgstr "mililitros"
 
 #: src/gr-ingredients-list.c:188
 msgctxt "unit"
@@ -1574,22 +1558,22 @@ msgstr "lb"
 #: src/gr-ingredients-list.c:188
 msgctxt "unit"
 msgid "pound"
-msgstr ""
+msgstr "libra"
 
 #: src/gr-ingredients-list.c:188
 msgctxt "unit"
 msgid "pounds"
-msgstr ""
+msgstr "libras"
 
 #: src/gr-ingredients-list.c:189
 msgctxt "unit"
 msgid "box"
-msgstr ""
+msgstr "caja"
 
 #: src/gr-ingredients-list.c:189
 msgctxt "unit"
 msgid "boxes"
-msgstr ""
+msgstr "cajas"
 
 #: src/gr-ingredients-list.c:190
 msgctxt "unit"
@@ -1668,10 +1652,10 @@ msgid "Use the “Cook later” button to mark recipes as favorites."
 msgstr "Use el botón «Cocinar luego» para marcar recetas como favoritas."
 
 #: src/gr-recipe-exporter.c:117 src/gr-recipe-exporter.c:124
-#, fuzzy, c-format
+#, c-format
 #| msgid "The recipe %s has been exported as ‘%s’"
 msgid "The recipe %s has been exported as “%s”"
-msgstr "La receta %s ha sido exportada como ‘%s’"
+msgstr "La receta %s se ha exportado como «%s»"
 
 #: src/gr-recipe-exporter.c:143
 #, c-format
@@ -1721,10 +1705,10 @@ msgstr ""
 "texto"
 
 #: src/gr-recipe-importer.c:649
-#, fuzzy, c-format
+#, c-format
 #| msgid "No recipe found"
 msgid "No chef found"
-msgstr "No se encontró la receta"
+msgstr "No se ha encontrado al cocinero"
 
 #: src/gr-recipe-printer.c:119
 msgid "Author:"
@@ -1768,12 +1752,14 @@ msgid "You need to provide a name for the recipe"
 msgstr "Debes proporcionar un nombre para la receta"
 
 #: src/gr-recipe-store.c:977
-#, fuzzy, c-format
+#, c-format
 #| msgid "A recipe with this name already exists."
 msgid ""
 "A recipe with this name and author already exists.\n"
 "Please choose a different name"
-msgstr "Ya existe una receta con este nombre."
+msgstr ""
+"Ya existe una receta con este nombre.\n"
+"Elija un nombre diferente"
 
 #: src/gr-recipe-store.c:1006
 #, c-format
@@ -1806,7 +1792,7 @@ msgstr "por %s"
 
 #: src/gr-recipe-tile.c:115
 msgid "Anonymous"
-msgstr ""
+msgstr "Anónima"
 
 #: src/gr-season.c:41
 msgid "Thanksgiving"
