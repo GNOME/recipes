@@ -80,7 +80,6 @@
                   <object class="GtkBox">
                     <property name="visible">1</property>
                     <property name="orientation">vertical</property>
-                    <property name="spacing">20</property>
                     <property name="margin-top">20</property>
                     <property name="valign">start</property>
                     <property name="halign">end</property>
@@ -100,6 +99,7 @@
                       <object class="GtkBox">
                         <property name="visible">1</property>
                         <property name="halign">start</property>
+                        <property name="margin-top">10</property>
                         <style>
                           <class name="linked"/>
                         </style>
@@ -121,7 +121,7 @@
                               <object class="GtkImage">
                                 <property name="visible">1</property>
                                 <property name="icon-name">list-add-symbolic</property>
-                                <property name="pixel-size">20</property>
+                                <property name="icon-size">1</property>
                               </object>
                             </child>
                           </object>
@@ -147,7 +147,7 @@
                               <object class="GtkImage">
                                 <property name="visible">1</property>
                                 <property name="icon-name">object-rotate-left-symbolic</property>
-                                <property name="pixel-size">20</property>
+                                <property name="icon-size">1</property>
                               </object>
                             </child>
                           </object>
@@ -173,7 +173,7 @@
                               <object class="GtkImage">
                                 <property name="visible">1</property>
                                 <property name="icon-name">object-rotate-right-symbolic</property>
-                                <property name="pixel-size">20</property>
+                                <property name="icon-size">1</property>
                               </object>
                             </child>
                           </object>
@@ -199,7 +199,7 @@
                               <object class="GtkImage">
                                 <property name="visible">1</property>
                                 <property name="icon-name">user-trash-symbolic</property>
-                                <property name="pixel-size">20</property>
+                                <property name="icon-size">1</property>
                               </object>
                             </child>
                           </object>
@@ -213,120 +213,19 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel">
+                      <object class="GtkBox" id="ingredients_box">
                         <property name="visible">1</property>
-                        <property name="label" translatable="yes">Ingredients</property>
-                        <property name="xalign">0</property>
-                        <style> <class name="heading"/> </style>
+                        <property name="orientation">vertical</property>
                       </object>
-                    </child>
-                    <child>
-                      <object class="GtkScrolledWindow">
-                        <property name="visible">1</property>
-                        <property name="shadow-type">none</property>
-                        <property name="hscrollbar-policy">never</property>
-                        <property name="vscrollbar-policy">never</property>
-                        <child>
-                          <object class="GtkListBox" id="ingredients_list">
-                            <property name="visible">1</property>
-                            <property name="selection-mode">single</property>
-                            <signal name="selected-rows-changed" handler="selected_rows_changed" swapped="yes"/>
-                            <style>
-                              <class name="frame"/>
-                            </style>
-                            <accessibility>
-                              <relation target="add_ingredient_button" type="controlled-by"/>
-                              <relation target="remove_ingredient_button" type="controlled-by"/>
-                            </accessibility>
-                            <child type="placeholder">
-                              <object class="GtkLabel">
-                                <property name="visible">1</property>
-                                <property name="margin-start">20</property>
-                                <property name="margin-end">20</property>
-                                <property name="margin-top">10</property>
-                                <property name="margin-bottom">10</property>
-                                <property name="halign">fill</property>
-                                <property name="xalign">0.5</property>
-                                <property name="label" translatable="yes">No ingredients added yet</property>
-                                <style> <class name="dim-label"/> </style>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="visible">1</property>
-                        <property name="spacing">10</property>
-                        <property name="halign">start</property>
-                        <child>
-                          <object class="GtkButton" id="add_ingredient_button">
-                            <property name="visible">1</property>
-                            <property name="halign">center</property>
-                            <property name="valign">start</property>
-                            <property name="tooltip-text" translatable="yes">Add an ingredient</property>
-                            <accessibility>
-                              <relation target="ingredients_list" type="controller-for"/>
-                            </accessibility>
-                            <style>
-                              <class name="image-button"/>
-                              <class name="circular"/>
-                              <class name="dim-label"/>
-                            </style>
-                            <signal name="clicked" handler="add_ingredient" swapped="yes"/>
-                            <child>
-                              <object class="GtkImage">
-                                <property name="visible">1</property>
-                                <property name="icon-name">list-add-symbolic</property>
-                                <property name="pixel-size">20</property>
-                              </object>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkButton" id="remove_ingredient_button">
-                            <property name="visible">1</property>
-                            <property name="halign">center</property>
-                            <property name="valign">start</property>
-                            <property name="sensitive">0</property>
-                            <property name="tooltip-text" translatable="yes">Remove an ingredient</property>
-                            <accessibility>
-                              <relation target="ingredients_list" type="controller-for"/>
-                            </accessibility>
-                            <style>
-                              <class name="image-button"/>
-                              <class name="circular"/>
-                              <class name="dim-label"/>
-                            </style>
-                            <signal name="clicked" handler="remove_ingredient" swapped="yes"/>
-                            <child>
-                              <object class="GtkImage">
-                                <property name="visible">1</property>
-                                <property name="icon-name">edit-delete-symbolic</property>
-                                <property name="pixel-size">20</property>
-                              </object>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">1</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="fill">1</property>
-                      </packing>
                     </child>
 
                     <child>
                       <object class="GtkFlowBox">
                         <property name="visible">1</property>
+                        <property name="margin-top">40</property>
                         <property name="selection-mode">none</property>
-                        <property name="min-children-per-line">4</property>
-                        <property name="max-children-per-line">4</property>
+                        <property name="min-children-per-line">3</property>
+                        <property name="max-children-per-line">3</property>
                         <child>
                           <object class="GtkCheckButton" id="gluten_free_check">
                             <property name="visible">1</property>
@@ -359,123 +258,6 @@
                         </child>
                       </object>
                     </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">1</property>
-                        <property name="label" translatable="yes">Other Information</property>
-                        <property name="xalign">0</property>
-                        <style> <class name="heading"/> </style>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkGrid">
-                        <property name="visible">1</property>
-                        <property name="row-spacing">20</property>
-                        <property name="column-spacing">40</property>
-                        <property name="halign">fill</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">1</property>
-                        <property name="use-underline">1</property>
-                        <property name="mnemonic-widget">cuisine_combo</property>
-                        <property name="label" translatable="yes">_Cuisine</property>
-                        <property name="xalign">1</property>
-                        <style> <class name="dim-label"/> </style>
-                      </object>
-                      <packing>
-                        <property name="left-attach">0</property>
-                        <property name="top-attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">1</property>
-                        <property name="use-underline">1</property>
-                        <property name="mnemonic-widget">category_combo</property>
-                        <property name="label" translatable="yes">_Meal</property>
-                        <property name="xalign">1</property>
-                        <style> <class name="dim-label"/> </style>
-                      </object>
-                      <packing>
-                        <property name="left-attach">0</property>
-                        <property name="top-attach">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkComboBoxText" id="cuisine_combo">
-                        <property name="visible">1</property>
-                        <property name="has-entry">1</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">1</property>
-                        <property name="top-attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkComboBoxText" id="category_combo">
-                        <property name="visible">1</property>
-                        <property name="has-entry">1</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">1</property>
-                        <property name="top-attach">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">1</property>
-                        <property name="use-underline">1</property>
-                        <property name="mnemonic-widget">season_combo</property>
-                        <property name="label" translatable="yes">S_eason</property>
-                        <property name="xalign">1</property>
-                        <style> <class name="dim-label"/> </style>
-                      </object>
-                      <packing>
-                        <property name="left-attach">0</property>
-                        <property name="top-attach">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">1</property>
-                        <property name="use-underline">1</property>
-                        <property name="mnemonic-widget">spiciness_combo</property>
-                        <property name="label" translatable="yes">S_piciness</property>
-                        <property name="xalign">1</property>
-                        <style> <class name="dim-label"/> </style>
-                      </object>
-                      <packing>
-                        <property name="left-attach">0</property>
-                        <property name="top-attach">3</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkComboBoxText" id="season_combo">
-                        <property name="visible">1</property>
-                        <property name="has-entry">1</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">1</property>
-                        <property name="top-attach">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkComboBoxText" id="spiciness_combo">
-                        <property name="visible">1</property>
-                        <items>
-                          <item translatable="yes" id="mild">Mild</item>
-                          <item translatable="yes" id="spicy">Somewhat spicy</item>
-                          <item translatable="yes" id="hot">Hot</item>
-                          <item translatable="yes" id="extreme">Very spicy</item>
-                        </items>
-                      </object>
-                      <packing>
-                        <property name="left-attach">1</property>
-                        <property name="top-attach">3</property>
-                      </packing>
-                    </child>
-                  </object>
-                </child>
                   </object>
                 </child>
                 <child>
@@ -483,8 +265,7 @@
                     <property name="visible">1</property>
                     <property name="halign">start</property>
                     <property name="valign">start</property>
-                    <property name="row-spacing">20</property>
-                    <property name="column-spacing">40</property>
+                    <property name="column-spacing">20</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">1</property>
@@ -506,6 +287,7 @@
                         <property name="label" translatable="yes">_Name your recipe</property>
                         <property name="xalign">1</property>
                         <property name="halign">fill</property>
+                        <property name="valign">baseline</property>
                         <style> <class name="dim-label"/> </style>
                       </object>
                       <packing>
@@ -517,6 +299,8 @@
                       <object class="GtkEntry" id="name_entry">
                         <property name="visible">1</property>
                         <property name="hexpand">1</property>
+                        <property name="valign">baseline</property>
+                        <property name="margin-bottom">10</property>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -529,6 +313,7 @@
                         <property name="use-underline">1</property>
                         <property name="mnemonic-widget">serves_spin</property>
                         <property name="label" translatable="yes">Ser_ves</property>
+                        <property name="valign">baseline</property>
                         <property name="xalign">1</property>
                         <style> <class name="dim-label"/> </style>
                       </object>
@@ -542,6 +327,8 @@
                         <property name="visible">1</property>
                         <property name="adjustment">serves_adjustment</property>
                         <property name="halign">start</property>
+                        <property name="valign">baseline</property>
+                        <property name="margin-bottom">10</property>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -555,10 +342,32 @@
                         <property name="mnemonic-widget">prep_time_combo</property>
                         <property name="label" translatable="yes">_Preparation time</property>
                         <property name="xalign">1</property>
+                        <property name="valign">center</property>
+                        <property name="margin-bottom">10</property>
                         <style> <class name="dim-label"/> </style>
                       </object>
                       <packing>
                         <property name="left-attach">0</property>
+                        <property name="top-attach">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="prep_time_combo">
+                        <property name="visible">1</property>
+                        <property name="has-entry">1</property>
+                        <property name="halign">fill</property>
+                        <property name="valign">center</property>
+                        <property name="margin-bottom">10</property>
+                        <items>
+                          <item translatable="yes" id="Less than 15 minutes">Less than 15 minutes</item>
+                          <item translatable="yes" id="15 to 30 minutes">15 to 30 minutes</item>
+                          <item translatable="yes" id="30 to 45 minutes">30 to 45 minutes</item>
+                          <item translatable="yes" id="45 minutes to an hour">45 minutes to an hour</item>
+                          <item translatable="yes" id="More than an hour">More than an hour</item>
+                        </items>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
                         <property name="top-attach">3</property>
                       </packing>
                     </child>
@@ -569,6 +378,8 @@
                         <property name="mnemonic-widget">cook_time_combo</property>
                         <property name="label" translatable="yes">C_ooking time</property>
                         <property name="xalign">1</property>
+                        <property name="valign">center</property>
+                        <property name="margin-bottom">20</property>
                         <style> <class name="dim-label"/> </style>
                       </object>
                       <packing>
@@ -577,28 +388,12 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBoxText" id="prep_time_combo">
-                        <property name="visible">1</property>
-                        <property name="has-entry">1</property>
-                        <property name="halign">fill</property>
-                        <items>
-                          <item translatable="yes" id="Less than 15 minutes">Less than 15 minutes</item>
-                          <item translatable="yes" id="15 to 30 minutes">15 to 30 minutes</item>
-                          <item translatable="yes" id="30 to 45 minutes">30 to 45 minutes</item>
-                          <item translatable="yes" id="45 minutes to an hour">45 minutes to an hour</item>
-                          <item translatable="yes" id="More than an hour">More than an hour</item>
-                        </items>
-                      </object>
-                      <packing>
-                        <property name="left-attach">1</property>
-                        <property name="top-attach">3</property>
-                      </packing>
-                    </child>
-                    <child>
                       <object class="GtkComboBoxText" id="cook_time_combo">
                         <property name="visible">1</property>
                         <property name="has-entry">1</property>
                         <property name="halign">fill</property>
+                        <property name="valign">center</property>
+                        <property name="margin-bottom">20</property>
                         <items>
                           <item translatable="yes" id="Less than 15 minutes">Less than 15 minutes</item>
                           <item translatable="yes" id="15 to 30 minutes">15 to 30 minutes</item>
@@ -610,6 +405,163 @@
                       <packing>
                         <property name="left-attach">1</property>
                         <property name="top-attach">4</property>
+                      </packing>
+                    </child>
+
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">1</property>
+                        <property name="use-underline">1</property>
+                        <property name="mnemonic-widget">cuisine_combo</property>
+                        <property name="label" translatable="yes">_Cuisine</property>
+                        <property name="xalign">1</property>
+                        <property name="valign">center</property>
+                        <property name="margin-bottom">10</property>
+                        <style> <class name="dim-label"/> </style>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">5</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="cuisine_combo">
+                        <property name="visible">1</property>
+                        <property name="has-entry">1</property>
+                        <property name="valign">center</property>
+                        <property name="margin-bottom">10</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">5</property>
+                      </packing>
+                    </child>
+
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">1</property>
+                        <property name="use-underline">1</property>
+                        <property name="mnemonic-widget">category_combo</property>
+                        <property name="label" translatable="yes">_Meal</property>
+                        <property name="xalign">1</property>
+                        <property name="valign">center</property>
+                        <property name="margin-bottom">10</property>
+                        <style> <class name="dim-label"/> </style>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">6</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="category_combo">
+                        <property name="visible">1</property>
+                        <property name="has-entry">1</property>
+                        <property name="valign">center</property>
+                        <property name="margin-bottom">10</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">6</property>
+                      </packing>
+                    </child>
+
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">1</property>
+                        <property name="use-underline">1</property>
+                        <property name="mnemonic-widget">season_combo</property>
+                        <property name="label" translatable="yes">S_eason</property>
+                        <property name="xalign">1</property>
+                        <property name="valign">center</property>
+                        <property name="margin-bottom">10</property>
+                        <style> <class name="dim-label"/> </style>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">7</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="season_combo">
+                        <property name="visible">1</property>
+                        <property name="has-entry">1</property>
+                        <property name="valign">center</property>
+                        <property name="margin-bottom">10</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">7</property>
+                      </packing>
+                    </child>
+
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">1</property>
+                        <property name="use-underline">1</property>
+                        <property name="mnemonic-widget">spiciness_combo</property>
+                        <property name="label" translatable="yes">S_piciness</property>
+                        <property name="xalign">1</property>
+                        <property name="valign">center</property>
+                        <property name="margin-bottom">20</property>
+                        <style> <class name="dim-label"/> </style>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">8</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="spiciness_combo">
+                        <property name="visible">1</property>
+                        <property name="valign">center</property>
+                        <property name="margin-bottom">20</property>
+                        <items>
+                          <item translatable="yes" id="mild">Mild</item>
+                          <item translatable="yes" id="spicy">Somewhat spicy</item>
+                          <item translatable="yes" id="hot">Hot</item>
+                          <item translatable="yes" id="extreme">Very spicy</item>
+                        </items>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">8</property>
+                      </packing>
+                    </child>
+
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">1</property>
+                        <property name="label" translatable="yes">Description (optional)</property>
+                        <property name="xalign">0</property>
+                        <style> <class name="heading"/> </style>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">9</property>
+                        <property name="width">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkScrolledWindow">
+                        <property name="visible">1</property>
+                        <property name="shadow-type">in</property>
+                        <property name="min-content-height">120</property>
+                        <child>
+                          <object class="GtkTextView" id="description_field">
+                            <property name="visible">1</property>
+                            <property name="wrap-mode">word</property>
+                            <property name="top-margin">10</property>
+                            <property name="left-margin">10</property>
+                            <property name="right-margin">10</property>
+                            <property name="bottom-margin">10</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">10</property>
+                        <property name="width">2</property>
                       </packing>
                     </child>
                     <child>
@@ -621,7 +573,7 @@
                       </object>
                       <packing>
                         <property name="left-attach">0</property>
-                        <property name="top-attach">5</property>
+                        <property name="top-attach">11</property>
                         <property name="width">2</property>
                       </packing>
                     </child>
@@ -643,7 +595,7 @@
                       </object>
                       <packing>
                         <property name="left-attach">0</property>
-                        <property name="top-attach">6</property>
+                        <property name="top-attach">12</property>
                         <property name="width">2</property>
                       </packing>
                     </child>
@@ -655,7 +607,7 @@
                       </object>
                       <packing>
                         <property name="left-attach">0</property>
-                        <property name="top-attach">7</property>
+                        <property name="top-attach">13</property>
                         <property name="width">2</property>
                       </packing>
                     </child>
@@ -669,7 +621,6 @@
     </child>
   </template>
   <object class="GtkPopover" id="ingredient_popover">
-    <property name="relative-to">add_ingredient_button</property>
     <property name="position">top</property>
     <child>
       <object class="GtkBox">
@@ -728,7 +679,7 @@
             <property name="visible">1</property>
             <property name="label" translatable="yes">Add</property>
             <property name="halign">end</property>
-            <signal name="clicked" handler="add_ingredient2" swapped="yes"/>
+            <signal name="clicked" handler="add_ingredient2"/>
           </object>
         </child>
       </object>

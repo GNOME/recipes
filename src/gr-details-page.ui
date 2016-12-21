@@ -154,12 +154,9 @@ followed</property>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkListBox" id="ingredients_list">
+                      <object class="GtkBox" id="ingredients_box">
                         <property name="visible">1</property>
-                        <property name="selection-mode">none</property>
-                        <style>
-                          <class name="frame"/>
-                        </style>
+                        <property name="orientation">vertical</property>
                       </object>
                     </child>
                   </object>

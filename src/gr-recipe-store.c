@@ -1230,7 +1230,7 @@ gr_recipe_store_get_all_ingredients (GrRecipeStore *self,
         GrRecipe *recipe;
         GHashTable *ingreds;
         char **result;
-        int i;
+        int i, j;
 
         ingreds = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
 
@@ -1239,6 +1239,7 @@ gr_recipe_store_get_all_ingredients (GrRecipeStore *self,
                 const char *ingredients;
                 GrIngredientsList *list = NULL;
                 g_autofree char **ret = NULL;
+                g_autofree char **segments = NULL;
 
                 ingredients = gr_recipe_get_ingredients (recipe);
 
@@ -1246,9 +1247,12 @@ gr_recipe_store_get_all_ingredients (GrRecipeStore *self,
                         continue;
 
                 list = gr_ingredients_list_new (ingredients);
-                ret = gr_ingredients_list_get_ingredients (list);
-                for (i = 0; ret[i]; i++)
-                        g_hash_table_add (ingreds, ret[i]);
+                segments = gr_ingredients_list_get_segments (list);
+                for (j = 0; segments[j]; j++) {
+                        ret = gr_ingredients_list_get_ingredients (list, segments[j]);
+                        for (i = 0; ret[i]; i++)
+                                g_hash_table_add (ingreds, ret[i]);
+                }
 
                 g_object_unref (list);
         }
@@ -1307,7 +1311,6 @@ gr_recipe_store_remove_favorite (GrRecipeStore *self,
                         break;
                 }
         }
-
         save_favorites (self);
 
         g_signal_emit (self, changed_signal, 0, recipe);

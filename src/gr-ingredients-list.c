@@ -43,6 +43,7 @@ typedef struct
         gdouble value;
         gchar *unit;
         gchar *name;
+        gchar *segment;
 } Ingredient;
 
 static void
@@ -58,6 +59,7 @@ struct _GrIngredientsList
         GObject parent_instance;
 
         GList *ingredients;
+        GHashTable *segments;
 };
 
 G_DEFINE_TYPE (GrIngredientsList, gr_ingredients_list, G_TYPE_OBJECT)
@@ -222,6 +224,7 @@ parse_as_unit (Ingredient  *ing,
 static gboolean
 gr_ingredients_list_add_one (GrIngredientsList  *ingredients,
                              char               *line,
+                             char               *segment,
                              GError            **error)
 {
         Ingredient *ing;
@@ -250,6 +253,8 @@ gr_ingredients_list_add_one (GrIngredientsList  *ingredients,
         else
                 ing->name = g_strdup (line);
 
+        ing->segment = g_strdup (segment);
+
         ingredients->ingredients = g_list_append (ingredients->ingredients, ing);
 
         return TRUE;
@@ -262,15 +267,31 @@ gr_ingredients_list_populate (GrIngredientsList  *ingredients,
 {
         g_auto(GStrv) lines = NULL;
         int i;
+        g_autofree char *segment = NULL;
 
         lines = g_strsplit (text, "\n", 0);
 
         for (i = 0; lines[i]; i++) {
-                if (!gr_ingredients_list_add_one (ingredients, lines[i], error))
+                char *p;
+                p = strrchr (lines[i], '\t');
+                if (p) {
+                        segment = g_strdup (p + 1);
+                        *p = 0;
+                }
+                else
+                        segment = NULL;
+
+                if (segment)
+                        g_hash_table_add (ingredients->segments, g_strdup (segment));
+                if (!gr_ingredients_list_add_one (ingredients, lines[i],
+                                                  (char *)(segment ? segment : ""), error))
                         return FALSE;
         }
 
-       return TRUE;
+        if (g_hash_table_size (ingredients->segments) == 0)
+                g_hash_table_add (ingredients->segments, g_strdup (""));
+
+        return TRUE;
 
 }
 
@@ -280,6 +301,7 @@ ingredients_list_finalize (GObject *object)
         GrIngredientsList *self = GR_INGREDIENTS_LIST (object);
 
         g_list_free_full (self->ingredients, (GDestroyNotify)ingredient_free);
+        g_hash_table_unref (self->segments);
 
         G_OBJECT_CLASS (gr_ingredients_list_parent_class)->finalize (object);
 }
@@ -287,6 +309,7 @@ ingredients_list_finalize (GObject *object)
 static void
 gr_ingredients_list_init (GrIngredientsList *ingredients)
 {
+        ingredients->segments = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
 }
 
 static void
@@ -452,16 +475,24 @@ gr_ingredients_list_scale (GrIngredientsList *ingredients,
 }
 
 char **
-gr_ingredients_list_get_ingredients (GrIngredientsList *ingredients)
+gr_ingredients_list_get_segments (GrIngredientsList *ingredients)
+{
+        return (char **)g_hash_table_get_keys_as_array (ingredients->segments, NULL);
+}
+
+char **
+gr_ingredients_list_get_ingredients (GrIngredientsList *ingredients,
+                                     const char        *segment)
 {
         char **ret;
         int i;
         GList *l;
 
         ret = g_new0 (char *, g_list_length (ingredients->ingredients) + 1);
-        for (i = 0, l = ingredients->ingredients; l; i++, l = l->next) {
+        for (i = 0, l = ingredients->ingredients; l; l = l->next) {
                 Ingredient *ing = (Ingredient *)l->data;
-                ret[i] = g_strdup (ing->name);
+                if (g_strcmp0 (segment, ing->segment) == 0)
+                        ret[i++] = g_strdup (ing->name);
         }
 
         return ret;

@@ -60,7 +60,7 @@ struct _GrEditPage
         GtkWidget *spiciness_combo;
         GtkWidget *prep_time_combo;
         GtkWidget *cook_time_combo;
-        GtkWidget *ingredients_list;
+        GtkWidget *description_field;
         GtkWidget *instructions_field;
         GtkWidget *serves_spin;
         GtkWidget *gluten_free_check;
@@ -78,12 +78,14 @@ struct _GrEditPage
         GtkWidget *new_ingredient_amount;
         GtkWidget *new_ingredient_unit;
         GtkWidget *new_ingredient_add_button;
-        GtkWidget *remove_ingredient_button;
         GtkWidget *author_label;
+        GtkWidget *ingredients_box;
 
         GtkSizeGroup *group;
 
         guint account_response_signal_id;
+
+        GList *segments;
 };
 
 G_DEFINE_TYPE (GrEditPage, gr_edit_page, GTK_TYPE_BOX)
@@ -139,6 +141,7 @@ edit_page_finalize (GObject *object)
 
         g_clear_object (&self->recipe);
         g_clear_object (&self->group);
+        g_list_free (self->segments);
 
         G_OBJECT_CLASS (gr_edit_page_parent_class)->finalize (object);
 }
@@ -191,14 +194,17 @@ populate_season_combo (GrEditPage *page)
 }
 
 static void
-add_ingredient (GrEditPage *page)
+add_ingredient (GtkButton *button, GrEditPage *page)
 {
+        gtk_popover_set_relative_to (GTK_POPOVER (page->ingredient_popover),
+                                     GTK_WIDGET (button));
         gtk_popover_popup (GTK_POPOVER (page->ingredient_popover));
 }
 
 static void
 remove_ingredient (GrEditPage *page)
 {
+#if 0
         GtkListBoxRow *row;
 
         row = gtk_list_box_get_selected_row (GTK_LIST_BOX (page->ingredients_list));
@@ -206,22 +212,19 @@ remove_ingredient (GrEditPage *page)
                 return;
 
         gtk_container_remove (GTK_CONTAINER (page->ingredients_list), GTK_WIDGET (row));
-
+#endif
 }
 
 static void
 selected_rows_changed (GrEditPage *page)
 {
-        GtkListBoxRow *row;
-
-        row = gtk_list_box_get_selected_row (GTK_LIST_BOX (page->ingredients_list));
-        gtk_widget_set_sensitive (page->remove_ingredient_button, row != NULL);
 }
 
 static void
-add_ingredient_row (GrEditPage *page,
-                    const char *unit,
-                    const char *ingredient)
+add_ingredient_row (GtkWidget    *list,
+                    GtkSizeGroup *group,
+                    const char   *unit,
+                    const char   *ingredient)
 {
         GtkWidget *box;
         GtkWidget *label;
@@ -238,7 +241,7 @@ add_ingredient_row (GrEditPage *page,
                       NULL);
         gtk_style_context_add_class (gtk_widget_get_style_context (label), "dim-label");
         gtk_container_add (GTK_CONTAINER (box), label);
-        gtk_size_group_add_widget (page->group, label);
+        gtk_size_group_add_widget (group, label);
 
         label = gtk_label_new (ingredient);
         g_object_set (label,
@@ -248,7 +251,7 @@ add_ingredient_row (GrEditPage *page,
                       NULL);
         gtk_container_add (GTK_CONTAINER (box), label);
 
-        gtk_container_add (GTK_CONTAINER (page->ingredients_list), box);
+        gtk_container_add (GTK_CONTAINER (list), box);
         row = gtk_widget_get_parent (box);
         g_object_set_data_full (G_OBJECT (row), "ingredient", g_strdup_printf ("%s %s", unit, ingredient), g_free);
 
@@ -256,38 +259,55 @@ add_ingredient_row (GrEditPage *page,
 }
 
 static void
-add_ingredient2 (GrEditPage *page)
+add_ingredient2 (GtkButton *button, GrEditPage *page)
 {
         const char *ingredient;
         double amount;
         const char *unit;
         g_autofree char *s = NULL;
+        GtkWidget *list;
+        GtkWidget *b;
 
         gtk_popover_popdown (GTK_POPOVER (page->ingredient_popover));
+
+        b = gtk_popover_get_relative_to (GTK_POPOVER (page->ingredient_popover));
+        list = GTK_WIDGET (g_object_get_data (G_OBJECT (b), "list"));
 
         ingredient = gtk_entry_get_text (GTK_ENTRY (page->new_ingredient_name));
         amount = gtk_spin_button_get_value (GTK_SPIN_BUTTON (page->new_ingredient_amount));
         unit = gtk_entry_get_text (GTK_ENTRY (gtk_bin_get_child (GTK_BIN (page->new_ingredient_unit))));
 
         s = g_strdup_printf ("%g %s", amount, unit);
-        add_ingredient_row (page, s, ingredient);
+        add_ingredient_row (list, page->group, s, ingredient);
 }
 
 static char *
 collect_ingredients (GrEditPage *page)
 {
         GString *s;
-        GList *children, *l;
+        GtkWidget *segment;
+        GtkWidget *list;
+        GtkWidget *entry;
+        GList *children, *l, *k;
 
         s = g_string_new ("");
-        children = gtk_container_get_children (GTK_CONTAINER (page->ingredients_list));
-        for (l = children; l; l = l->next) {
-                GtkWidget *row = l->data;
-                if (s->len > 0)
-                        g_string_append (s, "\n");
-                g_string_append (s, (const char *)g_object_get_data (G_OBJECT (row), "ingredient"));
+        for (k = page->segments; k; k = k->next) {
+                segment = k->data;
+                list = GTK_WIDGET (g_object_get_data (G_OBJECT (segment), "list"));
+                entry = GTK_WIDGET (g_object_get_data (G_OBJECT (segment), "entry"));
+                children = gtk_container_get_children (GTK_CONTAINER (list));
+                for (l = children; l; l = l->next) {
+                        GtkWidget *row = l->data;
+                        if (s->len > 0)
+                                g_string_append (s, "\n");
+                        g_string_append (s, (const char *)g_object_get_data (G_OBJECT (row), "ingredient"));
+                        if (page->segments->next != NULL) {
+                                g_string_append (s, "\t");
+                                g_string_append (s, gtk_entry_get_text (GTK_ENTRY (entry)));
+                        }
+                }
+                g_list_free (children);
         }
-        g_list_free (children);
 
         return g_string_free (s, FALSE);
 }
@@ -315,9 +335,6 @@ gr_edit_page_init (GrEditPage *page)
 
         page->group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 
-        gtk_list_box_set_header_func (GTK_LIST_BOX (page->ingredients_list),
-                                      all_headers, NULL, NULL);
-
         populate_cuisine_combo (page);
         populate_category_combo (page);
         populate_season_combo (page);
@@ -344,7 +361,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, cook_time_combo);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, serves_spin);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, spiciness_combo);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, ingredients_list);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, description_field);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, instructions_field);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, gluten_free_check);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, nut_free_check);
@@ -360,8 +377,8 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, new_ingredient_name);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, new_ingredient_amount);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, new_ingredient_unit);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, remove_ingredient_button);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, author_label);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, ingredients_box);
 
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), dismiss_error);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), add_image);
@@ -369,7 +386,6 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), rotate_image_left);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), rotate_image_right);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), images_changed);
-        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), add_ingredient);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), add_ingredient2);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), remove_ingredient);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), selected_rows_changed);
@@ -464,6 +480,191 @@ get_spiciness (GrEditPage *page)
                 return 90;
 }
 
+static void add_list    (GtkButton *button, GrEditPage *page);
+static void remove_list (GtkButton *button, GrEditPage *page);
+static void update_segments (GrEditPage *page);
+
+static GtkWidget *
+add_ingredients_segment (GrEditPage *page,
+                         const char *segment_label)
+{
+        GtkWidget *segment;
+        GtkWidget *label;
+        GtkWidget *entry;
+        GtkWidget *list;
+        GtkWidget *box;
+        GtkWidget *button;
+        GtkWidget *stack;
+        GtkWidget *image;
+
+        segment = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+        g_object_set (segment,
+                      "margin-top", 20,
+                      "margin-bottom", 20,
+                      NULL);
+        gtk_widget_show (segment);
+        gtk_container_add (GTK_CONTAINER (page->ingredients_box), segment);
+
+        stack = gtk_stack_new ();
+        g_object_set_data (G_OBJECT (segment), "stack", stack);
+        gtk_widget_show (stack);
+        gtk_container_add (GTK_CONTAINER (segment), stack);
+
+        label = g_object_new (GTK_TYPE_LABEL,
+                              "label", segment_label[0] ? segment_label : _("Ingredients"),
+                              "xalign", 0.0,
+                              "visible", TRUE,
+                              NULL);
+        gtk_style_context_add_class (gtk_widget_get_style_context (label), "heading");
+        gtk_stack_add_named (GTK_STACK (stack), label, "label");
+
+        box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+        gtk_widget_set_valign (box, GTK_ALIGN_START);
+        gtk_widget_show (box);
+
+        entry = gtk_entry_new ();
+        g_object_set_data (G_OBJECT (segment), "entry", entry);
+        gtk_widget_set_halign (box, GTK_ALIGN_FILL);
+        gtk_widget_show (entry);
+        gtk_entry_set_text (GTK_ENTRY (entry), segment_label[0] ? segment_label : _("Ingredients for …"));
+
+        gtk_box_pack_start (GTK_BOX (box), entry, TRUE, TRUE, 0);
+
+        button = gtk_button_new_with_label (_("Remove"));
+        g_object_set_data (G_OBJECT (button), "segment", segment);
+        g_object_set_data (G_OBJECT (segment), "remove-list", button);
+        g_signal_connect (button, "clicked", G_CALLBACK (remove_list), page);
+        gtk_widget_show (button);
+        gtk_container_add (GTK_CONTAINER (box), button);
+
+        gtk_stack_add_named (GTK_STACK (stack), box, "entry");
+
+        list = gtk_list_box_new ();
+        g_object_set_data (G_OBJECT (segment), "list", list);
+
+        gtk_widget_show (list);
+        gtk_style_context_add_class (gtk_widget_get_style_context (list), "frame");
+        gtk_list_box_set_selection_mode (GTK_LIST_BOX (list), GTK_SELECTION_NONE);
+        gtk_list_box_set_header_func (GTK_LIST_BOX (list), all_headers, NULL, NULL);
+
+        label = g_object_new (GTK_TYPE_LABEL,
+                              "label", _("No ingredients added yet"),
+                              "xalign", 0.5,
+                              "halign", GTK_ALIGN_FILL,
+                              "margin-start", 20,
+                              "margin-end", 20,
+                              "margin-top", 10,
+                              "margin-bottom", 10,
+                              "visible", TRUE,
+                              NULL);
+        gtk_style_context_add_class (gtk_widget_get_style_context (label), "dim-label");
+        gtk_list_box_set_placeholder (GTK_LIST_BOX (list), label);
+
+        gtk_container_add (GTK_CONTAINER (segment), list);
+
+        box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+        gtk_widget_set_halign (box, GTK_ALIGN_START);
+        gtk_widget_show (box);
+
+        button = gtk_button_new ();
+        gtk_widget_set_tooltip_text (button, _("Add Ingredient"));
+        image = gtk_image_new_from_icon_name ("list-add-symbolic", 1);
+        gtk_widget_show (image);
+        gtk_widget_set_margin_top (button, 10);
+        gtk_container_add (GTK_CONTAINER (button), image);
+        gtk_style_context_add_class (gtk_widget_get_style_context (button), "dim-label");
+        gtk_style_context_add_class (gtk_widget_get_style_context (button), "image-button");
+        gtk_style_context_remove_class (gtk_widget_get_style_context (button), "text-button");
+        g_signal_connect (button, "clicked", G_CALLBACK (add_ingredient), page);
+        gtk_widget_show (button);
+        gtk_container_add (GTK_CONTAINER (box), button);
+        g_object_set_data (G_OBJECT (button), "list", list);
+
+        gtk_container_add (GTK_CONTAINER (segment), box);
+
+        page->segments = g_list_append (page->segments, segment);
+
+        return list;
+}
+
+static void
+add_list (GtkButton *button, GrEditPage *page)
+{
+        add_ingredients_segment (page, "");
+
+        update_segments (page);
+}
+
+static void
+remove_list (GtkButton *button, GrEditPage *page)
+{
+        GtkWidget *segment;
+
+        segment = GTK_WIDGET (g_object_get_data (G_OBJECT (button), "segment"));
+
+        page->segments = g_list_remove (page->segments, segment);
+        gtk_widget_destroy (segment);
+
+        update_segments (page);
+}
+
+static void
+update_segments (GrEditPage *page)
+{
+        GList *l;
+        GtkWidget *segment;
+        GtkWidget *stack;
+        GtkWidget *button;
+
+        for (l = page->segments; l; l = l->next) {
+                segment = l->data;
+                stack = GTK_WIDGET (g_object_get_data (G_OBJECT (segment), "stack"));
+                button = GTK_WIDGET (g_object_get_data (G_OBJECT (segment), "remove-list"));
+                if (page->segments->next == NULL)
+                        gtk_stack_set_visible_child_name (GTK_STACK (stack), "label");
+                else {
+                        gtk_stack_set_visible_child_name (GTK_STACK (stack), "entry");
+                        gtk_widget_set_visible (button, l != page->segments);
+                }
+        }
+}
+
+static void
+populate_ingredients (GrEditPage *page,
+                      const char *text)
+{
+        g_autoptr(GrIngredientsList) ingredients = NULL;
+        g_autofree char **segs = NULL;
+        g_auto(GStrv) ings = NULL;
+        int i, j;
+        GtkWidget *list;
+        GtkWidget *button;
+
+        container_remove_all (GTK_CONTAINER (page->ingredients_box));
+        g_list_free (page->segments);
+        page->segments = NULL;
+
+        ingredients = gr_ingredients_list_new (text);
+        segs = gr_ingredients_list_get_segments (ingredients);
+        for (j = 0; segs[j]; j++) {
+                list = add_ingredients_segment (page, segs[j]);
+                ings = gr_ingredients_list_get_ingredients (ingredients, segs[j]);
+                for (i = 0; ings[i]; i++) {
+                        g_autofree char *s = NULL;
+                        s = gr_ingredients_list_scale_unit (ingredients, ings[i], 1, 1);
+                        add_ingredient_row (list, page->group,  s, ings[i]);
+                }
+        }
+
+        button = gtk_button_new_with_label (_("Add List"));
+        gtk_widget_show (button);
+        gtk_widget_set_halign (button, GTK_ALIGN_FILL);
+        gtk_box_pack_end (GTK_BOX (page->ingredients_box), button, FALSE, TRUE, 0);
+        g_signal_connect (button, "clicked", G_CALLBACK (add_list), page);
+
+        update_segments (page);
+}
+
 void
 gr_edit_page_clear (GrEditPage *page)
 {
@@ -478,7 +679,8 @@ gr_edit_page_clear (GrEditPage *page)
         set_combo_value (GTK_COMBO_BOX (page->cook_time_combo), "");
         gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), 1);
         set_spiciness (page, 0);
-        container_remove_all (GTK_CONTAINER (page->ingredients_list));
+        populate_ingredients (page, "");
+        set_text_view_text (GTK_TEXT_VIEW (page->description_field), "");
         set_text_view_text (GTK_TEXT_VIEW (page->instructions_field), "");
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->gluten_free_check), FALSE);
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->nut_free_check), FALSE);
@@ -494,25 +696,6 @@ gr_edit_page_clear (GrEditPage *page)
         g_clear_object (&page->recipe);
 }
 
-static void
-populate_ingredients (GrEditPage *page,
-                       GrRecipe   *recipe)
-{
-        g_autoptr(GrIngredientsList) ingredients = NULL;
-        g_auto(GStrv) ings = NULL;
-        int i;
-
-        container_remove_all (GTK_CONTAINER (page->ingredients_list));
-
-        ingredients = gr_ingredients_list_new (gr_recipe_get_ingredients (recipe));
-        ings = gr_ingredients_list_get_ingredients (ingredients);
-        for (i = 0; ings[i]; i++) {
-                g_autofree char *s = NULL;
-                s = gr_ingredients_list_scale_unit (ingredients, ings[i], 1, 1);
-                add_ingredient_row (page,  s, ings[i]);
-        }
-}
-
 void
 gr_edit_page_edit (GrEditPage *page,
                    GrRecipe   *recipe)
@@ -526,7 +709,9 @@ gr_edit_page_edit (GrEditPage *page,
         const char *author;
         int serves;
         int spiciness;
+        const char *description;
         const char *instructions;
+        const char *ingredients;
         g_autofree char *image_path = NULL;
         g_autoptr(GdkPixbuf) pixbuf = NULL;
         GrDiets diets;
@@ -545,7 +730,9 @@ gr_edit_page_edit (GrEditPage *page,
         prep_time = gr_recipe_get_prep_time (recipe);
         cook_time = gr_recipe_get_cook_time (recipe);
         diets = gr_recipe_get_diets (recipe);
+        description = gr_recipe_get_description (recipe);
         instructions = gr_recipe_get_instructions (recipe);
+        ingredients = gr_recipe_get_ingredients (recipe);
         author = gr_recipe_get_author (recipe);
 
         g_object_get (recipe, "images", &images, NULL);
@@ -562,9 +749,10 @@ gr_edit_page_edit (GrEditPage *page,
         set_combo_value (GTK_COMBO_BOX (page->cook_time_combo), cook_time);
         set_spiciness (page, spiciness);
         gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), serves);
+        set_text_view_text (GTK_TEXT_VIEW (page->description_field), description);
         set_text_view_text (GTK_TEXT_VIEW (page->instructions_field), instructions);
 
-        populate_ingredients (page, recipe);
+        populate_ingredients (page, ingredients);
 
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->gluten_free_check), (diets & GR_DIET_GLUTEN_FREE) != 0);
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->nut_free_check), (diets & GR_DIET_NUT_FREE) != 0);
@@ -821,6 +1009,7 @@ gr_edit_page_save (GrEditPage *page)
         g_autofree char *cook_time = NULL;
         int serves;
         int spiciness;
+        g_autofree char *description = NULL;
         g_autofree char *ingredients = NULL;
         g_autofree char *instructions = NULL;
         GrRecipeStore *store;
@@ -840,6 +1029,7 @@ gr_edit_page_save (GrEditPage *page)
         spiciness = get_spiciness (page);
         serves = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (page->serves_spin));
         ingredients = collect_ingredients (page);
+        description = get_text_view_text (GTK_TEXT_VIEW (page->description_field));
         instructions = get_text_view_text (GTK_TEXT_VIEW (page->instructions_field));
         diets = (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->gluten_free_check)) ? GR_DIET_GLUTEN_FREE : 0) |
                 (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->nut_free_check)) ? GR_DIET_NUT_FREE : 0) |
@@ -867,6 +1057,7 @@ gr_edit_page_save (GrEditPage *page)
                               "cook-time", cook_time,
                               "serves", serves,
                               "spiciness", spiciness,
+                              "description", description,
                               "ingredients", ingredients,
                               "instructions", instructions,
                               "diets", diets,
@@ -893,6 +1084,7 @@ gr_edit_page_save (GrEditPage *page)
                                        "cook-time", cook_time,
                                        "serves", serves,
                                        "spiciness", spiciness,
+                                       "description", description,
                                        "ingredients", ingredients,
                                        "instructions", instructions,
                                        "diets", diets,

@@ -119,7 +119,7 @@ struct _GrDetailsPage
         GtkWidget *warning_box;
         GtkWidget *spicy_warning;
         GtkWidget *garlic_warning;
-        GtkWidget *ingredients_list;
+        GtkWidget *ingredients_box;
         GtkWidget *instructions_label;
         GtkWidget *cooking_revealer;
         GtkWidget *ingredients_check;
@@ -588,9 +588,6 @@ gr_details_page_init (GrDetailsPage *page)
                                      NULL,
                                      NULL);
 
-        gtk_list_box_set_header_func (GTK_LIST_BOX (page->ingredients_list),
-                                      all_headers, NULL, NULL);
-
         g_signal_connect (gtk_text_view_get_buffer (GTK_TEXT_VIEW (page->notes_field)), "changed", G_CALLBACK (schedule_save), page);
 }
 
@@ -611,7 +608,7 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, warning_box);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, spicy_warning);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, garlic_warning);
-        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, ingredients_list);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, ingredients_box);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, instructions_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, cooking_revealer);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, ingredients_check);
@@ -660,43 +657,64 @@ populate_ingredients (GrDetailsPage *page,
                       int            denom)
 {
         g_autoptr(GtkSizeGroup) group = NULL;
+        g_autofree char **segments = NULL;
         g_auto(GStrv) ings = NULL;
-        int i;
+        int i, j;
+        GtkWidget *list;
+        GtkWidget *label;
+
+        container_remove_all (GTK_CONTAINER (page->ingredients_box));
 
         group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
-        container_remove_all (GTK_CONTAINER (page->ingredients_list));
-        ings = gr_ingredients_list_get_ingredients (page->ingredients);
-        for (i = 0; ings[i]; i++) {
-                GtkWidget *row;
-                GtkWidget *box;
-                GtkWidget *label;
-                g_autofree char *s = NULL;
+        segments = gr_ingredients_list_get_segments (page->ingredients);
+        for (j = 0; segments[j]; j++) {
+                if (segments[j] && segments[j][0]) {
+                        label = gtk_label_new (segments[j]);
+                        gtk_widget_show (label);
+                        gtk_label_set_xalign (GTK_LABEL (label), 0);
+                        gtk_style_context_add_class (gtk_widget_get_style_context (label), "heading");
+                        gtk_container_add (GTK_CONTAINER (page->ingredients_box), label);
+                }
 
-                box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-                gtk_widget_show (box);
+                list = gtk_list_box_new ();
+                gtk_widget_show (list);
+                gtk_style_context_add_class (gtk_widget_get_style_context (list), "frame");
+                gtk_list_box_set_selection_mode (GTK_LIST_BOX (list), GTK_SELECTION_NONE);
+                gtk_list_box_set_header_func (GTK_LIST_BOX (list), all_headers, NULL, NULL);
+                gtk_container_add (GTK_CONTAINER (page->ingredients_box), list);
 
-                s = gr_ingredients_list_scale_unit (page->ingredients, ings[i], num, denom);
-                label = gtk_label_new (s);
-                g_object_set (label,
-                              "visible", TRUE,
-                              "xalign", 0.0,
+                ings = gr_ingredients_list_get_ingredients (page->ingredients, segments[j]);
+                for (i = 0; ings[i]; i++) {
+                        GtkWidget *row;
+                        GtkWidget *box;
+                        g_autofree char *s = NULL;
+
+                        box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+                        gtk_widget_show (box);
+
+                        s = gr_ingredients_list_scale_unit (page->ingredients, ings[i], num, denom);
+                        label = gtk_label_new (s);
+                        g_object_set (label,
+                                      "visible", TRUE,
+                                      "xalign", 0.0,
+                                      "margin", 10,
+                                      NULL);
+                        gtk_style_context_add_class (gtk_widget_get_style_context (label), "dim-label");
+                        gtk_container_add (GTK_CONTAINER (box), label);
+                        gtk_size_group_add_widget (group, label);
+
+                        label = gtk_label_new (ings[i]);
+                        g_object_set (label,
+                                      "visible", TRUE,
+                                      "xalign", 0.0,
                               "margin", 10,
                               NULL);
-                gtk_style_context_add_class (gtk_widget_get_style_context (label), "dim-label");
-                gtk_container_add (GTK_CONTAINER (box), label);
-                gtk_size_group_add_widget (group, label);
+                        gtk_container_add (GTK_CONTAINER (box), label);
 
-                label = gtk_label_new (ings[i]);
-                g_object_set (label,
-                              "visible", TRUE,
-                              "xalign", 0.0,
-                              "margin", 10,
-                              NULL);
-                gtk_container_add (GTK_CONTAINER (box), label);
-
-                gtk_container_add (GTK_CONTAINER (page->ingredients_list), box);
-                row = gtk_widget_get_parent (box);
-                gtk_list_box_row_set_activatable (GTK_LIST_BOX_ROW (row), FALSE);
+                        gtk_container_add (GTK_CONTAINER (list), box);
+                        row = gtk_widget_get_parent (box);
+                        gtk_list_box_row_set_activatable (GTK_LIST_BOX_ROW (row), FALSE);
+                }
         }
 
         gtk_widget_hide (page->warning_box);
