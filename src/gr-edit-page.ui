@@ -99,8 +99,10 @@
                     <child>
                       <object class="GtkBox">
                         <property name="visible">1</property>
-                        <property name="spacing">10</property>
                         <property name="halign">start</property>
+                        <style>
+                          <class name="linked"/>
+                        </style>
                         <child>
                           <object class="GtkButton" id="add_image_button">
                             <property name="visible">1</property>
@@ -112,7 +114,6 @@
                             </accessibility>
                             <style>
                               <class name="image-button"/>
-                              <class name="circular"/>
                               <class name="dim-label"/>
                             </style>
                             <signal name="clicked" handler="add_image" swapped="yes"/>
@@ -139,7 +140,6 @@
                             </accessibility>
                             <style>
                               <class name="image-button"/>
-                              <class name="circular"/>
                               <class name="dim-label"/>
                             </style>
                             <signal name="clicked" handler="rotate_image_left" swapped="yes"/>
@@ -166,7 +166,6 @@
                             </accessibility>
                             <style>
                               <class name="image-button"/>
-                              <class name="circular"/>
                               <class name="dim-label"/>
                             </style>
                             <signal name="clicked" handler="rotate_image_right" swapped="yes"/>
@@ -193,7 +192,6 @@
                             </accessibility>
                             <style>
                               <class name="image-button"/>
-                              <class name="circular"/>
                               <class name="dim-label"/>
                             </style>
                             <signal name="clicked" handler="remove_image" swapped="yes"/>
