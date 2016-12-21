@@ -127,9 +127,12 @@ load_recipes (GrRecipeStore *self,
                 id = groups[i];
                 name = g_key_file_get_string (keyfile, groups[i], "Name", &error);
                 if (error) {
-                        g_warning ("Failed to load recipe %s: %s", groups[i], error->message);
+                        if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
+                                g_warning ("Failed to load recipe %s: %s", groups[i], error->message);
+                                continue;
+                        }
+                        name = g_strdup ("unknown");
                         g_clear_error (&error);
-                        continue;
                 }
                 author = g_key_file_get_string (keyfile, groups[i], "Author", &error);
                 if (error) {
@@ -182,9 +185,11 @@ load_recipes (GrRecipeStore *self,
                 }
                 cook_time = g_key_file_get_string (keyfile, groups[i], "CookTime", &error);
                 if (error) {
-                        g_warning ("Failed to load recipe %s: %s", groups[i], error->message);
+                        if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
+                                g_warning ("Failed to load recipe %s: %s", groups[i], error->message);
+                                continue;
+                        }
                         g_clear_error (&error);
-                        continue;
                 }
                 ingredients = g_key_file_get_string (keyfile, groups[i], "Ingredients", &error);
                 if (error) {
@@ -348,7 +353,6 @@ load_recipes (GrRecipeStore *self,
 
                 recipe = g_hash_table_lookup (self->recipes, id);
                 if (recipe) {
-                        // FIXME: only notes should be set here
                         if (gr_recipe_is_readonly (recipe))
                                 g_object_set (recipe,
                                               "notes", notes,
