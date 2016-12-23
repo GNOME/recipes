@@ -86,6 +86,7 @@ struct _GrEditPage
         guint account_response_signal_id;
 
         GList *segments;
+        GtkWidget *active_row;
 };
 
 G_DEFINE_TYPE (GrEditPage, gr_edit_page, GTK_TYPE_BOX)
@@ -194,68 +195,197 @@ populate_season_combo (GrEditPage *page)
 }
 
 static void
+ingredient_changed (GrEditPage *page)
+{
+        const char *text;
+
+        text = gtk_entry_get_text (GTK_ENTRY (page->new_ingredient_name));
+        gtk_widget_set_sensitive (page->new_ingredient_add_button, strlen (text) > 0);
+}
+
+static void
 add_ingredient (GtkButton *button, GrEditPage *page)
 {
-        gtk_popover_set_relative_to (GTK_POPOVER (page->ingredient_popover),
-                                     GTK_WIDGET (button));
+        gtk_entry_set_text (GTK_ENTRY (page->new_ingredient_name), "");
+        gtk_entry_set_text (GTK_ENTRY (page->new_ingredient_amount), "");
+        gtk_entry_set_text (GTK_ENTRY (gtk_bin_get_child (GTK_BIN (page->new_ingredient_unit))), "");
+
+        gtk_popover_set_relative_to (GTK_POPOVER (page->ingredient_popover), GTK_WIDGET (button));
+        gtk_button_set_label (GTK_BUTTON (page->new_ingredient_add_button), _("Add"));
+        ingredient_changed (page);
         gtk_popover_popup (GTK_POPOVER (page->ingredient_popover));
 }
 
 static void
-remove_ingredient (GrEditPage *page)
+remove_ingredient (GtkButton *button, GrEditPage *page)
 {
-#if 0
-        GtkListBoxRow *row;
+        GtkWidget *row;
 
-        row = gtk_list_box_get_selected_row (GTK_LIST_BOX (page->ingredients_list));
+        row = gtk_widget_get_ancestor (GTK_WIDGET (button), GTK_TYPE_LIST_BOX_ROW);
         if (!row)
                 return;
 
-        gtk_container_remove (GTK_CONTAINER (page->ingredients_list), GTK_WIDGET (row));
-#endif
+        if (row == page->active_row)
+                page->active_row = NULL;
+
+        gtk_widget_destroy (row);
 }
 
 static void
-selected_rows_changed (GrEditPage *page)
+edit_ingredients_row (GtkListBoxRow *row,
+                      GrEditPage    *page)
 {
+        const char *amount;
+        const char *unit;
+        const char *ingredient;
+
+        amount = (const char *)g_object_get_data (G_OBJECT (row), "amount");
+        unit = (const char *)g_object_get_data (G_OBJECT (row), "unit");
+        ingredient = (const char *)g_object_get_data (G_OBJECT (row), "ingredient");
+
+        gtk_entry_set_text (GTK_ENTRY (page->new_ingredient_name), ingredient);
+        gtk_entry_set_text (GTK_ENTRY (page->new_ingredient_amount), amount);
+        gtk_entry_set_text (GTK_ENTRY (gtk_bin_get_child (GTK_BIN (page->new_ingredient_unit))), unit);
+
+        gtk_popover_set_relative_to (GTK_POPOVER (page->ingredient_popover), GTK_WIDGET (row));
+        gtk_button_set_label (GTK_BUTTON (page->new_ingredient_add_button), _("Apply"));
+        ingredient_changed (page);
+        gtk_popover_popup (GTK_POPOVER (page->ingredient_popover));
 }
 
 static void
-add_ingredient_row (GtkWidget    *list,
-                    GtkSizeGroup *group,
-                    const char   *unit,
-                    const char   *ingredient)
+edit_ingredient (GtkButton *button, GrEditPage *page)
+{
+        GtkWidget *row;
+
+        row = gtk_widget_get_ancestor (GTK_WIDGET (button), GTK_TYPE_LIST_BOX_ROW);
+        if (!row)
+                return;
+
+        edit_ingredients_row (GTK_LIST_BOX_ROW (row), page);
+}
+
+static void
+ingredient_row_activated (GtkListBox    *list,
+                          GtkListBoxRow *row,
+                          GrEditPage    *page)
+{
+        GtkWidget *stack;
+
+        if ((GtkWidget *)row == page->active_row)
+                return;
+
+        if (page->active_row) {
+                stack = g_object_get_data (G_OBJECT (page->active_row), "buttons-stack");
+                gtk_stack_set_visible_child_name (GTK_STACK (stack), "empty");
+        }
+
+        page->active_row = (GtkWidget *)row;
+
+        if (page->active_row) {
+                stack = g_object_get_data (G_OBJECT (page->active_row), "buttons-stack");
+                gtk_stack_set_visible_child_name (GTK_STACK (stack), "buttons");
+        }
+}
+
+static void
+update_ingredient_row (GtkWidget  *row,
+                       const char *amount,
+                       const char *unit,
+                       const char *ingredient)
+{
+        GtkWidget *label;
+        char *tmp;
+
+        label = GTK_WIDGET (g_object_get_data (G_OBJECT (row), "unit-label"));
+        tmp = g_strconcat (amount, " ", unit, NULL);
+        gtk_label_set_label (GTK_LABEL (label), tmp);
+        g_free (tmp);
+
+        label = GTK_WIDGET (g_object_get_data (G_OBJECT (row), "ingredient-label"));
+        gtk_label_set_label (GTK_LABEL (label), ingredient);
+
+        g_object_set_data_full (G_OBJECT (row), "amount", g_strdup (amount), g_free);
+        g_object_set_data_full (G_OBJECT (row), "unit", g_strdup (unit), g_free);
+        g_object_set_data_full (G_OBJECT (row), "ingredient", g_strdup (ingredient), g_free);
+}
+
+static GtkWidget *
+add_ingredient_row (GrEditPage   *page,
+                    GtkWidget    *list,
+                    GtkSizeGroup *group)
 {
         GtkWidget *box;
-        GtkWidget *label;
+        GtkWidget *unit_label;
+        GtkWidget *ingredient_label;
         GtkWidget *row;
+        GtkWidget *stack;
+        GtkWidget *buttons;
+        GtkWidget *button;
+        GtkWidget *image;
 
         box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
         gtk_widget_show (box);
 
-        label = gtk_label_new (unit);
-        g_object_set (label,
+        unit_label = gtk_label_new ("");
+        g_object_set (unit_label,
                       "visible", TRUE,
                       "xalign", 0.0,
                       "margin", 10,
                       NULL);
-        gtk_style_context_add_class (gtk_widget_get_style_context (label), "dim-label");
-        gtk_container_add (GTK_CONTAINER (box), label);
-        gtk_size_group_add_widget (group, label);
+        gtk_style_context_add_class (gtk_widget_get_style_context (unit_label), "dim-label");
+        gtk_container_add (GTK_CONTAINER (box), unit_label);
+        gtk_size_group_add_widget (group, unit_label);
 
-        label = gtk_label_new (ingredient);
-        g_object_set (label,
+        ingredient_label = gtk_label_new ("");
+        g_object_set (ingredient_label,
                       "visible", TRUE,
                       "xalign", 0.0,
                       "margin", 10,
                       NULL);
-        gtk_container_add (GTK_CONTAINER (box), label);
+        gtk_container_add (GTK_CONTAINER (box), ingredient_label);
+
+        stack = gtk_stack_new ();
+        gtk_widget_set_halign (stack, GTK_ALIGN_END);
+        gtk_stack_set_transition_type (GTK_STACK (stack), GTK_STACK_TRANSITION_TYPE_CROSSFADE);
+        gtk_widget_show (stack);
+        image = gtk_image_new ();
+        gtk_widget_show (image);
+        gtk_widget_set_opacity (image, 0);
+        gtk_stack_add_named (GTK_STACK (stack), image, "empty");
+        buttons = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+        g_object_set (buttons, "margin", 4, NULL);
+        button = gtk_button_new ();
+        g_signal_connect (button, "clicked", G_CALLBACK (edit_ingredient), page);
+        image = gtk_image_new_from_icon_name ("document-edit-symbolic", 1);
+        gtk_container_add (GTK_CONTAINER (button), image);
+        gtk_style_context_add_class (gtk_widget_get_style_context (button), "dim-label");
+        gtk_style_context_add_class (gtk_widget_get_style_context (button), "image-button");
+        gtk_style_context_add_class (gtk_widget_get_style_context (button), "circular");
+        gtk_container_add (GTK_CONTAINER (buttons), button);
+        button = gtk_button_new ();
+        g_signal_connect (button, "clicked", G_CALLBACK (remove_ingredient), page);
+        image = gtk_image_new_from_icon_name ("user-trash-symbolic", 1);
+        gtk_container_add (GTK_CONTAINER (button), image);
+        gtk_style_context_add_class (gtk_widget_get_style_context (button), "dim-label");
+        gtk_style_context_add_class (gtk_widget_get_style_context (button), "image-button");
+        gtk_style_context_add_class (gtk_widget_get_style_context (button), "circular");
+        gtk_container_add (GTK_CONTAINER (buttons), button);
+        gtk_widget_show_all (buttons);
+        gtk_stack_add_named (GTK_STACK (stack), buttons, "buttons");
+        gtk_box_pack_end (GTK_BOX (box), stack, TRUE, TRUE, 0);
 
         gtk_container_add (GTK_CONTAINER (list), box);
         row = gtk_widget_get_parent (box);
-        g_object_set_data_full (G_OBJECT (row), "ingredient", g_strdup_printf ("%s %s", unit, ingredient), g_free);
+        g_object_set_data (G_OBJECT (row), "unit-label", unit_label);
+        g_object_set_data (G_OBJECT (row), "ingredient-label", ingredient_label);
+        g_object_set_data (G_OBJECT (row), "buttons-stack", stack);
 
-        gtk_list_box_row_set_activatable (GTK_LIST_BOX_ROW (row), FALSE);
+        gtk_list_box_row_set_activatable (GTK_LIST_BOX_ROW (row), TRUE);
+
+        g_signal_connect (list, "row-activated", G_CALLBACK (ingredient_row_activated), page);
+
+        return row;
 }
 
 static void
@@ -267,18 +397,24 @@ add_ingredient2 (GtkButton *button, GrEditPage *page)
         g_autofree char *s = NULL;
         GtkWidget *list;
         GtkWidget *b;
+        GtkWidget *row;
 
         gtk_popover_popdown (GTK_POPOVER (page->ingredient_popover));
 
         b = gtk_popover_get_relative_to (GTK_POPOVER (page->ingredient_popover));
-        list = GTK_WIDGET (g_object_get_data (G_OBJECT (b), "list"));
+        if (GTK_IS_LIST_BOX_ROW (b)) {
+             row = b;
+        }
+        else {
+                list = GTK_WIDGET (g_object_get_data (G_OBJECT (b), "list"));
+                row = add_ingredient_row (page, list, page->group);
+        }
 
         ingredient = gtk_entry_get_text (GTK_ENTRY (page->new_ingredient_name));
         amount = gtk_spin_button_get_value (GTK_SPIN_BUTTON (page->new_ingredient_amount));
         unit = gtk_entry_get_text (GTK_ENTRY (gtk_bin_get_child (GTK_BIN (page->new_ingredient_unit))));
-
-        s = g_strdup_printf ("%g %s", amount, unit);
-        add_ingredient_row (list, page->group, s, ingredient);
+        s = g_strdup_printf ("%g", amount);
+        update_ingredient_row (row, s, unit, ingredient);
 }
 
 static char *
@@ -300,6 +436,10 @@ collect_ingredients (GrEditPage *page)
                         GtkWidget *row = l->data;
                         if (s->len > 0)
                                 g_string_append (s, "\n");
+                        g_string_append (s, (const char *)g_object_get_data (G_OBJECT (row), "amount"));
+                        g_string_append (s, " ");
+                        g_string_append (s, (const char *)g_object_get_data (G_OBJECT (row), "unit"));
+                        g_string_append (s, " ");
                         g_string_append (s, (const char *)g_object_get_data (G_OBJECT (row), "ingredient"));
                         if (page->segments->next != NULL) {
                                 g_string_append (s, "\t");
@@ -373,12 +513,13 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, remove_image_button);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, rotate_image_left_button);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, rotate_image_right_button);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, author_label);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, ingredients_box);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, ingredient_popover);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, new_ingredient_name);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, new_ingredient_amount);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, new_ingredient_unit);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, author_label);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, ingredients_box);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, new_ingredient_add_button);
 
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), dismiss_error);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), add_image);
@@ -388,7 +529,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), images_changed);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), add_ingredient2);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), remove_ingredient);
-        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), selected_rows_changed);
+        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), ingredient_changed);
 }
 
 GtkWidget *
@@ -643,6 +784,7 @@ populate_ingredients (GrEditPage *page,
         container_remove_all (GTK_CONTAINER (page->ingredients_box));
         g_list_free (page->segments);
         page->segments = NULL;
+        page->active_row = NULL;
 
         ingredients = gr_ingredients_list_new (text);
         segs = gr_ingredients_list_get_segments (ingredients);
@@ -651,8 +793,17 @@ populate_ingredients (GrEditPage *page,
                 ings = gr_ingredients_list_get_ingredients (ingredients, segs[j]);
                 for (i = 0; ings[i]; i++) {
                         g_autofree char *s = NULL;
+                        g_auto(GStrv) strv = NULL;
+                        const char *amount;
+                        const char *unit;
+                        GtkWidget *row;
+
                         s = gr_ingredients_list_scale_unit (ingredients, ings[i], 1, 1);
-                        add_ingredient_row (list, page->group,  s, ings[i]);
+                        strv = g_strsplit (s, " ", 2);
+                        amount = strv[0];
+                        unit = strv[1] ? strv[1] : "";
+                        row = add_ingredient_row (page, list, page->group);
+                        update_ingredient_row (row, amount, unit, ings[i]);
                 }
         }
 
