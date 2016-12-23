@@ -128,7 +128,7 @@ int main (int argc, char *argv[])
         }
 
         error = NULL;
-        path = g_test_build_filename (G_TEST_DIST, "data", NULL);
+        path = g_test_build_filename (G_TEST_DIST, "ingredients-data", NULL);
         dir = g_dir_open (path, 0, &error);
         g_free (path);
         g_assert_no_error (error);
@@ -137,7 +137,7 @@ int main (int argc, char *argv[])
                         continue;
 
                 path = g_strdup_printf ("/ingredients/parse/%s", name);
-                g_test_add_data_func_full (path, g_test_build_filename (G_TEST_DIST, "data", name, NULL),
+                g_test_add_data_func_full (path, g_test_build_filename (G_TEST_DIST, "ingredients-data", name, NULL),
                                            test_parse, g_free);
                 g_free (path);
         }

@@ -18,10 +18,10 @@ ingredients_CFLAGS = \
 ingredients_LDADD = $(RECIPES_LIBS)
 
 EXTRA_DIST = \
-	data/valid-1.expected data/valid-1.in	\
-	data/valid-2.expected data/valid-2.in	\
-	data/valid-3.expected data/valid-3.in	\
-	data/valid-4.expected data/valid-4.in	\
-	data/valid-5.expected data/valid-5.in
+	ingredients-data/valid-1.expected ingredients-data/valid-1.in	\
+	ingredients-data/valid-2.expected ingredients-data/valid-2.in	\
+	ingredients-data/valid-3.expected ingredients-data/valid-3.in	\
+	ingredients-data/valid-4.expected ingredients-data/valid-4.in	\
+	ingredients-data/valid-5.expected ingredients-data/valid-5.in
 
 -include $(top_srcdir)/git.mk
