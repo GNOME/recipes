@@ -266,26 +266,35 @@ edit_ingredient (GtkButton *button, GrEditPage *page)
 }
 
 static void
-ingredient_row_activated (GtkListBox    *list,
-                          GtkListBoxRow *row,
-                          GrEditPage    *page)
+set_active_row (GrEditPage *page,
+                GtkWidget *row)
 {
         GtkWidget *stack;
-
-        if ((GtkWidget *)row == page->active_row)
-                return;
 
         if (page->active_row) {
                 stack = g_object_get_data (G_OBJECT (page->active_row), "buttons-stack");
                 gtk_stack_set_visible_child_name (GTK_STACK (stack), "empty");
         }
 
-        page->active_row = (GtkWidget *)row;
+        if (page->active_row == row) {
+                page->active_row = NULL;
+                return;
+        }
+
+        page->active_row = row;
 
         if (page->active_row) {
                 stack = g_object_get_data (G_OBJECT (page->active_row), "buttons-stack");
                 gtk_stack_set_visible_child_name (GTK_STACK (stack), "buttons");
         }
+}
+
+static void
+ingredient_row_activated (GtkListBox    *list,
+                          GtkListBoxRow *row,
+                          GrEditPage    *page)
+{
+        set_active_row (page, GTK_WIDGET (row));
 }
 
 static void
@@ -382,8 +391,6 @@ add_ingredient_row (GrEditPage   *page,
         g_object_set_data (G_OBJECT (row), "buttons-stack", stack);
 
         gtk_list_box_row_set_activatable (GTK_LIST_BOX_ROW (row), TRUE);
-
-        g_signal_connect (list, "row-activated", G_CALLBACK (ingredient_row_activated), page);
 
         return row;
 }
@@ -681,6 +688,7 @@ add_ingredients_segment (GrEditPage *page,
         gtk_stack_add_named (GTK_STACK (stack), box, "entry");
 
         list = gtk_list_box_new ();
+        g_signal_connect (list, "row-activated", G_CALLBACK (ingredient_row_activated), page);
         g_object_set_data (G_OBJECT (segment), "list", list);
 
         gtk_widget_show (list);
@@ -734,6 +742,7 @@ add_list (GtkButton *button, GrEditPage *page)
         add_ingredients_segment (page, "");
 
         update_segments (page);
+        set_active_row (page, NULL);
 }
 
 static void
@@ -747,6 +756,7 @@ remove_list (GtkButton *button, GrEditPage *page)
         gtk_widget_destroy (segment);
 
         update_segments (page);
+        set_active_row (page, NULL);
 }
 
 static void
