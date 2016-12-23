@@ -36,7 +36,8 @@ char              *gr_ingredients_list_scale           (GrIngredientsList  *ingr
                                                         int                 num,
                                                         int                 denom);
 char              *gr_ingredients_list_scale_unit      (GrIngredientsList  *ingredients,
-                                                        const char         *name,
+                                                        const char         *segment,
+                                                        const char         *ingredient,
                                                         int                 num,
                                                         int                 denom);
 char             **gr_ingredients_list_get_segments    (GrIngredientsList  *ingredients);

@@ -798,7 +798,7 @@ populate_ingredients (GrEditPage *page,
                         const char *unit;
                         GtkWidget *row;
 
-                        s = gr_ingredients_list_scale_unit (ingredients, ings[i], 1, 1);
+                        s = gr_ingredients_list_scale_unit (ingredients, segs[j], ings[i], 1, 1);
                         strv = g_strsplit (s, " ", 2);
                         amount = strv[0];
                         unit = strv[1] ? strv[1] : "";

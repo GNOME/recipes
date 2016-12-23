@@ -692,7 +692,7 @@ populate_ingredients (GrDetailsPage *page,
                         box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
                         gtk_widget_show (box);
 
-                        s = gr_ingredients_list_scale_unit (page->ingredients, ings[i], num, denom);
+                        s = gr_ingredients_list_scale_unit (page->ingredients, segments[j], ings[i], num, denom);
                         label = gtk_label_new (s);
                         g_object_set (label,
                                       "visible", TRUE,

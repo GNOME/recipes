@@ -500,6 +500,7 @@ gr_ingredients_list_get_ingredients (GrIngredientsList *ingredients,
 
 char *
 gr_ingredients_list_scale_unit (GrIngredientsList *ingredients,
+                                const char        *segment,
                                 const char        *name,
                                 int                num,
                                 int                denom)
@@ -509,7 +510,8 @@ gr_ingredients_list_scale_unit (GrIngredientsList *ingredients,
         for (l = ingredients->ingredients; l; l = l->next) {
                 Ingredient *ing = (Ingredient *)l->data;
 
-                if (g_strcmp0 (name, ing->name) == 0) {
+                if (g_strcmp0 (segment, ing->segment) == 0 &&
+                    g_strcmp0 (name, ing->name) == 0) {
                         GString *s;
 
                         s = g_string_new ("");
