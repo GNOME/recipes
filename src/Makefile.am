@@ -5,6 +5,7 @@ commitid := $(shell $(GIT) describe)
 recipes_CFLAGS = \
 	$(WARN_CFLAGS) 			\
 	-Wno-sign-compare		\
+	-O0 -ggdb			\
 	$(RECIPES_CFLAGS) 		\
 	-DPKGDATADIR=\"$(pkgdatadir)\" 	\
 	-DLOCALEDIR=\"$(localedir)\" 	\
@@ -64,6 +65,8 @@ recipes_SOURCES = \
 	gr-meal.c		\
 	gr-meal-row.h		\
 	gr-meal-row.c		\
+	gr-number.h		\
+	gr-number.c		\
 	gr-preferences.h	\
 	gr-preferences.c	\
 	gr-query-editor.h	\
