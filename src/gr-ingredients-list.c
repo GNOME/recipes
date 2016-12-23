@@ -71,6 +71,60 @@ skip_whitespace (char **line)
                 (*line)++;
 }
 
+typedef struct {
+        int num;
+        int denom;
+        const char *ch;
+} VulgarFraction;
+
+static VulgarFraction fractions[] = {
+        { 1,  4, "¼" },
+        { 1,  2, "½" },
+        { 3,  4, "¾" },
+        { 1,  7, "⅐" },
+        { 1,  9, "⅑" },
+        { 1, 10, "⅒" },
+        { 1,  3, "⅓" },
+        { 2,  3, "⅔" },
+        { 1,  5, "⅕" },
+        { 2,  5, "⅖" },
+        { 3,  5, "⅗" },
+        { 4,  5, "⅘" },
+        { 1,  6, "⅙" },
+        { 5,  6, "⅚" },
+        { 1,  8, "⅛" },
+        { 3,  8, "⅜" },
+        { 5,  8, "⅝" },
+        { 7,  8, "⅞" }
+};
+
+static gboolean
+parse_as_vulgar_fraction (Ingredient  *ing,
+                          char       **string,
+                          GError     **error)
+{
+        int i;
+
+        for (i = 0; i < G_N_ELEMENTS (fractions); i++) {
+                const char *vf = fractions[i].ch;
+                if (g_str_has_prefix (*string, vf) &&
+                    g_ascii_isspace ((*string)[strlen (vf)])) {
+
+                        ing->fraction = TRUE;
+                        ing->num = fractions[i].num;
+                        ing->denom = fractions[i].denom;
+
+                        *string += strlen (vf);
+
+                        return TRUE;
+                }
+        }
+
+        g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                     _("Could not parse %s as a fraction"), *string);
+        return FALSE;
+}
+
 static gboolean
 parse_as_fraction (Ingredient  *ing,
                    char       **string,
@@ -148,6 +202,9 @@ parse_as_number (Ingredient  *ing,
                         return TRUE;
                 }
         }
+
+        if (parse_as_vulgar_fraction (ing, string, error))
+                return TRUE;
 
         ival = g_ascii_strtoll (*string, &end, 10);
         if (end == NULL || end[0] == '\0' || g_ascii_isspace (end[0])) {
@@ -361,33 +418,6 @@ gcd (int m, int n)
 
         return m;
 }
-
-typedef struct {
-        int num;
-        int denom;
-        const char *ch;
-} VulgarFraction;
-
-static VulgarFraction fractions[] = {
-        { 1,  4, "¼" },
-        { 1,  2, "½" },
-        { 3,  4, "¾" },
-        { 1,  7, "⅐" },
-        { 1,  9, "⅑" },
-        { 1, 10, "⅒" },
-        { 1,  3, "⅓" },
-        { 2,  3, "⅔" },
-        { 1,  5, "⅕" },
-        { 2,  5, "⅖" },
-        { 3,  5, "⅗" },
-        { 4,  5, "⅘" },
-        { 1,  6, "⅙" },
-        { 5,  6, "⅚" },
-        { 1,  8, "⅛" },
-        { 3,  8, "⅜" },
-        { 5,  8, "⅝" },
-        { 7,  8, "⅞" }
-};
 
 static char *
 format_fraction (int num, int denom)
