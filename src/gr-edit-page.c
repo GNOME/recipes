@@ -646,10 +646,7 @@ add_ingredients_segment (GrEditPage *page,
         GtkWidget *image;
 
         segment = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-        g_object_set (segment,
-                      "margin-top", 20,
-                      "margin-bottom", 20,
-                      NULL);
+        gtk_widget_set_margin_top (segment, 20);
         gtk_widget_show (segment);
         gtk_container_add (GTK_CONTAINER (page->ingredients_box), segment);
 
@@ -820,6 +817,7 @@ populate_ingredients (GrEditPage *page,
         button = gtk_button_new_with_label (_("Add List"));
         gtk_widget_show (button);
         gtk_widget_set_halign (button, GTK_ALIGN_FILL);
+        gtk_widget_set_margin_top (button, 20);
         gtk_box_pack_end (GTK_BOX (page->ingredients_box), button, FALSE, TRUE, 0);
         g_signal_connect (button, "clicked", G_CALLBACK (add_list), page);
 
