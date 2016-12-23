@@ -88,6 +88,11 @@ struct _GrEditPage
         GtkWidget *ing_search_button_label;
         GtkWidget *ing_search_revealer;
 
+        GtkWidget *unit_list;
+        GtkWidget *amount_search_button;
+        GtkWidget *amount_search_button_label;
+        GtkWidget *amount_search_revealer;
+
         GtkSizeGroup *group;
 
         guint account_response_signal_id;
@@ -96,6 +101,7 @@ struct _GrEditPage
         GtkWidget *active_row;
 
         char *ing_term;
+        char *unit_term;
 };
 
 G_DEFINE_TYPE (GrEditPage, gr_edit_page, GTK_TYPE_BOX)
@@ -154,6 +160,7 @@ edit_page_finalize (GObject *object)
         g_list_free (self->segments);
 
         g_free (self->ing_term);
+        g_free (self->unit_term);
 
         G_OBJECT_CLASS (gr_edit_page_parent_class)->finalize (object);
 }
@@ -217,18 +224,25 @@ ingredient_changed (GrEditPage *page)
 static void hide_ingredients_search_list (GrEditPage *self,
                                           gboolean    animate);
 
+static void hide_units_search_list (GrEditPage *self,
+                                    gboolean    animate);
+
 static void
 add_ingredient (GtkButton *button, GrEditPage *page)
 {
         gtk_entry_set_text (GTK_ENTRY (page->new_ingredient_name), "");
         gtk_entry_set_text (GTK_ENTRY (page->new_ingredient_amount), "");
-        gtk_entry_set_text (GTK_ENTRY (gtk_bin_get_child (GTK_BIN (page->new_ingredient_unit))), "");
+        gtk_entry_set_text (GTK_ENTRY (page->new_ingredient_unit), "");
+        gtk_label_set_label (GTK_LABEL (page->ing_search_button_label), _("Ingredient"));
+        gtk_label_set_label (GTK_LABEL (page->amount_search_button_label), _("Amount"));
 
         gtk_popover_set_relative_to (GTK_POPOVER (page->ingredient_popover), GTK_WIDGET (button));
         gtk_button_set_label (GTK_BUTTON (page->new_ingredient_add_button), _("Add"));
         ingredient_changed (page);
 
         hide_ingredients_search_list (page, FALSE);
+        hide_units_search_list (page, FALSE);
+
         gtk_popover_popup (GTK_POPOVER (page->ingredient_popover));
 }
 
@@ -254,20 +268,27 @@ edit_ingredients_row (GtkListBoxRow *row,
         const char *amount;
         const char *unit;
         const char *ingredient;
+        char *tmp;
 
         amount = (const char *)g_object_get_data (G_OBJECT (row), "amount");
         unit = (const char *)g_object_get_data (G_OBJECT (row), "unit");
         ingredient = (const char *)g_object_get_data (G_OBJECT (row), "ingredient");
 
         gtk_entry_set_text (GTK_ENTRY (page->new_ingredient_name), ingredient);
-        gtk_label_set_label (GTK_LABEL (page->ing_search_button_label), ingredient);
         gtk_entry_set_text (GTK_ENTRY (page->new_ingredient_amount), amount);
-        gtk_entry_set_text (GTK_ENTRY (gtk_bin_get_child (GTK_BIN (page->new_ingredient_unit))), unit);
+        gtk_entry_set_text (GTK_ENTRY (page->new_ingredient_unit), unit);
+        gtk_label_set_label (GTK_LABEL (page->ing_search_button_label), ingredient);
+        tmp = g_strconcat (amount, " ", unit, NULL);
+        gtk_label_set_label (GTK_LABEL (page->amount_search_button_label), tmp);
+        g_free (tmp);
 
         gtk_popover_set_relative_to (GTK_POPOVER (page->ingredient_popover), GTK_WIDGET (row));
         gtk_button_set_label (GTK_BUTTON (page->new_ingredient_add_button), _("Apply"));
         ingredient_changed (page);
+
         hide_ingredients_search_list (page, FALSE);
+        hide_units_search_list (page, FALSE);
+
         gtk_popover_popup (GTK_POPOVER (page->ingredient_popover));
 }
 
@@ -414,11 +435,29 @@ add_ingredient_row (GrEditPage   *page,
 }
 
 static void
+format_unit_for_display (const char *amount, const char *unit,
+                         char **amount_out, char **unit_out)
+{
+        g_autoptr(GrIngredientsList) ingredients = NULL;
+        g_autofree char *line = NULL;
+        g_autofree char *parsed = NULL;
+        g_auto(GStrv) strv = NULL;
+
+        line = g_strconcat (amount, " ", unit, " X", NULL);
+        ingredients = gr_ingredients_list_new (line);
+
+        parsed = gr_ingredients_list_scale_unit (ingredients, "", "X", 1, 1);
+        strv = g_strsplit (parsed, " ", 2);
+        *amount_out = g_strdup (strv[0]);
+        *unit_out = g_strdup (strv[1] ? strv[1] : "");
+}
+
+static void
 add_ingredient2 (GtkButton *button, GrEditPage *page)
 {
         const char *ingredient;
-        const char *amount;
-        const char *unit;
+        g_autofree char *amount = NULL;
+        g_autofree  char *unit = NULL;
         g_autofree char *s = NULL;
         GtkWidget *list;
         GtkWidget *b;
@@ -436,8 +475,9 @@ add_ingredient2 (GtkButton *button, GrEditPage *page)
         }
 
         ingredient = gtk_entry_get_text (GTK_ENTRY (page->new_ingredient_name));
-        amount = gtk_entry_get_text (GTK_ENTRY (page->new_ingredient_amount));
-        unit = gtk_entry_get_text (GTK_ENTRY (gtk_bin_get_child (GTK_BIN (page->new_ingredient_unit))));
+        format_unit_for_display (gtk_entry_get_text (GTK_ENTRY (page->new_ingredient_amount)),
+                                 gtk_entry_get_text (GTK_ENTRY (page->new_ingredient_unit)),
+                                 &amount, &unit);
         update_ingredient_row (row, amount, unit, ingredient);
 }
 
@@ -517,6 +557,7 @@ static void
 ing_search_button_clicked (GtkButton  *button,
                            GrEditPage *self)
 {
+        hide_units_search_list (self, TRUE);
         show_ingredients_search_list (self);
 }
 
@@ -602,6 +643,155 @@ populate_ingredients_list (GrEditPage *self)
                           G_CALLBACK (ing_row_activated), self);
 }
 
+static void
+show_units_search_list (GrEditPage *self)
+{
+        gtk_widget_hide (self->amount_search_button);
+        gtk_widget_show (self->amount_search_revealer);
+        gtk_revealer_set_reveal_child (GTK_REVEALER (self->amount_search_revealer), TRUE);
+}
+
+static void
+hide_units_search_list (GrEditPage *self,
+                        gboolean    animate)
+{
+        gtk_widget_show (self->amount_search_button);
+        if (!animate)
+                gtk_revealer_set_transition_type (GTK_REVEALER (self->amount_search_revealer),
+                                                  GTK_REVEALER_TRANSITION_TYPE_NONE);
+        gtk_revealer_set_reveal_child (GTK_REVEALER (self->amount_search_revealer), FALSE);
+        if (!animate)
+                gtk_revealer_set_transition_type (GTK_REVEALER (self->amount_search_revealer),
+                                                  GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN);
+}
+
+static void
+amount_search_button_clicked (GtkButton  *button,
+                              GrEditPage *self)
+{
+        hide_ingredients_search_list (self, TRUE);
+        show_units_search_list (self);
+}
+
+static void
+unit_row_activated (GtkListBox    *list,
+                    GtkListBoxRow *row,
+                    GrEditPage *self)
+{
+        g_autofree char *unit = NULL;
+        g_autofree char *amount = NULL;
+        char *tmp;
+
+        format_unit_for_display (gtk_entry_get_text (GTK_ENTRY (self->new_ingredient_amount)),
+                                 (const char *) g_object_get_data (G_OBJECT (row), "unit"),
+                                 &amount, &unit);
+
+        gtk_entry_set_text (GTK_ENTRY (self->new_ingredient_unit), unit);
+        tmp = g_strconcat (amount, " ", unit, NULL);
+        gtk_label_set_label (GTK_LABEL (self->amount_search_button_label), tmp);
+        g_free (tmp);
+
+        hide_units_search_list (self, TRUE);
+}
+
+static gboolean
+unit_filter_func (GtkListBoxRow *row,
+                  gpointer       data)
+{
+        GrEditPage *self = data;
+        const char *cf;
+
+        if (!self->unit_term)
+                return TRUE;
+
+        cf = (const char *)g_object_get_data (G_OBJECT (row), "unit");
+
+        return g_str_has_prefix (cf, self->unit_term);
+}
+
+static void
+unit_filter_changed (GrEditPage *self)
+{
+        const char *term;
+
+        term = gtk_entry_get_text (GTK_ENTRY (self->new_ingredient_unit));
+        g_free (self->unit_term);
+        self->unit_term = g_utf8_casefold (term, -1);
+        gtk_list_box_invalidate_filter (GTK_LIST_BOX (self->unit_list));
+}
+
+static void
+unit_filter_stop (GrEditPage *self)
+{
+        gtk_entry_set_text (GTK_ENTRY (self->new_ingredient_unit), "");
+}
+
+static void
+unit_filter_activated (GrEditPage *self)
+{
+        const char *amount;
+        const char *unit;
+        g_autofree char *ings = NULL;
+        g_autofree char *parsed = NULL;
+        g_auto(GStrv) strv = NULL;
+        g_autoptr(GrIngredientsList) ingredients = NULL;
+
+        amount = gtk_entry_get_text (GTK_ENTRY (self->new_ingredient_amount));
+        unit = gtk_entry_get_text (GTK_ENTRY (self->new_ingredient_unit));
+
+        ings = g_strconcat (amount, " ", unit, " X", NULL);
+        ingredients = gr_ingredients_list_new (ings);
+        parsed = gr_ingredients_list_scale_unit (ingredients, "", "X", 1, 1);
+        strv = g_strsplit (parsed, " ", 2);
+        amount = strv[0];
+        unit = strv[1] ? strv[1] : "";
+
+        gtk_label_set_label (GTK_LABEL (self->amount_search_button_label), parsed);
+        hide_units_search_list (self, TRUE);
+}
+
+static void
+populate_units_list (GrEditPage *self)
+{
+        const char * const units[] = {
+                "kilogram",
+                "gram",
+                "pound",
+                "liter",
+                "ounze",
+                "package",
+                "piece",
+                "box",
+                "bag",
+                "teaspoon",
+                "tablespoon",
+                NULL
+        };
+        GtkWidget *row;
+        int i;
+
+        for (i = 0; units[i]; i++) {
+                row = gtk_label_new (units[i]);
+                g_object_set (row,
+                              "visible", TRUE,
+                              "margin", 10,
+                              "xalign", 0.0,
+                              NULL);
+                gtk_container_add (GTK_CONTAINER (self->unit_list), row);
+                row = gtk_widget_get_parent (row);
+
+                g_object_set_data_full (G_OBJECT (row), "unit", g_strdup (units[i]), g_free);
+        }
+
+        gtk_list_box_set_header_func (GTK_LIST_BOX (self->unit_list),
+                                      all_headers, self, NULL);
+
+        gtk_list_box_set_filter_func (GTK_LIST_BOX (self->unit_list),
+                                      unit_filter_func, self, NULL);
+
+        g_signal_connect (self->unit_list, "row-activated",
+                          G_CALLBACK (unit_row_activated), self);
+}
 
 static void
 gr_edit_page_init (GrEditPage *page)
@@ -615,6 +805,7 @@ gr_edit_page_init (GrEditPage *page)
         populate_category_combo (page);
         populate_season_combo (page);
         populate_ingredients_list (page);
+        populate_units_list (page);
 }
 
 static void
@@ -662,6 +853,11 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, ing_search_button_label);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, ing_search_revealer);
 
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, unit_list);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, amount_search_button);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, amount_search_button_label);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, amount_search_revealer);
+
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), dismiss_error);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), add_image);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), remove_image);
@@ -676,6 +872,11 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, ing_filter_stop);
         gtk_widget_class_bind_template_callback (widget_class, ing_filter_activated);
         gtk_widget_class_bind_template_callback (widget_class, ing_search_button_clicked);
+
+        gtk_widget_class_bind_template_callback (widget_class, unit_filter_changed);
+        gtk_widget_class_bind_template_callback (widget_class, unit_filter_stop);
+        gtk_widget_class_bind_template_callback (widget_class, unit_filter_activated);
+        gtk_widget_class_bind_template_callback (widget_class, amount_search_button_clicked);
 }
 
 GtkWidget *

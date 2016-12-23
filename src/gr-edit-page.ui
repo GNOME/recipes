@@ -715,25 +715,83 @@
           </object>
         </child>
         <child>
-          <object class="GtkBox">
+          <object class="GtkButton" id="amount_search_button">
             <property name="visible">1</property>
-            <property name="orientation">horizontal</property>
-            <style> <class name="linked"/> </style>
+            <signal name="clicked" handler="amount_search_button_clicked"/>
             <child>
-              <object class="GtkEntry" id="new_ingredient_amount">
+              <object class="GtkBox">
                 <property name="visible">1</property>
-                <property name="width-chars">6</property>
+                <property name="spacing">10</property>
+                <child>
+                  <object class="GtkLabel" id="amount_search_button_label">
+                    <property name="visible">1</property>
+                    <property name="xalign">0</property>
+                    <property name="ellipsize">end</property>
+                    <property name="max-width-chars">25</property>
+                    <property name="label" translatable="yes">Amount</property>
+                  </object>
+                  <packing>
+                    <property name="expand">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">1</property>
+                    <property name="icon-name">pan-down-symbolic</property>
+                    <property name="icon-size">1</property>
+                  </object>
+                </child>
               </object>
             </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkRevealer" id="amount_search_revealer">
+            <property name="visible">1</property>
             <child>
-              <object class="GtkComboBoxText" id="new_ingredient_unit">
+              <object class="GtkBox">
                 <property name="visible">1</property>
-                <property name="has-entry">1</property>
-                <items>
-                  <item id="g" translatable="yes">grams</item>
-                  <item id="kg" translatable="yes">kilograms</item>
-                  <item id="lb" translatable="yes">pounds</item>
-                </items>
+                <property name="orientation">vertical</property>
+                <property name="spacing">10</property>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">1</property>
+                    <property name="orientation">horizontal</property>
+                    <style> <class name="linked"/> </style>
+                    <child>
+                      <object class="GtkEntry" id="new_ingredient_amount">
+                        <property name="visible">1</property>
+                        <property name="width-chars">6</property>
+                        <signal name="activate" handler="unit_filter_activated" swapped="yes"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSearchEntry" id="new_ingredient_unit">
+                        <property name="visible">1</property>
+                        <property name="placeholder-text" translatable="yes">Search…</property>
+                        <signal name="search-changed" handler="unit_filter_changed" swapped="yes"/>
+                        <signal name="stop-search" handler="unit_filter_stop" swapped="yes"/>
+                        <signal name="activate" handler="unit_filter_activated" swapped="yes"/>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkScrolledWindow">
+                    <property name="visible">1</property>
+                    <property name="shadow-type">in</property>
+                    <property name="hscrollbar-policy">never</property>
+                    <property name="propagate-natural-height">1</property>
+                    <property name="max-content-height">220</property>
+                    <property name="height-request">220</property>
+                    <child>
+                      <object class="GtkListBox" id="unit_list">
+                        <property name="visible">1</property>
+                        <property name="selection-mode">none</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
               </object>
             </child>
           </object>
