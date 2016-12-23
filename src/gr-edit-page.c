@@ -304,15 +304,28 @@ edit_ingredient (GtkButton *button, GrEditPage *page)
         edit_ingredients_row (GTK_LIST_BOX_ROW (row), page);
 }
 
+static void selected_rows_changed (GtkListBox *list,
+                                   GrEditPage *page);
+
 static void
 set_active_row (GrEditPage *page,
                 GtkWidget *row)
 {
         GtkWidget *stack;
+        GtkWidget *list;
+        GtkWidget *active_list;
 
         if (page->active_row) {
                 stack = g_object_get_data (G_OBJECT (page->active_row), "buttons-stack");
                 gtk_stack_set_visible_child_name (GTK_STACK (stack), "empty");
+
+                list = row ? gtk_widget_get_parent (row) : NULL;
+                active_list = gtk_widget_get_parent (page->active_row);
+                if (list != active_list) {
+                        g_signal_handlers_block_by_func (active_list, selected_rows_changed, page);
+                        gtk_list_box_unselect_row (GTK_LIST_BOX (active_list), GTK_LIST_BOX_ROW (page->active_row));
+                        g_signal_handlers_unblock_by_func (active_list, selected_rows_changed, page);
+                }
         }
 
         if (page->active_row == row) {
@@ -329,10 +342,12 @@ set_active_row (GrEditPage *page,
 }
 
 static void
-ingredient_row_activated (GtkListBox    *list,
-                          GtkListBoxRow *row,
-                          GrEditPage    *page)
+selected_rows_changed (GtkListBox *list,
+                       GrEditPage *page)
 {
+        GtkListBoxRow *row;
+
+        row = gtk_list_box_get_selected_row (list);
         set_active_row (page, GTK_WIDGET (row));
 }
 
@@ -395,7 +410,7 @@ add_ingredient_row (GrEditPage   *page,
 
         stack = gtk_stack_new ();
         gtk_widget_set_halign (stack, GTK_ALIGN_END);
-        gtk_stack_set_transition_type (GTK_STACK (stack), GTK_STACK_TRANSITION_TYPE_CROSSFADE);
+        gtk_stack_set_transition_type (GTK_STACK (stack), GTK_STACK_TRANSITION_TYPE_NONE);
         gtk_widget_show (stack);
         image = gtk_image_new ();
         gtk_widget_show (image);
@@ -404,18 +419,18 @@ add_ingredient_row (GrEditPage   *page,
         buttons = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
         g_object_set (buttons, "margin", 4, NULL);
         button = gtk_button_new ();
+        gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
         g_signal_connect (button, "clicked", G_CALLBACK (edit_ingredient), page);
         image = gtk_image_new_from_icon_name ("document-edit-symbolic", 1);
         gtk_container_add (GTK_CONTAINER (button), image);
-        gtk_style_context_add_class (gtk_widget_get_style_context (button), "dim-label");
         gtk_style_context_add_class (gtk_widget_get_style_context (button), "image-button");
         gtk_style_context_add_class (gtk_widget_get_style_context (button), "circular");
         gtk_container_add (GTK_CONTAINER (buttons), button);
         button = gtk_button_new ();
+        gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
         g_signal_connect (button, "clicked", G_CALLBACK (remove_ingredient), page);
         image = gtk_image_new_from_icon_name ("user-trash-symbolic", 1);
         gtk_container_add (GTK_CONTAINER (button), image);
-        gtk_style_context_add_class (gtk_widget_get_style_context (button), "dim-label");
         gtk_style_context_add_class (gtk_widget_get_style_context (button), "image-button");
         gtk_style_context_add_class (gtk_widget_get_style_context (button), "circular");
         gtk_container_add (GTK_CONTAINER (buttons), button);
@@ -1025,12 +1040,12 @@ add_ingredients_segment (GrEditPage *page,
         gtk_stack_add_named (GTK_STACK (stack), box, "entry");
 
         list = gtk_list_box_new ();
-        g_signal_connect (list, "row-activated", G_CALLBACK (ingredient_row_activated), page);
         g_object_set_data (G_OBJECT (segment), "list", list);
+        gtk_list_box_set_selection_mode (GTK_LIST_BOX (list), GTK_SELECTION_SINGLE);
+        g_signal_connect (list, "selected-rows-changed", G_CALLBACK (selected_rows_changed), page);
 
         gtk_widget_show (list);
         gtk_style_context_add_class (gtk_widget_get_style_context (list), "frame");
-        gtk_list_box_set_selection_mode (GTK_LIST_BOX (list), GTK_SELECTION_NONE);
         gtk_list_box_set_header_func (GTK_LIST_BOX (list), all_headers, NULL, NULL);
 
         label = g_object_new (GTK_TYPE_LABEL,
