@@ -25,6 +25,7 @@
 
 #include "gr-ingredients-list.h"
 #include "gr-ingredient.h"
+#include "gr-number.h"
 
 
 /* Parsing ingredients is tricky business. We operate under the following
@@ -38,9 +39,7 @@
 
 typedef struct
 {
-        gboolean fraction;
-        int num, denom;
-        gdouble value;
+        GrNumber amount;
         gchar *unit;
         gchar *name;
         gchar *segment;
@@ -69,168 +68,6 @@ skip_whitespace (char **line)
 {
         while (g_ascii_isspace (**line))
                 (*line)++;
-}
-
-typedef struct {
-        int num;
-        int denom;
-        const char *ch;
-} VulgarFraction;
-
-static VulgarFraction fractions[] = {
-        { 1,  4, "¼" },
-        { 1,  2, "½" },
-        { 3,  4, "¾" },
-        { 1,  7, "⅐" },
-        { 1,  9, "⅑" },
-        { 1, 10, "⅒" },
-        { 1,  3, "⅓" },
-        { 2,  3, "⅔" },
-        { 1,  5, "⅕" },
-        { 2,  5, "⅖" },
-        { 3,  5, "⅗" },
-        { 4,  5, "⅘" },
-        { 1,  6, "⅙" },
-        { 5,  6, "⅚" },
-        { 1,  8, "⅛" },
-        { 3,  8, "⅜" },
-        { 5,  8, "⅝" },
-        { 7,  8, "⅞" }
-};
-
-static gboolean
-parse_as_vulgar_fraction (Ingredient  *ing,
-                          char       **string,
-                          GError     **error)
-{
-        int i;
-
-        for (i = 0; i < G_N_ELEMENTS (fractions); i++) {
-                const char *vf = fractions[i].ch;
-                if (g_str_has_prefix (*string, vf) &&
-                    g_ascii_isspace ((*string)[strlen (vf)])) {
-
-                        ing->fraction = TRUE;
-                        ing->num = fractions[i].num;
-                        ing->denom = fractions[i].denom;
-
-                        *string += strlen (vf);
-
-                        return TRUE;
-                }
-        }
-
-        g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                     _("Could not parse %s as a fraction"), *string);
-        return FALSE;
-}
-
-static gboolean
-parse_as_fraction (Ingredient  *ing,
-                   char       **string,
-                   GError     **error)
-{
-        guint64 num, denom;
-        char *end = NULL;
-
-        num = g_ascii_strtoull (*string, &end, 10);
-        if (end[0] != '/') {
-                g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                             _("Could not parse %s as a fraction"), *string);
-                return FALSE;
-        }
-        *string = end + 1;
-
-        denom = g_ascii_strtoull (*string, &end, 10);
-        if (end != NULL && end[0] != '\0' && !g_ascii_isspace (end[0])) {
-                g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                             _("Could not parse %s as a fraction"), *string);
-                return FALSE;
-        }
-        *string = end;
-
-        ing->fraction = TRUE;
-        ing->num = num;
-        ing->denom = denom;
-
-        return TRUE;
-}
-
-typedef struct {
-        const char *string;
-        int value;
-} NumberForm;
-
-static NumberForm numberforms[] = {
-        { NC_("number", "a dozen"), 12 },
-        { NC_("number", "a"),        1 },
-        { NC_("number", "an"),       1 },
-        { NC_("number", "one"),      1 },
-        { NC_("number", "two"),      2 },
-        { NC_("number", "three"),    3 },
-        { NC_("number", "four"),     4 },
-        { NC_("number", "five"),     5 },
-        { NC_("number", "six"),      6 },
-        { NC_("number", "seven"),    7 },
-        { NC_("number", "eight"),    8 },
-        { NC_("number", "nine"),     9 },
-        { NC_("number", "ten"),     10 },
-        { NC_("number", "eleven"),  11 },
-        { NC_("number", "twelve"),  12 }
-};
-
-static gboolean
-parse_as_number (Ingredient  *ing,
-                 char       **string,
-                 GError     **error)
-{
-        double value;
-        gint64 ival;
-        char *end = NULL;
-        int i;
-
-        for (i = 0; i < G_N_ELEMENTS (numberforms); i++) {
-                const char *nf;
-
-                nf = g_dpgettext2 (NULL, "number", numberforms[i].string);
-                if (g_str_has_prefix (*string, nf) &&
-                    g_ascii_isspace ((*string)[strlen (nf)])) {
-                        ing->fraction = TRUE;
-                        ing->num = numberforms[i].value;
-                        ing->denom = 1;
-                        *string += strlen (nf);
-                        return TRUE;
-                }
-        }
-
-        if (parse_as_vulgar_fraction (ing, string, error))
-                return TRUE;
-
-        ival = g_ascii_strtoll (*string, &end, 10);
-        if (end == NULL || end[0] == '\0' || g_ascii_isspace (end[0])) {
-                ing->fraction = TRUE;
-                ing->num = ival;
-                ing->denom = 1;
-                *string = end;
-                return TRUE;
-        }
-
-        if (strchr (*string, '/'))
-                return parse_as_fraction (ing, string, error);
-
-        value = g_strtod (*string, &end);
-
-        if (end != NULL && end[0] != '\0' && !g_ascii_isspace (end[0])) {
-                g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                             _("Could not parse %s as a number"), *string);
-                return FALSE;
-        }
-
-        *string = end;
-        ing->fraction = FALSE;
-        ing->value = value;
-
-        return TRUE;
 }
 
 typedef struct {
@@ -294,7 +131,7 @@ gr_ingredients_list_add_one (GrIngredientsList  *ingredients,
 
         line = g_strstrip (line);
 
-        if (!parse_as_number (ing, &line, error)) {
+        if (!gr_number_parse (&ing->amount, &line, error)) {
                 ingredient_free (ing);
                 return FALSE;
         }
@@ -399,76 +236,17 @@ gr_ingredients_list_validate (const char  *text,
         return gr_ingredients_list_populate (ingredients, text, error);
 }
 
-static int
-gcd (int m, int n)
-{
-        int r;
-
-        if (m == 0 && n == 0)
-                return -1;
-
-        if (m < 0) m = -m;
-        if (n < 0) n = -n;
-
-        while (n) {
-                r = m % n;
-                m = n;
-                n = r;
-        }
-
-        return m;
-}
-
-static char *
-format_fraction (int num, int denom)
-{
-        int i;
-
-        for (i = 0; i < G_N_ELEMENTS (fractions); i++) {
-                if (fractions[i].num == num && fractions[i].denom == denom)
-                        return g_strdup (fractions[i].ch);
-        }
-
-        return g_strdup_printf ("%d/%d", num, denom);
-}
-
-static char *
-format_scaled_number (Ingredient *ing, int num, int denom)
-{
-        if (ing->fraction) {
-                int n = ing->num * num;
-                int d = ing->denom * denom;
-                int g = gcd (n, d);
-                int integral;
-                g_autofree char *fraction = NULL;
-
-                n = n / g;
-                d = d / g;
-
-                if (d == 1)
-                        return g_strdup_printf ("%d", n);
-                else {
-                        integral = n / d;
-                        fraction = format_fraction (n % d, d);
-                        if (integral == 0)
-                                return g_strdup_printf ("%s", fraction);
-                        else
-                                return g_strdup_printf ("%d %s", integral, fraction);
-                }
-        }
-        else {
-                double value = ing->value * num / denom;
-
-                return g_strdup_printf ("%g", value);
-        }
-}
-
 static void
 ingredient_scale_unit (Ingredient *ing, int num, int denom, GString *s)
 {
         g_autofree char *scaled = NULL;
+        GrNumber *snum;
 
-        scaled = format_scaled_number (ing, num, denom);
+        snum = gr_number_new_fraction (num, denom);
+        gr_number_multiply (&ing->amount, snum, snum);
+        scaled = gr_number_format (snum);
+        g_free (snum);
+
         g_string_append (s, scaled);
         if (ing->unit) {
                 g_string_append (s, " ");
