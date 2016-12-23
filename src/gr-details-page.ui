@@ -115,12 +115,11 @@ followed</property>
               <object class="GtkBox">
                 <property name="visible">1</property>
                 <property name="orientation">vertical</property>
-                <property name="spacing">20</property>
+                <property name="spacing">10</property>
                 <property name="valign">start</property>
                 <child>
                   <object class="GrImageViewer" id="recipe_image">
                     <property name="visible">1</property>
-                    <property name="margin-bottom">30</property>
                   </object>
                 </child>
                 <child>
@@ -137,9 +136,6 @@ followed</property>
                             <property name="tooltip-text" translatable="yes">Contains garlic</property>
                             <property name="icon-size">1</property>
                           </object>
-                          <packing>
-                            <property name="pack-type">end</property>
-                          </packing>
                         </child>
                         <child>
                           <object class="GtkImage" id="spicy_warning">
@@ -147,9 +143,6 @@ followed</property>
                             <property name="tooltip-text" translatable="yes">Spicy</property>
                             <property name="icon-size">1</property>
                           </object>
-                          <packing>
-                            <property name="pack-type">end</property>
-                          </packing>
                         </child>
                       </object>
                     </child>
@@ -157,6 +150,7 @@ followed</property>
                       <object class="GtkBox" id="ingredients_box">
                         <property name="visible">1</property>
                         <property name="orientation">vertical</property>
+                        <property name="margin-top">30</property>
                       </object>
                     </child>
                   </object>
