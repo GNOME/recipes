@@ -34,6 +34,8 @@
 #include "gr-season.h"
 #include "gr-images.h"
 #include "gr-image-viewer.h"
+#include "gr-ingredient-row.h"
+#include "gr-ingredient.h"
 
 #ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
@@ -81,12 +83,19 @@ struct _GrEditPage
         GtkWidget *author_label;
         GtkWidget *ingredients_box;
 
+        GtkWidget *ing_list;
+        GtkWidget *ing_search_button;
+        GtkWidget *ing_search_button_label;
+        GtkWidget *ing_search_revealer;
+
         GtkSizeGroup *group;
 
         guint account_response_signal_id;
 
         GList *segments;
         GtkWidget *active_row;
+
+        char *ing_term;
 };
 
 G_DEFINE_TYPE (GrEditPage, gr_edit_page, GTK_TYPE_BOX)
@@ -143,6 +152,8 @@ edit_page_finalize (GObject *object)
         g_clear_object (&self->recipe);
         g_clear_object (&self->group);
         g_list_free (self->segments);
+
+        g_free (self->ing_term);
 
         G_OBJECT_CLASS (gr_edit_page_parent_class)->finalize (object);
 }
@@ -203,6 +214,9 @@ ingredient_changed (GrEditPage *page)
         gtk_widget_set_sensitive (page->new_ingredient_add_button, strlen (text) > 0);
 }
 
+static void hide_ingredients_search_list (GrEditPage *self,
+                                          gboolean    animate);
+
 static void
 add_ingredient (GtkButton *button, GrEditPage *page)
 {
@@ -213,6 +227,8 @@ add_ingredient (GtkButton *button, GrEditPage *page)
         gtk_popover_set_relative_to (GTK_POPOVER (page->ingredient_popover), GTK_WIDGET (button));
         gtk_button_set_label (GTK_BUTTON (page->new_ingredient_add_button), _("Add"));
         ingredient_changed (page);
+
+        hide_ingredients_search_list (page, FALSE);
         gtk_popover_popup (GTK_POPOVER (page->ingredient_popover));
 }
 
@@ -244,12 +260,14 @@ edit_ingredients_row (GtkListBoxRow *row,
         ingredient = (const char *)g_object_get_data (G_OBJECT (row), "ingredient");
 
         gtk_entry_set_text (GTK_ENTRY (page->new_ingredient_name), ingredient);
+        gtk_label_set_label (GTK_LABEL (page->ing_search_button_label), ingredient);
         gtk_entry_set_text (GTK_ENTRY (page->new_ingredient_amount), amount);
         gtk_entry_set_text (GTK_ENTRY (gtk_bin_get_child (GTK_BIN (page->new_ingredient_unit))), unit);
 
         gtk_popover_set_relative_to (GTK_POPOVER (page->ingredient_popover), GTK_WIDGET (row));
         gtk_button_set_label (GTK_BUTTON (page->new_ingredient_add_button), _("Apply"));
         ingredient_changed (page);
+        hide_ingredients_search_list (page, FALSE);
         gtk_popover_popup (GTK_POPOVER (page->ingredient_popover));
 }
 
@@ -399,7 +417,7 @@ static void
 add_ingredient2 (GtkButton *button, GrEditPage *page)
 {
         const char *ingredient;
-        double amount;
+        const char *amount;
         const char *unit;
         g_autofree char *s = NULL;
         GtkWidget *list;
@@ -418,10 +436,9 @@ add_ingredient2 (GtkButton *button, GrEditPage *page)
         }
 
         ingredient = gtk_entry_get_text (GTK_ENTRY (page->new_ingredient_name));
-        amount = gtk_spin_button_get_value (GTK_SPIN_BUTTON (page->new_ingredient_amount));
+        amount = gtk_entry_get_text (GTK_ENTRY (page->new_ingredient_amount));
         unit = gtk_entry_get_text (GTK_ENTRY (gtk_bin_get_child (GTK_BIN (page->new_ingredient_unit))));
-        s = g_strdup_printf ("%g", amount);
-        update_ingredient_row (row, s, unit, ingredient);
+        update_ingredient_row (row, amount, unit, ingredient);
 }
 
 static char *
@@ -475,6 +492,118 @@ all_headers (GtkListBoxRow *row,
 }
 
 static void
+show_ingredients_search_list (GrEditPage *self)
+{
+        gtk_widget_hide (self->ing_search_button);
+        gtk_widget_show (self->ing_search_revealer);
+        gtk_revealer_set_reveal_child (GTK_REVEALER (self->ing_search_revealer), TRUE);
+}
+
+static void
+hide_ingredients_search_list (GrEditPage *self,
+                              gboolean    animate)
+{
+        gtk_widget_show (self->ing_search_button);
+        if (!animate)
+                gtk_revealer_set_transition_type (GTK_REVEALER (self->ing_search_revealer),
+                                                  GTK_REVEALER_TRANSITION_TYPE_NONE);
+        gtk_revealer_set_reveal_child (GTK_REVEALER (self->ing_search_revealer), FALSE);
+        if (!animate)
+                gtk_revealer_set_transition_type (GTK_REVEALER (self->ing_search_revealer),
+                                                  GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN);
+}
+
+static void
+ing_search_button_clicked (GtkButton  *button,
+                           GrEditPage *self)
+{
+        show_ingredients_search_list (self);
+}
+
+static void
+ing_row_activated (GtkListBox    *list,
+                   GtkListBoxRow *row,
+                   GrEditPage *self)
+{
+        const char *ingredient;
+
+        ingredient = gr_ingredient_row_get_ingredient (GR_INGREDIENT_ROW (row));
+        gtk_entry_set_text (GTK_ENTRY (self->new_ingredient_name), ingredient);
+        gtk_label_set_label (GTK_LABEL (self->ing_search_button_label), ingredient);
+        hide_ingredients_search_list (self, TRUE);
+}
+
+static gboolean
+ing_filter_func (GtkListBoxRow *row,
+                 gpointer       data)
+{
+        GrEditPage *self = data;
+        const char *cf;
+
+        if (!GR_IS_INGREDIENT_ROW (row))
+                return TRUE;
+
+        if (!self->ing_term)
+                return TRUE;
+
+        cf = gr_ingredient_row_get_filter_term (GR_INGREDIENT_ROW (row));
+
+        return g_str_has_prefix (cf, self->ing_term);
+}
+
+static void
+ing_filter_changed (GrEditPage *self)
+{
+        const char *term;
+
+        term = gtk_entry_get_text (GTK_ENTRY (self->new_ingredient_name));
+        g_free (self->ing_term);
+        self->ing_term = g_utf8_casefold (term, -1);
+        gtk_list_box_invalidate_filter (GTK_LIST_BOX (self->ing_list));
+}
+
+static void
+ing_filter_stop (GrEditPage *self)
+{
+        gtk_entry_set_text (GTK_ENTRY (self->new_ingredient_name), "");
+}
+
+static void
+ing_filter_activated (GrEditPage *self)
+{
+        const char *ingredient;
+
+        ingredient = gtk_entry_get_text (GTK_ENTRY (self->new_ingredient_name));
+        gtk_label_set_label (GTK_LABEL (self->ing_search_button_label), ingredient);
+        hide_ingredients_search_list (self, TRUE);
+}
+
+static void
+populate_ingredients_list (GrEditPage *self)
+{
+        int i;
+        const char **ingredients;
+        GtkWidget *row;
+
+        ingredients = gr_ingredient_get_names (NULL);
+        for (i = 0; ingredients[i]; i++) {
+                row = GTK_WIDGET (gr_ingredient_row_new (ingredients[i]));
+                gtk_widget_show (row);
+                gtk_container_add (GTK_CONTAINER (self->ing_list), row);
+        }
+
+        gtk_list_box_set_header_func (GTK_LIST_BOX (self->ing_list),
+                                      all_headers, self, NULL);
+
+        gtk_list_box_set_filter_func (GTK_LIST_BOX (self->ing_list),
+                                      ing_filter_func, self, NULL);
+
+        g_signal_connect (self->ing_list, "row-activated",
+                          G_CALLBACK (ing_row_activated), self);
+}
+
+
+static void
 gr_edit_page_init (GrEditPage *page)
 {
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
@@ -485,6 +614,7 @@ gr_edit_page_init (GrEditPage *page)
         populate_cuisine_combo (page);
         populate_category_combo (page);
         populate_season_combo (page);
+        populate_ingredients_list (page);
 }
 
 static void
@@ -527,6 +657,10 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, new_ingredient_amount);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, new_ingredient_unit);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, new_ingredient_add_button);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, ing_list);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, ing_search_button);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, ing_search_button_label);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, ing_search_revealer);
 
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), dismiss_error);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), add_image);
@@ -537,6 +671,11 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), add_ingredient2);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), remove_ingredient);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), ingredient_changed);
+
+        gtk_widget_class_bind_template_callback (widget_class, ing_filter_changed);
+        gtk_widget_class_bind_template_callback (widget_class, ing_filter_stop);
+        gtk_widget_class_bind_template_callback (widget_class, ing_filter_activated);
+        gtk_widget_class_bind_template_callback (widget_class, ing_search_button_clicked);
 }
 
 GtkWidget *

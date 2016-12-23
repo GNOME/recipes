@@ -622,6 +622,7 @@
   </template>
   <object class="GtkPopover" id="ingredient_popover">
     <property name="position">top</property>
+    <property name="constrain-to">none</property>
     <child>
       <object class="GtkBox">
         <property name="visible">1</property>
@@ -637,9 +638,72 @@
           </object>
         </child>
         <child>
-          <object class="GtkEntry" id="new_ingredient_name">
+          <object class="GtkButton" id="ing_search_button">
             <property name="visible">1</property>
-            <signal name="notify::text" handler="ingredient_changed" swapped="yes"/>
+            <signal name="clicked" handler="ing_search_button_clicked"/>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">1</property>
+                <property name="spacing">10</property>
+                <child>
+                  <object class="GtkLabel" id="ing_search_button_label">
+                    <property name="visible">1</property>
+                    <property name="xalign">0</property>
+                    <property name="ellipsize">end</property>
+                    <property name="max-width-chars">25</property>
+                    <property name="label" translatable="yes">Ingredient</property>
+                  </object>
+                  <packing>
+                    <property name="expand">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">1</property>
+                    <property name="icon-name">pan-down-symbolic</property>
+                    <property name="icon-size">1</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkRevealer" id="ing_search_revealer">
+            <property name="visible">1</property>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">1</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">10</property>
+                <child>
+                  <object class="GtkSearchEntry" id="new_ingredient_name">
+                    <property name="visible">1</property>
+                    <property name="placeholder-text" translatable="yes">Search…</property>
+                    <signal name="search-changed" handler="ing_filter_changed" swapped="yes"/>
+                    <signal name="stop-search" handler="ing_filter_stop" swapped="yes"/>
+                    <signal name="activate" handler="ing_filter_activated" swapped="yes"/>
+                    <signal name="notify::text" handler="ingredient_changed" swapped="yes"/>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkScrolledWindow">
+                    <property name="visible">1</property>
+                    <property name="shadow-type">in</property>
+                    <property name="hscrollbar-policy">never</property>
+                    <property name="propagate-natural-height">1</property>
+                    <property name="max-content-height">220</property>
+                    <property name="height-request">220</property>
+                    <child>
+                      <object class="GtkListBox" id="ing_list">
+                        <property name="visible">1</property>
+                        <property name="selection-mode">none</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
           </object>
         </child>
         <child>
@@ -651,28 +715,27 @@
           </object>
         </child>
         <child>
-          <object class="GtkSpinButton" id="new_ingredient_amount">
-            <property name="adjustment">amount_adjustment</property>
+          <object class="GtkBox">
             <property name="visible">1</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">1</property>
-            <property name="label" translatable="yes">Units</property>
-            <property name="xalign">0</property>
-            <style> <class name="dim-label"/> </style>
-          </object>
-        </child>
-        <child>
-          <object class="GtkComboBoxText" id="new_ingredient_unit">
-            <property name="visible">1</property>
-            <property name="has-entry">1</property>
-            <items>
-              <item id="g" translatable="yes">grams</item>
-              <item id="kg" translatable="yes">kilograms</item>
-              <item id="lb" translatable="yes">pounds</item>
-            </items>
+            <property name="orientation">horizontal</property>
+            <style> <class name="linked"/> </style>
+            <child>
+              <object class="GtkEntry" id="new_ingredient_amount">
+                <property name="visible">1</property>
+                <property name="width-chars">6</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkComboBoxText" id="new_ingredient_unit">
+                <property name="visible">1</property>
+                <property name="has-entry">1</property>
+                <items>
+                  <item id="g" translatable="yes">grams</item>
+                  <item id="kg" translatable="yes">kilograms</item>
+                  <item id="lb" translatable="yes">pounds</item>
+                </items>
+              </object>
+            </child>
           </object>
         </child>
         <child>
@@ -685,12 +748,5 @@
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkAdjustment" id="amount_adjustment">
-    <property name="lower">0</property>
-    <property name="upper">1000</property>
-    <property name="page_size">0</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">10</property>
   </object>
 </interface>
