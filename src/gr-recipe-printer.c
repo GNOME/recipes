@@ -23,6 +23,7 @@
 #include <glib/gi18n.h>
 
 #include "gr-recipe-printer.h"
+#include "gr-ingredients-list.h"
 #include "gr-images.h"
 #include "gr-utils.h"
 
@@ -76,9 +77,8 @@ begin_print (GtkPrintOperation *operation,
         PangoFontDescription *body_font;
         PangoAttrList *attrs;
         PangoAttribute *attr;
-        char **ingredients;
         int length;
-        int i;
+        int i, j;
         double page_height;
         GList *page_breaks;
         g_autoptr(GString) s = NULL;
@@ -88,6 +88,10 @@ begin_print (GtkPrintOperation *operation,
         PangoRectangle left_rect;
         int num_lines;
         int line;
+        g_autoptr(GrIngredientsList) ingredients = NULL;
+        PangoTabArray *tabs;
+        g_autofree char **segs = NULL;
+        g_auto(GStrv) ings = NULL;
 
         width = gtk_print_context_get_width (context);
         height = gtk_print_context_get_height (context);
@@ -130,50 +134,73 @@ begin_print (GtkPrintOperation *operation,
         pango_layout_set_width (printer->bottom_layout, width * PANGO_SCALE);
         pango_layout_set_font_description (printer->bottom_layout, body_font);
 
+        tabs = pango_tab_array_new (2, FALSE);
+        pango_tab_array_set_tab (tabs, 0, PANGO_TAB_LEFT, 0);
+        pango_tab_array_set_tab (tabs, 1, PANGO_TAB_LEFT, (width / 2) * PANGO_SCALE);
+        pango_layout_set_tabs (printer->bottom_layout, tabs);
+        pango_tab_array_free (tabs);
+
         g_string_append (s, gr_recipe_get_description (printer->recipe));
         g_string_append (s, "\n\n");
 
         attrs = pango_attr_list_new ();
 
-        attr = pango_attr_font_desc_new (title_font);
-        attr->start_index = s->len;
+        ingredients = gr_ingredients_list_new (gr_recipe_get_ingredients (printer->recipe));
+        segs = gr_ingredients_list_get_segments (ingredients);
+        for (j = 0; segs[j]; j++) {
+                attr = pango_attr_font_desc_new (title_font);
+                attr->start_index = s->len;
 
-        g_string_append (s, _("Ingredients"));
+                if (segs[j][0] != 0)
+                        g_string_append (s, segs[j]);
+                else
+                        g_string_append (s, _("Ingredients"));
 
-        attr->end_index = s->len + 1;
-        pango_attr_list_insert (attrs, attr);
+                attr->end_index = s->len + 1;
+                pango_attr_list_insert (attrs, attr);
 
-        g_string_append (s, "\n");
+                g_string_append (s, "\n");
 
-        ingredients = g_strsplit (gr_recipe_get_ingredients (printer->recipe), "\n", -1);
-        length = g_strv_length (ingredients);
-        if (length > 3) {
-                PangoTabArray *tabs;
-                int mid;
+                ings = gr_ingredients_list_get_ingredients (ingredients, segs[j]);
+                length = g_strv_length (ings);
+                if (length > 3) {
+                        int mid;
+                        mid = length / 2 + length % 2;
+                        for (i = 0; i < mid; i++) {
+                                char *unit;
 
-                tabs = pango_tab_array_new (2, FALSE);
-                pango_tab_array_set_tab (tabs, 0, PANGO_TAB_LEFT, 0);
-                pango_tab_array_set_tab (tabs, 1, PANGO_TAB_LEFT, (width / 2) * PANGO_SCALE);
-                pango_layout_set_tabs (printer->bottom_layout, tabs);
-                pango_tab_array_free (tabs);
+                                g_string_append (s, "\n");
 
-                mid = length / 2 + length % 2;
-                for (i = 0; i < mid; i++) {
-                        g_string_append (s, "\n");
-                        g_string_append (s, ingredients[i]);
-                        g_string_append (s, "\t");
-                        if (mid + i < length)
-                                g_string_append (s, ingredients[mid + i]);
+                                unit = gr_ingredients_list_scale_unit (ingredients, segs[j], ings[i], 1, 1);
+                                g_string_append (s, unit);
+                                g_free (unit);
+                                g_string_append (s, " ");
+                                g_string_append (s, ings[i]);
+                                g_string_append (s, "\t");
+                                if (mid + i < length) {
+                                        unit = gr_ingredients_list_scale_unit (ingredients, segs[j], ings[mid + i], 1, 1);
+                                        g_string_append (s, unit);
+                                        g_free (unit);
+                                        g_string_append (s, " ");
+                                        g_string_append (s, ings[mid + i]);
+                                }
+                        }
                 }
-        }
-        else {
-                for (i = 0; i < length; i++) {
-                        g_string_append (s, "\n");
-                        g_string_append (s, ingredients[i]);
-                }
-        }
+                else {
+                        for (i = 0; i < length; i++) {
+                                char *unit;
 
-        g_string_append (s, "\n\n");
+                                g_string_append (s, "\n");
+                                unit = gr_ingredients_list_scale_unit (ingredients, segs[j], ings[i], 1, 1);
+                                g_string_append (s, unit);
+                                g_free (unit);
+                                g_string_append (s, " ");
+                                g_string_append (s, ings[i]);
+                        }
+                }
+
+                g_string_append (s, "\n\n");
+        }
 
         attr = pango_attr_font_desc_new (title_font);
         attr->start_index = s->len;
