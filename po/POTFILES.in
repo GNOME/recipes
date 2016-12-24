@@ -3,16 +3,16 @@ data/appdata/org.gnome.Recipes.appdata.xml.in
 src/chef-conflict-dialog.ui
 src/gr-category-tile.ui
 src/gr-chef-tile.ui
-src/gr-cuisine-tile.ui
 src/gr-cuisine-page.ui
 src/gr-cuisines-page.ui
+src/gr-cuisine-tile.ui
 src/gr-details-page.ui
 src/gr-edit-page.ui
 src/gr-image-editor.ui
 src/gr-image-viewer.ui
 src/gr-ingredient-search-tile.ui
-src/gr-ingredient-tile.ui
 src/gr-ingredients-page.ui
+src/gr-ingredient-tile.ui
 src/gr-list-page.ui
 src/gr-preferences.ui
 src/gr-query-editor.ui
@@ -23,7 +23,6 @@ src/gr-window.ui
 src/menus.ui
 src/recipe-conflict-dialog.ui
 src/gr-app.c
-src/gr-meal.c
 src/gr-category-tile.c
 src/gr-chef.c
 src/gr-chef-tile.c
@@ -39,10 +38,12 @@ src/gr-images.c
 src/gr-image-viewer.c
 src/gr-ingredient.c
 src/gr-ingredient-search-tile.c
-src/gr-ingredient-tile.c
 src/gr-ingredients-list.c
 src/gr-ingredients-page.c
+src/gr-ingredient-tile.c
 src/gr-list-page.c
+src/gr-meal.c
+src/gr-number.c
 src/gr-preferences.c
 src/gr-query-editor.c
 src/gr-recipe.c
@@ -54,5 +55,6 @@ src/gr-recipe-store.c
 src/gr-recipe-tile.c
 src/gr-search-page.c
 src/gr-season.c
+src/gr-unit.c
 src/gr-utils.c
 src/gr-window.c
