@@ -95,6 +95,8 @@ recipes_SOURCES = \
 	gr-timer-widget.c	\
 	gr-toggle-button.h	\
 	gr-toggle-button.c	\
+	gr-unit.h		\
+	gr-unit.c		\
 	gr-utils.h		\
 	gr-utils.c		\
 	gr-window.h 		\
