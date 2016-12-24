@@ -26,6 +26,7 @@
 #include "gr-ingredients-list.h"
 #include "gr-ingredient.h"
 #include "gr-number.h"
+#include "gr-unit.h"
 
 
 /* Parsing ingredients is tricky business. We operate under the following
@@ -70,51 +71,6 @@ skip_whitespace (char **line)
                 (*line)++;
 }
 
-typedef struct {
-        const char *unit;
-        const char *names[4];
-} Unit;
-
-static Unit units[] = {
-        { "g",  { NC_("unit", "g"), NC_("unit", "gram"), NC_("unit", "grams"), NULL } },
-        { "kg", { NC_("unit", "kg"), NC_("unit", "kilogram"), NC_("unit", "kilograms"), NULL } },
-        { "l",  { NC_("unit", "l"), NC_("unit", "liter"), NC_("unit", "liters"), NULL } },
-        { "dl", { NC_("unit", "dl"), NC_("unit", "deciliter"), NC_("unit", "deciliters"), NULL } },
-        { "ml", { NC_("unit", "ml"), NC_("unit", "milliliter"), NC_("unit", "milliliters"), NULL } },
-        { "lb", { NC_("unit", "lb"), NC_("unit", "pound"), NC_("unit", "pounds"), NULL } },
-        { "box", { NC_("unit", "box"), NC_("unit", "boxes"), NULL, NULL } },
-        { "tbsp", { NC_("unit", "tbsp"), NC_("unit", "tablespoon"), NC_("unit", "tablespoons"), NULL } },
-        { "tsp", { NC_("unit", "tsp"), NC_("unit", "teaspoon"), NC_("unit", "teaspoons"), NULL } },
-};
-
-static gboolean
-parse_as_unit (Ingredient  *ing,
-               char       **string,
-               GError     **error)
-{
-        int i, j;
-
-        for (i = 0; i < G_N_ELEMENTS (units); i++) {
-                for (j = 0; units[i].names[j]; j++) {
-                        const char *nu;
-
-                        nu = g_dpgettext2 (NULL, "unit", units[i].names[j]);
-                        if (g_str_has_prefix (*string, nu) &&
-                            g_ascii_isspace ((*string)[strlen (nu)])) {
-                                ing->unit = g_strdup (units[i].unit);
-                                *string += strlen (nu);
-                                return TRUE;
-                        }
-                }
-        }
-
-        g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                     _("I don’t know this unit: %s"), *string);
-
-        return FALSE;
-
-}
-
 static gboolean
 gr_ingredients_list_add_one (GrIngredientsList  *ingredients,
                              char               *line,
@@ -138,7 +94,9 @@ gr_ingredients_list_add_one (GrIngredientsList  *ingredients,
 
         skip_whitespace (&line);
 
-        if (parse_as_unit (ing, &line, NULL))
+        s = gr_unit_parse (&line, NULL);
+        ing->unit = g_strdup (s);
+        if (s)
                 skip_whitespace (&line);
 
         s = gr_ingredient_find (line);
