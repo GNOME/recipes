@@ -36,6 +36,8 @@
 #include "gr-image-viewer.h"
 #include "gr-ingredient-row.h"
 #include "gr-ingredient.h"
+#include "gr-number.h"
+#include "gr-unit.h"
 
 #ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
@@ -231,7 +233,7 @@ static void
 add_ingredient (GtkButton *button, GrEditPage *page)
 {
         gtk_entry_set_text (GTK_ENTRY (page->new_ingredient_name), "");
-        gtk_entry_set_text (GTK_ENTRY (page->new_ingredient_amount), "");
+        gtk_entry_set_text (GTK_ENTRY (page->new_ingredient_amount), "1");
         gtk_entry_set_text (GTK_ENTRY (page->new_ingredient_unit), "");
         gtk_label_set_label (GTK_LABEL (page->ing_search_button_label), _("Ingredient"));
         gtk_label_set_label (GTK_LABEL (page->amount_search_button_label), _("Amount"));
@@ -450,21 +452,38 @@ add_ingredient_row (GrEditPage   *page,
 }
 
 static void
-format_unit_for_display (const char *amount, const char *unit,
-                         char **amount_out, char **unit_out)
+format_unit_for_display (const char *amount,
+                         const char *unit,
+                         char **amount_out,
+                         char **unit_out)
 {
         g_autoptr(GrIngredientsList) ingredients = NULL;
         g_autofree char *line = NULL;
         g_autofree char *parsed = NULL;
         g_auto(GStrv) strv = NULL;
 
-        line = g_strconcat (amount, " ", unit, " X", NULL);
-        ingredients = gr_ingredients_list_new (line);
+        if (amount[0] != '\0') {
+                GrNumber number;
+                char *a = (char *)amount;
+                if (gr_number_parse (&number, &a, NULL))
+                       *amount_out = gr_number_format (&number);
+                else
+                       *amount_out = g_strdup (amount);
+        }
+        else
+                *amount_out = g_strdup (amount);
 
-        parsed = gr_ingredients_list_scale_unit (ingredients, "", "X", 1, 1);
-        strv = g_strsplit (parsed, " ", 2);
-        *amount_out = g_strdup (strv[0]);
-        *unit_out = g_strdup (strv[1] ? strv[1] : "");
+        if (unit[0] != '\0') {
+                const char *name;
+                char *u = (char *)unit;
+                name = gr_unit_parse (&u, NULL);
+                if (name)
+                        *unit_out = g_strdup (gr_unit_get_abbreviation (name));
+                else
+                        *unit_out = g_strdup (unit);
+        }
+        else
+                *unit_out = g_strdup (unit);
 }
 
 static void
@@ -714,14 +733,20 @@ unit_filter_func (GtkListBoxRow *row,
                   gpointer       data)
 {
         GrEditPage *self = data;
-        const char *cf;
+        const char *unit;
+        const char *cf1, *cf2, *cf3;
 
         if (!self->unit_term)
                 return TRUE;
 
-        cf = (const char *)g_object_get_data (G_OBJECT (row), "unit");
+        unit = (const char *)g_object_get_data (G_OBJECT (row), "unit");
+        cf1 = gr_unit_get_abbreviation (unit);
+        cf2 = gr_unit_get_plural (unit);
+        cf3 = gr_unit_get_display_name (unit);
 
-        return g_str_has_prefix (cf, self->unit_term);
+        return g_str_has_prefix (cf1, self->unit_term) ||
+               g_str_has_prefix (cf2, self->unit_term) ||
+               g_str_has_prefix (cf3, self->unit_term);
 }
 
 static void
@@ -746,21 +771,14 @@ unit_filter_activated (GrEditPage *self)
 {
         const char *amount;
         const char *unit;
-        g_autofree char *ings = NULL;
+        g_autofree char *amount_out = NULL;
+        g_autofree char *unit_out = NULL;
         g_autofree char *parsed = NULL;
-        g_auto(GStrv) strv = NULL;
-        g_autoptr(GrIngredientsList) ingredients = NULL;
 
         amount = gtk_entry_get_text (GTK_ENTRY (self->new_ingredient_amount));
         unit = gtk_entry_get_text (GTK_ENTRY (self->new_ingredient_unit));
-
-        ings = g_strconcat (amount, " ", unit, " X", NULL);
-        ingredients = gr_ingredients_list_new (ings);
-        parsed = gr_ingredients_list_scale_unit (ingredients, "", "X", 1, 1);
-        strv = g_strsplit (parsed, " ", 2);
-        amount = strv[0];
-        unit = strv[1] ? strv[1] : "";
-
+        format_unit_for_display (amount, unit, &amount_out, &unit_out);
+        parsed = g_strconcat (amount_out, " ", unit_out, NULL);
         gtk_label_set_label (GTK_LABEL (self->amount_search_button_label), parsed);
         hide_units_search_list (self, TRUE);
 }
@@ -768,34 +786,34 @@ unit_filter_activated (GrEditPage *self)
 static void
 populate_units_list (GrEditPage *self)
 {
-        const char * const units[] = {
-                "kilogram",
-                "gram",
-                "pound",
-                "liter",
-                "ounze",
-                "package",
-                "piece",
-                "box",
-                "bag",
-                "teaspoon",
-                "tablespoon",
-                NULL
-        };
+        const char **units;
         GtkWidget *row;
+        GtkWidget *label;
         int i;
+        const char *name, *abbrev;
 
+        units = gr_unit_get_names ();
         for (i = 0; units[i]; i++) {
-                row = gtk_label_new (units[i]);
-                g_object_set (row,
-                              "visible", TRUE,
-                              "margin", 10,
-                              "xalign", 0.0,
-                              NULL);
+                row = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+                gtk_widget_show (row);
+                g_object_set (row, "margin", 10, NULL);
+                name = gr_unit_get_display_name (units[i]);
+                abbrev = gr_unit_get_abbreviation (units[i]);
+                if (strcmp (name, abbrev) == 0)
+                        label = gtk_label_new (name);
+                else {
+                        char *tmp;
+                        tmp = g_strdup_printf ("%s (%s)", name, abbrev);
+                        label = gtk_label_new (tmp);
+                        g_free (tmp);
+                }
+                gtk_widget_show (label);
+                gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+                gtk_box_pack_start (GTK_BOX (row), label, TRUE, TRUE, 0);
+
                 gtk_container_add (GTK_CONTAINER (self->unit_list), row);
                 row = gtk_widget_get_parent (row);
-
-                g_object_set_data_full (G_OBJECT (row), "unit", g_strdup (units[i]), g_free);
+                g_object_set_data (G_OBJECT (row), "unit", (gpointer)units[i]);
         }
 
         gtk_list_box_set_header_func (GTK_LIST_BOX (self->unit_list),
