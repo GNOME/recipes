@@ -24,16 +24,8 @@
 #include "gr-unit.h"
 
 static const char * const names[] = {
-        "gram",
-        "kilogram",
-        "liter",
-        "deciliter",
-        "milliliter",
-        "pound",
-        "box",
-        "tablespoon",
-        "teaspoon",
-        "cup",
+        "g", "kg", "lb", "oz", "l", "dl", "ml", "fl oz", "pt", "qt", "gal", "cup",
+        "tbsp", "tsp", "box", "pkg",
         NULL
 };
 
@@ -60,7 +52,7 @@ static GrUnit units[] = {
         { "tbsp", NC_("unit", "tbsp"), NC_("unit", "tablespoon"), NC_("unit", "tablespoons") },
         { "tsp", NC_("unit", "tsp"), NC_("unit", "teaspoon"), NC_("unit", "teaspoons") },
         { "box", NC_("unit", "box"), NC_("unit", "box"), NC_("unit", "boxes") },
-        { "package", NC_("unit", "pkg"), NC_("unit", "package"), NC_("unit", "packages") },
+        { "pkg", NC_("unit", "pkg"), NC_("unit", "package"), NC_("unit", "packages") },
 };
 
 const char **
