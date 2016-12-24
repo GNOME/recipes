@@ -386,7 +386,7 @@ gr_number_format (GrNumber *number)
                         if (integral == 0)
                                 return g_strdup_printf ("%s", fraction);
                         else
-                                return g_strdup_printf ("%d %s", integral, fraction);
+                                return g_strdup_printf ("%d %s", integral, fraction);
                 }
         }
         else {
