@@ -6,10 +6,12 @@ TESTS_ENVIRONMENT = \
 	MALLOC_PERTURB_=$$(($${RANDOM:-256} % 256))
 
 TESTS = \
+	unit \
 	number \
 	ingredients
 
 check_PROGRAMS = \
+	unit \
 	number \
 	ingredients
 
@@ -18,7 +20,6 @@ ingredients_CFLAGS = \
 	$(RECIPES_CFLAGS) 	\
 	-DPKGDATADIR=\"$(pkgdatadir)\"  \
 	-I$(top_srcdir)/src
-
 ingredients_LDADD = $(RECIPES_LIBS)
 
 number_SOURCES = number.c
@@ -26,8 +27,14 @@ number_CFLAGS = \
 	$(RECIPES_CFLAGS) 	\
 	-DPKGDATADIR=\"$(pkgdatadir)\"  \
 	-I$(top_srcdir)/src
-
 number_LDADD = $(RECIPES_LIBS)
+
+unit_SOURCES = unit.c
+unit_CFLAGS = \
+	$(RECIPES_CFLAGS) 	\
+	-DPKGDATADIR=\"$(pkgdatadir)\"  \
+	-I$(top_srcdir)/src
+unit_LDADD = $(RECIPES_LIBS)
 
 EXTRA_DIST = \
 	ingredients-data/valid-1.expected ingredients-data/valid-1.in	\
