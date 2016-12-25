@@ -88,8 +88,10 @@ gr_ingredients_list_add_one (GrIngredientsList  *ingredients,
         line = g_strstrip (line);
 
         if (!gr_number_parse (&ing->amount, &line, error)) {
-                ingredient_free (ing);
-                return FALSE;
+                ing->amount.fraction = TRUE;
+                ing->amount.num = 0;
+                ing->amount.denom = 0;
+                ing->amount.value = 0.0;
         }
 
         skip_whitespace (&line);
@@ -136,8 +138,9 @@ gr_ingredients_list_populate (GrIngredientsList  *ingredients,
                 if (segment)
                         g_hash_table_add (ingredients->segments, g_strdup (segment));
                 if (!gr_ingredients_list_add_one (ingredients, lines[i],
-                                                  (char *)(segment ? segment : ""), error))
-                        return FALSE;
+                                                  (char *)(segment ? segment : ""), error)) {
+                        g_message ("Failed to parse ingredients line '%s'", lines[i]);
+                }
         }
 
         if (g_hash_table_size (ingredients->segments) == 0)
@@ -145,6 +148,65 @@ gr_ingredients_list_populate (GrIngredientsList  *ingredients,
 
         return TRUE;
 
+}
+
+static gboolean
+gr_ingredients_list_populate_new_format (GrIngredientsList  *ingredients,
+                                         const char         *text,
+                                         GError            **error)
+{
+        g_auto(GStrv) lines = NULL;
+        int i;
+
+        lines = g_strsplit (text, "\n", 0);
+
+        for (i = 0; lines[i]; i++) {
+                g_auto(GStrv) fields = NULL;
+                char *amount;
+                char *unit;
+                char *ingredient;
+                char *segment;
+                const char *u;
+                Ingredient *ing;
+                g_autoptr(GError) local_error = NULL;
+
+                fields = g_strsplit (lines[i], "\t", 0);
+                if (g_strv_length (fields) != 4) {
+                        g_warning ("wrong number of fields, ignoring line '%s'", lines[i]);
+                        continue;
+                }
+
+                amount = fields[0];
+                unit = fields[1];
+                ingredient = fields[2];
+                segment = fields[3];
+
+                ing = g_new0 (Ingredient, 1);
+                gr_number_set_fraction (&ing->amount, 0, 0);
+                if (amount[0] != '\0' &&
+                    !gr_number_parse (&ing->amount, &amount, &local_error)) {
+                        g_message ("failed to parse amount '%s': %s", amount, local_error->message);
+                        g_free (ing);
+                        continue;
+                }
+
+                u = "";
+                if (unit[0] != '\0' &&
+                    ((u = gr_unit_parse (&unit, &local_error)) == NULL)) {
+                        g_message ("failed to unit amount in '%s': %s", unit, local_error->message);
+                        g_free (ing);
+                        continue;
+                }
+
+                ing->unit = g_strdup (u);
+                ing->name = g_strdup (ingredient);
+                ing->segment = g_strdup (segment);
+
+                g_hash_table_add (ingredients->segments, g_strdup (segment));
+                ingredients->ingredients = g_list_append (ingredients->ingredients, ing);
+        }
+
+        return TRUE;
 }
 
 static void
@@ -172,13 +234,34 @@ gr_ingredients_list_class_init (GrIngredientsListClass *klass)
         object_class->finalize = ingredients_list_finalize;
 }
 
+static gboolean
+is_new_format (const char *text)
+{
+        int tabs;
+        const char *p;
+
+        // In the new format, we separate fields by tabs, so there will be >1 tab per line
+        tabs = 0;
+        p = text;
+        while (*p != '\0' && *p != '\n') {
+                if (*p == '\t')
+                        tabs++;
+                p++;
+        }
+
+        return tabs > 1;
+}
+
 GrIngredientsList *
 gr_ingredients_list_new (const char *text)
 {
         GrIngredientsList *ingredients;
 
         ingredients = g_object_new (GR_TYPE_INGREDIENTS_LIST, NULL);
-        gr_ingredients_list_populate (ingredients, text, NULL);
+        if (is_new_format (text))
+                gr_ingredients_list_populate_new_format (ingredients, text, NULL);
+        else
+                gr_ingredients_list_populate (ingredients, text, NULL);
 
         return ingredients;
 }
