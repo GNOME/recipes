@@ -23,6 +23,8 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
+#include <gspell/gspell.h>
+
 #include "gr-edit-page.h"
 #include "gr-recipe-store.h"
 #include "gr-recipe.h"
@@ -827,6 +829,8 @@ populate_units_list (GrEditPage *self)
 static void
 gr_edit_page_init (GrEditPage *page)
 {
+        GspellTextView *gspell_view;
+
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
         gtk_widget_init_template (GTK_WIDGET (page));
 
@@ -837,6 +841,12 @@ gr_edit_page_init (GrEditPage *page)
         populate_season_combo (page);
         populate_ingredients_list (page);
         populate_units_list (page);
+
+        gspell_view = gspell_text_view_get_from_gtk_text_view (GTK_TEXT_VIEW (page->description_field));
+        gspell_text_view_basic_setup (gspell_view);
+
+        gspell_view = gspell_text_view_get_from_gtk_text_view (GTK_TEXT_VIEW (page->instructions_field));
+        gspell_text_view_basic_setup (gspell_view);
 }
 
 static void
