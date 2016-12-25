@@ -535,14 +535,12 @@ collect_ingredients (GrEditPage *page)
                         if (s->len > 0)
                                 g_string_append (s, "\n");
                         g_string_append (s, (const char *)g_object_get_data (G_OBJECT (row), "amount"));
-                        g_string_append (s, " ");
+                        g_string_append (s, "\t");
                         g_string_append (s, (const char *)g_object_get_data (G_OBJECT (row), "unit"));
-                        g_string_append (s, " ");
+                        g_string_append (s, "\t");
                         g_string_append (s, (const char *)g_object_get_data (G_OBJECT (row), "ingredient"));
-                        if (page->segments->next != NULL) {
-                                g_string_append (s, "\t");
-                                g_string_append (s, gtk_entry_get_text (GTK_ENTRY (entry)));
-                        }
+                        g_string_append (s, "\t");
+                        g_string_append (s, gtk_entry_get_text (GTK_ENTRY (entry)));
                 }
                 g_list_free (children);
         }
