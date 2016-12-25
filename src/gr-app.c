@@ -147,12 +147,12 @@ timer_expired (GSimpleAction *action,
                gpointer       app)
 {
         GtkWindow *win;
-        const char *name;
+        const char *id;
         g_autoptr(GrRecipe) recipe = NULL;
 
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
-        name = g_variant_get_string (parameter, NULL);
-        recipe = gr_recipe_store_get_recipe (GR_APP (app)->store, name);
+        id = g_variant_get_string (parameter, NULL);
+        recipe = gr_recipe_store_get_recipe (GR_APP (app)->store, id);
         if (recipe)
                 gr_window_show_recipe (GR_WINDOW (win), recipe);
         gtk_window_present (win);

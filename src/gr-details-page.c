@@ -55,28 +55,31 @@ timer_complete (GrTimer *timer)
         g_autofree char *action = NULL;
         GrRecipeStore *store;
         g_autoptr(GrRecipe) recipe = NULL;
+        const char *id;
         const char *name;
 
         app = g_application_get_default ();
 
-        name = gr_timer_get_name (timer);
+        id = gr_timer_get_name (timer);
+
+        store = gr_app_get_recipe_store (GR_APP (app));
+        recipe = gr_recipe_store_get_recipe (store, id);
+        name = gr_recipe_get_name (recipe);
 
         body = g_strdup_printf (_("Your cooking timer for “%s” has expired."), name);
 
         notification = g_notification_new (_("Time is up!"));
         g_notification_set_body (notification, body);
-        action = g_strdup_printf ("app.timer-expired::%s", name);
+        action = g_strdup_printf ("app.timer-expired::%s", id);
         g_notification_set_default_action (notification, action);
 
         g_application_send_notification (app, "timer", notification);
 
-        store = gr_app_get_recipe_store (GR_APP (app));
-        recipe = gr_recipe_store_get_recipe (store, name);
         gr_recipe_store_add_cooked (store, recipe);
 }
 
 static CookingData *
-cooking_data_new (const char *name)
+cooking_data_new (const char *id)
 {
         CookingData *cd;
 
@@ -84,7 +87,7 @@ cooking_data_new (const char *name)
         cd->ingredients = FALSE;
         cd->preheat = FALSE;
         cd->instructions = FALSE;
-        cd->timer = gr_timer_new (name);
+        cd->timer = gr_timer_new (id);
 
         g_signal_connect (cd->timer, "complete", G_CALLBACK (timer_complete), NULL);
 
@@ -151,7 +154,7 @@ timer_active_changed (GrTimer       *timer,
                       GParamSpec    *pspec,
                       GrDetailsPage *page)
 {
-        if (strcmp (gr_timer_get_name (timer), gr_recipe_get_name (page->recipe)) != 0)
+        if (strcmp (gr_timer_get_name (timer), gr_recipe_get_id (page->recipe)) != 0)
                 return;
 
         if (gr_timer_get_active (timer)) {
@@ -193,17 +196,17 @@ static void
 set_cooking (GrDetailsPage *page,
              gboolean       cooking)
 {
-        const char *name;
+        const char *id;
         CookingData *cd;
 
-        name = gr_recipe_get_name (page->recipe);
+        id = gr_recipe_get_id (page->recipe);
 
-        cd = g_hash_table_lookup (page->cooking, name);
+        cd = g_hash_table_lookup (page->cooking, id);
 
         if (cooking) {
                 if (!cd) {
-                        cd = cooking_data_new (name);
-                        g_hash_table_insert (page->cooking, g_strdup (name), cd);
+                        cd = cooking_data_new (id);
+                        g_hash_table_insert (page->cooking, g_strdup (id), cd);
                 }
 
                 g_object_set (page->ingredients_check, "active", cd->ingredients, NULL);
@@ -220,7 +223,7 @@ set_cooking (GrDetailsPage *page,
                 if (cd) {
                         g_signal_handlers_disconnect_by_func (cd->timer, G_CALLBACK (timer_active_changed), page);
                         g_signal_handlers_disconnect_by_func (cd->timer, G_CALLBACK (timer_remaining_changed), page);
-                        g_hash_table_remove (page->cooking, name);
+                        g_hash_table_remove (page->cooking, id);
                 }
 
                 g_object_set (page->timer, "timer", NULL, NULL);
@@ -310,12 +313,12 @@ serves_value_changed (GrDetailsPage *page)
 static void
 start_or_stop_timer (GrDetailsPage *page)
 {
-        const char *name;
+        const char *id;
         CookingData *cd;
 
-        name = gr_recipe_get_name (page->recipe);
+        id = gr_recipe_get_id (page->recipe);
 
-        cd = g_hash_table_lookup (page->cooking, name);
+        cd = g_hash_table_lookup (page->cooking, id);
 
         g_assert (cd && cd->timer);
 
@@ -446,11 +449,11 @@ check_clicked (GtkWidget     *button,
                GrDetailsPage *page)
 {
         CookingData *cd;
-        const char *name;
+        const char *id;
         gboolean active;
 
-        name = gr_recipe_get_name (page->recipe);
-        cd = g_hash_table_lookup (page->cooking, name);
+        id = gr_recipe_get_id (page->recipe);
+        cd = g_hash_table_lookup (page->cooking, id);
 
         g_assert (cd);
 
@@ -746,7 +749,7 @@ void
 gr_details_page_set_recipe (GrDetailsPage *page,
                             GrRecipe      *recipe)
 {
-        const char *name;
+        const char *id;
         const char *author;
         const char *prep_time;
         const char *cook_time;
@@ -765,7 +768,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
 
         g_set_object (&page->recipe, recipe);
 
-        name = gr_recipe_get_name (recipe);
+        id = gr_recipe_get_id (recipe);
         author = gr_recipe_get_author (recipe);
         serves = gr_recipe_get_serves (recipe);
         prep_time = gr_recipe_get_prep_time (recipe);
@@ -790,7 +793,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), serves);
         gtk_widget_set_sensitive (page->serves_spin, ing != NULL);
 
-        cooking = g_hash_table_lookup (page->cooking, name) != NULL;
+        cooking = g_hash_table_lookup (page->cooking, id) != NULL;
         set_cooking (page, cooking);
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
