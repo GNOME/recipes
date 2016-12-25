@@ -1025,6 +1025,7 @@ add_ingredients_segment (GrEditPage *page,
         GtkWidget *button;
         GtkWidget *stack;
         GtkWidget *image;
+        GspellEntry *gspell_entry;
 
         segment = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
         gtk_widget_set_margin_top (segment, 20);
@@ -1053,6 +1054,9 @@ add_ingredients_segment (GrEditPage *page,
         gtk_widget_set_halign (box, GTK_ALIGN_FILL);
         gtk_widget_show (entry);
         gtk_entry_set_text (GTK_ENTRY (entry), segment_label[0] ? segment_label : _("Ingredients for …"));
+
+        gspell_entry = gspell_entry_get_from_gtk_entry (GTK_ENTRY (entry));
+        gspell_entry_basic_setup (gspell_entry);
 
         gtk_box_pack_start (GTK_BOX (box), entry, TRUE, TRUE, 0);
 
