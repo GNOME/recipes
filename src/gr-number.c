@@ -42,7 +42,7 @@ gcd (int m, int n)
         return m;
 }
 
-static void
+void
 gr_number_set_fraction (GrNumber *number,
                         int       num,
                         int       denom)
@@ -60,6 +60,16 @@ gr_number_set_fraction (GrNumber *number,
         number->value = ((double) num) / ((double) denom);
 }
 
+void
+gr_number_set_float (GrNumber *number,
+                     double    value)
+{
+        number->fraction = FALSE;
+        number->num = 0;
+        number->denom = 0;
+        number->value = value;
+}
+
 GrNumber *
 gr_number_new_fraction (int num, int denom)
 {
@@ -69,16 +79,6 @@ gr_number_new_fraction (int num, int denom)
         gr_number_set_fraction (number, num, denom);
 
         return number;
-}
-
-static void
-gr_number_set_float (GrNumber *number,
-                     double    value)
-{
-        number->fraction = FALSE;
-        number->num = 0;
-        number->denom = 0;
-        number->value = value;
 }
 
 GrNumber *
@@ -379,7 +379,7 @@ gr_number_format (GrNumber *number)
                         g_autofree char *fraction = NULL;
 
                         if (number->denom == 0)
-                                return g_strdup_printf ("%d/0", number->num);
+                                return g_strdup ("");
 
                         integral = number->num / number->denom;
                         fraction = format_fraction (number->num % number->denom, number->denom);
