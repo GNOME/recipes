@@ -34,6 +34,15 @@
     ],
     "modules": [
         {
+            "name": "gspell",
+            "sources": [
+                    {
+                        "type": "git",
+                        "url": "git://git.gnome.org/gspell"
+                    }
+            ]
+        },
+        {
             "name": "gnome-autoar",
             "sources": [
                     {
