@@ -95,7 +95,10 @@ AX_CHECK_COMPILE_FLAG([-std=gnu11],
 dnl ***********************************************************************
 dnl Check for required packages
 dnl ***********************************************************************
-PKG_CHECK_MODULES(RECIPES, [gio-2.0 >= 2.42 gtk+-3.0 >= 3.20 gnome-autoar-0])
+PKG_CHECK_MODULES(RECIPES, [gio-2.0 >= 2.42
+                            gtk+-3.0 >= 3.20
+                            gnome-autoar-0
+                            gspell-1])
 
 
 LIBGD_INIT([tagged-entry])
