@@ -1,6 +1,7 @@
 -include $(top_srcdir)/git.mk
 
 EXTRA_DIST =
+CLEANFILES =
 
 desktopdir = $(datadir)/applications
 
@@ -112,6 +113,8 @@ $(dist_service_DATA): $(service_in_files) Makefile
 	$(AM_V_GEN) sed -e "s|\@bindir\@|$(bindir)|" $< > $@
 
 EXTRA_DIST += $(service_in_files)
+
+CLEANFILES += $(dist_service_DATA)
 
 GITIGNOREFILES = $(dist_service_DATA)
 
