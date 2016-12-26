@@ -137,6 +137,7 @@ static void
 hide_ingredients_search_list (GrQueryEditor *self,
                               gboolean       animate)
 {
+        gtk_entry_set_text (GTK_ENTRY (self->ing_filter_entry), "");
         gtk_widget_show (self->ing_search_button);
         if (!animate)
                 gtk_revealer_set_transition_type (GTK_REVEALER (self->ing_search_revealer),
