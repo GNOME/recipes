@@ -20,7 +20,9 @@
 
 #include <glib/gi18n.h>
 #include <gio/gio.h>
-#include <gr-number.h>
+
+#include "gr-number.h"
+#include "gr-utils.h"
 
 static int
 gcd (int m, int n)
@@ -136,12 +138,6 @@ static NumberForm numberforms[] = {
         { NC_("number", "eleven"),  11 },
         { NC_("number", "twelve"),  12 }
 };
-
-static gboolean
-space_or_nul (char p)
-{
-        return (p == '\0' || g_ascii_isspace (p));
-}
 
 static gboolean
 parse_as_number_form (GrNumber  *number,
@@ -272,18 +268,6 @@ parse_as_integer (GrNumber  *number,
         gr_number_set_fraction (number, (int)num, 1);
 
         return TRUE;
-}
-
-static gboolean
-skip_whitespace (char **input)
-{
-        char **in = input;
-
-        while (*input && g_ascii_isspace (**input)) {
-                *input += 1;
-        }
-
-        return *in != *input;
 }
 
 static gboolean

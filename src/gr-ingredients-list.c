@@ -27,6 +27,7 @@
 #include "gr-ingredient.h"
 #include "gr-number.h"
 #include "gr-unit.h"
+#include "gr-utils.h"
 
 
 /* Parsing ingredients is tricky business. We operate under the following
@@ -63,13 +64,6 @@ struct _GrIngredientsList
 };
 
 G_DEFINE_TYPE (GrIngredientsList, gr_ingredients_list, G_TYPE_OBJECT)
-
-static void
-skip_whitespace (char **line)
-{
-        while (g_ascii_isspace (**line))
-                (*line)++;
-}
 
 static gboolean
 gr_ingredients_list_add_one (GrIngredientsList  *ingredients,

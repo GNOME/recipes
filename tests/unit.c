@@ -22,6 +22,8 @@
 #include <glib.h>
 #include "gr-unit.h"
 #include "gr-unit.c"
+#include "gr-utils.h"
+#include "gr-utils.c"
 
 static GString *string;
 

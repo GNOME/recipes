@@ -22,8 +22,9 @@
 #include <gio/gio.h>
 
 #include "gr-unit.h"
+#include "gr-utils.h"
 
-static const char * const names[] = {
+static const char * const unit_names[] = {
         "g", "kg", "lb", "oz", "l", "dl", "ml", "fl oz", "pt", "qt", "gal", "cup",
         "tbsp", "tsp", "box", "pkg",
         NULL
@@ -58,7 +59,7 @@ static GrUnit units[] = {
 const char **
 gr_unit_get_names (void)
 {
-        return (const char **)names;
+        return (const char **)unit_names;
 }
 
 static GrUnit *
@@ -97,12 +98,6 @@ gr_unit_get_abbreviation (const char *name)
         if (unit)
                 return g_dpgettext2 (NULL, "unit", unit->abbreviation);
         return NULL;
-}
-
-static gboolean
-space_or_nul (char p)
-{
-        return (p == '\0' || g_ascii_isspace (p));
 }
 
 const char *

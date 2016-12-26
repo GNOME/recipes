@@ -287,3 +287,20 @@ date_time_from_string (const char *string)
         return NULL;
 }
 
+gboolean
+skip_whitespace (char **input)
+{
+        char *in = *input;
+
+        while (*input && g_ascii_isspace (**input)) {
+                *input += 1;
+        }
+
+        return in != *input;
+}
+
+gboolean
+space_or_nul (char p)
+{
+        return (p == '\0' || g_ascii_isspace (p));
+}
