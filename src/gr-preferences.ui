@@ -156,6 +156,10 @@
                           <object class="GtkTextView" id="description">
                             <property name="visible">1</property>
                             <property name="wrap-mode">word</property>
+                            <property name="top-margin">10</property>
+                            <property name="left-margin">10</property>
+                            <property name="right-margin">10</property>
+                            <property name="bottom-margin">10</property>
                           </object>
                         </child>
                       </object>
