@@ -622,7 +622,9 @@
   </template>
   <object class="GtkPopover" id="ingredient_popover">
     <property name="position">top</property>
+    <property name="modal">1</property>
     <property name="constrain-to">none</property>
+    <signal name="key-press-event" handler="popover_keypress_handler" after="yes"/>
     <child>
       <object class="GtkBox">
         <property name="visible">1</property>

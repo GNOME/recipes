@@ -849,6 +849,42 @@ gr_edit_page_init (GrEditPage *page)
         gspell_text_view_basic_setup (gspell_view);
 }
 
+static gboolean
+popover_keypress_handler (GtkWidget  *widget,
+                          GdkEvent   *event,
+                          GrEditPage *page)
+{
+        GtkWidget *focus;
+
+        focus = gtk_window_get_focus (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (page))));
+
+        if (gtk_revealer_get_child_revealed (GTK_REVEALER (page->ing_search_revealer))) {
+                if (focus == NULL || !gtk_widget_is_ancestor (focus, page->ing_search_revealer)) {
+                        gtk_widget_grab_focus (page->new_ingredient_name);
+                        return gtk_widget_event (page->new_ingredient_name, event);
+                }
+        }
+        else if (gtk_revealer_get_child_revealed (GTK_REVEALER (page->amount_search_revealer))) {
+                if (focus == NULL || !gtk_widget_is_ancestor (focus, page->amount_search_revealer)) {
+                        gtk_widget_grab_focus (page->new_ingredient_unit);
+                        return gtk_widget_event (page->new_ingredient_unit, event);
+                }
+        }
+        else if (gtk_widget_is_sensitive (page->new_ingredient_add_button)) {
+                if (event->type == GDK_KEY_PRESS) {
+                        GdkEventKey *e = (GdkEventKey *) event;
+                        if (e->keyval == GDK_KEY_Return ||
+                            e->keyval == GDK_KEY_ISO_Enter ||
+                            e->keyval == GDK_KEY_KP_Enter) {
+                                gtk_widget_activate (page->new_ingredient_add_button);
+                                return GDK_EVENT_STOP;
+                        }
+                }
+        }
+
+        return GDK_EVENT_PROPAGATE;
+}
+
 static void
 gr_edit_page_class_init (GrEditPageClass *klass)
 {
@@ -918,6 +954,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, unit_filter_stop);
         gtk_widget_class_bind_template_callback (widget_class, unit_filter_activated);
         gtk_widget_class_bind_template_callback (widget_class, amount_search_button_clicked);
+        gtk_widget_class_bind_template_callback (widget_class, popover_keypress_handler);
 }
 
 GtkWidget *
