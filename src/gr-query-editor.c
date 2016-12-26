@@ -925,3 +925,28 @@ gr_query_editor_set_query (GrQueryEditor *editor,
 
         g_signal_emit_by_name (editor->entry, "search-changed", 0);
 }
+
+gboolean
+gr_query_editor_handle_event (GrQueryEditor *editor,
+                              GdkEvent      *event)
+{
+        if (gtk_widget_is_visible (editor->popover)) {
+                if (gtk_revealer_get_child_revealed (GTK_REVEALER (editor->ing_search_revealer))) {
+                        gtk_widget_grab_focus (editor->ing_filter_entry);
+
+                        return gtk_widget_event (editor->ing_filter_entry, event);
+                }
+
+                return GDK_EVENT_PROPAGATE;
+        }
+
+        if (event->type == GDK_KEY_PRESS) {
+                GdkEventKey *e = (GdkEventKey *) event;
+                if ((e->state & GDK_MOD1_MASK) > 0 && e->keyval == GDK_KEY_Down) {
+                        gtk_popover_popup (GTK_POPOVER (editor->popover));
+                        return GDK_EVENT_PROPAGATE;
+                }
+        }
+
+   return gtk_search_bar_handle_event (GTK_SEARCH_BAR (editor), event);
+}

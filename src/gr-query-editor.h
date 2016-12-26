@@ -34,4 +34,7 @@ char *         gr_query_editor_get_query (GrQueryEditor *editor);
 void           gr_query_editor_set_query (GrQueryEditor *editor,
                                           const char    *query);
 
+gboolean       gr_query_editor_handle_event (GrQueryEditor *editor,
+                                             GdkEvent      *event);
+
 G_END_DECLS

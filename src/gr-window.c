@@ -296,7 +296,7 @@ window_keypress_handler (GtkWidget *widget,
                 }
         }
 
-        return gtk_search_bar_handle_event (GTK_SEARCH_BAR (window->search_bar), event);
+        return gr_query_editor_handle_event (GR_QUERY_EDITOR (window->search_bar), event);
 }
 
 static void

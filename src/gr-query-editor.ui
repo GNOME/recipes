@@ -30,7 +30,7 @@
     </child>
   </template>
   <object class="GtkPopover" id="popover">
-    <property name="modal">0</property>
+    <property name="modal">1</property>
     <property name="position">bottom</property>
     <property name="width-request">250</property>
     <signal name="notify::visible" handler="search_popover_notify"/>
