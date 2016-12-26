@@ -117,53 +117,6 @@ gr_number_add (GrNumber *a1,
 }
 
 typedef struct {
-        const char *input;
-        int value;
-} NumberForm;
-
-static NumberForm numberforms[] = {
-        { NC_("number", "a dozen"), 12 },
-        { NC_("number", "a"),        1 },
-        { NC_("number", "an"),       1 },
-        { NC_("number", "one"),      1 },
-        { NC_("number", "two"),      2 },
-        { NC_("number", "three"),    3 },
-        { NC_("number", "four"),     4 },
-        { NC_("number", "five"),     5 },
-        { NC_("number", "six"),      6 },
-        { NC_("number", "seven"),    7 },
-        { NC_("number", "eight"),    8 },
-        { NC_("number", "nine"),     9 },
-        { NC_("number", "ten"),     10 },
-        { NC_("number", "eleven"),  11 },
-        { NC_("number", "twelve"),  12 }
-};
-
-static gboolean
-parse_as_number_form (GrNumber  *number,
-                      char     **input,
-                      GError   **error)
-{
-        int i;
-
-        for (i = 0; i < G_N_ELEMENTS (numberforms); i++) {
-                const char *nf;
-
-                nf = g_dpgettext2 (NULL, "number", numberforms[i].input);
-                if (g_str_has_prefix (*input, nf) &&
-                    space_or_nul ((*input)[strlen (nf)])) {
-                        gr_number_set_fraction (number, numberforms[i].value, 1);
-                        *input += strlen (nf);
-                        return TRUE;
-                }
-        }
-
-        g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                     _("Could not parse %s as a number form"), *input);
-        return FALSE;
-}
-
-typedef struct {
         int num;
         int denom;
         const char *ch;
@@ -298,10 +251,6 @@ gr_number_parse (GrNumber  *number,
                  GError   **error)
 {
         char *orig = *input;
-
-        if (parse_as_number_form (number, input, NULL)) {
-                return TRUE;
-        }
 
         if (parse_as_vulgar_fraction (number, input, NULL)) {
                 return TRUE;
