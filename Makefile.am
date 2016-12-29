@@ -30,6 +30,7 @@ NEWS: data/appdata/org.gnome.Recipes.appdata.xml.in
 @GENERATE_CHANGELOG_RULES@
 dist-hook: dist-ChangeLog
 
+if USE_AUTOAR
 lib_LTLIBRARIES =
 noinst_LTLIBRARIES = libglnx.la
 libglnx_srcpath := $(srcdir)/libglnx
@@ -39,6 +40,7 @@ libglnx_cflags := \
         $(NULL)
 libglnx_libs := $(RECIPES_LIBS)
 include libglnx/Makefile-libglnx.am.inc
+endif
 
 GITIGNOREFILES = \
 	**/*.swp \

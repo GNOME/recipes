@@ -105,12 +105,23 @@ if test "x$enable_gspell" = xyes; then
         AC_DEFINE([ENABLE_GSPELL], [], [Define to 1 if gspell is used])
 fi
 
+AC_ARG_ENABLE(autoar,
+              [AS_HELP_STRING([--enable-autoar],
+                              [Use gnome-autoar for export/import support])],,
+              [enable_autoar="yes"])
+if test "x$enable_autoar" = xyes; then
+        AUTOAR_DEP=gnome-autoar-0
+        AC_DEFINE([ENABLE_AUTOAR], [], [Define to 1 if gnome-autoar is used])
+fi
+AM_CONDITIONAL(USE_AUTOAR, test "x$enable_autoar" = xyes)
+
+
 dnl ***********************************************************************
 dnl Check for required packages
 dnl ***********************************************************************
 PKG_CHECK_MODULES(RECIPES, [gio-2.0 >= 2.42
                             gtk+-3.0 >= 3.20
-                            gnome-autoar-0
+                            $AUTOAR_DEP
                             $GSPELL_DEP])
 
 
@@ -144,5 +155,6 @@ echo " Options"
 echo ""
 echo "  Prefix ............................... : ${prefix}"
 echo "  Libdir ............................... : ${libdir}"
+echo "  Export/Import ........................ : ${enable_autoar}"
 echo "  Spell checking ....................... : ${enable_gspell}"
 echo ""

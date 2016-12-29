@@ -22,8 +22,10 @@
 #include "config.h"
 
 #include <glib/gi18n.h>
+#ifdef ENABLE_AUTOAR
 #include <gnome-autoar/gnome-autoar.h>
 #include "glnx-shutil.h"
+#endif
 
 #include "gr-recipe-exporter.h"
 #include "gr-images.h"
@@ -41,7 +43,9 @@ struct _GrRecipeExporter
         GrRecipe *recipe;
         GtkWindow *window;
 
+#ifdef ENABLE_AUTOAR
         AutoarCompressor *compressor;
+#endif
         GFile *dest;
         GFile *output;
         GList *sources;
@@ -94,18 +98,22 @@ cleanup_export (GrRecipeExporter *exporter)
 {
         g_autoptr(GError) error = NULL;
 
+#ifdef ENABLE_AUTOAR
         if (!glnx_shutil_rm_rf_at (-1, exporter->dir, NULL, &error))
                 g_warning ("Failed to clean up temp directory %s: %s", exporter->dir, error->message);
 
+        g_clear_object (&exporter->compressor);
+#endif
+
         g_clear_pointer (&exporter->dir, g_free);
         g_clear_object (&exporter->recipe);
-        g_clear_object (&exporter->compressor);
         g_clear_object (&exporter->output);
         g_clear_object (&exporter->dest);
         g_list_free_full (exporter->sources, g_object_unref);
         exporter->sources = NULL;
 }
 
+#ifdef ENABLE_AUTOAR
 static void
 completed_cb (AutoarCompressor *compressor,
               GrRecipeExporter *exporter)
@@ -130,37 +138,24 @@ completed_cb (AutoarCompressor *compressor,
 }
 
 static void
-error_cb (AutoarCompressor *compressor,
-          GError           *error,
-          GrRecipeExporter *exporter)
-{
-        GtkWidget *dialog;
-
-        dialog = gtk_message_dialog_new (exporter->window,
-                                         GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,
-                                         GTK_MESSAGE_ERROR,
-                                         GTK_BUTTONS_OK,
-                                         _("Error while exporting recipe %s:\n%s"),
-                                         gr_recipe_get_name (exporter->recipe),
-                                         error->message);
-        g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
-        gtk_widget_show (dialog);
-
-        cleanup_export (exporter);
-}
-
-static void
 decide_dest_cb (AutoarCompressor *compressor,
                 GFile            *file,
                 GrRecipeExporter *exporter)
 {
         g_set_object (&exporter->dest, file);
 }
+#endif
 
 static gboolean
 prepare_export (GrRecipeExporter  *exporter,
                 GError           **error)
 {
+#ifndef ENABLE_AUTOAR
+        g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                     _("This build does not support exporting"));
+
+        return FALSE;
+#else
         g_autofree char *path = NULL;
         g_autoptr(GKeyFile) keyfile = NULL;
         const char *key;
@@ -322,8 +317,28 @@ prepare_export (GrRecipeExporter  *exporter,
         }
 
         exporter->sources = g_list_append (exporter->sources, g_file_new_for_path (path));
-
         return TRUE;
+#endif
+}
+
+static void
+error_cb (gpointer          compressor,
+          GError           *error,
+          GrRecipeExporter *exporter)
+{
+        GtkWidget *dialog;
+
+        dialog = gtk_message_dialog_new (exporter->window,
+                                         GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,
+                                         GTK_MESSAGE_ERROR,
+                                         GTK_BUTTONS_OK,
+                                         _("Error while exporting recipe %s:\n%s"),
+                                         gr_recipe_get_name (exporter->recipe),
+                                         error->message);
+        g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
+        gtk_widget_show (dialog);
+
+        cleanup_export (exporter);
 }
 
 void
@@ -341,6 +356,7 @@ gr_recipe_exporter_export_to (GrRecipeExporter *exporter,
                 return;
         }
 
+#ifdef ENABLE_AUTOAR
         exporter->compressor = autoar_compressor_new (exporter->sources, exporter->output, AUTOAR_FORMAT_TAR, AUTOAR_FILTER_GZIP, FALSE);
 
         g_signal_connect (exporter->compressor, "decide-dest", G_CALLBACK (decide_dest_cb), exporter);
@@ -348,4 +364,5 @@ gr_recipe_exporter_export_to (GrRecipeExporter *exporter,
         g_signal_connect (exporter->compressor, "error", G_CALLBACK (error_cb), exporter);
 
         autoar_compressor_start_async (exporter->compressor, NULL);
+#endif
 }

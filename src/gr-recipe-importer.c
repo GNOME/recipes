@@ -22,8 +22,11 @@
 
 #include <stdlib.h>
 #include <glib/gi18n.h>
+
+#ifdef ENABLE_AUTOAR
 #include <gnome-autoar/gnome-autoar.h>
 #include "glnx-shutil.h"
+#endif
 
 #include "gr-recipe-importer.h"
 #include "gr-images.h"
@@ -40,7 +43,9 @@ struct _GrRecipeImporter
 
         GtkWindow *window;
 
+#ifdef ENABLE_AUTOAR
         AutoarExtractor *extractor;
+#endif
         GFile *output;
         char *dir;
 
@@ -80,7 +85,9 @@ gr_recipe_importer_finalize (GObject *object)
 {
         GrRecipeImporter *importer = GR_RECIPE_IMPORTER (object);
 
+#ifdef ENABLE_AUTOAR
         g_clear_object (&importer->extractor);
+#endif
         g_clear_object (&importer->output);
         g_free (importer->dir);
         g_free (importer->chef_id);
@@ -146,13 +153,15 @@ gr_recipe_importer_new (GtkWindow *parent)
 static void
 cleanup_import (GrRecipeImporter *importer)
 {
+#ifdef ENABLE_AUTOAR
         g_autoptr(GError) error = NULL;
 
         if (!glnx_shutil_rm_rf_at (-1, importer->dir, NULL, &error))
                 g_warning ("Failed to clean up temp directory %s: %s", importer->dir, error->message);
+        g_clear_object (&importer->extractor);
+#endif
 
         g_clear_pointer (&importer->dir, g_free);
-        g_clear_object (&importer->extractor);
         g_clear_object (&importer->output);
         g_clear_pointer (&importer->chef_id, g_free);
         g_clear_pointer (&importer->chef_name, g_free);
@@ -177,6 +186,26 @@ cleanup_import (GrRecipeImporter *importer)
         g_clear_pointer (&importer->recipe_mtime, g_date_time_unref);
 }
 
+static void
+error_cb (gpointer          extractor,
+          GError           *error,
+          GrRecipeImporter *importer)
+{
+        GtkWidget *dialog;
+
+        dialog = gtk_message_dialog_new (importer->window,
+                                         GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,
+                                         GTK_MESSAGE_ERROR,
+                                         GTK_BUTTONS_OK,
+                                         _("Error while importing recipe:\n%s"),
+                                         error->message);
+        g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
+        gtk_widget_show (dialog);
+
+        cleanup_import (importer);
+}
+
+#ifdef ENABLE_AUTOAR
 static gboolean
 copy_image (GrRecipeImporter  *importer,
             const char        *path,
@@ -210,25 +239,6 @@ copy_image (GrRecipeImporter  *importer,
         *new_path = g_strdup (destpath);
 
         return TRUE;
-}
-
-static void
-error_cb (AutoarExtractor  *extractor,
-          GError           *error,
-          GrRecipeImporter *importer)
-{
-        GtkWidget *dialog;
-
-        dialog = gtk_message_dialog_new (importer->window,
-                                         GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,
-                                         GTK_MESSAGE_ERROR,
-                                         GTK_BUTTONS_OK,
-                                         _("Error while importing recipe:\n%s"),
-                                         error->message);
-        g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
-        gtk_widget_show (dialog);
-
-        cleanup_import (importer);
 }
 
 static void
@@ -690,11 +700,19 @@ completed_cb (AutoarExtractor  *extractor,
 {
         finish_import (importer);
 }
+#endif
 
 void
 gr_recipe_importer_import_from (GrRecipeImporter *importer,
                                 GFile            *file)
 {
+#ifndef ENABLE_AUTOAR
+        g_autoptr(GError) error = NULL;
+
+        g_set_error (&error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                     _("This build does not support importing"));
+        error_cb (NULL, error, importer);
+#else
         importer->dir = g_mkdtemp (g_build_filename (g_get_tmp_dir (), "recipeXXXXXX", NULL));
         importer->output = g_file_new_for_path (importer->dir);
 
@@ -705,4 +723,5 @@ gr_recipe_importer_import_from (GrRecipeImporter *importer,
         g_signal_connect (importer->extractor, "error", G_CALLBACK (error_cb), importer);
 
         autoar_extractor_start_async (importer->extractor, NULL);
+#endif
 }
