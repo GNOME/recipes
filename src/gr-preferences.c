@@ -78,7 +78,6 @@ file_chooser_response (GtkNativeDialog *self,
                        GrPreferences   *prefs)
 {
         if (response_id == GTK_RESPONSE_ACCEPT) {
-                g_autoptr(GdkPixbuf) pixbuf = NULL;
                 g_free (prefs->image_path);
                 prefs->image_path = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (self));
                 update_image (prefs);

@@ -770,7 +770,6 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         const char *instructions;
         const char *notes;
         const char *description;
-        g_autoptr(GdkPixbuf) pixbuf = NULL;
         GrRecipeStore *store;
         g_autoptr(GrChef) chef = NULL;
         g_autoptr(GrIngredientsList) ing = NULL;

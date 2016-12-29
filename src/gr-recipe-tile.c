@@ -59,7 +59,6 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
 {
         const char *name;
         const char *author;
-        g_autofree char *image_path = NULL;
         g_autofree char *tmp = NULL;
         g_autoptr(GArray) images = NULL;
         const char *color;

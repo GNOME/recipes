@@ -279,8 +279,6 @@ draw_page (GtkPrintOperation *operation,
         PangoRectangle logical_rect;
         int baseline;
         int width;
-        g_autoptr(GArray) images = NULL;
-        g_autoptr(GdkPixbuf) pixbuf = NULL;
         int start, end, i;
         PangoLayoutIter *iter;
         double start_pos;

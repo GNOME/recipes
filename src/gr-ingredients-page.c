@@ -130,7 +130,6 @@ populate_initially (GrIngredientsPage *self)
         alphabet = g_utf8_to_ucs4_fast (_("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), -1, &length);
 
         for (i = 0; i < length; i++) {
-                g_autofree char *letter = NULL;
                 GtkWidget *item, *label, *box;
                 Category *category;
                 char buf[6];

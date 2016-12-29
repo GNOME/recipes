@@ -461,11 +461,6 @@ format_unit_for_display (const char *amount,
                          char **amount_out,
                          char **unit_out)
 {
-        g_autoptr(GrIngredientsList) ingredients = NULL;
-        g_autofree char *line = NULL;
-        g_autofree char *parsed = NULL;
-        g_auto(GStrv) strv = NULL;
-
         if (amount[0] != '\0') {
                 GrNumber number;
                 char *a = (char *)amount;
@@ -496,7 +491,6 @@ add_ingredient2 (GtkButton *button, GrEditPage *page)
         const char *ingredient;
         g_autofree char *amount = NULL;
         g_autofree  char *unit = NULL;
-        g_autofree char *s = NULL;
         GtkWidget *list;
         GtkWidget *b;
         GtkWidget *row;
@@ -1304,8 +1298,6 @@ gr_edit_page_edit (GrEditPage *page,
         const char *description;
         const char *instructions;
         const char *ingredients;
-        g_autofree char *image_path = NULL;
-        g_autoptr(GdkPixbuf) pixbuf = NULL;
         GrDiets diets;
         g_autoptr(GArray) images = NULL;
         g_autoptr(GrChef) chef = NULL;
@@ -1385,11 +1377,9 @@ account_response (GDBusConnection *connection,
         g_variant_get (parameters, "(u@a{sv})", &response, &options);
 
         if (response == 0) {
-                g_autoptr(GdkPixbuf) pixbuf = NULL;
                 const char *id;
                 const char *name;
                 const char *uri;
-                g_autofree char *path = NULL;
                 GrRecipeStore *store;
 
                 store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));

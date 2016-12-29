@@ -331,7 +331,6 @@ gr_recipe_exporter_export_to (GrRecipeExporter *exporter,
                               GrRecipe         *recipe,
                               GFile            *file)
 {
-        g_autoptr(GFile) output = NULL;
         g_autoptr(GError) error = NULL;
 
         g_set_object (&exporter->recipe, recipe);
