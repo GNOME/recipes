@@ -6,6 +6,7 @@
       <item>
         <attribute name="label" translatable="yes">_Import</attribute>
         <attribute name="action">app.import</attribute>
+        <attribute name="hidden-when">action-disabled</attribute>
       </item>
       <item>
         <attribute name="label" translatable="yes">_Preferences</attribute>

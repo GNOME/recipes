@@ -299,6 +299,16 @@ gr_app_startup (GApplication *app)
         g_action_map_add_action_entries (G_ACTION_MAP (app),
                                          app_entries, G_N_ELEMENTS (app_entries),
                                          app);
+
+#ifndef ENABLE_AUTOAR
+        {
+                GAction *action;
+
+                action = g_action_map_lookup_action (G_ACTION_MAP (app), "import");
+                g_object_set (action, "enabled", FALSE, NULL);
+        }
+#endif
+
         gtk_application_set_accels_for_action (GTK_APPLICATION (app),
                                                "app.quit",
                                                quit_accels);
