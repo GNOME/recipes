@@ -707,6 +707,12 @@ gr_recipe_matches (GrRecipe    *recipe,
 
                         continue;
                 }
+                else if (g_str_has_prefix (terms[i], "na:")) {
+                        if (recipe->cf_name && strstr (recipe->cf_name, terms[i] + 3) == NULL)
+                                return FALSE;
+                        continue;
+
+                }
 
                 if (recipe->cf_name && strstr (recipe->cf_name, terms[i]) != NULL)
                         continue;
