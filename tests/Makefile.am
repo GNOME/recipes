@@ -41,7 +41,6 @@ EXTRA_DIST = \
 	ingredients-data/valid-2.expected ingredients-data/valid-2.in	\
 	ingredients-data/valid-3.expected ingredients-data/valid-3.in	\
 	ingredients-data/valid-4.expected ingredients-data/valid-4.in	\
-	ingredients-data/valid-5.expected ingredients-data/valid-5.in	\
 	number-data/number1.expected number-data/number1.in		\
 	unit-data/unit1.expected unit-data/unit1.in
 
