@@ -949,6 +949,12 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         }
 }
 
+GrRecipe *
+gr_details_page_get_recipe (GrDetailsPage *page)
+{
+        return page->recipe;
+}
+
 static void
 details_page_reload (GrDetailsPage *page,
                      GrRecipe      *recipe)
