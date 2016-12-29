@@ -49,3 +49,32 @@ After installing the Flatpak with either method, the applications will show up i
 ```
 flatpak run org.gnome.Recipes
 ```
+Other platforms
+---------------
+
+GNOME recipes has been successfully built on OS X. The following steps should get you there:
+
+- Install [Homebrew](http://brew.sh/)
+- Install autotools:
+```
+brew install autoconf
+brew install automake
+brew install libtool
+brew install gettext
+brew install pkg-config
+```
+- Install GTK+:
+```
+brew install gtk+3
+brew install adwaita-icon-theme
+```
+- Clone from git:
+```
+git clone git://git.gnome.org/recipes.git
+```
+- biuld from git as usual, disabling some dependencies:
+```
+cd recipes
+./autogen --disable-gspell --disable-autoar
+make
+```
