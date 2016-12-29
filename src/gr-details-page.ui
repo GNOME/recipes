@@ -390,8 +390,7 @@ followed</property>
           </packing>
         </child>
         <child>
-          <object class="GtkButton">
-            <property name="visible">1</property>
+          <object class="GtkButton" id="export_button">
             <property name="use-underline">1</property>
             <property name="label" translatable="yes">_Export</property>
             <signal name="clicked" handler="export_recipe" swapped="yes"/>

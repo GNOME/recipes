@@ -145,6 +145,7 @@ struct _GrDetailsPage
         GtkWidget *delete_button;
         GtkWidget *notes_field;
         GtkWidget *description_label;
+        GtkWidget *export_button;
 
         guint save_timeout;
 };
@@ -604,6 +605,10 @@ gr_details_page_init (GrDetailsPage *page)
                 gspell_text_view_basic_setup (gspell_view);
         }
 #endif
+
+#ifdef ENABLE_AUTOAR
+        gtk_widget_show (page->export_button);
+#endif
 }
 
 static void
@@ -642,6 +647,7 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, delete_button);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, notes_field);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, description_label);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, export_button);
 
         gtk_widget_class_bind_template_callback (widget_class, edit_recipe);
         gtk_widget_class_bind_template_callback (widget_class, delete_recipe);
