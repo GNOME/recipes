@@ -75,6 +75,71 @@ preferences_activated (GSimpleAction *action,
         gtk_window_present (GTK_WINDOW (prefs));
 }
 
+static GtkWidget *
+find_child_with_name (GtkWidget  *parent,
+                      const char *name)
+{
+        GList *children, *l;
+        GtkWidget *result = NULL;
+
+        children = gtk_container_get_children (GTK_CONTAINER (parent));
+        for (l = children; l; l = l->next) {
+                GtkWidget *child = l->data;
+
+                if (g_strcmp0 (gtk_buildable_get_name (GTK_BUILDABLE (child)), name) == 0) {
+                        result = child;
+                        break;
+                }
+        }
+        g_list_free (children);
+
+        if (result == NULL)
+                g_warning ("Didn't find %s in GtkAboutDialog\n", name);
+        return result;
+}
+
+static void
+add_built_logo (GtkAboutDialog *about)
+{
+        GtkWidget *content;
+        GtkWidget *box;
+        GtkWidget *stack;
+        GtkWidget *page_vbox;
+        GtkWidget *license_label;
+        GtkWidget *copyright_label;
+        GtkWidget *image;
+
+        content = gtk_dialog_get_content_area (GTK_DIALOG (about));
+        box = find_child_with_name (content, "box");
+        stack = find_child_with_name (box, "stack");
+        page_vbox = find_child_with_name (stack, "page_vbox");
+        license_label = find_child_with_name (page_vbox, "license_label");
+        copyright_label = find_child_with_name (page_vbox, "copyright_label");
+
+        box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+        gtk_widget_show (box);
+        image = gtk_image_new_from_resource ("/org/gnome/Recipes/built-with-builder.png");
+        gtk_widget_set_valign (image, GTK_ALIGN_END);
+        gtk_widget_show (image);
+        gtk_box_pack_start (GTK_BOX (box), image, FALSE, TRUE, 0);
+
+        g_object_ref (license_label);
+        g_object_ref (copyright_label);
+
+        gtk_container_remove (GTK_CONTAINER (page_vbox), license_label);
+        gtk_container_remove (GTK_CONTAINER (page_vbox), copyright_label);
+
+        gtk_box_pack_start (GTK_BOX (box), license_label, TRUE, TRUE, 0);
+        gtk_label_set_justify (GTK_LABEL (license_label), GTK_JUSTIFY_LEFT);
+        gtk_widget_set_valign (license_label, GTK_ALIGN_END);
+
+        gtk_container_add (GTK_CONTAINER (page_vbox), copyright_label);
+        gtk_container_add (GTK_CONTAINER (page_vbox), box);
+
+        g_object_unref (license_label);
+        g_object_unref (copyright_label);
+}
+
 static void
 about_activated (GSimpleAction *action,
                  GVariant      *parameter,
@@ -122,13 +187,18 @@ about_activated (GSimpleAction *action,
                                "translator-credits", _("translator-credits"),
                                "logo", logo,
                                "title", _("About GNOME Recipes"),
+                               "website", "https://wiki.gnome.org/Apps/Recipes",
+                               "website-label", _("Learn more about GNOME Recipes"),
                                NULL);
 
         if (first_time) {
+                GtkAboutDialog *dialog;
+
                 first_time = FALSE;
-                gtk_about_dialog_add_credit_section (GTK_ABOUT_DIALOG (g_object_get_data (G_OBJECT (win), "gtk-about-dialog")),
-                                                     _("Recipes by"),
-                                                     recipe_authors);
+
+                dialog = GTK_ABOUT_DIALOG (g_object_get_data (G_OBJECT (win), "gtk-about-dialog"));
+                gtk_about_dialog_add_credit_section (dialog, _("Recipes by"), recipe_authors);
+                add_built_logo (dialog);
         }
 
 }
