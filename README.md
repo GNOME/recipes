@@ -63,18 +63,19 @@ brew install libtool
 brew install gettext
 brew install pkg-config
 ```
-- Install GTK+:
+- Install GTK+ and other dependencies:
 ```
 brew install gtk+3
 brew install adwaita-icon-theme
+brew install gspell
 ```
 - Clone from git:
 ```
 git clone git://git.gnome.org/recipes.git
 ```
-- biuld from git as usual, disabling some dependencies:
+- Build from git as usual, disabling some problematic dependencies:
 ```
 cd recipes
-./autogen --disable-gspell --disable-autoar
+./autogen --disable-autoar
 make
 ```
