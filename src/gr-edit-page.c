@@ -1091,7 +1091,7 @@ add_ingredients_segment (GrEditPage *page,
         gtk_widget_show (entry);
         gtk_entry_set_text (GTK_ENTRY (entry), segment_label[0] ? segment_label : _("Ingredients for …"));
 
-#ifdef ENABLE_GSPELL
+#if defined(ENABLE_GSPELL) && defined(GSPELL_TYPE_ENTRY)
         {
                 GspellEntry *gspell_entry;
 
