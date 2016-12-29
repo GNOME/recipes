@@ -93,12 +93,25 @@ AX_CHECK_COMPILE_FLAG([-std=gnu11],
 
 
 dnl ***********************************************************************
+dnl Build options
+dnl ***********************************************************************
+AC_ARG_ENABLE(gspell,
+              [AS_HELP_STRING([--enable-gspell],
+                              [Use gspell for spell-checking])],,
+              [enable_gspell="yes"])
+
+if test "x$enable_gspell" = xgspell; then
+        GSPELL_DEP=gspell-1
+        AC_DEFINE([ENABLE_GSPELL], [], [Define to 1 if gspell is used])
+fi
+
+dnl ***********************************************************************
 dnl Check for required packages
 dnl ***********************************************************************
 PKG_CHECK_MODULES(RECIPES, [gio-2.0 >= 2.42
                             gtk+-3.0 >= 3.20
                             gnome-autoar-0
-                            gspell-1])
+                            $GSPELL_DEP])
 
 
 LIBGD_INIT([tagged-entry])
@@ -131,4 +144,5 @@ echo " Options"
 echo ""
 echo "  Prefix ............................... : ${prefix}"
 echo "  Libdir ............................... : ${libdir}"
+echo "  Spell checking ....................... : ${enable_gspell}"
 echo ""

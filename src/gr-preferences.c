@@ -23,7 +23,9 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
+#ifdef ENABLE_GSPELL
 #include <gspell/gspell.h>
+#endif
 
 #include "gr-preferences.h"
 #include "gr-chef.h"
@@ -171,7 +173,6 @@ gr_preferences_init (GrPreferences *self)
         GrRecipeStore *store;
         g_autoptr(GrChef) chef = NULL;
         const char *id;
-        GspellTextView *gspell_view;
 
         gtk_widget_init_template (GTK_WIDGET (self));
 
@@ -205,8 +206,14 @@ gr_preferences_init (GrPreferences *self)
 
         g_signal_connect_swapped (self, "delete-event", G_CALLBACK (window_close), self);
 
-        gspell_view = gspell_text_view_get_from_gtk_text_view (GTK_TEXT_VIEW (self->description));
-        gspell_text_view_basic_setup (gspell_view);
+#ifdef ENABLE_GSPELL
+        {
+                GspellTextView *gspell_view;
+
+                gspell_view = gspell_text_view_get_from_gtk_text_view (GTK_TEXT_VIEW (self->description));
+                gspell_text_view_basic_setup (gspell_view);
+        }
+#endif
 }
 
 static void

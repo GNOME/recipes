@@ -23,7 +23,9 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
+#ifdef ENABLE_GSPELL
 #include <gspell/gspell.h>
+#endif
 
 #include "gr-edit-page.h"
 #include "gr-recipe-store.h"
@@ -829,8 +831,6 @@ populate_units_list (GrEditPage *self)
 static void
 gr_edit_page_init (GrEditPage *page)
 {
-        GspellTextView *gspell_view;
-
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
         gtk_widget_init_template (GTK_WIDGET (page));
 
@@ -842,11 +842,17 @@ gr_edit_page_init (GrEditPage *page)
         populate_ingredients_list (page);
         populate_units_list (page);
 
-        gspell_view = gspell_text_view_get_from_gtk_text_view (GTK_TEXT_VIEW (page->description_field));
-        gspell_text_view_basic_setup (gspell_view);
+#ifdef ENABLE_GSPELL
+        {
+                GspellTextView *gspell_view;
 
-        gspell_view = gspell_text_view_get_from_gtk_text_view (GTK_TEXT_VIEW (page->instructions_field));
-        gspell_text_view_basic_setup (gspell_view);
+                gspell_view = gspell_text_view_get_from_gtk_text_view (GTK_TEXT_VIEW (page->description_field));
+                gspell_text_view_basic_setup (gspell_view);
+
+                gspell_view = gspell_text_view_get_from_gtk_text_view (GTK_TEXT_VIEW (page->instructions_field));
+                gspell_text_view_basic_setup (gspell_view);
+        }
+#endif
 }
 
 static gboolean
@@ -1062,7 +1068,6 @@ add_ingredients_segment (GrEditPage *page,
         GtkWidget *button;
         GtkWidget *stack;
         GtkWidget *image;
-        GspellEntry *gspell_entry;
 
         segment = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
         gtk_widget_set_margin_top (segment, 20);
@@ -1092,8 +1097,14 @@ add_ingredients_segment (GrEditPage *page,
         gtk_widget_show (entry);
         gtk_entry_set_text (GTK_ENTRY (entry), segment_label[0] ? segment_label : _("Ingredients for …"));
 
-        gspell_entry = gspell_entry_get_from_gtk_entry (GTK_ENTRY (entry));
-        gspell_entry_basic_setup (gspell_entry);
+#ifdef ENABLE_GSPELL
+        {
+                GspellEntry *gspell_entry;
+
+                gspell_entry = gspell_entry_get_from_gtk_entry (GTK_ENTRY (entry));
+                gspell_entry_basic_setup (gspell_entry);
+        }
+#endif
 
         gtk_box_pack_start (GTK_BOX (box), entry, TRUE, TRUE, 0);
 

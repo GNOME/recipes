@@ -25,7 +25,9 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
+#ifdef ENABLE_GSPELL
 #include <gspell/gspell.h>
+#endif
 
 #include "gr-details-page.h"
 #include "gr-recipe-store.h"
@@ -580,8 +582,6 @@ schedule_save (GtkTextBuffer *buffer, GrDetailsPage *page)
 static void
 gr_details_page_init (GrDetailsPage *page)
 {
-        GspellTextView *gspell_view;
-
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
         gtk_widget_init_template (GTK_WIDGET (page));
         connect_store_signals (page);
@@ -597,8 +597,13 @@ gr_details_page_init (GrDetailsPage *page)
 
         g_signal_connect (gtk_text_view_get_buffer (GTK_TEXT_VIEW (page->notes_field)), "changed", G_CALLBACK (schedule_save), page);
 
-        gspell_view = gspell_text_view_get_from_gtk_text_view (GTK_TEXT_VIEW (page->notes_field));
-        gspell_text_view_basic_setup (gspell_view);
+#ifdef ENABLE_GSPELL
+        {
+                GspellTextView *gspell_view;
+                gspell_view = gspell_text_view_get_from_gtk_text_view (GTK_TEXT_VIEW (page->notes_field));
+                gspell_text_view_basic_setup (gspell_view);
+        }
+#endif
 }
 
 static void
