@@ -16,8 +16,11 @@ recipes_CFLAGS = \
 
 recipes_LDADD = $(RECIPES_LIBS)			\
 		-lm				\
-		$(top_builddir)/libgd/libgd.la	\
-		$(top_builddir)/libglnx.la
+		$(top_builddir)/libgd/libgd.la
+
+if USE_AUTOAR
+recipes_LDADD += $(top_builddir)/libglnx.la
+endif
 
 recipes_SOURCES = \
 	main.c 			\
