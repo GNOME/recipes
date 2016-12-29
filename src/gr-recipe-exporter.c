@@ -96,9 +96,9 @@ gr_recipe_exporter_new (GtkWindow *parent)
 static void
 cleanup_export (GrRecipeExporter *exporter)
 {
+#ifdef ENABLE_AUTOAR
         g_autoptr(GError) error = NULL;
 
-#ifdef ENABLE_AUTOAR
         if (!glnx_shutil_rm_rf_at (-1, exporter->dir, NULL, &error))
                 g_warning ("Failed to clean up temp directory %s: %s", exporter->dir, error->message);
 
