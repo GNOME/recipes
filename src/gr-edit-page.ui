@@ -600,6 +600,31 @@
                       </packing>
                     </child>
                     <child>
+                      <object class="GtkButton" id="add_recipe_button">
+                        <property name="visible">1</property>
+                        <property name="halign">start</property>
+                        <property name="tooltip-text" translatable="yes">Add Recipe link</property>
+                        <property name="margin-top">10</property>
+                        <signal name="clicked" handler="add_recipe_link"/>
+                        <style>
+                          <class name="dim-label"/>
+                          <class name="image-button"/>
+                        </style>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">1</property>
+                            <property name="icon-name">insert-link-symbolic</property>
+                            <property name="icon-size">1</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">13</property>
+                        <property name="width">2</property>
+                      </packing>
+                    </child>
+                    <child>
                       <object class="GtkLabel" id="author_label">
                         <property name="visible">1</property>
                         <property name="xalign">0</property>
@@ -607,7 +632,7 @@
                       </object>
                       <packing>
                         <property name="left-attach">0</property>
-                        <property name="top-attach">13</property>
+                        <property name="top-attach">14</property>
                         <property name="width">2</property>
                       </packing>
                     </child>
@@ -804,6 +829,45 @@
             <property name="label" translatable="yes">Add</property>
             <property name="halign">end</property>
             <signal name="clicked" handler="add_ingredient2"/>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkPopover" id="recipe_popover">
+    <property name="position">top</property>
+    <property name="relative-to">add_recipe_button</property>
+    <property name="modal">1</property>
+    <property name="constrain-to">none</property>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">1</property>
+        <property name="margin">12</property>
+        <property name="spacing">12</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkSearchEntry" id="recipe_filter_entry">
+            <property name="visible">1</property>
+            <property name="placeholder-text" translatable="yes">Search…</property>
+            <signal name="search-changed" handler="recipe_filter_changed" swapped="yes"/>
+            <signal name="stop-search" handler="recipe_filter_stop" swapped="yes"/>
+            <signal name="activate" handler="recipe_filter_activated" swapped="yes"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow">
+            <property name="visible">1</property>
+            <property name="shadow-type">in</property>
+            <property name="hscrollbar-policy">never</property>
+            <property name="propagate-natural-height">1</property>
+            <property name="max-content-height">220</property>
+            <child>
+              <object class="GtkListBox" id="recipe_list">
+                <property name="visible">1</property>
+                <property name="selection-mode">none</property>
+                <property name="height-request">220</property>
+              </object>
+            </child>
           </object>
         </child>
       </object>
