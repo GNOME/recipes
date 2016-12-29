@@ -100,7 +100,7 @@ AC_ARG_ENABLE(gspell,
                               [Use gspell for spell-checking])],,
               [enable_gspell="yes"])
 
-if test "x$enable_gspell" = xgspell; then
+if test "x$enable_gspell" = xyes; then
         GSPELL_DEP=gspell-1
         AC_DEFINE([ENABLE_GSPELL], [], [Define to 1 if gspell is used])
 fi
