@@ -152,6 +152,8 @@ struct _GrDetailsPage
         GtkWidget *error_revealer;
 
         guint save_timeout;
+
+        char *uri;
 };
 
 G_DEFINE_TYPE (GrDetailsPage, gr_details_page, GTK_TYPE_BOX)
@@ -508,6 +510,7 @@ details_page_finalize (GObject *object)
         g_clear_object (&self->printer);
         g_clear_object (&self->exporter);
         g_clear_pointer (&self->cooking, g_hash_table_unref);
+        g_clear_pointer (&self->uri, g_free);
 
         if (self->save_timeout) {
                 g_source_remove (self->save_timeout);
@@ -594,10 +597,14 @@ schedule_save (GtkTextBuffer *buffer, GrDetailsPage *page)
 }
 
 static gboolean
-activate_link (GtkLabel      *label,
-               const char    *uri,
-               GrDetailsPage *page)
+activate_uri_at_idle (gpointer data)
 {
+        GrDetailsPage *page = data;
+        g_autofree char *uri = NULL;
+
+        uri = page->uri;
+        page->uri = NULL;
+
         if (g_str_has_prefix (uri, "recipe:")) {
                 GrRecipeStore *store;
                 const char *id;
@@ -611,17 +618,30 @@ activate_link (GtkLabel      *label,
                         GtkWidget *window;
 
                         window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
-                        gr_window_edit_recipe (GR_WINDOW (window), recipe);
+                        gr_window_show_recipe (GR_WINDOW (window), recipe);
                 }
                 else {
                         gtk_label_set_label (GTK_LABEL (page->error_label),
                                              _("Could not find this recipe."));
                         gtk_revealer_set_reveal_child (GTK_REVEALER (page->error_revealer), TRUE);
                 }
-                return TRUE;
         }
 
-        return FALSE;
+        return G_SOURCE_REMOVE;
+}
+
+static gboolean
+activate_link (GtkLabel      *label,
+               const char    *uri,
+               GrDetailsPage *page)
+{
+        g_free (page->uri);
+        page->uri = g_strdup (uri);
+
+        // FIXME: We can avoid the idle with GTK+ 3.22.6 or newer
+        g_idle_add (activate_uri_at_idle, page);
+
+        return TRUE;
 }
 
 static void
