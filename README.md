@@ -79,3 +79,6 @@ cd recipes
 ./autogen --disable-autoar
 make
 ```
+
+This pull request https://github.com/Homebrew/homebrew-core/pull/8303 adds a formula for building
+recipes from a tarball release.
