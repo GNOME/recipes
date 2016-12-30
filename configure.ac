@@ -141,6 +141,7 @@ AC_CONFIG_FILES([
 	Makefile
         libgd/Makefile
 	src/Makefile
+	tools/Makefile
 	data/Makefile
 	tests/Makefile
 	po/Makefile.in
