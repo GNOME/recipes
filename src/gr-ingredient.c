@@ -82,8 +82,8 @@ gr_ingredient_find (const char *text)
         cf_text = g_utf8_casefold (text, -1);
 
         for (i = 0; names[i]; i++) {
-                if (strstr (cf_text, cf_names[i]) != NULL ||
-                    strstr (cf_text, cf_en_names[i]) != NULL)
+                if (strcmp (cf_text, cf_names[i]) == 0 ||
+                    strcmp (cf_text, cf_en_names[i]) == 0)
                         return names[i];
         }
 
