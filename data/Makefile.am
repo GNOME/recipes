@@ -41,6 +41,7 @@ dist_images_DATA = \
 	images/coffee.jpg		\
 	images/elvin.jpg		\
 	images/food.jpg			\
+	images/fyksen.jpg		\
 	images/halfline.jpg		\
 	images/mclasen.jpg		\
 	images/meatballs.jpg		\
