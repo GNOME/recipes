@@ -116,6 +116,8 @@ recipes_SOURCES = \
 BUILT_SOURCES = \
 	resources-ui.c		\
 	resources-images.c	\
+	ingredients.c		\
+	no-ingredients.c	\
 	types.h			\
 	types.c			\
 	gr-shell-search-provider-dbus.h \
@@ -128,6 +130,12 @@ MAINTAINERCLEANFILES = \
 	types.c			\
 	gr-shell-search-provider-dbus.h \
 	gr-shell-search-provider-dbus.c
+
+ingredients.c: $(top_srcdir)/data/ingredients.list
+	$(AM_V_GEN) $(SED) -e 's/^\(.*\)$$/	N_("\1"),/' $^ > $@
+
+no-ingredients.c: $(top_srcdir)/data/ingredients.list
+	$(AM_V_GEN) $(SED) -e 's/^\(.*\)$$/	N_("no \1"),/' $^ > $@
 
 resource_ui_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/recipes-ui.gresource.xml)
 

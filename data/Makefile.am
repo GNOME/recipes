@@ -3,6 +3,8 @@
 EXTRA_DIST =
 CLEANFILES =
 
+EXTRA_DIST += ingredients.list
+
 desktopdir = $(datadir)/applications
 
 desktop_in_files = org.gnome.Recipes.desktop.in
