@@ -39,6 +39,28 @@ emit_string (const char *s)
         }
 }
 
+static void
+emit_ingredients (const char *s)
+{
+        g_auto(GStrv) strv = NULL;
+        int i;
+
+        strv = g_strsplit (s, "\n", -1);
+
+        for (i = 0; strv[i]; i++) {
+                g_auto(GStrv) fields = NULL;
+
+                fields = g_strsplit (strv[i], "\t", -1);
+
+                if (g_strv_length (fields) != 4) {
+                        g_printerr ("Wrong number of fields; ignoring line: %s\n", strv[i]);
+                        continue;
+                }
+
+                g_print ("%s\n", fields[2]);
+        }
+}
+
 int
 main (int argc, char *argv[])
 {
@@ -51,32 +73,53 @@ main (int argc, char *argv[])
                 "Description",
                 "Instructions"
         };
+        gboolean extract_ingredients = FALSE;
         unsigned int i, j;
 
-        if (argc != 2)
+        if (argc == 3 && g_strcmp0 (argv[1], "--ingredients") == 0) {
+                extract_ingredients = TRUE;
+                argv[1] = argv[2];
+                argc = 2;
+        }
+
+        if (argc != 2) {
                 return 1;
+        }
 
         setlocale (LC_ALL, "");
 
         keyfile = g_key_file_new ();
 
         if (!g_key_file_load_from_file (keyfile, argv[1], G_KEY_FILE_NONE, &error)) {
-                g_print ("Failed to parse %s: %s\n", argv[1], error->message);
+                g_printerr ("Failed to parse %s: %s\n", argv[1], error->message);
                 return 1;
         }
 
-        g_print ("#if 0\n\n");
+        if (!extract_ingredients)
+                g_print ("#if 0\n\n");
 
         groups = g_key_file_get_groups (keyfile, &length);
         for (i = 0; i < length; i++) {
                 if (g_str_has_prefix (groups[i], "TEST"))
                         continue;
 
+                if (extract_ingredients) {
+                        g_autofree char *s = NULL;
+                        s = g_key_file_get_string (keyfile, groups[i], "Ingredients", &error);
+                        if (!s) {
+                                g_printerr ("Failed to get key '%s' for group '%s': %s\n", keys[j], groups[i], error->message);
+                                g_clear_error (&error);
+                                continue;
+                        }
+                        emit_ingredients (s);
+                        continue;
+                }
+
                 for (j = 0; j < G_N_ELEMENTS (keys); j++) {
                         g_autofree char *s = NULL;
                         s = g_key_file_get_string (keyfile, groups[i], keys[j], &error);
                         if (!s) {
-                                g_print ("Failed to get key '%s' for group '%s': %s\n", keys[j], groups[i], error->message);
+                                g_printerr ("Failed to get key '%s' for group '%s': %s\n", keys[j], groups[i], error->message);
                                 g_clear_error (&error);
                                 continue;
                         }
@@ -85,7 +128,8 @@ main (int argc, char *argv[])
                 }
         }
 
-        g_print ("\n\n#endif\n");
+        if (!extract_ingredients)
+                g_print ("\n\n#endif\n");
 
         return 0;
 }
