@@ -1,5 +1,6 @@
 data/org.gnome.Recipes.desktop.in
 data/appdata/org.gnome.Recipes.appdata.xml.in
+data/recipes.db.h
 src/chef-conflict-dialog.ui
 src/gr-category-tile.ui
 src/gr-chef-tile.ui
@@ -58,3 +59,5 @@ src/gr-season.c
 src/gr-unit.c
 src/gr-utils.c
 src/gr-window.c
+src/ingredients.c
+src/no-ingredients.c

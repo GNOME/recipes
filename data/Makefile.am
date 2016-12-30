@@ -3,7 +3,12 @@
 EXTRA_DIST =
 CLEANFILES =
 
-EXTRA_DIST += ingredients.list
+EXTRA_DIST += ingredients.list recipes.db.h
+
+BUILT_SOURCES = recipes.db.h
+
+recipes.db.h: $(top_srcdir)/data/recipes.db
+	$(AM_V_GEN) $(top_builddir)/tools/recipe-extract $^ > $@
 
 desktopdir = $(datadir)/applications
 
