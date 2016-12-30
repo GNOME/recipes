@@ -728,8 +728,8 @@ populate_ingredients (GrDetailsPage *page,
                         g_object_set (label,
                                       "visible", TRUE,
                                       "xalign", 0.0,
-                              "margin", 10,
-                              NULL);
+                                      "margin", 10,
+                                      NULL);
                         gtk_container_add (GTK_CONTAINER (box), label);
 
                         gtk_container_add (GTK_CONTAINER (list), box);
