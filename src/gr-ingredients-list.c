@@ -161,6 +161,7 @@ gr_ingredients_list_populate_new_format (GrIngredientsList  *ingredients,
                 char *ingredient;
                 char *segment;
                 const char *u;
+                const char *s;
                 Ingredient *ing;
                 g_autoptr(GError) local_error = NULL;
 
@@ -193,8 +194,13 @@ gr_ingredients_list_populate_new_format (GrIngredientsList  *ingredients,
                 }
 
                 ing->unit = g_strdup (u);
-                ing->name = g_strdup (ingredient);
                 ing->segment = g_strdup (segment);
+
+                s = gr_ingredient_find (ingredient);
+                if (s)
+                        ing->name = g_strdup (s);
+                else
+                        ing->name = g_strdup (ingredient);
 
                 g_hash_table_add (ingredients->segments, g_strdup (segment));
                 ingredients->ingredients = g_list_append (ingredients->ingredients, ing);
