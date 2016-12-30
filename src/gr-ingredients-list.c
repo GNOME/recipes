@@ -130,9 +130,9 @@ gr_ingredients_list_populate (GrIngredientsList  *ingredients,
                         segment = NULL;
 
                 if (segment)
-                        g_hash_table_add (ingredients->segments, g_strdup (segment));
+                        g_hash_table_add (ingredients->segments, g_strdup (_(segment)));
                 if (!gr_ingredients_list_add_one (ingredients, lines[i],
-                                                  (char *)(segment ? segment : ""), error)) {
+                                                  (char *)(segment ? _(segment) : ""), error)) {
                         g_message ("Failed to parse ingredients line '%s'", lines[i]);
                 }
         }
@@ -174,7 +174,7 @@ gr_ingredients_list_populate_new_format (GrIngredientsList  *ingredients,
                 amount = fields[0];
                 unit = fields[1];
                 ingredient = fields[2];
-                segment = fields[3];
+                segment = (char *)(fields[3][0] ? _(fields[3]) : "");
 
                 ing = g_new0 (Ingredient, 1);
                 gr_number_set_fraction (&ing->amount, 0, 0);
