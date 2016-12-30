@@ -730,14 +730,15 @@ unit_filter_func (GtkListBoxRow *row,
 {
         GrEditPage *self = data;
         const char *unit;
-        const char *cf1, *cf2;
+        g_autofree char *cf1 = NULL;
+        g_autofree char *cf2 = NULL;
 
         if (!self->unit_term)
                 return TRUE;
 
         unit = (const char *)g_object_get_data (G_OBJECT (row), "unit");
-        cf1 = gr_unit_get_abbreviation (unit);
-        cf2 = gr_unit_get_display_name (unit);
+        cf1 = g_utf8_casefold (gr_unit_get_abbreviation (unit), -1);
+        cf2 = g_utf8_casefold (gr_unit_get_display_name (unit), -1);
 
         return g_str_has_prefix (cf1, self->unit_term) ||
                g_str_has_prefix (cf2, self->unit_term);
