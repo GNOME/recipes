@@ -113,6 +113,14 @@ gr_unit_parse (char   **input,
                 }
         }
 
+        for (i = 0; i < G_N_ELEMENTS (units); i++) {
+                nu = units[i].unit;
+                if (g_str_has_prefix (*input, nu) && space_or_nul ((*input)[strlen (nu)])) {
+                        *input += strlen (nu);
+                        return units[i].unit;
+                }
+        }
+
         g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
                      _("I don’t know this unit: %s"), *input);
 
