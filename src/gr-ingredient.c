@@ -77,56 +77,6 @@ static const char *names_[] = {
         NULL
 };
 
-static const char *plurals[] = {
-        N_("Almonds"),
-        N_("Amaretti"),
-        N_("Apples"),
-        N_("Apricots"),
-        N_("Anchovis"),
-        N_("Artichokes"),
-        N_("Asparagus"),
-        N_("Aubergines"),
-        N_("Bacon"),
-        N_("Bananas"),
-        N_("Baked Beans"),
-        N_("Basil"),
-        N_("Beans"),
-        N_("Bagels"),
-        N_("Basmati rice"),
-        N_("Bay leaves"),
-        N_("Beef mince"),
-        N_("Berries"),
-        N_("Beetroots"),
-        N_("Biscottis"),
-        N_("Beef sausages"),
-        N_("Beef stock"),
-        N_("Bilberries"),
-        N_("Carrots"),
-        N_("Couscous"),
-        N_("Dates"),
-        N_("Eggs"),
-        N_("Figs"),
-        N_("Garlic"),
-        N_("Honey"),
-        N_("Lemons"),
-        N_("Mayonnaise"),
-        N_("Mustard"),
-        N_("Onions"),
-        N_("Oranges"),
-        N_("Parsley"),
-        N_("Peppers"),
-        N_("Potatoes"),
-        N_("Silantro"),
-        N_("Squashs"),
-        N_("Tangerines"),
-        N_("Tomatoes"),
-        N_("Vinegar"),
-        N_("Wines"),
-        N_("Yoghurts"),
-        N_("Zinfandels"),
-        NULL
-};
-
 static const char *negations[] = {
         N_("no Almond"),
         N_("no Amaretti"),
@@ -179,9 +129,7 @@ static const char *negations[] = {
 
 static char **names;
 static char **cf_names;
-static char **cf_plurals;
 static char **cf_en_names;
-static char **cf_en_plurals;
 
 static void
 translate_names (void)
@@ -193,16 +141,12 @@ translate_names (void)
 
         names = g_new0 (char *, G_N_ELEMENTS (names_));
         cf_names = g_new0 (char *, G_N_ELEMENTS (names_));
-        cf_plurals = g_new0 (char *, G_N_ELEMENTS (names_));
         cf_en_names = g_new0 (char *, G_N_ELEMENTS (names_));
-        cf_en_plurals = g_new0 (char *, G_N_ELEMENTS (names_));
 
         for (i = 0; names_[i]; i++) {
                 names[i] = _(names_[i]);
                 cf_names[i] = g_utf8_casefold (names[i], -1);
-                cf_plurals[i] = g_utf8_casefold (_(plurals[i]), -1);
                 cf_en_names[i] = g_utf8_casefold (names_[i], -1);
-                cf_en_plurals[i] = g_utf8_casefold (plurals[i], -1);
         }
 }
 
@@ -229,25 +173,8 @@ gr_ingredient_find (const char *text)
 
         for (i = 0; names[i]; i++) {
                 if (strstr (cf_text, cf_names[i]) != NULL ||
-                    strstr (cf_text, cf_plurals[i]) != NULL ||
-                    strstr (cf_text, cf_en_names[i]) != NULL ||
-                    strstr (cf_text, cf_en_plurals[i]) != NULL) {
+                    strstr (cf_text, cf_en_names[i]) != NULL)
                         return names[i];
-                }
-        }
-
-        return NULL;
-}
-
-const char *
-gr_ingredient_get_plural (const char *name)
-{
-        int i;
-
-        for (i = 0; names[i]; i++) {
-                if (g_strcmp0 (name, names[i]) == 0) {
-                        return _(plurals[i]);
-                }
         }
 
         return NULL;

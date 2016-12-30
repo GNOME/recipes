@@ -26,7 +26,6 @@ G_BEGIN_DECLS
 
 const char    **gr_ingredient_get_names    (int        *length);
 const char     *gr_ingredient_find         (const char *text);
-const char     *gr_ingredient_get_plural   (const char *name);
 const char     *gr_ingredient_get_negation (const char *name);
 char           *gr_ingredient_get_image    (const char *name);
 
