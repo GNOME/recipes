@@ -28,6 +28,5 @@ const char *gr_unit_parse (char   **string,
 const char **gr_unit_get_names (void);
 const char  *gr_unit_get_abbreviation (const char *name);
 const char  *gr_unit_get_display_name (const char *name);
-const char  *gr_unit_get_plural       (const char *name);
 
 G_END_DECLS

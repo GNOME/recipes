@@ -34,26 +34,25 @@ typedef struct {
         const char *unit;
         const char *abbreviation;
         const char *display_name;
-        const char *plural;
 } GrUnit;
 
 static GrUnit units[] = {
-        { "g",  NC_("unit", "g"), NC_("unit", "gram"), NC_("unit", "grams") },
-        { "kg", NC_("unit", "kg"), NC_("unit", "kilogram"), NC_("unit", "kilograms") },
-        { "lb", NC_("unit", "lb"), NC_("unit", "pound"), NC_("unit", "pounds") },
-        { "oz", NC_("unit", "oz"), NC_("unit", "ounce"), NC_("unit", "ounces") },
-        { "l",  NC_("unit", "l"), NC_("unit", "liter"), NC_("unit", "liters") },
-        { "dl", NC_("unit", "dl"), NC_("unit", "deciliter"), NC_("unit", "deciliters") },
-        { "ml", NC_("unit", "ml"), NC_("unit", "milliliter"), NC_("unit", "milliliters") },
-        { "fl oz", NC_("unit", "fl oz"), NC_("unit", "fluid ounce"), NC_("unit", "fluid ounces") },
-        { "pt", NC_("unit", "pt"), NC_("unit", "pint"), NC_("unit", "pints") },
-        { "qt", NC_("unit", "qt"), NC_("unit", "quart"), NC_("unit", "quarts") },
-        { "gal", NC_("unit", "gal"), NC_("unit", "gallon"), NC_("unit", "gallons") },
-        { "cup", NC_("unit", "cup"), NC_("unit", "cup"), NC_("unit", "cups") },
-        { "tbsp", NC_("unit", "tbsp"), NC_("unit", "tablespoon"), NC_("unit", "tablespoons") },
-        { "tsp", NC_("unit", "tsp"), NC_("unit", "teaspoon"), NC_("unit", "teaspoons") },
-        { "box", NC_("unit", "box"), NC_("unit", "box"), NC_("unit", "boxes") },
-        { "pkg", NC_("unit", "pkg"), NC_("unit", "package"), NC_("unit", "packages") },
+        { "g",     NC_("unit abbreviation", "g"),     NC_("unit name", "gram") },
+        { "kg",    NC_("unit abbreviation", "kg"),    NC_("unit name", "kilogram") },
+        { "lb",    NC_("unit abbreviation", "lb"),    NC_("unit name", "pound") },
+        { "oz",    NC_("unit abbreviation", "oz"),    NC_("unit name", "ounce") },
+        { "l",     NC_("unit abbreviation", "l"),     NC_("unit name", "liter") },
+        { "dl",    NC_("unit abbreviation", "dl"),    NC_("unit name", "deciliter") },
+        { "ml",    NC_("unit abbreviation", "ml"),    NC_("unit name", "milliliter") },
+        { "fl oz", NC_("unit abbreviation", "fl oz"), NC_("unit name", "fluid ounce") },
+        { "pt",    NC_("unit abbreviation", "pt"),    NC_("unit name", "pint") },
+        { "qt",    NC_("unit abbreviation", "qt"),    NC_("unit name", "quart") },
+        { "gal",   NC_("unit abbreviation", "gal"),   NC_("unit name", "gallon") },
+        { "cup",   NC_("unit abbreviation", "cup"),   NC_("unit name", "cup") },
+        { "tbsp",  NC_("unit abbreviation", "tbsp"),  NC_("unit name", "tablespoon") },
+        { "tsp",   NC_("unit abbreviation", "tsp"),   NC_("unit name", "teaspoon") },
+        { "box",   NC_("unit abbreviation", "box"),   NC_("unit name", "box") },
+        { "pkg",   NC_("unit abbreviation", "pkg"),   NC_("unit name", "package") },
 };
 
 const char **
@@ -78,16 +77,7 @@ gr_unit_get_display_name (const char *name)
 {
         GrUnit *unit = find_unit (name);
         if (unit)
-                return g_dpgettext2 (NULL, "unit", unit->display_name);
-        return NULL;
-}
-
-const char *
-gr_unit_get_plural (const char *name)
-{
-        GrUnit *unit = find_unit (name);
-        if (unit)
-                return g_dpgettext2 (NULL, "unit", unit->plural);
+                return g_dpgettext2 (NULL, "unit name", unit->display_name);
         return NULL;
 }
 
@@ -96,7 +86,7 @@ gr_unit_get_abbreviation (const char *name)
 {
         GrUnit *unit = find_unit (name);
         if (unit)
-                return g_dpgettext2 (NULL, "unit", unit->abbreviation);
+                return g_dpgettext2 (NULL, "unit abbreviation", unit->abbreviation);
         return NULL;
 }
 
@@ -108,7 +98,7 @@ gr_unit_parse (char   **input,
         const char *nu;
 
         for (i = 0; i < G_N_ELEMENTS (units); i++) {
-                nu = g_dpgettext2 (NULL, "unit", units[i].plural);
+                nu = g_dpgettext2 (NULL, "unit name", units[i].display_name);
                 if (g_str_has_prefix (*input, nu) && space_or_nul ((*input)[strlen (nu)])) {
                         *input += strlen (nu);
                         return units[i].unit;
@@ -116,15 +106,7 @@ gr_unit_parse (char   **input,
         }
 
         for (i = 0; i < G_N_ELEMENTS (units); i++) {
-                nu = g_dpgettext2 (NULL, "unit", units[i].display_name);
-                if (g_str_has_prefix (*input, nu) && space_or_nul ((*input)[strlen (nu)])) {
-                        *input += strlen (nu);
-                        return units[i].unit;
-                }
-        }
-
-        for (i = 0; i < G_N_ELEMENTS (units); i++) {
-                nu = g_dpgettext2 (NULL, "unit", units[i].abbreviation);
+                nu = g_dpgettext2 (NULL, "unit abbreviation", units[i].abbreviation);
                 if (g_str_has_prefix (*input, nu) && space_or_nul ((*input)[strlen (nu)])) {
                         *input += strlen (nu);
                         return units[i].unit;
