@@ -58,6 +58,8 @@ emit_ingredients (const char *s)
                 }
 
                 g_print ("%s\n", fields[2]);
+                if (fields[3][0] != '\0')
+                        g_print ("%s\n", fields[3]);
         }
 }
 

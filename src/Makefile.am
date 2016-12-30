@@ -118,6 +118,7 @@ BUILT_SOURCES = \
 	resources-images.c	\
 	ingredients.c		\
 	no-ingredients.c	\
+	segments.c		\
 	types.h			\
 	types.c			\
 	gr-shell-search-provider-dbus.h \
@@ -128,8 +129,14 @@ MAINTAINERCLEANFILES = \
 	resources-images.c	\
 	types.h			\
 	types.c			\
+	ingredients.c		\
+	no-ingredients.c	\
+	segments.c		\
 	gr-shell-search-provider-dbus.h \
 	gr-shell-search-provider-dbus.c
+
+segments.c: $(top_srcdir)/data/segments.list
+	$(AM_V_GEN) $(SED) -e 's/^\(.*\)$$/	N_("\1"),/' $^ > $@
 
 ingredients.c: $(top_srcdir)/data/ingredients.list
 	$(AM_V_GEN) $(SED) -e 's/^\(.*\)$$/	N_("\1"),/' $^ > $@

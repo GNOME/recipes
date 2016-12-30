@@ -3,7 +3,7 @@
 EXTRA_DIST =
 CLEANFILES =
 
-EXTRA_DIST += ingredients.list recipes.db.h
+EXTRA_DIST += ingredients.list segments.list recipes.db.h
 
 BUILT_SOURCES = recipes.db.h
 
