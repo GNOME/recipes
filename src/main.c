@@ -22,6 +22,7 @@
 
 #include <gtk/gtk.h>
 #include <libintl.h>
+#include <locale.h>
 
 #include "gr-app.h"
 #include "gr-cuisine-page.h"
@@ -57,6 +58,7 @@ main (int argc, char *argv[])
         g_type_ensure (GR_TYPE_TIMER_WIDGET);
         g_type_ensure (GR_TYPE_TOGGLE_BUTTON);
 
+        setlocale (LC_ALL, "");
         bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
         bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
         textdomain (GETTEXT_PACKAGE);
