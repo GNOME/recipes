@@ -34,6 +34,7 @@ struct _GrIngredientRow
         GtkWidget *label;
         GtkWidget *image;
 
+        char *id;
         char *ingredient;
         char *cf_ingredient;
 
@@ -60,6 +61,7 @@ gr_ingredient_row_finalize (GObject *object)
         GrIngredientRow *self = (GrIngredientRow *)object;
 
         g_clear_object (&self->tag);
+        g_free (self->id);
         g_free (self->ingredient);
         g_free (self->cf_ingredient);
 
@@ -176,11 +178,15 @@ gr_ingredient_row_set_property (GObject      *object,
 
                         g_free (self->ingredient);
                         self->ingredient = g_value_dup_string (value);
+
                         term = gr_ingredient_get_id (self->ingredient);
                         if (!term)
                                 term = self->ingredient;
+                        g_free (self->id);
+                        self->id = g_strdup (term);
+
                         g_free (self->cf_ingredient);
-                        self->cf_ingredient = g_utf8_casefold (term, -1);
+                        self->cf_ingredient = g_utf8_casefold (self->ingredient, -1);
                   }
                   break;
           case PROP_INCLUDE:
@@ -255,10 +261,10 @@ char *
 gr_ingredient_row_get_search_term (GrIngredientRow *row)
 {
         if (row->include) {
-                return g_strconcat ("i+:", row->cf_ingredient, NULL);
+                return g_strconcat ("i+:", row->id, NULL);
         }
         else if (row->exclude) {
-                return g_strconcat ("i-:", row->cf_ingredient, NULL);
+                return g_strconcat ("i-:", row->id, NULL);
         }
         else
                 return NULL;
@@ -286,4 +292,10 @@ const char *
 gr_ingredient_row_get_ingredient (GrIngredientRow *row)
 {
         return row->ingredient;
+}
+
+const char *
+gr_ingredient_row_get_id (GrIngredientRow *row)
+{
+        return row->id;
 }

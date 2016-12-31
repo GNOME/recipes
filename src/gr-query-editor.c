@@ -835,7 +835,7 @@ set_ingredient_tag (GrQueryEditor *editor,
                 GtkWidget *row = l->data;
                 if (!GR_IS_INGREDIENT_ROW (row))
                         continue;
-                if (strcmp (ingredient, gr_ingredient_row_get_ingredient (GR_INGREDIENT_ROW (row))) == 0) {
+                if (strcmp (ingredient, gr_ingredient_row_get_id (GR_INGREDIENT_ROW (row))) == 0) {
                         g_object_set (row, "include", include, "exclude", exclude, NULL);
                         break;
                 }
