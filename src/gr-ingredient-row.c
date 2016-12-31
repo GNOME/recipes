@@ -171,10 +171,17 @@ gr_ingredient_row_set_property (GObject      *object,
         switch (prop_id)
           {
           case PROP_INGREDIENT:
-                  g_free (self->ingredient);
-                  self->ingredient = g_value_dup_string (value);
-                  g_free (self->cf_ingredient);
-                  self->cf_ingredient = g_utf8_casefold (self->ingredient, -1);
+                  {
+                        const char *term;
+
+                        g_free (self->ingredient);
+                        self->ingredient = g_value_dup_string (value);
+                        term = gr_ingredient_get_id (self->ingredient);
+                        if (!term)
+                                term = self->ingredient;
+                        g_free (self->cf_ingredient);
+                        self->cf_ingredient = g_utf8_casefold (term, -1);
+                  }
                   break;
           case PROP_INCLUDE:
                   self->include = g_value_get_boolean (value);
