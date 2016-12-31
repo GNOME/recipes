@@ -91,6 +91,25 @@ gr_ingredient_find (const char *text)
 }
 
 const char *
+gr_ingredient_get_id (const char *name)
+{
+        int i;
+        g_autofree char *cf_text = NULL;
+
+        translate_names ();
+
+        cf_text = g_utf8_casefold (name, -1);
+
+        for (i = 0; names[i]; i++) {
+                if (strcmp (cf_text, cf_names[i]) == 0 ||
+                    strcmp (cf_text, cf_en_names[i]) == 0)
+                        return names_[i];
+        }
+
+        return NULL;
+}
+
+const char *
 gr_ingredient_get_negation (const char *name)
 {
         int i;
