@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=recipes&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-12-24 18:29+0000\n"
-"PO-Revision-Date: 2016-12-25 14:43+0100\n"
+"POT-Creation-Date: 2016-12-30 17:13+0000\n"
+"PO-Revision-Date: 2016-12-31 12:57+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -36,7 +36,7 @@ msgstr "org.gnome.Recipes"
 msgid "Recipes"
 msgstr "Recepty"
 
-#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-app.c:120
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-app.c:185
 msgid "GNOME loves to cook"
 msgstr "GNOME miluje vaření"
 
@@ -76,8 +76,8 @@ msgid "An individual recipe"
 msgstr "Jednotlivý recept"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:38
-msgid "Creating a new recipe"
-msgstr "Vytváří se nový recept"
+msgid "Editing a recipe"
+msgstr "Upravuje se recept"
 
 #: src/chef-conflict-dialog.ui:10
 msgid "Same Chef"
@@ -160,7 +160,7 @@ msgstr ""
 msgid "Contains garlic"
 msgstr "Obsahuje česnek"
 
-#: src/gr-details-page.ui:143 src/gr-details-page.c:738
+#: src/gr-details-page.ui:143 src/gr-details-page.c:759
 msgid "Spicy"
 msgstr "Pikantní"
 
@@ -196,31 +196,31 @@ msgstr "_Smazat"
 msgid "_Cook it later"
 msgstr "Poz_ději vyzkouším"
 
-#: src/gr-details-page.ui:396
+#: src/gr-details-page.ui:395
 msgid "_Export"
 msgstr "_Export"
 
-#: src/gr-details-page.ui:407
+#: src/gr-details-page.ui:406
 msgid "_Print"
 msgstr "_Tisk"
 
-#: src/gr-details-page.ui:417
+#: src/gr-details-page.ui:416
 msgid "_Share"
 msgstr "_Sdílet"
 
-#: src/gr-details-page.ui:444
+#: src/gr-details-page.ui:443
 msgid "Duration"
 msgstr "Doba"
 
-#: src/gr-details-page.ui:459
+#: src/gr-details-page.ui:458
 msgid "Start"
 msgstr "Začít"
 
-#: src/gr-details-page.ui:481
+#: src/gr-details-page.ui:480
 msgid "Remaining time"
 msgstr "Zbývající čas"
 
-#: src/gr-details-page.ui:494
+#: src/gr-details-page.ui:493
 msgid "Stop"
 msgstr "Zastavit"
 
@@ -324,7 +324,7 @@ msgstr "mírně pikantní"
 msgid "Hot"
 msgstr "pikantní"
 
-#: src/gr-edit-page.ui:523 src/gr-details-page.c:733
+#: src/gr-edit-page.ui:523 src/gr-details-page.c:754
 msgid "Very spicy"
 msgstr "velmi pikantní"
 
@@ -332,19 +332,19 @@ msgstr "velmi pikantní"
 msgid "Description (optional)"
 msgstr "Popis (volitelný)"
 
-#: src/gr-edit-page.ui:635 src/gr-edit-page.ui:654 src/gr-edit-page.c:238
+#: src/gr-edit-page.ui:637 src/gr-edit-page.ui:656 src/gr-edit-page.c:242
 msgid "Ingredient"
 msgstr "Surovina"
 
-#: src/gr-edit-page.ui:682 src/gr-edit-page.ui:771 src/gr-query-editor.ui:222
+#: src/gr-edit-page.ui:684 src/gr-edit-page.ui:773 src/gr-query-editor.ui:222
 msgid "Search…"
 msgstr "Hledat…"
 
-#: src/gr-edit-page.ui:712 src/gr-edit-page.ui:731 src/gr-edit-page.c:239
+#: src/gr-edit-page.ui:714 src/gr-edit-page.ui:733 src/gr-edit-page.c:243
 msgid "Amount"
 msgstr "Množství"
 
-#: src/gr-edit-page.ui:802 src/gr-edit-page.c:242
+#: src/gr-edit-page.ui:804 src/gr-edit-page.c:246
 msgid "Add"
 msgstr "Přidat"
 
@@ -381,7 +381,7 @@ msgstr "_Zkrácený název:"
 msgid "_Description:"
 msgstr "_Popis:"
 
-#: src/gr-preferences.ui:170
+#: src/gr-preferences.ui:174
 msgid "_Picture:"
 msgstr "O_brázek:"
 
@@ -389,8 +389,8 @@ msgstr "O_brázek:"
 msgid "Meal"
 msgstr "Jídlo"
 
-#: src/gr-query-editor.ui:68 src/gr-query-editor.c:449
-#: src/gr-query-editor.c:564
+#: src/gr-query-editor.ui:68 src/gr-query-editor.c:450
+#: src/gr-query-editor.c:565
 msgid "Any meal"
 msgstr "Libovolné jídlo"
 
@@ -398,19 +398,19 @@ msgstr "Libovolné jídlo"
 msgid "Dietary restrictions"
 msgstr "Dietní omezení"
 
-#: src/gr-query-editor.ui:131 src/gr-query-editor.c:365
-#: src/gr-query-editor.c:595
+#: src/gr-query-editor.ui:131 src/gr-query-editor.c:366
+#: src/gr-query-editor.c:596
 msgid "No restrictions"
 msgstr "Bez omezení"
 
-#: src/gr-query-editor.ui:174 src/gr-window.ui:204 src/gr-edit-page.c:1032
+#: src/gr-query-editor.ui:174 src/gr-window.ui:204 src/gr-edit-page.c:1075
 #: src/gr-recipe-printer.c:157
 msgid "Ingredients"
 msgstr "Suroviny"
 
 #. FIXME: repopulate
-#: src/gr-query-editor.ui:194 src/gr-query-editor.c:296
-#: src/gr-query-editor.c:626
+#: src/gr-query-editor.ui:194 src/gr-query-editor.c:297
+#: src/gr-query-editor.c:627
 msgid "Anything"
 msgstr "Cokoliv"
 
@@ -466,20 +466,20 @@ msgstr "Kuchyně"
 msgid "_Import"
 msgstr "_Import"
 
-#: src/menus.ui:11
+#: src/menus.ui:12
 msgid "_Preferences"
 msgstr "_Předvolby"
 
-#: src/menus.ui:17
+#: src/menus.ui:18
 msgid "_About"
 msgstr "O _aplikaci"
 
-#: src/menus.ui:23
+#: src/menus.ui:24
 msgid "_Quit"
 msgstr "U_končit"
 
 #: src/recipe-conflict-dialog.ui:10 src/gr-image-viewer.c:483
-#: src/gr-preferences.c:94 src/gr-window.c:488
+#: src/gr-preferences.c:97 src/gr-window.c:488
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -491,15 +491,19 @@ msgstr "Přejmenovat"
 msgid "A recipe with this name already exists."
 msgstr "Recept s tímto názvem již existuje."
 
-#: src/gr-app.c:122
+#: src/gr-app.c:187
 msgid "translator-credits"
 msgstr "Marek Černocký <marek@manet.cz>"
 
-#: src/gr-app.c:124
+#: src/gr-app.c:189
 msgid "About GNOME Recipes"
 msgstr "O Receptech GNOME"
 
-#: src/gr-app.c:130
+#: src/gr-app.c:191
+msgid "Learn more about GNOME Recipes"
+msgstr "Dozvědět se více o Receptech GNOME"
+
+#: src/gr-app.c:200
 msgid "Recipes by"
 msgstr "Recepty od"
 
@@ -721,65 +725,65 @@ msgstr ""
 "středoasijských, středoevropských a balkánských kuchyní. Proto je nemožné "
 "uvést prvky turecké kuchyně ve stručném seznamu."
 
-#: src/gr-details-page.c:64
+#: src/gr-details-page.c:73
 #, c-format
 msgid "Your cooking timer for “%s” has expired."
 msgstr "Odpočet času pro „%s“ doběhl."
 
-#: src/gr-details-page.c:66
+#: src/gr-details-page.c:75
 msgid "Time is up!"
 msgstr "Čas doběhl!"
 
-#: src/gr-details-page.c:358
+#: src/gr-details-page.c:366
 msgid "hour"
 msgstr "hodina"
 
-#: src/gr-details-page.c:359
+#: src/gr-details-page.c:367
 msgid "hours"
 msgstr "hodiny"
 
-#: src/gr-details-page.c:360
+#: src/gr-details-page.c:368
 msgctxt "hour abbreviation"
 msgid "h"
 msgstr "h"
 
-#: src/gr-details-page.c:364
+#: src/gr-details-page.c:372
 msgid "minute"
 msgstr "minuta"
 
-#: src/gr-details-page.c:365
+#: src/gr-details-page.c:373
 msgid "minutes"
 msgstr "minut"
 
-#: src/gr-details-page.c:366
+#: src/gr-details-page.c:374
 msgctxt "minute abbreviation"
 msgid "min"
 msgstr "min"
 
-#: src/gr-details-page.c:367
+#: src/gr-details-page.c:375
 msgctxt "minute abbreviation"
 msgid "m"
 msgstr "m"
 
-#: src/gr-details-page.c:371
+#: src/gr-details-page.c:379
 msgid "second"
 msgstr "sekunda"
 
-#: src/gr-details-page.c:372
+#: src/gr-details-page.c:380
 msgid "seconds"
 msgstr "sekund"
 
-#: src/gr-details-page.c:373
+#: src/gr-details-page.c:381
 msgctxt "second abbreviation"
 msgid "sec"
 msgstr "sec"
 
-#: src/gr-details-page.c:374
+#: src/gr-details-page.c:382
 msgctxt "second abbreviation"
 msgid "s"
 msgstr "s"
 
-#: src/gr-details-page.c:809 src/gr-edit-page.c:1299
+#: src/gr-details-page.c:829 src/gr-edit-page.c:1349
 #, c-format
 msgid "Recipe by %s"
 msgstr "Recepty od kuchaře %s"
@@ -905,47 +909,47 @@ msgstr ""
 "<a href=\"https://cs.wikipedia.org/wiki/Intolerance_lakt%C3%B3zy\">Dozvědět "
 "se více…</a>"
 
-#: src/gr-edit-page.c:288
+#: src/gr-edit-page.c:292
 msgid "Apply"
 msgstr "Použít"
 
-#: src/gr-edit-page.c:1047
+#: src/gr-edit-page.c:1090
 msgid "Ingredients for …"
 msgstr "Suroviny pro …"
 
-#: src/gr-edit-page.c:1051
+#: src/gr-edit-page.c:1103
 msgid "Remove"
 msgstr "Odebrat"
 
-#: src/gr-edit-page.c:1070
+#: src/gr-edit-page.c:1122
 msgid "No ingredients added yet"
 msgstr "Zatím nebyla přidána žádná surovina"
 
-#: src/gr-edit-page.c:1089
+#: src/gr-edit-page.c:1141
 msgid "Add Ingredient"
 msgstr "Přidat surovinu"
 
-#: src/gr-edit-page.c:1190
+#: src/gr-edit-page.c:1242
 msgid "Add List"
 msgstr "Přidat seznam"
 
-#: src/gr-edit-page.c:1205
+#: src/gr-edit-page.c:1257
 msgid "Name your recipe"
 msgstr "Název vašeho receptu"
 
-#: src/gr-edit-page.c:1274
+#: src/gr-edit-page.c:1324
 msgid "Name"
 msgstr "Název"
 
-#: src/gr-image-viewer.c:479 src/gr-preferences.c:90
+#: src/gr-image-viewer.c:479 src/gr-preferences.c:93
 msgid "Select an Image"
 msgstr "Výběr obrázku"
 
-#: src/gr-image-viewer.c:482 src/gr-preferences.c:93 src/gr-window.c:487
+#: src/gr-image-viewer.c:482 src/gr-preferences.c:96 src/gr-window.c:487
 msgid "Open"
 msgstr "Otevřít"
 
-#: src/gr-image-viewer.c:487 src/gr-preferences.c:98
+#: src/gr-image-viewer.c:487 src/gr-preferences.c:101
 msgid "Image files"
 msgstr "Soubory s obrázky"
 
@@ -957,7 +961,7 @@ msgstr "Použít tmavý text"
 msgid "Almond"
 msgstr "mandle"
 
-#: src/gr-ingredient.c:32 src/gr-ingredient.c:82
+#: src/gr-ingredient.c:32
 msgid "Amaretti"
 msgstr "amaretti"
 
@@ -969,7 +973,7 @@ msgstr "jablko"
 msgid "Apricot"
 msgstr "meruňka"
 
-#: src/gr-ingredient.c:35 src/gr-ingredient.c:85
+#: src/gr-ingredient.c:35
 msgid "Anchovis"
 msgstr "ančovičky"
 
@@ -977,7 +981,7 @@ msgstr "ančovičky"
 msgid "Artichoke"
 msgstr "artyčoky"
 
-#: src/gr-ingredient.c:37 src/gr-ingredient.c:87
+#: src/gr-ingredient.c:37
 msgid "Asparagus"
 msgstr "chřest"
 
@@ -985,7 +989,7 @@ msgstr "chřest"
 msgid "Aubergine"
 msgstr "lilek"
 
-#: src/gr-ingredient.c:39 src/gr-ingredient.c:89
+#: src/gr-ingredient.c:39
 msgid "Bacon"
 msgstr "slanina"
 
@@ -993,15 +997,15 @@ msgstr "slanina"
 msgid "Banana"
 msgstr "banán"
 
-#: src/gr-ingredient.c:41 src/gr-ingredient.c:91
+#: src/gr-ingredient.c:41
 msgid "Baked Beans"
 msgstr "pečené fazole"
 
-#: src/gr-ingredient.c:42 src/gr-ingredient.c:92
+#: src/gr-ingredient.c:42
 msgid "Basil"
 msgstr "bazalka"
 
-#: src/gr-ingredient.c:43 src/gr-ingredient.c:93
+#: src/gr-ingredient.c:43
 msgid "Beans"
 msgstr "fazole"
 
@@ -1009,7 +1013,7 @@ msgstr "fazole"
 msgid "Bagel"
 msgstr "bagel"
 
-#: src/gr-ingredient.c:45 src/gr-ingredient.c:95
+#: src/gr-ingredient.c:45
 msgid "Basmati rice"
 msgstr "rýže basmati"
 
@@ -1017,7 +1021,7 @@ msgstr "rýže basmati"
 msgid "Bay leaf"
 msgstr "bobkový list"
 
-#: src/gr-ingredient.c:47 src/gr-ingredient.c:97
+#: src/gr-ingredient.c:47
 msgid "Beef mince"
 msgstr "mleté hovězí maso"
 
@@ -1037,7 +1041,7 @@ msgstr "biscotti"
 msgid "Beef sausage"
 msgstr "hovězí klobása"
 
-#: src/gr-ingredient.c:52 src/gr-ingredient.c:102
+#: src/gr-ingredient.c:52
 msgid "Beef stock"
 msgstr "hovězí vývar"
 
@@ -1049,7 +1053,7 @@ msgstr "borůvka"
 msgid "Carrot"
 msgstr "mrkev"
 
-#: src/gr-ingredient.c:55 src/gr-ingredient.c:105
+#: src/gr-ingredient.c:55
 msgid "Couscous"
 msgstr "kuskus"
 
@@ -1065,11 +1069,11 @@ msgstr "vejce"
 msgid "Fig"
 msgstr "fík"
 
-#: src/gr-ingredient.c:59 src/gr-ingredient.c:109
+#: src/gr-ingredient.c:59
 msgid "Garlic"
 msgstr "česnek"
 
-#: src/gr-ingredient.c:60 src/gr-ingredient.c:110
+#: src/gr-ingredient.c:60
 msgid "Honey"
 msgstr "med"
 
@@ -1077,11 +1081,11 @@ msgstr "med"
 msgid "Lemon"
 msgstr "citrón"
 
-#: src/gr-ingredient.c:62 src/gr-ingredient.c:112
+#: src/gr-ingredient.c:62
 msgid "Mayonnaise"
 msgstr "majonéza"
 
-#: src/gr-ingredient.c:63 src/gr-ingredient.c:113
+#: src/gr-ingredient.c:63
 msgid "Mustard"
 msgstr "hořčice"
 
@@ -1093,7 +1097,7 @@ msgstr "cibule"
 msgid "Orange"
 msgstr "pomeranč"
 
-#: src/gr-ingredient.c:66 src/gr-ingredient.c:116
+#: src/gr-ingredient.c:66
 msgid "Parsley"
 msgstr "petržel"
 
@@ -1105,7 +1109,7 @@ msgstr "pepř"
 msgid "Potato"
 msgstr "brambora"
 
-#: src/gr-ingredient.c:69 src/gr-ingredient.c:119
+#: src/gr-ingredient.c:69
 msgid "Silantro"
 msgstr "koriandr"
 
@@ -1121,7 +1125,7 @@ msgstr "mandarinka"
 msgid "Tomato"
 msgstr "rajče"
 
-#: src/gr-ingredient.c:73 src/gr-ingredient.c:123
+#: src/gr-ingredient.c:73
 msgid "Vinegar"
 msgstr "ocet"
 
@@ -1138,298 +1142,186 @@ msgid "Zinfandel"
 msgstr "víno Zinfandel"
 
 #: src/gr-ingredient.c:81
-msgid "Almonds"
-msgstr "mandle"
-
-#: src/gr-ingredient.c:83
-msgid "Apples"
-msgstr "jablka"
-
-#: src/gr-ingredient.c:84
-msgid "Apricots"
-msgstr "meruňky"
-
-#: src/gr-ingredient.c:86
-msgid "Artichokes"
-msgstr "artyčoky"
-
-#: src/gr-ingredient.c:88
-msgid "Aubergines"
-msgstr "lilky"
-
-#: src/gr-ingredient.c:90
-msgid "Bananas"
-msgstr "banány"
-
-#: src/gr-ingredient.c:94
-msgid "Bagels"
-msgstr "bagely"
-
-#: src/gr-ingredient.c:96
-msgid "Bay leaves"
-msgstr "bobkové listy"
-
-#: src/gr-ingredient.c:98
-msgid "Berries"
-msgstr "lesní plody"
-
-#: src/gr-ingredient.c:99
-msgid "Beetroots"
-msgstr "červené řepy"
-
-#: src/gr-ingredient.c:100
-msgid "Biscottis"
-msgstr "biscotti"
-
-#: src/gr-ingredient.c:101
-msgid "Beef sausages"
-msgstr "hovězí klobásy"
-
-#: src/gr-ingredient.c:103
-msgid "Bilberries"
-msgstr "borůvky"
-
-#: src/gr-ingredient.c:104
-msgid "Carrots"
-msgstr "mrkve"
-
-#: src/gr-ingredient.c:106
-msgid "Dates"
-msgstr "datle"
-
-#: src/gr-ingredient.c:107
-msgid "Eggs"
-msgstr "vejce"
-
-#: src/gr-ingredient.c:108
-msgid "Figs"
-msgstr "fíky"
-
-#: src/gr-ingredient.c:111
-msgid "Lemons"
-msgstr "citróny"
-
-#: src/gr-ingredient.c:114
-msgid "Onions"
-msgstr "cibule"
-
-#: src/gr-ingredient.c:115
-msgid "Oranges"
-msgstr "pomeranče"
-
-#: src/gr-ingredient.c:117
-msgid "Peppers"
-msgstr "pepř"
-
-#: src/gr-ingredient.c:118
-msgid "Potatoes"
-msgstr "brambory"
-
-#: src/gr-ingredient.c:120
-msgid "Squashs"
-msgstr "dýně"
-
-#: src/gr-ingredient.c:121
-msgid "Tangerines"
-msgstr "mandarinky"
-
-#: src/gr-ingredient.c:122
-msgid "Tomatoes"
-msgstr "rajčata"
-
-#: src/gr-ingredient.c:124
-msgid "Wines"
-msgstr "víno"
-
-#: src/gr-ingredient.c:125
-msgid "Yoghurts"
-msgstr "jogurty"
-
-#: src/gr-ingredient.c:126
-msgid "Zinfandels"
-msgstr "víno Zinfandel"
-
-#: src/gr-ingredient.c:131
 msgid "no Almond"
 msgstr "bez mandlí"
 
-#: src/gr-ingredient.c:132
+#: src/gr-ingredient.c:82
 msgid "no Amaretti"
 msgstr "bez amaretti"
 
-#: src/gr-ingredient.c:133
+#: src/gr-ingredient.c:83
 msgid "no Apple"
 msgstr "bez jablek"
 
-#: src/gr-ingredient.c:134
+#: src/gr-ingredient.c:84
 msgid "no Apricot"
 msgstr "bez meruněk"
 
-#: src/gr-ingredient.c:135
+#: src/gr-ingredient.c:85
 msgid "no Anchovis"
 msgstr "bez ančoviček"
 
-#: src/gr-ingredient.c:136
+#: src/gr-ingredient.c:86
 msgid "no Artichoke"
 msgstr "bez artyčoků"
 
-#: src/gr-ingredient.c:137
+#: src/gr-ingredient.c:87
 msgid "no Asparagus"
 msgstr "bez chřestu"
 
-#: src/gr-ingredient.c:138
+#: src/gr-ingredient.c:88
 msgid "no Aubergine"
 msgstr "bez lilku"
 
-#: src/gr-ingredient.c:139
+#: src/gr-ingredient.c:89
 msgid "no Bacon"
 msgstr "bez slaniny"
 
-#: src/gr-ingredient.c:140
+#: src/gr-ingredient.c:90
 msgid "no Banana"
 msgstr "bez banánů"
 
-#: src/gr-ingredient.c:141
+#: src/gr-ingredient.c:91
 msgid "no Baked Beans"
 msgstr "bez pečených fazolí"
 
-#: src/gr-ingredient.c:142
+#: src/gr-ingredient.c:92
 msgid "no Basil"
 msgstr "bez bazalky"
 
-#: src/gr-ingredient.c:143
+#: src/gr-ingredient.c:93
 msgid "no Beans"
 msgstr "bez fazolí"
 
-#: src/gr-ingredient.c:144
+#: src/gr-ingredient.c:94
 msgid "no Bagel"
 msgstr "bez bagela"
 
-#: src/gr-ingredient.c:145
+#: src/gr-ingredient.c:95
 msgid "no Basmati rice"
 msgstr "bez rýže basmati"
 
-#: src/gr-ingredient.c:146
+#: src/gr-ingredient.c:96
 msgid "no Bay leaf"
 msgstr "bez bobkových listů"
 
-#: src/gr-ingredient.c:147
+#: src/gr-ingredient.c:97
 msgid "no Beef mince"
 msgstr "bez mletého hovězího masa"
 
-#: src/gr-ingredient.c:148
+#: src/gr-ingredient.c:98
 msgid "no Berry"
 msgstr "bez lesních plodů"
 
-#: src/gr-ingredient.c:149
+#: src/gr-ingredient.c:99
 msgid "no Beetroot"
 msgstr "bez červené řepy"
 
-#: src/gr-ingredient.c:150
+#: src/gr-ingredient.c:100
 msgid "no Biscotti"
 msgstr "bez biscotti"
 
-#: src/gr-ingredient.c:151
+#: src/gr-ingredient.c:101
 msgid "no Beef sausage"
 msgstr "bez hovězích klobás"
 
-#: src/gr-ingredient.c:152
+#: src/gr-ingredient.c:102
 msgid "no Beef stock"
 msgstr "bez hovězího vývaru"
 
-#: src/gr-ingredient.c:153
+#: src/gr-ingredient.c:103
 msgid "no Bilberry"
 msgstr "bez borůvek"
 
-#: src/gr-ingredient.c:154
+#: src/gr-ingredient.c:104
 msgid "no Carrot"
 msgstr "bez mrkve"
 
-#: src/gr-ingredient.c:155
+#: src/gr-ingredient.c:105
 msgid "no Couscous"
 msgstr "bez kuskusu"
 
-#: src/gr-ingredient.c:156
+#: src/gr-ingredient.c:106
 msgid "no Date"
 msgstr "bez datlí"
 
-#: src/gr-ingredient.c:157
+#: src/gr-ingredient.c:107
 msgid "no Egg"
 msgstr "bez vajec"
 
-#: src/gr-ingredient.c:158
+#: src/gr-ingredient.c:108
 msgid "no Fig"
 msgstr "bez fíků"
 
-#: src/gr-ingredient.c:159
+#: src/gr-ingredient.c:109
 msgid "no Garlic"
 msgstr "bez česneku"
 
-#: src/gr-ingredient.c:160
+#: src/gr-ingredient.c:110
 msgid "no Honey"
 msgstr "bez medu"
 
-#: src/gr-ingredient.c:161
+#: src/gr-ingredient.c:111
 msgid "no Lemon"
 msgstr "bez citrónu"
 
-#: src/gr-ingredient.c:162
+#: src/gr-ingredient.c:112
 msgid "no Mayonnaise"
 msgstr "bez majonézy"
 
-#: src/gr-ingredient.c:163
+#: src/gr-ingredient.c:113
 msgid "no Mustard"
 msgstr "bez hořčice"
 
-#: src/gr-ingredient.c:164
+#: src/gr-ingredient.c:114
 msgid "no Onion"
 msgstr "bez cibule"
 
-#: src/gr-ingredient.c:165
+#: src/gr-ingredient.c:115
 msgid "no Orange"
 msgstr "bez pomeranče"
 
-#: src/gr-ingredient.c:166
+#: src/gr-ingredient.c:116
 msgid "no Parsley"
 msgstr "bez petržele"
 
-#: src/gr-ingredient.c:167
+#: src/gr-ingredient.c:117
 msgid "no Pepper"
 msgstr "bez pepře"
 
-#: src/gr-ingredient.c:168
+#: src/gr-ingredient.c:118
 msgid "no Potatoe"
 msgstr "bez brambor"
 
-#: src/gr-ingredient.c:169
+#: src/gr-ingredient.c:119
 msgid "no Silantro"
 msgstr "bez koriandru"
 
-#: src/gr-ingredient.c:170
+#: src/gr-ingredient.c:120
 msgid "no Squash"
 msgstr "bez dýně"
 
-#: src/gr-ingredient.c:171
+#: src/gr-ingredient.c:121
 msgid "no Tangerine"
 msgstr "bez mandarinek"
 
-#: src/gr-ingredient.c:172
+#: src/gr-ingredient.c:122
 msgid "no Tomato"
 msgstr "bez rajčat"
 
-#: src/gr-ingredient.c:173
+#: src/gr-ingredient.c:123
 msgid "no Vinegar"
 msgstr "bez octa"
 
-#: src/gr-ingredient.c:174
+#: src/gr-ingredient.c:124
 msgid "no Wine"
 msgstr "bez vína"
 
-#: src/gr-ingredient.c:175
+#: src/gr-ingredient.c:125
 msgid "no Yoghurt"
 msgstr "bez jogurtu"
 
-#: src/gr-ingredient.c:176
+#: src/gr-ingredient.c:126
 msgid "no Zinfandel"
 msgstr "bez vína Zinfandel"
 
@@ -1513,112 +1405,37 @@ msgstr "Testoviny"
 msgid "Other"
 msgstr "Ostatní"
 
-#: src/gr-number.c:123
-msgctxt "number"
-msgid "a dozen"
-msgstr "tucet"
-
-#: src/gr-number.c:124
-msgctxt "number"
-msgid "a"
-msgstr "trošku"
-
-#: src/gr-number.c:125
-msgctxt "number"
-msgid "an"
-msgstr "špetku"
-
-#: src/gr-number.c:126
-msgctxt "number"
-msgid "one"
-msgstr "jedna"
-
-#: src/gr-number.c:127
-msgctxt "number"
-msgid "two"
-msgstr "dvě"
-
-#: src/gr-number.c:128
-msgctxt "number"
-msgid "three"
-msgstr "tři"
-
-#: src/gr-number.c:129
-msgctxt "number"
-msgid "four"
-msgstr "čtyři"
-
-#: src/gr-number.c:130
-msgctxt "number"
-msgid "five"
-msgstr "pět"
-
-#: src/gr-number.c:131
-msgctxt "number"
-msgid "six"
-msgstr "šest"
-
-#: src/gr-number.c:132
-msgctxt "number"
-msgid "seven"
-msgstr "sedm"
-
-#: src/gr-number.c:133
-msgctxt "number"
-msgid "eight"
-msgstr "osm"
-
-#: src/gr-number.c:134
-msgctxt "number"
-msgid "nine"
-msgstr "devět"
-
-#: src/gr-number.c:135
-msgctxt "number"
-msgid "ten"
-msgstr "deset"
-
-#: src/gr-number.c:136
-msgctxt "number"
-msgid "eleven"
-msgstr "jedenáct"
-
-#: src/gr-number.c:137
-msgctxt "number"
-msgid "twelve"
-msgstr "dvanáct"
-
-#: src/gr-number.c:166
-#, c-format
-msgid "Could not parse %s as a number form"
-msgstr "Nelze zpracovat %s v číselné podobě"
-
-#: src/gr-number.c:217 src/gr-number.c:234 src/gr-number.c:243
+#: src/gr-number.c:166 src/gr-number.c:183 src/gr-number.c:192
 #, c-format
 msgid "Could not parse %s as a fraction"
 msgstr "Nelze zpracovat %s jako zlomek"
 
-#: src/gr-number.c:267
+#: src/gr-number.c:216
 #, c-format
 msgid "Could not parse %s as a integer"
 msgstr "Nelze zpracovat %s jako celé číslo"
 
-#: src/gr-number.c:301
+#: src/gr-number.c:238
 #, c-format
 msgid "Could not parse %s as a float"
 msgstr "Nelze zpracovat %s jako desetinné číslo"
 
-#: src/gr-number.c:353
+#: src/gr-number.c:286
 #, c-format
 msgid "Could not parse %s as a number"
 msgstr "Nelze zpracovat %s jako číslo"
 
-#: src/gr-recipe-exporter.c:117 src/gr-recipe-exporter.c:124
+#: src/gr-recipe-exporter.c:125 src/gr-recipe-exporter.c:132
 #, c-format
 msgid "The recipe %s has been exported as “%s”"
 msgstr "Recept %s byl vyexportován jako „%s“"
 
-#: src/gr-recipe-exporter.c:143
+#: src/gr-recipe-exporter.c:155
+#, c-format
+msgid "This build does not support exporting"
+msgstr "Toto sestavení nepodporuje exportování"
+
+#: src/gr-recipe-exporter.c:335
 #, c-format
 msgid ""
 "Error while exporting recipe %s:\n"
@@ -1627,7 +1444,7 @@ msgstr ""
 "Chyba při exportu receptu %s:\n"
 "%s"
 
-#: src/gr-recipe-importer.c:226
+#: src/gr-recipe-importer.c:200
 #, c-format
 msgid ""
 "Error while importing recipe:\n"
@@ -1636,36 +1453,41 @@ msgstr ""
 "Chyba při importu receptu:\n"
 "%s"
 
-#: src/gr-recipe-importer.c:392
+#: src/gr-recipe-importer.c:402
 #, c-format
 msgid "No recipe found"
 msgstr "Nebyl nalezen žádný recept"
 
-#: src/gr-recipe-importer.c:421
+#: src/gr-recipe-importer.c:431
 #, c-format
 msgid "Failed to load recipe: Couldn’t parse Created key"
 msgstr "Selhalo načtení receptu: Nelze zpracovat klíč Created (vytvořeno)"
 
-#: src/gr-recipe-importer.c:432
+#: src/gr-recipe-importer.c:442
 #, c-format
 msgid "Failed to load recipe: Couldn’t parse Modified key"
 msgstr "Selhalo načtení receptu: Nelze zpracovat klíč Modified (změněno)"
 
-#: src/gr-recipe-importer.c:443
+#: src/gr-recipe-importer.c:453
 #, c-format
 msgid "Failed to load recipe: Images and Angles length mismatch"
 msgstr "Selhalo načtení receptu: Obrázky a úhly navzájem nesouhlasí"
 
-#: src/gr-recipe-importer.c:451
+#: src/gr-recipe-importer.c:461
 #, c-format
 msgid "Failed to load recipe: Images and DarkText length mismatch"
 msgstr ""
 "Selhalo načtení receptu: Obrázky a délka tmavého textu si navzájem nesouhlasí"
 
-#: src/gr-recipe-importer.c:652
+#: src/gr-recipe-importer.c:662
 #, c-format
 msgid "No chef found"
 msgstr "Nebyl nalezen žádný kuchař"
+
+#: src/gr-recipe-importer.c:713
+#, c-format
+msgid "This build does not support importing"
+msgstr "Toto sestavení nepodporuje importování"
 
 #: src/gr-recipe-printer.c:123
 msgid "Author:"
@@ -1687,11 +1509,11 @@ msgstr "Porce:"
 msgid "Instructions"
 msgstr "Instrukce"
 
-#: src/gr-recipe-printer.c:379
+#: src/gr-recipe-printer.c:377
 msgid "Error printing file:"
 msgstr "Chyba při tisku souboru:"
 
-#: src/gr-recipe-printer.c:380
+#: src/gr-recipe-printer.c:378
 msgid "No details"
 msgstr "Bez podrobností"
 
@@ -1703,12 +1525,12 @@ msgstr "Moje recepty"
 msgid "Favorites"
 msgstr "Oblíbené"
 
-#: src/gr-recipe-store.c:997
+#: src/gr-recipe-store.c:996
 #, c-format
 msgid "You need to provide a name for the recipe"
 msgstr "Musíte dát receptu název"
 
-#: src/gr-recipe-store.c:1002
+#: src/gr-recipe-store.c:1001
 #, c-format
 msgid ""
 "A recipe with this name and author already exists.\n"
@@ -1717,32 +1539,32 @@ msgstr ""
 "Recept s tímto názvem a autorem již existuje.\n"
 "Zvolte prosím jiný název"
 
-#: src/gr-recipe-store.c:1031
+#: src/gr-recipe-store.c:1030
 #, c-format
 msgid "You need to provide an ID for the recipe"
 msgstr "Musíte dát receptu ID"
 
-#: src/gr-recipe-store.c:1037
+#: src/gr-recipe-store.c:1036
 #, c-format
 msgid "A recipe with this ID already exists"
 msgstr "Recept s tímto ID již existuje"
 
-#: src/gr-recipe-store.c:1165
+#: src/gr-recipe-store.c:1164
 #, c-format
 msgid "You need to provide an ID"
 msgstr "Musíte zadat ID"
 
-#: src/gr-recipe-store.c:1171
+#: src/gr-recipe-store.c:1170
 #, c-format
 msgid "Sorry, this ID is taken"
 msgstr "Bohužel, toto ID je zabrané"
 
-#: src/gr-recipe-tile.c:115
+#: src/gr-recipe-tile.c:114
 #, c-format
 msgid "by %s"
 msgstr "od kuchaře %s"
 
-#: src/gr-recipe-tile.c:115
+#: src/gr-recipe-tile.c:114
 msgid "Anonymous"
 msgstr "anonym"
 
@@ -1775,236 +1597,166 @@ msgid "Winter"
 msgstr "Zima"
 
 #: src/gr-unit.c:40
-msgctxt "unit"
+msgctxt "unit abbreviation"
 msgid "g"
 msgstr "g"
 
 #: src/gr-unit.c:40
-msgctxt "unit"
+msgctxt "unit name"
 msgid "gram"
 msgstr "gram"
 
-#: src/gr-unit.c:40
-msgctxt "unit"
-msgid "grams"
-msgstr "gramy"
-
 #: src/gr-unit.c:41
-msgctxt "unit"
+msgctxt "unit abbreviation"
 msgid "kg"
 msgstr "kg"
 
 #: src/gr-unit.c:41
-msgctxt "unit"
+msgctxt "unit name"
 msgid "kilogram"
 msgstr "kilogram"
 
-#: src/gr-unit.c:41
-msgctxt "unit"
-msgid "kilograms"
-msgstr "kilogramy"
-
 #: src/gr-unit.c:42
-msgctxt "unit"
+msgctxt "unit abbreviation"
 msgid "lb"
 msgstr "lb"
 
 #: src/gr-unit.c:42
-msgctxt "unit"
+msgctxt "unit name"
 msgid "pound"
 msgstr "libra"
 
-#: src/gr-unit.c:42
-msgctxt "unit"
-msgid "pounds"
-msgstr "libry"
-
 #: src/gr-unit.c:43
-msgctxt "unit"
+msgctxt "unit abbreviation"
 msgid "oz"
 msgstr "oz"
 
 #: src/gr-unit.c:43
-msgctxt "unit"
+msgctxt "unit name"
 msgid "ounce"
 msgstr "unce"
 
-#: src/gr-unit.c:43
-msgctxt "unit"
-msgid "ounces"
-msgstr "unce"
-
 #: src/gr-unit.c:44
-msgctxt "unit"
+msgctxt "unit abbreviation"
 msgid "l"
 msgstr "l"
 
 #: src/gr-unit.c:44
-msgctxt "unit"
+msgctxt "unit name"
 msgid "liter"
 msgstr "litr"
 
-#: src/gr-unit.c:44
-msgctxt "unit"
-msgid "liters"
-msgstr "litry"
-
 #: src/gr-unit.c:45
-msgctxt "unit"
+msgctxt "unit abbreviation"
 msgid "dl"
 msgstr "dl"
 
 #: src/gr-unit.c:45
-msgctxt "unit"
+msgctxt "unit name"
 msgid "deciliter"
 msgstr "decilitr"
 
-#: src/gr-unit.c:45
-msgctxt "unit"
-msgid "deciliters"
-msgstr "dicilitry"
-
 #: src/gr-unit.c:46
-msgctxt "unit"
+msgctxt "unit abbreviation"
 msgid "ml"
 msgstr "ml"
 
 #: src/gr-unit.c:46
-msgctxt "unit"
+msgctxt "unit name"
 msgid "milliliter"
 msgstr "mililitr"
 
-#: src/gr-unit.c:46
-msgctxt "unit"
-msgid "milliliters"
-msgstr "mililitry"
-
 #: src/gr-unit.c:47
-msgctxt "unit"
+msgctxt "unit abbreviation"
 msgid "fl oz"
 msgstr "fl oz"
 
 #: src/gr-unit.c:47
-msgctxt "unit"
+msgctxt "unit name"
 msgid "fluid ounce"
 msgstr "dutá unce"
 
-#: src/gr-unit.c:47
-msgctxt "unit"
-msgid "fluid ounces"
-msgstr "duté unce"
-
 #: src/gr-unit.c:48
-msgctxt "unit"
+msgctxt "unit abbreviation"
 msgid "pt"
 msgstr "pt"
 
 #: src/gr-unit.c:48
-msgctxt "unit"
+msgctxt "unit name"
 msgid "pint"
 msgstr "pinta"
 
-#: src/gr-unit.c:48
-msgctxt "unit"
-msgid "pints"
-msgstr "pinty"
-
 #: src/gr-unit.c:49
-msgctxt "unit"
+msgctxt "unit abbreviation"
 msgid "qt"
 msgstr "qt"
 
 #: src/gr-unit.c:49
-msgctxt "unit"
+msgctxt "unit name"
 msgid "quart"
 msgstr "quarta"
 
-#: src/gr-unit.c:49
-msgctxt "unit"
-msgid "quarts"
-msgstr "quarty"
-
 #: src/gr-unit.c:50
-msgctxt "unit"
+msgctxt "unit abbreviation"
 msgid "gal"
 msgstr "gal"
 
 #: src/gr-unit.c:50
-msgctxt "unit"
+msgctxt "unit name"
 msgid "gallon"
 msgstr "galon"
 
-#: src/gr-unit.c:50
-msgctxt "unit"
-msgid "gallons"
-msgstr "galony"
-
 #: src/gr-unit.c:51
-msgctxt "unit"
+msgctxt "unit abbreviation"
 msgid "cup"
 msgstr "šálek"
 
 #: src/gr-unit.c:51
-msgctxt "unit"
-msgid "cups"
-msgstr "šálky"
+msgctxt "unit name"
+msgid "cup"
+msgstr "šálek"
 
 #: src/gr-unit.c:52
-msgctxt "unit"
+msgctxt "unit abbreviation"
 msgid "tbsp"
 msgstr "lžíce"
 
 #: src/gr-unit.c:52
-msgctxt "unit"
+msgctxt "unit name"
 msgid "tablespoon"
 msgstr "polévkové lžíce"
 
-#: src/gr-unit.c:52
-msgctxt "unit"
-msgid "tablespoons"
-msgstr "polévkových lžic"
-
 #: src/gr-unit.c:53
-msgctxt "unit"
+msgctxt "unit abbreviation"
 msgid "tsp"
 msgstr "lžička"
 
 #: src/gr-unit.c:53
-msgctxt "unit"
+msgctxt "unit name"
 msgid "teaspoon"
 msgstr "čajová lžička"
 
-#: src/gr-unit.c:53
-msgctxt "unit"
-msgid "teaspoons"
-msgstr "čajových lžiček"
-
 #: src/gr-unit.c:54
-msgctxt "unit"
+msgctxt "unit abbreviation"
 msgid "box"
 msgstr "krabice"
 
 #: src/gr-unit.c:54
-msgctxt "unit"
-msgid "boxes"
+msgctxt "unit name"
+msgid "box"
 msgstr "krabice"
 
 #: src/gr-unit.c:55
-msgctxt "unit"
+msgctxt "unit abbreviation"
 msgid "pkg"
 msgstr "bal"
 
 #: src/gr-unit.c:55
-msgctxt "unit"
+msgctxt "unit name"
 msgid "package"
 msgstr "balení"
 
-#: src/gr-unit.c:55
-msgctxt "unit"
-msgid "packages"
-msgstr "balení"
-
-#: src/gr-unit.c:140
+#: src/gr-unit.c:117
 #, c-format
 msgid "I don’t know this unit: %s"
 msgstr "Tato jednotka není zmámá: %s"
