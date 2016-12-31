@@ -679,7 +679,6 @@ populate_ingredients (GrDetailsPage *page,
 {
         g_autoptr(GtkSizeGroup) group = NULL;
         g_autofree char **segments = NULL;
-        g_auto(GStrv) ings = NULL;
         int i, j;
         GtkWidget *list;
         GtkWidget *label;
@@ -689,6 +688,8 @@ populate_ingredients (GrDetailsPage *page,
         group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
         segments = gr_ingredients_list_get_segments (page->ingredients);
         for (j = 0; segments[j]; j++) {
+                g_auto(GStrv) ings = NULL;
+
                 if (segments[j] && segments[j][0]) {
                         label = gtk_label_new (segments[j]);
                         gtk_widget_show (label);
