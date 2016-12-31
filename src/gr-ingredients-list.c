@@ -52,6 +52,7 @@ ingredient_free (Ingredient *ing)
 {
         g_free (ing->name);
         g_free (ing->unit);
+        g_free (ing->segment);
         g_free (ing);
 }
 
