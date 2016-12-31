@@ -288,7 +288,6 @@ gr_list_page_populate_from_chef (GrListPage *self,
 {
         GrRecipeStore *store;
         const char *id;
-        g_autofree char **keys = NULL;
         char *tmp;
         const char *image_path;
         GtkStyleContext *context;
