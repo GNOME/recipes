@@ -1480,6 +1480,16 @@ clear_results (GrRecipeSearch *search)
 }
 
 static gboolean
+recipe_matches (GrRecipeSearch *search,
+                GrRecipe       *recipe)
+{
+        if (strcmp (search->query, "is:favorite") == 0)
+                return gr_recipe_store_is_favorite (search->store, recipe);
+        else
+                return gr_recipe_matches (recipe, search->query);
+}
+
+static gboolean
 search_idle (gpointer data)
 {
         GrRecipeSearch *search = data;
@@ -1491,7 +1501,7 @@ search_idle (gpointer data)
         while (g_hash_table_iter_next (&search->iter, (gpointer *)&key, (gpointer *)&recipe)) {
                 count++;
 
-                if (gr_recipe_matches (recipe, search->query))
+                if (recipe_matches (search, recipe))
                         add_pending (search, recipe);
 
                 if (search->n_pending > 2) {
@@ -1504,8 +1514,9 @@ search_idle (gpointer data)
                 }
         }
 
-        if (search->n_pending > 0)
+        if (search->n_pending > 0) {
                 send_pending (search);
+        }
 
         g_signal_emit (search, search_signals[FINISHED], 0);
         search->idle = 0;
@@ -1554,7 +1565,7 @@ refilter_existing_results (GrRecipeSearch *search)
         for (l = search->results; l; l = l->next) {
                 GrRecipe *recipe = l->data;
 
-                if (gr_recipe_matches (recipe, search->query))
+                if (recipe_matches (search, recipe))
                         accepted = g_list_append (accepted, recipe);
                 else
                         rejected = g_list_append (rejected, recipe);
