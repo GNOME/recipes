@@ -636,7 +636,7 @@ gr_recipe_is_readonly (GrRecipe *recipe)
         return recipe->readonly;
 }
 
-/* term is assumed to be g_utf8_casefold'ed */
+/* term is assumed to be g_utf8_casefold'ed where appropriate */
 gboolean
 gr_recipe_matches (GrRecipe   *recipe,
                    const char *term)
@@ -660,7 +660,13 @@ gr_recipe_matches (GrRecipe   *recipe,
                         continue;
                 }
                 else if (g_str_has_prefix (terms[i], "by:")) {
-                        if (!recipe->author || strstr (recipe->author, terms[i] + 3) == NULL) {
+                        if (!recipe->author || strcmp (recipe->author, terms[i] + 3) != 0) {
+                                return FALSE;
+                        }
+                        continue;
+                }
+                else if (g_str_has_prefix (terms[i], "se:")) {
+                        if (!recipe->season || strcmp (recipe->season , terms[i] + 3) != 0) {
                                 return FALSE;
                         }
                         continue;
