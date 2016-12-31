@@ -804,8 +804,15 @@ gr_details_page_set_recipe (GrDetailsPage *page,
 
         populate_ingredients (page, serves, serves);
 
-        gtk_label_set_label (GTK_LABEL (page->prep_time_label), prep_time);
-        gtk_label_set_label (GTK_LABEL (page->cook_time_label), cook_time);
+        if (prep_time[0] == '\0')
+                gtk_label_set_label (GTK_LABEL (page->prep_time_label), "");
+        else
+                gtk_label_set_label (GTK_LABEL (page->prep_time_label), _(prep_time));
+
+        if (cook_time[0] == '\0')
+                gtk_label_set_label (GTK_LABEL (page->cook_time_label), "");
+        else
+                gtk_label_set_label (GTK_LABEL (page->cook_time_label), _(cook_time));
         gtk_label_set_label (GTK_LABEL (page->instructions_label), instructions);
 
         gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), serves);

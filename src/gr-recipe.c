@@ -573,13 +573,13 @@ gr_recipe_get_category (GrRecipe *recipe)
 const char *
 gr_recipe_get_prep_time (GrRecipe *recipe)
 {
-        return _(recipe->prep_time);
+        return recipe->prep_time;
 }
 
 const char *
 gr_recipe_get_cook_time (GrRecipe *recipe)
 {
-        return _(recipe->cook_time);
+        return recipe->cook_time;
 }
 
 GrDiets
