@@ -184,7 +184,7 @@ gr_search_page_update_search (GrSearchPage *page,
 
         gtk_stack_set_visible_child_name (GTK_STACK (page->search_stack), "list");
 
-        if (term == NULL || strlen (term) < 3) {
+        if (term == NULL || strlen (term) < 1) {
                 container_remove_all (GTK_CONTAINER (page->flow_box));
                 return;
         }
