@@ -230,6 +230,7 @@ gr_diet_row_set_entry (GrDietRow     *row,
                        GdTaggedEntry *entry)
 {
         row->entry = entry;
+        g_object_add_weak_pointer (G_OBJECT (entry), (gpointer *)&row->entry);
         update_tag (row);
 }
 
