@@ -645,13 +645,13 @@ gr_recipe_matches (GrRecipe    *recipe,
 
         for (i = 0; terms[i]; i++) {
                 if (g_str_has_prefix (terms[i], "i+:")) {
-                        if (!recipe->cf_ingredients || strstr (recipe->cf_ingredients, terms[i] + 3) == NULL) {
+                        if (!recipe->ingredients || strstr (recipe->ingredients, terms[i] + 3) == NULL) {
                                 return FALSE;
                         }
                         continue;
                 }
                 else if (g_str_has_prefix (terms[i], "i-:")) {
-                        if (recipe->cf_ingredients && strstr (recipe->cf_ingredients, terms[i] + 3) != NULL) {
+                        if (recipe->ingredients && strstr (recipe->ingredients, terms[i] + 3) != NULL) {
                                 return FALSE;
                         }
                         continue;
