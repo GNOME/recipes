@@ -91,9 +91,14 @@ static void
 save_back_entry (GrWindow *window)
 {
         BackEntry *entry;
+        const char *page;
+
+        page = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
+        if (strcmp (page, "details") == 0 || strcmp (page, "edit") == 0)
+                return;
 
         entry = g_new (BackEntry, 1);
-        entry->page = g_strdup (gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack)));
+        entry->page = g_strdup (page);
         entry->header_start_child = g_strdup (gtk_stack_get_visible_child_name (GTK_STACK (window->header_start_stack)));
         entry->header_title_child = g_strdup (gtk_stack_get_visible_child_name (GTK_STACK (window->header_title_stack)));
         entry->header_end_child = g_strdup (gtk_stack_get_visible_child_name (GTK_STACK (window->header_end_stack)));
@@ -154,8 +159,13 @@ new_recipe (GrWindow *window)
 static void
 add_recipe (GrWindow *window)
 {
-        if (gr_edit_page_save (GR_EDIT_PAGE (window->edit_page)))
-                go_back (window);
+        if (gr_edit_page_save (GR_EDIT_PAGE (window->edit_page))) {
+                GrRecipe *recipe;
+
+                recipe = gr_edit_page_get_recipe (GR_EDIT_PAGE (window->edit_page));
+                gr_window_show_recipe (window, recipe);
+                gr_edit_page_clear (GR_EDIT_PAGE (window->edit_page));
+        }
 }
 
 static void
@@ -164,26 +174,11 @@ stop_search (GrWindow *window)
         gr_window_go_back (window);
 }
 
-#if 0
-static void
-maybe_stop_search (GtkButton  *button,
-                   GParamSpec *pspec,
-                   GrWindow   *window)
-{
-        if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button)))
-                stop_search (window);
-}
-#endif
-
 static void
 switch_to_search (GrWindow *window)
 {
-        save_back_entry (window);
-
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Search"));
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "main");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "main");
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "search");
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "search");
@@ -198,6 +193,8 @@ gr_window_show_search (GrWindow   *window,
         gr_query_editor_set_query (GR_QUERY_EDITOR (window->search_bar), search);
 }
 
+static void search_changed (GrWindow *window);
+
 static void
 visible_page_changed (GrWindow *window)
 {
@@ -206,7 +203,9 @@ visible_page_changed (GrWindow *window)
         visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
 
         if (strcmp (visible, "search") != 0) {
+                g_signal_handlers_block_by_func (window->search_bar, search_changed, window);
                 gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (window->search_button), FALSE);
+                g_signal_handlers_unblock_by_func (window->search_bar, search_changed, window);
         }
 
         if (strcmp (visible, "recipes") == 0) {
@@ -250,7 +249,6 @@ update_cooking_button (GrWindow *window,
                 gtk_style_context_add_class (context, "suggested-action");
         }
 }
-
 
 static void
 start_or_stop_cooking (GrWindow *window)

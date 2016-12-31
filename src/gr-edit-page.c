@@ -1672,12 +1672,11 @@ gr_edit_page_save (GrEditPage *page)
                                        "images", images,
                                        NULL);
                 ret = gr_recipe_store_add_recipe (store, recipe, &error);
+                g_set_object (&page->recipe, recipe);
         }
 
         if (!ret)
                 goto error;
-
-        g_clear_object (&page->recipe);
 
         return TRUE;
 
@@ -1688,4 +1687,10 @@ error:
         g_clear_object (&page->recipe);
 
         return FALSE;
+}
+
+GrRecipe *
+gr_edit_page_get_recipe (GrEditPage *page)
+{
+        return page->recipe;
 }

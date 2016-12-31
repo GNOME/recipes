@@ -35,5 +35,6 @@ void             gr_edit_page_clear (GrEditPage *page);
 void             gr_edit_page_edit  (GrEditPage *page,
                                      GrRecipe   *recipe);
 gboolean         gr_edit_page_save  (GrEditPage *page);
+GrRecipe        *gr_edit_page_get_recipe (GrEditPage *page);
 
 G_END_DECLS
