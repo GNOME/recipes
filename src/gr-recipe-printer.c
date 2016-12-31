@@ -205,7 +205,7 @@ begin_print (GtkPrintOperation *operation,
         attr = pango_attr_font_desc_new (title_font);
         attr->start_index = s->len;
 
-        g_string_append (s, _("Instructions"));
+        g_string_append (s, _("Directions"));
 
         attr->end_index = s->len + 1;
         pango_attr_list_insert (attrs, attr);
