@@ -1237,7 +1237,6 @@ gr_recipe_store_get_all_ingredients (GrRecipeStore *self,
         while (g_hash_table_iter_next (&iter, NULL, (gpointer *)&recipe)) {
                 const char *ingredients;
                 GrIngredientsList *list = NULL;
-                g_autofree char **ret = NULL;
                 g_autofree char **segments = NULL;
 
                 ingredients = gr_recipe_get_ingredients (recipe);
@@ -1248,6 +1247,7 @@ gr_recipe_store_get_all_ingredients (GrRecipeStore *self,
                 list = gr_ingredients_list_new (ingredients);
                 segments = gr_ingredients_list_get_segments (list);
                 for (j = 0; segments[j]; j++) {
+                        g_autofree char **ret = NULL;
                         ret = gr_ingredients_list_get_ingredients (list, segments[j]);
                         for (i = 0; ret[i]; i++)
                                 g_hash_table_add (ingreds, ret[i]);
