@@ -99,6 +99,17 @@ find_child_with_name (GtkWidget  *parent,
 }
 
 static void
+builder_info (GtkButton *button, GtkWidget *about)
+{
+        const char *uri = "http://wiki.gnome.org/Apps/Builder";
+        g_autoptr(GError) error = NULL;
+
+        gtk_show_uri_on_window (GTK_WINDOW (about), uri, GDK_CURRENT_TIME, &error);
+        if (error)
+                g_warning ("Unable to show '%s': %s", uri, error->message);
+}
+
+static void
 add_built_logo (GtkAboutDialog *about)
 {
         GtkWidget *content;
@@ -107,6 +118,7 @@ add_built_logo (GtkAboutDialog *about)
         GtkWidget *page_vbox;
         GtkWidget *license_label;
         GtkWidget *copyright_label;
+        GtkWidget *button;
         GtkWidget *image;
 
         content = gtk_dialog_get_content_area (GTK_DIALOG (about));
@@ -118,10 +130,16 @@ add_built_logo (GtkAboutDialog *about)
 
         box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
         gtk_widget_show (box);
+        button = gtk_button_new ();
+        gtk_style_context_add_class (gtk_widget_get_style_context (button), "image-button");
+        g_signal_connect (button, "clicked", G_CALLBACK (builder_info), about);
+        gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
+        gtk_widget_show (button);
         image = gtk_image_new_from_resource ("/org/gnome/Recipes/built-with-builder.png");
         gtk_widget_set_valign (image, GTK_ALIGN_END);
         gtk_widget_show (image);
-        gtk_box_pack_start (GTK_BOX (box), image, FALSE, TRUE, 0);
+        gtk_container_add (GTK_CONTAINER (button), image);
+        gtk_box_pack_start (GTK_BOX (box), button, FALSE, TRUE, 0);
 
         g_object_ref (license_label);
         g_object_ref (copyright_label);
