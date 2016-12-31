@@ -636,15 +636,12 @@ gr_recipe_is_readonly (GrRecipe *recipe)
         return recipe->readonly;
 }
 
-/* term is assumed to be g_utf8_casefold'ed where appropriate */
+/* terms are assumed to be g_utf8_casefold'ed where appropriate */
 gboolean
-gr_recipe_matches (GrRecipe   *recipe,
-                   const char *term)
+gr_recipe_matches (GrRecipe    *recipe,
+                   const char **terms)
 {
-        g_auto(GStrv) terms = NULL;
         int i;
-
-        terms = g_strsplit (term, " ", -1);
 
         for (i = 0; terms[i]; i++) {
                 if (g_str_has_prefix (terms[i], "i+:")) {

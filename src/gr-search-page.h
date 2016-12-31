@@ -29,7 +29,7 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (GrSearchPage, gr_search_page, GR, SEARCH_PAGE, GtkBox)
 
 GtkWidget      *gr_search_page_new           (void);
-void            gr_search_page_update_search (GrSearchPage *self,
-                                              const char   *term);
+void            gr_search_page_update_search (GrSearchPage  *self,
+                                              const char   **terms);
 
 G_END_DECLS

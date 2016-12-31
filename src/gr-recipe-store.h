@@ -87,9 +87,11 @@ G_DECLARE_FINAL_TYPE (GrRecipeSearch, gr_recipe_search, GR, RECIPE_SEARCH, GObje
 
 GrRecipeSearch *gr_recipe_search_new       (void);
 
-void            gr_recipe_search_set_query (GrRecipeSearch *search,
-                                            const char     *query);
-const char *    gr_recipe_search_get_query (GrRecipeSearch *search);
-void            gr_recipe_search_stop      (GrRecipeSearch *search);
+void            gr_recipe_search_set_query (GrRecipeSearch  *search,
+                                            const char      *query);
+void            gr_recipe_search_set_terms (GrRecipeSearch  *search,
+                                            const char     **query);
+const char **   gr_recipe_search_get_terms (GrRecipeSearch  *search);
+void            gr_recipe_search_stop      (GrRecipeSearch  *search);
 
 G_END_DECLS

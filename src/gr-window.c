@@ -67,12 +67,12 @@ G_DEFINE_TYPE (GrWindow, gr_window, GTK_TYPE_APPLICATION_WINDOW)
 
 typedef struct
 {
-        gchar *page;
-        gchar *header_start_child;
-        gchar *header_title_child;
-        gchar *header_end_child;
-        gchar *header_title;
-        gchar *search;
+        char *page;
+        char *header_start_child;
+        char *header_title_child;
+        char *header_end_child;
+        char *header_title;
+        char **search;
 } BackEntry;
 
 static void
@@ -83,7 +83,7 @@ back_entry_free (BackEntry *entry)
         g_free (entry->header_title_child);
         g_free (entry->header_end_child);
         g_free (entry->header_title);
-        g_free (entry->search);
+        g_strfreev (entry->search);
         g_free (entry);
 }
 
@@ -105,7 +105,7 @@ save_back_entry (GrWindow *window)
         entry->header_title = g_strdup (gtk_header_bar_get_title (GTK_HEADER_BAR (window->header)));
 
         if (strcmp (entry->page, "search") == 0)
-                entry->search = g_strdup (gr_query_editor_get_query (GR_QUERY_EDITOR (window->search_bar)));
+                entry->search = g_strdupv ((char **)gr_query_editor_get_terms (GR_QUERY_EDITOR (window->search_bar)));
         else
                 entry->search = NULL;
 
@@ -131,7 +131,7 @@ go_back (GrWindow *window)
 
         if (strcmp (entry->page, "search") == 0) {
                 gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (window->search_bar), TRUE);
-                gr_query_editor_set_query (GR_QUERY_EDITOR (window->search_bar), entry->search);
+                gr_query_editor_set_terms (GR_QUERY_EDITOR (window->search_bar), (const char **)entry->search);
         }
         else {
                 gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (window->search_bar), FALSE);
@@ -188,9 +188,13 @@ void
 gr_window_show_search (GrWindow   *window,
                        const char *search)
 {
+        g_auto(GStrv) terms = NULL;
+
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (window->search_button), TRUE);
         switch_to_search (window);
-        gr_query_editor_set_query (GR_QUERY_EDITOR (window->search_bar), search);
+        terms = g_new0 (char *, 2);
+        terms[0] = g_strdup (search);
+        gr_query_editor_set_terms (GR_QUERY_EDITOR (window->search_bar), (const char **)terms);
 }
 
 static void search_changed (GrWindow *window);
@@ -224,14 +228,14 @@ static void
 search_changed (GrWindow *window)
 {
         const char *visible;
-        const char *terms;
+        const char **terms;
 
         visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
 
         if (strcmp (visible, "search") != 0)
                 switch_to_search (window);
 
-        terms = gr_query_editor_get_query (GR_QUERY_EDITOR (window->search_bar));
+        terms = gr_query_editor_get_terms (GR_QUERY_EDITOR (window->search_bar));
         gr_search_page_update_search (GR_SEARCH_PAGE (window->search_page), terms);
 }
 
@@ -612,10 +616,14 @@ void
 gr_window_show_search_by_ingredients (GrWindow   *window,
                                       const char *ingredient)
 {
-        g_autofree char *term = NULL;
+        g_auto(GStrv) terms = NULL;
 
         switch_to_search (window);
         gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (window->search_bar), TRUE);
-        term = g_strconcat ("i+:", ingredient, NULL);
-        gr_query_editor_set_query (GR_QUERY_EDITOR (window->search_bar), term);
+
+        terms = g_new (char *, 2);
+        terms[0] = g_strconcat ("i+:", ingredient, NULL);
+        terms[1] = NULL;
+
+        gr_query_editor_set_terms (GR_QUERY_EDITOR (window->search_bar), (const char **)terms);
 }

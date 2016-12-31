@@ -50,7 +50,7 @@ struct _GrQueryEditor
         GtkWidget *ing_list;
 
         char *ing_term;
-        char *query;
+        char **terms;
 };
 
 enum
@@ -529,11 +529,20 @@ static void
 entry_changed_cb (GtkWidget     *entry,
                   GrQueryEditor *editor)
 {
-        g_autoptr(GString) s = NULL;
+        const char *text;
         g_autoptr(GString) s2 = NULL;
+        g_auto(GStrv) terms = NULL;
+        GPtrArray *a = NULL;
         GList *children, *l;
+        int i;
 
-        s = g_string_new (gtk_entry_get_text (GTK_ENTRY (editor->entry)));
+        a = g_ptr_array_new ();
+
+        text = gtk_entry_get_text (GTK_ENTRY (editor->entry));
+        terms = g_strsplit (text, " ", -1);
+
+        for (i = 0; terms[i]; i++)
+                g_ptr_array_add (a, g_strdup (terms[i]));
 
         s2 = g_string_new ("");
 
@@ -547,10 +556,8 @@ entry_changed_cb (GtkWidget     *entry,
                         continue;
 
                 term = gr_meal_row_get_search_term (GR_MEAL_ROW (row));
-                if (term) {
-                        g_string_append_c (s, ' ');
-                        g_string_append (s, term);
-                }
+                if (term)
+                        g_ptr_array_add (a, g_strdup (term));
 
                 label = gr_meal_row_get_label (GR_MEAL_ROW (row));
                 if (label) {
@@ -578,10 +585,8 @@ entry_changed_cb (GtkWidget     *entry,
                         continue;
 
                 term = gr_diet_row_get_search_term (GR_DIET_ROW (row));
-                if (term) {
-                        g_string_append_c (s, ' ');
-                        g_string_append (s, term);
-                }
+                if (term)
+                        g_ptr_array_add (a, g_strdup (term));
 
                 label = gr_diet_row_get_label (GR_DIET_ROW (row));
                 if (label) {
@@ -609,10 +614,8 @@ entry_changed_cb (GtkWidget     *entry,
                         continue;
 
                 term = gr_ingredient_row_get_search_term (GR_INGREDIENT_ROW (row));
-                if (term) {
-                        g_string_append_c (s, ' ');
-                        g_string_append (s, term);
-                }
+                if (term)
+                        g_ptr_array_add (a, g_strdup (term));
 
                 label = gr_ingredient_row_get_label (GR_INGREDIENT_ROW (row));
                 if (label) {
@@ -628,10 +631,12 @@ entry_changed_cb (GtkWidget     *entry,
 
         gtk_label_set_label (GTK_LABEL (editor->ing_search_button_label), s2->str);
 
-        g_free (editor->query);
-        editor->query = g_strdup (s->str);
+        g_ptr_array_add (a, NULL);
 
-        g_signal_emit (editor, signals[CHANGED], 0, editor->query);
+        g_strfreev (editor->terms);
+        editor->terms = (char **)g_ptr_array_free (a, FALSE);
+
+        g_signal_emit (editor, signals[CHANGED], 0);
 }
 
 static void
@@ -646,7 +651,7 @@ gr_query_editor_finalize (GObject *object)
 {
         GrQueryEditor *self = (GrQueryEditor *)object;
 
-        g_free (self->query);
+        g_strfreev (self->terms);
         g_free (self->ing_term);
 
         G_OBJECT_CLASS (gr_query_editor_parent_class)->finalize (object);
@@ -712,7 +717,7 @@ gr_query_editor_class_init (GrQueryEditorClass *klass)
                               0,
                               NULL, NULL,
                               g_cclosure_marshal_generic,
-                              G_TYPE_NONE, 1, G_TYPE_STRING);
+                              G_TYPE_NONE, 0);
 
         signals[CANCEL] =
                 g_signal_new ("cancel",
@@ -778,10 +783,10 @@ gr_query_editor_init (GrQueryEditor *self)
         populate_ingredients_list (self);
 }
 
-char *
-gr_query_editor_get_query (GrQueryEditor *editor)
+const char **
+gr_query_editor_get_terms (GrQueryEditor *editor)
 {
-        return editor->query;
+        return (const char **)editor->terms;
 }
 
 static void
@@ -893,15 +898,22 @@ gr_query_editor_set_query (GrQueryEditor *editor,
                            const char    *query)
 {
         g_auto(GStrv) terms = NULL;
-        int i;
-
-        g_signal_handlers_block_by_func (editor->entry, entry_changed_cb, editor);
 
         terms = g_strsplit (query, " ", -1);
 
+        gr_query_editor_set_terms (editor, (const char **)terms);
+}
+
+void
+gr_query_editor_set_terms (GrQueryEditor  *editor,
+                           const char    **terms)
+{
+        int i;
         clear_tags (editor);
 
-        for (i = 0; i < g_strv_length (terms); i++) {
+        g_signal_handlers_block_by_func (editor->entry, entry_changed_cb, editor);
+
+        for (i = 0; terms[i]; i++) {
                 if (g_str_has_prefix (terms[i], "i+:")) {
                         set_ingredient_tag (editor, terms[i] + 3, TRUE, FALSE);
                 }
@@ -920,7 +932,6 @@ gr_query_editor_set_query (GrQueryEditor *editor,
         }
 
         gtk_editable_set_position (GTK_EDITABLE (editor->entry), -1);
-
         g_signal_handlers_unblock_by_func (editor->entry, entry_changed_cb, editor);
 
         g_signal_emit_by_name (editor->entry, "search-changed", 0);

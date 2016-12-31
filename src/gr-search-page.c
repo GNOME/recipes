@@ -177,26 +177,23 @@ check_match (GtkWidget *child,
 #endif
 
 void
-gr_search_page_update_search (GrSearchPage *page,
-                              const char   *term)
+gr_search_page_update_search (GrSearchPage  *page,
+                              const char   **terms)
 {
-        g_autofree char *cf_term = NULL;
-
         gtk_stack_set_visible_child_name (GTK_STACK (page->search_stack), "list");
 
-        if (term == NULL || strlen (term) < 1) {
+        if (terms == NULL || terms[0] == NULL) {
                 container_remove_all (GTK_CONTAINER (page->flow_box));
                 return;
         }
 
-        cf_term = g_utf8_casefold (term, -1);
-        gr_recipe_search_set_query (page->search, cf_term);
+        gr_recipe_search_set_terms (page->search, terms);
 }
 
 static void
 search_page_reload (GrSearchPage *page)
 {
-        gr_search_page_update_search (page, gr_recipe_search_get_query (page->search));
+        gr_search_page_update_search (page, gr_recipe_search_get_terms (page->search));
 }
 
 static void

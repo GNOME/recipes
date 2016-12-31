@@ -1413,7 +1413,7 @@ struct _GrRecipeSearch
 
         GrRecipeStore *store;
 
-        char *query;
+        char **query;
 
         gulong idle;
         GHashTableIter iter;
@@ -1483,10 +1483,10 @@ static gboolean
 recipe_matches (GrRecipeSearch *search,
                 GrRecipe       *recipe)
 {
-        if (strcmp (search->query, "is:favorite") == 0)
+        if (strcmp (search->query[0], "is:favorite") == 0)
                 return gr_recipe_store_is_favorite (search->store, recipe);
         else
-                return gr_recipe_matches (recipe, search->query);
+                return gr_recipe_matches (recipe, (const char **)search->query);
 }
 
 static gboolean
@@ -1584,36 +1584,78 @@ refilter_existing_results (GrRecipeSearch *search)
 }
 
 static gboolean
-query_is_narrowing (GrRecipeSearch *search,
-                    const char     *query)
+query_is_narrowing (GrRecipeSearch  *search,
+                    const char     **query)
 {
-        /* FIXME: can be more precise */
-        return search->query && g_str_has_prefix (query, search->query);
+        int i, j;
+
+        /* Being narrower means having more conditions */
+        if (search->query == NULL)
+                return FALSE;
+
+        for (i = 0; search->query[i]; i++) {
+                const char *term = search->query[i];
+
+                if (g_str_has_prefix (term, "i+:") ||
+                    g_str_has_prefix (term, "i-:") ||
+                    g_str_has_prefix (term, "by:") ||
+                    g_str_has_prefix (term, "se:") ||
+                    g_str_has_prefix (term, "me:") ||
+                    g_str_has_prefix (term, "di:")) {
+                        if (!g_strv_contains (query, term))
+                                return FALSE;
+                }
+                else {
+                        gboolean res = FALSE;
+                        for (j = 0; query[j]; j++) {
+                                if (g_str_has_prefix (query[j], term)) {
+                                        res = TRUE;
+                                        break;
+                                }
+                        }
+                        if (!res)
+                                return FALSE;
+                }
+        }
+
+        return TRUE;
 }
 
 void
 gr_recipe_search_stop (GrRecipeSearch *search)
 {
         stop_search (search);
-        g_clear_pointer (&search->query, g_free);
+        g_clear_pointer (&search->query, g_strfreev);
 }
 
 void
 gr_recipe_search_set_query (GrRecipeSearch *search,
                             const char     *query)
 {
+        g_auto(GStrv) strv = NULL;
+
+        if (query)
+                strv = g_strsplit (query, " ", -1);
+
+        gr_recipe_search_set_terms (search, (const char **)strv);
+}
+
+void
+gr_recipe_search_set_terms (GrRecipeSearch  *search,
+                            const char     **terms)
+{
         gboolean narrowing;
 
-        if (query == NULL) {
+        if (terms == NULL) {
                 stop_search (search);
-                g_clear_pointer (&search->query, g_free);
+                g_clear_pointer (&search->query, g_strfreev);
                 return;
         }
 
-        narrowing = query_is_narrowing (search, query);
+        narrowing = query_is_narrowing (search, terms);
 
-        g_free (search->query);
-        search->query = g_strdup (query);
+        g_strfreev (search->query);
+        search->query = g_strdupv ((char **)terms);
 
         if (narrowing) {
                 refilter_existing_results (search);
@@ -1624,10 +1666,10 @@ gr_recipe_search_set_query (GrRecipeSearch *search,
         }
 }
 
-const char *
-gr_recipe_search_get_query (GrRecipeSearch *search)
+const char **
+gr_recipe_search_get_terms (GrRecipeSearch *search)
 {
-        return search->query;
+        return (const char **)search->query;
 }
 
 static void
@@ -1636,7 +1678,7 @@ gr_recipe_search_finalize (GObject *object)
         GrRecipeSearch *search = (GrRecipeSearch *)object;
 
         stop_search (search);
-        g_free (search->query);
+        g_strfreev (search->query);
         g_object_unref (search->store);
 
         G_OBJECT_CLASS (gr_recipe_search_parent_class)->finalize (object);

@@ -30,9 +30,11 @@ G_DECLARE_FINAL_TYPE (GrQueryEditor, gr_query_editor, GR, QUERY_EDITOR, GtkSearc
 
 GrQueryEditor *gr_query_editor_new (void);
 
-char *         gr_query_editor_get_query (GrQueryEditor *editor);
-void           gr_query_editor_set_query (GrQueryEditor *editor,
-                                          const char    *query);
+void           gr_query_editor_set_query (GrQueryEditor  *editor,
+                                          const char     *query);
+const char **  gr_query_editor_get_terms (GrQueryEditor  *editor);
+void           gr_query_editor_set_terms (GrQueryEditor  *editor,
+                                          const char    **query);
 
 gboolean       gr_query_editor_handle_event (GrQueryEditor *editor,
                                              GdkEvent      *event);
