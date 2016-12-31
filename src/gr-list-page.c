@@ -410,3 +410,11 @@ connect_store_signals (GrListPage *page)
         g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (list_page_reload), page);
         g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (list_page_reload), page);
 }
+
+void
+gr_list_page_clear (GrListPage *self)
+{
+        gr_recipe_search_stop (self->search);
+        container_remove_all (GTK_CONTAINER (self->flow_box));
+}
+
