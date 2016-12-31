@@ -288,8 +288,8 @@ gr_recipe_set_property (GObject      *object,
                 g_free (self->name);
                 g_free (self->cf_name);
                 self->name = g_value_dup_string (value);
-                self->cf_name = g_utf8_casefold (self->name, -1);
                 self->translated_name = translate_string (self->name);
+                self->cf_name = g_utf8_casefold (self->translated_name, -1);
                 update_mtime (self);
                 break;
 
@@ -297,8 +297,8 @@ gr_recipe_set_property (GObject      *object,
                 g_free (self->description);
                 g_free (self->cf_description);
                 self->description = g_value_dup_string (value);
-                self->cf_description = g_utf8_casefold (self->description, -1);
                 self->translated_description = translate_string (self->description);
+                self->cf_description = g_utf8_casefold (self->translated_description, -1);
                 update_mtime (self);
                 break;
 
