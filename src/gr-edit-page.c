@@ -530,13 +530,22 @@ collect_ingredients (GrEditPage *page)
                 children = gtk_container_get_children (GTK_CONTAINER (list));
                 for (l = children; l; l = l->next) {
                         GtkWidget *row = l->data;
+                        const char *amount;
+                        const char *unit;
+                        const char *ingredient;
+                        const char *id;
+
+                        amount = (const char *)g_object_get_data (G_OBJECT (row), "amount");
+                        unit = (const char *)g_object_get_data (G_OBJECT (row), "unit");
+                        ingredient = (const char *)g_object_get_data (G_OBJECT (row), "ingredient");
+                        id = gr_ingredient_get_id (ingredient);
                         if (s->len > 0)
                                 g_string_append (s, "\n");
-                        g_string_append (s, (const char *)g_object_get_data (G_OBJECT (row), "amount"));
+                        g_string_append (s, amount);
                         g_string_append (s, "\t");
-                        g_string_append (s, (const char *)g_object_get_data (G_OBJECT (row), "unit"));
+                        g_string_append (s, unit);
                         g_string_append (s, "\t");
-                        g_string_append (s, (const char *)g_object_get_data (G_OBJECT (row), "ingredient"));
+                        g_string_append (s, id ? id : ingredient);
                         g_string_append (s, "\t");
                         g_string_append (s, gtk_entry_get_text (GTK_ENTRY (entry)));
                 }
@@ -1088,7 +1097,8 @@ add_ingredients_segment (GrEditPage *page,
         g_object_set_data (G_OBJECT (segment), "entry", entry);
         gtk_widget_set_halign (box, GTK_ALIGN_FILL);
         gtk_widget_show (entry);
-        gtk_entry_set_text (GTK_ENTRY (entry), segment_label[0] ? segment_label : _("Ingredients for …"));
+        gtk_entry_set_placeholder_text (GTK_ENTRY (entry), _("Name of the List"));
+        gtk_entry_set_text (GTK_ENTRY (entry), segment_label[0] ? segment_label : "");
 
 #if defined(ENABLE_GSPELL) && defined(GSPELL_TYPE_ENTRY)
         {
