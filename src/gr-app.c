@@ -29,6 +29,7 @@
 #include "gr-recipe-store.h"
 #include "gr-cuisine.h"
 #include "gr-shell-search-provider.h"
+#include "gr-utils.h"
 
 struct _GrApp
 {
@@ -110,6 +111,60 @@ builder_info (GtkButton *button, GtkWidget *about)
 }
 
 static void
+pixbuf_fill_rgb (GdkPixbuf *pixbuf,
+                 guint      r,
+                 guint      g,
+                 guint      b)
+{
+        guchar *pixels;
+        guchar *p;
+        guint w, h;
+
+        pixels = gdk_pixbuf_get_pixels (pixbuf);
+        h = gdk_pixbuf_get_height (pixbuf);
+        while (h--) {
+                w = gdk_pixbuf_get_width (pixbuf);
+                p = pixels;
+                while (w--) {
+                        p[0] = r;
+                        p[1] = g;
+                        p[2] = b;
+                        p += 4;
+                }
+                pixels += gdk_pixbuf_get_rowstride (pixbuf);
+        }
+}
+
+static void
+style_updated (GtkWidget *widget)
+{
+        g_autoptr(GdkPixbuf) pixbuf = NULL;
+        GtkStyleContext *context;
+        GdkRGBA color;
+        guint r, g, b;
+        guint32 pixel;
+        guint32 old_pixel;
+
+        context = gtk_widget_get_style_context (widget);
+        gtk_style_context_get_color (context, gtk_style_context_get_state (context), &color);
+
+        r = 255 * color.red;
+        g = 255 * color.green;
+        b = 255 * color.blue;
+
+        pixel = (r << 24) | (g  << 16) | (b << 8);
+        old_pixel = GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (widget), "pixel"));
+
+        if (old_pixel == pixel)
+                return;
+
+        g_object_set_data (G_OBJECT (widget), "pixel", GUINT_TO_POINTER (pixel));
+
+        pixbuf = g_object_ref (gtk_image_get_pixbuf (GTK_IMAGE (widget)));
+        pixbuf_fill_rgb (pixbuf, r, g, b);
+        gtk_image_set_from_pixbuf (GTK_IMAGE (widget), pixbuf);
+}
+static void
 add_built_logo (GtkAboutDialog *about)
 {
         GtkWidget *content;
@@ -120,6 +175,7 @@ add_built_logo (GtkAboutDialog *about)
         GtkWidget *copyright_label;
         GtkWidget *button;
         GtkWidget *image;
+        g_autoptr(GdkPixbuf) pixbuf = NULL;
 
         content = gtk_dialog_get_content_area (GTK_DIALOG (about));
         box = find_child_with_name (content, "box");
@@ -131,15 +187,18 @@ add_built_logo (GtkAboutDialog *about)
         box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
         gtk_widget_show (box);
         button = gtk_button_new ();
-        gtk_style_context_add_class (gtk_widget_get_style_context (button), "image-button");
         g_signal_connect (button, "clicked", G_CALLBACK (builder_info), about);
+        gtk_style_context_add_class (gtk_widget_get_style_context (button), "image-button");
+        gtk_box_pack_start (GTK_BOX (box), button, FALSE, TRUE, 0);
+        gtk_widget_set_valign (button, GTK_ALIGN_END);
         gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
         gtk_widget_show (button);
-        image = gtk_image_new_from_resource ("/org/gnome/Recipes/built-with-builder.png");
-        gtk_widget_set_valign (image, GTK_ALIGN_END);
+        image = gtk_image_new ();
+        pixbuf = gdk_pixbuf_new_from_resource ("/org/gnome/Recipes/built-with-builder.png", NULL);
+        gtk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
+        g_signal_connect (image, "style-updated", G_CALLBACK (style_updated), NULL);
         gtk_widget_show (image);
         gtk_container_add (GTK_CONTAINER (button), image);
-        gtk_box_pack_start (GTK_BOX (box), button, FALSE, TRUE, 0);
 
         g_object_ref (license_label);
         g_object_ref (copyright_label);
