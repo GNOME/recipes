@@ -5,130 +5,132 @@
     <property name="visible">True</property>
     <property name="orientation">vertical</property>
     <child>
-      <object class="GtkStack" id="list_stack">
+      <object class="GtkScrolledWindow">
         <property name="visible">1</property>
+        <property name="expand">1</property>
+        <property name="hscrollbar-policy">never</property>
         <child>
-          <object class="GtkBox">
+          <object class="GtkBox" id="top_box">
             <property name="visible">1</property>
-            <property name="halign">center</property>
-            <property name="valign">center</property>
             <property name="orientation">vertical</property>
-            <property name="spacing">10</property>
+            <property name="halign">center</property>
+            <property name="valign">fill</property>
+            <property name="margin-start">80</property>
+            <property name="margin-end">80</property>
             <child>
-              <object class="GtkImage">
+              <object class="GtkGrid" id="chef_grid">
                 <property name="visible">1</property>
-                <property name="icon-name">org.gnome.Recipes-symbolic</property>
-                <property name="pixel-size">128</property>
-                <style>
-                  <class name="dim-label"/>
-                </style>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="empty_title">
-                <property name="visible">1</property>
-                <property name="label" translatable="yes">No recipes found</property>
-                <style>
-                  <class name="dim-label"/>
-                </style>
-                <attributes>
-                  <attribute name="scale" value="1.2"/>
-                  <attribute name="weight" value="bold"/>
-                </attributes>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="empty_subtitle">
-                <property name="visible">1</property>
-                <property name="label" translatable="yes">There are no recipes here yet.</property>
-                <style>
-                  <class name="dim-label"/>
-                </style>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="name">empty</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkScrolledWindow">
-            <property name="visible">1</property>
-            <property name="expand">1</property>
-            <property name="hscrollbar-policy">never</property>
-            <child>
-              <object class="GtkBox">
-                <property name="visible">1</property>
-                <property name="orientation">vertical</property>
-                <property name="halign">center</property>
-                <property name="valign">start</property>
-                <property name="margin-start">80</property>
-                <property name="margin-end">80</property>
+                <property name="margin-top">20</property>
+                <property name="column-spacing">20</property>
+                <property name="row-spacing">20</property>
                 <child>
-                  <object class="GtkGrid" id="chef_grid">
+                  <object class="GtkImage" id="chef_image">
                     <property name="visible">1</property>
-                    <property name="margin-top">20</property>
-                    <property name="column-spacing">20</property>
-                    <property name="row-spacing">20</property>
-                    <child>
-                      <object class="GtkImage" id="chef_image">
-                        <property name="visible">1</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <style>
-                          <class name="image-button"/>
-                          <class name="circular"/>
-                          <class name="chef"/>
-                        </style>
-                      </object>
-                      <packing>
-                        <property name="left-attach">0</property>
-                        <property name="top-attach">0</property>
-                        <property name="height">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="chef_fullname">
-                        <property name="visible">1</property>
-                        <property name="xalign">0</property>
-                        <attributes>
-                          <attribute name="scale" value="1.44"/>
-                        </attributes>
-                      </object>
-                      <packing>
-                        <property name="left-attach">1</property>
-                        <property name="top-attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="chef_description">
-                        <property name="visible">1</property>
-                        <property name="xalign">0</property>
-                        <property name="wrap">1</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">1</property>
-                        <property name="top-attach">1</property>
-                      </packing>
-                    </child>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <style>
+                      <class name="image-button"/>
+                      <class name="circular"/>
+                      <class name="chef"/>
+                    </style>
                   </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">0</property>
+                    <property name="height">2</property>
+                  </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="diet_description">
+                  <object class="GtkLabel" id="chef_fullname">
+                    <property name="visible">1</property>
+                    <property name="xalign">0</property>
+                    <attributes>
+                      <attribute name="scale" value="1.44"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="chef_description">
                     <property name="visible">1</property>
                     <property name="xalign">0</property>
                     <property name="wrap">1</property>
-                    <property name="margin-top">20</property>
                   </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">1</property>
+                  </packing>
                 </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="diet_description">
+                <property name="visible">1</property>
+                <property name="xalign">0</property>
+                <property name="wrap">1</property>
+                <property name="margin-top">20</property>
+                <property name="width-chars">60</property>
+                <property name="max-width-chars">60</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="heading">
+                <property name="visible">1</property>
+                <property name="xalign">0</property>
+                <style>
+                  <class name="heading"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkStack" id="list_stack">
+                <property name="visible">1</property>
                 <child>
-                  <object class="GtkLabel" id="heading">
+                  <object class="GtkBox">
                     <property name="visible">1</property>
-                    <property name="xalign">0</property>
-                    <style>
-                      <class name="heading"/>
-                    </style>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">10</property>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">1</property>
+                        <property name="icon-name">org.gnome.Recipes-symbolic</property>
+                        <property name="pixel-size">128</property>
+                        <style>
+                          <class name="dim-label"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="empty_title">
+                        <property name="visible">1</property>
+                        <property name="label" translatable="yes">No recipes found</property>
+                        <style>
+                          <class name="dim-label"/>
+                        </style>
+                        <attributes>
+                          <attribute name="scale" value="1.2"/>
+                          <attribute name="weight" value="bold"/>
+                        </attributes>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="empty_subtitle">
+                        <property name="visible">1</property>
+                        <property name="label" translatable="yes">There are no recipes here yet.</property>
+                        <style>
+                          <class name="dim-label"/>
+                        </style>
+                      </object>
+                    </child>
                   </object>
+                  <packing>
+                    <property name="name">empty</property>
+                  </packing>
                 </child>
                 <child>
                   <object class="GtkFlowBox" id="flow_box">
@@ -143,13 +145,16 @@
                     <property name="min-children-per-line">3</property>
                     <property name="max-children-per-line">3</property>
                   </object>
+                  <packing>
+                    <property name="name">list</property>
+                  </packing>
                 </child>
               </object>
+              <packing>
+                <property name="expand">1</property>
+              </packing>
             </child>
           </object>
-          <packing>
-            <property name="name">list</property>
-          </packing>
         </child>
       </object>
     </child>
