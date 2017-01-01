@@ -184,7 +184,6 @@ gr_search_page_update_search (GrSearchPage  *page,
 
         if (terms == NULL || terms[0] == NULL) {
                 container_remove_all (GTK_CONTAINER (page->flow_box));
-                return;
         }
 
         gr_recipe_search_set_terms (page->search, terms);
