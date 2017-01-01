@@ -1646,7 +1646,7 @@ gr_recipe_search_set_terms (GrRecipeSearch  *search,
 {
         gboolean narrowing;
 
-        if (terms == NULL) {
+        if (terms == NULL || terms[0] == NULL) {
                 stop_search (search);
                 g_clear_pointer (&search->query, g_strfreev);
                 return;
