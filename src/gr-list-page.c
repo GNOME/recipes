@@ -290,6 +290,7 @@ gr_list_page_populate_from_chef (GrListPage *self,
         const char *id;
         char *tmp;
         const char *image_path;
+        const char *description;
         GtkStyleContext *context;
         g_autofree char *css = NULL;
         g_autoptr(GtkCssProvider) provider = NULL;
@@ -304,7 +305,10 @@ gr_list_page_populate_from_chef (GrListPage *self,
         gtk_widget_hide (self->diet_description);
 
         gtk_label_set_label (GTK_LABEL (self->chef_fullname), gr_chef_get_fullname (chef));
-        gtk_label_set_markup (GTK_LABEL (self->chef_description), gr_chef_get_description (chef));
+        description = gr_chef_get_description (chef);
+        if (description[0] != '\0')
+                description = _(description);
+        gtk_label_set_markup (GTK_LABEL (self->chef_description), description);
 
         image_path = gr_chef_get_image (chef);
 
