@@ -612,6 +612,18 @@ gr_recipe_contains_garlic (GrRecipe *recipe)
         return recipe->garlic;
 }
 
+gboolean
+gr_recipe_contains_dairy (GrRecipe *recipe)
+{
+        return (recipe->diets & GR_DIET_MILK_FREE) == 0;
+}
+
+gboolean
+gr_recipe_contains_gluten (GrRecipe *recipe)
+{
+        return (recipe->diets & GR_DIET_GLUTEN_FREE) == 0;
+}
+
 int
 gr_recipe_get_spiciness (GrRecipe *recipe)
 {
