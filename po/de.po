@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: recipes 0.1.0\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=recipes\n"
-"POT-Creation-Date: 2017-01-01 10:30-0500\n"
+"POT-Creation-Date: 2017-01-01 10:58-0500\n"
 "PO-Revision-Date: 2016-11-12 16:20-0500\n"
 "Last-Translator: Matthias Clasen <mclasen@redhat.com>\n"
 "Language-Team: None\n"
@@ -76,6 +76,27 @@ msgstr "Ein neues Rezept hinzufügen"
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:38
 msgid "Editing a recipe"
 msgstr "Ein neues Rezept hinzufügen"
+
+#: data/chefs.db.h:3
+msgid "The nordic cuisine maestro."
+msgstr "Der nordische Küchenmeister."
+
+#: data/chefs.db.h:4
+msgid ""
+"Ray is a Desktop Software Engineer at Red Hat and vegetarian who "
+"occasionally enjoys cooking."
+msgstr ""
+"Ray ist ein Desktop-Softwareentwickler für Red Hat und Vegetarier der "
+"gelegentlich kocht."
+
+#: data/chefs.db.h:5
+msgid ""
+"My name is Fredrik Fyksen. I am from Norway, but live in Denmark. I like "
+"food, computers and music. You can read more about me at <a href="
+msgstr ""
+"Mein Name ist Frederik Fyksen. Ich komme aus Norwegen, aber ich lebe in "
+"Dänemark. Ich mag Essen, Computer und Musik. Du kannst mehr über mich <a "
+"href="
 
 #: data/recipes.db.h:3
 msgid "Pan pizza"
@@ -1002,7 +1023,7 @@ msgstr "Anwenden"
 
 #: src/gr-edit-page.c:1100
 msgid "Name of the List"
-msgstr ""
+msgstr "Name der Zutatenliste"
 
 #: src/gr-edit-page.c:1114
 msgid "Remove"
@@ -1053,34 +1074,34 @@ msgstr "ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ"
 msgid "No %s found"
 msgstr "Keine %s gefunden"
 
-#: src/gr-list-page.c:277 src/gr-list-page.c:346 src/gr-list-page.c:377
+#: src/gr-list-page.c:277 src/gr-list-page.c:352 src/gr-list-page.c:383
 msgid "You could add one using the “New Recipe” button."
 msgstr "Benutzen Sie den “Neues Rezept” Schalter, um eines hinzuzufügen"
 
-#: src/gr-list-page.c:335
+#: src/gr-list-page.c:341
 #, c-format
 msgid "Recipes by %s"
 msgstr "Rezepte von %s"
 
-#: src/gr-list-page.c:342
+#: src/gr-list-page.c:348
 #, c-format
 msgid "No recipes by chef %s found"
 msgstr "Keine Rezepte von Koch %s gefunden"
 
-#: src/gr-list-page.c:348
+#: src/gr-list-page.c:354
 msgid "Sorry about this."
 msgstr "Tut uns leid."
 
-#: src/gr-list-page.c:374
+#: src/gr-list-page.c:380
 #, c-format
 msgid "No recipes for %s found"
 msgstr "Keine Rezepte für %s gefunden"
 
-#: src/gr-list-page.c:396
+#: src/gr-list-page.c:402
 msgid "No favorite recipes found"
 msgstr "Keine Lieblingsrezepte gefunden"
 
-#: src/gr-list-page.c:397
+#: src/gr-list-page.c:403
 msgid "Use the “Cook later” button to mark recipes as favorites."
 msgstr ""
 "Benuzten Sie den “Später Kochen” Schalter um ein Rezept hier erscheinen zu "
