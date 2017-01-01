@@ -192,6 +192,7 @@ add_built_logo (GtkAboutDialog *about)
         gtk_box_pack_start (GTK_BOX (box), button, FALSE, TRUE, 0);
         gtk_widget_set_valign (button, GTK_ALIGN_END);
         gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
+        gtk_widget_set_tooltip_text (button, _("Learn more about Builder"));
         gtk_widget_show (button);
         image = gtk_image_new ();
         pixbuf = gdk_pixbuf_new_from_resource ("/org/gnome/Recipes/built-with-builder.png", NULL);
@@ -251,7 +252,7 @@ about_activated (GSimpleAction *action,
 
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
         gtk_show_about_dialog (GTK_WINDOW (win),
-                               "program-name", "GNOME Recipes",
+                               "program-name", _("GNOME Recipes"),
 #if MICRO_VERSION % 2 == 1
                                "version", COMMIT_ID,
 #else
