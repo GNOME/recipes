@@ -126,6 +126,8 @@ struct _GrDetailsPage
         GtkWidget *warning_box;
         GtkWidget *spicy_warning;
         GtkWidget *garlic_warning;
+        GtkWidget *gluten_warning;
+        GtkWidget *dairy_warning;
         GtkWidget *ingredients_box;
         GtkWidget *instructions_label;
         GtkWidget *cooking_revealer;
@@ -628,6 +630,8 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, warning_box);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, spicy_warning);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, garlic_warning);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, dairy_warning);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, gluten_warning);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, ingredients_box);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, instructions_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, cooking_revealer);
@@ -741,11 +745,21 @@ populate_ingredients (GrDetailsPage *page,
 
         gtk_widget_hide (page->warning_box);
         gtk_widget_hide (page->garlic_warning);
+        gtk_widget_hide (page->dairy_warning);
+        gtk_widget_hide (page->gluten_warning);
         gtk_widget_hide (page->spicy_warning);
 
         if (gr_recipe_contains_garlic (page->recipe)) {
                 gtk_widget_show (page->warning_box);
                 gtk_widget_show (page->garlic_warning);
+        }
+        if (gr_recipe_contains_dairy (page->recipe)) {
+                gtk_widget_show (page->warning_box);
+                gtk_widget_show (page->dairy_warning);
+        }
+        if (gr_recipe_contains_gluten (page->recipe)) {
+                gtk_widget_show (page->warning_box);
+                gtk_widget_show (page->gluten_warning);
         }
 
         if (gr_recipe_get_spiciness (page->recipe) > 50) {

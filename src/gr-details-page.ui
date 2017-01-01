@@ -138,6 +138,20 @@ followed</property>
                           </object>
                         </child>
                         <child>
+                          <object class="GtkImage" id="dairy_warning">
+                            <property name="icon-name">dairy-content-symbolic</property>
+                            <property name="tooltip-text" translatable="yes">Contains dairy products</property>
+                            <property name="icon-size">1</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkImage" id="gluten_warning">
+                            <property name="icon-name">wheat-content-symbolic</property>
+                            <property name="tooltip-text" translatable="yes">Contains Gluten</property>
+                            <property name="icon-size">1</property>
+                          </object>
+                        </child>
+                        <child>
                           <object class="GtkImage" id="spicy_warning">
                             <property name="icon-name">spicy-content-symbolic</property>
                             <property name="tooltip-text" translatable="yes">Spicy</property>
