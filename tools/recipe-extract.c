@@ -72,28 +72,41 @@ main (int argc, char *argv[])
         g_autoptr(GError) error = NULL;
         g_auto(GStrv) groups = NULL;
         gsize length;
-        const char *keys[] = {
+        const char **keys;
+        const char *recipe_keys[] = {
                 "Name",
                 "Description",
-                "Instructions"
+                "Instructions",
+                NULL,
+        };
+        const char *chef_keys[] = {
+                "Description",
+                NULL
         };
         gboolean extract_strings = TRUE;
+        gboolean extract_chefs = FALSE;
         gboolean extract_ingredients = FALSE;
         gboolean extract_segments = FALSE;
         unsigned int i, j;
 
-        if (argc == 3 && g_strcmp0 (argv[1], "--ingredients") == 0) {
+        if (argc > 2 && g_strcmp0 (argv[1], "--ingredients") == 0) {
                 extract_strings = FALSE;
                 extract_ingredients = TRUE;
                 argv[1] = argv[2];
-                argc = 2;
+                argc--;
         }
-        else if (argc == 3 && g_strcmp0 (argv[1], "--segments") == 0) {
+        else if (argc > 2 && g_strcmp0 (argv[1], "--segments") == 0) {
                 extract_strings = FALSE;
                 extract_ingredients = TRUE;
                 extract_segments = TRUE;
                 argv[1] = argv[2];
-                argc = 2;
+                argc--;
+        }
+        else if (argc > 2 && g_strcmp0 (argv[1], "--chefs") == 0) {
+                extract_strings = TRUE;
+                extract_chefs = TRUE;
+                argv[1] = argv[2];
+                argc--;
         }
 
         if (argc != 2)
@@ -110,6 +123,11 @@ main (int argc, char *argv[])
 
         if (extract_strings)
                 g_print ("#if 0\n\n");
+
+        if (extract_chefs)
+                keys = chef_keys;
+        else
+                keys = recipe_keys;
 
         groups = g_key_file_get_groups (keyfile, &length);
         for (i = 0; i < length; i++) {
@@ -129,7 +147,7 @@ main (int argc, char *argv[])
                 }
 
                 if (extract_strings) {
-                        for (j = 0; j < G_N_ELEMENTS (keys); j++) {
+                        for (j = 0; keys[j]; j++) {
                                 g_autofree char *s = NULL;
                                 s = g_key_file_get_string (keyfile, groups[i], keys[j], &error);
                                 if (!s) {
