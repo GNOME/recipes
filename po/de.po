@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: recipes 0.1.0\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=recipes\n"
-"POT-Creation-Date: 2016-12-30 18:06-0500\n"
+"POT-Creation-Date: 2017-01-01 10:30-0500\n"
 "PO-Revision-Date: 2016-11-12 16:20-0500\n"
 "Last-Translator: Matthias Clasen <mclasen@redhat.com>\n"
 "Language-Team: None\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/org.gnome.Recipes.desktop.in:3
+#: data/org.gnome.Recipes.desktop.in:3 src/gr-app.c:255
 msgid "GNOME Recipes"
 msgstr "GNOME Rezepte"
 
@@ -33,7 +33,7 @@ msgstr ""
 msgid "Recipes"
 msgstr "Rezepte"
 
-#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-app.c:185
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-app.c:263
 msgid "GNOME loves to cook"
 msgstr "GNOME kocht gerne"
 
@@ -43,6 +43,9 @@ msgid ""
 "what to cook today, tomorrow, rest of the week and for your special "
 "occasions."
 msgstr ""
+"GNOME Rezepte ist eine einfache Anwendung, die dabei hilft, zu entdecken was "
+"wir heute, morgen, den Rest der Woche und zu besonderen Anlässen kochen "
+"können"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:13
 msgid ""
@@ -50,6 +53,9 @@ msgid ""
 "contributors from all over the world. It also lets you store your own "
 "recipes, and share them with your friends."
 msgstr ""
+"Rezepte kommt mit einer Sammlung von Rezepten, die von GNOME Benutzern und "
+"Entwicklern aus der ganzen Welt zusammengestellt worden is. Es lässt dich "
+"auch deine eigenen Rezepte eintragen und mit deinen Freuden teilen."
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:22
 msgid "Initial screen for the application"
@@ -110,7 +116,7 @@ msgid ""
 "a dough ball in the middle."
 msgstr ""
 "Das Olivenöl in einer 10 inch Gusseisenpfanne oder einer runden Kuchenform "
-"verteilen  und den Teigball in die Mitte legen."
+"verteilen und den Teigball in die Mitte legen."
 
 #: data/recipes.db.h:9
 msgid ""
@@ -144,7 +150,7 @@ msgstr ""
 
 #: data/recipes.db.h:12
 msgid "Wholesome Crackers"
-msgstr ""
+msgstr "Herzhafte Cräcker"
 
 #: data/recipes.db.h:13
 msgid ""
@@ -154,6 +160,11 @@ msgid ""
 "I've personally tried almonds, sesame seeds, chia seeds, rye grains, millet "
 "and  buckwheat."
 msgstr ""
+"Cräcker sind eine gesunde Alternative zu anderen Snacks und füllen den "
+"Magen. Cräcker bestehen aus Körnern, Hafer und Mehl. Diese Rezept ist sehr "
+"flexibel und kann mit anderen Körnern, Nüssen und Mehlarten variiert werden, "
+"je nachdem was vorhanden ist. Ich habe es mit Mandeln, Sesam, Chia, Roggen, "
+"Hirse und Buchweizen ausprobiert."
 
 #: data/recipes.db.h:14
 msgid ""
@@ -162,6 +173,10 @@ msgid ""
 "gradually while mixing until the dough is firm and pasty. If you add too "
 "much water, the dough will end up sticking too much to the baking paper."
 msgstr ""
+"Den Ofen auf 200 °C vorheizen. Alle trockenen Zutaten (Körner, Mehl, Hafer, "
+"Backpulver und Salz) mischen. Das Öl hinzufügen. Dann langsam das Wasser "
+"hinzufügen bis der Teig fest und klebrig ist. Wenn du zuviel Wasser nimmst, "
+"wird der Teig am Backpapier festkleben."
 
 #: data/recipes.db.h:15
 msgid ""
@@ -173,6 +188,11 @@ msgid ""
 "example on the picture). Optionally decorate with extra seeds on top before "
 "inserting into the preheated oven."
 msgstr ""
+"Das Backpaper auf die Größe des Backblechs zuschneiden und den Teig darauf "
+"ausbreiten. Ein zweites Backpapier darauflegen. Mit einer Nudelrolle den "
+"Teig so dünn wie möglich ausrollen. Danach das zweite Backpapier entfernen. "
+"Mit einem Messer in kleine Quadrate schneiden (wie im Bild). Optional mit "
+"Körnern verzieren, und dann in den vorgeheizten Ofen schieben."
 
 #: data/recipes.db.h:16
 msgid ""
@@ -181,12 +201,16 @@ msgid ""
 "the baking sheet and see if the crackers in the middle still bends.  The "
 "crackers take on a yellow golden color when they are done."
 msgstr ""
+"Die Cräcker sollen knusprig werden, was ungefär 17 Minuten dauert. Um zu "
+"sehen, ob sie fertig sind, kann man die Cräcker am Rand etwas anheben und "
+"sehen, ob sie sich in der Mitte noch biegen. Die Cräcker haben eine "
+"goldgelbe Farbe wenn sie fertig sind."
 
 #: data/recipes.db.h:17
 msgid ""
 "Take out the crackers and leave them on the kitchen table to cool down for a "
 "few minutes."
-msgstr ""
+msgstr "Die Cräcker herausnehmen und für einige Minuten abkühlen lassen."
 
 #: data/recipes.db.h:18
 msgid "Tofu ‘Egg’ Scramble"
@@ -195,6 +219,8 @@ msgstr "Tofu Ei Mix"
 #: data/recipes.db.h:19
 msgid "This vegan breakfast staple is perfect on a lazy saturday morning."
 msgstr ""
+"Dieser veganische Frühstücksklassiker ist perfekt an einem gemütlichen "
+"Samstagmorgen."
 
 #: data/recipes.db.h:20
 msgid ""
@@ -208,12 +234,15 @@ msgstr ""
 msgid ""
 "Sautee the onion, tofu, and peppers for 3-5 minutes using the vegan butter."
 msgstr ""
+"Die Zwiebel, Tofu und Paprika für 3-5 Minuten in veganischer Butter anbraten."
 
 #: data/recipes.db.h:22
 msgid ""
 "Turn heat down to medium and add the rest of the ingredients – cook for 5-7 "
 "minutes more."
 msgstr ""
+"Die Temperatur senken und mit den restlichen Zutaten für weitere 5-7 Minuten "
+"braten."
 
 #: src/chef-conflict-dialog.ui:10
 msgid "Same Chef"
@@ -248,7 +277,7 @@ msgstr "Beschreibung:"
 msgid "Picture:"
 msgstr "Bild:"
 
-#: src/gr-cuisine-page.ui:68 src/gr-list-page.ui:30 src/gr-search-page.ui:30
+#: src/gr-cuisine-page.ui:68 src/gr-list-page.ui:111 src/gr-search-page.ui:30
 msgid "No recipes found"
 msgstr "Keine Rezepte gefunden"
 
@@ -296,67 +325,76 @@ msgstr ""
 msgid "Contains garlic"
 msgstr "Enthält Knoblauch"
 
-#: src/gr-details-page.ui:143 src/gr-details-page.c:759
+#: src/gr-details-page.ui:143
+msgid "Contains dairy products"
+msgstr "Enthält Milchprodukte"
+
+#: src/gr-details-page.ui:150
+msgid "Contains Gluten"
+msgstr "Enthält Gluten"
+
+#: src/gr-details-page.ui:157 src/gr-details-page.c:774
 msgid "Spicy"
 msgstr "Scharf"
 
-#: src/gr-details-page.ui:170
+#: src/gr-details-page.ui:184
 msgid "Serves"
 msgstr "Portionen"
 
-#: src/gr-details-page.ui:204
+#: src/gr-details-page.ui:218
 msgid "Preparation time"
 msgstr "Vorbereitungszeit"
 
-#: src/gr-details-page.ui:234
+#: src/gr-details-page.ui:248
 msgid "Cooking time"
 msgstr "Kochzeit"
 
-#: src/gr-details-page.ui:277 src/gr-edit-page.ui:570
+#: src/gr-details-page.ui:291 src/gr-edit-page.ui:570
+#: src/gr-recipe-printer.c:208
 msgid "Directions"
 msgstr "Anleitung"
 
-#: src/gr-details-page.ui:319
+#: src/gr-details-page.ui:333
 msgid "Notes"
 msgstr "Notizen"
 
-#: src/gr-details-page.ui:368
+#: src/gr-details-page.ui:382
 msgid "_Edit"
 msgstr "Ä_ndern"
 
-#: src/gr-details-page.ui:376
+#: src/gr-details-page.ui:390
 msgid "_Delete"
 msgstr "_Löschen"
 
-#: src/gr-details-page.ui:385
+#: src/gr-details-page.ui:399
 msgid "_Cook it later"
 msgstr "_Später kochen"
 
-#: src/gr-details-page.ui:395
+#: src/gr-details-page.ui:409
 msgid "_Export"
 msgstr "_Exportieren"
 
-#: src/gr-details-page.ui:406
+#: src/gr-details-page.ui:420
 msgid "_Print"
 msgstr "_Drucken"
 
-#: src/gr-details-page.ui:416
+#: src/gr-details-page.ui:430
 msgid "_Share"
 msgstr "_Weitergeben"
 
-#: src/gr-details-page.ui:443
+#: src/gr-details-page.ui:457
 msgid "Duration"
 msgstr "Dauer"
 
-#: src/gr-details-page.ui:458
+#: src/gr-details-page.ui:472
 msgid "Start"
 msgstr "Start"
 
-#: src/gr-details-page.ui:480
+#: src/gr-details-page.ui:494
 msgid "Remaining time"
 msgstr "Verbleibende Zeit"
 
-#: src/gr-details-page.ui:493
+#: src/gr-details-page.ui:507
 msgid "Stop"
 msgstr "Stop"
 
@@ -446,7 +484,7 @@ msgstr "_Saison"
 
 #: src/gr-edit-page.ui:503
 msgid "S_piciness"
-msgstr ""
+msgstr "Schä_rfe"
 
 #: src/gr-edit-page.ui:520
 msgid "Mild"
@@ -460,7 +498,7 @@ msgstr "Etwas scharf"
 msgid "Hot"
 msgstr "Scharf"
 
-#: src/gr-edit-page.ui:523 src/gr-details-page.c:754
+#: src/gr-edit-page.ui:523 src/gr-details-page.c:769
 msgid "Very spicy"
 msgstr "Sehr scharf"
 
@@ -488,7 +526,7 @@ msgstr "Hinzufügen"
 msgid "Ingredients page"
 msgstr "Zutaten-Ansicht"
 
-#: src/gr-list-page.ui:43
+#: src/gr-list-page.ui:124
 msgid "There are no recipes here yet."
 msgstr "Noch keine Rezepte vorhanden."
 
@@ -527,7 +565,7 @@ msgid "Meal"
 msgstr "Mahlzeit"
 
 #: src/gr-query-editor.ui:68 src/gr-query-editor.c:450
-#: src/gr-query-editor.c:565
+#: src/gr-query-editor.c:572
 msgid "Any meal"
 msgstr "Beliebige Mahlzeit"
 
@@ -536,17 +574,17 @@ msgid "Dietary restrictions"
 msgstr "Diät-Enschränkungen"
 
 #: src/gr-query-editor.ui:131 src/gr-query-editor.c:366
-#: src/gr-query-editor.c:596
+#: src/gr-query-editor.c:601
 msgid "No restrictions"
 msgstr "Keine Einschränkungen"
 
-#: src/gr-query-editor.ui:174 src/gr-window.ui:204 src/gr-edit-page.c:1076
+#: src/gr-query-editor.ui:174 src/gr-window.ui:204 src/gr-edit-page.c:1085
 #: src/gr-recipe-printer.c:157
 msgid "Ingredients"
 msgstr "Zutaten"
 
 #: src/gr-query-editor.ui:194 src/gr-query-editor.c:297
-#: src/gr-query-editor.c:627
+#: src/gr-query-editor.c:630
 msgid "Anything"
 msgstr "Beliebige Zutaten"
 
@@ -582,7 +620,7 @@ msgstr "_Neues Rezept"
 msgid "Go back"
 msgstr "Zurückgehen"
 
-#: src/gr-window.ui:94 src/gr-window.c:183
+#: src/gr-window.ui:94
 msgid "Search"
 msgstr "Suchen"
 
@@ -615,7 +653,7 @@ msgid "_Quit"
 msgstr "_Beenden"
 
 #: src/recipe-conflict-dialog.ui:10 src/gr-image-viewer.c:483
-#: src/gr-preferences.c:97 src/gr-window.c:488
+#: src/gr-preferences.c:97 src/gr-window.c:493
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -627,19 +665,23 @@ msgstr "Umbenennen"
 msgid "A recipe with this name already exists."
 msgstr "Ein Rezept mit diesem Namen existiert bereits."
 
-#: src/gr-app.c:187
-msgid "translator-credits"
-msgstr ""
+#: src/gr-app.c:195
+msgid "Learn more about Builder"
+msgstr "Mehr Information über Builder"
 
-#: src/gr-app.c:189
+#: src/gr-app.c:265
+msgid "translator-credits"
+msgstr "Matthias Clasen"
+
+#: src/gr-app.c:267
 msgid "About GNOME Recipes"
 msgstr "Über GNOME Rezepte"
 
-#: src/gr-app.c:191
+#: src/gr-app.c:269
 msgid "Learn more about GNOME Recipes"
 msgstr "Mehr Information über GNOME Rezepte"
 
-#: src/gr-app.c:200
+#: src/gr-app.c:278
 msgid "Recipes by"
 msgstr "Rezepte von"
 
@@ -820,81 +862,81 @@ msgstr "Die Kochzeit für “%s” ist abgelaufen."
 msgid "Time is up!"
 msgstr "Essen ist fertig!"
 
-#: src/gr-details-page.c:366
+#: src/gr-details-page.c:368
 msgid "hour"
 msgstr "Stunde"
 
-#: src/gr-details-page.c:367
+#: src/gr-details-page.c:369
 msgid "hours"
 msgstr "Stunden"
 
-#: src/gr-details-page.c:368
+#: src/gr-details-page.c:370
 msgctxt "hour abbreviation"
 msgid "h"
 msgstr "h"
 
-#: src/gr-details-page.c:372
+#: src/gr-details-page.c:374
 msgid "minute"
 msgstr "Minute"
 
-#: src/gr-details-page.c:373
+#: src/gr-details-page.c:375
 msgid "minutes"
 msgstr "Minuten"
 
-#: src/gr-details-page.c:374
+#: src/gr-details-page.c:376
 msgctxt "minute abbreviation"
 msgid "min"
 msgstr "min"
 
-#: src/gr-details-page.c:375
+#: src/gr-details-page.c:377
 msgctxt "minute abbreviation"
 msgid "m"
 msgstr "m"
 
-#: src/gr-details-page.c:379
+#: src/gr-details-page.c:381
 msgid "second"
 msgstr "Sekunde"
 
-#: src/gr-details-page.c:380
+#: src/gr-details-page.c:382
 msgid "seconds"
 msgstr "Sekunden"
 
-#: src/gr-details-page.c:381
+#: src/gr-details-page.c:383
 msgctxt "second abbreviation"
 msgid "sec"
 msgstr "sec"
 
-#: src/gr-details-page.c:382
+#: src/gr-details-page.c:384
 msgctxt "second abbreviation"
 msgid "s"
 msgstr "s"
 
-#: src/gr-details-page.c:829 src/gr-edit-page.c:1350
+#: src/gr-details-page.c:851 src/gr-edit-page.c:1360
 #, c-format
 msgid "Recipe by %s"
 msgstr "Rezepte von %s"
 
-#: src/gr-diet.c:34 src/gr-list-page.c:128
+#: src/gr-diet.c:34 src/gr-list-page.c:223
 msgid "Gluten-free recipes"
 msgstr "Glutenfreie Rezepte"
 
-#: src/gr-diet.c:37 src/gr-list-page.c:131
+#: src/gr-diet.c:37 src/gr-list-page.c:225
 msgid "Nut-free recipes"
 msgstr "Nussfreie Rezepte"
 
-#: src/gr-diet.c:40 src/gr-list-page.c:134
+#: src/gr-diet.c:40 src/gr-list-page.c:227
 msgid "Vegan recipes"
 msgstr "Vegan Rezepte"
 
-#: src/gr-diet.c:43 src/gr-list-page.c:137
+#: src/gr-diet.c:43 src/gr-list-page.c:229
 msgid "Vegetarian recipes"
 msgstr "Vegetarische Rezepte"
 
-#: src/gr-diet.c:46 src/gr-list-page.c:140
+#: src/gr-diet.c:46 src/gr-list-page.c:231
 msgid "Milk-free recipes"
 msgstr "Laktosefreie Rezepte"
 
-#: src/gr-diet.c:49 src/gr-diet.c:78 src/gr-list-page.c:143
+#: src/gr-diet.c:49 src/gr-diet.c:78 src/gr-list-page.c:233
 msgid "Other dietary restrictions"
 msgstr "Andere Diet-Enschränkungen"
 
@@ -958,31 +1000,31 @@ msgstr ""
 msgid "Apply"
 msgstr "Anwenden"
 
-#: src/gr-edit-page.c:1091
-msgid "Ingredients for …"
-msgstr "Zutaten für …"
+#: src/gr-edit-page.c:1100
+msgid "Name of the List"
+msgstr ""
 
-#: src/gr-edit-page.c:1104
+#: src/gr-edit-page.c:1114
 msgid "Remove"
 msgstr "Löschen"
 
-#: src/gr-edit-page.c:1123
+#: src/gr-edit-page.c:1133
 msgid "No ingredients added yet"
 msgstr "Noch keine Zutaten hinzugefügt"
 
-#: src/gr-edit-page.c:1142
+#: src/gr-edit-page.c:1152
 msgid "Add Ingredient"
 msgstr "Zutaten hinzufügen"
 
-#: src/gr-edit-page.c:1243
+#: src/gr-edit-page.c:1253
 msgid "Add List"
 msgstr "Neue Zutatenliste"
 
-#: src/gr-edit-page.c:1258
+#: src/gr-edit-page.c:1268
 msgid "Name your recipe"
 msgstr "_Name des Rezeptes"
 
-#: src/gr-edit-page.c:1325
+#: src/gr-edit-page.c:1335
 msgid "Name"
 msgstr "Voller Name"
 
@@ -990,7 +1032,7 @@ msgstr "Voller Name"
 msgid "Select an Image"
 msgstr "Ein Bild auswählen"
 
-#: src/gr-image-viewer.c:482 src/gr-preferences.c:96 src/gr-window.c:487
+#: src/gr-image-viewer.c:482 src/gr-preferences.c:96 src/gr-window.c:492
 msgid "Open"
 msgstr "Öffnen"
 
@@ -1006,39 +1048,39 @@ msgstr "Dunklen text verwenden"
 msgid "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 msgstr "ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ"
 
-#: src/gr-list-page.c:172
+#: src/gr-list-page.c:274
 #, c-format
 msgid "No %s found"
 msgstr "Keine %s gefunden"
 
-#: src/gr-list-page.c:175 src/gr-list-page.c:266 src/gr-list-page.c:320
+#: src/gr-list-page.c:277 src/gr-list-page.c:346 src/gr-list-page.c:377
 msgid "You could add one using the “New Recipe” button."
 msgstr "Benutzen Sie den “Neues Rezept” Schalter, um eines hinzuzufügen"
 
-#: src/gr-list-page.c:255
+#: src/gr-list-page.c:335
 #, c-format
 msgid "Recipes by %s"
 msgstr "Rezepte von %s"
 
-#: src/gr-list-page.c:262
+#: src/gr-list-page.c:342
 #, c-format
 msgid "No recipes by chef %s found"
 msgstr "Keine Rezepte von Koch %s gefunden"
 
-#: src/gr-list-page.c:268
+#: src/gr-list-page.c:348
 msgid "Sorry about this."
 msgstr "Tut uns leid."
 
-#: src/gr-list-page.c:317
+#: src/gr-list-page.c:374
 #, c-format
 msgid "No recipes for %s found"
 msgstr "Keine Rezepte für %s gefunden"
 
-#: src/gr-list-page.c:362
+#: src/gr-list-page.c:396
 msgid "No favorite recipes found"
 msgstr "Keine Lieblingsrezepte gefunden"
 
-#: src/gr-list-page.c:363
+#: src/gr-list-page.c:397
 msgid "Use the “Cook later” button to mark recipes as favorites."
 msgstr ""
 "Benuzten Sie den “Später Kochen” Schalter um ein Rezept hier erscheinen zu "
@@ -1184,10 +1226,6 @@ msgstr "Kochen:"
 #: src/gr-recipe-printer.c:126
 msgid "Serves:"
 msgstr "Portionen:"
-
-#: src/gr-recipe-printer.c:208
-msgid "Instructions"
-msgstr "Zubereitung"
 
 #: src/gr-recipe-printer.c:377
 msgid "Error printing file:"
@@ -1441,32 +1479,32 @@ msgstr "Packung"
 msgid "I don’t know this unit: %s"
 msgstr "Ich kenne diese Einheit nicht: %s"
 
-#: src/gr-window.c:145
+#: src/gr-window.c:150
 msgid "Add a new recipe"
 msgstr "Ein neues Rezept hinzufügen"
 
-#: src/gr-window.c:245
+#: src/gr-window.c:251
 msgid "Stop cooking"
 msgstr "Nicht mehr kochen"
 
-#: src/gr-window.c:249
+#: src/gr-window.c:255
 msgid "Start cooking"
 msgstr "Jetzt kochen"
 
-#: src/gr-window.c:484
+#: src/gr-window.c:489
 msgid "Select a recipe file"
 msgstr "Eine Rezeptdatei auswählen"
 
-#: src/gr-window.c:524
+#: src/gr-window.c:529
 #, c-format
 msgid "Chefs: %s"
 msgstr "Köche: %s"
 
-#: src/gr-window.c:541
+#: src/gr-window.c:546
 msgid "Favorite recipes"
 msgstr "Lieblingsrezepte"
 
-#: src/gr-window.c:565
+#: src/gr-window.c:570
 msgid "My own recipes"
 msgstr "Meine eigenen Rezepte"
 
@@ -1479,16 +1517,16 @@ msgid "Amaretti"
 msgstr "Amaretti"
 
 #: src/ingredients.c:3
+msgid "Anchovis"
+msgstr "Anchovis"
+
+#: src/ingredients.c:4
 msgid "Apple"
 msgstr "Apfel"
 
-#: src/ingredients.c:4
+#: src/ingredients.c:5
 msgid "Apricot"
 msgstr "Aprikose"
-
-#: src/ingredients.c:5
-msgid "Anchovis"
-msgstr "Anchovis"
 
 #: src/ingredients.c:6
 msgid "Artichoke"
@@ -1507,24 +1545,24 @@ msgid "Bacon"
 msgstr "Speck"
 
 #: src/ingredients.c:10
-msgid "Banana"
-msgstr "Banane"
+msgid "Bagel"
+msgstr "Brötchen"
 
 #: src/ingredients.c:11
-msgid "Baked Beans"
+msgid "Baked beans"
 msgstr "Gebackene Bohnen"
 
 #: src/ingredients.c:12
-msgid "Basil"
-msgstr "Basilikum"
+msgid "Baking powder"
+msgstr "Backpulver"
 
 #: src/ingredients.c:13
-msgid "Beans"
-msgstr "Bohnen"
+msgid "Banana"
+msgstr "Banane"
 
 #: src/ingredients.c:14
-msgid "Bagel"
-msgstr "Brötchen"
+msgid "Basil"
+msgstr "Basilikum"
 
 #: src/ingredients.c:15
 msgid "Basmati rice"
@@ -1535,166 +1573,190 @@ msgid "Bay leaf"
 msgstr "Lorbeerblatt"
 
 #: src/ingredients.c:17
+msgid "Beans"
+msgstr "Bohnen"
+
+#: src/ingredients.c:18
 msgid "Beef mince"
 msgstr "Hackfleisch"
 
-#: src/ingredients.c:18
-msgid "Berry"
-msgstr "Beeren"
-
 #: src/ingredients.c:19
-msgid "Beetroot"
-msgstr "Rote Bete"
-
-#: src/ingredients.c:20
-msgid "Biscotti"
-msgstr "Biscotti"
-
-#: src/ingredients.c:21
 msgid "Beef sausage"
 msgstr "Bratwurst"
 
-#: src/ingredients.c:22
+#: src/ingredients.c:20
 msgid "Beef stock"
 msgstr "Rinderbrühe"
 
+#: src/ingredients.c:21
+msgid "Beetroot"
+msgstr "Rote Bete"
+
+#: src/ingredients.c:22
+msgid "Berry"
+msgstr "Beeren"
+
 #: src/ingredients.c:23
+msgid "Biscotti"
+msgstr "Biscotti"
+
+#: src/ingredients.c:24
 msgid "Bilberry"
 msgstr "Heidelbeere"
 
-#: src/ingredients.c:24
+#: src/ingredients.c:25
 msgid "Butter"
 msgstr "Butter"
 
-#: src/ingredients.c:25
+#: src/ingredients.c:26
 msgid "Carrot"
 msgstr "Karotte"
 
-#: src/ingredients.c:26
+#: src/ingredients.c:27
 msgid "Cheese"
 msgstr "Käse"
 
-#: src/ingredients.c:27
+#: src/ingredients.c:28
 msgid "Couscous"
 msgstr "Couscous"
 
-#: src/ingredients.c:28
+#: src/ingredients.c:29
 msgid "Date"
 msgstr "Dattel"
 
-#: src/ingredients.c:29
+#: src/ingredients.c:30
 msgid "Egg"
 msgstr "Ei"
 
-#: src/ingredients.c:30
+#: src/ingredients.c:31
 msgid "Fig"
 msgstr "Feige"
 
-#: src/ingredients.c:31
+#: src/ingredients.c:32
 msgid "Flour"
 msgstr "Mehl"
 
-#: src/ingredients.c:32
+#: src/ingredients.c:33
 msgid "Garlic"
 msgstr "Knoblauch"
 
-#: src/ingredients.c:33
+#: src/ingredients.c:34
 msgid "Ground beef"
 msgstr "Hackfleisch"
 
-#: src/ingredients.c:34
+#: src/ingredients.c:35
 msgid "Honey"
 msgstr "Honig"
 
-#: src/ingredients.c:35
+#: src/ingredients.c:36
 msgid "Lemon"
 msgstr "Zitrone"
 
-#: src/ingredients.c:36
+#: src/ingredients.c:37
+msgid "Linseeds"
+msgstr "Leinsamen"
+
+#: src/ingredients.c:38
 msgid "Mayonnaise"
 msgstr "Mayonnaise"
 
-#: src/ingredients.c:37
+#: src/ingredients.c:39
 msgid "Milk"
 msgstr "Milch"
 
-#: src/ingredients.c:38
+#: src/ingredients.c:40
 msgid "Mustard"
 msgstr "Senf"
 
-#: src/ingredients.c:39
+#: src/ingredients.c:41
+msgid "Oatmeal"
+msgstr "Hafer"
+
+#: src/ingredients.c:42
+msgid "Oil"
+msgstr "Öl"
+
+#: src/ingredients.c:43
 msgid "Onion"
 msgstr "Zwiebel"
 
-#: src/ingredients.c:40
-msgid "Olive Oil, extra-virgin"
+#: src/ingredients.c:44
+msgid "Olive oil, extra-virgin"
 msgstr "Olivenöl, extra-virgin"
 
-#: src/ingredients.c:41
+#: src/ingredients.c:45
 msgid "Orange"
 msgstr "Apfelsine"
 
-#: src/ingredients.c:42
+#: src/ingredients.c:46
 msgid "Parsley"
 msgstr "Petersilie"
 
-#: src/ingredients.c:43
+#: src/ingredients.c:47
 msgid "Peperoni"
 msgstr "Peperoni"
 
-#: src/ingredients.c:44
+#: src/ingredients.c:48
 msgid "Pepper"
 msgstr "Paprika"
 
-#: src/ingredients.c:45
+#: src/ingredients.c:49
 msgid "Pizza sauce"
 msgstr "Pizzasauce"
 
-#: src/ingredients.c:46
+#: src/ingredients.c:50
 msgid "Potato"
 msgstr "Kartoffel"
 
-#: src/ingredients.c:47
+#: src/ingredients.c:51
+msgid "Pumpkin seeds"
+msgstr "Kürbiskerne"
+
+#: src/ingredients.c:52
 msgid "Salt"
 msgstr "Salz"
 
-#: src/ingredients.c:48
+#: src/ingredients.c:53
 msgid "Silantro"
 msgstr "Silantro"
 
-#: src/ingredients.c:49
+#: src/ingredients.c:54
+msgid "Sunflower seeds"
+msgstr "Sonnenblumenkerne"
+
+#: src/ingredients.c:55
 msgid "Squash"
 msgstr "Kürbis"
 
-#: src/ingredients.c:50
+#: src/ingredients.c:56
 msgid "Tangerine"
 msgstr "Mandarine"
 
-#: src/ingredients.c:51
+#: src/ingredients.c:57
 msgid "Tomato"
 msgstr "Tomate"
 
-#: src/ingredients.c:52
+#: src/ingredients.c:58
 msgid "Vinegar"
 msgstr "Essig"
 
-#: src/ingredients.c:53
+#: src/ingredients.c:59
 msgid "Water"
 msgstr "Wasser"
 
-#: src/ingredients.c:54
+#: src/ingredients.c:60
 msgid "Wine"
 msgstr "Wein"
 
-#: src/ingredients.c:55
+#: src/ingredients.c:61
 msgid "Yeast"
 msgstr "Hefe"
 
-#: src/ingredients.c:56
+#: src/ingredients.c:62
 msgid "Yoghurt"
 msgstr "Joghurt"
 
-#: src/ingredients.c:57
+#: src/ingredients.c:63
 msgid "Zinfandel"
 msgstr "Zinfandel"
 
@@ -1707,16 +1769,16 @@ msgid "no Amaretti"
 msgstr "ohne Amaretti"
 
 #: src/no-ingredients.c:3
+msgid "no Anchovis"
+msgstr "ohne Anchovis"
+
+#: src/no-ingredients.c:4
 msgid "no Apple"
 msgstr "ohne Apfel"
 
-#: src/no-ingredients.c:4
+#: src/no-ingredients.c:5
 msgid "no Apricot"
 msgstr "ohne Aprikose"
-
-#: src/no-ingredients.c:5
-msgid "no Anchovis"
-msgstr "ohne Anchovis"
 
 #: src/no-ingredients.c:6
 msgid "no Artichoke"
@@ -1735,24 +1797,24 @@ msgid "no Bacon"
 msgstr "ohne Speck"
 
 #: src/no-ingredients.c:10
-msgid "no Banana"
-msgstr "ohne Banane"
+msgid "no Bagel"
+msgstr "kein Brötchen"
 
 #: src/no-ingredients.c:11
-msgid "no Baked Beans"
+msgid "no Baked beans"
 msgstr "ohne gebackene Bohnen"
 
 #: src/no-ingredients.c:12
-msgid "no Basil"
-msgstr "ohne Basilikum"
+msgid "no Baking powder"
+msgstr "kein Backpulver"
 
 #: src/no-ingredients.c:13
-msgid "no Beans"
-msgstr "ohne Bohnen"
+msgid "no Banana"
+msgstr "ohne Banane"
 
 #: src/no-ingredients.c:14
-msgid "no Bagel"
-msgstr "kein Brötchen"
+msgid "no Basil"
+msgstr "ohne Basilikum"
 
 #: src/no-ingredients.c:15
 msgid "no Basmati rice"
@@ -1763,166 +1825,190 @@ msgid "no Bay leaf"
 msgstr "ohne Lorbeerblatt"
 
 #: src/no-ingredients.c:17
+msgid "no Beans"
+msgstr "ohne Bohnen"
+
+#: src/no-ingredients.c:18
 msgid "no Beef mince"
 msgstr "ohne Hackfleisch"
 
-#: src/no-ingredients.c:18
-msgid "no Berry"
-msgstr "ohne Beeren"
-
 #: src/no-ingredients.c:19
-msgid "no Beetroot"
-msgstr "ohne Rote Bete"
-
-#: src/no-ingredients.c:20
-msgid "no Biscotti"
-msgstr "ohne Biscotti"
-
-#: src/no-ingredients.c:21
 msgid "no Beef sausage"
 msgstr "ohne Bratwurst"
 
-#: src/no-ingredients.c:22
+#: src/no-ingredients.c:20
 msgid "no Beef stock"
 msgstr "ohne Rinderbrühe"
 
+#: src/no-ingredients.c:21
+msgid "no Beetroot"
+msgstr "ohne Rote Bete"
+
+#: src/no-ingredients.c:22
+msgid "no Berry"
+msgstr "ohne Beeren"
+
 #: src/no-ingredients.c:23
+msgid "no Biscotti"
+msgstr "ohne Biscotti"
+
+#: src/no-ingredients.c:24
 msgid "no Bilberry"
 msgstr "ohne Heidelbeere"
 
-#: src/no-ingredients.c:24
+#: src/no-ingredients.c:25
 msgid "no Butter"
 msgstr "ohne Butter"
 
-#: src/no-ingredients.c:25
+#: src/no-ingredients.c:26
 msgid "no Carrot"
 msgstr "ohne Karotte"
 
-#: src/no-ingredients.c:26
+#: src/no-ingredients.c:27
 msgid "no Cheese"
 msgstr "kein Käse"
 
-#: src/no-ingredients.c:27
+#: src/no-ingredients.c:28
 msgid "no Couscous"
 msgstr "ohne Couscous"
 
-#: src/no-ingredients.c:28
+#: src/no-ingredients.c:29
 msgid "no Date"
 msgstr "ohne Datteln"
 
-#: src/no-ingredients.c:29
+#: src/no-ingredients.c:30
 msgid "no Egg"
 msgstr "ohne Ei"
 
-#: src/no-ingredients.c:30
+#: src/no-ingredients.c:31
 msgid "no Fig"
 msgstr "ohne Feigen"
 
-#: src/no-ingredients.c:31
+#: src/no-ingredients.c:32
 msgid "no Flour"
 msgstr "ohne Mehl"
 
-#: src/no-ingredients.c:32
+#: src/no-ingredients.c:33
 msgid "no Garlic"
 msgstr "kein Knoblauch"
 
-#: src/no-ingredients.c:33
+#: src/no-ingredients.c:34
 msgid "no Ground beef"
 msgstr "kein Hackfleisch"
 
-#: src/no-ingredients.c:34
+#: src/no-ingredients.c:35
 msgid "no Honey"
 msgstr "ohne Honig"
 
-#: src/no-ingredients.c:35
+#: src/no-ingredients.c:36
 msgid "no Lemon"
 msgstr "ohne Zitrone"
 
-#: src/no-ingredients.c:36
+#: src/no-ingredients.c:37
+msgid "no Linseeds"
+msgstr "keine Leinsamen"
+
+#: src/no-ingredients.c:38
 msgid "no Mayonnaise"
 msgstr "ohne Mayonnaise"
 
-#: src/no-ingredients.c:37
+#: src/no-ingredients.c:39
 msgid "no Milk"
 msgstr "ohne Milch"
 
-#: src/no-ingredients.c:38
+#: src/no-ingredients.c:40
 msgid "no Mustard"
 msgstr "ohne Senf"
 
-#: src/no-ingredients.c:39
+#: src/no-ingredients.c:41
+msgid "no Oatmeal"
+msgstr "ohne Hafer"
+
+#: src/no-ingredients.c:42
+msgid "no Oil"
+msgstr "ohne Öl"
+
+#: src/no-ingredients.c:43
 msgid "no Onion"
 msgstr "ohne Zwiebeln"
 
-#: src/no-ingredients.c:40
-msgid "no Olive Oil, extra-virgin"
+#: src/no-ingredients.c:44
+msgid "no Olive oil, extra-virgin"
 msgstr "ohne Olivenöl"
 
-#: src/no-ingredients.c:41
+#: src/no-ingredients.c:45
 msgid "no Orange"
 msgstr "ohne Apfelsine"
 
-#: src/no-ingredients.c:42
+#: src/no-ingredients.c:46
 msgid "no Parsley"
 msgstr "ohne Petersilie"
 
-#: src/no-ingredients.c:43
+#: src/no-ingredients.c:47
 msgid "no Peperoni"
 msgstr "ohne Peperoni"
 
-#: src/no-ingredients.c:44
+#: src/no-ingredients.c:48
 msgid "no Pepper"
 msgstr "ohne Paprika"
 
-#: src/no-ingredients.c:45
+#: src/no-ingredients.c:49
 msgid "no Pizza sauce"
 msgstr "ohne Pizzasauce"
 
-#: src/no-ingredients.c:46
+#: src/no-ingredients.c:50
 msgid "no Potato"
 msgstr "ohne Kartoffeln"
 
-#: src/no-ingredients.c:47
+#: src/no-ingredients.c:51
+msgid "no Pumpkin seeds"
+msgstr "keine Kürbiskerne"
+
+#: src/no-ingredients.c:52
 msgid "no Salt"
 msgstr "ohne Salz"
 
-#: src/no-ingredients.c:48
+#: src/no-ingredients.c:53
 msgid "no Silantro"
 msgstr "ohne Silantro"
 
-#: src/no-ingredients.c:49
+#: src/no-ingredients.c:54
+msgid "no Sunflower seeds"
+msgstr "keine Sonnenblumenkerne"
+
+#: src/no-ingredients.c:55
 msgid "no Squash"
 msgstr "ohne Kürbis"
 
-#: src/no-ingredients.c:50
+#: src/no-ingredients.c:56
 msgid "no Tangerine"
 msgstr "ohne Mandarine"
 
-#: src/no-ingredients.c:51
+#: src/no-ingredients.c:57
 msgid "no Tomato"
 msgstr "ohne Tomate"
 
-#: src/no-ingredients.c:52
+#: src/no-ingredients.c:58
 msgid "no Vinegar"
 msgstr "ohne Essig"
 
-#: src/no-ingredients.c:53
+#: src/no-ingredients.c:59
 msgid "no Water"
 msgstr "ohne Wasser"
 
-#: src/no-ingredients.c:54
+#: src/no-ingredients.c:60
 msgid "no Wine"
 msgstr "ohne Wein"
 
-#: src/no-ingredients.c:55
+#: src/no-ingredients.c:61
 msgid "no Yeast"
 msgstr "ohne Hefe"
 
-#: src/no-ingredients.c:56
+#: src/no-ingredients.c:62
 msgid "no Yoghurt"
 msgstr "ohne Joghurt"
 
-#: src/no-ingredients.c:57
+#: src/no-ingredients.c:63
 msgid "no Zinfandel"
 msgstr "ohne Zinfandel"
 
