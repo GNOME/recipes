@@ -20,6 +20,7 @@
 
 #include "config.h"
 
+#include <glib/gi18n.h>
 #include <stdlib.h>
 
 #include "gr-utils.h"
@@ -303,4 +304,26 @@ gboolean
 space_or_nul (char p)
 {
         return (p == '\0' || g_ascii_isspace (p));
+}
+
+/* this is for translating strings that have been extracted using recipe-extract */
+char *
+translate_multiline_string (const char *s)
+{
+        g_auto(GStrv) strv = NULL;
+        int i;
+        GString *out;
+
+        out = g_string_new ("");
+
+        strv = g_strsplit (s, "\n", -1);
+
+        for (i = 0; strv[i]; i++) {
+                if (i > 0)
+                        g_string_append (out, "\n");
+                if (strv[i][0] != 0)
+                        g_string_append (out, _(strv[i]));
+        }
+
+        return g_string_free (out, FALSE);
 }

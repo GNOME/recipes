@@ -48,5 +48,4 @@ GDateTime * date_time_from_string (const char *string);
 gboolean skip_whitespace (char **input);
 gboolean space_or_nul    (char p);
 
-
-G_END_DECLS
+char *translate_multiline_string (const char *s);
