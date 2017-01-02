@@ -294,8 +294,8 @@ skip_whitespace (char **input)
 {
         char *in = *input;
 
-        while (*input && g_ascii_isspace (**input)) {
-                *input += 1;
+        while (*input && g_unichar_isspace (g_utf8_get_char (*input))) {
+                *input = g_utf8_next_char (*input);
         }
 
         return in != *input;
