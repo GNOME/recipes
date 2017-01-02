@@ -1574,21 +1574,6 @@ ensure_user_chef (GrRecipeStore *store,
         gtk_window_export_handle (GTK_WINDOW (window), window_handle_exported, page);
 }
 
-static char *
-generate_id (const char *name,
-             const char *author)
-{
-        char *s, *q;
-
-        s = g_strconcat (name, "_by_", author, NULL);
-        for (q = s; *q; q = g_utf8_find_next_char (q, NULL)) {
-                if (*q == ']' || *q == '[' || g_ascii_iscntrl (*q))
-                        *q = '_';
-        }
-
-        return s;
-}
-
 gboolean
 gr_edit_page_save (GrEditPage *page)
 {
@@ -1636,7 +1621,7 @@ gr_edit_page_save (GrEditPage *page)
                 const char *author;
 
                 author = gr_recipe_get_author (page->recipe);
-                id = generate_id (name, author);
+                id = generate_id ("R_", name, "_by_", author, NULL);
                 old_id = g_strdup (gr_recipe_get_id (page->recipe));
                 g_object_set (page->recipe,
                               "id", id,
@@ -1663,7 +1648,7 @@ gr_edit_page_save (GrEditPage *page)
 
                 author = gr_recipe_store_get_user_key (store);
                 ensure_user_chef (store, page);
-                id = generate_id (name, author);
+                id = generate_id ("R_", name, "_by_", author, NULL);
                 recipe = g_object_new (GR_TYPE_RECIPE,
                                        "id", id,
                                        "name", name,
