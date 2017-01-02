@@ -32,4 +32,7 @@ G_DECLARE_FINAL_TYPE (GrChefTile, gr_chef_tile, GR, CHEF_TILE, GtkBox)
 GtkWidget       *gr_chef_tile_new      (GrChef     *chef);
 GrChef          *gr_chef_tile_get_chef (GrChefTile *tile);
 
+void            gr_chef_tile_recreate_css (void);
+
+
 G_END_DECLS

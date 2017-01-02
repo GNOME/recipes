@@ -54,37 +54,32 @@ show_details (GrRecipeTile *tile)
 }
 
 static void
-recipe_tile_set_recipe (GrRecipeTile *tile,
-                        GrRecipe     *recipe)
+add_recipe_css (GrRecipe *recipe,
+                GString  *css)
 {
-        const char *name;
+        const char *id;
         const char *author;
-        g_autofree char *tmp = NULL;
+        g_autoptr(GrChef) chef = NULL;
         g_autoptr(GArray) images = NULL;
         const char *color;
         GrRecipeStore *store;
-        g_autoptr(GrChef) chef = NULL;
-
-        g_set_object (&tile->recipe, recipe);
-        if (!recipe)
-                return;
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        name = gr_recipe_get_translated_name (recipe);
+        id = gr_recipe_get_id (recipe);
         author = gr_recipe_get_author (recipe);
         chef = gr_recipe_store_get_chef (store, author);
 
         g_object_get (recipe, "images", &images, NULL);
 
         if (images->len > 0) {
-                g_autofree char *css = NULL;
                 GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, 0);
 
-                css = g_strdup_printf ("  background: url('%s');\n"
-                                       "  background-size: 100%%;\n"
-                                       "  background-repeat: no-repeat;\n", ri->path);
-                gr_utils_widget_set_css_simple (tile->box, css);
+                g_string_append_printf (css, "box.recipe.%s {\n", id);
+                g_string_append_printf (css, "  background: url('%s');\n"
+                                             "  background-size: 100%%;\n"
+                                             "  background-repeat: no-repeat;\n", ri->path);
+                g_string_append (css, "}\n\n");
 
                 if (ri->dark_text)
                         color = "black";
@@ -96,23 +91,91 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
         }
 
         if (color) {
-                g_autofree char *css = NULL;
-                css = g_strdup_printf (" color: %s;\n"
-                                       " margin: 0 20px 0 20px;\n"
-                                       " font-weight: bold;\n"
-                                       " font-size: 24pt;\n", color);
-                gr_utils_widget_set_css_simple (tile->label, css);
+                g_string_append_printf (css, "label.recipe.name.%s {\n", id);
+                g_string_append_printf (css, " color: %s;\n"
+                                             " margin: 0 20px 0 20px;\n"
+                                             " font-weight: bold;\n"
+                                             " font-size: 24pt;\n", color);
+                g_string_append (css, "}\n\n");
 
-                g_free (css);
-                css = g_strdup_printf (" color: %s;\n"
+                g_string_append_printf (css, "label.recipe.author.%s {\n", id);
+                g_string_append_printf (css, " color: %s;\n"
                                        " margin: 10px 20px 20px 20px;\n"
                                        " font-size: 12pt;\n", color);
-                gr_utils_widget_set_css_simple (tile->author, css);
+                g_string_append (css, "}\n\n");
+        }
+}
+
+static GtkCssProvider *provider = NULL;
+
+void
+gr_recipe_tile_recreate_css (void)
+{
+        GrRecipeStore *store;
+        g_autofree char **keys = NULL;
+        guint length;
+        g_autoptr(GString) css = NULL;
+        int i;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        keys = gr_recipe_store_get_recipe_keys (store, &length);
+
+        css = g_string_new ("");
+
+        for (i = 0; i < length; i++) {
+                g_autoptr (GrRecipe) recipe = NULL;
+                recipe = gr_recipe_store_get_recipe (store, keys[i]);
+                add_recipe_css (recipe, css);
         }
 
-        gtk_label_set_label (GTK_LABEL (tile->label), name);
-        tmp = g_strdup_printf (_("by %s"), chef ? gr_chef_get_name (chef) : _("Anonymous"));
-        gtk_label_set_label (GTK_LABEL (tile->author), tmp);
+        if (provider == NULL) {
+                provider = gtk_css_provider_new ();
+                gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+                                                           GTK_STYLE_PROVIDER (provider),
+                                                           GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+        }
+
+        gtk_css_provider_load_from_data (provider, css->str, css->len, NULL);
+}
+
+static void
+recipe_tile_set_recipe (GrRecipeTile *tile,
+                        GrRecipe     *recipe)
+{
+        GrRecipeStore *store;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+        if (tile->recipe) {
+                const char *elem;
+                elem = gr_recipe_get_id (tile->recipe);
+                gtk_style_context_remove_class (gtk_widget_get_style_context (tile->box), elem);
+                gtk_style_context_remove_class (gtk_widget_get_style_context (tile->label), elem);
+                gtk_style_context_remove_class (gtk_widget_get_style_context (tile->author), elem);
+        }
+
+        g_set_object (&tile->recipe, recipe);
+
+        if (tile->recipe) {
+                const char *elem;
+                const char *name;
+                const char *author;
+                g_autoptr(GrChef) chef = NULL;
+                g_autofree char *tmp = NULL;
+
+                elem = gr_recipe_get_id (tile->recipe);
+                gtk_style_context_add_class (gtk_widget_get_style_context (tile->box), elem);
+                gtk_style_context_add_class (gtk_widget_get_style_context (tile->label), elem);
+                gtk_style_context_add_class (gtk_widget_get_style_context (tile->author), elem);
+
+                name = gr_recipe_get_translated_name (recipe);
+                author = gr_recipe_get_author (recipe);
+                chef = gr_recipe_store_get_chef (store, author);
+
+                gtk_label_set_label (GTK_LABEL (tile->label), name);
+                tmp = g_strdup_printf (_("by %s"), chef ? gr_chef_get_name (chef) : _("Anonymous"));
+                gtk_label_set_label (GTK_LABEL (tile->author), tmp);
+        }
 }
 
 static void

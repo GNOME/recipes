@@ -122,6 +122,8 @@ gr_recipes_page_init (GrRecipesPage *page)
         populate_diets_from_store (page);
         populate_recipes_from_store (page);
         populate_chefs_from_store (page);
+        gr_recipe_tile_recreate_css ();
+        gr_chef_tile_recreate_css ();
         connect_store_signals (page);
 }
 
@@ -271,6 +273,8 @@ repopulate_recipes (GrRecipesPage *self)
 {
         populate_recipes_from_store (self);
         populate_diets_from_store (self);
+        gr_recipe_tile_recreate_css ();
+        gr_chef_tile_recreate_css ();
 }
 
 static void
@@ -280,6 +284,8 @@ populate_chefs_from_store (GrRecipesPage *self)
         g_autofree char **keys = NULL;
         guint length;
         int i;
+
+        gr_chef_tile_recreate_css ();
 
         container_remove_all (GTK_CONTAINER (self->chefs_box));
 

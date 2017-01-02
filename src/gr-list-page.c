@@ -32,7 +32,6 @@
 #include "gr-season.h"
 #include "gr-category-tile.h"
 
-
 struct _GrListPage
 {
         GtkBox parent_instance;
@@ -66,6 +65,11 @@ static void connect_store_signals (GrListPage *page);
 static void
 clear_data (GrListPage *self)
 {
+        if (self->chef) {
+                gtk_style_context_remove_class (gtk_widget_get_style_context (self->chef_image),
+                                                gr_chef_get_id (self->chef));
+        }
+
         g_clear_object (&self->chef);
         self->diet = 0;
         self->favorites = FALSE;
@@ -289,16 +293,15 @@ gr_list_page_populate_from_chef (GrListPage *self,
         GrRecipeStore *store;
         const char *id;
         char *tmp;
-        const char *image_path;
         const char *description;
-        GtkStyleContext *context;
-        g_autofree char *css = NULL;
-        g_autoptr(GtkCssProvider) provider = NULL;
         g_autofree char *term = NULL;
 
         g_object_ref (chef);
         clear_data (self);
         self->chef = chef;
+
+        gtk_style_context_add_class (gtk_widget_get_style_context (self->chef_image),
+                                     gr_chef_get_id (self->chef));
 
         gtk_widget_show (self->chef_grid);
         gtk_widget_show (self->heading);
@@ -307,32 +310,6 @@ gr_list_page_populate_from_chef (GrListPage *self,
         gtk_label_set_label (GTK_LABEL (self->chef_fullname), gr_chef_get_fullname (chef));
         description = gr_chef_get_translated_description (chef);
         gtk_label_set_markup (GTK_LABEL (self->chef_description), description);
-
-        image_path = gr_chef_get_image (chef);
-
-        if (image_path != NULL && image_path[0] != '\0')
-                css = g_strdup_printf ("image.chef {\n"
-                                       "  background: url('%s');\n"
-                                       "  background-size: 64px;\n"
-                                       "  min-width: 64px;\n"
-                                       "  min-height: 64px;\n"
-                                       "}", image_path);
-        else
-                css = g_strdup_printf ("image.chef {\n"
-                                       "  background: rgb(%d,%d,%d);\n"
-                                       "  min-width: 64px;\n"
-                                       "  min-height: 64px;\n"
-                                       "}",
-                                       g_random_int_range (0, 255),
-                                       g_random_int_range (0, 255),
-                                       g_random_int_range (0, 255));
-
-        provider = gtk_css_provider_new ();
-        gtk_css_provider_load_from_data (provider, css, -1, NULL);
-        context = gtk_widget_get_style_context (self->chef_image);
-        gtk_style_context_add_provider (context,
-                                        GTK_STYLE_PROVIDER (provider),
-                                        GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         tmp = g_strdup_printf (_("Recipes by %s"), gr_chef_get_name (chef));
         gtk_label_set_label (GTK_LABEL (self->heading), tmp);
@@ -349,11 +326,12 @@ gr_list_page_populate_from_chef (GrListPage *self,
         else
                 gtk_label_set_label (GTK_LABEL (self->empty_subtitle), _("Sorry about this."));
 
-        id = gr_chef_get_id (chef);
-
         gr_recipe_search_stop (self->search);
         gtk_stack_set_visible_child_name (GTK_STACK (self->list_stack), "list");
+
+        id = gr_chef_get_id (chef);
         term = g_strconcat ("by:", id, NULL);
+
         gr_recipe_search_set_query (self->search, term);
 }
 
