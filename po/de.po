@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: recipes 0.1.0\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=recipes\n"
-"POT-Creation-Date: 2017-01-01 10:58-0500\n"
+"POT-Creation-Date: 2017-01-01 21:29-0500\n"
 "PO-Revision-Date: 2016-11-12 16:20-0500\n"
 "Last-Translator: Matthias Clasen <mclasen@redhat.com>\n"
 "Language-Team: None\n"
@@ -92,11 +92,12 @@ msgstr ""
 #: data/chefs.db.h:5
 msgid ""
 "My name is Fredrik Fyksen. I am from Norway, but live in Denmark. I like "
-"food, computers and music. You can read more about me at <a href="
+"food, computers and music. You can read more about me at <a href=\"https://"
+"www.fyksen.me/\">fyksen.me</a>."
 msgstr ""
 "Mein Name ist Frederik Fyksen. Ich komme aus Norwegen, aber ich lebe in "
-"Dänemark. Ich mag Essen, Computer und Musik. Du kannst mehr über mich <a "
-"href="
+"Dänemark. Ich mag Essen, Computer und Musik. Du kannst mehr über mich "
+"<a href=\"https://www.fyksen.me/\">fyksen.me</a>."
 
 #: data/recipes.db.h:3
 msgid "Pan pizza"
@@ -1074,34 +1075,34 @@ msgstr "ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ"
 msgid "No %s found"
 msgstr "Keine %s gefunden"
 
-#: src/gr-list-page.c:277 src/gr-list-page.c:352 src/gr-list-page.c:383
+#: src/gr-list-page.c:277 src/gr-list-page.c:350 src/gr-list-page.c:381
 msgid "You could add one using the “New Recipe” button."
 msgstr "Benutzen Sie den “Neues Rezept” Schalter, um eines hinzuzufügen"
 
-#: src/gr-list-page.c:341
+#: src/gr-list-page.c:339
 #, c-format
 msgid "Recipes by %s"
 msgstr "Rezepte von %s"
 
-#: src/gr-list-page.c:348
+#: src/gr-list-page.c:346
 #, c-format
 msgid "No recipes by chef %s found"
 msgstr "Keine Rezepte von Koch %s gefunden"
 
-#: src/gr-list-page.c:354
+#: src/gr-list-page.c:352
 msgid "Sorry about this."
 msgstr "Tut uns leid."
 
-#: src/gr-list-page.c:380
+#: src/gr-list-page.c:378
 #, c-format
 msgid "No recipes for %s found"
 msgstr "Keine Rezepte für %s gefunden"
 
-#: src/gr-list-page.c:402
+#: src/gr-list-page.c:400
 msgid "No favorite recipes found"
 msgstr "Keine Lieblingsrezepte gefunden"
 
-#: src/gr-list-page.c:403
+#: src/gr-list-page.c:401
 msgid "Use the “Cook later” button to mark recipes as favorites."
 msgstr ""
 "Benuzten Sie den “Später Kochen” Schalter um ein Rezept hier erscheinen zu "
