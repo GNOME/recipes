@@ -28,10 +28,19 @@
 static void
 emit_string (const char *s)
 {
+        const char *p;
+        g_autoptr(GString) s2 = NULL;
         g_auto(GStrv) strv = NULL;
         int i;
 
-        strv = g_strsplit (s, "\n", -1);
+        s2 = g_string_new ("");
+        for (p = s; *p; p++) {
+                if (*p == '"' || *p == '\\')
+                        g_string_append_c (s2, '\\');
+                g_string_append_c (s2, *p);
+        }
+
+        strv = g_strsplit (s2->str, "\n", -1);
 
         for (i = 0; strv[i]; i++) {
                 if (strv[i][0] != 0)
