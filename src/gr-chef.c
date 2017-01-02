@@ -25,6 +25,7 @@
 #include <gtk/gtk.h>
 
 #include "gr-chef.h"
+#include "gr-utils.h"
 #include "types.h"
 
 
@@ -37,6 +38,8 @@ struct _GrChef
         char *fullname;
         char *description;
         char *image_path;
+
+        char *translated_description;
 
         gboolean readonly;
 };
@@ -133,6 +136,8 @@ gr_chef_set_property (GObject      *object,
         case PROP_DESCRIPTION:
                 g_free (self->description);
                 self->description = g_value_dup_string (value);
+                g_free (self->translated_description);
+                self->translated_description = translate_multiline_string (self->description);
                 break;
 
         case PROP_IMAGE_PATH:
@@ -228,6 +233,12 @@ const char *
 gr_chef_get_description (GrChef *chef)
 {
         return chef->description;
+}
+
+const char *
+gr_chef_get_translated_description (GrChef *chef)
+{
+        return chef->translated_description;
 }
 
 const char *

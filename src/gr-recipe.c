@@ -26,6 +26,7 @@
 
 #include "gr-recipe.h"
 #include "gr-images.h"
+#include "gr-utils.h"
 #include "types.h"
 
 struct _GrRecipe
@@ -237,27 +238,6 @@ set_images (GrRecipe *self,
         g_object_notify (G_OBJECT (self), "images");
 }
 
-static char *
-translate_string (const char *s)
-{
-        g_auto(GStrv) strv = NULL;
-        int i;
-        GString *out;
-
-        out = g_string_new ("");
-
-        strv = g_strsplit (s, "\n", -1);
-
-        for (i = 0; strv[i]; i++) {
-                if (i > 0)
-                        g_string_append (out, "\n");
-                if (strv[i][0] != 0)
-                        g_string_append (out, _(strv[i]));
-        }
-
-        return g_string_free (out, FALSE);
-}
-
 static void
 gr_recipe_set_property (GObject      *object,
                         guint         prop_id,
@@ -288,7 +268,7 @@ gr_recipe_set_property (GObject      *object,
                 g_free (self->name);
                 g_free (self->cf_name);
                 self->name = g_value_dup_string (value);
-                self->translated_name = translate_string (self->name);
+                self->translated_name = translate_multiline_string (self->name);
                 self->cf_name = g_utf8_casefold (self->translated_name, -1);
                 update_mtime (self);
                 break;
@@ -297,7 +277,7 @@ gr_recipe_set_property (GObject      *object,
                 g_free (self->description);
                 g_free (self->cf_description);
                 self->description = g_value_dup_string (value);
-                self->translated_description = translate_string (self->description);
+                self->translated_description = translate_multiline_string (self->description);
                 self->cf_description = g_utf8_casefold (self->translated_description, -1);
                 update_mtime (self);
                 break;
@@ -365,7 +345,7 @@ gr_recipe_set_property (GObject      *object,
         case PROP_INSTRUCTIONS:
                 g_free (self->instructions);
                 self->instructions = g_value_dup_string (value);
-                self->translated_instructions = translate_string (self->instructions);
+                self->translated_instructions = translate_multiline_string (self->instructions);
                 update_mtime (self);
                 break;
 
@@ -531,6 +511,12 @@ gr_recipe_get_id (GrRecipe *recipe)
 const char *
 gr_recipe_get_name (GrRecipe *recipe)
 {
+        return recipe->name;
+}
+
+const char *
+gr_recipe_get_translated_name (GrRecipe *recipe)
+{
         return recipe->translated_name;
 }
 
@@ -542,6 +528,12 @@ gr_recipe_get_author (GrRecipe *recipe)
 
 const char *
 gr_recipe_get_description (GrRecipe *recipe)
+{
+        return recipe->description;
+}
+
+const char *
+gr_recipe_get_translated_description (GrRecipe *recipe)
 {
         return recipe->translated_description;
 }
@@ -596,6 +588,12 @@ gr_recipe_get_ingredients (GrRecipe *recipe)
 
 const char *
 gr_recipe_get_instructions (GrRecipe *recipe)
+{
+        return recipe->instructions;
+}
+
+const char *
+gr_recipe_get_translated_instructions (GrRecipe *recipe)
 {
         return recipe->translated_instructions;
 }

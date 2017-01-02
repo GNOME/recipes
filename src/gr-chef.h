@@ -36,4 +36,6 @@ const char      *gr_chef_get_description (GrChef *chef);
 const char      *gr_chef_get_image       (GrChef *chef);
 gboolean         gr_chef_is_readonly     (GrChef *chef);
 
+const char      *gr_chef_get_translated_description (GrChef *chef);
+
 G_END_DECLS
