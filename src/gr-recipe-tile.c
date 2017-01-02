@@ -71,7 +71,7 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        name = gr_recipe_get_name (recipe);
+        name = gr_recipe_get_translated_name (recipe);
         author = gr_recipe_get_author (recipe);
         chef = gr_recipe_store_get_chef (store, author);
 

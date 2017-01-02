@@ -68,7 +68,7 @@ timer_complete (GrTimer *timer)
 
         store = gr_app_get_recipe_store (GR_APP (app));
         recipe = gr_recipe_store_get_recipe (store, id);
-        name = gr_recipe_get_name (recipe);
+        name = gr_recipe_get_translated_name (recipe);
 
         body = g_strdup_printf (_("Your cooking timer for “%s” has expired."), name);
 
@@ -183,7 +183,7 @@ timer_remaining_changed (GrTimer       *timer,
         guint hours, minutes, seconds;
         g_autofree char *buf = NULL;
 
-        if (strcmp (gr_timer_get_name (timer), gr_recipe_get_name (page->recipe)) != 0)
+        if (strcmp (gr_timer_get_name (timer), gr_recipe_get_id (page->recipe)) != 0)
                 return;
 
         remaining = gr_timer_get_remaining (timer);
@@ -806,9 +806,9 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         prep_time = gr_recipe_get_prep_time (recipe);
         cook_time = gr_recipe_get_cook_time (recipe);
         ingredients = gr_recipe_get_ingredients (recipe);
-        instructions = gr_recipe_get_instructions (recipe);
         notes = gr_recipe_get_notes (recipe);
-        description = gr_recipe_get_description (recipe);
+        instructions = gr_recipe_get_translated_instructions (recipe);
+        description = gr_recipe_get_translated_description (recipe);
 
         g_object_get (recipe, "images", &images, NULL);
         gr_image_viewer_set_images (GR_IMAGE_VIEWER (page->recipe_image), images);
@@ -884,8 +884,8 @@ details_page_reload (GrDetailsPage *page,
         const char *name;
         const char *new_name;
 
-        name = gr_recipe_get_name (page->recipe);
-        new_name = gr_recipe_get_name (recipe);
+        name = gr_recipe_get_id (page->recipe);
+        new_name = gr_recipe_get_id (recipe);
         if (strcmp (name, new_name) == 0)
                 gr_details_page_set_recipe (page, recipe);
 }

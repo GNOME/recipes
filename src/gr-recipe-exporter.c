@@ -191,7 +191,8 @@ prepare_export (GrRecipeExporter  *exporter,
         path = g_build_filename (exporter->dir, "recipes.db", NULL);
         keyfile = g_key_file_new ();
 
-        key = name = gr_recipe_get_name (exporter->recipe);
+        key = gr_recipe_get_id (exporter->recipe);
+        name = gr_recipe_get_name (exporter->recipe);
         author = gr_recipe_get_author (exporter->recipe);
         description = gr_recipe_get_description (exporter->recipe);
         serves = gr_recipe_get_serves (exporter->recipe);

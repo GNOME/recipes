@@ -305,9 +305,7 @@ gr_list_page_populate_from_chef (GrListPage *self,
         gtk_widget_hide (self->diet_description);
 
         gtk_label_set_label (GTK_LABEL (self->chef_fullname), gr_chef_get_fullname (chef));
-        description = gr_chef_get_description (chef);
-        if (description[0] != '\0')
-                description = _(description);
+        description = gr_chef_get_translated_description (chef);
         gtk_label_set_markup (GTK_LABEL (self->chef_description), description);
 
         image_path = gr_chef_get_image (chef);

@@ -416,7 +416,7 @@ gr_window_show_recipe (GrWindow *window,
 
         gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (window->search_bar), FALSE);
 
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), gr_recipe_get_name (recipe));
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), gr_recipe_get_translated_name (recipe));
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
@@ -433,7 +433,7 @@ gr_window_edit_recipe (GrWindow *window,
 
         gr_edit_page_edit (GR_EDIT_PAGE (window->edit_page), recipe);
 
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), gr_recipe_get_name (recipe));
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), gr_recipe_get_translated_name (recipe));
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
