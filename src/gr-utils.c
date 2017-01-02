@@ -22,6 +22,7 @@
 
 #include <glib/gi18n.h>
 #include <stdlib.h>
+#include <stdarg.h>
 
 #include "gr-utils.h"
 
@@ -327,3 +328,57 @@ translate_multiline_string (const char *s)
 
         return g_string_free (out, FALSE);
 }
+
+char *
+generate_id (const char *first_string, ...)
+{
+        va_list ap;
+
+        const char *s;
+        const char *q;
+        GString *str;
+
+        va_start (ap, first_string);
+
+        str = g_string_new ("");
+
+        s = first_string;
+        while (s) {
+                for (q = s; *q; q = g_utf8_find_next_char (q, NULL)) {
+                        gunichar ch = g_utf8_get_char (q);
+                        if (ch > 128 || ch == '.' || ch == ' ' ||
+                            ch == ']' || ch == '[' || g_ascii_iscntrl ((char)ch))
+                                g_string_append_c (str, '_');
+                        else
+                                g_string_append_c (str, (char)ch);
+                }
+
+                s = va_arg (ap, const char *);
+        }
+
+        va_end (ap);
+
+        return g_string_free (str, FALSE);
+}
+
+static gint64 start_time;
+
+void
+start_recording (void)
+{
+        start_time = g_get_monotonic_time ();
+}
+
+void
+record_step (const char *blurb)
+{
+        if (start_time != 0)
+                g_print ("%0.3f %s\n", 0.001 * (g_get_monotonic_time () - start_time), blurb);
+}
+
+void
+stop_recording (void)
+{
+        start_time = 0;
+}
+

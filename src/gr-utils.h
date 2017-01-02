@@ -49,3 +49,9 @@ gboolean skip_whitespace (char **input);
 gboolean space_or_nul    (char p);
 
 char *translate_multiline_string (const char *s);
+
+char *generate_id (const char *s, ...);
+
+void start_recording (void);
+void stop_recording (void);
+void record_step (const char *blurb);
