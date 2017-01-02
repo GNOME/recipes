@@ -148,6 +148,8 @@ struct _GrDetailsPage
         GtkWidget *notes_field;
         GtkWidget *description_label;
         GtkWidget *export_button;
+        GtkWidget *error_label;
+        GtkWidget *error_revealer;
 
         guint save_timeout;
 };
@@ -591,6 +593,43 @@ schedule_save (GtkTextBuffer *buffer, GrDetailsPage *page)
         page->save_timeout = g_timeout_add (250, save_notes, page);
 }
 
+static gboolean
+activate_link (GtkLabel      *label,
+               const char    *uri,
+               GrDetailsPage *page)
+{
+        if (g_str_has_prefix (uri, "recipe:")) {
+                GrRecipeStore *store;
+                const char *id;
+                g_autoptr(GrRecipe) recipe = NULL;
+
+                store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+                id = uri + strlen ("recipe:");
+                recipe = gr_recipe_store_get_recipe (store, id);
+                if (recipe) {
+                        GtkWidget *window;
+
+                        window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
+                        gr_window_edit_recipe (GR_WINDOW (window), recipe);
+                }
+                else {
+                        gtk_label_set_label (GTK_LABEL (page->error_label),
+                                             _("Could not find this recipe."));
+                        gtk_revealer_set_reveal_child (GTK_REVEALER (page->error_revealer), TRUE);
+                }
+                return TRUE;
+        }
+
+        return FALSE;
+}
+
+static void
+dismiss_error (GrDetailsPage *page)
+{
+        gtk_revealer_set_reveal_child (GTK_REVEALER (page->error_revealer), FALSE);
+}
+
 static void
 gr_details_page_init (GrDetailsPage *page)
 {
@@ -661,6 +700,8 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, notes_field);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, description_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, export_button);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, error_label);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, error_revealer);
 
         gtk_widget_class_bind_template_callback (widget_class, edit_recipe);
         gtk_widget_class_bind_template_callback (widget_class, delete_recipe);
@@ -673,6 +714,8 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, time_spin_output);
         gtk_widget_class_bind_template_callback (widget_class, check_clicked);
         gtk_widget_class_bind_template_callback (widget_class, cook_it_later);
+        gtk_widget_class_bind_template_callback (widget_class, activate_link);
+        gtk_widget_class_bind_template_callback (widget_class, dismiss_error);
 }
 
 GtkWidget *
