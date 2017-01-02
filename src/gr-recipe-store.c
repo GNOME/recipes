@@ -1468,8 +1468,10 @@ clear_pending (GrRecipeSearch *search)
 static void
 send_pending (GrRecipeSearch *search)
 {
-        g_signal_emit (search, search_signals[HITS_ADDED], 0, search->pending);
-        clear_pending (search);
+        if (search->n_pending > 0) {
+                g_signal_emit (search, search_signals[HITS_ADDED], 0, search->pending);
+                clear_pending (search);
+        }
 }
 
 static void
@@ -1493,30 +1495,28 @@ static gboolean
 search_idle (gpointer data)
 {
         GrRecipeSearch *search = data;
-        int count;
         const char *key;
         GrRecipe *recipe;
+        gint64 start_time;
 
-        count = 0;
+        start_time = g_get_monotonic_time ();
+
         while (g_hash_table_iter_next (&search->iter, (gpointer *)&key, (gpointer *)&recipe)) {
-                count++;
-
                 if (recipe_matches (search, recipe))
                         add_pending (search, recipe);
 
                 if (search->n_pending > 2) {
                         send_pending (search);
-                        return G_SOURCE_CONTINUE;
                 }
 
-                if (count == 9) {
-                        return G_SOURCE_CONTINUE;
+                if (g_get_monotonic_time () >= start_time + 4000) {
+                        send_pending (search);
+                        search->idle = g_timeout_add (16, search_idle, search);
+                        return G_SOURCE_REMOVE;
                 }
         }
 
-        if (search->n_pending > 0) {
-                send_pending (search);
-        }
+        send_pending (search);
 
         g_signal_emit (search, search_signals[FINISHED], 0);
         search->idle = 0;
@@ -1536,8 +1536,8 @@ start_search (GrRecipeSearch *search)
                 g_hash_table_iter_init (&search->iter, search->store->recipes);
                 clear_pending (search);
                 clear_results (search);
-                search->idle = g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, search_idle, search, NULL);
                 g_signal_emit (search, search_signals[STARTED], 0);
+                search_idle (search);
         }
 }
 
