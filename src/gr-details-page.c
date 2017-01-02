@@ -289,6 +289,9 @@ print_recipe (GrDetailsPage *page)
 static void
 export_recipe (GrDetailsPage *page)
 {
+        g_autofree char *dir = NULL;
+        g_autofree char *basename = NULL;
+        g_autofree char *path = NULL;
         g_autoptr(GFile) file = NULL;
 
         if (!page->exporter) {
@@ -298,7 +301,13 @@ export_recipe (GrDetailsPage *page)
                 page->exporter = gr_recipe_exporter_new (GTK_WINDOW (window));
         }
 
-        file = g_file_new_for_path (g_get_tmp_dir ());
+        dir = g_dir_make_tmp ("recipesXXXXXX", NULL);
+        basename = g_strconcat (gr_recipe_get_name (page->recipe), ".tar.gz", NULL);
+        if (dir)
+                path = g_build_filename (dir, basename, NULL);
+        else
+                path = g_strdup (basename);
+        file = g_file_new_for_path (path);
         gr_recipe_exporter_export_to (page->exporter, page->recipe, file);
 }
 

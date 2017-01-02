@@ -360,6 +360,7 @@ gr_recipe_exporter_export_to (GrRecipeExporter *exporter,
 #ifdef ENABLE_AUTOAR
         exporter->compressor = autoar_compressor_new (exporter->sources, exporter->output, AUTOAR_FORMAT_TAR, AUTOAR_FILTER_GZIP, FALSE);
 
+        autoar_compressor_set_output_is_dest (exporter->compressor, TRUE);
         g_signal_connect (exporter->compressor, "decide-dest", G_CALLBACK (decide_dest_cb), exporter);
         g_signal_connect (exporter->compressor, "completed", G_CALLBACK (completed_cb), exporter);
         g_signal_connect (exporter->compressor, "error", G_CALLBACK (error_cb), exporter);
