@@ -79,6 +79,8 @@ cd recipes
 ./autogen --disable-autoar
 make
 ```
+To build a released version of recipes on OS X, just
 
-This pull request https://github.com/Homebrew/homebrew-core/pull/8303 adds a formula for building
-recipes from a tarball release.
+```
+brew install recipes
+```
