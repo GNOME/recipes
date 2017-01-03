@@ -855,6 +855,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
                 gtk_label_set_label (GTK_LABEL (page->cook_time_label), _(cook_time));
         gtk_label_set_label (GTK_LABEL (page->instructions_label), instructions);
         gtk_label_set_use_markup (GTK_LABEL (page->instructions_label), TRUE);
+        gtk_label_set_track_visited_links (GTK_LABEL (page->instructions_label), FALSE);
         g_signal_connect (page->instructions_label, "activate-link", G_CALLBACK (activate_link), page);
 
         gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), serves);
