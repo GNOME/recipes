@@ -238,6 +238,7 @@ about_activated (GSimpleAction *action,
                 "Ray Strode",
                 "Bastian Ilsø",
                 "Frederik Fyksen",
+                "Matthias Clasen",
                 NULL
         };
 
