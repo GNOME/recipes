@@ -189,7 +189,7 @@ gr_ingredients_list_populate_new_format (GrIngredientsList  *ingredients,
                 u = "";
                 if (unit[0] != '\0' &&
                     ((u = gr_unit_parse (&unit, &local_error)) == NULL)) {
-                        g_message ("failed to unit amount in '%s': %s", unit, local_error->message);
+                        g_message ("failed to parse unit in '%s': %s", unit, local_error->message);
                         g_free (ing);
                         continue;
                 }
