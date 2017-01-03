@@ -54,6 +54,16 @@ dist_images_DATA = \
 	images/fyksen.jpg		\
 	images/halfline.jpg		\
 	images/mclasen.jpg		\
+	images/donauwellen0.jpg		\
+	images/donauwellen1.jpg		\
+	images/donauwellen2.jpg		\
+	images/donauwellen3.jpg		\
+	images/donauwellen4.jpg		\
+	images/donauwellen5.jpg		\
+	images/donauwellen6.jpg		\
+	images/donauwellen7.jpg		\
+	images/donauwellen8.jpg		\
+	images/donauwellen_final.jpg	\
 	images/meatballs.jpg		\
 	images/pesto.jpg		\
 	images/pizza.jpg		\
