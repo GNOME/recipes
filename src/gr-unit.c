@@ -26,7 +26,7 @@
 
 static const char * const unit_names[] = {
         "g", "kg", "lb", "oz", "l", "dl", "ml", "fl oz", "pt", "qt", "gal", "cup",
-        "tbsp", "tsp", "box", "pkg",
+        "tbsp", "tsp", "box", "pkg", "glass",
         NULL
 };
 
@@ -53,6 +53,7 @@ static GrUnit units[] = {
         { "tsp",   NC_("unit abbreviation", "tsp"),   NC_("unit name", "teaspoon") },
         { "box",   NC_("unit abbreviation", "box"),   NC_("unit name", "box") },
         { "pkg",   NC_("unit abbreviation", "pkg"),   NC_("unit name", "package") },
+        { "glass", NC_("unit abbreviation", "glass"), NC_("unit name", "glass") },
 };
 
 const char **
