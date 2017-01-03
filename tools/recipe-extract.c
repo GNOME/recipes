@@ -34,10 +34,11 @@ emit_string (const char *s)
         int i;
 
         s2 = g_string_new ("");
-        for (p = s; *p; p++) {
-                if (*p == '"' || *p == '\\')
+        for (p = s; *p; p = g_utf8_next_char (p)) {
+                gunichar ch = g_utf8_get_char (p);
+                if (ch == (gunichar)'"' || ch == (gunichar)'\\')
                         g_string_append_c (s2, '\\');
-                g_string_append_c (s2, *p);
+                g_string_append_unichar (s2, ch);
         }
 
         strv = g_strsplit (s2->str, "\n", -1);
