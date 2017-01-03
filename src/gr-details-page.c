@@ -787,6 +787,23 @@ populate_ingredients (GrDetailsPage *page,
         }
 }
 
+static gboolean
+activate_link (GtkLabel *label,
+               const char *uri,
+               GrDetailsPage *page)
+{
+        if (g_str_has_prefix (uri, "image:")) {
+                int idx;
+
+                idx = (int)g_ascii_strtoll (uri + strlen ("image:"), NULL, 10);
+                gr_image_viewer_show_image (GR_IMAGE_VIEWER (page->recipe_image), idx);
+
+                return TRUE;
+        }
+
+        return FALSE;
+}
+
 void
 gr_details_page_set_recipe (GrDetailsPage *page,
                             GrRecipe      *recipe)
@@ -837,6 +854,8 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         else
                 gtk_label_set_label (GTK_LABEL (page->cook_time_label), _(cook_time));
         gtk_label_set_label (GTK_LABEL (page->instructions_label), instructions);
+        gtk_label_set_use_markup (GTK_LABEL (page->instructions_label), TRUE);
+        g_signal_connect (page->instructions_label, "activate-link", G_CALLBACK (activate_link), page);
 
         gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), serves);
         gtk_widget_set_sensitive (page->serves_spin, ing != NULL);
