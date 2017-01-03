@@ -5,8 +5,6 @@ CLEANFILES =
 
 EXTRA_DIST += ingredients.list segments.list recipes.db.h chefs.db.h
 
-BUILT_SOURCES = recipes.db.h chefs.db.h
-
 recipes.db.h: recipes.db
 	$(AM_V_GEN) $(top_builddir)/tools/recipe-extract $^ > $@
 

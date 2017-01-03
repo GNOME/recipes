@@ -1,0 +1,32 @@
+#if 0
+
+N_("Pan pizza")
+N_("Pizza is an all-time favorite.")
+N_("Put the flour, yeast, water and olive oil in a bowl and stir it up with your hands or a spoon until there's no dry flour left, and let it be.")
+N_("Cover the bowl tightly in plastic wrap and let it sit at room temperature overnight. ")
+N_("The next day it should have rosen quite a bit. Dump it all out onto a floured surface, then divide it into balls.")
+N_("Spread olive oil in a 10-inch cast iron skillet or round cake pan and place a dough ball in the middle.")
+N_("Rub the dough ball around and flip it a couple times until it is completely coated in oil and the oil completely coats the bottom and sides of the pan. Cover in plastic, and let it sit for another couple of hours without touching it.")
+N_("The dough should have spread on it own (takes about 2 hours). Lift the sides of the dough to let big air bubbles out.")
+N_("Put in the oven at 280°C. (or as hot as your oven goes) for about 15 minutes. Peek underneath and if your pizza is a little pale, you can finish on the stovetop directly over medium heat until it is as dark and crisp as you like it.")
+N_("Wholesome Crackers")
+N_("Crackers are a fulfilling alternative snack and keeps your stomach going. Crackers consist of seeds, oat and flour. The recipe described here is very flexible. You can use whichever seeds, nuts and flour types you may have. I've personally tried almonds, sesame seeds, chia seeds, rye grains, millet and  buckwheat.")
+N_("Turn on the oven at 473,15 °K (200 °C). Mix all dry ingredients (seeds, flour, oatmeal, baking powder and salt) together. Mix oil. Then add water gradually while mixing until the dough is firm and pasty. If you add too much water, the dough will end up sticking too much to the baking paper.")
+N_("Cut a sheet of baking paper at the size of a baking tray and place the dough on it. Cut another sheet of baking paper and put on top. Use a rolling pin on top of the second baking sheet to flatten the dough. Make the dough as thing as possible. Afterwards, take off the second sheet. Bring forth a knife and cut creases from horizontally and vertically to form squares (see example on the picture). Optionally decorate with extra seeds on top before inserting into the preheated oven.")
+N_("Wait for the crackers to become crisp, this takes around 17 minutes. You can check if they are done by touching the crackers or by pulling up a bit in the baking sheet and see if the crackers in the middle still bends.  The crackers take on a yellow golden color when they are done.")
+N_("Take out the crackers and leave them on the kitchen table to cool down for a few minutes.")
+N_("Tofu ‘Egg’ Scramble")
+N_("This vegan breakfast staple is perfect on a lazy saturday morning.")
+N_("Chop the onion. Open up the tofu package and slice it up, then crumble with your hands.")
+N_("Sautee the onion, tofu, and peppers for 3-5 minutes using the vegan butter.")
+N_("Turn heat down to medium and add the rest of the ingredients – cook for 5-7 minutes more.")
+N_("Donauwellen")
+N_("Donauwellen is a popular German cake with chocolate, vanilla cream and cherries. The name is due to the fact that the dough typically forms a wavy pattern.")
+N_("Mix the butter until it is creamy. Add sugar and eggs. Mix the flour with the baking powder and mix it in. Separate a third of the dough and add the cocoa powder to it.")
+N_("Spread the light dough on a buttered baking sheet. Put the dark dough on top. Use a fork to make a wavy pattern. Spread the dried cherries on top of the dough.")
+N_("Bake for 30 minutes at 200 °C.")
+N_("Use the milk, sugar and pudding to cook vanilla pudding and let it cool down while stirring it frequently. Slowly add spoonfuls of the butter, which should be at room temperature. Spread the butter cream on the cooled cake.")
+N_("Melt the chocolate frosting in a hot water bath and sprinkle it on top.")
+
+
+#endif
