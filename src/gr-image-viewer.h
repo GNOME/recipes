@@ -37,5 +37,8 @@ void           gr_image_viewer_remove_image (GrImageViewer *viewer);
 void           gr_image_viewer_rotate_image (GrImageViewer *viewer,
                                              int            angle);
 
+void           gr_image_viewer_show_image (GrImageViewer *viewer,
+                                           int            idx);
+
 G_END_DECLS
 

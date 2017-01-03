@@ -542,3 +542,11 @@ gr_image_viewer_rotate_image (GrImageViewer *viewer,
 
         g_object_notify (G_OBJECT (viewer), "images");
 }
+
+void
+gr_image_viewer_show_image (GrImageViewer *viewer,
+                            int            idx)
+{
+        viewer->index = idx % viewer->images->len;
+        set_current_image (viewer);
+}
