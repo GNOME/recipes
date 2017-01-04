@@ -102,6 +102,9 @@ struct _GrEditPage
         GtkWidget *recipe_list;
         GtkWidget *recipe_filter_entry;
         GtkWidget *add_recipe_button;
+        GtkWidget *link_image_button;
+        GtkWidget *image_popover;
+        GtkWidget *image_flowbox;
 
         GrRecipeSearch *search;
 
@@ -126,6 +129,30 @@ dismiss_error (GrEditPage *page)
 }
 
 static void
+populate_image_flowbox (GrEditPage *page)
+{
+        int i;
+        g_autoptr(GArray) images = NULL;
+
+        g_object_get (page->images, "images", &images, NULL);
+
+        container_remove_all (GTK_CONTAINER (page->image_flowbox));
+
+        for (i = 0; i < images->len; i++) {
+                GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, i);
+                g_autoptr(GdkPixbuf) pb = load_pixbuf_fill_size (ri->path, ri->angle, 60, 40);
+                GtkWidget *image;
+                GtkWidget *child;
+
+                image = gtk_image_new_from_pixbuf (pb);
+                gtk_widget_show (image);
+                gtk_container_add (GTK_CONTAINER (page->image_flowbox), image);
+                child = gtk_widget_get_parent (image);
+                g_object_set_data (G_OBJECT (child), "image-idx", GINT_TO_POINTER (i));
+        }
+}
+
+static void
 images_changed (GrEditPage *page)
 {
         g_autoptr(GArray) images = NULL;
@@ -137,6 +164,9 @@ images_changed (GrEditPage *page)
         gtk_widget_set_sensitive (page->remove_image_button, length > 0);
         gtk_widget_set_sensitive (page->rotate_image_left_button, length > 0);
         gtk_widget_set_sensitive (page->rotate_image_right_button, length > 0);
+        gtk_widget_set_sensitive (page->link_image_button, length > 0);
+
+        populate_image_flowbox (page);
 }
 
 static void
@@ -885,6 +915,7 @@ recipe_row_activated (GtkListBox    *list,
         GrRecipe *recipe;
         const char *id;
         const char *name;
+        g_autofree char *url = NULL;
         GtkTextBuffer *buffer;
         GtkTextIter start, end;
         GtkTextTag *tag;
@@ -901,13 +932,17 @@ recipe_row_activated (GtkListBox    *list,
                                           "foreground-rgba", &color,
                                           "underline", PANGO_UNDERLINE_SINGLE,
                                           NULL);
-        g_object_set_data_full (G_OBJECT (tag), "recipe-id", g_strdup (id), g_free);
+        url = g_strconcat ("recipe:", id, NULL);
+        g_object_set_data_full (G_OBJECT (tag), "href", g_strdup (url), g_free);
 
         gtk_text_buffer_get_iter_at_mark (buffer, &start,
                                           gtk_text_buffer_get_insert (buffer));
         gtk_text_buffer_get_iter_at_mark (buffer, &end,
                                           gtk_text_buffer_get_mark (buffer, "saved_selection_bound"));
         gtk_text_buffer_delete (buffer, &start, &end);
+        gtk_text_buffer_insert (buffer, &start, "​", -1);
+        gtk_text_buffer_get_iter_at_mark (buffer, &start,
+                                          gtk_text_buffer_get_insert (buffer));
         gtk_text_buffer_insert_with_tags (buffer, &start, name, -1, tag, NULL);
 
         gtk_popover_popdown (GTK_POPOVER (self->recipe_popover));
@@ -1018,7 +1053,7 @@ cursor_moved (GObject    *object,
         GtkTextBuffer *buffer = GTK_TEXT_BUFFER (object);
         GtkTextIter iter;
         GSList *tags, *s;
-        gboolean in_recipe = FALSE;
+        gboolean in_link = FALSE;
 
         gtk_text_buffer_get_iter_at_mark (buffer, &iter,
                                           gtk_text_buffer_get_insert (buffer));
@@ -1027,14 +1062,16 @@ cursor_moved (GObject    *object,
         for (s = tags; s; s = s->next) {
                 GtkTextTag *tag = s->data;
 
-                if (g_object_get_data (G_OBJECT (tag), "recipe-id") != NULL) {
-                        in_recipe = TRUE;
+                if (g_object_get_data (G_OBJECT (tag), "href") != NULL) {
+                        in_link = TRUE;
                         break;
                 }
+
         }
         g_slist_free (tags);
 
-        gtk_widget_set_sensitive (page->add_recipe_button, !in_recipe);
+        gtk_widget_set_sensitive (page->add_recipe_button, !in_link);
+        gtk_widget_set_sensitive (page->link_image_button, !in_link);
 }
 
 static void
@@ -1077,12 +1114,12 @@ add_recipe_link (GtkButton *button, GrEditPage *page)
         }
 
         buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (page->instructions_field));
-        if (gtk_text_buffer_get_selection_bounds (buffer, &start, &end)) {
-                GtkTextIter iter;
-                g_autofree char *text = NULL;
 
-                gtk_text_buffer_get_iter_at_mark (buffer, &iter, gtk_text_buffer_get_selection_bound (buffer));
-                gtk_text_buffer_move_mark_by_name (buffer, "saved_selection_bound", &iter);
+        gtk_text_buffer_get_iter_at_mark (buffer, &start, gtk_text_buffer_get_selection_bound (buffer));
+        gtk_text_buffer_move_mark_by_name (buffer, "saved_selection_bound", &start);
+
+        if (gtk_text_buffer_get_selection_bounds (buffer, &start, &end)) {
+                g_autofree char *text = NULL;
 
                 text = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
                 gtk_entry_set_text (GTK_ENTRY (page->recipe_filter_entry), text);
@@ -1109,6 +1146,68 @@ connect_store_signals (GrEditPage *page)
         g_signal_connect_swapped (store, "recipe-added", G_CALLBACK (recipe_reload), page);
         g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (recipe_reload), page);
         g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (recipe_reload), page);
+}
+
+static void
+image_activated (GtkFlowBox *flowbox,
+                 GtkFlowBoxChild *child,
+                 GrEditPage *self)
+{
+        int idx;
+        GtkTextBuffer *buffer;
+        GtkTextIter start, end;
+        GtkTextTag *tag;
+        GdkRGBA color;
+        g_autofree char *url = NULL;
+        g_autofree char *text = NULL;
+
+        gdk_rgba_parse (&color, "blue");
+
+        idx = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (child), "image-idx"));
+
+        buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->instructions_field));
+        tag = gtk_text_buffer_create_tag (buffer, NULL,
+                                          "foreground-rgba", &color,
+                                          "underline", PANGO_UNDERLINE_SINGLE,
+                                          NULL);
+        url = g_strdup_printf ("image:%d", idx);
+        g_object_set_data_full (G_OBJECT (tag), "href", g_strdup (url), g_free);
+
+        gtk_text_buffer_get_iter_at_mark (buffer, &start,
+                                          gtk_text_buffer_get_insert (buffer));
+        gtk_text_buffer_get_iter_at_mark (buffer, &end,
+                                          gtk_text_buffer_get_mark (buffer, "saved_selection_bound"));
+        text = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
+        gtk_text_buffer_delete (buffer, &start, &end);
+        gtk_text_buffer_insert (buffer, &start, "​", -1);
+
+        if (text[0] == '\0') {
+                char buf[6];
+                int len;
+
+                len = g_unichar_to_utf8 (0x2460 + idx, buf);
+                text = g_strndup (buf, len);
+        }
+
+        gtk_text_buffer_get_iter_at_mark (buffer, &start,
+                                          gtk_text_buffer_get_insert (buffer));
+        gtk_text_buffer_insert_with_tags (buffer, &start, text, -1, tag, NULL);
+
+        gtk_popover_popdown (GTK_POPOVER (self->image_popover));
+        gtk_widget_grab_focus (self->instructions_field);
+}
+
+static void
+add_image_link (GtkButton *button, GrEditPage *page)
+{
+        GtkTextBuffer *buffer;
+        GtkTextIter iter;
+
+        buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (page->instructions_field));
+        gtk_text_buffer_get_iter_at_mark (buffer, &iter, gtk_text_buffer_get_selection_bound (buffer));
+        gtk_text_buffer_move_mark_by_name (buffer, "saved_selection_bound", &iter);
+
+        gtk_popover_popup (GTK_POPOVER (page->image_popover));
 }
 
 static void
@@ -1229,6 +1328,9 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, recipe_list);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, recipe_filter_entry);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, add_recipe_button);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, link_image_button);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, image_popover);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrEditPage, image_flowbox);
 
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), dismiss_error);
         gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), add_image);
@@ -1251,6 +1353,8 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, amount_search_button_clicked);
         gtk_widget_class_bind_template_callback (widget_class, popover_keypress_handler);
         gtk_widget_class_bind_template_callback (widget_class, add_recipe_link);
+        gtk_widget_class_bind_template_callback (widget_class, add_image_link);
+        gtk_widget_class_bind_template_callback (widget_class, image_activated);
 
         gtk_widget_class_bind_template_callback (widget_class, recipe_filter_changed);
         gtk_widget_class_bind_template_callback (widget_class, recipe_filter_stop);
@@ -1600,13 +1704,32 @@ set_instructions (GtkTextView *text_view,
 
         p = text;
         while (*p) {
+                g_autofree char *recipe_id = NULL;
+                g_autofree char *url = NULL;
+                int image_idx;
+
                 q1 = NULL;
                 r1 = NULL;
-                p1 = strstr (p, "<a href=\"recipe:");
+                p1 = strstr (p, "<a href=\"");
                 if (!p1)
                         break;
-                p2 = p1 + strlen ("<a href=\"recipe:");
-                q1 = strstr (p2, "\">");
+                p2 = p1 + strlen ("<a href=\"");
+                if (strncmp (p2, "recipe:", strlen ("recipe:")) == 0) {
+                        p2 = p2 + strlen ("recipe:");
+                        q1 = strstr (p2, "\">");
+                        recipe_id = g_strndup (p2, q1 - p2);
+                        url = g_strconcat ("recipe:", recipe_id, NULL);
+                }
+                else if (strncmp (p2, "image:", strlen ("image:")) == 0) {
+                        p2 = p2 + strlen ("image:");
+                        q1 = strstr (p2, "\">");
+                        image_idx = (int)g_ascii_strtoll (p2, NULL, 10);
+                        url = g_strdup_printf ("image:%d", image_idx);
+                }
+                else {
+                        p = p2;
+                        continue;
+                }
 
                 if (!q1)
                         break;
@@ -1626,7 +1749,8 @@ set_instructions (GtkTextView *text_view,
                                                   "foreground-rgba", &color,
                                                   "underline", PANGO_UNDERLINE_SINGLE,
                                                   NULL);
-                g_object_set_data_full (G_OBJECT (tag), "recipe-id", g_strndup (p2, q1 - p2), g_free);
+                g_object_set_data_full (G_OBJECT (tag), "href", g_strdup (url), g_free);
+
                 gtk_text_buffer_get_end_iter (buffer, &iter);
                 gtk_text_buffer_insert_with_tags (buffer, &iter, q2, r1 - q2, tag, NULL);
 
@@ -1943,7 +2067,7 @@ get_instructions (GtkTextView *text_view)
                 tags = gtk_text_iter_get_tags (&end);
                 tag = NULL;
                 for (l = tags; l; l = l->next) {
-                        if (g_object_get_data (G_OBJECT (l->data), "recipe-id")) {
+                        if (g_object_get_data (G_OBJECT (l->data), "href")) {
                                 tag = l->data;
                                 break;
                         }
@@ -1952,15 +2076,20 @@ get_instructions (GtkTextView *text_view)
 
                 if (tag) {
                         g_autofree char *name = NULL;
-                        start = end;
-                        gtk_text_iter_forward_to_tag_toggle (&end, tag);
-                        name = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
-                        g_string_append_printf (s, "<a href=\"recipe:%s\">", (const char*)g_object_get_data (G_OBJECT (tag), "recipe-id"));
-                        g_string_append (s, name);
-                        g_string_append (s, "</a>");
+                        const char *url;
 
                         start = end;
+
+                        gtk_text_iter_forward_to_tag_toggle (&end, tag);
+                        name = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
+
+                        url = (const char*)g_object_get_data (G_OBJECT (tag), "href");
+
+                        g_string_append_printf (s, "<a href=\"%s\">", url);
+                        g_string_append (s, name);
+                        g_string_append (s, "</a>");
                 }
+                start = end;
         }
 
         gtk_text_buffer_get_end_iter (buffer, &end);
@@ -2085,3 +2214,4 @@ gr_edit_page_get_recipe (GrEditPage *page)
 {
         return page->recipe;
 }
+
