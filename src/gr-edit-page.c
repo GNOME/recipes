@@ -886,7 +886,7 @@ recipe_row_activated (GtkListBox    *list,
         const char *id;
         const char *name;
         GtkTextBuffer *buffer;
-        GtkTextIter iter;
+        GtkTextIter start, end;
         GtkTextTag *tag;
         GdkRGBA color;
 
@@ -903,10 +903,12 @@ recipe_row_activated (GtkListBox    *list,
                                           NULL);
         g_object_set_data_full (G_OBJECT (tag), "recipe-id", g_strdup (id), g_free);
 
-        gtk_text_buffer_get_iter_at_mark (buffer, &iter,
+        gtk_text_buffer_get_iter_at_mark (buffer, &start,
                                           gtk_text_buffer_get_insert (buffer));
-
-        gtk_text_buffer_insert_with_tags (buffer, &iter, name, -1, tag, NULL);
+        gtk_text_buffer_get_iter_at_mark (buffer, &end,
+                                          gtk_text_buffer_get_mark (buffer, "saved_selection_bound"));
+        gtk_text_buffer_delete (buffer, &start, &end);
+        gtk_text_buffer_insert_with_tags (buffer, &start, name, -1, tag, NULL);
 
         gtk_popover_popdown (GTK_POPOVER (self->recipe_popover));
         gtk_entry_set_text (GTK_ENTRY (self->recipe_filter_entry), "");
@@ -1039,6 +1041,7 @@ static void
 populate_recipe_list (GrEditPage *self)
 {
         GtkTextBuffer *buffer;
+        GtkTextIter iter;
 
         gtk_list_box_set_header_func (GTK_LIST_BOX (self->recipe_list),
                                       all_headers, self, NULL);
@@ -1057,17 +1060,36 @@ populate_recipe_list (GrEditPage *self)
 
         buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->instructions_field));
         g_signal_connect (buffer, "notify::cursor-position", G_CALLBACK (cursor_moved), self);
+
+        gtk_text_buffer_get_start_iter (buffer, &iter);
+        gtk_text_buffer_create_mark (buffer, "saved_selection_bound", &iter, TRUE);
 }
 
 static void
 add_recipe_link (GtkButton *button, GrEditPage *page)
 {
+        GtkTextBuffer *buffer;
+        GtkTextIter start, end;
+
         if (gtk_list_box_get_row_at_index (GTK_LIST_BOX (page->recipe_list), 0) == NULL) {
                 gr_recipe_search_stop (page->search);
                 gr_recipe_search_set_query (page->search, "na:");
         }
 
-        gtk_entry_set_text (GTK_ENTRY (page->recipe_filter_entry), "");
+        buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (page->instructions_field));
+        if (gtk_text_buffer_get_selection_bounds (buffer, &start, &end)) {
+                GtkTextIter iter;
+                g_autofree char *text = NULL;
+
+                gtk_text_buffer_get_iter_at_mark (buffer, &iter, gtk_text_buffer_get_selection_bound (buffer));
+                gtk_text_buffer_move_mark_by_name (buffer, "saved_selection_bound", &iter);
+
+                text = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
+                gtk_entry_set_text (GTK_ENTRY (page->recipe_filter_entry), text);
+        }
+        else
+                gtk_entry_set_text (GTK_ENTRY (page->recipe_filter_entry), "");
+
         gtk_popover_popup (GTK_POPOVER (page->recipe_popover));
 }
 
