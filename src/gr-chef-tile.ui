@@ -3,7 +3,7 @@
   <!-- interface-requires gtk+ 3.10 -->
   <template class="GrChefTile" parent="GtkBox">
     <property name="visible">True</property>
-    <property name="orientation">vertical</property>
+    <property name="orientation">horizontal</property>
     <property name="spacing">6</property>
     <child>
       <object class="GtkImage" id="image">
@@ -20,6 +20,7 @@
     <child>
       <object class="GtkLabel" id="label">
         <property name="visible">1</property>
+        <property name="valign">center</property>
         <attributes>
           <attribute name="weight" value="bold"/>
         </attributes>

@@ -155,7 +155,7 @@ chef_tile_set_chef (GrChefTile *tile,
                 elem = gr_chef_get_id (tile->chef);
                 gtk_style_context_add_class (gtk_widget_get_style_context (tile->image), elem);
 
-                name = gr_chef_get_name (chef);
+                name = gr_chef_get_fullname (chef);
                 gtk_label_set_label (GTK_LABEL (tile->label), name);
         }
 }
