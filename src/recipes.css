@@ -33,7 +33,7 @@ image.checkmark:not(.checked) {
 }
 
 image.framed {
-  border: 1px solid #222222;
+  border: 1px solid @borders;
   border-radius: 4px;
 }
 
