@@ -381,8 +381,8 @@ gr_list_page_populate_from_favorites (GrListPage *self)
         gr_recipe_search_set_query (self->search, "is:favorite");
 }
 
-static void
-list_page_reload (GrListPage *page)
+void
+gr_list_page_repopulate (GrListPage *page)
 {
         if (page->chef)
                 gr_list_page_populate_from_chef (page, page->chef);
@@ -402,9 +402,9 @@ connect_store_signals (GrListPage *page)
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         /* FIXME: inefficient */
-        g_signal_connect_swapped (store, "recipe-added", G_CALLBACK (list_page_reload), page);
-        g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (list_page_reload), page);
-        g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (list_page_reload), page);
+        g_signal_connect_swapped (store, "recipe-added", G_CALLBACK (gr_list_page_repopulate), page);
+        g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (gr_list_page_repopulate), page);
+        g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (gr_list_page_repopulate), page);
 }
 
 void
@@ -413,4 +413,3 @@ gr_list_page_clear (GrListPage *self)
         gr_recipe_search_stop (self->search);
         container_remove_all (GTK_CONTAINER (self->flow_box));
 }
-

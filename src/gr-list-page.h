@@ -40,5 +40,6 @@ void            gr_list_page_populate_from_season    (GrListPage *self,
                                                       const char *season);
 void            gr_list_page_populate_from_favorites (GrListPage *self);
 void            gr_list_page_clear                   (GrListPage *self);
+void            gr_list_page_repopulate              (GrListPage *self);
 
 G_END_DECLS
