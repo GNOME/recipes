@@ -1,6 +1,8 @@
 bin_PROGRAMS = recipes
 
 commitid := $(shell $(GIT) describe)
+libgd_info = $(shell cat $(top_builddir)/libgd.info)
+libglnx_info = $(shell cat $(top_builddir)/libglnx.info)
 
 recipes_CFLAGS = \
 	$(WARN_CFLAGS) 			\
@@ -10,6 +12,8 @@ recipes_CFLAGS = \
 	-DPKGDATADIR=\"$(pkgdatadir)\" 	\
 	-DLOCALEDIR=\"$(localedir)\" 	\
 	-DCOMMIT_ID=\"$(commitid)\"	\
+	-DLIBGD_INFO=\"$(libgd_info)\"	\
+	-DLIBGLNX_INFO=\"$(libglnx_info)\"	\
 	-DMICRO_VERSION=$(MICRO_VERSION) \
 	-I "$(top_srcdir)/libgd"	\
 	-I "$(top_srcdir)/libglnx"
