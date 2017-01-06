@@ -102,7 +102,10 @@ AC_ARG_ENABLE(gspell,
 
 if test "x$enable_gspell" = xyes; then
         GSPELL_DEP=gspell-1
-        AC_DEFINE([ENABLE_GSPELL], [], [Define to 1 if gspell is used])
+        AC_DEFINE([ENABLE_GSPELL], [1], [Define to 1 if gspell is used])
+        GSPELL_VERSION="$($PKG_CONFIG --modversion gspell-1)"
+        AC_SUBST([GSPELL_VERSION])
+        AC_DEFINE_UNQUOTED([GSPELL_VERSION], ["${GSPELL_VERSION}"], [The version of gspell])
 fi
 
 AC_ARG_ENABLE(autoar,
@@ -111,7 +114,10 @@ AC_ARG_ENABLE(autoar,
               [enable_autoar="yes"])
 if test "x$enable_autoar" = xyes; then
         AUTOAR_DEP=gnome-autoar-0
-        AC_DEFINE([ENABLE_AUTOAR], [], [Define to 1 if gnome-autoar is used])
+        AC_DEFINE([ENABLE_AUTOAR], [1], [Define to 1 if gnome-autoar is used])
+        AUTOAR_VERSION="$($PKG_CONFIG --modversion $AUTOAR_DEP)"
+        AC_SUBST([AUTOAR_VERSION])
+        AC_DEFINE_UNQUOTED([AUTOAR_VERSION], ["${AUTOAR_VERSION}"], [The version of gnome-autoar])
 fi
 AM_CONDITIONAL(USE_AUTOAR, test "x$enable_autoar" = xyes)
 
