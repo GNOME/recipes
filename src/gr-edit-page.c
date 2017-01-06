@@ -152,8 +152,10 @@ populate_image_flowbox (GrEditPage *page)
         }
 }
 
+static void update_link_button_sensitivity (GrEditPage *page);
+
 static void
-images_changed (GrEditPage *page)
+update_image_button_sensitivity (GrEditPage *page)
 {
         g_autoptr(GArray) images = NULL;
         int length;
@@ -164,8 +166,13 @@ images_changed (GrEditPage *page)
         gtk_widget_set_sensitive (page->remove_image_button, length > 0);
         gtk_widget_set_sensitive (page->rotate_image_left_button, length > 0);
         gtk_widget_set_sensitive (page->rotate_image_right_button, length > 0);
-        gtk_widget_set_sensitive (page->link_image_button, length > 0);
+}
 
+static void
+images_changed (GrEditPage *page)
+{
+        update_image_button_sensitivity (page);
+        update_link_button_sensitivity (page);
         populate_image_flowbox (page);
 }
 
@@ -1046,14 +1053,16 @@ search_finished (GrRecipeSearch *search,
 }
 
 static void
-cursor_moved (GObject    *object,
-              GParamSpec *pspec,
-              GrEditPage *page)
+update_link_button_sensitivity (GrEditPage *page)
 {
-        GtkTextBuffer *buffer = GTK_TEXT_BUFFER (object);
+        GtkTextBuffer *buffer;
         GtkTextIter iter;
         GSList *tags, *s;
         gboolean in_link = FALSE;
+        g_autoptr(GArray) images = NULL;
+        int length;
+
+        buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (page->instructions_field));
 
         gtk_text_buffer_get_iter_at_mark (buffer, &iter,
                                           gtk_text_buffer_get_insert (buffer));
@@ -1070,8 +1079,19 @@ cursor_moved (GObject    *object,
         }
         g_slist_free (tags);
 
+        g_object_get (page->images, "images", &images, NULL);
+        length = images->len;
+
         gtk_widget_set_sensitive (page->add_recipe_button, !in_link);
-        gtk_widget_set_sensitive (page->link_image_button, !in_link);
+        gtk_widget_set_sensitive (page->link_image_button, !in_link && (length > 1));
+}
+
+static void
+cursor_moved (GObject    *object,
+              GParamSpec *pspec,
+              GrEditPage *page)
+{
+        update_link_button_sensitivity (page);
 }
 
 static void
