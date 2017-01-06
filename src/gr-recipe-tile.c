@@ -61,7 +61,6 @@ add_recipe_css (GrRecipe *recipe,
         const char *author;
         g_autoptr(GrChef) chef = NULL;
         g_autoptr(GArray) images = NULL;
-        const char *color;
         GrRecipeStore *store;
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
@@ -79,29 +78,6 @@ add_recipe_css (GrRecipe *recipe,
                 g_string_append_printf (css, "  background: url('%s');\n"
                                              "  background-size: 100%%;\n"
                                              "  background-repeat: no-repeat;\n", ri->path);
-                g_string_append (css, "}\n\n");
-
-                if (ri->dark_text)
-                        color = "black";
-                else
-                        color = "white";
-        }
-        else {
-                color = "black";
-        }
-
-        if (color) {
-                g_string_append_printf (css, "label.recipe.name.%s {\n", id);
-                g_string_append_printf (css, " color: %s;\n"
-                                             " margin: 0 20px 0 20px;\n"
-                                             " font-weight: bold;\n"
-                                             " font-size: 24pt;\n", color);
-                g_string_append (css, "}\n\n");
-
-                g_string_append_printf (css, "label.recipe.author.%s {\n", id);
-                g_string_append_printf (css, " color: %s;\n"
-                                       " margin: 10px 20px 20px 20px;\n"
-                                       " font-size: 12pt;\n", color);
                 g_string_append (css, "}\n\n");
         }
 }
@@ -150,8 +126,6 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
                 const char *elem;
                 elem = gr_recipe_get_id (tile->recipe);
                 gtk_style_context_remove_class (gtk_widget_get_style_context (tile->box), elem);
-                gtk_style_context_remove_class (gtk_widget_get_style_context (tile->label), elem);
-                gtk_style_context_remove_class (gtk_widget_get_style_context (tile->author), elem);
         }
 
         g_set_object (&tile->recipe, recipe);
@@ -165,8 +139,6 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
 
                 elem = gr_recipe_get_id (tile->recipe);
                 gtk_style_context_add_class (gtk_widget_get_style_context (tile->box), elem);
-                gtk_style_context_add_class (gtk_widget_get_style_context (tile->label), elem);
-                gtk_style_context_add_class (gtk_widget_get_style_context (tile->author), elem);
 
                 name = gr_recipe_get_translated_name (recipe);
                 author = gr_recipe_get_author (recipe);
