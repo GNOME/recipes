@@ -148,7 +148,7 @@ main (int argc, char *argv[])
                         g_autofree char *s = NULL;
                         s = g_key_file_get_string (keyfile, groups[i], "Ingredients", &error);
                         if (!s) {
-                                g_printerr ("Failed to get key '%s' for group '%s': %s\n", keys[j], groups[i], error->message);
+                                g_printerr ("Failed to get key '%s' for group '%s': %s\n", "Ingredients", groups[i], error->message);
                                 g_clear_error (&error);
                                 continue;
                         }
