@@ -890,7 +890,7 @@ recipe_filter_func (GtkListBoxRow *row,
 
         r = GR_RECIPE (g_object_get_data (G_OBJECT (row), "recipe"));
 
-        if (strcmp (gr_recipe_get_id (r), gr_recipe_get_id (self->recipe)) == 0)
+        if (self->recipe && strcmp (gr_recipe_get_id (r), gr_recipe_get_id (self->recipe)) == 0)
                 return FALSE;
 
         cf = (const char *)g_object_get_data (G_OBJECT (row), "term");
