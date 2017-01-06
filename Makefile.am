@@ -1,8 +1,10 @@
 SUBDIRS = . libgd tools data src po tests
 
-EXTRA_DIST = AUTHORS NEWS
+EXTRA_DIST = AUTHORS NEWS libgd.info libglnx.info
 
-CLEANFILES = AUTHORS NEWS
+CLEANFILES = AUTHORS NEWS libgd.info libglnx.info
+
+BUILT_SOURCES = libgd.info libglnx.info
 
 AUTHORS:
 	$(AM_V_GEN)if test -d "$(srcdir)/.git"; \
@@ -23,6 +25,12 @@ NEWS: data/appdata/org.gnome.Recipes.appdata.xml.in
 	else \
 		touch $@; \
 	fi
+
+libgd.info:
+	$(AM_V_GEN)(cd libgd; git log -1 --pretty=%h) > $@
+
+libglnx.info:
+	$(AM_V_GEN)(cd libglnx; git log -1 --pretty=%h) > $@
 
 .PHONY: NEWS
 
