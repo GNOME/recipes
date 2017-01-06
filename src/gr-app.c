@@ -22,6 +22,7 @@
 
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
+#include <json-glib/json-glib.h>
 
 #include "gr-app.h"
 #include "gr-window.h"
@@ -164,6 +165,7 @@ style_updated (GtkWidget *widget)
         pixbuf_fill_rgb (pixbuf, r, g, b);
         gtk_image_set_from_pixbuf (GTK_IMAGE (widget), pixbuf);
 }
+
 static void
 add_built_logo (GtkAboutDialog *about)
 {
@@ -216,6 +218,160 @@ add_built_logo (GtkAboutDialog *about)
 
         g_object_unref (license_label);
         g_object_unref (copyright_label);
+}
+
+static gboolean
+in_flatpak_sandbox (void)
+{
+        g_autofree char *path = NULL;
+
+        path = g_build_filename (g_get_user_runtime_dir (), "flatpak-info", NULL);
+
+        return g_file_test (path, G_FILE_TEST_EXISTS);
+}
+
+static void
+get_flatpak_runtime_information (char **id,
+                                 char **branch,
+                                 char **version,
+                                 char **commit)
+{
+        g_autoptr(JsonParser) parser = NULL;
+        JsonNode *root;
+        JsonObject *object;
+        g_autoptr(GError) error = NULL;
+
+        parser = json_parser_new ();
+        if (!json_parser_load_from_file (parser, "/usr/manifest.json", &error)) {
+                g_message ("Failed to load runtime information: %s", error->message);
+                goto error;
+        }
+
+        root = json_parser_get_root (parser);
+        if (!JSON_NODE_HOLDS_OBJECT (root))
+                goto error;
+
+        object = json_node_get_object (root);
+
+        *id = g_strdup (json_object_get_string_member (object, "id-platform"));
+        *branch = g_strdup (json_object_get_string_member (object, "branch"));
+        *version = g_strdup (json_object_get_string_member (object, "runtime-version"));
+        *commit = g_strdup (json_object_get_string_member (object, "runtime-commit"));
+        return;
+
+error:
+        *id = g_strdup (_("Unknown"));
+        *branch = g_strdup (_("Unknown"));
+        *version = g_strdup (_("Unknown"));
+        *commit = g_strdup (_("Unknown"));
+}
+
+static void
+populate_system_tab (GtkTextView *view)
+{
+        GtkTextBuffer *buffer;
+        g_autoptr(GString) s = NULL;
+        PangoTabArray *tabs;
+        GtkTextIter start, end;
+
+        tabs = pango_tab_array_new (3, TRUE);
+        pango_tab_array_set_tab (tabs, 0, PANGO_TAB_LEFT, 20);
+        pango_tab_array_set_tab (tabs, 1, PANGO_TAB_LEFT, 150);
+        pango_tab_array_set_tab (tabs, 2, PANGO_TAB_LEFT, 200);
+        gtk_text_view_set_tabs (view, tabs);
+        pango_tab_array_free (tabs);
+
+        s = g_string_new ("");
+
+        if (in_flatpak_sandbox ()) {
+                g_autofree char *id = NULL;
+                g_autofree char *branch = NULL;
+                g_autofree char *version = NULL;
+                g_autofree char *commit = NULL;
+
+                get_flatpak_runtime_information (&id, &branch, &version, &commit);
+
+                g_string_append (s, _("Runtime"));
+                g_string_append (s, "\n");
+                g_string_append_printf (s, "\t%s\t%s\n", C_("Runtime metadata", "ID"), id);
+                g_string_append_printf (s, "\t%s\t%s\n", C_("Runtime metadata", "Version"), version);
+                g_string_append_printf (s, "\t%s\t%s\n", C_("Runtime metadata", "Branch"), branch);
+                g_string_append_printf (s, "\t%s\t%s\n", C_("Runtime metadata", "Commit"), commit);
+
+                g_string_append (s, "\n");
+                g_string_append (s, _("Bundled libraries\n"));
+#if ENABLE_AUTOAR
+                g_string_append_printf (s, "\tgnome-autoar\t%s\n", AUTOAR_VERSION);
+#endif
+#if ENABLE_GSPELL
+                g_string_append_printf (s, "\tgspell\t%s\n", GSPELL_VERSION);
+#endif
+                g_string_append_printf (s, "\tlibgd\t%s\tLGPLv2\n", LIBGD_INFO);
+                g_string_append_printf (s, "\tlibglnx\t%s\tLGPLv2\n", LIBGLNX_INFO);
+        }
+        else {
+                g_string_append (s, _("System libraries"));
+                g_string_append (s, "\n");
+                g_string_append_printf (s, "\tGLib\t%d.%d.%d\n",
+                                        glib_major_version,
+                                        glib_minor_version,
+                                        glib_micro_version);
+                g_string_append_printf (s, "\tGTK+\t%d.%d.%d\n",
+                                        gtk_get_major_version (),
+                                        gtk_get_minor_version (),
+                                        gtk_get_micro_version ());
+#if ENABLE_AUTOAR
+                g_string_append_printf (s, "\tgnome-autoar\t%s\n", AUTOAR_VERSION);
+#endif
+#if ENABLE_GSPELL
+                g_string_append_printf (s, "\tgspell\t%s\n", GSPELL_VERSION);
+#endif
+
+                g_string_append (s, "\n");
+                g_string_append (s, _("Bundled libraries\n"));
+                g_string_append_printf (s, "\tlibgd\t%s\tLGPLv2\n", LIBGD_INFO);
+                g_string_append_printf (s, "\tlibglnx\t%s\tLGPLv2\n", LIBGLNX_INFO);
+       }
+
+        buffer = gtk_text_view_get_buffer (view);
+        gtk_text_buffer_set_text (buffer, s->str, s->len);
+        gtk_text_buffer_create_tag (buffer, "smaller", "scale", PANGO_SCALE_SMALL, NULL);
+        gtk_text_buffer_get_bounds (buffer, &start, &end);
+        gtk_text_buffer_apply_tag_by_name (buffer, "smaller", &start, &end);
+}
+
+static void
+add_system_tab (GtkAboutDialog *about)
+{
+        GtkWidget *content;
+        GtkWidget *box;
+        GtkWidget *stack;
+        GtkWidget *sw;
+        GtkWidget *view;
+
+        content = gtk_dialog_get_content_area (GTK_DIALOG (about));
+        box = find_child_with_name (content, "box");
+        stack = find_child_with_name (box, "stack");
+
+        sw = gtk_scrolled_window_new (NULL, NULL);
+        gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
+                                        GTK_POLICY_NEVER,
+                                        GTK_POLICY_AUTOMATIC);
+        gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw),
+                                             GTK_SHADOW_IN);
+        gtk_widget_show (sw);
+        view = gtk_text_view_new ();
+        gtk_text_view_set_editable (GTK_TEXT_VIEW (view), FALSE);
+        gtk_text_view_set_left_margin (GTK_TEXT_VIEW (view), 10);
+        gtk_text_view_set_right_margin (GTK_TEXT_VIEW (view), 10);
+        gtk_text_view_set_top_margin (GTK_TEXT_VIEW (view), 10);
+        gtk_text_view_set_bottom_margin (GTK_TEXT_VIEW (view), 10);
+        gtk_widget_show (view);
+        gtk_container_add (GTK_CONTAINER (sw), view);
+
+        gtk_stack_add_titled (GTK_STACK (stack), sw, "system", _("System"));
+
+        populate_system_tab (GTK_TEXT_VIEW (view));
 }
 
 static void
@@ -278,6 +434,7 @@ about_activated (GSimpleAction *action,
                 dialog = GTK_ABOUT_DIALOG (g_object_get_data (G_OBJECT (win), "gtk-about-dialog"));
                 gtk_about_dialog_add_credit_section (dialog, _("Recipes by"), recipe_authors);
                 add_built_logo (dialog);
+                add_system_tab (dialog);
         }
 
 }
