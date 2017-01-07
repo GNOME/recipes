@@ -49,6 +49,8 @@ struct _GrRecipesPage
         GtkWidget *favorites_tile;
         GtkWidget *favorites_list;
         GtkWidget *favorites_time;
+
+        guint favorites_timeout;
 };
 
 G_DEFINE_TYPE (GrRecipesPage, gr_recipes_page, GTK_TYPE_BOX)
@@ -86,6 +88,8 @@ set_categories_expanded (GrRecipesPage *page,
                                       expanded ? "pan-up-symbolic" : "pan-down-symbolic", 1);
 }
 
+static gboolean update_favorites_time (gpointer data);
+
 void
 gr_recipes_page_unexpand (GrRecipesPage *page)
 {
@@ -98,6 +102,8 @@ gr_recipes_page_unexpand (GrRecipesPage *page)
         set_categories_expanded (page, FALSE);
 
         gtk_revealer_set_transition_type (GTK_REVEALER (page->diet_more), transition);
+
+        update_favorites_time (page);
 }
 
 static void
@@ -112,6 +118,13 @@ expander_button_clicked (GrRecipesPage *page)
 static void
 recipes_page_finalize (GObject *object)
 {
+        GrRecipesPage *page = GR_RECIPES_PAGE (object);
+
+        if (page->favorites_timeout != 0) {
+                g_source_remove (page->favorites_timeout);
+                page->favorites_timeout = 0;
+        }
+
         G_OBJECT_CLASS (gr_recipes_page_parent_class)->finalize (object);
 }
 
@@ -136,6 +149,8 @@ gr_recipes_page_init (GrRecipesPage *page)
         gr_recipe_tile_recreate_css ();
         gr_chef_tile_recreate_css ();
         connect_store_signals (page);
+
+        page->favorites_timeout = g_timeout_add_seconds (300, update_favorites_time, page);
 }
 
 static void
@@ -231,6 +246,27 @@ populate_diets_from_store (GrRecipesPage *self)
         }
 }
 
+static gboolean
+update_favorites_time (gpointer data)
+{
+        GrRecipesPage *self = data;
+        GrRecipeStore *store;
+        GDateTime *change;
+        g_autoptr(GDateTime) now = NULL;
+        g_autofree char *text = NULL;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+g_print ("update favorites time\n");
+
+        now = g_date_time_new_now_utc ();
+        change = gr_recipe_store_last_favorite_change (store);
+        text = format_date_time_difference (now, change);
+        gtk_label_set_label (GTK_LABEL (self->favorites_time), text);
+
+        return G_SOURCE_CONTINUE;
+}
+
 static void
 populate_recipes_from_store (GrRecipesPage *self)
 {
@@ -244,7 +280,6 @@ populate_recipes_from_store (GrRecipesPage *self)
         g_autofree char *fav2 = NULL;
         int favorites;
         char *tmp;
-        GDateTime *change;
         g_autoptr(GDateTime) now = NULL;
 
         container_remove_all (GTK_CONTAINER (self->today_box));
@@ -300,13 +335,9 @@ populate_recipes_from_store (GrRecipesPage *self)
         gtk_label_set_label (GTK_LABEL (self->favorites_list), tmp);
         g_free (tmp);
 
-        now = g_date_time_new_now_utc ();
-        change = gr_recipe_store_last_favorite_change (store);
-        tmp = format_date_time_difference (now, change);
-        gtk_label_set_label (GTK_LABEL (self->favorites_time), tmp);
-        g_free (tmp);
-
         gtk_widget_set_visible (self->favorites_tile, favorites > 0);
+
+        update_favorites_time (self);
 }
 
 static void
