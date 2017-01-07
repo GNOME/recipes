@@ -299,7 +299,8 @@ populate_system_tab (GtkTextView *view)
                 g_string_append_printf (s, "\t%s\t%s\n", C_("Runtime metadata", "Commit"), commit);
 
                 g_string_append (s, "\n");
-                g_string_append (s, _("Bundled libraries\n"));
+                g_string_append (s, _("Bundled libraries"));
+                g_string_append (s, "\n");
 #if ENABLE_AUTOAR
                 g_string_append_printf (s, "\tgnome-autoar\t%s\n", AUTOAR_VERSION);
 #endif
@@ -328,7 +329,8 @@ populate_system_tab (GtkTextView *view)
 #endif
 
                 g_string_append (s, "\n");
-                g_string_append (s, _("Bundled libraries\n"));
+                g_string_append (s, _("Bundled libraries"));
+                g_string_append (s, "\n");
                 g_string_append_printf (s, "\tlibgd\t%s\tLGPLv2\n", LIBGD_INFO);
                 g_string_append_printf (s, "\tlibglnx\t%s\tLGPLv2\n", LIBGLNX_INFO);
        }
