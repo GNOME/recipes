@@ -46,7 +46,6 @@ test_line (const char *line)
                 g_string_append_printf (string, "REST '%s'\n", input);
                 g_string_append_printf (string, "UNIT %s\n", unit);
                 g_string_append_printf (string, "NAME %s\n", gr_unit_get_display_name (unit));
-                g_string_append_printf (string, "PLURAL %s\n", gr_unit_get_plural (unit));
                 g_string_append_printf (string, "ABBREVIATION %s\n", gr_unit_get_abbreviation (unit));
         }
 
