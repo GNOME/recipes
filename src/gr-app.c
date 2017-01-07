@@ -308,7 +308,7 @@ populate_system_tab (GtkTextView *view)
                 g_string_append_printf (s, "\tgspell\t%s\n", GSPELL_VERSION);
 #endif
                 g_string_append_printf (s, "\tlibgd\t%s\tLGPLv2\n", LIBGD_INFO);
-                g_string_append_printf (s, "\tlibglnx\t%s\tLGPLv2\n", LIBGLNX_INFO);
+                g_string_append_printf (s, "\tlibglnx\t%s\tLGPLv2", LIBGLNX_INFO);
         }
         else {
                 g_string_append (s, _("System libraries"));
@@ -332,7 +332,7 @@ populate_system_tab (GtkTextView *view)
                 g_string_append (s, _("Bundled libraries"));
                 g_string_append (s, "\n");
                 g_string_append_printf (s, "\tlibgd\t%s\tLGPLv2\n", LIBGD_INFO);
-                g_string_append_printf (s, "\tlibglnx\t%s\tLGPLv2\n", LIBGLNX_INFO);
+                g_string_append_printf (s, "\tlibglnx\t%s\tLGPLv2", LIBGLNX_INFO);
        }
 
         buffer = gtk_text_view_get_buffer (view);
