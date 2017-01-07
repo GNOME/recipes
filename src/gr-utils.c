@@ -382,3 +382,47 @@ stop_recording (void)
         start_time = 0;
 }
 
+char *
+format_date_time_difference (GDateTime *end,
+                             GDateTime *start)
+{
+        int y1, m1, d1, y2, m2, d2, delta;
+        GTimeSpan span;
+        int i;
+
+        span = g_date_time_difference (end, start);
+        g_date_time_get_ymd (start, &y1, &m1, &d1);
+        g_date_time_get_ymd (end, &y2, &m2, &d2);
+
+        if (y1 + 1 < y2)
+                return g_strdup_printf (_("more than a year ago"));
+        else if (y1 < y2) {
+                delta = 12 - m1 + m2;
+                return g_strdup_printf (ngettext ("%d month ago", "%d months ago", delta), delta);
+        }
+        else if (m1 < m2) {
+                delta = m2 - m1;
+                return g_strdup_printf (ngettext ("%d month ago", "%d months ago", delta), delta);
+        }
+        else if (d1 < d2) {
+                delta = d2 - d1;
+                return g_strdup_printf (ngettext ("%d day ago", "%d days ago", delta), delta);
+        }
+        else if (span < 5 * G_TIME_SPAN_MINUTE)
+                return g_strdup_printf (_("just now"));
+        else if (span < 15 * G_TIME_SPAN_MINUTE)
+                return g_strdup_printf (_("10 minutes ago"));
+        else if (span < 45 * G_TIME_SPAN_MINUTE)
+                return g_strdup_printf (_("half an hour ago"));
+        else {
+                for (i = 1; i < 23; i++) {
+                        if (span < i * G_TIME_SPAN_HOUR + 30 * G_TIME_SPAN_MINUTE) {
+                                return g_strdup_printf (ngettext ("%d hour ago", "%d hours ago", i), i);
+                                break;
+                        }
+                }
+        }
+
+        return _("some time ago");
+}
+
