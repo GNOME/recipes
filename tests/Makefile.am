@@ -15,7 +15,7 @@ check_PROGRAMS = \
 	number \
 	ingredients
 
-ingredients_SOURCES = ingredients.c
+ingredients_SOURCES = ingredients-test.c
 ingredients_CFLAGS = \
 	$(RECIPES_CFLAGS) 	\
 	-DPKGDATADIR=\"$(pkgdatadir)\"  \
