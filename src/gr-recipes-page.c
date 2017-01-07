@@ -42,11 +42,15 @@ struct _GrRecipesPage
         GtkWidget *pick_box;
         GtkWidget *diet_box;
         GtkWidget *chefs_box;
-        GtkWidget *favorites_box;
         GtkWidget *categories_expander_image;
         GtkWidget *diet_more;
         GtkWidget *diet_box2;
         GtkWidget *scrolled_win;
+        GtkWidget *shopping_tile;
+        GtkWidget *shopping_list;
+        GtkWidget *shopping_time;
+
+        guint shopping_timeout;
 };
 
 G_DEFINE_TYPE (GrRecipesPage, gr_recipes_page, GTK_TYPE_BOX)
@@ -84,6 +88,8 @@ set_categories_expanded (GrRecipesPage *page,
                                       expanded ? "pan-up-symbolic" : "pan-down-symbolic", 1);
 }
 
+static gboolean update_shopping_time (gpointer data);
+
 void
 gr_recipes_page_unexpand (GrRecipesPage *page)
 {
@@ -96,6 +102,8 @@ gr_recipes_page_unexpand (GrRecipesPage *page)
         set_categories_expanded (page, FALSE);
 
         gtk_revealer_set_transition_type (GTK_REVEALER (page->diet_more), transition);
+
+        update_shopping_time (page);
 }
 
 static void
@@ -110,7 +118,23 @@ expander_button_clicked (GrRecipesPage *page)
 static void
 recipes_page_finalize (GObject *object)
 {
+        GrRecipesPage *page = GR_RECIPES_PAGE (object);
+
+        if (page->shopping_timeout != 0) {
+                g_source_remove (page->shopping_timeout);
+                page->shopping_timeout = 0;
+        }
+
         G_OBJECT_CLASS (gr_recipes_page_parent_class)->finalize (object);
+}
+
+static void
+shopping_tile_clicked (GrRecipesPage *page)
+{
+        GtkWidget *window;
+
+        window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
+        gr_window_show_shopping (GR_WINDOW (window));
 }
 
 static void
@@ -125,6 +149,8 @@ gr_recipes_page_init (GrRecipesPage *page)
         gr_recipe_tile_recreate_css ();
         gr_chef_tile_recreate_css ();
         connect_store_signals (page);
+
+        page->shopping_timeout = g_timeout_add_seconds (300, update_shopping_time, page);
 }
 
 static void
@@ -145,9 +171,13 @@ gr_recipes_page_class_init (GrRecipesPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrRecipesPage, diet_box2);
         gtk_widget_class_bind_template_child (widget_class, GrRecipesPage, diet_more);
         gtk_widget_class_bind_template_child (widget_class, GrRecipesPage, scrolled_win);
+        gtk_widget_class_bind_template_child (widget_class, GrRecipesPage, shopping_tile);
+        gtk_widget_class_bind_template_child (widget_class, GrRecipesPage, shopping_list);
+        gtk_widget_class_bind_template_child (widget_class, GrRecipesPage, shopping_time);
 
         gtk_widget_class_bind_template_callback (widget_class, show_chef_list);
         gtk_widget_class_bind_template_callback (widget_class, expander_button_clicked);
+        gtk_widget_class_bind_template_callback (widget_class, shopping_tile_clicked);
 }
 
 GtkWidget *
@@ -221,6 +251,33 @@ populate_diets_from_store (GrRecipesPage *self)
         }
 }
 
+static gboolean
+update_shopping_time (gpointer data)
+{
+        GrRecipesPage *self = data;
+        GrRecipeStore *store;
+        GDateTime *change;
+        g_autoptr(GDateTime) now = NULL;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+        now = g_date_time_new_now_utc ();
+        change = gr_recipe_store_last_favorite_change (store);
+        if (change) {
+                g_autofree char *text = NULL;
+                g_autofree char *tmp = NULL;
+
+                text = format_date_time_difference (now, change);
+                tmp = g_strconcat (_("Last edited:"), " ", text, NULL);
+                gtk_label_set_label (GTK_LABEL (self->shopping_time), tmp);
+        }
+        else {
+                gtk_label_set_label (GTK_LABEL (self->shopping_time), "");
+        }
+
+        return G_SOURCE_CONTINUE;
+}
+
 static void
 populate_recipes_from_store (GrRecipesPage *self)
 {
@@ -230,6 +287,11 @@ populate_recipes_from_store (GrRecipesPage *self)
         int i;
         int todays;
         int picks;
+        g_autofree char *shop1 = NULL;
+        g_autofree char *shop2 = NULL;
+        int shopping;
+        char *tmp;
+        g_autoptr(GDateTime) now = NULL;
 
         container_remove_all (GTK_CONTAINER (self->today_box));
         container_remove_all (GTK_CONTAINER (self->pick_box));
@@ -239,6 +301,7 @@ populate_recipes_from_store (GrRecipesPage *self)
         keys = gr_recipe_store_get_recipe_keys (store, &length);
         todays = 0;
         picks = 0;
+        shopping = 0;
         for (i = 0; i < length; i++) {
                 g_autoptr(GrRecipe) recipe = NULL;
                 GtkWidget *tile;
@@ -264,8 +327,28 @@ populate_recipes_from_store (GrRecipesPage *self)
                         picks++;
                 }
 
-
+                if (gr_recipe_store_is_in_shopping (store, recipe)) {
+                        if (shopping == 0)
+                                shop1 = g_markup_escape_text (gr_recipe_get_name (recipe), -1);
+                        else if (shopping == 1)
+                                shop2 = g_markup_escape_text (gr_recipe_get_name (recipe), -1);
+                        shopping++;
+                }
         }
+
+        if (shopping == 1)
+                tmp = g_strdup_printf (_("Shopping list: <b>%s</b>"), shop1);
+        else if (shopping == 2)
+                tmp = g_strdup_printf (_("Shopping list: <b>%s and %s</b>"), shop1, shop2);
+        else
+                tmp = g_strdup_printf (ngettext ("Shopping list: <b>%s, %s and %d other</b>",
+                                                 "Shopping list: <b>%s, %s and %d others</b>", shopping - 2), shop1, shop2, shopping - 2);
+        gtk_label_set_label (GTK_LABEL (self->shopping_list), tmp);
+        g_free (tmp);
+
+        gtk_widget_set_visible (self->shopping_tile, shopping > 0);
+
+        update_shopping_time (self);
 }
 
 static void

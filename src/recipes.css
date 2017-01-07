@@ -64,6 +64,25 @@ label.chef.name {
   border-radius: 0;
 }
 
+.favorites.view.tile {
+  background: @theme_selected_bg_color;
+  border: 1px solid @selected_borders;
+  box-shadow: none;
+}
+
+.favorites.view.tile:backdrop {
+  background: @theme_unfocused_selected_bg_color;
+  border: 1px solid @selected_borders;
+}
+
+.favorites.view.tile label {
+  color: @theme_selected_fg_color;
+}
+
+.favorites.view.tile label:backdrop {
+  color: @theme_unfocused_selected_fg_color;
+}
+
 .recipe.view.tile {
   color: mix(@theme_base_color,@theme_fg_color,0.1);
   background-image: -gtk-recolor(url('resource:///org/gnome/Recipes/org.gnome.Recipes-symbolic.symbolic.png'));
