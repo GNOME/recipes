@@ -76,8 +76,8 @@ add_recipe_css (GrRecipe *recipe,
 
                 g_string_append_printf (css, "box.recipe.%s {\n", id);
                 g_string_append_printf (css, "  background: url('%s');\n"
-                                             "  background-size: 100%%;\n"
-                                             "  background-repeat: no-repeat;\n", ri->path);
+                                             "  background-size: cover;\n"
+                                             "  background-position: center;\n", ri->path);
                 g_string_append (css, "}\n\n");
         }
 }
