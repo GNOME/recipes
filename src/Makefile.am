@@ -1,8 +1,8 @@
 bin_PROGRAMS = recipes
 
 commitid := $(shell $(GIT) describe)
-libgd_info = $(shell cat $(top_builddir)/libgd.info)
-libglnx_info = $(shell cat $(top_builddir)/libglnx.info)
+libgd_info = $(shell cat $(top_srcdir)/libgd.info)
+libglnx_info = $(shell cat $(top_srcdir)/libglnx.info)
 
 recipes_CFLAGS = \
 	$(WARN_CFLAGS) 			\
@@ -16,7 +16,9 @@ recipes_CFLAGS = \
 	-DLIBGLNX_INFO=\"$(libglnx_info)\"	\
 	-DMICRO_VERSION=$(MICRO_VERSION) \
 	-I "$(top_srcdir)/libgd"	\
-	-I "$(top_srcdir)/libglnx"
+	-I "$(top_srcdir)/libglnx"	\
+	-I "$(top_srcdir)/src"		\
+	-I "$(top_builddir)/src"
 
 recipes_LDADD = $(RECIPES_LIBS)			\
 		-lm				\
@@ -128,14 +130,16 @@ BUILT_SOURCES = \
 	gr-shell-search-provider-dbus.h \
 	gr-shell-search-provider-dbus.c
 
+DISTCLEANFILES = \
+	ingredients.c		\
+	no-ingredients.c	\
+	segments.c
+
 MAINTAINERCLEANFILES = \
 	resources-ui.c		\
 	resources-images.c	\
 	types.h			\
 	types.c			\
-	ingredients.c		\
-	no-ingredients.c	\
-	segments.c		\
 	gr-shell-search-provider-dbus.h \
 	gr-shell-search-provider-dbus.c
 

@@ -19,7 +19,9 @@ ingredients_SOURCES = ingredients-test.c
 ingredients_CFLAGS = \
 	$(RECIPES_CFLAGS) 	\
 	-DPKGDATADIR=\"$(pkgdatadir)\"  \
-	-I$(top_srcdir)/src
+	-I$(top_srcdir)/src 	\
+	-I$(top_builddir)/src
+
 ingredients_LDADD = $(RECIPES_LIBS)
 
 number_SOURCES = number.c
