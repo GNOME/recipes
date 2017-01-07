@@ -44,6 +44,7 @@ void gr_utils_widget_set_css_simple (GtkWidget  *widget,
 
 char      * date_time_to_string   (GDateTime *dt);
 GDateTime * date_time_from_string (const char *string);
+char      * format_date_time_difference (GDateTime *end, GDateTime *start);
 
 gboolean skip_whitespace (char **input);
 gboolean space_or_nul    (char p);
