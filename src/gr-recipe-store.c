@@ -46,6 +46,8 @@ struct _GrRecipeStore
         char **favorites;
         char **featured_chefs;
         char *user;
+
+        GDateTime *favorite_change;
 };
 
 
@@ -575,6 +577,7 @@ load_favorites (GrRecipeStore *self,
         g_autofree char *path = NULL;
         g_autoptr(GKeyFile) keyfile = NULL;
         g_autoptr(GError) error = NULL;
+        g_autofree char *tmp = NULL;
 
         keyfile = g_key_file_new ();
 
@@ -597,6 +600,16 @@ load_favorites (GrRecipeStore *self,
                 }
                 g_clear_error (&error);
         }
+
+        tmp = g_key_file_get_string (keyfile, "Content", "LastChange", &error);
+        if (error) {
+                if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
+                        g_warning ("Failed to load favorites: %s", error->message);
+                }
+                g_clear_error (&error);
+        }
+
+        self->favorite_change = date_time_from_string (tmp);
 }
 
 static void
@@ -613,6 +626,13 @@ save_favorites (GrRecipeStore *self)
         g_message ("Save favorites db: %s", path);
 
         g_key_file_set_string_list (keyfile, "Content", "Favorites", (const char * const *)self->favorites, g_strv_length (self->favorites));
+
+        if (self->favorite_change) {
+                g_autofree char *tmp = NULL;
+
+                tmp = date_time_to_string (self->favorite_change);
+                g_key_file_set_string (keyfile, "Content", "LastChange", tmp);
+        }
 
         if (!g_key_file_save_to_file (keyfile, path, &error)) {
                 g_error ("Failed to save recipe database: %s", error->message);
@@ -1287,6 +1307,10 @@ gr_recipe_store_add_favorite (GrRecipeStore *self,
         g_free (self->favorites);
         self->favorites = strv;
 
+        if (self->favorite_change)
+                g_date_time_unref (self->favorite_change);
+        self->favorite_change = g_date_time_new_now_utc ();
+
         save_favorites (self);
 
         g_signal_emit (self, changed_signal, 0, recipe);
@@ -1310,6 +1334,11 @@ gr_recipe_store_remove_favorite (GrRecipeStore *self,
                         break;
                 }
         }
+
+        if (self->favorite_change)
+                g_date_time_unref (self->favorite_change);
+        self->favorite_change = g_date_time_new_now_utc ();
+
         save_favorites (self);
 
         g_signal_emit (self, changed_signal, 0, recipe);
@@ -1327,6 +1356,12 @@ gr_recipe_store_is_favorite (GrRecipeStore *self,
         id = gr_recipe_get_id (recipe);
 
         return g_strv_contains ((const char *const*)self->favorites, id);
+}
+
+GDateTime *
+gr_recipe_store_last_favorite_change (GrRecipeStore *self)
+{
+        return self->favorite_change;
 }
 
 gboolean
