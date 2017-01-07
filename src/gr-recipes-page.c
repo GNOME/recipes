@@ -42,11 +42,13 @@ struct _GrRecipesPage
         GtkWidget *pick_box;
         GtkWidget *diet_box;
         GtkWidget *chefs_box;
-        GtkWidget *favorites_box;
         GtkWidget *categories_expander_image;
         GtkWidget *diet_more;
         GtkWidget *diet_box2;
         GtkWidget *scrolled_win;
+        GtkWidget *favorites_tile;
+        GtkWidget *favorites_list;
+        GtkWidget *favorites_time;
 };
 
 G_DEFINE_TYPE (GrRecipesPage, gr_recipes_page, GTK_TYPE_BOX)
@@ -114,6 +116,15 @@ recipes_page_finalize (GObject *object)
 }
 
 static void
+favorites_tile_clicked (GrRecipesPage *page)
+{
+        GtkWidget *window;
+
+        window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
+        gr_window_show_favorites (GR_WINDOW (window));
+}
+
+static void
 gr_recipes_page_init (GrRecipesPage *page)
 {
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
@@ -145,9 +156,13 @@ gr_recipes_page_class_init (GrRecipesPageClass *klass)
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, diet_box2);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, diet_more);
         gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, scrolled_win);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, favorites_tile);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, favorites_list);
+        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, favorites_time);
 
         gtk_widget_class_bind_template_callback (widget_class, show_chef_list);
         gtk_widget_class_bind_template_callback (widget_class, expander_button_clicked);
+        gtk_widget_class_bind_template_callback (widget_class, favorites_tile_clicked);
 }
 
 GtkWidget *
@@ -230,6 +245,12 @@ populate_recipes_from_store (GrRecipesPage *self)
         int i;
         int todays;
         int picks;
+        g_autofree char *fav1 = NULL;
+        g_autofree char *fav2 = NULL;
+        int favorites;
+        char *tmp;
+        GDateTime *change;
+        g_autoptr(GDateTime) now = NULL;
 
         container_remove_all (GTK_CONTAINER (self->today_box));
         container_remove_all (GTK_CONTAINER (self->pick_box));
@@ -239,6 +260,7 @@ populate_recipes_from_store (GrRecipesPage *self)
         keys = gr_recipe_store_get_recipe_keys (store, &length);
         todays = 0;
         picks = 0;
+        favorites = 0;
         for (i = 0; i < length; i++) {
                 g_autoptr(GrRecipe) recipe = NULL;
                 GtkWidget *tile;
@@ -264,8 +286,32 @@ populate_recipes_from_store (GrRecipesPage *self)
                         picks++;
                 }
 
-
+                if (gr_recipe_store_is_favorite (store, recipe)) {
+                        if (favorites == 0)
+                                fav1 = g_markup_escape_text (gr_recipe_get_name (recipe), -1);
+                        else if (favorites == 1)
+                                fav2 = g_markup_escape_text (gr_recipe_get_name (recipe), -1);
+                        favorites++;
+                }
         }
+
+        if (favorites == 1)
+                tmp = g_strdup_printf (_("Cook later: <b>%s</b>"), fav1);
+        else if (favorites == 2)
+                tmp = g_strdup_printf (_("Cook later: <b>%s and %s</b>"), fav1, fav2);
+        else
+                tmp = g_strdup_printf (ngettext ("Cook later: <b>%s, %s and %d other</b>",
+                                                 "Cook later: <b>%s, %s and %d others</b>", favorites - 2), fav1, fav2, favorites - 2);
+        gtk_label_set_label (GTK_LABEL (self->favorites_list), tmp);
+        g_free (tmp);
+
+        now = g_date_time_new_now_utc ();
+        change = gr_recipe_store_last_favorite_change (store);
+        tmp = format_date_time_difference (now, change);
+        gtk_label_set_label (GTK_LABEL (self->favorites_time), tmp);
+        g_free (tmp);
+
+        gtk_widget_set_visible (self->favorites_tile, favorites > 0);
 }
 
 static void
