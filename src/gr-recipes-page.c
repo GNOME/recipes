@@ -219,11 +219,6 @@ populate_diets_from_store (GrRecipesPage *self)
         gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
         g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);
 
-        tile = gr_category_tile_new_with_label ("favorites", _("Favorites"));
-        gtk_widget_show (tile);
-        gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
-        g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);
-
         for (i = 0; i < G_N_ELEMENTS (diets); i++) {
                 tile = gr_category_tile_new (diets[i]);
                 gtk_widget_show (tile);
