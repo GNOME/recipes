@@ -51,6 +51,7 @@ void            gr_window_show_favorites             (GrWindow   *window);
 void            gr_window_show_list                  (GrWindow   *window,
                                                       const char *title,
                                                       GList      *recipes);
+void            gr_window_show_shopping              (GrWindow   *window);
 void            gr_window_show_cuisine               (GrWindow   *window,
                                                       const char *cuisine,
                                                       const char *title);
