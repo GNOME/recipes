@@ -579,6 +579,7 @@ load_favorites (GrRecipeStore *self,
         g_autoptr(GKeyFile) keyfile = NULL;
         g_autoptr(GError) error = NULL;
         g_autofree char *tmp = NULL;
+        const char *key;
 
         keyfile = g_key_file_new ();
 
@@ -594,7 +595,12 @@ load_favorites (GrRecipeStore *self,
 
         g_message ("Load favorites db: %s", path);
 
-        self->favorites = g_key_file_get_string_list (keyfile, "Content", "Favorites", NULL, &error);
+        if (g_key_file_has_key (keyfile, "Content", "Recipes", NULL))
+                key = "Recipes";
+        else
+                key = "Favorites";
+
+        self->favorites = g_key_file_get_string_list (keyfile, "Content", key, NULL, &error);
         if (error) {
                 if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
                         g_warning ("Failed to load favorites: %s", error->message);
@@ -626,7 +632,7 @@ save_favorites (GrRecipeStore *self)
 
         g_message ("Save favorites db: %s", path);
 
-        g_key_file_set_string_list (keyfile, "Content", "Favorites", (const char * const *)self->favorites, g_strv_length (self->favorites));
+        g_key_file_set_string_list (keyfile, "Content", "Recipes", (const char * const *)self->favorites, g_strv_length (self->favorites));
 
         if (self->favorite_change) {
                 g_autofree char *tmp = NULL;
