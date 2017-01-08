@@ -377,7 +377,7 @@ gr_list_page_populate_from_favorites (GrListPage *self)
 
         container_remove_all (GTK_CONTAINER (self->flow_box));
         gtk_label_set_label (GTK_LABEL (self->empty_title), _("No favorite recipes found"));
-        gtk_label_set_label (GTK_LABEL (self->empty_subtitle), _("Use the “Cook later” button to mark recipes as favorites."));
+        gtk_label_set_label (GTK_LABEL (self->empty_subtitle), _("Use the ♥ button to mark recipes as favorites."));
 
         gr_recipe_search_stop (self->search);
         gtk_stack_set_visible_child_name (GTK_STACK (self->list_stack), "list");
