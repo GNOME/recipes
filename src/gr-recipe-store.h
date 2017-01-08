@@ -71,6 +71,13 @@ void            gr_recipe_store_remove_favorite     (GrRecipeStore  *self,
 gboolean        gr_recipe_store_is_favorite         (GrRecipeStore  *self,
                                                      GrRecipe       *recipe);
 GDateTime      *gr_recipe_store_last_favorite_change (GrRecipeStore *self);
+void            gr_recipe_store_add_to_shopping      (GrRecipeStore  *self,
+                                                      GrRecipe       *recipe);
+void            gr_recipe_store_remove_from_shopping (GrRecipeStore  *self,
+                                                      GrRecipe       *recipe);
+gboolean        gr_recipe_store_is_in_shopping       (GrRecipeStore  *self,
+                                                      GrRecipe       *recipe);
+GDateTime      *gr_recipe_store_last_shopping_change (GrRecipeStore *self);
 gboolean        gr_recipe_store_has_diet            (GrRecipeStore  *self,
                                                      GrDiets         diet);
 gboolean        gr_recipe_store_has_chef            (GrRecipeStore  *self,
