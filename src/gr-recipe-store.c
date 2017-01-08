@@ -1686,6 +1686,8 @@ recipe_matches (GrRecipeSearch *search,
 {
         if (strcmp (search->query[0], "is:favorite") == 0)
                 return gr_recipe_store_is_favorite (search->store, recipe);
+        else if (strcmp (search->query[0], "is:shopping") == 0)
+                return gr_recipe_store_is_in_shopping (search->store, recipe);
         else
                 return gr_recipe_matches (recipe, (const char **)search->query);
 }
