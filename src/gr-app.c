@@ -21,6 +21,7 @@
 #include "config.h"
 
 #include <glib/gi18n.h>
+#include <glib/gprintf.h>
 #include <gtk/gtk.h>
 #include <json-glib/json-glib.h>
 
@@ -267,21 +268,70 @@ error:
 }
 
 static void
+text_buffer_append (GtkTextBuffer *buffer,
+                    const char    *text)
+{
+        GtkTextIter iter;
+
+        gtk_text_buffer_get_end_iter (buffer, &iter);
+        gtk_text_buffer_insert (buffer, &iter, text, -1);
+}
+
+static void
+text_buffer_append_printf (GtkTextBuffer *buffer,
+                           const char    *format,
+                           ...)
+{
+        va_list args;
+        char *buf;
+        int len;
+
+        va_start (args, format);
+
+        len = g_vasprintf (&buf, format, args);
+        if (len >= 0) {
+                text_buffer_append (buffer, buf);
+                g_free (buf);
+        }
+
+        va_end (args);
+}
+
+static void
+text_buffer_append_link (GtkTextBuffer *buffer,
+                         const char    *name,
+                         const char    *uri)
+{
+        GdkRGBA color;
+        GtkTextTag *tag;
+        GtkTextIter iter;
+
+        gdk_rgba_parse (&color, "blue");
+
+        tag = gtk_text_buffer_create_tag (buffer, NULL,
+                                          "foreground-rgba", &color,
+                                          "underline", PANGO_UNDERLINE_SINGLE,
+                                          NULL);
+        g_object_set_data_full (G_OBJECT (tag), "uri", g_strdup (uri), g_free);
+        gtk_text_buffer_get_end_iter (buffer, &iter);
+        gtk_text_buffer_insert_with_tags (buffer, &iter, name, -1, tag, NULL);
+}
+
+static void
 populate_system_tab (GtkTextView *view)
 {
         GtkTextBuffer *buffer;
-        g_autoptr(GString) s = NULL;
         PangoTabArray *tabs;
         GtkTextIter start, end;
 
         tabs = pango_tab_array_new (3, TRUE);
         pango_tab_array_set_tab (tabs, 0, PANGO_TAB_LEFT, 20);
         pango_tab_array_set_tab (tabs, 1, PANGO_TAB_LEFT, 150);
-        pango_tab_array_set_tab (tabs, 2, PANGO_TAB_LEFT, 200);
+        pango_tab_array_set_tab (tabs, 2, PANGO_TAB_LEFT, 230);
         gtk_text_view_set_tabs (view, tabs);
         pango_tab_array_free (tabs);
 
-        s = g_string_new ("");
+        buffer = gtk_text_view_get_buffer (view);
 
         if (in_flatpak_sandbox ()) {
                 g_autofree char *id = NULL;
@@ -291,55 +341,212 @@ populate_system_tab (GtkTextView *view)
 
                 get_flatpak_runtime_information (&id, &branch, &version, &commit);
 
-                g_string_append (s, _("Runtime"));
-                g_string_append (s, "\n");
-                g_string_append_printf (s, "\t%s\t%s\n", C_("Runtime metadata", "ID"), id);
-                g_string_append_printf (s, "\t%s\t%s\n", C_("Runtime metadata", "Version"), version);
-                g_string_append_printf (s, "\t%s\t%s\n", C_("Runtime metadata", "Branch"), branch);
-                g_string_append_printf (s, "\t%s\t%s\n", C_("Runtime metadata", "Commit"), commit);
+                text_buffer_append (buffer, _("Runtime"));
+                text_buffer_append (buffer, "\n");
+                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("Runtime metadata", "ID"), id);
+                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("Runtime metadata", "Version"), version);
+                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("Runtime metadata", "Branch"), branch);
+                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("Runtime metadata", "Commit"), commit);
 
-                g_string_append (s, "\n");
-                g_string_append (s, _("Bundled libraries"));
-                g_string_append (s, "\n");
+                text_buffer_append (buffer, "\n");
+                text_buffer_append (buffer, _("Bundled libraries"));
+                text_buffer_append (buffer, "\n");
+
 #if ENABLE_AUTOAR
-                g_string_append_printf (s, "\tgnome-autoar\t%s\n", AUTOAR_VERSION);
+                text_buffer_append_printf (buffer, "\tgnome-autoar\t%s\t", AUTOAR_VERSION);
+                text_buffer_append_link (buffer, "LGPLv2", "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
+                text_buffer_append (buffer, "\n");
 #endif
 #if ENABLE_GSPELL
-                g_string_append_printf (s, "\tgspell\t%s\n", GSPELL_VERSION);
+                text_buffer_append_printf (buffer, "\tgspell\t%s\t", GSPELL_VERSION);
+                text_buffer_append_link (buffer, "LGPLv2", "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
+                text_buffer_append (buffer, "\n");
 #endif
-                g_string_append_printf (s, "\tlibgd\t%s\tLGPLv2\n", LIBGD_INFO);
-                g_string_append_printf (s, "\tlibglnx\t%s\tLGPLv2", LIBGLNX_INFO);
+                text_buffer_append_printf (buffer, "\tlibgd\t%s\t", LIBGD_INFO);
+                text_buffer_append_link (buffer, "LGPLv2", "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
+                text_buffer_append (buffer, "\n");
+                text_buffer_append_printf (buffer, "\tlibglnx\t%s\t", LIBGLNX_INFO);
+                text_buffer_append_link (buffer, "LGPLv2", "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
+                text_buffer_append (buffer, "\n");
         }
         else {
-                g_string_append (s, _("System libraries"));
-                g_string_append (s, "\n");
-                g_string_append_printf (s, "\tGLib\t%d.%d.%d\n",
-                                        glib_major_version,
-                                        glib_minor_version,
-                                        glib_micro_version);
-                g_string_append_printf (s, "\tGTK+\t%d.%d.%d\n",
-                                        gtk_get_major_version (),
-                                        gtk_get_minor_version (),
-                                        gtk_get_micro_version ());
+                text_buffer_append (buffer, _("System libraries"));
+                text_buffer_append (buffer, "\n");
+                text_buffer_append_printf (buffer, "\tGLib\t%d.%d.%d\n",
+                                           glib_major_version,
+                                           glib_minor_version,
+                                           glib_micro_version);
+                text_buffer_append_printf (buffer, "\tGTK+\t%d.%d.%d\n",
+                                           gtk_get_major_version (),
+                                           gtk_get_minor_version (),
+                                           gtk_get_micro_version ());
 #if ENABLE_AUTOAR
-                g_string_append_printf (s, "\tgnome-autoar\t%s\n", AUTOAR_VERSION);
+                text_buffer_append_printf (buffer, "\tgnome-autoar\t%s\n", AUTOAR_VERSION);
 #endif
 #if ENABLE_GSPELL
-                g_string_append_printf (s, "\tgspell\t%s\n", GSPELL_VERSION);
+                text_buffer_append_printf (buffer, "\tgspell\t%s\n", GSPELL_VERSION);
 #endif
 
-                g_string_append (s, "\n");
-                g_string_append (s, _("Bundled libraries"));
-                g_string_append (s, "\n");
-                g_string_append_printf (s, "\tlibgd\t%s\tLGPLv2\n", LIBGD_INFO);
-                g_string_append_printf (s, "\tlibglnx\t%s\tLGPLv2", LIBGLNX_INFO);
+                text_buffer_append (buffer, "\n");
+                text_buffer_append (buffer, _("Bundled libraries"));
+                text_buffer_append (buffer, "\n");
+
+                text_buffer_append_printf (buffer, "\tlibgd\t%s\t", LIBGD_INFO);
+                text_buffer_append_link (buffer, "LGPLv2", "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
+                text_buffer_append (buffer, "\n");
+                text_buffer_append_printf (buffer, "\tlibglnx\t%s\t", LIBGLNX_INFO);
+                text_buffer_append_link (buffer, "LGPLv2", "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
        }
 
-        buffer = gtk_text_view_get_buffer (view);
-        gtk_text_buffer_set_text (buffer, s->str, s->len);
         gtk_text_buffer_create_tag (buffer, "smaller", "scale", PANGO_SCALE_SMALL, NULL);
         gtk_text_buffer_get_bounds (buffer, &start, &end);
         gtk_text_buffer_apply_tag_by_name (buffer, "smaller", &start, &end);
+}
+
+static void
+follow_if_link (GtkAboutDialog *about,
+                GtkTextView    *text_view,
+                GtkTextIter    *iter)
+{
+  GSList *tags = NULL, *tagp = NULL;
+  gchar *uri = NULL;
+
+  tags = gtk_text_iter_get_tags (iter);
+  for (tagp = tags; tagp != NULL && !uri; tagp = tagp->next)
+    {
+      GtkTextTag *tag = tagp->data;
+
+      uri = g_object_get_data (G_OBJECT (tag), "uri");
+      if (uri)
+        gtk_show_uri_on_window (GTK_WINDOW (about), uri, GDK_CURRENT_TIME, NULL);
+    }
+
+  g_slist_free (tags);
+}
+
+static gboolean
+text_view_key_press_event (GtkWidget      *text_view,
+                           GdkEventKey    *event,
+                           GtkAboutDialog *about)
+{
+  GtkTextIter iter;
+  GtkTextBuffer *buffer;
+
+  switch (event->keyval)
+    {
+      case GDK_KEY_Return:
+      case GDK_KEY_ISO_Enter:
+      case GDK_KEY_KP_Enter:
+        buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (text_view));
+        gtk_text_buffer_get_iter_at_mark (buffer, &iter,
+                                          gtk_text_buffer_get_insert (buffer));
+        follow_if_link (about, GTK_TEXT_VIEW (text_view), &iter);
+        break;
+
+      default:
+        break;
+    }
+
+  return FALSE;
+}
+
+static gboolean
+text_view_event_after (GtkWidget      *text_view,
+                       GdkEvent       *event,
+                       GtkAboutDialog *about)
+{
+  GtkTextIter start, end, iter;
+  GtkTextBuffer *buffer;
+  GdkEventButton *button_event;
+  gint x, y;
+
+  if (event->type != GDK_BUTTON_RELEASE)
+    return FALSE;
+
+  button_event = (GdkEventButton *)event;
+
+  if (button_event->button != GDK_BUTTON_PRIMARY)
+    return FALSE;
+
+  buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (text_view));
+
+  /* we shouldn't follow a link if the user has selected something */
+  gtk_text_buffer_get_selection_bounds (buffer, &start, &end);
+  if (gtk_text_iter_get_offset (&start) != gtk_text_iter_get_offset (&end))
+    return FALSE;
+
+  gtk_text_view_window_to_buffer_coords (GTK_TEXT_VIEW (text_view),
+                                         GTK_TEXT_WINDOW_WIDGET,
+                                         button_event->x, button_event->y, &x, &y);
+
+  gtk_text_view_get_iter_at_location (GTK_TEXT_VIEW (text_view), &iter, x, y);
+
+  follow_if_link (about, GTK_TEXT_VIEW (text_view), &iter);
+
+  return FALSE;
+}
+
+static void
+set_cursor_if_appropriate (GtkAboutDialog *about,
+                           GtkTextView    *text_view,
+                           GdkDevice      *device,
+                           gint            x,
+                           gint            y)
+{
+  GSList *tags = NULL, *tagp = NULL;
+  GtkTextIter iter;
+  gboolean hovering_over_link = FALSE;
+  gboolean was_hovering = FALSE;
+
+  gtk_text_view_get_iter_at_location (text_view, &iter, x, y);
+
+  tags = gtk_text_iter_get_tags (&iter);
+  for (tagp = tags;  tagp != NULL;  tagp = tagp->next)
+    {
+      GtkTextTag *tag = tagp->data;
+      gchar *uri = g_object_get_data (G_OBJECT (tag), "uri");
+
+      if (uri != NULL)
+        {
+          hovering_over_link = TRUE;
+          break;
+        }
+    }
+
+  was_hovering = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (about), "hovering-over-link"));
+  if (hovering_over_link != was_hovering)
+    {
+      GdkCursor *cursor;
+
+      g_object_set_data (G_OBJECT (about), "hovering-over-link", GINT_TO_POINTER (hovering_over_link));
+
+      if (hovering_over_link)
+        cursor = GDK_CURSOR (g_object_get_data (G_OBJECT (about), "pointer-cursor"));
+      else
+        cursor = GDK_CURSOR (g_object_get_data (G_OBJECT (about), "text-cursor"));
+
+      gdk_window_set_device_cursor (gtk_text_view_get_window (text_view, GTK_TEXT_WINDOW_TEXT), device, cursor);
+    }
+
+  g_slist_free (tags);
+}
+
+static gboolean
+text_view_motion_notify_event (GtkWidget      *text_view,
+                               GdkEventMotion *event,
+                               GtkAboutDialog *about)
+{
+  gint x, y;
+
+  gtk_text_view_window_to_buffer_coords (GTK_TEXT_VIEW (text_view),
+                                         GTK_TEXT_WINDOW_WIDGET,
+                                         event->x, event->y, &x, &y);
+
+  set_cursor_if_appropriate (about, GTK_TEXT_VIEW (text_view), event->device, x, y);
+
+  gdk_event_request_motions (event);
+
+  return FALSE;
 }
 
 static void
@@ -350,6 +557,7 @@ add_system_tab (GtkAboutDialog *about)
         GtkWidget *stack;
         GtkWidget *sw;
         GtkWidget *view;
+        GdkCursor *cursor;
 
         content = gtk_dialog_get_content_area (GTK_DIALOG (about));
         box = find_child_with_name (content, "box");
@@ -368,6 +576,16 @@ add_system_tab (GtkAboutDialog *about)
         gtk_text_view_set_right_margin (GTK_TEXT_VIEW (view), 10);
         gtk_text_view_set_top_margin (GTK_TEXT_VIEW (view), 10);
         gtk_text_view_set_bottom_margin (GTK_TEXT_VIEW (view), 10);
+
+        cursor = gdk_cursor_new_from_name (gdk_display_get_default (), "pointer");
+        g_object_set_data_full (G_OBJECT (about), "pointer-cursor", cursor, g_object_unref);
+
+        cursor = gdk_cursor_new_from_name (gdk_display_get_default (), "text");
+        g_object_set_data_full (G_OBJECT (about), "text-cursor", cursor, g_object_unref);
+
+        g_signal_connect (view, "event-after", G_CALLBACK (text_view_event_after), about);
+        g_signal_connect (view, "key-press-event", G_CALLBACK (text_view_key_press_event), about);
+        g_signal_connect (view, "motion-notify-event", G_CALLBACK (text_view_motion_notify_event), about);
         gtk_widget_show (view);
         gtk_container_add (GTK_CONTAINER (sw), view);
 
