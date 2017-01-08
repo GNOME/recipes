@@ -455,11 +455,36 @@ followed</property>
           </object>
         </child>
         <child>
+          <object class="GtkToggleButton" id="shop_button">
+            <property name="visible">1</property>
+            <property name="tooltip-text" translatable="yes">Shopping list</property>
+            <style> <class name="image-button"/> </style>
+            <signal name="toggled" handler="shop_it" swapped="yes"/>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">1</property>
+                <property name="icon-name">shoppingcart</property>
+                <property name="icon-size">1</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack-type">end</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkToggleButton" id="favorite_button">
             <property name="visible">1</property>
-            <property name="use-underline">1</property>
-            <property name="label" translatable="yes">_Cook it later</property>
+            <property name="tooltip-text" translatable="yes">Favorites</property>
+            <style> <class name="image-button"/> </style>
             <signal name="toggled" handler="cook_it_later" swapped="yes"/>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">1</property>
+                <property name="icon-name">emblem-favorite-symbolic</property>
+                <property name="icon-size">1</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="pack-type">end</property>
@@ -467,9 +492,16 @@ followed</property>
         </child>
         <child>
           <object class="GtkButton" id="export_button">
-            <property name="use-underline">1</property>
-            <property name="label" translatable="yes">_Export</property>
+            <property name="tooltip-text" translatable="yes">Export</property>
             <signal name="clicked" handler="export_recipe" swapped="yes"/>
+            <style> <class name="image-button"/> </style>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">1</property>
+                <property name="icon-name">emblem-shared-symbolic</property>
+                <property name="icon-size">1</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="pack-type">end</property>
@@ -478,9 +510,16 @@ followed</property>
         <child>
           <object class="GtkButton">
             <property name="visible">1</property>
-            <property name="use-underline">1</property>
-            <property name="label" translatable="yes">_Print</property>
+            <property name="tooltip-text" translatable="yes">Print</property>
             <signal name="clicked" handler="print_recipe" swapped="yes"/>
+            <style> <class name="image-button"/> </style>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">1</property>
+                <property name="icon-name">printer-symbolic</property>
+                <property name="icon-size">1</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="pack-type">end</property>

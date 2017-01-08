@@ -512,6 +512,18 @@ cook_it_later (GrDetailsPage *page)
 }
 
 static void
+shop_it (GrDetailsPage *page)
+{
+        GrRecipeStore *store;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->favorite_button)))
+                gr_recipe_store_add_to_shopping (store, page->recipe);
+        else
+                gr_recipe_store_remove_from_shopping (store, page->recipe);
+}
+
+static void
 details_page_finalize (GObject *object)
 {
         GrDetailsPage *self = GR_DETAILS_PAGE (object);
@@ -752,6 +764,7 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, time_spin_output);
         gtk_widget_class_bind_template_callback (widget_class, check_clicked);
         gtk_widget_class_bind_template_callback (widget_class, cook_it_later);
+        gtk_widget_class_bind_template_callback (widget_class, shop_it);
         gtk_widget_class_bind_template_callback (widget_class, activate_link);
         gtk_widget_class_bind_template_callback (widget_class, dismiss_error);
 }
