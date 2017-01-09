@@ -49,13 +49,28 @@ struct _GrRecipeImporter
         GFile *output;
         char *dir;
 
+        GKeyFile *chefs_keyfile;
+        char **chef_ids;
+        int current_chef;
+
+        GHashTable *chef_id_map;
         char *chef_id;
         char *chef_name;
         char *chef_fullname;
         char *chef_description;
         char *chef_image_path;
 
+        GtkWidget *new_chef_name;
+        GtkWidget *new_chef_fullname;
+        GtkWidget *new_chef_description;
+
+        GKeyFile *recipes_keyfile;
+        char **recipe_ids;
+        int current_recipe;
+
+        char *recipe_id;
         char *recipe_name;
+        char *recipe_author;
         char *recipe_description;
         char *recipe_cuisine;
         char *recipe_season;
@@ -73,9 +88,7 @@ struct _GrRecipeImporter
         GDateTime *recipe_ctime;
         GDateTime *recipe_mtime;
 
-        GtkWidget *new_chef_name;
-        GtkWidget *new_chef_fullname;
-        GtkWidget *new_chef_description;
+        GList *recipes;
 };
 
 G_DEFINE_TYPE (GrRecipeImporter, gr_recipe_importer, G_TYPE_OBJECT)
@@ -90,13 +103,23 @@ gr_recipe_importer_finalize (GObject *object)
 #endif
         g_clear_object (&importer->output);
         g_free (importer->dir);
+
+        g_clear_pointer (&importer->chefs_keyfile, g_key_file_unref);
+        g_clear_pointer (&importer->chef_ids, g_strfreev);
+
+        g_clear_pointer (&importer->chef_id_map, g_hash_table_unref);
         g_free (importer->chef_id);
         g_free (importer->chef_name);
         g_free (importer->chef_fullname);
         g_free (importer->chef_description);
         g_free (importer->chef_image_path);
 
+        g_clear_pointer (&importer->recipes_keyfile, g_key_file_unref);
+        g_clear_pointer (&importer->recipe_ids, g_strfreev);
+
+        g_free (importer->recipe_id);
         g_free (importer->recipe_name);
+        g_free (importer->recipe_author);
         g_free (importer->recipe_description);
         g_free (importer->recipe_cuisine);
         g_free (importer->recipe_season);
@@ -111,6 +134,7 @@ gr_recipe_importer_finalize (GObject *object)
         g_free (importer->recipe_dark);
         g_clear_pointer (&importer->recipe_ctime, g_date_time_unref);
         g_clear_pointer (&importer->recipe_mtime, g_date_time_unref);
+        g_list_free_full (importer->recipes, g_object_unref);
 
         G_OBJECT_CLASS (gr_recipe_importer_parent_class)->finalize (object);
 }
@@ -130,12 +154,16 @@ gr_recipe_importer_class_init (GrRecipeImporterClass *klass)
                                     0,
                                     NULL, NULL,
                                     NULL,
-                                    G_TYPE_NONE, 1, GR_TYPE_RECIPE);
+                                    G_TYPE_NONE, 1, G_TYPE_POINTER);
 }
 
 static void
 gr_recipe_importer_init (GrRecipeImporter *self)
 {
+        self->current_chef = -1;
+        self->current_recipe = -1;
+
+        self->chef_id_map = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_free);
 }
 
 GrRecipeImporter *
@@ -163,13 +191,23 @@ cleanup_import (GrRecipeImporter *importer)
 
         g_clear_pointer (&importer->dir, g_free);
         g_clear_object (&importer->output);
+
+        g_clear_pointer (&importer->chefs_keyfile, g_key_file_unref);
+        g_clear_pointer (&importer->chef_ids, g_strfreev);
+
+        g_clear_pointer (&importer->chef_id_map, g_hash_table_unref);
         g_clear_pointer (&importer->chef_id, g_free);
         g_clear_pointer (&importer->chef_name, g_free);
         g_clear_pointer (&importer->chef_fullname, g_free);
         g_clear_pointer (&importer->chef_description, g_free);
         g_clear_pointer (&importer->chef_image_path, g_free);
 
+        g_clear_pointer (&importer->recipes_keyfile, g_key_file_unref);
+        g_clear_pointer (&importer->recipe_ids, g_strfreev);
+
+        g_clear_pointer (&importer->recipe_id, g_free);
         g_clear_pointer (&importer->recipe_name, g_free);
+        g_clear_pointer (&importer->recipe_author, g_free);
         g_clear_pointer (&importer->recipe_description, g_free);
         g_clear_pointer (&importer->recipe_cuisine, g_free);
         g_clear_pointer (&importer->recipe_season, g_free);
@@ -184,6 +222,9 @@ cleanup_import (GrRecipeImporter *importer)
         g_clear_pointer (&importer->recipe_dark, g_free);
         g_clear_pointer (&importer->recipe_ctime, g_date_time_unref);
         g_clear_pointer (&importer->recipe_mtime, g_date_time_unref);
+
+        g_list_free_full (importer->recipes, g_object_unref);
+        importer->recipes = NULL;
 }
 
 static void
@@ -241,14 +282,15 @@ copy_image (GrRecipeImporter  *importer,
         return TRUE;
 }
 
-static void
-do_import_recipe (GrRecipeImporter *importer)
+static gboolean
+import_recipe (GrRecipeImporter *importer)
 {
         GrRecipeStore *store;
         g_autoptr(GArray) images = NULL;
         g_autoptr(GrRecipe) recipe = NULL;
         g_autoptr(GError) error = NULL;
         g_autofree char *id = NULL;
+        const char *author;
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
@@ -261,7 +303,7 @@ do_import_recipe (GrRecipeImporter *importer)
 
                         if (!copy_image (importer, importer->recipe_paths[i], &new_path, &error)) {
                                 error_cb (importer->extractor, error, importer);
-                                return;
+                                return FALSE;
                         }
 
                         ri.path = new_path;
@@ -271,12 +313,14 @@ do_import_recipe (GrRecipeImporter *importer)
                 }
         }
 
+        author = (const char *)g_hash_table_lookup (importer->chef_id_map, importer->recipe_author);
+        id = generate_id ("R_", importer->recipe_name, "_by_", author, NULL);
+
         recipe = gr_recipe_new ();
-        id = g_strconcat (importer->recipe_name, "_by_", importer->chef_id, NULL);
         g_object_set (recipe,
                       "id", id,
                       "name", importer->recipe_name,
-                      "author", importer->chef_id,
+                      "author", author,
                       "description", importer->recipe_description,
                       "cuisine", importer->recipe_cuisine,
                       "season", importer->recipe_season,
@@ -295,13 +339,15 @@ do_import_recipe (GrRecipeImporter *importer)
 
         if (!gr_recipe_store_add_recipe (store, recipe, &error)) {
                 error_cb (importer->extractor, error, importer);
-                return;
+                return FALSE;
         }
 
-        g_signal_emit (importer, done_signal, 0, recipe);
+        importer->recipes = g_list_append (importer->recipes, g_object_ref (recipe));
 
-        cleanup_import (importer);
+        return TRUE;
 }
+
+static gboolean import_next_recipe (GrRecipeImporter *importer);
 
 static void
 recipe_dialog_response (GtkWidget        *dialog,
@@ -310,15 +356,18 @@ recipe_dialog_response (GtkWidget        *dialog,
 {
         if (response_id == GTK_RESPONSE_CANCEL) {
                 g_message ("Not importing recipe %s", importer->recipe_name);
+                gtk_widget_destroy (dialog);
         }
         else {
                 g_free (importer->recipe_name);
                 importer->recipe_name = g_strdup (g_object_get_data (G_OBJECT (dialog), "name"));
                 g_message ("Renaming recipe to %s while importing", importer->recipe_name);
-                do_import_recipe (importer);
+                gtk_widget_destroy (dialog);
+                if (!import_recipe (importer))
+                        return;
         }
 
-        gtk_widget_destroy (dialog);
+        import_next_recipe (importer);
 }
 
 static void
@@ -327,13 +376,18 @@ recipe_name_changed (GtkEntry         *entry,
 {
         GrRecipeStore *store;
         const char *name;
+        const char *author;
+        g_autofree char *id = NULL;
         GtkWidget *dialog;
         g_autoptr(GrRecipe) recipe = NULL;
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         name = gtk_entry_get_text (entry);
-        recipe = gr_recipe_store_get_recipe (store, name);
+        author = (const char *)g_hash_table_lookup (importer->chef_id_map, importer->recipe_author);
+        id = generate_id ("R_", name, "_by_", author, NULL);
+
+        recipe = gr_recipe_store_get_recipe (store, id);
 
         dialog = gtk_widget_get_ancestor (GTK_WIDGET (entry), GTK_TYPE_DIALOG);
         g_object_set_data_full (G_OBJECT (dialog), "name", g_strdup (name), g_free);
@@ -365,7 +419,7 @@ show_recipe_conflict_dialog (GrRecipeImporter *importer)
         if (error) { \
                 if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) { \
                         error_cb (importer->extractor, error, importer); \
-                        return; \
+                        return FALSE; \
                 } \
                 g_clear_error (&error); \
         }
@@ -376,53 +430,50 @@ show_recipe_conflict_dialog (GrRecipeImporter *importer)
                 handle_or_clear_error (my_error) \
                 my_tmp; })
 
-static void
-import_recipe (GrRecipeImporter *importer)
+static gboolean
+import_next_recipe (GrRecipeImporter *importer)
 {
-        g_autoptr(GKeyFile) keyfile = NULL;
-        g_autofree char *path = NULL;
-        g_auto(GStrv) groups = NULL;
         char *tmp;
         GrRecipeStore *store;
         g_autoptr(GrRecipe) recipe = NULL;
         gsize length2, length3;
         g_autoptr(GError) error = NULL;
+        const char *id;
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        keyfile = g_key_file_new ();
-        path = g_build_filename (importer->dir, "recipes.db", NULL);
-        if (!g_key_file_load_from_file (keyfile, path, G_KEY_FILE_NONE, &error)) {
-                error_cb (importer->extractor, error, importer);
-                return;
+next:
+        importer->current_recipe++;
+
+        id = importer->recipe_ids[importer->current_recipe];
+
+        if (id == NULL) {
+                g_signal_emit (importer, done_signal, 0, importer->recipes);
+                cleanup_import (importer);
+                return TRUE;
         }
 
-        groups = g_key_file_get_groups (keyfile, NULL);
-        if (!groups || !groups[0]) {
-                g_set_error (&error, G_IO_ERROR, G_IO_ERROR_FAILED, _("No recipe found"));
-                error_cb (importer->extractor, error, importer);
-                return;
-        }
-
-        importer->recipe_name = g_key_file_get_string (keyfile, groups[0], "Name", &error);
+        importer->recipe_id = g_strdup (id);
+        importer->recipe_name = g_key_file_get_string (importer->recipes_keyfile, id, "Name", &error);
         if (error) {
                 error_cb (importer->extractor, error, importer);
-                return;
+                return FALSE;
         }
-        importer->recipe_description = key_file_get_string (keyfile, groups[0], "Description");
-        importer->recipe_cuisine = key_file_get_string (keyfile, groups[0], "Cuisine");
-        importer->recipe_season = key_file_get_string (keyfile, groups[0], "Season");
-        importer->recipe_category = key_file_get_string (keyfile, groups[0], "Category");
-        importer->recipe_prep_time = key_file_get_string (keyfile, groups[0], "PrepTime");
-        importer->recipe_cook_time = key_file_get_string (keyfile, groups[0], "CookTime");
-        importer->recipe_ingredients = key_file_get_string (keyfile, groups[0], "Ingredients");
-        importer->recipe_instructions = key_file_get_string (keyfile, groups[0], "Instructions");
-        importer->recipe_notes = key_file_get_string (keyfile, groups[0], "Notes");
-        importer->recipe_serves = g_key_file_get_integer (keyfile, groups[0], "Serves", &error);
+        importer->recipe_author = key_file_get_string (importer->recipes_keyfile, id, "Author");
+        importer->recipe_description = key_file_get_string (importer->recipes_keyfile, id, "Description");
+        importer->recipe_cuisine = key_file_get_string (importer->recipes_keyfile, id, "Cuisine");
+        importer->recipe_season = key_file_get_string (importer->recipes_keyfile, id, "Season");
+        importer->recipe_category = key_file_get_string (importer->recipes_keyfile, id, "Category");
+        importer->recipe_prep_time = key_file_get_string (importer->recipes_keyfile, id, "PrepTime");
+        importer->recipe_cook_time = key_file_get_string (importer->recipes_keyfile, id, "CookTime");
+        importer->recipe_ingredients = key_file_get_string (importer->recipes_keyfile, id, "Ingredients");
+        importer->recipe_instructions = key_file_get_string (importer->recipes_keyfile, id, "Instructions");
+        importer->recipe_notes = key_file_get_string (importer->recipes_keyfile, id, "Notes");
+        importer->recipe_serves = g_key_file_get_integer (importer->recipes_keyfile, id, "Serves", &error);
         handle_or_clear_error (error);
-        importer->recipe_diets = g_key_file_get_integer (keyfile, groups[0], "Diets", &error);
+        importer->recipe_diets = g_key_file_get_integer (importer->recipes_keyfile, id, "Diets", &error);
         handle_or_clear_error (error);
-        tmp = key_file_get_string (keyfile, groups[0], "Created");
+        tmp = key_file_get_string (importer->recipes_keyfile, id, "Created");
         if (tmp) {
                importer->recipe_ctime = date_time_from_string (tmp);
                if (!importer->recipe_ctime) {
@@ -430,10 +481,10 @@ import_recipe (GrRecipeImporter *importer)
                         g_set_error (&error, G_IO_ERROR, G_IO_ERROR_FAILED,
                                      _("Failed to load recipe: Couldn’t parse Created key"));
                         error_cb (importer->extractor, error, importer);
-                        return;
+                        return FALSE;
                 }
         }
-        tmp = key_file_get_string (keyfile, groups[0], "Modified");
+        tmp = key_file_get_string (importer->recipes_keyfile, id, "Modified");
         if (tmp) {
                importer->recipe_mtime = date_time_from_string (tmp);
                if (!importer->recipe_mtime) {
@@ -441,57 +492,87 @@ import_recipe (GrRecipeImporter *importer)
                         g_set_error (&error, G_IO_ERROR, G_IO_ERROR_FAILED,
                                      _("Failed to load recipe: Couldn’t parse Modified key"));
                         error_cb (importer->extractor, error, importer);
-                        return;
+                        return FALSE;
                 }
         }
-        importer->recipe_paths = g_key_file_get_string_list (keyfile, groups[0], "Images", &length2, &error);
+        importer->recipe_paths = g_key_file_get_string_list (importer->recipes_keyfile, id, "Images", &length2, &error);
         handle_or_clear_error (error);
-        importer->recipe_angles = g_key_file_get_integer_list (keyfile, groups[0], "Angles", &length3, &error);
+        importer->recipe_angles = g_key_file_get_integer_list (importer->recipes_keyfile, id, "Angles", &length3, &error);
         handle_or_clear_error (error);
         if (length2 != length3) {
                 g_set_error (&error, G_IO_ERROR, G_IO_ERROR_FAILED,
                              _("Failed to load recipe: Images and Angles length mismatch"));
                 error_cb (importer->extractor, error, importer);
-                return;
+                return FALSE;
         }
-        importer->recipe_dark = g_key_file_get_boolean_list (keyfile, groups[0], "DarkText", &length3, &error);
+        importer->recipe_dark = g_key_file_get_boolean_list (importer->recipes_keyfile, id, "DarkText", &length3, &error);
         handle_or_clear_error (error);
         if (length2 != length3) {
                 g_set_error (&error, G_IO_ERROR, G_IO_ERROR_FAILED,
                              _("Failed to load recipe: Images and DarkText length mismatch"));
                 error_cb (importer->extractor, error, importer);
-                return;
+                return FALSE;
         }
 
-        recipe = gr_recipe_store_get_recipe (store, importer->recipe_name);
+        recipe = gr_recipe_store_get_recipe (store, importer->recipe_id);
         if (!recipe) {
-                g_message ("Recipe %s not yet known; importing", importer->recipe_name);
-                do_import_recipe (importer);
-                return;
+                g_message ("Recipe %s not yet known; importing", importer->recipe_id);
+                if (!import_recipe (importer))
+                        return FALSE;
+                goto next;
         }
 
         show_recipe_conflict_dialog (importer);
+
+        return TRUE;
 }
 
-static void
+static gboolean
+import_recipes (GrRecipeImporter *importer)
+{
+        g_autoptr(GKeyFile) keyfile = NULL;
+        g_autofree char *path = NULL;
+        g_auto(GStrv) groups = NULL;
+        g_autoptr(GrChef) chef = NULL;
+        g_autoptr(GError) error = NULL;
+
+        g_assert (importer->recipes_keyfile == NULL);
+        g_assert (importer->recipe_ids == NULL);
+        g_assert (importer->current_recipe == -1);
+
+        keyfile = g_key_file_new ();
+        path = g_build_filename (importer->dir, "recipes.db", NULL);
+        if (!g_key_file_load_from_file (keyfile, path, G_KEY_FILE_NONE, &error)) {
+                error_cb (importer->extractor, error, importer);
+                return FALSE;
+        }
+
+        importer->recipes_keyfile = g_key_file_ref (keyfile);
+        importer->recipe_ids = g_key_file_get_groups (keyfile, NULL);
+
+        return import_next_recipe (importer);
+}
+
+static gboolean
 import_chef (GrRecipeImporter *importer)
 {
         GrRecipeStore *store;
         g_autoptr(GrChef) chef = NULL;
         g_autoptr(GError) error = NULL;
 
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
         if (importer->chef_image_path) {
                 char *new_path;
 
                 if (!copy_image (importer, importer->chef_image_path, &new_path, &error)) {
                         error_cb (importer->extractor, error, importer);
-                        return;
+                        return FALSE;
                 }
 
                 g_free (importer->chef_image_path);
                 importer->chef_image_path = new_path;
         }
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         chef = g_object_new (GR_TYPE_CHEF,
                              "id", importer->chef_id,
@@ -501,12 +582,18 @@ import_chef (GrRecipeImporter *importer)
                              "image-path", importer->chef_image_path,
                              NULL);
 
+        g_clear_pointer (&importer->chef_id, g_free);
+        g_clear_pointer (&importer->chef_name, g_free);
+        g_clear_pointer (&importer->chef_fullname, g_free);
+        g_clear_pointer (&importer->chef_description, g_free);
+        g_clear_pointer (&importer->chef_image_path, g_free);
+
         if (!gr_recipe_store_add_chef (store, chef, &error)) {
                 error_cb (importer->extractor, error, importer);
-                return;
+                return FALSE;
         }
 
-        import_recipe (importer);
+        return TRUE;
 }
 
 static char *
@@ -516,6 +603,7 @@ find_unused_chef_id (const char *base)
         int i;
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
         for (i = 0; i < 100; i++) {
                 g_autofree char *new_id = NULL;
                 g_autoptr(GrChef) chef = NULL;
@@ -537,8 +625,11 @@ get_text_view_text (GtkTextView *textview)
 
         buffer = gtk_text_view_get_buffer (textview);
         gtk_text_buffer_get_bounds (buffer, &start, &end);
+
         return gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
 }
+
+static gboolean import_next_chef (GrRecipeImporter *importer);
 
 static void
 chef_dialog_response (GtkWidget        *dialog,
@@ -547,10 +638,12 @@ chef_dialog_response (GtkWidget        *dialog,
 {
         if (response_id == GTK_RESPONSE_CANCEL) {
                 g_message ("Chef %s known after all; not importing", importer->chef_id);
-                import_recipe (importer);
+                gtk_widget_destroy (dialog);
         }
         else {
                 char *id = find_unused_chef_id (importer->chef_id);
+
+                g_hash_table_insert (importer->chef_id_map, g_strdup (importer->chef_id), g_strdup (id));
 
                 g_free (importer->chef_id);
                 g_free (importer->chef_name);
@@ -563,10 +656,12 @@ chef_dialog_response (GtkWidget        *dialog,
                 importer->chef_description = get_text_view_text (GTK_TEXT_VIEW (importer->new_chef_description));
 
                 g_message ("Renaming chef to %s while importing", importer->chef_id);
-                import_chef (importer);
+                gtk_widget_destroy (dialog);
+                if (!import_chef (importer))
+                        return;
         }
 
-        gtk_widget_destroy (dialog);
+        import_next_chef (importer);
 }
 
 static void
@@ -627,71 +722,78 @@ show_chef_conflict_dialog (GrRecipeImporter *importer,
         gtk_widget_show (dialog);
 }
 
-static void
-finish_import (GrRecipeImporter *importer)
+static gboolean
+import_next_chef (GrRecipeImporter *importer)
 {
-        g_autoptr(GKeyFile) keyfile = NULL;
-        g_autofree char *path = NULL;
-        g_auto(GStrv) groups = NULL;
         const char *id;
-        g_autofree char *name = NULL;
-        g_autofree char *fullname = NULL;
-        g_autofree char *description = NULL;
-        g_autofree char *image_path = NULL;
-        GrRecipeStore *store;
         g_autoptr(GrChef) chef = NULL;
-        g_autoptr(GError) error = NULL;
+        GrRecipeStore *store;
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        keyfile = g_key_file_new ();
-        path = g_build_filename (importer->dir, "chefs.db", NULL);
-        if (!g_key_file_load_from_file (keyfile, path, G_KEY_FILE_NONE, &error)) {
-                if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT)) {
-                        error_cb (importer->extractor, error, importer);
-                        return;
-                }
+next:
+        importer->current_chef++;
 
-                importer->chef_id = g_strdup ("anonymous");
-                import_recipe (importer);
-                return;
-        }
+        id = importer->chef_ids[importer->current_chef];
 
-        groups = g_key_file_get_groups (keyfile, NULL);
-        if (!groups || !groups[0]) {
-                g_set_error (&error, G_IO_ERROR, G_IO_ERROR_FAILED, _("No chef found"));
-                error_cb (importer->extractor, error, importer);
-                return;
-        }
-
-        id = groups[0];
-        name = g_key_file_get_string (keyfile, groups[0], "Name", &error);
-        fullname = key_file_get_string (keyfile, groups[0], "Fullname");
-        description = key_file_get_string (keyfile, groups[0], "Description");
-        image_path = key_file_get_string (keyfile, groups[0], "Image");
+        if (id == NULL)
+                return import_recipes (importer);
 
         importer->chef_id = g_strdup (id);
-        importer->chef_name = g_strdup (name);
-        importer->chef_fullname = g_strdup (fullname);
-        importer->chef_description = g_strdup (description);
-        importer->chef_image_path = g_strdup (image_path);
+        importer->chef_name = key_file_get_string (importer->chefs_keyfile, id, "Name");
+        importer->chef_fullname = key_file_get_string (importer->chefs_keyfile, id, "Fullname");
+        importer->chef_description = key_file_get_string (importer->chefs_keyfile, id, "Description");
+        importer->chef_image_path = key_file_get_string (importer->chefs_keyfile, id, "Image");
 
+        g_hash_table_insert (importer->chef_id_map, g_strdup (importer->chef_id), g_strdup (id));
         chef = gr_recipe_store_get_chef (store, id);
         if (!chef) {
                 g_message ("Chef %s not yet known; importing", id);
                 import_chef (importer);
-                return;
+                goto next;
         }
 
-        if (g_strcmp0 (fullname, gr_chef_get_fullname (chef)) == 0 &&
-            g_strcmp0 (name, gr_chef_get_name (chef)) == 0 &&
-            g_strcmp0 (description, gr_chef_get_description (chef)) == 0) {
+        if (g_strcmp0 (importer->chef_fullname, gr_chef_get_fullname (chef)) == 0 &&
+            g_strcmp0 (importer->chef_name, gr_chef_get_name (chef)) == 0 &&
+            g_strcmp0 (importer->chef_description, gr_chef_get_description (chef)) == 0) {
                 g_message ("Chef %s already known, not importing", id);
-                import_recipe (importer);
-                return;
+                goto next;
         }
 
         show_chef_conflict_dialog (importer, chef);
+
+        return TRUE;
+}
+
+static gboolean
+import_chefs (GrRecipeImporter *importer)
+{
+        g_autoptr(GKeyFile) keyfile = NULL;
+        g_autofree char *path = NULL;
+        g_auto(GStrv) groups = NULL;
+        g_autoptr(GrChef) chef = NULL;
+        g_autoptr(GError) error = NULL;
+
+        g_assert (importer->chefs_keyfile == NULL);
+        g_assert (importer->chef_ids == NULL);
+        g_assert (importer->current_chef == -1);
+
+        keyfile = g_key_file_new ();
+        path = g_build_filename (importer->dir, "chefs.db", NULL);
+        if (!g_key_file_load_from_file (keyfile, path, G_KEY_FILE_NONE, &error)) {
+                error_cb (importer->extractor, error, importer);
+                return FALSE;
+        }
+
+        importer->chefs_keyfile = g_key_file_ref (keyfile);
+        importer->chef_ids = g_key_file_get_groups (keyfile, NULL);
+        return import_next_chef (importer);
+}
+
+static void
+finish_import (GrRecipeImporter *importer)
+{
+        import_chefs (importer);
 }
 
 static void
