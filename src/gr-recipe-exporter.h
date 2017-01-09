@@ -29,10 +29,9 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrRecipeExporter, gr_recipe_exporter, GR, RECIPE_EXPORTER, GObject)
 
-GrRecipeExporter *gr_recipe_exporter_new       (GtkWindow        *window);
+GrRecipeExporter *gr_recipe_exporter_new    (GtkWindow        *window);
 
-void              gr_recipe_exporter_export_to (GrRecipeExporter *exporter,
-                                                GrRecipe         *recipe,
-                                                GFile            *file);
+void              gr_recipe_exporter_export (GrRecipeExporter *exporter,
+                                             GrRecipe         *recipe);
 
 G_END_DECLS

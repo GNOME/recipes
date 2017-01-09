@@ -40,7 +40,7 @@ struct _GrRecipeExporter
 {
         GObject parent_instance;
 
-        GrRecipe *recipe;
+        GList *recipes;
         GtkWindow *window;
 
 #ifdef ENABLE_AUTOAR
@@ -59,7 +59,7 @@ gr_recipe_exporter_finalize (GObject *object)
 {
         GrRecipeExporter *exporter = GR_RECIPE_EXPORTER (object);
 
-        g_clear_object (&exporter->recipe);
+        g_list_free_full (exporter->recipes, g_object_unref);
         g_clear_object (&exporter->dest);
         g_clear_object (&exporter->output);
         g_list_free_full (exporter->sources, g_object_unref);
@@ -106,7 +106,7 @@ cleanup_export (GrRecipeExporter *exporter)
 #endif
 
         g_clear_pointer (&exporter->dir, g_free);
-        g_clear_object (&exporter->recipe);
+        g_list_free_full (exporter->recipes, g_object_unref);
         g_clear_object (&exporter->output);
         g_clear_object (&exporter->dest);
         g_list_free_full (exporter->sources, g_object_unref);
@@ -120,17 +120,22 @@ completed_cb (AutoarCompressor *compressor,
 {
         GtkWidget *dialog;
         g_autofree char *path =  NULL;
+        int n;
 
+        n = g_list_length (exporter->recipes);
         path = g_file_get_path (exporter->dest);
-        g_message (_("The recipe %s has been exported as “%s”"),
-                   gr_recipe_get_name (exporter->recipe), path);
+
+        g_message (ngettext ("%d recipe has been exported as “%s”",
+                             "%d recipes have been exported as “%s”", n),
+                   n, path);
 
         dialog = gtk_message_dialog_new (exporter->window,
                                          GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,
                                          GTK_MESSAGE_INFO,
                                          GTK_BUTTONS_OK,
-                                         _("The recipe %s has been exported as “%s”"),
-                                         gr_recipe_get_name (exporter->recipe), path);
+                                         ngettext ("%d recipe has been exported as “%s”",
+                                                   "%d recipes have been exported as “%s”", n),
+                                         n, path);
         g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
         gtk_widget_show (dialog);
 
@@ -147,17 +152,11 @@ decide_dest_cb (AutoarCompressor *compressor,
 #endif
 
 static gboolean
-prepare_export (GrRecipeExporter  *exporter,
-                GError           **error)
+export_one_recipe (GrRecipeExporter  *exporter,
+                   GrRecipe          *recipe,
+                   GKeyFile          *keyfile,
+                   GError           **error)
 {
-#ifndef ENABLE_AUTOAR
-        g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                     _("This build does not support exporting"));
-
-        return FALSE;
-#else
-        g_autofree char *path = NULL;
-        g_autoptr(GKeyFile) keyfile = NULL;
         const char *key;
         const char *name;
         const char *author;
@@ -170,45 +169,35 @@ prepare_export (GrRecipeExporter  *exporter,
         const char *ingredients;
         const char *instructions;
         const char *notes;
-        const char *fullname;
-        const char *image_path;
         int serves;
         GrDiets diets;
         GDateTime *ctime;
         GDateTime *mtime;
         g_autoptr(GrChef) chef = NULL;
-        GrRecipeStore *store;
         g_autoptr(GArray) images = NULL;
         g_auto(GStrv) paths = NULL;
         g_autofree int *angles = NULL;
         g_autofree gboolean *dark = NULL;
         int i, j;
 
-        g_assert (exporter->dir == NULL);
-        g_assert (exporter->sources == NULL);
+        key = gr_recipe_get_id (recipe);
+        name = gr_recipe_get_name (recipe);
+        author = gr_recipe_get_author (recipe);
+        description = gr_recipe_get_description (recipe);
+        serves = gr_recipe_get_serves (recipe);
+        cuisine = gr_recipe_get_cuisine (recipe);
+        season = gr_recipe_get_season (recipe);
+        category = gr_recipe_get_category (recipe);
+        prep_time = gr_recipe_get_prep_time (recipe);
+        cook_time = gr_recipe_get_cook_time (recipe);
+        diets = gr_recipe_get_diets (recipe);
+        ingredients = gr_recipe_get_ingredients (recipe);
+        instructions = gr_recipe_get_instructions (recipe);
+        notes = gr_recipe_get_notes (recipe);
+        ctime = gr_recipe_get_ctime (recipe);
+        mtime = gr_recipe_get_mtime (recipe);
 
-        exporter->dir = g_mkdtemp (g_build_filename (g_get_tmp_dir (), "recipeXXXXXX", NULL));
-        path = g_build_filename (exporter->dir, "recipes.db", NULL);
-        keyfile = g_key_file_new ();
-
-        key = gr_recipe_get_id (exporter->recipe);
-        name = gr_recipe_get_name (exporter->recipe);
-        author = gr_recipe_get_author (exporter->recipe);
-        description = gr_recipe_get_description (exporter->recipe);
-        serves = gr_recipe_get_serves (exporter->recipe);
-        cuisine = gr_recipe_get_cuisine (exporter->recipe);
-        season = gr_recipe_get_season (exporter->recipe);
-        category = gr_recipe_get_category (exporter->recipe);
-        prep_time = gr_recipe_get_prep_time (exporter->recipe);
-        cook_time = gr_recipe_get_cook_time (exporter->recipe);
-        diets = gr_recipe_get_diets (exporter->recipe);
-        ingredients = gr_recipe_get_ingredients (exporter->recipe);
-        instructions = gr_recipe_get_instructions (exporter->recipe);
-        notes = gr_recipe_get_notes (exporter->recipe);
-        ctime = gr_recipe_get_ctime (exporter->recipe);
-        mtime = gr_recipe_get_mtime (exporter->recipe);
-
-        g_object_get (exporter->recipe, "images", &images, NULL);
+        g_object_get (recipe, "images", &images, NULL);
         paths = g_new0 (char *, images->len + 1);
         angles = g_new0 (int, images->len + 1);
         dark = g_new0 (gboolean, images->len + 1);
@@ -266,22 +255,20 @@ prepare_export (GrRecipeExporter  *exporter,
                 g_key_file_set_string (keyfile, key, "Modified", modified);
         }
 
-        if (!g_key_file_save_to_file (keyfile, path, error)) {
-                return FALSE;
-        }
+        return TRUE;
+}
 
-        exporter->sources = g_list_append (exporter->sources, g_file_new_for_path (path));
-
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
-        chef = gr_recipe_store_get_chef (store, author);
-        if (!chef)
-                return TRUE;
-
-        g_clear_pointer (&path, g_free);
-        g_clear_pointer (&keyfile, g_key_file_unref);
-
-        path = g_build_filename (exporter->dir, "chefs.db", NULL);
-        keyfile = g_key_file_new ();
+static gboolean
+export_one_chef (GrRecipeExporter  *exporter,
+                 GrChef            *chef,
+                 GKeyFile          *keyfile,
+                 GError           **error)
+{
+        const char *key;
+        const char *name;
+        const char *fullname;
+        const char *description;
+        const char *image_path;
 
         key = gr_chef_get_id (chef);
         name = gr_chef_get_name (chef);
@@ -313,11 +300,77 @@ prepare_export (GrRecipeExporter  *exporter,
         g_key_file_set_string (keyfile, key, "Fullname", fullname ? fullname : "");
         g_key_file_set_string (keyfile, key, "Description", description ? description : "");
 
-        if (!g_key_file_save_to_file (keyfile, path, error)) {
-                return FALSE;
+        return TRUE;
+}
+
+static gboolean
+prepare_export (GrRecipeExporter  *exporter,
+                GError           **error)
+{
+#ifndef ENABLE_AUTOAR
+        g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                     _("This build does not support exporting"));
+
+        return FALSE;
+#else
+        g_autofree char *path = NULL;
+        g_autoptr(GKeyFile) keyfile = NULL;
+        GrRecipeStore *store;
+        GList *l;
+        g_autoptr(GHashTable) chefs = NULL;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+        g_assert (exporter->dir == NULL);
+        g_assert (exporter->sources == NULL);
+
+        exporter->dir = g_mkdtemp (g_build_filename (g_get_tmp_dir (), "recipeXXXXXX", NULL));
+        path = g_build_filename (exporter->dir, "recipes.db", NULL);
+        keyfile = g_key_file_new ();
+
+        for (l = exporter->recipes; l; l = l->next) {
+                GrRecipe *recipe = l->data;
+
+                if (!export_one_recipe (exporter, recipe, keyfile, error))
+                        return FALSE;
         }
 
+        if (!g_key_file_save_to_file (keyfile, path, error))
+                return FALSE;
+
         exporter->sources = g_list_append (exporter->sources, g_file_new_for_path (path));
+
+        g_clear_pointer (&path, g_free);
+        g_clear_pointer (&keyfile, g_key_file_unref);
+
+        path = g_build_filename (exporter->dir, "chefs.db", NULL);
+        keyfile = g_key_file_new ();
+
+        chefs = g_hash_table_new (g_str_hash, g_str_equal);
+        for (l = exporter->recipes; l; l = l->next) {
+                GrRecipe *recipe = l->data;
+                const char *author;
+                g_autoptr(GrChef) chef = NULL;
+
+                author = gr_recipe_get_author (recipe);
+                if (g_hash_table_contains (chefs, author))
+                        continue;
+
+                chef = gr_recipe_store_get_chef (store, author);
+                if (!chef)
+                        continue;
+
+                if (!export_one_chef (exporter, chef, keyfile, error))
+                        return FALSE;
+
+                g_hash_table_add (chefs, (gpointer)author);
+        }
+
+        if (!g_key_file_save_to_file (keyfile, path, error))
+                return FALSE;
+
+        exporter->sources = g_list_append (exporter->sources, g_file_new_for_path (path));
+
         return TRUE;
 #endif
 }
@@ -333,8 +386,7 @@ error_cb (gpointer          compressor,
                                          GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,
                                          GTK_MESSAGE_ERROR,
                                          GTK_BUTTONS_OK,
-                                         _("Error while exporting recipe %s:\n%s"),
-                                         gr_recipe_get_name (exporter->recipe),
+                                         _("Error while exporting:\n%s"),
                                          error->message);
         g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
         gtk_widget_show (dialog);
@@ -343,13 +395,26 @@ error_cb (gpointer          compressor,
 }
 
 void
-gr_recipe_exporter_export_to (GrRecipeExporter *exporter,
-                              GrRecipe         *recipe,
-                              GFile            *file)
+gr_recipe_exporter_export (GrRecipeExporter *exporter,
+                           GrRecipe         *recipe)
 {
+        g_autofree char *dir = NULL;
+        g_autofree char *basename = NULL;
+        g_autofree char *path = NULL;
+        g_autoptr(GFile) file = NULL;
         g_autoptr(GError) error = NULL;
 
-        g_set_object (&exporter->recipe, recipe);
+        dir = g_dir_make_tmp ("recipesXXXXXX", NULL);
+        basename = g_strconcat (gr_recipe_get_name (recipe), ".tar.gz", NULL);
+        if (dir)
+                path = g_build_filename (dir, basename, NULL);
+        else
+                path = g_strdup (basename);
+        file = g_file_new_for_path (path);
+
+        g_list_free_full (exporter->recipes, g_object_unref);
+        exporter->recipes = g_list_append (exporter->recipes, g_object_ref (recipe));
+
         g_set_object (&exporter->output, file);
 
         if (!prepare_export (exporter, &error)) {
