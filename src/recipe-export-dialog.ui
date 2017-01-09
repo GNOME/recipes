@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="recipes">
+  <object class="GtkDialog" id="dialog">
+    <property name="use-header-bar">1</property>
+    <property name="modal">1</property>
+    <property name="resizable">0</property>
+    <property name="destroy-with-parent">1</property>
+    <property name="default-width">420</property>
+    <property name="default-height">280</property>
+    <child type="action">
+      <object class="GtkButton" id="button_later">
+        <property name="visible">1</property>
+        <property name="label" translatable="yes">Close</property>
+      </object>
+    </child>
+    <child type="action">
+      <object class="GtkButton" id="button_now">
+        <property name="visible">1</property>
+        <property name="label" translatable="yes">Export</property>
+      </object>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="margin">20</property>
+        <property name="spacing">20</property>
+        <child>
+          <object class="GtkLabel" id="heading">
+            <property name="visible">1</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow">
+            <property name="visible">1</property>
+            <property name="hscrollbar-policy">never</property>
+            <property name="vscrollbar-policy">automatic</property>
+            <property name="shadow-type">in</property>
+            <child>
+              <object class="GtkListBox" id="recipe_list">
+                <property name="visible">1</property>
+                <property name="selection-mode">none</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="cancel">button_later</action-widget>
+      <action-widget response="ok">button_now</action-widget>
+    </action-widgets>
+  </object>
+</interface>

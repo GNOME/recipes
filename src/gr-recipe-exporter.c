@@ -50,6 +50,8 @@ struct _GrRecipeExporter
         GFile *output;
         GList *sources;
         char *dir;
+
+        GtkWidget *dialog_heading;
 };
 
 G_DEFINE_TYPE (GrRecipeExporter, gr_recipe_exporter, G_TYPE_OBJECT)
@@ -107,6 +109,7 @@ cleanup_export (GrRecipeExporter *exporter)
 
         g_clear_pointer (&exporter->dir, g_free);
         g_list_free_full (exporter->recipes, g_object_unref);
+        exporter->recipes = NULL;
         g_clear_object (&exporter->output);
         g_clear_object (&exporter->dest);
         g_list_free_full (exporter->sources, g_object_unref);
@@ -394,28 +397,10 @@ error_cb (gpointer          compressor,
         cleanup_export (exporter);
 }
 
-void
-gr_recipe_exporter_export (GrRecipeExporter *exporter,
-                           GrRecipe         *recipe)
+static void
+start_export (GrRecipeExporter *exporter)
 {
-        g_autofree char *dir = NULL;
-        g_autofree char *basename = NULL;
-        g_autofree char *path = NULL;
-        g_autoptr(GFile) file = NULL;
         g_autoptr(GError) error = NULL;
-
-        dir = g_dir_make_tmp ("recipesXXXXXX", NULL);
-        basename = g_strconcat (gr_recipe_get_name (recipe), ".tar.gz", NULL);
-        if (dir)
-                path = g_build_filename (dir, basename, NULL);
-        else
-                path = g_strdup (basename);
-        file = g_file_new_for_path (path);
-
-        g_list_free_full (exporter->recipes, g_object_unref);
-        exporter->recipes = g_list_append (exporter->recipes, g_object_ref (recipe));
-
-        g_set_object (&exporter->output, file);
 
         if (!prepare_export (exporter, &error)) {
                 error_cb (NULL, error, exporter);
@@ -432,4 +417,181 @@ gr_recipe_exporter_export (GrRecipeExporter *exporter,
 
         autoar_compressor_start_async (exporter->compressor, NULL);
 #endif
+}
+
+static void
+export_dialog_response (GtkWidget        *dialog,
+                        int               response_id,
+                        GrRecipeExporter *exporter)
+{
+        if (response_id == GTK_RESPONSE_CANCEL) {
+                g_message ("not exporting now\n");
+        }
+        else if (response_id == GTK_RESPONSE_OK) {
+                g_autofree char *dir = NULL;
+                g_autofree char *path = NULL;
+
+                g_message ("exporting %d recipes now\n", g_list_length (exporter->recipes));
+                dir = g_dir_make_tmp ("recipesXXXXXX", NULL);
+                path = g_build_filename (dir, "recipes.tar.gz", NULL);
+                exporter->output = g_file_new_for_path (path);
+
+                start_export (exporter);
+        }
+
+        gtk_widget_destroy (dialog);
+        exporter->dialog_heading = NULL;
+}
+
+static void
+update_heading (GrRecipeExporter *exporter)
+{
+        g_autofree char *tmp = NULL;
+        int n;
+
+        n = g_list_length (exporter->recipes);
+        tmp = g_strdup_printf (ngettext ("%d recipe selected for export",
+                                         "%d recipes selected for export", n), n);
+        gtk_label_set_label (GTK_LABEL (exporter->dialog_heading), tmp);
+}
+
+static void
+row_activated (GtkListBox *list,
+               GtkListBoxRow *row,
+               GrRecipeExporter *exporter)
+{
+        GrRecipe *recipe;
+        GtkWidget *image;
+
+        recipe = GR_RECIPE (g_object_get_data (G_OBJECT (row), "recipe"));
+        image = GTK_WIDGET (g_object_get_data (G_OBJECT (row), "check"));
+
+        if (gtk_widget_get_opacity (image) > 0.5) {
+                exporter->recipes = g_list_remove (exporter->recipes, recipe);
+                g_object_unref (recipe);
+                gtk_widget_set_opacity (image, 0.0);
+        }
+        else {
+                exporter->recipes = g_list_append (exporter->recipes, g_object_ref (recipe));
+                gtk_widget_set_opacity (image, 1.0);
+        }
+
+        update_heading (exporter);
+}
+
+static void
+add_recipe_row (GrRecipeExporter *exporter,
+                GtkWidget *list,
+                GrRecipe  *recipe)
+{
+        GtkWidget *row;
+        GtkWidget *box;
+        GtkWidget *label;
+        GtkWidget *image;
+
+        box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 20);
+        gtk_widget_show (box);
+        g_object_set (box, "margin", 10, NULL);
+        label = gtk_label_new (gr_recipe_get_name (recipe));
+        gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+        gtk_widget_show (label);
+        gtk_box_pack_start (GTK_BOX (box), label, TRUE, TRUE, 0);
+
+        image = gtk_image_new_from_icon_name ("object-select-symbolic", 1);
+        gtk_widget_show (image);
+        gtk_style_context_add_class (gtk_widget_get_style_context (image), "dim-label");
+        gtk_box_pack_start (GTK_BOX (box), image, FALSE, TRUE, 0);
+
+        row = gtk_list_box_row_new ();
+        gtk_widget_show (row);
+        gtk_container_add (GTK_CONTAINER (row), box);
+        g_object_set_data_full (G_OBJECT (row), "recipe", g_object_ref (recipe), g_object_unref);
+        g_object_set_data (G_OBJECT (row), "check", image);
+
+        gtk_container_add (GTK_CONTAINER (list), row);
+
+}
+
+static void
+all_headers (GtkListBoxRow *row,
+             GtkListBoxRow *before,
+             gpointer       user_data)
+{
+        GtkWidget *header;
+
+        header = gtk_list_box_row_get_header (row);
+        if (header)
+                return;
+
+        header = gtk_separator_new (GTK_ORIENTATION_HORIZONTAL);
+        gtk_list_box_row_set_header (row, header);
+}
+
+static int
+sort_recipe_row (GtkListBoxRow *row1,
+                 GtkListBoxRow *row2,
+                 gpointer       data)
+{
+        GrRecipe *r1, *r2;
+
+        r1 = GR_RECIPE (g_object_get_data (G_OBJECT (row1), "recipe"));
+        r2 = GR_RECIPE (g_object_get_data (G_OBJECT (row2), "recipe"));
+
+        return g_strcmp0 (gr_recipe_get_name (r1), gr_recipe_get_name (r2));
+}
+
+static void
+populate_recipe_list (GrRecipeExporter *exporter,
+                      GtkWidget        *list)
+{
+        GList *l;
+
+        gtk_list_box_set_header_func (GTK_LIST_BOX (list), all_headers, NULL, NULL);
+        gtk_list_box_set_sort_func (GTK_LIST_BOX (list), sort_recipe_row, NULL, NULL);
+
+        g_signal_connect (list, "row-activated", G_CALLBACK (row_activated), exporter);
+        for (l = exporter->recipes; l; l = l->next) {
+                GrRecipe *recipe = l->data;
+                add_recipe_row (exporter, list, recipe);
+        }
+}
+
+static void
+show_export_dialog (GrRecipeExporter *exporter)
+{
+        g_autoptr(GtkBuilder) builder = NULL;
+        GtkWidget *dialog;
+        GtkWidget *list;
+        g_autofree char *tmp = NULL;
+
+        builder = gtk_builder_new_from_resource ("/org/gnome/Recipes/recipe-export-dialog.ui");
+        dialog = GTK_WIDGET (gtk_builder_get_object (builder, "dialog"));
+        gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (exporter->window));
+
+        list = GTK_WIDGET (gtk_builder_get_object (builder, "recipe_list"));
+        populate_recipe_list (exporter, list);
+
+        exporter->dialog_heading = GTK_WIDGET (gtk_builder_get_object (builder, "heading"));
+        update_heading (exporter);
+
+        g_signal_connect (dialog, "response", G_CALLBACK (export_dialog_response), exporter);
+        gtk_widget_show (dialog);
+}
+
+void
+gr_recipe_exporter_export (GrRecipeExporter *exporter,
+                           GrRecipe         *recipe)
+{
+        GList *l;
+
+        // TODO: listen for ::recipe-removed and filter out the list
+        for (l = exporter->recipes; l; l = l->next) {
+                if (l->data == (gpointer)recipe)
+                        goto dialog;
+        }
+
+        exporter->recipes = g_list_append (exporter->recipes, g_object_ref (recipe));
+
+dialog:
+        show_export_dialog (exporter);
 }
