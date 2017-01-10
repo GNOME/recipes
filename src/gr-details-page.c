@@ -246,7 +246,10 @@ static void
 delete_recipe (GrDetailsPage *page)
 {
         GrRecipeStore *store;
+        g_autoptr(GrRecipe) recipe = NULL;
         GtkWidget *window;
+
+        recipe = g_object_ref (page->recipe);
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
         gr_recipe_store_remove_recipe (store, page->recipe);
@@ -255,6 +258,8 @@ delete_recipe (GrDetailsPage *page)
 
         window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
         gr_window_go_back (GR_WINDOW (window));
+
+        gr_window_offer_undelete (GR_WINDOW (window), recipe);
 }
 
 static void

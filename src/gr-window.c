@@ -57,6 +57,10 @@ struct _GrWindow
         GtkWidget *cuisines_page;
         GtkWidget *cuisine_page;
         GtkWidget *ingredients_page;
+        GtkWidget *undo_revealer;
+        GtkWidget *undo_label;
+        GrRecipe  *undo_recipe;
+        guint undo_timeout_id;
 
         GrRecipeImporter *importer;
 
@@ -343,7 +347,65 @@ gr_window_finalize (GObject *object)
 
         g_clear_object (&self->importer);
 
+        if (self->undo_timeout_id) {
+                g_source_remove (self->undo_timeout_id);
+                self->undo_timeout_id = 0;
+        }
+
         G_OBJECT_CLASS (gr_window_parent_class)->finalize (object);
+}
+
+static void
+close_undo (GrWindow *window)
+{
+        if (window->undo_timeout_id) {
+                g_source_remove (window->undo_timeout_id);
+                window->undo_timeout_id = 0;
+        }
+
+        g_clear_object (&window->undo_recipe);
+
+        gtk_revealer_set_reveal_child (GTK_REVEALER (window->undo_revealer), FALSE);
+}
+
+static void
+do_undo (GrWindow *window)
+{
+        GrRecipeStore *store;
+        g_autoptr(GrRecipe) recipe = NULL;
+
+        recipe = g_object_ref (window->undo_recipe);
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+        gr_recipe_store_add_recipe (store, window->undo_recipe, NULL);
+        close_undo (window);
+
+        gr_window_show_recipe (window, recipe);
+}
+
+static gboolean
+undo_timeout (gpointer data)
+{
+        GrWindow *window = data;
+
+        close_undo (window);
+
+        return G_SOURCE_REMOVE;
+}
+
+void
+gr_window_offer_undelete (GrWindow *window,
+                          GrRecipe *recipe)
+{
+        g_autofree char *tmp = NULL;
+
+        window->undo_recipe = g_object_ref (recipe);
+        tmp = g_strdup_printf (_("Recipe “%s” deleted"), gr_recipe_get_name (recipe));
+        gtk_label_set_label (GTK_LABEL (window->undo_label), tmp);
+
+        gtk_revealer_set_reveal_child (GTK_REVEALER (window->undo_revealer), TRUE);
+        window->undo_timeout_id = g_timeout_add_seconds (10, undo_timeout, window);
 }
 
 static void
@@ -372,6 +434,8 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrWindow, cuisines_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, cuisine_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, ingredients_page);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, undo_revealer);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, undo_label);
 
         gtk_widget_class_bind_template_callback (widget_class, new_recipe);
         gtk_widget_class_bind_template_callback (widget_class, go_back);
@@ -383,6 +447,8 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, stop_search);
         gtk_widget_class_bind_template_callback (widget_class, window_keypress_handler);
         gtk_widget_class_bind_template_callback (widget_class, window_mapped_handler);
+        gtk_widget_class_bind_template_callback (widget_class, do_undo);
+        gtk_widget_class_bind_template_callback (widget_class, close_undo);
 }
 
 static void

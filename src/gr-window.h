@@ -59,5 +59,7 @@ void            gr_window_show_season                (GrWindow   *window,
                                                       const char *title);
 void            gr_window_show_search_by_ingredients (GrWindow   *window,
                                                       const char *ingredient);
+void            gr_window_offer_undelete             (GrWindow   *window,
+                                                      GrRecipe   *recipe);
 
 G_END_DECLS
