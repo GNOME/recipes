@@ -425,13 +425,13 @@ export_dialog_response (GtkWidget        *dialog,
                         GrRecipeExporter *exporter)
 {
         if (response_id == GTK_RESPONSE_CANCEL) {
-                g_message ("not exporting now\n");
+                g_message ("not exporting now");
         }
         else if (response_id == GTK_RESPONSE_OK) {
                 g_autofree char *dir = NULL;
                 g_autofree char *path = NULL;
 
-                g_message ("exporting %d recipes now\n", g_list_length (exporter->recipes));
+                g_message ("exporting %d recipes now", g_list_length (exporter->recipes));
                 dir = g_dir_make_tmp ("recipesXXXXXX", NULL);
                 path = g_build_filename (dir, "recipes.tar.gz", NULL);
                 exporter->output = g_file_new_for_path (path);
