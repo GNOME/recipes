@@ -388,7 +388,11 @@ void
 gr_list_page_populate_from_list (GrListPage *self,
                                  GList      *recipes)
 {
+        GrRecipeStore *store;
         GList *l;
+        gboolean empty;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         recipes = g_list_copy_deep (recipes, (GCopyFunc)g_object_ref, NULL);
         clear_data (self);
@@ -399,18 +403,27 @@ gr_list_page_populate_from_list (GrListPage *self,
         gtk_widget_hide (self->diet_description);
 
         container_remove_all (GTK_CONTAINER (self->flow_box));
+        gtk_label_set_label (GTK_LABEL (self->empty_title), _("No imported recipes found"));
+        gtk_label_set_label (GTK_LABEL (self->empty_subtitle), _("Sorry about this."));
+        gtk_stack_set_visible_child_name (GTK_STACK (self->list_stack), "empty");
+
+        empty = TRUE;
 
         for (l = self->recipes; l; l = l->next) {
                 GrRecipe *recipe = l->data;
-                GtkWidget *tile;
+                g_autoptr(GrRecipe) r2 = NULL;
 
-                tile = gr_recipe_tile_new (recipe);
-                gtk_widget_show (tile);
-                gtk_container_add (GTK_CONTAINER (self->flow_box), tile);
+                r2 = gr_recipe_store_get_recipe (store, gr_recipe_get_id (recipe));
+                if (r2 == recipe) {
+                        GtkWidget *tile = gr_recipe_tile_new (recipe);
+                        gtk_widget_show (tile);
+                        gtk_container_add (GTK_CONTAINER (self->flow_box), tile);
+                        empty = FALSE;
+                }
         }
 
         gtk_stack_set_visible_child_name (GTK_STACK (self->list_stack),
-                                          self->recipes != NULL ? "list" : "empty");
+                                          empty ? "empty" : "list");
 }
 
 void
