@@ -213,11 +213,11 @@ gr_cuisines_page_class_init (GrCuisinesPageClass *klass)
 
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-cuisines-page.ui");
 
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrCuisinesPage, top_box);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrCuisinesPage, seasonal_box);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrCuisinesPage, seasonal_box2);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrCuisinesPage, seasonal_more);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrCuisinesPage, seasonal_expander_image);
+        gtk_widget_class_bind_template_child (widget_class, GrCuisinesPage, top_box);
+        gtk_widget_class_bind_template_child (widget_class, GrCuisinesPage, seasonal_box);
+        gtk_widget_class_bind_template_child (widget_class, GrCuisinesPage, seasonal_box2);
+        gtk_widget_class_bind_template_child (widget_class, GrCuisinesPage, seasonal_more);
+        gtk_widget_class_bind_template_child (widget_class, GrCuisinesPage, seasonal_expander_image);
 
          gtk_widget_class_bind_template_callback (widget_class, expander_button_clicked);
 }

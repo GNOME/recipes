@@ -137,14 +137,14 @@ gr_recipes_page_class_init (GrRecipesPageClass *klass)
 
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-recipes-page.ui");
 
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, today_box);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, pick_box);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, diet_box);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, chefs_box);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, categories_expander_image);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, diet_box2);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, diet_more);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrRecipesPage, scrolled_win);
+        gtk_widget_class_bind_template_child (widget_class, GrRecipesPage, today_box);
+        gtk_widget_class_bind_template_child (widget_class, GrRecipesPage, pick_box);
+        gtk_widget_class_bind_template_child (widget_class, GrRecipesPage, diet_box);
+        gtk_widget_class_bind_template_child (widget_class, GrRecipesPage, chefs_box);
+        gtk_widget_class_bind_template_child (widget_class, GrRecipesPage, categories_expander_image);
+        gtk_widget_class_bind_template_child (widget_class, GrRecipesPage, diet_box2);
+        gtk_widget_class_bind_template_child (widget_class, GrRecipesPage, diet_more);
+        gtk_widget_class_bind_template_child (widget_class, GrRecipesPage, scrolled_win);
 
         gtk_widget_class_bind_template_callback (widget_class, show_chef_list);
         gtk_widget_class_bind_template_callback (widget_class, expander_button_clicked);

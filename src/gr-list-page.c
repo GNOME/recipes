@@ -199,17 +199,17 @@ gr_list_page_class_init (GrListPageClass *klass)
 
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-list-page.ui");
 
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, top_box);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, flow_box);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, list_stack);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, empty_title);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, empty_subtitle);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, chef_grid);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, chef_image);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, chef_fullname);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, chef_description);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, heading);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrListPage, diet_description);
+        gtk_widget_class_bind_template_child (widget_class, GrListPage, top_box);
+        gtk_widget_class_bind_template_child (widget_class, GrListPage, flow_box);
+        gtk_widget_class_bind_template_child (widget_class, GrListPage, list_stack);
+        gtk_widget_class_bind_template_child (widget_class, GrListPage, empty_title);
+        gtk_widget_class_bind_template_child (widget_class, GrListPage, empty_subtitle);
+        gtk_widget_class_bind_template_child (widget_class, GrListPage, chef_grid);
+        gtk_widget_class_bind_template_child (widget_class, GrListPage, chef_image);
+        gtk_widget_class_bind_template_child (widget_class, GrListPage, chef_fullname);
+        gtk_widget_class_bind_template_child (widget_class, GrListPage, chef_description);
+        gtk_widget_class_bind_template_child (widget_class, GrListPage, heading);
+        gtk_widget_class_bind_template_child (widget_class, GrListPage, diet_description);
 }
 
 GtkWidget *

@@ -219,21 +219,22 @@ static void
 gr_preferences_class_init (GrPreferencesClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
+        GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
         object_class->finalize = gr_preferences_finalize;
 
         gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (klass),
                                                      "/org/gnome/Recipes/gr-preferences.ui");
 
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrPreferences, fullname);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrPreferences, name);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrPreferences, description);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrPreferences, image);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrPreferences, error_revealer);
-        gtk_widget_class_bind_template_child (GTK_WIDGET_CLASS (klass), GrPreferences, error_label);
+        gtk_widget_class_bind_template_child (widget_class, GrPreferences, fullname);
+        gtk_widget_class_bind_template_child (widget_class, GrPreferences, name);
+        gtk_widget_class_bind_template_child (widget_class, GrPreferences, description);
+        gtk_widget_class_bind_template_child (widget_class, GrPreferences, image);
+        gtk_widget_class_bind_template_child (widget_class, GrPreferences, error_revealer);
+        gtk_widget_class_bind_template_child (widget_class, GrPreferences, error_label);
 
-        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), dismiss_error);
-        gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), image_button_clicked);
+        gtk_widget_class_bind_template_callback (widget_class, dismiss_error);
+        gtk_widget_class_bind_template_callback (widget_class, image_button_clicked);
 }
 
 GrPreferences *
