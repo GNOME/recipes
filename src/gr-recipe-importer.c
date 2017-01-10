@@ -162,7 +162,6 @@ gr_recipe_importer_init (GrRecipeImporter *self)
 {
         self->current_chef = -1;
         self->current_recipe = -1;
-
         self->chef_id_map = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_free);
 }
 
@@ -194,8 +193,10 @@ cleanup_import (GrRecipeImporter *importer)
 
         g_clear_pointer (&importer->chefs_keyfile, g_key_file_unref);
         g_clear_pointer (&importer->chef_ids, g_strfreev);
+        importer->current_chef = -1;
 
-        g_clear_pointer (&importer->chef_id_map, g_hash_table_unref);
+        g_hash_table_remove_all (importer->chef_id_map);
+
         g_clear_pointer (&importer->chef_id, g_free);
         g_clear_pointer (&importer->chef_name, g_free);
         g_clear_pointer (&importer->chef_fullname, g_free);
@@ -204,6 +205,7 @@ cleanup_import (GrRecipeImporter *importer)
 
         g_clear_pointer (&importer->recipes_keyfile, g_key_file_unref);
         g_clear_pointer (&importer->recipe_ids, g_strfreev);
+        importer->current_recipe = -1;
 
         g_clear_pointer (&importer->recipe_id, g_free);
         g_clear_pointer (&importer->recipe_name, g_free);
