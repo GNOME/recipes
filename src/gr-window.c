@@ -400,7 +400,7 @@ gr_window_offer_undelete (GrWindow *window,
 {
         g_autofree char *tmp = NULL;
 
-        window->undo_recipe = g_object_ref (recipe);
+        g_set_object (&window->undo_recipe, recipe);
         tmp = g_strdup_printf (_("Recipe “%s” deleted"), gr_recipe_get_name (recipe));
         gtk_label_set_label (GTK_LABEL (window->undo_label), tmp);
 
