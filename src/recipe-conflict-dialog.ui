@@ -14,6 +14,7 @@
       <object class="GtkButton" id="button_rename">
         <property name="visible">1</property>
         <property name="sensitive">0</property>
+        <property name="can-default">1</property>
         <property name="label" translatable="yes">Rename</property>
       </object>
     </child>
@@ -40,6 +41,7 @@
             <child>
               <object class="GtkEntry" id="name_entry">
                 <property name="visible">1</property>
+                <property name="activates-default">1</property>
               </object>
             </child>
           </object>
@@ -48,7 +50,7 @@
     </child>
     <action-widgets>
       <action-widget response="cancel">button_same</action-widget>
-      <action-widget response="apply">button_rename</action-widget>
+      <action-widget response="apply" default="true">button_rename</action-widget>
     </action-widgets>
     <initial-focus name="name_entry"/>
   </object>
