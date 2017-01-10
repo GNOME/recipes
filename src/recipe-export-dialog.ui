@@ -10,13 +10,15 @@
     <child type="action">
       <object class="GtkButton" id="button_later">
         <property name="visible">1</property>
-        <property name="label" translatable="yes">Close</property>
+        <property name="use-underline">1</property>
+        <property name="label" translatable="yes">_Close</property>
       </object>
     </child>
     <child type="action">
       <object class="GtkButton" id="button_now">
         <property name="visible">1</property>
-        <property name="label" translatable="yes">Export</property>
+        <property name="use-underline">1</property>
+        <property name="label" translatable="yes">_Export</property>
       </object>
     </child>
     <child internal-child="vbox">
