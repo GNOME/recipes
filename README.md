@@ -19,6 +19,13 @@ The design can be found here: https://wiki.gnome.org/Design/Apps/Recipes
 Building
 --------
 
+Dependencies (at least): autoconf-archive gobject-introspection json-glib-1.0 gnome-autoar-0 gspell-1
+
+On debian stretch/sid:
+```
+apt install autoconf-archive gobject-introspection libjson-glib-dev libgnome-autoar-0-dev libgspell-1-dev
+```
+
 To build GNOME Recipes from git, use the following steps:
 
 ```
