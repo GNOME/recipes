@@ -40,6 +40,7 @@ struct _GrListPage
         GrDiets diet;
         gboolean favorites;
         char *season;
+        GList *recipes;
 
         GtkWidget *top_box;
         GtkWidget *list_stack;
@@ -74,6 +75,8 @@ clear_data (GrListPage *self)
         self->diet = 0;
         self->favorites = FALSE;
         g_clear_pointer (&self->season, g_free);
+        g_list_free_full (self->recipes, g_object_unref);
+        self->recipes = NULL;
 }
 
 static void
@@ -382,6 +385,35 @@ gr_list_page_populate_from_favorites (GrListPage *self)
 }
 
 void
+gr_list_page_populate_from_list (GrListPage *self,
+                                 GList      *recipes)
+{
+        GList *l;
+
+        recipes = g_list_copy_deep (recipes, (GCopyFunc)g_object_ref, NULL);
+        clear_data (self);
+        self->recipes = recipes;
+
+        gtk_widget_hide (self->chef_grid);
+        gtk_widget_hide (self->heading);
+        gtk_widget_hide (self->diet_description);
+
+        container_remove_all (GTK_CONTAINER (self->flow_box));
+
+        for (l = self->recipes; l; l = l->next) {
+                GrRecipe *recipe = l->data;
+                GtkWidget *tile;
+
+                tile = gr_recipe_tile_new (recipe);
+                gtk_widget_show (tile);
+                gtk_container_add (GTK_CONTAINER (self->flow_box), tile);
+        }
+
+        gtk_stack_set_visible_child_name (GTK_STACK (self->list_stack),
+                                          self->recipes != NULL ? "list" : "empty");
+}
+
+void
 gr_list_page_repopulate (GrListPage *page)
 {
         if (page->chef)
@@ -392,6 +424,8 @@ gr_list_page_repopulate (GrListPage *page)
                 gr_list_page_populate_from_favorites (page);
         else if (page->season)
                 gr_list_page_populate_from_season (page, page->season);
+        else if (page->recipes)
+                gr_list_page_populate_from_list (page, page->recipes);
 }
 
 static void
