@@ -447,11 +447,11 @@ gr_window_edit_recipe (GrWindow *window,
 
 static void
 done_cb (GrRecipeImporter *importer,
-         GrRecipe         *recipe,
+         GList            *recipes,
          GrWindow         *window)
 {
-        if (recipe)
-                gr_window_show_recipe (window, recipe);
+        if (recipes)
+                gr_window_show_list (window, _("Imported Recipes"), recipes);
 }
 
 static void
@@ -547,6 +547,24 @@ gr_window_show_favorites (GrWindow *window)
         gr_list_page_populate_from_favorites (GR_LIST_PAGE (window->list_page));
 
         gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Favorite recipes"));
+
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
+
+        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "list");
+}
+
+void
+gr_window_show_list (GrWindow   *window,
+                     const char *title,
+                     GList      *recipes)
+{
+        save_back_entry (window);
+
+        gr_list_page_populate_from_list (GR_LIST_PAGE (window->list_page), recipes);
+
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), title);
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
