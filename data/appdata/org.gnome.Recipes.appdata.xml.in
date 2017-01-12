@@ -39,12 +39,23 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.8.0" date="2017-03-01">
+      <description>
+        <p>
+          This release focuses on polishing up some existing features.
+        </p>
+        <ul>
+          <li>Multiple recipes can be exported an imported in one batch</li>
+          <li>Deletion of recipes can be undone</li>
+          <li>We inhibit screen blanking and suspend while a recipe is cooking</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.6.0" date="2017-01-07">
       <description>
         <p>
           This release focuses on localization. All included content should be properly
           translatable now, including recipe and chef descriptions and ingredients.
-        </p>
         <p>
           Other improvements include:
         </p>
