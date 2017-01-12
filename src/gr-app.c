@@ -726,7 +726,6 @@ about_activated (GSimpleAction *action,
                                "authors", authors,
                                "translator-credits", _("translator-credits"),
                                "logo", logo,
-                               "title", _("About GNOME Recipes"),
                                "website", "https://wiki.gnome.org/Apps/Recipes",
                                "website-label", _("Learn more about GNOME Recipes"),
                                NULL);
