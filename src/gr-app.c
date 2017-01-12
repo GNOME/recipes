@@ -233,36 +233,47 @@ in_flatpak_sandbox (void)
 
 static void
 get_flatpak_runtime_information (char **id,
-                                 char **branch,
+                                 char **arch,
                                  char **version,
                                  char **commit)
 {
-        g_autoptr(JsonParser) parser = NULL;
-        JsonNode *root;
-        JsonObject *object;
+        g_autoptr(GKeyFile) keyfile = NULL;
         g_autoptr(GError) error = NULL;
+        g_autofree char *path = NULL;
+        char *p;
+        g_auto(GStrv) strv = NULL;
 
-        parser = json_parser_new ();
-        if (!json_parser_load_from_file (parser, "/usr/manifest.json", &error)) {
-                g_message ("Failed to load runtime information: %s", error->message);
+        keyfile = g_key_file_new ();
+        if (!g_key_file_load_from_file (keyfile, "/.flatpak-info", G_KEY_FILE_NONE, &error)) {
                 goto error;
         }
 
-        root = json_parser_get_root (parser);
-        if (!JSON_NODE_HOLDS_OBJECT (root))
+        path = g_key_file_get_string (keyfile, "Instance", "runtime-path", &error);
+        if (path == NULL)
                 goto error;
 
-        object = json_node_get_object (root);
+        p = strstr (path, "runtime/");
+        if (p == NULL)
+                goto error;
 
-        *id = g_strdup (json_object_get_string_member (object, "id-platform"));
-        *branch = g_strdup (json_object_get_string_member (object, "branch"));
-        *version = g_strdup (json_object_get_string_member (object, "runtime-version"));
-        *commit = g_strdup (json_object_get_string_member (object, "runtime-commit"));
+        p += strlen ("runtime/");
+        strv = g_strsplit (p, "/", -1);
+
+        if (g_strv_length (strv) < 4)
+                goto error;
+
+        *id = g_strdup (strv[0]);
+        *arch = g_strdup (strv[1]);
+        *version = g_strdup (strv[2]);
+        *commit = g_strdup (strv[3]);
+
         return;
 
 error:
+        g_message ("Failed to load runtime information: %s", error ? error->message : "");
+
         *id = g_strdup (_("Unknown"));
-        *branch = g_strdup (_("Unknown"));
+        *arch = g_strdup (_("Unknown"));
         *version = g_strdup (_("Unknown"));
         *commit = g_strdup (_("Unknown"));
 }
@@ -335,17 +346,17 @@ populate_system_tab (GtkTextView *view)
 
         if (in_flatpak_sandbox ()) {
                 g_autofree char *id = NULL;
-                g_autofree char *branch = NULL;
+                g_autofree char *arch = NULL;
                 g_autofree char *version = NULL;
                 g_autofree char *commit = NULL;
 
-                get_flatpak_runtime_information (&id, &branch, &version, &commit);
+                get_flatpak_runtime_information (&id, &arch, &version, &commit);
 
                 text_buffer_append (buffer, _("Runtime"));
                 text_buffer_append (buffer, "\n");
                 text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("Runtime metadata", "ID"), id);
+                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("Runtime metadata", "Architecture"), arch);
                 text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("Runtime metadata", "Version"), version);
-                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("Runtime metadata", "Branch"), branch);
                 text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("Runtime metadata", "Commit"), commit);
 
                 text_buffer_append (buffer, "\n");
