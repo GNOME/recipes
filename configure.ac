@@ -127,7 +127,6 @@ dnl Check for required packages
 dnl ***********************************************************************
 PKG_CHECK_MODULES(RECIPES, [gio-2.0 >= 2.42
                             gtk+-3.0 >= 3.20
-                            json-glib-1.0
                             $AUTOAR_DEP
                             $GSPELL_DEP])
 
