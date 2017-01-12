@@ -23,7 +23,6 @@
 #include <glib/gi18n.h>
 #include <glib/gprintf.h>
 #include <gtk/gtk.h>
-#include <json-glib/json-glib.h>
 
 #include "gr-app.h"
 #include "gr-window.h"
@@ -232,10 +231,15 @@ in_flatpak_sandbox (void)
 }
 
 static void
-get_flatpak_runtime_information (char **id,
-                                 char **arch,
-                                 char **version,
-                                 char **commit)
+get_flatpak_information (char **flatpak_version,
+                         char **app_id,
+                         char **app_arch,
+                         char **app_branch,
+                         char **app_commit,
+                         char **runtime_id,
+                         char **runtime_arch,
+                         char **runtime_branch,
+                         char **runtime_commit)
 {
         g_autoptr(GKeyFile) keyfile = NULL;
         g_autoptr(GError) error = NULL;
@@ -243,10 +247,43 @@ get_flatpak_runtime_information (char **id,
         char *p;
         g_auto(GStrv) strv = NULL;
 
+        *flatpak_version = NULL;
+        *app_id = NULL;
+        *app_arch = NULL;
+        *app_branch = NULL;
+        *app_commit = NULL;
+        *runtime_id = NULL;
+        *runtime_arch = NULL;
+        *runtime_branch = NULL;
+        *runtime_commit = NULL;
+
         keyfile = g_key_file_new ();
         if (!g_key_file_load_from_file (keyfile, "/.flatpak-info", G_KEY_FILE_NONE, &error)) {
                 goto error;
         }
+
+        *flatpak_version = g_key_file_get_string (keyfile, "Instance", "flatpak-version", &error);
+        if (*flatpak_version == NULL)
+                goto error;
+
+        path = g_key_file_get_string (keyfile, "Instance", "app-path", &error);
+        if (path == NULL)
+                goto error;
+
+        p = strstr (path, "app/");
+        if (p == NULL)
+                goto error;
+
+        p += strlen ("app/");
+        strv = g_strsplit (p, "/", -1);
+
+        if (g_strv_length (strv) < 4)
+                goto error;
+
+        *app_id = g_strdup (strv[0]);
+        *app_arch = g_strdup (strv[1]);
+        *app_branch = g_strdup (strv[2]);
+        *app_commit = g_strdup (strv[3]);
 
         path = g_key_file_get_string (keyfile, "Instance", "runtime-path", &error);
         if (path == NULL)
@@ -262,20 +299,34 @@ get_flatpak_runtime_information (char **id,
         if (g_strv_length (strv) < 4)
                 goto error;
 
-        *id = g_strdup (strv[0]);
-        *arch = g_strdup (strv[1]);
-        *version = g_strdup (strv[2]);
-        *commit = g_strdup (strv[3]);
+        *runtime_id = g_strdup (strv[0]);
+        *runtime_arch = g_strdup (strv[1]);
+        *runtime_branch = g_strdup (strv[2]);
+        *runtime_commit = g_strdup (strv[3]);
 
         return;
 
 error:
         g_message ("Failed to load runtime information: %s", error ? error->message : "");
 
-        *id = g_strdup (_("Unknown"));
-        *arch = g_strdup (_("Unknown"));
-        *version = g_strdup (_("Unknown"));
-        *commit = g_strdup (_("Unknown"));
+        if (!*flatpak_version)
+                *flatpak_version = g_strdup (_("Unknown"));
+        if (!*app_id)
+                *app_id = g_strdup (_("Unknown"));
+        if (!*app_arch)
+                *app_arch = g_strdup (_("Unknown"));
+        if (!*app_branch)
+                *app_branch = g_strdup (_("Unknown"));
+        if (!*app_commit)
+                *app_commit = g_strdup (_("Unknown"));
+        if (!*runtime_id)
+                *runtime_id = g_strdup (_("Unknown"));
+        if (!*runtime_arch)
+                *runtime_arch = g_strdup (_("Unknown"));
+        if (!*runtime_branch)
+                *runtime_branch = g_strdup (_("Unknown"));
+        if (!*runtime_commit)
+                *runtime_commit = g_strdup (_("Unknown"));
 }
 
 static void
@@ -345,19 +396,42 @@ populate_system_tab (GtkTextView *view)
         buffer = gtk_text_view_get_buffer (view);
 
         if (in_flatpak_sandbox ()) {
-                g_autofree char *id = NULL;
-                g_autofree char *arch = NULL;
-                g_autofree char *version = NULL;
-                g_autofree char *commit = NULL;
+                g_autofree char *flatpak_version = NULL;
+                g_autofree char *app_id = NULL;
+                g_autofree char *app_arch = NULL;
+                g_autofree char *app_branch = NULL;
+                g_autofree char *app_commit = NULL;
+                g_autofree char *runtime_id = NULL;
+                g_autofree char *runtime_arch = NULL;
+                g_autofree char *runtime_branch = NULL;
+                g_autofree char *runtime_commit = NULL;
 
-                get_flatpak_runtime_information (&id, &arch, &version, &commit);
+                get_flatpak_information (&flatpak_version,
+                                         &app_id, &app_arch, &app_branch, &app_commit,
+                                         &runtime_id, &runtime_arch, &runtime_branch, &runtime_commit);
 
+                text_buffer_append (buffer, _("Flatpak"));
+                text_buffer_append (buffer, "\n");
+
+                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("Flatpak metadata", "Version"), flatpak_version);
+
+                text_buffer_append (buffer, "\n");
+                text_buffer_append (buffer, _("Application"));
+                text_buffer_append (buffer, "\n");
+
+                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("Flatpak metadata", "ID"), app_id);
+                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("Flatpak metadata", "Architecture"), app_arch);
+                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("Flatpak metadata", "Branch"), app_branch);
+                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("Flatpak metadata", "Commit"), app_commit);
+
+                text_buffer_append (buffer, "\n");
                 text_buffer_append (buffer, _("Runtime"));
                 text_buffer_append (buffer, "\n");
-                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("Runtime metadata", "ID"), id);
-                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("Runtime metadata", "Architecture"), arch);
-                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("Runtime metadata", "Version"), version);
-                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("Runtime metadata", "Commit"), commit);
+
+                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("Flatpak metadata", "ID"), runtime_id);
+                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("Flatpak metadata", "Architecture"), runtime_arch);
+                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("Flatpak metadata", "Branch"), runtime_branch);
+                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("Flatpak metadata", "Commit"), runtime_commit);
 
                 text_buffer_append (buffer, "\n");
                 text_buffer_append (buffer, _("Bundled libraries"));
