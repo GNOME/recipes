@@ -152,6 +152,7 @@ struct _GrDetailsPage
         GtkWidget *error_revealer;
 
         guint save_timeout;
+        guint inhibit_cookie;
 
         char *uri;
 };
@@ -209,6 +210,11 @@ set_cooking (GrDetailsPage *page,
 {
         const char *id;
         CookingData *cd;
+        GtkWidget *window;
+        GtkApplication *app;
+
+        window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
+        app = gtk_window_get_application (GTK_WINDOW (window));
 
         id = gr_recipe_get_id (page->recipe);
 
@@ -229,6 +235,14 @@ set_cooking (GrDetailsPage *page,
                 g_signal_connect (cd->timer, "notify::remaining", G_CALLBACK (timer_remaining_changed), page);
                 timer_remaining_changed (cd->timer, NULL, page);
                 gtk_revealer_set_reveal_child (GTK_REVEALER (page->cooking_revealer), TRUE);
+
+                if (page->inhibit_cookie == 0) {
+                        page->inhibit_cookie = gtk_application_inhibit (app,
+                                                                        GTK_WINDOW (window),
+                                                                        GTK_APPLICATION_INHIBIT_SUSPEND |
+                                                                        GTK_APPLICATION_INHIBIT_IDLE,
+                                                                        _("Cooking"));
+                }
         }
         else {
                 if (cd) {
@@ -239,6 +253,11 @@ set_cooking (GrDetailsPage *page,
 
                 g_object_set (page->timer, "timer", NULL, NULL);
                 gtk_revealer_set_reveal_child (GTK_REVEALER (page->cooking_revealer), FALSE);
+
+                if (page->inhibit_cookie != 0) {
+                        gtk_application_uninhibit (app, page->inhibit_cookie);
+                        page->inhibit_cookie = 0;
+                }
         }
 }
 
