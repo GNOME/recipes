@@ -32,6 +32,7 @@
 #include "gr-ingredients-list.h"
 #include "gr-window.h"
 #include "gr-number.h"
+#include "gr-shopping-list-printer.h"
 
 struct _GrShoppingPage
 {
@@ -48,6 +49,8 @@ struct _GrShoppingPage
 
         GtkSizeGroup *group;
         GHashTable *ingredients;
+
+        GrShoppingListPrinter *printer;
 };
 
 G_DEFINE_TYPE (GrShoppingPage, gr_shopping_page, GTK_TYPE_BOX)
@@ -62,6 +65,7 @@ shopping_page_finalize (GObject *object)
         g_clear_object (&self->search);
         g_clear_object (&self->group);
         g_clear_pointer (&self->ingredients, g_hash_table_unref);
+        g_clear_object (&self->printer);
 
         G_OBJECT_CLASS (gr_shopping_page_parent_class)->finalize (object);
 }
@@ -259,6 +263,8 @@ add_ingredient_row (GrShoppingPage *page,
         gtk_container_add (GTK_CONTAINER (page->ingredients_list), box);
         row = gtk_widget_get_parent (box);
         g_object_set_data (G_OBJECT (row), "check", button);
+        g_object_set_data (G_OBJECT (row), "unit", unit_label);
+        g_object_set_data (G_OBJECT (row), "ing", ing_label);
 }
 
 static void
@@ -432,6 +438,88 @@ clear_list (GrShoppingPage *page)
         gr_window_go_back (GR_WINDOW (window));
 }
 
+static GList *
+get_active_recipes (GrShoppingPage *page)
+{
+        GList *children, *l, *recipes;
+
+        recipes = NULL;
+        children = gtk_container_get_children (GTK_CONTAINER (page->recipe_list));
+        for (l = children; l; l = l->next) {
+                GtkWidget *tile = gtk_bin_get_child (GTK_BIN (l->data));
+                gboolean active;
+
+                g_object_get (tile, "active", &active, NULL);
+                if (active) {
+                        GrRecipe *recipe;
+
+                        recipe = gr_recipe_small_tile_get_recipe (GR_RECIPE_SMALL_TILE (tile));
+                        recipes = g_list_append (recipes, g_object_ref (recipe));
+                }
+        }
+        g_list_free (children);
+
+        return recipes;
+}
+
+static GList *
+get_active_ingredients (GrShoppingPage *page)
+{
+        GList *children, *l, *ingredients;
+
+        ingredients = NULL;
+        children = gtk_container_get_children (GTK_CONTAINER (page->ingredients_list));
+        for (l = children; l; l = l->next) {
+                GtkWidget *row = l->data;
+                GtkWidget *check = GTK_WIDGET (g_object_get_data (G_OBJECT (row), "check"));
+
+                if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check))) {
+                        GtkWidget *unit = GTK_WIDGET (g_object_get_data (G_OBJECT (row), "unit"));
+                        GtkWidget *ing = GTK_WIDGET (g_object_get_data (G_OBJECT (row), "ing"));
+                        ShoppingListItem *item;
+
+                        item = g_new (ShoppingListItem, 1);
+                        item->amount = g_strdup (gtk_label_get_label (GTK_LABEL (unit)));
+                        item->name = g_strdup (gtk_label_get_label (GTK_LABEL (ing)));
+                        ingredients = g_list_append (ingredients, item);
+                }
+        }
+        g_list_free (children);
+
+        return ingredients;
+}
+
+static void
+item_free (gpointer data)
+{
+        ShoppingListItem *item = data;
+
+        g_free (item->amount);
+        g_free (item->name);
+        g_free (item);
+}
+
+static void
+print_list (GrShoppingPage *page)
+{
+        GList *recipes, *items;
+
+        if (!page->printer) {
+                GtkWidget *window;
+
+                window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
+                page->printer = gr_shopping_list_printer_new (GTK_WINDOW (window));
+        }
+
+        recipes = get_active_recipes (page);
+        items = get_active_ingredients (page);
+
+        gr_shopping_list_printer_print (page->printer, recipes, items);
+
+        g_list_free_full (recipes, g_object_unref);
+        g_list_free_full (items, item_free);
+}
+
 static void
 all_headers (GtkListBoxRow *row,
              GtkListBoxRow *before,
@@ -485,6 +573,7 @@ gr_shopping_page_class_init (GrShoppingPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrShoppingPage, ingredients_list);
 
         gtk_widget_class_bind_template_callback (widget_class, clear_list);
+        gtk_widget_class_bind_template_callback (widget_class, print_list);
 }
 
 GtkWidget *
