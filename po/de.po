@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: recipes 0.1.0\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=recipes\n"
-"POT-Creation-Date: 2017-01-14 16:05-0500\n"
+"POT-Creation-Date: 2017-01-14 16:25-0500\n"
 "PO-Revision-Date: 2016-11-12 16:20-0500\n"
 "Last-Translator: Matthias Clasen <mclasen@redhat.com>\n"
 "Language-Team: None\n"
@@ -448,47 +448,47 @@ msgstr "Anleitung"
 msgid "Notes"
 msgstr "Notizen"
 
-#: src/gr-details-page.ui:442 src/gr-shopping-page.ui:108
+#: src/gr-details-page.ui:443 src/gr-shopping-page.ui:108
 msgid "_Edit"
 msgstr "Ä_ndern"
 
-#: src/gr-details-page.ui:450
+#: src/gr-details-page.ui:452
 msgid "_Delete"
 msgstr "_Löschen"
 
-#: src/gr-details-page.ui:461 src/gr-window.c:650
-msgid "Cook it later"
+#: src/gr-details-page.ui:464
+msgid "_Cook it later"
 msgstr "_Später kochen"
 
-#: src/gr-details-page.ui:472
+#: src/gr-details-page.ui:475
 msgid "Add to favorites"
 msgstr "Lieblingsrezepte"
 
-#: src/gr-details-page.ui:492
-msgid "Export"
+#: src/gr-details-page.ui:496 src/gr-shopping-page.ui:125
+msgid "E_xport"
 msgstr "_Exportieren"
 
-#: src/gr-details-page.ui:503
-msgid "Print"
+#: src/gr-details-page.ui:508 src/gr-shopping-page.ui:135
+msgid "_Print"
 msgstr "_Drucken"
 
-#: src/gr-details-page.ui:513
+#: src/gr-details-page.ui:518
 msgid "_Share"
 msgstr "_Weitergeben"
 
-#: src/gr-details-page.ui:540
+#: src/gr-details-page.ui:545
 msgid "Duration"
 msgstr "Dauer"
 
-#: src/gr-details-page.ui:555
+#: src/gr-details-page.ui:560
 msgid "Start"
 msgstr "Start"
 
-#: src/gr-details-page.ui:577
+#: src/gr-details-page.ui:582
 msgid "Remaining time"
 msgstr "Verbleibende Zeit"
 
-#: src/gr-details-page.ui:590
+#: src/gr-details-page.ui:595
 msgid "Stop"
 msgstr "Stop"
 
@@ -1298,9 +1298,7 @@ msgstr "Keine Lieblingsrezepte gefunden"
 
 #: src/gr-list-page.c:380
 msgid "Use the ♥ button to mark recipes as favorites."
-msgstr ""
-"Benuzten Sie den ♥ Schalter um ein Rezept hier erscheinen zu "
-"lassen."
+msgstr "Benuzten Sie den ♥ Schalter um ein Rezept hier erscheinen zu lassen."
 
 #: src/gr-list-page.c:406
 msgid "No imported recipes found"
@@ -1556,9 +1554,30 @@ msgstr "Für die folgenden Rezepte"
 msgid "Items"
 msgstr "Einträge"
 
+#: src/gr-shopping-page.c:92
+#, c-format
+msgid "%d ingredient marked for purchase"
+msgid_plural "%d ingredients marked for purchase"
+msgstr[0] "%d Zutat ausgewählt"
+msgstr[1] "%d Zutaten ausgewählt"
+
+#: src/gr-shopping-page.c:122
+#, c-format
+msgid "Cook it later (%d recipe)"
+msgid_plural "Cook it later (%d recipes)"
+msgstr[0] "Später kochen (%d Rezept)"
+msgstr[1] "Später kochen (%d Rezepte)"
+
+#: src/gr-shopping-page.c:127
+#, c-format
+msgid "%d Recipe marked for preparation"
+msgid_plural "%d Recipes marked for preparation"
+msgstr[0] "%d Rezept ausgewählt"
+msgstr[1] "%d Rezepte ausgewählt"
+
 #: src/gr-shopping-page.ui:42
 msgid "Cook it Later"
-msgstr "_Später kochen"
+msgstr "Später kochen"
 
 #: src/gr-shopping-page.ui:93
 msgid "No shopping necessary!"
@@ -1566,15 +1585,7 @@ msgstr "Kein Einkaufen nötig!"
 
 #: src/gr-shopping-page.ui:115
 msgid "_Clear List"
-msgstr "Die Liste löschen"
-
-#: src/gr-shopping-page.ui:125
-msgid "E_xport"
-msgstr "_Exportieren"
-
-#: src/gr-shopping-page.ui:135
-msgid "_Print"
-msgstr "_Drucken"
+msgstr "_Liste löschen"
 
 #: src/gr-unit.c:40
 msgctxt "unit abbreviation"
@@ -1829,6 +1840,10 @@ msgstr "Köche: %s"
 #: src/gr-window.c:618
 msgid "Favorite recipes"
 msgstr "Lieblingsrezepte"
+
+#: src/gr-window.c:650
+msgid "Cook it later"
+msgstr "_Später kochen"
 
 #: src/gr-window.c:675
 msgid "My own recipes"
