@@ -439,6 +439,7 @@ followed</property>
           <object class="GtkButton" id="edit_button">
             <property name="visible">1</property>
             <property name="use-underline">1</property>
+            <property name="focus-on-click">0</property>
             <property name="label" translatable="yes">_Edit</property>
             <signal name="clicked" handler="edit_recipe" swapped="true"/>
           </object>
@@ -447,6 +448,7 @@ followed</property>
           <object class="GtkButton" id="delete_button">
             <property name="visible">1</property>
             <property name="use-underline">1</property>
+            <property name="focus-on-click">0</property>
             <property name="label" translatable="yes">_Delete</property>
             <style>
               <class name="destructive-action"/>
@@ -457,8 +459,9 @@ followed</property>
         <child>
           <object class="GtkToggleButton" id="shop_button">
             <property name="visible">1</property>
+            <property name="use-underline">1</property>
             <property name="focus-on-click">0</property>
-            <property name="label" translatable="yes">Cook it later</property>
+            <property name="label" translatable="yes">_Cook it later</property>
             <signal name="toggled" handler="shop_it" swapped="yes"/>
           </object>
           <packing>
@@ -489,7 +492,8 @@ followed</property>
         <child>
           <object class="GtkButton" id="export_button">
             <property name="focus-on-click">0</property>
-            <property name="label" translatable="yes">Export</property>
+            <property name="use-underline">1</property>
+            <property name="label" translatable="yes">E_xport</property>
             <signal name="clicked" handler="export_recipe" swapped="yes"/>
           </object>
           <packing>
@@ -500,7 +504,8 @@ followed</property>
           <object class="GtkButton">
             <property name="visible">1</property>
             <property name="focus-on-click">0</property>
-            <property name="label" translatable="yes">Print</property>
+            <property name="use-underline">1</property>
+            <property name="label" translatable="yes">_Print</property>
             <signal name="clicked" handler="print_recipe" swapped="yes"/>
           </object>
           <packing>
