@@ -191,7 +191,7 @@ ingredient_add (Ingredient *ing,
         for (i = 0; i < ing->units->len; i++) {
                 Unit *u = &g_array_index (ing->units, Unit, i);
 
-                if (strcmp (u->unit, unit) == 0) {
+                if (g_strcmp0 (u->unit, unit) == 0) {
                         gr_number_add (&u->amount, amount, &u->amount);
                         return;
                 }
@@ -219,7 +219,8 @@ ingredient_format_unit (Ingredient *ing)
                 num = gr_number_format (&(u->amount));
                 g_string_append (s, num);
                 g_string_append (s, " ");
-                g_string_append (s, u->unit);
+                if (u->unit)
+                        g_string_append (s, u->unit);
         }
 
         return g_strdup (s->str);
