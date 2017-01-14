@@ -45,6 +45,17 @@ image.chef.circular {
 	border-radius: 9990px;
 }
 
+.chef.tile {
+  min-width: 258px;
+}
+
+label.chef.name {
+  background: @theme_base_color;
+  color: @theme_fg_color;
+  padding: 10px;
+  font-weight: bold;
+}
+
 .view.tile {
   padding: 0;
   text-shadow: none;
