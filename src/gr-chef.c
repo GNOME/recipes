@@ -67,6 +67,7 @@ gr_chef_finalize (GObject *object)
         g_free (self->fullname);
         g_free (self->description);
         g_free (self->image_path);
+        g_free (self->translated_description);
 
         G_OBJECT_CLASS (gr_chef_parent_class)->finalize (object);
 }
