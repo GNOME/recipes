@@ -64,11 +64,6 @@ static void
 set_seasonal_expanded (GrCuisinesPage *page,
                        gboolean        expanded)
 {
-/*
-        gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (page->scrolled_win),
-                                        GTK_POLICY_NEVER,
-                                        GTK_POLICY_AUTOMATIC);
-*/
         gtk_revealer_set_transition_duration (GTK_REVEALER (page->seasonal_more), expanded ? 250 : 0);
 
         gtk_revealer_set_reveal_child (GTK_REVEALER (page->seasonal_more), expanded);
