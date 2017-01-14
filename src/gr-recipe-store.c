@@ -1719,8 +1719,8 @@ search_idle (gpointer data)
 
         send_pending (search);
 
-        g_signal_emit (search, search_signals[FINISHED], 0);
         search->idle = 0;
+        g_signal_emit (search, search_signals[FINISHED], 0);
 
         return G_SOURCE_REMOVE;
 }
