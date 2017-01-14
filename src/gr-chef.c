@@ -142,6 +142,7 @@ gr_chef_set_property (GObject      *object,
                 break;
 
         case PROP_IMAGE_PATH:
+                g_free (self->image_path);
                 self->image_path = g_value_dup_string (value);
                 break;
 
