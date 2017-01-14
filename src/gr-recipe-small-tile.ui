@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="recipes">
+  <!-- interface-requires gtk+ 3.10 -->
+  <template class="GrRecipeSmallTile" parent="GtkButton">
+    <property name="visible">True</property>
+    <signal name="clicked" handler="tile_clicked" swapped="yes"/>
+    <style>
+      <class name="view"/>
+      <class name="tile"/>
+      <class name="recipe"/>
+      <class name="small"/>
+    </style>
+    <child>
+      <object class="GtkEventBox">
+        <property name="visible">1</property>
+        <child>
+          <object class="GtkOverlay">
+            <property name="visible">1</property>
+            <child type="overlay">
+              <object class="GtkCheckButton" id="check">
+                <property name="visible">1</property>
+                <property name="margin">10</property>
+                <property name="halign">start</property>
+                <property name="valign">end</property>
+                <signal name="notify::active" handler="check_active_notify" swapped="yes"/>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox" id="box">
+                <property name="visible">1</property>
+                <child>
+                  <object class="GtkImage" id="image">
+                    <property name="width-request">64</property>
+                    <property name="height-request">64</property>
+                    <property name="visible">1</property>
+                    <style>
+                      <class name="recipe"/>
+                      <class name="small"/>
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">1</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkLabel" id="label">
+                        <property name="visible">1</property>
+                        <property name="valign">end</property>
+                        <property name="xalign">0</property>
+                        <property name="ellipsize">end</property>
+                        <property name="width-chars">12</property>
+                        <property name="max-width-chars">12</property>
+                        <style>
+                          <class name="recipe"/>
+                          <class name="small"/>
+                          <class name="name"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="author">
+                        <property name="visible">1</property>
+                        <property name="valign">end</property>
+                        <property name="xalign">0</property>
+                        <property name="ellipsize">end</property>
+                        <property name="width-chars">12</property>
+                        <property name="max-width-chars">12</property>
+                        <style>
+                          <class name="recipe"/>
+                          <class name="small"/>
+                          <class name="author"/>
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">1</property>
+                  </packing>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

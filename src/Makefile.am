@@ -90,6 +90,8 @@ recipes_SOURCES = \
 	gr-recipe-printer.c	\
 	gr-recipe-store.h 	\
 	gr-recipe-store.c 	\
+	gr-recipe-small-tile.h 	\
+	gr-recipe-small-tile.c 	\
 	gr-recipe-tile.h 	\
 	gr-recipe-tile.c 	\
 	gr-recipes-page.h	\
