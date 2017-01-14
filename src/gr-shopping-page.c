@@ -31,6 +31,7 @@
 #include "gr-utils.h"
 #include "gr-ingredients-list.h"
 #include "gr-window.h"
+#include "gr-number.h"
 
 struct _GrShoppingPage
 {
@@ -135,9 +136,35 @@ ing_row_activated (GtkListBox *list,
 }
 
 typedef struct {
+        GrNumber amount;
+        char *unit;
+} Unit;
+
+typedef struct {
         char *ingredient;
-        char **units;
+        GArray *units;
 } Ingredient;
+
+static void
+clear_unit (gpointer data)
+{
+        Unit *unit = data;
+
+        g_free (unit->unit);
+}
+
+static Ingredient *
+ingredient_new (const char *ingredient)
+{
+        Ingredient *ing;
+
+        ing = g_new0 (Ingredient, 1);
+        ing->ingredient = g_strdup (ingredient);
+        ing->units = g_array_new (FALSE, TRUE, sizeof (Unit));
+        g_array_set_clear_func (ing->units, clear_unit);
+
+        return ing;
+}
 
 static void
 ingredient_free (gpointer data)
@@ -145,8 +172,53 @@ ingredient_free (gpointer data)
         Ingredient *ing = data;
 
         g_free (ing->ingredient);
-        g_strfreev (ing->units);
+        g_array_free (ing->units, TRUE);
         g_free (ing);
+}
+
+static void
+ingredient_add (Ingredient *ing,
+                GrNumber   *amount,
+                const char *unit)
+{
+        int i;
+        Unit nu;
+
+        for (i = 0; i < ing->units->len; i++) {
+                Unit *u = &g_array_index (ing->units, Unit, i);
+
+                if (strcmp (u->unit, unit) == 0) {
+                        gr_number_add (&u->amount, amount, &u->amount);
+                        return;
+                }
+        }
+
+        nu.amount = *amount;
+        nu.unit = g_strdup (unit);
+
+        g_array_append_val (ing->units, nu);
+}
+
+static char *
+ingredient_format_unit (Ingredient *ing)
+{
+        g_autoptr(GString) s = NULL;
+        int i;
+
+        s = g_string_new ("");
+
+        for (i = 0; i < ing->units->len; i++) {
+                Unit *u = &g_array_index (ing->units, Unit, i);
+                g_autofree char *num = NULL;
+                if (s->len > 0)
+                        g_string_append (s, ", ");
+                num = gr_number_format (&(u->amount));
+                g_string_append (s, num);
+                g_string_append (s, " ");
+                g_string_append (s, u->unit);
+        }
+
+        return g_strdup (s->str);
 }
 
 static void
@@ -191,6 +263,7 @@ add_ingredient_row (GrShoppingPage *page,
 
 static void
 add_ingredient (GrShoppingPage *page,
+                GrNumber *amount,
                 const char *unit,
                 const char *ingredient)
 {
@@ -198,19 +271,11 @@ add_ingredient (GrShoppingPage *page,
 
         ing = g_hash_table_lookup (page->ingredients, ingredient);
         if (ing == NULL) {
-                ing = g_new0 (Ingredient, 1);
-                ing->ingredient = g_strdup (ingredient);
-                ing->units = g_new0 (char *, 2);
-                ing->units[0] = g_strdup (unit);
+                ing = ingredient_new (ingredient);
                 g_hash_table_insert (page->ingredients, g_strdup (ingredient), ing);
         }
-        else {
-                int len;
-                len = g_strv_length (ing->units);
-                ing->units = g_realloc (ing->units, len + 2);
-                ing->units[len] = g_strdup (unit);
-                ing->units[len + 1] = NULL;
-        }
+
+        ingredient_add (ing, amount, unit);
 }
 
 static void
@@ -227,9 +292,11 @@ collect_ingredients_from_recipe (GrShoppingPage *page,
                 g_auto(GStrv) ing = NULL;
                 ing = gr_ingredients_list_get_ingredients (il, seg[i]);
                 for (j = 0; ing[j]; j++) {
-                        g_autofree char *unit = NULL;
-                        unit = gr_ingredients_list_scale_unit (il, seg[i], ing[j], 1, 1);
-                        add_ingredient (page, unit, ing[j]);
+                        const char *unit;
+                        GrNumber *amount;
+                        amount = gr_ingredients_list_get_amount (il, seg[i], ing[j]);
+                        unit = gr_ingredients_list_get_unit (il, seg[i], ing[j]);
+                        add_ingredient (page, amount, unit, ing[j]);
                 }
         }
 }
@@ -263,7 +330,7 @@ collect_ingredients (GrShoppingPage *page)
         g_hash_table_iter_init (&iter, page->ingredients);
         while (g_hash_table_iter_next (&iter, NULL, (gpointer *)&ing)) {
                 g_autofree char *unit = NULL;
-                unit = g_strjoinv (", ", ing->units);
+                unit = ingredient_format_unit (ing);
                 add_ingredient_row (page, unit, ing->ingredient);
         }
 }
