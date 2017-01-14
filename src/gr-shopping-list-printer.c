@@ -63,8 +63,22 @@ struct _GrShoppingListPrinter
 G_DEFINE_TYPE (GrShoppingListPrinter, gr_shopping_list_printer, G_TYPE_OBJECT)
 
 static void
+finalize (GObject *object)
+{
+        GrShoppingListPrinter *printer = GR_SHOPPING_LIST_PRINTER (object);
+
+        g_clear_object (&printer->layout);
+        g_list_free (printer->page_breaks);
+        g_list_free_full (printer->recipes, g_object_unref);
+        g_list_free_full (printer->items, shopping_item_free);
+
+        G_OBJECT_CLASS (gr_shopping_list_printer_parent_class)->finalize (object);
+}
+
+static void
 gr_shopping_list_printer_class_init (GrShoppingListPrinterClass *klass)
 {
+        G_OBJECT_CLASS (klass)->finalize = finalize;
 }
 
 static void
@@ -266,7 +280,7 @@ draw_page (GtkPrintOperation *operation,
 static void
 print_done (GtkPrintOperation       *operation,
             GtkPrintOperationResult  res,
-            GrShoppingListPrinter         *printer)
+            GrShoppingListPrinter   *printer)
 {
        GError *error = NULL;
 
