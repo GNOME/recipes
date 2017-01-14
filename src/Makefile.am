@@ -100,6 +100,8 @@ recipes_SOURCES = \
 	gr-search-page.c	\
 	gr-season.h		\
 	gr-season.c		\
+	gr-shopping-page.h	\
+	gr-shopping-page.c	\
 	gr-timer.h		\
 	gr-timer.c		\
 	gr-timer-widget.h	\

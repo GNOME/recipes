@@ -337,12 +337,12 @@ populate_recipes_from_store (GrRecipesPage *self)
         }
 
         if (shopping == 1)
-                tmp = g_strdup_printf (_("Shopping list: <b>%s</b>"), shop1);
+                tmp = g_strdup_printf (_("Cook later: <b>%s</b>"), shop1);
         else if (shopping == 2)
-                tmp = g_strdup_printf (_("Shopping list: <b>%s and %s</b>"), shop1, shop2);
+                tmp = g_strdup_printf (_("Cook later: <b>%s and %s</b>"), shop1, shop2);
         else
-                tmp = g_strdup_printf (ngettext ("Shopping list: <b>%s, %s and %d other</b>",
-                                                 "Shopping list: <b>%s, %s and %d others</b>", shopping - 2), shop1, shop2, shopping - 2);
+                tmp = g_strdup_printf (ngettext ("Cook later: <b>%s, %s and %d other</b>",
+                                                 "Cook later: <b>%s, %s and %d others</b>", shopping - 2), shop1, shop2, shopping - 2);
         gtk_label_set_label (GTK_LABEL (self->shopping_list), tmp);
         g_free (tmp);
 

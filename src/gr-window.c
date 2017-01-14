@@ -30,6 +30,7 @@
 #include "gr-list-page.h"
 #include "gr-cuisine-page.h"
 #include "gr-search-page.h"
+#include "gr-shopping-page.h"
 #include "gr-recipes-page.h"
 #include "gr-cuisines-page.h"
 #include "gr-ingredients-page.h"
@@ -53,6 +54,7 @@ struct _GrWindow
         GtkWidget *details_page;
         GtkWidget *edit_page;
         GtkWidget *list_page;
+        GtkWidget *shopping_page;
         GtkWidget *search_page;
         GtkWidget *cuisines_page;
         GtkWidget *cuisine_page;
@@ -430,6 +432,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrWindow, details_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, edit_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, list_page);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, shopping_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, search_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, cuisines_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, cuisine_page);
@@ -644,15 +647,14 @@ gr_window_show_shopping (GrWindow *window)
 {
         save_back_entry (window);
 
-        gr_list_page_populate_from_shopping (GR_LIST_PAGE (window->list_page));
-
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Shopping list"));
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Cook it later"));
+        gr_shopping_page_populate (GR_SHOPPING_PAGE (window->shopping_page));
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
 
-        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "list");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "shopping");
 }
 
 void

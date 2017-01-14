@@ -237,6 +237,12 @@
                   </packing>
                 </child>
                 <child>
+                  <object class="GrShoppingPage" id="shopping_page"/>
+                  <packing>
+                    <property name="name">shopping</property>
+                  </packing>
+                </child>
+                <child>
                   <object class="GrSearchPage" id="search_page"/>
                   <packing>
                     <property name="name">search</property>

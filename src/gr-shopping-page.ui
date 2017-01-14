@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="recipes">
+  <!-- interface-requires gtk+ 3.8 -->
+  <template class="GrShoppingPage" parent="GtkBox">
+    <property name="visible">True</property>
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="GtkScrolledWindow">
+        <property name="visible">1</property>
+        <property name="expand">1</property>
+        <property name="hscrollbar-policy">never</property>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">1</property>
+            <property name="orientation">vertical</property>
+            <property name="halign">center</property>
+            <property name="margin-start">80</property>
+            <property name="margin-end">80</property>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">1</property>
+                <property name="orientation">horizontal</property>
+                <property name="spacing">20</property>
+                <property name="margin-top">20</property>
+                <property name="margin-bottom">20</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">1</property>
+                    <property name="valign">end</property>
+                    <property name="icon-name">shoppingcart-symbolic</property>
+                    <property name="pixel-size">48</property>
+                    <style>
+                      <class name="heading"/>
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="xalign">0</property>
+                    <property name="valign">end</property>
+                    <property name="label" translatable="yes">Cook it Later</property>
+                    <style>
+                      <class name="heading"/>
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="recipe_count_label">
+                <property name="visible">1</property>
+                <property name="xalign">0</property>
+                <property name="margin-bottom">10</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkFlowBox" id="recipe_list">
+                <property name="visible">1</property>
+                <property name="halign">center</property>
+                <property name="valign">start</property>
+                <property name="row-spacing">20</property>
+                <property name="column-spacing">20</property>
+                <property name="margin-bottom">20</property>
+                <property name="homogeneous">1</property>
+                <property name="min-children-per-line">3</property>
+                <property name="max-children-per-line">3</property>
+                <property name="selection-mode">none</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="ingredients_count_label">
+                <property name="visible">1</property>
+                <property name="xalign">0</property>
+                <property name="margin-bottom">10</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkListBox" id="ingredients_list">
+                <property name="visible">1</property>
+                <property name="selection-mode">none</property>
+                <property name="margin-bottom">20</property>
+                <style>
+                  <class name="frame"/>
+                </style>
+                <child type="placeholder">
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="margin-start">20</property>
+                    <property name="margin-end">20</property>
+                    <property name="margin-top">10</property>
+                    <property name="margin-bottom">10</property>
+                    <property name="label" translatable="yes">No shopping necessary!</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkActionBar">
+        <property name="visible">1</property>
+        <child>
+          <object class="GtkButton">
+            <property name="visible">1</property>
+            <property name="use-underline">1</property>
+            <property name="label" translatable="yes">_Edit</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton">
+            <property name="visible">1</property>
+            <property name="use-underline">1</property>
+            <property name="label" translatable="yes">_Clear List</property>
+            <signal name="clicked" handler="clear_list" swapped="yes"/>
+            <style>
+              <class name="destructive-action"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton">
+            <property name="visible">1</property>
+            <property name="use-underline">1</property>
+            <property name="label" translatable="yes">E_xport</property>
+          </object>
+          <packing>
+            <property name="pack-type">end</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton">
+            <property name="visible">1</property>
+            <property name="use-underline">1</property>
+            <property name="label" translatable="yes">_Print</property>
+          </object>
+          <packing>
+            <property name="pack-type">end</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

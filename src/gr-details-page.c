@@ -140,6 +140,7 @@ struct _GrDetailsPage
         GtkWidget *time_spin;
         GtkWidget *start_button;
         GtkWidget *favorite_button;
+        GtkWidget *shop_button;
         GtkWidget *duration_stack;
         GtkWidget *remaining_time_label;
         GtkWidget *chef_label;
@@ -517,7 +518,7 @@ shop_it (GrDetailsPage *page)
         GrRecipeStore *store;
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
-        if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->favorite_button)))
+        if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->shop_button)))
                 gr_recipe_store_add_to_shopping (store, page->recipe);
         else
                 gr_recipe_store_remove_from_shopping (store, page->recipe);
@@ -742,6 +743,7 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, time_spin);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, start_button);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, favorite_button);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, shop_button);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, duration_stack);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, remaining_time_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, chef_label);
@@ -900,6 +902,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         g_autoptr(GArray) images = NULL;
         gboolean cooking;
         gboolean favorite;
+        gboolean shopping;
 
         g_set_object (&page->recipe, recipe);
 
@@ -943,6 +946,9 @@ gr_details_page_set_recipe (GrDetailsPage *page,
 
         favorite = gr_recipe_store_is_favorite (store, recipe);
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->favorite_button), favorite);
+
+        shopping = gr_recipe_store_is_in_shopping (store, recipe);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->shop_button), shopping);
 
         chef = gr_recipe_store_get_chef (store, author);
         g_set_object (&page->chef, chef);
@@ -994,9 +1000,12 @@ details_page_reload (GrDetailsPage *page,
         const char *name;
         const char *new_name;
 
+        if (recipe == NULL || page->recipe == NULL)
+                return;
+
         name = gr_recipe_get_id (page->recipe);
         new_name = gr_recipe_get_id (recipe);
-        if (strcmp (name, new_name) == 0)
+        if (g_strcmp0 (name, new_name) == 0)
                 gr_details_page_set_recipe (page, recipe);
 }
 
