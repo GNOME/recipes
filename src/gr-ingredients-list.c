@@ -30,15 +30,6 @@
 #include "gr-utils.h"
 
 
-/* Parsing ingredients is tricky business. We operate under the following
- * assumptions:
- * - Each line is one ingredient
- * - The first word is the amount
- * - the amount can be written as 'a' or a decimal number, or a fraction
- * - The second word may be a unit, or it may be part of the name
- * - All remaining words make up the name of the integredient
- */
-
 typedef struct
 {
         GrNumber amount;
