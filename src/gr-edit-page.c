@@ -2186,6 +2186,11 @@ gr_edit_page_save (GrEditPage *page)
                               NULL);
                 ret = gr_recipe_store_update_recipe (store, page->recipe, old_id, &error);
         }
+        else if (name == NULL || name[0] == '\0') {
+                g_set_error (&error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                             _("You need to provide a name for the recipe"));
+                ret = FALSE;
+        }
         else {
                 g_autoptr(GrRecipe) recipe = NULL;
                 const char *author;
@@ -2215,12 +2220,9 @@ gr_edit_page_save (GrEditPage *page)
                 g_set_object (&page->recipe, recipe);
         }
 
-        if (!ret)
-                goto error;
+        if (ret)
+          return TRUE;
 
-        return TRUE;
-
-error:
         gtk_label_set_label (GTK_LABEL (page->error_label), error->message);
         gtk_revealer_set_reveal_child (GTK_REVEALER (page->error_revealer), TRUE);
 
