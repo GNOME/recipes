@@ -100,6 +100,9 @@ gr_ingredients_list_add_one (GrIngredientsList  *ingredients,
         return TRUE;
 }
 
+/* this code should go away when we get rid of all the test data which uses
+ * that format
+ */
 static gboolean
 gr_ingredients_list_populate (GrIngredientsList  *ingredients,
                               const char         *text,
@@ -364,3 +367,43 @@ gr_ingredients_list_scale_unit (GrIngredientsList *ingredients,
 
         return NULL;
 }
+
+const char *
+gr_ingredients_list_get_unit (GrIngredientsList *ingredients,
+                              const char        *segment,
+                              const char        *name)
+{
+        GList *l;
+
+        for (l = ingredients->ingredients; l; l = l->next) {
+                Ingredient *ing = (Ingredient *)l->data;
+
+                if (g_strcmp0 (segment, ing->segment) == 0 &&
+                    g_strcmp0 (name, ing->name) == 0) {
+                        return ing->unit;
+                }
+        }
+
+        return NULL;
+}
+
+GrNumber *
+gr_ingredients_list_get_amount (GrIngredientsList *ingredients,
+                                const char        *segment,
+                                const char        *name)
+{
+        GList *l;
+
+        for (l = ingredients->ingredients; l; l = l->next) {
+                Ingredient *ing = (Ingredient *)l->data;
+
+                if (g_strcmp0 (segment, ing->segment) == 0 &&
+                    g_strcmp0 (name, ing->name) == 0) {
+                        return &ing->amount;
+                }
+        }
+
+        return NULL;
+}
+
+
