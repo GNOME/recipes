@@ -33,7 +33,6 @@
 #include "gr-shopping-page.h"
 #include "gr-recipes-page.h"
 #include "gr-cuisines-page.h"
-#include "gr-ingredients-page.h"
 #include "gr-query-editor.h"
 #include "gr-recipe-importer.h"
 
@@ -58,7 +57,6 @@ struct _GrWindow
         GtkWidget *search_page;
         GtkWidget *cuisines_page;
         GtkWidget *cuisine_page;
-        GtkWidget *ingredients_page;
         GtkWidget *undo_revealer;
         GtkWidget *undo_label;
         GrRecipe  *undo_recipe;
@@ -286,11 +284,6 @@ window_keypress_handler (GtkWidget *widget,
         const char *visible;
 
         visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
-        if (strcmp (visible, "ingredients") == 0) {
-                gr_ingredients_page_scroll (GR_INGREDIENTS_PAGE (window->ingredients_page),
-                                            ((GdkEventKey*)event)->string);
-                return GDK_EVENT_STOP;
-        }
 
         if (strcmp (visible, "recipes") != 0 &&
             strcmp (visible, "cuisines") != 0 &&
@@ -436,7 +429,6 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrWindow, search_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, cuisines_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, cuisine_page);
-        gtk_widget_class_bind_template_child (widget_class, GrWindow, ingredients_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, undo_revealer);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, undo_label);
 

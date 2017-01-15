@@ -62,12 +62,8 @@ recipes_SOURCES = \
 	gr-ingredient.c		\
 	gr-ingredient-row.h	\
 	gr-ingredient-row.c	\
-	gr-ingredient-tile.h	\
-	gr-ingredient-tile.c	\
 	gr-ingredients-list.h	\
 	gr-ingredients-list.c	\
-	gr-ingredients-page.h	\
-	gr-ingredients-page.c	\
 	gr-list-page.h		\
 	gr-list-page.c		\
 	gr-meal.h		\
