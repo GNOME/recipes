@@ -85,73 +85,36 @@
                 <child>
                   <object class="GtkGrid" id="grid">
                     <property name="visible">1</property>
-                    <property name="margin">6</property>
-                    <property name="row-spacing">12</property>
-                    <property name="column-spacing">6</property>
+                    <property name="margin">10</property>
+                    <property name="row-spacing">10</property>
+                    <property name="column-spacing">10</property>
                     <property name="margin-top">20</property>
                     <property name="margin-bottom">20</property>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="visible">1</property>
-                        <property name="label" translatable="yes">_Name:</property>
-                        <property name="use-underline">1</property>
-                        <property name="mnemonic-widget">fullname</property>
-                        <property name="xalign">1</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">0</property>
-                        <property name="top-attach">1</property>
-                      </packing>
-                    </child>
-                    <child>
                       <object class="GtkEntry" id="fullname">
                         <property name="visible">1</property>
+                        <property name="placeholder-text" translatable="yes">Name…</property>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
                         <property name="top-attach">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">1</property>
-                        <property name="label" translatable="yes">_Short Name:</property>
-                        <property name="use-underline">1</property>
-                        <property name="mnemonic-widget">name</property>
-                        <property name="xalign">1</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">0</property>
-                        <property name="top-attach">2</property>
                       </packing>
                     </child>
                     <child>
                       <object class="GtkEntry" id="name">
                         <property name="visible">1</property>
+                        <property name="placeholder-text" translatable="yes">Short Name…</property>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
                         <property name="top-attach">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">1</property>
-                        <property name="label" translatable="yes">_Description:</property>
-                        <property name="use-underline">1</property>
-                        <property name="mnemonic-widget">description</property>
-                        <property name="xalign">1</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">0</property>
-                        <property name="top-attach">3</property>
                       </packing>
                     </child>
                     <child>
                       <object class="GtkScrolledWindow">
                         <property name="visible">1</property>
                         <property name="shadow-type">in</property>
-                        <property name="min-content-height">60</property>
+                        <property name="min-content-height">80</property>
                         <child>
                           <object class="GtkTextView" id="description">
                             <property name="visible">1</property>
@@ -164,21 +127,9 @@
                         </child>
                       </object>
                       <packing>
-                        <property name="left-attach">1</property>
-                        <property name="top-attach">3</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">1</property>
-                        <property name="label" translatable="yes">_Picture:</property>
-                        <property name="use-underline">1</property>
-                        <property name="mnemonic-widget">button</property>
-                        <property name="xalign">1</property>
-                      </object>
-                      <packing>
                         <property name="left-attach">0</property>
-                        <property name="top-attach">4</property>
+                        <property name="top-attach">3</property>
+                        <property name="width">2</property>
                       </packing>
                     </child>
                     <child>
@@ -189,12 +140,15 @@
                         <child>
                           <object class="GtkImage" id="image">
                             <property name="visible">1</property>
+                            <property name="width-request">64</property>
+                            <property name="height-request">64</property>
                           </object>
                         </child>
                       </object>
                       <packing>
-                        <property name="left-attach">1</property>
-                        <property name="top-attach">4</property>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">1</property>
+                        <property name="height">2</property>
                       </packing>
                     </child>
                   </object>
