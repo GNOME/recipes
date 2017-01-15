@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: recipes 0.1.0\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=recipes\n"
-"POT-Creation-Date: 2017-01-14 16:25-0500\n"
+"POT-Creation-Date: 2017-01-14 21:22-0500\n"
 "PO-Revision-Date: 2016-11-12 16:20-0500\n"
 "Last-Translator: Matthias Clasen <mclasen@redhat.com>\n"
 "Language-Team: None\n"
@@ -737,7 +737,7 @@ msgstr "_Speichern"
 
 #: src/gr-window.ui:194
 msgid "Undo"
-msgstr ""
+msgstr "Rückgängig"
 
 #: src/gr-window.ui:255
 msgid "Cuisines"
@@ -1114,7 +1114,7 @@ msgstr "s"
 
 #: src/gr-details-page.c:656
 msgid "Could not find this recipe."
-msgstr ""
+msgstr "Rezept nicht gefunden."
 
 #: src/gr-details-page.c:961 src/gr-edit-page.c:1850
 #, c-format
@@ -1958,166 +1958,186 @@ msgid "Cheese"
 msgstr "Käse"
 
 #: src/ingredients.c:28
-msgid "Chocolate frosting"
+msgid "Cherries, pitted"
 msgstr ""
 
 #: src/ingredients.c:29
+msgid "Chocolate frosting"
+msgstr ""
+
+#: src/ingredients.c:30
 msgid "Cocoa powder"
 msgstr "Kakaopulver"
 
-#: src/ingredients.c:30
+#: src/ingredients.c:31
 msgid "Couscous"
 msgstr "Couscous"
 
-#: src/ingredients.c:31
+#: src/ingredients.c:32
 msgid "Date"
 msgstr "Dattel"
 
-#: src/ingredients.c:32
+#: src/ingredients.c:33
 msgid "Egg"
 msgstr "Ei"
 
-#: src/ingredients.c:33
+#: src/ingredients.c:34
 msgid "Fig"
 msgstr "Feige"
 
-#: src/ingredients.c:34
+#: src/ingredients.c:35
 msgid "Flour"
 msgstr "Mehl"
 
-#: src/ingredients.c:35
+#: src/ingredients.c:36
 msgid "Garlic"
 msgstr "Knoblauch"
 
-#: src/ingredients.c:36
+#: src/ingredients.c:37
 msgid "Ground beef"
 msgstr "Hackfleisch"
 
-#: src/ingredients.c:37
+#: src/ingredients.c:38
 msgid "Honey"
 msgstr "Honig"
 
-#: src/ingredients.c:38
+#: src/ingredients.c:39
 msgid "Lemon"
 msgstr "Zitrone"
 
-#: src/ingredients.c:39
+#: src/ingredients.c:40
 msgid "Linseeds"
 msgstr "Leinsamen"
 
-#: src/ingredients.c:40
+#: src/ingredients.c:41
 msgid "Mayonnaise"
 msgstr "Mayonnaise"
 
-#: src/ingredients.c:41
+#: src/ingredients.c:42
 msgid "Milk"
 msgstr "Milch"
 
-#: src/ingredients.c:42
+#: src/ingredients.c:43
 msgid "Mustard"
 msgstr "Senf"
 
-#: src/ingredients.c:43
+#: src/ingredients.c:44
 msgid "Oatmeal"
 msgstr "Hafer"
 
-#: src/ingredients.c:44
+#: src/ingredients.c:45
 msgid "Oil"
 msgstr "Öl"
 
-#: src/ingredients.c:45
+#: src/ingredients.c:46
 msgid "Onion"
 msgstr "Zwiebel"
 
-#: src/ingredients.c:46
+#: src/ingredients.c:47
 msgid "Olive oil, extra-virgin"
 msgstr "Olivenöl, extra-virgin"
 
-#: src/ingredients.c:47
+#: src/ingredients.c:48
 msgid "Orange"
 msgstr "Apfelsine"
 
-#: src/ingredients.c:48
+#: src/ingredients.c:49
 msgid "Parsley"
 msgstr "Petersilie"
 
-#: src/ingredients.c:49
+#: src/ingredients.c:50
 msgid "Peperoni"
 msgstr "Peperoni"
 
-#: src/ingredients.c:50
+#: src/ingredients.c:51
 msgid "Pepper"
 msgstr "Paprika"
 
-#: src/ingredients.c:51
+#: src/ingredients.c:52
+msgid "Peppers"
+msgstr "Paprika"
+
+#: src/ingredients.c:53
 msgid "Pizza sauce"
 msgstr "Pizzasauce"
 
-#: src/ingredients.c:52
+#: src/ingredients.c:54
 msgid "Potato"
 msgstr "Kartoffel"
 
-#: src/ingredients.c:53
+#: src/ingredients.c:55
 msgid "Pumpkin seeds"
 msgstr "Kürbiskerne"
 
-#: src/ingredients.c:54
+#: src/ingredients.c:56
 msgid "Salt"
 msgstr "Salz"
 
-#: src/ingredients.c:55
+#: src/ingredients.c:57
 msgid "Silantro"
 msgstr "Silantro"
 
-#: src/ingredients.c:56
+#: src/ingredients.c:58
+msgid "Soy sauce"
+msgstr "Sojasosse"
+
+#: src/ingredients.c:59
 msgid "Sugar"
 msgstr "Zucker"
 
-#: src/ingredients.c:57
+#: src/ingredients.c:60
 msgid "Sunflower seeds"
 msgstr "Sonnenblumenkerne"
 
-#: src/ingredients.c:58
+#: src/ingredients.c:61
 msgid "Squash"
 msgstr "Kürbis"
 
-#: src/ingredients.c:59
+#: src/ingredients.c:62
 msgid "Tangerine"
 msgstr "Mandarine"
 
-#: src/ingredients.c:60
+#: src/ingredients.c:63
+msgid "Tofu"
+msgstr "Tofu"
+
+#: src/ingredients.c:64
 msgid "Tomato"
 msgstr "Tomate"
 
-#: src/ingredients.c:61
+#: src/ingredients.c:65
+msgid "Tumeric ground"
+msgstr "Kurkuma"
+
+#: src/ingredients.c:66
 msgid "Vanilla sugar"
 msgstr "Vanillezucker"
 
-#: src/ingredients.c:62
+#: src/ingredients.c:67
 msgid "Vanilla pudding"
 msgstr "Vanillepudding"
 
-#: src/ingredients.c:63
+#: src/ingredients.c:68
 msgid "Vinegar"
 msgstr "Essig"
 
-#: src/ingredients.c:64
+#: src/ingredients.c:69
 msgid "Water"
 msgstr "Wasser"
 
-#: src/ingredients.c:65
+#: src/ingredients.c:70
 msgid "Wine"
 msgstr "Wein"
 
-#: src/ingredients.c:66
+#: src/ingredients.c:71
 msgid "Yeast"
 msgstr "Hefe"
 
-#: src/ingredients.c:67
+#: src/ingredients.c:72
 msgid "Yoghurt"
 msgstr "Joghurt"
 
-#: src/ingredients.c:68
+#: src/ingredients.c:73
 msgid "Zinfandel"
 msgstr "Zinfandel"
 
@@ -2230,166 +2250,186 @@ msgid "no Cheese"
 msgstr "kein Käse"
 
 #: src/no-ingredients.c:28
+msgid "no Cherries, pitted"
+msgstr "ohne entsteinte Kirschen"
+
+#: src/no-ingredients.c:29
 msgid "no Chocolate frosting"
 msgstr "keine Schokoglasure"
 
-#: src/no-ingredients.c:29
+#: src/no-ingredients.c:30
 msgid "no Cocoa powder"
 msgstr "kein Kakaopulver"
 
-#: src/no-ingredients.c:30
+#: src/no-ingredients.c:31
 msgid "no Couscous"
 msgstr "ohne Couscous"
 
-#: src/no-ingredients.c:31
+#: src/no-ingredients.c:32
 msgid "no Date"
 msgstr "ohne Datteln"
 
-#: src/no-ingredients.c:32
+#: src/no-ingredients.c:33
 msgid "no Egg"
 msgstr "ohne Ei"
 
-#: src/no-ingredients.c:33
+#: src/no-ingredients.c:34
 msgid "no Fig"
 msgstr "ohne Feigen"
 
-#: src/no-ingredients.c:34
+#: src/no-ingredients.c:35
 msgid "no Flour"
 msgstr "ohne Mehl"
 
-#: src/no-ingredients.c:35
+#: src/no-ingredients.c:36
 msgid "no Garlic"
 msgstr "kein Knoblauch"
 
-#: src/no-ingredients.c:36
+#: src/no-ingredients.c:37
 msgid "no Ground beef"
 msgstr "kein Hackfleisch"
 
-#: src/no-ingredients.c:37
+#: src/no-ingredients.c:38
 msgid "no Honey"
 msgstr "ohne Honig"
 
-#: src/no-ingredients.c:38
+#: src/no-ingredients.c:39
 msgid "no Lemon"
 msgstr "ohne Zitrone"
 
-#: src/no-ingredients.c:39
+#: src/no-ingredients.c:40
 msgid "no Linseeds"
 msgstr "keine Leinsamen"
 
-#: src/no-ingredients.c:40
+#: src/no-ingredients.c:41
 msgid "no Mayonnaise"
 msgstr "ohne Mayonnaise"
 
-#: src/no-ingredients.c:41
+#: src/no-ingredients.c:42
 msgid "no Milk"
 msgstr "ohne Milch"
 
-#: src/no-ingredients.c:42
+#: src/no-ingredients.c:43
 msgid "no Mustard"
 msgstr "ohne Senf"
 
-#: src/no-ingredients.c:43
+#: src/no-ingredients.c:44
 msgid "no Oatmeal"
 msgstr "ohne Hafer"
 
-#: src/no-ingredients.c:44
+#: src/no-ingredients.c:45
 msgid "no Oil"
 msgstr "ohne Öl"
 
-#: src/no-ingredients.c:45
+#: src/no-ingredients.c:46
 msgid "no Onion"
 msgstr "ohne Zwiebeln"
 
-#: src/no-ingredients.c:46
+#: src/no-ingredients.c:47
 msgid "no Olive oil, extra-virgin"
 msgstr "ohne Olivenöl"
 
-#: src/no-ingredients.c:47
+#: src/no-ingredients.c:48
 msgid "no Orange"
 msgstr "ohne Apfelsine"
 
-#: src/no-ingredients.c:48
+#: src/no-ingredients.c:49
 msgid "no Parsley"
 msgstr "ohne Petersilie"
 
-#: src/no-ingredients.c:49
+#: src/no-ingredients.c:50
 msgid "no Peperoni"
 msgstr "ohne Peperoni"
 
-#: src/no-ingredients.c:50
+#: src/no-ingredients.c:51
 msgid "no Pepper"
 msgstr "ohne Paprika"
 
-#: src/no-ingredients.c:51
+#: src/no-ingredients.c:52
+msgid "no Peppers"
+msgstr "ohne Paprika"
+
+#: src/no-ingredients.c:53
 msgid "no Pizza sauce"
 msgstr "ohne Pizzasauce"
 
-#: src/no-ingredients.c:52
+#: src/no-ingredients.c:54
 msgid "no Potato"
 msgstr "ohne Kartoffeln"
 
-#: src/no-ingredients.c:53
+#: src/no-ingredients.c:55
 msgid "no Pumpkin seeds"
 msgstr "keine Kürbiskerne"
 
-#: src/no-ingredients.c:54
+#: src/no-ingredients.c:56
 msgid "no Salt"
 msgstr "ohne Salz"
 
-#: src/no-ingredients.c:55
+#: src/no-ingredients.c:57
 msgid "no Silantro"
 msgstr "ohne Silantro"
 
-#: src/no-ingredients.c:56
+#: src/no-ingredients.c:58
+msgid "no Soy sauce"
+msgstr "ohne Sojasosse"
+
+#: src/no-ingredients.c:59
 msgid "no Sugar"
 msgstr "ohne Zucker"
 
-#: src/no-ingredients.c:57
+#: src/no-ingredients.c:60
 msgid "no Sunflower seeds"
 msgstr "keine Sonnenblumenkerne"
 
-#: src/no-ingredients.c:58
+#: src/no-ingredients.c:61
 msgid "no Squash"
 msgstr "ohne Kürbis"
 
-#: src/no-ingredients.c:59
+#: src/no-ingredients.c:62
 msgid "no Tangerine"
 msgstr "ohne Mandarine"
 
-#: src/no-ingredients.c:60
+#: src/no-ingredients.c:63
+msgid "no Tofu"
+msgstr "ohne Tofu"
+
+#: src/no-ingredients.c:64
 msgid "no Tomato"
 msgstr "ohne Tomate"
 
-#: src/no-ingredients.c:61
+#: src/no-ingredients.c:65
+msgid "no Tumeric ground"
+msgstr  "Kurkuma"
+
+#: src/no-ingredients.c:66
 msgid "no Vanilla sugar"
 msgstr "ohne Vanillezucker"
 
-#: src/no-ingredients.c:62
+#: src/no-ingredients.c:67
 msgid "no Vanilla pudding"
 msgstr "ohne Vanillepudding"
 
-#: src/no-ingredients.c:63
+#: src/no-ingredients.c:68
 msgid "no Vinegar"
 msgstr "ohne Essig"
 
-#: src/no-ingredients.c:64
+#: src/no-ingredients.c:69
 msgid "no Water"
 msgstr "ohne Wasser"
 
-#: src/no-ingredients.c:65
+#: src/no-ingredients.c:70
 msgid "no Wine"
 msgstr "ohne Wein"
 
-#: src/no-ingredients.c:66
+#: src/no-ingredients.c:71
 msgid "no Yeast"
 msgstr "ohne Hefe"
 
-#: src/no-ingredients.c:67
+#: src/no-ingredients.c:72
 msgid "no Yoghurt"
 msgstr "ohne Joghurt"
 
-#: src/no-ingredients.c:68
+#: src/no-ingredients.c:73
 msgid "no Zinfandel"
 msgstr "ohne Zinfandel"
 
