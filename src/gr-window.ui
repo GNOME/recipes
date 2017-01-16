@@ -237,6 +237,12 @@
                   </packing>
                 </child>
                 <child>
+                  <object class="GrListPage" id="chef_page"/>
+                  <packing>
+                    <property name="name">chef</property>
+                  </packing>
+                </child>
+                <child>
                   <object class="GrShoppingPage" id="shopping_page">
                     <signal name="notify::title" handler="shopping_title_changed" swapped="yes"/>
                   </object>

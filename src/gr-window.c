@@ -53,6 +53,7 @@ struct _GrWindow
         GtkWidget *details_page;
         GtkWidget *edit_page;
         GtkWidget *list_page;
+        GtkWidget *chef_page;
         GtkWidget *shopping_page;
         GtkWidget *search_page;
         GtkWidget *cuisines_page;
@@ -440,6 +441,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrWindow, details_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, edit_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, list_page);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, chef_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, shopping_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, search_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, cuisines_page);
@@ -604,7 +606,7 @@ gr_window_show_chef (GrWindow *window,
 
         save_back_entry (window);
 
-        gr_list_page_populate_from_chef (GR_LIST_PAGE (window->list_page), chef);
+        gr_list_page_populate_from_chef (GR_LIST_PAGE (window->chef_page), chef);
 
         title = g_strdup_printf (_("Chefs: %s"), gr_chef_get_fullname (chef));
         gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), title);
@@ -613,7 +615,7 @@ gr_window_show_chef (GrWindow *window,
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
 
-        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "list");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "chef");
 }
 
 void
@@ -678,7 +680,7 @@ gr_window_show_myself (GrWindow *window)
 
         name = gr_recipe_store_get_user_key (store);
         chef = gr_recipe_store_get_chef (store, name);
-        gr_list_page_populate_from_chef (GR_LIST_PAGE (window->list_page), chef);
+        gr_list_page_populate_from_chef (GR_LIST_PAGE (window->chef_page), chef);
 
         gtk_header_bar_set_title (GTK_HEADER_BAR (window->header ), _("My own recipes"));
 
@@ -686,7 +688,7 @@ gr_window_show_myself (GrWindow *window)
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
 
-        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "list");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "chef");
 }
 
 void
