@@ -237,7 +237,9 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GrShoppingPage" id="shopping_page"/>
+                  <object class="GrShoppingPage" id="shopping_page">
+                    <signal name="notify::title" handler="shopping_title_changed" swapped="yes"/>
+                  </object>
                   <packing>
                     <property name="name">shopping</property>
                   </packing>

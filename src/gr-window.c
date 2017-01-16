@@ -404,6 +404,21 @@ gr_window_offer_undelete (GrWindow *window,
 }
 
 static void
+shopping_title_changed (GrWindow *window)
+{
+        const char *page;
+
+        page = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
+
+        if (strcmp (page, "shopping") == 0) {
+                g_autofree char *title = NULL;
+
+                g_object_get (window->shopping_page, "title", &title, NULL);
+                gtk_window_set_title (GTK_WINDOW (window), title);
+        }
+}
+
+static void
 gr_window_class_init (GrWindowClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -444,6 +459,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, window_mapped_handler);
         gtk_widget_class_bind_template_callback (widget_class, do_undo);
         gtk_widget_class_bind_template_callback (widget_class, close_undo);
+        gtk_widget_class_bind_template_callback (widget_class, shopping_title_changed);
 }
 
 static void
@@ -640,13 +656,13 @@ gr_window_show_shopping (GrWindow *window)
         save_back_entry (window);
 
         gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Cook it later"));
-        gr_shopping_page_populate (GR_SHOPPING_PAGE (window->shopping_page));
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "shopping");
+        gr_shopping_page_populate (GR_SHOPPING_PAGE (window->shopping_page));
 }
 
 void
