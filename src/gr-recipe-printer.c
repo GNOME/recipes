@@ -67,6 +67,82 @@ gr_recipe_printer_new (GtkWindow *parent)
         return printer;
 }
 
+typedef struct {
+        GString *string;
+        gboolean ignore;
+} ParserData;
+
+static void
+start_element (GMarkupParseContext  *context,
+               const char           *element_name,
+               const char          **attribute_names,
+               const char          **attribute_values,
+               gpointer              user_data,
+               GError              **error)
+{
+        ParserData *data = user_data;
+
+        if (strcmp (element_name, "a") == 0)
+                data->ignore = TRUE;
+}
+
+static void
+end_element (GMarkupParseContext  *context,
+             const char           *element_name,
+             gpointer              user_data,
+             GError              **error)
+{
+        ParserData *data = user_data;
+
+        if (strcmp (element_name, "a") == 0)
+                data->ignore = FALSE;
+}
+
+static void
+text (GMarkupParseContext  *context,
+      const char           *text,
+      gsize                 text_len,
+      gpointer              user_data,
+      GError              **error)
+{
+        ParserData *data = user_data;
+
+        if (!data->ignore)
+                g_string_append_len (data->string, text, text_len);
+}
+
+static GMarkupParser parser = {
+       start_element,
+       end_element,
+       text,
+       NULL,
+       NULL,
+};
+
+static char *
+strip_links (const char *text)
+{
+        g_autoptr(GMarkupParseContext) context = NULL;
+        g_autoptr(GString) string = NULL;
+        g_autoptr(GError) error = NULL;
+        ParserData data;
+
+        string = g_string_new ("");
+        data.string = string;
+        data.ignore = FALSE;
+
+        context = g_markup_parse_context_new (&parser, 0, &data, NULL);
+
+        if (!g_markup_parse_context_parse (context, "<instructions>", -1, &error) ||
+            !g_markup_parse_context_parse (context, text, -1, &error) ||
+            !g_markup_parse_context_parse (context, "</instructions>", -1, &error)) {
+                g_message ("Failed to parse instructions: %s", error->message);
+                return g_strdup ("");
+        }
+
+        return g_strdup (string->str);
+}
+
 static void
 begin_print (GtkPrintOperation *operation,
              GtkPrintContext   *context,
@@ -92,6 +168,7 @@ begin_print (GtkPrintOperation *operation,
         PangoTabArray *tabs;
         g_autofree char **segs = NULL;
         g_auto(GStrv) ings = NULL;
+        g_autofree char *instructions = NULL;
 
         width = gtk_print_context_get_width (context);
         height = gtk_print_context_get_height (context);
@@ -210,8 +287,10 @@ begin_print (GtkPrintOperation *operation,
         attr->end_index = s->len + 1;
         pango_attr_list_insert (attrs, attr);
 
+        instructions = strip_links (gr_recipe_get_translated_instructions (printer->recipe));
+
         g_string_append (s, "\n\n");
-        g_string_append (s, gr_recipe_get_translated_instructions (printer->recipe));
+        g_string_append (s, instructions);
 
         pango_layout_set_text (printer->bottom_layout, s->str, s->len);
         pango_layout_set_attributes (printer->bottom_layout, attrs);
