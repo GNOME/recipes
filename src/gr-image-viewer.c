@@ -440,6 +440,7 @@ gr_image_viewer_set_images (GrImageViewer *viewer,
         populate_preview (viewer);
         viewer->index = 0;
         set_current_image (viewer);
+        hide_controls (viewer);
 
         g_object_thaw_notify (G_OBJECT (viewer));
 }
