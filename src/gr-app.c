@@ -356,15 +356,18 @@ text_buffer_append_printf (GtkTextBuffer *buffer,
 }
 
 static void
-text_buffer_append_link (GtkTextBuffer *buffer,
+text_buffer_append_link (GtkTextView *view,
+                         GtkTextBuffer *buffer,
                          const char    *name,
                          const char    *uri)
 {
         GdkRGBA color;
         GtkTextTag *tag;
         GtkTextIter iter;
+        GtkStateFlags state = gtk_widget_get_state_flags (GTK_WIDGET (view));
+        GtkStyleContext *context = gtk_widget_get_style_context (GTK_WIDGET (view));
 
-        gdk_rgba_parse (&color, "blue");
+        gtk_style_context_get_color (context, state | GTK_STATE_FLAG_LINK, &color);
 
         tag = gtk_text_buffer_create_tag (buffer, NULL,
                                           "foreground-rgba", &color,
@@ -435,19 +438,19 @@ populate_system_tab (GtkTextView *view)
 
 #if ENABLE_AUTOAR
                 text_buffer_append_printf (buffer, "\tgnome-autoar\t%s\t", AUTOAR_VERSION);
-                text_buffer_append_link (buffer, "LGPLv2", "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
+                text_buffer_append_link (view, buffer, "LGPLv2", "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
                 text_buffer_append (buffer, "\n");
 #endif
 #if ENABLE_GSPELL
                 text_buffer_append_printf (buffer, "\tgspell\t%s\t", GSPELL_VERSION);
-                text_buffer_append_link (buffer, "LGPLv2", "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
+                text_buffer_append_link (view, buffer, "LGPLv2", "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
                 text_buffer_append (buffer, "\n");
 #endif
                 text_buffer_append_printf (buffer, "\tlibgd\t%s\t", LIBGD_INFO);
-                text_buffer_append_link (buffer, "LGPLv2", "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
+                text_buffer_append_link (view, buffer, "LGPLv2", "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
                 text_buffer_append (buffer, "\n");
                 text_buffer_append_printf (buffer, "\tlibglnx\t%s\t", LIBGLNX_INFO);
-                text_buffer_append_link (buffer, "LGPLv2", "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
+                text_buffer_append_link (view, buffer, "LGPLv2", "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
                 text_buffer_append (buffer, "\n");
         }
         else {
@@ -473,10 +476,10 @@ populate_system_tab (GtkTextView *view)
                 text_buffer_append (buffer, "\n");
 
                 text_buffer_append_printf (buffer, "\tlibgd\t%s\t", LIBGD_INFO);
-                text_buffer_append_link (buffer, "LGPLv2", "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
+                text_buffer_append_link (view, buffer, "LGPLv2", "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
                 text_buffer_append (buffer, "\n");
                 text_buffer_append_printf (buffer, "\tlibglnx\t%s\t", LIBGLNX_INFO);
-                text_buffer_append_link (buffer, "LGPLv2", "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
+                text_buffer_append_link (view, buffer, "LGPLv2", "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
        }
 
         gtk_text_buffer_create_tag (buffer, "smaller", "scale", PANGO_SCALE_SMALL, NULL);
