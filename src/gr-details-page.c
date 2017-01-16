@@ -887,11 +887,13 @@ void
 gr_details_page_set_recipe (GrDetailsPage *page,
                             GrRecipe      *recipe)
 {
-        const char *id;
+        const char *id = NULL;
+        const char *old_id = NULL;
         const char *author;
         const char *prep_time;
         const char *cook_time;
         int serves;
+        int want_serves;
         const char *ingredients;
         const char *instructions;
         const char *notes;
@@ -903,10 +905,15 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         gboolean cooking;
         gboolean favorite;
         gboolean shopping;
+        gboolean same_recipe;
+
+        if (page->recipe)
+                old_id = gr_recipe_get_id (page->recipe);
+        id = gr_recipe_get_id (recipe);
+        same_recipe = g_strcmp0 (old_id, id) == 0;
 
         g_set_object (&page->recipe, recipe);
 
-        id = gr_recipe_get_id (recipe);
         author = gr_recipe_get_author (recipe);
         serves = gr_recipe_get_serves (recipe);
         prep_time = gr_recipe_get_prep_time (recipe);
@@ -922,7 +929,12 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         ing = gr_ingredients_list_new (ingredients);
         g_set_object (&page->ingredients, ing);
 
-        populate_ingredients (page, serves, serves);
+        if (same_recipe)
+                want_serves = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (page->serves_spin));
+        else
+                want_serves = serves;
+
+        populate_ingredients (page, want_serves, serves);
 
         if (prep_time[0] == '\0')
                 gtk_label_set_label (GTK_LABEL (page->prep_time_label), "");
@@ -936,7 +948,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         gtk_label_set_label (GTK_LABEL (page->instructions_label), instructions);
         gtk_label_set_track_visited_links (GTK_LABEL (page->instructions_label), FALSE);
 
-        gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), serves);
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), want_serves);
         gtk_widget_set_sensitive (page->serves_spin, ing != NULL);
 
         cooking = g_hash_table_lookup (page->cooking, id) != NULL;
