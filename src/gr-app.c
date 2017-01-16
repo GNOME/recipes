@@ -223,11 +223,7 @@ add_built_logo (GtkAboutDialog *about)
 static gboolean
 in_flatpak_sandbox (void)
 {
-        g_autofree char *path = NULL;
-
-        path = g_build_filename (g_get_user_runtime_dir (), "flatpak-info", NULL);
-
-        return g_file_test (path, G_FILE_TEST_EXISTS);
+        return g_file_test ("/.flatpak-info", G_FILE_TEST_EXISTS);
 }
 
 static void
