@@ -36,6 +36,7 @@
 #include "gr-utils.h"
 #include "gr-images.h"
 #include "gr-image-viewer.h"
+#include "gr-ingredient.h"
 #include "gr-ingredients-list.h"
 #include "gr-timer.h"
 #include "gr-recipe-printer.h"
@@ -819,6 +820,10 @@ populate_ingredients (GrDetailsPage *page,
                         GtkWidget *row;
                         GtkWidget *box;
                         g_autofree char *s = NULL;
+                        const char *ing;
+                        GrNumber *amount;
+                        const char *unit;
+                        GrNumber scaled;
 
                         box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
                         gtk_widget_show (box);
@@ -834,7 +839,15 @@ populate_ingredients (GrDetailsPage *page,
                         gtk_container_add (GTK_CONTAINER (box), label);
                         gtk_size_group_add_widget (group, label);
 
-                        label = gtk_label_new (ings[i]);
+                        amount = gr_ingredients_list_get_amount (page->ingredients, segments[j], ings[i]);
+                        unit = gr_ingredients_list_get_unit (page->ingredients, segments[j], ings[i]);
+
+                        gr_number_set_fraction (&scaled, num, denom);
+                        gr_number_multiply (amount, &scaled, &scaled);
+
+                        ing = gr_ingredient_get_name (&scaled, unit, ings[i]);
+
+                        label = gtk_label_new (ing);
                         g_object_set (label,
                                       "visible", TRUE,
                                       "xalign", 0.0,

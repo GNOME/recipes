@@ -149,10 +149,10 @@ segments.c: $(top_srcdir)/data/segments.list
 	$(AM_V_GEN) $(SED) -e 's/^\(.*\)$$/	N_("\1"),/' $^ > $@
 
 ingredients.c: $(top_srcdir)/data/ingredients.list
-	$(AM_V_GEN) $(SED) -e 's/^\(.*\)$$/	N_("\1"),/' $^ > $@
+	$(AM_V_GEN) $(SED) -e 's/^\([^:]*\)$$/	N_("\1")/' -e 's/^\([^:]*\):\(.*\)$$/	NN_("\1", "\2")/' $^ > $@
 
 no-ingredients.c: $(top_srcdir)/data/ingredients.list
-	$(AM_V_GEN) $(SED) -e 's/^\(.*\)$$/	N_("no \1"),/' $^ > $@
+	$(AM_V_GEN) $(SED) -e 's/^\([^:]*\)$$/	N_("no \1"),/' -e 's/^\([^:]*\):\(.*\)$$/	N_("no \1"),/' $^ > $@
 
 resource_ui_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/recipes-ui.gresource.xml)
 

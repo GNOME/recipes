@@ -22,6 +22,8 @@
 
 #include <gtk/gtk.h>
 
+#include "gr-number.h"
+
 G_BEGIN_DECLS
 
 const char    **gr_ingredient_get_names    (int        *length);
@@ -29,5 +31,8 @@ const char     *gr_ingredient_find         (const char *text);
 const char     *gr_ingredient_get_id       (const char *name);
 const char     *gr_ingredient_get_negation (const char *name);
 char           *gr_ingredient_get_image    (const char *name);
+const char     *gr_ingredient_get_name     (GrNumber   *amount,
+                                            const char *unit,
+                                            const char *name);
 
 G_END_DECLS

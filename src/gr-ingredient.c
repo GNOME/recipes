@@ -20,6 +20,8 @@
 
 #include "config.h"
 
+#include <math.h>
+
 #include <glib.h>
 #include <glib/gi18n.h>
 
@@ -27,10 +29,26 @@
 #include "gr-utils.h"
 
 
+#undef N_
+#define N_(a) (a),
+#define NN_(a,b) (a),
+
 static const char *names_[] = {
 #include "ingredients.c"
         NULL
 };
+
+#undef N_
+#undef NN_
+#define N_(a) (a),
+#define NN_(a,b) (b),
+
+static const char *plurals_[] = {
+#include "ingredients.c"
+};
+
+#undef N_
+#define N_(a) (a)
 
 static const char *negations[] = {
 #include "no-ingredients.c"
@@ -58,6 +76,22 @@ translate_names (void)
                 cf_names[i] = g_utf8_casefold (names[i], -1);
                 cf_en_names[i] = g_utf8_casefold (names_[i], -1);
         }
+}
+
+static const char *
+find_plural (const char *ing, int n)
+{
+        int i;
+
+        translate_names ();
+
+        for (i = 0; names[i]; i++) {
+                if (strcmp (ing, names[i]) == 0) {
+                        return ngettext (names_[i], plurals_[i], n);
+                }
+        }
+
+        return ing;
 }
 
 const char **
@@ -149,4 +183,22 @@ gr_ingredient_get_image (const char *name)
         }
 
         return NULL;
+}
+
+const char *
+gr_ingredient_get_name (GrNumber   *amount,
+                        const char *unit,
+                        const char *ingredient)
+{
+        int val;
+
+        if (unit && unit[0])
+                return ingredient;
+
+        if (amount->fraction && amount->denom == 1)
+                val = amount->num;
+        else
+                val = (int) ceil (amount->value);
+
+        return find_plural (ingredient, val);
 }

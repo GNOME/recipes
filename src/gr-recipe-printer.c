@@ -24,6 +24,8 @@
 
 #include "gr-recipe-printer.h"
 #include "gr-ingredients-list.h"
+#include "gr-ingredient.h"
+#include "gr-number.h"
 #include "gr-images.h"
 #include "gr-utils.h"
 
@@ -168,6 +170,9 @@ begin_print (GtkPrintOperation *operation,
                         mid = length / 2 + length % 2;
                         for (i = 0; i < mid; i++) {
                                 char *unit;
+                                GrNumber *amount;
+                                const char *u;
+                                const char *ing;
 
                                 g_string_append (s, "\n");
 
@@ -175,14 +180,24 @@ begin_print (GtkPrintOperation *operation,
                                 g_string_append (s, unit);
                                 g_free (unit);
                                 g_string_append (s, " ");
-                                g_string_append (s, ings[i]);
+
+                                u = gr_ingredients_list_get_unit (ingredients, segs[j], ings[i]);
+                                amount = gr_ingredients_list_get_amount (ingredients, segs[j], ings[i]);
+                                ing = gr_ingredient_get_name (amount, u, ings[i]);
+
+                                g_string_append (s, ing);
                                 g_string_append (s, "\t");
                                 if (mid + i < length) {
                                         unit = gr_ingredients_list_scale_unit (ingredients, segs[j], ings[mid + i], 1, 1);
                                         g_string_append (s, unit);
                                         g_free (unit);
                                         g_string_append (s, " ");
-                                        g_string_append (s, ings[mid + i]);
+
+                                        u = gr_ingredients_list_get_unit (ingredients, segs[j], ings[mid + i]);
+                                        amount = gr_ingredients_list_get_amount (ingredients, segs[j], ings[mid + i]);
+                                        ing = gr_ingredient_get_name (amount, u, ings[mid + i]);
+
+                                        g_string_append (s, ing);
                                 }
                         }
                 }
