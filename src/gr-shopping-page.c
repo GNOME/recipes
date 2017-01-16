@@ -51,9 +51,17 @@ struct _GrShoppingPage
         GHashTable *ingredients;
 
         GrShoppingListPrinter *printer;
+
+        char *title;
 };
 
 G_DEFINE_TYPE (GrShoppingPage, gr_shopping_page, GTK_TYPE_BOX)
+
+enum {
+        PROP_0,
+        PROP_TITLE,
+        N_PROPS
+};
 
 static void connect_store_signals (GrShoppingPage *page);
 
@@ -66,6 +74,8 @@ shopping_page_finalize (GObject *object)
         g_clear_object (&self->group);
         g_clear_pointer (&self->ingredients, g_hash_table_unref);
         g_clear_object (&self->printer);
+
+        g_free (self->title);
 
         G_OBJECT_CLASS (gr_shopping_page_parent_class)->finalize (object);
 }
@@ -101,8 +111,6 @@ recount_recipes (GrShoppingPage *page)
         GList *children, *l;
         int count;
         g_autofree char *tmp = NULL;
-        g_autofree char *tmp2 = NULL;
-        GtkWidget *window;
 
         children = gtk_container_get_children (GTK_CONTAINER (page->recipe_list));
 
@@ -117,17 +125,16 @@ recount_recipes (GrShoppingPage *page)
         }
         g_list_free (children);
 
-        window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
+        g_free (page->title);
+        page->title = g_strdup_printf (ngettext ("Cook it later (%d recipe)",
+                                                 "Cook it later (%d recipes)", page->recipe_count),
+                                       page->recipe_count);
+        g_object_notify (G_OBJECT (page), "title");
 
-        tmp = g_strdup_printf (ngettext ("Cook it later (%d recipe)",
-                                         "Cook it later (%d recipes)", page->recipe_count),
-                               page->recipe_count);
-        gtk_window_set_title (GTK_WINDOW (window), tmp);
-
-        tmp2 = g_strdup_printf (ngettext ("%d Recipe marked for preparation",
-                                          "%d Recipes marked for preparation", count),
-                                count);
-        gtk_label_set_label (GTK_LABEL (page->recipe_count_label), tmp2);
+        tmp = g_strdup_printf (ngettext ("%d Recipe marked for preparation",
+                                         "%d Recipes marked for preparation", count),
+                               count);
+        gtk_label_set_label (GTK_LABEL (page->recipe_count_label), tmp);
 }
 
 static void
@@ -559,12 +566,57 @@ gr_shopping_page_init (GrShoppingPage *page)
 }
 
 static void
+shopping_page_get_property (GObject    *object,
+                            guint       prop_id,
+                            GValue     *value,
+                            GParamSpec *pspec)
+{
+        GrShoppingPage *self = GR_SHOPPING_PAGE (object);
+
+        switch (prop_id) {
+        case PROP_TITLE:
+                g_value_set_string (value, self->title);
+                break;
+
+        default:
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        }
+}
+
+static void
+shopping_page_set_property (GObject      *object,
+                            guint         prop_id,
+                            const GValue *value,
+                            GParamSpec   *pspec)
+{
+        GrShoppingPage *self = GR_SHOPPING_PAGE (object);
+
+        switch (prop_id) {
+        case PROP_TITLE:
+                g_free (self->title);
+                self->title = g_value_dup_string (value);
+                break;
+
+        default:
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        }
+}
+
+static void
 gr_shopping_page_class_init (GrShoppingPageClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
         GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+        GParamSpec *pspec;
 
         object_class->finalize = shopping_page_finalize;
+        object_class->get_property = shopping_page_get_property;
+        object_class->set_property = shopping_page_set_property;
+
+        pspec = g_param_spec_string ("title", NULL, NULL,
+                                     NULL,
+                                     G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_TITLE, pspec);
 
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-shopping-page.ui");
 
