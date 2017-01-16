@@ -180,6 +180,19 @@ stop_search (GrWindow *window)
 }
 
 static void
+search_mode_changed (GrWindow *window)
+{
+        const char *visible;
+
+        visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
+
+        if (!gtk_search_bar_get_search_mode (GTK_SEARCH_BAR (window->search_bar)) &&
+            strcmp (visible, "search") == 0) {
+                stop_search (window);
+        }
+}
+
+static void
 switch_to_search (GrWindow *window)
 {
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "main");
@@ -457,6 +470,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, hide_or_show_header_end_stack);
         gtk_widget_class_bind_template_callback (widget_class, search_changed);
         gtk_widget_class_bind_template_callback (widget_class, stop_search);
+        gtk_widget_class_bind_template_callback (widget_class, search_mode_changed);
         gtk_widget_class_bind_template_callback (widget_class, window_keypress_handler);
         gtk_widget_class_bind_template_callback (widget_class, window_mapped_handler);
         gtk_widget_class_bind_template_callback (widget_class, do_undo);

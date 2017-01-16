@@ -159,6 +159,7 @@
             <property name="search-mode-enabled" bind-source="search_button" bind-property="active" bind-flags="bidirectional"/>
             <signal name="changed" handler="search_changed" swapped="yes"/>
             <signal name="cancel" handler="stop_search" swapped="yes"/>
+            <signal name="notify::search-mode-enabled" handler="search_mode_changed" swapped="yes"/>
           </object>
         </child>
         <child>
