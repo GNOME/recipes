@@ -82,7 +82,7 @@
                     <property name="orientation">vertical</property>
                     <property name="margin-top">20</property>
                     <property name="valign">start</property>
-                    <property name="halign">end</property>
+                    <property name="halign">fill</property>
                     <child>
                       <object class="GrImageViewer" id="images">
                         <property name="visible">1</property>
@@ -259,7 +259,7 @@
                 <child>
                   <object class="GtkGrid">
                     <property name="visible">1</property>
-                    <property name="halign">start</property>
+                    <property name="halign">fill</property>
                     <property name="valign">start</property>
                     <property name="column-spacing">20</property>
                     <child>
@@ -300,6 +300,7 @@
                         <property name="hexpand">1</property>
                         <property name="valign">baseline</property>
                         <property name="margin-bottom">10</property>
+                        <property name="width-chars">30</property>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
