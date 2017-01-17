@@ -41,6 +41,7 @@ struct _GrRecipeExporter
         GObject parent_instance;
 
         GList *recipes;
+        GtkWidget *button_now;
         GtkWindow *window;
 
 #ifdef ENABLE_AUTOAR
@@ -456,6 +457,17 @@ update_heading (GrRecipeExporter *exporter)
 }
 
 static void
+update_export_button (GrRecipeExporter *exporter)
+{
+  gboolean empty = exporter->recipes == NULL;
+
+  if (empty)
+    gtk_widget_set_sensitive (exporter->button_now, FALSE);
+  else
+    gtk_widget_set_sensitive (exporter->button_now, TRUE);
+}
+
+static void
 row_activated (GtkListBox *list,
                GtkListBoxRow *row,
                GrRecipeExporter *exporter)
@@ -477,6 +489,7 @@ row_activated (GtkListBox *list,
         }
 
         update_heading (exporter);
+        update_export_button (exporter);
 }
 
 static void
@@ -566,6 +579,8 @@ show_export_dialog (GrRecipeExporter *exporter)
 
         builder = gtk_builder_new_from_resource ("/org/gnome/Recipes/recipe-export-dialog.ui");
         dialog = GTK_WIDGET (gtk_builder_get_object (builder, "dialog"));
+        exporter->button_now = GTK_WIDGET (gtk_builder_get_object (builder, "button_now"));
+
         gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (exporter->window));
 
         list = GTK_WIDGET (gtk_builder_get_object (builder, "recipe_list"));
