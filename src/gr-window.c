@@ -320,10 +320,40 @@ window_keypress_handler (GtkWidget *widget,
         return gr_query_editor_handle_event (GR_QUERY_EDITOR (window->search_bar), event);
 }
 
+static gboolean
+is_small_screen (GdkMonitor *monitor)
+{
+        GdkRectangle geom;
+
+        gdk_monitor_get_geometry (monitor, &geom);
+
+        return geom.height < 1000 || geom.width < 1200;
+}
+
+static gboolean
+maximize (gpointer data)
+{
+        GtkWindow *window = data;
+
+        gtk_window_maximize (window);
+
+        return G_SOURCE_REMOVE;
+}
+
 static void
 window_mapped_handler (GtkWidget *widget)
 {
         GrWindow *window = GR_WINDOW (widget);
+        GdkDisplay *display;
+        GdkWindow *win;
+        GdkMonitor *monitor;
+
+        display = gtk_widget_get_display (widget);
+        win = gtk_widget_get_window (widget);
+        monitor = gdk_display_get_monitor_at_window (display, win);
+
+        if (is_small_screen (monitor))
+                g_idle_add (maximize, window);
 
         gtk_window_set_resizable (GTK_WINDOW (window), TRUE);
         gr_recipes_page_unexpand (GR_RECIPES_PAGE (window->recipes_page));
