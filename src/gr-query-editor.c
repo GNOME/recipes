@@ -542,7 +542,7 @@ entry_changed_cb (GtkWidget     *entry,
         terms = g_strsplit (text, " ", -1);
 
         for (i = 0; terms[i]; i++)
-                g_ptr_array_add (a, g_strdup (terms[i]));
+                g_ptr_array_add (a, g_utf8_casefold (terms[i], -1));
 
         s2 = g_string_new ("");
 
