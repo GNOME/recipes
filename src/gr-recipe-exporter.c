@@ -22,6 +22,7 @@
 #include "config.h"
 
 #include <glib/gi18n.h>
+#include <glib/gstdio.h>
 #ifdef ENABLE_AUTOAR
 #include <gnome-autoar/gnome-autoar.h>
 #include "glnx-shutil.h"
@@ -329,6 +330,7 @@ prepare_export (GrRecipeExporter  *exporter,
         g_assert (exporter->sources == NULL);
 
         exporter->dir = g_mkdtemp (g_build_filename (g_get_tmp_dir (), "recipeXXXXXX", NULL));
+
         path = g_build_filename (exporter->dir, "recipes.db", NULL);
         keyfile = g_key_file_new ();
 
@@ -429,12 +431,27 @@ export_dialog_response (GtkWidget        *dialog,
                 g_message ("not exporting now");
         }
         else if (response_id == GTK_RESPONSE_OK) {
-                g_autofree char *dir = NULL;
                 g_autofree char *path = NULL;
+                int i;
 
                 g_message ("exporting %d recipes now", g_list_length (exporter->recipes));
-                dir = g_dir_make_tmp ("recipesXXXXXX", NULL);
-                path = g_build_filename (dir, "recipes.tar.gz", NULL);
+
+                for (i = 0; i < 1000; i++) {
+                        g_autofree char *tmp;
+                        tmp = g_strdup_printf ("%s/.var/app/org.gnome.Recipes/recipes%d.tar.gz", g_get_home_dir (), i);
+                        if (!g_file_test (tmp, G_FILE_TEST_EXISTS)) {
+                                path = g_strdup (tmp);
+                                break;
+                        }
+                }
+
+                if (!path) {
+                        g_autofree char *dir = NULL;
+
+                        dir = g_dir_make_tmp ("recipesXXXXXX", NULL);
+                        path = g_build_filename (dir, "recipes.tar.gz", NULL);
+                }
+
                 exporter->output = g_file_new_for_path (path);
 
                 start_export (exporter);
