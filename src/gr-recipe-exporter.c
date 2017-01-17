@@ -279,7 +279,7 @@ export_one_chef (GrRecipeExporter  *exporter,
         fullname = gr_chef_get_fullname (chef);
         description = gr_chef_get_description (chef);
         image_path = gr_chef_get_image (chef);
-        if (image_path) {
+        if (image_path && image_path[0]) {
                 g_autoptr(GFile) source = NULL;
                 g_autoptr(GFile) dest = NULL;
                 g_autofree char *basename = NULL;
