@@ -84,8 +84,9 @@ list_page_finalize (GObject *object)
 {
         GrListPage *self = GR_LIST_PAGE (object);
 
-        clear_data (self);
-
+        g_clear_object (&self->chef);
+        g_clear_pointer (&self->season, g_free);
+        g_list_free_full (self->recipes, g_object_unref);
         g_clear_object (&self->search);
 
         G_OBJECT_CLASS (gr_list_page_parent_class)->finalize (object);
