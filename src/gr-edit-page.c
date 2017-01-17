@@ -927,8 +927,10 @@ recipe_row_activated (GtkListBox    *list,
         GtkTextIter start, end;
         GtkTextTag *tag;
         GdkRGBA color;
+        GtkStateFlags state = gtk_widget_get_state_flags (GTK_WIDGET (self->instructions_field));
+        GtkStyleContext *context = gtk_widget_get_style_context (GTK_WIDGET (self->instructions_field));
 
-        gdk_rgba_parse (&color, "blue");
+        gtk_style_context_get_color (context, state | GTK_STATE_FLAG_LINK, &color);
 
         recipe = GR_RECIPE (g_object_get_data (G_OBJECT (row), "recipe"));
         id = gr_recipe_get_id (recipe);
