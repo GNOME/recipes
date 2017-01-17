@@ -684,6 +684,12 @@ gr_recipe_matches (GrRecipe    *recipe,
                         }
                         continue;
                 }
+                else if (g_str_has_prefix (terms[i], "cu:")) {
+                        if (!recipe->cuisine || strstr (recipe->cuisine, terms[i] + 3) == NULL) {
+                                return FALSE;
+                        }
+                        continue;
+                }
                 else if (g_str_has_prefix (terms[i], "di:")) {
                         struct { GrDiets diet; const char *term; } diets[] = {
                                 { GR_DIET_GLUTEN_FREE, "gluten-free" },

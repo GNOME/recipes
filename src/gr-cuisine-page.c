@@ -57,6 +57,8 @@ struct _GrCuisinePage
         int n_categories;
         Category *categories;
         Category *other;
+
+        GrRecipeSearch *search;
 };
 
 G_DEFINE_TYPE (GrCuisinePage, gr_cuisine_page, GTK_TYPE_BOX)
@@ -107,6 +109,7 @@ cuisine_page_finalize (GObject *object)
 
         g_clear_pointer (&self->cuisine, g_free);
         g_clear_pointer (&self->categories, g_free);
+        g_clear_object (&self->search);
 
         G_OBJECT_CLASS (gr_cuisine_page_parent_class)->finalize (object);
 }
@@ -179,6 +182,88 @@ filter_sidebar (GtkListBoxRow *row,
 }
 
 static void
+clear_page (GrCuisinePage *self)
+{
+        int i;
+
+        for (i = 0; i < self->n_categories; i++) {
+                container_remove_all (GTK_CONTAINER (self->categories[i].box));
+                gtk_widget_hide (self->categories[i].label);
+                gtk_widget_hide (self->categories[i].box);
+                self->categories[i].filled = FALSE;
+        }
+}
+
+static void
+add_one_recipe (GrCuisinePage *self,
+                GrRecipe      *recipe)
+{
+        const char *category;
+        GtkWidget *tile;
+        Category *c;
+        int i;
+
+        category = gr_recipe_get_category (recipe);
+
+        c = self->other;
+        for (i = 0; i < self->n_categories; i++) {
+                if (strcmp (self->categories[i].name, category) == 0) {
+                        c = &self->categories[i];
+                        break;
+                }
+       }
+
+       gtk_widget_show (c->label);
+       gtk_widget_show (c->box);
+       self->categories[i].filled = TRUE;
+
+       tile = gr_recipe_tile_new (recipe);
+       gtk_widget_show (tile);
+       gtk_container_add (GTK_CONTAINER (c->box), tile);
+}
+
+static void
+search_started (GrRecipeSearch *search,
+                GrCuisinePage  *self)
+{
+        clear_page (self);
+        gtk_list_box_set_selection_mode (GTK_LIST_BOX (self->sidebar), GTK_SELECTION_NONE);
+}
+
+static void
+search_hits_added (GrRecipeSearch *search,
+                   GList          *hits,
+                   GrCuisinePage  *self)
+{
+        GList *l;
+
+        for (l = hits; l; l = l->next) {
+                GrRecipe *recipe = l->data;
+                add_one_recipe (self, recipe);
+        }
+}
+
+static void
+search_finished (GrRecipeSearch *search,
+                 GrCuisinePage  *self)
+{
+        gboolean has_recipe = FALSE;
+        int i;
+
+        for (i = 0; i < self->n_categories; i++) {
+                if (self->categories[i].filled) {
+                        has_recipe = TRUE;
+                        break;
+                }
+        }
+
+        gtk_stack_set_visible_child_name (GTK_STACK (self->stack), has_recipe ? "cuisine" : "empty");
+
+        gtk_list_box_set_selection_mode (GTK_LIST_BOX (self->sidebar), GTK_SELECTION_SINGLE);
+        gtk_list_box_invalidate_filter (GTK_LIST_BOX (self->sidebar));
+}
+
+static void
 gr_cuisine_page_init (GrCuisinePage *page)
 {
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
@@ -188,6 +273,11 @@ gr_cuisine_page_init (GrCuisinePage *page)
         connect_store_signals (page);
 
         gtk_list_box_set_filter_func (GTK_LIST_BOX (page->sidebar), filter_sidebar, page, NULL);
+
+        page->search = gr_recipe_search_new ();
+        g_signal_connect (page->search, "started", G_CALLBACK (search_started), page);
+        g_signal_connect (page->search, "hits-added", G_CALLBACK (search_hits_added), page);
+        g_signal_connect (page->search, "finished", G_CALLBACK (search_finished), page);
 }
 
 static void
@@ -222,69 +312,16 @@ void
 gr_cuisine_page_set_cuisine (GrCuisinePage *self,
                              const char    *cuisine)
 {
-        GrRecipeStore *store;
-        g_autofree char **keys = NULL;
-        guint length;
-        int i, j;
-        gboolean has_recipe = FALSE;
+        g_autofree char *term = NULL;
 
         if (self->cuisine != cuisine) {
                 g_free (self->cuisine);
                 self->cuisine = g_strdup (cuisine);
         }
 
-        for (i = 0; i < self->n_categories; i++) {
-                container_remove_all (GTK_CONTAINER (self->categories[i].box));
-                gtk_widget_hide (self->categories[i].label);
-                gtk_widget_hide (self->categories[i].box);
-                self->categories[i].filled = FALSE;
-        }
-
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
-
-        keys = gr_recipe_store_get_recipe_keys (store, &length);
-        for (j = 0; j < length; j++) {
-                g_autoptr(GrRecipe) recipe = NULL;
-                const char *cuisine2;
-                const char *category;
-                GtkWidget *tile;
-                Category *c;
-
-                recipe = gr_recipe_store_get_recipe (store, keys[j]);
-                cuisine2 = gr_recipe_get_cuisine (recipe);
-                category = gr_recipe_get_category (recipe);
-
-                if (g_strcmp0 (cuisine, cuisine2) != 0)
-                        continue;
-
-                c = self->other;
-                for (i = 0; i < self->n_categories; i++) {
-                        if (strcmp (self->categories[i].name, category) == 0) {
-                                c = &self->categories[i];
-                                break;
-                        }
-                }
-
-                gtk_widget_show (c->label);
-                gtk_widget_show (c->box);
-                self->categories[i].filled = TRUE;
-
-                tile = gr_recipe_tile_new (recipe);
-                gtk_widget_show (tile);
-                gtk_container_add (GTK_CONTAINER (c->box), tile);
-
-                has_recipe = TRUE;
-        }
-
-        if (has_recipe) {
-                gtk_stack_set_visible_child_name (GTK_STACK (self->stack), "cuisine");
-        }
-        else {
-                gtk_stack_set_visible_child_name (GTK_STACK (self->stack), "empty");
-        }
-
-        gtk_list_box_invalidate_filter (GTK_LIST_BOX (self->sidebar));
-        gtk_list_box_unselect_all (GTK_LIST_BOX (self->sidebar));
+        gr_recipe_search_stop (self->search);
+        term = g_strconcat ("cu:", cuisine, NULL);
+        gr_recipe_search_set_query (self->search, term);
 }
 
 static void
