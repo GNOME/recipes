@@ -79,10 +79,6 @@ static void
 set_categories_expanded (GrRecipesPage *page,
                          gboolean       expanded)
 {
-        gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (page->scrolled_win),
-                                        GTK_POLICY_NEVER,
-                                        GTK_POLICY_AUTOMATIC);
-
         gtk_revealer_set_reveal_child (GTK_REVEALER (page->diet_more), expanded);
         gtk_image_set_from_icon_name (GTK_IMAGE (page->categories_expander_image),
                                       expanded ? "pan-up-symbolic" : "pan-down-symbolic", 1);
