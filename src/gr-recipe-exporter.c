@@ -22,6 +22,7 @@
 #include "config.h"
 
 #include <glib/gi18n.h>
+#include <glib/gstdio.h>
 #ifdef ENABLE_AUTOAR
 #include <gnome-autoar/gnome-autoar.h>
 #include "glnx-shutil.h"
@@ -329,6 +330,7 @@ prepare_export (GrRecipeExporter  *exporter,
         g_assert (exporter->sources == NULL);
 
         exporter->dir = g_mkdtemp (g_build_filename (g_get_tmp_dir (), "recipeXXXXXX", NULL));
+
         path = g_build_filename (exporter->dir, "recipes.db", NULL);
         keyfile = g_key_file_new ();
 
@@ -421,27 +423,53 @@ start_export (GrRecipeExporter *exporter)
 }
 
 static void
+file_chooser_response (GtkNativeDialog  *dialog,
+                       int               response_id,
+                       GrRecipeExporter *exporter)
+{
+        if (response_id == GTK_RESPONSE_ACCEPT) {
+                g_message ("exporting %d recipes now", g_list_length (exporter->recipes));
+
+                exporter->output = gtk_file_chooser_get_file (GTK_FILE_CHOOSER (dialog));
+
+                start_export (exporter);
+        }
+        else {
+                g_message ("not exporting now");
+        }
+
+        gtk_native_dialog_destroy (dialog);
+}
+
+static void
 export_dialog_response (GtkWidget        *dialog,
                         int               response_id,
                         GrRecipeExporter *exporter)
 {
+        gtk_widget_destroy (dialog);
+        exporter->dialog_heading = NULL;
+
         if (response_id == GTK_RESPONSE_CANCEL) {
                 g_message ("not exporting now");
         }
         else if (response_id == GTK_RESPONSE_OK) {
-                g_autofree char *dir = NULL;
-                g_autofree char *path = NULL;
+                GtkFileChooserNative *chooser;
 
-                g_message ("exporting %d recipes now", g_list_length (exporter->recipes));
-                dir = g_dir_make_tmp ("recipesXXXXXX", NULL);
-                path = g_build_filename (dir, "recipes.tar.gz", NULL);
-                exporter->output = g_file_new_for_path (path);
+                chooser = gtk_file_chooser_native_new (_("Select the location"),
+                                                       GTK_WINDOW (exporter->window),
+                                                       GTK_FILE_CHOOSER_ACTION_SAVE,
+                                                       _("_Save"),
+                                                       _("_Cancel"));
 
-                start_export (exporter);
+                gtk_native_dialog_set_modal (GTK_NATIVE_DIALOG (chooser), TRUE);
+
+                gtk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (chooser), TRUE);
+                gtk_file_chooser_set_current_name (GTK_FILE_CHOOSER (chooser), "recipes.tar.gz");
+
+                g_signal_connect (chooser, "response", G_CALLBACK (file_chooser_response), exporter);
+
+                gtk_native_dialog_show (GTK_NATIVE_DIALOG (chooser));
         }
-
-        gtk_widget_destroy (dialog);
-        exporter->dialog_heading = NULL;
 }
 
 static void
