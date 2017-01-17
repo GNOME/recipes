@@ -53,6 +53,7 @@ struct _GrCuisinePage
         GtkWidget *scrolled_window;
         GtkWidget *category_box;
         GtkWidget *stack;
+        GtkWidget *scroll_to_row;
 
         int n_categories;
         Category *categories;
@@ -63,41 +64,42 @@ G_DEFINE_TYPE (GrCuisinePage, gr_cuisine_page, GTK_TYPE_BOX)
 
 static void connect_store_signals (GrCuisinePage *page);
 
+static gboolean
+scroll_in_idle (gpointer data)
+{
+        GrCuisinePage *page = data;
+        GtkWidget *item;
+        GtkAdjustment *adj;
+        GtkAllocation alloc;
+        double page_increment, value;
+        Category *category;
+
+        if (page->scroll_to_row == NULL)
+                return G_SOURCE_REMOVE;
+
+        item = gtk_bin_get_child (GTK_BIN (page->scroll_to_row));
+        category = (Category *)g_object_get_data (G_OBJECT (item), "category");
+
+        if (!category)
+                return G_SOURCE_REMOVE;
+
+        adj = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (page->scrolled_window));
+        gtk_widget_get_allocation (category->label, &alloc);
+        page_increment = gtk_adjustment_get_page_increment (adj);
+        value = gtk_adjustment_get_value (adj);
+        gtk_adjustment_set_page_increment (adj, alloc.y - value);
+        g_signal_emit_by_name (page->scrolled_window, "scroll-child", GTK_SCROLL_PAGE_FORWARD, FALSE);
+        gtk_adjustment_set_page_increment (adj, page_increment);
+
+        return G_SOURCE_REMOVE;
+}
+
 static void
 row_selected (GrCuisinePage *page,
               GtkListBoxRow *row)
 {
-        GtkWidget *item;
-        int i;
-        int category;
-        GtkAdjustment *adj;
-        GtkAllocation alloc;
-        double page_increment, value;
-
-        if (row == NULL)
-                return;
-
-        category = -1;
-        item = gtk_bin_get_child (GTK_BIN (row));
-        for (i = 0; i < page->n_categories; i++) {
-                if (page->categories[i].item == item) {
-                        category = i;
-                        break;
-                }
-        }
-
-        if (category < 0)
-                return;
-
-        adj = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (page->scrolled_window));
-        gtk_widget_get_allocation (page->categories[category].label, &alloc);
-        page_increment = gtk_adjustment_get_page_increment (adj);
-        value = gtk_adjustment_get_value (adj);
-        gtk_adjustment_set_page_increment (adj, alloc.y - value);
-
-        g_signal_emit_by_name (page->scrolled_window, "scroll-child", GTK_SCROLL_PAGE_FORWARD, FALSE);
-
-        gtk_adjustment_set_page_increment (adj, page_increment);
+        page->scroll_to_row = GTK_WIDGET (row);
+        g_idle_add (scroll_in_idle, page);
 }
 
 static void
@@ -155,6 +157,8 @@ populate_initially (GrCuisinePage *self)
                 self->categories[i].label = label;
                 self->categories[i].box = box;
 
+                g_object_set_data (G_OBJECT (item), "category", &self->categories[i]);
+
                 if (strcmp (names[i], "other") == 0)
                         self->other = &self->categories[i];
         }
@@ -164,16 +168,13 @@ static gboolean
 filter_sidebar (GtkListBoxRow *row,
                 gpointer       user_data)
 {
-        GrCuisinePage *page = user_data;
         GtkWidget *item;
-        int i;
+        Category *category;
 
         item = gtk_bin_get_child (GTK_BIN (row));
-        for (i = 0; i < page->n_categories; i++) {
-                if (page->categories[i].item == item) {
-                        return page->categories[i].filled;
-                }
-        }
+        category = (Category *)g_object_get_data (G_OBJECT (item), "category");
+        if (category)
+                return category->filled;
 
         return TRUE;
 }
@@ -218,6 +219,17 @@ gr_cuisine_page_new (void)
         return GTK_WIDGET (page);
 }
 
+#if 0
+static gboolean
+unselect (gpointer data)
+{
+        GrCuisinePage *self = data;
+
+        gtk_list_box_unselect_all (GTK_LIST_BOX (self->sidebar));
+
+        return G_SOURCE_REMOVE;
+}
+#endif
 void
 gr_cuisine_page_set_cuisine (GrCuisinePage *self,
                              const char    *cuisine)
@@ -276,15 +288,11 @@ gr_cuisine_page_set_cuisine (GrCuisinePage *self,
                 has_recipe = TRUE;
         }
 
-        if (has_recipe) {
-                gtk_stack_set_visible_child_name (GTK_STACK (self->stack), "cuisine");
-        }
-        else {
-                gtk_stack_set_visible_child_name (GTK_STACK (self->stack), "empty");
-        }
+        gtk_stack_set_visible_child_name (GTK_STACK (self->stack), has_recipe ? "cuisine" : "empty");
 
         gtk_list_box_invalidate_filter (GTK_LIST_BOX (self->sidebar));
         gtk_list_box_unselect_all (GTK_LIST_BOX (self->sidebar));
+        //g_idle_add (unselect, self);
 }
 
 static void
