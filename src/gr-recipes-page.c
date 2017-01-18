@@ -295,6 +295,18 @@ populate_recipes_from_store (GrRecipesPage *self)
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         keys = gr_recipe_store_get_recipe_keys (store, &length);
+
+        /* scramble the keys so we don't always get the same picks */
+        for (i = 0; i < length; i++) {
+                int r;
+
+                r = g_random_int_range (0, length);
+
+                tmp = keys[i];
+                keys[i] = keys[r];
+                keys[r] = tmp;
+        }
+
         todays = 0;
         picks = 0;
         shopping = 0;
