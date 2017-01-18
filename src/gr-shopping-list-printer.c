@@ -122,9 +122,9 @@ begin_print (GtkPrintOperation *operation,
 
         height = gtk_print_context_get_height (context);
 
-        title_font = pango_font_description_from_string ("Cantarell Bold 24");
-        subtitle_font = pango_font_description_from_string ("Cantarell Bold 18");
-        body_font = pango_font_description_from_string ("Cantarell 18");
+        title_font = pango_font_description_from_string ("Cantarell Bold 18");
+        subtitle_font = pango_font_description_from_string ("Cantarell Bold 12");
+        body_font = pango_font_description_from_string ("Cantarell 12");
 
         printer->layout = gtk_print_context_create_pango_layout (context);
         pango_layout_set_font_description (printer->layout, body_font);
