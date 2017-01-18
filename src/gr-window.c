@@ -508,8 +508,9 @@ gr_window_show_recipe (GrWindow *window,
         gr_details_page_set_recipe (GR_DETAILS_PAGE (window->details_page), recipe);
 
         update_cooking_button (window, gr_details_page_is_cooking (GR_DETAILS_PAGE (window->details_page)));
-
+        g_signal_handlers_block_by_func (window->search_bar, search_mode_changed, window);
         gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (window->search_bar), FALSE);
+        g_signal_handlers_unblock_by_func (window->search_bar, search_mode_changed, window);
 
         gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), gr_recipe_get_translated_name (recipe));
 
