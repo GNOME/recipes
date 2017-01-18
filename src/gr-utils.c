@@ -436,5 +436,24 @@ in_flatpak_sandbox (void)
 gboolean
 portals_available (void)
 {
-        return gr_app_portals_available (GR_APP (g_application_get_default ()));
+        static GDBusProxy *portal = NULL;
+        g_autofree char *owner = NULL;
+
+        if (portal == NULL) {
+                g_autoptr(GDBusConnection) bus = NULL;
+
+                bus = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL);
+                portal = g_dbus_proxy_new_sync (bus,
+                                                0,
+                                                NULL,
+                                                "org.freedesktop.portal.Desktop",
+                                                "/org/freedesktop/portal/desktop",
+                                                "org.freedesktop.portal.FileChooser",
+                                                NULL,
+                                                NULL);
+        }
+
+        owner = g_dbus_proxy_get_name_owner (portal);
+
+        return owner != NULL;
 }
