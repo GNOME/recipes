@@ -25,6 +25,9 @@
 #include "gr-recipe-printer.h"
 #include "gr-ingredients-list.h"
 #include "gr-images.h"
+#include "gr-chef.h"
+#include "gr-recipe-store.h"
+#include "gr-app.h"
 #include "gr-utils.h"
 
 
@@ -169,6 +172,11 @@ begin_print (GtkPrintOperation *operation,
         g_autofree char **segs = NULL;
         g_auto(GStrv) ings = NULL;
         g_autofree char *instructions = NULL;
+        g_autoptr(GrChef) chef = NULL;
+        GrRecipeStore *store;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        chef = gr_recipe_store_get_chef (store, gr_recipe_get_author (printer->recipe));
 
         width = gtk_print_context_get_width (context);
         height = gtk_print_context_get_height (context);
@@ -179,10 +187,11 @@ begin_print (GtkPrintOperation *operation,
                 printer->image = load_pixbuf_fit_size (ri->path, ri->angle, width / 2, height / 4, FALSE);
         }
 
-        title_font = pango_font_description_from_string ("Cantarell Bold 24");
-        body_font = pango_font_description_from_string ("Cantarell 18");
+        title_font = pango_font_description_from_string ("Cantarell Bold 18");
+        body_font = pango_font_description_from_string ("Cantarell 12");
 
         printer->title_layout = gtk_print_context_create_pango_layout (context);
+        pango_layout_set_width (printer->title_layout, width * PANGO_SCALE);
         pango_layout_set_font_description (printer->title_layout, title_font);
 
         s = g_string_new ("");
@@ -197,7 +206,7 @@ begin_print (GtkPrintOperation *operation,
 
         g_string_truncate (s, 0);
 
-        g_string_append_printf (s, "%s %s\n", _("Author:"), gr_recipe_get_author (printer->recipe));
+        g_string_append_printf (s, "%s %s\n", _("Author:"), gr_chef_get_fullname (chef));
         g_string_append_printf (s, "%s %s\n", _("Preparation:"), gr_recipe_get_prep_time (printer->recipe));
         g_string_append_printf (s, "%s %s\n", _("Cooking:"), gr_recipe_get_cook_time (printer->recipe));
         g_string_append_printf (s, "%s %d\n", _("Serves:"), gr_recipe_get_serves (printer->recipe));
