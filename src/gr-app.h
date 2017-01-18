@@ -29,5 +29,6 @@ G_DECLARE_FINAL_TYPE (GrApp, gr_app, GR, APP, GtkApplication)
 
 GrApp         *gr_app_new              (void);
 GrRecipeStore *gr_app_get_recipe_store (GrApp *app);
+gboolean       gr_app_portals_available (GrApp *app);
 
 G_END_DECLS

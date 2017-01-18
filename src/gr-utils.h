@@ -58,3 +58,4 @@ void stop_recording (void);
 void record_step (const char *blurb);
 
 gboolean in_flatpak_sandbox (void);
+gboolean portals_available (void);

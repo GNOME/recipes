@@ -38,6 +38,7 @@ struct _GrApp
 
         GrRecipeStore *store;
         GrShellSearchProvider *search_provider;
+        GDBusProxy *portal;
 };
 
 G_DEFINE_TYPE (GrApp, gr_app, GTK_TYPE_APPLICATION)
@@ -50,7 +51,7 @@ gr_app_finalize (GObject *object)
 
         g_clear_object (&self->store);
         g_clear_object (&self->search_provider);
-
+        g_clear_object (&self->portal);
 
         G_OBJECT_CLASS (gr_app_parent_class)->finalize (object);
 }
@@ -928,7 +929,20 @@ gr_app_dbus_unregister (GApplication    *application,
 static void
 gr_app_init (GrApp *self)
 {
+        g_autoptr(GDBusConnection) bus = NULL;
+
         self->store = gr_recipe_store_new ();
+
+        bus = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL);
+        self->portal = g_dbus_proxy_new_sync (bus,
+                                              0,
+                                              NULL,
+                                              "org.freedesktop.portal.Desktop",
+                                              "/org/freedesktop/portal/desktop",
+                                              "org.freedesktop.portal.FileChooser",
+                                              NULL,
+                                              NULL);
+
 }
 
 static void
@@ -959,4 +973,13 @@ GrRecipeStore *
 gr_app_get_recipe_store (GrApp *app)
 {
         return app->store;
+}
+
+gboolean
+gr_app_portals_available (GrApp *app)
+{
+        g_autofree char *owner = NULL;
+
+        owner = g_dbus_proxy_get_name_owner (app->portal);
+        return owner != NULL;
 }

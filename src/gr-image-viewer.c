@@ -47,7 +47,6 @@ struct _GrImageViewer
         guint hide_timeout;
 
         GtkGesture *gesture;
-        GDBusProxy *portal;
 };
 
 
@@ -83,7 +82,6 @@ gr_image_viewer_finalize (GObject *object)
         g_clear_pointer (&viewer->images, g_array_unref);
         remove_hide_timeout (viewer);
         g_clear_object (&viewer->gesture);
-        g_clear_object (&viewer->portal);
 
         G_OBJECT_CLASS (gr_image_viewer_parent_class)->finalize (object);
 }
@@ -322,8 +320,6 @@ key_press_event (GtkWidget     *widget,
 static void
 gr_image_viewer_init (GrImageViewer *self)
 {
-        g_autoptr(GDBusConnection) bus = NULL;
-
         gtk_widget_init_template (GTK_WIDGET (self));
         gtk_widget_add_events (GTK_WIDGET (self->event_box), GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK | GDK_POINTER_MOTION_MASK);
         gtk_widget_add_events (GTK_WIDGET (self->event_box), GDK_BUTTON_PRESS_MASK);
@@ -337,16 +333,6 @@ gr_image_viewer_init (GrImageViewer *self)
         gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (self->gesture), GTK_PHASE_BUBBLE);
         g_signal_connect_swapped (self->gesture, "pressed", G_CALLBACK (button_press), self);
         self->images = gr_rotated_image_array_new ();
-
-        bus = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL);
-        self->portal = g_dbus_proxy_new_sync (bus,
-                                              0,
-                                              NULL,
-                                              "org.freedesktop.portal.Desktop",
-                                              "/org/freedesktop/portal/desktop",
-                                              "org.freedesktop.portal.FileChooser",
-                                              NULL,
-                                              NULL);
 }
 
 static void
@@ -489,12 +475,10 @@ open_filechooser (GrImageViewer *viewer)
         GtkWidget *window;
         GtkFileChooserNative *chooser;
         g_autoptr(GtkFileFilter) filter = NULL;
-        g_autofree char *owner = NULL;
 
         window = gtk_widget_get_ancestor (GTK_WIDGET (viewer), GTK_TYPE_APPLICATION_WINDOW);
 
-        owner = g_dbus_proxy_get_name_owner (viewer->portal);
-        if (in_flatpak_sandbox () && owner == NULL) {
+        if (in_flatpak_sandbox () && !portals_available ()) {
                 GtkWidget *dialog;
 
                 dialog = gtk_message_dialog_new (GTK_WINDOW (window),

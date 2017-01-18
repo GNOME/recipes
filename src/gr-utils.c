@@ -25,6 +25,7 @@
 #include <stdarg.h>
 
 #include "gr-utils.h"
+#include "gr-app.h"
 
 /* load image rotated by angle to fit in width x height while preserving
  * aspect ratio, filling seams with transparency
@@ -432,3 +433,8 @@ in_flatpak_sandbox (void)
         return g_file_test ("/.flatpak-info", G_FILE_TEST_EXISTS);
 }
 
+gboolean
+portals_available (void)
+{
+        return gr_app_portals_available (GR_APP (g_application_get_default ()));
+}
