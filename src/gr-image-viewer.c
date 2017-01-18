@@ -501,7 +501,7 @@ open_filechooser (GrImageViewer *viewer)
                                                  GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,
                                                  GTK_MESSAGE_ERROR,
                                                  GTK_BUTTONS_OK,
-                                                 _("The system is missing the desktop portals needed to open files from inside a flatpak sandbox."));
+                                                 _("Missing the desktop portals needed to open files from inside a flatpak sandbox. Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system."));
                 g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
                 gtk_widget_show (dialog);
                 return;
