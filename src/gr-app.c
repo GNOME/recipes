@@ -49,6 +49,8 @@ gr_app_finalize (GObject *object)
         GrApp *self = GR_APP (object);
 
         g_clear_object (&self->store);
+        g_clear_object (&self->search_provider);
+
 
         G_OBJECT_CLASS (gr_app_parent_class)->finalize (object);
 }
