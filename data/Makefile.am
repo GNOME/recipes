@@ -43,6 +43,7 @@ dist_ingredients_DATA = \
 
 dist_images_DATA = \
 	images/alex.png			\
+	images/allan_day.jpg		\
 	images/bagel.jpg		\
 	images/Bastian.jpg		\
 	images/burger-fries.jpg		\
@@ -64,6 +65,7 @@ dist_images_DATA = \
 	images/donauwellen_final.jpg	\
 	images/meatballs.jpg		\
 	images/pesto.jpg		\
+	images/pineapple_upside_down.jpg \
 	images/pizza.jpg		\
 	images/plain-bagel.jpg		\
 	images/salad.jpg		\
