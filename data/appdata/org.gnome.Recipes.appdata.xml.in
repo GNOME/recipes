@@ -43,7 +43,7 @@
     </screenshot>
   </screenshots>
   <releases>
-    <release version="0.8.0" date="2017-03-01">
+    <release version="0.8.0" date="2017-01-18">
       <description>
         <p>
           This release focuses on completing and polishing existing features.
@@ -51,9 +51,10 @@
         <ul>
           <li>Multiple recipes can be exported an imported in one batch</li>
           <li>Deletion of recipes can be undone</li>
-          <li>We inhibit screen blanking and suspend while a recipe is cooking</li>
+          <li>We inhibit screen blanking and suspend while a recipe is cooked</li>
           <li>There is a printable shopping list</li>
           <li>The ingredients page has been dropped for now</li>
+          <li>Problems with exporting in a flatpak sandbox have been resolved</li>
         </ul>
       </description>
     </release>
