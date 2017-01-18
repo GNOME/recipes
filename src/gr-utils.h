@@ -56,3 +56,5 @@ char *generate_id (const char *s, ...);
 void start_recording (void);
 void stop_recording (void);
 void record_step (const char *blurb);
+
+gboolean in_flatpak_sandbox (void);

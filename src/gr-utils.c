@@ -426,3 +426,9 @@ format_date_time_difference (GDateTime *end,
         return _("some time ago");
 }
 
+gboolean
+in_flatpak_sandbox (void)
+{
+        return g_file_test ("/.flatpak-info", G_FILE_TEST_EXISTS);
+}
+

@@ -220,12 +220,6 @@ add_built_logo (GtkAboutDialog *about)
         g_object_unref (copyright_label);
 }
 
-static gboolean
-in_flatpak_sandbox (void)
-{
-        return g_file_test ("/.flatpak-info", G_FILE_TEST_EXISTS);
-}
-
 static void
 get_flatpak_information (char **flatpak_version,
                          char **app_id,
