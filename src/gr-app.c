@@ -115,61 +115,6 @@ builder_info (GtkButton *button, GtkWidget *about)
 }
 
 static void
-pixbuf_fill_rgb (GdkPixbuf *pixbuf,
-                 guint      r,
-                 guint      g,
-                 guint      b)
-{
-        guchar *pixels;
-        guchar *p;
-        guint w, h;
-
-        pixels = gdk_pixbuf_get_pixels (pixbuf);
-        h = gdk_pixbuf_get_height (pixbuf);
-        while (h--) {
-                w = gdk_pixbuf_get_width (pixbuf);
-                p = pixels;
-                while (w--) {
-                        p[0] = r;
-                        p[1] = g;
-                        p[2] = b;
-                        p += 4;
-                }
-                pixels += gdk_pixbuf_get_rowstride (pixbuf);
-        }
-}
-
-static void
-style_updated (GtkWidget *widget)
-{
-        g_autoptr(GdkPixbuf) pixbuf = NULL;
-        GtkStyleContext *context;
-        GdkRGBA color;
-        guint r, g, b;
-        guint32 pixel;
-        guint32 old_pixel;
-
-        context = gtk_widget_get_style_context (widget);
-        gtk_style_context_get_color (context, gtk_style_context_get_state (context), &color);
-
-        r = 255 * color.red;
-        g = 255 * color.green;
-        b = 255 * color.blue;
-
-        pixel = (r << 24) | (g  << 16) | (b << 8);
-        old_pixel = GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (widget), "pixel"));
-
-        if (old_pixel == pixel)
-                return;
-
-        g_object_set_data (G_OBJECT (widget), "pixel", GUINT_TO_POINTER (pixel));
-
-        pixbuf = g_object_ref (gtk_image_get_pixbuf (GTK_IMAGE (widget)));
-        pixbuf_fill_rgb (pixbuf, r, g, b);
-        gtk_image_set_from_pixbuf (GTK_IMAGE (widget), pixbuf);
-}
-
-static void
 add_built_logo (GtkAboutDialog *about)
 {
         GtkWidget *content;
@@ -181,6 +126,9 @@ add_built_logo (GtkAboutDialog *about)
         GtkWidget *button;
         GtkWidget *image;
         g_autoptr(GdkPixbuf) pixbuf = NULL;
+        g_autoptr(GtkCssProvider) provider = NULL;
+        g_autofree char *css = NULL;
+        const char *path;
 
         content = gtk_dialog_get_content_area (GTK_DIALOG (about));
         box = find_child_with_name (content, "box");
@@ -199,10 +147,20 @@ add_built_logo (GtkAboutDialog *about)
         gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
         gtk_widget_set_tooltip_text (button, _("Learn more about Builder"));
         gtk_widget_show (button);
-        image = gtk_image_new ();
-        pixbuf = gdk_pixbuf_new_from_resource ("/org/gnome/Recipes/built-with-builder.png", NULL);
-        gtk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
-        g_signal_connect (image, "style-updated", G_CALLBACK (style_updated), NULL);
+
+        image = g_object_new (g_type_from_name ("GtkIcon"), NULL);
+        path = "/org/gnome/Recipes/built-with-builder-symbolic.symbolic.png";
+        pixbuf = gdk_pixbuf_new_from_resource (path, NULL);
+        css = g_strdup_printf (".built-with-builder {\n"
+              "  -gtk-icon-source: -gtk-recolor(url('resource://%s'));\n"
+              "  min-width: %dpx;\n"
+              "  min-height: %dpx;\n"
+              "}", path, gdk_pixbuf_get_width (pixbuf), gdk_pixbuf_get_height (pixbuf));
+        gtk_style_context_add_class (gtk_widget_get_style_context (image), "built-with-builder");
+        provider = gtk_css_provider_new ();
+        gtk_style_context_add_provider_for_screen (gdk_screen_get_default (), GTK_STYLE_PROVIDER (provider), 900);
+        gtk_css_provider_load_from_data (provider, css, -1, NULL);
+
         gtk_widget_show (image);
         gtk_container_add (GTK_CONTAINER (button), image);
 
