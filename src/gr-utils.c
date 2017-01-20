@@ -347,7 +347,7 @@ generate_id (const char *first_string, ...)
         while (s) {
                 for (q = s; *q; q = g_utf8_find_next_char (q, NULL)) {
                         gunichar ch = g_utf8_get_char (q);
-                        if (ch > 128 || ch == '.' || ch == ' ' ||
+                        if (ch > 128 || ch == '.' || ch == ',' || ch == ' ' ||
                             ch == ']' || ch == '[' || g_ascii_iscntrl ((char)ch))
                                 g_string_append_c (str, '_');
                         else
