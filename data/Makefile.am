@@ -47,6 +47,7 @@ dist_images_DATA = \
 	images/bagel.jpg		\
 	images/Bastian.jpg		\
 	images/burger-fries.jpg		\
+	images/chickensoup.jpg		\
 	images/coffee.jpg		\
 	images/elvin.jpg		\
 	images/erusan.gif		\
@@ -54,6 +55,7 @@ dist_images_DATA = \
 	images/fyksen.jpg		\
 	images/halfline.jpg		\
 	images/mclasen.jpg		\
+	images/Sonic.jpg		\
 	images/donauwellen0.jpg		\
 	images/donauwellen1.jpg		\
 	images/donauwellen2.jpg		\
