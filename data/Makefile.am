@@ -47,6 +47,7 @@ dist_images_DATA = \
 	images/bagel.jpg		\
 	images/Bastian.jpg		\
 	images/burger-fries.jpg		\
+	images/chickencurry.jpg		\
 	images/chickensoup.jpg		\
 	images/coffee.jpg		\
 	images/elvin.jpg		\
