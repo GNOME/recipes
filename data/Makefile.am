@@ -72,6 +72,8 @@ dist_images_DATA = \
 	images/pizzaburger.jpg		\
 	images/pizza.jpg		\
 	images/plain-bagel.jpg		\
+	images/rosemary-potatos1.jpg	\
+	images/rosemary-potatos2.jpg	\
 	images/salad.jpg		\
 	images/spring-rolls.jpg		\
 	images/tofuscramble.jpg		\
