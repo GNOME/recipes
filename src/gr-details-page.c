@@ -37,6 +37,7 @@
 #include "gr-images.h"
 #include "gr-image-viewer.h"
 #include "gr-ingredients-list.h"
+#include "gr-ingredient-item.h"
 #include "gr-timer.h"
 #include "gr-recipe-printer.h"
 #include "gr-recipe-exporter.h"
@@ -816,35 +817,13 @@ populate_ingredients (GrDetailsPage *page,
 
                 ings = gr_ingredients_list_get_ingredients (page->ingredients, segments[j]);
                 for (i = 0; ings[i]; i++) {
-                        GtkWidget *row;
                         GtkWidget *box;
                         g_autofree char *s = NULL;
 
-                        box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-                        gtk_widget_show (box);
-
                         s = gr_ingredients_list_scale_unit (page->ingredients, segments[j], ings[i], num, denom);
-                        label = gtk_label_new (s);
-                        g_object_set (label,
-                                      "visible", TRUE,
-                                      "xalign", 0.0,
-                                      "margin", 10,
-                                      NULL);
-                        gtk_style_context_add_class (gtk_widget_get_style_context (label), "dim-label");
-                        gtk_container_add (GTK_CONTAINER (box), label);
-                        gtk_size_group_add_widget (group, label);
-
-                        label = gtk_label_new (ings[i]);
-                        g_object_set (label,
-                                      "visible", TRUE,
-                                      "xalign", 0.0,
-                                      "margin", 10,
-                                      NULL);
-                        gtk_container_add (GTK_CONTAINER (box), label);
+                        box = gr_ingredient_item_new (ings[i], s);
 
                         gtk_container_add (GTK_CONTAINER (list), box);
-                        row = gtk_widget_get_parent (box);
-                        gtk_list_box_row_set_activatable (GTK_LIST_BOX_ROW (row), FALSE);
                 }
         }
 
