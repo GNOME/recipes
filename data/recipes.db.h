@@ -1,5 +1,13 @@
 #if 0
 
+N_("Classic Chicken Noodle Soup")
+N_("A simple take on a typical American meal.")
+N_("If you haven't butchered the chicken, do so. Depending on how meaty you want the soup, you can use more or less of the butchered parts (I recommend the dark leg meat for the soup). Use the remaining parts for another dish.")
+N_("Wash the celery, carrots and herbs. Slice the carrots and celery. Coarsely chop the onion. Prepare the herbs using kitchen twine in a bouquet garni.")
+N_("In a large pot, add the chicken, the stock, 2 carrots, 1 stalk of celery, the onion and the bouquet garni. Fill the pot with water to cover the chicken. Bring to a boil and simmer for at least 2 hours.")
+N_("Using a cheese cloth strainer, strain the soup into another pot. Remove meat from the bones, gather any loose chicken and add it to the strained soup. Discard the bones and cooked vegetables.")
+N_("Add the remaining carrots and celery to the soup. Bring to a boil and simmer for at least one hour. Season with salt and pepper to taste.")
+N_("Add noodles and simmer for about 10 minutes, until the noodles are done.")
 N_("Pizzaburger")
 N_("Tomato dough with hamburger and cheese topping")
 N_("Dissolve yeast in warm water. Let stand for 2 minutes.")
