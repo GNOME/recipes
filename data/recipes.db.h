@@ -1,5 +1,17 @@
 #if 0
 
+N_("Pizzaburger")
+N_("Tomato dough with hamburger and cheese topping")
+N_("Dissolve yeast in warm water. Let stand for 2 minutes.")
+N_("Add 1/2 cup tomato sauce, oil, salt, 1 tsp chili powder, and sugar. Mix well.")
+N_("Gradually stir in flour. Dough will become sticky.")
+N_("Optional: Let rise covered in a warm place for about an hour.")
+N_("Brown diced onion and hamburger in frying pan.")
+N_("Add remaining 1 1/2 cups tomato sauce, salt, pepper, and 2 tsp chili powder.")
+N_("Remove from heat.")
+N_("Spread dough on greased cookie sheet (will be somewhat springy and pull back as it is spread out).")
+N_("Top with hamburger mixture and cover with cheese slices.")
+N_("Bake at 400 for 20 to 30 minutes until dough is baked.")
 N_("Pineapple Upside Down Cake with Hot Buttered Rum Sauce")
 N_("This is a delicious, boozy update on a classic cake. The combination of rum and pineapple gives it a distinctively Caribbean flavour.")
 N_("Preheat the oven to 175°C/gas mark 4.")
