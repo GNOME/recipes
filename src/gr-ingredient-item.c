@@ -45,6 +45,11 @@ enum {
 static void
 gr_ingredient_item_finalize (GObject *object)
 {
+        GrIngredientItem *self = (GrIngredientItem *)object;
+
+        g_free (self->ingredient);
+        g_free (self->unit);
+
         G_OBJECT_CLASS (gr_ingredient_item_parent_class)->finalize (object);
 }
 
