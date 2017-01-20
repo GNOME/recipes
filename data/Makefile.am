@@ -49,6 +49,7 @@ dist_images_DATA = \
 	images/burger-fries.jpg		\
 	images/coffee.jpg		\
 	images/elvin.jpg		\
+	images/erusan.gif		\
 	images/food.jpg			\
 	images/fyksen.jpg		\
 	images/halfline.jpg		\
@@ -66,6 +67,7 @@ dist_images_DATA = \
 	images/meatballs.jpg		\
 	images/pesto.jpg		\
 	images/pineapple_upside_down.jpg \
+	images/pizzaburger.jpg		\
 	images/pizza.jpg		\
 	images/plain-bagel.jpg		\
 	images/salad.jpg		\
