@@ -113,6 +113,11 @@ N_("Spread the light dough on a buttered baking sheet. Put the dark dough on top
 N_("Bake for 30 minutes at 200 °C.")
 N_("Use the milk, sugar and pudding to cook vanilla pudding and let it cool down while stirring it frequently. Slowly add spoonfuls of the butter, which should be at room temperature. Spread the butter cream on the cooled cake.")
 N_("Melt the chocolate frosting in a hot water bath and sprinkle it on top.")
+N_("Gingered Carrot Soup")
+N_("A nutritious vegan soup that can be made relatively quickly")
+N_("Place carrots in large saucepan with water, cover, bring to a boil. Lower heat, simmer until very tender (10-15 minutes). While carrots are cooking, saute in olive oil all the onions, 5 minutes, then add garlic, ginger, salt, and spices. When all is well mingled, stir in lemon juice. Use food processor or blender to puree everything together (including all the toasted cashews). If you like a more textured soup, only half puree.")
+N_("Garnish with parsley, chives, mint or scallions if you want. Top with cayenne pepper if you want a spicier soup. You can also add any leftover grains like rice, barley, couscous, etc. at the last minute.")
+N_("This is my Aunt Wendy's recipe.")
 
 
 #endif

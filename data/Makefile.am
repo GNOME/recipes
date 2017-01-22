@@ -56,6 +56,7 @@ dist_images_DATA = \
 	images/fyksen.jpg		\
 	images/halfline.jpg		\
 	images/mclasen.jpg		\
+	images/mwleeds.jpg		\
 	images/Sonic.jpg		\
 	images/tigert.jpg		\
 	images/donauwellen0.jpg		\
@@ -68,6 +69,7 @@ dist_images_DATA = \
 	images/donauwellen7.jpg		\
 	images/donauwellen8.jpg		\
 	images/donauwellen_final.jpg	\
+	images/gingered_carrot_soup.jpg	\
 	images/meatballs.jpg		\
 	images/non_knead_buns.png	\
 	images/non_knead_buns1.jpg	\
