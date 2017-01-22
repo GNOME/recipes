@@ -613,7 +613,8 @@ gr_recipe_contains_garlic (GrRecipe *recipe)
 gboolean
 gr_recipe_contains_dairy (GrRecipe *recipe)
 {
-        return (recipe->diets & GR_DIET_MILK_FREE) == 0;
+        return (recipe->diets & GR_DIET_MILK_FREE) == 0 &&
+               (recipe->diets & GR_DIET_VEGAN) == 0;
 }
 
 gboolean
