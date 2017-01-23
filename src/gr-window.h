@@ -62,5 +62,7 @@ void            gr_window_show_search_by_ingredients (GrWindow   *window,
                                                       const char *ingredient);
 void            gr_window_offer_undelete             (GrWindow   *window,
                                                       GrRecipe   *recipe);
+void            gr_window_set_fullscreen             (GrWindow   *window,
+                                                      gboolean    fullscreen);
 
 G_END_DECLS

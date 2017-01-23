@@ -66,6 +66,7 @@ struct _GrWindow
         GrRecipeImporter *importer;
 
         GQueue *back_entry_stack;
+        gboolean is_fullscreen;
 };
 
 G_DEFINE_TYPE (GrWindow, gr_window, GTK_TYPE_APPLICATION_WINDOW)
@@ -171,6 +172,17 @@ add_recipe (GrWindow *window)
                 gr_window_show_recipe (window, recipe);
                 gr_edit_page_clear (GR_EDIT_PAGE (window->edit_page));
         }
+}
+
+void
+gr_window_set_fullscreen (GrWindow *window,
+                          gboolean  fullscreen)
+{
+        if (fullscreen)
+                gtk_window_fullscreen (GTK_WINDOW (window));
+        else
+                gtk_window_unfullscreen (GTK_WINDOW (window));
+        window->is_fullscreen = fullscreen;
 }
 
 static void
