@@ -1108,7 +1108,7 @@ connect_store_signals (GrDetailsPage *page)
 }
 
 gboolean
-gr_details_page_is_cooking (GrDetailsPage *page)
+gr_details_page_get_cooking (GrDetailsPage *page)
 {
         return gtk_revealer_get_reveal_child (GTK_REVEALER (page->cooking_revealer));
 }

@@ -301,7 +301,7 @@ start_or_stop_cooking (GrWindow *window)
 {
         gboolean cooking;
 
-        cooking = gr_details_page_is_cooking (GR_DETAILS_PAGE (window->details_page));
+        cooking = gr_details_page_get_cooking (GR_DETAILS_PAGE (window->details_page));
         cooking = !cooking;
         gr_details_page_set_cooking (GR_DETAILS_PAGE (window->details_page), cooking);
         update_cooking_button (window, cooking);
@@ -576,7 +576,7 @@ gr_window_show_recipe (GrWindow *window,
 
         gr_details_page_set_recipe (GR_DETAILS_PAGE (window->details_page), recipe);
 
-        update_cooking_button (window, gr_details_page_is_cooking (GR_DETAILS_PAGE (window->details_page)));
+        update_cooking_button (window, gr_details_page_get_cooking (GR_DETAILS_PAGE (window->details_page)));
         g_signal_handlers_block_by_func (window->search_bar, search_mode_changed, window);
         gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (window->search_bar), FALSE);
         g_signal_handlers_unblock_by_func (window->search_bar, search_mode_changed, window);
