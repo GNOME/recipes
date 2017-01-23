@@ -31,8 +31,8 @@ struct _GrTimer
         gboolean active;
         guint64 duration;
         guint64 start_time;
+        guint64 end_time;
         guint64 remaining;
-        guint completion_id;
         guint remaining_id;
 };
 
@@ -80,6 +80,8 @@ gr_timer_get_duration (GrTimer *timer)
         return timer->duration;
 }
 
+static gboolean remaining_update (gpointer data);
+
 guint64
 gr_timer_get_remaining (GrTimer *timer)
 {
@@ -96,27 +98,33 @@ static void set_active (GrTimer  *timer,
                         gboolean  active);
 
 static gboolean
-timer_complete (gpointer data)
-{
-        GrTimer *timer = data;
-
-        set_active (timer, FALSE);
-        g_signal_emit (timer, signals[COMPLETE], 0);
-
-        return G_SOURCE_REMOVE;
-}
-
-static gboolean
 remaining_update (gpointer data)
 {
         GrTimer *timer = data;
-        guint64 now;
+        guint64 end_time;
+        guint64 remaining;
 
-        now = g_get_monotonic_time ();
+        if (timer->active)
+                end_time = g_get_monotonic_time ();
+        else
+                end_time = timer->end_time;
 
-        timer->remaining = timer->start_time + timer->duration - now;
+        remaining = timer->start_time + timer->duration - end_time;
 
-        g_object_notify (G_OBJECT (timer), "remaining");
+        if (timer->remaining < remaining) {
+                timer->remaining = 0;
+
+                g_object_notify (G_OBJECT (timer), "remaining");
+                set_active (timer, FALSE);
+                timer->end_time = g_get_monotonic_time ();
+                g_signal_emit (timer, signals[COMPLETE], 0);
+
+                return G_SOURCE_REMOVE;
+        }
+        else if (timer->remaining > remaining) {
+                timer->remaining = remaining;
+                g_object_notify (G_OBJECT (timer), "remaining");
+        }
 
         return G_SOURCE_CONTINUE;
 }
@@ -131,17 +139,14 @@ set_active (GrTimer  *timer,
         timer->active = active;
 
         if (active) {
-                timer->start_time = g_get_monotonic_time ();
-                timer->completion_id = g_timeout_add (timer->duration / 1000, timer_complete, timer);
-                timer->remaining_id = g_timeout_add_seconds (1, remaining_update, timer);
+                timer->remaining_id = g_timeout_add (16, remaining_update, timer);
         }
-        else if (timer->completion_id) {
-                g_source_remove (timer->completion_id);
-                timer->completion_id = 0;
+        else if (timer->remaining_id) {
                 g_source_remove (timer->remaining_id);
                 timer->remaining_id = 0;
         }
 
+        g_object_notify (G_OBJECT (timer), "remaining");
         g_object_notify (G_OBJECT (timer), "active");
 }
 
@@ -150,6 +155,7 @@ set_duration (GrTimer *timer,
               guint    duration)
 {
         timer->duration = duration;
+        timer->remaining = duration;
         g_object_notify (G_OBJECT (timer), "duration");
 }
 
@@ -158,8 +164,6 @@ gr_timer_finalize (GObject *object)
 {
         GrTimer *timer = GR_TIMER (object);
 
-        if (timer->completion_id)
-                g_source_remove (timer->completion_id);
         if (timer->remaining_id)
                 g_source_remove (timer->remaining_id);
         g_free (timer->name);
@@ -269,4 +273,41 @@ gr_timer_init (GrTimer *self)
 {
         self->active = FALSE;
         self->duration = 0;
+        self->remaining = G_MAXUINT;
+        self->start_time = 0;
+        self->end_time = 0;
+}
+
+void
+gr_timer_start (GrTimer *timer)
+{
+        timer->start_time = g_get_monotonic_time ();
+        set_active (timer, TRUE);
+}
+
+void
+gr_timer_stop (GrTimer *timer)
+{
+        set_active (timer, FALSE);
+        timer->end_time = g_get_monotonic_time ();
+}
+
+void
+gr_timer_reset (GrTimer *timer)
+{
+        timer->start_time = g_get_monotonic_time ();
+        timer->end_time = timer->start_time;
+        timer->remaining = timer->duration;
+        set_active (timer, FALSE);
+        g_object_notify (G_OBJECT (timer), "remaining");
+}
+
+void
+gr_timer_continue (GrTimer *timer)
+{
+        guint64 elapsed;
+
+        elapsed = timer->end_time - timer->start_time;
+        timer->start_time = g_get_monotonic_time () - elapsed;
+        set_active (timer, TRUE);
 }

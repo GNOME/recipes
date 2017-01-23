@@ -35,6 +35,10 @@ gboolean    gr_timer_get_active     (GrTimer    *timer);
 guint64     gr_timer_get_start_time (GrTimer    *timer);
 guint64     gr_timer_get_duration   (GrTimer    *timer);
 guint64     gr_timer_get_remaining  (GrTimer    *timer);
+void        gr_timer_start          (GrTimer    *timer);
+void        gr_timer_stop           (GrTimer    *timer);
+void        gr_timer_continue       (GrTimer    *timer);
+void        gr_timer_reset          (GrTimer    *timer);
 
 G_END_DECLS
 
