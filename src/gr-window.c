@@ -33,6 +33,7 @@
 #include "gr-shopping-page.h"
 #include "gr-recipes-page.h"
 #include "gr-cuisines-page.h"
+#include "gr-image-page.h"
 #include "gr-query-editor.h"
 #include "gr-recipe-importer.h"
 
@@ -58,6 +59,7 @@ struct _GrWindow
         GtkWidget *search_page;
         GtkWidget *cuisines_page;
         GtkWidget *cuisine_page;
+        GtkWidget *image_page;
         GtkWidget *undo_revealer;
         GtkWidget *undo_label;
         GrRecipe  *undo_recipe;
@@ -124,6 +126,8 @@ go_back (GrWindow *window)
         BackEntry *entry;
 
         entry = g_queue_pop_head (window->back_entry_stack);
+
+        gr_window_set_fullscreen (window, FALSE);
 
         gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (window->search_bar), FALSE);
 
@@ -311,6 +315,14 @@ window_keypress_handler (GtkWidget *widget,
 
         visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
 
+        if (strcmp (visible, "image") == 0) {
+                GdkEventKey *e = (GdkEventKey *) event;
+                if (e->keyval == GDK_KEY_Escape) {
+                        gr_window_show_image (window, NULL, -1);
+                        return GDK_EVENT_STOP;
+                }
+        }
+
         if (strcmp (visible, "recipes") != 0 &&
             strcmp (visible, "cuisines") != 0 &&
             strcmp (visible, "search") != 0)
@@ -470,6 +482,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrWindow, search_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, cuisines_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, cuisine_page);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, image_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, undo_revealer);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, undo_label);
 
@@ -767,4 +780,21 @@ gr_window_show_search_by_ingredients (GrWindow   *window,
         terms[1] = NULL;
 
         gr_query_editor_set_terms (GR_QUERY_EDITOR (window->search_bar), (const char **)terms);
+}
+
+void
+gr_window_show_image (GrWindow *window,
+                      GArray   *images,
+                      int       index)
+{
+        if (images) {
+                gr_image_page_set_images (GR_IMAGE_PAGE (window->image_page), images);
+                gr_image_page_show_image (GR_IMAGE_PAGE (window->image_page), index);
+                gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "image");
+                gr_window_set_fullscreen (window, TRUE);
+        }
+        else {
+                gr_window_set_fullscreen (window, FALSE);
+                gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "details");
+        }
 }
