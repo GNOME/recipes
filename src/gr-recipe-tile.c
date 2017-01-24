@@ -73,11 +73,13 @@ add_recipe_css (GrRecipe *recipe,
 
         if (images->len > 0) {
                 GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, 0);
+                g_autofree char *path = NULL;
 
+                path = ensure_rotated_image (ri->path, ri->angle);
                 g_string_append_printf (css, "image.recipe.small.%s,\nbox.recipe.%s {\n", id, id);
                 g_string_append_printf (css, "  background: url('%s');\n"
                                              "  background-size: cover;\n"
-                                             "  background-position: center;\n", ri->path);
+                                             "  background-position: center;\n", path);
                 g_string_append (css, "}\n\n");
         }
 }
