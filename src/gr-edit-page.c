@@ -162,7 +162,7 @@ update_image_button_sensitivity (GrEditPage *page)
 
         g_object_get (page->images, "images", &images, NULL);
         length = images->len;
-        gtk_widget_set_sensitive (page->add_image_button, length < 4);
+        gtk_widget_set_sensitive (page->add_image_button, TRUE);
         gtk_widget_set_sensitive (page->remove_image_button, length > 0);
         gtk_widget_set_sensitive (page->rotate_image_left_button, length > 0);
         gtk_widget_set_sensitive (page->rotate_image_right_button, length > 0);
