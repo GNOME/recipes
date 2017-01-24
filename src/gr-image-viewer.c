@@ -451,15 +451,21 @@ file_chooser_response (GtkNativeDialog *self,
                        GrImageViewer   *viewer)
 {
         if (response_id == GTK_RESPONSE_ACCEPT) {
-                GrRotatedImage ri;
+                GSList *names, *l;
 
-                ri.path = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (self));
-                ri.angle = 0;
-                ri.dark_text = FALSE;
+                names = gtk_file_chooser_get_filenames (GTK_FILE_CHOOSER (self));
+                for (l = names; l; l = l->next) {
+                        GrRotatedImage ri;
 
-                add_image (viewer, &ri, TRUE);
+                        ri.path = g_strdup (l->data);
+                        ri.angle = 0;
+                        ri.dark_text = FALSE;
 
-                g_free (ri.path);
+                        add_image (viewer, &ri, TRUE);
+
+                        g_free (ri.path);
+                }
+                g_slist_free_full (names, g_free);
 
                 show_controls (viewer);
         }
@@ -499,6 +505,7 @@ open_filechooser (GrImageViewer *viewer)
         gtk_file_filter_add_mime_type (filter, "image/*");
         gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), filter);
         gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (chooser), filter);
+        gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (chooser), TRUE);
 
         g_signal_connect (chooser, "response", G_CALLBACK (file_chooser_response), viewer);
 
