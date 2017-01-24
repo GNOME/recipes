@@ -37,6 +37,7 @@
 #include "gr-timer-widget.h"
 #include "gr-toggle-button.h"
 #include "gr-image-viewer.h"
+#include "gr-image-page.h"
 
 
 int
@@ -50,6 +51,7 @@ main (int argc, char *argv[])
         g_type_ensure (GR_TYPE_DETAILS_PAGE);
         g_type_ensure (GR_TYPE_EDIT_PAGE);
         g_type_ensure (GR_TYPE_IMAGE_VIEWER);
+        g_type_ensure (GR_TYPE_IMAGE_PAGE);
         g_type_ensure (GR_TYPE_LIST_PAGE);
         g_type_ensure (GR_TYPE_QUERY_EDITOR);
         g_type_ensure (GR_TYPE_RECIPES_PAGE);

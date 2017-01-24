@@ -58,6 +58,8 @@ recipes_SOURCES = \
 	gr-images.c		\
 	gr-image-viewer.h	\
 	gr-image-viewer.c	\
+	gr-image-page.h		\
+	gr-image-page.c		\
 	gr-ingredient.h		\
 	gr-ingredient.c		\
 	gr-ingredient-row.h	\

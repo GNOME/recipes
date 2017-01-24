@@ -65,4 +65,8 @@ void            gr_window_offer_undelete             (GrWindow   *window,
 void            gr_window_set_fullscreen             (GrWindow   *window,
                                                       gboolean    fullscreen);
 
+void            gr_window_show_image                 (GrWindow   *window,
+                                                      GArray     *images,
+                                                      int         index);
+
 G_END_DECLS

@@ -25,6 +25,7 @@
 #include "gr-image-viewer.h"
 #include "gr-images.h"
 #include "gr-utils.h"
+#include "gr-window.h"
 
 
 struct _GrImageViewer
@@ -252,10 +253,26 @@ motion_notify (GtkWidget     *widget,
 }
 
 static void
-button_press (GrImageViewer *viewer)
+button_press (GtkGesture *gesture,
+              int         n_press,
+              double      x,
+              double      y,
+              GrImageViewer *viewer)
 {
-        toggle_preview (viewer);
-        gtk_widget_grab_focus (viewer->event_box);
+        int button;
+
+        button = gtk_gesture_single_get_current_button (GTK_GESTURE_SINGLE (gesture));
+
+        if (button == GDK_BUTTON_PRIMARY) {
+                GtkWidget *window;
+
+                window = gtk_widget_get_ancestor (GTK_WIDGET (viewer), GTK_TYPE_APPLICATION_WINDOW);
+                gr_window_show_image (GR_WINDOW (window), viewer->images, viewer->index);
+        }
+        else {
+                toggle_preview (viewer);
+                gtk_widget_grab_focus (viewer->event_box);
+        }
 }
 
 static void
@@ -330,8 +347,9 @@ gr_image_viewer_init (GrImageViewer *self)
         g_signal_connect (self->event_box, "key-press-event", G_CALLBACK (key_press_event), self);
 
         self->gesture = gtk_gesture_multi_press_new (self->event_box);
+        gtk_gesture_single_set_button (GTK_GESTURE_SINGLE (self->gesture), 0);
         gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (self->gesture), GTK_PHASE_BUBBLE);
-        g_signal_connect_swapped (self->gesture, "pressed", G_CALLBACK (button_press), self);
+        g_signal_connect (self->gesture, "pressed", G_CALLBACK (button_press), self);
         self->images = gr_rotated_image_array_new ();
 }
 
