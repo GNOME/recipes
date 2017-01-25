@@ -267,3 +267,26 @@ flowbox flowboxchild {
 .image-page .content {
         border: 1px solid white;
 }
+
+.note {
+  background: #8091c4;
+}
+
+.note label,
+.note image {
+  color: white;
+  margin: 5px 0 5px 10px;
+}
+
+.note.content {
+  background: #a8c3e1;
+  padding: 10px;
+}
+
+.note:backdrop {
+  background: #b1b6c4;
+}
+
+.note.content:backdrop {
+  background: #cbd6e1;
+}

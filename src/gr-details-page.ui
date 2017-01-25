@@ -332,10 +332,56 @@ followed</property>
                             <property name="xalign">0</property>
                             <property name="wrap">1</property>
                             <property name="max-width-chars">45</property>
+                            <property name="margin-bottom">15</property>
                           </object>
                           <packing>
                             <property name="left-attach">0</property>
                             <property name="top-attach">3</property>
+                            <property name="width">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkBox" id="notes_box">
+                            <property name="orientation">vertical</property>
+                            <child>
+                              <object class="GtkBox">
+                                <property name="visible">1</property>
+                                <property name="orientation">horizontal</property>
+                                <style>
+                                  <class name="note"/>
+                                </style>
+                                <child>
+                                  <object class="GtkImage">
+                                    <property name="visible">1</property>
+                                    <property name="icon-name">dialog-warning-symbolic</property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="visible">1</property>
+                                    <property name="xalign">0</property>
+                                    <property name="label" translatable="yes">Note</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">1</property>
+                                  </packing>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="notes_label">
+                                <property name="visible">1</property>
+                                <property name="xalign">0</property>
+                                <style>
+                                  <class name="note"/>
+                                  <class name="content"/>
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left-attach">0</property>
+                            <property name="top-attach">4</property>
                             <property name="width">2</property>
                           </packing>
                         </child>
@@ -350,7 +396,7 @@ followed</property>
                           </object>
                           <packing>
                             <property name="left-attach">0</property>
-                            <property name="top-attach">4</property>
+                            <property name="top-attach">5</property>
                             <property name="width">2</property>
                           </packing>
                         </child>
@@ -367,7 +413,7 @@ followed</property>
                           </object>
                           <packing>
                             <property name="left-attach">0</property>
-                            <property name="top-attach">5</property>
+                            <property name="top-attach">6</property>
                             <property name="width">2</property>
                           </packing>
                         </child>
@@ -380,45 +426,7 @@ followed</property>
                           </object>
                           <packing>
                             <property name="left-attach">0</property>
-                            <property name="top-attach">6</property>
-                            <property name="width">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">1</property>
-                            <property name="label" translatable="yes">Notes</property>
-                            <property name="xalign">0</property>
-                            <style>
-                              <class name="heading"/>
-                            </style>
-                          </object>
-                          <packing>
-                            <property name="left-attach">0</property>
                             <property name="top-attach">7</property>
-                            <property name="width">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkScrolledWindow">
-                            <property name="visible">1</property>
-                            <property name="shadow-type">in</property>
-                            <property name="hscrollbar-policy">never</property>
-                            <property name="min-content-height">240</property>
-                            <child>
-                              <object class="GtkTextView" id="notes_field">
-                                <property name="visible">1</property>
-                                <property name="wrap-mode">word</property>
-                                <property name="top-margin">10</property>
-                                <property name="left-margin">10</property>
-                                <property name="right-margin">10</property>
-                                <property name="bottom-margin">10</property>
-                              </object>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="left-attach">0</property>
-                            <property name="top-attach">8</property>
                             <property name="width">2</property>
                           </packing>
                         </child>
@@ -435,6 +443,16 @@ followed</property>
     <child>
       <object class="GtkActionBar">
         <property name="visible">1</property>
+        <child>
+          <object class="GtkMenuButton" id="notes_button">
+            <property name="visible">1</property>
+            <property name="use-underline">1</property>
+            <property name="focus-on-click">0</property>
+            <property name="label" translatable="yes">_Notes</property>
+            <property name="popover">notes_popover</property>
+            <property name="direction">up</property>
+          </object>
+        </child>
         <child>
           <object class="GtkButton" id="edit_button">
             <property name="visible">1</property>
@@ -610,5 +628,25 @@ followed</property>
     <property name="upper">86400</property>
     <property name="step-increment">60</property>
     <property name="page-increment">900</property>
+  </object>
+  <object class="GtkPopover" id="notes_popover">
+    <child>
+      <object class="GtkScrolledWindow">
+        <property name="visible">1</property>
+        <property name="shadow-type">in</property>
+        <property name="margin">5</property>
+        <property name="height-request">300</property>
+        <property name="width-request">400</property>
+        <child>
+          <object class="GtkTextView" id="notes_field">
+            <property name="visible">1</property>
+            <property name="left-margin">10</property>
+            <property name="right-margin">10</property>
+            <property name="top-margin">10</property>
+            <property name="bottom-margin">10</property>
+          </object>
+        </child>
+      </object>
+    </child>
   </object>
 </interface>

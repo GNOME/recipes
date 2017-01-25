@@ -147,6 +147,8 @@ struct _GrDetailsPage
         GtkWidget *edit_button;
         GtkWidget *delete_button;
         GtkWidget *notes_field;
+        GtkWidget *notes_box;
+        GtkWidget *notes_label;
         GtkWidget *description_label;
         GtkWidget *export_button;
         GtkWidget *error_label;
@@ -524,10 +526,18 @@ shop_it (GrDetailsPage *page)
                 gr_recipe_store_remove_from_shopping (store, page->recipe);
 }
 
+static gboolean save_notes (gpointer data);
+
 static void
 details_page_finalize (GObject *object)
 {
         GrDetailsPage *self = GR_DETAILS_PAGE (object);
+
+        if (self->save_timeout) {
+                g_source_remove (self->save_timeout);
+                self->save_timeout = 0;
+                save_notes (object);
+        }
 
         g_clear_object (&self->recipe);
         g_clear_object (&self->chef);
@@ -536,11 +546,6 @@ details_page_finalize (GObject *object)
         g_clear_object (&self->exporter);
         g_clear_pointer (&self->cooking, g_hash_table_unref);
         g_clear_pointer (&self->uri, g_free);
-
-        if (self->save_timeout) {
-                g_source_remove (self->save_timeout);
-                self->save_timeout = 0;
-        }
 
         G_OBJECT_CLASS (gr_details_page_parent_class)->finalize (object);
 }
@@ -601,7 +606,7 @@ save_notes (gpointer data)
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
         if (!gr_recipe_store_update_recipe (store, page->recipe, id, &error)) {
-                g_print ("Error: %s\n", error->message);
+                g_message ("Error: %s", error->message);
         }
 
 out:
@@ -618,7 +623,7 @@ schedule_save (GtkTextBuffer *buffer, GrDetailsPage *page)
                 page->save_timeout = 0;
         }
 
-        page->save_timeout = g_timeout_add (250, save_notes, page);
+        page->save_timeout = g_timeout_add (500, save_notes, page);
 }
 
 static gboolean
@@ -750,6 +755,8 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, edit_button);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, delete_button);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, notes_field);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, notes_box);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, notes_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, description_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, export_button);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, error_label);
@@ -978,8 +985,15 @@ gr_details_page_set_recipe (GrDetailsPage *page,
                 gtk_widget_hide (page->chef_label);
         }
 
-        gtk_text_buffer_set_text (gtk_text_view_get_buffer (GTK_TEXT_VIEW (page->notes_field)),
-                                  notes ? notes : "", -1);
+        if (notes && notes[0]) {
+                gtk_text_buffer_set_text (gtk_text_view_get_buffer (GTK_TEXT_VIEW (page->notes_field)), notes, -1);
+                gtk_label_set_label (GTK_LABEL (page->notes_label), notes);
+                gtk_widget_show (page->notes_box);
+        }
+        else {
+                gtk_text_buffer_set_text (gtk_text_view_get_buffer (GTK_TEXT_VIEW (page->notes_field)), "", -1);
+                gtk_widget_hide (page->notes_box);
+        }
 
         if (description && description[0]) {
                 gtk_label_set_label (GTK_LABEL (page->description_label), description);
