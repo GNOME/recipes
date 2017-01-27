@@ -56,9 +56,11 @@ G_DEFINE_TYPE (GrImageViewer, gr_image_viewer, GTK_TYPE_BOX)
 enum {
         PROP_0,
         PROP_IMAGES,
+        PROP_INDEX,
         N_PROPS
 };
 
+static guint activate_signal;
 
 GrImageViewer *
 gr_image_viewer_new (void)
@@ -264,10 +266,7 @@ button_press (GtkGesture *gesture,
         button = gtk_gesture_single_get_current_button (GTK_GESTURE_SINGLE (gesture));
 
         if (button == GDK_BUTTON_PRIMARY) {
-                GtkWidget *window;
-
-                window = gtk_widget_get_ancestor (GTK_WIDGET (viewer), GTK_TYPE_APPLICATION_WINDOW);
-                gr_window_show_image (GR_WINDOW (window), viewer->images, viewer->index);
+                g_signal_emit (viewer, activate_signal, 0);
         }
         else {
                 toggle_preview (viewer);
@@ -367,6 +366,10 @@ gr_image_viewer_get_property (GObject    *object,
                   g_value_set_boxed (value, self->images);
                   break;
 
+          case PROP_INDEX:
+                  g_value_set_int (value, self->index);
+                  break;
+
           default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
           }
@@ -384,6 +387,10 @@ gr_image_viewer_set_property (GObject      *object,
           {
           case PROP_IMAGES:
                   gr_image_viewer_set_images (self, (GArray *) g_value_get_boxed (value));
+                  break;
+
+          case PROP_INDEX:
+                  gr_image_viewer_show_image (self, g_value_get_int (value));
                   break;
 
           default:
@@ -406,6 +413,19 @@ gr_image_viewer_class_init (GrImageViewerClass *klass)
                                     G_TYPE_ARRAY,
                                     G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_IMAGES, pspec);
+
+        pspec = g_param_spec_int ("index", NULL, NULL,
+                                  0, G_MAXINT, 0,
+                                  G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_INDEX, pspec);
+
+        activate_signal = g_signal_new ("activate",
+                                        G_TYPE_FROM_CLASS (object_class),
+                                        G_SIGNAL_RUN_LAST,
+                                        0,
+                                        NULL, NULL,
+                                        NULL,
+                                        G_TYPE_NONE, 0);
 
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-image-viewer.ui");
         gtk_widget_class_bind_template_child (widget_class, GrImageViewer, image1);

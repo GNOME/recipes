@@ -681,6 +681,19 @@ activate_link (GtkLabel      *label,
 }
 
 static void
+activate_image (GrDetailsPage *page)
+{
+        GtkWidget *window;
+        g_autoptr(GArray) images = NULL;
+        int idx;
+
+        g_object_get (page->recipe_image, "images", &images, "index", &idx, NULL);
+
+        window = gtk_widget_get_ancestor (GTK_WIDGET (page->recipe_image), GTK_TYPE_APPLICATION_WINDOW);
+        gr_window_show_image (GR_WINDOW (window), images, idx);
+}
+
+static void
 dismiss_error (GrDetailsPage *page)
 {
         gtk_revealer_set_reveal_child (GTK_REVEALER (page->error_revealer), FALSE);
@@ -776,6 +789,7 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, shop_it);
         gtk_widget_class_bind_template_callback (widget_class, activate_link);
         gtk_widget_class_bind_template_callback (widget_class, dismiss_error);
+        gtk_widget_class_bind_template_callback (widget_class, activate_image);
 }
 
 GtkWidget *
