@@ -121,6 +121,8 @@ set_current_image (GrImageViewer *viewer)
         child = gtk_flow_box_get_child_at_index (GTK_FLOW_BOX (viewer->preview_list), viewer->index);
         if (child)
                 gtk_flow_box_select_child (GTK_FLOW_BOX (viewer->preview_list), child);
+
+        g_object_notify (G_OBJECT (viewer), "index");
 }
 
 static void
