@@ -87,6 +87,7 @@
                       <object class="GrImageViewer" id="images">
                         <property name="visible">1</property>
                         <signal name="notify::images" handler="images_changed" swapped="yes"/>
+                        <signal name="notify::index" handler="index_changed" swapped="yes"/>
                         <signal name="activate" handler="add_image" swapped="yes"/>
                         <accessibility>
                           <relation target="add_image_button" type="controlled-by"/>
@@ -174,6 +175,32 @@
                               <object class="GtkImage">
                                 <property name="visible">1</property>
                                 <property name="icon-name">object-rotate-right-symbolic</property>
+                                <property name="icon-size">1</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="default_image_button">
+                            <property name="visible">1</property>
+                            <property name="halign">center</property>
+                            <property name="valign">start</property>
+                            <property name="tooltip-text" translatable="yes">Default image</property>
+                            <accessibility>
+                              <relation target="images" type="controller-for"/>
+                            </accessibility>
+                            <style>
+                              <class name="image-button"/>
+                              <class name="dim-label"/>
+                            </style>
+                            <signal name="clicked" handler="set_default_image" swapped="yes"/>
+                            <child>
+                              <object class="GtkImage" id="default_image_image">
+                                <property name="visible">1</property>
+                                <property name="icon-name">non-starred-symbolic</property>
                                 <property name="icon-size">1</property>
                               </object>
                             </child>

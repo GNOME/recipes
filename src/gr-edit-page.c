@@ -79,6 +79,8 @@ struct _GrEditPage
         GtkWidget *images;
         GtkWidget *add_image_button;
         GtkWidget *remove_image_button;
+        GtkWidget *default_image_button;
+        GtkWidget *default_image_image;
         GtkWidget *rotate_image_right_button;
         GtkWidget *rotate_image_left_button;
         GtkWidget *ingredient_popover;
@@ -118,6 +120,8 @@ struct _GrEditPage
         char *ing_term;
         char *unit_term;
         char *recipe_term;
+
+        guint index_handler_id;
 };
 
 G_DEFINE_TYPE (GrEditPage, gr_edit_page, GTK_TYPE_BOX)
@@ -166,6 +170,35 @@ update_image_button_sensitivity (GrEditPage *page)
         gtk_widget_set_sensitive (page->remove_image_button, length > 0);
         gtk_widget_set_sensitive (page->rotate_image_left_button, length > 0);
         gtk_widget_set_sensitive (page->rotate_image_right_button, length > 0);
+        gtk_widget_set_sensitive (page->default_image_button, length > 0);
+}
+
+static void
+update_default_button (GrEditPage *page)
+{
+        int index;
+
+        g_object_get (page->images, "index", &index, NULL);
+
+        if (page->recipe && gr_recipe_get_default_image (page->recipe) == index) {
+                gtk_widget_set_state_flags (page->default_image_button, GTK_STATE_FLAG_CHECKED, FALSE);
+                gtk_image_set_from_icon_name (GTK_IMAGE (page->default_image_image), "starred-symbolic", 1);
+        }
+        else {
+                gtk_widget_unset_state_flags (page->default_image_button, GTK_STATE_FLAG_CHECKED);
+                gtk_image_set_from_icon_name (GTK_IMAGE (page->default_image_image), "non-starred-symbolic", 1);
+        }
+}
+
+static void
+set_default_image (GrEditPage *page)
+{
+        int index;
+
+        g_object_get (page->images, "index", &index, NULL);
+
+        if (page->recipe)
+                g_object_set (page->recipe, "default-image", index, NULL);
 }
 
 static void
@@ -174,6 +207,13 @@ images_changed (GrEditPage *page)
         update_image_button_sensitivity (page);
         update_link_button_sensitivity (page);
         populate_image_flowbox (page);
+        update_default_button (page);
+}
+
+static void
+index_changed (GrEditPage *page)
+{
+        update_default_button (page);
 }
 
 static void
@@ -1328,6 +1368,8 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, images);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, add_image_button);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, remove_image_button);
+        gtk_widget_class_bind_template_child (widget_class, GrEditPage, default_image_button);
+        gtk_widget_class_bind_template_child (widget_class, GrEditPage, default_image_image);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, rotate_image_left_button);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, rotate_image_right_button);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, author_label);
@@ -1360,6 +1402,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, rotate_image_left);
         gtk_widget_class_bind_template_callback (widget_class, rotate_image_right);
         gtk_widget_class_bind_template_callback (widget_class, images_changed);
+        gtk_widget_class_bind_template_callback (widget_class, index_changed);
         gtk_widget_class_bind_template_callback (widget_class, add_ingredient2);
         gtk_widget_class_bind_template_callback (widget_class, remove_ingredient);
         gtk_widget_class_bind_template_callback (widget_class, ingredient_changed);
@@ -1381,6 +1424,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, recipe_filter_changed);
         gtk_widget_class_bind_template_callback (widget_class, recipe_filter_stop);
         gtk_widget_class_bind_template_callback (widget_class, recipe_filter_activated);
+        gtk_widget_class_bind_template_callback (widget_class, set_default_image);
 }
 
 GtkWidget *
@@ -1860,7 +1904,19 @@ gr_edit_page_edit (GrEditPage *page,
                 gtk_widget_hide (page->author_label);
         }
 
+        if (page->index_handler_id) {
+                g_signal_handler_disconnect (page->recipe, page->index_handler_id);
+                page->index_handler_id = 0;
+        }
+
         g_set_object (&page->recipe, recipe);
+
+        if (recipe) {
+                page->index_handler_id = g_signal_connect_swapped (recipe, "notify::default-image",
+                                                                   G_CALLBACK (update_default_button), page);
+        }
+
+        update_default_button (page);
 }
 
 static void
