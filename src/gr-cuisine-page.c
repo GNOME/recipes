@@ -73,6 +73,7 @@ scroll_in_idle (gpointer data)
         GtkAllocation alloc;
         double page_increment, value;
         Category *category;
+        gboolean dummy;
 
         if (page->scroll_to_row == NULL)
                 return G_SOURCE_REMOVE;
@@ -88,7 +89,7 @@ scroll_in_idle (gpointer data)
         page_increment = gtk_adjustment_get_page_increment (adj);
         value = gtk_adjustment_get_value (adj);
         gtk_adjustment_set_page_increment (adj, alloc.y - value);
-        g_signal_emit_by_name (page->scrolled_window, "scroll-child", GTK_SCROLL_PAGE_FORWARD, FALSE);
+        g_signal_emit_by_name (page->scrolled_window, "scroll-child", GTK_SCROLL_PAGE_FORWARD, FALSE, &dummy);
         gtk_adjustment_set_page_increment (adj, page_increment);
 
         return G_SOURCE_REMOVE;
