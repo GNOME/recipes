@@ -166,6 +166,62 @@
           <object class="GtkOverlay">
             <property name="visible">1</property>
             <child type="overlay">
+              <object class="GtkRevealer" id="shopping_added_revealer">
+                <property name="visible">1</property>
+                <property name="halign">center</property>
+                <property name="valign">start</property>
+                <child>
+                  <object class="GtkFrame">
+                    <property name="visible">1</property>
+                    <style>
+                      <class name="app-notification"/>
+                    </style>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="visible">1</property>
+                        <property name="spacing">20</property>
+                        <property name="margin">10</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">1</property>
+                            <property name="hexpand">1</property>
+                            <property name="halign">start</property>
+                            <property name="label" translatable="yes">Ingredients to buy added.</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkButton">
+                            <property name="visible">1</property>
+                            <property name="focus-on-click">0</property>
+                            <property name="label" translatable="yes">View Shopping List</property>
+                            <signal name="clicked" handler="do_shopping_list" swapped="yes"/>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkButton">
+                            <property name="visible">1</property>
+                            <property name="focus-on-click">0</property>
+                            <property name="relief">none</property>
+                            <signal name="clicked" handler="close_shopping_added" swapped="yes"/>
+                            <style>
+                              <class name="image-button"/>
+                            </style>
+                            <child>
+                              <object class="GtkImage">
+                                <property name="visible">1</property>
+                                <property name="icon-name">window-close-symbolic</property>
+                                <property name="icon-size">1</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="overlay">
               <object class="GtkRevealer" id="undo_revealer">
                 <property name="visible">1</property>
                 <property name="halign">center</property>

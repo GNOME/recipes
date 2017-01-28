@@ -69,4 +69,6 @@ void            gr_window_show_image                 (GrWindow   *window,
                                                       GArray     *images,
                                                       int         index);
 
+void            gr_window_offer_shopping             (GrWindow   *window);
+
 G_END_DECLS

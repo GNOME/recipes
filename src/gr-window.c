@@ -64,6 +64,8 @@ struct _GrWindow
         GtkWidget *undo_label;
         GrRecipe  *undo_recipe;
         guint undo_timeout_id;
+        GtkWidget *shopping_added_revealer;
+        guint shopping_timeout_id;
 
         GrRecipeImporter *importer;
 
@@ -383,6 +385,10 @@ gr_window_finalize (GObject *object)
                 g_source_remove (self->undo_timeout_id);
                 self->undo_timeout_id = 0;
         }
+        if (self->shopping_timeout_id) {
+                g_source_remove (self->shopping_timeout_id);
+                self->shopping_timeout_id = 0;
+        }
 
         G_OBJECT_CLASS (gr_window_parent_class)->finalize (object);
 }
@@ -441,6 +447,41 @@ gr_window_offer_undelete (GrWindow *window,
 }
 
 static void
+close_shopping_added (GrWindow *window)
+{
+        if (window->shopping_timeout_id) {
+                g_source_remove (window->shopping_timeout_id);
+                window->shopping_timeout_id = 0;
+        }
+
+        gtk_revealer_set_reveal_child (GTK_REVEALER (window->shopping_added_revealer), FALSE);
+}
+
+static gboolean
+shopping_timeout (gpointer data)
+{
+        GrWindow *window = data;
+
+        close_shopping_added (window);
+
+        return G_SOURCE_REMOVE;
+}
+
+static void
+do_shopping_list (GrWindow *window)
+{
+        close_shopping_added (window);
+        gr_window_show_shopping (window);
+}
+
+void
+gr_window_offer_shopping (GrWindow *window)
+{
+        gtk_revealer_set_reveal_child (GTK_REVEALER (window->shopping_added_revealer), TRUE);
+        window->shopping_timeout_id = g_timeout_add_seconds (10, shopping_timeout, window);
+}
+
+static void
 shopping_title_changed (GrWindow *window)
 {
         const char *page;
@@ -485,6 +526,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrWindow, image_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, undo_revealer);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, undo_label);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, shopping_added_revealer);
 
         gtk_widget_class_bind_template_callback (widget_class, new_recipe);
         gtk_widget_class_bind_template_callback (widget_class, go_back);
@@ -499,6 +541,8 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, window_mapped_handler);
         gtk_widget_class_bind_template_callback (widget_class, do_undo);
         gtk_widget_class_bind_template_callback (widget_class, close_undo);
+        gtk_widget_class_bind_template_callback (widget_class, do_shopping_list);
+        gtk_widget_class_bind_template_callback (widget_class, close_shopping_added);
         gtk_widget_class_bind_template_callback (widget_class, shopping_title_changed);
 }
 

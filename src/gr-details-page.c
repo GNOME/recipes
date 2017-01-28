@@ -517,9 +517,13 @@ static void
 shop_it (GrDetailsPage *page)
 {
         GrRecipeStore *store;
+        GtkWidget *window;
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
         gr_recipe_store_add_to_shopping (store, page->recipe);
+
+        window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
+        gr_window_offer_shopping (GR_WINDOW (window));
 }
 
 static gboolean save_notes (gpointer data);
