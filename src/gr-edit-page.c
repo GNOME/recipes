@@ -1845,7 +1845,7 @@ gr_edit_page_edit (GrEditPage *page,
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->vegetarian_check), (diets & GR_DIET_VEGETARIAN) != 0);
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->milk_free_check), (diets & GR_DIET_MILK_FREE) != 0);
 
-        g_object_set (page->images, "images", images, NULL);
+        gr_image_viewer_set_images (GR_IMAGE_VIEWER (page->images), images);
 
         if (chef) {
                 g_autofree char *tmp = NULL;
