@@ -87,6 +87,7 @@
                       <object class="GrImageViewer" id="images">
                         <property name="visible">1</property>
                         <signal name="notify::images" handler="images_changed" swapped="yes"/>
+                        <signal name="activate" handler="add_image" swapped="yes"/>
                         <accessibility>
                           <relation target="add_image_button" type="controlled-by"/>
                           <relation target="rotate_image_left_button" type="controlled-by"/>
