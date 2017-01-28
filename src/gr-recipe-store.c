@@ -121,6 +121,7 @@ load_recipes (GrRecipeStore *self,
                 g_autofree gboolean *dark = NULL;
                 int serves;
                 int spiciness;
+                int default_image = 0;
                 GrDiets diets;
                 g_autoptr(GArray) images = NULL;
                 GrRotatedImage ri;
@@ -248,6 +249,14 @@ load_recipes (GrRecipeStore *self,
                 if (length2 != length3) {
                         g_warning ("Failed to load recipe %s: Images and Angles length mismatch", groups[i]);
                         continue;
+                }
+                default_image = g_key_file_get_integer (keyfile, groups[i], "DefaultImage", &error);
+                if (error) {
+                        if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
+                                g_warning ("Failed to load recipe %s: %s", groups[i], error->message);
+                                continue;
+                        }
+                        g_clear_error (&error);
                 }
                 dark = g_key_file_get_boolean_list (keyfile, groups[i], "DarkText", &length3, &error);
                 if (error) {
@@ -380,6 +389,7 @@ load_recipes (GrRecipeStore *self,
                                               "spiciness", spiciness,
                                               "diets", diets,
                                               "images", images,
+                                              "default-image", default_image,
                                               "readonly", readonly,
                                               NULL);
                 }
@@ -401,6 +411,7 @@ load_recipes (GrRecipeStore *self,
                                                "spiciness", spiciness,
                                                "diets", diets,
                                                "images", images,
+                                               "default-image", default_image,
                                                "ctime", ctime,
                                                "mtime", mtime,
                                                "readonly", readonly,
@@ -451,6 +462,7 @@ save_recipes (GrRecipeStore *self)
                 g_autofree gboolean *dark = NULL;
                 GDateTime *ctime;
                 GDateTime *mtime;
+                int default_image = 0;
                 int i;
                 gboolean readonly;
 
@@ -470,6 +482,7 @@ save_recipes (GrRecipeStore *self)
                 notes = gr_recipe_get_notes (recipe);
                 ctime = gr_recipe_get_ctime (recipe);
                 mtime = gr_recipe_get_mtime (recipe);
+                default_image = gr_recipe_get_default_image (recipe);
                 readonly = gr_recipe_is_readonly (recipe);
 
                 g_object_get (recipe, "images", &images, NULL);
@@ -508,6 +521,7 @@ save_recipes (GrRecipeStore *self)
                 g_key_file_set_integer (keyfile, key, "Serves", serves);
                 g_key_file_set_integer (keyfile, key, "Spiciness", spiciness);
                 g_key_file_set_integer (keyfile, key, "Diets", diets);
+                g_key_file_set_integer (keyfile, key, "DefaultImage", default_image);
                 g_key_file_set_string_list (keyfile, key, "Images", (const char * const *)paths, images->len);
                 g_key_file_set_integer_list (keyfile, key, "Angles", angles, images->len);
                 g_key_file_set_integer_list (keyfile, key, "DarkText", dark, images->len);
