@@ -1800,6 +1800,7 @@ gr_edit_page_edit (GrEditPage *page,
         const char *instructions;
         const char *ingredients;
         GrDiets diets;
+        int index;
         g_autoptr(GArray) images = NULL;
         g_autoptr(GrChef) chef = NULL;
         GrRecipeStore *store;
@@ -1819,6 +1820,7 @@ gr_edit_page_edit (GrEditPage *page,
         instructions = gr_recipe_get_instructions (recipe);
         ingredients = gr_recipe_get_ingredients (recipe);
         author = gr_recipe_get_author (recipe);
+        index = gr_recipe_get_default_image (recipe);
 
         g_object_get (recipe, "images", &images, NULL);
 
@@ -1846,6 +1848,7 @@ gr_edit_page_edit (GrEditPage *page,
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->milk_free_check), (diets & GR_DIET_MILK_FREE) != 0);
 
         gr_image_viewer_set_images (GR_IMAGE_VIEWER (page->images), images);
+        gr_image_viewer_show_image (GR_IMAGE_VIEWER (page->images), index);
 
         if (chef) {
                 g_autofree char *tmp = NULL;
