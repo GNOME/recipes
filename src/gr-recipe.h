@@ -50,6 +50,7 @@ gboolean        gr_recipe_contains_garlic  (GrRecipe   *recipe);
 gboolean        gr_recipe_contains_dairy   (GrRecipe   *recipe);
 gboolean        gr_recipe_contains_gluten  (GrRecipe   *recipe);
 int             gr_recipe_get_spiciness    (GrRecipe   *recipe);
+int             gr_recipe_get_default_image (GrRecipe   *recipe);
 GDateTime      *gr_recipe_get_ctime        (GrRecipe   *recipe);
 GDateTime      *gr_recipe_get_mtime        (GrRecipe   *recipe);
 gboolean        gr_recipe_is_readonly      (GrRecipe   *recipe);

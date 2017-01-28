@@ -38,6 +38,7 @@ struct _GrRecipe
         char *author;
         char *description;
         GArray *images;
+        int default_image;
 
         char *cuisine;
         char *season;
@@ -75,6 +76,7 @@ enum {
         PROP_AUTHOR,
         PROP_DESCRIPTION,
         PROP_IMAGES,
+        PROP_DEFAULT_IMAGE,
         PROP_CUISINE,
         PROP_SEASON,
         PROP_CATEGORY,
@@ -151,6 +153,10 @@ gr_recipe_get_property (GObject    *object,
 
         case PROP_IMAGES:
                 g_value_set_boxed (value, self->images);
+                break;
+
+        case PROP_DEFAULT_IMAGE:
+                g_value_set_int (value, self->default_image);
                 break;
 
         case PROP_CATEGORY:
@@ -287,6 +293,11 @@ gr_recipe_set_property (GObject      *object,
                 update_mtime (self);
                 break;
 
+        case PROP_DEFAULT_IMAGE:
+                self->default_image = g_value_get_int (value);
+                update_mtime (self);
+                break;
+
         case PROP_CATEGORY:
                 g_free (self->category);
                 self->category = g_value_dup_string (value);
@@ -416,6 +427,11 @@ gr_recipe_class_init (GrRecipeClass *klass)
                                      G_TYPE_ARRAY,
                                      G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_IMAGES, pspec);
+
+        pspec = g_param_spec_int ("default-image", NULL, NULL,
+                                  0, G_MAXINT, 0,
+                                  G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_DEFAULT_IMAGE, pspec);
 
         pspec = g_param_spec_string ("category", NULL, NULL,
                                      NULL,
@@ -639,6 +655,12 @@ GDateTime *
 gr_recipe_get_mtime (GrRecipe *recipe)
 {
         return recipe->mtime;
+}
+
+int
+gr_recipe_get_default_image (GrRecipe *recipe)
+{
+        return recipe->default_image;
 }
 
 gboolean
