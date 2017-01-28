@@ -927,6 +927,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         gboolean favorite;
         gboolean shopping;
         gboolean same_recipe;
+        int index;
 
         if (page->recipe)
                 old_id = gr_recipe_get_id (page->recipe);
@@ -943,9 +944,11 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         notes = gr_recipe_get_notes (recipe);
         instructions = gr_recipe_get_translated_instructions (recipe);
         description = gr_recipe_get_translated_description (recipe);
+        index = gr_recipe_get_default_image (recipe);
 
         g_object_get (recipe, "images", &images, NULL);
         gr_image_viewer_set_images (GR_IMAGE_VIEWER (page->recipe_image), images);
+        gr_image_viewer_show_image (GR_IMAGE_VIEWER (page->recipe_image), index);
 
         ing = gr_ingredients_list_new (ingredients);
         g_set_object (&page->ingredients, ing);
