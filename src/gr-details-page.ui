@@ -222,6 +222,17 @@ followed</property>
                                 <property name="margin-top">30</property>
                               </object>
                             </child>
+                            <child>
+                              <object class="GtkButton">
+                                <property name="visible">1</property>
+                                <property name="use-underline">1</property>
+                                <property name="halign">start</property>
+                                <property name="margin-top">20</property>
+                                <property name="focus-on-click">0</property>
+                                <property name="label" translatable="yes">_Buy ingredients</property>
+                                <signal name="clicked" handler="shop_it" swapped="yes"/>
+                              </object>
+                            </child>
                           </object>
                         </child>
                       </object>
@@ -474,18 +485,6 @@ followed</property>
             </style>
             <signal name="clicked" handler="delete_recipe" swapped="true"/>
           </object>
-        </child>
-        <child>
-          <object class="GtkToggleButton" id="shop_button">
-            <property name="visible">1</property>
-            <property name="use-underline">1</property>
-            <property name="focus-on-click">0</property>
-            <property name="label" translatable="yes">_Cook it later</property>
-            <signal name="toggled" handler="shop_it" swapped="yes"/>
-          </object>
-          <packing>
-            <property name="pack-type">end</property>
-          </packing>
         </child>
         <child>
           <object class="GtkToggleButton" id="favorite_button">

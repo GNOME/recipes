@@ -696,7 +696,7 @@ gr_window_show_shopping (GrWindow *window)
 {
         save_back_entry (window);
 
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Cook it later"));
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Buy ingredients"));
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
