@@ -1,5 +1,6 @@
 #if 0
 
+N_("Aviation, making stuff, in Finland.")
 N_("Erusan is an American who has lived all over the country, loves GNOME, and enjoys cooking — primarily American, Asian, and Indian cuisine.")
 N_("I cook a lot, particularly Italian and Indian.")
 N_("The nordic cuisine maestro.")

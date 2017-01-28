@@ -657,6 +657,7 @@ about_activated (GSimpleAction *action,
                 "Allan Day",
                 "Erusan",
                 "Link Dupont",
+                "Tuomas Kuosmanen",
                 NULL
         };
 

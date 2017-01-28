@@ -57,6 +57,7 @@ dist_images_DATA = \
 	images/halfline.jpg		\
 	images/mclasen.jpg		\
 	images/Sonic.jpg		\
+	images/tigert.jpg		\
 	images/donauwellen0.jpg		\
 	images/donauwellen1.jpg		\
 	images/donauwellen2.jpg		\
@@ -68,6 +69,7 @@ dist_images_DATA = \
 	images/donauwellen8.jpg		\
 	images/donauwellen_final.jpg	\
 	images/meatballs.jpg		\
+	images/non_knead_buns.png	\
 	images/pesto.jpg		\
 	images/pineapple_upside_down.jpg \
 	images/pizzaburger.jpg		\
