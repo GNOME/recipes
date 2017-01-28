@@ -72,8 +72,15 @@ add_recipe_css (GrRecipe *recipe,
         g_object_get (recipe, "images", &images, NULL);
 
         if (images->len > 0) {
-                GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, 0);
+                GrRotatedImage *ri;
                 g_autofree char *path = NULL;
+                int index;
+
+                index = gr_recipe_get_default_image (recipe);
+                if (index < 0 || index >= images->len)
+                        index = 0;
+
+                ri = &g_array_index (images, GrRotatedImage, index);
 
                 path = ensure_rotated_image (ri->path, ri->angle);
                 g_string_append_printf (css, "image.recipe.small.%s,\nbox.recipe.%s {\n", id, id);
