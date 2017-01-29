@@ -375,6 +375,7 @@ populate_chefs_from_store (GrRecipesPage *self)
         g_autofree char **keys = NULL;
         guint length;
         int i;
+        int count;
 
         gr_chef_tile_recreate_css ();
 
@@ -383,7 +384,20 @@ populate_chefs_from_store (GrRecipesPage *self)
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         keys = gr_recipe_store_get_chef_keys (store, &length);
+        /* scramble the keys so we don't always get the same picks */
         for (i = 0; i < length; i++) {
+                int r;
+                char *tmp;
+
+                r = g_random_int_range (0, length);
+
+                tmp = keys[i];
+                keys[i] = keys[r];
+                keys[r] = tmp;
+        }
+
+        count = 0;
+        for (i = 0; i < length && count < 6; i++) {
                 g_autoptr(GrChef) chef = NULL;
 
                 chef = gr_recipe_store_get_chef (store, keys[i]);
@@ -394,6 +408,8 @@ populate_chefs_from_store (GrRecipesPage *self)
                         tile = gr_chef_tile_new (chef);
                         gtk_widget_show (tile);
                         gtk_container_add (GTK_CONTAINER (self->chefs_box), tile);
+
+                        count++;
                 }
         }
 }
