@@ -20,9 +20,11 @@
 
 #include "config.h"
 
-#include <glib/gi18n.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <sys/stat.h>
+
+#include <glib/gi18n.h>
 
 #include "gr-utils.h"
 #include "gr-app.h"
@@ -473,8 +475,8 @@ ensure_rotated_image (const char *path,
         basename = g_path_get_basename (path);
         subdir = g_strdup_printf ("images%d", angle);
 
-        dir = g_build_filename (g_get_user_cache_dir (), "recipes", "subdir", NULL);
-        g_mkdir_with_parents (dir, 755);
+        dir = g_build_filename (g_get_user_cache_dir (), "recipes", subdir, NULL);
+        g_mkdir_with_parents (dir, S_IRWXU | S_IRWXG | S_IRWXO);
 
         rotated = g_build_filename (dir, basename, NULL);
         if (!g_file_test (rotated, G_FILE_TEST_EXISTS)) {
