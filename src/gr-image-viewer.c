@@ -20,7 +20,11 @@
 
 #include "config.h"
 
+#include <sys/stat.h>
+#include <sys/types.h>
+
 #include <glib/gi18n.h>
+#include <gio/gunixoutputstream.h>
 
 #include "gr-image-viewer.h"
 #include "gr-images.h"
@@ -308,6 +312,58 @@ preview_selected (GrImageViewer *viewer)
         }
 }
 
+static void
+add_image (GrImageViewer  *viewer,
+           GrRotatedImage *ri,
+           gboolean        select)
+{
+        g_array_append_vals (viewer->images, ri, 1);
+        ri = &g_array_index (viewer->images, GrRotatedImage, viewer->images->len - 1);
+        ri->path = g_strdup (ri->path);
+
+        populate_preview (viewer);
+        if (select)
+                viewer->index = viewer->images->len - 1;
+        set_current_image (viewer);
+
+        g_object_notify (G_OBJECT (viewer), "images");
+}
+
+static void
+image_received (GtkClipboard *clipboard,
+                GdkPixbuf    *pixbuf,
+                gpointer      data)
+{
+        GrImageViewer *viewer = data;
+
+        if (pixbuf) {
+                GrRotatedImage ri;
+                g_autofree char *dir = NULL;
+                g_autofree char *path = NULL;
+                int fd;
+                g_autoptr(GOutputStream) stream = NULL;
+                g_autoptr(GError) error = NULL;
+
+                dir = g_build_filename (g_get_user_data_dir (), "recipes", NULL);
+                g_mkdir_with_parents (dir, S_IRWXU | S_IRWXG | S_IRWXO);
+
+                path = g_build_filename (dir, "clipboardXXXXXX.png", NULL);
+                fd = g_mkstemp (path);
+                stream = g_unix_output_stream_new (fd, TRUE);
+
+                if (!gdk_pixbuf_save_to_stream (pixbuf, stream, "png", NULL, &error, NULL)) {
+                        g_message ("Saving clipboard contents failed: %s", error->message);
+                        return;
+                }
+
+                ri.path = g_strdup (path);
+                ri.angle = 0;
+                ri.dark_text = FALSE;
+
+                add_image (viewer, &ri, TRUE);
+        }
+}
+
 static gboolean
 key_press_event (GtkWidget     *widget,
                  GdkEvent      *event,
@@ -329,6 +385,13 @@ key_press_event (GtkWidget     *widget,
         }
         else if (key->keyval == GDK_KEY_Right) {
                 next_image (viewer);
+                return TRUE;
+        }
+        else if (key->keyval == GDK_KEY_v && (key->state & GDK_CONTROL_MASK) != 0) {
+                GtkClipboard *clipboard;
+
+                clipboard = gtk_widget_get_clipboard (GTK_WIDGET (viewer), GDK_SELECTION_CLIPBOARD);
+                gtk_clipboard_request_image (clipboard, image_received, viewer);
                 return TRUE;
         }
 
@@ -442,23 +505,6 @@ gr_image_viewer_class_init (GrImageViewerClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, prev_image);
         gtk_widget_class_bind_template_callback (widget_class, next_image);
         gtk_widget_class_bind_template_callback (widget_class, preview_selected);
-}
-
-static void
-add_image (GrImageViewer  *viewer,
-           GrRotatedImage *ri,
-           gboolean        select)
-{
-        g_array_append_vals (viewer->images, ri, 1);
-        ri = &g_array_index (viewer->images, GrRotatedImage, viewer->images->len - 1);
-        ri->path = g_strdup (ri->path);
-
-        populate_preview (viewer);
-        if (select)
-                viewer->index = viewer->images->len - 1;
-        set_current_image (viewer);
-
-        g_object_notify (G_OBJECT (viewer), "images");
 }
 
 void
