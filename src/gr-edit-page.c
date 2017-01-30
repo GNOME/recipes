@@ -42,6 +42,7 @@
 #include "gr-ingredient.h"
 #include "gr-number.h"
 #include "gr-unit.h"
+#include "gr-chef-dialog.h"
 
 #ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
@@ -122,6 +123,8 @@ struct _GrEditPage
         char *recipe_term;
 
         guint index_handler_id;
+
+        char *author;
 };
 
 G_DEFINE_TYPE (GrEditPage, gr_edit_page, GTK_TYPE_BOX)
@@ -245,6 +248,8 @@ edit_page_finalize (GObject *object)
 {
         GrEditPage *self = GR_EDIT_PAGE (object);
 
+        if (self->index_handler_id)
+                g_signal_handler_disconnect (self->recipe, self->index_handler_id);
         g_clear_object (&self->recipe);
         g_clear_object (&self->group);
         g_list_free (self->segments);
@@ -254,6 +259,8 @@ edit_page_finalize (GObject *object)
         g_free (self->recipe_term);
 
         g_clear_object (&self->search);
+
+        g_free (self->author);
 
         G_OBJECT_CLASS (gr_edit_page_parent_class)->finalize (object);
 }
@@ -1035,6 +1042,7 @@ search_hits_added (GrRecipeSearch *search,
                 gtk_widget_show (label);
                 gtk_box_pack_start (GTK_BOX (box), label, TRUE, TRUE, 0);
 
+                store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
                 author = gr_recipe_get_author (recipe);
                 chef = gr_recipe_store_get_chef (store, author ? author : "");
                 if (chef) {
@@ -1257,6 +1265,44 @@ add_image_link (GtkButton *button, GrEditPage *page)
         gtk_popover_popup (GTK_POPOVER (page->image_popover));
 }
 
+static void update_author_label (GrEditPage *page,
+                                 GrChef     *chef);
+
+static void
+chef_done (GrChefDialog *dialog, GrChef *chef, GrEditPage *page)
+{
+        g_free (page->author);
+        page->author = g_strdup (gr_chef_get_id (chef));
+
+        update_author_label (page, chef);
+}
+
+static gboolean
+edit_chef (GrEditPage *page)
+{
+        GrChefDialog *dialog;
+        GtkWidget *win;
+        const char *author;
+        GrRecipeStore *store;
+        g_autoptr(GrChef) chef = NULL;
+
+        win = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+        author = page->author;
+        chef = gr_recipe_store_get_chef (store, author ? author : "");
+
+        dialog = gr_chef_dialog_new (GTK_WINDOW (win), chef);
+        gr_chef_dialog_can_create (dialog, TRUE);
+        g_signal_connect (dialog, "done", G_CALLBACK (chef_done), page);
+
+        gtk_window_set_title (GTK_WINDOW (dialog), _("Recipe Author"));
+        gtk_window_present (GTK_WINDOW (dialog));
+
+        return TRUE;
+}
+
 static void
 gr_edit_page_init (GrEditPage *page)
 {
@@ -1410,6 +1456,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, recipe_filter_stop);
         gtk_widget_class_bind_template_callback (widget_class, recipe_filter_activated);
         gtk_widget_class_bind_template_callback (widget_class, set_default_image);
+        gtk_widget_class_bind_template_callback (widget_class, edit_chef);
 }
 
 GtkWidget *
@@ -1711,6 +1758,9 @@ void
 gr_edit_page_clear (GrEditPage *page)
 {
         GArray *images;
+        GrRecipeStore *store;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         gtk_label_set_label (GTK_LABEL (page->name_label), _("Name your recipe"));
         gtk_entry_set_text (GTK_ENTRY (page->name_entry), "");
@@ -1735,7 +1785,15 @@ gr_edit_page_clear (GrEditPage *page)
         g_object_set (page->images, "images", images, NULL);
         g_array_unref (images);
 
+        if (page->index_handler_id) {
+                g_signal_handler_disconnect (page->recipe, page->index_handler_id);
+                page->index_handler_id = 0;
+        }
+
         g_clear_object (&page->recipe);
+
+        g_free (page->author);
+        page->author = g_strdup (gr_recipe_store_get_user_key (store));
 }
 
 static void
@@ -1812,6 +1870,24 @@ set_instructions (GtkTextView *text_view,
         gtk_text_buffer_insert (buffer, &iter, p, -1);
 }
 
+static void
+update_author_label (GrEditPage *page,
+                     GrChef     *chef)
+{
+        if (chef) {
+                g_autofree char *tmp = NULL;
+                g_autofree char *link = NULL;
+
+                link = g_strdup_printf ("<a href=\"edit\">%s</a>", gr_chef_get_name (chef));
+                tmp = g_strdup_printf (_("Recipe by %s"), link);
+                gtk_label_set_label (GTK_LABEL (page->author_label), tmp);
+                gtk_widget_show (page->author_label);
+        }
+        else {
+                gtk_widget_hide (page->author_label);
+        }
+}
+
 void
 gr_edit_page_edit (GrEditPage *page,
                    GrRecipe   *recipe)
@@ -1853,6 +1929,8 @@ gr_edit_page_edit (GrEditPage *page,
 
         g_object_get (recipe, "images", &images, NULL);
 
+        page->author = g_strdup (author);
+
         chef = gr_recipe_store_get_chef (store, author ? author : "");
 
         gtk_label_set_label (GTK_LABEL (page->name_label), _("Name"));
@@ -1879,15 +1957,7 @@ gr_edit_page_edit (GrEditPage *page,
         gr_image_viewer_set_images (GR_IMAGE_VIEWER (page->images), images);
         gr_image_viewer_show_image (GR_IMAGE_VIEWER (page->images), index);
 
-        if (chef) {
-                g_autofree char *tmp = NULL;
-                tmp = g_strdup_printf (_("Recipe by %s"), gr_chef_get_name (chef));
-                gtk_label_set_label (GTK_LABEL (page->author_label), tmp);
-                gtk_widget_show (page->author_label);
-        }
-        else {
-                gtk_widget_hide (page->author_label);
-        }
+        update_author_label (page, chef);
 
         if (page->index_handler_id) {
                 g_signal_handler_disconnect (page->recipe, page->index_handler_id);
@@ -2209,13 +2279,12 @@ gr_edit_page_save (GrEditPage *page)
         if (page->recipe) {
                 g_autofree char *old_id = NULL;
                 g_autofree char *id = NULL;
-                const char *author;
 
-                author = gr_recipe_get_author (page->recipe);
-                id = generate_id ("R_", name, "_by_", author, NULL);
+                id = generate_id ("R_", name, "_by_", page->author, NULL);
                 old_id = g_strdup (gr_recipe_get_id (page->recipe));
                 g_object_set (page->recipe,
                               "id", id,
+                              "author", page->author,
                               "name", name,
                               "cuisine", cuisine,
                               "category", category,
@@ -2239,16 +2308,14 @@ gr_edit_page_save (GrEditPage *page)
         }
         else {
                 g_autoptr(GrRecipe) recipe = NULL;
-                const char *author;
                 g_autofree char *id = NULL;
 
-                author = gr_recipe_store_get_user_key (store);
                 ensure_user_chef (store, page);
-                id = generate_id ("R_", name, "_by_", author, NULL);
+                id = generate_id ("R_", name, "_by_", page->author, NULL);
                 recipe = g_object_new (GR_TYPE_RECIPE,
                                        "id", id,
+                                       "author", page->author,
                                        "name", name,
-                                       "author", author,
                                        "cuisine", cuisine,
                                        "category", category,
                                        "season", season,
@@ -2272,6 +2339,10 @@ gr_edit_page_save (GrEditPage *page)
         gtk_label_set_label (GTK_LABEL (page->error_label), error->message);
         gtk_revealer_set_reveal_child (GTK_REVEALER (page->error_revealer), TRUE);
 
+        if (page->index_handler_id) {
+                g_signal_handler_disconnect (page->recipe, page->index_handler_id);
+                page->index_handler_id = 0;
+        }
         g_clear_object (&page->recipe);
 
         return FALSE;

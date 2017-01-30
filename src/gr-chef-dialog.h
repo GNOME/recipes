@@ -22,12 +22,18 @@
 
 #include <gtk/gtk.h>
 
+#include "gr-chef.h"
+
 G_BEGIN_DECLS
 
 #define GR_TYPE_CHEF_DIALOG (gr_chef_dialog_get_type())
 
-G_DECLARE_FINAL_TYPE (GrChefDialog, gr_chef_dialog, GR, CHEF_DIALOG, GtkDialog)
+G_DECLARE_FINAL_TYPE (GrChefDialog, gr_chef_dialog, GR, CHEF_DIALOG, GtkWindow)
 
-GrChefDialog *gr_chef_dialog_new (GtkWindow *win);
+GrChefDialog *gr_chef_dialog_new (GtkWindow *win,
+                                  GrChef    *chef);
+void          gr_chef_dialog_can_create (GrChefDialog *dialog,
+                                         gboolean      create);
+GrChef       *gr_chef_dialog_get_chef   (GrChefDialog *dialog);
 
 G_END_DECLS

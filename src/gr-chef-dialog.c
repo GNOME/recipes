@@ -36,19 +36,28 @@
 
 struct _GrChefDialog
 {
-        GtkDialog parent_instance;
+        GtkWindow parent_instance;
 
         GtkWidget *fullname;
         GtkWidget *name;
         GtkWidget *description;
         GtkWidget *image;
+        GtkWidget *button;
         GtkWidget *error_revealer;
         GtkWidget *error_label;
+        GtkWidget *create_button;
+        GtkWidget *chef_popover;
+        GtkWidget *chef_list;
+        GtkWidget *save_button;
 
         char *image_path;
+
+        GrChef *chef;
 };
 
-G_DEFINE_TYPE (GrChefDialog, gr_chef_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE (GrChefDialog, gr_chef_dialog, GTK_TYPE_WINDOW)
+
+static int done_signal;
 
 static void
 dismiss_error (GrChefDialog *self)
@@ -114,6 +123,7 @@ gr_chef_dialog_finalize (GObject *object)
         GrChefDialog *self = GR_CHEF_DIALOG (object);
 
         g_free (self->image_path);
+        g_clear_object (&self->chef);
 
         G_OBJECT_CLASS (gr_chef_dialog_parent_class)->finalize (object);
 }
@@ -122,7 +132,6 @@ static gboolean
 save_chef_dialog (GrChefDialog  *self,
                   GError        **error)
 {
-        g_autoptr(GrChef) chef = NULL;
         GrRecipeStore *store;
         const char *id;
         const char *name;
@@ -131,58 +140,93 @@ save_chef_dialog (GrChefDialog  *self,
         GtkTextBuffer *buffer;
         GtkTextIter start, end;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        if (gr_chef_is_readonly (self->chef))
+                return TRUE;
 
-        id = gr_recipe_store_get_user_key (store);
-
+        id = gr_chef_get_id (self->chef);
         name = gtk_entry_get_text (GTK_ENTRY (self->name));
         fullname = gtk_entry_get_text (GTK_ENTRY (self->fullname));
         buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->description));
         gtk_text_buffer_get_bounds (buffer, &start, &end);
         description = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
 
-        chef = g_object_new (GR_TYPE_CHEF,
-                             "id", id,
-                             "fullname", fullname,
-                             "name", name,
-                             "description", description,
-                             "image-path", self->image_path,
-                             NULL);
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        return gr_recipe_store_update_user (store, chef, error);
+        if (id[0] != '\0') {
+                g_object_set (self->chef,
+                              "fullname", fullname,
+                              "name", name,
+                              "description", description,
+                              "image-path", self->image_path,
+                              NULL);
+                return gr_recipe_store_update_chef (store, self->chef, id, error);
+        }
+        else {
+                g_auto(GStrv) strv = NULL;
+                g_autofree char *new_id = NULL;
+
+                strv = g_strsplit (fullname, " ", -1);
+                if (strv[1])
+                        new_id = generate_id (strv[0], "_", strv[1], NULL);
+                else
+                        new_id = generate_id (strv[0], NULL);
+
+                g_object_set (self->chef,
+                              "id", new_id,
+                              "fullname", fullname,
+                              "name", name,
+                              "description", description,
+                              "image-path", self->image_path,
+                              NULL);
+
+                return gr_recipe_store_add_chef (store, self->chef, error);
+        }
 }
 
-static gboolean
-window_close (GrChefDialog *self)
+static void
+save_chef (GrChefDialog *self)
 {
         g_autoptr(GError) error = NULL;
 
         if (!save_chef_dialog (self, &error)) {
                 gtk_label_set_label (GTK_LABEL (self->error_label), error->message);
                 gtk_revealer_set_reveal_child (GTK_REVEALER (self->error_revealer), TRUE);
-        return TRUE;
+                return;
         }
 
-        return FALSE;
+        g_signal_emit (self, done_signal, 0, self->chef);
+        gtk_widget_destroy (GTK_WIDGET (self));
+}
+
+static void
+close_dialog (GrChefDialog *self)
+{
+        gtk_widget_destroy (GTK_WIDGET (self));
 }
 
 static void
 gr_chef_dialog_init (GrChefDialog *self)
 {
-        GrRecipeStore *store;
-        g_autoptr(GrChef) chef = NULL;
-        const char *id;
-
         gtk_widget_init_template (GTK_WIDGET (self));
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        gtk_list_box_set_header_func (GTK_LIST_BOX (self->chef_list),
+                                      all_headers, self, NULL);
 
-        id = gr_recipe_store_get_user_key (store);
+#ifdef ENABLE_GSPELL
+        {
+                GspellTextView *gspell_view;
 
-        if (id != NULL && id[0] != '\0')
-                chef = gr_recipe_store_get_chef (store, id);
+                gspell_view = gspell_text_view_get_from_gtk_text_view (GTK_TEXT_VIEW (self->description));
+                gspell_text_view_basic_setup (gspell_view);
+        }
+#endif
+}
 
-        if (chef) {
+static void
+gr_chef_dialog_set_chef (GrChefDialog *self,
+                         GrChef       *chef)
+{
+        if (g_set_object (&self->chef, chef)) {
                 const char *fullname;
                 const char *name;
                 const char *description;
@@ -199,20 +243,35 @@ gr_chef_dialog_init (GrChefDialog *self)
                                           description ? description : "", -1);
 
                 self->image_path = g_strdup (image_path);
+
+                if (gr_chef_is_readonly (chef)) {
+                        gtk_widget_set_sensitive (self->fullname, FALSE);
+                        gtk_widget_set_sensitive (self->name, FALSE);
+                        gtk_widget_set_sensitive (self->description, FALSE);
+                        gtk_widget_set_sensitive (self->button, FALSE);
+                        gtk_widget_set_sensitive (self->save_button, FALSE);
+                }
+                else {
+                        gtk_widget_set_sensitive (self->fullname, TRUE);
+                        gtk_widget_set_sensitive (self->name, TRUE);
+                        gtk_widget_set_sensitive (self->description, TRUE);
+                        gtk_widget_set_sensitive (self->button, TRUE);
+                        gtk_widget_set_sensitive (self->save_button, TRUE);
+                }
+
+                update_image (self);
         }
+}
 
-        update_image (self);
+static void
+chef_selected (GrChefDialog  *dialog,
+               GtkListBoxRow *row)
+{
+        GrChef *chef;
 
-        g_signal_connect_swapped (self, "delete-event", G_CALLBACK (window_close), self);
-
-#ifdef ENABLE_GSPELL
-        {
-                GspellTextView *gspell_view;
-
-                gspell_view = gspell_text_view_get_from_gtk_text_view (GTK_TEXT_VIEW (self->description));
-                gspell_text_view_basic_setup (gspell_view);
-        }
-#endif
+        chef = g_object_get_data (G_OBJECT (row), "chef");
+        gr_chef_dialog_set_chef (dialog, chef);
+        gtk_popover_popdown (GTK_POPOVER (dialog->chef_popover));
 }
 
 static void
@@ -223,6 +282,14 @@ gr_chef_dialog_class_init (GrChefDialogClass *klass)
 
         object_class->finalize = gr_chef_dialog_finalize;
 
+        done_signal = g_signal_new ("done",
+                                    G_TYPE_FROM_CLASS (klass),
+                                    G_SIGNAL_RUN_LAST,
+                                    0,
+                                    NULL, NULL,
+                                    NULL,
+                                    G_TYPE_NONE, 1, GR_TYPE_CHEF);
+
         gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (klass),
                                                      "/org/gnome/Recipes/gr-chef-dialog.ui");
 
@@ -230,18 +297,106 @@ gr_chef_dialog_class_init (GrChefDialogClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrChefDialog, name);
         gtk_widget_class_bind_template_child (widget_class, GrChefDialog, description);
         gtk_widget_class_bind_template_child (widget_class, GrChefDialog, image);
+        gtk_widget_class_bind_template_child (widget_class, GrChefDialog, button);
         gtk_widget_class_bind_template_child (widget_class, GrChefDialog, error_revealer);
         gtk_widget_class_bind_template_child (widget_class, GrChefDialog, error_label);
+        gtk_widget_class_bind_template_child (widget_class, GrChefDialog, create_button);
+        gtk_widget_class_bind_template_child (widget_class, GrChefDialog, chef_popover);
+        gtk_widget_class_bind_template_child (widget_class, GrChefDialog, chef_list);
+        gtk_widget_class_bind_template_child (widget_class, GrChefDialog, save_button);
 
         gtk_widget_class_bind_template_callback (widget_class, dismiss_error);
         gtk_widget_class_bind_template_callback (widget_class, image_button_clicked);
+        gtk_widget_class_bind_template_callback (widget_class, chef_selected);
+        gtk_widget_class_bind_template_callback (widget_class, save_chef);
+        gtk_widget_class_bind_template_callback (widget_class, close_dialog);
 }
 
 GrChefDialog *
-gr_chef_dialog_new (GtkWindow *win)
+gr_chef_dialog_new (GtkWindow *win,
+                    GrChef    *chef)
 {
-        return g_object_new (GR_TYPE_CHEF_DIALOG,
-                             "transient-for", win,
-                             "use-header-bar", TRUE,
-                             NULL);
+        GrChefDialog *dialog;
+
+        dialog = g_object_new (GR_TYPE_CHEF_DIALOG,
+                               "transient-for", win,
+                               NULL);
+
+        gr_chef_dialog_set_chef (dialog, chef);
+
+        return dialog;
+}
+
+static void
+add_chef_row (GrChefDialog *dialog,
+              GrChef       *chef)
+{
+        GtkWidget *row;
+
+        row = gtk_label_new ("");
+        g_object_set (row, "margin", 10, NULL);
+
+        if (chef) {
+                gtk_label_set_label (GTK_LABEL (row), gr_chef_get_fullname (chef));
+                gtk_label_set_xalign (GTK_LABEL (row), 0.0);
+        }
+        else {
+                g_autofree char *tmp = NULL;
+
+                tmp = g_strdup_printf ("<b>%s</b>", _("New Chef"));
+                gtk_label_set_markup (GTK_LABEL (row), tmp);
+        }
+
+        gtk_widget_show (row);
+
+        gtk_container_add (GTK_CONTAINER (dialog->chef_list), row);
+        row = gtk_widget_get_parent (row);
+        if (chef)
+                g_object_set_data_full (G_OBJECT (row), "chef", g_object_ref (chef), g_object_unref);
+        else
+                g_object_set_data_full (G_OBJECT (row), "chef", g_object_new (GR_TYPE_CHEF,
+                                                                              "id", "",
+                                                                              "name", "",
+                                                                              "fullname", "",
+                                                                              "description", "",
+                                                                              "image-path", "",
+                                                                              "readonly", FALSE,
+                                                                              NULL), g_object_unref);
+}
+
+static void
+populate_chef_list (GrChefDialog *dialog)
+{
+        GrRecipeStore *store;
+        g_autofree char **keys = NULL;
+        guint length;
+        int i;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        keys = gr_recipe_store_get_chef_keys (store, &length);
+
+        for (i = 0; keys[i]; i++) {
+                g_autoptr(GrChef) chef = gr_recipe_store_get_chef (store, keys[i]);
+
+                if (g_strcmp0 (gr_chef_get_id (chef), gr_recipe_store_get_user_key (store)) == 0)
+                        add_chef_row (dialog, chef);
+                else if (!gr_chef_is_readonly (chef))
+                        add_chef_row (dialog, chef);
+        }
+
+        add_chef_row (dialog, NULL);
+}
+
+void
+gr_chef_dialog_can_create (GrChefDialog *dialog,
+                           gboolean      create)
+{
+        gtk_widget_set_visible (dialog->create_button, create);
+        populate_chef_list (dialog);
+}
+
+GrChef *
+gr_chef_dialog_get_chef (GrChefDialog *dialog)
+{
+        return dialog->chef;
 }

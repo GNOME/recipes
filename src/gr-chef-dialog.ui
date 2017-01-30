@@ -1,12 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="recipes">
   <!-- interface-requires gtk+ 3.8 -->
-  <template class="GrChefDialog" parent="GtkDialog">
+  <template class="GrChefDialog" parent="GtkWindow">
     <property name="title" translatable="yes">Chef Information</property>
     <property name="resizable">False</property>
     <property name="modal">True</property>
-    <child internal-child="vbox">
-      <object class="GtkBox" id="vbox">
+    <child type="titlebar">
+      <object class="GtkHeaderBar">
+        <property name="visible">1</property>
+        <child>
+          <object class="GtkButton" id="cancel_button">
+            <property name="visible">1</property>
+            <property name="label" translatable="yes">_Cancel</property>
+            <property name="use-underline">1</property>
+            <signal name="clicked" handler="close_dialog" swapped="yes"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="save_button">
+            <property name="visible">1</property>
+            <property name="label" translatable="yes">_Save</property>
+            <property name="use-underline">1</property>
+            <signal name="clicked" handler="save_chef" swapped="yes"/>
+            <style>
+              <class name="suggested-action"/>
+            </style>
+          </object>
+          <packing>
+            <property name="pack-type">end</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">1</property>
+        <property name="orientation">vertical</property>
         <child>
           <object class="GtkOverlay">
             <property name="visible">1</property>
@@ -82,6 +111,27 @@
                     <property name="margin-top">20</property>
                     <property name="margin-bottom">20</property>
                     <child>
+                      <object class="GtkMenuButton" id="create_button">
+                        <property name="visible">1</property>
+                        <property name="halign">center</property>
+                        <property name="popover">chef_popover</property>
+                        <style>
+                          <class name="text-button"/>
+                        </style>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">1</property>
+                            <property name="label" translatable="yes">Other Chef</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">0</property>
+                        <property name="width">2</property>
+                      </packing>
+                    </child>
+                    <child>
                       <object class="GtkEntry" id="fullname">
                         <property name="visible">1</property>
                         <property name="placeholder-text" translatable="yes">Name…</property>
@@ -151,4 +201,22 @@
       </object>
     </child>
   </template>
+  <object class="GtkPopover" id="chef_popover">
+    <child>
+      <object class="GtkScrolledWindow">
+        <property name="visible">1</property>
+        <property name="margin">10</property>
+        <property name="shadow-type">in</property>
+        <property name="hscrollbar-policy">never</property>
+        <property name="vscrollbar-policy">never</property>
+        <child>
+          <object class="GtkListBox" id="chef_list">
+            <property name="visible">1</property>
+            <property name="selection-mode">none</property>
+            <signal name="row-activated" handler="chef_selected" swapped="yes"/>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
 </interface>
