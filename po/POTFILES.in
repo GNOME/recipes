@@ -4,6 +4,7 @@ data/chefs.db.h
 data/recipes.db.h
 src/chef-conflict-dialog.ui
 src/gr-category-tile.ui
+src/gr-chef-dialog.ui
 src/gr-chef-tile.ui
 src/gr-cuisine-page.ui
 src/gr-cuisines-page.ui
@@ -13,7 +14,6 @@ src/gr-edit-page.ui
 src/gr-image-viewer.ui
 src/gr-ingredient-search-tile.ui
 src/gr-list-page.ui
-src/gr-preferences.ui
 src/gr-query-editor.ui
 src/gr-recipes-page.ui
 src/gr-recipe-tile.ui
@@ -25,6 +25,7 @@ src/recipe-export-dialog.ui
 src/gr-app.c
 src/gr-category-tile.c
 src/gr-chef.c
+src/gr-chef-dialog.c
 src/gr-chef-tile.c
 src/gr-cuisine.c
 src/gr-cuisine-page.c
@@ -42,7 +43,6 @@ src/gr-ingredients-list.c
 src/gr-list-page.c
 src/gr-meal.c
 src/gr-number.c
-src/gr-preferences.c
 src/gr-query-editor.c
 src/gr-recipe.c
 src/gr-recipe-exporter.c

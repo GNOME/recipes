@@ -26,7 +26,7 @@
 
 #include "gr-app.h"
 #include "gr-window.h"
-#include "gr-preferences.h"
+#include "gr-chef-dialog.h"
 #include "gr-recipe-store.h"
 #include "gr-cuisine.h"
 #include "gr-shell-search-provider.h"
@@ -72,12 +72,12 @@ preferences_activated (GSimpleAction *action,
                        GVariant      *parameter,
                        gpointer       app)
 {
-        GrPreferences *prefs;
+        GrChefDialog *dialog;
         GtkWindow *win;
 
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
-        prefs = gr_preferences_new (win);
-        gtk_window_present (GTK_WINDOW (prefs));
+        dialog = gr_chef_dialog_new (win);
+        gtk_window_present (GTK_WINDOW (dialog));
 }
 
 static GtkWidget *

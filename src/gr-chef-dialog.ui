@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="recipes">
   <!-- interface-requires gtk+ 3.8 -->
-  <template class="GrPreferences" parent="GtkDialog">
+  <template class="GrChefDialog" parent="GtkDialog">
     <property name="title" translatable="yes">Preferences</property>
     <property name="resizable">False</property>
     <property name="modal">True</property>

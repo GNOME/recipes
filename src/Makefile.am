@@ -74,8 +74,8 @@ recipes_SOURCES = \
 	gr-meal-row.c		\
 	gr-number.h		\
 	gr-number.c		\
-	gr-preferences.h	\
-	gr-preferences.c	\
+	gr-chef-dialog.h	\
+	gr-chef-dialog.c	\
 	gr-query-editor.h	\
 	gr-query-editor.c	\
 	gr-recipe.h 		\

@@ -1,4 +1,4 @@
-/* gr-preferences.h:
+/* gr-chef-dialog.h:
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *
@@ -24,10 +24,10 @@
 
 G_BEGIN_DECLS
 
-#define GR_TYPE_PREFERENCES (gr_preferences_get_type())
+#define GR_TYPE_CHEF_DIALOG (gr_chef_dialog_get_type())
 
-G_DECLARE_FINAL_TYPE (GrPreferences, gr_preferences, GR, PREFERENCES, GtkDialog)
+G_DECLARE_FINAL_TYPE (GrChefDialog, gr_chef_dialog, GR, CHEF_DIALOG, GtkDialog)
 
-GrPreferences  *gr_preferences_new (GtkWindow *win);
+GrChefDialog *gr_chef_dialog_new (GtkWindow *win);
 
 G_END_DECLS

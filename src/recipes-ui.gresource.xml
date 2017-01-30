@@ -2,6 +2,7 @@
 <gresources>
   <gresource prefix="/org/gnome/Recipes">
     <file preprocess="xml-stripblanks">gr-category-tile.ui</file>
+    <file preprocess="xml-stripblanks">gr-chef-dialog.ui</file>
     <file preprocess="xml-stripblanks">gr-chef-tile.ui</file>
     <file preprocess="xml-stripblanks">gr-cuisine-tile.ui</file>
     <file preprocess="xml-stripblanks">gr-cuisine-page.ui</file>
@@ -14,7 +15,6 @@
     <file preprocess="xml-stripblanks">gr-ingredient-row.ui</file>
     <file preprocess="xml-stripblanks">gr-list-page.ui</file>
     <file preprocess="xml-stripblanks">gr-meal-row.ui</file>
-    <file preprocess="xml-stripblanks">gr-preferences.ui</file>
     <file preprocess="xml-stripblanks">gr-recipes-page.ui</file>
     <file preprocess="xml-stripblanks">gr-recipe-small-tile.ui</file>
     <file preprocess="xml-stripblanks">gr-recipe-tile.ui</file>

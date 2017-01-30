@@ -1,4 +1,4 @@
-/* gr-preferences.c:
+/* gr-chef-dialog.c:
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *
@@ -27,14 +27,14 @@
 #include <gspell/gspell.h>
 #endif
 
-#include "gr-preferences.h"
+#include "gr-chef-dialog.h"
 #include "gr-chef.h"
 #include "gr-recipe-store.h"
 #include "gr-app.h"
 #include "gr-utils.h"
 
 
-struct _GrPreferences
+struct _GrChefDialog
 {
         GtkDialog parent_instance;
 
@@ -48,16 +48,16 @@ struct _GrPreferences
         char *image_path;
 };
 
-G_DEFINE_TYPE (GrPreferences, gr_preferences, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE (GrChefDialog, gr_chef_dialog, GTK_TYPE_DIALOG)
 
 static void
-dismiss_error (GrPreferences *self)
+dismiss_error (GrChefDialog *self)
 {
         gtk_revealer_set_reveal_child (GTK_REVEALER (self->error_revealer), FALSE);
 }
 
 static void
-update_image (GrPreferences *self)
+update_image (GrChefDialog *self)
 {
         if (self->image_path != NULL && self->image_path[0] != '\0') {
                 g_autoptr(GdkPixbuf) pixbuf = NULL;
@@ -75,7 +75,7 @@ update_image (GrPreferences *self)
 static void
 file_chooser_response (GtkNativeDialog *self,
                        gint             response_id,
-                       GrPreferences   *prefs)
+                       GrChefDialog   *prefs)
 {
         if (response_id == GTK_RESPONSE_ACCEPT) {
                 g_free (prefs->image_path);
@@ -85,7 +85,7 @@ file_chooser_response (GtkNativeDialog *self,
 }
 
 static void
-image_button_clicked (GrPreferences *self)
+image_button_clicked (GrChefDialog *self)
 {
         GtkFileChooserNative *chooser;
         g_autoptr(GtkFileFilter) filter = NULL;
@@ -109,17 +109,17 @@ image_button_clicked (GrPreferences *self)
 }
 
 static void
-gr_preferences_finalize (GObject *object)
+gr_chef_dialog_finalize (GObject *object)
 {
-        GrPreferences *self = GR_PREFERENCES (object);
+        GrChefDialog *self = GR_CHEF_DIALOG (object);
 
         g_free (self->image_path);
 
-        G_OBJECT_CLASS (gr_preferences_parent_class)->finalize (object);
+        G_OBJECT_CLASS (gr_chef_dialog_parent_class)->finalize (object);
 }
 
 static gboolean
-save_preferences (GrPreferences  *self,
+save_chef_dialog (GrChefDialog  *self,
                   GError        **error)
 {
         g_autoptr(GrChef) chef = NULL;
@@ -153,11 +153,11 @@ save_preferences (GrPreferences  *self,
 }
 
 static gboolean
-window_close (GrPreferences *self)
+window_close (GrChefDialog *self)
 {
         g_autoptr(GError) error = NULL;
 
-        if (!save_preferences (self, &error)) {
+        if (!save_chef_dialog (self, &error)) {
                 gtk_label_set_label (GTK_LABEL (self->error_label), error->message);
                 gtk_revealer_set_reveal_child (GTK_REVEALER (self->error_revealer), TRUE);
         return TRUE;
@@ -167,7 +167,7 @@ window_close (GrPreferences *self)
 }
 
 static void
-gr_preferences_init (GrPreferences *self)
+gr_chef_dialog_init (GrChefDialog *self)
 {
         GrRecipeStore *store;
         g_autoptr(GrChef) chef = NULL;
@@ -216,31 +216,31 @@ gr_preferences_init (GrPreferences *self)
 }
 
 static void
-gr_preferences_class_init (GrPreferencesClass *klass)
+gr_chef_dialog_class_init (GrChefDialogClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
         GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-        object_class->finalize = gr_preferences_finalize;
+        object_class->finalize = gr_chef_dialog_finalize;
 
         gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (klass),
-                                                     "/org/gnome/Recipes/gr-preferences.ui");
+                                                     "/org/gnome/Recipes/gr-chef-dialog.ui");
 
-        gtk_widget_class_bind_template_child (widget_class, GrPreferences, fullname);
-        gtk_widget_class_bind_template_child (widget_class, GrPreferences, name);
-        gtk_widget_class_bind_template_child (widget_class, GrPreferences, description);
-        gtk_widget_class_bind_template_child (widget_class, GrPreferences, image);
-        gtk_widget_class_bind_template_child (widget_class, GrPreferences, error_revealer);
-        gtk_widget_class_bind_template_child (widget_class, GrPreferences, error_label);
+        gtk_widget_class_bind_template_child (widget_class, GrChefDialog, fullname);
+        gtk_widget_class_bind_template_child (widget_class, GrChefDialog, name);
+        gtk_widget_class_bind_template_child (widget_class, GrChefDialog, description);
+        gtk_widget_class_bind_template_child (widget_class, GrChefDialog, image);
+        gtk_widget_class_bind_template_child (widget_class, GrChefDialog, error_revealer);
+        gtk_widget_class_bind_template_child (widget_class, GrChefDialog, error_label);
 
         gtk_widget_class_bind_template_callback (widget_class, dismiss_error);
         gtk_widget_class_bind_template_callback (widget_class, image_button_clicked);
 }
 
-GrPreferences *
-gr_preferences_new (GtkWindow *win)
+GrChefDialog *
+gr_chef_dialog_new (GtkWindow *win)
 {
-        return g_object_new (GR_TYPE_PREFERENCES,
+        return g_object_new (GR_TYPE_CHEF_DIALOG,
                              "transient-for", win,
                              "use-header-bar", TRUE,
                              NULL);
