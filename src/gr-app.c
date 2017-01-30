@@ -68,15 +68,16 @@ gr_app_activate (GApplication *app)
 }
 
 static void
-preferences_activated (GSimpleAction *action,
-                       GVariant      *parameter,
-                       gpointer       app)
+chef_information_activated (GSimpleAction *action,
+                            GVariant      *parameter,
+                            gpointer       app)
 {
         GrChefDialog *dialog;
         GtkWindow *win;
 
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
         dialog = gr_chef_dialog_new (win);
+        gtk_window_set_title (GTK_WINDOW (dialog), _("My Chef Information"));
         gtk_window_present (GTK_WINDOW (dialog));
 }
 
@@ -774,7 +775,7 @@ search_activated (GSimpleAction *action,
 
 static GActionEntry app_entries[] =
 {
-        { "preferences", preferences_activated, NULL, NULL, NULL },
+        { "chef-information", chef_information_activated, NULL, NULL, NULL },
         { "about", about_activated, NULL, NULL, NULL },
         { "import", import_activated, NULL, NULL, NULL },
         { "details", details_activated, "(ss)", NULL, NULL },
