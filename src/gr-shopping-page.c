@@ -529,21 +529,6 @@ print_list (GrShoppingPage *page)
 }
 
 static void
-all_headers (GtkListBoxRow *row,
-             GtkListBoxRow *before,
-             gpointer       user_data)
-{
-        GtkWidget *header;
-
-        header = gtk_list_box_row_get_header (row);
-        if (header)
-                return;
-
-        header = gtk_separator_new (GTK_ORIENTATION_HORIZONTAL);
-        gtk_list_box_row_set_header (row, header);
-}
-
-static void
 gr_shopping_page_init (GrShoppingPage *page)
 {
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);

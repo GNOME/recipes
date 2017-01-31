@@ -564,21 +564,6 @@ gdouble_to_boolean (GBinding     *binding,
   return TRUE;
 }
 
-static void
-all_headers (GtkListBoxRow *row,
-             GtkListBoxRow *before,
-             gpointer       user_data)
-{
-        GtkWidget *header;
-
-        header = gtk_list_box_row_get_header (row);
-        if (header)
-                return;
-
-        header = gtk_separator_new (GTK_ORIENTATION_HORIZONTAL);
-        gtk_list_box_row_set_header (row, header);
-}
-
 static gboolean
 save_notes (gpointer data)
 {

@@ -643,21 +643,6 @@ collect_ingredients (GrEditPage *page)
 }
 
 static void
-all_headers (GtkListBoxRow *row,
-             GtkListBoxRow *before,
-             gpointer       user_data)
-{
-        GtkWidget *header;
-
-        header = gtk_list_box_row_get_header (row);
-        if (header)
-                return;
-
-        header = gtk_separator_new (GTK_ORIENTATION_HORIZONTAL);
-        gtk_list_box_row_set_header (row, header);
-}
-
-static void
 show_ingredients_search_list (GrEditPage *self)
 {
         gtk_widget_hide (self->ing_search_button);
