@@ -1297,6 +1297,45 @@ gr_recipe_store_add_chef (GrRecipeStore  *self,
 }
 
 gboolean
+gr_recipe_store_update_chef (GrRecipeStore  *self,
+                             GrChef         *chef,
+                             const char     *old_id,
+                             GError        **error)
+{
+        const char *id;
+        GrChef *old;
+
+        g_object_ref (chef);
+
+        id = gr_chef_get_id (chef);
+
+        if (id == NULL || id[0] == '\0') {
+                g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                             _("You need to provide an ID for the chef"));
+                return FALSE;
+        }
+        if (strcmp (id, old_id) != 0 &&
+            g_hash_table_contains (self->chefs, id)) {
+                g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                             _("A chef with this ID already exists"));
+                return FALSE;
+        }
+
+        old = g_hash_table_lookup (self->chefs, old_id);
+        g_assert (chef == old);
+
+        g_hash_table_remove (self->chefs, old_id);
+        g_hash_table_insert (self->chefs, g_strdup (id), g_object_ref (chef));
+
+        g_signal_emit (self, chefs_changed_signal, 0);
+        save_chefs (self);
+
+        g_object_unref (chef);
+
+        return TRUE;
+}
+
+gboolean
 gr_recipe_store_update_user (GrRecipeStore  *self,
                              GrChef         *chef,
                              GError        **error)

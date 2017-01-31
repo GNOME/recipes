@@ -52,6 +52,10 @@ gboolean        gr_recipe_store_recipe_is_pick      (GrRecipeStore  *self,
 gboolean        gr_recipe_store_add_chef            (GrRecipeStore  *self,
                                                      GrChef         *chef,
                                                      GError        **error);
+gboolean        gr_recipe_store_update_chef         (GrRecipeStore  *self,
+                                                     GrChef         *chef,
+                                                     const char     *old_id,
+                                                     GError        **error);
 GrChef         *gr_recipe_store_get_chef            (GrRecipeStore  *self,
                                                      const char     *id);
 char          **gr_recipe_store_get_chef_keys       (GrRecipeStore  *self,
