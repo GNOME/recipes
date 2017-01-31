@@ -249,14 +249,12 @@ gr_chef_dialog_set_chef (GrChefDialog *self,
                         gtk_widget_set_sensitive (self->name, FALSE);
                         gtk_widget_set_sensitive (self->description, FALSE);
                         gtk_widget_set_sensitive (self->button, FALSE);
-                        gtk_widget_set_sensitive (self->save_button, FALSE);
                 }
                 else {
                         gtk_widget_set_sensitive (self->fullname, TRUE);
                         gtk_widget_set_sensitive (self->name, TRUE);
                         gtk_widget_set_sensitive (self->description, TRUE);
                         gtk_widget_set_sensitive (self->button, TRUE);
-                        gtk_widget_set_sensitive (self->save_button, TRUE);
                 }
 
                 update_image (self);
@@ -391,8 +389,18 @@ void
 gr_chef_dialog_can_create (GrChefDialog *dialog,
                            gboolean      create)
 {
-        gtk_widget_set_visible (dialog->create_button, create);
-        populate_chef_list (dialog);
+        if (create) {
+                gtk_widget_show (dialog->create_button);
+                populate_chef_list (dialog);
+        }
+        else {
+                gtk_widget_hide (dialog->create_button);
+
+                if (gr_chef_is_readonly (dialog->chef))
+                        gtk_widget_set_sensitive (dialog->save_button, FALSE);
+                else
+                        gtk_widget_set_sensitive (dialog->save_button, TRUE);
+        }
 }
 
 GrChef *
