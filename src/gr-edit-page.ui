@@ -66,16 +66,16 @@
             <property name="expand">1</property>
             <property name="hscrollbar-policy">never</property>
             <child>
-              <object class="GtkBox">
+              <object class="GtkGrid">
                 <property name="visible">1</property>
-                <property name="homogeneous">1</property>
+                <property name="column-homogeneous">1</property>
                 <property name="expand">1</property>
                 <property name="halign">center</property>
                 <property name="valign">start</property>
                 <property name="margin-start">40</property>
                 <property name="margin-end">40</property>
                 <property name="margin-bottom">20</property>
-                <property name="spacing">20</property>
+                <property name="column-spacing">20</property>
                 <child>
                   <object class="GtkBox">
                     <property name="visible">1</property>
@@ -243,46 +243,11 @@
                         <property name="orientation">vertical</property>
                       </object>
                     </child>
-                    <child>
-                      <object class="GtkFlowBox">
-                        <property name="visible">1</property>
-                        <property name="margin-top">40</property>
-                        <property name="selection-mode">none</property>
-                        <property name="min-children-per-line">3</property>
-                        <property name="max-children-per-line">3</property>
-                        <child>
-                          <object class="GtkCheckButton" id="gluten_free_check">
-                            <property name="visible">1</property>
-                            <property name="label" translatable="yes">Gluten free</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkCheckButton" id="nut_free_check">
-                            <property name="visible">1</property>
-                            <property name="label" translatable="yes">Nut free</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkCheckButton" id="vegan_check">
-                            <property name="visible">1</property>
-                            <property name="label" translatable="yes">Vegan</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkCheckButton" id="vegetarian_check">
-                            <property name="visible">1</property>
-                            <property name="label" translatable="yes">Vegetarian</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkCheckButton" id="milk_free_check">
-                            <property name="visible">1</property>
-                            <property name="label" translatable="yes">Milk free</property>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
                   </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">0</property>
+                  </packing>
                 </child>
                 <child>
                   <object class="GtkGrid">
@@ -410,7 +375,7 @@
                         <property name="label" translatable="yes">C_ooking time</property>
                         <property name="xalign">1</property>
                         <property name="valign">center</property>
-                        <property name="margin-bottom">20</property>
+                        <property name="margin-bottom">40</property>
                         <style>
                           <class name="dim-label"/>
                         </style>
@@ -425,7 +390,7 @@
                         <property name="visible">1</property>
                         <property name="has-entry">1</property>
                         <property name="valign">center</property>
-                        <property name="margin-bottom">20</property>
+                        <property name="margin-bottom">40</property>
                         <items>
                           <item translatable="yes" id="Less than 15 minutes">Less than 15 minutes</item>
                           <item translatable="yes" id="15 to 30 minutes">15 to 30 minutes</item>
@@ -602,97 +567,6 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="visible">1</property>
-                        <property name="label" translatable="yes">Directions</property>
-                        <property name="xalign">0</property>
-                        <style>
-                          <class name="heading"/>
-                        </style>
-                      </object>
-                      <packing>
-                        <property name="left-attach">0</property>
-                        <property name="top-attach">11</property>
-                        <property name="width">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkScrolledWindow">
-                        <property name="visible">1</property>
-                        <property name="shadow-type">in</property>
-                        <property name="min-content-height">300</property>
-                        <child>
-                          <object class="GtkTextView" id="instructions_field">
-                            <property name="visible">1</property>
-                            <property name="wrap-mode">word</property>
-                            <property name="top-margin">10</property>
-                            <property name="left-margin">10</property>
-                            <property name="right-margin">10</property>
-                            <property name="bottom-margin">10</property>
-                          </object>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="left-attach">0</property>
-                        <property name="top-attach">12</property>
-                        <property name="width">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="visible">1</property>
-                        <property name="orientation">horizontal</property>
-                        <style>
-                          <class name="linked"/>
-                        </style>
-                        <child>
-                          <object class="GtkButton" id="add_recipe_button">
-                            <property name="visible">1</property>
-                            <property name="halign">start</property>
-                            <property name="tooltip-text" translatable="yes">Add Recipe link</property>
-                            <property name="margin-top">10</property>
-                            <signal name="clicked" handler="add_recipe_link"/>
-                            <style>
-                              <class name="dim-label"/>
-                              <class name="image-button"/>
-                            </style>
-                            <child>
-                              <object class="GtkImage">
-                                <property name="visible">1</property>
-                                <property name="icon-name">insert-link-symbolic</property>
-                                <property name="icon-size">1</property>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkButton" id="link_image_button">
-                            <property name="visible">1</property>
-                            <property name="halign">start</property>
-                            <property name="tooltip-text" translatable="yes">Add Image link</property>
-                            <property name="margin-top">10</property>
-                            <signal name="clicked" handler="add_image_link"/>
-                            <style>
-                              <class name="dim-label"/>
-                              <class name="image-button"/>
-                            </style>
-                            <child>
-                              <object class="GtkImage">
-                                <property name="visible">1</property>
-                                <property name="icon-name">insert-image-symbolic</property>
-                                <property name="icon-size">1</property>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="left-attach">0</property>
-                        <property name="top-attach">13</property>
-                        <property name="width">2</property>
-                      </packing>
-                    </child>
-                    <child>
                       <object class="GtkLabel" id="author_label">
                         <property name="visible">1</property>
                         <property name="use-markup">1</property>
@@ -706,7 +580,146 @@
                         <property name="width">2</property>
                       </packing>
                     </child>
+                    <child>
+                      <object class="GtkFlowBox">
+                        <property name="visible">1</property>
+                        <property name="margin-top">40</property>
+                        <property name="selection-mode">none</property>
+                        <property name="min-children-per-line">3</property>
+                        <property name="max-children-per-line">3</property>
+                        <child>
+                          <object class="GtkCheckButton" id="gluten_free_check">
+                            <property name="visible">1</property>
+                            <property name="label" translatable="yes">Gluten free</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="nut_free_check">
+                            <property name="visible">1</property>
+                            <property name="label" translatable="yes">Nut free</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="vegan_check">
+                            <property name="visible">1</property>
+                            <property name="label" translatable="yes">Vegan</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="vegetarian_check">
+                            <property name="visible">1</property>
+                            <property name="label" translatable="yes">Vegetarian</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="milk_free_check">
+                            <property name="visible">1</property>
+                            <property name="label" translatable="yes">Milk free</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">15</property>
+                        <property name="width">2</property>
+                      </packing>
+                    </child>
                   </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="label" translatable="yes">Directions</property>
+                    <property name="xalign">0</property>
+                    <style>
+                      <class name="heading"/>
+                    </style>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">1</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkScrolledWindow">
+                    <property name="visible">1</property>
+                    <property name="shadow-type">in</property>
+                    <property name="min-content-height">300</property>
+                    <child>
+                      <object class="GtkTextView" id="instructions_field">
+                        <property name="visible">1</property>
+                        <property name="wrap-mode">word</property>
+                        <property name="top-margin">10</property>
+                        <property name="left-margin">10</property>
+                        <property name="right-margin">10</property>
+                        <property name="bottom-margin">10</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">2</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">1</property>
+                    <property name="orientation">horizontal</property>
+                    <style>
+                      <class name="linked"/>
+                    </style>
+                    <child>
+                      <object class="GtkButton" id="add_recipe_button">
+                        <property name="visible">1</property>
+                        <property name="halign">start</property>
+                        <property name="tooltip-text" translatable="yes">Add Recipe link</property>
+                        <property name="margin-top">10</property>
+                        <signal name="clicked" handler="add_recipe_link"/>
+                        <style>
+                          <class name="dim-label"/>
+                          <class name="image-button"/>
+                        </style>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">1</property>
+                            <property name="icon-name">insert-link-symbolic</property>
+                            <property name="icon-size">1</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="link_image_button">
+                        <property name="visible">1</property>
+                        <property name="halign">start</property>
+                        <property name="tooltip-text" translatable="yes">Add Image link</property>
+                        <property name="margin-top">10</property>
+                        <signal name="clicked" handler="add_image_link"/>
+                        <style>
+                          <class name="dim-label"/>
+                          <class name="image-button"/>
+                        </style>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">1</property>
+                            <property name="icon-name">insert-image-symbolic</property>
+                            <property name="icon-size">1</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">3</property>
+                    <property name="width">2</property>
+                  </packing>
                 </child>
               </object>
             </child>
