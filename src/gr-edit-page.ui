@@ -631,13 +631,37 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel">
+                  <object class="GtkBox">
                     <property name="visible">1</property>
-                    <property name="label" translatable="yes">Directions</property>
-                    <property name="xalign">0</property>
+                    <property name="orientation">horizontal</property>
+                    <property name="spacing">4</property>
                     <style>
                       <class name="heading"/>
                     </style>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">1</property>
+                        <property name="label" translatable="yes">Directions</property>
+                        <property name="xalign">0</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuButton" id="directions_help_button">
+                        <property name="visible">1</property>
+                        <property name="relief">none</property>
+                        <property name="direction">up</property>
+                        <property name="popover">directions_help_popover</property>
+                        <style>
+                          <class name="image-button"/>
+                        </style>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">1</property>
+                            <property name="icon-name">dialog-question-symbolic</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
@@ -671,47 +695,31 @@
                   <object class="GtkBox">
                     <property name="visible">1</property>
                     <property name="orientation">horizontal</property>
-                    <style>
-                      <class name="linked"/>
-                    </style>
+                    <property name="margin-top">10</property>
+                    <property name="spacing">10</property>
                     <child>
-                      <object class="GtkButton" id="add_recipe_button">
+                      <object class="GtkButton" id="add_step_button">
                         <property name="visible">1</property>
                         <property name="halign">start</property>
-                        <property name="tooltip-text" translatable="yes">Add Recipe link</property>
-                        <property name="margin-top">10</property>
-                        <signal name="clicked" handler="add_recipe_link"/>
-                        <style>
-                          <class name="dim-label"/>
-                          <class name="image-button"/>
-                        </style>
-                        <child>
-                          <object class="GtkImage">
-                            <property name="visible">1</property>
-                            <property name="icon-name">insert-link-symbolic</property>
-                            <property name="icon-size">1</property>
-                          </object>
-                        </child>
+                        <property name="focus-on-click">0</property>
+                        <property name="label" translatable="yes">Add Step</property>
+                        <signal name="clicked" handler="add_step"/>
                       </object>
                     </child>
                     <child>
                       <object class="GtkButton" id="link_image_button">
                         <property name="visible">1</property>
                         <property name="halign">start</property>
-                        <property name="tooltip-text" translatable="yes">Add Image link</property>
-                        <property name="margin-top">10</property>
+                        <property name="label" translatable="yes">Add Image</property>
                         <signal name="clicked" handler="add_image_link"/>
-                        <style>
-                          <class name="dim-label"/>
-                          <class name="image-button"/>
-                        </style>
-                        <child>
-                          <object class="GtkImage">
-                            <property name="visible">1</property>
-                            <property name="icon-name">insert-image-symbolic</property>
-                            <property name="icon-size">1</property>
-                          </object>
-                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="timer_button">
+                        <property name="visible">1</property>
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes">Add Timer</property>
+                        <signal name="clicked" handler="add_timer"/>
                       </object>
                     </child>
                   </object>
@@ -920,43 +928,6 @@
       </object>
     </child>
   </object>
-  <object class="GtkPopover" id="recipe_popover">
-    <property name="relative-to">add_recipe_button</property>
-    <property name="constrain-to">none</property>
-    <child>
-      <object class="GtkBox">
-        <property name="visible">1</property>
-        <property name="margin">12</property>
-        <property name="spacing">12</property>
-        <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkSearchEntry" id="recipe_filter_entry">
-            <property name="visible">1</property>
-            <property name="placeholder-text" translatable="yes">Search…</property>
-            <signal name="search-changed" handler="recipe_filter_changed" swapped="yes"/>
-            <signal name="stop-search" handler="recipe_filter_stop" swapped="yes"/>
-            <signal name="activate" handler="recipe_filter_activated" swapped="yes"/>
-          </object>
-        </child>
-        <child>
-          <object class="GtkScrolledWindow">
-            <property name="visible">1</property>
-            <property name="shadow-type">in</property>
-            <property name="hscrollbar-policy">never</property>
-            <property name="propagate-natural-height">1</property>
-            <property name="max-content-height">220</property>
-            <child>
-              <object class="GtkListBox" id="recipe_list">
-                <property name="visible">1</property>
-                <property name="selection-mode">none</property>
-                <property name="height-request">220</property>
-              </object>
-            </child>
-          </object>
-        </child>
-      </object>
-    </child>
-  </object>
   <object class="GtkPopover" id="image_popover">
     <property name="relative-to">link_image_button</property>
     <property name="constrain-to">none</property>
@@ -968,6 +939,122 @@
         <property name="min-children-per-line">5</property>
         <property name="max-children-per-line">5</property>
         <signal name="child-activated" handler="image_activated"/>
+      </object>
+    </child>
+  </object>
+  <object class="GtkAdjustment" id="time_adjustment">
+    <property name="upper">86400</property>
+    <property name="step-increment">60</property>
+    <property name="page-increment">900</property>
+  </object>
+  <object class="GtkPopover" id="timer_popover">
+    <property name="relative-to">timer_button</property>
+    <property name="constrain-to">none</property>
+    <child>
+      <object class="GtkSpinButton" id="timer_spin">
+        <property name="visible">1</property>
+        <property name="margin">12</property>
+        <property name="adjustment">time_adjustment</property>
+        <property name="width-chars">8</property>
+        <signal name="input" handler="time_spin_input"/>
+        <signal name="output" handler="time_spin_output"/>
+        <signal name="activate" handler="time_spin_activate"/>
+      </object>
+    </child>
+  </object>
+  <object class="GtkPopover" id="directions_help_popover">
+    <property name="relative-to">directions_help_button</property>
+    <property name="constrain-to">none</property>
+    <child>
+      <object class="GtkGrid">
+        <property name="visible">1</property>
+        <property name="margin">12</property>
+        <property name="margin-top">0</property>
+        <property name="column-homogeneous">1</property>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">1</property>
+            <property name="halign">center</property>
+            <property name="label" translatable="yes">Syntax</property>
+            <style>
+              <class name="heading"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">0</property>
+            <property name="width">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">1</property>
+            <property name="xalign">0</property>
+            <property name="label" translatable="yes">Use paragraphs to break directions into steps (2 newlines).</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">1</property>
+            <property name="width">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">1</property>
+            <property name="xalign">0</property>
+            <property name="margin-bottom">10</property>
+            <property name="label" translatable="yes">You can provide an image or a time counter in each step.</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">2</property>
+            <property name="width">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">1</property>
+            <property name="xalign">0</property>
+            <property name="label" translatable="yes">Timer</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">1</property>
+            <property name="xalign">0</property>
+            <property name="label">[timer:00:30]</property>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">1</property>
+            <property name="xalign">0</property>
+            <property name="label" translatable="yes">Image</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">1</property>
+            <property name="xalign">0</property>
+            <property name="label">[image:1]</property>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">4</property>
+          </packing>
+        </child>
       </object>
     </child>
   </object>
