@@ -650,6 +650,8 @@ void
 gr_image_viewer_show_image (GrImageViewer *viewer,
                             int            idx)
 {
-        viewer->index = idx % viewer->images->len;
-        set_current_image (viewer);
+        if (viewer->images->len > 0) {
+                viewer->index = idx % viewer->images->len;
+                set_current_image (viewer);
+        }
 }
