@@ -70,6 +70,11 @@ dist_images_DATA = \
 	images/donauwellen_final.jpg	\
 	images/meatballs.jpg		\
 	images/non_knead_buns.png	\
+	images/non_knead_buns1.jpg	\
+	images/non_knead_buns2.jpg	\
+	images/non_knead_buns3.jpg	\
+	images/non_knead_buns4.jpg	\
+	images/non_knead_buns5.jpg	\
 	images/pesto.jpg		\
 	images/pineapple_upside_down.jpg \
 	images/pizzaburger.jpg		\
