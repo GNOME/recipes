@@ -888,6 +888,69 @@ populate_ingredients (GrDetailsPage *page,
         }
 }
 
+static char *
+process_instructions (const char *instructions)
+{
+        GString *s;
+        const char *p, *p2, *t, *q;
+
+        s = g_string_new ("");
+
+        t = instructions;
+
+        while (*t) {
+                char symb[30];
+                const char *sym = "?";
+                int idx;
+                g_autofree char *title = NULL;
+
+                p = strstr (t, "[image:");
+                q = strstr (t, "[timer:");
+                if (q && (!p || q < p)) {
+                        p = q;
+                        sym = "⏰";
+                }
+                else if (p) {
+                        idx = atoi (p + strlen ("[image:"));
+                        memset (symb, 0, 30);
+                        g_unichar_to_utf8 (0x2460 + idx, symb);
+                        sym = symb;
+                }
+
+                if (p == NULL) {
+                        g_string_append (s, t);
+                        break;
+                }
+
+                g_string_append_len (s, t, p - t);
+
+                p2 = strstr (p, "]");
+
+                if (p == q) {
+                        const char *q2;
+                        g_autofree char *timer = NULL;
+
+                        q2 = q + strlen ("[timer:");
+                        timer = g_strndup (q2, p2 - q2);
+                        title = g_strdup_printf (_("Timer: %s"), timer);
+                }
+                else {
+                        title = g_strdup_printf (_("Image %d"), idx + 1);
+                }
+
+                g_string_append (s, "<a href=\"");
+                g_string_append_len (s, p + 1, p2 - p);
+                g_string_append (s, "\" title=\"");
+                g_string_append (s, title);
+                g_string_append (s, "\">");
+                g_string_append (s, sym);
+                g_string_append (s, "</a>");
+                t = p2 + 1;
+        }
+
+        return g_string_free (s, FALSE);
+}
+
 void
 gr_details_page_set_recipe (GrDetailsPage *page,
                             GrRecipe      *recipe)
@@ -911,6 +974,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         gboolean favorite;
         gboolean same_recipe;
         int index;
+        g_autofree char *processed = NULL;
 
         if (page->recipe)
                 old_id = gr_recipe_get_id (page->recipe);
@@ -952,7 +1016,8 @@ gr_details_page_set_recipe (GrDetailsPage *page,
                 gtk_label_set_label (GTK_LABEL (page->cook_time_label), "");
         else
                 gtk_label_set_label (GTK_LABEL (page->cook_time_label), _(cook_time));
-        gtk_label_set_label (GTK_LABEL (page->instructions_label), instructions);
+        processed = process_instructions (instructions);
+        gtk_label_set_label (GTK_LABEL (page->instructions_label), processed);
         gtk_label_set_track_visited_links (GTK_LABEL (page->instructions_label), FALSE);
 
         gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), want_serves);
