@@ -36,8 +36,4 @@ void             gr_details_page_set_recipe  (GrDetailsPage *page,
                                               GrRecipe      *recipe);
 GrRecipe        *gr_details_page_get_recipe  (GrDetailsPage *page);
 
-gboolean         gr_details_page_get_cooking (GrDetailsPage *page);
-void             gr_details_page_set_cooking (GrDetailsPage *page,
-                                              gboolean       cooking);
-
 G_END_DECLS
