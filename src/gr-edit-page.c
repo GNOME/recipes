@@ -45,6 +45,7 @@
 #include "gr-number.h"
 #include "gr-unit.h"
 #include "gr-chef-dialog.h"
+#include "gr-cooking-view.h"
 
 #ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
@@ -93,6 +94,7 @@ struct _GrEditPage
         GtkWidget *new_ingredient_add_button;
         GtkWidget *author_label;
         GtkWidget *ingredients_box;
+        GtkWidget *cooking_view;
 
         GtkWidget *ing_list;
         GtkWidget *ing_search_button;
@@ -106,11 +108,16 @@ struct _GrEditPage
         GtkWidget *recipe_popover;
         GtkWidget *recipe_list;
         GtkWidget *recipe_filter_entry;
+        GtkWidget *add_step_button;
         GtkWidget *link_image_button;
+        GtkWidget *timer_button;
+        GtkWidget *prev_step_button;
+        GtkWidget *next_step_button;
         GtkWidget *image_popover;
         GtkWidget *image_flowbox;
         GtkWidget *timer_popover;
         GtkWidget *timer_spin;
+        GtkWidget *preview_stack;
 
         GrRecipeSearch *search;
 
@@ -1213,6 +1220,79 @@ popover_keypress_handler (GtkWidget  *widget,
         return GDK_EVENT_PROPAGATE;
 }
 
+static char *get_instructions (GtkTextView *text_view);
+
+static void
+update_steppers (GrEditPage *page)
+{
+        int step;
+        int n_steps;
+
+        step = gr_cooking_view_get_step (GR_COOKING_VIEW (page->cooking_view));
+        n_steps = gr_cooking_view_get_n_steps (GR_COOKING_VIEW (page->cooking_view));
+
+        gtk_widget_set_sensitive (page->prev_step_button, step - 1 >= 0);
+        gtk_widget_set_sensitive (page->next_step_button, step + 1 <= n_steps - 1);
+}
+
+static void
+preview_visible_changed (GrEditPage *page)
+{
+        const char *visible;
+
+        visible = gtk_stack_get_visible_child_name (GTK_STACK (page->preview_stack));
+
+        if (strcmp (visible, "edit") == 0) {
+                gtk_widget_set_sensitive (page->add_step_button, TRUE);
+                gtk_widget_set_sensitive (page->link_image_button, TRUE);
+                gtk_widget_set_sensitive (page->timer_button, TRUE);
+                gtk_widget_set_visible (page->prev_step_button, FALSE);
+                gtk_widget_set_visible (page->next_step_button, FALSE);
+        }
+        else {
+                g_autoptr(GArray) images = NULL;
+                g_autofree char *instructions = NULL;
+
+                gtk_widget_set_sensitive (page->add_step_button, FALSE);
+                gtk_widget_set_sensitive (page->link_image_button, FALSE);
+                gtk_widget_set_sensitive (page->timer_button, FALSE);
+                gtk_widget_set_visible (page->prev_step_button, TRUE);
+                gtk_widget_set_visible (page->next_step_button, TRUE);
+
+                g_object_get (page->images, "images", &images, NULL);
+                instructions = get_instructions (GTK_TEXT_VIEW (page->instructions_field));
+
+                gr_cooking_view_set_images (GR_COOKING_VIEW (page->cooking_view), images);
+                gr_cooking_view_set_instructions (GR_COOKING_VIEW (page->cooking_view), instructions);
+
+                update_steppers (page);
+        }
+}
+
+static void
+prev_step (GrEditPage *page)
+{
+        int step;
+
+        step = gr_cooking_view_get_step (GR_COOKING_VIEW (page->cooking_view)) - 1;
+        if (step >= 0)
+                gr_cooking_view_set_step (GR_COOKING_VIEW (page->cooking_view), step);
+
+        update_steppers (page);
+}
+
+static void
+next_step (GrEditPage *page)
+{
+        int step;
+
+        step = gr_cooking_view_get_step (GR_COOKING_VIEW (page->cooking_view)) + 1;
+        if (step < gr_cooking_view_get_n_steps (GR_COOKING_VIEW (page->cooking_view)))
+                gr_cooking_view_set_step (GR_COOKING_VIEW (page->cooking_view), step);
+
+        update_steppers (page);
+}
+
 static void
 gr_edit_page_class_init (GrEditPageClass *klass)
 {
@@ -1264,11 +1344,17 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, amount_search_button);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, amount_search_button_label);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, amount_search_revealer);
+        gtk_widget_class_bind_template_child (widget_class, GrEditPage, add_step_button);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, link_image_button);
+        gtk_widget_class_bind_template_child (widget_class, GrEditPage, timer_button);
+        gtk_widget_class_bind_template_child (widget_class, GrEditPage, prev_step_button);
+        gtk_widget_class_bind_template_child (widget_class, GrEditPage, next_step_button);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, image_popover);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, image_flowbox);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, timer_popover);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, timer_spin);
+        gtk_widget_class_bind_template_child (widget_class, GrEditPage, preview_stack);
+        gtk_widget_class_bind_template_child (widget_class, GrEditPage, cooking_view);
 
         gtk_widget_class_bind_template_callback (widget_class, dismiss_error);
         gtk_widget_class_bind_template_callback (widget_class, add_image);
@@ -1302,6 +1388,9 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, time_spin_input);
         gtk_widget_class_bind_template_callback (widget_class, time_spin_output);
         gtk_widget_class_bind_template_callback (widget_class, time_spin_activate);
+        gtk_widget_class_bind_template_callback (widget_class, preview_visible_changed);
+        gtk_widget_class_bind_template_callback (widget_class, prev_step);
+        gtk_widget_class_bind_template_callback (widget_class, next_step);
 }
 
 GtkWidget *
@@ -1790,6 +1879,7 @@ gr_edit_page_edit (GrEditPage *page,
         gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), serves);
         set_text_view_text (GTK_TEXT_VIEW (page->description_field), description);
         set_instructions (GTK_TEXT_VIEW (page->instructions_field), instructions);
+        gtk_stack_set_visible_child_name (GTK_STACK (page->preview_stack), "edit");
 
         populate_ingredients (page, ingredients);
 
@@ -2030,12 +2120,17 @@ get_instructions (GtkTextView *text_view)
 {
         GtkTextBuffer *buffer;
         GtkTextIter start, end;
+#if 0
         GString *s;
         g_autofree char *last_text = NULL;
 
         s = g_string_new ("");
+#endif
 
         buffer = gtk_text_view_get_buffer (text_view);
+        gtk_text_buffer_get_bounds (buffer, &start, &end);
+        return gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
+#if 0
         gtk_text_buffer_get_start_iter (buffer, &start);
         end = start;
         while (gtk_text_iter_forward_to_tag_toggle (&end, NULL)) {
@@ -2078,6 +2173,7 @@ get_instructions (GtkTextView *text_view)
         g_string_append (s, last_text);
 
         return g_string_free (s, FALSE);
+#endif
 }
 
 gboolean

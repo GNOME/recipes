@@ -532,7 +532,7 @@
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">1</property>
-                        <property name="label" translatable="yes">Description (optional)</property>
+                        <property name="label" translatable="yes">Description</property>
                         <property name="xalign">0</property>
                         <style>
                           <class name="heading"/>
@@ -583,7 +583,7 @@
                     <child>
                       <object class="GtkFlowBox">
                         <property name="visible">1</property>
-                        <property name="margin-top">40</property>
+                        <property name="margin-top">20</property>
                         <property name="selection-mode">none</property>
                         <property name="min-children-per-line">3</property>
                         <property name="max-children-per-line">3</property>
@@ -662,6 +662,16 @@
                         </child>
                       </object>
                     </child>
+                    <child>
+                      <object class="GtkStackSwitcher">
+                        <property name="visible">1</property>
+                        <property name="halign">end</property>
+                        <property name="stack">preview_stack</property>
+                      </object>
+                      <packing>
+                        <property name="expand">1</property>
+                      </packing>
+                    </child>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
@@ -670,6 +680,10 @@
                   </packing>
                 </child>
                 <child>
+                  <object class="GtkStack" id="preview_stack">
+                    <property name="visible">1</property>
+                    <signal name="notify::visible-child-name" handler="preview_visible_changed" swapped="yes"/>
+                    <child>
                   <object class="GtkScrolledWindow">
                     <property name="visible">1</property>
                     <property name="shadow-type">in</property>
@@ -683,6 +697,19 @@
                         <property name="right-margin">10</property>
                         <property name="bottom-margin">10</property>
                       </object>
+                    </child>
+                      </object>
+                      <packing>
+                        <property name="name">edit</property>
+                        <property name="title" translatable="yes">Edit</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GrCookingView" id="cooking_view"/>
+                      <packing>
+                        <property name="name">preview</property>
+                        <property name="title" translatable="yes">Preview</property>
+                      </packing>
                     </child>
                   </object>
                   <packing>
@@ -720,6 +747,40 @@
                         <property name="halign">start</property>
                         <property name="label" translatable="yes">Add Timer</property>
                         <signal name="clicked" handler="add_timer"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="prev_step_button">
+                        <property name="halign">start</property>
+                        <signal name="clicked" handler="prev_step" swapped="yes"/>
+                        <style>
+                          <class name="image-button"/>
+                          <class name="circular"/>
+                        </style>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">1</property>
+                            <property name="icon-name">pan-start-symbolic</property>
+                            <property name="icon-size">1</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="next_step_button">
+                        <property name="halign">start</property>
+                        <signal name="clicked" handler="next_step" swapped="yes"/>
+                        <style>
+                          <class name="image-button"/>
+                          <class name="circular"/>
+                        </style>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">1</property>
+                            <property name="icon-name">pan-end-symbolic</property>
+                            <property name="icon-size">1</property>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>
