@@ -56,7 +56,7 @@ tick_cb (GtkWidget     *widget,
 {
         GrTimerWidget *timer = GR_TIMER_WIDGET (widget);
 
-        gtk_widget_queue_resize (GTK_WIDGET (timer));
+        gtk_widget_queue_draw (GTK_WIDGET (timer));
 
         return G_SOURCE_CONTINUE;
 }
@@ -200,41 +200,59 @@ gr_timer_widget_draw (GtkWidget *widget,
         gint width, height;
         double xc, yc;
         double radius;
-        double angle1, angle2;
-        guint64 now;
-        gboolean active = FALSE;
-
-        if (timer->timer)
-                active = gr_timer_get_active (timer->timer);
+        double line_width;
+        guint64 start;
+        guint64 remaining;
+        guint64 duration;
+        gboolean active;
 
         context = gtk_widget_get_style_context (widget);
         width = gtk_widget_get_allocated_width (widget);
         height = gtk_widget_get_allocated_height (widget);
+        line_width = 8;
 
         gtk_render_background (context, cr, 0, 0, width, height);
         gtk_render_frame (context, cr, 0, 0, width, height);
-
-        now = g_get_monotonic_time ();
 
         gtk_style_context_get_color (context, gtk_widget_get_state_flags (widget), &color);
         gdk_cairo_set_source_rgba (cr, &color);
         xc = width / 2;
         yc = height / 2;
-        radius = width / 2;
+        radius = width / 2 - line_width;
 
-        if (active) {
-                angle1 = ((now - gr_timer_get_start_time (timer->timer)) * 2 * M_PI / gr_timer_get_duration (timer->timer)) + (3 * M_PI / 2);
+        start = gr_timer_get_start_time (timer->timer);
+        remaining = gr_timer_get_remaining (timer->timer);
+        duration = gr_timer_get_duration (timer->timer);
+        active = gr_timer_get_active (timer->timer);
+
+        cairo_set_line_width (cr, line_width);
+        cairo_set_line_cap (cr, CAIRO_LINE_CAP_ROUND);
+        cairo_arc (cr, xc, yc, radius, 0, 2 * M_PI);
+        cairo_stroke (cr);
+
+        color.red = color.green = color.blue = 1.0;
+        gdk_cairo_set_source_rgba (cr, &color);
+
+        if (0 && start != 0 && remaining != 0 && active) {
+                guint64 now;
+                double angle1, angle2;
+
+                now = g_get_monotonic_time ();
+                angle1 = - M_PI / 2 - (now - start) * 2 * M_PI / duration;
                 angle2 = 3 * M_PI / 2;
 
-                cairo_arc (cr, xc, yc, radius, angle1, angle2);
-                cairo_line_to (cr, xc, yc);
+                cairo_arc (cr, xc, yc, radius, angle2, angle1);
+                cairo_stroke (cr);
         }
-        else {
-                cairo_arc (cr, xc, yc, radius, 0, 2 * M_PI);
-        }
+        else if (start != 0 && remaining != duration) {
+                double angle1, angle2;
 
-        cairo_close_path (cr);
-        cairo_fill (cr);
+                angle1 = - M_PI / 2 - (duration - remaining) * 2 * M_PI / duration;
+                angle2 = 3 * M_PI / 2;
+
+                cairo_arc (cr, xc, yc, radius, angle2, angle1);
+                cairo_stroke (cr);
+        }
 
         return FALSE;
 }
