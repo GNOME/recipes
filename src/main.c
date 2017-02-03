@@ -35,6 +35,7 @@
 #include "gr-search-page.h"
 #include "gr-shopping-page.h"
 #include "gr-cooking-view.h"
+#include "gr-cooking-page.h"
 #include "gr-timer-widget.h"
 #include "gr-time-widget.h"
 #include "gr-toggle-button.h"
@@ -49,6 +50,7 @@ main (int argc, char *argv[])
         int status;
 
         g_type_ensure (GR_TYPE_COOKING_VIEW);
+        g_type_ensure (GR_TYPE_COOKING_PAGE);
         g_type_ensure (GR_TYPE_CUISINE_PAGE);
         g_type_ensure (GR_TYPE_CUISINES_PAGE);
         g_type_ensure (GR_TYPE_DETAILS_PAGE);
