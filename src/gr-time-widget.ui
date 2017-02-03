@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="recipes">
+  <!-- interface-requires gtk+ 3.10 -->
+  <template class="GrTimeWidget" parent="GtkOverlay">
+    <property name="visible">True</property>
+    <child>
+      <object class="GrTimerWidget" id="timer_widget">
+        <property name="visible">1</property>
+      </object>
+    </child>
+    <child type="overlay">
+      <object class="GtkBox" id="timer_grid">
+        <property name="visible">1</property>
+        <property name="halign">center</property>
+        <property name="valign">center</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">20</property>
+        <child>
+          <object class="GtkLabel" id="time_remaining">
+            <property name="visible">1</property>
+            <style>
+              <class name="timer-label"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkStack" id="timer_button_stack">
+            <property name="visible">1</property>
+            <child>
+              <object class="GtkButton">
+                <property name="visible">1</property>
+                <property name="label" translatable="yes">Start</property>
+                <signal name="clicked" handler="timer_start" swapped="yes"/>
+                <style>
+                  <class name="suggested-action"/>
+                </style>
+              </object>
+              <packing>
+                <property name="name">start</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">1</property>
+                <property name="homogeneous">1</property>
+                <property name="spacing">20</property>
+                <child>
+                  <object class="GtkButton">
+                    <property name="visible">1</property>
+                    <property name="halign">fill</property>
+                    <signal name="clicked" handler="timer_pause" swapped="yes"/>
+                    <style>
+                      <class name="text-button"/>
+                      <class name="pause-button"/>
+                    </style>
+                    <child>
+                      <object class="GtkStack" id="pause_stack">
+                        <property name="visible">1</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">1</property>
+                            <property name="label" translatable="yes">Pause</property>
+                          </object>
+                          <packing>
+                            <property name="name">pause</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">1</property>
+                            <property name="label" translatable="yes">Continue</property>
+                          </object>
+                          <packing>
+                            <property name="name">resume</property>
+                          </packing>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="visible">1</property>
+                    <property name="halign">fill</property>
+                    <property name="label">Reset</property>
+                    <signal name="clicked" handler="timer_reset" swapped="yes"/>
+                    <style>
+                      <class name="destructive-action"/>
+                    </style>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="name">active</property>
+              </packing>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

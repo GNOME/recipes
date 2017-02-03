@@ -35,6 +35,7 @@
 #include "gr-search-page.h"
 #include "gr-shopping-page.h"
 #include "gr-timer-widget.h"
+#include "gr-time-widget.h"
 #include "gr-toggle-button.h"
 #include "gr-image-viewer.h"
 #include "gr-image-page.h"
@@ -58,6 +59,7 @@ main (int argc, char *argv[])
         g_type_ensure (GR_TYPE_SEARCH_PAGE);
         g_type_ensure (GR_TYPE_SHOPPING_PAGE);
         g_type_ensure (GR_TYPE_TIMER_WIDGET);
+        g_type_ensure (GR_TYPE_TIME_WIDGET);
         g_type_ensure (GR_TYPE_TOGGLE_BUTTON);
 
         setlocale (LC_ALL, "");

@@ -290,3 +290,51 @@ flowbox flowboxchild {
 .note.content:backdrop {
   background: #cbd6e1;
 }
+
+button.osd {
+        padding: 10px;
+}
+
+.cooking {
+        background: black;
+}
+
+.cooking.overlay {
+        background: gray;
+        padding: 40px;
+        border-radius: 20px;
+}
+
+.cooking .heading {
+        font-size: 30px;
+}
+
+.cooking-image {
+        color: #ddd;
+        background: #aaa;
+        min-width: 400px;
+        min-height: 400px;
+}
+
+.timer-label,
+.cooking-label {
+        font-size: 30px;
+        color: #ddd;
+}
+
+.cooking-heading {
+        font-size: 20px;
+        color: #ddd;
+}
+
+.timer-frame border {
+        border: none;
+}
+
+.pause-button {
+        color: #ccc;
+        border-color: #ccc;
+        border-width: 1px;
+        box-shadow: none;
+        background: #444;
+}

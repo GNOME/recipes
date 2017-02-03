@@ -104,6 +104,8 @@ recipes_SOURCES = \
 	gr-shopping-page.c	\
 	gr-timer.h		\
 	gr-timer.c		\
+	gr-time-widget.h	\
+	gr-time-widget.c	\
 	gr-timer-widget.h	\
 	gr-timer-widget.c	\
 	gr-toggle-button.h	\
