@@ -152,7 +152,7 @@ set_active (GrTimer  *timer,
 
 static void
 set_duration (GrTimer *timer,
-              guint    duration)
+              guint64  duration)
 {
         timer->duration = duration;
         timer->remaining = duration;
