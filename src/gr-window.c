@@ -29,6 +29,7 @@
 #include "gr-edit-page.h"
 #include "gr-list-page.h"
 #include "gr-cuisine-page.h"
+#include "gr-cooking-page.h"
 #include "gr-search-page.h"
 #include "gr-shopping-page.h"
 #include "gr-recipes-page.h"
@@ -60,6 +61,7 @@ struct _GrWindow
         GtkWidget *cuisines_page;
         GtkWidget *cuisine_page;
         GtkWidget *image_page;
+        GtkWidget *cooking_page;
         GtkWidget *undo_revealer;
         GtkWidget *undo_label;
         GrRecipe  *undo_recipe;
@@ -104,7 +106,9 @@ save_back_entry (GrWindow *window)
         const char *page;
 
         page = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
-        if (strcmp (page, "details") == 0 || strcmp (page, "edit") == 0)
+        if (strcmp (page, "details") == 0 ||
+            strcmp (page, "cooking") == 0 ||
+            strcmp (page, "edit") == 0)
                 return;
 
         entry = g_new (BackEntry, 1);
@@ -279,32 +283,14 @@ search_changed (GrWindow *window)
 }
 
 static void
-update_cooking_button (GrWindow *window,
-                       gboolean  cooking)
-{
-        GtkStyleContext *context;
-
-        context = gtk_widget_get_style_context (window->cooking_button);
-
-        if (cooking) {
-                gtk_button_set_label (GTK_BUTTON (window->cooking_button), _("Stop cooking"));
-                gtk_style_context_remove_class (context, "suggested-action");
-        }
-        else {
-                gtk_button_set_label (GTK_BUTTON (window->cooking_button), _("Start cooking"));
-                gtk_style_context_add_class (context, "suggested-action");
-        }
-}
-
-static void
 start_or_stop_cooking (GrWindow *window)
 {
-        gboolean cooking;
+        GrRecipe *recipe;
 
-        cooking = gr_details_page_get_cooking (GR_DETAILS_PAGE (window->details_page));
-        cooking = !cooking;
-        gr_details_page_set_cooking (GR_DETAILS_PAGE (window->details_page), cooking);
-        update_cooking_button (window, cooking);
+        recipe = gr_details_page_get_recipe (GR_DETAILS_PAGE (window->details_page));
+        gr_cooking_page_set_recipe (GR_COOKING_PAGE (window->cooking_page), recipe);
+        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "cooking");
+        gr_cooking_page_start_cooking (GR_COOKING_PAGE (window->cooking_page));
 }
 
 static gboolean
@@ -313,17 +299,20 @@ window_keypress_handler (GtkWidget *widget,
                          gpointer   data)
 {
         GrWindow *window = GR_WINDOW (widget);
+        GdkEventKey *e = (GdkEventKey *) event;
         const char *visible;
 
         visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
 
         if (strcmp (visible, "image") == 0) {
-                GdkEventKey *e = (GdkEventKey *) event;
                 if (e->keyval == GDK_KEY_Escape) {
                         gr_window_show_image (window, NULL, -1);
                         return GDK_EVENT_STOP;
                 }
         }
+
+        if (strcmp (visible, "cooking") == 0)
+                return gr_cooking_page_handle_event (GR_COOKING_PAGE (window->cooking_page), event);
 
         if (strcmp (visible, "recipes") != 0 &&
             strcmp (visible, "cuisines") != 0 &&
@@ -332,7 +321,6 @@ window_keypress_handler (GtkWidget *widget,
 
         /* handle ctrl+f shortcut */
         if (event->type == GDK_KEY_PRESS) {
-                GdkEventKey *e = (GdkEventKey *) event;
                 if ((e->state & GDK_CONTROL_MASK) > 0 && e->keyval == GDK_KEY_f) {
                         if (!gtk_search_bar_get_search_mode (GTK_SEARCH_BAR (window->search_bar))) {
                                 gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (window->search_bar), TRUE);
@@ -524,6 +512,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrWindow, cuisines_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, cuisine_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, image_page);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, cooking_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, undo_revealer);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, undo_label);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, shopping_added_revealer);
@@ -576,7 +565,6 @@ gr_window_show_recipe (GrWindow *window,
 
         gr_details_page_set_recipe (GR_DETAILS_PAGE (window->details_page), recipe);
 
-        update_cooking_button (window, gr_details_page_get_cooking (GR_DETAILS_PAGE (window->details_page)));
         g_signal_handlers_block_by_func (window->search_bar, search_mode_changed, window);
         gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (window->search_bar), FALSE);
         g_signal_handlers_unblock_by_func (window->search_bar, search_mode_changed, window);
