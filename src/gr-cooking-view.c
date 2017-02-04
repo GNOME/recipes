@@ -324,12 +324,13 @@ setup_steps (GrCookingView *view)
 
 void
 gr_cooking_view_set_images (GrCookingView *view,
-                            GArray        *images)
+                            GArray        *images,
+                            int            index)
 {
         view->images = g_array_ref (images);
 
         setup_steps (view);
-        set_step (view, 0);
+        set_step (view, index);
 }
 
 void

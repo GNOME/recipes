@@ -30,7 +30,8 @@ G_DECLARE_FINAL_TYPE (GrImageViewer, gr_image_viewer, GR, IMAGE_VIEWER, GtkBox)
 
 GrImageViewer *gr_image_viewer_new          (void);
 void           gr_image_viewer_set_images   (GrImageViewer *viewer,
-                                             GArray        *images);
+                                             GArray        *images,
+                                             int            index);
 
 void           gr_image_viewer_add_image    (GrImageViewer *viewer);
 void           gr_image_viewer_remove_image (GrImageViewer *viewer);
@@ -39,6 +40,7 @@ void           gr_image_viewer_rotate_image (GrImageViewer *viewer,
 
 void           gr_image_viewer_show_image (GrImageViewer *viewer,
                                            int            idx);
+int            gr_image_viewer_get_index (GrImageViewer *viewer);
 
 G_END_DECLS
 

@@ -616,11 +616,14 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         notes = gr_recipe_get_notes (recipe);
         instructions = gr_recipe_get_translated_instructions (recipe);
         description = gr_recipe_get_translated_description (recipe);
-        index = gr_recipe_get_default_image (recipe);
+        if (same_recipe)
+                g_object_get (page->recipe_image, "index", &index, NULL);
+        else
+                index = gr_recipe_get_default_image (recipe);
 
         g_object_get (recipe, "images", &images, NULL);
-        gr_image_viewer_set_images (GR_IMAGE_VIEWER (page->recipe_image), images);
-        gr_image_viewer_show_image (GR_IMAGE_VIEWER (page->recipe_image), index);
+        gr_image_viewer_set_images (GR_IMAGE_VIEWER (page->recipe_image), images, index);
+        //gr_image_viewer_show_image (GR_IMAGE_VIEWER (page->recipe_image), index);
 
         ing = gr_ingredients_list_new (ingredients);
         g_set_object (&page->ingredients, ing);

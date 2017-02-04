@@ -1252,6 +1252,7 @@ preview_visible_changed (GrEditPage *page)
         else {
                 g_autoptr(GArray) images = NULL;
                 g_autofree char *instructions = NULL;
+                int index = 0;
 
                 gtk_widget_set_sensitive (page->add_step_button, FALSE);
                 gtk_widget_set_sensitive (page->link_image_button, FALSE);
@@ -1262,7 +1263,7 @@ preview_visible_changed (GrEditPage *page)
                 g_object_get (page->images, "images", &images, NULL);
                 instructions = get_instructions (GTK_TEXT_VIEW (page->instructions_field));
 
-                gr_cooking_view_set_images (GR_COOKING_VIEW (page->cooking_view), images);
+                gr_cooking_view_set_images (GR_COOKING_VIEW (page->cooking_view), images, index);
                 gr_cooking_view_set_instructions (GR_COOKING_VIEW (page->cooking_view), instructions);
 
                 update_steppers (page);
@@ -1889,8 +1890,7 @@ gr_edit_page_edit (GrEditPage *page,
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->vegetarian_check), (diets & GR_DIET_VEGETARIAN) != 0);
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->milk_free_check), (diets & GR_DIET_MILK_FREE) != 0);
 
-        gr_image_viewer_set_images (GR_IMAGE_VIEWER (page->images), images);
-        gr_image_viewer_show_image (GR_IMAGE_VIEWER (page->images), index);
+        gr_image_viewer_set_images (GR_IMAGE_VIEWER (page->images), images, index);
 
         update_author_label (page, chef);
 

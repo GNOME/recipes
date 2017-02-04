@@ -389,7 +389,7 @@ gr_cooking_page_set_recipe (GrCookingPage *page,
                 g_object_get (recipe, "images", &images, NULL);
                 instructions = gr_recipe_get_translated_instructions (recipe);
 
-                gr_cooking_view_set_images (GR_COOKING_VIEW (page->cooking_view), images);
+                gr_cooking_view_set_images (GR_COOKING_VIEW (page->cooking_view), images, 0);
                 gr_cooking_view_set_instructions (GR_COOKING_VIEW (page->cooking_view), instructions);
         }
 }

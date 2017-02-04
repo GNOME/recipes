@@ -34,7 +34,9 @@ GrCookingView *gr_cooking_view_new           (void);
 void           gr_cooking_view_set_instructions (GrCookingView *view,
                                                  const char    *instructions);
 void           gr_cooking_view_set_images       (GrCookingView *view,
-                                                 GArray        *images);
+                                                 GArray        *images,
+                                                 int            imaeg
+);
 int            gr_cooking_view_get_n_steps   (GrCookingView *view);
 int            gr_cooking_view_get_step      (GrCookingView *view);
 void           gr_cooking_view_set_step      (GrCookingView *view,

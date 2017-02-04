@@ -450,7 +450,9 @@ gr_image_viewer_set_property (GObject      *object,
         switch (prop_id)
           {
           case PROP_IMAGES:
-                  gr_image_viewer_set_images (self, (GArray *) g_value_get_boxed (value));
+                  gr_image_viewer_set_images (self,
+                                              (GArray *) g_value_get_boxed (value),
+                                              gr_image_viewer_get_index (self));
                   break;
 
           case PROP_INDEX:
@@ -508,7 +510,8 @@ gr_image_viewer_class_init (GrImageViewerClass *klass)
 
 void
 gr_image_viewer_set_images (GrImageViewer *viewer,
-                            GArray        *images)
+                            GArray        *images,
+                            int            index)
 {
         int i;
 
@@ -523,7 +526,7 @@ gr_image_viewer_set_images (GrImageViewer *viewer,
         }
 
         populate_preview (viewer);
-        viewer->index = 0;
+        viewer->index = index;
         set_current_image (viewer);
         hide_controls (viewer);
 
@@ -652,4 +655,10 @@ gr_image_viewer_show_image (GrImageViewer *viewer,
                 viewer->index = idx % viewer->images->len;
                 set_current_image (viewer);
         }
+}
+
+int
+gr_image_viewer_get_index (GrImageViewer *viewer)
+{
+        return viewer->images->len;
 }
