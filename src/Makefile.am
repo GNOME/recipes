@@ -38,6 +38,8 @@ recipes_SOURCES = \
 	gr-chef.c 		\
 	gr-chef-tile.h 		\
 	gr-chef-tile.c 		\
+	gr-cooking-view.h	\
+	gr-cooking-view.c	\
 	gr-cuisine.h		\
 	gr-cuisine.c		\
 	gr-cuisine-page.h	\

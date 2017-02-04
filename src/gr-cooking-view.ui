@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="recipes">
+  <!-- interface-requires gtk+ 3.8 -->
+  <template class="GrCookingView" parent="GtkBox">
+    <property name="visible">True</property>
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">1</property>
+        <property name="expand">1</property>
+        <property name="homogeneous">1</property>
+        <property name="spacing">40</property>
+        <style>
+          <class name="cooking"/>
+        </style>
+        <child>
+          <object class="GtkStack" id="cooking_stack">
+            <property name="visible">1</property>
+            <property name="halign">end</property>
+            <property name="valign">center</property>
+            <child>
+              <object class="GtkImage" id="cooking_image">
+                <property name="visible">1</property>
+                <property name="icon-name">camera-photo-symbolic</property>
+                <property name="pixel-size">96</property>
+                <style>
+                  <class name="cooking-image"/>
+                </style>
+              </object>
+              <packing>
+                <property name="name">image</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">1</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">20</property>
+                <child>
+                  <object class="GtkAspectFrame">
+                    <property name="visible">1</property>
+                    <property name="obey-child">0</property>
+                    <property name="height-request">400</property>
+                    <style>
+                      <class name="timer-frame"/>
+                    </style>
+                    <child>
+                      <object class="GrTimeWidget" id="cooking_timer">
+                        <property name="visible">1</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="name">timer</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="label" translatable="yes">Time is up!</property>
+                <style>
+                  <class name="cooking-label"/>
+                </style>
+              </object>
+              <packing>
+                <property name="name">complete</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+              </object>
+              <packing>
+                <property name="name">empty</property>
+              </packing>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">1</property>
+            <property name="orientation">vertical</property>
+            <property name="halign">start</property>
+            <property name="valign">center</property>
+            <property name="spacing">10</property>
+            <child>
+              <object class="GtkLabel" id="cooking_heading">
+                <property name="visible">1</property>
+                <property name="halign">start</property>
+                <property name="xalign">0</property>
+                <style>
+                  <class name="cooking-heading"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="cooking_label">
+                <property name="visible">1</property>
+                <property name="halign">start</property>
+                <property name="xalign">0</property>
+                <property name="max-width-chars">20</property>
+                <property name="width-chars">20</property>
+                <property name="wrap">1</property>
+                <style>
+                  <class name="cooking-label"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

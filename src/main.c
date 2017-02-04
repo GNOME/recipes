@@ -34,6 +34,7 @@
 #include "gr-recipes-page.h"
 #include "gr-search-page.h"
 #include "gr-shopping-page.h"
+#include "gr-cooking-view.h"
 #include "gr-timer-widget.h"
 #include "gr-time-widget.h"
 #include "gr-toggle-button.h"
@@ -47,6 +48,7 @@ main (int argc, char *argv[])
         g_autoptr (GApplication) app = NULL;
         int status;
 
+        g_type_ensure (GR_TYPE_COOKING_VIEW);
         g_type_ensure (GR_TYPE_CUISINE_PAGE);
         g_type_ensure (GR_TYPE_CUISINES_PAGE);
         g_type_ensure (GR_TYPE_DETAILS_PAGE);
