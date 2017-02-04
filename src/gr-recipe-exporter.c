@@ -227,7 +227,6 @@ export_one_recipe (GrRecipeExporter  *exporter,
 
                 paths[j] = g_strdup (basename);
                 angles[j] = ri->angle;
-                dark[j] = ri->dark_text;
 
                 j++;
         }

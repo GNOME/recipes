@@ -29,7 +29,6 @@ gr_rotated_image_clear (gpointer data)
 
         g_clear_pointer (&image->path, g_free);
         image->angle = 0;
-        image->dark_text = FALSE;
 }
 
 GArray *

@@ -310,7 +310,6 @@ import_recipe (GrRecipeImporter *importer)
 
                         ri.path = new_path;
                         ri.angle = importer->recipe_angles[i];
-                        ri.dark_text = importer->recipe_dark[i];
                         g_array_append_val (images, ri);
                 }
         }

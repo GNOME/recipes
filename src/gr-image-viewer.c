@@ -358,7 +358,6 @@ image_received (GtkClipboard *clipboard,
 
                 ri.path = g_strdup (path);
                 ri.angle = 0;
-                ri.dark_text = FALSE;
 
                 add_image (viewer, &ri, TRUE);
         }
@@ -545,7 +544,6 @@ file_chooser_response (GtkNativeDialog *self,
 
                         ri.path = g_strdup (l->data);
                         ri.angle = 0;
-                        ri.dark_text = FALSE;
 
                         add_image (viewer, &ri, TRUE);
 
