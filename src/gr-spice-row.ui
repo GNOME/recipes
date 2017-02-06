@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="recipes">
+  <!-- interface-requires gtk+ 3.10 -->
+  <template class="GrSpiceRow" parent="GtkListBoxRow">
+    <property name="visible">True</property>
+    <child>
+      <object class="GtkBox" id="box">
+        <property name="visible">1</property>
+        <property name="spacing">12</property>
+        <property name="margin">6</property>
+        <child>
+          <object class="GtkLabel" id="label">
+            <property name="visible">1</property>
+            <property name="xalign">0</property>
+          </object>
+          <packing>
+            <property name="expand">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkImage" id="image">
+            <property name="visible">1</property>
+            <property name="opacity">0</property>
+            <property name="icon-name">object-select-symbolic</property>
+            <property name="icon-size">1</property>
+            <style>
+              <class name="dim-label"/>
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

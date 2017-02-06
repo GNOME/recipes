@@ -106,6 +106,8 @@ recipes_SOURCES = \
 	gr-shopping-list-printer.c	\
 	gr-shopping-page.h	\
 	gr-shopping-page.c	\
+	gr-spice-row.h		\
+	gr-spice-row.c		\
 	gr-timer.h		\
 	gr-timer.c		\
 	gr-time-widget.h	\
