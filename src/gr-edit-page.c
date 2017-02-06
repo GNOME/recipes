@@ -185,7 +185,7 @@ update_image_button_sensitivity (GrEditPage *page)
 }
 
 static void
-update_default_button (GrEditPage *page)
+update_default_image_button (GrEditPage *page)
 {
         int index;
 
@@ -217,13 +217,13 @@ images_changed (GrEditPage *page)
 {
         update_image_button_sensitivity (page);
         populate_image_flowbox (page);
-        update_default_button (page);
+        update_default_image_button (page);
 }
 
 static void
 index_changed (GrEditPage *page)
 {
-        update_default_button (page);
+        update_default_image_button (page);
 }
 
 static void
@@ -1903,10 +1903,10 @@ gr_edit_page_edit (GrEditPage *page,
 
         if (recipe) {
                 page->index_handler_id = g_signal_connect_swapped (recipe, "notify::default-image",
-                                                                   G_CALLBACK (update_default_button), page);
+                                                                   G_CALLBACK (update_default_image_button), page);
         }
 
-        update_default_button (page);
+        update_default_image_button (page);
 }
 
 static void
