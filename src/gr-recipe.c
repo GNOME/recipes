@@ -20,6 +20,7 @@
 
 #include "config.h"
 
+#include <stdlib.h>
 #include <string.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
@@ -733,8 +734,27 @@ gr_recipe_matches (GrRecipe    *recipe,
                 else if (g_str_has_prefix (terms[i], "na:")) {
                         if (recipe->cf_name && strstr (recipe->cf_name, terms[i] + 3) == NULL)
                                 return FALSE;
+
                         continue;
 
+                }
+                else if (g_str_has_prefix (terms[i], "s+:")) {
+                        int level;
+
+                        level = atoi (terms[i] + 3);
+                        if (recipe->spiciness < level)
+                                return FALSE;
+
+                        continue;
+                }
+                else if (g_str_has_prefix (terms[i], "s-:")) {
+                        int level;
+
+                        level = atoi (terms[i] + 3);
+                        if (recipe->spiciness >= level)
+                                return FALSE;
+
+                        continue;
                 }
 
                 if (recipe->cf_name && strstr (recipe->cf_name, terms[i]) != NULL)
