@@ -19,6 +19,7 @@
         <child>
           <object class="GtkButton" id="save_button">
             <property name="visible">1</property>
+            <property name="sensitive">0</property>
             <property name="label" translatable="yes">_Save</property>
             <property name="use-underline">1</property>
             <signal name="clicked" handler="save_chef" swapped="yes"/>
@@ -135,6 +136,7 @@
                       <object class="GtkEntry" id="fullname">
                         <property name="visible">1</property>
                         <property name="placeholder-text" translatable="yes">Name…</property>
+                        <signal name="notify::text" handler="field_changed" swapped="yes"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -145,6 +147,7 @@
                       <object class="GtkEntry" id="name">
                         <property name="visible">1</property>
                         <property name="placeholder-text" translatable="yes">Short Name…</property>
+                        <signal name="notify::text" handler="field_changed" swapped="yes"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -164,6 +167,7 @@
                             <property name="left-margin">10</property>
                             <property name="right-margin">10</property>
                             <property name="bottom-margin">10</property>
+                            <property name="buffer">buffer</property>
                           </object>
                         </child>
                       </object>
@@ -218,5 +222,8 @@
         </child>
       </object>
     </child>
+  </object>
+  <object class="GtkTextBuffer" id="buffer">
+    <signal name="changed" handler="field_changed" swapped="yes"/>
   </object>
 </interface>

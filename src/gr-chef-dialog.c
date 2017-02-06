@@ -82,6 +82,12 @@ update_image (GrChefDialog *self)
 }
 
 static void
+field_changed (GrChefDialog *self)
+{
+        gtk_widget_set_sensitive (self->save_button, TRUE);
+}
+
+static void
 file_chooser_response (GtkNativeDialog *self,
                        gint             response_id,
                        GrChefDialog   *prefs)
@@ -90,6 +96,8 @@ file_chooser_response (GtkNativeDialog *self,
                 g_free (prefs->image_path);
                 prefs->image_path = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (self));
                 update_image (prefs);
+
+                field_changed (prefs);
         }
 }
 
@@ -226,6 +234,8 @@ static void
 gr_chef_dialog_set_chef (GrChefDialog *self,
                          GrChef       *chef)
 {
+        g_autoptr(GrChef) old_chef = self->chef;
+
         if (g_set_object (&self->chef, chef)) {
                 const char *fullname;
                 const char *name;
@@ -259,6 +269,11 @@ gr_chef_dialog_set_chef (GrChefDialog *self,
 
                 update_image (self);
         }
+
+        if (old_chef != NULL && old_chef != chef)
+                gtk_widget_set_sensitive (self->save_button, TRUE);
+        else
+                gtk_widget_set_sensitive (self->save_button, FALSE);
 }
 
 static void
@@ -308,6 +323,7 @@ gr_chef_dialog_class_init (GrChefDialogClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, chef_selected);
         gtk_widget_class_bind_template_callback (widget_class, save_chef);
         gtk_widget_class_bind_template_callback (widget_class, close_dialog);
+        gtk_widget_class_bind_template_callback (widget_class, field_changed);
 }
 
 GrChefDialog *
