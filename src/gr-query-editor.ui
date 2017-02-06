@@ -108,6 +108,69 @@
             <property name="xalign">0</property>
             <property name="width-chars">30</property>
             <property name="margin-bottom">10</property>
+            <property name="label" translatable="yes">Spiciness</property>
+            <style>
+              <class name="dim-label"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="spice_search_button">
+            <property name="visible">1</property>
+            <signal name="clicked" handler="spice_search_button_clicked"/>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">1</property>
+                <property name="spacing">10</property>
+                <child>
+                  <object class="GtkLabel" id="spice_search_button_label">
+                    <property name="visible">1</property>
+                    <property name="xalign">0</property>
+                    <property name="ellipsize">end</property>
+                    <property name="max-width-chars">25</property>
+                    <property name="label" translatable="yes">Any spiciness</property>
+                  </object>
+                  <packing>
+                    <property name="expand">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">1</property>
+                    <property name="icon-name">pan-down-symbolic</property>
+                    <property name="icon-size">1</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkRevealer" id="spice_search_revealer">
+            <property name="visible">1</property>
+            <property name="margin-bottom">20</property>
+            <child>
+              <object class="GtkScrolledWindow">
+                <property name="visible">1</property>
+                <property name="shadow-type">in</property>
+                <property name="hscrollbar-policy">never</property>
+                <property name="vscrollbar-policy">never</property>
+                <child>
+                  <object class="GtkListBox" id="spice_list">
+                    <property name="visible">1</property>
+                    <property name="selection-mode">none</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">1</property>
+            <property name="xalign">0</property>
+            <property name="width-chars">30</property>
+            <property name="margin-bottom">10</property>
             <property name="label" translatable="yes">Dietary restrictions</property>
             <style>
               <class name="dim-label"/>

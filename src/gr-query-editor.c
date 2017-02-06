@@ -25,9 +25,10 @@
 #include "gr-query-editor.h"
 #include "gr-ingredient.h"
 #include "gr-meal.h"
-#include "gr-ingredient-row.h"
 #include "gr-meal-row.h"
+#include "gr-spice-row.h"
 #include "gr-diet-row.h"
+#include "gr-ingredient-row.h"
 
 struct _GrQueryEditor
 {
@@ -39,6 +40,10 @@ struct _GrQueryEditor
         GtkWidget *meal_search_button;
         GtkWidget *meal_search_button_label;
         GtkWidget *meal_list;
+        GtkWidget *spice_search_revealer;
+        GtkWidget *spice_search_button;
+        GtkWidget *spice_search_button_label;
+        GtkWidget *spice_list;
         GtkWidget *diet_search_revealer;
         GtkWidget *diet_search_button;
         GtkWidget *diet_search_button_label;
@@ -104,6 +109,28 @@ hide_meal_search_list (GrQueryEditor *self,
 }
 
 static void
+show_spice_search_list (GrQueryEditor *self)
+{
+        gtk_widget_hide (self->spice_search_button);
+        gtk_widget_show (self->spice_search_revealer);
+        gtk_revealer_set_reveal_child (GTK_REVEALER (self->spice_search_revealer), TRUE);
+}
+
+static void
+hide_spice_search_list (GrQueryEditor *self,
+                        gboolean       animate)
+{
+        gtk_widget_show (self->spice_search_button);
+        if (!animate)
+                gtk_revealer_set_transition_type (GTK_REVEALER (self->spice_search_revealer),
+                                                  GTK_REVEALER_TRANSITION_TYPE_NONE);
+        gtk_revealer_set_reveal_child (GTK_REVEALER (self->spice_search_revealer), FALSE);
+        if (!animate)
+                gtk_revealer_set_transition_type (GTK_REVEALER (self->spice_search_revealer),
+                                                  GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN);
+}
+
+static void
 show_diet_search_list (GrQueryEditor *self)
 {
         gtk_widget_hide (self->diet_search_button);
@@ -153,8 +180,19 @@ meal_search_button_clicked (GtkButton     *button,
                             GrQueryEditor *self)
 {
         hide_diet_search_list (self, TRUE);
+        hide_spice_search_list (self, TRUE);
         hide_ingredients_search_list (self, TRUE);
         show_meal_search_list (self);
+}
+
+static void
+spice_search_button_clicked (GtkButton     *button,
+                             GrQueryEditor *self)
+{
+        hide_meal_search_list (self, TRUE);
+        hide_diet_search_list (self, TRUE);
+        hide_ingredients_search_list (self, TRUE);
+        show_spice_search_list (self);
 }
 
 static void
@@ -162,6 +200,7 @@ diet_search_button_clicked (GtkButton     *button,
                             GrQueryEditor *self)
 {
         hide_meal_search_list (self, TRUE);
+        hide_spice_search_list (self, TRUE);
         hide_ingredients_search_list (self, TRUE);
         show_diet_search_list (self);
 }
@@ -171,6 +210,7 @@ ing_search_button_clicked (GtkButton     *button,
                            GrQueryEditor *self)
 {
         hide_meal_search_list (self, TRUE);
+        hide_spice_search_list (self, TRUE);
         hide_diet_search_list (self, TRUE);
         show_ingredients_search_list (self);
 }
@@ -468,6 +508,71 @@ populate_meals_list (GrQueryEditor *self)
 }
 
 static void
+spice_header_func (GtkListBoxRow *row,
+                  GtkListBoxRow *before,
+                  gpointer       data)
+{
+        if (before != NULL && !GR_IS_SPICE_ROW (before))
+                gtk_list_box_row_set_header (row, gtk_separator_new (GTK_ORIENTATION_HORIZONTAL));
+        else
+                gtk_list_box_row_set_header (row, NULL);
+}
+
+static void
+spice_row_activated (GtkListBox    *list,
+                     GtkListBoxRow *row,
+                     GrQueryEditor *self)
+{
+        gboolean include;
+
+        if (!GR_IS_SPICE_ROW (row)) {
+                GList *children, *l;
+
+                children = gtk_container_get_children (GTK_CONTAINER (list));
+                for (l = children; l; l = l->next) {
+                        row = l->data;
+                        if (GR_IS_SPICE_ROW (row)) {
+                                g_object_set (row, "include", FALSE, NULL);
+                        }
+                }
+                g_list_free (children);
+
+                hide_spice_search_list (self, TRUE);
+
+                return;
+        }
+
+        g_object_get (row, "include", &include, NULL);
+        g_object_set (row, "include", !include, NULL);
+}
+
+static void
+populate_spice_list (GrQueryEditor *self)
+{
+        int i;
+        GtkWidget *row;
+        const char *levels[] = { "mild", "spicy", "hot", "extreme" };
+
+        row = gtk_label_new (_("Any spiciness"));
+        g_object_set (row, "margin", 6, NULL);
+        gtk_label_set_xalign (GTK_LABEL (row), 0);
+        gtk_widget_show (row);
+        gtk_container_add (GTK_CONTAINER (self->spice_list), row);
+
+        for (i = 0; i < G_N_ELEMENTS (levels); i++) {
+                row = GTK_WIDGET (gr_spice_row_new (levels[i]));
+                gtk_widget_show (row);
+                gtk_container_add (GTK_CONTAINER (self->spice_list), row);
+                gr_spice_row_set_entry (GR_SPICE_ROW (row), GD_TAGGED_ENTRY (self->entry));
+        }
+
+        gtk_list_box_set_header_func (GTK_LIST_BOX (self->spice_list),
+                                      spice_header_func, self, NULL);
+
+        g_signal_connect (self->spice_list, "row-activated", G_CALLBACK (spice_row_activated), self);
+}
+
+static void
 tag_clicked (GdTaggedEntry    *entry,
              GdTaggedEntryTag *tag,
              GrQueryEditor    *self)
@@ -504,6 +609,7 @@ search_popover_notify (GObject       *object,
                        GrQueryEditor *self)
 {
         hide_meal_search_list (self, FALSE);
+        hide_spice_search_list (self, FALSE);
         hide_diet_search_list (self, FALSE);
         hide_ingredients_search_list (self, FALSE);
 }
@@ -572,6 +678,35 @@ entry_changed_cb (GtkWidget     *entry,
                 g_string_append (s2, _("Any meal"));
 
         gtk_label_set_label (GTK_LABEL (editor->meal_search_button_label), s2->str);
+
+        g_string_truncate (s2, 0);
+
+        children = gtk_container_get_children (GTK_CONTAINER (editor->spice_list));
+        for (l = children; l; l = l->next) {
+                GtkWidget *row = l->data;
+                g_autofree char *term = NULL;
+                g_autofree char *label = NULL;
+
+                if (!GR_IS_SPICE_ROW (row))
+                        continue;
+
+                term = gr_spice_row_get_search_term (GR_SPICE_ROW (row));
+                if (term)
+                        g_ptr_array_add (a, g_strdup (term));
+
+                label = gr_spice_row_get_label (GR_SPICE_ROW (row));
+                if (label) {
+                        if (s2->len > 0)
+                                g_string_append (s2, ", ");
+                        g_string_append (s2, label);
+                }
+        }
+        g_list_free (children);
+
+        if (s2->len == 0)
+                g_string_append (s2, _("Any spiciness"));
+
+        gtk_label_set_label (GTK_LABEL (editor->spice_search_button_label), s2->str);
 
         g_string_truncate (s2, 0);
 
@@ -745,6 +880,10 @@ gr_query_editor_class_init (GrQueryEditorClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrQueryEditor, meal_search_button);
         gtk_widget_class_bind_template_child (widget_class, GrQueryEditor, meal_search_button_label);
         gtk_widget_class_bind_template_child (widget_class, GrQueryEditor, meal_list);
+        gtk_widget_class_bind_template_child (widget_class, GrQueryEditor, spice_search_revealer);
+        gtk_widget_class_bind_template_child (widget_class, GrQueryEditor, spice_search_button);
+        gtk_widget_class_bind_template_child (widget_class, GrQueryEditor, spice_search_button_label);
+        gtk_widget_class_bind_template_child (widget_class, GrQueryEditor, spice_list);
         gtk_widget_class_bind_template_child (widget_class, GrQueryEditor, diet_search_revealer);
         gtk_widget_class_bind_template_child (widget_class, GrQueryEditor, diet_search_button);
         gtk_widget_class_bind_template_child (widget_class, GrQueryEditor, diet_search_button_label);
@@ -759,6 +898,7 @@ gr_query_editor_class_init (GrQueryEditorClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, tag_button_clicked);
         gtk_widget_class_bind_template_callback (widget_class, search_popover_notify);
         gtk_widget_class_bind_template_callback (widget_class, meal_search_button_clicked);
+        gtk_widget_class_bind_template_callback (widget_class, spice_search_button_clicked);
         gtk_widget_class_bind_template_callback (widget_class, diet_search_button_clicked);
         gtk_widget_class_bind_template_callback (widget_class, ing_search_button_clicked);
         gtk_widget_class_bind_template_callback (widget_class, entry_key_press_event_cb);
@@ -779,6 +919,7 @@ gr_query_editor_init (GrQueryEditor *self)
         gtk_search_bar_connect_entry (GTK_SEARCH_BAR (self), GTK_ENTRY (self->entry));
 
         populate_meals_list (self);
+        populate_spice_list (self);
         populate_diets_list (self);
         populate_ingredients_list (self);
 }
