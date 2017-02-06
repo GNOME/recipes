@@ -82,6 +82,8 @@ set_timer (GrTimeWidget *self,
         GrTimer *old = self->timer;
 
         if (g_set_object (&self->timer, timer)) {
+                gboolean active;
+
                 if (self->handler) {
                         g_signal_handler_disconnect (old, self->handler);
                         self->handler = 0;
@@ -92,6 +94,9 @@ set_timer (GrTimeWidget *self,
                 }
                 g_object_set (self->timer_widget, "timer", timer, NULL);
                 g_object_notify (G_OBJECT (self), "timer");
+
+                g_object_get (timer, "active", &active, NULL);
+                gtk_stack_set_visible_child_name (GTK_STACK (self->timer_button_stack), active ? "active" : "start");
         }
 }
 

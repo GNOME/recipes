@@ -161,6 +161,7 @@ setup_step (GrCookingView *view)
 
         if (s->timer) {
                 gboolean active;
+
                 g_object_get (s->timer, "active", &active, NULL);
                 g_object_set (view->cooking_timer, "timer", s->timer, NULL);
                 gtk_stack_set_visible_child_name (GTK_STACK (view->cooking_stack), "timer");
@@ -260,8 +261,6 @@ setup_steps (GrCookingView *view)
 {
         g_auto(GStrv) steps = NULL;
         int i;
-        int image;
-        guint64 timer;
 
         if (!view->instructions || !view->images)
                 return;
@@ -273,10 +272,9 @@ setup_steps (GrCookingView *view)
         g_ptr_array_set_size (view->steps, 0);
         for (i = 0; steps[i]; i++) {
                 const char *p, *q;
+                int image = -1;
+                guint64 timer = 0;
                 g_autofree char *step = NULL;
-
-                image = -1;
-                timer = 0;
 
                 p = strstr (steps[i], "[image:");
                 if (p) {
