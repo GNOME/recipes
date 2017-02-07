@@ -204,7 +204,23 @@ completed_cb (AutoarCompressor *compressor,
                                      NULL,
                                      &error);
         if (result == NULL) {
+                GtkWidget *error_dialog;
+
                 g_message ("Sharing the exported recipe failed: %s", error->message);
+
+                error_dialog = gtk_message_dialog_new (GTK_WINDOW (exporter->window),
+                                                       GTK_DIALOG_MODAL |
+                                                       GTK_DIALOG_DESTROY_WITH_PARENT,
+                                                       GTK_MESSAGE_ERROR,
+                                                       GTK_BUTTONS_CLOSE,
+                                                       _("Could not share recipes"));
+                gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (error_dialog),
+                                                          _("There was an error sending the exported "
+                                                            "recipes by e-mail.\n"
+                                                            "The exported data can be found at “%s”."),
+                                                          path);
+                g_signal_connect (error_dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
+                gtk_widget_show (error_dialog);
         }
 
         cleanup_export (exporter);
