@@ -456,6 +456,7 @@ print_done (GtkPrintOperation       *operation,
                 gtk_print_operation_get_error (operation, &error);
 
                 error_dialog = gtk_message_dialog_new (GTK_WINDOW (printer->window),
+                                                       GTK_DIALOG_MODAL |
                                                        GTK_DIALOG_DESTROY_WITH_PARENT,
                                                        GTK_MESSAGE_ERROR,
                                                        GTK_BUTTONS_CLOSE,
