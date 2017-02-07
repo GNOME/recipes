@@ -450,34 +450,30 @@ print_done (GtkPrintOperation       *operation,
 {
        GError *error = NULL;
 
-  if (res == GTK_PRINT_OPERATION_RESULT_ERROR)
-    {
+        if (res == GTK_PRINT_OPERATION_RESULT_ERROR) {
+                GtkWidget *error_dialog;
 
-      GtkWidget *error_dialog;
+                gtk_print_operation_get_error (operation, &error);
 
-      gtk_print_operation_get_error (operation, &error);
+                error_dialog = gtk_message_dialog_new (GTK_WINDOW (printer->window),
+                                                       GTK_DIALOG_DESTROY_WITH_PARENT,
+                                                       GTK_MESSAGE_ERROR,
+                                                       GTK_BUTTONS_CLOSE,
+                                                       "%s\n%s",
+                                                       _("Error printing file:"),
+                                                       error ? error->message : _("No details"));
+                g_signal_connect (error_dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
+                gtk_widget_show (error_dialog);
+        }
+        else if (res == GTK_PRINT_OPERATION_RESULT_APPLY) {
+                /* TODO: print settings */
+        }
 
-      error_dialog = gtk_message_dialog_new (GTK_WINDOW (printer->window),
-                                             GTK_DIALOG_DESTROY_WITH_PARENT,
-                                             GTK_MESSAGE_ERROR,
-                                             GTK_BUTTONS_CLOSE,
-                                             "%s\n%s",
-                                             _("Error printing file:"),
-                                             error ? error->message : _("No details"));
-      g_signal_connect (error_dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
-      gtk_widget_show (error_dialog);
-    }
-  else if (res == GTK_PRINT_OPERATION_RESULT_APPLY)
-    {
-            /* TODO: print settings */
-    }
+        if (!gtk_print_operation_is_finished (operation)) {
+                /* TODO monitoring */
+        }
 
-  if (!gtk_print_operation_is_finished (operation))
-    {
-            /* TODO monitoring */
-    }
-
-  g_object_unref (operation);
+        g_object_unref (operation);
 }
 
 void
