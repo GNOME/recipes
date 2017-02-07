@@ -518,7 +518,7 @@ export_dialog_response (GtkWidget        *dialog,
 
                 for (i = 0; i < 1000; i++) {
                         g_autofree char *tmp;
-                        tmp = g_strdup_printf ("%s/.var/app/org.gnome.Recipes/recipes%d.tar.gz", g_get_home_dir (), i);
+                        tmp = g_strdup_printf ("%s/.var/app/org.gnome.Recipes/recipes%d.gnome-recipes-export", g_get_home_dir (), i);
                         if (!g_file_test (tmp, G_FILE_TEST_EXISTS)) {
                                 path = g_strdup (tmp);
                                 break;
@@ -529,7 +529,7 @@ export_dialog_response (GtkWidget        *dialog,
                         g_autofree char *dir = NULL;
 
                         dir = g_dir_make_tmp ("recipesXXXXXX", NULL);
-                        path = g_build_filename (dir, "recipes.tar.gz", NULL);
+                        path = g_build_filename (dir, "recipes.gnome-recipes-export", NULL);
                 }
 
                 exporter->output = g_file_new_for_path (path);
