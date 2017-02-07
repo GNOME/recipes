@@ -18,7 +18,7 @@
       <object class="GtkButton" id="button_now">
         <property name="visible">1</property>
         <property name="use-underline">1</property>
-        <property name="label" translatable="yes">_Export</property>
+        <property name="label" translatable="yes">_Share</property>
       </object>
     </child>
     <child internal-child="vbox">
@@ -46,6 +46,25 @@
           <packing>
             <property name="expand">1</property>
           </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">1</property>
+            <property name="spacing">20</property>
+            <child>
+              <object class="GtkRadioButton" id="friend_button">
+                <property name="visible">1</property>
+                <property name="label" translatable="yes">Share with a friend</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkRadioButton" id="contribute_button">
+                <property name="visible">1</property>
+                <property name="group">friend_button</property>
+                <property name="label" translatable="yes">Contribute to GNOME recipes</property>
+              </object>
+            </child>
+          </object>
         </child>
       </object>
     </child>

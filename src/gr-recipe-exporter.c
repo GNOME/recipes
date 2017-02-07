@@ -29,6 +29,7 @@
 #endif
 
 #include "gr-recipe-exporter.h"
+#include "gr-recipe-formatter.h"
 #include "gr-images.h"
 #include "gr-chef.h"
 #include "gr-recipe.h"
@@ -53,7 +54,10 @@ struct _GrRecipeExporter
         GList *sources;
         char *dir;
 
+        gboolean contribute;
+
         GtkWidget *dialog_heading;
+        GtkWidget *contribute_button;
 };
 
 G_DEFINE_TYPE (GrRecipeExporter, gr_recipe_exporter, G_TYPE_OBJECT)
@@ -123,26 +127,85 @@ static void
 completed_cb (AutoarCompressor *compressor,
               GrRecipeExporter *exporter)
 {
-        GtkWidget *dialog;
-        g_autofree char *path =  NULL;
-        int n;
+        g_autofree char *path = NULL;
+        g_autoptr(GDBusConnection) bus = NULL;
+        g_autoptr(GError) error = NULL;
+        g_autoptr(GVariant) result = NULL;
+        const char *argv[4];
+        g_autoptr(GString) url = NULL;
+        const char *address;
+        g_autofree char *subject = NULL;
+        g_autofree char *body = NULL;
 
-        n = g_list_length (exporter->recipes);
+        if (exporter->contribute) {
+                address = "recipes-list@gnome.org";
+                subject = g_uri_escape_string (_("Recipe contribution"), NULL, FALSE);
+                body = g_uri_escape_string (_("Please accept my attached recipe contribution."), NULL, FALSE);
+        }
+        else {
+                g_autoptr(GString) s = NULL;
+                GList *l;
+
+                address = "";
+                s = g_string_new ("");
+
+                if (exporter->recipes->next == NULL) {
+                        subject = g_uri_escape_string (_("Try this recipe"), NULL, FALSE);
+                        g_string_append (s, _("Hi,\n\nyou should try this recipe."));
+                }
+                else {
+                        subject = g_uri_escape_string (_("Try these recipes"), NULL, FALSE);
+                        g_string_append (s, _("Hi,\n\nyou should try these recipes."));
+                }
+                g_string_append (s, "\n\n");
+                g_string_append (s, _("(The attached file can be imported into GNOME recipes.)"));
+
+                for (l = exporter->recipes; l; l = l->next) {
+                        g_autofree char *formatted = NULL;
+
+                        formatted = gr_recipe_format (GR_RECIPE (l->data));
+                        g_string_append (s, "\n\n");
+                        g_string_append (s, formatted);
+                }
+
+                body = g_uri_escape_string (s->str, NULL, FALSE);
+        }
+
         path = g_file_get_path (exporter->dest);
 
-        g_message (ngettext ("%d recipe has been exported as “%s”",
-                             "%d recipes have been exported as “%s”", n),
-                   n, path);
+        url = g_string_new ("mailto:");
 
-        dialog = gtk_message_dialog_new (exporter->window,
-                                         GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,
-                                         GTK_MESSAGE_INFO,
-                                         GTK_BUTTONS_OK,
-                                         ngettext ("%d recipe has been exported as “%s”",
-                                                   "%d recipes have been exported as “%s”", n),
-                                         n, path);
-        g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
-        gtk_widget_show (dialog);
+        g_string_append_printf (url, "\"%s\"", address);
+        g_string_append_printf (url, "?attach=%s", path);
+        g_string_append_printf (url, "&subject=%s", subject);
+        g_string_append_printf (url, "&body=%s", body);
+
+        argv[0] = "/usr/bin/evolution";
+        argv[1] = "--component=mail";
+        argv[2] = url->str;
+        argv[3] = NULL;
+
+        bus = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL);
+
+        result = g_dbus_connection_call_sync (bus,
+                                     "org.freedesktop.Flatpak",
+                                     "/org/freedesktop/Flatpak/Development",
+                                     "org.freedesktop.Flatpak.Development",
+                                     "HostCommand",
+                                     g_variant_new ("(^ay^aay@a{uh}@a{ss}u)",
+                                                    g_get_home_dir (),
+                                                    argv,
+                                                    g_variant_new_array (G_VARIANT_TYPE ("{uh}"), NULL, 0),
+                                                    g_variant_new_array (G_VARIANT_TYPE ("{ss}"), NULL, 0),
+                                                    0),
+                                     G_VARIANT_TYPE ("(u)"),
+                                     0,
+                                     G_MAXINT,
+                                     NULL,
+                                     &error);
+        if (result == NULL) {
+                g_message ("Sharing the exported recipe failed: %s", error->message);
+        }
 
         cleanup_export (exporter);
 }
@@ -435,6 +498,8 @@ export_dialog_response (GtkWidget        *dialog,
 
                 g_message ("exporting %d recipes now", g_list_length (exporter->recipes));
 
+                exporter->contribute = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (exporter->contribute_button));
+
                 for (i = 0; i < 1000; i++) {
                         g_autofree char *tmp;
                         tmp = g_strdup_printf ("%s/.var/app/org.gnome.Recipes/recipes%d.tar.gz", g_get_home_dir (), i);
@@ -467,8 +532,8 @@ update_heading (GrRecipeExporter *exporter)
         int n;
 
         n = g_list_length (exporter->recipes);
-        tmp = g_strdup_printf (ngettext ("%d recipe selected for export",
-                                         "%d recipes selected for export", n), n);
+        tmp = g_strdup_printf (ngettext ("%d recipe selected for sharing",
+                                         "%d recipes selected for sharing", n), n);
         gtk_label_set_label (GTK_LABEL (exporter->dialog_heading), tmp);
 }
 
@@ -588,6 +653,7 @@ show_export_dialog (GrRecipeExporter *exporter)
         populate_recipe_list (exporter, list);
 
         exporter->dialog_heading = GTK_WIDGET (gtk_builder_get_object (builder, "heading"));
+        exporter->contribute_button = GTK_WIDGET (gtk_builder_get_object (builder, "contribute_button"));
         update_heading (exporter);
 
         g_signal_connect (dialog, "response", G_CALLBACK (export_dialog_response), exporter);
