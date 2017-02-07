@@ -51,6 +51,9 @@ struct _GrRecipeStore
 
         GDateTime *favorite_change;
         GDateTime *shopping_change;
+
+        char *recipes_data;
+        gsize recipes_data_length;
 };
 
 
@@ -72,6 +75,7 @@ gr_recipe_store_finalize (GObject *object)
         g_strfreev (self->shopping);
         g_strfreev (self->featured_chefs);
         g_free (self->user);
+        g_free (self->recipes_data);
 
         G_OBJECT_CLASS (gr_recipe_store_parent_class)->finalize (object);
 }
@@ -410,6 +414,60 @@ load_recipes (GrRecipeStore *self,
 }
 
 static void
+write_data (GObject       *obj,
+            GAsyncResult  *res,
+            gpointer       data)
+{
+        GrRecipeStore *store = data;
+        g_autoptr(GError) error = NULL;
+        g_autoptr(GFileOutputStream) ostream = NULL;
+        g_autofree char *path = NULL;
+        gsize written;
+
+        ostream = g_file_replace_finish (G_FILE (obj), res, &error);
+        if (!ostream)
+                goto error;
+
+        if (!g_output_stream_write_all (G_OUTPUT_STREAM (ostream),
+                                        store->recipes_data,
+                                        store->recipes_data_length,
+                                        &written,
+                                        NULL,
+                                        &error))
+                goto error;
+
+        g_clear_pointer (&store->recipes_data, g_free);
+        store->recipes_data_length = 0;
+
+        return;
+error:
+        path = g_file_get_path (G_FILE (obj));
+        g_error ("Failed to save %s: %s", path, error->message);
+}
+
+static void
+replace_keyfile_async (GrRecipeStore *store,
+                       GKeyFile      *keyfile,
+                       const char    *path)
+{
+        g_autoptr(GError) error = NULL;
+        g_autoptr(GFile) file = NULL;
+
+        if (store->recipes_data) {
+                g_print ("recipes store already scheduled\n");
+                return;
+        }
+
+        store->recipes_data = g_key_file_to_data (keyfile, &store->recipes_data_length, &error);
+        if (store->recipes_data == NULL)
+                g_error ("Failed to save recipe database: %s", error->message);
+
+        file = g_file_new_for_path (path);
+        g_file_replace_async (file, NULL, FALSE, G_FILE_CREATE_NONE, 0, NULL, write_data, store);
+
+}
+
+static void
 save_recipes (GrRecipeStore *self)
 {
         g_autoptr(GKeyFile) keyfile = NULL;
@@ -517,9 +575,7 @@ save_recipes (GrRecipeStore *self)
                 }
         }
 
-        if (!g_key_file_save_to_file (keyfile, path, &error)) {
-                g_error ("Failed to save recipe database: %s", error->message);
-        }
+        replace_keyfile_async (self, keyfile, path);
 }
 
 static gboolean
