@@ -866,8 +866,10 @@ gr_app_open (GApplication  *app,
                 g_warning ("Can only open one file at a time.");
 
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
-        if (!win)
+        if (!win) {
                 win = GTK_WINDOW (gr_window_new (GR_APP (app)));
+                gtk_window_present (win);
+        }
 
         gr_window_load_recipe (GR_WINDOW (win), files[0]);
 
