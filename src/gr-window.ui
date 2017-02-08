@@ -10,6 +10,7 @@
       <object class="GtkHeaderBar" id="header">
         <property name="visible">1</property>
         <property name="show-close-button">1</property>
+        <property name="title" translatable="yes">Recipes</property>
         <child>
           <object class="GtkStack" id="header_start_stack">
             <property name="visible">1</property>

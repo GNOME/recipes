@@ -567,6 +567,8 @@ gr_window_go_back (GrWindow *window)
                 gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "main");
                 gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "search");
 
+                gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Recipes"));
+
                 gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "recipes");
         }
         else {
