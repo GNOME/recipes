@@ -275,6 +275,7 @@ setup_steps (GrCookingView *view)
                 int image = -1;
                 guint64 timer = 0;
                 g_autofree char *step = NULL;
+                g_autofree char *title = NULL;
 
                 p = strstr (steps[i], "[image:");
                 if (p) {
@@ -316,7 +317,8 @@ setup_steps (GrCookingView *view)
                 if (step == NULL)
                         step = g_strdup (steps[i]);
 
-                g_ptr_array_add (view->steps, step_data_new ("Step", step, timer, image, view));
+                title = g_strdup_printf (_("Step %d/%d"), i + 1, g_strv_length (steps));
+                g_ptr_array_add (view->steps, step_data_new (title, step, timer, image, view));
         }
 }
 
