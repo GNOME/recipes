@@ -17,7 +17,7 @@
               <class name="osd"/>
             </style>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="prev_step_button">
                 <property name="visible">1</property>
                 <signal name="clicked" handler="prev_step" swapped="yes"/>
                 <style>
@@ -67,7 +67,7 @@
             <property name="valign">center</property>
             <property name="transition-type">crossfade</property>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="next_step_button">
                 <property name="visible">1</property>
                 <signal name="clicked" handler="next_step" swapped="yes"/>
                 <style>

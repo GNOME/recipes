@@ -41,6 +41,8 @@ struct _GrCookingPage
         GtkWidget *prev_revealer;
         GtkWidget *close_revealer;
         GtkWidget *cooking_view;
+        GtkWidget *prev_step_button;
+        GtkWidget *next_step_button;
 
         GrRecipe *recipe;
 
@@ -127,6 +129,19 @@ set_cooking_overlay_count (int count)
 }
 
 static void
+update_steppers (GrCookingPage *page)
+{
+        int step;
+        int n_steps;
+
+        step = gr_cooking_view_get_step (GR_COOKING_VIEW (page->cooking_view));
+        n_steps = gr_cooking_view_get_n_steps (GR_COOKING_VIEW (page->cooking_view));
+
+        gtk_widget_set_sensitive (page->prev_step_button, step - 1 >= 0);
+        gtk_widget_set_sensitive (page->next_step_button, step + 1 <= n_steps - 1);
+}
+
+static void
 set_cooking (GrCookingPage *page,
              gboolean       cooking)
 {
@@ -154,6 +169,7 @@ set_cooking (GrCookingPage *page,
                 }
 
                 gr_cooking_view_set_step (GR_COOKING_VIEW (page->cooking_view), 0);
+                update_steppers (page);
 
                 gr_window_set_fullscreen (GR_WINDOW (window), TRUE);
         }
@@ -164,6 +180,7 @@ set_cooking (GrCookingPage *page,
                 }
 
                 gr_window_show_recipe (GR_WINDOW (window), page->recipe);
+                update_steppers (page);
 
                 gr_window_set_fullscreen (GR_WINDOW (window), FALSE);
         }
@@ -182,6 +199,7 @@ prev_step (GrCookingPage *page)
 
         step = gr_cooking_view_get_step (GR_COOKING_VIEW (page->cooking_view));
         gr_cooking_view_set_step (GR_COOKING_VIEW (page->cooking_view), step - 1);
+        update_steppers (page);
 }
 
 static void
@@ -191,6 +209,7 @@ next_step (GrCookingPage *page)
 
         step = gr_cooking_view_get_step (GR_COOKING_VIEW (page->cooking_view));
         gr_cooking_view_set_step (GR_COOKING_VIEW (page->cooking_view), step + 1);
+        update_steppers (page);
 }
 
 
@@ -371,6 +390,8 @@ gr_cooking_page_class_init (GrCookingPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrCookingPage, next_revealer);
         gtk_widget_class_bind_template_child (widget_class, GrCookingPage, close_revealer);
         gtk_widget_class_bind_template_child (widget_class, GrCookingPage, event_box);
+        gtk_widget_class_bind_template_child (widget_class, GrCookingPage, prev_step_button);
+        gtk_widget_class_bind_template_child (widget_class, GrCookingPage, next_step_button);
 
         gtk_widget_class_bind_template_callback (widget_class, prev_step);
         gtk_widget_class_bind_template_callback (widget_class, next_step);
