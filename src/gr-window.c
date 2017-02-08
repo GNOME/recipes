@@ -26,6 +26,7 @@
 
 #include "gr-window.h"
 #include "gr-details-page.h"
+#include "gr-chef-dialog.h"
 #include "gr-edit-page.h"
 #include "gr-list-page.h"
 #include "gr-cuisine-page.h"
@@ -72,6 +73,8 @@ struct _GrWindow
 
         GObject *file_chooser;
         GrRecipeImporter *importer;
+
+        GtkWidget *chef_dialog;
 
         GQueue *back_entry_stack;
         gboolean is_fullscreen;
@@ -660,6 +663,41 @@ file_chooser_response (GtkNativeDialog *self,
 
         gtk_native_dialog_destroy (self);
         window->file_chooser = NULL;
+}
+
+static void
+chef_done (GrChefDialog *dialog,
+           GrChef       *chef,
+           GrWindow     *window)
+{
+        window->chef_dialog = NULL;
+        gtk_widget_destroy (GTK_WIDGET (dialog));
+}
+
+void
+gr_window_show_my_chef_information (GrWindow *window)
+{
+        GrRecipeStore *store;
+        const char *id;
+        g_autoptr(GrChef) chef = NULL;
+
+        if (window->chef_dialog)
+                return;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+        id = gr_recipe_store_get_user_key (store);
+
+        if (id != NULL && id[0] != '\0')
+                chef = gr_recipe_store_get_chef (store, id);
+        else
+                chef = gr_chef_new ();
+
+        window->chef_dialog = (GtkWidget *)gr_chef_dialog_new (GTK_WINDOW (window), chef);
+        gr_chef_dialog_can_create (GR_CHEF_DIALOG (window->chef_dialog), FALSE);
+        gtk_window_set_title (GTK_WINDOW (window->chef_dialog), _("My Chef Information"));
+        g_signal_connect (window->chef_dialog, "done", G_CALLBACK (chef_done), window);
+        gtk_window_present (GTK_WINDOW (window->chef_dialog));
 }
 
 void

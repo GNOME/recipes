@@ -72,26 +72,11 @@ chef_information_activated (GSimpleAction *action,
                             GVariant      *parameter,
                             gpointer       app)
 {
-        GrRecipeStore *store;
-        const char *id;
-        g_autoptr(GrChef) chef = NULL;
-        GrChefDialog *dialog;
         GtkWindow *win;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
-
-        id = gr_recipe_store_get_user_key (store);
-
-        if (id != NULL && id[0] != '\0')
-                chef = gr_recipe_store_get_chef (store, id);
-        else
-                chef = gr_chef_new ();
-
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
-        dialog = gr_chef_dialog_new (win, chef);
-        gr_chef_dialog_can_create (dialog, FALSE);
-        gtk_window_set_title (GTK_WINDOW (dialog), _("My Chef Information"));
-        gtk_window_present (GTK_WINDOW (dialog));
+
+        gr_window_show_my_chef_information (GR_WINDOW (win));
 }
 
 static GtkWidget *

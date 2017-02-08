@@ -31,6 +31,7 @@
 #include "gr-chef.h"
 #include "gr-recipe-store.h"
 #include "gr-app.h"
+#include "gr-window.h"
 #include "gr-utils.h"
 
 
@@ -203,13 +204,12 @@ save_chef (GrChefDialog *self)
         }
 
         g_signal_emit (self, done_signal, 0, self->chef);
-        gtk_widget_destroy (GTK_WIDGET (self));
 }
 
 static void
 close_dialog (GrChefDialog *self)
 {
-        gtk_widget_destroy (GTK_WIDGET (self));
+        g_signal_emit (self, done_signal, 0, NULL);
 }
 
 static void

@@ -1125,10 +1125,12 @@ static void update_author_label (GrEditPage *page,
 static void
 chef_done (GrChefDialog *dialog, GrChef *chef, GrEditPage *page)
 {
-        g_free (page->author);
-        page->author = g_strdup (gr_chef_get_id (chef));
-
-        update_author_label (page, chef);
+        if (chef) {
+                g_free (page->author);
+                page->author = g_strdup (gr_chef_get_id (chef));
+                update_author_label (page, chef);
+        }
+        gtk_widget_destroy (GTK_WIDGET (dialog));
 }
 
 static gboolean
