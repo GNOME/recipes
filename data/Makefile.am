@@ -22,6 +22,9 @@ dist_desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
 EXTRA_DIST += $(desktop_in_files)
 
+mimedir = $(datadir)/mime/packages
+dist_mime_DATA = org.gnome.Recipes-mime.xml
+
 ingredientsdir = $(pkgdatadir)/ingredients
 imagesdir = $(pkgdatadir)/images
 
@@ -131,8 +134,8 @@ dist_appsiconsymbolic_DATA = \
 
 update_icon_cache = gtk-update-icon-cache --ignore-theme-index --force
 
-install-data-hook: install-update-icon-cache
-uninstall-hook: uninstall-update-icon-cache
+install-data-hook: install-update-icon-cache install-update-mime-database
+uninstall-hook: uninstall-update-icon-cache uninstall-update-mime-database
 
 install-update-icon-cache:
 	$(AM_V_at)$(POST_INSTALL)
@@ -141,6 +144,22 @@ install-update-icon-cache:
 uninstall-update-icon-cache:
 	$(AM_V_at)$(POST_UNINSTALL)
 	test -n "$(DESTDIR)" || $(update_icon_cache) "$(iconthemedir)"
+
+install-update-mime-database:
+	$(AM_V_at)$(POST_INSTALL)
+	if [ -f $(DESTDIR)$(datadir)/mime/packages/freedesktop.org.xml ] ; then \
+		if which update-mime-database>/dev/null 2>&1; then \
+			update-mime-database $(DESTDIR)$(datadir)/mime; \
+		fi \
+	fi
+
+uninstall-update-mime-database:
+	$(AM_V_at)$(POST_UNINSTALL)
+	if [ -f $(DESTDIR)$(datadir)/mime/packages/freedesktop.org.xml ] ; then \
+		if which update-mime-database>/dev/null 2>&1; then \
+			update-mime-database $(DESTDIR)$(datadir)/mime; \
+		fi \
+	fi
 
 servicedir = $(datadir)/dbus-1/services
 service_in_files = org.gnome.Recipes.service.in
