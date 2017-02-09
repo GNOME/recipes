@@ -47,6 +47,7 @@ struct _GrWindow
         GtkWidget *header_start_stack;
         GtkWidget *header_title_stack;
         GtkWidget *header_end_stack;
+        GtkWidget *back_button;
         GtkWidget *search_button;
         GtkWidget *cooking_button;
         GtkWidget *search_bar;
@@ -341,11 +342,20 @@ window_buttonpress_handler (GtkWidget *widget,
 {
         GrWindow *window = GR_WINDOW (widget);
         const char *visible;
+        GdkEventButton *e = (GdkEventButton *) event;
 
         visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
 
         if (strcmp (visible, "cooking") == 0)
           return gr_cooking_page_handle_event (GR_COOKING_PAGE (window->cooking_page), event);
+
+        /* handle mouse back button like a click on our actual back button */
+        if (e->button == 8 &&
+            gtk_widget_can_activate_accel (window->back_button,
+                                           g_signal_lookup ("clicked", GTK_TYPE_BUTTON))) {
+                gr_window_go_back (window);
+                return GDK_EVENT_STOP;
+        }
 
         return GDK_EVENT_PROPAGATE;
 }
@@ -514,6 +524,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrWindow, header_start_stack);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, header_title_stack);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, header_end_stack);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, back_button);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, search_button);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, cooking_button);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, search_bar);
