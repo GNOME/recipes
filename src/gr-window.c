@@ -70,6 +70,7 @@ struct _GrWindow
         GtkWidget *shopping_added_revealer;
         guint shopping_timeout_id;
 
+        GObject *file_chooser;
         GrRecipeImporter *importer;
 
         GQueue *back_entry_stack;
@@ -656,29 +657,33 @@ file_chooser_response (GtkNativeDialog *self,
                 file = gtk_file_chooser_get_file (GTK_FILE_CHOOSER (self));
                 do_import (window, file);
         }
+
+        gtk_native_dialog_destroy (self);
+        window->file_chooser = NULL;
 }
 
 void
 gr_window_load_recipe (GrWindow *window,
                        GFile    *file)
 {
-        GtkFileChooserNative *chooser;
-
         if (file) {
                 do_import (window, file);
                 return;
         }
 
-        chooser = gtk_file_chooser_native_new (_("Select a recipe file"),
-                                               GTK_WINDOW (window),
-                                               GTK_FILE_CHOOSER_ACTION_OPEN,
-                                               _("Open"),
-                                               _("Cancel"));
-        gtk_native_dialog_set_modal (GTK_NATIVE_DIALOG (chooser), TRUE);
+        if (window->file_chooser)
+                return;
 
-        g_signal_connect (chooser, "response", G_CALLBACK (file_chooser_response), window);
+        window->file_chooser = (GObject *)gtk_file_chooser_native_new (_("Select a recipe file"),
+                                                                       GTK_WINDOW (window),
+                                                                       GTK_FILE_CHOOSER_ACTION_OPEN,
+                                                                       _("Open"),
+                                                                       _("Cancel"));
+        gtk_native_dialog_set_modal (GTK_NATIVE_DIALOG (window->file_chooser), TRUE);
 
-        gtk_native_dialog_show (GTK_NATIVE_DIALOG (chooser));
+        g_signal_connect (window->file_chooser, "response", G_CALLBACK (file_chooser_response), window);
+
+        gtk_native_dialog_show (GTK_NATIVE_DIALOG (window->file_chooser));
 }
 
 void
