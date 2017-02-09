@@ -26,6 +26,7 @@
 
 #include "gr-cooking-view.h"
 #include "gr-recipe.h"
+#include "gr-recipe-formatter.h"
 #include "gr-images.h"
 #include "gr-utils.h"
 #include "gr-timer.h"
@@ -259,7 +260,7 @@ gr_cooking_view_class_init (GrCookingViewClass *klass)
 static void
 setup_steps (GrCookingView *view)
 {
-        g_auto(GStrv) steps = NULL;
+        g_autoptr(GPtrArray) steps = NULL;
         int i;
 
         if (!view->instructions || !view->images)
@@ -267,58 +268,18 @@ setup_steps (GrCookingView *view)
 
         view->step = -1;
 
-        steps = g_strsplit (view->instructions, "\n\n", -1);
+        steps = gr_recipe_parse_instructions (view->instructions);
 
         g_ptr_array_set_size (view->steps, 0);
-        for (i = 0; steps[i]; i++) {
-                const char *p, *q;
-                int image = -1;
-                guint64 timer = 0;
-                g_autofree char *step = NULL;
+        for (i = 0; i < steps->len; i++) {
+                GrRecipeStep *step;
                 g_autofree char *title = NULL;
 
-                p = strstr (steps[i], "[image:");
-                if (p) {
-                        g_autofree char *prefix = NULL;
+                step = g_ptr_array_index (steps, i);
+                title = g_strdup_printf (_("Step %d/%d"), i + 1, steps->len);
 
-                        image = atoi (p + strlen ("[image:"));
-
-                        prefix = g_strndup (steps[i], p - steps[i]);
-                        q = strstr (p, "]");
-                        step = g_strconcat (prefix, q + 1, NULL);
-                }
-
-                p = strstr (steps[i], "[timer:");
-                if (p) {
-                        g_autofree char *s = NULL;
-                        g_auto(GStrv) strv = NULL;
-                        g_autofree char *prefix = NULL;
-
-                        q = strstr (p, "]");
-                        s = strndup (p + strlen ("[timer:"), q - (p + strlen ("[timer:")) - 1);
-                        strv = g_strsplit (s, ":", -1);
-                        if (g_strv_length (strv) == 2) {
-                                timer = G_TIME_SPAN_MINUTE * atoi (strv[0]) +
-                                        G_TIME_SPAN_SECOND * atoi (strv[1]);
-                        }
-                        else if (g_strv_length (strv) == 3) {
-                                timer = G_TIME_SPAN_HOUR * atoi (strv[0]) +
-                                        G_TIME_SPAN_MINUTE * atoi (strv[1]) +
-                                        G_TIME_SPAN_SECOND * atoi (strv[2]);
-                        }
-                        else {
-                                g_message ("Could not parse timer field %s; ignoring", s);
-                        }
-
-                        prefix = g_strndup (steps[i], p - steps[i]);
-                        q = strstr (p, "]");
-                        step = g_strconcat (prefix, q + 1, NULL);
-                }
-                if (step == NULL)
-                        step = g_strdup (steps[i]);
-
-                title = g_strdup_printf (_("Step %d/%d"), i + 1, g_strv_length (steps));
-                g_ptr_array_add (view->steps, step_data_new (title, step, timer, image, view));
+                g_ptr_array_add (view->steps,
+                                 step_data_new (title, step->text, step->timer, step->image, view));
         }
 }
 
