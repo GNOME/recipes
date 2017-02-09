@@ -258,7 +258,7 @@ update_shopping_time (gpointer data)
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         now = g_date_time_new_now_utc ();
-        change = gr_recipe_store_last_favorite_change (store);
+        change = gr_recipe_store_last_shopping_change (store);
         if (change) {
                 g_autofree char *text = NULL;
                 g_autofree char *tmp = NULL;
