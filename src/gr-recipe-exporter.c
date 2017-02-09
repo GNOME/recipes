@@ -57,6 +57,7 @@ struct _GrRecipeExporter
         gboolean contribute;
 
         GtkWidget *dialog_heading;
+        GtkWidget *friend_button;
         GtkWidget *contribute_button;
 };
 
@@ -565,6 +566,33 @@ update_export_button (GrRecipeExporter *exporter)
 }
 
 static void
+update_contribute_button (GrRecipeExporter *exporter)
+{
+        GList *l;
+        gboolean readonly;
+
+        readonly = FALSE;
+        for (l = exporter->recipes; l; l = l->next) {
+                if (gr_recipe_is_readonly (GR_RECIPE (l->data))) {
+                        readonly = TRUE;
+                        break;
+                }
+        }
+
+        if (readonly) {
+                gtk_widget_set_sensitive (exporter->contribute_button, FALSE);
+                gtk_widget_set_tooltip_text (exporter->contribute_button, _("Some of the selected recipes are included\n"
+                                                                            "with GNOME recipes. You should only contribute\n"
+                                                                            "your own recipes."));
+                gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (exporter->friend_button), TRUE);
+        }
+        else {
+                gtk_widget_set_sensitive (exporter->contribute_button, TRUE);
+                gtk_widget_set_tooltip_text (exporter->contribute_button, "");
+        }
+}
+
+static void
 row_activated (GtkListBox *list,
                GtkListBoxRow *row,
                GrRecipeExporter *exporter)
@@ -587,6 +615,7 @@ row_activated (GtkListBox *list,
 
         update_heading (exporter);
         update_export_button (exporter);
+        update_contribute_button (exporter);
 }
 
 static void
@@ -669,8 +698,12 @@ show_export_dialog (GrRecipeExporter *exporter)
         populate_recipe_list (exporter, list);
 
         exporter->dialog_heading = GTK_WIDGET (gtk_builder_get_object (builder, "heading"));
+        exporter->friend_button = GTK_WIDGET (gtk_builder_get_object (builder, "friend_button"));
         exporter->contribute_button = GTK_WIDGET (gtk_builder_get_object (builder, "contribute_button"));
+
         update_heading (exporter);
+        update_export_button (exporter);
+        update_contribute_button (exporter);
 
         g_signal_connect (dialog, "response", G_CALLBACK (export_dialog_response), exporter);
         gtk_widget_show (dialog);
