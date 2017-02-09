@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=GNOME Recipes
 Comment=GNOME cooks unite!
-Exec=recipes
+Exec=recipes %f
 # Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 Icon=org.gnome.Recipes
 Terminal=false
@@ -9,3 +9,4 @@ Type=Application
 StartupNotify=true
 Categories=Development;GTK;
 DBusActivatable=true
+MimeType=application/vnd.gnome.recipes.export;
