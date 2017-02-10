@@ -30,6 +30,8 @@ endif
 
 recipes_SOURCES = \
 	main.c 			\
+	gr-about-dialog.h	\
+	gr-about-dialog.c	\
 	gr-app.h 		\
 	gr-app.c 		\
 	gr-category-tile.h 	\

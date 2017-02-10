@@ -38,6 +38,7 @@
 #include "gr-image-page.h"
 #include "gr-query-editor.h"
 #include "gr-recipe-importer.h"
+#include "gr-about-dialog.h"
 
 
 struct _GrWindow
@@ -75,6 +76,7 @@ struct _GrWindow
         GrRecipeImporter *importer;
 
         GtkWidget *chef_dialog;
+        GtkWidget *about_dialog;
 
         GList *dialogs;
 
@@ -934,4 +936,24 @@ gr_window_present_dialog (GrWindow  *window,
                           G_CALLBACK (dialog_unmapped_cb), window);
 
         gtk_window_present (dialog);
+}
+
+static void
+about_response (GtkWidget *dialog,
+                int        response,
+                GrWindow  *window)
+{
+        gtk_widget_destroy (dialog);
+        window->about_dialog = NULL;
+}
+
+void
+gr_window_show_about_dialog (GrWindow *window)
+{
+        if (window->about_dialog)
+                return;
+
+        window->about_dialog = (GtkWidget *)gr_about_dialog_new ();
+        g_signal_connect (window->about_dialog, "response", G_CALLBACK (about_response), window);
+        gr_window_present_dialog (window, GTK_WINDOW (window->about_dialog));
 }
