@@ -93,7 +93,11 @@ dist_images_DATA = \
 	images/wholesale-crackers.jpg 	\
 	images/pan_pizza1.png		\
 	images/pan_pizza2.png		\
-	images/pan_pizza3.png
+	images/pan_pizza3.png		\
+	images/tagliatelle1.jpg		\
+	images/tagliatelle2.jpg		\
+	images/tagliatelle3.jpg		\
+	images/tagliatelle4.jpg
 
 dist_pkgdata_DATA = \
 	chefs.db	\
