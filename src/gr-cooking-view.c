@@ -102,10 +102,18 @@ struct _GrCookingView
 
         GPtrArray *steps;
         int step;
+
+        gboolean wide;
 };
 
 
 G_DEFINE_TYPE (GrCookingView, gr_cooking_view, GTK_TYPE_BOX)
+
+enum {
+        PROP_0,
+        PROP_WIDE,
+        N_PROPS
+};
 
 GrCookingView *
 gr_cooking_view_new (void)
@@ -237,12 +245,70 @@ set_step (GrCookingView *view,
 }
 
 static void
+gr_cooking_view_get_property (GObject    *object,
+                              guint       prop_id,
+                              GValue     *value,
+                              GParamSpec *pspec)
+{
+        GrCookingView *self = GR_COOKING_VIEW (object);
+
+        switch (prop_id) {
+        case PROP_WIDE:
+                g_value_set_boolean (value, self->wide);
+                break;
+
+        default:
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        }
+}
+
+static void
+set_wide (GrCookingView *view,
+          gboolean       wide)
+{
+        if (view->wide == wide)
+                return;
+
+        view->wide = wide;
+
+        gtk_label_set_max_width_chars (GTK_LABEL (view->cooking_label), wide ? 40 : 20);
+
+        g_object_notify (G_OBJECT (view), "wide");
+}
+
+static void
+gr_cooking_view_set_property (GObject      *object,
+                              guint         prop_id,
+                              const GValue *value,
+                              GParamSpec   *pspec)
+{
+        GrCookingView *self = GR_COOKING_VIEW (object);
+
+        switch (prop_id) {
+        case PROP_WIDE:
+                set_wide (self, g_value_get_boolean (value));
+                break;
+
+        default:
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        }
+}
+
+static void
 gr_cooking_view_class_init (GrCookingViewClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
         GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+        GParamSpec *pspec;
 
         object_class->finalize = gr_cooking_view_finalize;
+        object_class->set_property = gr_cooking_view_set_property;
+        object_class->get_property = gr_cooking_view_get_property;
+
+        pspec = g_param_spec_boolean ("wide", NULL, NULL,
+                                      FALSE,
+                                      G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_WIDE, pspec);
 
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-cooking-view.ui");
 
