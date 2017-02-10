@@ -78,8 +78,9 @@
             <child>
               <object class="GtkListBox" id="ingredients_list">
                 <property name="visible">1</property>
-                <property name="selection-mode">none</property>
-                <property name="margin-bottom">20</property>
+                <property name="selection-mode">single</property>
+                <property name="margin-bottom">10</property>
+                <signal name="selected-rows-changed" handler="selected_rows_changed"/>
                 <style>
                   <class name="frame"/>
                 </style>
@@ -93,6 +94,24 @@
                     <property name="label" translatable="yes">No shopping necessary!</property>
                   </object>
                 </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkMenuButton" id="add_button">
+                <property name="visible">1</property>
+                <property name="halign">start</property>
+                <property name="popover">add_popover</property>
+                <property name="direction">up</property>
+                <property name="margin-bottom">20</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">1</property>
+                    <property name="icon-name">list-add-symbolic</property>
+                  </object>
+                </child>
+                <style>
+                  <class name="image-button"/>
+                </style>
               </object>
             </child>
           </object>
@@ -142,4 +161,38 @@
       </object>
     </child>
   </template>
+  <object class="GtkPopover" id="add_popover">
+    <child>
+      <object class="GtkScrolledWindow">
+        <property name="visible">1</property>
+        <property name="margin">10</property>
+        <property name="hscrollbar-policy">never</property>
+        <property name="vscrollbar-policy">never</property>
+        <property name="shadow-type">in</property>
+        <child>
+          <object class="GtkListBox" id="removed_list">
+            <property name="visible">1</property>
+            <property name="selection-mode">none</property>
+            <signal name="row-activated" handler="removed_row_activated"/>
+            <child type="placeholder">
+              <object class="GtkListBoxRow">
+                <property name="visible">1</property>
+                <property name="activatable">0</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="margin-start">20</property>
+                    <property name="margin-end">20</property>
+                    <property name="margin-top">10</property>
+                    <property name="margin-bottom">10</property>
+                    <property name="label" translatable="yes">Nothing to add</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
 </interface>

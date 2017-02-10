@@ -40,16 +40,39 @@ struct _GrRecipeSmallTile
         GtkWidget *author;
         GtkWidget *image;
         GtkWidget *box;
-        GtkWidget *check;
+        GtkWidget *serves_label;
+        GtkWidget *popover;
+        GtkWidget *serves_spin;
+        GtkWidget *remove_button;
+
+        int serves;
 };
 
 G_DEFINE_TYPE (GrRecipeSmallTile, gr_recipe_small_tile, GTK_TYPE_BUTTON)
 
 enum {
         PROP_0,
-        PROP_ACTIVE,
+        PROP_SERVES,
         N_PROPS
 };
+
+static void
+set_serves (GrRecipeSmallTile *tile,
+            int                serves)
+{
+        g_autofree char *tmp = NULL;
+
+        if (tile->serves == serves)
+                return;
+
+        tile->serves = serves;
+
+        tmp = g_strdup_printf ("%d", serves);
+        gtk_label_set_label (GTK_LABEL (tile->serves_label), tmp);
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (tile->serves_spin), serves);
+
+        g_object_notify (G_OBJECT (tile), "serves");
+}
 
 static void
 recipe_small_tile_set_recipe (GrRecipeSmallTile *tile,
@@ -86,21 +109,33 @@ recipe_small_tile_set_recipe (GrRecipeSmallTile *tile,
                 tmp = g_strdup_printf (_("by %s"), chef ? gr_chef_get_name (chef) : _("Anonymous"));
                 gtk_label_set_label (GTK_LABEL (tile->author), tmp);
         }
+
+        set_serves (tile, gr_recipe_get_serves (recipe));
 }
 
 static void
 tile_clicked (GrRecipeSmallTile *tile)
 {
-        gboolean active;
-
-        active = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (tile->check));
-        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (tile->check), !active);
+        gtk_popover_popup (GTK_POPOVER (tile->popover));
 }
 
 static void
-check_active_notify (GrRecipeSmallTile *tile)
+serves_value_changed (GrRecipeSmallTile *tile)
 {
-        g_object_notify (G_OBJECT (tile), "active");
+        int serves;
+
+        serves = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (tile->serves_spin));
+        set_serves (tile, serves);
+}
+
+static void
+remove_recipe (GrRecipeSmallTile *tile)
+{
+        GrRecipeStore *store;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+        gr_recipe_store_remove_from_shopping (store, tile->recipe);
 }
 
 static void
@@ -118,6 +153,7 @@ gr_recipe_small_tile_init (GrRecipeSmallTile *tile)
 {
         gtk_widget_set_has_window (GTK_WIDGET (tile), FALSE);
         gtk_widget_init_template (GTK_WIDGET (tile));
+        set_serves (tile, 1);
 }
 
 static void
@@ -129,8 +165,8 @@ recipe_small_tile_get_property (GObject    *object,
         GrRecipeSmallTile *self = GR_RECIPE_SMALL_TILE (object);
 
         switch (prop_id) {
-        case PROP_ACTIVE:
-                g_value_set_boolean (value, gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (self->check)));;
+        case PROP_SERVES:
+                g_value_set_int (value, self->serves);
                 break;
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -146,8 +182,8 @@ recipe_small_tile_set_property (GObject      *object,
         GrRecipeSmallTile *self = GR_RECIPE_SMALL_TILE (object);
 
         switch (prop_id) {
-        case PROP_ACTIVE:
-                gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (self->check), g_value_get_boolean (value));
+        case PROP_SERVES:
+                set_serves (self, g_value_get_int (value));
                 break;
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -165,10 +201,10 @@ gr_recipe_small_tile_class_init (GrRecipeSmallTileClass *klass)
         object_class->get_property = recipe_small_tile_get_property;
         object_class->set_property = recipe_small_tile_set_property;
 
-        pspec = g_param_spec_boolean ("active", NULL, NULL,
-                                      FALSE,
-                                      G_PARAM_READWRITE);
-        g_object_class_install_property (object_class, PROP_ACTIVE, pspec);
+        pspec = g_param_spec_int ("serves", NULL, NULL,
+                                  0, G_MAXINT, 1,
+                                  G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_SERVES, pspec);
 
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-recipe-small-tile.ui");
 
@@ -176,10 +212,14 @@ gr_recipe_small_tile_class_init (GrRecipeSmallTileClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, author);
         gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, image);
         gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, box);
-        gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, check);
+        gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, serves_label);
+        gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, popover);
+        gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, serves_spin);
+        gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, remove_button);
 
         gtk_widget_class_bind_template_callback (widget_class, tile_clicked);
-        gtk_widget_class_bind_template_callback (widget_class, check_active_notify);
+        gtk_widget_class_bind_template_callback (widget_class, serves_value_changed);
+        gtk_widget_class_bind_template_callback (widget_class, remove_recipe);
 }
 
 GtkWidget *

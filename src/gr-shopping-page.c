@@ -42,6 +42,8 @@ struct _GrShoppingPage
         GtkWidget *recipe_list;
         GtkWidget *ingredients_count_label;
         GtkWidget *ingredients_list;
+        GtkWidget *removed_list;
+        GtkWidget *add_button;
 
         int ingredient_count;
         int recipe_count;
@@ -53,6 +55,8 @@ struct _GrShoppingPage
         GrShoppingListPrinter *printer;
 
         char *title;
+
+        GtkWidget *active_row;
 };
 
 G_DEFINE_TYPE (GrShoppingPage, gr_shopping_page, GTK_TYPE_BOX)
@@ -83,20 +87,12 @@ shopping_page_finalize (GObject *object)
 static void
 recount_ingredients (GrShoppingPage *page)
 {
-        GList *children, *l;
+        GList *children;
         int count;
         g_autofree char *tmp = NULL;
 
         children = gtk_container_get_children (GTK_CONTAINER (page->ingredients_list));
-
-        count = 0;
-        for (l = children; l; l = l->next) {
-                GtkWidget *row = l->data;
-                GtkWidget *check = GTK_WIDGET (g_object_get_data (G_OBJECT (row), "check"));
-
-                if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check)))
-                        count++;
-        }
+        count = g_list_length (children);
         g_list_free (children);
 
         tmp = g_strdup_printf (ngettext ("%d ingredient marked for purchase",
@@ -108,21 +104,12 @@ recount_ingredients (GrShoppingPage *page)
 static void
 recount_recipes (GrShoppingPage *page)
 {
-        GList *children, *l;
+        GList *children;
         int count;
         g_autofree char *tmp = NULL;
 
         children = gtk_container_get_children (GTK_CONTAINER (page->recipe_list));
-
-        count = 0;
-        for (l = children; l; l = l->next) {
-                GtkWidget *tile = gtk_bin_get_child (GTK_BIN (l->data));
-                gboolean active;
-
-                g_object_get (tile, "active", &active, NULL);
-                if (active)
-                        count++;
-        }
+        count = g_list_length (children);
         g_list_free (children);
 
         g_free (page->title);
@@ -137,15 +124,6 @@ recount_recipes (GrShoppingPage *page)
         gtk_label_set_label (GTK_LABEL (page->recipe_count_label), tmp);
 }
 
-static void
-ing_row_activated (GtkListBox *list,
-                   GtkListBoxRow *row,
-                   GrShoppingPage *page)
-{
-        GtkToggleButton *check = GTK_TOGGLE_BUTTON (g_object_get_data (G_OBJECT (row), "check"));
-        gtk_toggle_button_set_active (check, !gtk_toggle_button_get_active (check));
-}
-
 typedef struct {
         GrNumber amount;
         char *unit;
@@ -154,6 +132,7 @@ typedef struct {
 typedef struct {
         char *ingredient;
         GArray *units;
+        gboolean removed;
 } Ingredient;
 
 static void
@@ -185,6 +164,12 @@ ingredient_free (gpointer data)
         g_free (ing->ingredient);
         g_array_free (ing->units, TRUE);
         g_free (ing);
+}
+
+static void
+ingredient_clear (Ingredient *ing)
+{
+        g_array_set_size (ing->units, 0);
 }
 
 static void
@@ -234,25 +219,17 @@ ingredient_format_unit (Ingredient *ing)
 }
 
 static void
-add_ingredient_row (GrShoppingPage *page,
-                    const char *unit,
-                    const char *ing)
+add_removed_row (GrShoppingPage *page,
+                 const char *unit,
+                 const char *ing)
 {
         GtkWidget *box;
-        GtkWidget *button;
         GtkWidget *unit_label;
         GtkWidget *ing_label;
         GtkWidget *row;
 
         box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
         gtk_widget_show (box);
-
-        button = gtk_check_button_new ();
-        gtk_widget_show (button);
-        g_object_set (button, "margin", 10, NULL);
-        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), TRUE);
-        gtk_container_add (GTK_CONTAINER (box), button);
-        g_signal_connect_swapped (button, "toggled", G_CALLBACK (recount_ingredients), page);
 
         unit_label = gtk_label_new (unit);
         gtk_widget_show (unit_label);
@@ -268,11 +245,157 @@ add_ingredient_row (GrShoppingPage *page,
         g_object_set (ing_label, "margin", 10, NULL);
         gtk_container_add (GTK_CONTAINER (box), ing_label);
 
-        gtk_container_add (GTK_CONTAINER (page->ingredients_list), box);
+        gtk_container_add (GTK_CONTAINER (page->removed_list), box);
         row = gtk_widget_get_parent (box);
-        g_object_set_data (G_OBJECT (row), "check", button);
         g_object_set_data (G_OBJECT (row), "unit", unit_label);
         g_object_set_data (G_OBJECT (row), "ing", ing_label);
+}
+
+static void
+remove_ingredient (GtkButton *button, GrShoppingPage *page)
+{
+        GtkWidget *row;
+        GtkWidget *label;
+        const char *name;
+        const char *unit;
+        Ingredient *ing;
+
+        row = gtk_widget_get_ancestor (GTK_WIDGET (button), GTK_TYPE_LIST_BOX_ROW);
+
+        label = GTK_WIDGET (g_object_get_data (G_OBJECT (row), "ing"));
+        name = gtk_label_get_label (GTK_LABEL (label));
+        label = GTK_WIDGET (g_object_get_data (G_OBJECT (row), "unit"));
+        unit = gtk_label_get_label (GTK_LABEL (label));
+
+        ing = (Ingredient *)g_hash_table_lookup (page->ingredients, name);
+        ing->removed = TRUE;
+
+        add_removed_row (page, unit, name);
+
+        gtk_widget_destroy (row);
+
+        recount_ingredients (page);
+}
+
+static void
+add_ingredient_row (GrShoppingPage *page,
+                    const char *unit,
+                    const char *ing)
+{
+        GtkWidget *box;
+        GtkWidget *unit_label;
+        GtkWidget *ing_label;
+        GtkWidget *row;
+        GtkWidget *stack;
+        GtkWidget *button;
+        GtkWidget *image;
+
+        box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+        gtk_widget_show (box);
+
+        unit_label = gtk_label_new (unit);
+        gtk_widget_show (unit_label);
+        gtk_label_set_xalign (GTK_LABEL (unit_label), 0.0);
+        g_object_set (unit_label, "margin", 10, NULL);
+        gtk_style_context_add_class (gtk_widget_get_style_context (unit_label), "dim-label");
+        gtk_container_add (GTK_CONTAINER (box), unit_label);
+        gtk_size_group_add_widget (page->group, unit_label);
+
+        ing_label = gtk_label_new (ing);
+        gtk_widget_show (ing_label);
+        gtk_label_set_xalign (GTK_LABEL (ing_label), 0.0);
+        g_object_set (ing_label, "margin", 10, NULL);
+        gtk_container_add (GTK_CONTAINER (box), ing_label);
+
+        stack = gtk_stack_new ();
+        gtk_widget_set_halign (stack, GTK_ALIGN_END);
+        gtk_stack_set_transition_type (GTK_STACK (stack), GTK_STACK_TRANSITION_TYPE_NONE);
+        gtk_widget_show (stack);
+        image = gtk_image_new ();
+        gtk_widget_show (image);
+        gtk_widget_set_opacity (image, 0);
+        gtk_stack_add_named (GTK_STACK (stack), image, "empty");
+        button = gtk_button_new ();
+        gtk_widget_show (button);
+        g_object_set (button, "margin", 4, NULL);
+        gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
+        g_signal_connect (button, "clicked", G_CALLBACK (remove_ingredient), page);
+        image = gtk_image_new_from_icon_name ("user-trash-symbolic", 1);
+        gtk_widget_show (image);
+        gtk_container_add (GTK_CONTAINER (button), image);
+        gtk_style_context_add_class (gtk_widget_get_style_context (button), "image-button");
+        gtk_style_context_add_class (gtk_widget_get_style_context (button), "circular");
+        gtk_stack_add_named (GTK_STACK (stack), button, "buttons");
+        gtk_box_pack_end (GTK_BOX (box), stack, TRUE, TRUE, 0);
+
+        gtk_container_add (GTK_CONTAINER (page->ingredients_list), box);
+        row = gtk_widget_get_parent (box);
+        g_object_set_data (G_OBJECT (row), "unit", unit_label);
+        g_object_set_data (G_OBJECT (row), "ing", ing_label);
+        g_object_set_data (G_OBJECT (row), "buttons-stack", stack);
+}
+
+static void
+set_active_row (GrShoppingPage *page,
+                GtkWidget      *row)
+{
+        GtkWidget *stack;
+
+        if (page->active_row) {
+                stack = g_object_get_data (G_OBJECT (page->active_row), "buttons-stack");
+                gtk_stack_set_visible_child_name (GTK_STACK (stack), "empty");
+        }
+
+        if (page->active_row == row) {
+                page->active_row = NULL;
+                return;
+        }
+
+        page->active_row = row;
+
+        if (page->active_row) {
+                stack = g_object_get_data (G_OBJECT (page->active_row), "buttons-stack");
+                gtk_stack_set_visible_child_name (GTK_STACK (stack), "buttons");
+        }
+}
+
+static void
+selected_rows_changed (GtkListBox     *list,
+                       GrShoppingPage *page)
+{
+        GtkListBoxRow *row;
+
+        row = gtk_list_box_get_selected_row (list);
+        set_active_row (page, GTK_WIDGET (row));
+}
+
+static void
+removed_row_activated (GtkListBox     *list,
+                       GtkListBoxRow  *row,
+                       GrShoppingPage *page)
+{
+        GtkWidget *popover;
+        GtkWidget *label;
+        const char *name;
+        const char *unit;
+        Ingredient *ing;
+
+        popover = gtk_widget_get_ancestor (GTK_WIDGET (row), GTK_TYPE_POPOVER);
+        gtk_popover_popdown (GTK_POPOVER (popover));
+
+        label = GTK_WIDGET (g_object_get_data (G_OBJECT (row), "ing"));
+        name = gtk_label_get_label (GTK_LABEL (label));
+        label = GTK_WIDGET (g_object_get_data (G_OBJECT (row), "unit"));
+        unit = gtk_label_get_label (GTK_LABEL (label));
+
+        ing = (Ingredient *)g_hash_table_lookup (page->ingredients, name);
+        ing->removed = FALSE;
+
+        add_ingredient_row (page, unit, name);
+
+        gtk_widget_destroy (GTK_WIDGET (row));
+
+        recount_ingredients (page);
 }
 
 static void
@@ -294,7 +417,8 @@ add_ingredient (GrShoppingPage *page,
 
 static void
 collect_ingredients_from_recipe (GrShoppingPage *page,
-                                 GrRecipe       *recipe)
+                                 GrRecipe       *recipe,
+                                 int             serves)
 {
         g_autoptr(GrIngredientsList) il = NULL;
         g_autofree char **seg = NULL;
@@ -307,8 +431,11 @@ collect_ingredients_from_recipe (GrShoppingPage *page,
                 ing = gr_ingredients_list_get_ingredients (il, seg[i]);
                 for (j = 0; ing[j]; j++) {
                         const char *unit;
-                        GrNumber *amount;
+                        GrNumber *amount, *num;
                         amount = gr_ingredients_list_get_amount (il, seg[i], ing[j]);
+                        num = gr_number_new_fraction (serves, gr_recipe_get_serves (recipe));
+                        gr_number_multiply (num, amount, amount);
+                        g_free (num);
                         unit = gr_ingredients_list_get_unit (il, seg[i], ing[j]);
                         add_ingredient (page, amount, unit, ing[j]);
                 }
@@ -322,30 +449,39 @@ collect_ingredients (GrShoppingPage *page)
         GHashTableIter iter;
         Ingredient *ing;
 
-        g_hash_table_remove_all (page->ingredients);
+        g_hash_table_iter_init (&iter, page->ingredients);
+        while (g_hash_table_iter_next (&iter, NULL, (gpointer *)&ing)) {
+                ingredient_clear (ing);
+        }
 
         children = gtk_container_get_children (GTK_CONTAINER (page->recipe_list));
 
         for (l = children; l; l = l->next) {
                 GtkWidget *tile = gtk_bin_get_child (GTK_BIN (l->data));
-                gboolean active;
+                GrRecipe *recipe;
+                int serves;
 
-                g_object_get (tile, "active", &active, NULL);
-                if (active) {
-                        GrRecipe *recipe;
-
-                        recipe = gr_recipe_small_tile_get_recipe (GR_RECIPE_SMALL_TILE (tile));
-                        collect_ingredients_from_recipe (page, recipe);
-                }
+                recipe = gr_recipe_small_tile_get_recipe (GR_RECIPE_SMALL_TILE (tile));
+                g_object_get (tile, "serves", &serves, NULL);
+                collect_ingredients_from_recipe (page, recipe, serves);
         }
         g_list_free (children);
+
+        g_hash_table_iter_init (&iter, page->ingredients);
+        while (g_hash_table_iter_next (&iter, NULL, (gpointer *)&ing)) {
+                if (ing->units->len == 0)
+                        g_hash_table_iter_remove (&iter);
+        }
 
         container_remove_all (GTK_CONTAINER (page->ingredients_list));
         g_hash_table_iter_init (&iter, page->ingredients);
         while (g_hash_table_iter_next (&iter, NULL, (gpointer *)&ing)) {
                 g_autofree char *unit = NULL;
                 unit = ingredient_format_unit (ing);
-                add_ingredient_row (page, unit, ing->ingredient);
+                if (ing->removed)
+                        add_removed_row (page, unit, ing->ingredient);
+                else
+                        add_ingredient_row (page, unit, ing->ingredient);
         }
 }
 
@@ -376,8 +512,7 @@ search_hits_added (GrRecipeSearch *search,
                 GrRecipe *recipe = l->data;
                 GtkWidget *tile;
                 tile = gr_recipe_small_tile_new (recipe);
-                g_object_set (tile, "active", TRUE, NULL);
-                g_signal_connect_swapped (tile, "notify::active", G_CALLBACK (recipes_changed), page);
+                g_signal_connect_swapped (tile, "notify::serves", G_CALLBACK (recipes_changed), page);
                 gtk_container_add (GTK_CONTAINER (page->recipe_list), tile);
                 page->recipe_count++;
         }
@@ -434,6 +569,7 @@ clear_list (GrShoppingPage *page)
         g_list_free (children);
 
         container_remove_all (GTK_CONTAINER (page->ingredients_list));
+        container_remove_all (GTK_CONTAINER (page->removed_list));
         container_remove_all (GTK_CONTAINER (page->recipe_list));
 
         for (l = recipes; l; l = l->next) {
@@ -442,12 +578,14 @@ clear_list (GrShoppingPage *page)
         }
         g_list_free_full (recipes, g_object_unref);
 
+        g_hash_table_remove_all (page->ingredients);
+
         window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
         gr_window_go_back (GR_WINDOW (window));
 }
 
 static GList *
-get_active_recipes (GrShoppingPage *page)
+get_recipes (GrShoppingPage *page)
 {
         GList *children, *l, *recipes;
 
@@ -455,15 +593,10 @@ get_active_recipes (GrShoppingPage *page)
         children = gtk_container_get_children (GTK_CONTAINER (page->recipe_list));
         for (l = children; l; l = l->next) {
                 GtkWidget *tile = gtk_bin_get_child (GTK_BIN (l->data));
-                gboolean active;
+                GrRecipe *recipe;
 
-                g_object_get (tile, "active", &active, NULL);
-                if (active) {
-                        GrRecipe *recipe;
-
-                        recipe = gr_recipe_small_tile_get_recipe (GR_RECIPE_SMALL_TILE (tile));
-                        recipes = g_list_append (recipes, g_object_ref (recipe));
-                }
+                recipe = gr_recipe_small_tile_get_recipe (GR_RECIPE_SMALL_TILE (tile));
+                recipes = g_list_append (recipes, g_object_ref (recipe));
         }
         g_list_free (children);
 
@@ -471,7 +604,7 @@ get_active_recipes (GrShoppingPage *page)
 }
 
 static GList *
-get_active_ingredients (GrShoppingPage *page)
+get_ingredients (GrShoppingPage *page)
 {
         GList *children, *l, *ingredients;
 
@@ -479,18 +612,14 @@ get_active_ingredients (GrShoppingPage *page)
         children = gtk_container_get_children (GTK_CONTAINER (page->ingredients_list));
         for (l = children; l; l = l->next) {
                 GtkWidget *row = l->data;
-                GtkWidget *check = GTK_WIDGET (g_object_get_data (G_OBJECT (row), "check"));
+                GtkWidget *unit = GTK_WIDGET (g_object_get_data (G_OBJECT (row), "unit"));
+                GtkWidget *ing = GTK_WIDGET (g_object_get_data (G_OBJECT (row), "ing"));
+                ShoppingListItem *item;
 
-                if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check))) {
-                        GtkWidget *unit = GTK_WIDGET (g_object_get_data (G_OBJECT (row), "unit"));
-                        GtkWidget *ing = GTK_WIDGET (g_object_get_data (G_OBJECT (row), "ing"));
-                        ShoppingListItem *item;
-
-                        item = g_new (ShoppingListItem, 1);
-                        item->amount = g_strdup (gtk_label_get_label (GTK_LABEL (unit)));
-                        item->name = g_strdup (gtk_label_get_label (GTK_LABEL (ing)));
-                        ingredients = g_list_append (ingredients, item);
-                }
+                item = g_new (ShoppingListItem, 1);
+                item->amount = g_strdup (gtk_label_get_label (GTK_LABEL (unit)));
+                item->name = g_strdup (gtk_label_get_label (GTK_LABEL (ing)));
+                ingredients = g_list_append (ingredients, item);
         }
         g_list_free (children);
 
@@ -519,8 +648,8 @@ print_list (GrShoppingPage *page)
                 page->printer = gr_shopping_list_printer_new (GTK_WINDOW (window));
         }
 
-        recipes = get_active_recipes (page);
-        items = get_active_ingredients (page);
+        recipes = get_recipes (page);
+        items = get_ingredients (page);
 
         gr_shopping_list_printer_print (page->printer, recipes, items);
 
@@ -546,8 +675,8 @@ gr_shopping_page_init (GrShoppingPage *page)
 
         gtk_list_box_set_header_func (GTK_LIST_BOX (page->ingredients_list),
                                       all_headers, page, NULL);
-
-        g_signal_connect (page->ingredients_list, "row-activated", G_CALLBACK (ing_row_activated), page);
+        gtk_list_box_set_header_func (GTK_LIST_BOX (page->removed_list),
+                                      all_headers, page, NULL);
 }
 
 static void
@@ -609,9 +738,12 @@ gr_shopping_page_class_init (GrShoppingPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrShoppingPage, recipe_list);
         gtk_widget_class_bind_template_child (widget_class, GrShoppingPage, ingredients_count_label);
         gtk_widget_class_bind_template_child (widget_class, GrShoppingPage, ingredients_list);
+        gtk_widget_class_bind_template_child (widget_class, GrShoppingPage, removed_list);
 
         gtk_widget_class_bind_template_callback (widget_class, clear_list);
         gtk_widget_class_bind_template_callback (widget_class, print_list);
+        gtk_widget_class_bind_template_callback (widget_class, selected_rows_changed);
+        gtk_widget_class_bind_template_callback (widget_class, removed_row_activated);
 }
 
 GtkWidget *

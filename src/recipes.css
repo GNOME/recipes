@@ -377,3 +377,11 @@ button.osd {
         box-shadow: none;
         background: #444;
 }
+
+label.serves-overlay {
+        background-color: @theme_selected_bg_color;
+        color: @theme_selected_fg_color;
+        padding: 5px;
+        min-width: 20px;
+        min-height: 20px;
+}
