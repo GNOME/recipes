@@ -46,6 +46,7 @@
 #include "gr-unit.h"
 #include "gr-chef-dialog.h"
 #include "gr-cooking-view.h"
+#include "gr-window.h"
 
 #ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
@@ -1149,12 +1150,11 @@ edit_chef (GrEditPage *page)
         author = page->author;
         chef = gr_recipe_store_get_chef (store, author ? author : "");
 
-        dialog = gr_chef_dialog_new (GTK_WINDOW (win), chef);
-        gr_chef_dialog_can_create (dialog, TRUE);
+        dialog = gr_chef_dialog_new (chef, TRUE);
         g_signal_connect (dialog, "done", G_CALLBACK (chef_done), page);
 
         gtk_window_set_title (GTK_WINDOW (dialog), _("Recipe Author"));
-        gtk_window_present (GTK_WINDOW (dialog));
+        gr_window_present_dialog (GR_WINDOW (win), GTK_WINDOW (dialog));
 
         return TRUE;
 }

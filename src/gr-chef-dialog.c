@@ -326,21 +326,6 @@ gr_chef_dialog_class_init (GrChefDialogClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, field_changed);
 }
 
-GrChefDialog *
-gr_chef_dialog_new (GtkWindow *win,
-                    GrChef    *chef)
-{
-        GrChefDialog *dialog;
-
-        dialog = g_object_new (GR_TYPE_CHEF_DIALOG,
-                               "transient-for", win,
-                               NULL);
-
-        gr_chef_dialog_set_chef (dialog, chef);
-
-        return dialog;
-}
-
 static void
 add_chef_row (GrChefDialog *dialog,
               GrChef       *chef)
@@ -401,7 +386,7 @@ populate_chef_list (GrChefDialog *dialog)
         add_chef_row (dialog, NULL);
 }
 
-void
+static void
 gr_chef_dialog_can_create (GrChefDialog *dialog,
                            gboolean      create)
 {
@@ -417,6 +402,20 @@ gr_chef_dialog_can_create (GrChefDialog *dialog,
                 else
                         gtk_widget_set_sensitive (dialog->save_button, TRUE);
         }
+}
+
+GrChefDialog *
+gr_chef_dialog_new (GrChef   *chef,
+                    gboolean  create)
+{
+        GrChefDialog *dialog;
+
+        dialog = g_object_new (GR_TYPE_CHEF_DIALOG, NULL);
+
+        gr_chef_dialog_set_chef (dialog, chef);
+        gr_chef_dialog_can_create (dialog, create);
+
+        return dialog;
 }
 
 GrChef *
