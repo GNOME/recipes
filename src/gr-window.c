@@ -76,6 +76,8 @@ struct _GrWindow
 
         GtkWidget *chef_dialog;
 
+        GList *dialogs;
+
         GQueue *back_entry_stack;
         gboolean is_fullscreen;
 };
@@ -408,6 +410,8 @@ gr_window_finalize (GObject *object)
                 self->shopping_timeout_id = 0;
         }
 
+        g_list_free (self->dialogs);
+
         G_OBJECT_CLASS (gr_window_parent_class)->finalize (object);
 }
 
@@ -693,11 +697,11 @@ gr_window_show_my_chef_information (GrWindow *window)
         else
                 chef = gr_chef_new ();
 
-        window->chef_dialog = (GtkWidget *)gr_chef_dialog_new (GTK_WINDOW (window), chef);
-        gr_chef_dialog_can_create (GR_CHEF_DIALOG (window->chef_dialog), FALSE);
+        window->chef_dialog = (GtkWidget *)gr_chef_dialog_new (chef, FALSE);
         gtk_window_set_title (GTK_WINDOW (window->chef_dialog), _("My Chef Information"));
         g_signal_connect (window->chef_dialog, "done", G_CALLBACK (chef_done), window);
-        gtk_window_present (GTK_WINDOW (window->chef_dialog));
+
+        gr_window_present_dialog (window, GTK_WINDOW (window->chef_dialog));
 }
 
 void
@@ -902,4 +906,32 @@ gr_window_show_image (GrWindow *window,
                 gr_window_set_fullscreen (window, FALSE);
                 gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "details");
         }
+}
+
+static void
+dialog_unmapped_cb (GtkWidget *dialog,
+                    GrWindow  *window)
+{
+        window->dialogs = g_list_remove (window->dialogs, dialog);
+}
+
+void
+gr_window_present_dialog (GrWindow  *window,
+                          GtkWindow *dialog)
+{
+        GtkWindow *parent;
+
+        if (window->dialogs)
+                parent = window->dialogs->data;
+        else
+                parent = GTK_WINDOW (window);
+
+        gtk_window_set_transient_for (dialog, parent);
+        gtk_window_set_modal (dialog, TRUE);
+
+        window->dialogs = g_list_prepend (window->dialogs, dialog);
+        g_signal_connect (dialog, "unmap",
+                          G_CALLBACK (dialog_unmapped_cb), window);
+
+        gtk_window_present (dialog);
 }

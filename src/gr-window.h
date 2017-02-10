@@ -32,6 +32,9 @@ G_DECLARE_FINAL_TYPE (GrWindow, gr_window, GR, WINDOW, GtkApplicationWindow)
 
 GrWindow       *gr_window_new                        (GrApp      *app);
 
+void            gr_window_present_dialog             (GrWindow   *window,
+                                                      GtkWindow  *dialog);
+
 void            gr_window_show_recipe                (GrWindow   *window,
                                                       GrRecipe   *recipe);
 void            gr_window_edit_recipe                (GrWindow   *window,
