@@ -250,7 +250,9 @@ the right mouse button.</property>
             <property name="can-focus">1</property>
             <signal name="motion-notify-event" handler="motion_notify"/>
             <child>
-              <object class="GrCookingView" id="cooking_view"/>
+              <object class="GrCookingView" id="cooking_view">
+                <property name="wide">1</property>
+              </object>
             </child>
           </object>
         </child>
