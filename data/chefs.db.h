@@ -8,6 +8,7 @@ N_("Ray is a Desktop Software Engineer at Red Hat and vegetarian who occasionall
 N_("My name is Fredrik Fyksen. I am from Norway, but live in Denmark. I like food, computers and music. You can read more about me at <a href=\"https://www.fyksen.me/\">fyksen.me</a>.")
 N_("Matthias is a manager in the Desktop team at Red Hat. He likes to cook as much as he likes to code.")
 N_("Matthew is a vegan and a Computer Science student who loves FOSS.")
+N_("Elvin lives in Istanbul.")
 
 
 #endif
