@@ -140,8 +140,10 @@
         </child>
         <child>
           <object class="GtkButton">
+            <property name="visible">1</property>
             <property name="use-underline">1</property>
-            <property name="label" translatable="yes">E_xport</property>
+            <property name="label" translatable="yes">_Share</property>
+            <signal name="clicked" handler="share_list" swapped="yes"/>
           </object>
           <packing>
             <property name="pack-type">end</property>
