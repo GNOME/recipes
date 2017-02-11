@@ -57,8 +57,8 @@ enum {
 };
 
 static void
-set_serves (GrRecipeSmallTile *tile,
-            int                serves)
+recipe_small_tile_set_serves (GrRecipeSmallTile *tile,
+                              int                serves)
 {
         g_autofree char *tmp = NULL;
 
@@ -109,8 +109,6 @@ recipe_small_tile_set_recipe (GrRecipeSmallTile *tile,
                 tmp = g_strdup_printf (_("by %s"), chef ? gr_chef_get_name (chef) : _("Anonymous"));
                 gtk_label_set_label (GTK_LABEL (tile->author), tmp);
         }
-
-        set_serves (tile, gr_recipe_get_serves (recipe));
 }
 
 static void
@@ -125,7 +123,7 @@ serves_value_changed (GrRecipeSmallTile *tile)
         int serves;
 
         serves = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (tile->serves_spin));
-        set_serves (tile, serves);
+        recipe_small_tile_set_serves (tile, serves);
 }
 
 static void
@@ -153,7 +151,7 @@ gr_recipe_small_tile_init (GrRecipeSmallTile *tile)
 {
         gtk_widget_set_has_window (GTK_WIDGET (tile), FALSE);
         gtk_widget_init_template (GTK_WIDGET (tile));
-        set_serves (tile, 1);
+        recipe_small_tile_set_serves (tile, 1);
 }
 
 static void
@@ -183,7 +181,7 @@ recipe_small_tile_set_property (GObject      *object,
 
         switch (prop_id) {
         case PROP_SERVES:
-                set_serves (self, g_value_get_int (value));
+                recipe_small_tile_set_serves (self, g_value_get_int (value));
                 break;
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -223,12 +221,14 @@ gr_recipe_small_tile_class_init (GrRecipeSmallTileClass *klass)
 }
 
 GtkWidget *
-gr_recipe_small_tile_new (GrRecipe *recipe)
+gr_recipe_small_tile_new (GrRecipe *recipe,
+                          int       serves)
 {
         GrRecipeSmallTile *tile;
 
         tile = g_object_new (GR_TYPE_RECIPE_SMALL_TILE, NULL);
-        recipe_small_tile_set_recipe (GR_RECIPE_SMALL_TILE (tile), recipe);
+        recipe_small_tile_set_recipe (tile, recipe);
+        recipe_small_tile_set_serves (tile, serves);
 
         return GTK_WIDGET (tile);
 }
@@ -237,4 +237,10 @@ GrRecipe *
 gr_recipe_small_tile_get_recipe (GrRecipeSmallTile *tile)
 {
         return tile->recipe;
+}
+
+int
+gr_recipe_small_tile_get_serves (GrRecipeSmallTile *tile)
+{
+        return tile->serves;
 }

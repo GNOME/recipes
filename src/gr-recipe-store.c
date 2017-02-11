@@ -45,6 +45,7 @@ struct _GrRecipeStore
         char **picks;
         char **favorites;
         char **shopping;
+        int   *shopping_serves;
         char **featured_chefs;
         char *user;
 
@@ -654,6 +655,7 @@ load_shopping (GrRecipeStore *self,
         g_autoptr(GKeyFile) keyfile = NULL;
         g_autoptr(GError) error = NULL;
         g_autofree char *tmp = NULL;
+        gsize len1, len2;
 
         keyfile = g_key_file_new ();
 
@@ -669,12 +671,23 @@ load_shopping (GrRecipeStore *self,
 
         g_message ("Load shopping db: %s", path);
 
-        self->shopping = g_key_file_get_string_list (keyfile, "Content", "Recipes", NULL, &error);
+        self->shopping = g_key_file_get_string_list (keyfile, "Content", "Recipes", &len1, &error);
         if (error) {
                 if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
                         g_warning ("Failed to load shopping: %s", error->message);
                 }
                 g_clear_error (&error);
+        }
+        self->shopping_serves = g_key_file_get_integer_list (keyfile, "Content", "Serves", &len2, &error);
+        if (error) {
+                if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
+                        g_warning ("Failed to load shopping: %s", error->message);
+                }
+                g_clear_error (&error);
+        }
+
+        if (len1 != len2) {
+                g_warning ("Failed to load shopping: Recipes and Serves lists have different lengths");
         }
 
         tmp = g_key_file_get_string (keyfile, "Content", "LastChange", &error);
@@ -703,6 +716,8 @@ save_shopping (GrRecipeStore *self)
         g_message ("Save shopping db: %s", path);
 
         g_key_file_set_string_list (keyfile, "Content", "Recipes", (const char * const *)self->shopping, g_strv_length (self->shopping));
+
+        g_key_file_set_integer_list (keyfile, "Content", "Serves", self->shopping_serves, g_strv_length (self->shopping));
 
         if (self->shopping_change) {
                 g_autofree char *tmp = NULL;
@@ -1483,28 +1498,41 @@ gr_recipe_store_last_favorite_change (GrRecipeStore *self)
 
 void
 gr_recipe_store_add_to_shopping (GrRecipeStore *self,
-                                 GrRecipe      *recipe)
+                                 GrRecipe      *recipe,
+                                 int            serves)
 {
         char **strv;
+        int *intv;
         int length;
         int i;
         const char *id;
 
         id = gr_recipe_get_id (recipe);
 
-        if (g_strv_contains ((const char * const*)self->shopping, id))
-                return;
+        for (i = 0; self->shopping[i]; i++) {
+                if (strcmp (self->shopping[i], id) == 0) {
+                        self->shopping_serves[i] = serves;
+                        goto save;
+                }
+        }
 
         length = g_strv_length (self->shopping);
         strv = g_new (char *, length + 2);
         strv[0] = g_strdup (id);
-        for (i = 0; i < length; i++)
+        intv = g_new (int, length + 1);
+        intv[0] = serves;
+        for (i = 0; i < length; i++) {
                 strv[i + 1] = self->shopping[i];
+                intv[i + 1] = self->shopping_serves[i];
+        }
         strv[length + 1] = NULL;
 
         g_free (self->shopping);
+        g_free (self->shopping_serves);
         self->shopping = strv;
+        self->shopping_serves = intv;
 
+save:
         if (self->shopping_change)
                 g_date_time_unref (self->shopping_change);
         self->shopping_change = g_date_time_new_now_utc ();
@@ -1528,6 +1556,7 @@ gr_recipe_store_remove_from_shopping (GrRecipeStore *self,
                         g_free (self->shopping[i]);
                         for (j = i; self->shopping[j]; j++) {
                                 self->shopping[j] = self->shopping[j + 1];
+                                self->shopping_serves[j] = self->shopping_serves[j + 1];
                         }
                         break;
                 }
@@ -1554,6 +1583,24 @@ gr_recipe_store_is_in_shopping (GrRecipeStore *self,
         id = gr_recipe_get_id (recipe);
 
         return g_strv_contains ((const char *const*)self->shopping, id);
+}
+
+int
+gr_recipe_store_get_shopping_serves (GrRecipeStore *self,
+                                     GrRecipe      *recipe)
+{
+        const char *id;
+        int i;
+
+        id = gr_recipe_get_id (recipe);
+
+        for (i = 0; self->shopping[i]; i++) {
+                if (strcmp (self->shopping[i], id) == 0) {
+                        return self->shopping_serves[i];
+                }
+        }
+
+        return 0;
 }
 
 GDateTime *

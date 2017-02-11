@@ -465,7 +465,7 @@ collect_ingredients (GrShoppingPage *page)
                 int serves;
 
                 recipe = gr_recipe_small_tile_get_recipe (GR_RECIPE_SMALL_TILE (tile));
-                g_object_get (tile, "serves", &serves, NULL);
+                serves = gr_recipe_small_tile_get_serves (GR_RECIPE_SMALL_TILE (tile));
                 collect_ingredients_from_recipe (page, recipe, serves);
         }
         g_list_free (children);
@@ -497,6 +497,24 @@ recipes_changed (GrShoppingPage *page)
 }
 
 static void
+serves_changed (GObject *object, GParamSpec *pspec, GrShoppingPage *page)
+{
+        GrRecipeSmallTile *tile = GR_RECIPE_SMALL_TILE (object);
+        GrRecipeStore *store;
+        GrRecipe *recipe;
+        int serves;
+
+        recipe = gr_recipe_small_tile_get_recipe (tile);
+        serves = gr_recipe_small_tile_get_serves (tile);
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+        gr_recipe_store_add_to_shopping (store, recipe, serves);
+
+        recipes_changed (page);
+}
+
+static void
 search_started (GrRecipeSearch *search,
                 GrShoppingPage     *page)
 {
@@ -509,13 +527,19 @@ search_hits_added (GrRecipeSearch *search,
                    GList          *hits,
                    GrShoppingPage *page)
 {
+        GrRecipeStore *store;
         GList *l;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         for (l = hits; l; l = l->next) {
                 GrRecipe *recipe = l->data;
                 GtkWidget *tile;
-                tile = gr_recipe_small_tile_new (recipe);
-                g_signal_connect_swapped (tile, "notify::serves", G_CALLBACK (recipes_changed), page);
+                int serves;
+
+                serves = gr_recipe_store_get_shopping_serves (store, recipe);
+                tile = gr_recipe_small_tile_new (recipe, serves);
+                g_signal_connect (tile, "notify::serves", G_CALLBACK (serves_changed), page);
                 gtk_container_add (GTK_CONTAINER (page->recipe_list), tile);
                 page->recipe_count++;
         }

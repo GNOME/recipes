@@ -183,9 +183,11 @@ shop_it (GrDetailsPage *page)
 {
         GrRecipeStore *store;
         GtkWidget *window;
+        int serves;
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
-        gr_recipe_store_add_to_shopping (store, page->recipe);
+        serves = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (page->serves_spin));
+        gr_recipe_store_add_to_shopping (store, page->recipe, serves);
 
         window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
         gr_window_offer_shopping (GR_WINDOW (window));
