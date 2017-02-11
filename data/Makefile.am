@@ -45,6 +45,7 @@ dist_ingredients_DATA = \
 	ingredients/Carrot.png
 
 dist_images_DATA = \
+	images/afranke.jpg		\
 	images/alex.png			\
 	images/allan_day.jpg		\
 	images/bagel.jpg		\
@@ -62,6 +63,8 @@ dist_images_DATA = \
 	images/mwleeds.jpg		\
 	images/Sonic.jpg		\
 	images/tigert.jpg		\
+	images/cake_aux_lardons.jpg	\
+	images/cake_aux_lardons2.jpg	\
 	images/donauwellen0.jpg		\
 	images/donauwellen1.jpg		\
 	images/donauwellen2.jpg		\
@@ -73,6 +76,9 @@ dist_images_DATA = \
 	images/donauwellen8.jpg		\
 	images/donauwellen_final.jpg	\
 	images/gingered_carrot_soup.jpg	\
+	images/grumbeerekiechle_1.JPG	\
+	images/grumbeerekiechle_2.JPG	\
+	images/grumbeerekiechle_3.JPG	\
 	images/meatballs.jpg		\
 	images/non_knead_buns.png	\
 	images/non_knead_buns1.jpg	\
