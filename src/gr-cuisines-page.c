@@ -227,11 +227,18 @@ gr_cuisines_page_new (void)
         return GTK_WIDGET (page);
 }
 
-static void
-cuisines_page_reload (GrCuisinesPage *page)
+void
+gr_cuisines_page_refresh (GrCuisinesPage *page)
 {
         populate_cuisines (page);
         populate_seasonal (page);
+}
+
+static void
+cuisines_page_reload (GrCuisinesPage *page)
+{
+        if (gtk_widget_is_drawable (GTK_WIDGET (page)))
+                gr_cuisines_page_refresh (page);
 }
 
 static void
@@ -241,7 +248,6 @@ connect_store_signals (GrCuisinesPage *page)
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        /* FIXME: inefficient */
         g_signal_connect_swapped (store, "recipe-added", G_CALLBACK (cuisines_page_reload), page);
         g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (cuisines_page_reload), page);
         g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (cuisines_page_reload), page);

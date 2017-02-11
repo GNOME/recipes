@@ -443,16 +443,22 @@ gr_list_page_repopulate (GrListPage *page)
 }
 
 static void
+repopulate (GrListPage *page)
+{
+        if (gtk_widget_is_drawable (GTK_WIDGET (page)))
+                gr_list_page_repopulate (page);
+}
+
+static void
 connect_store_signals (GrListPage *page)
 {
         GrRecipeStore *store;
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        /* FIXME: inefficient */
-        g_signal_connect_swapped (store, "recipe-added", G_CALLBACK (gr_list_page_repopulate), page);
-        g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (gr_list_page_repopulate), page);
-        g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (gr_list_page_repopulate), page);
+        g_signal_connect_swapped (store, "recipe-added", G_CALLBACK (repopulate), page);
+        g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (repopulate), page);
+        g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (repopulate), page);
 }
 
 void

@@ -268,10 +268,12 @@ visible_page_changed (GrWindow *window)
         }
 
         if (strcmp (visible, "recipes") == 0) {
+                gr_recipes_page_refresh (GR_RECIPES_PAGE (window->recipes_page));
                 gr_recipes_page_unexpand (GR_RECIPES_PAGE (window->recipes_page));
         }
 
         if (strcmp (visible, "cuisines") == 0) {
+                gr_cuisines_page_refresh (GR_CUISINES_PAGE (window->cuisines_page));
                 gr_cuisines_page_unexpand (GR_CUISINES_PAGE (window->cuisines_page));
         }
 }

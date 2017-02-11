@@ -299,7 +299,8 @@ gr_cuisine_page_set_cuisine (GrCuisinePage *self,
 static void
 cuisine_page_reload (GrCuisinePage *page)
 {
-        gr_cuisine_page_set_cuisine (page, page->cuisine);
+        if (gtk_widget_is_drawable (GTK_WIDGET (page)))
+                gr_cuisine_page_set_cuisine (page, page->cuisine);
 }
 
 static void
@@ -309,7 +310,6 @@ connect_store_signals (GrCuisinePage *page)
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        /* FIXME: inefficient */
         g_signal_connect_swapped (store, "recipe-added", G_CALLBACK (cuisine_page_reload), page);
         g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (cuisine_page_reload), page);
         g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (cuisine_page_reload), page);
