@@ -192,7 +192,8 @@ gr_search_page_update_search (GrSearchPage  *page,
 static void
 search_page_reload (GrSearchPage *page)
 {
-        gr_search_page_update_search (page, gr_recipe_search_get_terms (page->search));
+        if (gtk_widget_is_drawable (GTK_WIDGET (page)))
+                gr_search_page_update_search (page, gr_recipe_search_get_terms (page->search));
 }
 
 static void
@@ -202,7 +203,6 @@ connect_store_signals (GrSearchPage *page)
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        /* FIXME: inefficient */
         g_signal_connect_swapped (store, "recipe-added", G_CALLBACK (search_page_reload), page);
         g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (search_page_reload), page);
         g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (search_page_reload), page);

@@ -359,13 +359,21 @@ populate_recipes_from_store (GrRecipesPage *self)
         update_shopping_time (self);
 }
 
-static void
-repopulate_recipes (GrRecipesPage *self)
+void
+gr_recipes_page_refresh (GrRecipesPage *self)
 {
         populate_recipes_from_store (self);
         populate_diets_from_store (self);
         gr_recipe_tile_recreate_css ();
         gr_chef_tile_recreate_css ();
+}
+
+
+static void
+repopulate_recipes (GrRecipesPage *self)
+{
+        if (gtk_widget_is_drawable (GTK_WIDGET (self)))
+                gr_recipes_page_refresh (self);
 }
 
 static void
@@ -421,7 +429,6 @@ connect_store_signals (GrRecipesPage *page)
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        /* FIXME: inefficient */
         g_signal_connect_swapped (store, "recipe-added", G_CALLBACK (repopulate_recipes), page);
         g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (repopulate_recipes), page);
         g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (repopulate_recipes), page);

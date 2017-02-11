@@ -30,6 +30,7 @@ G_DECLARE_FINAL_TYPE (GrRecipesPage, gr_recipes_page, GR, RECIPES_PAGE, GtkBox)
 
 GtkWidget      *gr_recipes_page_new      (void);
 
+void            gr_recipes_page_refresh  (GrRecipesPage *page);
 void            gr_recipes_page_unexpand (GrRecipesPage *page);
 
 G_END_DECLS

@@ -718,6 +718,9 @@ details_page_reload (GrDetailsPage *page,
         if (recipe == NULL || page->recipe == NULL)
                 return;
 
+        if (!gtk_widget_is_drawable (GTK_WIDGET (page)))
+                return;
+
         name = gr_recipe_get_id (page->recipe);
         new_name = gr_recipe_get_id (recipe);
         if (g_strcmp0 (name, new_name) == 0)

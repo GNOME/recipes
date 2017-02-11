@@ -849,6 +849,9 @@ recipe_added (GrShoppingPage *page,
         GList *children, *l;
         int serves;
 
+        if (!gtk_widget_is_drawable (GTK_WIDGET (page)))
+                return;
+
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         serves = gr_recipe_store_get_shopping_serves (store, recipe);
@@ -883,6 +886,9 @@ recipe_changed (GrShoppingPage *page,
 {
         GrRecipeStore *store;
 
+        if (!gtk_widget_is_drawable (GTK_WIDGET (page)))
+                return;
+
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         if (gr_recipe_store_is_in_shopping (store, recipe))
@@ -898,7 +904,6 @@ connect_store_signals (GrShoppingPage *page)
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        /* FIXME: inefficient */
         g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (recipe_removed), page);
         g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (recipe_changed), page);
 }
