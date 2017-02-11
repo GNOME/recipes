@@ -489,14 +489,6 @@ collect_ingredients (GrShoppingPage *page)
 }
 
 static void
-recipes_changed (GrShoppingPage *page)
-{
-        collect_ingredients (page);
-        recount_ingredients (page);
-        recount_recipes (page);
-}
-
-static void
 serves_changed (GObject *object, GParamSpec *pspec, GrShoppingPage *page)
 {
         GrRecipeSmallTile *tile = GR_RECIPE_SMALL_TILE (object);
@@ -510,8 +502,6 @@ serves_changed (GObject *object, GParamSpec *pspec, GrShoppingPage *page)
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         gr_recipe_store_add_to_shopping (store, recipe, serves);
-
-        recipes_changed (page);
 }
 
 static void
@@ -829,6 +819,79 @@ gr_shopping_page_populate (GrShoppingPage *self)
 }
 
 static void
+recipe_removed (GrShoppingPage *page,
+                GrRecipe       *recipe)
+{
+        GList *children, *l;
+
+        children = gtk_container_get_children (GTK_CONTAINER (page->recipe_list));
+        for (l = children; l; l = l->next) {
+                GtkWidget *tile = gtk_bin_get_child (GTK_BIN (l->data));
+
+                if (recipe == gr_recipe_small_tile_get_recipe (GR_RECIPE_SMALL_TILE (tile))) {
+                        gtk_widget_destroy (GTK_WIDGET (l->data));
+
+                        collect_ingredients (page);
+                        recount_ingredients (page);
+                        recount_recipes (page);
+
+                        break;
+                }
+        }
+        g_list_free (children);
+}
+
+static void
+recipe_added (GrShoppingPage *page,
+              GrRecipe       *recipe)
+{
+        GrRecipeStore *store;
+        GList *children, *l;
+        int serves;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+        serves = gr_recipe_store_get_shopping_serves (store, recipe);
+
+        children = gtk_container_get_children (GTK_CONTAINER (page->recipe_list));
+        for (l = children; l; l = l->next) {
+                GtkWidget *tile = gtk_bin_get_child (GTK_BIN (l->data));
+
+                if (recipe == gr_recipe_small_tile_get_recipe (GR_RECIPE_SMALL_TILE (tile))) {
+                        gr_recipe_small_tile_set_serves (GR_RECIPE_SMALL_TILE (tile), serves);
+                        break;
+                }
+        }
+        g_list_free (children);
+
+        if (l == NULL) {
+                GtkWidget *tile;
+
+                tile = gr_recipe_small_tile_new (recipe, serves);
+                g_signal_connect (tile, "notify::serves", G_CALLBACK (serves_changed), page);
+                gtk_container_add (GTK_CONTAINER (page->recipe_list), tile);
+        }
+
+        collect_ingredients (page);
+        recount_ingredients (page);
+        recount_recipes (page);
+}
+
+static void
+recipe_changed (GrShoppingPage *page,
+                GrRecipe       *recipe)
+{
+        GrRecipeStore *store;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+        if (gr_recipe_store_is_in_shopping (store, recipe))
+                recipe_added (page, recipe);
+        else
+                recipe_removed (page, recipe);
+}
+
+static void
 connect_store_signals (GrShoppingPage *page)
 {
         GrRecipeStore *store;
@@ -836,7 +899,6 @@ connect_store_signals (GrShoppingPage *page)
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         /* FIXME: inefficient */
-        g_signal_connect_swapped (store, "recipe-added", G_CALLBACK (gr_shopping_page_populate), page);
-        g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (gr_shopping_page_populate), page);
-        g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (gr_shopping_page_populate), page);
+        g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (recipe_removed), page);
+        g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (recipe_changed), page);
 }
