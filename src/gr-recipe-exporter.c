@@ -36,6 +36,7 @@
 #include "gr-recipe-store.h"
 #include "gr-app.h"
 #include "gr-utils.h"
+#include "gr-mail.h"
 
 
 struct _GrRecipeExporter
@@ -129,33 +130,30 @@ completed_cb (AutoarCompressor *compressor,
               GrRecipeExporter *exporter)
 {
         g_autofree char *path = NULL;
-        g_autoptr(GDBusConnection) bus = NULL;
         g_autoptr(GError) error = NULL;
-        g_autoptr(GVariant) result = NULL;
-        const char *argv[4];
-        g_autoptr(GString) url = NULL;
         const char *address;
-        g_autofree char *subject = NULL;
+        const char *subject;
         g_autofree char *body = NULL;
+        GList *attachments;
 
         if (exporter->contribute) {
                 address = "recipes-list@gnome.org";
-                subject = g_uri_escape_string (_("Recipe contribution"), NULL, FALSE);
-                body = g_uri_escape_string (_("Please accept my attached recipe contribution."), NULL, FALSE);
+                subject = _("Recipe contribution");
+                body = g_strdup (_("Please accept my attached recipe contribution."));
         }
         else {
-                g_autoptr(GString) s = NULL;
+                GString *s;
                 GList *l;
 
                 address = "";
                 s = g_string_new ("");
 
                 if (exporter->recipes->next == NULL) {
-                        subject = g_uri_escape_string (_("Try this recipe"), NULL, FALSE);
+                        subject = _("Try this recipe");
                         g_string_append (s, _("Hi,\n\nyou should try this recipe."));
                 }
                 else {
-                        subject = g_uri_escape_string (_("Try these recipes"), NULL, FALSE);
+                        subject = _("Try these recipes");
                         g_string_append (s, _("Hi,\n\nyou should try these recipes."));
                 }
                 g_string_append (s, "\n\n");
@@ -169,42 +167,14 @@ completed_cb (AutoarCompressor *compressor,
                         g_string_append (s, formatted);
                 }
 
-                body = g_uri_escape_string (s->str, NULL, FALSE);
+                body = g_string_free (s, FALSE);
         }
 
         path = g_file_get_path (exporter->dest);
 
-        url = g_string_new ("mailto:");
+        attachments = g_list_append (NULL, path);
 
-        g_string_append_printf (url, "\"%s\"", address);
-        g_string_append_printf (url, "?attach=%s", path);
-        g_string_append_printf (url, "&subject=%s", subject);
-        g_string_append_printf (url, "&body=%s", body);
-
-        argv[0] = "/usr/bin/evolution";
-        argv[1] = "--component=mail";
-        argv[2] = url->str;
-        argv[3] = NULL;
-
-        bus = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL);
-
-        result = g_dbus_connection_call_sync (bus,
-                                     "org.freedesktop.Flatpak",
-                                     "/org/freedesktop/Flatpak/Development",
-                                     "org.freedesktop.Flatpak.Development",
-                                     "HostCommand",
-                                     g_variant_new ("(^ay^aay@a{uh}@a{ss}u)",
-                                                    g_get_home_dir (),
-                                                    argv,
-                                                    g_variant_new_array (G_VARIANT_TYPE ("{uh}"), NULL, 0),
-                                                    g_variant_new_array (G_VARIANT_TYPE ("{ss}"), NULL, 0),
-                                                    0),
-                                     G_VARIANT_TYPE ("(u)"),
-                                     0,
-                                     G_MAXINT,
-                                     NULL,
-                                     &error);
-        if (result == NULL) {
+        if (!gr_send_mail (address, subject, body, attachments, &error)) {
                 GtkWidget *error_dialog;
 
                 g_message ("Sharing the exported recipe failed: %s", error->message);
@@ -223,6 +193,8 @@ completed_cb (AutoarCompressor *compressor,
                 g_signal_connect (error_dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
                 gtk_widget_show (error_dialog);
         }
+
+        g_list_free (attachments);
 
         cleanup_export (exporter);
 }
