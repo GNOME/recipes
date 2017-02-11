@@ -103,7 +103,11 @@ dist_images_DATA = \
 	images/tagliatelle1.jpg		\
 	images/tagliatelle2.jpg		\
 	images/tagliatelle3.jpg		\
-	images/tagliatelle4.jpg
+	images/tagliatelle4.jpg		\
+	images/whitefish1.jpg		\
+	images/whitefish2.jpg		\
+	images/whitefish3.jpg		\
+	images/whitefish4.jpg
 
 dist_pkgdata_DATA = \
 	chefs.db	\
