@@ -181,14 +181,16 @@
                     <child>
                       <object class="GtkBox">
                         <property name="visible">1</property>
-                        <property name="spacing">20</property>
-                        <property name="margin">10</property>
+                        <property name="spacing">10</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">1</property>
                             <property name="hexpand">1</property>
                             <property name="halign">start</property>
                             <property name="label" translatable="yes">Ingredients to buy added.</property>
+                            <style>
+                              <class name="notification-label"/>
+                            </style>
                           </object>
                         </child>
                         <child>
@@ -237,13 +239,15 @@
                     <child>
                       <object class="GtkBox">
                         <property name="visible">1</property>
-                        <property name="spacing">20</property>
-                        <property name="margin">10</property>
+                        <property name="spacing">10</property>
                         <child>
                           <object class="GtkLabel" id="undo_label">
                             <property name="visible">1</property>
                             <property name="hexpand">1</property>
                             <property name="halign">start</property>
+                            <style>
+                              <class name="notification-label"/>
+                            </style>
                           </object>
                         </child>
                         <child>
