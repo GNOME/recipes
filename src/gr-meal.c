@@ -41,13 +41,13 @@ static const char *names[] = {
 };
 
 static const char *titles[] = {
-        N_("Main course"),
+        N_("Main Course"),
         N_("Snacks"),
         N_("Breakfast"),
-        N_("Side dishes"),
+        N_("Side Dishes"),
         N_("Desserts"),
-        N_("Cake and baking"),
-        N_("Drinks and cocktails"),
+        N_("Cake and Baking"),
+        N_("Drinks and Cocktails"),
         N_("Pizza"),
         N_("Pasta"),
         N_("Other")

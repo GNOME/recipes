@@ -228,17 +228,17 @@ get_category_title (GrDiets diet)
 {
         switch (diet) {
         case GR_DIET_GLUTEN_FREE:
-                return _("Gluten-free recipes");
+                return _("Gluten-free Recipes");
         case GR_DIET_NUT_FREE:
-                return _("Nut-free recipes");
+                return _("Nut-free Recipes");
         case GR_DIET_VEGAN:
-                return _("Vegan recipes");
+                return _("Vegan Recipes");
         case GR_DIET_VEGETARIAN:
-                return _("Vegetarian recipes");
+                return _("Vegetarian Recipes");
         case GR_DIET_MILK_FREE:
-                return _("Milk-free recipes");
+                return _("Milk-free Recipes");
         default:
-                return  _("Other dietary restrictions");
+                return  _("Other Dietary Restrictions");
         }
 }
 

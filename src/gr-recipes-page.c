@@ -225,7 +225,7 @@ populate_diets_from_store (GrRecipesPage *self)
         container_remove_all (GTK_CONTAINER (self->diet_box));
         container_remove_all (GTK_CONTAINER (self->diet_box2));
 
-        tile = gr_category_tile_new_with_label ("mine", _("My recipes"));
+        tile = gr_category_tile_new_with_label ("mine", _("My Recipes"));
         gtk_widget_show (tile);
         gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
         g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);
