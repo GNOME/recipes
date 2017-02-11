@@ -57,6 +57,7 @@ G_DEFINE_TYPE (GrRecipesPage, gr_recipes_page, GTK_TYPE_BOX)
 
 static void populate_diets_from_store (GrRecipesPage *page);
 static void populate_recipes_from_store (GrRecipesPage *page);
+static void populate_shopping_from_store (GrRecipesPage *page);
 static void populate_chefs_from_store (GrRecipesPage *page);
 static void connect_store_signals (GrRecipesPage *page);
 
@@ -141,6 +142,7 @@ gr_recipes_page_init (GrRecipesPage *page)
 
         populate_diets_from_store (page);
         populate_recipes_from_store (page);
+        populate_shopping_from_store (page);
         populate_chefs_from_store (page);
         gr_recipe_tile_recreate_css ();
         gr_chef_tile_recreate_css ();
@@ -283,11 +285,7 @@ populate_recipes_from_store (GrRecipesPage *self)
         int i;
         int todays;
         int picks;
-        g_autofree char *shop1 = NULL;
-        g_autofree char *shop2 = NULL;
-        int shopping;
         char *tmp;
-        g_autoptr(GDateTime) now = NULL;
 
         container_remove_all (GTK_CONTAINER (self->today_box));
         container_remove_all (GTK_CONTAINER (self->pick_box));
@@ -309,7 +307,6 @@ populate_recipes_from_store (GrRecipesPage *self)
 
         todays = 0;
         picks = 0;
-        shopping = 0;
         for (i = 0; i < length; i++) {
                 g_autoptr(GrRecipe) recipe = NULL;
                 GtkWidget *tile;
@@ -334,6 +331,31 @@ populate_recipes_from_store (GrRecipesPage *self)
                         gtk_grid_attach (GTK_GRID (self->pick_box), tile, picks, 0, 1, 1);
                         picks++;
                 }
+        }
+}
+
+static void
+populate_shopping_from_store (GrRecipesPage *self)
+{
+        GrRecipeStore *store;
+        g_autofree char **keys = NULL;
+        guint length;
+        int shopping;
+        int i;
+        g_autofree char *shop1 = NULL;
+        g_autofree char *shop2 = NULL;
+        char *tmp;
+        g_autoptr(GDateTime) now = NULL;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+        keys = gr_recipe_store_get_recipe_keys (store, &length);
+
+        shopping = 0;
+        for (i = 0; i < length; i++) {
+                g_autoptr(GrRecipe) recipe = NULL;
+
+                recipe = gr_recipe_store_get_recipe (store, keys[i]);
 
                 if (gr_recipe_store_is_in_shopping (store, recipe)) {
                         if (shopping == 0)
@@ -362,10 +384,7 @@ populate_recipes_from_store (GrRecipesPage *self)
 void
 gr_recipes_page_refresh (GrRecipesPage *self)
 {
-        populate_recipes_from_store (self);
-        populate_diets_from_store (self);
-        gr_recipe_tile_recreate_css ();
-        gr_chef_tile_recreate_css ();
+        populate_shopping_from_store (self);
 }
 
 
