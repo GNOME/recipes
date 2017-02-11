@@ -1,5 +1,18 @@
 #if 0
 
+N_("Grumbeerekiechle")
+N_("Traditional potato hash from Alsace. Usually served with lettuce, sometimes with smoked salmon.")
+N_("[image:1]Peel and grate the potatoes. Peel and slice the onions. Mix with the rest of the ingredients in a large bowl.")
+N_("Put a frying pan on the hob at medium heat with a bit of oil.")
+N_("[image:2]Form thin patties in the pan and brown them on both sides.")
+N_("[image:0]Serve hot. Can be kept in a fridge and reheated in a micro-wave oven.")
+N_("Savoury cakes")
+N_("This savoury cakes can be served as appetizers or as main course. There are several variations that you can bake with the same base depending on your mood and tastes. Quite common at French parties.")
+N_("Prepare the batter: melt butter in a large bowl, then mix with the eggs, flour and yeast in a bowl.")
+N_("Add the ingredients matching the variation you chose, preferably sliced or diced to turn them into small bits, and mix again. Try coming up with your own variations!")
+N_("Pour the batter in a loaf tin.")
+N_("[timer:00:40:00]Put in the oven at 180°C for 40 minutes.")
+N_("[image:1]Serve cold, cut in slices or cubes that people will get with a toothpick.")
 N_("Tagliatelle alla Romana")
 N_("Pasta is one of my favourite things in the world, and this is one of my favourity pasta dishes. It's gutsy Italian food at its best.")
 N_("It's important to have good quality chicken livers for this recipe - get free range organic if possible. You can use dried pasta if you're unable to get fresh.")
