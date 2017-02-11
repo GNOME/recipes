@@ -56,9 +56,9 @@ enum {
         N_PROPS
 };
 
-static void
-recipe_small_tile_set_serves (GrRecipeSmallTile *tile,
-                              int                serves)
+void
+gr_recipe_small_tile_set_serves (GrRecipeSmallTile *tile,
+                                 int                serves)
 {
         g_autofree char *tmp = NULL;
 
@@ -123,7 +123,7 @@ serves_value_changed (GrRecipeSmallTile *tile)
         int serves;
 
         serves = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (tile->serves_spin));
-        recipe_small_tile_set_serves (tile, serves);
+        gr_recipe_small_tile_set_serves (tile, serves);
 }
 
 static void
@@ -151,7 +151,7 @@ gr_recipe_small_tile_init (GrRecipeSmallTile *tile)
 {
         gtk_widget_set_has_window (GTK_WIDGET (tile), FALSE);
         gtk_widget_init_template (GTK_WIDGET (tile));
-        recipe_small_tile_set_serves (tile, 1);
+        gr_recipe_small_tile_set_serves (tile, 1);
 }
 
 static void
@@ -181,7 +181,7 @@ recipe_small_tile_set_property (GObject      *object,
 
         switch (prop_id) {
         case PROP_SERVES:
-                recipe_small_tile_set_serves (self, g_value_get_int (value));
+                gr_recipe_small_tile_set_serves (self, g_value_get_int (value));
                 break;
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -228,7 +228,7 @@ gr_recipe_small_tile_new (GrRecipe *recipe,
 
         tile = g_object_new (GR_TYPE_RECIPE_SMALL_TILE, NULL);
         recipe_small_tile_set_recipe (tile, recipe);
-        recipe_small_tile_set_serves (tile, serves);
+        gr_recipe_small_tile_set_serves (tile, serves);
 
         return GTK_WIDGET (tile);
 }

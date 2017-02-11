@@ -34,5 +34,7 @@ GtkWidget      *gr_recipe_small_tile_new        (GrRecipe          *recipe,
                                                  int                serves);
 GrRecipe       *gr_recipe_small_tile_get_recipe (GrRecipeSmallTile *tile);
 int             gr_recipe_small_tile_get_serves (GrRecipeSmallTile *tile);
+void            gr_recipe_small_tile_set_serves (GrRecipeSmallTile *tile,
+                                                 int                serves);
 
 G_END_DECLS
