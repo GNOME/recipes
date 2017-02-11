@@ -1,5 +1,12 @@
 #if 0
 
+N_("White fish for people who dont like fish.")
+N_("It is a fantastic dish for those of us that dont love fish, but know we have to eat it to stay healthy.")
+N_("The key to get this dish good is to have high temperature on the stove when first frying the fish. Then turn it down after the initial fry.")
+N_("Set the stove to high (8/10), then put a good amount of oil in it. Any type of oil will do.")
+N_("Remove bone and skin from the fish (if any), and add salt and pepper. Give the stove some minutes to get really hot. Then put the fish in. 2-3 min on each side.")
+N_("Turn the temperature down to low (3/10). Add two spoons of butter, some thyme, rosemary and garlic. When the butter have melted, use a spoon to poor the melted butter and spice mix over the fish fillet.")
+N_("After about 5 minutes your fish will be done. You can serve it with potatoes, rice, or noodles. Everything works.")
 N_("Grumbeerekiechle")
 N_("Traditional potato hash from Alsace. Usually served with lettuce, sometimes with smoked salmon.")
 N_("[image:1]Peel and grate the potatoes. Peel and slice the onions. Mix with the rest of the ingredients in a large bowl.")
