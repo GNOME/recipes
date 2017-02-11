@@ -97,11 +97,11 @@ spice_get_title (const char *spice)
         if (strcmp (spice, "mild") == 0)
                 return _("Mild");
         else if (strcmp (spice, "spicy") == 0)
-                return _("Somewhat spicy");
+                return _("Somewhat Spicy");
         else if (strcmp (spice, "hot") == 0)
                 return _("Hot");
         else if (strcmp (spice, "extreme") == 0)
-                return _("Very spicy");
+                return _("Very Spicy");
         else
                 return "ERROR";
 }

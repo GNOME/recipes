@@ -1699,7 +1699,7 @@ gr_edit_page_clear (GrEditPage *page)
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        gtk_label_set_label (GTK_LABEL (page->name_label), _("Name your recipe"));
+        gtk_label_set_label (GTK_LABEL (page->name_label), _("Name Your Recipe"));
         gtk_entry_set_text (GTK_ENTRY (page->name_entry), "");
         set_combo_value (GTK_COMBO_BOX (page->cuisine_combo), "");
         set_combo_value (GTK_COMBO_BOX (page->category_combo), "");

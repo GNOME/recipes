@@ -172,7 +172,7 @@ new_recipe (GrWindow *window)
 
         gr_edit_page_clear (GR_EDIT_PAGE (window->edit_page));
 
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Add a new recipe"));
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Add a New Recipe"));
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
