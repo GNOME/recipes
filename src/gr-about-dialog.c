@@ -628,6 +628,7 @@ gr_about_dialog_new (void)
                 "Link Dupont",
                 "Tuomas Kuosmanen",
                 "Matthew Leeds",
+                "Alexandre Franke",
                 NULL
         };
         g_autoptr(GdkPixbuf) logo = NULL;
