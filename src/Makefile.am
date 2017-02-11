@@ -74,6 +74,8 @@ recipes_SOURCES = \
 	gr-ingredients-list.c	\
 	gr-list-page.h		\
 	gr-list-page.c		\
+	gr-mail.h		\
+	gr-mail.c		\
 	gr-meal.h		\
 	gr-meal.c		\
 	gr-meal-row.h		\
