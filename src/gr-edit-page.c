@@ -21,6 +21,7 @@
 #include "config.h"
 
 #include <stdlib.h>
+#include <math.h>
 
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
@@ -47,14 +48,7 @@
 #include "gr-chef-dialog.h"
 #include "gr-cooking-view.h"
 #include "gr-window.h"
-
-#ifdef GDK_WINDOWING_X11
-#include <gdk/gdkx.h>
-#endif
-
-#ifdef GDK_WINDOWING_WAYLAND
-#include <gdk/gdkwayland.h>
-#endif
+#include "gr-account.h"
 
 
 struct _GrEditPage
@@ -1912,199 +1906,36 @@ gr_edit_page_edit (GrEditPage *page,
 }
 
 static void
-account_response (GDBusConnection *connection,
-                  const char *sender_name,
-                  const char *object_path,
-                  const char *interface_name,
-                  const char *signal_name,
-                  GVariant *parameters,
-                  gpointer user_data)
+got_account_info (const char  *id,
+                  const char  *name,
+                  const char  *image_path,
+                  gpointer     data,
+                  GError      *error)
 {
-        GrEditPage *page = user_data;
-        guint32 response;
-        GVariant *options;
+        GrRecipeStore *store = data;
         g_autoptr(GrChef) chef = NULL;
-        g_autoptr(GError) error = NULL;
+        g_autoptr(GError) local_error = NULL;
 
-        g_variant_get (parameters, "(u@a{sv})", &response, &options);
-
-        if (response == 0) {
-                const char *id;
-                const char *name;
-                const char *uri;
-                GrRecipeStore *store;
-
-                store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
-                chef = gr_recipe_store_get_chef (store, gr_recipe_store_get_user_key (store));
-                if (!chef)
-                        chef = gr_chef_new ();
-
-                g_variant_lookup (options, "id", "&s", &id);
-                g_variant_lookup (options, "name", "&s", &name);
-                g_variant_lookup (options, "image", "&s", &uri);
-
-                g_object_set (chef, "id", id, "fullname", name, NULL);
-
-                if (uri && uri[0]) {
-                        g_autoptr(GFile) source = NULL;
-                        g_autoptr(GFile) dest = NULL;
-                        g_autofree char *orig_dest = NULL;
-                        g_autofree char *destpath = NULL;
-                        int i;
-
-                        source = g_file_new_for_uri (uri);
-                        orig_dest = g_build_filename (g_get_user_data_dir (), "recipes", id, NULL);
-                        destpath = g_strdup (orig_dest);
-                        for (i = 1; i < 10; i++) {
-                                if (!g_file_test (destpath, G_FILE_TEST_EXISTS))
-                                        break;
-                                g_free (destpath);
-                                destpath = g_strdup_printf ("%s%d", orig_dest, i);
-                        }
-                        dest = g_file_new_for_path (destpath);
-                        if (!g_file_copy (source, dest, G_FILE_COPY_NONE, NULL, NULL, NULL, &error))
-                                return;
-                        g_object_set (chef, "image-path", destpath, NULL);
-                }
-
-                if (!gr_recipe_store_update_user (store, chef, &error)) {
-                        g_warning ("Failed to update chef for user: %s", error->message);
-                }
-        }
-
-        if (page->account_response_signal_id != 0) {
-                g_dbus_connection_signal_unsubscribe (connection,
-                                                      page->account_response_signal_id);
-                page->account_response_signal_id = 0;
-        }
-}
-
-typedef void (*GtkWindowHandleExported)  (GtkWindow               *window,
-                                          const char              *handle,
-                                          gpointer                 user_data);
-
-
-#ifdef GDK_WINDOWING_WAYLAND
-typedef struct {
-  GtkWindow *window;
-  GtkWindowHandleExported callback;
-  gpointer user_data;
-} WaylandWindowHandleExportedData;
-
-static void
-wayland_window_handle_exported (GdkWindow  *window,
-                                const char *wayland_handle_str,
-                                gpointer    user_data)
-{
-  WaylandWindowHandleExportedData *data = user_data;
-  char *handle_str;
-
-  handle_str = g_strdup_printf ("wayland:%s", wayland_handle_str);
-  data->callback (data->window, handle_str, data->user_data);
-  g_free (handle_str);
-
-  g_free (data);
-}
-#endif
-
-static gboolean
-gtk_window_export_handle (GtkWindow               *window,
-                          GtkWindowHandleExported  callback,
-                          gpointer                 user_data)
-{
-
-#ifdef GDK_WINDOWING_X11
-  if (GDK_IS_X11_DISPLAY (gtk_widget_get_display (GTK_WIDGET (window))))
-    {
-      GdkWindow *gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
-      char *handle_str;
-      guint32 xid = (guint32) gdk_x11_window_get_xid (gdk_window);
-
-      handle_str = g_strdup_printf ("x11:%x", xid);
-      callback (window, handle_str, user_data);
-
-      return TRUE;
-    }
-#endif
-#ifdef GDK_WINDOWING_WAYLAND
-  if (GDK_IS_WAYLAND_DISPLAY (gtk_widget_get_display (GTK_WIDGET (window))))
-    {
-      GdkWindow *gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
-      WaylandWindowHandleExportedData *data;
-
-      data = g_new0 (WaylandWindowHandleExportedData, 1);
-      data->window = window;
-      data->callback = callback;
-      data->user_data = user_data;
-
-      if (!gdk_wayland_window_export_handle (gdk_window,
-                                             wayland_window_handle_exported,
-                                             data,
-                                             g_free))
-        {
-          g_free (data);
-          return FALSE;
-        }
-      else
-        {
-          return TRUE;
-        }
-    }
-#endif
-
-  g_warning ("Couldn't export handle, unsupported windowing system");
-
-  return FALSE;
-}
-
-static void
-window_handle_exported (GtkWindow *window,
-                        const char *handle_str,
-                        gpointer user_data)
-{
-        GrEditPage *page = user_data;
-        g_autoptr(GError) error = NULL;
-        g_autoptr(GVariant) ret = NULL;
-        const char *handle;
-
-        g_autoptr(GDBusConnection) bus = NULL;
-
-        bus = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL);
-
-        ret = g_dbus_connection_call_sync (bus,
-                                           "org.freedesktop.portal.Desktop",
-                                           "/org/freedesktop/portal/desktop",
-                                           "org.freedesktop.portal.Account",
-                                           "GetUserInformation",
-                                           g_variant_new ("(s)", handle_str),
-                                           G_VARIANT_TYPE ("(o)"),
-                                           G_DBUS_CALL_FLAGS_NONE,
-                                           G_MAXINT,
-                                           NULL,
-                                           &error);
-
-        if (!ret) {
-                g_message ("Could not talk to Account portal: %s", error->message);
+        if (error) {
+                g_message ("Failed to get account information: %s", error->message);
                 return;
         }
 
-        g_variant_get (ret, "(&o)", &handle);
+        chef = gr_chef_new ();
 
-        page->account_response_signal_id =
-                g_dbus_connection_signal_subscribe (bus,
-                                                    "org.freedesktop.portal.Desktop",
-                                                    "org.freedesktop.portal.Request",
-                                                    "Response",
-                                                    handle,
-                                                    NULL,
-                                                    G_DBUS_SIGNAL_FLAGS_NO_MATCH_RULE,
-                                                    account_response,
-                                                    page, NULL);
+        g_object_set (chef,
+                      "id", id,
+                      "fullname", name,
+                      "image-path", image_path,
+                      NULL);
+
+        if (!gr_recipe_store_update_user (store, chef, &local_error))
+                g_warning ("Failed to update chef for user: %s", local_error->message);
 }
 
 static void
 ensure_user_chef (GrRecipeStore *store,
-                  GrEditPage *page)
+                  GrEditPage    *page)
 {
         GtkWidget *window;
         g_autoptr(GrChef) chef = NULL;
@@ -2114,7 +1945,7 @@ ensure_user_chef (GrRecipeStore *store,
                 return;
 
         window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_WINDOW);
-        gtk_window_export_handle (GTK_WINDOW (window), window_handle_exported, page);
+        gr_account_get_information (GTK_WINDOW (window), got_account_info, store, NULL);
 }
 
 static char *
