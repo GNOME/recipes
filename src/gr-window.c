@@ -701,7 +701,8 @@ gr_window_show_my_chef_information (GrWindow *window)
 
         if (id != NULL && id[0] != '\0')
                 chef = gr_recipe_store_get_chef (store, id);
-        else
+
+        if (chef == NULL)
                 chef = gr_chef_new ();
 
         window->chef_dialog = (GtkWidget *)gr_chef_dialog_new (chef, FALSE);
