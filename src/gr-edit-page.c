@@ -1953,60 +1953,10 @@ get_instructions (GtkTextView *text_view)
 {
         GtkTextBuffer *buffer;
         GtkTextIter start, end;
-#if 0
-        GString *s;
-        g_autofree char *last_text = NULL;
-
-        s = g_string_new ("");
-#endif
 
         buffer = gtk_text_view_get_buffer (text_view);
         gtk_text_buffer_get_bounds (buffer, &start, &end);
         return gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
-#if 0
-        gtk_text_buffer_get_start_iter (buffer, &start);
-        end = start;
-        while (gtk_text_iter_forward_to_tag_toggle (&end, NULL)) {
-                g_autofree char *text = NULL;
-                GSList *tags, *l;
-                GtkTextTag *tag;
-
-                text = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
-                g_string_append (s, text);
-                tags = gtk_text_iter_get_tags (&end);
-                tag = NULL;
-                for (l = tags; l; l = l->next) {
-                        if (g_object_get_data (G_OBJECT (l->data), "href")) {
-                                tag = l->data;
-                                break;
-                        }
-                }
-                g_slist_free (tags);
-
-                if (tag) {
-                        g_autofree char *name = NULL;
-                        const char *url;
-
-                        start = end;
-
-                        gtk_text_iter_forward_to_tag_toggle (&end, tag);
-                        name = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
-
-                        url = (const char*)g_object_get_data (G_OBJECT (tag), "href");
-
-                        g_string_append_printf (s, "<a href=\"%s\">", url);
-                        g_string_append (s, name);
-                        g_string_append (s, "</a>");
-                }
-                start = end;
-        }
-
-        gtk_text_buffer_get_end_iter (buffer, &end);
-        last_text = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
-        g_string_append (s, last_text);
-
-        return g_string_free (s, FALSE);
-#endif
 }
 
 gboolean
