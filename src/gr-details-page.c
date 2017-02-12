@@ -527,7 +527,6 @@ process_instructions (const char *instructions)
         t = instructions;
 
         while (*t) {
-                char symb[30];
                 const char *sym = "?";
                 int idx;
                 g_autofree char *title = NULL;
@@ -540,9 +539,7 @@ process_instructions (const char *instructions)
                 }
                 else if (p) {
                         idx = atoi (p + strlen ("[image:"));
-                        memset (symb, 0, 30);
-                        g_unichar_to_utf8 (0x2460 + idx, symb);
-                        sym = symb;
+                        sym = "👁";
                 }
 
                 if (p == NULL) {
