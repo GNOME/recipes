@@ -1,5 +1,17 @@
 #if 0
 
+N_("Spanish Omelet")
+N_("Traditional Spanish Omelet, also known as \"Tortilla de Patata\"")
+N_("[image:0]Put a bit of oil in a pan and cover the surface with sliced onions.")
+N_("[image:3]Meanwhile, peel the potatoes and cut them in small pieces.")
+N_("[image:2]Once the onions start to take colour, put the potatoes into the pan and add some salt.")
+N_("[image:1]Cover the pan and stir the contents from time to time, until potatoes are well cooked.")
+N_("[image:7]Put the eggs in a big bowl and add some salt")
+N_("[image:6]Whip the eggs.")
+N_("[image:5]Put the contents of the pan in the bowl and mix it well.")
+N_("[image:4]Add some oil to the pan and put the whole mix back into the pan.")
+N_("[image:8]Once the lower side is cooked, with the help of a plate, turn the omelet.")
+N_("Repeat the process until it is well cooked.")
 N_("White fish for people who dont like fish.")
 N_("It is a fantastic dish for those of us that dont love fish, but know we have to eat it to stay healthy.")
 N_("The key to get this dish good is to have high temperature on the stove when first frying the fish. Then turn it down after the initial fry.")

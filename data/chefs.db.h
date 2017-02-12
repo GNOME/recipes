@@ -1,5 +1,6 @@
 #if 0
 
+N_("Adrià is originally from Barcelona, Spain.")
 N_("Being from Strasbourg, Alexandre is knowledgeable about both Alsatian and French cuisine, but he's not afraid to experiment in other ones as well.")
 N_("Aviation, making stuff, in Finland.")
 N_("Erusan is an American who has lived all over the country, loves GNOME, and enjoys cooking — primarily American, Asian, and Indian cuisine.")
