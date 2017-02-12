@@ -216,7 +216,7 @@ gr_chef_get_id (GrChef *chef)
 const char *
 gr_chef_get_name (GrChef *chef)
 {
-        if (!chef->name) {
+        if (!chef->name && chef->fullname) {
                 g_auto(GStrv) strv = NULL;
                 strv = g_strsplit (chef->fullname, " ", 0);
                 chef->name = g_strdup (strv[0]);
