@@ -1,0 +1,260 @@
+/* gr-account.c:
+ *
+ * Copyright (C) 2017 Matthias Clasen <mclasen@redhat.com>
+ *
+ * Licensed under the GNU General Public License Version 3
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include "config.h"
+
+#include "gr-account.h"
+
+#include <glib/gi18n.h>
+
+#ifdef GDK_WINDOWING_X11
+#include <gdk/gdkx.h>
+#endif
+
+#ifdef GDK_WINDOWING_WAYLAND
+#include <gdk/gdkwayland.h>
+#endif
+
+
+typedef void (*GtkWindowHandleExported) (GtkWindow  *window,
+                                         const char *handle,
+                                         gpointer    user_data);
+
+#ifdef GDK_WINDOWING_WAYLAND
+typedef struct {
+        GtkWindow *window;
+        GtkWindowHandleExported callback;
+        gpointer user_data;
+} WaylandWindowHandleExportedData;
+
+static void
+wayland_window_handle_exported (GdkWindow  *window,
+                                const char *wayland_handle_str,
+                                gpointer    user_data)
+{
+        WaylandWindowHandleExportedData *data = user_data;
+        char *handle_str;
+
+        handle_str = g_strdup_printf ("wayland:%s", wayland_handle_str);
+        data->callback (data->window, handle_str, data->user_data);
+        g_free (handle_str);
+
+        g_free (data);
+}
+#endif
+
+static gboolean
+gtk_window_export_handle (GtkWindow               *window,
+                          GtkWindowHandleExported  callback,
+                          gpointer                 user_data)
+{
+
+#ifdef GDK_WINDOWING_X11
+        if (GDK_IS_X11_DISPLAY (gtk_widget_get_display (GTK_WIDGET (window)))) {
+                GdkWindow *gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
+                char *handle_str;
+                guint32 xid = (guint32) gdk_x11_window_get_xid (gdk_window);
+
+                handle_str = g_strdup_printf ("x11:%x", xid);
+                callback (window, handle_str, user_data);
+
+                return TRUE;
+        }
+#endif
+#ifdef GDK_WINDOWING_WAYLAND
+        if (GDK_IS_WAYLAND_DISPLAY (gtk_widget_get_display (GTK_WIDGET (window)))) {
+                GdkWindow *gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
+                WaylandWindowHandleExportedData *data;
+
+                data = g_new0 (WaylandWindowHandleExportedData, 1);
+                data->window = window;
+                data->callback = callback;
+                data->user_data = user_data;
+
+                if (!gdk_wayland_window_export_handle (gdk_window,
+                                                       wayland_window_handle_exported,
+                                                       data,
+                                                       g_free)) {
+                        g_free (data);
+                        return FALSE;
+                }
+                else {
+                        return TRUE;
+                }
+        }
+#endif
+
+        g_warning ("Couldn't export handle, unsupported windowing system");
+
+        return FALSE;
+}
+
+typedef struct {
+        AccountInformationCallback callback;
+        gpointer data;
+        GDestroyNotify destroy;
+        GDBusConnection *connection;
+        guint response_id;
+} CallbackData;
+
+static void
+free_callback_data (gpointer data)
+{
+        CallbackData *cbdata = data;
+
+        if (cbdata->destroy)
+                cbdata->destroy (cbdata->data);
+
+        if (cbdata->response_id)
+                g_dbus_connection_signal_unsubscribe (cbdata->connection, cbdata->response_id);
+
+        g_clear_object (&cbdata->connection);
+
+        g_free (cbdata);
+}
+
+static void
+account_response (GDBusConnection *connection,
+                  const char      *sender_name,
+                  const char      *object_path,
+                  const char      *interface_name,
+                  const char      *signal_name,
+                  GVariant        *parameters,
+                  gpointer         user_data)
+{
+        CallbackData *cbdata = user_data;
+        guint32 response;
+        GVariant *options;
+
+        g_variant_get (parameters, "(u@a{sv})", &response, &options);
+
+        if (response == 0) {
+                const char *id;
+                const char *name;
+                const char *uri;
+                g_autofree char *image_path = NULL;
+
+                g_variant_lookup (options, "id", "&s", &id);
+                g_variant_lookup (options, "name", "&s", &name);
+                g_variant_lookup (options, "image", "&s", &uri);
+
+                if (uri && uri[0]) {
+                        g_autoptr(GFile) source = NULL;
+                        g_autoptr(GFile) dest = NULL;
+                        g_autofree char *orig_dest = NULL;
+                        g_autofree char *destpath = NULL;
+                        int i;
+
+                        source = g_file_new_for_uri (uri);
+                        orig_dest = g_build_filename (g_get_user_data_dir (), "recipes", id, NULL);
+                        destpath = g_strdup (orig_dest);
+                        for (i = 1; i < 10; i++) {
+                                if (!g_file_test (destpath, G_FILE_TEST_EXISTS))
+                                        break;
+                                g_free (destpath);
+                                destpath = g_strdup_printf ("%s%d", orig_dest, i);
+                        }
+                        dest = g_file_new_for_path (destpath);
+                        if (g_file_copy (source, dest, G_FILE_COPY_NONE, NULL, NULL, NULL, NULL))
+                                image_path = g_strdup (destpath);
+                }
+
+                cbdata->callback (id, name, image_path, cbdata->data, NULL);
+        }
+        else {
+                g_autoptr(GError) error = NULL;
+
+                g_message ("Got an error from the Account portal");
+                g_set_error (&error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                             _("Got an error from Account portal"));
+
+                cbdata->callback (NULL, NULL, NULL, cbdata->data, &error);
+        }
+
+        free_callback_data (cbdata);
+}
+
+static void
+window_handle_exported (GtkWindow  *window,
+                        const char *handle_str,
+                        gpointer    user_data)
+{
+        CallbackData *cbdata = user_data;
+        g_autoptr(GError) error = NULL;
+        g_autoptr(GVariant) ret = NULL;
+        const char *handle;
+        GVariantBuilder opt_builder;
+
+        g_autoptr(GDBusConnection) bus = NULL;
+
+        cbdata->connection = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL);
+
+        g_variant_builder_init (&opt_builder, G_VARIANT_TYPE ("a{sv}"));
+        g_variant_builder_add (&opt_builder, "{sv}", "reason", g_variant_new_string (_("Allow your personal information to be included with recipes you share with your friends.")));
+
+        ret = g_dbus_connection_call_sync (cbdata->connection,
+                                           "org.freedesktop.portal.Desktop",
+                                           "/org/freedesktop/portal/desktop",
+                                           "org.freedesktop.portal.Account",
+                                           "GetUserInformation",
+                                           g_variant_new ("(sa{sv})", handle_str, &opt_builder),
+                                           G_VARIANT_TYPE ("(o)"),
+                                           G_DBUS_CALL_FLAGS_NONE,
+                                           G_MAXINT,
+                                           NULL,
+                                           &error);
+
+        if (!ret) {
+                g_message ("Could not talk to Account portal: %s", error->message);
+                cbdata->callback (NULL, NULL, NULL, cbdata->data, &error);
+                free_callback_data (cbdata);
+                return;
+        }
+
+        g_variant_get (ret, "(&o)", &handle);
+
+        cbdata->response_id =
+                g_dbus_connection_signal_subscribe (cbdata->connection,
+                                                    "org.freedesktop.portal.Desktop",
+                                                    "org.freedesktop.portal.Request",
+                                                    "Response",
+                                                    handle,
+                                                    NULL,
+                                                    G_DBUS_SIGNAL_FLAGS_NO_MATCH_RULE,
+                                                    account_response,
+                                                    user_data, NULL);
+}
+
+void
+gr_account_get_information (GtkWindow                  *window,
+                            AccountInformationCallback  callback,
+                            gpointer                    data,
+                            GDestroyNotify              destroy)
+{
+        CallbackData *cbdata;
+
+        cbdata = g_new (CallbackData, 1);
+
+        cbdata->callback = callback;
+        cbdata->data = data;
+        cbdata->destroy = destroy;
+
+        gtk_window_export_handle (window, window_handle_exported, cbdata);
+}
