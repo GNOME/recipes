@@ -629,6 +629,7 @@ gr_about_dialog_new (void)
                 "Tuomas Kuosmanen",
                 "Matthew Leeds",
                 "Alexandre Franke",
+                "Adrià Arrufat",
                 NULL
         };
         g_autoptr(GdkPixbuf) logo = NULL;
