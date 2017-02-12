@@ -103,7 +103,6 @@ populate_cuisines (GrCuisinesPage *page)
         int length;
         int i, j;
         GrRecipeStore *store;
-        int pos = 0;
         int tiles;
 
         container_remove_all (GTK_CONTAINER (page->top_box));
@@ -124,6 +123,7 @@ populate_cuisines (GrCuisinesPage *page)
 
         length = g_strv_length (cuisines);
         if (!page->featured && length > 0) {
+                int pos;
                 pos = g_random_int_range (0, length);
                 page->featured = g_strdup (cuisines[pos]);
         }
@@ -135,7 +135,7 @@ populate_cuisines (GrCuisinesPage *page)
 
         tiles = 0;
         for (i = 0; i < length; i++) {
-                if (i == pos)
+                if (strcmp (page->featured, cuisines[i]) == 0)
                         continue;
 
                 tile = gr_cuisine_tile_new (cuisines[i], FALSE);
