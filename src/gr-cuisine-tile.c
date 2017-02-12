@@ -73,8 +73,8 @@ cuisine_tile_set_cuisine (GrCuisineTile *tile,
         gtk_label_set_label (GTK_LABEL (tile->description), description);
         if (big) {
                 gtk_label_set_lines (GTK_LABEL (tile->description), 3);
-                gtk_label_set_width_chars (GTK_LABEL (tile->description), 60);
-                gtk_label_set_max_width_chars (GTK_LABEL (tile->description), 60);
+                gtk_label_set_width_chars (GTK_LABEL (tile->description), 85);
+                gtk_label_set_max_width_chars (GTK_LABEL (tile->description), 85);
         }
 
         context = gtk_widget_get_style_context (GTK_WIDGET (tile));
