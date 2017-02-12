@@ -28,7 +28,7 @@ typedef void (* AccountInformationCallback) (const char  *id,
                                              const char  *name,
                                              const char  *image_path,
                                              gpointer     data,
-                                             GError     **error);
+                                             GError      *error);
 
 void    gr_account_get_information (GtkWindow                  *window,
                                     AccountInformationCallback  callback,

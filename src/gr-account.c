@@ -185,7 +185,7 @@ account_response (GDBusConnection *connection,
                 g_set_error (&error, G_IO_ERROR, G_IO_ERROR_FAILED,
                              _("Got an error from Account portal"));
 
-                cbdata->callback (NULL, NULL, NULL, cbdata->data, &error);
+                cbdata->callback (NULL, NULL, NULL, cbdata->data, error);
         }
 
         free_callback_data (cbdata);
@@ -223,7 +223,7 @@ window_handle_exported (GtkWindow  *window,
 
         if (!ret) {
                 g_message ("Could not talk to Account portal: %s", error->message);
-                cbdata->callback (NULL, NULL, NULL, cbdata->data, &error);
+                cbdata->callback (NULL, NULL, NULL, cbdata->data, error);
                 free_callback_data (cbdata);
                 return;
         }

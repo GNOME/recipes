@@ -701,7 +701,7 @@ got_account_info (const char  *id,
                   const char  *name,
                   const char  *image_path,
                   gpointer     data,
-                  GError     **error)
+                  GError      *error)
 {
         g_autoptr(GrChef) chef = NULL;
         GrWindow *window = data;
