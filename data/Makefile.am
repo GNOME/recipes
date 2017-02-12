@@ -45,6 +45,7 @@ dist_ingredients_DATA = \
 	ingredients/Carrot.png
 
 dist_images_DATA = \
+	images/adria.jpg		\
 	images/afranke.jpg		\
 	images/alex.png			\
 	images/allan_day.jpg		\
@@ -94,6 +95,15 @@ dist_images_DATA = \
 	images/rosemary-potatos1.jpg	\
 	images/rosemary-potatos2.jpg	\
 	images/salad.jpg		\
+	images/spanish_omelet1.jpg	\
+	images/spanish_omelet2.jpg	\
+	images/spanish_omelet3.jpg	\
+	images/spanish_omelet4.jpg	\
+	images/spanish_omelet5.jpg	\
+	images/spanish_omelet6.jpg	\
+	images/spanish_omelet7.jpg	\
+	images/spanish_omelet8.jpg	\
+	images/spanish_omelet9.jpg	\
 	images/spring-rolls.jpg		\
 	images/tofuscramble.jpg		\
 	images/wholesale-crackers.jpg 	\
