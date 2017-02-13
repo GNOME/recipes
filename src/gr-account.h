@@ -22,6 +22,8 @@
 
 #include <gtk/gtk.h>
 
+#include "gr-chef.h"
+
 G_BEGIN_DECLS
 
 typedef void (* AccountInformationCallback) (const char  *id,
@@ -34,5 +36,12 @@ void    gr_account_get_information (GtkWindow                  *window,
                                     AccountInformationCallback  callback,
                                     gpointer                    data,
                                     GDestroyNotify              destroy);
+
+typedef void (*UserChefCallback) (GrChef   *chef,
+                                  gpointer  data);
+
+void    gr_ensure_user_chef (GtkWindow        *window,
+                             UserChefCallback  callback,
+                             gpointer          data);
 
 G_END_DECLS

@@ -21,6 +21,8 @@
 #include "config.h"
 
 #include "gr-account.h"
+#include "gr-recipe-store.h"
+#include "gr-app.h"
 
 #include <glib/gi18n.h>
 
@@ -258,3 +260,68 @@ gr_account_get_information (GtkWindow                  *window,
 
         gtk_window_export_handle (window, window_handle_exported, cbdata);
 }
+
+typedef struct {
+        UserChefCallback callback;
+        gpointer data;
+} UserChefData;
+
+static void
+got_account_info (const char  *id,
+                  const char  *name,
+                  const char  *image_path,
+                  gpointer     data,
+                  GError      *error)
+{
+        UserChefData *cbdata = data;
+        GrRecipeStore *store;
+        g_autoptr(GrChef) chef = NULL;
+        g_autoptr(GError) local_error = NULL;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+        if (error) {
+                g_message ("Failed to get account information: %s", error->message);
+                g_free (cbdata);
+                return;
+        }
+
+        chef = gr_chef_new ();
+        g_object_set (chef,
+                      "id", id,
+                      "fullname", name,
+                      "image-path", image_path,
+                      NULL);
+
+        if (!gr_recipe_store_update_user (store, chef, &local_error))
+                g_warning ("Failed to update chef for user: %s", local_error->message);
+
+        if (cbdata->callback)
+                cbdata->callback (chef, cbdata->data);
+        g_free (cbdata);
+}
+
+void
+gr_ensure_user_chef (GtkWindow        *window,
+                     UserChefCallback  callback,
+                     gpointer          data)
+{
+        GrRecipeStore *store;
+        g_autoptr(GrChef) chef = NULL;
+        UserChefData *cbdata;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+        chef = gr_recipe_store_get_chef (store, gr_recipe_store_get_user_key (store));
+        if (chef) {
+                callback (chef, data);
+                return;
+        }
+
+        cbdata = g_new0 (UserChefData, 1);
+        cbdata->callback = callback;
+        cbdata->data = data;
+
+        gr_account_get_information (window, got_account_info, cbdata, NULL);
+}
+
