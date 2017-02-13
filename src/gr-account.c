@@ -314,7 +314,8 @@ gr_ensure_user_chef (GtkWindow        *window,
 
         chef = gr_recipe_store_get_chef (store, gr_recipe_store_get_user_key (store));
         if (chef) {
-                callback (chef, data);
+                if (callback)
+                        callback (chef, data);
                 return;
         }
 
