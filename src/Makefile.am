@@ -1,14 +1,15 @@
-bin_PROGRAMS = recipes
+bin_PROGRAMS = gnome-recipes
 
 commitid := $(shell $(GIT) describe)
 libgd_info = $(shell cat $(top_srcdir)/libgd.info)
 libglnx_info = $(shell cat $(top_srcdir)/libglnx.info)
 
-recipes_CFLAGS = \
+gnome_recipes_CFLAGS = \
 	$(WARN_CFLAGS) 			\
 	-Wno-sign-compare		\
 	-O0 -ggdb			\
 	$(RECIPES_CFLAGS) 		\
+	-DPACKAGE_NAME=\"$(PACKAGE_NAME)\"	\
 	-DPKGDATADIR=\"$(pkgdatadir)\" 	\
 	-DLOCALEDIR=\"$(localedir)\" 	\
 	-DCOMMIT_ID=\"$(commitid)\"	\
@@ -20,15 +21,16 @@ recipes_CFLAGS = \
 	-I "$(top_srcdir)/src"		\
 	-I "$(top_builddir)/src"
 
-recipes_LDADD = $(RECIPES_LIBS)			\
-		-lm				\
-		$(top_builddir)/libgd/libgd.la
+gnome_recipes_LDADD = \
+	$(RECIPES_LIBS)			\
+	-lm				\
+	$(top_builddir)/libgd/libgd.la
 
 if USE_AUTOAR
-recipes_LDADD += $(top_builddir)/libglnx.la
+gnome_recipes_LDADD += $(top_builddir)/libglnx.la
 endif
 
-recipes_SOURCES = \
+gnome_recipes_SOURCES = \
 	main.c 			\
 	gr-about-dialog.h	\
 	gr-about-dialog.c	\

@@ -32,6 +32,7 @@
 #include "gr-images.h"
 #include "gr-app.h"
 
+#include "glnx-shutil.h"
 
 struct _GrRecipeStore
 {
@@ -571,7 +572,7 @@ load_picks (GrRecipeStore *self,
         return TRUE;
 }
 
-static void
+static gboolean
 load_favorites (GrRecipeStore *self,
                 const char    *dir)
 {
@@ -590,7 +591,7 @@ load_favorites (GrRecipeStore *self,
                         g_error ("Failed to load favorites db: %s", error->message);
                 else
                         g_message ("No favorites db at: %s", path);
-                return;
+                return FALSE;
         }
 
         g_message ("Load favorites db: %s", path);
@@ -618,6 +619,8 @@ load_favorites (GrRecipeStore *self,
 
         if (tmp)
                 self->favorite_change = date_time_from_string (tmp);
+
+        return TRUE;
 }
 
 static void
@@ -647,7 +650,7 @@ save_favorites (GrRecipeStore *self)
         }
 }
 
-static void
+static gboolean
 load_shopping (GrRecipeStore *self,
                const char    *dir)
 {
@@ -666,7 +669,7 @@ load_shopping (GrRecipeStore *self,
                         g_error ("Failed to load shopping db: %s", error->message);
                 else
                         g_message ("No shopping db at: %s", path);
-                return;
+                return FALSE;
         }
 
         g_message ("Load shopping db: %s", path);
@@ -700,6 +703,8 @@ load_shopping (GrRecipeStore *self,
 
         if (tmp)
                 self->shopping_change = date_time_from_string (tmp);
+
+        return TRUE;
 }
 
 static void
@@ -731,7 +736,7 @@ save_shopping (GrRecipeStore *self)
         }
 }
 
-static void
+static gboolean
 load_cooked (GrRecipeStore *store,
              const char    *dir)
 {
@@ -750,7 +755,7 @@ load_cooked (GrRecipeStore *store,
                         g_error ("Failed to load cooked db: %s", error->message);
                 else
                         g_message ("No cooked db at: %s", path);
-                return;
+                return FALSE;
         }
 
         g_message ("Load cooked db: %s", path);
@@ -777,6 +782,8 @@ load_cooked (GrRecipeStore *store,
 
                 g_hash_table_insert (store->cooked, g_strdup (name), GINT_TO_POINTER (count));
         }
+
+        return TRUE;
 }
 
 static void
@@ -982,7 +989,7 @@ save_user (GrRecipeStore *self)
         }
 }
 
-static void
+static gboolean
 load_user (GrRecipeStore *self,
            const char    *dir)
 {
@@ -998,7 +1005,7 @@ load_user (GrRecipeStore *self,
                         self->user = g_strdup (g_get_user_name ());
                         save_user (self);
                 }
-                return;
+                return FALSE;
         }
 
         g_message ("Load user id: %s", path);
@@ -1007,6 +1014,8 @@ load_user (GrRecipeStore *self,
 
         if (self->user[strlen (self->user) - 1] == '\n')
                 self->user[strlen (self->user) - 1] = '\0';
+
+        return TRUE;
 }
 
 static void
@@ -1015,6 +1024,7 @@ gr_recipe_store_init (GrRecipeStore *self)
         const char *dir;
         g_autofree char *current_dir = NULL;
         g_autofree char *uninstalled_dir = NULL;
+        g_autoptr(GError) error = NULL;
 
         self->recipes = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);
         self->chefs = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);
@@ -1040,6 +1050,20 @@ gr_recipe_store_init (GrRecipeStore *self)
         load_cooked (self, dir);
         load_chefs (self, dir, FALSE);
         load_user (self, dir);
+
+        dir = get_old_user_data_dir ();
+        if (load_recipes (self, dir, FALSE))
+                save_recipes (self);
+        if (load_favorites (self, dir))
+                save_favorites (self);
+        if (load_shopping (self, dir))
+                save_favorites (self);
+        if (load_cooked (self, dir))
+                save_cooked (self);
+        if (load_chefs (self, dir, FALSE))
+                save_chefs (self);
+        if (!glnx_shutil_rm_rf_at (-1, dir, NULL, &error))
+                g_message ("Failed to remove %s: %s", dir, error->message);
 
         g_message ("%d recipes loaded", g_hash_table_size (self->recipes));
         g_message ("%d chefs loaded", g_hash_table_size (self->chefs));

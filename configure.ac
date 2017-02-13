@@ -16,7 +16,7 @@ AX_IS_RELEASE([micro-version])
 dnl ***********************************************************************
 dnl Initialize autoconf
 dnl ***********************************************************************
-AC_INIT([recipes],[package_version],[bug_report_url])
+AC_INIT([gnome-recipes],[package_version],[bug_report_url])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_SRCDIR([configure.ac])
 AC_CONFIG_AUX_DIR([build-aux])

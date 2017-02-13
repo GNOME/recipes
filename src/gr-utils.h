@@ -39,6 +39,7 @@ char *ensure_rotated_image (const char *path,
 
 const char *get_pkg_data_dir  (void);
 const char *get_user_data_dir (void);
+const char *get_old_user_data_dir (void);
 
 void    container_remove_all (GtkContainer *container);
 

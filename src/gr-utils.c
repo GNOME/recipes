@@ -151,9 +151,23 @@ get_user_data_dir (void)
         static char *dir = NULL;
 
         if (!dir) {
-                dir = g_build_filename (g_get_user_data_dir (), "recipes", NULL);
+                if (in_flatpak_sandbox ())
+                        dir = g_strdup (g_get_user_data_dir ());
+                else
+                        dir = g_build_filename (g_get_user_data_dir (), PACKAGE_NAME, NULL);
                 g_mkdir_with_parents (dir, 0755);
         }
+
+        return (const char *)dir;
+}
+
+const char *
+get_old_user_data_dir (void)
+{
+        static char *dir = NULL;
+
+        if (!dir)
+                dir = g_build_filename (g_get_user_data_dir (), "recipes", NULL);
 
         return (const char *)dir;
 }
