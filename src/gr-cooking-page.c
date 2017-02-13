@@ -403,15 +403,15 @@ void
 gr_cooking_page_set_recipe (GrCookingPage *page,
                             GrRecipe      *recipe)
 {
-        if (g_set_object (&page->recipe, recipe)) {
-                g_autoptr(GArray) images = NULL;
-                const char *instructions = NULL;
+        g_autoptr(GArray) images = NULL;
+        const char *instructions = NULL;
 
-                g_object_get (recipe, "images", &images, NULL);
-                instructions = gr_recipe_get_translated_instructions (recipe);
+        g_set_object (&page->recipe, recipe);
 
-                gr_cooking_view_set_images (GR_COOKING_VIEW (page->cooking_view), images, 0);
-                gr_cooking_view_set_instructions (GR_COOKING_VIEW (page->cooking_view), instructions);
-        }
+        g_object_get (recipe, "images", &images, NULL);
+        instructions = gr_recipe_get_translated_instructions (recipe);
+
+        gr_cooking_view_set_images (GR_COOKING_VIEW (page->cooking_view), images, 0);
+        gr_cooking_view_set_instructions (GR_COOKING_VIEW (page->cooking_view), instructions);
 }
 
