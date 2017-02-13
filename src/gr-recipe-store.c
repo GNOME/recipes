@@ -1342,7 +1342,7 @@ gr_recipe_store_update_chef (GrRecipeStore  *self,
         }
 
         old = g_hash_table_lookup (self->chefs, old_id);
-        g_assert (chef == old);
+        g_assert (old == NULL || chef == old);
 
         g_hash_table_remove (self->chefs, old_id);
         g_hash_table_insert (self->chefs, g_strdup (id), g_object_ref (chef));
