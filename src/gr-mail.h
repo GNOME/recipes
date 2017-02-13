@@ -27,7 +27,7 @@ G_BEGIN_DECLS
 gboolean gr_send_mail (const char  *address,
                        const char  *subject,
                        const char  *body,
-                       GList       *attachments,
+                       const char **attachments,
                        GError     **error);
 
 G_END_DECLS

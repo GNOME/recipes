@@ -134,7 +134,7 @@ completed_cb (AutoarCompressor *compressor,
         const char *address;
         const char *subject;
         g_autofree char *body = NULL;
-        GList *attachments;
+        const char *attachments[2];
 
         if (exporter->contribute) {
                 address = "recipes-list@gnome.org";
@@ -172,7 +172,8 @@ completed_cb (AutoarCompressor *compressor,
 
         path = g_file_get_path (exporter->dest);
 
-        attachments = g_list_append (NULL, path);
+        attachments[0] = path;
+        attachments[1] = NULL;
 
         if (!gr_send_mail (address, subject, body, attachments, &error)) {
                 GtkWidget *error_dialog;
@@ -193,8 +194,6 @@ completed_cb (AutoarCompressor *compressor,
                 g_signal_connect (error_dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
                 gtk_widget_show (error_dialog);
         }
-
-        g_list_free (attachments);
 
         cleanup_export (exporter);
 }
