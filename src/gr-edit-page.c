@@ -1905,49 +1905,6 @@ gr_edit_page_edit (GrEditPage *page,
         update_default_image_button (page);
 }
 
-static void
-got_account_info (const char  *id,
-                  const char  *name,
-                  const char  *image_path,
-                  gpointer     data,
-                  GError      *error)
-{
-        GrRecipeStore *store = data;
-        g_autoptr(GrChef) chef = NULL;
-        g_autoptr(GError) local_error = NULL;
-
-        if (error) {
-                g_message ("Failed to get account information: %s", error->message);
-                return;
-        }
-
-        chef = gr_chef_new ();
-
-        g_object_set (chef,
-                      "id", id,
-                      "fullname", name,
-                      "image-path", image_path,
-                      NULL);
-
-        if (!gr_recipe_store_update_user (store, chef, &local_error))
-                g_warning ("Failed to update chef for user: %s", local_error->message);
-}
-
-static void
-ensure_user_chef (GrRecipeStore *store,
-                  GrEditPage    *page)
-{
-        GtkWidget *window;
-        g_autoptr(GrChef) chef = NULL;
-
-        chef = gr_recipe_store_get_chef (store, gr_recipe_store_get_user_key (store));
-        if (chef)
-                return;
-
-        window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_WINDOW);
-        gr_account_get_information (GTK_WINDOW (window), got_account_info, store, NULL);
-}
-
 static char *
 get_instructions (GtkTextView *text_view)
 {
@@ -2033,8 +1990,10 @@ gr_edit_page_save (GrEditPage *page)
         else {
                 g_autoptr(GrRecipe) recipe = NULL;
                 g_autofree char *id = NULL;
+                GtkWidget *window;
 
-                ensure_user_chef (store, page);
+                window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
+                gr_ensure_user_chef (GTK_WINDOW (window), NULL, NULL);
                 id = generate_id ("R_", name, "_by_", page->author, NULL);
                 recipe = g_object_new (GR_TYPE_RECIPE,
                                        "id", id,
