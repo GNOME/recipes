@@ -852,6 +852,23 @@ gr_window_show_shopping (GrWindow *window)
         gr_shopping_page_populate (GR_SHOPPING_PAGE (window->shopping_page));
 }
 
+static void
+do_show_myself (GrChef   *chef,
+                gpointer  data)
+{
+        GrWindow *window = data;
+
+        gr_list_page_populate_from_chef (GR_LIST_PAGE (window->chef_page), chef);
+
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header ), _("My own recipes"));
+
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
+
+        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "chef");
+}
+
 void
 gr_window_show_myself (GrWindow *window)
 {
@@ -862,18 +879,16 @@ gr_window_show_myself (GrWindow *window)
         save_back_entry (window);
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        gr_ensure_user_chef (GTK_WINDOW (window), do_show_myself, window);
 
         name = gr_recipe_store_get_user_key (store);
         chef = gr_recipe_store_get_chef (store, name);
-        gr_list_page_populate_from_chef (GR_LIST_PAGE (window->chef_page), chef);
+        if (chef) {
+                do_show_myself (chef, window);
+                return;
+        }
 
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header ), _("My own recipes"));
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "chef");
+        gr_ensure_user_chef (GTK_WINDOW (window), do_show_myself, window);
 }
 
 void
