@@ -94,7 +94,7 @@ get_cooking_overlay_count (void)
 
         keyfile = g_key_file_new ();
 
-        path = g_build_filename (g_get_user_data_dir (), "recipes", "cooking", NULL);
+        path = g_build_filename (get_user_data_dir (), "cooking", NULL);
         if (!g_key_file_load_from_file (keyfile, path, G_KEY_FILE_NONE, &error)) {
                 if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
                         g_error ("Failed to load cooking overlay count: %s", error->message);
@@ -119,7 +119,7 @@ set_cooking_overlay_count (int count)
 
         keyfile = g_key_file_new ();
 
-        path = g_build_filename (g_get_user_data_dir (), "recipes", "cooking", NULL);
+        path = g_build_filename (get_user_data_dir (), "cooking", NULL);
 
         g_key_file_set_integer (keyfile, "Cooking", "OverlayShown", count);
 
