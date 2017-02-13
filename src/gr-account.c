@@ -23,6 +23,7 @@
 #include "gr-account.h"
 #include "gr-recipe-store.h"
 #include "gr-app.h"
+#include "gr-utils.h"
 
 #include <glib/gi18n.h>
 
@@ -165,7 +166,7 @@ account_response (GDBusConnection *connection,
                         int i;
 
                         source = g_file_new_for_uri (uri);
-                        orig_dest = g_build_filename (g_get_user_data_dir (), "recipes", id, NULL);
+                        orig_dest = g_build_filename (get_user_data_dir (), id, NULL);
                         destpath = g_strdup (orig_dest);
                         for (i = 1; i < 10; i++) {
                                 if (!g_file_test (destpath, G_FILE_TEST_EXISTS))
