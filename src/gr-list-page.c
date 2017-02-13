@@ -296,33 +296,38 @@ gr_list_page_populate_from_chef (GrListPage *self,
 {
         GrRecipeStore *store;
         const char *id;
-        char *tmp;
+        const char *name;
+        const char *fullname;
         const char *description;
+        char *tmp;
         g_autofree char *term = NULL;
 
         g_object_ref (chef);
         clear_data (self);
         self->chef = chef;
 
-        gtk_style_context_add_class (gtk_widget_get_style_context (self->chef_image),
-                                     gr_chef_get_id (self->chef));
+        id = gr_chef_get_id (chef);
+        name = gr_chef_get_name (chef) ? gr_chef_get_name (chef) : "";
+        fullname = gr_chef_get_fullname (chef) ? gr_chef_get_fullname (chef) : "";
+        description = gr_chef_get_translated_description (chef) ? gr_chef_get_translated_description (chef) : "";
+
+        gtk_style_context_add_class (gtk_widget_get_style_context (self->chef_image), id);
 
         gtk_widget_show (self->chef_grid);
         gtk_widget_show (self->heading);
         gtk_widget_hide (self->diet_description);
 
-        gtk_label_set_label (GTK_LABEL (self->chef_fullname), gr_chef_get_fullname (chef));
-        description = gr_chef_get_translated_description (chef);
+        gtk_label_set_label (GTK_LABEL (self->chef_fullname), fullname);
         gtk_label_set_markup (GTK_LABEL (self->chef_description), description);
 
-        tmp = g_strdup_printf (_("Recipes by %s"), gr_chef_get_name (chef));
+        tmp = g_strdup_printf (_("Recipes by %s"), name);
         gtk_label_set_label (GTK_LABEL (self->heading), tmp);
         g_free (tmp);
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         container_remove_all (GTK_CONTAINER (self->flow_box));
-        tmp = g_strdup_printf (_("No recipes by chef %s found"), gr_chef_get_name (chef));
+        tmp = g_strdup_printf (_("No recipes by chef %s found"), name);
         gtk_label_set_label (GTK_LABEL (self->empty_title), tmp);
         g_free (tmp);
         if (g_strcmp0 (gr_chef_get_id (chef), gr_recipe_store_get_user_key (store)) == 0)
@@ -333,7 +338,6 @@ gr_list_page_populate_from_chef (GrListPage *self,
         gr_recipe_search_stop (self->search);
         gtk_stack_set_visible_child_name (GTK_STACK (self->list_stack), "list");
 
-        id = gr_chef_get_id (chef);
         term = g_strconcat ("by:", id, NULL);
 
         gr_recipe_search_set_query (self->search, term);
