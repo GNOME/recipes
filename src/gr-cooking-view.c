@@ -180,7 +180,10 @@ setup_step (GrCookingView *view)
                 g_autoptr(GdkPixbuf) pixbuf = NULL;
 
                 ri = &g_array_index (view->images, GrRotatedImage, s->image);
-                pixbuf = load_pixbuf_fill_size (ri->path, ri->angle, 360, 240);
+                if (view->wide)
+                        pixbuf = load_pixbuf_fill_size (ri->path, ri->angle, 640, 480);
+                else
+                        pixbuf = load_pixbuf_fill_size (ri->path, ri->angle, 320, 240);
                 gtk_image_set_from_pixbuf (GTK_IMAGE (view->cooking_image), pixbuf);
                 gtk_stack_set_visible_child_name (GTK_STACK (view->cooking_stack), "image");
         }
