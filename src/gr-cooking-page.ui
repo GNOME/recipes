@@ -86,6 +86,19 @@
           </object>
         </child>
         <child type="overlay">
+          <object class="GtkButton" id="done_button">
+            <property name="halign">end</property>
+            <property name="valign">end</property>
+            <property name="margin">100</property>
+            <property name="label" translatable="yes">Done</property>
+            <signal name="clicked" handler="stop_cooking" swapped="yes"/>
+            <style>
+              <class name="suggested-action"/>
+              <class name="cooking-button"/>
+            </style>
+          </object>
+        </child>
+        <child type="overlay">
           <object class="GtkGrid" id="cooking_overlay">
             <property name="visible">1</property>
             <property name="halign">center</property>

@@ -43,6 +43,7 @@ struct _GrCookingPage
         GtkWidget *cooking_view;
         GtkWidget *prev_step_button;
         GtkWidget *next_step_button;
+        GtkWidget *done_button;
 
         GrRecipe *recipe;
 
@@ -139,6 +140,7 @@ update_steppers (GrCookingPage *page)
 
         gtk_widget_set_sensitive (page->prev_step_button, step - 1 >= 0);
         gtk_widget_set_sensitive (page->next_step_button, step + 1 <= n_steps - 1);
+        gtk_widget_set_visible (page->done_button, step == n_steps - 1);
 }
 
 static void
@@ -392,6 +394,7 @@ gr_cooking_page_class_init (GrCookingPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrCookingPage, event_box);
         gtk_widget_class_bind_template_child (widget_class, GrCookingPage, prev_step_button);
         gtk_widget_class_bind_template_child (widget_class, GrCookingPage, next_step_button);
+        gtk_widget_class_bind_template_child (widget_class, GrCookingPage, done_button);
 
         gtk_widget_class_bind_template_callback (widget_class, prev_step);
         gtk_widget_class_bind_template_callback (widget_class, next_step);
