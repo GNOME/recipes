@@ -55,6 +55,7 @@ dist_images_DATA = \
 	images/chickencurry.jpg		\
 	images/chickensoup.jpg		\
 	images/coffee.jpg		\
+	images/ebassi-hackergotchi.png	\
 	images/elvin.jpg		\
 	images/erusan.gif		\
 	images/food.jpg			\
@@ -76,6 +77,13 @@ dist_images_DATA = \
 	images/donauwellen7.jpg		\
 	images/donauwellen8.jpg		\
 	images/donauwellen_final.jpg	\
+	images/ebassi-carbonara-cover.JPG	\
+	images/ebassi-carbonara-01.JPG	\
+	images/ebassi-carbonara-02.JPG	\
+	images/ebassi-carbonara-03.JPG	\
+	images/ebassi-carbonara-04.JPG	\
+	images/ebassi-carbonara-05.JPG	\
+	images/ebassi-carbonara-06.JPG	\
 	images/gingered_carrot_soup.jpg	\
 	images/grumbeerekiechle_1.JPG	\
 	images/grumbeerekiechle_2.JPG	\
