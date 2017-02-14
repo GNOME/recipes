@@ -317,6 +317,17 @@ gr_cooking_page_handle_event (GrCookingPage *page,
 
                         return GDK_EVENT_STOP;
                 }
+                else if (e->keyval == GDK_KEY_Return) {
+                        if (gtk_widget_get_visible (page->done_button))
+                               stop_cooking (page);
+
+                        return GDK_EVENT_STOP;
+                }
+                else if (e->keyval == GDK_KEY_space) {
+                        next_step (page);
+
+                        return GDK_EVENT_STOP;
+                }
                 else if (e->keyval == GDK_KEY_Left) {
                         prev_step (page);
 

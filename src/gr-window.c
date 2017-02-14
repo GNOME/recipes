@@ -350,6 +350,22 @@ window_keypress_handler (GtkWidget *widget,
 }
 
 static gboolean
+window_keypress_handler_before (GtkWidget *widget,
+                                GdkEvent  *event,
+                                gpointer   data)
+{
+        GrWindow *window = GR_WINDOW (widget);
+        const char *visible;
+
+        visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
+
+        if (strcmp (visible, "cooking") == 0)
+                return gr_cooking_page_handle_event (GR_COOKING_PAGE (window->cooking_page), event);
+
+        return GDK_EVENT_PROPAGATE;
+}
+
+static gboolean
 window_buttonpress_handler (GtkWidget *widget,
                             GdkEvent  *event,
                             gpointer   data)
@@ -570,6 +586,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, stop_search);
         gtk_widget_class_bind_template_callback (widget_class, search_mode_changed);
         gtk_widget_class_bind_template_callback (widget_class, window_keypress_handler);
+        gtk_widget_class_bind_template_callback (widget_class, window_keypress_handler_before);
         gtk_widget_class_bind_template_callback (widget_class, window_buttonpress_handler);
         gtk_widget_class_bind_template_callback (widget_class, window_mapped_handler);
         gtk_widget_class_bind_template_callback (widget_class, do_undo);
