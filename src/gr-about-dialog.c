@@ -630,6 +630,7 @@ gr_about_dialog_new (void)
                 "Matthew Leeds",
                 "Alexandre Franke",
                 "Adrià Arrufat",
+                "Emmanuele Bassi",
                 NULL
         };
         g_autoptr(GdkPixbuf) logo = NULL;
