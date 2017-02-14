@@ -43,19 +43,15 @@ Testing
 If you don't feel like building from source yourself, you can use Flatpak, like this:
 
 ```
-flatpak install --from https://alexlarsson.github.io/test-releases/gnome-recipes.flatpakref
+flatpak install --from https://matthiasclasen.github.io/recipes-releases/gnome-recipes.flatpakref
 ```
 
-or using a Flatpak bundle:
-
-```
-flatpak install --bundle https://github.com/matthiasclasen/gr/releases/download/0.2.0/org.gnome.Recipes.x86_64.flatpak
-```
-After installing the Flatpak with either method, the applications will show up in the GNOME shell overview, but you can also launch it from the commandline:
+After installing the Flatpak, the applications will show up in the GNOME shell overview, but you can also launch it from the commandline:
 
 ```
 flatpak run org.gnome.Recipes
 ```
+
 Other platforms
 ---------------
 
