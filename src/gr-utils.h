@@ -67,3 +67,12 @@ gboolean portals_available (void);
 void all_headers (GtkListBoxRow *row,
                   GtkListBoxRow *before,
                   gpointer       user_data);
+
+typedef void (*WindowHandleExported) (GtkWindow  *window,
+                                      const char *handle,
+                                      gpointer    user_data);
+
+gboolean
+window_export_handle (GtkWindow            *window,
+                      WindowHandleExported  callback,
+                      gpointer              user_data);
