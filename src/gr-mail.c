@@ -21,8 +21,10 @@
 #include "config.h"
 
 #include "gr-mail.h"
+#include "gr-utils.h"
 
 typedef struct {
+        GtkWindow *window;
         char *address;
         char *subject;
         char *body;
@@ -34,6 +36,7 @@ mail_data_free (gpointer data)
 {
         MailData *md = data;
 
+        window_unexport_handle (md->window);
         g_free (md->address);
         g_free (md->subject);
         g_free (md->body);
@@ -65,7 +68,7 @@ send_mail_using_mailto (MailData *data)
                 g_string_append_printf (url, "&attach=%s", path);
         }
 
-        g_app_info_launch_default_for_uri (url->str, NULL, NULL);
+        gtk_show_uri_on_window (data->window, url->str, GDK_CURRENT_TIME, NULL);
 
         mail_data_free (data);
 }
@@ -99,32 +102,38 @@ callback (GObject      *source,
         reply = g_dbus_proxy_call_finish (G_DBUS_PROXY (source), result, &error);
         if (g_error_matches (error, G_DBUS_ERROR, G_DBUS_ERROR_UNKNOWN_INTERFACE) ||
             g_error_matches (error, G_DBUS_ERROR, G_DBUS_ERROR_UNKNOWN_METHOD)) {
-                /* Email portal not present, fall back to mailto: */
+                g_message ("Email portal not present, falling back to mailto: url");
                 send_mail_using_mailto (md);
                 return;
+        }
+        else if (error) {
+                g_message ("Sending mail using Email portal failed: %s", error->message);
         }
 
         mail_data_free (md);
 }
 
 static void
-send_mail_using_mail_portal (MailData *data)
+window_handle_exported (GtkWindow  *window,
+                        const char *handle_str,
+                        gpointer    data)
 {
+        MailData *md = data;
         GVariantBuilder opt_builder;
         GDBusProxy *proxy;
 
         proxy = get_mail_portal_proxy ();
 
         g_variant_builder_init (&opt_builder, G_VARIANT_TYPE ("a{sv}"));
-        g_variant_builder_add (&opt_builder, "{sv}", "address", g_variant_new_string (data->address));
-        g_variant_builder_add (&opt_builder, "{sv}", "subject", g_variant_new_string (data->subject));
-        g_variant_builder_add (&opt_builder, "{sv}", "body", g_variant_new_string (data->body));
-        g_variant_builder_add (&opt_builder, "{sv}", "attachments", g_variant_new_strv ((const char * const *)data->attachments, -1));
+        g_variant_builder_add (&opt_builder, "{sv}", "address", g_variant_new_string (md->address));
+        g_variant_builder_add (&opt_builder, "{sv}", "subject", g_variant_new_string (md->subject));
+        g_variant_builder_add (&opt_builder, "{sv}", "body", g_variant_new_string (md->body));
+        g_variant_builder_add (&opt_builder, "{sv}", "attachments", g_variant_new_strv ((const char * const *)md->attachments, -1));
 
         g_dbus_proxy_call (proxy,
                            "ComposeEmail",
                            g_variant_new ("(sa{sv})",
-                                          "",
+                                          handle_str,
                                           &opt_builder),
                            G_DBUS_CALL_FLAGS_NONE,
                            G_MAXINT,
@@ -133,22 +142,21 @@ send_mail_using_mail_portal (MailData *data)
                            data);
 }
 
-gboolean
-gr_send_mail (const char  *address,
+void
+gr_send_mail (GtkWindow   *window,
+              const char  *address,
               const char  *subject,
               const char  *body,
-              const char **attachments,
-              GError     **error)
+              const char **attachments)
 {
         MailData *data;
 
         data = g_new (MailData, 1);
+        data->window = window;
         data->address = g_strdup (address ? address : "");
         data->subject = g_strdup (subject ? subject : "");
         data->body = g_strdup (body ? body : "");
         data->attachments = g_strdupv ((char **)attachments);
 
-        send_mail_using_mail_portal (data);
-
-        return TRUE;
+        window_export_handle (window, window_handle_exported, data);
 }

@@ -680,31 +680,16 @@ share_list (GrShoppingPage *page)
         GList *recipes, *items;
         g_autofree char *text = NULL;
         g_autoptr(GError) error = NULL;
+        GtkWidget *window;
 
         recipes = get_recipes (page);
         items = get_ingredients (page);
 
         text = gr_shopping_list_format (recipes, items);
-        if (!gr_send_mail (NULL, _("Shopping List"), text, NULL, &error)) {
-                GtkWidget *window;
-                GtkWidget *error_dialog;
 
-                g_message ("Sharing the shopping list failed: %s", error->message);
+        window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
 
-                window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
-                error_dialog = gtk_message_dialog_new (GTK_WINDOW (window),
-                                                       GTK_DIALOG_MODAL |
-                                                       GTK_DIALOG_DESTROY_WITH_PARENT,
-                                                       GTK_MESSAGE_ERROR,
-                                                       GTK_BUTTONS_CLOSE,
-                                                       _("Could not share shopping list"));
-                gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (error_dialog),
-                                                          _("There was an error sending the shopping "
-                                                            "list by e-mail.\n"));
-                g_signal_connect (error_dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
-                gtk_widget_show (error_dialog);
-
-        }
+        gr_send_mail (GTK_WINDOW (window), NULL, _("Shopping List"), text, NULL);
 
         g_list_free_full (recipes, g_object_unref);
         g_list_free_full (items, item_free);

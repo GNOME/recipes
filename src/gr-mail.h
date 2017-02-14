@@ -24,10 +24,10 @@
 
 G_BEGIN_DECLS
 
-gboolean gr_send_mail (const char  *address,
-                       const char  *subject,
-                       const char  *body,
-                       const char **attachments,
-                       GError     **error);
+void gr_send_mail (GtkWindow *window,
+                   const char  *address,
+                   const char  *subject,
+                   const char  *body,
+                   const char **attachments);
 
 G_END_DECLS
