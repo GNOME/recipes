@@ -245,13 +245,18 @@ the right mouse button.</property>
           </object>
         </child>
         <child>
-          <object class="GtkEventBox" id="event_box">
+          <object class="GtkScrolledWindow">
             <property name="visible">1</property>
-            <property name="can-focus">1</property>
-            <signal name="motion-notify-event" handler="motion_notify"/>
             <child>
-              <object class="GrCookingView" id="cooking_view">
-                <property name="wide">1</property>
+              <object class="GtkEventBox" id="event_box">
+                <property name="visible">1</property>
+                <property name="can-focus">1</property>
+                <signal name="motion-notify-event" handler="motion_notify"/>
+                <child>
+                  <object class="GrCookingView" id="cooking_view">
+                    <property name="wide">1</property>
+                  </object>
+                </child>
               </object>
             </child>
           </object>
