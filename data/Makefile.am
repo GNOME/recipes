@@ -92,6 +92,19 @@ dist_images_DATA = \
 	images/pizzaburger.jpg		\
 	images/pizza.jpg		\
 	images/plain-bagel.jpg		\
+	images/rootspie1.jpg		\
+	images/rootspie2.jpg		\
+	images/rootspie3.jpg		\
+	images/rootspie4.jpg		\
+	images/rootspie5.jpg		\
+	images/rootspie6.jpg		\
+	images/rootspie7.jpg		\
+	images/rootspie8.jpg		\
+	images/rootspie9.jpg		\
+	images/rootspie10.jpg		\
+	images/rootspie11.jpg		\
+	images/rootspie12.jpg		\
+	images/rootspie13.jpg		\
 	images/rosemary-potatos1.jpg	\
 	images/rosemary-potatos2.jpg	\
 	images/salad.jpg		\
