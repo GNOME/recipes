@@ -298,7 +298,7 @@ search_changed (GrWindow *window)
 }
 
 static void
-start_or_stop_cooking (GrWindow *window)
+start_cooking (GrWindow *window)
 {
         GrRecipe *recipe;
 
@@ -564,7 +564,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, go_back);
         gtk_widget_class_bind_template_callback (widget_class, add_recipe);
         gtk_widget_class_bind_template_callback (widget_class, visible_page_changed);
-        gtk_widget_class_bind_template_callback (widget_class, start_or_stop_cooking);
+        gtk_widget_class_bind_template_callback (widget_class, start_cooking);
         gtk_widget_class_bind_template_callback (widget_class, hide_or_show_header_end_stack);
         gtk_widget_class_bind_template_callback (widget_class, search_changed);
         gtk_widget_class_bind_template_callback (widget_class, stop_search);

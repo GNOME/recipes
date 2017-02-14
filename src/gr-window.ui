@@ -113,7 +113,7 @@
                 <property name="visible">1</property>
                 <property name="use-underline">1</property>
                 <property name="label" translatable="yes">_Start Cooking</property>
-                <signal name="clicked" handler="start_or_stop_cooking" swapped="yes"/>
+                <signal name="clicked" handler="start_cooking" swapped="yes"/>
                 <style>
                   <class name="suggested-action"/>
                 </style>
