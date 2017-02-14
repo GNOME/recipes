@@ -76,3 +76,6 @@ gboolean
 window_export_handle (GtkWindow            *window,
                       WindowHandleExported  callback,
                       gpointer              user_data);
+
+void
+window_unexport_handle (GtkWindow *window);

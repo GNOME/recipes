@@ -25,6 +25,7 @@
 #include <sys/stat.h>
 
 #include <glib/gi18n.h>
+#include <gtk/gtk.h>
 
 #ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
@@ -567,7 +568,7 @@ wayland_window_handle_exported (GdkWindow  *window,
 }
 #endif
 
-static gboolean
+gboolean
 window_export_handle (GtkWindow            *window,
                       WindowHandleExported  callback,
                       gpointer              user_data)
@@ -613,3 +614,15 @@ window_export_handle (GtkWindow            *window,
         return FALSE;
 }
 
+void
+window_unexport_handle (GtkWindow *window)
+{
+#ifdef GDK_WINDOWING_WAYLAND
+  if (GDK_IS_WAYLAND_DISPLAY (gtk_widget_get_display (GTK_WIDGET (window))))
+    {
+      GdkWindow *gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
+
+      gdk_wayland_window_unexport_handle (gdk_window);
+    }
+#endif
+}
