@@ -28,6 +28,7 @@
 #include <glib/gi18n.h>
 
 typedef struct {
+        GtkWindow *window;
         AccountInformationCallback callback;
         gpointer data;
         GDestroyNotify destroy;
@@ -39,6 +40,8 @@ static void
 free_callback_data (gpointer data)
 {
         CallbackData *cbdata = data;
+
+        window_unexport_handle (cbdata->window);
 
         if (cbdata->destroy)
                 cbdata->destroy (cbdata->data);
@@ -173,6 +176,7 @@ gr_account_get_information (GtkWindow                  *window,
 
         cbdata = g_new (CallbackData, 1);
 
+        cbdata->window = window;
         cbdata->callback = callback;
         cbdata->data = data;
         cbdata->destroy = destroy;
