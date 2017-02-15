@@ -997,6 +997,8 @@
         <property name="visible">1</property>
         <property name="margin">12</property>
         <property name="selection-mode">none</property>
+        <property name="row-spacing">1</property>
+        <property name="column-spacing">1</property>
         <property name="min-children-per-line">5</property>
         <property name="max-children-per-line">5</property>
         <signal name="child-activated" handler="image_activated"/>
