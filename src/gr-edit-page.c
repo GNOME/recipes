@@ -111,6 +111,9 @@ struct _GrEditPage
         GtkWidget *image_popover;
         GtkWidget *image_flowbox;
         GtkWidget *timer_popover;
+        GtkWidget *temperature_popover;
+        GtkWidget *temperature_spin;
+        GtkWidget *celsius_button;
         GtkWidget *timer_spin;
         GtkWidget *preview_stack;
 
@@ -947,6 +950,18 @@ add_tag_to_step (GrEditPage *self,
 }
 
 static void
+add_tag_at_insert (GrEditPage *self,
+                   const char *tag)
+{
+        GtkTextBuffer *buffer;
+        GtkTextIter start;
+
+        buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->instructions_field));
+        gtk_text_buffer_get_iter_at_mark (buffer, &start, gtk_text_buffer_get_insert (buffer));
+        gtk_text_buffer_insert (buffer, &start, tag, -1);
+}
+
+static void
 image_activated (GtkFlowBox *flowbox,
                  GtkFlowBoxChild *child,
                  GrEditPage *self)
@@ -1100,6 +1115,33 @@ static void
 add_timer (GtkButton *button, GrEditPage *page)
 {
         gtk_popover_popup (GTK_POPOVER (page->timer_popover));
+}
+
+static void
+temperature_spin_activate (GtkEntry *entry, GrEditPage *self)
+{
+        int value;
+        g_autofree char *text = NULL;
+        const char *unit;
+
+        gtk_spin_button_update (GTK_SPIN_BUTTON (entry));
+
+        value = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (entry));
+        if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (self->celsius_button)))
+                unit = "C";
+        else
+                unit = "F";
+
+        text = g_strdup_printf ("[temperature:%d%s]", value, unit);
+        add_tag_at_insert (self, text);
+
+        gtk_popover_popdown (GTK_POPOVER (self->temperature_popover));
+        gtk_widget_grab_focus (self->instructions_field);
+}
+static void
+add_temperature (GtkButton *button, GrEditPage *page)
+{
+        gtk_popover_popup (GTK_POPOVER (page->temperature_popover));
 }
 
 static void
@@ -1349,6 +1391,9 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, image_popover);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, image_flowbox);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, timer_popover);
+        gtk_widget_class_bind_template_child (widget_class, GrEditPage, temperature_popover);
+        gtk_widget_class_bind_template_child (widget_class, GrEditPage, temperature_spin);
+        gtk_widget_class_bind_template_child (widget_class, GrEditPage, celsius_button);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, timer_spin);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, preview_stack);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, cooking_view);
@@ -1377,6 +1422,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, add_image_link);
         gtk_widget_class_bind_template_callback (widget_class, add_timer);
         gtk_widget_class_bind_template_callback (widget_class, add_step);
+        gtk_widget_class_bind_template_callback (widget_class, add_temperature);
         gtk_widget_class_bind_template_callback (widget_class, image_activated);
 
         gtk_widget_class_bind_template_callback (widget_class, set_default_image);
@@ -1385,6 +1431,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, time_spin_input);
         gtk_widget_class_bind_template_callback (widget_class, time_spin_output);
         gtk_widget_class_bind_template_callback (widget_class, time_spin_activate);
+        gtk_widget_class_bind_template_callback (widget_class, temperature_spin_activate);
         gtk_widget_class_bind_template_callback (widget_class, preview_visible_changed);
         gtk_widget_class_bind_template_callback (widget_class, prev_step);
         gtk_widget_class_bind_template_callback (widget_class, next_step);
