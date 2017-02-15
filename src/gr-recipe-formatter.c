@@ -137,22 +137,55 @@ gr_recipe_parse_instructions (const char *instructions)
                 guint64 timer = 0;
                 g_autofree char *step = NULL;
 
-                p = strstr (steps[i], "[image:");
+                step = g_strdup (steps[i]);
+
+                p = strstr (step, "[temperature:");
+                while (p) {
+                        g_autofree char *prefix = NULL;
+                        const char *unit;
+                        int num;
+                        char *tmp;
+
+                        prefix = g_strndup (step, p - step);
+
+                        q = strstr (p, "]");
+                        if (q[-1] == 'C')
+                                unit = "℃";
+                        else if (q[-1] == 'F')
+                                unit ="℉";
+                        else {
+                                g_message ("Unsupported temperature unit: %c, using C", q[-1]);
+                                unit = "℃";
+                        }
+                        num = atoi (p + strlen ("[temperature:"));
+
+                        tmp = g_strdup_printf ("%s%d%s%s", prefix, num, unit, q + 1);
+                        g_free (step);
+                        step = tmp;
+
+                        p = strstr (step, "[temperature:");
+                }
+
+                p = strstr (step, "[image:");
                 if (p) {
                         g_autofree char *prefix = NULL;
+                        char *tmp;
 
                         image = atoi (p + strlen ("[image:"));
 
-                        prefix = g_strndup (steps[i], p - steps[i]);
+                        prefix = g_strndup (step, p - step);
                         q = strstr (p, "]");
-                        step = g_strconcat (prefix, q + 1, NULL);
+                        tmp = g_strconcat (prefix, q + 1, NULL);
+                        g_free (step);
+                        step = tmp;
                 }
 
-                p = strstr (steps[i], "[timer:");
+                p = strstr (step, "[timer:");
                 if (p) {
                         g_autofree char *s = NULL;
                         g_auto(GStrv) strv = NULL;
                         g_autofree char *prefix = NULL;
+                        char *tmp;
 
                         q = strstr (p, "]");
                         s = strndup (p + strlen ("[timer:"), q - (p + strlen ("[timer:")) - 1);
@@ -170,12 +203,16 @@ gr_recipe_parse_instructions (const char *instructions)
                                 g_message ("Could not parse timer field %s; ignoring", s);
                         }
 
-                        prefix = g_strndup (steps[i], p - steps[i]);
+                        g_print ("timer: %ld seconds\n", timer);
+
+                        prefix = g_strndup (step, p - step);
                         q = strstr (p, "]");
-                        step = g_strconcat (prefix, q + 1, NULL);
+                        tmp = g_strconcat (prefix, q + 1, NULL);
+                        g_free (step);
+                        step = tmp;
                 }
 
-                g_ptr_array_add (step_array, recipe_step_new (step ? step : steps[i], image, timer));
+                g_ptr_array_add (step_array, recipe_step_new (step, image, timer));
         }
 
         return step_array;
