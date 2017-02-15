@@ -750,6 +750,14 @@
                       </object>
                     </child>
                     <child>
+                      <object class="GtkButton" id="temperature_button">
+                        <property name="visible">1</property>
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes">Add Temperature</property>
+                        <signal name="clicked" handler="add_temperature"/>
+                      </object>
+                    </child>
+                    <child>
                       <object class="GtkButton" id="prev_step_button">
                         <property name="halign">start</property>
                         <signal name="clicked" handler="prev_step" swapped="yes"/>
@@ -1025,6 +1033,58 @@
       </object>
     </child>
   </object>
+  <object class="GtkAdjustment" id="temperature_adjustment">
+    <property name="upper">500</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkPopover" id="temperature_popover">
+    <property name="relative-to">temperature_button</property>
+    <property name="constrain-to">none</property>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">1</property>
+        <style>
+          <class name="linked"/>
+        </style>
+        <child>
+          <object class="GtkSpinButton" id="temperature_spin">
+            <property name="visible">1</property>
+            <property name="width-chars">4</property>
+            <property name="adjustment">temperature_adjustment</property>
+            <signal name="activate" handler="temperature_spin_activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="celsius_button">
+            <property name="visible">1</property>
+            <property name="draw-indicator">0</property>
+            <property name="valign">center</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="label">C</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="fahrenheit_button">
+            <property name="visible">1</property>
+            <property name="draw-indicator">0</property>
+            <property name="group">celsius_button</property>
+            <property name="valign">center</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="label">F</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
   <object class="GtkPopover" id="directions_help_popover">
     <property name="relative-to">directions_help_button</property>
     <property name="constrain-to">none</property>
@@ -1116,6 +1176,28 @@
           <packing>
             <property name="left-attach">1</property>
             <property name="top-attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">1</property>
+            <property name="xalign">0</property>
+            <property name="label" translatable="yes">Temperature</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">5</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">1</property>
+            <property name="xalign">0</property>
+            <property name="label">[temperature:200C]</property>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">5</property>
           </packing>
         </child>
       </object>
