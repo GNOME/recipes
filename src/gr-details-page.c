@@ -40,6 +40,7 @@
 #include "gr-timer.h"
 #include "gr-recipe-printer.h"
 #include "gr-recipe-exporter.h"
+#include "gr-recipe-formatter.h"
 
 
 struct _GrDetailsPage
@@ -519,58 +520,44 @@ populate_ingredients (GrDetailsPage *page,
 static char *
 process_instructions (const char *instructions)
 {
+        g_autoptr(GPtrArray) steps = NULL;
         GString *s;
-        const char *p, *p2, *t, *q;
+        int i;
+
+        steps = gr_recipe_parse_instructions (instructions);
 
         s = g_string_new ("");
 
-        t = instructions;
+        for (i = 0; i < steps->len; i++) {
+                GrRecipeStep *step = (GrRecipeStep *)g_ptr_array_index (steps, i);
 
-        while (*t) {
-                const char *sym = "?";
-                int idx;
-                g_autofree char *title = NULL;
+                if (i > 0)
+                        g_string_append (s, "\n\n");
 
-                p = strstr (t, "[image:");
-                q = strstr (t, "[timer:");
-                if (q && (!p || q < p)) {
-                        p = q;
-                        sym = "⏰";
+                if (step->timer != 0) {
+                        int seconds;
+                        int minutes;
+                        int hours;
+                        g_autofree char *str = NULL;
+
+                        seconds = (int)(step->timer / G_TIME_SPAN_SECOND);
+                        minutes = seconds / 60;
+                        seconds = seconds - 60 * minutes;
+                        hours = minutes / 60;
+                        minutes = minutes - 60 * hours;
+
+                        str = g_strdup_printf ("%02d∶%02d∶%02d", hours, minutes, seconds);
+                        g_string_append (s, "<a href=\"timer\" title=\"");
+                        g_string_append_printf (s, _("Timer: %s"), str);
+                        g_string_append (s, "\">⏰</a>");
                 }
-                else if (p) {
-                        idx = atoi (p + strlen ("[image:"));
-                        sym = "👁";
-                }
-
-                if (p == NULL) {
-                        g_string_append (s, t);
-                        break;
-                }
-
-                g_string_append_len (s, t, p - t);
-
-                p2 = strstr (p, "]");
-
-                if (p == q) {
-                        const char *q2;
-                        g_autofree char *timer = NULL;
-
-                        q2 = q + strlen ("[timer:");
-                        timer = g_strndup (q2, p2 - q2);
-                        title = g_strdup_printf (_("Timer: %s"), timer);
-                }
-                else {
-                        title = g_strdup_printf (_("Image %d"), idx + 1);
+                else if (step->image != -1) {
+                        g_string_append_printf (s, "<a href=\"image:%d\" title=\"", step->image);
+                        g_string_append_printf (s, _("Image %d"), step->image + 1);
+                        g_string_append (s, "\">👁</a>");
                 }
 
-                g_string_append (s, "<a href=\"");
-                g_string_append_len (s, p + 1, p2 - p);
-                g_string_append (s, "\" title=\"");
-                g_string_append (s, title);
-                g_string_append (s, "\">");
-                g_string_append (s, sym);
-                g_string_append (s, "</a>");
-                t = p2 + 1;
+                g_string_append (s, step->text);
         }
 
         return g_string_free (s, FALSE);
