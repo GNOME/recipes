@@ -1057,7 +1057,7 @@ gr_recipe_store_init (GrRecipeStore *self)
         if (load_favorites (self, dir))
                 save_favorites (self);
         if (load_shopping (self, dir))
-                save_favorites (self);
+                save_shopping (self);
         if (load_cooked (self, dir))
                 save_cooked (self);
         if (load_chefs (self, dir, FALSE))
@@ -1520,6 +1520,13 @@ gr_recipe_store_last_favorite_change (GrRecipeStore *self)
         return self->favorite_change;
 }
 
+static void
+ensure_shopping (GrRecipeStore *self)
+{
+        if (!self->shopping)
+                self->shopping = g_new0 (char *, 1);
+}
+
 void
 gr_recipe_store_add_to_shopping (GrRecipeStore *self,
                                  GrRecipe      *recipe,
@@ -1530,6 +1537,8 @@ gr_recipe_store_add_to_shopping (GrRecipeStore *self,
         int length;
         int i;
         const char *id;
+
+        ensure_shopping (self);
 
         id = gr_recipe_get_id (recipe);
 
@@ -1572,6 +1581,8 @@ gr_recipe_store_remove_from_shopping (GrRecipeStore *self,
 {
         int i, j;
         const char *id;
+
+        ensure_shopping (self);
 
         id = gr_recipe_get_id (recipe);
 
