@@ -140,11 +140,14 @@ dismiss_error (GrEditPage *page)
         gtk_revealer_set_reveal_child (GTK_REVEALER (page->error_revealer), FALSE);
 }
 
+static void add_image (GrEditPage *page);
+
 static void
 populate_image_flowbox (GrEditPage *page)
 {
         int i;
         g_autoptr(GArray) images = NULL;
+        GtkWidget *button;
 
         g_object_get (page->images, "images", &images, NULL);
 
@@ -162,6 +165,12 @@ populate_image_flowbox (GrEditPage *page)
                 child = gtk_widget_get_parent (image);
                 g_object_set_data (G_OBJECT (child), "image-idx", GINT_TO_POINTER (i));
         }
+
+        button = gtk_button_new ();
+        gtk_container_add (GTK_CONTAINER (button), gtk_image_new_from_icon_name ("list-add-symbolic", 1));
+        gtk_widget_show_all (button);
+        gtk_container_add (GTK_CONTAINER (page->image_flowbox), button);
+        g_signal_connect_swapped (button, "clicked", G_CALLBACK (add_image), page);
 }
 
 static void
