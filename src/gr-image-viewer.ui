@@ -73,6 +73,8 @@
                     <property name="visible">1</property>
                     <property name="halign">center</property>
                     <property name="selection-mode">single</property>
+                    <property name="row-spacing">1</property>
+                    <property name="column-spacing">1</property>
                     <property name="min-children-per-line">5</property>
                     <signal name="selected-children-changed" handler="preview_selected" swapped="yes"/>
                   </object>
