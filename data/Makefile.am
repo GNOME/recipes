@@ -226,6 +226,11 @@ appdata_in_files = appdata/org.gnome.Recipes.appdata.xml.in
 dist_appdata_DATA = $(appdata_in_files:.appdata.xml.in=.appdata.xml)
 
 %.appdata.xml: %.appdata.xml.in
-	$(AM_V_GEN) mkdir appdata; msgfmt --xml -d $(top_srcdir)/po --template $< -o $@
+	$(AM_V_GEN) mkdir -p appdata; msgfmt --xml -d $(top_srcdir)/po --template $< -o $@
 
 EXTRA_DIST += $(appdata_in_files)
+
+check: check-appstream
+
+check-appstream:
+	appstream-util validate-relax appdata/org.gnome.Recipes.appdata.xml
