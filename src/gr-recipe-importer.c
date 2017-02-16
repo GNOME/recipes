@@ -805,6 +805,349 @@ completed_cb (AutoarExtractor  *extractor,
 }
 #endif
 
+static gboolean
+in_element (GMarkupParseContext *context,
+            ...)
+{
+        va_list args;
+        gboolean result;
+        char *next;
+        const GSList *stack;
+
+        va_start (args, context);
+
+        result = TRUE;
+
+        stack = g_markup_parse_context_get_element_stack (context);
+
+        while ((next = va_arg (args, char*)) != NULL) {
+                const char *elt;
+
+                if (stack == NULL) {
+                        result = FALSE;
+                        break;
+                }
+
+                elt = stack->data;
+                stack = stack->next;
+
+                if (strcmp (next, elt) != 0) {
+                        result = FALSE;
+                        break;
+                }
+        }
+
+        va_end (args);
+
+        return result;
+}
+
+static const char *
+find_attribute (const char *name,
+                const char **names,
+                const char **values)
+{
+        int i;
+
+        for (i = 0; names[i]; i++) {
+                if (strcmp (name, names[i]) == 0)
+                        return values[i];
+        }
+
+        return NULL;
+}
+
+typedef struct {
+        gboolean collecting_text;
+        GString *text;
+
+        char *author;
+        char *name;
+        GList *categories;
+        int yield;
+        char *prep_time;
+        char *instructions;
+
+        char *ing_group;
+        char *ing_name;
+        double ing_amount;
+        char *ing_unit;
+        GString *ingredients;
+
+        GList *objects;
+} ParserData;
+
+static void
+kreml_start_element (GMarkupParseContext *context,
+                     const gchar         *element_name,
+                     const gchar        **attribute_names,
+                     const gchar        **attribute_values,
+                     gpointer             user_data,
+                     GError             **error)
+{
+        ParserData *pd = user_data;
+
+        if (in_element (context, "title", "krecipes-description", "krecipes-recipe", NULL)) {
+                g_string_set_size (pd->text, 0);
+                pd->collecting_text = TRUE;
+        }
+        else if (in_element (context, "author", "krecipes-description", "krecipes-recipe", NULL)) {
+                g_string_set_size (pd->text, 0);
+                pd->collecting_text = TRUE;
+        }
+        else if (in_element (context, "cat", "category", "krecipes-description", "krecipes-recipe", NULL)) {
+                g_string_set_size (pd->text, 0);
+                pd->collecting_text = TRUE;
+        }
+        else if (in_element (context, "amount", "yield", "krecipes-description", "krecipes-recipe", NULL)) {
+                g_string_set_size (pd->text, 0);
+                pd->collecting_text = TRUE;
+        }
+        else if (in_element (context, "preparation-time", "krecipes-description", "krecipes-recipe", NULL)) {
+                g_string_set_size (pd->text, 0);
+                pd->collecting_text = TRUE;
+        }
+        else if (in_element (context, "krecipes-instructions", "krecipes-recipe", NULL)) {
+                g_string_set_size (pd->text, 0);
+                pd->collecting_text = TRUE;
+        }
+        else if (in_element (context, "krecipes-ingredients", "krecipes-recipe", NULL)) {
+                g_string_set_size (pd->ingredients, 0);
+        }
+        else if (in_element (context, "ingredient-group", "krecipes-ingredients", "krecipes-recipe", NULL)) {
+                pd->ing_group = g_strdup (find_attribute ("name", attribute_names, attribute_values));
+        }
+        else if (in_element (context, "name", "ingredient", "ingredient-group", "krecipes-ingredients", "krecipes-recipe", NULL)) {
+                g_string_set_size (pd->text, 0);
+                pd->collecting_text = TRUE;
+        }
+        else if (in_element (context, "amount", "ingredient", "ingredient-group", "krecipes-ingredients", "krecipes-recipe", NULL)) {
+                g_string_set_size (pd->text, 0);
+                pd->collecting_text = TRUE;
+        }
+        else if (in_element (context, "unit", "ingredient", "ingredient-group", "krecipes-ingredients", "krecipes-recipe", NULL)) {
+                g_string_set_size (pd->text, 0);
+                pd->collecting_text = TRUE;
+        }
+}
+
+static void
+kreml_end_element (GMarkupParseContext *context,
+                   const gchar         *element_name,
+                   gpointer             user_data,
+                   GError             **error)
+{
+        ParserData *pd = user_data;
+
+        if (in_element (context, "title", "krecipes-description", NULL)) {
+                pd->collecting_text = FALSE;
+                pd->name = g_strdup (pd->text->str);
+        }
+        else if (in_element (context, "author", "krecipes-description", "krecipes-recipe", NULL)) {
+                pd->collecting_text = FALSE;
+                pd->author = g_strdup (pd->text->str);
+        }
+        else if (in_element (context, "cat", "category", "krecipes-description", "krecipes-recipe", NULL)) {
+                char *cat;
+
+                pd->collecting_text = FALSE;
+                cat = g_strdup (pd->text->str);
+                pd->categories = g_list_prepend (pd->categories, cat);
+        }
+        else if (in_element (context, "amount", "yield", "krecipes-description", "krecipes-recipe", NULL)) {
+                g_autofree char *cat = NULL;
+
+                pd->collecting_text = FALSE;
+                cat = g_strdup (pd->text->str);
+                pd->yield = atoi (cat);
+        }
+        else if (in_element (context, "preparation-time", "krecipes-description", "krecipes-recipe", NULL)) {
+                pd->collecting_text = FALSE;
+                pd->prep_time = g_strdup (pd->text->str);
+        }
+        else if (in_element (context, "krecipes-instructions", "krecipes-recipe", NULL)) {
+                pd->collecting_text = FALSE;
+                pd->instructions = g_strdup (pd->text->str);
+        }
+        else if (in_element (context, "name", "ingredient", "ingredient-group", "krecipes-ingredients", "krecipes-recipe", NULL)) {
+                pd->collecting_text = FALSE;
+                pd->ing_name = g_strdup (pd->text->str);
+        }
+        else if (in_element (context, "amount", "ingredient", "ingredient-group", "krecipes-ingredients", "krecipes-recipe", NULL)) {
+                g_autofree char *amount = NULL;
+
+                pd->collecting_text = FALSE;
+                amount = g_strdup (pd->text->str);
+                pd->ing_amount = atof (amount);
+        }
+        else if (in_element (context, "unit", "ingredient", "ingredient-group", "krecipes-ingredients", "krecipes-recipe", NULL)) {
+                pd->collecting_text = FALSE;
+                pd->ing_unit = g_strdup (pd->text->str);
+        }
+        else if (in_element (context, "ingredient", "ingredient-group", "krecipes-ingredients", "krecipes-recipe", NULL)) {
+                if (pd->ingredients->len > 0)
+                        g_string_append (pd->ingredients, "\n");
+                g_string_append_printf (pd->ingredients, "%g\t%s\t\%s\t%s",
+                                        pd->ing_amount, pd->ing_unit, pd->ing_name, pd->ing_group ? pd->ing_group : "");
+                g_clear_pointer (&pd->ing_unit, g_free);
+                g_clear_pointer (&pd->ing_name, g_free);
+                pd->ing_amount = 0;
+        }
+        else if (in_element (context, "ingredient-group", "krecipes-ingredients", "krecipes-recipe", NULL)) {
+                g_clear_pointer (&pd->ing_group, g_free);
+        }
+
+        if (strcmp (element_name, "krecipes-recipe") == 0) {
+                GrRecipe *recipe;
+                GrChef *chef;
+                g_auto(GStrv) strv = NULL;
+                g_autofree char *chef_id = NULL;
+                g_autofree char *id = NULL;
+
+                strv = g_strsplit (pd->author, " ", -1);
+                if (strv[1])
+                        chef_id = generate_id (strv[0], "_", strv[1], NULL);
+                else
+                        chef_id = generate_id (strv[0], NULL);
+
+                /* FIXME: find chef by name */
+                chef = gr_chef_new ();
+                g_object_set (chef,
+                              "id", chef_id,
+                              "fullname", pd->author,
+                              NULL);
+
+                id = generate_id ("R_", pd->name, "_by_", chef_id, NULL);
+
+                recipe = gr_recipe_new ();
+                g_object_set (recipe,
+                              "id", id,
+                              "author", chef_id,
+                              "name", pd->name,
+                              "serves", pd->yield,
+                              "prep-time", pd->prep_time,
+                              "instructions", pd->instructions,
+                              "ingredients", pd->ingredients->str,
+                              NULL);
+
+                if (pd->categories) {
+                        /* FIXME find best match */
+                        g_object_set (recipe,
+                                      "category", pd->categories->data,
+                                      NULL);
+                }
+
+                pd->objects = g_list_prepend (pd->objects, chef);
+                pd->objects = g_list_prepend (pd->objects, recipe);
+
+                g_clear_pointer (&pd->author, g_free);
+                g_clear_pointer (&pd->name, g_free);
+                g_list_free_full (pd->categories, g_free);
+                pd->categories = NULL;
+                pd->yield = 0;
+                g_clear_pointer (&pd->prep_time, g_free);
+                g_clear_pointer (&pd->instructions, g_free);
+                g_string_set_size (pd->ingredients, 0);
+        }
+}
+
+static void kreml_text (GMarkupParseContext *context,
+                        const gchar         *text,
+                        gsize                text_len,
+                        gpointer             user_data,
+                        GError             **error)
+{
+        ParserData *pd = user_data;
+
+        if (pd->collecting_text)
+                g_string_append_len (pd->text, text, text_len);
+}
+
+static const GMarkupParser parser = {
+        kreml_start_element,
+        kreml_end_element,
+        kreml_text,
+        NULL,
+        NULL
+};
+
+static void
+import_from_krecipes (GrRecipeImporter *importer,
+                      GFile            *file)
+{
+        g_autoptr(GMarkupParseContext) context = NULL;
+        g_autofree char *buffer;
+        gsize length;
+        g_autoptr(GError) error = NULL;
+        g_autofree char *path = NULL;
+        ParserData data;
+        GList *l;
+        GrRecipeStore *store;
+
+        path = g_file_get_path (file);
+
+        data.collecting_text = FALSE;
+        data.text = g_string_new ("");
+        data.name = NULL;
+        data.author= NULL;
+        data.categories = NULL;
+        data.objects = NULL;
+        data.yield = 0;
+        data.prep_time = NULL;
+        data.instructions = NULL;
+        data.ing_group = NULL;
+        data.ing_name = NULL;
+        data.ing_unit = NULL;
+        data.ing_amount = 0;
+        data.ingredients = g_string_new ("");
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+        if (!g_file_load_contents (file, NULL, &buffer, &length, NULL, &error)) {
+                g_message ("Failed to load %s: %s", path, error->message);
+                return;
+        }
+
+        context = g_markup_parse_context_new (&parser, 0, &data, NULL);
+        if (!g_markup_parse_context_parse (context, buffer, length, &error)) {
+                g_message ("Failed to parse %s: %s", path, error->message);
+        }
+
+        for (l = data.objects; l; l = l->next) {
+                GObject *obj = l->data;
+
+                if (GR_IS_CHEF (obj)) {
+                        GrChef *chef = GR_CHEF (obj);
+
+                        g_print ("chef: id=%s, fullname=%s\n",
+                                 gr_chef_get_id (chef),
+                                 gr_chef_get_fullname (chef));
+
+                        if (!gr_recipe_store_add_chef (store, chef, &error)) {
+                                g_message ("Failed to add chef: %s", error->message);
+                        }
+                }
+                else if (GR_IS_RECIPE (obj)) {
+                        GrRecipe *recipe = GR_RECIPE (obj);
+
+                        g_print ("recipe:\n\tid=%s\n\tname=%s\n\tserves=%d\n\tcategory: %s\n\tprep-time: %s\n\tinstructions: %s\n",
+                                 gr_recipe_get_id (recipe),
+                                 gr_recipe_get_name (recipe),
+                                 gr_recipe_get_serves (recipe),
+                                 gr_recipe_get_category (recipe),
+                                 gr_recipe_get_prep_time (recipe),
+                                 gr_recipe_get_instructions (recipe));
+
+                        if (!gr_recipe_store_add_recipe (store, recipe, &error)) {
+                                g_message ("Failed to add recipe: %s", error->message);
+                        }
+                }
+                else {
+                        g_print ("unknown object: %s\n", g_type_name_from_instance ((GTypeInstance*)obj));
+                }
+        }
+}
+
 void
 gr_recipe_importer_import_from (GrRecipeImporter *importer,
                                 GFile            *file)
@@ -816,6 +1159,14 @@ gr_recipe_importer_import_from (GrRecipeImporter *importer,
                      _("This build does not support importing"));
         error_cb (NULL, error, importer);
 #else
+        g_autofree char *basename = NULL;
+
+        basename = g_file_get_basename (file);
+        if (g_str_has_suffix (basename , ".kreml")) {
+                import_from_krecipes (importer, file);
+                return;
+        }
+
         importer->dir = g_mkdtemp (g_build_filename (g_get_tmp_dir (), "recipeXXXXXX", NULL));
         importer->output = g_file_new_for_path (importer->dir);
 
