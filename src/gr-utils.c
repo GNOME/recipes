@@ -449,7 +449,7 @@ format_date_time_difference (GDateTime *end,
                 }
         }
 
-        return _("some time ago");
+        return g_strdup (_("some time ago"));
 }
 
 gboolean
