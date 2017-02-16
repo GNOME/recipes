@@ -609,7 +609,6 @@ gr_details_page_set_recipe (GrDetailsPage *page,
 
         g_object_get (recipe, "images", &images, NULL);
         gr_image_viewer_set_images (GR_IMAGE_VIEWER (page->recipe_image), images, index);
-        //gr_image_viewer_show_image (GR_IMAGE_VIEWER (page->recipe_image), index);
 
         ing = gr_ingredients_list_new (ingredients);
         g_set_object (&page->ingredients, ing);
