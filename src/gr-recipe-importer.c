@@ -25,7 +25,6 @@
 
 #ifdef ENABLE_AUTOAR
 #include <gnome-autoar/gnome-autoar.h>
-#include "glnx-shutil.h"
 #endif
 
 #include "gr-recipe-importer.h"
@@ -181,10 +180,6 @@ static void
 cleanup_import (GrRecipeImporter *importer)
 {
 #ifdef ENABLE_AUTOAR
-        g_autoptr(GError) error = NULL;
-
-        if (!glnx_shutil_rm_rf_at (-1, importer->dir, NULL, &error))
-                g_warning ("Failed to clean up temp directory %s: %s", importer->dir, error->message);
         g_clear_object (&importer->extractor);
 #endif
 

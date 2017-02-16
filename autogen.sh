@@ -14,9 +14,6 @@ cd $srcdir
 
 git submodule update --init --recursive
 
-# Workaround automake bug with subdir-objects and computed paths
-sed -e 's,$(libglnx_srcpath),libglnx,g' < libglnx/Makefile-libglnx.am >libglnx/Makefile-libglnx.am.inc
-
 # shellcheck disable=SC2016
 PKG_NAME=$(autoconf --trace 'AC_INIT:$1' configure.ac)
 

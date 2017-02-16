@@ -32,7 +32,6 @@
 #include "gr-images.h"
 #include "gr-app.h"
 
-#include "glnx-shutil.h"
 
 struct _GrRecipeStore
 {
@@ -1052,18 +1051,31 @@ gr_recipe_store_init (GrRecipeStore *self)
         load_user (self, dir);
 
         dir = get_old_user_data_dir ();
-        if (load_recipes (self, dir, FALSE))
+        if (load_recipes (self, dir, FALSE)) {
+                g_autofree char *filename = g_build_filename (dir, "recipes.db", NULL);
+                g_remove (filename);
                 save_recipes (self);
-        if (load_favorites (self, dir))
+        }
+        if (load_favorites (self, dir)) {
+                g_autofree char *filename = g_build_filename (dir, "favorites.db", NULL);
+                g_remove (filename);
                 save_favorites (self);
-        if (load_shopping (self, dir))
+        }
+        if (load_shopping (self, dir)) {
+                g_autofree char *filename = g_build_filename (dir, "shopping.db", NULL);
+                g_remove (filename);
                 save_shopping (self);
-        if (load_cooked (self, dir))
+        }
+        if (load_cooked (self, dir)) {
+                g_autofree char *filename = g_build_filename (dir, "cooked.db", NULL);
+                g_remove (filename);
                 save_cooked (self);
-        if (load_chefs (self, dir, FALSE))
+        }
+        if (load_chefs (self, dir, FALSE)) {
+                g_autofree char *filename = g_build_filename (dir, "chefs.db", NULL);
+                g_remove (filename);
                 save_chefs (self);
-        if (!glnx_shutil_rm_rf_at (-1, dir, NULL, &error))
-                g_message ("Failed to remove %s: %s", dir, error->message);
+        }
 
         g_message ("%d recipes loaded", g_hash_table_size (self->recipes));
         g_message ("%d chefs loaded", g_hash_table_size (self->chefs));

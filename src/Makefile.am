@@ -2,7 +2,6 @@ bin_PROGRAMS = gnome-recipes
 
 commitid := $(shell $(GIT) describe)
 libgd_info = $(shell cat $(top_srcdir)/libgd.info)
-libglnx_info = $(shell cat $(top_srcdir)/libglnx.info)
 
 gnome_recipes_CFLAGS = \
 	$(WARN_CFLAGS) 			\
@@ -14,10 +13,8 @@ gnome_recipes_CFLAGS = \
 	-DLOCALEDIR=\"$(localedir)\" 	\
 	-DCOMMIT_ID=\"$(commitid)\"	\
 	-DLIBGD_INFO=\"$(libgd_info)\"	\
-	-DLIBGLNX_INFO=\"$(libglnx_info)\"	\
 	-DMICRO_VERSION=$(MICRO_VERSION) \
 	-I "$(top_srcdir)/libgd"	\
-	-I "$(top_srcdir)/libglnx"	\
 	-I "$(top_srcdir)/src"		\
 	-I "$(top_builddir)/src"
 
@@ -25,10 +22,6 @@ gnome_recipes_LDADD = \
 	$(RECIPES_LIBS)			\
 	-lm				\
 	$(top_builddir)/libgd/libgd.la
-
-if USE_AUTOAR
-gnome_recipes_LDADD += $(top_builddir)/libglnx.la
-endif
 
 gnome_recipes_SOURCES = \
 	main.c 			\

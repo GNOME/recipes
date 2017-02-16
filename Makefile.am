@@ -1,10 +1,10 @@
 SUBDIRS = . libgd tools data src po tests
 
-EXTRA_DIST = AUTHORS NEWS libgd.info libglnx.info
+EXTRA_DIST = AUTHORS NEWS libgd.info
 
-CLEANFILES = AUTHORS NEWS libgd.info libglnx.info
+CLEANFILES = AUTHORS NEWS libgd.info
 
-BUILT_SOURCES = libgd.info libglnx.info
+BUILT_SOURCES = libgd.info
 
 AUTHORS:
 	$(AM_V_GEN)if test -d "$(srcdir)/.git"; \
@@ -29,26 +29,11 @@ NEWS: data/appdata/org.gnome.Recipes.appdata.xml.in
 libgd.info:
 	$(AM_V_GEN)(cd libgd; git log -1 --pretty=%h) > $@
 
-libglnx.info:
-	$(AM_V_GEN)(cd libglnx; git log -1 --pretty=%h) > $@
-
 .PHONY: NEWS
 
 # Generate the ChangeLog.
 @GENERATE_CHANGELOG_RULES@
 dist-hook: dist-ChangeLog
-
-if USE_AUTOAR
-lib_LTLIBRARIES =
-noinst_LTLIBRARIES = libglnx.la
-libglnx_srcpath := $(srcdir)/libglnx
-libglnx_cflags := \
-        $(RECIPES_CFLAGS) \
-        "-I$(libglnx_srcpath)" \
-        $(NULL)
-libglnx_libs := $(RECIPES_LIBS)
-include libglnx/Makefile-libglnx.am.inc
-endif
 
 GITIGNOREFILES = \
 	**/*.swp \

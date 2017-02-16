@@ -25,7 +25,6 @@
 #include <glib/gstdio.h>
 #ifdef ENABLE_AUTOAR
 #include <gnome-autoar/gnome-autoar.h>
-#include "glnx-shutil.h"
 #endif
 
 #include "gr-recipe-exporter.h"
@@ -107,11 +106,6 @@ static void
 cleanup_export (GrRecipeExporter *exporter)
 {
 #ifdef ENABLE_AUTOAR
-        g_autoptr(GError) error = NULL;
-
-        if (!glnx_shutil_rm_rf_at (-1, exporter->dir, NULL, &error))
-                g_warning ("Failed to clean up temp directory %s: %s", exporter->dir, error->message);
-
         g_clear_object (&exporter->compressor);
 #endif
 
