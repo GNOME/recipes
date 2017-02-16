@@ -522,7 +522,10 @@ gr_image_viewer_set_images (GrImageViewer *viewer,
 
         for (i = 0; i < images->len; i++) {
                 GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, i);
-                add_image (viewer, ri, FALSE);
+
+                g_array_append_vals (viewer->images, ri, 1);
+                ri = &g_array_index (viewer->images, GrRotatedImage, viewer->images->len - 1);
+                ri->path = g_strdup (ri->path);
         }
 
         populate_preview (viewer);
