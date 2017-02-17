@@ -203,8 +203,6 @@ gr_recipe_parse_instructions (const char *instructions)
                                 g_message ("Could not parse timer field %s; ignoring", s);
                         }
 
-                        g_print ("timer: %ld seconds\n", timer);
-
                         prefix = g_strndup (step, p - step);
                         q = strstr (p, "]");
                         tmp = g_strconcat (prefix, q + 1, NULL);
