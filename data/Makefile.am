@@ -45,6 +45,7 @@ dist_ingredients_DATA = \
 	ingredients/Carrot.png
 
 dist_images_DATA = \
+	images/adelia.jpg		\
 	images/adria.jpg		\
 	images/afranke.jpg		\
 	images/alex.png			\
@@ -88,6 +89,7 @@ dist_images_DATA = \
 	images/grumbeerekiechle_1.JPG	\
 	images/grumbeerekiechle_2.JPG	\
 	images/grumbeerekiechle_3.JPG	\
+	images/mantovana.jpg		\
 	images/meatballs.jpg		\
 	images/non_knead_buns.png	\
 	images/non_knead_buns1.jpg	\
