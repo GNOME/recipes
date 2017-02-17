@@ -61,11 +61,13 @@ dist_images_DATA = \
 	images/erusan.gif		\
 	images/food.jpg			\
 	images/fyksen.jpg		\
+	images/geisha.jpg		\
 	images/halfline.jpg		\
 	images/mclasen.jpg		\
 	images/mwleeds.jpg		\
 	images/Sonic.jpg		\
 	images/tigert.jpg		\
+	images/borscht.jpg		\
 	images/cake_aux_lardons.jpg	\
 	images/cake_aux_lardons2.jpg	\
 	images/donauwellen0.jpg		\

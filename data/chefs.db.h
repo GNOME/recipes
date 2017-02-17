@@ -1,5 +1,7 @@
 #if 0
 
+N_("Artist, Computer Scientist, Traveller.")
+N_("I love cooking. :)")
 N_("A Kuala Lumpur native, transplanted to San Francisco. I bake, I cook, I work on GNOME engagement stuff occasionally. Every now and then I travel between North America, Asia and Europe. Follow me @adeliabakes.")
 N_("Adrià is originally from Barcelona, Spain.")
 N_("Being from Strasbourg, Alexandre is knowledgeable about both Alsatian and French cuisine, but he's not afraid to experiment in other ones as well.")
