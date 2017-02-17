@@ -201,6 +201,9 @@ gr-shell-search-provider-dbus.h gr-shell-search-provider-dbus.c: Makefile.am $(s
 searchproviderdir = $(datadir)/gnome-shell/search-providers
 dist_searchprovider_DATA = org.gnome.Recipes-search-provider.ini
 
+cuisine.css: cuisine.css.in
+	$(AM_V_GEN) sed -e "s|\@pkgdatadir\@|$(pkgdatadir)|" $< > $@
+
 EXTRA_DIST = \
 	shell-search-provider-dbus-interfaces.xml 	\
 	recipes-ui.gresource.xml 			\

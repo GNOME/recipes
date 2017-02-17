@@ -138,7 +138,22 @@ dist_images_DATA = \
 	images/whitefish1.jpg		\
 	images/whitefish2.jpg		\
 	images/whitefish3.jpg		\
-	images/whitefish4.jpg
+	images/whitefish4.jpg		\
+	images/american.png		\
+	images/chinese.png		\
+	images/french.jpg		\
+	images/indian.jpg		\
+	images/italian.png		\
+	images/mediterranean.png	\
+	images/turkish.png		\
+	images/big-american.png		\
+	images/big-chinese.png		\
+	images/big-french.jpg		\
+	images/big-indian.jpg		\
+	images/big-italian.png		\
+	images/big-mediterranean.png	\
+	images/big-turkish.png
+
 
 dist_pkgdata_DATA = \
 	chefs.db	\
