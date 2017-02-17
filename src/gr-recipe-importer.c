@@ -259,7 +259,7 @@ copy_image (GrRecipeImporter  *importer,
 
         srcpath = g_build_filename (importer->dir, path, NULL);
         source = g_file_new_for_path (srcpath);
-        orig_dest = g_build_filename (g_get_user_data_dir (), "recipes", path, NULL);
+        orig_dest = g_build_filename (get_user_data_dir (), path, NULL);
 
         destpath = g_strdup (orig_dest);
         for (i = 1; i < 10; i++) {
