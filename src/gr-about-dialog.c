@@ -627,6 +627,7 @@ gr_about_dialog_new (void)
                 "Adrià Arrufat",
                 "Emmanuele Bassi",
                 "Adelia",
+                "Sylvia",
                 NULL
         };
         g_autoptr(GdkPixbuf) logo = NULL;
