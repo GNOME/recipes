@@ -81,7 +81,7 @@ src =  ['main.c',
   resources_ui,
   resources_images]
 
-executable('recipe',
+executable('gnome-recipes',
            src,
            install : true,
            include_directories : top_inc,
