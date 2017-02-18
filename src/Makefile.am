@@ -137,18 +137,18 @@ gnome_recipes_SOURCES = \
 BUILT_SOURCES = \
 	resources-ui.c		\
 	resources-images.c	\
-	ingredients.c		\
-	no-ingredients.c	\
-	segments.c		\
+	ingredients.inc		\
+	no-ingredients.inc	\
+	segments.inc		\
 	types.h			\
 	types.c			\
 	gr-shell-search-provider-dbus.h \
 	gr-shell-search-provider-dbus.c
 
 DISTCLEANFILES = \
-	ingredients.c		\
-	no-ingredients.c	\
-	segments.c
+	ingredients.inc		\
+	no-ingredients.inc	\
+	segments.inc
 
 MAINTAINERCLEANFILES = \
 	resources-ui.c		\
@@ -158,13 +158,13 @@ MAINTAINERCLEANFILES = \
 	gr-shell-search-provider-dbus.h \
 	gr-shell-search-provider-dbus.c
 
-segments.c: $(top_srcdir)/data/segments.list
+segments.inc: $(top_srcdir)/data/segments.list
 	$(AM_V_GEN) $(SED) -e 's/^\(.*\)$$/	N_("\1"),/' $^ > $@
 
-ingredients.c: $(top_srcdir)/data/ingredients.list
+ingredients.inc: $(top_srcdir)/data/ingredients.list
 	$(AM_V_GEN) $(SED) -e 's/^\(.*\)$$/	N_("\1"),/' $^ > $@
 
-no-ingredients.c: $(top_srcdir)/data/ingredients.list
+no-ingredients.inc: $(top_srcdir)/data/ingredients.list
 	$(AM_V_GEN) $(SED) -e 's/^\(.*\)$$/	N_("no \1"),/' $^ > $@
 
 resource_ui_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/recipes-ui.gresource.xml)

@@ -28,12 +28,12 @@
 
 
 static const char *names_[] = {
-#include "ingredients.c"
+#include "ingredients.inc"
         NULL
 };
 
 static const char *negations[] = {
-#include "no-ingredients.c"
+#include "no-ingredients.inc"
         NULL
 };
 
