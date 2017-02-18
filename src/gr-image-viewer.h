@@ -41,6 +41,8 @@ void           gr_image_viewer_rotate_image (GrImageViewer *viewer,
 void           gr_image_viewer_show_image (GrImageViewer *viewer,
                                            int            idx);
 int            gr_image_viewer_get_index (GrImageViewer *viewer);
+void           gr_image_viewer_persist_changes (GrImageViewer *viewer);
+void           gr_image_viewer_revert_changes (GrImageViewer *viewer);
 
 G_END_DECLS
 

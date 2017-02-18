@@ -49,6 +49,9 @@ struct _GrImageViewer
         GArray *images;
         int index;
 
+        GPtrArray *additions;
+        GPtrArray *removals;
+
         guint hide_timeout;
 
         GtkGesture *gesture;
@@ -85,6 +88,11 @@ static void
 gr_image_viewer_finalize (GObject *object)
 {
         GrImageViewer *viewer = GR_IMAGE_VIEWER (object);
+
+        gr_image_viewer_revert_changes (viewer);
+
+        g_clear_pointer (&viewer->additions, g_ptr_array_unref);
+        g_clear_pointer (&viewer->removals, g_ptr_array_unref);
 
         g_clear_pointer (&viewer->images, g_array_unref);
         remove_hide_timeout (viewer);
@@ -414,6 +422,9 @@ gr_image_viewer_init (GrImageViewer *self)
         gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (self->gesture), GTK_PHASE_BUBBLE);
         g_signal_connect (self->gesture, "pressed", G_CALLBACK (button_press), self);
         self->images = gr_rotated_image_array_new ();
+
+        self->additions = g_ptr_array_new_with_free_func (g_free);
+        self->removals = g_ptr_array_new_with_free_func (g_free);
 }
 
 static void
@@ -553,6 +564,8 @@ file_chooser_response (GtkNativeDialog *self,
 
                         add_image (viewer, &ri, TRUE);
 
+                        g_ptr_array_add (viewer->additions, g_strdup (ri.path));
+
                         g_free (ri.path);
                 }
                 g_slist_free_full (names, g_free);
@@ -615,7 +628,7 @@ gr_image_viewer_remove_image (GrImageViewer *viewer)
 
         ri = &g_array_index (viewer->images, GrRotatedImage, viewer->index);
 
-        remove_image (ri->path);
+        g_ptr_array_add (viewer->removals, g_strdup (ri->path));
 
         g_array_remove_index (viewer->images, viewer->index);
 
@@ -670,4 +683,26 @@ int
 gr_image_viewer_get_index (GrImageViewer *viewer)
 {
         return viewer->images->len;
+}
+
+void
+gr_image_viewer_persist_changes (GrImageViewer *viewer)
+{
+        int i;
+
+        g_ptr_array_set_size (viewer->additions, 0);
+        for (i = 0; i < viewer->removals->len; i++)
+                remove_image (g_ptr_array_index (viewer->removals, i));
+        g_ptr_array_set_size (viewer->removals, 0);
+}
+
+void
+gr_image_viewer_revert_changes (GrImageViewer *viewer)
+{
+        int i;
+
+        g_ptr_array_set_size (viewer->removals, 0);
+        for (i = 0; i < viewer->additions->len; i++)
+                remove_image (g_ptr_array_index (viewer->additions, i));
+        g_ptr_array_set_size (viewer->additions, 0);
 }
