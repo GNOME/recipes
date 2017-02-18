@@ -287,7 +287,7 @@ static void
 gr_chef_dialog_set_chef (GrChefDialog *self,
                          GrChef       *chef)
 {
-        g_autoptr(GrChef) old_chef = self->chef;
+        GrChef *old_chef = self->chef;
 
         revert_changes (self);
 
