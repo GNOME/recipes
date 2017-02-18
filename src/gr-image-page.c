@@ -332,6 +332,8 @@ void
 gr_image_page_show_image (GrImagePage *page,
                           int          idx)
 {
-        page->index = idx % page->images->len;
-        set_current_image (page);
+        if (page->images->len > 0) {
+                page->index = idx % page->images->len;
+                set_current_image (page);
+        }
 }

@@ -965,7 +965,7 @@ gr_window_show_image (GrWindow *window,
                       GArray   *images,
                       int       index)
 {
-        if (images) {
+        if (images && images->len > 0) {
                 gr_image_page_set_images (GR_IMAGE_PAGE (window->image_page), images);
                 gr_image_page_show_image (GR_IMAGE_PAGE (window->image_page), index);
                 gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "image");
