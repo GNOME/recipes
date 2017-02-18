@@ -95,10 +95,14 @@ file_chooser_response (GtkNativeDialog *self,
                        GrChefDialog   *prefs)
 {
         if (response_id == GTK_RESPONSE_ACCEPT) {
-                g_free (prefs->image_path);
-                prefs->image_path = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (self));
-                update_image (prefs);
+                g_autofree char *path = NULL;
 
+                path = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (self));
+
+                g_free (prefs->image_path);
+                prefs->image_path = import_image (path);
+
+                update_image (prefs);
                 field_changed (prefs);
         }
 }
