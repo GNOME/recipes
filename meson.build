@@ -84,3 +84,5 @@ conf.set('pkgdatadir', pkgdatadir)
 configure_file(output : 'config.h', configuration : conf)
 
 subdir('src')
+subdir('tools')
+subdir('tests')
