@@ -61,7 +61,7 @@ if get_option('canberra') != 'no'
   endif
 endif
 
-deps = [ dependency('gtk+-3.0'),
+deps = [ dependency('gtk+-3.0', version : '>=3.20'),
          autoar_dep,
          gspell_dep,
          canberra_dep,
