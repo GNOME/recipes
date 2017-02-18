@@ -19,18 +19,18 @@ The design can be found here: https://wiki.gnome.org/Design/Apps/Recipes
 Building
 --------
 
-Dependencies (at least): autoconf-archive gobject-introspection json-glib-1.0 gnome-autoar-0 gspell-1
+Dependencies (at least): autoconf-archive gobject-introspection json-glib-1.0 gnome-autoar-0 gspell-1 libcanberra
 
 On debian stretch/sid:
 ```
-apt install autoconf-archive gobject-introspection libjson-glib-dev libgnome-autoar-0-dev libgspell-1-dev
+apt install autoconf-archive gobject-introspection libjson-glib-dev libgnome-autoar-0-dev libgspell-1-dev libcanberra-dev
 ```
 
 To build GNOME Recipes from git, use the following steps:
 
 ```
-git clone https://github.com/matthiasclasen/gr.git
-cd gr
+git clone git://git.gnome.org/recipes
+cd recipes
 ./autogen.sh --prefix=<your preferred location>
 make
 make install
@@ -74,12 +74,12 @@ brew install gspell
 ```
 - Clone from git:
 ```
-git clone git://git.gnome.org/recipes.git
+git clone git://git.gnome.org/recipes
 ```
 - Build from git as usual, disabling some problematic dependencies:
 ```
 cd recipes
-./autogen --disable-autoar
+./autogen --disable-autoar --disable-canberra
 make
 ```
 To build a released version of recipes on OS X, just
