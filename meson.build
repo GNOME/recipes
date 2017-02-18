@@ -26,10 +26,28 @@ else
   conf.set_quoted('LIBGD_INFO', 'unknown')
 endif
 
+autoar_dep = dependency('gnome-autoar-0', required : false)
+if autoar_dep.found()
+  conf.set('ENABLE_AUTOAR', true)
+  conf.set_quoted('AUTOAR_VERSION', autoar_dep.version())
+endif
+
+gspell_dep = dependency('gspell-1', required : false)
+if gspell_dep.found()
+  conf.set('ENABLE_GSPELL', true)
+  conf.set_quoted('GSPELL_VERSION', gspell_dep.version())
+endif
+
+canberra_dep = dependency('libcanberra', required : false)
+if canberra_dep.found()
+  conf.set('ENABLE_CANBERRA', true)
+  conf.set_quoted('CANBERRA_VERSION', canberra_dep.version())
+endif
+
 deps = [ dependency('gtk+-3.0'),
-         dependency('gnome-autoar-0'),
-         dependency('gspell-1'),
-         dependency('libcanberra'),
+         autoar_dep,
+         gspell_dep,
+         canberra_dep,
          libgd_dep ]
 
 pkgdatadir = join_paths([ get_option('prefix'),
