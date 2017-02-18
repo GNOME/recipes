@@ -366,12 +366,12 @@ populate_system_tab (GtkTextView *view)
                 text_buffer_append (buffer, _("Bundled libraries"));
                 text_buffer_append (buffer, "\n");
 
-#if ENABLE_AUTOAR
+#ifdef ENABLE_AUTOAR
                 text_buffer_append_printf (buffer, "\tgnome-autoar\t%s\t", AUTOAR_VERSION);
                 text_buffer_append_link (view, buffer, "LGPLv2", "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
                 text_buffer_append (buffer, "\n");
 #endif
-#if ENABLE_GSPELL
+#ifdef ENABLE_GSPELL
                 text_buffer_append_printf (buffer, "\tgspell\t%s\t", GSPELL_VERSION);
                 text_buffer_append_link (view, buffer, "LGPLv2", "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
                 text_buffer_append (buffer, "\n");
@@ -396,10 +396,10 @@ populate_system_tab (GtkTextView *view)
                                            gtk_get_major_version (),
                                            gtk_get_minor_version (),
                                            gtk_get_micro_version ());
-#if ENABLE_AUTOAR
+#ifdef ENABLE_AUTOAR
                 text_buffer_append_printf (buffer, "\tgnome-autoar\t%s\n", AUTOAR_VERSION);
 #endif
-#if ENABLE_GSPELL
+#ifdef ENABLE_GSPELL
                 text_buffer_append_printf (buffer, "\tgspell\t%s\n", GSPELL_VERSION);
 #endif
 #ifdef ENABLE_CANBERRA
