@@ -122,31 +122,3 @@ gr_ingredient_get_negation (const char *name)
 
         return NULL;
 }
-
-char *
-gr_ingredient_get_image (const char *name)
-{
-        int i;
-        g_autofree char *filename = NULL;
-
-        for (i = 0; names[i]; i++) {
-                if (g_strcmp0 (name, names[i]) == 0) {
-                        filename = g_strconcat (names_[i], ".png", NULL);
-                        break;
-                }
-        }
-
-        if (filename) {
-                g_autofree char *current_dir = NULL;
-                char *path;
-
-                path = g_build_filename (get_pkg_data_dir (), "ingredients", filename, NULL);
-                if (g_file_test (path, G_FILE_TEST_EXISTS))
-                        return path;
-                g_free (path);
-                current_dir = g_get_current_dir ();
-                return g_build_filename (current_dir, "data", "ingredients", filename, NULL);
-        }
-
-        return NULL;
-}

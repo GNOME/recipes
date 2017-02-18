@@ -25,25 +25,8 @@ EXTRA_DIST += $(desktop_in_files)
 mimedir = $(datadir)/mime/packages
 dist_mime_DATA = org.gnome.Recipes-mime.xml
 
-ingredientsdir = $(pkgdatadir)/ingredients
 imagesdir = $(pkgdatadir)/images
 soundsdir = $(pkgdatadir)/sounds
-
-dist_ingredients_DATA = \
-	ingredients/Almond.png 		\
-	ingredients/Amaretti.png	\
-	ingredients/Anchovis.png	\
-	ingredients/Apple.png		\
-	ingredients/Apricot.png		\
-	ingredients/Artichoke.png	\
-	ingredients/Asparagus.png	\
-	ingredients/Aubergine.png	\
-	ingredients/Bacon.png 		\
-	ingredients/Bagel.png		\
-	ingredients/Banana.png		\
-	ingredients/Basil.png		\
-	ingredients/Biscotti.png 	\
-	ingredients/Carrot.png
 
 dist_images_DATA = \
 	images/adelia.jpg		\
