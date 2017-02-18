@@ -184,6 +184,9 @@ decide_dest_cb (AutoarCompressor *compressor,
 #endif
 
 static gboolean
+#ifndef ENABLE_AUTOAR
+G_GNUC_UNUSED
+#endif
 export_one_recipe (GrRecipeExporter  *exporter,
                    GrRecipe          *recipe,
                    GKeyFile          *keyfile,
@@ -283,6 +286,9 @@ export_one_recipe (GrRecipeExporter  *exporter,
 }
 
 static gboolean
+#ifndef ENABLE_AUTOAR
+G_GNUC_UNUSED
+#endif
 export_one_chef (GrRecipeExporter  *exporter,
                  GrChef            *chef,
                  GKeyFile          *keyfile,
