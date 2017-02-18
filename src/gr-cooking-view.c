@@ -311,6 +311,9 @@ set_wide (GrCookingView *view,
         view->wide = wide;
 
         gtk_label_set_max_width_chars (GTK_LABEL (view->cooking_label), wide ? 40 : 20);
+        gtk_widget_set_size_request (gtk_widget_get_parent (view->cooking_timer),
+                                     wide ? 400 : 320,
+                                     wide ? 400 : 320);
 
         g_object_notify (G_OBJECT (view), "wide");
 }

@@ -39,10 +39,11 @@
                 <property name="orientation">vertical</property>
                 <property name="spacing">20</property>
                 <child>
-                  <object class="GtkAspectFrame">
+                  <object class="GtkAspectFrame" >
                     <property name="visible">1</property>
                     <property name="obey-child">0</property>
-                    <property name="height-request">400</property>
+                    <property name="width-request">320</property>
+                    <property name="height-request">320</property>
                     <style>
                       <class name="timer-frame"/>
                     </style>
