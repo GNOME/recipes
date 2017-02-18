@@ -376,6 +376,11 @@ populate_system_tab (GtkTextView *view)
                 text_buffer_append_link (view, buffer, "LGPLv2", "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
                 text_buffer_append (buffer, "\n");
 #endif
+#ifdef ENABLE_CANBERRA
+                text_buffer_append_printf (buffer, "\tlibcanberra\t%s\t", CANBERRA_VERSION);
+                text_buffer_append_link (view, buffer, "LGPLv2", "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
+                text_buffer_append (buffer, "\n");
+#endif
                 text_buffer_append_printf (buffer, "\tlibgd\t%s\t", LIBGD_INFO);
                 text_buffer_append_link (view, buffer, "LGPLv2", "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
                 text_buffer_append (buffer, "\n");
@@ -396,6 +401,9 @@ populate_system_tab (GtkTextView *view)
 #endif
 #if ENABLE_GSPELL
                 text_buffer_append_printf (buffer, "\tgspell\t%s\n", GSPELL_VERSION);
+#endif
+#ifdef ENABLE_CANBERRA
+                text_buffer_append_printf (buffer, "\tlibcanberra\t%s\n", CANBERRA_VERSION);
 #endif
 
                 text_buffer_append (buffer, "\n");
