@@ -52,6 +52,9 @@ struct _GrChefDialog
         GtkWidget *chef_list;
         GtkWidget *save_button;
 
+        GPtrArray *additions;
+        GPtrArray *removals;
+
         char *image_path;
 
         GrChef *chef;
@@ -84,6 +87,29 @@ update_image (GrChefDialog *self)
 }
 
 static void
+persist_changes (GrChefDialog *self)
+{
+        int i;
+
+        g_ptr_array_set_size (self->additions, 0);
+        for (i = 0; i < self->removals->len; i++)
+                remove_image (g_ptr_array_index (self->removals, i));
+        g_ptr_array_set_size (self->removals, 0);
+}
+
+
+static void
+revert_changes (GrChefDialog *self)
+{
+        int i;
+
+        g_ptr_array_set_size (self->removals, 0);
+        for (i = 0; i < self->additions->len; i++)
+                remove_image (g_ptr_array_index (self->additions, i));
+        g_ptr_array_set_size (self->additions, 0);
+}
+
+static void
 field_changed (GrChefDialog *self)
 {
         gtk_widget_set_sensitive (self->save_button, TRUE);
@@ -99,8 +125,14 @@ file_chooser_response (GtkNativeDialog *self,
 
                 path = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (self));
 
+                if (prefs->image_path)
+                        g_ptr_array_add (prefs->removals, g_strdup (prefs->image_path));
+
                 g_free (prefs->image_path);
                 prefs->image_path = import_image (path);
+
+                if (prefs->image_path)
+                        g_ptr_array_add (prefs->additions, g_strdup (prefs->image_path));
 
                 update_image (prefs);
                 field_changed (prefs);
@@ -135,6 +167,9 @@ static void
 gr_chef_dialog_finalize (GObject *object)
 {
         GrChefDialog *self = GR_CHEF_DIALOG (object);
+
+        revert_changes (self);
+        g_clear_pointer (&self->removals, g_ptr_array_unref);
 
         g_free (self->image_path);
         g_clear_object (&self->chef);
@@ -209,10 +244,13 @@ save_chef (GrChefDialog *self)
         g_autoptr(GError) error = NULL;
 
         if (!save_chef_dialog (self, &error)) {
+                revert_changes (self);
                 gtk_label_set_label (GTK_LABEL (self->error_label), error->message);
                 gtk_revealer_set_reveal_child (GTK_REVEALER (self->error_revealer), TRUE);
                 return;
         }
+
+        persist_changes (self);
 
         g_signal_emit (self, done_signal, 0, self->chef);
 }
@@ -220,6 +258,7 @@ save_chef (GrChefDialog *self)
 static void
 close_dialog (GrChefDialog *self)
 {
+        revert_changes (self);
         g_signal_emit (self, done_signal, 0, NULL);
 }
 
@@ -230,6 +269,9 @@ gr_chef_dialog_init (GrChefDialog *self)
 
         gtk_list_box_set_header_func (GTK_LIST_BOX (self->chef_list),
                                       all_headers, self, NULL);
+
+        self->additions = g_ptr_array_new_with_free_func (g_free);
+        self->removals = g_ptr_array_new_with_free_func (g_free);
 
 #ifdef ENABLE_GSPELL
         {
@@ -246,6 +288,8 @@ gr_chef_dialog_set_chef (GrChefDialog *self,
                          GrChef       *chef)
 {
         g_autoptr(GrChef) old_chef = self->chef;
+
+        revert_changes (self);
 
         if (g_set_object (&self->chef, chef)) {
                 const char *fullname;
