@@ -25,6 +25,7 @@
 #include <sys/stat.h>
 
 #include <glib/gi18n.h>
+#include <glib/gstdio.h>
 #include <gtk/gtk.h>
 
 #ifdef GDK_WINDOWING_X11
@@ -733,5 +734,17 @@ rotate_image (const char *path,
         if (!gdk_pixbuf_save (oriented, path, format_name, &error, NULL)) {
                 g_message ("Failed to save rotated image: %s", error->message);
                 return;
+        }
+}
+
+void
+remove_image (const char *path)
+{
+        if (g_str_has_prefix (path, get_user_data_dir ())) {
+                g_debug ("Removing image %s", path);
+                g_remove (path);
+        }
+        else {
+                g_print ("Not removing image %s", path);
         }
 }

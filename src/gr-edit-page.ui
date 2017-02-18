@@ -88,7 +88,7 @@
                         <property name="visible">1</property>
                         <signal name="notify::images" handler="images_changed" swapped="yes"/>
                         <signal name="notify::index" handler="index_changed" swapped="yes"/>
-                        <signal name="activate" handler="add_image" swapped="yes"/>
+                        <signal name="activate" handler="add_image_cb" swapped="yes"/>
                         <accessibility>
                           <relation target="add_image_button" type="controlled-by"/>
                           <relation target="rotate_image_left_button" type="controlled-by"/>
@@ -118,7 +118,7 @@
                               <class name="image-button"/>
                               <class name="dim-label"/>
                             </style>
-                            <signal name="clicked" handler="add_image" swapped="yes"/>
+                            <signal name="clicked" handler="add_image_cb" swapped="yes"/>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">1</property>
@@ -144,7 +144,7 @@
                               <class name="image-button"/>
                               <class name="dim-label"/>
                             </style>
-                            <signal name="clicked" handler="rotate_image_left" swapped="yes"/>
+                            <signal name="clicked" handler="rotate_image_left_cb" swapped="yes"/>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">1</property>
@@ -170,7 +170,7 @@
                               <class name="image-button"/>
                               <class name="dim-label"/>
                             </style>
-                            <signal name="clicked" handler="rotate_image_right" swapped="yes"/>
+                            <signal name="clicked" handler="rotate_image_right_cb" swapped="yes"/>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">1</property>
@@ -196,7 +196,7 @@
                               <class name="image-button"/>
                               <class name="dim-label"/>
                             </style>
-                            <signal name="clicked" handler="set_default_image" swapped="yes"/>
+                            <signal name="clicked" handler="set_default_image_cb" swapped="yes"/>
                             <child>
                               <object class="GtkImage" id="default_image_image">
                                 <property name="visible">1</property>
@@ -222,7 +222,7 @@
                               <class name="image-button"/>
                               <class name="dim-label"/>
                             </style>
-                            <signal name="clicked" handler="remove_image" swapped="yes"/>
+                            <signal name="clicked" handler="remove_image_cb" swapped="yes"/>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">1</property>

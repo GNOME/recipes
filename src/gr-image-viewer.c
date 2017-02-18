@@ -611,6 +611,12 @@ gr_image_viewer_add_image (GrImageViewer *viewer)
 void
 gr_image_viewer_remove_image (GrImageViewer *viewer)
 {
+        GrRotatedImage *ri;
+
+        ri = &g_array_index (viewer->images, GrRotatedImage, viewer->index);
+
+        remove_image (ri->path);
+
         g_array_remove_index (viewer->images, viewer->index);
 
         if (viewer->index < viewer->images->len) {

@@ -144,7 +144,7 @@ dismiss_error (GrEditPage *page)
         gtk_revealer_set_reveal_child (GTK_REVEALER (page->error_revealer), FALSE);
 }
 
-static void add_image (GrEditPage *page);
+static void add_image_cb (GrEditPage *page);
 
 static void
 populate_image_flowbox (GrEditPage *page)
@@ -174,7 +174,7 @@ populate_image_flowbox (GrEditPage *page)
         gtk_container_add (GTK_CONTAINER (button), gtk_image_new_from_icon_name ("list-add-symbolic", 1));
         gtk_widget_show_all (button);
         gtk_container_add (GTK_CONTAINER (page->image_flowbox), button);
-        g_signal_connect_swapped (button, "clicked", G_CALLBACK (add_image), page);
+        g_signal_connect_swapped (button, "clicked", G_CALLBACK (add_image_cb), page);
 }
 
 static void
@@ -210,7 +210,7 @@ update_default_image_button (GrEditPage *page)
 }
 
 static void
-set_default_image (GrEditPage *page)
+set_default_image_cb (GrEditPage *page)
 {
         int index;
 
@@ -235,25 +235,25 @@ index_changed (GrEditPage *page)
 }
 
 static void
-add_image (GrEditPage *page)
+add_image_cb (GrEditPage *page)
 {
         gr_image_viewer_add_image (GR_IMAGE_VIEWER (page->images));
 }
 
 static void
-remove_image (GrEditPage *page)
+remove_image_cb (GrEditPage *page)
 {
         gr_image_viewer_remove_image (GR_IMAGE_VIEWER (page->images));
 }
 
 static void
-rotate_image_left (GrEditPage *page)
+rotate_image_left_cb (GrEditPage *page)
 {
         gr_image_viewer_rotate_image (GR_IMAGE_VIEWER (page->images), 90);
 }
 
 static void
-rotate_image_right (GrEditPage *page)
+rotate_image_right_cb (GrEditPage *page)
 {
         gr_image_viewer_rotate_image (GR_IMAGE_VIEWER (page->images), 270);
 }
@@ -1409,10 +1409,10 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, cooking_view);
 
         gtk_widget_class_bind_template_callback (widget_class, dismiss_error);
-        gtk_widget_class_bind_template_callback (widget_class, add_image);
-        gtk_widget_class_bind_template_callback (widget_class, remove_image);
-        gtk_widget_class_bind_template_callback (widget_class, rotate_image_left);
-        gtk_widget_class_bind_template_callback (widget_class, rotate_image_right);
+        gtk_widget_class_bind_template_callback (widget_class, add_image_cb);
+        gtk_widget_class_bind_template_callback (widget_class, remove_image_cb);
+        gtk_widget_class_bind_template_callback (widget_class, rotate_image_left_cb);
+        gtk_widget_class_bind_template_callback (widget_class, rotate_image_right_cb);
         gtk_widget_class_bind_template_callback (widget_class, images_changed);
         gtk_widget_class_bind_template_callback (widget_class, index_changed);
         gtk_widget_class_bind_template_callback (widget_class, add_ingredient2);
@@ -1435,7 +1435,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, add_temperature);
         gtk_widget_class_bind_template_callback (widget_class, image_activated);
 
-        gtk_widget_class_bind_template_callback (widget_class, set_default_image);
+        gtk_widget_class_bind_template_callback (widget_class, set_default_image_cb);
         gtk_widget_class_bind_template_callback (widget_class, edit_chef);
 
         gtk_widget_class_bind_template_callback (widget_class, time_spin_input);

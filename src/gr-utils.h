@@ -83,3 +83,4 @@ window_unexport_handle (GtkWindow *window);
 char *import_image (const char *path);
 void  rotate_image (const char *path,
                     int         angle);
+void  remove_image (const char *path);
