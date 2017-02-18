@@ -26,22 +26,39 @@ else
   conf.set_quoted('LIBGD_INFO', 'unknown')
 endif
 
-autoar_dep = dependency('gnome-autoar-0', required : false)
-if autoar_dep.found()
-  conf.set('ENABLE_AUTOAR', true)
-  conf.set_quoted('AUTOAR_VERSION', autoar_dep.version())
+# Options + dependency checking is overly verbose and repetitive right now, but
+# there is work ongoing to fix it: https://github.com/mesonbuild/meson/pull/1330
+autoar_dep = []
+if get_option('autoar') != 'no'
+  autoar_dep = dependency('gnome-autoar-0', required : false)
+  if autoar_dep.found()
+    conf.set('ENABLE_AUTOAR', true)
+    conf.set_quoted('AUTOAR_VERSION', autoar_dep.version())
+  elif get_option('autoar') == 'yes'
+    error('Support for gnome-autoar was requested but not found')
+  endif
 endif
 
-gspell_dep = dependency('gspell-1', required : false)
-if gspell_dep.found()
-  conf.set('ENABLE_GSPELL', true)
-  conf.set_quoted('GSPELL_VERSION', gspell_dep.version())
+gspell_dep = []
+if get_option('gspell') != 'no'
+  gspell_dep = dependency('gspell-1', required : false)
+  if gspell_dep.found()
+    conf.set('ENABLE_GSPELL', true)
+    conf.set_quoted('GSPELL_VERSION', gspell_dep.version())
+  elif get_option('gspell') == 'yes'
+    error('Support for gspell was requested but not found')
+  endif
 endif
 
-canberra_dep = dependency('libcanberra', required : false)
-if canberra_dep.found()
-  conf.set('ENABLE_CANBERRA', true)
-  conf.set_quoted('CANBERRA_VERSION', canberra_dep.version())
+canberra_dep = []
+if get_option('canberra') != 'no'
+  canberra_dep = dependency('libcanberra', required : false)
+  if canberra_dep.found()
+    conf.set('ENABLE_CANBERRA', true)
+    conf.set_quoted('CANBERRA_VERSION', canberra_dep.version())
+  elif get_option('canberra') == 'yes'
+    error('Support for canberra was requested but not found')
+  endif
 endif
 
 deps = [ dependency('gtk+-3.0'),
