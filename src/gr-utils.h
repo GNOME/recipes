@@ -79,3 +79,5 @@ window_export_handle (GtkWindow            *window,
 
 void
 window_unexport_handle (GtkWindow *window);
+
+char *import_image (const char *path);

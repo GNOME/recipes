@@ -164,7 +164,7 @@ get_user_data_dir (void)
                         dir = g_strdup (g_get_user_data_dir ());
                 else
                         dir = g_build_filename (g_get_user_data_dir (), PACKAGE_NAME, NULL);
-                g_mkdir_with_parents (dir, 0755);
+                g_mkdir_with_parents (dir, S_IRWXU | S_IRWXG | S_IRWXO);
         }
 
         return (const char *)dir;
@@ -626,3 +626,83 @@ window_unexport_handle (GtkWindow *window)
     }
 #endif
 }
+
+static char *
+get_import_name (const char *path)
+{
+        g_autofree char *dir = NULL;
+        g_autofree char *basename = NULL;
+        char *filename;
+        char *dot;
+        char *suffix;
+        int i;
+
+        dir = g_build_filename (get_user_data_dir (), "images", NULL);
+        g_mkdir_with_parents (dir, 0755);
+
+        basename = g_path_get_basename (path);
+
+        filename = g_build_filename (dir, basename, NULL);
+        if (!g_file_test (filename, G_FILE_TEST_EXISTS))
+                return filename;
+
+        g_free (filename);
+
+        dot = strrchr (basename, '.');
+        if (dot) {
+                suffix = dot + 1;
+                *dot = '\0';
+        }
+        else {
+                suffix = NULL;
+        }
+        for (i = 0; i < 100; i++) {
+                char buf[10];
+                g_autofree char *newbase;
+
+                g_snprintf (buf, 10, "%d", i);
+                newbase = g_strconcat (basename, buf, ".", suffix, NULL);
+                filename = g_build_filename (dir, newbase, NULL);
+                if (!g_file_test (filename, G_FILE_TEST_EXISTS))
+                        return filename;
+                g_free (filename);
+        }
+
+        return NULL;
+}
+
+char *
+import_image (const char *path)
+{
+        g_autoptr(GdkPixbuf) pixbuf = NULL;
+        g_autoptr(GdkPixbuf) oriented = NULL;
+        g_autoptr(GError) error = NULL;
+        char *imported;
+        GdkPixbufFormat *format;
+        g_autofree char *format_name = NULL;
+
+        // FIXME: this could be much more efficient
+        pixbuf = gdk_pixbuf_new_from_file (path, &error);
+        if (pixbuf== NULL) {
+                g_message ("Failed to load image '%s': %s", path, error->message);
+                return NULL;
+        }
+
+        imported = get_import_name (path);
+        format = gdk_pixbuf_get_file_info (path, NULL, NULL);
+        if (gdk_pixbuf_format_is_writable (format))
+                format_name = gdk_pixbuf_format_get_name (format);
+        else
+                format_name = g_strdup ("png");
+
+        g_debug ("Loading %s (format %s), importing to %s\n", path, format_name, imported);
+        oriented = gdk_pixbuf_apply_embedded_orientation (pixbuf);
+
+        if (!gdk_pixbuf_save (oriented, imported, format_name, &error, NULL)) {
+                g_message ("Failed to import image: %s", error->message);
+                return NULL;
+        }
+
+        return imported;
+}
+
