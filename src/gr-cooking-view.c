@@ -24,6 +24,10 @@
 
 #include <stdlib.h>
 
+#ifdef ENABLE_CANBERRA
+#include <canberra.h>
+#endif
+
 #include "gr-cooking-view.h"
 #include "gr-recipe.h"
 #include "gr-recipe-formatter.h"
@@ -104,6 +108,10 @@ struct _GrCookingView
         int step;
 
         gboolean wide;
+
+#ifdef ENABLE_CANBERRA
+        ca_context *c;
+#endif
 };
 
 
@@ -130,6 +138,8 @@ gr_cooking_view_finalize (GObject *object)
         g_clear_pointer (&self->instructions, g_free);
         g_clear_pointer (&self->steps, g_ptr_array_unref);
 
+        ca_context_destroy (self->c);
+
         G_OBJECT_CLASS (gr_cooking_view_parent_class)->finalize (object);
 }
 
@@ -140,6 +150,31 @@ gr_cooking_view_init (GrCookingView *self)
 
         self->steps = g_ptr_array_new_with_free_func (step_data_free);
         self->step = -1;
+
+#ifdef ENABLE_CANBERRA
+        ca_context_create (&self->c);
+        ca_context_change_props (self->c,
+                                 CA_PROP_APPLICATION_NAME, _("GNOME Recipes"),
+                                 CA_PROP_APPLICATION_ID, "org.gnome.Recipes",
+                                 CA_PROP_APPLICATION_ICON_NAME, "org.gnome.Recipes",
+                                 NULL);
+#endif
+}
+
+static void
+play_complete_sound (GrCookingView *self)
+{
+#ifdef ENABLE_CANBERRA
+        g_autofree char *path;
+
+        path = g_build_filename (get_pkg_data_dir (), "sounds", "complete.oga", NULL);
+        ca_context_play (self->c, 0,
+                         CA_PROP_MEDIA_ROLE, "alert",
+                         CA_PROP_MEDIA_FILENAME, path,
+                         CA_PROP_MEDIA_NAME, _("A cooking timer has expired"),
+                         CA_PROP_CANBERRA_CACHE_CONTROL, "permanent",
+                         NULL);
+#endif
 }
 
 static void
@@ -196,6 +231,7 @@ static void
 step_timer_complete (GrTimer *timer, GrCookingView *view)
 {
         gtk_stack_set_visible_child_name (GTK_STACK (view->cooking_stack), "complete");
+        play_complete_sound (view);
 }
 
 static void
