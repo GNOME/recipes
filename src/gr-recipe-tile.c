@@ -58,16 +58,9 @@ add_recipe_css (GrRecipe *recipe,
                 GString  *css)
 {
         const char *id;
-        const char *author;
-        g_autoptr(GrChef) chef = NULL;
         g_autoptr(GArray) images = NULL;
-        GrRecipeStore *store;
-
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         id = gr_recipe_get_id (recipe);
-        author = gr_recipe_get_author (recipe);
-        chef = gr_recipe_store_get_chef (store, author);
 
         g_object_get (recipe, "images", &images, NULL);
 
