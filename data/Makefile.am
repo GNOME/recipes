@@ -27,6 +27,7 @@ dist_mime_DATA = org.gnome.Recipes-mime.xml
 
 ingredientsdir = $(pkgdatadir)/ingredients
 imagesdir = $(pkgdatadir)/images
+soundsdir = $(pkgdatadir)/sounds
 
 dist_ingredients_DATA = \
 	ingredients/Almond.png 		\
@@ -158,6 +159,8 @@ dist_images_DATA = \
 	images/big-mediterranean.png	\
 	images/big-turkish.png
 
+dist_sounds_DATA = \
+	sounds/complete.oga
 
 dist_pkgdata_DATA = \
 	chefs.db	\
