@@ -138,7 +138,9 @@ gr_cooking_view_finalize (GObject *object)
         g_clear_pointer (&self->instructions, g_free);
         g_clear_pointer (&self->steps, g_ptr_array_unref);
 
+#ifdef ENABLE_CANBERRA
         ca_context_destroy (self->c);
+#endif
 
         G_OBJECT_CLASS (gr_cooking_view_parent_class)->finalize (object);
 }
