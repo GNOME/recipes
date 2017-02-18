@@ -98,23 +98,6 @@ quit_activated (GSimpleAction *action,
 }
 
 static void
-timer_expired (GSimpleAction *action,
-               GVariant      *parameter,
-               gpointer       app)
-{
-        GtkWindow *win;
-        const char *id;
-        g_autoptr(GrRecipe) recipe = NULL;
-
-        win = gtk_application_get_active_window (GTK_APPLICATION (app));
-        id = g_variant_get_string (parameter, NULL);
-        recipe = gr_recipe_store_get_recipe (GR_APP (app)->store, id);
-        if (recipe)
-                gr_window_show_recipe (GR_WINDOW (win), recipe);
-        gtk_window_present (win);
-}
-
-static void
 import_activated (GSimpleAction *action,
                   GVariant      *parameter,
                   gpointer       app)
@@ -167,7 +150,6 @@ static GActionEntry app_entries[] =
         { "import", import_activated, NULL, NULL, NULL },
         { "details", details_activated, "(ss)", NULL, NULL },
         { "search", search_activated, "s", NULL, NULL },
-        { "timer-expired", timer_expired, "s", NULL, NULL },
         { "quit", quit_activated, NULL, NULL, NULL }
 };
 
