@@ -338,13 +338,13 @@ image_received (GtkClipboard *clipboard,
 
         if (pixbuf) {
                 GrRotatedImage ri;
-                g_autofree char *dir = NULL;
+                const char *dir;
                 g_autofree char *path = NULL;
                 int fd;
                 g_autoptr(GOutputStream) stream = NULL;
                 g_autoptr(GError) error = NULL;
 
-                dir = g_build_filename (g_get_user_data_dir (), "recipes", NULL);
+                dir = get_user_data_dir ();
                 g_mkdir_with_parents (dir, S_IRWXU | S_IRWXG | S_IRWXO);
 
                 path = g_build_filename (dir, "clipboardXXXXXX.png", NULL);
