@@ -121,6 +121,17 @@ if test "x$enable_autoar" = xyes; then
 fi
 AM_CONDITIONAL(USE_AUTOAR, test "x$enable_autoar" = xyes)
 
+AC_ARG_ENABLE(canberra,
+              [AS_HELP_STRING([--enable-canberra],
+                              [Use libcanberra for sound support])],,
+              [enable_canberra="yes"])
+if test "x$enable_canberra" = xyes; then
+        CANBERRA_DEP=libcanberra
+        AC_DEFINE([ENABLE_CANBERRA], [1], [Define to 1 if libcanberra is used])
+        CANBERRA_VERSION="$($PKG_CONFIG --modversion $CANBERRA_DEP)"
+        AC_SUBST([CANBERRA_VERSION])
+        AC_DEFINE_UNQUOTED([CANBERRA_VERSION], ["${CANBERRA_VERSION}"], [The version of libcanberra])
+fi
 
 dnl ***********************************************************************
 dnl Check for required packages
@@ -128,7 +139,8 @@ dnl ***********************************************************************
 PKG_CHECK_MODULES(RECIPES, [gio-2.0 >= 2.42
                             gtk+-3.0 >= 3.20
                             $AUTOAR_DEP
-                            $GSPELL_DEP])
+                            $GSPELL_DEP
+                            $CANBERRA_DEP])
 
 
 LIBGD_INIT([tagged-entry])
