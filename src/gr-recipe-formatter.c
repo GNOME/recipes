@@ -188,7 +188,7 @@ gr_recipe_parse_instructions (const char *instructions)
                         char *tmp;
 
                         q = strstr (p, "]");
-                        s = strndup (p + strlen ("[timer:"), q - (p + strlen ("[timer:")) - 1);
+                        s = strndup (p + strlen ("[timer:"), q - (p + strlen ("[timer:")));
                         strv = g_strsplit (s, ":", -1);
                         if (g_strv_length (strv) == 2) {
                                 timer = G_TIME_SPAN_MINUTE * atoi (strv[0]) +
