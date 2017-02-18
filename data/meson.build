@@ -1,3 +1,5 @@
+# fixme generate recipes.db.h and chefs.db.h
+
 install_data(  'ingredients/Almond.png',
                 'ingredients/Amaretti.png',
                 'ingredients/Anchovis.png',
