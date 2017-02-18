@@ -38,7 +38,6 @@ struct _GrApp
 
         GrRecipeStore *store;
         GrShellSearchProvider *search_provider;
-        GDBusProxy *portal;
 };
 
 G_DEFINE_TYPE (GrApp, gr_app, GTK_TYPE_APPLICATION)
@@ -51,7 +50,6 @@ gr_app_finalize (GObject *object)
 
         g_clear_object (&self->store);
         g_clear_object (&self->search_provider);
-        g_clear_object (&self->portal);
 
         G_OBJECT_CLASS (gr_app_parent_class)->finalize (object);
 }
@@ -257,7 +255,6 @@ gr_app_dbus_unregister (GApplication    *application,
                 g_clear_object (&app->search_provider);
         }
 }
-
 
 static void
 gr_app_init (GrApp *self)
