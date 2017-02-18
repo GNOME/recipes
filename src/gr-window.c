@@ -269,6 +269,10 @@ visible_page_changed (GrWindow *window)
                 gr_list_page_clear (GR_LIST_PAGE (window->list_page));
         }
 
+        if (strcmp (visible, "edit") != 0) {
+                gr_edit_page_clear (GR_EDIT_PAGE (window->edit_page));
+        }
+
         if (strcmp (visible, "recipes") == 0) {
                 gr_recipes_page_refresh (GR_RECIPES_PAGE (window->recipes_page));
                 gr_recipes_page_unexpand (GR_RECIPES_PAGE (window->recipes_page));

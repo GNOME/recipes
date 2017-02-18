@@ -1748,6 +1748,11 @@ gr_edit_page_clear (GrEditPage *page)
         GArray *images;
         GrRecipeStore *store;
 
+        gr_image_viewer_revert_changes (GR_IMAGE_VIEWER (page->images));
+
+        if (!page->recipe)
+                return;
+
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         gtk_label_set_label (GTK_LABEL (page->name_label), _("Name Your Recipe"));
@@ -1897,6 +1902,8 @@ gr_edit_page_edit (GrEditPage *page,
         g_autoptr(GArray) images = NULL;
         g_autoptr(GrChef) chef = NULL;
         GrRecipeStore *store;
+
+        gr_image_viewer_revert_changes (GR_IMAGE_VIEWER (page->images));
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
@@ -2074,10 +2081,13 @@ gr_edit_page_save (GrEditPage *page)
         }
 
         if (ret) {
+                gr_image_viewer_persist_changes (GR_IMAGE_VIEWER (page->images));
                 gr_recipe_tile_recreate_css ();
 
                 return TRUE;
         }
+
+        gr_image_viewer_revert_changes (GR_IMAGE_VIEWER (page->images));
 
         gtk_label_set_label (GTK_LABEL (page->error_label), error->message);
         gtk_revealer_set_reveal_child (GTK_REVEALER (page->error_revealer), TRUE);
@@ -2096,4 +2106,3 @@ gr_edit_page_get_recipe (GrEditPage *page)
 {
         return page->recipe;
 }
-
