@@ -642,8 +642,8 @@ gr_image_viewer_rotate_image (GrImageViewer *viewer,
         g_assert (angle == 0 || angle == 90 || angle == 180 || angle == 270);
 
         ri = &g_array_index (viewer->images, GrRotatedImage, viewer->index);
-        ri->angle = (ri->angle + angle) % 360;
 
+        rotate_image (ri->path, angle);
         populate_preview (viewer);
         set_current_image (viewer);
 

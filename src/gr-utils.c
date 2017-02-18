@@ -706,3 +706,32 @@ import_image (const char *path)
         return imported;
 }
 
+void
+rotate_image (const char *path,
+              int         angle)
+{
+        g_autoptr(GdkPixbuf) pixbuf = NULL;
+        g_autoptr(GdkPixbuf) oriented = NULL;
+        g_autoptr(GError) error = NULL;
+        GdkPixbufFormat *format;
+        g_autofree char *format_name = NULL;
+
+        pixbuf = gdk_pixbuf_new_from_file (path, &error);
+        if (pixbuf== NULL) {
+                g_message ("Failed to load image '%s': %s", path, error->message);
+                return;
+        }
+
+        format = gdk_pixbuf_get_file_info (path, NULL, NULL);
+        if (gdk_pixbuf_format_is_writable (format))
+                format_name = gdk_pixbuf_format_get_name (format);
+        else
+                format_name = g_strdup ("png");
+
+        oriented = gdk_pixbuf_rotate_simple (pixbuf, angle);
+
+        if (!gdk_pixbuf_save (oriented, path, format_name, &error, NULL)) {
+                g_message ("Failed to save rotated image: %s", error->message);
+                return;
+        }
+}
