@@ -8,7 +8,6 @@ conf = configuration_data()
 # Needed to find config.h
 top_inc = include_directories('.')
 
-subdir('po')
 libgd = subproject('libgd',
            default_options: [
                 'with-tagged-entry=true',
@@ -85,4 +84,6 @@ configure_file(output : 'config.h', configuration : conf)
 
 subdir('src')
 subdir('tools')
+subdir('data')
+subdir('po')
 subdir('tests')
