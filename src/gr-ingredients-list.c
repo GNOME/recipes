@@ -101,9 +101,8 @@ gr_ingredients_list_populate (GrIngredientsList  *ingredients,
                 u = "";
                 if (unit[0] != '\0' &&
                     ((u = gr_unit_parse (&unit, &local_error)) == NULL)) {
-                        g_message ("failed to parse unit in '%s': %s", unit, local_error->message);
-                        g_free (ing);
-                        continue;
+                        g_message ("%s; using %s as-is", local_error->message, unit);
+                        u = unit;
                 }
 
                 ing->unit = g_strdup (u);
