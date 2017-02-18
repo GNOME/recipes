@@ -119,8 +119,6 @@ gnome_recipes_SOURCES = \
 	gr-time-widget.c	\
 	gr-timer-widget.h	\
 	gr-timer-widget.c	\
-	gr-toggle-button.h	\
-	gr-toggle-button.c	\
 	gr-unit.h		\
 	gr-unit.c		\
 	gr-utils.h		\
