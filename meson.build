@@ -5,16 +5,19 @@ i18n = import('i18n')
 
 conf = configuration_data()
 
+pkgdatadir = join_paths([ get_option('prefix'),
+                          get_option('datadir'),
+                          'gnome-recipes' ])
 conf.set_quoted('G_LOG_DOMAIN', 'org.gnome.Recipes')
 conf.set_quoted('PACKAGE_NAME', 'gnome-recipes')
 conf.set_quoted('PACKAGE_VERSION', meson.project_version())
 conf.set_quoted('GETTEXT_PACKAGE', 'gnome-recipes')
-conf.set_quoted('PKGDATADIR', join_paths([ get_option('prefix'),
-                                           get_option('datadir'),
-                                           'gnome-recipes' ]))
+conf.set_quoted('PKGDATADIR', pkgdatadir)
 conf.set_quoted('LOCALEDIR', join_paths([ get_option('prefix'),
                                           get_option('datadir'),
                                           'locale' ]))
+# Used while generating cuisine.css
+conf.set('pkgdatadir', pkgdatadir)
 
 configure_file(output : 'config.h', configuration : conf)
 

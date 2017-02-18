@@ -1,27 +1,54 @@
 gnome = import('gnome')
 
+src = []
+enums = []
+
+# Used in recipes-images.gresource.xml
+cuisine_css = configure_file(output : 'cuisine.css',
+                             input : 'cuisine.css.in',
+                             configuration : conf)
+
+# These generated files are #included
+list_to_c = find_program('list_to_c.py')
+foreach f : ['segments', 'ingredients']
+  ofile = f + '.inc'
+  ifile = files('../data/' + f + '.list')
+  src += [custom_target(f,
+                        output : ofile,
+                        input : ifile,
+                        command : [list_to_c, '@INPUT@', '@OUTPUT@', ''])]
+endforeach
+ofile = 'no-ingredients.inc'
+ifile = files('../data/ingredients.list')
+src += [custom_target('no-ingredients',
+                      output : ofile,
+                      input : ifile,
+                      command : [list_to_c, '@INPUT@', '@OUTPUT@', 'no '])]
+
+# Resource compilation
 resources_ui = gnome.compile_resources('resources_ui',
                                        'recipes-ui.gresource.xml',
-                                       c_name: '_recipes',
+                                       c_name: '_recipes_ui',
                                        source_dir: 'src')
 
 resources_images = gnome.compile_resources('resources_images',
                                        'recipes-images.gresource.xml',
-                                       c_name: '_recipes',
-                                       source_dir: 'src')
+                                       c_name: '_recipes_images',
+                                       source_dir: 'src',
+                                       dependencies: cuisine_css)
 
-enums = gnome.mkenums('types',
-                      sources: 'gr-recipe.h',
-                      c_template: 'types.c.template',
-                      h_template: 'types.h.template')
+enums += gnome.mkenums('types',
+                       sources: 'gr-diet.h',
+                       c_template: 'types.c.template',
+                       h_template: 'types.h.template')
 
-search_provider = gnome.gdbus_codegen('search-provider',
+search_provider = gnome.gdbus_codegen('gr-shell-search-provider-dbus',
                                       'shell-search-provider-dbus-interfaces.xml',
                                       interface_prefix: 'org.gnome.',
                                       namespace: 'Gr')
 
 
-src =  ['main.c',
+src += ['main.c',
        'gr-about-dialog.c',
        'gr-account.c',
        'gr-app.c',
@@ -77,6 +104,7 @@ src =  ['main.c',
        'gr-utils.c',
        'gr-window.c',
   enums,
+  search_provider,
   resources_ui,
   resources_images]
 
