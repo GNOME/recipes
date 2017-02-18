@@ -58,91 +58,9 @@ struct _GrIngredientsList
 G_DEFINE_TYPE (GrIngredientsList, gr_ingredients_list, G_TYPE_OBJECT)
 
 static gboolean
-gr_ingredients_list_add_one (GrIngredientsList  *ingredients,
-                             char               *line,
-                             char               *segment,
-                             GError            **error)
-{
-        Ingredient *ing;
-        const char *s;
-
-        if (line[0] == '\0')
-                return TRUE;
-
-        ing = g_new0 (Ingredient, 1);
-
-        line = g_strstrip (line);
-
-        if (!gr_number_parse (&ing->amount, &line, error)) {
-                ing->amount.fraction = TRUE;
-                ing->amount.num = 0;
-                ing->amount.denom = 0;
-                ing->amount.value = 0.0;
-        }
-
-        skip_whitespace (&line);
-
-        s = gr_unit_parse (&line, NULL);
-        ing->unit = g_strdup (s);
-        if (s)
-                skip_whitespace (&line);
-
-        s = gr_ingredient_find (line);
-        if (s)
-                ing->name = g_strdup (s);
-        else
-                ing->name = g_strdup (line);
-
-        ing->segment = g_strdup (segment);
-
-        ingredients->ingredients = g_list_append (ingredients->ingredients, ing);
-
-        return TRUE;
-}
-
-/* this code should go away when we get rid of all the test data which uses
- * that format
- */
-static gboolean
 gr_ingredients_list_populate (GrIngredientsList  *ingredients,
                               const char         *text,
                               GError            **error)
-{
-        g_auto(GStrv) lines = NULL;
-        int i;
-        g_autofree char *segment = NULL;
-
-        lines = g_strsplit (text, "\n", 0);
-
-        for (i = 0; lines[i]; i++) {
-                char *p;
-                p = strrchr (lines[i], '\t');
-                if (p) {
-                        segment = g_strdup (p + 1);
-                        *p = 0;
-                }
-                else
-                        segment = NULL;
-
-                if (segment)
-                        g_hash_table_add (ingredients->segments, g_strdup (_(segment)));
-                if (!gr_ingredients_list_add_one (ingredients, lines[i],
-                                                  (char *)(segment ? _(segment) : ""), error)) {
-                        g_message ("Failed to parse ingredients line '%s'", lines[i]);
-                }
-        }
-
-        if (g_hash_table_size (ingredients->segments) == 0)
-                g_hash_table_add (ingredients->segments, g_strdup (""));
-
-        return TRUE;
-
-}
-
-static gboolean
-gr_ingredients_list_populate_new_format (GrIngredientsList  *ingredients,
-                                         const char         *text,
-                                         GError            **error)
 {
         g_auto(GStrv) lines = NULL;
         int i;
@@ -229,34 +147,13 @@ gr_ingredients_list_class_init (GrIngredientsListClass *klass)
         object_class->finalize = ingredients_list_finalize;
 }
 
-static gboolean
-is_new_format (const char *text)
-{
-        int tabs;
-        const char *p;
-
-        // In the new format, we separate fields by tabs, so there will be >1 tab per line
-        tabs = 0;
-        p = text;
-        while (*p != '\0' && *p != '\n') {
-                if (*p == '\t')
-                        tabs++;
-                p++;
-        }
-
-        return tabs > 1;
-}
-
 GrIngredientsList *
 gr_ingredients_list_new (const char *text)
 {
         GrIngredientsList *ingredients;
 
         ingredients = g_object_new (GR_TYPE_INGREDIENTS_LIST, NULL);
-        if (is_new_format (text))
-                gr_ingredients_list_populate_new_format (ingredients, text, NULL);
-        else
-                gr_ingredients_list_populate (ingredients, text, NULL);
+        gr_ingredients_list_populate (ingredients, text, NULL);
 
         return ingredients;
 }
