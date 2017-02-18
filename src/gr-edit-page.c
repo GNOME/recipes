@@ -49,6 +49,7 @@
 #include "gr-cooking-view.h"
 #include "gr-window.h"
 #include "gr-account.h"
+#include "gr-recipe-tile.h"
 
 
 struct _GrEditPage
@@ -2072,8 +2073,11 @@ gr_edit_page_save (GrEditPage *page)
                 g_set_object (&page->recipe, recipe);
         }
 
-        if (ret)
-          return TRUE;
+        if (ret) {
+                gr_recipe_tile_recreate_css ();
+
+                return TRUE;
+        }
 
         gtk_label_set_label (GTK_LABEL (page->error_label), error->message);
         gtk_revealer_set_reveal_child (GTK_REVEALER (page->error_revealer), TRUE);
