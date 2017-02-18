@@ -33,6 +33,7 @@
 #include "gr-app.h"
 #include "gr-window.h"
 #include "gr-utils.h"
+#include "gr-chef-tile.h"
 
 
 struct _GrChefDialog
@@ -148,6 +149,7 @@ save_chef_dialog (GrChefDialog  *self,
         g_autofree char *description = NULL;
         GtkTextBuffer *buffer;
         GtkTextIter start, end;
+        gboolean ret;
 
         if (gr_chef_is_readonly (self->chef))
                 return TRUE;
@@ -168,7 +170,7 @@ save_chef_dialog (GrChefDialog  *self,
                               "description", description,
                               "image-path", self->image_path,
                               NULL);
-                return gr_recipe_store_update_chef (store, self->chef, id, error);
+                ret = gr_recipe_store_update_chef (store, self->chef, id, error);
         }
         else {
                 g_auto(GStrv) strv = NULL;
@@ -188,8 +190,13 @@ save_chef_dialog (GrChefDialog  *self,
                               "image-path", self->image_path,
                               NULL);
 
-                return gr_recipe_store_add_chef (store, self->chef, error);
+                ret = gr_recipe_store_add_chef (store, self->chef, error);
         }
+
+        if (ret)
+            gr_chef_tile_recreate_css ();
+
+        return ret;
 }
 
 static void
