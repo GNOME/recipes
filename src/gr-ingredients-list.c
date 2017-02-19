@@ -78,9 +78,12 @@ gr_ingredients_list_populate (GrIngredientsList  *ingredients,
                 Ingredient *ing;
                 g_autoptr(GError) local_error = NULL;
 
+                if (lines[i][0] == '\0')
+                        continue;
+
                 fields = g_strsplit (lines[i], "\t", 0);
                 if (g_strv_length (fields) != 4) {
-                        g_warning ("wrong number of fields, ignoring line '%s'", lines[i]);
+                        g_warning ("wrong number of fields, ignoring line %d: '%s'", i, lines[i]);
                         continue;
                 }
 
