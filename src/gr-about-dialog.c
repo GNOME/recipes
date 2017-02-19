@@ -155,6 +155,68 @@ add_built_logo (GrAboutDialog *about)
         g_object_unref (copyright_label);
 }
 
+static char *
+find_string_between (const char *buffer,
+                     const char *before,
+                     const char *after)
+{
+        char *start, *end;
+
+        start = end = NULL;
+        if ((start = strstr (buffer, before)) != NULL) {
+                start += strlen (before);
+                end = strstr (start, after);
+        }
+
+        if (start != NULL && end != NULL)
+                return g_strndup (start, end - start);
+
+        return NULL;
+}
+
+static void
+get_os_information (char **os_name,
+                    char **os_type,
+                    char **desktop,
+                    char **version)
+{
+        g_autofree char *buffer;
+        g_autofree char *buffer2;
+        const char *value;
+
+        *os_name = NULL;
+        *os_type = NULL;
+        *desktop = NULL;
+        *version = NULL;
+
+        if (g_file_get_contents ("/etc/os-release", &buffer, NULL, NULL))
+                *os_name = find_string_between (buffer, "PRETTY_NAME=\"", "\"");
+
+        if (GLIB_SIZEOF_VOID_P == 8)
+                *os_type = g_strdup ("64-bit");
+        else
+                *os_type = g_strdup ("32-bit");
+
+        value = g_getenv ("XDG_CURRENT_DESKTOP");
+        if (value) {
+                g_auto(GStrv) strv = g_strsplit (value, ":", 0);
+                *desktop = g_strdup (strv[0]);
+        }
+
+        if (g_file_get_contents ("/usr/share/gnome/gnome-version.xml", &buffer2, NULL, NULL)) {
+                g_autofree char *platform = NULL;
+                g_autofree char *minor = NULL;
+                g_autofree char *micro = NULL;
+
+                platform = find_string_between (buffer2, "<platform>", "</platform>");
+                minor = find_string_between (buffer2, "<minor>", "</minor>");
+                micro = find_string_between (buffer2, "<micro>", "</micro>");
+
+                if (platform && minor && micro)
+                        *version = g_strconcat (platform, ".", minor, ".", micro, NULL);
+        }
+}
+
 static void
 get_flatpak_information (char **flatpak_version,
                          char **app_id,
@@ -325,6 +387,10 @@ populate_system_tab (GtkTextView *view)
         buffer = gtk_text_view_get_buffer (view);
 
         if (in_flatpak_sandbox ()) {
+                g_autofree char *os_name = NULL;
+                g_autofree char *os_type = NULL;
+                g_autofree char *desktop = NULL;
+                g_autofree char *version = NULL;
                 g_autofree char *flatpak_version = NULL;
                 g_autofree char *app_id = NULL;
                 g_autofree char *app_arch = NULL;
@@ -335,10 +401,20 @@ populate_system_tab (GtkTextView *view)
                 g_autofree char *runtime_branch = NULL;
                 g_autofree char *runtime_commit = NULL;
 
+                get_os_information (&os_name, &os_type, &desktop, &version);
+
+                text_buffer_append (buffer, _("OS"));
+                text_buffer_append (buffer, "\n");
+
+                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("OS metadata", "Name"), os_name);
+                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("OS metadata", "Type"), os_type);
+                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("OS metadata", "Desktop"), desktop);
+
                 get_flatpak_information (&flatpak_version,
                                          &app_id, &app_arch, &app_branch, &app_commit,
                                          &runtime_id, &runtime_arch, &runtime_branch, &runtime_commit);
 
+                text_buffer_append (buffer, "\n");
                 text_buffer_append (buffer, _("Flatpak"));
                 text_buffer_append (buffer, "\n");
 
@@ -386,6 +462,24 @@ populate_system_tab (GtkTextView *view)
                 text_buffer_append (buffer, "\n");
         }
         else {
+                g_autofree char *os_name = NULL;
+                g_autofree char *os_type = NULL;
+                g_autofree char *desktop = NULL;
+                g_autofree char *version = NULL;
+
+                get_os_information (&os_name, &os_type, &desktop, &version);
+
+                text_buffer_append (buffer, _("OS"));
+                text_buffer_append (buffer, "\n");
+
+                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("OS metadata", "Name"), os_name);
+                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("OS metadata", "Type"), os_type);
+                if (version)
+                        text_buffer_append_printf (buffer, "\t%s\t%s %s\n", C_("OS metadata", "Desktop"), desktop, version);
+                else
+                        text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("OS metadata", "Desktop"), desktop);
+
+                text_buffer_append (buffer, "\n");
                 text_buffer_append (buffer, _("System libraries"));
                 text_buffer_append (buffer, "\n");
                 text_buffer_append_printf (buffer, "\tGLib\t%d.%d.%d\n",
