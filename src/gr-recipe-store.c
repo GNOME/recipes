@@ -342,8 +342,6 @@ load_recipes (GrRecipeStore *self,
                                               "diets", diets,
                                               "images", images,
                                               "default-image", default_image,
-                                              "contributed", contributed,
-                                              "readonly", contributed,
                                               NULL);
                 }
                 else {
