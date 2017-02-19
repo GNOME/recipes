@@ -77,7 +77,7 @@ gr_recipe_store_finalize (GObject *object)
 static gboolean
 load_recipes (GrRecipeStore *self,
               const char    *dir,
-              gboolean       readonly)
+              gboolean       contributed)
 {
         g_autoptr(GKeyFile) keyfile = NULL;
         g_autoptr(GError) error = NULL;
@@ -342,7 +342,7 @@ load_recipes (GrRecipeStore *self,
                                               "diets", diets,
                                               "images", images,
                                               "default-image", default_image,
-                                              "readonly", readonly,
+                                              "readonly", contributed,
                                               NULL);
                 }
                 else {
@@ -369,7 +369,7 @@ load_recipes (GrRecipeStore *self,
                                                "default-image", default_image,
                                                "ctime", ctime,
                                                "mtime", mtime,
-                                               "readonly", readonly && !own,
+                                               "readonly", contributed && !own,
                                                NULL);
                         g_hash_table_insert (self->recipes, g_strdup (id), recipe);
                 }
