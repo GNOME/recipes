@@ -135,9 +135,9 @@ gr_chef_tile_recreate_css (void)
         gtk_css_provider_load_from_data (provider, css->str, css->len, NULL);
 }
 
-static void
-chef_tile_set_chef (GrChefTile *tile,
-                    GrChef     *chef)
+void
+gr_chef_tile_set_chef (GrChefTile *tile,
+                       GrChef     *chef)
 {
         if (tile->chef) {
                 const char *elem;
@@ -166,7 +166,7 @@ gr_chef_tile_new (GrChef *chef)
         GrChefTile *tile;
 
         tile = g_object_new (GR_TYPE_CHEF_TILE, NULL);
-        chef_tile_set_chef (tile, chef);
+        gr_chef_tile_set_chef (tile, chef);
 
         return GTK_WIDGET (tile);
 }
