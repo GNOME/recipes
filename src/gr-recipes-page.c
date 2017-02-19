@@ -442,6 +442,20 @@ populate_chefs_from_store (GrRecipesPage *self)
 }
 
 static void
+refresh_chefs (GrRecipesPage *self)
+{
+        GList *children, *l;
+
+        children = gtk_container_get_children (GTK_CONTAINER (self->chefs_box));
+        for (l = children; l; l = l->next) {
+                GtkWidget *child = l->data;
+                GtkWidget *tile = gtk_bin_get_child (GTK_BIN (child));
+                gr_chef_tile_set_chef (GR_CHEF_TILE (tile), gr_chef_tile_get_chef (GR_CHEF_TILE (tile)));
+        }
+        g_list_free (children);
+}
+
+static void
 connect_store_signals (GrRecipesPage *page)
 {
         GrRecipeStore *store;
@@ -451,5 +465,5 @@ connect_store_signals (GrRecipesPage *page)
         g_signal_connect_swapped (store, "recipe-added", G_CALLBACK (repopulate_recipes), page);
         g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (repopulate_recipes), page);
         g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (repopulate_recipes), page);
-        g_signal_connect_swapped (store, "chefs-changed", G_CALLBACK (populate_chefs_from_store), page);
+        g_signal_connect_swapped (store, "chefs-changed", G_CALLBACK (refresh_chefs), page);
 }
