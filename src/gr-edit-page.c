@@ -138,6 +138,8 @@ struct _GrEditPage
 
 G_DEFINE_TYPE (GrEditPage, gr_edit_page, GTK_TYPE_BOX)
 
+static char *get_text_view_text (GtkTextView *textview);
+
 static void
 dismiss_error (GrEditPage *page)
 {
@@ -1268,8 +1270,6 @@ popover_keypress_handler (GtkWidget  *widget,
         return GDK_EVENT_PROPAGATE;
 }
 
-static char *get_instructions (GtkTextView *text_view);
-
 static void
 update_steppers (GrEditPage *page)
 {
@@ -1309,7 +1309,7 @@ preview_visible_changed (GrEditPage *page)
                 gtk_widget_set_visible (page->next_step_button, TRUE);
 
                 g_object_get (page->images, "images", &images, NULL);
-                instructions = get_instructions (GTK_TEXT_VIEW (page->instructions_field));
+                instructions = get_text_view_text (GTK_TEXT_VIEW (page->instructions_field));
 
                 gr_cooking_view_set_images (GR_COOKING_VIEW (page->cooking_view), images, index);
                 gr_cooking_view_set_instructions (GR_COOKING_VIEW (page->cooking_view), instructions);
@@ -1968,17 +1968,6 @@ gr_edit_page_edit (GrEditPage *page,
         update_default_image_button (page);
 }
 
-static char *
-get_instructions (GtkTextView *text_view)
-{
-        GtkTextBuffer *buffer;
-        GtkTextIter start, end;
-
-        buffer = gtk_text_view_get_buffer (text_view);
-        gtk_text_buffer_get_bounds (buffer, &start, &end);
-        return gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
-}
-
 gboolean
 gr_edit_page_save (GrEditPage *page)
 {
@@ -2011,7 +2000,7 @@ gr_edit_page_save (GrEditPage *page)
         serves = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (page->serves_spin));
         ingredients = collect_ingredients (page);
         description = get_text_view_text (GTK_TEXT_VIEW (page->description_field));
-        instructions = get_instructions (GTK_TEXT_VIEW (page->instructions_field));
+        instructions = get_text_view_text (GTK_TEXT_VIEW (page->instructions_field));
         diets = (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->gluten_free_check)) ? GR_DIET_GLUTEN_FREE : 0) |
                 (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->nut_free_check)) ? GR_DIET_NUT_FREE : 0) |
                 (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->vegan_check)) ? GR_DIET_VEGAN : 0) |
