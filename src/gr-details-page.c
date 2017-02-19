@@ -679,6 +679,10 @@ gr_details_page_set_recipe (GrDetailsPage *page,
                 gtk_widget_hide (page->edit_button);
                 gtk_widget_hide (page->delete_button);
         }
+        else if (gr_recipe_is_contributed (recipe)) {
+                gtk_widget_show (page->edit_button);
+                gtk_widget_hide (page->delete_button);
+        }
         else {
                 gtk_widget_show (page->edit_button);
                 gtk_widget_show (page->delete_button);
