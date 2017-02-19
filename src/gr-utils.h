@@ -34,9 +34,6 @@ GdkPixbuf *load_pixbuf_fill_size (const char *path,
                                   int         width,
                                   int         height);
 
-char *ensure_rotated_image (const char *path,
-                            int         angle);
-
 const char *get_pkg_data_dir  (void);
 const char *get_user_data_dir (void);
 const char *get_old_user_data_dir (void);

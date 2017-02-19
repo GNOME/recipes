@@ -484,53 +484,6 @@ portals_available (void)
         return owner != NULL;
 }
 
-char *
-ensure_rotated_image (const char *path,
-                      int         angle)
-{
-        g_autofree char *rotated = NULL;
-        g_autofree char *basename = NULL;
-        g_autofree char *subdir = NULL;
-        g_autofree char *dir = NULL;
-
-        if (angle == 0)
-                return g_strdup (path);
-
-        basename = g_path_get_basename (path);
-        subdir = g_strdup_printf ("images%d", angle);
-
-        dir = g_build_filename (g_get_user_cache_dir (), PACKAGE_NAME, subdir, NULL);
-        g_mkdir_with_parents (dir, S_IRWXU | S_IRWXG | S_IRWXO);
-
-        rotated = g_build_filename (dir, basename, NULL);
-        if (!g_file_test (rotated, G_FILE_TEST_EXISTS)) {
-                g_autoptr(GdkPixbuf) original = NULL;
-                g_autoptr(GdkPixbuf) pb = NULL;
-                g_autoptr(GError) error = NULL;
-                const char *format;
-
-                original = gdk_pixbuf_new_from_file (path, &error);
-                if (original == NULL) {
-                        g_message ("Failed to load image from %s: %s", path, error->message);
-                        return NULL;
-                }
-
-                pb = gdk_pixbuf_rotate_simple (original, angle);
-
-                if (g_str_has_suffix (path, ".jpg"))
-                        format = "jpeg";
-                else
-                        format = "png";
-
-                if (!gdk_pixbuf_save (pb, rotated, format, &error, NULL)) {
-                        g_message ("Failed to save rotated image to %s: %s", rotated, error->message);
-                        return NULL;
-                }
-        }
-
-        return g_strdup (rotated);
-}
-
 void
 all_headers (GtkListBoxRow *row,
              GtkListBoxRow *before,
