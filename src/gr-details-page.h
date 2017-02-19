@@ -35,5 +35,6 @@ GtkWidget       *gr_details_page_new         (void);
 void             gr_details_page_set_recipe  (GrDetailsPage *page,
                                               GrRecipe      *recipe);
 GrRecipe        *gr_details_page_get_recipe  (GrDetailsPage *page);
+void             gr_details_page_contribute_recipe (GrDetailsPage *page);
 
 G_END_DECLS

@@ -152,6 +152,19 @@ export_recipe (GrDetailsPage *page)
         gr_recipe_exporter_export (page->exporter, page->recipe);
 }
 
+void
+gr_details_page_contribute_recipe (GrDetailsPage *page)
+{
+        if (!page->exporter) {
+                GtkWidget *window;
+
+                window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
+                page->exporter = gr_recipe_exporter_new (GTK_WINDOW (window));
+        }
+
+        gr_recipe_exporter_contribute (page->exporter, page->recipe);
+}
+
 static void populate_ingredients (GrDetailsPage *page,
                                   int            num,
                                   int            denom);
