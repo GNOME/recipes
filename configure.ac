@@ -143,7 +143,7 @@ PKG_CHECK_MODULES(RECIPES, [gio-2.0 >= 2.42
                             $CANBERRA_DEP])
 
 
-LIBGD_INIT([tagged-entry, static])
+LIBGD_INIT([tagged-entry static])
 
 dnl ***********************************************************************
 dnl Initialize Libtool
