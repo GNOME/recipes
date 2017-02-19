@@ -537,7 +537,7 @@ process_instructions (const char *instructions)
         GString *s;
         int i;
 
-        steps = gr_recipe_parse_instructions (instructions);
+        steps = gr_recipe_parse_instructions (instructions, TRUE);
 
         s = g_string_new ("");
 

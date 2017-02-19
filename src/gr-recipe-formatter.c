@@ -87,7 +87,7 @@ gr_recipe_format (GrRecipe *recipe)
         g_string_append_printf (s, "* %s *\n", _("Directions"));
         g_string_append (s, "\n");
 
-        steps = gr_recipe_parse_instructions (gr_recipe_get_translated_instructions (recipe));
+        steps = gr_recipe_parse_instructions (gr_recipe_get_translated_instructions (recipe), TRUE);
         for (i = 0; i < steps->len; i++) {
                 GrRecipeStep *step = g_ptr_array_index (steps, i);
                 g_string_append (s, step->text);
@@ -121,7 +121,8 @@ recipe_step_free (gpointer data)
 }
 
 GPtrArray *
-gr_recipe_parse_instructions (const char *instructions)
+gr_recipe_parse_instructions (const char *instructions,
+                              gboolean    format_for_display)
 {
         GPtrArray *step_array;
         g_auto(GStrv) steps = NULL;
@@ -139,31 +140,33 @@ gr_recipe_parse_instructions (const char *instructions)
 
                 step = g_strdup (steps[i]);
 
-                p = strstr (step, "[temperature:");
-                while (p) {
-                        g_autofree char *prefix = NULL;
-                        const char *unit;
-                        int num;
-                        char *tmp;
-
-                        prefix = g_strndup (step, p - step);
-
-                        q = strstr (p, "]");
-                        if (q[-1] == 'C')
-                                unit = "℃";
-                        else if (q[-1] == 'F')
-                                unit ="℉";
-                        else {
-                                g_message ("Unsupported temperature unit: %c, using C", q[-1]);
-                                unit = "℃";
-                        }
-                        num = atoi (p + strlen ("[temperature:"));
-
-                        tmp = g_strdup_printf ("%s%d%s%s", prefix, num, unit, q + 1);
-                        g_free (step);
-                        step = tmp;
-
+                if (format_for_display) {
                         p = strstr (step, "[temperature:");
+                        while (p) {
+                                g_autofree char *prefix = NULL;
+                                const char *unit;
+                                int num;
+                                char *tmp;
+
+                                prefix = g_strndup (step, p - step);
+
+                                q = strstr (p, "]");
+                                if (q[-1] == 'C')
+                                        unit = "℃";
+                                else if (q[-1] == 'F')
+                                        unit ="℉";
+                                else {
+                                        g_message ("Unsupported temperature unit: %c, using C", q[-1]);
+                                        unit = "℃";
+                                }
+                                num = atoi (p + strlen ("[temperature:"));
+
+                                tmp = g_strdup_printf ("%s%d%s%s", prefix, num, unit, q + 1);
+                                g_free (step);
+                                step = tmp;
+
+                                p = strstr (step, "[temperature:");
+                        }
                 }
 
                 p = strstr (step, "[image:");

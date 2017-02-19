@@ -33,6 +33,7 @@ typedef struct {
         guint64 timer;
 } GrRecipeStep;
 
-GPtrArray *gr_recipe_parse_instructions (const char *instructions);
+GPtrArray *gr_recipe_parse_instructions (const char *instructions,
+                                         gboolean    format_for_display);
 
 G_END_DECLS

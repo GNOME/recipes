@@ -415,7 +415,7 @@ setup_steps (GrCookingView *view)
 
         view->step = -1;
 
-        steps = gr_recipe_parse_instructions (view->instructions);
+        steps = gr_recipe_parse_instructions (view->instructions, TRUE);
 
         g_ptr_array_set_size (view->steps, 0);
         for (i = 0; i < steps->len; i++) {
