@@ -35,9 +35,11 @@
 #include "gr-utils.h"
 #include "gr-timer.h"
 #include "gr-window.h"
+#include "gr-cooking-page.h"
 
 typedef struct
 {
+        GrCookingView *view;
         char *heading;
         char *label;
         GrTimer *timer;
@@ -59,18 +61,19 @@ step_data_free (gpointer data)
         g_free (d);
 }
 
-static void step_timer_complete (GrTimer *timer, GrCookingView *view);
+static void step_timer_complete (GrTimer *timer, StepData *step);
 
 static StepData *
 step_data_new (const char *heading,
                const char *string,
                guint64     duration,
                int         image,
-               gpointer    page)
+               gpointer    view)
 {
         StepData *d;
 
         d = g_new (StepData, 1);
+        d->view = view;
         d->heading = g_strdup (heading);
         d->label = g_strdup (string);
         if (duration > 0) {
@@ -79,7 +82,7 @@ step_data_new (const char *heading,
                                          "duration", duration,
                                          "active", FALSE,
                                          NULL);
-                d->handler = g_signal_connect (d->timer, "complete", G_CALLBACK (step_timer_complete), page);
+                d->handler = g_signal_connect (d->timer, "complete", G_CALLBACK (step_timer_complete), d);
         }
         else {
                 d->timer = NULL;
@@ -164,22 +167,6 @@ gr_cooking_view_init (GrCookingView *self)
 }
 
 static void
-play_complete_sound (GrCookingView *self)
-{
-#ifdef ENABLE_CANBERRA
-        g_autofree char *path;
-
-        path = g_build_filename (get_pkg_data_dir (), "sounds", "complete.oga", NULL);
-        ca_context_play (self->c, 0,
-                         CA_PROP_MEDIA_ROLE, "alert",
-                         CA_PROP_MEDIA_FILENAME, path,
-                         CA_PROP_MEDIA_NAME, _("A cooking timer has expired"),
-                         CA_PROP_CANBERRA_CACHE_CONTROL, "permanent",
-                         NULL);
-#endif
-}
-
-static void
 setup_step (GrCookingView *view)
 {
         StepData *s;
@@ -230,10 +217,56 @@ setup_step (GrCookingView *view)
 }
 
 static void
-step_timer_complete (GrTimer *timer, GrCookingView *view)
+play_complete_sound (StepData *step)
 {
-        gtk_stack_set_visible_child_name (GTK_STACK (view->cooking_stack), "complete");
-        play_complete_sound (view);
+#ifdef ENABLE_CANBERRA
+        GrCookingView *self = step->view;
+        g_autofree char *path;
+
+        path = g_build_filename (get_pkg_data_dir (), "sounds", "complete.oga", NULL);
+        ca_context_play (self->c, 0,
+                         CA_PROP_MEDIA_ROLE, "alert",
+                         CA_PROP_MEDIA_FILENAME, path,
+                         CA_PROP_MEDIA_NAME, _("A cooking timer has expired"),
+                         CA_PROP_CANBERRA_CACHE_CONTROL, "permanent",
+                         NULL);
+#endif
+}
+
+static void
+send_complete_notification (StepData *step)
+{
+        GrCookingView *view = step->view;
+        GtkWidget *page;
+
+        page = gtk_widget_get_ancestor (GTK_WIDGET (view), GR_TYPE_COOKING_PAGE);
+        if (page) {
+                g_autofree char *text = NULL;
+                int i;
+
+                for (i = 0; i < view->steps->len; i++) {
+                        if (step == g_ptr_array_index (view->steps, i))
+                                break;
+                }
+
+                text = g_strdup_printf (_("Timer for “Step %d” has expired."), i + 1);
+                gr_cooking_page_show_notification (GR_COOKING_PAGE (page), text);
+        }
+}
+
+static void
+step_timer_complete (GrTimer *timer, StepData *step)
+{
+        GrCookingView *view = step->view;
+        StepData *current;
+
+        current = g_ptr_array_index (view->steps, view->step);
+        if (step == current)
+                gtk_stack_set_visible_child_name (GTK_STACK (view->cooking_stack), "complete");
+        else
+                send_complete_notification (step);
+
+        play_complete_sound (step);
 }
 
 static void
