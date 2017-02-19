@@ -206,6 +206,7 @@ EXTRA_DIST = \
 	$(resource_ui_files)				\
 	$(resource_image_files)				\
 	types.h.template				\
-	types.c.template
+	types.c.template				\
+	cuisine.css.in
 
 -include $(top_srcdir)/git.mk
