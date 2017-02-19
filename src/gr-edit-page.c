@@ -1752,9 +1752,6 @@ gr_edit_page_clear (GrEditPage *page)
 
         gr_image_viewer_revert_changes (GR_IMAGE_VIEWER (page->images));
 
-        if (!page->recipe)
-                return;
-
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         gtk_label_set_label (GTK_LABEL (page->name_label), _("Name Your Recipe"));
@@ -2098,7 +2095,6 @@ gr_edit_page_save (GrEditPage *page)
                 g_signal_handler_disconnect (page->recipe, page->index_handler_id);
                 page->index_handler_id = 0;
         }
-        g_clear_object (&page->recipe);
 
         return FALSE;
 }
