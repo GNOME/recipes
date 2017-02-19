@@ -34,4 +34,7 @@ GrRecipeExporter *gr_recipe_exporter_new    (GtkWindow        *window);
 void              gr_recipe_exporter_export (GrRecipeExporter *exporter,
                                              GrRecipe         *recipe);
 
+void              gr_recipe_exporter_contribute (GrRecipeExporter *exporter,
+                                                 GrRecipe         *recipe);
+
 G_END_DECLS

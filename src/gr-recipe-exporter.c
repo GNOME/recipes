@@ -451,6 +451,33 @@ start_export (GrRecipeExporter *exporter)
 }
 
 static void
+do_export (GrRecipeExporter *exporter)
+{
+        int i;
+        g_autofree char *path = NULL;
+
+        for (i = 0; i < 1000; i++) {
+                g_autofree char *tmp;
+                tmp = g_strdup_printf ("%s/.var/app/org.gnome.Recipes/recipes%d.gnome-recipes-export", g_get_home_dir (), i);
+                if (!g_file_test (tmp, G_FILE_TEST_EXISTS)) {
+                        path = g_strdup (tmp);
+                        break;
+                }
+         }
+
+         if (!path) {
+                g_autofree char *dir = NULL;
+
+                dir = g_dir_make_tmp ("recipesXXXXXX", NULL);
+                path = g_build_filename (dir, "recipes.gnome-recipes-export", NULL);
+         }
+
+         exporter->output = g_file_new_for_path (path);
+
+         start_export (exporter);
+}
+
+static void
 export_dialog_response (GtkWidget        *dialog,
                         int               response_id,
                         GrRecipeExporter *exporter)
@@ -459,32 +486,11 @@ export_dialog_response (GtkWidget        *dialog,
                 g_message ("not exporting now");
         }
         else if (response_id == GTK_RESPONSE_OK) {
-                g_autofree char *path = NULL;
-                int i;
-
                 g_message ("exporting %d recipes now", g_list_length (exporter->recipes));
 
                 exporter->contribute = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (exporter->contribute_button));
 
-                for (i = 0; i < 1000; i++) {
-                        g_autofree char *tmp;
-                        tmp = g_strdup_printf ("%s/.var/app/org.gnome.Recipes/recipes%d.gnome-recipes-export", g_get_home_dir (), i);
-                        if (!g_file_test (tmp, G_FILE_TEST_EXISTS)) {
-                                path = g_strdup (tmp);
-                                break;
-                        }
-                }
-
-                if (!path) {
-                        g_autofree char *dir = NULL;
-
-                        dir = g_dir_make_tmp ("recipesXXXXXX", NULL);
-                        path = g_build_filename (dir, "recipes.gnome-recipes-export", NULL);
-                }
-
-                exporter->output = g_file_new_for_path (path);
-
-                start_export (exporter);
+                do_export (exporter);
         }
 
         gtk_widget_destroy (dialog);
@@ -674,4 +680,17 @@ gr_recipe_exporter_export (GrRecipeExporter *exporter,
 
 dialog:
         show_export_dialog (exporter);
+}
+
+void
+gr_recipe_exporter_contribute (GrRecipeExporter *exporter,
+                               GrRecipe         *recipe)
+{
+        g_list_free_full (exporter->recipes, g_object_unref);
+
+        exporter->recipes = g_list_append (NULL, g_object_ref (recipe));
+
+        exporter->contribute = TRUE;
+
+        do_export (exporter);
 }
