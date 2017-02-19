@@ -23,6 +23,7 @@
 #include <gtk/gtk.h>
 #include <libintl.h>
 #include <locale.h>
+#include <libgd/gd.h>
 
 #include "gr-app.h"
 #include "gr-cuisine-page.h"
@@ -48,6 +49,7 @@ main (int argc, char *argv[])
         g_autoptr (GApplication) app = NULL;
         int status;
 
+        gd_ensure_types ();
         g_type_ensure (GR_TYPE_COOKING_VIEW);
         g_type_ensure (GR_TYPE_COOKING_PAGE);
         g_type_ensure (GR_TYPE_CUISINE_PAGE);
