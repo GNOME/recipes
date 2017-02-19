@@ -44,6 +44,8 @@ struct _GrCookingPage
         GtkWidget *prev_step_button;
         GtkWidget *next_step_button;
         GtkWidget *done_button;
+        GtkWidget *notification_revealer;
+        GtkWidget *notification_label;
 
         GrRecipe *recipe;
 
@@ -386,6 +388,20 @@ gr_cooking_page_handle_event (GrCookingPage *page,
         return GDK_EVENT_PROPAGATE;
 }
 
+void
+gr_cooking_page_show_notification (GrCookingPage *page,
+                                   const char    *text)
+{
+        gtk_label_set_label (GTK_LABEL (page->notification_label), text);
+        gtk_revealer_set_reveal_child (GTK_REVEALER (page->notification_revealer), TRUE);
+}
+
+static void
+close_notification (GrCookingPage *page)
+{
+        gtk_revealer_set_reveal_child (GTK_REVEALER (page->notification_revealer), FALSE);
+}
+
 static void
 gr_cooking_page_class_init (GrCookingPageClass *klass)
 {
@@ -406,11 +422,14 @@ gr_cooking_page_class_init (GrCookingPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrCookingPage, prev_step_button);
         gtk_widget_class_bind_template_child (widget_class, GrCookingPage, next_step_button);
         gtk_widget_class_bind_template_child (widget_class, GrCookingPage, done_button);
+        gtk_widget_class_bind_template_child (widget_class, GrCookingPage, notification_revealer);
+        gtk_widget_class_bind_template_child (widget_class, GrCookingPage, notification_label);
 
         gtk_widget_class_bind_template_callback (widget_class, prev_step);
         gtk_widget_class_bind_template_callback (widget_class, next_step);
         gtk_widget_class_bind_template_callback (widget_class, stop_cooking);
         gtk_widget_class_bind_template_callback (widget_class, motion_notify);
+        gtk_widget_class_bind_template_callback (widget_class, close_notification);
 }
 
 void
@@ -428,4 +447,3 @@ gr_cooking_page_set_recipe (GrCookingPage *page,
         gr_cooking_view_set_images (GR_COOKING_VIEW (page->cooking_view), images, 0);
         gr_cooking_view_set_instructions (GR_COOKING_VIEW (page->cooking_view), instructions);
 }
-
