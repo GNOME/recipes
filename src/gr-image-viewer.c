@@ -117,7 +117,7 @@ set_current_image (GrImageViewer *viewer)
                 const char *vis;
 
                 ri = &g_array_index (viewer->images, GrRotatedImage, viewer->index);
-                pixbuf = load_pixbuf_fill_size (ri->path, ri->angle, 360, 240);
+                pixbuf = load_pixbuf_fill_size (ri->path, 0, 360, 240);
 
                 vis = gtk_stack_get_visible_child_name (GTK_STACK (viewer->stack));
                 if (strcmp (vis, "image1") == 0) {
@@ -146,7 +146,7 @@ populate_preview (GrImageViewer *viewer)
 
         for (i = 0; i < viewer->images->len; i++) {
                 GrRotatedImage *ri = &g_array_index (viewer->images, GrRotatedImage, i);
-                g_autoptr(GdkPixbuf) pb = load_pixbuf_fill_size (ri->path, ri->angle, 60, 40);
+                g_autoptr(GdkPixbuf) pb = load_pixbuf_fill_size (ri->path, 0, 60, 40);
                 GtkWidget *image;
 
                 image = gtk_image_new_from_pixbuf (pb);
@@ -365,7 +365,6 @@ image_received (GtkClipboard *clipboard,
                 }
 
                 ri.path = g_strdup (path);
-                ri.angle = 0;
 
                 add_image (viewer, &ri, TRUE);
         }
@@ -560,7 +559,6 @@ file_chooser_response (GtkNativeDialog *self,
                         GrRotatedImage ri;
 
                         ri.path = import_image (l->data);
-                        ri.angle = 0;
 
                         add_image (viewer, &ri, TRUE);
 

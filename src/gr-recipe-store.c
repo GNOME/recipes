@@ -83,7 +83,7 @@ load_recipes (GrRecipeStore *self,
         g_autoptr(GError) error = NULL;
         g_autofree char *path = NULL;
         g_auto(GStrv) groups = NULL;
-        gsize length, length2, length3;
+        gsize length, length2;
         int i, j;
 
         keyfile = g_key_file_new ();
@@ -116,7 +116,6 @@ load_recipes (GrRecipeStore *self,
                 g_autofree char *notes = NULL;
                 g_autofree char *image_path = NULL;
                 g_auto(GStrv) paths = NULL;
-                g_autofree int *angles = NULL;
                 int serves;
                 int spiciness;
                 int default_image = 0;
@@ -220,14 +219,6 @@ load_recipes (GrRecipeStore *self,
                         }
                         g_clear_error (&error);
                 }
-                image_path = g_key_file_get_string (keyfile, groups[i], "Image", &error);
-                if (error) {
-                        if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
-                                g_warning ("Failed to load recipe %s: %s", groups[i], error->message);
-                                continue;
-                        }
-                        g_clear_error (&error);
-                }
                 paths = g_key_file_get_string_list (keyfile, groups[i], "Images", &length2, &error);
                 if (error) {
                         if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
@@ -235,18 +226,6 @@ load_recipes (GrRecipeStore *self,
                                 continue;
                         }
                         g_clear_error (&error);
-                }
-                angles = g_key_file_get_integer_list (keyfile, groups[i], "Angles", &length3, &error);
-                if (error) {
-                        if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
-                                g_warning ("Failed to load recipe %s: %s", groups[i], error->message);
-                                continue;
-                        }
-                        g_clear_error (&error);
-                }
-                if (length2 != length3) {
-                        g_warning ("Failed to load recipe %s: Images and Angles length mismatch", groups[i]);
-                        continue;
                 }
                 default_image = g_key_file_get_integer (keyfile, groups[i], "DefaultImage", &error);
                 if (error) {
@@ -281,11 +260,6 @@ load_recipes (GrRecipeStore *self,
                         g_clear_error (&error);
                 }
 
-                if (image_path && image_path[0] != '\0' && image_path[0] != '/') {
-                        tmp = g_build_filename (dir, image_path, NULL);
-                        g_free (image_path);
-                        image_path = tmp;
-                }
                 if (paths) {
                         for (j = 0; paths[j]; j++) {
                                 if (paths[j][0] != '/') {
@@ -300,14 +274,8 @@ load_recipes (GrRecipeStore *self,
                 if (paths) {
                         for (j = 0; paths[j]; j++) {
                                 ri.path = g_strdup (paths[j]);
-                                ri.angle = angles[j];
                                 g_array_append_val (images, ri);
                         }
-                }
-                else if (image_path) {
-                        ri.path = g_strdup (image_path);
-                        ri.angle = 0;
-                        g_array_append_val (images, ri);
                 }
 
                 tmp = g_key_file_get_string (keyfile, groups[i], "Created", &error);
@@ -442,7 +410,6 @@ save_recipes (GrRecipeStore *self)
                 int spiciness;
                 GrDiets diets;
                 g_auto(GStrv) paths = NULL;
-                g_autofree int *angles = NULL;
                 GDateTime *ctime;
                 GDateTime *mtime;
                 int default_image = 0;
@@ -472,14 +439,12 @@ save_recipes (GrRecipeStore *self)
 
                 tmp = get_user_data_dir ();
                 paths = g_new0 (char *, images->len + 1);
-                angles = g_new0 (int, images->len + 1);
                 for (i = 0; i < images->len; i++) {
                         GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, i);
                         if (g_str_has_prefix (ri->path, tmp))
                                 paths[i] = g_strdup (ri->path + strlen (tmp) + 1);
                         else
                                 paths[i] = g_strdup (ri->path);
-                        angles[i] = ri->angle;
                 }
 
                 // For readonly recipes, we just store notes
@@ -504,7 +469,6 @@ save_recipes (GrRecipeStore *self)
                 g_key_file_set_integer (keyfile, key, "Diets", diets);
                 g_key_file_set_integer (keyfile, key, "DefaultImage", default_image);
                 g_key_file_set_string_list (keyfile, key, "Images", (const char * const *)paths, images->len);
-                g_key_file_set_integer_list (keyfile, key, "Angles", angles, images->len);
                 if (ctime) {
                         g_autofree char *created = date_time_to_string (ctime);
                         g_key_file_set_string (keyfile, key, "Created", created);

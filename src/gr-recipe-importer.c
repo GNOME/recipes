@@ -80,7 +80,6 @@ struct _GrRecipeImporter
         char *recipe_instructions;
         char *recipe_notes;
         char **recipe_paths;
-        int *recipe_angles;
         gboolean *recipe_dark;
         int recipe_serves;
         GrDiets recipe_diets;
@@ -129,7 +128,6 @@ gr_recipe_importer_finalize (GObject *object)
         g_free (importer->recipe_instructions);
         g_free (importer->recipe_notes);
         g_strfreev (importer->recipe_paths);
-        g_free (importer->recipe_angles);
         g_free (importer->recipe_dark);
         g_clear_pointer (&importer->recipe_ctime, g_date_time_unref);
         g_clear_pointer (&importer->recipe_mtime, g_date_time_unref);
@@ -215,7 +213,6 @@ cleanup_import (GrRecipeImporter *importer)
         g_clear_pointer (&importer->recipe_instructions, g_free);
         g_clear_pointer (&importer->recipe_notes, g_free);
         g_clear_pointer (&importer->recipe_paths, g_strfreev);
-        g_clear_pointer (&importer->recipe_angles, g_free);
         g_clear_pointer (&importer->recipe_dark, g_free);
         g_clear_pointer (&importer->recipe_ctime, g_date_time_unref);
         g_clear_pointer (&importer->recipe_mtime, g_date_time_unref);
@@ -304,7 +301,6 @@ import_recipe (GrRecipeImporter *importer)
                         }
 
                         ri.path = new_path;
-                        ri.angle = importer->recipe_angles[i];
                         g_array_append_val (images, ri);
                 }
         }
@@ -492,8 +488,6 @@ next:
                 }
         }
         importer->recipe_paths = g_key_file_get_string_list (importer->recipes_keyfile, id, "Images", &length2, &error);
-        handle_or_clear_error (error);
-        importer->recipe_angles = g_key_file_get_integer_list (importer->recipes_keyfile, id, "Angles", &length3, &error);
         handle_or_clear_error (error);
         if (length2 != length3) {
                 g_set_error (&error, G_IO_ERROR, G_IO_ERROR_FAILED,

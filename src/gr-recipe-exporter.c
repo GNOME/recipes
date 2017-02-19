@@ -208,7 +208,6 @@ export_one_recipe (GrRecipeExporter  *exporter,
         g_autoptr(GrChef) chef = NULL;
         g_autoptr(GArray) images = NULL;
         g_auto(GStrv) paths = NULL;
-        g_autofree int *angles = NULL;
         g_autofree gboolean *dark = NULL;
         int i, j;
 
@@ -231,7 +230,6 @@ export_one_recipe (GrRecipeExporter  *exporter,
 
         g_object_get (recipe, "images", &images, NULL);
         paths = g_new0 (char *, images->len + 1);
-        angles = g_new0 (int, images->len + 1);
         dark = g_new0 (gboolean, images->len + 1);
         for (i = 0, j = 0; i < images->len; i++) {
                 GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, i);
@@ -253,8 +251,6 @@ export_one_recipe (GrRecipeExporter  *exporter,
                 exporter->sources = g_list_append (exporter->sources, g_object_ref (dest));
 
                 paths[j] = g_strdup (basename);
-                angles[j] = ri->angle;
-
                 j++;
         }
 
@@ -273,9 +269,6 @@ export_one_recipe (GrRecipeExporter  *exporter,
         g_key_file_set_integer (keyfile, key, "Diets", diets);
 
         g_key_file_set_string_list (keyfile, key, "Images", (const char * const *)paths, g_strv_length (paths));
-        g_key_file_set_integer_list (keyfile, key, "Angles", angles, g_strv_length (paths));
-        g_key_file_set_integer_list (keyfile, key, "DarkText", dark, g_strv_length (paths));
-
 
         if (ctime) {
                 g_autofree char *created = date_time_to_string (ctime);

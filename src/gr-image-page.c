@@ -97,7 +97,7 @@ set_current_image (GrImagePage *page)
                 gdk_monitor_get_geometry (monitor, &geom);
 
                 ri = &g_array_index (page->images, GrRotatedImage, page->index);
-                pixbuf = load_pixbuf_fit_size (ri->path, ri->angle, geom.width - 80, geom.height - 80, FALSE);
+                pixbuf = load_pixbuf_fit_size (ri->path, 0, geom.width - 80, geom.height - 80, FALSE);
                 gtk_image_set_from_pixbuf (GTK_IMAGE (page->image), pixbuf);
         }
 }
