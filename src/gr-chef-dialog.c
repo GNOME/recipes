@@ -287,9 +287,18 @@ static void
 gr_chef_dialog_set_chef (GrChefDialog *self,
                          GrChef       *chef)
 {
-        GrChef *old_chef = self->chef;
+        gboolean same_chef;
+        GrRecipeStore *store;
 
         revert_changes (self);
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+
+        same_chef = self->chef != NULL && self->chef == chef;
+
+        if (gr_chef_is_readonly (chef) &&
+            strcmp (gr_chef_get_id (chef), gr_recipe_store_get_user_key (store)) == 0)
+                g_object_set (chef, "readonly", FALSE, NULL);
 
         if (g_set_object (&self->chef, chef)) {
                 const char *fullname;
@@ -325,7 +334,7 @@ gr_chef_dialog_set_chef (GrChefDialog *self,
                 update_image (self);
         }
 
-        if (old_chef != NULL && old_chef != chef)
+        if (same_chef)
                 gtk_widget_set_sensitive (self->save_button, TRUE);
         else
                 gtk_widget_set_sensitive (self->save_button, FALSE);
