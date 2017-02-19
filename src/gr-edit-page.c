@@ -1526,14 +1526,16 @@ get_spiciness (GrEditPage *page)
 
         s = gtk_combo_box_get_active_id (GTK_COMBO_BOX (page->spiciness_combo));
 
-        if (strcmp (s, "mild") == 0)
+        if (g_strcmp0 (s, "mild") == 0)
                 return 15;
-        else if (strcmp (s, "spicy") == 0)
+        else if (g_strcmp0 (s, "spicy") == 0)
                 return 40;
-        else if (strcmp (s, "hot") == 0)
+        else if (g_strcmp0 (s, "hot") == 0)
                 return 65;
-        else
+        else if (g_strcmp0 (s, "extreme") == 0)
                 return 90;
+        else
+                return 0;
 }
 
 static void add_list    (GtkButton *button, GrEditPage *page);
