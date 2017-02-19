@@ -713,6 +713,7 @@ gr_about_dialog_new (void)
                 "Matthew Leeds",
                 "Mohammed Sadiq",
                 "Sam Hewitt",
+                "Nirbheek Chauhan",
                 NULL
         };
         const char *recipe_authors[] = {
