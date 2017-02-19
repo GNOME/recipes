@@ -275,6 +275,13 @@ visible_page_changed (GrWindow *window)
                 gr_edit_page_clear (GR_EDIT_PAGE (window->edit_page));
         }
 
+        if (strcmp (visible, "chef") == 0) {
+                gr_list_page_repopulate (GR_LIST_PAGE (window->chef_page));
+        }
+        else {
+                gr_list_page_clear (GR_LIST_PAGE (window->chef_page));
+        }
+
         if (strcmp (visible, "list") == 0) {
                 gr_list_page_repopulate (GR_LIST_PAGE (window->list_page));
         }
