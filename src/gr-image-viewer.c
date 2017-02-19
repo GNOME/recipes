@@ -688,7 +688,7 @@ gr_image_viewer_show_image (GrImageViewer *viewer,
 int
 gr_image_viewer_get_index (GrImageViewer *viewer)
 {
-        return viewer->images->len;
+        return viewer->index;
 }
 
 void
