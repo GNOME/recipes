@@ -244,6 +244,7 @@ copy_image (GrRecipeImporter  *importer,
             char             **new_path,
             GError           **error)
 {
+        const char *datadir;
         g_autofree char *srcpath = NULL;
         g_autofree char *destpath = NULL;
         g_autoptr(GFile) source = NULL;
@@ -253,7 +254,12 @@ copy_image (GrRecipeImporter  *importer,
 
         srcpath = g_build_filename (importer->dir, path, NULL);
         source = g_file_new_for_path (srcpath);
-        orig_dest = g_build_filename (get_user_data_dir (), path, NULL);
+
+        datadir = g_getenv ("GNOME_RECIPES_DATA_DIR");
+        if (!datadir)
+                datadir = get_user_data_dir ();
+
+        orig_dest = g_build_filename (datadir, path, NULL);
 
         destpath = g_strdup (orig_dest);
         for (i = 1; i < 10; i++) {

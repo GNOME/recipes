@@ -379,18 +379,22 @@ static void
 save_recipes (GrRecipeStore *self)
 {
         g_autoptr(GKeyFile) keyfile = NULL;
-        g_autofree char *path = NULL;
+        const char *path;
+        g_autofree char *filename = NULL;
         GHashTableIter iter;
         const char *key;
         GrRecipe *recipe;
         g_autoptr(GError) error = NULL;
-        const char *tmp;
 
         keyfile = g_key_file_new ();
 
-        path = g_build_filename (get_user_data_dir (), "recipes.db", NULL);
+        path = g_getenv ("GNOME_RECIPES_DATA_DIR");
+        if (!path)
+                path = get_user_data_dir ();
 
-        g_message ("Save recipe db: %s", path);
+        filename = g_build_filename (path, "recipes.db", NULL);
+
+        g_message ("Save recipe db: %s", filename);
 
         g_hash_table_iter_init (&iter, self->recipes);
         while (g_hash_table_iter_next (&iter, (gpointer *)&key, (gpointer *)&recipe)) {
@@ -437,12 +441,11 @@ save_recipes (GrRecipeStore *self)
 
                 g_object_get (recipe, "images", &images, NULL);
 
-                tmp = get_user_data_dir ();
                 paths = g_new0 (char *, images->len + 1);
                 for (i = 0; i < images->len; i++) {
                         GrImage *ri = &g_array_index (images, GrImage, i);
-                        if (g_str_has_prefix (ri->path, tmp))
-                                paths[i] = g_strdup (ri->path + strlen (tmp) + 1);
+                        if (g_str_has_prefix (ri->path, path))
+                                paths[i] = g_strdup (ri->path + strlen (path) + 1);
                         else
                                 paths[i] = g_strdup (ri->path);
                 }
@@ -479,7 +482,7 @@ save_recipes (GrRecipeStore *self)
                 }
         }
 
-        if (!g_key_file_save_to_file (keyfile, path, &error)) {
+        if (!g_key_file_save_to_file (keyfile, filename, &error)) {
                 g_error ("Failed to save recipe database: %s", error->message);
         }
 }
@@ -801,18 +804,22 @@ static void
 save_chefs (GrRecipeStore *store)
 {
         g_autoptr(GKeyFile) keyfile = NULL;
-        g_autofree char *path = NULL;
+        const char *path;
+        g_autofree char *filename = NULL;
         GHashTableIter iter;
         const char *key;
         GrChef *chef;
         g_autoptr(GError) error = NULL;
-        const char *tmp;
 
         keyfile = g_key_file_new ();
 
-        path = g_build_filename (get_user_data_dir (), "chefs.db", NULL);
+        path = g_getenv ("GNOME_RECIPES_DATA_DIR");
+        if (!path)
+                path = get_user_data_dir ();
 
-        g_message ("Save chefs db: %s", path);
+        filename = g_build_filename (path, "chefs.db", NULL);
+
+        g_message ("Save chefs db: %s", filename);
 
         g_hash_table_iter_init (&iter, store->chefs);
         while (g_hash_table_iter_next (&iter, (gpointer *)&key, (gpointer *)&chef)) {
@@ -829,12 +836,11 @@ save_chefs (GrRecipeStore *store)
                 description = gr_chef_get_description (chef);
                 image_path = gr_chef_get_image (chef);
 
-                tmp = get_user_data_dir ();
-                if (image_path && g_str_has_prefix (image_path, tmp)) {
-                        g_autofree char *tmp2 = NULL;
+                if (image_path && g_str_has_prefix (image_path, path)) {
+                        g_autofree char *tmp = NULL;
 
-                        tmp2 = g_strdup (image_path + strlen (tmp) + 1);
-                        g_key_file_set_string (keyfile, key, "Image", tmp2);
+                        tmp = g_strdup (image_path + strlen (path) + 1);
+                        g_key_file_set_string (keyfile, key, "Image", tmp);
                 }
                 else
                         g_key_file_set_string (keyfile, key, "Image", image_path ? image_path : "");
@@ -844,7 +850,7 @@ save_chefs (GrRecipeStore *store)
                 g_key_file_set_string (keyfile, key, "Description", description ? description : "");
         }
 
-        if (!g_key_file_save_to_file (keyfile, path, &error)) {
+        if (!g_key_file_save_to_file (keyfile, filename, &error)) {
                 g_error ("Failed to save chefs database: %s", error->message);
         }
 }
