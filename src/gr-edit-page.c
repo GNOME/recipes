@@ -50,6 +50,7 @@
 #include "gr-window.h"
 #include "gr-account.h"
 #include "gr-recipe-tile.h"
+#include "gr-recipe-formatter.h"
 
 
 struct _GrEditPage
@@ -139,6 +140,8 @@ struct _GrEditPage
 G_DEFINE_TYPE (GrEditPage, gr_edit_page, GTK_TYPE_BOX)
 
 static char *get_text_view_text (GtkTextView *textview);
+static void  set_text_view_text (GtkTextView *textview,
+                                 const char  *text);
 
 static void
 dismiss_error (GrEditPage *page)
@@ -242,10 +245,72 @@ add_image_cb (GrEditPage *page)
         gr_image_viewer_add_image (GR_IMAGE_VIEWER (page->images));
 }
 
+static char *
+rewrite_instructions_for_removed_image (const char *instructions,
+                                        int         index)
+{
+        g_autoptr(GPtrArray) steps = NULL;
+        GString *s;
+        int i;
+
+        steps = gr_recipe_parse_instructions (instructions, FALSE);
+
+        for (i = 0; i < steps->len; i++) {
+                GrRecipeStep *step = g_ptr_array_index (steps, i);
+
+                if (step->image == index) {
+                        step->image = -1;
+                }
+                else if (step->image > index) {
+                        step->image -= 1;
+                }
+        }
+
+        s = g_string_new ("");
+
+        for (i = 0; i < steps->len; i++) {
+                GrRecipeStep *step = g_ptr_array_index (steps, i);
+
+                if (i > 0)
+                        g_string_append (s, "\n\n");
+
+                if (step->timer != 0) {
+                        int seconds;
+                        int minutes;
+                        int hours;
+                        g_autofree char *str = NULL;
+
+                        seconds = (int)(step->timer / G_TIME_SPAN_SECOND);
+                        minutes = seconds / 60;
+                        seconds = seconds - 60 * minutes;
+                        hours = minutes / 60;
+                        minutes = minutes - 60 * hours;
+
+                        g_string_append_printf (s, "[timer:%02d:%02d:%02d]", hours, minutes, seconds);
+                }
+                else if (step->image != -1) {
+                        g_string_append_printf (s, "[image:%d]", step->image);
+                }
+
+                g_string_append (s, step->text);
+        }
+
+        return g_string_free (s, FALSE);
+}
+
 static void
 remove_image_cb (GrEditPage *page)
 {
+        int index;
+        g_autofree char *instructions = NULL;
+        g_autofree char *rewritten = NULL;
+
+        index = gr_image_viewer_get_index (GR_IMAGE_VIEWER (page->images));
         gr_image_viewer_remove_image (GR_IMAGE_VIEWER (page->images));
+
+        instructions = get_text_view_text (GTK_TEXT_VIEW (page->instructions_field));
+        rewritten = rewrite_instructions_for_removed_image (instructions, index);
+        set_text_view_text (GTK_TEXT_VIEW (page->instructions_field), rewritten);
 }
 
 static void
