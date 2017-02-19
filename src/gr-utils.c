@@ -678,13 +678,13 @@ import_image (const char *path)
         g_autoptr(GdkPixbuf) pixbuf = NULL;
         g_autoptr(GdkPixbuf) oriented = NULL;
         g_autoptr(GError) error = NULL;
-        char *imported;
+        g_autofree char *imported = NULL;
         GdkPixbufFormat *format;
         g_autofree char *format_name = NULL;
 
         // FIXME: this could be much more efficient
         pixbuf = gdk_pixbuf_new_from_file (path, &error);
-        if (pixbuf== NULL) {
+        if (pixbuf == NULL) {
                 g_message ("Failed to load image '%s': %s", path, error->message);
                 return NULL;
         }
@@ -704,25 +704,27 @@ import_image (const char *path)
                 return NULL;
         }
 
-        return imported;
+        return g_strdup (imported);
 }
 
-void
+char *
 rotate_image (const char *path,
               int         angle)
 {
         g_autoptr(GdkPixbuf) pixbuf = NULL;
         g_autoptr(GdkPixbuf) oriented = NULL;
         g_autoptr(GError) error = NULL;
+        g_autofree char *imported  = NULL;
         GdkPixbufFormat *format;
         g_autofree char *format_name = NULL;
 
         pixbuf = gdk_pixbuf_new_from_file (path, &error);
-        if (pixbuf== NULL) {
+        if (pixbuf == NULL) {
                 g_message ("Failed to load image '%s': %s", path, error->message);
-                return;
+                return NULL;
         }
 
+        imported = get_import_name (path);
         format = gdk_pixbuf_get_file_info (path, NULL, NULL);
         if (gdk_pixbuf_format_is_writable (format))
                 format_name = gdk_pixbuf_format_get_name (format);
@@ -731,10 +733,12 @@ rotate_image (const char *path,
 
         oriented = gdk_pixbuf_rotate_simple (pixbuf, angle);
 
-        if (!gdk_pixbuf_save (oriented, path, format_name, &error, NULL)) {
+        if (!gdk_pixbuf_save (oriented, imported, format_name, &error, NULL)) {
                 g_message ("Failed to save rotated image: %s", error->message);
-                return;
+                return NULL;
         }
+
+        return g_strdup (imported);
 }
 
 void
