@@ -65,7 +65,7 @@ add_recipe_css (GrRecipe *recipe,
         g_object_get (recipe, "images", &images, NULL);
 
         if (images->len > 0) {
-                GrRotatedImage *ri;
+                GrImage *ri;
                 g_autofree char *path = NULL;
                 int index;
 
@@ -73,7 +73,7 @@ add_recipe_css (GrRecipe *recipe,
                 if (index < 0 || index >= images->len)
                         index = 0;
 
-                ri = &g_array_index (images, GrRotatedImage, index);
+                ri = &g_array_index (images, GrImage, index);
 
                 g_string_append_printf (css, "image.recipe.small.%s,\nbox.recipe.%s {\n", id, id);
                 g_string_append_printf (css, "  background: url('%s');\n"

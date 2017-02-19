@@ -121,7 +121,7 @@ load_recipes (GrRecipeStore *self,
                 int default_image = 0;
                 GrDiets diets;
                 g_autoptr(GArray) images = NULL;
-                GrRotatedImage ri;
+                GrImage ri;
                 g_autoptr(GDateTime) ctime = NULL;
                 g_autoptr(GDateTime) mtime = NULL;
                 char *tmp;
@@ -270,7 +270,7 @@ load_recipes (GrRecipeStore *self,
                         }
                 }
 
-                images = gr_rotated_image_array_new ();
+                images = gr_image_array_new ();
                 if (paths) {
                         for (j = 0; paths[j]; j++) {
                                 ri.path = g_strdup (paths[j]);
@@ -440,7 +440,7 @@ save_recipes (GrRecipeStore *self)
                 tmp = get_user_data_dir ();
                 paths = g_new0 (char *, images->len + 1);
                 for (i = 0; i < images->len; i++) {
-                        GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, i);
+                        GrImage *ri = &g_array_index (images, GrImage, i);
                         if (g_str_has_prefix (ri->path, tmp))
                                 paths[i] = g_strdup (ri->path + strlen (tmp) + 1);
                         else

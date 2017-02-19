@@ -23,21 +23,20 @@
 #include "gr-images.h"
 
 static void
-gr_rotated_image_clear (gpointer data)
+gr_image_clear (gpointer data)
 {
-        GrRotatedImage *image = data;
+        GrImage *image = data;
 
         g_clear_pointer (&image->path, g_free);
-        image->angle = 0;
 }
 
 GArray *
-gr_rotated_image_array_new (void)
+gr_image_array_new (void)
 {
         GArray *a;
 
-        a = g_array_new (TRUE, TRUE, sizeof (GrRotatedImage));
-        g_array_set_clear_func (a, gr_rotated_image_clear);
+        a = g_array_new (TRUE, TRUE, sizeof (GrImage));
+        g_array_set_clear_func (a, gr_image_clear);
 
         return a;
 }

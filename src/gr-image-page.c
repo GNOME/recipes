@@ -84,7 +84,7 @@ static void
 set_current_image (GrImagePage *page)
 {
         if (page->images->len > page->index) {
-                GrRotatedImage *ri = NULL;
+                GrImage *ri = NULL;
                 g_autoptr(GdkPixbuf) pixbuf = NULL;
                 GdkDisplay *display;
                 GdkWindow *win;
@@ -96,7 +96,7 @@ set_current_image (GrImagePage *page)
                 monitor = gdk_display_get_monitor_at_window (display, win);
                 gdk_monitor_get_geometry (monitor, &geom);
 
-                ri = &g_array_index (page->images, GrRotatedImage, page->index);
+                ri = &g_array_index (page->images, GrImage, page->index);
                 pixbuf = load_pixbuf_fit_size (ri->path, 0, geom.width - 80, geom.height - 80, FALSE);
                 gtk_image_set_from_pixbuf (GTK_IMAGE (page->image), pixbuf);
         }
@@ -221,7 +221,7 @@ gr_image_page_init (GrImagePage *self)
 g_signal_connect (self->event_box, "motion-notify-event", G_CALLBACK (motion_notify), self);
         g_signal_connect (self->event_box, "key-press-event", G_CALLBACK (key_press_event), self);
 
-        self->images = gr_rotated_image_array_new ();
+        self->images = gr_image_array_new ();
 }
 
 static void
@@ -292,11 +292,11 @@ gr_image_page_class_init (GrImagePageClass *klass)
 
 static void
 add_image (GrImagePage    *page,
-           GrRotatedImage *ri,
+           GrImage *ri,
            gboolean        select)
 {
         g_array_append_vals (page->images, ri, 1);
-        ri = &g_array_index (page->images, GrRotatedImage, page->images->len - 1);
+        ri = &g_array_index (page->images, GrImage, page->images->len - 1);
         ri->path = g_strdup (ri->path);
 
         if (select)
@@ -318,7 +318,7 @@ gr_image_page_set_images (GrImagePage *page,
         g_object_notify (G_OBJECT (page), "images");
 
         for (i = 0; i < images->len; i++) {
-                GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, i);
+                GrImage *ri = &g_array_index (images, GrImage, i);
                 add_image (page, ri, FALSE);
         }
 

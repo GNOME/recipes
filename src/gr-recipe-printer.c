@@ -162,7 +162,7 @@ begin_print (GtkPrintOperation *operation,
         GList *page_breaks;
         g_autoptr(GString) s = NULL;
         g_autoptr(GArray) images = NULL;
-        GrRotatedImage *ri;
+        GrImage *ri;
         PangoRectangle title_rect;
         PangoRectangle left_rect;
         int num_lines;
@@ -183,7 +183,7 @@ begin_print (GtkPrintOperation *operation,
 
         g_object_get (printer->recipe, "images", &images, NULL);
         if (images && images->len > 0) {
-                ri = &g_array_index (images, GrRotatedImage, 0);
+                ri = &g_array_index (images, GrImage, 0);
                 printer->image = load_pixbuf_fit_size (ri->path, 0, width / 2, height / 4, FALSE);
         }
 

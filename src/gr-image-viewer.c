@@ -112,11 +112,11 @@ set_current_image (GrImageViewer *viewer)
         }
 
         if (viewer->images->len > viewer->index) {
-                GrRotatedImage *ri = NULL;
+                GrImage *ri = NULL;
                 g_autoptr(GdkPixbuf) pixbuf = NULL;
                 const char *vis;
 
-                ri = &g_array_index (viewer->images, GrRotatedImage, viewer->index);
+                ri = &g_array_index (viewer->images, GrImage, viewer->index);
                 pixbuf = load_pixbuf_fill_size (ri->path, 0, 360, 240);
 
                 vis = gtk_stack_get_visible_child_name (GTK_STACK (viewer->stack));
@@ -145,7 +145,7 @@ populate_preview (GrImageViewer *viewer)
         container_remove_all (GTK_CONTAINER (viewer->preview_list));
 
         for (i = 0; i < viewer->images->len; i++) {
-                GrRotatedImage *ri = &g_array_index (viewer->images, GrRotatedImage, i);
+                GrImage *ri = &g_array_index (viewer->images, GrImage, i);
                 g_autoptr(GdkPixbuf) pb = load_pixbuf_fill_size (ri->path, 0, 60, 40);
                 GtkWidget *image;
 
@@ -322,11 +322,11 @@ preview_selected (GrImageViewer *viewer)
 
 static void
 add_image (GrImageViewer  *viewer,
-           GrRotatedImage *ri,
+           GrImage *ri,
            gboolean        select)
 {
         g_array_append_vals (viewer->images, ri, 1);
-        ri = &g_array_index (viewer->images, GrRotatedImage, viewer->images->len - 1);
+        ri = &g_array_index (viewer->images, GrImage, viewer->images->len - 1);
         ri->path = g_strdup (ri->path);
 
         populate_preview (viewer);
@@ -345,7 +345,7 @@ image_received (GtkClipboard *clipboard,
         GrImageViewer *viewer = data;
 
         if (pixbuf) {
-                GrRotatedImage ri;
+                GrImage ri;
                 g_autofree char *dir = NULL;
                 g_autofree char *path = NULL;
                 int fd;
@@ -420,7 +420,7 @@ gr_image_viewer_init (GrImageViewer *self)
         gtk_gesture_single_set_button (GTK_GESTURE_SINGLE (self->gesture), 0);
         gtk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (self->gesture), GTK_PHASE_BUBBLE);
         g_signal_connect (self->gesture, "pressed", G_CALLBACK (button_press), self);
-        self->images = gr_rotated_image_array_new ();
+        self->images = gr_image_array_new ();
 
         self->additions = g_ptr_array_new_with_free_func (g_free);
         self->removals = g_ptr_array_new_with_free_func (g_free);
@@ -531,10 +531,10 @@ gr_image_viewer_set_images (GrImageViewer *viewer,
         g_object_notify (G_OBJECT (viewer), "images");
 
         for (i = 0; i < images->len; i++) {
-                GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, i);
+                GrImage *ri = &g_array_index (images, GrImage, i);
 
                 g_array_append_vals (viewer->images, ri, 1);
-                ri = &g_array_index (viewer->images, GrRotatedImage, viewer->images->len - 1);
+                ri = &g_array_index (viewer->images, GrImage, viewer->images->len - 1);
                 ri->path = g_strdup (ri->path);
         }
 
@@ -556,7 +556,7 @@ file_chooser_response (GtkNativeDialog *self,
 
                 names = gtk_file_chooser_get_filenames (GTK_FILE_CHOOSER (self));
                 for (l = names; l; l = l->next) {
-                        GrRotatedImage ri;
+                        GrImage ri;
 
                         ri.path = import_image (l->data);
 
@@ -622,9 +622,9 @@ gr_image_viewer_add_image (GrImageViewer *viewer)
 void
 gr_image_viewer_remove_image (GrImageViewer *viewer)
 {
-        GrRotatedImage *ri;
+        GrImage *ri;
 
-        ri = &g_array_index (viewer->images, GrRotatedImage, viewer->index);
+        ri = &g_array_index (viewer->images, GrImage, viewer->index);
 
         g_ptr_array_add (viewer->removals, g_strdup (ri->path));
 
@@ -654,12 +654,12 @@ void
 gr_image_viewer_rotate_image (GrImageViewer *viewer,
                               int            angle)
 {
-        GrRotatedImage *ri;
+        GrImage *ri;
         char *path;
 
         g_assert (angle == 0 || angle == 90 || angle == 180 || angle == 270);
 
-        ri = &g_array_index (viewer->images, GrRotatedImage, viewer->index);
+        ri = &g_array_index (viewer->images, GrImage, viewer->index);
 
         path = rotate_image (ri->path, angle);
         g_ptr_array_add (viewer->removals, g_strdup (ri->path));

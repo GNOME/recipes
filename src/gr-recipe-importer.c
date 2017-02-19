@@ -288,11 +288,11 @@ import_recipe (GrRecipeImporter *importer)
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        images = gr_rotated_image_array_new ();
+        images = gr_image_array_new ();
         if (importer->recipe_paths) {
                 int i;
                 for (i = 0; importer->recipe_paths[i]; i++) {
-                        GrRotatedImage ri;
+                        GrImage ri;
                         char *new_path;
 
                         if (!copy_image (importer, importer->recipe_paths[i], &new_path, &error)) {

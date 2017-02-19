@@ -158,7 +158,7 @@ populate_image_flowbox (GrEditPage *page)
         container_remove_all (GTK_CONTAINER (page->image_flowbox));
 
         for (i = 0; i < images->len; i++) {
-                GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, i);
+                GrImage *ri = &g_array_index (images, GrImage, i);
                 g_autoptr(GdkPixbuf) pb = load_pixbuf_fill_size (ri->path, 0, 60, 40);
                 GtkWidget *image;
                 GtkWidget *child;
@@ -1774,7 +1774,7 @@ gr_edit_page_clear (GrEditPage *page)
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->milk_free_check), FALSE);
         gtk_widget_hide (page->author_label);
 
-        images = gr_rotated_image_array_new ();
+        images = gr_image_array_new ();
         g_object_set (page->images, "images", images, NULL);
         g_array_unref (images);
 

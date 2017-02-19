@@ -26,9 +26,8 @@ G_BEGIN_DECLS
 
 typedef struct {
         char *path;
-        int angle;
-} GrRotatedImage;
+} GrImage;
 
-GArray *gr_rotated_image_array_new (void);
+GArray *gr_image_array_new (void);
 
 G_END_DECLS

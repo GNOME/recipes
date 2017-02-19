@@ -171,7 +171,7 @@ gr_recipe_get_pixbuf (GrRecipe *recipe)
         g_object_get (recipe, "images", &images, NULL);
 
         if (images->len > 0) {
-                GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, 0);
+                GrImage *ri = &g_array_index (images, GrImage, 0);
                 GdkPixbuf *pixbuf;
 
                 pixbuf = load_pixbuf_fill_size (ri->path, 0, 64, 64);

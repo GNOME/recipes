@@ -236,9 +236,9 @@ set_images (GrRecipe *self,
 
         g_array_remove_range (self->images, 0, self->images->len);
         for (i = 0; i < images->len; i++) {
-                GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, i);
+                GrImage *ri = &g_array_index (images, GrImage, i);
                 g_array_append_vals (self->images, ri, 1);
-                ri = &g_array_index (self->images, GrRotatedImage, i);
+                ri = &g_array_index (self->images, GrImage, i);
                 ri->path = g_strdup (ri->path);
         }
 
@@ -510,7 +510,7 @@ gr_recipe_init (GrRecipe *self)
 {
         self->ctime = g_date_time_new_now_utc ();
         self->mtime = g_date_time_new_now_utc ();
-        self->images = gr_rotated_image_array_new ();
+        self->images = gr_image_array_new ();
 }
 
 GrRecipe *

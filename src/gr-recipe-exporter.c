@@ -232,7 +232,7 @@ export_one_recipe (GrRecipeExporter  *exporter,
         paths = g_new0 (char *, images->len + 1);
         dark = g_new0 (gboolean, images->len + 1);
         for (i = 0, j = 0; i < images->len; i++) {
-                GrRotatedImage *ri = &g_array_index (images, GrRotatedImage, i);
+                GrImage *ri = &g_array_index (images, GrImage, i);
                 g_autoptr(GFile) source = NULL;
                 g_autoptr(GFile) dest = NULL;
                 g_autofree char *basename = NULL;

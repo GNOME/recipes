@@ -211,10 +211,10 @@ setup_step (GrCookingView *view)
                 gtk_stack_set_visible_child_name (GTK_STACK (view->cooking_stack), "timer");
         }
         else if (0 <= s->image && s->image < view->images->len) {
-                GrRotatedImage *ri = NULL;
+                GrImage *ri = NULL;
                 g_autoptr(GdkPixbuf) pixbuf = NULL;
 
-                ri = &g_array_index (view->images, GrRotatedImage, s->image);
+                ri = &g_array_index (view->images, GrImage, s->image);
                 if (view->wide)
                         pixbuf = load_pixbuf_fill_size (ri->path, 0, 640, 480);
                 else
