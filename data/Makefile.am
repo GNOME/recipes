@@ -75,6 +75,13 @@ dist_images_DATA = \
 	images/grumbeerekiechle_1.JPG	\
 	images/grumbeerekiechle_2.JPG	\
 	images/grumbeerekiechle_3.JPG	\
+	images/kiwi-mandarin1.jpg	\
+	images/kiwi-mandarin2.jpg	\
+	images/kiwi-mandarin3.jpg	\
+	images/kiwi-mandarin4.jpg	\
+	images/kiwi-mandarin5.jpg	\
+	images/kiwi-mandarin6.jpg	\
+	images/kiwi-mandarin7.jpg	\
 	images/mantovana.jpg		\
 	images/meatballs.jpg		\
 	images/non_knead_buns.png	\

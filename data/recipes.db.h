@@ -1,5 +1,14 @@
 #if 0
 
+N_("Kiwi-Mandarin Salsa")
+N_("This salad is a sweet and sour addition which work well to most main courses, for example lasagna. The juicy fruits inside makes it a very refreshing salad.")
+N_("[image:1]Wash the fruits and vegetables well.")
+N_("[image:2]Peel, slice and cut the kiwi into triangular pieces.")
+N_("[image:3]Peel the orange and cut it in pieces.")
+N_("[image:4]Cut the red pepper in thin slices.")
+N_("[image:0]Mix fruits and vegetables in a bowl.")
+N_("[image:5]Add lime as you please.")
+N_("[image:6] Enjoy!")
 N_("Borscht")
 N_("This is a traditional soup from East and Central Europe. There are an Ukranian/Russian and a Polish version, but both a very similar so I put them together in a general recipe.")
 N_("[image:0]Over an open flame or under a broiler, roast 1 carrot and half of the onion until charred, about 3 minutes.")
