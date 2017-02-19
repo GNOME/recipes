@@ -248,4 +248,4 @@ dist_searchprovider_DATA = org.gnome.Recipes-search-provider.ini
 check: check-appstream
 
 check-appstream:
-	appstream-util validate-relax appdata/org.gnome.Recipes.appdata.xml
+	$(APPSTREAM_UTIL) validate-relax appdata/org.gnome.Recipes.appdata.xml
