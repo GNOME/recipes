@@ -220,16 +220,20 @@ static void
 play_complete_sound (StepData *step)
 {
 #ifdef ENABLE_CANBERRA
-        GrCookingView *self = step->view;
-        g_autofree char *path;
+        GrCookingView *view = step->view;
+        GtkWidget *page;
 
-        path = g_build_filename (get_pkg_data_dir (), "sounds", "complete.oga", NULL);
-        ca_context_play (self->c, 0,
-                         CA_PROP_MEDIA_ROLE, "alert",
-                         CA_PROP_MEDIA_FILENAME, path,
-                         CA_PROP_MEDIA_NAME, _("A cooking timer has expired"),
-                         CA_PROP_CANBERRA_CACHE_CONTROL, "permanent",
-                         NULL);
+        page = gtk_widget_get_ancestor (GTK_WIDGET (view), GR_TYPE_COOKING_PAGE);
+        if (page) {
+                g_autofree char *path;
+                path = g_build_filename (get_pkg_data_dir (), "sounds", "complete.oga", NULL);
+                ca_context_play (view->c, 0,
+                                 CA_PROP_MEDIA_ROLE, "alert",
+                                 CA_PROP_MEDIA_FILENAME, path,
+                                 CA_PROP_MEDIA_NAME, _("A cooking timer has expired"),
+                                 CA_PROP_CANBERRA_CACHE_CONTROL, "permanent",
+                                 NULL);
+        }
 #endif
 }
 
