@@ -342,6 +342,7 @@ load_recipes (GrRecipeStore *self,
                                               "diets", diets,
                                               "images", images,
                                               "default-image", default_image,
+                                              "contributed", contributed,
                                               "readonly", contributed,
                                               NULL);
                 }
@@ -369,6 +370,7 @@ load_recipes (GrRecipeStore *self,
                                                "default-image", default_image,
                                                "ctime", ctime,
                                                "mtime", mtime,
+                                               "contributed", contributed,
                                                "readonly", contributed && !own,
                                                NULL);
                         g_hash_table_insert (self->recipes, g_strdup (id), recipe);
