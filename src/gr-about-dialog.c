@@ -156,6 +156,46 @@ add_built_logo (GrAboutDialog *about)
 }
 
 static void
+get_os_information (char **os_name,
+                    char **bits,
+                    char **desktop,
+                    char **gnome_version)
+{
+        g_autofree char *buffer;
+        const char *value;
+
+        *os_name = NULL;
+        *bits = NULL;
+        *desktop = NULL;
+        *gnome_version = NULL;
+
+        if (g_file_get_contents ("/etc/os-release", &buffer, NULL, NULL)) {
+                char *start, *end;
+
+                start = end = NULL;
+                if ((start = strstr (buffer, "PRETTY_NAME=\"")) != NULL) {
+                        start += strlen ("PRETTY_NAME=\"");
+                        end = strchr (start, '"');
+                }
+
+                if (start != NULL && end != NULL) {
+                        *os_name = g_strndup (start, end - start);
+                }
+        }
+
+        if (GLIB_SIZEOF_VOID_P == 8)
+                *bits = g_strdup ("64-bit");
+        else
+                *bits = g_strdup ("32-bit");
+
+        value = g_getenv ("XDG_CURRENT_DESKTOP");
+        if (value) {
+                g_auto(GStrv) strv = g_strsplit (value, ":", 0);
+                *desktop = g_strdup (strv[0]);
+        }
+}
+
+static void
 get_flatpak_information (char **flatpak_version,
                          char **app_id,
                          char **app_arch,
