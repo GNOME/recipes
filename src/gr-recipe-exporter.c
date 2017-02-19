@@ -208,7 +208,8 @@ export_one_recipe (GrRecipeExporter  *exporter,
         g_autoptr(GrChef) chef = NULL;
         g_autoptr(GArray) images = NULL;
         g_auto(GStrv) paths = NULL;
-        int i, j;
+        int i;
+        g_autofree char *imagedir = NULL;
 
         key = gr_recipe_get_id (recipe);
         name = gr_recipe_get_name (recipe);
@@ -228,8 +229,12 @@ export_one_recipe (GrRecipeExporter  *exporter,
         mtime = gr_recipe_get_mtime (recipe);
 
         g_object_get (recipe, "images", &images, NULL);
+
+        imagedir = g_build_filename (exporter->dir, "images", NULL);
+        g_mkdir_with_parents (imagedir, 0755);
+
         paths = g_new0 (char *, images->len + 1);
-        for (i = 0, j = 0; i < images->len; i++) {
+        for (i = 0; i < images->len; i++) {
                 GrImage *ri = &g_array_index (images, GrImage, i);
                 g_autoptr(GFile) source = NULL;
                 g_autoptr(GFile) dest = NULL;
@@ -238,7 +243,7 @@ export_one_recipe (GrRecipeExporter  *exporter,
 
                 source = g_file_new_for_path (ri->path);
                 basename = g_file_get_basename (source);
-                destname = g_build_filename (exporter->dir, basename, NULL);
+                destname = g_build_filename (imagedir, basename, NULL);
 
                 dest = g_file_new_for_path (destname);
 
@@ -246,10 +251,7 @@ export_one_recipe (GrRecipeExporter  *exporter,
                         return FALSE;
                 }
 
-                exporter->sources = g_list_append (exporter->sources, g_object_ref (dest));
-
-                paths[j] = g_strdup (basename);
-                j++;
+                paths[i] = g_build_filename  ("images", basename, NULL);
         }
 
         g_key_file_set_string (keyfile, key, "Name", name ? name : "");
@@ -302,20 +304,19 @@ export_one_chef (GrRecipeExporter  *exporter,
                 g_autoptr(GFile) dest = NULL;
                 g_autofree char *basename = NULL;
                 g_autofree char *destname = NULL;
+                g_autofree char *path = NULL;
 
                 source = g_file_new_for_path (image_path);
                 basename = g_file_get_basename (source);
-                destname = g_build_filename (exporter->dir, basename, NULL);
+                path = g_build_filename ("images", basename, NULL);
+                destname = g_build_filename (exporter->dir, path, NULL);
 
                 dest = g_file_new_for_path (destname);
 
-                if (!g_file_copy (source, dest, G_FILE_COPY_NONE, NULL, NULL, NULL, error)) {
+                if (!g_file_copy (source, dest, G_FILE_COPY_NONE, NULL, NULL, NULL, error))
                         return FALSE;
-                }
-                else {
-                        g_key_file_set_string (keyfile, key, "Image", basename);
-                        exporter->sources = g_list_append (exporter->sources, g_object_ref (dest));
-                }
+
+                g_key_file_set_string (keyfile, key, "Image", path);
         }
 
         g_key_file_set_string (keyfile, key, "Name", name ? name : "");
@@ -340,6 +341,7 @@ prepare_export (GrRecipeExporter  *exporter,
         GrRecipeStore *store;
         GList *l;
         g_autoptr(GHashTable) chefs = NULL;
+        g_autofree char *imagedir = NULL;
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
@@ -350,6 +352,9 @@ prepare_export (GrRecipeExporter  *exporter,
 
         path = g_build_filename (exporter->dir, "recipes.db", NULL);
         keyfile = g_key_file_new ();
+
+        imagedir = g_build_filename (exporter->dir, "images", NULL);
+        exporter->sources = g_list_append (exporter->sources, g_file_new_for_path (imagedir));
 
         for (l = exporter->recipes; l; l = l->next) {
                 GrRecipe *recipe = l->data;
