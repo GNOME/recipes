@@ -70,6 +70,10 @@ struct _GrWindow
         GtkWidget *undo_label;
         GrRecipe  *undo_recipe;
         guint undo_timeout_id;
+        GtkWidget *remind_revealer;
+        GtkWidget *remind_label;
+        GrRecipe  *remind_recipe;
+        guint remind_timeout_id;
         GtkWidget *shopping_added_revealer;
         guint shopping_timeout_id;
 
@@ -190,6 +194,10 @@ add_recipe (GrWindow *window)
 
                 recipe = gr_edit_page_get_recipe (GR_EDIT_PAGE (window->edit_page));
                 gr_window_show_recipe (window, recipe);
+
+                if (gr_recipe_is_contributed (recipe))
+                        gr_window_offer_contribute (window, recipe);
+
                 gr_edit_page_clear (GR_EDIT_PAGE (window->edit_page));
         }
 }
@@ -430,9 +438,15 @@ gr_window_finalize (GObject *object)
 
         g_clear_object (&self->importer);
 
+        g_clear_object (&self->undo_recipe);
         if (self->undo_timeout_id) {
                 g_source_remove (self->undo_timeout_id);
                 self->undo_timeout_id = 0;
+        }
+        g_clear_object (&self->remind_recipe);
+        if (self->remind_timeout_id) {
+                g_source_remove (self->remind_timeout_id);
+                self->remind_timeout_id = 0;
         }
         if (self->shopping_timeout_id) {
                 g_source_remove (self->shopping_timeout_id);
@@ -495,6 +509,54 @@ gr_window_offer_undelete (GrWindow *window,
 
         gtk_revealer_set_reveal_child (GTK_REVEALER (window->undo_revealer), TRUE);
         window->undo_timeout_id = g_timeout_add_seconds (10, undo_timeout, window);
+}
+
+static void
+close_remind (GrWindow *window)
+{
+        if (window->remind_timeout_id) {
+                g_source_remove (window->remind_timeout_id);
+                window->remind_timeout_id = 0;
+        }
+
+        g_clear_object (&window->remind_recipe);
+
+        gtk_revealer_set_reveal_child (GTK_REVEALER (window->remind_revealer), FALSE);
+}
+
+static void
+do_remind (GrWindow *window)
+{
+        g_autoptr(GrRecipe) recipe = NULL;
+
+        recipe = g_object_ref (window->remind_recipe);
+
+        close_remind (window);
+        gr_window_show_recipe (window, recipe);
+}
+
+static gboolean
+remind_timeout (gpointer data)
+{
+        GrWindow *window = data;
+
+        close_remind (window);
+
+        return G_SOURCE_REMOVE;
+}
+
+void
+gr_window_offer_contribute (GrWindow *window,
+                            GrRecipe *recipe)
+{
+        g_autofree char *tmp = NULL;
+
+        g_set_object (&window->remind_recipe, recipe);
+        tmp = g_strdup_printf (_("You updated your contributed “%s” recipe. Send an update?"), gr_recipe_get_name (recipe));
+        gtk_label_set_label (GTK_LABEL (window->remind_label), tmp);
+
+        gtk_revealer_set_reveal_child (GTK_REVEALER (window->remind_revealer), TRUE);
+        window->remind_timeout_id = g_timeout_add_seconds (10, remind_timeout, window);
 }
 
 static void
@@ -579,6 +641,8 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrWindow, cooking_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, undo_revealer);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, undo_label);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, remind_revealer);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, remind_label);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, shopping_added_revealer);
 
         gtk_widget_class_bind_template_callback (widget_class, new_recipe);
@@ -596,6 +660,8 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, window_mapped_handler);
         gtk_widget_class_bind_template_callback (widget_class, do_undo);
         gtk_widget_class_bind_template_callback (widget_class, close_undo);
+        gtk_widget_class_bind_template_callback (widget_class, do_remind);
+        gtk_widget_class_bind_template_callback (widget_class, close_remind);
         gtk_widget_class_bind_template_callback (widget_class, do_shopping_list);
         gtk_widget_class_bind_template_callback (widget_class, close_shopping_added);
         gtk_widget_class_bind_template_callback (widget_class, shopping_title_changed);
