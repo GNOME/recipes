@@ -208,7 +208,6 @@ export_one_recipe (GrRecipeExporter  *exporter,
         g_autoptr(GrChef) chef = NULL;
         g_autoptr(GArray) images = NULL;
         g_auto(GStrv) paths = NULL;
-        g_autofree gboolean *dark = NULL;
         int i, j;
 
         key = gr_recipe_get_id (recipe);
@@ -230,7 +229,6 @@ export_one_recipe (GrRecipeExporter  *exporter,
 
         g_object_get (recipe, "images", &images, NULL);
         paths = g_new0 (char *, images->len + 1);
-        dark = g_new0 (gboolean, images->len + 1);
         for (i = 0, j = 0; i < images->len; i++) {
                 GrImage *ri = &g_array_index (images, GrImage, i);
                 g_autoptr(GFile) source = NULL;

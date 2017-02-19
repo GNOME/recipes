@@ -80,7 +80,6 @@ struct _GrRecipeImporter
         char *recipe_instructions;
         char *recipe_notes;
         char **recipe_paths;
-        gboolean *recipe_dark;
         int recipe_serves;
         GrDiets recipe_diets;
         GDateTime *recipe_ctime;
@@ -128,7 +127,6 @@ gr_recipe_importer_finalize (GObject *object)
         g_free (importer->recipe_instructions);
         g_free (importer->recipe_notes);
         g_strfreev (importer->recipe_paths);
-        g_free (importer->recipe_dark);
         g_clear_pointer (&importer->recipe_ctime, g_date_time_unref);
         g_clear_pointer (&importer->recipe_mtime, g_date_time_unref);
         g_list_free_full (importer->recipes, g_object_unref);
@@ -213,7 +211,6 @@ cleanup_import (GrRecipeImporter *importer)
         g_clear_pointer (&importer->recipe_instructions, g_free);
         g_clear_pointer (&importer->recipe_notes, g_free);
         g_clear_pointer (&importer->recipe_paths, g_strfreev);
-        g_clear_pointer (&importer->recipe_dark, g_free);
         g_clear_pointer (&importer->recipe_ctime, g_date_time_unref);
         g_clear_pointer (&importer->recipe_mtime, g_date_time_unref);
 
@@ -428,7 +425,7 @@ import_next_recipe (GrRecipeImporter *importer)
         char *tmp;
         GrRecipeStore *store;
         g_autoptr(GrRecipe) recipe = NULL;
-        gsize length2, length3;
+        gsize length2;
         g_autoptr(GError) error = NULL;
         const char *id;
 
@@ -489,20 +486,6 @@ next:
         }
         importer->recipe_paths = g_key_file_get_string_list (importer->recipes_keyfile, id, "Images", &length2, &error);
         handle_or_clear_error (error);
-        if (length2 != length3) {
-                g_set_error (&error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                             _("Failed to load recipe: Images and Angles length mismatch"));
-                error_cb (importer->extractor, error, importer);
-                return FALSE;
-        }
-        importer->recipe_dark = g_key_file_get_boolean_list (importer->recipes_keyfile, id, "DarkText", &length3, &error);
-        handle_or_clear_error (error);
-        if (length2 != length3) {
-                g_set_error (&error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                             _("Failed to load recipe: Images and DarkText length mismatch"));
-                error_cb (importer->extractor, error, importer);
-                return FALSE;
-        }
 
         recipe = gr_recipe_store_get_recipe (store, importer->recipe_id);
         if (!recipe) {
