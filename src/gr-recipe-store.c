@@ -346,6 +346,9 @@ load_recipes (GrRecipeStore *self,
                                               NULL);
                 }
                 else {
+                        gboolean own;
+
+                        own = strcmp (author, self->user) == 0;
                         recipe = g_object_new (GR_TYPE_RECIPE,
                                                "id", id,
                                                "name", name,
@@ -366,7 +369,7 @@ load_recipes (GrRecipeStore *self,
                                                "default-image", default_image,
                                                "ctime", ctime,
                                                "mtime", mtime,
-                                               "readonly", readonly,
+                                               "readonly", readonly && !own,
                                                NULL);
                         g_hash_table_insert (self->recipes, g_strdup (id), recipe);
                 }
