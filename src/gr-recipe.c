@@ -62,6 +62,7 @@ struct _GrRecipe
         int spiciness;
 
         gboolean readonly;
+        gboolean contributed;
 
         char *translated_name;
         char *translated_description;
@@ -92,6 +93,7 @@ enum {
         PROP_CTIME,
         PROP_MTIME,
         PROP_READONLY,
+        PROP_CONTRIBUTED,
         N_PROPS
 };
 
@@ -214,6 +216,10 @@ gr_recipe_get_property (GObject    *object,
 
         case PROP_READONLY:
                 g_value_set_boolean (value, self->readonly);
+                break;
+
+        case PROP_CONTRIBUTED:
+                g_value_set_boolean (value, self->contributed);
                 break;
 
         default:
@@ -389,6 +395,11 @@ gr_recipe_set_property (GObject      *object,
                 update_mtime (self);
                 break;
 
+        case PROP_CONTRIBUTED:
+                self->contributed = g_value_get_boolean (value);
+                update_mtime (self);
+                break;
+
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
         }
@@ -503,6 +514,11 @@ gr_recipe_class_init (GrRecipeClass *klass)
                                       FALSE,
                                       G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_READONLY, pspec);
+
+        pspec = g_param_spec_boolean ("contributed", NULL, NULL,
+                                      FALSE,
+                                      G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_CONTRIBUTED, pspec);
 }
 
 static void
@@ -668,6 +684,12 @@ gboolean
 gr_recipe_is_readonly (GrRecipe *recipe)
 {
         return recipe->readonly;
+}
+
+gboolean
+gr_recipe_is_contributed (GrRecipe *recipe)
+{
+        return recipe->contributed;
 }
 
 /* terms are assumed to be g_utf8_casefold'ed where appropriate */
