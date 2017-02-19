@@ -902,7 +902,9 @@ load_user (GrRecipeStore *self,
 static void
 gr_recipe_store_init (GrRecipeStore *self)
 {
-        const char *dir;
+        const char *data_dir;
+        const char *user_dir;
+        const char *old_dir;
         g_autofree char *current_dir = NULL;
         g_autofree char *uninstalled_dir = NULL;
         g_autoptr(GError) error = NULL;
@@ -910,44 +912,46 @@ gr_recipe_store_init (GrRecipeStore *self)
         self->recipes = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);
         self->chefs = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);
 
-        /* First load preinstalled data */
-        dir = get_pkg_data_dir ();
+        data_dir = get_pkg_data_dir ();
+        user_dir = get_user_data_dir ();
         current_dir = g_get_current_dir ();
         uninstalled_dir = g_build_filename (current_dir, "data", NULL);
 
-        if (!load_recipes (self, dir, TRUE))
+        load_user (self, user_dir);
+
+        /* First load preinstalled data */
+        if (!load_recipes (self, data_dir, TRUE))
                 load_recipes (self, uninstalled_dir, TRUE);
-        if (!load_chefs (self, dir, TRUE))
+        if (!load_chefs (self, data_dir, TRUE))
                 load_chefs (self, uninstalled_dir, TRUE);
-        if (!load_picks (self, dir))
+        if (!load_picks (self, data_dir))
                 load_picks (self, uninstalled_dir);
 
         /* Now load saved data */
-        dir = get_user_data_dir ();
-        load_recipes (self, dir, FALSE);
-        load_favorites (self, dir);
-        load_shopping (self, dir);
-        load_chefs (self, dir, FALSE);
-        load_user (self, dir);
+        load_recipes (self, user_dir, FALSE);
+        load_favorites (self, user_dir);
+        load_shopping (self, user_dir);
+        load_chefs (self, user_dir, FALSE);
 
-        dir = get_old_user_data_dir ();
-        if (load_recipes (self, dir, FALSE)) {
-                g_autofree char *filename = g_build_filename (dir, "recipes.db", NULL);
+        /* Look for data from before the recipes -> gnome-recipes rename */
+        old_dir = get_old_user_data_dir ();
+        if (load_recipes (self, old_dir, FALSE)) {
+                g_autofree char *filename = g_build_filename (old_dir, "recipes.db", NULL);
                 g_remove (filename);
                 save_recipes (self);
         }
-        if (load_favorites (self, dir)) {
-                g_autofree char *filename = g_build_filename (dir, "favorites.db", NULL);
+        if (load_favorites (self, old_dir)) {
+                g_autofree char *filename = g_build_filename (old_dir, "favorites.db", NULL);
                 g_remove (filename);
                 save_favorites (self);
         }
-        if (load_shopping (self, dir)) {
-                g_autofree char *filename = g_build_filename (dir, "shopping.db", NULL);
+        if (load_shopping (self, old_dir)) {
+                g_autofree char *filename = g_build_filename (old_dir, "shopping.db", NULL);
                 g_remove (filename);
                 save_shopping (self);
         }
-        if (load_chefs (self, dir, FALSE)) {
-                g_autofree char *filename = g_build_filename (dir, "chefs.db", NULL);
+        if (load_chefs (self, old_dir, FALSE)) {
+                g_autofree char *filename = g_build_filename (old_dir, "chefs.db", NULL);
                 g_remove (filename);
                 save_chefs (self);
         }
