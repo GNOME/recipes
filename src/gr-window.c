@@ -532,7 +532,9 @@ do_remind (GrWindow *window)
         recipe = g_object_ref (window->remind_recipe);
 
         close_remind (window);
+
         gr_window_show_recipe (window, recipe);
+        gr_details_page_contribute_recipe (GR_DETAILS_PAGE (window->details_page));
 }
 
 static gboolean

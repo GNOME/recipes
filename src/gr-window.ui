@@ -315,7 +315,7 @@
                           <object class="GtkButton">
                             <property name="visible">1</property>
                             <property name="focus-on-click">0</property>
-                            <property name="label" translatable="yes">Update</property>
+                            <property name="label" translatable="yes">Send Update</property>
                             <signal name="clicked" handler="do_remind" swapped="yes"/>
                           </object>
                         </child>
