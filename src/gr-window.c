@@ -262,15 +262,16 @@ visible_page_changed (GrWindow *window)
                 g_signal_handlers_unblock_by_func (window->search_bar, search_changed, window);
                 gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Recipes"));
         }
+
+        if (strcmp (visible, "edit") != 0) {
+                gr_edit_page_clear (GR_EDIT_PAGE (window->edit_page));
+        }
+
         if (strcmp (visible, "list") == 0) {
                 gr_list_page_repopulate (GR_LIST_PAGE (window->list_page));
         }
         else {
                 gr_list_page_clear (GR_LIST_PAGE (window->list_page));
-        }
-
-        if (strcmp (visible, "edit") != 0) {
-                gr_edit_page_clear (GR_EDIT_PAGE (window->edit_page));
         }
 
         if (strcmp (visible, "recipes") == 0) {
