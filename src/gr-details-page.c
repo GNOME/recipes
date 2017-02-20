@@ -612,7 +612,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         prep_time = gr_recipe_get_prep_time (recipe);
         cook_time = gr_recipe_get_cook_time (recipe);
         ingredients = gr_recipe_get_ingredients (recipe);
-        notes = gr_recipe_get_notes (recipe);
+        notes = gr_recipe_get_translated_notes (recipe);
         instructions = gr_recipe_get_translated_instructions (recipe);
         description = gr_recipe_get_translated_description (recipe);
         if (same_recipe)

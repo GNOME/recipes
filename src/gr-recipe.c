@@ -67,6 +67,7 @@ struct _GrRecipe
         char *translated_name;
         char *translated_description;
         char *translated_instructions;
+        char *translated_notes;
 };
 
 G_DEFINE_TYPE (GrRecipe, gr_recipe, G_TYPE_OBJECT)
@@ -125,6 +126,7 @@ gr_recipe_finalize (GObject *object)
         g_free (self->translated_name);
         g_free (self->translated_description);
         g_free (self->translated_instructions);
+        g_free (self->translated_notes);
 
         G_OBJECT_CLASS (gr_recipe_parent_class)->finalize (object);
 }
@@ -369,7 +371,9 @@ gr_recipe_set_property (GObject      *object,
 
         case PROP_NOTES:
                 g_free (self->notes);
+                g_free (self->translated_notes);
                 self->notes = g_value_dup_string (value);
+                self->translated_notes = translate_multiline_string (self->notes);
                 update_mtime (self);
                 break;
 
@@ -569,6 +573,12 @@ const char *
 gr_recipe_get_translated_description (GrRecipe *recipe)
 {
         return recipe->translated_description;
+}
+
+const char *
+gr_recipe_get_translated_notes (GrRecipe *recipe)
+{
+        return recipe->translated_notes;
 }
 
 int

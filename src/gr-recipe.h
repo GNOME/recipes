@@ -59,6 +59,7 @@ gboolean        gr_recipe_is_contributed   (GrRecipe   *recipe);
 const char     *gr_recipe_get_translated_name         (GrRecipe   *recipe);
 const char     *gr_recipe_get_translated_description  (GrRecipe   *recipe);
 const char     *gr_recipe_get_translated_instructions (GrRecipe   *recipe);
+const char     *gr_recipe_get_translated_notes        (GrRecipe   *recipe);
 
 gboolean        gr_recipe_matches          (GrRecipe    *recipe,
                                             const char **terms);
