@@ -82,7 +82,7 @@
                   <object class="GtkButton">
                     <property name="visible">1</property>
                     <property name="halign">fill</property>
-                    <property name="label">Reset</property>
+                    <property name="label" translatable="yes">Reset</property>
                     <signal name="clicked" handler="timer_reset" swapped="yes"/>
                     <style>
                       <class name="destructive-action"/>
