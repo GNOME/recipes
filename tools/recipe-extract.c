@@ -87,6 +87,11 @@ main (int argc, char *argv[])
                 "Name",
                 "Description",
                 "Instructions",
+                "Notes",
+                NULL,
+        };
+        const char *optional_keys[] = {
+                "Notes",
                 NULL,
         };
         const char *chef_keys[] = {
@@ -161,7 +166,8 @@ main (int argc, char *argv[])
                                 g_autofree char *s = NULL;
                                 s = g_key_file_get_string (keyfile, groups[i], keys[j], &error);
                                 if (!s) {
-                                        g_printerr ("Failed to get key '%s' for group '%s': %s\n", keys[j], groups[i], error->message);
+                                        if (!g_strv_contains (optional_keys, keys[j]))
+                                                g_printerr ("Failed to get key '%s' for group '%s': %s\n", keys[j], groups[i], error->message);
                                         g_clear_error (&error);
                                         continue;
                                 }
