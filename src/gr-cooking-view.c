@@ -103,6 +103,7 @@ struct _GrCookingView
         GtkWidget *cooking_image;
         GtkWidget *cooking_stack;
         GtkWidget *cooking_timer;
+        GtkWidget *text_box;
 
         GArray *images;
         char *instructions;
@@ -195,6 +196,8 @@ setup_step (GrCookingView *view)
         if (s->timer) {
                 gboolean active;
 
+                gtk_widget_show (view->cooking_stack);
+                gtk_widget_set_halign (view->text_box, GTK_ALIGN_START);
                 g_object_get (s->timer, "active", &active, NULL);
                 g_object_set (view->cooking_timer, "timer", s->timer, NULL);
                 gtk_stack_set_visible_child_name (GTK_STACK (view->cooking_stack), "timer");
@@ -203,6 +206,8 @@ setup_step (GrCookingView *view)
                 GrImage *ri = NULL;
                 g_autoptr(GdkPixbuf) pixbuf = NULL;
 
+                gtk_widget_show (view->cooking_stack);
+                gtk_widget_set_halign (view->text_box, GTK_ALIGN_START);
                 ri = &g_array_index (view->images, GrImage, s->image);
                 if (view->wide)
                         pixbuf = load_pixbuf_fill_size (ri->path, 0, 640, 480);
@@ -212,6 +217,8 @@ setup_step (GrCookingView *view)
                 gtk_stack_set_visible_child_name (GTK_STACK (view->cooking_stack), "image");
         }
         else {
+                gtk_widget_hide (view->cooking_stack);
+                gtk_widget_set_halign (view->text_box, GTK_ALIGN_CENTER);
                 gtk_stack_set_visible_child_name (GTK_STACK (view->cooking_stack), "empty");
         }
 }
@@ -398,6 +405,7 @@ gr_cooking_view_class_init (GrCookingViewClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrCookingView, cooking_image);
         gtk_widget_class_bind_template_child (widget_class, GrCookingView, cooking_stack);
         gtk_widget_class_bind_template_child (widget_class, GrCookingView, cooking_timer);
+        gtk_widget_class_bind_template_child (widget_class, GrCookingView, text_box);
 
         gtk_widget_class_bind_template_callback (widget_class, step_timer_start);
         gtk_widget_class_bind_template_callback (widget_class, step_timer_pause);
