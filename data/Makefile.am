@@ -243,12 +243,12 @@ dist_appdata_DATA = $(appdata_in_files:.appdata.xml.in=.appdata.xml)
 %.appdata.xml: %.appdata.xml.in
 	$(AM_V_GEN) mkdir -p appdata; msgfmt --xml -d $(top_srcdir)/po --template $< -o $@
 
-EXTRA_DIST += $(appdata_in_files)
+EXTRA_DIST += $(appdata_in_files) appdata/org.gnome.Recipes.appdata.xml
 
 searchproviderdir = $(datadir)/gnome-shell/search-providers
 dist_searchprovider_DATA = org.gnome.Recipes-search-provider.ini
 
 check: check-appstream
 
-check-appstream:
-	$(APPSTREAM_UTIL) validate-relax appdata/org.gnome.Recipes.appdata.xml
+check-appstream: appdata/org.gnome.Recipes.appdata.xml
+	$(APPSTREAM_UTIL) validate-relax $<
