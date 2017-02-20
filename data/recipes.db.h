@@ -1,5 +1,10 @@
 #if 0
 
+N_("Breakfast Oats Jar")
+N_("This recipe is great for those who usually don't have time for breakfast. Prepare it in mason jars/portable food containers the night before, and you can have your homemade breakfast on-the-go! Make a couple batches in advance if you know you won't have time. This recipe is also very flexible as you can make it vegan, or gluten-free simply by substituting the components i.e. dairy milk with coconut milk, honey with agave, or use gluten-free oats. Also, any fruits of your choice, fresh or frozen.")
+N_("[image:2]Add all the ingredients in a 16-oz container, or divide equally between two 8-oz containers.")
+N_("[image:0]Mix well. Cover with lid(s), and place in the refrigerator for at least 4 hours or overnight. Thanks to the chia seeds, the mixture will develop a pudding-like texture.")
+N_("[image:1]You can make ahead, but best to consume within 2-3 days.")
 N_("Kiwi-Mandarin Salsa")
 N_("This salad is a sweet and sour addition which work well to most main courses, for example lasagna. The juicy fruits inside makes it a very refreshing salad.")
 N_("[image:1]Wash the fruits and vegetables well.")
