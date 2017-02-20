@@ -55,7 +55,9 @@ struct _GrDetailsPage
         GrRecipeExporter *exporter;
 
         GtkWidget *recipe_image;
+        GtkWidget *prep_time_desc;
         GtkWidget *prep_time_label;
+        GtkWidget *cook_time_desc;
         GtkWidget *cook_time_label;
         GtkWidget *serves_spin;
         GtkWidget *warning_box;
@@ -383,7 +385,9 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-details-page.ui");
 
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, recipe_image);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, prep_time_desc);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, prep_time_label);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, cook_time_desc);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, cook_time_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, serves_spin);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, warning_box);
@@ -633,15 +637,25 @@ gr_details_page_set_recipe (GrDetailsPage *page,
 
         populate_ingredients (page, want_serves, serves);
 
-        if (prep_time[0] == '\0')
-                gtk_label_set_label (GTK_LABEL (page->prep_time_label), "");
-        else
+        if (prep_time[0] == '\0') {
+                gtk_widget_hide (page->prep_time_label);
+                gtk_widget_hide (page->prep_time_desc);
+        }
+        else {
+                gtk_widget_show (page->prep_time_label);
+                gtk_widget_show (page->prep_time_desc);
                 gtk_label_set_label (GTK_LABEL (page->prep_time_label), _(prep_time));
+        }
 
-        if (cook_time[0] == '\0')
-                gtk_label_set_label (GTK_LABEL (page->cook_time_label), "");
-        else
+        if (cook_time[0] == '\0') {
+                gtk_widget_hide (page->cook_time_label);
+                gtk_widget_hide (page->cook_time_desc);
+        }
+        else {
+                gtk_widget_show (page->cook_time_label);
+                gtk_widget_show (page->cook_time_desc);
                 gtk_label_set_label (GTK_LABEL (page->cook_time_label), _(cook_time));
+        }
         processed = process_instructions (instructions);
         gtk_label_set_label (GTK_LABEL (page->instructions_label), processed);
         gtk_label_set_track_visited_links (GTK_LABEL (page->instructions_label), FALSE);
