@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: recipes 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-16 21:52+0000\n"
-"PO-Revision-Date: 2017-02-17 12:49+0100\n"
+"PO-Revision-Date: 2017-02-20 16:57+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -1100,7 +1100,7 @@ msgstr ""
 
 #: data/recipes.db.h:184
 msgid "Donauwellen"
-msgstr ""
+msgstr "Donauwellen"
 
 #: data/recipes.db.h:185
 msgid ""
@@ -2598,16 +2598,14 @@ msgid "Shopping List"
 msgstr "Lista de la compra"
 
 #: src/gr-shopping-list-formatter.c:45
-#, fuzzy
 #| msgid "Favorite recipes"
 msgid "For the following recipes:"
-msgstr "Recetas favoritas"
+msgstr "Para las siguientes recetas:"
 
 #: src/gr-shopping-list-printer.c:147
-#, fuzzy
 #| msgid "Favorite recipes"
 msgid "For the following recipes"
-msgstr "Recetas favoritas"
+msgstr "Para las siguientes recetas"
 
 #: src/gr-shopping-list-printer.c:164
 msgid "Items"
@@ -2621,12 +2619,12 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: src/gr-shopping-page.c:119
-#, fuzzy, c-format
+#, c-format
 #| msgid "Buy ingredients"
 msgid "Buy Ingredients (%d recipe)"
 msgid_plural "Buy Ingredients (%d recipes)"
-msgstr[0] "Comprar ingredientes"
-msgstr[1] "Comprar ingredientes"
+msgstr[0] "Comprar ingredientes (%d receta)"
+msgstr[1] "Comprar ingredientes (%d recetas)"
 
 #: src/gr-shopping-page.c:124
 #, c-format
@@ -2830,15 +2828,15 @@ msgstr "hace más de un año"
 #, c-format
 msgid "%d month ago"
 msgid_plural "%d months ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "hace %d mes"
+msgstr[1] "hace %d meses"
 
 #: src/gr-utils.c:435
 #, c-format
 msgid "%d day ago"
 msgid_plural "%d days ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "hace %d día"
+msgstr[1] "hace %d días"
 
 #: src/gr-utils.c:438
 #, c-format
@@ -2867,10 +2865,9 @@ msgid "some time ago"
 msgstr ""
 
 #: src/gr-window.c:176
-#, fuzzy
 #| msgid "Add a new recipe"
 msgid "Add a New Recipe"
-msgstr "Añadir una nueva receta"
+msgstr "Añadir una receta nueva"
 
 #: src/gr-window.c:488
 #, c-format
@@ -2927,7 +2924,7 @@ msgstr "Damasco"
 
 #: src/ingredients.c:6
 msgid "Artichoke"
-msgstr ""
+msgstr "Alcachofas"
 
 #: src/ingredients.c:7
 msgid "Asparagus"
@@ -3225,9 +3222,8 @@ msgid "no Apricot"
 msgstr "ohne Aprikose"
 
 #: src/no-ingredients.c:6
-#, fuzzy
 msgid "no Artichoke"
-msgstr "ohne Artischocke"
+msgstr "sin alcachofas"
 
 #: src/no-ingredients.c:7
 msgid "no Asparagus"
