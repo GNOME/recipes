@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: recipes 0.1.0\n"
+"Project-Id-Version: gnome-recipes 0.14.0\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=recipes\n"
-"POT-Creation-Date: 2017-01-19 09:51-0500\n"
+"POT-Creation-Date: 2017-02-19 20:33-0500\n"
 "PO-Revision-Date: 2016-11-12 16:20-0500\n"
 "Last-Translator: Matthias Clasen <mclasen@redhat.com>\n"
 "Language-Team: None\n"
@@ -18,7 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/org.gnome.Recipes.desktop.in:3 src/gr-app.c:714
+#: data/org.gnome.Recipes.desktop.in:3 src/gr-about-dialog.c:745
+#: src/gr-cooking-view.c:162
 msgid "GNOME Recipes"
 msgstr "GNOME Rezepte"
 
@@ -30,11 +31,12 @@ msgstr "GNOME Köche, vereinigt euch!"
 msgid "org.gnome.Recipes"
 msgstr ""
 
-#: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:231
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
+#: src/gr-window.ui:354 src/gr-window.c:294 src/gr-window.c:693
 msgid "Recipes"
 msgstr "Rezepte"
 
-#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-app.c:722
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:753
 msgid "GNOME loves to cook"
 msgstr "GNOME kocht gerne"
 
@@ -82,15 +84,62 @@ msgstr "Ein neues Rezept hinzufügen"
 msgid "A shopping list"
 msgstr "Eine Einkaufsliste"
 
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:46
+msgid "Cooking a recipe"
+msgstr "Ein Rezept kochen"
+
 #: data/chefs.db.h:3
+msgid "Artist, Computer Scientist, Traveller."
+msgstr "Künstler, Programmierer, Reisender."
+
+#: data/chefs.db.h:4
+msgid "I love cooking. :)"
+msgstr "I liebe Kochen :)"
+
+#: data/chefs.db.h:5
+msgid ""
+"A Kuala Lumpur native, transplanted to San Francisco. I bake, I cook, I work "
+"on GNOME engagement stuff occasionally. Every now and then I travel between "
+"North America, Asia and Europe. Follow me @adeliabakes."
+msgstr ""
+"Ursprünglich aus Kuala Lumpur, nach San Francisco verpflanzt. Ich backe, ich "
+"koche, ich arbeite manchmal im GNOME Engagement Team. Gelegentlich reise ich "
+"zwischen Nordamerika, Asien und Europa. Folge mir @adeliabakes."
+
+#: data/chefs.db.h:6
+msgid "Adrià is originally from Barcelona, Spain."
+msgstr "Adrià stammt aus Barcelona, Spanien."
+
+#: data/chefs.db.h:7
+msgid ""
+"Being from Strasbourg, Alexandre is knowledgeable about both Alsatian and "
+"French cuisine, but he's not afraid to experiment in other ones as well."
+msgstr ""
+"Da er aus Straßburg kommt, weiss Alexandre viel über Elsässische und "
+"Französische Küche, aber er hat keine Angst, in anderen Küchen zu "
+"experimentieren."
+
+#: data/chefs.db.h:8
+msgid "Aviation, making stuff, in Finland."
+msgstr "Fliegen, Sachen machen, in Finnland."
+
+#: data/chefs.db.h:9
+msgid ""
+"Erusan is an American who has lived all over the country, loves GNOME, and "
+"enjoys cooking — primarily American, Asian, and Indian cuisine."
+msgstr ""
+"Erusan ist ein Amerikaner der überall im Land gelebt hat, GNOME liebt, und "
+"gerne kocht — hauptsächlich Amerikanische, Asiatische und Indische Gerichte."
+
+#: data/chefs.db.h:10
 msgid "I cook a lot, particularly Italian and Indian."
 msgstr "Ich koche viel, vor allem Italienisch und Indisch."
 
-#: data/chefs.db.h:4
+#: data/chefs.db.h:11
 msgid "The nordic cuisine maestro."
 msgstr "Der nordische Küchenmeister."
 
-#: data/chefs.db.h:5
+#: data/chefs.db.h:12
 msgid ""
 "Ray is a Desktop Software Engineer at Red Hat and vegetarian who "
 "occasionally enjoys cooking."
@@ -98,7 +147,7 @@ msgstr ""
 "Ray ist ein Desktop-Softwareentwickler für Red Hat und Vegetarier der "
 "gelegentlich kocht."
 
-#: data/chefs.db.h:6
+#: data/chefs.db.h:13
 msgid ""
 "My name is Fredrik Fyksen. I am from Norway, but live in Denmark. I like "
 "food, computers and music. You can read more about me at <a href=\"https://"
@@ -108,7 +157,7 @@ msgstr ""
 "Dänemark. Ich mag Essen, Computer und Musik. Du kannst mehr über mich <a "
 "href=\"https://www.fyksen.me/\">fyksen.me</a>."
 
-#: data/chefs.db.h:7
+#: data/chefs.db.h:14
 msgid ""
 "Matthias is a manager in the Desktop team at Red Hat. He likes to cook as "
 "much as he likes to code."
@@ -116,65 +165,1067 @@ msgstr ""
 "Matthias ist ein Manager im Red Hat Desktop Team. Er kocht genauso gerne wie "
 "er programmiert."
 
+#: data/chefs.db.h:15
+msgid "Matthew is a vegan and a Computer Science student who loves FOSS."
+msgstr "Matthew ist ein Veganer und ein Informatikstudent der FOSS mag."
+
+#: data/chefs.db.h:16
+msgid "Elvin lives in Istanbul."
+msgstr "Elvin lebt in Istanbul."
+
+#: data/chefs.db.h:17
+msgid "He cooks with GTK+"
+msgstr "Er kocht mith GTK+"
+
 #: data/recipes.db.h:3
+msgid "Kiwi-Mandarin Salsa"
+msgstr "Kiwi-Mandarine Salsa"
+
+#: data/recipes.db.h:4
+msgid ""
+"This salad is a sweet and sour addition which work well to most main "
+"courses, for example lasagna. The juicy fruits inside makes it a very "
+"refreshing salad."
+msgstr ""
+"Dieser Salat ist eine süß-saure Beilage, die gut mit vielen Hauptgerichten "
+"zusammenpasst, z.B. Lasagna. Die saftige Frucht macht diesen Salat sehr "
+"erfrischend."
+
+#: data/recipes.db.h:5
+msgid "[image:1]Wash the fruits and vegetables well."
+msgstr "[image:1]Die Früchte und den Salat gründlich waschen."
+
+#: data/recipes.db.h:6
+msgid "[image:2]Peel, slice and cut the kiwi into triangular pieces."
+msgstr "[image:2]Die Kiwi schälen und in dreieckige Stücke schneiden."
+
+#: data/recipes.db.h:7
+msgid "[image:3]Peel the orange and cut it in pieces."
+msgstr "[image:3]Die Orange schälen und in Stücke schneiden."
+
+#: data/recipes.db.h:8
+msgid "[image:4]Cut the red pepper in thin slices."
+msgstr "[image:4]Die Paprika in schmale Streifen schneiden."
+
+#: data/recipes.db.h:9
+msgid "[image:0]Mix fruits and vegetables in a bowl."
+msgstr "[image:0]Die Früchte und Salate in einer Schüssel mischen."
+
+#: data/recipes.db.h:10
+msgid "[image:5]Add lime as you please."
+msgstr "[image:5]Mit Zitrone abschmecken."
+
+#: data/recipes.db.h:11
+msgid "[image:6] Enjoy!"
+msgstr "[image:6]Guten Appetit!"
+
+#: data/recipes.db.h:12
+msgid "Borscht"
+msgstr "Borscht"
+
+#: data/recipes.db.h:13
+msgid ""
+"This is a traditional soup from East and Central Europe. There are an "
+"Ukranian/Russian and a Polish version, but both a very similar so I put them "
+"together in a general recipe."
+msgstr ""
+"Dies ist eine traditionelle Suppe aus Ost- und Zentraleuropa. Es gibt eine "
+"Ukrainisch/Russische und eine Polnische Variante, aber beide sind sehr "
+"ähnlich, deshalb ist hier ein allgemeines Rezept."
+
+#: data/recipes.db.h:14
+msgid ""
+"[image:0]Over an open flame or under a broiler, roast 1 carrot and half of "
+"the onion until charred, about 3 minutes."
+msgstr ""
+"[image:0]Über einer offenen Flamme oder under einem Grill die Karotte und "
+"eine halbe Zwiebel rösten bis sie braun sind, ungefär 3 Minuten."
+
+#: data/recipes.db.h:15
+msgid ""
+"[timer:00:08:00]Boil the bones in a large stockpot filled with water for 8 "
+"minutes, then drain and rinse thoroughly with cold water."
+msgstr ""
+"[timer:00:08:00]Die Knochen in einem großen Topf mit Wasser für 8 Minuten "
+"kochen,, dann abgießen und gründlich mit kaltem Wasser abspülen."
+
+#: data/recipes.db.h:16
+msgid ""
+"[timer:02:00:00]Clean the stockpot, then return the bones to the pot along "
+"with the charred carrot and half onion and the peppercorns. Add enough cold "
+"water to cover the bones by at least 1″, about 4 quarts. Bring to a boil, "
+"then reduce the heat and simmer on medium-low until the meat easily "
+"separates from the bone, about 2 hours. Be sure to skim any foam or fat that "
+"accumulates on the surface. Add water to replace any that evaporates."
+msgstr ""
+"[timer:02:00:00]Den Topf säubern, dann die Knochen zusammen mit der "
+"gerösteten Karotte und Zwiebel zurückgeben, zusammen mit dem Pfefferkorn. "
+"Genug kaltes Wasser hinzugeben um die Knochen mindestens 1 inch zu bedecken, "
+"ungefär 4 Quarts. Zum Kochen bringen, dann die Hitze reduzieren und auf "
+"mittlerer Hitze simmern bis sich das Fleisch leicht vom Knochen trennt, "
+"unfär 2 Stunden.\n"
+"Währenddessen Schaum und Fett von der Wasseroberfläche entfernen und das "
+"verdunstete Wasser ersetzen."
+
+#: data/recipes.db.h:17
+msgid ""
+"[timer:00:45:00]As the bones simmer, preheat the oven to [temperature:375F]. "
+"Place the beets in aluminum foil, drizzle with the olive oil, and wrap "
+"tightly. Roast until easily pierced with a fork, 45-60 minutes. Remove from "
+"the oven, let cool, then slip off the skins and cut the beets into French "
+"fry-sized strips. Set aside."
+msgstr ""
+"[timer:00:45:00]Während die Knochen kochen, den Ofen auf [temperature:375F] "
+"vorheizen. Die Wurzlen auf Alufolie legen, mit etwas Öl beträufeln, und fest "
+"einwickeln. Backen bis sie mit einer Gabel leicht aufgespießt werden können, "
+"45-60 Minuten. Aus dem Ofen nehmen und abkühlen lassen, dann die Schale "
+"abziehen und in mittelgroße Streifen schneiden. Zur Seite legen."
+
+#: data/recipes.db.h:18
+msgid ""
+"[image:0]When the bones are ready, strain the broth and discard the "
+"vegetables and peppercorns, then return the broth to the stockpot. Set the "
+"meaty bones aside to cool; once cool, pick apart the meat and set aside. "
+"Discard the bones or reserve for making stock."
+msgstr ""
+"[image:0]Wenn die Knochen gar sind, die Brühe filtern und das Gemüse und "
+"Pfefferkorn entfernen, dann die Brühe in den Topf zurückgeben. Die "
+"fleischigen Knochen abkühlen lassen; wenn sie kalt sind, das Fleisch "
+"abnehmen und zur Seite legen.\n"
+"Die Kochen wegtun."
+
+#: data/recipes.db.h:19
+msgid ""
+"[image:0]Coarsely chop the remaining half onion and grate the other carrot. "
+"In a skillet, warm the butter on medium heat, then add the chopped onion and "
+"sauté until softened, about 5 minutes. Add the minced garlic and tomato "
+"paste and sauté until aromatic, about 1 minute."
+msgstr ""
+"[image:0]Die andere Hälfte der Zwiebel in grobe Stücke hacken und die andere "
+"Karotte raspeln. In einer Pfanne Butter auf mittlerer Hitze schmelzen, dann "
+"die gehackte Zwiebel anbraten bis sie weich ist, ungefär 5 Minuten. Dann "
+"gehackten Knoblauch und Tomatenpaste hinzufügen und weitersimmern bis es "
+"aromatisch ist, ungefär 1 Minute."
+
+#: data/recipes.db.h:20
+msgid ""
+"[timer:00:10:00]Add the sautéed onion and garlic paste to the broth, along "
+"with the beets, red wine vinegar, and grated carrot. Bring to a simmer on "
+"medium heat, then add the shredded cabbage and cubed potatoes. Return to a "
+"simmer and cook for 10 more minutes, skimming any excess fat from the "
+"surface, then stir in the meat, parsley, and lemon juice. Season with salt "
+"and pepper to taste, about 1/2 tsp. each."
+msgstr ""
+"[timer:00:10:00]Die angebratene Zwiebel und Knoblauch-Paste zur Brühe geben, "
+"zusammen mit den Wurzeln, Rotweinessig, und der geraspelten Karotte. Auf "
+"mittlerer Hitze zum Simmern bringen und für weitere 10 Minuten kochen. "
+"Überflüssiges Fett von der Wasseroberfläche entfernen. Dann das Fleisch, die "
+"Petersiele und den Zitronensaft einrühren. Mit Salz und Pfeffer abschmecken."
+
+#: data/recipes.db.h:21
+msgid ""
+"[image:0]Cover, remove from the heat, and allow to brew for 20 minutes. "
+"Serve with a dollop of sour cream and fresh dill sprinkled on top. For a "
+"more flavorful soup, allow the soup to brew overnight and reheat the next "
+"day."
+msgstr ""
+"[image:0]Abdecken, vom Herd nehmen, und für 20 Minuten ziehen lassen. Mit "
+"Sauerkrem und frischem Dill garniert servieren. Für einen stärkeren "
+"Geschmack kann die Suppe über Nacht ziehen, und am nächsten Tag aufgewärmt "
+"werden."
+
+#: data/recipes.db.h:22
+msgid ""
+"It's easy to convert this soup in vegan or vegetarian by not adding the meat "
+"and cream."
+msgstr ""
+"Es ist einfach, diese Suppe vegetarisch oder veganisch zu machen, indem man "
+"das Fleisch und die Sauerkrem weglässt."
+
+#: data/recipes.db.h:23
+msgid "It will lose a bit of personality though."
+msgstr "Sie wird aber etwas an Persönlichkeit verlieren."
+
+#: data/recipes.db.h:24
+msgid ""
+"If you're in a hurry, use a canned broil as base and add around 600 g of "
+"chopped meat without bones, and follow the rest of instruccions. This way it "
+"will be ready in less than an hour."
+msgstr ""
+"Wenn es schnell gehen soll, kann man fertige Brühe als Basis verwenden und "
+"ungefär 600g gehacktes Fleisch ohne Knochen hinzugeben, und ansonsten der "
+"Anleitung folgen. Dann wird die Suppe in unter einer Stunde fertig sein."
+
+#: data/recipes.db.h:25
+msgid ""
+"Ingredients may vary. In example lemon juice instead of vinegar and ground "
+"or powder pepper instead of the peppercorns."
+msgstr ""
+"Zutaten können variiert werden. Zum Beispiel Zitronensaft anstelle von Essig "
+"und gemahlener Pfeffer anstelle von Pfefferkörnern."
+
+#: data/recipes.db.h:26
+msgid "Mantovana Cake"
+msgstr ""
+
+#: data/recipes.db.h:27
+msgid ""
+"Mantovana cake (or Torta Mantovana in Italian) is a Tuscan classic. It is "
+"simple, yet rich and delicious. Very good for breakfast - Italian style - or "
+"as snacks, accompanied with coffee or tea. A small note; the vanilla baking "
+"powder is typical in Italy for baked sweet goods, and negates the need to "
+"add vanilla extract separately to a recipe. You are fine just using regular "
+"baking powder, but remember to add 1/2 teaspoon of vanilla extract. If you "
+"can't get hold of the vanilla powdered sugar for dusting, just use the "
+"regular powdered sugar."
+msgstr ""
+
+#: data/recipes.db.h:28
+msgid ""
+"[image:0]Preheat oven to [temperature:180C]. Line a 9-inch round cake pan "
+"with parchment paper and grease well."
+msgstr ""
+
+#: data/recipes.db.h:29
+msgid ""
+"[image:0]Combine eggs and sugar in a mixing bowl. Beat (using a hand mixer) "
+"until light and fluffy."
+msgstr ""
+
+#: data/recipes.db.h:30
+msgid ""
+"[image:0]Into the mixture, add half of the flour and give it a little mix. "
+"Add the rest of the flour, together with the baking powder and lemon zest. "
+"Mix until the batter is just combined. Don't overmix. "
+msgstr ""
+
+#: data/recipes.db.h:31
+msgid ""
+"[image:0]Add the melted butter to the mixture. Using a spatula, stir to mix "
+"well."
+msgstr ""
+
+#: data/recipes.db.h:32
+msgid ""
+"[image:0]Pour the batter into a 9-inch round baking pan. Sprinkle the "
+"almonds on top making sure to cover the surface evenly."
+msgstr ""
+
+#: data/recipes.db.h:33
+msgid ""
+"[timer:00:25:00]Bake for 25-30 minutes or until a cake tester inserted into "
+"the center cake comes out clean. The cake should have a nice golden colour."
+msgstr ""
+
+#: data/recipes.db.h:34
+msgid ""
+"[image:0]Let rest in the pan for 10 minutes, then invert onto a cooling rack "
+"to cool completely."
+msgstr ""
+
+#: data/recipes.db.h:35
+msgid ""
+"[image:0]Before serving, dust the top generously with vanilla powdered sugar."
+msgstr ""
+
+#: data/recipes.db.h:36
+msgid "Carbonara"
+msgstr ""
+
+#: data/recipes.db.h:37
+msgid ""
+"\"Carbonara\" is a sauce that can be used with long pasta, like spaghetti or "
+"fettuccine."
+msgstr ""
+
+#: data/recipes.db.h:38
+msgid ""
+"[image:1]Start by boiling about 1 litre of water for each 100g of pasta."
+msgstr ""
+
+#: data/recipes.db.h:39
+msgid ""
+"[image:1]Once the water is boiling, pour 20g of coarse salt in it for every "
+"litre of water, and then throw the spaghetti in."
+msgstr ""
+
+#: data/recipes.db.h:40
+msgid ""
+"[image:1]While the pasta is cooking, take a large bowl and put the parmesan "
+"cheese in it."
+msgstr ""
+
+#: data/recipes.db.h:41
+msgid ""
+"[image:2]Add the whole egg and the yolks to the parmesan, and beat the eggs "
+"until you get a creamy sauce."
+msgstr ""
+
+#: data/recipes.db.h:42
+msgid ""
+"[image:3]Put the guanciale in a small pan with a teaspoon of oil, and "
+"shallow fry it until the fat is transparent and the meat is crispy; then "
+"remove from the fire."
+msgstr ""
+
+#: data/recipes.db.h:43
+msgid ""
+"[image:5]Once the pasta is ready, drain it and add it to the eggs and "
+"cheese. Then, add the guanciale."
+msgstr ""
+
+#: data/recipes.db.h:44
+msgid "[image:6]Season with salt and pepper to your liking."
+msgstr ""
+
+#: data/recipes.db.h:45
+msgid ""
+"If you cannot find guanciale (cured pork cheek) you can substitute it with "
+"pancetta."
+msgstr ""
+
+#: data/recipes.db.h:46
+msgid "Roots Pie"
+msgstr ""
+
+#: data/recipes.db.h:47
+msgid ""
+"This vegetable pie is my own spin off a traditional recipe. It has great "
+"taste, crusty dough and fancy colors too."
+msgstr ""
+
+#: data/recipes.db.h:48
+msgid "[image:12]Turn on the oven at [temperature:200C]."
+msgstr ""
+
+#: data/recipes.db.h:49
+msgid ""
+"[image:2]Pour flour on the table, add salt. Divide the butter into small "
+"pieces and add water."
+msgstr ""
+
+#: data/recipes.db.h:50
+msgid "[image:3]Use the butter, water and yoghurt to work it all into a dough."
+msgstr ""
+
+#: data/recipes.db.h:51
+msgid "[image:4]Find a pie form."
+msgstr ""
+
+#: data/recipes.db.h:52
+msgid ""
+"[image:5]Takes pieces of the dough and start filling the pie form, until the "
+"whole form is full."
+msgstr ""
+
+#: data/recipes.db.h:53
+msgid "[image:6]Find a fork and punch holes in the bottom."
+msgstr ""
+
+#: data/recipes.db.h:54
+msgid "[timer:00:15:00]Pre-bake the dough for 15 minutes in the oven."
+msgstr ""
+
+#: data/recipes.db.h:55
+msgid ""
+"[image:7]Peel and chop the vegetables. Beetroots color a lot, so be careful. "
+"Do them last."
+msgstr ""
+
+#: data/recipes.db.h:56
+msgid "[image:8]Mix eggs, cheese, yoghurt, salt and pepper in a bowl."
+msgstr ""
+
+#: data/recipes.db.h:57
+msgid "[image:9]Add beetroot, kale and lastly carrot to the pie."
+msgstr ""
+
+#: data/recipes.db.h:58
+msgid ""
+"[image:10]Pour the contents of the bowl over the vegetables so all of the "
+"pie is covered."
+msgstr ""
+
+#: data/recipes.db.h:59
+msgid "[image:11]Decorate with extra cheese and linseeds for extra sazz."
+msgstr ""
+
+#: data/recipes.db.h:60
+msgid "[timer:00:35:00]Bake the pie in the oven for 35 minutes."
+msgstr ""
+
+#: data/recipes.db.h:61
+msgid "[image:1]Enjoy!"
+msgstr ""
+
+#: data/recipes.db.h:62
+msgid "Spanish Omelet"
+msgstr ""
+
+#: data/recipes.db.h:63
+msgid "Traditional Spanish Omelet, also known as \"Tortilla de Patata\""
+msgstr ""
+
+#: data/recipes.db.h:64
+msgid ""
+"[image:0]Put a bit of oil in a pan and cover the surface with sliced onions."
+msgstr ""
+
+#: data/recipes.db.h:65
+msgid "[image:3]Meanwhile, peel the potatoes and cut them in small pieces."
+msgstr ""
+
+#: data/recipes.db.h:66
+msgid ""
+"[image:2]Once the onions start to take colour, put the potatoes into the pan "
+"and add some salt."
+msgstr ""
+
+#: data/recipes.db.h:67
+msgid ""
+"[image:1]Cover the pan and stir the contents from time to time, until "
+"potatoes are well cooked."
+msgstr ""
+
+#: data/recipes.db.h:68
+msgid "[image:7]Put the eggs in a big bowl and add some salt"
+msgstr ""
+
+#: data/recipes.db.h:69
+msgid "[image:6]Whip the eggs."
+msgstr ""
+
+#: data/recipes.db.h:70
+msgid "[image:5]Put the contents of the pan in the bowl and mix it well."
+msgstr ""
+
+#: data/recipes.db.h:71
+msgid ""
+"[image:4]Add some oil to the pan and put the whole mix back into the pan."
+msgstr ""
+
+#: data/recipes.db.h:72
+msgid ""
+"[image:8]Once the lower side is cooked, with the help of a plate, turn the "
+"omelet."
+msgstr ""
+
+#: data/recipes.db.h:73
+msgid "Repeat the process until it is well cooked."
+msgstr ""
+
+#: data/recipes.db.h:74
+msgid "White fish for people who dont like fish."
+msgstr ""
+
+#: data/recipes.db.h:75
+msgid ""
+"It is a fantastic dish for those of us that dont love fish, but know we have "
+"to eat it to stay healthy."
+msgstr ""
+
+#: data/recipes.db.h:76
+msgid ""
+"The key to get this dish good is to have high temperature on the stove when "
+"first frying the fish. Then turn it down after the initial fry."
+msgstr ""
+
+#: data/recipes.db.h:77
+msgid ""
+"Set the stove to high (8/10), then put a good amount of oil in it. Any type "
+"of oil will do."
+msgstr ""
+
+#: data/recipes.db.h:78
+msgid ""
+"Remove bone and skin from the fish (if any), and add salt and pepper. Give "
+"the stove some minutes to get really hot. Then put the fish in. 2-3 min on "
+"each side."
+msgstr ""
+
+#: data/recipes.db.h:79
+msgid ""
+"Turn the temperature down to low (3/10). Add two spoons of butter, some "
+"thyme, rosemary and garlic. When the butter have melted, use a spoon to poor "
+"the melted butter and spice mix over the fish fillet."
+msgstr ""
+
+#: data/recipes.db.h:80
+msgid ""
+"After about 5 minutes your fish will be done. You can serve it with "
+"potatoes, rice, or noodles. Everything works."
+msgstr ""
+
+#: data/recipes.db.h:81
+msgid "Grumbeerekiechle"
+msgstr ""
+
+#: data/recipes.db.h:82
+msgid ""
+"Traditional potato hash from Alsace. Usually served with lettuce, sometimes "
+"with smoked salmon."
+msgstr ""
+
+#: data/recipes.db.h:83
+msgid ""
+"[image:1]Peel and grate the potatoes. Peel and slice the onions. Mix with "
+"the rest of the ingredients in a large bowl."
+msgstr ""
+
+#: data/recipes.db.h:84
+msgid "Put a frying pan on the hob at medium heat with a bit of oil."
+msgstr ""
+
+#: data/recipes.db.h:85
+msgid "[image:2]Form thin patties in the pan and brown them on both sides."
+msgstr ""
+
+#: data/recipes.db.h:86
+msgid ""
+"[image:0]Serve hot. Can be kept in a fridge and reheated in a micro-wave "
+"oven."
+msgstr ""
+
+#: data/recipes.db.h:87
+msgid "Savoury cakes"
+msgstr ""
+
+#: data/recipes.db.h:88
+msgid ""
+"This savoury cakes can be served as appetizers or as main course. There are "
+"several variations that you can bake with the same base depending on your "
+"mood and tastes. Quite common at French parties."
+msgstr ""
+
+#: data/recipes.db.h:89
+msgid ""
+"Prepare the batter: melt butter in a large bowl, then mix with the eggs, "
+"flour and yeast in a bowl."
+msgstr ""
+
+#: data/recipes.db.h:90
+msgid ""
+"Add the ingredients matching the variation you chose, preferably sliced or "
+"diced to turn them into small bits, and mix again. Try coming up with your "
+"own variations!"
+msgstr ""
+
+#: data/recipes.db.h:91
+msgid "Pour the batter in a loaf tin."
+msgstr ""
+
+#: data/recipes.db.h:92
+msgid "[timer:00:40:00]Put in the oven at [temperature:180C] for 40 minutes."
+msgstr ""
+
+#: data/recipes.db.h:93
+msgid ""
+"[image:1]Serve cold, cut in slices or cubes that people will get with a "
+"toothpick."
+msgstr ""
+
+#: data/recipes.db.h:94
+msgid "Tagliatelle alla Romana"
+msgstr ""
+
+#: data/recipes.db.h:95
+msgid ""
+"Pasta is one of my favourite things in the world, and this is one of my "
+"favourity pasta dishes. It's gutsy Italian food at its best."
+msgstr ""
+
+#: data/recipes.db.h:96
+msgid ""
+"It's important to have good quality chicken livers for this recipe - get "
+"free range organic if possible. You can use dried pasta if you're unable to "
+"get fresh."
+msgstr ""
+
+#: data/recipes.db.h:97
+msgid ""
+"Rinse the chicken livers and cut out any out any bits of sinew. Dry and "
+"season with salt and pepper."
+msgstr ""
+
+#: data/recipes.db.h:98
+msgid "Finely chop the red onion."
+msgstr ""
+
+#: data/recipes.db.h:99
+msgid ""
+"Melt half the butter in a frying pan, then add the olive oil and cook the "
+"onion until soft, without letting it brown."
+msgstr ""
+
+#: data/recipes.db.h:100
+msgid ""
+"Add the livers to the pan and fry until lightly browned. Then add the "
+"tomatoes and cook on a low heat for 20 minutes, stirring occasionally."
+msgstr ""
+
+#: data/recipes.db.h:101
+msgid ""
+"Put a deep pan of water on to boil and add a good pinch of salt to the water."
+msgstr ""
+
+#: data/recipes.db.h:102
+msgid ""
+"Remove the livers from the pan and chop finely. Then add back to the sauce "
+"and continue to cook. Check for seasoning and add more salt and pepper if "
+"necessary."
+msgstr ""
+
+#: data/recipes.db.h:103
+msgid ""
+"Cook the pasta for 3 minutes if fresh (or put on earlier and follow packet "
+"instructions if using dry pasta)."
+msgstr ""
+
+#: data/recipes.db.h:104
+msgid ""
+"Drain the pasta, retaining a cup of the pasta water. Add the pasta to the "
+"sauce along with the remaining butter. Mix and cook on a low heat for "
+"several minutes, to allow the pasta to absorb the sauce."
+msgstr ""
+
+#: data/recipes.db.h:105
+msgid "If the sauce needs loosening, add a bit of the pasta cooking water."
+msgstr ""
+
+#: data/recipes.db.h:106
+msgid "Serve with plenty of black pepper."
+msgstr ""
+
+#: data/recipes.db.h:107
+msgid "Non-knead buns"
+msgstr ""
+
+#: data/recipes.db.h:108
+msgid "Very quick fresh bread for breakfast with 5 minutes of work."
+msgstr ""
+
+#: data/recipes.db.h:109
+msgid ""
+"[image:1]Preparation: Mix together all of the ingredients in a large bowl "
+"into a thick porridge-like dough. Do not knead the dough, just mix it "
+"together. "
+msgstr ""
+
+#: data/recipes.db.h:110
+msgid ""
+"Cover and leave to rise in room temperature for 8-12 hours. This can be done "
+"for example the previous night so you can bake them in the morning."
+msgstr ""
+
+#: data/recipes.db.h:111
+msgid "Baking: Heat your oven to [temperature:250C]."
+msgstr ""
+
+#: data/recipes.db.h:112
+msgid ""
+"[image:3]The dough will be more than double in size and full of bubbles and "
+"very sticky. Pour a generous amount of flour on your baking surface so it "
+"doesn't stick, and pour the dough over it."
+msgstr ""
+
+#: data/recipes.db.h:113
+msgid ""
+"[image:4]Form the dough into a thick snake, about the diameter of your arm "
+"and cut bun-sized pieces with scissors onto the baking sheet."
+msgstr ""
+
+#: data/recipes.db.h:114
+msgid ""
+"[timer:00:15:00]Bake until nice and brown, this will take approximately 15 "
+"minutes."
+msgstr ""
+
+#: data/recipes.db.h:115
+msgid ""
+"[image:5]You can substitute half of the wheat flour with oats, seeds or "
+"different kind of flour if you want variety."
+msgstr ""
+
+#: data/recipes.db.h:116
+msgid "[image:0]Enjoy!"
+msgstr "[image:0]Guten Appetit!"
+
+#: data/recipes.db.h:117
+msgid "Traditional South Indian Tomato Chicken Curry, Fast Version"
+msgstr ""
+
+#: data/recipes.db.h:118
+msgid ""
+"A quick and easy version of a traditional South Indian chicken curry dish, "
+"learned from a Mallu immigrant and cook."
+msgstr ""
+
+#: data/recipes.db.h:119 src/gr-recipe-formatter.c:55
+#: src/gr-recipe-printer.c:210
+msgid "Preparation:"
+msgstr "Vorbereitung:"
+
+#: data/recipes.db.h:120
+msgid "Cube 5 large chicken breasts (about 4 cups) into 1-1.5 inch cubes"
+msgstr ""
+
+#: data/recipes.db.h:121
+msgid "Thinly slice 1 large onion, chopping the final quarter of the onion"
+msgstr ""
+
+#: data/recipes.db.h:122
+msgid "Chop 2 medium tomatoes into large chunks"
+msgstr ""
+
+#: data/recipes.db.h:123 src/gr-recipe-formatter.c:56
+#: src/gr-recipe-printer.c:211
+msgid "Cooking:"
+msgstr "Kochen:"
+
+#: data/recipes.db.h:124
+msgid ""
+"In a large pot, heat 1 tbsp olive oil at medium/medium-high heat. Once oil "
+"is hot, add mustard seeds and fry until they pop (cover the pot to prevent "
+"splashing). Too much heat will burn the seeds."
+msgstr ""
+
+#: data/recipes.db.h:125
+msgid ""
+"Once seeds have popped, turn down the heat to medium and add thinly sliced "
+"onion. Cover to retain moisture. Cook until translucent, stirring "
+"frequently. Add small amounts of water as necessary."
+msgstr ""
+
+#: data/recipes.db.h:126
+msgid ""
+"While onions are cooking, blend remaining chopped onion and tomatoes to "
+"create a puree. Add water if necessary."
+msgstr ""
+
+#: data/recipes.db.h:127
+msgid ""
+"Once onions are translucent, increase heat to medium-high and immediately "
+"add all spices. Toast for 30 seconds until aromatic."
+msgstr ""
+
+#: data/recipes.db.h:128
+msgid ""
+"Add the rest of the olive oil (2 more tbsp) and tomato and onion puree from "
+"blender. Cook until raw smell of onions and tomatoes is going — up to 5 "
+"minutes."
+msgstr ""
+
+#: data/recipes.db.h:129
+msgid ""
+"Turn down heat to medium. Add chopped chicken breast, cover, and allow to "
+"slowly cook. Add small amounts of water as necessary to achieve desired "
+"sauce consistency. (Chicken will release its own fat and water into the "
+"sauce, so wait a few minutes before adding extra.)"
+msgstr ""
+
+#: data/recipes.db.h:130
+msgid ""
+"Can be served immediately or left to marinate in curry sauce, then reheated. "
+"Serve with rice or chapati/heated flour tortilla."
+msgstr ""
+
+#: data/recipes.db.h:131
+msgid ""
+"To make a more full-flavored curry, try adding garam masala (ground "
+"cardamom, cloves, fennel seeds, and nutmeg), along with fresh curry leaves."
+msgstr ""
+
+#: data/recipes.db.h:132
+msgid "Rosemary Scalloped Potatoes"
+msgstr ""
+
+#: data/recipes.db.h:133
+msgid ""
+"A holiday twist on a classic American comfort food dish. Easy to make and "
+"sure to please."
+msgstr ""
+
+#: data/recipes.db.h:134
+msgid "Substitutions and conversions:"
+msgstr ""
+
+#: data/recipes.db.h:135
+msgid "5 potatoes = 5 cans sliced potatoes"
+msgstr ""
+
+#: data/recipes.db.h:136
+msgid "1 stick butter = 8 Tbsp butter"
+msgstr ""
+
+#: data/recipes.db.h:137
+msgid "4 cloves garlic = 1/2 tsp powdered garlic"
+msgstr ""
+
+#: data/recipes.db.h:138
+msgid "8 oz cream cheese = 1 pouch"
+msgstr ""
+
+#: data/recipes.db.h:139
+msgid "1 cup half and half = one small carton"
+msgstr ""
+
+#: data/recipes.db.h:140
+msgid "1 cup grated parmesan = 1 small bag"
+msgstr ""
+
+#: data/recipes.db.h:141
+msgid "Preheat oven to [temperature:350F]."
+msgstr ""
+
+#: data/recipes.db.h:142
+msgid "Butter a 13x9 baking dish."
+msgstr ""
+
+#: data/recipes.db.h:143
+msgid "Into buttered baking dish:"
+msgstr ""
+
+#: data/recipes.db.h:144
+msgid ""
+"- Add 5 thinly sliced (use a mandoline) russet potatoes, or 5 cans rinsed "
+"pre-sliced potatoes."
+msgstr ""
+
+#: data/recipes.db.h:145
+msgid ""
+"- Salt and pepper potatoes (more will be added to creamy mixture later), "
+"stir lightly to separate slices."
+msgstr ""
+
+#: data/recipes.db.h:146
+msgid "In a frying pan on medium to medium-low heat:"
+msgstr ""
+
+#: data/recipes.db.h:147
+msgid "- Melt 1 stick of butter."
+msgstr ""
+
+#: data/recipes.db.h:148
+msgid ""
+"- Add 1 chopped onion, garlic. Saute until translucent (about 5 minutes)."
+msgstr ""
+
+#: data/recipes.db.h:149
+msgid "- Add 8 oz cream cheese (quartered to help it melt faster)."
+msgstr ""
+
+#: data/recipes.db.h:150
+msgid "- When cream cheese is melted, add 1 cup half and half."
+msgstr ""
+
+#: data/recipes.db.h:151
+msgid ""
+"- Add salt and pepper to taste. (Don't be afraid to use more salt than you "
+"expect — it's a large dish, and potatoes need flavoring.) Recommend 1/2 Tbsp "
+"salt and 1/2 tsp pepper."
+msgstr ""
+
+#: data/recipes.db.h:152
+msgid "- Add finely chopped fresh rosemary and chopped green onions."
+msgstr ""
+
+#: data/recipes.db.h:153
+msgid "- Add 1/2 cup grated parmesan and melt into mixture."
+msgstr ""
+
+#: data/recipes.db.h:154
+msgid "To bake:"
+msgstr "Zum Backen:"
+
+#: data/recipes.db.h:155
+msgid ""
+"- Pour mixture over potatoes, stirring a bit to help the sauce cover "
+"everywhere. If using canned potatoes, be sure to separate the slices which "
+"are otherwise stuck together and prevent the mixture from seeping in."
+msgstr ""
+
+#: data/recipes.db.h:156
+msgid ""
+"- Spread remaining cheese over top to provide a nice texture and cheese "
+"flavoring."
+msgstr ""
+
+#: data/recipes.db.h:157
+msgid ""
+"- Bake for 1 to 1 1/2 hours, until liquid is bubbling and top cheese is "
+"browning."
+msgstr ""
+
+#: data/recipes.db.h:158
+msgid ""
+"Note: Don't be afraid to use extra parmesan cheese and cream (half and "
+"half). This recipe makes just enough sauce, but extra creaminess never "
+"hurts, especially if you're using canned sliced potatoes. Garlic can be "
+"increased to taste, but be careful not to let the garlic overtake the "
+"rosemary."
+msgstr ""
+
+#: data/recipes.db.h:159
+msgid "Classic Chicken Noodle Soup"
+msgstr ""
+
+#: data/recipes.db.h:160
+msgid "A simple take on a typical American meal."
+msgstr ""
+
+#: data/recipes.db.h:161
+msgid ""
+"If you haven't butchered the chicken, do so. Depending on how meaty you want "
+"the soup, you can use more or less of the butchered parts (I recommend the "
+"dark leg meat for the soup). Use the remaining parts for another dish."
+msgstr ""
+
+#: data/recipes.db.h:162
+msgid ""
+"Wash the celery, carrots and herbs. Slice the carrots and celery. Coarsely "
+"chop the onion. Prepare the herbs using kitchen twine in a bouquet garni."
+msgstr ""
+
+#: data/recipes.db.h:163
+msgid ""
+"[timer:02:00:00]In a large pot, add the chicken, the stock, 2 carrots, 1 "
+"stalk of celery, the onion and the bouquet garni. Fill the pot with water to "
+"cover the chicken. Bring to a boil and simmer for at least 2 hours."
+msgstr ""
+
+#: data/recipes.db.h:164
+msgid ""
+"Using a cheese cloth strainer, strain the soup into another pot. Remove meat "
+"from the bones, gather any loose chicken and add it to the strained soup. "
+"Discard the bones and cooked vegetables."
+msgstr ""
+
+#: data/recipes.db.h:165
+msgid ""
+"Add the remaining carrots and celery to the soup. Bring to a boil and simmer "
+"for at least one hour. Season with salt and pepper to taste."
+msgstr ""
+
+#: data/recipes.db.h:166
+msgid ""
+"[timer:00:10:00]Add noodles and simmer for about 10 minutes, until the "
+"noodles are done."
+msgstr ""
+
+#: data/recipes.db.h:167
+msgid "Pizzaburger"
+msgstr "Pizza-Burger"
+
+#: data/recipes.db.h:168
+msgid "Tomato dough with hamburger and cheese topping"
+msgstr ""
+
+#: data/recipes.db.h:169
+msgid "Dissolve yeast in warm water. Let stand for 2 minutes."
+msgstr ""
+
+#: data/recipes.db.h:170
+msgid ""
+"Add 1/2 cup tomato sauce, oil, salt, 1 tsp chili powder, and sugar. Mix well."
+msgstr ""
+
+#: data/recipes.db.h:171
+msgid "Gradually stir in flour. Dough will become sticky."
+msgstr ""
+
+#: data/recipes.db.h:172
+msgid "Optional: Let rise covered in a warm place for about an hour."
+msgstr ""
+
+#: data/recipes.db.h:173
+msgid "Brown diced onion and hamburger in frying pan."
+msgstr ""
+
+#: data/recipes.db.h:174
+msgid ""
+"Add remaining 1 1/2 cups tomato sauce, salt, pepper, and 2 tsp chili powder."
+msgstr ""
+
+#: data/recipes.db.h:175
+msgid "Remove from heat."
+msgstr "Vom Herd nehmen."
+
+#: data/recipes.db.h:176
+msgid ""
+"Spread dough on greased cookie sheet (will be somewhat springy and pull back "
+"as it is spread out)."
+msgstr ""
+
+#: data/recipes.db.h:177
+msgid "Top with hamburger mixture and cover with cheese slices."
+msgstr ""
+
+#: data/recipes.db.h:178
+msgid ""
+"[timer:00:20:00]Bake at [temperature:400F] for 20 to 30 minutes until dough "
+"is baked."
+msgstr ""
+
+#: data/recipes.db.h:179
 msgid "Pineapple Upside Down Cake with Hot Buttered Rum Sauce"
 msgstr ""
 
-#: data/recipes.db.h:4
+#: data/recipes.db.h:180
 msgid ""
 "This is a delicious, boozy update on a classic cake. The combination of rum "
 "and pineapple gives it a distinctively Caribbean flavour."
 msgstr ""
 
-#: data/recipes.db.h:5
-msgid "Preheat the oven to 175°C/gas mark 4."
+#: data/recipes.db.h:181
+msgid "Preheat the oven to [temperature:175C] (gas mark 4)."
 msgstr ""
 
-#: data/recipes.db.h:6
-msgid "Grease a round 20cm cake tin."
+#: data/recipes.db.h:182
+msgid "Grease a round 20 cm cake tin."
 msgstr ""
 
-#: data/recipes.db.h:7
+#: data/recipes.db.h:183
 msgid ""
 "Line the bottom of the tin with as many whole pineapple rings as will fit. "
 "Cut the remaining rings in half and use them to line the sides of the tin."
 msgstr ""
 
-#: data/recipes.db.h:8
+#: data/recipes.db.h:184
 msgid ""
 "Crack the eggs into a bowl and add the caster sugar. Whisk until pale and "
 "light (an electric whisk is good for this, but not essential)."
 msgstr ""
 
-#: data/recipes.db.h:9
+#: data/recipes.db.h:185
 msgid ""
 "In a different bowl, combine the flour and baking powder, and then sift into "
 "the egg and sugar mixture, mixing as you go."
 msgstr ""
 
-#: data/recipes.db.h:10
+#: data/recipes.db.h:186
 msgid ""
-"Melt the butter and combine with the milk,  rum and vanilla extract. Zest "
+"Melt the butter and combine with the milk, rum and vanilla extract. Zest "
 "half the lemon and add."
 msgstr ""
 
-#: data/recipes.db.h:11
+#: data/recipes.db.h:187
 msgid "Mix the wet mixture into the rest of the ingredients."
 msgstr ""
 
-#: data/recipes.db.h:12
+#: data/recipes.db.h:188
 msgid ""
-"Poor the cake mixture into the cake tin and bake for around 40 minutes, "
-"until the top is light brown and an inserted skewer comes out clean."
+"[timer:00:40:00]Poor the cake mixture into the cake tin and bake for around "
+"40 minutes, until the top is light brown and an inserted skewer comes out "
+"clean."
 msgstr ""
 
-#: data/recipes.db.h:13
+#: data/recipes.db.h:189
 msgid ""
-"Leave the cake to cool for 5 minutes, then turn out on to a rack to cool "
-"completely."
+"[timer:00:05:00]Leave the cake to cool for 5 minutes, then turn out on to a "
+"rack to cool completely."
 msgstr ""
 
-#: data/recipes.db.h:14
+#: data/recipes.db.h:190
 msgid ""
 "When it's time to eat, make the sauce: combine the muscovado sugar and cream "
 "in a saucepan and heat until the sugar has dissolved. Add the rum and simmer "
@@ -182,19 +1233,19 @@ msgid ""
 "the sauce."
 msgstr ""
 
-#: data/recipes.db.h:15
+#: data/recipes.db.h:191
 msgid "Pour the hot sauce over the cake and serve."
 msgstr ""
 
-#: data/recipes.db.h:16
+#: data/recipes.db.h:192
 msgid "Pan pizza"
 msgstr "Pizza vom Blech"
 
-#: data/recipes.db.h:17
+#: data/recipes.db.h:193
 msgid "Pizza is an all-time favorite."
 msgstr "Pizza ist ein Klassiker."
 
-#: data/recipes.db.h:18
+#: data/recipes.db.h:194
 msgid ""
 "Put the flour, yeast, water and olive oil in a bowl and stir it up with your "
 "hands or a spoon until there's no dry flour left, and let it be."
@@ -203,7 +1254,7 @@ msgstr ""
 "mit der Hand oder einem Löffel mischen bis kein trockenes Mehl mehr übrig "
 "ist."
 
-#: data/recipes.db.h:19
+#: data/recipes.db.h:195
 msgid ""
 "Cover the bowl tightly in plastic wrap and let it sit at room temperature "
 "overnight. "
@@ -211,7 +1262,7 @@ msgstr ""
 "Die Schüssel dicht mit einer Plastikfolie verschliessen und bei "
 "Raumtemperatur über Nacht stehen lassen."
 
-#: data/recipes.db.h:20
+#: data/recipes.db.h:196
 msgid ""
 "The next day it should have rosen quite a bit. Dump it all out onto a "
 "floured surface, then divide it into balls."
@@ -219,7 +1270,7 @@ msgstr ""
 "Am nächsten Tag sollte der Teig gut aufgegangen sein. Den Teig auf eine "
 "eingemehlte Oberfläche schütten und in kleine Bälle aufteilen."
 
-#: data/recipes.db.h:21
+#: data/recipes.db.h:197
 msgid ""
 "Spread olive oil in a 10-inch cast iron skillet or round cake pan and place "
 "a dough ball in the middle."
@@ -227,7 +1278,7 @@ msgstr ""
 "Das Olivenöl in einer 10 inch Gusseisenpfanne oder einer runden Kuchenform "
 "verteilen und den Teigball in die Mitte legen."
 
-#: data/recipes.db.h:22
+#: data/recipes.db.h:198
 msgid ""
 "Rub the dough ball around and flip it a couple times until it is completely "
 "coated in oil and the oil completely coats the bottom and sides of the pan. "
@@ -238,7 +1289,7 @@ msgstr ""
 "bedeckt ist und das Öl den Boden und die Seiten der Form benetzt hat. Mit "
 "Plastikfolie abdecken und einige Stunden gehen lassen."
 
-#: data/recipes.db.h:23
+#: data/recipes.db.h:199
 msgid ""
 "The dough should have spread on it own (takes about 2 hours). Lift the sides "
 "of the dough to let big air bubbles out."
@@ -246,22 +1297,22 @@ msgstr ""
 "Der Teig sollte sich von selbst ausbreiten (dauert etwa 2 Stunden). Hebe die "
 "Seiten an um grosse Luftblasen rauszulassen."
 
-#: data/recipes.db.h:24
+#: data/recipes.db.h:200
 msgid ""
-"Put in the oven at 280°C. (or as hot as your oven goes) for about 15 "
-"minutes. Peek underneath and if your pizza is a little pale, you can finish "
-"on the stovetop directly over medium heat until it is as dark and crisp as "
-"you like it."
+"Put in the oven at [temperature:280C]. (or as hot as your oven goes) for "
+"about 15 minutes. Peek underneath and if your pizza is a little pale, you "
+"can finish on the stovetop directly over medium heat until it is as dark and "
+"crisp as you like it."
 msgstr ""
-"Im Ofen bei 280°C (oder wärmer) für ungefähr 15 Minuten backen. Die "
-"Unterseite ansehen und when die Pizza etwas blass ist, kann sie direkt auf "
-"dem Herd gebräunt werden bis sie dunkel und knusprig genug ist."
+"Im Ofen bei [temperature:280C] (oder wärmer) für ungefähr 15 Minuten backen. "
+"Die Unterseite ansehen und when die Pizza etwas blass ist, kann sie direkt "
+"auf dem Herd gebräunt werden bis sie dunkel und knusprig genug ist."
 
-#: data/recipes.db.h:25
+#: data/recipes.db.h:201
 msgid "Wholesome Crackers"
 msgstr "Herzhafte Cräcker"
 
-#: data/recipes.db.h:26
+#: data/recipes.db.h:202
 msgid ""
 "Crackers are a fulfilling alternative snack and keeps your stomach going. "
 "Crackers consist of seeds, oat and flour. The recipe described here is very "
@@ -275,19 +1326,19 @@ msgstr ""
 "je nachdem was vorhanden ist. Ich habe es mit Mandeln, Sesam, Chia, Roggen, "
 "Hirse und Buchweizen ausprobiert."
 
-#: data/recipes.db.h:27
+#: data/recipes.db.h:203
 msgid ""
-"Turn on the oven at 473,15 K (200 °C). Mix all dry ingredients (seeds, "
+"Turn on the oven at [temperature:200C]. Mix all dry ingredients (seeds, "
 "flour, oatmeal, baking powder and salt) together. Mix oil. Then add water "
 "gradually while mixing until the dough is firm and pasty. If you add too "
 "much water, the dough will end up sticking too much to the baking paper."
 msgstr ""
-"Den Ofen auf 200 °C vorheizen. Alle trockenen Zutaten (Körner, Mehl, Hafer, "
-"Backpulver und Salz) mischen. Das Öl hinzufügen. Dann langsam das Wasser "
-"hinzufügen bis der Teig fest und klebrig ist. Wenn du zuviel Wasser nimmst, "
-"wird der Teig am Backpapier festkleben."
+"Den Ofen auf [temperature:200C] vorheizen. Alle trockenen Zutaten (Körner, "
+"Mehl, Hafer, Backpulver und Salz) mischen. Das Öl hinzufügen. Dann langsam "
+"das Wasser hinzufügen bis der Teig fest und klebrig ist. Wenn du zuviel "
+"Wasser nimmst, wird der Teig am Backpapier festkleben."
 
-#: data/recipes.db.h:28
+#: data/recipes.db.h:204
 msgid ""
 "Cut a sheet of baking paper at the size of a baking tray and place the dough "
 "on it. Cut another sheet of baking paper and put on top. Use a rolling pin "
@@ -303,7 +1354,7 @@ msgstr ""
 "Mit einem Messer in kleine Quadrate schneiden (wie im Bild). Optional mit "
 "Körnern verzieren, und dann in den vorgeheizten Ofen schieben."
 
-#: data/recipes.db.h:29
+#: data/recipes.db.h:205
 msgid ""
 "Wait for the crackers to become crisp, this takes around 17 minutes. You can "
 "check if they are done by touching the crackers or by pulling up a bit in "
@@ -315,49 +1366,51 @@ msgstr ""
 "sehen, ob sie sich in der Mitte noch biegen. Die Cräcker haben eine "
 "goldgelbe Farbe wenn sie fertig sind."
 
-#: data/recipes.db.h:30
+#: data/recipes.db.h:206
 msgid ""
 "Take out the crackers and leave them on the kitchen table to cool down for a "
 "few minutes."
 msgstr "Die Cräcker herausnehmen und für einige Minuten abkühlen lassen."
 
-#: data/recipes.db.h:31
+#: data/recipes.db.h:207
 msgid "Tofu ‘Egg’ Scramble"
 msgstr "Tofu Ei Mix"
 
-#: data/recipes.db.h:32
+#: data/recipes.db.h:208
 msgid "This vegan breakfast staple is perfect on a lazy saturday morning."
 msgstr ""
 "Dieser veganische Frühstücksklassiker ist perfekt an einem gemütlichen "
 "Samstagmorgen."
 
-#: data/recipes.db.h:33
+#: data/recipes.db.h:209
 msgid ""
-"Chop the onion. Open up the tofu package and slice it up, then crumble with "
-"your hands."
+"[image:0]Chop the onion. Open up the tofu package and slice it up, then "
+"crumble with your hands."
 msgstr ""
-"Die Zwiebel hacken. Das Tofu in Scheiben schneiden, dann mit den Fingern "
-"zerkrümeln."
+"[image:0]Die Zwiebel hacken. Das Tofu in Scheiben schneiden, dann mit den "
+"Fingern zerkrümeln."
 
-#: data/recipes.db.h:34
+#: data/recipes.db.h:210
 msgid ""
-"Sautee the onion, tofu, and peppers for 3-5 minutes using the vegan butter."
+"[timer:00:03:00]Sautee the onion, tofu, and peppers for 3-5 minutes using "
+"the vegan butter."
 msgstr ""
-"Die Zwiebel, Tofu und Paprika für 3-5 Minuten in veganischer Butter anbraten."
+"[timer:00:03:00]Die Zwiebel, Tofu und Paprika für 3-5 Minuten in veganischer "
+"Butter anbraten."
 
-#: data/recipes.db.h:35
+#: data/recipes.db.h:211
 msgid ""
-"Turn heat down to medium and add the rest of the ingredients – cook for 5-7 "
-"minutes more."
+"[timer:00:05:00]Turn heat down to medium and add the rest of the ingredients "
+"– cook for 5-7 minutes more."
 msgstr ""
-"Die Temperatur senken und mit den restlichen Zutaten für weitere 5-7 Minuten "
-"braten."
+"[timer:00:05:00]Die Temperatur senken und mit den restlichen Zutaten für "
+"weitere 5-7 Minuten braten."
 
-#: data/recipes.db.h:36
+#: data/recipes.db.h:212
 msgid "Donauwellen"
 msgstr "Donauwellen"
 
-#: data/recipes.db.h:37
+#: data/recipes.db.h:213
 msgid ""
 "Donauwellen is a popular German cake with chocolate, vanilla cream and "
 "cherries. The name is due to the fact that the dough typically forms a wavy "
@@ -367,46 +1420,90 @@ msgstr ""
 "Vanille-Creme und Kirschen. Der Name beruht auf der Tatsache das der Teig "
 "oft ein Wellenmuster formt."
 
-#: data/recipes.db.h:38
+#: data/recipes.db.h:214
+msgid "[image:1]Mix the butter until it is creamy. Add sugar and egg."
+msgstr "[image:1]Die Butter kremig sclagen. Zucker und Ei zufügen."
+
+#: data/recipes.db.h:215
 msgid ""
-"Mix the butter until it is creamy. Add sugar and eggs.​<a href=\"image:1\">①</"
-"a> Mix the flour with the baking powder and mix it in. Separate a third of "
-"the dough and add the cocoa powder to it.​<a href=\"image:2\">②</a>"
+"[image:2]Mix the flour with the baking powder and mix it in. Separate a "
+"third of the dough and add the cocoa powder to it."
 msgstr ""
-"Die Butter schlagen bis sie kremig ist. Den Zucker und die Eier zufügen.​<a "
-"href=\"image:1\">①</a> Das Backpulver unter das Mehl mischen und beides "
-"hinzufügen. Ein Drittel des Teigs abteilen und mit dem Kakaopulver "
-"vermischen.​<a href=\"image:2\">②</a>"
+"[image:2]Die Butter schlagen bis sie kremig ist. Den Zucker und die Eier "
+"zufügen. Das Backpulver unter das Mehl mischen und beides hinzufügen. Ein "
+"Drittel des Teigs abteilen und mit dem Kakaopulver vermischen."
 
-#: data/recipes.db.h:39
+#: data/recipes.db.h:216
 msgid ""
-"Spread the light dough on a buttered baking sheet. Put the dark dough on top.​"
-"<a href=\"image:4\">④</a> Use a fork to make a wavy pattern. Spread the "
-"dried cherries on top of the dough.​<a href=\"image:6\">⑥</a>"
+"[image:4]Spread the light dough on a buttered baking sheet. Put the dark "
+"dough on top."
+msgstr "[image:4]Den hellen Teig auf das eingefettete Backblech verteilen. "
+"Den dunklen Teig darübergeben."
+
+#: data/recipes.db.h:217
+msgid "[image:4]Use a fork to make a wavy pattern."
+msgstr "[image:4]Mit einer Gabel ein Wellenmuster machen."
+
+#: data/recipes.db.h:218
+msgid "[image:6]Spread the dried cherries on top of the dough."
+msgstr "[image:6]Die abgetropften Kirschen auf dem Teig verteilen."
+
+#: data/recipes.db.h:219
+msgid "[timer:00:30:00]Bake for 30 minutes at [temperature:200C]."
 msgstr ""
-"Den hellen Teig auf dem eingefetteten Backblech verteilen. Den dunklen Teig "
-"darüber geben.​<a href=\"image:4\">④</a> Mit einer Gabel ein Wellenmuster "
-"machen. Verteile die abgetropften Kirschen auf dem Teig.​<a href="
-"\"image:6\">⑥</a>"
+"[timer:00:30:00]Für 30 Minuten bei [temperature:200C] backen."
 
-#: data/recipes.db.h:40
-msgid "Bake for 30 minutes at 200 °C."
-msgstr "Für 30 Minuten by 200 °C backen."
-
-#: data/recipes.db.h:41
+#: data/recipes.db.h:220
 msgid ""
-"Use the milk, sugar and pudding to cook vanilla pudding and let it cool down "
-"while stirring it frequently. Slowly add spoonfuls of the butter, which "
-"should be at room temperature. Spread the butter cream on the cooled cake."
+"[image:7]Use the milk, sugar and pudding to cook vanilla pudding and let it "
+"cool down while stirring it frequently. Slowly add spoonfuls of the butter, "
+"which should be at room temperature."
 msgstr ""
-"Mit der Milch, dem Zucker under dem Puddingpulver einen Vanillepudding "
-"kochen und abkühlen lassen. Dabei häufig rühren. Langsam die zimmerwarme "
-"Butter darunter heben. Verteile die Buttercreme auf dem abgekühlten Kuchen."
+"[image:7]Mit der Milch, dem Zucker under dem Puddingpulver einen "
+"Vanillepudding kochen und abkühlen lassen. Dabei häufig rühren. Langsam die "
+"zimmerwarme Butter darunter heben. Verteile die Buttercreme auf dem "
+"abgekühlten Kuchen."
 
-#: data/recipes.db.h:42
-msgid "Melt the chocolate frosting in a hot water bath and sprinkle it on top."
+#: data/recipes.db.h:221
+msgid "[image:8]Spread the butter cream on the cooled cake."
+msgstr "[image:8]Die Butterkreme auf dem abgekühlten Kuchen verteilen."
+
+#: data/recipes.db.h:222
+msgid ""
+"[image:9]Melt the chocolate frosting in a hot water bath and sprinkle it on "
+"top."
 msgstr ""
-"Die Schokoladenglasur im Wasserbad schmelzen und auf den Kuchen träufeln."
+"[image:9]Die Schokoladenglasur im Wasserbad schmelzen und auf den Kuchen "
+"träufeln."
+
+#: data/recipes.db.h:223
+msgid "Gingered Carrot Soup"
+msgstr ""
+
+#: data/recipes.db.h:224
+msgid "A nutritious vegan soup that can be made relatively quickly"
+msgstr ""
+
+#: data/recipes.db.h:225
+msgid ""
+"Place carrots in large saucepan with water, cover, bring to a boil. Lower "
+"heat, simmer until very tender (10-15 minutes). While carrots are cooking, "
+"saute in olive oil all the onions, 5 minutes, then add garlic, ginger, salt, "
+"and spices. When all is well mingled, stir in lemon juice. Use food "
+"processor or blender to puree everything together (including all the toasted "
+"cashews). If you like a more textured soup, only half puree."
+msgstr ""
+
+#: data/recipes.db.h:226
+msgid ""
+"Garnish with parsley, chives, mint or scallions if you want. Top with "
+"cayenne pepper if you want a spicier soup. You can also add any leftover "
+"grains like rice, barley, couscous, etc. at the last minute."
+msgstr ""
+
+#: data/recipes.db.h:227
+msgid "This is my Aunt Wendy's recipe."
+msgstr ""
 
 #: src/chef-conflict-dialog.ui:10
 msgid "Same Chef"
@@ -441,6 +1538,72 @@ msgstr "Beschreibung:"
 msgid "Picture:"
 msgstr "Bild:"
 
+#: src/gr-chef-dialog.ui:5
+msgid "Chef Information"
+msgstr "Koch-Information"
+
+#: src/gr-chef-dialog.ui:14
+msgid "_Cancel"
+msgstr "_Abbrechen"
+
+#: src/gr-chef-dialog.ui:23 src/gr-window.ui:130
+msgid "_Save"
+msgstr "_Speichern"
+
+#: src/gr-chef-dialog.ui:103
+msgid "This data may be shared with other users if you share your recipes."
+msgstr ""
+"Diese Daten können mit anderen Benutzern geteilt werden, wenn Sie Rezepte "
+"weitergeben"
+
+#: src/gr-chef-dialog.ui:125
+msgid "Other Chef"
+msgstr "Anderer Koch"
+
+#: src/gr-chef-dialog.ui:138
+msgid "Name…"
+msgstr "Voller Name…"
+
+#: src/gr-chef-dialog.ui:149
+msgid "Short Name…"
+msgstr "Name…"
+
+#: src/gr-cooking-page.ui:141
+msgid "Done"
+msgstr "Fertig!"
+
+#: src/gr-cooking-page.ui:163
+msgid "Cook Now"
+msgstr "Jetzt Kochen"
+
+#: src/gr-cooking-page.ui:202
+msgid ""
+"To advance to the next step, press any key on the\n"
+"keyboard or click the left mouse button."
+msgstr ""
+"Um zum nächsten Schritt zu kommen, irgeneine Taste oder\n"
+"den linken Maus-Knopf klicken."
+
+#: src/gr-cooking-page.ui:262
+msgid ""
+"To go back to the previous step, doubletap any key\n"
+"or double click the left mouse button."
+msgstr ""
+"Um zum vorigen Schritt zurückzukommen, irgendeine Taste oder\n"
+"den linken Maus-Knopf doppelklicken."
+
+#: src/gr-cooking-page.ui:298
+msgid ""
+"To exit the process, press the Escape key or click\n"
+"the right mouse button."
+msgstr ""
+"Um den Koch-Modus zu verlassen, die Escape-Taste oder\n"
+"den rechten Maus-Knopf klicken."
+
+#: src/gr-cooking-view.ui:65
+msgid "Time is up!"
+msgstr "Essen ist fertig!"
+
 #: src/gr-cuisine-page.ui:68 src/gr-list-page.ui:113 src/gr-search-page.ui:30
 msgid "No recipes found"
 msgstr "Keine Rezepte gefunden"
@@ -461,297 +1624,292 @@ msgstr "Küchen"
 msgid "Seasonal"
 msgstr "Saison"
 
-#: src/gr-details-page.ui:83
-msgid ""
-"Ingredients\n"
-"gathered"
-msgstr ""
-"Zutaten\n"
-"beschafft"
-
-#: src/gr-details-page.ui:96
-msgid ""
-"Oven\n"
-"preheated"
-msgstr ""
-"Ofen\n"
-"vorgeheizt"
-
-#: src/gr-details-page.ui:109
-msgid ""
-"Instructions\n"
-"followed"
-msgstr ""
-"Anleitung\n"
-"befolgt"
-
-#: src/gr-details-page.ui:190
+#: src/gr-details-page.ui:106
 msgid "Contains garlic"
 msgstr "Enthält Knoblauch"
 
-#: src/gr-details-page.ui:197
+#: src/gr-details-page.ui:113
 msgid "Contains dairy products"
 msgstr "Enthält Milchprodukte"
 
-#: src/gr-details-page.ui:204
+#: src/gr-details-page.ui:120
 msgid "Contains Gluten"
 msgstr "Enthält Gluten"
 
-#: src/gr-details-page.ui:211 src/gr-details-page.c:879
+#: src/gr-details-page.ui:127 src/gr-details-page.c:526
 msgid "Spicy"
 msgstr "Scharf"
 
-#: src/gr-details-page.ui:238
+#: src/gr-details-page.ui:147
+msgid "_Buy Ingredients"
+msgstr "Zutaten kaufen"
+
+#: src/gr-details-page.ui:165 src/gr-recipe-small-tile.ui:102
 msgid "Serves"
 msgstr "Portionen"
 
-#: src/gr-details-page.ui:272
-msgid "Preparation time"
+#: src/gr-details-page.ui:199
+msgid "Preparation Time"
 msgstr "Vorbereitungszeit"
 
-#: src/gr-details-page.ui:302
-msgid "Cooking time"
+#: src/gr-details-page.ui:229
+msgid "Cooking Time"
 msgstr "Kochzeit"
 
-#: src/gr-details-page.ui:345 src/gr-edit-page.ui:579
-#: src/gr-recipe-printer.c:294
+#: src/gr-details-page.ui:290
+msgid "Note"
+msgstr "Notizen"
+
+#: src/gr-details-page.ui:320 src/gr-edit-page.ui:644
+#: src/gr-recipe-formatter.c:87 src/gr-recipe-printer.c:294
 msgid "Directions"
 msgstr "Anleitung"
 
-#: src/gr-details-page.ui:390
-msgid "Notes"
-msgstr "Notizen"
+#: src/gr-details-page.ui:380
+msgid "_Notes"
+msgstr "_Notizen"
 
-#: src/gr-details-page.ui:443 src/gr-shopping-page.ui:108
+#: src/gr-details-page.ui:390 src/gr-shopping-page.ui:127
 msgid "_Edit"
 msgstr "Ä_ndern"
 
-#: src/gr-details-page.ui:452
+#: src/gr-details-page.ui:399
 msgid "_Delete"
 msgstr "_Löschen"
 
-#: src/gr-details-page.ui:464
-msgid "_Cook it later"
-msgstr "_Später kochen"
-
-#: src/gr-details-page.ui:475
-msgid "Add to favorites"
-msgstr "Lieblingsrezepte"
-
-#: src/gr-details-page.ui:496 src/gr-shopping-page.ui:125
-msgid "E_xport"
-msgstr "_Exportieren"
-
-#: src/gr-details-page.ui:508 src/gr-shopping-page.ui:135
-msgid "_Print"
-msgstr "_Drucken"
-
-#: src/gr-details-page.ui:518
+#: src/gr-details-page.ui:410 src/gr-shopping-page.ui:145
+#: src/recipe-export-dialog.ui:21
 msgid "_Share"
 msgstr "_Weitergeben"
 
-#: src/gr-details-page.ui:545
-msgid "Duration"
-msgstr "Dauer"
+#: src/gr-details-page.ui:422 src/gr-shopping-page.ui:156
+msgid "_Print"
+msgstr "_Drucken"
 
-#: src/gr-details-page.ui:560
-msgid "Start"
-msgstr "Start"
+#: src/gr-details-page.ui:433
+msgid "Add to favorites"
+msgstr "Lieblingsrezepte"
 
-#: src/gr-details-page.ui:582
-msgid "Remaining time"
-msgstr "Verbleibende Zeit"
-
-#: src/gr-details-page.ui:595
-msgid "Stop"
-msgstr "Stop"
-
-#: src/gr-edit-page.ui:111
+#: src/gr-edit-page.ui:113
 msgid "Add an image"
 msgstr "Bild hinzufügen"
 
-#: src/gr-edit-page.ui:137 src/gr-edit-page.ui:163
+#: src/gr-edit-page.ui:139 src/gr-edit-page.ui:165
 msgid "Rotate image"
 msgstr "Bild drehen"
 
-#: src/gr-edit-page.ui:189
+#: src/gr-edit-page.ui:191
+msgid "Default image"
+msgstr "Titelbild"
+
+#: src/gr-edit-page.ui:217
 msgid "Remove image"
 msgstr "Bild löschen"
 
-#: src/gr-edit-page.ui:228 src/gr-diet-row.c:102
-msgid "Gluten free"
-msgstr "ohne Gluten"
-
-#: src/gr-edit-page.ui:234 src/gr-diet-row.c:105
-msgid "Nut free"
-msgstr "ohne Nüsse"
-
-#: src/gr-edit-page.ui:240 src/gr-diet-row.c:108
-msgid "Vegan"
-msgstr "Vegan"
-
-#: src/gr-edit-page.ui:246 src/gr-diet-row.c:111
-msgid "Vegetarian"
-msgstr "Vegetarisch"
-
-#: src/gr-edit-page.ui:252 src/gr-diet-row.c:114
-msgid "Milk free"
-msgstr "ohne Milch"
-
-#: src/gr-edit-page.ui:268
+#: src/gr-edit-page.ui:261
 msgid "Details"
 msgstr "Einzelheiten"
 
-#: src/gr-edit-page.ui:285
-msgid "_Name your recipe"
+#: src/gr-edit-page.ui:278
+msgid "_Name Your Recipe"
 msgstr "_Name des Rezeptes"
 
-#: src/gr-edit-page.ui:315
+#: src/gr-edit-page.ui:308
 msgid "Ser_ves"
 msgstr "_Portionen"
 
-#: src/gr-edit-page.ui:345
-msgid "_Preparation time"
+#: src/gr-edit-page.ui:338
+msgid "_Preparation Time"
 msgstr "_Vorbereitungszeit"
 
-#: src/gr-edit-page.ui:365 src/gr-edit-page.ui:402
+#: src/gr-edit-page.ui:358 src/gr-edit-page.ui:395
 msgid "Less than 15 minutes"
 msgstr "Weniger als 15 Minuten"
 
-#: src/gr-edit-page.ui:366 src/gr-edit-page.ui:403
+#: src/gr-edit-page.ui:359 src/gr-edit-page.ui:396
 msgid "15 to 30 minutes"
 msgstr "15 bis 30 Minuten"
 
-#: src/gr-edit-page.ui:367 src/gr-edit-page.ui:404
+#: src/gr-edit-page.ui:360 src/gr-edit-page.ui:397
 msgid "30 to 45 minutes"
 msgstr "30 bis 45 Minuten"
 
-#: src/gr-edit-page.ui:368 src/gr-edit-page.ui:405
+#: src/gr-edit-page.ui:361 src/gr-edit-page.ui:398
 msgid "45 minutes to an hour"
 msgstr "zwischen 45 Minuten und einer Stunde"
 
-#: src/gr-edit-page.ui:369 src/gr-edit-page.ui:406
+#: src/gr-edit-page.ui:362 src/gr-edit-page.ui:399
 msgid "More than an hour"
 msgstr "Mehr als eine Stunde"
 
-#: src/gr-edit-page.ui:382
-msgid "C_ooking time"
+#: src/gr-edit-page.ui:375
+msgid "C_ooking Time"
 msgstr "_Kochzeit"
 
-#: src/gr-edit-page.ui:419
+#: src/gr-edit-page.ui:412
 msgid "_Cuisine"
 msgstr "_Küche"
 
-#: src/gr-edit-page.ui:449
+#: src/gr-edit-page.ui:442
 msgid "_Meal"
 msgstr "_Mahlzeit"
 
-#: src/gr-edit-page.ui:479
+#: src/gr-edit-page.ui:472
 msgid "S_eason"
 msgstr "_Saison"
 
-#: src/gr-edit-page.ui:509
+#: src/gr-edit-page.ui:502
 msgid "S_piciness"
 msgstr "Schä_rfe"
 
-#: src/gr-edit-page.ui:528
+#: src/gr-edit-page.ui:521 src/gr-spice-row.c:98
 msgid "Mild"
 msgstr "Nicht scharf"
 
-#: src/gr-edit-page.ui:529
+#: src/gr-edit-page.ui:522
 msgid "Somewhat spicy"
 msgstr "Etwas scharf"
 
-#: src/gr-edit-page.ui:530
+#: src/gr-edit-page.ui:523 src/gr-spice-row.c:102
 msgid "Hot"
 msgstr "Scharf"
 
-#: src/gr-edit-page.ui:531 src/gr-details-page.c:874
+#: src/gr-edit-page.ui:524 src/gr-details-page.c:521
 msgid "Very spicy"
 msgstr "Sehr scharf"
 
-#: src/gr-edit-page.ui:542
-msgid "Description (optional)"
-msgstr "Beschreibung (optional)"
+#: src/gr-edit-page.ui:535
+msgid "Description"
+msgstr "Beschreibung"
 
-#: src/gr-edit-page.ui:624
-msgid "Add Recipe link"
-msgstr "Rezept-Link einfügen"
+#: src/gr-edit-page.ui:593 src/gr-diet-row.c:102
+msgid "Gluten free"
+msgstr "ohne Gluten"
 
-#: src/gr-edit-page.ui:644
-msgid "Add Image link"
-msgstr "Bild-Link einfügen"
+#: src/gr-edit-page.ui:599 src/gr-diet-row.c:105
+msgid "Nut free"
+msgstr "ohne Nüsse"
 
-#: src/gr-edit-page.ui:700 src/gr-edit-page.ui:721 src/gr-edit-page.c:289
+#: src/gr-edit-page.ui:605 src/gr-diet-row.c:108
+msgid "Vegan"
+msgstr "Vegan"
+
+#: src/gr-edit-page.ui:611 src/gr-diet-row.c:111
+msgid "Vegetarian"
+msgstr "Vegetarisch"
+
+#: src/gr-edit-page.ui:617 src/gr-diet-row.c:114
+msgid "Milk free"
+msgstr "ohne Milch"
+
+#: src/gr-edit-page.ui:704
+msgid "Edit"
+msgstr "Ä_ndern"
+
+#: src/gr-edit-page.ui:711
+msgid "Preview"
+msgstr "Vorschau"
+
+#: src/gr-edit-page.ui:732
+msgid "Add Step"
+msgstr "Neuer Schritt"
+
+#: src/gr-edit-page.ui:740
+msgid "Add Image"
+msgstr "Bild einfügen"
+
+#: src/gr-edit-page.ui:748
+msgid "Add Timer"
+msgstr "Alarm setzen"
+
+#: src/gr-edit-page.ui:756
+msgid "Add Temperature"
+msgstr "Temperatur einfügen"
+
+#: src/gr-edit-page.ui:820 src/gr-edit-page.ui:841 src/gr-edit-page.c:418
 msgid "Ingredient"
-msgstr "Zutaten"
+msgstr "Zutat"
 
-#: src/gr-edit-page.ui:749 src/gr-edit-page.ui:841 src/gr-edit-page.ui:892
-#: src/gr-query-editor.ui:222
+#: src/gr-edit-page.ui:869 src/gr-edit-page.ui:961 src/gr-query-editor.ui:285
 msgid "Search…"
 msgstr "Suchen…"
 
-#: src/gr-edit-page.ui:779 src/gr-edit-page.ui:800 src/gr-edit-page.c:290
+#: src/gr-edit-page.ui:899 src/gr-edit-page.ui:920 src/gr-edit-page.c:419
 msgid "Amount"
 msgstr "Menge"
 
-#: src/gr-edit-page.ui:872 src/gr-edit-page.c:293
+#: src/gr-edit-page.ui:992 src/gr-edit-page.c:422
 msgid "Add"
 msgstr "Hinzufügen"
+
+#: src/gr-edit-page.ui:1101
+msgid "Syntax"
+msgstr "Syntax"
+
+#: src/gr-edit-page.ui:1116
+msgid "Use paragraphs to break directions into steps (2 newlines)."
+msgstr "Benutze Absätze um die Anleitung in Schritte aufzutelen (2 Umbrüche)"
+
+#: src/gr-edit-page.ui:1129
+msgid "You can provide an image or a time counter in each step."
+msgstr "Jeder Schritt kann ein Bild oder einen Alarm haben."
+
+#: src/gr-edit-page.ui:1141
+msgid "Timer"
+msgstr "Alarm"
+
+#: src/gr-edit-page.ui:1163
+msgid "Image"
+msgstr "Bild"
+
+#: src/gr-edit-page.ui:1185
+msgid "Temperature"
+msgstr "Temperatur"
 
 #: src/gr-list-page.ui:126
 msgid "There are no recipes here yet."
 msgstr "Noch keine Rezepte vorhanden."
 
-#: src/gr-preferences.ui:5
-msgid "Preferences"
-msgstr "Einstellungen"
-
-#: src/gr-preferences.ui:69
-msgid "Recipe Author Information"
-msgstr "Rezept Autor Information"
-
-#: src/gr-preferences.ui:82
-msgid "This data may be shared with other users if you share your recipes."
-msgstr ""
-"Diese Daten können mit anderen Benutzern geteilt werden, wenn Sie Rezepte "
-"weitergeben"
-
-#: src/gr-preferences.ui:96
-msgid "Name…"
-msgstr "Voller Name…"
-
-#: src/gr-preferences.ui:106
-msgid "Short Name…"
-msgstr "Name…"
-
 #: src/gr-query-editor.ui:48
 msgid "Meal"
 msgstr "Mahlzeit"
 
-#: src/gr-query-editor.ui:68 src/gr-query-editor.c:450
-#: src/gr-query-editor.c:572
+#: src/gr-query-editor.ui:68 src/gr-query-editor.c:490
+#: src/gr-query-editor.c:678
 msgid "Any meal"
 msgstr "Beliebige Mahlzeit"
 
 #: src/gr-query-editor.ui:111
+msgid "Spiciness"
+msgstr "Schä_rfe"
+
+#: src/gr-query-editor.ui:131 src/gr-query-editor.c:556
+#: src/gr-query-editor.c:707
+msgid "Any spiciness"
+msgstr "Irgendeine Schä_rfe"
+
+#: src/gr-query-editor.ui:174
 msgid "Dietary restrictions"
 msgstr "Diät-Enschränkungen"
 
-#: src/gr-query-editor.ui:131 src/gr-query-editor.c:366
-#: src/gr-query-editor.c:601
+#: src/gr-query-editor.ui:194 src/gr-query-editor.c:406
+#: src/gr-query-editor.c:736
 msgid "No restrictions"
 msgstr "Keine Einschränkungen"
 
-#: src/gr-query-editor.ui:174 src/gr-edit-page.c:1503
-#: src/gr-recipe-printer.c:243
+#: src/gr-query-editor.ui:237 src/gr-edit-page.c:1634
+#: src/gr-recipe-formatter.c:68 src/gr-recipe-printer.c:243
 msgid "Ingredients"
 msgstr "Zutaten"
 
-#: src/gr-query-editor.ui:194 src/gr-query-editor.c:297
-#: src/gr-query-editor.c:630
+#: src/gr-query-editor.ui:257 src/gr-query-editor.c:337
+#: src/gr-query-editor.c:765
 msgid "Anything"
 msgstr "Beliebige Zutaten"
+
+#: src/gr-recipe-small-tile.ui:126 src/gr-edit-page.c:1663
+msgid "Remove"
+msgstr "Löschen"
 
 #: src/gr-recipes-page.ui:9
 msgid "Recipes page"
@@ -761,15 +1919,15 @@ msgstr "Rezepte-Ansicht"
 msgid "Today"
 msgstr "Heute"
 
-#: src/gr-recipes-page.ui:102
+#: src/gr-recipes-page.ui:103
 msgid "Editor’s Picks"
 msgstr "Empfehlungen"
 
-#: src/gr-recipes-page.ui:127
+#: src/gr-recipes-page.ui:128
 msgid "Categories"
 msgstr "Kategorien"
 
-#: src/gr-recipes-page.ui:223
+#: src/gr-recipes-page.ui:224
 msgid "Featured GNOME Chefs"
 msgstr "GNOME Köche"
 
@@ -777,31 +1935,71 @@ msgstr "GNOME Köche"
 msgid "Try a different search"
 msgstr "Mit veränderter Suche erneut versuchen"
 
-#: src/gr-window.ui:20
+#: src/gr-shopping-page.ui:42 src/gr-window.c:941
+msgid "Buy ingredients"
+msgstr "Zutaten kaufen"
+
+#: src/gr-shopping-page.ui:94
+msgid "No shopping necessary!"
+msgstr "Kein Einkaufen nötig!"
+
+#: src/gr-shopping-page.ui:134
+msgid "_Clear List"
+msgstr "_Liste löschen"
+
+#: src/gr-shopping-page.ui:190
+msgid "Nothing to add"
+msgstr "Nichts hinzuzufügen"
+
+#: src/gr-time-widget.ui:32
+msgid "Start"
+msgstr "Starten"
+
+#: src/gr-time-widget.ui:62
+msgid "Pause"
+msgstr "Anhalten"
+
+#: src/gr-time-widget.ui:71
+msgid "Continue"
+msgstr "Weiter"
+
+#: src/gr-time-widget.ui:85
+msgid "Reset"
+msgstr "Neustart"
+
+#: src/gr-window.ui:23
 msgid "_New Recipe"
 msgstr "_Neues Rezept"
 
-#: src/gr-window.ui:37
+#: src/gr-window.ui:40
 msgid "Go back"
 msgstr "Zurückgehen"
 
-#: src/gr-window.ui:94
+#: src/gr-window.ui:97
 msgid "Search"
 msgstr "Suchen"
 
-#: src/gr-window.ui:113
-msgid "_Start cooking"
+#: src/gr-window.ui:116
+msgid "_Start Cooking"
 msgstr "_Jetzt kochen"
 
-#: src/gr-window.ui:127
-msgid "_Save"
-msgstr "_Speichern"
+#: src/gr-window.ui:191
+msgid "Ingredients to buy added."
+msgstr "Zutaten auf die Einkaufsliste gesetzt."
 
-#: src/gr-window.ui:195
+#: src/gr-window.ui:201
+msgid "View Shopping List"
+msgstr "Einkaufsliste ansehen"
+
+#: src/gr-window.ui:258
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: src/gr-window.ui:264
+#: src/gr-window.ui:318
+msgid "Send Update"
+msgstr "Änderungen einschicken"
+
+#: src/gr-window.ui:387 src/gr-window.c:300
 msgid "Cuisines"
 msgstr "Küchen"
 
@@ -810,19 +2008,19 @@ msgid "_Import"
 msgstr "Importieren"
 
 #: src/menus.ui:12
-msgid "_Preferences"
-msgstr "_Einstellungen"
+msgid "_My Chef Information"
+msgstr "Meine Koch-Information"
 
 #: src/menus.ui:18
 msgid "_About"
 msgstr "_Über"
 
-#: src/menus.ui:24
+#: src/menus.ui:22
 msgid "_Quit"
 msgstr "_Beenden"
 
-#: src/recipe-conflict-dialog.ui:10 src/gr-image-viewer.c:498
-#: src/gr-preferences.c:97 src/gr-window.c:589
+#: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:152
+#: src/gr-image-viewer.c:601 src/gr-window.c:856
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -836,82 +2034,155 @@ msgstr "Ein Rezept mit diesem Namen existiert bereits."
 
 #: src/recipe-export-dialog.ui:14
 msgid "_Close"
-msgstr ""
+msgstr "_Schliessen"
 
-#: src/recipe-export-dialog.ui:21
-msgid "_Export"
-msgstr "_Exportieren"
+#: src/recipe-export-dialog.ui:57
+msgid "Share with a friend"
+msgstr "An einen Freund schicken"
 
-#: src/gr-app.c:200
+#: src/recipe-export-dialog.ui:64
+msgid "Contribute to GNOME recipes"
+msgstr "Mehr Information über GNOME Rezepte"
+
+#: src/gr-about-dialog.c:122
 msgid "Learn more about Builder"
 msgstr "Mehr Information über Builder"
 
-#: src/gr-app.c:306 src/gr-app.c:308 src/gr-app.c:310 src/gr-app.c:312
-#: src/gr-app.c:314 src/gr-app.c:316 src/gr-app.c:318 src/gr-app.c:320
-#: src/gr-app.c:322
+#: src/gr-about-dialog.c:300 src/gr-about-dialog.c:302
+#: src/gr-about-dialog.c:304 src/gr-about-dialog.c:306
+#: src/gr-about-dialog.c:308 src/gr-about-dialog.c:310
+#: src/gr-about-dialog.c:312 src/gr-about-dialog.c:314
+#: src/gr-about-dialog.c:316
 msgid "Unknown"
 msgstr "Unbekannt"
 
-#: src/gr-app.c:409
+#: src/gr-about-dialog.c:406 src/gr-about-dialog.c:472
+msgid "OS"
+msgstr "OS"
+
+#: src/gr-about-dialog.c:409 src/gr-about-dialog.c:475
+msgctxt "OS metadata"
+msgid "Name"
+msgstr "Name"
+
+#: src/gr-about-dialog.c:410 src/gr-about-dialog.c:476
+msgctxt "OS metadata"
+msgid "Type"
+msgstr "Typ"
+
+#: src/gr-about-dialog.c:411 src/gr-about-dialog.c:478
+#: src/gr-about-dialog.c:480
+msgctxt "OS metadata"
+msgid "Desktop"
+msgstr "Desktop"
+
+#: src/gr-about-dialog.c:418
 msgid "Flatpak"
 msgstr "Flatpak"
 
-#: src/gr-app.c:412
+#: src/gr-about-dialog.c:421
 msgctxt "Flatpak metadata"
 msgid "Version"
 msgstr "Version"
 
-#: src/gr-app.c:415
+#: src/gr-about-dialog.c:424
 msgid "Application"
 msgstr "Anwendung"
 
-#: src/gr-app.c:418 src/gr-app.c:427
+#: src/gr-about-dialog.c:427 src/gr-about-dialog.c:436
 msgctxt "Flatpak metadata"
 msgid "ID"
 msgstr "ID"
 
-#: src/gr-app.c:419 src/gr-app.c:428
+#: src/gr-about-dialog.c:428 src/gr-about-dialog.c:437
 msgctxt "Flatpak metadata"
 msgid "Architecture"
 msgstr "Architectur:"
 
-#: src/gr-app.c:420 src/gr-app.c:429
+#: src/gr-about-dialog.c:429 src/gr-about-dialog.c:438
 msgctxt "Flatpak metadata"
 msgid "Branch"
 msgstr "Zweig"
 
-#: src/gr-app.c:421 src/gr-app.c:430
+#: src/gr-about-dialog.c:430 src/gr-about-dialog.c:439
 msgctxt "Flatpak metadata"
 msgid "Commit"
 msgstr "Commit"
 
-#: src/gr-app.c:424
+#: src/gr-about-dialog.c:433
 msgid "Runtime"
 msgstr "Runtime"
 
-#: src/gr-app.c:433 src/gr-app.c:472
+#: src/gr-about-dialog.c:442 src/gr-about-dialog.c:504
 msgid "Bundled libraries"
 msgstr "Gebündelte Bibliotheken"
 
-#: src/gr-app.c:454
+#: src/gr-about-dialog.c:483
 msgid "System libraries"
 msgstr "System-Bibliotheken"
 
-#: src/gr-app.c:673
+#: src/gr-about-dialog.c:699
 msgid "System"
 msgstr "System"
 
-#: src/gr-app.c:724
+#: src/gr-about-dialog.c:755
 msgid "translator-credits"
 msgstr "Matthias Clasen"
 
-#: src/gr-app.c:727
+#: src/gr-about-dialog.c:758
 msgid "Learn more about GNOME Recipes"
 msgstr "Mehr Information über GNOME Rezepte"
 
-#: src/gr-app.c:736
+#: src/gr-about-dialog.c:762
 msgid "Recipes by"
 msgstr "Rezepte von"
+
+#: src/gr-account.c:110
+#, c-format
+msgid "Got an error from Account portal"
+msgstr "Fehler vom Account Portal"
+
+#: src/gr-account.c:134
+msgid ""
+"Allow your personal information to be included with recipes you share with "
+"your friends."
+msgstr ""
+"Sende Informationen zu deiner Person mit Rezepten, die du an deine Freunde "
+"weitergibst."
+
+#: src/gr-chef-dialog.c:148 src/gr-image-viewer.c:597
+msgid "Select an Image"
+msgstr "Ein Bild auswählen"
+
+#: src/gr-chef-dialog.c:151 src/gr-image-viewer.c:600 src/gr-window.c:855
+msgid "Open"
+msgstr "Öffnen"
+
+#: src/gr-chef-dialog.c:156 src/gr-image-viewer.c:605
+msgid "Image files"
+msgstr "Bilddateien"
+
+#: src/gr-chef-dialog.c:409
+msgid "New Chef"
+msgstr "Neuer Koch"
+
+#: src/gr-cooking-page.c:172
+msgid "Cooking"
+msgstr "Kochen"
+
+#: src/gr-cooking-view.c:233
+msgid "A cooking timer has expired"
+msgstr "Der Alarm ist abgelaufen."
+
+#: src/gr-cooking-view.c:256
+#, c-format
+msgid "Timer for “Step %d” has expired."
+msgstr "Die Zeit für “Schritt %d” ist abgelaufen."
+
+#: src/gr-cooking-view.c:426
+#, c-format
+msgid "Step %d/%d"
+msgstr "Schritt %d/%d"
 
 #: src/gr-cuisine.c:43
 msgid "American"
@@ -1112,98 +2383,46 @@ msgid ""
 "it is impossible to fit Turkish cuisine into a short list."
 msgstr ""
 
-#: src/gr-details-page.c:73
-#, c-format
-msgid "Your cooking timer for “%s” has expired."
-msgstr "Die Kochzeit für “%s” ist abgelaufen."
-
-#: src/gr-details-page.c:75
-msgid "Time is up!"
-msgstr "Essen ist fertig!"
-
-#: src/gr-details-page.c:245
-msgid "Cooking"
-msgstr "Kochen:"
-
-#: src/gr-details-page.c:394
-msgid "hour"
-msgstr "Stunde"
-
-#: src/gr-details-page.c:395
-msgid "hours"
-msgstr "Stunden"
-
-#: src/gr-details-page.c:396
-msgctxt "hour abbreviation"
-msgid "h"
-msgstr "h"
-
-#: src/gr-details-page.c:400
-msgid "minute"
-msgstr "Minute"
-
-#: src/gr-details-page.c:401
-msgid "minutes"
-msgstr "Minuten"
-
-#: src/gr-details-page.c:402
-msgctxt "minute abbreviation"
-msgid "min"
-msgstr "min"
-
-#: src/gr-details-page.c:403
-msgctxt "minute abbreviation"
-msgid "m"
-msgstr "m"
-
-#: src/gr-details-page.c:407
-msgid "second"
-msgstr "Sekunde"
-
-#: src/gr-details-page.c:408
-msgid "seconds"
-msgstr "Sekunden"
-
-#: src/gr-details-page.c:409
-msgctxt "second abbreviation"
-msgid "sec"
-msgstr "sec"
-
-#: src/gr-details-page.c:410
-msgctxt "second abbreviation"
-msgid "s"
-msgstr "s"
-
-#: src/gr-details-page.c:656
+#: src/gr-details-page.c:312
 msgid "Could not find this recipe."
 msgstr "Rezept nicht gefunden."
 
-#: src/gr-details-page.c:973 src/gr-edit-page.c:1852
+#: src/gr-details-page.c:564
+#, c-format
+msgid "Timer: %s"
+msgstr "Alarm: %s"
+
+#: src/gr-details-page.c:569
+#, c-format
+msgid "Image %d"
+msgstr "Bild %d"
+
+#: src/gr-details-page.c:665 src/gr-edit-page.c:1939
 #, c-format
 msgid "Recipe by %s"
 msgstr "Rezepte von %s"
 
-#: src/gr-diet.c:34 src/gr-list-page.c:231
+#: src/gr-diet.c:34
 msgid "Gluten-free recipes"
 msgstr "Glutenfreie Rezepte"
 
-#: src/gr-diet.c:37 src/gr-list-page.c:233
+#: src/gr-diet.c:37
 msgid "Nut-free recipes"
 msgstr "Nussfreie Rezepte"
 
-#: src/gr-diet.c:40 src/gr-list-page.c:235
+#: src/gr-diet.c:40
 msgid "Vegan recipes"
 msgstr "Vegan Rezepte"
 
-#: src/gr-diet.c:43 src/gr-list-page.c:237
+#: src/gr-diet.c:43
 msgid "Vegetarian recipes"
 msgstr "Vegetarische Rezepte"
 
-#: src/gr-diet.c:46 src/gr-list-page.c:239
+#: src/gr-diet.c:46
 msgid "Milk-free recipes"
 msgstr "Laktosefreie Rezepte"
 
-#: src/gr-diet.c:49 src/gr-diet.c:78 src/gr-list-page.c:241
+#: src/gr-diet.c:49 src/gr-diet.c:78
 msgid "Other dietary restrictions"
 msgstr "Andere Diet-Enschränkungen"
 
@@ -1263,114 +2482,168 @@ msgid ""
 "<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Learn more…</a>"
 msgstr ""
 
-#: src/gr-edit-page.c:339
+#: src/gr-edit-page.c:468
 msgid "Apply"
 msgstr "Anwenden"
 
-#: src/gr-edit-page.c:1016 src/gr-recipe-small-tile.c:86
-#: src/gr-recipe-tile.c:148
-#, c-format
-msgid "by %s"
-msgstr "von %s"
+#: src/gr-edit-page.c:1083
+msgid "hour"
+msgstr "Stunde"
 
-#: src/gr-edit-page.c:1518
+#: src/gr-edit-page.c:1084
+msgid "hours"
+msgstr "Stunden"
+
+#: src/gr-edit-page.c:1085
+msgctxt "hour abbreviation"
+msgid "h"
+msgstr "h"
+
+#: src/gr-edit-page.c:1089
+msgid "minute"
+msgstr "Minute"
+
+#: src/gr-edit-page.c:1090
+msgid "minutes"
+msgstr "Minuten"
+
+#: src/gr-edit-page.c:1091
+msgctxt "minute abbreviation"
+msgid "min"
+msgstr "min"
+
+#: src/gr-edit-page.c:1092
+msgctxt "minute abbreviation"
+msgid "m"
+msgstr "m"
+
+#: src/gr-edit-page.c:1096
+msgid "second"
+msgstr "Sekunde"
+
+#: src/gr-edit-page.c:1097
+msgid "seconds"
+msgstr "Sekunden"
+
+#: src/gr-edit-page.c:1098
+msgctxt "second abbreviation"
+msgid "sec"
+msgstr "sec"
+
+#: src/gr-edit-page.c:1099
+msgctxt "second abbreviation"
+msgid "s"
+msgstr "s"
+
+#: src/gr-edit-page.c:1269
+msgid "Recipe Author"
+msgstr "Rezept-Autor"
+
+#: src/gr-edit-page.c:1649
 msgid "Name of the List"
 msgstr "Name der Zutatenliste"
 
-#: src/gr-edit-page.c:1532
-msgid "Remove"
-msgstr "Löschen"
-
-#: src/gr-edit-page.c:1551
+#: src/gr-edit-page.c:1682
 msgid "No ingredients added yet"
 msgstr "Noch keine Zutaten hinzugefügt"
 
-#: src/gr-edit-page.c:1570
+#: src/gr-edit-page.c:1701
 msgid "Add Ingredient"
 msgstr "Zutaten hinzufügen"
 
-#: src/gr-edit-page.c:1671
+#: src/gr-edit-page.c:1802
 msgid "Add List"
 msgstr "Neue Zutatenliste"
 
-#: src/gr-edit-page.c:1686
-msgid "Name your recipe"
-msgstr "_Name des Rezeptes"
+#: src/gr-edit-page.c:1822
+msgid "Name Your Recipe"
+msgstr "Name des Rezeptes"
 
-#: src/gr-edit-page.c:1827
+#: src/gr-edit-page.c:1995
 msgid "Name"
 msgstr "Voller Name"
 
-#: src/gr-edit-page.c:2193 src/gr-recipe-store.c:1099
+#: src/gr-edit-page.c:2104 src/gr-recipe-store.c:1027
 #, c-format
 msgid "You need to provide a name for the recipe"
 msgstr "Das Rezept muss einen Namen haben"
 
-#: src/gr-image-viewer.c:488
+#: src/gr-image-viewer.c:591
 msgid ""
 "Missing the desktop portals needed to open files from inside a flatpak "
 "sandbox. Please install xdg-desktop-portal and xdg-desktop-portal-gtk on "
 "your system."
 msgstr ""
+"Die Desktop Portale fehlen, die gebraucht werden um Dateien aus einer "
+"flatpak Anwendung zu öffnen. Bitte xdg-desktop-portal und xdg-desktop-portal-"
+"gtk auf dem System installieren."
 
-#: src/gr-image-viewer.c:494 src/gr-preferences.c:93
-msgid "Select an Image"
-msgstr "Ein Bild auswählen"
+#: src/gr-list-page.c:231
+msgid "Gluten-free Recipes"
+msgstr "Glutenfreie Rezepte"
 
-#: src/gr-image-viewer.c:497 src/gr-preferences.c:96 src/gr-window.c:588
-msgid "Open"
-msgstr "Öffnen"
+#: src/gr-list-page.c:233
+msgid "Nut-free Recipes"
+msgstr "Nussfreie Rezepte"
 
-#: src/gr-image-viewer.c:502 src/gr-preferences.c:101
-msgid "Image files"
-msgstr "Bilddateien"
+#: src/gr-list-page.c:235
+msgid "Vegan Recipes"
+msgstr "Veganische Rezepte"
 
-#: src/gr-image-viewer.c:506
-msgid "Use dark text"
-msgstr "Dunklen text verwenden"
+#: src/gr-list-page.c:237
+msgid "Vegetarian Recipes"
+msgstr "Vegetarische Rezepte"
+
+#: src/gr-list-page.c:239
+msgid "Milk-free Recipes"
+msgstr "Laktosefreie Rezepte"
+
+#: src/gr-list-page.c:241
+msgid "Other Dietary Restrictions"
+msgstr "Andere Diät-Enschränkungen"
 
 #: src/gr-list-page.c:282
 #, c-format
 msgid "No %s found"
 msgstr "Keine %s gefunden"
 
-#: src/gr-list-page.c:285 src/gr-list-page.c:329 src/gr-list-page.c:361
+#: src/gr-list-page.c:285 src/gr-list-page.c:334 src/gr-list-page.c:365
 msgid "You could add one using the “New Recipe” button."
 msgstr "Benutzen Sie den “Neues Rezept” Schalter, um eines hinzuzufügen"
 
-#: src/gr-list-page.c:318
+#: src/gr-list-page.c:323
 #, c-format
 msgid "Recipes by %s"
 msgstr "Rezepte von %s"
 
-#: src/gr-list-page.c:325
+#: src/gr-list-page.c:330
 #, c-format
 msgid "No recipes by chef %s found"
 msgstr "Keine Rezepte von Koch %s gefunden"
 
-#: src/gr-list-page.c:331 src/gr-list-page.c:408
+#: src/gr-list-page.c:336 src/gr-list-page.c:412
 msgid "Sorry about this."
 msgstr "Tut uns leid."
 
-#: src/gr-list-page.c:358
+#: src/gr-list-page.c:362
 #, c-format
 msgid "No recipes for %s found"
 msgstr "Keine Rezepte für %s gefunden"
 
-#: src/gr-list-page.c:380
+#: src/gr-list-page.c:384
 msgid "No favorite recipes found"
 msgstr "Keine Lieblingsrezepte gefunden"
 
-#: src/gr-list-page.c:381
+#: src/gr-list-page.c:385
 msgid "Use the ♥ button to mark recipes as favorites."
 msgstr "Benuzten Sie den ♥ Schalter um ein Rezept hier erscheinen zu lassen."
 
-#: src/gr-list-page.c:407
+#: src/gr-list-page.c:411
 msgid "No imported recipes found"
 msgstr "Keine importierten Rezepte gefunden"
 
 #: src/gr-meal.c:44
-msgid "Main course"
+msgid "Main Course"
 msgstr "Hauptgericht"
 
 #: src/gr-meal.c:45
@@ -1382,7 +2655,7 @@ msgid "Breakfast"
 msgstr "Frühstück"
 
 #: src/gr-meal.c:47
-msgid "Side dishes"
+msgid "Side Dishes"
 msgstr "Beilagen"
 
 #: src/gr-meal.c:48
@@ -1390,11 +2663,11 @@ msgid "Desserts"
 msgstr "Nachtisch"
 
 #: src/gr-meal.c:49
-msgid "Cake and baking"
+msgid "Cake and Baking"
 msgstr "Kuchen und Backen"
 
 #: src/gr-meal.c:50
-msgid "Drinks and cocktails"
+msgid "Drinks and Cocktails"
 msgstr "Getränke und Cocktails"
 
 #: src/gr-meal.c:51
@@ -1429,19 +2702,52 @@ msgstr "Konnte %s nicht als Fließkommazahl auffassen"
 msgid "Could not parse %s as a number"
 msgstr "Konnte %s nicht als Zahl auffassen"
 
-#: src/gr-recipe-exporter.c:133 src/gr-recipe-exporter.c:141
-#, c-format
-msgid "%d recipe has been exported as “%s”"
-msgid_plural "%d recipes have been exported as “%s”"
-msgstr[0] "%d Rezept ist nach “%s” exportiert worden"
-msgstr[1] "%d Rezepte sind nach “%s” exportiert worden"
+#: src/gr-recipe-exporter.c:135
+msgid "Recipe contribution"
+msgstr "Rezept-Beitrag"
 
-#: src/gr-recipe-exporter.c:317
+#: src/gr-recipe-exporter.c:136
+msgid "Please accept my attached recipe contribution."
+msgstr "Bitte akzeptieren Sie mein angehängtes Rezept."
+
+#: src/gr-recipe-exporter.c:146
+msgid "Try this recipe"
+msgstr "Ein Rezept zum ausprobieren"
+
+#: src/gr-recipe-exporter.c:147
+msgid ""
+"Hi,\n"
+"\n"
+"you should try this recipe."
+msgstr ""
+"Hallo,\n"
+"\n"
+"du solltest unbedingt dieses Rezept probieren."
+
+#: src/gr-recipe-exporter.c:150
+msgid "Try these recipes"
+msgstr "Rezepte zum ausprobieren"
+
+#: src/gr-recipe-exporter.c:151
+msgid ""
+"Hi,\n"
+"\n"
+"you should try these recipes."
+msgstr ""
+"Hallo,\n"
+"\n"
+"du solltest unbedingt diese Rezepte probieren."
+
+#: src/gr-recipe-exporter.c:154
+msgid "(The attached file can be imported into GNOME recipes.)"
+msgstr "(Die angehängte Datei kann in GNOME Rezepte importiert werden.)"
+
+#: src/gr-recipe-exporter.c:341
 #, c-format
 msgid "This build does not support exporting"
 msgstr "Dieser build kann nicht exportieren"
 
-#: src/gr-recipe-exporter.c:395
+#: src/gr-recipe-exporter.c:423
 #, c-format
 msgid ""
 "Error while exporting:\n"
@@ -1450,14 +2756,31 @@ msgstr ""
 "Fehler beim exportieren:\n"
 "%s"
 
-#: src/gr-recipe-exporter.c:471
+#: src/gr-recipe-exporter.c:507
 #, c-format
-msgid "%d recipe selected for export"
-msgid_plural "%d recipes selected for export"
+msgid "%d recipe selected for sharing"
+msgid_plural "%d recipes selected for sharing"
 msgstr[0] "%d Rezept zum exportieren ausgewählt"
 msgstr[1] "%d Rezepte zum exportieren ausgewählt"
 
-#: src/gr-recipe-importer.c:243
+#: src/gr-recipe-exporter.c:539
+msgid ""
+"Some of the selected recipes are included\n"
+"with GNOME recipes. You should only contribute\n"
+"your own recipes."
+msgstr ""
+"Einige der ausgewählten Rezepte kommen mit GNOME Rezepte.\n"
+"Nur eigene Rezepte können beigetragen werden."
+
+#: src/gr-recipe-formatter.c:54 src/gr-recipe-printer.c:209
+msgid "Author:"
+msgstr "Autor:"
+
+#: src/gr-recipe-formatter.c:57 src/gr-recipe-printer.c:212
+msgid "Serves:"
+msgstr "Portionen:"
+
+#: src/gr-recipe-importer.c:232
 #, c-format
 msgid ""
 "Error while importing recipe:\n"
@@ -1466,97 +2789,74 @@ msgstr ""
 "Fehler beim Importieren:\n"
 "%s"
 
-#: src/gr-recipe-importer.c:484
+#: src/gr-recipe-importer.c:471
 #, c-format
 msgid "Failed to load recipe: Couldn’t parse Created key"
 msgstr "Fehler beim Laden: Das Created Feld konnte nicht gelesen werden"
 
-#: src/gr-recipe-importer.c:495
+#: src/gr-recipe-importer.c:482
 #, c-format
 msgid "Failed to load recipe: Couldn’t parse Modified key"
 msgstr "Fehler beim Laden: Das Modified Feld konnte nicht gelesen werden"
 
-#: src/gr-recipe-importer.c:506
-#, c-format
-msgid "Failed to load recipe: Images and Angles length mismatch"
-msgstr ""
-"Fehler beim Laden: Die Images und Angles Felder haben verschiedene Länge"
-
-#: src/gr-recipe-importer.c:514
-#, c-format
-msgid "Failed to load recipe: Images and DarkText length mismatch"
-msgstr ""
-"Fehler beim Laden: Die Images und DarkText Felder haben verschiedene Länge"
-
-#: src/gr-recipe-importer.c:817
+#: src/gr-recipe-importer.c:788
 #, c-format
 msgid "This build does not support importing"
 msgstr "Dieser build kann nicht importieren"
 
-#: src/gr-recipe-printer.c:209
-msgid "Author:"
-msgstr "Autor:"
-
-#: src/gr-recipe-printer.c:210
-msgid "Preparation:"
-msgstr "Vorbereitung:"
-
-#: src/gr-recipe-printer.c:211
-msgid "Cooking:"
-msgstr "Kochen:"
-
-#: src/gr-recipe-printer.c:212
-msgid "Serves:"
-msgstr "Portionen:"
-
-#: src/gr-recipe-printer.c:465 src/gr-shopping-list-printer.c:300
+#: src/gr-recipe-printer.c:464 src/gr-shopping-list-printer.c:300
 msgid "Error printing file:"
 msgstr "Fehler beim Drucken:"
 
-#: src/gr-recipe-printer.c:466 src/gr-shopping-list-printer.c:301
+#: src/gr-recipe-printer.c:465 src/gr-shopping-list-printer.c:301
 msgid "No details"
 msgstr "Keine Einzelheiten"
 
-#: src/gr-recipe-printer.c:496 src/gr-shopping-list-printer.c:332
+#: src/gr-recipe-printer.c:493 src/gr-shopping-list-printer.c:332
 msgid ""
 "Missing the desktop portals needed to print from inside a flatpak sandbox. "
 "Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system."
 msgstr ""
 
-#: src/gr-recipe-small-tile.c:86 src/gr-recipe-tile.c:148
+#: src/gr-recipe-small-tile.c:109 src/gr-recipe-tile.c:149
+#, c-format
+msgid "by %s"
+msgstr "von %s"
+
+#: src/gr-recipe-small-tile.c:109 src/gr-recipe-tile.c:149
 msgid "Anonymous"
 msgstr "Unbekannt"
 
-#: src/gr-recipes-page.c:228
-msgid "My recipes"
+#: src/gr-recipes-page.c:230
+msgid "My Recipes"
 msgstr "Meine Rezepte"
 
-#: src/gr-recipes-page.c:233
+#: src/gr-recipes-page.c:235
 msgid "Favorites"
 msgstr "Lieblingsrezepte"
 
-#: src/gr-recipes-page.c:267
+#: src/gr-recipes-page.c:269
 msgid "Last edited:"
 msgstr "Zuletzt geändert:"
 
-#: src/gr-recipes-page.c:348
+#: src/gr-recipes-page.c:370
 #, c-format
-msgid "Cook later: <b>%s</b>"
-msgstr "Später kochen: <b>%s</b>"
+msgid "Buy ingredients: <b>%s</b>"
+msgstr "Zutaten kaufen: <b>%s</b>"
 
-#: src/gr-recipes-page.c:350
+#: src/gr-recipes-page.c:372
 #, c-format
-msgid "Cook later: <b>%s and %s</b>"
-msgstr "Später kochen: <b>%s und %s</b>"
+msgid "Buy ingredients: <b>%s and %s</b>"
+msgstr "Zutaten kaufen: <b>%s und %s</b>"
 
-#: src/gr-recipes-page.c:352
+#: src/gr-recipes-page.c:374
 #, c-format
-msgid "Cook later: <b>%s, %s and %d other</b>"
-msgid_plural "Cook later: <b>%s, %s and %d others</b>"
-msgstr[0] "Später kochen: <b> %s, %s und %d anderes</b>"
-msgstr[1] "Später kochen: <b> %s, %s und %d andere</b>"
+msgid "Buy ingredients: <b>%s, %s and %d other</b>"
+msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
+msgstr[0] "Zutaten kaufen: <b> %s, %s und %d anderes</b>"
+msgstr[1] "Zutaten kaufen: <b> %s, %s und %d andere</b>"
 
-#: src/gr-recipe-store.c:1104
+#: src/gr-recipe-store.c:1032
 #, c-format
 msgid ""
 "A recipe with this name and author already exists.\n"
@@ -1565,25 +2865,35 @@ msgstr ""
 "Ein Rezept mit diesem Namen und Autor existiert bereits.\n"
 "Bitte einen anderen Namen auswählen"
 
-#: src/gr-recipe-store.c:1133
+#: src/gr-recipe-store.c:1061
 #, c-format
 msgid "You need to provide an ID for the recipe"
 msgstr "Das Rezept muss eine ID haben"
 
-#: src/gr-recipe-store.c:1139
+#: src/gr-recipe-store.c:1067
 #, c-format
 msgid "A recipe with this ID already exists"
 msgstr "Ein Rezept mit dieser ID existiert bereits"
 
-#: src/gr-recipe-store.c:1267
+#: src/gr-recipe-store.c:1195
 #, c-format
 msgid "You need to provide an ID"
 msgstr "Du musst eine ID angeben"
 
-#: src/gr-recipe-store.c:1273
+#: src/gr-recipe-store.c:1201
 #, c-format
 msgid "Sorry, this ID is taken"
 msgstr "Tut mir leid, diese ID ist schon vergeben"
+
+#: src/gr-recipe-store.c:1228
+#, c-format
+msgid "You need to provide an ID for the chef"
+msgstr "Das Rezept muss eine ID haben"
+
+#: src/gr-recipe-store.c:1234
+#, c-format
+msgid "A chef with this ID already exists"
+msgstr "Ein Koch mit dieser ID existiert bereits"
 
 #: src/gr-season.c:41
 msgid "Thanksgiving"
@@ -1613,9 +2923,14 @@ msgstr "Herbst"
 msgid "Winter"
 msgstr "Winter"
 
-#: src/gr-shopping-list-printer.c:138
+#: src/gr-shopping-list-formatter.c:43 src/gr-shopping-list-printer.c:138
+#: src/gr-shopping-page.c:692
 msgid "Shopping List"
 msgstr "Einkaufsliste"
+
+#: src/gr-shopping-list-formatter.c:45
+msgid "For the following recipes:"
+msgstr "Für die folgenden Rezepte"
 
 #: src/gr-shopping-list-printer.c:147
 msgid "For the following recipes"
@@ -1625,38 +2940,34 @@ msgstr "Für die folgenden Rezepte"
 msgid "Items"
 msgstr "Einträge"
 
-#: src/gr-shopping-page.c:102
+#: src/gr-shopping-page.c:101
 #, c-format
 msgid "%d ingredient marked for purchase"
 msgid_plural "%d ingredients marked for purchase"
 msgstr[0] "%d Zutat ausgewählt"
 msgstr[1] "%d Zutaten ausgewählt"
 
-#: src/gr-shopping-page.c:129
+#: src/gr-shopping-page.c:119
 #, c-format
-msgid "Cook it later (%d recipe)"
-msgid_plural "Cook it later (%d recipes)"
-msgstr[0] "Später kochen (%d Rezept)"
-msgstr[1] "Später kochen (%d Rezepte)"
+msgid "Buy Ingredients (%d recipe)"
+msgid_plural "Buy Ingredients (%d recipes)"
+msgstr[0] "Zutaten kaufen (%d Rezept)"
+msgstr[1] "Zutaten kaufen (%d Rezepte)"
 
-#: src/gr-shopping-page.c:134
+#: src/gr-shopping-page.c:124
 #, c-format
 msgid "%d Recipe marked for preparation"
 msgid_plural "%d Recipes marked for preparation"
 msgstr[0] "%d Rezept ausgewählt"
 msgstr[1] "%d Rezepte ausgewählt"
 
-#: src/gr-shopping-page.ui:42
-msgid "Cook it Later"
-msgstr "Später kochen"
+#: src/gr-spice-row.c:100
+msgid "Somewhat Spicy"
+msgstr "Etwas scharf"
 
-#: src/gr-shopping-page.ui:93
-msgid "No shopping necessary!"
-msgstr "Kein Einkaufen nötig!"
-
-#: src/gr-shopping-page.ui:115
-msgid "_Clear List"
-msgstr "_Liste löschen"
+#: src/gr-spice-row.c:104
+msgid "Very Spicy"
+msgstr "Sehr scharf"
 
 #: src/gr-unit.c:40
 msgctxt "unit abbreviation"
@@ -1833,681 +3144,681 @@ msgstr "Glas"
 msgid "I don’t know this unit: %s"
 msgstr "Ich kenne diese Einheit nicht: %s"
 
-#: src/gr-utils.c:399
+#: src/gr-utils.c:428
 #, c-format
 msgid "more than a year ago"
 msgstr "vor mehr als einem Jahr"
 
-#: src/gr-utils.c:402 src/gr-utils.c:406
+#: src/gr-utils.c:431 src/gr-utils.c:435
 #, c-format
 msgid "%d month ago"
 msgid_plural "%d months ago"
 msgstr[0] "vor %d Monat"
 msgstr[1] "vor %d Monaten"
 
-#: src/gr-utils.c:410
+#: src/gr-utils.c:439
 #, c-format
 msgid "%d day ago"
 msgid_plural "%d days ago"
 msgstr[0] "vor %d Tag"
 msgstr[1] "vor %d Tagen"
 
-#: src/gr-utils.c:413
+#: src/gr-utils.c:442
 #, c-format
 msgid "just now"
 msgstr "Jetzt"
 
-#: src/gr-utils.c:415
+#: src/gr-utils.c:444
 #, c-format
 msgid "10 minutes ago"
 msgstr "vor 10 Minuten"
 
-#: src/gr-utils.c:417
+#: src/gr-utils.c:446
 #, c-format
 msgid "half an hour ago"
 msgstr "vor einer halben Stunde"
 
-#: src/gr-utils.c:421
+#: src/gr-utils.c:450
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
 msgstr[0] "vor %d Stunde"
 msgstr[1] "vor %d Stunden"
 
-#: src/gr-utils.c:427
+#: src/gr-utils.c:456
 msgid "some time ago"
 msgstr "vor einiger Zeit"
 
-#: src/gr-window.c:155
-msgid "Add a new recipe"
+#: src/gr-window.c:180
+msgid "Add a New Recipe"
 msgstr "Ein neues Rezept hinzufügen"
 
-#: src/gr-window.c:272
-msgid "Stop cooking"
-msgstr "Nicht mehr kochen"
-
-#: src/gr-window.c:276
-msgid "Start cooking"
-msgstr "Jetzt kochen"
-
-#: src/gr-window.c:412
+#: src/gr-window.c:513
 #, c-format
 msgid "Recipe “%s” deleted"
 msgstr "Rezept “%s” gelöscht"
 
-#: src/gr-window.c:547
+#: src/gr-window.c:563
+#, c-format
+msgid "You updated your contributed “%s” recipe. Send an update?"
+msgstr "Das geänderte Rezept “%s” ist bereits veröffentlicht. Aktualisieren?"
+
+#: src/gr-window.c:746
 msgid "Imported Recipes"
 msgstr "Importierte Rezepte"
 
-#: src/gr-window.c:585
+#: src/gr-window.c:790
+msgid "My Chef Information"
+msgstr "Meine Koch-Information"
+
+#: src/gr-window.c:852
 msgid "Select a recipe file"
 msgstr "Eine Rezeptdatei auswählen"
 
-#: src/gr-window.c:625
+#: src/gr-window.c:892
 #, c-format
 msgid "Chefs: %s"
 msgstr "Köche: %s"
 
-#: src/gr-window.c:642
+#: src/gr-window.c:909
 msgid "Favorite recipes"
 msgstr "Lieblingsrezepte"
 
-#: src/gr-window.c:674
-msgid "Cook it later"
-msgstr "_Später kochen"
-
-#: src/gr-window.c:699
+#: src/gr-window.c:959
 msgid "My own recipes"
 msgstr "Meine eigenen Rezepte"
 
-#: src/ingredients.c:1
+#: src/ingredients.inc:1
 msgid "Almond"
 msgstr "Mandel"
 
-#: src/ingredients.c:2
+#: src/ingredients.inc:2
 msgid "Amaretti"
 msgstr "Amaretti"
 
-#: src/ingredients.c:3
+#: src/ingredients.inc:3
 msgid "Anchovis"
 msgstr "Anchovis"
 
-#: src/ingredients.c:4
+#: src/ingredients.inc:4
 msgid "Apple"
 msgstr "Apfel"
 
-#: src/ingredients.c:5
+#: src/ingredients.inc:5
 msgid "Apricot"
 msgstr "Aprikose"
 
-#: src/ingredients.c:6
+#: src/ingredients.inc:6
 msgid "Artichoke"
 msgstr "Artischocke"
 
-#: src/ingredients.c:7
+#: src/ingredients.inc:7
 msgid "Asparagus"
 msgstr "Spargel"
 
-#: src/ingredients.c:8
+#: src/ingredients.inc:8
 msgid "Aubergine"
 msgstr "Aubergine"
 
-#: src/ingredients.c:9
+#: src/ingredients.inc:9
 msgid "Bacon"
 msgstr "Speck"
 
-#: src/ingredients.c:10
+#: src/ingredients.inc:10
 msgid "Bagel"
 msgstr "Brötchen"
 
-#: src/ingredients.c:11
+#: src/ingredients.inc:11
 msgid "Baked beans"
 msgstr "Gebackene Bohnen"
 
-#: src/ingredients.c:12
+#: src/ingredients.inc:12
 msgid "Baking powder"
 msgstr "Backpulver"
 
-#: src/ingredients.c:13
+#: src/ingredients.inc:13
 msgid "Banana"
 msgstr "Banane"
 
-#: src/ingredients.c:14
+#: src/ingredients.inc:14
 msgid "Basil"
 msgstr "Basilikum"
 
-#: src/ingredients.c:15
+#: src/ingredients.inc:15
 msgid "Basmati rice"
 msgstr "Basmati Reis"
 
-#: src/ingredients.c:16
+#: src/ingredients.inc:16
 msgid "Bay leaf"
 msgstr "Lorbeerblatt"
 
-#: src/ingredients.c:17
+#: src/ingredients.inc:17
 msgid "Beans"
 msgstr "Bohnen"
 
-#: src/ingredients.c:18
+#: src/ingredients.inc:18
 msgid "Beef mince"
 msgstr "Hackfleisch"
 
-#: src/ingredients.c:19
+#: src/ingredients.inc:19
 msgid "Beef sausage"
 msgstr "Bratwurst"
 
-#: src/ingredients.c:20
+#: src/ingredients.inc:20
 msgid "Beef stock"
 msgstr "Rinderbrühe"
 
-#: src/ingredients.c:21
+#: src/ingredients.inc:21
 msgid "Beetroot"
 msgstr "Rote Bete"
 
-#: src/ingredients.c:22
+#: src/ingredients.inc:22
 msgid "Berry"
 msgstr "Beeren"
 
-#: src/ingredients.c:23
+#: src/ingredients.inc:23
 msgid "Biscotti"
 msgstr "Biscotti"
 
-#: src/ingredients.c:24
+#: src/ingredients.inc:24
 msgid "Bilberry"
 msgstr "Heidelbeere"
 
-#: src/ingredients.c:25
+#: src/ingredients.inc:25
 msgid "Butter"
 msgstr "Butter"
 
-#: src/ingredients.c:26
+#: src/ingredients.inc:26
 msgid "Carrot"
 msgstr "Karotte"
 
-#: src/ingredients.c:27
+#: src/ingredients.inc:27
 msgid "Cheese"
 msgstr "Käse"
 
-#: src/ingredients.c:28
+#: src/ingredients.inc:28
 msgid "Cherries, pitted"
 msgstr "entsteinte Kirschen"
 
-#: src/ingredients.c:29
+#: src/ingredients.inc:29
 msgid "Chocolate frosting"
 msgstr "Schokoglasur"
 
-#: src/ingredients.c:30
+#: src/ingredients.inc:30
 msgid "Cocoa powder"
 msgstr "Kakaopulver"
 
-#: src/ingredients.c:31
+#: src/ingredients.inc:31
 msgid "Couscous"
 msgstr "Couscous"
 
-#: src/ingredients.c:32
+#: src/ingredients.inc:32
 msgid "Date"
 msgstr "Dattel"
 
-#: src/ingredients.c:33
+#: src/ingredients.inc:33
 msgid "Egg"
 msgstr "Ei"
 
-#: src/ingredients.c:34
+#: src/ingredients.inc:34
 msgid "Fig"
 msgstr "Feige"
 
-#: src/ingredients.c:35
+#: src/ingredients.inc:35
 msgid "Flour"
 msgstr "Mehl"
 
-#: src/ingredients.c:36
+#: src/ingredients.inc:36
 msgid "Garlic"
 msgstr "Knoblauch"
 
-#: src/ingredients.c:37
+#: src/ingredients.inc:37
 msgid "Ground beef"
 msgstr "Hackfleisch"
 
-#: src/ingredients.c:38
+#: src/ingredients.inc:38
 msgid "Honey"
 msgstr "Honig"
 
-#: src/ingredients.c:39
+#: src/ingredients.inc:39
 msgid "Lemon"
 msgstr "Zitrone"
 
-#: src/ingredients.c:40
+#: src/ingredients.inc:40
 msgid "Linseeds"
 msgstr "Leinsamen"
 
-#: src/ingredients.c:41
+#: src/ingredients.inc:41
 msgid "Mayonnaise"
 msgstr "Mayonnaise"
 
-#: src/ingredients.c:42
+#: src/ingredients.inc:42
 msgid "Milk"
 msgstr "Milch"
 
-#: src/ingredients.c:43
+#: src/ingredients.inc:43
 msgid "Mustard"
 msgstr "Senf"
 
-#: src/ingredients.c:44
+#: src/ingredients.inc:44
 msgid "Oatmeal"
 msgstr "Hafer"
 
-#: src/ingredients.c:45
+#: src/ingredients.inc:45
 msgid "Oil"
 msgstr "Öl"
 
-#: src/ingredients.c:46
+#: src/ingredients.inc:46
 msgid "Onion"
 msgstr "Zwiebel"
 
-#: src/ingredients.c:47
+#: src/ingredients.inc:47
 msgid "Olive oil, extra-virgin"
 msgstr "Olivenöl, extra-virgin"
 
-#: src/ingredients.c:48
+#: src/ingredients.inc:48
 msgid "Orange"
 msgstr "Apfelsine"
 
-#: src/ingredients.c:49
+#: src/ingredients.inc:49
 msgid "Parsley"
 msgstr "Petersilie"
 
-#: src/ingredients.c:50
+#: src/ingredients.inc:50
 msgid "Peperoni"
 msgstr "Peperoni"
 
-#: src/ingredients.c:51
+#: src/ingredients.inc:51
 msgid "Pepper"
 msgstr "Paprika"
 
-#: src/ingredients.c:52
+#: src/ingredients.inc:52
 msgid "Peppers"
 msgstr "Paprika"
 
-#: src/ingredients.c:53
+#: src/ingredients.inc:53
 msgid "Pizza sauce"
 msgstr "Pizzasauce"
 
-#: src/ingredients.c:54
+#: src/ingredients.inc:54
 msgid "Potato"
 msgstr "Kartoffel"
 
-#: src/ingredients.c:55
+#: src/ingredients.inc:55
 msgid "Pumpkin seeds"
 msgstr "Kürbiskerne"
 
-#: src/ingredients.c:56
+#: src/ingredients.inc:56
 msgid "Salt"
 msgstr "Salz"
 
-#: src/ingredients.c:57
+#: src/ingredients.inc:57
 msgid "Silantro"
 msgstr "Silantro"
 
-#: src/ingredients.c:58
+#: src/ingredients.inc:58
 msgid "Soy sauce"
 msgstr "Sojasosse"
 
-#: src/ingredients.c:59
+#: src/ingredients.inc:59
 msgid "Sugar"
 msgstr "Zucker"
 
-#: src/ingredients.c:60
+#: src/ingredients.inc:60
 msgid "Sunflower seeds"
 msgstr "Sonnenblumenkerne"
 
-#: src/ingredients.c:61
+#: src/ingredients.inc:61
 msgid "Squash"
 msgstr "Kürbis"
 
-#: src/ingredients.c:62
+#: src/ingredients.inc:62
 msgid "Tangerine"
 msgstr "Mandarine"
 
-#: src/ingredients.c:63
+#: src/ingredients.inc:63
 msgid "Tofu"
 msgstr "Tofu"
 
-#: src/ingredients.c:64
+#: src/ingredients.inc:64
 msgid "Tomato"
 msgstr "Tomate"
 
-#: src/ingredients.c:65
+#: src/ingredients.inc:65
 msgid "Tumeric ground"
 msgstr "Kurkuma"
 
-#: src/ingredients.c:66
+#: src/ingredients.inc:66
 msgid "Vanilla sugar"
 msgstr "Vanillezucker"
 
-#: src/ingredients.c:67
+#: src/ingredients.inc:67
 msgid "Vanilla pudding"
 msgstr "Vanillepudding"
 
-#: src/ingredients.c:68
+#: src/ingredients.inc:68
 msgid "Vinegar"
 msgstr "Essig"
 
-#: src/ingredients.c:69
+#: src/ingredients.inc:69
 msgid "Water"
 msgstr "Wasser"
 
-#: src/ingredients.c:70
+#: src/ingredients.inc:70
 msgid "Wine"
 msgstr "Wein"
 
-#: src/ingredients.c:71
+#: src/ingredients.inc:71
 msgid "Yeast"
 msgstr "Hefe"
 
-#: src/ingredients.c:72
+#: src/ingredients.inc:72
 msgid "Yoghurt"
 msgstr "Joghurt"
 
-#: src/ingredients.c:73
+#: src/ingredients.inc:73
 msgid "Zinfandel"
 msgstr "Zinfandel"
 
-#: src/no-ingredients.c:1
+#: src/no-ingredients.inc:1
 msgid "no Almond"
 msgstr "ohne Mandel"
 
-#: src/no-ingredients.c:2
+#: src/no-ingredients.inc:2
 msgid "no Amaretti"
 msgstr "ohne Amaretti"
 
-#: src/no-ingredients.c:3
+#: src/no-ingredients.inc:3
 msgid "no Anchovis"
 msgstr "ohne Anchovis"
 
-#: src/no-ingredients.c:4
+#: src/no-ingredients.inc:4
 msgid "no Apple"
 msgstr "ohne Apfel"
 
-#: src/no-ingredients.c:5
+#: src/no-ingredients.inc:5
 msgid "no Apricot"
 msgstr "ohne Aprikose"
 
-#: src/no-ingredients.c:6
+#: src/no-ingredients.inc:6
 msgid "no Artichoke"
 msgstr "ohne Artischocke"
 
-#: src/no-ingredients.c:7
+#: src/no-ingredients.inc:7
 msgid "no Asparagus"
 msgstr "ohne Spargel"
 
-#: src/no-ingredients.c:8
+#: src/no-ingredients.inc:8
 msgid "no Aubergine"
 msgstr "ohne Aubergine"
 
-#: src/no-ingredients.c:9
+#: src/no-ingredients.inc:9
 msgid "no Bacon"
 msgstr "ohne Speck"
 
-#: src/no-ingredients.c:10
+#: src/no-ingredients.inc:10
 msgid "no Bagel"
 msgstr "kein Brötchen"
 
-#: src/no-ingredients.c:11
+#: src/no-ingredients.inc:11
 msgid "no Baked beans"
 msgstr "ohne gebackene Bohnen"
 
-#: src/no-ingredients.c:12
+#: src/no-ingredients.inc:12
 msgid "no Baking powder"
 msgstr "kein Backpulver"
 
-#: src/no-ingredients.c:13
+#: src/no-ingredients.inc:13
 msgid "no Banana"
 msgstr "ohne Banane"
 
-#: src/no-ingredients.c:14
+#: src/no-ingredients.inc:14
 msgid "no Basil"
 msgstr "ohne Basilikum"
 
-#: src/no-ingredients.c:15
+#: src/no-ingredients.inc:15
 msgid "no Basmati rice"
 msgstr "ohne Basmati Reis"
 
-#: src/no-ingredients.c:16
+#: src/no-ingredients.inc:16
 msgid "no Bay leaf"
 msgstr "ohne Lorbeerblatt"
 
-#: src/no-ingredients.c:17
+#: src/no-ingredients.inc:17
 msgid "no Beans"
 msgstr "ohne Bohnen"
 
-#: src/no-ingredients.c:18
+#: src/no-ingredients.inc:18
 msgid "no Beef mince"
 msgstr "ohne Hackfleisch"
 
-#: src/no-ingredients.c:19
+#: src/no-ingredients.inc:19
 msgid "no Beef sausage"
 msgstr "ohne Bratwurst"
 
-#: src/no-ingredients.c:20
+#: src/no-ingredients.inc:20
 msgid "no Beef stock"
 msgstr "ohne Rinderbrühe"
 
-#: src/no-ingredients.c:21
+#: src/no-ingredients.inc:21
 msgid "no Beetroot"
 msgstr "ohne Rote Bete"
 
-#: src/no-ingredients.c:22
+#: src/no-ingredients.inc:22
 msgid "no Berry"
 msgstr "ohne Beeren"
 
-#: src/no-ingredients.c:23
+#: src/no-ingredients.inc:23
 msgid "no Biscotti"
 msgstr "ohne Biscotti"
 
-#: src/no-ingredients.c:24
+#: src/no-ingredients.inc:24
 msgid "no Bilberry"
 msgstr "ohne Heidelbeere"
 
-#: src/no-ingredients.c:25
+#: src/no-ingredients.inc:25
 msgid "no Butter"
 msgstr "ohne Butter"
 
-#: src/no-ingredients.c:26
+#: src/no-ingredients.inc:26
 msgid "no Carrot"
 msgstr "ohne Karotte"
 
-#: src/no-ingredients.c:27
+#: src/no-ingredients.inc:27
 msgid "no Cheese"
 msgstr "kein Käse"
 
-#: src/no-ingredients.c:28
+#: src/no-ingredients.inc:28
 msgid "no Cherries, pitted"
 msgstr "ohne entsteinte Kirschen"
 
-#: src/no-ingredients.c:29
+#: src/no-ingredients.inc:29
 msgid "no Chocolate frosting"
 msgstr "keine Schokoglasur"
 
-#: src/no-ingredients.c:30
+#: src/no-ingredients.inc:30
 msgid "no Cocoa powder"
 msgstr "kein Kakaopulver"
 
-#: src/no-ingredients.c:31
+#: src/no-ingredients.inc:31
 msgid "no Couscous"
 msgstr "ohne Couscous"
 
-#: src/no-ingredients.c:32
+#: src/no-ingredients.inc:32
 msgid "no Date"
 msgstr "ohne Datteln"
 
-#: src/no-ingredients.c:33
+#: src/no-ingredients.inc:33
 msgid "no Egg"
 msgstr "ohne Ei"
 
-#: src/no-ingredients.c:34
+#: src/no-ingredients.inc:34
 msgid "no Fig"
 msgstr "ohne Feigen"
 
-#: src/no-ingredients.c:35
+#: src/no-ingredients.inc:35
 msgid "no Flour"
 msgstr "ohne Mehl"
 
-#: src/no-ingredients.c:36
+#: src/no-ingredients.inc:36
 msgid "no Garlic"
 msgstr "kein Knoblauch"
 
-#: src/no-ingredients.c:37
+#: src/no-ingredients.inc:37
 msgid "no Ground beef"
 msgstr "kein Hackfleisch"
 
-#: src/no-ingredients.c:38
+#: src/no-ingredients.inc:38
 msgid "no Honey"
 msgstr "ohne Honig"
 
-#: src/no-ingredients.c:39
+#: src/no-ingredients.inc:39
 msgid "no Lemon"
 msgstr "ohne Zitrone"
 
-#: src/no-ingredients.c:40
+#: src/no-ingredients.inc:40
 msgid "no Linseeds"
 msgstr "keine Leinsamen"
 
-#: src/no-ingredients.c:41
+#: src/no-ingredients.inc:41
 msgid "no Mayonnaise"
 msgstr "ohne Mayonnaise"
 
-#: src/no-ingredients.c:42
+#: src/no-ingredients.inc:42
 msgid "no Milk"
 msgstr "ohne Milch"
 
-#: src/no-ingredients.c:43
+#: src/no-ingredients.inc:43
 msgid "no Mustard"
 msgstr "ohne Senf"
 
-#: src/no-ingredients.c:44
+#: src/no-ingredients.inc:44
 msgid "no Oatmeal"
 msgstr "ohne Hafer"
 
-#: src/no-ingredients.c:45
+#: src/no-ingredients.inc:45
 msgid "no Oil"
 msgstr "ohne Öl"
 
-#: src/no-ingredients.c:46
+#: src/no-ingredients.inc:46
 msgid "no Onion"
 msgstr "ohne Zwiebeln"
 
-#: src/no-ingredients.c:47
+#: src/no-ingredients.inc:47
 msgid "no Olive oil, extra-virgin"
 msgstr "ohne Olivenöl"
 
-#: src/no-ingredients.c:48
+#: src/no-ingredients.inc:48
 msgid "no Orange"
 msgstr "ohne Apfelsine"
 
-#: src/no-ingredients.c:49
+#: src/no-ingredients.inc:49
 msgid "no Parsley"
 msgstr "ohne Petersilie"
 
-#: src/no-ingredients.c:50
+#: src/no-ingredients.inc:50
 msgid "no Peperoni"
 msgstr "ohne Peperoni"
 
-#: src/no-ingredients.c:51
+#: src/no-ingredients.inc:51
 msgid "no Pepper"
 msgstr "ohne Paprika"
 
-#: src/no-ingredients.c:52
+#: src/no-ingredients.inc:52
 msgid "no Peppers"
 msgstr "ohne Paprika"
 
-#: src/no-ingredients.c:53
+#: src/no-ingredients.inc:53
 msgid "no Pizza sauce"
 msgstr "ohne Pizzasauce"
 
-#: src/no-ingredients.c:54
+#: src/no-ingredients.inc:54
 msgid "no Potato"
 msgstr "ohne Kartoffeln"
 
-#: src/no-ingredients.c:55
+#: src/no-ingredients.inc:55
 msgid "no Pumpkin seeds"
 msgstr "keine Kürbiskerne"
 
-#: src/no-ingredients.c:56
+#: src/no-ingredients.inc:56
 msgid "no Salt"
 msgstr "ohne Salz"
 
-#: src/no-ingredients.c:57
+#: src/no-ingredients.inc:57
 msgid "no Silantro"
 msgstr "ohne Silantro"
 
-#: src/no-ingredients.c:58
+#: src/no-ingredients.inc:58
 msgid "no Soy sauce"
 msgstr "ohne Sojasosse"
 
-#: src/no-ingredients.c:59
+#: src/no-ingredients.inc:59
 msgid "no Sugar"
 msgstr "ohne Zucker"
 
-#: src/no-ingredients.c:60
+#: src/no-ingredients.inc:60
 msgid "no Sunflower seeds"
 msgstr "keine Sonnenblumenkerne"
 
-#: src/no-ingredients.c:61
+#: src/no-ingredients.inc:61
 msgid "no Squash"
 msgstr "ohne Kürbis"
 
-#: src/no-ingredients.c:62
+#: src/no-ingredients.inc:62
 msgid "no Tangerine"
 msgstr "ohne Mandarine"
 
-#: src/no-ingredients.c:63
+#: src/no-ingredients.inc:63
 msgid "no Tofu"
 msgstr "ohne Tofu"
 
-#: src/no-ingredients.c:64
+#: src/no-ingredients.inc:64
 msgid "no Tomato"
 msgstr "ohne Tomate"
 
-#: src/no-ingredients.c:65
+#: src/no-ingredients.inc:65
 msgid "no Tumeric ground"
 msgstr "Kurkuma"
 
-#: src/no-ingredients.c:66
+#: src/no-ingredients.inc:66
 msgid "no Vanilla sugar"
 msgstr "ohne Vanillezucker"
 
-#: src/no-ingredients.c:67
+#: src/no-ingredients.inc:67
 msgid "no Vanilla pudding"
 msgstr "ohne Vanillepudding"
 
-#: src/no-ingredients.c:68
+#: src/no-ingredients.inc:68
 msgid "no Vinegar"
 msgstr "ohne Essig"
 
-#: src/no-ingredients.c:69
+#: src/no-ingredients.inc:69
 msgid "no Water"
 msgstr "ohne Wasser"
 
-#: src/no-ingredients.c:70
+#: src/no-ingredients.inc:70
 msgid "no Wine"
 msgstr "ohne Wein"
 
-#: src/no-ingredients.c:71
+#: src/no-ingredients.inc:71
 msgid "no Yeast"
 msgstr "ohne Hefe"
 
-#: src/no-ingredients.c:72
+#: src/no-ingredients.inc:72
 msgid "no Yoghurt"
 msgstr "ohne Joghurt"
 
-#: src/no-ingredients.c:73
+#: src/no-ingredients.inc:73
 msgid "no Zinfandel"
 msgstr "ohne Zinfandel"
 
-#: src/segments.c:1
+#: src/segments.inc:1
 msgid "Dough"
 msgstr "Teig"
 
-#: src/segments.c:2
+#: src/segments.inc:2
 msgid "Toppings"
 msgstr "Garnierung"
+
+#~ msgid "The GNOME Project"
+#~ msgstr "Das GNOME-Projekt"
