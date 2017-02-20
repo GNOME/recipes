@@ -342,6 +342,9 @@ translate_multiline_string (const char *s)
         int i;
         GString *out;
 
+        if (s == NULL)
+                return NULL;
+
         out = g_string_new ("");
 
         strv = g_strsplit (s, "\n", -1);
@@ -351,7 +354,7 @@ translate_multiline_string (const char *s)
                         g_string_append (out, "\n");
                 if (strv[i][0] != 0)
                         g_string_append (out, _(strv[i]));
-        }
+       }
 
         return g_string_free (out, FALSE);
 }
