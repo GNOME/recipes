@@ -47,6 +47,21 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.14.2" date="2017-02-20">
+      <description>
+        <p>
+          A quick follow-up release to fix some issues with 0.14.0.
+        </p>
+        <ul>
+          <li>Fix problems with string extraction for translation</li>
+          <li>Mark some forgotten strings as translatable</li>
+          <li>Make notes in recipes translatable</li>
+          <li>Add a missing file, cuisine.css.in</li>
+          <li>Some stylistic improvements to contributed recipes</li>
+          <li>Several minor bug fixes</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.14.0" date="2017-02-19">
       <description>
         <p>
