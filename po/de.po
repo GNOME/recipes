@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: gnome-recipes 0.14.0\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=recipes\n"
-"POT-Creation-Date: 2017-02-19 20:33-0500\n"
+"POT-Creation-Date: 2017-02-19 21:15-0500\n"
 "PO-Revision-Date: 2016-11-12 16:20-0500\n"
 "Last-Translator: Matthias Clasen <mclasen@redhat.com>\n"
 "Language-Team: None\n"
@@ -87,6 +87,10 @@ msgstr "Eine Einkaufsliste"
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:46
 msgid "Cooking a recipe"
 msgstr "Ein Rezept kochen"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:202
+msgid "The GNOME Project"
+msgstr "Das GNOME-Projekt"
 
 #: data/chefs.db.h:3
 msgid "Artist, Computer Scientist, Traveller."
@@ -216,7 +220,7 @@ msgid "[image:5]Add lime as you please."
 msgstr "[image:5]Mit Zitrone abschmecken."
 
 #: data/recipes.db.h:11
-msgid "[image:6] Enjoy!"
+msgid "[image:6]Enjoy!"
 msgstr "[image:6]Guten Appetit!"
 
 #: data/recipes.db.h:12
@@ -1437,8 +1441,9 @@ msgstr ""
 msgid ""
 "[image:4]Spread the light dough on a buttered baking sheet. Put the dark "
 "dough on top."
-msgstr "[image:4]Den hellen Teig auf das eingefettete Backblech verteilen. "
-"Den dunklen Teig darübergeben."
+msgstr ""
+"[image:4]Den hellen Teig auf das eingefettete Backblech verteilen. Den "
+"dunklen Teig darübergeben."
 
 #: data/recipes.db.h:217
 msgid "[image:4]Use a fork to make a wavy pattern."
@@ -1450,8 +1455,7 @@ msgstr "[image:6]Die abgetropften Kirschen auf dem Teig verteilen."
 
 #: data/recipes.db.h:219
 msgid "[timer:00:30:00]Bake for 30 minutes at [temperature:200C]."
-msgstr ""
-"[timer:00:30:00]Für 30 Minuten bei [temperature:200C] backen."
+msgstr "[timer:00:30:00]Für 30 Minuten bei [temperature:200C] backen."
 
 #: data/recipes.db.h:220
 msgid ""
@@ -1636,7 +1640,7 @@ msgstr "Enthält Milchprodukte"
 msgid "Contains Gluten"
 msgstr "Enthält Gluten"
 
-#: src/gr-details-page.ui:127 src/gr-details-page.c:526
+#: src/gr-details-page.ui:127 src/gr-details-page.c:530
 msgid "Spicy"
 msgstr "Scharf"
 
@@ -1774,7 +1778,7 @@ msgstr "Etwas scharf"
 msgid "Hot"
 msgstr "Scharf"
 
-#: src/gr-edit-page.ui:524 src/gr-details-page.c:521
+#: src/gr-edit-page.ui:524 src/gr-details-page.c:525
 msgid "Very spicy"
 msgstr "Sehr scharf"
 
@@ -2383,21 +2387,21 @@ msgid ""
 "it is impossible to fit Turkish cuisine into a short list."
 msgstr ""
 
-#: src/gr-details-page.c:312
+#: src/gr-details-page.c:314
 msgid "Could not find this recipe."
 msgstr "Rezept nicht gefunden."
 
-#: src/gr-details-page.c:564
+#: src/gr-details-page.c:568
 #, c-format
 msgid "Timer: %s"
 msgstr "Alarm: %s"
 
-#: src/gr-details-page.c:569
+#: src/gr-details-page.c:573
 #, c-format
 msgid "Image %d"
 msgstr "Bild %d"
 
-#: src/gr-details-page.c:665 src/gr-edit-page.c:1939
+#: src/gr-details-page.c:679 src/gr-edit-page.c:1939
 #, c-format
 msgid "Recipe by %s"
 msgstr "Rezepte von %s"
@@ -3819,6 +3823,3 @@ msgstr "Teig"
 #: src/segments.inc:2
 msgid "Toppings"
 msgstr "Garnierung"
-
-#~ msgid "The GNOME Project"
-#~ msgstr "Das GNOME-Projekt"
