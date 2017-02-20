@@ -90,6 +90,9 @@ dist_images_DATA = \
 	images/non_knead_buns3.jpg	\
 	images/non_knead_buns4.jpg	\
 	images/non_knead_buns5.jpg	\
+	images/oats1.jpg		\
+	images/oats2.jpg		\
+	images/oats3.jpg		\
 	images/pesto.jpg		\
 	images/pineapple_upside_down.jpg \
 	images/pizzaburger.jpg		\
