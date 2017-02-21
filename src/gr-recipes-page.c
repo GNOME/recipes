@@ -55,9 +55,9 @@ struct _GrRecipesPage
 
 G_DEFINE_TYPE (GrRecipesPage, gr_recipes_page, GTK_TYPE_BOX)
 
-static void populate_diets_from_store (GrRecipesPage *page);
 static void populate_recipes_from_store (GrRecipesPage *page);
 static void populate_shopping_from_store (GrRecipesPage *page);
+static void populate_categories_from_store (GrRecipesPage *page);
 static void populate_chefs_from_store (GrRecipesPage *page);
 static void connect_store_signals (GrRecipesPage *page);
 
@@ -140,9 +140,9 @@ gr_recipes_page_init (GrRecipesPage *page)
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
         gtk_widget_init_template (GTK_WIDGET (page));
 
-        populate_diets_from_store (page);
         populate_recipes_from_store (page);
         populate_shopping_from_store (page);
+        populate_categories_from_store (page);
         populate_chefs_from_store (page);
         gr_recipe_tile_recreate_css ();
         gr_chef_tile_recreate_css ();
@@ -212,7 +212,7 @@ category_clicked (GrCategoryTile *tile,
 }
 
 static void
-populate_diets_from_store (GrRecipesPage *self)
+populate_categories_from_store (GrRecipesPage *self)
 {
         int i;
         GrDiets diets[5] = {
