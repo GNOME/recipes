@@ -54,7 +54,9 @@ static const char *colors[] = {
         "#729fcf",
         "#ac5500",
         "#2944cc",
-        "#44cc29"
+        "#44cc29",
+        "#00cc00",
+        "#a000c4"
 };
 
 static const char *
