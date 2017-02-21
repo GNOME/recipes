@@ -1698,6 +1698,8 @@ static gboolean
 recipe_matches (GrRecipeSearch *search,
                 GrRecipe       *recipe)
 {
+        if (strcmp (search->query[0], "is:any") == 0)
+                return TRUE;
         if (strcmp (search->query[0], "is:favorite") == 0)
                 return gr_recipe_store_is_favorite (search->store, recipe);
         else if (strcmp (search->query[0], "is:shopping") == 0)
