@@ -36,6 +36,7 @@ struct _GrCookingPage
         GtkBox parent_instance;
 
         GtkWidget *cooking_overlay;
+        GtkWidget *overlay_revealer;
         GtkWidget *event_box;
         GtkWidget *next_revealer;
         GtkWidget *prev_revealer;
@@ -146,6 +147,29 @@ update_steppers (GrCookingPage *page)
 }
 
 static void
+hide_overlay (gpointer data,
+              gboolean fade)
+{
+        GrCookingPage *page = data;
+
+        if (!fade)
+                gtk_revealer_set_transition_type (GTK_REVEALER (page->overlay_revealer), GTK_REVEALER_TRANSITION_TYPE_NONE);
+        gtk_revealer_set_reveal_child (GTK_REVEALER (page->overlay_revealer), FALSE);
+        if (!fade)
+                gtk_revealer_set_transition_type (GTK_REVEALER (page->overlay_revealer), GTK_REVEALER_TRANSITION_TYPE_CROSSFADE);
+}
+
+static gboolean
+show_overlay (gpointer data)
+{
+        GrCookingPage *page = data;
+
+        gtk_revealer_set_reveal_child (GTK_REVEALER (page->overlay_revealer), TRUE);
+
+        return G_SOURCE_REMOVE;
+}
+
+static void
 set_cooking (GrCookingPage *page,
              gboolean       cooking)
 {
@@ -157,12 +181,11 @@ set_cooking (GrCookingPage *page,
         app = gtk_window_get_application (GTK_WINDOW (window));
 
         if (cooking) {
+                hide_overlay (page, FALSE);
                 count = get_cooking_overlay_count ();
-                if (count < 3)
-                        gtk_widget_show (page->cooking_overlay);
-                else
-                        gtk_widget_hide (page->cooking_overlay);
                 set_cooking_overlay_count (count + 1);
+                if (count < 3)
+                        g_timeout_add (1000, show_overlay, page);
 
                 if (page->inhibit_cookie == 0) {
                         page->inhibit_cookie = gtk_application_inhibit (app,
@@ -306,14 +329,13 @@ gboolean
 gr_cooking_page_handle_event (GrCookingPage *page,
                               GdkEvent      *event)
 {
-        if (gtk_widget_get_visible (page->cooking_overlay)) {
-                gtk_widget_hide (page->cooking_overlay);
+        if (gtk_revealer_get_child_revealed (GTK_REVEALER (page->overlay_revealer))) {
+                hide_overlay (page, TRUE);
 
                 return GDK_EVENT_STOP;
         }
         else if (event->type == GDK_KEY_PRESS) {
                 GdkEventKey *e = (GdkEventKey *)event;
-
                 if (e->keyval == GDK_KEY_Escape) {
                         stop_cooking (page);
 
@@ -413,7 +435,7 @@ gr_cooking_page_class_init (GrCookingPageClass *klass)
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-cooking-page.ui");
 
         gtk_widget_class_bind_template_child (widget_class, GrCookingPage, cooking_overlay);
-
+        gtk_widget_class_bind_template_child (widget_class, GrCookingPage, overlay_revealer);
         gtk_widget_class_bind_template_child (widget_class, GrCookingPage, cooking_view);
         gtk_widget_class_bind_template_child (widget_class, GrCookingPage, prev_revealer);
         gtk_widget_class_bind_template_child (widget_class, GrCookingPage, next_revealer);

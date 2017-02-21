@@ -147,161 +147,168 @@
           </object>
         </child>
         <child type="overlay">
-          <object class="GtkGrid" id="cooking_overlay">
+          <object class="GtkRevealer" id="overlay_revealer">
             <property name="visible">1</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
-            <property name="row-spacing">20</property>
-            <property name="column-spacing">6</property>
-            <style>
-              <class name="cooking"/>
-              <class name="overlay"/>
-            </style>
+            <property name="transition-type">crossfade</property>
+            <property name="transition-duration">1000</property>
             <child>
-              <object class="GtkLabel">
+              <object class="GtkGrid" id="cooking_overlay">
                 <property name="visible">1</property>
-                <property name="label" translatable="yes">Cook Now</property>
+                <property name="row-spacing">20</property>
+                <property name="column-spacing">6</property>
                 <style>
-                  <class name="heading"/>
+                  <class name="cooking"/>
+                  <class name="overlay"/>
                 </style>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">0</property>
-                <property name="width">5</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkImage">
-                <property name="visible">1</property>
-                <property name="halign">start</property>
-                <property name="icon-name">press-any-key</property>
-                <property name="pixel-size">48</property>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkImage">
-                <property name="visible">1</property>
-                <property name="halign">start</property>
-                <property name="icon-name">press-left-button</property>
-                <property name="pixel-size">48</property>
-              </object>
-              <packing>
-                <property name="left-attach">2</property>
-                <property name="top-attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">1</property>
-                <property name="xalign">0</property>
-                <property name="label" translatable="yes">To advance to the next step, press any key on the
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="label" translatable="yes">Cook Now</property>
+                    <style>
+                      <class name="heading"/>
+                    </style>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">0</property>
+                    <property name="width">5</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">1</property>
+                    <property name="halign">start</property>
+                    <property name="icon-name">press-any-key</property>
+                    <property name="pixel-size">48</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">1</property>
+                    <property name="halign">start</property>
+                    <property name="icon-name">press-left-button</property>
+                    <property name="pixel-size">48</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">2</property>
+                    <property name="top-attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">To advance to the next step, press any key on the
 keyboard or click the left mouse button.</property>
-              </object>
-              <packing>
-                <property name="left-attach">4</property>
-                <property name="top-attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkImage">
-                <property name="visible">1</property>
-                <property name="halign">start</property>
-                <property name="icon-name">press-any-key</property>
-                <property name="pixel-size">48</property>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkImage">
-                <property name="visible">1</property>
-                <property name="halign">start</property>
-                <property name="icon-name">press-any-key</property>
-                <property name="pixel-size">48</property>
-              </object>
-              <packing>
-                <property name="left-attach">1</property>
-                <property name="top-attach">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkImage">
-                <property name="visible">1</property>
-                <property name="halign">start</property>
-                <property name="icon-name">press-left-button</property>
-                <property name="pixel-size">48</property>
-              </object>
-              <packing>
-                <property name="left-attach">2</property>
-                <property name="top-attach">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkImage">
-                <property name="visible">1</property>
-                <property name="halign">start</property>
-                <property name="icon-name">press-left-button</property>
-                <property name="pixel-size">48</property>
-              </object>
-              <packing>
-                <property name="left-attach">3</property>
-                <property name="top-attach">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">1</property>
-                <property name="xalign">0</property>
-                <property name="label" translatable="yes">To go back to the previous step, doubletap any key
+                  </object>
+                  <packing>
+                    <property name="left-attach">4</property>
+                    <property name="top-attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">1</property>
+                    <property name="halign">start</property>
+                    <property name="icon-name">press-any-key</property>
+                    <property name="pixel-size">48</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">1</property>
+                    <property name="halign">start</property>
+                    <property name="icon-name">press-any-key</property>
+                    <property name="pixel-size">48</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">1</property>
+                    <property name="halign">start</property>
+                    <property name="icon-name">press-left-button</property>
+                    <property name="pixel-size">48</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">2</property>
+                    <property name="top-attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">1</property>
+                    <property name="halign">start</property>
+                    <property name="icon-name">press-left-button</property>
+                    <property name="pixel-size">48</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">3</property>
+                    <property name="top-attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">To go back to the previous step, doubletap any key
 or double click the left mouse button.</property>
-              </object>
-              <packing>
-                <property name="left-attach">4</property>
-                <property name="top-attach">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkImage">
-                <property name="visible">1</property>
-                <property name="halign">start</property>
-                <property name="icon-name">press-escape-key</property>
-                <property name="pixel-size">48</property>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">3</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkImage">
-                <property name="visible">1</property>
-                <property name="halign">start</property>
-                <property name="icon-name">press-right-button</property>
-                <property name="pixel-size">48</property>
-              </object>
-              <packing>
-                <property name="left-attach">2</property>
-                <property name="top-attach">3</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">1</property>
-                <property name="xalign">0</property>
-                <property name="label" translatable="yes">To exit the process, press the Escape key or click
+                  </object>
+                  <packing>
+                    <property name="left-attach">4</property>
+                    <property name="top-attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">1</property>
+                    <property name="halign">start</property>
+                    <property name="icon-name">press-escape-key</property>
+                    <property name="pixel-size">48</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">1</property>
+                    <property name="halign">start</property>
+                    <property name="icon-name">press-right-button</property>
+                    <property name="pixel-size">48</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">2</property>
+                    <property name="top-attach">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">To exit the process, press the Escape key or click
 the right mouse button.</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">4</property>
+                    <property name="top-attach">3</property>
+                  </packing>
+                </child>
               </object>
-              <packing>
-                <property name="left-attach">4</property>
-                <property name="top-attach">3</property>
-              </packing>
             </child>
           </object>
         </child>
