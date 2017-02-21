@@ -339,19 +339,20 @@ button.osd {
 }
 
 .cooking.overlay {
-        background: gray;
-        padding: 40px;
-        border-radius: 20px;
+        background: rgba(160,160,160,0.9);
+        padding: 32px;
+        border-radius: 16px;
 }
 
 .cooking .heading {
-        font-size: 30px;
+        font-size: 150%;
+        margin-bottom: 1em;
 }
 
 .cooking-image {
         color: #ddd;
         background-color: transparent;
-        border: 1px solid white;
+        border: 1px solid black;
 }
 
 .timer-label,
