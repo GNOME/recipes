@@ -39,6 +39,7 @@ struct _GrListPage
         GrChef *chef;
         GrDiets diet;
         gboolean favorites;
+        gboolean all;
         char *season;
         GList *recipes;
 
@@ -74,6 +75,7 @@ clear_data (GrListPage *self)
         g_clear_object (&self->chef);
         self->diet = 0;
         self->favorites = FALSE;
+        self->all = FALSE;
         g_clear_pointer (&self->season, g_free);
         g_list_free_full (self->recipes, g_object_unref);
         self->recipes = NULL;
@@ -390,6 +392,25 @@ gr_list_page_populate_from_favorites (GrListPage *self)
 }
 
 void
+gr_list_page_populate_from_all (GrListPage *self)
+{
+        clear_data (self);
+        self->all = TRUE;
+
+        gtk_widget_hide (self->chef_grid);
+        gtk_widget_hide (self->heading);
+        gtk_widget_hide (self->diet_description);
+
+        container_remove_all (GTK_CONTAINER (self->flow_box));
+        gtk_label_set_label (GTK_LABEL (self->empty_title), _("No recipes found"));
+        gtk_label_set_label (GTK_LABEL (self->empty_subtitle), _("Sorry about this."));
+
+        gr_recipe_search_stop (self->search);
+        gtk_stack_set_visible_child_name (GTK_STACK (self->list_stack), "list");
+        gr_recipe_search_set_query (self->search, "is:any");
+}
+
+void
 gr_list_page_populate_from_list (GrListPage *self,
                                  GList      *recipes)
 {
@@ -444,6 +465,8 @@ gr_list_page_repopulate (GrListPage *page)
                 gr_list_page_populate_from_season (page, page->season);
         else if (page->recipes)
                 gr_list_page_populate_from_list (page, page->recipes);
+        else if (page->all)
+                gr_list_page_populate_from_all (page);
 }
 
 static void

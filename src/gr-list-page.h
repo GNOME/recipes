@@ -41,6 +41,7 @@ void            gr_list_page_populate_from_season    (GrListPage *self,
 void            gr_list_page_populate_from_favorites (GrListPage *self);
 void            gr_list_page_populate_from_list      (GrListPage *self,
                                                       GList      *recipes);
+void            gr_list_page_populate_from_all       (GrListPage *self);
 void            gr_list_page_clear                   (GrListPage *self);
 void            gr_list_page_repopulate              (GrListPage *self);
 
