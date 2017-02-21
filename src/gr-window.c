@@ -916,6 +916,22 @@ gr_window_show_favorites (GrWindow *window)
 }
 
 void
+gr_window_show_all (GrWindow *window)
+{
+        save_back_entry (window);
+
+        gr_list_page_populate_from_all (GR_LIST_PAGE (window->list_page));
+
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("All recipes"));
+
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
+
+        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "list");
+}
+
+void
 gr_window_show_list (GrWindow   *window,
                      const char *title,
                      GList      *recipes)
