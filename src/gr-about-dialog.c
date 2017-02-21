@@ -215,6 +215,13 @@ get_os_information (char **os_name,
                 if (platform && minor && micro)
                         *version = g_strconcat (platform, ".", minor, ".", micro, NULL);
         }
+
+        if (!*os_name)
+                *os_name = g_strdup (_("Unknown"));
+        if (!*os_type)
+                *os_type = g_strdup (_("Unknown"));
+        if (!*desktop)
+                *desktop = g_strdup (_("Unknown"));
 }
 
 static void
