@@ -31,6 +31,30 @@
 #include "gr-utils.h"
 #include "gr-window.h"
 
+/**
+ * How images are handled
+ * ----------------------
+ *
+ * We copy images into our datadir, which is either
+ * ~/.var/app/org.gnome.Recipes/data/images (in the flatpak case) or
+ * $XDG_DATA_HOME/gnome-recipes/images (otherwise).
+ *
+ * We apply embedded rotations while copying images (this is necessary since we set
+ * these images as CSS background, and the GTK+ CSS machinery does *not* apply embedded
+ * orientations.
+ *
+ * To synchronize the filesystem changes with saving the recipe (to which the images
+ * belong), the image viewer on the edit page keeps a list of image additions and removal,
+ * and call gr_image_viewer_persist/revert_changes when the user saves the recipe or
+ * navigates away without saving.
+ *
+ * To get the synchronization correct for rotations, we treat rotating an image as
+ * removal/addition pair.
+ *
+ * As an extra complication, we refer to images by their position in the image array
+ * in the instructions. So, whenever an image is removed, we have to rewrite the instructions
+ * and update all the image references.
+ */
 
 struct _GrImageViewer
 {
