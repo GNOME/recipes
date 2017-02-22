@@ -222,20 +222,14 @@ stop_cooking (GrCookingPage *page)
 static void
 prev_step (GrCookingPage *page)
 {
-        int step;
-
-        step = gr_cooking_view_get_step (GR_COOKING_VIEW (page->cooking_view));
-        gr_cooking_view_set_step (GR_COOKING_VIEW (page->cooking_view), step - 1);
+        gr_cooking_view_prev_step (GR_COOKING_VIEW (page->cooking_view));
         update_steppers (page);
 }
 
 static void
 next_step (GrCookingPage *page)
 {
-        int step;
-
-        step = gr_cooking_view_get_step (GR_COOKING_VIEW (page->cooking_view));
-        gr_cooking_view_set_step (GR_COOKING_VIEW (page->cooking_view), step + 1);
+        gr_cooking_view_next_step (GR_COOKING_VIEW (page->cooking_view));
         update_steppers (page);
 }
 

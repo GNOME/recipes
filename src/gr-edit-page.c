@@ -1386,24 +1386,14 @@ preview_visible_changed (GrEditPage *page)
 static void
 prev_step (GrEditPage *page)
 {
-        int step;
-
-        step = gr_cooking_view_get_step (GR_COOKING_VIEW (page->cooking_view)) - 1;
-        if (step >= 0)
-                gr_cooking_view_set_step (GR_COOKING_VIEW (page->cooking_view), step);
-
+        gr_cooking_view_prev_step (GR_COOKING_VIEW (page->cooking_view));
         update_steppers (page);
 }
 
 static void
 next_step (GrEditPage *page)
 {
-        int step;
-
-        step = gr_cooking_view_get_step (GR_COOKING_VIEW (page->cooking_view)) + 1;
-        if (step < gr_cooking_view_get_n_steps (GR_COOKING_VIEW (page->cooking_view)))
-                gr_cooking_view_set_step (GR_COOKING_VIEW (page->cooking_view), step);
-
+        gr_cooking_view_next_step (GR_COOKING_VIEW (page->cooking_view));
         update_steppers (page);
 }
 
