@@ -135,10 +135,11 @@ gr_chef_set_property (GObject      *object,
                 break;
 
         case PROP_DESCRIPTION:
-                g_free (self->description);
+                g_clear_pointer (&self->description, g_free);
+                g_clear_pointer (&self->translated_description, g_free);
                 self->description = g_value_dup_string (value);
-                g_free (self->translated_description);
-                self->translated_description = translate_multiline_string (self->description);
+                if (self->description)
+                        self->translated_description = translate_multiline_string (self->description);
                 break;
 
         case PROP_IMAGE_PATH:
