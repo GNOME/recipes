@@ -34,6 +34,8 @@
 #include "gr-recipe-store.h"
 #include "gr-app.h"
 #include "gr-utils.h"
+#include "gr-recipe-tile.h"
+#include "gr-chef-tile.h"
 
 
 struct _GrRecipeImporter
@@ -437,6 +439,10 @@ next:
         id = importer->recipe_ids[importer->current_recipe];
 
         if (id == NULL) {
+                // We're done!
+                gr_recipe_tile_recreate_css ();
+                gr_chef_tile_recreate_css ();
+
                 g_signal_emit (importer, done_signal, 0, importer->recipes);
                 cleanup_import (importer);
                 return TRUE;
