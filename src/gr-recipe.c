@@ -280,20 +280,26 @@ gr_recipe_set_property (GObject      *object,
                 break;
 
         case PROP_NAME:
-                g_free (self->name);
-                g_free (self->cf_name);
+                g_clear_pointer (&self->name, g_free);
+                g_clear_pointer (&self->translated_name, g_free);
+                g_clear_pointer (&self->cf_name, g_free);
                 self->name = g_value_dup_string (value);
-                self->translated_name = translate_multiline_string (self->name);
-                self->cf_name = g_utf8_casefold (self->translated_name, -1);
+                if (self->name) {
+                        self->translated_name = translate_multiline_string (self->name);
+                        self->cf_name = g_utf8_casefold (self->translated_name, -1);
+                }
                 update_mtime (self);
                 break;
 
         case PROP_DESCRIPTION:
-                g_free (self->description);
-                g_free (self->cf_description);
+                g_clear_pointer (&self->description, g_free);
+                g_clear_pointer (&self->translated_description, g_free);
+                g_clear_pointer (&self->cf_description, g_free);
                 self->description = g_value_dup_string (value);
-                self->translated_description = translate_multiline_string (self->description);
-                self->cf_description = g_utf8_casefold (self->translated_description, -1);
+                if (self->description) {
+                        self->translated_description = translate_multiline_string (self->description);
+                        self->cf_description = g_utf8_casefold (self->translated_description, -1);
+                }
                 update_mtime (self);
                 break;
 
@@ -348,32 +354,35 @@ gr_recipe_set_property (GObject      *object,
                 break;
 
         case PROP_INGREDIENTS:
-                {
-                g_autofree char *cf_garlic = NULL;
+                g_clear_pointer (&self->ingredients, g_free);
+                g_clear_pointer (&self->cf_ingredients, g_free);
+                self->garlic = FALSE;
 
-                g_free (self->ingredients);
-                g_free (self->cf_ingredients);
                 self->ingredients = g_value_dup_string (value);
-                self->cf_ingredients = g_utf8_casefold (self->ingredients, -1);
-
-                cf_garlic = g_utf8_casefold ("Garlic", -1);
-                self->garlic = (strstr (self->cf_ingredients, cf_garlic) != NULL);
-                update_mtime (self);
+                if (self->ingredients) {
+                        g_autofree char *cf_garlic = NULL;
+                        self->cf_ingredients = g_utf8_casefold (self->ingredients, -1);
+                        cf_garlic = g_utf8_casefold ("Garlic", -1);
+                        self->garlic = (strstr (self->cf_ingredients, cf_garlic) != NULL);
                 }
+                update_mtime (self);
                 break;
 
         case PROP_INSTRUCTIONS:
-                g_free (self->instructions);
+                g_clear_pointer (&self->instructions, g_free);
+                g_clear_pointer (&self->translated_instructions, g_free);
                 self->instructions = g_value_dup_string (value);
-                self->translated_instructions = translate_multiline_string (self->instructions);
+                if (self->instructions)
+                        self->translated_instructions = translate_multiline_string (self->instructions);
                 update_mtime (self);
                 break;
 
         case PROP_NOTES:
-                g_free (self->notes);
-                g_free (self->translated_notes);
+                g_clear_pointer (&self->notes, g_free);
+                g_clear_pointer (&self->translated_notes, g_free);
                 self->notes = g_value_dup_string (value);
-                self->translated_notes = translate_multiline_string (self->notes);
+                if (self->notes)
+                        self->translated_notes = translate_multiline_string (self->notes);
                 update_mtime (self);
                 break;
 
