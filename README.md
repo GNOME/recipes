@@ -29,7 +29,7 @@ apt install autoconf-archive gobject-introspection libjson-glib-dev libgnome-aut
 To build GNOME Recipes from git, use the following steps:
 
 ```
-git clone git://git.gnome.org/recipes
+git clone --recursive git://git.gnome.org/recipes
 cd recipes
 ./autogen.sh --prefix=<your preferred location>
 make
