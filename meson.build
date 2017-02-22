@@ -69,6 +69,7 @@ deps = [ dependency('gtk+-3.0', version : '>=3.20'),
 pkgdatadir = join_paths([ get_option('prefix'),
                           get_option('datadir'),
                           'gnome-recipes' ])
+bindir = join_paths([ get_option('prefix'), 'bin' ])
 conf.set_quoted('G_LOG_DOMAIN', 'org.gnome.Recipes')
 conf.set_quoted('PACKAGE_NAME', 'gnome-recipes')
 conf.set_quoted('PACKAGE_VERSION', meson.project_version())
@@ -77,8 +78,10 @@ conf.set_quoted('PKGDATADIR', pkgdatadir)
 conf.set_quoted('LOCALEDIR', join_paths([ get_option('prefix'),
                                           get_option('datadir'),
                                           'locale' ]))
-# Used while generating cuisine.css
+
+# Used while generating cuisine.css and the dbus service file
 conf.set('pkgdatadir', pkgdatadir)
+conf.set('bindir', bindir)
 
 configure_file(output : 'config.h', configuration : conf)
 
