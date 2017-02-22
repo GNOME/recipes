@@ -33,6 +33,38 @@
 #include "gr-app.h"
 
 
+/**
+ * Data storage
+ * ------------
+ *
+ * The current storage layer is very simple-minded. We just write data out
+ * as a number of key files:
+ * - recipes.db for recipes, with each recipe being its own group
+ * - chefs.db for chefs, with each chef being its own group
+ *
+ * There's a few auxiliary files:
+ * - picks, with lists of things to put on the landing page
+ * - favorites.db, with a list of the user's favorites
+ * - shopping.db, with the current shppping list
+ * - user, containing the user id of the user
+ * - cooking, with a counter for how often cooking mode was launched
+ *
+ * Some of these files are preinstalled (picks.db), some are only per-user
+ * (favorites.db, shopping.db, user, cooking), and some are both, with the
+ * per-user list overlaying the preinstalled one.
+ *
+ * Data from the preinstalled files is treated as readonly unless it
+ * belongs to the current user.
+ *
+ * Data is always written to the per-user files.
+ *
+ * Data at runtime
+ * ---------------
+ *
+ * At runtime, we keep GrRecipe and GrChef objects in two separate hash tables.
+ * Recipes have unique IDs of the form R_<dish_name>_by_<chef_id>.
+ */
+
 struct _GrRecipeStore
 {
         GObject parent;
