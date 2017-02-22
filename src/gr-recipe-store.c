@@ -379,7 +379,7 @@ load_recipes (GrRecipeStore *self,
                 else {
                         gboolean own;
 
-                        own = strcmp (author, self->user) == 0;
+                        own = g_strcmp0 (author, self->user) == 0;
                         recipe = g_object_new (GR_TYPE_RECIPE,
                                                "id", id,
                                                "name", name,
@@ -1595,7 +1595,7 @@ gr_recipe_store_has_chef (GrRecipeStore *self,
 
         g_hash_table_iter_init (&iter, self->recipes);
         while (g_hash_table_iter_next (&iter, NULL, (gpointer *)&recipe)) {
-                if (strcmp (gr_chef_get_id (chef), gr_recipe_get_author (recipe)) == 0)
+                if (g_strcmp0 (gr_chef_get_id (chef), gr_recipe_get_author (recipe)) == 0)
                         return TRUE;
         }
 
@@ -1611,7 +1611,7 @@ gr_recipe_store_has_cuisine (GrRecipeStore *self,
 
         g_hash_table_iter_init (&iter, self->recipes);
         while (g_hash_table_iter_next (&iter, NULL, (gpointer *)&recipe)) {
-                if (strcmp (cuisine, gr_recipe_get_cuisine (recipe)) == 0)
+                if (g_strcmp0 (cuisine, gr_recipe_get_cuisine (recipe)) == 0)
                         return TRUE;
         }
 
