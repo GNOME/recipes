@@ -1,14 +1,14 @@
 custom_target('recipes.db.h',
               input: ['recipes.db'],
               output: ['recipes.db.h'],
-              command: ['../tools/recipe-extract', '@INPUT@'],
+              command: [recipe_extract, '@INPUT@'],
               capture: true,
               build_by_default: true)
 
 custom_target('chefs.db.h',
               input: ['chefs.db'],
               output: ['chefs.db.h'],
-              command: ['../tools/recipe-extract', '--chefs', '@INPUT@'],
+              command: [recipe_extract, '--chefs', '@INPUT@'],
               capture: true,
               build_by_default: true)
 

@@ -1,3 +1,3 @@
-executable('recipe-extract', 'recipe-extract.c',
+recipe_extract = executable('recipe-extract', 'recipe-extract.c',
            include_directories : top_inc,
            dependencies: deps)
