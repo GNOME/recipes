@@ -98,6 +98,9 @@ dist_images_DATA = \
 	images/pizzaburger.jpg		\
 	images/pizza.jpg		\
 	images/plain-bagel.jpg		\
+	images/rakost1.jpg		\
+	images/rakost2.jpg		\
+	images/rakost3.jpg		\
 	images/rootspie1.jpg		\
 	images/rootspie2.jpg		\
 	images/rootspie3.jpg		\

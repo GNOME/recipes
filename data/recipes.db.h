@@ -1,5 +1,13 @@
 #if 0
 
+N_("Råkost")
+N_("A sweet and sour addition to your dinner. This salad has many variations of it and is a common winter side dish in Denmark.")
+N_("[image:1]Grate the carrots on the fine side of the grater.")
+N_("[image:0]Spread the carrot equally in a platter.")
+N_("[image:0]Divide and cut the apples into small bite-size pieces.")
+N_("[image:0]Distribute the apples and blueberrys on top of the carrot.")
+N_("[image:0]Divide a lime in two and squeeze its juices across the whole platter.")
+N_("[image:2]Sprinkle a bit with linseeds if you want and it's then ready to eat. :-)")
 N_("Breakfast Oats Jar")
 N_("This recipe is great for those who usually don't have time for breakfast. Prepare it in mason jars/portable food containers the night before, and you can have your homemade breakfast on-the-go! Make a couple batches in advance if you know you won't have time. This recipe is also very flexible as you can make it vegan, or gluten-free simply by substituting the components i.e. dairy milk with coconut milk, honey with agave, or use gluten-free oats. Also, any fruits of your choice, fresh or frozen.")
 N_("[image:2]Add all the ingredients in a 16-oz container, or divide equally between two 8-oz containers.")
