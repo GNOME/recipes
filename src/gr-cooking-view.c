@@ -264,14 +264,9 @@ send_complete_notification (StepData *step)
         page = gtk_widget_get_ancestor (GTK_WIDGET (view), GR_TYPE_COOKING_PAGE);
         if (page) {
                 g_autofree char *text = NULL;
-                int i;
 
-                for (i = 0; i < view->steps->len; i++) {
-                        if (step == g_ptr_array_index (view->steps, i))
-                                break;
-                }
-
-                text = g_strdup_printf (_("Timer for “Step %d” has expired."), i + 1);
+                text = g_strdup_printf (_("Timer for “%s” has expired."),
+                                        gr_timer_get_name (step->timer));
                 gr_cooking_page_show_notification (GR_COOKING_PAGE (page), text);
         }
 }
