@@ -399,7 +399,17 @@ gr_cooking_page_handle_event (GrCookingPage *page,
         else if (event->type == GDK_BUTTON_PRESS) {
                 GdkEventButton *e = (GdkEventButton *)event;
 
-                if (e->button == GDK_BUTTON_SECONDARY) {
+                if (e->button == 8) {
+                        prev_step (page);
+
+                        return GDK_EVENT_STOP;
+                }
+                else if (e->button == 9) {
+                        next_step (page);
+
+                        return GDK_EVENT_STOP;
+                }
+                else if (e->button == GDK_BUTTON_SECONDARY) {
                         stop_cooking (page);
 
                         return GDK_EVENT_STOP;
