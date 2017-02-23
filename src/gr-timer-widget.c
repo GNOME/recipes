@@ -204,7 +204,6 @@ gr_timer_widget_draw (GtkWidget *widget,
         guint64 start;
         guint64 remaining;
         guint64 duration;
-        gboolean active;
 
         context = gtk_widget_get_style_context (widget);
         width = gtk_widget_get_allocated_width (widget);
@@ -223,7 +222,6 @@ gr_timer_widget_draw (GtkWidget *widget,
         start = gr_timer_get_start_time (timer->timer);
         remaining = gr_timer_get_remaining (timer->timer);
         duration = gr_timer_get_duration (timer->timer);
-        active = gr_timer_get_active (timer->timer);
 
         cairo_set_line_width (cr, line_width);
         cairo_set_line_cap (cr, CAIRO_LINE_CAP_ROUND);
@@ -233,18 +231,7 @@ gr_timer_widget_draw (GtkWidget *widget,
         color.red = color.green = color.blue = 1.0;
         gdk_cairo_set_source_rgba (cr, &color);
 
-        if (0 && start != 0 && remaining != 0 && active) {
-                guint64 now;
-                double angle1, angle2;
-
-                now = g_get_monotonic_time ();
-                angle1 = - M_PI / 2 - (now - start) * 2 * M_PI / duration;
-                angle2 = 3 * M_PI / 2;
-
-                cairo_arc (cr, xc, yc, radius, angle2, angle1);
-                cairo_stroke (cr);
-        }
-        else if (start != 0 && remaining != duration) {
+        if (start != 0 && remaining != duration) {
                 double angle1, angle2;
 
                 angle1 = - M_PI / 2 - (duration - remaining) * 2 * M_PI / duration;
