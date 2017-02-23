@@ -77,6 +77,8 @@ gnome_recipes_SOURCES = \
 	gr-meal.c		\
 	gr-meal-row.h		\
 	gr-meal-row.c		\
+	gr-mini-timer-widget.h	\
+	gr-mini-timer-widget.c	\
 	gr-number.h		\
 	gr-number.c		\
 	gr-chef-dialog.h	\
