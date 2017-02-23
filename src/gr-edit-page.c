@@ -108,6 +108,7 @@ struct _GrEditPage
         GtkWidget *add_step_button;
         GtkWidget *link_image_button;
         GtkWidget *timer_button;
+        GtkWidget *temperature_button;
         GtkWidget *prev_step_button;
         GtkWidget *next_step_button;
         GtkWidget *image_popover;
@@ -1359,6 +1360,7 @@ preview_visible_changed (GrEditPage *page)
                 gtk_widget_set_sensitive (page->add_step_button, TRUE);
                 gtk_widget_set_sensitive (page->link_image_button, TRUE);
                 gtk_widget_set_sensitive (page->timer_button, TRUE);
+                gtk_widget_set_sensitive (page->temperature_button, TRUE);
                 gtk_widget_set_visible (page->prev_step_button, FALSE);
                 gtk_widget_set_visible (page->next_step_button, FALSE);
         }
@@ -1370,6 +1372,7 @@ preview_visible_changed (GrEditPage *page)
                 gtk_widget_set_sensitive (page->add_step_button, FALSE);
                 gtk_widget_set_sensitive (page->link_image_button, FALSE);
                 gtk_widget_set_sensitive (page->timer_button, FALSE);
+                gtk_widget_set_sensitive (page->temperature_button, FALSE);
                 gtk_widget_set_visible (page->prev_step_button, TRUE);
                 gtk_widget_set_visible (page->next_step_button, TRUE);
 
@@ -1451,6 +1454,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, add_step_button);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, link_image_button);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, timer_button);
+        gtk_widget_class_bind_template_child (widget_class, GrEditPage, temperature_button);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, prev_step_button);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, next_step_button);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, image_popover);
