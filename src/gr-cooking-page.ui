@@ -167,7 +167,7 @@
               <object class="GtkGrid" id="cooking_overlay">
                 <property name="visible">1</property>
                 <property name="row-spacing">20</property>
-                <property name="column-spacing">6</property>
+                <property name="column-spacing">20</property>
                 <style>
                   <class name="cooking"/>
                   <class name="overlay"/>
@@ -175,7 +175,7 @@
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">1</property>
-                    <property name="label" translatable="yes">Cook Now</property>
+                    <property name="label" translatable="yes">Controls</property>
                     <style>
                       <class name="heading"/>
                     </style>
@@ -183,30 +183,17 @@
                   <packing>
                     <property name="left-attach">0</property>
                     <property name="top-attach">0</property>
-                    <property name="width">5</property>
+                    <property name="width">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkImage">
                     <property name="visible">1</property>
                     <property name="halign">start</property>
-                    <property name="icon-name">press-any-key</property>
-                    <property name="pixel-size">48</property>
+                    <property name="resource">/org/gnome/Recipes/help-key-press.png</property>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
-                    <property name="top-attach">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">1</property>
-                    <property name="halign">start</property>
-                    <property name="icon-name">press-left-button</property>
-                    <property name="pixel-size">48</property>
-                  </object>
-                  <packing>
-                    <property name="left-attach">2</property>
                     <property name="top-attach">1</property>
                   </packing>
                 </child>
@@ -215,10 +202,10 @@
                     <property name="visible">1</property>
                     <property name="xalign">0</property>
                     <property name="label" translatable="yes">To advance to the next step, press any key on the
-keyboard or click the left mouse button.</property>
+keyboard.</property>
                   </object>
                   <packing>
-                    <property name="left-attach">4</property>
+                    <property name="left-attach">1</property>
                     <property name="top-attach">1</property>
                   </packing>
                 </child>
@@ -226,8 +213,7 @@ keyboard or click the left mouse button.</property>
                   <object class="GtkImage">
                     <property name="visible">1</property>
                     <property name="halign">start</property>
-                    <property name="icon-name">press-any-key</property>
-                    <property name="pixel-size">48</property>
+                    <property name="resource">/org/gnome/Recipes/help-key-double-press.png</property>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
@@ -235,11 +221,10 @@ keyboard or click the left mouse button.</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkImage">
+                  <object class="GtkLabel">
                     <property name="visible">1</property>
-                    <property name="halign">start</property>
-                    <property name="icon-name">press-any-key</property>
-                    <property name="pixel-size">48</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">To go back to the previous step, doubletap any key.</property>
                   </object>
                   <packing>
                     <property name="left-attach">1</property>
@@ -250,44 +235,7 @@ keyboard or click the left mouse button.</property>
                   <object class="GtkImage">
                     <property name="visible">1</property>
                     <property name="halign">start</property>
-                    <property name="icon-name">press-left-button</property>
-                    <property name="pixel-size">48</property>
-                  </object>
-                  <packing>
-                    <property name="left-attach">2</property>
-                    <property name="top-attach">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">1</property>
-                    <property name="halign">start</property>
-                    <property name="icon-name">press-left-button</property>
-                    <property name="pixel-size">48</property>
-                  </object>
-                  <packing>
-                    <property name="left-attach">3</property>
-                    <property name="top-attach">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="visible">1</property>
-                    <property name="xalign">0</property>
-                    <property name="label" translatable="yes">To go back to the previous step, doubletap any key
-or double click the left mouse button.</property>
-                  </object>
-                  <packing>
-                    <property name="left-attach">4</property>
-                    <property name="top-attach">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">1</property>
-                    <property name="halign">start</property>
-                    <property name="icon-name">press-escape-key</property>
-                    <property name="pixel-size">48</property>
+                    <property name="resource">/org/gnome/Recipes/help-cursor-keys.png</property>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
@@ -295,27 +243,38 @@ or double click the left mouse button.</property>
                   </packing>
                 </child>
                 <child>
+                  <object class="GtkLabel">
+                    <property name="visible">1</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">Alternatively, you can use the cursor keys to
+quickly seek within the directions.</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">3</property>
+                  </packing>
+                </child>
+                <child>
                   <object class="GtkImage">
                     <property name="visible">1</property>
                     <property name="halign">start</property>
-                    <property name="icon-name">press-right-button</property>
+                    <property name="resource">/org/gnome/Recipes/help-esc-key.png</property>
                     <property name="pixel-size">48</property>
                   </object>
                   <packing>
-                    <property name="left-attach">2</property>
-                    <property name="top-attach">3</property>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">4</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">1</property>
                     <property name="xalign">0</property>
-                    <property name="label" translatable="yes">To exit the process, press the Escape key or click
-the right mouse button.</property>
+                    <property name="label" translatable="yes">To exit the process, press the Escape key.</property>
                   </object>
                   <packing>
-                    <property name="left-attach">4</property>
-                    <property name="top-attach">3</property>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">4</property>
                   </packing>
                 </child>
               </object>
