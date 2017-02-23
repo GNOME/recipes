@@ -209,7 +209,7 @@ gr_timer_widget_draw (GtkWidget *widget,
         context = gtk_widget_get_style_context (widget);
         width = gtk_widget_get_allocated_width (widget);
         height = gtk_widget_get_allocated_height (widget);
-        line_width = 8;
+        line_width = CLAMP (width / 16, 2, 8);
 
         gtk_render_background (context, cr, 0, 0, width, height);
         gtk_render_frame (context, cr, 0, 0, width, height);
