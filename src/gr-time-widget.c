@@ -128,7 +128,7 @@ timer_pause (GrTimeWidget *self)
                 gtk_stack_set_visible_child_name (GTK_STACK (self->pause_stack), "resume");
         }
         else {
-                gr_timer_continue (self->timer);
+                gr_timer_start (self->timer);
                 gtk_stack_set_visible_child_name (GTK_STACK (self->pause_stack), "pause");
         }
 }

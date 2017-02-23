@@ -281,7 +281,10 @@ gr_timer_init (GrTimer *self)
 void
 gr_timer_start (GrTimer *timer)
 {
-        timer->start_time = g_get_monotonic_time ();
+        guint64 elapsed;
+
+        elapsed = timer->end_time - timer->start_time;
+        timer->start_time = g_get_monotonic_time () - elapsed;
         set_active (timer, TRUE);
 }
 
@@ -300,14 +303,4 @@ gr_timer_reset (GrTimer *timer)
         timer->remaining = timer->duration;
         set_active (timer, FALSE);
         g_object_notify (G_OBJECT (timer), "remaining");
-}
-
-void
-gr_timer_continue (GrTimer *timer)
-{
-        guint64 elapsed;
-
-        elapsed = timer->end_time - timer->start_time;
-        timer->start_time = g_get_monotonic_time () - elapsed;
-        set_active (timer, TRUE);
 }

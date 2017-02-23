@@ -301,7 +301,7 @@ step_timer_pause (GrCookingView *view)
         if (gr_timer_get_active (s->timer))
                 gr_timer_stop (s->timer);
         else
-                gr_timer_continue (s->timer);
+                gr_timer_start (s->timer);
 }
 
 static void
