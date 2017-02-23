@@ -394,10 +394,6 @@ populate_system_tab (GtkTextView *view)
         buffer = gtk_text_view_get_buffer (view);
 
         if (in_flatpak_sandbox ()) {
-                g_autofree char *os_name = NULL;
-                g_autofree char *os_type = NULL;
-                g_autofree char *desktop = NULL;
-                g_autofree char *version = NULL;
                 g_autofree char *flatpak_version = NULL;
                 g_autofree char *app_id = NULL;
                 g_autofree char *app_arch = NULL;
@@ -407,15 +403,6 @@ populate_system_tab (GtkTextView *view)
                 g_autofree char *runtime_arch = NULL;
                 g_autofree char *runtime_branch = NULL;
                 g_autofree char *runtime_commit = NULL;
-
-                get_os_information (&os_name, &os_type, &desktop, &version);
-
-                text_buffer_append (buffer, _("OS"));
-                text_buffer_append (buffer, "\n");
-
-                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("OS metadata", "Name"), os_name);
-                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("OS metadata", "Type"), os_type);
-                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("OS metadata", "Desktop"), desktop);
 
                 get_flatpak_information (&flatpak_version,
                                          &app_id, &app_arch, &app_branch, &app_commit,
