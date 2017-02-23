@@ -513,7 +513,7 @@ gr_cooking_view_set_step (GrCookingView *view,
 }
 
 void
-gr_cooking_view_next_step (GrCookingView *view)
+gr_cooking_view_forward (GrCookingView *view)
 {
         StepData *s;
 
@@ -533,6 +533,12 @@ void
 gr_cooking_view_prev_step (GrCookingView *view)
 {
         set_step (view, view->step - 1);
+}
+
+void
+gr_cooking_view_next_step (GrCookingView *view)
+{
+        set_step (view, view->step + 1);
 }
 
 void
