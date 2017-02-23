@@ -64,8 +64,9 @@ step_data_free (gpointer data)
 static void step_timer_complete (GrTimer *timer, StepData *step);
 
 static StepData *
-step_data_new (const char *heading,
-               const char *string,
+step_data_new (int         num,
+               int         n_steps,
+               const char *label,
                guint64     duration,
                int         image,
                gpointer    view)
@@ -74,11 +75,14 @@ step_data_new (const char *heading,
 
         d = g_new (StepData, 1);
         d->view = view;
-        d->heading = g_strdup (heading);
-        d->label = g_strdup (string);
+        d->heading = g_strdup_printf (_("Step %d/%d"), num, n_steps);
+        d->label = g_strdup (label);
         if (duration > 0) {
+                g_autofree char *name = NULL;
+
+                name = g_strdup_printf (_("Step %d"), num);
                 d->timer = g_object_new (GR_TYPE_TIMER,
-                                         "name", "Step",
+                                         "name", name,
                                          "duration", duration,
                                          "active", FALSE,
                                          NULL);
@@ -435,13 +439,11 @@ setup_steps (GrCookingView *view)
         g_ptr_array_set_size (view->steps, 0);
         for (i = 0; i < steps->len; i++) {
                 GrRecipeStep *step;
-                g_autofree char *title = NULL;
 
                 step = g_ptr_array_index (steps, i);
-                title = g_strdup_printf (_("Step %d/%d"), i + 1, steps->len);
 
                 g_ptr_array_add (view->steps,
-                                 step_data_new (title, step->text, step->timer, step->image, view));
+                                 step_data_new (i + 1, steps->len, step->text, step->timer, step->image, view));
         }
 }
 
