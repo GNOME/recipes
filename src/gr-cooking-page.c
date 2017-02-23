@@ -244,6 +244,12 @@ next_step (GrCookingPage *page)
         update_steppers (page);
 }
 
+static void
+forward (GrCookingPage *page)
+{
+        gr_cooking_view_forward (GR_COOKING_VIEW (page->cooking_view));
+        update_steppers (page);
+}
 
 static gboolean
 doubletap_timeout (gpointer data)
@@ -252,11 +258,11 @@ doubletap_timeout (gpointer data)
 
         if (page->keyval_seen) {
                 page->keyval_seen = 0;
-                next_step (page);
+                forward (page);
         }
         else if (page->button_seen) {
                 page->button_seen = 0;
-                next_step (page);
+                forward (page);
         }
 
         return G_SOURCE_REMOVE;
@@ -358,7 +364,7 @@ gr_cooking_page_handle_event (GrCookingPage *page,
                         return GDK_EVENT_STOP;
                 }
                 else if (e->keyval == GDK_KEY_space) {
-                        next_step (page);
+                        forward (page);
 
                         return GDK_EVENT_STOP;
                 }
