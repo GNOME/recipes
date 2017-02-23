@@ -148,11 +148,11 @@
         </child>
         <child type="overlay">
           <object class="GtkRevealer" id="overlay_revealer">
-            <property name="visible">1</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
             <property name="transition-type">crossfade</property>
             <property name="transition-duration">1000</property>
+            <signal name="notify::child-revealed" handler="on_child_revealed" swapped="yes"/>
             <child>
               <object class="GtkGrid" id="cooking_overlay">
                 <property name="visible">1</property>
