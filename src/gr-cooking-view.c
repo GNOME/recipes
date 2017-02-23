@@ -482,6 +482,17 @@ gr_cooking_view_set_step (GrCookingView *view,
 void
 gr_cooking_view_next_step (GrCookingView *view)
 {
+        StepData *s;
+
+        s = g_ptr_array_index (view->steps, view->step);
+
+        if (s->timer &&
+            !gr_timer_get_active (s->timer) &&
+             gr_timer_get_remaining (s->timer) > 0) {
+                gr_timer_start (s->timer);
+                return;
+        }
+
         set_step (view, view->step + 1);
 }
 
