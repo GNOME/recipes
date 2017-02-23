@@ -1367,7 +1367,6 @@ preview_visible_changed (GrEditPage *page)
         else {
                 g_autoptr(GArray) images = NULL;
                 g_autofree char *instructions = NULL;
-                int index = 0;
 
                 gtk_widget_set_sensitive (page->add_step_button, FALSE);
                 gtk_widget_set_sensitive (page->link_image_button, FALSE);
@@ -1379,7 +1378,7 @@ preview_visible_changed (GrEditPage *page)
                 g_object_get (page->images, "images", &images, NULL);
                 instructions = get_text_view_text (GTK_TEXT_VIEW (page->instructions_field));
 
-                gr_cooking_view_set_images (GR_COOKING_VIEW (page->cooking_view), images, index);
+                gr_cooking_view_set_images (GR_COOKING_VIEW (page->cooking_view), images);
                 gr_cooking_view_set_instructions (GR_COOKING_VIEW (page->cooking_view), instructions);
 
                 update_steppers (page);
