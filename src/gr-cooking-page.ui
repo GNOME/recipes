@@ -8,6 +8,16 @@
       <object class="GtkOverlay">
         <property name="visible">1</property>
         <child type="overlay">
+          <object class="GtkBox" id="mini_timer_box">
+            <property name="visible">1</property>
+            <property name="orientation">vertical</property>
+            <property name="halign">start</property>
+            <property name="valign">start</property>
+            <property name="margin">10</property>
+            <property name="spacing">10</property>
+          </object>
+        </child>
+        <child type="overlay">
           <object class="GtkRevealer" id="prev_revealer">
             <property name="visible">1</property>
             <property name="halign">start</property>

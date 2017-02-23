@@ -47,6 +47,7 @@ struct _GrCookingPage
         GtkWidget *done_button;
         GtkWidget *notification_revealer;
         GtkWidget *notification_label;
+        GtkWidget *mini_timer_box;
 
         GrRecipe *recipe;
 
@@ -86,6 +87,8 @@ gr_cooking_page_init (GrCookingPage *self)
 
         gtk_widget_add_events (GTK_WIDGET (self->event_box), GDK_POINTER_MOTION_MASK);
         gtk_widget_add_events (GTK_WIDGET (self->event_box), GDK_BUTTON_PRESS_MASK);
+
+        gr_cooking_view_set_timer_box (GR_COOKING_VIEW (self->cooking_view), self->mini_timer_box);
 }
 
 static int
@@ -453,6 +456,7 @@ gr_cooking_page_class_init (GrCookingPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrCookingPage, done_button);
         gtk_widget_class_bind_template_child (widget_class, GrCookingPage, notification_revealer);
         gtk_widget_class_bind_template_child (widget_class, GrCookingPage, notification_label);
+        gtk_widget_class_bind_template_child (widget_class, GrCookingPage, mini_timer_box);
 
         gtk_widget_class_bind_template_callback (widget_class, prev_step);
         gtk_widget_class_bind_template_callback (widget_class, next_step);
@@ -473,6 +477,8 @@ gr_cooking_page_set_recipe (GrCookingPage *page,
 
         g_object_get (recipe, "images", &images, NULL);
         instructions = gr_recipe_get_translated_instructions (recipe);
+
+        container_remove_all (GTK_CONTAINER (page->mini_timer_box));
 
         gr_cooking_view_set_images (GR_COOKING_VIEW (page->cooking_view), images, 0);
         gr_cooking_view_set_instructions (GR_COOKING_VIEW (page->cooking_view), instructions);

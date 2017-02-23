@@ -36,6 +36,7 @@
 #include "gr-timer.h"
 #include "gr-window.h"
 #include "gr-cooking-page.h"
+#include "gr-timer-widget.h"
 
 typedef struct
 {
@@ -43,6 +44,7 @@ typedef struct
         char *heading;
         char *label;
         GrTimer *timer;
+        GtkWidget *mini_timer;
         gulong handler;
         guint64 duration;
         int image;
@@ -108,6 +110,7 @@ struct _GrCookingView
         GtkWidget *cooking_stack;
         GtkWidget *cooking_timer;
         GtkWidget *text_box;
+        GtkWidget *timer_box;
 
         GArray *images;
         char *instructions;
@@ -283,6 +286,9 @@ step_timer_complete (GrTimer *timer, StepData *step)
         else
                 send_complete_notification (step);
 
+        if (step->mini_timer)
+                gtk_widget_destroy (step->mini_timer);
+
         play_complete_sound (step);
 }
 
@@ -434,11 +440,34 @@ setup_steps (GrCookingView *view)
         g_ptr_array_set_size (view->steps, 0);
         for (i = 0; i < steps->len; i++) {
                 GrRecipeStep *step;
+                StepData *data;
 
                 step = g_ptr_array_index (steps, i);
+                data = step_data_new (i + 1, steps->len, step->text, step->timer, step->image, view);
+                g_ptr_array_add (view->steps, data);
 
-                g_ptr_array_add (view->steps,
-                                 step_data_new (i + 1, steps->len, step->text, step->timer, step->image, view));
+                if (view->timer_box && data->timer) {
+                        GtkWidget *box;
+                        GtkWidget *tw;
+                        GtkWidget *label;
+
+                        box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+                        tw = g_object_new (GR_TYPE_TIMER_WIDGET,
+                                           "timer", data->timer,
+                                           "size", 32,
+                                           "visible", TRUE,
+                                           NULL);
+                        label = gtk_label_new (gr_timer_get_name (data->timer));
+                        gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+                        gtk_widget_show (label);
+                        gtk_style_context_add_class (gtk_widget_get_style_context (label), "cooking-heading");
+
+                        gtk_container_add (GTK_CONTAINER (box), tw);
+                        gtk_container_add (GTK_CONTAINER (box), label);
+                        gtk_container_add (GTK_CONTAINER (view->timer_box), box);
+                        g_signal_connect_swapped (data->timer, "notify::active", G_CALLBACK (gtk_widget_show), box);
+                        data->mini_timer = box;
+                }
         }
 }
 
@@ -504,4 +533,11 @@ void
 gr_cooking_view_prev_step (GrCookingView *view)
 {
         set_step (view, view->step - 1);
+}
+
+void
+gr_cooking_view_set_timer_box (GrCookingView *view,
+                               GtkWidget     *box)
+{
+        view->timer_box = box;
 }

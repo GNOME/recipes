@@ -43,6 +43,8 @@ void           gr_cooking_view_set_step      (GrCookingView *view,
                                               int            step);
 void           gr_cooking_view_next_step     (GrCookingView *view);
 void           gr_cooking_view_prev_step     (GrCookingView *view);
+void           gr_cooking_view_set_timer_box (GrCookingView *view,
+                                              GtkWidget     *box);
 
 G_END_DECLS
 
