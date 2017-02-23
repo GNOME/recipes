@@ -195,12 +195,19 @@ setup_step (GrCookingView *view)
 
         if (s->timer) {
                 gboolean active;
+                guint64 remaining;
 
                 gtk_widget_show (view->cooking_stack);
                 gtk_widget_set_halign (view->text_box, GTK_ALIGN_START);
-                g_object_get (s->timer, "active", &active, NULL);
+
+                active = gr_timer_get_active (s->timer);
+                remaining = gr_timer_get_remaining (s->timer);
                 g_object_set (view->cooking_timer, "timer", s->timer, NULL);
-                gtk_stack_set_visible_child_name (GTK_STACK (view->cooking_stack), "timer");
+
+                if (active || remaining > 0)
+                        gtk_stack_set_visible_child_name (GTK_STACK (view->cooking_stack), "timer");
+                else
+                        gtk_stack_set_visible_child_name (GTK_STACK (view->cooking_stack), "complete");
         }
         else if (0 <= s->image && s->image < view->images->len) {
                 GrImage *ri = NULL;

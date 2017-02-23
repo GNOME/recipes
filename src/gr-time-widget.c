@@ -33,7 +33,8 @@ struct _GrTimeWidget
 
         int size;
         GrTimer *timer;
-        gulong handler;
+        gulong remaining_handler;
+        gulong active_handler;
 
         GrTimerWidget *timer_widget;
         GtkWidget *time_remaining;
@@ -57,6 +58,28 @@ gr_time_widget_new (void)
 }
 
 static void
+update_buttons (GrTimeWidget *self)
+{
+        gboolean active;
+        guint64 duration;
+        guint64 remaining;
+
+        active = gr_timer_get_active (self->timer);
+        duration = gr_timer_get_duration (self->timer);
+        remaining = gr_timer_get_remaining (self->timer);
+
+        if (duration == remaining)
+                gtk_stack_set_visible_child_name (GTK_STACK (self->timer_button_stack), "start");
+        else {
+                gtk_stack_set_visible_child_name (GTK_STACK (self->timer_button_stack), "active");
+                if (active)
+                        gtk_stack_set_visible_child_name (GTK_STACK (self->pause_stack), "pause");
+                else
+                        gtk_stack_set_visible_child_name (GTK_STACK (self->pause_stack), "resume");
+        }
+}
+
+static void
 remaining_changed (GrTimeWidget *self)
 {
         guint64 remaining;
@@ -75,6 +98,8 @@ remaining_changed (GrTimeWidget *self)
         str = g_strdup_printf ("%02d∶%02d∶%02d", hours, minutes, seconds);
         gtk_label_set_label (GTK_LABEL (self->time_remaining), str);
         gtk_widget_queue_draw (GTK_WIDGET (self));
+
+        update_buttons (self);
 }
 
 static void
@@ -84,21 +109,21 @@ set_timer (GrTimeWidget *self,
         GrTimer *old = self->timer;
 
         if (g_set_object (&self->timer, timer)) {
-                gboolean active;
-
-                if (self->handler) {
-                        g_signal_handler_disconnect (old, self->handler);
-                        self->handler = 0;
+                if (self->remaining_handler) {
+                        g_signal_handler_disconnect (old, self->remaining_handler);
+                        self->remaining_handler = 0;
+                }
+                if (self->active_handler) {
+                        g_signal_handler_disconnect (old, self->active_handler);
+                        self->active_handler = 0;
                 }
                 if (timer) {
-                        self->handler = g_signal_connect_swapped (timer, "notify::remaining", G_CALLBACK (remaining_changed), self);
+                        self->remaining_handler = g_signal_connect_swapped (timer, "notify::remaining", G_CALLBACK (remaining_changed), self);
+                        self->active_handler = g_signal_connect_swapped (timer, "notify::active", G_CALLBACK (update_buttons), self);
                         remaining_changed (self);
                 }
                 g_object_set (self->timer_widget, "timer", timer, NULL);
                 g_object_notify (G_OBJECT (self), "timer");
-
-                g_object_get (timer, "active", &active, NULL);
-                gtk_stack_set_visible_child_name (GTK_STACK (self->timer_button_stack), active ? "active" : "start");
         }
 }
 
@@ -145,8 +170,10 @@ gr_time_widget_finalize (GObject *object)
 {
         GrTimeWidget *self = GR_TIME_WIDGET (object);
 
-        if (self->handler)
-                g_signal_handler_disconnect (self->timer, self->handler);
+        if (self->remaining_handler)
+                g_signal_handler_disconnect (self->timer, self->remaining_handler);
+        if (self->active_handler)
+                g_signal_handler_disconnect (self->timer, self->active_handler);
         g_clear_object (&self->timer);
 
         G_OBJECT_CLASS (gr_time_widget_parent_class)->finalize (object);
