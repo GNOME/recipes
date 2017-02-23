@@ -197,6 +197,7 @@ gr_timer_widget_draw (GtkWidget *widget,
         GrTimerWidget *timer = GR_TIMER_WIDGET (widget);
         GtkStyleContext *context;
         GdkRGBA color;
+        GdkRGBA pale;
         gint width, height;
         double xc, yc;
         double radius;
@@ -205,30 +206,33 @@ gr_timer_widget_draw (GtkWidget *widget,
         guint64 remaining;
         guint64 duration;
 
+        start = gr_timer_get_start_time (timer->timer);
+        remaining = gr_timer_get_remaining (timer->timer);
+        duration = gr_timer_get_duration (timer->timer);
+
         context = gtk_widget_get_style_context (widget);
         width = gtk_widget_get_allocated_width (widget);
         height = gtk_widget_get_allocated_height (widget);
         line_width = CLAMP (width / 16, 2, 8);
+        xc = width / 2;
+        yc = height / 2;
+        radius = width / 2 - line_width;
 
         gtk_render_background (context, cr, 0, 0, width, height);
         gtk_render_frame (context, cr, 0, 0, width, height);
 
         gtk_style_context_get_color (context, gtk_widget_get_state_flags (widget), &color);
-        gdk_cairo_set_source_rgba (cr, &color);
-        xc = width / 2;
-        yc = height / 2;
-        radius = width / 2 - line_width;
-
-        start = gr_timer_get_start_time (timer->timer);
-        remaining = gr_timer_get_remaining (timer->timer);
-        duration = gr_timer_get_duration (timer->timer);
+        pale = color;
+        pale.alpha = 0.1;
 
         cairo_set_line_width (cr, line_width);
         cairo_set_line_cap (cr, CAIRO_LINE_CAP_ROUND);
+
+        gdk_cairo_set_source_rgba (cr, &pale);
+
         cairo_arc (cr, xc, yc, radius, 0, 2 * M_PI);
         cairo_stroke (cr);
 
-        color.red = color.green = color.blue = 1.0;
         gdk_cairo_set_source_rgba (cr, &color);
 
         if (start != 0 && remaining != duration) {
@@ -276,5 +280,6 @@ gr_timer_widget_init (GrTimerWidget *self)
 {
         gtk_widget_set_has_window (GTK_WIDGET (self), FALSE);
         gtk_widget_set_can_focus (GTK_WIDGET (self), FALSE);
+        gtk_style_context_add_class (gtk_widget_get_style_context (GTK_WIDGET (self)), "timer");
         self->size = 32;
 }
