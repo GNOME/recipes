@@ -53,7 +53,6 @@ struct _GrCookingPage
 
         guint inhibit_cookie;
         guint keyval_seen;
-        guint button_seen;
 
         guint hide_timeout;
 };
@@ -260,10 +259,6 @@ doubletap_timeout (gpointer data)
                 page->keyval_seen = 0;
                 forward (page);
         }
-        else if (page->button_seen) {
-                page->button_seen = 0;
-                forward (page);
-        }
 
         return G_SOURCE_REMOVE;
 }
@@ -406,28 +401,6 @@ gr_cooking_page_handle_event (GrCookingPage *page,
                 }
                 else if (e->button == 9) {
                         next_step (page);
-
-                        return GDK_EVENT_STOP;
-                }
-                else if (e->button == GDK_BUTTON_SECONDARY) {
-                        stop_cooking (page);
-
-                        return GDK_EVENT_STOP;
-                }
-                else if (e->button == page->button_seen) {
-                        page->button_seen = 0;
-                        prev_step (page);
-
-                        return GDK_EVENT_STOP;
-                }
-                else {
-                        GtkSettings *settings;
-                        int time;
-
-                        settings = gtk_widget_get_settings (GTK_WIDGET (page));
-                        g_object_get (settings, "gtk-double-click-time", &time, NULL);
-                        page->button_seen = e->button;
-                        g_timeout_add (time, doubletap_timeout, page);
 
                         return GDK_EVENT_STOP;
                 }
