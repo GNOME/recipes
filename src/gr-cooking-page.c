@@ -147,6 +147,13 @@ update_steppers (GrCookingPage *page)
 }
 
 static void
+on_child_revealed (GrCookingPage *page)
+{
+        if (!gtk_revealer_get_reveal_child (GTK_REVEALER (page->overlay_revealer)))
+                    gtk_widget_hide (page->overlay_revealer);
+}
+
+static void
 hide_overlay (gpointer data,
               gboolean fade)
 {
@@ -164,6 +171,7 @@ show_overlay (gpointer data)
 {
         GrCookingPage *page = data;
 
+        gtk_widget_show (page->overlay_revealer);
         gtk_revealer_set_reveal_child (GTK_REVEALER (page->overlay_revealer), TRUE);
 
         return G_SOURCE_REMOVE;
@@ -451,6 +459,7 @@ gr_cooking_page_class_init (GrCookingPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, stop_cooking);
         gtk_widget_class_bind_template_callback (widget_class, motion_notify);
         gtk_widget_class_bind_template_callback (widget_class, close_notification);
+        gtk_widget_class_bind_template_callback (widget_class, on_child_revealed);
 }
 
 void
