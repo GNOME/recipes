@@ -1035,6 +1035,7 @@
   </object>
   <object class="GtkAdjustment" id="temperature_adjustment">
     <property name="upper">500</property>
+    <property name="lower">-50</property>
     <property name="step-increment">1</property>
     <property name="page-increment">10</property>
   </object>
