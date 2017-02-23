@@ -41,6 +41,7 @@
 typedef struct
 {
         GrCookingView *view;
+        int num;
         char *heading;
         char *label;
         GrTimer *timer;
@@ -77,12 +78,13 @@ step_data_new (int         num,
 
         d = g_new (StepData, 1);
         d->view = view;
-        d->heading = g_strdup_printf (_("Step %d/%d"), num, n_steps);
+        d->num = num;
+        d->heading = g_strdup_printf (_("Step %d/%d"), num + 1, n_steps);
         d->label = g_strdup (label);
         if (duration > 0) {
                 g_autofree char *name = NULL;
 
-                name = g_strdup_printf (_("Step %d"), num);
+                name = g_strdup_printf (_("Step %d"), num + 1);
                 d->timer = g_object_new (GR_TYPE_TIMER,
                                          "name", name,
                                          "duration", duration,
@@ -425,6 +427,12 @@ gr_cooking_view_class_init (GrCookingViewClass *klass)
 }
 
 static void
+go_to_step (StepData *data)
+{
+        set_step (data->view, data->num);
+}
+
+static void
 setup_steps (GrCookingView *view)
 {
         g_autoptr(GPtrArray) steps = NULL;
@@ -443,15 +451,23 @@ setup_steps (GrCookingView *view)
                 StepData *data;
 
                 step = g_ptr_array_index (steps, i);
-                data = step_data_new (i + 1, steps->len, step->text, step->timer, step->image, view);
+                data = step_data_new (i, steps->len, step->text, step->timer, step->image, view);
                 g_ptr_array_add (view->steps, data);
 
                 if (view->timer_box && data->timer) {
+                        GtkWidget *button;
                         GtkWidget *box;
                         GtkWidget *tw;
                         GtkWidget *label;
 
+                        button = gtk_button_new ();
+                        gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
+                        gtk_widget_set_focus_on_click (button, FALSE);
+                        gtk_style_context_add_class (gtk_widget_get_style_context (button), "osd");
+                        g_signal_connect_swapped (button, "clicked", G_CALLBACK (go_to_step), data);
+
                         box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+                        gtk_widget_show (box);
                         tw = g_object_new (GR_TYPE_TIMER_WIDGET,
                                            "timer", data->timer,
                                            "size", 32,
@@ -464,9 +480,11 @@ setup_steps (GrCookingView *view)
 
                         gtk_container_add (GTK_CONTAINER (box), tw);
                         gtk_container_add (GTK_CONTAINER (box), label);
-                        gtk_container_add (GTK_CONTAINER (view->timer_box), box);
-                        g_signal_connect_swapped (data->timer, "notify::active", G_CALLBACK (gtk_widget_show), box);
-                        data->mini_timer = box;
+                        gtk_container_add (GTK_CONTAINER (button), box);
+                        gtk_container_add (GTK_CONTAINER (view->timer_box), button);
+                        g_signal_connect_swapped (data->timer, "notify::active", G_CALLBACK (gtk_widget_show), button);
+
+                        data->mini_timer = button;
                 }
         }
 }
