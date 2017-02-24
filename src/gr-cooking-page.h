@@ -34,6 +34,8 @@ GrCookingPage *gr_cooking_page_new        (void);
 void           gr_cooking_page_set_recipe (GrCookingPage *page,
                                            GrRecipe      *recipe);
 void           gr_cooking_page_start_cooking (GrCookingPage *page);
+void           gr_cooking_page_timer_expired (GrCookingPage *page,
+                                              int            step);
 
 gboolean       gr_cooking_page_handle_event (GrCookingPage *page,
                                              GdkEvent      *event);

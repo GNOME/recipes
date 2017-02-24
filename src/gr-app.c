@@ -66,6 +66,25 @@ gr_app_activate (GApplication *app)
 }
 
 static void
+timer_expired (GSimpleAction *action,
+               GVariant      *parameter,
+               gpointer       application)
+{
+        GrApp *app = GR_APP (application);
+        GtkWindow *win;
+        const char *id;
+        int step;
+        g_autoptr(GrRecipe) recipe = NULL;
+
+        g_variant_get (parameter, "(&si)", &id, &step);
+
+        gr_app_activate (G_APPLICATION (app));
+        win = gtk_application_get_active_window (GTK_APPLICATION (app));
+        recipe = gr_recipe_store_get_recipe (app->store, id);
+        gr_window_timer_expired (GR_WINDOW (win), recipe, step);
+}
+
+static void
 chef_information_activated (GSimpleAction *action,
                             GVariant      *parameter,
                             gpointer       app)
@@ -143,6 +162,7 @@ search_activated (GSimpleAction *action,
 
 static GActionEntry app_entries[] =
 {
+        { "timer-expired", timer_expired, "(si)", NULL, NULL },
         { "chef-information", chef_information_activated, NULL, NULL, NULL },
         { "about", about_activated, NULL, NULL, NULL },
         { "import", import_activated, NULL, NULL, NULL },

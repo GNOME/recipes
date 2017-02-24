@@ -327,6 +327,16 @@ start_cooking (GrWindow *window)
         gr_cooking_page_start_cooking (GR_COOKING_PAGE (window->cooking_page));
 }
 
+void
+gr_window_timer_expired (GrWindow *window,
+                         GrRecipe *recipe,
+                         int       step)
+{
+        gr_cooking_page_set_recipe (GR_COOKING_PAGE (window->cooking_page), recipe);
+        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "cooking");
+        gr_cooking_page_timer_expired (GR_COOKING_PAGE (window->cooking_page), step);
+}
+
 static gboolean
 window_keypress_handler (GtkWidget *widget,
                          GdkEvent  *event,

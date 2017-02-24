@@ -39,6 +39,9 @@ void            gr_window_show_recipe                (GrWindow   *window,
                                                       GrRecipe   *recipe);
 void            gr_window_edit_recipe                (GrWindow   *window,
                                                       GrRecipe   *recipe);
+void            gr_window_timer_expired              (GrWindow   *window,
+                                                      GrRecipe   *recipe,
+                                                      int         step);
 void            gr_window_load_recipe                (GrWindow   *window,
                                                       GFile      *file);
 void            gr_window_show_search                (GrWindow   *window,

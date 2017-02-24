@@ -375,8 +375,8 @@ play_complete_sound (TimerData *td)
 }
 
 static void
-show_complete_notification (GrTimer   *timer,
-                            TimerData *td)
+show_in_app_notification (GrTimer   *timer,
+                          TimerData *td)
 {
         GrCookingView *view = td->view;
         GtkWidget *page;
@@ -392,27 +392,38 @@ show_complete_notification (GrTimer   *timer,
 }
 
 static void
+show_system_notification (GrTimer   *timer,
+                          TimerData *td)
+{
+        GApplication *app = g_application_get_default ();
+        g_autoptr(GNotification) notification = NULL;
+        g_autofree char *body = NULL;
+
+        notification = g_notification_new (_("Timer is up!"));
+
+        body = g_strdup_printf (_("The timer for '%s' has expired."), gr_timer_get_name (timer));
+        g_notification_set_body (notification, body);
+
+        g_notification_set_default_action_and_target (notification, "app.timer-expired",
+                                                      "(si)", td->id, td->num);
+
+        g_application_send_notification (app, "timer", notification);
+}
+
+static void
 timer_complete (GrTimer   *timer,
                 TimerData *td)
 {
         GrCookingView *view = td->view;
 
         if (td->use_system) {
-                GApplication *app = g_application_get_default ();
-                g_autoptr(GNotification) notification = NULL;
-                g_autofree char *body = NULL;
-
-                notification = g_notification_new (_("Timer is up!"));
-
-                body = g_strdup_printf (_("The timer for '%s' (recipe %s) has expired."), gr_timer_get_name (timer), td->id);
-                g_notification_set_body (notification, body);
-                g_application_send_notification (app, "timer", notification);
+                show_system_notification (timer, td);
         }
         else {
                 if (view->step == td->num)
                         gtk_stack_set_visible_child_name (GTK_STACK (view->cooking_stack), "complete");
                 else
-                        show_complete_notification (timer, td);
+                        show_in_app_notification (timer, td);
         }
 
         play_complete_sound (td);
@@ -599,6 +610,14 @@ gr_cooking_view_set_step (GrCookingView *view,
                           int            step)
 {
         set_step (view, step);
+}
+
+void
+gr_cooking_view_timer_expired (GrCookingView *view,
+                               int            step)
+{
+        set_step (view, step);
+        gtk_stack_set_visible_child_name (GTK_STACK (view->cooking_stack), "complete");
 }
 
 void

@@ -270,6 +270,14 @@ gr_cooking_page_start_cooking (GrCookingPage *page)
         set_cooking (page, TRUE);
 }
 
+void
+gr_cooking_page_timer_expired (GrCookingPage *page,
+                               int            step)
+{
+        set_cooking (page, TRUE);
+        gr_cooking_view_timer_expired (GR_COOKING_VIEW (page->cooking_view), step);
+}
+
 static void
 show_buttons (GrCookingPage *page)
 {
