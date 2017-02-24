@@ -26,22 +26,6 @@
 #include <libgd/gd.h>
 
 #include "gr-app.h"
-#include "gr-cuisine-page.h"
-#include "gr-cuisines-page.h"
-#include "gr-details-page.h"
-#include "gr-edit-page.h"
-#include "gr-list-page.h"
-#include "gr-query-editor.h"
-#include "gr-recipes-page.h"
-#include "gr-search-page.h"
-#include "gr-shopping-page.h"
-#include "gr-cooking-view.h"
-#include "gr-cooking-page.h"
-#include "gr-timer-widget.h"
-#include "gr-time-widget.h"
-#include "gr-image-viewer.h"
-#include "gr-image-page.h"
-
 
 int
 main (int argc, char *argv[])
@@ -50,21 +34,6 @@ main (int argc, char *argv[])
         int status;
 
         gd_ensure_types ();
-        g_type_ensure (GR_TYPE_COOKING_VIEW);
-        g_type_ensure (GR_TYPE_COOKING_PAGE);
-        g_type_ensure (GR_TYPE_CUISINE_PAGE);
-        g_type_ensure (GR_TYPE_CUISINES_PAGE);
-        g_type_ensure (GR_TYPE_DETAILS_PAGE);
-        g_type_ensure (GR_TYPE_EDIT_PAGE);
-        g_type_ensure (GR_TYPE_IMAGE_VIEWER);
-        g_type_ensure (GR_TYPE_IMAGE_PAGE);
-        g_type_ensure (GR_TYPE_LIST_PAGE);
-        g_type_ensure (GR_TYPE_QUERY_EDITOR);
-        g_type_ensure (GR_TYPE_RECIPES_PAGE);
-        g_type_ensure (GR_TYPE_SEARCH_PAGE);
-        g_type_ensure (GR_TYPE_SHOPPING_PAGE);
-        g_type_ensure (GR_TYPE_TIMER_WIDGET);
-        g_type_ensure (GR_TYPE_TIME_WIDGET);
 
         setlocale (LC_ALL, "");
         bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);

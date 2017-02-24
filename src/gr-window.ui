@@ -157,7 +157,7 @@
         <property name="visible">1</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GrQueryEditor" id="search_bar">
+          <object class="GrQueryEditor" type-func="gr_query_editor_get_type" id="search_bar">
             <property name="visible">1</property>
             <property name="search-mode-enabled" bind-source="search_button" bind-property="active" bind-flags="bidirectional"/>
             <signal name="changed" handler="search_changed" swapped="yes"/>
