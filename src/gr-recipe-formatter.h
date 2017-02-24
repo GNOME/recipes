@@ -31,6 +31,7 @@ typedef struct {
         char *text;
         int image;
         guint64 timer;
+        char *title;
 } GrRecipeStep;
 
 GPtrArray *gr_recipe_parse_instructions (const char *instructions,

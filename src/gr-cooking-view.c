@@ -142,6 +142,7 @@ step_data_new (int         num,
                int         n_steps,
                const char *text,
                guint64     duration,
+               const char *title,
                int         image,
                GrCookingView *view)
 {
@@ -158,7 +159,7 @@ step_data_new (int         num,
 
                 name = g_strdup_printf (_("Step %d"), num + 1);
                 d->timer = g_object_new (GR_TYPE_TIMER,
-                                         "name", name,
+                                         "name", title ? title : name,
                                          "duration", duration,
                                          "active", FALSE,
                                          NULL);
@@ -194,7 +195,7 @@ step_data_new (int         num,
                                            "size", 32,
                                            "visible", TRUE,
                                            NULL);
-                        label = gtk_label_new (name);
+                        label = gtk_label_new (gr_timer_get_name (d->timer));
                         gtk_label_set_xalign (GTK_LABEL (label), 0.0);
                         gtk_widget_show (label);
                         gtk_style_context_add_class (gtk_widget_get_style_context (label), "cooking-heading");
@@ -571,7 +572,7 @@ setup_steps (GrCookingView *view)
                 StepData *data;
 
                 step = g_ptr_array_index (steps, i);
-                data = step_data_new (i, steps->len, step->text, step->timer, step->image, view);
+                data = step_data_new (i, steps->len, step->text, step->timer, step->title, step->image, view);
                 g_ptr_array_add (view->steps, data);
 
         }

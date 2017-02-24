@@ -1022,14 +1022,28 @@
     <property name="relative-to">timer_button</property>
     <property name="constrain-to">none</property>
     <child>
-      <object class="GtkSpinButton" id="timer_spin">
+      <object class="GtkBox">
         <property name="visible">1</property>
+        <property name="orientation">vertical</property>
         <property name="margin">12</property>
-        <property name="adjustment">time_adjustment</property>
-        <property name="width-chars">8</property>
-        <signal name="input" handler="time_spin_input"/>
-        <signal name="output" handler="time_spin_output"/>
-        <signal name="activate" handler="time_spin_activate"/>
+        <child>
+          <object class="GtkSpinButton" id="timer_spin">
+            <property name="visible">1</property>
+            <property name="adjustment">time_adjustment</property>
+            <property name="width-chars">8</property>
+            <signal name="input" handler="time_spin_input"/>
+            <signal name="output" handler="time_spin_output"/>
+            <signal name="activate" handler="time_spin_activate"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkEntry" id="timer_title">
+            <property name="visible">1</property>
+            <property name="placeholder-text" translatable="yes">Title…</property>
+            <property name="width-chars">12</property>
+            <signal name="activate" handler="time_spin_activate"/>
+          </object>
+        </child>
       </object>
     </child>
   </object>
@@ -1094,7 +1108,7 @@
         <property name="visible">1</property>
         <property name="margin">12</property>
         <property name="margin-top">0</property>
-        <property name="column-homogeneous">1</property>
+        <property name="column-spacing">20</property>
         <child>
           <object class="GtkLabel">
             <property name="visible">1</property>
@@ -1150,7 +1164,7 @@
           <object class="GtkLabel">
             <property name="visible">1</property>
             <property name="xalign">0</property>
-            <property name="label">[timer:00:30]</property>
+            <property name="label">[timer:00:30]  [timer:01:15,Preheat oven]</property>
           </object>
           <packing>
             <property name="left-attach">1</property>

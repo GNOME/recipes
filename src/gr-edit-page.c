@@ -118,6 +118,7 @@ struct _GrEditPage
         GtkWidget *temperature_spin;
         GtkWidget *celsius_button;
         GtkWidget *timer_spin;
+        GtkWidget *timer_title;
         GtkWidget *preview_stack;
 
         GrRecipeSearch *search;
@@ -1174,15 +1175,22 @@ time_spin_activate (GtkEntry *entry, GrEditPage *self)
         double minutes;
         double seconds;
         g_autofree char *text = NULL;
+        const char *title;
 
-        gtk_spin_button_update (GTK_SPIN_BUTTON (entry));
+        gtk_spin_button_update (GTK_SPIN_BUTTON (self->timer_spin));
 
-        adjustment = gtk_spin_button_get_adjustment (GTK_SPIN_BUTTON (entry));
+        adjustment = gtk_spin_button_get_adjustment (GTK_SPIN_BUTTON (self->timer_spin));
         hours = gtk_adjustment_get_value (adjustment) / 3600.0;
         minutes = (hours - floor (hours)) * 60.0;
         seconds = (minutes - floor (minutes)) * 60.0;
 
-        text = g_strdup_printf ("[timer:%02.0f:%02.0f:%02.0f]", floor (hours), floor (minutes), floor (seconds + 0.5));
+        title = gtk_entry_get_text (GTK_ENTRY (self->timer_title));
+
+        if (title && title[0])
+                text = g_strdup_printf ("[timer:%02.0f:%02.0f:%02.0f,%s]", floor (hours), floor (minutes), floor (seconds + 0.5), title);
+        else
+                text = g_strdup_printf ("[timer:%02.0f:%02.0f:%02.0f]", floor (hours), floor (minutes), floor (seconds + 0.5));
+
         add_tag_to_step (self, text);
 
         gtk_popover_popdown (GTK_POPOVER (self->timer_popover));
@@ -1464,6 +1472,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, temperature_spin);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, celsius_button);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, timer_spin);
+        gtk_widget_class_bind_template_child (widget_class, GrEditPage, timer_title);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, preview_stack);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, cooking_view);
 

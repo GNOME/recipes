@@ -566,6 +566,8 @@ process_instructions (const char *instructions)
                         str = g_strdup_printf ("%02d∶%02d∶%02d", hours, minutes, seconds);
                         g_string_append (s, "<a href=\"timer\" title=\"");
                         g_string_append_printf (s, _("Timer: %s"), str);
+                        if (step->title)
+                                g_string_append_printf (s, "\n%s", step->title);
                         g_string_append (s, "\">⏰</a>");
                 }
                 else if (step->image != -1) {

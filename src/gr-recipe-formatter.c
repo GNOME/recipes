@@ -100,7 +100,8 @@ gr_recipe_format (GrRecipe *recipe)
 static GrRecipeStep *
 recipe_step_new (const char *text,
                  int         image,
-                 guint64     timer)
+                 guint64     timer,
+                 const char *title)
 {
         GrRecipeStep *step;
 
@@ -108,6 +109,7 @@ recipe_step_new (const char *text,
         step->text = g_strdup (text);
         step->image = image;
         step->timer = timer;
+        step->title = g_strdup (title);
 
         return step;
 }
@@ -117,6 +119,7 @@ recipe_step_free (gpointer data)
 {
         GrRecipeStep *d = data;
         g_free (d->text);
+        g_free (d->title);
         g_free (d);
 }
 
@@ -136,6 +139,7 @@ gr_recipe_parse_instructions (const char *instructions,
                 const char *p, *q;
                 int image = -1;
                 guint64 timer = 0;
+                g_autofree char *title = NULL;
                 g_autofree char *step = NULL;
 
                 step = g_strdup (steps[i]);
@@ -186,12 +190,18 @@ gr_recipe_parse_instructions (const char *instructions,
                 p = strstr (step, "[timer:");
                 if (p) {
                         g_autofree char *s = NULL;
+                        char *r;
                         g_auto(GStrv) strv = NULL;
                         g_autofree char *prefix = NULL;
                         char *tmp;
 
                         q = strstr (p, "]");
                         s = strndup (p + strlen ("[timer:"), q - (p + strlen ("[timer:")));
+                        r = strchr (s, ',');
+                        if (r) {
+                                title = g_strdup (r + 1);
+                                *r = '\0';
+                        }
                         strv = g_strsplit (s, ":", -1);
                         if (g_strv_length (strv) == 2) {
                                 timer = G_TIME_SPAN_MINUTE * atoi (strv[0]) +
@@ -213,7 +223,7 @@ gr_recipe_parse_instructions (const char *instructions,
                         step = tmp;
                 }
 
-                g_ptr_array_add (step_array, recipe_step_new (step, image, timer));
+                g_ptr_array_add (step_array, recipe_step_new (step, image, timer, title));
         }
 
         return step_array;
