@@ -38,70 +38,6 @@
 #include "gr-cooking-page.h"
 #include "gr-timer-widget.h"
 
-typedef struct
-{
-        GrCookingView *view;
-        int num;
-        char *heading;
-        char *label;
-        GrTimer *timer;
-        GtkWidget *mini_timer;
-        gulong handler;
-        guint64 duration;
-        int image;
-} StepData;
-
-static void
-step_data_free (gpointer data)
-{
-        StepData *d = data;
-
-        if (d->timer)
-                g_signal_handler_disconnect (d->timer, d->handler);
-        g_clear_object (&d->timer);
-        g_free (d->heading);
-        g_free (d->label);
-        g_free (d);
-}
-
-static void step_timer_complete (GrTimer *timer, StepData *step);
-
-static StepData *
-step_data_new (int         num,
-               int         n_steps,
-               const char *label,
-               guint64     duration,
-               int         image,
-               gpointer    view)
-{
-        StepData *d;
-
-        d = g_new (StepData, 1);
-        d->view = view;
-        d->num = num;
-        d->heading = g_strdup_printf (_("Step %d/%d"), num + 1, n_steps);
-        d->label = g_strdup (label);
-        if (duration > 0) {
-                g_autofree char *name = NULL;
-
-                name = g_strdup_printf (_("Step %d"), num + 1);
-                d->timer = g_object_new (GR_TYPE_TIMER,
-                                         "name", name,
-                                         "duration", duration,
-                                         "active", FALSE,
-                                         NULL);
-                d->handler = g_signal_connect (d->timer, "complete", G_CALLBACK (step_timer_complete), d);
-        }
-        else {
-                d->timer = NULL;
-                d->handler = 0;
-        }
-        d->duration = duration;
-        d->image = image;
-
-        return d;
-}
-
 struct _GrCookingView
 {
         GtkBox parent_instance;
@@ -115,6 +51,7 @@ struct _GrCookingView
         GtkWidget *timer_box;
 
         GArray *images;
+        char *id;
         char *instructions;
 
         GPtrArray *steps;
@@ -125,7 +62,161 @@ struct _GrCookingView
 #ifdef ENABLE_CANBERRA
         ca_context *c;
 #endif
+
+        GList *timers;
 };
+
+typedef struct
+{
+        GrCookingView *view;
+        int num;
+        char *heading;
+        char *label;
+        GrTimer *timer;
+        gulong handler;
+        guint64 duration;
+        int image;
+        GtkWidget *mini_timer;
+} StepData;
+
+static void
+step_data_free (gpointer data)
+{
+        StepData *d = data;
+
+        if (d->handler)
+                g_signal_handler_disconnect (d->timer, d->handler);
+
+        g_clear_object (&d->timer);
+        g_free (d->heading);
+        g_free (d->label);
+        g_free (d);
+}
+
+typedef struct {
+        GrTimer *timer;
+        GrCookingView *view;
+        gboolean use_system;
+        gulong handler;
+        char *id;
+        int num;
+} TimerData;
+
+static void
+timer_data_free (gpointer data)
+{
+        TimerData *td = data;
+
+        if (td->handler)
+                g_signal_handler_disconnect (td->timer, td->handler);
+        g_free (td->id);
+
+        g_free (td);
+}
+
+static void timer_complete (GrTimer *timer, TimerData *data);
+static void go_to_step (StepData *data);
+
+static void
+timer_active (GrTimer    *timer,
+              GParamSpec *pspec,
+              StepData   *d)
+{
+        TimerData *td = g_object_get_data (G_OBJECT (timer), "timer-data");
+        GrCookingView *view = td->view;
+
+        if (d->mini_timer)
+                gtk_widget_show (d->mini_timer);
+
+        view->timers = g_list_prepend (view->timers, g_object_ref (timer));
+
+        g_signal_handler_disconnect (timer, d->handler);
+        d->handler = 0;
+
+        td->handler = g_signal_connect (d->timer, "complete",
+                                        G_CALLBACK (timer_complete), td);
+}
+
+static StepData *
+step_data_new (int         num,
+               int         n_steps,
+               const char *text,
+               guint64     duration,
+               int         image,
+               GrCookingView *view)
+{
+        StepData *d;
+
+        d = g_new0 (StepData, 1);
+        d->view = view;
+        d->num = num;
+        d->heading = g_strdup_printf (_("Step %d/%d"), num + 1, n_steps);
+        d->label = g_strdup (text);
+        if (duration > 0) {
+                g_autofree char *name = NULL;
+                TimerData *td;
+
+                name = g_strdup_printf (_("Step %d"), num + 1);
+                d->timer = g_object_new (GR_TYPE_TIMER,
+                                         "name", name,
+                                         "duration", duration,
+                                         "active", FALSE,
+                                         NULL);
+
+                td = g_new0 (TimerData, 1);
+                td->timer = d->timer;
+                td->view = view;
+                td->use_system = FALSE;
+                td->id = g_strdup (view->id);
+                td->num = num;
+
+                g_object_set_data_full (G_OBJECT (d->timer), "timer-data", td, timer_data_free);
+
+                d->handler = g_signal_connect (d->timer, "notify::active",
+                                               G_CALLBACK (timer_active), d);
+
+                if (view->timer_box) {
+                        GtkWidget *button;
+                        GtkWidget *box;
+                        GtkWidget *tw;
+                        GtkWidget *label;
+
+                        button = gtk_button_new ();
+                        gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
+                        gtk_widget_set_focus_on_click (button, FALSE);
+                        gtk_style_context_add_class (gtk_widget_get_style_context (button), "osd");
+                        g_signal_connect_swapped (button, "clicked", G_CALLBACK (go_to_step), d);
+
+                        box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+                        gtk_widget_show (box);
+                        tw = g_object_new (GR_TYPE_TIMER_WIDGET,
+                                           "timer", d->timer,
+                                           "size", 32,
+                                           "visible", TRUE,
+                                           NULL);
+                        label = gtk_label_new (name);
+                        gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+                        gtk_widget_show (label);
+                        gtk_style_context_add_class (gtk_widget_get_style_context (label), "cooking-heading");
+
+                        gtk_container_add (GTK_CONTAINER (box), tw);
+                        gtk_container_add (GTK_CONTAINER (box), label);
+                        gtk_container_add (GTK_CONTAINER (button), box);
+                        gtk_container_add (GTK_CONTAINER (view->timer_box), button);
+
+                        g_signal_connect_object (d->timer, "complete",
+                                                 G_CALLBACK (gtk_widget_destroy), button,
+                                                 G_CONNECT_SWAPPED);
+
+                        d->mini_timer = button;
+                }
+        }
+
+        d->duration = duration;
+        d->image = image;
+
+        return d;
+}
 
 
 G_DEFINE_TYPE (GrCookingView, gr_cooking_view, GTK_TYPE_BOX)
@@ -154,6 +245,8 @@ gr_cooking_view_finalize (GObject *object)
 #ifdef ENABLE_CANBERRA
         ca_context_destroy (self->c);
 #endif
+
+        g_list_free_full (self->timers, g_object_unref);
 
         G_OBJECT_CLASS (gr_cooking_view_parent_class)->finalize (object);
 }
@@ -240,10 +333,31 @@ setup_step (GrCookingView *view)
 }
 
 static void
-play_complete_sound (StepData *step)
+set_step (GrCookingView *view,
+          int            step)
+{
+        if (step < 0)
+                step = 0;
+        else if (step >= view->steps->len)
+                step = view->steps->len - 1;
+
+        if (view->step != step) {
+                view->step = step;
+                setup_step (view);
+        }
+}
+
+static void
+go_to_step (StepData *data)
+{
+        set_step (data->view, data->num);
+}
+
+static void
+play_complete_sound (TimerData *td)
 {
 #ifdef ENABLE_CANBERRA
-        GrCookingView *view = step->view;
+        GrCookingView *view = td->view;
         GtkWidget *page;
 
         page = gtk_widget_get_ancestor (GTK_WIDGET (view), GR_TYPE_COOKING_PAGE);
@@ -261,9 +375,10 @@ play_complete_sound (StepData *step)
 }
 
 static void
-send_complete_notification (StepData *step)
+show_complete_notification (GrTimer   *timer,
+                            TimerData *td)
 {
-        GrCookingView *view = step->view;
+        GrCookingView *view = td->view;
         GtkWidget *page;
 
         page = gtk_widget_get_ancestor (GTK_WIDGET (view), GR_TYPE_COOKING_PAGE);
@@ -271,27 +386,42 @@ send_complete_notification (StepData *step)
                 g_autofree char *text = NULL;
 
                 text = g_strdup_printf (_("Timer for “%s” has expired."),
-                                        gr_timer_get_name (step->timer));
-                gr_cooking_page_show_notification (GR_COOKING_PAGE (page), text);
+                                        gr_timer_get_name (timer));
+                gr_cooking_page_show_notification (GR_COOKING_PAGE (page), text, td->num);
         }
 }
 
 static void
-step_timer_complete (GrTimer *timer, StepData *step)
+timer_complete (GrTimer   *timer,
+                TimerData *td)
 {
-        GrCookingView *view = step->view;
-        StepData *current;
+        GrCookingView *view = td->view;
 
-        current = g_ptr_array_index (view->steps, view->step);
-        if (step == current)
-                gtk_stack_set_visible_child_name (GTK_STACK (view->cooking_stack), "complete");
-        else
-                send_complete_notification (step);
+        if (td->use_system) {
+                GApplication *app = g_application_get_default ();
+                g_autoptr(GNotification) notification = NULL;
+                g_autofree char *body = NULL;
 
-        if (step->mini_timer)
-                gtk_widget_destroy (step->mini_timer);
+                notification = g_notification_new (_("Timer is up!"));
 
-        play_complete_sound (step);
+                body = g_strdup_printf (_("The timer for '%s' (recipe %s) has expired."), gr_timer_get_name (timer), td->id);
+                g_notification_set_body (notification, body);
+                g_application_send_notification (app, "timer", notification);
+        }
+        else {
+                if (view->step == td->num)
+                        gtk_stack_set_visible_child_name (GTK_STACK (view->cooking_stack), "complete");
+                else
+                        show_complete_notification (timer, td);
+        }
+
+        play_complete_sound (td);
+
+        g_signal_handler_disconnect (timer, td->handler);
+        td->handler = 0;
+
+        view->timers = g_list_remove (view->timers, timer);
+        g_object_unref (timer);
 }
 
 static void
@@ -326,21 +456,6 @@ step_timer_reset (GrCookingView *view)
         s = g_ptr_array_index (view->steps, view->step);
 
         gr_timer_reset (s->timer);
-}
-
-static void
-set_step (GrCookingView *view,
-          int            step)
-{
-        if (step < 0)
-                step = 0;
-        else if (step >= view->steps->len)
-                step = view->steps->len - 1;
-
-        if (view->step != step) {
-                view->step = step;
-                setup_step (view);
-        }
 }
 
 static void
@@ -427,12 +542,6 @@ gr_cooking_view_class_init (GrCookingViewClass *klass)
 }
 
 static void
-go_to_step (StepData *data)
-{
-        set_step (data->view, data->num);
-}
-
-static void
 setup_steps (GrCookingView *view)
 {
         g_autoptr(GPtrArray) steps = NULL;
@@ -454,46 +563,17 @@ setup_steps (GrCookingView *view)
                 data = step_data_new (i, steps->len, step->text, step->timer, step->image, view);
                 g_ptr_array_add (view->steps, data);
 
-                if (view->timer_box && data->timer) {
-                        GtkWidget *button;
-                        GtkWidget *box;
-                        GtkWidget *tw;
-                        GtkWidget *label;
-
-                        button = gtk_button_new ();
-                        gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
-                        gtk_widget_set_focus_on_click (button, FALSE);
-                        gtk_style_context_add_class (gtk_widget_get_style_context (button), "osd");
-                        g_signal_connect_swapped (button, "clicked", G_CALLBACK (go_to_step), data);
-
-                        box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-                        gtk_widget_show (box);
-                        tw = g_object_new (GR_TYPE_TIMER_WIDGET,
-                                           "timer", data->timer,
-                                           "size", 32,
-                                           "visible", TRUE,
-                                           NULL);
-                        label = gtk_label_new (gr_timer_get_name (data->timer));
-                        gtk_label_set_xalign (GTK_LABEL (label), 0.0);
-                        gtk_widget_show (label);
-                        gtk_style_context_add_class (gtk_widget_get_style_context (label), "cooking-heading");
-
-                        gtk_container_add (GTK_CONTAINER (box), tw);
-                        gtk_container_add (GTK_CONTAINER (box), label);
-                        gtk_container_add (GTK_CONTAINER (button), box);
-                        gtk_container_add (GTK_CONTAINER (view->timer_box), button);
-                        g_signal_connect_swapped (data->timer, "notify::active", G_CALLBACK (gtk_widget_show), button);
-
-                        data->mini_timer = button;
-                }
         }
 }
 
 void
 gr_cooking_view_set_data (GrCookingView *view,
+                          const char    *id,
                           const char    *instructions,
                           GArray        *images)
 {
+        g_free (view->id);
+        view->id = g_strdup (id);
         g_free (view->instructions);
         view->instructions = g_strdup (instructions);
         g_clear_pointer (&view->images, g_array_unref);
@@ -530,6 +610,8 @@ gr_cooking_view_start (GrCookingView *view)
 void
 gr_cooking_view_stop (GrCookingView *view)
 {
+        GList *l;
+
         g_object_set (view->cooking_timer, "timer", NULL, NULL);
         if (view->timer_box)
                 container_remove_all (GTK_CONTAINER (view->timer_box));
@@ -537,6 +619,12 @@ gr_cooking_view_stop (GrCookingView *view)
         g_clear_pointer (&view->instructions, g_free);
         g_clear_pointer (&view->images, g_array_unref);
         g_ptr_array_set_size (view->steps, 0);
+
+        for (l = view->timers; l; l = l->next) {
+                GrTimer *timer = l->data;
+                TimerData *td = g_object_get_data (G_OBJECT (timer), "timer-data");
+                td->use_system = TRUE;
+        }
 }
 
 void

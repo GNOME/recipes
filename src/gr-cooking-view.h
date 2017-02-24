@@ -32,6 +32,7 @@ G_DECLARE_FINAL_TYPE (GrCookingView, gr_cooking_view, GR, COOKING_VIEW, GtkBox)
 
 GrCookingView *gr_cooking_view_new           (void);
 void           gr_cooking_view_set_data      (GrCookingView *view,
+                                              const char    *recipe_id,
                                               const char    *instructions,
                                               GArray        *images);
 int            gr_cooking_view_get_n_steps   (GrCookingView *view);

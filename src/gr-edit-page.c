@@ -1379,7 +1379,7 @@ preview_visible_changed (GrEditPage *page)
                 g_object_get (page->images, "images", &images, NULL);
                 instructions = get_text_view_text (GTK_TEXT_VIEW (page->instructions_field));
 
-                gr_cooking_view_set_data (GR_COOKING_VIEW (page->cooking_view), instructions, images);
+                gr_cooking_view_set_data (GR_COOKING_VIEW (page->cooking_view), NULL, instructions, images);
                 gr_cooking_view_start (GR_COOKING_VIEW (page->cooking_view));
 
                 update_steppers (page);

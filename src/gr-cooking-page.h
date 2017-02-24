@@ -39,7 +39,8 @@ gboolean       gr_cooking_page_handle_event (GrCookingPage *page,
                                              GdkEvent      *event);
 
 void           gr_cooking_page_show_notification (GrCookingPage *page,
-                                                  const char    *text);
+                                                  const char    *text,
+                                                  int            step);
 
 G_END_DECLS
 

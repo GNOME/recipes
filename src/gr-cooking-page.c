@@ -48,6 +48,7 @@ struct _GrCookingPage
         GtkWidget *notification_revealer;
         GtkWidget *notification_label;
         GtkWidget *mini_timer_box;
+        int notification_step;
 
         GrRecipe *recipe;
 
@@ -411,16 +412,25 @@ gr_cooking_page_handle_event (GrCookingPage *page,
 
 void
 gr_cooking_page_show_notification (GrCookingPage *page,
-                                   const char    *text)
+                                   const char    *text,
+                                   int            step)
 {
         gtk_label_set_label (GTK_LABEL (page->notification_label), text);
         gtk_revealer_set_reveal_child (GTK_REVEALER (page->notification_revealer), TRUE);
+        page->notification_step = step;
 }
 
 static void
 close_notification (GrCookingPage *page)
 {
         gtk_revealer_set_reveal_child (GTK_REVEALER (page->notification_revealer), FALSE);
+}
+
+static void
+goto_timer (GrCookingPage *page)
+{
+        gtk_revealer_set_reveal_child (GTK_REVEALER (page->notification_revealer), FALSE);
+        gr_cooking_view_set_step (GR_COOKING_VIEW (page->cooking_view), page->notification_step);
 }
 
 static void
@@ -453,6 +463,7 @@ gr_cooking_page_class_init (GrCookingPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, motion_notify);
         gtk_widget_class_bind_template_callback (widget_class, close_notification);
         gtk_widget_class_bind_template_callback (widget_class, on_child_revealed);
+        gtk_widget_class_bind_template_callback (widget_class, goto_timer);
 }
 
 void
@@ -460,14 +471,16 @@ gr_cooking_page_set_recipe (GrCookingPage *page,
                             GrRecipe      *recipe)
 {
         g_autoptr(GArray) images = NULL;
-        const char *instructions = NULL;
+        const char *id;
+        const char *instructions;
 
         g_set_object (&page->recipe, recipe);
 
         g_object_get (recipe, "images", &images, NULL);
+        id = gr_recipe_get_id (recipe);
         instructions = gr_recipe_get_translated_instructions (recipe);
 
         container_remove_all (GTK_CONTAINER (page->mini_timer_box));
 
-        gr_cooking_view_set_data (GR_COOKING_VIEW (page->cooking_view), instructions, images);
+        gr_cooking_view_set_data (GR_COOKING_VIEW (page->cooking_view), id, instructions, images);
 }
