@@ -205,7 +205,7 @@ set_cooking (GrCookingPage *page,
                                                                         _("Cooking"));
                 }
 
-                gr_cooking_view_set_step (GR_COOKING_VIEW (page->cooking_view), 0);
+                gr_cooking_view_start (GR_COOKING_VIEW (page->cooking_view));
                 update_steppers (page);
 
                 gr_window_set_fullscreen (GR_WINDOW (window), TRUE);
@@ -217,7 +217,7 @@ set_cooking (GrCookingPage *page,
                 }
 
                 gr_window_show_recipe (GR_WINDOW (window), page->recipe);
-                update_steppers (page);
+                gr_cooking_view_stop (GR_COOKING_VIEW (page->cooking_view));
 
                 gr_window_set_fullscreen (GR_WINDOW (window), FALSE);
         }
