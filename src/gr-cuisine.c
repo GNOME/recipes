@@ -35,6 +35,7 @@ static const char *names[] = {
         "greek",
         "mediterranean",
         "mexican",
+        "nordic",
         "turkish",
         NULL
 };
@@ -48,6 +49,7 @@ static const char *titles[] = {
         N_("Greek"),
         N_("Mediterranean"),
         N_("Mexican"),
+        N_("Nordic"),
         N_("Turkish"),
 };
 
@@ -60,6 +62,7 @@ static const char *full_titles[] = {
         N_("Greek Cuisine"),
         N_("Mediterranean Cuisine"),
         N_("Mexican Cuisine"),
+        N_("Nordic Cuisine"),
         N_("Turkish Cuisine"),
 };
 
@@ -109,6 +112,7 @@ static const char *descriptions[] = {
            "large number of other foods, the most important of which were meats from domesticated "
            "animals (beef, pork, chicken, goat, and sheep), dairy products (especially cheese), and "
            "various herbs and spices."),
+        N_("Cooking in Denmark has always been inspired by foreign and continental practises and the use of imported tropical spices like cinnamon, cardamom, nutmeg and black pepper can be traced to the Danish cuisine of the Middle Ages and some even to the Vikings."),
         N_("You can find a great variety of mouth watering dishes in Turkish cuisine, which is mostly "
            "the heritage of Ottoman cuisine. It is the mixture and refinement of Central Asian, Middle "
            "Eastern and Balkan cuisines. Therefore it is impossible to fit Turkish cuisine into a short "

@@ -155,6 +155,7 @@ dist_images_DATA = \
 	images/indian.jpg		\
 	images/italian.png		\
 	images/mediterranean.png	\
+	images/nordic.jpg		\
 	images/turkish.png		\
 	images/big-american.png		\
 	images/big-chinese.png		\
@@ -162,6 +163,7 @@ dist_images_DATA = \
 	images/big-indian.jpg		\
 	images/big-italian.png		\
 	images/big-mediterranean.png	\
+	images/big-nordic.jpg		\
 	images/big-turkish.png
 
 dist_sounds_DATA = \
