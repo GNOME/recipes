@@ -92,7 +92,6 @@ set_timer (GrTimerWidget *self,
         if (self->timer) {
                 g_signal_handler_disconnect (self->timer, self->handler_id);
                 self->handler_id = 0;
-                g_clear_object (&self->timer);
         }
         g_set_object (&self->timer, timer);
         if (self->timer) {
