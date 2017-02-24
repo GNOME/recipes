@@ -490,25 +490,16 @@ setup_steps (GrCookingView *view)
 }
 
 void
-gr_cooking_view_set_images (GrCookingView *view,
-                            GArray        *images)
+gr_cooking_view_set_data (GrCookingView *view,
+                          const char    *instructions,
+                          GArray        *images)
 {
+        g_free (view->instructions);
+        view->instructions = g_strdup (instructions);
         g_clear_pointer (&view->images, g_array_unref);
         view->images = g_array_ref (images);
 
         setup_steps (view);
-        set_step (view, 0);
-}
-
-void
-gr_cooking_view_set_instructions (GrCookingView *view,
-                                  const char    *instructions)
-{
-        g_free (view->instructions);
-        view->instructions = g_strdup (instructions);
-
-        setup_steps (view);
-        set_step (view, 0);
 }
 
 int

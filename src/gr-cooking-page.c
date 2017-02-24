@@ -469,6 +469,5 @@ gr_cooking_page_set_recipe (GrCookingPage *page,
 
         container_remove_all (GTK_CONTAINER (page->mini_timer_box));
 
-        gr_cooking_view_set_images (GR_COOKING_VIEW (page->cooking_view), images);
-        gr_cooking_view_set_instructions (GR_COOKING_VIEW (page->cooking_view), instructions);
+        gr_cooking_view_set_data (GR_COOKING_VIEW (page->cooking_view), instructions, images);
 }

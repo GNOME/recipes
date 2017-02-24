@@ -1363,6 +1363,7 @@ preview_visible_changed (GrEditPage *page)
                 gtk_widget_set_sensitive (page->temperature_button, TRUE);
                 gtk_widget_set_visible (page->prev_step_button, FALSE);
                 gtk_widget_set_visible (page->next_step_button, FALSE);
+                gr_cooking_view_stop (GR_COOKING_VIEW (page->cooking_view));
         }
         else {
                 g_autoptr(GArray) images = NULL;
@@ -1378,8 +1379,8 @@ preview_visible_changed (GrEditPage *page)
                 g_object_get (page->images, "images", &images, NULL);
                 instructions = get_text_view_text (GTK_TEXT_VIEW (page->instructions_field));
 
-                gr_cooking_view_set_images (GR_COOKING_VIEW (page->cooking_view), images);
-                gr_cooking_view_set_instructions (GR_COOKING_VIEW (page->cooking_view), instructions);
+                gr_cooking_view_set_data (GR_COOKING_VIEW (page->cooking_view), instructions, images);
+                gr_cooking_view_start (GR_COOKING_VIEW (page->cooking_view));
 
                 update_steppers (page);
         }
