@@ -136,8 +136,8 @@ fi
 dnl ***********************************************************************
 dnl Check for required packages
 dnl ***********************************************************************
-PKG_CHECK_MODULES(RECIPES, [gio-2.0 >= 2.42
-                            gtk+-3.0 >= 3.20
+PKG_CHECK_MODULES(RECIPES, [gio-2.0
+                            gtk+-3.0
                             $AUTOAR_DEP
                             $GSPELL_DEP
                             $CANBERRA_DEP])

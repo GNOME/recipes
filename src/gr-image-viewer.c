@@ -570,6 +570,7 @@ gr_image_viewer_set_images (GrImageViewer *viewer,
         g_object_thaw_notify (G_OBJECT (viewer));
 }
 
+#if 0
 static void
 file_chooser_response (GtkNativeDialog *self,
                        gint             response_id,
@@ -595,10 +596,12 @@ file_chooser_response (GtkNativeDialog *self,
                 show_controls (viewer);
         }
 }
+#endif
 
 static void
 open_filechooser (GrImageViewer *viewer)
 {
+#if 0
         GtkWidget *window;
         GtkFileChooserNative *chooser;
         g_autoptr(GtkFileFilter) filter = NULL;
@@ -635,6 +638,7 @@ open_filechooser (GrImageViewer *viewer)
         g_signal_connect (chooser, "response", G_CALLBACK (file_chooser_response), viewer);
 
         gtk_native_dialog_show (GTK_NATIVE_DIALOG (chooser));
+#endif
 }
 
 void

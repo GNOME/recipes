@@ -384,7 +384,7 @@ removed_row_activated (GtkListBox     *list,
         Ingredient *ing;
 
         popover = gtk_widget_get_ancestor (GTK_WIDGET (row), GTK_TYPE_POPOVER);
-        gtk_popover_popdown (GTK_POPOVER (popover));
+        popover_popdown (GTK_POPOVER (popover));
 
         label = GTK_WIDGET (g_object_get_data (G_OBJECT (row), "ing"));
         name = gtk_label_get_label (GTK_LABEL (label));

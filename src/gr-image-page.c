@@ -88,13 +88,25 @@ set_current_image (GrImagePage *page)
                 g_autoptr(GdkPixbuf) pixbuf = NULL;
                 GdkDisplay *display;
                 GdkWindow *win;
-                GdkMonitor *monitor;
                 GdkRectangle geom;
 
                 display = gtk_widget_get_display (GTK_WIDGET (page));
                 win = gtk_widget_get_window (gtk_widget_get_toplevel (GTK_WIDGET (page)));
+#if GTK_CHECK_VERSION(3,22,0)
+                {
+                GdkMonitor *monitor;
                 monitor = gdk_display_get_monitor_at_window (display, win);
                 gdk_monitor_get_geometry (monitor, &geom);
+                }
+#else
+                {
+                GdkScreen *screen;
+                int monitor;
+                screen = gdk_display_get_default_screen (display);
+                monitor = gdk_screen_get_monitor_at_window (screen, win);
+                gdk_screen_get_monitor_geometry (screen, monitor, &geom);
+                }
+#endif
 
                 ri = &g_array_index (page->images, GrImage, page->index);
                 pixbuf = load_pixbuf_fit_size (ri->path, 0, geom.width - 80, geom.height - 80, FALSE);

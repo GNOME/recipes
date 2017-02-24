@@ -427,7 +427,11 @@ add_ingredient (GtkButton *button, GrEditPage *page)
         hide_ingredients_search_list (page, FALSE);
         hide_units_search_list (page, FALSE);
 
+#if GTK_CHECK_VERSION(3,22,0)
         gtk_popover_popup (GTK_POPOVER (page->ingredient_popover));
+#else
+        gtk_widget_show (page->ingredient_popover);
+#endif
 }
 
 static void
@@ -473,7 +477,11 @@ edit_ingredients_row (GtkListBoxRow *row,
         hide_ingredients_search_list (page, FALSE);
         hide_units_search_list (page, FALSE);
 
+#if GTK_CHECK_VERSION(3,22,0)
         gtk_popover_popup (GTK_POPOVER (page->ingredient_popover));
+#else
+        gtk_widget_show (page->ingredient_popover);
+#endif
 }
 
 static void
@@ -673,7 +681,11 @@ add_ingredient2 (GtkButton *button, GrEditPage *page)
         GtkWidget *b;
         GtkWidget *row;
 
+#if GTK_CHECK_VERSION(3,22,0)
         gtk_popover_popdown (GTK_POPOVER (page->ingredient_popover));
+#else
+        gtk_widget_hide (page->ingredient_popover);
+#endif
 
         b = gtk_popover_get_relative_to (GTK_POPOVER (page->ingredient_popover));
         if (GTK_IS_LIST_BOX_ROW (b)) {
@@ -1052,14 +1064,22 @@ image_activated (GtkFlowBox *flowbox,
         text = g_strdup_printf ("[image:%d]", idx);
         add_tag_to_step (self, text);
 
+#if GTK_CHECK_VERSION(3,22,0)
         gtk_popover_popdown (GTK_POPOVER (self->image_popover));
+#else
+        gtk_widget_hide (self->image_popover);
+#endif
         gtk_widget_grab_focus (self->instructions_field);
 }
 
 static void
 add_image_link (GtkButton *button, GrEditPage *page)
 {
+#if GTK_CHECK_VERSION(3,22,0)
         gtk_popover_popup (GTK_POPOVER (page->image_popover));
+#else
+        gtk_widget_show (page->image_popover);
+#endif
 }
 
 static int
@@ -1193,14 +1213,22 @@ time_spin_activate (GtkEntry *entry, GrEditPage *self)
 
         add_tag_to_step (self, text);
 
+#if GTK_CHECK_VERSION(3,22,0)
         gtk_popover_popdown (GTK_POPOVER (self->timer_popover));
+#else
+        gtk_widget_hide (self->timer_popover);
+#endif
         gtk_widget_grab_focus (self->instructions_field);
 }
 
 static void
 add_timer (GtkButton *button, GrEditPage *page)
 {
+#if GTK_CHECK_VERSION(3,22,0)
         gtk_popover_popup (GTK_POPOVER (page->timer_popover));
+#else
+        gtk_widget_show (page->timer_popover);
+#endif
 }
 
 static void
@@ -1221,13 +1249,21 @@ temperature_spin_activate (GtkEntry *entry, GrEditPage *self)
         text = g_strdup_printf ("[temperature:%d%s]", value, unit);
         add_tag_at_insert (self, text);
 
+#if GTK_CHECK_VERSION(3,22,0)
         gtk_popover_popdown (GTK_POPOVER (self->temperature_popover));
+#else
+        gtk_widget_hide (self->temperature_popover);
+#endif
         gtk_widget_grab_focus (self->instructions_field);
 }
 static void
 add_temperature (GtkButton *button, GrEditPage *page)
 {
+#if GTK_CHECK_VERSION(3,22,0)
         gtk_popover_popup (GTK_POPOVER (page->temperature_popover));
+#else
+        gtk_widget_show (page->temperature_popover);
+#endif
 }
 
 static void

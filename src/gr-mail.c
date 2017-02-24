@@ -68,7 +68,11 @@ send_mail_using_mailto (MailData *data)
                 g_string_append_printf (url, "&attach=%s", path);
         }
 
-        gtk_show_uri_on_window (data->window, url->str, GDK_CURRENT_TIME, NULL);
+#if GTK_CHECK_VERSION(3,22,0)
+        gtk_show_uri_on_window (GTK_WINDOW (data->window), url->str, GDK_CURRENT_TIME, NULL);
+#else
+        gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (data->window)), url->str, GDK_CURRENT_TIME, NULL);
+#endif
 
         mail_data_free (data);
 }

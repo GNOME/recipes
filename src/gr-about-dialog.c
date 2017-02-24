@@ -83,7 +83,11 @@ builder_info (GtkButton *button,
         const char *uri = "http://wiki.gnome.org/Apps/Builder";
         g_autoptr(GError) error = NULL;
 
+#if GTK_CHECK_VERSION(3,22,0)
         gtk_show_uri_on_window (GTK_WINDOW (about), uri, GDK_CURRENT_TIME, &error);
+#else
+        gtk_show_uri (gtk_widget_get_screen (about), uri, GDK_CURRENT_TIME, &error);
+#endif
         if (error)
                 g_warning ("Unable to show '%s': %s", uri, error->message);
 }
@@ -521,8 +525,13 @@ follow_if_link (GrAboutDialog *about,
                 GtkTextTag *tag = tagp->data;
 
                 uri = g_object_get_data (G_OBJECT (tag), "uri");
-                if (uri)
+                if (uri) {
+#if GTK_CHECK_VERSION(3,22,0)
                         gtk_show_uri_on_window (GTK_WINDOW (about), uri, GDK_CURRENT_TIME, NULL);
+#else
+                        gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (about)), uri, GDK_CURRENT_TIME, NULL);
+#endif
+                }
         }
 
         g_slist_free (tags);

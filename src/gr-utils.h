@@ -81,3 +81,6 @@ char *import_image (const char *path);
 char *rotate_image (const char *path,
                     int         angle);
 void  remove_image (const char *path);
+
+void popover_popup   (GtkPopover *popover);
+void popover_popdown (GtkPopover *popover);

@@ -1095,7 +1095,11 @@ gr_query_editor_handle_event (GrQueryEditor *editor,
         if (event->type == GDK_KEY_PRESS) {
                 GdkEventKey *e = (GdkEventKey *) event;
                 if ((e->state & GDK_MOD1_MASK) > 0 && e->keyval == GDK_KEY_Down) {
+#if GTK_CHECK_VERSION(3,22,0)
                         gtk_popover_popup (GTK_POPOVER (editor->popover));
+#else
+                        gtk_widget_show (editor->popover);
+#endif
                         return GDK_EVENT_PROPAGATE;
                 }
         }

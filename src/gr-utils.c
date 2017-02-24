@@ -502,6 +502,7 @@ all_headers (GtkListBoxRow *row,
         gtk_list_box_row_set_header (row, header);
 }
 
+#if GTK_CHECK_VERSION(3,22,0)
 #ifdef GDK_WINDOWING_WAYLAND
 typedef struct {
         GtkWindow *window;
@@ -524,13 +525,14 @@ wayland_window_handle_exported (GdkWindow  *window,
         g_free (data);
 }
 #endif
+#endif
 
 gboolean
 window_export_handle (GtkWindow            *window,
                       WindowHandleExported  callback,
                       gpointer              user_data)
 {
-
+#if GTK_CHECK_VERSION(3,22,0)
 #ifdef GDK_WINDOWING_X11
         if (GDK_IS_X11_DISPLAY (gtk_widget_get_display (GTK_WIDGET (window)))) {
                 GdkWindow *gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
@@ -565,6 +567,7 @@ window_export_handle (GtkWindow            *window,
                 }
         }
 #endif
+#endif
 
         g_warning ("Couldn't export handle, unsupported windowing system");
 
@@ -574,6 +577,7 @@ window_export_handle (GtkWindow            *window,
 void
 window_unexport_handle (GtkWindow *window)
 {
+#if GTK_CHECK_VERSION(3,22,0)
 #ifdef GDK_WINDOWING_WAYLAND
   if (GDK_IS_WAYLAND_DISPLAY (gtk_widget_get_display (GTK_WIDGET (window))))
     {
@@ -581,6 +585,7 @@ window_unexport_handle (GtkWindow *window)
 
       gdk_wayland_window_unexport_handle (gdk_window);
     }
+#endif
 #endif
 }
 
@@ -708,3 +713,33 @@ remove_image (const char *path)
                 g_print ("Not removing image %s", path);
         }
 }
+
+#if GTK_CHECK_VERSION(3,22,0)
+
+void
+popover_popup (GtkPopover *popover)
+{
+        gtk_popover_popup (popover);
+}
+
+void
+popover_popdown (GtkPopover *popover)
+{
+        gtk_popover_popdown (popover);
+}
+
+#else
+
+void
+popover_popup (GtkPopover *popover)
+{
+        gtk_widget_show (GTK_WIDGET (popover));
+}
+
+void
+popover_popdown (GtkPopover *popover)
+{
+        gtk_widget_hide (GTK_WIDGET (popover));
+}
+
+#endif

@@ -114,7 +114,7 @@ recipe_small_tile_set_recipe (GrRecipeSmallTile *tile,
 static void
 tile_clicked (GrRecipeSmallTile *tile)
 {
-        gtk_popover_popup (GTK_POPOVER (tile->popover));
+        popover_popup (GTK_POPOVER (tile->popover));
 }
 
 static void

@@ -184,7 +184,11 @@ step_data_new (int         num,
 
                         button = gtk_button_new ();
                         gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
+#if GTK_CHECK_VERSION(3,20,0)
                         gtk_widget_set_focus_on_click (button, FALSE);
+#else
+                        gtk_button_set_focus_on_click (GTK_BUTTON (button), FALSE);
+#endif
                         gtk_style_context_add_class (gtk_widget_get_style_context (button), "osd");
                         g_signal_connect_swapped (button, "clicked", G_CALLBACK (go_to_step), d);
 

@@ -768,6 +768,7 @@ do_import (GrWindow *window,
         gr_recipe_importer_import_from (window->importer, file);
 }
 
+#if 0
 static void
 file_chooser_response (GtkNativeDialog *self,
                        int              response_id,
@@ -782,6 +783,7 @@ file_chooser_response (GtkNativeDialog *self,
         gtk_native_dialog_destroy (self);
         window->file_chooser = NULL;
 }
+#endif
 
 static void
 chef_done (GrChefDialog *dialog,
@@ -859,6 +861,7 @@ gr_window_load_recipe (GrWindow *window,
         if (window->file_chooser)
                 return;
 
+#if 0
         window->file_chooser = (GObject *)gtk_file_chooser_native_new (_("Select a recipe file"),
                                                                        GTK_WINDOW (window),
                                                                        GTK_FILE_CHOOSER_ACTION_OPEN,
@@ -869,6 +872,7 @@ gr_window_load_recipe (GrWindow *window,
         g_signal_connect (window->file_chooser, "response", G_CALLBACK (file_chooser_response), window);
 
         gtk_native_dialog_show (GTK_NATIVE_DIALOG (window->file_chooser));
+#endif
 }
 
 void

@@ -302,7 +302,11 @@ gr_app_new (void)
 {
         return g_object_new (GR_TYPE_APP,
                              "application-id", "org.gnome.Recipes",
+#if GLIB_CHECK_VERSION(2,48,0)
                              "flags", G_APPLICATION_HANDLES_OPEN | G_APPLICATION_CAN_OVERRIDE_APP_ID,
+#else
+                             "flags", G_APPLICATION_HANDLES_OPEN,
+#endif
                              NULL);
 }
 

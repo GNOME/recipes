@@ -115,6 +115,7 @@ field_changed (GrChefDialog *self)
         gtk_widget_set_sensitive (self->save_button, TRUE);
 }
 
+#if 0
 static void
 file_chooser_response (GtkNativeDialog *self,
                        gint             response_id,
@@ -138,10 +139,12 @@ file_chooser_response (GtkNativeDialog *self,
                 field_changed (prefs);
         }
 }
+#endif
 
 static void
 image_button_clicked (GrChefDialog *self)
 {
+#if 0
         GtkFileChooserNative *chooser;
         g_autoptr(GtkFileFilter) filter = NULL;
 
@@ -161,6 +164,7 @@ image_button_clicked (GrChefDialog *self)
         g_signal_connect (chooser, "response", G_CALLBACK (file_chooser_response), self);
 
         gtk_native_dialog_show (GTK_NATIVE_DIALOG (chooser));
+#endif
 }
 
 static void
@@ -348,7 +352,12 @@ chef_selected (GrChefDialog  *dialog,
 
         chef = g_object_get_data (G_OBJECT (row), "chef");
         gr_chef_dialog_set_chef (dialog, chef);
+
+#if GTK_CHECK_VERSION(3,22,0)
         gtk_popover_popdown (GTK_POPOVER (dialog->chef_popover));
+#else
+        gtk_widget_hide (dialog->chef_popover);
+#endif
 }
 
 static void
