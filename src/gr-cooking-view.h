@@ -39,6 +39,8 @@ int            gr_cooking_view_get_n_steps   (GrCookingView *view);
 int            gr_cooking_view_get_step      (GrCookingView *view);
 void           gr_cooking_view_set_step      (GrCookingView *view,
                                               int            step);
+void           gr_cooking_view_start         (GrCookingView *view);
+void           gr_cooking_view_stop          (GrCookingView *view);
 void           gr_cooking_view_forward       (GrCookingView *view);
 void           gr_cooking_view_next_step     (GrCookingView *view);
 void           gr_cooking_view_prev_step     (GrCookingView *view);

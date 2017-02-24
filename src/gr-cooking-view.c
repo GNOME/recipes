@@ -202,6 +202,7 @@ setup_step (GrCookingView *view)
                 gtk_widget_hide (view->cooking_label);
         }
 
+        g_object_set (view->cooking_timer, "timer", s->timer, NULL);
         if (s->timer) {
                 gboolean active;
                 guint64 remaining;
@@ -211,7 +212,6 @@ setup_step (GrCookingView *view)
 
                 active = gr_timer_get_active (s->timer);
                 remaining = gr_timer_get_remaining (s->timer);
-                g_object_set (view->cooking_timer, "timer", s->timer, NULL);
 
                 if (active || remaining > 0)
                         gtk_stack_set_visible_child_name (GTK_STACK (view->cooking_stack), "timer");
@@ -493,6 +493,7 @@ void
 gr_cooking_view_set_images (GrCookingView *view,
                             GArray        *images)
 {
+        g_clear_pointer (&view->images, g_array_unref);
         view->images = g_array_ref (images);
 
         setup_steps (view);
@@ -527,6 +528,24 @@ gr_cooking_view_set_step (GrCookingView *view,
                           int            step)
 {
         set_step (view, step);
+}
+
+void
+gr_cooking_view_start (GrCookingView *view)
+{
+        set_step (view, 0);
+}
+
+void
+gr_cooking_view_stop (GrCookingView *view)
+{
+        g_object_set (view->cooking_timer, "timer", NULL, NULL);
+        if (view->timer_box)
+                container_remove_all (GTK_CONTAINER (view->timer_box));
+
+        g_clear_pointer (&view->instructions, g_free);
+        g_clear_pointer (&view->images, g_array_unref);
+        g_ptr_array_set_size (view->steps, 0);
 }
 
 void
