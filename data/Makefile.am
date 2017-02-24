@@ -117,6 +117,15 @@ dist_images_DATA = \
 	images/rosemary-potatos1.jpg	\
 	images/rosemary-potatos2.jpg	\
 	images/salad.jpg		\
+	images/salmonrice1.jpg		\
+	images/salmonrice2.jpg		\
+	images/salmonrice3.jpg		\
+	images/salmonrice4.jpg		\
+	images/salmonrice5.jpg		\
+	images/salmonrice6.jpg		\
+	images/salmonrice7.jpg		\
+	images/salmonrice8.jpg		\
+	images/salmonrice9.jpg		\
 	images/spanish_omelet1.jpg	\
 	images/spanish_omelet2.jpg	\
 	images/spanish_omelet3.jpg	\
