@@ -118,6 +118,9 @@ gr_timer_widget_finalize (GObject *object)
 {
         GrTimerWidget *self = GR_TIMER_WIDGET (object);
 
+        if (self->handler_id)
+                g_signal_handler_disconnect (self->timer, self->handler_id);
+
         g_clear_object (&self->timer);
 
         G_OBJECT_CLASS (gr_timer_widget_parent_class)->finalize (object);
