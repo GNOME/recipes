@@ -230,13 +230,6 @@ gr_recipe_get_property (GObject    *object,
 }
 
 static void
-update_mtime (GrRecipe *self)
-{
-        g_date_time_unref (self->mtime);
-        self->mtime = g_date_time_new_now_utc ();
-}
-
-static void
 set_images (GrRecipe *self,
             GArray   *images)
 {
@@ -270,13 +263,11 @@ gr_recipe_set_property (GObject      *object,
         case PROP_ID:
                 g_free (self->id);
                 self->id = g_value_dup_string (value);
-                update_mtime (self);
                 break;
 
         case PROP_AUTHOR:
                 g_free (self->author);
                 self->author = g_value_dup_string (value);
-                update_mtime (self);
                 break;
 
         case PROP_NAME:
@@ -288,7 +279,6 @@ gr_recipe_set_property (GObject      *object,
                         self->translated_name = translate_multiline_string (self->name);
                         self->cf_name = g_utf8_casefold (self->translated_name, -1);
                 }
-                update_mtime (self);
                 break;
 
         case PROP_DESCRIPTION:
@@ -300,57 +290,47 @@ gr_recipe_set_property (GObject      *object,
                         self->translated_description = translate_multiline_string (self->description);
                         self->cf_description = g_utf8_casefold (self->translated_description, -1);
                 }
-                update_mtime (self);
                 break;
 
         case PROP_IMAGES:
                 set_images (self, (GArray *) g_value_get_boxed (value));
-                update_mtime (self);
                 break;
 
         case PROP_DEFAULT_IMAGE:
                 self->default_image = g_value_get_int (value);
-                update_mtime (self);
                 break;
 
         case PROP_CATEGORY:
                 g_free (self->category);
                 self->category = g_value_dup_string (value);
-                update_mtime (self);
                 break;
 
         case PROP_CUISINE:
                 g_free (self->cuisine);
                 self->cuisine = g_value_dup_string (value);
-                update_mtime (self);
                 break;
 
         case PROP_SEASON:
                 g_free (self->season);
                 self->season = g_value_dup_string (value);
-                update_mtime (self);
                 break;
 
         case PROP_PREP_TIME:
                 g_free (self->prep_time);
                 self->prep_time = g_value_dup_string (value);
-                update_mtime (self);
                 break;
 
         case PROP_COOK_TIME:
                 g_free (self->cook_time);
                 self->cook_time = g_value_dup_string (value);
-                update_mtime (self);
                 break;
 
         case PROP_SERVES:
                 self->serves = g_value_get_int (value);
-                update_mtime (self);
                 break;
 
         case PROP_SPICINESS:
                 self->spiciness = g_value_get_int (value);
-                update_mtime (self);
                 break;
 
         case PROP_INGREDIENTS:
@@ -365,7 +345,6 @@ gr_recipe_set_property (GObject      *object,
                         cf_garlic = g_utf8_casefold ("Garlic", -1);
                         self->garlic = (strstr (self->cf_ingredients, cf_garlic) != NULL);
                 }
-                update_mtime (self);
                 break;
 
         case PROP_INSTRUCTIONS:
@@ -374,7 +353,6 @@ gr_recipe_set_property (GObject      *object,
                 self->instructions = g_value_dup_string (value);
                 if (self->instructions)
                         self->translated_instructions = translate_multiline_string (self->instructions);
-                update_mtime (self);
                 break;
 
         case PROP_NOTES:
@@ -383,12 +361,10 @@ gr_recipe_set_property (GObject      *object,
                 self->notes = g_value_dup_string (value);
                 if (self->notes)
                         self->translated_notes = translate_multiline_string (self->notes);
-                update_mtime (self);
                 break;
 
         case PROP_DIETS:
                 self->diets = g_value_get_flags (value);
-                update_mtime (self);
                 break;
 
         case PROP_CTIME:
@@ -405,12 +381,10 @@ gr_recipe_set_property (GObject      *object,
 
         case PROP_READONLY:
                 self->readonly = g_value_get_boolean (value);
-                update_mtime (self);
                 break;
 
         case PROP_CONTRIBUTED:
                 self->contributed = g_value_get_boolean (value);
-                update_mtime (self);
                 break;
 
         default:

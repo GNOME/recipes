@@ -2099,6 +2099,7 @@ gr_edit_page_save (GrEditPage *page)
                               "instructions", instructions,
                               "diets", diets,
                               "images", images,
+                              "mtime", g_date_time_new_now_utc (),
                               NULL);
                 ret = gr_recipe_store_update_recipe (store, page->recipe, old_id, &error);
         }

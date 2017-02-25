@@ -374,6 +374,7 @@ load_recipes (GrRecipeStore *self,
                                               "diets", diets,
                                               "images", images,
                                               "default-image", default_image,
+                                              "mtime", mtime,
                                               NULL);
                 }
                 else {
