@@ -404,7 +404,7 @@ show_system_notification (GrTimer   *timer,
 
         notification = g_notification_new (_("Timer is up!"));
 
-        body = g_strdup_printf (_("The timer for '%s' has expired."), gr_timer_get_name (timer));
+        body = g_strdup_printf (_("The timer for “%s” has expired."), gr_timer_get_name (timer));
         g_notification_set_body (notification, body);
 
         g_notification_set_default_action_and_target (notification, "app.timer-expired",
