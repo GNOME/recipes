@@ -1,7 +1,7 @@
 bin_PROGRAMS = gnome-recipes
 
-commitid := $(shell $(GIT) describe)
-libgd_info = $(shell cat $(top_srcdir)/libgd.info)
+commitid := $(shell cd $(top_srcdir); $(GIT) describe)
+libgd_info = $(shell cat $(top_builddir)/libgd.info)
 
 gnome_recipes_CFLAGS = \
 	$(WARN_CFLAGS) 			\
@@ -153,6 +153,7 @@ DISTCLEANFILES = \
 MAINTAINERCLEANFILES = \
 	resources-ui.c		\
 	resources-images.c	\
+	resources-generated.c	\
 	types.h			\
 	types.c			\
 	gr-shell-search-provider-dbus.h \
@@ -178,6 +179,12 @@ resource_image_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) -
 resources-images.c: recipes-images.gresource.xml $(resource_image_files)
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $(srcdir)/recipes-images.gresource.xml \
 		--target=$@ --sourcedir=$(srcdir) --generate-source
+
+resource_generated_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(builddir) --generate-dependencies $(srcdir)/recipes-generated.gresource.xml)
+
+resources-generated.c: recipes-generated.gresource.xml $(resource_generated_files)
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $(srcdir)/recipes-generated.gresource.xml \
+		--target=$@ --sourcedir=$(builddir) --generate-source
 
 types.h: types.h.template gr-diet.h
 	$(AM_V_GEN) ($(GLIB_MKENUMS) --template $^ ) > xgen-eh && \

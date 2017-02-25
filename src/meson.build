@@ -34,6 +34,11 @@ resources_ui = gnome.compile_resources('resources_ui',
 resources_images = gnome.compile_resources('resources_images',
                                        'recipes-images.gresource.xml',
                                        c_name: '_recipes_images',
+                                       source_dir: 'src')
+
+resources_generated = gnome.compile_resources('resources_generated',
+                                       'recipes-generated.gresource.xml',
+                                       c_name: '_recipes_generated',
                                        source_dir: 'src',
                                        dependencies: cuisine_css)
 
@@ -106,7 +111,8 @@ src += ['main.c',
   enums,
   search_provider,
   resources_ui,
-  resources_images]
+  resources_images,
+  resources_generated]
 
 executable('gnome-recipes',
            src,

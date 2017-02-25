@@ -27,7 +27,7 @@ NEWS: data/appdata/org.gnome.Recipes.appdata.xml.in
 	fi
 
 libgd.info:
-	$(AM_V_GEN)(cd libgd; git log -1 --pretty=%h) > $@
+	$(AM_V_GEN)(cd $(top_srcdir)/libgd; git log -1 --pretty=%h) > $@
 
 .PHONY: NEWS
 
