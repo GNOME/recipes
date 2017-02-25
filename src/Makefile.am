@@ -127,6 +127,7 @@ gnome_recipes_SOURCES = \
 	gr-window.c 		\
 	resources-ui.c		\
 	resources-images.c	\
+	resources-generated.c	\
 	types.h			\
 	types.c			\
 	gr-shell-search-provider.h \
