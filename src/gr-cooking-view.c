@@ -107,8 +107,6 @@ timer_data_free (gpointer data)
 {
         TimerData *td = data;
 
-        if (td->handler)
-                g_signal_handler_disconnect (td->timer, td->handler);
         g_free (td->id);
 
         g_free (td);
@@ -125,6 +123,9 @@ timer_active (GrTimer    *timer,
         TimerData *td = g_object_get_data (G_OBJECT (timer), "timer-data");
         GrCookingView *view = td->view;
 
+        g_assert (timer == d->timer);
+        g_assert (timer == td->timer);
+
         if (d->mini_timer)
                 gtk_widget_show (d->mini_timer);
 
@@ -133,7 +134,7 @@ timer_active (GrTimer    *timer,
         g_signal_handler_disconnect (timer, d->handler);
         d->handler = 0;
 
-        td->handler = g_signal_connect (d->timer, "complete",
+        td->handler = g_signal_connect (timer, "complete",
                                         G_CALLBACK (timer_complete), td);
 }
 
