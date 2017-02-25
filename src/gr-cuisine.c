@@ -149,9 +149,9 @@ gr_cuisine_get_data (const char  *name,
         }
 
         if (title)
-                title = NULL;
+                *title = name;
         if (description)
-                description = NULL;
+                *description = NULL;
 }
 
 char *
