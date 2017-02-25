@@ -40,6 +40,7 @@ struct _GrListPage
         GrDiets diet;
         gboolean favorites;
         gboolean all;
+        gboolean new;
         char *season;
         GList *recipes;
 
@@ -76,6 +77,7 @@ clear_data (GrListPage *self)
         self->diet = 0;
         self->favorites = FALSE;
         self->all = FALSE;
+        self->new = FALSE;
         g_clear_pointer (&self->season, g_free);
         g_list_free_full (self->recipes, g_object_unref);
         self->recipes = NULL;
@@ -408,6 +410,37 @@ gr_list_page_populate_from_all (GrListPage *self)
         gr_recipe_search_stop (self->search);
         gtk_stack_set_visible_child_name (GTK_STACK (self->list_stack), "list");
         gr_recipe_search_set_query (self->search, "is:any");
+}
+
+void
+gr_list_page_populate_from_new (GrListPage *self)
+{
+        g_autoptr(GDateTime) now = NULL;
+        g_autoptr(GDateTime) time = NULL;
+        g_autofree char *timestamp = NULL;
+        g_autofree char *query = NULL;
+        const char *terms[2];
+
+        clear_data (self);
+        self->new = TRUE;
+
+        gtk_widget_hide (self->chef_grid);
+        gtk_widget_hide (self->heading);
+        gtk_widget_hide (self->diet_description);
+
+        container_remove_all (GTK_CONTAINER (self->flow_box));
+        gtk_label_set_label (GTK_LABEL (self->empty_title), _("No new recipes"));
+        gtk_label_set_label (GTK_LABEL (self->empty_subtitle), _("Sorry about this."));
+
+        gr_recipe_search_stop (self->search);
+        gtk_stack_set_visible_child_name (GTK_STACK (self->list_stack), "list");
+        now = g_date_time_new_now_utc ();
+        time = g_date_time_add_weeks (now, -1);
+        timestamp = date_time_to_string (time);
+        query = g_strconcat ("ct:", timestamp, NULL);
+        terms[0] = (const char*)query;
+        terms[1] = NULL;
+        gr_recipe_search_set_terms (self->search, terms);
 }
 
 void
