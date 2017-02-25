@@ -419,11 +419,15 @@ save_recipes (GrRecipeStore *self)
         const char *key;
         GrRecipe *recipe;
         g_autoptr(GError) error = NULL;
-        const char *tmp;
+        const char *dir;
 
         keyfile = g_key_file_new ();
 
-        path = g_build_filename (get_user_data_dir (), "recipes.db", NULL);
+        if (g_getenv ("RECIPES_DATA_DIR"))
+                dir = g_getenv ("RECIPES_DATA_DIR");
+        else
+                dir = get_user_data_dir ();
+        path = g_build_filename (dir, "recipes.db", NULL);
 
         g_message ("Save recipe db: %s", path);
 
@@ -472,12 +476,11 @@ save_recipes (GrRecipeStore *self)
 
                 g_object_get (recipe, "images", &images, NULL);
 
-                tmp = get_user_data_dir ();
                 paths = g_new0 (char *, images->len + 1);
                 for (i = 0; i < images->len; i++) {
                         GrImage *ri = &g_array_index (images, GrImage, i);
-                        if (g_str_has_prefix (ri->path, tmp))
-                                paths[i] = g_strdup (ri->path + strlen (tmp) + 1);
+                        if (g_str_has_prefix (ri->path, dir))
+                                paths[i] = g_strdup (ri->path + strlen (dir) + 1);
                         else
                                 paths[i] = g_strdup (ri->path);
                 }
@@ -841,11 +844,15 @@ save_chefs (GrRecipeStore *store)
         const char *key;
         GrChef *chef;
         g_autoptr(GError) error = NULL;
-        const char *tmp;
+        const char *dir;
 
         keyfile = g_key_file_new ();
 
-        path = g_build_filename (get_user_data_dir (), "chefs.db", NULL);
+        if (g_getenv ("RECIPES_DATA_DIR"))
+                dir = g_getenv ("RECIPES_DATA_DIR");
+        else
+                dir = get_user_data_dir ();
+        path = g_build_filename (dir, "chefs.db", NULL);
 
         g_message ("Save chefs db: %s", path);
 
@@ -864,11 +871,10 @@ save_chefs (GrRecipeStore *store)
                 description = gr_chef_get_description (chef);
                 image_path = gr_chef_get_image (chef);
 
-                tmp = get_user_data_dir ();
-                if (image_path && g_str_has_prefix (image_path, tmp)) {
+                if (image_path && g_str_has_prefix (image_path, dir)) {
                         g_autofree char *tmp2 = NULL;
 
-                        tmp2 = g_strdup (image_path + strlen (tmp) + 1);
+                        tmp2 = g_strdup (image_path + strlen (dir) + 1);
                         g_key_file_set_string (keyfile, key, "Image", tmp2);
                 }
                 else
@@ -953,6 +959,21 @@ gr_recipe_store_init (GrRecipeStore *self)
         uninstalled_dir = g_build_filename (current_dir, "data", NULL);
 
         load_user (self, user_dir);
+
+        if (g_getenv ("RECIPES_DATA_DIR")) {
+                const char *dir = g_getenv ("RECIPES_DATA_DIR");
+
+                g_message ("Loading data from RECIPES_DATA_DIR: %s", dir);
+
+                load_recipes (self, dir, FALSE);
+                load_chefs (self, dir, FALSE);
+                load_picks (self, dir);
+
+                g_message ("%d recipes loaded", g_hash_table_size (self->recipes));
+                g_message ("%d chefs loaded", g_hash_table_size (self->chefs));
+
+                return;
+        }
 
         /* First load preinstalled data */
         if (!load_recipes (self, data_dir, TRUE))
