@@ -41,6 +41,9 @@
 #include "gr-recipe-printer.h"
 #include "gr-recipe-exporter.h"
 #include "gr-recipe-formatter.h"
+#include "gr-cuisine.h"
+#include "gr-meal.h"
+#include "gr-season.h"
 
 
 struct _GrDetailsPage
@@ -59,6 +62,12 @@ struct _GrDetailsPage
         GtkWidget *prep_time_label;
         GtkWidget *cook_time_desc;
         GtkWidget *cook_time_label;
+        GtkWidget *cuisine_desc;
+        GtkWidget *cuisine_label;
+        GtkWidget *meal_desc;
+        GtkWidget *meal_label;
+        GtkWidget *season_desc;
+        GtkWidget *season_label;
         GtkWidget *serves_spin;
         GtkWidget *warning_box;
         GtkWidget *spicy_warning;
@@ -389,6 +398,12 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, prep_time_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, cook_time_desc);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, cook_time_label);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, cuisine_desc);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, cuisine_label);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, meal_desc);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, meal_label);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, season_desc);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, season_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, serves_spin);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, warning_box);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, spicy_warning);
@@ -591,6 +606,9 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         const char *author;
         const char *prep_time;
         const char *cook_time;
+        const char *cuisine;
+        const char *meal;
+        const char *season;
         int serves;
         int want_serves;
         const char *ingredients;
@@ -617,6 +635,9 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         serves = gr_recipe_get_serves (recipe);
         prep_time = gr_recipe_get_prep_time (recipe);
         cook_time = gr_recipe_get_cook_time (recipe);
+        cuisine = gr_recipe_get_cuisine (recipe);
+        meal = gr_recipe_get_category (recipe);
+        season = gr_recipe_get_season (recipe);
         ingredients = gr_recipe_get_ingredients (recipe);
         notes = gr_recipe_get_translated_notes (recipe);
         instructions = gr_recipe_get_translated_instructions (recipe);
@@ -658,6 +679,37 @@ gr_details_page_set_recipe (GrDetailsPage *page,
                 gtk_widget_show (page->cook_time_desc);
                 gtk_label_set_label (GTK_LABEL (page->cook_time_label), _(cook_time));
         }
+        if (cuisine[0] == '\0') {
+                gtk_widget_hide (page->cuisine_label);
+                gtk_widget_hide (page->cuisine_desc);
+        }
+        else {
+                const char *title;
+
+                gr_cuisine_get_data (cuisine, &title, NULL, NULL);
+                gtk_widget_show (page->cuisine_label);
+                gtk_widget_show (page->cuisine_desc);
+                gtk_label_set_label (GTK_LABEL (page->cuisine_label), title);
+        }
+        if (meal[0] == '\0') {
+                gtk_widget_hide (page->meal_label);
+                gtk_widget_hide (page->meal_desc);
+        }
+        else {
+                gtk_widget_show (page->meal_label);
+                gtk_widget_show (page->meal_desc);
+                gtk_label_set_label (GTK_LABEL (page->meal_label), gr_meal_get_title (meal));
+        }
+        if (season[0] == '\0') {
+                gtk_widget_hide (page->season_label);
+                gtk_widget_hide (page->season_desc);
+        }
+        else {
+                gtk_widget_show (page->season_label);
+                gtk_widget_show (page->season_desc);
+                gtk_label_set_label (GTK_LABEL (page->season_label), gr_season_get_title (season));
+        }
+
         processed = process_instructions (instructions);
         gtk_label_set_label (GTK_LABEL (page->instructions_label), processed);
         gtk_label_set_track_visited_links (GTK_LABEL (page->instructions_label), FALSE);

@@ -231,7 +231,7 @@
                             <property name="valign">baseline</property>
                             <property name="margin-start">20</property>
                             <property name="margin-end">20</property>
-                            <property name="margin-bottom">30</property>
+                            <property name="margin-bottom">15</property>
                             <style>
                               <class name="dim-label"/>
                             </style>
@@ -254,16 +254,107 @@
                           </packing>
                         </child>
                         <child>
+                          <object class="GtkLabel" id="cuisine_desc">
+                            <property name="visible">1</property>
+                            <property name="label" translatable="yes">Cuisine</property>
+                            <property name="xalign">1</property>
+                            <property name="valign">baseline</property>
+                            <property name="margin-start">20</property>
+                            <property name="margin-end">20</property>
+                            <property name="margin-bottom">15</property>
+                            <style>
+                              <class name="dim-label"/>
+                            </style>
+                          </object>
+                          <packing>
+                            <property name="left-attach">0</property>
+                            <property name="top-attach">3</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="cuisine_label">
+                            <property name="visible">1</property>
+                            <property name="xalign">0</property>
+                            <property name="valign">baseline</property>
+                            <property name="hexpand">1</property>
+                          </object>
+                          <packing>
+                            <property name="left-attach">1</property>
+                            <property name="top-attach">3</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="meal_desc">
+                            <property name="visible">1</property>
+                            <property name="label" translatable="yes">Meal</property>
+                            <property name="xalign">1</property>
+                            <property name="valign">baseline</property>
+                            <property name="margin-start">20</property>
+                            <property name="margin-end">20</property>
+                            <property name="margin-bottom">15</property>
+                            <style>
+                              <class name="dim-label"/>
+                            </style>
+                          </object>
+                          <packing>
+                            <property name="left-attach">0</property>
+                            <property name="top-attach">4</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="meal_label">
+                            <property name="visible">1</property>
+                            <property name="xalign">0</property>
+                            <property name="valign">baseline</property>
+                            <property name="hexpand">1</property>
+                          </object>
+                          <packing>
+                            <property name="left-attach">1</property>
+                            <property name="top-attach">4</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="season_desc">
+                            <property name="visible">1</property>
+                            <property name="label" translatable="yes">Season</property>
+                            <property name="xalign">1</property>
+                            <property name="valign">baseline</property>
+                            <property name="margin-start">20</property>
+                            <property name="margin-end">20</property>
+                            <property name="margin-bottom">15</property>
+                            <style>
+                              <class name="dim-label"/>
+                            </style>
+                          </object>
+                          <packing>
+                            <property name="left-attach">0</property>
+                            <property name="top-attach">5</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="season_label">
+                            <property name="visible">1</property>
+                            <property name="xalign">0</property>
+                            <property name="valign">baseline</property>
+                            <property name="hexpand">1</property>
+                          </object>
+                          <packing>
+                            <property name="left-attach">1</property>
+                            <property name="top-attach">5</property>
+                          </packing>
+                        </child>
+                        <child>
                           <object class="GtkLabel" id="description_label">
                             <property name="visible">1</property>
                             <property name="xalign">0</property>
                             <property name="wrap">1</property>
                             <property name="max-width-chars">45</property>
+                            <property name="margin-top">15</property>
                             <property name="margin-bottom">15</property>
                           </object>
                           <packing>
                             <property name="left-attach">0</property>
-                            <property name="top-attach">3</property>
+                            <property name="top-attach">6</property>
                             <property name="width">2</property>
                           </packing>
                         </child>
@@ -310,7 +401,7 @@
                           </object>
                           <packing>
                             <property name="left-attach">0</property>
-                            <property name="top-attach">4</property>
+                            <property name="top-attach">7</property>
                             <property name="width">2</property>
                           </packing>
                         </child>
@@ -325,7 +416,7 @@
                           </object>
                           <packing>
                             <property name="left-attach">0</property>
-                            <property name="top-attach">5</property>
+                            <property name="top-attach">8</property>
                             <property name="width">2</property>
                           </packing>
                         </child>
@@ -342,7 +433,7 @@
                           </object>
                           <packing>
                             <property name="left-attach">0</property>
-                            <property name="top-attach">6</property>
+                            <property name="top-attach">9</property>
                             <property name="width">2</property>
                           </packing>
                         </child>
@@ -355,7 +446,7 @@
                           </object>
                           <packing>
                             <property name="left-attach">0</property>
-                            <property name="top-attach">7</property>
+                            <property name="top-attach">10</property>
                             <property name="width">2</property>
                           </packing>
                         </child>
