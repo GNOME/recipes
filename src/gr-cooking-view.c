@@ -684,3 +684,9 @@ gr_cooking_view_set_timer_box (GrCookingView *view,
 {
         view->timer_box = box;
 }
+
+gboolean
+gr_cooking_view_has_active_timers (GrCookingView *view)
+{
+        return view->timers != NULL;
+}

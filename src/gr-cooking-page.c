@@ -140,13 +140,16 @@ update_steppers (GrCookingPage *page)
 {
         int step;
         int n_steps;
+        gboolean active_timers;
 
         step = gr_cooking_view_get_step (GR_COOKING_VIEW (page->cooking_view));
         n_steps = gr_cooking_view_get_n_steps (GR_COOKING_VIEW (page->cooking_view));
+        active_timers = gr_cooking_view_has_active_timers (GR_COOKING_VIEW (page->cooking_view));
 
         gtk_widget_set_sensitive (page->prev_step_button, step - 1 >= 0);
         gtk_widget_set_sensitive (page->next_step_button, step + 1 <= n_steps - 1);
-        gtk_widget_set_visible (page->done_button, step == n_steps - 1);
+
+        gtk_widget_set_visible (page->done_button, step == n_steps - 1 && !active_timers);
 }
 
 static void
@@ -281,6 +284,8 @@ gr_cooking_page_timer_expired (GrCookingPage *page,
 static void
 show_buttons (GrCookingPage *page)
 {
+        update_steppers (page);
+
         if (!gtk_revealer_get_child_revealed (GTK_REVEALER (page->close_revealer)))
                 gtk_revealer_set_reveal_child (GTK_REVEALER (page->close_revealer), TRUE);
 
@@ -297,6 +302,8 @@ show_buttons (GrCookingPage *page)
 static void
 hide_buttons (GrCookingPage *page)
 {
+        update_steppers (page);
+
         if (gtk_revealer_get_child_revealed (GTK_REVEALER (page->close_revealer)))
                 gtk_revealer_set_reveal_child (GTK_REVEALER (page->close_revealer), FALSE);
 
@@ -432,6 +439,7 @@ static void
 close_notification (GrCookingPage *page)
 {
         gtk_revealer_set_reveal_child (GTK_REVEALER (page->notification_revealer), FALSE);
+        update_steppers (page);
 }
 
 static void

@@ -48,6 +48,7 @@ void           gr_cooking_view_set_timer_box (GrCookingView *view,
                                               GtkWidget     *box);
 void           gr_cooking_view_timer_expired (GrCookingView *view,
                                               int            step);
+gboolean       gr_cooking_view_has_active_timers (GrCookingView *view);
 
 G_END_DECLS
 
