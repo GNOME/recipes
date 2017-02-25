@@ -29,7 +29,6 @@ static GString *string;
 static void
 test_line (const char *line)
 {
-        char *input;
         g_autoptr(GError) error = NULL;
         g_auto(GStrv) strv = NULL;
 
