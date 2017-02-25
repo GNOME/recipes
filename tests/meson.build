@@ -22,7 +22,7 @@ unit = executable('unit', 'unit.c',
                   dependencies: deps)
 test('unit', unit, env : env)
 
-ids = executable('ids', 'id.c',
+ids = executable('ids', 'ids.c',
                   include_directories : tests_inc,
                   dependencies: deps)
 test('ids', ids, env : env)
