@@ -1661,6 +1661,8 @@ struct _GrRecipeSearch
 
         char **query;
 
+        GDateTime *timestamp;
+
         gulong idle;
         GHashTableIter iter;
 
@@ -1737,6 +1739,10 @@ recipe_matches (GrRecipeSearch *search,
                 return gr_recipe_store_is_favorite (search->store, recipe);
         else if (strcmp (search->query[0], "is:shopping") == 0)
                 return gr_recipe_store_is_in_shopping (search->store, recipe);
+        if (g_str_has_prefix (search->query[0], "ct:"))
+                return g_date_time_compare (gr_recipe_get_ctime (recipe), search->timestamp) > 0;
+        else if (g_str_has_prefix (search->query[0], "mt:"))
+                return g_date_time_compare (gr_recipe_get_mtime (recipe), search->timestamp) > 0;
         else
                 return gr_recipe_matches (recipe, (const char **)search->query);
 }
@@ -1780,6 +1786,13 @@ start_search (GrRecipeSearch *search)
         if (search->query == NULL) {
                 g_warning ("No query set");
                 return;
+        }
+
+        if (g_str_has_prefix (search->query[0], "ct:") ||
+            g_str_has_prefix (search->query[0], "mt:")) {
+                const char *time = search->query[0] + strlen ("ct:");
+                g_clear_pointer (&search->timestamp, g_date_time_unref);
+                search->timestamp = date_time_from_string (time);
         }
 
         if (search->idle == 0) {
@@ -1930,6 +1943,7 @@ gr_recipe_search_finalize (GObject *object)
         stop_search (search);
         g_strfreev (search->query);
         g_object_unref (search->store);
+        g_clear_pointer (&search->timestamp, g_date_time_unref);
 
         G_OBJECT_CLASS (gr_recipe_search_parent_class)->finalize (object);
 }
