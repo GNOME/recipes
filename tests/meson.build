@@ -20,5 +20,9 @@ test('number', number, env : env)
 unit = executable('unit', 'unit.c',
                   include_directories : tests_inc,
                   dependencies: deps)
-
 test('unit', unit, env : env)
+
+ids = executable('ids', 'id.c',
+                  include_directories : tests_inc,
+                  dependencies: deps)
+test('ids', ids, env : env)
