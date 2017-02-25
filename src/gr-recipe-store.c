@@ -415,11 +415,11 @@ save_recipes (GrRecipeStore *self)
 {
         g_autoptr(GKeyFile) keyfile = NULL;
         g_autofree char *path = NULL;
-        GHashTableIter iter;
         const char *key;
         GrRecipe *recipe;
         g_autoptr(GError) error = NULL;
         const char *dir;
+        GList *keys, *l;
 
         keyfile = g_key_file_new ();
 
@@ -431,8 +431,9 @@ save_recipes (GrRecipeStore *self)
 
         g_message ("Save recipe db: %s", path);
 
-        g_hash_table_iter_init (&iter, self->recipes);
-        while (g_hash_table_iter_next (&iter, (gpointer *)&key, (gpointer *)&recipe)) {
+        keys = g_hash_table_get_keys (self->recipes);
+        keys = g_list_sort (keys, (GCompareFunc)strcmp);
+        for (l = keys; l; l = l->next) {
                 const char *name;
                 const char *author;
                 const char *description;
@@ -454,6 +455,9 @@ save_recipes (GrRecipeStore *self)
                 int default_image = 0;
                 int i;
                 gboolean readonly;
+
+                key = l->data;
+                recipe = g_hash_table_lookup (self->recipes, key);
 
                 name = gr_recipe_get_name (recipe);
                 author = gr_recipe_get_author (recipe);
@@ -516,6 +520,8 @@ save_recipes (GrRecipeStore *self)
                         g_key_file_set_string (keyfile, key, "Modified", modified);
                 }
         }
+
+        g_list_free (keys);
 
         if (!g_key_file_save_to_file (keyfile, path, &error)) {
                 g_error ("Failed to save recipe database: %s", error->message);
@@ -840,11 +846,11 @@ save_chefs (GrRecipeStore *store)
 {
         g_autoptr(GKeyFile) keyfile = NULL;
         g_autofree char *path = NULL;
-        GHashTableIter iter;
         const char *key;
         GrChef *chef;
         g_autoptr(GError) error = NULL;
         const char *dir;
+        GList *keys, *l;
 
         keyfile = g_key_file_new ();
 
@@ -856,12 +862,16 @@ save_chefs (GrRecipeStore *store)
 
         g_message ("Save chefs db: %s", path);
 
-        g_hash_table_iter_init (&iter, store->chefs);
-        while (g_hash_table_iter_next (&iter, (gpointer *)&key, (gpointer *)&chef)) {
+        keys = g_hash_table_get_keys (store->chefs);
+        keys = g_list_sort (keys, (GCompareFunc)strcmp);
+        for (l = keys; l; l = l->next) {
                 const char *name;
                 const char *fullname;
                 const char *description;
                 const char *image_path;
+
+                key = l->data;
+                chef = g_hash_table_lookup (store->chefs, key);
 
                 if (gr_chef_is_readonly (chef))
                         continue;
@@ -884,6 +894,7 @@ save_chefs (GrRecipeStore *store)
                 g_key_file_set_string (keyfile, key, "Fullname", fullname ? fullname : "");
                 g_key_file_set_string (keyfile, key, "Description", description ? description : "");
         }
+        g_list_free (keys);
 
         if (!g_key_file_save_to_file (keyfile, path, &error)) {
                 g_error ("Failed to save chefs database: %s", error->message);
