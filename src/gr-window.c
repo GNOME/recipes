@@ -916,7 +916,7 @@ gr_window_show_favorites (GrWindow *window)
 
         gr_list_page_populate_from_favorites (GR_LIST_PAGE (window->list_page));
 
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Favorite recipes"));
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Favorite Recipes"));
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
@@ -932,7 +932,7 @@ gr_window_show_all (GrWindow *window)
 
         gr_list_page_populate_from_all (GR_LIST_PAGE (window->list_page));
 
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("All recipes"));
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("All Recipes"));
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
@@ -948,7 +948,7 @@ gr_window_show_new (GrWindow *window)
 
         gr_list_page_populate_from_new (GR_LIST_PAGE (window->list_page));
 
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("New recipes"));
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("New Recipes"));
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
@@ -980,7 +980,7 @@ gr_window_show_shopping (GrWindow *window)
 {
         save_back_entry (window);
 
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Buy ingredients"));
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Buy Ingredients"));
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
@@ -998,7 +998,7 @@ do_show_myself (GrChef   *chef,
 
         gr_list_page_populate_from_chef (GR_LIST_PAGE (window->chef_page), chef);
 
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header ), _("My own recipes"));
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header ), _("My own Recipes"));
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
