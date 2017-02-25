@@ -5,8 +5,8 @@ dnl ***********************************************************************
 dnl Define Versioning Information
 dnl ***********************************************************************
 m4_define([major_version],[0])
-m4_define([minor_version],[14])
-m4_define([micro_version],[5])
+m4_define([minor_version],[16])
+m4_define([micro_version],[0])
 m4_define([package_version],[major_version.minor_version.micro_version])
 m4_define([bug_report_url],[https://bugzilla.gnome.org/enter_bug.cgi?product=recipes])
 m4_define([api_version],[major_version])
