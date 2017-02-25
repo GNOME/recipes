@@ -211,6 +211,8 @@ category_clicked (GrCategoryTile *tile,
                 gr_window_show_myself (GR_WINDOW (window));
         else if (strcmp (name, "all") == 0)
                 gr_window_show_all (GR_WINDOW (window));
+        else if (strcmp (name, "new") == 0)
+                gr_window_show_new (GR_WINDOW (window));
 }
 
 static void
@@ -244,12 +246,17 @@ populate_categories_from_store (GrRecipesPage *self)
         gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
         g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);
 
+        tile = gr_category_tile_new_with_label ("new", _("New Recipes"));
+        gtk_widget_show (tile);
+        gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
+        g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);
+
         for (i = 0; i < G_N_ELEMENTS (diets); i++) {
                 tile = gr_category_tile_new (diets[i]);
                 gtk_widget_show (tile);
                 g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);
 
-                if (i < 3)
+                if (i + 4 < 6)
                         gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
                 else
                         gtk_container_add (GTK_CONTAINER (self->diet_box2), tile);
