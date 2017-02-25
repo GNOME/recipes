@@ -239,6 +239,7 @@ gr_cooking_view_finalize (GObject *object)
 {
         GrCookingView *self = GR_COOKING_VIEW (object);
 
+        g_clear_pointer (&self->id, g_free);
         g_clear_pointer (&self->images, g_array_unref);
         g_clear_pointer (&self->instructions, g_free);
         g_clear_pointer (&self->steps, g_ptr_array_unref);
