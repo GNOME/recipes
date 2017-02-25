@@ -376,11 +376,12 @@ generate_id (const char *first_string, ...)
         while (s) {
                 for (q = s; *q; q = g_utf8_find_next_char (q, NULL)) {
                         gunichar ch = g_utf8_get_char (q);
-                        if (ch > 128 || ch == '.' || ch == ',' || ch == ' ' ||
-                            ch == ']' || ch == '[' || g_ascii_iscntrl ((char)ch))
-                                g_string_append_c (str, '_');
+                        if (ch > 128 ||
+                            g_ascii_isalnum (ch) || g_ascii_isdigit (ch) ||
+                                 (char)ch == '-' || (char)ch == '_')
+                                g_string_append_unichar (str, ch);
                         else
-                                g_string_append_c (str, (char)ch);
+                                g_string_append_c (str, '_');
                 }
 
                 s = va_arg (ap, const char *);
