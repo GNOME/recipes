@@ -353,7 +353,7 @@ translate_multiline_string (const char *s)
                 if (i > 0)
                         g_string_append (out, "\n");
                 if (strv[i][0] != 0)
-                        g_string_append (out, _(strv[i]));
+                        g_string_append (out, g_dgettext (GETTEXT_PACKAGE "-data", strv[i]));
        }
 
         return g_string_free (out, FALSE);
