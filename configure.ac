@@ -139,10 +139,10 @@ dnl ***********************************************************************
 PKG_CHECK_MODULES(RECIPES, [gmodule-2.0
                             gio-2.0 >= 2.42
                             gtk+-3.0 >= 3.22
+                            appstream-glib
                             $AUTOAR_DEP
                             $GSPELL_DEP
                             $CANBERRA_DEP])
-
 
 LIBGD_INIT([tagged-entry static])
 
