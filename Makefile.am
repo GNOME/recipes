@@ -1,4 +1,4 @@
-SUBDIRS = . libgd tools data src po tests
+SUBDIRS = . libgd tools data src po po-data tests
 
 EXTRA_DIST = AUTHORS NEWS libgd.info
 

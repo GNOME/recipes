@@ -164,6 +164,7 @@ AC_CONFIG_FILES([
 	data/Makefile
 	tests/Makefile
 	po/Makefile.in
+	po-data/Makefile.in
 ],[],
 [API_VERSION='$API_VERSION'])
 AC_OUTPUT
