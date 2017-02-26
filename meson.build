@@ -62,11 +62,14 @@ endif
 
 deps = [ dependency('gtk+-3.0', version : '>=3.22'),
          dependency('gmodule-export-2.0'),
+         dependency('appstream-glib'),
          autoar_dep,
          gspell_dep,
          canberra_dep,
          libgd_dep ]
 
+datadir = join_paths([ get_option('prefix'),
+                       get_option('datadir') ])
 pkgdatadir = join_paths([ get_option('prefix'),
                           get_option('datadir'),
                           'gnome-recipes' ])
@@ -75,6 +78,7 @@ conf.set_quoted('G_LOG_DOMAIN', 'org.gnome.Recipes')
 conf.set_quoted('PACKAGE_NAME', 'gnome-recipes')
 conf.set_quoted('PACKAGE_VERSION', meson.project_version())
 conf.set_quoted('GETTEXT_PACKAGE', 'gnome-recipes')
+conf.set_quoted('DATADIR', datadir)
 conf.set_quoted('PKGDATADIR', pkgdatadir)
 conf.set_quoted('LOCALEDIR', join_paths([ get_option('prefix'),
                                           get_option('datadir'),

@@ -10,6 +10,7 @@ gnome_recipes_CFLAGS = \
 	$(RECIPES_CFLAGS) 		\
 	-DPACKAGE_NAME=\"$(PACKAGE_NAME)\"	\
 	-DPKGDATADIR=\"$(pkgdatadir)\" 	\
+	-DDATADIR=\"$(datadir)\" 	\
 	-DLOCALEDIR=\"$(localedir)\" 	\
 	-DCOMMIT_ID=\"$(commitid)\"	\
 	-DLIBGD_INFO=\"$(libgd_info)\"	\
@@ -31,6 +32,8 @@ gnome_recipes_SOURCES = \
 	gr-account.c		\
 	gr-app.h 		\
 	gr-app.c 		\
+	gr-appdata.h 		\
+	gr-appdata.c 		\
 	gr-category-tile.h 	\
 	gr-category-tile.c 	\
 	gr-chef.h		\
@@ -149,7 +152,9 @@ BUILT_SOURCES = \
 DISTCLEANFILES = \
 	ingredients.inc		\
 	no-ingredients.inc	\
-	segments.inc
+	segments.inc		\
+	cuisine.css		\
+	news
 
 MAINTAINERCLEANFILES = \
 	resources-ui.c		\
@@ -206,6 +211,9 @@ gr-shell-search-provider-dbus.h gr-shell-search-provider-dbus.c: Makefile.am $(s
 
 cuisine.css: cuisine.css.in
 	$(AM_V_GEN) sed -e "s|\@pkgdatadir\@|$(pkgdatadir)|" $< > $@
+
+news:
+	$(AM_V_GEN) $(top_builddir)/tools/get-news $(top_srcdir)/data/appdata/org.gnome.Recipes.appdata.xml.in $(PACKAGE_VERSION) > $@
 
 EXTRA_DIST = \
 	shell-search-provider-dbus-interfaces.xml 	\
