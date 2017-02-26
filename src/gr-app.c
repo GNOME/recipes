@@ -63,6 +63,7 @@ gr_app_activate (GApplication *app)
         if (!win)
                 win = GTK_WINDOW (gr_window_new (GR_APP (app)));
         gtk_window_present (win);
+        gr_window_activate (GR_WINDOW (win));
 }
 
 static void
@@ -104,6 +105,17 @@ about_activated (GSimpleAction *action,
 
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
         gr_window_show_about_dialog (GR_WINDOW (win));
+}
+
+static void
+news_activated (GSimpleAction *action,
+                GVariant      *parameter,
+                gpointer       app)
+{
+        GtkWindow *win;
+
+        win = gtk_application_get_active_window (GTK_APPLICATION (app));
+        gr_window_show_news (GR_WINDOW (win));
 }
 
 static void
@@ -165,6 +177,7 @@ static GActionEntry app_entries[] =
         { "timer-expired", timer_expired, "(si)", NULL, NULL },
         { "chef-information", chef_information_activated, NULL, NULL, NULL },
         { "about", about_activated, NULL, NULL, NULL },
+        { "news", news_activated, NULL, NULL, NULL },
         { "import", import_activated, NULL, NULL, NULL },
         { "details", details_activated, "(ss)", NULL, NULL },
         { "search", search_activated, "s", NULL, NULL },

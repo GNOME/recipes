@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="gnome-recipes">
+  <object class="GtkWindow" id="dialog">
+    <property name="modal">1</property>
+    <property name="resizable">0</property>
+    <property name="title" translatable="yes">Welcome</property>
+    <property name="destroy-with-parent">1</property>
+    <child type="titlebar">
+      <object class="GtkHeaderBar">
+        <property name="visible">1</property>
+        <property name="title" translatable="yes">Welcome</property>
+        <property name="show-close-button">0</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">1</property>
+        <property name="margin">20</property>
+        <property name="spacing">20</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkImage">
+            <property name="visible">1</property>
+            <property name="icon-name">org.gnome.Recipes</property>
+            <property name="pixel-size">256</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">1</property>
+            <property name="label" translatable="yes">Welcome to Recipes</property>
+            <style>
+              <class name="welcome"/>
+              <class name="heading"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">1</property>
+            <property name="wrap">1</property>
+            <property name="max-width-chars">55</property>
+            <property name="width-chars">55</property>
+            <property name="label" translatable="yes">Recipes helps you to discover what to cook today, tomorrow, and the rest of the week. Find recipes from all over the world that have been contributed by the GNOME community, and share your favorite recipes with your friends.</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="close_button">
+            <property name="visible">1</property>
+            <property name="halign">center</property>
+            <property name="label" translatable="yes">Let's Cook Something</property>
+            <style>
+              <class name="suggested-action"/>
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
