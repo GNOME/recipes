@@ -90,6 +90,7 @@ subdir('src')
 subdir('tools')
 subdir('data')
 subdir('po')
+subdir('po-data')
 subdir('tests')
 
 meson.add_install_script('tools/meson_post_install.py')
