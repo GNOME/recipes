@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="gnome-recipes">
+  <object class="GtkWindow" id="dialog">
+    <property name="modal">1</property>
+    <property name="resizable">0</property>
+    <property name="title" translatable="yes">Welcome</property>
+    <property name="destroy-with-parent">1</property>
+    <child type="titlebar">
+      <object class="GtkHeaderBar">
+        <property name="visible">1</property>
+        <property name="title" translatable="yes">Welcome</property>
+        <property name="show-close-button">0</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">1</property>
+        <property name="margin">20</property>
+        <property name="spacing">20</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkImage">
+            <property name="visible">1</property>
+            <property name="resource">/org/gnome/Recipes/surprise.png</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">1</property>
+            <property name="label" translatable="yes">GNOME turns 20!</property>
+            <style>
+              <class name="welcome"/>
+              <class name="heading"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">1</property>
+            <property name="wrap">1</property>
+            <property name="max-width-chars">55</property>
+            <property name="width-chars">55</property>
+            <property name="label" translatable="yes">Recipes is a birthday present for GNOME for its 20th birthday. We invitee the GNOME community all over the world to share recipes and enjoy a good meal together.</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="close_button">
+            <property name="visible">1</property>
+            <property name="halign">center</property>
+            <property name="label" translatable="yes">Let's Party</property>
+            <style>
+              <class name="suggested-action"/>
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

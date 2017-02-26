@@ -1199,6 +1199,21 @@ gr_window_show_welcome (GrWindow *window)
         gr_window_present_dialog (window, dialog);
 }
 
+static void
+gr_window_show_surprise (GrWindow *window)
+{
+        g_autoptr(GtkBuilder) builder = NULL;
+        GtkWindow *dialog;
+        GtkWidget *button;
+
+        builder = gtk_builder_new_from_resource ("/org/gnome/Recipes/recipe-surprise.ui");
+        dialog = GTK_WINDOW (gtk_builder_get_object (builder, "dialog"));
+        button = GTK_WIDGET (gtk_builder_get_object (builder, "close_button"));
+        g_signal_connect_swapped (button, "clicked", G_CALLBACK (gtk_widget_destroy), dialog);
+        gtk_window_set_transient_for (dialog, GTK_WINDOW (window));
+        gr_window_present_dialog (window, dialog);
+}
+
 void
 gr_window_show_news (GrWindow *window)
 {
@@ -1281,7 +1296,10 @@ show_welcome_or_news (gpointer data)
         g_autofree char *new = NULL;
 
         load_versions (&new, &old);
-        if (new == NULL && old == NULL) {
+        if (g_getenv ("SURPRISE")) {
+                gr_window_show_surprise (window);
+        }
+        else if (new == NULL && old == NULL) {
                 save_versions (PACKAGE_VERSION, NULL);
                 gr_window_show_welcome (window);
         }
