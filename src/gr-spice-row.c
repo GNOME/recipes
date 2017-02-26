@@ -26,6 +26,30 @@
 #include "gr-spice-row.h"
 
 
+/** Spiciness levels:
+ *
+ *  We use numbers between 0 and 100 for spiciness, currently, and we discriminate
+ *  4 levels of spiciness:
+ *  mild:     0 - 24
+ *  spicy:   25 - 49
+ *  hot:     50 - 74
+ *  extreme: 75 - 99
+ *
+ *  When selecting values in the edit, we assign the following values:
+ *  mild:    15
+ *  spicy:   40
+ *  hot:     60
+ *  extreme: 90
+ *
+ *  For the search, we have the following queries in the list:
+ *  mild:             < 25
+ *  at most spicy:    < 50
+ *  at least spicy:  >= 25
+ *  at most hot:      < 75
+ *  at least hot:    >= 50
+ *  very spicy:      >= 75
+ */
+
 struct _GrSpiceRow
 {
         GtkListBoxRow parent_instance;
