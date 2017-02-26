@@ -40,6 +40,8 @@
 #include "gr-recipe-importer.h"
 #include "gr-about-dialog.h"
 #include "gr-account.h"
+#include "gr-utils.h"
+#include "gr-appdata.h"
 
 
 struct _GrWindow
@@ -1144,4 +1146,69 @@ gr_window_show_about_dialog (GrWindow *window)
         window->about_dialog = (GtkWidget *)gr_about_dialog_new ();
         g_signal_connect (window->about_dialog, "response", G_CALLBACK (about_response), window);
         gr_window_present_dialog (window, GTK_WINDOW (window->about_dialog));
+}
+
+void
+gr_window_show_news (GrWindow *window)
+{
+        g_autoptr(GPtrArray) news = NULL;
+        g_autoptr(GtkBuilder) builder = NULL;
+        GtkWindow *dialog;
+        GtkWidget *box;
+        int i;
+
+        news = get_release_info (PACKAGE_VERSION, "0.0.0");
+        if (news->len == 0)
+                return;
+
+        builder = gtk_builder_new_from_resource ("/org/gnome/Recipes/recipe-whats-new-dialog.ui");
+        dialog = GTK_WINDOW (gtk_builder_get_object (builder, "dialog"));
+        gtk_window_set_transient_for (dialog, GTK_WINDOW (window));
+        box = GTK_WIDGET (gtk_builder_get_object (builder, "box"));
+
+        for (i = 0; i < news->len; i++) {
+                ReleaseInfo *ri = g_ptr_array_index (news, i);
+                GtkWidget *heading;
+                GtkWidget *image;
+                GtkWidget *label;
+                GtkStyleContext *context;
+                g_autofree char *title = NULL;
+
+                heading = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+                gtk_widget_set_halign (heading, GTK_ALIGN_CENTER);
+                image = gtk_image_new_from_icon_name ("org.gnome.Recipes-symbolic", 1);
+                gtk_image_set_pixel_size (GTK_IMAGE (image), 32);
+                gtk_container_add (GTK_CONTAINER (heading), image);
+                title = g_strdup_printf (_("Recipes %s"), ri->version);
+                label = gtk_label_new (title);
+                gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+                context = gtk_widget_get_style_context (label);
+                gtk_style_context_add_class (context, "heading");
+                gtk_style_context_add_class (context, "welcome");
+                gtk_container_add (GTK_CONTAINER (heading), label);
+                gtk_container_add (GTK_CONTAINER (box), heading);
+
+                if (ri->date) {
+                        g_autofree char *date = NULL;
+                        g_autofree char *release = NULL;
+
+                        date = g_date_time_format (ri->date, "%F");
+                        release = g_strdup_printf (_("Released: %s"), date);
+                        label = gtk_label_new (release);
+                        gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+                        gtk_container_add (GTK_CONTAINER (box), label);
+                }
+
+                if (ri->news) {
+                        label = gtk_label_new (ri->news);
+                        gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+                        gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
+                        gtk_label_set_max_width_chars (GTK_LABEL (label), 55);
+                        gtk_label_set_width_chars (GTK_LABEL (label), 55);
+                        gtk_container_add (GTK_CONTAINER (box), label);
+                }
+        }
+
+        gtk_widget_show_all (box);
+        gr_window_present_dialog (GR_WINDOW (window), dialog);
 }
