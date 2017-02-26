@@ -736,7 +736,7 @@ gr_about_dialog_new (void)
                                          NULL);
 
         about = g_object_new (GR_TYPE_ABOUT_DIALOG,
-                              "program-name", _("GNOME Recipes"),
+                              "program-name", _("Recipes"),
 #if MICRO_VERSION % 2 == 1
                               "version", COMMIT_ID,
 #else
@@ -749,7 +749,7 @@ gr_about_dialog_new (void)
                               "translator-credits", _("translator-credits"),
                               "logo", logo,
                               "website", "https://wiki.gnome.org/Apps/Recipes",
-                              "website-label", _("Learn more about GNOME Recipes"),
+                              "website-label", _("Learn more about Recipes"),
                               NULL);
 
         gtk_about_dialog_add_credit_section (GTK_ABOUT_DIALOG (about),
