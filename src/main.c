@@ -40,6 +40,9 @@ main (int argc, char *argv[])
         bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
         textdomain (GETTEXT_PACKAGE);
 
+        bindtextdomain (GETTEXT_PACKAGE "-data", LOCALEDIR);
+        bind_textdomain_codeset (GETTEXT_PACKAGE "-data", "UTF-8");
+
         app = G_APPLICATION (gr_app_new ());
 
         status = g_application_run (app, argc, argv);
