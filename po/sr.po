@@ -1,17 +1,15 @@
 # Serbian translation for recipes.
 # Copyright (C) 2016 recipes's COPYRIGHT HOLDER
 # This file is distributed under the same license as the recipes package.
-# 
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2016.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2016—2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=recipes"
-"&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-12-09 01:45+0000\n"
-"PO-Revision-Date: 2016-12-09 18:50+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-02-12 14:16+0000\n"
+"PO-Revision-Date: 2017-02-22 18:30+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
-"Language-Team: српски <gnome-sr@googlegroups.org>\n"
+"Language-Team: Serbian <(nothing)>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +19,7 @@ msgstr ""
 "X-Project-Style: gnome\n"
 "X-Poedit-Language: sr\n"
 
-#: data/org.gnome.Recipes.desktop.in:3
+#: data/org.gnome.Recipes.desktop.in:3 src/gr-about-dialog.c:644
 msgid "GNOME Recipes"
 msgstr "Гномови рецепти"
 
@@ -29,15 +27,17 @@ msgstr "Гномови рецепти"
 msgid "GNOME cooks unite!"
 msgstr "Гномова куварска јединица!"
 
-#: data/org.gnome.Recipes.desktop.in:6
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Recipes.desktop.in:7
 msgid "org.gnome.Recipes"
 msgstr "org.gnome.Recipes"
 
-#: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:172
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:13
+#: src/gr-window.ui:293 src/gr-window.c:593
 msgid "Recipes"
 msgstr "Рецепти"
 
-#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-app.c:107
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:652
 msgid "GNOME loves to cook"
 msgstr "Гном воли да кува"
 
@@ -78,48 +78,1081 @@ msgid "An individual recipe"
 msgstr "Рецепт појединца"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:38
-msgid "Creating a new recipe"
+#, fuzzy
+#| msgid "Creating a new recipe"
+msgid "Editing a recipe"
 msgstr "Правим нови рецепт"
 
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:42
+msgid "A shopping list"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:46
+#, fuzzy
+#| msgid "Creating a new recipe"
+msgid "Cooking a recipe"
+msgstr "Правим нови рецепт"
+
+#: data/chefs.db.h:3
+msgid "Adrià is originally from Barcelona, Spain."
+msgstr ""
+
+#: data/chefs.db.h:4
+msgid ""
+"Being from Strasbourg, Alexandre is knowledgeable about both Alsatian and "
+"French cuisine, but he's not afraid to experiment in other ones as well."
+msgstr ""
+
+#: data/chefs.db.h:5
+msgid "Aviation, making stuff, in Finland."
+msgstr ""
+
+#: data/chefs.db.h:6
+msgid ""
+"Erusan is an American who has lived all over the country, loves GNOME, and "
+"enjoys cooking — primarily American, Asian, and Indian cuisine."
+msgstr ""
+
+#: data/chefs.db.h:7
+msgid "I cook a lot, particularly Italian and Indian."
+msgstr ""
+
+#: data/chefs.db.h:8
+#, fuzzy
+#| msgid "The cuisines page"
+msgid "The nordic cuisine maestro."
+msgstr "Кухињска страница"
+
+#: data/chefs.db.h:9
+msgid ""
+"Ray is a Desktop Software Engineer at Red Hat and vegetarian who "
+"occasionally enjoys cooking."
+msgstr ""
+
+#: data/chefs.db.h:10
+msgid ""
+"My name is Fredrik Fyksen. I am from Norway, but live in Denmark. I like "
+"food, computers and music. You can read more about me at <a href=\"https://"
+"www.fyksen.me/\">fyksen.me</a>."
+msgstr ""
+
+#: data/chefs.db.h:11
+msgid ""
+"Matthias is a manager in the Desktop team at Red Hat. He likes to cook as "
+"much as he likes to code."
+msgstr ""
+
+#: data/chefs.db.h:12
+msgid "Matthew is a vegan and a Computer Science student who loves FOSS."
+msgstr ""
+
+#: data/chefs.db.h:13
+msgid "Elvin lives in Istanbul."
+msgstr ""
+
+#: data/recipes.db.h:3
+msgid "Spanish Omelet"
+msgstr ""
+
+#: data/recipes.db.h:4
+msgid "Traditional Spanish Omelet, also known as \"Tortilla de Patata\""
+msgstr ""
+
+#: data/recipes.db.h:5
+msgid ""
+"[image:0]Put a bit of oil in a pan and cover the surface with sliced onions."
+msgstr ""
+
+#: data/recipes.db.h:6
+msgid "[image:3]Meanwhile, peel the potatoes and cut them in small pieces."
+msgstr ""
+
+#: data/recipes.db.h:7
+msgid ""
+"[image:2]Once the onions start to take colour, put the potatoes into the pan "
+"and add some salt."
+msgstr ""
+
+#: data/recipes.db.h:8
+msgid ""
+"[image:1]Cover the pan and stir the contents from time to time, until "
+"potatoes are well cooked."
+msgstr ""
+
+#: data/recipes.db.h:9
+msgid "[image:7]Put the eggs in a big bowl and add some salt"
+msgstr ""
+
+#: data/recipes.db.h:10
+msgid "[image:6]Whip the eggs."
+msgstr ""
+
+#: data/recipes.db.h:11
+msgid "[image:5]Put the contents of the pan in the bowl and mix it well."
+msgstr ""
+
+#: data/recipes.db.h:12
+msgid ""
+"[image:4]Add some oil to the pan and put the whole mix back into the pan."
+msgstr ""
+
+#: data/recipes.db.h:13
+msgid ""
+"[image:8]Once the lower side is cooked, with the help of a plate, turn the "
+"omelet."
+msgstr ""
+
+#: data/recipes.db.h:14
+msgid "Repeat the process until it is well cooked."
+msgstr ""
+
+#: data/recipes.db.h:15
+msgid "White fish for people who dont like fish."
+msgstr ""
+
+#: data/recipes.db.h:16
+msgid ""
+"It is a fantastic dish for those of us that dont love fish, but know we have "
+"to eat it to stay healthy."
+msgstr ""
+
+#: data/recipes.db.h:17
+msgid ""
+"The key to get this dish good is to have high temperature on the stove when "
+"first frying the fish. Then turn it down after the initial fry."
+msgstr ""
+
+#: data/recipes.db.h:18
+msgid ""
+"Set the stove to high (8/10), then put a good amount of oil in it. Any type "
+"of oil will do."
+msgstr ""
+
+#: data/recipes.db.h:19
+msgid ""
+"Remove bone and skin from the fish (if any), and add salt and pepper. Give "
+"the stove some minutes to get really hot. Then put the fish in. 2-3 min on "
+"each side."
+msgstr ""
+
+#: data/recipes.db.h:20
+msgid ""
+"Turn the temperature down to low (3/10). Add two spoons of butter, some "
+"thyme, rosemary and garlic. When the butter have melted, use a spoon to poor "
+"the melted butter and spice mix over the fish fillet."
+msgstr ""
+
+#: data/recipes.db.h:21
+msgid ""
+"After about 5 minutes your fish will be done. You can serve it with "
+"potatoes, rice, or noodles. Everything works."
+msgstr ""
+
+#: data/recipes.db.h:22
+msgid "Grumbeerekiechle"
+msgstr ""
+
+#: data/recipes.db.h:23
+msgid ""
+"Traditional potato hash from Alsace. Usually served with lettuce, sometimes "
+"with smoked salmon."
+msgstr ""
+
+#: data/recipes.db.h:24
+msgid ""
+"[image:1]Peel and grate the potatoes. Peel and slice the onions. Mix with "
+"the rest of the ingredients in a large bowl."
+msgstr ""
+
+#: data/recipes.db.h:25
+msgid "Put a frying pan on the hob at medium heat with a bit of oil."
+msgstr ""
+
+#: data/recipes.db.h:26
+msgid "[image:2]Form thin patties in the pan and brown them on both sides."
+msgstr ""
+
+#: data/recipes.db.h:27
+msgid ""
+"[image:0]Serve hot. Can be kept in a fridge and reheated in a micro-wave "
+"oven."
+msgstr ""
+
+#: data/recipes.db.h:28
+msgid "Savoury cakes"
+msgstr ""
+
+#: data/recipes.db.h:29
+msgid ""
+"This savoury cakes can be served as appetizers or as main course. There are "
+"several variations that you can bake with the same base depending on your "
+"mood and tastes. Quite common at French parties."
+msgstr ""
+
+#: data/recipes.db.h:30
+msgid ""
+"Prepare the batter: melt butter in a large bowl, then mix with the eggs, "
+"flour and yeast in a bowl."
+msgstr ""
+
+#: data/recipes.db.h:31
+msgid ""
+"Add the ingredients matching the variation you chose, preferably sliced or "
+"diced to turn them into small bits, and mix again. Try coming up with your "
+"own variations!"
+msgstr ""
+
+#: data/recipes.db.h:32
+msgid "Pour the batter in a loaf tin."
+msgstr ""
+
+#: data/recipes.db.h:33
+msgid "[timer:00:40:00]Put in the oven at 180°C for 40 minutes."
+msgstr ""
+
+#: data/recipes.db.h:34
+msgid ""
+"[image:1]Serve cold, cut in slices or cubes that people will get with a "
+"toothpick."
+msgstr ""
+
+#: data/recipes.db.h:35
+msgid "Tagliatelle alla Romana"
+msgstr ""
+
+#: data/recipes.db.h:36
+msgid ""
+"Pasta is one of my favourite things in the world, and this is one of my "
+"favourity pasta dishes. It's gutsy Italian food at its best."
+msgstr ""
+
+#: data/recipes.db.h:37
+msgid ""
+"It's important to have good quality chicken livers for this recipe - get "
+"free range organic if possible. You can use dried pasta if you're unable to "
+"get fresh."
+msgstr ""
+
+#: data/recipes.db.h:38
+msgid ""
+"Rinse the chicken livers and cut out any out any bits of sinew. Dry and "
+"season with salt and pepper."
+msgstr ""
+
+#: data/recipes.db.h:39
+msgid "Finely chop the red onion."
+msgstr ""
+
+#: data/recipes.db.h:40
+msgid ""
+"Melt half the butter in a frying pan, then add the olive oil and cook the "
+"onion until soft, without letting it brown."
+msgstr ""
+
+#: data/recipes.db.h:41
+msgid ""
+"Add the livers to the pan and fry until lightly browned. Then add the "
+"tomatoes and cook on a low heat for 20 minutes, stirring occasionally."
+msgstr ""
+
+#: data/recipes.db.h:42
+msgid ""
+"Put a deep pan of water on to boil and add a good pinch of salt to the water."
+msgstr ""
+
+#: data/recipes.db.h:43
+msgid ""
+"Remove the livers from the pan and chop finely. Then add back to the sauce "
+"and continue to cook. Check for seasoning and add more salt and pepper if "
+"necessary."
+msgstr ""
+
+#: data/recipes.db.h:44
+msgid ""
+"Cook the pasta for 3 minutes if fresh (or put on earlier and follow packet "
+"instructions if using dry pasta)."
+msgstr ""
+
+#: data/recipes.db.h:45
+msgid ""
+"Drain the pasta, retaining a cup of the pasta water. Add the pasta to the "
+"sauce along with the remaining butter. Mix and cook on a low heat for "
+"several minutes, to allow the pasta to absorb the sauce."
+msgstr ""
+
+#: data/recipes.db.h:46
+msgid "If the sauce needs loosening, add a bit of the pasta cooking water."
+msgstr ""
+
+#: data/recipes.db.h:47
+msgid "Serve with plenty of black pepper."
+msgstr ""
+
+#: data/recipes.db.h:48
+msgid "Non-knead buns"
+msgstr ""
+
+#: data/recipes.db.h:49
+msgid "Very quick fresh bread for breakfast with 5 minutes of work."
+msgstr ""
+
+#: data/recipes.db.h:50
+#, fuzzy
+#| msgid "Preparation:"
+msgid "[image:0]Preparation:"
+msgstr "Припрема:"
+
+#: data/recipes.db.h:51
+msgid ""
+"[image:1]Mix together all of the ingredients in a large bowl into a thick "
+"porridge-like dough. Do not knead the dough, just mix it together. "
+msgstr ""
+
+#: data/recipes.db.h:52
+msgid ""
+"Cover and leave to rise in room temperature for 8-12 hours. This can be done "
+"for example the previous night so you can bake them in the morning."
+msgstr ""
+
+#: data/recipes.db.h:53
+#, fuzzy
+#| msgid "Cooking:"
+msgid "Baking:"
+msgstr "Кување:"
+
+#: data/recipes.db.h:54
+msgid "Heat your oven to 250 degrees Celsius."
+msgstr ""
+
+#: data/recipes.db.h:55
+msgid ""
+"[image:3]The dough will be more than double in size and full of bubbles and "
+"very sticky. Pour a generous amount of flour on your baking surface so it "
+"doesn't stick, and pour the dough over it."
+msgstr ""
+
+#: data/recipes.db.h:56
+msgid ""
+"[image:4]Form the dough into a thick snake, about the diameter of your arm "
+"and cut bun-sized pieces with scissors onto the baking sheet."
+msgstr ""
+
+#: data/recipes.db.h:57
+msgid ""
+"[timer:00:15:00]Bake until nice and brown, this will take approximately 15 "
+"minutes."
+msgstr ""
+
+#: data/recipes.db.h:58
+msgid ""
+"[image:5]You can substitute half of the wheat flour with oats, seeds or "
+"different kind of flour if you want variety."
+msgstr ""
+
+#: data/recipes.db.h:59
+msgid "Traditional South Indian Tomato Chicken Curry, Fast Version"
+msgstr ""
+
+#: data/recipes.db.h:60
+msgid ""
+"A quick and easy version of a traditional South Indian chicken curry dish, "
+"learned from a Mallu immigrant and cook."
+msgstr ""
+
+#: data/recipes.db.h:61 src/gr-recipe-formatter.c:55
+#: src/gr-recipe-printer.c:210
+msgid "Preparation:"
+msgstr "Припрема:"
+
+#: data/recipes.db.h:62
+msgid "Cube 5 large chicken breasts (about 4 cups) into 1-1.5 inch cubes"
+msgstr ""
+
+#: data/recipes.db.h:63
+msgid "Thinly slice 1 large onion, chopping the final quarter of the onion"
+msgstr ""
+
+#: data/recipes.db.h:64
+msgid "Chop 2 medium tomatoes into large chunks"
+msgstr ""
+
+#: data/recipes.db.h:65 src/gr-recipe-formatter.c:56
+#: src/gr-recipe-printer.c:211
+msgid "Cooking:"
+msgstr "Кување:"
+
+#: data/recipes.db.h:66
+msgid ""
+"In a large pot, heat 1 tbsp olive oil at medium/medium-high heat. Once oil "
+"is hot, add mustard seeds and fry until they pop (cover the pot to prevent "
+"splashing). Too much heat will burn the seeds."
+msgstr ""
+
+#: data/recipes.db.h:67
+msgid ""
+"Once seeds have popped, turn down the heat to medium and add thinly sliced "
+"onion. Cover to retain moisture. Cook until translucent, stirring "
+"frequently. Add small amounts of water as necessary."
+msgstr ""
+
+#: data/recipes.db.h:68
+msgid ""
+"While onions are cooking, blend remaining chopped onion and tomatoes to "
+"create a puree. Add water if necessary."
+msgstr ""
+
+#: data/recipes.db.h:69
+msgid ""
+"Once onions are translucent, increase heat to medium-high and immediately "
+"add all spices. Toast for 30 seconds until aromatic."
+msgstr ""
+
+#: data/recipes.db.h:70
+msgid ""
+"Add the rest of the olive oil (2 more tbsp) and tomato and onion puree from "
+"blender. Cook until raw smell of onions and tomatoes is going — up to 5 "
+"minutes."
+msgstr ""
+
+#: data/recipes.db.h:71
+msgid ""
+"Turn down heat to medium. Add chopped chicken breast, cover, and allow to "
+"slowly cook. Add small amounts of water as necessary to achieve desired "
+"sauce consistency. (Chicken will release its own fat and water into the "
+"sauce, so wait a few minutes before adding extra.)"
+msgstr ""
+
+#: data/recipes.db.h:72
+msgid ""
+"Can be served immediately or left to marinate in curry sauce, then reheated. "
+"Serve with rice or chapati/heated flour tortilla."
+msgstr ""
+
+#: data/recipes.db.h:73
+msgid ""
+"To make a more full-flavored curry, try adding garam masala (ground "
+"cardamom, cloves, fennel seeds, and nutmeg), along with fresh curry leaves."
+msgstr ""
+
+#: data/recipes.db.h:74
+msgid "Rosemary Scalloped Potatoes"
+msgstr ""
+
+#: data/recipes.db.h:75
+msgid ""
+"A holiday twist on a classic American comfort food dish. Easy to make and "
+"sure to please."
+msgstr ""
+
+#: data/recipes.db.h:76
+msgid "Substitutions and conversions:"
+msgstr ""
+
+#: data/recipes.db.h:77
+msgid "5 potatoes = 5 cans sliced potatoes"
+msgstr ""
+
+#: data/recipes.db.h:78
+msgid "1 stick butter = 8 Tbsp butter"
+msgstr ""
+
+#: data/recipes.db.h:79
+msgid "4 cloves garlic = 1/2 tsp powdered garlic"
+msgstr ""
+
+#: data/recipes.db.h:80
+msgid "8 oz cream cheese = 1 pouch"
+msgstr ""
+
+#: data/recipes.db.h:81
+msgid "1 cup half and half = one small carton"
+msgstr ""
+
+#: data/recipes.db.h:82
+msgid "1 cup grated parmesan = 1 small bag"
+msgstr ""
+
+#: data/recipes.db.h:83
+msgid "Preheat oven to 350°F."
+msgstr ""
+
+#: data/recipes.db.h:84
+msgid "Butter a 13x9 baking dish."
+msgstr ""
+
+#: data/recipes.db.h:85
+msgid "Into buttered baking dish:"
+msgstr ""
+
+#: data/recipes.db.h:86
+msgid ""
+"- Add 5 thinly sliced (use a mandoline) russet potatoes, or 5 cans rinsed "
+"pre-sliced potatoes."
+msgstr ""
+
+#: data/recipes.db.h:87
+msgid ""
+"- Salt and pepper potatoes (more will be added to creamy mixture later), "
+"stir lightly to separate slices."
+msgstr ""
+
+#: data/recipes.db.h:88
+msgid "In a frying pan on medium to medium-low heat:"
+msgstr ""
+
+#: data/recipes.db.h:89
+msgid "- Melt 1 stick of butter."
+msgstr ""
+
+#: data/recipes.db.h:90
+msgid ""
+"- Add 1 chopped onion, garlic. Saute until translucent (about 5 minutes)."
+msgstr ""
+
+#: data/recipes.db.h:91
+msgid "- Add 8 oz cream cheese (quartered to help it melt faster)."
+msgstr ""
+
+#: data/recipes.db.h:92
+msgid "- When cream cheese is melted, add 1 cup half and half."
+msgstr ""
+
+#: data/recipes.db.h:93
+msgid ""
+"- Add salt and pepper to taste. (Don't be afraid to use more salt than you "
+"expect — it's a large dish, and potatoes need flavoring.) Recommend 1/2 Tbsp "
+"salt and 1/2 tsp pepper."
+msgstr ""
+
+#: data/recipes.db.h:94
+msgid "- Add finely chopped fresh rosemary and chopped green onions."
+msgstr ""
+
+#: data/recipes.db.h:95
+msgid "- Add 1/2 cup grated parmesan and melt into mixture."
+msgstr ""
+
+#: data/recipes.db.h:96
+#, fuzzy
+#| msgid "Go back"
+msgid "To bake:"
+msgstr "Идите назад"
+
+#: data/recipes.db.h:97
+msgid ""
+"- Pour mixture over potatoes, stirring a bit to help the sauce cover "
+"everywhere. If using canned potatoes, be sure to separate the slices which "
+"are otherwise stuck together and prevent the mixture from seeping in."
+msgstr ""
+
+#: data/recipes.db.h:98
+msgid ""
+"- Spread remaining cheese over top to provide a nice texture and cheese "
+"flavoring."
+msgstr ""
+
+#: data/recipes.db.h:99
+msgid ""
+"- Bake for 1 to 1 1/2 hours, until liquid is bubbling and top cheese is "
+"browning."
+msgstr ""
+
+#: data/recipes.db.h:100
+msgid ""
+"Note: Don't be afraid to use extra parmesan cheese and cream (half and "
+"half). This recipe makes just enough sauce, but extra creaminess never "
+"hurts, especially if you're using canned sliced potatoes. Garlic can be "
+"increased to taste, but be careful not to let the garlic overtake the "
+"rosemary."
+msgstr ""
+
+#: data/recipes.db.h:101
+msgid "Classic Chicken Noodle Soup"
+msgstr ""
+
+#: data/recipes.db.h:102
+msgid "A simple take on a typical American meal."
+msgstr ""
+
+#: data/recipes.db.h:103
+msgid ""
+"If you haven't butchered the chicken, do so. Depending on how meaty you want "
+"the soup, you can use more or less of the butchered parts (I recommend the "
+"dark leg meat for the soup). Use the remaining parts for another dish."
+msgstr ""
+
+#: data/recipes.db.h:104
+msgid ""
+"Wash the celery, carrots and herbs. Slice the carrots and celery. Coarsely "
+"chop the onion. Prepare the herbs using kitchen twine in a bouquet garni."
+msgstr ""
+
+#: data/recipes.db.h:105
+msgid ""
+"In a large pot, add the chicken, the stock, 2 carrots, 1 stalk of celery, "
+"the onion and the bouquet garni. Fill the pot with water to cover the "
+"chicken. Bring to a boil and simmer for at least 2 hours."
+msgstr ""
+
+#: data/recipes.db.h:106
+msgid ""
+"Using a cheese cloth strainer, strain the soup into another pot. Remove meat "
+"from the bones, gather any loose chicken and add it to the strained soup. "
+"Discard the bones and cooked vegetables."
+msgstr ""
+
+#: data/recipes.db.h:107
+msgid ""
+"Add the remaining carrots and celery to the soup. Bring to a boil and simmer "
+"for at least one hour. Season with salt and pepper to taste."
+msgstr ""
+
+#: data/recipes.db.h:108
+msgid ""
+"Add noodles and simmer for about 10 minutes, until the noodles are done."
+msgstr ""
+
+#: data/recipes.db.h:109
+#, fuzzy
+#| msgid "Pizza"
+msgid "Pizzaburger"
+msgstr "Пица"
+
+#: data/recipes.db.h:110
+msgid "Tomato dough with hamburger and cheese topping"
+msgstr ""
+
+#: data/recipes.db.h:111
+msgid "Dissolve yeast in warm water. Let stand for 2 minutes."
+msgstr ""
+
+#: data/recipes.db.h:112
+msgid ""
+"Add 1/2 cup tomato sauce, oil, salt, 1 tsp chili powder, and sugar. Mix well."
+msgstr ""
+
+#: data/recipes.db.h:113
+msgid "Gradually stir in flour. Dough will become sticky."
+msgstr ""
+
+#: data/recipes.db.h:114
+msgid "Optional: Let rise covered in a warm place for about an hour."
+msgstr ""
+
+#: data/recipes.db.h:115
+msgid "Brown diced onion and hamburger in frying pan."
+msgstr ""
+
+#: data/recipes.db.h:116
+msgid ""
+"Add remaining 1 1/2 cups tomato sauce, salt, pepper, and 2 tsp chili powder."
+msgstr ""
+
+#: data/recipes.db.h:117
+#, fuzzy
+#| msgid "Remove image"
+msgid "Remove from heat."
+msgstr "Уклоните слику"
+
+#: data/recipes.db.h:118
+msgid ""
+"Spread dough on greased cookie sheet (will be somewhat springy and pull back "
+"as it is spread out)."
+msgstr ""
+
+#: data/recipes.db.h:119
+msgid "Top with hamburger mixture and cover with cheese slices."
+msgstr ""
+
+#: data/recipes.db.h:120
+msgid "Bake at 400 for 20 to 30 minutes until dough is baked."
+msgstr ""
+
+#: data/recipes.db.h:121
+msgid "Pineapple Upside Down Cake with Hot Buttered Rum Sauce"
+msgstr ""
+
+#: data/recipes.db.h:122
+msgid ""
+"This is a delicious, boozy update on a classic cake. The combination of rum "
+"and pineapple gives it a distinctively Caribbean flavour."
+msgstr ""
+
+#: data/recipes.db.h:123
+msgid "Preheat the oven to 175°C/gas mark 4."
+msgstr ""
+
+#: data/recipes.db.h:124
+msgid "Grease a round 20cm cake tin."
+msgstr ""
+
+#: data/recipes.db.h:125
+msgid ""
+"Line the bottom of the tin with as many whole pineapple rings as will fit. "
+"Cut the remaining rings in half and use them to line the sides of the tin."
+msgstr ""
+
+#: data/recipes.db.h:126
+msgid ""
+"Crack the eggs into a bowl and add the caster sugar. Whisk until pale and "
+"light (an electric whisk is good for this, but not essential)."
+msgstr ""
+
+#: data/recipes.db.h:127
+msgid ""
+"In a different bowl, combine the flour and baking powder, and then sift into "
+"the egg and sugar mixture, mixing as you go."
+msgstr ""
+
+#: data/recipes.db.h:128
+msgid ""
+"Melt the butter and combine with the milk,  rum and vanilla extract. Zest "
+"half the lemon and add."
+msgstr ""
+
+#: data/recipes.db.h:129
+msgid "Mix the wet mixture into the rest of the ingredients."
+msgstr ""
+
+#: data/recipes.db.h:130
+msgid ""
+"Poor the cake mixture into the cake tin and bake for around 40 minutes, "
+"until the top is light brown and an inserted skewer comes out clean."
+msgstr ""
+
+#: data/recipes.db.h:131
+msgid ""
+"Leave the cake to cool for 5 minutes, then turn out on to a rack to cool "
+"completely."
+msgstr ""
+
+#: data/recipes.db.h:132
+msgid ""
+"When it's time to eat, make the sauce: combine the muscovado sugar and cream "
+"in a saucepan and heat until the sugar has dissolved. Add the rum and simmer "
+"until it has thickened a little, then add the butter and let it melt into "
+"the sauce."
+msgstr ""
+
+#: data/recipes.db.h:133
+msgid "Pour the hot sauce over the cake and serve."
+msgstr ""
+
+#: data/recipes.db.h:134
+#, fuzzy
+#| msgid "Pizza"
+msgid "Pan pizza"
+msgstr "Пица"
+
+#: data/recipes.db.h:135
+msgid "Pizza is an all-time favorite."
+msgstr ""
+
+#: data/recipes.db.h:136
+msgid ""
+"Put the flour, yeast, water and olive oil in a bowl and stir it up with your "
+"hands or a spoon until there's no dry flour left, and let it be."
+msgstr ""
+
+#: data/recipes.db.h:137
+msgid ""
+"Cover the bowl tightly in plastic wrap and let it sit at room temperature "
+"overnight. "
+msgstr ""
+
+#: data/recipes.db.h:138
+msgid ""
+"The next day it should have rosen quite a bit. Dump it all out onto a "
+"floured surface, then divide it into balls."
+msgstr ""
+
+#: data/recipes.db.h:139
+msgid ""
+"Spread olive oil in a 10-inch cast iron skillet or round cake pan and place "
+"a dough ball in the middle."
+msgstr ""
+
+#: data/recipes.db.h:140
+msgid ""
+"Rub the dough ball around and flip it a couple times until it is completely "
+"coated in oil and the oil completely coats the bottom and sides of the pan. "
+"Cover in plastic, and let it sit for another couple of hours without "
+"touching it."
+msgstr ""
+
+#: data/recipes.db.h:141
+msgid ""
+"The dough should have spread on it own (takes about 2 hours). Lift the sides "
+"of the dough to let big air bubbles out."
+msgstr ""
+
+#: data/recipes.db.h:142
+msgid ""
+"Put in the oven at 280°C. (or as hot as your oven goes) for about 15 "
+"minutes. Peek underneath and if your pizza is a little pale, you can finish "
+"on the stovetop directly over medium heat until it is as dark and crisp as "
+"you like it."
+msgstr ""
+
+#: data/recipes.db.h:143
+msgid "Wholesome Crackers"
+msgstr ""
+
+#: data/recipes.db.h:144
+msgid ""
+"Crackers are a fulfilling alternative snack and keeps your stomach going. "
+"Crackers consist of seeds, oat and flour. The recipe described here is very "
+"flexible. You can use whichever seeds, nuts and flour types you may have. "
+"I've personally tried almonds, sesame seeds, chia seeds, rye grains, millet "
+"and  buckwheat."
+msgstr ""
+
+#: data/recipes.db.h:145
+msgid ""
+"Turn on the oven at 473,15 K (200 °C). Mix all dry ingredients (seeds, "
+"flour, oatmeal, baking powder and salt) together. Mix oil. Then add water "
+"gradually while mixing until the dough is firm and pasty. If you add too "
+"much water, the dough will end up sticking too much to the baking paper."
+msgstr ""
+
+#: data/recipes.db.h:146
+msgid ""
+"Cut a sheet of baking paper at the size of a baking tray and place the dough "
+"on it. Cut another sheet of baking paper and put on top. Use a rolling pin "
+"on top of the second baking sheet to flatten the dough. Make the dough as "
+"thing as possible. Afterwards, take off the second sheet. Bring forth a "
+"knife and cut creases from horizontally and vertically to form squares (see "
+"example on the picture). Optionally decorate with extra seeds on top before "
+"inserting into the preheated oven."
+msgstr ""
+
+#: data/recipes.db.h:147
+msgid ""
+"Wait for the crackers to become crisp, this takes around 17 minutes. You can "
+"check if they are done by touching the crackers or by pulling up a bit in "
+"the baking sheet and see if the crackers in the middle still bends.  The "
+"crackers take on a yellow golden color when they are done."
+msgstr ""
+
+#: data/recipes.db.h:148
+msgid ""
+"Take out the crackers and leave them on the kitchen table to cool down for a "
+"few minutes."
+msgstr ""
+
+#: data/recipes.db.h:149
+msgid "Tofu ‘Egg’ Scramble"
+msgstr ""
+
+#: data/recipes.db.h:150
+msgid "This vegan breakfast staple is perfect on a lazy saturday morning."
+msgstr ""
+
+#: data/recipes.db.h:151
+msgid ""
+"Chop the onion. Open up the tofu package and slice it up, then crumble with "
+"your hands."
+msgstr ""
+
+#: data/recipes.db.h:152
+msgid ""
+"Sautee the onion, tofu, and peppers for 3-5 minutes using the vegan butter."
+msgstr ""
+
+#: data/recipes.db.h:153
+msgid ""
+"Turn heat down to medium and add the rest of the ingredients – cook for 5-7 "
+"minutes more."
+msgstr ""
+
+#: data/recipes.db.h:154
+msgid "Donauwellen"
+msgstr ""
+
+#: data/recipes.db.h:155
+msgid ""
+"Donauwellen is a popular German cake with chocolate, vanilla cream and "
+"cherries. The name is due to the fact that the dough typically forms a wavy "
+"pattern."
+msgstr ""
+
+#: data/recipes.db.h:156
+msgid "[image:1]Mix the butter until it is creamy. Add sugar and egg."
+msgstr ""
+
+#: data/recipes.db.h:157
+msgid ""
+"[image:2]Mix the flour with the baking powder and mix it in. Separate a "
+"third of the dough and add the cocoa powder to it."
+msgstr ""
+
+#: data/recipes.db.h:158
+msgid ""
+"[image:4]Spread the light dough on a buttered baking sheet. Put the dark "
+"dough on top."
+msgstr ""
+
+#: data/recipes.db.h:159
+msgid "[image:4]Use a fork to make a wavy pattern."
+msgstr ""
+
+#: data/recipes.db.h:160
+msgid "[image:6]Spread the dried cherries on top of the dough."
+msgstr ""
+
+#: data/recipes.db.h:161
+msgid "[timer:00:30:00]Bake for 30 minutes at 200 °C."
+msgstr ""
+
+#: data/recipes.db.h:162
+msgid ""
+"Use the milk, sugar and pudding to cook vanilla pudding and let it cool down "
+"while stirring it frequently. Slowly add spoonfuls of the butter, which "
+"should be at room temperature."
+msgstr ""
+
+#: data/recipes.db.h:163
+msgid "[image:8]Spread the butter cream on the cooled cake."
+msgstr ""
+
+#: data/recipes.db.h:164
+msgid ""
+"[image:9]Melt the chocolate frosting in a hot water bath and sprinkle it on "
+"top."
+msgstr ""
+
+#: data/recipes.db.h:165
+msgid "Gingered Carrot Soup"
+msgstr ""
+
+#: data/recipes.db.h:166
+msgid "A nutritious vegan soup that can be made relatively quickly"
+msgstr ""
+
+#: data/recipes.db.h:167
+msgid ""
+"Place carrots in large saucepan with water, cover, bring to a boil. Lower "
+"heat, simmer until very tender (10-15 minutes). While carrots are cooking, "
+"saute in olive oil all the onions, 5 minutes, then add garlic, ginger, salt, "
+"and spices. When all is well mingled, stir in lemon juice. Use food "
+"processor or blender to puree everything together (including all the toasted "
+"cashews). If you like a more textured soup, only half puree."
+msgstr ""
+
+#: data/recipes.db.h:168
+msgid ""
+"Garnish with parsley, chives, mint or scallions if you want. Top with "
+"cayenne pepper if you want a spicier soup. You can also add any leftover "
+"grains like rice, barley, couscous, etc. at the last minute."
+msgstr ""
+
+#: data/recipes.db.h:169
+msgid "This is my Aunt Wendy's recipe."
+msgstr ""
+
 #: src/chef-conflict-dialog.ui:10
-msgid "Merge"
-msgstr "Споји"
+#, fuzzy
+#| msgid "Imported Chef"
+msgid "Same Chef"
+msgstr "Увезени кувар"
 
-#: src/chef-conflict-dialog.ui:17 src/recipe-conflict-dialog.ui:17
-msgid "Rename"
-msgstr "Преименуј"
+#: src/chef-conflict-dialog.ui:16
+msgid "Different Chef"
+msgstr ""
 
-#: src/chef-conflict-dialog.ui:31
+#: src/chef-conflict-dialog.ui:30
 msgid "Existing Chef"
 msgstr "Постојећи кувар"
 
-#: src/chef-conflict-dialog.ui:44
+#: src/chef-conflict-dialog.ui:43
 msgid "Imported Chef"
 msgstr "Увезени кувар"
 
-#: src/chef-conflict-dialog.ui:58 src/chef-conflict-dialog.ui:70
+#: src/chef-conflict-dialog.ui:57 src/chef-conflict-dialog.ui:69
 msgid "Short Name:"
 msgstr "Кратак назив:"
 
-#: src/chef-conflict-dialog.ui:81 src/chef-conflict-dialog.ui:93
+#: src/chef-conflict-dialog.ui:80 src/chef-conflict-dialog.ui:92
 #: src/recipe-conflict-dialog.ui:38
 msgid "Name:"
 msgstr "Назив:"
 
-#: src/chef-conflict-dialog.ui:104 src/chef-conflict-dialog.ui:116
-#: src/gr-details-page.ui:206
+#: src/chef-conflict-dialog.ui:103 src/chef-conflict-dialog.ui:115
 msgid "Description:"
 msgstr "Опис:"
 
-#: src/chef-conflict-dialog.ui:127 src/chef-conflict-dialog.ui:139
+#: src/chef-conflict-dialog.ui:126 src/chef-conflict-dialog.ui:138
 msgid "Picture:"
 msgstr "Слика:"
 
-#: src/gr-cuisine-page.ui:70 src/gr-list-page.ui:30 src/gr-search-page.ui:30
+#: src/gr-chef-dialog.ui:5
+#, fuzzy
+#| msgid "Recipe Author Information"
+msgid "Chef Information"
+msgstr "Подаци о аутору рецепта"
+
+#: src/gr-chef-dialog.ui:14
+#| msgid "Cancel"
+msgid "_Cancel"
+msgstr "Откажи"
+
+#: src/gr-chef-dialog.ui:23 src/gr-window.ui:129
+msgid "_Save"
+msgstr "_Сачувај"
+
+#: src/gr-chef-dialog.ui:103
+msgid "This data may be shared with other users if you share your recipes."
+msgstr ""
+"Ови подаци ће бити дељени са другим корисницима ако будете делили ваше "
+"рецепте."
+
+#: src/gr-chef-dialog.ui:125
+#, fuzzy
+#| msgid "Other"
+msgid "Other Chef"
+msgstr "Остало"
+
+#: src/gr-chef-dialog.ui:138
+#| msgid "Name:"
+msgid "Name…"
+msgstr "Назив:"
+
+#: src/gr-chef-dialog.ui:149
+#| msgid "Short Name:"
+msgid "Short Name…"
+msgstr "Кратак назив:"
+
+#: src/gr-cooking-page.ui:102
+msgid "Cook Now"
+msgstr ""
+
+#: src/gr-cooking-page.ui:141
+msgid ""
+"To advance to the next step, press any key on the\n"
+"keyboard or click the left mouse button."
+msgstr ""
+
+#: src/gr-cooking-page.ui:201
+msgid ""
+"To go back to the previous step, doubletap any key\n"
+"or double click the left mouse button."
+msgstr ""
+
+#: src/gr-cooking-page.ui:237
+msgid ""
+"To exit the process, press the Escape key or click\n"
+"the right mouse button."
+msgstr ""
+
+#: src/gr-cooking-view.ui:62
+msgid "Time is up!"
+msgstr "Време је истекло!"
+
+#: src/gr-cuisine-page.ui:68 src/gr-list-page.ui:113 src/gr-search-page.ui:30
 msgid "No recipes found"
 msgstr "Нисам нашао рецепте"
 
-#: src/gr-cuisine-page.ui:83
+#: src/gr-cuisine-page.ui:81
 msgid "There are no recipes for this cuisine."
 msgstr "Нема рецепата за ову кухињу."
 
@@ -135,256 +1168,311 @@ msgstr "Светске кухиње"
 msgid "Seasonal"
 msgstr "Сезонски"
 
-#: src/gr-details-page.ui:33
-msgid ""
-"Ingredients\n"
-"gathered"
+#: src/gr-details-page.ui:106
+msgid "Contains garlic"
 msgstr ""
-"Прикупљени\n"
-"састојци"
 
-#: src/gr-details-page.ui:46
-msgid ""
-"Oven\n"
-"preheated"
+#: src/gr-details-page.ui:113
+msgid "Contains dairy products"
 msgstr ""
-"Предгрејана\n"
-"рерна"
 
-#: src/gr-details-page.ui:59
-msgid ""
-"Instructions\n"
-"followed"
+#: src/gr-details-page.ui:120
+msgid "Contains Gluten"
 msgstr ""
-"Праћена\n"
-"упутства"
 
-#: src/gr-details-page.ui:139
-msgid "Preparation time:"
-msgstr "Време припреме:"
+#: src/gr-details-page.ui:127 src/gr-details-page.c:512
+msgid "Spicy"
+msgstr ""
 
-#: src/gr-details-page.ui:160
-msgid "Cooking time:"
-msgstr "Време кувања:"
+#: src/gr-details-page.ui:147
+#, fuzzy
+#| msgid "_Ingredients"
+msgid "_Buy Ingredients"
+msgstr "_Састојци"
 
-#: src/gr-details-page.ui:181 src/gr-recipe-printer.c:122
-msgid "Serves:"
+#: src/gr-details-page.ui:165 src/gr-recipe-small-tile.ui:102
+#| msgid "Serves:"
+msgid "Serves"
 msgstr "Сервирање:"
 
-#: src/gr-details-page.ui:267 src/gr-query-editor.ui:174 src/gr-window.ui:204
-#: src/gr-recipe-printer.c:141
-msgid "Ingredients"
-msgstr "Састојци"
+#: src/gr-details-page.ui:199
+#| msgid "Preparation time:"
+msgid "Preparation Time"
+msgstr "Време припреме:"
 
-#: src/gr-details-page.ui:299 src/gr-recipe-printer.c:181
-msgid "Instructions"
-msgstr "Упутства"
+#: src/gr-details-page.ui:229
+#| msgid "Cooking time:"
+msgid "Cooking Time"
+msgstr "Време кувања:"
 
-#: src/gr-details-page.ui:321
-msgid "Additional notes"
-msgstr "Додатне напомене"
+#: src/gr-details-page.ui:290
+msgid "Note"
+msgstr ""
 
-#: src/gr-details-page.ui:376
-msgid "_Cook it later"
-msgstr "_Кувај касније"
+#: src/gr-details-page.ui:320 src/gr-edit-page.ui:644
+#: src/gr-recipe-formatter.c:87 src/gr-recipe-printer.c:294
+#, fuzzy
+#| msgid "Dietary restrictions"
+msgid "Directions"
+msgstr "Дијетска ограничења"
 
-#: src/gr-details-page.ui:384
-msgid "_Print"
-msgstr "_Штампај"
+#: src/gr-details-page.ui:380
+msgid "_Notes"
+msgstr ""
 
-#: src/gr-details-page.ui:392
-msgid "_Export"
-msgstr "_Извези"
-
-#: src/gr-details-page.ui:400
-msgid "_Share"
-msgstr "_Дели"
-
-#: src/gr-details-page.ui:407
-msgid "_Delete"
-msgstr "_Обриши"
-
-#: src/gr-details-page.ui:418
+#: src/gr-details-page.ui:390 src/gr-shopping-page.ui:127
 msgid "_Edit"
 msgstr "_Уреди"
 
-#: src/gr-details-page.ui:446
-msgid "Duration"
-msgstr "Трајање"
+#: src/gr-details-page.ui:399
+msgid "_Delete"
+msgstr "_Обриши"
 
-#: src/gr-details-page.ui:461
-msgid "Start"
-msgstr "Почни"
+#: src/gr-details-page.ui:410 src/gr-shopping-page.ui:145
+#: src/recipe-export-dialog.ui:21
+msgid "_Share"
+msgstr "_Дели"
 
-#: src/gr-details-page.ui:482
-msgid "Remaining time"
-msgstr "Преостало време"
+#: src/gr-details-page.ui:422 src/gr-shopping-page.ui:156
+msgid "_Print"
+msgstr "_Штампај"
 
-#: src/gr-details-page.ui:495
-msgid "Stop"
-msgstr "Заустави"
+#: src/gr-details-page.ui:433
+#, fuzzy
+#| msgid "Favorites"
+msgid "Add to favorites"
+msgstr "Омиљени"
 
-#: src/gr-edit-page.ui:83
-msgid "_Name your recipe"
-msgstr "Дај _назив рецепту"
-
-#: src/gr-edit-page.ui:105
-msgid "Ser_ves"
-msgstr "Сер_вирај"
-
-#: src/gr-edit-page.ui:144
-msgid "_Description"
-msgstr "_Опис"
-
-#: src/gr-edit-page.ui:161
+#: src/gr-edit-page.ui:113
 msgid "Add an image"
 msgstr "Додајте слику"
 
-#: src/gr-edit-page.ui:188
-msgid "Remove image"
-msgstr "Уклоните слику"
-
-#: src/gr-edit-page.ui:215 src/gr-edit-page.ui:242
+#: src/gr-edit-page.ui:139 src/gr-edit-page.ui:165
 msgid "Rotate image"
 msgstr "Заокрените слику"
 
-#: src/gr-edit-page.ui:298
-msgid "_Cuisine"
-msgstr "_Кухиња"
+#: src/gr-edit-page.ui:191
+#, fuzzy
+#| msgid "Rotate image"
+msgid "Default image"
+msgstr "Заокрените слику"
 
-#: src/gr-edit-page.ui:311
-msgid "_Meal"
-msgstr "_Оброк"
+#: src/gr-edit-page.ui:217
+msgid "Remove image"
+msgstr "Уклоните слику"
 
-#: src/gr-edit-page.ui:344
-msgid "S_eason"
-msgstr "С_езона"
+#: src/gr-edit-page.ui:261
+#, fuzzy
+#| msgid "No details"
+msgid "Details"
+msgstr "Нема појединости"
 
-#: src/gr-edit-page.ui:367
-msgid "_Preparation time"
+#: src/gr-edit-page.ui:278
+#| msgid "_Name your recipe"
+msgid "_Name Your Recipe"
+msgstr "Дај _назив рецепту"
+
+#: src/gr-edit-page.ui:308
+msgid "Ser_ves"
+msgstr "Сер_вирај"
+
+#: src/gr-edit-page.ui:338
+#| msgid "_Preparation time"
+msgid "_Preparation Time"
 msgstr "Време _припреме"
 
-#: src/gr-edit-page.ui:380
-msgid "C_ooking time"
-msgstr "Време _кувања"
-
-#: src/gr-edit-page.ui:393 src/gr-edit-page.ui:410
+#: src/gr-edit-page.ui:358 src/gr-edit-page.ui:395
 msgid "Less than 15 minutes"
 msgstr "Мање од 15 минута"
 
-#: src/gr-edit-page.ui:394 src/gr-edit-page.ui:411
+#: src/gr-edit-page.ui:359 src/gr-edit-page.ui:396
 msgid "15 to 30 minutes"
 msgstr "од 15 до 30 минута"
 
-#: src/gr-edit-page.ui:395 src/gr-edit-page.ui:412
+#: src/gr-edit-page.ui:360 src/gr-edit-page.ui:397
 msgid "30 to 45 minutes"
 msgstr "од 30 до 45 минута"
 
-#: src/gr-edit-page.ui:396 src/gr-edit-page.ui:413
+#: src/gr-edit-page.ui:361 src/gr-edit-page.ui:398
 msgid "45 minutes to an hour"
 msgstr "од 45 минута до једног сата"
 
-#: src/gr-edit-page.ui:397 src/gr-edit-page.ui:414
+#: src/gr-edit-page.ui:362 src/gr-edit-page.ui:399
 msgid "More than an hour"
 msgstr "Више од једног сата"
 
-#: src/gr-edit-page.ui:427
-msgid "_Ingredients"
-msgstr "_Састојци"
+#: src/gr-edit-page.ui:375
+#| msgid "C_ooking time"
+msgid "C_ooking Time"
+msgstr "Време _кувања"
 
-#: src/gr-edit-page.ui:458 src/gr-diet-row.c:101
+#: src/gr-edit-page.ui:412
+msgid "_Cuisine"
+msgstr "_Кухиња"
+
+#: src/gr-edit-page.ui:442
+msgid "_Meal"
+msgstr "_Оброк"
+
+#: src/gr-edit-page.ui:472
+msgid "S_eason"
+msgstr "С_езона"
+
+#: src/gr-edit-page.ui:502
+msgid "S_piciness"
+msgstr ""
+
+#: src/gr-edit-page.ui:521 src/gr-spice-row.c:98
+msgid "Mild"
+msgstr ""
+
+#: src/gr-edit-page.ui:522
+msgid "Somewhat spicy"
+msgstr ""
+
+#: src/gr-edit-page.ui:523 src/gr-spice-row.c:102
+msgid "Hot"
+msgstr ""
+
+#: src/gr-edit-page.ui:524 src/gr-details-page.c:507
+msgid "Very spicy"
+msgstr ""
+
+#: src/gr-edit-page.ui:535
+#| msgid "Description:"
+msgid "Description"
+msgstr "Опис:"
+
+#: src/gr-edit-page.ui:593 src/gr-diet-row.c:102
 msgid "Gluten free"
 msgstr "Без глутена"
 
-#: src/gr-edit-page.ui:464 src/gr-diet-row.c:104
+#: src/gr-edit-page.ui:599 src/gr-diet-row.c:105
 msgid "Nut free"
 msgstr "Без ораха"
 
-#: src/gr-edit-page.ui:470 src/gr-diet-row.c:107
+#: src/gr-edit-page.ui:605 src/gr-diet-row.c:108
 msgid "Vegan"
 msgstr "Веганска"
 
-#: src/gr-edit-page.ui:476 src/gr-diet-row.c:110
+#: src/gr-edit-page.ui:611 src/gr-diet-row.c:111
 msgid "Vegetarian"
 msgstr "Вегетеријанска"
 
-#: src/gr-edit-page.ui:482 src/gr-diet-row.c:113
+#: src/gr-edit-page.ui:617 src/gr-diet-row.c:114
 msgid "Milk free"
 msgstr "Без млека"
 
-#: src/gr-edit-page.ui:497
-msgid "Instr_uctions"
-msgstr "_Упутства"
+#: src/gr-edit-page.ui:704
+#| msgid "_Edit"
+msgid "Edit"
+msgstr "_Уреди"
 
-#: src/gr-edit-page.ui:527
-msgid "_Additional notes"
-msgstr "Дод_атне напомене"
+#: src/gr-edit-page.ui:711
+msgid "Preview"
+msgstr ""
 
-#: src/gr-ingredients-page.ui:9
-msgid "Ingredients page"
-msgstr "Страница састојака"
+#: src/gr-edit-page.ui:732
+msgid "Add Step"
+msgstr ""
 
-#: src/gr-list-page.ui:43
+#: src/gr-edit-page.ui:740
+#| msgid "Add an image"
+msgid "Add Image"
+msgstr "Додајте слику"
+
+#: src/gr-edit-page.ui:748
+#, fuzzy
+#| msgid "Add an image"
+msgid "Add Timer"
+msgstr "Додајте слику"
+
+#: src/gr-edit-page.ui:812 src/gr-edit-page.ui:833 src/gr-edit-page.c:344
+#| msgid "Ingredients"
+msgid "Ingredient"
+msgstr "Састојци"
+
+#: src/gr-edit-page.ui:861 src/gr-edit-page.ui:953 src/gr-query-editor.ui:285
+msgid "Search…"
+msgstr "Тражи…"
+
+#: src/gr-edit-page.ui:891 src/gr-edit-page.ui:912 src/gr-edit-page.c:345
+msgid "Amount"
+msgstr ""
+
+#: src/gr-edit-page.ui:984 src/gr-edit-page.c:348
+msgid "Add"
+msgstr ""
+
+#: src/gr-edit-page.ui:1039
+msgid "Syntax"
+msgstr ""
+
+#: src/gr-edit-page.ui:1054
+msgid "Use paragraphs to break directions into steps (2 newlines)."
+msgstr ""
+
+#: src/gr-edit-page.ui:1067
+msgid "You can provide an image or a time counter in each step."
+msgstr ""
+
+#: src/gr-edit-page.ui:1079
+msgid "Timer"
+msgstr ""
+
+#: src/gr-edit-page.ui:1101
+#, fuzzy
+#| msgid "Image files"
+msgid "Image"
+msgstr "Датотеке слика"
+
+#: src/gr-list-page.ui:126
 msgid "There are no recipes here yet."
 msgstr "Овде још увек нема рецепата."
-
-#: src/gr-preferences.ui:5
-msgid "Preferences"
-msgstr "Поставке"
-
-#: src/gr-preferences.ui:69
-msgid "Recipe Author Information"
-msgstr "Подаци о аутору рецепта"
-
-#: src/gr-preferences.ui:82
-msgid "This data may be shared with other users if you share your recipes."
-msgstr ""
-"Ови подаци ће бити дељени са другим корисницима ако будете делили ваше "
-"рецепте."
-
-#: src/gr-preferences.ui:96
-msgid "_Short Name:"
-msgstr "_Кратак назив:"
-
-#: src/gr-preferences.ui:118
-msgid "_Name:"
-msgstr "_Назив:"
-
-#: src/gr-preferences.ui:140
-msgid "_Description:"
-msgstr "_Опис:"
-
-#: src/gr-preferences.ui:169
-msgid "_Picture:"
-msgstr "_Слика:"
 
 #: src/gr-query-editor.ui:48
 msgid "Meal"
 msgstr "Оброк"
 
-#: src/gr-query-editor.ui:68 src/gr-query-editor.c:449
-#: src/gr-query-editor.c:564
+#: src/gr-query-editor.ui:68 src/gr-query-editor.c:490
+#: src/gr-query-editor.c:678
 msgid "Any meal"
 msgstr "Било који оброк"
 
 #: src/gr-query-editor.ui:111
+msgid "Spiciness"
+msgstr ""
+
+#: src/gr-query-editor.ui:131 src/gr-query-editor.c:556
+#: src/gr-query-editor.c:707
+msgid "Any spiciness"
+msgstr ""
+
+#: src/gr-query-editor.ui:174
 msgid "Dietary restrictions"
 msgstr "Дијетска ограничења"
 
-#: src/gr-query-editor.ui:131 src/gr-query-editor.c:365
-#: src/gr-query-editor.c:595
+#: src/gr-query-editor.ui:194 src/gr-query-editor.c:406
+#: src/gr-query-editor.c:736
 msgid "No restrictions"
 msgstr "Без ограничења"
 
+#: src/gr-query-editor.ui:237 src/gr-edit-page.c:1516
+#: src/gr-recipe-formatter.c:68 src/gr-recipe-printer.c:243
+msgid "Ingredients"
+msgstr "Састојци"
+
 #. FIXME: repopulate
-#: src/gr-query-editor.ui:194 src/gr-query-editor.c:296
-#: src/gr-query-editor.c:626
+#: src/gr-query-editor.ui:257 src/gr-query-editor.c:337
+#: src/gr-query-editor.c:765
 msgid "Anything"
 msgstr "Било шта"
 
-#: src/gr-query-editor.ui:222
-msgid "Search…"
-msgstr "Тражи…"
+#: src/gr-recipe-small-tile.ui:126 src/gr-edit-page.c:1545
+#, fuzzy
+#| msgid "Remove image"
+msgid "Remove"
+msgstr "Уклоните слику"
 
 #: src/gr-recipes-page.ui:9
 msgid "Recipes page"
@@ -394,15 +1482,16 @@ msgstr "Страница рецепата"
 msgid "Today"
 msgstr "Данас"
 
-#: src/gr-recipes-page.ui:54
-msgid "Editor's Picks"
+#: src/gr-recipes-page.ui:103
+#| msgid "Editor's Picks"
+msgid "Editor’s Picks"
 msgstr "Избори уредника"
 
-#: src/gr-recipes-page.ui:79
+#: src/gr-recipes-page.ui:128
 msgid "Categories"
 msgstr "Категорије"
 
-#: src/gr-recipes-page.ui:175
+#: src/gr-recipes-page.ui:224
 msgid "Featured GNOME Chefs"
 msgstr "Напредни Гномов кувар"
 
@@ -410,27 +1499,69 @@ msgstr "Напредни Гномов кувар"
 msgid "Try a different search"
 msgstr "Пробајте са другачијом претрагом"
 
-#: src/gr-window.ui:20
+#: src/gr-shopping-page.ui:42 src/gr-window.c:812
+#, fuzzy
+#| msgid "Ingredients"
+msgid "Buy ingredients"
+msgstr "Састојци"
+
+#: src/gr-shopping-page.ui:94
+msgid "No shopping necessary!"
+msgstr ""
+
+#: src/gr-shopping-page.ui:134
+msgid "_Clear List"
+msgstr ""
+
+#: src/gr-shopping-page.ui:190
+msgid "Nothing to add"
+msgstr ""
+
+#: src/gr-time-widget.ui:32
+msgid "Start"
+msgstr "Почни"
+
+#: src/gr-time-widget.ui:62
+msgid "Pause"
+msgstr ""
+
+#: src/gr-time-widget.ui:71
+msgid "Continue"
+msgstr ""
+
+#: src/gr-window.ui:22
 msgid "_New Recipe"
 msgstr "_Нови рецепт"
 
-#: src/gr-window.ui:37
+#: src/gr-window.ui:39
 msgid "Go back"
 msgstr "Идите назад"
 
-#: src/gr-window.ui:94 src/gr-window.c:183
+#: src/gr-window.ui:96
 msgid "Search"
 msgstr "Тражи"
 
-#: src/gr-window.ui:113
-msgid "_Start cooking"
+#: src/gr-window.ui:115
+#, fuzzy
+#| msgid "_Start cooking"
+msgid "_Start Cooking"
 msgstr "_Почни са кувањем"
 
-#: src/gr-window.ui:127
-msgid "_Save"
-msgstr "_Сачувај"
+#: src/gr-window.ui:190
+#, fuzzy
+#| msgid "Ingredients page"
+msgid "Ingredients to buy added."
+msgstr "Страница састојака"
 
-#: src/gr-window.ui:191
+#: src/gr-window.ui:200
+msgid "View Shopping List"
+msgstr ""
+
+#: src/gr-window.ui:257
+msgid "Undo"
+msgstr ""
+
+#: src/gr-window.ui:326
 msgid "Cuisines"
 msgstr "Кухиње"
 
@@ -438,94 +1569,151 @@ msgstr "Кухиње"
 msgid "_Import"
 msgstr "_Увези"
 
-#: src/menus.ui:11
-msgid "_Preferences"
-msgstr "_Поставке"
+#: src/menus.ui:12
+#, fuzzy
+#| msgid "Recipe Author Information"
+msgid "_My Chef Information"
+msgstr "Подаци о аутору рецепта"
 
-#: src/menus.ui:17
+#: src/menus.ui:18
 msgid "_About"
 msgstr "_О програму"
 
-#: src/menus.ui:23
+#: src/menus.ui:24
 msgid "_Quit"
 msgstr "_Изађи"
 
-#: src/recipe-conflict-dialog.ui:10 src/gr-images.c:197 src/gr-preferences.c:94
-#: src/gr-window.c:488
+#: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:115
+#: src/gr-image-viewer.c:587 src/gr-window.c:727
 msgid "Cancel"
 msgstr "Откажи"
 
-#: src/recipe-conflict-dialog.ui:27
+#: src/recipe-conflict-dialog.ui:18
+msgid "Rename"
+msgstr "Преименуј"
+
+#: src/recipe-conflict-dialog.ui:28
 msgid "A recipe with this name already exists."
 msgstr "Већ постоји рецепт са овим називом."
 
-#: src/gr-app.c:110
-msgid "About GNOME Recipes"
+#: src/recipe-export-dialog.ui:14
+msgid "_Close"
+msgstr ""
+
+#: src/recipe-export-dialog.ui:57
+msgid "Share with a friend"
+msgstr ""
+
+#: src/recipe-export-dialog.ui:64
+#, fuzzy
+#| msgid "About GNOME Recipes"
+msgid "Contribute to GNOME recipes"
 msgstr "О Гномовим рецептима"
 
-#: src/gr-meal.c:44
-msgid "Main course"
-msgstr "Главно јело"
+#: src/gr-about-dialog.c:122
+msgid "Learn more about Builder"
+msgstr ""
 
-#: src/gr-meal.c:45
-msgid "Snacks"
-msgstr "Закуска"
+#: src/gr-about-dialog.c:238 src/gr-about-dialog.c:240
+#: src/gr-about-dialog.c:242 src/gr-about-dialog.c:244
+#: src/gr-about-dialog.c:246 src/gr-about-dialog.c:248
+#: src/gr-about-dialog.c:250 src/gr-about-dialog.c:252
+#: src/gr-about-dialog.c:254
+msgid "Unknown"
+msgstr ""
 
-#: src/gr-meal.c:46
-msgid "Breakfast"
-msgstr "Доручак"
+#: src/gr-about-dialog.c:342
+msgid "Flatpak"
+msgstr ""
 
-#: src/gr-meal.c:47
-msgid "Side dishes"
-msgstr "Прилози уз јело"
+#: src/gr-about-dialog.c:345
+msgctxt "Flatpak metadata"
+msgid "Version"
+msgstr ""
 
-#: src/gr-meal.c:48
-msgid "Desserts"
-msgstr "Посластице"
+#: src/gr-about-dialog.c:348
+msgid "Application"
+msgstr ""
 
-#: src/gr-meal.c:49
-msgid "Cake and baking"
-msgstr "Торта и колачи"
+#: src/gr-about-dialog.c:351 src/gr-about-dialog.c:360
+msgctxt "Flatpak metadata"
+msgid "ID"
+msgstr ""
 
-#: src/gr-meal.c:50
-msgid "Drinks and cocktails"
-msgstr "Пића и коктели"
+#: src/gr-about-dialog.c:352 src/gr-about-dialog.c:361
+#, fuzzy
+#| msgid "Picture:"
+msgctxt "Flatpak metadata"
+msgid "Architecture"
+msgstr "Слика:"
 
-#: src/gr-meal.c:51
-msgid "Pizza"
-msgstr "Пица"
+#: src/gr-about-dialog.c:353 src/gr-about-dialog.c:362
+msgctxt "Flatpak metadata"
+msgid "Branch"
+msgstr ""
 
-#: src/gr-meal.c:52
-msgid "Pasta"
-msgstr "Паста"
+#: src/gr-about-dialog.c:354 src/gr-about-dialog.c:363
+msgctxt "Flatpak metadata"
+msgid "Commit"
+msgstr ""
 
-#: src/gr-meal.c:53
-msgid "Other"
-msgstr "Остало"
+#: src/gr-about-dialog.c:357
+msgid "Runtime"
+msgstr ""
 
-#: src/gr-category-tile.c:51 src/gr-list-page.c:114
-msgid "Gluten-free recipes"
-msgstr "Рецепти без глутена"
+#: src/gr-about-dialog.c:366 src/gr-about-dialog.c:405
+msgid "Bundled libraries"
+msgstr ""
 
-#: src/gr-category-tile.c:54 src/gr-list-page.c:117
-msgid "Nut-free recipes"
-msgstr "Рецепти без ораха"
+#: src/gr-about-dialog.c:387
+msgid "System libraries"
+msgstr ""
 
-#: src/gr-category-tile.c:57 src/gr-list-page.c:120
-msgid "Vegan recipes"
-msgstr "Вегански рецепти"
+#: src/gr-about-dialog.c:602
+msgid "System"
+msgstr ""
 
-#: src/gr-category-tile.c:60 src/gr-list-page.c:123
-msgid "Vegetarian recipes"
-msgstr "Вегетеријански рецепти"
+#: src/gr-about-dialog.c:654
+msgid "translator-credits"
+msgstr ""
 
-#: src/gr-category-tile.c:63 src/gr-list-page.c:126
-msgid "Milk-free recipes"
-msgstr "Рецепти без млека"
+#: src/gr-about-dialog.c:657
+#, fuzzy
+#| msgid "About GNOME Recipes"
+msgid "Learn more about GNOME Recipes"
+msgstr "О Гномовим рецептима"
 
-#: src/gr-category-tile.c:66 src/gr-list-page.c:129
-msgid "Other dietary restrictions"
-msgstr "Остала дијетска ограничења"
+#: src/gr-about-dialog.c:661
+#, fuzzy
+#| msgid "Recipes by %s"
+msgid "Recipes by"
+msgstr "Рецепте од „%s“"
+
+#: src/gr-chef-dialog.c:111 src/gr-image-viewer.c:583
+msgid "Select an Image"
+msgstr "Изаберите слику"
+
+#: src/gr-chef-dialog.c:114 src/gr-image-viewer.c:586 src/gr-window.c:726
+msgid "Open"
+msgstr "Отвори"
+
+#: src/gr-chef-dialog.c:119 src/gr-image-viewer.c:591
+msgid "Image files"
+msgstr "Датотеке слика"
+
+#: src/gr-chef-dialog.c:345
+msgid "New Chef"
+msgstr ""
+
+#: src/gr-cooking-page.c:168
+#| msgid "Cooking:"
+msgid "Cooking"
+msgstr "Кување:"
+
+#: src/gr-cooking-view.c:345
+#, c-format
+msgid "Step %d/%d"
+msgstr ""
 
 #: src/gr-cuisine.c:43
 msgid "American"
@@ -636,6 +1824,16 @@ msgstr ""
 "Новог света у модерном периоду."
 
 #: src/gr-cuisine.c:80
+#| msgid ""
+#| "Indian cuisine encompasses a wide variety of regional and traditional "
+#| "cuisines native to India. Given the range of diversity in soil type, "
+#| "climate, culture, ethnic group and occupations, these cuisines vary "
+#| "significantly from each other and use locally available spices, herbs, "
+#| "vegetables and fruits. Indian food is also heavily influenced by "
+#| "religious and cultural choices and traditions. There has also been Middle "
+#| "Eastern and Central Asian influence on North Indian cuisine from the "
+#| "years of Mughal rule. Indian cuisine has been and is still evolving, as a "
+#| "result of the nation's cultural interactions with other societies."
 msgid ""
 "Indian cuisine encompasses a wide variety of regional and traditional "
 "cuisines native to India. Given the range of diversity in soil type, "
@@ -645,7 +1843,7 @@ msgid ""
 "and cultural choices and traditions. There has also been Middle Eastern and "
 "Central Asian influence on North Indian cuisine from the years of Mughal "
 "rule. Indian cuisine has been and is still evolving, as a result of the "
-"nation's cultural interactions with other societies."
+"nation’s cultural interactions with other societies."
 msgstr ""
 "Индијска кухиња обухвата широк спектар регионалних и традиционалних кухиња "
 "пореклом из Индије. С обзиром на распон различитости у типу земљишта, климе, "
@@ -747,668 +1945,448 @@ msgstr ""
 "централне Азије, са Блиског истока и Балкана. Стога је немогуће из турске "
 "кухиње направити неки ужи избор."
 
-#: src/gr-details-page.c:62
-#, c-format
-msgid "Your cooking timer for “%s” has expired."
-msgstr "Истекао је ваш одбројавач за „%s“."
+#: src/gr-details-page.c:298
+msgid "Could not find this recipe."
+msgstr ""
 
-#: src/gr-details-page.c:64
-msgid "Time is up!"
+#: src/gr-details-page.c:563
+#, fuzzy, c-format
+#| msgid "Time is up!"
+msgid "Timer: %s"
 msgstr "Време је истекло!"
 
-#: src/gr-details-page.c:352
+#: src/gr-details-page.c:566
+#, fuzzy, c-format
+#| msgid "Image files"
+msgid "Image %d"
+msgstr "Датотеке слика"
+
+#: src/gr-details-page.c:669 src/gr-edit-page.c:1819
+#, fuzzy, c-format
+#| msgid "Recipes by %s"
+msgid "Recipe by %s"
+msgstr "Рецепте од „%s“"
+
+#: src/gr-diet.c:34
+msgid "Gluten-free recipes"
+msgstr "Рецепти без глутена"
+
+#: src/gr-diet.c:37
+msgid "Nut-free recipes"
+msgstr "Рецепти без ораха"
+
+#: src/gr-diet.c:40
+msgid "Vegan recipes"
+msgstr "Вегански рецепти"
+
+#: src/gr-diet.c:43
+msgid "Vegetarian recipes"
+msgstr "Вегетеријански рецепти"
+
+#: src/gr-diet.c:46
+msgid "Milk-free recipes"
+msgstr "Рецепти без млека"
+
+#: src/gr-diet.c:49 src/gr-diet.c:78
+msgid "Other dietary restrictions"
+msgstr "Остала дијетска ограничења"
+
+#: src/gr-diet.c:63
+msgid ""
+"A gluten-free diet is a diet that excludes gluten, a protein composite found "
+"in wheat, barley, rye, and all their species and hybrids (such as spelt, "
+"kamut, and triticale). The inclusion of oats in a gluten-free diet remains "
+"controversial. Avenin present in oats may also be toxic for coeliac people; "
+"its toxicity depends on the cultivar consumed. Furthermore, oats are "
+"frequently cross-contaminated with cereals containing gluten.\n"
+"<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free\">Learn more…</"
+"a>"
+msgstr ""
+
+#: src/gr-diet.c:66
+msgid ""
+"A tree nut allergy is a hypersensitivity to dietary substances from tree "
+"nuts and edible tree seeds causing an overreaction of the immune system "
+"which may lead to severe physical symptoms. Tree nuts include, but are not "
+"limited to, almonds, Brazil nuts, cashews, chestnuts, filberts/hazelnuts, "
+"macadamia nuts, pecans, pistachios, pine nuts, shea nuts and walnuts.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">Learn more…</a>"
+msgstr ""
+
+#: src/gr-diet.c:69
+msgid ""
+"Veganism is both the practice of abstaining from the use of animal products, "
+"particularly in diet, and an associated philosophy that rejects the "
+"commodity status of animals.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Veganism\">Learn more…</a>"
+msgstr ""
+
+#: src/gr-diet.c:72
+msgid ""
+"Vegetarian cuisine is based on food that meets vegetarian standards by not "
+"including meat and animal tissue products (such as gelatin or animal-derived "
+"rennet). For lacto-ovo vegetarianism (the most common type of vegetarianism "
+"in the Western world), eggs and dairy products such as milk and cheese are "
+"permitted. For lacto vegetarianism, the earliest known type of vegetarianism "
+"(recorded in India), dairy products such as milk and cheese are permitted.\n"
+"The strictest forms of vegetarianism are veganism and fruitarianism, which "
+"exclude all animal products, including dairy products as well as honey, and "
+"even some refined sugars if filtered and whitened with bone char.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Vegetarianism\">Learn more…</a>"
+msgstr ""
+
+#: src/gr-diet.c:75
+msgid ""
+"Lactose intolerance is a condition in which people have symptoms due to the "
+"decreased ability to digest lactose, a sugar found in milk products. Those "
+"affected vary in the amount of lactose they can tolerate before symptoms "
+"develop. Symptoms may include abdominal pain, bloating, diarrhea, gas, and "
+"nausea. These typically start between half and two hours after drinking "
+"milk. Severity depends on the amount a person eats or drinks. It does not "
+"cause damage to the gastrointestinal tract.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Learn more…</a>"
+msgstr ""
+
+#: src/gr-edit-page.c:394
+#, fuzzy
+#| msgid "Apple"
+msgid "Apply"
+msgstr "Јабука"
+
+#: src/gr-edit-page.c:997
 msgid "hour"
 msgstr "час"
 
-#: src/gr-details-page.c:353
+#: src/gr-edit-page.c:998
 msgid "hours"
 msgstr "часа"
 
-#: src/gr-details-page.c:354
+#: src/gr-edit-page.c:999
 msgctxt "hour abbreviation"
 msgid "h"
 msgstr "ч"
 
-#: src/gr-details-page.c:358
+#: src/gr-edit-page.c:1003
 msgid "minute"
 msgstr "минут"
 
-#: src/gr-details-page.c:359
+#: src/gr-edit-page.c:1004
 msgid "minutes"
 msgstr "минута"
 
-#: src/gr-details-page.c:360
+#: src/gr-edit-page.c:1005
 msgctxt "minute abbreviation"
 msgid "min"
 msgstr "мин"
 
-#: src/gr-details-page.c:361
+#: src/gr-edit-page.c:1006
 msgctxt "minute abbreviation"
 msgid "m"
 msgstr "м"
 
-#: src/gr-details-page.c:365
+#: src/gr-edit-page.c:1010
 msgid "second"
 msgstr "секунда"
 
-#: src/gr-details-page.c:366
+#: src/gr-edit-page.c:1011
 msgid "seconds"
 msgstr "секунде"
 
-#: src/gr-details-page.c:367
+#: src/gr-edit-page.c:1012
 msgctxt "second abbreviation"
 msgid "sec"
 msgstr "сек"
 
-#: src/gr-details-page.c:368
+#: src/gr-edit-page.c:1013
 msgctxt "second abbreviation"
 msgid "s"
 msgstr "с"
 
-#: src/gr-details-page.c:633
-#, c-format
-msgid "Created on %c"
-msgstr "Направљено у %c"
+#: src/gr-edit-page.c:1156
+#, fuzzy
+#| msgid "Recipe Author Information"
+msgid "Recipe Author"
+msgstr "Подаци о аутору рецепта"
 
-#: src/gr-details-page.c:637
-#, c-format
-msgid "Last modified on %c"
-msgstr "Последњи пут измењено у %c"
+#: src/gr-edit-page.c:1531
+msgid "Name of the List"
+msgstr ""
 
-#: src/gr-details-page.c:642
+#: src/gr-edit-page.c:1564
+#, fuzzy
+#| msgid "Ingredients page"
+msgid "No ingredients added yet"
+msgstr "Страница састојака"
+
+#: src/gr-edit-page.c:1583
+#, fuzzy
+#| msgid "Ingredients"
+msgid "Add Ingredient"
+msgstr "Састојци"
+
+#: src/gr-edit-page.c:1684
+msgid "Add List"
+msgstr ""
+
+#: src/gr-edit-page.c:1702
+#, fuzzy
+#| msgid "_Name your recipe"
+msgid "Name Your Recipe"
+msgstr "Дај _назив рецепту"
+
+#: src/gr-edit-page.c:1873
+#| msgid "Name:"
+msgid "Name"
+msgstr "Назив:"
+
+#: src/gr-edit-page.c:2249 src/gr-recipe-store.c:1109
+#, c-format
+msgid "You need to provide a name for the recipe"
+msgstr "Треба да наведете назив за рецепт"
+
+#: src/gr-image-viewer.c:577
 #, c-format
 msgid ""
-"About GNOME chef %s:\n"
-"%s"
+"Missing the desktop portals needed to open files from inside a flatpak "
+"sandbox. Please install xdg-desktop-portal and xdg-desktop-portal-gtk on "
+"your system."
 msgstr ""
-"О Гномовом кувару %s:\n"
-"%s"
 
-#: src/gr-details-page.c:646
-#, c-format
-msgid "A recipe by GNOME chef %s"
-msgstr "Рецепт из Гномовог кувара %s"
-
-#: src/gr-details-page.c:650
-#, c-format
-msgid "More recipes by %s"
-msgstr "Још рецепата од „%s“"
-
-#: src/gr-details-page.c:656
-#, c-format
-msgid "You've cooked this recipe before"
-msgid_plural "You've cooked this recipe %d times"
-msgstr[0] "Већ сте %d пут раније спремали овај рецепт"
-msgstr[1] "Већ сте %d пута раније спремали овај рецепт"
-msgstr[2] "Већ сте %d пута раније спремали овај рецепт"
-msgstr[3] "Већ сте једном раније спремали овај рецепт"
-
-#: src/gr-images.c:193 src/gr-preferences.c:90
-msgid "Select an Image"
-msgstr "Изаберите слику"
-
-#: src/gr-images.c:196 src/gr-preferences.c:93 src/gr-window.c:487
-msgid "Open"
-msgstr "Отвори"
-
-#: src/gr-images.c:201 src/gr-preferences.c:98
-msgid "Image files"
-msgstr "Датотеке слика"
-
-#: src/gr-images.c:205
-msgid "Use dark text"
-msgstr "Користи таман текст"
-
-#: src/gr-ingredient.c:31
-msgid "Almond"
-msgstr "Бадем"
-
-#: src/gr-ingredient.c:32 src/gr-ingredient.c:82
-msgid "Amaretti"
-msgstr "Амарети"
-
-#: src/gr-ingredient.c:33
-msgid "Apple"
-msgstr "Јабука"
-
-#: src/gr-ingredient.c:34
-msgid "Apricot"
-msgstr "Кајсија"
-
-#: src/gr-ingredient.c:35 src/gr-ingredient.c:85
-msgid "Anchovis"
-msgstr "Инћун"
-
-#: src/gr-ingredient.c:36
-msgid "Artichoke"
-msgstr "Артичока"
-
-#: src/gr-ingredient.c:37 src/gr-ingredient.c:87
-msgid "Asparagus"
-msgstr "Шпаргла"
-
-#: src/gr-ingredient.c:38
-msgid "Aubergine"
-msgstr "Плави патлиџан"
-
-#: src/gr-ingredient.c:39 src/gr-ingredient.c:89
-msgid "Bacon"
-msgstr "Сланина"
-
-#: src/gr-ingredient.c:40
-msgid "Banana"
-msgstr "Банана"
-
-#: src/gr-ingredient.c:41 src/gr-ingredient.c:91
-msgid "Baked Beans"
-msgstr "Пребранац"
-
-#: src/gr-ingredient.c:42 src/gr-ingredient.c:92
-msgid "Basil"
-msgstr "Босиљак"
-
-#: src/gr-ingredient.c:43 src/gr-ingredient.c:93
-msgid "Beans"
-msgstr "Пасуљ"
-
-#: src/gr-ingredient.c:44
-msgid "Bagel"
-msgstr "Ђеврек"
-
-#: src/gr-ingredient.c:45 src/gr-ingredient.c:95
-msgid "Basmati rice"
-msgstr "Басмати пиринач"
-
-#: src/gr-ingredient.c:46
-msgid "Bay leaf"
-msgstr "Ловоров лист"
-
-#: src/gr-ingredient.c:47 src/gr-ingredient.c:97
-msgid "Beef mince"
-msgstr "Млевено месо"
-
-#: src/gr-ingredient.c:48
-msgid "Berry"
-msgstr "Јагодичасто воће"
-
-#: src/gr-ingredient.c:49
-msgid "Beetroot"
-msgstr "Цвекла"
-
-#: src/gr-ingredient.c:50
-msgid "Biscotti"
-msgstr "Кекс"
-
-#: src/gr-ingredient.c:51
-msgid "Beef sausage"
-msgstr "Говеђа кобасица"
-
-#: src/gr-ingredient.c:52 src/gr-ingredient.c:102
-msgid "Beef stock"
-msgstr "Говеђа шницла"
-
-#: src/gr-ingredient.c:53
-msgid "Bilberry"
-msgstr "Боровница"
-
-#: src/gr-ingredient.c:54
-msgid "Carrot"
-msgstr "Шаргарепа"
-
-#: src/gr-ingredient.c:55 src/gr-ingredient.c:105
-msgid "Couscous"
-msgstr "Кускус"
-
-#: src/gr-ingredient.c:56
-msgid "Date"
-msgstr "Урма"
-
-#: src/gr-ingredient.c:57
-msgid "Egg"
-msgstr "Јаје"
-
-#: src/gr-ingredient.c:58
-msgid "Fig"
-msgstr "Смоква"
-
-#: src/gr-ingredient.c:59 src/gr-ingredient.c:109
-msgid "Garlic"
-msgstr "Бели лук"
-
-#: src/gr-ingredient.c:60 src/gr-ingredient.c:110
-msgid "Honey"
-msgstr "Мед"
-
-#: src/gr-ingredient.c:61
-msgid "Lemon"
-msgstr "Лимун"
-
-#: src/gr-ingredient.c:62 src/gr-ingredient.c:112
-msgid "Mayonnaise"
-msgstr "Мајонез"
-
-#: src/gr-ingredient.c:63 src/gr-ingredient.c:113
-msgid "Mustard"
-msgstr "Сенф"
-
-#: src/gr-ingredient.c:64
-msgid "Onion"
-msgstr "Црни лук"
-
-#: src/gr-ingredient.c:65
-msgid "Orange"
-msgstr "Наранџа"
-
-#: src/gr-ingredient.c:66 src/gr-ingredient.c:116
-msgid "Parsley"
-msgstr "Першун"
-
-#: src/gr-ingredient.c:67
-msgid "Pepper"
-msgstr "Бибер"
-
-#: src/gr-ingredient.c:68
-msgid "Potato"
-msgstr "Кромпир"
-
-#: src/gr-ingredient.c:69 src/gr-ingredient.c:119
-msgid "Silantro"
-msgstr "Силантро"
-
-#: src/gr-ingredient.c:70
-msgid "Squash"
-msgstr "Бундева"
-
-#: src/gr-ingredient.c:71
-msgid "Tangerine"
-msgstr "Мандарина"
-
-#: src/gr-ingredient.c:72
-msgid "Tomato"
-msgstr "Парадајз"
-
-#: src/gr-ingredient.c:73 src/gr-ingredient.c:123
-msgid "Vinegar"
-msgstr "Сирће"
-
-#: src/gr-ingredient.c:74
-msgid "Wine"
-msgstr "Вино"
-
-#: src/gr-ingredient.c:75
-msgid "Yoghurt"
-msgstr "Јогурт"
-
-#: src/gr-ingredient.c:76
-msgid "Zinfandel"
-msgstr "Хамбурга"
-
-#: src/gr-ingredient.c:81
-msgid "Almonds"
-msgstr "Бадеми"
-
-#: src/gr-ingredient.c:83
-msgid "Apples"
-msgstr "Јабуке"
-
-#: src/gr-ingredient.c:84
-msgid "Apricots"
-msgstr "Кајсије"
-
-#: src/gr-ingredient.c:86
-msgid "Artichokes"
-msgstr "Артичоке"
-
-#: src/gr-ingredient.c:88
-msgid "Aubergines"
-msgstr "Плави патлиџани"
-
-#: src/gr-ingredient.c:90
-msgid "Bananas"
-msgstr "Банане"
-
-#: src/gr-ingredient.c:94
-msgid "Bagels"
-msgstr "Ђевреци"
-
-#: src/gr-ingredient.c:96
-msgid "Bay leaves"
-msgstr "Ловорово лишће"
-
-#: src/gr-ingredient.c:98
-msgid "Berries"
-msgstr "Јагодичасто воће"
-
-#: src/gr-ingredient.c:99
-msgid "Beetroots"
-msgstr "Цвекле"
-
-#: src/gr-ingredient.c:100
-msgid "Biscottis"
-msgstr "Кекса"
-
-#: src/gr-ingredient.c:101
-msgid "Beef sausages"
-msgstr "Говеђе кобасице"
-
-#: src/gr-ingredient.c:103
-msgid "Bilberries"
-msgstr "Боровнице"
-
-#: src/gr-ingredient.c:104
-msgid "Carrots"
-msgstr "Шаргарепе"
-
-#: src/gr-ingredient.c:106
-msgid "Dates"
-msgstr "Урме"
-
-#: src/gr-ingredient.c:107
-msgid "Eggs"
-msgstr "Јаја"
-
-#: src/gr-ingredient.c:108
-msgid "Figs"
-msgstr "Смокве"
-
-#: src/gr-ingredient.c:111
-msgid "Lemons"
-msgstr "Лимуна"
-
-#: src/gr-ingredient.c:114
-msgid "Onions"
-msgstr "Црног лука"
-
-#: src/gr-ingredient.c:115
-msgid "Oranges"
-msgstr "Наранџе"
-
-#: src/gr-ingredient.c:117
-msgid "Peppers"
-msgstr "Бибера"
-
-#: src/gr-ingredient.c:118
-msgid "Potatoes"
-msgstr "Кромпира"
-
-#: src/gr-ingredient.c:120
-msgid "Squashs"
-msgstr "Бундеве"
-
-#: src/gr-ingredient.c:121
-msgid "Tangerines"
-msgstr "Мандарине"
-
-#: src/gr-ingredient.c:122
-msgid "Tomatoes"
-msgstr "Парадајза"
-
-#: src/gr-ingredient.c:124
-msgid "Wines"
-msgstr "Вина"
-
-#: src/gr-ingredient.c:125
-msgid "Yoghurts"
-msgstr "Јогурта"
-
-#: src/gr-ingredient.c:126
-msgid "Zinfandels"
-msgstr "Хамбурга"
-
-#: src/gr-ingredient.c:131
-msgid "no Almond"
-msgstr "без бадема"
-
-#: src/gr-ingredient.c:132
-msgid "no Amaretti"
-msgstr "без амаретија"
-
-#: src/gr-ingredient.c:133
-msgid "no Apple"
-msgstr "без јабуке"
-
-#: src/gr-ingredient.c:134
-msgid "no Apricot"
-msgstr "без кајсије"
-
-#: src/gr-ingredient.c:135
-msgid "no Anchovis"
-msgstr "без инћуна"
-
-#: src/gr-ingredient.c:136
-msgid "no Artichoke"
-msgstr "без артичоке"
-
-#: src/gr-ingredient.c:137
-msgid "no Asparagus"
-msgstr "без шпаргле"
-
-#: src/gr-ingredient.c:138
-msgid "no Aubergine"
-msgstr "без плавог патлиџана"
-
-#: src/gr-ingredient.c:139
-msgid "no Bacon"
-msgstr "без сланине"
-
-#: src/gr-ingredient.c:140
-msgid "no Banana"
-msgstr "без банане"
-
-#: src/gr-ingredient.c:141
-msgid "no Baked Beans"
-msgstr "без пребранца"
-
-#: src/gr-ingredient.c:142
-msgid "no Basil"
-msgstr "без босиљка"
-
-#: src/gr-ingredient.c:143
-msgid "no Beans"
-msgstr "без пасуља"
-
-#: src/gr-ingredient.c:144
-msgid "no Bagel"
-msgstr "без ђеврека"
-
-#: src/gr-ingredient.c:145
-msgid "no Basmati rice"
-msgstr "без басмати пиринча"
-
-#: src/gr-ingredient.c:146
-msgid "no Bay leaf"
-msgstr "без ловоровог листа"
-
-#: src/gr-ingredient.c:147
-msgid "no Beef mince"
-msgstr "без млевеног меса"
-
-#: src/gr-ingredient.c:148
-msgid "no Berry"
-msgstr "без јагодичастог воћа"
-
-#: src/gr-ingredient.c:149
-msgid "no Beetroot"
-msgstr "без цвекле"
-
-#: src/gr-ingredient.c:150
-msgid "no Biscotti"
-msgstr "без кекса"
-
-#: src/gr-ingredient.c:151
-msgid "no Beef sausage"
-msgstr "без говеђе кобасице"
-
-#: src/gr-ingredient.c:152
-msgid "no Beef stock"
-msgstr "без говеђе шницле"
-
-#: src/gr-ingredient.c:153
-msgid "no Bilberry"
-msgstr "без боровнице"
-
-#: src/gr-ingredient.c:154
-msgid "no Carrot"
-msgstr "без шаргарепе"
-
-#: src/gr-ingredient.c:155
-msgid "no Couscous"
-msgstr "без кускуса"
-
-#: src/gr-ingredient.c:156
-msgid "no Date"
-msgstr "без урми"
-
-#: src/gr-ingredient.c:157
-msgid "no Egg"
-msgstr "баз јаја"
-
-#: src/gr-ingredient.c:158
-msgid "no Fig"
-msgstr "без смокве"
-
-#: src/gr-ingredient.c:159
-msgid "no Garlic"
-msgstr "без белог лука"
-
-#: src/gr-ingredient.c:160
-msgid "no Honey"
-msgstr "без меда"
-
-#: src/gr-ingredient.c:161
-msgid "no Lemon"
-msgstr "без линуна"
-
-#: src/gr-ingredient.c:162
-msgid "no Mayonnaise"
-msgstr "без мајонеза"
-
-#: src/gr-ingredient.c:163
-msgid "no Mustard"
-msgstr "без сенфа"
-
-#: src/gr-ingredient.c:164
-msgid "no Onion"
-msgstr "без црног лука"
-
-#: src/gr-ingredient.c:165
-msgid "no Orange"
-msgstr "без наранџе"
-
-#: src/gr-ingredient.c:166
-msgid "no Parsley"
-msgstr "без першуна"
-
-#: src/gr-ingredient.c:167
-msgid "no Pepper"
-msgstr "без бибера"
-
-#: src/gr-ingredient.c:168
-msgid "no Potatoe"
-msgstr "без кромпира"
-
-#: src/gr-ingredient.c:169
-msgid "no Silantro"
-msgstr "без силантра"
-
-#: src/gr-ingredient.c:170
-msgid "no Squash"
-msgstr "без бундеве"
-
-#: src/gr-ingredient.c:171
-msgid "no Tangerine"
-msgstr "без мандарине"
-
-#: src/gr-ingredient.c:172
-msgid "no Tomato"
-msgstr "без парадајза"
-
-#: src/gr-ingredient.c:173
-msgid "no Vinegar"
-msgstr "без сирћа"
-
-#: src/gr-ingredient.c:174
-msgid "no Wine"
-msgstr "без вина"
-
-#: src/gr-ingredient.c:175
-msgid "no Yoghurt"
-msgstr "без јогурта"
-
-#: src/gr-ingredient.c:176
-msgid "no Zinfandel"
-msgstr "без Хамбурга"
-
-#: src/gr-ingredients-list.c:83 src/gr-ingredients-list.c:91
-#, c-format
-msgid "Could not parse %s as a fraction"
-msgstr "Не могу да обрадим „%s“ као разломак"
-
-#: src/gr-ingredients-list.c:163
-#, c-format
-msgid "Could not parse %s as a number"
-msgstr "Не могу да обрадим „%s“ као број"
-
-#: src/gr-ingredients-list.c:207
-#, c-format
-msgid "I don't know this unit: %s"
-msgstr "Није ми позната ова јединица: %s"
-
-#: src/gr-ingredients-page.c:130
-msgid "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-msgstr "АБВГДЂЕЖЗИЈКЛЉМНЊОПРСТЋУФХЦЧЏШ"
-
-#: src/gr-list-page.c:151
+#: src/gr-list-page.c:231
+#| msgid "Gluten-free recipes"
+msgid "Gluten-free Recipes"
+msgstr "Рецепти без глутена"
+
+#: src/gr-list-page.c:233
+#| msgid "Nut-free recipes"
+msgid "Nut-free Recipes"
+msgstr "Рецепти без ораха"
+
+#: src/gr-list-page.c:235
+#| msgid "Vegan recipes"
+msgid "Vegan Recipes"
+msgstr "Вегански рецепти"
+
+#: src/gr-list-page.c:237
+#| msgid "Vegetarian recipes"
+msgid "Vegetarian Recipes"
+msgstr "Вегетеријански рецепти"
+
+#: src/gr-list-page.c:239
+#| msgid "Milk-free recipes"
+msgid "Milk-free Recipes"
+msgstr "Рецепти без млека"
+
+#: src/gr-list-page.c:241
+#| msgid "Other dietary restrictions"
+msgid "Other Dietary Restrictions"
+msgstr "Остала дијетска ограничења"
+
+#: src/gr-list-page.c:282
 #, c-format
 msgid "No %s found"
 msgstr "Нисам нашао „%s“"
 
-#: src/gr-list-page.c:154 src/gr-list-page.c:204 src/gr-list-page.c:254
+#: src/gr-list-page.c:285 src/gr-list-page.c:329 src/gr-list-page.c:361
 msgid "You could add one using the “New Recipe” button."
 msgstr "Можете додати један користећи дугме „Нов рецепт“."
 
-#: src/gr-list-page.c:200
+#: src/gr-list-page.c:318
+#, c-format
+msgid "Recipes by %s"
+msgstr "Рецепте од „%s“"
+
+#: src/gr-list-page.c:325
 #, c-format
 msgid "No recipes by chef %s found"
 msgstr "Нисам нашао рецепте кувара „%s“"
 
-#: src/gr-list-page.c:206
+#: src/gr-list-page.c:331 src/gr-list-page.c:408
 msgid "Sorry about this."
 msgstr "Е баш ми је жао због овога."
 
-#: src/gr-list-page.c:251
+#: src/gr-list-page.c:358
 #, c-format
 msgid "No recipes for %s found"
 msgstr "Нисам нашао рецепте за „%s“"
 
-#: src/gr-list-page.c:292
+#: src/gr-list-page.c:380
 msgid "No favorite recipes found"
 msgstr "Нисам нашао омиљене рецепте"
 
-#: src/gr-list-page.c:293
-msgid "Use the “Cook later” button to mark recipes as favorites."
+#: src/gr-list-page.c:381
+#, fuzzy
+#| msgid "Use the “Cook later” button to mark recipes as favorites."
+msgid "Use the ♥ button to mark recipes as favorites."
 msgstr "Користите дугме „Кувај касније“ да означите рецепт омиљеним."
 
-#: src/gr-recipe-exporter.c:117 src/gr-recipe-exporter.c:124
-#, c-format
-msgid "The recipe %s has been exported as ‘%s’"
-msgstr "Рецепт „%s“ је извезен као „%s“"
+#: src/gr-list-page.c:407
+#, fuzzy
+#| msgid "No favorite recipes found"
+msgid "No imported recipes found"
+msgstr "Нисам нашао омиљене рецепте"
 
-#: src/gr-recipe-exporter.c:143
+#: src/gr-meal.c:44
+#| msgid "Main course"
+msgid "Main Course"
+msgstr "Главно јело"
+
+#: src/gr-meal.c:45
+msgid "Snacks"
+msgstr "Закуска"
+
+#: src/gr-meal.c:46
+msgid "Breakfast"
+msgstr "Доручак"
+
+#: src/gr-meal.c:47
+#| msgid "Side dishes"
+msgid "Side Dishes"
+msgstr "Прилози уз јело"
+
+#: src/gr-meal.c:48
+msgid "Desserts"
+msgstr "Посластице"
+
+#: src/gr-meal.c:49
+#| msgid "Cake and baking"
+msgid "Cake and Baking"
+msgstr "Торта и колачи"
+
+#: src/gr-meal.c:50
+#| msgid "Drinks and cocktails"
+msgid "Drinks and Cocktails"
+msgstr "Пића и коктели"
+
+#: src/gr-meal.c:51
+msgid "Pizza"
+msgstr "Пица"
+
+#: src/gr-meal.c:52
+msgid "Pasta"
+msgstr "Паста"
+
+#: src/gr-meal.c:53
+msgid "Other"
+msgstr "Остало"
+
+#: src/gr-number.c:166 src/gr-number.c:183 src/gr-number.c:192
+#, c-format
+msgid "Could not parse %s as a fraction"
+msgstr "Не могу да обрадим „%s“ као разломак"
+
+#: src/gr-number.c:216
+#, fuzzy, c-format
+#| msgid "Could not parse %s as a number"
+msgid "Could not parse %s as a integer"
+msgstr "Не могу да обрадим „%s“ као број"
+
+#: src/gr-number.c:238
+#, fuzzy, c-format
+#| msgid "Could not parse %s as a fraction"
+msgid "Could not parse %s as a float"
+msgstr "Не могу да обрадим „%s“ као разломак"
+
+#: src/gr-number.c:286
+#, c-format
+msgid "Could not parse %s as a number"
+msgstr "Не могу да обрадим „%s“ као број"
+
+#: src/gr-recipe-exporter.c:141
+#, fuzzy
+#| msgid "Recipe Author Information"
+msgid "Recipe contribution"
+msgstr "Подаци о аутору рецепта"
+
+#: src/gr-recipe-exporter.c:142
+msgid "Please accept my attached recipe contribution."
+msgstr ""
+
+#: src/gr-recipe-exporter.c:152
+#, fuzzy
+#| msgid "My recipes"
+msgid "Try this recipe"
+msgstr "Моји рецепти"
+
+#: src/gr-recipe-exporter.c:153
+msgid ""
+"Hi,\n"
+"\n"
+"you should try this recipe."
+msgstr ""
+
+#: src/gr-recipe-exporter.c:156
+#, fuzzy
+#| msgid "Nut-free recipes"
+msgid "Try these recipes"
+msgstr "Рецепти без ораха"
+
+#: src/gr-recipe-exporter.c:157
+msgid ""
+"Hi,\n"
+"\n"
+"you should try these recipes."
+msgstr ""
+
+#: src/gr-recipe-exporter.c:160
+msgid "(The attached file can be imported into GNOME recipes.)"
+msgstr ""
+
+#: src/gr-recipe-exporter.c:187
+#, fuzzy, c-format
+#| msgid "Could not parse %s as a fraction"
+msgid "Could not share recipes"
+msgstr "Не могу да обрадим „%s“ као разломак"
+
+#: src/gr-recipe-exporter.c:189
 #, c-format
 msgid ""
-"Error while exporting recipe %s:\n"
+"There was an error sending the exported recipes by e-mail.\n"
+"The exported data can be found at “%s”."
+msgstr ""
+
+#: src/gr-recipe-exporter.c:368
+#, c-format
+msgid "This build does not support exporting"
+msgstr ""
+
+#: src/gr-recipe-exporter.c:446
+#, fuzzy, c-format
+#| msgid ""
+#| "Error while exporting recipe %s:\n"
+#| "%s"
+msgid ""
+"Error while exporting:\n"
 "%s"
 msgstr ""
 "Грешка приликом извоза рецепта „%s“:\n"
 "%s"
 
-#: src/gr-recipe-exporter.c:282
+#: src/gr-recipe-exporter.c:524
 #, c-format
-msgid "Chef %s not found"
-msgstr "Нисам нашао кувара „%s“"
+msgid "%d recipe selected for sharing"
+msgid_plural "%d recipes selected for sharing"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
-#: src/gr-recipe-importer.c:219
+#: src/gr-recipe-exporter.c:556
+msgid ""
+"Some of the selected recipes are included\n"
+"with GNOME recipes. You should only contribute\n"
+"your own recipes."
+msgstr ""
+
+#: src/gr-recipe-formatter.c:54 src/gr-recipe-printer.c:209
+msgid "Author:"
+msgstr "Аутор:"
+
+#: src/gr-recipe-formatter.c:57 src/gr-recipe-printer.c:212
+msgid "Serves:"
+msgstr "Сервирање:"
+
+#: src/gr-recipe-importer.c:243
 #, c-format
 msgid ""
 "Error while importing recipe:\n"
@@ -1417,84 +2395,133 @@ msgstr ""
 "Грешка приликом увоза рецепта:\n"
 "%s"
 
-#: src/gr-recipe-importer.c:382 src/gr-recipe-importer.c:611
+#: src/gr-recipe-importer.c:483
 #, c-format
-msgid "No recipe found"
-msgstr "Нисам нашао рецепт"
-
-#: src/gr-recipe-importer.c:411
-#, c-format
-msgid "Failed to load recipe: Couldn't parse Created key"
+#| msgid "Failed to load recipe: Couldn't parse Created key"
+msgid "Failed to load recipe: Couldn’t parse Created key"
 msgstr "Нисам успео да учитам рецепт: Не могу да обрадим створени кључ"
 
-#: src/gr-recipe-importer.c:422
+#: src/gr-recipe-importer.c:494
 #, c-format
-msgid "Failed to load recipe: Couldn't parse Modified key"
+#| msgid "Failed to load recipe: Couldn't parse Modified key"
+msgid "Failed to load recipe: Couldn’t parse Modified key"
 msgstr "Нисам успео да учитам рецепт: Не могу да обрадим измењени кључ"
 
-#: src/gr-recipe-importer.c:433
+#: src/gr-recipe-importer.c:505
 #, c-format
 msgid "Failed to load recipe: Images and Angles length mismatch"
 msgstr "Нисам успео да учитам рецепт: Слике и дужина углова се не поклапају"
 
-#: src/gr-recipe-importer.c:441
+#: src/gr-recipe-importer.c:513
 #, c-format
 msgid "Failed to load recipe: Images and DarkText length mismatch"
 msgstr ""
 "Нисам успео да учитам рецепт: Слике и дужина тамног текста се не поклапају"
 
-#: src/gr-recipe-printer.c:119
-msgid "Author:"
-msgstr "Аутор:"
+#: src/gr-recipe-importer.c:816
+#, c-format
+msgid "This build does not support importing"
+msgstr ""
 
-#: src/gr-recipe-printer.c:120
-msgid "Preparation:"
-msgstr "Припрема:"
-
-#: src/gr-recipe-printer.c:121
-msgid "Cooking:"
-msgstr "Кување:"
-
-#: src/gr-recipe-printer.c:352
+#: src/gr-recipe-printer.c:464 src/gr-shopping-list-printer.c:300
 msgid "Error printing file:"
 msgstr "Грешка штампања датотеке:"
 
-#: src/gr-recipe-printer.c:353
+#: src/gr-recipe-printer.c:465 src/gr-shopping-list-printer.c:301
 msgid "No details"
 msgstr "Нема појединости"
 
-#: src/gr-recipes-page.c:200
-msgid "My recipes"
-msgstr "Моји рецепти"
-
-#: src/gr-recipes-page.c:205
-msgid "Favorites"
-msgstr "Омиљени"
-
-#: src/gr-recipe-store.c:951 src/gr-recipe-store.c:985
+#: src/gr-recipe-printer.c:493 src/gr-shopping-list-printer.c:332
 #, c-format
-msgid "You need to provide a name for the recipe"
-msgstr "Треба да наведете назив за рецепт"
+msgid ""
+"Missing the desktop portals needed to print from inside a flatpak sandbox. "
+"Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system."
+msgstr ""
 
-#: src/gr-recipe-store.c:956 src/gr-recipe-store.c:991
-#, c-format
-msgid "A recipe with this name already exists"
-msgstr "Већ постоји рецепт са овим називом"
-
-#: src/gr-recipe-store.c:1119
-#, c-format
-msgid "You need to provide a name"
-msgstr "Треба да доставите назив"
-
-#: src/gr-recipe-store.c:1125
-#, c-format
-msgid "Sorry, this name is taken"
-msgstr "Извините, овај назив је већ заузет"
-
-#: src/gr-recipe-tile.c:110
+#: src/gr-recipe-small-tile.c:109 src/gr-recipe-tile.c:157
 #, c-format
 msgid "by %s"
 msgstr "„%s“"
+
+#: src/gr-recipe-small-tile.c:109 src/gr-recipe-tile.c:157
+msgid "Anonymous"
+msgstr ""
+
+#: src/gr-recipes-page.c:230
+#| msgid "My recipes"
+msgid "My Recipes"
+msgstr "Моји рецепти"
+
+#: src/gr-recipes-page.c:235
+msgid "Favorites"
+msgstr "Омиљени"
+
+#: src/gr-recipes-page.c:269
+msgid "Last edited:"
+msgstr ""
+
+#: src/gr-recipes-page.c:370
+#, c-format
+msgid "Buy ingredients: <b>%s</b>"
+msgstr ""
+
+#: src/gr-recipes-page.c:372
+#, c-format
+msgid "Buy ingredients: <b>%s and %s</b>"
+msgstr ""
+
+#: src/gr-recipes-page.c:374
+#, c-format
+msgid "Buy ingredients: <b>%s, %s and %d other</b>"
+msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: src/gr-recipe-store.c:1114
+#, fuzzy, c-format
+#| msgid "A recipe with this name already exists."
+msgid ""
+"A recipe with this name and author already exists.\n"
+"Please choose a different name"
+msgstr "Већ постоји рецепт са овим називом."
+
+#: src/gr-recipe-store.c:1143
+#, fuzzy, c-format
+#| msgid "You need to provide a name for the recipe"
+msgid "You need to provide an ID for the recipe"
+msgstr "Треба да наведете назив за рецепт"
+
+#: src/gr-recipe-store.c:1149
+#, fuzzy, c-format
+#| msgid "A recipe with this name already exists"
+msgid "A recipe with this ID already exists"
+msgstr "Већ постоји рецепт са овим називом"
+
+#: src/gr-recipe-store.c:1277
+#, fuzzy, c-format
+#| msgid "You need to provide a name"
+msgid "You need to provide an ID"
+msgstr "Треба да доставите назив"
+
+#: src/gr-recipe-store.c:1283
+#, fuzzy, c-format
+#| msgid "Sorry, this name is taken"
+msgid "Sorry, this ID is taken"
+msgstr "Извините, овај назив је већ заузет"
+
+#: src/gr-recipe-store.c:1310
+#, fuzzy, c-format
+#| msgid "You need to provide a name for the recipe"
+msgid "You need to provide an ID for the chef"
+msgstr "Треба да наведете назив за рецепт"
+
+#: src/gr-recipe-store.c:1316
+#, fuzzy, c-format
+#| msgid "A recipe with this name already exists"
+msgid "A chef with this ID already exists"
+msgstr "Већ постоји рецепт са овим називом"
 
 #: src/gr-season.c:41
 msgid "Thanksgiving"
@@ -1524,31 +2551,1170 @@ msgstr "Јесен"
 msgid "Winter"
 msgstr "Зима"
 
-#: src/gr-window.c:145
-msgid "Add a new recipe"
+#: src/gr-shopping-list-formatter.c:43 src/gr-shopping-list-printer.c:138
+#: src/gr-shopping-page.c:688
+msgid "Shopping List"
+msgstr ""
+
+#: src/gr-shopping-list-formatter.c:45
+#, fuzzy
+#| msgid ""
+#| "Error while exporting recipe %s:\n"
+#| "%s"
+msgid "For the following recipes:"
+msgstr ""
+"Грешка приликом извоза рецепта „%s“:\n"
+"%s"
+
+#: src/gr-shopping-list-printer.c:147
+#, fuzzy
+#| msgid "Favorite recipes"
+msgid "For the following recipes"
+msgstr "Омиљени рецепти"
+
+#: src/gr-shopping-list-printer.c:164
+msgid "Items"
+msgstr ""
+
+#: src/gr-shopping-page.c:101
+#, c-format
+msgid "%d ingredient marked for purchase"
+msgid_plural "%d ingredients marked for purchase"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: src/gr-shopping-page.c:119
+#, fuzzy, c-format
+#| msgid "Ingredients page"
+msgid "Buy Ingredients (%d recipe)"
+msgid_plural "Buy Ingredients (%d recipes)"
+msgstr[0] "Страница састојака"
+msgstr[1] "Страница састојака"
+msgstr[2] "Страница састојака"
+msgstr[3] "Страница састојака"
+
+#: src/gr-shopping-page.c:124
+#, c-format
+msgid "%d Recipe marked for preparation"
+msgid_plural "%d Recipes marked for preparation"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: src/gr-shopping-page.c:700
+#, c-format
+msgid "Could not share shopping list"
+msgstr ""
+
+#: src/gr-shopping-page.c:702
+#, c-format
+msgid "There was an error sending the shopping list by e-mail.\n"
+msgstr ""
+
+#: src/gr-spice-row.c:100
+msgid "Somewhat Spicy"
+msgstr ""
+
+#: src/gr-spice-row.c:104
+msgid "Very Spicy"
+msgstr ""
+
+#: src/gr-unit.c:40
+msgctxt "unit abbreviation"
+msgid "g"
+msgstr ""
+
+#: src/gr-unit.c:40
+msgctxt "unit name"
+msgid "gram"
+msgstr ""
+
+#: src/gr-unit.c:41
+msgctxt "unit abbreviation"
+msgid "kg"
+msgstr ""
+
+#: src/gr-unit.c:41
+msgctxt "unit name"
+msgid "kilogram"
+msgstr ""
+
+#: src/gr-unit.c:42
+msgctxt "unit abbreviation"
+msgid "lb"
+msgstr ""
+
+#: src/gr-unit.c:42
+msgctxt "unit name"
+msgid "pound"
+msgstr ""
+
+#: src/gr-unit.c:43
+msgctxt "unit abbreviation"
+msgid "oz"
+msgstr ""
+
+#: src/gr-unit.c:43
+msgctxt "unit name"
+msgid "ounce"
+msgstr ""
+
+#: src/gr-unit.c:44
+msgctxt "unit abbreviation"
+msgid "l"
+msgstr ""
+
+#: src/gr-unit.c:44
+msgctxt "unit name"
+msgid "liter"
+msgstr ""
+
+#: src/gr-unit.c:45
+msgctxt "unit abbreviation"
+msgid "dl"
+msgstr ""
+
+#: src/gr-unit.c:45
+msgctxt "unit name"
+msgid "deciliter"
+msgstr ""
+
+#: src/gr-unit.c:46
+#, fuzzy
+#| msgctxt "minute abbreviation"
+#| msgid "m"
+msgctxt "unit abbreviation"
+msgid "ml"
+msgstr "м"
+
+#: src/gr-unit.c:46
+msgctxt "unit name"
+msgid "milliliter"
+msgstr ""
+
+#: src/gr-unit.c:47
+msgctxt "unit abbreviation"
+msgid "fl oz"
+msgstr ""
+
+#: src/gr-unit.c:47
+msgctxt "unit name"
+msgid "fluid ounce"
+msgstr ""
+
+#: src/gr-unit.c:48
+msgctxt "unit abbreviation"
+msgid "pt"
+msgstr ""
+
+#: src/gr-unit.c:48
+msgctxt "unit name"
+msgid "pint"
+msgstr ""
+
+#: src/gr-unit.c:49
+msgctxt "unit abbreviation"
+msgid "qt"
+msgstr ""
+
+#: src/gr-unit.c:49
+msgctxt "unit name"
+msgid "quart"
+msgstr ""
+
+#: src/gr-unit.c:50
+msgctxt "unit abbreviation"
+msgid "gal"
+msgstr ""
+
+#: src/gr-unit.c:50
+msgctxt "unit name"
+msgid "gallon"
+msgstr ""
+
+#: src/gr-unit.c:51
+msgctxt "unit abbreviation"
+msgid "cup"
+msgstr ""
+
+#: src/gr-unit.c:51
+msgctxt "unit name"
+msgid "cup"
+msgstr ""
+
+#: src/gr-unit.c:52
+msgctxt "unit abbreviation"
+msgid "tbsp"
+msgstr ""
+
+#: src/gr-unit.c:52
+msgctxt "unit name"
+msgid "tablespoon"
+msgstr ""
+
+#: src/gr-unit.c:53
+msgctxt "unit abbreviation"
+msgid "tsp"
+msgstr ""
+
+#: src/gr-unit.c:53
+msgctxt "unit name"
+msgid "teaspoon"
+msgstr ""
+
+#: src/gr-unit.c:54
+msgctxt "unit abbreviation"
+msgid "box"
+msgstr ""
+
+#: src/gr-unit.c:54
+msgctxt "unit name"
+msgid "box"
+msgstr ""
+
+#: src/gr-unit.c:55
+msgctxt "unit abbreviation"
+msgid "pkg"
+msgstr ""
+
+#: src/gr-unit.c:55
+msgctxt "unit name"
+msgid "package"
+msgstr ""
+
+#: src/gr-unit.c:56
+msgctxt "unit abbreviation"
+msgid "glass"
+msgstr ""
+
+#: src/gr-unit.c:56
+msgctxt "unit name"
+msgid "glass"
+msgstr ""
+
+#: src/gr-unit.c:126
+#, c-format
+#| msgid "I don't know this unit: %s"
+msgid "I don’t know this unit: %s"
+msgstr "Није ми позната ова јединица: %s"
+
+#: src/gr-utils.c:401
+#, fuzzy, c-format
+#| msgid "More than an hour"
+msgid "more than a year ago"
+msgstr "Више од једног сата"
+
+#: src/gr-utils.c:404 src/gr-utils.c:408
+#, c-format
+msgid "%d month ago"
+msgid_plural "%d months ago"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: src/gr-utils.c:412
+#, c-format
+msgid "%d day ago"
+msgid_plural "%d days ago"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: src/gr-utils.c:415
+#, c-format
+msgid "just now"
+msgstr ""
+
+#: src/gr-utils.c:417
+#, fuzzy, c-format
+#| msgid "15 to 30 minutes"
+msgid "10 minutes ago"
+msgstr "од 15 до 30 минута"
+
+#: src/gr-utils.c:419
+#, fuzzy, c-format
+#| msgid "More than an hour"
+msgid "half an hour ago"
+msgstr "Више од једног сата"
+
+#: src/gr-utils.c:423
+#, c-format
+msgid "%d hour ago"
+msgid_plural "%d hours ago"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: src/gr-utils.c:429
+msgid "some time ago"
+msgstr ""
+
+#: src/gr-window.c:175
+#| msgid "Add a new recipe"
+msgid "Add a New Recipe"
 msgstr "Додајте нови рецепт"
 
-#: src/gr-window.c:245
-msgid "Stop cooking"
-msgstr "Зауставите кување"
+#: src/gr-window.c:468
+#, c-format
+msgid "Recipe “%s” deleted"
+msgstr ""
 
-#: src/gr-window.c:249
-msgid "Start cooking"
-msgstr "Започните кување"
+#: src/gr-window.c:646
+#, fuzzy
+#| msgid "Imported Chef"
+msgid "Imported Recipes"
+msgstr "Увезени кувар"
 
-#: src/gr-window.c:484
+#: src/gr-window.c:705
+#, fuzzy
+#| msgid "Recipe Author Information"
+msgid "My Chef Information"
+msgstr "Подаци о аутору рецепта"
+
+#: src/gr-window.c:723
 msgid "Select a recipe file"
 msgstr "Изаберите датотеку рецепта"
 
-#: src/gr-window.c:524
+#: src/gr-window.c:763
 #, c-format
-msgid "Recipes by %s"
-msgstr "Рецепте од „%s“"
+msgid "Chefs: %s"
+msgstr ""
 
-#: src/gr-window.c:541
+#: src/gr-window.c:780
 msgid "Favorite recipes"
 msgstr "Омиљени рецепти"
 
-#: src/gr-window.c:565
+#: src/gr-window.c:837
 msgid "My own recipes"
 msgstr "Моји рецепти"
+
+#: src/ingredients.c:1
+msgid "Almond"
+msgstr "Бадем"
+
+#: src/ingredients.c:2
+msgid "Amaretti"
+msgstr "Амарети"
+
+#: src/ingredients.c:3
+msgid "Anchovis"
+msgstr "Инћун"
+
+#: src/ingredients.c:4
+msgid "Apple"
+msgstr "Јабука"
+
+#: src/ingredients.c:5
+msgid "Apricot"
+msgstr "Кајсија"
+
+#: src/ingredients.c:6
+msgid "Artichoke"
+msgstr "Артичока"
+
+#: src/ingredients.c:7
+msgid "Asparagus"
+msgstr "Шпаргла"
+
+#: src/ingredients.c:8
+msgid "Aubergine"
+msgstr "Плави патлиџан"
+
+#: src/ingredients.c:9
+msgid "Bacon"
+msgstr "Сланина"
+
+#: src/ingredients.c:10
+msgid "Bagel"
+msgstr "Ђеврек"
+
+#: src/ingredients.c:11
+#, fuzzy
+#| msgid "Baked Beans"
+msgid "Baked beans"
+msgstr "Пребранац"
+
+#: src/ingredients.c:12
+msgid "Baking powder"
+msgstr ""
+
+#: src/ingredients.c:13
+msgid "Banana"
+msgstr "Банана"
+
+#: src/ingredients.c:14
+msgid "Basil"
+msgstr "Босиљак"
+
+#: src/ingredients.c:15
+msgid "Basmati rice"
+msgstr "Басмати пиринач"
+
+#: src/ingredients.c:16
+msgid "Bay leaf"
+msgstr "Ловоров лист"
+
+#: src/ingredients.c:17
+msgid "Beans"
+msgstr "Пасуљ"
+
+#: src/ingredients.c:18
+msgid "Beef mince"
+msgstr "Млевено месо"
+
+#: src/ingredients.c:19
+msgid "Beef sausage"
+msgstr "Говеђа кобасица"
+
+#: src/ingredients.c:20
+msgid "Beef stock"
+msgstr "Говеђа шницла"
+
+#: src/ingredients.c:21
+msgid "Beetroot"
+msgstr "Цвекла"
+
+#: src/ingredients.c:22
+msgid "Berry"
+msgstr "Јагодичасто воће"
+
+#: src/ingredients.c:23
+msgid "Biscotti"
+msgstr "Кекс"
+
+#: src/ingredients.c:24
+msgid "Bilberry"
+msgstr "Боровница"
+
+#: src/ingredients.c:25
+msgid "Butter"
+msgstr ""
+
+#: src/ingredients.c:26
+msgid "Carrot"
+msgstr "Шаргарепа"
+
+#: src/ingredients.c:27
+msgid "Cheese"
+msgstr ""
+
+#: src/ingredients.c:28
+msgid "Cherries, pitted"
+msgstr ""
+
+#: src/ingredients.c:29
+msgid "Chocolate frosting"
+msgstr ""
+
+#: src/ingredients.c:30
+msgid "Cocoa powder"
+msgstr ""
+
+#: src/ingredients.c:31
+msgid "Couscous"
+msgstr "Кускус"
+
+#: src/ingredients.c:32
+msgid "Date"
+msgstr "Урма"
+
+#: src/ingredients.c:33
+msgid "Egg"
+msgstr "Јаје"
+
+#: src/ingredients.c:34
+msgid "Fig"
+msgstr "Смоква"
+
+#: src/ingredients.c:35
+msgid "Flour"
+msgstr ""
+
+#: src/ingredients.c:36
+msgid "Garlic"
+msgstr "Бели лук"
+
+#: src/ingredients.c:37
+msgid "Ground beef"
+msgstr ""
+
+#: src/ingredients.c:38
+msgid "Honey"
+msgstr "Мед"
+
+#: src/ingredients.c:39
+msgid "Lemon"
+msgstr "Лимун"
+
+#: src/ingredients.c:40
+msgid "Linseeds"
+msgstr ""
+
+#: src/ingredients.c:41
+msgid "Mayonnaise"
+msgstr "Мајонез"
+
+#: src/ingredients.c:42
+#, fuzzy
+#| msgid "Milk free"
+msgid "Milk"
+msgstr "Без млека"
+
+#: src/ingredients.c:43
+msgid "Mustard"
+msgstr "Сенф"
+
+#: src/ingredients.c:44
+msgid "Oatmeal"
+msgstr ""
+
+#: src/ingredients.c:45
+msgid "Oil"
+msgstr ""
+
+#: src/ingredients.c:46
+msgid "Onion"
+msgstr "Црни лук"
+
+#: src/ingredients.c:47
+msgid "Olive oil, extra-virgin"
+msgstr ""
+
+#: src/ingredients.c:48
+msgid "Orange"
+msgstr "Наранџа"
+
+#: src/ingredients.c:49
+msgid "Parsley"
+msgstr "Першун"
+
+#: src/ingredients.c:50
+msgid "Peperoni"
+msgstr ""
+
+#: src/ingredients.c:51
+msgid "Pepper"
+msgstr "Бибер"
+
+#: src/ingredients.c:52
+msgid "Peppers"
+msgstr "Бибера"
+
+#: src/ingredients.c:53
+#, fuzzy
+#| msgid "Pizza"
+msgid "Pizza sauce"
+msgstr "Пица"
+
+#: src/ingredients.c:54
+msgid "Potato"
+msgstr "Кромпир"
+
+#: src/ingredients.c:55
+msgid "Pumpkin seeds"
+msgstr ""
+
+#: src/ingredients.c:56
+msgid "Salt"
+msgstr ""
+
+#: src/ingredients.c:57
+msgid "Silantro"
+msgstr "Силантро"
+
+#: src/ingredients.c:58
+msgid "Soy sauce"
+msgstr ""
+
+#: src/ingredients.c:59
+msgid "Sugar"
+msgstr ""
+
+#: src/ingredients.c:60
+msgid "Sunflower seeds"
+msgstr ""
+
+#: src/ingredients.c:61
+msgid "Squash"
+msgstr "Бундева"
+
+#: src/ingredients.c:62
+msgid "Tangerine"
+msgstr "Мандарина"
+
+#: src/ingredients.c:63
+msgid "Tofu"
+msgstr ""
+
+#: src/ingredients.c:64
+msgid "Tomato"
+msgstr "Парадајз"
+
+#: src/ingredients.c:65
+msgid "Tumeric ground"
+msgstr ""
+
+#: src/ingredients.c:66
+msgid "Vanilla sugar"
+msgstr ""
+
+#: src/ingredients.c:67
+msgid "Vanilla pudding"
+msgstr ""
+
+#: src/ingredients.c:68
+msgid "Vinegar"
+msgstr "Сирће"
+
+#: src/ingredients.c:69
+msgid "Water"
+msgstr ""
+
+#: src/ingredients.c:70
+msgid "Wine"
+msgstr "Вино"
+
+#: src/ingredients.c:71
+msgid "Yeast"
+msgstr ""
+
+#: src/ingredients.c:72
+msgid "Yoghurt"
+msgstr "Јогурт"
+
+#: src/ingredients.c:73
+msgid "Zinfandel"
+msgstr "Хамбурга"
+
+#: src/no-ingredients.c:1
+msgid "no Almond"
+msgstr "без бадема"
+
+#: src/no-ingredients.c:2
+msgid "no Amaretti"
+msgstr "без амаретија"
+
+#: src/no-ingredients.c:3
+msgid "no Anchovis"
+msgstr "без инћуна"
+
+#: src/no-ingredients.c:4
+msgid "no Apple"
+msgstr "без јабуке"
+
+#: src/no-ingredients.c:5
+msgid "no Apricot"
+msgstr "без кајсије"
+
+#: src/no-ingredients.c:6
+msgid "no Artichoke"
+msgstr "без артичоке"
+
+#: src/no-ingredients.c:7
+msgid "no Asparagus"
+msgstr "без шпаргле"
+
+#: src/no-ingredients.c:8
+msgid "no Aubergine"
+msgstr "без плавог патлиџана"
+
+#: src/no-ingredients.c:9
+msgid "no Bacon"
+msgstr "без сланине"
+
+#: src/no-ingredients.c:10
+msgid "no Bagel"
+msgstr "без ђеврека"
+
+#: src/no-ingredients.c:11
+#, fuzzy
+#| msgid "no Baked Beans"
+msgid "no Baked beans"
+msgstr "без пребранца"
+
+#: src/no-ingredients.c:12
+msgid "no Baking powder"
+msgstr ""
+
+#: src/no-ingredients.c:13
+msgid "no Banana"
+msgstr "без банане"
+
+#: src/no-ingredients.c:14
+msgid "no Basil"
+msgstr "без босиљка"
+
+#: src/no-ingredients.c:15
+msgid "no Basmati rice"
+msgstr "без басмати пиринча"
+
+#: src/no-ingredients.c:16
+msgid "no Bay leaf"
+msgstr "без ловоровог листа"
+
+#: src/no-ingredients.c:17
+msgid "no Beans"
+msgstr "без пасуља"
+
+#: src/no-ingredients.c:18
+msgid "no Beef mince"
+msgstr "без млевеног меса"
+
+#: src/no-ingredients.c:19
+msgid "no Beef sausage"
+msgstr "без говеђе кобасице"
+
+#: src/no-ingredients.c:20
+msgid "no Beef stock"
+msgstr "без говеђе шницле"
+
+#: src/no-ingredients.c:21
+msgid "no Beetroot"
+msgstr "без цвекле"
+
+#: src/no-ingredients.c:22
+msgid "no Berry"
+msgstr "без јагодичастог воћа"
+
+#: src/no-ingredients.c:23
+msgid "no Biscotti"
+msgstr "без кекса"
+
+#: src/no-ingredients.c:24
+msgid "no Bilberry"
+msgstr "без боровнице"
+
+#: src/no-ingredients.c:25
+#, fuzzy
+#| msgid "no Berry"
+msgid "no Butter"
+msgstr "без јагодичастог воћа"
+
+#: src/no-ingredients.c:26
+msgid "no Carrot"
+msgstr "без шаргарепе"
+
+#: src/no-ingredients.c:27
+msgid "no Cheese"
+msgstr ""
+
+#: src/no-ingredients.c:28
+msgid "no Cherries, pitted"
+msgstr ""
+
+#: src/no-ingredients.c:29
+msgid "no Chocolate frosting"
+msgstr ""
+
+#: src/no-ingredients.c:30
+msgid "no Cocoa powder"
+msgstr ""
+
+#: src/no-ingredients.c:31
+msgid "no Couscous"
+msgstr "без кускуса"
+
+#: src/no-ingredients.c:32
+msgid "no Date"
+msgstr "без урми"
+
+#: src/no-ingredients.c:33
+msgid "no Egg"
+msgstr "баз јаја"
+
+#: src/no-ingredients.c:34
+msgid "no Fig"
+msgstr "без смокве"
+
+#: src/no-ingredients.c:35
+msgid "no Flour"
+msgstr ""
+
+#: src/no-ingredients.c:36
+msgid "no Garlic"
+msgstr "без белог лука"
+
+#: src/no-ingredients.c:37
+msgid "no Ground beef"
+msgstr ""
+
+#: src/no-ingredients.c:38
+msgid "no Honey"
+msgstr "без меда"
+
+#: src/no-ingredients.c:39
+msgid "no Lemon"
+msgstr "без линуна"
+
+#: src/no-ingredients.c:40
+msgid "no Linseeds"
+msgstr ""
+
+#: src/no-ingredients.c:41
+msgid "no Mayonnaise"
+msgstr "без мајонеза"
+
+#: src/no-ingredients.c:42
+msgid "no Milk"
+msgstr ""
+
+#: src/no-ingredients.c:43
+msgid "no Mustard"
+msgstr "без сенфа"
+
+#: src/no-ingredients.c:44
+#, fuzzy
+#| msgid "Any meal"
+msgid "no Oatmeal"
+msgstr "Било који оброк"
+
+#: src/no-ingredients.c:45
+#, fuzzy
+#| msgid "no Onion"
+msgid "no Oil"
+msgstr "без црног лука"
+
+#: src/no-ingredients.c:46
+msgid "no Onion"
+msgstr "без црног лука"
+
+#: src/no-ingredients.c:47
+msgid "no Olive oil, extra-virgin"
+msgstr ""
+
+#: src/no-ingredients.c:48
+msgid "no Orange"
+msgstr "без наранџе"
+
+#: src/no-ingredients.c:49
+msgid "no Parsley"
+msgstr "без першуна"
+
+#: src/no-ingredients.c:50
+#, fuzzy
+#| msgid "no Pepper"
+msgid "no Peperoni"
+msgstr "без бибера"
+
+#: src/no-ingredients.c:51
+msgid "no Pepper"
+msgstr "без бибера"
+
+#: src/no-ingredients.c:52
+#, fuzzy
+#| msgid "no Pepper"
+msgid "no Peppers"
+msgstr "без бибера"
+
+#: src/no-ingredients.c:53
+msgid "no Pizza sauce"
+msgstr ""
+
+#: src/no-ingredients.c:54
+#, fuzzy
+#| msgid "no Potatoe"
+msgid "no Potato"
+msgstr "без кромпира"
+
+#: src/no-ingredients.c:55
+msgid "no Pumpkin seeds"
+msgstr ""
+
+#: src/no-ingredients.c:56
+#, fuzzy
+#| msgid "no Silantro"
+msgid "no Salt"
+msgstr "без силантра"
+
+#: src/no-ingredients.c:57
+msgid "no Silantro"
+msgstr "без силантра"
+
+#: src/no-ingredients.c:58
+msgid "no Soy sauce"
+msgstr ""
+
+#: src/no-ingredients.c:59
+#, fuzzy
+#| msgid "no Squash"
+msgid "no Sugar"
+msgstr "без бундеве"
+
+#: src/no-ingredients.c:60
+msgid "no Sunflower seeds"
+msgstr ""
+
+#: src/no-ingredients.c:61
+msgid "no Squash"
+msgstr "без бундеве"
+
+#: src/no-ingredients.c:62
+msgid "no Tangerine"
+msgstr "без мандарине"
+
+#: src/no-ingredients.c:63
+#, fuzzy
+#| msgid "no Tomato"
+msgid "no Tofu"
+msgstr "без парадајза"
+
+#: src/no-ingredients.c:64
+msgid "no Tomato"
+msgstr "без парадајза"
+
+#: src/no-ingredients.c:65
+msgid "no Tumeric ground"
+msgstr ""
+
+#: src/no-ingredients.c:66
+#, fuzzy
+#| msgid "no Vinegar"
+msgid "no Vanilla sugar"
+msgstr "без сирћа"
+
+#: src/no-ingredients.c:67
+msgid "no Vanilla pudding"
+msgstr ""
+
+#: src/no-ingredients.c:68
+msgid "no Vinegar"
+msgstr "без сирћа"
+
+#: src/no-ingredients.c:69
+#, fuzzy
+#| msgid "no Wine"
+msgid "no Water"
+msgstr "без воде"
+
+#: src/no-ingredients.c:70
+msgid "no Wine"
+msgstr "без вина"
+
+#: src/no-ingredients.c:71
+msgid "no Yeast"
+msgstr ""
+
+#: src/no-ingredients.c:72
+msgid "no Yoghurt"
+msgstr "без јогурта"
+
+#: src/no-ingredients.c:73
+msgid "no Zinfandel"
+msgstr "без Хамбурга"
+
+#: src/segments.c:1
+msgid "Dough"
+msgstr ""
+
+#: src/segments.c:2
+msgid "Toppings"
+msgstr ""
+
+#~ msgid "Merge"
+#~ msgstr "Споји"
+
+#~ msgid ""
+#~ "Ingredients\n"
+#~ "gathered"
+#~ msgstr ""
+#~ "Прикупљени\n"
+#~ "састојци"
+
+#~ msgid ""
+#~ "Oven\n"
+#~ "preheated"
+#~ msgstr ""
+#~ "Предгрејана\n"
+#~ "рерна"
+
+#~ msgid ""
+#~ "Instructions\n"
+#~ "followed"
+#~ msgstr ""
+#~ "Праћена\n"
+#~ "упутства"
+
+#~ msgid "Instructions"
+#~ msgstr "Упутства"
+
+#~ msgid "Additional notes"
+#~ msgstr "Додатне напомене"
+
+#~ msgid "_Cook it later"
+#~ msgstr "_Кувај касније"
+
+#~ msgid "_Export"
+#~ msgstr "_Извези"
+
+#~ msgid "Duration"
+#~ msgstr "Трајање"
+
+#~ msgid "Remaining time"
+#~ msgstr "Преостало време"
+
+#~ msgid "Stop"
+#~ msgstr "Заустави"
+
+#~ msgid "_Description"
+#~ msgstr "_Опис"
+
+#~ msgid "Instr_uctions"
+#~ msgstr "_Упутства"
+
+#~ msgid "_Additional notes"
+#~ msgstr "Дод_атне напомене"
+
+#~ msgid "Preferences"
+#~ msgstr "Поставке"
+
+#~ msgid "_Short Name:"
+#~ msgstr "_Кратак назив:"
+
+#~ msgid "_Name:"
+#~ msgstr "_Назив:"
+
+#~ msgid "_Description:"
+#~ msgstr "_Опис:"
+
+#~ msgid "_Picture:"
+#~ msgstr "_Слика:"
+
+#~ msgid "_Preferences"
+#~ msgstr "_Поставке"
+
+#~ msgid "Your cooking timer for “%s” has expired."
+#~ msgstr "Истекао је ваш одбројавач за „%s“."
+
+#~ msgid "Created on %c"
+#~ msgstr "Направљено у %c"
+
+#~ msgid "Last modified on %c"
+#~ msgstr "Последњи пут измењено у %c"
+
+#~ msgid ""
+#~ "About GNOME chef %s:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "О Гномовом кувару %s:\n"
+#~ "%s"
+
+#~ msgid "A recipe by GNOME chef %s"
+#~ msgstr "Рецепт из Гномовог кувара %s"
+
+#~ msgid "More recipes by %s"
+#~ msgstr "Још рецепата од „%s“"
+
+#~ msgid "You've cooked this recipe before"
+#~ msgid_plural "You've cooked this recipe %d times"
+#~ msgstr[0] "Већ сте %d пут раније спремали овај рецепт"
+#~ msgstr[1] "Већ сте %d пута раније спремали овај рецепт"
+#~ msgstr[2] "Већ сте %d пута раније спремали овај рецепт"
+#~ msgstr[3] "Већ сте једном раније спремали овај рецепт"
+
+#~ msgid "Use dark text"
+#~ msgstr "Користи таман текст"
+
+#~ msgid "Almonds"
+#~ msgstr "Бадеми"
+
+#~ msgid "Apples"
+#~ msgstr "Јабуке"
+
+#~ msgid "Apricots"
+#~ msgstr "Кајсије"
+
+#~ msgid "Artichokes"
+#~ msgstr "Артичоке"
+
+#~ msgid "Aubergines"
+#~ msgstr "Плави патлиџани"
+
+#~ msgid "Bananas"
+#~ msgstr "Банане"
+
+#~ msgid "Bagels"
+#~ msgstr "Ђевреци"
+
+#~ msgid "Bay leaves"
+#~ msgstr "Ловорово лишће"
+
+#~ msgid "Berries"
+#~ msgstr "Јагодичасто воће"
+
+#~ msgid "Beetroots"
+#~ msgstr "Цвекле"
+
+#~ msgid "Biscottis"
+#~ msgstr "Кекса"
+
+#~ msgid "Beef sausages"
+#~ msgstr "Говеђе кобасице"
+
+#~ msgid "Bilberries"
+#~ msgstr "Боровнице"
+
+#~ msgid "Carrots"
+#~ msgstr "Шаргарепе"
+
+#~ msgid "Dates"
+#~ msgstr "Урме"
+
+#~ msgid "Eggs"
+#~ msgstr "Јаја"
+
+#~ msgid "Figs"
+#~ msgstr "Смокве"
+
+#~ msgid "Lemons"
+#~ msgstr "Лимуна"
+
+#~ msgid "Onions"
+#~ msgstr "Црног лука"
+
+#~ msgid "Oranges"
+#~ msgstr "Наранџе"
+
+#~ msgid "Potatoes"
+#~ msgstr "Кромпира"
+
+#~ msgid "Squashs"
+#~ msgstr "Бундеве"
+
+#~ msgid "Tangerines"
+#~ msgstr "Мандарине"
+
+#~ msgid "Tomatoes"
+#~ msgstr "Парадајза"
+
+#~ msgid "Wines"
+#~ msgstr "Вина"
+
+#~ msgid "Yoghurts"
+#~ msgstr "Јогурта"
+
+#~ msgid "Zinfandels"
+#~ msgstr "Хамбурга"
+
+#~ msgid "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "АБВГДЂЕЖЗИЈКЛЉМНЊОПРСТЋУФХЦЧЏШ"
+
+#~ msgid "The recipe %s has been exported as ‘%s’"
+#~ msgstr "Рецепт „%s“ је извезен као „%s“"
+
+#~ msgid "Chef %s not found"
+#~ msgstr "Нисам нашао кувара „%s“"
+
+#~ msgid "No recipe found"
+#~ msgstr "Нисам нашао рецепт"
+
+#~ msgid "Stop cooking"
+#~ msgstr "Зауставите кување"
+
+#~ msgid "Start cooking"
+#~ msgstr "Започните кување"
