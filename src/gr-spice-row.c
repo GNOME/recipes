@@ -35,6 +35,7 @@ struct _GrSpiceRow
 
         char *spice;
 
+        gboolean less;
         gboolean include;
 
         GdTaggedEntry *entry;
@@ -46,6 +47,7 @@ G_DEFINE_TYPE (GrSpiceRow, gr_spice_row, GTK_TYPE_LIST_BOX_ROW)
 enum {
         PROP_0,
         PROP_SPICE,
+        PROP_LESS,
         PROP_INCLUDE,
         N_PROPS
 };
@@ -74,6 +76,9 @@ gr_spice_row_get_property (GObject    *object,
           case PROP_SPICE:
                   g_value_set_string (value, self->spice);
                   break;
+          case PROP_LESS:
+                  g_value_set_boolean (value, self->less);
+                  break;
           case PROP_INCLUDE:
                   g_value_set_boolean (value, self->include);
                   break;
@@ -92,16 +97,26 @@ update_image (GrSpiceRow *self)
 }
 
 static const char *
-spice_get_title (const char *spice)
+spice_get_title (GrSpiceRow *self)
 {
-        if (strcmp (spice, "mild") == 0)
+        if (strcmp (self->spice, "mild") == 0) {
                 return _("Mild");
-        else if (strcmp (spice, "spicy") == 0)
-                return _("Somewhat Spicy");
-        else if (strcmp (spice, "hot") == 0)
-                return _("Hot");
-        else if (strcmp (spice, "extreme") == 0)
-                return _("Very Spicy");
+        }
+        else if (strcmp (self->spice, "spicy") == 0) {
+                if (self->less)
+                        return _("Mild or somewhat spicy");
+                else
+                        return _("At least somewhat spicy");
+        }
+        else if (strcmp (self->spice, "hot") == 0) {
+                if (self->less)
+                        return _("At most hot");
+                else
+                        return _("Hot or very spicy");
+        }
+        else if (strcmp (self->spice, "extreme") == 0) {
+                return _("Very spicy");
+        }
         else
                 return "ERROR";
 }
@@ -109,7 +124,7 @@ spice_get_title (const char *spice)
 static void
 update_label (GrSpiceRow *self)
 {
-        gtk_label_set_label (GTK_LABEL (self->label), spice_get_title (self->spice));
+        gtk_label_set_label (GTK_LABEL (self->label), spice_get_title (self));
 }
 
 static void
@@ -150,7 +165,7 @@ update_tag (GrSpiceRow *self)
                 return;
         }
 
-        if (self->include && !self->tag) {
+        if ((self->include) && !self->tag) {
                 clear_other_tags (self);
                 self->tag = gd_tagged_entry_tag_new ("");
                 gd_tagged_entry_tag_set_style (self->tag, "spice-tag");
@@ -159,7 +174,8 @@ update_tag (GrSpiceRow *self)
         }
 
         if (self->include)
-                gd_tagged_entry_tag_set_label (self->tag, gtk_label_get_label (GTK_LABEL (self->label)));
+                gd_tagged_entry_tag_set_label (self->tag,
+                                               gtk_label_get_label (GTK_LABEL (self->label)));
 
         g_signal_emit_by_name (self->entry, "search-changed", 0);
 }
@@ -172,8 +188,10 @@ gr_spice_row_notify (GObject *object, GParamSpec *pspec)
         if (pspec->param_id == PROP_SPICE)
                 update_label (self);
 
-        if (pspec->param_id == PROP_INCLUDE)
+        if (pspec->param_id == PROP_INCLUDE) {
+                update_label (self);
                 update_image (self);
+        }
 
         update_tag (self);
 }
@@ -192,6 +210,12 @@ gr_spice_row_set_property (GObject      *object,
                 if (g_strcmp0 (self->spice, g_value_get_string (value)) != 0) {
                         g_free (self->spice);
                         self->spice = g_value_dup_string (value);
+                        g_object_notify_by_pspec (object, pspec);
+                }
+                break;
+          case PROP_LESS:
+                if (self->less != g_value_get_boolean (value)) {
+                        self->less = g_value_get_boolean (value);
                         g_object_notify_by_pspec (object, pspec);
                 }
                 break;
@@ -223,6 +247,11 @@ gr_spice_row_class_init (GrSpiceRowClass *klass)
                                      G_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY);
         g_object_class_install_property (object_class, PROP_SPICE, pspec);
 
+        pspec = g_param_spec_boolean ("less", NULL, NULL,
+                                      FALSE,
+                                      G_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY);
+        g_object_class_install_property (object_class, PROP_LESS, pspec);
+
         pspec = g_param_spec_boolean ("include", NULL, NULL,
                                       FALSE,
                                       G_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY);
@@ -242,11 +271,13 @@ gr_spice_row_init (GrSpiceRow *self)
 }
 
 GrSpiceRow *
-gr_spice_row_new (const char *spice)
+gr_spice_row_new (const char *spice,
+                  gboolean    less)
 {
         return GR_SPICE_ROW (g_object_new (GR_TYPE_SPICE_ROW,
-                                          "spice", spice,
-                                          NULL));
+                                           "spice", spice,
+                                           "less", less,
+                                           NULL));
 }
 
 void
@@ -261,20 +292,27 @@ gr_spice_row_set_entry (GrSpiceRow     *row,
 char *
 gr_spice_row_get_search_term (GrSpiceRow *row)
 {
-        if (row->include) {
-                if (strcmp (row->spice, "mild") == 0)
-                        return g_strconcat ("s-:25", NULL);
-                else if (strcmp (row->spice, "spicy") == 0)
-                        return g_strconcat ("s-:50", NULL);
-                else if (strcmp (row->spice, "hot") == 0)
-                        return g_strconcat ("s+:50", NULL);
-                else if (strcmp (row->spice, "extreme") == 0)
-                        return g_strconcat ("s+:70", NULL);
-                else
-                        return g_strdup ("ERROR");
-        }
-        else
+        if (!row->include)
                 return NULL;
+
+        if (strcmp (row->spice, "mild") == 0)
+                return g_strdup ("s-:24");
+        else if (strcmp (row->spice, "spicy") == 0) {
+                if (row->less)
+                        return g_strdup ("s-:49");
+                else
+                        return g_strdup ("s+:25");
+        }
+        else if (strcmp (row->spice, "hot") == 0) {
+                if (row->less)
+                        return g_strdup ("s-:74");
+                else
+                        return g_strdup ("s+:50");
+        }
+        else if (strcmp (row->spice, "extreme") == 0)
+                return g_strdup ("s+:75");
+        else
+                return g_strdup ("ERROR");
 }
 
 char *

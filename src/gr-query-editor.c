@@ -551,7 +551,8 @@ populate_spice_list (GrQueryEditor *self)
 {
         int i;
         GtkWidget *row;
-        const char *levels[] = { "mild", "spicy", "hot", "extreme" };
+        const char *levels[] = { "mild", "spicy", "spicy", "hot", "hot", "extreme" };
+        gboolean less[] = { TRUE, TRUE, FALSE, TRUE, FALSE, FALSE };
 
         row = gtk_label_new (_("Any spiciness"));
         g_object_set (row, "margin", 6, NULL);
@@ -560,7 +561,7 @@ populate_spice_list (GrQueryEditor *self)
         gtk_container_add (GTK_CONTAINER (self->spice_list), row);
 
         for (i = 0; i < G_N_ELEMENTS (levels); i++) {
-                row = GTK_WIDGET (gr_spice_row_new (levels[i]));
+                row = GTK_WIDGET (gr_spice_row_new (levels[i], less[i]));
                 gtk_widget_show (row);
                 gtk_container_add (GTK_CONTAINER (self->spice_list), row);
                 gr_spice_row_set_entry (GR_SPICE_ROW (row), GD_TAGGED_ENTRY (self->entry));

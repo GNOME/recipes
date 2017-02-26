@@ -29,7 +29,8 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrSpiceRow, gr_spice_row, GR, SPICE_ROW, GtkListBoxRow)
 
-GrSpiceRow   *gr_spice_row_new       (const char *spice);
+GrSpiceRow   *gr_spice_row_new       (const char *spice,
+                                      gboolean    less);
 
 void         gr_spice_row_set_entry (GrSpiceRow      *row,
                                      GdTaggedEntry   *entry);

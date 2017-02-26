@@ -766,7 +766,7 @@ gr_recipe_matches (GrRecipe    *recipe,
                         int level;
 
                         level = atoi (terms[i] + 3);
-                        if (recipe->spiciness >= level)
+                        if (recipe->spiciness > level)
                                 return FALSE;
 
                         continue;
