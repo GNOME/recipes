@@ -71,10 +71,22 @@ dist_images_DATA = \
 	images/ebassi-carbonara-04.JPG	\
 	images/ebassi-carbonara-05.JPG	\
 	images/ebassi-carbonara-06.JPG	\
+	images/feaneron.png		\
 	images/gingered_carrot_soup.jpg	\
 	images/grumbeerekiechle_1.JPG	\
 	images/grumbeerekiechle_2.JPG	\
 	images/grumbeerekiechle_3.JPG	\
+	images/hazelnutmilk1.jpg	\
+	images/hazelnutmilk2.jpg	\
+	images/hazelnutmilk3.jpg	\
+	images/hazelnutmilk4.jpg	\
+	images/hazelnutmilk5.jpg	\
+	images/hazelnutmilk6.jpg	\
+	images/hazelnutmilk7.jpg	\
+	images/hazelnutbutter1.jpg	\
+	images/hazelnutbutter2.jpg	\
+	images/hazelnutbutter3.jpg	\
+	images/hazelnutbutter4.jpg	\
 	images/kiwi-mandarin1.jpg	\
 	images/kiwi-mandarin2.jpg	\
 	images/kiwi-mandarin3.jpg	\
