@@ -56,68 +56,6 @@ show_details (GrRecipeTile *tile)
 }
 
 static void
-add_recipe_css (GrRecipe *recipe,
-                GString  *css)
-{
-        const char *id;
-        g_autoptr(GArray) images = NULL;
-
-        id = gr_recipe_get_id (recipe);
-
-        g_object_get (recipe, "images", &images, NULL);
-
-        if (images->len > 0) {
-                GrImage *ri;
-                int index;
-
-                index = gr_recipe_get_default_image (recipe);
-                if (index < 0 || index >= images->len)
-                        index = 0;
-
-                ri = &g_array_index (images, GrImage, index);
-
-                g_string_append_printf (css, "image.recipe.small.%s,\nbox.recipe.%s {\n", id, id);
-                g_string_append_printf (css, "  background: url('%s');\n"
-                                             "  background-size: cover;\n"
-                                             "  background-position: center;\n", ri->path);
-                g_string_append (css, "}\n\n");
-        }
-}
-
-static GtkCssProvider *provider = NULL;
-
-void
-gr_recipe_tile_recreate_css (void)
-{
-        GrRecipeStore *store;
-        g_autofree char **keys = NULL;
-        guint length;
-        g_autoptr(GString) css = NULL;
-        int i;
-
-return;
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
-        keys = gr_recipe_store_get_recipe_keys (store, &length);
-
-        css = g_string_new ("");
-
-        for (i = 0; i < length; i++) {
-                g_autoptr (GrRecipe) recipe = NULL;
-                recipe = gr_recipe_store_get_recipe (store, keys[i]);
-                add_recipe_css (recipe, css);
-        }
-
-        if (provider == NULL) {
-                provider = gtk_css_provider_new ();
-                gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
-                                                           GTK_STYLE_PROVIDER (provider),
-                                                           GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
-        }
-
-        gtk_css_provider_load_from_data (provider, css->str, css->len, NULL);
-}
-
-static void
 recipe_tile_set_recipe (GrRecipeTile *tile,
                         GrRecipe     *recipe)
 {
@@ -125,24 +63,14 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        if (tile->recipe) {
-                const char *elem;
-                elem = gr_recipe_get_id (tile->recipe);
-                gtk_style_context_remove_class (gtk_widget_get_style_context (tile->box), elem);
-        }
-
         g_set_object (&tile->recipe, recipe);
 
         if (tile->recipe) {
-                const char *elem;
                 const char *name;
                 const char *author;
                 g_autoptr(GrChef) chef = NULL;
                 g_autofree char *tmp = NULL;
                 g_autoptr(GArray) images = NULL;
-
-                elem = gr_recipe_get_id (tile->recipe);
-                gtk_style_context_add_class (gtk_widget_get_style_context (tile->box), elem);
 
                 name = gr_recipe_get_translated_name (recipe);
                 author = gr_recipe_get_author (recipe);

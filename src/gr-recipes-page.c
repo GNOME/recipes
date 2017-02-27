@@ -144,7 +144,6 @@ gr_recipes_page_init (GrRecipesPage *page)
         populate_shopping_from_store (page);
         populate_categories_from_store (page);
         populate_chefs_from_store (page);
-        gr_recipe_tile_recreate_css ();
         gr_chef_tile_recreate_css ();
         connect_store_signals (page);
 
@@ -419,8 +418,6 @@ populate_chefs_from_store (GrRecipesPage *self)
         guint length;
         int i;
         int count;
-
-        gr_chef_tile_recreate_css ();
 
         container_remove_all (GTK_CONTAINER (self->chefs_box));
 

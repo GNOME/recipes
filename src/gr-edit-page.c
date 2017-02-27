@@ -2139,7 +2139,6 @@ gr_edit_page_save (GrEditPage *page)
 
         if (ret) {
                 gr_image_viewer_persist_changes (GR_IMAGE_VIEWER (page->images));
-                gr_recipe_tile_recreate_css ();
 
                 return TRUE;
         }

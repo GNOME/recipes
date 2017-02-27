@@ -34,6 +34,4 @@ GtkWidget      *gr_recipe_tile_new        (GrRecipe     *recipe);
 GtkWidget      *gr_recipe_tile_new_wide   (GrRecipe     *recipe);
 GrRecipe       *gr_recipe_tile_get_recipe (GrRecipeTile *tile);
 
-void            gr_recipe_tile_recreate_css (void);
-
 G_END_DECLS

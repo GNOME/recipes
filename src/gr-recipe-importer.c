@@ -440,7 +440,6 @@ next:
 
         if (id == NULL) {
                 // We're done!
-                gr_recipe_tile_recreate_css ();
                 gr_chef_tile_recreate_css ();
 
                 g_signal_emit (importer, done_signal, 0, importer->recipes);
