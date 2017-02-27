@@ -53,6 +53,7 @@ EXTRA_DIST = \
 	ingredients-data/valid-3.expected ingredients-data/valid-3.in	\
 	ingredients-data/valid-4.expected ingredients-data/valid-4.in	\
 	number-data/number1.expected number-data/number1.in		\
-	unit-data/unit1.expected unit-data/unit1.in
+	unit-data/unit1.expected unit-data/unit1.in			\
+	id-data/ids.expected id-data/ids.in
 
 -include $(top_srcdir)/git.mk

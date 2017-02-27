@@ -141,6 +141,7 @@ gnome_recipes_SOURCES = \
 BUILT_SOURCES = \
 	resources-ui.c		\
 	resources-images.c	\
+	resources-generated.c	\
 	ingredients.inc		\
 	no-ingredients.inc	\
 	segments.inc		\
@@ -150,16 +151,13 @@ BUILT_SOURCES = \
 	gr-shell-search-provider-dbus.c
 
 DISTCLEANFILES = \
+	resources-ui.c		\
+	resources-images.c	\
+	resources-generated.c	\
 	ingredients.inc		\
 	no-ingredients.inc	\
 	segments.inc		\
 	cuisine.css		\
-	news
-
-MAINTAINERCLEANFILES = \
-	resources-ui.c		\
-	resources-images.c	\
-	resources-generated.c	\
 	types.h			\
 	types.c			\
 	gr-shell-search-provider-dbus.h \
@@ -212,13 +210,11 @@ gr-shell-search-provider-dbus.h gr-shell-search-provider-dbus.c: Makefile.am $(s
 cuisine.css: cuisine.css.in
 	$(AM_V_GEN) sed -e "s|\@pkgdatadir\@|$(pkgdatadir)|" $< > $@
 
-news:
-	$(AM_V_GEN) $(top_builddir)/tools/get-news $(top_srcdir)/data/appdata/org.gnome.Recipes.appdata.xml.in $(PACKAGE_VERSION) > $@
-
 EXTRA_DIST = \
 	shell-search-provider-dbus-interfaces.xml 	\
 	recipes-ui.gresource.xml 			\
 	recipes-images.gresource.xml 			\
+	recipes-generated.gresource.xml			\
 	$(resource_ui_files)				\
 	$(resource_image_files)				\
 	types.h.template				\
