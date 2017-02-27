@@ -303,6 +303,7 @@ gr_list_page_populate_from_chef (GrListPage *self,
         const char *name;
         const char *fullname;
         const char *description;
+        const char *path;
         char *tmp;
         g_autofree char *term = NULL;
 
@@ -314,8 +315,17 @@ gr_list_page_populate_from_chef (GrListPage *self,
         name = gr_chef_get_name (chef) ? gr_chef_get_name (chef) : "";
         fullname = gr_chef_get_fullname (chef) ? gr_chef_get_fullname (chef) : "";
         description = gr_chef_get_translated_description (chef) ? gr_chef_get_translated_description (chef) : "";
+        path = gr_chef_get_image (chef);
 
-        gtk_style_context_add_class (gtk_widget_get_style_context (self->chef_image), id);
+        if (path && path[0]) {
+                g_autoptr(GdkPixbuf) pixbuf = NULL;
+
+                pixbuf = load_pixbuf_fill_size (path, 64, 64);
+                gtk_image_set_from_pixbuf (GTK_IMAGE (self->chef_image), pixbuf);
+        }
+        else {
+                gtk_image_clear (GTK_IMAGE (self->chef_image));
+        }
 
         gtk_widget_show (self->chef_grid);
         gtk_widget_show (self->heading);

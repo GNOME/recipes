@@ -73,11 +73,6 @@ gr_chef_tile_class_init (GrChefTileClass *klass)
 }
 
 void
-gr_chef_tile_recreate_css (void)
-{
-}
-
-void
 gr_chef_tile_set_chef (GrChefTile *tile,
                        GrChef     *chef)
 {

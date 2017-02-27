@@ -34,7 +34,4 @@ GrChef          *gr_chef_tile_get_chef (GrChefTile *tile);
 void             gr_chef_tile_set_chef (GrChefTile *tile,
                                         GrChef     *chef);
 
-void            gr_chef_tile_recreate_css (void);
-
-
 G_END_DECLS

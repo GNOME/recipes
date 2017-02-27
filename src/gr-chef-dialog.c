@@ -232,9 +232,6 @@ save_chef_dialog (GrChefDialog  *self,
                 ret = gr_recipe_store_add_chef (store, self->chef, error);
         }
 
-        if (ret)
-            gr_chef_tile_recreate_css ();
-
         return ret;
 }
 

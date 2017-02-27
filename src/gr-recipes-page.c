@@ -144,7 +144,6 @@ gr_recipes_page_init (GrRecipesPage *page)
         populate_shopping_from_store (page);
         populate_categories_from_store (page);
         populate_chefs_from_store (page);
-        gr_chef_tile_recreate_css ();
         connect_store_signals (page);
 
         page->shopping_timeout = g_timeout_add_seconds (300, update_shopping_time, page);

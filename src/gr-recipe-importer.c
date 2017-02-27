@@ -439,9 +439,6 @@ next:
         id = importer->recipe_ids[importer->current_recipe];
 
         if (id == NULL) {
-                // We're done!
-                gr_chef_tile_recreate_css ();
-
                 g_signal_emit (importer, done_signal, 0, importer->recipes);
                 cleanup_import (importer);
                 return TRUE;

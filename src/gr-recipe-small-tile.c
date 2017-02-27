@@ -82,24 +82,14 @@ recipe_small_tile_set_recipe (GrRecipeSmallTile *tile,
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        if (tile->recipe) {
-                const char *elem;
-                elem = gr_recipe_get_id (tile->recipe);
-                gtk_style_context_remove_class (gtk_widget_get_style_context (tile->box), elem);
-        }
-
         g_set_object (&tile->recipe, recipe);
 
         if (tile->recipe) {
-                const char *elem;
                 const char *name;
                 const char *author;
                 g_autoptr(GrChef) chef = NULL;
                 g_autofree char *tmp = NULL;
-
-                elem = gr_recipe_get_id (tile->recipe);
-                gtk_style_context_add_class (gtk_widget_get_style_context (tile->box), elem);
-                gtk_style_context_add_class (gtk_widget_get_style_context (tile->image), elem);
+                g_autoptr(GArray) images = NULL;
 
                 name = gr_recipe_get_translated_name (recipe);
                 author = gr_recipe_get_author (recipe);
@@ -108,6 +98,22 @@ recipe_small_tile_set_recipe (GrRecipeSmallTile *tile,
                 gtk_label_set_label (GTK_LABEL (tile->label), name);
                 tmp = g_strdup_printf (_("by %s"), chef ? gr_chef_get_name (chef) : _("Anonymous"));
                 gtk_label_set_label (GTK_LABEL (tile->author), tmp);
+
+                g_object_get (recipe, "images", &images, NULL);
+                if (images->len > 0) {
+                        int index;
+                        GrImage *ri;
+                        g_autoptr(GdkPixbuf) pixbuf = NULL;
+
+                        index = gr_recipe_get_default_image (recipe);
+                        if (index < 0 || index >= images->len)
+                                index = 0;
+
+                        ri = &g_array_index (images, GrImage, index);
+                        pixbuf = load_pixbuf_fill_size (ri->path, 64, 64);
+                        gtk_image_set_from_pixbuf (GTK_IMAGE (tile->image), pixbuf);
+                }
+
         }
 }
 
