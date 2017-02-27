@@ -1179,6 +1179,7 @@ gr_window_show_news (GrWindow *window)
                 image = gtk_image_new_from_icon_name ("org.gnome.Recipes-symbolic", 1);
                 gtk_image_set_pixel_size (GTK_IMAGE (image), 32);
                 gtk_container_add (GTK_CONTAINER (heading), image);
+                /* TRANSLATORS: %s gets replaced by a version number */
                 title = g_strdup_printf (_("Recipes %s"), ri->version);
                 label = gtk_label_new (title);
                 gtk_label_set_xalign (GTK_LABEL (label), 0.0);
@@ -1193,6 +1194,7 @@ gr_window_show_news (GrWindow *window)
                         g_autofree char *release = NULL;
 
                         date = g_date_time_format (ri->date, "%F");
+                        /* TRANSLATORS: %s gets replaced by a date */
                         release = g_strdup_printf (_("Released: %s"), date);
                         label = gtk_label_new (release);
                         gtk_label_set_xalign (GTK_LABEL (label), 0.0);
