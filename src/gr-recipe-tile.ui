@@ -3,6 +3,7 @@
   <!-- interface-requires gtk+ 3.10 -->
   <template class="GrRecipeTile" parent="GtkButton">
     <property name="visible">True</property>
+    <property name="halign">center</property>
     <signal name="clicked" handler="show_details" swapped="True"/>
     <style>
       <class name="view"/>

@@ -39,6 +39,7 @@
             <child>
               <object class="GtkGrid" id="today_box">
                 <property name="visible">1</property>
+                <property name="halign">center</property>
                 <property name="row-spacing">20</property>
                 <property name="column-spacing">20</property>
                 <property name="row-homogeneous">1</property>
@@ -79,6 +80,7 @@
                         <property name="margin">10</property>
                         <property name="xalign">0</property>
                         <property name="ellipsize">end</property>
+                        <property name="max-width-chars">30</property>
                         <property name="use-markup">1</property>
                       </object>
                       <packing>
@@ -113,6 +115,7 @@
             <child>
               <object class="GtkGrid" id="pick_box">
                 <property name="visible">1</property>
+                <property name="halign">center</property>
                 <property name="row-spacing">20</property>
                 <property name="column-spacing">20</property>
                 <property name="row-homogeneous">1</property>
@@ -138,6 +141,7 @@
             <child>
               <object class="GtkFlowBox" id="diet_box">
                 <property name="visible">1</property>
+                <property name="halign">fill</property>
                 <property name="row-spacing">20</property>
                 <property name="column-spacing">20</property>
                 <property name="homogeneous">1</property>
@@ -152,11 +156,13 @@
             <child>
               <object class="GtkRevealer" id="diet_more">
                 <property name="visible">1</property>
+                <property name="halign">fill</property>
                 <property name="transition-type">slide-up</property>
                 <property name="margin-top">10</property>
                 <child>
                   <object class="GtkFlowBox" id="diet_box2">
                     <property name="visible">1</property>
+                    <property name="halign">fill</property>
                     <property name="margin-top">10</property>
                     <property name="margin-bottom">10</property>
                     <property name="row-spacing">20</property>
@@ -172,6 +178,7 @@
             <child>
               <object class="GtkBox" id="categories_expander_box">
                 <property name="visible">1</property>
+                <property name="halign">fill</property>
                 <property name="margin-start">24</property>
                 <property name="margin-end">24</property>
                 <property name="margin-bottom">12</property>
@@ -235,6 +242,7 @@
             <child>
               <object class="GtkFlowBox" id="chefs_box">
                 <property name="visible">1</property>
+                <property name="halign">center</property>
                 <property name="selection-mode">none</property>
                 <property name="row-spacing">20</property>
                 <property name="column-spacing">20</property>
