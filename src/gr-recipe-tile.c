@@ -36,6 +36,8 @@ struct _GrRecipeTile
 
         GrRecipe *recipe;
 
+        gboolean wide;
+
         GtkWidget *label;
         GtkWidget *author;
         GtkWidget *image;
@@ -66,7 +68,6 @@ add_recipe_css (GrRecipe *recipe,
 
         if (images->len > 0) {
                 GrImage *ri;
-                g_autofree char *path = NULL;
                 int index;
 
                 index = gr_recipe_get_default_image (recipe);
@@ -94,6 +95,7 @@ gr_recipe_tile_recreate_css (void)
         g_autoptr(GString) css = NULL;
         int i;
 
+return;
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
         keys = gr_recipe_store_get_recipe_keys (store, &length);
 
@@ -137,6 +139,7 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
                 const char *author;
                 g_autoptr(GrChef) chef = NULL;
                 g_autofree char *tmp = NULL;
+                g_autoptr(GArray) images = NULL;
 
                 elem = gr_recipe_get_id (tile->recipe);
                 gtk_style_context_add_class (gtk_widget_get_style_context (tile->box), elem);
@@ -148,6 +151,26 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
                 gtk_label_set_label (GTK_LABEL (tile->label), name);
                 tmp = g_strdup_printf (_("by %s"), chef ? gr_chef_get_name (chef) : _("Anonymous"));
                 gtk_label_set_label (GTK_LABEL (tile->author), tmp);
+
+                g_object_get (recipe, "images", &images, NULL);
+                if (images->len > 0) {
+                        int index;
+                        GrImage *ri;
+                        g_autoptr(GdkPixbuf) pixbuf = NULL;
+                        int width;
+                        int height;
+
+                        width = tile->wide ? 538 : 258;
+                        height = 200;
+
+                        index = gr_recipe_get_default_image (recipe);
+                        if (index < 0 || index >= images->len)
+                                index = 0;
+
+                        ri = &g_array_index (images, GrImage, index);
+                        pixbuf = load_pixbuf_fill_size (ri->path, width, height);
+                        gtk_image_set_from_pixbuf (GTK_IMAGE (tile->image), pixbuf);
+                }
         }
 }
 
@@ -166,6 +189,7 @@ gr_recipe_tile_init (GrRecipeTile *tile)
 {
         gtk_widget_set_has_window (GTK_WIDGET (tile), FALSE);
         gtk_widget_init_template (GTK_WIDGET (tile));
+        tile->wide = FALSE;
 }
 
 static void
@@ -192,6 +216,19 @@ gr_recipe_tile_new (GrRecipe *recipe)
         GrRecipeTile *tile;
 
         tile = g_object_new (GR_TYPE_RECIPE_TILE, NULL);
+        recipe_tile_set_recipe (GR_RECIPE_TILE (tile), recipe);
+
+        return GTK_WIDGET (tile);
+}
+
+GtkWidget *
+gr_recipe_tile_new_wide (GrRecipe *recipe)
+{
+        GrRecipeTile *tile;
+
+        tile = g_object_new (GR_TYPE_RECIPE_TILE, NULL);
+        tile->wide = TRUE;
+
         recipe_tile_set_recipe (GR_RECIPE_TILE (tile), recipe);
 
         return GTK_WIDGET (tile);

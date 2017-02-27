@@ -328,13 +328,15 @@ populate_recipes_from_store (GrRecipesPage *self)
                 recipe = gr_recipe_store_get_recipe (store, keys[i]);
 
                 if (todays < 3 && gr_recipe_store_recipe_is_todays (store, recipe)) {
-                        tile = gr_recipe_tile_new (recipe);
-                        gtk_widget_show (tile);
                         if (todays == 0) {
+                                tile = gr_recipe_tile_new_wide (recipe);
+                                gtk_widget_show (tile);
                                 gtk_grid_attach (GTK_GRID (self->today_box), tile, 0, 0, 2, 1);
                                 todays += 2;
                         }
                         else {
+                                tile = gr_recipe_tile_new (recipe);
+                                gtk_widget_show (tile);
                                 gtk_grid_attach (GTK_GRID (self->today_box), tile, todays, 0, 1, 1);
                                 todays += 1;
                         }

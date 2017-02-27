@@ -13,49 +13,52 @@
       <object class="GtkEventBox" id="eboxbox">
         <property name="visible">1</property>
         <child>
-          <object class="GtkBox" id="box">
+          <object class="GtkOverlay" id="box">
             <property name="visible">1</property>
-            <property name="orientation">vertical</property>
             <style>
               <class name="recipe"/>
             </style>
             <child>
               <object class="GtkImage" id="image">
-                <property name="width-request">96</property>
-                <property name="height-request">64</property>
                 <property name="visible">1</property>
-                <property name="valign">center</property>
-              </object>
-              <packing>
-                <property name="expand">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label">
-                <property name="visible">1</property>
-                <property name="valign">end</property>
-                <property name="xalign">0</property>
-                <property name="ellipsize">end</property>
-                <property name="width-chars">12</property>
-                <property name="max-width-chars">12</property>
-                <style>
-                  <class name="recipe"/>
-                  <class name="name"/>
-                </style>
+                <property name="halign">fill</property>
+                <property name="valign">fill</property>
               </object>
             </child>
-            <child>
-              <object class="GtkLabel" id="author">
+            <child type="overlay">
+              <object class="GtkBox">
                 <property name="visible">1</property>
+                <property name="halign">fill</property>
                 <property name="valign">end</property>
-                <property name="xalign">0</property>
-                <property name="ellipsize">end</property>
-                <property name="width-chars">12</property>
-                <property name="max-width-chars">12</property>
-                <style>
-                  <class name="recipe"/>
-                  <class name="author"/>
-                </style>
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkLabel" id="label">
+                    <property name="visible">1</property>
+                    <property name="valign">end</property>
+                    <property name="xalign">0</property>
+                    <property name="ellipsize">end</property>
+                    <property name="width-chars">12</property>
+                    <property name="max-width-chars">12</property>
+                    <style>
+                      <class name="recipe"/>
+                      <class name="name"/>
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="author">
+                    <property name="visible">1</property>
+                    <property name="valign">end</property>
+                    <property name="xalign">0</property>
+                    <property name="ellipsize">end</property>
+                    <property name="width-chars">12</property>
+                    <property name="max-width-chars">12</property>
+                    <style>
+                      <class name="recipe"/>
+                      <class name="author"/>
+                    </style>
+                  </object>
+                </child>
               </object>
             </child>
           </object>

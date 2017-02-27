@@ -31,6 +31,7 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (GrRecipeTile, gr_recipe_tile, GR, RECIPE_TILE, GtkButton)
 
 GtkWidget      *gr_recipe_tile_new        (GrRecipe     *recipe);
+GtkWidget      *gr_recipe_tile_new_wide   (GrRecipe     *recipe);
 GrRecipe       *gr_recipe_tile_get_recipe (GrRecipeTile *tile);
 
 void            gr_recipe_tile_recreate_css (void);
