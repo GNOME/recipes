@@ -141,7 +141,7 @@ set_current_image (GrImageViewer *viewer)
                 const char *vis;
 
                 ri = &g_array_index (viewer->images, GrImage, viewer->index);
-                pixbuf = load_pixbuf_fill_size (ri->path, 0, 360, 240);
+                pixbuf = load_pixbuf_fill_size (ri->path, 360, 240);
 
                 vis = gtk_stack_get_visible_child_name (GTK_STACK (viewer->stack));
                 if (strcmp (vis, "image1") == 0) {
@@ -170,7 +170,7 @@ populate_preview (GrImageViewer *viewer)
 
         for (i = 0; i < viewer->images->len; i++) {
                 GrImage *ri = &g_array_index (viewer->images, GrImage, i);
-                g_autoptr(GdkPixbuf) pb = load_pixbuf_fill_size (ri->path, 0, 60, 40);
+                g_autoptr(GdkPixbuf) pb = load_pixbuf_fill_size (ri->path, 60, 40);
                 GtkWidget *image;
 
                 image = gtk_image_new_from_pixbuf (pb);

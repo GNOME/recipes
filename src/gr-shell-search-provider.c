@@ -174,7 +174,7 @@ gr_recipe_get_pixbuf (GrRecipe *recipe)
                 GrImage *ri = &g_array_index (images, GrImage, 0);
                 GdkPixbuf *pixbuf;
 
-                pixbuf = load_pixbuf_fill_size (ri->path, 0, 64, 64);
+                pixbuf = load_pixbuf_fill_size (ri->path, 64, 64);
                 return pixbuf;
         }
 

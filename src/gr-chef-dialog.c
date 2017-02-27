@@ -75,7 +75,7 @@ update_image (GrChefDialog *self)
 {
         if (self->image_path != NULL && self->image_path[0] != '\0') {
                 g_autoptr(GdkPixbuf) pixbuf = NULL;
-                pixbuf = load_pixbuf_fit_size (self->image_path, 0, 64, 64, TRUE);
+                pixbuf = load_pixbuf_fit_size (self->image_path, 64, 64, TRUE);
                 gtk_image_set_from_pixbuf (GTK_IMAGE (self->image), pixbuf);
                 gtk_style_context_remove_class (gtk_widget_get_style_context (self->image), "dim-label");
         }

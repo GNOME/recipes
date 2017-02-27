@@ -39,12 +39,11 @@
 #include "gr-utils.h"
 #include "gr-app.h"
 
-/* load image rotated by angle to fit in width x height while preserving
+/* load image to fit in width x height while preserving
  * aspect ratio, filling seams with transparency
  */
 GdkPixbuf *
 load_pixbuf_fit_size (const char *path,
-                      int         angle,
                       int         width,
                       int         height,
                       gboolean    pad)
@@ -53,29 +52,13 @@ load_pixbuf_fit_size (const char *path,
         GdkPixbuf *pixbuf;
         int dest_x, dest_y, dest_width, dest_height;
 
-        int load_width, load_height;
-
-        if (angle == 90 || angle == 270) {
-                load_width = height;
-                load_height = width;
-        }
-        else {
-                load_width = width;
-                load_height = height;
-        }
-
         pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, width, height);
         gdk_pixbuf_fill (pixbuf, 0x00000000);
 
-        original = gdk_pixbuf_new_from_file_at_size (path, load_width, load_height, NULL);
+        original = gdk_pixbuf_new_from_file_at_size (path, width, height, NULL);
         if (!original) {
                 g_warning ("Failed to load image %s", path);
                 return pixbuf;
-        }
-        if (angle != 0) {
-                g_autoptr(GdkPixbuf) pb = NULL;
-                pb = gdk_pixbuf_rotate_simple (original, angle);
-                g_set_object (&original, pb);
         }
 
         if (pad) {
@@ -95,29 +78,18 @@ load_pixbuf_fit_size (const char *path,
         return pixbuf;
 }
 
-/* load image rotated by angle to fill width x height while preserving
+/* load image to fill width x height while preserving
  * aspect ratio, cutting off overshoots
  */
 GdkPixbuf *
 load_pixbuf_fill_size (const char *path,
-                       int         angle,
                        int         width,
                        int         height)
 {
         g_autoptr(GdkPixbuf) original = NULL;
         int x, y;
-        int load_width, load_height;
 
-        if (angle == 90 || angle == 270) {
-                load_width = height;
-                load_height = width;
-        }
-        else {
-                load_width = width;
-                load_height = height;
-        }
-
-        original = gdk_pixbuf_new_from_file_at_scale (path, -1, load_height, TRUE, NULL);
+        original = gdk_pixbuf_new_from_file_at_scale (path, -1, height, TRUE, NULL);
         if (!original) {
                 GdkPixbuf *pixbuf;
                 g_warning ("Failed to load image %s", path);
@@ -126,21 +98,10 @@ load_pixbuf_fill_size (const char *path,
                 return pixbuf;
         }
 
-        if (angle != 0) {
-                g_autoptr(GdkPixbuf) pb = NULL;
-                pb = gdk_pixbuf_rotate_simple (original, angle);
-                g_set_object (&original, pb);
-        }
-
         if (gdk_pixbuf_get_width (original) < width) {
                 g_autoptr(GdkPixbuf) pb1 = NULL;
-                pb1 = gdk_pixbuf_new_from_file_at_scale (path, load_width, -1, TRUE, NULL);
+                pb1 = gdk_pixbuf_new_from_file_at_scale (path, width, -1, TRUE, NULL);
                 g_set_object (&original, pb1);
-                if (angle != 0) {
-                        g_autoptr(GdkPixbuf) pb = NULL;
-                        pb = gdk_pixbuf_rotate_simple (original, angle);
-                        g_set_object (&original, pb);
-                }
         }
 
         g_assert (gdk_pixbuf_get_width (original) >= width &&

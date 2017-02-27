@@ -673,7 +673,7 @@ show_chef_conflict_dialog (GrRecipeImporter *importer,
         gtk_text_buffer_set_text (buffer, gr_chef_get_description (chef), -1);
         if (gr_chef_get_image (chef) != NULL) {
                 g_autoptr(GdkPixbuf) pixbuf = NULL;
-                pixbuf = load_pixbuf_fit_size (gr_chef_get_image (chef), 0, 64, 64, TRUE);
+                pixbuf = load_pixbuf_fit_size (gr_chef_get_image (chef), 64, 64, TRUE);
                 gtk_image_set_from_pixbuf (GTK_IMAGE (old_chef_picture), pixbuf);
         }
 
@@ -689,7 +689,7 @@ show_chef_conflict_dialog (GrRecipeImporter *importer,
                 g_autoptr(GdkPixbuf) pixbuf = NULL;
                 g_autofree char *path = NULL;
                 path = g_build_filename (importer->dir, importer->chef_image_path, NULL);
-                pixbuf = load_pixbuf_fit_size (path, 0, 64, 64, TRUE);
+                pixbuf = load_pixbuf_fit_size (path, 64, 64, TRUE);
                 gtk_image_set_from_pixbuf (GTK_IMAGE (new_chef_picture), pixbuf);
         }
 
