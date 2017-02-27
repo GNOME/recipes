@@ -36,14 +36,11 @@ dist_images_DATA = \
 	images/allan_day.jpg		\
 	images/bagel.jpg		\
 	images/Bastian.jpg		\
-	images/burger-fries.jpg		\
 	images/chickencurry.jpg		\
 	images/chickensoup.jpg		\
-	images/coffee.jpg		\
 	images/ebassi-hackergotchi.png	\
 	images/elvin.jpg		\
 	images/erusan.gif		\
-	images/food.jpg			\
 	images/fyksen.jpg		\
 	images/geisha.jpg		\
 	images/halfline.jpg		\
@@ -95,7 +92,6 @@ dist_images_DATA = \
 	images/kiwi-mandarin6.jpg	\
 	images/kiwi-mandarin7.jpg	\
 	images/mantovana.jpg		\
-	images/meatballs.jpg		\
 	images/non_knead_buns.png	\
 	images/non_knead_buns1.jpg	\
 	images/non_knead_buns2.jpg	\
@@ -105,11 +101,8 @@ dist_images_DATA = \
 	images/oats1.jpg		\
 	images/oats2.jpg		\
 	images/oats3.jpg		\
-	images/pesto.jpg		\
 	images/pineapple_upside_down.jpg \
 	images/pizzaburger.jpg		\
-	images/pizza.jpg		\
-	images/plain-bagel.jpg		\
 	images/rakost1.jpg		\
 	images/rakost2.jpg		\
 	images/rakost3.jpg		\
@@ -128,7 +121,6 @@ dist_images_DATA = \
 	images/rootspie13.jpg		\
 	images/rosemary-potatos1.jpg	\
 	images/rosemary-potatos2.jpg	\
-	images/salad.jpg		\
 	images/salmonrice1.jpg		\
 	images/salmonrice2.jpg		\
 	images/salmonrice3.jpg		\
@@ -147,7 +139,6 @@ dist_images_DATA = \
 	images/spanish_omelet7.jpg	\
 	images/spanish_omelet8.jpg	\
 	images/spanish_omelet9.jpg	\
-	images/spring-rolls.jpg		\
 	images/tofuscramble.jpg		\
 	images/wholesale-crackers.jpg 	\
 	images/pan_pizza1.png		\
