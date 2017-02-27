@@ -20,7 +20,8 @@
 
 #include "config.h"
 
-#include <appstream-glib.h>
+#include <string.h>
+#include <stdlib.h>
 #include <gr-appdata.h>
 
 static void
@@ -30,7 +31,7 @@ release_info_free (gpointer data)
 
         g_free (ri->version);
         g_date_time_unref (ri->date);
-        g_free (ri->news);
+        g_string_free (ri->news, TRUE);
         g_free (ri);
 }
 
@@ -72,51 +73,192 @@ version_between (const char *v,
         return version_compare (lower, v) <= 0 && version_compare (v, upper) <= 0;
 }
 
+typedef struct {
+        GPtrArray *result;
+        const char *old_version;
+        const char *new_version;
+        ReleaseInfo *ri;
+        gboolean collect;
+        GString *text;
+} ParserData;
+
+static const char *
+find_attribute (const char  *name,
+                const char **names,
+                const char **values)
+{
+        int i;
+
+        for (i = 0; names[i]; i++) {
+                if (strcmp (name, names[i]) == 0)
+                        return values[i];
+        }
+
+        return NULL;
+}
+
+static void
+start_element (GMarkupParseContext  *context,
+               const char           *element_name,
+               const char          **attribute_names,
+               const char          **attribute_values,
+               gpointer              user_data,
+               GError              **error)
+{
+        ParserData *data = user_data;
+
+        if (strcmp (element_name, "release") == 0) {
+                const char *value;
+                g_auto(GStrv) dmy = NULL;
+
+                data->ri = g_new0 (ReleaseInfo, 1);
+                data->ri->news = g_string_new ("");
+
+                value = find_attribute ("version", attribute_names, attribute_values);
+                data->ri->version = g_strdup (value);
+
+                value = find_attribute ("date", attribute_names, attribute_values);
+                dmy = g_strsplit (value, "-", 3);
+                if (g_strv_length (dmy) != 3) {
+                        g_message ("Failed to parse release: %s", value);
+                        data->ri->date = g_date_time_new_from_unix_utc (0);
+                }
+                else {
+                        data->ri->date = g_date_time_new_utc (atoi (dmy[0]), atoi (dmy[1]), atoi (dmy[2]), 0, 0, 0);
+                }
+        }
+        else if (strcmp (element_name, "p") == 0 ||
+                 strcmp (element_name, "li") == 0) {
+                if (data->ri) {
+                        g_string_set_size (data->text, 0);
+                        data->collect = TRUE;
+                }
+        }
+}
+
+static void
+string_append_normalized (GString    *s,
+                          const char *str)
+{
+        gboolean initial = TRUE;
+        gboolean in_whitespace = FALSE;
+        const char *p;
+
+        for (p = str; *p; p = g_utf8_next_char (p)) {
+                gunichar ch = g_utf8_get_char (p);
+
+                if (g_unichar_isspace (ch)) {
+                        in_whitespace = TRUE;
+                        continue;
+                }
+
+                if (in_whitespace && !initial)
+                        g_string_append_c (s, ' ');
+
+                g_string_append_unichar (s, ch);
+                in_whitespace = FALSE;
+                initial = FALSE;
+        }
+}
+
+static void
+end_element (GMarkupParseContext  *context,
+             const char           *element_name,
+             gpointer              user_data,
+             GError              **error)
+{
+        ParserData *data = user_data;
+
+        if (strcmp (element_name, "release") == 0) {
+                if (!version_between (data->ri->version, data->old_version, data->new_version))
+                        release_info_free (data->ri);
+                else
+                        g_ptr_array_add (data->result, data->ri);
+                data->ri = NULL;
+        }
+        else if (strcmp (element_name, "p") == 0) {
+                if (data->collect) {
+                        data->collect = FALSE;
+                        if (data->ri->news->len > 0)
+                                g_string_append (data->ri->news, "\n");
+                        string_append_normalized (data->ri->news, data->text->str);
+                }
+        }
+        else if (strcmp (element_name, "li") == 0) {
+                if (data->collect) {
+                        data->collect = TRUE;
+                        if (data->ri->news->len > 0)
+                                g_string_append (data->ri->news, "\n");
+                        g_string_append (data->ri->news, " ∙ ");
+                        string_append_normalized (data->ri->news, data->text->str);
+                }
+        }
+}
+
+static void
+text (GMarkupParseContext  *context,
+      const char           *text,
+      gsize                 text_len,
+      gpointer              user_data,
+      GError              **error)
+{
+        ParserData *data = user_data;
+
+        if (data->collect)
+                g_string_append_len (data->text, text, text_len);
+}
+
+static GMarkupParser parser = {
+        start_element,
+        end_element,
+        text,
+        NULL,
+        NULL
+};
+
+static GPtrArray *
+parse_appdata (const char *file,
+               const char *new_version,
+               const char *old_version)
+{
+        g_autoptr(GMarkupParseContext) context = NULL;
+        g_autofree char *buffer = NULL;
+        gsize length;
+        g_autoptr(GError) error = NULL;
+        ParserData data;
+
+        data.result = g_ptr_array_new_with_free_func (release_info_free);
+        data.new_version = new_version;
+        data.old_version = old_version;
+        data.ri = NULL;
+        data.collect = FALSE;
+        data.text = g_string_new ("");
+
+        if (!g_file_get_contents (file, &buffer, &length, &error)) {
+                g_message ("Failed to read %s: %s", file, error->message);
+                goto out;
+        }
+
+        context = g_markup_parse_context_new (&parser, 0, &data, NULL);
+
+        if (!g_markup_parse_context_parse (context, buffer, length, &error)) {
+                g_message ("Failed to parse %s: %s", file, error->message);
+                g_ptr_array_set_size (data.result, 0);
+        }
+
+out:
+        g_string_free (data.text, TRUE);
+
+        return data.result;
+}
+
 GPtrArray *
 get_release_info (const char *new_version,
                   const char *old_version)
 {
-        GPtrArray *news;
-        g_autoptr(AsApp) app = NULL;
-        GPtrArray *releases = NULL;
-        unsigned int i;
         g_autofree char *file = NULL;
-        g_autoptr(GError) error = NULL;
 
         file = g_build_filename (DATADIR, "appdata", "org.gnome.Recipes.appdata.xml", NULL);
 
-        news = g_ptr_array_new_with_free_func (release_info_free);
-
-        app = as_app_new ();
-        if (!as_app_parse_file (app, file, 0, &error)) {
-                g_warning ("Failed to parse %s: %s", file, error->message);
-                return news;
-        }
-
-        releases = as_app_get_releases (app);
-        for (i = 0; i < releases->len; i++) {
-                AsRelease *rel = g_ptr_array_index (releases, i);
-                ReleaseInfo *ri;
-                const char *tmp;
-
-                if (!version_between (as_release_get_version (rel), old_version, new_version))
-                        continue;
-
-                ri = g_new0 (ReleaseInfo, 1);
-                g_ptr_array_insert (news, -1, ri);
-
-                ri->version = g_strdup (as_release_get_version (rel));
-
-                if (as_release_get_timestamp (rel) > 0)
-                        ri->date = g_date_time_new_from_unix_utc ((gint64) as_release_get_timestamp (rel));
-
-                tmp = as_release_get_description (rel, NULL);
-                if (tmp != NULL)
-                        ri->news = as_markup_convert (tmp, AS_MARKUP_CONVERT_FORMAT_SIMPLE, NULL);
-                else {
-                        g_warning ("Failed to convert markup in %s", file);
-                }
-        }
-
-        return news;
+        return parse_appdata (file, new_version, old_version);
 }

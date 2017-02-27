@@ -1202,7 +1202,7 @@ gr_window_show_news (GrWindow *window)
                 }
 
                 if (ri->news) {
-                        label = gtk_label_new (ri->news);
+                        label = gtk_label_new (ri->news->str);
                         gtk_label_set_xalign (GTK_LABEL (label), 0.0);
                         gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
                         gtk_label_set_max_width_chars (GTK_LABEL (label), 55);

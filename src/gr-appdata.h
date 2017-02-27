@@ -27,7 +27,7 @@ G_BEGIN_DECLS
 typedef struct {
         char *version;
         GDateTime *date;
-        char *news;
+        GString *news;
 } ReleaseInfo;
 
 GPtrArray *get_release_info (const char *new_version,
