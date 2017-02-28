@@ -507,8 +507,6 @@ import_recipes (GrRecipeImporter *importer)
 {
         g_autoptr(GKeyFile) keyfile = NULL;
         g_autofree char *path = NULL;
-        g_auto(GStrv) groups = NULL;
-        g_autoptr(GrChef) chef = NULL;
         g_autoptr(GError) error = NULL;
 
         g_assert (importer->recipes_keyfile == NULL);
@@ -745,8 +743,6 @@ import_chefs (GrRecipeImporter *importer)
 {
         g_autoptr(GKeyFile) keyfile = NULL;
         g_autofree char *path = NULL;
-        g_auto(GStrv) groups = NULL;
-        g_autoptr(GrChef) chef = NULL;
         g_autoptr(GError) error = NULL;
 
         g_assert (importer->chefs_keyfile == NULL);

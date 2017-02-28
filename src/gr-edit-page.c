@@ -280,7 +280,6 @@ rewrite_instructions_for_removed_image (const char *instructions,
                         int seconds;
                         int minutes;
                         int hours;
-                        g_autofree char *str = NULL;
 
                         seconds = (int)(step->timer / G_TIME_SPAN_SECOND);
                         minutes = seconds / 60;

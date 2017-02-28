@@ -146,7 +146,6 @@ load_recipes (GrRecipeStore *self,
                 g_autofree char *ingredients = NULL;
                 g_autofree char *instructions = NULL;
                 g_autofree char *notes = NULL;
-                g_autofree char *image_path = NULL;
                 g_auto(GStrv) paths = NULL;
                 int serves;
                 int spiciness;
@@ -960,7 +959,6 @@ gr_recipe_store_init (GrRecipeStore *self)
         const char *old_dir;
         g_autofree char *current_dir = NULL;
         g_autofree char *uninstalled_dir = NULL;
-        g_autoptr(GError) error = NULL;
 
         self->recipes = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);
         self->chefs = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);

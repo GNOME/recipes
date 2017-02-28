@@ -124,7 +124,6 @@ completed_cb (AutoarCompressor *compressor,
               GrRecipeExporter *exporter)
 {
         g_autofree char *path = NULL;
-        g_autoptr(GError) error = NULL;
         const char *address;
         const char *subject;
         g_autofree char *body = NULL;
@@ -208,7 +207,6 @@ export_one_recipe (GrRecipeExporter  *exporter,
         GrDiets diets;
         GDateTime *ctime;
         GDateTime *mtime;
-        g_autoptr(GrChef) chef = NULL;
         g_autoptr(GArray) images = NULL;
         g_auto(GStrv) paths = NULL;
         int i;
@@ -641,7 +639,6 @@ show_export_dialog (GrRecipeExporter *exporter)
         g_autoptr(GtkBuilder) builder = NULL;
         GtkWidget *dialog;
         GtkWidget *list;
-        g_autofree char *tmp = NULL;
 
         builder = gtk_builder_new_from_resource ("/org/gnome/Recipes/recipe-export-dialog.ui");
         dialog = GTK_WIDGET (gtk_builder_get_object (builder, "dialog"));

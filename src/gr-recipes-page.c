@@ -359,7 +359,6 @@ populate_shopping_from_store (GrRecipesPage *self)
         g_autofree char *shop1 = NULL;
         g_autofree char *shop2 = NULL;
         char *tmp;
-        g_autoptr(GDateTime) now = NULL;
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 

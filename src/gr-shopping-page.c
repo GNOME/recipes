@@ -679,7 +679,6 @@ share_list (GrShoppingPage *page)
 {
         GList *recipes, *items;
         g_autofree char *text = NULL;
-        g_autoptr(GError) error = NULL;
         GtkWidget *window;
 
         recipes = get_recipes (page);

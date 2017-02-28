@@ -126,8 +126,6 @@ window_handle_exported (GtkWindow  *window,
         const char *handle;
         GVariantBuilder opt_builder;
 
-        g_autoptr(GDBusConnection) bus = NULL;
-
         cbdata->connection = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL);
 
         g_variant_builder_init (&opt_builder, G_VARIANT_TYPE ("a{sv}"));

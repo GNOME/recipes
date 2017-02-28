@@ -113,11 +113,8 @@ begin_print (GtkPrintOperation *operation,
         double page_height;
         GList *page_breaks;
         g_autoptr(GString) s = NULL;
-        g_autoptr(GArray) images = NULL;
         int num_lines;
         int line;
-        g_autofree char **segs = NULL;
-        g_auto(GStrv) ings = NULL;
         GList *l;
 
         height = gtk_print_context_get_height (context);
