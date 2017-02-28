@@ -333,6 +333,8 @@ text_buffer_append (GtkTextBuffer *buffer,
         gtk_text_buffer_insert (buffer, &iter, text, -1);
 }
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat-nonliteral"
 static void
 text_buffer_append_printf (GtkTextBuffer *buffer,
                            const char    *format,
@@ -343,15 +345,14 @@ text_buffer_append_printf (GtkTextBuffer *buffer,
         int len;
 
         va_start (args, format);
-
         len = g_vasprintf (&buf, format, args);
         if (len >= 0) {
                 text_buffer_append (buffer, buf);
                 g_free (buf);
         }
-
         va_end (args);
 }
+#pragma GCC diagnostic pop
 
 static void
 text_buffer_append_link (GtkTextView *view,
