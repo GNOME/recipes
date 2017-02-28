@@ -23,6 +23,7 @@
 #include <glib.h>
 #include <glib/gi18n.h>
 
+#include "gr-utils.h"
 #include "gr-cuisine.h"
 
 
@@ -159,7 +160,9 @@ gr_cuisine_get_css (void)
 {
         g_autoptr(GFile) file = NULL;
         const char *path;
-        char *css;
+        g_autofree char *css = NULL;
+        GString *s = NULL;
+        char *p, *q;
 
         if (g_file_test ("cuisine.css", G_FILE_TEST_EXISTS)) {
                 path = "cuisine.css";
@@ -176,5 +179,17 @@ gr_cuisine_get_css (void)
         g_message ("Load CSS from: %s", path);
         g_file_load_contents (file, NULL, &css, NULL, NULL, NULL);
 
-        return css;
+        s = g_string_new ("");
+        p = css;
+        while (1) {
+                q = strstr (p, "@pkgdatadir@");
+                if (!p) {
+                        g_string_append (s, p);
+                        break;
+                }
+                g_string_append_len (s, p, q - p);
+                g_string_append (s, get_pkg_data_dir ());
+        }
+
+        return g_string_free (s, FALSE);
 }

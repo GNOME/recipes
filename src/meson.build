@@ -3,11 +3,6 @@ gnome = import('gnome')
 src = []
 enums = []
 
-# Used in recipes-images.gresource.xml
-cuisine_css = configure_file(output : 'cuisine.css',
-                             input : 'cuisine.css.in',
-                             configuration : conf)
-
 # These generated files are #included
 list_to_c = find_program('list_to_c.py')
 foreach f : ['segments', 'ingredients']
@@ -35,12 +30,6 @@ resources_images = gnome.compile_resources('resources_images',
                                        'recipes-images.gresource.xml',
                                        c_name: '_recipes_images',
                                        source_dir: 'src')
-
-resources_generated = gnome.compile_resources('resources_generated',
-                                       'recipes-generated.gresource.xml',
-                                       c_name: '_recipes_generated',
-                                       source_dir: 'src',
-                                       dependencies: cuisine_css)
 
 enums += gnome.mkenums('types',
                        sources: 'gr-diet.h',
@@ -112,8 +101,7 @@ src += ['main.c',
   enums,
   search_provider,
   resources_ui,
-  resources_images,
-  resources_generated]
+  resources_images]
 
 executable('gnome-recipes',
            src,

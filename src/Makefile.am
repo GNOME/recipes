@@ -130,7 +130,6 @@ gnome_recipes_SOURCES = \
 	gr-window.c 		\
 	resources-ui.c		\
 	resources-images.c	\
-	resources-generated.c	\
 	types.h			\
 	types.c			\
 	gr-shell-search-provider.h \
@@ -141,7 +140,6 @@ gnome_recipes_SOURCES = \
 BUILT_SOURCES = \
 	resources-ui.c		\
 	resources-images.c	\
-	resources-generated.c	\
 	ingredients.inc		\
 	no-ingredients.inc	\
 	segments.inc		\
@@ -153,11 +151,9 @@ BUILT_SOURCES = \
 DISTCLEANFILES = \
 	resources-ui.c		\
 	resources-images.c	\
-	resources-generated.c	\
 	ingredients.inc		\
 	no-ingredients.inc	\
 	segments.inc		\
-	cuisine.css		\
 	types.h			\
 	types.c			\
 	gr-shell-search-provider-dbus.h \
@@ -184,12 +180,6 @@ resources-images.c: recipes-images.gresource.xml $(resource_image_files)
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $(srcdir)/recipes-images.gresource.xml \
 		--target=$@ --sourcedir=$(srcdir) --generate-source
 
-resource_generated_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(builddir) --generate-dependencies $(srcdir)/recipes-generated.gresource.xml)
-
-resources-generated.c: recipes-generated.gresource.xml $(resource_generated_files)
-	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $(srcdir)/recipes-generated.gresource.xml \
-		--target=$@ --sourcedir=$(builddir) --generate-source
-
 types.h: types.h.template gr-diet.h
 	$(AM_V_GEN) ($(GLIB_MKENUMS) --template $^ ) > xgen-eh && \
 	cp xgen-eh $@ && \
@@ -207,18 +197,13 @@ gr-shell-search-provider-dbus.h gr-shell-search-provider-dbus.c: Makefile.am $(s
 		--generate-c-code gr-shell-search-provider-dbus \
 		$(srcdir)/shell-search-provider-dbus-interfaces.xml
 
-cuisine.css: cuisine.css.in
-	$(AM_V_GEN) sed -e "s|\@pkgdatadir\@|$(pkgdatadir)|" $< > $@
-
 EXTRA_DIST = \
 	shell-search-provider-dbus-interfaces.xml 	\
 	recipes-ui.gresource.xml 			\
 	recipes-images.gresource.xml 			\
-	recipes-generated.gresource.xml			\
 	$(resource_ui_files)				\
 	$(resource_image_files)				\
 	types.h.template				\
-	types.c.template				\
-	cuisine.css.in
+	types.c.template
 
 -include $(top_srcdir)/git.mk
