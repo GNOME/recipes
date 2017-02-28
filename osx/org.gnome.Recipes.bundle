@@ -1,0 +1,50 @@
+<?xml version="1.0"?> <!--*- mode: xml -*-->
+<app-bundle>
+  <meta>
+    <prefix>${env:PREFIX}</prefix>
+    <run-install-name-tool/>
+    <gtk>gtk+-3.0</gtk>
+    <launcher-script>${project}/gnome-recipes.sh</launcher-script>
+  </meta>
+
+  <plist>${project}/Info.plist</plist>
+
+  <main-binary>${prefix}/bin/gnome-recipes</main-binary>
+
+  <!-- Modules for GTK+ (image loaders, etc) -->
+  <binary>${prefix}/lib/gtk-3.0</binary>
+
+  <binary>
+    ${prefix}/lib/gdk-pixbuf-2.0/${pkg:gdk-pixbuf-2.0:gdk_pixbuf_binary_version}/loaders/*.so
+  </binary>
+
+  <translations name="gnome-recipes">
+    ${prefix}/share/locale
+  </translations>
+
+  <translations name="gnome-recipes-data">
+    ${prefix}/share/locale
+  </translations>
+
+  <!-- Any additional data, like images, or Glade files -->
+  <data>
+    ${prefix}/share/gnome-recipes
+  </data>
+
+  <data>
+    ${prefix}/share/themes/Adwaita
+  </data>
+
+  <data>
+    ${prefix}/share/icons
+  </data>
+
+  <data dest="${bundle}/Contents/Resources">
+    ${project}/org.gnome.Recipes.icns
+  </data>
+
+  <!-- icon-theme icons="auto">
+    Adwaita
+  </icon-theme -->
+
+</app-bundle>
