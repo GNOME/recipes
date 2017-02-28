@@ -146,7 +146,20 @@ get_old_user_data_dir (void)
 const char *
 get_pkg_data_dir (void)
 {
-        return PKGDATADIR;
+        static char *dir = NULL;
+
+        if (!dir) {
+                const char * const *dirs;
+
+                dirs = g_get_system_data_dirs ();
+
+                if (dirs)
+                        dir = g_build_filename (dirs[0], PACKAGE_NAME, NULL);
+                else
+                        dir = (char *)PKGDATADIR;
+        }
+
+        return (const char *)dir;
 }
 
 void
