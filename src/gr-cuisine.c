@@ -183,12 +183,13 @@ gr_cuisine_get_css (void)
         p = css;
         while (1) {
                 q = strstr (p, "@pkgdatadir@");
-                if (!p) {
+                if (!q) {
                         g_string_append (s, p);
                         break;
                 }
                 g_string_append_len (s, p, q - p);
                 g_string_append (s, get_pkg_data_dir ());
+                p = q + strlen ("@pkgdatadir@");
         }
 
         return g_string_free (s, FALSE);
