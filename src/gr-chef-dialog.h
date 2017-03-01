@@ -28,7 +28,7 @@ G_BEGIN_DECLS
 
 #define GR_TYPE_CHEF_DIALOG (gr_chef_dialog_get_type())
 
-G_DECLARE_FINAL_TYPE (GrChefDialog, gr_chef_dialog, GR, CHEF_DIALOG, GtkWindow)
+G_DECLARE_FINAL_TYPE (GrChefDialog, gr_chef_dialog, GR, CHEF_DIALOG, GtkDialog)
 
 GrChefDialog *gr_chef_dialog_new        (GrChef       *chef,
                                          gboolean      create);

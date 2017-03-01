@@ -38,7 +38,7 @@
 
 struct _GrChefDialog
 {
-        GtkWindow parent_instance;
+        GtkDialog parent_instance;
 
         GtkWidget *fullname;
         GtkWidget *name;
@@ -60,7 +60,7 @@ struct _GrChefDialog
         GrChef *chef;
 };
 
-G_DEFINE_TYPE (GrChefDialog, gr_chef_dialog, GTK_TYPE_WINDOW)
+G_DEFINE_TYPE (GrChefDialog, gr_chef_dialog, GTK_TYPE_DIALOG)
 
 static int done_signal;
 
@@ -112,7 +112,9 @@ revert_changes (GrChefDialog *self)
 static void
 field_changed (GrChefDialog *self)
 {
-        gtk_widget_set_sensitive (self->save_button, TRUE);
+        gtk_dialog_set_response_sensitive (GTK_DIALOG (self),
+                                           GTK_RESPONSE_APPLY,
+                                           TRUE);
 }
 
 static void
@@ -331,10 +333,9 @@ gr_chef_dialog_set_chef (GrChefDialog *self,
                 update_image (self);
         }
 
-        if (same_chef)
-                gtk_widget_set_sensitive (self->save_button, TRUE);
-        else
-                gtk_widget_set_sensitive (self->save_button, FALSE);
+        gtk_dialog_set_response_sensitive (GTK_DIALOG (self),
+                                           GTK_RESPONSE_APPLY,
+                                           same_chef);
 }
 
 static void
@@ -457,11 +458,9 @@ gr_chef_dialog_can_create (GrChefDialog *dialog,
         }
         else {
                 gtk_widget_hide (dialog->create_button);
-
-                if (gr_chef_is_readonly (dialog->chef))
-                        gtk_widget_set_sensitive (dialog->save_button, FALSE);
-                else
-                        gtk_widget_set_sensitive (dialog->save_button, TRUE);
+                gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
+                                                   GTK_RESPONSE_APPLY,
+                                                   !gr_chef_is_readonly (dialog->chef));
         }
 }
 
@@ -470,8 +469,15 @@ gr_chef_dialog_new (GrChef   *chef,
                     gboolean  create)
 {
         GrChefDialog *dialog;
+        gboolean use_header_bar;
 
-        dialog = g_object_new (GR_TYPE_CHEF_DIALOG, NULL);
+        g_object_get (gtk_settings_get_default (),
+                      "gtk-dialogs-use-header", &use_header_bar,
+                      NULL);
+
+        dialog = g_object_new (GR_TYPE_CHEF_DIALOG,
+                               "use-header-bar", use_header_bar,
+                               NULL);
 
         gr_chef_dialog_set_chef (dialog, chef);
         gr_chef_dialog_can_create (dialog, create);

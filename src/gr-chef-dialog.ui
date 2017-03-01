@@ -1,39 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="gnome-recipes">
   <!-- interface-requires gtk+ 3.8 -->
-  <template class="GrChefDialog" parent="GtkWindow">
+  <template class="GrChefDialog" parent="GtkDialog">
     <property name="title" translatable="yes">Chef Information</property>
     <property name="resizable">False</property>
     <property name="modal">True</property>
-    <child type="titlebar">
-      <object class="GtkHeaderBar">
+    <child type="action">
+      <object class="GtkButton" id="cancel_button">
         <property name="visible">1</property>
-        <child>
-          <object class="GtkButton" id="cancel_button">
-            <property name="visible">1</property>
-            <property name="label" translatable="yes">_Cancel</property>
-            <property name="use-underline">1</property>
-            <signal name="clicked" handler="close_dialog" swapped="yes"/>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="save_button">
-            <property name="visible">1</property>
-            <property name="sensitive">0</property>
-            <property name="label" translatable="yes">_Save</property>
-            <property name="use-underline">1</property>
-            <signal name="clicked" handler="save_chef" swapped="yes"/>
-            <style>
-              <class name="suggested-action"/>
-            </style>
-          </object>
-          <packing>
-            <property name="pack-type">end</property>
-          </packing>
-        </child>
+        <property name="label" translatable="yes">_Cancel</property>
+        <property name="use-underline">1</property>
+        <signal name="clicked" handler="close_dialog" swapped="yes"/>
       </object>
     </child>
-    <child>
+    <child type="action">
+      <object class="GtkButton" id="save_button">
+        <property name="visible">1</property>
+        <property name="sensitive">0</property>
+        <property name="can-default">1</property>
+        <property name="label" translatable="yes">_Save</property>
+        <property name="use-underline">1</property>
+        <signal name="clicked" handler="save_chef" swapped="yes"/>
+      </object>
+    </child>
+    <child internal-child="vbox">
       <object class="GtkBox">
         <property name="visible">1</property>
         <property name="orientation">vertical</property>
@@ -204,6 +194,10 @@
         </child>
       </object>
     </child>
+    <action-widgets>
+      <action-widget response="cancel">cancel_button</action-widget>
+      <action-widget response="apply" default="true">save_button</action-widget>
+    </action-widgets>
   </template>
   <object class="GtkPopover" id="chef_popover">
     <child>
