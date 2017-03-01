@@ -456,7 +456,7 @@ do_export (GrRecipeExporter *exporter)
 
         for (i = 0; i < 1000; i++) {
                 g_autofree char *tmp;
-                tmp = g_strdup_printf ("%s/.var/app/org.gnome.Recipes/recipes%d.gnome-recipes-export", g_get_home_dir (), i);
+                tmp = g_strdup_printf ("%s/recipes%d.gnome-recipes-export", get_user_data_dir (), i);
                 if (!g_file_test (tmp, G_FILE_TEST_EXISTS)) {
                         path = g_strdup (tmp);
                         break;
