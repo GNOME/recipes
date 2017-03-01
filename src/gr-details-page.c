@@ -583,12 +583,12 @@ process_instructions (const char *instructions)
                         g_string_append_printf (s, _("Timer: %s"), str);
                         if (step->title)
                                 g_string_append_printf (s, "\n%s", step->title);
-                        g_string_append (s, "\">⏰</a>");
+                        g_string_append (s, "\">♢</a>");
                 }
                 else if (step->image != -1) {
                         g_string_append_printf (s, "<a href=\"image:%d\" title=\"", step->image);
                         g_string_append_printf (s, _("Image %d"), step->image + 1);
-                        g_string_append (s, "\">👁</a>");
+                        g_string_append (s, "\">♦</a>");
                 }
 
                 g_string_append (s, step->text);
