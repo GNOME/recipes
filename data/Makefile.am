@@ -84,6 +84,7 @@ dist_images_DATA = \
 	images/hazelnutbutter2.jpg	\
 	images/hazelnutbutter3.jpg	\
 	images/hazelnutbutter4.jpg	\
+	images/kaese-bratkartoffeln.jpg	\
 	images/kiwi-mandarin1.jpg	\
 	images/kiwi-mandarin2.jpg	\
 	images/kiwi-mandarin3.jpg	\
@@ -92,6 +93,9 @@ dist_images_DATA = \
 	images/kiwi-mandarin6.jpg	\
 	images/kiwi-mandarin7.jpg	\
 	images/mantovana.jpg		\
+	images/nasilemak1.jpg		\
+	images/nasilemak2.jpg		\
+	images/nasilemak3.jpg		\
 	images/non_knead_buns.png	\
 	images/non_knead_buns1.jpg	\
 	images/non_knead_buns2.jpg	\
@@ -130,6 +134,13 @@ dist_images_DATA = \
 	images/salmonrice7.jpg		\
 	images/salmonrice8.jpg		\
 	images/salmonrice9.jpg		\
+	images/sambalikan1.jpg		\
+	images/sambalikan2.jpg		\
+	images/sambalikan3.jpg		\
+	images/sambalikan4.jpg		\
+	images/sambalikan5.jpg		\
+	images/sambalikan6.jpg		\
+	images/sambalikan7.jpg		\
 	images/spanish_omelet1.jpg	\
 	images/spanish_omelet2.jpg	\
 	images/spanish_omelet3.jpg	\
