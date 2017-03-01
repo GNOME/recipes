@@ -27,6 +27,11 @@
       <object class="GtkBox">
         <property name="visible">1</property>
         <property name="orientation">vertical</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="margin">10</property>
+          </object>
+        </child>
         <child>
           <object class="GtkOverlay">
             <property name="visible">1</property>
