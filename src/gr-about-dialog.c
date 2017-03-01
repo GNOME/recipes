@@ -652,6 +652,61 @@ text_view_motion_notify_event (GtkWidget      *text_view,
 }
 
 static void
+toggle_system (GtkToggleButton *button,
+               gpointer         user_data)
+{
+        GtkAboutDialog *about = user_data;
+        GtkWidget *credits_button;
+        GtkWidget *stack;
+        gboolean show_system;
+        guint signal_id;
+
+        if (GPOINTER_TO_INT (g_object_get_data (G_OBJECT (about), "in_page_changed")))
+                return;
+
+        stack = GTK_WIDGET (g_object_get_data (G_OBJECT (about), "stack"));
+        credits_button = GTK_WIDGET (g_object_get_data (G_OBJECT (about), "credits_button"));
+
+        signal_id = g_signal_lookup ("toggled", GTK_TYPE_TOGGLE_BUTTON);
+        g_signal_handlers_block_matched (credits_button,
+                                         G_SIGNAL_MATCH_ID | G_SIGNAL_MATCH_DATA,
+                                         signal_id, 0, NULL, NULL, about);
+
+        show_system = gtk_toggle_button_get_active (button);
+        gtk_stack_set_visible_child_name (GTK_STACK (stack), show_system ? "system" : "main");
+
+        g_signal_handlers_unblock_matched (credits_button,
+                                           G_SIGNAL_MATCH_ID | G_SIGNAL_MATCH_DATA,
+                                           signal_id, 0, NULL, NULL, about);
+}
+
+static void
+page_changed (GObject *stack, GParamSpec *pspec, gpointer user_data)
+{
+        GtkAboutDialog *about = user_data;
+        GtkWidget *credits_button;
+        GtkWidget *system_button;
+        const char *visible;
+
+        if (GPOINTER_TO_INT (g_object_get_data (G_OBJECT (about), "in_page_changed")))
+                return;
+
+        g_object_set_data (G_OBJECT (about), "in_page_changed", GINT_TO_POINTER (TRUE));
+
+        credits_button = GTK_WIDGET (g_object_get_data (G_OBJECT (about), "credits_button"));
+        system_button = GTK_WIDGET (g_object_get_data (G_OBJECT (about), "system_button"));
+
+        visible = gtk_stack_get_visible_child_name (GTK_STACK (stack));
+
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (credits_button),
+                                      strcmp (visible, "credits") == 0);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (system_button),
+                                      strcmp (visible, "system") == 0);
+
+        g_object_set_data (G_OBJECT (about), "in_page_changed", GINT_TO_POINTER (FALSE));
+}
+
+static void
 add_system_tab (GrAboutDialog *about)
 {
         GtkWidget *content;
@@ -660,6 +715,7 @@ add_system_tab (GrAboutDialog *about)
         GtkWidget *sw;
         GtkWidget *view;
         GdkCursor *cursor;
+        gboolean use_header_bar;
 
         content = gtk_dialog_get_content_area (GTK_DIALOG (about));
         box = find_child_with_name (content, "box");
@@ -694,6 +750,43 @@ add_system_tab (GrAboutDialog *about)
         gtk_stack_add_titled (GTK_STACK (stack), sw, "system", _("System"));
 
         populate_system_tab (GTK_TEXT_VIEW (view));
+
+        g_object_get (about, "use-header-bar", &use_header_bar, NULL);
+        if (!use_header_bar) {
+                GtkWidget *button;
+                GtkWidget *action_area;
+                GList *children, *l;
+
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+                action_area = gtk_dialog_get_action_area (GTK_DIALOG (about));
+G_GNUC_END_IGNORE_DEPRECATIONS
+                children = gtk_container_get_children (GTK_CONTAINER (action_area));
+                for (l = children; l; l = l->next) {
+                        GtkWidget *child = l->data;
+                        gboolean secondary;
+
+                        gtk_container_child_get (GTK_CONTAINER (action_area), child, "secondary", &secondary, NULL);
+
+                        if (gtk_widget_get_visible (child) && secondary) {
+                                g_object_set_data (G_OBJECT (about), "credits_button", child);
+                                break;
+                        }
+                }
+                g_list_free (children);
+
+                button = gtk_toggle_button_new_with_label (_("System"));
+                gtk_widget_show (button);
+                gtk_dialog_add_action_widget (GTK_DIALOG (about), button, GTK_RESPONSE_NONE);
+                gtk_container_child_set (GTK_CONTAINER (gtk_widget_get_parent (button)),
+                                         button,
+                                         "secondary", TRUE,
+                                         NULL);
+                g_object_set_data (G_OBJECT (about), "stack", stack);
+                g_object_set_data (G_OBJECT (about), "system_button", button);
+
+                g_signal_connect (button, "toggled", G_CALLBACK (toggle_system), about);
+                g_signal_connect (stack, "notify::visible-child-name", G_CALLBACK (page_changed), about);
+        }
 }
 
 GrAboutDialog *

@@ -1133,8 +1133,10 @@ about_response (GtkWidget *dialog,
                 int        response,
                 GrWindow  *window)
 {
-        gtk_widget_destroy (dialog);
-        window->about_dialog = NULL;
+        if (response != GTK_RESPONSE_NONE) {
+                gtk_widget_destroy (dialog);
+                window->about_dialog = NULL;
+        }
 }
 
 void
