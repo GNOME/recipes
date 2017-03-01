@@ -505,7 +505,6 @@ window_export_handle (GtkWindow            *window,
                       WindowHandleExported  callback,
                       gpointer              user_data)
 {
-
 #ifdef GDK_WINDOWING_X11
         if (GDK_IS_X11_DISPLAY (gtk_widget_get_display (GTK_WIDGET (window)))) {
                 GdkWindow *gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
@@ -542,6 +541,7 @@ window_export_handle (GtkWindow            *window,
 #endif
 
         g_warning ("Couldn't export handle, unsupported windowing system");
+        callback (window, "", user_data);
 
         return FALSE;
 }
