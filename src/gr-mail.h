@@ -24,10 +24,14 @@
 
 G_BEGIN_DECLS
 
-void gr_send_mail (GtkWindow *window,
-                   const char  *address,
-                   const char  *subject,
-                   const char  *body,
-                   const char **attachments);
+void gr_send_mail (GtkWindow            *window,
+                   const char           *address,
+                   const char           *subject,
+                   const char           *body,
+                   const char          **attachments,
+                   GAsyncReadyCallback   callback,
+                   gpointer              user_data);
+gboolean gr_send_mail_finish (GAsyncResult  *result,
+                              GError       **error);
 
 G_END_DECLS

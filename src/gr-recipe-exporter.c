@@ -119,6 +119,53 @@ cleanup_export (GrRecipeExporter *exporter)
 }
 
 #ifdef ENABLE_AUTOAR
+
+static void
+file_chooser_response (GtkNativeDialog  *self,
+                       int               response_id,
+                       GrRecipeExporter *exporter)
+{
+        if (response_id == GTK_RESPONSE_ACCEPT) {
+                g_autoptr(GFile) file = NULL;
+
+                file = gtk_file_chooser_get_file (GTK_FILE_CHOOSER (self));
+                g_file_copy_async (exporter->dest, file, 0, 0, NULL, NULL, NULL, NULL, NULL);
+        }
+
+        gtk_native_dialog_destroy (self);
+
+        cleanup_export (exporter);
+}
+
+static void
+mail_done (GObject      *source,
+           GAsyncResult *result,
+           gpointer      data)
+{
+        GrRecipeExporter *exporter = data;
+        g_autoptr(GError) error = NULL;
+
+        if (!gr_send_mail_finish (result, &error)) {
+                GObject *file_chooser;
+
+                g_message ("Sending mail failed: %s", error->message);
+
+                file_chooser = (GObject *)gtk_file_chooser_native_new (_("Save the exported recipe"),
+                                                                       GTK_WINDOW (exporter->window),
+                                                                       GTK_FILE_CHOOSER_ACTION_SAVE,
+                                                                       _("Save"),
+                                                                       _("Canel"));
+                gtk_native_dialog_set_modal (GTK_NATIVE_DIALOG (file_chooser), TRUE);
+
+                g_signal_connect (file_chooser, "response", G_CALLBACK (file_chooser_response), exporter);
+
+                gtk_native_dialog_show (GTK_NATIVE_DIALOG (file_chooser));
+                return;
+        }
+
+        cleanup_export (exporter);
+}
+
 static void
 completed_cb (AutoarCompressor *compressor,
               GrRecipeExporter *exporter)
@@ -168,9 +215,9 @@ completed_cb (AutoarCompressor *compressor,
         attachments[0] = path;
         attachments[1] = NULL;
 
-        gr_send_mail (GTK_WINDOW (exporter->window), address, subject, body, attachments);
-
-        cleanup_export (exporter);
+        gr_send_mail (GTK_WINDOW (exporter->window),
+                      address, subject, body, attachments,
+                      mail_done, exporter);
 }
 
 static void

@@ -25,10 +25,12 @@
 
 typedef struct {
         GtkWindow *window;
+        char *handle;
         char *address;
         char *subject;
         char *body;
         char **attachments;
+        GTask *task;
 } MailData;
 
 static void
@@ -36,41 +38,71 @@ mail_data_free (gpointer data)
 {
         MailData *md = data;
 
-        window_unexport_handle (md->window);
+        if (md->handle) {
+                window_unexport_handle (md->window);
+                g_free (md->handle);
+        }
         g_free (md->address);
         g_free (md->subject);
         g_free (md->body);
         g_strfreev (md->attachments);
+        g_object_unref (md->task);
         g_free (md);
 }
 
 static void
-send_mail_using_mailto (MailData *data)
+launch_uri_done (GObject      *source,
+                 GAsyncResult *result,
+                 gpointer      data)
+{
+        MailData *md = data;
+        GError *error = NULL;
+
+        if (!g_app_info_launch_default_for_uri_finish (result, &error))
+                g_task_return_error (md->task, error);
+        else
+                g_task_return_boolean (md->task, TRUE);
+
+        mail_data_free (data);
+}
+
+static void
+send_mail_using_mailto (MailData *md)
 {
         g_autoptr(GString) url = NULL;
         g_autofree char *encoded_subject = NULL;
         g_autofree char *encoded_body = NULL;
         int i;
+        GdkDisplay *display;
+        GAppLaunchContext *context;
 
-        encoded_subject = g_uri_escape_string (data->subject, NULL, FALSE);
-        encoded_body = g_uri_escape_string (data->body, NULL, FALSE);
+        encoded_subject = g_uri_escape_string (md->subject, NULL, FALSE);
+        encoded_body = g_uri_escape_string (md->body, NULL, FALSE);
 
         url = g_string_new ("mailto:");
 
-        g_string_append_printf (url, "\"%s\"", data->address);
+        g_string_append_printf (url, "\"%s\"", md->address);
         g_string_append_printf (url, "?subject=%s", encoded_subject);
         g_string_append_printf (url, "&body=%s", encoded_body);
 
-        for (i = 0; data->attachments[i]; i++) {
+        for (i = 0; md->attachments[i]; i++) {
                 g_autofree char *path = NULL;
 
-                path = g_uri_escape_string (data->attachments[i], NULL, FALSE);
+                path = g_uri_escape_string (md->attachments[i], NULL, FALSE);
                 g_string_append_printf (url, "&attach=%s", path);
         }
 
-        gtk_show_uri_on_window (data->window, url->str, GDK_CURRENT_TIME, NULL);
+        display = gtk_widget_get_display (GTK_WIDGET (md->window));
+        context = G_APP_LAUNCH_CONTEXT (gdk_display_get_app_launch_context (display));
 
-        mail_data_free (data);
+        if (md->handle)
+                g_app_launch_context_setenv (context, "PARENT_WINDOW_ID", md->handle);
+
+        g_app_info_launch_default_for_uri_async (url->str,
+                                                 G_APP_LAUNCH_CONTEXT (context),
+                                                 NULL,
+                                                 launch_uri_done,
+                                                 md);
 }
 
 static GDBusProxy *
@@ -91,12 +123,12 @@ get_mail_portal_proxy (void)
 }
 
 static void
-callback (GObject      *source,
-          GAsyncResult *result,
-          gpointer      data)
+compose_mail_done (GObject      *source,
+                   GAsyncResult *result,
+                   gpointer      data)
 {
         g_autoptr(GVariant) reply = NULL;
-        g_autoptr(GError) error = NULL;
+        GError *error = NULL;
         MailData *md = data;
 
         reply = g_dbus_proxy_call_finish (G_DBUS_PROXY (source), result, &error);
@@ -106,9 +138,11 @@ callback (GObject      *source,
                 send_mail_using_mailto (md);
                 return;
         }
-        else if (error) {
-                g_message ("Sending mail using Email portal failed: %s", error->message);
-        }
+
+        if (error)
+                g_task_return_error (md->task, error);
+        else
+                g_task_return_boolean (md->task, TRUE);
 
         mail_data_free (md);
 }
@@ -122,6 +156,8 @@ window_handle_exported (GtkWindow  *window,
         GVariantBuilder opt_builder;
         GDBusProxy *proxy;
 
+        md->handle = g_strdup (handle_str);
+
         proxy = get_mail_portal_proxy ();
 
         if (proxy == NULL) {
@@ -134,7 +170,8 @@ window_handle_exported (GtkWindow  *window,
         g_variant_builder_add (&opt_builder, "{sv}", "address", g_variant_new_string (md->address));
         g_variant_builder_add (&opt_builder, "{sv}", "subject", g_variant_new_string (md->subject));
         g_variant_builder_add (&opt_builder, "{sv}", "body", g_variant_new_string (md->body));
-        g_variant_builder_add (&opt_builder, "{sv}", "attachments", g_variant_new_strv ((const char * const *)md->attachments, -1));
+        if (md->attachments)
+                g_variant_builder_add (&opt_builder, "{sv}", "attachments", g_variant_new_strv ((const char * const *)md->attachments, -1));
 
         g_dbus_proxy_call (proxy,
                            "ComposeEmail",
@@ -144,7 +181,7 @@ window_handle_exported (GtkWindow  *window,
                            G_DBUS_CALL_FLAGS_NONE,
                            G_MAXINT,
                            NULL,
-                           callback,
+                           compose_mail_done,
                            data);
 }
 
@@ -153,16 +190,27 @@ gr_send_mail (GtkWindow   *window,
               const char  *address,
               const char  *subject,
               const char  *body,
-              const char **attachments)
+              const char **attachments,
+              GAsyncReadyCallback   callback,
+              gpointer              user_data)
 {
         MailData *data;
+        const char *empty_strv[1] = { NULL };
 
-        data = g_new (MailData, 1);
+        data = g_new0 (MailData, 1);
         data->window = window;
         data->address = g_strdup (address ? address : "");
         data->subject = g_strdup (subject ? subject : "");
         data->body = g_strdup (body ? body : "");
-        data->attachments = g_strdupv ((char **)attachments);
+        data->attachments = g_strdupv (attachments ? (char **)attachments : (char **)empty_strv);
+        data->task = g_task_new (NULL, NULL, callback, user_data);
 
         window_export_handle (window, window_handle_exported, data);
+}
+
+gboolean
+gr_send_mail_finish (GAsyncResult  *result,
+                     GError       **error)
+{
+        return g_task_propagate_boolean (G_TASK (result), error);
 }
