@@ -126,7 +126,13 @@ window_handle_exported (GtkWindow  *window,
         const char *handle;
         GVariantBuilder opt_builder;
 
-        cbdata->connection = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL);
+        cbdata->connection = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, &error);
+	if (!cbdata->connection) {
+                g_message ("Could not talk to D-Bus: %s", error->message);
+                cbdata->callback (NULL, NULL, NULL, cbdata->data, error);
+                free_callback_data (cbdata);
+                return;
+	}
 
         g_variant_builder_init (&opt_builder, G_VARIANT_TYPE ("a{sv}"));
         g_variant_builder_add (&opt_builder, "{sv}", "reason", g_variant_new_string (_("Allow your personal information to be included with recipes you share with your friends.")));
@@ -203,9 +209,10 @@ got_account_info (const char  *id,
 
         if (error) {
                 g_message ("Failed to get account information: %s", error->message);
-                g_free (cbdata);
-                return;
-        }
+		id = g_get_user_name ();
+		name = g_get_real_name ();
+		image_path = NULL;
+	}
 
         chef = gr_chef_new ();
         g_object_set (chef,
