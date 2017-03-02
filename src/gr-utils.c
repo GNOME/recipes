@@ -447,6 +447,9 @@ portals_available (void)
                 g_autoptr(GDBusConnection) bus = NULL;
 
                 bus = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL);
+		if (!bus)
+			return FALSE;
+
                 portal = g_dbus_proxy_new_sync (bus,
                                                 0,
                                                 NULL,
