@@ -27,6 +27,10 @@
 #include "gr-about-dialog.h"
 #include "gr-utils.h"
 
+#ifdef GDK_WINDOWING_QUARTZ
+#include <sys/sysctl.h>
+#endif
+
 struct _GrAboutDialog
 {
         GtkAboutDialog parent_instance;
@@ -155,6 +159,7 @@ add_built_logo (GrAboutDialog *about)
         g_object_unref (copyright_label);
 }
 
+#ifndef GDK_WINDOWING_QUARTZ
 static char *
 find_string_between (const char *buffer,
                      const char *before,
@@ -173,6 +178,7 @@ find_string_between (const char *buffer,
 
         return NULL;
 }
+#endif
 
 static void
 get_os_information (char **os_name,
@@ -180,22 +186,32 @@ get_os_information (char **os_name,
                     char **desktop,
                     char **version)
 {
-        g_autofree char *buffer;
-        g_autofree char *buffer2;
-        const char *value;
-
         *os_name = NULL;
         *os_type = NULL;
         *desktop = NULL;
         *version = NULL;
 
-        if (g_file_get_contents ("/etc/os-release", &buffer, NULL, NULL))
-                *os_name = find_string_between (buffer, "PRETTY_NAME=\"", "\"");
-
         if (GLIB_SIZEOF_VOID_P == 8)
                 *os_type = g_strdup ("64-bit");
         else
                 *os_type = g_strdup ("32-bit");
+
+#ifdef GDK_WINDOWING_QUARTZ
+	{
+	char str[256];
+	size_t size = sizeof(str);
+
+	sysctlbyname ("kern.osrelease", str, &size, NULL, 0);
+	*os_name = g_strdup_printf ("OS X %s", str);
+	}
+#else
+	{
+        g_autofree char *buffer;
+        g_autofree char *buffer2;
+        const char *value;
+
+        if (g_file_get_contents ("/etc/os-release", &buffer, NULL, NULL))
+                *os_name = find_string_between (buffer, "PRETTY_NAME=\"", "\"");
 
         value = g_getenv ("XDG_CURRENT_DESKTOP");
         if (value) {
@@ -215,13 +231,11 @@ get_os_information (char **os_name,
                 if (platform && minor && micro)
                         *version = g_strconcat (platform, ".", minor, ".", micro, NULL);
         }
+	}
+#endif
 
         if (!*os_name)
                 *os_name = g_strdup (_("Unknown"));
-        if (!*os_type)
-                *os_type = g_strdup (_("Unknown"));
-        if (!*desktop)
-                *desktop = g_strdup (_("Unknown"));
 }
 
 static void
@@ -468,10 +482,12 @@ populate_system_tab (GtkTextView *view)
                 text_buffer_append (buffer, "\n");
 
                 text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("OS metadata", "Name"), os_name);
-                text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("OS metadata", "Type"), os_type);
-                if (version)
+		if (os_type)
+                	text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("OS metadata", "Type"), os_type);
+
+                if (desktop && version)
                         text_buffer_append_printf (buffer, "\t%s\t%s %s\n", C_("OS metadata", "Desktop"), desktop, version);
-                else
+                else if (desktop)
                         text_buffer_append_printf (buffer, "\t%s\t%s\n", C_("OS metadata", "Desktop"), desktop);
 
                 text_buffer_append (buffer, "\n");
