@@ -154,7 +154,7 @@ mail_done (GObject      *source,
                                                                        GTK_WINDOW (exporter->window),
                                                                        GTK_FILE_CHOOSER_ACTION_SAVE,
                                                                        _("Save"),
-                                                                       _("Canel"));
+                                                                       _("Cancel"));
                 gtk_native_dialog_set_modal (GTK_NATIVE_DIALOG (file_chooser), TRUE);
 
                 g_signal_connect (file_chooser, "response", G_CALLBACK (file_chooser_response), exporter);
