@@ -1509,13 +1509,14 @@ gr_recipe_store_add_to_shopping (GrRecipeStore *self,
         length = g_strv_length (self->shopping);
         strv = g_new (char *, length + 2);
         strv[0] = g_strdup (id);
-        intv = g_new (int, length + 1);
+        intv = g_new (int, length + 2);
         intv[0] = serves;
         for (i = 0; i < length; i++) {
                 strv[i + 1] = self->shopping[i];
                 intv[i + 1] = self->shopping_serves[i];
         }
         strv[length + 1] = NULL;
+        intv[length + 1] = 0;
 
         g_free (self->shopping);
         g_free (self->shopping_serves);
