@@ -9,6 +9,11 @@
         <attribute name="hidden-when">action-disabled</attribute>
       </item>
       <item>
+        <attribute name="label" translatable="yes">_Export All</attribute>
+        <attribute name="action">app.export</attribute>
+        <attribute name="hidden-when">action-disabled</attribute>
+      </item>
+      <item>
         <attribute name="label" translatable="yes">_My Chef Information</attribute>
         <attribute name="action">app.chef-information</attribute>
       </item>
