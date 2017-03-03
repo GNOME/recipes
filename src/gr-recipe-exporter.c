@@ -197,7 +197,7 @@ completed_cb (AutoarCompressor *compressor,
                         g_string_append (s, _("Hi,\n\nyou should try these recipes."));
                 }
                 g_string_append (s, "\n\n");
-                g_string_append (s, _("(The attached file can be imported into GNOME recipes.)"));
+                g_string_append (s, _("(The attached file can be imported into GNOME Recipes.)"));
 
                 for (l = exporter->recipes; l; l = l->next) {
                         g_autofree char *formatted = NULL;
@@ -582,7 +582,7 @@ update_contribute_button (GrRecipeExporter *exporter)
         if (readonly) {
                 gtk_widget_set_sensitive (exporter->contribute_button, FALSE);
                 gtk_widget_set_tooltip_text (exporter->contribute_button, _("Some of the selected recipes are included\n"
-                                                                            "with GNOME recipes. You should only contribute\n"
+                                                                            "with GNOME Recipes. You should only contribute\n"
                                                                             "your own recipes."));
                 gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (exporter->friend_button), TRUE);
         }
