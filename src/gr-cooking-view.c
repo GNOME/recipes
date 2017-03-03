@@ -31,7 +31,7 @@
 #include "gr-cooking-view.h"
 #include "gr-recipe.h"
 #include "gr-recipe-formatter.h"
-#include "gr-images.h"
+#include "gr-image.h"
 #include "gr-utils.h"
 #include "gr-timer.h"
 #include "gr-window.h"

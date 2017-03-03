@@ -28,7 +28,7 @@
 #endif
 
 #include "gr-recipe-importer.h"
-#include "gr-images.h"
+#include "gr-image.h"
 #include "gr-chef.h"
 #include "gr-recipe.h"
 #include "gr-recipe-store.h"

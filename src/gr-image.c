@@ -1,4 +1,4 @@
-/* gr-images.c:
+/* gr-image.c:
  *
  * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
  *
@@ -20,7 +20,7 @@
 
 #include "config.h"
 
-#include "gr-images.h"
+#include "gr-image.h"
 
 GPtrArray *
 gr_image_array_new (void)

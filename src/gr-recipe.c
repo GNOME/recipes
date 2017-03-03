@@ -27,7 +27,7 @@
 
 #include "gr-recipe.h"
 #include "gr-recipe-store.h"
-#include "gr-images.h"
+#include "gr-image.h"
 #include "gr-utils.h"
 #include "types.h"
 

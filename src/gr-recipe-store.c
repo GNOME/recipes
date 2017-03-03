@@ -30,7 +30,8 @@
 #include "gr-settings.h"
 #include "gr-utils.h"
 #include "gr-ingredients-list.h"
-#include "gr-images.h"
+#include "gr-image.h"
+#include "gr-app.h"
 
 
 /**
