@@ -795,58 +795,24 @@ chef_done (GrChefDialog *dialog,
 }
 
 static void
-present_my_chef_dialog (GrWindow *window,
-                        GrChef   *chef)
+present_my_chef_dialog (GrChef   *chef,
+                        gpointer  data)
 {
+        GrWindow *window = data;
+
         window->chef_dialog = (GtkWidget *)gr_chef_dialog_new (chef, FALSE);
         gtk_window_set_title (GTK_WINDOW (window->chef_dialog), _("My Chef Information"));
         g_signal_connect (window->chef_dialog, "done", G_CALLBACK (chef_done), window);
         gr_window_present_dialog (window, GTK_WINDOW (window->chef_dialog));
 }
 
-static void
-got_account_info (const char  *id,
-                  const char  *name,
-                  const char  *image_path,
-                  gpointer     data,
-                  GError      *error)
-{
-        g_autoptr(GrChef) chef = NULL;
-        GrWindow *window = data;
-
-        chef = gr_chef_new ();
-        g_object_set (chef,
-                      "id", id,
-                      "fullname", name,
-                      "image-path", image_path,
-                      NULL);
-
-        present_my_chef_dialog (window, chef);
-}
-
 void
 gr_window_show_my_chef_information (GrWindow *window)
 {
-        GrRecipeStore *store;
-        const char *id;
-        g_autoptr(GrChef) chef = NULL;
-
         if (window->chef_dialog)
                 return;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
-
-        id = gr_recipe_store_get_user_key (store);
-
-        if (id != NULL && id[0] != '\0')
-                chef = gr_recipe_store_get_chef (store, id);
-
-        if (chef) {
-                present_my_chef_dialog (window, chef);
-                return;
-        }
-
-        gr_account_get_information (GTK_WINDOW (window), got_account_info, window, NULL);
+        gr_ensure_user_chef (GTK_WINDOW (window), present_my_chef_dialog, window);
 }
 
 void
