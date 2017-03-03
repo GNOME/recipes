@@ -44,6 +44,7 @@ void            gr_window_timer_expired              (GrWindow   *window,
                                                       int         step);
 void            gr_window_load_recipe                (GrWindow   *window,
                                                       GFile      *file);
+void            gr_window_save_all                   (GrWindow   *window);
 void            gr_window_show_search                (GrWindow   *window,
                                                       const char *terms);
 void            gr_window_go_back                    (GrWindow   *window);

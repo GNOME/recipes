@@ -40,6 +40,7 @@
 #include "gr-image-page.h"
 #include "gr-query-editor.h"
 #include "gr-recipe-importer.h"
+#include "gr-recipe-exporter.h"
 #include "gr-about-dialog.h"
 #include "gr-account.h"
 #include "gr-utils.h"
@@ -83,6 +84,7 @@ struct _GrWindow
 
         GObject *file_chooser;
         GrRecipeImporter *importer;
+        GrRecipeExporter *exporter;
 
         GtkWidget *chef_dialog;
         GtkWidget *about_dialog;
@@ -457,6 +459,7 @@ gr_window_finalize (GObject *object)
         g_queue_free_full (self->back_entry_stack, (GDestroyNotify)back_entry_free);
 
         g_clear_object (&self->importer);
+        g_clear_object (&self->exporter);
 
         g_clear_object (&self->undo_recipe);
         if (self->undo_timeout_id) {
@@ -773,9 +776,9 @@ do_import (GrWindow *window,
 }
 
 static void
-file_chooser_response (GtkNativeDialog *self,
-                       int              response_id,
-                       GrWindow        *window)
+file_chooser_import_response (GtkNativeDialog *self,
+                              int              response_id,
+                              GrWindow        *window)
 {
         if (response_id == GTK_RESPONSE_ACCEPT) {
                 g_autoptr(GFile) file = NULL;
@@ -836,7 +839,72 @@ gr_window_load_recipe (GrWindow *window,
                                                                        _("Cancel"));
         gtk_native_dialog_set_modal (GTK_NATIVE_DIALOG (window->file_chooser), TRUE);
 
-        g_signal_connect (window->file_chooser, "response", G_CALLBACK (file_chooser_response), window);
+        g_signal_connect (window->file_chooser, "response",
+                          G_CALLBACK (file_chooser_import_response), window);
+
+        gtk_native_dialog_show (GTK_NATIVE_DIALOG (window->file_chooser));
+}
+
+static void
+export_done (GrRecipeExporter *exporter,
+             GFile            *file,
+             GtkWidget        *window)
+{
+        GtkWidget *dialog;
+        g_autofree char *path = NULL;
+
+        path = g_file_get_path (file);
+        dialog = gtk_message_dialog_new (GTK_WINDOW (window),
+                                         GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,
+                                         GTK_MESSAGE_INFO,
+                                         GTK_BUTTONS_OK,
+                                         _("Recipes have been exported to “%s”"), path);
+        g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
+        gtk_widget_show (dialog);
+}
+
+static void
+do_export (GrWindow *window,
+           GFile    *file)
+{
+        if (!window->exporter) {
+                window->exporter = gr_recipe_exporter_new (GTK_WINDOW (window));
+                g_signal_connect (window->exporter, "done", G_CALLBACK (export_done), window);
+        }
+
+        gr_recipe_exporter_export_all (window->exporter, file);
+}
+
+static void
+file_chooser_export_response (GtkNativeDialog *self,
+                              int              response_id,
+                              GrWindow        *window)
+{
+        if (response_id == GTK_RESPONSE_ACCEPT) {
+                g_autoptr(GFile) file = NULL;
+                file = gtk_file_chooser_get_file (GTK_FILE_CHOOSER (self));
+                do_export (window, file);
+        }
+
+        gtk_native_dialog_destroy (self);
+        window->file_chooser = NULL;
+}
+
+void
+gr_window_save_all (GrWindow *window)
+{
+        if (window->file_chooser)
+                return;
+
+        window->file_chooser = (GObject *)gtk_file_chooser_native_new (_("Select a file"),
+                                                                       GTK_WINDOW (window),
+                                                                       GTK_FILE_CHOOSER_ACTION_SAVE,
+                                                                       _("Save"),
+                                                                       _("Cancel"));
+        gtk_native_dialog_set_modal (GTK_NATIVE_DIALOG (window->file_chooser), TRUE);
+
+        g_signal_connect (window->file_chooser, "response",
+                          G_CALLBACK (file_chooser_export_response), window);
 
         gtk_native_dialog_show (GTK_NATIVE_DIALOG (window->file_chooser));
 }
