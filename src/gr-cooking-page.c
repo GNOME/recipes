@@ -530,7 +530,7 @@ void
 gr_cooking_page_set_recipe (GrCookingPage *page,
                             GrRecipe      *recipe)
 {
-        g_autoptr(GArray) images = NULL;
+        g_autoptr(GPtrArray) images = NULL;
         const char *id;
         const char *instructions;
 

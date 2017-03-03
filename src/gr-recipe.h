@@ -55,6 +55,7 @@ GDateTime      *gr_recipe_get_ctime        (GrRecipe   *recipe);
 GDateTime      *gr_recipe_get_mtime        (GrRecipe   *recipe);
 gboolean        gr_recipe_is_readonly      (GrRecipe   *recipe);
 gboolean        gr_recipe_is_contributed   (GrRecipe   *recipe);
+GPtrArray      *gr_recipe_get_images       (GrRecipe   *recipe);
 
 const char     *gr_recipe_get_translated_name         (GrRecipe   *recipe);
 const char     *gr_recipe_get_translated_description  (GrRecipe   *recipe);

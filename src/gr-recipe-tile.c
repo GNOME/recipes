@@ -71,7 +71,7 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
                 const char *author;
                 g_autoptr(GrChef) chef = NULL;
                 g_autofree char *tmp = NULL;
-                g_autoptr(GArray) images = NULL;
+                GPtrArray *images;
 
                 name = gr_recipe_get_translated_name (recipe);
                 author = gr_recipe_get_author (recipe);
@@ -96,7 +96,7 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
                         if (index < 0 || index >= images->len)
                                 index = 0;
 
-                        ri = &g_array_index (images, GrImage, index);
+                        ri = g_ptr_array_index (images, index);
                         pixbuf = load_pixbuf_fill_size (ri->path, width, height);
                         gtk_image_set_from_pixbuf (GTK_IMAGE (tile->image), pixbuf);
                 }

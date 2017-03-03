@@ -70,7 +70,7 @@ struct _GrImageViewer
         GtkWidget *preview_revealer;
         GtkWidget *preview_list;
 
-        GArray *images;
+        GPtrArray *images;
         int index;
 
         GPtrArray *additions;
@@ -140,7 +140,7 @@ set_current_image (GrImageViewer *viewer)
                 g_autoptr(GdkPixbuf) pixbuf = NULL;
                 const char *vis;
 
-                ri = &g_array_index (viewer->images, GrImage, viewer->index);
+                ri = g_ptr_array_index (viewer->images, viewer->index);
                 pixbuf = load_pixbuf_fill_size (ri->path, 360, 240);
 
                 vis = gtk_stack_get_visible_child_name (GTK_STACK (viewer->stack));
@@ -169,7 +169,7 @@ populate_preview (GrImageViewer *viewer)
         container_remove_all (GTK_CONTAINER (viewer->preview_list));
 
         for (i = 0; i < viewer->images->len; i++) {
-                GrImage *ri = &g_array_index (viewer->images, GrImage, i);
+                GrImage *ri = g_ptr_array_index (viewer->images, i);
                 g_autoptr(GdkPixbuf) pb = load_pixbuf_fill_size (ri->path, 60, 40);
                 GtkWidget *image;
 
@@ -346,12 +346,10 @@ preview_selected (GrImageViewer *viewer)
 
 static void
 add_image (GrImageViewer  *viewer,
-           GrImage *ri,
+           GrImage        *ri,
            gboolean        select)
 {
-        g_array_append_vals (viewer->images, ri, 1);
-        ri = &g_array_index (viewer->images, GrImage, viewer->images->len - 1);
-        ri->path = g_strdup (ri->path);
+        g_ptr_array_add (viewer->images, ri);
 
         populate_preview (viewer);
         if (select)
@@ -369,7 +367,7 @@ image_received (GtkClipboard *clipboard,
         GrImageViewer *viewer = data;
 
         if (pixbuf) {
-                GrImage ri;
+                GrImage *ri;
                 g_autofree char *dir = NULL;
                 g_autofree char *path = NULL;
                 int fd;
@@ -388,9 +386,10 @@ image_received (GtkClipboard *clipboard,
                         return;
                 }
 
-                ri.path = g_strdup (path);
+                ri = g_new (GrImage, 1);
+                ri->path = g_strdup (path);
 
-                add_image (viewer, &ri, TRUE);
+                add_image (viewer, ri, TRUE);
         }
 }
 
@@ -485,7 +484,7 @@ gr_image_viewer_set_property (GObject      *object,
           {
           case PROP_IMAGES:
                   gr_image_viewer_set_images (self,
-                                              (GArray *) g_value_get_boxed (value),
+                                              (GPtrArray *) g_value_get_boxed (value),
                                               gr_image_viewer_get_index (self));
                   break;
 
@@ -544,23 +543,15 @@ gr_image_viewer_class_init (GrImageViewerClass *klass)
 
 void
 gr_image_viewer_set_images (GrImageViewer *viewer,
-                            GArray        *images,
+                            GPtrArray     *images,
                             int            index)
 {
-        int i;
-
         g_object_freeze_notify (G_OBJECT (viewer));
 
-        g_array_remove_range (viewer->images, 0, viewer->images->len);
+        g_ptr_array_unref (viewer->images);
+        viewer->images = g_ptr_array_ref (images);
+
         g_object_notify (G_OBJECT (viewer), "images");
-
-        for (i = 0; i < images->len; i++) {
-                GrImage *ri = &g_array_index (images, GrImage, i);
-
-                g_array_append_vals (viewer->images, ri, 1);
-                ri = &g_array_index (viewer->images, GrImage, viewer->images->len - 1);
-                ri->path = g_strdup (ri->path);
-        }
 
         populate_preview (viewer);
         viewer->index = index;
@@ -568,6 +559,12 @@ gr_image_viewer_set_images (GrImageViewer *viewer,
         hide_controls (viewer);
 
         g_object_thaw_notify (G_OBJECT (viewer));
+}
+
+GPtrArray *
+gr_image_viewer_get_images (GrImageViewer *viewer)
+{
+        return viewer->images;
 }
 
 static void
@@ -580,15 +577,14 @@ file_chooser_response (GtkNativeDialog *self,
 
                 names = gtk_file_chooser_get_filenames (GTK_FILE_CHOOSER (self));
                 for (l = names; l; l = l->next) {
-                        GrImage ri;
+                        GrImage *ri;
 
-                        ri.path = import_image (l->data);
+                        ri = g_new (GrImage, 1);
+                        ri->path = import_image (l->data);
 
-                        add_image (viewer, &ri, TRUE);
+                        add_image (viewer, ri, TRUE);
 
-                        g_ptr_array_add (viewer->additions, g_strdup (ri.path));
-
-                        g_free (ri.path);
+                        g_ptr_array_add (viewer->additions, g_strdup (ri->path));
                 }
                 g_slist_free_full (names, g_free);
 
@@ -639,11 +635,11 @@ gr_image_viewer_remove_image (GrImageViewer *viewer)
 {
         GrImage *ri;
 
-        ri = &g_array_index (viewer->images, GrImage, viewer->index);
+        ri = g_ptr_array_index (viewer->images, viewer->index);
 
         g_ptr_array_add (viewer->removals, g_strdup (ri->path));
 
-        g_array_remove_index (viewer->images, viewer->index);
+        g_ptr_array_remove_index (viewer->images, viewer->index);
 
         if (viewer->index < viewer->images->len) {
                 populate_preview (viewer);
@@ -674,7 +670,7 @@ gr_image_viewer_rotate_image (GrImageViewer *viewer,
 
         g_assert (angle == 0 || angle == 90 || angle == 180 || angle == 270);
 
-        ri = &g_array_index (viewer->images, GrImage, viewer->index);
+        ri = g_ptr_array_index (viewer->images, viewer->index);
 
         path = rotate_image (ri->path, angle);
         g_ptr_array_add (viewer->removals, g_strdup (ri->path));

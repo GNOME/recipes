@@ -167,15 +167,15 @@ static void
 populate_image_flowbox (GrEditPage *page)
 {
         int i;
-        g_autoptr(GArray) images = NULL;
+        GPtrArray *images;
         GtkWidget *button;
 
-        g_object_get (page->images, "images", &images, NULL);
+        images = gr_image_viewer_get_images (GR_IMAGE_VIEWER (page->images));
 
         container_remove_all (GTK_CONTAINER (page->image_flowbox));
 
         for (i = 0; i < images->len; i++) {
-                GrImage *ri = &g_array_index (images, GrImage, i);
+                GrImage *ri = g_ptr_array_index (images, i);
                 g_autoptr(GdkPixbuf) pb = load_pixbuf_fill_size (ri->path, 60, 40);
                 GtkWidget *image;
                 GtkWidget *child;
@@ -197,10 +197,10 @@ populate_image_flowbox (GrEditPage *page)
 static void
 update_image_button_sensitivity (GrEditPage *page)
 {
-        g_autoptr(GArray) images = NULL;
+        GPtrArray *images;
         int length;
 
-        g_object_get (page->images, "images", &images, NULL);
+        images = gr_image_viewer_get_images (GR_IMAGE_VIEWER (page->images));
         length = images->len;
         gtk_widget_set_sensitive (page->add_image_button, TRUE);
         gtk_widget_set_sensitive (page->remove_image_button, length > 0);
@@ -1472,7 +1472,7 @@ preview_visible_changed (GrEditPage *page)
                 gr_cooking_view_stop (GR_COOKING_VIEW (page->cooking_view), TRUE);
         }
         else {
-                g_autoptr(GArray) images = NULL;
+                GPtrArray *images;
                 g_autofree char *instructions = NULL;
 
                 gtk_widget_set_sensitive (page->add_step_button, FALSE);
@@ -1482,7 +1482,7 @@ preview_visible_changed (GrEditPage *page)
                 gtk_widget_set_visible (page->prev_step_button, TRUE);
                 gtk_widget_set_visible (page->next_step_button, TRUE);
 
-                g_object_get (page->images, "images", &images, NULL);
+                images = gr_image_viewer_get_images (GR_IMAGE_VIEWER (page->images));
                 instructions = get_text_view_text (GTK_TEXT_VIEW (page->instructions_field));
 
                 gr_cooking_view_set_data (GR_COOKING_VIEW (page->cooking_view), NULL, instructions, images);
@@ -1987,7 +1987,7 @@ scroll_up (GrEditPage *page)
 void
 gr_edit_page_clear (GrEditPage *page)
 {
-        GArray *images;
+        g_autoptr(GPtrArray) images = NULL;
         GrRecipeStore *store;
 
         gr_image_viewer_revert_changes (GR_IMAGE_VIEWER (page->images));
@@ -2015,7 +2015,6 @@ gr_edit_page_clear (GrEditPage *page)
 
         images = gr_image_array_new ();
         g_object_set (page->images, "images", images, NULL);
-        g_array_unref (images);
 
         if (page->index_handler_id) {
                 g_signal_handler_disconnect (page->recipe, page->index_handler_id);
@@ -2140,7 +2139,7 @@ gr_edit_page_edit (GrEditPage *page,
         const char *ingredients;
         GrDiets diets;
         int index;
-        g_autoptr(GArray) images = NULL;
+        GPtrArray *images;
         g_autoptr(GrChef) chef = NULL;
         GrRecipeStore *store;
 
@@ -2162,8 +2161,7 @@ gr_edit_page_edit (GrEditPage *page,
         ingredients = gr_recipe_get_ingredients (recipe);
         author = gr_recipe_get_author (recipe);
         index = gr_recipe_get_default_image (recipe);
-
-        g_object_get (recipe, "images", &images, NULL);
+        images = gr_recipe_get_images (recipe);
 
         g_free (page->author);
         page->author = g_strdup (author);
@@ -2231,7 +2229,7 @@ gr_edit_page_save (GrEditPage *page)
         g_autoptr(GError) error = NULL;
         gboolean ret = TRUE;
         GrDiets diets;
-        g_autoptr(GArray) images = NULL;
+        GPtrArray *images;
 
         store = gr_recipe_store_get ();
 
@@ -2252,7 +2250,7 @@ gr_edit_page_save (GrEditPage *page)
                (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->vegetarian_check)) ? GR_DIET_VEGETARIAN : 0) |
                 (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->milk_free_check)) ? GR_DIET_MILK_FREE : 0);
 
-        g_object_get (page->images, "images", &images, NULL);
+        images = gr_image_viewer_get_images (GR_IMAGE_VIEWER (page->images));
 
         if (page->recipe) {
                 g_autofree char *old_id = NULL;

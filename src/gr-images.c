@@ -22,21 +22,8 @@
 
 #include "gr-images.h"
 
-static void
-gr_image_clear (gpointer data)
-{
-        GrImage *image = data;
-
-        g_clear_pointer (&image->path, g_free);
-}
-
-GArray *
+GPtrArray *
 gr_image_array_new (void)
 {
-        GArray *a;
-
-        a = g_array_new (TRUE, TRUE, sizeof (GrImage));
-        g_array_set_clear_func (a, gr_image_clear);
-
-        return a;
+        return g_ptr_array_new_with_free_func (g_free);
 }

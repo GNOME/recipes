@@ -50,7 +50,7 @@ struct _GrCookingView
         GtkWidget *text_box;
         GtkWidget *timer_box;
 
-        GArray *images;
+        GPtrArray *images;
         char *id;
         char *instructions;
 
@@ -139,12 +139,12 @@ timer_active (GrTimer    *timer,
 }
 
 static StepData *
-step_data_new (int         num,
-               int         n_steps,
-               const char *text,
-               guint64     duration,
-               const char *title,
-               int         image,
+step_data_new (int            num,
+               int            n_steps,
+               const char    *text,
+               guint64        duration,
+               const char    *title,
+               int            image,
                GrCookingView *view)
 {
         StepData *d;
@@ -241,7 +241,7 @@ gr_cooking_view_finalize (GObject *object)
         GrCookingView *self = GR_COOKING_VIEW (object);
 
         g_clear_pointer (&self->id, g_free);
-        g_clear_pointer (&self->images, g_array_unref);
+        g_clear_pointer (&self->images, g_ptr_array_unref);
         g_clear_pointer (&self->instructions, g_free);
         g_clear_pointer (&self->steps, g_ptr_array_unref);
 
@@ -320,7 +320,7 @@ setup_step (GrCookingView *view)
 
                 gtk_widget_show (view->cooking_stack);
                 gtk_widget_set_halign (view->text_box, GTK_ALIGN_START);
-                ri = &g_array_index (view->images, GrImage, s->image);
+                ri = g_ptr_array_index (view->images, s->image);
                 if (view->wide)
                         pixbuf = load_pixbuf_fill_size (ri->path, 640, 480);
                 else
@@ -584,14 +584,14 @@ void
 gr_cooking_view_set_data (GrCookingView *view,
                           const char    *id,
                           const char    *instructions,
-                          GArray        *images)
+                          GPtrArray     *images)
 {
         g_free (view->id);
         view->id = g_strdup (id);
         g_free (view->instructions);
         view->instructions = g_strdup (instructions);
-        g_clear_pointer (&view->images, g_array_unref);
-        view->images = g_array_ref (images);
+        g_clear_pointer (&view->images, g_ptr_array_unref);
+        view->images = g_ptr_array_ref (images);
 
         setup_steps (view);
 }

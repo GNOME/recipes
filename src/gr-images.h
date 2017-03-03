@@ -28,6 +28,6 @@ typedef struct {
         char *path;
 } GrImage;
 
-GArray *gr_image_array_new (void);
+GPtrArray *gr_image_array_new (void);
 
 G_END_DECLS
