@@ -38,7 +38,7 @@
 #include "gr-cuisine.h"
 #include "gr-meal.h"
 #include "gr-season.h"
-#include "gr-images.h"
+#include "gr-image.h"
 #include "gr-image-viewer.h"
 #include "gr-ingredient-row.h"
 #include "gr-ingredient.h"

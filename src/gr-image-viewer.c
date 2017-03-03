@@ -27,7 +27,7 @@
 #include <gio/gunixoutputstream.h>
 
 #include "gr-image-viewer.h"
-#include "gr-images.h"
+#include "gr-image.h"
 #include "gr-utils.h"
 #include "gr-window.h"
 
