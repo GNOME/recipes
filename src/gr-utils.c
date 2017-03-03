@@ -479,9 +479,30 @@ all_headers (GtkListBoxRow *row,
 #ifdef GDK_WINDOWING_WAYLAND
 typedef struct {
         GtkWindow *window;
+        char *handle_str;
         WindowHandleExported callback;
         gpointer user_data;
 } WaylandWindowHandleExportedData;
+
+static void
+free_exported_data (gpointer data)
+{
+        WaylandWindowHandleExportedData *d = data;
+
+        g_free (d->handle_str);
+        g_free (d);
+}
+
+static gboolean
+handle_exported_idle (gpointer user_data)
+{
+        WaylandWindowHandleExportedData *data = user_data;
+
+        data->callback (data->window, data->handle_str, data->user_data);
+        free_exported_data (data);
+
+        return G_SOURCE_REMOVE;
+}
 
 static void
 wayland_window_handle_exported (GdkWindow  *window,
@@ -489,13 +510,9 @@ wayland_window_handle_exported (GdkWindow  *window,
                                 gpointer    user_data)
 {
         WaylandWindowHandleExportedData *data = user_data;
-        char *handle_str;
 
-        handle_str = g_strdup_printf ("wayland:%s", wayland_handle_str);
-        data->callback (data->window, handle_str, data->user_data);
-        g_free (handle_str);
-
-        g_free (data);
+        data->handle_str = g_strdup_printf ("wayland:%s", wayland_handle_str);
+        g_idle_add (handle_exported_idle, data);
 }
 #endif
 
@@ -529,8 +546,8 @@ window_export_handle (GtkWindow            *window,
                 if (!gdk_wayland_window_export_handle (gdk_window,
                                                        wayland_window_handle_exported,
                                                        data,
-                                                       g_free)) {
-                        g_free (data);
+                                                       free_exported_data)) {
+                        free_exported_data (data);
                         return FALSE;
                 }
                 else {
