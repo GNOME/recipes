@@ -31,6 +31,8 @@
 #include "gr-cuisine.h"
 #include "gr-shell-search-provider.h"
 #include "gr-utils.h"
+#include "gr-recipe-exporter.h"
+
 
 struct _GrApp
 {
@@ -38,6 +40,7 @@ struct _GrApp
 
         GrRecipeStore *store;
         GrShellSearchProvider *search_provider;
+        GrRecipeExporter *exporter;
 };
 
 G_DEFINE_TYPE (GrApp, gr_app, GTK_TYPE_APPLICATION)
@@ -149,6 +152,18 @@ import_activated (GSimpleAction *action,
 }
 
 static void
+export_activated (GSimpleAction *action,
+                  GVariant      *parameter,
+                  gpointer       app)
+{
+        GtkWindow *win;
+
+        win = gtk_application_get_active_window (GTK_APPLICATION (app));
+        gtk_window_present (win);
+        gr_window_save_all (GR_WINDOW (win));
+}
+
+static void
 details_activated (GSimpleAction *action,
                    GVariant      *parameter,
                    gpointer       application)
@@ -189,6 +204,7 @@ static GActionEntry app_entries[] =
         { "about", about_activated, NULL, NULL, NULL },
         { "news", news_activated, NULL, NULL, NULL },
         { "import", import_activated, NULL, NULL, NULL },
+        { "export", export_activated, NULL, NULL, NULL },
         { "details", details_activated, "(ss)", NULL, NULL },
         { "search", search_activated, "s", NULL, NULL },
         { "quit", quit_activated, NULL, NULL, NULL },
