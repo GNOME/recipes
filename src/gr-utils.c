@@ -51,14 +51,12 @@ load_pixbuf_fit_size (const char *path,
         GdkPixbuf *pixbuf;
         int dest_x, dest_y, dest_width, dest_height;
 
+        original = gdk_pixbuf_new_from_file_at_size (path, width, height, NULL);
+        if (!original)
+                return NULL;
+
         pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, width, height);
         gdk_pixbuf_fill (pixbuf, 0x00000000);
-
-        original = gdk_pixbuf_new_from_file_at_size (path, width, height, NULL);
-        if (!original) {
-                g_warning ("Failed to load image %s", path);
-                return pixbuf;
-        }
 
         if (pad) {
                 dest_width = gdk_pixbuf_get_width (original);
@@ -89,13 +87,8 @@ load_pixbuf_fill_size (const char *path,
         int x, y;
 
         original = gdk_pixbuf_new_from_file_at_scale (path, -1, height, TRUE, NULL);
-        if (!original) {
-                GdkPixbuf *pixbuf;
-                g_warning ("Failed to load image %s", path);
-                pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, width, height);
-                gdk_pixbuf_fill (pixbuf, 0x00000000);
-                return pixbuf;
-        }
+        if (!original)
+                return NULL;
 
         if (gdk_pixbuf_get_width (original) < width) {
                 g_autoptr(GdkPixbuf) pb1 = NULL;
