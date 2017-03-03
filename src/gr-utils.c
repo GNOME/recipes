@@ -149,12 +149,8 @@ get_pkg_data_dir (void)
         static char *dir = NULL;
 
         if (!dir) {
-                const char * const *dirs;
-
-                dirs = g_get_system_data_dirs ();
-
-                if (dirs)
-                        dir = g_build_filename (dirs[0], PACKAGE_NAME, NULL);
+                if (g_getenv ("PKG_DATA_DIR"))
+                        dir = (char *)g_getenv ("PKG_DATA_DIR");
                 else
                         dir = (char *)PKGDATADIR;
         }
