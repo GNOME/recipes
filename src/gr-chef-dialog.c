@@ -204,7 +204,7 @@ save_chef_dialog (GrChefDialog  *self,
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        if (id[0] != '\0') {
+        if (id != NULL && id[0] != '\0'){
                 g_object_set (self->chef,
                               "fullname", fullname,
                               "name", name,
