@@ -107,6 +107,17 @@ about_activated (GSimpleAction *action,
 }
 
 static void
+report_issue_activated (GSimpleAction *action,
+                 GVariant      *parameter,
+                 gpointer       app)
+{
+        GtkWindow *win;
+
+        win = gtk_application_get_active_window (GTK_APPLICATION (app));
+        gr_window_show_report_issue (GR_WINDOW (win));
+}
+
+static void
 news_activated (GSimpleAction *action,
                 GVariant      *parameter,
                 gpointer       app)
@@ -180,7 +191,8 @@ static GActionEntry app_entries[] =
         { "import", import_activated, NULL, NULL, NULL },
         { "details", details_activated, "(ss)", NULL, NULL },
         { "search", search_activated, "s", NULL, NULL },
-        { "quit", quit_activated, NULL, NULL, NULL }
+        { "quit", quit_activated, NULL, NULL, NULL },
+        { "report-issue", report_issue_activated, NULL, NULL, NULL }
 };
 
 static void

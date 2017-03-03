@@ -24,6 +24,8 @@
 
 #include <libgd/gd.h>
 
+#include <gtk/gtk.h>
+
 #include "gr-window.h"
 #include "gr-details-page.h"
 #include "gr-chef-dialog.h"
@@ -1181,4 +1183,17 @@ gr_window_show_news (GrWindow *window)
 
         gtk_widget_show_all (box);
         gr_window_present_dialog (GR_WINDOW (window), dialog);
+}
+
+void
+gr_window_show_report_issue (GrWindow *window)
+{
+        const char *uri = "https://bugzilla.gnome.org/enter_bug.cgi?product=recipes";
+        g_autoptr(GError) error = NULL;
+
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Report Issue"));
+
+        gtk_show_uri_on_window (GTK_WINDOW (window), uri, GDK_CURRENT_TIME, &error);
+        if (error)
+                g_warning ("Unable to show '%s': %s", uri, error->message);
 }
