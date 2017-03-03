@@ -111,7 +111,7 @@ recipe_small_tile_set_recipe (GrRecipeSmallTile *tile,
                                 index = 0;
 
                         ri = g_ptr_array_index (images, index);
-                        pixbuf = load_pixbuf_fill_size (ri->path, 64, 64);
+                        pixbuf = load_pixbuf_fill_size (gr_image_get_path (ri), 64, 64);
                         gtk_image_set_from_pixbuf (GTK_IMAGE (tile->image), pixbuf);
                 }
 

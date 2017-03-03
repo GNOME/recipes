@@ -322,9 +322,9 @@ setup_step (GrCookingView *view)
                 gtk_widget_set_halign (view->text_box, GTK_ALIGN_START);
                 ri = g_ptr_array_index (view->images, s->image);
                 if (view->wide)
-                        pixbuf = load_pixbuf_fill_size (ri->path, 640, 480);
+                        pixbuf = load_pixbuf_fill_size (gr_image_get_path (ri), 640, 480);
                 else
-                        pixbuf = load_pixbuf_fill_size (ri->path, 320, 240);
+                        pixbuf = load_pixbuf_fill_size (gr_image_get_path (ri), 320, 240);
                 gtk_image_set_from_pixbuf (GTK_IMAGE (view->cooking_image), pixbuf);
                 gtk_stack_set_visible_child_name (GTK_STACK (view->cooking_stack), "image");
         }

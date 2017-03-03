@@ -108,8 +108,7 @@ begin_print (GtkPrintOperation *operation,
         double page_height;
         GList *page_breaks;
         g_autoptr(GString) s = NULL;
-        g_autoptr(GArray) images = NULL;
-        GrImage *ri;
+        GPtrArray *images;
         PangoRectangle title_rect;
         PangoRectangle left_rect;
         int num_lines;
@@ -128,11 +127,11 @@ begin_print (GtkPrintOperation *operation,
         width = gtk_print_context_get_width (context);
         height = gtk_print_context_get_height (context);
 
-        g_object_get (printer->recipe, "images", &images, NULL);
+        images = gr_recipe_get_images (printer->recipe);
         if (images && images->len > 0) {
-                int def_index = gr_recipe_get_default_image(printer->recipe);
-                ri = &g_array_index (images, GrImage, def_index);
-                printer->image = load_pixbuf_fit_size (ri->path, width / 2, height / 4, FALSE);
+                int def_index = gr_recipe_get_default_image (printer->recipe);
+                GrImage *ri = g_ptr_array_index (images, def_index);
+                printer->image = load_pixbuf_fit_size (gr_image_get_path (ri), width / 2, height / 4, FALSE);
         }
 
         title_font = pango_font_description_from_string ("Cantarell Bold 18");

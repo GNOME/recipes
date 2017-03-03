@@ -22,8 +22,64 @@
 
 #include "gr-image.h"
 
+struct _GrImage
+{
+        GObject parent_instance;
+        char *path;
+};
+
+G_DEFINE_TYPE (GrImage, gr_image, G_TYPE_OBJECT)
+
+static void
+gr_image_finalize (GObject *object)
+{
+        GrImage *image = GR_IMAGE (object);
+
+        g_free (image->path);
+
+        G_OBJECT_CLASS (gr_image_parent_class)->finalize (object);
+}
+
+static void
+gr_image_class_init (GrImageClass *klass)
+{
+        GObjectClass *object_class = G_OBJECT_CLASS (klass);
+
+        object_class->finalize = gr_image_finalize;
+}
+
+static void
+gr_image_init (GrImage *image)
+{
+}
+
+GrImage *
+gr_image_new (const char *path)
+{
+        GrImage *image;
+
+        image = g_object_new (GR_TYPE_IMAGE, NULL);
+        gr_image_set_path (image, path);
+
+        return image;
+}
+
+void
+gr_image_set_path (GrImage    *image,
+                   const char *path)
+{
+        g_free (image->path);
+        image->path = g_strdup (path);
+}
+
+const char *
+gr_image_get_path (GrImage *image)
+{
+        return image->path;
+}
+
 GPtrArray *
 gr_image_array_new (void)
 {
-        return g_ptr_array_new_with_free_func (g_free);
+        return g_ptr_array_new_with_free_func (g_object_unref);
 }

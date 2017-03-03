@@ -81,7 +81,7 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
                 tmp = g_strdup_printf (_("by %s"), chef ? gr_chef_get_name (chef) : _("Anonymous"));
                 gtk_label_set_label (GTK_LABEL (tile->author), tmp);
 
-                g_object_get (recipe, "images", &images, NULL);
+                images = gr_recipe_get_images (recipe);
                 if (images->len > 0) {
                         int index;
                         GrImage *ri;
@@ -97,7 +97,7 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
                                 index = 0;
 
                         ri = g_ptr_array_index (images, index);
-                        pixbuf = load_pixbuf_fill_size (ri->path, width, height);
+                        pixbuf = load_pixbuf_fill_size (gr_image_get_path (ri), width, height);
                         gtk_image_set_from_pixbuf (GTK_IMAGE (tile->image), pixbuf);
                 }
         }
