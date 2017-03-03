@@ -263,7 +263,7 @@ export_one_recipe (GrRecipeExporter  *exporter,
         GrDiets diets;
         GDateTime *ctime;
         GDateTime *mtime;
-        g_autoptr(GArray) images = NULL;
+        GPtrArray *images;
         g_auto(GStrv) paths = NULL;
         int i;
         g_autofree char *imagedir = NULL;
@@ -287,20 +287,20 @@ export_one_recipe (GrRecipeExporter  *exporter,
         default_image = gr_recipe_get_default_image (recipe);
         spiciness = gr_recipe_get_spiciness (recipe);
 
-        g_object_get (recipe, "images", &images, NULL);
+        images = gr_recipe_get_images (recipe);
 
         imagedir = g_build_filename (exporter->dir, "images", NULL);
         g_mkdir_with_parents (imagedir, 0755);
 
         paths = g_new0 (char *, images->len + 1);
         for (i = 0; i < images->len; i++) {
-                GrImage *ri = &g_array_index (images, GrImage, i);
+                GrImage *ri = g_ptr_array_index (images, i);
                 g_autoptr(GFile) source = NULL;
                 g_autoptr(GFile) dest = NULL;
                 g_autofree char *basename = NULL;
                 g_autofree char *destname = NULL;
 
-                source = g_file_new_for_path (ri->path);
+                source = g_file_new_for_path (gr_image_get_path (ri));
                 basename = g_file_get_basename (source);
                 destname = g_build_filename (imagedir, basename, NULL);
 

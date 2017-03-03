@@ -97,7 +97,7 @@ set_current_image (GrImagePage *page)
                 gdk_monitor_get_geometry (monitor, &geom);
 
                 ri = g_ptr_array_index (page->images, page->index);
-                pixbuf = load_pixbuf_fit_size (ri->path, geom.width - 80, geom.height - 80, FALSE);
+                pixbuf = load_pixbuf_fit_size (gr_image_get_path (ri), geom.width - 80, geom.height - 80, FALSE);
                 gtk_image_set_from_pixbuf (GTK_IMAGE (page->image), pixbuf);
         }
 }

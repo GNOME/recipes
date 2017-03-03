@@ -370,9 +370,7 @@ load_recipes (GrRecipeStore *self,
                 if (paths) {
                         for (j = 0; paths[j]; j++) {
                                 GrImage *ri;
-
-                                ri = g_new (GrImage, 1);
-                                ri->path = g_strdup (paths[j]);
+                                ri = gr_image_new (paths[j]);
                                 g_ptr_array_add (images, ri);
                         }
                 }
@@ -551,10 +549,11 @@ save_recipes (GrRecipeStore *self)
                 paths = g_new0 (char *, images->len + 1);
                 for (i = 0; i < images->len; i++) {
                         GrImage *ri = g_ptr_array_index (images, i);
-                        if (g_str_has_prefix (ri->path, dir))
-                                paths[i] = g_strdup (ri->path + strlen (dir) + 1);
+                        const char *img_path = gr_image_get_path (ri);
+                        if (g_str_has_prefix (img_path, dir))
+                                paths[i] = g_strdup (img_path + strlen (dir) + 1);
                         else
-                                paths[i] = g_strdup (ri->path);
+                                paths[i] = g_strdup (img_path);
                 }
 
                 // For readonly recipes, we just store notes

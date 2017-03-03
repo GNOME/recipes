@@ -176,7 +176,7 @@ populate_image_flowbox (GrEditPage *page)
 
         for (i = 0; i < images->len; i++) {
                 GrImage *ri = g_ptr_array_index (images, i);
-                g_autoptr(GdkPixbuf) pb = load_pixbuf_fill_size (ri->path, 60, 40);
+                g_autoptr(GdkPixbuf) pb = load_pixbuf_fill_size (gr_image_get_path (ri), 60, 40);
                 GtkWidget *image;
                 GtkWidget *child;
 

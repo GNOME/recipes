@@ -24,9 +24,14 @@
 
 G_BEGIN_DECLS
 
-typedef struct {
-        char *path;
-} GrImage;
+#define GR_TYPE_IMAGE (gr_image_get_type())
+
+G_DECLARE_FINAL_TYPE (GrImage, gr_image, GR, IMAGE, GObject)
+
+GrImage    *gr_image_new      (const char *path);
+void        gr_image_set_path (GrImage    *image,
+                               const char *path);
+const char *gr_image_get_path (GrImage    *image);
 
 GPtrArray *gr_image_array_new (void);
 
