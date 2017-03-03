@@ -64,7 +64,7 @@ void            gr_window_show_season                (GrWindow   *window,
                                                       const char *season,
                                                       const char *title);
 void            gr_window_show_image                 (GrWindow   *window,
-                                                      GArray     *images,
+                                                      GPtrArray  *images,
                                                       int         index);
 
 void            gr_window_offer_undelete             (GrWindow   *window,

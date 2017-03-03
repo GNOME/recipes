@@ -38,7 +38,7 @@ struct _GrImagePage
         GtkWidget *prev_revealer;
         GtkWidget *close_revealer;
 
-        GArray *images;
+        GPtrArray *images;
         int index;
 
         guint hide_timeout;
@@ -75,7 +75,7 @@ gr_image_page_finalize (GObject *object)
         GrImagePage *page = GR_IMAGE_PAGE (object);
 
         remove_hide_timeout (page);
-        g_clear_pointer (&page->images, g_array_unref);
+        g_clear_pointer (&page->images, g_ptr_array_unref);
 
         G_OBJECT_CLASS (gr_image_page_parent_class)->finalize (object);
 }
@@ -96,7 +96,7 @@ set_current_image (GrImagePage *page)
                 monitor = gdk_display_get_monitor_at_window (display, win);
                 gdk_monitor_get_geometry (monitor, &geom);
 
-                ri = &g_array_index (page->images, GrImage, page->index);
+                ri = g_ptr_array_index (page->images, page->index);
                 pixbuf = load_pixbuf_fit_size (ri->path, geom.width - 80, geom.height - 80, FALSE);
                 gtk_image_set_from_pixbuf (GTK_IMAGE (page->image), pixbuf);
         }
@@ -249,7 +249,7 @@ gr_image_page_set_property (GObject      *object,
         switch (prop_id)
           {
           case PROP_IMAGES:
-                  gr_image_page_set_images (self, (GArray *) g_value_get_boxed (value));
+                  gr_image_page_set_images (self, (GPtrArray *) g_value_get_boxed (value));
                   break;
 
           default:
@@ -297,37 +297,14 @@ gr_image_page_class_init (GrImagePageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, motion_notify);
 }
 
-static void
-add_image (GrImagePage    *page,
-           GrImage *ri,
-           gboolean        select)
-{
-        g_array_append_vals (page->images, ri, 1);
-        ri = &g_array_index (page->images, GrImage, page->images->len - 1);
-        ri->path = g_strdup (ri->path);
-
-        if (select)
-                page->index = page->images->len - 1;
-        set_current_image (page);
-
-        g_object_notify (G_OBJECT (page), "images");
-}
-
 void
 gr_image_page_set_images (GrImagePage *page,
-                          GArray      *images)
+                          GPtrArray   *images)
 {
-        int i;
-
         g_object_freeze_notify (G_OBJECT (page));
 
-        g_array_remove_range (page->images, 0, page->images->len);
-        g_object_notify (G_OBJECT (page), "images");
-
-        for (i = 0; i < images->len; i++) {
-                GrImage *ri = &g_array_index (images, GrImage, i);
-                add_image (page, ri, FALSE);
-        }
+        g_ptr_array_unref (page->images);
+        page->images = g_ptr_array_ref (images);
 
         page->index = 0;
         set_current_image (page);

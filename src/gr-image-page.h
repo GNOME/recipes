@@ -30,7 +30,7 @@ G_DECLARE_FINAL_TYPE (GrImagePage, gr_image_page, GR, IMAGE_PAGE, GtkBox)
 
 GrImagePage *gr_image_page_new        (void);
 void         gr_image_page_set_images (GrImagePage *page,
-                                       GArray      *images);
+                                       GPtrArray   *images);
 
 void         gr_image_page_show_image (GrImagePage *page,
                                        int          idx);

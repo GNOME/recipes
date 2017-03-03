@@ -346,7 +346,7 @@ static void
 activate_image (GrDetailsPage *page)
 {
         GtkWidget *window;
-        g_autoptr(GArray) images = NULL;
+        g_autoptr(GPtrArray) images = NULL;
         int idx;
 
         g_object_get (page->recipe_image, "images", &images, "index", &idx, NULL);
@@ -630,7 +630,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         GrRecipeStore *store;
         g_autoptr(GrChef) chef = NULL;
         g_autoptr(GrIngredientsList) ing = NULL;
-        g_autoptr(GArray) images = NULL;
+        GPtrArray *images;
         gboolean favorite;
         gboolean same_recipe;
         int index;
@@ -659,7 +659,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         else
                 index = gr_recipe_get_default_image (recipe);
 
-        g_object_get (recipe, "images", &images, NULL);
+        images = gr_recipe_get_images (recipe);
         gr_image_viewer_set_images (GR_IMAGE_VIEWER (page->recipe_image), images, index);
 
         ing = gr_ingredients_list_new (ingredients);
