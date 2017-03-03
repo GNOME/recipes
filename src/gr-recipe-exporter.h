@@ -36,5 +36,7 @@ void              gr_recipe_exporter_export (GrRecipeExporter *exporter,
 
 void              gr_recipe_exporter_contribute (GrRecipeExporter *exporter,
                                                  GrRecipe         *recipe);
+void              gr_recipe_exporter_export_all (GrRecipeExporter *exporter,
+                                                 GFile            *file);
 
 G_END_DECLS

@@ -54,6 +54,7 @@ struct _GrRecipeExporter
         GList *sources;
         char *dir;
 
+        gboolean just_export;
         gboolean contribute;
 
         GtkWidget *dialog_heading;
@@ -77,12 +78,22 @@ gr_recipe_exporter_finalize (GObject *object)
         G_OBJECT_CLASS (gr_recipe_exporter_parent_class)->finalize (object);
 }
 
+static guint done_signal;
+
 static void
 gr_recipe_exporter_class_init (GrRecipeExporterClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
         object_class->finalize = gr_recipe_exporter_finalize;
+
+        done_signal = g_signal_new ("done",
+                                    G_TYPE_FROM_CLASS (klass),
+                                    G_SIGNAL_RUN_LAST,
+                                    0,
+                                    NULL, NULL,
+                                    NULL,
+                                    G_TYPE_NONE, 1, G_TYPE_FILE);
 }
 
 static void
@@ -175,6 +186,12 @@ completed_cb (AutoarCompressor *compressor,
         const char *subject;
         g_autofree char *body = NULL;
         const char *attachments[2];
+
+        if (exporter->just_export) {
+                g_signal_emit (exporter, done_signal, 0, exporter->output);
+                cleanup_export (exporter);
+                return;
+        }
 
         if (exporter->contribute) {
                 address = "recipes-list@gnome.org";
@@ -737,4 +754,39 @@ gr_recipe_exporter_contribute (GrRecipeExporter *exporter,
         exporter->contribute = TRUE;
 
         do_export (exporter);
+}
+
+static void
+collect_all_recipes (GrRecipeExporter *exporter)
+{
+        GrRecipeStore *store;
+        g_autofree char **keys = NULL;
+        guint length;
+        int i;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        keys = gr_recipe_store_get_recipe_keys (store, &length);
+        for (i = 0; keys[i]; i++) {
+                g_autoptr(GrRecipe) recipe = gr_recipe_store_get_recipe (store, keys[i]);
+                if (!gr_recipe_is_readonly (recipe))
+                        exporter->recipes = g_list_append (exporter->recipes, recipe);
+        }
+}
+
+void
+gr_recipe_exporter_export_all (GrRecipeExporter *exporter,
+                               GFile            *file)
+{
+        collect_all_recipes (exporter);
+
+        g_message ("Exporting %d recipes", g_list_length (exporter->recipes));
+
+        if (exporter->recipes == NULL)
+                return;
+
+        exporter->output = file;
+
+        exporter->just_export = TRUE;
+
+        start_export (exporter);
 }
