@@ -28,6 +28,7 @@
 #include "gr-recipe.h"
 #include "gr-images.h"
 #include "gr-utils.h"
+#include "gr-app.h"
 #include "types.h"
 
 struct _GrRecipe
@@ -97,6 +98,8 @@ enum {
         PROP_CONTRIBUTED,
         N_PROPS
 };
+
+static char * gr_recipe_get_chef_fullname (GrRecipe *self);
 
 static void
 gr_recipe_finalize (GObject *object)
@@ -244,6 +247,29 @@ set_images (GrRecipe *self,
         }
 
         g_object_notify (G_OBJECT (self), "images");
+}
+
+static char *
+gr_recipe_get_chef_fullname (GrRecipe *self)
+{
+	GrRecipeStore *store;
+	g_autoptr(GrChef) chef = NULL;
+	char * fullname;
+
+	store = gr_app_get_recipe_store (GR_APP(g_application_get_default()));
+	chef = gr_recipe_store_get_chef(store, self->author);
+	if (chef) {
+		fullname = (char *) gr_chef_get_fullname(chef);
+		
+                if (fullname) 
+			return g_utf8_casefold(fullname, -1);
+		else 
+			return NULL;
+	}
+
+        else 
+		return NULL;
+
 }
 
 static void
@@ -691,6 +717,8 @@ gr_recipe_matches (GrRecipe    *recipe,
                    const char **terms)
 {
         int i;
+        char * cf_fullname;
+        cf_fullname = gr_recipe_get_chef_fullname(recipe);
 
         for (i = 0; terms[i]; i++) {
                 if (g_str_has_prefix (terms[i], "i+:")) {
@@ -779,6 +807,9 @@ gr_recipe_matches (GrRecipe    *recipe,
                         continue;
 
                 if (recipe->cf_ingredients && strstr (recipe->cf_ingredients, terms[i]) != NULL)
+                        continue;
+                        
+                if (cf_fullname && strstr(cf_fullname, terms[i]) != NULL)
                         continue;
 
                 return FALSE;
