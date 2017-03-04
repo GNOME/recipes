@@ -899,9 +899,10 @@ gr_window_save_all (GrWindow *window)
         window->file_chooser = (GObject *)gtk_file_chooser_native_new (_("Select a file"),
                                                                        GTK_WINDOW (window),
                                                                        GTK_FILE_CHOOSER_ACTION_SAVE,
-                                                                       _("Save"),
-                                                                       _("Cancel"));
+                                                                       _("_Export"),
+                                                                       _("_Cancel"));
         gtk_native_dialog_set_modal (GTK_NATIVE_DIALOG (window->file_chooser), TRUE);
+        gtk_file_chooser_set_current_name (GTK_FILE_CHOOSER (window->file_chooser), "all-recipes.gnome-recipes-export");
 
         g_signal_connect (window->file_chooser, "response",
                           G_CALLBACK (file_chooser_export_response), window);
