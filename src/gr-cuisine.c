@@ -156,7 +156,7 @@ gr_cuisine_get_data (const char  *name,
 }
 
 char *
-gr_cuisine_get_css (void)
+gr_cuisine_get_css (const char *import_url)
 {
         g_autoptr(GFile) file = NULL;
         const char *path;
@@ -176,10 +176,13 @@ gr_cuisine_get_css (void)
                 path = "resource:///org/gnome/Recipes/cuisine.css";
                 file = g_file_new_for_uri (path);
         }
-        g_message ("Load CSS from: %s", path);
+
         g_file_load_contents (file, NULL, &css, NULL, NULL, NULL);
 
         s = g_string_new ("");
+
+        g_string_append_printf (s, "@import url(\"%s\");\n", import_url);
+
         p = css;
         while (1) {
                 q = strstr (p, "@pkgdatadir@");

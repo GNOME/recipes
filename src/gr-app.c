@@ -41,6 +41,8 @@ struct _GrApp
         GrRecipeStore *store;
         GrShellSearchProvider *search_provider;
         GrRecipeExporter *exporter;
+
+        GtkCssProvider *css_provider;
 };
 
 G_DEFINE_TYPE (GrApp, gr_app, GTK_TYPE_APPLICATION)
@@ -53,6 +55,7 @@ gr_app_finalize (GObject *object)
 
         g_clear_object (&self->store);
         g_clear_object (&self->search_provider);
+        g_clear_object (&self->css_provider);
 
         G_OBJECT_CLASS (gr_app_parent_class)->finalize (object);
 }
@@ -212,13 +215,57 @@ static GActionEntry app_entries[] =
 };
 
 static void
+load_application_css (GrApp *app)
+{
+        gboolean dark;
+        const char *css_file;
+        const char *src_file;
+        const char *resource;
+        const char *path;
+        g_autofree char *css = NULL;
+
+        if (!app->css_provider) {
+                app->css_provider = gtk_css_provider_new ();
+                g_signal_connect_swapped (gtk_settings_get_default (), "notify::gtk-application-prefer-dark-theme",
+                                          G_CALLBACK (load_application_css), app);
+        }
+
+        g_object_get (gtk_settings_get_default (),
+                      "gtk-application-prefer-dark-theme", &dark,
+                      NULL);
+
+        if (dark) {
+                css_file = "recipes-dark.css";
+                src_file = "src/recipes-dark.css";
+                resource = "resource:///org/gnome/Recipes/recipes-dark.css";
+        }
+        else {
+                css_file = "recipes-light.css";
+                src_file = "src/recipes-light.css";
+                resource = "resource:///org/gnome/Recipes/recipes-light.css";
+        }
+
+        if (g_file_test (css_file, G_FILE_TEST_EXISTS))
+                path = css_file;
+        else if (g_file_test (src_file, G_FILE_TEST_EXISTS))
+                path = src_file;
+        else
+                path = resource;
+
+        g_message ("Loading application CSS from %s", path);
+
+        css = gr_cuisine_get_css (path);
+
+        gtk_css_provider_load_from_data (app->css_provider, css, -1, NULL);
+        gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+                                                   GTK_STYLE_PROVIDER (app->css_provider),
+                                                   GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+}
+
+static void
 gr_app_startup (GApplication *app)
 {
         const gchar *quit_accels[2] = { "<Ctrl>Q", NULL };
-        g_autoptr(GtkCssProvider) css_provider = NULL;
-        g_autoptr(GFile) file = NULL;
-        g_autofree char *css = NULL;
-        const char *path;
 
         G_APPLICATION_CLASS (gr_app_parent_class)->startup (app);
 
@@ -239,32 +286,7 @@ gr_app_startup (GApplication *app)
                                                "app.quit",
                                                quit_accels);
 
-        css_provider = gtk_css_provider_new ();
-        if (g_file_test ("recipes.css", G_FILE_TEST_EXISTS)) {
-                path = "recipes.css";
-                file = g_file_new_for_path (path);
-        }
-        else if (g_file_test ("src/recipes.css", G_FILE_TEST_EXISTS)) {
-                path = "src/recipes.css";
-                file = g_file_new_for_path (path);
-        }
-        else {
-                path = "resource:///org/gnome/Recipes/recipes.css";
-                file = g_file_new_for_uri (path);
-        }
-        g_message ("Load CSS from: %s", path);
-        gtk_css_provider_load_from_file (css_provider, file, NULL);
-        gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
-                                                   GTK_STYLE_PROVIDER (css_provider),
-                                                   GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
-        g_object_unref (css_provider);
-
-        css_provider = gtk_css_provider_new ();
-        css = gr_cuisine_get_css ();
-        gtk_css_provider_load_from_data (css_provider, css, -1, NULL);
-        gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
-                                                   GTK_STYLE_PROVIDER (css_provider),
-                                                   GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+        load_application_css (GR_APP (app));
 }
 
 static void

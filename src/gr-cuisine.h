@@ -29,6 +29,6 @@ void         gr_cuisine_get_data  (const char  *name,
                                    const char **title,
                                    const char **full_title,
                                    const char **description);
-char        *gr_cuisine_get_css   (void);
+char        *gr_cuisine_get_css   (const char  *import_url);
 
 G_END_DECLS

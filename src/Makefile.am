@@ -8,6 +8,7 @@ gnome_recipes_CFLAGS = \
 	-Wno-sign-compare		\
 	-O0 -ggdb			\
 	$(RECIPES_CFLAGS) 		\
+	-DG_LOG_DOMAIN=\"$(PACKAGE_NAME)\"	\
 	-DPACKAGE_NAME=\"$(PACKAGE_NAME)\"	\
 	-DPKGDATADIR=\"$(pkgdatadir)\" 	\
 	-DDATADIR=\"$(datadir)\" 	\
