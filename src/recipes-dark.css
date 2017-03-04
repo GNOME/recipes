@@ -1,1 +1,27 @@
 @import url("resource:///org/gnome/Recipes/recipes.css");
+
+.note {
+  background: #535e80;
+}
+
+.note label,
+.note image {
+  color: #eeeeee;
+  margin: 5px 0 5px 10px;
+}
+
+.note.content {
+  background: #6f8194;
+  padding: 10px;
+}
+
+.note:backdrop {
+  color: #dddddd;
+  background: #737680;
+}
+
+.note.content:backdrop {
+  color: #cccccc;
+  background: #868d94;
+}
+
