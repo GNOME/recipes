@@ -818,6 +818,8 @@ gr_about_dialog_new (void)
                 "Mohammed Sadiq",
                 "Sam Hewitt",
                 "Nirbheek Chauhan",
+                "Ekta Nandwani",
+                "Maithili Bhide",
                 NULL
         };
         const char *recipe_authors[] = {
