@@ -110,11 +110,12 @@ recount_recipes (GrShoppingPage *page)
         GList *children;
         int count;
         g_autofree char *tmp = NULL;
-
+        GtkWidget *window;
+        
         children = gtk_container_get_children (GTK_CONTAINER (page->recipe_list));
         count = g_list_length (children);
         g_list_free (children);
-
+        
         g_free (page->title);
         page->title = g_strdup_printf (ngettext ("Buy Ingredients (%d recipe)",
                                                  "Buy Ingredients (%d recipes)", page->recipe_count),
@@ -125,6 +126,10 @@ recount_recipes (GrShoppingPage *page)
                                          "%d Recipes marked for preparation", count),
                                count);
         gtk_label_set_label (GTK_LABEL (page->recipe_count_label), tmp);
+        if (count == 0) {
+                window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
+                gr_window_go_back (GR_WINDOW (window));
+        }
 }
 
 typedef struct {
