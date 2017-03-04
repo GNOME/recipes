@@ -32,6 +32,10 @@ GdkPixbuf *load_pixbuf_fill_size (const char *path,
                                   int         width,
                                   int         height);
 
+void pixbuf_blur (GdkPixbuf *src,
+                  int        radius,
+                  int        iterations);
+
 const char *get_pkg_data_dir  (void);
 const char *get_user_data_dir (void);
 
