@@ -118,8 +118,8 @@ recount_recipes (GrShoppingPage *page)
         
         g_free (page->title);
         page->title = g_strdup_printf (ngettext ("Buy Ingredients (%d recipe)",
-                                                 "Buy Ingredients (%d recipes)", page->recipe_count),
-                                       page->recipe_count);
+                                                 "Buy Ingredients (%d recipes)", count),
+                                       count);
         g_object_notify (G_OBJECT (page), "title");
 
         tmp = g_strdup_printf (ngettext ("%d Recipe marked for preparation",
