@@ -1,0 +1,3383 @@
+# Swedish translation for recipes.
+# Copyright © 2016 recipes's COPYRIGHT HOLDER
+# This file is distributed under the same license as the recipes package.
+# Josef Andersson <l10nl18nsweja@gmail.com>, 2016, 2017.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: recipes master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-03-05 16:13+0000\n"
+"PO-Revision-Date: 2017-03-05 23:33+0100\n"
+"Last-Translator: Josef Andersson <l10nl18nsweja@gmail.com>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.11\n"
+
+#: data/org.gnome.Recipes.desktop.in:3
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
+#: src/gr-window.ui:354 src/gr-about-dialog.c:860 src/gr-window.c:300
+#: src/gr-window.c:710
+msgid "Recipes"
+msgstr "Recept"
+
+#: data/org.gnome.Recipes.desktop.in:4
+msgid "GNOME cooks unite!"
+msgstr "GNOME-kockar, förenen eder!"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Recipes.desktop.in:7
+msgid "org.gnome.Recipes"
+msgstr "org.gnome.Recipes"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:864
+msgid "GNOME loves to cook"
+msgstr "GNOME älskar att laga mat"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:9
+msgid ""
+"GNOME Recipes is an easy-to-use application that will help you to discover "
+"what to cook today, tomorrow, rest of the week and for your special "
+"occasions."
+msgstr ""
+"GNOME Recept är ett lättanvänt program som hjälper dig med vad du ska laga "
+"för mat idag, imorgon, resten av veckan och andra speciella tillfällen."
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:13
+msgid ""
+"Recipes comes with a collection of recipes that have been collected by GNOME "
+"contributors from all over the world. It also lets you store your own "
+"recipes, and share them with your friends."
+msgstr ""
+"Recept kommer med en samling recept som har samlats ihop av GNOME-volontärer "
+"från hela världen. Det låter dig också lagra dina egna recept och dela dem "
+"med vänner."
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:22
+msgid "Initial screen for the application"
+msgstr "Programmets startskärm"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:26
+msgid "The cuisines page"
+msgstr "Sidan för kokkonst"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:30
+msgid "A shopping list"
+msgstr "En inköpslista"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:34
+msgid "Cooking a recipe"
+msgstr "Tillaga efter recept"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:38
+msgid "Editing a recipe"
+msgstr "Redigera ett recept"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:42
+msgid "An individual recipe"
+msgstr "Ett individuellt recept"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:46
+msgid "An individual cuisine"
+msgstr "En individuell kokkonst"
+
+#: src/chef-conflict-dialog.ui:10
+msgid "Same Chef"
+msgstr "Samma kock"
+
+#: src/chef-conflict-dialog.ui:16
+msgid "Different Chef"
+msgstr "Annan kock"
+
+#: src/chef-conflict-dialog.ui:30
+msgid "Existing Chef"
+msgstr "Befintlig kock"
+
+#: src/chef-conflict-dialog.ui:43
+msgid "Imported Chef"
+msgstr "Importerad kock"
+
+#: src/chef-conflict-dialog.ui:57 src/chef-conflict-dialog.ui:69
+msgid "Short Name:"
+msgstr "Kortnamn:"
+
+#: src/chef-conflict-dialog.ui:80 src/chef-conflict-dialog.ui:92
+#: src/recipe-conflict-dialog.ui:38
+msgid "Name:"
+msgstr "Namn:"
+
+#: src/chef-conflict-dialog.ui:103 src/chef-conflict-dialog.ui:115
+msgid "Description:"
+msgstr "Beskrivning:"
+
+#: src/chef-conflict-dialog.ui:126 src/chef-conflict-dialog.ui:138
+msgid "Picture:"
+msgstr "Bild:"
+
+#: src/gr-chef-dialog.ui:5
+msgid "Chef Information"
+msgstr "Kock-information"
+
+#: src/gr-chef-dialog.ui:11 src/gr-window.c:903
+msgid "_Cancel"
+msgstr "_Avbryt"
+
+#: src/gr-chef-dialog.ui:21 src/gr-window.ui:130
+msgid "_Save"
+msgstr "_Spara"
+
+#: src/gr-chef-dialog.ui:98
+msgid ""
+"This information may be shared with other users if you share your recipes."
+msgstr ""
+"Denna information kan delas med andra användare om du delar dina recept."
+
+#: src/gr-chef-dialog.ui:120
+msgid "Other Chef"
+msgstr "Andrekock"
+
+#: src/gr-chef-dialog.ui:133
+msgid "Name…"
+msgstr "Namn..."
+
+#: src/gr-chef-dialog.ui:144
+msgid "Short Name…"
+msgstr "Kortnamn..."
+
+#: src/gr-cooking-page.ui:76
+msgid "Show"
+msgstr "Visa"
+
+#: src/gr-cooking-page.ui:159
+msgid "Done"
+msgstr "Klar"
+
+#: src/gr-cooking-page.ui:186
+msgid "Controls"
+msgstr "Kontroller"
+
+#: src/gr-cooking-page.ui:212
+msgid ""
+"To advance to the next step, press any key on the\n"
+"keyboard."
+msgstr ""
+"För att gå vidare till nästa steg, tryck ned valfri\n"
+"tangent på tangentbordet."
+
+#: src/gr-cooking-page.ui:235
+msgid "To go back to the previous step, doubletap any key."
+msgstr ""
+"För att gå tillbaka till föregående steg, dubbelklicka på valfri tangent."
+
+#: src/gr-cooking-page.ui:257
+msgid ""
+"Alternatively, you can use the cursor keys to\n"
+"quickly seek within the directions."
+msgstr ""
+"Alternativt kan du använda piltangenterna för\n"
+"att snabbt söka bland riktningarna."
+
+#: src/gr-cooking-page.ui:281
+msgid "To exit the process, press the Escape key."
+msgstr "För att avsluta processen, tryck ned Escape-tangenten."
+
+#: src/gr-cooking-view.ui:65
+msgid "Time is up!"
+msgstr "Tiden är slut!"
+
+#: src/gr-cuisine-page.ui:68 src/gr-list-page.ui:113 src/gr-search-page.ui:30
+#: src/gr-list-page.c:417
+msgid "No recipes found"
+msgstr "Fann inga recept"
+
+#: src/gr-cuisine-page.ui:81
+msgid "There are no recipes for this cuisine."
+msgstr "Det finns inga recept för denna matkultur."
+
+#: src/gr-cuisines-page.ui:9
+msgid "Cuisines page"
+msgstr "Matkulturssida"
+
+#: src/gr-cuisines-page.ui:30
+msgid "World Cuisines"
+msgstr "Världsmatkultur"
+
+#: src/gr-cuisines-page.ui:56
+msgid "Seasonal"
+msgstr "Årstidsbunden"
+
+#: src/gr-details-page.ui:106
+msgid "Contains garlic"
+msgstr "Innehåller vitlök"
+
+#: src/gr-details-page.ui:113
+msgid "Contains dairy products"
+msgstr "Innehåller mejeriprodukter"
+
+#: src/gr-details-page.ui:120
+msgid "Contains Gluten"
+msgstr "Innehåller gluten"
+
+#: src/gr-details-page.ui:127 src/gr-details-page.c:545
+msgid "Spicy"
+msgstr "Kryddig"
+
+#: src/gr-details-page.ui:147
+msgid "_Buy Ingredients"
+msgstr "_Inhandla ingredienser"
+
+#: src/gr-details-page.ui:165 src/gr-recipe-small-tile.ui:102
+msgid "Serves"
+msgstr "Portioner"
+
+#: src/gr-details-page.ui:199
+msgid "Preparation Time"
+msgstr "Förberedelsetid"
+
+#: src/gr-details-page.ui:229
+msgid "Cooking Time"
+msgstr "Tillagningstid"
+
+#: src/gr-details-page.ui:259
+msgid "Cuisine"
+msgstr "Kokkonst"
+
+#: src/gr-details-page.ui:289 src/gr-query-editor.ui:48
+msgid "Meal"
+msgstr "Måltid"
+
+#: src/gr-details-page.ui:319
+msgid "Season"
+msgstr "Årstid"
+
+#: src/gr-details-page.ui:381
+msgid "Note"
+msgstr "Anteckning"
+
+#: src/gr-details-page.ui:411 src/gr-edit-page.ui:644
+#: src/gr-recipe-formatter.c:87 src/gr-recipe-printer.c:294
+msgid "Directions"
+msgstr "Instruktioner"
+
+#: src/gr-details-page.ui:471
+msgid "_Notes"
+msgstr "_Anteckningar"
+
+#: src/gr-details-page.ui:481 src/gr-shopping-page.ui:127
+msgid "_Edit"
+msgstr "_Redigera"
+
+#: src/gr-details-page.ui:490
+msgid "_Delete"
+msgstr "_Ta bort"
+
+#: src/gr-details-page.ui:501 src/gr-shopping-page.ui:145
+#: src/recipe-export-dialog.ui:21
+msgid "_Share"
+msgstr "_Dela"
+
+#: src/gr-details-page.ui:513 src/gr-shopping-page.ui:156
+msgid "_Print"
+msgstr "_Skriv ut"
+
+#: src/gr-details-page.ui:524
+msgid "Add to favorites"
+msgstr "Lägg till i favoriter"
+
+#: src/gr-edit-page.ui:113
+msgid "Add an image"
+msgstr "Lägg till en bild"
+
+#: src/gr-edit-page.ui:139 src/gr-edit-page.ui:165
+msgid "Rotate image"
+msgstr "Rotera bild"
+
+#: src/gr-edit-page.ui:191
+msgid "Default image"
+msgstr "Standardbild"
+
+#: src/gr-edit-page.ui:217
+msgid "Remove image"
+msgstr "Ta bort bild"
+
+#: src/gr-edit-page.ui:261
+msgid "Details"
+msgstr "Detaljer"
+
+#: src/gr-edit-page.ui:278
+msgid "_Name Your Recipe"
+msgstr "_Namnge ditt recept"
+
+#: src/gr-edit-page.ui:308
+msgid "Ser_ves"
+msgstr "Portion_er"
+
+#: src/gr-edit-page.ui:338
+msgid "_Preparation Time"
+msgstr "_Förberedelsetid"
+
+#: src/gr-edit-page.ui:358 src/gr-edit-page.ui:395
+msgid "Less than 15 minutes"
+msgstr "Mindre än 15 minuter"
+
+#: src/gr-edit-page.ui:359 src/gr-edit-page.ui:396
+msgid "15 to 30 minutes"
+msgstr "15 till 30 minuter"
+
+#: src/gr-edit-page.ui:360 src/gr-edit-page.ui:397
+msgid "30 to 45 minutes"
+msgstr "30 till 45 minuter"
+
+#: src/gr-edit-page.ui:361 src/gr-edit-page.ui:398
+msgid "45 minutes to an hour"
+msgstr "45 minuter till en timme"
+
+#: src/gr-edit-page.ui:362 src/gr-edit-page.ui:399
+msgid "More than an hour"
+msgstr "Mer än en timme"
+
+#: src/gr-edit-page.ui:375
+msgid "C_ooking Time"
+msgstr "Tillagnings_tid"
+
+#: src/gr-edit-page.ui:412
+msgid "_Cuisine"
+msgstr "_Kokkonst"
+
+#: src/gr-edit-page.ui:442
+msgid "_Meal"
+msgstr "_Måltid"
+
+#: src/gr-edit-page.ui:472
+msgid "S_eason"
+msgstr "År_stid"
+
+#: src/gr-edit-page.ui:502
+msgid "S_piciness"
+msgstr "K_ryddighet"
+
+#: src/gr-edit-page.ui:521 src/gr-spice-row.c:127
+msgid "Mild"
+msgstr "Mild"
+
+#: src/gr-edit-page.ui:522
+msgid "Somewhat spicy"
+msgstr "Delvis het"
+
+#: src/gr-edit-page.ui:523
+msgid "Hot"
+msgstr "Het"
+
+#: src/gr-edit-page.ui:524 src/gr-details-page.c:540 src/gr-spice-row.c:142
+msgid "Very spicy"
+msgstr "Väldigt het"
+
+#: src/gr-edit-page.ui:535
+msgid "Description"
+msgstr "Beskrivning"
+
+#: src/gr-edit-page.ui:593 src/gr-diet-row.c:102
+msgid "Gluten free"
+msgstr "Glutenfri"
+
+#: src/gr-edit-page.ui:599 src/gr-diet-row.c:105
+msgid "Nut free"
+msgstr "Nötfri"
+
+#: src/gr-edit-page.ui:605 src/gr-diet-row.c:108
+msgid "Vegan"
+msgstr "Vegan"
+
+#: src/gr-edit-page.ui:611 src/gr-diet-row.c:111
+msgid "Vegetarian"
+msgstr "Vegetarian"
+
+#: src/gr-edit-page.ui:617 src/gr-diet-row.c:114
+msgid "Milk free"
+msgstr "Mjölkfri"
+
+#: src/gr-edit-page.ui:704
+msgid "Edit"
+msgstr "Redigera"
+
+#: src/gr-edit-page.ui:711
+msgid "Preview"
+msgstr "Förhandsvisa"
+
+#: src/gr-edit-page.ui:732
+msgid "Add Step"
+msgstr "Lägg till steg"
+
+#: src/gr-edit-page.ui:740
+msgid "Add Image"
+msgstr "Lägg till bild"
+
+#: src/gr-edit-page.ui:748
+msgid "Add Timer"
+msgstr "Lägg till tidtagare"
+
+#: src/gr-edit-page.ui:756
+msgid "Add Temperature"
+msgstr "Lägg till temperatur"
+
+#: src/gr-edit-page.ui:820 src/gr-edit-page.ui:841 src/gr-edit-page.c:419
+msgid "Ingredient"
+msgstr "Ingrediens"
+
+#: src/gr-edit-page.ui:869 src/gr-edit-page.ui:961 src/gr-query-editor.ui:285
+msgid "Search…"
+msgstr "Sök…"
+
+#: src/gr-edit-page.ui:899 src/gr-edit-page.ui:920 src/gr-edit-page.c:420
+msgid "Amount"
+msgstr "Mängd"
+
+#: src/gr-edit-page.ui:992 src/gr-edit-page.c:423
+msgid "Add"
+msgstr "Lägg till"
+
+#: src/gr-edit-page.ui:1042
+msgid "Title…"
+msgstr "Titel…"
+
+#: src/gr-edit-page.ui:1116
+msgid "Syntax"
+msgstr "Syntax"
+
+#: src/gr-edit-page.ui:1131
+msgid "Use paragraphs to break directions into steps (2 newlines)."
+msgstr "Använda paragrafer för dela upp anvisningar i steg (2 nyrader)."
+
+#: src/gr-edit-page.ui:1144
+msgid "You can provide an image or a time counter in each step."
+msgstr "Du kan för varje steg tillhandahålla en bild eller tidstagare."
+
+#: src/gr-edit-page.ui:1156
+msgid "Timer"
+msgstr "Tidtagare"
+
+#: src/gr-edit-page.ui:1178
+msgid "Image"
+msgstr "Bild"
+
+#: src/gr-edit-page.ui:1200
+msgid "Temperature"
+msgstr "Temperatur"
+
+#: src/gr-list-page.ui:126
+msgid "There are no recipes here yet."
+msgstr "Det finns inga recept här än."
+
+#: src/gr-query-editor.ui:68 src/gr-query-editor.c:490
+#: src/gr-query-editor.c:679
+msgid "Any meal"
+msgstr "Någon måltid"
+
+#: src/gr-query-editor.ui:111
+msgid "Spiciness"
+msgstr "Kryddighet"
+
+#: src/gr-query-editor.ui:131 src/gr-query-editor.c:557
+#: src/gr-query-editor.c:708
+msgid "Any spiciness"
+msgstr "Valfri kryddighet"
+
+#: src/gr-query-editor.ui:174
+msgid "Dietary restrictions"
+msgstr "Begränsningar i diet"
+
+#: src/gr-query-editor.ui:194 src/gr-query-editor.c:406
+#: src/gr-query-editor.c:737
+msgid "No restrictions"
+msgstr "Inga begränsningar"
+
+#: src/gr-query-editor.ui:237 src/gr-edit-page.c:1634
+#: src/gr-recipe-formatter.c:68 src/gr-recipe-printer.c:243
+msgid "Ingredients"
+msgstr "Ingredienser"
+
+#. FIXME: repopulate
+#: src/gr-query-editor.ui:257 src/gr-query-editor.c:337
+#: src/gr-query-editor.c:766
+msgid "Anything"
+msgstr "Någonting"
+
+#: src/gr-recipe-small-tile.ui:126 src/gr-edit-page.c:1663
+msgid "Remove"
+msgstr "Ta bort"
+
+#: src/gr-recipes-page.ui:9
+msgid "Recipes page"
+msgstr "Receptsida"
+
+#: src/gr-recipes-page.ui:29
+msgid "Today"
+msgstr "Idag"
+
+#: src/gr-recipes-page.ui:105
+msgid "Editor’s Picks"
+msgstr "Redaktörens tips"
+
+#: src/gr-recipes-page.ui:131
+msgid "Categories"
+msgstr "Kategorier"
+
+#: src/gr-recipes-page.ui:232
+msgid "Featured GNOME Chefs"
+msgstr "GNOME-kockar i blickfånget"
+
+#: src/gr-search-page.ui:43
+msgid "Try a different search"
+msgstr "Prova en annan sökning"
+
+#: src/gr-shopping-page.ui:42
+msgid "Buy ingredients"
+msgstr "Köp ingredienser"
+
+#: src/gr-shopping-page.ui:94
+msgid "No shopping necessary!"
+msgstr "Ingen handling nödvändig."
+
+#: src/gr-shopping-page.ui:134
+msgid "_Clear List"
+msgstr "_Töm lista"
+
+#: src/gr-shopping-page.ui:190
+msgid "Nothing to add"
+msgstr "Inget att lägga till"
+
+#: src/gr-time-widget.ui:32
+msgid "Start"
+msgstr "Påbörja"
+
+#: src/gr-time-widget.ui:62
+msgid "Pause"
+msgstr "Pausa"
+
+#: src/gr-time-widget.ui:71
+msgid "Continue"
+msgstr "Fortsätt"
+
+#: src/gr-time-widget.ui:85
+msgid "Reset"
+msgstr "Återställ"
+
+#: src/gr-window.ui:23
+msgid "_New Recipe"
+msgstr "_Nytt recept"
+
+#: src/gr-window.ui:40
+msgid "Go back"
+msgstr "Gå tillbaka"
+
+#: src/gr-window.ui:97
+msgid "Search"
+msgstr "Sök"
+
+#: src/gr-window.ui:116
+msgid "_Start Cooking"
+msgstr "_Börja tillaga"
+
+#: src/gr-window.ui:191
+msgid "Ingredients to buy added."
+msgstr "Ingredienser för inhandling lades till."
+
+#: src/gr-window.ui:201
+msgid "View Shopping List"
+msgstr "Visa inhandlingslista"
+
+#: src/gr-window.ui:258
+msgid "Undo"
+msgstr "Ångra"
+
+#: src/gr-window.ui:318
+msgid "Send Update"
+msgstr "Skicka uppdatering"
+
+#: src/gr-window.ui:387 src/gr-window.c:306
+msgid "Cuisines"
+msgstr "Matkulturer"
+
+#: src/menus.ui:7
+msgid "_Import"
+msgstr "_Importera"
+
+#: src/menus.ui:12
+msgid "_Export All"
+msgstr "_Exportera alla"
+
+#: src/menus.ui:17
+msgid "_Chef Information"
+msgstr "_Kock-information"
+
+#: src/menus.ui:23
+msgid "_About"
+msgstr "_Om"
+
+#: src/menus.ui:27
+msgid "_What’s New"
+msgstr "_Vad är nytt"
+
+#: src/menus.ui:31
+msgid "_Report Issue"
+msgstr "_Rapportera problem"
+
+#: src/menus.ui:35
+msgid "_Quit"
+msgstr "_Avsluta"
+
+#: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:154
+#: src/gr-image-viewer.c:625 src/gr-recipe-exporter.c:168
+#: src/gr-shopping-page.c:727 src/gr-window.c:839
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: src/recipe-conflict-dialog.ui:18
+msgid "Rename"
+msgstr "Byt namn"
+
+#: src/recipe-conflict-dialog.ui:28
+msgid "A recipe with this name already exists."
+msgstr "Det finns redan ett recept med detta namn."
+
+#: src/recipe-export-dialog.ui:14
+msgid "_Close"
+msgstr "S_täng"
+
+#: src/recipe-export-dialog.ui:57
+msgid "Share with a friend"
+msgstr "Dela med en vän"
+
+#: src/recipe-export-dialog.ui:64
+msgid "Contribute to GNOME Recipes"
+msgstr "Bidra till GNOME Recept"
+
+#: src/recipe-whats-new-dialog.ui:8
+msgid "What’s New in Recipes"
+msgstr "Vad är nytt i Recept"
+
+# Tooltip för knappen "Built with Builder"
+#: src/gr-about-dialog.c:130
+msgid "Learn more about Builder"
+msgstr "Få reda på mer om Builder"
+
+#: src/gr-about-dialog.c:242 src/gr-about-dialog.c:325
+#: src/gr-about-dialog.c:327 src/gr-about-dialog.c:329
+#: src/gr-about-dialog.c:331 src/gr-about-dialog.c:333
+#: src/gr-about-dialog.c:335 src/gr-about-dialog.c:337
+#: src/gr-about-dialog.c:339 src/gr-about-dialog.c:341
+msgid "Unknown"
+msgstr "Okänd"
+
+#: src/gr-about-dialog.c:431
+msgid "Flatpak"
+msgstr "Flatpak"
+
+#: src/gr-about-dialog.c:434
+msgctxt "Flatpak metadata"
+msgid "Version"
+msgstr "Version"
+
+#: src/gr-about-dialog.c:437
+msgid "Application"
+msgstr "Program"
+
+#: src/gr-about-dialog.c:440 src/gr-about-dialog.c:449
+msgctxt "Flatpak metadata"
+msgid "ID"
+msgstr "ID"
+
+#: src/gr-about-dialog.c:441 src/gr-about-dialog.c:450
+msgctxt "Flatpak metadata"
+msgid "Architecture"
+msgstr "Arkitektur"
+
+#: src/gr-about-dialog.c:442 src/gr-about-dialog.c:451
+msgctxt "Flatpak metadata"
+msgid "Branch"
+msgstr "Gren"
+
+#: src/gr-about-dialog.c:443 src/gr-about-dialog.c:452
+msgctxt "Flatpak metadata"
+msgid "Commit"
+msgstr "Checka in"
+
+#: src/gr-about-dialog.c:446
+msgid "Runtime"
+msgstr "Exekveringsmiljö"
+
+#: src/gr-about-dialog.c:455 src/gr-about-dialog.c:519
+msgid "Bundled libraries"
+msgstr "Medskickade bibliotek"
+
+#: src/gr-about-dialog.c:485
+msgid "OS"
+msgstr "OS"
+
+#: src/gr-about-dialog.c:488
+msgctxt "OS metadata"
+msgid "Name"
+msgstr "Namn"
+
+#: src/gr-about-dialog.c:490
+msgctxt "OS metadata"
+msgid "Type"
+msgstr "Typ"
+
+#: src/gr-about-dialog.c:493 src/gr-about-dialog.c:495
+msgctxt "OS metadata"
+msgid "Desktop"
+msgstr "Skrivbord"
+
+#: src/gr-about-dialog.c:498
+msgid "System libraries"
+msgstr "Systembibliotek"
+
+#: src/gr-about-dialog.c:770 src/gr-about-dialog.c:797
+msgid "System"
+msgstr "System"
+
+#: src/gr-about-dialog.c:866
+msgid "translator-credits"
+msgstr ""
+"Josef Andersson <josef.andersson@fripost.se>\n"
+"\n"
+"Skicka synpunkter på översättningen till\n"
+"<tp-sv@listor.tp-sv.se>."
+
+#: src/gr-about-dialog.c:869
+msgid "Learn more about Recipes"
+msgstr "Få reda på mer om Recept"
+
+#: src/gr-about-dialog.c:876
+msgid "Recipes by"
+msgstr "Recept av"
+
+#: src/gr-account.c:110
+#, c-format
+msgid "Got an error from Account portal"
+msgstr "Fel från kontoportalen"
+
+#: src/gr-account.c:138
+msgid ""
+"Allow your personal information to be included with recipes you share with "
+"your friends."
+msgstr ""
+"Tillåt att din personliga information inkluderas med recept som du delar med "
+"dina vänner."
+
+#: src/gr-app.c:414
+msgid "Print the version and exit"
+msgstr "Skriv programversion och avsluta"
+
+#: src/gr-app.c:418
+msgid "Turn on verbose logging"
+msgstr "Slå på utförlig loggning"
+
+#: src/gr-chef-dialog.c:150 src/gr-image-viewer.c:621
+msgid "Select an Image"
+msgstr "Välj en bild"
+
+#: src/gr-chef-dialog.c:153 src/gr-image-viewer.c:624 src/gr-window.c:838
+msgid "Open"
+msgstr "Öppna"
+
+#: src/gr-chef-dialog.c:158 src/gr-image-viewer.c:629
+msgid "Image files"
+msgstr "Bildfiler"
+
+#: src/gr-chef-dialog.c:407
+msgid "New Chef"
+msgstr "Ny kock"
+
+#: src/gr-cooking-page.c:209
+msgid "Cooking"
+msgstr "Tillagning"
+
+#: src/gr-cooking-view.c:155
+#, c-format
+msgid "Step %d/%d"
+msgstr "Steg %d/%d"
+
+#: src/gr-cooking-view.c:161
+#, c-format
+msgid "Step %d"
+msgstr "Steg %d"
+
+#: src/gr-cooking-view.c:268
+msgid "GNOME Recipes"
+msgstr "GNOME Recept"
+
+#: src/gr-cooking-view.c:373
+msgid "A cooking timer has expired"
+msgstr "En tillagningstidtagare har gått ut"
+
+#: src/gr-cooking-view.c:391 src/gr-cooking-view.c:407
+#, c-format
+msgid "Timer for “%s” has expired."
+msgstr "Tidtagaren för ”%s” har gått ut."
+
+#: src/gr-cooking-view.c:405
+msgid "Timer is up!"
+msgstr "Tiden är slut!"
+
+#: src/gr-cuisine.c:45
+msgid "American"
+msgstr "Amerikansk"
+
+#: src/gr-cuisine.c:46
+msgid "Chinese"
+msgstr "Kinesisk"
+
+#: src/gr-cuisine.c:47
+msgid "Indian"
+msgstr "Indisk"
+
+#: src/gr-cuisine.c:48
+msgid "Italian"
+msgstr "Italiensk"
+
+#: src/gr-cuisine.c:49
+msgid "French"
+msgstr "Fransk"
+
+#: src/gr-cuisine.c:50
+msgid "Greek"
+msgstr "Grekisk"
+
+#: src/gr-cuisine.c:51
+msgid "Mediterranean"
+msgstr "Medelhavsmat"
+
+#: src/gr-cuisine.c:52
+msgid "Mexican"
+msgstr "Mexikansk"
+
+#: src/gr-cuisine.c:53
+msgid "Nordic"
+msgstr "Nordisk"
+
+#: src/gr-cuisine.c:54
+msgid "Turkish"
+msgstr "Turkisk"
+
+#: src/gr-cuisine.c:58
+msgid "American Cuisine"
+msgstr "Amerikansk kokkonst"
+
+#: src/gr-cuisine.c:59
+msgid "Chinese Cuisine"
+msgstr "Kinesisk kokkonst"
+
+#: src/gr-cuisine.c:60
+msgid "Indian Cuisine"
+msgstr "Indisk kokkonst"
+
+#: src/gr-cuisine.c:61
+msgid "Italian Cuisine"
+msgstr "Italiensk kokkonst"
+
+#: src/gr-cuisine.c:62
+msgid "French Cuisine"
+msgstr "Fransk kokkonst"
+
+#: src/gr-cuisine.c:63
+msgid "Greek Cuisine"
+msgstr "Grekisk kokkonst"
+
+#: src/gr-cuisine.c:64
+msgid "Mediterranean Cuisine"
+msgstr "Medelhavskokkonst"
+
+#: src/gr-cuisine.c:65
+msgid "Mexican Cuisine"
+msgstr "Mexikansk kokkonst"
+
+#: src/gr-cuisine.c:66
+msgid "Nordic Cuisine"
+msgstr "Nordisk kokkonst"
+
+#: src/gr-cuisine.c:67
+msgid "Turkish Cuisine"
+msgstr "Turkisk kokkonst"
+
+#: src/gr-cuisine.c:71
+msgid ""
+"The cuisine of the United States reflects its history. The European "
+"colonization of the Americas yielded the introduction of a number of "
+"ingredients and cooking styles to the latter. The various styles continued "
+"expanding well into the 19th and 20th centuries, proportional to the influx "
+"of immigrants from many foreign nations; such influx developed a rich "
+"diversity in food preparation throughout the country."
+msgstr ""
+"Matkulturen i USA reflekterar dess historia. Den europeiska koloniseringen "
+"av Amerika ledde till introduktionen av ett antal ingredienser och "
+"matlagningsstilar. De olika stilarna fortsatte att expandera långt in på "
+"1800- och 1900-talen, proportionellt mot inflödet av immigranter från många "
+"olika nationer; ett sådant inflöde utvecklade en rik variation i "
+"mattillagning över landet."
+
+#: src/gr-cuisine.c:76
+msgid ""
+"Chinese cuisine includes styles originating from the diverse regions of "
+"China, as well as from Chinese people in other parts of the world including "
+"most Asian nations. The history of Chinese cuisine in China stretches back "
+"for thousands of years and has changed from period to period and in each "
+"region according to climate, imperial fashions, and local preferences. Over "
+"time, techniques and ingredients from the cuisines of other cultures were "
+"integrated into the cuisine of the Chinese people due both to imperial "
+"expansion and from the trade with nearby regions in pre-modern times, and "
+"from Europe and the New World in the modern period."
+msgstr ""
+"Kinesisk matkultur inkluderar stilar som härstammar från olika regioner i "
+"Kina såväl som från kineser i andra delar av världen, inklusive de flesta "
+"asiatiska nationerna. Historien om matkultur i Kina sträcker sig tillbaka "
+"över tusentals år och har ändrats periodvis i varje region beroende på "
+"klimat, kejsarmode och vad som föredragits lokalt. Över tid har teknik och "
+"ingredienser från andra kulturers matkulturer integrerats i kinesiska "
+"folkets kokkonst beroende på imperiets expansion, i handel med närliggande "
+"regioner i förmodern tid och från Europa och den nya världen i modern tid."
+
+#: src/gr-cuisine.c:84
+msgid ""
+"Indian cuisine encompasses a wide variety of regional and traditional "
+"cuisines native to India. Given the range of diversity in soil type, "
+"climate, culture, ethnic group and occupations, these cuisines vary "
+"significantly from each other and use locally available spices, herbs, "
+"vegetables and fruits. Indian food is also heavily influenced by religious "
+"and cultural choices and traditions. There has also been Middle Eastern and "
+"Central Asian influence on North Indian cuisine from the years of Mughal "
+"rule. Indian cuisine has been and is still evolving, as a result of the "
+"nation’s cultural interactions with other societies."
+msgstr ""
+"Indisk matkultur omfattar ett brett register av regionala och traditionella "
+"kokkonster med ursprung från Indien. Givet omfånget av variation i jordtyp, "
+"klimat, kultur, etnisk grupp och ockupationer varierar matkulturen "
+"signifikant från varandra och använder lokalt tillgängliga kryddor, örter, "
+"grönsaker och frukt. Indisk mat är också kraftigt influerad av religiösa och "
+"kulturella val och traditioner. Det har också förekommit influenser från "
+"mellanöstern och centralasien på den nordindiska kokkonsten efter åren av "
+"Mughal-styre. Indisk matkultur fortsätter att utvecklas som ett resultat av "
+"nationens kulturella utbyte med andra samhällen."
+
+#: src/gr-cuisine.c:92
+msgid ""
+"Italian cuisine is characterized by its simplicity, with many dishes having "
+"only four to eight ingredients. Italian cooks rely chiefly on the quality of "
+"the ingredients rather than on elaborate preparation. Ingredients and dishes "
+"vary by region. Many dishes that were once regional, however, have "
+"proliferated with variations throughout the country."
+msgstr ""
+"Italiensk matkultur karakteriseras av dess enkelhet där många rätter bara "
+"har fyra till åtta ingredienser. Italienska kockar lutar sig starkt på "
+"kvaliteten av ingredienserna istället för omfattande tillagning. "
+"Ingredienser och rätter varierar efter region. Många rätter som en gång i "
+"tiden var regionala har utmynnat i variationer över hela landet."
+
+#: src/gr-cuisine.c:96
+msgid ""
+"French cuisine was codified in the 20th century by Auguste Escoffier to "
+"become the modern haute cuisine; Escoffier, however, left out much of the "
+"local culinary character to be found in the regions of France and was "
+"considered difficult to execute by home cooks. Gastro-tourism and the Guide "
+"Michelin helped to acquaint people with the rich bourgeois and peasant "
+"cuisine of the French countryside starting in the 20th century. Gascon "
+"cuisine has also had great influence over the cuisine in the southwest of "
+"France. Many dishes that were once regional have proliferated in variations "
+"across the country."
+msgstr ""
+"Fransk matkultur kodifierades på 1900-talet av Auguste Escoffier till att "
+"bli haute cuisine (\"högsta kokkonst\"); Escoffier utelämnade dock mycket av "
+"den lokala kulinariska karaktären som återfinns i Frankrikes regioner och "
+"som ansågs för svår att utföras av hemmakockar. Gastro-turism och "
+"Michelinguiden hjälpte i början av 1900-talet folk att vänja sig med "
+"kokkonsten från övre medelklass och bönder från franska landsbygden. Gascon-"
+"kokkonst har också haft en stor påverkan på kokkonsten i sydvästra "
+"Frankrike. Många rätter som en gång i tiden var regionala har utmynnat i "
+"variationer utöver landet."
+
+#: src/gr-cuisine.c:103
+msgid ""
+"Contemporary Greek cookery makes wide use of vegetables, olive oil, grains, "
+"fish, wine, and meat (white and red, including lamb, poultry, rabbit and "
+"pork). Other important ingredients include olives, cheese, eggplant "
+"(aubergine), zucchini (courgette), lemon juice, vegetables, herbs, bread and "
+"yoghurt. The most commonly used grain is wheat; barley is also used. Common "
+"dessert ingredients include nuts, honey, fruits, and filo pastry."
+msgstr ""
+"Samtida grekisk matkultur använder en bred variation av grönsaker, olivolja, "
+"korn, fisk, vin och kött (vitt och rött, inklusive lamm, fjäderfän, kanin "
+"och fläsk). Andra viktiga ingredienser inkluderar oliver, ost, äggplanta "
+"(aubergine), zucchini (courgette), citronjuice, grönsaker, örter, bröd och "
+"yoghurt. De vanligaste använda kornen är vete; korn används också. Vanliga "
+"dessertingredienser omfattar nötter, honung, frukter och filodeg."
+
+#: src/gr-cuisine.c:108
+msgid ""
+"The mediterranean cuisine has a lot to offer, and is legendary for being "
+"very healthy too. Expect to see olives, yoghurt and garlic."
+msgstr ""
+"Medelhavsmaten har massor att erbjuda och är legendarisk för att den också "
+"är hälsosam. Förvänta dig att se oliver, yoghurt och vitlök."
+
+#: src/gr-cuisine.c:109
+msgid ""
+"Mexican cuisine is primarily a fusion of indigenous Mesoamerican cooking "
+"with European, especially Spanish, elements added after the Spanish conquest "
+"of the Aztec Empire in the 16th century. The staples are native foods, such "
+"as corn, beans, avocados, tomatoes, and chili peppers, along with rice, "
+"which was brought by the Spanish. Europeans introduced a large number of "
+"other foods, the most important of which were meats from domesticated "
+"animals (beef, pork, chicken, goat, and sheep), dairy products (especially "
+"cheese), and various herbs and spices."
+msgstr ""
+"Mexikansk matkultur är huvudsakligen en blandning av infödd mesoamerikansk "
+"kokkonst med europeiska inslag, speciellt då spanska tillagda efter den "
+"spanska erövringen av Aztekriket på 1500-talet. Grunden är inhemsk mat som "
+"majs, bönor, avokado, tomater och chilipeppar tillsammans med ris, som tog "
+"dit av spanjorer. Européer introducerad ett stort antal andra maträtter, "
+"varav de viktigaste var kött från domesticerade djur (biff, fläsk, kyckling, "
+"get och får), mejeriprodukter (speciellt ost) och olika örter och kryddor."
+
+#: src/gr-cuisine.c:116
+msgid ""
+"Cooking in Denmark has always been inspired by foreign and continental "
+"practises and the use of imported tropical spices like cinnamon, cardamom, "
+"nutmeg and black pepper can be traced to the Danish cuisine of the Middle "
+"Ages and some even to the Vikings."
+msgstr ""
+"Matlagning i Danmark har alltid varit inspirerat av utländska och "
+"kontinentala sedvänjor, och användningen av importerade tropiska kryddor som "
+"kanel, kardemumma, muskot och svartpeppar kan spåras tillbaka till "
+"medeltidens danska kokkonst, och vissa till och med ända sedan vikingarna."
+
+#: src/gr-cuisine.c:117
+msgid ""
+"You can find a great variety of mouth watering dishes in Turkish cuisine, "
+"which is mostly the heritage of Ottoman cuisine. It is the mixture and "
+"refinement of Central Asian, Middle Eastern and Balkan cuisines. Therefore "
+"it is impossible to fit Turkish cuisine into a short list."
+msgstr ""
+"Du hittar en stor variation av aptitretande rätter i turkisk matkultur, som "
+"mestadels är arvet från ottomansk kokkonst. Det är en blandning och "
+"förfining av kokkonst från Centralasien, Medelhavet och Balkanområdet. Det "
+"är därför omöjligt att få med turkisk kokkonst i en kort lista."
+
+#: src/gr-details-page.c:323
+msgid "Could not find this recipe."
+msgstr "Kunde inte hitta detta recept."
+
+#: src/gr-details-page.c:583
+#, c-format
+msgid "Timer: %s"
+msgstr "Tidtagare: %s"
+
+#: src/gr-details-page.c:590
+#, c-format
+msgid "Image %d"
+msgstr "Bild %d"
+
+#: src/gr-details-page.c:733 src/gr-edit-page.c:1940
+#, c-format
+msgid "Recipe by %s"
+msgstr "Recept av %s"
+
+#: src/gr-diet.c:34
+msgid "Gluten-free recipes"
+msgstr "Glutenfria recept"
+
+#: src/gr-diet.c:37
+msgid "Nut-free recipes"
+msgstr "Nötfria recept"
+
+#: src/gr-diet.c:40
+msgid "Vegan recipes"
+msgstr "Veganrecept"
+
+#: src/gr-diet.c:43
+msgid "Vegetarian recipes"
+msgstr "Vegetariska recept"
+
+#: src/gr-diet.c:46
+msgid "Milk-free recipes"
+msgstr "Mjölkfria recept"
+
+#: src/gr-diet.c:49 src/gr-diet.c:78
+msgid "Other dietary restrictions"
+msgstr "Andra begränsningar i dieten"
+
+#: src/gr-diet.c:63
+msgid ""
+"A gluten-free diet is a diet that excludes gluten, a protein composite found "
+"in wheat, barley, rye, and all their species and hybrids (such as spelt, "
+"kamut, and triticale). The inclusion of oats in a gluten-free diet remains "
+"controversial. Avenin present in oats may also be toxic for coeliac people; "
+"its toxicity depends on the cultivar consumed. Furthermore, oats are "
+"frequently cross-contaminated with cereals containing gluten.\n"
+"<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free\">Learn more…</"
+"a>"
+msgstr ""
+"En glutenfri diet är en diet som exkluderar gluten, en proteinsammansättning "
+"som finns i vete, korn, råg och alla deras arter och hybrider (dinkel, "
+"kamutvete och rågvete). Inkluderingen av havre i en glutenfri diet är "
+"kontroversiell. Avenin i havre kan också vara giftig för glutenintoleranta "
+"personer; dess giftighet beror på konsumerad sort. Vidare har havre ofta "
+"kommit i kontakt med sädesslag som innehåller gluten.\n"
+"<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free\">Läs mer…</a>"
+
+#: src/gr-diet.c:66
+msgid ""
+"A tree nut allergy is a hypersensitivity to dietary substances from tree "
+"nuts and edible tree seeds causing an overreaction of the immune system "
+"which may lead to severe physical symptoms. Tree nuts include, but are not "
+"limited to, almonds, Brazil nuts, cashews, chestnuts, filberts/hazelnuts, "
+"macadamia nuts, pecans, pistachios, pine nuts, shea nuts and walnuts.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">Learn more…</a>"
+msgstr ""
+"Nötallergi är en födoämnesöverkänslighet för ätliga nötter och frön som "
+"orsakar en överreaktion i immunsystemet vilket kan leda till allvarliga "
+"fysiska symptom. Nötallergi omfattar, men begränsas inte till, mandlar, "
+"brasilianska nötter, cashewnötter, kastanjenötter, hasselnötter, "
+"macadamianötter, pekannötter, pistagenötter, pinjenötter, sheanötter och "
+"valnötter.\n"
+"<a href=\"https://sv.wikipedia.org/wiki/N%C3%B6tallergi\">Läs mer…</a>"
+
+#: src/gr-diet.c:69
+msgid ""
+"Veganism is both the practice of abstaining from the use of animal products, "
+"particularly in diet, and an associated philosophy that rejects the "
+"commodity status of animals.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Veganism\">Learn more…</a>"
+msgstr ""
+"Veganism är både läran om att avstå från användning av djurprodukter, "
+"speciellt i dieten, och en filosofi som avvisar användningen av djur som en "
+"råvara.\n"
+"<a href=\"https://sv.wikipedia.org/wiki/Veganism\">Läs mer…</a>"
+
+#: src/gr-diet.c:72
+msgid ""
+"Vegetarian cuisine is based on food that meets vegetarian standards by not "
+"including meat and animal tissue products (such as gelatin or animal-derived "
+"rennet). For lacto-ovo vegetarianism (the most common type of vegetarianism "
+"in the Western world), eggs and dairy products such as milk and cheese are "
+"permitted. For lacto vegetarianism, the earliest known type of vegetarianism "
+"(recorded in India), dairy products such as milk and cheese are permitted.\n"
+"The strictest forms of vegetarianism are veganism and fruitarianism, which "
+"exclude all animal products, including dairy products as well as honey, and "
+"even some refined sugars if filtered and whitened with bone char.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Vegetarianism\">Learn more…</a>"
+msgstr ""
+"Vegetarisk matkultur baseras på mat som uppfyller vegetariska standarder "
+"genom att inte inkludera kött eller produkter med djurvävnad (som gelatin "
+"eller djurbaserad löpe). För lakto-ovo-vegetarianer (den vanligaste typen av "
+"vegetarianism i väst) är ägg och mejeriprodukter som mjölk och ost "
+"tillåtna.\n"
+"Den striktaste formen av vegetarianism är veganism och frukterianism som "
+"exkluderar alla djurprodukter, inklusive mejeriprodukter såväl som honung, "
+"och även raffinerat socker om filtrerat och blekt med benkol.\n"
+"<a href=\"https://sv.wikipedia.org/wiki/Vegetarianism\">Läs mer…</a>"
+
+#: src/gr-diet.c:75
+msgid ""
+"Lactose intolerance is a condition in which people have symptoms due to the "
+"decreased ability to digest lactose, a sugar found in milk products. Those "
+"affected vary in the amount of lactose they can tolerate before symptoms "
+"develop. Symptoms may include abdominal pain, bloating, diarrhea, gas, and "
+"nausea. These typically start between half and two hours after drinking "
+"milk. Severity depends on the amount a person eats or drinks. It does not "
+"cause damage to the gastrointestinal tract.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Learn more…</a>"
+msgstr ""
+"Laktosintolerans är ett tillstånd i vilket personer har symptom som beror på "
+"en förminskad förmåga att bryta ned laktos, ett socker som finns i "
+"mjölkprodukter. Bland de som drabbas skiljer sig mängden laktos som kan tas "
+"upp innan symptom utvecklas. Symptom kan omfatta magsmärta, förstoppning, "
+"diarré, gaser och illamående. Dessa startar typiskt mellan en halvtimme till "
+"två timmar efter att ha druckit mjölk. Allvarlighetsgrad beror på mängden en "
+"person äter eller dricker. Det orsakar inte skada på mag-tarmkanalen.\n"
+"<a href=\"https://sv.wikipedia.org/wiki/Laktosintolerans\">Läs mer…</a>"
+
+#: src/gr-edit-page.c:469
+msgid "Apply"
+msgstr "Verkställ"
+
+#: src/gr-edit-page.c:1084
+msgid "hour"
+msgstr "timme"
+
+#: src/gr-edit-page.c:1085
+msgid "hours"
+msgstr "timmar"
+
+#: src/gr-edit-page.c:1086
+msgctxt "hour abbreviation"
+msgid "h"
+msgstr "t"
+
+#: src/gr-edit-page.c:1090
+msgid "minute"
+msgstr "minut"
+
+#: src/gr-edit-page.c:1091
+msgid "minutes"
+msgstr "minuter"
+
+#: src/gr-edit-page.c:1092
+msgctxt "minute abbreviation"
+msgid "min"
+msgstr "min"
+
+#: src/gr-edit-page.c:1093
+msgctxt "minute abbreviation"
+msgid "m"
+msgstr "m"
+
+#: src/gr-edit-page.c:1097
+msgid "second"
+msgstr "sekund"
+
+#: src/gr-edit-page.c:1098
+msgid "seconds"
+msgstr "sekunder"
+
+#: src/gr-edit-page.c:1099
+msgctxt "second abbreviation"
+msgid "sec"
+msgstr "sek"
+
+#: src/gr-edit-page.c:1100
+msgctxt "second abbreviation"
+msgid "s"
+msgstr "s"
+
+#: src/gr-edit-page.c:1275
+msgid "Recipe Author"
+msgstr "Receptupphovsman"
+
+#: src/gr-edit-page.c:1649
+msgid "Name of the List"
+msgstr "Namn på listan"
+
+#: src/gr-edit-page.c:1682
+msgid "No ingredients added yet"
+msgstr "Inga ingredienser tillagda än"
+
+#: src/gr-edit-page.c:1701
+msgid "Add Ingredient"
+msgstr "Lägg till ingrediens"
+
+#: src/gr-edit-page.c:1803
+msgid "Add List"
+msgstr "Lägg till lista"
+
+#: src/gr-edit-page.c:1823
+msgid "Name Your Recipe"
+msgstr "Namnge ditt recept"
+
+#: src/gr-edit-page.c:1997
+msgid "Name"
+msgstr "Namn"
+
+#: src/gr-edit-page.c:2107 src/gr-recipe-store.c:1091
+#, c-format
+msgid "You need to provide a name for the recipe"
+msgstr "Du måste ange ett namn för receptet"
+
+#: src/gr-image-viewer.c:615
+#, c-format
+msgid ""
+"Missing the desktop portals needed to open files from inside a flatpak "
+"sandbox. Please install xdg-desktop-portal and xdg-desktop-portal-gtk on "
+"your system."
+msgstr ""
+"Saknar skrivbordsportalerna som krävs för att öppna filer från inuti en "
+"flatpak-sandlåda. Installera xdg-desktop-portal och xdg-desktop-portal-gtk "
+"på ditt system."
+
+#: src/gr-list-page.c:235
+msgid "Gluten-free Recipes"
+msgstr "Glutenfria recept"
+
+#: src/gr-list-page.c:237
+msgid "Nut-free Recipes"
+msgstr "Nötfria recept"
+
+#: src/gr-list-page.c:239
+msgid "Vegan Recipes"
+msgstr "Veganrecept"
+
+#: src/gr-list-page.c:241
+msgid "Vegetarian Recipes"
+msgstr "Vegetariska recept"
+
+#: src/gr-list-page.c:243
+msgid "Milk-free Recipes"
+msgstr "Mjölkfria recept"
+
+#: src/gr-list-page.c:245
+msgid "Other Dietary Restrictions"
+msgstr "Andra begränsningar i dieten"
+
+#: src/gr-list-page.c:286
+#, c-format
+msgid "No %s found"
+msgstr "Fann inga %s"
+
+#: src/gr-list-page.c:289 src/gr-list-page.c:348 src/gr-list-page.c:379
+msgid "You could add one using the “New Recipe” button."
+msgstr "Du kan lägga till ett med knappen ”Nytt recept”."
+
+#: src/gr-list-page.c:337
+#, c-format
+msgid "Recipes by %s"
+msgstr "Recept av %s"
+
+#: src/gr-list-page.c:344
+#, c-format
+msgid "No recipes by chef %s found"
+msgstr "Hittade inga recept från kocken %s"
+
+#: src/gr-list-page.c:350 src/gr-list-page.c:418 src/gr-list-page.c:443
+#: src/gr-list-page.c:476
+msgid "Sorry about this."
+msgstr "Ber om ursäkta för detta."
+
+#: src/gr-list-page.c:376
+#, c-format
+msgid "No recipes for %s found"
+msgstr "Hittade inga recept för %s"
+
+#: src/gr-list-page.c:398
+msgid "No favorite recipes found"
+msgstr "Hittade inga favoritrecept"
+
+#: src/gr-list-page.c:399
+msgid "Use the ♥ button to mark recipes as favorites."
+msgstr "Använd knappen ♥ för att markera recept som favoriter."
+
+#: src/gr-list-page.c:442
+msgid "No new recipes"
+msgstr "Inga nya recept"
+
+#: src/gr-list-page.c:475
+msgid "No imported recipes found"
+msgstr "Hittade inga importerade recept"
+
+#: src/gr-meal.c:44
+msgid "Main Course"
+msgstr "Huvudrätt"
+
+#: src/gr-meal.c:45
+msgid "Snacks"
+msgstr "Tilltugg"
+
+#: src/gr-meal.c:46
+msgid "Breakfast"
+msgstr "Frukost"
+
+#: src/gr-meal.c:47
+msgid "Side Dishes"
+msgstr "Sidorätter"
+
+#: src/gr-meal.c:48
+msgid "Desserts"
+msgstr "Desserter"
+
+#: src/gr-meal.c:49
+msgid "Cake and Baking"
+msgstr "Tårta och bakning"
+
+#: src/gr-meal.c:50
+msgid "Drinks and Cocktails"
+msgstr "Drinkar och cocktails"
+
+#: src/gr-meal.c:51
+msgid "Pizza"
+msgstr "Pizza"
+
+#: src/gr-meal.c:52
+msgid "Pasta"
+msgstr "Pasta"
+
+#: src/gr-meal.c:53
+msgid "Other"
+msgstr "Övriga"
+
+#: src/gr-number.c:166 src/gr-number.c:183 src/gr-number.c:192
+#, c-format
+msgid "Could not parse %s as a fraction"
+msgstr "Det gick inte att tolka %s som en bråkdel"
+
+#: src/gr-number.c:216
+#, c-format
+msgid "Could not parse %s as a integer"
+msgstr "Det gick inte att tolka %s som ett heltal"
+
+#: src/gr-number.c:238
+#, c-format
+msgid "Could not parse %s as a float"
+msgstr "Det gick inte att tolka %s som ett flyttal"
+
+#: src/gr-number.c:286
+#, c-format
+msgid "Could not parse %s as a number"
+msgstr "Det gick inte att tolka %s som en siffra"
+
+#: src/gr-recipe-exporter.c:164
+msgid "Save the exported recipe"
+msgstr "Spara det exporterade receptet"
+
+#: src/gr-recipe-exporter.c:167 src/gr-shopping-page.c:726
+msgid "Save"
+msgstr "Spara"
+
+#: src/gr-recipe-exporter.c:198
+msgid "Recipe contribution"
+msgstr "Receptbidrag"
+
+#: src/gr-recipe-exporter.c:199
+msgid "Please accept my attached recipe contribution."
+msgstr "Vänligen acceptera mitt bifogade receptbidrag."
+
+#: src/gr-recipe-exporter.c:209
+msgid "Try this recipe"
+msgstr "Prova det här receptet"
+
+#: src/gr-recipe-exporter.c:210
+msgid ""
+"Hi,\n"
+"\n"
+"you should try this recipe."
+msgstr ""
+"Hej,\n"
+"\n"
+"du borde prova detta recept."
+
+#: src/gr-recipe-exporter.c:213
+msgid "Try these recipes"
+msgstr "Prova de här recepten"
+
+#: src/gr-recipe-exporter.c:214
+msgid ""
+"Hi,\n"
+"\n"
+"you should try these recipes."
+msgstr ""
+"Hej,\n"
+"\n"
+"du borde prova dessa recept."
+
+#: src/gr-recipe-exporter.c:217
+msgid "(The attached file can be imported into GNOME Recipes.)"
+msgstr "(Den bifogade filen kan importeras till GNOME Recept.)"
+
+#: src/gr-recipe-exporter.c:403
+#, c-format
+msgid "This build does not support exporting"
+msgstr "Denna version stödjer inte export"
+
+#: src/gr-recipe-exporter.c:485
+#, c-format
+msgid ""
+"Error while exporting:\n"
+"%s"
+msgstr ""
+"Fel under export:\n"
+"%s"
+
+#: src/gr-recipe-exporter.c:569
+#, c-format
+msgid "%d recipe selected for sharing"
+msgid_plural "%d recipes selected for sharing"
+msgstr[0] "%d recept valt för delning"
+msgstr[1] "%d recept valda för delning"
+
+#: src/gr-recipe-exporter.c:601
+msgid ""
+"Some of the selected recipes are included\n"
+"with GNOME Recipes. You should only contribute\n"
+"your own recipes."
+msgstr ""
+"Några av de valda recepten finns inkluderade\n"
+"med GNOME Recept. Bidra bara med dina\n"
+"egna recept."
+
+#: src/gr-recipe-formatter.c:54 src/gr-recipe-printer.c:209
+msgid "Author:"
+msgstr "Upphovsman:"
+
+#: src/gr-recipe-formatter.c:55 src/gr-recipe-printer.c:210
+msgid "Preparation:"
+msgstr "Förberedelser:"
+
+#: src/gr-recipe-formatter.c:56 src/gr-recipe-printer.c:211
+msgid "Cooking:"
+msgstr "Tillagning:"
+
+#: src/gr-recipe-formatter.c:57 src/gr-recipe-printer.c:212
+msgid "Serves:"
+msgstr "Portioner:"
+
+#: src/gr-recipe-importer.c:234
+#, c-format
+msgid ""
+"Error while importing recipe:\n"
+"%s"
+msgstr ""
+"Fel under import av receptet:\n"
+"%s"
+
+#: src/gr-recipe-importer.c:473
+#, c-format
+msgid "Failed to load recipe: Couldn’t parse Created key"
+msgstr "Misslyckades med att läsa in recept: Kunde inte tolka skapad-nyckel"
+
+#: src/gr-recipe-importer.c:484
+#, c-format
+msgid "Failed to load recipe: Couldn’t parse Modified key"
+msgstr "Misslyckades med att läsa in recept: Kunde inte tolka ändrad-nyckel"
+
+#: src/gr-recipe-importer.c:786
+#, c-format
+msgid "This build does not support importing"
+msgstr "Denna version stödjer inte import"
+
+#: src/gr-recipe-printer.c:464 src/gr-shopping-list-printer.c:297
+msgid "Error printing file:"
+msgstr "Fel vid utskrift av filen:"
+
+#: src/gr-recipe-printer.c:465 src/gr-shopping-list-printer.c:298
+msgid "No details"
+msgstr "Inga detaljer"
+
+#: src/gr-recipe-printer.c:493 src/gr-shopping-list-printer.c:329
+#, c-format
+msgid ""
+"Missing the desktop portals needed to print from inside a flatpak sandbox. "
+"Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system."
+msgstr ""
+"Saknar skrivbordsportalerna som krävs för att skriva ut från inuti en "
+"flatpak-sandlåda. Installera xdg-desktop-portal och xdg-desktop-portal-gtk "
+"på ditt system."
+
+#: src/gr-recipe-small-tile.c:99 src/gr-recipe-tile.c:80
+#, c-format
+msgid "by %s"
+msgstr "av %s"
+
+#: src/gr-recipe-small-tile.c:99 src/gr-recipe-tile.c:80
+msgid "Anonymous"
+msgstr "Anonym"
+
+#: src/gr-recipes-page.c:232
+msgid "My Recipes"
+msgstr "Mina recept"
+
+#: src/gr-recipes-page.c:237
+msgid "Favorites"
+msgstr "Favoriter"
+
+#: src/gr-recipes-page.c:242 src/gr-window.c:974
+msgid "All Recipes"
+msgstr "Alla recept"
+
+#: src/gr-recipes-page.c:247 src/gr-window.c:990
+msgid "New Recipes"
+msgstr "Nya recept"
+
+#: src/gr-recipes-page.c:281
+msgid "Last edited:"
+msgstr "Senast redigerad:"
+
+#: src/gr-recipes-page.c:383
+#, c-format
+msgid "Buy ingredients: <b>%s</b>"
+msgstr "Köp ingredienser: <b>%s</b>"
+
+#: src/gr-recipes-page.c:385
+#, c-format
+msgid "Buy ingredients: <b>%s and %s</b>"
+msgstr "Köp ingredienser: <b>%s och %s</b>"
+
+#: src/gr-recipes-page.c:387
+#, c-format
+msgid "Buy ingredients: <b>%s, %s and %d other</b>"
+msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
+msgstr[0] "Köp ingredienser: <b>%s, %s och %d annan</b>"
+msgstr[1] "Köp ingredienser: <b>%s, %s och %d andra</b>"
+
+#: src/gr-recipe-store.c:1096
+#, c-format
+msgid ""
+"A recipe with this name and author already exists.\n"
+"Please choose a different name"
+msgstr ""
+"Ett recept med detta namn och denna upphovsman finns redan.\n"
+"Använd ett annat namn"
+
+#: src/gr-recipe-store.c:1125
+#, c-format
+msgid "You need to provide an ID for the recipe"
+msgstr "Du måste ange ett ID för receptet"
+
+#: src/gr-recipe-store.c:1131
+#, c-format
+msgid "A recipe with this ID already exists"
+msgstr "Ett recept med detta ID existerar redan"
+
+#: src/gr-recipe-store.c:1282
+#, c-format
+msgid "You need to provide an ID"
+msgstr "Du måste ange ett ID"
+
+#: src/gr-recipe-store.c:1288
+#, c-format
+msgid "Sorry, this ID is taken"
+msgstr "Tyvärr, detta ID är taget"
+
+#: src/gr-recipe-store.c:1315
+#, c-format
+msgid "You need to provide an ID for the chef"
+msgstr "Du måste ange ett ID för kocken"
+
+#: src/gr-recipe-store.c:1321
+#, c-format
+msgid "A chef with this ID already exists"
+msgstr "En kock med detta ID existerar redan"
+
+#: src/gr-season.c:41
+msgid "Thanksgiving"
+msgstr "Tacksägelsedagen"
+
+#: src/gr-season.c:42
+msgid "Christmas"
+msgstr "Jul"
+
+#: src/gr-season.c:43
+msgid "New Years"
+msgstr "Nyår"
+
+#: src/gr-season.c:44
+msgid "Spring"
+msgstr "Vår"
+
+#: src/gr-season.c:45
+msgid "Summer"
+msgstr "Sommar"
+
+#: src/gr-season.c:46
+msgid "Fall"
+msgstr "Höst"
+
+#: src/gr-season.c:47
+msgid "Winter"
+msgstr "Vinter"
+
+#: src/gr-shopping-list-formatter.c:43 src/gr-shopping-list-printer.c:135
+#: src/gr-shopping-page.c:752
+msgid "Shopping List"
+msgstr "Inhandlingslista"
+
+#: src/gr-shopping-list-formatter.c:45
+msgid "For the following recipes:"
+msgstr "För följande recept:"
+
+#: src/gr-shopping-list-printer.c:144
+msgid "For the following recipes"
+msgstr "För följande recept"
+
+#: src/gr-shopping-list-printer.c:161
+msgid "Items"
+msgstr "Objekt"
+
+#: src/gr-shopping-page.c:101
+#, c-format
+msgid "%d ingredient marked for purchase"
+msgid_plural "%d ingredients marked for purchase"
+msgstr[0] "%d ingrediens markerad för inhandling"
+msgstr[1] "%d ingredienser markerade för inhandling"
+
+#: src/gr-shopping-page.c:120
+#, c-format
+msgid "Buy Ingredients (%d recipe)"
+msgid_plural "Buy Ingredients (%d recipes)"
+msgstr[0] "Köp ingredienser (%d recept)"
+msgstr[1] "Köp ingredienser (%d recept)"
+
+#: src/gr-shopping-page.c:125
+#, c-format
+msgid "%d Recipe marked for preparation"
+msgid_plural "%d Recipes marked for preparation"
+msgstr[0] "%d recept markerat för förberedelse"
+msgstr[1] "%d recept markerade för förberedelse"
+
+#: src/gr-shopping-page.c:723
+msgid "Save the shopping list"
+msgstr "Spara inköpslistan"
+
+#: src/gr-spice-row.c:131
+msgid "Mild or somewhat spicy"
+msgstr "Mild eller delvis het"
+
+#: src/gr-spice-row.c:133
+msgid "At least somewhat spicy"
+msgstr "Åtminstone delvis het"
+
+#: src/gr-spice-row.c:137
+msgid "At most hot"
+msgstr "På sin höjd het"
+
+#: src/gr-spice-row.c:139
+msgid "Hot or very spicy"
+msgstr "Väldigt het eller kryddig"
+
+#: src/gr-unit.c:40
+msgctxt "unit abbreviation"
+msgid "g"
+msgstr "g"
+
+#: src/gr-unit.c:40
+msgctxt "unit name"
+msgid "gram"
+msgstr "gram"
+
+#: src/gr-unit.c:41
+msgctxt "unit abbreviation"
+msgid "kg"
+msgstr "kg"
+
+#: src/gr-unit.c:41
+msgctxt "unit name"
+msgid "kilogram"
+msgstr "kilogram"
+
+#: src/gr-unit.c:42
+msgctxt "unit abbreviation"
+msgid "lb"
+msgstr "lb"
+
+#: src/gr-unit.c:42
+msgctxt "unit name"
+msgid "pound"
+msgstr "pund"
+
+#: src/gr-unit.c:43
+msgctxt "unit abbreviation"
+msgid "oz"
+msgstr "uns"
+
+#: src/gr-unit.c:43
+msgctxt "unit name"
+msgid "ounce"
+msgstr "uns"
+
+#: src/gr-unit.c:44
+msgctxt "unit abbreviation"
+msgid "l"
+msgstr "l"
+
+#: src/gr-unit.c:44
+msgctxt "unit name"
+msgid "liter"
+msgstr "liter"
+
+#: src/gr-unit.c:45
+msgctxt "unit abbreviation"
+msgid "dl"
+msgstr "dl"
+
+#: src/gr-unit.c:45
+msgctxt "unit name"
+msgid "deciliter"
+msgstr "deciliter"
+
+#: src/gr-unit.c:46
+msgctxt "unit abbreviation"
+msgid "ml"
+msgstr "ml"
+
+#: src/gr-unit.c:46
+msgctxt "unit name"
+msgid "milliliter"
+msgstr "milliliter"
+
+#: src/gr-unit.c:47
+msgctxt "unit abbreviation"
+msgid "fl oz"
+msgstr "fl uns"
+
+#: src/gr-unit.c:47
+msgctxt "unit name"
+msgid "fluid ounce"
+msgstr "flytande uns"
+
+#: src/gr-unit.c:48
+msgctxt "unit abbreviation"
+msgid "pt"
+msgstr "pt"
+
+#: src/gr-unit.c:48
+msgctxt "unit name"
+msgid "pint"
+msgstr "pint"
+
+#: src/gr-unit.c:49
+msgctxt "unit abbreviation"
+msgid "qt"
+msgstr "qt"
+
+#: src/gr-unit.c:49
+msgctxt "unit name"
+msgid "quart"
+msgstr "quart"
+
+#: src/gr-unit.c:50
+msgctxt "unit abbreviation"
+msgid "gal"
+msgstr "gal"
+
+#: src/gr-unit.c:50
+msgctxt "unit name"
+msgid "gallon"
+msgstr "gallon"
+
+#: src/gr-unit.c:51
+msgctxt "unit abbreviation"
+msgid "cup"
+msgstr "kopp"
+
+# https://sv.wikipedia.org/wiki/Kopp_(volym)
+#: src/gr-unit.c:51
+msgctxt "unit name"
+msgid "cup"
+msgstr "kopp"
+
+#: src/gr-unit.c:52
+msgctxt "unit abbreviation"
+msgid "tbsp"
+msgstr "msk"
+
+#: src/gr-unit.c:52
+msgctxt "unit name"
+msgid "tablespoon"
+msgstr "matsked"
+
+#: src/gr-unit.c:53
+msgctxt "unit abbreviation"
+msgid "tsp"
+msgstr "tsk"
+
+#: src/gr-unit.c:53
+msgctxt "unit name"
+msgid "teaspoon"
+msgstr "tesked"
+
+# osäker....
+#: src/gr-unit.c:54
+msgctxt "unit abbreviation"
+msgid "box"
+msgstr "krt"
+
+# osäker....
+#: src/gr-unit.c:54
+msgctxt "unit name"
+msgid "box"
+msgstr "kartong"
+
+#: src/gr-unit.c:55
+msgctxt "unit abbreviation"
+msgid "pkg"
+msgstr "pkt"
+
+#: src/gr-unit.c:55
+msgctxt "unit name"
+msgid "package"
+msgstr "paket"
+
+#: src/gr-unit.c:56
+msgctxt "unit abbreviation"
+msgid "glass"
+msgstr "glas"
+
+#: src/gr-unit.c:56
+msgctxt "unit name"
+msgid "glass"
+msgstr "glas"
+
+#: src/gr-unit.c:126
+#, c-format
+msgid "I don’t know this unit: %s"
+msgstr "Jag känner inte till denna enhet: %s"
+
+#: src/gr-utils.c:399
+#, c-format
+msgid "more than a year ago"
+msgstr "mer än ett år sedan"
+
+#: src/gr-utils.c:402 src/gr-utils.c:406
+#, c-format
+msgid "%d month ago"
+msgid_plural "%d months ago"
+msgstr[0] "%d månad sedan"
+msgstr[1] "%d månader sedan"
+
+#: src/gr-utils.c:410
+#, c-format
+msgid "%d day ago"
+msgid_plural "%d days ago"
+msgstr[0] "%d dag sedan"
+msgstr[1] "%d dagar sedan"
+
+#: src/gr-utils.c:413
+#, c-format
+msgid "just now"
+msgstr "just nu"
+
+#: src/gr-utils.c:415
+#, c-format
+msgid "10 minutes ago"
+msgstr "10 minuter sedan"
+
+#: src/gr-utils.c:417
+#, c-format
+msgid "half an hour ago"
+msgstr "en halvtimme sedan"
+
+#: src/gr-utils.c:421
+#, c-format
+msgid "%d hour ago"
+msgid_plural "%d hours ago"
+msgstr[0] "%d timme sedan"
+msgstr[1] "%d timmar sedan"
+
+#: src/gr-utils.c:427
+msgid "some time ago"
+msgstr "ett tag sedan"
+
+#: src/gr-window.c:186
+msgid "Add a New Recipe"
+msgstr "Lägg till ett nytt recept"
+
+#: src/gr-window.c:530
+#, c-format
+msgid "Recipe “%s” deleted"
+msgstr "Receptet ”%s” togs bort"
+
+#: src/gr-window.c:580
+#, c-format
+msgid "You updated your contributed “%s” recipe. Send an update?"
+msgstr ""
+"Du uppdaterade ditt recept ”%s” som du bidragit med. Skicka en uppdatering?"
+
+#: src/gr-window.c:763
+msgid "Imported Recipes"
+msgstr "Importerade recept"
+
+#: src/gr-window.c:809
+msgid "My Chef Information"
+msgstr "Min kockinformation"
+
+#: src/gr-window.c:835
+msgid "Select a recipe file"
+msgstr "Välj en receptfil"
+
+#: src/gr-window.c:861
+#, c-format
+msgid "Recipes have been exported to “%s”"
+msgstr "Recept har exporterats till ”%s”"
+
+#: src/gr-window.c:899
+msgid "Select a file"
+msgstr "Välj en fil"
+
+#: src/gr-window.c:902
+msgid "_Export"
+msgstr "_Exportera"
+
+#: src/gr-window.c:941
+#, c-format
+msgid "Chefs: %s"
+msgstr "Kockar: %s"
+
+#: src/gr-window.c:958
+msgid "Favorite Recipes"
+msgstr "Favoritrecept"
+
+#: src/gr-window.c:1022
+msgid "Buy Ingredients"
+msgstr "Inhandla ingredienser"
+
+#: src/gr-window.c:1040
+msgid "My own Recipes"
+msgstr "Mina egna recept"
+
+#. TRANSLATORS: %s gets replaced by a version number
+#: src/gr-window.c:1222
+#, c-format
+msgid "Recipes %s"
+msgstr "Recept %s"
+
+#. TRANSLATORS: %s gets replaced by a date
+#: src/gr-window.c:1237
+#, c-format
+msgid "Released: %s"
+msgstr "Utgiven: %s"
+
+#: src/gr-window.c:1263
+msgid "Report Issue"
+msgstr "Rapportera problem"
+
+#: src/ingredients.inc:1
+msgid "Almond"
+msgstr "Mandel"
+
+#: src/ingredients.inc:2
+msgid "Amaretti"
+msgstr "Amaretti"
+
+#: src/ingredients.inc:3
+msgid "Anchovies"
+msgstr "Ansjovis"
+
+#: src/ingredients.inc:4
+msgid "Apple"
+msgstr "Äpple"
+
+#: src/ingredients.inc:5
+msgid "Apricot"
+msgstr "Aprikos"
+
+#: src/ingredients.inc:6
+msgid "Artichoke"
+msgstr "Kronärtskocka"
+
+#: src/ingredients.inc:7
+msgid "Asparagus"
+msgstr "Sparris"
+
+#: src/ingredients.inc:8
+msgid "Aubergine"
+msgstr "Aubergine"
+
+#: src/ingredients.inc:9
+msgid "Bacon"
+msgstr "Bacon"
+
+#: src/ingredients.inc:10
+msgid "Bagel"
+msgstr "Bagel"
+
+#: src/ingredients.inc:11
+msgid "Baked beans"
+msgstr "Vita bönor i tomatsås"
+
+#: src/ingredients.inc:12
+msgid "Baking powder"
+msgstr "Bakpulver"
+
+#: src/ingredients.inc:13
+msgid "Banana"
+msgstr "Banan"
+
+#: src/ingredients.inc:14
+msgid "Basil"
+msgstr "Basilika"
+
+#: src/ingredients.inc:15
+msgid "Basmati rice"
+msgstr "Basmatiris"
+
+#: src/ingredients.inc:16
+msgid "Bay leaf"
+msgstr "Lagerblad"
+
+#: src/ingredients.inc:17
+msgid "Beans"
+msgstr "Bönor"
+
+#: src/ingredients.inc:18
+msgid "Beef mince"
+msgstr "Köttfärs"
+
+#: src/ingredients.inc:19
+msgid "Beef sausage"
+msgstr "Köttkorv"
+
+#: src/ingredients.inc:20
+msgid "Beef stock"
+msgstr "Köttbuljong"
+
+#: src/ingredients.inc:21
+msgid "Beetroot"
+msgstr "Rödbeta"
+
+#: src/ingredients.inc:22
+msgid "Berry"
+msgstr "Bär"
+
+#: src/ingredients.inc:23
+msgid "Biscotti"
+msgstr "Småkakor"
+
+#: src/ingredients.inc:24
+msgid "Bilberry"
+msgstr "Blåbär"
+
+#: src/ingredients.inc:25
+msgid "Butter"
+msgstr "Smör"
+
+#: src/ingredients.inc:26
+msgid "Carrot"
+msgstr "Morot"
+
+#: src/ingredients.inc:27
+msgid "Cheese"
+msgstr "Ost"
+
+#: src/ingredients.inc:28
+msgid "Cherries, pitted"
+msgstr "Körsbär, urkärnade"
+
+#: src/ingredients.inc:29
+msgid "Chocolate frosting"
+msgstr "Chokladglasyr"
+
+#: src/ingredients.inc:30
+msgid "Cilantro"
+msgstr "Koriander"
+
+#: src/ingredients.inc:31
+msgid "Cocoa powder"
+msgstr "Kakaopulver"
+
+#: src/ingredients.inc:32
+msgid "Couscous"
+msgstr "Couscous"
+
+#: src/ingredients.inc:33
+msgid "Date"
+msgstr "Dadel"
+
+#: src/ingredients.inc:34
+msgid "Egg"
+msgstr "Ägg"
+
+#: src/ingredients.inc:35
+msgid "Fig"
+msgstr "Fikon"
+
+#: src/ingredients.inc:36
+msgid "Flour"
+msgstr "Mjöl"
+
+#: src/ingredients.inc:37
+msgid "Garlic"
+msgstr "Vitlök"
+
+#: src/ingredients.inc:38
+msgid "Ground beef"
+msgstr "Köttfärs"
+
+#: src/ingredients.inc:39
+msgid "Honey"
+msgstr "Honung"
+
+#: src/ingredients.inc:40
+msgid "Lemon"
+msgstr "Citron"
+
+#: src/ingredients.inc:41
+msgid "Linseeds"
+msgstr "Linfrön"
+
+#: src/ingredients.inc:42
+msgid "Mayonnaise"
+msgstr "Majonnäs"
+
+#: src/ingredients.inc:43
+msgid "Milk"
+msgstr "Mjölk"
+
+#: src/ingredients.inc:44
+msgid "Mustard"
+msgstr "Senap"
+
+#: src/ingredients.inc:45
+msgid "Oatmeal"
+msgstr "Havregryn"
+
+#: src/ingredients.inc:46
+msgid "Oil"
+msgstr "Olja"
+
+#: src/ingredients.inc:47
+msgid "Onion"
+msgstr "Lök"
+
+#: src/ingredients.inc:48
+msgid "Olive oil, extra-virgin"
+msgstr "Olivolja, extra jungfru"
+
+#: src/ingredients.inc:49
+msgid "Orange"
+msgstr "Apelsin"
+
+#: src/ingredients.inc:50
+msgid "Parsley"
+msgstr "Persilja"
+
+#: src/ingredients.inc:51
+msgid "Peperoni"
+msgstr "Feferoni"
+
+#: src/ingredients.inc:52
+msgid "Pepper"
+msgstr "Peppar"
+
+# Troligen paprika som avses, kallas "peppers" i brittisk engelska.
+#: src/ingredients.inc:53
+msgid "Peppers"
+msgstr "Paprika"
+
+#: src/ingredients.inc:54
+msgid "Pizza sauce"
+msgstr "Pizzasås"
+
+#: src/ingredients.inc:55
+msgid "Potato"
+msgstr "Potatis"
+
+#: src/ingredients.inc:56
+msgid "Pumpkin seeds"
+msgstr "Pumpafrön"
+
+#: src/ingredients.inc:57
+msgid "Salt"
+msgstr "Salt"
+
+#: src/ingredients.inc:58
+msgid "Soy sauce"
+msgstr "Sojasås"
+
+#: src/ingredients.inc:59
+msgid "Sugar"
+msgstr "Socker"
+
+#: src/ingredients.inc:60
+msgid "Sunflower seeds"
+msgstr "Solroskärnor"
+
+#: src/ingredients.inc:61
+msgid "Squash"
+msgstr "Squash"
+
+#: src/ingredients.inc:62
+msgid "Tangerine"
+msgstr "Tangerin"
+
+#: src/ingredients.inc:63
+msgid "Tofu"
+msgstr "Tofu"
+
+#: src/ingredients.inc:64
+msgid "Tomato"
+msgstr "Tomat"
+
+#: src/ingredients.inc:65
+msgid "Turmeric, ground"
+msgstr "Gurkmeja, mald"
+
+#: src/ingredients.inc:66
+msgid "Vanilla sugar"
+msgstr "Vaniljsocker"
+
+#: src/ingredients.inc:67
+msgid "Vanilla pudding"
+msgstr "Vaniljpudding"
+
+#: src/ingredients.inc:68
+msgid "Vinegar"
+msgstr "Vinäger"
+
+#: src/ingredients.inc:69
+msgid "Water"
+msgstr "Vatten"
+
+#: src/ingredients.inc:70
+msgid "Wine"
+msgstr "Vin"
+
+#: src/ingredients.inc:71
+msgid "Yeast"
+msgstr "Jäst"
+
+#: src/ingredients.inc:72
+msgid "Yoghurt"
+msgstr "Yoghurt"
+
+#: src/ingredients.inc:73
+msgid "Zinfandel"
+msgstr "Zinfandel"
+
+#: src/no-ingredients.inc:1
+msgid "no Almond"
+msgstr "ingen mandel"
+
+#: src/no-ingredients.inc:2
+msgid "no Amaretti"
+msgstr "ingen amaretti"
+
+#: src/no-ingredients.inc:3
+msgid "no Anchovies"
+msgstr "ingen ansjovis"
+
+#: src/no-ingredients.inc:4
+msgid "no Apple"
+msgstr "inget äpple"
+
+#: src/no-ingredients.inc:5
+msgid "no Apricot"
+msgstr "ingen aprikos"
+
+#: src/no-ingredients.inc:6
+msgid "no Artichoke"
+msgstr "ingen kronärtskocka"
+
+#: src/no-ingredients.inc:7
+msgid "no Asparagus"
+msgstr "ingen sparris"
+
+#: src/no-ingredients.inc:8
+msgid "no Aubergine"
+msgstr "ingen aubergine"
+
+#: src/no-ingredients.inc:9
+msgid "no Bacon"
+msgstr "inget bacon"
+
+#: src/no-ingredients.inc:10
+msgid "no Bagel"
+msgstr "ingen bagel"
+
+#: src/no-ingredients.inc:11
+msgid "no Baked beans"
+msgstr "inga vita bönor i tomatsås"
+
+#: src/no-ingredients.inc:12
+msgid "no Baking powder"
+msgstr "inget bakpulver"
+
+#: src/no-ingredients.inc:13
+msgid "no Banana"
+msgstr "ingen banan"
+
+#: src/no-ingredients.inc:14
+msgid "no Basil"
+msgstr "ingen basilika"
+
+#: src/no-ingredients.inc:15
+msgid "no Basmati rice"
+msgstr "inget basmatiris"
+
+#: src/no-ingredients.inc:16
+msgid "no Bay leaf"
+msgstr "inga lagerblad"
+
+#: src/no-ingredients.inc:17
+msgid "no Beans"
+msgstr "inga bönor"
+
+#: src/no-ingredients.inc:18
+msgid "no Beef mince"
+msgstr "ingen köttfärs"
+
+#: src/no-ingredients.inc:19
+msgid "no Beef sausage"
+msgstr "ingen köttkorv"
+
+#: src/no-ingredients.inc:20
+msgid "no Beef stock"
+msgstr "ingen köttbuljong"
+
+#: src/no-ingredients.inc:21
+msgid "no Beetroot"
+msgstr "ingen rödbeta"
+
+#: src/no-ingredients.inc:22
+msgid "no Berry"
+msgstr "inga bär"
+
+#: src/no-ingredients.inc:23
+msgid "no Biscotti"
+msgstr "ingen småkaka"
+
+#: src/no-ingredients.inc:24
+msgid "no Bilberry"
+msgstr "inga blåbär"
+
+#: src/no-ingredients.inc:25
+msgid "no Butter"
+msgstr "inget smör"
+
+#: src/no-ingredients.inc:26
+msgid "no Carrot"
+msgstr "ingen morot"
+
+#: src/no-ingredients.inc:27
+msgid "no Cheese"
+msgstr "ingen ost"
+
+#: src/no-ingredients.inc:28
+msgid "no Cherries, pitted"
+msgstr "inga körsbär, urkärnade"
+
+#: src/no-ingredients.inc:29
+msgid "no Chocolate frosting"
+msgstr "ingen chokladglasyr"
+
+#: src/no-ingredients.inc:30
+msgid "no Cilantro"
+msgstr "ingen koriander"
+
+#: src/no-ingredients.inc:31
+msgid "no Cocoa powder"
+msgstr "inget kakaopulver"
+
+#: src/no-ingredients.inc:32
+msgid "no Couscous"
+msgstr "ingen couscous"
+
+#: src/no-ingredients.inc:33
+msgid "no Date"
+msgstr "ingen dadel"
+
+#: src/no-ingredients.inc:34
+msgid "no Egg"
+msgstr "inget ägg"
+
+#: src/no-ingredients.inc:35
+msgid "no Fig"
+msgstr "inga fikon"
+
+#: src/no-ingredients.inc:36
+msgid "no Flour"
+msgstr "inget mjöl"
+
+#: src/no-ingredients.inc:37
+msgid "no Garlic"
+msgstr "ingen vitlök"
+
+#: src/no-ingredients.inc:38
+msgid "no Ground beef"
+msgstr "ingen köttfärs"
+
+#: src/no-ingredients.inc:39
+msgid "no Honey"
+msgstr "ingen honung"
+
+#: src/no-ingredients.inc:40
+msgid "no Lemon"
+msgstr "ingen citron"
+
+#: src/no-ingredients.inc:41
+msgid "no Linseeds"
+msgstr "inga linfrön"
+
+#: src/no-ingredients.inc:42
+msgid "no Mayonnaise"
+msgstr "ingen majonnäs"
+
+#: src/no-ingredients.inc:43
+msgid "no Milk"
+msgstr "ingen mjölk"
+
+#: src/no-ingredients.inc:44
+msgid "no Mustard"
+msgstr "ingen senap"
+
+#: src/no-ingredients.inc:45
+msgid "no Oatmeal"
+msgstr "inga havregryn"
+
+#: src/no-ingredients.inc:46
+msgid "no Oil"
+msgstr "ingen olja"
+
+#: src/no-ingredients.inc:47
+msgid "no Onion"
+msgstr "ingen lök"
+
+#: src/no-ingredients.inc:48
+msgid "no Olive oil, extra-virgin"
+msgstr "ingen olivolja, extra jungfru"
+
+#: src/no-ingredients.inc:49
+msgid "no Orange"
+msgstr "ingen apelsin"
+
+#: src/no-ingredients.inc:50
+msgid "no Parsley"
+msgstr "ingen persilja"
+
+#: src/no-ingredients.inc:51
+msgid "no Peperoni"
+msgstr "ingen feferoni"
+
+#: src/no-ingredients.inc:52
+msgid "no Pepper"
+msgstr "ingen peppar"
+
+# Troligen paprika som avses, kallas
+# "peppers" i brittisk engelska.
+#: src/no-ingredients.inc:53
+msgid "no Peppers"
+msgstr "ingen paprika"
+
+#: src/no-ingredients.inc:54
+msgid "no Pizza sauce"
+msgstr "ingen pizzasås"
+
+#: src/no-ingredients.inc:55
+msgid "no Potato"
+msgstr "ingen potatis"
+
+#: src/no-ingredients.inc:56
+msgid "no Pumpkin seeds"
+msgstr "inga pumpafrön"
+
+#: src/no-ingredients.inc:57
+msgid "no Salt"
+msgstr "inget salt"
+
+#: src/no-ingredients.inc:58
+msgid "no Soy sauce"
+msgstr "ingen sojasås"
+
+#: src/no-ingredients.inc:59
+msgid "no Sugar"
+msgstr "inget socker"
+
+#: src/no-ingredients.inc:60
+msgid "no Sunflower seeds"
+msgstr "inga solroskärnor"
+
+#: src/no-ingredients.inc:61
+msgid "no Squash"
+msgstr "ingen squash"
+
+#: src/no-ingredients.inc:62
+msgid "no Tangerine"
+msgstr "ingen tangerin"
+
+#: src/no-ingredients.inc:63
+msgid "no Tofu"
+msgstr "ingen tofu"
+
+#: src/no-ingredients.inc:64
+msgid "no Tomato"
+msgstr "ingen tomat"
+
+#: src/no-ingredients.inc:65
+msgid "no Turmeric, ground"
+msgstr "ingen gurkmeja, mald"
+
+#: src/no-ingredients.inc:66
+msgid "no Vanilla sugar"
+msgstr "inget vaniljsocker"
+
+#: src/no-ingredients.inc:67
+msgid "no Vanilla pudding"
+msgstr "ingen vaniljpudding"
+
+#: src/no-ingredients.inc:68
+msgid "no Vinegar"
+msgstr "ingen vinäger"
+
+#: src/no-ingredients.inc:69
+msgid "no Water"
+msgstr "inget vatten"
+
+#: src/no-ingredients.inc:70
+msgid "no Wine"
+msgstr "inget vin"
+
+#: src/no-ingredients.inc:71
+msgid "no Yeast"
+msgstr "ingen jäst"
+
+#: src/no-ingredients.inc:72
+msgid "no Yoghurt"
+msgstr "ingen yoghurt"
+
+#: src/no-ingredients.inc:73
+msgid "no Zinfandel"
+msgstr "ingen zinfandel"
+
+#: src/segments.inc:1
+msgid "Dough"
+msgstr "Deg"
+
+#: src/segments.inc:2
+msgid "Toppings"
+msgstr "Topping"
+
+#~ msgid "_My Chef Information"
+#~ msgstr "_Min kockinformation"
+
+#~ msgid "Canel"
+#~ msgstr "Avbryt"
+
+#~ msgid "Adrià is originally from Barcelona, Spain."
+#~ msgstr "Adrià härstammar från början från Barcelona, Spanien."
+
+#~ msgid ""
+#~ "Being from Strasbourg, Alexandre is knowledgeable about both Alsatian and "
+#~ "French cuisine, but he's not afraid to experiment in other ones as well."
+#~ msgstr ""
+#~ "Kommandes från Strasbourg har Alexandre stor kunskap om både Alsatian och "
+#~ "Fransk kokkonst, men han är inte heller rädd för att experimentera med "
+#~ "andra."
+
+#~ msgid "Aviation, making stuff, in Finland."
+#~ msgstr "Flyg, tillverka saker, i Finland."
+
+#~ msgid ""
+#~ "Erusan is an American who has lived all over the country, loves GNOME, "
+#~ "and enjoys cooking — primarily American, Asian, and Indian cuisine."
+#~ msgstr ""
+#~ "Erusan är en amerikan som har bott överallt i landet, älskar GNOME och "
+#~ "gillar matlagning - huvudsakligen amerikanskt, asiatiskt och indiskt."
+
+#~ msgid "I cook a lot, particularly Italian and Indian."
+#~ msgstr "Jag lagar en hel del, speciellt italienskt och indiskt."
+
+#~ msgid "The nordic cuisine maestro."
+#~ msgstr "Läran om den nordiska  kokkonsten."
+
+#~ msgid ""
+#~ "Ray is a Desktop Software Engineer at Red Hat and vegetarian who "
+#~ "occasionally enjoys cooking."
+#~ msgstr ""
+#~ "Ray är en mjukvaruingenjör för skrivbordet på Red Hat och en vegetarian "
+#~ "som ibland gillar matlagning."
+
+#~ msgid ""
+#~ "My name is Fredrik Fyksen. I am from Norway, but live in Denmark. I like "
+#~ "food, computers and music. You can read more about me at <a href="
+#~ "\"https://www.fyksen.me/\">fyksen.me</a>."
+#~ msgstr ""
+#~ "Mitt namn är Fredrik Fyksen. Jag är från Norge, men bor i Danmark. Jag "
+#~ "gillar mat, datorer och musik. Du kan läsa mer om mig på <a href="
+#~ "\"https://www.fyksen.me/\">fyksen.me</a>."
+
+#~ msgid ""
+#~ "Matthias is a manager in the Desktop team at Red Hat. He likes to cook as "
+#~ "much as he likes to code."
+#~ msgstr ""
+#~ "Matthias är en chef på Red Hats skrivbordsteam. Han gillar att laga mat "
+#~ "lika mycket som att programmera."
+
+#~ msgid "Matthew is a vegan and a Computer Science student who loves FOSS."
+#~ msgstr "Matthew är vegan, datavetenskapsstudent och älskar FOSS."
+
+#~ msgid "Elvin lives in Istanbul."
+#~ msgstr "Elvin bor i Istanbul."
+
+#~ msgid "He cooks with GTK+"
+#~ msgstr "Han lagar mat med GTK+."
+
+#~ msgid "Carbonara"
+#~ msgstr "Carbonara"
+
+#~ msgid ""
+#~ "\"Carbonara\" is a sauce that can be used with long pasta, like spaghetti "
+#~ "or fettuccine."
+#~ msgstr ""
+#~ "”Carbonara” är en röra som kan användas med lång pasta, som spagetti "
+#~ "eller fettucine."
+
+#~ msgid "Start by boiling about 1 litre of water for each 100g of pasta."
+#~ msgstr ""
+#~ "Börja med att koka upp ungefär en liter vatten för var 100:e gram pasta."
+
+#~ msgid "[image:1]"
+#~ msgstr "[image:1]"
+
+#~ msgid ""
+#~ "Once the water is boiling, pour 20g of coarse salt in it for every litre "
+#~ "of water, and then throw the spaghetti in."
+#~ msgstr ""
+#~ "När vattnet väl kokar, häll i 20g salt i det för var liter vatten och "
+#~ "kasta sedan i spagettin."
+
+#~ msgid ""
+#~ "While the pasta is cooking, take a large bowl and put the parmesan cheese "
+#~ "in it."
+#~ msgstr ""
+#~ "Medan pastan kokar, ta fram en stor skål och lägg parmesanosten i den."
+
+#~ msgid "[image:2]"
+#~ msgstr "[image:2]"
+
+#~ msgid ""
+#~ "Add the whole egg and the yolks to the parmesan, and beat the eggs until "
+#~ "you get a creamy sauce."
+#~ msgstr ""
+#~ "Lägg till hela ägget och gulorna till parmesanen och vispa äggen tills du "
+#~ "har fått en krämig sås."
+
+#~ msgid "[image:3]"
+#~ msgstr "[image:3]"
+
+#~ msgid ""
+#~ "Put the guanciale in a small pan with a teaspoon of oil, and shallow fry "
+#~ "it until the fat is transparent and the meat is crispy; then remove from "
+#~ "the fire."
+#~ msgstr ""
+#~ "Lägg i guancialen i en liten stekpanna med en tesked olja, och grundstek "
+#~ "den tills fettet är transparent och köttet är knaprigt; ta sedan bort den "
+#~ "från hettan."
+
+#~ msgid "[image:5]"
+#~ msgstr "[image:5]"
+
+#~ msgid ""
+#~ "Once the pasta is ready, drain it and add it to the eggs and cheese. "
+#~ "Then, add the guanciale."
+#~ msgstr ""
+#~ "När väl pastan är klar, dränera den och lägg till den till äggen och "
+#~ "osten. Lägg sedan till guanciale."
+
+#~ msgid "[image:6]"
+#~ msgstr "[image:6]"
+
+#~ msgid "Season with salt and pepper to your liking."
+#~ msgstr "Krydda med salt och peppar utefter tycke."
+
+#~ msgid "Roots Pie"
+#~ msgstr "Rotpaj"
+
+#~ msgid "[image:12]Turn on the oven at 200 ℃."
+#~ msgstr "[image:12]Slå på ugnen till 200 ℃."
+
+#~ msgid "[timer:00:15:00]Pre-bake the dough for 15 minutes in the oven."
+#~ msgstr "[timer:00:15:00]Förbaka degen  i 15 minuter i ugnen."
+
+#~ msgid "[timer:00:35:00]Bake the pie in the oven for 35 minutes."
+#~ msgstr "[timer:00:35:00]Baka pajen i ugnen i 35 minuter."
+
+#~ msgid "Spanish Omelet"
+#~ msgstr "Spansk omelett"
+
+#~ msgid "Traditional Spanish Omelet, also known as \"Tortilla de Patata\""
+#~ msgstr "Traditionell spansk omelett, också känd som ”Tortilla de Patata”"
+
+#~ msgid "White fish for people who dont like fish."
+#~ msgstr "Vit fisk för folk som inte gillar fisk."
+
+#~ msgid ""
+#~ "It is a fantastic dish for those of us that dont love fish, but know we "
+#~ "have to eat it to stay healthy."
+#~ msgstr ""
+#~ "Det är en fantastisk maträtt för de av oss som inte älskar fisk, men ändå "
+#~ "äter det för att hålla sig friska."
+
+#~ msgid ""
+#~ "The key to get this dish good is to have high temperature on the stove "
+#~ "when first frying the fish. Then turn it down after the initial fry."
+#~ msgstr ""
+#~ "Nyckeln till att få denna maträtt god är att ha en hög temperatur på "
+#~ "ugnen när fisken steks först. Slå av den efter första stekningen."
+
+#~ msgid ""
+#~ "Set the stove to high (8/10), then put a good amount of oil in it. Any "
+#~ "type of oil will do."
+#~ msgstr ""
+#~ "Sätt ugnen till hög (8/10) och olja sedan in den väl. Vilken olja som "
+#~ "helst duger."
+
+#~ msgid ""
+#~ "Remove bone and skin from the fish (if any), and add salt and pepper. "
+#~ "Give the stove some minutes to get really hot. Then put the fish in. 2-3 "
+#~ "min on each side."
+#~ msgstr ""
+#~ "Rensa fisken (om det behövs) och tillför salt och peppar. Ge ugnen några "
+#~ "att bli riktigt varm på. Stoppa sedan in fisken i 2-3 minuter på varje "
+#~ "sida."
+
+#~ msgid ""
+#~ "Turn the temperature down to low (3/10). Add two spoons of butter, some "
+#~ "thyme, rosemary and garlic. When the butter have melted, use a spoon to "
+#~ "poor the melted butter and spice mix over the fish fillet."
+#~ msgstr ""
+#~ "Sätt temperaturen till låg (3/10). Lägg till två skedar smör, lite "
+#~ "timjan, rosmarin och vitlök. När smöret har smält, använd en sked till "
+#~ "hälla det smälta smöret och kryddmixen över fiskfilen."
+
+#~ msgid ""
+#~ "After about 5 minutes your fish will be done. You can serve it with "
+#~ "potatoes, rice, or noodles. Everything works."
+#~ msgstr ""
+#~ "Efter ungefär fem minuter kommer din fisk att vara klar. Du kan serverar "
+#~ "den med potatis, ris eller nudlar. Allt fungerar."
+
+#~ msgid "Grumbeerekiechle"
+#~ msgstr "Grumbeerekiechle"
+
+#~ msgid ""
+#~ "Traditional potato hash from Alsace. Usually served with lettuce, "
+#~ "sometimes with smoked salmon."
+#~ msgstr ""
+#~ "Traditionell potatismos från Alsace. Vanligtvis serverad med sallad, "
+#~ "ibland med rökt lax."
+
+#~ msgid ""
+#~ "[image:1]Peel and grate the potatoes. Peel and slice the onions. Mix with "
+#~ "the rest of the ingredients in a large bowl."
+#~ msgstr ""
+#~ "[image:1]Skala och gratinera potatisen. Skala och hacka löken. Blanda med "
+#~ "resten av ingredienserna i en stor skål."
+
+#~ msgid "Finely chop the red onion."
+#~ msgstr "Finhacka den röda löken."
+
+#~ msgid "[image:0]Preparation:"
+#~ msgstr "[image:0]Förberedelser:"
+
+#~ msgid "Baking:"
+#~ msgstr "Bakning:"
+
+#~ msgid "To bake:"
+#~ msgstr "Att baka"
+
+#~ msgid "Pizzaburger"
+#~ msgstr "Pizzaburgare"
+
+#~ msgid "Remove from heat."
+#~ msgstr "Ta bort från hetta."
+
+#~ msgid "Pan pizza"
+#~ msgstr "Panpizza"
+
+#~ msgid "Pizza is an all-time favorite."
+#~ msgstr "Pizza är en alla tiders favorit."
+
+#~ msgid ""
+#~ "Put the flour, yeast, water and olive oil in a bowl and stir it up with "
+#~ "your hands or a spoon until there's no dry flour left, and let it be."
+#~ msgstr ""
+#~ "Lägg mjölet, jästen, vattnet och olivoljan i en skål och rör om med dina "
+#~ "händer eller en sked tills det inte finns någon torr mjöl kvar."
+
+#~ msgid ""
+#~ "Cover the bowl tightly in plastic wrap and let it sit at room temperature "
+#~ "overnight. "
+#~ msgstr ""
+#~ "Täck över skålen ordentligt i plast och låt den vara i rumstemperatur "
+#~ "över natten. "
+
+#~ msgid ""
+#~ "The next day it should have rosen quite a bit. Dump it all out onto a "
+#~ "floured surface, then divide it into balls."
+#~ msgstr ""
+#~ "Nästa dag borde den ha stigit en hel del. Häll ut den på en mjölig yta "
+#~ "och dela sedan upp den i bollar."
+
+#~ msgid ""
+#~ "Spread olive oil in a 10-inch cast iron skillet or round cake pan and "
+#~ "place a dough ball in the middle."
+#~ msgstr ""
+#~ "Sprid ut olivolja i en 10-tums gjutjärnspanna eller kakform och lägg en "
+#~ "degboll i mitten."
+
+#~ msgid ""
+#~ "Rub the dough ball around and flip it a couple times until it is "
+#~ "completely coated in oil and the oil completely coats the bottom and "
+#~ "sides of the pan. Cover in plastic, and let it sit for another couple of "
+#~ "hours without touching it."
+#~ msgstr ""
+#~ "Rulla runt och vänd på degbollen några gånger tills den är helt täckt i "
+#~ "olja samt att oljan helt täcker botten och sidorna på stekpannan. Täck "
+#~ "den i plast och låt den vara så några timmar utan att röra den."
+
+#~ msgid ""
+#~ "The dough should have spread on it own (takes about 2 hours). Lift the "
+#~ "sides of the dough to let big air bubbles out."
+#~ msgstr ""
+#~ "Degen borde ha spridits av sig själv (tar cirka två timmar). Lyft upp "
+#~ "sidan av degen för att släppa ut de stora luftbubblorna."
+
+#~ msgid ""
+#~ "Put in the oven at 280°C. (or as hot as your oven goes) for about 15 "
+#~ "minutes. Peek underneath and if your pizza is a little pale, you can "
+#~ "finish on the stovetop directly over medium heat until it is as dark and "
+#~ "crisp as you like it."
+#~ msgstr ""
+#~ "Stoppa in den i ugnen på  280°C. (eller så varm som din ugn nu kan bli) i "
+#~ "ungefär 15 minuter. Titta underifrån, och om din pizza är lite blek kan "
+#~ "du avsluta längst upp i ugnen på medelhetta tills du får den så mörk och "
+#~ "krispig som du vill ha den."
+
+#~ msgid "Wholesome Crackers"
+#~ msgstr "Hälsosamma kex"
+
+#~ msgid ""
+#~ "Crackers are a fulfilling alternative snack and keeps your stomach going. "
+#~ "Crackers consist of seeds, oat and flour. The recipe described here is "
+#~ "very flexible. You can use whichever seeds, nuts and flour types you may "
+#~ "have. I've personally tried almonds, sesame seeds, chia seeds, rye "
+#~ "grains, millet and  buckwheat."
+#~ msgstr ""
+#~ "Kex kan vara ett tillfredsställande alternativt tilltugg och hålla igång "
+#~ "din mage. Kex kan bestå av frön, havre och mjöl. Receptet som beskrivs "
+#~ "här är väldigt flexibelt. Du kan använda vad som helst för frön, nötter "
+#~ "och mjöl. Personligen har jag provat mandel, sesamfrön, chiafrön, råg, "
+#~ "hirs och bovete."
+
+#, fuzzy
+#~| msgid ""
+#~| "Turn on the oven at 473,15 °K (200 °C). Mix all dry ingredients (seeds, "
+#~| "flour, oatmeal, baking powder and salt) together. Mix oil. Then add "
+#~| "water gradually while mixing until the dough is firm and pasty. If you "
+#~| "add too much water, the dough will end up sticking too much to the "
+#~| "baking paper."
+#~ msgid ""
+#~ "Turn on the oven at 473,15 K (200 °C). Mix all dry ingredients (seeds, "
+#~ "flour, oatmeal, baking powder and salt) together. Mix oil. Then add water "
+#~ "gradually while mixing until the dough is firm and pasty. If you add too "
+#~ "much water, the dough will end up sticking too much to the baking paper."
+#~ msgstr ""
+#~ "Slå på ugnen på 473,15 °K (200 °C). Blanda alla torra ingredienser (frön, "
+#~ "mjöl, havregryn, bakpulver och salt) tillsammans. Blanda i olja. Lägg "
+#~ "sedan till vatten gradvis vid mixning tills degen är fast och kletig. Om "
+#~ "du lägger till för mycket vatten kommer degen att fastna på "
+#~ "bakplåtspappret."
+
+#~ msgid ""
+#~ "Cut a sheet of baking paper at the size of a baking tray and place the "
+#~ "dough on it. Cut another sheet of baking paper and put on top. Use a "
+#~ "rolling pin on top of the second baking sheet to flatten the dough. Make "
+#~ "the dough as thing as possible. Afterwards, take off the second sheet. "
+#~ "Bring forth a knife and cut creases from horizontally and vertically to "
+#~ "form squares (see example on the picture). Optionally decorate with extra "
+#~ "seeds on top before inserting into the preheated oven."
+#~ msgstr ""
+#~ "Klipp ut ett ark bakplåtspapper i storlek av en bakplåt och lägg degen på "
+#~ "det. Klipp ut ett annat ark bakplåtspapper och lägg det överst. Använd en "
+#~ "kavel på det andra bakplåtspappret för att platta ut degen. Gör degen så "
+#~ "tunn som möjligt. Ta sedan ett till ark. Ta en kniv och skär veck h "
+#~ "horisontellt och vertikalt för att forma kvadrater (se exempel i bilden). "
+#~ "Dekorera valfritt med extra frön innan du stoppar in den i den upphettade "
+#~ "ugnen."
+
+#~ msgid ""
+#~ "Wait for the crackers to become crisp, this takes around 17 minutes. You "
+#~ "can check if they are done by touching the crackers or by pulling up a "
+#~ "bit in the baking sheet and see if the crackers in the middle still "
+#~ "bends.  The crackers take on a yellow golden color when they are done."
+#~ msgstr ""
+#~ "Vänta på att kexen ska bli krispiga, det tar cirka 17 minuter. Du kan "
+#~ "kontrollera om de är klara genom att röra vid kexen eller genom att dra "
+#~ "upp en bit i bakplåtspappret och se om kexen i mitten fortfarande böjs. "
+#~ "Kexen får en gulaktig ton när de är klara."
+
+#~ msgid ""
+#~ "Take out the crackers and leave them on the kitchen table to cool down "
+#~ "for a few minutes."
+#~ msgstr ""
+#~ "Ta ut kexen och lämna dem på köksbordet för att svalna några minuter."
+
+#~ msgid "Tofu ‘Egg’ Scramble"
+#~ msgstr "Tofu ”Äggröra“"
+
+#~ msgid "This vegan breakfast staple is perfect on a lazy saturday morning."
+#~ msgstr "Detta veganska mål är perfekt en slapp lördagsmorgon."
+
+#, fuzzy
+#~| msgid ""
+#~| "Chop the onion. Open up the tofu package and slice it up, then crumble "
+#~| "with your hands."
+#~ msgid ""
+#~ "[image:0]Chop the onion. Open up the tofu package and slice it up, then "
+#~ "crumble with your hands."
+#~ msgstr ""
+#~ "Klipp löken. Öppna tofupaketet och skär upp dem, och mosa dem med "
+#~ "händerna."
+
+#, fuzzy
+#~| msgid ""
+#~| "Sautee the onion, tofu, and peppers for 3-5 minutes using the vegan "
+#~| "butter."
+#~ msgid ""
+#~ "[timer:00:03:00]Sautee the onion, tofu, and peppers for 3-5 minutes using "
+#~ "the vegan butter."
+#~ msgstr "Stuva löken, tofun och pepparn i 3-5 minuter med veganskt smör."
+
+#, fuzzy
+#~| msgid ""
+#~| "Turn heat down to medium and add the rest of the ingredients – cook for "
+#~| "5-7 minutes more."
+#~ msgid ""
+#~ "[timer:00:05:00]Turn heat down to medium and add the rest of the "
+#~ "ingredients – cook for 5-7 minutes more."
+#~ msgstr ""
+#~ "Minska värmen till medel och lägg till resten av ingredienserna -- "
+#~ "tillaga i 5-7 minuter till."
+
+#~ msgid "Donauwellen"
+#~ msgstr "Donauwellen"
+
+#~ msgid ""
+#~ "Donauwellen is a popular German cake with chocolate, vanilla cream and "
+#~ "cherries. The name is due to the fact that the dough typically forms a "
+#~ "wavy pattern."
+#~ msgstr ""
+#~ "Donauwellen är en populär tysk kaka med choklad, vaniljkräm och körsbär. "
+#~ "Namnet härstammar från att degen vanligen formar ett vågigt mönster."
+
+#, fuzzy
+#~| msgid ""
+#~| "Mix the butter until it is creamy. Add sugar and eggs. Mix the flour "
+#~| "with the baking powder and mix it in. Separate a third of the dough and "
+#~| "add the cocoa powder to it."
+#~ msgid ""
+#~ "[image:2]Mix the flour with the baking powder and mix it in. Separate a "
+#~ "third of the dough and add the cocoa powder to it."
+#~ msgstr ""
+#~ "Blanda smöret tills det är krämigt. Lägg till socker och ägg. Blanda "
+#~ "mjölet med bakpulvret och mixa i det. Separera en tredjedel av degen och "
+#~ "lägg till kakaopulvret till det."
+
+#, fuzzy
+#~| msgid ""
+#~| "Spread the light dough on a buttered baking sheet. Put the dark dough on "
+#~| "top. Use a fork to make a wavy pattern. Spread the dried cherries on top "
+#~| "of the dough."
+#~ msgid ""
+#~ "[image:4]Spread the light dough on a buttered baking sheet. Put the dark "
+#~ "dough on top."
+#~ msgstr ""
+#~ "Sprid ut den tunna degen på ett smörat bakplåtspapper. Lägg den mörka "
+#~ "degen överst. Använd en kniv till att skapa ett vågigt mönster. Sprid ut "
+#~ "de torkade körsbären överst på degen."
+
+#, fuzzy
+#~| msgid "Bake for 30 minutes at 200 °C."
+#~ msgid "[timer:00:30:00]Bake for 30 minutes at 200 °C."
+#~ msgstr "Baka i 30 minuter vid 200 °C."
+
+#, fuzzy
+#~| msgid ""
+#~| "Use the milk, sugar and pudding to cook vanilla pudding and let it cool "
+#~| "down while stirring it frequently. Slowly add spoonfuls of the butter, "
+#~| "which should be at room temperature. Spread the butter cream on the "
+#~| "cooled cake."
+#~ msgid ""
+#~ "[image:7]Use the milk, sugar and pudding to cook vanilla pudding and let "
+#~ "it cool down while stirring it frequently. Slowly add spoonfuls of the "
+#~ "butter, which should be at room temperature."
+#~ msgstr ""
+#~ "Använd mjölken, sockret och kräm för att tillaga vaniljkräm och låt den "
+#~ "kylas ned medan den rörs om kraftigt. Lägg långsamt till småskedar smör "
+#~ "som är rumstempererat. Sprid ut smörkrämen på den kalla kakan."
+
+#, fuzzy
+#~| msgid ""
+#~| "Melt the chocolate frosting in a hot water bath and sprinkle it on top."
+#~ msgid ""
+#~ "[image:9]Melt the chocolate frosting in a hot water bath and sprinkle it "
+#~ "on top."
+#~ msgstr "Smält chokladglasyren i ett varmt vattenbad och häll den överst."
+
+#~ msgid "Failed to load recipe: Images and Angles length mismatch"
+#~ msgstr ""
+#~ "Misslyckades med att öppna recept: Bilder och vinkellängd stämmer inte"
+
+#~ msgid "Failed to load recipe: Images and DarkText length mismatch"
+#~ msgstr ""
+#~ "Misslyckades med att öppna recept: Bilder och mörktextlängd stämmer inte"
+
+#~ msgid "Somewhat Spicy"
+#~ msgstr "Delvis het"
+
+#~ msgid "Very Spicy"
+#~ msgstr "Väldigt het"
+
+#~ msgid "Could not share recipes"
+#~ msgstr "Det gick inte att dela recept"
+
+#~ msgid ""
+#~ "Ingredients\n"
+#~ "gathered"
+#~ msgstr ""
+#~ "Införskaffat\n"
+#~ "ingredienser"
+
+#~ msgid ""
+#~ "Oven\n"
+#~ "preheated"
+#~ msgstr ""
+#~ "Värmt upp\n"
+#~ "ugn"
+
+#~ msgid ""
+#~ "Instructions\n"
+#~ "followed"
+#~ msgstr ""
+#~ "Följt\n"
+#~ "instruktioner"
+
+#~ msgid "_Cook it later"
+#~ msgstr "_Tillaga senare"
+
+#~ msgid "Duration"
+#~ msgstr "Längd"
+
+#~ msgid "Remaining time"
+#~ msgstr "Återstående tid"
+
+#~ msgid "Stop"
+#~ msgstr "Stoppa"
+
+#~ msgid "Description (optional)"
+#~ msgstr "Beskrivning (valfritt)"
+
+#~ msgid "Preferences"
+#~ msgstr "Inställningar"
+
+#~ msgid "_Name:"
+#~ msgstr "_Namn:"
+
+#~ msgid "_Short Name:"
+#~ msgstr "_Kortnamn:"
+
+#~ msgid "_Description:"
+#~ msgstr "_Beskrivning:"
+
+#~ msgid "_Picture:"
+#~ msgstr "_Bild:"
+
+#~ msgid "_Preferences"
+#~ msgstr "_Inställningar"
+
+#~ msgid "Use dark text"
+#~ msgstr "Använd mörk text"
+
+#~ msgid "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+#~ msgid "No recipe found"
+#~ msgstr "Hittade inget recept"
+
+#~ msgid "No chef found"
+#~ msgstr "Fann ingen kock"
+
+#~ msgid "Stop cooking"
+#~ msgstr "Sluta tillaga"
+
+#~ msgid "Start cooking"
+#~ msgstr "Börja tillaga"
+
+#~ msgid "Ingredients for …"
+#~ msgstr "Ingredienser för …"
+
+#~ msgid "Instructions"
+#~ msgstr "Instruktioner"
+
+#~ msgid "Remove an ingredient"
+#~ msgstr "Ta bort en ingrediens"
+
+#~ msgid "Units"
+#~ msgstr "Enheter"
+
+#~ msgid "grams"
+#~ msgstr "gram"
+
+#~ msgid "kilograms"
+#~ msgstr "kilogram"
+
+#~ msgid "pounds"
+#~ msgstr "pund"
+
+#~ msgid "Almonds"
+#~ msgstr "Mandel"
+
+#~ msgid "Apples"
+#~ msgstr "Äpplen"
+
+#~ msgid "Apricots"
+#~ msgstr "Aprikoser"
+
+#~ msgid "Artichokes"
+#~ msgstr "Kronärtskockor"
+
+#~ msgid "Aubergines"
+#~ msgstr "Auberginer"
+
+#~ msgid "Bananas"
+#~ msgstr "Bananer"
+
+#~ msgid "Bagels"
+#~ msgstr "Baglar"
+
+#~ msgid "Bay leaves"
+#~ msgstr "Lagerblad"
+
+#~ msgid "Berries"
+#~ msgstr "Bär"
+
+#~ msgid "Beetroots"
+#~ msgstr "Rödbetor"
+
+#~ msgid "Biscottis"
+#~ msgstr "Småkakor"
+
+#~ msgid "Beef sausages"
+#~ msgstr "Köttkorvar"
+
+#~ msgid "Bilberries"
+#~ msgstr "Blåbär"
+
+#~ msgid "Carrots"
+#~ msgstr "Morötter"
+
+#~ msgid "Dates"
+#~ msgstr "Dadlar"
+
+#~ msgid "Eggs"
+#~ msgstr "Ägg"
+
+#~ msgid "Figs"
+#~ msgstr "Fikon"
+
+#~ msgid "Lemons"
+#~ msgstr "Citron"
+
+#~ msgid "Onions"
+#~ msgstr "Lök"
+
+#~ msgid "Oranges"
+#~ msgstr "Apelsiner"
+
+#~ msgid "Potatoes"
+#~ msgstr "Potatis"
+
+#~ msgid "Squashs"
+#~ msgstr "Squash"
+
+#~ msgid "Tangerines"
+#~ msgstr "Citrus"
+
+#~ msgid "Tomatoes"
+#~ msgstr "Tomater"
+
+#~ msgid "Wines"
+#~ msgstr "Vin"
+
+#~ msgid "Yoghurts"
+#~ msgstr "Yoghurt"
+
+#~ msgid "Zinfandels"
+#~ msgstr "Zinfandel"
+
+#~ msgctxt "number"
+#~ msgid "a dozen"
+#~ msgstr "ett dussin"
+
+#~ msgctxt "number"
+#~ msgid "a"
+#~ msgstr "en"
+
+#~ msgctxt "number"
+#~ msgid "an"
+#~ msgstr "en"
+
+#~ msgctxt "number"
+#~ msgid "one"
+#~ msgstr "ett"
+
+#~ msgctxt "number"
+#~ msgid "two"
+#~ msgstr "två"
+
+#~ msgctxt "number"
+#~ msgid "three"
+#~ msgstr "tre"
+
+#~ msgctxt "number"
+#~ msgid "four"
+#~ msgstr "fyra"
+
+#~ msgctxt "number"
+#~ msgid "five"
+#~ msgstr "fem"
+
+#~ msgctxt "number"
+#~ msgid "six"
+#~ msgstr "sex"
+
+#~ msgctxt "number"
+#~ msgid "seven"
+#~ msgstr "sju"
+
+#~ msgctxt "number"
+#~ msgid "eight"
+#~ msgstr "åtta"
+
+#~ msgctxt "number"
+#~ msgid "nine"
+#~ msgstr "nio"
+
+#~ msgctxt "number"
+#~ msgid "ten"
+#~ msgstr "tio"
+
+#~ msgctxt "number"
+#~ msgid "eleven"
+#~ msgstr "elva"
+
+#~ msgctxt "number"
+#~ msgid "twelve"
+#~ msgstr "tolv"
+
+#~ msgctxt "unit"
+#~ msgid "grams"
+#~ msgstr "gram"
+
+#~ msgctxt "unit"
+#~ msgid "kilograms"
+#~ msgstr "kilogram"
+
+#~ msgctxt "unit"
+#~ msgid "liters"
+#~ msgstr "liter"
+
+#~ msgctxt "unit"
+#~ msgid "deciliters"
+#~ msgstr "deciliter"
+
+#~ msgctxt "unit"
+#~ msgid "milliliters"
+#~ msgstr "milliliter"
+
+#~ msgctxt "unit"
+#~ msgid "pounds"
+#~ msgstr "pund"
+
+#~ msgctxt "unit"
+#~ msgid "boxes"
+#~ msgstr "boxar"
+
+#~ msgctxt "unit"
+#~ msgid "tablespoons"
+#~ msgstr "matskedar"
+
+#~ msgctxt "unit"
+#~ msgid "teaspoons"
+#~ msgstr "teskedar"
