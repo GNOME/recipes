@@ -1770,9 +1770,7 @@ populate_ingredients (GrEditPage *page,
 {
         g_autoptr(GrIngredientsList) ingredients = NULL;
         g_autofree char **segs = NULL;
-        g_auto(GStrv) ings = NULL;
         int i, j;
-        GtkWidget *list;
         GtkWidget *button;
 
         container_remove_all (GTK_CONTAINER (page->ingredients_box));
@@ -1783,6 +1781,9 @@ populate_ingredients (GrEditPage *page,
         ingredients = gr_ingredients_list_new (text);
         segs = gr_ingredients_list_get_segments (ingredients);
         for (j = 0; segs[j]; j++) {
+                GtkWidget *list;
+                g_auto(GStrv) ings = NULL;
+
                 list = add_ingredients_segment (page, segs[j]);
                 ings = gr_ingredients_list_get_ingredients (ingredients, segs[j]);
                 for (i = 0; ings[i]; i++) {
