@@ -26,6 +26,8 @@
 
 #include "gr-about-dialog.h"
 #include "gr-utils.h"
+#include "gr-recipe-store.h"
+#include "gr-app.h"
 
 #include <stdlib.h>
 
@@ -807,6 +809,17 @@ G_GNUC_END_IGNORE_DEPRECATIONS
         }
 }
 
+static int
+compare_strings (gconstpointer a,
+                 gconstpointer b,
+                 gpointer      data)
+{
+        const char * const *sa = a;
+        const char * const *sb = b;
+
+        return strcmp (*sa, *sb);
+}
+
 GrAboutDialog *
 gr_about_dialog_new (void)
 {
@@ -824,27 +837,12 @@ gr_about_dialog_new (void)
                 "Maithili Bhide",
                 NULL
         };
-        const char *recipe_authors[] = {
-                "Ray Strode",
-                "Bastian Ilsø",
-                "Frederik Fyksen",
-                "Matthias Clasen",
-                "Allan Day",
-                "Erusan",
-                "Link Dupont",
-                "Tuomas Kuosmanen",
-                "Matthew Leeds",
-                "Alexandre Franke",
-                "Adrià Arrufat",
-                "Emmanuele Bassi",
-                "Adelia",
-                "Sylvia",
-                "Georges Basile Stavracas Neto",
-                NULL
-        };
+        g_autofree char **recipe_authors = NULL;
+        guint length;
         g_autoptr(GdkPixbuf) logo = NULL;
         const char *p;
         const char *version;
+        GrRecipeStore *store;
 
         logo = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
                                          "org.gnome.Recipes",
@@ -871,8 +869,12 @@ gr_about_dialog_new (void)
                               "website-label", _("Learn more about Recipes"),
                               NULL);
 
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        recipe_authors = gr_recipe_store_get_contributors (store, &length);
+        g_qsort_with_data (recipe_authors, length, sizeof (char *), compare_strings, NULL);
         gtk_about_dialog_add_credit_section (GTK_ABOUT_DIALOG (about),
-                                             _("Recipes by"), recipe_authors);
+                                             _("Recipes by"), (const char **)recipe_authors);
+
         add_built_logo (about);
         add_system_tab (about);
 
