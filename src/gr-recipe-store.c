@@ -356,16 +356,6 @@ load_recipes (GrRecipeStore *self,
                         g_clear_error (&error);
                 }
 
-                if (paths) {
-                        for (j = 0; paths[j]; j++) {
-                                if (paths[j][0] != '/') {
-                                        tmp = g_build_filename (dir, paths[j], NULL);
-                                        g_free (paths[j]);
-                                        paths[j] = tmp;
-                                }
-                        }
-                }
-
                 images = gr_image_array_new ();
                 if (paths) {
                         for (j = 0; paths[j]; j++) {
@@ -550,10 +540,7 @@ save_recipes (GrRecipeStore *self)
                 for (i = 0; i < images->len; i++) {
                         GrImage *ri = g_ptr_array_index (images, i);
                         const char *img_path = gr_image_get_path (ri);
-                        if (g_str_has_prefix (img_path, dir))
-                                paths[i] = g_strdup (img_path + strlen (dir) + 1);
-                        else
-                                paths[i] = g_strdup (img_path);
+                        paths[i] = g_strdup (img_path);
                 }
 
                 // For readonly recipes, we just store notes
@@ -786,13 +773,6 @@ load_chefs (GrRecipeStore *self,
                         g_clear_error (&error);
                 }
 
-                if (image_path && image_path[0] != '\0' && image_path[0] != '/') {
-                        char *tmp;
-                        tmp = g_build_filename (dir, image_path, NULL);
-                        g_free (image_path);
-                        image_path = tmp;
-                }
-
                 chef = g_hash_table_lookup (self->chefs, id);
                 if (chef == NULL) {
                         chef = gr_chef_new ();
@@ -852,15 +832,7 @@ save_chefs (GrRecipeStore *store)
                 description = gr_chef_get_description (chef);
                 image_path = gr_chef_get_image (chef);
 
-                if (image_path && g_str_has_prefix (image_path, dir)) {
-                        g_autofree char *tmp2 = NULL;
-
-                        tmp2 = g_strdup (image_path + strlen (dir) + 1);
-                        g_key_file_set_string (keyfile, key, "Image", tmp2);
-                }
-                else
-                        g_key_file_set_string (keyfile, key, "Image", image_path ? image_path : "");
-
+                g_key_file_set_string (keyfile, key, "Image", image_path ? image_path : "");
                 g_key_file_set_string (keyfile, key, "Name", name ? name : "");
                 g_key_file_set_string (keyfile, key, "Fullname", fullname ? fullname : "");
                 g_key_file_set_string (keyfile, key, "Description", description ? description : "");
