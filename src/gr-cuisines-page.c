@@ -85,7 +85,7 @@ gr_cuisines_page_unexpand (GrCuisinesPage *page)
 }
 
 static void
-expander_button_clicked (GrCuisinesPage *page)
+season_expander_button_clicked (GrCuisinesPage *page)
 {
         gboolean expanded;
 
@@ -213,7 +213,7 @@ gr_cuisines_page_class_init (GrCuisinesPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrCuisinesPage, seasonal_more);
         gtk_widget_class_bind_template_child (widget_class, GrCuisinesPage, seasonal_expander_image);
 
-         gtk_widget_class_bind_template_callback (widget_class, expander_button_clicked);
+         gtk_widget_class_bind_template_callback (widget_class, season_expander_button_clicked);
 }
 
 GtkWidget *
