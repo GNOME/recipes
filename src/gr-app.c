@@ -20,6 +20,8 @@
 
 #include "config.h"
 
+#include <stdlib.h>
+
 #include <glib/gi18n.h>
 #include <glib/gprintf.h>
 #include <gtk/gtk.h>
@@ -200,6 +202,70 @@ search_activated (GSimpleAction *action,
         gr_window_show_search (GR_WINDOW (win), search);
 }
 
+#define DEFAULT_LEVELS (G_LOG_LEVEL_ERROR | G_LOG_LEVEL_CRITICAL | G_LOG_LEVEL_WARNING | G_LOG_LEVEL_MESSAGE)
+#define INFO_LEVELS (G_LOG_LEVEL_INFO | G_LOG_LEVEL_DEBUG)
+
+static gboolean verbose_logging;
+
+/* verbose_logging turns enables DEBUG and INFO messages just for our log domain.
+ * We also respect the G_MESSAGES_DEBUG environment variable.
+ */
+static GLogWriterOutput
+log_writer (GLogLevelFlags   log_level,
+            const GLogField *fields,
+            gsize            n_fields,
+            gpointer         user_data)
+{
+        if (!(log_level & DEFAULT_LEVELS)) {
+                const gchar *domains, *log_domain = NULL;
+                gsize i;
+
+                domains = g_getenv ("G_MESSAGES_DEBUG");
+
+                if (verbose_logging && domains == NULL)
+                        domains = G_LOG_DOMAIN;
+
+                if ((log_level & INFO_LEVELS) == 0 || domains == NULL)
+                        return G_LOG_WRITER_HANDLED;
+
+                for (i = 0; i < n_fields; i++) {
+                        if (g_strcmp0 (fields[i].key, "GLIB_DOMAIN") == 0) {
+                                log_domain = fields[i].value;
+                                break;
+                        }
+                }
+
+                if (!verbose_logging || strcmp (log_domain, G_LOG_DOMAIN) != 0) {
+                        if (strcmp (domains, "all") != 0 &&
+                            (log_domain == NULL || !strstr (domains, log_domain)))
+                                return G_LOG_WRITER_HANDLED;
+                }
+        }
+
+        if (g_log_writer_is_journald (fileno (stderr)) &&
+            g_log_writer_journald (log_level, fields, n_fields, user_data) == G_LOG_WRITER_HANDLED)
+                goto handled;
+
+        if (g_log_writer_standard_streams (log_level, fields, n_fields, user_data) == G_LOG_WRITER_HANDLED)
+                goto handled;
+
+        return G_LOG_WRITER_UNHANDLED;
+
+handled:
+        if (log_level & G_LOG_LEVEL_ERROR)
+                g_abort ();
+
+        return G_LOG_WRITER_HANDLED;
+}
+
+static void
+verbose_logging_activated (GSimpleAction *action,
+                           GVariant      *parameter,
+                           gpointer       application)
+{
+        g_variant_get (parameter, "b", &verbose_logging);
+}
+
 static GActionEntry app_entries[] =
 {
         { "timer-expired", timer_expired, "(si)", NULL, NULL },
@@ -211,7 +277,8 @@ static GActionEntry app_entries[] =
         { "details", details_activated, "(ss)", NULL, NULL },
         { "search", search_activated, "s", NULL, NULL },
         { "quit", quit_activated, NULL, NULL, NULL },
-        { "report-issue", report_issue_activated, NULL, NULL, NULL }
+        { "report-issue", report_issue_activated, NULL, NULL, NULL },
+        { "verbose-logging", verbose_logging_activated, "b", NULL, NULL }
 };
 
 static void
@@ -341,23 +408,43 @@ gr_app_dbus_unregister (GApplication    *application,
 static void
 gr_app_init (GrApp *self)
 {
-        self->store = gr_recipe_store_new ();
-
         g_application_add_main_option (G_APPLICATION (self),
                                        "version", 'v',
                                        G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE,
                                        _("Print the version and exit"), NULL);
+        g_application_add_main_option (G_APPLICATION (self),
+                                       "verbose", 0,
+                                       G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE,
+                                       _("Turn on verbose logging"), NULL);
+
+        g_log_set_writer_func (log_writer, NULL, NULL);
+
+        self->store = gr_recipe_store_new ();
+
 }
 
 static int
 gr_app_handle_local_options (GApplication *app,
                              GVariantDict *options)
 {
-        gboolean version;
+        gboolean value;
 
-        if (g_variant_dict_lookup (options, "version", "b", &version)) {
+        if (g_variant_dict_lookup (options, "version", "b", &value)) {
                 g_print ("%s %s\n", PACKAGE_NAME, PACKAGE_VERSION);
                 return 0;
+        }
+
+        if (g_variant_dict_lookup (options, "verbose", "b", &value)) {
+                g_autoptr(GError) error = NULL;
+
+                if (!g_application_register (app, NULL, &error)) {
+                        g_printerr ("Failed to register: %s\n", error->message);
+                        return 1;
+                }
+
+                g_action_group_activate_action (G_ACTION_GROUP (app),
+                                                "verbose-logging",
+                                                g_variant_new_boolean (TRUE));
         }
 
         return -1;
