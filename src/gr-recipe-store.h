@@ -91,10 +91,6 @@ gboolean        gr_recipe_store_has_chef            (GrRecipeStore  *self,
                                                      GrChef         *chef);
 gboolean        gr_recipe_store_has_cuisine         (GrRecipeStore  *self,
                                                      const char     *cuisine);
-void            gr_recipe_store_add_cooked          (GrRecipeStore  *store,
-                                                     GrRecipe       *recipe);
-int             gr_recipe_store_get_cooked          (GrRecipeStore  *store,
-                                                     GrRecipe       *recipe);
 
 #define GR_TYPE_RECIPE_SEARCH (gr_recipe_search_get_type())
 
