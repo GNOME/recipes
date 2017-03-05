@@ -81,6 +81,7 @@ pkgdatadir = join_paths([ get_option('prefix'),
                           get_option('datadir'),
                           'gnome-recipes' ])
 bindir = join_paths([ get_option('prefix'), 'bin' ])
+conf.set('G_LOG_USE_STRUCTURED', true)
 conf.set_quoted('G_LOG_DOMAIN', 'org.gnome.Recipes')
 conf.set_quoted('PACKAGE_NAME', 'gnome-recipes')
 conf.set_quoted('PACKAGE_VERSION', meson.project_version())

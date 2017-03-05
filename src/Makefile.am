@@ -7,6 +7,7 @@ gnome_recipes_CFLAGS = \
 	$(WARN_CFLAGS) 			\
 	-Wno-sign-compare		\
 	$(RECIPES_CFLAGS) 		\
+	-DG_LOG_USE_STRUCTURED=1		\
 	-DG_LOG_DOMAIN=\"org.gnome.Recipes\"	\
 	-DPACKAGE_NAME=\"$(PACKAGE_NAME)\"	\
 	-DPKGDATADIR=\"$(pkgdatadir)\" 	\
