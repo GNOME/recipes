@@ -19,6 +19,7 @@
 #pragma once
 
 #include <gtk/gtk.h>
+#include <libsoup/soup.h>
 
 G_BEGIN_DECLS
 
@@ -27,5 +28,6 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (GrApp, gr_app, GR, APP, GtkApplication)
 
 GrApp         *gr_app_new              (void);
+SoupSession   *gr_app_get_soup_session (GrApp *app);
 
 G_END_DECLS
