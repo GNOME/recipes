@@ -143,6 +143,9 @@ populate_cuisines (GrCuisinesPage *page)
                 gtk_grid_attach (GTK_GRID (page->top_box), tile, tiles % 2, 1 + tiles / 2, 1, 1);
 
                 tiles++;
+
+                if (tiles == 4)
+                        break;
         }
 }
 
