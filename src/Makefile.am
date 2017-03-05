@@ -8,14 +8,13 @@ gnome_recipes_CFLAGS = \
 	-Wno-sign-compare		\
 	-O0 -ggdb			\
 	$(RECIPES_CFLAGS) 		\
-	-DG_LOG_DOMAIN=\"$(PACKAGE_NAME)\"	\
+	-DG_LOG_DOMAIN=\"org.gnome.Recipes\"	\
 	-DPACKAGE_NAME=\"$(PACKAGE_NAME)\"	\
 	-DPKGDATADIR=\"$(pkgdatadir)\" 	\
 	-DDATADIR=\"$(datadir)\" 	\
 	-DLOCALEDIR=\"$(localedir)\" 	\
 	-DCOMMIT_ID=\"$(commitid)\"	\
 	-DLIBGD_INFO=\"$(libgd_info)\"	\
-	-DMICRO_VERSION=$(MICRO_VERSION) \
 	-I "$(top_srcdir)/libgd"	\
 	-I "$(top_srcdir)/src"		\
 	-I "$(top_builddir)/src"

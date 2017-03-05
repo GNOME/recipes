@@ -25,6 +25,14 @@ else
   conf.set_quoted('LIBGD_INFO', 'unknown')
 endif
 
+git_run = run_command('git', ['-C', meson.source_root(), 'describe'])
+if git_run.returncode() == 0
+  conf.set_quoted('COMMIT_ID', git_run.stdout().strip())
+else
+  message('Failed to extract git commit ID for recipes:\n' + git_run.stderr())
+  conf.set_quoted('COMMIT_ID', 'unknown')
+endif
+
 # Options + dependency checking is overly verbose and repetitive right now, but
 # there is work ongoing to fix it: https://github.com/mesonbuild/meson/pull/1330
 autoar_dep = []
