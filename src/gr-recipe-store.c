@@ -100,6 +100,7 @@ gr_recipe_store_finalize (GObject *object)
         g_strfreev (self->picks);
         g_strfreev (self->favorites);
         g_strfreev (self->shopping);
+        g_free (self->shopping_serves);
         g_strfreev (self->featured_chefs);
         g_free (self->user);
 
