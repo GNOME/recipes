@@ -30,7 +30,7 @@
                 <property name="label" translatable="yes">World Cuisines</property>
                 <property name="xalign">0</property>
                 <accessibility>
-                  <relation target="top_box" type="label-for"/>
+                  <relation target="cuisines_box" type="label-for"/>
                 </accessibility>
                 <style>
                   <class name="heading"/>
@@ -38,7 +38,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkGrid" id="top_box">
+              <object class="GtkGrid" id="cuisines_box">
                 <property name="visible">1</property>
                 <property name="halign">center</property>
                 <property name="column-spacing">20</property>
@@ -48,6 +48,76 @@
                 <accessibility>
                   <relation target="cuisine_label" type="labelled-by"/>
                 </accessibility>
+              </object>
+            </child>
+            <child>
+              <object class="GtkRevealer" id="cuisines_more">
+                <property name="visible">1</property>
+                <property name="transition-type">slide-up</property>
+                <property name="margin-top">10</property>
+                <child>
+                  <object class="GtkFlowBox" id="cuisines_box2">
+                    <property name="visible">1</property>
+                    <property name="margin-top">10</property>
+                    <property name="margin-bottom">10</property>
+                    <property name="row-spacing">20</property>
+                    <property name="column-spacing">20</property>
+                    <property name="homogeneous">1</property>
+                    <property name="min-children-per-line">3</property>
+                    <property name="max-children-per-line">3</property>
+                    <property name="selection-mode">none</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">1</property>
+                <property name="margin-start">24</property>
+                <property name="margin-end">24</property>
+                <property name="margin-bottom">12</property>
+                <child>
+                  <object class="GtkSeparator">
+                    <property name="visible">1</property>
+                    <property name="expand">1</property>
+                    <property name="valign">center</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="visible">1</property>
+                    <property name="can-focus">1</property>
+                    <property name="margin-start">9</property>
+                    <property name="margin-end">9</property>
+                    <property name="valign">center</property>
+                    <property name="relief">none</property>
+                    <signal name="clicked" handler="cuisines_expander_button_clicked" swapped="yes"/>
+                    <style>
+                      <class name="image-cutton"/>
+                      <class name="circular"/>
+                    </style>
+                    <child>
+                      <object class="GtkImage" id="cuisines_expander_image">
+                        <property name="visible">1</property>
+                        <property name="icon-name">pan-down-symbolic</property>
+                        <property name="icon-size">1</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSeparator">
+                    <property name="visible">1</property>
+                    <property name="expand">1</property>
+                    <property name="valign">center</property>
+                  </object>
+                  <packing>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
               </object>
             </child>
             <child>

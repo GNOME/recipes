@@ -39,7 +39,10 @@ struct _GrCuisinesPage
 {
         GtkBox parent_instance;
 
-        GtkWidget *top_box;
+        GtkWidget *cuisines_box;
+        GtkWidget *cuisines_box2;
+        GtkWidget *cuisines_more;
+        GtkWidget *cuisines_expander_image;
         GtkWidget *seasonal_box;
         GtkWidget *seasonal_box2;
         GtkWidget *seasonal_more;
@@ -61,6 +64,17 @@ cuisines_page_finalize (GObject *object)
 }
 
 static void
+set_cuisines_expanded (GrCuisinesPage *page,
+                       gboolean        expanded)
+{
+        gtk_revealer_set_transition_duration (GTK_REVEALER (page->cuisines_more), expanded ? 250 : 0);
+
+        gtk_revealer_set_reveal_child (GTK_REVEALER (page->cuisines_more), expanded);
+        gtk_image_set_from_icon_name (GTK_IMAGE (page->cuisines_expander_image),
+                                      expanded ? "pan-up-symbolic" : "pan-down-symbolic", 1);
+}
+
+static void
 set_seasonal_expanded (GrCuisinesPage *page,
                        gboolean        expanded)
 {
@@ -79,12 +93,24 @@ gr_cuisines_page_unexpand (GrCuisinesPage *page)
         transition = gtk_revealer_get_transition_type (GTK_REVEALER (page->seasonal_more));
         gtk_revealer_set_transition_type (GTK_REVEALER (page->seasonal_more),
                                           GTK_REVEALER_TRANSITION_TYPE_NONE);
-
         set_seasonal_expanded (page, FALSE);
-
         gtk_revealer_set_transition_type (GTK_REVEALER (page->seasonal_more), transition);
+
+        transition = gtk_revealer_get_transition_type (GTK_REVEALER (page->cuisines_more));
+        gtk_revealer_set_transition_type (GTK_REVEALER (page->cuisines_more),
+                                          GTK_REVEALER_TRANSITION_TYPE_NONE);
+        set_cuisines_expanded (page, FALSE);
+        gtk_revealer_set_transition_type (GTK_REVEALER (page->cuisines_more), transition);
 }
 
+static void
+cuisines_expander_button_clicked (GrCuisinesPage *page)
+{
+        gboolean expanded;
+
+        expanded = gtk_revealer_get_reveal_child (GTK_REVEALER (page->cuisines_more));
+        set_cuisines_expanded (page, !expanded);
+}
 static void
 season_expander_button_clicked (GrCuisinesPage *page)
 {
@@ -105,7 +131,7 @@ populate_cuisines (GrCuisinesPage *page)
         GrRecipeStore *store;
         int tiles;
 
-        container_remove_all (GTK_CONTAINER (page->top_box));
+        container_remove_all (GTK_CONTAINER (page->cuisines_box));
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
@@ -131,7 +157,7 @@ populate_cuisines (GrCuisinesPage *page)
         tile = gr_cuisine_tile_new (page->featured, TRUE);
         gtk_widget_show (tile);
         gtk_widget_set_halign (tile, GTK_ALIGN_FILL);
-        gtk_grid_attach (GTK_GRID (page->top_box), tile, 0, 0, 2, 1);
+        gtk_grid_attach (GTK_GRID (page->cuisines_box), tile, 0, 0, 2, 1);
 
         tiles = 0;
         for (i = 0; i < length; i++) {
@@ -141,7 +167,7 @@ populate_cuisines (GrCuisinesPage *page)
                 tile = gr_cuisine_tile_new (cuisines[i], FALSE);
                 gtk_widget_show (tile);
                 gtk_widget_set_halign (tile, GTK_ALIGN_FILL);
-                gtk_grid_attach (GTK_GRID (page->top_box), tile, tiles % 2, 1 + tiles / 2, 1, 1);
+                gtk_grid_attach (GTK_GRID (page->cuisines_box), tile, tiles % 2, 1 + tiles / 2, 1, 1);
 
                 tiles++;
 
@@ -211,13 +237,17 @@ gr_cuisines_page_class_init (GrCuisinesPageClass *klass)
 
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-cuisines-page.ui");
 
-        gtk_widget_class_bind_template_child (widget_class, GrCuisinesPage, top_box);
+        gtk_widget_class_bind_template_child (widget_class, GrCuisinesPage, cuisines_box);
+        gtk_widget_class_bind_template_child (widget_class, GrCuisinesPage, cuisines_box2);
+        gtk_widget_class_bind_template_child (widget_class, GrCuisinesPage, cuisines_more);
+        gtk_widget_class_bind_template_child (widget_class, GrCuisinesPage, cuisines_expander_image);
         gtk_widget_class_bind_template_child (widget_class, GrCuisinesPage, seasonal_box);
         gtk_widget_class_bind_template_child (widget_class, GrCuisinesPage, seasonal_box2);
         gtk_widget_class_bind_template_child (widget_class, GrCuisinesPage, seasonal_more);
         gtk_widget_class_bind_template_child (widget_class, GrCuisinesPage, seasonal_expander_image);
 
          gtk_widget_class_bind_template_callback (widget_class, season_expander_button_clicked);
+         gtk_widget_class_bind_template_callback (widget_class, cuisines_expander_button_clicked);
 }
 
 GtkWidget *
