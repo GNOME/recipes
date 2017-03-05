@@ -260,7 +260,7 @@ get_release_info (const char *new_version,
 
         file = g_build_filename (DATADIR, "appdata", "org.gnome.Recipes.appdata.xml", NULL);
 
-        g_message ("Loading release information for version %s to %s from %s", old_version, new_version, file);
+        g_info ("Loading release information for version %s to %s from %s", old_version, new_version, file);
 
         return parse_appdata (file, new_version, old_version);
 }

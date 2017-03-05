@@ -127,10 +127,10 @@ load_recipes (GrRecipeStore *self,
                 if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
                         g_error ("Failed to load recipe db: %s", error->message);
                 else
-                        g_message ("No recipe db at: %s", path);
+                        g_info ("No recipe db at: %s", path);
                 return FALSE;
         }
-        g_message ("Load recipe db: %s", path);
+        g_info ("Load recipe db: %s", path);
 
         groups = g_key_file_get_groups (keyfile, &length);
         for (i = 0; i < length; i++) {
@@ -430,7 +430,7 @@ save_recipes (GrRecipeStore *self)
                 dir = get_user_data_dir ();
         path = g_build_filename (dir, "recipes.db", NULL);
 
-        g_message ("Save recipe db: %s", path);
+        g_info ("Save recipe db: %s", path);
 
         keys = g_hash_table_get_keys (self->recipes);
         keys = g_list_sort (keys, (GCompareFunc)strcmp);
@@ -545,11 +545,11 @@ load_picks (GrRecipeStore *self,
                 if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
                         g_error ("Failed to load picks db: %s", error->message);
                 else
-                        g_message ("No picks db at: %s", path);
+                        g_info ("No picks db at: %s", path);
                 return FALSE;
         }
 
-        g_message ("Load picks db: %s", path);
+        g_info ("Load picks db: %s", path);
 
         self->picks = g_key_file_get_string_list (keyfile, "Content", "Picks", NULL, &error);
         if (error) {
@@ -596,11 +596,11 @@ load_favorites (GrRecipeStore *self,
                 if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
                         g_error ("Failed to load favorites db: %s", error->message);
                 else
-                        g_message ("No favorites db at: %s", path);
+                        g_info ("No favorites db at: %s", path);
                 return FALSE;
         }
 
-        g_message ("Load favorites db: %s", path);
+        g_info ("Load favorites db: %s", path);
 
         if (g_key_file_has_key (keyfile, "Content", "Recipes", NULL))
                 key = "Recipes";
@@ -640,7 +640,7 @@ save_favorites (GrRecipeStore *self)
 
         path = g_build_filename (get_user_data_dir (), "favorites.db", NULL);
 
-        g_message ("Save favorites db: %s", path);
+        g_info ("Save favorites db: %s", path);
 
         g_key_file_set_string_list (keyfile, "Content", "Recipes", (const char * const *)self->favorites, g_strv_length (self->favorites));
 
@@ -674,11 +674,11 @@ load_shopping (GrRecipeStore *self,
                 if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
                         g_error ("Failed to load shopping db: %s", error->message);
                 else
-                        g_message ("No shopping db at: %s", path);
+                        g_info ("No shopping db at: %s", path);
                 return FALSE;
         }
 
-        g_message ("Load shopping db: %s", path);
+        g_info ("Load shopping db: %s", path);
 
         self->shopping = g_key_file_get_string_list (keyfile, "Content", "Recipes", &len1, &error);
         if (error) {
@@ -724,7 +724,7 @@ save_shopping (GrRecipeStore *self)
 
         path = g_build_filename (get_user_data_dir (), "shopping.db", NULL);
 
-        g_message ("Save shopping db: %s", path);
+        g_info ("Save shopping db: %s", path);
 
         g_key_file_set_string_list (keyfile, "Content", "Recipes", (const char * const *)self->shopping, g_strv_length (self->shopping));
 
@@ -767,11 +767,11 @@ load_chefs (GrRecipeStore *self,
                 if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
                         g_error ("Failed to load chefs db: %s", error->message);
                 else
-                        g_message ("No chefs db at: %s", path);
+                        g_info ("No chefs db at: %s", path);
                 return FALSE;
         }
 
-        g_message ("Load chefs db: %s", path);
+        g_info ("Load chefs db: %s", path);
 
         groups = g_key_file_get_groups (keyfile, &length);
         for (i = 0; i < length; i++) {
@@ -861,7 +861,7 @@ save_chefs (GrRecipeStore *store)
                 dir = get_user_data_dir ();
         path = g_build_filename (dir, "chefs.db", NULL);
 
-        g_message ("Save chefs db: %s", path);
+        g_info ("Save chefs db: %s", path);
 
         keys = g_hash_table_get_keys (store->chefs);
         keys = g_list_sort (keys, (GCompareFunc)strcmp);
@@ -909,7 +909,7 @@ save_user (GrRecipeStore *self)
 
         path = g_build_filename (get_user_data_dir (), "user", NULL);
 
-        g_message ("Save user id: %s", path);
+        g_info ("Save user id: %s", path);
 
         if (self->user == NULL || self->user[0] == '\0') {
                 g_unlink (path);
@@ -942,7 +942,7 @@ load_user (GrRecipeStore *self,
                 return FALSE;
         }
 
-        g_message ("Load user id: %s", path);
+        g_info ("Load user id: %s", path);
 
         self->user = g_strdup (contents);
 
@@ -974,14 +974,14 @@ gr_recipe_store_init (GrRecipeStore *self)
         if (g_getenv ("RECIPES_DATA_DIR")) {
                 const char *dir = g_getenv ("RECIPES_DATA_DIR");
 
-                g_message ("Loading data from RECIPES_DATA_DIR: %s", dir);
+                g_info ("Loading data from RECIPES_DATA_DIR: %s", dir);
 
                 load_recipes (self, dir, FALSE);
                 load_chefs (self, dir, FALSE);
                 load_picks (self, dir);
 
-                g_message ("%d recipes loaded", g_hash_table_size (self->recipes));
-                g_message ("%d chefs loaded", g_hash_table_size (self->chefs));
+                g_info ("%d recipes loaded", g_hash_table_size (self->recipes));
+                g_info ("%d chefs loaded", g_hash_table_size (self->chefs));
 
                 return;
         }
@@ -1023,8 +1023,8 @@ gr_recipe_store_init (GrRecipeStore *self)
                 save_chefs (self);
         }
 
-        g_message ("%d recipes loaded", g_hash_table_size (self->recipes));
-        g_message ("%d chefs loaded", g_hash_table_size (self->chefs));
+        g_info ("%d recipes loaded", g_hash_table_size (self->recipes));
+        g_info ("%d chefs loaded", g_hash_table_size (self->chefs));
 }
 
 static guint add_signal;

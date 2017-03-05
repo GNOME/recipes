@@ -643,7 +643,7 @@ import_image (const char *path)
         else
                 format_name = g_strdup ("png");
 
-        g_debug ("Loading %s (format %s), importing to %s\n", path, format_name, imported);
+        g_info ("Loading %s (format %s), importing to %s\n", path, format_name, imported);
         oriented = gdk_pixbuf_apply_embedded_orientation (pixbuf);
 
         if (!gdk_pixbuf_save (oriented, imported, format_name, &error, NULL)) {

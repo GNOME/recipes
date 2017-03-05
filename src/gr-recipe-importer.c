@@ -346,13 +346,13 @@ recipe_dialog_response (GtkWidget        *dialog,
                         GrRecipeImporter *importer)
 {
         if (response_id == GTK_RESPONSE_CANCEL) {
-                g_message ("Not importing recipe %s", importer->recipe_name);
+                g_info ("Not importing recipe %s", importer->recipe_name);
                 gtk_widget_destroy (dialog);
         }
         else {
                 g_free (importer->recipe_name);
                 importer->recipe_name = g_strdup (g_object_get_data (G_OBJECT (dialog), "name"));
-                g_message ("Renaming recipe to %s while importing", importer->recipe_name);
+                g_info ("Renaming recipe to %s while importing", importer->recipe_name);
                 gtk_widget_destroy (dialog);
                 if (!import_recipe (importer))
                         return;
@@ -491,7 +491,7 @@ next:
 
         recipe = gr_recipe_store_get_recipe (store, importer->recipe_id);
         if (!recipe) {
-                g_message ("Recipe %s not yet known; importing", importer->recipe_id);
+                g_info ("Recipe %s not yet known; importing", importer->recipe_id);
                 if (!import_recipe (importer))
                         return FALSE;
                 goto next;
@@ -610,7 +610,7 @@ chef_dialog_response (GtkWidget        *dialog,
                       GrRecipeImporter *importer)
 {
         if (response_id == GTK_RESPONSE_CANCEL) {
-                g_message ("Chef %s known after all; not importing", importer->chef_id);
+                g_info ("Chef %s known after all; not importing", importer->chef_id);
                 gtk_widget_destroy (dialog);
         }
         else {
@@ -628,7 +628,7 @@ chef_dialog_response (GtkWidget        *dialog,
                 importer->chef_fullname = g_strdup (gtk_entry_get_text (GTK_ENTRY (importer->new_chef_fullname)));
                 importer->chef_description = get_text_view_text (GTK_TEXT_VIEW (importer->new_chef_description));
 
-                g_message ("Renaming chef to %s while importing", importer->chef_id);
+                g_info ("Renaming chef to %s while importing", importer->chef_id);
                 gtk_widget_destroy (dialog);
                 if (!import_chef (importer))
                         return;
@@ -721,7 +721,7 @@ next:
         g_hash_table_insert (importer->chef_id_map, g_strdup (importer->chef_id), g_strdup (id));
         chef = gr_recipe_store_get_chef (store, id);
         if (!chef) {
-                g_message ("Chef %s not yet known; importing", id);
+                g_info ("Chef %s not yet known; importing", id);
                 import_chef (importer);
                 goto next;
         }
@@ -729,7 +729,7 @@ next:
         if (g_strcmp0 (importer->chef_fullname, gr_chef_get_fullname (chef)) == 0 &&
             g_strcmp0 (importer->chef_name, gr_chef_get_name (chef)) == 0 &&
             g_strcmp0 (importer->chef_description, gr_chef_get_description (chef)) == 0) {
-                g_message ("Chef %s already known, not importing", id);
+                g_info ("Chef %s already known, not importing", id);
                 goto next;
         }
 

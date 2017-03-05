@@ -134,7 +134,7 @@ compose_mail_done (GObject      *source,
         reply = g_dbus_proxy_call_finish (G_DBUS_PROXY (source), result, &error);
         if (g_error_matches (error, G_DBUS_ERROR, G_DBUS_ERROR_UNKNOWN_INTERFACE) ||
             g_error_matches (error, G_DBUS_ERROR, G_DBUS_ERROR_UNKNOWN_METHOD)) {
-                g_message ("Email portal not present, falling back to mailto: url");
+                g_info ("Email portal not present, falling back to mailto: url");
                 send_mail_using_mailto (md);
                 return;
         }
@@ -161,7 +161,7 @@ window_handle_exported (GtkWindow  *window,
         proxy = get_mail_portal_proxy ();
 
         if (proxy == NULL) {
-                g_message ("Email portal not present, falling back to mailto: url");
+                g_info ("Email portal not present, falling back to mailto: url");
                 send_mail_using_mailto (md);
                 return;
         }

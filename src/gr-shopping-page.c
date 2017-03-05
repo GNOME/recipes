@@ -717,7 +717,7 @@ mail_done (GObject      *source,
                 GObject *file_chooser;
                 GtkWidget *window;
 
-                g_message ("Sending mail failed: %s", error->message);
+                g_info ("Sending mail failed: %s", error->message);
 
                 window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
                 file_chooser = (GObject *)gtk_file_chooser_native_new (_("Save the shopping list"),

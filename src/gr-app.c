@@ -252,7 +252,7 @@ load_application_css (GrApp *app)
         else
                 path = resource;
 
-        g_message ("Loading application CSS from %s", path);
+        g_info ("Loading application CSS from %s", path);
 
         css = gr_cuisine_get_css (path);
 

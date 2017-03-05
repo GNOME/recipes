@@ -268,7 +268,7 @@ save_notes (gpointer data)
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
         if (!gr_recipe_store_update_recipe (store, page->recipe, id, &error)) {
-                g_message ("Error: %s", error->message);
+                g_warning ("Error: %s", error->message);
         }
 
 out:

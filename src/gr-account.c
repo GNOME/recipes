@@ -105,7 +105,7 @@ account_response (GDBusConnection *connection,
         else {
                 g_autoptr(GError) error = NULL;
 
-                g_message ("Got an error from the Account portal");
+                g_info ("Got an error from the Account portal");
                 g_set_error (&error, G_IO_ERROR, G_IO_ERROR_FAILED,
                              _("Got an error from Account portal"));
 
@@ -128,7 +128,7 @@ window_handle_exported (GtkWindow  *window,
 
         cbdata->connection = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, &error);
 	if (!cbdata->connection) {
-                g_message ("Could not talk to D-Bus: %s", error->message);
+                g_info ("Could not talk to D-Bus: %s", error->message);
                 cbdata->callback (NULL, NULL, NULL, cbdata->data, error);
                 free_callback_data (cbdata);
                 return;
@@ -150,7 +150,7 @@ window_handle_exported (GtkWindow  *window,
                                            &error);
 
         if (!ret) {
-                g_message ("Could not talk to Account portal: %s", error->message);
+                g_info ("Could not talk to Account portal: %s", error->message);
                 cbdata->callback (NULL, NULL, NULL, cbdata->data, error);
                 free_callback_data (cbdata);
                 return;
@@ -208,7 +208,7 @@ got_account_info (const char  *id,
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         if (error) {
-                g_message ("Failed to get account information: %s", error->message);
+                g_info ("Failed to get account information: %s", error->message);
 		id = g_get_user_name ();
 		name = g_get_real_name ();
 		image_path = NULL;

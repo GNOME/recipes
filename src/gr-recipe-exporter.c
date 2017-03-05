@@ -159,7 +159,7 @@ mail_done (GObject      *source,
         if (!gr_send_mail_finish (result, &error)) {
                 GObject *file_chooser;
 
-                g_message ("Sending mail failed: %s", error->message);
+                g_info ("Sending mail failed: %s", error->message);
 
                 file_chooser = (GObject *)gtk_file_chooser_native_new (_("Save the exported recipe"),
                                                                        GTK_WINDOW (exporter->window),
@@ -545,10 +545,10 @@ export_dialog_response (GtkWidget        *dialog,
                         GrRecipeExporter *exporter)
 {
         if (response_id == GTK_RESPONSE_CANCEL) {
-                g_message ("not exporting now");
+                g_info ("Not exporting now");
         }
         else if (response_id == GTK_RESPONSE_OK) {
-                g_message ("exporting %d recipes now", g_list_length (exporter->recipes));
+                g_info ("Exporting %d recipes now", g_list_length (exporter->recipes));
 
                 exporter->contribute = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (exporter->contribute_button));
 
@@ -779,7 +779,7 @@ gr_recipe_exporter_export_all (GrRecipeExporter *exporter,
 {
         collect_all_recipes (exporter);
 
-        g_message ("Exporting %d recipes", g_list_length (exporter->recipes));
+        g_info ("Exporting %d recipes", g_list_length (exporter->recipes));
 
         if (exporter->recipes == NULL)
                 return;
