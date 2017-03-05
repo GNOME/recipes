@@ -1260,7 +1260,6 @@ edit_chef (GrEditPage *page)
 {
         GrChefDialog *dialog;
         GtkWidget *win;
-        const char *author;
         GrRecipeStore *store;
         g_autoptr(GrChef) chef = NULL;
 
@@ -1268,8 +1267,7 @@ edit_chef (GrEditPage *page)
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
-        author = page->author;
-        chef = gr_recipe_store_get_chef (store, author ? author : "");
+        chef = gr_recipe_store_get_chef (store, page->author ? page->author : "");
 
         dialog = gr_chef_dialog_new (chef, TRUE);
         g_signal_connect (dialog, "done", G_CALLBACK (chef_done), page);
@@ -1991,6 +1989,7 @@ gr_edit_page_edit (GrEditPage *page,
 
         g_object_get (recipe, "images", &images, NULL);
 
+        g_free (page->author);
         page->author = g_strdup (author);
 
         chef = gr_recipe_store_get_chef (store, author ? author : "");
