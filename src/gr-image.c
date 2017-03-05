@@ -20,12 +20,42 @@
 
 #include "config.h"
 
+#include <libsoup/soup.h>
+
 #include "gr-image.h"
+#include "gr-utils.h"
+
+
+typedef struct {
+        GtkImage *image;
+        int width;
+        int height;
+        gboolean fit;
+        GCancellable *cancellable;
+        GrImageCallback callback;
+        gpointer data;
+} TaskData;
+
+static void
+task_data_free (gpointer data)
+{
+        TaskData *td = data;
+
+        g_clear_object (&td->cancellable);
+
+        g_free (td);
+}
 
 struct _GrImage
 {
         GObject parent_instance;
+        char *id;
         char *path;
+
+        SoupSession *session;
+        SoupMessage *thumbnail_message;
+        SoupMessage *image_message;
+        GList *pending;
 };
 
 G_DEFINE_TYPE (GrImage, gr_image, G_TYPE_OBJECT)
@@ -33,9 +63,24 @@ G_DEFINE_TYPE (GrImage, gr_image, G_TYPE_OBJECT)
 static void
 gr_image_finalize (GObject *object)
 {
-        GrImage *image = GR_IMAGE (object);
+        GrImage *ri = GR_IMAGE (object);
 
-        g_free (image->path);
+        g_list_free_full (ri->pending, task_data_free);
+        ri->pending = NULL;
+
+        if (ri->thumbnail_message)
+                soup_session_cancel_message (ri->session,
+                                             ri->thumbnail_message,
+                                             SOUP_STATUS_CANCELLED);
+        g_clear_object (&ri->thumbnail_message);
+        if (ri->image_message)
+                soup_session_cancel_message (ri->session,
+                                             ri->image_message,
+                                             SOUP_STATUS_CANCELLED);
+        g_clear_object (&ri->image_message);
+        g_clear_object (&ri->session);
+        g_free (ri->path);
+        g_free (ri->id);
 
         G_OBJECT_CLASS (gr_image_parent_class)->finalize (object);
 }
@@ -54,14 +99,26 @@ gr_image_init (GrImage *image)
 }
 
 GrImage *
-gr_image_new (const char *path)
+gr_image_new (SoupSession *session,
+              const char  *id,
+              const char  *path)
 {
         GrImage *image;
 
         image = g_object_new (GR_TYPE_IMAGE, NULL);
+        image->session = g_object_ref (session);
+        gr_image_set_id (image, id);
         gr_image_set_path (image, path);
 
         return image;
+}
+
+void
+gr_image_set_id (GrImage    *image,
+                 const char *id)
+{
+        g_free (image->id);
+        image->id = g_strdup (id);
 }
 
 void
@@ -82,4 +139,352 @@ GPtrArray *
 gr_image_array_new (void)
 {
         return g_ptr_array_new_with_free_func (g_object_unref);
+}
+
+static GdkPixbuf *
+load_pixbuf (const char *path,
+             int         width,
+             int         height,
+             gboolean    fit)
+{
+        GdkPixbuf *pixbuf;
+
+        if (fit)
+                pixbuf = load_pixbuf_fit_size (path, width, height, FALSE);
+        else
+                pixbuf = load_pixbuf_fill_size (path, width, height);
+
+        return pixbuf;
+}
+
+#define BASE_URL "https://static.gnome.org/recipes/v1"
+
+static char *
+get_image_url (GrImage *ri)
+{
+        g_autofree char *basename = NULL;
+
+        basename = g_path_get_basename (ri->path);
+        return g_strconcat (BASE_URL, "/images/", ri->id, "/", basename, NULL);
+}
+
+static char *
+get_thumbnail_url (GrImage *ri)
+{
+        g_autofree char *basename = NULL;
+
+        basename = g_path_get_basename (ri->path);
+        return g_strconcat (BASE_URL, "/thumbnails/", ri->id, "/", basename, NULL);
+}
+
+static char *
+get_image_cache_path (GrImage *ri)
+{
+        char *filename;
+        g_autofree char *cache_dir = NULL;
+        g_autofree char *basename = NULL;
+
+        basename = g_path_get_basename (ri->path);
+        filename = g_build_filename (g_get_user_cache_dir (), PACKAGE_NAME, "images", ri->id,  basename, NULL);
+        cache_dir = g_path_get_dirname (filename);
+        g_mkdir_with_parents (cache_dir, 0755);
+
+        return filename;
+}
+
+static char *
+get_thumbnail_cache_path (GrImage *ri)
+{
+        char *filename;
+        g_autofree char *cache_dir = NULL;
+        g_autofree char *basename = NULL;
+
+        basename = g_path_get_basename (ri->path);
+        filename = g_build_filename (g_get_user_cache_dir (), PACKAGE_NAME, "thumbnails", ri->id, basename, NULL);
+        cache_dir = g_path_get_dirname (filename);
+        g_mkdir_with_parents (cache_dir, 0755);
+
+        return filename;
+}
+
+static gboolean
+check_recent_failure (const char *path)
+{
+        g_autoptr(GFile) file = NULL;
+        g_autoptr(GFileInfo) info = NULL;
+
+        // We create negative cache entries as empty files, and we
+        // limit our requests to once per day
+
+        file = g_file_new_for_path (path);
+        info = g_file_query_info (file,
+                                  G_FILE_ATTRIBUTE_STANDARD_SIZE ","
+                                  G_FILE_ATTRIBUTE_TIME_MODIFIED,
+                                  G_FILE_QUERY_INFO_NONE,
+                                  NULL,
+                                  NULL);
+        if (info) {
+                goffset size;
+                GTimeVal tv;
+
+                size = g_file_info_get_size (info);
+                g_file_info_get_modification_time (info, &tv);
+
+                if (size == 6) {
+                        g_autoptr(GDateTime) now = g_date_time_new_now_utc ();
+                        g_autoptr(GDateTime) mtime = g_date_time_new_from_timeval_utc (&tv);
+
+                        return g_date_time_difference (now, mtime) < G_TIME_SPAN_DAY;
+                }
+        }
+
+        return FALSE;
+}
+
+static void
+write_negative_cache_entry (const char *path)
+{
+        if (!g_file_set_contents (path, "failed", 6, NULL))
+                g_warning ("Failed to write a negative cache entry for %s", path);
+}
+
+static void
+set_image (SoupSession *session,
+           SoupMessage *msg,
+           gpointer     data)
+{
+        GrImage *ri = data;
+        g_autofree char *cache_path = NULL;
+        GList *l;
+
+        if (msg->status_code == SOUP_STATUS_CANCELLED || ri->session == NULL) {
+                g_debug ("Message cancelled");
+                goto error;
+        }
+
+        if (msg == ri->thumbnail_message)
+                cache_path = get_thumbnail_cache_path (ri);
+        else
+                cache_path = get_image_cache_path (ri);
+
+        if (msg->status_code != SOUP_STATUS_OK) {
+                g_autofree char *url = get_image_url (ri);
+                g_debug ("Got status %d, record failure to load %s", msg->status_code, url);
+                write_negative_cache_entry (cache_path);
+                goto out;
+        }
+
+        g_debug ("Saving image to %s", cache_path);
+        if (!g_file_set_contents (cache_path, msg->response_body->data, msg->response_body->length, NULL)) {
+                g_debug ("Saving image to %s failed", cache_path);
+                goto out;
+        }
+
+        g_debug ("Loading image for %s", ri->path);
+
+        l = ri->pending;
+        while (l) {
+                GList *next = l->next;
+                TaskData *td = l->data;
+                g_autoptr(GdkPixbuf) pixbuf = NULL;
+
+                if (g_cancellable_is_cancelled (td->cancellable)) {
+                        ri->pending = g_list_remove (ri->pending, td);
+                        task_data_free (td);
+                }
+                else if (msg == ri->thumbnail_message &&
+                    (td->width > 150 || td->height > 150)) {
+                        g_autoptr(GdkPixbuf) tmp = NULL;
+                        int w, h;
+
+                        if (td->width < td->height) {
+                                h = 150;
+                                w = 150 * td->width / td->height;
+                        }
+                        else {
+                                w = 150;
+                                h = 150 * td->height / td->width;
+                        }
+
+                        tmp = load_pixbuf (cache_path, w, h, td->fit);
+                        pixbuf = gdk_pixbuf_scale_simple (tmp, td->width, td->height, GDK_INTERP_BILINEAR);
+                        pixbuf_blur (pixbuf, 5, 3);
+                        td->callback (ri, pixbuf, td->data);
+                }
+                else {
+                        pixbuf = load_pixbuf (cache_path, td->width, td->height, td->fit);
+                        td->callback (ri, pixbuf, td->data);
+
+                        ri->pending = g_list_remove (ri->pending, td);
+                        task_data_free (td);
+                }
+
+                l = next;
+        }
+
+out:
+        if (msg == ri->thumbnail_message)
+                g_clear_object (&ri->thumbnail_message);
+        else
+                g_clear_object (&ri->image_message);
+
+        if (ri->thumbnail_message || ri->image_message)
+                return;
+
+error:
+        g_list_free_full (ri->pending, task_data_free);
+        ri->pending = NULL;
+}
+
+void
+gr_image_load (GrImage         *ri,
+               int              width,
+               int              height,
+               gboolean         fit,
+               GCancellable    *cancellable,
+               GrImageCallback  callback,
+               gpointer         data)
+{
+        TaskData *td;
+        g_autofree char *image_cache_path = NULL;
+        g_autofree char *thumbnail_cache_path = NULL;
+        g_autoptr(GdkPixbuf) pixbuf = NULL;
+        gboolean need_image = TRUE;
+        gboolean need_thumbnail = TRUE;
+        int w, h;
+
+        if (ri->path[0] == '/') {
+                pixbuf = load_pixbuf (ri->path, width, height, fit);
+                if (pixbuf) {
+                        g_debug ("Use local image for %s", ri->path);
+                        callback (ri, pixbuf, data);
+                        return;
+                }
+        }
+
+        image_cache_path = get_image_cache_path (ri);
+        thumbnail_cache_path = get_thumbnail_cache_path (ri);
+
+        if (width <= 150 && height <= 150) {
+                pixbuf = load_pixbuf (thumbnail_cache_path, width, height, fit);
+                need_image = FALSE;
+        }
+        else {
+                pixbuf = load_pixbuf (image_cache_path, width, height, fit);
+        }
+
+        if (pixbuf) {
+                 g_debug ("Use cached %s for %s",
+                          width <= 150 && height <= 150 ? "thumbnail" : "image",
+                          ri->path);
+                callback (ri, pixbuf, data);
+                return;
+        }
+
+        if (width < height) {
+                h = 150;
+                w = 150 * width / height;
+        }
+        else {
+                w = 150;
+                h = 150 * height / width;
+        }
+
+        pixbuf = load_pixbuf (thumbnail_cache_path, w, h, fit);
+        if (pixbuf) {
+                g_autoptr(GdkPixbuf) blurred = NULL;
+
+                g_debug ("Use cached thumbnail for %s", ri->path);
+                blurred = gdk_pixbuf_scale_simple (pixbuf, width, height, GDK_INTERP_BILINEAR);
+                pixbuf_blur (blurred, 5, 3);
+                callback (ri, blurred, data);
+                need_thumbnail = FALSE;
+        }
+
+        if (need_thumbnail && check_recent_failure (thumbnail_cache_path)) {
+                g_autofree char *url = get_thumbnail_url (ri);
+                g_debug ("Recently failed to load %s, skipping", url);
+                need_thumbnail = FALSE;
+        }
+
+        if (need_image && check_recent_failure (image_cache_path)) {
+                g_autofree char *url = get_image_url (ri);
+                g_debug ("Recently failed to load %s, skipping", url);
+                need_image = FALSE;
+        }
+
+        if (!need_thumbnail && !need_image)
+                return;
+
+        td = g_new0 (TaskData, 1);
+        td->width = width;
+        td->height = height;
+        td->fit = fit;
+        td->cancellable = cancellable ? g_object_ref (cancellable) : NULL;
+        td->callback = callback;
+        td->data = data;
+
+        ri->pending = g_list_prepend (ri->pending, td);
+
+        if (need_thumbnail && ri->thumbnail_message == NULL) {
+                        g_autofree char *url = NULL;
+                        g_autoptr(SoupURI) base_uri = NULL;
+
+                        url = get_thumbnail_url (ri);
+                        base_uri = soup_uri_new (url);
+                        ri->thumbnail_message = soup_message_new_from_uri (SOUP_METHOD_GET, base_uri);
+                        g_debug ("Load thumbnail for %s from %s", ri->path, url);
+                        soup_session_queue_message (ri->session, g_object_ref (ri->thumbnail_message), set_image, ri);
+        }
+
+        if (need_image && ri->image_message == NULL) {
+                g_autofree char *url = NULL;
+                g_autoptr(SoupURI) base_uri = NULL;
+
+                url = get_image_url (ri);
+                base_uri = soup_uri_new (url);
+                ri->image_message = soup_message_new_from_uri (SOUP_METHOD_GET, base_uri);
+                g_debug ("Load image for %s from %s", ri->path, url);
+                soup_session_queue_message (ri->session, g_object_ref (ri->image_message), set_image, ri);
+        }
+}
+
+void
+gr_image_set_pixbuf (GrImage   *ri,
+                     GdkPixbuf *pixbuf,
+                     gpointer   data)
+{
+        gtk_image_set_from_pixbuf (GTK_IMAGE (data), pixbuf);
+}
+
+GdkPixbuf  *
+gr_image_load_sync (GrImage   *ri,
+                    int        width,
+                    int        height,
+                    gboolean   fit)
+{
+        GdkPixbuf *pixbuf;
+
+        if (ri->path[0] == '/') {
+                pixbuf = load_pixbuf (ri->path, width, height, fit);
+        }
+        else {
+                g_autofree char *cache_path = NULL;
+
+                cache_path = get_image_cache_path (ri);
+                pixbuf = load_pixbuf (cache_path, width, height, fit);
+        }
+
+        if (!pixbuf) {
+                g_autoptr(GtkIconInfo) info = NULL;
+
+                info = gtk_icon_theme_lookup_icon (gtk_icon_theme_get_default (),
+                                                   "org.gnome.Recipes",
+                                                    256,
+                                                    GTK_ICON_LOOKUP_FORCE_SIZE);
+                pixbuf = load_pixbuf (gtk_icon_info_get_filename (info), width, height, fit);
+
+        }
+
+        return pixbuf;
 }

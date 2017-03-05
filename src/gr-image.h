@@ -21,6 +21,7 @@
 #pragma once
 
 #include <gtk/gtk.h>
+#include <libsoup/soup.h>
 
 G_BEGIN_DECLS
 
@@ -28,10 +29,34 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrImage, gr_image, GR, IMAGE, GObject)
 
-GrImage    *gr_image_new      (const char *path);
-void        gr_image_set_path (GrImage    *image,
-                               const char *path);
-const char *gr_image_get_path (GrImage    *image);
+GrImage    *gr_image_new         (SoupSession       *session,
+                                  const char        *id,
+                                  const char        *path);
+void        gr_image_set_id      (GrImage           *image,
+                                  const char        *id);
+void        gr_image_set_path    (GrImage           *image,
+                                  const char        *path);
+const char *gr_image_get_path    (GrImage           *image);
+GdkPixbuf  *gr_image_load_sync   (GrImage           *image,
+                                  int                 width,
+                                  int                 height,
+                                  gboolean            fit);
+
+typedef void (*GrImageCallback) (GrImage   *ri,
+                                 GdkPixbuf *pixbuf,
+                                 gpointer   data);
+
+void        gr_image_load        (GrImage            *ri,
+                                  int                 width,
+                                  int                 height,
+                                  gboolean            fit,
+                                  GCancellable       *cancellable,
+                                  GrImageCallback     callback,
+                                  gpointer            data);
+
+void        gr_image_set_pixbuf  (GrImage   *ri,
+                                  GdkPixbuf *pixbuf,
+                                  gpointer   data);
 
 GPtrArray *gr_image_array_new (void);
 
