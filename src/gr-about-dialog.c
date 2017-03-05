@@ -837,6 +837,7 @@ gr_about_dialog_new (void)
                 "Emmanuele Bassi",
                 "Adelia",
                 "Sylvia",
+                "Georges Basile Stavracas Neto",
                 NULL
         };
         g_autoptr(GdkPixbuf) logo = NULL;
