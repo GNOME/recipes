@@ -9,12 +9,14 @@ This app is about cooking and recipes.
 
 The main objects of interest are
 
-- recipes
-- ingredients
-- cuisines
-- chefs
+- Recipes
+- Ingredients
+- Cuisines
+- Chefs
 
 The design can be found here: https://wiki.gnome.org/Design/Apps/Recipes
+
+Other information can be found here: https://wiki.gnome.org/Apps/Recipes
 
 Building
 --------
@@ -37,20 +39,7 @@ make install
 ```
 I list `make install` as the last step here, but Recipes works fine uninstalled as well.
 
-Testing
--------
-
-If you don't feel like building from source yourself, you can use Flatpak, like this:
-
-```
-flatpak install --from https://matthiasclasen.github.io/recipes-releases/gnome-recipes.flatpakref
-```
-
-After installing the Flatpak, the applications will show up in the GNOME shell overview, but you can also launch it from the commandline:
-
-```
-flatpak run org.gnome.Recipes
-```
+jhbuild also knows how to build recipes.
 
 Other platforms
 ---------------
@@ -87,3 +76,22 @@ To build a released version of recipes on OS X, just
 ```
 brew install recipes
 ```
+
+jhbuild has also been used successfully to build recipes on OS X.
+
+Testing
+-------
+
+If you don't feel like building from source yourself, you can use Flatpak, like this:
+
+```
+flatpak install --from https://matthiasclasen.github.io/recipes-releases/gnome-recipes.flatpakref
+```
+
+After installing the Flatpak, the applications will show up in the GNOME shell overview, but you can also launch it from the commandline:
+
+```
+flatpak run org.gnome.Recipes
+```
+
+There is also a [recipes.dmg](https://download.gnome.org/binaries/mac/recipes/0.20/recipes.dmg) binary for OS X.
