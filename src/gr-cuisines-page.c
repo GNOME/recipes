@@ -120,6 +120,22 @@ season_expander_button_clicked (GrCuisinesPage *page)
 }
 
 static void
+cuisine_clicked (GrCategoryTile *tile,
+                 GrCuisinesPage *page)
+{
+        GtkWidget *window;
+        const char *cuisine;
+        const char *title;
+
+        window = gtk_widget_get_ancestor (GTK_WIDGET (tile), GR_TYPE_WINDOW);
+
+        cuisine = gr_category_tile_get_category (tile);
+        title = gr_category_tile_get_label (tile);
+
+        gr_window_show_cuisine (GR_WINDOW (window), cuisine, title);
+}
+
+static void
 populate_cuisines (GrCuisinesPage *page)
 {
         GtkWidget *tile;
@@ -131,6 +147,7 @@ populate_cuisines (GrCuisinesPage *page)
         int tiles;
 
         container_remove_all (GTK_CONTAINER (page->cuisines_box));
+        container_remove_all (GTK_CONTAINER (page->cuisines_box2));
 
         store = gr_recipe_store_get ();
 
@@ -163,15 +180,22 @@ populate_cuisines (GrCuisinesPage *page)
                 if (strcmp (page->featured, cuisines[i]) == 0)
                         continue;
 
-                tile = gr_cuisine_tile_new (cuisines[i], FALSE);
-                gtk_widget_show (tile);
-                gtk_widget_set_halign (tile, GTK_ALIGN_FILL);
-                gtk_grid_attach (GTK_GRID (page->cuisines_box), tile, tiles % 2, 1 + tiles / 2, 1, 1);
+                if (tiles < 4) {
+                        tile = gr_cuisine_tile_new (cuisines[i], FALSE);
+                        gtk_widget_show (tile);
+                        gtk_widget_set_halign (tile, GTK_ALIGN_FILL);
+                        gtk_grid_attach (GTK_GRID (page->cuisines_box), tile, tiles % 2, 1 + tiles / 2, 1, 1);
+                }
+                else {
+                        const char *title;
 
+                        gr_cuisine_get_data (cuisines[i], &title, NULL, NULL);
+                        tile = gr_category_tile_new_with_label (cuisines[i], title);
+                        gtk_widget_show (tile);
+                        g_signal_connect (tile, "clicked", G_CALLBACK (cuisine_clicked), page);
+                        gtk_container_add (GTK_CONTAINER (page->cuisines_box2), tile);
+                }
                 tiles++;
-
-                if (tiles == 4)
-                        break;
         }
 }
 
