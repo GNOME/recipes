@@ -39,6 +39,7 @@ struct _GrApp
 {
         GtkApplication parent_instance;
 
+        SoupSession *session;
         GrShellSearchProvider *search_provider;
         GtkCssProvider *css_provider;
 };
@@ -51,6 +52,7 @@ gr_app_finalize (GObject *object)
 {
         GrApp *self = GR_APP (object);
 
+        g_clear_object (&self->session);
         g_clear_object (&self->search_provider);
         g_clear_object (&self->css_provider);
 
@@ -397,6 +399,10 @@ gr_app_init (GrApp *self)
                                        _("Turn on verbose logging"), NULL);
 
         g_log_set_writer_func (gr_log_writer, NULL, NULL);
+
+        self->session = soup_session_new_with_options (SOUP_SESSION_USER_AGENT,
+                                                       PACKAGE_NAME "/" PACKAGE_VERSION,
+                                                       NULL);
 }
 
 static int
@@ -449,4 +455,10 @@ gr_app_new (void)
                              "application-id", "org.gnome.Recipes",
                              "flags", G_APPLICATION_HANDLES_OPEN | G_APPLICATION_CAN_OVERRIDE_APP_ID,
                              NULL);
+}
+
+SoupSession *
+gr_app_get_soup_session (GrApp *app)
+{
+        return app->session;
 }
