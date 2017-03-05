@@ -342,6 +342,25 @@ static void
 gr_app_init (GrApp *self)
 {
         self->store = gr_recipe_store_new ();
+
+        g_application_add_main_option (G_APPLICATION (self),
+                                       "version", 'v',
+                                       G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE,
+                                       _("Print the version and exit"), NULL);
+}
+
+static int
+gr_app_handle_local_options (GApplication *app,
+                             GVariantDict *options)
+{
+        gboolean version;
+
+        if (g_variant_dict_lookup (options, "version", "b", &version)) {
+                g_print ("%s %s\n", PACKAGE_NAME, PACKAGE_VERSION);
+                return 0;
+        }
+
+        return -1;
 }
 
 static void
@@ -354,6 +373,7 @@ gr_app_class_init (GrAppClass *klass)
 
         application_class->startup = gr_app_startup;
         application_class->activate = gr_app_activate;
+        application_class->handle_local_options = gr_app_handle_local_options;
         application_class->open = gr_app_open;
         application_class->dbus_register = gr_app_dbus_register;
         application_class->dbus_unregister = gr_app_dbus_unregister;
