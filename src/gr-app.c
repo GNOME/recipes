@@ -332,7 +332,8 @@ load_application_css (GrApp *app)
 static void
 gr_app_startup (GApplication *app)
 {
-        const gchar *quit_accels[2] = { "<Ctrl>Q", NULL };
+        const gchar *quit_accels[2] = { "<Primary>Q", NULL };
+        const gchar *search_accels[2] = { "<Primary>F", NULL };
 
         G_APPLICATION_CLASS (gr_app_parent_class)->startup (app);
 
@@ -349,9 +350,8 @@ gr_app_startup (GApplication *app)
         }
 #endif
 
-        gtk_application_set_accels_for_action (GTK_APPLICATION (app),
-                                               "app.quit",
-                                               quit_accels);
+        gtk_application_set_accels_for_action (GTK_APPLICATION (app), "app.quit", quit_accels);
+        gtk_application_set_accels_for_action (GTK_APPLICATION (app), "app.search('')", search_accels);
 
         load_application_css (GR_APP (app));
 }
