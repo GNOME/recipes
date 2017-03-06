@@ -479,6 +479,10 @@ gr_chef_dialog_new (GrChef   *chef,
                                "use-header-bar", use_header_bar,
                                NULL);
 
+        gtk_widget_realize (GTK_WIDGET (dialog));
+        gdk_window_set_functions (gtk_widget_get_window (GTK_WIDGET (dialog)),
+                                  GDK_FUNC_ALL | GDK_FUNC_MINIMIZE | GDK_FUNC_MAXIMIZE);
+
         gr_chef_dialog_set_chef (dialog, chef);
         gr_chef_dialog_can_create (dialog, create);
 

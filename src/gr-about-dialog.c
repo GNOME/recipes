@@ -878,5 +878,9 @@ gr_about_dialog_new (void)
         add_built_logo (about);
         add_system_tab (about);
 
+	gtk_widget_realize (GTK_WIDGET (about));
+	gdk_window_set_functions (gtk_widget_get_window (GTK_WIDGET (about)),
+                                  GDK_FUNC_ALL | GDK_FUNC_MINIMIZE | GDK_FUNC_MAXIMIZE);
+
         return about;
 }

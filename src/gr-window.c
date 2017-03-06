@@ -1203,6 +1203,11 @@ gr_window_show_news (GrWindow *window)
         builder = gtk_builder_new_from_resource ("/org/gnome/Recipes/recipe-whats-new-dialog.ui");
         dialog = GTK_WINDOW (gtk_builder_get_object (builder, "dialog"));
         gtk_window_set_transient_for (dialog, GTK_WINDOW (window));
+
+	gtk_widget_realize (GTK_WIDGET (dialog));
+	gdk_window_set_functions (gtk_widget_get_window (GTK_WIDGET (dialog)),
+                                  GDK_FUNC_ALL | GDK_FUNC_MINIMIZE | GDK_FUNC_MAXIMIZE);
+
         box = GTK_WIDGET (gtk_builder_get_object (builder, "box"));
 
         for (i = 0; i < news->len; i++) {
