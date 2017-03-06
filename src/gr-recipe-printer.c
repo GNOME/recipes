@@ -23,6 +23,7 @@
 #include <glib/gi18n.h>
 
 #include "gr-recipe-printer.h"
+#include "gr-recipe-formatter.h"
 #include "gr-ingredients-list.h"
 #include "gr-images.h"
 #include "gr-chef.h"
@@ -70,80 +71,27 @@ gr_recipe_printer_new (GtkWindow *parent)
         return printer;
 }
 
-typedef struct {
-        GString *string;
-        gboolean ignore;
-} ParserData;
-
-static void
-start_element (GMarkupParseContext  *context,
-               const char           *element_name,
-               const char          **attribute_names,
-               const char          **attribute_values,
-               gpointer              user_data,
-               GError              **error)
-{
-        ParserData *data = user_data;
-
-        if (strcmp (element_name, "a") == 0)
-                data->ignore = TRUE;
-}
-
-static void
-end_element (GMarkupParseContext  *context,
-             const char           *element_name,
-             gpointer              user_data,
-             GError              **error)
-{
-        ParserData *data = user_data;
-
-        if (strcmp (element_name, "a") == 0)
-                data->ignore = FALSE;
-}
-
-static void
-text (GMarkupParseContext  *context,
-      const char           *text,
-      gsize                 text_len,
-      gpointer              user_data,
-      GError              **error)
-{
-        ParserData *data = user_data;
-
-        if (!data->ignore)
-                g_string_append_len (data->string, text, text_len);
-}
-
-static GMarkupParser parser = {
-       start_element,
-       end_element,
-       text,
-       NULL,
-       NULL,
-};
-
 static char *
-strip_links (const char *text)
+process_instructions (const char *instructions)
 {
-        g_autoptr(GMarkupParseContext) context = NULL;
-        g_autoptr(GString) string = NULL;
-        g_autoptr(GError) error = NULL;
-        ParserData data;
+        g_autoptr(GPtrArray) steps = NULL;
+        GString *s;
+        int i;
 
-        string = g_string_new ("");
-        data.string = string;
-        data.ignore = FALSE;
+        steps = gr_recipe_parse_instructions (instructions, TRUE);
 
-        context = g_markup_parse_context_new (&parser, 0, &data, NULL);
+        s = g_string_new ("");
 
-        if (!g_markup_parse_context_parse (context, "<instructions>", -1, &error) ||
-            !g_markup_parse_context_parse (context, text, -1, &error) ||
-            !g_markup_parse_context_parse (context, "</instructions>", -1, &error)) {
-                g_message ("Failed to parse instructions: %s", error->message);
-                return g_strdup ("");
+        for (i = 0; i < steps->len; i++) {
+                GrRecipeStep *step = (GrRecipeStep *)g_ptr_array_index (steps, i);
+
+                if (i > 0)
+                        g_string_append (s, "\n\n");
+
+                g_string_append (s, step->text);
         }
 
-        return g_strdup (string->str);
+        return g_string_free (s, FALSE);
 }
 
 static void
@@ -296,7 +244,7 @@ begin_print (GtkPrintOperation *operation,
         attr->end_index = s->len + 1;
         pango_attr_list_insert (attrs, attr);
 
-        instructions = strip_links (gr_recipe_get_translated_instructions (printer->recipe));
+        instructions = process_instructions (gr_recipe_get_translated_instructions (printer->recipe));
 
         g_string_append (s, "\n\n");
         g_string_append (s, instructions);
