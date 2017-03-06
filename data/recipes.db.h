@@ -1,5 +1,16 @@
 #if 0
 
+N_("Henry's Goulash")
+N_("Originally from Hungary, this dish is widespread in Central Europe.")
+N_("This is my friend Henry's version of it.")
+N_("Chop very minutely onions and garlic. Cut the meat in chunks. Chop red bell peppers in small squares.")
+N_("Cook first the meat, alone without salt or spices.  Keep it warm in a separated bowl.")
+N_("Fry in a mixture of butter and oil half of each pepper, onions and garlic.  When this is soft, add the tomato paste.")
+N_("When everything is almost ready, add meat, wine, spices and bay leaves.  ")
+N_("Put everything in the oven at a low temperature and cook it for some two hours.")
+N_("Meantime the goulash is in the oven, chop the potatoes in sledges and cook them with salt & pepper.")
+N_("Serve warm together.")
+N_("If you don't have or don't want potatoes, you can use pasta instead.")
 N_("Borscht")
 N_("This is a traditional soup from East and Central Europe. There are an Ukrainian/Russian and a Polish version, but both a very similar so I put them together in a general recipe.")
 N_("[image:0]Over an open flame or under a broiler, roast 1 carrot and half of the onion until charred, about 3 minutes.")

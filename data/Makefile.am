@@ -178,7 +178,8 @@ dist_images_DATA = \
 	images/big-italian.png		\
 	images/big-mediterranean.png	\
 	images/big-nordic.jpg		\
-	images/big-turkish.png
+	images/big-turkish.png		\
+	images/20160205-beef-goulash-hungarian-recipe-food-lab-18.jpg
 
 dist_sounds_DATA = \
 	sounds/complete.oga

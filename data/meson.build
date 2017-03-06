@@ -162,6 +162,7 @@ install_data(  'images/adelia.jpg',
                 'images/whitefish3.jpg',
                 'images/whitefish4.jpg',
                 'images/wholesale-crackers.jpg',
+                'images/20160205-beef-goulash-hungarian-recipe-food-lab-18.jpg',
                 install_dir: join_paths([pkgdatadir,'images']))
 
 install_data('sounds/complete.oga',
