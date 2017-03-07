@@ -46,7 +46,6 @@
  * - picks, with lists of things to put on the landing page
  * - favorites.db, with a list of the user's favorites
  * - shopping.db, with the current shppping list
- * - cooking, with a counter for how often cooking mode was launched
  *
  * Some of these files are preinstalled (picks.db), some are only per-user
  * (favorites.db, shopping.db, user, cooking), and some are both, with the
@@ -66,7 +65,9 @@
  * Ancillary data
  * --------------
  *
- *  The user id of the user is kept in gsettings
+ * Ancillary data is kept in gsettings:
+ *  - the user id of the user
+ *  - the counter for how often cooking mode was launched
  */
 
 struct _GrRecipeStore
