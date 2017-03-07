@@ -91,48 +91,18 @@ gr_cooking_page_init (GrCookingPage *self)
         gr_cooking_view_set_timer_box (GR_COOKING_VIEW (self->cooking_view), self->mini_timer_box);
 }
 
-static int
+static guint
 get_cooking_overlay_count (void)
 {
-        g_autofree char *path = NULL;
-        g_autoptr(GKeyFile) keyfile = NULL;
-        g_autoptr(GError) error = NULL;
-        int count;
-
-        keyfile = g_key_file_new ();
-
-        path = g_build_filename (get_user_data_dir (), "cooking", NULL);
-        if (!g_key_file_load_from_file (keyfile, path, G_KEY_FILE_NONE, &error)) {
-                if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
-                        g_error ("Failed to load cooking overlay count: %s", error->message);
-                return 0;
-        }
-
-        count = g_key_file_get_integer (keyfile, "Cooking", "OverlayShown", &error);
-        if (error) {
-                g_error ("Failed to load cooking overlay count: %s", error->message);
-                return 0;
-        }
-
-        return count;
+        g_autoptr(GSettings) settings = g_settings_new ("org.gnome.recipes");
+        return g_settings_get_uint (settings, "cooking");
 }
 
 static void
-set_cooking_overlay_count (int count)
+set_cooking_overlay_count (uint count)
 {
-        g_autofree char *path = NULL;
-        g_autoptr(GKeyFile) keyfile = NULL;
-        g_autoptr(GError) error = NULL;
-
-        keyfile = g_key_file_new ();
-
-        path = g_build_filename (get_user_data_dir (), "cooking", NULL);
-
-        g_key_file_set_integer (keyfile, "Cooking", "OverlayShown", count);
-
-        if (!g_key_file_save_to_file (keyfile, path, &error)) {
-                g_error ("Failed to save cooking overlay count: %s", error->message);
-        }
+        g_autoptr(GSettings) settings = g_settings_new ("org.gnome.recipes");
+        g_settings_set_uint (settings, "cooking", count);
 }
 
 static void
