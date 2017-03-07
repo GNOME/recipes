@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-05 16:13+0000\n"
-"PO-Revision-Date: 2017-03-05 23:33+0100\n"
-"Last-Translator: Josef Andersson <l10nl18nsweja@gmail.com>\n"
+"POT-Creation-Date: 2017-03-07 10:06+0000\n"
+"PO-Revision-Date: 2017-03-07 20:17+0100\n"
+"Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
 #: src/gr-window.ui:354 src/gr-about-dialog.c:860 src/gr-window.c:300
-#: src/gr-window.c:710
+#: src/gr-window.c:759
 msgid "Recipes"
 msgstr "Recept"
 
@@ -123,7 +123,7 @@ msgstr "Bild:"
 msgid "Chef Information"
 msgstr "Kock-information"
 
-#: src/gr-chef-dialog.ui:11 src/gr-window.c:903
+#: src/gr-chef-dialog.ui:11 src/gr-window.c:952
 msgid "_Cancel"
 msgstr "_Avbryt"
 
@@ -260,7 +260,7 @@ msgid "Note"
 msgstr "Anteckning"
 
 #: src/gr-details-page.ui:411 src/gr-edit-page.ui:644
-#: src/gr-recipe-formatter.c:87 src/gr-recipe-printer.c:294
+#: src/gr-recipe-formatter.c:87 src/gr-recipe-printer.c:242
 msgid "Directions"
 msgstr "Instruktioner"
 
@@ -401,7 +401,7 @@ msgstr "Vegetarian"
 msgid "Milk free"
 msgstr "Mjölkfri"
 
-#: src/gr-edit-page.ui:704
+#: src/gr-edit-page.ui:704 src/menus-traditional.ui:27
 msgid "Edit"
 msgstr "Redigera"
 
@@ -497,7 +497,7 @@ msgid "No restrictions"
 msgstr "Inga begränsningar"
 
 #: src/gr-query-editor.ui:237 src/gr-edit-page.c:1634
-#: src/gr-recipe-formatter.c:68 src/gr-recipe-printer.c:243
+#: src/gr-recipe-formatter.c:68 src/gr-recipe-printer.c:191
 msgid "Ingredients"
 msgstr "Ingredienser"
 
@@ -603,37 +603,61 @@ msgstr "Skicka uppdatering"
 msgid "Cuisines"
 msgstr "Matkulturer"
 
-#: src/menus.ui:7
+#: src/menus-appmenu.ui:7 src/menus-traditional.ui:9
 msgid "_Import"
 msgstr "_Importera"
 
-#: src/menus.ui:12
+#: src/menus-appmenu.ui:12 src/menus-traditional.ui:14
 msgid "_Export All"
 msgstr "_Exportera alla"
 
-#: src/menus.ui:17
+#: src/menus-appmenu.ui:17
 msgid "_Chef Information"
 msgstr "_Kock-information"
 
-#: src/menus.ui:23
+#: src/menus-appmenu.ui:23
 msgid "_About"
 msgstr "_Om"
 
-#: src/menus.ui:27
+#: src/menus-appmenu.ui:27 src/menus-traditional.ui:50
 msgid "_What’s New"
 msgstr "_Vad är nytt"
 
-#: src/menus.ui:31
+#: src/menus-appmenu.ui:31 src/menus-traditional.ui:54
 msgid "_Report Issue"
 msgstr "_Rapportera problem"
 
-#: src/menus.ui:35
+#: src/menus-appmenu.ui:35
 msgid "_Quit"
 msgstr "_Avsluta"
 
+#: src/menus-traditional.ui:6
+msgid "File"
+msgstr "Arkiv"
+
+#: src/menus-traditional.ui:21
+msgid "Chef Information…"
+msgstr "Kock-information…"
+
+#: src/menus-traditional.ui:30
+msgid "Copy"
+msgstr "Kopiera"
+
+#: src/menus-traditional.ui:34
+msgid "Paste"
+msgstr "Klistra in"
+
+#: src/menus-traditional.ui:40
+msgid "Find…"
+msgstr "Sök…"
+
+#: src/menus-traditional.ui:47
+msgid "Help"
+msgstr "Hjälp"
+
 #: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:154
 #: src/gr-image-viewer.c:625 src/gr-recipe-exporter.c:168
-#: src/gr-shopping-page.c:727 src/gr-window.c:839
+#: src/gr-shopping-page.c:727 src/gr-window.c:888
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -771,11 +795,11 @@ msgstr ""
 "Tillåt att din personliga information inkluderas med recept som du delar med "
 "dina vänner."
 
-#: src/gr-app.c:414
+#: src/gr-app.c:443
 msgid "Print the version and exit"
 msgstr "Skriv programversion och avsluta"
 
-#: src/gr-app.c:418
+#: src/gr-app.c:447
 msgid "Turn on verbose logging"
 msgstr "Slå på utförlig loggning"
 
@@ -783,7 +807,7 @@ msgstr "Slå på utförlig loggning"
 msgid "Select an Image"
 msgstr "Välj en bild"
 
-#: src/gr-chef-dialog.c:153 src/gr-image-viewer.c:624 src/gr-window.c:838
+#: src/gr-chef-dialog.c:153 src/gr-image-viewer.c:624 src/gr-window.c:887
 msgid "Open"
 msgstr "Öppna"
 
@@ -1072,17 +1096,17 @@ msgstr ""
 msgid "Could not find this recipe."
 msgstr "Kunde inte hitta detta recept."
 
-#: src/gr-details-page.c:583
+#: src/gr-details-page.c:584
 #, c-format
 msgid "Timer: %s"
 msgstr "Tidtagare: %s"
 
-#: src/gr-details-page.c:590
+#: src/gr-details-page.c:591
 #, c-format
 msgid "Image %d"
 msgstr "Bild %d"
 
-#: src/gr-details-page.c:733 src/gr-edit-page.c:1940
+#: src/gr-details-page.c:735 src/gr-edit-page.c:1940
 #, c-format
 msgid "Recipe by %s"
 msgstr "Recept av %s"
@@ -1507,19 +1531,19 @@ msgstr ""
 "med GNOME Recept. Bidra bara med dina\n"
 "egna recept."
 
-#: src/gr-recipe-formatter.c:54 src/gr-recipe-printer.c:209
+#: src/gr-recipe-formatter.c:54 src/gr-recipe-printer.c:157
 msgid "Author:"
 msgstr "Upphovsman:"
 
-#: src/gr-recipe-formatter.c:55 src/gr-recipe-printer.c:210
+#: src/gr-recipe-formatter.c:55 src/gr-recipe-printer.c:158
 msgid "Preparation:"
 msgstr "Förberedelser:"
 
-#: src/gr-recipe-formatter.c:56 src/gr-recipe-printer.c:211
+#: src/gr-recipe-formatter.c:56 src/gr-recipe-printer.c:159
 msgid "Cooking:"
 msgstr "Tillagning:"
 
-#: src/gr-recipe-formatter.c:57 src/gr-recipe-printer.c:212
+#: src/gr-recipe-formatter.c:57 src/gr-recipe-printer.c:160
 msgid "Serves:"
 msgstr "Portioner:"
 
@@ -1547,15 +1571,15 @@ msgstr "Misslyckades med att läsa in recept: Kunde inte tolka ändrad-nyckel"
 msgid "This build does not support importing"
 msgstr "Denna version stödjer inte import"
 
-#: src/gr-recipe-printer.c:464 src/gr-shopping-list-printer.c:297
+#: src/gr-recipe-printer.c:412 src/gr-shopping-list-printer.c:297
 msgid "Error printing file:"
 msgstr "Fel vid utskrift av filen:"
 
-#: src/gr-recipe-printer.c:465 src/gr-shopping-list-printer.c:298
+#: src/gr-recipe-printer.c:413 src/gr-shopping-list-printer.c:298
 msgid "No details"
 msgstr "Inga detaljer"
 
-#: src/gr-recipe-printer.c:493 src/gr-shopping-list-printer.c:329
+#: src/gr-recipe-printer.c:441 src/gr-shopping-list-printer.c:329
 #, c-format
 msgid ""
 "Missing the desktop portals needed to print from inside a flatpak sandbox. "
@@ -1582,11 +1606,11 @@ msgstr "Mina recept"
 msgid "Favorites"
 msgstr "Favoriter"
 
-#: src/gr-recipes-page.c:242 src/gr-window.c:974
+#: src/gr-recipes-page.c:242 src/gr-window.c:1023
 msgid "All Recipes"
 msgstr "Alla recept"
 
-#: src/gr-recipes-page.c:247 src/gr-window.c:990
+#: src/gr-recipes-page.c:247 src/gr-window.c:1039
 msgid "New Recipes"
 msgstr "Nya recept"
 
@@ -1974,61 +1998,61 @@ msgid "You updated your contributed “%s” recipe. Send an update?"
 msgstr ""
 "Du uppdaterade ditt recept ”%s” som du bidragit med. Skicka en uppdatering?"
 
-#: src/gr-window.c:763
+#: src/gr-window.c:812
 msgid "Imported Recipes"
 msgstr "Importerade recept"
 
-#: src/gr-window.c:809
+#: src/gr-window.c:858
 msgid "My Chef Information"
 msgstr "Min kockinformation"
 
-#: src/gr-window.c:835
+#: src/gr-window.c:884
 msgid "Select a recipe file"
 msgstr "Välj en receptfil"
 
-#: src/gr-window.c:861
+#: src/gr-window.c:910
 #, c-format
 msgid "Recipes have been exported to “%s”"
 msgstr "Recept har exporterats till ”%s”"
 
-#: src/gr-window.c:899
+#: src/gr-window.c:948
 msgid "Select a file"
 msgstr "Välj en fil"
 
-#: src/gr-window.c:902
+#: src/gr-window.c:951
 msgid "_Export"
 msgstr "_Exportera"
 
-#: src/gr-window.c:941
+#: src/gr-window.c:990
 #, c-format
 msgid "Chefs: %s"
 msgstr "Kockar: %s"
 
-#: src/gr-window.c:958
+#: src/gr-window.c:1007
 msgid "Favorite Recipes"
 msgstr "Favoritrecept"
 
-#: src/gr-window.c:1022
+#: src/gr-window.c:1071
 msgid "Buy Ingredients"
 msgstr "Inhandla ingredienser"
 
-#: src/gr-window.c:1040
+#: src/gr-window.c:1089
 msgid "My own Recipes"
 msgstr "Mina egna recept"
 
 #. TRANSLATORS: %s gets replaced by a version number
-#: src/gr-window.c:1222
+#: src/gr-window.c:1276
 #, c-format
 msgid "Recipes %s"
 msgstr "Recept %s"
 
 #. TRANSLATORS: %s gets replaced by a date
-#: src/gr-window.c:1237
+#: src/gr-window.c:1291
 #, c-format
 msgid "Released: %s"
 msgstr "Utgiven: %s"
 
-#: src/gr-window.c:1263
+#: src/gr-window.c:1317
 msgid "Report Issue"
 msgstr "Rapportera problem"
 
