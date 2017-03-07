@@ -131,7 +131,8 @@ begin_print (GtkPrintOperation *operation,
 
         g_object_get (printer->recipe, "images", &images, NULL);
         if (images && images->len > 0) {
-                ri = &g_array_index (images, GrImage, 0);
+                int def_index = gr_recipe_get_default_image(printer->recipe);
+                ri = &g_array_index (images, GrImage, def_index);
                 printer->image = load_pixbuf_fit_size (ri->path, width / 2, height / 4, FALSE);
         }
 
