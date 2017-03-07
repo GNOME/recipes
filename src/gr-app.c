@@ -35,9 +35,6 @@
 #include "gr-utils.h"
 #include "gr-recipe-exporter.h"
 
-#ifdef GDK_WINDOWING_QUARTZ
-#include <gdk/gdkquartz.h>
-#endif
 
 struct _GrApp
 {
@@ -365,21 +362,21 @@ gr_app_startup (GApplication *app)
         	gtk_application_set_accels_for_action (GTK_APPLICATION (app),
 						       accels[i].detailed_action,
 						       accels[i].accelerators);
-	}
-
-#ifdef GDK_WINDOWING_QUARTZ
-        if (GDK_IS_QUARTZ_DISPLAY (gdk_display_get_default ())) {
-                g_debug ("Not setting an app menu on OS X");
         }
-        else
-#endif
+
         {
                 g_autoptr(GtkBuilder) builder = NULL;
                 GObject *menu;
 
-                builder = gtk_builder_new_from_resource ("/org/gnome/Recipes/gtk/menus-appmenu.ui");
-                menu = gtk_builder_get_object (builder, "app-menu");
-                gtk_application_set_app_menu (GTK_APPLICATION (app), G_MENU_MODEL (menu));
+                builder = gtk_builder_new_from_resource ("/org/gnome/Recipes/menus.ui");
+                if (strcmp (G_OBJECT_TYPE_NAME (gdk_display_get_default ()), "GdkQuartzDisplay") == 0) {
+                        menu = gtk_builder_get_object (builder, "menubar");
+                        gtk_application_set_menubar (GTK_APPLICATION (app), G_MENU_MODEL (menu));
+                }
+                else {
+                        menu = gtk_builder_get_object (builder, "app-menu");
+                        gtk_application_set_app_menu (GTK_APPLICATION (app), G_MENU_MODEL (menu));
+                }
         }
 
         load_application_css (GR_APP (app));

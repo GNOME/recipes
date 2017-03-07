@@ -1,6 +1,42 @@
 <?xml version="1.0"?>
 <interface domain="gnome-recipes">
   <!-- interface-requires gtk+ 3.0 -->
+  <menu id="app-menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Import</attribute>
+        <attribute name="action">app.import</attribute>
+        <attribute name="hidden-when">action-disabled</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Export All</attribute>
+        <attribute name="action">app.export</attribute>
+        <attribute name="hidden-when">action-disabled</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Chef Information</attribute>
+        <attribute name="action">app.chef-information</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_About</attribute>
+        <attribute name="action">app.about</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_What’s New</attribute>
+        <attribute name="action">app.news</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Report Issue</attribute>
+        <attribute name="action">app.report-issue</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Quit</attribute>
+        <attribute name="action">app.quit</attribute>
+      </item>
+    </section>
+  </menu>
   <menu id="menubar">
     <submenu>
       <attribute name="label" translatable="yes">File</attribute>
