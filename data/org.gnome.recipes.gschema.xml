@@ -2,6 +2,12 @@
 <schemalist>
 
   <schema path="/org/gnome/recipes/" id="org.gnome.recipes" gettext-domain="gnome-recipes">
+    <key type="s" name="user">
+      <default>''</default>
+      <summary>The user ID of the current user</summary>
+      <description>The user ID of the current user</description>
+    </key>
+
   </schema>
 
 </schemalist>
