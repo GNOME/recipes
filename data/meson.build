@@ -197,6 +197,9 @@ configure_file(input: 'org.gnome.Recipes.service.in',
                configuration: conf,
                install_dir: join_paths([datadir,'dbus-1/services']))
 
+install_data('org.gnome.Recipes.gschema.xml',
+             install_dir: schemadir)
+
 install_data(   'icons/16x16/org.gnome.Recipes.png',
                 'icons/16x16/org.gnome.Recipes-symbolic.symbolic.png',
                 install_dir: join_paths([datadir,'icons/hicolor/16x16/apps']))
