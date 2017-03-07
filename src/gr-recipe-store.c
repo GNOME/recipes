@@ -46,7 +46,6 @@
  * - picks, with lists of things to put on the landing page
  * - favorites.db, with a list of the user's favorites
  * - shopping.db, with the current shppping list
- * - user, containing the user id of the user
  * - cooking, with a counter for how often cooking mode was launched
  *
  * Some of these files are preinstalled (picks.db), some are only per-user
@@ -63,6 +62,11 @@
  *
  * At runtime, we keep GrRecipe and GrChef objects in two separate hash tables.
  * Recipes have unique IDs of the form R_<dish_name>_by_<chef_id>.
+ *
+ * Ancillary data
+ * --------------
+ *
+ *  The user id of the user is kept in gsettings
  */
 
 struct _GrRecipeStore
@@ -905,51 +909,23 @@ save_chefs (GrRecipeStore *store)
 static void
 save_user (GrRecipeStore *self)
 {
-        g_autofree char *path = NULL;
-
-        path = g_build_filename (get_user_data_dir (), "user", NULL);
-
-        g_info ("Save user id: %s", path);
-
-        if (self->user == NULL || self->user[0] == '\0') {
-                g_unlink (path);
-        }
-        else {
-                g_autoptr(GError) error = NULL;
-
-                if (!g_file_set_contents (path, self->user, -1, &error)) {
-                        g_error ("Failed to save user id: %s", error->message);
-                }
-        }
+        g_autoptr(GSettings) settings = g_settings_new ("org.gnome.recipes");
+        g_settings_set_string (settings, "user", self->user ? self->user : "");
 }
 
-static gboolean
+static void
 load_user (GrRecipeStore *self,
            const char    *dir)
 {
-        g_autofree char *path = NULL;
-        g_autofree char *contents = NULL;
-        g_autoptr(GError) error = NULL;
+        g_autoptr(GSettings) settings = g_settings_new ("org.gnome.recipes");
+        g_autofree char *user = g_settings_get_string (settings, "user");
 
-        path = g_build_filename (dir, "user", NULL);
-        if (!g_file_get_contents (path, &contents, NULL, &error)) {
-                if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
-                        g_error ("Failed to load user id: %s", error->message);
-                else {
-                        self->user = g_strdup (g_get_user_name ());
-                        save_user (self);
-                }
-                return FALSE;
+        if (user[0] == '\0') {
+                self->user = g_strdup (g_get_user_name ());
+                save_user (self);
         }
 
-        g_info ("Load user id: %s", path);
-
-        self->user = g_strdup (contents);
-
-        if (self->user[strlen (self->user) - 1] == '\n')
-                self->user[strlen (self->user) - 1] = '\0';
-
-        return TRUE;
+        self->user = g_strdup (user);
 }
 
 static void
