@@ -562,6 +562,7 @@ process_instructions (const char *instructions)
 
         for (i = 0; i < steps->len; i++) {
                 GrRecipeStep *step = (GrRecipeStep *)g_ptr_array_index (steps, i);
+                g_autofree char *escaped = NULL;
 
                 if (i > 0)
                         g_string_append (s, "\n\n");
@@ -591,7 +592,8 @@ process_instructions (const char *instructions)
                         g_string_append (s, "\">♦</a>");
                 }
 
-                g_string_append (s, step->text);
+                escaped = g_markup_escape_text (step->text, -1);
+                g_string_append (s, escaped);
         }
 
         return g_string_free (s, FALSE);
