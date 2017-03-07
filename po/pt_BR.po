@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-03 00:18+0000\n"
-"PO-Revision-Date: 2017-03-03 14:48-0200\n"
+"POT-Creation-Date: 2017-03-07 10:06+0000\n"
+"PO-Revision-Date: 2017-03-07 09:13-0200\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -21,8 +21,8 @@ msgstr ""
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
-#: src/gr-window.ui:354 src/gr-about-dialog.c:849 src/gr-window.c:296
-#: src/gr-window.c:705
+#: src/gr-window.ui:354 src/gr-about-dialog.c:860 src/gr-window.c:300
+#: src/gr-window.c:759
 msgid "Recipes"
 msgstr "Receitas"
 
@@ -36,7 +36,7 @@ msgstr "Cozinheiros do GNOME, uni-vos!"
 msgid "org.gnome.Recipes"
 msgstr "org.gnome.Recipes"
 
-#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:857
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:864
 msgid "GNOME loves to cook"
 msgstr "GNOME ama cozinhar"
 
@@ -125,7 +125,7 @@ msgstr "Foto:"
 msgid "Chef Information"
 msgstr "Informações do chef"
 
-#: src/gr-chef-dialog.ui:11
+#: src/gr-chef-dialog.ui:11 src/gr-window.c:952
 msgid "_Cancel"
 msgstr "_Cancelar"
 
@@ -134,9 +134,10 @@ msgid "_Save"
 msgstr "_Salvar"
 
 #: src/gr-chef-dialog.ui:98
-msgid "This data may be shared with other users if you share your recipes."
+msgid ""
+"This information may be shared with other users if you share your recipes."
 msgstr ""
-"Estes dados podem ser compartilhados com outros usuários se você "
+"Essas informações podem ser compartilhadas com outros usuários se você "
 "compartilhar suas receitas."
 
 #: src/gr-chef-dialog.ui:120
@@ -263,7 +264,7 @@ msgid "Note"
 msgstr "Nota"
 
 #: src/gr-details-page.ui:411 src/gr-edit-page.ui:644
-#: src/gr-recipe-formatter.c:87 src/gr-recipe-printer.c:294
+#: src/gr-recipe-formatter.c:87 src/gr-recipe-printer.c:242
 msgid "Directions"
 msgstr "Instruções"
 
@@ -406,7 +407,7 @@ msgstr "Vegetariano"
 msgid "Milk free"
 msgstr "Sem lactose"
 
-#: src/gr-edit-page.ui:704
+#: src/gr-edit-page.ui:704 src/menus-traditional.ui:27
 msgid "Edit"
 msgstr "Editar"
 
@@ -503,8 +504,8 @@ msgstr "Restrições alimentares"
 msgid "No restrictions"
 msgstr "Sem restrições"
 
-#: src/gr-query-editor.ui:237 src/gr-edit-page.c:1636
-#: src/gr-recipe-formatter.c:68 src/gr-recipe-printer.c:243
+#: src/gr-query-editor.ui:237 src/gr-edit-page.c:1634
+#: src/gr-recipe-formatter.c:68 src/gr-recipe-printer.c:191
 msgid "Ingredients"
 msgstr "Ingredientes"
 
@@ -514,7 +515,7 @@ msgstr "Ingredientes"
 msgid "Anything"
 msgstr "Qualquer coisa"
 
-#: src/gr-recipe-small-tile.ui:126 src/gr-edit-page.c:1665
+#: src/gr-recipe-small-tile.ui:126 src/gr-edit-page.c:1663
 msgid "Remove"
 msgstr "Remover"
 
@@ -606,33 +607,67 @@ msgstr "Desfazer"
 msgid "Send Update"
 msgstr "Enviar atualização"
 
-#: src/gr-window.ui:387 src/gr-window.c:302
+#: src/gr-window.ui:387 src/gr-window.c:306
 msgid "Cuisines"
 msgstr "Cozinhas"
 
-#: src/menus.ui:7
+#: src/menus-appmenu.ui:7 src/menus-traditional.ui:9
 msgid "_Import"
 msgstr "_Importar"
 
-#: src/menus.ui:12
-msgid "_My Chef Information"
-msgstr "_Minhas informações como chef"
+#: src/menus-appmenu.ui:12 src/menus-traditional.ui:14
+msgid "_Export All"
+msgstr "_Exportar todas"
 
-#: src/menus.ui:18
-msgid "_What’s New"
-msgstr "_Novidades"
+#: src/menus-appmenu.ui:17
+msgid "_Chef Information"
+msgstr "Informações do _chef"
 
-#: src/menus.ui:22
+#: src/menus-appmenu.ui:23
 msgid "_About"
 msgstr "S_obre"
 
-#: src/menus.ui:26
+#: src/menus-appmenu.ui:27 src/menus-traditional.ui:50
+msgid "_What’s New"
+msgstr "_Novidades"
+
+#: src/menus-appmenu.ui:31 src/menus-traditional.ui:54
+msgid "_Report Issue"
+msgstr "_Relatar um problema"
+
+#: src/menus-appmenu.ui:35
 msgid "_Quit"
 msgstr "Sa_ir"
 
+#: src/menus-traditional.ui:6
+msgid "File"
+msgstr "Arquivo"
+
+#: src/menus-traditional.ui:21
+#| msgid "Chef Information"
+msgid "Chef Information…"
+msgstr "Informações do chef…"
+
+#: src/menus-traditional.ui:30
+msgid "Copy"
+msgstr "Copiar"
+
+#: src/menus-traditional.ui:34
+#| msgid "Pasta"
+msgid "Paste"
+msgstr "Colar"
+
+#: src/menus-traditional.ui:40
+msgid "Find…"
+msgstr "Localizar…"
+
+#: src/menus-traditional.ui:47
+msgid "Help"
+msgstr "Ajuda"
+
 #: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:154
-#: src/gr-image-viewer.c:625 src/gr-recipe-exporter.c:157
-#: src/gr-shopping-page.c:722 src/gr-window.c:868
+#: src/gr-image-viewer.c:625 src/gr-recipe-exporter.c:168
+#: src/gr-shopping-page.c:727 src/gr-window.c:888
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -653,104 +688,104 @@ msgid "Share with a friend"
 msgstr "Compartilhar com um amigo"
 
 #: src/recipe-export-dialog.ui:64
-msgid "Contribute to GNOME recipes"
+msgid "Contribute to GNOME Recipes"
 msgstr "Contribuir para GNOME Receitas"
 
 #: src/recipe-whats-new-dialog.ui:8
 msgid "What’s New in Recipes"
 msgstr "O que há de novo no Receitas"
 
-#: src/gr-about-dialog.c:126
+#: src/gr-about-dialog.c:130
 msgid "Learn more about Builder"
 msgstr "Saiba mais sobre o Builder"
 
-#: src/gr-about-dialog.c:238 src/gr-about-dialog.c:321
-#: src/gr-about-dialog.c:323 src/gr-about-dialog.c:325
+#: src/gr-about-dialog.c:242 src/gr-about-dialog.c:325
 #: src/gr-about-dialog.c:327 src/gr-about-dialog.c:329
 #: src/gr-about-dialog.c:331 src/gr-about-dialog.c:333
 #: src/gr-about-dialog.c:335 src/gr-about-dialog.c:337
+#: src/gr-about-dialog.c:339 src/gr-about-dialog.c:341
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: src/gr-about-dialog.c:427
+#: src/gr-about-dialog.c:431
 msgid "Flatpak"
 msgstr "Flatpak"
 
-#: src/gr-about-dialog.c:430
+#: src/gr-about-dialog.c:434
 msgctxt "Flatpak metadata"
 msgid "Version"
 msgstr "Versão"
 
-#: src/gr-about-dialog.c:433
+#: src/gr-about-dialog.c:437
 msgid "Application"
 msgstr "Aplicativo"
 
-#: src/gr-about-dialog.c:436 src/gr-about-dialog.c:445
+#: src/gr-about-dialog.c:440 src/gr-about-dialog.c:449
 msgctxt "Flatpak metadata"
 msgid "ID"
 msgstr "ID"
 
-#: src/gr-about-dialog.c:437 src/gr-about-dialog.c:446
+#: src/gr-about-dialog.c:441 src/gr-about-dialog.c:450
 msgctxt "Flatpak metadata"
 msgid "Architecture"
 msgstr "Arquitetura"
 
-#: src/gr-about-dialog.c:438 src/gr-about-dialog.c:447
+#: src/gr-about-dialog.c:442 src/gr-about-dialog.c:451
 msgctxt "Flatpak metadata"
 msgid "Branch"
 msgstr "Ramo"
 
-#: src/gr-about-dialog.c:439 src/gr-about-dialog.c:448
+#: src/gr-about-dialog.c:443 src/gr-about-dialog.c:452
 msgctxt "Flatpak metadata"
 msgid "Commit"
 msgstr "Commit"
 
-#: src/gr-about-dialog.c:442
+#: src/gr-about-dialog.c:446
 msgid "Runtime"
 msgstr "Runtime"
 
-#: src/gr-about-dialog.c:451 src/gr-about-dialog.c:515
+#: src/gr-about-dialog.c:455 src/gr-about-dialog.c:519
 msgid "Bundled libraries"
 msgstr "Bibliotecas empacotadas"
 
-#: src/gr-about-dialog.c:481
+#: src/gr-about-dialog.c:485
 msgid "OS"
 msgstr "SO"
 
-#: src/gr-about-dialog.c:484
+#: src/gr-about-dialog.c:488
 msgctxt "OS metadata"
 msgid "Name"
 msgstr "Nome"
 
-#: src/gr-about-dialog.c:486
+#: src/gr-about-dialog.c:490
 msgctxt "OS metadata"
 msgid "Type"
 msgstr "Tipo"
 
-#: src/gr-about-dialog.c:489 src/gr-about-dialog.c:491
+#: src/gr-about-dialog.c:493 src/gr-about-dialog.c:495
 msgctxt "OS metadata"
 msgid "Desktop"
 msgstr "Ambiente"
 
-#: src/gr-about-dialog.c:494
+#: src/gr-about-dialog.c:498
 msgid "System libraries"
 msgstr "Bibliotecas do sistema"
 
-#: src/gr-about-dialog.c:766 src/gr-about-dialog.c:793
+#: src/gr-about-dialog.c:770 src/gr-about-dialog.c:797
 msgid "System"
 msgstr "Sistema"
 
-#: src/gr-about-dialog.c:859
+#: src/gr-about-dialog.c:866
 msgid "translator-credits"
 msgstr ""
 "Enrico Nicoletto <liverig@gmail.com>, 2016.\n"
 "Rafael Fontenelle <rafaelff@gnome.org>, 2016, 2017."
 
-#: src/gr-about-dialog.c:862
+#: src/gr-about-dialog.c:869
 msgid "Learn more about Recipes"
 msgstr "Saiba mais sobre o Receitas"
 
-#: src/gr-about-dialog.c:866
+#: src/gr-about-dialog.c:876
 msgid "Recipes by"
 msgstr "Receitas por"
 
@@ -767,11 +802,19 @@ msgstr ""
 "Permita que suas informações pessoais sejam incluídas com receitas que você "
 "compartilhar com seus amigos."
 
+#: src/gr-app.c:443
+msgid "Print the version and exit"
+msgstr "Exibe a versão e sai"
+
+#: src/gr-app.c:447
+msgid "Turn on verbose logging"
+msgstr "Liga o modo verboso de registro de logs"
+
 #: src/gr-chef-dialog.c:150 src/gr-image-viewer.c:621
 msgid "Select an Image"
 msgstr "Selecione uma imagem"
 
-#: src/gr-chef-dialog.c:153 src/gr-image-viewer.c:624 src/gr-window.c:867
+#: src/gr-chef-dialog.c:153 src/gr-image-viewer.c:624 src/gr-window.c:887
 msgid "Open"
 msgstr "Abrir"
 
@@ -1067,17 +1110,17 @@ msgstr ""
 msgid "Could not find this recipe."
 msgstr "Não foi possível localizar essa receita."
 
-#: src/gr-details-page.c:583
+#: src/gr-details-page.c:584
 #, c-format
 msgid "Timer: %s"
 msgstr "Tempo: %s"
 
-#: src/gr-details-page.c:590
+#: src/gr-details-page.c:591
 #, c-format
 msgid "Image %d"
 msgstr "Imagem %d"
 
-#: src/gr-details-page.c:733 src/gr-edit-page.c:1941
+#: src/gr-details-page.c:735 src/gr-edit-page.c:1940
 #, c-format
 msgid "Recipe by %s"
 msgstr "Receita de %s"
@@ -1259,27 +1302,27 @@ msgctxt "second abbreviation"
 msgid "s"
 msgstr "s"
 
-#: src/gr-edit-page.c:1277
+#: src/gr-edit-page.c:1275
 msgid "Recipe Author"
 msgstr "Autor da receita"
 
-#: src/gr-edit-page.c:1651
+#: src/gr-edit-page.c:1649
 msgid "Name of the List"
 msgstr "Nome da lista"
 
-#: src/gr-edit-page.c:1684
+#: src/gr-edit-page.c:1682
 msgid "No ingredients added yet"
 msgstr "Ainda não foram adicionados ingredientes"
 
-#: src/gr-edit-page.c:1703
+#: src/gr-edit-page.c:1701
 msgid "Add Ingredient"
 msgstr "Adicionar ingrediente"
 
-#: src/gr-edit-page.c:1804
+#: src/gr-edit-page.c:1803
 msgid "Add List"
 msgstr "Adicionar lista"
 
-#: src/gr-edit-page.c:1824
+#: src/gr-edit-page.c:1823
 msgid "Name Your Recipe"
 msgstr "Nomeie sua receita"
 
@@ -1287,7 +1330,7 @@ msgstr "Nomeie sua receita"
 msgid "Name"
 msgstr "Nome"
 
-#: src/gr-edit-page.c:2107 src/gr-recipe-store.c:1090
+#: src/gr-edit-page.c:2107 src/gr-recipe-store.c:1091
 #, c-format
 msgid "You need to provide a name for the recipe"
 msgstr "Você precisa fornecer um nome para a receita"
@@ -1433,29 +1476,27 @@ msgstr "Não foi possível analisar %s como um número flutuante"
 msgid "Could not parse %s as a number"
 msgstr "Não foi possível analisar %s como um número"
 
-#: src/gr-recipe-exporter.c:153
-#| msgid "Imported Recipes"
+#: src/gr-recipe-exporter.c:164
 msgid "Save the exported recipe"
 msgstr "Salva a receita exportada"
 
-#: src/gr-recipe-exporter.c:156 src/gr-shopping-page.c:721
-#| msgid "_Save"
+#: src/gr-recipe-exporter.c:167 src/gr-shopping-page.c:726
 msgid "Save"
 msgstr "Salvar"
 
-#: src/gr-recipe-exporter.c:181
+#: src/gr-recipe-exporter.c:198
 msgid "Recipe contribution"
 msgstr "Contribuição de receita"
 
-#: src/gr-recipe-exporter.c:182
+#: src/gr-recipe-exporter.c:199
 msgid "Please accept my attached recipe contribution."
 msgstr "Por favor, aceite minha receita anexada."
 
-#: src/gr-recipe-exporter.c:192
+#: src/gr-recipe-exporter.c:209
 msgid "Try this recipe"
 msgstr "Tente essa receita"
 
-#: src/gr-recipe-exporter.c:193
+#: src/gr-recipe-exporter.c:210
 msgid ""
 "Hi,\n"
 "\n"
@@ -1465,11 +1506,11 @@ msgstr ""
 "\n"
 "você deveria tentar essa receita."
 
-#: src/gr-recipe-exporter.c:196
+#: src/gr-recipe-exporter.c:213
 msgid "Try these recipes"
 msgstr "Tente essas receitas"
 
-#: src/gr-recipe-exporter.c:197
+#: src/gr-recipe-exporter.c:214
 msgid ""
 "Hi,\n"
 "\n"
@@ -1479,16 +1520,16 @@ msgstr ""
 "\n"
 "você deveria tentar esses receitas."
 
-#: src/gr-recipe-exporter.c:200
-msgid "(The attached file can be imported into GNOME recipes.)"
+#: src/gr-recipe-exporter.c:217
+msgid "(The attached file can be imported into GNOME Recipes.)"
 msgstr "(O arquivo anexado pode ser importado no GNOME Receitas.)"
 
-#: src/gr-recipe-exporter.c:386
+#: src/gr-recipe-exporter.c:403
 #, c-format
 msgid "This build does not support exporting"
 msgstr "Essa compilação não oferece suporte a exportação"
 
-#: src/gr-recipe-exporter.c:468
+#: src/gr-recipe-exporter.c:485
 #, c-format
 msgid ""
 "Error while exporting:\n"
@@ -1497,36 +1538,36 @@ msgstr ""
 "Ocorreu erro ao exportar:\n"
 "%s"
 
-#: src/gr-recipe-exporter.c:552
+#: src/gr-recipe-exporter.c:569
 #, c-format
 msgid "%d recipe selected for sharing"
 msgid_plural "%d recipes selected for sharing"
 msgstr[0] "%d receita selecionada para compartilhamento"
 msgstr[1] "%d receitas selecionadas para compartilhamento"
 
-#: src/gr-recipe-exporter.c:584
+#: src/gr-recipe-exporter.c:601
 msgid ""
 "Some of the selected recipes are included\n"
-"with GNOME recipes. You should only contribute\n"
+"with GNOME Recipes. You should only contribute\n"
 "your own recipes."
 msgstr ""
 "Algumas das receitas selecionadas são incluídas\n"
 "pelo GNOME Receitas. Você deveria contribuir\n"
 "apenas com suas próprias receitas."
 
-#: src/gr-recipe-formatter.c:54 src/gr-recipe-printer.c:209
+#: src/gr-recipe-formatter.c:54 src/gr-recipe-printer.c:157
 msgid "Author:"
 msgstr "Autor:"
 
-#: src/gr-recipe-formatter.c:55 src/gr-recipe-printer.c:210
+#: src/gr-recipe-formatter.c:55 src/gr-recipe-printer.c:158
 msgid "Preparation:"
 msgstr "Preparação:"
 
-#: src/gr-recipe-formatter.c:56 src/gr-recipe-printer.c:211
+#: src/gr-recipe-formatter.c:56 src/gr-recipe-printer.c:159
 msgid "Cooking:"
 msgstr "Cozinhar:"
 
-#: src/gr-recipe-formatter.c:57 src/gr-recipe-printer.c:212
+#: src/gr-recipe-formatter.c:57 src/gr-recipe-printer.c:160
 msgid "Serves:"
 msgstr "Porções:"
 
@@ -1557,15 +1598,15 @@ msgstr ""
 msgid "This build does not support importing"
 msgstr "Essa compilação não oferece suporte a importação"
 
-#: src/gr-recipe-printer.c:464 src/gr-shopping-list-printer.c:297
+#: src/gr-recipe-printer.c:412 src/gr-shopping-list-printer.c:297
 msgid "Error printing file:"
 msgstr "Erro ao imprimir arquivo:"
 
-#: src/gr-recipe-printer.c:465 src/gr-shopping-list-printer.c:298
+#: src/gr-recipe-printer.c:413 src/gr-shopping-list-printer.c:298
 msgid "No details"
 msgstr "Sem detalhes"
 
-#: src/gr-recipe-printer.c:493 src/gr-shopping-list-printer.c:329
+#: src/gr-recipe-printer.c:441 src/gr-shopping-list-printer.c:329
 #, c-format
 msgid ""
 "Missing the desktop portals needed to print from inside a flatpak sandbox. "
@@ -1592,11 +1633,11 @@ msgstr "Minhas receitas"
 msgid "Favorites"
 msgstr "Favoritos"
 
-#: src/gr-recipes-page.c:242 src/gr-window.c:937
+#: src/gr-recipes-page.c:242 src/gr-window.c:1023
 msgid "All Recipes"
 msgstr "Todas receitas"
 
-#: src/gr-recipes-page.c:247 src/gr-window.c:953
+#: src/gr-recipes-page.c:247 src/gr-window.c:1039
 msgid "New Recipes"
 msgstr "Novas receitas"
 
@@ -1621,7 +1662,7 @@ msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
 msgstr[0] "Comprar ingredientes: <b>%s, %s e %d outro</b>"
 msgstr[1] "Comprar ingredientes: <b>%s, %s e %d outros</b>"
 
-#: src/gr-recipe-store.c:1095
+#: src/gr-recipe-store.c:1096
 #, c-format
 msgid ""
 "A recipe with this name and author already exists.\n"
@@ -1630,32 +1671,32 @@ msgstr ""
 "Já existe uma receita com este nome e autor.\n"
 "Por favor escolha um nome diferente"
 
-#: src/gr-recipe-store.c:1124
+#: src/gr-recipe-store.c:1125
 #, c-format
 msgid "You need to provide an ID for the recipe"
 msgstr "Você precisa fornecer um ID para a receita"
 
-#: src/gr-recipe-store.c:1130
+#: src/gr-recipe-store.c:1131
 #, c-format
 msgid "A recipe with this ID already exists"
 msgstr "Já existe uma receita com este ID"
 
-#: src/gr-recipe-store.c:1258
+#: src/gr-recipe-store.c:1282
 #, c-format
 msgid "You need to provide an ID"
 msgstr "Você precisa fornecer um ID"
 
-#: src/gr-recipe-store.c:1264
+#: src/gr-recipe-store.c:1288
 #, c-format
 msgid "Sorry, this ID is taken"
 msgstr "Desculpe-me, este ID já foi tirado"
 
-#: src/gr-recipe-store.c:1291
+#: src/gr-recipe-store.c:1315
 #, c-format
 msgid "You need to provide an ID for the chef"
 msgstr "Você precisa fornecer um ID para o chef"
 
-#: src/gr-recipe-store.c:1297
+#: src/gr-recipe-store.c:1321
 #, c-format
 msgid "A chef with this ID already exists"
 msgstr "Já existe um chef com este ID"
@@ -1689,7 +1730,7 @@ msgid "Winter"
 msgstr "Inverno"
 
 #: src/gr-shopping-list-formatter.c:43 src/gr-shopping-list-printer.c:135
-#: src/gr-shopping-page.c:747
+#: src/gr-shopping-page.c:752
 msgid "Shopping List"
 msgstr "Lista de compras"
 
@@ -1712,22 +1753,21 @@ msgid_plural "%d ingredients marked for purchase"
 msgstr[0] "%d ingrediente marcado para compra"
 msgstr[1] "%d ingredientes marcado para compra"
 
-#: src/gr-shopping-page.c:119
+#: src/gr-shopping-page.c:120
 #, c-format
 msgid "Buy Ingredients (%d recipe)"
 msgid_plural "Buy Ingredients (%d recipes)"
 msgstr[0] "Comprar ingredientes (%d receita)"
 msgstr[1] "Comprar ingredientes (%d receitas)"
 
-#: src/gr-shopping-page.c:124
+#: src/gr-shopping-page.c:125
 #, c-format
 msgid "%d Recipe marked for preparation"
 msgid_plural "%d Recipes marked for preparation"
 msgstr[0] "%d receita marcada para preparação"
 msgstr[1] "%d receitas marcadas para preparação"
 
-#: src/gr-shopping-page.c:718
-#| msgid "A shopping list"
+#: src/gr-shopping-page.c:723
 msgid "Save the shopping list"
 msgstr "Salva a lista de compras"
 
@@ -1922,105 +1962,122 @@ msgstr "copo"
 msgid "I don’t know this unit: %s"
 msgstr "Eu não conheço esta unidade: %s"
 
-#: src/gr-utils.c:403
+#: src/gr-utils.c:399
 #, c-format
 msgid "more than a year ago"
 msgstr "mais de um ano atrás"
 
-#: src/gr-utils.c:406 src/gr-utils.c:410
+#: src/gr-utils.c:402 src/gr-utils.c:406
 #, c-format
 msgid "%d month ago"
 msgid_plural "%d months ago"
 msgstr[0] "%d mês atrás"
 msgstr[1] "%d meses atrás"
 
-#: src/gr-utils.c:414
+#: src/gr-utils.c:410
 #, c-format
 msgid "%d day ago"
 msgid_plural "%d days ago"
 msgstr[0] "%d dia atrás"
 msgstr[1] "%d dias atrás"
 
-#: src/gr-utils.c:417
+#: src/gr-utils.c:413
 #, c-format
 msgid "just now"
 msgstr "agora mesmo"
 
-#: src/gr-utils.c:419
+#: src/gr-utils.c:415
 #, c-format
 msgid "10 minutes ago"
 msgstr "10 minutos atrás"
 
-#: src/gr-utils.c:421
+#: src/gr-utils.c:417
 #, c-format
 msgid "half an hour ago"
 msgstr "meia hora atrás"
 
-#: src/gr-utils.c:425
+#: src/gr-utils.c:421
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
 msgstr[0] "%d hora atrás"
 msgstr[1] "%d horas atrás"
 
-#: src/gr-utils.c:431
+#: src/gr-utils.c:427
 msgid "some time ago"
 msgstr "algum tempo atrás"
 
-#: src/gr-window.c:182
+#: src/gr-window.c:186
 msgid "Add a New Recipe"
 msgstr "Adicionar uma nova receita"
 
-#: src/gr-window.c:525
+#: src/gr-window.c:530
 #, c-format
 msgid "Recipe “%s” deleted"
 msgstr "Receita “%s” excluída"
 
-#: src/gr-window.c:575
+#: src/gr-window.c:580
 #, c-format
 msgid "You updated your contributed “%s” recipe. Send an update?"
 msgstr "Você atualizou sua receita contribuída “%s”. Enviar uma atualização?"
 
-#: src/gr-window.c:758
+#: src/gr-window.c:812
 msgid "Imported Recipes"
 msgstr "Receitas importadas"
 
-#: src/gr-window.c:802
+#: src/gr-window.c:858
 msgid "My Chef Information"
 msgstr "Minhas informações de chef"
 
-#: src/gr-window.c:864
+#: src/gr-window.c:884
 msgid "Select a recipe file"
 msgstr "Selecionar um arquivo de receita"
 
-#: src/gr-window.c:904
+#: src/gr-window.c:910
+#, c-format
+msgid "Recipes have been exported to “%s”"
+msgstr "Receitas foram exportadas para “%s”"
+
+#: src/gr-window.c:948
+msgid "Select a file"
+msgstr "Selecionar um arquivo"
+
+#: src/gr-window.c:951
+msgid "_Export"
+msgstr "_Exportar"
+
+#: src/gr-window.c:990
 #, c-format
 msgid "Chefs: %s"
 msgstr "Chefs: %s"
 
-#: src/gr-window.c:921
+#: src/gr-window.c:1007
 msgid "Favorite Recipes"
 msgstr "Receitas favoritas"
 
-#: src/gr-window.c:985
+#: src/gr-window.c:1071
 msgid "Buy Ingredients"
 msgstr "Comprar ingredientes"
 
-#: src/gr-window.c:1003
+#: src/gr-window.c:1089
 msgid "My own Recipes"
 msgstr "Minhas próprias receitas"
 
 #. TRANSLATORS: %s gets replaced by a version number
-#: src/gr-window.c:1185
+#: src/gr-window.c:1276
 #, c-format
 msgid "Recipes %s"
 msgstr "Receitas %s"
 
 #. TRANSLATORS: %s gets replaced by a date
-#: src/gr-window.c:1200
+#: src/gr-window.c:1291
 #, c-format
 msgid "Released: %s"
 msgstr "Lançamento: %s"
+
+#: src/gr-window.c:1317
+msgid "Report Issue"
+msgstr "Relatar um problema"
 
 #: src/ingredients.inc:1
 msgid "Almond"
@@ -2031,7 +2088,7 @@ msgid "Amaretti"
 msgstr "Amaretti"
 
 #: src/ingredients.inc:3
-msgid "Anchovis"
+msgid "Anchovies"
 msgstr "Anchova"
 
 #: src/ingredients.inc:4
@@ -2141,116 +2198,116 @@ msgid "Chocolate frosting"
 msgstr "Geada de chocolate"
 
 #: src/ingredients.inc:30
+msgid "Cilantro"
+msgstr "Coentro"
+
+#: src/ingredients.inc:31
 msgid "Cocoa powder"
 msgstr "Cacau em pó"
 
-#: src/ingredients.inc:31
+#: src/ingredients.inc:32
 msgid "Couscous"
 msgstr "Cuscuz"
 
-#: src/ingredients.inc:32
+#: src/ingredients.inc:33
 msgid "Date"
 msgstr "Tâmara"
 
-#: src/ingredients.inc:33
+#: src/ingredients.inc:34
 msgid "Egg"
 msgstr "Ovo"
 
-#: src/ingredients.inc:34
+#: src/ingredients.inc:35
 msgid "Fig"
 msgstr "Figo"
 
-#: src/ingredients.inc:35
+#: src/ingredients.inc:36
 msgid "Flour"
 msgstr "Farinha"
 
-#: src/ingredients.inc:36
+#: src/ingredients.inc:37
 msgid "Garlic"
 msgstr "Alho"
 
-#: src/ingredients.inc:37
+#: src/ingredients.inc:38
 msgid "Ground beef"
 msgstr "Carne moída"
 
-#: src/ingredients.inc:38
+#: src/ingredients.inc:39
 msgid "Honey"
 msgstr "Mel"
 
-#: src/ingredients.inc:39
+#: src/ingredients.inc:40
 msgid "Lemon"
 msgstr "Limão"
 
-#: src/ingredients.inc:40
+#: src/ingredients.inc:41
 msgid "Linseeds"
 msgstr "Linhaça"
 
-#: src/ingredients.inc:41
+#: src/ingredients.inc:42
 msgid "Mayonnaise"
 msgstr "Maionese"
 
-#: src/ingredients.inc:42
+#: src/ingredients.inc:43
 msgid "Milk"
 msgstr "Leite"
 
-#: src/ingredients.inc:43
+#: src/ingredients.inc:44
 msgid "Mustard"
 msgstr "Mostarda"
 
-#: src/ingredients.inc:44
+#: src/ingredients.inc:45
 msgid "Oatmeal"
 msgstr "Aveia"
 
-#: src/ingredients.inc:45
+#: src/ingredients.inc:46
 msgid "Oil"
 msgstr "Óleo"
 
-#: src/ingredients.inc:46
+#: src/ingredients.inc:47
 msgid "Onion"
 msgstr "Cebola"
 
-#: src/ingredients.inc:47
+#: src/ingredients.inc:48
 msgid "Olive oil, extra-virgin"
 msgstr "Azeite, extra virgem"
 
-#: src/ingredients.inc:48
+#: src/ingredients.inc:49
 msgid "Orange"
 msgstr "Laranja"
 
-#: src/ingredients.inc:49
+#: src/ingredients.inc:50
 msgid "Parsley"
 msgstr "Salsinha"
 
-#: src/ingredients.inc:50
+#: src/ingredients.inc:51
 msgid "Peperoni"
 msgstr "Calabresa"
 
-#: src/ingredients.inc:51
+#: src/ingredients.inc:52
 msgid "Pepper"
 msgstr "Pimenta"
 
-#: src/ingredients.inc:52
+#: src/ingredients.inc:53
 msgid "Peppers"
 msgstr "Pimentas"
 
-#: src/ingredients.inc:53
+#: src/ingredients.inc:54
 msgid "Pizza sauce"
 msgstr "Molho de pizza"
 
-#: src/ingredients.inc:54
+#: src/ingredients.inc:55
 msgid "Potato"
 msgstr "Batata"
 
-#: src/ingredients.inc:55
+#: src/ingredients.inc:56
 msgid "Pumpkin seeds"
 msgstr "Semente de abóbora"
 
-#: src/ingredients.inc:56
+#: src/ingredients.inc:57
 msgid "Salt"
 msgstr "Sal"
-
-#: src/ingredients.inc:57
-msgid "Silantro"
-msgstr "Coentro"
 
 #: src/ingredients.inc:58
 msgid "Soy sauce"
@@ -2281,7 +2338,7 @@ msgid "Tomato"
 msgstr "Tomate"
 
 #: src/ingredients.inc:65
-msgid "Tumeric ground"
+msgid "Turmeric, ground"
 msgstr "Açafrão-da-terra"
 
 #: src/ingredients.inc:66
@@ -2326,7 +2383,7 @@ msgid "no Amaretti"
 msgstr "sem Amaretti"
 
 #: src/no-ingredients.inc:3
-msgid "no Anchovis"
+msgid "no Anchovies"
 msgstr "sem Anchova"
 
 #: src/no-ingredients.inc:4
@@ -2434,116 +2491,116 @@ msgid "no Chocolate frosting"
 msgstr "sem Geada de chocolate"
 
 #: src/no-ingredients.inc:30
+msgid "no Cilantro"
+msgstr "sem Coentro"
+
+#: src/no-ingredients.inc:31
 msgid "no Cocoa powder"
 msgstr "sem Cacau em pó"
 
-#: src/no-ingredients.inc:31
+#: src/no-ingredients.inc:32
 msgid "no Couscous"
 msgstr "sem Cuscuz"
 
-#: src/no-ingredients.inc:32
+#: src/no-ingredients.inc:33
 msgid "no Date"
 msgstr "sem Tâmara"
 
-#: src/no-ingredients.inc:33
+#: src/no-ingredients.inc:34
 msgid "no Egg"
 msgstr "sem Ovo"
 
-#: src/no-ingredients.inc:34
+#: src/no-ingredients.inc:35
 msgid "no Fig"
 msgstr "sem Figo"
 
-#: src/no-ingredients.inc:35
+#: src/no-ingredients.inc:36
 msgid "no Flour"
 msgstr "sem Farinha"
 
-#: src/no-ingredients.inc:36
+#: src/no-ingredients.inc:37
 msgid "no Garlic"
 msgstr "sem Alho"
 
-#: src/no-ingredients.inc:37
+#: src/no-ingredients.inc:38
 msgid "no Ground beef"
 msgstr "sem Carne moída"
 
-#: src/no-ingredients.inc:38
+#: src/no-ingredients.inc:39
 msgid "no Honey"
 msgstr "sem Mel"
 
-#: src/no-ingredients.inc:39
+#: src/no-ingredients.inc:40
 msgid "no Lemon"
 msgstr "sem Limão"
 
-#: src/no-ingredients.inc:40
+#: src/no-ingredients.inc:41
 msgid "no Linseeds"
 msgstr "sem Linhaça"
 
-#: src/no-ingredients.inc:41
+#: src/no-ingredients.inc:42
 msgid "no Mayonnaise"
 msgstr "sem Maionese"
 
-#: src/no-ingredients.inc:42
+#: src/no-ingredients.inc:43
 msgid "no Milk"
 msgstr "sem Leite"
 
-#: src/no-ingredients.inc:43
+#: src/no-ingredients.inc:44
 msgid "no Mustard"
 msgstr "sem Mostarda"
 
-#: src/no-ingredients.inc:44
+#: src/no-ingredients.inc:45
 msgid "no Oatmeal"
 msgstr "sem Aveia"
 
-#: src/no-ingredients.inc:45
+#: src/no-ingredients.inc:46
 msgid "no Oil"
 msgstr "sem Óleo"
 
-#: src/no-ingredients.inc:46
+#: src/no-ingredients.inc:47
 msgid "no Onion"
 msgstr "sem Cebola"
 
-#: src/no-ingredients.inc:47
+#: src/no-ingredients.inc:48
 msgid "no Olive oil, extra-virgin"
 msgstr "sem Azeite, extra virgem"
 
-#: src/no-ingredients.inc:48
+#: src/no-ingredients.inc:49
 msgid "no Orange"
 msgstr "sem Laranja"
 
-#: src/no-ingredients.inc:49
+#: src/no-ingredients.inc:50
 msgid "no Parsley"
 msgstr "sem Salsinha"
 
-#: src/no-ingredients.inc:50
+#: src/no-ingredients.inc:51
 msgid "no Peperoni"
 msgstr "sem Calabresa"
 
-#: src/no-ingredients.inc:51
+#: src/no-ingredients.inc:52
 msgid "no Pepper"
 msgstr "sem Pimenta"
 
-#: src/no-ingredients.inc:52
+#: src/no-ingredients.inc:53
 msgid "no Peppers"
 msgstr "sem Pimenta"
 
-#: src/no-ingredients.inc:53
+#: src/no-ingredients.inc:54
 msgid "no Pizza sauce"
 msgstr "sem Molho de pizza"
 
-#: src/no-ingredients.inc:54
+#: src/no-ingredients.inc:55
 msgid "no Potato"
 msgstr "sem Batata"
 
-#: src/no-ingredients.inc:55
+#: src/no-ingredients.inc:56
 msgid "no Pumpkin seeds"
 msgstr "sem Semente de abóbora"
 
-#: src/no-ingredients.inc:56
+#: src/no-ingredients.inc:57
 msgid "no Salt"
 msgstr "sem Sal"
-
-#: src/no-ingredients.inc:57
-msgid "no Silantro"
-msgstr "sem Coentro"
 
 #: src/no-ingredients.inc:58
 msgid "no Soy sauce"
@@ -2574,7 +2631,7 @@ msgid "no Tomato"
 msgstr "sem Tomate"
 
 #: src/no-ingredients.inc:65
-msgid "no Tumeric ground"
+msgid "no Turmeric, ground"
 msgstr "sem Açafrão-da-terra"
 
 #: src/no-ingredients.inc:66
@@ -2616,3 +2673,6 @@ msgstr "Massa"
 #: src/segments.inc:2
 msgid "Toppings"
 msgstr "Toppings"
+
+#~ msgid "_My Chef Information"
+#~ msgstr "_Minhas informações como chef"
