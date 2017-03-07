@@ -335,8 +335,16 @@ load_application_css (GrApp *app)
 static void
 gr_app_startup (GApplication *app)
 {
-        const gchar *quit_accels[2] = { "<Primary>Q", NULL };
-        const gchar *search_accels[2] = { "<Primary>F", NULL };
+	struct {
+		const char *detailed_action;
+		const char *accelerators[2];
+	} accels[] = {
+		{ "app.quit", { "<Primary>q", NULL } },
+		{ "app.search('')", { "<Primary>f", NULL } },
+		{ "win.copy", { "<Primary>c", NULL } },
+		{ "win.paste", { "<Primary>v", NULL } },
+	};
+	int i;
 
         G_APPLICATION_CLASS (gr_app_parent_class)->startup (app);
 
@@ -353,8 +361,11 @@ gr_app_startup (GApplication *app)
         }
 #endif
 
-        gtk_application_set_accels_for_action (GTK_APPLICATION (app), "app.quit", quit_accels);
-        gtk_application_set_accels_for_action (GTK_APPLICATION (app), "app.search('')", search_accels);
+	for (i = 0; i < G_N_ELEMENTS (accels); i++) {
+        	gtk_application_set_accels_for_action (GTK_APPLICATION (app),
+						       accels[i].detailed_action,
+						       accels[i].accelerators);
+	}
 
 #ifdef GDK_WINDOWING_QUARTZ
         if (GDK_IS_QUARTZ_DISPLAY (gdk_display_get_default ())) {

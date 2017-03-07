@@ -692,11 +692,60 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, shopping_title_changed);
 }
 
+static GtkClipboard *
+get_clipboard (GtkWidget *widget)
+{
+        return gtk_widget_get_clipboard (widget, gdk_atom_intern_static_string ("CLIPBOARD"));
+}
+
+static void
+copy_activated (GSimpleAction *action,
+                GVariant      *parameter,
+                gpointer       user_data)
+{
+        GtkWindow *window = GTK_WINDOW (user_data);
+        GtkWidget *focus;
+
+        focus = gtk_window_get_focus (window);
+        if (GTK_IS_TEXT_VIEW (focus))
+                gtk_text_buffer_copy_clipboard (gtk_text_view_get_buffer (GTK_TEXT_VIEW (focus)),
+                                                get_clipboard (focus));
+        else if (GTK_IS_ENTRY (focus))
+                gtk_editable_copy_clipboard (GTK_EDITABLE (focus));
+}
+
+static void
+paste_activated (GSimpleAction *action,
+                 GVariant      *parameter,
+                 gpointer       user_data)
+{
+        GtkWindow *window = GTK_WINDOW (user_data);
+        GtkWidget *focus;
+
+        focus = gtk_window_get_focus (window);
+        if (GTK_IS_TEXT_VIEW (focus))
+                gtk_text_buffer_paste_clipboard (gtk_text_view_get_buffer (GTK_TEXT_VIEW (focus)),
+                                                 get_clipboard (focus),
+                                                 NULL,
+                                                 TRUE);
+        else if (GTK_IS_ENTRY (focus))
+                gtk_editable_paste_clipboard (GTK_EDITABLE (focus));
+}
+
+static GActionEntry entries[] = {
+        { "copy", copy_activated, NULL, NULL, NULL },
+        { "paste", paste_activated, NULL, NULL, NULL }
+};
+
 static void
 gr_window_init (GrWindow *self)
 {
         gtk_widget_init_template (GTK_WIDGET (self));
         self->back_entry_stack = g_queue_new ();
+
+        g_action_map_add_action_entries (G_ACTION_MAP (self),
+                                         entries, G_N_ELEMENTS (entries),
+                                         self);
 }
 
 void
@@ -1204,8 +1253,8 @@ gr_window_show_news (GrWindow *window)
         dialog = GTK_WINDOW (gtk_builder_get_object (builder, "dialog"));
         gtk_window_set_transient_for (dialog, GTK_WINDOW (window));
 
-	gtk_widget_realize (GTK_WIDGET (dialog));
-	gdk_window_set_functions (gtk_widget_get_window (GTK_WIDGET (dialog)),
+        gtk_widget_realize (GTK_WIDGET (dialog));
+        gdk_window_set_functions (gtk_widget_get_window (GTK_WIDGET (dialog)),
                                   GDK_FUNC_ALL | GDK_FUNC_MINIMIZE | GDK_FUNC_MAXIMIZE);
 
         box = GTK_WIDGET (gtk_builder_get_object (builder, "box"));
