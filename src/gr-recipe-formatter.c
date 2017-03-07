@@ -22,6 +22,7 @@
 
 #include <stdlib.h>
 #include <glib/gi18n.h>
+#include <gio/gio.h>
 
 #include "gr-recipe-formatter.h"
 #include "gr-ingredients-list.h"
@@ -122,6 +123,51 @@ recipe_step_free (gpointer data)
         g_free (d);
 }
 
+typedef enum {
+        GR_TEMPERATURE_UNIT_CELSIUS    = 0,
+        GR_TEMPERATURE_UNIT_FAHRENHEIT = 1
+} GrTemperatureUnit;
+
+static double
+convert_temperature (double            num,
+                     GrTemperatureUnit in,
+                     GrTemperatureUnit out)
+{
+        if (in == out)
+                return num;
+        else if (in  == GR_TEMPERATURE_UNIT_CELSIUS &&
+                 out == GR_TEMPERATURE_UNIT_FAHRENHEIT)
+                return num * 9.0 / 5.0 + 32.0;
+        else if (in  == GR_TEMPERATURE_UNIT_FAHRENHEIT &&
+                 out == GR_TEMPERATURE_UNIT_CELSIUS)
+                return (num - 32.0) * 5.0 / 9.0;
+        else {
+                g_message ("Unsupported temperature conversion: %d -> %d", in, out);
+                return num;
+        }
+}
+
+static char *
+format_temperature (double            num,
+                    int               digits,
+                    GrTemperatureUnit unit)
+{
+        char *s = NULL;
+
+        switch (unit) {
+        case GR_TEMPERATURE_UNIT_CELSIUS:
+                s = g_strdup_printf ("%.*f℃", digits, num);
+                break;
+        case GR_TEMPERATURE_UNIT_FAHRENHEIT:
+                s = g_strdup_printf ("%.*f℉", digits, num);
+                break;
+        default:
+                g_assert_not_reached ();
+        }
+
+        return s;
+}
+
 GPtrArray *
 gr_recipe_parse_instructions (const char *instructions,
                               gboolean    format_for_display)
@@ -129,6 +175,12 @@ gr_recipe_parse_instructions (const char *instructions,
         GPtrArray *step_array;
         g_auto(GStrv) steps = NULL;
         int i;
+        int user_unit;
+        int recipe_unit;
+        GSettings *settings;
+
+        settings = g_settings_new ("org.gnome.Recipes");
+        user_unit = g_settings_get_enum (settings, "temperature-unit");
 
         step_array = g_ptr_array_new_with_free_func (recipe_step_free);
 
@@ -147,26 +199,27 @@ gr_recipe_parse_instructions (const char *instructions,
                         p = strstr (step, "[temperature:");
                         while (p) {
                                 g_autofree char *prefix = NULL;
-                                const char *unit;
-                                int num;
+                                double num;
                                 char *tmp;
 
                                 prefix = g_strndup (step, p - step);
 
                                 q = strstr (p, "]");
                                 if (q[-1] == 'C')
-                                        unit = "℃";
+                                        recipe_unit = GR_TEMPERATURE_UNIT_CELSIUS;
                                 else if (q[-1] == 'F')
-                                        unit ="℉";
+                                        recipe_unit = GR_TEMPERATURE_UNIT_FAHRENHEIT;
                                 else {
                                         g_message ("Unsupported temperature unit: %c, using C", q[-1]);
-                                        unit = "℃";
+                                        recipe_unit = GR_TEMPERATURE_UNIT_CELSIUS;
                                 }
-                                num = atoi (p + strlen ("[temperature:"));
 
-                                tmp = g_strdup_printf ("%s%d%s%s", prefix, num, unit, q + 1);
+                                num = atof (p + strlen ("[temperature:"));
+
+                                num = convert_temperature (num, recipe_unit, user_unit);
+                                tmp = format_temperature (num, 0, user_unit);
                                 g_free (step);
-                                step = tmp;
+                                step = g_strconcat (prefix, tmp, q + 1, NULL);
 
                                 p = strstr (step, "[temperature:");
                         }
