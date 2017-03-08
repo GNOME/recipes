@@ -41,15 +41,14 @@
  * as a number of key files:
  * - recipes.db for recipes, with each recipe being its own group
  * - chefs.db for chefs, with each chef being its own group
+ * - picks.db, with lists of things to put on the landing page
  *
  * There's a few auxiliary files:
- * - picks, with lists of things to put on the landing page
- * - favorites.db, with a list of the user's favorites
  * - shopping.db, with the current shppping list
  *
  * Some of these files are preinstalled (picks.db), some are only per-user
- * (favorites.db, shopping.db, user, cooking), and some are both, with the
- * per-user list overlaying the preinstalled one.
+ * (shopping.db), and some are both, with the per-user list overlaying the
+ * preinstalled one.
  *
  * Data from the preinstalled files is treated as readonly unless it
  * belongs to the current user.
@@ -68,6 +67,7 @@
  * Ancillary data is kept in gsettings:
  *  - the user id of the user
  *  - the counter for how often cooking mode was launched
+ *  - the list of favorites and the last-change timestamp for it
  */
 
 struct _GrRecipeStore
@@ -583,82 +583,27 @@ load_picks (GrRecipeStore *self,
         return TRUE;
 }
 
-static gboolean
+static void
 load_favorites (GrRecipeStore *self,
                 const char    *dir)
 {
-        g_autofree char *path = NULL;
-        g_autoptr(GKeyFile) keyfile = NULL;
-        g_autoptr(GError) error = NULL;
-        g_autofree char *tmp = NULL;
-        const char *key;
+        g_autoptr(GSettings) settings = g_settings_new ("org.gnome.recipes");
+        gint64 timestamp;
 
-        keyfile = g_key_file_new ();
-
-        path = g_build_filename (dir, "favorites.db", NULL);
-
-        if (!g_key_file_load_from_file (keyfile, path, G_KEY_FILE_NONE, &error)) {
-                if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT))
-                        g_error ("Failed to load favorites db: %s", error->message);
-                else
-                        g_info ("No favorites db at: %s", path);
-                return FALSE;
-        }
-
-        g_info ("Load favorites db: %s", path);
-
-        if (g_key_file_has_key (keyfile, "Content", "Recipes", NULL))
-                key = "Recipes";
-        else
-                key = "Favorites";
-
-        self->favorites = g_key_file_get_string_list (keyfile, "Content", key, NULL, &error);
-        if (error) {
-                if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
-                        g_warning ("Failed to load favorites: %s", error->message);
-                }
-                g_clear_error (&error);
-        }
-
-        tmp = g_key_file_get_string (keyfile, "Content", "LastChange", &error);
-        if (error) {
-                if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
-                        g_warning ("Failed to load favorites: %s", error->message);
-                }
-                g_clear_error (&error);
-        }
-
-        if (tmp)
-                self->favorite_change = date_time_from_string (tmp);
-
-        return TRUE;
+        self->favorites = g_settings_get_strv (settings, "favorites");
+        timestamp = g_settings_get_int64 (settings, "favorites-last-change");
+        self->favorite_change = g_date_time_new_from_unix_utc (timestamp);
 }
 
 static void
 save_favorites (GrRecipeStore *self)
 {
-        g_autoptr(GKeyFile) keyfile = NULL;
-        g_autofree char *path = NULL;
-        g_autoptr(GError) error = NULL;
+        g_autoptr(GSettings) settings = g_settings_new ("org.gnome.recipes");
+        gint64 timestamp;
 
-        keyfile = g_key_file_new ();
-
-        path = g_build_filename (get_user_data_dir (), "favorites.db", NULL);
-
-        g_info ("Save favorites db: %s", path);
-
-        g_key_file_set_string_list (keyfile, "Content", "Recipes", (const char * const *)self->favorites, g_strv_length (self->favorites));
-
-        if (self->favorite_change) {
-                g_autofree char *tmp = NULL;
-
-                tmp = date_time_to_string (self->favorite_change);
-                g_key_file_set_string (keyfile, "Content", "LastChange", tmp);
-        }
-
-        if (!g_key_file_save_to_file (keyfile, path, &error)) {
-                g_error ("Failed to save recipe database: %s", error->message);
-        }
+        g_settings_set_strv (settings, "favorites", (const char * const *)self->favorites);
+        timestamp = g_date_time_to_unix (self->favorite_change);
+        g_settings_set_int64 (settings, "favorites-last-change", timestamp);
 }
 
 static gboolean
@@ -934,7 +879,6 @@ gr_recipe_store_init (GrRecipeStore *self)
 {
         const char *data_dir;
         const char *user_dir;
-        const char *old_dir;
         g_autofree char *current_dir = NULL;
         g_autofree char *uninstalled_dir = NULL;
 

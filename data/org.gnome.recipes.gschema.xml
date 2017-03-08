@@ -13,6 +13,16 @@
       <summary>The number of times cooking mode has been presented</summary>
       <description>The number of times cooking mode has been presented</description>
     </key>
+    <key type="x" name="favorites-last-change">
+      <default>0</default>
+      <summary>The timestamp of the last change to the favorites list</summary>
+      <description>The timestamp of the last change to the favorites list</description>
+    </key>
+    <key type="as" name="favorites">
+      <default>[]</default>
+      <summary>The list of favorites</summary>
+      <description>The list of favorites</description>
+    </key>
 
   </schema>
 
