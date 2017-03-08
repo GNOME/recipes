@@ -84,6 +84,12 @@ gboolean        gr_recipe_store_is_in_shopping       (GrRecipeStore  *self,
                                                       GrRecipe       *recipe);
 int             gr_recipe_store_get_shopping_serves  (GrRecipeStore  *store,
                                                       GrRecipe       *recipe);
+gboolean        gr_recipe_store_not_shopping_ingredient (GrRecipeStore *self,
+                                                        const char    *ingredient);
+void            gr_recipe_store_remove_shopping_ingredient (GrRecipeStore *self,
+                                                      const char    *ingredient);
+void            gr_recipe_store_readd_shopping_ingredient (GrRecipeStore *self,
+                                                      const char    *ingredient);
 GDateTime      *gr_recipe_store_last_shopping_change (GrRecipeStore *self);
 gboolean        gr_recipe_store_has_diet            (GrRecipeStore  *self,
                                                      GrDiets         diet);
