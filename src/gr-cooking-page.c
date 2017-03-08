@@ -94,14 +94,14 @@ gr_cooking_page_init (GrCookingPage *self)
 static guint
 get_cooking_overlay_count (void)
 {
-        g_autoptr(GSettings) settings = g_settings_new ("org.gnome.recipes");
+        g_autoptr(GSettings) settings = g_settings_new ("org.gnome.Recipes");
         return g_settings_get_uint (settings, "cooking");
 }
 
 static void
 set_cooking_overlay_count (uint count)
 {
-        g_autoptr(GSettings) settings = g_settings_new ("org.gnome.recipes");
+        g_autoptr(GSettings) settings = g_settings_new ("org.gnome.Recipes");
         g_settings_set_uint (settings, "cooking", count);
 }
 

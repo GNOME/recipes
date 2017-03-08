@@ -277,7 +277,7 @@ EXTRA_DIST += $(appdata_in_files) appdata/org.gnome.Recipes.appdata.xml
 searchproviderdir = $(datadir)/gnome-shell/search-providers
 dist_searchprovider_DATA = org.gnome.Recipes-search-provider.ini
 
-gsettings_SCHEMAS = org.gnome.recipes.gschema.xml
+gsettings_SCHEMAS = org.gnome.Recipes.gschema.xml
 
 @GSETTINGS_RULES@
 
