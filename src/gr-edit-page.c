@@ -137,9 +137,17 @@ struct _GrEditPage
         guint index_handler_id;
 
         char *author;
+        gboolean unsaved;
 };
 
 G_DEFINE_TYPE (GrEditPage, gr_edit_page, GTK_TYPE_BOX)
+/*
+enum {
+        PROP_0,
+        PROP_UNSAVED,
+        N_PROPS
+};
+*/
 
 static char *get_text_view_text (GtkTextView *textview);
 static void  set_text_view_text (GtkTextView *textview,
@@ -1278,6 +1286,8 @@ edit_chef (GrEditPage *page)
         return TRUE;
 }
 
+
+
 static void
 gr_edit_page_init (GrEditPage *page)
 {
@@ -1404,14 +1414,67 @@ next_step (GrEditPage *page)
         gr_cooking_view_next_step (GR_COOKING_VIEW (page->cooking_view));
         update_steppers (page);
 }
+/*
+static void
+gr_edit_page_set_property (GObject      *object,
+                           guint         prop_id,
+                           const GValue *value,
+                           GParamSpec   *pspec)
+{
+    GrEditPage *self = GR_EDIT_PAGE(object);
+    gboolean x;
+
+    switch (prop_id) {
+        case PROP_UNSAVED:
+                
+                break;
+
+        default:
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        }
+}
+
+
+static void
+gr_edit_page_get_property (GObject    *object,
+                              guint       prop_id,
+                              GValue     *value,
+                              GParamSpec *pspec)
+{
+        GrEditPage *self = GR_EDIT_PAGE (object);
+
+        switch (prop_id) {
+        case PROP_UNSAVED:
+                
+                break;
+
+        default:
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        }
+}*/
+
+gboolean has_unsaved_changes(GrEditPage *page){
+
+    
+    page->unsaved=TRUE;
+    g_signal_emit(G_OBJECT(*page),"notify::has_unsaved_changes", page->unsaved);
+}
 
 static void
 gr_edit_page_class_init (GrEditPageClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
         GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+        GParamSpec *pspec;
 
         object_class->finalize = edit_page_finalize;
+        object_class->set_property = gr_edit_page_set_property;
+
+        pspec = g_param_spec_boolean ("unsaved", NULL, NULL,
+                                      FALSE,
+                                      G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_UNSAVED, pspec);
+        
 
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-edit-page.ui");
 

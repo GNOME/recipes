@@ -278,6 +278,7 @@
                         <property name="label" translatable="yes">_Name Your Recipe</property>
                         <property name="xalign">1</property>
                         <property name="valign">baseline</property>
+
                         <style>
                           <class name="dim-label"/>
                         </style>
@@ -294,6 +295,7 @@
                         <property name="valign">baseline</property>
                         <property name="margin-bottom">10</property>
                         <property name="width-chars">30</property>
+                        <signal name="changed" handler="has_unsaved_changes"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -324,6 +326,7 @@
                         <property name="halign">start</property>
                         <property name="valign">baseline</property>
                         <property name="margin-bottom">10</property>
+                        <signal name="value-changed" handler="has_unsaved_changes"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -354,6 +357,7 @@
                         <property name="has-entry">1</property>
                         <property name="valign">center</property>
                         <property name="margin-bottom">10</property>
+                        <signal name="changed" handler="has_unsaved_changes"/>
                         <items>
                           <item translatable="yes" id="Less than 15 minutes">Less than 15 minutes</item>
                           <item translatable="yes" id="15 to 30 minutes">15 to 30 minutes</item>
@@ -391,6 +395,7 @@
                         <property name="has-entry">1</property>
                         <property name="valign">center</property>
                         <property name="margin-bottom">40</property>
+                        <signal name="changed" handler="has_unsaved_changes"/>
                         <items>
                           <item translatable="yes" id="Less than 15 minutes">Less than 15 minutes</item>
                           <item translatable="yes" id="15 to 30 minutes">15 to 30 minutes</item>
@@ -428,6 +433,7 @@
                         <property name="has-entry">1</property>
                         <property name="valign">center</property>
                         <property name="margin-bottom">10</property>
+                        <signal name="changed" handler="has_unsaved_changes"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -458,6 +464,7 @@
                         <property name="has-entry">1</property>
                         <property name="valign">center</property>
                         <property name="margin-bottom">10</property>
+                        <signal name="changed" handler="has_unsaved_changes"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -488,6 +495,7 @@
                         <property name="has-entry">1</property>
                         <property name="valign">center</property>
                         <property name="margin-bottom">10</property>
+                        <signal name="changed" handler="has_unsaved_changes"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -517,6 +525,7 @@
                         <property name="visible">1</property>
                         <property name="valign">center</property>
                         <property name="margin-bottom">20</property>
+                        <signal name="changed" handler="has_unsaved_changes"/>
                         <items>
                           <item translatable="yes" id="mild">Mild</item>
                           <item translatable="yes" id="spicy">Somewhat spicy</item>
@@ -557,6 +566,7 @@
                             <property name="left-margin">10</property>
                             <property name="right-margin">10</property>
                             <property name="bottom-margin">10</property>
+                            <signal name="changed" handler="has_unsaved_changes"/>
                           </object>
                         </child>
                       </object>
@@ -591,30 +601,35 @@
                           <object class="GtkCheckButton" id="gluten_free_check">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Gluten free</property>
+                            <signal name="clicked" handler="has_unsaved_changes"/>
                           </object>
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="nut_free_check">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Nut free</property>
+                            <signal name="clicked" handler="has_unsaved_changes"/>
                           </object>
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="vegan_check">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Vegan</property>
+                            <signal name="clicked" handler="has_unsaved_changes"/>
                           </object>
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="vegetarian_check">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Vegetarian</property>
+                            <signal name="clicked" handler="has_unsaved_changes"/>
                           </object>
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="milk_free_check">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Milk free</property>
+                            <signal name="clicked" handler="has_unsaved_changes"/>
                           </object>
                         </child>
                       </object>
@@ -696,6 +711,7 @@
                         <property name="left-margin">10</property>
                         <property name="right-margin">10</property>
                         <property name="bottom-margin">10</property>
+                        <signal name="clicked" handler="has_unsaved_changes"/>
                       </object>
                     </child>
                       </object>
@@ -1034,6 +1050,7 @@
             <signal name="input" handler="time_spin_input"/>
             <signal name="output" handler="time_spin_output"/>
             <signal name="activate" handler="time_spin_activate"/>
+            <signal name="value-changed" handler="has_unsaved_changes"/>
           </object>
         </child>
         <child>
@@ -1052,6 +1069,7 @@
     <property name="lower">-50</property>
     <property name="step-increment">1</property>
     <property name="page-increment">10</property>
+    <signal name="changed" handler="has_unsaved_changes"/>
   </object>
   <object class="GtkPopover" id="temperature_popover">
     <property name="relative-to">temperature_button</property>
@@ -1068,6 +1086,7 @@
             <property name="width-chars">4</property>
             <property name="adjustment">temperature_adjustment</property>
             <signal name="activate" handler="temperature_spin_activate"/>
+            <signal name="value-changed" handler="has_unsaved_changes"/>
           </object>
         </child>
         <child>

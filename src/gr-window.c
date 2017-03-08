@@ -107,6 +107,14 @@ typedef struct
         char **search;
 } BackEntry;
 
+g_signal_connect (GtkWidget *edit_page, "notify", G_CALLBACK (make_save_sensitive()), window);
+
+void make_save_sensitive(GrWindow *window)
+{
+    GtkWidget *widget =(GR_WINDOW(window->save_button));
+    gtk_widget_set_sensitive(*widget);
+}
+
 static void
 back_entry_free (BackEntry *entry)
 {
@@ -1320,3 +1328,5 @@ gr_window_show_report_issue (GrWindow *window)
         if (error)
                 g_warning ("Unable to show '%s': %s", uri, error->message);
 }
+
+

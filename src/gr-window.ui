@@ -124,9 +124,10 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="save_button">
                 <property name="visible">1</property>
                 <property name="use-underline">1</property>
+                <property name="sensitive">0</property>
                 <property name="label" translatable="yes">_Save</property>
                 <signal name="clicked" handler="add_recipe" swapped="yes"/>
                 <style>
