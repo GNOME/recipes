@@ -137,9 +137,18 @@ struct _GrEditPage
         guint index_handler_id;
 
         char *author;
+        gboolean unsaved;
 };
 
 G_DEFINE_TYPE (GrEditPage, gr_edit_page, GTK_TYPE_BOX)
+
+enum {
+        PROP_0,
+        PROP_UNSAVED,
+        N_PROPS
+};
+
+static GParamSpec *props [N_PROPS];
 
 static char *get_text_view_text (GtkTextView *textview);
 static void  set_text_view_text (GtkTextView *textview,
@@ -152,6 +161,7 @@ dismiss_error (GrEditPage *page)
 }
 
 static void add_image_cb (GrEditPage *page);
+static void set_unsaved (GrEditPage *page);
 
 static void
 populate_image_flowbox (GrEditPage *page)
@@ -225,6 +235,7 @@ set_default_image_cb (GrEditPage *page)
 
         if (page->recipe)
                 g_object_set (page->recipe, "default-image", index, NULL);
+        set_unsaved (page);
 }
 
 static void
@@ -245,6 +256,7 @@ static void
 add_image_cb (GrEditPage *page)
 {
         gr_image_viewer_add_image (GR_IMAGE_VIEWER (page->images));
+        set_unsaved (page);
 }
 
 static char *
@@ -312,18 +324,21 @@ remove_image_cb (GrEditPage *page)
         instructions = get_text_view_text (GTK_TEXT_VIEW (page->instructions_field));
         rewritten = rewrite_instructions_for_removed_image (instructions, index);
         set_text_view_text (GTK_TEXT_VIEW (page->instructions_field), rewritten);
+        set_unsaved (page);
 }
 
 static void
 rotate_image_left_cb (GrEditPage *page)
 {
         gr_image_viewer_rotate_image (GR_IMAGE_VIEWER (page->images), 90);
+        set_unsaved (page);
 }
 
 static void
 rotate_image_right_cb (GrEditPage *page)
 {
         gr_image_viewer_rotate_image (GR_IMAGE_VIEWER (page->images), 270);
+        set_unsaved (page);
 }
 
 static void
@@ -442,6 +457,7 @@ remove_ingredient (GtkButton *button, GrEditPage *page)
                 page->active_row = NULL;
 
         gtk_widget_destroy (row);
+        set_unsaved (page);
 }
 
 static void
@@ -688,6 +704,7 @@ add_ingredient2 (GtkButton *button, GrEditPage *page)
                                  gtk_entry_get_text (GTK_ENTRY (page->new_ingredient_unit)),
                                  &amount, &unit);
         update_ingredient_row (row, amount, unit, ingredient);
+        set_unsaved (page);
 }
 
 static char *
@@ -1239,6 +1256,7 @@ add_step (GtkButton *button, GrEditPage *self)
         gtk_text_buffer_get_end_iter (buffer, &end);
         gtk_text_buffer_place_cursor (buffer, &end);
         gtk_text_buffer_insert_at_cursor (buffer, "\n\n", 2);
+        set_unsaved (self);
 }
 
 static void update_author_label (GrEditPage *page,
@@ -1277,6 +1295,8 @@ edit_chef (GrEditPage *page)
 
         return TRUE;
 }
+
+
 
 static void
 gr_edit_page_init (GrEditPage *page)
@@ -1337,7 +1357,7 @@ popover_keypress_handler (GtkWidget  *widget,
                         }
                 }
         }
-
+        
         return GDK_EVENT_PROPAGATE;
 }
 
@@ -1406,12 +1426,62 @@ next_step (GrEditPage *page)
 }
 
 static void
+gr_edit_page_set_property (GObject      *object,
+                           guint         prop_id,
+                           const GValue *value,
+                           GParamSpec   *pspec)
+{    
+        GrEditPage *self = GR_EDIT_PAGE (object);
+        switch (prop_id) {
+        case PROP_UNSAVED:
+                self->unsaved = g_value_get_boolean (value);
+                break;
+        default:
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        }
+}
+
+
+static void
+gr_edit_page_get_property (GObject    *object,
+                              guint       prop_id,
+                              GValue     *value,
+                              GParamSpec *pspec)
+{
+        GrEditPage *self = GR_EDIT_PAGE (object);
+
+        switch (prop_id) {
+        case PROP_UNSAVED:
+                g_value_set_boolean (value, self->unsaved);
+                break;
+        default:
+                G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        }
+}
+
+static
+void set_unsaved (GrEditPage *page)
+{
+        g_object_set (G_OBJECT (page),"unsaved", TRUE, NULL);
+}
+
+static void
 gr_edit_page_class_init (GrEditPageClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
         GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+        
 
         object_class->finalize = edit_page_finalize;
+        object_class->set_property = gr_edit_page_set_property;
+        object_class->get_property = gr_edit_page_get_property;
+
+
+        props [PROP_UNSAVED] = g_param_spec_boolean ("unsaved",
+                                                      NULL, NULL,
+                                                      TRUE, G_PARAM_READWRITE);
+        g_object_class_install_properties (object_class, N_PROPS, props);
+        
 
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-edit-page.ui");
 
@@ -1510,6 +1580,8 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, preview_visible_changed);
         gtk_widget_class_bind_template_callback (widget_class, prev_step);
         gtk_widget_class_bind_template_callback (widget_class, next_step);
+        gtk_widget_class_bind_template_callback (widget_class, set_unsaved);
+
 }
 
 GtkWidget *
@@ -1655,6 +1727,8 @@ add_ingredients_segment (GrEditPage *page,
 
                 gspell_entry = gspell_entry_get_from_gtk_entry (GTK_ENTRY (entry));
                 gspell_entry_basic_setup (gspell_entry);
+                g_signal_connect_swapped (GTK_WIDGET (entry), "changed", G_CALLBACK (set_unsaved),page);
+
         }
 #endif
 
@@ -1739,6 +1813,7 @@ remove_list (GtkButton *button, GrEditPage *page)
 
         update_segments (page);
         set_active_row (page, NULL);
+        set_unsaved (page);
 }
 
 static void
@@ -1806,7 +1881,6 @@ populate_ingredients (GrEditPage *page,
         gtk_widget_set_margin_top (button, 20);
         gtk_box_pack_end (GTK_BOX (page->ingredients_box), button, FALSE, TRUE, 0);
         g_signal_connect (button, "clicked", G_CALLBACK (add_list), page);
-
         update_segments (page);
 }
 

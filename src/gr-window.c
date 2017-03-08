@@ -58,6 +58,7 @@ struct _GrWindow
         GtkWidget *back_button;
         GtkWidget *search_button;
         GtkWidget *cooking_button;
+        GtkWidget *save_button;
         GtkWidget *search_bar;
         GtkWidget *main_stack;
         GtkWidget *recipes_page;
@@ -106,6 +107,20 @@ typedef struct
         char *header_title;
         char **search;
 } BackEntry;
+
+
+static
+void make_save_sensitive (GrEditPage *edit_page, GParamSpec *pspec, gpointer data)
+{
+        GrWindow *window = GR_WINDOW (data);
+        gboolean unsaved;
+
+        g_object_get (G_OBJECT (edit_page), "unsaved", &unsaved, NULL);
+        if (unsaved)
+                gtk_widget_set_sensitive (window->save_button,TRUE);
+        else
+                gtk_widget_set_sensitive (window->save_button,FALSE);
+}
 
 static void
 back_entry_free (BackEntry *entry)
@@ -190,6 +205,7 @@ new_recipe (GrWindow *window)
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "edit");
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "edit");
+        gtk_widget_set_sensitive(window->save_button,FALSE);
 }
 
 static void
@@ -651,6 +667,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrWindow, back_button);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, search_button);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, cooking_button);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, save_button);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, search_bar);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, main_stack);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, recipes_page);
@@ -743,6 +760,7 @@ gr_window_init (GrWindow *self)
         gtk_widget_init_template (GTK_WIDGET (self));
         self->back_entry_stack = g_queue_new ();
 
+        g_signal_connect (self->edit_page, "notify::unsaved", G_CALLBACK (make_save_sensitive), self);
         g_action_map_add_action_entries (G_ACTION_MAP (self),
                                          entries, G_N_ELEMENTS (entries),
                                          self);
@@ -801,6 +819,7 @@ gr_window_edit_recipe (GrWindow *window,
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "edit");
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "edit");
+        gtk_widget_set_sensitive(window->save_button,FALSE);
 }
 
 static void
@@ -1320,3 +1339,5 @@ gr_window_show_report_issue (GrWindow *window)
         if (error)
                 g_warning ("Unable to show '%s': %s", uri, error->message);
 }
+
+

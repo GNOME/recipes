@@ -6,6 +6,7 @@
     <property name="upper">99</property>
     <property name="step-increment">1</property>
     <property name="page-increment">10</property>
+    <signal name="value-changed" handler="set_unsaved" swapped="yes"/>
   </object>
   <template class="GrEditPage" parent="GtkBox">
     <property name="visible">True</property>
@@ -294,6 +295,7 @@
                         <property name="valign">baseline</property>
                         <property name="margin-bottom">10</property>
                         <property name="width-chars">30</property>
+                        <signal name="changed" handler="set_unsaved" swapped="yes"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -354,6 +356,7 @@
                         <property name="has-entry">1</property>
                         <property name="valign">center</property>
                         <property name="margin-bottom">10</property>
+                        <signal name="changed" handler="set_unsaved" swapped="yes"/>
                         <items>
                           <item translatable="yes" id="Less than 15 minutes">Less than 15 minutes</item>
                           <item translatable="yes" id="15 to 30 minutes">15 to 30 minutes</item>
@@ -391,6 +394,7 @@
                         <property name="has-entry">1</property>
                         <property name="valign">center</property>
                         <property name="margin-bottom">40</property>
+                        <signal name="changed" handler="set_unsaved" swapped="yes"/>
                         <items>
                           <item translatable="yes" id="Less than 15 minutes">Less than 15 minutes</item>
                           <item translatable="yes" id="15 to 30 minutes">15 to 30 minutes</item>
@@ -428,6 +432,7 @@
                         <property name="has-entry">1</property>
                         <property name="valign">center</property>
                         <property name="margin-bottom">10</property>
+                        <signal name="changed" handler="set_unsaved" swapped="yes"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -458,6 +463,7 @@
                         <property name="has-entry">1</property>
                         <property name="valign">center</property>
                         <property name="margin-bottom">10</property>
+                        <signal name="changed" handler="set_unsaved" swapped="yes"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -488,6 +494,7 @@
                         <property name="has-entry">1</property>
                         <property name="valign">center</property>
                         <property name="margin-bottom">10</property>
+                        <signal name="changed" handler="set_unsaved" swapped="yes"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -517,6 +524,7 @@
                         <property name="visible">1</property>
                         <property name="valign">center</property>
                         <property name="margin-bottom">20</property>
+                        <signal name="changed" handler="set_unsaved" swapped="yes"/>
                         <items>
                           <item translatable="yes" id="mild">Mild</item>
                           <item translatable="yes" id="spicy">Somewhat spicy</item>
@@ -551,6 +559,7 @@
                         <property name="min-content-height">120</property>
                         <child>
                           <object class="GtkTextView" id="description_field">
+                            <property name="buffer">instructions_buffer</property>
                             <property name="visible">1</property>
                             <property name="wrap-mode">word</property>
                             <property name="top-margin">10</property>
@@ -591,30 +600,35 @@
                           <object class="GtkCheckButton" id="gluten_free_check">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Gluten free</property>
+                            <signal name="clicked" handler="set_unsaved" swapped="yes" />
                           </object>
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="nut_free_check">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Nut free</property>
+                            <signal name="clicked" handler="set_unsaved" swapped="yes"/>
                           </object>
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="vegan_check">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Vegan</property>
+                            <signal name="clicked" handler="set_unsaved" swapped="yes"/>
                           </object>
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="vegetarian_check">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Vegetarian</property>
+                            <signal name="clicked" handler="set_unsaved" swapped="yes"/>
                           </object>
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="milk_free_check">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Milk free</property>
+                            <signal name="clicked" handler="set_unsaved" swapped="yes"/>
                           </object>
                         </child>
                       </object>
@@ -690,6 +704,7 @@
                     <property name="min-content-height">300</property>
                     <child>
                       <object class="GtkTextView" id="instructions_field">
+                        <property name="buffer">instructions_buffer</property>
                         <property name="visible">1</property>
                         <property name="wrap-mode">word</property>
                         <property name="top-margin">10</property>
@@ -1034,6 +1049,7 @@
             <signal name="input" handler="time_spin_input"/>
             <signal name="output" handler="time_spin_output"/>
             <signal name="activate" handler="time_spin_activate"/>
+            <signal name="change-value" handler="set_unsaved" swapped="yes"/>
           </object>
         </child>
         <child>
@@ -1052,6 +1068,7 @@
     <property name="lower">-50</property>
     <property name="step-increment">1</property>
     <property name="page-increment">10</property>
+    <signal name="changed" handler="set_unsaved" swapped="yes"/>
   </object>
   <object class="GtkPopover" id="temperature_popover">
     <property name="relative-to">temperature_button</property>
@@ -1068,6 +1085,7 @@
             <property name="width-chars">4</property>
             <property name="adjustment">temperature_adjustment</property>
             <signal name="activate" handler="temperature_spin_activate"/>
+            <signal name="change-value" handler="set_unsaved" swapped="yes"/>
           </object>
         </child>
         <child>
@@ -1217,5 +1235,11 @@
         </child>
       </object>
     </child>
+  </object>
+  <object class="GtkTextBuffer" id="instructions_buffer">
+    <signal name="changed" handler="set_unsaved" swapped="yes"/>
+  </object>
+  <object class="GtkTextBuffer" id="description_buffer">
+    <signal name="changed" handler="set_unsaved" swapped="yes"/>
   </object>
 </interface>
