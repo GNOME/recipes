@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-28 12:40+0000\n"
-"PO-Revision-Date: 2017-02-28 21:41+0200\n"
+"POT-Creation-Date: 2017-03-08 11:52+0000\n"
+"PO-Revision-Date: 2017-03-08 21:27+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -20,8 +20,8 @@ msgstr ""
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
-#: src/gr-window.ui:354 src/gr-about-dialog.c:739 src/gr-window.c:296
-#: src/gr-window.c:705
+#: src/gr-window.ui:354 src/gr-about-dialog.c:860 src/gr-window.c:300
+#: src/gr-window.c:759
 msgid "Recipes"
 msgstr "Reseptit"
 
@@ -34,7 +34,7 @@ msgstr ""
 msgid "org.gnome.Recipes"
 msgstr "org.gnome.Recipes"
 
-#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:747
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:864
 msgid "GNOME loves to cook"
 msgstr ""
 
@@ -58,11 +58,11 @@ msgstr ""
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:26
 msgid "The cuisines page"
-msgstr ""
+msgstr "Keittiösivu"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:30
 msgid "A shopping list"
-msgstr ""
+msgstr "Ostoslista"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:34
 msgid "Cooking a recipe"
@@ -70,7 +70,7 @@ msgstr ""
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:38
 msgid "Editing a recipe"
-msgstr ""
+msgstr "Reseptin muokkausta"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:42
 msgid "An individual recipe"
@@ -78,6 +78,71 @@ msgstr ""
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:46
 msgid "An individual cuisine"
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:8
+msgid "The user ID of the current user"
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:9
+msgid "The user ID of the current user."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:15
+msgid "The number of times cooking mode has been presented"
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:16
+msgid "The number of times cooking mode has been presented."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:22
+msgid "The timestamp of the last change to the favorites list"
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:23
+msgid ""
+"The timestamp of the last time an item was added to or removed from the "
+"favorites list."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:30
+#, fuzzy
+#| msgid "Add to favorites"
+msgid "The list of favorites"
+msgstr "Lisää suosikkeihin"
+
+#: data/org.gnome.Recipes.gschema.xml:31
+msgid "The list of favorites. Each entry in the list is the ID of a recipe."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:37
+msgid "The timestamp of the last change to the shopping list"
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:38
+msgid ""
+"The timestamp of the last time an item was added to or removed from the "
+"shopping list."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:45
+#| msgid "View Shopping List"
+msgid "The shopping list"
+msgstr "Ostoslista"
+
+#: data/org.gnome.Recipes.gschema.xml:46
+msgid ""
+"The shopping list. Each entry in the dictionary maps the ID of a recipe to a "
+"serving count."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:53
+msgid "Ingredients that were removed from the shopping list"
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:54
+msgid "The names of ingredients that were removed from the shopping list."
 msgstr ""
 
 #: src/chef-conflict-dialog.ui:10
@@ -117,27 +182,28 @@ msgstr "Kuva:"
 msgid "Chef Information"
 msgstr "Kokin tiedot"
 
-#: src/gr-chef-dialog.ui:14
+#: src/gr-chef-dialog.ui:11 src/gr-window.c:952
 msgid "_Cancel"
 msgstr "_Peru"
 
-#: src/gr-chef-dialog.ui:23 src/gr-window.ui:130
+#: src/gr-chef-dialog.ui:21 src/gr-window.ui:130
 msgid "_Save"
 msgstr "_Tallenna"
 
-#: src/gr-chef-dialog.ui:103
-msgid "This data may be shared with other users if you share your recipes."
-msgstr ""
+#: src/gr-chef-dialog.ui:98
+msgid ""
+"This information may be shared with other users if you share your recipes."
+msgstr "Nämä tiedot saatetaan jakaa muiden kanssa, jos jaat reseptejäsi."
 
-#: src/gr-chef-dialog.ui:125
+#: src/gr-chef-dialog.ui:120
 msgid "Other Chef"
 msgstr "Muu kokki"
 
-#: src/gr-chef-dialog.ui:138
+#: src/gr-chef-dialog.ui:133
 msgid "Name…"
 msgstr "Nimi…"
 
-#: src/gr-chef-dialog.ui:149
+#: src/gr-chef-dialog.ui:144
 msgid "Short Name…"
 msgstr "Lyhyt nimi…"
 
@@ -151,17 +217,21 @@ msgstr "Valmis"
 
 #: src/gr-cooking-page.ui:186
 msgid "Controls"
-msgstr ""
+msgstr "Ohjaimet"
 
 #: src/gr-cooking-page.ui:212
 msgid ""
 "To advance to the next step, press any key on the\n"
 "keyboard."
 msgstr ""
+"Siirry seuraavaan vaiheeseen painamalla\n"
+"mitä tahansa näppäintä."
 
 #: src/gr-cooking-page.ui:235
 msgid "To go back to the previous step, doubletap any key."
 msgstr ""
+"Siirry edelliseen vaiheeseen painamalla kahdesti\n"
+"mitä tahansa näppäintä."
 
 #: src/gr-cooking-page.ui:257
 msgid ""
@@ -171,11 +241,11 @@ msgstr ""
 
 #: src/gr-cooking-page.ui:281
 msgid "To exit the process, press the Escape key."
-msgstr ""
+msgstr "Lopeta prosessi painamalla Esc-näppäintä."
 
 #: src/gr-cooking-view.ui:65
 msgid "Time is up!"
-msgstr ""
+msgstr "Aika loppui!"
 
 #: src/gr-cuisine-page.ui:68 src/gr-list-page.ui:113 src/gr-search-page.ui:30
 #: src/gr-list-page.c:417
@@ -188,7 +258,7 @@ msgstr ""
 
 #: src/gr-cuisines-page.ui:9
 msgid "Cuisines page"
-msgstr ""
+msgstr "Keittiösivu"
 
 #: src/gr-cuisines-page.ui:30
 msgid "World Cuisines"
@@ -216,23 +286,23 @@ msgstr ""
 
 #: src/gr-details-page.ui:147
 msgid "_Buy Ingredients"
-msgstr ""
+msgstr "_Osta ainekset"
 
 #: src/gr-details-page.ui:165 src/gr-recipe-small-tile.ui:102
 msgid "Serves"
-msgstr ""
+msgstr "Annoksia"
 
 #: src/gr-details-page.ui:199
 msgid "Preparation Time"
-msgstr ""
+msgstr "Valmisteluaika"
 
 #: src/gr-details-page.ui:229
 msgid "Cooking Time"
-msgstr ""
+msgstr "Kokkausaika"
 
 #: src/gr-details-page.ui:259
 msgid "Cuisine"
-msgstr ""
+msgstr "Keittiö"
 
 #: src/gr-details-page.ui:289 src/gr-query-editor.ui:48
 msgid "Meal"
@@ -240,14 +310,14 @@ msgstr ""
 
 #: src/gr-details-page.ui:319
 msgid "Season"
-msgstr ""
+msgstr "Kausi"
 
 #: src/gr-details-page.ui:381
 msgid "Note"
 msgstr ""
 
 #: src/gr-details-page.ui:411 src/gr-edit-page.ui:644
-#: src/gr-recipe-formatter.c:87 src/gr-recipe-printer.c:294
+#: src/gr-recipe-formatter.c:87 src/gr-recipe-printer.c:243
 msgid "Directions"
 msgstr ""
 
@@ -282,7 +352,7 @@ msgstr "Lisää kuva"
 
 #: src/gr-edit-page.ui:139 src/gr-edit-page.ui:165
 msgid "Rotate image"
-msgstr ""
+msgstr "Käännä kuvaa"
 
 #: src/gr-edit-page.ui:191
 msgid "Default image"
@@ -294,7 +364,7 @@ msgstr "Poista kuva"
 
 #: src/gr-edit-page.ui:261
 msgid "Details"
-msgstr ""
+msgstr "Tiedot"
 
 #: src/gr-edit-page.ui:278
 msgid "_Name Your Recipe"
@@ -302,7 +372,7 @@ msgstr "_Nimeä reseptisi"
 
 #: src/gr-edit-page.ui:308
 msgid "Ser_ves"
-msgstr ""
+msgstr "_Annoksia"
 
 #: src/gr-edit-page.ui:338
 msgid "_Preparation Time"
@@ -330,39 +400,39 @@ msgstr "Enemmän kuin tunti"
 
 #: src/gr-edit-page.ui:375
 msgid "C_ooking Time"
-msgstr ""
+msgstr "_Kokkausaika"
 
 #: src/gr-edit-page.ui:412
 msgid "_Cuisine"
-msgstr ""
+msgstr "Keitti_ö"
 
 #: src/gr-edit-page.ui:442
 msgid "_Meal"
-msgstr ""
+msgstr "Ate_ria"
 
 #: src/gr-edit-page.ui:472
 msgid "S_eason"
-msgstr ""
+msgstr "Ka_usi"
 
 #: src/gr-edit-page.ui:502
 msgid "S_piciness"
-msgstr ""
+msgstr "Maust_eisuus"
 
 #: src/gr-edit-page.ui:521 src/gr-spice-row.c:127
 msgid "Mild"
-msgstr ""
+msgstr "Mieto"
 
 #: src/gr-edit-page.ui:522
 msgid "Somewhat spicy"
-msgstr ""
+msgstr "Hieman mausteinen"
 
 #: src/gr-edit-page.ui:523
 msgid "Hot"
-msgstr ""
+msgstr "Tulinen"
 
 #: src/gr-edit-page.ui:524 src/gr-details-page.c:540 src/gr-spice-row.c:142
 msgid "Very spicy"
-msgstr ""
+msgstr "Erittäin mausteinen"
 
 #: src/gr-edit-page.ui:535
 msgid "Description"
@@ -374,7 +444,7 @@ msgstr "Gluteeniton"
 
 #: src/gr-edit-page.ui:599 src/gr-diet-row.c:105
 msgid "Nut free"
-msgstr ""
+msgstr "Pähkinätön"
 
 #: src/gr-edit-page.ui:605 src/gr-diet-row.c:108
 msgid "Vegan"
@@ -388,7 +458,7 @@ msgstr ""
 msgid "Milk free"
 msgstr "Maidoton"
 
-#: src/gr-edit-page.ui:704
+#: src/gr-edit-page.ui:704 src/menus.ui:63
 msgid "Edit"
 msgstr "Muokkaa"
 
@@ -412,7 +482,7 @@ msgstr "Lisää ajastin"
 msgid "Add Temperature"
 msgstr "Lisää lämpötila"
 
-#: src/gr-edit-page.ui:820 src/gr-edit-page.ui:841 src/gr-edit-page.c:420
+#: src/gr-edit-page.ui:820 src/gr-edit-page.ui:841 src/gr-edit-page.c:419
 msgid "Ingredient"
 msgstr "Ainesosa"
 
@@ -420,11 +490,11 @@ msgstr "Ainesosa"
 msgid "Search…"
 msgstr "Etsi…"
 
-#: src/gr-edit-page.ui:899 src/gr-edit-page.ui:920 src/gr-edit-page.c:421
+#: src/gr-edit-page.ui:899 src/gr-edit-page.ui:920 src/gr-edit-page.c:420
 msgid "Amount"
-msgstr ""
+msgstr "Määrä"
 
-#: src/gr-edit-page.ui:992 src/gr-edit-page.c:424
+#: src/gr-edit-page.ui:992 src/gr-edit-page.c:423
 msgid "Add"
 msgstr "Lisää"
 
@@ -446,7 +516,7 @@ msgstr ""
 
 #: src/gr-edit-page.ui:1156
 msgid "Timer"
-msgstr ""
+msgstr "Ajastin"
 
 #: src/gr-edit-page.ui:1178
 msgid "Image"
@@ -458,21 +528,21 @@ msgstr "Lämpötila"
 
 #: src/gr-list-page.ui:126
 msgid "There are no recipes here yet."
-msgstr ""
+msgstr "Täällä ei ole vielä resepetejä."
 
 #: src/gr-query-editor.ui:68 src/gr-query-editor.c:490
 #: src/gr-query-editor.c:679
 msgid "Any meal"
-msgstr ""
+msgstr "Mikä tahansa ateria"
 
 #: src/gr-query-editor.ui:111
 msgid "Spiciness"
-msgstr ""
+msgstr "Mausteisuus"
 
 #: src/gr-query-editor.ui:131 src/gr-query-editor.c:557
 #: src/gr-query-editor.c:708
 msgid "Any spiciness"
-msgstr ""
+msgstr "Mikä tahansa mausteisuus"
 
 #: src/gr-query-editor.ui:174
 msgid "Dietary restrictions"
@@ -483,10 +553,10 @@ msgstr ""
 msgid "No restrictions"
 msgstr "Ei rajoituksia"
 
-#: src/gr-query-editor.ui:237 src/gr-edit-page.c:1637
-#: src/gr-recipe-formatter.c:68 src/gr-recipe-printer.c:243
+#: src/gr-query-editor.ui:237 src/gr-edit-page.c:1634
+#: src/gr-recipe-formatter.c:68 src/gr-recipe-printer.c:192
 msgid "Ingredients"
-msgstr ""
+msgstr "Ainekset"
 
 #. FIXME: repopulate
 #: src/gr-query-editor.ui:257 src/gr-query-editor.c:337
@@ -494,13 +564,13 @@ msgstr ""
 msgid "Anything"
 msgstr ""
 
-#: src/gr-recipe-small-tile.ui:126 src/gr-edit-page.c:1666
+#: src/gr-recipe-small-tile.ui:126 src/gr-edit-page.c:1663
 msgid "Remove"
-msgstr ""
+msgstr "Poista"
 
 #: src/gr-recipes-page.ui:9
 msgid "Recipes page"
-msgstr ""
+msgstr "Reseptisivu"
 
 #: src/gr-recipes-page.ui:29
 msgid "Today"
@@ -524,15 +594,15 @@ msgstr "Yritä hakua eri ehdoilla"
 
 #: src/gr-shopping-page.ui:42
 msgid "Buy ingredients"
-msgstr ""
+msgstr "Osta ainekset"
 
 #: src/gr-shopping-page.ui:94
 msgid "No shopping necessary!"
-msgstr ""
+msgstr "Ostokset eivät ole tarpeen!"
 
 #: src/gr-shopping-page.ui:134
 msgid "_Clear List"
-msgstr ""
+msgstr "Tyh_jennä lista"
 
 #: src/gr-shopping-page.ui:190
 msgid "Nothing to add"
@@ -572,7 +642,7 @@ msgstr "_Aloita kokkaus"
 
 #: src/gr-window.ui:191
 msgid "Ingredients to buy added."
-msgstr ""
+msgstr "Ostettavat ainekset lisätty."
 
 #: src/gr-window.ui:201
 msgid "View Shopping List"
@@ -586,32 +656,68 @@ msgstr "Kumoa"
 msgid "Send Update"
 msgstr "Lähetä päivitys"
 
-#: src/gr-window.ui:387 src/gr-window.c:302
+#: src/gr-window.ui:387 src/gr-window.c:306
 msgid "Cuisines"
-msgstr ""
+msgstr "Keittiöt"
 
-#: src/menus.ui:7
+#: src/menus.ui:7 src/menus.ui:45
 msgid "_Import"
 msgstr "_Tuo"
 
-#: src/menus.ui:12
-msgid "_My Chef Information"
-msgstr "_Kokin tiedot"
+#: src/menus.ui:12 src/menus.ui:50
+msgid "_Export All"
+msgstr "_Vie kaikki"
 
-#: src/menus.ui:18
-msgid "_What’s New"
-msgstr "_Uutuudet"
+#: src/menus.ui:17
+#| msgid "Chef Information"
+msgid "_Chef Information"
+msgstr "K_okin tiedot"
 
-#: src/menus.ui:22
+#: src/menus.ui:23
 msgid "_About"
 msgstr "_Tietoja"
 
-#: src/menus.ui:26
+#: src/menus.ui:27 src/menus.ui:86
+msgid "_What’s New"
+msgstr "_Uutuudet"
+
+#: src/menus.ui:31 src/menus.ui:90
+msgid "_Report Issue"
+msgstr "_Ilmoita ongelmasta"
+
+#: src/menus.ui:35
 msgid "_Quit"
 msgstr "_Lopeta"
 
-#: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:152
-#: src/gr-image-viewer.c:625 src/gr-window.c:868
+#: src/menus.ui:42
+msgid "File"
+msgstr "Tiedosto"
+
+#: src/menus.ui:57
+#| msgid "Chef Information"
+msgid "Chef Information…"
+msgstr "Kokin tiedot…"
+
+#: src/menus.ui:66
+msgid "Copy"
+msgstr "Kopioi"
+
+#: src/menus.ui:70
+#| msgid "Pasta"
+msgid "Paste"
+msgstr "Liitä"
+
+#: src/menus.ui:76
+msgid "Find…"
+msgstr "Etsi…"
+
+#: src/menus.ui:83
+msgid "Help"
+msgstr "Ohje"
+
+#: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:154
+#: src/gr-image-viewer.c:625 src/gr-recipe-exporter.c:168
+#: src/gr-shopping-page.c:732 src/gr-window.c:888
 msgid "Cancel"
 msgstr "Peru"
 
@@ -632,103 +738,102 @@ msgid "Share with a friend"
 msgstr "Jaa ystävälle"
 
 #: src/recipe-export-dialog.ui:64
-msgid "Contribute to GNOME recipes"
+msgid "Contribute to GNOME Recipes"
 msgstr ""
 
-#: src/recipe-whats-new-dialog.ui:8 src/recipe-whats-new-dialog.ui:13
+#: src/recipe-whats-new-dialog.ui:8
 msgid "What’s New in Recipes"
 msgstr ""
 
-#: src/gr-about-dialog.c:122
+#: src/gr-about-dialog.c:130
 msgid "Learn more about Builder"
 msgstr ""
 
-#: src/gr-about-dialog.c:220 src/gr-about-dialog.c:222
-#: src/gr-about-dialog.c:224 src/gr-about-dialog.c:307
-#: src/gr-about-dialog.c:309 src/gr-about-dialog.c:311
-#: src/gr-about-dialog.c:313 src/gr-about-dialog.c:315
-#: src/gr-about-dialog.c:317 src/gr-about-dialog.c:319
-#: src/gr-about-dialog.c:321 src/gr-about-dialog.c:323
+#: src/gr-about-dialog.c:242 src/gr-about-dialog.c:325
+#: src/gr-about-dialog.c:327 src/gr-about-dialog.c:329
+#: src/gr-about-dialog.c:331 src/gr-about-dialog.c:333
+#: src/gr-about-dialog.c:335 src/gr-about-dialog.c:337
+#: src/gr-about-dialog.c:339 src/gr-about-dialog.c:341
 msgid "Unknown"
 msgstr "Tuntematon"
 
-#: src/gr-about-dialog.c:412
+#: src/gr-about-dialog.c:431
 msgid "Flatpak"
 msgstr "Flatpak"
 
-#: src/gr-about-dialog.c:415
+#: src/gr-about-dialog.c:434
 msgctxt "Flatpak metadata"
 msgid "Version"
 msgstr "Versio"
 
-#: src/gr-about-dialog.c:418
+#: src/gr-about-dialog.c:437
 msgid "Application"
 msgstr "Sovellus"
 
-#: src/gr-about-dialog.c:421 src/gr-about-dialog.c:430
+#: src/gr-about-dialog.c:440 src/gr-about-dialog.c:449
 msgctxt "Flatpak metadata"
 msgid "ID"
 msgstr ""
 
-#: src/gr-about-dialog.c:422 src/gr-about-dialog.c:431
+#: src/gr-about-dialog.c:441 src/gr-about-dialog.c:450
 msgctxt "Flatpak metadata"
 msgid "Architecture"
 msgstr "Arkkitehtuuri"
 
-#: src/gr-about-dialog.c:423 src/gr-about-dialog.c:432
+#: src/gr-about-dialog.c:442 src/gr-about-dialog.c:451
 msgctxt "Flatpak metadata"
 msgid "Branch"
 msgstr ""
 
-#: src/gr-about-dialog.c:424 src/gr-about-dialog.c:433
+#: src/gr-about-dialog.c:443 src/gr-about-dialog.c:452
 msgctxt "Flatpak metadata"
 msgid "Commit"
 msgstr ""
 
-#: src/gr-about-dialog.c:427
+#: src/gr-about-dialog.c:446
 msgid "Runtime"
 msgstr ""
 
-#: src/gr-about-dialog.c:436 src/gr-about-dialog.c:498
+#: src/gr-about-dialog.c:455 src/gr-about-dialog.c:519
 msgid "Bundled libraries"
-msgstr ""
+msgstr "Sisällytetyt kirjastot"
 
-#: src/gr-about-dialog.c:466
+#: src/gr-about-dialog.c:485
 msgid "OS"
 msgstr ""
 
-#: src/gr-about-dialog.c:469
+#: src/gr-about-dialog.c:488
 msgctxt "OS metadata"
 msgid "Name"
 msgstr "Nimi"
 
-#: src/gr-about-dialog.c:470
+#: src/gr-about-dialog.c:490
 msgctxt "OS metadata"
 msgid "Type"
 msgstr "Tyyppi"
 
-#: src/gr-about-dialog.c:472 src/gr-about-dialog.c:474
+#: src/gr-about-dialog.c:493 src/gr-about-dialog.c:495
 msgctxt "OS metadata"
 msgid "Desktop"
 msgstr "Työpöytä"
 
-#: src/gr-about-dialog.c:477
+#: src/gr-about-dialog.c:498
 msgid "System libraries"
 msgstr "Järjestelmäkirjastot"
 
-#: src/gr-about-dialog.c:693
+#: src/gr-about-dialog.c:770 src/gr-about-dialog.c:797
 msgid "System"
 msgstr "Järjestelmä"
 
-#: src/gr-about-dialog.c:749
+#: src/gr-about-dialog.c:866
 msgid "translator-credits"
 msgstr "Jiri Grönroos"
 
-#: src/gr-about-dialog.c:752
+#: src/gr-about-dialog.c:869
 msgid "Learn more about Recipes"
 msgstr ""
 
-#: src/gr-about-dialog.c:756
+#: src/gr-about-dialog.c:876
 msgid "Recipes by"
 msgstr ""
 
@@ -737,29 +842,37 @@ msgstr ""
 msgid "Got an error from Account portal"
 msgstr ""
 
-#: src/gr-account.c:134
+#: src/gr-account.c:138
 msgid ""
 "Allow your personal information to be included with recipes you share with "
 "your friends."
 msgstr ""
 
-#: src/gr-chef-dialog.c:148 src/gr-image-viewer.c:621
+#: src/gr-app.c:440
+msgid "Print the version and exit"
+msgstr "Tulosta versio ja lopeta"
+
+#: src/gr-app.c:444
+msgid "Turn on verbose logging"
+msgstr ""
+
+#: src/gr-chef-dialog.c:150 src/gr-image-viewer.c:621
 msgid "Select an Image"
 msgstr "Valitse kuva"
 
-#: src/gr-chef-dialog.c:151 src/gr-image-viewer.c:624 src/gr-window.c:867
+#: src/gr-chef-dialog.c:153 src/gr-image-viewer.c:624 src/gr-window.c:887
 msgid "Open"
 msgstr "Avaa"
 
-#: src/gr-chef-dialog.c:156 src/gr-image-viewer.c:629
+#: src/gr-chef-dialog.c:158 src/gr-image-viewer.c:629
 msgid "Image files"
 msgstr "Kuvatiedostot"
 
-#: src/gr-chef-dialog.c:406
+#: src/gr-chef-dialog.c:407
 msgid "New Chef"
 msgstr "Uusi kokki"
 
-#: src/gr-cooking-page.c:209
+#: src/gr-cooking-page.c:179
 msgid "Cooking"
 msgstr ""
 
@@ -779,7 +892,7 @@ msgstr ""
 
 #: src/gr-cooking-view.c:373
 msgid "A cooking timer has expired"
-msgstr ""
+msgstr "Kokkausajastin on erääntynyt"
 
 #: src/gr-cooking-view.c:391 src/gr-cooking-view.c:407
 #, c-format
@@ -788,87 +901,87 @@ msgstr ""
 
 #: src/gr-cooking-view.c:405
 msgid "Timer is up!"
-msgstr ""
+msgstr "Ajastin erääntyi!"
 
 #: src/gr-cuisine.c:45
 msgid "American"
-msgstr ""
+msgstr "Amerikkalainen"
 
 #: src/gr-cuisine.c:46
 msgid "Chinese"
-msgstr ""
+msgstr "Kiinalainen"
 
 #: src/gr-cuisine.c:47
 msgid "Indian"
-msgstr ""
+msgstr "Intialainen"
 
 #: src/gr-cuisine.c:48
 msgid "Italian"
-msgstr ""
+msgstr "Italialainen"
 
 #: src/gr-cuisine.c:49
 msgid "French"
-msgstr ""
+msgstr "Ranskalainen"
 
 #: src/gr-cuisine.c:50
 msgid "Greek"
-msgstr ""
+msgstr "Kreikkalainen"
 
 #: src/gr-cuisine.c:51
 msgid "Mediterranean"
-msgstr ""
+msgstr "Välimerellinen"
 
 #: src/gr-cuisine.c:52
 msgid "Mexican"
-msgstr ""
+msgstr "Meksikolainen"
 
 #: src/gr-cuisine.c:53
 msgid "Nordic"
-msgstr ""
+msgstr "Pohjoismainen"
 
 #: src/gr-cuisine.c:54
 msgid "Turkish"
-msgstr ""
+msgstr "Turkkilainen"
 
 #: src/gr-cuisine.c:58
 msgid "American Cuisine"
-msgstr ""
+msgstr "Amerikkalainen keittiö"
 
 #: src/gr-cuisine.c:59
 msgid "Chinese Cuisine"
-msgstr ""
+msgstr "Kiinalainen keittiö"
 
 #: src/gr-cuisine.c:60
 msgid "Indian Cuisine"
-msgstr ""
+msgstr "Intialainen keittiö"
 
 #: src/gr-cuisine.c:61
 msgid "Italian Cuisine"
-msgstr ""
+msgstr "Italialainen keittiö"
 
 #: src/gr-cuisine.c:62
 msgid "French Cuisine"
-msgstr ""
+msgstr "Ranskalainen keittiö"
 
 #: src/gr-cuisine.c:63
 msgid "Greek Cuisine"
-msgstr ""
+msgstr "Kreikkalainen keittiö"
 
 #: src/gr-cuisine.c:64
 msgid "Mediterranean Cuisine"
-msgstr ""
+msgstr "Välimerellinen keittiö"
 
 #: src/gr-cuisine.c:65
 msgid "Mexican Cuisine"
-msgstr ""
+msgstr "Meksikolainen keittiö"
 
 #: src/gr-cuisine.c:66
 msgid "Nordic Cuisine"
-msgstr ""
+msgstr "Pohjoismainen keittiö"
 
 #: src/gr-cuisine.c:67
 msgid "Turkish Cuisine"
-msgstr ""
+msgstr "Turkkilainen keittiö"
 
 #: src/gr-cuisine.c:71
 msgid ""
@@ -974,22 +1087,22 @@ msgstr ""
 
 #: src/gr-details-page.c:323
 msgid "Could not find this recipe."
-msgstr ""
+msgstr "Tätä reseptiä ei löytynyt."
 
-#: src/gr-details-page.c:583
+#: src/gr-details-page.c:584
 #, c-format
 msgid "Timer: %s"
 msgstr "Ajastin: %s"
 
-#: src/gr-details-page.c:590
+#: src/gr-details-page.c:591
 #, c-format
 msgid "Image %d"
 msgstr "Kuva %d"
 
-#: src/gr-details-page.c:733 src/gr-edit-page.c:1942
+#: src/gr-details-page.c:735 src/gr-edit-page.c:1940
 #, c-format
 msgid "Recipe by %s"
-msgstr ""
+msgstr "Reseptin teki %s"
 
 #: src/gr-diet.c:34
 msgid "Gluten-free recipes"
@@ -1009,7 +1122,7 @@ msgstr ""
 
 #: src/gr-diet.c:46
 msgid "Milk-free recipes"
-msgstr ""
+msgstr "Maidottomat reseptit"
 
 #: src/gr-diet.c:49 src/gr-diet.c:78
 msgid "Other dietary restrictions"
@@ -1071,88 +1184,88 @@ msgid ""
 "<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Learn more…</a>"
 msgstr ""
 
-#: src/gr-edit-page.c:470
+#: src/gr-edit-page.c:469
 msgid "Apply"
 msgstr "Toteuta"
 
-#: src/gr-edit-page.c:1085
+#: src/gr-edit-page.c:1084
 msgid "hour"
-msgstr ""
+msgstr "tunti"
+
+#: src/gr-edit-page.c:1085
+msgid "hours"
+msgstr "tuntia"
 
 #: src/gr-edit-page.c:1086
-msgid "hours"
-msgstr ""
-
-#: src/gr-edit-page.c:1087
 msgctxt "hour abbreviation"
 msgid "h"
-msgstr ""
+msgstr "t"
+
+#: src/gr-edit-page.c:1090
+msgid "minute"
+msgstr "minuutti"
 
 #: src/gr-edit-page.c:1091
-msgid "minute"
-msgstr ""
+msgid "minutes"
+msgstr "minuuttia"
 
 #: src/gr-edit-page.c:1092
-msgid "minutes"
-msgstr ""
+msgctxt "minute abbreviation"
+msgid "min"
+msgstr "min"
 
 #: src/gr-edit-page.c:1093
 msgctxt "minute abbreviation"
-msgid "min"
-msgstr ""
-
-#: src/gr-edit-page.c:1094
-msgctxt "minute abbreviation"
 msgid "m"
-msgstr ""
+msgstr "min"
+
+#: src/gr-edit-page.c:1097
+msgid "second"
+msgstr "sekunti"
 
 #: src/gr-edit-page.c:1098
-msgid "second"
-msgstr ""
+msgid "seconds"
+msgstr "sekuntia"
 
 #: src/gr-edit-page.c:1099
-msgid "seconds"
-msgstr ""
+msgctxt "second abbreviation"
+msgid "sec"
+msgstr "s"
 
 #: src/gr-edit-page.c:1100
 msgctxt "second abbreviation"
-msgid "sec"
-msgstr ""
-
-#: src/gr-edit-page.c:1101
-msgctxt "second abbreviation"
 msgid "s"
-msgstr ""
+msgstr "s"
 
-#: src/gr-edit-page.c:1278
+#: src/gr-edit-page.c:1275
 msgid "Recipe Author"
 msgstr "Reseptin tekijä"
 
-#: src/gr-edit-page.c:1652
+#: src/gr-edit-page.c:1649
 msgid "Name of the List"
-msgstr ""
+msgstr "Listan nimi"
 
-#: src/gr-edit-page.c:1685
+#: src/gr-edit-page.c:1682
 msgid "No ingredients added yet"
-msgstr ""
+msgstr "Aineksia ei ole vielä lisätty"
 
-#: src/gr-edit-page.c:1704
+#: src/gr-edit-page.c:1701
 msgid "Add Ingredient"
 msgstr "Lisää ainesosa"
 
-#: src/gr-edit-page.c:1805
+#: src/gr-edit-page.c:1803
 msgid "Add List"
-msgstr ""
+msgstr "Lisää lista"
 
-#: src/gr-edit-page.c:1825
+#: src/gr-edit-page.c:1823
 msgid "Name Your Recipe"
 msgstr "Nimeä reseptis"
 
-#: src/gr-edit-page.c:1998
+#: src/gr-edit-page.c:1997
 msgid "Name"
 msgstr "Nimi"
 
-#: src/gr-edit-page.c:2108 src/gr-recipe-store.c:1092
+#: src/gr-edit-page.c:2107 src/gr-recipe-store.c:928
 #, c-format
 msgid "You need to provide a name for the recipe"
 msgstr "Anna nimi reseptille"
@@ -1183,7 +1296,7 @@ msgstr ""
 
 #: src/gr-list-page.c:243
 msgid "Milk-free Recipes"
-msgstr ""
+msgstr "Maidottomat reseptit"
 
 #: src/gr-list-page.c:245
 msgid "Other Dietary Restrictions"
@@ -1224,7 +1337,7 @@ msgstr ""
 
 #: src/gr-list-page.c:399
 msgid "Use the ♥ button to mark recipes as favorites."
-msgstr ""
+msgstr "Käytä ♥ -painiketta merkitäksesi reseptit suosikkeihin."
 
 #: src/gr-list-page.c:442
 msgid "No new recipes"
@@ -1244,7 +1357,7 @@ msgstr ""
 
 #: src/gr-meal.c:46
 msgid "Breakfast"
-msgstr ""
+msgstr "Aamupala"
 
 #: src/gr-meal.c:47
 msgid "Side Dishes"
@@ -1252,7 +1365,7 @@ msgstr ""
 
 #: src/gr-meal.c:48
 msgid "Desserts"
-msgstr ""
+msgstr "Jälkiruoat"
 
 #: src/gr-meal.c:49
 msgid "Cake and Baking"
@@ -1260,7 +1373,7 @@ msgstr ""
 
 #: src/gr-meal.c:50
 msgid "Drinks and Cocktails"
-msgstr ""
+msgstr "Drinkit ja cocktailit"
 
 #: src/gr-meal.c:51
 msgid "Pizza"
@@ -1294,81 +1407,90 @@ msgstr ""
 msgid "Could not parse %s as a number"
 msgstr ""
 
-#: src/gr-recipe-exporter.c:135
+#: src/gr-recipe-exporter.c:164
+msgid "Save the exported recipe"
+msgstr "Tallenna viety resepti"
+
+#: src/gr-recipe-exporter.c:167 src/gr-shopping-page.c:731
+#| msgid "_Save"
+msgid "Save"
+msgstr "Tallenna"
+
+#: src/gr-recipe-exporter.c:198
 msgid "Recipe contribution"
 msgstr ""
 
-#: src/gr-recipe-exporter.c:136
+#: src/gr-recipe-exporter.c:199
 msgid "Please accept my attached recipe contribution."
 msgstr ""
 
-#: src/gr-recipe-exporter.c:146
+#: src/gr-recipe-exporter.c:209
 msgid "Try this recipe"
 msgstr ""
 
-#: src/gr-recipe-exporter.c:147
+#: src/gr-recipe-exporter.c:210
 msgid ""
 "Hi,\n"
 "\n"
 "you should try this recipe."
 msgstr ""
 
-#: src/gr-recipe-exporter.c:150
+#: src/gr-recipe-exporter.c:213
 msgid "Try these recipes"
 msgstr ""
 
-#: src/gr-recipe-exporter.c:151
+#: src/gr-recipe-exporter.c:214
 msgid ""
 "Hi,\n"
 "\n"
 "you should try these recipes."
 msgstr ""
 
-#: src/gr-recipe-exporter.c:154
-msgid "(The attached file can be imported into GNOME recipes.)"
+#: src/gr-recipe-exporter.c:217
+msgid "(The attached file can be imported into GNOME Recipes.)"
 msgstr ""
 
-#: src/gr-recipe-exporter.c:341
+#: src/gr-recipe-exporter.c:403
 #, c-format
 msgid "This build does not support exporting"
 msgstr ""
 
-#: src/gr-recipe-exporter.c:423
+#: src/gr-recipe-exporter.c:485
 #, c-format
 msgid ""
 "Error while exporting:\n"
 "%s"
 msgstr ""
 
-#: src/gr-recipe-exporter.c:507
+#: src/gr-recipe-exporter.c:569
 #, c-format
 msgid "%d recipe selected for sharing"
 msgid_plural "%d recipes selected for sharing"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/gr-recipe-exporter.c:539
+#: src/gr-recipe-exporter.c:601
 msgid ""
 "Some of the selected recipes are included\n"
-"with GNOME recipes. You should only contribute\n"
+"with GNOME Recipes. You should only contribute\n"
 "your own recipes."
 msgstr ""
 
-#: src/gr-recipe-formatter.c:54 src/gr-recipe-printer.c:209
+#: src/gr-recipe-formatter.c:54 src/gr-recipe-printer.c:158
 msgid "Author:"
-msgstr ""
+msgstr "Tekijä:"
 
-#: src/gr-recipe-formatter.c:55 src/gr-recipe-printer.c:210
+#: src/gr-recipe-formatter.c:55 src/gr-recipe-printer.c:159
 msgid "Preparation:"
-msgstr ""
+msgstr "Valmistelu:"
 
-#: src/gr-recipe-formatter.c:56 src/gr-recipe-printer.c:211
+#: src/gr-recipe-formatter.c:56 src/gr-recipe-printer.c:160
 msgid "Cooking:"
-msgstr ""
+msgstr "Kokkaus:"
 
-#: src/gr-recipe-formatter.c:57 src/gr-recipe-printer.c:212
+#: src/gr-recipe-formatter.c:57 src/gr-recipe-printer.c:161
 msgid "Serves:"
-msgstr ""
+msgstr "Annokset:"
 
 #: src/gr-recipe-importer.c:234
 #, c-format
@@ -1387,20 +1509,20 @@ msgstr ""
 msgid "Failed to load recipe: Couldn’t parse Modified key"
 msgstr ""
 
-#: src/gr-recipe-importer.c:790
+#: src/gr-recipe-importer.c:786
 #, c-format
 msgid "This build does not support importing"
 msgstr ""
 
-#: src/gr-recipe-printer.c:464 src/gr-shopping-list-printer.c:300
+#: src/gr-recipe-printer.c:413 src/gr-shopping-list-printer.c:297
 msgid "Error printing file:"
 msgstr "Virhe tiedostoa tulostaessa:"
 
-#: src/gr-recipe-printer.c:465 src/gr-shopping-list-printer.c:301
+#: src/gr-recipe-printer.c:414 src/gr-shopping-list-printer.c:298
 msgid "No details"
-msgstr ""
+msgstr "Ei tietoja"
 
-#: src/gr-recipe-printer.c:493 src/gr-shopping-list-printer.c:332
+#: src/gr-recipe-printer.c:442 src/gr-shopping-list-printer.c:329
 #, c-format
 msgid ""
 "Missing the desktop portals needed to print from inside a flatpak sandbox. "
@@ -1410,11 +1532,11 @@ msgstr ""
 #: src/gr-recipe-small-tile.c:99 src/gr-recipe-tile.c:80
 #, c-format
 msgid "by %s"
-msgstr ""
+msgstr "tekijä %s"
 
 #: src/gr-recipe-small-tile.c:99 src/gr-recipe-tile.c:80
 msgid "Anonymous"
-msgstr ""
+msgstr "Anonyymi"
 
 #: src/gr-recipes-page.c:232
 msgid "My Recipes"
@@ -1424,11 +1546,11 @@ msgstr "Omat reseptit"
 msgid "Favorites"
 msgstr "Suosikit"
 
-#: src/gr-recipes-page.c:242 src/gr-window.c:937
+#: src/gr-recipes-page.c:242 src/gr-window.c:1023
 msgid "All Recipes"
 msgstr "Kaikki reseptit"
 
-#: src/gr-recipes-page.c:247 src/gr-window.c:953
+#: src/gr-recipes-page.c:247 src/gr-window.c:1039
 msgid "New Recipes"
 msgstr "Uudet reseptit"
 
@@ -1436,59 +1558,59 @@ msgstr "Uudet reseptit"
 msgid "Last edited:"
 msgstr "Viimeksi muokattu:"
 
-#: src/gr-recipes-page.c:384
+#: src/gr-recipes-page.c:383
 #, c-format
 msgid "Buy ingredients: <b>%s</b>"
-msgstr ""
+msgstr "Osta ainekset: <b>%s</b>"
 
-#: src/gr-recipes-page.c:386
+#: src/gr-recipes-page.c:385
 #, c-format
 msgid "Buy ingredients: <b>%s and %s</b>"
-msgstr ""
+msgstr "Osta ainekset: <b>%s ja %s</b>"
 
-#: src/gr-recipes-page.c:388
+#: src/gr-recipes-page.c:387
 #, c-format
 msgid "Buy ingredients: <b>%s, %s and %d other</b>"
 msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/gr-recipe-store.c:1097
+#: src/gr-recipe-store.c:933
 #, c-format
 msgid ""
 "A recipe with this name and author already exists.\n"
 "Please choose a different name"
 msgstr ""
 
-#: src/gr-recipe-store.c:1126
+#: src/gr-recipe-store.c:962
 #, c-format
 msgid "You need to provide an ID for the recipe"
 msgstr ""
 
-#: src/gr-recipe-store.c:1132
+#: src/gr-recipe-store.c:968
 #, c-format
 msgid "A recipe with this ID already exists"
-msgstr ""
+msgstr "Resepti tällä tunnisteella on jo olemassa"
 
-#: src/gr-recipe-store.c:1260
+#: src/gr-recipe-store.c:1119
 #, c-format
 msgid "You need to provide an ID"
 msgstr ""
 
-#: src/gr-recipe-store.c:1266
+#: src/gr-recipe-store.c:1125
 #, c-format
 msgid "Sorry, this ID is taken"
-msgstr ""
+msgstr "Tämä tunniste on jo käytössä"
 
-#: src/gr-recipe-store.c:1293
+#: src/gr-recipe-store.c:1152
 #, c-format
 msgid "You need to provide an ID for the chef"
 msgstr ""
 
-#: src/gr-recipe-store.c:1299
+#: src/gr-recipe-store.c:1158
 #, c-format
 msgid "A chef with this ID already exists"
-msgstr ""
+msgstr "Kokki tällä tunnisteella on jo olemassa"
 
 #: src/gr-season.c:41
 msgid "Thanksgiving"
@@ -1518,8 +1640,8 @@ msgstr "Syksy"
 msgid "Winter"
 msgstr "Talvi"
 
-#: src/gr-shopping-list-formatter.c:43 src/gr-shopping-list-printer.c:138
-#: src/gr-shopping-page.c:692
+#: src/gr-shopping-list-formatter.c:43 src/gr-shopping-list-printer.c:135
+#: src/gr-shopping-page.c:757
 msgid "Shopping List"
 msgstr "Ostoslista"
 
@@ -1527,11 +1649,11 @@ msgstr "Ostoslista"
 msgid "For the following recipes:"
 msgstr ""
 
-#: src/gr-shopping-list-printer.c:147
+#: src/gr-shopping-list-printer.c:144
 msgid "For the following recipes"
 msgstr ""
 
-#: src/gr-shopping-list-printer.c:164
+#: src/gr-shopping-list-printer.c:161
 msgid "Items"
 msgstr ""
 
@@ -1542,19 +1664,24 @@ msgid_plural "%d ingredients marked for purchase"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/gr-shopping-page.c:119
+#: src/gr-shopping-page.c:120
 #, c-format
 msgid "Buy Ingredients (%d recipe)"
 msgid_plural "Buy Ingredients (%d recipes)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/gr-shopping-page.c:124
+#: src/gr-shopping-page.c:125
 #, c-format
 msgid "%d Recipe marked for preparation"
 msgid_plural "%d Recipes marked for preparation"
 msgstr[0] ""
 msgstr[1] ""
+
+#: src/gr-shopping-page.c:728
+#| msgid "Shopping List"
+msgid "Save the shopping list"
+msgstr "Tallenna ostoslista"
 
 #: src/gr-spice-row.c:131
 msgid "Mild or somewhat spicy"
@@ -1575,22 +1702,22 @@ msgstr ""
 #: src/gr-unit.c:40
 msgctxt "unit abbreviation"
 msgid "g"
-msgstr ""
+msgstr "g"
 
 #: src/gr-unit.c:40
 msgctxt "unit name"
 msgid "gram"
-msgstr ""
+msgstr "gramma"
 
 #: src/gr-unit.c:41
 msgctxt "unit abbreviation"
 msgid "kg"
-msgstr ""
+msgstr "kg"
 
 #: src/gr-unit.c:41
 msgctxt "unit name"
 msgid "kilogram"
-msgstr ""
+msgstr "kilogramma"
 
 #: src/gr-unit.c:42
 msgctxt "unit abbreviation"
@@ -1615,32 +1742,32 @@ msgstr ""
 #: src/gr-unit.c:44
 msgctxt "unit abbreviation"
 msgid "l"
-msgstr ""
+msgstr "l"
 
 #: src/gr-unit.c:44
 msgctxt "unit name"
 msgid "liter"
-msgstr ""
+msgstr "litra"
 
 #: src/gr-unit.c:45
 msgctxt "unit abbreviation"
 msgid "dl"
-msgstr ""
+msgstr "dl"
 
 #: src/gr-unit.c:45
 msgctxt "unit name"
 msgid "deciliter"
-msgstr ""
+msgstr "desilitra"
 
 #: src/gr-unit.c:46
 msgctxt "unit abbreviation"
 msgid "ml"
-msgstr ""
+msgstr "ml"
 
 #: src/gr-unit.c:46
 msgctxt "unit name"
 msgid "milliliter"
-msgstr ""
+msgstr "millilitra"
 
 #: src/gr-unit.c:47
 msgctxt "unit abbreviation"
@@ -1700,7 +1827,7 @@ msgstr ""
 #: src/gr-unit.c:52
 msgctxt "unit name"
 msgid "tablespoon"
-msgstr ""
+msgstr "ruokalusikka"
 
 #: src/gr-unit.c:53
 msgctxt "unit abbreviation"
@@ -1710,7 +1837,7 @@ msgstr ""
 #: src/gr-unit.c:53
 msgctxt "unit name"
 msgid "teaspoon"
-msgstr ""
+msgstr "teelusikka"
 
 #: src/gr-unit.c:54
 msgctxt "unit abbreviation"
@@ -1730,7 +1857,7 @@ msgstr ""
 #: src/gr-unit.c:55
 msgctxt "unit name"
 msgid "package"
-msgstr ""
+msgstr "paketti"
 
 #: src/gr-unit.c:56
 msgctxt "unit abbreviation"
@@ -1745,118 +1872,138 @@ msgstr ""
 #: src/gr-unit.c:126
 #, c-format
 msgid "I don’t know this unit: %s"
-msgstr ""
+msgstr "En tiedä tätä yksikköä: %s"
 
-#: src/gr-utils.c:403
+#: src/gr-utils.c:399
 #, c-format
 msgid "more than a year ago"
-msgstr ""
+msgstr "yli vuosi sitten"
 
-#: src/gr-utils.c:406 src/gr-utils.c:410
+#: src/gr-utils.c:402 src/gr-utils.c:406
 #, c-format
 msgid "%d month ago"
 msgid_plural "%d months ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d kuukausi sitten"
+msgstr[1] "%d kuukautta sitten"
 
-#: src/gr-utils.c:414
+#: src/gr-utils.c:410
 #, c-format
 msgid "%d day ago"
 msgid_plural "%d days ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d päivä sitten"
+msgstr[1] "%d päivää sitten"
+
+#: src/gr-utils.c:413
+#, c-format
+msgid "just now"
+msgstr "juuri nyt"
+
+#: src/gr-utils.c:415
+#, c-format
+msgid "10 minutes ago"
+msgstr "10 minuuttia sitten"
 
 #: src/gr-utils.c:417
 #, c-format
-msgid "just now"
-msgstr ""
-
-#: src/gr-utils.c:419
-#, c-format
-msgid "10 minutes ago"
-msgstr ""
+msgid "half an hour ago"
+msgstr "puoli tuntia sitten"
 
 #: src/gr-utils.c:421
 #, c-format
-msgid "half an hour ago"
-msgstr ""
-
-#: src/gr-utils.c:425
-#, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d tunti sitten"
+msgstr[1] "%d tuntia sitten"
 
-#: src/gr-utils.c:431
+#: src/gr-utils.c:427
 msgid "some time ago"
-msgstr ""
+msgstr "jokin aika sitten"
 
-#: src/gr-window.c:182
+#: src/gr-window.c:186
 msgid "Add a New Recipe"
-msgstr ""
+msgstr "Lisää uusi resepti"
 
-#: src/gr-window.c:525
+#: src/gr-window.c:530
 #, c-format
 msgid "Recipe “%s” deleted"
-msgstr ""
+msgstr "Resepti “%s” poistettu"
 
-#: src/gr-window.c:575
+#: src/gr-window.c:580
 #, c-format
 msgid "You updated your contributed “%s” recipe. Send an update?"
 msgstr ""
 
-#: src/gr-window.c:758
+#: src/gr-window.c:812
 msgid "Imported Recipes"
-msgstr ""
+msgstr "Tuodut reseptit"
 
-#: src/gr-window.c:802
+#: src/gr-window.c:858
 msgid "My Chef Information"
-msgstr ""
+msgstr "Kokkitietoni"
 
-#: src/gr-window.c:864
+#: src/gr-window.c:884
 msgid "Select a recipe file"
+msgstr "Valitse reseptitiedosto"
+
+#: src/gr-window.c:910
+#, c-format
+msgid "Recipes have been exported to “%s”"
 msgstr ""
 
-#: src/gr-window.c:904
+#: src/gr-window.c:948
+#| msgid "Select an Image"
+msgid "Select a file"
+msgstr "Valitse tiedosto"
+
+#: src/gr-window.c:951
+#| msgid "_Import"
+msgid "_Export"
+msgstr "_Vie"
+
+#: src/gr-window.c:990
 #, c-format
 msgid "Chefs: %s"
-msgstr ""
+msgstr "Kokit: %s"
 
-#: src/gr-window.c:921
+#: src/gr-window.c:1007
 msgid "Favorite Recipes"
-msgstr ""
+msgstr "Suosikkireseptit"
 
-#: src/gr-window.c:985
+#: src/gr-window.c:1071
 msgid "Buy Ingredients"
-msgstr ""
+msgstr "Osta ainekset"
 
-#: src/gr-window.c:1003
+#: src/gr-window.c:1089
 msgid "My own Recipes"
 msgstr "Omat reseptit"
 
 #. TRANSLATORS: %s gets replaced by a version number
-#: src/gr-window.c:1183
+#: src/gr-window.c:1276
 #, c-format
 msgid "Recipes %s"
 msgstr "Reseptit %s"
 
 #. TRANSLATORS: %s gets replaced by a date
-#: src/gr-window.c:1198
+#: src/gr-window.c:1291
 #, c-format
 msgid "Released: %s"
 msgstr "Julkaistu: %s"
 
+#: src/gr-window.c:1317
+msgid "Report Issue"
+msgstr "Ilmoita ongelmasta"
+
 #: src/ingredients.inc:1
 msgid "Almond"
-msgstr ""
+msgstr "Manteli"
 
 #: src/ingredients.inc:2
 msgid "Amaretti"
 msgstr ""
 
 #: src/ingredients.inc:3
-msgid "Anchovis"
+#| msgid "Anchovis"
+msgid "Anchovies"
 msgstr "Anjovis"
 
 #: src/ingredients.inc:4
@@ -1865,19 +2012,19 @@ msgstr "Omena"
 
 #: src/ingredients.inc:5
 msgid "Apricot"
-msgstr ""
+msgstr "Aprikoosi"
 
 #: src/ingredients.inc:6
 msgid "Artichoke"
-msgstr ""
+msgstr "Artisokka"
 
 #: src/ingredients.inc:7
 msgid "Asparagus"
-msgstr ""
+msgstr "Parsa"
 
 #: src/ingredients.inc:8
 msgid "Aubergine"
-msgstr ""
+msgstr "Munakoisko"
 
 #: src/ingredients.inc:9
 msgid "Bacon"
@@ -1893,7 +2040,7 @@ msgstr ""
 
 #: src/ingredients.inc:12
 msgid "Baking powder"
-msgstr ""
+msgstr "Leivontajauho"
 
 #: src/ingredients.inc:13
 msgid "Banana"
@@ -1901,11 +2048,11 @@ msgstr "Banaani"
 
 #: src/ingredients.inc:14
 msgid "Basil"
-msgstr ""
+msgstr "Basilika"
 
 #: src/ingredients.inc:15
 msgid "Basmati rice"
-msgstr ""
+msgstr "Basmatiriisi"
 
 #: src/ingredients.inc:16
 msgid "Bay leaf"
@@ -1913,7 +2060,7 @@ msgstr ""
 
 #: src/ingredients.inc:17
 msgid "Beans"
-msgstr ""
+msgstr "Pavut"
 
 #: src/ingredients.inc:18
 msgid "Beef mince"
@@ -1929,7 +2076,7 @@ msgstr ""
 
 #: src/ingredients.inc:21
 msgid "Beetroot"
-msgstr ""
+msgstr "Punajuuri"
 
 #: src/ingredients.inc:22
 msgid "Berry"
@@ -1941,7 +2088,7 @@ msgstr ""
 
 #: src/ingredients.inc:24
 msgid "Bilberry"
-msgstr ""
+msgstr "Mustikka"
 
 #: src/ingredients.inc:25
 msgid "Butter"
@@ -1964,116 +2111,116 @@ msgid "Chocolate frosting"
 msgstr ""
 
 #: src/ingredients.inc:30
-msgid "Cocoa powder"
-msgstr ""
+msgid "Cilantro"
+msgstr "Korianteri"
 
 #: src/ingredients.inc:31
-msgid "Couscous"
-msgstr ""
+msgid "Cocoa powder"
+msgstr "Kaakaojauhe"
 
 #: src/ingredients.inc:32
-msgid "Date"
-msgstr ""
+msgid "Couscous"
+msgstr "Kuskus"
 
 #: src/ingredients.inc:33
+msgid "Date"
+msgstr "Päivä"
+
+#: src/ingredients.inc:34
 msgid "Egg"
 msgstr "Kananmuna"
 
-#: src/ingredients.inc:34
-msgid "Fig"
-msgstr ""
-
 #: src/ingredients.inc:35
-msgid "Flour"
-msgstr ""
+msgid "Fig"
+msgstr "Viikuna"
 
 #: src/ingredients.inc:36
+msgid "Flour"
+msgstr "Jauho"
+
+#: src/ingredients.inc:37
 msgid "Garlic"
 msgstr "Valkosipuli"
 
-#: src/ingredients.inc:37
+#: src/ingredients.inc:38
 msgid "Ground beef"
 msgstr ""
 
-#: src/ingredients.inc:38
+#: src/ingredients.inc:39
 msgid "Honey"
 msgstr "Hunaja"
 
-#: src/ingredients.inc:39
-msgid "Lemon"
-msgstr ""
-
 #: src/ingredients.inc:40
-msgid "Linseeds"
-msgstr ""
+msgid "Lemon"
+msgstr "Sitruuna"
 
 #: src/ingredients.inc:41
-msgid "Mayonnaise"
-msgstr ""
+msgid "Linseeds"
+msgstr "Pellavasiemen"
 
 #: src/ingredients.inc:42
+msgid "Mayonnaise"
+msgstr "Majoneesi"
+
+#: src/ingredients.inc:43
 msgid "Milk"
 msgstr "Maito"
 
-#: src/ingredients.inc:43
+#: src/ingredients.inc:44
 msgid "Mustard"
 msgstr "Sinappi"
 
-#: src/ingredients.inc:44
-msgid "Oatmeal"
-msgstr ""
-
 #: src/ingredients.inc:45
+msgid "Oatmeal"
+msgstr "Kaurahiutale"
+
+#: src/ingredients.inc:46
 msgid "Oil"
 msgstr "Öljy"
 
-#: src/ingredients.inc:46
+#: src/ingredients.inc:47
 msgid "Onion"
 msgstr "Sipuli"
 
-#: src/ingredients.inc:47
+#: src/ingredients.inc:48
 msgid "Olive oil, extra-virgin"
 msgstr ""
 
-#: src/ingredients.inc:48
-msgid "Orange"
-msgstr ""
-
 #: src/ingredients.inc:49
-msgid "Parsley"
-msgstr ""
+msgid "Orange"
+msgstr "Appelsiini"
 
 #: src/ingredients.inc:50
+msgid "Parsley"
+msgstr "Persilja"
+
+#: src/ingredients.inc:51
 msgid "Peperoni"
 msgstr ""
 
-#: src/ingredients.inc:51
+#: src/ingredients.inc:52
 msgid "Pepper"
 msgstr ""
 
-#: src/ingredients.inc:52
+#: src/ingredients.inc:53
 msgid "Peppers"
 msgstr ""
 
-#: src/ingredients.inc:53
+#: src/ingredients.inc:54
 msgid "Pizza sauce"
 msgstr "Pizzakastike"
 
-#: src/ingredients.inc:54
+#: src/ingredients.inc:55
 msgid "Potato"
 msgstr "Peruna"
 
-#: src/ingredients.inc:55
+#: src/ingredients.inc:56
 msgid "Pumpkin seeds"
 msgstr ""
 
-#: src/ingredients.inc:56
+#: src/ingredients.inc:57
 msgid "Salt"
 msgstr "Suola"
-
-#: src/ingredients.inc:57
-msgid "Silantro"
-msgstr ""
 
 #: src/ingredients.inc:58
 msgid "Soy sauce"
@@ -2085,15 +2232,15 @@ msgstr "Sokeri"
 
 #: src/ingredients.inc:60
 msgid "Sunflower seeds"
-msgstr ""
+msgstr "Auringonkukan siemenet"
 
 #: src/ingredients.inc:61
 msgid "Squash"
-msgstr ""
+msgstr "Kurptisa"
 
 #: src/ingredients.inc:62
 msgid "Tangerine"
-msgstr ""
+msgstr "Mandariini"
 
 #: src/ingredients.inc:63
 msgid "Tofu"
@@ -2104,12 +2251,12 @@ msgid "Tomato"
 msgstr "Tomaatti"
 
 #: src/ingredients.inc:65
-msgid "Tumeric ground"
+msgid "Turmeric, ground"
 msgstr ""
 
 #: src/ingredients.inc:66
 msgid "Vanilla sugar"
-msgstr ""
+msgstr "Vanilliinisokeri"
 
 #: src/ingredients.inc:67
 msgid "Vanilla pudding"
@@ -2129,7 +2276,7 @@ msgstr "Viini"
 
 #: src/ingredients.inc:71
 msgid "Yeast"
-msgstr ""
+msgstr "Hiiva"
 
 #: src/ingredients.inc:72
 msgid "Yoghurt"
@@ -2148,8 +2295,10 @@ msgid "no Amaretti"
 msgstr ""
 
 #: src/no-ingredients.inc:3
-msgid "no Anchovis"
-msgstr ""
+#, fuzzy
+#| msgid "Anchovis"
+msgid "no Anchovies"
+msgstr "Anjovis"
 
 #: src/no-ingredients.inc:4
 msgid "no Apple"
@@ -2256,115 +2405,115 @@ msgid "no Chocolate frosting"
 msgstr ""
 
 #: src/no-ingredients.inc:30
-msgid "no Cocoa powder"
+msgid "no Cilantro"
 msgstr ""
 
 #: src/no-ingredients.inc:31
-msgid "no Couscous"
+msgid "no Cocoa powder"
 msgstr ""
 
 #: src/no-ingredients.inc:32
-msgid "no Date"
+msgid "no Couscous"
 msgstr ""
 
 #: src/no-ingredients.inc:33
-msgid "no Egg"
+msgid "no Date"
 msgstr ""
 
 #: src/no-ingredients.inc:34
-msgid "no Fig"
+msgid "no Egg"
 msgstr ""
 
 #: src/no-ingredients.inc:35
-msgid "no Flour"
+msgid "no Fig"
 msgstr ""
 
 #: src/no-ingredients.inc:36
-msgid "no Garlic"
+msgid "no Flour"
 msgstr ""
 
 #: src/no-ingredients.inc:37
-msgid "no Ground beef"
+msgid "no Garlic"
 msgstr ""
 
 #: src/no-ingredients.inc:38
-msgid "no Honey"
+msgid "no Ground beef"
 msgstr ""
 
 #: src/no-ingredients.inc:39
-msgid "no Lemon"
+msgid "no Honey"
 msgstr ""
 
 #: src/no-ingredients.inc:40
-msgid "no Linseeds"
+msgid "no Lemon"
 msgstr ""
 
 #: src/no-ingredients.inc:41
-msgid "no Mayonnaise"
+msgid "no Linseeds"
 msgstr ""
 
 #: src/no-ingredients.inc:42
-msgid "no Milk"
+msgid "no Mayonnaise"
 msgstr ""
 
 #: src/no-ingredients.inc:43
-msgid "no Mustard"
+msgid "no Milk"
 msgstr ""
 
 #: src/no-ingredients.inc:44
-msgid "no Oatmeal"
+msgid "no Mustard"
 msgstr ""
 
 #: src/no-ingredients.inc:45
-msgid "no Oil"
+msgid "no Oatmeal"
 msgstr ""
 
 #: src/no-ingredients.inc:46
-msgid "no Onion"
+msgid "no Oil"
 msgstr ""
 
 #: src/no-ingredients.inc:47
-msgid "no Olive oil, extra-virgin"
+msgid "no Onion"
 msgstr ""
 
 #: src/no-ingredients.inc:48
-msgid "no Orange"
+msgid "no Olive oil, extra-virgin"
 msgstr ""
 
 #: src/no-ingredients.inc:49
-msgid "no Parsley"
+msgid "no Orange"
 msgstr ""
 
 #: src/no-ingredients.inc:50
-msgid "no Peperoni"
+msgid "no Parsley"
 msgstr ""
 
 #: src/no-ingredients.inc:51
-msgid "no Pepper"
+msgid "no Peperoni"
 msgstr ""
 
 #: src/no-ingredients.inc:52
-msgid "no Peppers"
+msgid "no Pepper"
 msgstr ""
 
 #: src/no-ingredients.inc:53
-msgid "no Pizza sauce"
+msgid "no Peppers"
 msgstr ""
 
 #: src/no-ingredients.inc:54
-msgid "no Potato"
+msgid "no Pizza sauce"
 msgstr ""
 
 #: src/no-ingredients.inc:55
-msgid "no Pumpkin seeds"
+msgid "no Potato"
 msgstr ""
 
 #: src/no-ingredients.inc:56
-msgid "no Salt"
+msgid "no Pumpkin seeds"
 msgstr ""
 
 #: src/no-ingredients.inc:57
-msgid "no Silantro"
+msgid "no Salt"
 msgstr ""
 
 #: src/no-ingredients.inc:58
@@ -2396,7 +2545,7 @@ msgid "no Tomato"
 msgstr ""
 
 #: src/no-ingredients.inc:65
-msgid "no Tumeric ground"
+msgid "no Turmeric, ground"
 msgstr ""
 
 #: src/no-ingredients.inc:66
@@ -2438,3 +2587,6 @@ msgstr ""
 #: src/segments.inc:2
 msgid "Toppings"
 msgstr ""
+
+#~ msgid "_My Chef Information"
+#~ msgstr "_Kokin tiedot"
