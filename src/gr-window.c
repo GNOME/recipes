@@ -58,6 +58,7 @@ struct _GrWindow
         GtkWidget *back_button;
         GtkWidget *search_button;
         GtkWidget *cooking_button;
+        GtkWidget *save_button;
         GtkWidget *search_bar;
         GtkWidget *main_stack;
         GtkWidget *recipes_page;
@@ -107,12 +108,12 @@ typedef struct
         char **search;
 } BackEntry;
 
-g_signal_connect (GtkWidget *edit_page, "notify", G_CALLBACK (make_save_sensitive()), window);
 
-void make_save_sensitive(GrWindow *window)
+static
+void make_save_sensitive(GrWindow *window, GParamSpec *pspec, gpointer data)
 {
-    GtkWidget *widget =(GR_WINDOW(window->save_button));
-    gtk_widget_set_sensitive(*widget);
+    
+    gtk_widget_set_sensitive(window->save_button,TRUE);
 }
 
 static void
@@ -659,6 +660,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrWindow, back_button);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, search_button);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, cooking_button);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, save_button);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, search_bar);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, main_stack);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, recipes_page);
@@ -750,6 +752,8 @@ gr_window_init (GrWindow *self)
 {
         gtk_widget_init_template (GTK_WIDGET (self));
         self->back_entry_stack = g_queue_new ();
+
+        g_signal_connect (self->edit_page, "notify", G_CALLBACK (make_save_sensitive), self);
 
         g_action_map_add_action_entries (G_ACTION_MAP (self),
                                          entries, G_N_ELEMENTS (entries),

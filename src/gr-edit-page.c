@@ -141,17 +141,26 @@ struct _GrEditPage
 };
 
 G_DEFINE_TYPE (GrEditPage, gr_edit_page, GTK_TYPE_BOX)
-/*
+
 enum {
         PROP_0,
         PROP_UNSAVED,
         N_PROPS
 };
-*/
+
 
 static char *get_text_view_text (GtkTextView *textview);
 static void  set_text_view_text (GtkTextView *textview,
                                  const char  *text);
+
+static
+void has_unsaved_changes(GrEditPage *page){
+
+    g_printf("in unsaved changes");
+    page->unsaved=TRUE;
+    g_object_notify (G_OBJECT (page), "has-unsaved-changes");
+}
+
 
 static void
 dismiss_error (GrEditPage *page)
@@ -253,6 +262,7 @@ static void
 add_image_cb (GrEditPage *page)
 {
         gr_image_viewer_add_image (GR_IMAGE_VIEWER (page->images));
+        has_unsaved_changes(page);
 }
 
 static char *
@@ -326,12 +336,14 @@ static void
 rotate_image_left_cb (GrEditPage *page)
 {
         gr_image_viewer_rotate_image (GR_IMAGE_VIEWER (page->images), 90);
+        has_unsaved_changes(page);
 }
 
 static void
 rotate_image_right_cb (GrEditPage *page)
 {
         gr_image_viewer_rotate_image (GR_IMAGE_VIEWER (page->images), 270);
+        has_unsaved_changes(page);
 }
 
 static void
@@ -1414,7 +1426,7 @@ next_step (GrEditPage *page)
         gr_cooking_view_next_step (GR_COOKING_VIEW (page->cooking_view));
         update_steppers (page);
 }
-/*
+
 static void
 gr_edit_page_set_property (GObject      *object,
                            guint         prop_id,
@@ -1422,11 +1434,10 @@ gr_edit_page_set_property (GObject      *object,
                            GParamSpec   *pspec)
 {
     GrEditPage *self = GR_EDIT_PAGE(object);
-    gboolean x;
+    
 
     switch (prop_id) {
         case PROP_UNSAVED:
-                
                 break;
 
         default:
@@ -1445,20 +1456,13 @@ gr_edit_page_get_property (GObject    *object,
 
         switch (prop_id) {
         case PROP_UNSAVED:
-                
                 break;
 
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
         }
-}*/
-
-gboolean has_unsaved_changes(GrEditPage *page){
-
-    
-    page->unsaved=TRUE;
-    g_signal_emit(G_OBJECT(*page),"notify::has_unsaved_changes", page->unsaved);
 }
+
 
 static void
 gr_edit_page_class_init (GrEditPageClass *klass)
@@ -1469,6 +1473,8 @@ gr_edit_page_class_init (GrEditPageClass *klass)
 
         object_class->finalize = edit_page_finalize;
         object_class->set_property = gr_edit_page_set_property;
+        object_class->get_property = gr_edit_page_get_property;
+
 
         pspec = g_param_spec_boolean ("unsaved", NULL, NULL,
                                       FALSE,
@@ -1573,6 +1579,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, preview_visible_changed);
         gtk_widget_class_bind_template_callback (widget_class, prev_step);
         gtk_widget_class_bind_template_callback (widget_class, next_step);
+        gtk_widget_class_bind_template_callback (widget_class, has_unsaved_changes);
 }
 
 GtkWidget *
@@ -1905,6 +1912,7 @@ gr_edit_page_clear (GrEditPage *page)
         images = gr_image_array_new ();
         g_object_set (page->images, "images", images, NULL);
         g_array_unref (images);
+        g_printf("inside gr_edit_page_clear");
 
         if (page->index_handler_id) {
                 g_signal_handler_disconnect (page->recipe, page->index_handler_id);

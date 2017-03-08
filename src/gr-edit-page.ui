@@ -566,7 +566,7 @@
                             <property name="left-margin">10</property>
                             <property name="right-margin">10</property>
                             <property name="bottom-margin">10</property>
-                            <signal name="changed" handler="has_unsaved_changes"/>
+                            <!-- <signal name="changed" handler="has_unsaved_changes"/> -->
                           </object>
                         </child>
                       </object>
@@ -711,7 +711,7 @@
                         <property name="left-margin">10</property>
                         <property name="right-margin">10</property>
                         <property name="bottom-margin">10</property>
-                        <signal name="clicked" handler="has_unsaved_changes"/>
+                        <!-- <signal name="changed" handler="has_unsaved_changes"/> -->
                       </object>
                     </child>
                       </object>
