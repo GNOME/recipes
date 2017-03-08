@@ -127,6 +127,11 @@ recount_recipes (GrShoppingPage *page)
                                count);
         gtk_label_set_label (GTK_LABEL (page->recipe_count_label), tmp);
         if (count == 0) {
+                GrRecipeStore *store;
+
+                store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+                gr_recipe_store_clear_shopping_list (store);
+
                 window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
                 gr_window_go_back (GR_WINDOW (window));
         }
@@ -589,31 +594,16 @@ search_finished (GrRecipeSearch *search,
 static void
 clear_list (GrShoppingPage *page)
 {
-        GList *children, *l;
         GrRecipeStore *store;
         GtkWidget *window;
-        GList *recipes;
 
         store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
-
-        children = gtk_container_get_children (GTK_CONTAINER (page->recipe_list));
-        recipes = NULL;
-        for (l = children; l; l = l->next) {
-                GtkWidget *tile = gtk_bin_get_child (GTK_BIN (l->data));
-                GrRecipe *recipe = gr_recipe_small_tile_get_recipe (GR_RECIPE_SMALL_TILE (tile));
-                recipes = g_list_prepend (recipes, g_object_ref (recipe));
-        }
-        g_list_free (children);
 
         container_remove_all (GTK_CONTAINER (page->ingredients_list));
         container_remove_all (GTK_CONTAINER (page->removed_list));
         container_remove_all (GTK_CONTAINER (page->recipe_list));
 
-        for (l = recipes; l; l = l->next) {
-                GrRecipe *recipe = l->data;
-                gr_recipe_store_remove_from_shopping (store, recipe);
-        }
-        g_list_free_full (recipes, g_object_unref);
+        gr_recipe_store_clear_shopping_list (store);
 
         g_hash_table_remove_all (page->ingredients);
 
