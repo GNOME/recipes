@@ -50,7 +50,9 @@
     <release version="0.20.1" date="2017-03-06">
       <description>
         <p>
-          This release focuses on tying up any loose ends before the 1.0 release.
+          This release focuses on tying up any loose ends before the 1.0 release. Due to a
+          changes in the way we store shopping lists and favorites, you will have to recreate
+          your existing favorites and shopping list after the update.
         </p>
         <ul>
           <li>Store ancillary data in GSettings</li>
