@@ -81,6 +81,7 @@ struct _GrRecipeStore
         char **picks;
         char **favorites;
         GVariantDict *shopping_list;
+        char **shopping_removed;
         char **featured_chefs;
         char *user;
 
@@ -614,6 +615,7 @@ load_shopping (GrRecipeStore *self)
         self->shopping_list = g_variant_dict_new (value);
         timestamp = g_settings_get_int64 (settings, "shopping-list-last-change");
         self->shopping_change = g_date_time_new_from_unix_utc (timestamp);
+        self->shopping_removed = g_settings_get_strv (settings, "shopping-list-removed-ingredients");
 }
 
 static void
@@ -623,6 +625,7 @@ save_shopping (GrRecipeStore *self)
         g_autoptr(GVariant) value = NULL;
         gint64 timestamp;
 
+        g_settings_set_strv (settings, "shopping-list-removed-ingredients", (const char * const *)self->shopping_removed);
         value = g_variant_ref_sink (g_variant_dict_end (self->shopping_list));
         g_settings_set_value (settings, "shopping-list", value);
         g_variant_dict_unref (self->shopping_list);
@@ -1257,13 +1260,53 @@ gr_recipe_store_get_all_ingredients (GrRecipeStore *self,
         return result;
 }
 
-void
-gr_recipe_store_add_favorite (GrRecipeStore *self,
-                              GrRecipe      *recipe)
+static void
+strv_prepend (char       ***strv_in,
+              const char   *s)
 {
         char **strv;
         int length;
         int i;
+
+        length = g_strv_length (*strv_in);
+        strv = g_new (char *, length + 2);
+        strv[0] = g_strdup (s);
+        for (i = 0; i < length; i++)
+                strv[i + 1] = *strv_in[i];
+        strv[length + 1] = NULL;
+
+        g_free (*strv_in);
+        *strv_in = strv;
+}
+
+static void
+strv_remove (char       ***strv_in,
+             const char   *s)
+{
+        int i, j;
+        char **strv;
+        int length;
+
+        length = g_strv_length (*strv_in);
+        strv = g_new (char *, length + 1);
+
+        for (i = 0, j = 0; i < length; i++) {
+                if (strcmp (strv[i], s) == 0) {
+                        g_free (strv[i]);
+                        continue;
+                }
+                strv[j++] = strv[i];
+        }
+        strv[j] = NULL;
+
+        g_free (*strv_in);
+        *strv_in = strv;
+}
+
+void
+gr_recipe_store_add_favorite (GrRecipeStore *self,
+                              GrRecipe      *recipe)
+{
         const char *id;
 
         id = gr_recipe_get_id (recipe);
@@ -1271,15 +1314,7 @@ gr_recipe_store_add_favorite (GrRecipeStore *self,
         if (g_strv_contains ((const char * const*)self->favorites, id))
                 return;
 
-        length = g_strv_length (self->favorites);
-        strv = g_new (char *, length + 2);
-        strv[0] = g_strdup (id);
-        for (i = 0; i < length; i++)
-                strv[i + 1] = self->favorites[i];
-        strv[length + 1] = NULL;
-
-        g_free (self->favorites);
-        self->favorites = strv;
+        strv_prepend (&self->favorites, id);
 
         if (self->favorite_change)
                 g_date_time_unref (self->favorite_change);
@@ -1398,6 +1433,39 @@ gr_recipe_store_get_shopping_serves (GrRecipeStore *self,
                 return (int)serves;
 
         return 0;
+}
+
+gboolean
+gr_recipe_store_not_shopping_ingredient (GrRecipeStore *self,
+                                         const char    *ingredient)
+{
+        return g_strv_contains ((const char * const *)self->shopping_removed, ingredient);
+}
+
+void
+gr_recipe_store_remove_shopping_ingredient (GrRecipeStore *self,
+                                            const char    *ingredient)
+{
+        strv_prepend (&self->shopping_removed, ingredient);
+
+        if (self->shopping_change)
+                g_date_time_unref (self->shopping_change);
+        self->shopping_change = g_date_time_new_now_utc ();
+
+        save_shopping (self);
+}
+
+void
+gr_recipe_store_readd_shopping_ingredient (GrRecipeStore *self,
+                                           const char    *ingredient)
+{
+        strv_remove (&self->shopping_removed, ingredient);
+
+        if (self->shopping_change)
+                g_date_time_unref (self->shopping_change);
+        self->shopping_change = g_date_time_new_now_utc ();
+
+        save_shopping (self);
 }
 
 GDateTime *

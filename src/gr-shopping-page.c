@@ -111,11 +111,11 @@ recount_recipes (GrShoppingPage *page)
         int count;
         g_autofree char *tmp = NULL;
         GtkWidget *window;
-        
+
         children = gtk_container_get_children (GTK_CONTAINER (page->recipe_list));
         count = g_list_length (children);
         g_list_free (children);
-        
+
         g_free (page->title);
         page->title = g_strdup_printf (ngettext ("Buy Ingredients (%d recipe)",
                                                  "Buy Ingredients (%d recipes)", count),
@@ -155,11 +155,16 @@ static Ingredient *
 ingredient_new (const char *ingredient)
 {
         Ingredient *ing;
+        GrRecipeStore *store;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         ing = g_new0 (Ingredient, 1);
         ing->ingredient = g_strdup (ingredient);
         ing->units = g_array_new (FALSE, TRUE, sizeof (Unit));
         g_array_set_clear_func (ing->units, clear_unit);
+
+        ing->removed = gr_recipe_store_not_shopping_ingredient (store, ingredient);
 
         return ing;
 }
@@ -267,6 +272,9 @@ remove_ingredient (GtkButton *button, GrShoppingPage *page)
         const char *name;
         const char *unit;
         Ingredient *ing;
+        GrRecipeStore *store;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         row = gtk_widget_get_ancestor (GTK_WIDGET (button), GTK_TYPE_LIST_BOX_ROW);
 
@@ -277,6 +285,8 @@ remove_ingredient (GtkButton *button, GrShoppingPage *page)
 
         ing = (Ingredient *)g_hash_table_lookup (page->ingredients, name);
         ing->removed = TRUE;
+
+        gr_recipe_store_remove_shopping_ingredient (store, name);
 
         add_removed_row (page, unit, name);
 
@@ -387,6 +397,9 @@ removed_row_activated (GtkListBox     *list,
         const char *name;
         const char *unit;
         Ingredient *ing;
+        GrRecipeStore *store;
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
 
         popover = gtk_widget_get_ancestor (GTK_WIDGET (row), GTK_TYPE_POPOVER);
         gtk_popover_popdown (GTK_POPOVER (popover));
@@ -398,6 +411,8 @@ removed_row_activated (GtkListBox     *list,
 
         ing = (Ingredient *)g_hash_table_lookup (page->ingredients, name);
         ing->removed = FALSE;
+
+        gr_recipe_store_readd_shopping_ingredient (store, name);
 
         add_ingredient_row (page, unit, name);
 
