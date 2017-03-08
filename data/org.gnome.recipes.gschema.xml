@@ -6,22 +6,47 @@
     <key type="s" name="user">
       <default>''</default>
       <summary>The user ID of the current user</summary>
-      <description>The user ID of the current user</description>
+      <description>
+        The user ID of the current user.
+      </description>
     </key>
     <key type="u" name="cooking">
       <default>0</default>
       <summary>The number of times cooking mode has been presented</summary>
-      <description>The number of times cooking mode has been presented</description>
+      <description>
+        The number of times cooking mode has been presented.
+      </description>
     </key>
     <key type="x" name="favorites-last-change">
       <default>0</default>
       <summary>The timestamp of the last change to the favorites list</summary>
-      <description>The timestamp of the last change to the favorites list</description>
+      <description>
+        The timestamp of the last time an item was added to or removed from
+        the favorites list.
+      </description>
     </key>
     <key type="as" name="favorites">
       <default>[]</default>
       <summary>The list of favorites</summary>
-      <description>The list of favorites</description>
+      <description>
+        The list of favorites. Each entry in the list is the ID of a recipe.
+      </description>
+    </key>
+    <key type="x" name="shopping-list-last-change">
+      <default>0</default>
+      <summary>The timestamp of the last change to the shopping list</summary>
+      <description>
+        The timestamp of the last time an item was added to or removed from
+        the shopping list.
+      </description>
+    </key>
+    <key type="a{sv}" name="shopping-list">
+      <default>[]</default>
+      <summary>The shopping list</summary>
+      <description>
+        The shopping list. Each entry in the dictionary maps the ID of a recipe
+        to a serving count.
+      </description>
     </key>
 
   </schema>
