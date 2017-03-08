@@ -977,29 +977,6 @@ gr_recipe_store_init (GrRecipeStore *self)
         load_shopping (self, user_dir);
         load_chefs (self, user_dir, FALSE);
 
-        /* Look for data from before the recipes -> gnome-recipes rename */
-        old_dir = get_old_user_data_dir ();
-        if (load_recipes (self, old_dir, FALSE)) {
-                g_autofree char *filename = g_build_filename (old_dir, "recipes.db", NULL);
-                g_remove (filename);
-                save_recipes (self);
-        }
-        if (load_favorites (self, old_dir)) {
-                g_autofree char *filename = g_build_filename (old_dir, "favorites.db", NULL);
-                g_remove (filename);
-                save_favorites (self);
-        }
-        if (load_shopping (self, old_dir)) {
-                g_autofree char *filename = g_build_filename (old_dir, "shopping.db", NULL);
-                g_remove (filename);
-                save_shopping (self);
-        }
-        if (load_chefs (self, old_dir, FALSE)) {
-                g_autofree char *filename = g_build_filename (old_dir, "chefs.db", NULL);
-                g_remove (filename);
-                save_chefs (self);
-        }
-
         g_info ("%d recipes loaded", g_hash_table_size (self->recipes));
         g_info ("%d chefs loaded", g_hash_table_size (self->chefs));
 }
