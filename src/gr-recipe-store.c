@@ -43,12 +43,8 @@
  * - chefs.db for chefs, with each chef being its own group
  * - picks.db, with lists of things to put on the landing page
  *
- * There's a few auxiliary files:
- * - shopping.db, with the current shppping list
- *
- * Some of these files are preinstalled (picks.db), some are only per-user
- * (shopping.db), and some are both, with the per-user list overlaying the
- * preinstalled one.
+ * Some of these files are preinstalled (picks.db), and some are both, with
+ * the per-user list overlaying the preinstalled one.
  *
  * Data from the preinstalled files is treated as readonly unless it
  * belongs to the current user.
@@ -68,6 +64,7 @@
  *  - the user id of the user
  *  - the counter for how often cooking mode was launched
  *  - the list of favorites and the last-change timestamp for it
+ *  - the shopping list, with recipes, serving counts and removed ingredients
  */
 
 struct _GrRecipeStore
