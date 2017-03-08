@@ -80,6 +80,7 @@ void            gr_recipe_store_add_to_shopping      (GrRecipeStore  *self,
                                                       int             serves);
 void            gr_recipe_store_remove_from_shopping (GrRecipeStore  *self,
                                                       GrRecipe       *recipe);
+void            gr_recipe_store_clear_shopping_list  (GrRecipeStore *self);
 gboolean        gr_recipe_store_is_in_shopping       (GrRecipeStore  *self,
                                                       GrRecipe       *recipe);
 int             gr_recipe_store_get_shopping_serves  (GrRecipeStore  *store,

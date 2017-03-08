@@ -1410,6 +1410,24 @@ gr_recipe_store_remove_from_shopping (GrRecipeStore *self,
         g_signal_emit (self, changed_signal, 0, recipe);
 }
 
+void
+gr_recipe_store_clear_shopping_list (GrRecipeStore *self)
+{
+        const char **empty[1] = { NULL };
+
+        g_variant_dict_unref (self->shopping_list);
+        self->shopping_list = g_variant_dict_new (NULL);
+
+        g_strfreev (self->shopping_removed);
+        self->shopping_removed = g_strdupv ((char **)empty);
+
+        if (self->shopping_change)
+                g_date_time_unref (self->shopping_change);
+        self->shopping_change = g_date_time_new_now_utc ();
+
+        save_shopping (self);
+}
+
 gboolean
 gr_recipe_store_is_in_shopping (GrRecipeStore *self,
                                 GrRecipe      *recipe)
