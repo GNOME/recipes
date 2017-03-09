@@ -31,6 +31,16 @@
 #include "gr-app.h"
 #include "types.h"
 
+/* Note:
+ *
+ *  If any fields are added to a recipe, there are several places
+ *  that need to be kept in sync:
+ *  - save_recipes() in gr-recipe-store.c
+ *  - load_recipes() in gr-recipe-store.c
+ *  - the GrRecipeExporter code
+ *  - the GrRecipeImporter code
+ */
+
 struct _GrRecipe
 {
         GObject parent_instance;
