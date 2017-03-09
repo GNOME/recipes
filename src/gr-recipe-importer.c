@@ -83,6 +83,8 @@ struct _GrRecipeImporter
         char *recipe_notes;
         char **recipe_paths;
         int recipe_serves;
+        int recipe_spiciness;
+        int recipe_default_image;
         GrDiets recipe_diets;
         GDateTime *recipe_ctime;
         GDateTime *recipe_mtime;
@@ -322,6 +324,8 @@ import_recipe (GrRecipeImporter *importer)
                       "instructions", importer->recipe_instructions,
                       "notes", importer->recipe_notes,
                       "serves", importer->recipe_serves,
+                      "spiciness", importer->recipe_spiciness,
+                      "default-image", importer->recipe_default_image,
                       "diets", importer->recipe_diets,
                       "images", images,
                       "ctime", importer->recipe_ctime,
@@ -461,6 +465,8 @@ next:
         importer->recipe_instructions = key_file_get_string (importer->recipes_keyfile, id, "Instructions");
         importer->recipe_notes = key_file_get_string (importer->recipes_keyfile, id, "Notes");
         importer->recipe_serves = g_key_file_get_integer (importer->recipes_keyfile, id, "Serves", &error);
+        importer->recipe_spiciness = g_key_file_get_integer (importer->recipes_keyfile, id, "Spiciness", &error);
+        importer->recipe_default_image = g_key_file_get_integer (importer->recipes_keyfile, id, "DefaultImage", &error);
         handle_or_clear_error (error);
         importer->recipe_diets = g_key_file_get_integer (importer->recipes_keyfile, id, "Diets", &error);
         handle_or_clear_error (error);
