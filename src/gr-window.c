@@ -112,8 +112,9 @@ typedef struct
 static
 void make_save_sensitive(GrWindow *window, GParamSpec *pspec, gpointer data)
 {
-    
+    g_print("inside make_save_sensitive");
     gtk_widget_set_sensitive(window->save_button,TRUE);
+    g_print("after make_save_sensitive");
 }
 
 static void
@@ -754,7 +755,6 @@ gr_window_init (GrWindow *self)
         self->back_entry_stack = g_queue_new ();
 
         g_signal_connect (self->edit_page, "notify", G_CALLBACK (make_save_sensitive), self);
-
         g_action_map_add_action_entries (G_ACTION_MAP (self),
                                          entries, G_N_ELEMENTS (entries),
                                          self);

@@ -142,6 +142,7 @@ struct _GrEditPage
 
 G_DEFINE_TYPE (GrEditPage, gr_edit_page, GTK_TYPE_BOX)
 
+
 enum {
         PROP_0,
         PROP_UNSAVED,
@@ -149,16 +150,23 @@ enum {
 };
 
 
+
 static char *get_text_view_text (GtkTextView *textview);
 static void  set_text_view_text (GtkTextView *textview,
                                  const char  *text);
+static void
+gr_edit_page_set_property (GObject      *object,
+                           guint         prop_id,
+                           const gboolean value,
+                           GParamSpec   *pspec);
 
 static
 void has_unsaved_changes(GrEditPage *page){
 
-    g_printf("in unsaved changes");
     page->unsaved=TRUE;
-    g_object_notify (G_OBJECT (page), "has-unsaved-changes");
+    g_print("inside unsaved changes");
+    // gr_edit_page_set_property(G_OBJECT(page),PROP_UNSAVED,TRUE,page->unsaved); 
+    g_object_notify (G_OBJECT(page) ,"unsaved");
 }
 
 
@@ -1430,14 +1438,13 @@ next_step (GrEditPage *page)
 static void
 gr_edit_page_set_property (GObject      *object,
                            guint         prop_id,
-                           const GValue *value,
+                           const gboolean value,
                            GParamSpec   *pspec)
-{
-    GrEditPage *self = GR_EDIT_PAGE(object);
-    
+{    
 
     switch (prop_id) {
         case PROP_UNSAVED:
+                // object->unsaved=value;
                 break;
 
         default:
@@ -1477,7 +1484,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
 
 
         pspec = g_param_spec_boolean ("unsaved", NULL, NULL,
-                                      FALSE,
+                                      NULL,
                                       G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_UNSAVED, pspec);
         
@@ -1912,7 +1919,6 @@ gr_edit_page_clear (GrEditPage *page)
         images = gr_image_array_new ();
         g_object_set (page->images, "images", images, NULL);
         g_array_unref (images);
-        g_printf("inside gr_edit_page_clear");
 
         if (page->index_handler_id) {
                 g_signal_handler_disconnect (page->recipe, page->index_handler_id);
