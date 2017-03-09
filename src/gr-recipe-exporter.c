@@ -268,6 +268,8 @@ export_one_recipe (GrRecipeExporter  *exporter,
         const char *instructions;
         const char *notes;
         int serves;
+        int default_image;
+        int spiciness;
         GrDiets diets;
         GDateTime *ctime;
         GDateTime *mtime;
@@ -292,6 +294,8 @@ export_one_recipe (GrRecipeExporter  *exporter,
         notes = gr_recipe_get_notes (recipe);
         ctime = gr_recipe_get_ctime (recipe);
         mtime = gr_recipe_get_mtime (recipe);
+        default_image = gr_recipe_get_default_image (recipe);
+        spiciness = gr_recipe_get_spiciness (recipe);
 
         g_object_get (recipe, "images", &images, NULL);
 
@@ -331,7 +335,9 @@ export_one_recipe (GrRecipeExporter  *exporter,
         g_key_file_set_string (keyfile, key, "Instructions", instructions ? instructions : "");
         g_key_file_set_string (keyfile, key, "Notes", notes ? notes : "");
         g_key_file_set_integer (keyfile, key, "Serves", serves);
+        g_key_file_set_integer (keyfile, key, "Spiciness", spiciness);
         g_key_file_set_integer (keyfile, key, "Diets", diets);
+        g_key_file_set_integer (keyfile, key, "DefaultImage", default_image);
 
         g_key_file_set_string_list (keyfile, key, "Images", (const char * const *)paths, g_strv_length (paths));
 
