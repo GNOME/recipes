@@ -1717,6 +1717,7 @@ add_ingredients_segment (GrEditPage *page,
         gtk_widget_show (entry);
         gtk_entry_set_placeholder_text (GTK_ENTRY (entry), _("Name of the List"));
         gtk_entry_set_text (GTK_ENTRY (entry), segment_label[0] ? segment_label : "");
+        g_signal_connect_swapped (entry, "notify::text", G_CALLBACK (set_unsaved),page);
 
 #if defined(ENABLE_GSPELL) && defined(GSPELL_TYPE_ENTRY)
         {
@@ -1724,8 +1725,6 @@ add_ingredients_segment (GrEditPage *page,
 
                 gspell_entry = gspell_entry_get_from_gtk_entry (GTK_ENTRY (entry));
                 gspell_entry_basic_setup (gspell_entry);
-                g_signal_connect_swapped (GTK_WIDGET (entry), "changed", G_CALLBACK (set_unsaved),page);
-
         }
 #endif
 
