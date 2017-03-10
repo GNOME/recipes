@@ -337,6 +337,32 @@ button.osd {
         border: 1px solid black;
 }
 
+.cooking.confirm > label:not(.heading) {
+        margin-bottom: 20px;
+}
+
+box.cooking.overlay.confirm {
+        padding: 0;
+}
+
+box.cooking.overlay.confirm button {
+        background: transparent;
+        padding: 10px;
+        text-shadow: none;
+}
+
+box.cooking.overlay.confirm button {
+        background: gray;
+}
+
+box.cooking.overlay.confirm button:first-child {
+        border-radius: 0 0 0 16px;
+}
+
+box.cooking.overlay.confirm button:last-child {
+        border-radius: 0 0 16px 0;
+}
+
 .timer-label,
 .cooking-label {
         font-size: 30px;

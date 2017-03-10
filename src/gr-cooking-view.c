@@ -630,10 +630,9 @@ gr_cooking_view_start (GrCookingView *view)
 }
 
 void
-gr_cooking_view_stop (GrCookingView *view)
+gr_cooking_view_stop (GrCookingView *view,
+                      gboolean       stop_timers)
 {
-        GList *l;
-
         g_object_set (view->cooking_timer, "timer", NULL, NULL);
         if (view->timer_box)
                 container_remove_all (GTK_CONTAINER (view->timer_box));
@@ -642,10 +641,18 @@ gr_cooking_view_stop (GrCookingView *view)
         g_clear_pointer (&view->images, g_array_unref);
         g_ptr_array_set_size (view->steps, 0);
 
-        for (l = view->timers; l; l = l->next) {
-                GrTimer *timer = l->data;
-                TimerData *td = g_object_get_data (G_OBJECT (timer), "timer-data");
-                td->use_system = TRUE;
+        if (stop_timers) {
+                g_list_foreach (view->timers, (GFunc)gr_timer_reset, NULL);
+                g_list_free_full (view->timers, g_object_unref);
+                view->timers = NULL;
+        }
+        else {
+                GList *l;
+
+                for (l = view->timers; l; l = l->next) {
+                        TimerData *td = g_object_get_data (G_OBJECT (l->data), "timer-data");
+                        td->use_system = TRUE;
+                }
         }
 }
 

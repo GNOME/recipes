@@ -48,6 +48,7 @@ struct _GrCookingPage
         GtkWidget *notification_revealer;
         GtkWidget *notification_label;
         GtkWidget *mini_timer_box;
+        GtkWidget *confirm_revealer;
         int notification_step;
 
         GrRecipe *recipe;
@@ -130,11 +131,9 @@ on_child_revealed (GrCookingPage *page)
 }
 
 static void
-hide_overlay (gpointer data,
-              gboolean fade)
+hide_overlay (GrCookingPage *page,
+              gboolean       fade)
 {
-        GrCookingPage *page = data;
-
         if (!fade)
                 gtk_revealer_set_transition_type (GTK_REVEALER (page->overlay_revealer), GTK_REVEALER_TRANSITION_TYPE_NONE);
         gtk_revealer_set_reveal_child (GTK_REVEALER (page->overlay_revealer), FALSE);
@@ -151,6 +150,70 @@ show_overlay (gpointer data)
         gtk_revealer_set_reveal_child (GTK_REVEALER (page->overlay_revealer), TRUE);
 
         return G_SOURCE_REMOVE;
+}
+
+static void
+on_confirm_revealed (GrCookingPage *page)
+{
+        if (!gtk_revealer_get_reveal_child (GTK_REVEALER (page->confirm_revealer)))
+                    gtk_widget_hide (page->confirm_revealer);
+}
+
+static void
+hide_confirm (GrCookingPage *page)
+{
+        gtk_revealer_set_reveal_child (GTK_REVEALER (page->confirm_revealer), FALSE);
+}
+
+static void
+show_confirm (GrCookingPage *page)
+{
+        gtk_widget_show (page->confirm_revealer);
+        gtk_revealer_set_reveal_child (GTK_REVEALER (page->confirm_revealer), TRUE);
+}
+
+static void
+leave_cooking_mode (GrCookingPage *page,
+                    gboolean       stop_timers)
+{
+        GtkWidget *window;
+        GtkApplication *app;
+
+        window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
+        app = gtk_window_get_application (GTK_WINDOW (window));
+
+        if (page->inhibit_cookie != 0) {
+                gtk_application_uninhibit (app, page->inhibit_cookie);
+                page->inhibit_cookie = 0;
+        }
+
+        gr_window_show_recipe (GR_WINDOW (window), page->recipe);
+        gr_cooking_view_stop (GR_COOKING_VIEW (page->cooking_view), FALSE);
+        gr_window_set_fullscreen (GR_WINDOW (window), FALSE);
+}
+
+static void
+confirm_close (GrCookingPage *page)
+{
+        show_confirm (page);
+}
+
+static void
+keep_cooking (GrCookingPage *page)
+{
+        hide_confirm (page);
+}
+
+static void
+stop_timers (GrCookingPage *page)
+{
+        leave_cooking_mode (page, TRUE);
+}
+
+static void
+continue_timers (GrCookingPage *page)
+{
+        leave_cooking_mode (page, FALSE);
 }
 
 static void
@@ -185,15 +248,17 @@ set_cooking (GrCookingPage *page,
                 gr_window_set_fullscreen (GR_WINDOW (window), TRUE);
         }
         else {
-                if (page->inhibit_cookie != 0) {
-                        gtk_application_uninhibit (app, page->inhibit_cookie);
-                        page->inhibit_cookie = 0;
-                }
+                GList *children;
+                gboolean has_timers;
 
-                gr_window_show_recipe (GR_WINDOW (window), page->recipe);
-                gr_cooking_view_stop (GR_COOKING_VIEW (page->cooking_view));
+                children = gtk_container_get_children (GTK_CONTAINER (page->mini_timer_box));
+                has_timers = children != NULL;
+                g_list_free (children);
 
-                gr_window_set_fullscreen (GR_WINDOW (window), FALSE);
+                if (has_timers)
+                        confirm_close (page);
+                else
+                        leave_cooking_mode (page, TRUE);
         }
 }
 
@@ -442,6 +507,7 @@ gr_cooking_page_class_init (GrCookingPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrCookingPage, notification_revealer);
         gtk_widget_class_bind_template_child (widget_class, GrCookingPage, notification_label);
         gtk_widget_class_bind_template_child (widget_class, GrCookingPage, mini_timer_box);
+        gtk_widget_class_bind_template_child (widget_class, GrCookingPage, confirm_revealer);
 
         gtk_widget_class_bind_template_callback (widget_class, prev_step);
         gtk_widget_class_bind_template_callback (widget_class, next_step);
@@ -450,6 +516,10 @@ gr_cooking_page_class_init (GrCookingPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, close_notification);
         gtk_widget_class_bind_template_callback (widget_class, on_child_revealed);
         gtk_widget_class_bind_template_callback (widget_class, goto_timer);
+        gtk_widget_class_bind_template_callback (widget_class, on_confirm_revealed);
+        gtk_widget_class_bind_template_callback (widget_class, keep_cooking);
+        gtk_widget_class_bind_template_callback (widget_class, stop_timers);
+        gtk_widget_class_bind_template_callback (widget_class, continue_timers);
 }
 
 void

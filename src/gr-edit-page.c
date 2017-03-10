@@ -1388,7 +1388,7 @@ preview_visible_changed (GrEditPage *page)
                 gtk_widget_set_sensitive (page->temperature_button, TRUE);
                 gtk_widget_set_visible (page->prev_step_button, FALSE);
                 gtk_widget_set_visible (page->next_step_button, FALSE);
-                gr_cooking_view_stop (GR_COOKING_VIEW (page->cooking_view));
+                gr_cooking_view_stop (GR_COOKING_VIEW (page->cooking_view), TRUE);
         }
         else {
                 g_autoptr(GArray) images = NULL;
@@ -1470,7 +1470,6 @@ gr_edit_page_class_init (GrEditPageClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
         GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-        
 
         object_class->finalize = edit_page_finalize;
         object_class->set_property = gr_edit_page_set_property;
@@ -1481,7 +1480,6 @@ gr_edit_page_class_init (GrEditPageClass *klass)
                                                       NULL, NULL,
                                                       TRUE, G_PARAM_READWRITE);
         g_object_class_install_properties (object_class, N_PROPS, props);
-        
 
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-edit-page.ui");
 
@@ -1581,7 +1579,6 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, prev_step);
         gtk_widget_class_bind_template_callback (widget_class, next_step);
         gtk_widget_class_bind_template_callback (widget_class, set_unsaved);
-
 }
 
 GtkWidget *
@@ -1720,6 +1717,7 @@ add_ingredients_segment (GrEditPage *page,
         gtk_widget_show (entry);
         gtk_entry_set_placeholder_text (GTK_ENTRY (entry), _("Name of the List"));
         gtk_entry_set_text (GTK_ENTRY (entry), segment_label[0] ? segment_label : "");
+        g_signal_connect_swapped (entry, "changed", G_CALLBACK (set_unsaved), page);
 
 #if defined(ENABLE_GSPELL) && defined(GSPELL_TYPE_ENTRY)
         {
@@ -1727,8 +1725,6 @@ add_ingredients_segment (GrEditPage *page,
 
                 gspell_entry = gspell_entry_get_from_gtk_entry (GTK_ENTRY (entry));
                 gspell_entry_basic_setup (gspell_entry);
-                g_signal_connect_swapped (GTK_WIDGET (entry), "changed", G_CALLBACK (set_unsaved),page);
-
         }
 #endif
 
