@@ -39,7 +39,7 @@
  *
  * The current storage layer is very simple-minded. We just write data out
  * as a number of key files:
- * - recipes.db for recipes, with each recipe being its own group
+ * - recipes.db for recipes
  * - chefs.db for chefs, with each chef being its own group
  * - picks.db, with lists of things to put on the landing page
  *
@@ -51,11 +51,59 @@
  *
  * Data is always written to the per-user files.
  *
+ * The recipes.db format
+ * ---------------------
+ *
+ * Each recipe is its own group, with the recipe ID as the group name.
+ * Recipes have unique IDs of the form R_<dish_name>_by_<chef_ID>.
+ * Recognized keys:
+ *  Name (string)
+ *  Author (string, containing the chef ID)
+ *  Description (string)
+ *  Cuisine (string)
+ *  Season (string)
+ *  Category (string)
+ *  PrepTime (string)
+ *  CookTime (string)
+ *  Ingredients (string, with one ingredient per \n-separated line, each line having
+ *               amount, unit, ingredient and segment fields, separated by tab)
+ *  Instructions (string, with steps separated by \n\n, and optionally embedded markup
+ *                for timers, images or temperatures)
+ *  Notes (string)
+ *  Serves (integer)
+ *  Diets (integer)
+ *  Images (string list)
+ *  DefaultImage (integer)
+ *  Created (string, containing a timestamp)
+ *  Modified (string, containing a timestamp)
+ *
+ * The chefs.db format
+ * -------------------
+ *
+ * Each chef is its own group, with the chef ID as the group name.
+ * Recognized keys:
+ *  Name (string)
+ *  Fullname (string)
+ *  Description (string)
+ *  Image (string)
+ *
+ * The picks.db format
+ * -------------------
+ *
+ * This keyfile has a single group named Content. It contains the following
+ * keys:
+ *
+ *  Todays (string list, containing IDs of recipes to show in the top part
+ *          of the landing page)
+ *  Picks (string list, containing IDs of recipes to show in the Editors Picks
+ *         section of the landing page)
+ *  Chefs (string list, containing IDs of chefs to show in the Featured
+ *         GNOME Chefs part of the landing page)
+ *
  * Data at runtime
  * ---------------
  *
  * At runtime, we keep GrRecipe and GrChef objects in two separate hash tables.
- * Recipes have unique IDs of the form R_<dish_name>_by_<chef_id>.
  *
  * Ancillary data
  * --------------
@@ -65,6 +113,19 @@
  *  - the counter for how often cooking mode was launched
  *  - the list of favorites and the last-change timestamp for it
  *  - the shopping list, with recipes, serving counts and removed ingredients
+ *
+ * Export/Import file format
+ * -------------------------
+ *
+ * We create a compressed archive (tar.gz), with the following files:
+ *
+ * recipes.db - same keyfile format as the main db
+ * chefs.db - same keyfile format as the main db
+ * images/ - contains any images that are referred to in the .db files
+ *
+ * The file name extension we use is .gnome-recipes-export, and we install
+ * am mime type 'application/vnd.gnome.recipes.export' for this extension
+ * and claim to be a mime handler for it.
  */
 
 struct _GrRecipeStore
