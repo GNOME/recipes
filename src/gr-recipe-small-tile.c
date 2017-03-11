@@ -80,7 +80,7 @@ recipe_small_tile_set_recipe (GrRecipeSmallTile *tile,
 {
         GrRecipeStore *store;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         g_set_object (&tile->recipe, recipe);
 
@@ -137,7 +137,7 @@ remove_recipe (GrRecipeSmallTile *tile)
 {
         GrRecipeStore *store;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         gr_recipe_store_remove_from_shopping (store, tile->recipe);
 }

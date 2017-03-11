@@ -205,7 +205,7 @@ got_account_info (const char  *id,
         g_autoptr(GrChef) chef = NULL;
         g_autoptr(GError) local_error = NULL;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         if (error) {
                 g_info ("Failed to get account information: %s", error->message);
@@ -238,7 +238,7 @@ gr_ensure_user_chef (GtkWindow        *window,
         g_autoptr(GrChef) chef = NULL;
         UserChefData *cbdata;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         chef = gr_recipe_store_get_chef (store, gr_recipe_store_get_user_key (store));
         if (chef) {

@@ -869,7 +869,7 @@ gr_about_dialog_new (void)
                               "website-label", _("Learn more about Recipes"),
                               NULL);
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
         recipe_authors = gr_recipe_store_get_contributors (store, &length);
         g_qsort_with_data (recipe_authors, length, sizeof (char *), compare_strings, NULL);
         gtk_about_dialog_add_credit_section (GTK_ABOUT_DIALOG (about),

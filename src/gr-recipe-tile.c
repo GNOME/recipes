@@ -61,7 +61,7 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
 {
         GrRecipeStore *store;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         g_set_object (&tile->recipe, recipe);
 

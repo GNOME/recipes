@@ -586,7 +586,7 @@ do_undo (GrWindow *window)
 
         recipe = g_object_ref (window->undo_recipe);
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         gr_recipe_store_add_recipe (store, window->undo_recipe, NULL);
         close_undo (window);
@@ -767,7 +767,7 @@ done_shopping (GrWindow *window)
 
         g_list_free_full (recipes, g_object_unref);
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
         gr_recipe_store_clear_shopping_list (store);
 }
 
@@ -1279,7 +1279,7 @@ gr_window_show_myself (GrWindow *window)
 
         save_back_entry (window);
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
         gr_ensure_user_chef (GTK_WINDOW (window), do_show_myself, window);
 
         name = gr_recipe_store_get_user_key (store);

@@ -339,7 +339,7 @@ gr_list_page_populate_from_chef (GrListPage *self,
         gtk_label_set_label (GTK_LABEL (self->heading), tmp);
         g_free (tmp);
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         container_remove_all (GTK_CONTAINER (self->flow_box));
         tmp = g_strdup_printf (_("No recipes by chef %s found"), name);
@@ -462,7 +462,7 @@ gr_list_page_populate_from_list (GrListPage *self,
         GList *l;
         gboolean empty;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         recipes = g_list_copy_deep (recipes, (GCopyFunc)g_object_ref, NULL);
         clear_data (self);
@@ -528,7 +528,7 @@ connect_store_signals (GrListPage *page)
 {
         GrRecipeStore *store;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         g_signal_connect_swapped (store, "recipe-added", G_CALLBACK (repopulate), page);
         g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (repopulate), page);

@@ -253,7 +253,7 @@ gr_cuisine_page_set_cuisine (GrCuisinePage *self,
                 self->categories[i].filled = FALSE;
         }
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         keys = gr_recipe_store_get_recipe_keys (store, &length);
         for (j = 0; j < length; j++) {
@@ -308,7 +308,7 @@ connect_store_signals (GrCuisinePage *page)
 {
         GrRecipeStore *store;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         g_signal_connect_swapped (store, "recipe-added", G_CALLBACK (cuisine_page_reload), page);
         g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (cuisine_page_reload), page);

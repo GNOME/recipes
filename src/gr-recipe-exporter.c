@@ -417,7 +417,7 @@ prepare_export (GrRecipeExporter  *exporter,
         g_autoptr(GHashTable) chefs = NULL;
         g_autofree char *imagedir = NULL;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         g_assert (exporter->dir == NULL);
         g_assert (exporter->sources == NULL);
@@ -770,7 +770,7 @@ collect_all_recipes (GrRecipeExporter *exporter)
         guint length;
         int i;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
         keys = gr_recipe_store_get_recipe_keys (store, &length);
         for (i = 0; keys[i]; i++) {
                 g_autoptr(GrRecipe) recipe = gr_recipe_store_get_recipe (store, keys[i]);

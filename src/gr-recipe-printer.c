@@ -123,7 +123,7 @@ begin_print (GtkPrintOperation *operation,
         g_autoptr(GrChef) chef = NULL;
         GrRecipeStore *store;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
         chef = gr_recipe_store_get_chef (store, gr_recipe_get_author (printer->recipe));
 
         width = gtk_print_context_get_width (context);

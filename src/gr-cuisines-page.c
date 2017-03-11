@@ -107,7 +107,7 @@ populate_cuisines (GrCuisinesPage *page)
 
         container_remove_all (GTK_CONTAINER (page->top_box));
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         all_cuisines = gr_cuisine_get_names (&length);
         cuisines = g_new0 (char *, g_strv_length ((char **)all_cuisines) + 1);
@@ -246,7 +246,7 @@ connect_store_signals (GrCuisinesPage *page)
 {
         GrRecipeStore *store;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         g_signal_connect_swapped (store, "recipe-added", G_CALLBACK (cuisines_page_reload), page);
         g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (cuisines_page_reload), page);

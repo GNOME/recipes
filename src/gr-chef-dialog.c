@@ -202,7 +202,7 @@ save_chef_dialog (GrChefDialog  *self,
         gtk_text_buffer_get_bounds (buffer, &start, &end);
         description = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         if (id != NULL && id[0] != '\0'){
                 g_object_set (self->chef,
@@ -291,7 +291,7 @@ gr_chef_dialog_set_chef (GrChefDialog *self,
 
         revert_changes (self);
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         same_chef = self->chef != NULL && self->chef == chef;
 
@@ -433,7 +433,7 @@ populate_chef_list (GrChefDialog *dialog)
         guint length;
         int i;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
         keys = gr_recipe_store_get_chef_keys (store, &length);
 
         for (i = 0; keys[i]; i++) {

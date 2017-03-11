@@ -265,7 +265,7 @@ gr_recipe_get_chef_fullname (GrRecipe *self)
 	GrRecipeStore *store;
 	g_autoptr(GrChef) chef = NULL;
 
-	store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+	store = gr_recipe_store_get ();
 	chef = gr_recipe_store_get_chef (store, self->author);
 	if (chef) {
 		const char *fullname = gr_chef_get_fullname (chef);

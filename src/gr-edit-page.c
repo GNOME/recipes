@@ -1283,7 +1283,7 @@ edit_chef (GrEditPage *page)
 
         win = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         chef = gr_recipe_store_get_chef (store, page->author ? page->author : "");
 
@@ -1888,7 +1888,7 @@ gr_edit_page_clear (GrEditPage *page)
 
         gr_image_viewer_revert_changes (GR_IMAGE_VIEWER (page->images));
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         gtk_label_set_label (GTK_LABEL (page->name_label), _("Name Your Recipe"));
         gtk_entry_set_text (GTK_ENTRY (page->name_entry), "");
@@ -2040,7 +2040,7 @@ gr_edit_page_edit (GrEditPage *page,
 
         gr_image_viewer_revert_changes (GR_IMAGE_VIEWER (page->images));
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         name = gr_recipe_get_name (recipe);
         serves = gr_recipe_get_serves (recipe);
@@ -2125,7 +2125,7 @@ gr_edit_page_save (GrEditPage *page)
         GrDiets diets;
         g_autoptr(GArray) images = NULL;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         name = gtk_entry_get_text (GTK_ENTRY (page->name_entry));
         cuisine = get_combo_value (GTK_COMBO_BOX (page->cuisine_combo));

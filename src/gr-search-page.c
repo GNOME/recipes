@@ -201,7 +201,7 @@ connect_store_signals (GrSearchPage *page)
 {
         GrRecipeStore *store;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         g_signal_connect_swapped (store, "recipe-added", G_CALLBACK (search_page_reload), page);
         g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (search_page_reload), page);

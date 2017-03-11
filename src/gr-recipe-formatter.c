@@ -44,7 +44,7 @@ gr_recipe_format (GrRecipe *recipe)
         int length;
         g_autoptr(GPtrArray) steps = NULL;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
         chef = gr_recipe_store_get_chef (store, gr_recipe_get_author (recipe));
 
         s = g_string_new ("");

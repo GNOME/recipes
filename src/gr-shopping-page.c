@@ -129,7 +129,7 @@ recount_recipes (GrShoppingPage *page)
         if (count == 0) {
                 GrRecipeStore *store;
 
-                store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+                store = gr_recipe_store_get ();
                 gr_recipe_store_clear_shopping_list (store);
 
                 window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
@@ -162,7 +162,7 @@ ingredient_new (const char *ingredient)
         Ingredient *ing;
         GrRecipeStore *store;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         ing = g_new0 (Ingredient, 1);
         ing->ingredient = g_strdup (ingredient);
@@ -279,7 +279,7 @@ remove_ingredient (GtkButton *button, GrShoppingPage *page)
         Ingredient *ing;
         GrRecipeStore *store;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         row = gtk_widget_get_ancestor (GTK_WIDGET (button), GTK_TYPE_LIST_BOX_ROW);
 
@@ -404,7 +404,7 @@ removed_row_activated (GtkListBox     *list,
         Ingredient *ing;
         GrRecipeStore *store;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         popover = gtk_widget_get_ancestor (GTK_WIDGET (row), GTK_TYPE_POPOVER);
         gtk_popover_popdown (GTK_POPOVER (popover));
@@ -524,7 +524,7 @@ serves_changed (GObject *object, GParamSpec *pspec, GrShoppingPage *page)
         recipe = gr_recipe_small_tile_get_recipe (tile);
         serves = gr_recipe_small_tile_get_serves (tile);
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         gr_recipe_store_add_to_shopping (store, recipe, serves);
 }
@@ -545,7 +545,7 @@ search_hits_added (GrRecipeSearch *search,
         GrRecipeStore *store;
         GList *l;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         for (l = hits; l; l = l->next) {
                 GrRecipe *recipe = l->data;
@@ -597,7 +597,7 @@ clear_list (GrShoppingPage *page)
         GrRecipeStore *store;
         GtkWidget *window;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         container_remove_all (GTK_CONTAINER (page->ingredients_list));
         container_remove_all (GTK_CONTAINER (page->removed_list));
@@ -909,7 +909,7 @@ recipe_added (GrShoppingPage *page,
         if (!gtk_widget_is_drawable (GTK_WIDGET (page)))
                 return;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         serves = gr_recipe_store_get_shopping_serves (store, recipe);
 
@@ -946,7 +946,7 @@ recipe_changed (GrShoppingPage *page,
         if (!gtk_widget_is_drawable (GTK_WIDGET (page)))
                 return;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         if (gr_recipe_store_is_in_shopping (store, recipe))
                 recipe_added (page, recipe);
@@ -959,7 +959,7 @@ connect_store_signals (GrShoppingPage *page)
 {
         GrRecipeStore *store;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (recipe_removed), page);
         g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (recipe_changed), page);

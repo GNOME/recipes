@@ -269,7 +269,7 @@ update_shopping_time (gpointer data)
         GDateTime *change;
         g_autoptr(GDateTime) now = NULL;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         now = g_date_time_new_now_utc ();
         change = gr_recipe_store_last_shopping_change (store);
@@ -302,7 +302,7 @@ populate_recipes_from_store (GrRecipesPage *self)
         container_remove_all (GTK_CONTAINER (self->today_box));
         container_remove_all (GTK_CONTAINER (self->pick_box));
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         keys = gr_recipe_store_get_recipe_keys (store, &length);
 
@@ -360,7 +360,7 @@ populate_shopping_from_store (GrRecipesPage *self)
         g_autofree char *shop2 = NULL;
         char *tmp;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         keys = gr_recipe_store_get_recipe_keys (store, &length);
 
@@ -419,7 +419,7 @@ populate_chefs_from_store (GrRecipesPage *self)
 
         container_remove_all (GTK_CONTAINER (self->chefs_box));
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         keys = gr_recipe_store_get_chef_keys (store, &length);
         /* scramble the keys so we don't always get the same picks */
@@ -471,7 +471,7 @@ connect_store_signals (GrRecipesPage *page)
 {
         GrRecipeStore *store;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         g_signal_connect_swapped (store, "recipe-added", G_CALLBACK (repopulate_recipes), page);
         g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (repopulate_recipes), page);

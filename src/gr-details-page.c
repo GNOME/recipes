@@ -106,7 +106,7 @@ delete_recipe (GrDetailsPage *page)
 
         recipe = g_object_ref (page->recipe);
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
         gr_recipe_store_remove_recipe (store, page->recipe);
         g_set_object (&page->recipe, NULL);
         g_set_object (&page->chef, NULL);
@@ -196,7 +196,7 @@ cook_it_later (GrDetailsPage *page)
 {
         GrRecipeStore *store;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
         if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->favorite_button)))
                 gr_recipe_store_add_favorite (store, page->recipe);
         else
@@ -210,7 +210,7 @@ shop_it (GrDetailsPage *page)
         GtkWidget *window;
         int serves;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
         serves = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (page->serves_spin));
         gr_recipe_store_add_to_shopping (store, page->recipe, serves);
 
@@ -266,7 +266,7 @@ save_notes (gpointer data)
 
         g_object_set (page->recipe, "notes", text, NULL);
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
         if (!gr_recipe_store_update_recipe (store, page->recipe, id, &error)) {
                 g_warning ("Error: %s", error->message);
         }
@@ -308,7 +308,7 @@ activate_uri_at_idle (gpointer data)
                 const char *id;
                 g_autoptr(GrRecipe) recipe = NULL;
 
-                store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+                store = gr_recipe_store_get ();
 
                 id = uri + strlen ("recipe:");
                 recipe = gr_recipe_store_get_recipe (store, id);
@@ -719,7 +719,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), want_serves);
         gtk_widget_set_sensitive (page->serves_spin, ing != NULL);
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         favorite = gr_recipe_store_is_favorite (store, recipe);
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->favorite_button), favorite);
@@ -802,7 +802,7 @@ connect_store_signals (GrDetailsPage *page)
 {
         GrRecipeStore *store;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (details_page_reload), page);
 }

@@ -287,7 +287,7 @@ import_recipe (GrRecipeImporter *importer)
         g_autofree char *id = NULL;
         const char *author;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         images = gr_image_array_new ();
         if (importer->recipe_paths) {
@@ -376,7 +376,7 @@ recipe_name_changed (GtkEntry         *entry,
         GtkWidget *dialog;
         g_autoptr(GrRecipe) recipe = NULL;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         name = gtk_entry_get_text (entry);
         author = (const char *)g_hash_table_lookup (importer->chef_id_map, importer->recipe_author);
@@ -435,7 +435,7 @@ import_next_recipe (GrRecipeImporter *importer)
         g_autoptr(GError) error = NULL;
         const char *id;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
 next:
         importer->current_recipe++;
@@ -539,7 +539,7 @@ import_chef (GrRecipeImporter *importer)
         g_autoptr(GrChef) chef = NULL;
         g_autoptr(GError) error = NULL;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         if (importer->chef_image_path) {
                 char *new_path;
@@ -581,7 +581,7 @@ find_unused_chef_id (const char *base)
         GrRecipeStore *store;
         int i;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
         for (i = 0; i < 100; i++) {
                 g_autofree char *new_id = NULL;
@@ -708,7 +708,7 @@ import_next_chef (GrRecipeImporter *importer)
         g_autoptr(GrChef) chef = NULL;
         GrRecipeStore *store;
 
-        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        store = gr_recipe_store_get ();
 
 next:
         importer->current_chef++;
