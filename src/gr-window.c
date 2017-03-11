@@ -39,6 +39,7 @@
 #include "gr-cuisines-page.h"
 #include "gr-image-page.h"
 #include "gr-query-editor.h"
+#include "gr-recipe-store.h"
 #include "gr-recipe-importer.h"
 #include "gr-recipe-exporter.h"
 #include "gr-about-dialog.h"

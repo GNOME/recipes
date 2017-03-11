@@ -19,7 +19,6 @@
 #pragma once
 
 #include <gtk/gtk.h>
-#include "gr-recipe-store.h"
 
 G_BEGIN_DECLS
 

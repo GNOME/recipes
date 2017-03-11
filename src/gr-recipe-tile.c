@@ -25,6 +25,7 @@
 #include <gdk-pixbuf/gdk-pixbuf.h>
 
 #include "gr-recipe-tile.h"
+#include "gr-recipe-store.h"
 #include "gr-window.h"
 #include "gr-utils.h"
 #include "gr-images.h"
