@@ -112,19 +112,6 @@ typedef struct
 } BackEntry;
 
 
-static
-void make_save_sensitive (GrEditPage *edit_page, GParamSpec *pspec, gpointer data)
-{
-        GrWindow *window = GR_WINDOW (data);
-        gboolean unsaved;
-
-        g_object_get (G_OBJECT (edit_page), "unsaved", &unsaved, NULL);
-        if (unsaved)
-                gtk_widget_set_sensitive (window->save_button,TRUE);
-        else
-                gtk_widget_set_sensitive (window->save_button,FALSE);
-}
-
 static void
 back_entry_free (BackEntry *entry)
 {
@@ -757,6 +744,19 @@ done_shopping (GrWindow *window)
         gr_recipe_store_clear_shopping_list (store);
 }
 
+static
+void make_save_sensitive (GrEditPage *edit_page, GParamSpec *pspec, gpointer data)
+{
+        GrWindow *window = GR_WINDOW (data);
+        gboolean unsaved;
+
+        g_object_get (G_OBJECT (edit_page), "unsaved", &unsaved, NULL);
+        if (unsaved)
+                gtk_widget_set_sensitive (window->save_button,TRUE);
+        else
+                gtk_widget_set_sensitive (window->save_button,FALSE);
+}
+
 static void
 gr_window_class_init (GrWindowClass *klass)
 {
@@ -819,6 +819,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, shopping_title_changed);
         gtk_widget_class_bind_template_callback (widget_class, done_shopping);
         gtk_widget_class_bind_template_callback (widget_class, close_shopping_done);
+        gtk_widget_class_bind_template_callback (widget_class, make_save_sensitive);
 }
 
 static GtkClipboard *

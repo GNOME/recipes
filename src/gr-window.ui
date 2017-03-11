@@ -471,7 +471,9 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GrEditPage" id="edit_page"/>
+                  <object class="GrEditPage" id="edit_page">
+                    <signal name="notify::unsaved" handler="make_save_sensitive"/>
+                  </object>
                   <packing>
                     <property name="name">edit</property>
                   </packing>
