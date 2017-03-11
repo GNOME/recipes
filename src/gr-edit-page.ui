@@ -62,7 +62,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkScrolledWindow">
+          <object class="GtkScrolledWindow" id="main_content">
             <property name="visible">1</property>
             <property name="expand">1</property>
             <property name="hscrollbar-policy">never</property>

@@ -58,6 +58,7 @@ struct _GrEditPage
 
         GrRecipe *recipe;
 
+        GtkWidget *main_content;
         GtkWidget *error_revealer;
         GtkWidget *error_label;
         GtkWidget *name_label;
@@ -1482,6 +1483,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
 
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-edit-page.ui");
 
+        gtk_widget_class_bind_template_child (widget_class, GrEditPage, main_content);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, error_revealer);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, error_label);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, name_label);
@@ -1879,6 +1881,15 @@ populate_ingredients (GrEditPage *page,
         update_segments (page);
 }
 
+static void
+scroll_up (GrEditPage *page)
+{
+        GtkAdjustment *adj;
+
+        adj = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (page->main_content));
+        gtk_adjustment_set_value (adj, gtk_adjustment_get_lower (adj));
+}
+
 void
 gr_edit_page_clear (GrEditPage *page)
 {
@@ -1921,6 +1932,8 @@ gr_edit_page_clear (GrEditPage *page)
 
         g_free (page->author);
         page->author = g_strdup (gr_recipe_store_get_user_key (store));
+
+        scroll_up (page);
 }
 
 static void
@@ -2102,6 +2115,8 @@ gr_edit_page_edit (GrEditPage *page,
         }
 
         update_default_image_button (page);
+
+        scroll_up (page);
 }
 
 gboolean
