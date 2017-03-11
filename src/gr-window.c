@@ -65,6 +65,7 @@ struct _GrWindow
         GtkWidget *details_page;
         GtkWidget *edit_page;
         GtkWidget *list_page;
+        GtkWidget *transient_list_page;
         GtkWidget *chef_page;
         GtkWidget *shopping_page;
         GtkWidget *search_page;
@@ -143,6 +144,7 @@ save_back_entry (GrWindow *window)
         page = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
         if (strcmp (page, "details") == 0 ||
             strcmp (page, "cooking") == 0 ||
+            strcmp (page, "transient") == 0 ||
             strcmp (page, "edit") == 0)
                 return;
 
@@ -674,6 +676,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrWindow, details_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, edit_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, list_page);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, transient_list_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, chef_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, shopping_page);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, search_page);
@@ -828,7 +831,7 @@ done_cb (GrRecipeImporter *importer,
          GrWindow         *window)
 {
         if (recipes)
-                gr_window_show_list (window, _("Imported Recipes"), recipes);
+                gr_window_show_transient_list (window, _("Imported Recipes"), recipes);
 }
 
 static void
@@ -1080,6 +1083,23 @@ gr_window_show_list (GrWindow   *window,
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "list");
+}
+
+static void
+gr_window_show_transient_list (GrWindow   *window,
+                               const char *title,
+                               GList      *recipes)
+{
+        save_back_entry (window);
+        gr_list_page_populate_from_list (GR_LIST_PAGE (window->transient_list_page), recipes);
+
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), title);
+
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
+
+        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "transient");
 }
 
 void

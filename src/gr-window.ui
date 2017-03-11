@@ -361,6 +361,12 @@
                   </packing>
                 </child>
                 <child>
+                  <object class="GrListPage" id="transient_list_page"/>
+                  <packing>
+                    <property name="name">transient</property>
+                  </packing>
+                </child>
+                <child>
                   <object class="GrListPage" id="chef_page"/>
                   <packing>
                     <property name="name">chef</property>
