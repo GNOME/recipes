@@ -171,11 +171,9 @@ gr_recipe_get_pixbuf (GrRecipe *recipe)
         g_object_get (recipe, "images", &images, NULL);
 
         if (images->len > 0) {
-                GrImage *ri = &g_array_index (images, GrImage, 0);
-                GdkPixbuf *pixbuf;
-
-                pixbuf = load_pixbuf_fill_size (ri->path, 64, 64);
-                return pixbuf;
+                int index = gr_recipe_get_default_image (recipe);
+                GrImage *ri = &g_array_index (images, GrImage, index);
+                return load_pixbuf_fill_size (ri->path, 64, 64);
         }
 
         return NULL;
