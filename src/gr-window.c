@@ -83,6 +83,8 @@ struct _GrWindow
         guint remind_timeout_id;
         GtkWidget *shopping_added_revealer;
         guint shopping_timeout_id;
+        GtkWidget *shopping_done_revealer;
+        guint shopping_done_timeout_id;
 
         GObject *file_chooser;
         GrRecipeImporter *importer;
@@ -654,6 +656,59 @@ shopping_title_changed (GrWindow *window)
 }
 
 static void
+close_shopping_done (GrWindow *window)
+{
+        if (window->shopping_done_timeout_id) {
+                g_source_remove (window->shopping_done_timeout_id);
+                window->shopping_done_timeout_id = 0;
+        }
+
+        gtk_revealer_set_reveal_child (GTK_REVEALER (window->shopping_done_revealer), FALSE);
+}
+
+static gboolean
+shopping_done_timeout (gpointer data)
+{
+        GrWindow *window = data;
+
+        close_shopping_done (window);
+
+        return G_SOURCE_REMOVE;
+}
+
+static void
+gr_window_offer_cooking (GrWindow *window)
+{
+        gtk_revealer_set_reveal_child (GTK_REVEALER (window->shopping_done_revealer), TRUE);
+        window->shopping_done_timeout_id = g_timeout_add_seconds (10, shopping_done_timeout, window);
+}
+
+static void gr_window_show_transient_list (GrWindow   *window,
+                                           const char *title,
+                                           GList      *recipes);
+
+static void
+done_shopping (GrWindow *window)
+{
+        GList *recipes;
+        GrRecipeStore *store;
+
+        recipes = gr_shopping_page_get_recipes (GR_SHOPPING_PAGE (window->shopping_page));
+
+        if (recipes->next == NULL)
+                gr_window_show_recipe (window, recipes->data);
+        else
+                gr_window_show_transient_list (window, _("Ready to Cook!"), recipes);
+
+        gr_window_offer_cooking (window);
+
+        g_list_free_full (recipes, g_object_unref);
+
+        store = gr_app_get_recipe_store (GR_APP (g_application_get_default ()));
+        gr_recipe_store_clear_shopping_list (store);
+}
+
+static void
 gr_window_class_init (GrWindowClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -690,6 +745,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrWindow, remind_revealer);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, remind_label);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, shopping_added_revealer);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, shopping_done_revealer);
 
         gtk_widget_class_bind_template_callback (widget_class, new_recipe);
         gtk_widget_class_bind_template_callback (widget_class, go_back);
@@ -711,6 +767,8 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, do_shopping_list);
         gtk_widget_class_bind_template_callback (widget_class, close_shopping_added);
         gtk_widget_class_bind_template_callback (widget_class, shopping_title_changed);
+        gtk_widget_class_bind_template_callback (widget_class, done_shopping);
+        gtk_widget_class_bind_template_callback (widget_class, close_shopping_done);
 }
 
 static GtkClipboard *
@@ -1074,7 +1132,6 @@ gr_window_show_list (GrWindow   *window,
                      GList      *recipes)
 {
         save_back_entry (window);
-
         gr_list_page_populate_from_list (GR_LIST_PAGE (window->list_page), recipes);
 
         gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), title);
@@ -1112,7 +1169,7 @@ gr_window_show_shopping (GrWindow *window)
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "shopping");
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "shopping");
         gr_shopping_page_populate (GR_SHOPPING_PAGE (window->shopping_page));

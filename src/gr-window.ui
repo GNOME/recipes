@@ -138,6 +138,20 @@
               </packing>
             </child>
             <child>
+              <object class="GtkButton">
+                <property name="visible">1</property>
+                <property name="use-underline">1</property>
+                <property name="label" translatable="yes">_Done Shopping</property>
+                <signal name="clicked" handler="done_shopping" swapped="yes"/>
+                <style>
+                  <class name="destructive-action"/>
+                </style>
+              </object>
+              <packing>
+                <property name="name">shopping</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkEventBox">
                 <property name="visible">1</property>
               </object>
@@ -168,6 +182,56 @@
         <child>
           <object class="GtkOverlay">
             <property name="visible">1</property>
+            <child type="overlay">
+              <object class="GtkRevealer" id="shopping_done_revealer">
+                <property name="visible">1</property>
+                <property name="halign">center</property>
+                <property name="valign">start</property>
+                <child>
+                  <object class="GtkFrame">
+                    <property name="visible">1</property>
+                    <style>
+                      <class name="app-notification"/>
+                    </style>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="visible">1</property>
+                        <property name="spacing">10</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">1</property>
+                            <property name="hexpand">1</property>
+                            <property name="halign">start</property>
+                            <property name="label" translatable="yes">All ingredients marked as stocked!</property>
+                            <style>
+                              <class name="notification-label"/>
+                            </style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkButton">
+                            <property name="visible">1</property>
+                            <property name="focus-on-click">0</property>
+                            <property name="relief">none</property>
+                            <signal name="clicked" handler="close_shopping_done" swapped="yes"/>
+                            <style>
+                              <class name="image-button"/>
+                            </style>
+                            <child>
+                              <object class="GtkImage">
+                                <property name="visible">1</property>
+                                <property name="icon-name">window-close-symbolic</property>
+                                <property name="icon-size">1</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
             <child type="overlay">
               <object class="GtkRevealer" id="shopping_added_revealer">
                 <property name="visible">1</property>
