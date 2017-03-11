@@ -6,6 +6,7 @@
     <signal name="key-press-event" handler="window_keypress_handler_before"/>
     <signal name="key-press-event" handler="window_keypress_handler" after="yes"/>
     <signal name="button-press-event" handler="window_buttonpress_handler" after="yes"/>
+    <signal name="delete-event" handler="window_delete_handler"/>
     <signal name="map" handler="window_mapped_handler" after="yes"/>
     <child type="titlebar">
       <object class="GtkHeaderBar" id="header">

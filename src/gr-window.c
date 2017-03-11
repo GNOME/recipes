@@ -456,6 +456,55 @@ window_mapped_handler (GtkWidget *widget)
 }
 
 static void
+response_cb (GtkDialog *dialog,
+             int        response,
+             gpointer   data)
+{
+        GrWindow *window = data;
+
+        if (response == GTK_RESPONSE_YES)
+                gtk_widget_destroy (GTK_WIDGET (window));
+        else
+                gtk_widget_destroy (GTK_WIDGET (dialog));
+}
+
+static gboolean
+window_delete_handler (GtkWidget *widget)
+{
+        GrWindow *window = GR_WINDOW (widget);
+        const char *visible;
+        gboolean unsaved;
+
+        visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
+        g_object_get (window->edit_page, "unsaved", &unsaved, NULL);
+
+        if (strcmp (visible, "edit") == 0 && unsaved) {
+                GtkWidget *dialog;
+                GrRecipe *recipe;
+                g_autofree char *text = NULL;
+
+                recipe = gr_edit_page_get_recipe (GR_EDIT_PAGE (window->edit_page));
+                if (recipe)
+                        text = g_strdup_printf (_("The “%s” recipe has unsaved changes.\nClose the window anyway?"),
+                                                gr_recipe_get_name (recipe));
+                else
+                        text = g_strdup (_("The new recipe has not been saved.\nClose the window anyway?"));
+
+                dialog = gtk_message_dialog_new (GTK_WINDOW (window),
+                                                 GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,
+                                                 GTK_MESSAGE_QUESTION,
+                                                 GTK_BUTTONS_YES_NO,
+                                                 "%s", text);
+                g_signal_connect (dialog, "response", G_CALLBACK (response_cb), window);
+                gtk_widget_show (dialog);
+
+                return TRUE;
+        }
+
+        return FALSE;
+}
+
+static void
 hide_or_show_header_end_stack (GObject    *object,
                                GParamSpec *pspec,
                                GrWindow   *window)
@@ -760,6 +809,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, window_keypress_handler_before);
         gtk_widget_class_bind_template_callback (widget_class, window_buttonpress_handler);
         gtk_widget_class_bind_template_callback (widget_class, window_mapped_handler);
+        gtk_widget_class_bind_template_callback (widget_class, window_delete_handler);
         gtk_widget_class_bind_template_callback (widget_class, do_undo);
         gtk_widget_class_bind_template_callback (widget_class, close_undo);
         gtk_widget_class_bind_template_callback (widget_class, do_remind);
