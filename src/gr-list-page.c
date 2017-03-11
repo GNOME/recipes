@@ -65,6 +65,7 @@ G_DEFINE_TYPE (GrListPage, gr_list_page, GTK_TYPE_BOX)
 
 static void connect_store_signals (GrListPage *page);
 
+/* keep this function in sync with gr_list_page_repopulate */
 static void
 clear_data (GrListPage *self)
 {
@@ -495,6 +496,7 @@ gr_list_page_populate_from_list (GrListPage *self,
                                           empty ? "empty" : "list");
 }
 
+/* keep function this in sync with clear_data */
 void
 gr_list_page_repopulate (GrListPage *page)
 {
@@ -510,6 +512,8 @@ gr_list_page_repopulate (GrListPage *page)
                 gr_list_page_populate_from_list (page, page->recipes);
         else if (page->all)
                 gr_list_page_populate_from_all (page);
+        else if (page->new)
+                gr_list_page_populate_from_new (page);
 }
 
 static void
