@@ -145,6 +145,7 @@ save_back_entry (GrWindow *window)
         if (strcmp (page, "details") == 0 ||
             strcmp (page, "cooking") == 0 ||
             strcmp (page, "transient") == 0 ||
+            strcmp (page, "shopping") == 0 ||
             strcmp (page, "edit") == 0)
                 return;
 
