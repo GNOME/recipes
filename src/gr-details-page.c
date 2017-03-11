@@ -56,6 +56,7 @@ struct _GrDetailsPage
         GrRecipePrinter *printer;
         GrRecipeExporter *exporter;
 
+        GtkWidget *main_content;
         GtkWidget *recipe_image;
         GtkWidget *prep_time_desc;
         GtkWidget *prep_time_label;
@@ -392,6 +393,7 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
 
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-details-page.ui");
 
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, main_content);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, recipe_image);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, prep_time_desc);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, prep_time_label);
@@ -598,6 +600,15 @@ process_instructions (const char *instructions)
         return g_string_free (s, FALSE);
 }
 
+static void
+scroll_up (GrDetailsPage *page)
+{
+        GtkAdjustment *adj;
+
+        adj = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (page->main_content));
+        gtk_adjustment_set_value (adj, gtk_adjustment_get_lower (adj));
+}
+
 void
 gr_details_page_set_recipe (GrDetailsPage *page,
                             GrRecipe      *recipe)
@@ -769,6 +780,8 @@ gr_details_page_set_recipe (GrDetailsPage *page,
                 gtk_widget_show (page->edit_button);
                 gtk_widget_show (page->delete_button);
         }
+
+        scroll_up (page);
 }
 
 GrRecipe *
