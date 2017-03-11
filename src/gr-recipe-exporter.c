@@ -522,10 +522,24 @@ do_export (GrRecipeExporter *exporter)
 {
         int i;
         g_autofree char *path = NULL;
+        int extra;
+        g_autofree char *name = NULL;
+
+        extra = g_list_length (exporter->recipes);
+        if (extra > 1)
+                name = g_strdup_printf ("%s (%d recipes)", gr_recipe_get_name (GR_RECIPE (exporter->recipes->data)), extra);
+        else
+                name = g_strdup (gr_recipe_get_name (GR_RECIPE (exporter->recipes->data)));
+        g_strdelimit (name, "./", ' ');
 
         for (i = 0; i < 1000; i++) {
                 g_autofree char *tmp;
-                tmp = g_strdup_printf ("%s/recipes%d.gnome-recipes-export", get_user_data_dir (), i);
+
+                if (i == 0)
+                        tmp = g_strdup_printf ("%s/%s.gnome-recipes-export", get_user_data_dir (), name);
+                else
+                        tmp = g_strdup_printf ("%s/%s(%d).gnome-recipes-export", get_user_data_dir (), name, i);
+
                 if (!g_file_test (tmp, G_FILE_TEST_EXISTS)) {
                         path = g_strdup (tmp);
                         break;
