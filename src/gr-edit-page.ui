@@ -559,7 +559,7 @@
                         <property name="min-content-height">120</property>
                         <child>
                           <object class="GtkTextView" id="description_field">
-                            <property name="buffer">instructions_buffer</property>
+                            <property name="buffer">description_buffer</property>
                             <property name="visible">1</property>
                             <property name="wrap-mode">word</property>
                             <property name="top-margin">10</property>
