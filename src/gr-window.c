@@ -101,6 +101,34 @@ struct _GrWindow
 
 G_DEFINE_TYPE (GrWindow, gr_window, GTK_TYPE_APPLICATION_WINDOW)
 
+/* Back button theory:
+ *
+ * We maintain a stack of entries so we can go back multiple steps if
+ * the need arises. For each step, we need to record enough information
+ * to properly repopulate the page, including the headerbar and the
+ * state of the search bar.
+ *
+ * We don't want a full browser-style history here. Instead, navigation
+ * works somewhat stratified:
+ *
+ * - The 'main views': recipes, cuisines, search. You move between these
+ *   without any back information getting recorded.
+ *
+ * - Hierarchical navigation for categories, chefs and similar
+ *   'list-of-recipes' pages, as well as for the cuisine view. If you go
+ *   from a main view to a list page to an individual recipe, you can
+ *   retrace your steps with the back button.
+ *
+ * - Some lists are 'transient': they don't get added to the stack.
+ *   Examples are 'Imported recipes' and 'Ready to cook'. If you go from
+ *   these to an individual recipe and back, you end up on a main view
+ *
+ * - Individual recipe pages: details, edit and new. If you save a recipe,
+ *   we move you to the details page. Apart from that, these pages are
+ *   not participating in the back stack. If you navigate from a details
+ *   page to the chef page, the back button will bring you to the main view,
+ *   not back to the recipe you came from.
+ */
 typedef struct
 {
         char *page;
@@ -110,7 +138,6 @@ typedef struct
         char *header_title;
         char **search;
 } BackEntry;
-
 
 static void
 back_entry_free (BackEntry *entry)
