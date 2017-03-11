@@ -29,7 +29,6 @@
 #include "gr-app.h"
 #include "gr-window.h"
 #include "gr-chef-dialog.h"
-#include "gr-recipe-store.h"
 #include "gr-cuisine.h"
 #include "gr-shell-search-provider.h"
 #include "gr-utils.h"
@@ -40,7 +39,6 @@ struct _GrApp
 {
         GtkApplication parent_instance;
 
-        GrRecipeStore *store;
         GrShellSearchProvider *search_provider;
         GrRecipeExporter *exporter;
 
@@ -55,7 +53,6 @@ gr_app_finalize (GObject *object)
 {
         GrApp *self = GR_APP (object);
 
-        g_clear_object (&self->store);
         g_clear_object (&self->search_provider);
         g_clear_object (&self->css_provider);
 
@@ -88,7 +85,7 @@ timer_expired (GSimpleAction *action,
 
         gr_app_activate (G_APPLICATION (app));
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
-        recipe = gr_recipe_store_get_recipe (app->store, id);
+        recipe = gr_recipe_store_get_recipe (gr_recipe_store_get (), id);
         gr_window_timer_expired (GR_WINDOW (win), recipe, step);
 }
 
@@ -182,7 +179,7 @@ details_activated (GSimpleAction *action,
 
         gr_app_activate (G_APPLICATION (app));
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
-        recipe = gr_recipe_store_get_recipe (app->store, id);
+        recipe = gr_recipe_store_get_recipe (gr_recipe_store_get (), id);
         gr_window_show_recipe (GR_WINDOW (win), recipe);
 }
 
@@ -413,7 +410,7 @@ gr_app_dbus_register (GApplication    *application,
         GrApp *app = GR_APP (application);
 
         app->search_provider = gr_shell_search_provider_new ();
-        gr_shell_search_provider_setup (app->search_provider, app->store);
+        gr_shell_search_provider_setup (app->search_provider, gr_recipe_store_get ());
 
         return gr_shell_search_provider_register (app->search_provider, connection, error);
 }
@@ -444,9 +441,6 @@ gr_app_init (GrApp *self)
                                        _("Turn on verbose logging"), NULL);
 
         g_log_set_writer_func (log_writer, NULL, NULL);
-
-        self->store = gr_recipe_store_new ();
-
 }
 
 static int
@@ -499,10 +493,4 @@ gr_app_new (void)
                              "application-id", "org.gnome.Recipes",
                              "flags", G_APPLICATION_HANDLES_OPEN | G_APPLICATION_CAN_OVERRIDE_APP_ID,
                              NULL);
-}
-
-GrRecipeStore *
-gr_app_get_recipe_store (GrApp *app)
-{
-        return app->store;
 }

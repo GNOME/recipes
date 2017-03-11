@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-   
+
 #pragma once
 
 #include <gtk/gtk.h>
@@ -28,6 +28,5 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (GrApp, gr_app, GR, APP, GtkApplication)
 
 GrApp         *gr_app_new              (void);
-GrRecipeStore *gr_app_get_recipe_store (GrApp *app);
 
 G_END_DECLS
