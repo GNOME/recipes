@@ -29,7 +29,6 @@
 #include "gr-recipe.h"
 #include "gr-cuisine.h"
 #include "gr-recipe-tile.h"
-#include "gr-app.h"
 #include "gr-utils.h"
 #include "gr-meal.h"
 

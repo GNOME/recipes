@@ -30,7 +30,6 @@
 #include "gr-chef-dialog.h"
 #include "gr-chef.h"
 #include "gr-recipe-store.h"
-#include "gr-app.h"
 #include "gr-window.h"
 #include "gr-utils.h"
 #include "gr-chef-tile.h"

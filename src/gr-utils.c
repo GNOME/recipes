@@ -37,7 +37,6 @@
 #endif
 
 #include "gr-utils.h"
-#include "gr-app.h"
 
 /* load image to fit in width x height while preserving
  * aspect ratio, filling seams with transparency

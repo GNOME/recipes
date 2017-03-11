@@ -33,7 +33,6 @@
 #include "gr-chef.h"
 #include "gr-recipe.h"
 #include "gr-recipe-store.h"
-#include "gr-app.h"
 #include "gr-utils.h"
 #include "gr-mail.h"
 

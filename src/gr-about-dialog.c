@@ -27,7 +27,6 @@
 #include "gr-about-dialog.h"
 #include "gr-utils.h"
 #include "gr-recipe-store.h"
-#include "gr-app.h"
 
 #include <stdlib.h>
 

@@ -22,7 +22,6 @@
 
 #include "gr-account.h"
 #include "gr-recipe-store.h"
-#include "gr-app.h"
 #include "gr-utils.h"
 
 #include <glib/gi18n.h>

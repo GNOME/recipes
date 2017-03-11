@@ -33,7 +33,6 @@
 #include "gr-edit-page.h"
 #include "gr-recipe-store.h"
 #include "gr-recipe.h"
-#include "gr-app.h"
 #include "gr-utils.h"
 #include "gr-ingredients-list.h"
 #include "gr-cuisine.h"

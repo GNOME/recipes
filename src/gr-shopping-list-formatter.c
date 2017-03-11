@@ -28,7 +28,6 @@
 #include "gr-images.h"
 #include "gr-chef.h"
 #include "gr-recipe-store.h"
-#include "gr-app.h"
 #include "gr-utils.h"
 
 char *

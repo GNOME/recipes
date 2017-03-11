@@ -31,7 +31,6 @@
 
 #include "gr-details-page.h"
 #include "gr-recipe-store.h"
-#include "gr-app.h"
 #include "gr-window.h"
 #include "gr-utils.h"
 #include "gr-images.h"

@@ -26,7 +26,6 @@
 #include "gr-cuisines-page.h"
 #include "gr-recipe.h"
 #include "gr-recipe-store.h"
-#include "gr-app.h"
 #include "gr-utils.h"
 #include "gr-cuisine-tile.h"
 #include "gr-cuisine.h"
