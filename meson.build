@@ -107,4 +107,4 @@ subdir('po')
 subdir('po-data')
 subdir('tests')
 
-meson.add_install_script('tools/meson_post_install.py')
+meson.add_install_script('meson_post_install.py')
