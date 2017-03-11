@@ -1639,7 +1639,7 @@ gr_recipe_search_new (void)
 
         search = GR_RECIPE_SEARCH (g_object_new (GR_TYPE_RECIPE_SEARCH, NULL));
 
-        search->store = g_object_ref (gr_app_get_recipe_store (GR_APP (g_application_get_default ())));
+        search->store = g_object_ref (gr_recipe_store_get ());
 
         return search;
 }
@@ -1969,4 +1969,15 @@ gr_recipe_search_class_init (GrRecipeSearchClass *klass)
 static void
 gr_recipe_search_init (GrRecipeSearch *self)
 {
+}
+
+GrRecipeStore *
+gr_recipe_store_get (void)
+{
+        static GrRecipeStore *store;
+
+        if (store == NULL)
+                store = gr_recipe_store_new ();
+
+        return store;
 }

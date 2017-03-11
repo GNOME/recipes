@@ -30,6 +30,8 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrRecipeStore, gr_recipe_store, GR, RECIPE_STORE, GObject)
 
+GrRecipeStore  *gr_recipe_store_get                 (void);
+
 GrRecipeStore  *gr_recipe_store_new                 (void);
 
 gboolean        gr_recipe_store_add_recipe          (GrRecipeStore  *self,
