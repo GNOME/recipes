@@ -47,7 +47,7 @@
     </screenshot>
   </screenshots>
   <releases>
-    <release version="0.20.1" date="2017-03-06">
+    <release version="0.20.1" date="2017-03-11">
       <description>
         <p>
           This release focuses on tying up any loose ends before the 1.0 release.
@@ -57,6 +57,8 @@
           recreate your existing favorites and shopping list after the update.
         </p>
         <ul>
+          <li>Add a way to go from shopping to cooking</li>
+          <li>Confirm quitting with unsaved changes</li>
           <li>Store ancillary data in GSettings</li>
           <li>Match Chef names when searching</li>
           <li>Add --verbose and --version commandline options</li>
