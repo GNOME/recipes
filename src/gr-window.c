@@ -1478,8 +1478,6 @@ gr_window_show_report_issue (GrWindow *window)
         const char *uri = "https://bugzilla.gnome.org/enter_bug.cgi?product=recipes";
         g_autoptr(GError) error = NULL;
 
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Report Issue"));
-
         gtk_show_uri_on_window (GTK_WINDOW (window), uri, GDK_CURRENT_TIME, &error);
         if (error)
                 g_warning ("Unable to show '%s': %s", uri, error->message);
