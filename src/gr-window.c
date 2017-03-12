@@ -1334,22 +1334,6 @@ gr_window_show_season (GrWindow   *window,
 }
 
 void
-gr_window_show_search_by_ingredients (GrWindow   *window,
-                                      const char *ingredient)
-{
-        g_auto(GStrv) terms = NULL;
-
-        switch_to_search (window);
-        gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (window->search_bar), TRUE);
-
-        terms = g_new (char *, 2);
-        terms[0] = g_strconcat ("i+:", ingredient, NULL);
-        terms[1] = NULL;
-
-        gr_query_editor_set_terms (GR_QUERY_EDITOR (window->search_bar), (const char **)terms);
-}
-
-void
 gr_window_show_image (GrWindow *window,
                       GArray   *images,
                       int       index)

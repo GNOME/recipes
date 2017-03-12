@@ -67,8 +67,6 @@ void            gr_window_show_cuisine               (GrWindow   *window,
 void            gr_window_show_season                (GrWindow   *window,
                                                       const char *season,
                                                       const char *title);
-void            gr_window_show_search_by_ingredients (GrWindow   *window,
-                                                      const char *ingredient);
 void            gr_window_offer_undelete             (GrWindow   *window,
                                                       GrRecipe   *recipe);
 void            gr_window_offer_contribute           (GrWindow   *window,
