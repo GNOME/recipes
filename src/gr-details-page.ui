@@ -495,6 +495,17 @@
           </object>
         </child>
         <child>
+          <object class="GtkButton" id="temperature_button">
+            <property name="visible">1</property>
+            <property name="use-underline">1</property>
+            <property name="relief">none</property>
+            <property name="focus-on-click">0</property>
+            <property name="label" translatable="yes">🌡</property>
+            <property name="tooltip-text" translatable="yes">Temperature Display Unit</property>
+            <signal name="clicked" handler="toggle_temperature"/>
+          </object>
+        </child>
+        <child>
           <object class="GtkButton" id="export_button">
             <property name="focus-on-click">0</property>
             <property name="use-underline">1</property>

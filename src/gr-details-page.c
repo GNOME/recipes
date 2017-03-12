@@ -87,6 +87,7 @@ struct _GrDetailsPage
         GtkWidget *export_button;
         GtkWidget *error_label;
         GtkWidget *error_revealer;
+        GtkWidget *temperature_button;
 
         guint save_timeout;
 
@@ -362,10 +363,42 @@ dismiss_error (GrDetailsPage *page)
 }
 
 static void
+update_temperature_label (GrDetailsPage *page)
+{
+        g_autoptr(GSettings) settings = g_settings_new ("org.gnome.Recipes");
+
+        if (g_settings_get_enum (settings, "temperature-unit") == 1)
+                gtk_button_set_label (GTK_BUTTON (page->temperature_button), "🌡℉");
+        else
+                gtk_button_set_label (GTK_BUTTON (page->temperature_button), "🌡℃");
+}
+
+static char * process_instructions (const char *instructions);
+
+static void
+toggle_temperature (GtkButton     *button,
+                    GrDetailsPage *page)
+{
+        g_autoptr(GSettings) settings = g_settings_new ("org.gnome.Recipes");
+        int value;
+        const char *instructions;
+        g_autofree char *processed;
+
+        value = g_settings_get_enum (settings, "temperature-unit");
+        g_settings_set_enum (settings, "temperature-unit", value == 0 ? 1 : 0);
+        update_temperature_label (page);
+
+        instructions = gr_recipe_get_translated_instructions (page->recipe);
+        processed = process_instructions (instructions);
+        gtk_label_set_label (GTK_LABEL (page->instructions_label), processed);
+}
+
+static void
 gr_details_page_init (GrDetailsPage *page)
 {
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
         gtk_widget_init_template (GTK_WIDGET (page));
+        update_temperature_label (page);
         connect_store_signals (page);
 
         g_signal_connect (gtk_text_view_get_buffer (GTK_TEXT_VIEW (page->notes_field)), "changed", G_CALLBACK (schedule_save), page);
@@ -424,6 +457,7 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, export_button);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, error_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, error_revealer);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, temperature_button);
 
         gtk_widget_class_bind_template_callback (widget_class, edit_recipe);
         gtk_widget_class_bind_template_callback (widget_class, delete_recipe);
@@ -436,6 +470,7 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, activate_link);
         gtk_widget_class_bind_template_callback (widget_class, dismiss_error);
         gtk_widget_class_bind_template_callback (widget_class, activate_image);
+        gtk_widget_class_bind_template_callback (widget_class, toggle_temperature);
 }
 
 GtkWidget *
