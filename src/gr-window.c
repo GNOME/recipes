@@ -161,6 +161,7 @@ save_back_entry (GrWindow *window)
         page = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
         if (strcmp (page, "details") == 0 ||
             strcmp (page, "cooking") == 0 ||
+            strcmp (page, "image") == 0 ||
             strcmp (page, "transient") == 0 ||
             strcmp (page, "shopping") == 0 ||
             strcmp (page, "edit") == 0)
