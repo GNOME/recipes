@@ -285,9 +285,18 @@ static void
 load_application_css (GrApp *app)
 {
         gboolean dark;
-        const char *css_file;
-        const char *src_file;
-        const char *resource;
+        const char *css_file[2] = {
+                "recipes-light.css",
+                "recipes-dark.css"
+        };
+        const char *src_file[2] = {
+                "src/recipes-light.css",
+                "src/recipes-dark.css"
+        };
+        const char *resource[2] = {
+                "resource:///org/gnome/Recipes/recipes-light.css",
+                "resource:///org/gnome/Recipes/recipes-dark.css"
+        };
         const char *path;
         g_autofree char *css = NULL;
 
@@ -301,23 +310,13 @@ load_application_css (GrApp *app)
                       "gtk-application-prefer-dark-theme", &dark,
                       NULL);
 
-        if (dark) {
-                css_file = "recipes-dark.css";
-                src_file = "src/recipes-dark.css";
-                resource = "resource:///org/gnome/Recipes/recipes-dark.css";
-        }
-        else {
-                css_file = "recipes-light.css";
-                src_file = "src/recipes-light.css";
-                resource = "resource:///org/gnome/Recipes/recipes-light.css";
-        }
-
-        if (g_file_test (css_file, G_FILE_TEST_EXISTS))
-                path = css_file;
-        else if (g_file_test (src_file, G_FILE_TEST_EXISTS))
-                path = src_file;
+        /* Let designers test css tweaks in the build tree without rebuilding */
+        if (g_file_test (css_file[dark], G_FILE_TEST_EXISTS))
+                path = css_file[dark];
+        else if (g_file_test (src_file[dark], G_FILE_TEST_EXISTS))
+                path = src_file[dark];
         else
-                path = resource;
+                path = resource[dark];
 
         g_info ("Loading application CSS from %s", path);
 
@@ -377,7 +376,7 @@ gr_app_startup (GApplication *app)
                         menu = gtk_builder_get_object (builder, "app-menu");
                         gtk_application_set_app_menu (GTK_APPLICATION (app), G_MENU_MODEL (menu));
                 }
-        }
+         }
 
         load_application_css (GR_APP (app));
 }
