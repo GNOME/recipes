@@ -137,6 +137,7 @@ struct _GrRecipeStore
         char **todays;
         char **picks;
         char **favorites;
+        char **export_list;
         GVariantDict *shopping_list;
         char **shopping_removed;
         char **featured_chefs;
@@ -662,6 +663,22 @@ save_favorites (GrRecipeStore *self)
 }
 
 static void
+load_export_list (GrRecipeStore *self)
+{
+        g_autoptr(GSettings) settings = g_settings_new ("org.gnome.Recipes");
+
+        self->export_list = g_settings_get_strv (settings, "export-list");
+}
+
+static void
+save_export_list (GrRecipeStore *self)
+{
+        g_autoptr(GSettings) settings = g_settings_new ("org.gnome.Recipes");
+
+        g_settings_set_strv (settings, "export-list", (const char * const *)self->export_list);
+}
+
+static void
 load_shopping (GrRecipeStore *self)
 {
         g_autoptr(GSettings) settings = g_settings_new ("org.gnome.Recipes");
@@ -917,6 +934,7 @@ gr_recipe_store_init (GrRecipeStore *self)
         /* Now load saved data */
         load_recipes (self, user_dir, FALSE);
         load_favorites (self);
+        load_export_list (self);
         load_shopping (self);
         load_chefs (self, user_dir, FALSE);
 
@@ -1329,7 +1347,7 @@ strv_prepend (char       ***strv_in,
         strv = g_new (char *, length + 2);
         strv[0] = g_strdup (s);
         for (i = 0; i < length; i++)
-                strv[i + 1] = *strv_in[i];
+                strv[i + 1] = (*strv_in)[i];
         strv[length + 1] = NULL;
 
         g_free (*strv_in);
@@ -1428,6 +1446,59 @@ GDateTime *
 gr_recipe_store_last_favorite_change (GrRecipeStore *self)
 {
         return self->favorite_change;
+}
+
+void
+gr_recipe_store_add_export (GrRecipeStore *self,
+                            GrRecipe      *recipe)
+{
+        const char *id;
+
+        id = gr_recipe_get_id (recipe);
+
+        if (g_strv_contains ((const char * const*)self->export_list, id))
+                return;
+
+        strv_prepend (&self->export_list, id);
+
+        save_export_list (self);
+}
+
+void
+gr_recipe_store_remove_export (GrRecipeStore *self,
+                               GrRecipe      *recipe)
+{
+        int i, j;
+        const char *id;
+
+        id = gr_recipe_get_id (recipe);
+
+        for (i = 0; self->export_list[i]; i++) {
+                if (strcmp (self->export_list[i], id) == 0) {
+                        g_free (self->export_list[i]);
+                        for (j = i; self->export_list[j]; j++) {
+                                self->export_list[j] = self->export_list[j + 1];
+                        }
+                        break;
+                }
+        }
+
+        save_export_list (self);
+}
+
+const char **
+gr_recipe_store_get_export_list (GrRecipeStore *self)
+{
+        return (const char **)self->export_list;
+}
+
+void
+gr_recipe_store_clear_export_list (GrRecipeStore *self)
+{
+        g_strfreev (self->export_list);
+        self->export_list = g_new0 (char *, 1);
+
+        save_export_list (self);
 }
 
 void

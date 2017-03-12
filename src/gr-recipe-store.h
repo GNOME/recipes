@@ -51,6 +51,7 @@ gboolean        gr_recipe_store_recipe_is_todays    (GrRecipeStore  *self,
                                                      GrRecipe       *recipe);
 gboolean        gr_recipe_store_recipe_is_pick      (GrRecipeStore  *self,
                                                      GrRecipe       *recipe);
+
 gboolean        gr_recipe_store_add_chef            (GrRecipeStore  *self,
                                                      GrChef         *chef,
                                                      GError        **error);
@@ -64,12 +65,15 @@ char          **gr_recipe_store_get_chef_keys       (GrRecipeStore  *self,
                                                      guint          *length);
 gboolean        gr_recipe_store_chef_is_featured    (GrRecipeStore  *self,
                                                      GrChef         *chef);
+
 const char     *gr_recipe_store_get_user_key        (GrRecipeStore  *self);
 gboolean        gr_recipe_store_update_user         (GrRecipeStore  *self,
                                                      GrChef         *chef,
                                                      GError        **error);
+
 char          **gr_recipe_store_get_all_ingredients (GrRecipeStore  *self,
                                                      guint          *length);
+
 void            gr_recipe_store_add_favorite        (GrRecipeStore  *self,
                                                      GrRecipe       *recipe);
 void            gr_recipe_store_remove_favorite     (GrRecipeStore  *self,
@@ -77,6 +81,14 @@ void            gr_recipe_store_remove_favorite     (GrRecipeStore  *self,
 gboolean        gr_recipe_store_is_favorite         (GrRecipeStore  *self,
                                                      GrRecipe       *recipe);
 GDateTime      *gr_recipe_store_last_favorite_change (GrRecipeStore *self);
+
+void            gr_recipe_store_add_export          (GrRecipeStore  *self,
+                                                     GrRecipe       *recipe);
+void            gr_recipe_store_remove_export       (GrRecipeStore  *self,
+                                                     GrRecipe       *recipe);
+void            gr_recipe_store_clear_export_list   (GrRecipeStore  *self);
+const char    **gr_recipe_store_get_export_list     (GrRecipeStore  *self);
+
 void            gr_recipe_store_add_to_shopping      (GrRecipeStore  *self,
                                                       GrRecipe       *recipe,
                                                       int             serves);
