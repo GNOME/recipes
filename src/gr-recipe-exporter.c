@@ -126,6 +126,8 @@ cleanup_export (GrRecipeExporter *exporter)
         g_clear_object (&exporter->dest);
         g_list_free_full (exporter->sources, g_object_unref);
         exporter->sources = NULL;
+
+        gr_recipe_store_clear_export_list (gr_recipe_store_get ());
 }
 
 #ifdef ENABLE_AUTOAR
@@ -633,18 +635,23 @@ row_activated (GtkListBox *list,
                GtkListBoxRow *row,
                GrRecipeExporter *exporter)
 {
+        GrRecipeStore *store;
         GrRecipe *recipe;
         GtkWidget *image;
+
+        store = gr_recipe_store_get ();
 
         recipe = GR_RECIPE (g_object_get_data (G_OBJECT (row), "recipe"));
         image = GTK_WIDGET (g_object_get_data (G_OBJECT (row), "check"));
 
         if (gtk_widget_get_opacity (image) > 0.5) {
+                gr_recipe_store_remove_export (store, recipe);
                 exporter->recipes = g_list_remove (exporter->recipes, recipe);
                 g_object_unref (recipe);
                 gtk_widget_set_opacity (image, 0.0);
         }
         else {
+                gr_recipe_store_add_export (store, recipe);
                 exporter->recipes = g_list_append (exporter->recipes, g_object_ref (recipe));
                 gtk_widget_set_opacity (image, 1.0);
         }
@@ -748,17 +755,22 @@ void
 gr_recipe_exporter_export (GrRecipeExporter *exporter,
                            GrRecipe         *recipe)
 {
-        GList *l;
+        GrRecipeStore *store;
+        const char **keys;
+        int i;
 
-        // TODO: listen for ::recipe-removed and filter out the list
-        for (l = exporter->recipes; l; l = l->next) {
-                if (l->data == (gpointer)recipe)
-                        goto dialog;
+        store = gr_recipe_store_get ();
+        gr_recipe_store_add_export (store, recipe);
+        keys = gr_recipe_store_get_export_list (store);
+
+        g_list_free_full (exporter->recipes, g_object_unref);
+        exporter->recipes = NULL;
+
+        for (i = 0; keys[i]; i++) {
+                g_autoptr(GrRecipe) recipe = gr_recipe_store_get_recipe (store, keys[i]);
+                exporter->recipes = g_list_prepend (exporter->recipes, g_object_ref (recipe));
         }
 
-        exporter->recipes = g_list_append (exporter->recipes, g_object_ref (recipe));
-
-dialog:
         show_export_dialog (exporter);
 }
 
