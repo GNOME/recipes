@@ -55,6 +55,13 @@
         The names of ingredients that were removed from the shopping list.
       </description>
     </key>
+    <key type="as" name="export-list">
+      <default>[]</default>
+      <summary>The list of recipes to be exported</summary>
+      <description>
+        The list of rcipes to be exported. Each entry in the list is the ID of a recipe.
+      </description>
+    </key>
 
   </schema>
 
