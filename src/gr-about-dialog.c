@@ -834,6 +834,7 @@ gr_about_dialog_new (void)
                 "Nirbheek Chauhan",
                 "Ekta Nandwani",
                 "Maithili Bhide",
+                "Paxana Amanda Xander",
                 NULL
         };
         g_autofree char **recipe_authors = NULL;
