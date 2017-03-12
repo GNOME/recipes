@@ -405,18 +405,6 @@ window_keypress_handler (GtkWidget *widget,
             strcmp (visible, "search") != 0)
                 return GDK_EVENT_PROPAGATE;
 
-        /* handle ctrl+f shortcut */
-        if (event->type == GDK_KEY_PRESS) {
-                if ((e->state & GDK_CONTROL_MASK) > 0 && e->keyval == GDK_KEY_f) {
-                        if (!gtk_search_bar_get_search_mode (GTK_SEARCH_BAR (window->search_bar))) {
-                                gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (window->search_bar), TRUE);
-                        } else {
-                                gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (window->search_bar), FALSE);
-                        }
-                        return GDK_EVENT_PROPAGATE;
-                }
-        }
-
         return gr_query_editor_handle_event (GR_QUERY_EDITOR (window->search_bar), event);
 }
 
