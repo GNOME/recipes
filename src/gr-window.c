@@ -329,6 +329,7 @@ visible_page_changed (GrWindow *window)
 
         action = g_action_map_lookup_action (G_ACTION_MAP (g_application_get_default ()), "search");
         g_simple_action_set_enabled (G_SIMPLE_ACTION (action), searchable);
+
         for (i = 0; i < G_N_ELEMENTS (actions); i++) {
                 action = g_action_map_lookup_action (G_ACTION_MAP (g_application_get_default ()), actions[i]);
                 g_simple_action_set_enabled (G_SIMPLE_ACTION (action), !fullscreen);
@@ -917,7 +918,6 @@ gr_window_init (GrWindow *self)
         gtk_widget_init_template (GTK_WIDGET (self));
         self->back_entry_stack = g_queue_new ();
 
-        g_signal_connect (self->edit_page, "notify::unsaved", G_CALLBACK (make_save_sensitive), self);
         g_action_map_add_action_entries (G_ACTION_MAP (self),
                                          entries, G_N_ELEMENTS (entries),
                                          self);
