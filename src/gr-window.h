@@ -47,6 +47,8 @@ void            gr_window_load_recipe                (GrWindow   *window,
 void            gr_window_save_all                   (GrWindow   *window);
 void            gr_window_show_search                (GrWindow   *window,
                                                       const char *terms);
+gboolean        gr_window_can_search                 (GrWindow   *window);
+
 void            gr_window_go_back                    (GrWindow   *window);
 void            gr_window_show_diet                  (GrWindow   *window,
                                                       const char *title,
@@ -73,8 +75,10 @@ void            gr_window_offer_undelete             (GrWindow   *window,
                                                       GrRecipe   *recipe);
 void            gr_window_offer_contribute           (GrWindow   *window,
                                                       GrRecipe   *recipe);
+
 void            gr_window_set_fullscreen             (GrWindow   *window,
                                                       gboolean    fullscreen);
+gboolean        gr_window_is_fullscreen              (GrWindow   *window);
 
 void            gr_window_show_image                 (GrWindow   *window,
                                                       GArray     *images,

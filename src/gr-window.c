@@ -255,6 +255,22 @@ gr_window_set_fullscreen (GrWindow *window,
         window->is_fullscreen = fullscreen;
 }
 
+gboolean
+gr_window_is_fullscreen (GrWindow *window)
+{
+        return window->is_fullscreen;
+}
+
+gboolean
+gr_window_can_search (GrWindow *window)
+{
+        const char *visible;
+
+        visible = gtk_stack_get_visible_child_name (GTK_STACK (window->header_end_stack));
+
+        return strcmp (visible, "search") == 0;
+}
+
 static void
 stop_search (GrWindow *window)
 {
