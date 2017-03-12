@@ -1227,6 +1227,7 @@ gr_window_show_list (GrWindow   *window,
                      GList      *recipes)
 {
         save_back_entry (window);
+
         gr_list_page_populate_from_list (GR_LIST_PAGE (window->list_page), recipes);
 
         gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), title);
@@ -1244,6 +1245,7 @@ gr_window_show_transient_list (GrWindow   *window,
                                GList      *recipes)
 {
         save_back_entry (window);
+
         gr_list_page_populate_from_list (GR_LIST_PAGE (window->transient_list_page), recipes);
 
         gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), title);
@@ -1276,9 +1278,11 @@ do_show_myself (GrChef   *chef,
 {
         GrWindow *window = data;
 
+        save_back_entry (window);
+
         gr_list_page_populate_from_chef (GR_LIST_PAGE (window->chef_page), chef);
 
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header ), _("My own Recipes"));
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header ), _("My Recipes"));
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
@@ -1290,22 +1294,6 @@ do_show_myself (GrChef   *chef,
 void
 gr_window_show_myself (GrWindow *window)
 {
-        const char *name;
-        g_autoptr(GrChef) chef = NULL;
-        GrRecipeStore *store;
-
-        save_back_entry (window);
-
-        store = gr_recipe_store_get ();
-        gr_ensure_user_chef (GTK_WINDOW (window), do_show_myself, window);
-
-        name = gr_recipe_store_get_user_key (store);
-        chef = gr_recipe_store_get_chef (store, name);
-        if (chef) {
-                do_show_myself (chef, window);
-                return;
-        }
-
         gr_ensure_user_chef (GTK_WINDOW (window), do_show_myself, window);
 }
 
@@ -1512,5 +1500,3 @@ gr_window_show_report_issue (GrWindow *window)
         if (error)
                 g_warning ("Unable to show '%s': %s", uri, error->message);
 }
-
-
