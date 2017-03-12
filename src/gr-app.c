@@ -138,7 +138,10 @@ quit_activated (GSimpleAction *action,
                 GVariant      *parameter,
                 gpointer       app)
 {
-        g_application_quit (G_APPLICATION (app));
+        GtkWindow *win;
+
+        win = gtk_application_get_active_window (GTK_APPLICATION (app));
+        gtk_window_close (win);
 }
 
 static void
