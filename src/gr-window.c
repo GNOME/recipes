@@ -320,8 +320,35 @@ static void
 visible_page_changed (GrWindow *window)
 {
         const char *visible;
+        gboolean searchable;
+        gboolean fullscreen;
+        GAction *action;
+        const char *actions[] = {
+                "chef-information",
+                "about",
+                "news",
+                "import",
+                "export",
+                "details",
+                "quit",
+                "report-issue"
+        };
+        int i;
 
         visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
+
+        searchable = strcmp (visible, "recipes") == 0 ||
+                     strcmp (visible, "cuisines") == 0 ||
+                     strcmp (visible, "search") == 0;
+        fullscreen = strcmp (visible, "image") == 0 ||
+                     strcmp (visible, "cooking") == 0;
+
+        action = g_action_map_lookup_action (G_ACTION_MAP (g_application_get_default ()), "search");
+        g_simple_action_set_enabled (G_SIMPLE_ACTION (action), searchable);
+        for (i = 0; i < G_N_ELEMENTS (actions); i++) {
+                action = g_action_map_lookup_action (G_ACTION_MAP (g_application_get_default ()), actions[i]);
+                g_simple_action_set_enabled (G_SIMPLE_ACTION (action), !fullscreen);
+        }
 
         if (strcmp (visible, "search") != 0) {
                 g_signal_handlers_block_by_func (window->search_bar, search_changed, window);

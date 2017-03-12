@@ -98,8 +98,6 @@ chef_information_activated (GSimpleAction *action,
 
         gr_app_activate (G_APPLICATION (app));
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
-        if (gr_window_is_fullscreen (GR_WINDOW (win)))
-                return;
         gr_window_show_my_chef_information (GR_WINDOW (win));
 }
 
@@ -112,8 +110,6 @@ about_activated (GSimpleAction *action,
 
         gr_app_activate (G_APPLICATION (app));
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
-        if (gr_window_is_fullscreen (GR_WINDOW (win)))
-                return;
         gr_window_show_about_dialog (GR_WINDOW (win));
 }
 
@@ -126,8 +122,6 @@ report_issue_activated (GSimpleAction *action,
 
         gr_app_activate (G_APPLICATION (app));
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
-        if (gr_window_is_fullscreen (GR_WINDOW (win)))
-                return;
         gr_window_show_report_issue (GR_WINDOW (win));
 }
 
@@ -140,8 +134,6 @@ news_activated (GSimpleAction *action,
 
         gr_app_activate (G_APPLICATION (app));
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
-        if (gr_window_is_fullscreen (GR_WINDOW (win)))
-                return;
         gr_window_show_news (GR_WINDOW (win));
 }
 
@@ -154,8 +146,6 @@ quit_activated (GSimpleAction *action,
 
         gr_app_activate (G_APPLICATION (app));
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
-        if (gr_window_is_fullscreen (GR_WINDOW (win)))
-                return;
         gtk_window_close (win);
 }
 
@@ -168,8 +158,6 @@ import_activated (GSimpleAction *action,
 
         gr_app_activate (G_APPLICATION (app));
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
-        if (gr_window_is_fullscreen (GR_WINDOW (win)))
-                return;
         gr_window_load_recipe (GR_WINDOW (win), NULL);
 }
 
@@ -182,8 +170,6 @@ export_activated (GSimpleAction *action,
 
         gr_app_activate (G_APPLICATION (app));
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
-        if (gr_window_is_fullscreen (GR_WINDOW (win)))
-                return;
         gr_window_save_all (GR_WINDOW (win));
 }
 
@@ -202,8 +188,6 @@ details_activated (GSimpleAction *action,
         gr_app_activate (G_APPLICATION (app));
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
         recipe = gr_recipe_store_get_recipe (gr_recipe_store_get (), id);
-        if (gr_window_is_fullscreen (GR_WINDOW (win)))
-                return;
         gr_window_show_recipe (GR_WINDOW (win), recipe);
 }
 
@@ -220,10 +204,7 @@ search_activated (GSimpleAction *action,
 
         gr_app_activate (G_APPLICATION (app));
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
-        if (gr_window_is_fullscreen (GR_WINDOW (win)))
-                return;
-        if (gr_window_can_search (GR_WINDOW (win)))
-                gr_window_show_search (GR_WINDOW (win), search);
+        gr_window_show_search (GR_WINDOW (win), search);
 }
 
 #define DEFAULT_LEVELS (G_LOG_LEVEL_ERROR | G_LOG_LEVEL_CRITICAL | G_LOG_LEVEL_WARNING | G_LOG_LEVEL_MESSAGE)
