@@ -46,6 +46,7 @@
 #include "gr-account.h"
 #include "gr-utils.h"
 #include "gr-appdata.h"
+#include "gr-preferences.h"
 
 
 struct _GrWindow
@@ -1481,4 +1482,13 @@ gr_window_show_report_issue (GrWindow *window)
         gtk_show_uri_on_window (GTK_WINDOW (window), uri, GDK_CURRENT_TIME, &error);
         if (error)
                 g_warning ("Unable to show '%s': %s", uri, error->message);
+}
+
+void
+gr_window_show_preferences (GrWindow *window)
+{
+        GtkWidget *preferences;
+
+        preferences = (GtkWidget *)gr_preferences_new ();
+        gr_window_present_dialog (window, GTK_WINDOW (preferences));
 }

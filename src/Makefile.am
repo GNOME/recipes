@@ -84,6 +84,8 @@ gnome_recipes_SOURCES = \
 	gr-number.c		\
 	gr-chef-dialog.h	\
 	gr-chef-dialog.c	\
+	gr-preferences.c	\
+	gr-preferences.h	\
 	gr-query-editor.h	\
 	gr-query-editor.c	\
 	gr-recipe.h 		\

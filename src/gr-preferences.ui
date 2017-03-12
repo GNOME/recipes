@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="gnome-recipes">
+  <template class="GrPreferences" parent="GtkDialog">
+    <property name="title" translatable="yes">Preferences</property>
+    <property name="resizable">0</property>
+    <property name="modal">1</property>
+    <property name="destroy-with-parent">1</property>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <child>
+          <object class="GtkGrid">
+            <property name="visible">1</property>
+            <property name="margin">10</property>
+            <property name="row-spacing">10</property>
+            <property name="column-spacing">10</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="label" translatable="yes">Temperature Unit</property>
+                <property name="xalign">1</property>
+                <property name="valign">baseline</property>
+                <style>
+                  <class name="dim-label"/>
+                </style>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkComboBoxText" id="temperature_unit">
+                <property name="visible">1</property>
+                <property name="valign">baseline</property>
+                <items>
+                  <item translatable="yes" id="celsius">Celsius</item>
+                  <item translatable="yes" id="fahrenheit">Fahrenheit</item>
+                </items>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

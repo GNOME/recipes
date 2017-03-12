@@ -271,6 +271,18 @@ verbose_logging_activated (GSimpleAction *action,
         g_variant_get (parameter, "b", &verbose_logging);
 }
 
+static void
+preferences_activated (GSimpleAction *action,
+                       GVariant      *parameter,
+                       gpointer       app)
+{
+        GtkWindow *win;
+
+        gr_app_activate (G_APPLICATION (app));
+        win = gtk_application_get_active_window (GTK_APPLICATION (app));
+        gr_window_show_preferences (GR_WINDOW (win));
+}
+
 static GActionEntry app_entries[] =
 {
         { "timer-expired", timer_expired, "(si)", NULL, NULL },
@@ -283,7 +295,8 @@ static GActionEntry app_entries[] =
         { "search", search_activated, "s", NULL, NULL },
         { "quit", quit_activated, NULL, NULL, NULL },
         { "report-issue", report_issue_activated, NULL, NULL, NULL },
-        { "verbose-logging", verbose_logging_activated, "b", NULL, NULL }
+        { "verbose-logging", verbose_logging_activated, "b", NULL, NULL },
+        { "preferences", preferences_activated, NULL, NULL, NULL }
 };
 
 static void
