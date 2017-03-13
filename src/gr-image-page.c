@@ -216,11 +216,6 @@ gr_image_page_init (GrImagePage *self)
 {
         gtk_widget_init_template (GTK_WIDGET (self));
 
-        gtk_widget_add_events (GTK_WIDGET (self->event_box), GDK_POINTER_MOTION_MASK);
-        gtk_widget_add_events (GTK_WIDGET (self->event_box), GDK_BUTTON_PRESS_MASK);
-g_signal_connect (self->event_box, "motion-notify-event", G_CALLBACK (motion_notify), self);
-        g_signal_connect (self->event_box, "key-press-event", G_CALLBACK (key_press_event), self);
-
         self->images = gr_image_array_new ();
 }
 
@@ -263,6 +258,14 @@ gr_image_page_set_property (GObject      *object,
 }
 
 static void
+gr_image_page_grab_focus (GtkWidget *widget)
+{
+        GrImagePage *self = GR_IMAGE_PAGE (widget);
+
+        gtk_widget_grab_focus (self->event_box);
+}
+
+static void
 gr_image_page_class_init (GrImagePageClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -272,6 +275,8 @@ gr_image_page_class_init (GrImagePageClass *klass)
         object_class->finalize = gr_image_page_finalize;
         object_class->get_property = gr_image_page_get_property;
         object_class->set_property = gr_image_page_set_property;
+
+        widget_class->grab_focus = gr_image_page_grab_focus;
 
         pspec = g_param_spec_boxed ("images", NULL, NULL,
                                     G_TYPE_ARRAY,
@@ -288,6 +293,8 @@ gr_image_page_class_init (GrImagePageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, stop_viewing);
         gtk_widget_class_bind_template_callback (widget_class, prev_image);
         gtk_widget_class_bind_template_callback (widget_class, next_image);
+        gtk_widget_class_bind_template_callback (widget_class, key_press_event);
+        gtk_widget_class_bind_template_callback (widget_class, motion_notify);
 }
 
 static void
@@ -336,4 +343,11 @@ gr_image_page_show_image (GrImagePage *page,
                 page->index = idx % page->images->len;
                 set_current_image (page);
         }
+}
+
+gboolean
+gr_image_page_handle_event (GrImagePage *page,
+                            GdkEvent    *event)
+{
+        return FALSE;
 }

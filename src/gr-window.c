@@ -218,6 +218,7 @@ new_recipe (GrWindow *window)
         save_back_entry (window);
 
         gr_edit_page_clear (GR_EDIT_PAGE (window->edit_page));
+        gtk_widget_grab_focus (window->edit_page);
 
         gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Add a New Recipe"));
 
@@ -226,7 +227,7 @@ new_recipe (GrWindow *window)
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "edit");
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "edit");
-        gtk_widget_set_sensitive(window->save_button,FALSE);
+        gtk_widget_set_sensitive (window->save_button,FALSE);
 }
 
 static void
@@ -414,17 +415,19 @@ window_keypress_handler (GtkWidget *widget,
                          gpointer   data)
 {
         GrWindow *window = GR_WINDOW (widget);
-        GdkEventKey *e = (GdkEventKey *) event;
+//        GdkEventKey *e = (GdkEventKey *) event;
         const char *visible;
 
         visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
 
+#if 0
         if (strcmp (visible, "image") == 0) {
                 if (e->keyval == GDK_KEY_Escape) {
                         gr_window_show_image (window, NULL, -1);
                         return GDK_EVENT_STOP;
                 }
         }
+#endif
 
         if (strcmp (visible, "cooking") == 0)
                 return gr_cooking_page_handle_event (GR_COOKING_PAGE (window->cooking_page), event);
@@ -968,6 +971,7 @@ gr_window_edit_recipe (GrWindow *window,
         save_back_entry (window);
 
         gr_edit_page_edit (GR_EDIT_PAGE (window->edit_page), recipe);
+        gtk_widget_grab_focus (window->edit_page);
 
         gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), gr_recipe_get_translated_name (recipe));
 
@@ -1342,6 +1346,7 @@ gr_window_show_image (GrWindow *window,
                 gr_image_page_set_images (GR_IMAGE_PAGE (window->image_page), images);
                 gr_image_page_show_image (GR_IMAGE_PAGE (window->image_page), index);
                 gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "image");
+                gtk_widget_grab_focus (window->image_page);
                 gr_window_set_fullscreen (window, TRUE);
         }
         else {

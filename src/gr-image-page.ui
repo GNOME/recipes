@@ -96,6 +96,9 @@
                 <property name="visible">1</property>
                 <property name="above-child">1</property>
                 <property name="can-focus">1</property>
+                <property name="events">GDK_KEY_PRESS_MASK|GDK_POINTER_MOTION_MASK|GDK_BUTTON_PRESS_MASK</property>
+                <signal name="motion-notify-event" handler="motion_notify"/>
+                <signal name="key-press-event" handler="key_press_event"/>
                 <child>
                   <object class="GtkImage" id="image">
                     <property name="visible">1</property>

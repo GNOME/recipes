@@ -1459,10 +1459,18 @@ gr_edit_page_get_property (GObject    *object,
         }
 }
 
-static
-void set_unsaved (GrEditPage *page)
+static void
+set_unsaved (GrEditPage *page)
 {
         g_object_set (G_OBJECT (page),"unsaved", TRUE, NULL);
+}
+
+static void
+gr_edit_page_grab_focus (GtkWidget *widget)
+{
+        GrEditPage *self = GR_EDIT_PAGE (widget);
+
+        gtk_widget_grab_focus (self->name_entry);
 }
 
 static void
@@ -1475,6 +1483,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         object_class->set_property = gr_edit_page_set_property;
         object_class->get_property = gr_edit_page_get_property;
 
+        widget_class->grab_focus = gr_edit_page_grab_focus;
 
         props [PROP_UNSAVED] = g_param_spec_boolean ("unsaved",
                                                       NULL, NULL,
@@ -1900,8 +1909,6 @@ gr_edit_page_clear (GrEditPage *page)
 
         store = gr_recipe_store_get ();
 
-        gtk_widget_grab_focus (page->name_entry);
-
         gtk_label_set_label (GTK_LABEL (page->name_label), _("Name Your Recipe"));
         gtk_entry_set_text (GTK_ENTRY (page->name_entry), "");
         set_combo_value (GTK_COMBO_BOX (page->cuisine_combo), "");
@@ -2103,8 +2110,6 @@ gr_edit_page_edit (GrEditPage *page,
         gr_image_viewer_set_images (GR_IMAGE_VIEWER (page->images), images, index);
 
         update_author_label (page, chef);
-
-        gtk_widget_grab_focus (page->name_entry);
 
         if (page->index_handler_id) {
                 g_signal_handler_disconnect (page->recipe, page->index_handler_id);
