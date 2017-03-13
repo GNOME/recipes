@@ -410,37 +410,6 @@ gr_window_timer_expired (GrWindow *window,
 }
 
 static gboolean
-window_keypress_handler (GtkWidget *widget,
-                         GdkEvent  *event,
-                         gpointer   data)
-{
-        GrWindow *window = GR_WINDOW (widget);
-//        GdkEventKey *e = (GdkEventKey *) event;
-        const char *visible;
-
-        visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
-
-#if 0
-        if (strcmp (visible, "image") == 0) {
-                if (e->keyval == GDK_KEY_Escape) {
-                        gr_window_show_image (window, NULL, -1);
-                        return GDK_EVENT_STOP;
-                }
-        }
-#endif
-
-        if (strcmp (visible, "cooking") == 0)
-                return gr_cooking_page_handle_event (GR_COOKING_PAGE (window->cooking_page), event);
-
-        if (strcmp (visible, "recipes") != 0 &&
-            strcmp (visible, "cuisines") != 0 &&
-            strcmp (visible, "search") != 0)
-                return GDK_EVENT_PROPAGATE;
-
-        return gr_query_editor_handle_event (GR_QUERY_EDITOR (window->search_bar), event);
-}
-
-static gboolean
 window_keypress_handler_before (GtkWidget *widget,
                                 GdkEvent  *event,
                                 gpointer   data)
@@ -452,6 +421,24 @@ window_keypress_handler_before (GtkWidget *widget,
 
         if (strcmp (visible, "cooking") == 0)
                 return gr_cooking_page_handle_event (GR_COOKING_PAGE (window->cooking_page), event);
+
+        return GDK_EVENT_PROPAGATE;
+}
+
+static gboolean
+window_keypress_handler_after (GtkWidget *widget,
+                               GdkEvent  *event,
+                               gpointer   data)
+{
+        GrWindow *window = GR_WINDOW (widget);
+        const char *visible;
+
+        visible = gtk_stack_get_visible_child_name (GTK_STACK (window->main_stack));
+
+        if (strcmp (visible, "recipes") == 0 ||
+            strcmp (visible, "cuisines") == 0 ||
+            strcmp (visible, "search") == 0)
+                return gr_query_editor_handle_event (GR_QUERY_EDITOR (window->search_bar), event);
 
         return GDK_EVENT_PROPAGATE;
 }
@@ -853,8 +840,8 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, search_changed);
         gtk_widget_class_bind_template_callback (widget_class, stop_search);
         gtk_widget_class_bind_template_callback (widget_class, search_mode_changed);
-        gtk_widget_class_bind_template_callback (widget_class, window_keypress_handler);
         gtk_widget_class_bind_template_callback (widget_class, window_keypress_handler_before);
+        gtk_widget_class_bind_template_callback (widget_class, window_keypress_handler_after);
         gtk_widget_class_bind_template_callback (widget_class, window_buttonpress_handler);
         gtk_widget_class_bind_template_callback (widget_class, window_mapped_handler);
         gtk_widget_class_bind_template_callback (widget_class, window_delete_handler);
