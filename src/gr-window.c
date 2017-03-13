@@ -93,6 +93,7 @@ struct _GrWindow
 
         GtkWidget *chef_dialog;
         GtkWidget *about_dialog;
+        GtkWidget *news_dialog;
 
         GList *dialogs;
 
@@ -1392,6 +1393,18 @@ gr_window_show_about_dialog (GrWindow *window)
         gr_window_present_dialog (window, GTK_WINDOW (window->about_dialog));
 }
 
+static gboolean
+news_dialog_closed (GtkWidget *widget,
+                    GdkEvent  *event,
+                    gpointer   data)
+{
+        GrWindow *window = data;
+
+        window->news_dialog = NULL;
+
+        return FALSE;
+}
+
 void
 gr_window_show_news (GrWindow *window)
 {
@@ -1401,6 +1414,9 @@ gr_window_show_news (GrWindow *window)
         GtkWidget *box;
         int i;
 
+        if (window->news_dialog)
+                return;
+
         news = get_release_info (PACKAGE_VERSION, "0.0.0");
         if (news->len == 0)
                 return;
@@ -1408,6 +1424,8 @@ gr_window_show_news (GrWindow *window)
         builder = gtk_builder_new_from_resource ("/org/gnome/Recipes/recipe-whats-new-dialog.ui");
         dialog = GTK_WINDOW (gtk_builder_get_object (builder, "dialog"));
         gtk_window_set_transient_for (dialog, GTK_WINDOW (window));
+
+        window->news_dialog = (GtkWidget *)dialog;
 
         gtk_widget_realize (GTK_WIDGET (dialog));
         gdk_window_set_functions (gtk_widget_get_window (GTK_WIDGET (dialog)),
@@ -1461,6 +1479,7 @@ gr_window_show_news (GrWindow *window)
         }
 
         gtk_widget_show_all (box);
+        g_signal_connect (dialog, "delete-event", G_CALLBACK (news_dialog_closed), window);
         gr_window_present_dialog (GR_WINDOW (window), dialog);
 }
 
