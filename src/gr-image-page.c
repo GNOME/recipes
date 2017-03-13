@@ -344,10 +344,3 @@ gr_image_page_show_image (GrImagePage *page,
                 set_current_image (page);
         }
 }
-
-gboolean
-gr_image_page_handle_event (GrImagePage *page,
-                            GdkEvent    *event)
-{
-        return FALSE;
-}
