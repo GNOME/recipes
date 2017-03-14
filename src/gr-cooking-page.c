@@ -254,12 +254,9 @@ set_cooking (GrCookingPage *page,
                 gr_window_set_fullscreen (GR_WINDOW (window), TRUE);
         }
         else {
-                GList *children;
                 gboolean has_timers;
 
-                children = gtk_container_get_children (GTK_CONTAINER (page->mini_timer_box));
-                has_timers = children != NULL;
-                g_list_free (children);
+                has_timers = gr_cooking_view_has_active_timers (GR_COOKING_VIEW (page->cooking_view));
 
                 if (has_timers)
                         confirm_close (page);
