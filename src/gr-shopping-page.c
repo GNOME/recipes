@@ -870,12 +870,6 @@ gr_shopping_page_populate (GrShoppingPage *self)
         gr_recipe_search_set_query (self->search, "is:shopping");
 }
 
-GList *
-gr_shopping_page_get_recipes (GrShoppingPage *self)
-{
-        return get_recipes (self);
-}
-
 static void
 recipe_removed (GrShoppingPage *page,
                 GrRecipe       *recipe)

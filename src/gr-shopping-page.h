@@ -34,6 +34,4 @@ GtkWidget      *gr_shopping_page_new      (void);
 
 void            gr_shopping_page_populate (GrShoppingPage *self);
 
-GList          *gr_shopping_page_get_recipes (GrShoppingPage *self);
-
 G_END_DECLS
