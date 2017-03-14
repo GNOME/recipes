@@ -945,6 +945,15 @@ clear_tags (GrQueryEditor *editor)
         }
         g_list_free (children);
 
+        children = gtk_container_get_children (GTK_CONTAINER (editor->spice_list));
+        for (l = children; l; l = l->next) {
+                GtkWidget *row = l->data;
+                if (!GR_IS_SPICE_ROW (row))
+                        continue;
+                g_object_set (row, "include", FALSE, NULL);
+        }
+        g_list_free (children);
+
         children = gtk_container_get_children (GTK_CONTAINER (editor->diet_list));
         for (l = children; l; l = l->next) {
                 GtkWidget *row = l->data;
