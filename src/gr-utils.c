@@ -433,31 +433,58 @@ in_flatpak_sandbox (void)
 }
 
 gboolean
-portals_available (void)
+portal_available (GtkWindow  *window,
+                  const char *interface)
 {
-        static GDBusProxy *portal = NULL;
+        g_autoptr(GDBusConnection) bus = NULL;
+        g_autoptr(GDBusProxy) proxy = NULL;
         g_autofree char *owner = NULL;
+        g_autoptr(GVariant) version = NULL;
+        const char *message1;
+        const char *message2;
+        GtkWidget *dialog;
 
-        if (portal == NULL) {
-                g_autoptr(GDBusConnection) bus = NULL;
-
-                bus = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL);
-		if (!bus)
-			return FALSE;
-
-                portal = g_dbus_proxy_new_sync (bus,
-                                                0,
-                                                NULL,
-                                                "org.freedesktop.portal.Desktop",
-                                                "/org/freedesktop/portal/desktop",
-                                                "org.freedesktop.portal.FileChooser",
-                                                NULL,
-                                                NULL);
+        bus = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL);
+        if (!bus) {
+                message1 = _("Could not connect to the session bus from inside the Flatpak sandbox.");
+                message2 = _("Certain functionality will not be available.");
+                goto dialog;
         }
 
-        owner = g_dbus_proxy_get_name_owner (portal);
+        proxy = g_dbus_proxy_new_sync (bus,
+                                       0,
+                                       NULL,
+                                       "org.freedesktop.portal.Desktop",
+                                       "/org/freedesktop/portal/desktop",
+                                       interface,
+                                       NULL,
+                                       NULL);
 
-        return owner != NULL;
+        owner = g_dbus_proxy_get_name_owner (proxy);
+        version = g_dbus_proxy_get_cached_property (proxy, "version");
+
+        if (owner != NULL && version != NULL)
+                return TRUE;
+
+        if (strcmp (interface, "org.freedesktop.portal.FileChooser") == 0)
+                message1 = _("Missing the desktop portal needed to open files from inside a Flatpak sandbox.");
+        else if (strcmp (interface, "org.freedestkop.portal.Printing") == 0)
+                message1 = _("Missing the desktop portal needed to print from inside a Flatpak sandbox.");
+        else if (strcmp (interface, "org.freedesktop.portal.OpenURI") == 0)
+                message1 = _("Missing the desktop portal needed to open URLs from inside a Flatpak sandbox.");
+
+        message2 = _("Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system");
+
+dialog:
+        dialog = gtk_message_dialog_new (window,
+                                         GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,
+                                         GTK_MESSAGE_ERROR,
+                                         GTK_BUTTONS_CLOSE,
+                                         "%s %s", message1, message2);
+        g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
+        gtk_widget_show (dialog);
+
+        return FALSE;
 }
 
 void
