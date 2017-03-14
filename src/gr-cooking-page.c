@@ -160,9 +160,14 @@ on_confirm_revealed (GrCookingPage *page)
 }
 
 static void
-hide_confirm (GrCookingPage *page)
+hide_confirm (GrCookingPage *page,
+              gboolean       fade)
 {
+        if (!fade)
+                gtk_revealer_set_transition_type (GTK_REVEALER (page->confirm_revealer), GTK_REVEALER_TRANSITION_TYPE_NONE);
         gtk_revealer_set_reveal_child (GTK_REVEALER (page->confirm_revealer), FALSE);
+        if (!fade)
+                gtk_revealer_set_transition_type (GTK_REVEALER (page->confirm_revealer), GTK_REVEALER_TRANSITION_TYPE_CROSSFADE);
 }
 
 static void
@@ -201,7 +206,7 @@ confirm_close (GrCookingPage *page)
 static void
 keep_cooking (GrCookingPage *page)
 {
-        hide_confirm (page);
+        hide_confirm (page, TRUE);
 }
 
 static void
@@ -229,6 +234,7 @@ set_cooking (GrCookingPage *page,
 
         if (cooking) {
                 hide_overlay (page, FALSE);
+                hide_confirm (page, FALSE);
                 count = get_cooking_overlay_count ();
                 set_cooking_overlay_count (count + 1);
                 if (count < 3)
