@@ -97,15 +97,18 @@ void            gr_recipe_store_remove_from_shopping (GrRecipeStore  *self,
 void            gr_recipe_store_clear_shopping_list  (GrRecipeStore *self);
 gboolean        gr_recipe_store_is_in_shopping       (GrRecipeStore  *self,
                                                       GrRecipe       *recipe);
-int             gr_recipe_store_get_shopping_serves  (GrRecipeStore  *store,
+GList          *gr_recipe_store_get_shopping_list    (GrRecipeStore  *self);
+int             gr_recipe_store_get_shopping_serves  (GrRecipeStore  *self,
                                                       GrRecipe       *recipe);
-gboolean        gr_recipe_store_not_shopping_ingredient (GrRecipeStore *self,
-                                                        const char    *ingredient);
+gboolean        gr_recipe_store_not_shopping_ingredient    (GrRecipeStore *self,
+                                                            const char    *ingredient);
 void            gr_recipe_store_remove_shopping_ingredient (GrRecipeStore *self,
-                                                      const char    *ingredient);
-void            gr_recipe_store_readd_shopping_ingredient (GrRecipeStore *self,
-                                                      const char    *ingredient);
+                                                            const char    *ingredient);
+void            gr_recipe_store_readd_shopping_ingredient  (GrRecipeStore *self,
+                                                            const char    *ingredient);
+const char    **gr_recipe_store_get_removed_shopping_ingredients (GrRecipeStore *self);
 GDateTime      *gr_recipe_store_last_shopping_change (GrRecipeStore *self);
+
 gboolean        gr_recipe_store_has_diet            (GrRecipeStore  *self,
                                                      GrDiets         diet);
 gboolean        gr_recipe_store_has_chef            (GrRecipeStore  *self,

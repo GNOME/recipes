@@ -1567,6 +1567,34 @@ gr_recipe_store_is_in_shopping (GrRecipeStore *self,
         return g_variant_dict_contains (self->shopping_list, id);
 }
 
+GList *
+gr_recipe_store_get_shopping_list (GrRecipeStore *self)
+{
+        g_autoptr(GVariant) dict = NULL;
+        char *key;
+        GVariant *value;
+        GList *list = NULL;
+        GVariantIter iter;
+
+        dict = g_variant_ref_sink (g_variant_dict_end (self->shopping_list));
+        g_variant_iter_init (&iter, dict);
+        while (g_variant_iter_next (&iter, "{sv}", &key, &value)) {
+                GrRecipe *recipe;
+
+                recipe = g_hash_table_lookup (self->recipes, key);
+
+                list = g_list_append (list, g_object_ref (recipe));
+
+                g_variant_unref (value);
+                g_free (key);
+        }
+
+        g_variant_dict_unref (self->shopping_list);
+        self->shopping_list = g_variant_dict_new (dict);
+
+        return list;
+}
+
 int
 gr_recipe_store_get_shopping_serves (GrRecipeStore *self,
                                      GrRecipe      *recipe)
@@ -1612,6 +1640,12 @@ gr_recipe_store_readd_shopping_ingredient (GrRecipeStore *self,
         self->shopping_change = g_date_time_new_now_utc ();
 
         save_shopping (self);
+}
+
+const char **
+gr_recipe_store_get_removed_shopping_ingredients (GrRecipeStore *self)
+{
+        return (const char **)self->shopping_removed;
 }
 
 GDateTime *
