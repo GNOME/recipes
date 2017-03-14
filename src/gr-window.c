@@ -74,18 +74,24 @@ struct _GrWindow
         GtkWidget *cuisine_page;
         GtkWidget *image_page;
         GtkWidget *cooking_page;
+
         GtkWidget *undo_revealer;
         GtkWidget *undo_label;
         GrRecipe  *undo_recipe;
         guint undo_timeout_id;
+
         GtkWidget *remind_revealer;
         GtkWidget *remind_label;
         GrRecipe  *remind_recipe;
         guint remind_timeout_id;
+
         GtkWidget *shopping_added_revealer;
         guint shopping_timeout_id;
+
         GtkWidget *shopping_done_revealer;
         guint shopping_done_timeout_id;
+        GList *shopping_done_list;
+        char **removed_ingredients;
 
         GObject *file_chooser;
         GrRecipeImporter *importer;
@@ -544,6 +550,20 @@ gr_window_new (GrApp *app)
         return g_object_new (GR_TYPE_WINDOW, "application", app, NULL);
 }
 
+typedef struct {
+        GrRecipe *recipe;
+        int serves;
+} ShoppingListEntry;
+
+static void
+shopping_list_entry_free (gpointer data)
+{
+        ShoppingListEntry *entry = data;
+
+        g_object_unref (entry->recipe);
+        g_free (entry);
+}
+
 static void
 gr_window_finalize (GObject *object)
 {
@@ -567,6 +587,14 @@ gr_window_finalize (GObject *object)
         if (self->shopping_timeout_id) {
                 g_source_remove (self->shopping_timeout_id);
                 self->shopping_timeout_id = 0;
+        }
+
+        g_list_free_full (self->shopping_done_list, shopping_list_entry_free);
+        g_strfreev (self->removed_ingredients);
+
+        if (self->shopping_done_timeout_id) {
+                g_source_remove (self->shopping_done_timeout_id);
+                self->shopping_done_timeout_id = 0;
         }
 
         g_list_free (self->dialogs);
@@ -735,6 +763,11 @@ close_shopping_done (GrWindow *window)
                 window->shopping_done_timeout_id = 0;
         }
 
+        g_list_free_full (window->shopping_done_list, shopping_list_entry_free);
+        window->shopping_done_list = NULL;
+        g_strfreev (window->removed_ingredients);
+        window->removed_ingredients = NULL;
+
         gtk_revealer_set_reveal_child (GTK_REVEALER (window->shopping_done_revealer), FALSE);
 }
 
@@ -746,6 +779,27 @@ shopping_done_timeout (gpointer data)
         close_shopping_done (window);
 
         return G_SOURCE_REMOVE;
+}
+
+static void
+back_to_shopping (GrWindow *window)
+{
+        GrRecipeStore *store;
+        GList *l;
+        int i;
+
+        store = gr_recipe_store_get ();
+
+        for (l = window->shopping_done_list; l; l = l->next) {
+                ShoppingListEntry *entry = l->data;
+                gr_recipe_store_add_to_shopping (store, entry->recipe, entry->serves);
+        }
+        for (i = 0; window->removed_ingredients && window->removed_ingredients[i]; i++) {
+                gr_recipe_store_remove_shopping_ingredient (store, window->removed_ingredients[i]);
+        }
+
+        close_shopping_done (window);
+        gr_window_show_shopping (window);
 }
 
 static void
@@ -762,10 +816,14 @@ static void gr_window_show_transient_list (GrWindow   *window,
 static void
 done_shopping (GrWindow *window)
 {
-        GList *recipes;
+        GList *recipes, *l;
         GrRecipeStore *store;
+        const char **removed_ingredients;
 
-        recipes = gr_shopping_page_get_recipes (GR_SHOPPING_PAGE (window->shopping_page));
+        store = gr_recipe_store_get ();
+
+        recipes = gr_recipe_store_get_shopping_list (store);
+        removed_ingredients = gr_recipe_store_get_removed_shopping_ingredients (store);
 
         if (recipes->next == NULL)
                 gr_window_show_recipe (window, recipes->data);
@@ -774,9 +832,23 @@ done_shopping (GrWindow *window)
 
         gr_window_offer_cooking (window);
 
+        g_list_free_full (window->shopping_done_list, shopping_list_entry_free);
+        window->shopping_done_list = NULL;
+
+        for (l = recipes; l; l = l->next) {
+                GrRecipe *recipe = l->data;
+                ShoppingListEntry *entry;
+
+                entry = g_new (ShoppingListEntry, 1);
+                entry->recipe = g_object_ref (recipe);
+                entry->serves = gr_recipe_store_get_shopping_serves (store, recipe);
+                window->shopping_done_list = g_list_append (window->shopping_done_list, entry);
+        }
         g_list_free_full (recipes, g_object_unref);
 
-        store = gr_recipe_store_get ();
+        g_strfreev (window->removed_ingredients);
+        window->removed_ingredients = g_strdupv ((char **)removed_ingredients);
+
         gr_recipe_store_clear_shopping_list (store);
 }
 
@@ -855,6 +927,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, shopping_title_changed);
         gtk_widget_class_bind_template_callback (widget_class, done_shopping);
         gtk_widget_class_bind_template_callback (widget_class, close_shopping_done);
+        gtk_widget_class_bind_template_callback (widget_class, back_to_shopping);
         gtk_widget_class_bind_template_callback (widget_class, make_save_sensitive);
 }
 
