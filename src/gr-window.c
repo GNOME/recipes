@@ -1122,6 +1122,10 @@ gr_window_load_recipe (GrWindow *window,
         if (window->file_chooser)
                 return;
 
+        if (//in_flatpak_sandbox () &&
+            !portal_available (GTK_WINDOW (window), "org.freedesktop.portal.FileChooser"))
+                return;
+
         window->file_chooser = (GObject *)gtk_file_chooser_native_new (_("Select a recipe file"),
                                                                        GTK_WINDOW (window),
                                                                        GTK_FILE_CHOOSER_ACTION_OPEN,
@@ -1560,9 +1564,10 @@ void
 gr_window_show_report_issue (GrWindow *window)
 {
         const char *uri = "https://bugzilla.gnome.org/enter_bug.cgi?product=recipes";
-        g_autoptr(GError) error = NULL;
 
-        gtk_show_uri_on_window (GTK_WINDOW (window), uri, GDK_CURRENT_TIME, &error);
-        if (error)
-                g_warning ("Unable to show '%s': %s", uri, error->message);
+        if (in_flatpak_sandbox () &&
+            !portal_available (GTK_WINDOW (window), "org.freedesktop.portal.OpenURI"))
+                return;
+
+        gtk_show_uri_on_window (GTK_WINDOW (window), uri, GDK_CURRENT_TIME, NULL);
 }

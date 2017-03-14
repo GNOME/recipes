@@ -319,18 +319,9 @@ gr_shopping_list_printer_print (GrShoppingListPrinter *printer,
 {
         GtkPrintOperation *operation;
 
-        if (in_flatpak_sandbox () && !portals_available ()) {
-                GtkWidget *dialog;
-
-                dialog = gtk_message_dialog_new (GTK_WINDOW (printer->window),
-                                                 GTK_DIALOG_MODAL|GTK_DIALOG_DESTROY_WITH_PARENT,
-                                                 GTK_MESSAGE_ERROR,
-                                                 GTK_BUTTONS_OK,
-                                                 _("Missing the desktop portals needed to print from inside a flatpak sandbox. Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system."));
-                g_signal_connect (dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
-                gtk_widget_show (dialog);
+        if (in_flatpak_sandbox () &&
+            !portal_available (GTK_WINDOW (printer->window), "org.freedesktop.portal.Printing"))
                 return;
-        }
 
         printer->recipes = g_list_copy_deep (recipes, (GCopyFunc)g_object_ref, NULL);
         printer->items = g_list_copy_deep (items, (GCopyFunc)shopping_item_copy, NULL);
