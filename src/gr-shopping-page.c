@@ -863,6 +863,8 @@ gr_shopping_page_new (void)
 void
 gr_shopping_page_populate (GrShoppingPage *self)
 {
+        container_remove_all (GTK_CONTAINER (self->ingredients_list));
+        container_remove_all (GTK_CONTAINER (self->removed_list));
         container_remove_all (GTK_CONTAINER (self->recipe_list));
         gr_recipe_search_stop (self->search);
         gr_recipe_search_set_query (self->search, "is:shopping");
