@@ -286,19 +286,7 @@ load_application_css (GApplication *application)
 {
         GrApp *app = GR_APP (application);
         gboolean dark;
-        const char *css_file[2] = {
-                "recipes-light.css",
-                "recipes-dark.css"
-        };
-        const char *src_file[2] = {
-                "src/recipes-light.css",
-                "src/recipes-dark.css"
-        };
-        const char *resource[2] = {
-                "resource:///org/gnome/Recipes/recipes-light.css",
-                "resource:///org/gnome/Recipes/recipes-dark.css"
-        };
-        const char *path;
+        g_autofree char *path = NULL;
         g_autofree char *css = NULL;
 
         if (!app->css_provider) {
@@ -311,14 +299,7 @@ load_application_css (GApplication *application)
                       "gtk-application-prefer-dark-theme", &dark,
                       NULL);
 
-        /* Let designers test css tweaks in the build tree without rebuilding */
-        if (g_file_test (css_file[dark], G_FILE_TEST_EXISTS))
-                path = css_file[dark];
-        else if (g_file_test (src_file[dark], G_FILE_TEST_EXISTS))
-                path = src_file[dark];
-        else
-                path = resource[dark];
-
+        path = g_strdup_printf ("resource:///org/gnome/Recipes/recipes-%s.css", dark ? "dark" : "light");
         g_info ("Loading application CSS from %s", path);
 
         css = gr_cuisine_get_css (path);
