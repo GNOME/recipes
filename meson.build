@@ -106,5 +106,6 @@ subdir('data')
 subdir('po')
 subdir('po-data')
 subdir('tests')
+subdir('help')
 
 meson.add_install_script('meson_post_install.py')
