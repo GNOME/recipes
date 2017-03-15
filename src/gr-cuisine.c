@@ -164,18 +164,8 @@ gr_cuisine_get_css (const char *import_url)
         GString *s = NULL;
         char *p, *q;
 
-        if (g_file_test ("cuisine.css", G_FILE_TEST_EXISTS)) {
-                path = "cuisine.css";
-                file = g_file_new_for_path (path);
-        }
-        else if (g_file_test ("src/cuisine.css", G_FILE_TEST_EXISTS)) {
-                path = "src/cuisine.css";
-                file = g_file_new_for_path (path);
-        }
-        else {
-                path = "resource:///org/gnome/Recipes/cuisine.css";
-                file = g_file_new_for_uri (path);
-        }
+        path = "resource:///org/gnome/Recipes/cuisine.css";
+        file = g_file_new_for_uri (path);
 
         g_file_load_contents (file, NULL, &css, NULL, NULL, NULL);
 
@@ -184,7 +174,7 @@ gr_cuisine_get_css (const char *import_url)
         g_string_append_printf (s, "@import url(\"%s\");\n", import_url);
 
         p = css;
-        while (1) {
+        while (TRUE) {
                 q = strstr (p, "@pkgdatadir@");
                 if (!q) {
                         g_string_append (s, p);
