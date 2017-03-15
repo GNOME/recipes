@@ -1122,7 +1122,7 @@ gr_window_load_recipe (GrWindow *window,
         if (window->file_chooser)
                 return;
 
-        if (//in_flatpak_sandbox () &&
+        if (in_flatpak_sandbox () &&
             !portal_available (GTK_WINDOW (window), "org.freedesktop.portal.FileChooser"))
                 return;
 
