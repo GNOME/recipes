@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-14 12:50+0000\n"
-"PO-Revision-Date: 2017-03-14 14:14+0100\n"
+"POT-Creation-Date: 2017-03-15 01:28+0000\n"
+"PO-Revision-Date: 2017-03-15 15:35+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -228,11 +228,11 @@ msgstr "Opis:"
 msgid "Picture:"
 msgstr "Zdjęcie:"
 
-#: src/gr-chef-dialog.ui:5
+#: src/gr-chef-dialog.ui:5 src/gr-window.c:1099
 msgid "Chef Information"
 msgstr "Informacje o kucharzu"
 
-#: src/gr-chef-dialog.ui:11 src/gr-window.c:1193
+#: src/gr-chef-dialog.ui:11 src/gr-window.c:1197
 msgid "_Cancel"
 msgstr "_Anuluj"
 
@@ -809,8 +809,8 @@ msgid "Help"
 msgstr "Pomoc"
 
 #: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:153
-#: src/gr-image-viewer.c:625 src/gr-recipe-exporter.c:169
-#: src/gr-shopping-page.c:731 src/gr-window.c:1129
+#: src/gr-image-viewer.c:616 src/gr-recipe-exporter.c:169
+#: src/gr-shopping-page.c:731 src/gr-window.c:1133
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -953,15 +953,15 @@ msgstr "Wyświetla wersję i kończy działanie"
 msgid "Turn on verbose logging"
 msgstr "Włącza więcej komunikatów dziennika"
 
-#: src/gr-chef-dialog.c:149 src/gr-image-viewer.c:621
+#: src/gr-chef-dialog.c:149 src/gr-image-viewer.c:612
 msgid "Select an Image"
 msgstr "Wybór obrazu"
 
-#: src/gr-chef-dialog.c:152 src/gr-image-viewer.c:624 src/gr-window.c:1128
+#: src/gr-chef-dialog.c:152 src/gr-image-viewer.c:615 src/gr-window.c:1132
 msgid "Open"
 msgstr "Otwórz"
 
-#: src/gr-chef-dialog.c:157 src/gr-image-viewer.c:629
+#: src/gr-chef-dialog.c:157 src/gr-image-viewer.c:620
 msgid "Image files"
 msgstr "Pliki obrazów"
 
@@ -1465,17 +1465,6 @@ msgstr "Nazwa"
 msgid "You need to provide a name for the recipe"
 msgstr "Należy podać nazwę przepisu"
 
-#: src/gr-image-viewer.c:615
-#, c-format
-msgid ""
-"Missing the desktop portals needed to open files from inside a flatpak "
-"sandbox. Please install xdg-desktop-portal and xdg-desktop-portal-gtk on "
-"your system."
-msgstr ""
-"Brak portali wymaganych do otwierania plików z piaskownicy Flatpak. Proszę "
-"zainstalować na komputerze pakiety xdg-desktop-portal i xdg-desktop-portal-"
-"gtk."
-
 #: src/gr-list-page.c:235
 msgid "Gluten-free Recipes"
 msgstr "Przepisy bez glutenu"
@@ -1734,16 +1723,6 @@ msgstr "Błąd podczas drukowania pliku:"
 msgid "No details"
 msgstr "Brak informacji"
 
-#: src/gr-recipe-printer.c:441 src/gr-shopping-list-printer.c:329
-#, c-format
-msgid ""
-"Missing the desktop portals needed to print from inside a flatpak sandbox. "
-"Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system."
-msgstr ""
-"Brak portali wymaganych do drukowania z piaskownicy Flatpak. Proszę "
-"zainstalować na komputerze pakiety xdg-desktop-portal i xdg-desktop-portal-"
-"gtk."
-
 #: src/gr-recipe-small-tile.c:100 src/gr-recipe-tile.c:81
 #, c-format
 msgid "by %s"
@@ -1753,7 +1732,7 @@ msgstr "Autor: %s"
 msgid "Anonymous"
 msgstr "Anonim"
 
-#: src/gr-recipes-page.c:231 src/gr-window.c:1350
+#: src/gr-recipes-page.c:231 src/gr-window.c:1354
 msgid "My Recipes"
 msgstr "Moje przepisy"
 
@@ -1761,11 +1740,11 @@ msgstr "Moje przepisy"
 msgid "Favorites"
 msgstr "Ulubione"
 
-#: src/gr-recipes-page.c:241 src/gr-window.c:1264
+#: src/gr-recipes-page.c:241 src/gr-window.c:1268
 msgid "All Recipes"
 msgstr "Wszystkie przepisy"
 
-#: src/gr-recipes-page.c:246 src/gr-window.c:1280
+#: src/gr-recipes-page.c:246 src/gr-window.c:1284
 msgid "New Recipes"
 msgstr "Nowe przepisy"
 
@@ -2142,6 +2121,38 @@ msgstr[2] "%d godzin temu"
 msgid "some time ago"
 msgstr "jakiś czas temu"
 
+#: src/gr-utils.c:449
+msgid "Could not connect to the session bus from inside the Flatpak sandbox."
+msgstr "Nie można połączyć z magistralą sesji z piaskownicy Flatpak."
+
+#: src/gr-utils.c:450
+msgid "Certain functionality will not be available."
+msgstr "Część funkcji będzie niedostępna."
+
+#: src/gr-utils.c:470
+msgid ""
+"Missing the desktop portal needed to open files from inside a Flatpak "
+"sandbox."
+msgstr "Brak portali wymaganych do otwierania plików z piaskownicy Flatpak."
+
+#: src/gr-utils.c:472
+msgid ""
+"Missing the desktop portal needed to print from inside a Flatpak sandbox."
+msgstr "Brak portali wymaganych do drukowania z piaskownicy Flatpak."
+
+#: src/gr-utils.c:474
+msgid ""
+"Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
+msgstr ""
+"Brak portali wymaganych do otwierania adresów URL z piaskownicy Flatpak."
+
+#: src/gr-utils.c:476
+msgid ""
+"Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
+msgstr ""
+"Proszę zainstalować na komputerze pakiety xdg-desktop-portal i xdg-desktop-"
+"portal-gtk"
+
 #: src/gr-window.c:230
 msgid "Add a New Recipe"
 msgstr "Dodanie nowego przepisu"
@@ -2181,48 +2192,44 @@ msgstr "Można gotować!"
 msgid "Imported Recipes"
 msgstr "Zaimportowane przepisy"
 
-#: src/gr-window.c:1099
-msgid "My Chef Information"
-msgstr "Informacje o kucharzu"
-
-#: src/gr-window.c:1125
+#: src/gr-window.c:1129
 msgid "Select a recipe file"
 msgstr "Wybór pliku przepisu"
 
-#: src/gr-window.c:1151
+#: src/gr-window.c:1155
 #, c-format
 msgid "Recipes have been exported to “%s”"
 msgstr "Wyeksportowano przepisy do pliku „%s”"
 
-#: src/gr-window.c:1189
+#: src/gr-window.c:1193
 msgid "Select a file"
 msgstr "Wybór pliku"
 
-#: src/gr-window.c:1192
+#: src/gr-window.c:1196
 msgid "_Export"
 msgstr "Wy_eksportuj"
 
-#: src/gr-window.c:1231
+#: src/gr-window.c:1235
 #, c-format
 msgid "Chefs: %s"
 msgstr "Kucharze: %s"
 
-#: src/gr-window.c:1248
+#: src/gr-window.c:1252
 msgid "Favorite Recipes"
 msgstr "Ulubione przepisy"
 
-#: src/gr-window.c:1330
+#: src/gr-window.c:1334
 msgid "Buy Ingredients"
 msgstr "Kup składniki"
 
 #. TRANSLATORS: %s gets replaced by a version number
-#: src/gr-window.c:1523
+#: src/gr-window.c:1527
 #, c-format
 msgid "Recipes %s"
 msgstr "Przepisy %s"
 
 #. TRANSLATORS: %s gets replaced by a date
-#: src/gr-window.c:1538
+#: src/gr-window.c:1542
 #, c-format
 msgid "Released: %s"
 msgstr "Data wydania: %s"
