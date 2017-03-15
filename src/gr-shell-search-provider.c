@@ -311,6 +311,7 @@ search_provider_dispose (GObject *obj)
 static void
 gr_shell_search_provider_init (GrShellSearchProvider *self)
 {
+        self->store = g_object_ref (gr_recipe_store_get ());
         self->metas_cache = g_hash_table_new_full (g_str_hash, g_str_equal,
                                                    g_free, (GDestroyNotify) g_variant_unref);
 
@@ -340,11 +341,4 @@ GrShellSearchProvider *
 gr_shell_search_provider_new (void)
 {
         return g_object_new (gr_shell_search_provider_get_type (), NULL);
-}
-
-void
-gr_shell_search_provider_setup (GrShellSearchProvider *provider,
-                                GrRecipeStore         *store)
-{
-        provider->store = g_object_ref (store);
 }

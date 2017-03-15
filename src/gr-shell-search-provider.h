@@ -30,12 +30,11 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrShellSearchProvider, gr_shell_search_provider, GR, SHELL_SEARCH_PROVIDER, GObject)
 
+GrShellSearchProvider   *gr_shell_search_provider_new           (void);
+
 gboolean                 gr_shell_search_provider_register      (GrShellSearchProvider  *self,
                                                                  GDBusConnection        *connection,
                                                                  GError                **error);
 void                     gr_shell_search_provider_unregister    (GrShellSearchProvider  *self);
-GrShellSearchProvider   *gr_shell_search_provider_new           (void);
-void                     gr_shell_search_provider_setup         (GrShellSearchProvider  *self,
-                                                                 GrRecipeStore          *store);
 
 G_END_DECLS

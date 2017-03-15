@@ -406,15 +406,14 @@ gr_app_open (GApplication  *app,
 }
 
 static gboolean
-gr_app_dbus_register (GApplication    *application,
-                      GDBusConnection *connection,
-                      const gchar     *object_path,
-                      GError         **error)
+gr_app_dbus_register (GApplication     *application,
+                      GDBusConnection  *connection,
+                      const gchar      *object_path,
+                      GError          **error)
 {
         GrApp *app = GR_APP (application);
 
         app->search_provider = gr_shell_search_provider_new ();
-        gr_shell_search_provider_setup (app->search_provider, gr_recipe_store_get ());
 
         return gr_shell_search_provider_register (app->search_provider, connection, error);
 }
