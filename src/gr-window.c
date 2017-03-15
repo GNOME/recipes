@@ -1096,7 +1096,7 @@ present_my_chef_dialog (GrChef   *chef,
         GrWindow *window = data;
 
         window->chef_dialog = (GtkWidget *)gr_chef_dialog_new (chef, FALSE);
-        gtk_window_set_title (GTK_WINDOW (window->chef_dialog), _("My Chef Information"));
+        gtk_window_set_title (GTK_WINDOW (window->chef_dialog), _("Chef Information"));
         g_signal_connect (window->chef_dialog, "done", G_CALLBACK (chef_done), window);
         gr_window_present_dialog (window, GTK_WINDOW (window->chef_dialog));
 }
