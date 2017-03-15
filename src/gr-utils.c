@@ -461,6 +461,8 @@ portal_available (GtkWindow  *window,
                 message1 = _("Missing the desktop portal needed to print from inside a Flatpak sandbox.");
         else if (strcmp (interface, "org.freedesktop.portal.OpenURI") == 0)
                 message1 = _("Missing the desktop portal needed to open URLs from inside a Flatpak sandbox.");
+        else
+                message1 = "";
 
         message2 = _("Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system");
 
