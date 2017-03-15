@@ -130,8 +130,7 @@ gnome_recipes_SOURCES = \
 	gr-utils.c		\
 	gr-window.h 		\
 	gr-window.c 		\
-	resources-ui.c		\
-	resources-images.c	\
+	resources.c		\
 	types.h			\
 	types.c			\
 	gr-shell-search-provider.h \
@@ -140,8 +139,7 @@ gnome_recipes_SOURCES = \
 	gr-shell-search-provider-dbus.c
 
 BUILT_SOURCES = \
-	resources-ui.c		\
-	resources-images.c	\
+	resources.c		\
 	ingredients.inc		\
 	no-ingredients.inc	\
 	segments.inc		\
@@ -151,8 +149,7 @@ BUILT_SOURCES = \
 	gr-shell-search-provider-dbus.c
 
 DISTCLEANFILES = \
-	resources-ui.c		\
-	resources-images.c	\
+	resources.c		\
 	ingredients.inc		\
 	no-ingredients.inc	\
 	segments.inc		\
@@ -170,17 +167,11 @@ ingredients.inc: $(top_srcdir)/data/ingredients.list
 no-ingredients.inc: $(top_srcdir)/data/ingredients.list
 	$(AM_V_GEN) $(SED) -e 's/^\(.*\)$$/	N_("no \1"),/' $^ > $@
 
-resource_ui_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/recipes-ui.gresource.xml)
+resource_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/recipes.gresource.xml)
 
-resources-ui.c: recipes-ui.gresource.xml $(resource_ui_files)
-	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $(srcdir)/recipes-ui.gresource.xml \
+resources.c: recipes.gresource.xml $(resource_files)
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $(srcdir)/recipes.gresource.xml \
                 --target=$@ --sourcedir=$(srcdir) --generate-source
-
-resource_image_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/recipes-images.gresource.xml)
-
-resources-images.c: recipes-images.gresource.xml $(resource_image_files)
-	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $(srcdir)/recipes-images.gresource.xml \
-		--target=$@ --sourcedir=$(srcdir) --generate-source
 
 types.h: types.h.template gr-diet.h
 	$(AM_V_GEN) ($(GLIB_MKENUMS) --template $^ ) > xgen-eh && \
@@ -203,8 +194,7 @@ EXTRA_DIST = \
 	shell-search-provider-dbus-interfaces.xml 	\
 	recipes-ui.gresource.xml 			\
 	recipes-images.gresource.xml 			\
-	$(resource_ui_files)				\
-	$(resource_image_files)				\
+	$(resource_files)				\
 	types.h.template				\
 	types.c.template
 

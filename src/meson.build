@@ -21,15 +21,10 @@ src += [custom_target('no-ingredients',
                       command : [list_to_c, '@INPUT@', '@OUTPUT@', 'no '])]
 
 # Resource compilation
-resources_ui = gnome.compile_resources('resources_ui',
-                                       'recipes-ui.gresource.xml',
-                                       c_name: '_recipes_ui',
-                                       source_dir: 'src')
-
-resources_images = gnome.compile_resources('resources_images',
-                                       'recipes-images.gresource.xml',
-                                       c_name: '_recipes_images',
-                                       source_dir: 'src')
+resources = gnome.compile_resources('resources',
+                                    'recipes.gresource.xml',
+                                    c_name: '_recipes',
+                                    source_dir: 'src')
 
 enums += gnome.mkenums('types',
                        sources: 'gr-diet.h',
@@ -101,12 +96,10 @@ src += ['main.c',
        'gr-window.c',
   enums,
   search_provider,
-  resources_ui,
-  resources_images]
+  resources]
 
 executable('gnome-recipes',
            src,
            install : true,
            include_directories : top_inc,
            dependencies: deps)
-
