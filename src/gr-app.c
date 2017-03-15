@@ -32,6 +32,7 @@
 #include "gr-cuisine.h"
 #include "gr-shell-search-provider.h"
 #include "gr-utils.h"
+#include "gr-logging.h"
 #include "gr-recipe-exporter.h"
 
 
@@ -207,68 +208,15 @@ search_activated (GSimpleAction *action,
         gr_window_show_search (GR_WINDOW (win), search);
 }
 
-#define DEFAULT_LEVELS (G_LOG_LEVEL_ERROR | G_LOG_LEVEL_CRITICAL | G_LOG_LEVEL_WARNING | G_LOG_LEVEL_MESSAGE)
-#define INFO_LEVELS (G_LOG_LEVEL_INFO | G_LOG_LEVEL_DEBUG)
-
-static gboolean verbose_logging;
-
-/* verbose_logging turns enables DEBUG and INFO messages just for our log domain.
- * We also respect the G_MESSAGES_DEBUG environment variable.
- */
-static GLogWriterOutput
-log_writer (GLogLevelFlags   log_level,
-            const GLogField *fields,
-            gsize            n_fields,
-            gpointer         user_data)
-{
-        if (!(log_level & DEFAULT_LEVELS)) {
-                const gchar *domains, *log_domain = NULL;
-                gsize i;
-
-                domains = g_getenv ("G_MESSAGES_DEBUG");
-
-                if (verbose_logging && domains == NULL)
-                        domains = G_LOG_DOMAIN;
-
-                if ((log_level & INFO_LEVELS) == 0 || domains == NULL)
-                        return G_LOG_WRITER_HANDLED;
-
-                for (i = 0; i < n_fields; i++) {
-                        if (g_strcmp0 (fields[i].key, "GLIB_DOMAIN") == 0) {
-                                log_domain = fields[i].value;
-                                break;
-                        }
-                }
-
-                if (!verbose_logging || strcmp (log_domain, G_LOG_DOMAIN) != 0) {
-                        if (strcmp (domains, "all") != 0 &&
-                            (log_domain == NULL || !strstr (domains, log_domain)))
-                                return G_LOG_WRITER_HANDLED;
-                }
-        }
-
-        if (g_log_writer_is_journald (fileno (stderr)) &&
-            g_log_writer_journald (log_level, fields, n_fields, user_data) == G_LOG_WRITER_HANDLED)
-                goto handled;
-
-        if (g_log_writer_standard_streams (log_level, fields, n_fields, user_data) == G_LOG_WRITER_HANDLED)
-                goto handled;
-
-        return G_LOG_WRITER_UNHANDLED;
-
-handled:
-        if (log_level & G_LOG_LEVEL_ERROR)
-                g_abort ();
-
-        return G_LOG_WRITER_HANDLED;
-}
-
 static void
 verbose_logging_activated (GSimpleAction *action,
                            GVariant      *parameter,
                            gpointer       application)
 {
-        g_variant_get (parameter, "b", &verbose_logging);
+        gboolean verbose;
+
+        g_variant_get (parameter, "b", &verbose);
+        gr_set_verbose_logging (verbose);
 }
 
 static GActionEntry app_entries[] =
@@ -443,7 +391,7 @@ gr_app_init (GrApp *self)
                                        G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE,
                                        _("Turn on verbose logging"), NULL);
 
-        g_log_set_writer_func (log_writer, NULL, NULL);
+        g_log_set_writer_func (gr_log_writer, NULL, NULL);
 }
 
 static int

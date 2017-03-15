@@ -74,6 +74,8 @@ gnome_recipes_SOURCES = \
 	gr-ingredients-list.c	\
 	gr-list-page.h		\
 	gr-list-page.c		\
+	gr-logging.h		\
+	gr-logging.c		\
 	gr-mail.h		\
 	gr-mail.c		\
 	gr-meal.h		\
