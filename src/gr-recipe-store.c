@@ -162,6 +162,7 @@ gr_recipe_store_finalize (GObject *object)
         g_strfreev (self->todays);
         g_strfreev (self->picks);
         g_strfreev (self->favorites);
+        g_strfreev (self->export_list);
         g_variant_dict_unref (self->shopping_list);
         g_strfreev (self->featured_chefs);
         g_free (self->user);
