@@ -33,7 +33,6 @@
 #include "gr-shell-search-provider.h"
 #include "gr-utils.h"
 #include "gr-logging.h"
-#include "gr-recipe-exporter.h"
 
 
 struct _GrApp
@@ -41,8 +40,6 @@ struct _GrApp
         GtkApplication parent_instance;
 
         GrShellSearchProvider *search_provider;
-        GrRecipeExporter *exporter;
-
         GtkCssProvider *css_provider;
 };
 
