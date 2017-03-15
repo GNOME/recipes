@@ -132,17 +132,6 @@ get_user_data_dir (void)
 }
 
 const char *
-get_old_user_data_dir (void)
-{
-        static char *dir = NULL;
-
-        if (!dir)
-                dir = g_build_filename (g_get_user_data_dir (), "recipes", NULL);
-
-        return (const char *)dir;
-}
-
-const char *
 get_pkg_data_dir (void)
 {
         static char *dir = NULL;
