@@ -112,18 +112,6 @@ about_activated (GSimpleAction *action,
 }
 
 static void
-report_issue_activated (GSimpleAction *action,
-                        GVariant      *parameter,
-                        gpointer       app)
-{
-        GtkWindow *win;
-
-        gr_app_activate (G_APPLICATION (app));
-        win = gtk_application_get_active_window (GTK_APPLICATION (app));
-        gr_window_show_report_issue (GR_WINDOW (win));
-}
-
-static void
 news_activated (GSimpleAction *action,
                 GVariant      *parameter,
                 gpointer       app)
@@ -133,18 +121,6 @@ news_activated (GSimpleAction *action,
         gr_app_activate (G_APPLICATION (app));
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
         gr_window_show_news (GR_WINDOW (win));
-}
-
-static void
-quit_activated (GSimpleAction *action,
-                GVariant      *parameter,
-                gpointer       app)
-{
-        GtkWindow *win;
-
-        gr_app_activate (G_APPLICATION (app));
-        win = gtk_application_get_active_window (GTK_APPLICATION (app));
-        gtk_window_close (win);
 }
 
 static void
@@ -206,6 +182,30 @@ search_activated (GSimpleAction *action,
 }
 
 static void
+quit_activated (GSimpleAction *action,
+                GVariant      *parameter,
+                gpointer       app)
+{
+        GtkWindow *win;
+
+        gr_app_activate (G_APPLICATION (app));
+        win = gtk_application_get_active_window (GTK_APPLICATION (app));
+        gtk_window_close (win);
+}
+
+static void
+report_issue_activated (GSimpleAction *action,
+                        GVariant      *parameter,
+                        gpointer       app)
+{
+        GtkWindow *win;
+
+        gr_app_activate (G_APPLICATION (app));
+        win = gtk_application_get_active_window (GTK_APPLICATION (app));
+        gr_window_show_report_issue (GR_WINDOW (win));
+}
+
+static void
 verbose_logging_activated (GSimpleAction *action,
                            GVariant      *parameter,
                            gpointer       application)
@@ -232,8 +232,59 @@ static GActionEntry app_entries[] =
 };
 
 static void
-load_application_css (GrApp *app)
+setup_actions_and_accels (GApplication *application)
 {
+	struct {
+		const char *detailed_action;
+		const char *accelerators[2];
+	} accels[] = {
+		{ "app.quit",       { "<Primary>q", NULL } },
+		{ "app.search('')", { "<Primary>f", NULL } },
+		{ "win.copy",       { "<Primary>c", NULL } },
+		{ "win.paste",      { "<Primary>v", NULL } },
+	};
+        int i;
+
+        g_action_map_add_action_entries (G_ACTION_MAP (application),
+                                         app_entries, G_N_ELEMENTS (app_entries),
+                                         application);
+
+#ifndef ENABLE_AUTOAR
+        {
+                GAction *action;
+
+                action = g_action_map_lookup_action (G_ACTION_MAP (application), "import");
+                g_object_set (action, "enabled", FALSE, NULL);
+        }
+#endif
+
+        for (i = 0; i < G_N_ELEMENTS (accels); i++)
+                gtk_application_set_accels_for_action (GTK_APPLICATION (application),
+                                                       accels[i].detailed_action,
+                                                       accels[i].accelerators);
+}
+
+static void
+load_application_menu (GApplication *application)
+{
+        g_autoptr(GtkBuilder) builder = NULL;
+        GObject *menu;
+
+        builder = gtk_builder_new_from_resource ("/org/gnome/Recipes/menus.ui");
+        if (strcmp (G_OBJECT_TYPE_NAME (gdk_display_get_default ()), "GdkQuartzDisplay") == 0) {
+                menu = gtk_builder_get_object (builder, "menubar");
+                gtk_application_set_menubar (GTK_APPLICATION (application), G_MENU_MODEL (menu));
+        }
+        else {
+                menu = gtk_builder_get_object (builder, "app-menu");
+                gtk_application_set_app_menu (GTK_APPLICATION (application), G_MENU_MODEL (menu));
+        }
+}
+
+static void
+load_application_css (GApplication *application)
+{
+        GrApp *app = GR_APP (application);
         gboolean dark;
         const char *css_file[2] = {
                 "recipes-light.css",
@@ -279,61 +330,22 @@ load_application_css (GrApp *app)
 }
 
 static void
-gr_app_startup (GApplication *app)
+gr_app_startup (GApplication *application)
 {
-	struct {
-		const char *detailed_action;
-		const char *accelerators[2];
-	} accels[] = {
-		{ "app.quit",       { "<Primary>q", NULL } },
-		{ "app.search('')", { "<Primary>f", NULL } },
-		{ "win.copy",       { "<Primary>c", NULL } },
-		{ "win.paste",      { "<Primary>v", NULL } },
-	};
-	int i;
-        g_autoptr(GtkBuilder) builder = NULL;
-        GObject *menu;
+        G_APPLICATION_CLASS (gr_app_parent_class)->startup (application);
 
-        G_APPLICATION_CLASS (gr_app_parent_class)->startup (app);
-
-        g_action_map_add_action_entries (G_ACTION_MAP (app),
-                                         app_entries, G_N_ELEMENTS (app_entries),
-                                         app);
-
-#ifndef ENABLE_AUTOAR
-        {
-                GAction *action;
-
-                action = g_action_map_lookup_action (G_ACTION_MAP (app), "import");
-                g_object_set (action, "enabled", FALSE, NULL);
-        }
-#endif
-
-	for (i = 0; i < G_N_ELEMENTS (accels); i++) {
-        	gtk_application_set_accels_for_action (GTK_APPLICATION (app),
-						       accels[i].detailed_action,
-						       accels[i].accelerators);
-        }
-
-        builder = gtk_builder_new_from_resource ("/org/gnome/Recipes/menus.ui");
-        if (strcmp (G_OBJECT_TYPE_NAME (gdk_display_get_default ()), "GdkQuartzDisplay") == 0) {
-                menu = gtk_builder_get_object (builder, "menubar");
-                gtk_application_set_menubar (GTK_APPLICATION (app), G_MENU_MODEL (menu));
-        }
-        else {
-                menu = gtk_builder_get_object (builder, "app-menu");
-                gtk_application_set_app_menu (GTK_APPLICATION (app), G_MENU_MODEL (menu));
-        }
-
-        load_application_css (GR_APP (app));
+        setup_actions_and_accels (application);
+        load_application_menu (application);
+        load_application_css (application);
 }
 
 static void
-gr_app_open (GApplication  *app,
+gr_app_open (GApplication  *application,
              GFile        **files,
              gint           n_files,
              const char    *hint)
 {
+        GrApp *app = GR_APP (application);
         GtkWindow *win;
 
         if (n_files > 1)
@@ -341,7 +353,7 @@ gr_app_open (GApplication  *app,
 
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
         if (!win) {
-                win = GTK_WINDOW (gr_window_new (GR_APP (app)));
+                win = GTK_WINDOW (gr_window_new (app));
                 gtk_window_present (win);
         }
 
