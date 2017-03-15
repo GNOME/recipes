@@ -1857,27 +1857,31 @@ populate_ingredients (GrEditPage *page,
         page->segments = NULL;
         page->active_row = NULL;
 
-        ingredients = gr_ingredients_list_new (text);
-        segs = gr_ingredients_list_get_segments (ingredients);
-        for (j = 0; segs[j]; j++) {
-                GtkWidget *list;
-                g_auto(GStrv) ings = NULL;
+        if (strcmp (text, "") == 0)
+                add_list (NULL, page);
+        else {
+                ingredients = gr_ingredients_list_new (text);
+                segs = gr_ingredients_list_get_segments (ingredients);
+                for (j = 0; segs[j]; j++) {
+                        GtkWidget *list;
+                        g_auto(GStrv) ings = NULL;
 
-                list = add_ingredients_segment (page, segs[j]);
-                ings = gr_ingredients_list_get_ingredients (ingredients, segs[j]);
-                for (i = 0; ings[i]; i++) {
-                        g_autofree char *s = NULL;
-                        g_auto(GStrv) strv = NULL;
-                        const char *amount;
-                        const char *unit;
-                        GtkWidget *row;
+                        list = add_ingredients_segment (page, segs[j]);
+                        ings = gr_ingredients_list_get_ingredients (ingredients, segs[j]);
+                        for (i = 0; ings[i]; i++) {
+                                g_autofree char *s = NULL;
+                                g_auto(GStrv) strv = NULL;
+                                const char *amount;
+                                const char *unit;
+                                GtkWidget *row;
 
-                        s = gr_ingredients_list_scale_unit (ingredients, segs[j], ings[i], 1, 1);
-                        strv = g_strsplit (s, " ", 2);
-                        amount = strv[0];
-                        unit = strv[1] ? strv[1] : "";
-                        row = add_ingredient_row (page, list, page->group);
-                        update_ingredient_row (row, amount, unit, ings[i]);
+                                s = gr_ingredients_list_scale_unit (ingredients, segs[j], ings[i], 1, 1);
+                                strv = g_strsplit (s, " ", 2);
+                                amount = strv[0];
+                                unit = strv[1] ? strv[1] : "";
+                                row = add_ingredient_row (page, list, page->group);
+                                update_ingredient_row (row, amount, unit, ings[i]);
+                        }
                 }
         }
 
