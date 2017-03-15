@@ -252,4 +252,3 @@ gr_ensure_user_chef (GtkWindow        *window,
 
         gr_account_get_information (window, got_account_info, cbdata, NULL);
 }
-

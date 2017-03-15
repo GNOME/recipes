@@ -372,7 +372,7 @@ text_buffer_append_printf (GtkTextBuffer *buffer,
 #pragma GCC diagnostic pop
 
 static void
-text_buffer_append_link (GtkTextView *view,
+text_buffer_append_link (GtkTextView   *view,
                          GtkTextBuffer *buffer,
                          const char    *name,
                          const char    *uri)

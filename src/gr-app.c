@@ -115,8 +115,8 @@ about_activated (GSimpleAction *action,
 
 static void
 report_issue_activated (GSimpleAction *action,
-                 GVariant      *parameter,
-                 gpointer       app)
+                        GVariant      *parameter,
+                        gpointer       app)
 {
         GtkWindow *win;
 
@@ -340,12 +340,14 @@ gr_app_startup (GApplication *app)
 		const char *detailed_action;
 		const char *accelerators[2];
 	} accels[] = {
-		{ "app.quit", { "<Primary>q", NULL } },
+		{ "app.quit",       { "<Primary>q", NULL } },
 		{ "app.search('')", { "<Primary>f", NULL } },
-		{ "win.copy", { "<Primary>c", NULL } },
-		{ "win.paste", { "<Primary>v", NULL } },
+		{ "win.copy",       { "<Primary>c", NULL } },
+		{ "win.paste",      { "<Primary>v", NULL } },
 	};
 	int i;
+        g_autoptr(GtkBuilder) builder = NULL;
+        GObject *menu;
 
         G_APPLICATION_CLASS (gr_app_parent_class)->startup (app);
 
@@ -368,20 +370,15 @@ gr_app_startup (GApplication *app)
 						       accels[i].accelerators);
         }
 
-        {
-                g_autoptr(GtkBuilder) builder = NULL;
-                GObject *menu;
-
-                builder = gtk_builder_new_from_resource ("/org/gnome/Recipes/menus.ui");
-                if (strcmp (G_OBJECT_TYPE_NAME (gdk_display_get_default ()), "GdkQuartzDisplay") == 0) {
-                        menu = gtk_builder_get_object (builder, "menubar");
-                        gtk_application_set_menubar (GTK_APPLICATION (app), G_MENU_MODEL (menu));
-                }
-                else {
-                        menu = gtk_builder_get_object (builder, "app-menu");
-                        gtk_application_set_app_menu (GTK_APPLICATION (app), G_MENU_MODEL (menu));
-                }
-         }
+        builder = gtk_builder_new_from_resource ("/org/gnome/Recipes/menus.ui");
+        if (strcmp (G_OBJECT_TYPE_NAME (gdk_display_get_default ()), "GdkQuartzDisplay") == 0) {
+                menu = gtk_builder_get_object (builder, "menubar");
+                gtk_application_set_menubar (GTK_APPLICATION (app), G_MENU_MODEL (menu));
+        }
+        else {
+                menu = gtk_builder_get_object (builder, "app-menu");
+                gtk_application_set_app_menu (GTK_APPLICATION (app), G_MENU_MODEL (menu));
+        }
 
         load_application_css (GR_APP (app));
 }
