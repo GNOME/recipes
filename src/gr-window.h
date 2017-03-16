@@ -34,20 +34,16 @@ GrWindow       *gr_window_new                        (GrApp      *app);
 
 void            gr_window_present_dialog             (GrWindow   *window,
                                                       GtkWindow  *dialog);
+void            gr_window_set_fullscreen             (GrWindow   *window,
+                                                      gboolean    fullscreen);
+void            gr_window_go_back                    (GrWindow   *window);
 
 void            gr_window_show_recipe                (GrWindow   *window,
                                                       GrRecipe   *recipe);
 void            gr_window_edit_recipe                (GrWindow   *window,
                                                       GrRecipe   *recipe);
-void            gr_window_timer_expired              (GrWindow   *window,
-                                                      GrRecipe   *recipe,
-                                                      int         step);
-void            gr_window_load_recipe                (GrWindow   *window,
-                                                      GFile      *file);
-void            gr_window_save_all                   (GrWindow   *window);
 void            gr_window_show_search                (GrWindow   *window,
                                                       const char *terms);
-void            gr_window_go_back                    (GrWindow   *window);
 void            gr_window_show_diet                  (GrWindow   *window,
                                                       const char *title,
                                                       GrDiets     diet);
@@ -67,22 +63,26 @@ void            gr_window_show_cuisine               (GrWindow   *window,
 void            gr_window_show_season                (GrWindow   *window,
                                                       const char *season,
                                                       const char *title);
-void            gr_window_offer_undelete             (GrWindow   *window,
-                                                      GrRecipe   *recipe);
-void            gr_window_offer_contribute           (GrWindow   *window,
-                                                      GrRecipe   *recipe);
-void            gr_window_set_fullscreen             (GrWindow   *window,
-                                                      gboolean    fullscreen);
-
 void            gr_window_show_image                 (GrWindow   *window,
                                                       GArray     *images,
                                                       int         index);
 
+void            gr_window_offer_undelete             (GrWindow   *window,
+                                                      GrRecipe   *recipe);
+void            gr_window_offer_contribute           (GrWindow   *window,
+                                                      GrRecipe   *recipe);
 void            gr_window_offer_shopping             (GrWindow   *window);
 
 void            gr_window_show_my_chef_information   (GrWindow   *window);
 void            gr_window_show_about_dialog          (GrWindow   *window);
 void            gr_window_show_report_issue          (GrWindow   *window);
 void            gr_window_show_news                  (GrWindow   *window);
+
+void            gr_window_load_recipe                (GrWindow   *window,
+                                                      GFile      *file);
+void            gr_window_save_all                   (GrWindow   *window);
+void            gr_window_timer_expired              (GrWindow   *window,
+                                                      GrRecipe   *recipe,
+                                                      int         step);
 
 G_END_DECLS
