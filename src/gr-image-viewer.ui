@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="gnome-recipes">
-  <!-- interface-requires gtk+ 3.10 -->
   <template class="GrImageViewer" parent="GtkBox">
     <property name="visible">1</property>
     <child>
@@ -13,12 +12,16 @@
             <property name="valign">center</property>
             <property name="margin">10</property>
             <property name="transition-type">crossfade</property>
-            <style> <class name="osd"/> </style>
+            <style>
+              <class name="osd"/>
+            </style>
             <child>
               <object class="GtkButton">
                 <property name="visible">1</property>
                 <signal name="clicked" handler="prev_image" swapped="yes"/>
-                <style> <class name="image-button"/> </style>
+                <style>
+                  <class name="image-button"/>
+                </style>
                 <child>
                   <object class="GtkImage">
                     <property name="visible">1</property>
@@ -33,15 +36,19 @@
         <child type="overlay">
           <object class="GtkRevealer" id="next_revealer">
             <property name="visible">1</property>
-            2<property name="halign">end</property>
+            <property name="halign">end</property>
             <property name="valign">center</property>
             <property name="margin">10</property>
             <property name="transition-type">crossfade</property>
-            <style> <class name="osd"/> </style>
+            <style>
+              <class name="osd"/>
+            </style>
             <child>
               <object class="GtkButton">
                 <property name="visible">1</property>
-                <style> <class name="image-button"/> </style>
+                <style>
+                  <class name="image-button"/>
+                </style>
                 <signal name="clicked" handler="next_image" swapped="yes"/>
                 <child>
                   <object class="GtkImage">
@@ -57,22 +64,18 @@
         <child type="overlay">
           <object class="GtkRevealer" id="preview_revealer">
             <property name="visible">1</property>
-            <property name="halign">fill</property>
             <property name="valign">end</property>
-            <property name="margin">0</property>
             <property name="transition-type">slide-up</property>
             <child>
               <object class="GtkBox">
                 <property name="visible">1</property>
-                <property name="orientation">horizontal</property>
-                <property name="halign">fill</property>
-                <property name="valign">fill</property>
-                <style> <class name="preview-list"/> </style>
+                <style>
+                  <class name="preview-list"/>
+                </style>
                 <child>
                   <object class="GtkFlowBox" id="preview_list">
                     <property name="visible">1</property>
                     <property name="halign">center</property>
-                    <property name="selection-mode">single</property>
                     <property name="row-spacing">1</property>
                     <property name="column-spacing">1</property>
                     <property name="min-children-per-line">5</property>

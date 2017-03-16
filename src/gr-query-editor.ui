@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="gnome-recipes">
-  <!-- interface-requires gtk+ 3.8 -->
   <template class="GrQueryEditor" parent="GtkSearchBar">
     <child>
       <object class="GtkBox">
@@ -30,7 +29,6 @@
     </child>
   </template>
   <object class="GtkPopover" id="popover">
-    <property name="modal">1</property>
     <property name="position">bottom</property>
     <property name="width-request">250</property>
     <signal name="notify::visible" handler="search_popover_notify"/>

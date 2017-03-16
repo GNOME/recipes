@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="gnome-recipes">
-  <!-- interface-requires gtk+ 3.8 -->
   <template class="GrListPage" parent="GtkBox">
     <property name="visible">True</property>
     <property name="orientation">vertical</property>
@@ -14,7 +13,6 @@
             <property name="visible">1</property>
             <property name="orientation">vertical</property>
             <property name="halign">center</property>
-            <property name="valign">fill</property>
             <property name="margin-start">60</property>
             <property name="margin-end">86</property>
             <child>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="gnome-recipes">
-  <!-- interface-requires gtk+ 3.8 -->
   <template class="GrCookingView" parent="GtkBox">
     <property name="visible">True</property>
     <property name="orientation">vertical</property>
@@ -39,7 +38,7 @@
                 <property name="orientation">vertical</property>
                 <property name="spacing">20</property>
                 <child>
-                  <object class="GtkAspectFrame" >
+                  <object class="GtkAspectFrame">
                     <property name="visible">1</property>
                     <property name="obey-child">0</property>
                     <property name="width-request">320</property>

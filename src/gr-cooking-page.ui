@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="gnome-recipes">
-  <!-- interface-requires gtk+ 3.8 -->
   <template class="GrCookingPage" parent="GtkBox">
     <property name="visible">True</property>
     <property name="orientation">vertical</property>
@@ -175,7 +174,6 @@
               <object class="GtkBox" id="confirm_overlay">
                 <property name="visible">1</property>
                 <property name="orientation">vertical</property>
-                <property name="spacing">0</property>
                 <style>
                   <class name="cooking"/>
                   <class name="overlay"/>
@@ -193,14 +191,12 @@
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">1</property>
-                    <property name="xalign">0.5</property>
                     <property name="label" translatable="yes">Some timers are still running.</property>
                   </object>
                 </child>
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">1</property>
-                    <property name="xalign">0.5</property>
                     <property name="label" translatable="yes">Recipes can keep the timers running
 even if you leave cooking mode now.</property>
                   </object>
@@ -208,7 +204,6 @@ even if you leave cooking mode now.</property>
                 <child>
                   <object class="GtkButtonBox">
                     <property name="visible">1</property>
-                    <property name="halign">fill</property>
                     <property name="valign">end</property>
                     <property name="layout-style">expand</property>
                     <child>

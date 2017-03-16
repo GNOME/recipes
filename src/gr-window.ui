@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="gnome-recipes">
-  <!-- interface-requires gtk+ 3.8 -->
   <template class="GrWindow" parent="GtkApplicationWindow">
     <property name="resizable">1</property>
     <signal name="key-press-event" handler="window_keypress_handler_before"/>

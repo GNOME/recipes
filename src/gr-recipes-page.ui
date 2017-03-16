@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="gnome-recipes">
-  <!-- interface-requires gtk+ 3.8 -->
   <template class="GrRecipesPage" parent="GtkBox">
     <property name="visible">True</property>
     <property name="orientation">vertical</property>
@@ -13,7 +12,6 @@
       <object class="GtkScrolledWindow" id="scrolled_win">
         <property name="visible">1</property>
         <property name="hscrollbar-policy">never</property>
-        <property name="vscrollbar-policy">automatic</property>
         <property name="propagate-natural-height">1</property>
         <child>
           <object class="GtkBox">
@@ -62,14 +60,12 @@
                 <child>
                   <object class="GtkBox">
                     <property name="visible">1</property>
-                    <property name="orientation">horizontal</property>
                     <child>
                       <object class="GtkImage">
                         <property name="visible">1</property>
                         <property name="margin-start">10</property>
                         <property name="margin-top">10</property>
                         <property name="margin-bottom">10</property>
-                        <property name="margin-end">0</property>
                         <property name="icon-name">shopping-list-symbolic</property>
                         <property name="icon-size">1</property>
                       </object>
@@ -92,7 +88,9 @@
                         <property name="visible">1</property>
                         <property name="margin">10</property>
                         <property name="xalign">1</property>
-                        <style> <class name="dim-label"/> </style>
+                        <style>
+                          <class name="dim-label"/>
+                        </style>
                       </object>
                     </child>
                   </object>
@@ -141,7 +139,6 @@
             <child>
               <object class="GtkFlowBox" id="diet_box">
                 <property name="visible">1</property>
-                <property name="halign">fill</property>
                 <property name="row-spacing">20</property>
                 <property name="column-spacing">20</property>
                 <property name="homogeneous">1</property>
@@ -156,13 +153,11 @@
             <child>
               <object class="GtkRevealer" id="diet_more">
                 <property name="visible">1</property>
-                <property name="halign">fill</property>
                 <property name="transition-type">slide-up</property>
                 <property name="margin-top">10</property>
                 <child>
                   <object class="GtkFlowBox" id="diet_box2">
                     <property name="visible">1</property>
-                    <property name="halign">fill</property>
                     <property name="margin-top">10</property>
                     <property name="margin-bottom">10</property>
                     <property name="row-spacing">20</property>
@@ -178,7 +173,6 @@
             <child>
               <object class="GtkBox" id="categories_expander_box">
                 <property name="visible">1</property>
-                <property name="halign">fill</property>
                 <property name="margin-start">24</property>
                 <property name="margin-end">24</property>
                 <property name="margin-bottom">12</property>
@@ -246,7 +240,6 @@
                 <property name="selection-mode">none</property>
                 <property name="row-spacing">20</property>
                 <property name="column-spacing">20</property>
-                <property name="halign">fill</property>
                 <property name="valign">start</property>
                 <property name="margin-bottom">20</property>
                 <property name="homogeneous">1</property>

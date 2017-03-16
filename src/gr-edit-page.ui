@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="gnome-recipes">
-  <!-- interface-requires gtk+ 3.8 -->
   <object class="GtkAdjustment" id="serves_adjustment">
     <property name="lower">1</property>
     <property name="upper">99</property>
@@ -83,7 +82,6 @@
                     <property name="orientation">vertical</property>
                     <property name="margin-top">20</property>
                     <property name="valign">start</property>
-                    <property name="halign">fill</property>
                     <child>
                       <object class="GrImageViewer" id="images">
                         <property name="visible">1</property>
@@ -253,7 +251,6 @@
                 <child>
                   <object class="GtkGrid">
                     <property name="visible">1</property>
-                    <property name="halign">fill</property>
                     <property name="valign">start</property>
                     <property name="column-spacing">20</property>
                     <child>
@@ -600,7 +597,7 @@
                           <object class="GtkCheckButton" id="gluten_free_check">
                             <property name="visible">1</property>
                             <property name="label" translatable="yes">Gluten free</property>
-                            <signal name="clicked" handler="set_unsaved" swapped="yes" />
+                            <signal name="clicked" handler="set_unsaved" swapped="yes"/>
                           </object>
                         </child>
                         <child>
@@ -647,7 +644,6 @@
                 <child>
                   <object class="GtkBox">
                     <property name="visible">1</property>
-                    <property name="orientation">horizontal</property>
                     <property name="spacing">4</property>
                     <style>
                       <class name="heading"/>
@@ -698,21 +694,21 @@
                     <property name="visible">1</property>
                     <signal name="notify::visible-child-name" handler="preview_visible_changed" swapped="yes"/>
                     <child>
-                  <object class="GtkScrolledWindow">
-                    <property name="visible">1</property>
-                    <property name="shadow-type">in</property>
-                    <property name="min-content-height">300</property>
-                    <child>
-                      <object class="GtkTextView" id="instructions_field">
-                        <property name="buffer">instructions_buffer</property>
+                      <object class="GtkScrolledWindow">
                         <property name="visible">1</property>
-                        <property name="wrap-mode">word</property>
-                        <property name="top-margin">10</property>
-                        <property name="left-margin">10</property>
-                        <property name="right-margin">10</property>
-                        <property name="bottom-margin">10</property>
-                      </object>
-                    </child>
+                        <property name="shadow-type">in</property>
+                        <property name="min-content-height">300</property>
+                        <child>
+                          <object class="GtkTextView" id="instructions_field">
+                            <property name="buffer">instructions_buffer</property>
+                            <property name="visible">1</property>
+                            <property name="wrap-mode">word</property>
+                            <property name="top-margin">10</property>
+                            <property name="left-margin">10</property>
+                            <property name="right-margin">10</property>
+                            <property name="bottom-margin">10</property>
+                          </object>
+                        </child>
                       </object>
                       <packing>
                         <property name="name">edit</property>
@@ -736,7 +732,6 @@
                 <child>
                   <object class="GtkBox">
                     <property name="visible">1</property>
-                    <property name="orientation">horizontal</property>
                     <property name="margin-top">10</property>
                     <property name="spacing">10</property>
                     <child>
@@ -1125,7 +1120,6 @@
       <object class="GtkGrid">
         <property name="visible">1</property>
         <property name="margin">12</property>
-        <property name="margin-top">0</property>
         <property name="column-spacing">20</property>
         <child>
           <object class="GtkLabel">
