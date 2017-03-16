@@ -206,6 +206,20 @@ report_issue_activated (GSimpleAction *action,
 }
 
 static void
+help_activated (GSimpleAction *action,
+                GVariant      *parameter,
+                gpointer       app)
+{
+        GList uris = { "help:org.gnome.Recipes", NULL, NULL };
+        g_autoptr(GAppInfo) info = NULL;
+        g_autoptr(GError) error = NULL;
+
+        info = g_app_info_get_default_for_uri_scheme ("help");
+        if (!g_app_info_launch_uris (info, &uris, NULL, &error))
+                g_warning ("Failed to launch %s: %s", g_app_info_get_name (info), error->message);
+}
+
+static void
 verbose_logging_activated (GSimpleAction *action,
                            GVariant      *parameter,
                            gpointer       application)
@@ -228,6 +242,7 @@ static GActionEntry app_entries[] =
         { "search", search_activated, "s", NULL, NULL },
         { "quit", quit_activated, NULL, NULL, NULL },
         { "report-issue", report_issue_activated, NULL, NULL, NULL },
+        { "help", help_activated, NULL, NULL, NULL },
         { "verbose-logging", verbose_logging_activated, "b", NULL, NULL }
 };
 
