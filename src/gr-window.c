@@ -1482,6 +1482,59 @@ news_dialog_closed (GtkWidget *widget,
         return FALSE;
 }
 
+static GtkWidget *
+gr_release_info_new (const char *version,
+                     GDateTime  *date,
+                     const char *news)
+{
+        GtkWidget *box;
+        GtkWidget *heading;
+        GtkWidget *image;
+        GtkWidget *label;
+        GtkStyleContext *context;
+        g_autofree char *title = NULL;
+
+        box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 10);
+
+        heading = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+        gtk_widget_set_halign (heading, GTK_ALIGN_CENTER);
+        image = gtk_image_new_from_icon_name ("org.gnome.Recipes-symbolic", 1);
+        gtk_image_set_pixel_size (GTK_IMAGE (image), 32);
+        gtk_container_add (GTK_CONTAINER (heading), image);
+        /* TRANSLATORS: %s gets replaced by a version number */
+        title = g_strdup_printf (_("Recipes %s"), version);
+        label = gtk_label_new (title);
+        gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+        context = gtk_widget_get_style_context (label);
+        gtk_style_context_add_class (context, "heading");
+        gtk_style_context_add_class (context, "welcome");
+        gtk_container_add (GTK_CONTAINER (heading), label);
+        gtk_container_add (GTK_CONTAINER (box), heading);
+
+        if (date) {
+                g_autofree char *formatted = NULL;
+                g_autofree char *release = NULL;
+
+                formatted = g_date_time_format (date, "%F");
+                /* TRANSLATORS: %s gets replaced by a date */
+                release = g_strdup_printf (_("Released: %s"), formatted);
+                label = gtk_label_new (release);
+                gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+                gtk_container_add (GTK_CONTAINER (box), label);
+        }
+
+        if (news) {
+                label = gtk_label_new (news);
+                gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+                gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
+                gtk_label_set_max_width_chars (GTK_LABEL (label), 55);
+                gtk_label_set_width_chars (GTK_LABEL (label), 55);
+                gtk_container_add (GTK_CONTAINER (box), label);
+        }
+
+        return box;
+}
+
 void
 gr_window_show_news (GrWindow *window)
 {
@@ -1512,47 +1565,10 @@ gr_window_show_news (GrWindow *window)
 
         for (i = 0; i < news->len; i++) {
                 ReleaseInfo *ri = g_ptr_array_index (news, i);
-                GtkWidget *heading;
-                GtkWidget *image;
-                GtkWidget *label;
-                GtkStyleContext *context;
-                g_autofree char *title = NULL;
+                GtkWidget *info;
 
-                heading = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-                gtk_widget_set_halign (heading, GTK_ALIGN_CENTER);
-                image = gtk_image_new_from_icon_name ("org.gnome.Recipes-symbolic", 1);
-                gtk_image_set_pixel_size (GTK_IMAGE (image), 32);
-                gtk_container_add (GTK_CONTAINER (heading), image);
-                /* TRANSLATORS: %s gets replaced by a version number */
-                title = g_strdup_printf (_("Recipes %s"), ri->version);
-                label = gtk_label_new (title);
-                gtk_label_set_xalign (GTK_LABEL (label), 0.0);
-                context = gtk_widget_get_style_context (label);
-                gtk_style_context_add_class (context, "heading");
-                gtk_style_context_add_class (context, "welcome");
-                gtk_container_add (GTK_CONTAINER (heading), label);
-                gtk_container_add (GTK_CONTAINER (box), heading);
-
-                if (ri->date) {
-                        g_autofree char *date = NULL;
-                        g_autofree char *release = NULL;
-
-                        date = g_date_time_format (ri->date, "%F");
-                        /* TRANSLATORS: %s gets replaced by a date */
-                        release = g_strdup_printf (_("Released: %s"), date);
-                        label = gtk_label_new (release);
-                        gtk_label_set_xalign (GTK_LABEL (label), 0.0);
-                        gtk_container_add (GTK_CONTAINER (box), label);
-                }
-
-                if (ri->news) {
-                        label = gtk_label_new (ri->news->str);
-                        gtk_label_set_xalign (GTK_LABEL (label), 0.0);
-                        gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
-                        gtk_label_set_max_width_chars (GTK_LABEL (label), 55);
-                        gtk_label_set_width_chars (GTK_LABEL (label), 55);
-                        gtk_container_add (GTK_CONTAINER (box), label);
-                }
+                info = gr_release_info_new (ri->version, ri->date, ri->news->str);
+                gtk_container_add (GTK_CONTAINER (box), info);
         }
 
         gtk_widget_show_all (box);
