@@ -75,6 +75,21 @@
             ]
         },
         {
+            "name": "yelp",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git://git.gnome.org/yelp"
+                },
+                {
+                    "type": "patch",
+                    "path": "flatpak/0001-Try-to-fit-in-a-sandbox.patch",
+                    "strip-components": 1
+
+                }
+            ]
+        },
+        {
             "name": "recipes",
             "buildsystem": "meson",
             "builddir": true,
