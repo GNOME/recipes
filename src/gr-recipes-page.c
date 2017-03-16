@@ -216,6 +216,15 @@ static void
 populate_categories_from_store (GrRecipesPage *self)
 {
         int i;
+        struct {
+                const char *id;
+                const char *name;
+        } tiles[] = {
+                { "mine",      N_("My Recipes")  },
+                { "favorites", N_("Favorites")   },
+                { "all",       N_("All Recipes") },
+                { "new",       N_("New Recipes") },
+        };
         GrDiets diets[5] = {
                 GR_DIET_GLUTEN_FREE,
                 GR_DIET_NUT_FREE,
@@ -228,32 +237,17 @@ populate_categories_from_store (GrRecipesPage *self)
         container_remove_all (GTK_CONTAINER (self->diet_box));
         container_remove_all (GTK_CONTAINER (self->diet_box2));
 
-        tile = gr_category_tile_new_with_label ("mine", _("My Recipes"));
-        gtk_widget_show (tile);
-        gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
-        g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);
-
-        tile = gr_category_tile_new_with_label ("favorites", _("Favorites"));
-        gtk_widget_show (tile);
-        gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
-        g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);
-
-        tile = gr_category_tile_new_with_label ("all", _("All Recipes"));
-        gtk_widget_show (tile);
-        gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
-        g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);
-
-        tile = gr_category_tile_new_with_label ("new", _("New Recipes"));
-        gtk_widget_show (tile);
-        gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
-        g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);
+        for (i = 0; i < G_N_ELEMENTS (tiles); i++) {
+                tile = gr_category_tile_new_with_label (tiles[i].id, _(tiles[i].name));
+                gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
+                g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);
+        }
 
         for (i = 0; i < G_N_ELEMENTS (diets); i++) {
                 tile = gr_category_tile_new (diets[i]);
-                gtk_widget_show (tile);
                 g_signal_connect (tile, "clicked", G_CALLBACK (category_clicked), self);
 
-                if (i + 4 < 6)
+                if (i + G_N_ELEMENTS (tiles) < 6)
                         gtk_container_add (GTK_CONTAINER (self->diet_box), tile);
                 else
                         gtk_container_add (GTK_CONTAINER (self->diet_box2), tile);
@@ -296,7 +290,6 @@ populate_recipes_from_store (GrRecipesPage *self)
         int i;
         int todays;
         int picks;
-        char *tmp;
 
         container_remove_all (GTK_CONTAINER (self->today_box));
         container_remove_all (GTK_CONTAINER (self->pick_box));
@@ -308,6 +301,7 @@ populate_recipes_from_store (GrRecipesPage *self)
         /* scramble the keys so we don't always get the same picks */
         for (i = 0; i < length; i++) {
                 int r;
+                char *tmp;
 
                 r = g_random_int_range (0, length);
 
@@ -318,7 +312,7 @@ populate_recipes_from_store (GrRecipesPage *self)
 
         todays = 0;
         picks = 0;
-        for (i = 0; i < length; i++) {
+        for (i = 0; (i < length) && (todays < 3 || picks < 3); i++) {
                 g_autoptr(GrRecipe) recipe = NULL;
                 GtkWidget *tile;
 
@@ -327,20 +321,17 @@ populate_recipes_from_store (GrRecipesPage *self)
                 if (todays < 3 && gr_recipe_store_recipe_is_todays (store, recipe)) {
                         if (todays == 0) {
                                 tile = gr_recipe_tile_new_wide (recipe);
-                                gtk_widget_show (tile);
                                 gtk_grid_attach (GTK_GRID (self->today_box), tile, 0, 0, 2, 1);
                                 todays += 2;
                         }
                         else {
                                 tile = gr_recipe_tile_new (recipe);
-                                gtk_widget_show (tile);
                                 gtk_grid_attach (GTK_GRID (self->today_box), tile, todays, 0, 1, 1);
                                 todays += 1;
                         }
                 }
                 else if (picks < 3 && gr_recipe_store_recipe_is_pick (store, recipe)) {
                         tile = gr_recipe_tile_new (recipe);
-                        gtk_widget_show (tile);
                         gtk_grid_attach (GTK_GRID (self->pick_box), tile, picks, 0, 1, 1);
                         picks++;
                 }
