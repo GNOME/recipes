@@ -180,7 +180,7 @@ end_element (GMarkupParseContext  *context,
                 if (data->collect) {
                         data->collect = FALSE;
                         if (data->ri->news->len > 0)
-                                g_string_append (data->ri->news, "\n");
+                                g_string_append (data->ri->news, "\n\n");
                         string_append_normalized (data->ri->news, data->text->str);
                 }
         }
