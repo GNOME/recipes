@@ -1554,7 +1554,7 @@ gr_window_show_news (GrWindow *window)
         if (window->news_dialog)
                 return;
 
-        news = get_release_info (PACKAGE_VERSION, "0.0.0");
+        news = get_release_info (PACKAGE_VERSION, "1.0.0");
         if (news->len == 0)
                 return;
 
