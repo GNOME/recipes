@@ -1524,12 +1524,19 @@ gr_release_info_new (const char *version,
         }
 
         if (news) {
-                label = gtk_label_new (news);
-                gtk_label_set_xalign (GTK_LABEL (label), 0.0);
-                gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
-                gtk_label_set_max_width_chars (GTK_LABEL (label), 55);
-                gtk_label_set_width_chars (GTK_LABEL (label), 55);
-                gtk_container_add (GTK_CONTAINER (box), label);
+                g_auto(GStrv) para = NULL;
+                int i;
+
+                para = g_strsplit (news, "\n\n", -1);
+
+                for (i = 0; para[i]; i++) {
+                        label = gtk_label_new (para[i]);
+                        gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+                        gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
+                        gtk_label_set_max_width_chars (GTK_LABEL (label), 55);
+                        gtk_label_set_width_chars (GTK_LABEL (label), 55);
+                        gtk_container_add (GTK_CONTAINER (box), label);
+                }
         }
 
         return box;
