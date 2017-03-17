@@ -411,3 +411,28 @@ label.notification-label {
   font-size: 30px;
   color: #ddd;
 }
+
+dialog.about image.logo-image {
+  background: url("resource:///org/gnome/Recipes/org.gnome.Recipes.png");
+  background-size: 256px;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-width: 256px;
+  min-height: 256px;
+  transition-property: min-height, min-width, background-size;
+  transition-duration: 600ms;
+  transition-timing-function: ease-out;
+}
+
+dialog.about image.logo-image.small {
+  background-size: 1px;
+  min-width: 1px;
+  min-height: 1px;
+  transition-property: min-height, min-width, background-size;
+  transition-duration: 600ms;
+  transition-timing-function: cubic-bezier(0.9,-0.06,0.58,0.59);
+}
+
+dialog.about box.dialog-vbox {
+  min-height: 460px;
+}

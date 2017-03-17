@@ -37,6 +37,8 @@
 struct _GrAboutDialog
 {
         GtkAboutDialog parent_instance;
+
+        GtkWidget *logo_image;
 };
 
 G_DEFINE_TYPE (GrAboutDialog, gr_about_dialog, GTK_TYPE_ABOUT_DIALOG)
@@ -50,6 +52,7 @@ gr_about_dialog_finalize (GObject *object)
 static void
 gr_about_dialog_init (GrAboutDialog *self)
 {
+        gtk_style_context_add_class (gtk_widget_get_style_context (GTK_WIDGET (self)), "about");
 }
 
 static void
@@ -702,7 +705,7 @@ toggle_system (GtkToggleButton *button,
 static void
 page_changed (GObject *stack, GParamSpec *pspec, gpointer user_data)
 {
-        GtkAboutDialog *about = user_data;
+        GrAboutDialog *about = user_data;
         GtkWidget *credits_button;
         GtkWidget *system_button;
         const char *visible;
@@ -723,6 +726,54 @@ page_changed (GObject *stack, GParamSpec *pspec, gpointer user_data)
                                       strcmp (visible, "system") == 0);
 
         g_object_set_data (G_OBJECT (about), "in_page_changed", GINT_TO_POINTER (FALSE));
+}
+
+static void
+page_changed_for_image (GObject *stack, GParamSpec *pspec, gpointer user_data)
+{
+        GrAboutDialog *about = user_data;
+        const char *visible;
+
+        visible = gtk_stack_get_visible_child_name (GTK_STACK (stack));
+
+        if (strcmp (visible, "credits") == 0 || strcmp (visible, "system") == 0)
+                gtk_style_context_add_class (gtk_widget_get_style_context (about->logo_image), "small");
+        else
+                gtk_style_context_remove_class (gtk_widget_get_style_context (about->logo_image), "small");
+
+}
+
+static void
+tweak_image (GrAboutDialog *about)
+{
+        GtkWidget *content;
+        GtkWidget *box;
+        GtkWidget *stack;
+        GtkWidget *image;
+        GtkWidget *name_label;
+        GtkWidget *page_vbox;
+
+        content = gtk_dialog_get_content_area (GTK_DIALOG (about));
+        box = find_child_with_name (content, "box");
+        image = find_child_with_name (box, "logo_image");
+        gtk_style_context_add_class (gtk_widget_get_style_context (image), "logo-image");
+        about->logo_image = image;
+        gtk_image_clear (GTK_IMAGE (image));
+
+        stack = find_child_with_name (box, "stack");
+        page_vbox = find_child_with_name (stack, "page_vbox");
+        gtk_widget_set_valign (page_vbox, GTK_ALIGN_END);
+
+        name_label = find_child_with_name (box, "name_label");
+        g_object_ref (name_label);
+        gtk_container_remove (GTK_CONTAINER (box), name_label);
+        gtk_box_pack_start (GTK_BOX (page_vbox), name_label, FALSE, TRUE, 0);
+        gtk_box_reorder_child (GTK_BOX (page_vbox), name_label, 0);
+        g_object_unref (name_label);
+
+        gtk_box_set_spacing (GTK_BOX (box), 0);
+
+        g_signal_connect (stack, "notify::visible-child-name", G_CALLBACK (page_changed_for_image), about);
 }
 
 static void
@@ -875,6 +926,7 @@ gr_about_dialog_new (void)
         gtk_about_dialog_add_credit_section (GTK_ABOUT_DIALOG (about),
                                              _("Recipes by"), (const char **)recipe_authors);
 
+        tweak_image (about);
         add_built_logo (about);
         add_system_tab (about);
 
