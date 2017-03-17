@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-16 02:35+0000\n"
-"PO-Revision-Date: 2017-03-15 23:13+0100\n"
+"POT-Creation-Date: 2017-03-17 20:52+0000\n"
+"PO-Revision-Date: 2017-03-17 22:41+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
-#: src/gr-window.ui:427 src/gr-about-dialog.c:860 src/gr-window.c:373
+#: src/gr-window.ui:427 src/gr-about-dialog.c:911 src/gr-window.c:373
 #: src/gr-window.c:998
 msgid "Recipes"
 msgstr "Recept"
@@ -35,24 +35,23 @@ msgstr "GNOME-kockar, förenen eder!"
 msgid "org.gnome.Recipes"
 msgstr "org.gnome.Recipes"
 
-#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:864
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:915
 msgid "GNOME loves to cook"
 msgstr "GNOME älskar att laga mat"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:9
 msgid ""
-"GNOME Recipes is an easy-to-use application that will help you to discover "
-"what to cook today, tomorrow, rest of the week and for your special "
-"occasions."
+"Recipes is an easy-to-use application that will help you to discover what to "
+"cook today, tomorrow, the rest of the week and for your special occasions."
 msgstr ""
-"GNOME Recept är ett lättanvänt program som hjälper dig med vad du ska laga "
-"för mat idag, imorgon, resten av veckan och andra speciella tillfällen."
+"Recept är ett lättanvänt program som hjälper dig med vad du ska laga för mat "
+"idag, imorgon, resten av veckan och andra speciella tillfällen."
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:13
 msgid ""
 "Recipes comes with a collection of recipes that have been collected by GNOME "
 "contributors from all over the world. It also lets you store your own "
-"recipes, and share them with your friends."
+"recipes and share them with your friends."
 msgstr ""
 "Recept kommer med en samling recept som har samlats ihop av GNOME-volontärer "
 "från hela världen. Det låter dig också lagra dina egna recept och dela dem "
@@ -829,95 +828,95 @@ msgid "Share with a friend"
 msgstr "Dela med en vän"
 
 #: src/recipe-export-dialog.ui:63
-msgid "Contribute to GNOME Recipes"
-msgstr "Bidra till GNOME Recept"
+msgid "Contribute to the Recipes project"
+msgstr "Bidra till Recept-projektet"
 
 #: src/recipe-whats-new-dialog.ui:8
 msgid "What’s New in Recipes"
 msgstr "Vad är nytt i Recept"
 
 # Tooltip för knappen "Built with Builder"
-#: src/gr-about-dialog.c:129
+#: src/gr-about-dialog.c:132
 msgid "Learn more about Builder"
 msgstr "Få reda på mer om Builder"
 
-#: src/gr-about-dialog.c:241 src/gr-about-dialog.c:324
-#: src/gr-about-dialog.c:326 src/gr-about-dialog.c:328
-#: src/gr-about-dialog.c:330 src/gr-about-dialog.c:332
-#: src/gr-about-dialog.c:334 src/gr-about-dialog.c:336
-#: src/gr-about-dialog.c:338 src/gr-about-dialog.c:340
+#: src/gr-about-dialog.c:244 src/gr-about-dialog.c:327
+#: src/gr-about-dialog.c:329 src/gr-about-dialog.c:331
+#: src/gr-about-dialog.c:333 src/gr-about-dialog.c:335
+#: src/gr-about-dialog.c:337 src/gr-about-dialog.c:339
+#: src/gr-about-dialog.c:341 src/gr-about-dialog.c:343
 msgid "Unknown"
 msgstr "Okänd"
 
-#: src/gr-about-dialog.c:430
+#: src/gr-about-dialog.c:433
 msgid "Flatpak"
 msgstr "Flatpak"
 
-#: src/gr-about-dialog.c:433
+#: src/gr-about-dialog.c:436
 msgctxt "Flatpak metadata"
 msgid "Version"
 msgstr "Version"
 
-#: src/gr-about-dialog.c:436
+#: src/gr-about-dialog.c:439
 msgid "Application"
 msgstr "Program"
 
-#: src/gr-about-dialog.c:439 src/gr-about-dialog.c:448
+#: src/gr-about-dialog.c:442 src/gr-about-dialog.c:451
 msgctxt "Flatpak metadata"
 msgid "ID"
 msgstr "ID"
 
-#: src/gr-about-dialog.c:440 src/gr-about-dialog.c:449
+#: src/gr-about-dialog.c:443 src/gr-about-dialog.c:452
 msgctxt "Flatpak metadata"
 msgid "Architecture"
 msgstr "Arkitektur"
 
-#: src/gr-about-dialog.c:441 src/gr-about-dialog.c:450
+#: src/gr-about-dialog.c:444 src/gr-about-dialog.c:453
 msgctxt "Flatpak metadata"
 msgid "Branch"
 msgstr "Gren"
 
-#: src/gr-about-dialog.c:442 src/gr-about-dialog.c:451
+#: src/gr-about-dialog.c:445 src/gr-about-dialog.c:454
 msgctxt "Flatpak metadata"
 msgid "Commit"
 msgstr "Checka in"
 
-#: src/gr-about-dialog.c:445
+#: src/gr-about-dialog.c:448
 msgid "Runtime"
 msgstr "Exekveringsmiljö"
 
-#: src/gr-about-dialog.c:454 src/gr-about-dialog.c:518
+#: src/gr-about-dialog.c:457 src/gr-about-dialog.c:521
 msgid "Bundled libraries"
 msgstr "Medskickade bibliotek"
 
-#: src/gr-about-dialog.c:484
+#: src/gr-about-dialog.c:487
 msgid "OS"
 msgstr "OS"
 
-#: src/gr-about-dialog.c:487
+#: src/gr-about-dialog.c:490
 msgctxt "OS metadata"
 msgid "Name"
 msgstr "Namn"
 
-#: src/gr-about-dialog.c:489
+#: src/gr-about-dialog.c:492
 msgctxt "OS metadata"
 msgid "Type"
 msgstr "Typ"
 
-#: src/gr-about-dialog.c:492 src/gr-about-dialog.c:494
+#: src/gr-about-dialog.c:495 src/gr-about-dialog.c:497
 msgctxt "OS metadata"
 msgid "Desktop"
 msgstr "Skrivbord"
 
-#: src/gr-about-dialog.c:497
+#: src/gr-about-dialog.c:500
 msgid "System libraries"
 msgstr "Systembibliotek"
 
-#: src/gr-about-dialog.c:769 src/gr-about-dialog.c:796
+#: src/gr-about-dialog.c:820 src/gr-about-dialog.c:847
 msgid "System"
 msgstr "System"
 
-#: src/gr-about-dialog.c:866
+#: src/gr-about-dialog.c:917
 msgid "translator-credits"
 msgstr ""
 "Josef Andersson <josef.andersson@fripost.se>\n"
@@ -925,11 +924,11 @@ msgstr ""
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: src/gr-about-dialog.c:869
+#: src/gr-about-dialog.c:920
 msgid "Learn more about Recipes"
 msgstr "Få reda på mer om Recept"
 
-#: src/gr-about-dialog.c:876
+#: src/gr-about-dialog.c:927
 msgid "Recipes by"
 msgstr "Recept av"
 
@@ -2126,8 +2125,8 @@ msgid ""
 "Missing the desktop portal needed to open files from inside a Flatpak "
 "sandbox."
 msgstr ""
-"Saknar skrivbordsportalen som krävs för att öppna filer inifrån en "
-"Flatpak-sandlåda."
+"Saknar skrivbordsportalen som krävs för att öppna filer inifrån en Flatpak-"
+"sandlåda."
 
 #: src/gr-utils.c:461
 msgid ""
@@ -2140,8 +2139,8 @@ msgstr ""
 msgid ""
 "Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
 msgstr ""
-"Saknar skrivbordsportalen som krävs för att öppna URL:er inifrån en "
-"Flatpak-sandlåda."
+"Saknar skrivbordsportalen som krävs för att öppna URL:er inifrån en Flatpak-"
+"sandlåda."
 
 #: src/gr-utils.c:467
 msgid ""
