@@ -4,8 +4,8 @@ AC_PREREQ([2.69])
 dnl ***********************************************************************
 dnl Define Versioning Information
 dnl ***********************************************************************
-m4_define([major_version],[0])
-m4_define([minor_version],[22])
+m4_define([major_version],[1])
+m4_define([minor_version],[0])
 m4_define([micro_version],[0])
 m4_define([package_version],[major_version.minor_version.micro_version])
 m4_define([bug_report_url],[https://bugzilla.gnome.org/enter_bug.cgi?product=recipes])
