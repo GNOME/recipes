@@ -1,4 +1,4 @@
-The materials in this folder can be used to build a dmg of GNOME Recipes on OS X.
+The materials in this folder can be used to build a dmg of Recipes on OS X.
 
 The steps I've followed are:
 
