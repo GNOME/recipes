@@ -21,23 +21,21 @@ Other information can be found here: https://wiki.gnome.org/Apps/Recipes
 Building
 --------
 
-Dependencies (at least): autoconf-archive gobject-introspection json-glib-1.0 gnome-autoar-0 gspell-1 libcanberra libappstream-glib
+Dependencies (at least): meson gtk+-3 gnome-autoar-0 gspell-1 libcanberra
 
-On debian stretch/sid:
-```
-apt install autoconf-archive gobject-introspection libjson-glib-dev libgnome-autoar-0-dev libgspell-1-dev libcanberra-dev libappstream-glib-dev
-```
+After the 1.0 release, Recipes has switched to exclusively use meson as build system.
 
-To build GNOME Recipes from git, use the following steps:
+To build Recipes from git, use the following steps: (note that the ninja tools is
+called ninja-build on Fedora)
 
 ```
 git clone --recursive git://git.gnome.org/recipes
 cd recipes
-./autogen.sh --prefix=<your preferred location>
-make
-make install
+rm -rf build
+meson --prefix=<your prefix> build
+ninja -C build
+ninja -C build install
 ```
-I list `make install` as the last step here, but Recipes works fine uninstalled as well.
 
 jhbuild also knows how to build recipes.
 
