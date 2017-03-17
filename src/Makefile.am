@@ -192,8 +192,7 @@ gr-shell-search-provider-dbus.h gr-shell-search-provider-dbus.c: Makefile.am $(s
 
 EXTRA_DIST = \
 	shell-search-provider-dbus-interfaces.xml 	\
-	recipes-ui.gresource.xml 			\
-	recipes-images.gresource.xml 			\
+	recipes.gresource.xml 				\
 	$(resource_files)				\
 	types.h.template				\
 	types.c.template
