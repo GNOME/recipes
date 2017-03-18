@@ -2,6 +2,7 @@ project('gnome-recipes', 'c', version: '1.1.1',
         meson_version : '>=0.36.0')
 
 i18n = import('i18n')
+gnome = import('gnome')
 
 conf = configuration_data()
 

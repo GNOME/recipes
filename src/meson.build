@@ -1,5 +1,3 @@
-gnome = import('gnome')
-
 src = []
 enums = []
 
