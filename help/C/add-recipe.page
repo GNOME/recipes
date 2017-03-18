@@ -18,12 +18,13 @@
 
   <title>Add or Edit a Recipe</title>
   
-  <p>You can add your own recipe to <app>Recipes</app> or edit one of the recipes that are included.
+  <p>You can add your own recipe to <app>Recipes</app> or edit a recipe you added.
   To create a new recipe, press the <gui>New Recipe</gui> in the upper-right corner.
   </p>
   <note><p>You can only edit the recipes you create, not the recipes included.</p></note>
   
-  
+  <section id="overview">
+  <title>Categories</title>
   <p>There are five main categories when adding a recipe:</p>
     <terms>
       <item>
@@ -50,5 +51,26 @@
         </p>
       </item>
     </terms>  
+    </section>
+    
+    <section id="details">
+    <title>Add Recipe Details</title>
+    </section>
+    
+    <section id="description">
+    <title>Include a Description of the Recipe</title>
+    </section>
+    
+    <section id="ingredients">
+    <title>Include the Ingredients and Create a List</title>
+    </section>
+    
+    <section id="directions">
+    <title>Add Cooking Directions</title>
+    </section>
+    
+    <section id="images">
+    <title>Add Photos</title>
+    </section>
   
 </page>
