@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-18 21:17+0000\n"
-"PO-Revision-Date: 2017-03-18 22:37+0100\n"
+"POT-Creation-Date: 2017-03-18 21:39+0000\n"
+"PO-Revision-Date: 2017-03-18 22:42+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
@@ -18,10 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.2\n"
 
+#. (itstool) path: page/title
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
 #: src/gr-window.ui:427 src/gr-about-dialog.c:911 src/gr-window.c:373
-#: src/gr-window.c:998
+#: src/gr-window.c:998 help/C/index.page:11
 msgid "Recipes"
 msgstr "Receptek"
 
@@ -39,20 +40,27 @@ msgid "GNOME loves to cook"
 msgstr "A GNOME imád főzni"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:9
+#| msgid ""
+#| "GNOME Recipes is an easy-to-use application that will help you to "
+#| "discover what to cook today, tomorrow, rest of the week and for your "
+#| "special occasions."
 msgid ""
-"GNOME Recipes is an easy-to-use application that will help you to discover "
-"what to cook today, tomorrow, rest of the week and for your special "
-"occasions."
+"Recipes is an easy-to-use application that will help you to discover what to "
+"cook today, tomorrow, the rest of the week and for your special occasions."
 msgstr ""
-"A GNOME Receptek egy könnyedén használható alkalmazás, amely a segítségére "
-"lesz annak kitalálásában, hogy mit főzzön ma, holnap, a hét többi napján és "
+"A Receptek egy könnyedén használható alkalmazás, amely a segítségére lesz "
+"annak kitalálásában, hogy mit főzzön ma, holnap, a hét többi napján és "
 "különleges alkalmakkor."
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:13
+#| msgid ""
+#| "Recipes comes with a collection of recipes that have been collected by "
+#| "GNOME contributors from all over the world. It also lets you store your "
+#| "own recipes, and share them with your friends."
 msgid ""
 "Recipes comes with a collection of recipes that have been collected by GNOME "
 "contributors from all over the world. It also lets you store your own "
-"recipes, and share them with your friends."
+"recipes and share them with your friends."
 msgstr ""
 "A Receptek egy olyan receptgyűjteménnyel érkezik, amelyet a GNOME "
 "közreműködők gyűjtöttek össze a világ minden tájáról. Lehetővé teszi a saját "
@@ -63,17 +71,14 @@ msgid "The major features of Recipes include:"
 msgstr "A Receptek főbb funkciói a következők:"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:22
-#| msgid "Add a New Recipe"
 msgid "Add and edit your own recipes"
 msgstr "Saját receptek hozzáadása és szerkesztése"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:23
-#| msgid "Share with a friend"
 msgid "Share recipes with your friends"
 msgstr "Receptek megosztása az ismerőseivel"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:24
-#| msgid "Save the shopping list"
 msgid "Export and print shopping lists"
 msgstr "Bevásárlólisták exportálása és nyomtatása"
 
@@ -88,7 +93,6 @@ msgstr ""
 "kedvencekhez"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:27
-#| msgid "Try these recipes"
 msgid "Add notes to recipes"
 msgstr "Jegyzetek hozzáadása a receptekhez"
 
@@ -153,7 +157,6 @@ msgstr ""
 "távolítva a kedvencek listájáról."
 
 #: data/org.gnome.Recipes.gschema.xml:30
-#| msgid "Add to favorites"
 msgid "The list of favorites"
 msgstr "A kedvencek listája"
 
@@ -175,7 +178,6 @@ msgstr ""
 "távolítva a bevásárlólistáról."
 
 #: data/org.gnome.Recipes.gschema.xml:45
-#| msgid "A shopping list"
 msgid "The shopping list"
 msgstr "A bevásárlólista"
 
@@ -280,7 +282,6 @@ msgid "Done"
 msgstr "Kész"
 
 #: src/gr-cooking-page.ui:185
-#| msgid "_Start Cooking"
 msgid "Stop Cooking?"
 msgstr "Főzés leállítása?"
 
@@ -297,17 +298,14 @@ msgstr ""
 "akkor is, ha most elhagyja a főzési módot."
 
 #: src/gr-cooking-page.ui:212
-#| msgid "Cooking"
 msgid "Keep Cooking"
 msgstr "Főzés folytatása"
 
 #: src/gr-cooking-page.ui:219
-#| msgid "Timer"
 msgid "Stop Timers"
 msgstr "Időmérők leállítása"
 
 #: src/gr-cooking-page.ui:226
-#| msgid "Continue"
 msgid "Continue Timers"
 msgstr "Időmérők folytatása"
 
@@ -554,7 +552,7 @@ msgstr "Vegetáriánus"
 msgid "Milk free"
 msgstr "Tejmentes"
 
-#: src/gr-edit-page.ui:715 src/menus.ui:62
+#: src/gr-edit-page.ui:715 src/menus.ui:66
 msgid "Edit"
 msgstr "Szerkesztés"
 
@@ -738,18 +736,14 @@ msgid "_Start Cooking"
 msgstr "_Főzés elkezdése"
 
 #: src/gr-window.ui:144
-#| msgid "View Shopping List"
 msgid "_Done Shopping"
 msgstr "Vásárlás _befejezése"
 
 #: src/gr-window.ui:205
-#| msgid "%d ingredient marked for purchase"
-#| msgid_plural "%d ingredients marked for purchase"
 msgid "All ingredients marked as stocked!"
 msgstr "Az összes hozzávaló megjelölve készleten lévőként!"
 
 #: src/gr-window.ui:215
-#| msgid "Undo"
 msgid "_Undo"
 msgstr "_Visszavonás"
 
@@ -773,11 +767,11 @@ msgstr "Frissítés küldése"
 msgid "Cuisines"
 msgstr "Konyhák"
 
-#: src/menus.ui:6 src/menus.ui:44
+#: src/menus.ui:6 src/menus.ui:48
 msgid "_Import"
 msgstr "_Importálás"
 
-#: src/menus.ui:11 src/menus.ui:49
+#: src/menus.ui:11 src/menus.ui:53
 msgid "_Export All"
 msgstr "Összes _exportálása"
 
@@ -785,45 +779,48 @@ msgstr "Összes _exportálása"
 msgid "_Chef Information"
 msgstr "_Konyhafőnök-információk"
 
-#: src/menus.ui:22
-msgid "_About"
-msgstr "_Névjegy"
-
-#: src/menus.ui:26 src/menus.ui:85
+#: src/menus.ui:22 src/menus.ui:89
 msgid "_What’s New"
 msgstr "Új_donságok"
 
-#: src/menus.ui:30 src/menus.ui:89
+#: src/menus.ui:26
+#| msgid "Help"
+msgid "_Help"
+msgstr "_Súgó"
+
+#: src/menus.ui:30
+msgid "_About"
+msgstr "_Névjegy"
+
+#: src/menus.ui:34 src/menus.ui:93
 msgid "_Report Issue"
 msgstr "_Probléma jelentése"
 
-#: src/menus.ui:34
+#: src/menus.ui:38
 msgid "_Quit"
 msgstr "_Kilépés"
 
-#: src/menus.ui:41
+#: src/menus.ui:45
 msgid "File"
 msgstr "Fájl"
 
-#: src/menus.ui:56
-#| msgid "Chef Information"
+#: src/menus.ui:60
 msgid "Chef Information…"
 msgstr "Konyhafőnök-információk…"
 
-#: src/menus.ui:65
+#: src/menus.ui:69
 msgid "Copy"
 msgstr "Másolás"
 
-#: src/menus.ui:69
-#| msgid "Pasta"
+#: src/menus.ui:73
 msgid "Paste"
 msgstr "Beillesztés"
 
-#: src/menus.ui:75
+#: src/menus.ui:79
 msgid "Find…"
 msgstr "Keresés…"
 
-#: src/menus.ui:82
+#: src/menus.ui:86
 msgid "Help"
 msgstr "Súgó"
 
@@ -850,8 +847,9 @@ msgid "Share with a friend"
 msgstr "Megosztás egy ismerőssel"
 
 #: src/recipe-export-dialog.ui:63
-msgid "Contribute to GNOME Recipes"
-msgstr "Hozzájárulás a GNOME Receptekhez"
+#| msgid "Contribute to GNOME Recipes"
+msgid "Contribute to the Recipes project"
+msgstr "Hozzájárulás a Receptek projekthez"
 
 #: src/recipe-whats-new-dialog.ui:8
 msgid "What’s New in Recipes"
@@ -962,11 +960,11 @@ msgstr ""
 "Személyes információk hozzáfűzésének engedélyezése azokhoz a receptekhez, "
 "amelyeket megoszt az ismerőseivel."
 
-#: src/gr-app.c:378
+#: src/gr-app.c:393
 msgid "Print the version and exit"
 msgstr "Verzió kiírása és kilépés"
 
-#: src/gr-app.c:382
+#: src/gr-app.c:397
 msgid "Turn on verbose logging"
 msgstr "Bőbeszédű naplózás bekapcsolása"
 
@@ -2045,10 +2043,6 @@ msgid "Certain functionality will not be available."
 msgstr "Bizonyos funkcionalitás nem lesz elérhető."
 
 #: src/gr-utils.c:459
-#| msgid ""
-#| "Missing the desktop portals needed to open files from inside a flatpak "
-#| "sandbox. Please install xdg-desktop-portal and xdg-desktop-portal-gtk on "
-#| "your system."
 msgid ""
 "Missing the desktop portal needed to open files from inside a Flatpak "
 "sandbox."
@@ -2057,10 +2051,6 @@ msgstr ""
 "belülről történő fájlok megnyitásához szükséges."
 
 #: src/gr-utils.c:461
-#| msgid ""
-#| "Missing the desktop portals needed to print from inside a flatpak "
-#| "sandbox. Please install xdg-desktop-portal and xdg-desktop-portal-gtk on "
-#| "your system."
 msgid ""
 "Missing the desktop portal needed to print from inside a Flatpak sandbox."
 msgstr ""
@@ -2068,10 +2058,6 @@ msgstr ""
 "belülről történő nyomtatáshoz szükséges."
 
 #: src/gr-utils.c:463
-#| msgid ""
-#| "Missing the desktop portals needed to open files from inside a flatpak "
-#| "sandbox. Please install xdg-desktop-portal and xdg-desktop-portal-gtk on "
-#| "your system."
 msgid ""
 "Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
 msgstr ""
@@ -2079,10 +2065,6 @@ msgstr ""
 "belülről történő URL-ek megnyitásához szükséges."
 
 #: src/gr-utils.c:467
-#| msgid ""
-#| "Missing the desktop portals needed to print from inside a flatpak "
-#| "sandbox. Please install xdg-desktop-portal and xdg-desktop-portal-gtk on "
-#| "your system."
 msgid ""
 "Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
 msgstr ""
@@ -2761,6 +2743,17 @@ msgstr "Kelt tészta"
 #: src/segments.inc:2
 msgid "Toppings"
 msgstr "Öntetek"
+
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+#| msgid "translator-credits"
+msgctxt "_"
+msgid "translator-credits"
+msgstr "Úr Balázs <urbalazs@gmail.com>, 2017."
+
+#. (itstool) path: page/p
+#: help/C/index.page:13
+msgid "Recipes will be documented here."
+msgstr "A Receptek itt lesz dokumentálva."
 
 #~ msgid "_Close"
 #~ msgstr "_Bezárás"
