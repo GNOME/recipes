@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-17 20:52+0000\n"
-"PO-Revision-Date: 2017-03-17 22:41+0100\n"
+"POT-Creation-Date: 2017-03-18 21:39+0000\n"
+"PO-Revision-Date: 2017-03-18 23:04+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -19,10 +19,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.11\n"
 
+#. (itstool) path: page/title
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
 #: src/gr-window.ui:427 src/gr-about-dialog.c:911 src/gr-window.c:373
-#: src/gr-window.c:998
+#: src/gr-window.c:998 help/C/index.page:11
 msgid "Recipes"
 msgstr "Recept"
 
@@ -539,7 +540,7 @@ msgstr "Vegetarian"
 msgid "Milk free"
 msgstr "Mjölkfri"
 
-#: src/gr-edit-page.ui:715 src/menus.ui:62
+#: src/gr-edit-page.ui:715 src/menus.ui:66
 msgid "Edit"
 msgstr "Redigera"
 
@@ -753,11 +754,11 @@ msgstr "Skicka uppdatering"
 msgid "Cuisines"
 msgstr "Matkulturer"
 
-#: src/menus.ui:6 src/menus.ui:44
+#: src/menus.ui:6 src/menus.ui:48
 msgid "_Import"
 msgstr "_Importera"
 
-#: src/menus.ui:11 src/menus.ui:49
+#: src/menus.ui:11 src/menus.ui:53
 msgid "_Export All"
 msgstr "_Exportera alla"
 
@@ -765,47 +766,51 @@ msgstr "_Exportera alla"
 msgid "_Chef Information"
 msgstr "_Kock-information"
 
-#: src/menus.ui:22
-msgid "_About"
-msgstr "_Om"
-
-#: src/menus.ui:26 src/menus.ui:85
+#: src/menus.ui:22 src/menus.ui:89
 msgid "_What’s New"
 msgstr "_Vad är nytt"
 
-#: src/menus.ui:30 src/menus.ui:89
+#: src/menus.ui:26
+msgid "_Help"
+msgstr "_Hjälp"
+
+#: src/menus.ui:30
+msgid "_About"
+msgstr "_Om"
+
+#: src/menus.ui:34 src/menus.ui:93
 msgid "_Report Issue"
 msgstr "_Rapportera problem"
 
-#: src/menus.ui:34
+#: src/menus.ui:38
 msgid "_Quit"
 msgstr "_Avsluta"
 
-#: src/menus.ui:41
+#: src/menus.ui:45
 msgid "File"
 msgstr "Arkiv"
 
-#: src/menus.ui:56
+#: src/menus.ui:60
 msgid "Chef Information…"
 msgstr "Kock-information…"
 
-#: src/menus.ui:65
+#: src/menus.ui:69
 msgid "Copy"
 msgstr "Kopiera"
 
-#: src/menus.ui:69
+#: src/menus.ui:73
 msgid "Paste"
 msgstr "Klistra in"
 
-#: src/menus.ui:75
+#: src/menus.ui:79
 msgid "Find…"
 msgstr "Sök…"
 
-#: src/menus.ui:82
+#: src/menus.ui:86
 msgid "Help"
 msgstr "Hjälp"
 
-#: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:153
+#: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:156
 #: src/gr-image-viewer.c:616 src/gr-recipe-exporter.c:169
 #: src/gr-shopping-page.c:731 src/gr-window.c:1133
 msgid "Cancel"
@@ -945,27 +950,27 @@ msgstr ""
 "Tillåt att din personliga information inkluderas med recept som du delar med "
 "dina vänner."
 
-#: src/gr-app.c:378
+#: src/gr-app.c:393
 msgid "Print the version and exit"
 msgstr "Skriv programversion och avsluta"
 
-#: src/gr-app.c:382
+#: src/gr-app.c:397
 msgid "Turn on verbose logging"
 msgstr "Slå på utförlig loggning"
 
-#: src/gr-chef-dialog.c:149 src/gr-image-viewer.c:612
+#: src/gr-chef-dialog.c:152 src/gr-image-viewer.c:612
 msgid "Select an Image"
 msgstr "Välj en bild"
 
-#: src/gr-chef-dialog.c:152 src/gr-image-viewer.c:615 src/gr-window.c:1132
+#: src/gr-chef-dialog.c:155 src/gr-image-viewer.c:615 src/gr-window.c:1132
 msgid "Open"
 msgstr "Öppna"
 
-#: src/gr-chef-dialog.c:157 src/gr-image-viewer.c:620
+#: src/gr-chef-dialog.c:160 src/gr-image-viewer.c:620
 msgid "Image files"
 msgstr "Bildfiler"
 
-#: src/gr-chef-dialog.c:406
+#: src/gr-chef-dialog.c:409
 msgid "New Chef"
 msgstr "Ny kock"
 
@@ -2824,6 +2829,21 @@ msgstr "Deg"
 #: src/segments.inc:2
 msgid "Toppings"
 msgstr "Topping"
+
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+msgctxt "_"
+msgid "translator-credits"
+msgstr ""
+"Josef Andersson <josef.andersson@fripost.se>\n"
+"Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
+"\n"
+"Skicka synpunkter på översättningen till\n"
+"<tp-sv@listor.tp-sv.se>."
+
+#. (itstool) path: page/p
+#: help/C/index.page:13
+msgid "Recipes will be documented here."
+msgstr "Recept kommer att dokumenteras här."
 
 #~ msgid "My Chef Information"
 #~ msgstr "Min kockinformation"
