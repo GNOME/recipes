@@ -1,2 +1,4 @@
-install_data ('C/index.page',
-              install_dir: join_paths([datadir,'help/C/org.gnome.Recipes']))
+gnome.yelp('org.gnome.Recipes',
+           sources: ['index.page'],
+           media: [],
+           languages: ['de'])
