@@ -18,10 +18,12 @@
 
   <title>Add or Edit a Recipe</title>
   
-  <p>You can add your own recipe to <app>Recipes</app> or edit a recipe you added.
-  To create a new recipe, press the <gui>New Recipe</gui> in the upper-right corner.
+  <p>You can add your own recipe to <app>Recipes</app> or edit a recipe you 
+  added.  To create a new recipe, press the <gui>New Recipe</gui> in the 
+  upper-right corner.
   </p>
-  <note><p>You can only edit the recipes you create, not the recipes included.</p></note>
+  <note><p>You can only edit the recipes you create, not the recipes included.
+  </p></note>
   
   <section id="overview">
   <title>Categories</title>
@@ -29,25 +31,28 @@
     <terms>
       <item>
       <title>Recipe details</title>
-        <p>The name of the recipe; servings; preparation and cooking time; and what kind 
-        of meal.</p>
+        <p>The name of the recipe; servings; preparation and cooking time; and 
+        what kind of meal.</p>
       </item>
       <item><title>Description</title>
-        <p>A an open field to describe the recipe in as much detail as you would like.</p>
+        <p>A an open field to describe the recipe in as much detail as you 
+        would like.</p>
       </item>
       <item>
       <title>Ingredients and Lists</title>
         <p>What you will need to make the recipe. Lists allow you to have a 
-        separate list of ingredients.  For example, if you are baking a cake, you could have a list for the 
-        ingredients for the cake and a different list for the ingredients for the frosting.</p>
+        separate list of ingredients.  For example, if you are baking a cake, 
+        you could have a list for the ingredients for the cake and a different 
+        list for the ingredients for the frosting.</p>
       </item>
       <item><title>Directions</title>
-        <p>What steps are needed to make the recipe, how to cook each step, and at what
-        temperature .</p>
+        <p>What steps are needed to make the recipe, how to cook each step, 
+        and at what temperature .</p>
       </item>
       <item>
         <title>Images</title>
-        <p>You can add a photo of the recipe and also optionally add photos for each step in the Directions.
+        <p>You can add a photo of the recipe and also optionally add photos 
+        for each step in the Directions.
         </p>
       </item>
     </terms>  
@@ -55,22 +60,108 @@
     
     <section id="details">
     <title>Add Recipe Details</title>
+      <p>Include the following information about your recipe.  Each field is
+      optional.</p>
+      <steps>
+        <item><p><gui>Name Your Recipe</gui>: Enter the name of the recipe in
+        the text box.</p>
+        </item>
+        <item><p><gui>Serves</gui>:Enter a number or press the 
+        <gui style="button">+</gui> to enter how many servings the recipe
+        will make.</p>
+        </item>
+        <item><p><gui>Preparation Time</gui>: From the drop down box, choose
+        how long it takes to pepare the ingredients prior to cooking.</p>
+        </item>
+        <item><p><gui>Cooking Time</gui>:  From the drop down box, choose
+        how long it takes to cook the recipe.</p>
+        </item>
+        <item><p><gui>Cuisine</gui>:  From the drop down box, choose the type of
+        food or the region from where the recipe comes from.  You can also
+        enter the type of cuisine if it is not included in the list.</p>
+        </item>
+        <item><p><gui>Meal</gui>: From the drop down box, choose what type
+        of meal the recipe makes.  Examples include breakfast or dinner; or
+        types of food such as pasta or cocktails.  You can also enter the type
+        of meal if it is not included in the list. </p>
+        </item>
+        <item><p><gui>Season</gui>: From the drop down box, choose from
+        the season or holiday that the recipe is typically associated with.
+        You can also enter the season or holiday if it is not included 
+        in the list.</p>
+        </item>
+        <item><p><gui>Spiciness</gui>: From the drop down menu, choose
+        how spicy the recipe is.</p>
+        </item>
+      </steps>
     </section>
     
     <section id="description">
-    <title>Include a Description of the Recipe</title>
+    <title>Include a Description of the Recipe and Dietary Restrictions</title>
+      <p>In the text box, you can describe the recipe in detail.</p>
+      <p>Below the Description field you can select from the following
+      dietary restrictions.  These help for searching recipes later.
+      </p>
+      <list>
+        <item><p>Gluten free<gui></gui>: Select for recipes that 
+        do not include wheat or related grains.</p></item>
+        <item><p><gui>Vegetarian</gui>: Select for recipes
+        that only include vegetables and do not include meat, poultry
+        or seafood.  Vegetarian recipes may include dairy or eggs.</p></item>
+        <item><p><gui>Nut free</gui>: Select for recipes that do not
+        include any nuts.</p></item>
+        <item><p><gui>Milk free</gui>: Select for recipes that do not 
+        include dairy products, such as milk or cheese.</p></item>
+        <item><p><gui>Vegan</gui>: Recipes that do not include any product
+        from an animal.  This includes meat, dairy, eggs and more.</p></item>
+      </list>
     </section>
     
     <section id="ingredients">
-    <title>Include the Ingredients and Create a List</title>
+    <title>Include the Ingredients and Create Lists</title>
+      <p>You can add the ingredients and create lists for the recipe.  Lists are
+      used for recipes that have different parts, such as a cake that has 
+      an ingredient list for the cake and an ingredient list for the frosting.
+      To create a list:</p>
+      <steps>
+        <item><p>Select the <gui>Add List</gui> button.</p>
+        </item>
+        <item><p>Enter the name of the list, such as cake, in the
+         <gui>Name of the List</gui> text box.</p>
+        </item>
+        <item><p>Repeat this step for as many lists as you may need.</p>
+        </item>
+      </steps>
+      <p>To add ingredients to a recipe or to a list:</p>
+      <steps>
+        <item><p>Click <gui style="button">+</gui></p>
+        </item>
+        <item><p>Choose the ingredient from the list or enter
+        the ingredient in the <gui>Search</gui> box.</p>
+        </item>
+        <item><p>Click <gui>Add</gui> to add the ingredient to the list or 
+        click <gui>Amount</gui> to how much of the ingredient is needed.</p>
+        </item>
+        <item><p>Under <gui>Amount</gui> you can enter the quantity needed
+        and then press <gui>Add</gui>.  Or you can enter the amount and choose
+        the measurement from the list and then press <gui>Add</gui>.</p>
+        </item>
+        <item>
+          <p>Repeat these steps until all ingredients have been added to the 
+          list or recipe.
+          </p>
+        </item>
+      </steps> 
     </section>
     
     <section id="directions">
     <title>Add Cooking Directions</title>
+    
     </section>
     
     <section id="images">
     <title>Add Photos</title>
+    
     </section>
   
 </page>
