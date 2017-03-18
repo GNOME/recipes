@@ -5,8 +5,10 @@
   
   <info>
     <link type="guide" xref="index#manage"/>
+    <link type="seealso" xref="find-recipe"/>
+    <link type="seealso" xref="cooking"/>
     <desc>How to add or edit a recipe.</desc>
-    <revision pkgversion="3.24" version="0.1" date="2017-03-16" status="stub"/>
+    <revision pkgversion="3.24" version="0.1" date="2017-03-16" status="draft"/>
     <credit type="author">
       <name>Paul Cutler</name>
       <email its:translate="no">pcutler@gnome.org</email>
@@ -27,7 +29,7 @@
   
   <section id="overview">
   <title>Categories</title>
-  <p>There are five main categories when adding a recipe:</p>
+  <p>There are five main categories to add to a recipe:</p>
     <terms>
       <item>
       <title>Recipe details</title>
@@ -66,8 +68,8 @@
         <item><p><gui>Name Your Recipe</gui>: Enter the name of the recipe in
         the text box.</p>
         </item>
-        <item><p><gui>Serves</gui>:Enter a number or press the 
-        <gui style="button">+</gui> to enter how many servings the recipe
+        <item><p><gui>Serves</gui>: Enter a number or press the 
+        <gui style="button">+</gui> button to enter how many servings the recipe
         will make.</p>
         </item>
         <item><p><gui>Preparation Time</gui>: From the drop down box, choose
@@ -99,8 +101,9 @@
     <section id="description">
     <title>Include a Description of the Recipe and Dietary Restrictions</title>
       <p>In the text box, you can describe the recipe in detail.</p>
-      <p>Below the Description field you can select from the following
-      dietary restrictions.  These help for searching recipes later.
+      <p>Below the Description field you can select a checkbox if the 
+      recipe meets any dietary restrictions.  
+      These help for searching recipes later.
       </p>
       <list>
         <item><p>Gluten free<gui></gui>: Select for recipes that 
@@ -134,7 +137,7 @@
       </steps>
       <p>To add ingredients to a recipe or to a list:</p>
       <steps>
-        <item><p>Click <gui style="button">+</gui></p>
+        <item><p>Press the <gui style="button">+</gui> button.</p>
         </item>
         <item><p>Choose the ingredient from the list or enter
         the ingredient in the <gui>Search</gui> box.</p>
@@ -154,14 +157,118 @@
       </steps> 
     </section>
     
+    <section id="images">
+    <title>Add Images and Photos</title>
+      <p>To add an image to your recipe, press the <gui style="button">
+      +</gui> below the camera icon or press <guiseq>
+      <gui>Add Image</gui> <gui style="button">+</gui>
+      </guiseq> at the bottom of the <app>Recipes</app> window. Select
+      the image you would like to add and press <gui>Open</gui>.
+      To add additional images, repeat the process.
+      </p>
+      <p>After adding an image, you can rotate it, make it the default
+      image for the recipe, or remove it from the recipe.
+      </p>
+      <steps>
+        <item>
+        <p>To rotate an image to the left press the <gui>Rotate Image</gui> 
+        button: 
+        <media type="image" mime="image/png" src="images/rotate-left.png"
+        its:translate="yes"><span its:translate="yes">Rotate Image</span>
+        </media>.</p>
+        </item>
+        <item>
+        <p>To rotate an image to the right press the <gui>Rotate Image</gui> 
+        button: 
+        <media type="image" mime="image/png" src="images/rotate-right.png"
+        its:translate="yes"><span its:translate="yes">Rotate Image</span>
+        </media>.</p>
+        </item>
+        <item>
+        <p>To make an image the default image for the recipe,  
+        press the <gui>Default Image</gui> button:
+        <media type="image" mime="image/png" src="images/star.png"
+        its:translate="yes"><span its:translate="yes">Default Image
+        </span></media> .</p>
+        </item>
+        <item>
+        <p>To remove an image from the the recipe,  
+        press the <gui>Remove Image</gui> button:
+        <media type="image" mime="image/png" src="images/trash.png"
+        its:translate="yes"><span its:translate="yes">Remove Image
+        </span></media> .</p>
+        </item>
+      </steps>
+    
+    
+    </section>
+    
     <section id="directions">
     <title>Add Cooking Directions</title>
+      <p>In the Directions text box, type the steps needed to create the 
+      recipe.  To separate each step, press <key>Enter</key> twice to
+      create a new paragraph for each step.  <app>Recipes</app>
+       will automatically create separate steps for your
+      recipe.  These steps will be used when it is time to cook using
+      full screen mode in <app>Recipes</app>.</p>
+      <p>In each paragraph for each step, you can include the following tags
+      for adding images, timers or temperature.  You can only use an image
+      or a timer, but not both in a given step.
+      The information in these tags will be available when viewing the recipe
+      or when in hands-free mode.  All tags are enclosed within brackets.</p>
+      <terms>
+        <item>
+        <title>Timers</title>        
+          <p>To create a timer, enter how long the timer should be within
+          brackets.  An example of a one minute and thirty second timer 
+          would be: <cmd>[01:30]</cmd>.
+          </p>
+          <p>You can add a description for the timer by adding a comma 
+          and the description. An example of a fifteen minute timer to 
+          preheat the oven would be: <cmd>[15:00,Preheat oven]</cmd>.
+          </p>
+        </item>
+        
+        <item>
+        <title>Images</title>
+          <p>You can add an image or photo of the finished recipe and also
+          a photo of each each step of making a recipe.  See 
+          <link xref="#images"/> for how to add an image or images to your
+          recipe.  
+          </p>
+          <steps>
+            <item><p>To assign one of the photos you have added, you will 
+          need to know the image's number.  Press the <gui>Add Image</gui>
+          button at the bottom <app>Recipes</app> window.  Thumbnails of
+          each photo you have added will be displayed.    The first image
+          would be number one, the second would be number two and so on. 
+            </p></item>
+            <item><p>Add the tag <cmd>[image:1]</cmd> to add the first image
+            to a step.
+            </p></item>
+            <item><p>Add additional image tags with the correct number for 
+            as many steps as you wish.
+            </p></item>
+          </steps>
+        </item>
+        
+        <item>
+        <title>Temperature</title>
+          <p>You can add the temperature a step needs to be cooked at by 
+          adding a temperature tag. 
+          </p>
+            <steps>
+              <item><p>Add the tag <cmd>[temperature:200C]</cmd>.  You can 
+              set the temperature in Celsius with a C or Fahrenheit with an F
+              following the temperature.
+              </p></item>
+            </steps>
+        </item>
+      </terms>
+
     
     </section>
     
-    <section id="images">
-    <title>Add Photos</title>
-    
-    </section>
+
   
 </page>
