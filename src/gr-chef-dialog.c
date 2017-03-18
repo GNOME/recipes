@@ -146,6 +146,9 @@ image_button_clicked (GrChefDialog *self)
         GtkFileChooserNative *chooser;
         g_autoptr(GtkFileFilter) filter = NULL;
 
+        if (!portal_available (GTK_WINDOW (self), "org.freedesktop.portal.FileChooser"))
+                return;
+
         chooser = gtk_file_chooser_native_new (_("Select an Image"),
                                                GTK_WINDOW (self),
                                                GTK_FILE_CHOOSER_ACTION_OPEN,
