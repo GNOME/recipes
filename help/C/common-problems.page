@@ -1,0 +1,60 @@
+<page xmlns="http://projectmallard.org/1.0/"
+  xmlns:its="http://www.w3.org/2005/11/its"
+  type="topic"
+  id="common-problems">
+  
+  <info>
+    <link type="guide" xref="index#problems"/>
+    <desc>Solutions to common problems with <app>Recipes</app>.</desc>
+    <revision pkgversion="3.24" version="0.1" date="2017-03-16" status="stub"/>
+    <credit type="author">
+      <name>Paul Cutler</name>
+      <email its:translate="no">pcutler@gnome.org</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 4.0</p>
+    </license>
+  </info>
+
+  <section id="edit-recipes">
+  <title>Editing Your Recipes</title>
+    <p>If you have change the login or user ID you use to log into your computer,
+    and you can no longer edit the recipes you have created, you will need
+    to update the <app>Recipes</app> database.</p>
+    
+  <note style="info package">
+    <p>You must have the <sys>dconf-editor</sys> package installed.  
+    Be very careful editing application data in <app>dconf-editor</app>.
+    By editing an application's settings, you may cause that application to 
+    stop working correctly.</p>
+  </note> 
+  
+  <p>To update <app>Recipes</app> to use the old user to allow you to edit 
+  your recipes:</p>
+  <steps>
+    <item>
+      <p>Open <app>dconf-editor</app>.</p>
+    </item>
+    <item>
+      <p>Select <guiseq><gui>org</gui> <gui>gnome</gui> <gui>recipes</gui>
+       <gui>user</gui></guiseq></p>.
+    </item>
+    <item>
+      <p>In the <gui>Custom value</gui> field, enter the old user ID.</p>
+    </item>
+    <item>
+      <p>Close <app>dconf-editor</app></p>.
+    </item>
+    <item>
+      <p>Open <app>Recipes</app>.  You will now be able to open and edit
+      recipes you have created.</p>
+    </item>
+  </steps>
+  </section>
+  
+  <section id="remove-recipes">
+    <title>Remove or Edit Included Recipes</title>
+      <p>You can only remove or edit the recipes you create, not the recipes 
+      included.</p>
+  </section>
+</page>
