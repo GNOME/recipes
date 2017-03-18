@@ -44,6 +44,9 @@ $SED -e 's/^\(.*\)$/     N_("\1"),/' $top_srcdir/data/ingredients.list > $top_sr
 $SED -e 's/^\(.*\)$/     N_("no \1"),/' $top_srcdir/data/ingredients.list > $top_srcdir/src/no-ingredients.inc
 $SED -e 's/^\(.*\)$/     N_("\1"),/' $top_srcdir/data/segments.list > $top_srcdir/src/segments.inc
 
+# extract strings from help files
+itstool --out help.pot help/C/*.page
+
 $XGETTEXT --default-domain="$GETTEXT_PACKAGE" \
           --directory="$top_srcdir" \
           --add-comments \
@@ -69,7 +72,7 @@ $XGETTEXT --default-domain="$GETTEXT_PACKAGE" \
           --flag=gtk_message_dialog_format_secondary_text:2:c-format \
           --flag=gtk_message_dialog_new:5:c-format \
           --flag=gtk_message_dialog_new_with_markup:5:c-format \
-          --files-from="$srcdir/POTFILES.in" \
+          --files-from="$srcdir/POTFILES.in" help.pot \
         && test ! -f "$GETTEXT_PACKAGE.po" \
            || ( rm -f "$srcdir/$GETTEXT_PACKAGE.pot" \
                 && mv "$GETTEXT_PACKAGE.po" "$srcdir/$GETTEXT_PACKAGE.pot" )
