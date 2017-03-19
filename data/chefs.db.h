@@ -14,6 +14,7 @@ N_("Ray is a Desktop Software Engineer at Red Hat and vegetarian who occasionall
 N_("Just Link.")
 N_("Matthias is a manager in the Desktop team at Red Hat. He likes to cook as much as he likes to code.")
 N_("Matthew is a vegan and a Computer Science student who loves FOSS.")
+N_("I'm cooking from time to time and started to add recipes here.")
 N_("Artist, Computer Scientist, Traveller.")
 N_("I love cooking. :)")
 N_("Aviation, making stuff, in Finland.")

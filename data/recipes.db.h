@@ -1,5 +1,13 @@
 #if 0
 
+N_("Lemon Cake")
+N_("My favorite Lemon Cake recipe. The cake is light and juicy.")
+N_("Preheat the oven to [temperature:175C] - [temperature:195C].")
+N_("First abrade the shell of the lemons. Squeeze the juice out of two (per serve) lemons.")
+N_("Stir eggs and sugar foamy. Sieve the flour and add it with the vanilla sugar, baking powder, lemon shells and margarine one by one. Stir everything well.")
+N_("[timer:00:20:00]Put the dough on a baking tray with baking paper and put it in the preheated oven. Bake it for 20min (middle rail).")
+N_("Now mix the lemon juice little by little with the sieved powered sugar. Be sparing with the juice, the sugar icing must be pretty viscous.")
+N_("Apply the sugar icing on the cake with a fork as long the cake is warm. Let the cake cool down.")
 N_("Henry's Goulash")
 N_("Originally from Hungary, this dish is widespread in Central Europe.")
 N_("This is my friend Henry's version of it.")
