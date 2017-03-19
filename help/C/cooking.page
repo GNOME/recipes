@@ -5,8 +5,9 @@
   
   <info>
     <link type="guide" xref="index#cook"/>
+    <link type="seealso" xref="add-recipe"/>
     <desc>Use hands-free mode or timers to help you cook.</desc>
-    <revision pkgversion="3.24" version="0.1" date="2017-03-16" status="stub"/>
+    <revision pkgversion="3.24" version="0.1" date="2017-03-16" status="draft"/>
     <credit type="author">
       <name>Paul Cutler</name>
       <email its:translate="no">pcutler@gnome.org</email>
@@ -18,4 +19,54 @@
 
   <title>Start Cooking</title>
   
+  <p><app>Recipes</app> features a hands-free mode to help you with recipe
+  directions when you want to cook a recipe.  Hands-free mode makes it
+  easy to view the steps to make a recipe, including starting timers 
+  or seeing photos of each step, if they were included in the recipe.</p>
+  
+  <p>To start cooking with hands-free mode:</p>.
+  <steps>
+    <item>
+      <p>Open the recipe you want to cook.
+      </p>
+    </item>
+    <item>
+      <p>Press the <gui>Start Cooking</gui>button in the top-right corner.
+      </p>
+    </item>
+    <item>
+      <p><app>Recipes</app> will change to full screen in hands-free mode
+      and display the first step.
+      </p>
+    </item>
+    <item>
+      <p>To move to the next step of the recipe, press any key on the
+      keyboard.
+      </p>
+    </item>
+    <item>
+      <p>To move to the previous step, press the left arrow key on the
+      keyboard.
+      </p>
+    </item>
+    <item>
+      <p>To start a timer, press the <gui>Start</gui> button.  Once you have
+      started a timer, you can press <gui>Pause</gui> to pause the timer
+      or <gui>Reset</gui> to re-start the timer from the beginning. You can
+      have multiple timers running and the names of the step associated
+      with the timer will be shown in the upper-left corner of 
+      <app>Recipes</app>.
+      </p>
+    </item>
+    <item>
+      <p>To move to the next step of the recipe, press any key on the
+      keyboard.
+      </p>
+    </item>
+    <item>
+      <p>When you have completed all the steps or to exit hands-free mode at any time, 
+      press the <key>Escape</key> key or press the <gui>x</gui> button
+      in the top-right corner.</p>
+    </item>
+  </steps>
 </page>
