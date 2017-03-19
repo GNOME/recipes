@@ -5,8 +5,8 @@
   
   <info>
     <link type="guide" xref="index#manage"/>
-    <desc>Add notes to a recipe.</desc>
-    <revision pkgversion="3.24" version="0.1" date="2017-03-16" status="stub"/>
+    <desc>How to make a recipe a favorite or add notes to it.</desc>
+    <revision pkgversion="3.24" version="0.1" date="2017-03-16" status="draft"/>
     <credit type="author">
       <name>Paul Cutler</name>
       <email its:translate="no">pcutler@gnome.org</email>
@@ -16,6 +16,52 @@
     </license>
   </info>
 
-  <title>Recipe Notes</title>
+  <title>Add Notes</title>
+  
+  <section id="recipe-notes">
+  <title>Add a Note to a Recipe.</title>
+  <p>You can add personal notes to any recipe.  You may want to make a note
+  how you changed the recipe, or if a recipe needed to be cooked shorter
+  or longer, or if it became a favorite of a friend or family member.
+  To add a note to a recipe:</p>
+  <steps>
+    <item>
+      <p>Open a recipe.</p>
+    </item>
+    <item>
+      <p>Press the <gui style="button">Notes</gui> button in the 
+      lower-left corner.</p>
+    </item>
+    <item>
+      <p>Enter your notes in the text box.</p>
+    </item>
+    <item>
+      <p>Press the <gui style="button">Notes</gui> button in the 
+      lower-left corner when finished.</p>
+    </item>
+  </steps>
+  </section>
+  
+  <section id="favorite">
+  <title>Make a recipe a favorite.</title>
+  <p>You can make a recipe a favorite.  To favorite a recipe:</p>
+  <steps>
+    <item>
+      <p>Open a recipe.</p>
+    </item>
+    <item>
+      <p>Press the <gui>Add to Favorites</gui> 
+      <media type="image" mime="image/png" 
+      src="images/love.png" its:translate="yes">
+      <span its:translate="yes">Add to Favorites</span></media> button.
+      </p>
+    </item>
+  </steps>
+  <p>To remove from favorites, press the <gui>Add to Favorites</gui> 
+  button again.
+  </p>
+  </section>
+    
+    
   
 </page>
