@@ -7,7 +7,7 @@
     <link type="guide" xref="index#cook"/>
     <desc>Automatically create a shopping list with the ingredients needed
     for a recipe.</desc>
-    <revision pkgversion="3.24" version="0.1" date="2017-03-16" status="stub"/>
+    <revision pkgversion="3.24" version="0.1" date="2017-03-16" status="draft"/>
     <credit type="author">
       <name>Paul Cutler</name>
       <email its:translate="no">pcutler@gnome.org</email>
@@ -18,5 +18,61 @@
   </info>
 
   <title>Create a Shopping List</title>
+
+  <p><app>Recipes</app> will help you create shopping list based on the 
+  ingredients in a recipe.  To create a shopping list:</p>
+  <steps>
+    <item>
+      <p>Open a recipe.</p>
+    </item>
+    <item>
+      <p>Press the <gui>Buy Ingredients</gui> button located under
+      the ingredient list.</p>
+    </item>
+    <item>
+      <p>Open a recipe.</p>
+    </item>
+    <item>
+      <p><app>Recipes</app> will display a pop-up at the top.  To view
+      the shopping list, press the <gui>View Shopping List</gui> button or
+      press <gui>x</gui> to close the pop-up.</p>
+    </item>
+    <item>
+      <p>Repeat for any other recipes you would like the ingredients to be
+      added to your shopping list.</p>
+    </item>
+    </steps>
+
+  <p>After pressing the <gui>View Shopping List</gui> button, 
+  <app>Recipes</app> will display the <gui>Buy Ingredients</gui> page.  
+  The recipes that you have added to the shopping list will be displayed
+  and in the upper-right corner the serving size of each recipe is shown.
+  </p>
+  <p>The shopping list will be automatically created, including all of 
+  the ingredients you need for each recipe you added to the shopping list.
+  To remove an item from the shopping list:</p>
+  <steps>
+    <item>
+      <p>Select an item from the list.</p>
+    </item> 
+    <item>
+      <p>Press the Trash 
+      <media type="image" mime="image/png" 
+      src="images/trash.png" its:translate="yes">
+      <span its:translate="yes">Trash</span></media> button and
+      the ingredient is removed from the shopping list.</p>
+    </item>
+  </steps>
+  <p>To add an ingredient you removed back to the shopping list:</p>
+    <steps>
+    <item>
+      <p>Press the <gui>+</gui> at the bottom of the shopping list.</p>
+    </item> 
+    <item>
+      <p>Select the item you would like added and it will appear in the
+      shopping list.</p>
+    </item>
+  </steps>  
+    
   
 </page>
