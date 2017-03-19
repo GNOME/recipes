@@ -5,8 +5,8 @@
   
   <info>
     <link type="guide" xref="index#manage"/>
-    <desc>Find a recipe by name, category, or chef.</desc>
-    <revision pkgversion="3.24" version="0.1" date="2017-03-16" status="stub"/>
+    <desc>Find a recipe by name, category, cuisine, or chef.</desc>
+    <revision pkgversion="3.24" version="0.1" date="2017-03-16" status="draft"/>
     <credit type="author">
       <name>Paul Cutler</name>
       <email its:translate="no">pcutler@gnome.org</email>
@@ -15,7 +15,103 @@
       <p>Creative Commons Share Alike 4.0</p>
     </license>
   </info>
-
-  <title>Find a Recipe</title>
   
+  <title>Search Recipes</title>
+
+  <section id="search">
+  <title>Search by Recipe Name, Ingredient or Chef</title>
+  <p>Press the search button <media type="image" mime="image/png" 
+  src="images/search.png" its:translate="yes">
+  <span its:translate="yes">Search</span></media> and enter your search query.
+  The search results will include any recipe with your query in the title of
+  the recipe, ingredients, or the name for the chef who wrote the recipe.</p>
+  <p>You can also do a more narrow search by category.  
+  Press the search button <media type="image" mime="image/png" 
+  src="images/search.png" its:translate="yes">
+  <span its:translate="yes">Search</span></media> 
+  and down icon <media type="image" mime="image/png" 
+  src="images/down.png" its:translate="yes">
+  <span its:translate="yes">Down</span></media> 
+  and choose from one or more categories.</p>
+    <list>
+      <item>
+        <p>Meal
+        </p>
+      </item>
+      <item>
+        <p>Spiciness
+        </p>
+      </item>
+      <item>
+        <p>Dietary Restriction
+        </p>
+      </item>
+      <item>
+        <p>Ingredients
+        </p>
+      </item>
+    </list>
+  <p><app>Recipes</app> will display recipes that meet your search terms.  You
+  can refine your search by entering text in the search box.</p>
+  <p>To remove a category from search, press <gui>x</gui> on the search result 
+  in the search bar.</p>
+  </section>
+  
+  <section id="categories">
+  <title>Search by Categories</title>
+  <p>When you create a recipe, you can select if a recipe is in a category,
+  such as vegan or nut free.  To search by category:</p>
+  <steps>
+    <item><p>From the main <app>Recipes</app> window scroll down to
+  <gui>Categories</gui>.  
+  </p></item>
+    <item>
+      <p>You can also expand the Categories list by 
+      pressing the down icon<media type="image" mime="image/png" 
+      src="images/down.png" its:translate="yes">
+      <span its:translate="yes">Down</span></media> to show all Categories.
+      </p>
+    </item>
+  <item>
+    <p>Press the <gui>Category</gui> to view all recipes in that
+    Category.
+    </p>
+  </item>
+  </steps>
+  
+  <p>If you choose from the vegan, vegetarian, dairy-free, gluten-free or 
+  nut-free categories, the search results will also display a description
+  of the Category with a <gui>Read More</gui> link you can click to learn 
+  more about the Category.</p>
+  
+  </section>
+  
+  <section id="cuisines">
+  <title>Search by Cuisines</title>
+  <p>You can also search for a recipe by what type of cuisine or region
+  the recipe is.  This also includes searching for seasonal recipes that 
+  might be made during certain holidays or times of year.</p>
+  <steps>
+    <item>
+      <p>In the top menu bar of <app>Recipes</app>, press 
+      <gui style="button">Cuisines</gui></p>.
+    </item>
+    <item>
+      <p>A list of cuisines from around the world with brief descriptions
+      are displayed.  Click on a world cuisine to see all recipes in that
+      category sorted by the type of dish.
+      </p>
+    </item>
+    <item>
+      <p>Scroll down to see a list of seasonal categories and press the
+      down icon <media type="image" mime="image/png" 
+      src="images/down.png" its:translate="yes">
+      <span its:translate="yes">Down</span></media> to see all 
+      seasonal categories.</p>
+    </item>
+    <item>
+      <p>Select a holiday or season to show all recipes that match.</p>
+    </item>
+  </steps>
+  </section>  
 </page>
