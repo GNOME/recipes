@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-19 00:59+0000\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=recipes&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-03-15 04:17+0900\n"
 "PO-Revision-Date: 2017-03-15 04:24+0900\n"
 "Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
 "Language-Team: Korean <gnome-kr@googlegroups.com>\n"
@@ -18,11 +18,10 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.8.7\n"
 
-#. (itstool) path: page/title
 #: data/org.gnome.Recipes.desktop.in:3
-#: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
-#: src/gr-window.ui:427 src/gr-about-dialog.c:911 src/gr-window.c:373
-#: src/gr-window.c:998 help/C/index.page:11
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:15
+#: src/gr-window.ui:428 src/gr-about-dialog.c:860 src/gr-window.c:373
+#: src/gr-window.c:998
 msgid "Recipes"
 msgstr "요리"
 
@@ -35,33 +34,24 @@ msgstr "그놈 요리를 한 곳에 모았습니다!"
 msgid "org.gnome.Recipes"
 msgstr "org.gnome.Recipes"
 
-#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:915
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:864
 msgid "GNOME loves to cook"
 msgstr "그놈은 요리를 좋아해요 :)"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:9
-#, fuzzy
-#| msgid ""
-#| "GNOME Recipes is an easy-to-use application that will help you to "
-#| "discover what to cook today, tomorrow, rest of the week and for your "
-#| "special occasions."
 msgid ""
-"Recipes is an easy-to-use application that will help you to discover what to "
-"cook today, tomorrow, the rest of the week and for your special occasions."
+"GNOME Recipes is an easy-to-use application that will help you to discover "
+"what to cook today, tomorrow, rest of the week and for your special "
+"occasions."
 msgstr ""
 "그놈 요리는 오늘, 내일 다음주, 특별한 날에 무슨 요리를 할 지 찾아보는데 도움"
 "을 주는 쓰기 쉬운 프로그램입니다."
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:13
-#, fuzzy
-#| msgid ""
-#| "Recipes comes with a collection of recipes that have been collected by "
-#| "GNOME contributors from all over the world. It also lets you store your "
-#| "own recipes, and share them with your friends."
 msgid ""
 "Recipes comes with a collection of recipes that have been collected by GNOME "
 "contributors from all over the world. It also lets you store your own "
-"recipes and share them with your friends."
+"recipes, and share them with your friends."
 msgstr ""
 "요리는 전세계 여러 그놈 기여자가 모아둔 조리법을 모아두었습니다. 여러분의 조"
 "리법을 저장할 수 있고, 이 조리법을 친구와 공유할 수 있습니다."
@@ -233,52 +223,52 @@ msgstr "설명:"
 msgid "Picture:"
 msgstr "사진:"
 
-#: src/gr-chef-dialog.ui:4 src/gr-window.c:1099
+#: src/gr-chef-dialog.ui:5
 msgid "Chef Information"
 msgstr "요리사 정보"
 
-#: src/gr-chef-dialog.ui:10 src/gr-window.c:1197
+#: src/gr-chef-dialog.ui:11 src/gr-window.c:1193
 msgid "_Cancel"
 msgstr "취소(_C)"
 
-#: src/gr-chef-dialog.ui:20 src/gr-window.ui:130
+#: src/gr-chef-dialog.ui:21 src/gr-window.ui:131
 msgid "_Save"
 msgstr "저장(_S)"
 
-#: src/gr-chef-dialog.ui:97
+#: src/gr-chef-dialog.ui:98
 msgid ""
 "This information may be shared with other users if you share your recipes."
 msgstr "조리법을 공유할 경우 다른 사용자에게 이 정보를 함께 공유합니다."
 
-#: src/gr-chef-dialog.ui:119
+#: src/gr-chef-dialog.ui:120
 msgid "Other Chef"
 msgstr "다른 요리사"
 
-#: src/gr-chef-dialog.ui:132
+#: src/gr-chef-dialog.ui:133
 msgid "Name…"
 msgstr "명칭…"
 
-#: src/gr-chef-dialog.ui:143
+#: src/gr-chef-dialog.ui:144
 msgid "Short Name…"
 msgstr "간단한 명칭…"
 
-#: src/gr-cooking-page.ui:75
+#: src/gr-cooking-page.ui:76
 msgid "Show"
 msgstr "보이기"
 
-#: src/gr-cooking-page.ui:158
+#: src/gr-cooking-page.ui:159
 msgid "Done"
 msgstr "완료"
 
-#: src/gr-cooking-page.ui:185
+#: src/gr-cooking-page.ui:187
 msgid "Stop Cooking?"
 msgstr "요리를 멈추시겠습니까?"
 
-#: src/gr-cooking-page.ui:194
+#: src/gr-cooking-page.ui:197
 msgid "Some timers are still running."
 msgstr "일부 타이머가 아직 동작중입니다."
 
-#: src/gr-cooking-page.ui:200
+#: src/gr-cooking-page.ui:204
 msgid ""
 "Recipes can keep the timers running\n"
 "even if you leave cooking mode now."
@@ -286,33 +276,33 @@ msgstr ""
 "요리 모드에서 벗어나더라도\n"
 "요리에서 타이머를 계속 동작하도록 둘 수 있습니다."
 
-#: src/gr-cooking-page.ui:212
+#: src/gr-cooking-page.ui:217
 msgid "Keep Cooking"
 msgstr "계속 요리"
 
-#: src/gr-cooking-page.ui:219
+#: src/gr-cooking-page.ui:224
 msgid "Stop Timers"
 msgstr "타이머 멈춤"
 
-#: src/gr-cooking-page.ui:226
+#: src/gr-cooking-page.ui:231
 msgid "Continue Timers"
 msgstr "타이머 동작 계속"
 
-#: src/gr-cooking-page.ui:255
+#: src/gr-cooking-page.ui:260
 msgid "Controls"
 msgstr "제어"
 
-#: src/gr-cooking-page.ui:281
+#: src/gr-cooking-page.ui:286
 msgid ""
 "To advance to the next step, press any key on the\n"
 "keyboard."
 msgstr "다음 단계로 진행하려면 키보드의 아무 키나 누르십시오."
 
-#: src/gr-cooking-page.ui:304
+#: src/gr-cooking-page.ui:309
 msgid "To go back to the previous step, doubletap any key."
 msgstr "이전 단계로 넘어가려면 어떤 키든 두 번 누르십시오."
 
-#: src/gr-cooking-page.ui:326
+#: src/gr-cooking-page.ui:331
 msgid ""
 "Alternatively, you can use the cursor keys to\n"
 "quickly seek within the directions."
@@ -320,500 +310,494 @@ msgstr ""
 "대신, 커서 키를 활용하여 방법 내용을\n"
 "빠르게 살펴볼 수 있습니다."
 
-#: src/gr-cooking-page.ui:350
+#: src/gr-cooking-page.ui:355
 msgid "To exit the process, press the Escape key."
 msgstr "과정을 빠져나가려면 ESC 키를 누르십시오."
 
-#: src/gr-cooking-view.ui:64
+#: src/gr-cooking-view.ui:65
 msgid "Time is up!"
 msgstr "시간이 다 됐습니다!"
 
-#: src/gr-cuisine-page.ui:67 src/gr-list-page.ui:111 src/gr-search-page.ui:29
+#: src/gr-cuisine-page.ui:68 src/gr-list-page.ui:113 src/gr-search-page.ui:30
 #: src/gr-list-page.c:417
 msgid "No recipes found"
 msgstr "조리법이 없습니다"
 
-#: src/gr-cuisine-page.ui:80
+#: src/gr-cuisine-page.ui:81
 msgid "There are no recipes for this cuisine."
 msgstr "이 요리에 대한 조리법이 없습니다."
 
-#: src/gr-cuisines-page.ui:8
+#: src/gr-cuisines-page.ui:9
 msgid "Cuisines page"
 msgstr "조리법 페이지"
 
-#: src/gr-cuisines-page.ui:28
+#: src/gr-cuisines-page.ui:30
 msgid "World Cuisines"
 msgstr "전 세계의 조리법"
 
-#: src/gr-cuisines-page.ui:124
+#: src/gr-cuisines-page.ui:56
 msgid "Seasonal"
 msgstr "계절별"
 
-#: src/gr-details-page.ui:105
+#: src/gr-details-page.ui:106
 msgid "Contains garlic"
 msgstr "마늘 함유"
 
-#: src/gr-details-page.ui:112
+#: src/gr-details-page.ui:113
 msgid "Contains dairy products"
 msgstr "유제품 함유"
 
-#: src/gr-details-page.ui:119
+#: src/gr-details-page.ui:120
 msgid "Contains Gluten"
 msgstr "글루텐 함유"
 
-#: src/gr-details-page.ui:126 src/gr-details-page.c:546
+#: src/gr-details-page.ui:127 src/gr-details-page.c:546
 msgid "Spicy"
 msgstr "매움"
 
-#: src/gr-details-page.ui:146
+#: src/gr-details-page.ui:147
 msgid "_Buy Ingredients"
 msgstr "식재료 구매(_B)"
 
-#: src/gr-details-page.ui:164 src/gr-recipe-small-tile.ui:101
+#: src/gr-details-page.ui:165 src/gr-recipe-small-tile.ui:102
 msgid "Serves"
 msgstr "제공량"
 
-#: src/gr-details-page.ui:198
+#: src/gr-details-page.ui:199
 msgid "Preparation Time"
 msgstr "준비 시간"
 
-#: src/gr-details-page.ui:228
+#: src/gr-details-page.ui:229
 msgid "Cooking Time"
 msgstr "요리 시간"
 
-#: src/gr-details-page.ui:258
+#: src/gr-details-page.ui:259
 msgid "Cuisine"
 msgstr "요리법"
 
-#: src/gr-details-page.ui:288 src/gr-query-editor.ui:46
+#: src/gr-details-page.ui:289 src/gr-query-editor.ui:48
 msgid "Meal"
 msgstr "식사"
 
-#: src/gr-details-page.ui:318
+#: src/gr-details-page.ui:319
 msgid "Season"
 msgstr "계절"
 
-#: src/gr-details-page.ui:379
+#: src/gr-details-page.ui:381
 msgid "Note"
 msgstr "참고"
 
-#: src/gr-details-page.ui:409 src/gr-edit-page.ui:654
+#: src/gr-details-page.ui:411 src/gr-edit-page.ui:658
 #: src/gr-recipe-formatter.c:86 src/gr-recipe-printer.c:242
 msgid "Directions"
 msgstr "절차"
 
-#: src/gr-details-page.ui:469
+#: src/gr-details-page.ui:471
 msgid "_Notes"
 msgstr "참고(_N)"
 
-#: src/gr-details-page.ui:479 src/gr-shopping-page.ui:124
+#: src/gr-details-page.ui:481 src/gr-shopping-page.ui:127
 msgid "_Edit"
 msgstr "편집(_E)"
 
-#: src/gr-details-page.ui:488
+#: src/gr-details-page.ui:490
 msgid "_Delete"
 msgstr "삭제(_D)"
 
-#: src/gr-details-page.ui:499 src/gr-shopping-page.ui:142
+#: src/gr-details-page.ui:501 src/gr-shopping-page.ui:145
 #: src/recipe-export-dialog.ui:21
 msgid "_Share"
 msgstr "공유(_S)"
 
-#: src/gr-details-page.ui:511 src/gr-shopping-page.ui:153
+#: src/gr-details-page.ui:513 src/gr-shopping-page.ui:156
 msgid "_Print"
 msgstr "인쇄(_P)"
 
-#: src/gr-details-page.ui:522
+#: src/gr-details-page.ui:524
 msgid "Add to favorites"
 msgstr "즐겨찾기에 추가"
 
-#: src/gr-edit-page.ui:112
+#: src/gr-edit-page.ui:114
 msgid "Add an image"
 msgstr "그림 추가"
 
-#: src/gr-edit-page.ui:138 src/gr-edit-page.ui:164
+#: src/gr-edit-page.ui:140 src/gr-edit-page.ui:166
 msgid "Rotate image"
 msgstr "그림 회전"
 
-#: src/gr-edit-page.ui:190
+#: src/gr-edit-page.ui:192
 msgid "Default image"
 msgstr "기본 그림"
 
-#: src/gr-edit-page.ui:216
+#: src/gr-edit-page.ui:218
 msgid "Remove image"
 msgstr "그림 제거"
 
-#: src/gr-edit-page.ui:259
+#: src/gr-edit-page.ui:262
 msgid "Details"
 msgstr "자세히"
 
-#: src/gr-edit-page.ui:276
+#: src/gr-edit-page.ui:279
 msgid "_Name Your Recipe"
 msgstr "조리법 명칭(_N)"
 
-#: src/gr-edit-page.ui:307
+#: src/gr-edit-page.ui:310
 msgid "Ser_ves"
 msgstr "식사 인원(_V)"
 
-#: src/gr-edit-page.ui:337
+#: src/gr-edit-page.ui:340
 msgid "_Preparation Time"
 msgstr "준비 시간(_P)"
 
-#: src/gr-edit-page.ui:358 src/gr-edit-page.ui:396
+#: src/gr-edit-page.ui:361 src/gr-edit-page.ui:399
 msgid "Less than 15 minutes"
 msgstr "15분 미만"
 
-#: src/gr-edit-page.ui:359 src/gr-edit-page.ui:397
+#: src/gr-edit-page.ui:362 src/gr-edit-page.ui:400
 msgid "15 to 30 minutes"
 msgstr "15~30분"
 
-#: src/gr-edit-page.ui:360 src/gr-edit-page.ui:398
+#: src/gr-edit-page.ui:363 src/gr-edit-page.ui:401
 msgid "30 to 45 minutes"
 msgstr "30~45분"
 
-#: src/gr-edit-page.ui:361 src/gr-edit-page.ui:399
+#: src/gr-edit-page.ui:364 src/gr-edit-page.ui:402
 msgid "45 minutes to an hour"
 msgstr "45분~1시간"
 
-#: src/gr-edit-page.ui:362 src/gr-edit-page.ui:400
+#: src/gr-edit-page.ui:365 src/gr-edit-page.ui:403
 msgid "More than an hour"
 msgstr "1시간 이상"
 
-#: src/gr-edit-page.ui:375
+#: src/gr-edit-page.ui:378
 msgid "C_ooking Time"
 msgstr "조리 시간(_O)"
 
-#: src/gr-edit-page.ui:413
+#: src/gr-edit-page.ui:416
 msgid "_Cuisine"
 msgstr "요리(_C)"
 
-#: src/gr-edit-page.ui:444
+#: src/gr-edit-page.ui:447
 msgid "_Meal"
 msgstr "식사(_M)"
 
-#: src/gr-edit-page.ui:475
+#: src/gr-edit-page.ui:478
 msgid "S_eason"
 msgstr "계절(_E)"
 
-#: src/gr-edit-page.ui:506
+#: src/gr-edit-page.ui:509
 msgid "S_piciness"
 msgstr "매운 정도(_P)"
 
-#: src/gr-edit-page.ui:526 src/gr-spice-row.c:127
+#: src/gr-edit-page.ui:529 src/gr-spice-row.c:127
 msgid "Mild"
 msgstr "적당"
 
-#: src/gr-edit-page.ui:527
+#: src/gr-edit-page.ui:530
 msgid "Somewhat spicy"
 msgstr "약간 매움"
 
-#: src/gr-edit-page.ui:528
+#: src/gr-edit-page.ui:531
 msgid "Hot"
 msgstr "매움"
 
-#: src/gr-edit-page.ui:529 src/gr-details-page.c:541 src/gr-spice-row.c:142
+#: src/gr-edit-page.ui:532 src/gr-details-page.c:541 src/gr-spice-row.c:142
 msgid "Very spicy"
 msgstr "상당히 매움"
 
-#: src/gr-edit-page.ui:540
+#: src/gr-edit-page.ui:543
 msgid "Description"
 msgstr "설명"
 
-#: src/gr-edit-page.ui:599 src/gr-diet-row.c:102
+#: src/gr-edit-page.ui:602 src/gr-diet-row.c:102
 msgid "Gluten free"
 msgstr "글루텐 미함유"
 
-#: src/gr-edit-page.ui:606 src/gr-diet-row.c:105
+#: src/gr-edit-page.ui:609 src/gr-diet-row.c:105
 msgid "Nut free"
 msgstr "땅콩류 미함유"
 
-#: src/gr-edit-page.ui:613 src/gr-diet-row.c:108
+#: src/gr-edit-page.ui:616 src/gr-diet-row.c:108
 msgid "Vegan"
 msgstr "완전 채식"
 
-#: src/gr-edit-page.ui:620 src/gr-diet-row.c:111
+#: src/gr-edit-page.ui:623 src/gr-diet-row.c:111
 msgid "Vegetarian"
 msgstr "채식주의"
 
-#: src/gr-edit-page.ui:627 src/gr-diet-row.c:114
+#: src/gr-edit-page.ui:630 src/gr-diet-row.c:114
 msgid "Milk free"
 msgstr "우유 미함유"
 
-#: src/gr-edit-page.ui:715 src/menus.ui:66
+#: src/gr-edit-page.ui:719 src/menus.ui:63
 msgid "Edit"
 msgstr "편집"
 
-#: src/gr-edit-page.ui:722
+#: src/gr-edit-page.ui:726
 msgid "Preview"
 msgstr "미리 보기"
 
-#: src/gr-edit-page.ui:742
+#: src/gr-edit-page.ui:747
 msgid "Add Step"
 msgstr "단계 추가"
 
-#: src/gr-edit-page.ui:750
+#: src/gr-edit-page.ui:755
 msgid "Add Image"
 msgstr "그림 추가"
 
-#: src/gr-edit-page.ui:758
+#: src/gr-edit-page.ui:763
 msgid "Add Timer"
 msgstr "시간 추가"
 
-#: src/gr-edit-page.ui:766
+#: src/gr-edit-page.ui:771
 msgid "Add Temperature"
 msgstr "온도 추가"
 
-#: src/gr-edit-page.ui:830 src/gr-edit-page.ui:851 src/gr-edit-page.c:434
+#: src/gr-edit-page.ui:835 src/gr-edit-page.ui:856 src/gr-edit-page.c:434
 msgid "Ingredient"
 msgstr "식재료"
 
-#: src/gr-edit-page.ui:879 src/gr-edit-page.ui:971 src/gr-query-editor.ui:283
+#: src/gr-edit-page.ui:884 src/gr-edit-page.ui:976 src/gr-query-editor.ui:285
 msgid "Search…"
 msgstr "검색…"
 
-#: src/gr-edit-page.ui:909 src/gr-edit-page.ui:930 src/gr-edit-page.c:435
+#: src/gr-edit-page.ui:914 src/gr-edit-page.ui:935 src/gr-edit-page.c:435
 msgid "Amount"
 msgstr "양"
 
-#: src/gr-edit-page.ui:1002 src/gr-edit-page.c:438
+#: src/gr-edit-page.ui:1007 src/gr-edit-page.c:438
 msgid "Add"
 msgstr "추가"
 
-#: src/gr-edit-page.ui:1053
+#: src/gr-edit-page.ui:1058
 msgid "Title…"
 msgstr "제목…"
 
-#: src/gr-edit-page.ui:1128
+#: src/gr-edit-page.ui:1134
 msgid "Syntax"
 msgstr "문법"
 
-#: src/gr-edit-page.ui:1143
+#: src/gr-edit-page.ui:1149
 msgid "Use paragraphs to break directions into steps (2 newlines)."
 msgstr "요리 단계를 나누려면 문단 표시(2번 줄바꿈)를 활용하세요."
 
-#: src/gr-edit-page.ui:1156
+#: src/gr-edit-page.ui:1162
 msgid "You can provide an image or a time counter in each step."
 msgstr "각 단계별로 그림 또는 타이머를 둘 수 있습니다."
 
-#: src/gr-edit-page.ui:1168
+#: src/gr-edit-page.ui:1174
 msgid "Timer"
 msgstr "타이머"
 
-#: src/gr-edit-page.ui:1190
+#: src/gr-edit-page.ui:1196
 msgid "Image"
 msgstr "그림"
 
-#: src/gr-edit-page.ui:1212
+#: src/gr-edit-page.ui:1218
 msgid "Temperature"
 msgstr "온도"
 
-#: src/gr-list-page.ui:124
+#: src/gr-list-page.ui:126
 msgid "There are no recipes here yet."
 msgstr "아직 조리법이 없습니다."
 
-#: src/gr-query-editor.ui:66 src/gr-query-editor.c:490
+#: src/gr-query-editor.ui:68 src/gr-query-editor.c:490
 #: src/gr-query-editor.c:679
 msgid "Any meal"
 msgstr "임의 식사"
 
-#: src/gr-query-editor.ui:109
+#: src/gr-query-editor.ui:111
 msgid "Spiciness"
 msgstr "매운 정도"
 
-#: src/gr-query-editor.ui:129 src/gr-query-editor.c:557
+#: src/gr-query-editor.ui:131 src/gr-query-editor.c:557
 #: src/gr-query-editor.c:708
 msgid "Any spiciness"
 msgstr "임의 매운 정도"
 
-#: src/gr-query-editor.ui:172
+#: src/gr-query-editor.ui:174
 msgid "Dietary restrictions"
 msgstr "식재료 제한"
 
-#: src/gr-query-editor.ui:192 src/gr-query-editor.c:406
+#: src/gr-query-editor.ui:194 src/gr-query-editor.c:406
 #: src/gr-query-editor.c:737
 msgid "No restrictions"
 msgstr "제한 없음"
 
-#: src/gr-query-editor.ui:235 src/gr-edit-page.c:1713
+#: src/gr-query-editor.ui:237 src/gr-edit-page.c:1713
 #: src/gr-recipe-formatter.c:67 src/gr-recipe-printer.c:191
 msgid "Ingredients"
 msgstr "식재료"
 
 #. FIXME: repopulate
-#: src/gr-query-editor.ui:255 src/gr-query-editor.c:337
+#: src/gr-query-editor.ui:257 src/gr-query-editor.c:337
 #: src/gr-query-editor.c:766
 msgid "Anything"
 msgstr "아무거나"
 
-#: src/gr-recipe-small-tile.ui:125 src/gr-edit-page.c:1743
+#: src/gr-recipe-small-tile.ui:126 src/gr-edit-page.c:1743
 msgid "Remove"
 msgstr "제거"
 
-#: src/gr-recipes-page.ui:8
+#: src/gr-recipes-page.ui:9
 msgid "Recipes page"
 msgstr "요리 페이지"
 
-#: src/gr-recipes-page.ui:27
+#: src/gr-recipes-page.ui:29
 msgid "Today"
 msgstr "오늘"
 
-#: src/gr-recipes-page.ui:103
+#: src/gr-recipes-page.ui:105
 msgid "Editor’s Picks"
 msgstr "편집자 선정"
 
-#: src/gr-recipes-page.ui:129
+#: src/gr-recipes-page.ui:131
 msgid "Categories"
 msgstr "분류"
 
-#: src/gr-recipes-page.ui:226
+#: src/gr-recipes-page.ui:232
 msgid "Featured GNOME Chefs"
 msgstr "추천 그놈 요리사"
 
-#: src/gr-search-page.ui:42
+#: src/gr-search-page.ui:43
 msgid "Try a different search"
 msgstr "다른 검색 방식 시도"
 
-#: src/gr-shopping-page.ui:40
+#: src/gr-shopping-page.ui:42
 msgid "Buy ingredients"
 msgstr "식재료 구매"
 
-#: src/gr-shopping-page.ui:91
+#: src/gr-shopping-page.ui:94
 msgid "No shopping necessary!"
 msgstr "장보기가 필요 없습니다!"
 
-#: src/gr-shopping-page.ui:131
+#: src/gr-shopping-page.ui:134
 msgid "_Clear List"
 msgstr "목록 지우기(_C)"
 
-#: src/gr-shopping-page.ui:187
+#: src/gr-shopping-page.ui:190
 msgid "Nothing to add"
 msgstr "추가한 항목 없음"
 
-#: src/gr-time-widget.ui:31
+#: src/gr-time-widget.ui:32
 msgid "Start"
 msgstr "시작"
 
-#: src/gr-time-widget.ui:60
+#: src/gr-time-widget.ui:62
 msgid "Pause"
 msgstr "일시정지"
 
-#: src/gr-time-widget.ui:69
+#: src/gr-time-widget.ui:71
 msgid "Continue"
 msgstr "계속"
 
-#: src/gr-time-widget.ui:82
+#: src/gr-time-widget.ui:85
 msgid "Reset"
 msgstr "초기화…"
 
-#: src/gr-window.ui:23
+#: src/gr-window.ui:24
 msgid "_New Recipe"
 msgstr "새 조리법(_N)"
 
-#: src/gr-window.ui:40
+#: src/gr-window.ui:41
 msgid "Go back"
 msgstr "뒤로"
 
-#: src/gr-window.ui:97
+#: src/gr-window.ui:98
 msgid "Search"
 msgstr "검색"
 
-#: src/gr-window.ui:116
+#: src/gr-window.ui:117
 msgid "_Start Cooking"
 msgstr "요리 시작(_S)"
 
-#: src/gr-window.ui:144
+#: src/gr-window.ui:145
 msgid "_Done Shopping"
 msgstr "장보기 완료(_D)"
 
-#: src/gr-window.ui:205
+#: src/gr-window.ui:206
 msgid "All ingredients marked as stocked!"
 msgstr "모든 식재료를 구매한 항목으로 표시했습니다!"
 
-#: src/gr-window.ui:215
+#: src/gr-window.ui:216
 msgid "_Undo"
 msgstr "실행 취소(_U)"
 
-#: src/gr-window.ui:264
+#: src/gr-window.ui:265
 msgid "Ingredients to buy added."
 msgstr "구매할 식재료를 추가했습니다."
 
-#: src/gr-window.ui:274
+#: src/gr-window.ui:275
 msgid "View Shopping List"
 msgstr "장보기 목록 보기"
 
-#: src/gr-window.ui:331
+#: src/gr-window.ui:332
 msgid "Undo"
 msgstr "실행 취소"
 
-#: src/gr-window.ui:391
+#: src/gr-window.ui:392
 msgid "Send Update"
 msgstr "업데이트 보내기"
 
-#: src/gr-window.ui:466 src/gr-window.c:379
+#: src/gr-window.ui:467 src/gr-window.c:379
 msgid "Cuisines"
 msgstr "요리"
 
-#: src/menus.ui:6 src/menus.ui:48
+#: src/menus.ui:7 src/menus.ui:45
 msgid "_Import"
 msgstr "가져오기(_I)"
 
-#: src/menus.ui:11 src/menus.ui:53
+#: src/menus.ui:12 src/menus.ui:50
 msgid "_Export All"
 msgstr "모두 내보내기(_E)"
 
-#: src/menus.ui:16
+#: src/menus.ui:17
 msgid "_Chef Information"
 msgstr "요리사 정보(_C)"
 
-#: src/menus.ui:22 src/menus.ui:89
-msgid "_What’s New"
-msgstr "새 소식(_W)"
-
-#: src/menus.ui:26
-#, fuzzy
-#| msgid "Help"
-msgid "_Help"
-msgstr "도움말"
-
-#: src/menus.ui:30
+#: src/menus.ui:23
 msgid "_About"
 msgstr "정보(_A)"
 
-#: src/menus.ui:34 src/menus.ui:93
+#: src/menus.ui:27 src/menus.ui:86
+msgid "_What’s New"
+msgstr "새 소식(_W)"
+
+#: src/menus.ui:31 src/menus.ui:90
 msgid "_Report Issue"
 msgstr "문제 보고(_R)"
 
-#: src/menus.ui:38
+#: src/menus.ui:35
 msgid "_Quit"
 msgstr "끝내기(_Q)"
 
-#: src/menus.ui:45
+#: src/menus.ui:42
 msgid "File"
 msgstr "파일"
 
-#: src/menus.ui:60
+#: src/menus.ui:57
 msgid "Chef Information…"
 msgstr "요리사 정보…"
 
-#: src/menus.ui:69
+#: src/menus.ui:66
 msgid "Copy"
 msgstr "복사"
 
-#: src/menus.ui:73
+#: src/menus.ui:70
 msgid "Paste"
 msgstr "붙여넣기"
 
-#: src/menus.ui:79
+#: src/menus.ui:76
 msgid "Find…"
 msgstr "찾기…"
 
-#: src/menus.ui:86
+#: src/menus.ui:83
 msgid "Help"
 msgstr "도움말"
 
-#: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:156
-#: src/gr-image-viewer.c:616 src/gr-recipe-exporter.c:169
-#: src/gr-shopping-page.c:731 src/gr-window.c:1133
+#: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:153
+#: src/gr-image-viewer.c:625 src/gr-recipe-exporter.c:169
+#: src/gr-shopping-page.c:731 src/gr-window.c:1129
 msgid "Cancel"
 msgstr "취소"
 
@@ -829,109 +813,107 @@ msgstr "이 이름을 가진 조리법이 이미 있습니다."
 msgid "_Add More"
 msgstr "더 추가(_A)"
 
-#: src/recipe-export-dialog.ui:56
+#: src/recipe-export-dialog.ui:57
 msgid "Share with a friend"
 msgstr "친구에게 공유하기"
 
-#: src/recipe-export-dialog.ui:63
-#, fuzzy
-#| msgid "Contribute to GNOME Recipes"
-msgid "Contribute to the Recipes project"
+#: src/recipe-export-dialog.ui:64
+msgid "Contribute to GNOME Recipes"
 msgstr "그놈 요리 프로그램에 기여하기"
 
 #: src/recipe-whats-new-dialog.ui:8
 msgid "What’s New in Recipes"
 msgstr "요리 새 소식"
 
-#: src/gr-about-dialog.c:132
+#: src/gr-about-dialog.c:129
 msgid "Learn more about Builder"
 msgstr "빌더 알아보기"
 
-#: src/gr-about-dialog.c:244 src/gr-about-dialog.c:327
-#: src/gr-about-dialog.c:329 src/gr-about-dialog.c:331
-#: src/gr-about-dialog.c:333 src/gr-about-dialog.c:335
-#: src/gr-about-dialog.c:337 src/gr-about-dialog.c:339
-#: src/gr-about-dialog.c:341 src/gr-about-dialog.c:343
+#: src/gr-about-dialog.c:241 src/gr-about-dialog.c:324
+#: src/gr-about-dialog.c:326 src/gr-about-dialog.c:328
+#: src/gr-about-dialog.c:330 src/gr-about-dialog.c:332
+#: src/gr-about-dialog.c:334 src/gr-about-dialog.c:336
+#: src/gr-about-dialog.c:338 src/gr-about-dialog.c:340
 msgid "Unknown"
 msgstr "알 수 없음"
 
-#: src/gr-about-dialog.c:433
+#: src/gr-about-dialog.c:430
 msgid "Flatpak"
 msgstr "flatpak"
 
-#: src/gr-about-dialog.c:436
+#: src/gr-about-dialog.c:433
 msgctxt "Flatpak metadata"
 msgid "Version"
 msgstr "버전"
 
-#: src/gr-about-dialog.c:439
+#: src/gr-about-dialog.c:436
 msgid "Application"
 msgstr "프로그램"
 
-#: src/gr-about-dialog.c:442 src/gr-about-dialog.c:451
+#: src/gr-about-dialog.c:439 src/gr-about-dialog.c:448
 msgctxt "Flatpak metadata"
 msgid "ID"
 msgstr "ID"
 
-#: src/gr-about-dialog.c:443 src/gr-about-dialog.c:452
+#: src/gr-about-dialog.c:440 src/gr-about-dialog.c:449
 msgctxt "Flatpak metadata"
 msgid "Architecture"
 msgstr "아키텍처"
 
-#: src/gr-about-dialog.c:444 src/gr-about-dialog.c:453
+#: src/gr-about-dialog.c:441 src/gr-about-dialog.c:450
 msgctxt "Flatpak metadata"
 msgid "Branch"
 msgstr "브랜치"
 
-#: src/gr-about-dialog.c:445 src/gr-about-dialog.c:454
+#: src/gr-about-dialog.c:442 src/gr-about-dialog.c:451
 msgctxt "Flatpak metadata"
 msgid "Commit"
 msgstr "커밋"
 
-#: src/gr-about-dialog.c:448
+#: src/gr-about-dialog.c:445
 msgid "Runtime"
 msgstr "런타임"
 
-#: src/gr-about-dialog.c:457 src/gr-about-dialog.c:521
+#: src/gr-about-dialog.c:454 src/gr-about-dialog.c:518
 msgid "Bundled libraries"
 msgstr "포함 라이브러리"
 
-#: src/gr-about-dialog.c:487
+#: src/gr-about-dialog.c:484
 msgid "OS"
 msgstr "운영체제"
 
-#: src/gr-about-dialog.c:490
+#: src/gr-about-dialog.c:487
 msgctxt "OS metadata"
 msgid "Name"
 msgstr "이름"
 
-#: src/gr-about-dialog.c:492
+#: src/gr-about-dialog.c:489
 msgctxt "OS metadata"
 msgid "Type"
 msgstr "형식"
 
-#: src/gr-about-dialog.c:495 src/gr-about-dialog.c:497
+#: src/gr-about-dialog.c:492 src/gr-about-dialog.c:494
 msgctxt "OS metadata"
 msgid "Desktop"
 msgstr "데스크톱"
 
-#: src/gr-about-dialog.c:500
+#: src/gr-about-dialog.c:497
 msgid "System libraries"
 msgstr "시스템 라이브러리"
 
-#: src/gr-about-dialog.c:820 src/gr-about-dialog.c:847
+#: src/gr-about-dialog.c:769 src/gr-about-dialog.c:796
 msgid "System"
 msgstr "시스템"
 
-#: src/gr-about-dialog.c:917
+#: src/gr-about-dialog.c:866
 msgid "translator-credits"
 msgstr "조성호 <shcho@gnome.org>, 2017."
 
-#: src/gr-about-dialog.c:920
+#: src/gr-about-dialog.c:869
 msgid "Learn more about Recipes"
 msgstr "요리 프로그램 더 알아보기"
 
-#: src/gr-about-dialog.c:927
+#: src/gr-about-dialog.c:876
 msgid "Recipes by"
 msgstr "요리사:"
 
@@ -946,27 +928,27 @@ msgid ""
 "your friends."
 msgstr "친구에게 공유할 조리법에 개인 정보 포함을 허용합니다."
 
-#: src/gr-app.c:393
+#: src/gr-app.c:444
 msgid "Print the version and exit"
 msgstr "버전을 출력하고 나가기"
 
-#: src/gr-app.c:397
+#: src/gr-app.c:448
 msgid "Turn on verbose logging"
 msgstr "복잡한 로깅 활성화"
 
-#: src/gr-chef-dialog.c:152 src/gr-image-viewer.c:612
+#: src/gr-chef-dialog.c:149 src/gr-image-viewer.c:621
 msgid "Select an Image"
 msgstr "그림 선택"
 
-#: src/gr-chef-dialog.c:155 src/gr-image-viewer.c:615 src/gr-window.c:1132
+#: src/gr-chef-dialog.c:152 src/gr-image-viewer.c:624 src/gr-window.c:1128
 msgid "Open"
 msgstr "열기"
 
-#: src/gr-chef-dialog.c:160 src/gr-image-viewer.c:620
+#: src/gr-chef-dialog.c:157 src/gr-image-viewer.c:629
 msgid "Image files"
 msgstr "그림 파일"
 
-#: src/gr-chef-dialog.c:409
+#: src/gr-chef-dialog.c:406
 msgid "New Chef"
 msgstr "새 요리사"
 
@@ -1242,7 +1224,7 @@ msgstr "타이머: %s"
 msgid "Image %d"
 msgstr "그림 %d"
 
-#: src/gr-details-page.c:745 src/gr-edit-page.c:2035
+#: src/gr-details-page.c:745 src/gr-edit-page.c:2031
 #, c-format
 msgid "Recipe by %s"
 msgstr "%s의 요리"
@@ -1429,22 +1411,32 @@ msgstr "아직 추가한 식재료가 없습니다"
 msgid "Add Ingredient"
 msgstr "식재료 추가"
 
-#: src/gr-edit-page.c:1888
+#: src/gr-edit-page.c:1884
 msgid "Add List"
 msgstr "목록에 추가"
 
-#: src/gr-edit-page.c:1916
+#: src/gr-edit-page.c:1912
 msgid "Name Your Recipe"
 msgstr "조리법 명칭"
 
-#: src/gr-edit-page.c:2092
+#: src/gr-edit-page.c:2088
 msgid "Name"
 msgstr "이름"
 
-#: src/gr-edit-page.c:2204 src/gr-recipe-store.c:1007
+#: src/gr-edit-page.c:2200 src/gr-recipe-store.c:1006
 #, c-format
 msgid "You need to provide a name for the recipe"
 msgstr "조리법 이름이 필요합니다"
+
+#: src/gr-image-viewer.c:615
+#, c-format
+msgid ""
+"Missing the desktop portals needed to open files from inside a flatpak "
+"sandbox. Please install xdg-desktop-portal and xdg-desktop-portal-gtk on "
+"your system."
+msgstr ""
+"빠진 desktop 포털에서는 flatpak 샌드박스에서 파일을 열려고 합니다. xdg-"
+"desktop-portal과 xdg-desktop-portal-gtk을 시스템에 설치하십시오."
 
 #: src/gr-list-page.c:235
 msgid "Gluten-free Recipes"
@@ -1700,6 +1692,15 @@ msgstr "파일 인쇄 오류:"
 msgid "No details"
 msgstr "세부 정보 없음"
 
+#: src/gr-recipe-printer.c:441 src/gr-shopping-list-printer.c:329
+#, c-format
+msgid ""
+"Missing the desktop portals needed to print from inside a flatpak sandbox. "
+"Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system."
+msgstr ""
+"빠진 desktop 포털에서는 flatpak 샌드박스에서 인쇄하려고 합니다. xdg-"
+"desktop=portal과 xdg-desktop-portal-gtk를 시스템에 설치하십시오."
+
 # 요리사 내지는 조리법 작성자 이름이 들어가는데,
 # by는 굳이 안들어가도 의미상 상관 없음.
 # 즉, 이 부분은 시그니쳐를 의미한다.
@@ -1712,43 +1713,43 @@ msgstr "%s"
 msgid "Anonymous"
 msgstr "익명"
 
-#: src/gr-recipes-page.c:223 src/gr-window.c:1354
+#: src/gr-recipes-page.c:231 src/gr-window.c:1350
 msgid "My Recipes"
 msgstr "내 조리법"
 
-#: src/gr-recipes-page.c:224
+#: src/gr-recipes-page.c:236
 msgid "Favorites"
 msgstr "즐겨찾기"
 
-#: src/gr-recipes-page.c:225 src/gr-window.c:1268
+#: src/gr-recipes-page.c:241 src/gr-window.c:1264
 msgid "All Recipes"
 msgstr "모든 조리법"
 
-#: src/gr-recipes-page.c:226 src/gr-window.c:1284
+#: src/gr-recipes-page.c:246 src/gr-window.c:1280
 msgid "New Recipes"
 msgstr "새 조리법 만들기"
 
-#: src/gr-recipes-page.c:274
+#: src/gr-recipes-page.c:280
 msgid "Last edited:"
 msgstr "최근 편집:"
 
-#: src/gr-recipes-page.c:373
+#: src/gr-recipes-page.c:382
 #, c-format
 msgid "Buy ingredients: <b>%s</b>"
 msgstr "식재료 구매: <b>%s</b>"
 
-#: src/gr-recipes-page.c:375
+#: src/gr-recipes-page.c:384
 #, c-format
 msgid "Buy ingredients: <b>%s and %s</b>"
 msgstr "식재료 구매: <b>%s, %s</b>"
 
-#: src/gr-recipes-page.c:377
+#: src/gr-recipes-page.c:386
 #, c-format
 msgid "Buy ingredients: <b>%s, %s and %d other</b>"
 msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
 msgstr[0] "식재료 구매: <b>%s, %s 외 %d가지</b>"
 
-#: src/gr-recipe-store.c:1012
+#: src/gr-recipe-store.c:1011
 #, c-format
 msgid ""
 "A recipe with this name and author already exists.\n"
@@ -1757,32 +1758,32 @@ msgstr ""
 "이 작성자가 작성한 해당 요리가 이미 있습니다.\n"
 "다른 이름을 선택하십시오"
 
-#: src/gr-recipe-store.c:1041
+#: src/gr-recipe-store.c:1040
 #, c-format
 msgid "You need to provide an ID for the recipe"
 msgstr "조리법 ID가 필요합니다"
 
-#: src/gr-recipe-store.c:1047
+#: src/gr-recipe-store.c:1046
 #, c-format
 msgid "A recipe with this ID already exists"
 msgstr "이 ID를 가진 요리사가 이미 있습니다"
 
-#: src/gr-recipe-store.c:1198
+#: src/gr-recipe-store.c:1197
 #, c-format
 msgid "You need to provide an ID"
 msgstr "ID가 필요합니다"
 
-#: src/gr-recipe-store.c:1204
+#: src/gr-recipe-store.c:1203
 #, c-format
 msgid "Sorry, this ID is taken"
 msgstr "ID"
 
-#: src/gr-recipe-store.c:1231
+#: src/gr-recipe-store.c:1230
 #, c-format
 msgid "You need to provide an ID for the chef"
 msgstr "요리사 ID가 필요합니다"
 
-#: src/gr-recipe-store.c:1237
+#: src/gr-recipe-store.c:1236
 #, c-format
 msgid "A chef with this ID already exists"
 msgstr "이 ID를 가진 요리사가 이미 있습니다"
@@ -2045,104 +2046,47 @@ msgstr "잔"
 msgid "I don’t know this unit: %s"
 msgstr "%s 단위를 알 수 없음"
 
-#: src/gr-utils.c:387
+#: src/gr-utils.c:398
 #, c-format
 msgid "more than a year ago"
 msgstr "1년 훨씬 전"
 
-#: src/gr-utils.c:390 src/gr-utils.c:394
+#: src/gr-utils.c:401 src/gr-utils.c:405
 #, c-format
 msgid "%d month ago"
 msgid_plural "%d months ago"
 msgstr[0] "%d달 전"
 
-#: src/gr-utils.c:398
+#: src/gr-utils.c:409
 #, c-format
 msgid "%d day ago"
 msgid_plural "%d days ago"
 msgstr[0] "%d일 전"
 
-#: src/gr-utils.c:401
+#: src/gr-utils.c:412
 #, c-format
 msgid "just now"
 msgstr "방금"
 
-#: src/gr-utils.c:403
+#: src/gr-utils.c:414
 #, c-format
 msgid "10 minutes ago"
 msgstr "10분 전"
 
-#: src/gr-utils.c:405
+#: src/gr-utils.c:416
 #, c-format
 msgid "half an hour ago"
 msgstr "30분 전"
 
-#: src/gr-utils.c:409
+#: src/gr-utils.c:420
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
 msgstr[0] "%d시간 전"
 
-#: src/gr-utils.c:415
+#: src/gr-utils.c:426
 msgid "some time ago"
 msgstr "얼마 전"
-
-#: src/gr-utils.c:438
-msgid "Could not connect to the session bus from inside the Flatpak sandbox."
-msgstr ""
-
-#: src/gr-utils.c:439
-msgid "Certain functionality will not be available."
-msgstr ""
-
-#: src/gr-utils.c:459
-#, fuzzy
-#| msgid ""
-#| "Missing the desktop portals needed to open files from inside a flatpak "
-#| "sandbox. Please install xdg-desktop-portal and xdg-desktop-portal-gtk on "
-#| "your system."
-msgid ""
-"Missing the desktop portal needed to open files from inside a Flatpak "
-"sandbox."
-msgstr ""
-"빠진 desktop 포털에서는 flatpak 샌드박스에서 파일을 열려고 합니다. xdg-"
-"desktop-portal과 xdg-desktop-portal-gtk을 시스템에 설치하십시오."
-
-#: src/gr-utils.c:461
-#, fuzzy
-#| msgid ""
-#| "Missing the desktop portals needed to print from inside a flatpak "
-#| "sandbox. Please install xdg-desktop-portal and xdg-desktop-portal-gtk on "
-#| "your system."
-msgid ""
-"Missing the desktop portal needed to print from inside a Flatpak sandbox."
-msgstr ""
-"빠진 desktop 포털에서는 flatpak 샌드박스에서 인쇄하려고 합니다. xdg-"
-"desktop=portal과 xdg-desktop-portal-gtk를 시스템에 설치하십시오."
-
-#: src/gr-utils.c:463
-#, fuzzy
-#| msgid ""
-#| "Missing the desktop portals needed to open files from inside a flatpak "
-#| "sandbox. Please install xdg-desktop-portal and xdg-desktop-portal-gtk on "
-#| "your system."
-msgid ""
-"Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
-msgstr ""
-"빠진 desktop 포털에서는 flatpak 샌드박스에서 파일을 열려고 합니다. xdg-"
-"desktop-portal과 xdg-desktop-portal-gtk을 시스템에 설치하십시오."
-
-#: src/gr-utils.c:467
-#, fuzzy
-#| msgid ""
-#| "Missing the desktop portals needed to print from inside a flatpak "
-#| "sandbox. Please install xdg-desktop-portal and xdg-desktop-portal-gtk on "
-#| "your system."
-msgid ""
-"Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
-msgstr ""
-"빠진 desktop 포털에서는 flatpak 샌드박스에서 인쇄하려고 합니다. xdg-"
-"desktop=portal과 xdg-desktop-portal-gtk를 시스템에 설치하십시오."
 
 #: src/gr-window.c:230
 msgid "Add a New Recipe"
@@ -2183,47 +2127,51 @@ msgstr "요리 준비 끝!"
 msgid "Imported Recipes"
 msgstr "가져온 조리법"
 
-#: src/gr-window.c:1129
+#: src/gr-window.c:1099
+msgid "My Chef Information"
+msgstr "내 요리사 정보"
+
+#: src/gr-window.c:1125
 msgid "Select a recipe file"
 msgstr "조리법 파일 선택"
 
 # %s는 경로가 들어가는 부분
-#: src/gr-window.c:1155
+#: src/gr-window.c:1151
 #, c-format
 msgid "Recipes have been exported to “%s”"
 msgstr "조리법을 “%s” 경로에 내보냈습니다"
 
-#: src/gr-window.c:1193
+#: src/gr-window.c:1189
 msgid "Select a file"
 msgstr "파일 선택"
 
-#: src/gr-window.c:1196
+#: src/gr-window.c:1192
 msgid "_Export"
 msgstr "내보내기(_E)"
 
-#: src/gr-window.c:1235
+#: src/gr-window.c:1231
 #, c-format
 msgid "Chefs: %s"
 msgstr "요리사: %s"
 
-#: src/gr-window.c:1252
+#: src/gr-window.c:1248
 msgid "Favorite Recipes"
 msgstr "관심있는 조리법"
 
-#: src/gr-window.c:1334
+#: src/gr-window.c:1330
 msgid "Buy Ingredients"
 msgstr "식재료 구매"
 
 # %s는 버전.
 # ex) 요리 1.0
 #. TRANSLATORS: %s gets replaced by a version number
-#: src/gr-window.c:1505
+#: src/gr-window.c:1523
 #, c-format
 msgid "Recipes %s"
 msgstr "요리 %s"
 
 #. TRANSLATORS: %s gets replaced by a date
-#: src/gr-window.c:1520
+#: src/gr-window.c:1538
 #, c-format
 msgid "Released: %s"
 msgstr "출시일: %s"
@@ -2819,21 +2767,6 @@ msgstr "도우"
 #: src/segments.inc:2
 msgid "Toppings"
 msgstr "토핑"
-
-#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
-#, fuzzy
-#| msgid "translator-credits"
-msgctxt "_"
-msgid "translator-credits"
-msgstr "조성호 <shcho@gnome.org>, 2017."
-
-#. (itstool) path: page/p
-#: help/C/index.page:13
-msgid "Recipes will be documented here."
-msgstr ""
-
-#~ msgid "My Chef Information"
-#~ msgstr "내 요리사 정보"
 
 #~ msgid "_Close"
 #~ msgstr "닫기(_C)"
