@@ -2230,7 +2230,8 @@ gr_edit_page_save (GrEditPage *page)
                                        "images", images,
                                        NULL);
                 ret = gr_recipe_store_add_recipe (store, recipe, &error);
-                g_set_object (&page->recipe, recipe);
+                if (ret)
+                        g_set_object (&page->recipe, recipe);
         }
 
         if (ret) {
