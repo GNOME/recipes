@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: recipes master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-19 00:59+0000\n"
-"PO-Revision-Date: 2017-03-15 04:24+0900\n"
+"Project-Id-Version: recipes recipes-1.0\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=recipes&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-03-19 20:09+0900\n"
+"PO-Revision-Date: 2017-03-19 20:10+0900\n"
 "Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
 "Language-Team: Korean <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
@@ -18,11 +18,10 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.8.7\n"
 
-#. (itstool) path: page/title
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
 #: src/gr-window.ui:427 src/gr-about-dialog.c:911 src/gr-window.c:373
-#: src/gr-window.c:998 help/C/index.page:11
+#: src/gr-window.c:998
 msgid "Recipes"
 msgstr "요리"
 
@@ -40,28 +39,19 @@ msgid "GNOME loves to cook"
 msgstr "그놈은 요리를 좋아해요 :)"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:9
-#, fuzzy
-#| msgid ""
-#| "GNOME Recipes is an easy-to-use application that will help you to "
-#| "discover what to cook today, tomorrow, rest of the week and for your "
-#| "special occasions."
 msgid ""
-"Recipes is an easy-to-use application that will help you to discover what to "
-"cook today, tomorrow, the rest of the week and for your special occasions."
+"GNOME Recipes is an easy-to-use application that will help you to discover "
+"what to cook today, tomorrow, rest of the week and for your special "
+"occasions."
 msgstr ""
 "그놈 요리는 오늘, 내일 다음주, 특별한 날에 무슨 요리를 할 지 찾아보는데 도움"
 "을 주는 쓰기 쉬운 프로그램입니다."
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:13
-#, fuzzy
-#| msgid ""
-#| "Recipes comes with a collection of recipes that have been collected by "
-#| "GNOME contributors from all over the world. It also lets you store your "
-#| "own recipes, and share them with your friends."
 msgid ""
 "Recipes comes with a collection of recipes that have been collected by GNOME "
 "contributors from all over the world. It also lets you store your own "
-"recipes and share them with your friends."
+"recipes, and share them with your friends."
 msgstr ""
 "요리는 전세계 여러 그놈 기여자가 모아둔 조리법을 모아두었습니다. 여러분의 조"
 "리법을 저장할 수 있고, 이 조리법을 친구와 공유할 수 있습니다."
@@ -345,7 +335,7 @@ msgstr "조리법 페이지"
 msgid "World Cuisines"
 msgstr "전 세계의 조리법"
 
-#: src/gr-cuisines-page.ui:124
+#: src/gr-cuisines-page.ui:54
 msgid "Seasonal"
 msgstr "계절별"
 
@@ -539,7 +529,7 @@ msgstr "채식주의"
 msgid "Milk free"
 msgstr "우유 미함유"
 
-#: src/gr-edit-page.ui:715 src/menus.ui:66
+#: src/gr-edit-page.ui:715 src/menus.ui:62
 msgid "Edit"
 msgstr "편집"
 
@@ -753,11 +743,11 @@ msgstr "업데이트 보내기"
 msgid "Cuisines"
 msgstr "요리"
 
-#: src/menus.ui:6 src/menus.ui:48
+#: src/menus.ui:6 src/menus.ui:44
 msgid "_Import"
 msgstr "가져오기(_I)"
 
-#: src/menus.ui:11 src/menus.ui:53
+#: src/menus.ui:11 src/menus.ui:49
 msgid "_Export All"
 msgstr "모두 내보내기(_E)"
 
@@ -765,49 +755,43 @@ msgstr "모두 내보내기(_E)"
 msgid "_Chef Information"
 msgstr "요리사 정보(_C)"
 
-#: src/menus.ui:22 src/menus.ui:89
-msgid "_What’s New"
-msgstr "새 소식(_W)"
-
-#: src/menus.ui:26
-#, fuzzy
-#| msgid "Help"
-msgid "_Help"
-msgstr "도움말"
-
-#: src/menus.ui:30
+#: src/menus.ui:22
 msgid "_About"
 msgstr "정보(_A)"
 
-#: src/menus.ui:34 src/menus.ui:93
+#: src/menus.ui:26 src/menus.ui:85
+msgid "_What’s New"
+msgstr "새 소식(_W)"
+
+#: src/menus.ui:30 src/menus.ui:89
 msgid "_Report Issue"
 msgstr "문제 보고(_R)"
 
-#: src/menus.ui:38
+#: src/menus.ui:34
 msgid "_Quit"
 msgstr "끝내기(_Q)"
 
-#: src/menus.ui:45
+#: src/menus.ui:41
 msgid "File"
 msgstr "파일"
 
-#: src/menus.ui:60
+#: src/menus.ui:56
 msgid "Chef Information…"
 msgstr "요리사 정보…"
 
-#: src/menus.ui:69
+#: src/menus.ui:65
 msgid "Copy"
 msgstr "복사"
 
-#: src/menus.ui:73
+#: src/menus.ui:69
 msgid "Paste"
 msgstr "붙여넣기"
 
-#: src/menus.ui:79
+#: src/menus.ui:75
 msgid "Find…"
 msgstr "찾기…"
 
-#: src/menus.ui:86
+#: src/menus.ui:82
 msgid "Help"
 msgstr "도움말"
 
@@ -834,10 +818,8 @@ msgid "Share with a friend"
 msgstr "친구에게 공유하기"
 
 #: src/recipe-export-dialog.ui:63
-#, fuzzy
-#| msgid "Contribute to GNOME Recipes"
-msgid "Contribute to the Recipes project"
-msgstr "그놈 요리 프로그램에 기여하기"
+msgid "Contribute to GNOME Recipes"
+msgstr "그놈 요리에 기여하기"
 
 #: src/recipe-whats-new-dialog.ui:8
 msgid "What’s New in Recipes"
@@ -946,11 +928,11 @@ msgid ""
 "your friends."
 msgstr "친구에게 공유할 조리법에 개인 정보 포함을 허용합니다."
 
-#: src/gr-app.c:393
+#: src/gr-app.c:378
 msgid "Print the version and exit"
 msgstr "버전을 출력하고 나가기"
 
-#: src/gr-app.c:397
+#: src/gr-app.c:382
 msgid "Turn on verbose logging"
 msgstr "복잡한 로깅 활성화"
 
@@ -2089,60 +2071,32 @@ msgstr "얼마 전"
 
 #: src/gr-utils.c:438
 msgid "Could not connect to the session bus from inside the Flatpak sandbox."
-msgstr ""
+msgstr "Flatpak 샌드박스의 세션 버스에 연결할 수 없습니다."
 
 #: src/gr-utils.c:439
 msgid "Certain functionality will not be available."
-msgstr ""
+msgstr "각 기능에 대한 내용이 없습니다."
 
 #: src/gr-utils.c:459
-#, fuzzy
-#| msgid ""
-#| "Missing the desktop portals needed to open files from inside a flatpak "
-#| "sandbox. Please install xdg-desktop-portal and xdg-desktop-portal-gtk on "
-#| "your system."
 msgid ""
 "Missing the desktop portal needed to open files from inside a Flatpak "
 "sandbox."
-msgstr ""
-"빠진 desktop 포털에서는 flatpak 샌드박스에서 파일을 열려고 합니다. xdg-"
-"desktop-portal과 xdg-desktop-portal-gtk을 시스템에 설치하십시오."
+msgstr "빠진 desktop 포털에서는 flatpak 샌드박스에서 파일을 열려고 합니다."
 
 #: src/gr-utils.c:461
-#, fuzzy
-#| msgid ""
-#| "Missing the desktop portals needed to print from inside a flatpak "
-#| "sandbox. Please install xdg-desktop-portal and xdg-desktop-portal-gtk on "
-#| "your system."
 msgid ""
 "Missing the desktop portal needed to print from inside a Flatpak sandbox."
-msgstr ""
-"빠진 desktop 포털에서는 flatpak 샌드박스에서 인쇄하려고 합니다. xdg-"
-"desktop=portal과 xdg-desktop-portal-gtk를 시스템에 설치하십시오."
+msgstr "빠진 desktop 포털에서는 flatpak 샌드박스에서 인쇄하려고 합니다."
 
 #: src/gr-utils.c:463
-#, fuzzy
-#| msgid ""
-#| "Missing the desktop portals needed to open files from inside a flatpak "
-#| "sandbox. Please install xdg-desktop-portal and xdg-desktop-portal-gtk on "
-#| "your system."
 msgid ""
 "Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
-msgstr ""
-"빠진 desktop 포털에서는 flatpak 샌드박스에서 파일을 열려고 합니다. xdg-"
-"desktop-portal과 xdg-desktop-portal-gtk을 시스템에 설치하십시오."
+msgstr "빠진 desktop 포털에서는 flatpak 샌드박스에서 파일을 열려고 합니다."
 
 #: src/gr-utils.c:467
-#, fuzzy
-#| msgid ""
-#| "Missing the desktop portals needed to print from inside a flatpak "
-#| "sandbox. Please install xdg-desktop-portal and xdg-desktop-portal-gtk on "
-#| "your system."
 msgid ""
 "Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
-msgstr ""
-"빠진 desktop 포털에서는 flatpak 샌드박스에서 인쇄하려고 합니다. xdg-"
-"desktop=portal과 xdg-desktop-portal-gtk를 시스템에 설치하십시오."
+msgstr "빠진 desktop 포털에서는 flatpak 샌드박스에서 인쇄하려고 합니다."
 
 #: src/gr-window.c:230
 msgid "Add a New Recipe"
@@ -2820,17 +2774,34 @@ msgstr "도우"
 msgid "Toppings"
 msgstr "토핑"
 
-#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
-#, fuzzy
-#| msgid "translator-credits"
-msgctxt "_"
-msgid "translator-credits"
-msgstr "조성호 <shcho@gnome.org>, 2017."
+#~ msgid ""
+#~ "Recipes is an easy-to-use application that will help you to discover what "
+#~ "to cook today, tomorrow, the rest of the week and for your special "
+#~ "occasions."
+#~ msgstr ""
+#~ "요리는 오늘, 내일 다음주, 특별한 날에 무슨 요리를 할 지 찾아보는데 도움을 "
+#~ "주는 쓰기 쉬운 프로그램입니다."
 
-#. (itstool) path: page/p
-#: help/C/index.page:13
-msgid "Recipes will be documented here."
-msgstr ""
+#~ msgid ""
+#~ "Recipes comes with a collection of recipes that have been collected by "
+#~ "GNOME contributors from all over the world. It also lets you store your "
+#~ "own recipes and share them with your friends."
+#~ msgstr ""
+#~ "요리는 전세계 여러 그놈 기여자가 모아둔 조리법을 모아두었습니다. 여러분의 "
+#~ "조리법을 저장할 수 있고, 이 조리법을 친구와 공유할 수 있습니다."
+
+#~ msgid "_Help"
+#~ msgstr "도움말(_H)"
+
+#~ msgid "Contribute to the Recipes project"
+#~ msgstr "요리 프로젝트에 기여하기"
+
+#~ msgctxt "_"
+#~ msgid "translator-credits"
+#~ msgstr "조성호 <shcho@gnome.org>, 2017."
+
+#~ msgid "Recipes will be documented here."
+#~ msgstr "요리 문서는 이곳에 들어갑니다."
 
 #~ msgid "My Chef Information"
 #~ msgstr "내 요리사 정보"
