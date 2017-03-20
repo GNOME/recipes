@@ -320,7 +320,7 @@ gr_shopping_list_printer_print (GrShoppingListPrinter *printer,
         GtkPrintOperation *operation;
 
         if (in_flatpak_sandbox () &&
-            !portal_available (GTK_WINDOW (printer->window), "org.freedesktop.portal.Printing"))
+            !portal_available (GTK_WINDOW (printer->window), "org.freedesktop.portal.Print"))
                 return;
 
         printer->recipes = g_list_copy_deep (recipes, (GCopyFunc)g_object_ref, NULL);
