@@ -366,17 +366,26 @@ edit_page_finalize (GObject *object)
 static void
 populate_cuisine_combo (GrEditPage *page)
 {
-        const char **names;
+        GArray *cuisine_names = g_array_new (FALSE, TRUE, sizeof (char *));
+        g_autofree char **names = NULL;
+        guint length;
         const char *title;
-        int length;
         int i;
+        GrRecipeStore *store;
 
-        names = gr_cuisine_get_names (&length);
-        for (i = 0; i < length; i++) {
-                gr_cuisine_get_data (names[i], &title, NULL, NULL);
-                gtk_combo_box_text_append (GTK_COMBO_BOX_TEXT (page->cuisine_combo),
-                                           names[i],
-                                           title);
+        store = gr_recipe_store_get ();
+        names = gr_recipe_store_get_all_cuisines (store, &length);
+        gtk_combo_box_text_remove_all (GTK_COMBO_BOX_TEXT (page->cuisine_combo));
+
+        for (i = 0; i < length; ++i) {
+                char *temp_cuisine_name;
+                cuisine_names = g_array_append_val (cuisine_names, names[i]);
+                temp_cuisine_name = g_strstrip (g_array_index (cuisine_names, char *, i));
+                if (strcmp (temp_cuisine_name, "") != 0) {
+                        gr_cuisine_get_data (temp_cuisine_name, &title, NULL, NULL);
+                        gtk_combo_box_text_append (GTK_COMBO_BOX_TEXT (page->cuisine_combo),
+                                                                       temp_cuisine_name, title);
+                }
         }
 }
 
@@ -2305,7 +2314,7 @@ gr_edit_page_save (GrEditPage *page)
                 if (ret)
                         g_set_object (&page->recipe, recipe);
         }
-
+        populate_cuisine_combo (page);
         if (ret) {
                 gr_image_viewer_persist_changes (GR_IMAGE_VIEWER (page->images));
 
