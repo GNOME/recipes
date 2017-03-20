@@ -5,12 +5,21 @@
   
   <info>
     <link type="guide" xref="index#share" group="first"/>
+    <link type="seealso" xref="contribute"/>
     <desc>How to print or share recipes and shopping lists.</desc>
     <revision pkgversion="3.24" version="0.1" date="2017-03-16" status="draft"/>
     <credit type="author">
       <name>Paul Cutler</name>
       <email its:translate="no">pcutler@gnome.org</email>
     </credit>
+    <credit type="author">
+      <name>Jim Campbell</name>
+      <email its:translate="no">jcampbell@gnome.org</email>
+    </credit>
+    <credit type="author">
+      <name> Sindhu S</name>
+      <email its:translate="no">sindhus@live.in</email>
+    </credit>      
     <license>
       <p>Creative Commons Share Alike 4.0</p>
     </license>
@@ -18,11 +27,17 @@
 
   <title>Printing and Sharing</title>
   
+  <section id="sharing">
+  <title>Share a Recipe or Shopping List Using Email</title>
   <p>You can email a shopping list or recipe to a friend.  Shopping lists
   will email all of the ingredients needed in the body of an email.  If you
   email a recipe, the email recipient will receive the recipe as an email
   attachment.  They can download the attachment and double-click it to import
   the recipe you shared into <app>Recipes</app>.</p>
+  
+  <note><p>You must use an email application to share recipes.  Web based
+      email, like Gmail or Yahoo!, will not work to share recipes.</p>
+  </note>
   <steps>
     <item>
       <p>Open the recipe or shopping list you want to email.
@@ -39,7 +54,7 @@
       </p>
     </item>
     <item>
-      <p>Press the <gui>Share</gui> button in the upper-right corner.
+      <p>Press the <gui>Share</gui> button in the bottom-right corner.
       </p>
     </item>
     <item>
@@ -48,10 +63,11 @@
       </p>
     </item>
     <item>
-      <p>The email application you chose will open and a new email message will
-      be composed.  <app>Recipes</app> will have included the text of the
-      shopping list or the recipe as an attachment and the <em>Subject</em> 
+      <p>A new email message will be opened composed.  The <em>Subject</em> 
       line and email body will be automatically filled out for you.
+      If you are emailing a shopping list, the shopping list will be included
+      in the body of the email.  If you are sharing a recipe, the recipe will
+      be attached to the email. 
       </p>
     </item>
     <item>
@@ -60,6 +76,36 @@
       </p>
     </item>
   </steps>
+  </section>
+  
+  <section id="printing">
+  <title>Print a Recipe</title>
+  
+    <note style="important">
+      <p>Printing a recipe requires that you have connected and
+      configured your printer. If you have not done this, please consult the
+      <link href="help:gnome-help/printing">printing help for GNOME</link>.</p>
+    </note>
+    
+    <p>You can print your recipes using a local or remote printer. 
+      To print a recipe:</p>
+
+  <steps>
+    <item>
+      <p>Press the <gui style="menuitem">Print</gui> button in the 
+      bottom-right corner when viewing a recipe.</p>
+    </item>
+    <item>
+      <p>Select the desired printer from the list of printers available.</p>
+    </item>
+    <item>
+      <p>You can preview the file using <gui style="button">Print Preview</gui>
+      and once you are satisfied with the settings, press
+      <gui style="button">Print</gui> to send the file to printer.</p>
+    </item>
+  </steps>
+  </section>
+    
     
   
   
