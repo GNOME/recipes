@@ -30,27 +30,56 @@
       the ingredient list.</p>
     </item>
     <item>
-      <p>Open a recipe.</p>
-    </item>
-    <item>
       <p><app>Recipes</app> will display a pop-up at the top.  To view
       the shopping list, press the <gui>View Shopping List</gui> button or
       press <gui>x</gui> to close the pop-up.</p>
     </item>
     <item>
-      <p>Repeat for any other recipes you would like the ingredients to be
+      <p>Repeat steps for any other recipes you would like the ingredients to be
       added to your shopping list.</p>
     </item>
     </steps>
 
-  <p>After pressing the <gui>View Shopping List</gui> button, 
+  <p>When you are finished adding to the shopping list, press the 
+  <gui>View Shopping List</gui> button or return to the main 
+  <app>Recipes</app> window and <gui>Buy ingredients</gui> bar in the
+  <gui>Today</gui> section.</p>
+  
+  <p>
   <app>Recipes</app> will display the <gui>Buy Ingredients</gui> page.  
-  The recipes that you have added to the shopping list will be displayed
-  and in the upper-right corner the serving size of each recipe is shown.
+  The recipes that you have added to the shopping list will be displayed and
+  the ingredients for all of the recipes you need to purchase will be
+  added to the shopping list for you.
   </p>
-  <p>The shopping list will be automatically created, including all of 
-  the ingredients you need for each recipe you added to the shopping list.
-  To remove an item from the shopping list:</p>
+  
+  <section id="change-quantity">
+  <title>Edit the Shopping List</title>
+  <p>
+  You can increase the serving side of a recipe and the shopping list will 
+  automatically increase the ingredients you need to purchase.
+  </p>
+  <steps>
+    <item>
+      <p>The recipes you have added to the shopping list are shown
+      at the top.  In the upper-right corner of the recipe the serving size 
+      is shown.  Click the number displayed int he recipe.
+      </p>
+    </item>
+    <item>
+      <p>Increase or decrease the serving size of the recipe by pressing
+      <gui>+</gui> or <gui>-</gui>.
+      </p>
+    </item>
+  </steps>
+  
+  <p>The shopping list will automatically adjust the ingredients needed to 
+  purchase based on the new serving size of the recipe.
+  </p>
+  </section>
+  
+  <section id="remove-item">
+  <title>Remove an Item</title>
+  <p>To remove an item from the shopping list:</p>
   <steps>
     <item>
       <p>Select an item from the list.</p>
@@ -63,7 +92,7 @@
       the ingredient is removed from the shopping list.</p>
     </item>
   </steps>
-  <p>To add an ingredient you removed back to the shopping list:</p>
+  <p>To add an ingredient back to the shopping list after you removed it:</p>
     <steps>
     <item>
       <p>Press the <gui>+</gui> at the bottom of the shopping list.</p>
@@ -75,6 +104,7 @@
   </steps>
   <p>After you have completed your shopping, press the <gui>
   Done Shopping</gui> to clear your shopping list.</p>  
+  </section>
     
   
 </page>
