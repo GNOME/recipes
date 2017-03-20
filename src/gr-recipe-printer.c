@@ -431,7 +431,7 @@ gr_recipe_printer_print (GrRecipePrinter *printer,
 {
         GtkPrintOperation *operation;
 
-        if (in_flatpak_sandbox () && !portal_available (printer->window, "org.freedesktop.portal.Printing"))
+        if (in_flatpak_sandbox () && !portal_available (printer->window, "org.freedesktop.portal.Print"))
                 return;
 
         printer->recipe = g_object_ref (recipe);
