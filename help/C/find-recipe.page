@@ -23,8 +23,20 @@
   <p>Press the search button <media type="image" mime="image/png" 
   src="images/search.png" its:translate="yes">
   <span its:translate="yes">Search</span></media> and enter your search query.
-  The search results will include any recipe with your query in the title of
-  the recipe, ingredients, or the name for the chef who wrote the recipe.</p>
+  The search results can include:</p>
+  
+  <list>
+    <item>
+      <p>Recipes that include the text you searched for.</p>
+    </item>
+    <item>
+      <p>Ingredients that include the text you searched for.</p>
+    </item>
+        <item>
+      <p>Chef names.</p>
+    </item>
+  </list>
+  
   <p>You can also do a more narrow search by category.  
   Press the search button <media type="image" mime="image/png" 
   src="images/search.png" its:translate="yes">
@@ -88,13 +100,13 @@
   
   <section id="cuisines">
   <title>Search by Cuisines</title>
-  <p>You can also search for a recipe by what type of cuisine or region
-  the recipe is.  This also includes searching for seasonal recipes that 
+  <p>You can also search for a recipe by what type of cuisine the recipe is 
+  or region it is from.  This also includes searching for seasonal recipes that 
   might be made during certain holidays or times of year.</p>
   <steps>
     <item>
-      <p>In the top menu bar of <app>Recipes</app>, press 
-      <gui style="button">Cuisines</gui></p>.
+      <p>In the top menu bar of <app>Recipes</app>, press the
+      <gui style="button">Cuisines</gui> button</p>.
     </item>
     <item>
       <p>A list of cuisines from around the world with brief descriptions
