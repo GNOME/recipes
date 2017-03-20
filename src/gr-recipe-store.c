@@ -1179,6 +1179,27 @@ gr_recipe_store_get_contributors (GrRecipeStore *self,
         return (char **)g_hash_table_get_keys_as_array (chefs, length);
 }
 
+char **
+gr_recipe_store_get_all_cuisines (GrRecipeStore *self,
+                                  guint *length )
+{
+        GHashTableIter iter;
+        GrRecipe *recipe;
+        g_autoptr (GHashTable) cuisines = NULL;
+
+        cuisines = g_hash_table_new (g_str_hash, g_str_equal);
+
+        g_hash_table_iter_init (&iter, self->recipes);
+        while (g_hash_table_iter_next (&iter, NULL, (gpointer *) &recipe)) {
+                if(! (g_hash_table_contains (cuisines, gr_recipe_get_cuisine (recipe)))) {
+                        g_hash_table_insert (cuisines,
+                                             (gpointer) (gr_recipe_get_cuisine (recipe)),
+                                             (gpointer) (gr_recipe_get_cuisine (recipe)));
+                }
+        }
+        return (char **) g_hash_table_get_keys_as_array (cuisines, length);
+}
+
 const char *
 gr_recipe_store_get_user_key (GrRecipeStore *self)
 {
