@@ -1,0 +1,66 @@
+<page xmlns="http://projectmallard.org/1.0/"
+  xmlns:its="http://www.w3.org/2005/11/its"
+  type="topic"
+  id="add-recipe-ingredients" style="task">
+  
+  <info>
+    <link type="guide" xref="add-recipe" group="third"/>
+    <link type="seealso" xref="add-recipe-details"/>
+    <link type="seealso" xref="add-recipe-description"/>
+    <link type="seealso" xref="add-recipe-directions"/>
+    <link type="seealso" xref="add-recipe-images"/>
+    <desc>How to add ingredients and lists.</desc>
+    <revision pkgversion="3.24" version="0.1" date="2017-03-21" status="draft"/>
+    <credit type="author">
+      <name>Paul Cutler</name>
+      <email its:translate="no">pcutler@gnome.org</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 4.0</p>
+    </license>
+  </info>
+  
+  <title>Add Ingredients</title>
+  <p>You can add the ingredients and create lists for the recipe.  Lists are
+      used for recipes that have different parts, such as a cake that has 
+      an ingredient list for the cake and an ingredient list for the frosting.
+      To create a list:</p>
+      <steps>
+        <item><p>Press the <gui>New Recipe</gui> in the upper left corner of 
+        <app>Recipes</app>.</p>
+        </item>
+        <item><p>Press the <gui>Add List</gui> button in the 
+        <gui>Ingredients</gui> section.</p>
+        </item>
+        <item><p>Enter the name of the list, such as cake, in the
+         <gui>Name of the List</gui> text box.</p>
+        </item>
+        <item><p>Repeat this step for as many lists as you may need.</p>
+        </item>
+      </steps>
+    <p>To add ingredients to a recipe or to a list:</p>
+      <steps>
+        <item><p>Press the <gui style="button">+</gui> button.</p>
+        </item>
+        <item><p>Choose the ingredient from the list or enter
+        the ingredient in the <gui>Search</gui> box.</p>
+        </item>
+        <item><p>Press the <gui>Add</gui> button to add the ingredient to the 
+        list or click <gui>Amount</gui> to how much of the ingredient is 
+        needed.</p>
+        </item>
+        <item><p>In the <gui>Amount</gui> drop down box you can enter the 
+        quantity needed and then press <gui>Add</gui>. Or you can enter the 
+        amount and choose the measurement from the list and then press the 
+        <gui>Add</gui> button.</p>
+        </item>
+        <item>
+          <p>Repeat these steps until all ingredients have been added to the 
+          list or recipe.
+          </p>
+        </item>
+      </steps>
+      <note><p><app>Recipes</app> does not currently support the ability
+      to convert between metric units and imperial units.</p></note>
+  
+</page>

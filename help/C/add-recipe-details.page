@@ -1,0 +1,60 @@
+<page xmlns="http://projectmallard.org/1.0/"
+  xmlns:its="http://www.w3.org/2005/11/its"
+  type="topic"
+  id="add-recipe-details" style="task">
+  
+  <info>
+    <link type="guide" xref="add-recipe" group="first"/>
+    <link type="seealso" xref="add-recipe-description"/>
+    <link type="seealso" xref="add-recipe-ingredients"/>
+    <link type="seealso" xref="add-recipe-directions"/>
+    <link type="seealso" xref="add-recipe-images"/>
+    <desc>Add recipe name, serving size, cooking and preparation time, and more.
+    </desc>
+    <revision pkgversion="3.24" version="0.1" date="2017-03-21" status="draft"/>
+    <credit type="author">
+      <name>Paul Cutler</name>
+      <email its:translate="no">pcutler@gnome.org</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 4.0</p>
+    </license>
+  </info>
+  
+  <title>Add Recipe Details</title>
+      <p>Press the <gui>New Recipe</gui> in the upper left corner of 
+      <app>Recipes</app> and include the following information about your 
+      recipe in the <gui>Details</gui> section. Each field is optional.</p>
+      <steps>
+        <item><p><gui>Name Your Recipe</gui>: Enter the name of the recipe in
+        the text box.</p>
+        </item>
+        <item><p><gui>Serves</gui>: Enter a number or press the 
+        <gui style="button">+</gui> button to enter how many servings the recipe
+        will make.</p>
+        </item>
+        <item><p><gui>Preparation Time</gui>: From the drop down box, choose
+        how long it takes to pepare the ingredients prior to cooking.</p>
+        </item>
+        <item><p><gui>Cooking Time</gui>:  From the drop down box, choose
+        how long it takes to cook the recipe.</p>
+        </item>
+        <item><p><gui>Cuisine</gui>:  From the drop down box, choose the type of
+        food or the region from where the recipe comes from.  You can also
+        enter the type of cuisine if it is not included in the list.</p>
+        </item>
+        <item><p><gui>Meal</gui>: From the drop down box, choose what type
+        of meal the recipe makes.  Examples include breakfast or dinner; or
+        types of food such as pasta or cocktails.  You can also enter the type
+        of meal if it is not included in the list. </p>
+        </item>
+        <item><p><gui>Season</gui>: From the drop down box, choose from
+        the season or holiday that the recipe is typically associated with.
+        You can also enter the season or holiday if it is not included 
+        in the list.</p>
+        </item>
+        <item><p><gui>Spiciness</gui>: From the drop down menu, choose
+        how spicy the recipe is.</p>
+        </item>
+      </steps>
+</page>
