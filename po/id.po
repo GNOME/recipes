@@ -1,0 +1,2816 @@
+# Indonesian translation for recipes.
+# Copyright (C) 2017 recipes's COPYRIGHT HOLDER
+# This file is distributed under the same license as the recipes package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: recipes recipes-1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-03-20 01:11+0000\n"
+"PO-Revision-Date: 2017-03-20 22:15+0700\n"
+"Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
+"X-Generator: Poedit 1.8.11\n"
+
+#: data/org.gnome.Recipes.desktop.in:3
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
+#: src/gr-window.ui:427 src/gr-about-dialog.c:911 src/gr-window.c:373
+#: src/gr-window.c:998
+msgid "Recipes"
+msgstr "Resep"
+
+#: data/org.gnome.Recipes.desktop.in:4
+msgid "GNOME cooks unite!"
+msgstr "Koki GNOME bersatu!"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Recipes.desktop.in:7
+msgid "org.gnome.Recipes"
+msgstr "org.gnome.Recipes"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:915
+msgid "GNOME loves to cook"
+msgstr "GNOME suka memasak"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:9
+msgid ""
+"GNOME Recipes is an easy-to-use application that will help you to discover "
+"what to cook today, tomorrow, rest of the week and for your special "
+"occasions."
+msgstr ""
+"GNOME Resep adalah aplikasi yang mudah digunakan, yang akan membantu Anda "
+"untuk menemukan apa yang akan dimasak hari ini, besok, sisa minggu dan untuk "
+"acara khusus Anda."
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:13
+msgid ""
+"Recipes comes with a collection of recipes that have been collected by GNOME "
+"contributors from all over the world. It also lets you store your own "
+"recipes, and share them with your friends."
+msgstr ""
+"Resep hadir dengan koleksi resep yang telah dikumpulkan oleh kontributor "
+"GNOME dari seluruh dunia. Hal ini juga memungkinkan Anda menyimpan resep "
+"Anda sendiri, dan membaginya dengan teman-teman Anda."
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:18
+msgid "The major features of Recipes include:"
+msgstr "Fitur utama dari Resep meliputi:"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:22
+msgid "Add and edit your own recipes"
+msgstr "Menambah dan menyunting resep Anda sendiri"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:23
+msgid "Share recipes with your friends"
+msgstr "Berbagi resep dengan teman Anda"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:24
+msgid "Export and print shopping lists"
+msgstr "Ekspor dan cetak daftar belanja "
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:25
+msgid "Adjust quantities based on the number of servings"
+msgstr "Sesuaikan jumlah berdasarkan jumlah porsi"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:26
+msgid "Mark recipes to cook later or add them to your favorites"
+msgstr "Tandai resep untuk memasak nanti atau menambahkannya ke favorit Anda"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:27
+msgid "Add notes to recipes"
+msgstr "Menambahkan catatan ke resep"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:28
+msgid "Hands-free cooking instruction mode"
+msgstr "Mode instruksi memasak hands-free"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:34
+msgid "Initial screen for the application"
+msgstr "Layar awal untuk aplikasi"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:38
+msgid "The cuisines page"
+msgstr "Halaman masakan"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:42
+msgid "A shopping list"
+msgstr "Daftar belanja"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:46
+msgid "Cooking a recipe"
+msgstr "Memasak resep"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:50
+msgid "Editing a recipe"
+msgstr "Menyunting resep"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:54
+msgid "An individual recipe"
+msgstr "Resep individual"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:58
+msgid "An individual cuisine"
+msgstr "Masakan individu"
+
+#: data/org.gnome.Recipes.gschema.xml:8
+msgid "The user ID of the current user"
+msgstr "ID pengguna dari pengguna sekarang"
+
+#: data/org.gnome.Recipes.gschema.xml:9
+msgid "The user ID of the current user."
+msgstr "ID pengguna dari pengguna sekarang."
+
+#: data/org.gnome.Recipes.gschema.xml:15
+msgid "The number of times cooking mode has been presented"
+msgstr "Cacah jumlah mode memasak yang telah disajikan"
+
+#: data/org.gnome.Recipes.gschema.xml:16
+msgid "The number of times cooking mode has been presented."
+msgstr "Cacah jumlah mode memasak yang telah disajikan."
+
+#: data/org.gnome.Recipes.gschema.xml:22
+msgid "The timestamp of the last change to the favorites list"
+msgstr "Stempel waktu dari perubahan terakhir ke daftar favorit"
+
+#: data/org.gnome.Recipes.gschema.xml:23
+msgid ""
+"The timestamp of the last time an item was added to or removed from the "
+"favorites list."
+msgstr ""
+"Stempel waktu dari terakhir kali item ditambahkan atau dihapus dari daftar "
+"favorit."
+
+#: data/org.gnome.Recipes.gschema.xml:30
+msgid "The list of favorites"
+msgstr "Daftar favorit"
+
+#: data/org.gnome.Recipes.gschema.xml:31
+msgid "The list of favorites. Each entry in the list is the ID of a recipe."
+msgstr "Daftar favorit. Setiap entri dalam daftar adalah ID dari resep."
+
+#: data/org.gnome.Recipes.gschema.xml:37
+msgid "The timestamp of the last change to the shopping list"
+msgstr "Stempel waktu dari perubahan terakhir ke daftar belanja"
+
+#: data/org.gnome.Recipes.gschema.xml:38
+msgid ""
+"The timestamp of the last time an item was added to or removed from the "
+"shopping list."
+msgstr ""
+"Stempel waktu dari terakhir kali item ditambahkan atau dihapus dari daftar "
+"belanja."
+
+#: data/org.gnome.Recipes.gschema.xml:45
+msgid "The shopping list"
+msgstr "Daftar belanja"
+
+#: data/org.gnome.Recipes.gschema.xml:46
+msgid ""
+"The shopping list. Each entry in the dictionary maps the ID of a recipe to a "
+"serving count."
+msgstr ""
+"Daftar belanja. Setiap entri dalam kamus memetakan ID dari resep untuk "
+"hitungan melayani."
+
+#: data/org.gnome.Recipes.gschema.xml:53
+msgid "Ingredients that were removed from the shopping list"
+msgstr "Bahan-bahan yang telah dihapus dari daftar belanja"
+
+#: data/org.gnome.Recipes.gschema.xml:54
+msgid "The names of ingredients that were removed from the shopping list."
+msgstr "Nama-nama bahan-bahan yang telah dihapus dari daftar belanja."
+
+#: data/org.gnome.Recipes.gschema.xml:60
+msgid "The list of recipes to be exported"
+msgstr "Daftar resep untuk diekspor"
+
+#: data/org.gnome.Recipes.gschema.xml:61
+msgid ""
+"The list of recipes to be exported. Each entry in the list is the ID of a "
+"recipe."
+msgstr ""
+"Daftar resep untuk diekspor. Setiap entri dalam daftar adalah ID dari resep."
+
+#: src/chef-conflict-dialog.ui:10
+msgid "Same Chef"
+msgstr "Koki yang sama"
+
+#: src/chef-conflict-dialog.ui:16
+msgid "Different Chef"
+msgstr "Koki yang berbeda"
+
+#: src/chef-conflict-dialog.ui:30
+msgid "Existing Chef"
+msgstr "Koki yang ada"
+
+#: src/chef-conflict-dialog.ui:43
+msgid "Imported Chef"
+msgstr "Koki yang diimpor"
+
+#: src/chef-conflict-dialog.ui:57 src/chef-conflict-dialog.ui:69
+msgid "Short Name:"
+msgstr "Nama singkat:"
+
+#: src/chef-conflict-dialog.ui:80 src/chef-conflict-dialog.ui:92
+#: src/recipe-conflict-dialog.ui:38
+msgid "Name:"
+msgstr "Nama:"
+
+#: src/chef-conflict-dialog.ui:103 src/chef-conflict-dialog.ui:115
+msgid "Description:"
+msgstr "Deskripsi:"
+
+#: src/chef-conflict-dialog.ui:126 src/chef-conflict-dialog.ui:138
+msgid "Picture:"
+msgstr "Gambar:"
+
+#: src/gr-chef-dialog.ui:4 src/gr-window.c:1099
+msgid "Chef Information"
+msgstr "Informasi Koki"
+
+#: src/gr-chef-dialog.ui:10 src/gr-window.c:1197
+msgid "_Cancel"
+msgstr "_Batal"
+
+#: src/gr-chef-dialog.ui:20 src/gr-window.ui:130
+msgid "_Save"
+msgstr "_Simpan"
+
+#: src/gr-chef-dialog.ui:97
+msgid ""
+"This information may be shared with other users if you share your recipes."
+msgstr ""
+"Informasi ini dapat dibagi dengan pengguna lain jika Anda berbagi resep Anda."
+
+#: src/gr-chef-dialog.ui:119
+msgid "Other Chef"
+msgstr "Koki lainnya"
+
+#: src/gr-chef-dialog.ui:132
+msgid "Name…"
+msgstr "Nama…"
+
+#: src/gr-chef-dialog.ui:143
+msgid "Short Name…"
+msgstr "Nama singkat…"
+
+#: src/gr-cooking-page.ui:75
+msgid "Show"
+msgstr "Tampilkan"
+
+#: src/gr-cooking-page.ui:158
+msgid "Done"
+msgstr "Selesai"
+
+#: src/gr-cooking-page.ui:185
+msgid "Stop Cooking?"
+msgstr "Berhenti Memasak?"
+
+#: src/gr-cooking-page.ui:194
+msgid "Some timers are still running."
+msgstr "Beberapa pengukur waktu masih berjalan."
+
+#: src/gr-cooking-page.ui:200
+msgid ""
+"Recipes can keep the timers running\n"
+"even if you leave cooking mode now."
+msgstr ""
+"Resep dapat menjaga pengukur waktu berjalan\n"
+"bahkan jika Anda meninggalkan mode memasak sekarang."
+
+#: src/gr-cooking-page.ui:212
+msgid "Keep Cooking"
+msgstr "Tetap Memasak"
+
+#: src/gr-cooking-page.ui:219
+msgid "Stop Timers"
+msgstr "Berhentikan Pengukur Waktu"
+
+#: src/gr-cooking-page.ui:226
+msgid "Continue Timers"
+msgstr "Lanjutkan Pengukur Waktu"
+
+#: src/gr-cooking-page.ui:255
+msgid "Controls"
+msgstr "Kendali"
+
+#: src/gr-cooking-page.ui:281
+msgid ""
+"To advance to the next step, press any key on the\n"
+"keyboard."
+msgstr ""
+"Untuk maju ke langkah berikutnya, tekan tombol apa saja pada\n"
+"papan tik."
+
+#: src/gr-cooking-page.ui:304
+msgid "To go back to the previous step, doubletap any key."
+msgstr "Untuk kembali ke langkah sebelumnya, tap dua kali tombol apa saja."
+
+#: src/gr-cooking-page.ui:326
+msgid ""
+"Alternatively, you can use the cursor keys to\n"
+"quickly seek within the directions."
+msgstr ""
+"Atau, Anda dapat menggunakan tombol kursor untuk\n"
+"segera mencari arah dalam petunjuk."
+
+#: src/gr-cooking-page.ui:350
+msgid "To exit the process, press the Escape key."
+msgstr "Untuk keluar proses, tekan tombol Escape."
+
+#: src/gr-cooking-view.ui:64
+msgid "Time is up!"
+msgstr "Waktu habis!"
+
+#: src/gr-cuisine-page.ui:67 src/gr-list-page.ui:111 src/gr-search-page.ui:29
+#: src/gr-list-page.c:417
+msgid "No recipes found"
+msgstr "Tidak ada resep yang ditemukan"
+
+#: src/gr-cuisine-page.ui:80
+msgid "There are no recipes for this cuisine."
+msgstr "Tidak ada resep untuk masakan ini."
+
+#: src/gr-cuisines-page.ui:8
+msgid "Cuisines page"
+msgstr "Halaman masakan"
+
+#: src/gr-cuisines-page.ui:28
+msgid "World Cuisines"
+msgstr "Masakan Dunia"
+
+#: src/gr-cuisines-page.ui:54
+msgid "Seasonal"
+msgstr "Musiman"
+
+#: src/gr-details-page.ui:105
+msgid "Contains garlic"
+msgstr "Mengandung bawang putih"
+
+#: src/gr-details-page.ui:112
+msgid "Contains dairy products"
+msgstr "Mengandung produk susu"
+
+#: src/gr-details-page.ui:119
+msgid "Contains Gluten"
+msgstr "Mengandung Gluten"
+
+#: src/gr-details-page.ui:126 src/gr-details-page.c:546
+msgid "Spicy"
+msgstr "Pedas"
+
+#: src/gr-details-page.ui:146
+msgid "_Buy Ingredients"
+msgstr "Mem_beli Bahan"
+
+#: src/gr-details-page.ui:164 src/gr-recipe-small-tile.ui:101
+msgid "Serves"
+msgstr "Menyajikan"
+
+#: src/gr-details-page.ui:198
+msgid "Preparation Time"
+msgstr "Waktu Persiapan"
+
+#: src/gr-details-page.ui:228
+msgid "Cooking Time"
+msgstr "Waktu Memasak"
+
+#: src/gr-details-page.ui:258
+msgid "Cuisine"
+msgstr "Masakan"
+
+#: src/gr-details-page.ui:288 src/gr-query-editor.ui:46
+msgid "Meal"
+msgstr "Makan"
+
+#: src/gr-details-page.ui:318
+msgid "Season"
+msgstr "Musim"
+
+#: src/gr-details-page.ui:379
+msgid "Note"
+msgstr "Catatan"
+
+#: src/gr-details-page.ui:409 src/gr-edit-page.ui:654
+#: src/gr-recipe-formatter.c:86 src/gr-recipe-printer.c:242
+msgid "Directions"
+msgstr "Petunjuk"
+
+#: src/gr-details-page.ui:469
+msgid "_Notes"
+msgstr "_Catatan"
+
+#: src/gr-details-page.ui:479 src/gr-shopping-page.ui:124
+msgid "_Edit"
+msgstr "_Sunting"
+
+#: src/gr-details-page.ui:488
+msgid "_Delete"
+msgstr "_Hapus"
+
+#: src/gr-details-page.ui:499 src/gr-shopping-page.ui:142
+#: src/recipe-export-dialog.ui:21
+msgid "_Share"
+msgstr "_Bagikan"
+
+#: src/gr-details-page.ui:511 src/gr-shopping-page.ui:153
+msgid "_Print"
+msgstr "C_etak"
+
+#: src/gr-details-page.ui:522
+msgid "Add to favorites"
+msgstr "Menambahkan ke favorit"
+
+#: src/gr-edit-page.ui:112
+msgid "Add an image"
+msgstr "Menambahkan gambar"
+
+#: src/gr-edit-page.ui:138 src/gr-edit-page.ui:164
+msgid "Rotate image"
+msgstr "Memutar gambar"
+
+#: src/gr-edit-page.ui:190
+msgid "Default image"
+msgstr "Gambar bawaan"
+
+#: src/gr-edit-page.ui:216
+msgid "Remove image"
+msgstr "Menghapus gambar"
+
+#: src/gr-edit-page.ui:259
+msgid "Details"
+msgstr "Rincian"
+
+#: src/gr-edit-page.ui:276
+msgid "_Name Your Recipe"
+msgstr "_Nama Resep Anda"
+
+#: src/gr-edit-page.ui:307
+msgid "Ser_ves"
+msgstr "Mela_yani"
+
+#: src/gr-edit-page.ui:337
+msgid "_Preparation Time"
+msgstr "Waktu _Persiapan"
+
+#: src/gr-edit-page.ui:358 src/gr-edit-page.ui:396
+msgid "Less than 15 minutes"
+msgstr "Kurang dari 15 menit"
+
+#: src/gr-edit-page.ui:359 src/gr-edit-page.ui:397
+msgid "15 to 30 minutes"
+msgstr "15 sampai 30 menit"
+
+#: src/gr-edit-page.ui:360 src/gr-edit-page.ui:398
+msgid "30 to 45 minutes"
+msgstr "30 sampai 45 menit"
+
+#: src/gr-edit-page.ui:361 src/gr-edit-page.ui:399
+msgid "45 minutes to an hour"
+msgstr "45 menit sampai satu jam"
+
+#: src/gr-edit-page.ui:362 src/gr-edit-page.ui:400
+msgid "More than an hour"
+msgstr "Lebih dari satu jam"
+
+#: src/gr-edit-page.ui:375
+msgid "C_ooking Time"
+msgstr "Wakt_u Memasak"
+
+#: src/gr-edit-page.ui:413
+msgid "_Cuisine"
+msgstr "M_asakan"
+
+#: src/gr-edit-page.ui:444
+msgid "_Meal"
+msgstr "_Makan"
+
+#: src/gr-edit-page.ui:475
+msgid "S_eason"
+msgstr "Mus_im"
+
+#: src/gr-edit-page.ui:506
+msgid "S_piciness"
+msgstr "Ke_pedasan"
+
+#: src/gr-edit-page.ui:526 src/gr-spice-row.c:127
+msgid "Mild"
+msgstr "Ringan"
+
+#: src/gr-edit-page.ui:527
+msgid "Somewhat spicy"
+msgstr "Agak pedas"
+
+#: src/gr-edit-page.ui:528
+msgid "Hot"
+msgstr "Pedas"
+
+#: src/gr-edit-page.ui:529 src/gr-details-page.c:541 src/gr-spice-row.c:142
+msgid "Very spicy"
+msgstr "Sangat pedas"
+
+#: src/gr-edit-page.ui:540
+msgid "Description"
+msgstr "Deskripsi"
+
+#: src/gr-edit-page.ui:599 src/gr-diet-row.c:102
+msgid "Gluten free"
+msgstr "Bebas Gluten"
+
+#: src/gr-edit-page.ui:606 src/gr-diet-row.c:105
+msgid "Nut free"
+msgstr "Bebas kacang"
+
+#: src/gr-edit-page.ui:613 src/gr-diet-row.c:108
+msgid "Vegan"
+msgstr "Vegan"
+
+#: src/gr-edit-page.ui:620 src/gr-diet-row.c:111
+msgid "Vegetarian"
+msgstr "Vegetarian"
+
+#: src/gr-edit-page.ui:627 src/gr-diet-row.c:114
+msgid "Milk free"
+msgstr "Bebas susu"
+
+#: src/gr-edit-page.ui:715 src/menus.ui:62
+msgid "Edit"
+msgstr "Sunting"
+
+#: src/gr-edit-page.ui:722
+msgid "Preview"
+msgstr "Pratinjau"
+
+#: src/gr-edit-page.ui:742
+msgid "Add Step"
+msgstr "Menambahkan Langkah"
+
+#: src/gr-edit-page.ui:750
+msgid "Add Image"
+msgstr "Menambahkan Gambar"
+
+#: src/gr-edit-page.ui:758
+msgid "Add Timer"
+msgstr "Menambahkan Pengukur Waktu"
+
+#: src/gr-edit-page.ui:766
+msgid "Add Temperature"
+msgstr "Menambahkan Suhu"
+
+#: src/gr-edit-page.ui:830 src/gr-edit-page.ui:851 src/gr-edit-page.c:434
+msgid "Ingredient"
+msgstr "Bahan"
+
+#: src/gr-edit-page.ui:879 src/gr-edit-page.ui:971 src/gr-query-editor.ui:283
+msgid "Search…"
+msgstr "Cari…"
+
+#: src/gr-edit-page.ui:909 src/gr-edit-page.ui:930 src/gr-edit-page.c:435
+msgid "Amount"
+msgstr "Jumlah"
+
+#: src/gr-edit-page.ui:1002 src/gr-edit-page.c:438
+msgid "Add"
+msgstr "Tambah"
+
+#: src/gr-edit-page.ui:1053
+msgid "Title…"
+msgstr "Judul…"
+
+#: src/gr-edit-page.ui:1128
+msgid "Syntax"
+msgstr "Sintaks"
+
+#: src/gr-edit-page.ui:1143
+msgid "Use paragraphs to break directions into steps (2 newlines)."
+msgstr ""
+"Gunakan paragraf untuk memecah petunjuk ke dalam langkah (2 baris baru)."
+
+#: src/gr-edit-page.ui:1156
+msgid "You can provide an image or a time counter in each step."
+msgstr "Anda dapat memberikan gambar atau counter waktu di setiap langkah."
+
+#: src/gr-edit-page.ui:1168
+msgid "Timer"
+msgstr "Pengukur Waktu"
+
+#: src/gr-edit-page.ui:1190
+msgid "Image"
+msgstr "Gambar"
+
+#: src/gr-edit-page.ui:1212
+msgid "Temperature"
+msgstr "Suhu"
+
+#: src/gr-list-page.ui:124
+msgid "There are no recipes here yet."
+msgstr "Di sini belum ada resep."
+
+#: src/gr-query-editor.ui:66 src/gr-query-editor.c:490
+#: src/gr-query-editor.c:679
+msgid "Any meal"
+msgstr "Makanan apapun"
+
+#: src/gr-query-editor.ui:109
+msgid "Spiciness"
+msgstr "Kepedasan"
+
+#: src/gr-query-editor.ui:129 src/gr-query-editor.c:557
+#: src/gr-query-editor.c:708
+msgid "Any spiciness"
+msgstr "Setiap pedasnya"
+
+#: src/gr-query-editor.ui:172
+msgid "Dietary restrictions"
+msgstr "Pantangan"
+
+#: src/gr-query-editor.ui:192 src/gr-query-editor.c:406
+#: src/gr-query-editor.c:737
+msgid "No restrictions"
+msgstr "Tidak ada batasan"
+
+#: src/gr-query-editor.ui:235 src/gr-edit-page.c:1713
+#: src/gr-recipe-formatter.c:67 src/gr-recipe-printer.c:191
+msgid "Ingredients"
+msgstr "Bahan"
+
+#. FIXME: repopulate
+#: src/gr-query-editor.ui:255 src/gr-query-editor.c:337
+#: src/gr-query-editor.c:766
+msgid "Anything"
+msgstr "Apapun"
+
+#: src/gr-recipe-small-tile.ui:125 src/gr-edit-page.c:1743
+msgid "Remove"
+msgstr "Hapus"
+
+#: src/gr-recipes-page.ui:8
+msgid "Recipes page"
+msgstr "Halaman resep"
+
+#: src/gr-recipes-page.ui:27
+msgid "Today"
+msgstr "Hari ini"
+
+#: src/gr-recipes-page.ui:103
+msgid "Editor’s Picks"
+msgstr "Pilihan Penyunting"
+
+#: src/gr-recipes-page.ui:129
+msgid "Categories"
+msgstr "Kategori"
+
+#: src/gr-recipes-page.ui:226
+msgid "Featured GNOME Chefs"
+msgstr "Koki GNOME Unggulan"
+
+#: src/gr-search-page.ui:42
+msgid "Try a different search"
+msgstr "Coba pencarian berbeda"
+
+#: src/gr-shopping-page.ui:40
+msgid "Buy ingredients"
+msgstr "Membeli Bahan"
+
+#: src/gr-shopping-page.ui:91
+msgid "No shopping necessary!"
+msgstr "Tidak ada belanja yang diperlukan!"
+
+#: src/gr-shopping-page.ui:131
+msgid "_Clear List"
+msgstr "_Bersihkan daftar"
+
+#: src/gr-shopping-page.ui:187
+msgid "Nothing to add"
+msgstr "Tidak ada yang menambahkan"
+
+#: src/gr-time-widget.ui:31
+msgid "Start"
+msgstr "Mulai"
+
+#: src/gr-time-widget.ui:60
+msgid "Pause"
+msgstr "Jeda"
+
+#: src/gr-time-widget.ui:69
+msgid "Continue"
+msgstr "Lanjutkan"
+
+#: src/gr-time-widget.ui:82
+msgid "Reset"
+msgstr "Atur Ulang"
+
+#: src/gr-window.ui:23
+msgid "_New Recipe"
+msgstr "Resep B_aru"
+
+#: src/gr-window.ui:40
+msgid "Go back"
+msgstr "Kembali"
+
+#: src/gr-window.ui:97
+msgid "Search"
+msgstr "Cari"
+
+#: src/gr-window.ui:116
+msgid "_Start Cooking"
+msgstr "Mulai Mema_sak"
+
+#: src/gr-window.ui:144
+msgid "_Done Shopping"
+msgstr "S_elesai Memasak"
+
+#: src/gr-window.ui:205
+msgid "All ingredients marked as stocked!"
+msgstr "Semua bahan ditandai sebagai ditebar!"
+
+#: src/gr-window.ui:215
+msgid "_Undo"
+msgstr "_Tak Jadi"
+
+#: src/gr-window.ui:264
+msgid "Ingredients to buy added."
+msgstr "Bahan untuk membeli ditambahkan."
+
+#: src/gr-window.ui:274
+msgid "View Shopping List"
+msgstr "Lihat Daftar Belanja"
+
+#: src/gr-window.ui:331
+msgid "Undo"
+msgstr "Tak Jadi"
+
+#: src/gr-window.ui:391
+msgid "Send Update"
+msgstr "Kirim Pemutakhiran"
+
+#: src/gr-window.ui:466 src/gr-window.c:379
+msgid "Cuisines"
+msgstr "Masakan"
+
+#: src/menus.ui:6 src/menus.ui:44
+msgid "_Import"
+msgstr "_Impor"
+
+#: src/menus.ui:11 src/menus.ui:49
+msgid "_Export All"
+msgstr "_Ekspor Semua"
+
+#: src/menus.ui:16
+msgid "_Chef Information"
+msgstr "Informasi _Koki"
+
+#: src/menus.ui:22
+msgid "_About"
+msgstr "Tent_ang"
+
+#: src/menus.ui:26 src/menus.ui:85
+msgid "_What’s New"
+msgstr "\\Apa _yang baru"
+
+#: src/menus.ui:30 src/menus.ui:89
+msgid "_Report Issue"
+msgstr "Lapo_ran Masalah"
+
+#: src/menus.ui:34
+msgid "_Quit"
+msgstr "_Keluar"
+
+#: src/menus.ui:41
+msgid "File"
+msgstr "Berkas"
+
+#: src/menus.ui:56
+msgid "Chef Information…"
+msgstr "Informasi Koki…"
+
+#: src/menus.ui:65
+msgid "Copy"
+msgstr "Salin"
+
+#: src/menus.ui:69
+msgid "Paste"
+msgstr "Tempel"
+
+#: src/menus.ui:75
+msgid "Find…"
+msgstr "Temukan…"
+
+#: src/menus.ui:82
+msgid "Help"
+msgstr "Bantuan"
+
+#: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:156
+#: src/gr-image-viewer.c:616 src/gr-recipe-exporter.c:169
+#: src/gr-shopping-page.c:731 src/gr-window.c:1133
+msgid "Cancel"
+msgstr "Batal"
+
+#: src/recipe-conflict-dialog.ui:18
+msgid "Rename"
+msgstr "Ubah nama"
+
+#: src/recipe-conflict-dialog.ui:28
+msgid "A recipe with this name already exists."
+msgstr "Resep dengan nama ini sudah ada."
+
+#: src/recipe-export-dialog.ui:14
+msgid "_Add More"
+msgstr "T_ambah Lagi"
+
+#: src/recipe-export-dialog.ui:56
+msgid "Share with a friend"
+msgstr "Berbagi dengan teman"
+
+#: src/recipe-export-dialog.ui:63
+msgid "Contribute to GNOME Recipes"
+msgstr "Berkontribusi untuk GNOME Resep"
+
+#: src/recipe-whats-new-dialog.ui:8
+msgid "What’s New in Recipes"
+msgstr "Apa yang Baru di Resep"
+
+#: src/gr-about-dialog.c:132
+msgid "Learn more about Builder"
+msgstr "Pelajari lebih lanjut tentang Builder"
+
+#: src/gr-about-dialog.c:244 src/gr-about-dialog.c:327
+#: src/gr-about-dialog.c:329 src/gr-about-dialog.c:331
+#: src/gr-about-dialog.c:333 src/gr-about-dialog.c:335
+#: src/gr-about-dialog.c:337 src/gr-about-dialog.c:339
+#: src/gr-about-dialog.c:341 src/gr-about-dialog.c:343
+msgid "Unknown"
+msgstr "Tidak diketahui"
+
+#: src/gr-about-dialog.c:433
+msgid "Flatpak"
+msgstr "Flatpak"
+
+#: src/gr-about-dialog.c:436
+msgctxt "Flatpak metadata"
+msgid "Version"
+msgstr "Versi"
+
+#: src/gr-about-dialog.c:439
+msgid "Application"
+msgstr "Aplikasi"
+
+#: src/gr-about-dialog.c:442 src/gr-about-dialog.c:451
+msgctxt "Flatpak metadata"
+msgid "ID"
+msgstr "ID"
+
+#: src/gr-about-dialog.c:443 src/gr-about-dialog.c:452
+msgctxt "Flatpak metadata"
+msgid "Architecture"
+msgstr "Arsitektur"
+
+#: src/gr-about-dialog.c:444 src/gr-about-dialog.c:453
+msgctxt "Flatpak metadata"
+msgid "Branch"
+msgstr "Cabang"
+
+#: src/gr-about-dialog.c:445 src/gr-about-dialog.c:454
+msgctxt "Flatpak metadata"
+msgid "Commit"
+msgstr "Komit"
+
+#: src/gr-about-dialog.c:448
+msgid "Runtime"
+msgstr "Runtime"
+
+#: src/gr-about-dialog.c:457 src/gr-about-dialog.c:521
+msgid "Bundled libraries"
+msgstr "Pustaka dibundel"
+
+#: src/gr-about-dialog.c:487
+msgid "OS"
+msgstr "SO (Sistem Operasi)"
+
+#: src/gr-about-dialog.c:490
+msgctxt "OS metadata"
+msgid "Name"
+msgstr "Nama"
+
+#: src/gr-about-dialog.c:492
+msgctxt "OS metadata"
+msgid "Type"
+msgstr "Jenis"
+
+#: src/gr-about-dialog.c:495 src/gr-about-dialog.c:497
+msgctxt "OS metadata"
+msgid "Desktop"
+msgstr "Destop"
+
+#: src/gr-about-dialog.c:500
+msgid "System libraries"
+msgstr "Pustaka sistem"
+
+#: src/gr-about-dialog.c:820 src/gr-about-dialog.c:847
+msgid "System"
+msgstr "Sistem"
+
+#: src/gr-about-dialog.c:917
+msgid "translator-credits"
+msgstr "Kukuh Syafaat <syafaatkukuh@gmail.com>, 2017."
+
+#: src/gr-about-dialog.c:920
+msgid "Learn more about Recipes"
+msgstr "Pelajari lebih lanjut tentang Resep"
+
+#: src/gr-about-dialog.c:927
+msgid "Recipes by"
+msgstr "Resep oleh"
+
+#: src/gr-account.c:109
+#, c-format
+msgid "Got an error from Account portal"
+msgstr "Mendapat galat dari portal Akun"
+
+#: src/gr-account.c:137
+msgid ""
+"Allow your personal information to be included with recipes you share with "
+"your friends."
+msgstr ""
+"Memungkinkan informasi pribadi Anda untuk dimasukkan dengan resep yang Anda "
+"bagi dengan teman-teman Anda."
+
+#: src/gr-app.c:378
+msgid "Print the version and exit"
+msgstr "Cetak versi dan keluar"
+
+#: src/gr-app.c:382
+msgid "Turn on verbose logging"
+msgstr "Aktifkan logging verbose"
+
+#: src/gr-chef-dialog.c:152 src/gr-image-viewer.c:612
+msgid "Select an Image"
+msgstr "Pilih gambar"
+
+#: src/gr-chef-dialog.c:155 src/gr-image-viewer.c:615 src/gr-window.c:1132
+msgid "Open"
+msgstr "Buka"
+
+#: src/gr-chef-dialog.c:160 src/gr-image-viewer.c:620
+msgid "Image files"
+msgstr "Berkas gambar"
+
+#: src/gr-chef-dialog.c:409
+msgid "New Chef"
+msgstr "Koki baru"
+
+#: src/gr-cooking-page.c:248
+msgid "Cooking"
+msgstr "Memasak"
+
+#: src/gr-cooking-view.c:155
+#, c-format
+msgid "Step %d/%d"
+msgstr "Langkah %d/%d"
+
+#: src/gr-cooking-view.c:161
+#, c-format
+msgid "Step %d"
+msgstr "Langkah %d"
+
+#: src/gr-cooking-view.c:268
+msgid "GNOME Recipes"
+msgstr "GNOME Resep"
+
+#: src/gr-cooking-view.c:373
+msgid "A cooking timer has expired"
+msgstr "Pengukur waktu memasak telah berakhir"
+
+#: src/gr-cooking-view.c:391 src/gr-cooking-view.c:407
+#, c-format
+msgid "Timer for “%s” has expired."
+msgstr "Pengukur waktu untuk \"%s\" telah berakhir"
+
+#: src/gr-cooking-view.c:405
+msgid "Timer is up!"
+msgstr "Pengukur waktu selesai!"
+
+#: src/gr-cuisine.c:45
+msgid "American"
+msgstr "Amerika"
+
+#: src/gr-cuisine.c:46
+msgid "Chinese"
+msgstr "Cina"
+
+#: src/gr-cuisine.c:47
+msgid "Indian"
+msgstr "India"
+
+#: src/gr-cuisine.c:48
+msgid "Italian"
+msgstr "Italia"
+
+#: src/gr-cuisine.c:49
+msgid "French"
+msgstr "Prancis"
+
+#: src/gr-cuisine.c:50
+msgid "Greek"
+msgstr "Yunani"
+
+#: src/gr-cuisine.c:51
+msgid "Mediterranean"
+msgstr "Laut Tengah (Mediterania)"
+
+#: src/gr-cuisine.c:52
+msgid "Mexican"
+msgstr "Meksiko"
+
+#: src/gr-cuisine.c:53
+msgid "Nordic"
+msgstr "Nordik"
+
+#: src/gr-cuisine.c:54
+msgid "Turkish"
+msgstr "Turki"
+
+#: src/gr-cuisine.c:58
+msgid "American Cuisine"
+msgstr "Masakan Amerika"
+
+#: src/gr-cuisine.c:59
+msgid "Chinese Cuisine"
+msgstr "Masakan Cina"
+
+#: src/gr-cuisine.c:60
+msgid "Indian Cuisine"
+msgstr "Masakan India"
+
+#: src/gr-cuisine.c:61
+msgid "Italian Cuisine"
+msgstr "Masakan Italia"
+
+#: src/gr-cuisine.c:62
+msgid "French Cuisine"
+msgstr "Masakan Prancis"
+
+#: src/gr-cuisine.c:63
+msgid "Greek Cuisine"
+msgstr "Masakan Yunani"
+
+#: src/gr-cuisine.c:64
+msgid "Mediterranean Cuisine"
+msgstr "Masakan Laut Tengah (Mediterania)"
+
+#: src/gr-cuisine.c:65
+msgid "Mexican Cuisine"
+msgstr "Masakan Meksiko"
+
+#: src/gr-cuisine.c:66
+msgid "Nordic Cuisine"
+msgstr "Masakan Nordic"
+
+#: src/gr-cuisine.c:67
+msgid "Turkish Cuisine"
+msgstr "Masakan Turki"
+
+#: src/gr-cuisine.c:71
+msgid ""
+"The cuisine of the United States reflects its history. The European "
+"colonization of the Americas yielded the introduction of a number of "
+"ingredients and cooking styles to the latter. The various styles continued "
+"expanding well into the 19th and 20th centuries, proportional to the influx "
+"of immigrants from many foreign nations; such influx developed a rich "
+"diversity in food preparation throughout the country."
+msgstr ""
+"Masakan dari Amerika Serikat mencerminkan sejarahnya. Kolonisasi Eropa di "
+"Amerika menghasilkan pengenalan sejumlah bahan dan gaya memasak nantinya. "
+"Berbagai gaya terus berkembang baik ke dalam abad ke-19 dan ke-20, sebanding "
+"dengan masuknya imigran dari berbagai negara asing; masuknya seperti "
+"mengembangkan keragaman dalam persiapan makanan di seluruh negeri."
+
+#: src/gr-cuisine.c:76
+msgid ""
+"Chinese cuisine includes styles originating from the diverse regions of "
+"China, as well as from Chinese people in other parts of the world including "
+"most Asian nations. The history of Chinese cuisine in China stretches back "
+"for thousands of years and has changed from period to period and in each "
+"region according to climate, imperial fashions, and local preferences. Over "
+"time, techniques and ingredients from the cuisines of other cultures were "
+"integrated into the cuisine of the Chinese people due both to imperial "
+"expansion and from the trade with nearby regions in pre-modern times, and "
+"from Europe and the New World in the modern period."
+msgstr ""
+"Masakan Cina termasuk gaya yang berasal dari berbagai wilayah China, serta "
+"dari orang-orang Cina di belahan dunia lain termasuk sebagian besar negara "
+"Asia. Sejarah masakan Cina di Cina membentang kembali selama ribuan tahun "
+"dan telah berubah dari waktu ke waktu dan di setiap daerah sesuai dengan "
+"iklim, fesyen kekaisaran, dan preferensi lokal. Seiring waktu, teknik dan "
+"bahan masakan dari budaya lain diintegrasikan ke dalam masakan orang Cina "
+"baik karena untuk ekspansi kekaisaran dan dari perdagangan dengan daerah "
+"terdekat di zaman pra-modern, dan dari Eropa dan Dunia Baru di masa modern ."
+
+#: src/gr-cuisine.c:84
+msgid ""
+"Indian cuisine encompasses a wide variety of regional and traditional "
+"cuisines native to India. Given the range of diversity in soil type, "
+"climate, culture, ethnic group and occupations, these cuisines vary "
+"significantly from each other and use locally available spices, herbs, "
+"vegetables and fruits. Indian food is also heavily influenced by religious "
+"and cultural choices and traditions. There has also been Middle Eastern and "
+"Central Asian influence on North Indian cuisine from the years of Mughal "
+"rule. Indian cuisine has been and is still evolving, as a result of the "
+"nation’s cultural interactions with other societies."
+msgstr ""
+"Masakan India mencakup berbagai masakan daerah dan tradisional asli India. "
+"Mengingat berbagai keragaman jenis tanah, iklim, budaya, kelompok etnis dan "
+"pekerjaan, masakan ini bervariasi secara signifikan satu sama lain dan "
+"menggunakan rempah-rempah, bumbu, sayuran dan buah-buahan lokal yang "
+"tersedia. Makanan India juga sangat dipengaruhi oleh pilihan dan tradisi "
+"keagamaan dan budaya. Ada juga pengaruh Timur Tengah dan Asia Tengah pada "
+"masakan India Utara dari masa pemerintahan Mughal. Masakan India telah dan "
+"masih berkembang, sebagai akibat dari interaksi budaya bangsa dengan "
+"masyarakat lain."
+
+#: src/gr-cuisine.c:92
+msgid ""
+"Italian cuisine is characterized by its simplicity, with many dishes having "
+"only four to eight ingredients. Italian cooks rely chiefly on the quality of "
+"the ingredients rather than on elaborate preparation. Ingredients and dishes "
+"vary by region. Many dishes that were once regional, however, have "
+"proliferated with variations throughout the country."
+msgstr ""
+"Masakan Italia ditandai dengan kesederhanaan, dengan banyak hidangan yang "
+"hanya memiliki empat sampai delapan bahan. Koki Italia mengandalkan pada "
+"kualitas bahan, bukan pada persiapan yang rumit. Bahan dan hidangan "
+"bervariasi menurut wilayah. Banyak hidangan yang dulunya kedaerahan, "
+"bagaimanapun, telah tumbuh dan berkembang dengan variasi di seluruh negeri."
+
+#: src/gr-cuisine.c:96
+msgid ""
+"French cuisine was codified in the 20th century by Auguste Escoffier to "
+"become the modern haute cuisine; Escoffier, however, left out much of the "
+"local culinary character to be found in the regions of France and was "
+"considered difficult to execute by home cooks. Gastro-tourism and the Guide "
+"Michelin helped to acquaint people with the rich bourgeois and peasant "
+"cuisine of the French countryside starting in the 20th century. Gascon "
+"cuisine has also had great influence over the cuisine in the southwest of "
+"France. Many dishes that were once regional have proliferated in variations "
+"across the country."
+msgstr ""
+"Masakan Perancis telah dikodifikasikan pada abad ke-20 oleh Auguste "
+"Escoffier untuk menjadi haute cuisine modern; Escoffier, namun, meninggalkan "
+"banyak dari karakter kuliner lokal yang dapat ditemukan di daerah Perancis "
+"dan dianggap sulit untuk dieksekusi oleh koki rumahan. Gastro-tourism dan "
+"Guide Michelin membantu untuk memperkenalkan orang dengan masakan orang kaya "
+"borjuis dan petani pedesaan Prancis mulai pada abad ke-20. Masakan Gascon "
+"juga memiliki pengaruh besar atas masakan di barat daya Perancis. Banyak "
+"hidangan yang dulunya kedaerahan telah menjamur dalam variasi di seluruh "
+"negeri."
+
+#: src/gr-cuisine.c:103
+msgid ""
+"Contemporary Greek cookery makes wide use of vegetables, olive oil, grains, "
+"fish, wine, and meat (white and red, including lamb, poultry, rabbit and "
+"pork). Other important ingredients include olives, cheese, eggplant "
+"(aubergine), zucchini (courgette), lemon juice, vegetables, herbs, bread and "
+"yoghurt. The most commonly used grain is wheat; barley is also used. Common "
+"dessert ingredients include nuts, honey, fruits, and filo pastry."
+msgstr ""
+"Masakan Yunani kontemporer menggunakan macam sayuran, minyak zaitun, biji-"
+"bijian, ikan, anggur, dan daging (putih dan merah, termasuk domba, unggas, "
+"kelinci dan babi). Bahan penting lainnya termasuk buah zaitun, keju, terong, "
+"zucchini (courgette), jus lemon, sayuran, rempah-rempah, roti dan yoghurt. "
+"Biji yang paling umum digunakan adalah gandum; barley juga digunakan. Bahan "
+"umum makanan penutup termasuk kacang, madu, buah-buahan, dan filo pastry."
+
+#: src/gr-cuisine.c:108
+msgid ""
+"The mediterranean cuisine has a lot to offer, and is legendary for being "
+"very healthy too. Expect to see olives, yoghurt and garlic."
+msgstr ""
+"Masakan Mediterania memiliki banyak penawaran, dan legendaris karena sangat "
+"sehat juga. Mengharapkan untuk melihat zaitun, yoghurt dan bawang putih."
+
+#: src/gr-cuisine.c:109
+msgid ""
+"Mexican cuisine is primarily a fusion of indigenous Mesoamerican cooking "
+"with European, especially Spanish, elements added after the Spanish conquest "
+"of the Aztec Empire in the 16th century. The staples are native foods, such "
+"as corn, beans, avocados, tomatoes, and chili peppers, along with rice, "
+"which was brought by the Spanish. Europeans introduced a large number of "
+"other foods, the most important of which were meats from domesticated "
+"animals (beef, pork, chicken, goat, and sheep), dairy products (especially "
+"cheese), and various herbs and spices."
+msgstr ""
+"Masakan Meksiko terutama merupakan perpaduan dari adat memasak Mesoamerika "
+"dengan Eropa, terutama Spanyol, elemen-elemen ditambahkan setelah penaklukan "
+"Spanyol dari Kekaisaran Aztec di abad ke-16. Staples merupakan makanan asli, "
+"seperti jagung, kacang-kacangan, alpukat, tomat, dan cabai, bersama dengan "
+"nasi, yang dibawa oleh Spanyol. Eropa memperkenalkan sejumlah besar makanan "
+"lain, yang paling penting diantaranya daging dari hewan peliharaan (daging "
+"sapi, babi, ayam, kambing, dan domba), produk susu (terutama keju), dan "
+"berbagai bumbu dan rempah-rempah."
+
+#: src/gr-cuisine.c:116
+msgid ""
+"Cooking in Denmark has always been inspired by foreign and continental "
+"practises and the use of imported tropical spices like cinnamon, cardamom, "
+"nutmeg and black pepper can be traced to the Danish cuisine of the Middle "
+"Ages and some even to the Vikings."
+msgstr ""
+"Memasak di Denmark selalu terinspirasi oleh praktik asing dan benua dan "
+"penggunaan rempah-rempah tropis impor seperti kayu manis, kapulaga, pala dan "
+"merica hitam yang dapat ditelusuri ke masakan Denmark Abad Pertengahan dan "
+"beberapa bahkan ke Viking."
+
+#: src/gr-cuisine.c:117
+msgid ""
+"You can find a great variety of mouth watering dishes in Turkish cuisine, "
+"which is mostly the heritage of Ottoman cuisine. It is the mixture and "
+"refinement of Central Asian, Middle Eastern and Balkan cuisines. Therefore "
+"it is impossible to fit Turkish cuisine into a short list."
+msgstr ""
+"Anda dapat menemukan berbagai hidangan menggugah selera dari dalam masakan "
+"Turki, yang sebagian besar warisan masakan Ottoman. Ini adalah campuran dan "
+"penyempurnaan dari Asia Tengah, Timur Tengah dan masakan Balkan. Oleh karena "
+"itu mustahil untuk cocok dengan masakan Turki dalam jangka pendek."
+
+#: src/gr-details-page.c:323
+msgid "Could not find this recipe."
+msgstr "Tidak dapat menemukan resep ini."
+
+#: src/gr-details-page.c:585
+#, c-format
+msgid "Timer: %s"
+msgstr "Pengukur Waktu: %s"
+
+#: src/gr-details-page.c:592
+#, c-format
+msgid "Image %d"
+msgstr "Gambar %d"
+
+#: src/gr-details-page.c:745 src/gr-edit-page.c:2035
+#, c-format
+msgid "Recipe by %s"
+msgstr "Resep oleh %s"
+
+#: src/gr-diet.c:34
+msgid "Gluten-free recipes"
+msgstr "Resep bebas Gluten"
+
+#: src/gr-diet.c:37
+msgid "Nut-free recipes"
+msgstr "Resep bebas kacang"
+
+#: src/gr-diet.c:40
+msgid "Vegan recipes"
+msgstr "Resep Vegan"
+
+#: src/gr-diet.c:43
+msgid "Vegetarian recipes"
+msgstr "Resep Vegetarian"
+
+#: src/gr-diet.c:46
+msgid "Milk-free recipes"
+msgstr "Resep bebas susu"
+
+#: src/gr-diet.c:49 src/gr-diet.c:78
+msgid "Other dietary restrictions"
+msgstr "Pantangan lainnya"
+
+#: src/gr-diet.c:63
+msgid ""
+"A gluten-free diet is a diet that excludes gluten, a protein composite found "
+"in wheat, barley, rye, and all their species and hybrids (such as spelt, "
+"kamut, and triticale). The inclusion of oats in a gluten-free diet remains "
+"controversial. Avenin present in oats may also be toxic for coeliac people; "
+"its toxicity depends on the cultivar consumed. Furthermore, oats are "
+"frequently cross-contaminated with cereals containing gluten.\n"
+"<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free\">Learn more…</"
+"a>"
+msgstr ""
+"Diet bebas gluten adalah diet yang mengecualikan gluten, gabungan protein "
+"yang ditemukan dalam gandum, barley, rye, dan semua spesies dan hibrida "
+"(seperti spelt, kamut, dan triticale). Dimasukkannya gandum dalam diet bebas "
+"gluten masih kontroversial. Avenin hadir dalam gandum juga dapat menjadi "
+"racun bagi orang-orang coeliac; toksisitas tergantung pada kultivar yang "
+"dikonsumsi. Selanjutnya, gandum sering lintas-terkontaminasi dengan sereal "
+"yang mengandung gluten.\n"
+"<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free"
+"\">Selengkapnya ...</a>"
+
+#: src/gr-diet.c:66
+msgid ""
+"A tree nut allergy is a hypersensitivity to dietary substances from tree "
+"nuts and edible tree seeds causing an overreaction of the immune system "
+"which may lead to severe physical symptoms. Tree nuts include, but are not "
+"limited to, almonds, Brazil nuts, cashews, chestnuts, filberts/hazelnuts, "
+"macadamia nuts, pecans, pistachios, pine nuts, shea nuts and walnuts.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">Learn more…</a>"
+msgstr ""
+"Alergi kacang pohon adalah hipersensitivitas terhadap zat makanan dari "
+"kacang pohon dan bibit pohon yang dimakan, menyebabkan reaksi berlebihan "
+"dari sistem kekebalan tubuh yang dapat menyebabkan gejala fisik yang parah. "
+"Kacang pohon meliputi, tetapi tidak terbatas pada, almond, kacang Brazil, "
+"kacang mete, chestnut, filberts/hazelnuts, kacang macadamia, pecan, "
+"pistachio, kacang pinus, kacang shea dan kenari.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">Selengkapnya ...</"
+"a>"
+
+#: src/gr-diet.c:69
+msgid ""
+"Veganism is both the practice of abstaining from the use of animal products, "
+"particularly in diet, and an associated philosophy that rejects the "
+"commodity status of animals.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Veganism\">Learn more…</a>"
+msgstr ""
+"Veganisme adalah praktek berpantang dari penggunaan produk hewani, terutama "
+"dalam diet, dan filosofi yang terkait dengan menolak status komoditas "
+"hewan.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Veganism\">Selengkapnya ...</a>"
+
+#: src/gr-diet.c:72
+msgid ""
+"Vegetarian cuisine is based on food that meets vegetarian standards by not "
+"including meat and animal tissue products (such as gelatin or animal-derived "
+"rennet). For lacto-ovo vegetarianism (the most common type of vegetarianism "
+"in the Western world), eggs and dairy products such as milk and cheese are "
+"permitted. For lacto vegetarianism, the earliest known type of vegetarianism "
+"(recorded in India), dairy products such as milk and cheese are permitted.\n"
+"The strictest forms of vegetarianism are veganism and fruitarianism, which "
+"exclude all animal products, including dairy products as well as honey, and "
+"even some refined sugars if filtered and whitened with bone char.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Vegetarianism\">Learn more…</a>"
+msgstr ""
+"Masakan vegetarian didasarkan pada makanan yang memenuhi standar vegetarian "
+"dengan tidak termasuk daging dan produk jaringan hewani (seperti gelatin "
+"atau rennet hewan yang diturunkan). Untuk lacto-ovo vegetarian (jenis yang "
+"paling umum dari vegetarianisme di dunia Barat), telur dan produk susu "
+"seperti susu dan keju diizinkan. Untuk lacto vegetarian, jenis awal yang "
+"dikenal vegetarian (terekam di India), produk susu seperti susu dan keju "
+"diizinkan.\n"
+"Bentuk ketat vegetarian adalah veganisme dan fruitarianisme, yang "
+"mengecualikan semua produk hewani, termasuk produk susu serta madu, dan "
+"bahkan beberapa gula halus yang disaring dan memutih dengan arang tulang.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Vegetarianism\">Selengkapnya ...</a>"
+
+#: src/gr-diet.c:75
+msgid ""
+"Lactose intolerance is a condition in which people have symptoms due to the "
+"decreased ability to digest lactose, a sugar found in milk products. Those "
+"affected vary in the amount of lactose they can tolerate before symptoms "
+"develop. Symptoms may include abdominal pain, bloating, diarrhea, gas, and "
+"nausea. These typically start between half and two hours after drinking "
+"milk. Severity depends on the amount a person eats or drinks. It does not "
+"cause damage to the gastrointestinal tract.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Learn more…</a>"
+msgstr ""
+"Intoleransi laktosa adalah suatu kondisi di mana orang memiliki gejala "
+"karena penurunan kemampuan untuk mencerna laktosa, gula yang ditemukan dalam "
+"produk susu. Mereka yang terkena dampak, bervariasi dalam jumlah laktosa "
+"yang dapat ditolerir sebelum timbul gejala. Gejala mungkin termasuk sakit "
+"perut, kembung, diare, buang gas, dan mual. Ini biasanya mulai antara "
+"setengah dan dua jam setelah minum susu. Keparahan tergantung pada jumlah "
+"yang dimakan atau diminum. Ini tidak menyebabkan kerusakan pada saluran "
+"pencernaan.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance"
+"\">Selengkapnya ...</a>"
+
+#: src/gr-edit-page.c:485
+msgid "Apply"
+msgstr "Terapkan"
+
+#: src/gr-edit-page.c:1101
+msgid "hour"
+msgstr "jam"
+
+#: src/gr-edit-page.c:1102
+msgid "hours"
+msgstr "jam"
+
+#: src/gr-edit-page.c:1103
+msgctxt "hour abbreviation"
+msgid "h"
+msgstr "j"
+
+#: src/gr-edit-page.c:1107
+msgid "minute"
+msgstr "menit"
+
+#: src/gr-edit-page.c:1108
+msgid "minutes"
+msgstr "menit"
+
+#: src/gr-edit-page.c:1109
+msgctxt "minute abbreviation"
+msgid "min"
+msgstr "men"
+
+#: src/gr-edit-page.c:1110
+msgctxt "minute abbreviation"
+msgid "m"
+msgstr "m"
+
+#: src/gr-edit-page.c:1114
+msgid "second"
+msgstr "detik"
+
+#: src/gr-edit-page.c:1115
+msgid "seconds"
+msgstr "detik"
+
+#: src/gr-edit-page.c:1116
+msgctxt "second abbreviation"
+msgid "sec"
+msgstr "det"
+
+#: src/gr-edit-page.c:1117
+msgctxt "second abbreviation"
+msgid "s"
+msgstr "d"
+
+#: src/gr-edit-page.c:1293
+msgid "Recipe Author"
+msgstr "Penulis Resep"
+
+#: src/gr-edit-page.c:1728
+msgid "Name of the List"
+msgstr "Nama dari Daftar"
+
+#: src/gr-edit-page.c:1762
+msgid "No ingredients added yet"
+msgstr "Belum ada bahan yang ditambahkan"
+
+#: src/gr-edit-page.c:1781
+msgid "Add Ingredient"
+msgstr "Menambahkan Bahan"
+
+#: src/gr-edit-page.c:1888
+msgid "Add List"
+msgstr "Menambahkan Daftar"
+
+#: src/gr-edit-page.c:1916
+msgid "Name Your Recipe"
+msgstr "Nama Resep Anda"
+
+#: src/gr-edit-page.c:2092
+msgid "Name"
+msgstr "Nama"
+
+#: src/gr-edit-page.c:2204 src/gr-recipe-store.c:1007
+#, c-format
+msgid "You need to provide a name for the recipe"
+msgstr "Anda perlu menyediakan nama untuk resep"
+
+#: src/gr-list-page.c:235
+msgid "Gluten-free Recipes"
+msgstr "Resep Bebas Gluten"
+
+#: src/gr-list-page.c:237
+msgid "Nut-free Recipes"
+msgstr "Resep Bebas Kacang"
+
+#: src/gr-list-page.c:239
+msgid "Vegan Recipes"
+msgstr "Resep Vegan"
+
+#: src/gr-list-page.c:241
+msgid "Vegetarian Recipes"
+msgstr "Resep Vegetarian"
+
+#: src/gr-list-page.c:243
+msgid "Milk-free Recipes"
+msgstr "Resep Bebas Susu"
+
+#: src/gr-list-page.c:245
+msgid "Other Dietary Restrictions"
+msgstr "Pantangan Lainnya"
+
+#: src/gr-list-page.c:286
+#, c-format
+msgid "No %s found"
+msgstr "Tidak ada %s yang ditemukan"
+
+#: src/gr-list-page.c:289 src/gr-list-page.c:348 src/gr-list-page.c:379
+msgid "You could add one using the “New Recipe” button."
+msgstr "Anda bisa menambahkan resep menggunakan tombol \"Resep Baru\"."
+
+#: src/gr-list-page.c:337
+#, c-format
+msgid "Recipes by %s"
+msgstr "Resep oleh %s"
+
+#: src/gr-list-page.c:344
+#, c-format
+msgid "No recipes by chef %s found"
+msgstr "Tidak ada resep oleh koki %s ditemukan"
+
+#: src/gr-list-page.c:350 src/gr-list-page.c:418 src/gr-list-page.c:443
+#: src/gr-list-page.c:476
+msgid "Sorry about this."
+msgstr "Maaf soal ini."
+
+#: src/gr-list-page.c:376
+#, c-format
+msgid "No recipes for %s found"
+msgstr "Tidak ada resep untuk %s ditemukan"
+
+#: src/gr-list-page.c:398
+msgid "No favorite recipes found"
+msgstr "Tidak ada resep favorit ditemukan"
+
+#: src/gr-list-page.c:399
+msgid "Use the ♥ button to mark recipes as favorites."
+msgstr "Gunakan tombol ♥ untuk menandai resep sebagai favorit."
+
+#: src/gr-list-page.c:442
+msgid "No new recipes"
+msgstr "Tidak ada resep baru"
+
+#: src/gr-list-page.c:475
+msgid "No imported recipes found"
+msgstr "Tidak ada resep yang diimpor ditemukan"
+
+#: src/gr-meal.c:44
+msgid "Main Course"
+msgstr "Menu Utama"
+
+#: src/gr-meal.c:45
+msgid "Snacks"
+msgstr "Makanan ringan"
+
+#: src/gr-meal.c:46
+msgid "Breakfast"
+msgstr "Sarapan"
+
+#: src/gr-meal.c:47
+msgid "Side Dishes"
+msgstr "Lauk Pauk"
+
+#: src/gr-meal.c:48
+msgid "Desserts"
+msgstr "Pencuci mulut"
+
+#: src/gr-meal.c:49
+msgid "Cake and Baking"
+msgstr "Kue dan Panggangan"
+
+#: src/gr-meal.c:50
+msgid "Drinks and Cocktails"
+msgstr "Minuman dan Koktail"
+
+#: src/gr-meal.c:51
+msgid "Pizza"
+msgstr "Pizza"
+
+#: src/gr-meal.c:52
+msgid "Pasta"
+msgstr "Pasta"
+
+#: src/gr-meal.c:53
+msgid "Other"
+msgstr "Lainnya"
+
+#: src/gr-number.c:166 src/gr-number.c:183 src/gr-number.c:192
+#, c-format
+msgid "Could not parse %s as a fraction"
+msgstr "Tidak dapat menguraikan %s sebagai pecahan"
+
+#: src/gr-number.c:216
+#, c-format
+msgid "Could not parse %s as a integer"
+msgstr "Tidak dapat menguraikan %s sebagai integer"
+
+#: src/gr-number.c:238
+#, c-format
+msgid "Could not parse %s as a float"
+msgstr "Tidak dapat menguraikan %s sebagai float"
+
+#: src/gr-number.c:286
+#, c-format
+msgid "Could not parse %s as a number"
+msgstr "Tidak dapat menguraikan %s sebagai angka"
+
+#: src/gr-recipe-exporter.c:165
+msgid "Save the exported recipe"
+msgstr "Simpan resep yang diekspor"
+
+#: src/gr-recipe-exporter.c:168 src/gr-shopping-page.c:730
+msgid "Save"
+msgstr "Simpan"
+
+#: src/gr-recipe-exporter.c:199
+msgid "Recipe contribution"
+msgstr "Kontribusi resep"
+
+#: src/gr-recipe-exporter.c:200
+msgid "Please accept my attached recipe contribution."
+msgstr "Terimalah kontribusi resep saya yang terlampir."
+
+#: src/gr-recipe-exporter.c:210
+msgid "Try this recipe"
+msgstr "Coba resep ini"
+
+#: src/gr-recipe-exporter.c:211
+msgid ""
+"Hi,\n"
+"\n"
+"you should try this recipe."
+msgstr ""
+"Hai,\n"
+"\n"
+"Anda harus mencoba resep ini."
+
+#: src/gr-recipe-exporter.c:214
+msgid "Try these recipes"
+msgstr "Cobalah resep ini"
+
+#: src/gr-recipe-exporter.c:215
+msgid ""
+"Hi,\n"
+"\n"
+"you should try these recipes."
+msgstr ""
+"Hai,\n"
+"\n"
+"Anda harus mencoba resep ini."
+
+#: src/gr-recipe-exporter.c:218
+msgid "(The attached file can be imported into GNOME Recipes.)"
+msgstr "(Berkas terlampir dapat diimpor ke GNOME Resep.)"
+
+#: src/gr-recipe-exporter.c:410
+#, c-format
+msgid "This build does not support exporting"
+msgstr "Build ini tidak mendukung ekspor"
+
+#: src/gr-recipe-exporter.c:492
+#, c-format
+msgid ""
+"Error while exporting:\n"
+"%s"
+msgstr ""
+"Galat saat mengekspor:\n"
+"%s"
+
+#: src/gr-recipe-exporter.c:590
+#, c-format
+msgid "%d recipe selected for sharing"
+msgid_plural "%d recipes selected for sharing"
+msgstr[0] "%d resep yang dipilih untuk berbagi"
+
+#: src/gr-recipe-exporter.c:622
+msgid ""
+"Some of the selected recipes are included\n"
+"with GNOME Recipes. You should only contribute\n"
+"your own recipes."
+msgstr ""
+"Beberapa resep yang dipilih disertakan \n"
+"dengan GNOME Resep. Anda hanya harus \n"
+"memberikan kontribusi resep Anda sendiri."
+
+#: src/gr-recipe-formatter.c:53 src/gr-recipe-printer.c:157
+msgid "Author:"
+msgstr "Penulis:"
+
+#: src/gr-recipe-formatter.c:54 src/gr-recipe-printer.c:158
+msgid "Preparation:"
+msgstr "Persiapan:"
+
+#: src/gr-recipe-formatter.c:55 src/gr-recipe-printer.c:159
+msgid "Cooking:"
+msgstr "Memasak:"
+
+#: src/gr-recipe-formatter.c:56 src/gr-recipe-printer.c:160
+msgid "Serves:"
+msgstr "Penyajian:"
+
+#: src/gr-recipe-importer.c:235
+#, c-format
+msgid ""
+"Error while importing recipe:\n"
+"%s"
+msgstr ""
+"Galat saat mengimpor resep:\n"
+"%s"
+
+#: src/gr-recipe-importer.c:478
+#, c-format
+msgid "Failed to load recipe: Couldn’t parse Created key"
+msgstr "Gagal memuat resep: Tidak dapat mengurai kunci yang dibuat"
+
+#: src/gr-recipe-importer.c:489
+#, c-format
+msgid "Failed to load recipe: Couldn’t parse Modified key"
+msgstr "Gagal memuat resep: Tidak dapat mengurai kunci yang diubah"
+
+#: src/gr-recipe-importer.c:791
+#, c-format
+msgid "This build does not support importing"
+msgstr "Build ini tidak mendukung impor"
+
+#: src/gr-recipe-printer.c:412 src/gr-shopping-list-printer.c:297
+msgid "Error printing file:"
+msgstr "Galat saat mencetak berkas:"
+
+#: src/gr-recipe-printer.c:413 src/gr-shopping-list-printer.c:298
+msgid "No details"
+msgstr "Tidak ada rincian"
+
+#: src/gr-recipe-small-tile.c:100 src/gr-recipe-tile.c:81
+#, c-format
+msgid "by %s"
+msgstr "oleh %s"
+
+#: src/gr-recipe-small-tile.c:100 src/gr-recipe-tile.c:81
+msgid "Anonymous"
+msgstr "Anonim"
+
+#: src/gr-recipes-page.c:223 src/gr-window.c:1354
+msgid "My Recipes"
+msgstr "Resep saya"
+
+#: src/gr-recipes-page.c:224
+msgid "Favorites"
+msgstr "Favorit"
+
+#: src/gr-recipes-page.c:225 src/gr-window.c:1268
+msgid "All Recipes"
+msgstr "Semua Resep"
+
+#: src/gr-recipes-page.c:226 src/gr-window.c:1284
+msgid "New Recipes"
+msgstr "Resep Baru"
+
+#: src/gr-recipes-page.c:274
+msgid "Last edited:"
+msgstr "Terakhir disunting:"
+
+#: src/gr-recipes-page.c:373
+#, c-format
+msgid "Buy ingredients: <b>%s</b>"
+msgstr "Membeli bahan-bahan: <b>%s</b>"
+
+#: src/gr-recipes-page.c:375
+#, c-format
+msgid "Buy ingredients: <b>%s and %s</b>"
+msgstr "Membeli bahan-bahan: <b>%s dan %s</b>"
+
+#: src/gr-recipes-page.c:377
+#, c-format
+msgid "Buy ingredients: <b>%s, %s and %d other</b>"
+msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
+msgstr[0] "Membeli bahan-bahan: <b>%s, %s dan %d lainnya</b>"
+
+#: src/gr-recipe-store.c:1012
+#, c-format
+msgid ""
+"A recipe with this name and author already exists.\n"
+"Please choose a different name"
+msgstr ""
+"Resep dengan nama dan penulis ini sudah ada.\n"
+"Pilih nama yang berbeda"
+
+#: src/gr-recipe-store.c:1041
+#, c-format
+msgid "You need to provide an ID for the recipe"
+msgstr "Anda perlu menyediakan ID untuk resep"
+
+#: src/gr-recipe-store.c:1047
+#, c-format
+msgid "A recipe with this ID already exists"
+msgstr "Resep dengan ID ini sudah ada"
+
+#: src/gr-recipe-store.c:1198
+#, c-format
+msgid "You need to provide an ID"
+msgstr "Anda perlu memberikan ID"
+
+#: src/gr-recipe-store.c:1204
+#, c-format
+msgid "Sorry, this ID is taken"
+msgstr "Maaf, ID ini sudah ada"
+
+#: src/gr-recipe-store.c:1231
+#, c-format
+msgid "You need to provide an ID for the chef"
+msgstr "Anda perlu menyediakan ID untuk koki"
+
+#: src/gr-recipe-store.c:1237
+#, c-format
+msgid "A chef with this ID already exists"
+msgstr "Koki dengan ID ini sudah ada"
+
+#: src/gr-season.c:41
+msgid "Thanksgiving"
+msgstr "Thanksgiving"
+
+#: src/gr-season.c:42
+msgid "Christmas"
+msgstr "Natal"
+
+#: src/gr-season.c:43
+msgid "New Years"
+msgstr "Tahun Baru"
+
+#: src/gr-season.c:44
+msgid "Spring"
+msgstr "Musim semi"
+
+#: src/gr-season.c:45
+msgid "Summer"
+msgstr "Musim panas"
+
+#: src/gr-season.c:46
+msgid "Fall"
+msgstr "Musim gugur"
+
+#: src/gr-season.c:47
+msgid "Winter"
+msgstr "Musim dingin"
+
+#: src/gr-shopping-list-formatter.c:42 src/gr-shopping-list-printer.c:135
+#: src/gr-shopping-page.c:756
+msgid "Shopping List"
+msgstr "Daftar Belanja"
+
+#: src/gr-shopping-list-formatter.c:44
+msgid "For the following recipes:"
+msgstr "Untuk resep berikut:"
+
+#: src/gr-shopping-list-printer.c:144
+msgid "For the following recipes"
+msgstr "Untuk resep berikut"
+
+#: src/gr-shopping-list-printer.c:161
+msgid "Items"
+msgstr "Item"
+
+#: src/gr-shopping-page.c:100
+#, c-format
+msgid "%d ingredient marked for purchase"
+msgid_plural "%d ingredients marked for purchase"
+msgstr[0] "%d bahan ditandai untuk pembelian"
+
+#: src/gr-shopping-page.c:119
+#, c-format
+msgid "Buy Ingredients (%d recipe)"
+msgid_plural "Buy Ingredients (%d recipes)"
+msgstr[0] "Membeli Bahan (%d resep)"
+
+#: src/gr-shopping-page.c:124
+#, c-format
+msgid "%d Recipe marked for preparation"
+msgid_plural "%d Recipes marked for preparation"
+msgstr[0] "%d Resep ditandai untuk persiapan"
+
+#: src/gr-shopping-page.c:727
+msgid "Save the shopping list"
+msgstr "Menyimpan daftar belanja"
+
+#: src/gr-spice-row.c:131
+msgid "Mild or somewhat spicy"
+msgstr "Ringan atau agak pedas"
+
+#: src/gr-spice-row.c:133
+msgid "At least somewhat spicy"
+msgstr "Setidaknya agak pedas"
+
+#: src/gr-spice-row.c:137
+msgid "At most hot"
+msgstr "Paling banyak pedas"
+
+#: src/gr-spice-row.c:139
+msgid "Hot or very spicy"
+msgstr "Panas atau sangat pedas"
+
+#: src/gr-unit.c:40
+msgctxt "unit abbreviation"
+msgid "g"
+msgstr "g"
+
+#: src/gr-unit.c:40
+msgctxt "unit name"
+msgid "gram"
+msgstr "gram"
+
+#: src/gr-unit.c:41
+msgctxt "unit abbreviation"
+msgid "kg"
+msgstr "kg"
+
+#: src/gr-unit.c:41
+msgctxt "unit name"
+msgid "kilogram"
+msgstr "kilogram"
+
+#: src/gr-unit.c:42
+msgctxt "unit abbreviation"
+msgid "lb"
+msgstr "lb"
+
+#: src/gr-unit.c:42
+msgctxt "unit name"
+msgid "pound"
+msgstr "pound"
+
+#: src/gr-unit.c:43
+msgctxt "unit abbreviation"
+msgid "oz"
+msgstr "ons"
+
+#: src/gr-unit.c:43
+msgctxt "unit name"
+msgid "ounce"
+msgstr "ons"
+
+#: src/gr-unit.c:44
+msgctxt "unit abbreviation"
+msgid "l"
+msgstr "l"
+
+#: src/gr-unit.c:44
+msgctxt "unit name"
+msgid "liter"
+msgstr "liter"
+
+#: src/gr-unit.c:45
+msgctxt "unit abbreviation"
+msgid "dl"
+msgstr "dl"
+
+#: src/gr-unit.c:45
+msgctxt "unit name"
+msgid "deciliter"
+msgstr "desiliter"
+
+#: src/gr-unit.c:46
+msgctxt "unit abbreviation"
+msgid "ml"
+msgstr "ml"
+
+#: src/gr-unit.c:46
+msgctxt "unit name"
+msgid "milliliter"
+msgstr "milliliter"
+
+#: src/gr-unit.c:47
+msgctxt "unit abbreviation"
+msgid "fl oz"
+msgstr "fl oz"
+
+#: src/gr-unit.c:47
+msgctxt "unit name"
+msgid "fluid ounce"
+msgstr "ons cairan"
+
+#: src/gr-unit.c:48
+msgctxt "unit abbreviation"
+msgid "pt"
+msgstr "pt"
+
+#: src/gr-unit.c:48
+msgctxt "unit name"
+msgid "pint"
+msgstr "pint"
+
+#: src/gr-unit.c:49
+msgctxt "unit abbreviation"
+msgid "qt"
+msgstr "qt"
+
+#: src/gr-unit.c:49
+msgctxt "unit name"
+msgid "quart"
+msgstr "kuart"
+
+#: src/gr-unit.c:50
+msgctxt "unit abbreviation"
+msgid "gal"
+msgstr "gal"
+
+#: src/gr-unit.c:50
+msgctxt "unit name"
+msgid "gallon"
+msgstr "galon"
+
+#: src/gr-unit.c:51
+msgctxt "unit abbreviation"
+msgid "cup"
+msgstr "cangkir"
+
+#: src/gr-unit.c:51
+msgctxt "unit name"
+msgid "cup"
+msgstr "cangkir"
+
+#: src/gr-unit.c:52
+msgctxt "unit abbreviation"
+msgid "tbsp"
+msgstr "sdm"
+
+#: src/gr-unit.c:52
+msgctxt "unit name"
+msgid "tablespoon"
+msgstr "sendok makan"
+
+#: src/gr-unit.c:53
+msgctxt "unit abbreviation"
+msgid "tsp"
+msgstr "sdt"
+
+#: src/gr-unit.c:53
+msgctxt "unit name"
+msgid "teaspoon"
+msgstr "sendok teh"
+
+#: src/gr-unit.c:54
+msgctxt "unit abbreviation"
+msgid "box"
+msgstr "kotak"
+
+#: src/gr-unit.c:54
+msgctxt "unit name"
+msgid "box"
+msgstr "kotak"
+
+#: src/gr-unit.c:55
+msgctxt "unit abbreviation"
+msgid "pkg"
+msgstr "pkt"
+
+#: src/gr-unit.c:55
+msgctxt "unit name"
+msgid "package"
+msgstr "paket"
+
+#: src/gr-unit.c:56
+msgctxt "unit abbreviation"
+msgid "glass"
+msgstr "gelas"
+
+#: src/gr-unit.c:56
+msgctxt "unit name"
+msgid "glass"
+msgstr "gelas"
+
+#: src/gr-unit.c:126
+#, c-format
+msgid "I don’t know this unit: %s"
+msgstr "Aku tidak tahu unit ini: %s"
+
+#: src/gr-utils.c:387
+#, c-format
+msgid "more than a year ago"
+msgstr "lebih dari setahun yang lalu"
+
+#: src/gr-utils.c:390 src/gr-utils.c:394
+#, c-format
+msgid "%d month ago"
+msgid_plural "%d months ago"
+msgstr[0] "%d bulan lalu"
+
+#: src/gr-utils.c:398
+#, c-format
+msgid "%d day ago"
+msgid_plural "%d days ago"
+msgstr[0] "%d hari yang lalu"
+
+#: src/gr-utils.c:401
+#, c-format
+msgid "just now"
+msgstr "baru saja"
+
+#: src/gr-utils.c:403
+#, c-format
+msgid "10 minutes ago"
+msgstr "10 menit yang lalu"
+
+#: src/gr-utils.c:405
+#, c-format
+msgid "half an hour ago"
+msgstr "Setengah jam yang lalu"
+
+#: src/gr-utils.c:409
+#, c-format
+msgid "%d hour ago"
+msgid_plural "%d hours ago"
+msgstr[0] "%d jam yang lalu"
+
+#: src/gr-utils.c:415
+msgid "some time ago"
+msgstr "beberapa waktu lalu"
+
+#: src/gr-utils.c:438
+msgid "Could not connect to the session bus from inside the Flatpak sandbox."
+msgstr "Tidak bisa terhubung ke bus sesi dari dalam sandbox Flatpak."
+
+#: src/gr-utils.c:439
+msgid "Certain functionality will not be available."
+msgstr "Fungsi tertentu tidak akan tersedia."
+
+#: src/gr-utils.c:459
+msgid ""
+"Missing the desktop portal needed to open files from inside a Flatpak "
+"sandbox."
+msgstr ""
+"Kehilangan portal destop yang dibutuhkan untuk membuka berkas dari dalam "
+"sandbox Flatpak."
+
+#: src/gr-utils.c:461
+msgid ""
+"Missing the desktop portal needed to print from inside a Flatpak sandbox."
+msgstr ""
+"Kehilangan portal destop yang dibutuhkan untuk mencetak dari dalam sandbox "
+"Flatpak."
+
+#: src/gr-utils.c:463
+msgid ""
+"Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
+msgstr ""
+"Kehilangan portal destop yang dibutuhkan untuk membuka URL dari dalam "
+"sandbox Flatpak."
+
+#: src/gr-utils.c:467
+msgid ""
+"Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
+msgstr ""
+"Silahkan pasang xdg-desktop-portal dan xdg-desktop-portal-gtk pada sistem "
+"Anda"
+
+#: src/gr-window.c:230
+msgid "Add a New Recipe"
+msgstr "Menambahkan Resep Baru"
+
+#: src/gr-window.c:517
+#, c-format
+msgid ""
+"The “%s” recipe has unsaved changes.\n"
+"Close the window anyway?"
+msgstr ""
+"Resep “%s” memiliki perubahan yang belum disimpan.\n"
+"Menutup jendela saja?"
+
+#: src/gr-window.c:520
+msgid ""
+"The new recipe has not been saved.\n"
+"Close the window anyway?"
+msgstr ""
+"Resep baru belum disimpan.\n"
+"Menutup jendela saja?"
+
+#: src/gr-window.c:651
+#, c-format
+msgid "Recipe “%s” deleted"
+msgstr "Resep “%s” dihapus"
+
+#: src/gr-window.c:701
+#, c-format
+msgid "You updated your contributed “%s” recipe. Send an update?"
+msgstr ""
+"Anda memutakhirkan kontribusi Anda pada resep \"%s\". Kirim pemutakhiran?"
+
+#: src/gr-window.c:831
+msgid "Ready to Cook!"
+msgstr "Siap untuk Memasak!"
+
+#: src/gr-window.c:1053
+msgid "Imported Recipes"
+msgstr "Resep yang Diimpor"
+
+#: src/gr-window.c:1129
+msgid "Select a recipe file"
+msgstr "Pilih berkas resep"
+
+#: src/gr-window.c:1155
+#, c-format
+msgid "Recipes have been exported to “%s”"
+msgstr "Resep telah diekspor ke \"%s\""
+
+#: src/gr-window.c:1193
+msgid "Select a file"
+msgstr "Pilih berkas"
+
+#: src/gr-window.c:1196
+msgid "_Export"
+msgstr "_Ekspor"
+
+#: src/gr-window.c:1235
+#, c-format
+msgid "Chefs: %s"
+msgstr "Koki: %s"
+
+#: src/gr-window.c:1252
+msgid "Favorite Recipes"
+msgstr "Resep Favorit"
+
+#: src/gr-window.c:1334
+msgid "Buy Ingredients"
+msgstr "Membeli Bahan"
+
+#. TRANSLATORS: %s gets replaced by a version number
+#: src/gr-window.c:1505
+#, c-format
+msgid "Recipes %s"
+msgstr "Resep %s"
+
+#. TRANSLATORS: %s gets replaced by a date
+#: src/gr-window.c:1520
+#, c-format
+msgid "Released: %s"
+msgstr "Dirilis: %s"
+
+#: src/ingredients.inc:1
+msgid "Almond"
+msgstr "Almon"
+
+#: src/ingredients.inc:2
+msgid "Amaretti"
+msgstr "Amaretti"
+
+#: src/ingredients.inc:3
+msgid "Anchovies"
+msgstr "Teri"
+
+#: src/ingredients.inc:4
+msgid "Apple"
+msgstr "Apel"
+
+#: src/ingredients.inc:5
+msgid "Apricot"
+msgstr "Aprikot"
+
+#: src/ingredients.inc:6
+msgid "Artichoke"
+msgstr "Artichoke"
+
+#: src/ingredients.inc:7
+msgid "Asparagus"
+msgstr "Asparagus"
+
+#: src/ingredients.inc:8
+msgid "Aubergine"
+msgstr "Terong"
+
+#: src/ingredients.inc:9
+msgid "Bacon"
+msgstr "Daging babi asap"
+
+#: src/ingredients.inc:10
+msgid "Bagel"
+msgstr "Bagel"
+
+#: src/ingredients.inc:11
+msgid "Baked beans"
+msgstr "Kacang panggang"
+
+#: src/ingredients.inc:12
+msgid "Baking powder"
+msgstr "Bubuk pengembang"
+
+#: src/ingredients.inc:13
+msgid "Banana"
+msgstr "Pisang"
+
+#: src/ingredients.inc:14
+msgid "Basil"
+msgstr "Kemangi"
+
+#: src/ingredients.inc:15
+msgid "Basmati rice"
+msgstr "Beras basmati"
+
+#: src/ingredients.inc:16
+msgid "Bay leaf"
+msgstr "Daun salam"
+
+#: src/ingredients.inc:17
+msgid "Beans"
+msgstr "Kacang polong"
+
+#: src/ingredients.inc:18
+msgid "Beef mince"
+msgstr "Daging sapi cincang"
+
+#: src/ingredients.inc:19
+msgid "Beef sausage"
+msgstr "Sosis sapi"
+
+#: src/ingredients.inc:20
+msgid "Beef stock"
+msgstr "Stok daging sapi"
+
+#: src/ingredients.inc:21
+msgid "Beetroot"
+msgstr "Akar bit"
+
+#: src/ingredients.inc:22
+msgid "Berry"
+msgstr "Buah Beri"
+
+#: src/ingredients.inc:23
+msgid "Biscotti"
+msgstr "Biscotti"
+
+#: src/ingredients.inc:24
+msgid "Bilberry"
+msgstr "Bilberry"
+
+#: src/ingredients.inc:25
+msgid "Butter"
+msgstr "Mentega"
+
+#: src/ingredients.inc:26
+msgid "Carrot"
+msgstr "Wortel"
+
+#: src/ingredients.inc:27
+msgid "Cheese"
+msgstr "Keju"
+
+#: src/ingredients.inc:28
+msgid "Cherries, pitted"
+msgstr "Ceri, berbintik"
+
+#: src/ingredients.inc:29
+msgid "Chocolate frosting"
+msgstr "Cokelat beku"
+
+#: src/ingredients.inc:30
+msgid "Cilantro"
+msgstr "Ketumbar"
+
+#: src/ingredients.inc:31
+msgid "Cocoa powder"
+msgstr "Bubuk kokoa"
+
+#: src/ingredients.inc:32
+msgid "Couscous"
+msgstr "Couscous"
+
+#: src/ingredients.inc:33
+msgid "Date"
+msgstr "Kurma"
+
+#: src/ingredients.inc:34
+msgid "Egg"
+msgstr "Telur"
+
+#: src/ingredients.inc:35
+msgid "Fig"
+msgstr "Ara"
+
+#: src/ingredients.inc:36
+msgid "Flour"
+msgstr "Tepung"
+
+#: src/ingredients.inc:37
+msgid "Garlic"
+msgstr "Bawang putih"
+
+#: src/ingredients.inc:38
+msgid "Ground beef"
+msgstr "Daging giling"
+
+#: src/ingredients.inc:39
+msgid "Honey"
+msgstr "Madu"
+
+#: src/ingredients.inc:40
+msgid "Lemon"
+msgstr "Lemon"
+
+#: src/ingredients.inc:41
+msgid "Linseeds"
+msgstr "Biji rami"
+
+#: src/ingredients.inc:42
+msgid "Mayonnaise"
+msgstr "Mayones"
+
+#: src/ingredients.inc:43
+msgid "Milk"
+msgstr "Susu"
+
+#: src/ingredients.inc:44
+msgid "Mustard"
+msgstr "Moster"
+
+#: src/ingredients.inc:45
+msgid "Oatmeal"
+msgstr "Havermut"
+
+#: src/ingredients.inc:46
+msgid "Oil"
+msgstr "Minyak"
+
+#: src/ingredients.inc:47
+msgid "Onion"
+msgstr "Bawang"
+
+#: src/ingredients.inc:48
+msgid "Olive oil, extra-virgin"
+msgstr "minyak zaitun, ekstra-virgin"
+
+#: src/ingredients.inc:49
+msgid "Orange"
+msgstr "Jeruk"
+
+#: src/ingredients.inc:50
+msgid "Parsley"
+msgstr "Peterseli"
+
+#: src/ingredients.inc:51
+msgid "Peperoni"
+msgstr "Peperoni"
+
+#: src/ingredients.inc:52
+msgid "Pepper"
+msgstr "Lada"
+
+#: src/ingredients.inc:53
+msgid "Peppers"
+msgstr "Paprika"
+
+#: src/ingredients.inc:54
+msgid "Pizza sauce"
+msgstr "Saus Pizza"
+
+#: src/ingredients.inc:55
+msgid "Potato"
+msgstr "Kentang"
+
+#: src/ingredients.inc:56
+msgid "Pumpkin seeds"
+msgstr "Biji labu"
+
+#: src/ingredients.inc:57
+msgid "Salt"
+msgstr "Garam"
+
+#: src/ingredients.inc:58
+msgid "Soy sauce"
+msgstr "Kecap"
+
+#: src/ingredients.inc:59
+msgid "Sugar"
+msgstr "Gula"
+
+#: src/ingredients.inc:60
+msgid "Sunflower seeds"
+msgstr "Biji bunga matahari"
+
+#: src/ingredients.inc:61
+msgid "Squash"
+msgstr "Labu"
+
+#: src/ingredients.inc:62
+msgid "Tangerine"
+msgstr "Jeruk keprok"
+
+#: src/ingredients.inc:63
+msgid "Tofu"
+msgstr "Tahu"
+
+#: src/ingredients.inc:64
+msgid "Tomato"
+msgstr "Tomat"
+
+#: src/ingredients.inc:65
+msgid "Turmeric, ground"
+msgstr "Kunyit, tanah"
+
+#: src/ingredients.inc:66
+msgid "Vanilla sugar"
+msgstr "Gula vanila"
+
+#: src/ingredients.inc:67
+msgid "Vanilla pudding"
+msgstr "Puding vanila"
+
+#: src/ingredients.inc:68
+msgid "Vinegar"
+msgstr "Cuka"
+
+#: src/ingredients.inc:69
+msgid "Water"
+msgstr "Air"
+
+#: src/ingredients.inc:70
+msgid "Wine"
+msgstr "Anggur"
+
+#: src/ingredients.inc:71
+msgid "Yeast"
+msgstr "Ragi"
+
+#: src/ingredients.inc:72
+msgid "Yoghurt"
+msgstr "Yogurt"
+
+#: src/ingredients.inc:73
+msgid "Zinfandel"
+msgstr "Zinfandel"
+
+#: src/no-ingredients.inc:1
+msgid "no Almond"
+msgstr "tidak ada Almon"
+
+#: src/no-ingredients.inc:2
+msgid "no Amaretti"
+msgstr "tidak ada Amaretti"
+
+#: src/no-ingredients.inc:3
+msgid "no Anchovies"
+msgstr "tidak ada Teri"
+
+#: src/no-ingredients.inc:4
+msgid "no Apple"
+msgstr "tidak ada Apel"
+
+#: src/no-ingredients.inc:5
+msgid "no Apricot"
+msgstr "tidak ada Aprikot"
+
+#: src/no-ingredients.inc:6
+msgid "no Artichoke"
+msgstr "tidak ada Artichoke"
+
+#: src/no-ingredients.inc:7
+msgid "no Asparagus"
+msgstr "tidak ada Asparagus"
+
+#: src/no-ingredients.inc:8
+msgid "no Aubergine"
+msgstr "tidak ada Terong"
+
+#: src/no-ingredients.inc:9
+msgid "no Bacon"
+msgstr "tidak ada Daging babi asap"
+
+#: src/no-ingredients.inc:10
+msgid "no Bagel"
+msgstr "tidak ada Bagel"
+
+#: src/no-ingredients.inc:11
+msgid "no Baked beans"
+msgstr "tidak ada Kacang panggang"
+
+#: src/no-ingredients.inc:12
+msgid "no Baking powder"
+msgstr "tidak ada Bubuk pengembang"
+
+#: src/no-ingredients.inc:13
+msgid "no Banana"
+msgstr "tidak ada Pisang"
+
+#: src/no-ingredients.inc:14
+msgid "no Basil"
+msgstr "tidak ada Kemangi"
+
+#: src/no-ingredients.inc:15
+msgid "no Basmati rice"
+msgstr "tidak ada Beras basmati"
+
+#: src/no-ingredients.inc:16
+msgid "no Bay leaf"
+msgstr "tidak ada Daun salam"
+
+#: src/no-ingredients.inc:17
+msgid "no Beans"
+msgstr "tidak ada Kacang polong"
+
+#: src/no-ingredients.inc:18
+msgid "no Beef mince"
+msgstr "tidak ada Daging sapi cincang"
+
+#: src/no-ingredients.inc:19
+msgid "no Beef sausage"
+msgstr "tidak ada Sosis sapi"
+
+#: src/no-ingredients.inc:20
+msgid "no Beef stock"
+msgstr "tidak ada Stok daging sapi"
+
+#: src/no-ingredients.inc:21
+msgid "no Beetroot"
+msgstr "tidak ada Akar bit"
+
+#: src/no-ingredients.inc:22
+msgid "no Berry"
+msgstr "tidak ada Buah Beri"
+
+#: src/no-ingredients.inc:23
+msgid "no Biscotti"
+msgstr "tidak ada Biscotti"
+
+#: src/no-ingredients.inc:24
+msgid "no Bilberry"
+msgstr "tidak ada Bilberry"
+
+#: src/no-ingredients.inc:25
+msgid "no Butter"
+msgstr "tidak ada Mentega"
+
+#: src/no-ingredients.inc:26
+msgid "no Carrot"
+msgstr "tidak ada Wortel"
+
+#: src/no-ingredients.inc:27
+msgid "no Cheese"
+msgstr "tidak ada Keju"
+
+#: src/no-ingredients.inc:28
+msgid "no Cherries, pitted"
+msgstr "tidak ada Ceri, berbintik"
+
+#: src/no-ingredients.inc:29
+msgid "no Chocolate frosting"
+msgstr "tidak ada Cokelat beku"
+
+#: src/no-ingredients.inc:30
+msgid "no Cilantro"
+msgstr "tidak ada Ketumbar"
+
+#: src/no-ingredients.inc:31
+msgid "no Cocoa powder"
+msgstr "tidak ada Bubuk kokoa"
+
+#: src/no-ingredients.inc:32
+msgid "no Couscous"
+msgstr "tidak ada Couscous"
+
+#: src/no-ingredients.inc:33
+msgid "no Date"
+msgstr "tidak ada Kurma"
+
+#: src/no-ingredients.inc:34
+msgid "no Egg"
+msgstr "tidak ada Telur"
+
+#: src/no-ingredients.inc:35
+msgid "no Fig"
+msgstr "tidak ada Ara"
+
+#: src/no-ingredients.inc:36
+msgid "no Flour"
+msgstr "tidak ada Tepung"
+
+#: src/no-ingredients.inc:37
+msgid "no Garlic"
+msgstr "tidak ada Bawang putih"
+
+#: src/no-ingredients.inc:38
+msgid "no Ground beef"
+msgstr "tidak ada Daging giling"
+
+#: src/no-ingredients.inc:39
+msgid "no Honey"
+msgstr "tidak ada Madu"
+
+#: src/no-ingredients.inc:40
+msgid "no Lemon"
+msgstr "tidak ada Lemon"
+
+#: src/no-ingredients.inc:41
+msgid "no Linseeds"
+msgstr "tidak ada Biji rami"
+
+#: src/no-ingredients.inc:42
+msgid "no Mayonnaise"
+msgstr "tidak ada Mayones"
+
+#: src/no-ingredients.inc:43
+msgid "no Milk"
+msgstr "tidak ada Susu"
+
+#: src/no-ingredients.inc:44
+msgid "no Mustard"
+msgstr "tidak ada Moster"
+
+#: src/no-ingredients.inc:45
+msgid "no Oatmeal"
+msgstr "tidak ada Havermut"
+
+#: src/no-ingredients.inc:46
+msgid "no Oil"
+msgstr "tidak ada Minyak"
+
+#: src/no-ingredients.inc:47
+msgid "no Onion"
+msgstr "tidak ada Bawang"
+
+#: src/no-ingredients.inc:48
+msgid "no Olive oil, extra-virgin"
+msgstr "tidak ada minyak zaitun, ekstra-virgin"
+
+#: src/no-ingredients.inc:49
+msgid "no Orange"
+msgstr "tidak ada Jeruk"
+
+#: src/no-ingredients.inc:50
+msgid "no Parsley"
+msgstr "tidak ada Peterseli"
+
+#: src/no-ingredients.inc:51
+msgid "no Peperoni"
+msgstr "tidak ada Peperoni"
+
+#: src/no-ingredients.inc:52
+msgid "no Pepper"
+msgstr "tidak ada Lada"
+
+#: src/no-ingredients.inc:53
+msgid "no Peppers"
+msgstr "tidak ada Paprika"
+
+#: src/no-ingredients.inc:54
+msgid "no Pizza sauce"
+msgstr "tidak ada Saus Pizza"
+
+#: src/no-ingredients.inc:55
+msgid "no Potato"
+msgstr "tidak ada Kentang"
+
+#: src/no-ingredients.inc:56
+msgid "no Pumpkin seeds"
+msgstr "tidak ada Biji labu"
+
+#: src/no-ingredients.inc:57
+msgid "no Salt"
+msgstr "tidak ada Garam"
+
+#: src/no-ingredients.inc:58
+msgid "no Soy sauce"
+msgstr "tidak ada Kecap"
+
+#: src/no-ingredients.inc:59
+msgid "no Sugar"
+msgstr "tidak ada Gula"
+
+#: src/no-ingredients.inc:60
+msgid "no Sunflower seeds"
+msgstr "tidak ada Biji bunga matahari"
+
+#: src/no-ingredients.inc:61
+msgid "no Squash"
+msgstr "tidak ada Labu"
+
+#: src/no-ingredients.inc:62
+msgid "no Tangerine"
+msgstr "tidak ada Jeruk keprok"
+
+#: src/no-ingredients.inc:63
+msgid "no Tofu"
+msgstr "tidak ada Tahu"
+
+#: src/no-ingredients.inc:64
+msgid "no Tomato"
+msgstr "tidak ada Tomat"
+
+#: src/no-ingredients.inc:65
+msgid "no Turmeric, ground"
+msgstr "tidak ada Kunyit, tanah"
+
+#: src/no-ingredients.inc:66
+msgid "no Vanilla sugar"
+msgstr "tidak ada Gula vanila"
+
+#: src/no-ingredients.inc:67
+msgid "no Vanilla pudding"
+msgstr "tidak ada Puding vanila"
+
+#: src/no-ingredients.inc:68
+msgid "no Vinegar"
+msgstr "tidak ada Cuka"
+
+#: src/no-ingredients.inc:69
+msgid "no Water"
+msgstr "tidak ada Air"
+
+#: src/no-ingredients.inc:70
+msgid "no Wine"
+msgstr "tidak ada Anggur"
+
+#: src/no-ingredients.inc:71
+msgid "no Yeast"
+msgstr "tidak ada Ragi"
+
+#: src/no-ingredients.inc:72
+msgid "no Yoghurt"
+msgstr "tidak ada Yogurt"
+
+#: src/no-ingredients.inc:73
+msgid "no Zinfandel"
+msgstr "tidak ada Zinfandel"
+
+#: src/segments.inc:1
+msgid "Dough"
+msgstr "Adonan"
+
+#: src/segments.inc:2
+msgid "Toppings"
+msgstr "Pucuk-pucuk dipotong"
