@@ -1,0 +1,92 @@
+<page xmlns="http://projectmallard.org/1.0/"
+  xmlns:its="http://www.w3.org/2005/11/its"
+  type="topic"
+  id="add-recipe-directions" style="task">
+  
+  <info>
+    <link type="guide" xref="add-recipe" group="fifth"/>
+    <link type="seealso" xref="add-recipe-details"/>
+    <link type="seealso" xref="add-recipe-ingredients"/>
+    <link type="seealso" xref="add-recipe-description"/>
+    <link type="seealso" xref="add-recipe-images"/>
+    <desc>How to add each step to cook a recipe and at what temperature.</desc>
+    <revision pkgversion="3.24" version="0.1" date="2017-03-21" status="draft"/>
+    <credit type="author">
+      <name>Paul Cutler</name>
+      <email its:translate="no">pcutler@gnome.org</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 4.0</p>
+    </license>
+  </info>
+  
+  <title>Add Cooking Directions</title>
+  <p>Press the <gui>New Recipe</gui> in the upper left corner of 
+    <app>Recipes</app>.  In the Directions text box, type the steps needed 
+    to create the recipe.  To separate each step, press <key>Enter</key> twice 
+    to create a new paragraph for each step.  <app>Recipes</app>
+    will automatically create separate steps for your
+    recipe.  These steps will be used when it is time to cook using
+    full screen mode in <app>Recipes</app>.</p>
+  <p>In each paragraph for each step, you can include the following tags
+    for adding images, timers or temperature.  You can only use an image
+    or a timer, but not both in a given step.
+    The information in these tags will be available when viewing the recipe
+    or when in hands-free mode.  All tags are enclosed within brackets.</p>
+    <terms>
+      <item>
+        <title>Timers</title>        
+          <p>To create a timer, enter how long the timer should be within
+          brackets.  An example of a one minute and thirty second timer 
+          would be: <cmd>[01:30]</cmd>.
+          </p>
+          <p>You can add a description for the timer by adding a comma 
+          and the description. An example of a fifteen minute timer to 
+          preheat the oven would be: <cmd>[15:00,Preheat oven]</cmd>.
+          </p>
+      </item>
+        
+      <item>
+        <title>Images</title>
+          <p>You can add an image or photo of the finished recipe and also
+          a photo of each each step of making a recipe.  See 
+          <link xref="add-recipe-images"/> for how to add an image or 
+          images to your recipe.  
+          </p>
+          <steps>
+            <item>
+              <p>To assign one of the photos you have added, you will 
+              need to know the image's number.  Press the <gui>Add Image</gui>
+              button at the bottom <app>Recipes</app> window.  Thumbnails of
+              each photo you have added will be displayed.    The first image
+              would be number one, the second would be number two and so on. 
+            </p>
+            </item>
+            <item>
+              <p>Add the tag <cmd>[image:1]</cmd> to add the first image
+              to a step.
+              </p>
+            </item>
+            <item>
+              <p>Add additional image tags with the correct number for 
+              as many steps as you wish.
+              </p>
+            </item>
+          </steps>
+        </item>
+        
+        <item>
+        <title>Temperature</title>
+          <p>You can add the temperature a step needs to be cooked at by 
+          adding a temperature tag. 
+          </p>
+            <steps>
+              <item><p>Add the tag <cmd>[temperature:200C]</cmd>.  You can 
+              set the temperature in Celsius with a C or Fahrenheit with an F
+              following the temperature.
+              </p></item>
+            </steps>
+        </item>
+      </terms>
+  
+</page>

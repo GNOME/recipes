@@ -1,0 +1,46 @@
+<page xmlns="http://projectmallard.org/1.0/"
+  xmlns:its="http://www.w3.org/2005/11/its"
+  type="topic"
+  id="add-recipe-description" style="task">
+  
+  <info>
+    <link type="guide" xref="add-recipe" group="second"/>
+    <link type="seealso" xref="add-recipe-details"/>
+    <link type="seealso" xref="add-recipe-ingredients"/>
+    <link type="seealso" xref="add-recipe-directions"/>
+    <link type="seealso" xref="add-recipe-images"/>
+    <desc>How to add a recipe description and dietary restrictions.</desc>
+    <revision pkgversion="3.24" version="0.1" date="2017-03-21" status="draft"/>
+    <credit type="author">
+      <name>Paul Cutler</name>
+      <email its:translate="no">pcutler@gnome.org</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 4.0</p>
+    </license>
+  </info>
+  
+  <title>Add a Description</title>
+  
+  <p>Press the <gui>New Recipe</gui> in the upper left corner of 
+    <app>Recipes</app>. In the <gui>Description</gui> section,
+    use the text box to describe the recipe in detail.</p>
+    <p>Below the Description field you can select a checkbox if the 
+    recipe meets any dietary restrictions.  
+    The dietary restrictions will help for searching recipes later.
+    </p>
+      <list>
+        <item><p>Gluten free<gui></gui>: Select for recipes that 
+        do not include wheat or related grains.</p></item>
+        <item><p><gui>Vegetarian</gui>: Select for recipes
+        that only include vegetables and do not include meat, poultry
+        or seafood.  Vegetarian recipes may include dairy or eggs.</p></item>
+        <item><p><gui>Nut free</gui>: Select for recipes that do not
+        include any nuts.</p></item>
+        <item><p><gui>Milk free</gui>: Select for recipes that do not 
+        include dairy products, such as milk or cheese.</p></item>
+        <item><p><gui>Vegan</gui>: Recipes that do not include any product
+        from an animal.  This includes meat, dairy, eggs and more.</p></item>
+      </list>
+  
+</page>
