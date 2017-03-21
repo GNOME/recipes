@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-18 21:17+0000\n"
-"PO-Revision-Date: 2017-03-18 22:37+0100\n"
-"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
+"POT-Creation-Date: 2017-03-21 02:38+0000\n"
+"PO-Revision-Date: 2017-03-21 22:43+0100\n"
+"Last-Translator: Meskó Balázs <meskobalazs@fedoraproject.org>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Poedit 1.8.12\n"
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
@@ -63,17 +63,14 @@ msgid "The major features of Recipes include:"
 msgstr "A Receptek főbb funkciói a következők:"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:22
-#| msgid "Add a New Recipe"
 msgid "Add and edit your own recipes"
 msgstr "Saját receptek hozzáadása és szerkesztése"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:23
-#| msgid "Share with a friend"
 msgid "Share recipes with your friends"
 msgstr "Receptek megosztása az ismerőseivel"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:24
-#| msgid "Save the shopping list"
 msgid "Export and print shopping lists"
 msgstr "Bevásárlólisták exportálása és nyomtatása"
 
@@ -88,7 +85,6 @@ msgstr ""
 "kedvencekhez"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:27
-#| msgid "Try these recipes"
 msgid "Add notes to recipes"
 msgstr "Jegyzetek hozzáadása a receptekhez"
 
@@ -153,7 +149,6 @@ msgstr ""
 "távolítva a kedvencek listájáról."
 
 #: data/org.gnome.Recipes.gschema.xml:30
-#| msgid "Add to favorites"
 msgid "The list of favorites"
 msgstr "A kedvencek listája"
 
@@ -175,7 +170,6 @@ msgstr ""
 "távolítva a bevásárlólistáról."
 
 #: data/org.gnome.Recipes.gschema.xml:45
-#| msgid "A shopping list"
 msgid "The shopping list"
 msgstr "A bevásárlólista"
 
@@ -280,7 +274,6 @@ msgid "Done"
 msgstr "Kész"
 
 #: src/gr-cooking-page.ui:185
-#| msgid "_Start Cooking"
 msgid "Stop Cooking?"
 msgstr "Főzés leállítása?"
 
@@ -297,17 +290,14 @@ msgstr ""
 "akkor is, ha most elhagyja a főzési módot."
 
 #: src/gr-cooking-page.ui:212
-#| msgid "Cooking"
 msgid "Keep Cooking"
 msgstr "Főzés folytatása"
 
 #: src/gr-cooking-page.ui:219
-#| msgid "Timer"
 msgid "Stop Timers"
 msgstr "Időmérők leállítása"
 
 #: src/gr-cooking-page.ui:226
-#| msgid "Continue"
 msgid "Continue Timers"
 msgstr "Időmérők folytatása"
 
@@ -738,18 +728,14 @@ msgid "_Start Cooking"
 msgstr "_Főzés elkezdése"
 
 #: src/gr-window.ui:144
-#| msgid "View Shopping List"
 msgid "_Done Shopping"
 msgstr "Vásárlás _befejezése"
 
 #: src/gr-window.ui:205
-#| msgid "%d ingredient marked for purchase"
-#| msgid_plural "%d ingredients marked for purchase"
 msgid "All ingredients marked as stocked!"
 msgstr "Az összes hozzávaló megjelölve készleten lévőként!"
 
 #: src/gr-window.ui:215
-#| msgid "Undo"
 msgid "_Undo"
 msgstr "_Visszavonás"
 
@@ -806,7 +792,6 @@ msgid "File"
 msgstr "Fájl"
 
 #: src/menus.ui:56
-#| msgid "Chef Information"
 msgid "Chef Information…"
 msgstr "Konyhafőnök-információk…"
 
@@ -815,7 +800,6 @@ msgid "Copy"
 msgstr "Másolás"
 
 #: src/menus.ui:69
-#| msgid "Pasta"
 msgid "Paste"
 msgstr "Beillesztés"
 
@@ -1459,7 +1443,7 @@ msgstr "Főétel"
 
 #: src/gr-meal.c:45
 msgid "Snacks"
-msgstr "Rágcsálni valók"
+msgstr "Rágcsálnivalók"
 
 #: src/gr-meal.c:46
 msgid "Breakfast"
@@ -2045,10 +2029,6 @@ msgid "Certain functionality will not be available."
 msgstr "Bizonyos funkcionalitás nem lesz elérhető."
 
 #: src/gr-utils.c:459
-#| msgid ""
-#| "Missing the desktop portals needed to open files from inside a flatpak "
-#| "sandbox. Please install xdg-desktop-portal and xdg-desktop-portal-gtk on "
-#| "your system."
 msgid ""
 "Missing the desktop portal needed to open files from inside a Flatpak "
 "sandbox."
@@ -2057,10 +2037,6 @@ msgstr ""
 "belülről történő fájlok megnyitásához szükséges."
 
 #: src/gr-utils.c:461
-#| msgid ""
-#| "Missing the desktop portals needed to print from inside a flatpak "
-#| "sandbox. Please install xdg-desktop-portal and xdg-desktop-portal-gtk on "
-#| "your system."
 msgid ""
 "Missing the desktop portal needed to print from inside a Flatpak sandbox."
 msgstr ""
@@ -2068,10 +2044,6 @@ msgstr ""
 "belülről történő nyomtatáshoz szükséges."
 
 #: src/gr-utils.c:463
-#| msgid ""
-#| "Missing the desktop portals needed to open files from inside a flatpak "
-#| "sandbox. Please install xdg-desktop-portal and xdg-desktop-portal-gtk on "
-#| "your system."
 msgid ""
 "Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
 msgstr ""
@@ -2079,10 +2051,6 @@ msgstr ""
 "belülről történő URL-ek megnyitásához szükséges."
 
 #: src/gr-utils.c:467
-#| msgid ""
-#| "Missing the desktop portals needed to print from inside a flatpak "
-#| "sandbox. Please install xdg-desktop-portal and xdg-desktop-portal-gtk on "
-#| "your system."
 msgid ""
 "Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
 msgstr ""
@@ -2248,7 +2216,7 @@ msgstr "Marha kolbász"
 
 #: src/ingredients.inc:20
 msgid "Beef stock"
-msgstr ""
+msgstr "Marhahúsleves"
 
 #: src/ingredients.inc:21
 msgid "Beetroot"
@@ -2320,7 +2288,7 @@ msgstr "Fokhagyma"
 
 #: src/ingredients.inc:38
 msgid "Ground beef"
-msgstr ""
+msgstr "Darált marhahús"
 
 #: src/ingredients.inc:39
 msgid "Honey"
@@ -2376,7 +2344,7 @@ msgstr "Pepperoni"
 
 #: src/ingredients.inc:52
 msgid "Pepper"
-msgstr "Paprika"
+msgstr "Bors"
 
 #: src/ingredients.inc:53
 msgid "Peppers"
@@ -2428,7 +2396,7 @@ msgstr "Paradicsom"
 
 #: src/ingredients.inc:65
 msgid "Turmeric, ground"
-msgstr ""
+msgstr "Kurkuma, őrölt"
 
 #: src/ingredients.inc:66
 msgid "Vanilla sugar"
@@ -2540,7 +2508,7 @@ msgstr "nincs marha kolbász"
 
 #: src/no-ingredients.inc:20
 msgid "no Beef stock"
-msgstr ""
+msgstr "nincs marhahúsleves"
 
 #: src/no-ingredients.inc:21
 msgid "no Beetroot"
@@ -2612,7 +2580,7 @@ msgstr "nincs fokhagyma"
 
 #: src/no-ingredients.inc:38
 msgid "no Ground beef"
-msgstr ""
+msgstr "nincs darált marhahús"
 
 #: src/no-ingredients.inc:39
 msgid "no Honey"
@@ -2668,7 +2636,7 @@ msgstr "nincs pepperoni"
 
 #: src/no-ingredients.inc:52
 msgid "no Pepper"
-msgstr "nincs paprika"
+msgstr "nincs bors"
 
 #: src/no-ingredients.inc:53
 msgid "no Peppers"
@@ -2720,7 +2688,7 @@ msgstr "nincs paradicsom"
 
 #: src/no-ingredients.inc:65
 msgid "no Turmeric, ground"
-msgstr ""
+msgstr "nincs kurkuma, őrölt"
 
 #: src/no-ingredients.inc:66
 msgid "no Vanilla sugar"
