@@ -21,32 +21,51 @@
   </info>
   
   <title>Add Cooking Directions</title>
+  
+  <section id="steps">
+  <title>Add steps</title>
   <p>Press the <gui>New Recipe</gui> in the upper left corner of 
     <app>Recipes</app>.  In the Directions text box, type the steps needed 
     to create the recipe.  To separate each step, press <key>Enter</key> twice 
-    to create a new paragraph for each step.  <app>Recipes</app>
-    will automatically create separate steps for your
+    to create a new paragraph for each step. <app>Recipes</app>
+    will automatically create a separate steps for each paragraph in your
     recipe.  These steps will be used when it is time to cook using
     full screen mode in <app>Recipes</app>.</p>
   <p>In each paragraph for each step, you can include the following tags
     for adding images, timers or temperature.  You can only use an image
-    or a timer, but not both in a given step.
-    The information in these tags will be available when viewing the recipe
+    or a timer, but not both in an individual step.
+    The information in the tags will be available when viewing the recipe
     or when in hands-free mode.  All tags are enclosed within brackets.</p>
-    <terms>
-      <item>
-        <title>Timers</title>        
+  </section>
+  
+  <section id="timers">
+  <title>Add timers</title>       
           <p>To create a timer, enter how long the timer should be within
-          brackets.  An example of a one minute and thirty second timer 
-          would be: <cmd>[01:30]</cmd>.
+          brackets.  The format is [timer:hour:minute:seconds, description]
           </p>
-          <p>You can add a description for the timer by adding a comma 
-          and the description. An example of a fifteen minute timer to 
-          preheat the oven would be: <cmd>[15:00,Preheat oven]</cmd>.
-          </p>
-      </item>
+            <p>Timer examples:
+            </p>
+              <list>
+                <item>
+                  <p><cmd>[timer:00:30, stir ingredients]</cmd> - 
+                  Stir ingredients for thirty seconds.
+                  </p>
+                </item>
+                <item>
+                  <p><cmd>[timer:01:30, stir ingredients]</cmd> - Stir 
+                  ingredients for one minute and thirty seconds.
+                  </p>
+                </item>
+                <item>
+                  <p><cmd>[timer:01:01:30, preheat oven]</cmd> - 
+                  Preheat oven for one hour, one minute and thirty seconds.
+                  </p>
+                </item>
+              </list>
+  </section>
         
-      <item>
+  <section id="image-steps">
+  <title>Add images to each step</title>    
         <title>Images</title>
           <p>You can add an image or photo of the finished recipe and also
           a photo of each each step of making a recipe.  See 
@@ -73,9 +92,10 @@
               </p>
             </item>
           </steps>
-        </item>
-        
-        <item>
+  </section>
+  
+  <section id="temp">        
+       
         <title>Temperature</title>
           <p>You can add the temperature a step needs to be cooked at by 
           adding a temperature tag. 
@@ -86,7 +106,6 @@
               following the temperature.
               </p></item>
             </steps>
-        </item>
-      </terms>
+  </section>    
   
 </page>
