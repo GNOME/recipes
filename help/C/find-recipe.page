@@ -63,9 +63,10 @@
         </p>
       </item>
     </list>
-  <p><app>Recipes</app> will display recipes that meet your search terms.  You
-  can refine your search by entering text in the search box.</p>
-  <p>To remove a category from search, press <gui>x</gui> on the search result 
+  <p><app>Recipes</app> will add a tag for the category you selected
+  and display it in the search bar.  You can then enter text to search 
+  within that category and tag.</p>
+  <p>To remove the tag from search, press <gui>x</gui> on the tag 
   in the search bar.</p>
   </section>
   
@@ -96,6 +97,33 @@
   of the Category with a <gui>Read More</gui> link you can click to learn 
   more about the Category.</p>
   
+  </section>
+  
+  <section id="ingredients">
+  <title>Search for recipes with or without a specific ingredient</title>
+    <p>You can search for recipes that include or do not include a specific
+    ingredient.</p>
+    <steps>
+      <item>
+        <p>Press the down arrow <media type="image" mime="image/png" 
+        src="images/down.png" its:translate="yes">
+        <span its:translate="yes">Down</span></media> in the search bar.</p>
+      </item>
+      <item>
+        <p>Select the <gui>Ingredients</gui> drop down box.</p>
+      </item>
+      <item>
+        <p>Select an ingredient from the list, such as <em>Banana</em>.</p>
+      </item>
+    </steps>
+    <p>A tag for that ingredient, such as <em>Banana</em>, will be displayed 
+    in the search bar and all recipes that include that bananas will be 
+    displayed.  If there are no recipes that match, <gui>No recipes found</gui>
+    will be displayed.  Press the tag in the search bar for <gui>Banana</gui>
+    and the tag will now show <gui>No Banana</gui> and all recipes that do not
+    include bananas in the recipe will be displayed.  
+    To remove the tag from search, press <gui>x</gui> on the tag 
+    in the search bar.</p>
   </section>
   
   <section id="cuisines">
