@@ -151,6 +151,11 @@ dnl ***********************************************************************
 LT_PREREQ([2.2])
 LT_INIT
 
+dnl ***********************************************************************
+dnl Help
+dnl ***********************************************************************
+
+YELP_HELP_INIT
 
 dnl ***********************************************************************
 dnl Process .in Files
@@ -162,6 +167,7 @@ AC_CONFIG_FILES([
 	tools/Makefile
 	data/Makefile
 	tests/Makefile
+	help/Makefile
 	po/Makefile.in
 	po-data/Makefile.in
 ],[],
