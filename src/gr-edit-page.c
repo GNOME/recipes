@@ -572,6 +572,62 @@ update_ingredient_row (GtkWidget  *row,
         g_object_set_data_full (G_OBJECT (row), "ingredient", g_strdup (ingredient), g_free);
 }
 
+static void
+up_ingredient (GtkButton  *button,
+               GrEditPage *page)
+{
+        GtkWidget *list;
+        GtkWidget *row;
+        gint selected_index;
+
+        row = gtk_widget_get_ancestor (GTK_WIDGET (button), GTK_TYPE_LIST_BOX_ROW);
+        if (!row)
+                return;
+
+        list = gtk_widget_get_parent (row);
+
+        if (row == page->active_row) {
+                page->active_row = NULL;
+                selected_index = gtk_list_box_row_get_index (GTK_LIST_BOX_ROW (row));
+                g_object_ref (row);
+                gtk_container_remove (GTK_CONTAINER (list), GTK_WIDGET (row));
+                gtk_list_box_insert (GTK_LIST_BOX (list), GTK_WIDGET (row), selected_index - 1);
+                g_object_unref (row);
+                gtk_list_box_unselect_all (GTK_LIST_BOX (list));
+                gtk_list_box_select_row (GTK_LIST_BOX (list), GTK_LIST_BOX_ROW (row));
+        }
+
+        set_unsaved (page);
+}
+
+static void
+down_ingredient (GtkButton  *button,
+                 GrEditPage *page)
+{
+        GtkWidget *list;
+        GtkWidget *row;
+        gint selected_index;
+
+        row = gtk_widget_get_ancestor (GTK_WIDGET (button), GTK_TYPE_LIST_BOX_ROW);
+        if (!row)
+                return;
+
+        list = gtk_widget_get_parent (row);
+
+        if (row == page->active_row) {
+                page->active_row = NULL;
+                selected_index = gtk_list_box_row_get_index (GTK_LIST_BOX_ROW (row));
+                g_object_ref (row);
+                gtk_container_remove (GTK_CONTAINER (list), GTK_WIDGET (row));
+                gtk_list_box_insert (GTK_LIST_BOX (list), GTK_WIDGET (row), selected_index + 1);
+                g_object_unref (row);
+                gtk_list_box_unselect_all (GTK_LIST_BOX (list));
+                gtk_list_box_select_row (GTK_LIST_BOX (list), GTK_LIST_BOX_ROW (row));
+        }
+
+        set_unsaved (page);
+}
+
 static GtkWidget *
 add_ingredient_row (GrEditPage   *page,
                     GtkWidget    *list,
@@ -617,6 +673,22 @@ add_ingredient_row (GrEditPage   *page,
         gtk_stack_add_named (GTK_STACK (stack), image, "empty");
         buttons = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
         g_object_set (buttons, "margin", 4, NULL);
+        button = gtk_button_new ();
+        gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
+        g_signal_connect (button, "clicked", G_CALLBACK (up_ingredient), page);
+        image = gtk_image_new_from_icon_name ("go-up-symbolic", 1);
+        gtk_container_add (GTK_CONTAINER (button), image);
+        gtk_style_context_add_class (gtk_widget_get_style_context (button), "image-button");
+        gtk_style_context_add_class (gtk_widget_get_style_context (button), "circular");
+        gtk_container_add (GTK_CONTAINER (buttons), button);
+        button = gtk_button_new ();
+        gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
+        g_signal_connect (button, "clicked", G_CALLBACK (down_ingredient), page);
+        image = gtk_image_new_from_icon_name ("go-down-symbolic", 1);
+        gtk_container_add (GTK_CONTAINER (button), image);
+        gtk_style_context_add_class (gtk_widget_get_style_context (button), "image-button");
+        gtk_style_context_add_class (gtk_widget_get_style_context (button), "circular");
+        gtk_container_add (GTK_CONTAINER (buttons), button);
         button = gtk_button_new ();
         gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
         g_signal_connect (button, "clicked", G_CALLBACK (edit_ingredient), page);
