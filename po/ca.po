@@ -91,19 +91,16 @@ msgid "Hands-free cooking instruction mode"
 msgstr ""
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:34
-#, fuzzy
 msgid "Initial screen for the application"
 msgstr "Pantalla inicial de l'aplicació"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:38
-#, fuzzy
 msgid "The cuisines page"
-msgstr "No existeix la pàgina."
+msgstr "Pàgina de les cuines"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:42
-#, fuzzy
 msgid "A shopping list"
-msgstr "Llista de compres"
+msgstr "Una llista de compres"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:46
 #, fuzzy
@@ -114,9 +111,6 @@ msgstr "Cuina"
 #, fuzzy
 msgid "Editing a recipe"
 msgstr ""
-"Una recepta conté canvis sense desar.\n"
-"Voleu desar els canvis fets a aquesta recepta abans d'editar una altra "
-"recepta?"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:54
 #, fuzzy
@@ -356,29 +350,24 @@ msgid "Cuisines page"
 msgstr "No existeix la pàgina."
 
 #: src/gr-cuisines-page.ui:28
-#, fuzzy
 msgid "World Cuisines"
-msgstr "Mó_n"
+msgstr "Cuines del món"
 
 #: src/gr-cuisines-page.ui:124
-#, fuzzy
 msgid "Seasonal"
 msgstr "Estacional"
 
 #: src/gr-details-page.ui:105
-#, fuzzy
 msgid "Contains garlic"
-msgstr "all"
+msgstr "Conté all"
 
 #: src/gr-details-page.ui:112
-#, fuzzy
 msgid "Contains dairy products"
-msgstr "Núm. de productes"
+msgstr "Conté productes làctics"
 
 #: src/gr-details-page.ui:119
-#, fuzzy
 msgid "Contains Gluten"
-msgstr "No conté"
+msgstr "Conté gluten"
 
 #: src/gr-details-page.ui:126 src/gr-details-page.c:546
 msgid "Spicy"
@@ -404,9 +393,8 @@ msgid "Cooking Time"
 msgstr "Temps de cuinat"
 
 #: src/gr-details-page.ui:258
-#, fuzzy
 msgid "Cuisine"
-msgstr "Menjar"
+msgstr "Cuina"
 
 #: src/gr-details-page.ui:288 src/gr-query-editor.ui:46
 msgid "Meal"
@@ -504,14 +492,12 @@ msgid "More than an hour"
 msgstr "Més d'una hora"
 
 #: src/gr-edit-page.ui:375
-#, fuzzy
 msgid "C_ooking Time"
-msgstr "C per temps"
+msgstr "_Temps de cocció"
 
 #: src/gr-edit-page.ui:413
-#, fuzzy
 msgid "_Cuisine"
-msgstr "Menjar"
+msgstr "_Cuisine"
 
 #: src/gr-edit-page.ui:444
 msgid "_Meal"
@@ -522,50 +508,42 @@ msgid "S_eason"
 msgstr "_Temporada"
 
 #: src/gr-edit-page.ui:506
-#, fuzzy
 msgid "S_piciness"
-msgstr "Sobre aquest %s:"
+msgstr "_Com es de picant"
 
 #: src/gr-edit-page.ui:526 src/gr-spice-row.c:127
-#, fuzzy
 msgid "Mild"
-msgstr "Ús lleu o poc freqüent de la blasfèmia"
+msgstr "Poc"
 
 #: src/gr-edit-page.ui:527
 msgid "Somewhat spicy"
-msgstr ""
+msgstr "Una mica picant"
 
 #: src/gr-edit-page.ui:528
-#, fuzzy
 msgid "Hot"
-msgstr "Càlid"
+msgstr "Picant"
 
 #: src/gr-edit-page.ui:529 src/gr-details-page.c:541 src/gr-spice-row.c:142
-#, fuzzy
 msgid "Very spicy"
-msgstr "Molt"
+msgstr "Molt picant"
 
 #: src/gr-edit-page.ui:540
-#, fuzzy
 msgid "Description"
-msgstr "descripció"
+msgstr "Descripció"
 
 #: src/gr-edit-page.ui:599 src/gr-diet-row.c:102
-#, fuzzy
 msgid "Gluten free"
-msgstr "és gratuït"
+msgstr "Sense gluten"
 
 #: src/gr-edit-page.ui:606 src/gr-diet-row.c:105
-#, fuzzy
 msgid "Nut free"
-msgstr "nut-case"
+msgstr "Sense nous"
 
 #: src/gr-edit-page.ui:613 src/gr-diet-row.c:108
 msgid "Vegan"
-msgstr ""
+msgstr "Vegà"
 
 #: src/gr-edit-page.ui:620 src/gr-diet-row.c:111
-#, fuzzy
 msgid "Vegetarian"
 msgstr "Vegetarià"
 
@@ -578,9 +556,8 @@ msgid "Edit"
 msgstr "Edita"
 
 #: src/gr-edit-page.ui:722
-#, fuzzy
 msgid "Preview"
-msgstr "Previsual."
+msgstr "Previsualització"
 
 #: src/gr-edit-page.ui:742
 msgid "Add Step"
@@ -595,9 +572,8 @@ msgid "Add Timer"
 msgstr "Afegeix un temporitzador"
 
 #: src/gr-edit-page.ui:766
-#, fuzzy
 msgid "Add Temperature"
-msgstr "_Temperatura:"
+msgstr "Afegeix temperatura"
 
 #: src/gr-edit-page.ui:830 src/gr-edit-page.ui:851 src/gr-edit-page.c:434
 msgid "Ingredient"
@@ -616,9 +592,8 @@ msgid "Add"
 msgstr "Afegeix-ho"
 
 #: src/gr-edit-page.ui:1053
-#, fuzzy
 msgid "Title…"
-msgstr "@title"
+msgstr "Títol..."
 
 #: src/gr-edit-page.ui:1128
 msgid "Syntax"
@@ -626,11 +601,11 @@ msgstr "Sintaxi"
 
 #: src/gr-edit-page.ui:1143
 msgid "Use paragraphs to break directions into steps (2 newlines)."
-msgstr ""
+msgstr "Useu paràgrafs per dividir les instruccions en passes (2 noves línies)"
 
 #: src/gr-edit-page.ui:1156
 msgid "You can provide an image or a time counter in each step."
-msgstr ""
+msgstr "Podeu proporcionar una imatge o un comptador de temps a cada pas."
 
 #: src/gr-edit-page.ui:1168
 msgid "Timer"
@@ -645,34 +620,29 @@ msgid "Temperature"
 msgstr "Temperatura"
 
 #: src/gr-list-page.ui:124
-#, fuzzy
 msgid "There are no recipes here yet."
-msgstr "No hi ha receptes"
+msgstr "No hi ha cap recepta encara."
 
 #: src/gr-query-editor.ui:66 src/gr-query-editor.c:490
 #: src/gr-query-editor.c:679
-#, fuzzy
 msgid "Any meal"
-msgstr "Àpat"
+msgstr "Qualsevol àpat"
 
 #: src/gr-query-editor.ui:109
 msgid "Spiciness"
-msgstr ""
+msgstr "Com es de picant"
 
 #: src/gr-query-editor.ui:129 src/gr-query-editor.c:557
 #: src/gr-query-editor.c:708
-#, fuzzy
 msgid "Any spiciness"
-msgstr "A qualsevol:"
+msgstr "Qualsevol nivell de picant"
 
 #: src/gr-query-editor.ui:172
-#, fuzzy
 msgid "Dietary restrictions"
-msgstr "Sense restriccions"
+msgstr "Restriccions en la dieta"
 
 #: src/gr-query-editor.ui:192 src/gr-query-editor.c:406
 #: src/gr-query-editor.c:737
-#, fuzzy
 msgid "No restrictions"
 msgstr "Sense restriccions"
 
@@ -684,7 +654,6 @@ msgstr "Ingredients"
 #. FIXME: repopulate
 #: src/gr-query-editor.ui:255 src/gr-query-editor.c:337
 #: src/gr-query-editor.c:766
-#, fuzzy
 msgid "Anything"
 msgstr "Tot"
 
@@ -709,9 +678,8 @@ msgid "Categories"
 msgstr "Categories"
 
 #: src/gr-recipes-page.ui:226
-#, fuzzy
 msgid "Featured GNOME Chefs"
-msgstr "Destacat"
+msgstr "Destacat pels xefs del GNOME"
 
 #: src/gr-search-page.ui:42
 msgid "Try a different search"
@@ -754,23 +722,20 @@ msgid "_New Recipe"
 msgstr "_Recepta nova"
 
 #: src/gr-window.ui:40
-#, fuzzy
 msgid "Go back"
-msgstr "Tornar"
+msgstr "Vés enrere"
 
 #: src/gr-window.ui:97
 msgid "Search"
 msgstr "Cerca"
 
 #: src/gr-window.ui:116
-#, fuzzy
 msgid "_Start Cooking"
-msgstr "Cuina"
+msgstr "_Comença a cuinar"
 
 #: src/gr-window.ui:144
-#, fuzzy
 msgid "_Done Shopping"
-msgstr "Comprant"
+msgstr "_Acabada la compra"
 
 #: src/gr-window.ui:205
 #, fuzzy
@@ -778,27 +743,22 @@ msgid "All ingredients marked as stocked!"
 msgstr "Nota: Tots els camps marcats amb (*) són necessaris."
 
 #: src/gr-window.ui:215
-#, fuzzy
 msgid "_Undo"
-msgstr "&Desfés"
+msgstr "_Desfés"
 
 #: src/gr-window.ui:264
-#, fuzzy
 msgid "Ingredients to buy added."
-msgstr "compra"
+msgstr "Ingredients a comprar afegits."
 
 #: src/gr-window.ui:274
-#, fuzzy
 msgid "View Shopping List"
-msgstr "Llista de compres"
+msgstr "Visualitza llista de la compra"
 
 #: src/gr-window.ui:331
-#, fuzzy
 msgid "Undo"
-msgstr "desfés"
+msgstr "Desfés"
 
 #: src/gr-window.ui:391
-#, fuzzy
 msgid "Send Update"
 msgstr "Envia l'actualització"
 
@@ -815,196 +775,158 @@ msgid "_Export All"
 msgstr "Exporta-ho tot"
 
 #: src/menus.ui:16
-#, fuzzy
 msgid "_Chef Information"
-msgstr "Xef de la Pizza"
+msgstr "_Informació del Xef"
 
 #: src/menus.ui:22 src/menus.ui:89
-#, fuzzy
 msgid "_What’s New"
-msgstr "Novetats..."
+msgstr "_Novetats"
 
 #: src/menus.ui:26
-#, fuzzy
 msgid "_Help"
-msgstr "~Ajuda"
+msgstr "_Ajuda"
 
 #: src/menus.ui:30
-#, fuzzy
 msgid "_About"
 msgstr "Quant _a"
 
 #: src/menus.ui:34 src/menus.ui:93
-#, fuzzy
 msgid "_Report Issue"
 msgstr "_Informeu d'una errada"
 
 #: src/menus.ui:38
-#, fuzzy
 msgid "_Quit"
-msgstr "Sortida"
+msgstr "_Surt"
 
 #: src/menus.ui:45
-#, fuzzy
 msgid "File"
 msgstr "Fitxer"
 
 #: src/menus.ui:60
-#, fuzzy
 msgid "Chef Information…"
-msgstr "Xef de la Pizza"
+msgstr "Informació del xef..."
 
 #: src/menus.ui:69
-#, fuzzy
 msgid "Copy"
-msgstr "Còpia"
+msgstr "Copia"
 
 #: src/menus.ui:73
-#, fuzzy
 msgid "Paste"
-msgstr "&Enganxa"
+msgstr "Enganxa"
 
 #: src/menus.ui:79
-#, fuzzy
 msgid "Find…"
-msgstr "Cerca…"
+msgstr "Cerca..."
 
 #: src/menus.ui:86
-#, fuzzy
 msgid "Help"
-msgstr "HELP"
+msgstr "Ajuda"
 
 #: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:156
 #: src/gr-image-viewer.c:616 src/gr-recipe-exporter.c:169
 #: src/gr-shopping-page.c:731 src/gr-window.c:1133
-#, fuzzy
 msgid "Cancel"
-msgstr "Cancel·la "
+msgstr "Cancel·la"
 
 #: src/recipe-conflict-dialog.ui:18
-#, fuzzy
 msgid "Rename"
-msgstr "rename"
+msgstr "Canvia el nom"
 
 #: src/recipe-conflict-dialog.ui:28
-#, fuzzy
 msgid "A recipe with this name already exists."
-msgstr "Ja existeix un jugador amb aquest nom."
+msgstr "Ja existeix una recepta amb aquest nom."
 
 #: src/recipe-export-dialog.ui:14
-#, fuzzy
 msgid "_Add More"
-msgstr "Afegeix-ne més"
+msgstr "_Afegeix-ne més"
 
 #: src/recipe-export-dialog.ui:56
-#, fuzzy
 msgid "Share with a friend"
-msgstr "Amic"
+msgstr "Comparteix amb un amic"
 
 #: src/recipe-export-dialog.ui:63
-#, fuzzy
 msgid "Contribute to the Recipes project"
-msgstr "&Col·labora-hi"
+msgstr "&Col·labora al projecte Receptes"
 
 #: src/recipe-whats-new-dialog.ui:8
-#, fuzzy
 msgid "What’s New in Recipes"
-msgstr "Què és nou"
+msgstr "Novetats al Receptes"
 
 #: src/gr-about-dialog.c:132
-#, fuzzy
 msgid "Learn more about Builder"
-msgstr "Aprèn Més d'Scratch"
+msgstr "Aprèn més del Builder"
 
 #: src/gr-about-dialog.c:244 src/gr-about-dialog.c:327
 #: src/gr-about-dialog.c:329 src/gr-about-dialog.c:331
 #: src/gr-about-dialog.c:333 src/gr-about-dialog.c:335
 #: src/gr-about-dialog.c:337 src/gr-about-dialog.c:339
 #: src/gr-about-dialog.c:341 src/gr-about-dialog.c:343
-#, fuzzy
 msgid "Unknown"
-msgstr "desconeguda"
+msgstr "Desconegut"
 
 #: src/gr-about-dialog.c:433
 msgid "Flatpak"
-msgstr ""
+msgstr "Flatpak"
 
 #: src/gr-about-dialog.c:436
-#, fuzzy
 msgctxt "Flatpak metadata"
 msgid "Version"
-msgstr "VERSION"
+msgstr "Versió"
 
 #: src/gr-about-dialog.c:439
-#, fuzzy
 msgid "Application"
-msgstr "aplicació"
+msgstr "Aplicació"
 
 #: src/gr-about-dialog.c:442 src/gr-about-dialog.c:451
-#, fuzzy
 msgctxt "Flatpak metadata"
 msgid "ID"
-msgstr "Id."
+msgstr "ID"
 
 #: src/gr-about-dialog.c:443 src/gr-about-dialog.c:452
-#, fuzzy
 msgctxt "Flatpak metadata"
 msgid "Architecture"
 msgstr "Arquitectura"
 
 #: src/gr-about-dialog.c:444 src/gr-about-dialog.c:453
-#, fuzzy
 msgctxt "Flatpak metadata"
 msgid "Branch"
 msgstr "Branca"
 
 #: src/gr-about-dialog.c:445 src/gr-about-dialog.c:454
-#, fuzzy
 msgctxt "Flatpak metadata"
 msgid "Commit"
 msgstr "Publica"
 
 #: src/gr-about-dialog.c:448
-#, fuzzy
 msgid "Runtime"
 msgstr "Temps d'execució"
 
 #: src/gr-about-dialog.c:457 src/gr-about-dialog.c:521
-#, fuzzy
 msgid "Bundled libraries"
-msgstr "Lligat"
+msgstr "Biblioteques incloses"
 
 #: src/gr-about-dialog.c:487
-#, fuzzy
 msgid "OS"
 msgstr "SO"
 
 #: src/gr-about-dialog.c:490
-#, fuzzy
 msgctxt "OS metadata"
 msgid "Name"
-msgstr "Nom:"
+msgstr "Nom"
 
 #: src/gr-about-dialog.c:492
-#, fuzzy
 msgctxt "OS metadata"
 msgid "Type"
-msgstr "~Tipus"
+msgstr "Tipus"
 
 #: src/gr-about-dialog.c:495 src/gr-about-dialog.c:497
-#, fuzzy
 msgctxt "OS metadata"
 msgid "Desktop"
-msgstr "escriptori"
+msgstr "Escriptori"
 
 #: src/gr-about-dialog.c:500
-#, fuzzy
 msgid "System libraries"
-msgstr ""
-"Hi ha un conflicte de configuració regional («locale») en aquest sistema. El "
-"document usa la configuració regional %1 que utilitza un «%2» com a "
-"separador numèric (en les biblioteques del sistema) però les Qt esperen "
-"«%3». Podríeu no ser capaç d'obrir correctament el projecte."
+msgstr "Llibreries del sistema"
 
 #: src/gr-about-dialog.c:820 src/gr-about-dialog.c:847
 msgid "System"
@@ -1034,7 +956,6 @@ msgid ""
 msgstr ""
 
 #: src/gr-app.c:393
-#, fuzzy
 msgid "Print the version and exit"
 msgstr "Mostra la versió i surt"
 
@@ -1044,44 +965,38 @@ msgid "Turn on verbose logging"
 msgstr "Entrada verbosa:"
 
 #: src/gr-chef-dialog.c:152 src/gr-image-viewer.c:612
-#, fuzzy
 msgid "Select an Image"
 msgstr "Selecciona una imatge"
 
 #: src/gr-chef-dialog.c:155 src/gr-image-viewer.c:615 src/gr-window.c:1132
-#, fuzzy
 msgid "Open"
-msgstr "obert"
+msgstr "Obre"
 
 #: src/gr-chef-dialog.c:160 src/gr-image-viewer.c:620
-#, fuzzy
 msgid "Image files"
 msgstr "Fitxers d'imatge"
 
 #: src/gr-chef-dialog.c:409
-#, fuzzy
 msgid "New Chef"
-msgstr "Xef de la Pizza"
+msgstr "Xef nou"
 
 #: src/gr-cooking-page.c:248
-#, fuzzy
 msgid "Cooking"
-msgstr "Cuina"
+msgstr "S'està cuinant"
 
 #: src/gr-cooking-view.c:155
-#, fuzzy, c-format
+#, c-format
 msgid "Step %d/%d"
-msgstr "Flux de pas %d"
+msgstr "Pas %d/%d"
 
 #: src/gr-cooking-view.c:161
-#, fuzzy, c-format
+#, c-format
 msgid "Step %d"
-msgstr "Flux de pas %d"
+msgstr "Pas %d"
 
 #: src/gr-cooking-view.c:268
-#, fuzzy
 msgid "GNOME Recipes"
-msgstr "No hi ha receptes"
+msgstr "Receptes del GNOME"
 
 #: src/gr-cooking-view.c:373
 #, fuzzy
@@ -1094,17 +1009,14 @@ msgid "Timer for “%s” has expired."
 msgstr "Ha expirat el temporitzador virtual"
 
 #: src/gr-cooking-view.c:405
-#, fuzzy
 msgid "Timer is up!"
-msgstr "Temporitzador per a adults"
+msgstr "El temporitzador ha acabat!"
 
 #: src/gr-cuisine.c:45
-#, fuzzy
 msgid "American"
 msgstr "Americà"
 
 #: src/gr-cuisine.c:46
-#, fuzzy
 msgid "Chinese"
 msgstr "Xinès"
 
@@ -1114,49 +1026,40 @@ msgid "Indian"
 msgstr "Índic"
 
 #: src/gr-cuisine.c:48
-#, fuzzy
 msgid "Italian"
 msgstr "Italià"
 
 #: src/gr-cuisine.c:49
-#, fuzzy
 msgid "French"
 msgstr "Francès"
 
 #: src/gr-cuisine.c:50
-#, fuzzy
 msgid "Greek"
 msgstr "Grec"
 
 #: src/gr-cuisine.c:51
-#, fuzzy
 msgid "Mediterranean"
-msgstr "Mar Mediterrània"
+msgstr "Mediterrània"
 
 #: src/gr-cuisine.c:52
-#, fuzzy
 msgid "Mexican"
-msgstr "mexicà"
+msgstr "Mexicà"
 
 #: src/gr-cuisine.c:53
-#, fuzzy
 msgid "Nordic"
 msgstr "Nòrdic"
 
 #: src/gr-cuisine.c:54
-#, fuzzy
 msgid "Turkish"
 msgstr "Turc"
 
 #: src/gr-cuisine.c:58
-#, fuzzy
 msgid "American Cuisine"
-msgstr "Menjar"
+msgstr "Cuina americana"
 
 #: src/gr-cuisine.c:59
-#, fuzzy
 msgid "Chinese Cuisine"
-msgstr "Menjar"
+msgstr "Cuina xinesa"
 
 #: src/gr-cuisine.c:60
 #, fuzzy
@@ -1164,34 +1067,30 @@ msgid "Indian Cuisine"
 msgstr "Menjar"
 
 #: src/gr-cuisine.c:61
-#, fuzzy
 msgid "Italian Cuisine"
-msgstr "Menjar"
+msgstr "Cuina italiana"
 
 #: src/gr-cuisine.c:62
-#, fuzzy
 msgid "French Cuisine"
-msgstr "Menjar"
+msgstr "Cuina francesa"
 
 #: src/gr-cuisine.c:63
-#, fuzzy
 msgid "Greek Cuisine"
-msgstr "Menjar"
+msgstr "Cuina grega"
 
 #: src/gr-cuisine.c:64
 #, fuzzy
 msgid "Mediterranean Cuisine"
-msgstr "Menjar"
+msgstr "Cuina mediterrania"
 
 #: src/gr-cuisine.c:65
-#, fuzzy
 msgid "Mexican Cuisine"
-msgstr "Menjar"
+msgstr "Cuina mexicana"
 
 #: src/gr-cuisine.c:66
 #, fuzzy
 msgid "Nordic Cuisine"
-msgstr "Menjar"
+msgstr "Cuina nordica"
 
 #: src/gr-cuisine.c:67
 #, fuzzy
@@ -1301,50 +1200,43 @@ msgid ""
 msgstr ""
 
 #: src/gr-details-page.c:323
-#, fuzzy
 msgid "Could not find this recipe."
-msgstr "Recepta"
+msgstr "No s'ha pogut trobar aquesta recepta."
 
 #: src/gr-details-page.c:585
-#, fuzzy, c-format
+#, c-format
 msgid "Timer: %s"
-msgstr "temporitzador (s)"
+msgstr "Temporitzador: %s"
 
 #: src/gr-details-page.c:592
-#, fuzzy, c-format
+#, c-format
 msgid "Image %d"
-msgstr "No s'han pogut obtenir capes per a la imatge %d"
+msgstr "Imatge %d"
 
 #: src/gr-details-page.c:745 src/gr-edit-page.c:2035
-#, fuzzy, c-format
+#, c-format
 msgid "Recipe by %s"
-msgstr ""
-"Ja hi ha una recepta personalitzada amb el nom %s. Voleu reemplaçar-la?"
+msgstr "Recepta per %s"
 
 #: src/gr-diet.c:34
-#, fuzzy
 msgid "Gluten-free recipes"
-msgstr "No hi ha receptes"
+msgstr "Receptes sense gluten"
 
 #: src/gr-diet.c:37
-#, fuzzy
 msgid "Nut-free recipes"
-msgstr "nut-case"
+msgstr "Receptes sense nous"
 
 #: src/gr-diet.c:40
-#, fuzzy
 msgid "Vegan recipes"
-msgstr "No hi ha receptes"
+msgstr "Receptes veganes"
 
 #: src/gr-diet.c:43
-#, fuzzy
 msgid "Vegetarian recipes"
-msgstr "Vegetarià"
+msgstr "Receptes vegetarianes"
 
 #: src/gr-diet.c:46
-#, fuzzy
 msgid "Milk-free recipes"
-msgstr "No hi ha receptes"
+msgstr "Receptes sense llet"
 
 #: src/gr-diet.c:49 src/gr-diet.c:78
 #, fuzzy
@@ -1408,134 +1300,110 @@ msgid ""
 msgstr ""
 
 #: src/gr-edit-page.c:485
-#, fuzzy
 msgid "Apply"
-msgstr "Aplicar"
+msgstr "Aplica"
 
 #: src/gr-edit-page.c:1101
-#, fuzzy
 msgid "hour"
 msgstr "hora"
 
 #: src/gr-edit-page.c:1102
-#, fuzzy
 msgid "hours"
 msgstr "hores"
 
 #: src/gr-edit-page.c:1103
-#, fuzzy
 msgctxt "hour abbreviation"
 msgid "h"
 msgstr "h"
 
 #: src/gr-edit-page.c:1107
-#, fuzzy
 msgid "minute"
-msgstr "minuts"
+msgstr "minut"
 
 #: src/gr-edit-page.c:1108
-#, fuzzy
 msgid "minutes"
 msgstr "minuts"
 
 #: src/gr-edit-page.c:1109
-#, fuzzy
 msgctxt "minute abbreviation"
 msgid "min"
 msgstr "min."
 
 #: src/gr-edit-page.c:1110
-#, fuzzy
 msgctxt "minute abbreviation"
 msgid "m"
-msgstr "L"
+msgstr "m"
 
 #: src/gr-edit-page.c:1114
-#, fuzzy
 msgid "second"
 msgstr "segon"
 
 #: src/gr-edit-page.c:1115
-#, fuzzy
 msgid "seconds"
-msgstr "SECONDS"
+msgstr "segons"
 
 #: src/gr-edit-page.c:1116
-#, fuzzy
 msgctxt "second abbreviation"
 msgid "sec"
 msgstr "s"
 
 #: src/gr-edit-page.c:1117
-#, fuzzy
 msgctxt "second abbreviation"
 msgid "s"
-msgstr "Ds."
+msgstr "s."
 
 #: src/gr-edit-page.c:1293
-#, fuzzy
 msgid "Recipe Author"
-msgstr "Afegir l'autor/col·laborador de la recepta"
+msgstr "Autor de la recepta"
 
 #: src/gr-edit-page.c:1728
-#, fuzzy
 msgid "Name of the List"
-msgstr "Fes clic per crear i posar nom a una nova llista"
+msgstr "Nom de la llista"
 
 #: src/gr-edit-page.c:1762
-#, fuzzy
 msgid "No ingredients added yet"
-msgstr "Idiomes encara no afegits"
+msgstr "Encara no s'han afegit ingredients"
 
 #: src/gr-edit-page.c:1781
-#, fuzzy
 msgid "Add Ingredient"
 msgstr "Afegeix un ingredient"
 
 #: src/gr-edit-page.c:1888
-#, fuzzy
 msgid "Add List"
 msgstr "Afegeix a la llista"
 
 #: src/gr-edit-page.c:1916
-#, fuzzy
 msgid "Name Your Recipe"
 msgstr "Nom de la recepta"
 
 #: src/gr-edit-page.c:2092
-#, fuzzy
 msgid "Name"
-msgstr "Nom:"
+msgstr "Nom"
 
 #: src/gr-edit-page.c:2204 src/gr-recipe-store.c:1007
-#, fuzzy, c-format
+#, c-format
 msgid "You need to provide a name for the recipe"
-msgstr "Cal que proporcioneu almenys un nom per al perfil"
+msgstr "Cal que proporcioneu un nom per la recepta"
 
 #: src/gr-list-page.c:235
-#, fuzzy
 msgid "Gluten-free Recipes"
-msgstr "No hi ha receptes"
+msgstr "Receptes sense gluten"
 
 #: src/gr-list-page.c:237
-#, fuzzy
 msgid "Nut-free Recipes"
-msgstr "nut-case"
+msgstr "Receptes sense nous"
 
 #: src/gr-list-page.c:239
-#, fuzzy
 msgid "Vegan Recipes"
 msgstr "No hi ha receptes"
 
 #: src/gr-list-page.c:241
-#, fuzzy
 msgid "Vegetarian Recipes"
-msgstr "Vegetarià"
+msgstr "Receptes vegetarianes"
 
 #: src/gr-list-page.c:243
-#, fuzzy
 msgid "Milk-free Recipes"
-msgstr "No hi ha receptes"
+msgstr "Receptes sense llet"
 
 #: src/gr-list-page.c:245
 #, fuzzy
@@ -1543,77 +1411,69 @@ msgid "Other Dietary Restrictions"
 msgstr "Sense restriccions"
 
 #: src/gr-list-page.c:286
-#, fuzzy, c-format
+#, c-format
 msgid "No %s found"
-msgstr "No se n'ha trobat cap."
+msgstr "No s'ha trobat %s"
 
 #: src/gr-list-page.c:289 src/gr-list-page.c:348 src/gr-list-page.c:379
 msgid "You could add one using the “New Recipe” button."
 msgstr ""
 
 #: src/gr-list-page.c:337
-#, fuzzy, c-format
+#, c-format
 msgid "Recipes by %s"
-msgstr "No hi ha receptes"
+msgstr "Receptes per %s"
 
 #: src/gr-list-page.c:344
-#, fuzzy, c-format
+#, c-format
 msgid "No recipes by chef %s found"
-msgstr "No s'ha trobat cap recepta coincident"
+msgstr "No s'ha trobat cap recepta del xef %s"
 
 #: src/gr-list-page.c:350 src/gr-list-page.c:418 src/gr-list-page.c:443
 #: src/gr-list-page.c:476
-#, fuzzy
 msgid "Sorry about this."
-msgstr "Ui, ho sento!"
+msgstr "Ho sentim."
 
 #: src/gr-list-page.c:376
-#, fuzzy, c-format
+#, c-format
 msgid "No recipes for %s found"
-msgstr "No s'ha trobat cap recepta coincident"
+msgstr "No s'ha trobat cap recepta per %s"
 
 #: src/gr-list-page.c:398
-#, fuzzy
 msgid "No favorite recipes found"
-msgstr "No s'ha trobat cap recepta coincident"
+msgstr "No s'ha trobat cap recepta favorita"
 
 #: src/gr-list-page.c:399
 msgid "Use the ♥ button to mark recipes as favorites."
 msgstr ""
 
 #: src/gr-list-page.c:442
-#, fuzzy
 msgid "No new recipes"
-msgstr "No hi ha receptes"
+msgstr "No hi ha receptes noves"
 
 #: src/gr-list-page.c:475
-#, fuzzy
 msgid "No imported recipes found"
-msgstr "No s'ha trobat cap recepta coincident"
+msgstr "No s'ha trobat cap recepta importada"
 
 #: src/gr-meal.c:44
-#, fuzzy
 msgid "Main Course"
-msgstr "Pàgina principal del curs"
+msgstr "Plat principal"
 
 #: src/gr-meal.c:45
 msgid "Snacks"
-msgstr ""
+msgstr "Per picar"
 
 #: src/gr-meal.c:46
-#, fuzzy
 msgid "Breakfast"
 msgstr "Esmorzar"
 
 #: src/gr-meal.c:47
-#, fuzzy
 msgid "Side Dishes"
-msgstr "Nre. de plats: "
+msgstr "Plats d'acompayament"
 
 #: src/gr-meal.c:48
-#, fuzzy
 msgid "Desserts"
-msgstr "Introduïu les categories: (p.ex. Postres Pastes «Plats principals»)"
+msgstr "Postres"
 
 #: src/gr-meal.c:49
 #, fuzzy
@@ -1623,17 +1483,15 @@ msgstr "Forn i rebosteria"
 #: src/gr-meal.c:50
 #, fuzzy
 msgid "Drinks and Cocktails"
-msgstr "begudes"
+msgstr "Begudes i còcktails"
 
 #: src/gr-meal.c:51
-#, fuzzy
 msgid "Pizza"
 msgstr "Pizza"
 
 #: src/gr-meal.c:52
-#, fuzzy
 msgid "Pasta"
-msgstr "Introduïu els ingredients: (p.ex. pollastre pasta «vi blanc»)"
+msgstr "Pasta"
 
 #: src/gr-meal.c:53
 #, fuzzy
@@ -1785,17 +1643,15 @@ msgid "Error printing file:"
 msgstr "S'ha produït un error en imprimir el fitxer:"
 
 #: src/gr-recipe-printer.c:413 src/gr-shopping-list-printer.c:298
-#, fuzzy
 msgid "No details"
-msgstr "Detalls <<"
+msgstr "Sense detalls"
 
 #: src/gr-recipe-small-tile.c:100 src/gr-recipe-tile.c:81
 #, fuzzy, c-format
 msgid "by %s"
-msgstr "%s..."
+msgstr "per %s"
 
 #: src/gr-recipe-small-tile.c:100 src/gr-recipe-tile.c:81
-#, fuzzy
 msgid "Anonymous"
 msgstr "Anònim"
 
@@ -1810,31 +1666,26 @@ msgid "Favorites"
 msgstr "Preferits"
 
 #: src/gr-recipes-page.c:225 src/gr-window.c:1268
-#, fuzzy
 msgid "All Recipes"
-msgstr ""
-"Actualment no hi ha cap recepta seleccionada.\n"
-"Voleu exportar totes les receptes en la vista actual?"
+msgstr "Totes les receptes"
 
 #: src/gr-recipes-page.c:226 src/gr-window.c:1284
-#, fuzzy
 msgid "New Recipes"
-msgstr "No hi ha receptes"
+msgstr "Receptes noves"
 
 #: src/gr-recipes-page.c:274
-#, fuzzy
 msgid "Last edited:"
 msgstr "Última edició:"
 
 #: src/gr-recipes-page.c:373
-#, fuzzy, c-format
+#, c-format
 msgid "Buy ingredients: <b>%s</b>"
-msgstr "[B]%s[/B] / [B]%s[/B]"
+msgstr "Compra ingredients: <b>%s</b>"
 
 #: src/gr-recipes-page.c:375
-#, fuzzy, c-format
+#, c-format
 msgid "Buy ingredients: <b>%s and %s</b>"
-msgstr "[B]%s[/B] / [B]%s[/B]"
+msgstr "Compra ingredients: <b>%s i %s</b>"
 
 #: src/gr-recipes-page.c:377
 #, c-format
@@ -1882,43 +1733,35 @@ msgid "A chef with this ID already exists"
 msgstr "L'ID d'aquest contacte ja existeix."
 
 #: src/gr-season.c:41
-#, fuzzy
 msgid "Thanksgiving"
 msgstr "Dia d'Acció de Gràcies"
 
 #: src/gr-season.c:42
-#, fuzzy
 msgid "Christmas"
 msgstr "Nadal"
 
 #: src/gr-season.c:43
-#, fuzzy
 msgid "New Years"
-msgstr "{$a} anys"
+msgstr "Any nou"
 
 #: src/gr-season.c:44
-#, fuzzy
 msgid "Spring"
-msgstr "Deu"
+msgstr "Primavera"
 
 #: src/gr-season.c:45
-#, fuzzy
 msgid "Summer"
 msgstr "Estiu"
 
 #: src/gr-season.c:46
-#, fuzzy
 msgid "Fall"
-msgstr "Deixa caure"
+msgstr "Tardor"
 
 #: src/gr-season.c:47
-#, fuzzy
 msgid "Winter"
 msgstr "Hivern"
 
 #: src/gr-shopping-list-formatter.c:42 src/gr-shopping-list-printer.c:135
 #: src/gr-shopping-page.c:756
-#, fuzzy
 msgid "Shopping List"
 msgstr "Llista de compres"
 
@@ -1984,37 +1827,31 @@ msgid "Hot or very spicy"
 msgstr "Crema!"
 
 #: src/gr-unit.c:40
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "g"
-msgstr "B"
+msgstr "g"
 
 #: src/gr-unit.c:40
-#, fuzzy
 msgctxt "unit name"
 msgid "gram"
 msgstr "gram"
 
 #: src/gr-unit.c:41
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "kg"
 msgstr "kg"
 
 #: src/gr-unit.c:41
-#, fuzzy
 msgctxt "unit name"
 msgid "kilogram"
 msgstr "quilogram"
 
 #: src/gr-unit.c:42
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "lb"
 msgstr "lb"
 
 #: src/gr-unit.c:42
-#, fuzzy
 msgctxt "unit name"
 msgid "pound"
 msgstr "lliura"
@@ -2026,7 +1863,6 @@ msgid "oz"
 msgstr "oz"
 
 #: src/gr-unit.c:43
-#, fuzzy
 msgctxt "unit name"
 msgid "ounce"
 msgstr "unça"
@@ -2038,7 +1874,6 @@ msgid "l"
 msgstr "l"
 
 #: src/gr-unit.c:44
-#, fuzzy
 msgctxt "unit name"
 msgid "liter"
 msgstr "litre"
@@ -2215,48 +2050,42 @@ msgstr[1] ""
 #, c-format
 msgid "%d day ago"
 msgid_plural "%d days ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "fa %d dia"
+msgstr[1] "fa %d dies"
 
 #: src/gr-utils.c:401
-#, fuzzy, c-format
+#,c-format
 msgid "just now"
 msgstr "ara mateix"
 
 #: src/gr-utils.c:403
-#, fuzzy, c-format
+#, c-format
 msgid "10 minutes ago"
 msgstr "Fa 10 minuts"
 
 #: src/gr-utils.c:405
-#, fuzzy, c-format
+#, c-format
 msgid "half an hour ago"
-msgstr "Fa mitja hora"
+msgstr "fa mitja hora"
 
 #: src/gr-utils.c:409
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "fa %d hora"
+msgstr[1] "fa %d hores"
 
 #: src/gr-utils.c:415
-#, fuzzy
 msgid "some time ago"
-msgstr ""
-"La meva raça està lligada als boscos, no us seríem de gran ajuda fora de les "
-"nostres fronteres. Però potser encara us podríem ser útils. Fa temps, durant "
-"una guerra, un rei dels vostres va atrapar un malvat lich en les catacumbes "
-"del temple en el cor del bosc.Nosaltres hi vàrem ser presents, observant."
+msgstr "fa algun temps"
 
 #: src/gr-utils.c:438
 msgid "Could not connect to the session bus from inside the Flatpak sandbox."
 msgstr ""
 
 #: src/gr-utils.c:439
-#, fuzzy
 msgid "Certain functionality will not be available."
-msgstr "Algunes funcions d'impressió no estan disponibles actualment."
+msgstr "Algunes funcions no estaran disponibles."
 
 #: src/gr-utils.c:459
 msgid ""
@@ -2280,9 +2109,8 @@ msgid ""
 msgstr ""
 
 #: src/gr-window.c:230
-#, fuzzy
 msgid "Add a New Recipe"
-msgstr "Recepta &nova"
+msgstr "Afegeix una recepta nova"
 
 #: src/gr-window.c:517
 #, c-format
@@ -2308,17 +2136,14 @@ msgid "You updated your contributed “%s” recipe. Send an update?"
 msgstr ""
 
 #: src/gr-window.c:831
-#, fuzzy
 msgid "Ready to Cook!"
-msgstr "Cook"
+msgstr "Llestos per cuinar!"
 
 #: src/gr-window.c:1053
-#, fuzzy
 msgid "Imported Recipes"
-msgstr "No hi ha receptes"
+msgstr "Receptes importades"
 
 #: src/gr-window.c:1129
-#, fuzzy
 msgid "Select a recipe file"
 msgstr "Tria un fitxer de recepta"
 
@@ -2328,14 +2153,12 @@ msgid "Recipes have been exported to “%s”"
 msgstr "S'ha exportat el canal de notícies al fitxer %S."
 
 #: src/gr-window.c:1193
-#, fuzzy
 msgid "Select a file"
 msgstr "Selecciona un fitxer"
 
 #: src/gr-window.c:1196
-#, fuzzy
 msgid "_Export"
-msgstr "Exporta:"
+msgstr "_Exporta"
 
 #: src/gr-window.c:1235
 #, fuzzy, c-format
@@ -2348,15 +2171,14 @@ msgid "Favorite Recipes"
 msgstr "No hi ha receptes"
 
 #: src/gr-window.c:1334
-#, fuzzy
 msgid "Buy Ingredients"
-msgstr "Ingredients >>"
+msgstr "Compra els ingredients"
 
 #. TRANSLATORS: %s gets replaced by a version number
 #: src/gr-window.c:1505
-#, fuzzy, c-format
+#, c-format
 msgid "Recipes %s"
-msgstr "No hi ha receptes"
+msgstr "Receptes %s"
 
 #. TRANSLATORS: %s gets replaced by a date
 #: src/gr-window.c:1520
@@ -2365,9 +2187,8 @@ msgid "Released: %s"
 msgstr "Quin estudi a estrenat [B]%s[/B]?"
 
 #: src/ingredients.inc:1
-#, fuzzy
 msgid "Almond"
-msgstr "Trobeu la papallona ametlla"
+msgstr "Ametlla"
 
 #: src/ingredients.inc:2
 msgid "Amaretti"
@@ -2378,7 +2199,6 @@ msgid "Anchovies"
 msgstr ""
 
 #: src/ingredients.inc:4
-#, fuzzy
 msgid "Apple"
 msgstr "Poma"
 
@@ -2396,7 +2216,6 @@ msgid "Asparagus"
 msgstr ""
 
 #: src/ingredients.inc:8
-#, fuzzy
 msgid "Aubergine"
 msgstr "Albergínia"
 
@@ -2419,7 +2238,6 @@ msgid "Baking powder"
 msgstr "Forn i rebosteria"
 
 #: src/ingredients.inc:13
-#, fuzzy
 msgid "Banana"
 msgstr "Plàtan"
 
@@ -2473,19 +2291,16 @@ msgid "Bilberry"
 msgstr ""
 
 #: src/ingredients.inc:25
-#, fuzzy
 msgid "Butter"
 msgstr "Mantega"
 
 #: src/ingredients.inc:26
-#, fuzzy
 msgid "Carrot"
 msgstr "Pastanaga"
 
 #: src/ingredients.inc:27
-#, fuzzy
 msgid "Cheese"
-msgstr "Cheese"
+msgstr "Formatge"
 
 #: src/ingredients.inc:28
 #, fuzzy
@@ -2511,14 +2326,12 @@ msgid "Couscous"
 msgstr ""
 
 #: src/ingredients.inc:33
-#, fuzzy
 msgid "Date"
-msgstr "_Data"
+msgstr "Data"
 
 #: src/ingredients.inc:34
-#, fuzzy
 msgid "Egg"
-msgstr "ou"
+msgstr "Ou"
 
 #: src/ingredients.inc:35
 #, fuzzy
@@ -2530,9 +2343,8 @@ msgid "Flour"
 msgstr ""
 
 #: src/ingredients.inc:37
-#, fuzzy
 msgid "Garlic"
-msgstr "all"
+msgstr "All"
 
 #: src/ingredients.inc:38
 #, fuzzy
@@ -2545,7 +2357,6 @@ msgid "Honey"
 msgstr "Estimada... podries venir un segon?"
 
 #: src/ingredients.inc:40
-#, fuzzy
 msgid "Lemon"
 msgstr "Llimona"
 
@@ -2558,12 +2369,10 @@ msgid "Mayonnaise"
 msgstr ""
 
 #: src/ingredients.inc:43
-#, fuzzy
 msgid "Milk"
-msgstr "Un motor per treballar amb «Remember The Milk»."
+msgstr "Llet"
 
 #: src/ingredients.inc:44
-#, fuzzy
 msgid "Mustard"
 msgstr "Mostassa"
 
@@ -2572,12 +2381,10 @@ msgid "Oatmeal"
 msgstr ""
 
 #: src/ingredients.inc:46
-#, fuzzy
 msgid "Oil"
-msgstr "Petroli"
+msgstr "Oli"
 
 #: src/ingredients.inc:47
-#, fuzzy
 msgid "Onion"
 msgstr "Ceba"
 
@@ -2586,9 +2393,8 @@ msgid "Olive oil, extra-virgin"
 msgstr ""
 
 #: src/ingredients.inc:49
-#, fuzzy
 msgid "Orange"
-msgstr "Orange"
+msgstr "Taronja"
 
 #: src/ingredients.inc:50
 msgid "Parsley"
@@ -2599,13 +2405,12 @@ msgid "Peperoni"
 msgstr ""
 
 #: src/ingredients.inc:52
-#, fuzzy
 msgid "Pepper"
-msgstr "pebre"
+msgstr "Pebre"
 
 #: src/ingredients.inc:53
 msgid "Peppers"
-msgstr ""
+msgstr "Pebres"
 
 #: src/ingredients.inc:54
 #, fuzzy
@@ -2613,7 +2418,6 @@ msgid "Pizza sauce"
 msgstr "Pizza"
 
 #: src/ingredients.inc:55
-#, fuzzy
 msgid "Potato"
 msgstr "Patata"
 
@@ -2623,9 +2427,8 @@ msgid "Pumpkin seeds"
 msgstr "Llavors:"
 
 #: src/ingredients.inc:57
-#, fuzzy
 msgid "Salt"
-msgstr "sal"
+msgstr "Sal"
 
 #: src/ingredients.inc:58
 msgid "Soy sauce"
@@ -2681,14 +2484,12 @@ msgid "Vinegar"
 msgstr "sucre / dolç | vinagre"
 
 #: src/ingredients.inc:69
-#, fuzzy
 msgid "Water"
 msgstr "Aigua"
 
 #: src/ingredients.inc:70
-#, fuzzy
 msgid "Wine"
-msgstr "Wine"
+msgstr "Vi"
 
 #: src/ingredients.inc:71
 msgid "Yeast"
@@ -3049,12 +2850,9 @@ msgid "Toppings"
 msgstr ""
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
-#, fuzzy
 msgctxt "_"
 msgid "translator-credits"
-msgstr ""
-"Jordi Mas i Hernàndez <jmas@softcatala.org>\n"
-"Gil Forcada <gilforcada@guifi.net>"
+msgstr "Jordi Mas i Hernàndez <jmas@softcatala.org>"
 
 #. (itstool) path: page/p
 #: help/C/index.page:13
