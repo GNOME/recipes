@@ -27,6 +27,7 @@
 
 #include "gr-recipe-store.h"
 #include "gr-recipe.h"
+#include "gr-settings.h"
 #include "gr-utils.h"
 #include "gr-ingredients-list.h"
 #include "gr-images.h"
@@ -644,7 +645,7 @@ load_picks (GrRecipeStore *self,
 static void
 load_favorites (GrRecipeStore *self)
 {
-        g_autoptr(GSettings) settings = g_settings_new ("org.gnome.Recipes");
+        GSettings *settings = gr_settings_get ();
         gint64 timestamp;
 
         self->favorites = g_settings_get_strv (settings, "favorites");
@@ -655,7 +656,7 @@ load_favorites (GrRecipeStore *self)
 static void
 save_favorites (GrRecipeStore *self)
 {
-        g_autoptr(GSettings) settings = g_settings_new ("org.gnome.Recipes");
+        GSettings *settings = gr_settings_get ();
         gint64 timestamp;
 
         g_settings_set_strv (settings, "favorites", (const char * const *)self->favorites);
@@ -666,7 +667,7 @@ save_favorites (GrRecipeStore *self)
 static void
 load_export_list (GrRecipeStore *self)
 {
-        g_autoptr(GSettings) settings = g_settings_new ("org.gnome.Recipes");
+        GSettings *settings = gr_settings_get ();
 
         self->export_list = g_settings_get_strv (settings, "export-list");
 }
@@ -674,7 +675,7 @@ load_export_list (GrRecipeStore *self)
 static void
 save_export_list (GrRecipeStore *self)
 {
-        g_autoptr(GSettings) settings = g_settings_new ("org.gnome.Recipes");
+        GSettings *settings = gr_settings_get ();
 
         g_settings_set_strv (settings, "export-list", (const char * const *)self->export_list);
 }
@@ -682,7 +683,7 @@ save_export_list (GrRecipeStore *self)
 static void
 load_shopping (GrRecipeStore *self)
 {
-        g_autoptr(GSettings) settings = g_settings_new ("org.gnome.Recipes");
+        GSettings *settings = gr_settings_get ();
         g_autoptr(GVariant) value = NULL;
         gint64 timestamp;
 
@@ -696,7 +697,7 @@ load_shopping (GrRecipeStore *self)
 static void
 save_shopping (GrRecipeStore *self)
 {
-        g_autoptr(GSettings) settings = g_settings_new ("org.gnome.Recipes");
+        GSettings *settings = gr_settings_get ();
         g_autoptr(GVariant) value = NULL;
         gint64 timestamp;
 
@@ -872,7 +873,7 @@ save_chefs (GrRecipeStore *store)
 static void
 save_user (GrRecipeStore *self)
 {
-        g_autoptr(GSettings) settings = g_settings_new ("org.gnome.Recipes");
+        GSettings *settings = gr_settings_get ();
         g_settings_set_string (settings, "user", self->user ? self->user : "");
 }
 
@@ -880,7 +881,7 @@ static void
 load_user (GrRecipeStore *self,
            const char    *dir)
 {
-        g_autoptr(GSettings) settings = g_settings_new ("org.gnome.Recipes");
+        GSettings *settings = gr_settings_get ();
         g_autofree char *user = g_settings_get_string (settings, "user");
 
         if (user[0] == '\0') {
