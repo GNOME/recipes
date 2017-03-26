@@ -27,9 +27,8 @@ msgid "Recipes"
 msgstr "Receptes"
 
 #: data/org.gnome.Recipes.desktop.in:4
-#, fuzzy
 msgid "GNOME cooks unite!"
-msgstr "Uneix els camins"
+msgstr "Cuiners del GNOME uniu-vos"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Recipes.desktop.in:7
@@ -378,11 +377,8 @@ msgid "_Buy Ingredients"
 msgstr "_Compra els ingredients"
 
 #: src/gr-details-page.ui:164 src/gr-recipe-small-tile.ui:101
-#, fuzzy
 msgid "Serves"
-msgstr ""
-"Les dades de la taula següent serveixen com a base d'alguns exemples en les "
-"descripcions de funció:"
+msgstr "Porcions"
 
 #: src/gr-details-page.ui:198
 msgid "Preparation Time"
@@ -463,9 +459,8 @@ msgid "_Name Your Recipe"
 msgstr "_Nom de la recepta"
 
 #: src/gr-edit-page.ui:307
-#, fuzzy
 msgid "Ser_ves"
-msgstr "Ser_vei:"
+msgstr "_Porcions"
 
 #: src/gr-edit-page.ui:337
 msgid "_Preparation Time"
@@ -764,7 +759,7 @@ msgstr "Envia l'actualització"
 
 #: src/gr-window.ui:466 src/gr-window.c:379
 msgid "Cuisines"
-msgstr ""
+msgstr "Cuines"
 
 #: src/menus.ui:6 src/menus.ui:48
 msgid "_Import"
@@ -1012,46 +1007,55 @@ msgstr "Ha expirat el temporitzador virtual"
 msgid "Timer is up!"
 msgstr "El temporitzador ha acabat!"
 
+# N.T.: Es refereix a la cuina
 #: src/gr-cuisine.c:45
 msgid "American"
-msgstr "Americà"
+msgstr "Americana"
 
+# N.T.: Es refereix a la cuina
 #: src/gr-cuisine.c:46
 msgid "Chinese"
-msgstr "Xinès"
+msgstr "Xinesa"
 
 #: src/gr-cuisine.c:47
 #, fuzzy
 msgid "Indian"
 msgstr "Índic"
 
+# N.T.: Es refereix a la cuina
 #: src/gr-cuisine.c:48
 msgid "Italian"
-msgstr "Italià"
+msgstr "Italiana"
 
+# N.T.: Es refereix a la cuina
 #: src/gr-cuisine.c:49
 msgid "French"
-msgstr "Francès"
+msgstr "Francesa"
 
+# N.T.: Es refereix a la cuina
 #: src/gr-cuisine.c:50
 msgid "Greek"
-msgstr "Grec"
+msgstr "Grega"
 
+# N.T.: Es refereix a la cuina
 #: src/gr-cuisine.c:51
 msgid "Mediterranean"
 msgstr "Mediterrània"
 
+# N.T.: Es refereix a la cuina
 #: src/gr-cuisine.c:52
 msgid "Mexican"
-msgstr "Mexicà"
+msgstr "Mexicana"
 
+# N.T.: Es refereix a la cuina
 #: src/gr-cuisine.c:53
 msgid "Nordic"
-msgstr "Nòrdic"
+msgstr "Nòrdica"
 
+# N.T.: Es refereix a la cuina
 #: src/gr-cuisine.c:54
 msgid "Turkish"
-msgstr "Turc"
+msgstr "Turca"
 
 #: src/gr-cuisine.c:58
 msgid "American Cuisine"
@@ -1594,26 +1598,20 @@ msgid ""
 msgstr ""
 
 #: src/gr-recipe-formatter.c:53 src/gr-recipe-printer.c:157
-#, fuzzy
 msgid "Author:"
 msgstr "Autoria:"
 
 #: src/gr-recipe-formatter.c:54 src/gr-recipe-printer.c:158
-#, fuzzy
 msgid "Preparation:"
-msgstr "Preparació"
+msgstr "Preparació:"
 
 #: src/gr-recipe-formatter.c:55 src/gr-recipe-printer.c:159
-#, fuzzy
 msgid "Cooking:"
-msgstr "Cuina"
+msgstr "Cuinat:"
 
 #: src/gr-recipe-formatter.c:56 src/gr-recipe-printer.c:160
-#, fuzzy
 msgid "Serves:"
-msgstr ""
-"Les dades de la taula següent serveixen com a base d'alguns exemples en les "
-"descripcions de funció:"
+msgstr "Porcions:"
 
 #: src/gr-recipe-importer.c:235
 #, fuzzy, c-format
@@ -1656,12 +1654,10 @@ msgid "Anonymous"
 msgstr "Anònim"
 
 #: src/gr-recipes-page.c:223 src/gr-window.c:1354
-#, fuzzy
 msgid "My Recipes"
-msgstr "No hi ha receptes"
+msgstr "Les meves receptes"
 
 #: src/gr-recipes-page.c:224
-#, fuzzy
 msgid "Favorites"
 msgstr "Preferits"
 
@@ -1680,12 +1676,12 @@ msgstr "Última edició:"
 #: src/gr-recipes-page.c:373
 #, c-format
 msgid "Buy ingredients: <b>%s</b>"
-msgstr "Compra ingredients: <b>%s</b>"
+msgstr "Compreu els ingredients: <b>%s</b>"
 
 #: src/gr-recipes-page.c:375
 #, c-format
 msgid "Buy ingredients: <b>%s and %s</b>"
-msgstr "Compra ingredients: <b>%s i %s</b>"
+msgstr "Compreu els ingredients: <b>%s i %s</b>"
 
 #: src/gr-recipes-page.c:377
 #, c-format
@@ -1703,19 +1699,19 @@ msgstr ""
 "Ja existeix una llista de correu amb aquest nom. Trieu un nom diferent."
 
 #: src/gr-recipe-store.c:1041
-#, fuzzy, c-format
+#, c-format
 msgid "You need to provide an ID for the recipe"
-msgstr "Necessites indicar una URL"
+msgstr "Cal que indiqueu un ID per la recepta"
 
 #: src/gr-recipe-store.c:1047
-#, fuzzy, c-format
+#, c-format
 msgid "A recipe with this ID already exists"
-msgstr "L'ID d'aquest contacte ja existeix."
+msgstr "L'ID d'aquesta recepta ja existeix"
 
 #: src/gr-recipe-store.c:1198
-#, fuzzy, c-format
+#, c-format
 msgid "You need to provide an ID"
-msgstr "Necessites indicar una URL"
+msgstr "Cal que indiqueu un ID"
 
 #: src/gr-recipe-store.c:1204
 #, fuzzy, c-format
@@ -1734,7 +1730,7 @@ msgstr "L'ID d'aquest contacte ja existeix."
 
 #: src/gr-season.c:41
 msgid "Thanksgiving"
-msgstr "Dia d'Acció de Gràcies"
+msgstr "Dia d'acció de gràcies"
 
 #: src/gr-season.c:42
 msgid "Christmas"
@@ -2308,22 +2304,20 @@ msgid "Cherries, pitted"
 msgstr "S_uperfície picada"
 
 #: src/ingredients.inc:29
-#, fuzzy
 msgid "Chocolate frosting"
-msgstr "XOCOLATA"
+msgstr "Glacejat de xocolata"
 
 #: src/ingredients.inc:30
 msgid "Cilantro"
-msgstr ""
+msgstr "Celiandre"
 
 #: src/ingredients.inc:31
-#, fuzzy
 msgid "Cocoa powder"
-msgstr "Cocoa"
+msgstr "Cacau en pols"
 
 #: src/ingredients.inc:32
 msgid "Couscous"
-msgstr ""
+msgstr "Cuscús"
 
 #: src/ingredients.inc:33
 msgid "Date"
@@ -2340,21 +2334,19 @@ msgstr "fig"
 
 #: src/ingredients.inc:36
 msgid "Flour"
-msgstr ""
+msgstr "Farina"
 
 #: src/ingredients.inc:37
 msgid "Garlic"
 msgstr "All"
 
 #: src/ingredients.inc:38
-#, fuzzy
 msgid "Ground beef"
-msgstr "A terra"
+msgstr "Carn mòlta"
 
 #: src/ingredients.inc:39
-#, fuzzy
 msgid "Honey"
-msgstr "Estimada... podries venir un segon?"
+msgstr "Mel"
 
 #: src/ingredients.inc:40
 msgid "Lemon"
@@ -2366,7 +2358,7 @@ msgstr ""
 
 #: src/ingredients.inc:42
 msgid "Mayonnaise"
-msgstr ""
+msgstr "Maionesa"
 
 #: src/ingredients.inc:43
 msgid "Milk"
@@ -2378,7 +2370,7 @@ msgstr "Mostassa"
 
 #: src/ingredients.inc:45
 msgid "Oatmeal"
-msgstr ""
+msgstr "Farina de civada"
 
 #: src/ingredients.inc:46
 msgid "Oil"
@@ -2390,7 +2382,7 @@ msgstr "Ceba"
 
 #: src/ingredients.inc:48
 msgid "Olive oil, extra-virgin"
-msgstr ""
+msgstr "Oli d'oliva, extra verge"
 
 #: src/ingredients.inc:49
 msgid "Orange"
@@ -2422,9 +2414,8 @@ msgid "Potato"
 msgstr "Patata"
 
 #: src/ingredients.inc:56
-#, fuzzy
 msgid "Pumpkin seeds"
-msgstr "Llavors:"
+msgstr "Llavors de carbassa"
 
 #: src/ingredients.inc:57
 msgid "Salt"
@@ -2435,9 +2426,8 @@ msgid "Soy sauce"
 msgstr ""
 
 #: src/ingredients.inc:59
-#, fuzzy
 msgid "Sugar"
-msgstr "sucre / dolç | vinagre"
+msgstr "Sucre"
 
 #: src/ingredients.inc:60
 #, fuzzy
@@ -2445,7 +2435,6 @@ msgid "Sunflower seeds"
 msgstr "Galàxia Girasol"
 
 #: src/ingredients.inc:61
-#, fuzzy
 msgid "Squash"
 msgstr "Aixafa"
 
@@ -2459,7 +2448,6 @@ msgid "Tofu"
 msgstr ""
 
 #: src/ingredients.inc:64
-#, fuzzy
 msgid "Tomato"
 msgstr "Tomàquet"
 
@@ -2497,7 +2485,7 @@ msgstr ""
 
 #: src/ingredients.inc:72
 msgid "Yoghurt"
-msgstr ""
+msgstr "Iogurt"
 
 #: src/ingredients.inc:73
 msgid "Zinfandel"
@@ -2517,9 +2505,8 @@ msgid "no Anchovies"
 msgstr ""
 
 #: src/no-ingredients.inc:4
-#, fuzzy
 msgid "no Apple"
-msgstr "Apple ]["
+msgstr "sense poma"
 
 #: src/no-ingredients.inc:5
 #, fuzzy
