@@ -117,8 +117,6 @@ gboolean        gr_recipe_store_has_cuisine         (GrRecipeStore  *self,
                                                      const char     *cuisine);
 char **         gr_recipe_store_get_contributors    (GrRecipeStore *self,
                                                      guint         *length);
-char **         gr_recipe_store_get_all_cuisines    (GrRecipeStore *store,
-                                                     guint *length);
 
 #define GR_TYPE_RECIPE_SEARCH (gr_recipe_search_get_type())
 
