@@ -1181,17 +1181,18 @@ gr_recipe_store_get_contributors (GrRecipeStore *self,
 
 char **
 gr_recipe_store_get_all_cuisines (GrRecipeStore *self,
-                                  guint *length )
+                                  guint         *length)
 {
         GHashTableIter iter;
         GrRecipe *recipe;
-        g_autoptr (GHashTable) cuisines = NULL;
+        g_autoptr(GHashTable) cuisines = NULL;
 
         cuisines = g_hash_table_new (g_str_hash, g_str_equal);
 
         g_hash_table_iter_init (&iter, self->recipes);
         while (g_hash_table_iter_next (&iter, NULL, (gpointer *) &recipe)) {
-                g_hash_table_add (cuisines, (gpointer) (gr_recipe_get_cuisine (recipe)));
+                if (gr_recipe_get_cuisine (recipe))
+                        g_hash_table_add (cuisines, (gpointer)gr_recipe_get_cuisine (recipe));
         }
         return (char **) g_hash_table_get_keys_as_array (cuisines, length);
 }
