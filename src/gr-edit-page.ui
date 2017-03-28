@@ -292,6 +292,7 @@
                         <property name="valign">baseline</property>
                         <property name="margin-bottom">10</property>
                         <property name="width-chars">30</property>
+                        <property name="max-length">30</property>
                         <signal name="changed" handler="set_unsaved" swapped="yes"/>
                       </object>
                       <packing>
@@ -354,6 +355,11 @@
                         <property name="valign">center</property>
                         <property name="margin-bottom">10</property>
                         <signal name="changed" handler="set_unsaved" swapped="yes"/>
+                        <child internal-child="entry">
+                          <object class="GtkEntry">
+                            <property name="max-length">30</property>
+                          </object>
+                        </child>
                         <items>
                           <item translatable="yes" id="Less than 15 minutes">Less than 15 minutes</item>
                           <item translatable="yes" id="15 to 30 minutes">15 to 30 minutes</item>
@@ -361,6 +367,11 @@
                           <item translatable="yes" id="45 minutes to an hour">45 minutes to an hour</item>
                           <item translatable="yes" id="More than an hour">More than an hour</item>
                         </items>
+                        <child internal-child="entry">
+                          <object class="GtkEntry">
+                            <property name="max-length">30</property>
+                          </object>
+                        </child>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -392,6 +403,11 @@
                         <property name="valign">center</property>
                         <property name="margin-bottom">40</property>
                         <signal name="changed" handler="set_unsaved" swapped="yes"/>
+                        <child internal-child="entry">
+                          <object class="GtkEntry">
+                            <property name="max-length">30</property>
+                          </object>
+                        </child>
                         <items>
                           <item translatable="yes" id="Less than 15 minutes">Less than 15 minutes</item>
                           <item translatable="yes" id="15 to 30 minutes">15 to 30 minutes</item>
@@ -399,6 +415,11 @@
                           <item translatable="yes" id="45 minutes to an hour">45 minutes to an hour</item>
                           <item translatable="yes" id="More than an hour">More than an hour</item>
                         </items>
+                        <child internal-child="entry">
+                          <object class="GtkEntry">
+                            <property name="max-length">30</property>
+                          </object>
+                        </child>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -430,6 +451,11 @@
                         <property name="valign">center</property>
                         <property name="margin-bottom">10</property>
                         <signal name="changed" handler="set_unsaved" swapped="yes"/>
+                        <child internal-child="entry">
+                          <object class="GtkEntry">
+                            <property name="max-length">30</property>
+                          </object>
+                        </child>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -461,6 +487,11 @@
                         <property name="valign">center</property>
                         <property name="margin-bottom">10</property>
                         <signal name="changed" handler="set_unsaved" swapped="yes"/>
+                        <child internal-child="entry">
+                          <object class="GtkEntry">
+                            <property name="max-length">30</property>
+                          </object>
+                        </child>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -492,6 +523,11 @@
                         <property name="valign">center</property>
                         <property name="margin-bottom">10</property>
                         <signal name="changed" handler="set_unsaved" swapped="yes"/>
+                        <child internal-child="entry">
+                          <object class="GtkEntry">
+                            <property name="max-length">30</property>
+                          </object>
+                        </child>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
