@@ -71,6 +71,7 @@ endif
 
 deps = [ dependency('gtk+-3.0', version : '>=3.22'),
          dependency('gmodule-export-2.0'),
+         dependency('libsoup-2.4'),
          autoar_dep,
          gspell_dep,
          canberra_dep,
