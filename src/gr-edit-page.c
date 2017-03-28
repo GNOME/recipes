@@ -368,7 +368,6 @@ populate_cuisine_combo (GrEditPage *page)
 {
         g_autofree char **names = NULL;
         guint length;
-        const char *title;
         int i;
         GrRecipeStore *store;
 
@@ -377,9 +376,12 @@ populate_cuisine_combo (GrEditPage *page)
         gtk_combo_box_text_remove_all (GTK_COMBO_BOX_TEXT (page->cuisine_combo));
 
         for (i = 0; i < length; ++i) {
-                char *temp_cuisine_name;
+                g_autofree char *temp_cuisine_name = NULL;
+
                 temp_cuisine_name = g_strstrip (g_strdup (names[i]));
                 if (strcmp (temp_cuisine_name, "") != 0) {
+                        const char *title;
+
                         gr_cuisine_get_data (temp_cuisine_name, &title, NULL, NULL);
                         gtk_combo_box_text_append (GTK_COMBO_BOX_TEXT (page->cuisine_combo),
                                                                        temp_cuisine_name, title);
