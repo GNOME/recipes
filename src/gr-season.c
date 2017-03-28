@@ -40,7 +40,7 @@ static const char *names[] = {
 static const char *titles[] = {
         N_("Thanksgiving"),
         N_("Christmas"),
-        N_("New Years"),
+        N_("New Year's"),
         N_("Spring"),
         N_("Summer"),
         N_("Fall"),
