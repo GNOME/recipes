@@ -49,7 +49,7 @@ void            gr_window_show_diet                  (GrWindow   *window,
                                                       GrDiets     diet);
 void            gr_window_show_chef                  (GrWindow   *window,
                                                       GrChef     *chef);
-void            gr_window_show_myself                (GrWindow   *window);
+void            gr_window_show_mine                  (GrWindow   *window);
 void            gr_window_show_favorites             (GrWindow   *window);
 void            gr_window_show_all                   (GrWindow   *window);
 void            gr_window_show_new                   (GrWindow   *window);

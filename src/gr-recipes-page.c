@@ -205,7 +205,7 @@ category_clicked (GrCategoryTile *tile,
         else if (strcmp (name, "favorites") == 0)
                 gr_window_show_favorites (GR_WINDOW (window));
         else if (strcmp (name, "mine") == 0)
-                gr_window_show_myself (GR_WINDOW (window));
+                gr_window_show_mine (GR_WINDOW (window));
         else if (strcmp (name, "all") == 0)
                 gr_window_show_all (GR_WINDOW (window));
         else if (strcmp (name, "new") == 0)

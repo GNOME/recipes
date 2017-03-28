@@ -1342,8 +1342,8 @@ gr_window_show_shopping (GrWindow *window)
 }
 
 static void
-do_show_myself (GrChef   *chef,
-                gpointer  data)
+do_show_mine (GrChef   *chef,
+              gpointer  data)
 {
         GrWindow *window = data;
 
@@ -1361,9 +1361,9 @@ do_show_myself (GrChef   *chef,
 }
 
 void
-gr_window_show_myself (GrWindow *window)
+gr_window_show_mine (GrWindow *window)
 {
-        gr_ensure_user_chef (GTK_WINDOW (window), do_show_myself, window);
+        gr_ensure_user_chef (GTK_WINDOW (window), do_show_mine, window);
 }
 
 void
