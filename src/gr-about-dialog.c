@@ -888,6 +888,10 @@ gr_about_dialog_new (void)
                 "Paxana Amanda Xander",
                 NULL
         };
+        const char *documenters[] = {
+                "Paul Cutler",
+                NULL
+        };
         g_autofree char **recipe_authors = NULL;
         guint length;
         g_autoptr(GdkPixbuf) logo = NULL;
@@ -914,6 +918,7 @@ gr_about_dialog_new (void)
                               "license-type", GTK_LICENSE_GPL_3_0,
                               "comments", _("GNOME loves to cook"),
                               "authors", authors,
+                              "documenters", documenters,
                               "translator-credits", _("translator-credits"),
                               "logo", logo,
                               "website", "https://wiki.gnome.org/Apps/Recipes",
