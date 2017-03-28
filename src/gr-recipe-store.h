@@ -115,10 +115,10 @@ gboolean        gr_recipe_store_has_chef            (GrRecipeStore  *self,
                                                      GrChef         *chef);
 gboolean        gr_recipe_store_has_cuisine         (GrRecipeStore  *self,
                                                      const char     *cuisine);
-char **         gr_recipe_store_get_contributors    (GrRecipeStore *self,
+char          **gr_recipe_store_get_contributors    (GrRecipeStore *self,
                                                      guint         *length);
-char **         gr_recipe_store_get_all_cuisines    (GrRecipeStore *store,
-                                                     guint *length);
+char          **gr_recipe_store_get_all_cuisines    (GrRecipeStore *store,
+                                                     guint         *length);
 
 #define GR_TYPE_RECIPE_SEARCH (gr_recipe_search_get_type())
 
@@ -130,7 +130,7 @@ void            gr_recipe_search_set_query (GrRecipeSearch  *search,
                                             const char      *query);
 void            gr_recipe_search_set_terms (GrRecipeSearch  *search,
                                             const char     **query);
-const char **   gr_recipe_search_get_terms (GrRecipeSearch  *search);
+const char    **gr_recipe_search_get_terms (GrRecipeSearch  *search);
 void            gr_recipe_search_stop      (GrRecipeSearch  *search);
 
 G_END_DECLS
