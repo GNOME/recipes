@@ -102,19 +102,16 @@ msgid "A shopping list"
 msgstr "Una llista de compres"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:46
-#, fuzzy
 msgid "Cooking a recipe"
-msgstr "Cuina"
+msgstr "Cuinant una recepta"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:50
-#, fuzzy
 msgid "Editing a recipe"
-msgstr ""
+msgstr "Edició d'una recepta"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:54
-#, fuzzy
 msgid "An individual recipe"
-msgstr "Recepta per a "
+msgstr "Una recepta individual"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:58
 #, fuzzy
@@ -122,14 +119,12 @@ msgid "An individual cuisine"
 msgstr "Menjar"
 
 #: data/org.gnome.Recipes.gschema.xml:8
-#, fuzzy
 msgid "The user ID of the current user"
-msgstr "Determinar l''ID de l''usuari actual..."
+msgstr "L'ID de l'usuari actual"
 
 #: data/org.gnome.Recipes.gschema.xml:9
-#, fuzzy
 msgid "The user ID of the current user."
-msgstr "Determinar l''ID de l''usuari actual..."
+msgstr "L'ID de l'usuari actual."
 
 #: data/org.gnome.Recipes.gschema.xml:15
 msgid "The number of times cooking mode has been presented"
@@ -1485,9 +1480,8 @@ msgid "Cake and Baking"
 msgstr "Forn i rebosteria"
 
 #: src/gr-meal.c:50
-#, fuzzy
 msgid "Drinks and Cocktails"
-msgstr "Begudes i còcktails"
+msgstr "Begudes i còctels"
 
 #: src/gr-meal.c:51
 msgid "Pizza"
@@ -1498,19 +1492,18 @@ msgid "Pasta"
 msgstr "Pasta"
 
 #: src/gr-meal.c:53
-#, fuzzy
 msgid "Other"
 msgstr "Altra"
 
 #: src/gr-number.c:166 src/gr-number.c:183 src/gr-number.c:192
-#, fuzzy, c-format
+#, c-format
 msgid "Could not parse %s as a fraction"
-msgstr "No s'ha pogut analitzar: %s"
+msgstr "No s'ha pogut analitzar %s com a fracció"
 
 #: src/gr-number.c:216
-#, fuzzy, c-format
+#, c-format
 msgid "Could not parse %s as a integer"
-msgstr "No s'ha pogut analitzar «%s» com a enter"
+msgstr "No s'ha pogut analitzar %s com a enter"
 
 #: src/gr-number.c:238
 #, fuzzy, c-format
@@ -1523,14 +1516,12 @@ msgid "Could not parse %s as a number"
 msgstr "No s'ha pogut analitzar «%s» com a un número de coma flotant"
 
 #: src/gr-recipe-exporter.c:165
-#, fuzzy
 msgid "Save the exported recipe"
-msgstr "No s'ha pogut desar la recepta"
+msgstr "Desa la recepta exportada"
 
 #: src/gr-recipe-exporter.c:168 src/gr-shopping-page.c:730
-#, fuzzy
 msgid "Save"
-msgstr "Guardar"
+msgstr "Desa"
 
 #: src/gr-recipe-exporter.c:199
 #, fuzzy
@@ -1555,17 +1546,18 @@ msgid ""
 msgstr "Vols que el complement provi de descarregar-lo?"
 
 #: src/gr-recipe-exporter.c:214
-#, fuzzy
 msgid "Try these recipes"
-msgstr "No hi ha receptes"
+msgstr "Tasteu aquestes receptes"
 
 #: src/gr-recipe-exporter.c:215
-#, fuzzy
 msgid ""
 "Hi,\n"
 "\n"
 "you should try these recipes."
-msgstr "Vols que el complement provi de descarregar-lo?"
+msgstr 
+"Hola,\n"
+"\n"
+"hauríeu de tastar aquestes receptes."
 
 #: src/gr-recipe-exporter.c:218
 msgid "(The attached file can be imported into GNOME Recipes.)"
@@ -1864,7 +1856,6 @@ msgid "ounce"
 msgstr "unça"
 
 #: src/gr-unit.c:44
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "l"
 msgstr "l"
@@ -1881,19 +1872,16 @@ msgid "dl"
 msgstr "dl"
 
 #: src/gr-unit.c:45
-#, fuzzy
 msgctxt "unit name"
 msgid "deciliter"
 msgstr "decilitre"
 
 #: src/gr-unit.c:46
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "ml"
 msgstr "ml"
 
 #: src/gr-unit.c:46
-#, fuzzy
 msgctxt "unit name"
 msgid "milliliter"
 msgstr "mil·lilitre"
@@ -1918,7 +1906,6 @@ msgid "pt"
 msgstr "Pt"
 
 #: src/gr-unit.c:48
-#, fuzzy
 msgctxt "unit name"
 msgid "pint"
 msgstr "pinta"
@@ -1942,7 +1929,6 @@ msgid "gal"
 msgstr "gal"
 
 #: src/gr-unit.c:50
-#, fuzzy
 msgctxt "unit name"
 msgid "gallon"
 msgstr "galó"
@@ -2192,7 +2178,7 @@ msgstr ""
 
 #: src/ingredients.inc:3
 msgid "Anchovies"
-msgstr ""
+msgstr "Anxoves"
 
 #: src/ingredients.inc:4
 msgid "Apple"
@@ -2205,7 +2191,7 @@ msgstr "Apricot Xen-II Ethernet integrada"
 
 #: src/ingredients.inc:6
 msgid "Artichoke"
-msgstr ""
+msgstr "Carxofa"
 
 #: src/ingredients.inc:7
 msgid "Asparagus"
@@ -2217,7 +2203,7 @@ msgstr "Albergínia"
 
 #: src/ingredients.inc:9
 msgid "Bacon"
-msgstr ""
+msgstr "Cansalada"
 
 #: src/ingredients.inc:10
 msgid "Bagel"
@@ -2242,9 +2228,8 @@ msgid "Basil"
 msgstr ""
 
 #: src/ingredients.inc:15
-#, fuzzy
 msgid "Basmati rice"
-msgstr "Arròs"
+msgstr "Arròs basmati"
 
 #: src/ingredients.inc:16
 #, fuzzy
@@ -2439,7 +2424,6 @@ msgid "Squash"
 msgstr "Aixafa"
 
 #: src/ingredients.inc:62
-#, fuzzy
 msgid "Tangerine"
 msgstr "Mandarina"
 
@@ -2545,9 +2529,8 @@ msgid "no Baking powder"
 msgstr "Forn i rebosteria"
 
 #: src/no-ingredients.inc:13
-#, fuzzy
 msgid "no Banana"
-msgstr "Plàtan"
+msgstr "sense plàtan"
 
 #: src/no-ingredients.inc:14
 msgid "no Basil"
@@ -2599,19 +2582,16 @@ msgid "no Bilberry"
 msgstr ""
 
 #: src/no-ingredients.inc:25
-#, fuzzy
 msgid "no Butter"
-msgstr "Mantega"
+msgstr "sense mantega"
 
 #: src/no-ingredients.inc:26
-#, fuzzy
 msgid "no Carrot"
-msgstr "Pastanaga"
+msgstr "sense pastanaga"
 
 #: src/no-ingredients.inc:27
-#, fuzzy
 msgid "no Cheese"
-msgstr "Cheese"
+msgstr "sense formatge"
 
 #: src/no-ingredients.inc:28
 #, fuzzy
@@ -2634,17 +2614,15 @@ msgstr "Cocoa"
 
 #: src/no-ingredients.inc:32
 msgid "no Couscous"
-msgstr ""
+msgstr "sense cuscús"
 
 #: src/no-ingredients.inc:33
-#, fuzzy
 msgid "no Date"
-msgstr "Per data"
+msgstr "sense data"
 
 #: src/no-ingredients.inc:34
-#, fuzzy
 msgid "no Egg"
-msgstr "ou"
+msgstr "sense ou"
 
 #: src/no-ingredients.inc:35
 #, fuzzy
@@ -2656,24 +2634,20 @@ msgid "no Flour"
 msgstr ""
 
 #: src/no-ingredients.inc:37
-#, fuzzy
 msgid "no Garlic"
-msgstr "all"
+msgstr "sense all"
 
 #: src/no-ingredients.inc:38
-#, fuzzy
 msgid "no Ground beef"
-msgstr "A terra"
+msgstr "sense carn mòlta"
 
 #: src/no-ingredients.inc:39
-#, fuzzy
 msgid "no Honey"
-msgstr "Estimada... podries venir un segon?"
+msgstr "sense mel"
 
 #: src/no-ingredients.inc:40
-#, fuzzy
 msgid "no Lemon"
-msgstr "Llimona"
+msgstr "sense llimona"
 
 #: src/no-ingredients.inc:41
 msgid "no Linseeds"
@@ -2681,40 +2655,35 @@ msgstr ""
 
 #: src/no-ingredients.inc:42
 msgid "no Mayonnaise"
-msgstr ""
+msgstr "sense maionesa"
 
 #: src/no-ingredients.inc:43
-#, fuzzy
 msgid "no Milk"
-msgstr "Llet de vaca"
+msgstr "sense llet"
 
 #: src/no-ingredients.inc:44
-#, fuzzy
 msgid "no Mustard"
-msgstr "Mostassa"
+msgstr "sense mostassa"
 
 #: src/no-ingredients.inc:45
 msgid "no Oatmeal"
 msgstr ""
 
 #: src/no-ingredients.inc:46
-#, fuzzy
 msgid "no Oil"
-msgstr "oli"
+msgstr "sense oli"
 
 #: src/no-ingredients.inc:47
-#, fuzzy
 msgid "no Onion"
-msgstr "Ceba"
+msgstr "sense ceba"
 
 #: src/no-ingredients.inc:48
 msgid "no Olive oil, extra-virgin"
 msgstr ""
 
 #: src/no-ingredients.inc:49
-#, fuzzy
 msgid "no Orange"
-msgstr "TARONJA"
+msgstr "sense taronja"
 
 #: src/no-ingredients.inc:50
 msgid "no Parsley"
@@ -2739,9 +2708,8 @@ msgid "no Pizza sauce"
 msgstr "Pizza"
 
 #: src/no-ingredients.inc:55
-#, fuzzy
 msgid "no Potato"
-msgstr "Patata"
+msgstr "sense patata"
 
 #: src/no-ingredients.inc:56
 #, fuzzy
@@ -2749,18 +2717,16 @@ msgid "no Pumpkin seeds"
 msgstr "Llavors:"
 
 #: src/no-ingredients.inc:57
-#, fuzzy
 msgid "no Salt"
-msgstr "sal"
+msgstr "sense sal"
 
 #: src/no-ingredients.inc:58
 msgid "no Soy sauce"
 msgstr ""
 
 #: src/no-ingredients.inc:59
-#, fuzzy
 msgid "no Sugar"
-msgstr "sucre / dolç | vinagre"
+msgstr "sense sucre"
 
 #: src/no-ingredients.inc:60
 #, fuzzy
@@ -2773,18 +2739,16 @@ msgid "no Squash"
 msgstr "&Esclafa"
 
 #: src/no-ingredients.inc:62
-#, fuzzy
 msgid "no Tangerine"
-msgstr "Mandarina"
+msgstr "sense mandarina"
 
 #: src/no-ingredients.inc:63
 msgid "no Tofu"
 msgstr ""
 
 #: src/no-ingredients.inc:64
-#, fuzzy
 msgid "no Tomato"
-msgstr "TOMÀQUET/TOMATA"
+msgstr "sense tomàquet"
 
 #: src/no-ingredients.inc:65
 #, fuzzy
@@ -2812,9 +2776,8 @@ msgid "no Water"
 msgstr "Aigua"
 
 #: src/no-ingredients.inc:70
-#, fuzzy
 msgid "no Wine"
-msgstr "Wine"
+msgstr "sense vi"
 
 #: src/no-ingredients.inc:71
 msgid "no Yeast"
@@ -2822,7 +2785,7 @@ msgstr ""
 
 #: src/no-ingredients.inc:72
 msgid "no Yoghurt"
-msgstr ""
+msgstr "sense iogurt"
 
 #: src/no-ingredients.inc:73
 msgid "no Zinfandel"
