@@ -1191,11 +1191,7 @@ gr_recipe_store_get_all_cuisines (GrRecipeStore *self,
 
         g_hash_table_iter_init (&iter, self->recipes);
         while (g_hash_table_iter_next (&iter, NULL, (gpointer *) &recipe)) {
-                if(! (g_hash_table_contains (cuisines, gr_recipe_get_cuisine (recipe)))) {
-                        g_hash_table_insert (cuisines,
-                                             (gpointer) (gr_recipe_get_cuisine (recipe)),
-                                             (gpointer) (gr_recipe_get_cuisine (recipe)));
-                }
+                g_hash_table_add (cuisines, (gpointer) (gr_recipe_get_cuisine (recipe)));
         }
         return (char **) g_hash_table_get_keys_as_array (cuisines, length);
 }
