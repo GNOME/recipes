@@ -66,8 +66,8 @@ git clone git://git.gnome.org/recipes
 - Build from git as usual, disabling some problematic dependencies:
 ```
 cd recipes
-./autogen --disable-autoar --disable-canberra
-make
+meson -Dautoar=no -Dcanberra=no build
+ninja -C build
 ```
 To build a released version of recipes on OS X, just
 
