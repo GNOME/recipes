@@ -464,7 +464,9 @@ next:
         importer->recipe_instructions = key_file_get_string (importer->recipes_keyfile, id, "Instructions");
         importer->recipe_notes = key_file_get_string (importer->recipes_keyfile, id, "Notes");
         importer->recipe_serves = g_key_file_get_integer (importer->recipes_keyfile, id, "Serves", &error);
+        handle_or_clear_error (error);
         importer->recipe_spiciness = g_key_file_get_integer (importer->recipes_keyfile, id, "Spiciness", &error);
+        handle_or_clear_error (error);
         importer->recipe_default_image = g_key_file_get_integer (importer->recipes_keyfile, id, "DefaultImage", &error);
         handle_or_clear_error (error);
         importer->recipe_diets = g_key_file_get_integer (importer->recipes_keyfile, id, "Diets", &error);
