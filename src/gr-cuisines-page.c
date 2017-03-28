@@ -145,9 +145,14 @@ populate_cuisines (GrCuisinesPage *page)
         int i, j;
         GrRecipeStore *store;
         int tiles;
+        g_autoptr(GHashTable) seen = NULL;
+        g_autofree char **names = NULL;
+        guint len;
 
         container_remove_all (GTK_CONTAINER (page->cuisines_box));
         container_remove_all (GTK_CONTAINER (page->cuisines_box2));
+
+        seen = g_hash_table_new (g_str_hash, g_str_equal);
 
         store = gr_recipe_store_get ();
 
@@ -174,6 +179,7 @@ populate_cuisines (GrCuisinesPage *page)
         gtk_widget_show (tile);
         gtk_widget_set_halign (tile, GTK_ALIGN_FILL);
         gtk_grid_attach (GTK_GRID (page->cuisines_box), tile, 0, 0, 2, 1);
+        g_hash_table_add (seen, page->featured);
 
         tiles = 0;
         for (i = 0; i < length; i++) {
@@ -196,6 +202,28 @@ populate_cuisines (GrCuisinesPage *page)
                         gtk_container_add (GTK_CONTAINER (page->cuisines_box2), tile);
                 }
                 tiles++;
+
+                g_hash_table_add (seen, cuisines[i]);
+        }
+
+        names = gr_recipe_store_get_all_cuisines (store, &len);
+        for (i = 0; i < len; i++) {
+               g_autofree char *tmp = NULL;
+               const char *title;
+
+                tmp = g_strstrip (g_strdup (names[i]));
+                if (strcmp (tmp, "") == 0)
+                        continue;
+
+                if (g_hash_table_contains (seen, tmp))
+                        continue;
+
+                gr_cuisine_get_data (tmp, &title, NULL, NULL);
+
+                tile = gr_category_tile_new_with_label (tmp, title);
+                gtk_widget_show (tile);
+                g_signal_connect (tile, "clicked", G_CALLBACK (cuisine_clicked), page);
+                gtk_container_add (GTK_CONTAINER (page->cuisines_box2), tile);
         }
 }
 
