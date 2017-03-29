@@ -171,6 +171,8 @@ gr_cuisine_get_css (const char *import_url)
 
         s = g_string_new ("");
 
+        g_string_append (s, "@import url(\"resource:///org/gnome/Recipes/category.css\");\n");
+
         g_string_append_printf (s, "@import url(\"%s\");\n", import_url);
 
         p = css;

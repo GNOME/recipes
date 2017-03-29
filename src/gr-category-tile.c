@@ -42,40 +42,23 @@ struct _GrCategoryTile
 
 G_DEFINE_TYPE (GrCategoryTile, gr_category_tile, GTK_TYPE_BUTTON)
 
-static const char *colors[] = {
-        "#215d9c",
-        "#297bcc",
-        "#29cc5d",
-        "#c4a000",
-        "#75505b",
-        "#cc0000",
-        "#4e9a06",
-        "#9c29ca",
-        "#729fcf",
-        "#ac5500",
-        "#2944cc",
-        "#44cc29",
-        "#00cc00",
-        "#a000c4"
-};
-
-static const char *
+static char *
 get_category_color (GrDiets diets)
 {
         switch (diets) {
-        case GR_DIET_GLUTEN_FREE: return colors[0];
-        case GR_DIET_NUT_FREE:    return colors[1];
-        case GR_DIET_VEGAN:       return colors[2];
-        case GR_DIET_VEGETARIAN:  return colors[3];
-        case GR_DIET_MILK_FREE:   return colors[4];
-        default:                  return colors[5];
+        case GR_DIET_GLUTEN_FREE: return g_strdup_printf ("color-tile%d", 0);
+        case GR_DIET_NUT_FREE:    return g_strdup_printf ("color-tile%d", 1);
+        case GR_DIET_VEGAN:       return g_strdup_printf ("color-tile%d", 2);
+        case GR_DIET_VEGETARIAN:  return g_strdup_printf ("color-tile%d", 3);
+        case GR_DIET_MILK_FREE:   return g_strdup_printf ("color-tile%d", 4);
+        default:                  return g_strdup_printf ("color-tile%d", 5);
         }
 }
 
-static const char *
+static char *
 get_category_color_for_label (const char *label)
 {
-        return colors[g_str_hash (label) % G_N_ELEMENTS (colors)];
+        return g_strdup_printf ("color-tile%d", g_str_hash (label) % 13);
 }
 
 static void
@@ -122,13 +105,12 @@ GtkWidget *
 gr_category_tile_new (GrDiets diet)
 {
         GrCategoryTile *tile;
-        g_autofree char *css;
+        g_autofree char *color = NULL;
 
         tile = g_object_new (GR_TYPE_CATEGORY_TILE, NULL);
         category_tile_set_category (tile, diet);
-
-        css = g_strdup_printf ("border-bottom: 3px solid %s", get_category_color (diet));
-        gr_utils_widget_set_css_simple (GTK_WIDGET (tile), css);
+        color = get_category_color (diet);
+        gtk_style_context_add_class (gtk_widget_get_style_context (GTK_WIDGET (tile)), color);
 
         return GTK_WIDGET (tile);
 }
@@ -138,14 +120,14 @@ gr_category_tile_new_with_label (const char *category,
                                  const char *label)
 {
         GrCategoryTile *tile;
-        g_autofree char *css;
+        g_autofree char *color = NULL;
 
         tile = g_object_new (GR_TYPE_CATEGORY_TILE, NULL);
         gtk_label_set_label (GTK_LABEL (tile->label), label);
         tile->category = g_strdup (category);
 
-        css = g_strdup_printf ("border-bottom: 3px solid %s", get_category_color_for_label (label));
-        gr_utils_widget_set_css_simple (GTK_WIDGET (tile), css);
+        color = get_category_color_for_label (label);
+        gtk_style_context_add_class (gtk_widget_get_style_context (GTK_WIDGET (tile)), color);
 
         return GTK_WIDGET (tile);
 }
