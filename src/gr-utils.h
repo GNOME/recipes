@@ -37,9 +37,6 @@ const char *get_user_data_dir (void);
 
 void    container_remove_all (GtkContainer *container);
 
-void gr_utils_widget_set_css_simple (GtkWidget  *widget,
-                                     const char *css);
-
 char      * date_time_to_string   (GDateTime *dt);
 GDateTime * date_time_from_string (const char *string);
 char      * format_date_time_difference (GDateTime *end, GDateTime *start);

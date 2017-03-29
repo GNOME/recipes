@@ -158,68 +158,6 @@ container_remove_all (GtkContainer *container)
         g_list_free (children);
 }
 
-static void
-gr_utils_widget_css_parsing_error_cb (GtkCssProvider *provider,
-                                      GtkCssSection *section,
-                                      GError *error,
-                                      gpointer user_data)
-{
-        g_warning ("CSS parse error %u:%u: %s",
-                   gtk_css_section_get_start_line (section),
-                   gtk_css_section_get_start_position (section),
-                   error->message);
-}
-
-static void
-gr_utils_widget_set_css_internal (GtkWidget *widget,
-                                  const gchar *class_name,
-                                  const gchar *css)
-{
-        GtkStyleContext *context;
-        g_autoptr(GtkCssProvider) provider = NULL;
-
-        g_debug ("using custom CSS %s", css);
-
-        /* set the custom CSS class */
-        context = gtk_widget_get_style_context (widget);
-        gtk_style_context_add_class (context, class_name);
-
-        /* set up custom provider and store on the widget */
-        provider = gtk_css_provider_new ();
-        g_signal_connect (provider, "parsing-error",
-                          G_CALLBACK (gr_utils_widget_css_parsing_error_cb), NULL);
-        gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
-                                                   GTK_STYLE_PROVIDER (provider),
-                                                   GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
-        gtk_css_provider_load_from_data (provider, css, -1, NULL);
-        g_object_set_data_full (G_OBJECT (widget),
-                                "custom-css-provider",
-                                g_object_ref (provider),
-                                g_object_unref);
-}
-
-void
-gr_utils_widget_set_css_simple (GtkWidget *widget,
-                                const      gchar *css)
-{
-        g_autofree gchar *class_name = NULL;
-        g_autoptr(GString) str = NULL;
-
-        /* remove custom class if NULL */
-        class_name = g_strdup_printf ("themed-widget_%p", widget);
-        if (css == NULL) {
-                GtkStyleContext *context = gtk_widget_get_style_context (widget);
-                gtk_style_context_remove_class (context, class_name);
-                return;
-        }
-        str = g_string_sized_new (1024);
-        g_string_append_printf (str, ".%s {\n", class_name);
-        g_string_append_printf (str, "%s\n", css);
-        g_string_append (str, "}");
-
-        gr_utils_widget_set_css_internal (widget, class_name, str->str);
-}
-
 char *
 date_time_to_string (GDateTime *dt)
 {
