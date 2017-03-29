@@ -1,13 +1,13 @@
 {
-    "app-id": "org.gnome.Recipes",
+    "id": "org.gnome.Recipes",
     "runtime": "org.gnome.Platform",
     "runtime-version": "3.24",
     "sdk": "org.gnome.Sdk",
     "command": "gnome-recipes",
     "finish-args": [
         "--share=ipc",
-        "--socket=x11",
         "--socket=wayland",
+        "--socket=x11",
         "--socket=pulseaudio",
         "--filesystem=xdg-run/dconf",
         "--filesystem=~/.config/dconf:ro",
@@ -15,11 +15,7 @@
         "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
     ],
     "build-options" : {
-        "cflags": "-O2 -g",
-        "cxxflags": "-O2 -g",
-        "env": {
-            "V": "1"
-        }
+        "cflags": "-O2 -g"
     },
     "cleanup": [
         "/include",
