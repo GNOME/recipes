@@ -66,13 +66,13 @@
                 },
                 {
                     "type": "patch",
-                    "path": "flatpak/meson-glib-check.patch",
+                    "path": "meson-glib-check.patch",
                     "strip-components": 0
 
                 },
                 {
                     "type": "file",
-                    "path": "flatpak/setuptools-makefile",
+                    "path": "setuptools-makefile",
                     "dest-filename": "Makefile"
                 }
             ]
