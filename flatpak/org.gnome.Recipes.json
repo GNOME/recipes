@@ -49,22 +49,6 @@
             ]
         },
         {
-            "name": "meson",
-            "no-autogen": true,
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://github.com/mesonbuild/meson/releases/download/0.39.1/meson-0.39.1.tar.gz",
-                    "sha256": "44885ccfef94d3d4afb1053fa6673ed130d3093fc9e9f6624d08161d8a385220"
-                },
-                {
-                    "type": "file",
-                    "path": "setuptools-makefile",
-                    "dest-filename": "Makefile"
-                }
-            ]
-        },
-        {
             "name": "recipes",
             "buildsystem": "meson",
             "builddir": true,
