@@ -48,9 +48,8 @@ struct _GrRecipeExporter
 #ifdef ENABLE_AUTOAR
         AutoarCompressor *compressor;
 #endif
-        GFile *dest;
-        GFile *output;
-        GList *sources;
+        GFile *output; /* the location where compressor writes the archive */
+        GList *sources; /* the list of all files */
         char *dir;
 
         gboolean just_export;
@@ -69,7 +68,6 @@ gr_recipe_exporter_finalize (GObject *object)
         GrRecipeExporter *exporter = GR_RECIPE_EXPORTER (object);
 
         g_list_free_full (exporter->recipes, g_object_unref);
-        g_clear_object (&exporter->dest);
         g_clear_object (&exporter->output);
         g_list_free_full (exporter->sources, g_object_unref);
         g_free (exporter->dir);
@@ -123,7 +121,6 @@ cleanup_export (GrRecipeExporter *exporter)
         g_list_free_full (exporter->recipes, g_object_unref);
         exporter->recipes = NULL;
         g_clear_object (&exporter->output);
-        g_clear_object (&exporter->dest);
         g_list_free_full (exporter->sources, g_object_unref);
         exporter->sources = NULL;
 
@@ -141,7 +138,7 @@ file_chooser_response (GtkNativeDialog  *self,
                 g_autoptr(GFile) file = NULL;
 
                 file = gtk_file_chooser_get_file (GTK_FILE_CHOOSER (self));
-                g_file_copy_async (exporter->dest, file, 0, 0, NULL, NULL, NULL, NULL, NULL);
+                g_file_copy_async (exporter->output, file, 0, 0, NULL, NULL, NULL, NULL, NULL);
         }
 
         gtk_native_dialog_destroy (self);
@@ -228,7 +225,7 @@ completed_cb (AutoarCompressor *compressor,
                 body = g_string_free (s, FALSE);
         }
 
-        path = g_file_get_path (exporter->dest);
+        path = g_file_get_path (exporter->output);
 
         attachments[0] = path;
         attachments[1] = NULL;
@@ -236,14 +233,6 @@ completed_cb (AutoarCompressor *compressor,
         gr_send_mail (GTK_WINDOW (exporter->window),
                       address, subject, body, attachments,
                       mail_done, exporter);
-}
-
-static void
-decide_dest_cb (AutoarCompressor *compressor,
-                GFile            *file,
-                GrRecipeExporter *exporter)
-{
-        g_set_object (&exporter->dest, file);
 }
 #endif
 
@@ -511,7 +500,6 @@ start_export (GrRecipeExporter *exporter)
         exporter->compressor = autoar_compressor_new (exporter->sources, exporter->output, AUTOAR_FORMAT_TAR, AUTOAR_FILTER_GZIP, FALSE);
 
         autoar_compressor_set_output_is_dest (exporter->compressor, TRUE);
-        g_signal_connect (exporter->compressor, "decide-dest", G_CALLBACK (decide_dest_cb), exporter);
         g_signal_connect (exporter->compressor, "completed", G_CALLBACK (completed_cb), exporter);
         g_signal_connect (exporter->compressor, "error", G_CALLBACK (error_cb), exporter);
 
