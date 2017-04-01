@@ -210,7 +210,7 @@ help_activated (GSimpleAction *action,
                 GVariant      *parameter,
                 gpointer       app)
 {
-        GList uris = { "help:org.gnome.Recipes", NULL, NULL };
+        GList uris = { (gpointer)"help:org.gnome.Recipes", NULL, NULL };
         g_autoptr(GAppInfo) info = NULL;
         g_autoptr(GError) error = NULL;
 
