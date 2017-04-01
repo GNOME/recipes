@@ -86,6 +86,10 @@
       <attribute name="label" translatable="yes">Help</attribute>
       <section>
         <item>
+          <attribute name="label" translatable="yes">Recipes _Help</attribute>
+          <attribute name="action">app.help</attribute>
+        </item>
+        <item>
           <attribute name="label" translatable="yes">_What’s New</attribute>
           <attribute name="action">app.news</attribute>
         </item>
