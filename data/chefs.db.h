@@ -11,6 +11,7 @@ N_("Erusan is an American who has lived all over the country, loves GNOME, and e
 N_("Georges is a vegan samurai, a GNOME contributor, and sometimes both.")
 N_("My name is Fredrik Fyksen. I am from Norway, but live in Denmark. I like food, computers and music. You can read more about me at <a href=\"https://www.fyksen.me/\">fyksen.me</a>.")
 N_("Ray is a Desktop Software Engineer at Red Hat and vegetarian who occasionally enjoys cooking.")
+N_("Dad with a sysadmin problem/hobby")
 N_("Just Link.")
 N_("Matthias is a manager in the Desktop team at Red Hat. He likes to cook as much as he likes to code.")
 N_("Matthew is a vegan and a Computer Science student who loves FOSS.")
