@@ -183,6 +183,7 @@ load_recipes (GrRecipeStore *self,
         g_auto(GStrv) groups = NULL;
         gsize length, length2;
         int i, j;
+        int version;
 
         keyfile = g_key_file_new ();
 
@@ -195,7 +196,25 @@ load_recipes (GrRecipeStore *self,
                         g_info ("No recipe db at: %s", path);
                 return FALSE;
         }
+
         g_info ("Load recipe db: %s", path);
+
+        version = g_key_file_get_integer (keyfile, "Metadata", "Version", &error);
+        if (error) {
+                if (g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND) ||
+                    g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_GROUP_NOT_FOUND)) {
+                        g_info ("No metadata found, assuming version 1");
+                        version = 1;
+                }
+                else {
+                        g_error ("Failed to read recipe db: %s", error->message);
+                        return FALSE;
+                }
+                g_clear_error (&error);
+        }
+        if (version != 1) {
+                g_error ("Don't know how to handle recipe db version %d", version);
+        }
 
         groups = g_key_file_get_groups (keyfile, &length);
         for (i = 0; i < length; i++) {
@@ -221,6 +240,9 @@ load_recipes (GrRecipeStore *self,
                 g_autoptr(GDateTime) ctime = NULL;
                 g_autoptr(GDateTime) mtime = NULL;
                 char *tmp;
+
+                if (strcmp (groups[i], "Metadata") == 0)
+                        continue;
 
                 g_clear_error (&error);
 
@@ -488,6 +510,8 @@ save_recipes (GrRecipeStore *self)
 
         g_info ("Save recipe db: %s", path);
 
+        g_key_file_set_integer (keyfile, "Metadata", "Version", 1);
+
         keys = g_hash_table_get_keys (self->recipes);
         keys = g_list_sort (keys, (GCompareFunc)strcmp);
         for (l = keys; l; l = l->next) {
@@ -711,6 +735,7 @@ load_chefs (GrRecipeStore *self,
         g_auto(GStrv) groups = NULL;
         gsize length;
         int i;
+        int version;
 
         keyfile = g_key_file_new ();
 
@@ -731,6 +756,23 @@ load_chefs (GrRecipeStore *self,
 
         g_info ("Load chefs db: %s", path);
 
+        version = g_key_file_get_integer (keyfile, "Metadata", "Version", &error);
+        if (error) {
+                if (g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND) ||
+                    g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_GROUP_NOT_FOUND)) {
+                        g_info ("No metadata found, assuming version 1");
+                        version = 1;
+                }
+                else {
+                        g_error ("Failed to read chefs db: %s", error->message);
+                        return FALSE;
+                }
+                g_clear_error (&error);
+        }
+        if (version != 1) {
+                g_error ("Don't know how to handle chefs db version %d", version);
+        }
+
         groups = g_key_file_get_groups (keyfile, &length);
         for (i = 0; i < length; i++) {
                 GrChef *chef;
@@ -739,6 +781,9 @@ load_chefs (GrRecipeStore *self,
                 g_autofree char *fullname = NULL;
                 g_autofree char *description = NULL;
                 g_autofree char *image_path = NULL;
+
+                if (strcmp (groups[i], "Metadata") == 0)
+                        continue;
 
                 g_clear_error (&error);
 
@@ -813,6 +858,8 @@ save_chefs (GrRecipeStore *store)
         path = g_build_filename (dir, "chefs.db", NULL);
 
         g_info ("Save chefs db: %s", path);
+
+        g_key_file_set_integer (keyfile, "Metadata", "Version", 1);
 
         keys = g_hash_table_get_keys (store->chefs);
         keys = g_list_sort (keys, (GCompareFunc)strcmp);
