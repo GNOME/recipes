@@ -146,7 +146,7 @@ main (int argc, char *argv[])
 
         groups = g_key_file_get_groups (keyfile, &length);
         for (i = 0; i < length; i++) {
-                if (g_str_has_prefix (groups[i], "TEST"))
+                if (g_str_has_prefix (groups[i], "Metadata"))
                         continue;
 
                 if (extract_ingredients) {
