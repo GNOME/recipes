@@ -94,4 +94,4 @@ After installing the Flatpak, the applications will show up in the GNOME shell o
 flatpak run org.gnome.Recipes
 ```
 
-There is also a [recipes.dmg](https://download.gnome.org/binaries/mac/recipes/0.20/recipes.dmg) binary for OS X.
+There is also a [recipes.dmg](https://download.gnome.org/binaries/mac/recipes/) installer for OS X.
