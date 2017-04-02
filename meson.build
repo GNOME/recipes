@@ -96,7 +96,9 @@ conf.set_quoted('LOCALEDIR', join_paths([ get_option('prefix'),
 
 # Used while generating cuisine.css and the dbus service file
 conf.set_quoted('pkgdatadir', pkgdatadir)
-conf.set_quoted('bindir', bindir)
+
+# used in the service file, must be unquoted
+conf.set('bindir', bindir)
 
 configure_file(output : 'config.h', configuration : conf)
 
