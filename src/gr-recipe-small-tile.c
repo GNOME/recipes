@@ -46,6 +46,8 @@ struct _GrRecipeSmallTile
         GtkWidget *serves_spin;
         GtkWidget *remove_button;
 
+        GCancellable *cancellable;
+
         int serves;
 };
 
@@ -83,6 +85,9 @@ recipe_small_tile_set_recipe (GrRecipeSmallTile *tile,
 
         store = gr_recipe_store_get ();
 
+        g_cancellable_cancel (tile->cancellable);
+        g_clear_object (&tile->cancellable);
+
         g_set_object (&tile->recipe, recipe);
 
         if (tile->recipe) {
@@ -104,15 +109,15 @@ recipe_small_tile_set_recipe (GrRecipeSmallTile *tile,
                 if (images->len > 0) {
                         int index;
                         GrImage *ri;
-                        g_autoptr(GdkPixbuf) pixbuf = NULL;
+
+                        tile->cancellable = g_cancellable_new ();
 
                         index = gr_recipe_get_default_image (recipe);
                         if (index < 0 || index >= images->len)
                                 index = 0;
 
                         ri = g_ptr_array_index (images, index);
-                        pixbuf = load_pixbuf_fill_size (gr_image_get_path (ri), 64, 64);
-                        gtk_image_set_from_pixbuf (GTK_IMAGE (tile->image), pixbuf);
+                        gr_image_load (ri, 64, 64, FALSE, tile->cancellable, gr_image_set_pixbuf, tile->image);
                 }
 
         }
@@ -148,6 +153,8 @@ recipe_small_tile_finalize (GObject *object)
 {
         GrRecipeSmallTile *tile = GR_RECIPE_SMALL_TILE (object);
 
+        g_cancellable_cancel (tile->cancellable);
+        g_clear_object (&tile->cancellable);
         g_clear_object (&tile->recipe);
 
         G_OBJECT_CLASS (gr_recipe_small_tile_parent_class)->finalize (object);

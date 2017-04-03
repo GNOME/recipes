@@ -26,6 +26,7 @@
 #include "gr-chef-tile.h"
 #include "gr-utils.h"
 #include "gr-window.h"
+#include "gr-image.h"
 
 
 struct _GrChefTile
@@ -36,6 +37,9 @@ struct _GrChefTile
 
         GtkWidget *label;
         GtkWidget *image;
+
+        GrImage *ri;
+        GCancellable *cancellable;
 };
 
 
@@ -46,7 +50,10 @@ chef_tile_finalize (GObject *object)
 {
         GrChefTile *tile = GR_CHEF_TILE (object);
 
+        g_cancellable_cancel (tile->cancellable);
+        g_clear_object (&tile->cancellable);
         g_clear_object (&tile->chef);
+        g_clear_object (&tile->ri);
 
         G_OBJECT_CLASS (gr_chef_tile_parent_class)->finalize (object);
 }
@@ -76,6 +83,11 @@ void
 gr_chef_tile_set_chef (GrChefTile *tile,
                        GrChef     *chef)
 {
+        g_cancellable_cancel (tile->cancellable);
+        g_clear_object (&tile->cancellable);
+
+        g_clear_object (&tile->ri);
+
         g_set_object (&tile->chef, chef);
 
         if (tile->chef) {
@@ -87,10 +99,12 @@ gr_chef_tile_set_chef (GrChefTile *tile,
 
                 path = gr_chef_get_image (chef);
                 if (path && path[0]) {
-                        g_autoptr(GdkPixbuf) pixbuf = NULL;
+                        tile->ri = gr_image_new (gr_app_get_soup_session (GR_APP (g_application_get_default ())),
+                                                 gr_chef_get_id (chef),
+                                                 path);
+                        tile->cancellable = g_cancellable_new ();
 
-                        pixbuf = load_pixbuf_fill_size (path, 64, 64);
-                        gtk_image_set_from_pixbuf (GTK_IMAGE (tile->image), pixbuf);
+                        gr_image_load (tile->ri, 64, 64, FALSE, tile->cancellable, gr_image_set_pixbuf, tile->image);
                 }
         }
 }

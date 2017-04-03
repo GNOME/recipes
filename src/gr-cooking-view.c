@@ -64,6 +64,8 @@ struct _GrCookingView
 #endif
 
         GList *timers;
+
+        GCancellable *cancellable;
 };
 
 typedef struct
@@ -240,6 +242,9 @@ gr_cooking_view_finalize (GObject *object)
 {
         GrCookingView *self = GR_COOKING_VIEW (object);
 
+        g_cancellable_cancel (self->cancellable);
+        g_clear_object (&self->cancellable);
+
         g_clear_pointer (&self->id, g_free);
         g_clear_pointer (&self->images, g_ptr_array_unref);
         g_clear_pointer (&self->instructions, g_free);
@@ -273,12 +278,23 @@ gr_cooking_view_init (GrCookingView *self)
 }
 
 static void
+set_pixbuf (GrImage   *ri,
+            GdkPixbuf *pixbuf,
+            gpointer   data)
+{
+        gtk_image_set_from_pixbuf (GTK_IMAGE (data), pixbuf);
+}
+
+static void
 setup_step (GrCookingView *view)
 {
         StepData *s;
 
         if (!view->images)
                 return;
+
+        g_cancellable_cancel (view->cancellable);
+        g_clear_object (&view->cancellable);
 
         s = g_ptr_array_index (view->steps, view->step);
 
@@ -318,14 +334,18 @@ setup_step (GrCookingView *view)
                 GrImage *ri = NULL;
                 g_autoptr(GdkPixbuf) pixbuf = NULL;
 
+                view->cancellable = g_cancellable_new ();
+
                 gtk_widget_show (view->cooking_stack);
                 gtk_widget_set_halign (view->text_box, GTK_ALIGN_START);
                 ri = g_ptr_array_index (view->images, s->image);
-                if (view->wide)
-                        pixbuf = load_pixbuf_fill_size (gr_image_get_path (ri), 640, 480);
-                else
-                        pixbuf = load_pixbuf_fill_size (gr_image_get_path (ri), 320, 240);
-                gtk_image_set_from_pixbuf (GTK_IMAGE (view->cooking_image), pixbuf);
+                gr_image_load (ri,
+                               view->wide ? 640 : 320,
+                               view->wide ? 480 : 240,
+                               FALSE,
+                               view->cancellable,
+                               set_pixbuf,
+                               view->cooking_image);
                 gtk_stack_set_visible_child_name (GTK_STACK (view->cooking_stack), "image");
         }
         else {

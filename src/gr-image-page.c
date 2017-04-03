@@ -42,6 +42,7 @@ struct _GrImagePage
         int index;
 
         guint hide_timeout;
+        GCancellable *cancellable;
 };
 
 
@@ -74,6 +75,9 @@ gr_image_page_finalize (GObject *object)
 {
         GrImagePage *page = GR_IMAGE_PAGE (object);
 
+        g_cancellable_cancel (page->cancellable);
+        g_clear_object (&page->cancellable);
+
         remove_hide_timeout (page);
         g_clear_pointer (&page->images, g_ptr_array_unref);
 
@@ -91,14 +95,20 @@ set_current_image (GrImagePage *page)
                 GdkMonitor *monitor;
                 GdkRectangle geom;
 
+                g_cancellable_cancel (page->cancellable);
+                g_clear_object (&page->cancellable);
+                page->cancellable = g_cancellable_new ();
+
                 display = gtk_widget_get_display (GTK_WIDGET (page));
                 win = gtk_widget_get_window (gtk_widget_get_toplevel (GTK_WIDGET (page)));
                 monitor = gdk_display_get_monitor_at_window (display, win);
                 gdk_monitor_get_geometry (monitor, &geom);
 
                 ri = g_ptr_array_index (page->images, page->index);
-                pixbuf = load_pixbuf_fit_size (gr_image_get_path (ri), geom.width - 80, geom.height - 80, FALSE);
-                gtk_image_set_from_pixbuf (GTK_IMAGE (page->image), pixbuf);
+                gr_image_load (ri,
+                               geom.width - 80, geom.height - 80, TRUE,
+                               page->cancellable,
+                               gr_image_set_pixbuf, page->image);
         }
 }
 
