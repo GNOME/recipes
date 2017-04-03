@@ -79,6 +79,9 @@ struct _GrImageViewer
         guint hide_timeout;
 
         GtkGesture *gesture;
+
+        GCancellable *cancellable;
+        GCancellable *preview_cancellable;
 };
 
 
@@ -113,6 +116,12 @@ gr_image_viewer_finalize (GObject *object)
 {
         GrImageViewer *viewer = GR_IMAGE_VIEWER (object);
 
+        g_cancellable_cancel (viewer->cancellable);
+        g_clear_object (&viewer->cancellable);
+
+        g_cancellable_cancel (viewer->preview_cancellable);
+        g_clear_object (&viewer->preview_cancellable);
+
         gr_image_viewer_revert_changes (viewer);
 
         g_clear_pointer (&viewer->additions, g_ptr_array_unref);
@@ -130,6 +139,9 @@ set_current_image (GrImageViewer *viewer)
 {
         GtkFlowBoxChild *child;
 
+        g_cancellable_cancel (viewer->cancellable);
+        g_clear_object (&viewer->cancellable);
+
         if (viewer->index >= viewer->images->len) {
                 gtk_stack_set_visible_child_name (GTK_STACK (viewer->stack), "placeholder");
                 return;
@@ -140,16 +152,17 @@ set_current_image (GrImageViewer *viewer)
                 g_autoptr(GdkPixbuf) pixbuf = NULL;
                 const char *vis;
 
+                viewer->cancellable = g_cancellable_new ();
+
                 ri = g_ptr_array_index (viewer->images, viewer->index);
-                pixbuf = load_pixbuf_fill_size (gr_image_get_path (ri), 360, 240);
 
                 vis = gtk_stack_get_visible_child_name (GTK_STACK (viewer->stack));
                 if (strcmp (vis, "image1") == 0) {
-                        gtk_image_set_from_pixbuf (GTK_IMAGE (viewer->image2), pixbuf);
+                        gr_image_load (ri, 360, 240, FALSE, viewer->cancellable, gr_image_set_pixbuf, viewer->image2);
                         gtk_stack_set_visible_child_name (GTK_STACK (viewer->stack), "image2");
                 }
                 else {
-                        gtk_image_set_from_pixbuf (GTK_IMAGE (viewer->image1), pixbuf);
+                        gr_image_load (ri, 360, 240, FALSE, viewer->cancellable, gr_image_set_pixbuf, viewer->image1);
                         gtk_stack_set_visible_child_name (GTK_STACK (viewer->stack), "image1");
                 }
         }
@@ -166,16 +179,21 @@ populate_preview (GrImageViewer *viewer)
 {
         int i;
 
+        g_cancellable_cancel (viewer->preview_cancellable);
+        g_clear_object (&viewer->preview_cancellable);
+        viewer->preview_cancellable = g_cancellable_new ();
+
         container_remove_all (GTK_CONTAINER (viewer->preview_list));
 
         for (i = 0; i < viewer->images->len; i++) {
                 GrImage *ri = g_ptr_array_index (viewer->images, i);
-                g_autoptr(GdkPixbuf) pb = load_pixbuf_fill_size (gr_image_get_path (ri), 60, 40);
                 GtkWidget *image;
 
-                image = gtk_image_new_from_pixbuf (pb);
+                image = gtk_image_new ();
                 gtk_widget_show (image);
                 gtk_container_add (GTK_CONTAINER (viewer->preview_list), image);
+
+                gr_image_load (ri, 60, 40, FALSE, viewer->preview_cancellable, gr_image_set_pixbuf, image);
         }
 }
 
@@ -386,7 +404,7 @@ image_received (GtkClipboard *clipboard,
                         return;
                 }
 
-                ri = gr_image_new (path);
+                ri = gr_image_new (gr_app_get_soup_session (GR_APP (g_application_get_default ())), "local", path);
                 add_image (viewer, ri, TRUE);
         }
 }
@@ -579,7 +597,7 @@ file_chooser_response (GtkNativeDialog *self,
                         g_autofree char *path = NULL;
 
                         path = import_image (l->data);
-                        ri = gr_image_new (path);
+                        ri = gr_image_new (gr_app_get_soup_session (GR_APP (g_application_get_default ())), "local", path);
                         add_image (viewer, ri, TRUE);
 
                         g_ptr_array_add (viewer->additions, g_strdup (path));

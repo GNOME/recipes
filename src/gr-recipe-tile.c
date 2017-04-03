@@ -43,6 +43,8 @@ struct _GrRecipeTile
         GtkWidget *author;
         GtkWidget *image;
         GtkWidget *box;
+
+        GCancellable *cancellable;
 };
 
 G_DEFINE_TYPE (GrRecipeTile, gr_recipe_tile, GTK_TYPE_BUTTON)
@@ -63,6 +65,9 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
         GrRecipeStore *store;
 
         store = gr_recipe_store_get ();
+
+        g_cancellable_cancel (tile->cancellable);
+        g_clear_object (&tile->cancellable);
 
         g_set_object (&tile->recipe, recipe);
 
@@ -85,20 +90,20 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
                 if (images->len > 0) {
                         int index;
                         GrImage *ri;
-                        g_autoptr(GdkPixbuf) pixbuf = NULL;
-                        int width;
-                        int height;
 
-                        width = tile->wide ? 538 : 258;
-                        height = 200;
+                        tile->cancellable = g_cancellable_new ();
 
                         index = gr_recipe_get_default_image (recipe);
                         if (index < 0 || index >= images->len)
                                 index = 0;
 
                         ri = g_ptr_array_index (images, index);
-                        pixbuf = load_pixbuf_fill_size (gr_image_get_path (ri), width, height);
-                        gtk_image_set_from_pixbuf (GTK_IMAGE (tile->image), pixbuf);
+
+                        gr_image_load (ri,
+                                       tile->wide ? 538 : 258, 200, FALSE,
+                                       tile->cancellable,
+                                       gr_image_set_pixbuf,
+                                       tile->image);
                 }
         }
 }
@@ -108,6 +113,8 @@ recipe_tile_finalize (GObject *object)
 {
         GrRecipeTile *tile = GR_RECIPE_TILE (object);
 
+        g_cancellable_cancel (tile->cancellable);
+        g_clear_object (&tile->cancellable);
         g_clear_object (&tile->recipe);
 
         G_OBJECT_CLASS (gr_recipe_tile_parent_class)->finalize (object);

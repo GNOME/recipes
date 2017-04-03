@@ -138,6 +138,8 @@ struct _GrEditPage
 
         char *author;
         gboolean unsaved;
+
+        GCancellable *cancellable;
 };
 
 G_DEFINE_TYPE (GrEditPage, gr_edit_page, GTK_TYPE_BOX)
@@ -170,21 +172,26 @@ populate_image_flowbox (GrEditPage *page)
         GPtrArray *images;
         GtkWidget *button;
 
+        g_cancellable_cancel (page->cancellable);
+        g_clear_object (&page->cancellable);
+        page->cancellable = g_cancellable_new ();
+
         images = gr_image_viewer_get_images (GR_IMAGE_VIEWER (page->images));
 
         container_remove_all (GTK_CONTAINER (page->image_flowbox));
 
         for (i = 0; i < images->len; i++) {
                 GrImage *ri = g_ptr_array_index (images, i);
-                g_autoptr(GdkPixbuf) pb = load_pixbuf_fill_size (gr_image_get_path (ri), 60, 40);
                 GtkWidget *image;
                 GtkWidget *child;
 
-                image = gtk_image_new_from_pixbuf (pb);
+                image = gtk_image_new ();
                 gtk_widget_show (image);
                 gtk_container_add (GTK_CONTAINER (page->image_flowbox), image);
                 child = gtk_widget_get_parent (image);
                 g_object_set_data (G_OBJECT (child), "image-idx", GINT_TO_POINTER (i));
+
+                gr_image_load (ri, 60, 40, FALSE, page->cancellable, gr_image_set_pixbuf, image);
         }
 
         button = gtk_button_new ();
@@ -345,6 +352,9 @@ static void
 edit_page_finalize (GObject *object)
 {
         GrEditPage *self = GR_EDIT_PAGE (object);
+
+        g_cancellable_cancel (self->cancellable);
+        g_clear_object (&self->cancellable);
 
         if (self->index_handler_id)
                 g_signal_handler_disconnect (self->recipe, self->index_handler_id);

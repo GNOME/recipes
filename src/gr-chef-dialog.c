@@ -33,6 +33,7 @@
 #include "gr-window.h"
 #include "gr-utils.h"
 #include "gr-chef-tile.h"
+#include "gr-image.h"
 
 
 struct _GrChefDialog
@@ -54,7 +55,8 @@ struct _GrChefDialog
         GPtrArray *additions;
         GPtrArray *removals;
 
-        char *image_path;
+        GrImage *ri;
+        GCancellable *cancellable;
 
         GrChef *chef;
 };
@@ -72,10 +74,13 @@ dismiss_error (GrChefDialog *self)
 static void
 update_image (GrChefDialog *self)
 {
-        if (self->image_path != NULL && self->image_path[0] != '\0') {
-                g_autoptr(GdkPixbuf) pixbuf = NULL;
-                pixbuf = load_pixbuf_fit_size (self->image_path, 64, 64, TRUE);
-                gtk_image_set_from_pixbuf (GTK_IMAGE (self->image), pixbuf);
+        g_cancellable_cancel (self->cancellable);
+        g_clear_object (&self->cancellable);
+
+        if (self->ri) {
+                self->cancellable = g_cancellable_new ();
+
+                gr_image_load (self->ri, 64, 64, TRUE, self->cancellable, gr_image_set_pixbuf, self->image);
                 gtk_style_context_remove_class (gtk_widget_get_style_context (self->image), "dim-label");
         }
         else {
@@ -126,14 +131,16 @@ file_chooser_response (GtkNativeDialog *self,
 
                 path = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (self));
 
-                if (prefs->image_path)
-                        g_ptr_array_add (prefs->removals, g_strdup (prefs->image_path));
+                if (prefs->ri)
+                        g_ptr_array_add (prefs->removals, g_strdup (gr_image_get_path (prefs->ri)));
 
-                g_free (prefs->image_path);
-                prefs->image_path = import_image (path);
+                g_clear_object (&prefs->ri);
+                prefs->ri = gr_image_new (gr_app_get_soup_session (GR_APP (g_application_get_default ())),
+                                          "local",
+import_image (path));
 
-                if (prefs->image_path)
-                        g_ptr_array_add (prefs->additions, g_strdup (prefs->image_path));
+                if (prefs->ri)
+                        g_ptr_array_add (prefs->additions, g_strdup (gr_image_get_path (prefs->ri)));
 
                 update_image (prefs);
                 field_changed (prefs);
@@ -172,10 +179,13 @@ gr_chef_dialog_finalize (GObject *object)
 {
         GrChefDialog *self = GR_CHEF_DIALOG (object);
 
+        g_cancellable_cancel (self->cancellable);
+        g_clear_object (&self->cancellable);
+        g_clear_object (&self->ri);
+
         revert_changes (self);
         g_clear_pointer (&self->removals, g_ptr_array_unref);
 
-        g_free (self->image_path);
         g_clear_object (&self->chef);
 
         G_OBJECT_CLASS (gr_chef_dialog_parent_class)->finalize (object);
@@ -189,6 +199,7 @@ save_chef_dialog (GrChefDialog  *self,
         const char *id;
         const char *name;
         const char *fullname;
+        const char *image_path;
         g_autofree char *description = NULL;
         GtkTextBuffer *buffer;
         GtkTextIter start, end;
@@ -203,6 +214,7 @@ save_chef_dialog (GrChefDialog  *self,
         buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->description));
         gtk_text_buffer_get_bounds (buffer, &start, &end);
         description = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
+        image_path = self->ri ? gr_image_get_path (self->ri) : NULL;
 
         store = gr_recipe_store_get ();
 
@@ -211,7 +223,7 @@ save_chef_dialog (GrChefDialog  *self,
                               "fullname", fullname,
                               "name", name,
                               "description", description,
-                              "image-path", self->image_path,
+                              "image-path", image_path,
                               NULL);
                 ret = gr_recipe_store_update_chef (store, self->chef, id, error);
         }
@@ -230,7 +242,7 @@ save_chef_dialog (GrChefDialog  *self,
                               "fullname", fullname,
                               "name", name,
                               "description", description,
-                              "image-path", self->image_path,
+                              "image-path", image_path,
                               NULL);
 
                 ret = gr_recipe_store_add_chef (store, self->chef, error);
@@ -291,6 +303,10 @@ gr_chef_dialog_set_chef (GrChefDialog *self,
         gboolean same_chef;
         GrRecipeStore *store;
 
+        g_cancellable_cancel (self->cancellable);
+        g_clear_object (&self->cancellable);
+        g_clear_object (&self->ri);
+
         revert_changes (self);
 
         store = gr_recipe_store_get ();
@@ -317,7 +333,8 @@ gr_chef_dialog_set_chef (GrChefDialog *self,
                 gtk_text_buffer_set_text (gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->description)),
                                           description ? description : "", -1);
 
-                self->image_path = g_strdup (image_path);
+                self->ri = gr_image_new (gr_app_get_soup_session (GR_APP (g_application_get_default ())), gr_chef_get_id (chef), image_path);
+
 
                 if (gr_chef_is_readonly (chef)) {
                         gtk_widget_set_sensitive (self->fullname, FALSE);

@@ -360,7 +360,8 @@ load_recipes (GrRecipeStore *self,
                 if (paths) {
                         for (j = 0; paths[j]; j++) {
                                 GrImage *ri;
-                                ri = gr_image_new (paths[j]);
+                                ri = gr_image_new (gr_app_get_soup_session (GR_APP (g_application_get_default ())), id, paths[j]);
+
                                 g_ptr_array_add (images, ri);
                         }
                 }

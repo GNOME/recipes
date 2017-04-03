@@ -28,6 +28,7 @@
 #endif
 
 #include "gr-recipe-importer.h"
+#include "gr-app.h"
 #include "gr-image.h"
 #include "gr-chef.h"
 #include "gr-recipe.h"
@@ -288,6 +289,9 @@ import_recipe (GrRecipeImporter *importer)
 
         store = gr_recipe_store_get ();
 
+        author = (const char *)g_hash_table_lookup (importer->chef_id_map, importer->recipe_author);
+        id = generate_id ("R_", importer->recipe_name, "_by_", author, NULL);
+
         images = gr_image_array_new ();
         if (importer->recipe_paths) {
                 int i;
@@ -300,13 +304,11 @@ import_recipe (GrRecipeImporter *importer)
                                 return FALSE;
                         }
 
-                        ri = gr_image_new (new_path);
+                        ri = gr_image_new (gr_app_get_soup_session (GR_APP (g_application_get_default ())), id, new_path);
+
                         g_ptr_array_add (images, ri);
                 }
         }
-
-        author = (const char *)g_hash_table_lookup (importer->chef_id_map, importer->recipe_author);
-        id = generate_id ("R_", importer->recipe_name, "_by_", author, NULL);
 
         recipe = gr_recipe_new ();
         g_object_set (recipe,

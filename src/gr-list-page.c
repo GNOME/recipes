@@ -30,6 +30,8 @@
 #include "gr-utils.h"
 #include "gr-season.h"
 #include "gr-category-tile.h"
+#include "gr-image.h"
+#include "gr-app.h"
 
 struct _GrListPage
 {
@@ -42,6 +44,8 @@ struct _GrListPage
         gboolean new;
         char *season;
         GList *recipes;
+        GrImage *ri;
+        GCancellable *cancellable;
 
         GtkWidget *top_box;
         GtkWidget *list_stack;
@@ -73,6 +77,9 @@ clear_data (GrListPage *self)
                                                 gr_chef_get_id (self->chef));
         }
 
+        g_cancellable_cancel (self->cancellable);
+        g_clear_object (&self->cancellable);
+        g_clear_object (&self->ri);
         g_clear_object (&self->chef);
         self->diet = 0;
         self->favorites = FALSE;
@@ -88,6 +95,9 @@ list_page_finalize (GObject *object)
 {
         GrListPage *self = GR_LIST_PAGE (object);
 
+        g_cancellable_cancel (self->cancellable);
+        g_clear_object (&self->cancellable);
+        g_clear_object (&self->ri);
         g_clear_object (&self->chef);
         g_clear_pointer (&self->season, g_free);
         g_list_free_full (self->recipes, g_object_unref);
@@ -317,14 +327,14 @@ gr_list_page_populate_from_chef (GrListPage *self,
         description = gr_chef_get_translated_description (chef) ? gr_chef_get_translated_description (chef) : "";
         path = gr_chef_get_image (chef);
 
+        gtk_image_clear (GTK_IMAGE (self->chef_image));
         if (path && path[0]) {
-                g_autoptr(GdkPixbuf) pixbuf = NULL;
+                self->ri = gr_image_new (gr_app_get_soup_session (GR_APP (g_application_get_default ())),
+                                         gr_chef_get_id (chef),
+                                         path);
+                self->cancellable = g_cancellable_new ();
 
-                pixbuf = load_pixbuf_fill_size (path, 64, 64);
-                gtk_image_set_from_pixbuf (GTK_IMAGE (self->chef_image), pixbuf);
-        }
-        else {
-                gtk_image_clear (GTK_IMAGE (self->chef_image));
+                gr_image_load (self->ri, 64, 64, FALSE, self->cancellable, gr_image_set_pixbuf, self->chef_image);
         }
 
         gtk_widget_show (self->chef_grid);
