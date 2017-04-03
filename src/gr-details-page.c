@@ -362,6 +362,108 @@ dismiss_error (GrDetailsPage *page)
 }
 
 static void
+contribute_one_image (const char *path,
+                      const char *base_dir,
+                      const char *image_dir,
+                      const char *thumbnail_dir,
+                      int         size)
+{
+        g_autofree char *basename = NULL;
+        g_autofree char *source = NULL;
+        g_autofree char *dest = NULL;
+        g_autofree char *dest2 = NULL;
+        g_autoptr(GFile) s = NULL;
+        g_autoptr(GFile) d = NULL;
+        g_autoptr(GError) error = NULL;
+        g_autoptr(GdkPixbuf) pixbuf = NULL;
+        g_autoptr(GdkPixbuf) pixbuf2 = NULL;
+        int width, height;
+
+        basename = g_path_get_basename (path);
+        source = g_build_filename (base_dir, path, NULL);
+        dest = g_build_filename (image_dir, basename, NULL);
+        s = g_file_new_for_path (source);
+        d = g_file_new_for_path (dest);
+        if (!g_file_copy (s, d, 0, NULL, NULL, NULL, &error)) {
+                g_message ("Darn! %s", error->message);
+                g_clear_error (&error);
+        }
+
+        dest2 = g_build_filename (thumbnail_dir, basename, NULL);
+        pixbuf = gdk_pixbuf_new_from_file (source, &error);
+        if (!pixbuf) {
+                g_message ("Darn! %s", error->message);
+                g_clear_error (&error);
+                return;
+        }
+
+        width = gdk_pixbuf_get_width (pixbuf);
+        height = gdk_pixbuf_get_height (pixbuf);
+        if (width > height) {
+                height = size * height / width;
+                width = size;
+        }
+        else {
+                width = size * width / height;
+                height = size;
+        }
+        pixbuf2 = gdk_pixbuf_scale_simple (pixbuf, width, height, GDK_INTERP_BILINEAR);
+        if (g_str_has_suffix (dest2, "png"))
+                gdk_pixbuf_save (pixbuf2, dest2, "png", &error, "compression", "9", NULL);
+        else
+                gdk_pixbuf_save (pixbuf2, dest2, "jpeg", &error, "quality", "75", NULL);
+        if (error) {
+                g_message ("Darn! %s", error->message);
+                g_clear_error (&error);
+        }
+}
+
+static void
+contribute (GtkButton *button, GrDetailsPage *page)
+{
+        const char *contrib_dir;
+        const char *base_dir;
+        const char *id;
+        g_autofree char *image_dir = NULL;
+        g_autofree char *thumbnail_dir = NULL;
+        GPtrArray *images = NULL;
+        int i;
+
+        contrib_dir = g_getenv ("RECIPES_CONTRIB_DIR");
+        base_dir = g_getenv ("RECIPES_BASE_DIR");
+        id = gr_recipe_get_id (page->recipe);
+
+        image_dir = g_build_filename (contrib_dir, "v1", "images", id, NULL);
+        if (!g_file_test (image_dir, G_FILE_TEST_EXISTS)) {
+                g_mkdir_with_parents (image_dir, 0755);
+        }
+        thumbnail_dir = g_build_filename (contrib_dir, "v1", "thumbnails", id, NULL);
+        if (!g_file_test (thumbnail_dir, G_FILE_TEST_EXISTS)) {
+                g_mkdir_with_parents (thumbnail_dir, 0755);
+        }
+
+        images = gr_recipe_get_images (page->recipe);
+        for (i = 0; i < images->len; i++) {
+                GrImage *ri = (GrImage *)g_ptr_array_index (images, i);
+                contribute_one_image (gr_image_get_path (ri), base_dir, image_dir, thumbnail_dir, 150);
+        }
+
+        g_free (image_dir);
+        g_free (thumbnail_dir);
+        id = gr_chef_get_id (page->chef);
+        image_dir = g_build_filename (contrib_dir, "v1", "images", id, NULL);
+        if (!g_file_test (image_dir, G_FILE_TEST_EXISTS)) {
+                g_mkdir_with_parents (image_dir, 0755);
+        }
+        thumbnail_dir = g_build_filename (contrib_dir, "v1", "thumbnails", id, NULL);
+        if (!g_file_test (thumbnail_dir, G_FILE_TEST_EXISTS)) {
+                g_mkdir_with_parents (thumbnail_dir, 0755);
+        }
+
+        contribute_one_image (gr_chef_get_image (page->chef), base_dir, image_dir, thumbnail_dir, 128);
+}
+
+static void
 gr_details_page_init (GrDetailsPage *page)
 {
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
@@ -381,6 +483,17 @@ gr_details_page_init (GrDetailsPage *page)
 #ifdef ENABLE_AUTOAR
         gtk_widget_show (page->export_button);
 #endif
+
+        if (g_getenv ("RECIPES_CONTRIB_DIR")) {
+                GtkWidget *button;
+                GtkWidget *parent;
+
+                button = gtk_button_new_with_label ("Contribute");
+                gtk_widget_show (button);
+                g_signal_connect (button, "clicked", G_CALLBACK (contribute), page);
+                parent = gtk_widget_get_ancestor (page->export_button, GTK_TYPE_ACTION_BAR);
+                gtk_container_add (GTK_CONTAINER (parent), button);
+        }
 }
 
 static void
