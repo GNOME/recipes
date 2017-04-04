@@ -502,10 +502,7 @@ save_recipes (GrRecipeStore *self)
 
         keyfile = g_key_file_new ();
 
-        if (g_getenv ("RECIPES_DATA_DIR"))
-                dir = g_getenv ("RECIPES_DATA_DIR");
-        else
-                dir = get_user_data_dir ();
+        dir = get_user_data_dir ();
         path = g_build_filename (dir, "recipes.db", NULL);
 
         g_info ("Save recipe db: %s", path);
@@ -851,10 +848,7 @@ save_chefs (GrRecipeStore *store)
 
         keyfile = g_key_file_new ();
 
-        if (g_getenv ("RECIPES_DATA_DIR"))
-                dir = g_getenv ("RECIPES_DATA_DIR");
-        else
-                dir = get_user_data_dir ();
+        dir = get_user_data_dir ();
         path = g_build_filename (dir, "chefs.db", NULL);
 
         g_info ("Save chefs db: %s", path);
@@ -931,21 +925,6 @@ gr_recipe_store_init (GrRecipeStore *self)
         uninstalled_dir = g_build_filename (current_dir, "data", NULL);
 
         load_user (self, user_dir);
-
-        if (g_getenv ("RECIPES_DATA_DIR")) {
-                const char *dir = g_getenv ("RECIPES_DATA_DIR");
-
-                g_info ("Loading data from RECIPES_DATA_DIR: %s", dir);
-
-                load_recipes (self, dir, FALSE);
-                load_chefs (self, dir, FALSE);
-                load_picks (self, dir);
-
-                g_info ("%d recipes loaded", g_hash_table_size (self->recipes));
-                g_info ("%d chefs loaded", g_hash_table_size (self->chefs));
-
-                return;
-        }
 
         /* First load preinstalled data */
         if (!load_recipes (self, data_dir, TRUE))
