@@ -52,7 +52,16 @@ brew install automake
 brew install libtool
 brew install gettext
 brew install pkg-config
+brew install mason
 ```
+- MacOS Sierra and Gettext
+On Sierra (at the least) gettext formula is keg only, in order to let the configuration script
+to find msgfmt you will need to link the gettext package into the system. If you think this might
+break other builds I would recommend to unlink (``brew unlink gettext``) after the compilation process.
+```
+brew link --force gettext
+```
+
 - Install GTK+ and other dependencies:
 ```
 brew install gtk+3
@@ -61,7 +70,7 @@ brew install gspell
 ```
 - Clone from git:
 ```
-git clone git://git.gnome.org/recipes
+git clone --recursive git://git.gnome.org/recipes
 ```
 - Build from git as usual, disabling some problematic dependencies:
 ```
