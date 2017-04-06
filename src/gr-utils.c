@@ -125,6 +125,22 @@ get_user_data_dir (void)
 }
 
 const char *
+get_user_cache_dir (void)
+{
+        static char *dir = NULL;
+
+        if (!dir) {
+                if (in_flatpak_sandbox ())
+                        dir = g_strdup (g_get_user_cache_dir ());
+                else
+                        dir = g_build_filename (g_get_user_cache_dir (), PACKAGE_NAME, NULL);
+                g_mkdir_with_parents (dir, S_IRWXU | S_IRWXG | S_IRWXO);
+        }
+
+        return (const char *)dir;
+}
+
+const char *
 get_pkg_data_dir (void)
 {
         static char *dir = NULL;

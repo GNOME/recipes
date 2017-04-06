@@ -38,6 +38,7 @@ void pixbuf_blur (GdkPixbuf *src,
 
 const char *get_pkg_data_dir  (void);
 const char *get_user_data_dir (void);
+const char *get_user_cache_dir (void);
 
 void    container_remove_all (GtkContainer *container);
 
