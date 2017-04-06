@@ -24,6 +24,7 @@
 #include <glib.h>
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
+#include <libsoup/soup.h>
 
 #include "gr-recipe-store.h"
 #include "gr-recipe.h"
@@ -147,6 +148,9 @@ struct _GrRecipeStore
 
         GDateTime *favorite_change;
         GDateTime *shopping_change;
+
+        SoupSession *session;
+        SoupMessage *recipes_message;
 };
 
 
@@ -168,6 +172,8 @@ gr_recipe_store_finalize (GObject *object)
         g_variant_dict_unref (self->shopping_list);
         g_strfreev (self->featured_chefs);
         g_free (self->user);
+        g_clear_object (&self->recipes_message);
+        g_clear_object (&self->session);
 
         G_OBJECT_CLASS (gr_recipe_store_parent_class)->finalize (object);
 }
@@ -908,6 +914,186 @@ load_user (GrRecipeStore *self,
         self->user = g_strdup (user);
 }
 
+static char *
+get_data_cache_dir (void)
+{
+        char *cache_dir = NULL;
+
+        cache_dir = g_build_filename (get_user_cache_dir (), "data", NULL);
+        g_mkdir_with_parents (cache_dir, 0755);
+
+        return cache_dir;
+}
+
+static gboolean
+should_try_load (const char *path)
+{
+        g_autoptr(GFile) file = NULL;
+        g_autoptr(GFileInfo) info = NULL;
+        gboolean result = TRUE;
+
+        file = g_file_new_for_path (path);
+        info = g_file_query_info (file,
+                                  G_FILE_ATTRIBUTE_TIME_MODIFIED,
+                                  G_FILE_QUERY_INFO_NONE,
+                                  NULL,
+                                  NULL);
+        if (info) {
+                GTimeVal tv;
+                g_autoptr(GDateTime) now = NULL;
+                g_autoptr(GDateTime) mtime = NULL;
+
+                g_file_info_get_modification_time (info, &tv);
+
+                now = g_date_time_new_now_utc ();
+                mtime = g_date_time_new_from_timeval_utc (&tv);
+
+                result = g_date_time_difference (now, mtime) > G_TIME_SPAN_DAY;
+                g_debug ("Cached file for %s is %s",
+                         path,
+                         result ? "old, trying again" : "new enough");
+        }
+
+        return result;
+}
+
+static void
+set_modified_request (SoupMessage *msg,
+                      const char  *path)
+{
+        g_autoptr(GFile) file = NULL;
+        g_autoptr(GFileInfo) info = NULL;
+        GTimeVal tv;
+        g_autoptr(GDateTime) mtime = NULL;
+        g_autofree char *mod_date = NULL;
+
+        file = g_file_new_for_path (path);
+        info = g_file_query_info (file,
+                                  G_FILE_ATTRIBUTE_TIME_MODIFIED,
+                                  G_FILE_QUERY_INFO_NONE,
+                                  NULL,
+                                  NULL);
+
+        g_file_info_get_modification_time (info, &tv);
+        mtime = g_date_time_new_from_timeval_utc (&tv);
+        mod_date = g_date_time_format (mtime, "%a, %d %b %Y %H:%M:%S %Z");
+        soup_message_headers_append (msg->request_headers, "If-Modified-Since", mod_date);
+}
+
+
+static void
+update_file_timestamp (const char *path)
+{
+        g_autoptr(GFile) file = NULL;
+        g_autoptr(GDateTime) now = NULL;
+        guint64 mtime;
+
+        now = g_date_time_new_now_utc ();
+        mtime = (guint64)g_date_time_to_unix (now);
+
+        file = g_file_new_for_path (path);
+        g_file_set_attribute_uint64 (file, G_FILE_ATTRIBUTE_TIME_MODIFIED, mtime, 0, NULL, NULL);
+        g_debug ("updating timestamp for %s", path);
+}
+
+static void
+save_file (SoupSession *session,
+           SoupMessage *msg,
+           gpointer     data)
+{
+        GrRecipeStore *self = data;
+        const char *cache_dir;
+        g_autofree char *filename = NULL;
+        const char *argv[5];
+        g_autofree char *cmdline = NULL;
+
+        if (msg->status_code == SOUP_STATUS_CANCELLED || self->session == NULL) {
+                g_debug ("Message cancelled");
+                goto out;
+        }
+
+        cache_dir = get_user_cache_dir ();
+        filename = g_build_filename (cache_dir, "data.tar.gz", NULL);
+
+        if (msg->status_code == SOUP_STATUS_NOT_MODIFIED) {
+                g_autofree char *f = NULL;
+
+                g_debug ("File not modified");
+                f = g_build_filename (cache_dir, "data", "recipes.db", NULL);
+                update_file_timestamp (f);
+        }
+        else if (msg->status_code == SOUP_STATUS_OK) {
+                g_debug ("Saving file to %s", filename);
+                if (!g_file_set_contents (filename, msg->response_body->data, msg->response_body->length, NULL)) {
+                        g_debug ("Saving file to %s failed", filename);
+                        goto out;
+                }
+        }
+        else {
+                g_warning ("Failed to load %s", filename);
+                goto out;
+        }
+
+        argv[0] = "tar";
+        argv[1] = "-xf";
+        argv[2] = "data.tar.gz";
+        argv[3] = "--overwrite";
+        argv[4] = NULL;
+
+        // FIXME use libarchive instead
+        g_debug ("Running %s", cmdline = g_strjoinv (" ", (char **)argv));
+        g_spawn_async (cache_dir, (char **)argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, NULL);
+
+        // TODO reload data
+        // TODO recheck periodically
+out:
+        g_clear_object (&self->recipes_message);
+}
+
+#define BASE_URL "https://static.gnome.org/recipes/v1"
+
+static char *
+get_file_url (const char *basename)
+{
+        return g_strconcat (BASE_URL, "/", basename, NULL);
+}
+
+static gboolean
+load_updates (GrRecipeStore *self)
+{
+        g_autofree char *cache_dir = NULL;
+        g_autofree char *locale = NULL;
+        g_autofree char *filename = NULL;
+
+        self->session = gr_app_get_soup_session (GR_APP (g_application_get_default ()));
+
+        cache_dir = get_data_cache_dir ();
+        filename = g_build_filename (cache_dir, "recipes.db", NULL);
+        if (should_try_load (filename)) {
+                g_autofree char *url;
+                g_autoptr(SoupURI) base_uri = NULL;
+
+                url = get_file_url ("data.tar.gz");
+                base_uri = soup_uri_new (url);
+                self->recipes_message = soup_message_new_from_uri (SOUP_METHOD_GET, base_uri);
+                set_modified_request (self->recipes_message, filename);
+                g_debug ("Load file for data.tar.gz from %s", url);
+                soup_session_queue_message (self->session, g_object_ref (self->recipes_message), save_file, self);
+        }
+
+        if (!g_file_test (filename, G_FILE_TEST_EXISTS))
+                return FALSE;
+
+        locale = g_build_filename (cache_dir, "locale", NULL);
+        bindtextdomain (GETTEXT_PACKAGE "-data", locale);
+
+        load_recipes (self, cache_dir, TRUE);
+        load_chefs (self, cache_dir, TRUE);
+        load_picks (self, cache_dir);
+
+        return TRUE;
+}
+
 static void
 gr_recipe_store_init (GrRecipeStore *self)
 {
@@ -923,9 +1109,11 @@ gr_recipe_store_init (GrRecipeStore *self)
         load_user (self, user_dir);
 
         /* First load preinstalled data */
-        load_recipes (self, data_dir, TRUE);
-        load_chefs (self, data_dir, TRUE);
-        load_picks (self, data_dir);
+        if (!load_updates (self)) {
+                load_recipes (self, data_dir, TRUE);
+                load_chefs (self, data_dir, TRUE);
+                load_picks (self, data_dir);
+        }
 
         /* Now load saved data */
         load_recipes (self, user_dir, FALSE);
