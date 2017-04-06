@@ -185,7 +185,7 @@ get_image_cache_path (GrImage *ri)
         g_autofree char *basename = NULL;
 
         basename = g_path_get_basename (ri->path);
-        filename = g_build_filename (g_get_user_cache_dir (), PACKAGE_NAME, "images", ri->id,  basename, NULL);
+        filename = g_build_filename (get_user_cache_dir (), "images", ri->id,  basename, NULL);
         cache_dir = g_path_get_dirname (filename);
         g_mkdir_with_parents (cache_dir, 0755);
 
@@ -200,7 +200,7 @@ get_thumbnail_cache_path (GrImage *ri)
         g_autofree char *basename = NULL;
 
         basename = g_path_get_basename (ri->path);
-        filename = g_build_filename (g_get_user_cache_dir (), PACKAGE_NAME, "thumbnails", ri->id, basename, NULL);
+        filename = g_build_filename (get_user_cache_dir (), "thumbnails", ri->id, basename, NULL);
         cache_dir = g_path_get_dirname (filename);
         g_mkdir_with_parents (cache_dir, 0755);
 
