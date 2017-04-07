@@ -997,6 +997,74 @@ update_file_timestamp (const char *path)
 }
 
 static void
+empty_store (GrRecipeStore *self)
+{
+        GHashTableIter iter;
+        char *key;
+        GrRecipe *recipe;
+        GrChef *chef;
+
+        g_hash_table_iter_init (&iter, self->recipes);
+        while (g_hash_table_iter_next (&iter, (gpointer *)&key, (gpointer *)&recipe)) {
+                g_hash_table_iter_remove (&iter);
+        }
+
+        g_hash_table_iter_init (&iter, self->chefs);
+        while (g_hash_table_iter_next (&iter, (gpointer *)&key, (gpointer *)&chef)) {
+                g_hash_table_iter_remove (&iter);
+        }
+
+        g_clear_pointer (&self->todays, g_strfreev);
+        g_clear_pointer (&self->picks, g_strfreev);
+        g_clear_pointer (&self->favorites, g_strfreev);
+        g_clear_pointer (&self->export_list, g_strfreev);
+        g_clear_pointer (&self->featured_chefs, g_strfreev);
+        g_clear_pointer (&self->shopping_list, g_variant_dict_unref);
+}
+
+static void
+reload_updates (GrRecipeStore *self)
+{
+        g_autofree char *cache_dir = NULL;
+        const char *user_dir;
+
+        g_debug ("New data obtained, reloading!");
+
+        empty_store (self);
+
+        cache_dir = get_data_cache_dir ();
+        user_dir = get_user_data_dir ();
+
+        load_recipes (self, cache_dir, TRUE);
+        load_chefs (self, cache_dir, TRUE);
+        load_picks (self, cache_dir);
+
+        load_recipes (self, user_dir, FALSE);
+        load_chefs (self, user_dir, FALSE);
+        load_favorites (self);
+        load_export_list (self);
+        load_shopping (self);
+
+        g_signal_emit_by_name (self, "reloaded", 0);
+}
+
+static void
+tar_done (GObject      *source,
+          GAsyncResult *result,
+          gpointer      data)
+{
+        GrRecipeStore *self = data;
+        g_autoptr(GError) error = NULL;
+
+        if (!g_subprocess_wait_finish (G_SUBPROCESS (source), result, &error)) {
+                g_warning ("Failed to run tar: %s", error->message);
+                return;
+        }
+
+        reload_updates (self);
+}
+
+static void
 save_file (SoupSession *session,
            SoupMessage *msg,
            gpointer     data)
@@ -1006,6 +1074,9 @@ save_file (SoupSession *session,
         g_autofree char *filename = NULL;
         const char *argv[5];
         g_autofree char *cmdline = NULL;
+        g_autoptr(GSubprocess) subprocess = NULL;
+        g_autoptr(GSubprocessLauncher) launcher = NULL;
+        g_autoptr(GError) error = NULL;
 
         if (msg->status_code == SOUP_STATUS_CANCELLED || self->session == NULL) {
                 g_debug ("Message cancelled");
@@ -1042,10 +1113,15 @@ save_file (SoupSession *session,
 
         // FIXME use libarchive instead
         g_debug ("Running %s", cmdline = g_strjoinv (" ", (char **)argv));
-        g_spawn_async (cache_dir, (char **)argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, NULL);
+        launcher = g_subprocess_launcher_new (0);
+        g_subprocess_launcher_set_cwd (launcher, cache_dir);
+        subprocess = g_subprocess_launcher_spawnv (launcher, argv, &error);
+        if (!subprocess) {
+                g_warning ("Failed to create command: %s", error->message);
+                goto out;
+        }
 
-        // TODO reload data
-        // TODO recheck periodically
+        g_subprocess_wait_async (subprocess, NULL, tar_done, self);
 out:
         g_clear_object (&self->recipes_message);
 }
@@ -1059,13 +1135,11 @@ get_file_url (const char *basename)
 }
 
 static gboolean
-load_updates (GrRecipeStore *self)
+load_updates (gpointer data)
 {
+        GrRecipeStore *self = data;
         g_autofree char *cache_dir = NULL;
-        g_autofree char *locale = NULL;
         g_autofree char *filename = NULL;
-
-        self->session = gr_app_get_soup_session (GR_APP (g_application_get_default ()));
 
         cache_dir = get_data_cache_dir ();
         filename = g_build_filename (cache_dir, "recipes.db", NULL);
@@ -1081,17 +1155,9 @@ load_updates (GrRecipeStore *self)
                 soup_session_queue_message (self->session, g_object_ref (self->recipes_message), save_file, self);
         }
 
-        if (!g_file_test (filename, G_FILE_TEST_EXISTS))
-                return FALSE;
+        g_timeout_add_seconds (24 * 60 * 60, load_updates, data);
 
-        locale = g_build_filename (cache_dir, "locale", NULL);
-        bindtextdomain (GETTEXT_PACKAGE "-data", locale);
-
-        load_recipes (self, cache_dir, TRUE);
-        load_chefs (self, cache_dir, TRUE);
-        load_picks (self, cache_dir);
-
-        return TRUE;
+        return G_SOURCE_REMOVE;
 }
 
 static void
@@ -1099,17 +1165,34 @@ gr_recipe_store_init (GrRecipeStore *self)
 {
         const char *data_dir;
         const char *user_dir;
+        g_autofree char *cache_dir = NULL;
 
         self->recipes = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);
         self->chefs = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);
+        self->session = gr_app_get_soup_session (GR_APP (g_application_get_default ()));
 
         data_dir = get_pkg_data_dir ();
         user_dir = get_user_data_dir ();
+        cache_dir = get_data_cache_dir ();
 
         load_user (self, user_dir);
 
+        load_updates (self);
+
         /* First load preinstalled data */
-        if (!load_updates (self)) {
+#if 0
+        if (load_recipes (self, cache_dir, TRUE)) {
+                g_autofree char *locale = NULL;
+
+                locale = g_build_filename (cache_dir, "locale", NULL);
+                bindtextdomain (GETTEXT_PACKAGE "-data", locale);
+
+                load_chefs (self, cache_dir, TRUE);
+                load_picks (self, cache_dir);
+        }
+        else 
+#endif
+{
                 load_recipes (self, data_dir, TRUE);
                 load_chefs (self, data_dir, TRUE);
                 load_picks (self, data_dir);
@@ -1130,6 +1213,7 @@ static guint add_signal;
 static guint remove_signal;
 static guint changed_signal;
 static guint chefs_changed_signal;
+static guint reloaded_signal;
 
 static void
 gr_recipe_store_class_init (GrRecipeStoreClass *klass)
@@ -1166,6 +1250,13 @@ gr_recipe_store_class_init (GrRecipeStoreClass *klass)
                                              NULL, NULL,
                                              NULL,
                                              G_TYPE_NONE, 0);
+        reloaded_signal = g_signal_new ("reloaded",
+                                        G_TYPE_FROM_CLASS (object_class),
+                                        G_SIGNAL_RUN_LAST,
+                                        0,
+                                        NULL, NULL,
+                                        NULL,
+                                        G_TYPE_NONE, 0);
 }
 
 GrRecipeStore *
