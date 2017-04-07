@@ -335,4 +335,5 @@ connect_store_signals (GrCuisinesPage *page)
         g_signal_connect_swapped (store, "recipe-added", G_CALLBACK (cuisines_page_reload), page);
         g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (cuisines_page_reload), page);
         g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (cuisines_page_reload), page);
+        g_signal_connect_swapped (store, "reloaded", G_CALLBACK (gr_cuisines_page_refresh), page);
 }

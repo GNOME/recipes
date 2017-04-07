@@ -457,6 +457,14 @@ refresh_chefs (GrRecipesPage *self)
 }
 
 static void
+reloaded (GrRecipesPage *self)
+{
+        populate_recipes_from_store (self);
+        populate_shopping_from_store (self);
+        populate_chefs_from_store (self);
+}
+
+static void
 connect_store_signals (GrRecipesPage *page)
 {
         GrRecipeStore *store;
@@ -467,4 +475,5 @@ connect_store_signals (GrRecipesPage *page)
         g_signal_connect_swapped (store, "recipe-removed", G_CALLBACK (repopulate_recipes), page);
         g_signal_connect_swapped (store, "recipe-changed", G_CALLBACK (repopulate_recipes), page);
         g_signal_connect_swapped (store, "chefs-changed", G_CALLBACK (refresh_chefs), page);
+        g_signal_connect_swapped (store, "reloaded", G_CALLBACK (reloaded), page);
 }
