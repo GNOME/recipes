@@ -457,7 +457,7 @@ portal_available (GtkWindow  *window,
 
         if (strcmp (interface, "org.freedesktop.portal.FileChooser") == 0)
                 message1 = _("Missing the desktop portal needed to open files from inside a Flatpak sandbox.");
-        else if (strcmp (interface, "org.freedestkop.portal.Print") == 0)
+        else if (strcmp (interface, "org.freedesktop.portal.Print") == 0)
                 message1 = _("Missing the desktop portal needed to print from inside a Flatpak sandbox.");
         else if (strcmp (interface, "org.freedesktop.portal.OpenURI") == 0)
                 message1 = _("Missing the desktop portal needed to open URLs from inside a Flatpak sandbox.");
