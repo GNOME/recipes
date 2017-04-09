@@ -281,9 +281,6 @@ set_modified_request (SoupMessage *msg,
 {
         g_autoptr(GFile) file = NULL;
         g_autoptr(GFileInfo) info = NULL;
-        GTimeVal tv;
-        g_autoptr(GDateTime) mtime = NULL;
-        g_autofree char *mod_date = NULL;
 
         file = g_file_new_for_path (path);
         info = g_file_query_info (file,
@@ -291,11 +288,16 @@ set_modified_request (SoupMessage *msg,
                                   G_FILE_QUERY_INFO_NONE,
                                   NULL,
                                   NULL);
+        if (info) {
+                GTimeVal tv;
+                g_autoptr(GDateTime) mtime = NULL;
+                g_autofree char *mod_date = NULL;
 
-        g_file_info_get_modification_time (info, &tv);
-        mtime = g_date_time_new_from_timeval_utc (&tv);
-        mod_date = g_date_time_format (mtime, "%a, %d %b %Y %H:%M:%S %Z");
-        soup_message_headers_append (msg->request_headers, "If-Modified-Since", mod_date);
+                g_file_info_get_modification_time (info, &tv);
+                mtime = g_date_time_new_from_timeval_utc (&tv);
+                mod_date = g_date_time_format (mtime, "%a, %d %b %Y %H:%M:%S %Z");
+                soup_message_headers_append (msg->request_headers, "If-Modified-Since", mod_date);
+        }
 }
 
 static void
