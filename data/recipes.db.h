@@ -1,5 +1,13 @@
 #if 0
 
+N_("Crispy olives")
+N_("These olives in cheese dough are quick and easy to make and are great as a side dish or snack.")
+N_("[image:1]Grate the cheese.")
+N_("[image:4]Mix the flour and butter into a dough, add the cheese and salt and knead it until it is smooth.")
+N_("[timer:00:30:00,Rise]Form the dough into a roll and let it rise in the fridge for 30 minutes.")
+N_("[image:2]Cut the dough roll into 1 cm long slices and press the olives into them. You can roll the dough between your hands until it forms a little ball around the olive.")
+N_("[timer:00:20:00,Bake]Bake for 20 minutes at [temperature:220C].")
+N_("[image:0]Enjoy!")
 N_("Neapolitan Pizza")
 N_("Original pizza dough from Naples with tomato sauce on pizza stone.")
 N_("Toppings are not included in the recipe.")
