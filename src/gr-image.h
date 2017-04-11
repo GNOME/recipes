@@ -37,6 +37,7 @@ void        gr_image_set_id      (GrImage           *image,
 void        gr_image_set_path    (GrImage           *image,
                                   const char        *path);
 const char *gr_image_get_path    (GrImage           *image);
+char       *gr_image_get_cache_path (GrImage        *image);
 GdkPixbuf  *gr_image_load_sync   (GrImage           *image,
                                   int                 width,
                                   int                 height,

@@ -192,6 +192,12 @@ get_image_cache_path (GrImage *ri)
         return filename;
 }
 
+char *
+gr_image_get_cache_path (GrImage *image)
+{
+        return get_image_cache_path (image);
+}
+
 static char *
 get_thumbnail_cache_path (GrImage *ri)
 {
