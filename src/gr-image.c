@@ -65,9 +65,6 @@ gr_image_finalize (GObject *object)
 {
         GrImage *ri = GR_IMAGE (object);
 
-        g_list_free_full (ri->pending, task_data_free);
-        ri->pending = NULL;
-
         if (ri->thumbnail_message)
                 soup_session_cancel_message (ri->session,
                                              ri->thumbnail_message,
@@ -81,6 +78,9 @@ gr_image_finalize (GObject *object)
         g_clear_object (&ri->session);
         g_free (ri->path);
         g_free (ri->id);
+
+        g_list_free_full (ri->pending, task_data_free);
+        ri->pending = NULL;
 
         G_OBJECT_CLASS (gr_image_parent_class)->finalize (object);
 }
@@ -317,7 +317,7 @@ set_image (SoupSession *session,
 
         if (msg->status_code == SOUP_STATUS_CANCELLED || ri->session == NULL) {
                 g_debug ("Message cancelled");
-                goto error;
+                return;
         }
 
         if (msg == ri->thumbnail_message)
@@ -394,7 +394,6 @@ out:
         if (ri->thumbnail_message || ri->image_message)
                 return;
 
-error:
         g_list_free_full (ri->pending, task_data_free);
         ri->pending = NULL;
 }
