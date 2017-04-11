@@ -1,4 +1,5 @@
 src = []
+src_incs = []
 enums = []
 
 # These generated files are #included
@@ -6,11 +7,14 @@ list_to_c = find_program('list_to_c.py')
 foreach f : ['segments', 'ingredients']
   ofile = f + '.inc'
   ifile = files('../data/' + f + '.list')
-  src += [custom_target(f,
-                        output : ofile,
-                        input : ifile,
-                        command : [list_to_c, '@INPUT@', '@OUTPUT@', ''])]
+  src_incs += [custom_target(f,
+                             output : ofile,
+                             input : ifile,
+                             command : [list_to_c, '@INPUT@', '@OUTPUT@', ''])]
 endforeach
+
+src += src_incs
+
 ofile = 'no-ingredients.inc'
 ifile = files('../data/ingredients.list')
 src += [custom_target('no-ingredients',

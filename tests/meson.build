@@ -7,7 +7,7 @@ env.set('MALLOC_CHECK_', '2')
 # FIXME: Add a meson helper to get a random number
 env.set('MALLOC_PERTURB_', '113') # Guaranteed random!
 
-ingredients = executable('ingredients', 'ingredients-test.c',
+ingredients = executable('ingredients', 'ingredients-test.c', src_incs,
                          include_directories : tests_inc,
                          dependencies: deps)
 test('ingredients', ingredients, env : env)
