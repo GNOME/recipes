@@ -31,6 +31,7 @@
 #include "gr-recipe-formatter.h"
 #include "gr-image.h"
 #include "gr-chef.h"
+#include "gr-app.h"
 #include "gr-recipe.h"
 #include "gr-recipe-store.h"
 #include "gr-utils.h"
@@ -295,12 +296,16 @@ export_one_recipe (GrRecipeExporter  *exporter,
         paths = g_new0 (char *, images->len + 1);
         for (i = 0; i < images->len; i++) {
                 GrImage *ri = g_ptr_array_index (images, i);
+                g_autoptr(GdkPixbuf) pixbuf = NULL;
                 g_autoptr(GFile) source = NULL;
                 g_autoptr(GFile) dest = NULL;
+                g_autofree char *path = NULL;
                 g_autofree char *basename = NULL;
                 g_autofree char *destname = NULL;
 
-                source = g_file_new_for_path (gr_image_get_path (ri));
+                pixbuf = gr_image_load_sync (ri, 400, 400, TRUE);
+                path = gr_image_get_cache_path (ri);
+                source = g_file_new_for_path (path);
                 basename = g_file_get_basename (source);
                 destname = g_build_filename (imagedir, basename, NULL);
 
@@ -357,6 +362,7 @@ export_one_chef (GrRecipeExporter  *exporter,
         const char *fullname;
         const char *description;
         const char *image_path;
+        g_autoptr(GMainLoop) loop = NULL;
 
         key = gr_chef_get_id (chef);
         name = gr_chef_get_name (chef);
@@ -366,11 +372,18 @@ export_one_chef (GrRecipeExporter  *exporter,
         if (image_path && image_path[0]) {
                 g_autoptr(GFile) source = NULL;
                 g_autoptr(GFile) dest = NULL;
+                g_autoptr(GrImage) ri = NULL;
+                g_autoptr(GdkPixbuf) pixbuf = NULL;
                 g_autofree char *basename = NULL;
                 g_autofree char *destname = NULL;
                 g_autofree char *path = NULL;
+                g_autofree char *cache_path = NULL;
 
-                source = g_file_new_for_path (image_path);
+                ri = gr_image_new (gr_app_get_soup_session (GR_APP (g_application_get_default ())), gr_chef_get_id (chef), image_path);
+                pixbuf = gr_image_load_sync (ri, 400, 400, FALSE);
+
+                cache_path = gr_image_get_cache_path (ri);
+                source = g_file_new_for_path (cache_path);
                 basename = g_file_get_basename (source);
                 path = g_build_filename ("images", basename, NULL);
                 destname = g_build_filename (exporter->dir, path, NULL);
