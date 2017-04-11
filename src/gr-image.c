@@ -399,14 +399,15 @@ error:
         ri->pending = NULL;
 }
 
-void
-gr_image_load (GrImage         *ri,
-               int              width,
-               int              height,
-               gboolean         fit,
-               GCancellable    *cancellable,
-               GrImageCallback  callback,
-               gpointer         data)
+static void
+gr_image_load_full (GrImage         *ri,
+                    int              width,
+                    int              height,
+                    gboolean         fit,
+                    gboolean         do_thumbnail,
+                    GCancellable    *cancellable,
+                    GrImageCallback  callback,
+                    gpointer         data)
 {
         TaskData *td;
         g_autofree char *image_cache_path = NULL;
@@ -427,7 +428,7 @@ gr_image_load (GrImage         *ri,
         image_cache_path = get_image_cache_path (ri);
         thumbnail_cache_path = get_thumbnail_cache_path (ri);
 
-        need_thumbnail = should_try_load (thumbnail_cache_path);
+        need_thumbnail = do_thumbnail && should_try_load (thumbnail_cache_path);
         need_image = should_try_load (image_cache_path);
 
         if (width <= 150 && height <= 150) {
@@ -444,7 +445,7 @@ gr_image_load (GrImage         *ri,
                           ri->path);
                 callback (ri, pixbuf, data);
         }
-        else {
+        else if (do_thumbnail) {
                 int w = 150, h = 150;
 
                 if (width < height)
@@ -505,11 +506,39 @@ gr_image_load (GrImage         *ri,
 }
 
 void
+gr_image_load (GrImage         *ri,
+               int              width,
+               int              height,
+               gboolean         fit,
+               GCancellable    *cancellable,
+               GrImageCallback  callback,
+               gpointer         data)
+{
+        gr_image_load_full (ri, width, height, fit, TRUE, cancellable, callback, data);
+}
+
+void
 gr_image_set_pixbuf (GrImage   *ri,
                      GdkPixbuf *pixbuf,
                      gpointer   data)
 {
         gtk_image_set_from_pixbuf (GTK_IMAGE (data), pixbuf);
+}
+
+typedef struct {
+        GdkPixbuf *pixbuf;
+        GMainLoop *loop;
+} PbData;
+
+static void
+set_pixbuf (GrImage   *ri,
+            GdkPixbuf *pixbuf,
+            gpointer   data)
+{
+        PbData *pbd = data;
+
+        g_main_loop_quit (pbd->loop);
+        g_set_object (&pbd->pixbuf, pixbuf);
 }
 
 GdkPixbuf  *
@@ -518,28 +547,26 @@ gr_image_load_sync (GrImage   *ri,
                     int        height,
                     gboolean   fit)
 {
-        GdkPixbuf *pixbuf;
+        PbData data;
 
-        if (ri->path[0] == '/') {
-                pixbuf = load_pixbuf (ri->path, width, height, fit);
-        }
-        else {
-                g_autofree char *cache_path = NULL;
+        data.pixbuf = NULL;
+        data.loop = g_main_loop_new (NULL, FALSE);
 
-                cache_path = get_image_cache_path (ri);
-                pixbuf = load_pixbuf (cache_path, width, height, fit);
-        }
+        gr_image_load_full (ri, width, height, fit, FALSE, NULL, set_pixbuf, &data);
+        if (data.pixbuf == NULL)
+                g_main_loop_run (data.loop);
+        g_main_loop_unref (data.loop);
 
-        if (!pixbuf) {
+        if (!data.pixbuf) {
                 g_autoptr(GtkIconInfo) info = NULL;
 
                 info = gtk_icon_theme_lookup_icon (gtk_icon_theme_get_default (),
                                                    "org.gnome.Recipes",
                                                     256,
                                                     GTK_ICON_LOOKUP_FORCE_SIZE);
-                pixbuf = load_pixbuf (gtk_icon_info_get_filename (info), width, height, fit);
+                data.pixbuf = load_pixbuf (gtk_icon_info_get_filename (info), width, height, fit);
 
         }
 
-        return pixbuf;
+        return data.pixbuf;
 }
