@@ -596,7 +596,6 @@ setup_steps (GrCookingView *view)
                 step = g_ptr_array_index (steps, i);
                 data = step_data_new (i, steps->len, step->text, step->timer, step->title, step->image, view);
                 g_ptr_array_add (view->steps, data);
-
         }
 }
 
@@ -612,6 +611,12 @@ gr_cooking_view_set_data (GrCookingView *view,
         view->instructions = g_strdup (instructions);
         g_clear_pointer (&view->images, g_ptr_array_unref);
         view->images = g_ptr_array_ref (images);
+
+        gtk_widget_hide (view->cooking_heading);
+        gtk_widget_hide (view->cooking_label);
+        gtk_widget_hide (view->cooking_stack);
+        gtk_widget_set_halign (view->text_box, GTK_ALIGN_CENTER);
+        gtk_stack_set_visible_child_name (GTK_STACK (view->cooking_stack), "empty");
 
         setup_steps (view);
 }

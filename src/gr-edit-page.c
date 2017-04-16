@@ -2026,6 +2026,11 @@ gr_edit_page_clear (GrEditPage *page)
         images = gr_image_array_new ();
         g_object_set (page->images, "images", images, NULL);
 
+        gr_cooking_view_set_data (GR_COOKING_VIEW (page->cooking_view), NULL, "", images);
+        gr_cooking_view_set_step (GR_COOKING_VIEW (page->cooking_view), 0);
+        gtk_stack_set_visible_child_name (GTK_STACK (page->preview_stack), "edit");
+        preview_visible_changed (page);
+
         if (page->index_handler_id) {
                 g_signal_handler_disconnect (page->recipe, page->index_handler_id);
                 page->index_handler_id = 0;
