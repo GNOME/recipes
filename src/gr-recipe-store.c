@@ -1072,7 +1072,7 @@ save_file (SoupSession *session,
         GrRecipeStore *self = data;
         const char *cache_dir;
         g_autofree char *filename = NULL;
-        const char *argv[5];
+        const char *argv[6];
         g_autofree char *cmdline = NULL;
         g_autoptr(GSubprocess) subprocess = NULL;
         g_autoptr(GSubprocessLauncher) launcher = NULL;
@@ -1109,7 +1109,8 @@ save_file (SoupSession *session,
         argv[1] = "-xf";
         argv[2] = "data.tar.gz";
         argv[3] = "--overwrite";
-        argv[4] = NULL;
+        argv[4] = "--touch";
+        argv[5] = NULL;
 
         // FIXME use libarchive instead
         g_debug ("Running %s", cmdline = g_strjoinv (" ", (char **)argv));
