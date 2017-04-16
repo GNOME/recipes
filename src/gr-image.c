@@ -193,9 +193,12 @@ get_image_cache_path (GrImage *ri)
 }
 
 char *
-gr_image_get_cache_path (GrImage *image)
+gr_image_get_cache_path (GrImage *ri)
 {
-        return get_image_cache_path (image);
+        if (ri->path[0] == '/')
+                return g_strdup (ri->path);
+        else
+                return get_image_cache_path (ri);
 }
 
 static char *
