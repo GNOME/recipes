@@ -24,6 +24,7 @@
 
 #include "gr-ingredients-viewer.h"
 #include "gr-ingredients-viewer-row.h"
+#include "gr-ingredients-list.h"
 #include "gr-utils.h"
 
 
@@ -34,8 +35,13 @@ struct _GrIngredientsViewer
         GtkWidget *title_stack;
         GtkWidget *title_entry;
         GtkWidget *list;
+        GtkWidget *add_button;
 
-        char **ingredients;
+        char *title;
+        char *ingredients;
+        gboolean editable;
+
+        GtkSizeGroup *group;
 };
 
 
@@ -45,6 +51,7 @@ enum {
         PROP_0,
         PROP_TITLE,
         PROP_EDITABLE_TITLE,
+        PROP_EDITABLE,
         PROP_INGREDIENTS
 };
 
@@ -53,7 +60,10 @@ gr_ingredients_viewer_finalize (GObject *object)
 {
         GrIngredientsViewer *viewer = GR_INGREDIENTS_VIEWER (object);
 
-        g_strfreev (viewer->ingredients);
+        g_free (viewer->title);
+        g_free (viewer->ingredients);
+
+        g_clear_object (&viewer->group);
 
         G_OBJECT_CLASS (gr_ingredients_viewer_parent_class)->finalize (object);
 }
@@ -65,23 +75,25 @@ gr_ingredients_viewer_get_property (GObject    *object,
                                     GParamSpec *pspec)
 {
         GrIngredientsViewer *self = GR_INGREDIENTS_VIEWER (object);
+        const char *visible;
 
         switch (prop_id)
           {
           case PROP_TITLE:
-                g_value_set_string (value, gtk_entry_get_text (GTK_ENTRY (self->title_entry)));
+                g_value_set_string (value, self->title);
                 break;
 
-          case PROP_EDITABLE_TITLE: {
-                        const char *visible;
+          case PROP_EDITABLE_TITLE:
+                visible = gtk_stack_get_visible_child_name (GTK_STACK (self->title_stack));
+                g_value_set_boolean (value, strcmp (visible, "entry") == 0);
+                break;
 
-                        visible = gtk_stack_get_visible_child_name (GTK_STACK (self->title_stack));
-                        g_value_set_boolean (value, strcmp (visible, "entry") == 0);
-                }
+          case PROP_EDITABLE:
+                g_value_set_boolean (value, self->editable);
                 break;
 
           case PROP_INGREDIENTS:
-                g_value_set_boxed (value, self->ingredients);
+                g_value_set_string (value, self->ingredients);
                 break;
 
           default:
@@ -90,23 +102,60 @@ gr_ingredients_viewer_get_property (GObject    *object,
 }
 
 static void
-gr_ingredients_viewer_set_ingredients (GrIngredientsViewer  *viewer,
-                                       const char          **ings)
+gr_ingredients_viewer_set_ingredients (GrIngredientsViewer *viewer,
+                                       const char          *text)
 {
+        g_autoptr(GrIngredientsList) ingredients = NULL;
+        g_auto(GStrv) ings = NULL;
         int i;
 
-        g_strfreev (viewer->ingredients);
-        viewer->ingredients = g_strdupv ((char **)ings);
+        g_free (viewer->ingredients);
+        viewer->ingredients = g_strdup (text);
 
         container_remove_all (GTK_CONTAINER (viewer->list));
 
+        ingredients = gr_ingredients_list_new (text);
+        ings = gr_ingredients_list_get_ingredients (ingredients, viewer->title);
         for (i = 0; ings && ings[i]; i++) {
+                g_autofree char *s = NULL;
+                g_auto(GStrv) strv = NULL;
+                const char *amount;
+                const char *unit;
                 GtkWidget *row;
 
-                row = g_object_new (GR_TYPE_INGREDIENTS_VIEWER_ROW, "ingredient", ings[i], NULL);
+                s = gr_ingredients_list_scale_unit (ingredients, viewer->title, ings[i], 1, 1);
+                strv = g_strsplit (s, " ", 2);
+                amount = strv[0];
+                unit = strv[1] ? strv[1] : "";
+
+                row = g_object_new (GR_TYPE_INGREDIENTS_VIEWER_ROW,
+                                    "amount", amount,
+                                    "unit", unit,
+                                    "ingredient", ings[i],
+                                    "size-group", viewer->group,
+                                    "editable", viewer->editable,
+                                    NULL);
 
                 gtk_container_add (GTK_CONTAINER (viewer->list), row);
         }
+}
+
+static void
+gr_ingredients_viewer_set_title (GrIngredientsViewer *viewer,
+                                 const char          *title)
+{
+        g_free (viewer->title);
+        viewer->title = g_strdup (title);
+
+        gtk_entry_set_text (GTK_ENTRY (viewer->title_entry), title);
+}
+
+static void
+gr_ingredients_viewer_set_editable (GrIngredientsViewer *viewer,
+                                    gboolean             editable)
+{
+        viewer->editable = editable;
+        gtk_widget_set_visible (viewer->add_button, editable);
 }
 
 static void
@@ -120,7 +169,7 @@ gr_ingredients_viewer_set_property (GObject      *object,
         switch (prop_id)
           {
           case PROP_TITLE:
-                gtk_entry_set_text (GTK_ENTRY (self->title_entry), g_value_get_string (value));
+                gr_ingredients_viewer_set_title (self, g_value_get_string (value));
                 break;
 
           case PROP_EDITABLE_TITLE: {
@@ -132,8 +181,12 @@ gr_ingredients_viewer_set_property (GObject      *object,
                 }
                 break;
 
+          case PROP_EDITABLE:
+                gr_ingredients_viewer_set_editable (self, g_value_get_boolean (value));
+                break;
+
           case PROP_INGREDIENTS:
-                gr_ingredients_viewer_set_ingredients (self, (const char **)g_value_get_boxed (value));
+                gr_ingredients_viewer_set_ingredients (self, g_value_get_string (value));
                 break;
 
           default:
@@ -146,6 +199,10 @@ gr_ingredients_viewer_init (GrIngredientsViewer *self)
 {
         gtk_widget_set_has_window (GTK_WIDGET (self), FALSE);
         gtk_widget_init_template (GTK_WIDGET (self));
+
+        gtk_list_box_set_header_func (GTK_LIST_BOX (self->list), all_headers, self, NULL);
+
+        self->group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 }
 
 
@@ -165,18 +222,24 @@ gr_ingredients_viewer_class_init (GrIngredientsViewerClass *klass)
                                       G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_EDITABLE_TITLE, pspec);
 
+        pspec = g_param_spec_boolean ("editable", NULL, NULL,
+                                      FALSE,
+                                      G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_EDITABLE, pspec);
+
         pspec = g_param_spec_string ("title", NULL, NULL,
                                      NULL,
                                      G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_TITLE, pspec);
 
-        pspec = g_param_spec_boxed ("ingredients", NULL, NULL,
-                                    G_TYPE_STRV,
-                                    G_PARAM_READWRITE);
+        pspec = g_param_spec_string ("ingredients", NULL, NULL,
+                                     NULL,
+                                     G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_INGREDIENTS, pspec);
 
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-ingredients-viewer.ui");
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewer, title_stack);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewer, title_entry);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewer, list);
+        gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewer, add_button);
 }

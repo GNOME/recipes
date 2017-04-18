@@ -242,6 +242,19 @@
                         <property name="orientation">vertical</property>
                       </object>
                     </child>
+                    <child>
+                      <object class="GtkBox" id="ingredients_box2">
+                        <property name="visible">1</property>
+                        <property name="orientation">vertical</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton">
+                        <property name="visible">1</property>
+                        <property name="label" translatable="yes">Add List</property>
+                        <signal name="clicked" handler="add_list2"/>
+                      </object>
+                    </child>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>

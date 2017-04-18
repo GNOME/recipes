@@ -50,6 +50,7 @@
 #include "gr-account.h"
 #include "gr-recipe-tile.h"
 #include "gr-recipe-formatter.h"
+#include "gr-ingredients-viewer.h"
 
 
 struct _GrEditPage
@@ -92,6 +93,8 @@ struct _GrEditPage
         GtkWidget *author_label;
         GtkWidget *ingredients_box;
         GtkWidget *cooking_view;
+
+        GtkWidget *ingredients_box2;
 
         GtkWidget *ing_list;
         GtkWidget *ing_search_button;
@@ -164,6 +167,8 @@ dismiss_error (GrEditPage *page)
 
 static void add_image_cb (GrEditPage *page);
 static void set_unsaved (GrEditPage *page);
+
+static void add_list2   (GtkButton *button, GrEditPage *page);
 
 static void
 populate_image_flowbox (GrEditPage *page)
@@ -1621,6 +1626,9 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, ing_search_button_label);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, ing_search_revealer);
 
+        gtk_widget_class_bind_template_child (widget_class, GrEditPage, ingredients_box2);
+        gtk_widget_class_bind_template_callback (widget_class, add_list2);
+
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, unit_list);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, amount_search_button);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, amount_search_button_label);
@@ -1938,9 +1946,6 @@ static void
 populate_ingredients (GrEditPage *page,
                       const char *text)
 {
-        g_autoptr(GrIngredientsList) ingredients = NULL;
-        g_autofree char **segs = NULL;
-        int i, j;
         GtkWidget *button;
 
         container_remove_all (GTK_CONTAINER (page->ingredients_box));
@@ -1951,11 +1956,16 @@ populate_ingredients (GrEditPage *page,
         if (strcmp (text, "") == 0)
                 add_list (NULL, page);
         else {
+                g_autoptr(GrIngredientsList) ingredients = NULL;
+                g_autofree char **segs = NULL;
+                int j;
+
                 ingredients = gr_ingredients_list_new (text);
                 segs = gr_ingredients_list_get_segments (ingredients);
                 for (j = 0; segs[j]; j++) {
                         GtkWidget *list;
                         g_auto(GStrv) ings = NULL;
+                        int i;
 
                         list = add_ingredients_segment (page, segs[j]);
                         ings = gr_ingredients_list_get_ingredients (ingredients, segs[j]);
@@ -1983,6 +1993,55 @@ populate_ingredients (GrEditPage *page,
         gtk_box_pack_end (GTK_BOX (page->ingredients_box), button, FALSE, TRUE, 0);
         g_signal_connect (button, "clicked", G_CALLBACK (add_list), page);
         update_segments (page);
+
+        container_remove_all (GTK_CONTAINER (page->ingredients_box2));
+
+        if (strcmp (text, "") == 0) {
+                GtkWidget *list;
+
+                list = g_object_new (GR_TYPE_INGREDIENTS_VIEWER,
+                                     "title", "",
+                                     "editable-title", FALSE,
+                                     "editable", TRUE,
+                                     "ingredients", "",
+                                     NULL);
+                gtk_container_add (GTK_CONTAINER (page->ingredients_box2), list);
+        }
+        else {
+                g_autoptr(GrIngredientsList) ingredients = NULL;
+                g_autofree char **segs = NULL;
+                gboolean editable_title;
+                int j;
+
+                ingredients = gr_ingredients_list_new (text);
+                segs = gr_ingredients_list_get_segments (ingredients);
+                editable_title = g_strv_length (segs) > 1;
+                for (j = 0; segs[j]; j++) {
+                        GtkWidget *list;
+
+                        list = g_object_new (GR_TYPE_INGREDIENTS_VIEWER,
+                                             "title", segs[j],
+                                             "editable-title", editable_title,
+                                             "editable", TRUE,
+                                             "ingredients", text,
+                                             NULL);
+                        gtk_container_add (GTK_CONTAINER (page->ingredients_box2), list);
+                }
+        }
+}
+
+static void
+add_list2 (GtkButton *button, GrEditPage *page)
+{
+        GtkWidget *list;
+
+        list = g_object_new (GR_TYPE_INGREDIENTS_VIEWER,
+                             "title", "",
+                             "editable-title", TRUE,
+                             "editable", TRUE,
+                             "ingredients", "",
+                             NULL);
+        gtk_container_add (GTK_CONTAINER (page->ingredients_box2), list);
 }
 
 static void

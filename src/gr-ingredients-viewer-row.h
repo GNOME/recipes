@@ -28,6 +28,4 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrIngredientsViewerRow, gr_ingredients_viewer_row, GR, INGREDIENTS_VIEWER_ROW, GtkListBoxRow)
 
-GrIngredientsViewerRow *gr_ingredients_viewer_row_new (const char *ingredient);
-
 G_END_DECLS
