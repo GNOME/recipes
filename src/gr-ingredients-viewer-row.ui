@@ -6,7 +6,8 @@
       <object class="GtkBox" id="box">
         <property name="visible">1</property>
         <property name="spacing">12</property>
-        <property name="margin">6</property>
+        <property name="margin-start">6</property>
+        <property name="margin-end">6</property>
         <child>
           <object class="GtkLabel" id="unit_label">
             <property name="visible">1</property>
@@ -24,6 +25,103 @@
           <packing>
             <property name="expand">1</property>
           </packing>
+        </child>
+        <child>
+          <object class="GtkStack" id="buttons_stack">
+            <property name="visible">1</property>
+            <property name="halign">end</property>
+            <property name="transition-type">none</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">1</property>
+                <property name="opacity">0</property>
+              </object>
+              <packing>
+                <property name="name">empty</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">1</property>
+                <property name="orientation">horizontal</property>
+                <property name="margin">4</property>
+                <child>
+                  <object class="GtkButton">
+                    <property name="visible">1</property>
+                    <property name="relief">none</property>
+                    <signal name="clicked" handler="emit_move_up" swapped="yes"/>
+                    <style>
+                      <class name="image-button"/>
+                      <class name="circular"/>
+                    </style>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">1</property>
+                        <property name="icon-name">go-up-symbolic</property>
+                        <property name="icon-size">1</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="visible">1</property>
+                    <property name="relief">none</property>
+                    <signal name="clicked" handler="emit_move_down" swapped="yes"/>
+                    <style>
+                      <class name="image-button"/>
+                      <class name="circular"/>
+                    </style>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">1</property>
+                        <property name="icon-name">go-down-symbolic</property>
+                        <property name="icon-size">1</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="visible">1</property>
+                    <property name="relief">none</property>
+                    <style>
+                      <class name="image-button"/>
+                      <class name="circular"/>
+                    </style>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">1</property>
+                        <property name="icon-name">document-edit-symbolic</property>
+                        <property name="icon-size">1</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="visible">1</property>
+                    <property name="relief">none</property>
+                    <signal name="clicked" handler="emit_delete" swapped="yes"/>
+                    <style>
+                      <class name="image-button"/>
+                      <class name="circular"/>
+                    </style>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">1</property>
+                        <property name="icon-name">user-trash-symbolic</property>
+                        <property name="icon-size">1</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="name">buttons</property>
+              </packing>
+            </child>
+          </object>
         </child>
       </object>
     </child>

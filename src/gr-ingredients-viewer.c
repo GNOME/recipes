@@ -27,6 +27,10 @@
 #include "gr-ingredients-list.h"
 #include "gr-utils.h"
 
+#ifdef ENABLE_GSPELL
+#include <gspell/gspell.h>
+#endif
+
 
 struct _GrIngredientsViewer
 {
@@ -34,6 +38,7 @@ struct _GrIngredientsViewer
 
         GtkWidget *title_stack;
         GtkWidget *title_entry;
+        GtkWidget *title_label;
         GtkWidget *list;
         GtkWidget *add_button;
 
@@ -42,6 +47,8 @@ struct _GrIngredientsViewer
         gboolean editable;
 
         GtkSizeGroup *group;
+
+        GtkWidget *active_row;
 };
 
 
@@ -66,6 +73,35 @@ gr_ingredients_viewer_finalize (GObject *object)
         g_clear_object (&viewer->group);
 
         G_OBJECT_CLASS (gr_ingredients_viewer_parent_class)->finalize (object);
+}
+
+static void
+set_active_row (GrIngredientsViewer *viewer,
+                GtkWidget           *row)
+{
+        if (viewer->active_row)
+                g_object_set (viewer->active_row, "active", FALSE, NULL);
+        viewer->active_row = row;
+        if (viewer->active_row)
+                g_object_set (viewer->active_row, "active", TRUE, NULL);
+        // TODO: notify a property so other lists can unset theirs
+}
+
+static void
+selected_rows_changed (GtkListBox          *list,
+                       GrIngredientsViewer *viewer)
+{
+        GtkListBoxRow *row;
+
+        row = gtk_list_box_get_selected_row (list);
+        set_active_row (viewer, GTK_WIDGET (row));
+}
+
+static void
+title_changed (GtkEntry            *entry,
+               GrIngredientsViewer *viewer)
+{
+        // TODO mark page as unsaved
 }
 
 static void
@@ -102,6 +138,55 @@ gr_ingredients_viewer_get_property (GObject    *object,
 }
 
 static void
+delete_row (GrIngredientsViewerRow *row,
+            GrIngredientsViewer    *viewer)
+{
+        gtk_widget_destroy (GTK_WIDGET (row));
+        // TODO: mark page unsaved
+}
+
+static void
+move_row (GrIngredientsViewerRow *row,
+          int                     steps,
+          GrIngredientsViewer    *viewer)
+{
+        GtkWidget *list;
+        int index;
+
+        list = gtk_widget_get_parent (GTK_WIDGET (row));
+        index = gtk_list_box_row_get_index (GTK_LIST_BOX_ROW (row));
+        gtk_list_box_unselect_row (GTK_LIST_BOX (list), GTK_LIST_BOX_ROW (row));
+
+        g_object_ref (row);
+        gtk_container_remove (GTK_CONTAINER (list), GTK_WIDGET (row));
+        gtk_list_box_insert (GTK_LIST_BOX (list), GTK_WIDGET (row), index + steps);
+        g_object_unref (row);
+
+        gtk_list_box_select_row (GTK_LIST_BOX (list), GTK_LIST_BOX_ROW (row));
+        // TODO: mark page unsaved
+}
+
+static void
+add_row (GtkButton           *button,
+         GrIngredientsViewer *viewer)
+{
+        GtkWidget *row;
+
+        row = g_object_new (GR_TYPE_INGREDIENTS_VIEWER_ROW,
+                            "amount", "",
+                            "unit", "",
+                            "ingredient", "",
+                            "size-group", viewer->group,
+                            "editable", viewer->editable,
+                            NULL);
+        g_signal_connect (row, "delete", G_CALLBACK (delete_row), viewer);
+        g_signal_connect (row, "move", G_CALLBACK (move_row), viewer);
+
+        gtk_container_add (GTK_CONTAINER (viewer->list), row);
+        // TODO mark page as unsaved
+}
+
+static void
 gr_ingredients_viewer_set_ingredients (GrIngredientsViewer *viewer,
                                        const char          *text)
 {
@@ -135,6 +220,8 @@ gr_ingredients_viewer_set_ingredients (GrIngredientsViewer *viewer,
                                     "size-group", viewer->group,
                                     "editable", viewer->editable,
                                     NULL);
+                g_signal_connect (row, "delete", G_CALLBACK (delete_row), viewer);
+                g_signal_connect (row, "move", G_CALLBACK (move_row), viewer);
 
                 gtk_container_add (GTK_CONTAINER (viewer->list), row);
         }
@@ -147,6 +234,7 @@ gr_ingredients_viewer_set_title (GrIngredientsViewer *viewer,
         g_free (viewer->title);
         viewer->title = g_strdup (title);
 
+        gtk_label_set_label (GTK_LABEL (viewer->title_label), title);
         gtk_entry_set_text (GTK_ENTRY (viewer->title_entry), title);
 }
 
@@ -156,6 +244,7 @@ gr_ingredients_viewer_set_editable (GrIngredientsViewer *viewer,
 {
         viewer->editable = editable;
         gtk_widget_set_visible (viewer->add_button, editable);
+        gtk_list_box_set_selection_mode (GTK_LIST_BOX (viewer->list), editable ? GTK_SELECTION_SINGLE : GTK_SELECTION_NONE);
 }
 
 static void
@@ -203,8 +292,16 @@ gr_ingredients_viewer_init (GrIngredientsViewer *self)
         gtk_list_box_set_header_func (GTK_LIST_BOX (self->list), all_headers, self, NULL);
 
         self->group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
-}
 
+#if defined(ENABLE_GSPELL) && defined(GSPELL_TYPE_ENTRY)
+        {
+                GspellEntry *gspell_entry;
+                gspell_entry = gspell_entry_get_from_gtk_entry (GTK_ENTRY (self->title_entry));
+                gspell_entry_basic_setup (gspell_entry);
+        }
+#endif
+
+}
 
 static void
 gr_ingredients_viewer_class_init (GrIngredientsViewerClass *klass)
@@ -240,6 +337,11 @@ gr_ingredients_viewer_class_init (GrIngredientsViewerClass *klass)
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-ingredients-viewer.ui");
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewer, title_stack);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewer, title_entry);
+        gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewer, title_label);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewer, list);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewer, add_button);
+
+        gtk_widget_class_bind_template_callback (widget_class, title_changed);
+        gtk_widget_class_bind_template_callback (widget_class, selected_rows_changed);
+        gtk_widget_class_bind_template_callback (widget_class, add_row);
 }

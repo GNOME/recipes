@@ -7,7 +7,7 @@
       <object class="GtkStack" id="title_stack">
         <property name="visible">1</property>
         <child>
-          <object class="GtkLabel">
+          <object class="GtkLabel" id="title_label">
             <property name="visible">1</property>
             <property name="xalign">0</property>
             <property name="label" translatable="yes">Ingredients</property>
@@ -31,6 +31,7 @@
               <object class="GtkEntry" id="title_entry">
                 <property name="visible">1</property>
                 <property name="placeholder-text" translatable="yes">Name of the List</property>
+                <signal name="notify::text" handler="title_changed"/>
               </object>
               <packing>
                 <property name="expand">1</property>
@@ -53,6 +54,7 @@
       <object class="GtkListBox" id="list">
         <property name="visible">1</property>
         <property name="selection-mode">none</property>
+        <signal name="selected-rows-changed" handler="selected_rows_changed"/>
         <style>
           <class name="frame"/>
         </style>
@@ -78,6 +80,7 @@
         <property name="visible">1</property>
         <property name="halign">start</property>
         <property name="margin-top">10</property>
+        <signal name="clicked" handler="add_row"/>
         <style>
           <class name="dim-label"/>
         </style>

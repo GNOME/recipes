@@ -33,12 +33,14 @@ struct _GrIngredientsViewerRow
 
         GtkWidget *unit_label;
         GtkWidget *ingredient_label;
+        GtkWidget *buttons_stack;
 
         char *amount;
         char *unit;
         char *ingredient;
 
         gboolean editable;
+        gboolean active;
 
         GtkSizeGroup *group;
 };
@@ -51,8 +53,17 @@ enum {
         PROP_UNIT,
         PROP_INGREDIENT,
         PROP_SIZE_GROUP,
-        PROP_EDITABLE
+        PROP_EDITABLE,
+        PROP_ACTIVE
 };
+
+enum {
+        DELETE,
+        MOVE,
+        N_SIGNALS
+};
+
+static int signals[N_SIGNALS] = { 0, };
 
 static void
 gr_ingredients_viewer_row_finalize (GObject *object)
@@ -98,6 +109,10 @@ gr_ingredients_viewer_row_get_property (GObject    *object,
                 g_value_set_boolean (value, self->editable);
                 break;
 
+          case PROP_ACTIVE:
+                g_value_set_boolean (value, self->active);
+                break;
+
           default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
           }
@@ -141,6 +156,33 @@ gr_ingredients_viewer_row_set_ingredient (GrIngredientsViewerRow *row,
 }
 
 static void
+gr_ingredients_viewer_row_set_size_group (GrIngredientsViewerRow *row,
+                                          GtkSizeGroup           *group)
+{
+        if (row->group)
+                gtk_size_group_remove_widget (row->group, row->unit_label);
+        g_set_object (&row->group, group);
+        if (row->group)
+                gtk_size_group_add_widget (row->group, row->unit_label);
+}
+
+static void
+gr_ingredients_viewer_row_set_editable (GrIngredientsViewerRow *row,
+                                        gboolean                editable)
+{
+        row->editable = editable;
+        gtk_list_box_row_set_activatable (GTK_LIST_BOX_ROW (row), editable);
+}
+
+static void
+gr_ingredients_viewer_row_set_active (GrIngredientsViewerRow *row,
+                                      gboolean                active)
+{
+        row->active = active;
+        gtk_stack_set_visible_child_name (GTK_STACK (row->buttons_stack), active ? "buttons" : "empty");
+}
+
+static void
 gr_ingredients_viewer_row_set_property (GObject      *object,
                                        guint         prop_id,
                                        const GValue *value,
@@ -163,21 +205,38 @@ gr_ingredients_viewer_row_set_property (GObject      *object,
                 break;
 
           case PROP_SIZE_GROUP:
-                if (self->group)
-                        gtk_size_group_remove_widget (self->group, self->unit_label);
-                g_set_object (&self->group, g_value_get_object (value));
-                if (self->group)
-                        gtk_size_group_add_widget (self->group, self->unit_label);
+                gr_ingredients_viewer_row_set_size_group (self, g_value_get_object (value));
                 break;
 
           case PROP_EDITABLE:
-                self->editable = g_value_get_boolean (value);
-                gtk_list_box_row_set_activatable (GTK_LIST_BOX_ROW (object), self->editable);
+                gr_ingredients_viewer_row_set_editable (self, g_value_get_boolean (value));
+                break;
+
+          case PROP_ACTIVE:
+                gr_ingredients_viewer_row_set_active (self, g_value_get_boolean (value));
                 break;
 
           default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
           }
+}
+
+static void
+emit_delete (GrIngredientsViewerRow *row)
+{
+        g_signal_emit (row, signals[DELETE], 0);
+}
+
+static void
+emit_move_up (GrIngredientsViewerRow *row)
+{
+        g_signal_emit (row, signals[MOVE], 0, -1);
+}
+
+static void
+emit_move_down (GrIngredientsViewerRow *row)
+{
+        g_signal_emit (row, signals[MOVE], 0, 1);
 }
 
 static void
@@ -216,10 +275,36 @@ gr_ingredients_viewer_row_class_init (GrIngredientsViewerRowClass *klass)
                                       G_PARAM_READWRITE|G_PARAM_CONSTRUCT);
         g_object_class_install_property (object_class, PROP_EDITABLE, pspec);
 
+        pspec = g_param_spec_boolean ("active", NULL, NULL,
+                                      FALSE,
+                                      G_PARAM_READWRITE|G_PARAM_CONSTRUCT);
+        g_object_class_install_property (object_class, PROP_ACTIVE, pspec);
+
+        signals[DELETE] = g_signal_new ("delete",
+                                        G_TYPE_FROM_CLASS (object_class),
+                                        G_SIGNAL_RUN_FIRST,
+                                        0,
+                                        NULL, NULL,
+                                        NULL,
+                                        G_TYPE_NONE, 0);
+
+        signals[MOVE] = g_signal_new ("move",
+                                      G_TYPE_FROM_CLASS (object_class),
+                                      G_SIGNAL_RUN_FIRST,
+                                      0,
+                                      NULL, NULL,
+                                      NULL,
+                                      G_TYPE_NONE, 1, G_TYPE_INT);
+
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-ingredients-viewer-row.ui");
 
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, unit_label);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, ingredient_label);
+        gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, buttons_stack);
+
+        gtk_widget_class_bind_template_callback (widget_class, emit_delete);
+        gtk_widget_class_bind_template_callback (widget_class, emit_move_up);
+        gtk_widget_class_bind_template_callback (widget_class, emit_move_down);
 }
 
 static void
