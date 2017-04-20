@@ -421,40 +421,21 @@ static char *
 collect_ingredients (GrEditPage *page)
 {
         GString *s;
-        GtkWidget *segment;
-        GtkWidget *list;
-        GtkWidget *entry;
-        GList *children, *l, *k;
+        GList *children, *l;
 
         s = g_string_new ("");
-        for (k = page->segments; k; k = k->next) {
-                segment = k->data;
-                list = GTK_WIDGET (g_object_get_data (G_OBJECT (segment), "list"));
-                entry = GTK_WIDGET (g_object_get_data (G_OBJECT (segment), "entry"));
-                children = gtk_container_get_children (GTK_CONTAINER (list));
-                for (l = children; l; l = l->next) {
-                        GtkWidget *row = l->data;
-                        const char *amount;
-                        const char *unit;
-                        const char *ingredient;
-                        const char *id;
 
-                        amount = (const char *)g_object_get_data (G_OBJECT (row), "amount");
-                        unit = (const char *)g_object_get_data (G_OBJECT (row), "unit");
-                        ingredient = (const char *)g_object_get_data (G_OBJECT (row), "ingredient");
-                        id = gr_ingredient_get_id (ingredient);
-                        if (s->len > 0)
-                                g_string_append (s, "\n");
-                        g_string_append (s, amount);
-                        g_string_append (s, "\t");
-                        g_string_append (s, unit);
-                        g_string_append (s, "\t");
-                        g_string_append (s, id ? id : ingredient);
-                        g_string_append (s, "\t");
-                        g_string_append (s, gtk_entry_get_text (GTK_ENTRY (entry)));
-                }
-                g_list_free (children);
+        children = gtk_container_get_children (GTK_CONTAINER (page->ingredients_box));
+        for (l = children; l; l = l->next) {
+                GtkWidget *list = l->data;
+                g_autofree char *segment = NULL;
+
+                g_object_get (list, "ingredients", &segment, NULL);
+                if (s->len > 0)
+                        g_string_append (s, "\n");
+                g_string_append (s, segment);
         }
+        g_list_free (children);
 
         return g_string_free (s, FALSE);
 }

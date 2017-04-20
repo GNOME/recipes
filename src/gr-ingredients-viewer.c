@@ -43,7 +43,6 @@ struct _GrIngredientsViewer
         GtkWidget *add_button;
 
         char *title;
-        char *ingredients;
         gboolean editable;
 
         GtkSizeGroup *group;
@@ -76,7 +75,6 @@ gr_ingredients_viewer_finalize (GObject *object)
         GrIngredientsViewer *viewer = GR_INGREDIENTS_VIEWER (object);
 
         g_free (viewer->title);
-        g_free (viewer->ingredients);
 
         g_clear_object (&viewer->group);
 
@@ -124,6 +122,37 @@ title_changed (GtkEntry            *entry,
         g_object_notify (G_OBJECT (viewer), "title");
 }
 
+static char *
+collect_ingredients (GrIngredientsViewer *viewer)
+{
+        GString *s;
+        GList *children, *l;
+
+        s = g_string_new ("");
+
+        children = gtk_container_get_children (GTK_CONTAINER (viewer->list));
+        for (l = children; l; l = l->next) {
+                GrIngredientsViewerRow *row = l->data;
+                g_autofree char *amount = NULL;
+                g_autofree char *unit = NULL;
+                g_autofree char *ingredient = NULL;
+
+                g_object_get (row,
+                              "amount", &amount,
+                              "unit", &unit,
+                              "ingredient", &ingredient,
+                              NULL);
+
+                if (s->len > 0)
+                        g_string_append (s, "\n");
+                g_string_append_printf (s, "%s\t%s\t%s\t%s",
+                                        amount, unit, ingredient, viewer->title);
+        }
+        g_list_free (children);
+
+        return g_string_free (s, FALSE);
+}
+
 static void
 gr_ingredients_viewer_get_property (GObject    *object,
                                     guint       prop_id,
@@ -148,8 +177,11 @@ gr_ingredients_viewer_get_property (GObject    *object,
                 g_value_set_boolean (value, self->editable);
                 break;
 
-          case PROP_INGREDIENTS:
-                g_value_set_string (value, self->ingredients);
+          case PROP_INGREDIENTS: {
+                        g_autofree char *ingredients = NULL;
+                        ingredients = collect_ingredients (self);
+                        g_value_set_string (value, ingredients);
+                }
                 break;
 
           case PROP_ACTIVE:
@@ -224,9 +256,6 @@ gr_ingredients_viewer_set_ingredients (GrIngredientsViewer *viewer,
         g_autoptr(GrIngredientsList) ingredients = NULL;
         g_auto(GStrv) ings = NULL;
         int i;
-
-        g_free (viewer->ingredients);
-        viewer->ingredients = g_strdup (text);
 
         container_remove_all (GTK_CONTAINER (viewer->list));
 
