@@ -37,6 +37,12 @@ ninja -C build
 ninja -C build install
 ```
 
+Note that the install step is optional. Recipes works just fine uninstalled, like this:
+
+```
+GSETTINGS_SCHEMA_DIR=build/data ./build/src/gnome-recipes
+```
+
 jhbuild also knows how to build recipes.
 
 Other platforms
