@@ -168,7 +168,7 @@ dismiss_error (GrEditPage *page)
 static void add_image_cb (GrEditPage *page);
 static void set_unsaved (GrEditPage *page);
 
-static void add_list2   (GtkButton *button, GrEditPage *page);
+static void add_list2   (GrEditPage *page);
 
 static void
 populate_image_flowbox (GrEditPage *page)
@@ -1558,7 +1558,7 @@ gr_edit_page_get_property (GObject    *object,
 static void
 set_unsaved (GrEditPage *page)
 {
-        g_object_set (G_OBJECT (page),"unsaved", TRUE, NULL);
+        g_object_set (G_OBJECT (page), "unsaved", TRUE, NULL);
 }
 
 static void
@@ -1943,6 +1943,63 @@ update_segments (GrEditPage *page)
 }
 
 static void
+remove_list2 (GrIngredientsViewer *viewer, GrEditPage *page)
+{
+        gtk_widget_destroy (GTK_WIDGET (viewer));
+}
+
+static void
+active_changed (GrIngredientsViewer *viewer,
+                GParamSpec          *pspec,
+                GrEditPage          *page)
+{
+        gboolean active;
+        GList *children, *l;
+
+        g_object_get (viewer, "active", &active, NULL);
+
+        if (!active)
+                return;
+
+        children = gtk_container_get_children (GTK_CONTAINER (page->ingredients_box2));
+        for (l = children; l; l = l->next) {
+                GrIngredientsViewer *list = l->data;
+                if (list != viewer)
+                        g_object_set (list, "active", FALSE, NULL);
+        }
+        g_list_free (children);
+}
+
+static void
+add_list_full (GrEditPage *page,
+               const char *title,
+               const char *ingredients,
+               gboolean    editable_title)
+{
+        GtkWidget *list;
+
+        list = g_object_new (GR_TYPE_INGREDIENTS_VIEWER,
+                             "title", title,
+                             "ingredients", ingredients,
+                             "editable-title", editable_title,
+                             "editable", TRUE,
+                             NULL);
+
+        g_signal_connect_swapped (list, "notify::title", G_CALLBACK (set_unsaved), page);
+        g_signal_connect_swapped (list, "notify::ingredients", G_CALLBACK (set_unsaved), page);
+        g_signal_connect (list, "notify::active", G_CALLBACK (active_changed), page);
+        g_signal_connect (list, "delete", G_CALLBACK (remove_list2), page);
+
+        gtk_container_add (GTK_CONTAINER (page->ingredients_box2), list);
+}
+
+static void
+add_list2 (GrEditPage *page)
+{
+        add_list_full (page, "", "", TRUE);
+}
+
+static void
 populate_ingredients (GrEditPage *page,
                       const char *text)
 {
@@ -1997,15 +2054,7 @@ populate_ingredients (GrEditPage *page,
         container_remove_all (GTK_CONTAINER (page->ingredients_box2));
 
         if (strcmp (text, "") == 0) {
-                GtkWidget *list;
-
-                list = g_object_new (GR_TYPE_INGREDIENTS_VIEWER,
-                                     "title", "",
-                                     "editable-title", FALSE,
-                                     "editable", TRUE,
-                                     "ingredients", "",
-                                     NULL);
-                gtk_container_add (GTK_CONTAINER (page->ingredients_box2), list);
+                add_list_full (page, "", "", FALSE);
         }
         else {
                 g_autoptr(GrIngredientsList) ingredients = NULL;
@@ -2017,31 +2066,9 @@ populate_ingredients (GrEditPage *page,
                 segs = gr_ingredients_list_get_segments (ingredients);
                 editable_title = g_strv_length (segs) > 1;
                 for (j = 0; segs[j]; j++) {
-                        GtkWidget *list;
-
-                        list = g_object_new (GR_TYPE_INGREDIENTS_VIEWER,
-                                             "title", segs[j],
-                                             "editable-title", editable_title,
-                                             "editable", TRUE,
-                                             "ingredients", text,
-                                             NULL);
-                        gtk_container_add (GTK_CONTAINER (page->ingredients_box2), list);
+                        add_list_full (page, segs[j], text, editable_title);
                 }
         }
-}
-
-static void
-add_list2 (GtkButton *button, GrEditPage *page)
-{
-        GtkWidget *list;
-
-        list = g_object_new (GR_TYPE_INGREDIENTS_VIEWER,
-                             "title", "",
-                             "editable-title", TRUE,
-                             "editable", TRUE,
-                             "ingredients", "",
-                             NULL);
-        gtk_container_add (GTK_CONTAINER (page->ingredients_box2), list);
 }
 
 static void

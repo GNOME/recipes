@@ -253,7 +253,7 @@
                         <property name="visible">1</property>
                         <property name="margin-top">20</property>
                         <property name="label" translatable="yes">Add List</property>
-                        <signal name="clicked" handler="add_list2"/>
+                        <signal name="clicked" handler="add_list2" swapped="yes"/>
                       </object>
                     </child>
                   </object>
