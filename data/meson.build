@@ -62,7 +62,7 @@ configure_file(input: 'org.gnome.Recipes.service.in',
                configuration: conf,
                install_dir: join_paths([datadir,'dbus-1/services']))
 
-gnome.compile_schemas()
+gnome.compile_schemas(build_by_default: true)
 
 install_data('org.gnome.Recipes.gschema.xml',
              install_dir: schemadir)
