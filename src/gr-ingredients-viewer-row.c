@@ -32,7 +32,7 @@ struct _GrIngredientsViewerRow
         GtkListBoxRow parent_instance;
 
         GtkWidget *unit_label;
-        GtkWidget *ingredient_label;
+        GtkWidget *ingredient_entry;
         GtkWidget *buttons_stack;
 
         char *amount;
@@ -152,7 +152,7 @@ gr_ingredients_viewer_row_set_ingredient (GrIngredientsViewerRow *row,
 {
         g_free (row->ingredient);
         row->ingredient = g_strdup (ingredient);
-        gtk_label_set_label (GTK_LABEL (row->ingredient_label), ingredient);
+        gtk_entry_set_text (GTK_ENTRY(row->ingredient_entry), ingredient);
 }
 
 static void
@@ -299,7 +299,7 @@ gr_ingredients_viewer_row_class_init (GrIngredientsViewerRowClass *klass)
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-ingredients-viewer-row.ui");
 
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, unit_label);
-        gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, ingredient_label);
+        gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, ingredient_entry);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, buttons_stack);
 
         gtk_widget_class_bind_template_callback (widget_class, emit_delete);
@@ -307,9 +307,42 @@ gr_ingredients_viewer_row_class_init (GrIngredientsViewerRowClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, emit_move_down);
 }
 
+static GtkTreeModel *
+get_ingredients_model (void)
+{
+        static GtkListStore *store = NULL;
+
+g_print ("getmodel\n");
+        if (store == NULL) {
+                const char **names;
+                int length;
+                int i;
+
+                store = gtk_list_store_new (1, G_TYPE_STRING);
+
+                names = gr_ingredient_get_names (&length);
+g_print ("Found %d\n", length);
+                for (i = 0; i < length; i++) {
+g_print ("Add %s\n", names[i]);
+                        gtk_list_store_insert_with_values (store, NULL, -1,
+                                                           0, names[i],
+                                                           -1);
+                }
+        }
+
+        return GTK_TREE_MODEL (store);
+}
+
 static void
 gr_ingredients_viewer_row_init (GrIngredientsViewerRow *self)
 {
+        g_autoptr(GtkEntryCompletion) completion = NULL;
+
         gtk_widget_set_has_window (GTK_WIDGET (self), FALSE);
         gtk_widget_init_template (GTK_WIDGET (self));
+
+        completion = gtk_entry_completion_new ();
+        gtk_entry_completion_set_model (completion, get_ingredients_model ());
+        gtk_entry_completion_set_text_column (completion, 0);
+        gtk_entry_set_completion (GTK_ENTRY (self->ingredient_entry), completion);
 }
