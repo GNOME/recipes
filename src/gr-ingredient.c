@@ -66,7 +66,7 @@ gr_ingredient_get_names (int *length)
         translate_names ();
 
         if (length)
-                *length = G_N_ELEMENTS (names) - 1;
+                *length = G_N_ELEMENTS (names_) - 1;
 
         return (const char **)names;
 }
