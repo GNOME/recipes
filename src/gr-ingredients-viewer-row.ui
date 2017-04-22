@@ -49,59 +49,6 @@
                   <object class="GtkButton">
                     <property name="visible">1</property>
                     <property name="relief">none</property>
-                    <signal name="clicked" handler="emit_move_up" swapped="yes"/>
-                    <style>
-                      <class name="image-button"/>
-                      <class name="circular"/>
-                    </style>
-                    <child>
-                      <object class="GtkImage">
-                        <property name="visible">1</property>
-                        <property name="icon-name">go-up-symbolic</property>
-                        <property name="icon-size">1</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkButton">
-                    <property name="visible">1</property>
-                    <property name="relief">none</property>
-                    <signal name="clicked" handler="emit_move_down" swapped="yes"/>
-                    <style>
-                      <class name="image-button"/>
-                      <class name="circular"/>
-                    </style>
-                    <child>
-                      <object class="GtkImage">
-                        <property name="visible">1</property>
-                        <property name="icon-name">go-down-symbolic</property>
-                        <property name="icon-size">1</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkButton">
-                    <property name="visible">1</property>
-                    <property name="relief">none</property>
-                    <style>
-                      <class name="image-button"/>
-                      <class name="circular"/>
-                    </style>
-                    <child>
-                      <object class="GtkImage">
-                        <property name="visible">1</property>
-                        <property name="icon-name">document-edit-symbolic</property>
-                        <property name="icon-size">1</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkButton">
-                    <property name="visible">1</property>
-                    <property name="relief">none</property>
                     <signal name="clicked" handler="emit_delete" swapped="yes"/>
                     <style>
                       <class name="image-button"/>
@@ -112,6 +59,19 @@
                         <property name="visible">1</property>
                         <property name="icon-name">user-trash-symbolic</property>
                         <property name="icon-size">1</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkEventBox" id="ebox">
+                    <property name="visible">1</property>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">1</property>
+                        <property name="icon-name">open-menu-symbolic</property>
+                        <property name="icon-size">1</property>
+                        <property name="margin">4</property>
                       </object>
                     </child>
                   </object>

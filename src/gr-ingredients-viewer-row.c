@@ -34,6 +34,7 @@ struct _GrIngredientsViewerRow
         GtkWidget *unit_label;
         GtkWidget *ingredient_label;
         GtkWidget *buttons_stack;
+        GtkWidget *ebox;
 
         char *amount;
         char *unit;
@@ -301,10 +302,87 @@ gr_ingredients_viewer_row_class_init (GrIngredientsViewerRowClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, unit_label);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, ingredient_label);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, buttons_stack);
+        gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, ebox);
 
         gtk_widget_class_bind_template_callback (widget_class, emit_delete);
         gtk_widget_class_bind_template_callback (widget_class, emit_move_up);
         gtk_widget_class_bind_template_callback (widget_class, emit_move_down);
+}
+
+static GtkTargetEntry entries[] = {
+        { "GTK_LIST_BOX_ROW", GTK_TARGET_SAME_APP, 0 }
+};
+
+static void
+drag_begin (GtkWidget      *widget,
+            GdkDragContext *context,
+            gpointer        data)
+{
+        GtkAllocation alloc;
+        cairo_surface_t *surface;
+        cairo_t *cr;
+        GtkWidget *row;
+        int x, y;
+
+        row = gtk_widget_get_ancestor (widget, GTK_TYPE_LIST_BOX_ROW);
+
+        gtk_widget_get_allocation (row, &alloc);
+        surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, alloc.width, alloc.height);
+        cr = cairo_create (surface);
+
+        gtk_style_context_add_class (gtk_widget_get_style_context (row), "during-dnd");
+        gtk_widget_draw (row, cr);
+        gtk_style_context_remove_class (gtk_widget_get_style_context (row), "during-dnd");
+
+        gtk_widget_translate_coordinates (widget, row, 0, 0, &x, &y);
+        g_print ("offset %d %d\n", x, y);
+        cairo_surface_set_device_offset (surface, -x, -y);
+        gtk_drag_set_icon_surface (context, surface);
+
+        cairo_destroy (cr);
+        cairo_surface_destroy (surface);
+}
+
+void
+drag_data_get (GtkWidget        *widget,
+               GdkDragContext   *context,
+               GtkSelectionData *selection_data,
+               guint             info,
+               guint             time,
+               gpointer          data)
+{
+        gtk_selection_data_set (selection_data,
+                                gdk_atom_intern_static_string ("GTK_LIST_BOX_ROW"),
+                                32,
+                                (const guchar *)&widget,
+                                sizeof (gpointer));
+}
+
+static void
+drag_data_received (GtkWidget        *widget,
+                    GdkDragContext   *context,
+                    gint              x,
+                    gint              y,
+                    GtkSelectionData *selection_data,
+                    guint             info,
+                    guint32           time,
+                    gpointer          data)
+{
+        GtkWidget *target;
+        GtkWidget *row;
+        GtkWidget *source;
+        int pos;
+
+        target = gtk_widget_get_ancestor (widget, GTK_TYPE_LIST_BOX_ROW);
+
+        pos = gtk_list_box_row_get_index (GTK_LIST_BOX_ROW (target));
+        row = (gpointer)* (gpointer*)gtk_selection_data_get_data (selection_data);
+        source = gtk_widget_get_ancestor (row, GTK_TYPE_LIST_BOX_ROW);
+
+        g_object_ref (source);
+        gtk_container_remove (GTK_CONTAINER (gtk_widget_get_parent (source)), source);
+        gtk_list_box_insert (GTK_LIST_BOX (gtk_widget_get_parent (target)), source, pos);
+        g_object_unref (source);
 }
 
 static void
@@ -312,4 +390,11 @@ gr_ingredients_viewer_row_init (GrIngredientsViewerRow *self)
 {
         gtk_widget_set_has_window (GTK_WIDGET (self), FALSE);
         gtk_widget_init_template (GTK_WIDGET (self));
+
+        gtk_drag_source_set (self->ebox, GDK_BUTTON1_MASK, entries, 1, GDK_ACTION_MOVE);
+        g_signal_connect (self->ebox, "drag-begin", G_CALLBACK (drag_begin), NULL);
+        g_signal_connect (self->ebox, "drag-data-get", G_CALLBACK (drag_data_get), NULL);
+
+        gtk_drag_dest_set (GTK_WIDGET (self), GTK_DEST_DEFAULT_ALL, entries, 1, GDK_ACTION_MOVE);
+        g_signal_connect (self, "drag-data-received", G_CALLBACK (drag_data_received), NULL);
 }
