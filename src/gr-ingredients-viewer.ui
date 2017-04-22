@@ -55,7 +55,8 @@
       <object class="GtkListBox" id="list">
         <property name="visible">1</property>
         <property name="selection-mode">none</property>
-        <signal name="selected-rows-changed" handler="selected_rows_changed"/>
+        <property name="activate-on-single-click">1</property>
+        <signal name="row-activated" handler="row_activated"/>
         <style>
           <class name="frame"/>
         </style>

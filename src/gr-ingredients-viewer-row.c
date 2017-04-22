@@ -272,7 +272,7 @@ gr_ingredients_viewer_row_class_init (GrIngredientsViewerRowClass *klass)
 
         pspec = g_param_spec_boolean ("editable", NULL, NULL,
                                       FALSE,
-                                      G_PARAM_READWRITE|G_PARAM_CONSTRUCT);
+                                      G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_EDITABLE, pspec);
 
         pspec = g_param_spec_boolean ("active", NULL, NULL,

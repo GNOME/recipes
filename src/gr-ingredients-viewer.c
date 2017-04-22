@@ -102,12 +102,10 @@ set_active_row (GrIngredientsViewer *viewer,
 }
 
 static void
-selected_rows_changed (GtkListBox          *list,
-                       GrIngredientsViewer *viewer)
+row_activated (GtkListBox          *list,
+               GtkListBoxRow       *row,
+               GrIngredientsViewer *viewer)
 {
-        GtkListBoxRow *row;
-
-        row = gtk_list_box_get_selected_row (list);
         set_active_row (viewer, GTK_WIDGET (row));
 }
 
@@ -302,9 +300,18 @@ static void
 gr_ingredients_viewer_set_editable (GrIngredientsViewer *viewer,
                                     gboolean             editable)
 {
+        GList *children, *l;
+
         viewer->editable = editable;
         gtk_widget_set_visible (viewer->add_button, editable);
-        gtk_list_box_set_selection_mode (GTK_LIST_BOX (viewer->list), editable ? GTK_SELECTION_SINGLE : GTK_SELECTION_NONE);
+
+        children = gtk_container_get_children (GTK_CONTAINER (viewer->list));
+        for (l = children; l; l = l->next) {
+                GtkWidget *row = l->data;
+
+                g_object_set (row, "editable", viewer->editable, NULL);
+        }
+        g_list_free (children);
 }
 
 static void
@@ -312,7 +319,7 @@ gr_ingredients_viewer_set_active (GrIngredientsViewer *viewer,
                                   gboolean             active)
 {
         if (!active)
-                gtk_list_box_unselect_all (GTK_LIST_BOX (viewer->list));
+                set_active_row (viewer, NULL);
 }
 
 static void
@@ -427,7 +434,7 @@ gr_ingredients_viewer_class_init (GrIngredientsViewerClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewer, add_button);
 
         gtk_widget_class_bind_template_callback (widget_class, title_changed);
-        gtk_widget_class_bind_template_callback (widget_class, selected_rows_changed);
+        gtk_widget_class_bind_template_callback (widget_class, row_activated);
         gtk_widget_class_bind_template_callback (widget_class, add_row);
         gtk_widget_class_bind_template_callback (widget_class, remove_list);
 }
