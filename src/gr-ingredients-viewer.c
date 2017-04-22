@@ -203,23 +203,26 @@ delete_row (GrIngredientsViewerRow *row,
 }
 
 static void
-move_row (GrIngredientsViewerRow *row,
-          int                     steps,
-          GrIngredientsViewer    *viewer)
+move_row (GtkWidget           *source,
+          GtkWidget           *target,
+          GrIngredientsViewer *viewer)
 {
-        GtkWidget *list;
+        GtkWidget *source_parent;
+        GtkWidget *target_parent;
         int index;
 
-        list = gtk_widget_get_parent (GTK_WIDGET (row));
-        index = gtk_list_box_row_get_index (GTK_LIST_BOX_ROW (row));
-        gtk_list_box_unselect_row (GTK_LIST_BOX (list), GTK_LIST_BOX_ROW (row));
+        index = gtk_list_box_row_get_index (GTK_LIST_BOX_ROW (target));
 
-        g_object_ref (row);
-        gtk_container_remove (GTK_CONTAINER (list), GTK_WIDGET (row));
-        gtk_list_box_insert (GTK_LIST_BOX (list), GTK_WIDGET (row), index + steps);
-        g_object_unref (row);
+        source_parent = gtk_widget_get_parent (source);
+        target_parent = gtk_widget_get_parent (target);
 
-        gtk_list_box_select_row (GTK_LIST_BOX (list), GTK_LIST_BOX_ROW (row));
+        g_object_ref (source);
+        gtk_container_remove (GTK_CONTAINER (source_parent), source);
+        gtk_list_box_insert (GTK_LIST_BOX (target_parent), source, index);
+        g_object_unref (source);
+
+        gtk_list_box_select_row (GTK_LIST_BOX (target_parent), GTK_LIST_BOX_ROW (source));
+
         g_object_notify (G_OBJECT (viewer), "ingredients");
 }
 
