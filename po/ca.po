@@ -66,9 +66,8 @@ msgid "Share recipes with your friends"
 msgstr "Compartiu receptes amb els vostres amics"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:24
-#, fuzzy
 msgid "Export and print shopping lists"
-msgstr "Imprimeix els paràmetres d'exportació TXF"
+msgstr "Exporta i imprimeix llistes de la compra"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:25
 msgid "Adjust quantities based on the number of servings"
@@ -96,7 +95,7 @@ msgstr "Pàgina de les cuines"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:42
 msgid "A shopping list"
-msgstr "Una llista de compres"
+msgstr "Una llista de la compra"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:46
 msgid "Cooking a recipe"
@@ -320,9 +319,8 @@ msgid "No recipes found"
 msgstr "No s'ha trobat cap recepta"
 
 #: src/gr-cuisine-page.ui:80
-#, fuzzy
 msgid "There are no recipes for this cuisine."
-msgstr "Menjar"
+msgstr "No hi ha receptes per aquesta cuina"
 
 #: src/gr-cuisines-page.ui:8
 msgid "Cuisines page"
@@ -391,7 +389,7 @@ msgstr "Nota"
 #: src/gr-details-page.ui:409 src/gr-edit-page.ui:690
 #: src/gr-recipe-formatter.c:86 src/gr-recipe-printer.c:241
 msgid "Directions"
-msgstr "Direccions"
+msgstr "Instruccions"
 
 #: src/gr-details-page.ui:469
 msgid "_Notes"
@@ -476,7 +474,7 @@ msgstr "_Temps de cocció"
 
 #: src/gr-edit-page.ui:434
 msgid "_Cuisine"
-msgstr "_Cuisine"
+msgstr "_Cuina"
 
 #: src/gr-edit-page.ui:470
 msgid "_Meal"
@@ -732,7 +730,7 @@ msgstr "Ingredients a comprar afegits."
 
 #: src/gr-window.ui:274
 msgid "View Shopping List"
-msgstr "Visualitza llista de la compra"
+msgstr "Visualitza la llista de la compra"
 
 #: src/gr-window.ui:331
 msgid "Undo"
@@ -756,7 +754,7 @@ msgstr "Exporta-ho tot"
 
 #: src/menus.ui:16
 msgid "_Chef Information"
-msgstr "_Informació del Xef"
+msgstr "_Informació del xef"
 
 #: src/menus.ui:22 src/menus.ui:93
 msgid "_What’s New"
@@ -1007,9 +1005,8 @@ msgid "Chinese"
 msgstr "Xinesa"
 
 #: src/gr-cuisine.c:47
-#, fuzzy
 msgid "Indian"
-msgstr "Índic"
+msgstr "Índia"
 
 # N.T.: Es refereix a la cuina
 #: src/gr-cuisine.c:48
@@ -1055,9 +1052,8 @@ msgid "Chinese Cuisine"
 msgstr "Cuina xinesa"
 
 #: src/gr-cuisine.c:60
-#, fuzzy
 msgid "Indian Cuisine"
-msgstr "Menjar"
+msgstr "Cuina índia"
 
 #: src/gr-cuisine.c:61
 msgid "Italian Cuisine"
@@ -1072,9 +1068,8 @@ msgid "Greek Cuisine"
 msgstr "Cuina grega"
 
 #: src/gr-cuisine.c:64
-#, fuzzy
 msgid "Mediterranean Cuisine"
-msgstr "Cuina mediterrania"
+msgstr "Cuina mediterrània"
 
 #: src/gr-cuisine.c:65
 msgid "Mexican Cuisine"
@@ -1513,25 +1508,26 @@ msgid "Save"
 msgstr "Desa"
 
 #: src/gr-recipe-exporter.c:197
-#, fuzzy
 msgid "Recipe contribution"
-msgstr "Recepta per a "
+msgstr "Contribuir una recepta"
 
 #: src/gr-recipe-exporter.c:198
 msgid "Please accept my attached recipe contribution."
-msgstr ""
+msgstr "Si us plau accepteu la contribució de la meva recepta adjuntada"
 
 #: src/gr-recipe-exporter.c:208
 msgid "Try this recipe"
-msgstr "Proveu aquesta recepta "
+msgstr "Proveu aquesta recepta"
 
 #: src/gr-recipe-exporter.c:209
-#, fuzzy
 msgid ""
 "Hi,\n"
 "\n"
 "you should try this recipe."
-msgstr "Vols que el complement provi de descarregar-lo?"
+msgstr
+"Hola,\n"
+"\n"
+"Hauríeu de tastar aquesta recepta."
 
 #: src/gr-recipe-exporter.c:212
 msgid "Try these recipes"
@@ -1549,26 +1545,27 @@ msgstr ""
 
 #: src/gr-recipe-exporter.c:216
 msgid "(The attached file can be imported into GNOME Recipes.)"
-msgstr ""
+msgstr "(el fitxer adjuntat pot ser importat al Receptes del GNOME.)"
 
 #: src/gr-recipe-exporter.c:412
-#, fuzzy, c-format
+#, c-format
 msgid "This build does not support exporting"
-msgstr "L'ús d'SSL no és disponible en aquesta versió del KDE."
+msgstr "Aquesta construcció no admet exportació."
 
 #: src/gr-recipe-exporter.c:494
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Error while exporting:\n"
 "%s"
-msgstr "S'ha produït aquest error en exportar: %s"
+msgstr "S'ha produït un error en exportar:\n"
+"%s"
 
 #: src/gr-recipe-exporter.c:591
 #, c-format
 msgid "%d recipe selected for sharing"
 msgid_plural "%d recipes selected for sharing"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d recepta seleccionada per a compartir"
+msgstr[1] "%d recepta seleccionada per a compartir"
 
 #: src/gr-recipe-exporter.c:623
 msgid ""
@@ -1594,11 +1591,12 @@ msgid "Serves:"
 msgstr "Porcions:"
 
 #: src/gr-recipe-importer.c:236
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Error while importing recipe:\n"
 "%s"
-msgstr "S'ha produït un error en importar les dades."
+msgstr "S'ha produït un error en importar la recepta:\n"
+"%s"
 
 #: src/gr-recipe-importer.c:482
 #, c-format
@@ -1616,7 +1614,6 @@ msgid "This build does not support importing"
 msgstr "Implementació per crear i importar projectes"
 
 #: src/gr-recipe-printer.c:411 src/gr-shopping-list-printer.c:297
-#, fuzzy
 msgid "Error printing file:"
 msgstr "S'ha produït un error en imprimir el fitxer:"
 
@@ -1625,7 +1622,7 @@ msgid "No details"
 msgstr "Sense detalls"
 
 #: src/gr-recipe-small-tile.c:105 src/gr-recipe-tile.c:86
-#, fuzzy, c-format
+#, c-format
 msgid "by %s"
 msgstr "per %s"
 
@@ -1717,8 +1714,6 @@ msgid "Christmas"
 msgstr "Nadal"
 
 #: src/gr-season.c:43
-#, fuzzy
-#| msgid "New Years"
 msgid "New Year’s"
 msgstr "Any nou"
 
@@ -1741,48 +1736,44 @@ msgstr "Hivern"
 #: src/gr-shopping-list-formatter.c:42 src/gr-shopping-list-printer.c:135
 #: src/gr-shopping-page.c:756
 msgid "Shopping List"
-msgstr "Llista de compres"
+msgstr "Llista de la compra"
 
 #: src/gr-shopping-list-formatter.c:44
-#, fuzzy
 msgid "For the following recipes:"
-msgstr "No hi ha receptes"
+msgstr "Per les següents receptes:"
 
 #: src/gr-shopping-list-printer.c:144
-#, fuzzy
 msgid "For the following recipes"
-msgstr "No hi ha receptes"
+msgstr "Per les següents receptes"
 
 #: src/gr-shopping-list-printer.c:161
-#, fuzzy
 msgid "Items"
-msgstr "items"
+msgstr "Ítems"
 
 #: src/gr-shopping-page.c:100
 #, c-format
 msgid "%d ingredient marked for purchase"
 msgid_plural "%d ingredients marked for purchase"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d ingredient marcat per ser comprat"
+msgstr[1] "%d ingredients marcats per ser comprats"
 
 #: src/gr-shopping-page.c:119
 #, c-format
 msgid "Buy Ingredients (%d recipe)"
 msgid_plural "Buy Ingredients (%d recipes)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Compra ingredients (%d recepta)"
+msgstr[1] "Compra ingredients (%d receptes)"
 
 #: src/gr-shopping-page.c:124
 #, c-format
 msgid "%d Recipe marked for preparation"
 msgid_plural "%d Recipes marked for preparation"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d recepta marcada per preparació"
+msgstr[1] "%d receptes marcades per preparació"
 
 #: src/gr-shopping-page.c:727
-#, fuzzy
 msgid "Save the shopping list"
-msgstr "Crea la llista de la &compra"
+msgstr "Desa la llista de la compra"
 
 #: src/gr-spice-row.c:131
 #, fuzzy
@@ -1856,7 +1847,6 @@ msgid "liter"
 msgstr "litre"
 
 #: src/gr-unit.c:45
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "dl"
 msgstr "dl"
@@ -1877,43 +1867,36 @@ msgid "milliliter"
 msgstr "mil·lilitre"
 
 #: src/gr-unit.c:47
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "fl oz"
-msgstr ""
-"unça líquida;unces líquides;fl.oz.;oz.fl.;oz. fl.;fl. oz.;fl oz;unça líquida"
+msgstr "fl oz"
 
 #: src/gr-unit.c:47
-#, fuzzy
 msgctxt "unit name"
 msgid "fluid ounce"
 msgstr "unça líquida"
 
 #: src/gr-unit.c:48
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "pt"
-msgstr "Pt"
+msgstr "pt"
 
 #: src/gr-unit.c:48
 msgctxt "unit name"
 msgid "pint"
 msgstr "pinta"
 
-#: src/gr-unit.c:49
-#, fuzzy
+#: src/gr-unit.c:49"qt"
 msgctxt "unit abbreviation"
 msgid "qt"
-msgstr "Qt"
+msgstr "qt"
 
 #: src/gr-unit.c:49
-#, fuzzy
 msgctxt "unit name"
 msgid "quart"
 msgstr "quart"
 
 #: src/gr-unit.c:50
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "gal"
 msgstr "gal"
@@ -1924,41 +1907,31 @@ msgid "gallon"
 msgstr "galó"
 
 #: src/gr-unit.c:51
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "cup"
-msgstr "copa"
+msgstr "tassa"
 
 #: src/gr-unit.c:51
-#, fuzzy
 msgctxt "unit name"
 msgid "cup"
-msgstr "copa"
+msgstr "tassa"
 
 #: src/gr-unit.c:52
 msgctxt "unit abbreviation"
 msgid "tbsp"
-msgstr ""
+msgstr "tbsp"
 
 #: src/gr-unit.c:52
-#, fuzzy
 msgctxt "unit name"
 msgid "tablespoon"
 msgstr "cullerada"
 
 #: src/gr-unit.c:53
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "tsp"
-msgstr ""
-"Unitats de volum implementades: l (litre), tsp (cullera de te), tbs (cullera "
-"de taula), oz (unça líquida), copa, pt (pinta), qt (quart), gal (galó), "
-"barril, m3 (metre cúbic), mi3 (milla cúbica), Nmi3 (milla cúbica nàutica), "
-"in3 (polzada cúbica), ft3 (peu cúbic), yd3 (iarda cúbica) GRT o regton (tona "
-"grossa registrada)."
+msgstr "tsp"
 
 #: src/gr-unit.c:53
-#, fuzzy
 msgctxt "unit name"
 msgid "teaspoon"
 msgstr "culleradeta"
@@ -2133,14 +2106,13 @@ msgid "_Export"
 msgstr "_Exporta"
 
 #: src/gr-window.c:1235
-#, fuzzy, c-format
+#, c-format
 msgid "Chefs: %s"
-msgstr " [era %s]"
+msgstr "Xef: %s"
 
 #: src/gr-window.c:1252
-#, fuzzy
 msgid "Favorite Recipes"
-msgstr "No hi ha receptes"
+msgstr "Receptes favorites"
 
 #: src/gr-window.c:1334
 msgid "Buy Ingredients"
@@ -2154,9 +2126,9 @@ msgstr "Receptes %s"
 
 #. TRANSLATORS: %s gets replaced by a date
 #: src/gr-window.c:1520
-#, fuzzy, c-format
+#, c-format
 msgid "Released: %s"
-msgstr "Quin estudi a estrenat [B]%s[/B]?"
+msgstr "Publicat: %s"
 
 #: src/ingredients.inc:1
 msgid "Almond"
@@ -2164,7 +2136,7 @@ msgstr "Ametlla"
 
 #: src/ingredients.inc:2
 msgid "Amaretti"
-msgstr ""
+msgstr "Amaretti"
 
 #: src/ingredients.inc:3
 msgid "Anchovies"
@@ -2175,9 +2147,8 @@ msgid "Apple"
 msgstr "Poma"
 
 #: src/ingredients.inc:5
-#, fuzzy
 msgid "Apricot"
-msgstr "Apricot Xen-II Ethernet integrada"
+msgstr "Albercoc"
 
 #: src/ingredients.inc:6
 msgid "Artichoke"
@@ -2185,7 +2156,7 @@ msgstr "Carxofa"
 
 #: src/ingredients.inc:7
 msgid "Asparagus"
-msgstr ""
+msgstr "Espàrrecs"
 
 #: src/ingredients.inc:8
 msgid "Aubergine"
@@ -2200,14 +2171,12 @@ msgid "Bagel"
 msgstr ""
 
 #: src/ingredients.inc:11
-#, fuzzy
 msgid "Baked beans"
-msgstr "Screen Beans"
+msgstr "Fesols al forn"
 
 #: src/ingredients.inc:12
-#, fuzzy
 msgid "Baking powder"
-msgstr "Forn i rebosteria"
+msgstr "Llevat en pols"
 
 #: src/ingredients.inc:13
 msgid "Banana"
@@ -2227,9 +2196,8 @@ msgid "Bay leaf"
 msgstr "És full"
 
 #: src/ingredients.inc:17
-#, fuzzy
 msgid "Beans"
-msgstr "Screen Beans"
+msgstr "Fesols"
 
 #: src/ingredients.inc:18
 msgid "Beef mince"
@@ -2246,7 +2214,7 @@ msgstr "a l'inventari"
 
 #: src/ingredients.inc:21
 msgid "Beetroot"
-msgstr ""
+msgstr "Remolatxa"
 
 #: src/ingredients.inc:22
 #, fuzzy
@@ -2259,7 +2227,7 @@ msgstr ""
 
 #: src/ingredients.inc:24
 msgid "Bilberry"
-msgstr ""
+msgstr "Nabiu"
 
 #: src/ingredients.inc:25
 msgid "Butter"
@@ -2509,14 +2477,13 @@ msgid "no Bagel"
 msgstr ""
 
 #: src/no-ingredients.inc:11
-#, fuzzy
 msgid "no Baked beans"
-msgstr "Screen Beans"
+msgstr "sense fesols al forn"
 
 #: src/no-ingredients.inc:12
 #, fuzzy
 msgid "no Baking powder"
-msgstr "Forn i rebosteria"
+msgstr "sense llevat en pols"
 
 #: src/no-ingredients.inc:13
 msgid "no Banana"
@@ -2527,9 +2494,8 @@ msgid "no Basil"
 msgstr ""
 
 #: src/no-ingredients.inc:15
-#, fuzzy
 msgid "no Basmati rice"
-msgstr "Arròs"
+msgstr "sense arròs basmati"
 
 #: src/no-ingredients.inc:16
 #, fuzzy
@@ -2537,9 +2503,8 @@ msgid "no Bay leaf"
 msgstr "És full"
 
 #: src/no-ingredients.inc:17
-#, fuzzy
 msgid "no Beans"
-msgstr "Screen Beans"
+msgstr "sense fesols"
 
 #: src/no-ingredients.inc:18
 msgid "no Beef mince"
@@ -2556,7 +2521,7 @@ msgstr "a l'inventari"
 
 #: src/no-ingredients.inc:21
 msgid "no Beetroot"
-msgstr ""
+msgstr "sense remolatxa"
 
 #: src/no-ingredients.inc:22
 #, fuzzy
@@ -2569,7 +2534,7 @@ msgstr ""
 
 #: src/no-ingredients.inc:24
 msgid "no Bilberry"
-msgstr ""
+msgstr "sense nabiu"
 
 #: src/no-ingredients.inc:25
 msgid "no Butter"
@@ -2589,18 +2554,16 @@ msgid "no Cherries, pitted"
 msgstr "S_uperfície picada"
 
 #: src/no-ingredients.inc:29
-#, fuzzy
 msgid "no Chocolate frosting"
-msgstr "XOCOLATA"
+msgstr "sense glacejat de xocolata"
 
 #: src/no-ingredients.inc:30
 msgid "no Cilantro"
-msgstr ""
+msgstr "sense celiandre"
 
 #: src/no-ingredients.inc:31
-#, fuzzy
 msgid "no Cocoa powder"
-msgstr "Cocoa"
+msgstr "sense cacau en pols"
 
 #: src/no-ingredients.inc:32
 msgid "no Couscous"
@@ -2621,7 +2584,7 @@ msgstr "figura:"
 
 #: src/no-ingredients.inc:36
 msgid "no Flour"
-msgstr ""
+msgstr "sense farina"
 
 #: src/no-ingredients.inc:37
 msgid "no Garlic"
@@ -2684,13 +2647,12 @@ msgid "no Peperoni"
 msgstr ""
 
 #: src/no-ingredients.inc:52
-#, fuzzy
 msgid "no Pepper"
-msgstr "pebre"
+msgstr "sense pebre"
 
 #: src/no-ingredients.inc:53
 msgid "no Peppers"
-msgstr ""
+msgstr "sense pebrots"
 
 #: src/no-ingredients.inc:54
 #, fuzzy
@@ -2756,14 +2718,12 @@ msgid "no Vanilla pudding"
 msgstr "Vainilla"
 
 #: src/no-ingredients.inc:68
-#, fuzzy
 msgid "no Vinegar"
-msgstr "sucre / dolç | vinagre"
+msgstr "sense vinagre"
 
 #: src/no-ingredients.inc:69
-#, fuzzy
 msgid "no Water"
-msgstr "Aigua"
+msgstr "sense aigua"
 
 #: src/no-ingredients.inc:70
 msgid "no Wine"
