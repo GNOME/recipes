@@ -1,0 +1,2706 @@
+# Slovak translation for recipes.
+# Copyright (C) 2017 recipes's COPYRIGHT HOLDER
+# This file is distributed under the same license as the recipes package.
+# Dušan Kazik <prescott66@gmail.com>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: recipes master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-22 19:59+0000\n"
+"PO-Revision-Date: 2017-04-23 10:55+0200\n"
+"Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
+"Language-Team: slovenčina <>\n"
+"Language: sk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
+"X-Generator: Poedit 2.0.1\n"
+
+#: data/org.gnome.Recipes.desktop.in:3
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
+#: src/gr-window.ui:427 src/gr-about-dialog.c:915 src/gr-window.c:373
+#: src/gr-window.c:998
+msgid "Recipes"
+msgstr "Recepty"
+
+#: data/org.gnome.Recipes.desktop.in:4
+msgid "GNOME cooks unite!"
+msgstr ""
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Recipes.desktop.in:7
+msgid "org.gnome.Recipes"
+msgstr "org.gnome.Recipes"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:919
+msgid "GNOME loves to cook"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:9
+msgid ""
+"Recipes is an easy-to-use application that will help you to discover what to "
+"cook today, tomorrow, the rest of the week and for your special occasions."
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:13
+msgid ""
+"Recipes comes with a collection of recipes that have been collected by GNOME "
+"contributors from all over the world. It also lets you store your own "
+"recipes and share them with your friends."
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:18
+msgid "The major features of Recipes include:"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:22
+msgid "Add and edit your own recipes"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:23
+msgid "Share recipes with your friends"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:24
+msgid "Export and print shopping lists"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:25
+msgid "Adjust quantities based on the number of servings"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:26
+msgid "Mark recipes to cook later or add them to your favorites"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:27
+msgid "Add notes to recipes"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:28
+msgid "Hands-free cooking instruction mode"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:34
+msgid "Initial screen for the application"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:38
+msgid "The cuisines page"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:42
+msgid "A shopping list"
+msgstr "Nákupný zoznam"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:46
+msgid "Cooking a recipe"
+msgstr "Varenie receptu"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:50
+msgid "Editing a recipe"
+msgstr "Úprava receptu"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:54
+msgid "An individual recipe"
+msgstr "Individuálny recept"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:58
+msgid "An individual cuisine"
+msgstr "Individuálna kuchyňa"
+
+#: data/org.gnome.Recipes.gschema.xml:8
+msgid "The user ID of the current user"
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:9
+msgid "The user ID of the current user."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:15
+msgid "The number of times cooking mode has been presented"
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:16
+msgid "The number of times cooking mode has been presented."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:22
+msgid "The timestamp of the last change to the favorites list"
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:23
+msgid ""
+"The timestamp of the last time an item was added to or removed from the "
+"favorites list."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:30
+msgid "The list of favorites"
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:31
+msgid "The list of favorites. Each entry in the list is the ID of a recipe."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:37
+msgid "The timestamp of the last change to the shopping list"
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:38
+msgid ""
+"The timestamp of the last time an item was added to or removed from the "
+"shopping list."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:45
+msgid "The shopping list"
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:46
+msgid ""
+"The shopping list. Each entry in the dictionary maps the ID of a recipe to a "
+"serving count."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:53
+msgid "Ingredients that were removed from the shopping list"
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:54
+msgid "The names of ingredients that were removed from the shopping list."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:60
+msgid "The list of recipes to be exported"
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:61
+msgid ""
+"The list of recipes to be exported. Each entry in the list is the ID of a "
+"recipe."
+msgstr ""
+
+#: src/chef-conflict-dialog.ui:10
+msgid "Same Chef"
+msgstr "Rovnaký šéfkuchár"
+
+#: src/chef-conflict-dialog.ui:16
+msgid "Different Chef"
+msgstr "Odlišný šéfkuchár"
+
+#: src/chef-conflict-dialog.ui:30
+msgid "Existing Chef"
+msgstr "Existujúci šéfkuchár"
+
+#: src/chef-conflict-dialog.ui:43
+msgid "Imported Chef"
+msgstr "Importovaný šéfkuchár"
+
+#: src/chef-conflict-dialog.ui:57 src/chef-conflict-dialog.ui:69
+msgid "Short Name:"
+msgstr "Skrátené meno:"
+
+#: src/chef-conflict-dialog.ui:80 src/chef-conflict-dialog.ui:92
+#: src/recipe-conflict-dialog.ui:38
+msgid "Name:"
+msgstr "Meno:"
+
+#: src/chef-conflict-dialog.ui:103 src/chef-conflict-dialog.ui:115
+msgid "Description:"
+msgstr "Popis:"
+
+#: src/chef-conflict-dialog.ui:126 src/chef-conflict-dialog.ui:138
+msgid "Picture:"
+msgstr "Obrázok:"
+
+#: src/gr-chef-dialog.ui:4 src/gr-window.c:1099
+msgid "Chef Information"
+msgstr "Informácie o šéfkuchárovi"
+
+#: src/gr-chef-dialog.ui:10 src/gr-window.c:1197
+msgid "_Cancel"
+msgstr "Z_rušiť"
+
+#: src/gr-chef-dialog.ui:20 src/gr-window.ui:130
+msgid "_Save"
+msgstr "_Uložiť"
+
+#: src/gr-chef-dialog.ui:97
+msgid ""
+"This information may be shared with other users if you share your recipes."
+msgstr ""
+"Tieto informácie môžu byť sprístupnené iným používateľom, v prípade, že "
+"zdieľate vaše recepty."
+
+#: src/gr-chef-dialog.ui:119
+msgid "Other Chef"
+msgstr "Iný šéfkuchár"
+
+#: src/gr-chef-dialog.ui:132
+msgid "Name…"
+msgstr "Meno…"
+
+#: src/gr-chef-dialog.ui:143
+msgid "Short Name…"
+msgstr "Skrátené meno…"
+
+#: src/gr-cooking-page.ui:75
+msgid "Show"
+msgstr "Zobraziť"
+
+#: src/gr-cooking-page.ui:158
+msgid "Done"
+msgstr "Hotovo"
+
+#: src/gr-cooking-page.ui:185
+msgid "Stop Cooking?"
+msgstr "Prerušiť varenie?"
+
+#: src/gr-cooking-page.ui:194
+msgid "Some timers are still running."
+msgstr "Niektoré časovače sú stále spustené."
+
+#: src/gr-cooking-page.ui:200
+msgid ""
+"Recipes can keep the timers running\n"
+"even if you leave cooking mode now."
+msgstr ""
+"Aplikácia Recepty môže ponechať časovače spustené,\n"
+"aj keď teraz opustíte režim varenia."
+
+#: src/gr-cooking-page.ui:212
+msgid "Keep Cooking"
+msgstr "Pokračovať vo varení"
+
+#: src/gr-cooking-page.ui:219
+msgid "Stop Timers"
+msgstr "Zastaviť časovače"
+
+#: src/gr-cooking-page.ui:226
+msgid "Continue Timers"
+msgstr "Ponechať časovače"
+
+#: src/gr-cooking-page.ui:255
+msgid "Controls"
+msgstr "Ovládanie"
+
+#: src/gr-cooking-page.ui:281
+msgid ""
+"To advance to the next step, press any key on the\n"
+"keyboard."
+msgstr ""
+"Stlačením akéhokoľvek klávesu na klávesnici postúpite\n"
+"na ďalší krok."
+
+#: src/gr-cooking-page.ui:304
+msgid "To go back to the previous step, doubletap any key."
+msgstr ""
+"Dvojitým stlačením akéhokoľvek klávesu prejdete\n"
+"späť na predchádzajúci krok."
+
+#: src/gr-cooking-page.ui:326
+msgid ""
+"Alternatively, you can use the cursor keys to\n"
+"quickly seek within the directions."
+msgstr ""
+"Alternatívne môžete použiť klávesy kurzora na\n"
+"rýchle presúvanie v pokynoch."
+
+#: src/gr-cooking-page.ui:350
+msgid "To exit the process, press the Escape key."
+msgstr "Stlačením klávesu Escape ukončíte priebeh."
+
+#: src/gr-cooking-view.ui:64
+msgid "Time is up!"
+msgstr "Čas vypršal!"
+
+#: src/gr-cuisine-page.ui:67 src/gr-list-page.ui:111 src/gr-search-page.ui:29
+#: src/gr-list-page.c:427
+msgid "No recipes found"
+msgstr "Nenašli sa žiadne recepty"
+
+#: src/gr-cuisine-page.ui:80
+msgid "There are no recipes for this cuisine."
+msgstr "Neexistujú žiadne recepty pre túto kuchyňu."
+
+#: src/gr-cuisines-page.ui:8
+msgid "Cuisines page"
+msgstr "Stránka s kuchyňami"
+
+#: src/gr-cuisines-page.ui:28
+msgid "World Cuisines"
+msgstr "Svetové kuchyne"
+
+#: src/gr-cuisines-page.ui:124
+msgid "Seasonal"
+msgstr "Sezónne"
+
+#: src/gr-details-page.ui:105
+msgid "Contains garlic"
+msgstr "Obsahuje cesnak"
+
+#: src/gr-details-page.ui:112
+msgid ""
+"Contains dairy products. Please always double-check the ingredients if you "
+"are serving a person with gluten or dairy intolerance."
+msgstr ""
+
+#: src/gr-details-page.ui:119
+msgid ""
+"Contains Gluten. Please always double-check the ingredients if you are "
+"serving a person with gluten or dairy intolerance."
+msgstr ""
+
+#: src/gr-details-page.ui:126 src/gr-details-page.c:546
+msgid "Spicy"
+msgstr ""
+
+#: src/gr-details-page.ui:146
+msgid "_Buy Ingredients"
+msgstr "_Nakúpiť ingrediencie"
+
+#: src/gr-details-page.ui:164 src/gr-recipe-small-tile.ui:101
+msgid "Serves"
+msgstr "Porcie"
+
+#: src/gr-details-page.ui:198
+msgid "Preparation Time"
+msgstr "Čas prípravy"
+
+#: src/gr-details-page.ui:228
+msgid "Cooking Time"
+msgstr "Čas varenia"
+
+#: src/gr-details-page.ui:258
+msgid "Cuisine"
+msgstr "Kuchyňa"
+
+#: src/gr-details-page.ui:288 src/gr-query-editor.ui:46
+msgid "Meal"
+msgstr "Jedlo"
+
+#: src/gr-details-page.ui:318
+msgid "Season"
+msgstr "Sezóna"
+
+#: src/gr-details-page.ui:379
+msgid "Note"
+msgstr "Poznámka"
+
+#: src/gr-details-page.ui:409 src/gr-edit-page.ui:690
+#: src/gr-recipe-formatter.c:86 src/gr-recipe-printer.c:241
+msgid "Directions"
+msgstr "Pokyny"
+
+#: src/gr-details-page.ui:469
+msgid "_Notes"
+msgstr "_Poznámky"
+
+#: src/gr-details-page.ui:479 src/gr-shopping-page.ui:124
+msgid "_Edit"
+msgstr "_Upraviť"
+
+#: src/gr-details-page.ui:488
+msgid "_Delete"
+msgstr "O_dstrániť"
+
+#: src/gr-details-page.ui:499 src/gr-shopping-page.ui:142
+#: src/recipe-export-dialog.ui:21
+msgid "_Share"
+msgstr "Zd_ieľať"
+
+#: src/gr-details-page.ui:511 src/gr-shopping-page.ui:153
+msgid "_Print"
+msgstr "_Tlačiť"
+
+#: src/gr-details-page.ui:522
+msgid "Add to favorites"
+msgstr "Pridá do obľúbených"
+
+#: src/gr-edit-page.ui:112
+msgid "Add an image"
+msgstr "Pridá obrázok"
+
+#: src/gr-edit-page.ui:138 src/gr-edit-page.ui:164
+msgid "Rotate image"
+msgstr "Otočí obrázok"
+
+#: src/gr-edit-page.ui:190
+msgid "Default image"
+msgstr "Predvolený obrázok"
+
+#: src/gr-edit-page.ui:216
+msgid "Remove image"
+msgstr "Odstráni obrázok"
+
+#: src/gr-edit-page.ui:259
+msgid "Details"
+msgstr "Podrobnosti"
+
+#: src/gr-edit-page.ui:276
+msgid "_Name Your Recipe"
+msgstr "_Názov vášho receptu"
+
+#: src/gr-edit-page.ui:308
+msgid "Ser_ves"
+msgstr "Por_cie"
+
+#: src/gr-edit-page.ui:338
+msgid "_Preparation Time"
+msgstr "Čas _prípravy"
+
+#: src/gr-edit-page.ui:364 src/gr-edit-page.ui:412
+msgid "Less than 15 minutes"
+msgstr "Menej ako 15 minút"
+
+#: src/gr-edit-page.ui:365 src/gr-edit-page.ui:413
+msgid "15 to 30 minutes"
+msgstr "15 až 30 minút"
+
+#: src/gr-edit-page.ui:366 src/gr-edit-page.ui:414
+msgid "30 to 45 minutes"
+msgstr "30 až 45 minút"
+
+#: src/gr-edit-page.ui:367 src/gr-edit-page.ui:415
+msgid "45 minutes to an hour"
+msgstr "45 minút až hodina"
+
+#: src/gr-edit-page.ui:368 src/gr-edit-page.ui:416
+msgid "More than an hour"
+msgstr "Viac ako hodina"
+
+#: src/gr-edit-page.ui:386
+msgid "C_ooking Time"
+msgstr "Čas _varenia"
+
+#: src/gr-edit-page.ui:434
+msgid "_Cuisine"
+msgstr "_Kuchyňa"
+
+#: src/gr-edit-page.ui:470
+msgid "_Meal"
+msgstr "_Jedlo"
+
+#: src/gr-edit-page.ui:506
+msgid "S_eason"
+msgstr "S_ezóna"
+
+#: src/gr-edit-page.ui:542
+msgid "S_piciness"
+msgstr "P_ikantnosť"
+
+#: src/gr-edit-page.ui:562 src/gr-spice-row.c:127
+msgid "Mild"
+msgstr "Mierna"
+
+#: src/gr-edit-page.ui:563
+msgid "Somewhat spicy"
+msgstr "Trochu pikantné"
+
+#: src/gr-edit-page.ui:564
+msgid "Hot"
+msgstr "Pikantné"
+
+#: src/gr-edit-page.ui:565 src/gr-details-page.c:541 src/gr-spice-row.c:142
+msgid "Very spicy"
+msgstr "Veľmi pikantné"
+
+#: src/gr-edit-page.ui:576
+msgid "Description"
+msgstr "Popis"
+
+#: src/gr-edit-page.ui:635 src/gr-diet-row.c:102
+msgid "Gluten free"
+msgstr "Bez lepku"
+
+#: src/gr-edit-page.ui:642 src/gr-diet-row.c:105
+msgid "Nut free"
+msgstr "Bez orechov"
+
+#: src/gr-edit-page.ui:649 src/gr-diet-row.c:108
+msgid "Vegan"
+msgstr "Pre vegánov"
+
+#: src/gr-edit-page.ui:656 src/gr-diet-row.c:111
+msgid "Vegetarian"
+msgstr "Pre vegetariánov"
+
+#: src/gr-edit-page.ui:663 src/gr-diet-row.c:114
+msgid "Milk free"
+msgstr "Bez mlieka"
+
+#: src/gr-edit-page.ui:751 src/menus.ui:66
+msgid "Edit"
+msgstr "Úprava"
+
+#: src/gr-edit-page.ui:758
+msgid "Preview"
+msgstr "Náhľad"
+
+#: src/gr-edit-page.ui:778
+msgid "Add Step"
+msgstr "Pridať krok"
+
+#: src/gr-edit-page.ui:786
+msgid "Add Image"
+msgstr "Pridať obrázok"
+
+#: src/gr-edit-page.ui:794
+msgid "Add Timer"
+msgstr "Pridať časovač"
+
+#: src/gr-edit-page.ui:802
+msgid "Add Temperature"
+msgstr "Pridať teplotu"
+
+#: src/gr-edit-page.ui:866 src/gr-edit-page.ui:887 src/gr-edit-page.c:453
+msgid "Ingredient"
+msgstr "Ingrediencia"
+
+#: src/gr-edit-page.ui:915 src/gr-edit-page.ui:1007 src/gr-query-editor.ui:283
+msgid "Search…"
+msgstr "Vyhľadať…"
+
+#: src/gr-edit-page.ui:945 src/gr-edit-page.ui:966 src/gr-edit-page.c:454
+msgid "Amount"
+msgstr "Množstvo"
+
+#: src/gr-edit-page.ui:1038 src/gr-edit-page.c:457
+msgid "Add"
+msgstr "Pridať"
+
+#: src/gr-edit-page.ui:1089
+msgid "Title…"
+msgstr "Názov…"
+
+#: src/gr-edit-page.ui:1164
+msgid "Syntax"
+msgstr "Syntax"
+
+#: src/gr-edit-page.ui:1179
+msgid "Use paragraphs to break directions into steps (2 newlines)."
+msgstr ""
+
+#: src/gr-edit-page.ui:1192
+msgid "You can provide an image or a time counter in each step."
+msgstr ""
+
+#: src/gr-edit-page.ui:1204
+msgid "Timer"
+msgstr "Časovač"
+
+#: src/gr-edit-page.ui:1226
+msgid "Image"
+msgstr "Obrázok"
+
+#: src/gr-edit-page.ui:1248
+msgid "Temperature"
+msgstr "Teplota"
+
+#: src/gr-list-page.ui:124
+msgid "There are no recipes here yet."
+msgstr "Zatiaľ sa tu nenachádzajú žiadne recepty."
+
+#: src/gr-query-editor.ui:66 src/gr-query-editor.c:490
+#: src/gr-query-editor.c:679
+msgid "Any meal"
+msgstr "Akékoľvek jedlo"
+
+#: src/gr-query-editor.ui:109
+msgid "Spiciness"
+msgstr "Pikantnosť"
+
+#: src/gr-query-editor.ui:129 src/gr-query-editor.c:557
+#: src/gr-query-editor.c:708
+msgid "Any spiciness"
+msgstr "Akákoľvek pikantnosť"
+
+#: src/gr-query-editor.ui:172
+msgid "Dietary restrictions"
+msgstr "Diétne obmedzenia"
+
+#: src/gr-query-editor.ui:192 src/gr-query-editor.c:406
+#: src/gr-query-editor.c:737
+msgid "No restrictions"
+msgstr "Bez obmedzení"
+
+#: src/gr-query-editor.ui:235 src/gr-edit-page.c:1804
+#: src/gr-recipe-formatter.c:67 src/gr-recipe-printer.c:190
+msgid "Ingredients"
+msgstr "Ingrediencie"
+
+#. FIXME: repopulate
+#: src/gr-query-editor.ui:255 src/gr-query-editor.c:337
+#: src/gr-query-editor.c:766
+msgid "Anything"
+msgstr "Čokoľvek"
+
+#: src/gr-recipe-small-tile.ui:125 src/gr-edit-page.c:1834
+msgid "Remove"
+msgstr "Odstrániť"
+
+#: src/gr-recipes-page.ui:8
+msgid "Recipes page"
+msgstr "Stránka s receptami"
+
+#: src/gr-recipes-page.ui:27
+msgid "Today"
+msgstr "Dnes"
+
+#: src/gr-recipes-page.ui:103
+msgid "Editor’s Picks"
+msgstr "Výber redaktorov"
+
+#: src/gr-recipes-page.ui:129
+msgid "Categories"
+msgstr "Kategórie"
+
+#: src/gr-recipes-page.ui:226
+msgid "Featured GNOME Chefs"
+msgstr ""
+
+#: src/gr-search-page.ui:42
+msgid "Try a different search"
+msgstr "Skúste vyhľadať niečo iné"
+
+#: src/gr-shopping-page.ui:40
+msgid "Buy ingredients"
+msgstr "Nakúpiť ingrediencie"
+
+#: src/gr-shopping-page.ui:91
+msgid "No shopping necessary!"
+msgstr "Nie je potrebné žiadne nakupovanie!"
+
+#: src/gr-shopping-page.ui:131
+msgid "_Clear List"
+msgstr "Vy_mazať zoznam"
+
+#: src/gr-shopping-page.ui:187
+msgid "Nothing to add"
+msgstr "Nič na pridanie"
+
+#: src/gr-time-widget.ui:31
+msgid "Start"
+msgstr ""
+
+#: src/gr-time-widget.ui:60
+msgid "Pause"
+msgstr ""
+
+#: src/gr-time-widget.ui:69
+msgid "Continue"
+msgstr ""
+
+#: src/gr-time-widget.ui:82
+msgid "Reset"
+msgstr ""
+
+#: src/gr-window.ui:23
+msgid "_New Recipe"
+msgstr "_Nový recept"
+
+#: src/gr-window.ui:40
+msgid "Go back"
+msgstr ""
+
+#: src/gr-window.ui:97
+msgid "Search"
+msgstr ""
+
+#: src/gr-window.ui:116
+msgid "_Start Cooking"
+msgstr "Z_ačať variť"
+
+#: src/gr-window.ui:144
+msgid "_Done Shopping"
+msgstr "_Dokončiť nakupovanie"
+
+#: src/gr-window.ui:205
+msgid "All ingredients marked as stocked!"
+msgstr "Všetky ingrediencie boli označené ako nakúpené!"
+
+#: src/gr-window.ui:215
+msgid "_Undo"
+msgstr "Vrátiť _späť"
+
+#: src/gr-window.ui:264
+msgid "Ingredients to buy added."
+msgstr "Ingrediencie na nakúpenie boli pridané."
+
+#: src/gr-window.ui:274
+msgid "View Shopping List"
+msgstr "Zobraziť nákupný zoznam"
+
+#: src/gr-window.ui:331
+msgid "Undo"
+msgstr "Vrátiť späť"
+
+#: src/gr-window.ui:391
+msgid "Send Update"
+msgstr "Odoslať aktualizáciu"
+
+#: src/gr-window.ui:466 src/gr-window.c:379
+msgid "Cuisines"
+msgstr "Kuchyne"
+
+#: src/menus.ui:6 src/menus.ui:48
+msgid "_Import"
+msgstr "_Importovať"
+
+#: src/menus.ui:11 src/menus.ui:53
+msgid "_Export All"
+msgstr "_Exportovať všetko"
+
+#: src/menus.ui:16
+msgid "_Chef Information"
+msgstr "Informácie o šé_fkuchárovi"
+
+#: src/menus.ui:22 src/menus.ui:93
+msgid "_What’s New"
+msgstr "Čo _je nové"
+
+#: src/menus.ui:26
+msgid "_Help"
+msgstr "_Pomocník"
+
+#: src/menus.ui:30
+msgid "_About"
+msgstr "_O aplikácii"
+
+#: src/menus.ui:34 src/menus.ui:97
+msgid "_Report Issue"
+msgstr "_Nahlásiť problém"
+
+#: src/menus.ui:38
+msgid "_Quit"
+msgstr "_Ukončiť"
+
+#: src/menus.ui:45
+msgid "File"
+msgstr "Súbor"
+
+#: src/menus.ui:60
+msgid "Chef Information…"
+msgstr "Informácie o šéfkuchárovi…"
+
+#: src/menus.ui:69
+msgid "Copy"
+msgstr "Kopírovať"
+
+#: src/menus.ui:73
+msgid "Paste"
+msgstr "Vložiť"
+
+#: src/menus.ui:79
+msgid "Find…"
+msgstr "Nájsť…"
+
+#: src/menus.ui:86
+msgid "Help"
+msgstr "Pomocník"
+
+#: src/menus.ui:89
+msgid "Recipes _Help"
+msgstr "_Pomocník aplikácie Recepty"
+
+#: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:163
+#: src/gr-image-viewer.c:628 src/gr-recipe-exporter.c:167
+#: src/gr-shopping-page.c:731 src/gr-window.c:1133
+msgid "Cancel"
+msgstr "Zrušiť"
+
+#: src/recipe-conflict-dialog.ui:18
+msgid "Rename"
+msgstr "Premenovať"
+
+#: src/recipe-conflict-dialog.ui:28
+msgid "A recipe with this name already exists."
+msgstr "Recept s týmto názvom už existuje."
+
+#: src/recipe-export-dialog.ui:14
+msgid "_Add More"
+msgstr "_Pridať viac"
+
+#: src/recipe-export-dialog.ui:56
+msgid "Share with a friend"
+msgstr "Zdieľať s priateľom"
+
+#: src/recipe-export-dialog.ui:63
+msgid "Contribute to the Recipes project"
+msgstr ""
+
+#: src/recipe-whats-new-dialog.ui:8
+msgid "What’s New in Recipes"
+msgstr "Čo je nové v aplikácii Recepty"
+
+#: src/gr-about-dialog.c:132
+msgid "Learn more about Builder"
+msgstr ""
+
+#: src/gr-about-dialog.c:244 src/gr-about-dialog.c:327
+#: src/gr-about-dialog.c:329 src/gr-about-dialog.c:331
+#: src/gr-about-dialog.c:333 src/gr-about-dialog.c:335
+#: src/gr-about-dialog.c:337 src/gr-about-dialog.c:339
+#: src/gr-about-dialog.c:341 src/gr-about-dialog.c:343
+msgid "Unknown"
+msgstr ""
+
+#: src/gr-about-dialog.c:433
+msgid "Flatpak"
+msgstr "Flatpak"
+
+#: src/gr-about-dialog.c:436
+msgctxt "Flatpak metadata"
+msgid "Version"
+msgstr "Verzia"
+
+#: src/gr-about-dialog.c:439
+msgid "Application"
+msgstr "Aplikácia"
+
+#: src/gr-about-dialog.c:442 src/gr-about-dialog.c:451
+msgctxt "Flatpak metadata"
+msgid "ID"
+msgstr ""
+
+#: src/gr-about-dialog.c:443 src/gr-about-dialog.c:452
+msgctxt "Flatpak metadata"
+msgid "Architecture"
+msgstr "Architektúra"
+
+#: src/gr-about-dialog.c:444 src/gr-about-dialog.c:453
+msgctxt "Flatpak metadata"
+msgid "Branch"
+msgstr "Vetva"
+
+#: src/gr-about-dialog.c:445 src/gr-about-dialog.c:454
+msgctxt "Flatpak metadata"
+msgid "Commit"
+msgstr "Začlenenie"
+
+#: src/gr-about-dialog.c:448
+msgid "Runtime"
+msgstr ""
+
+#: src/gr-about-dialog.c:457 src/gr-about-dialog.c:521
+msgid "Bundled libraries"
+msgstr ""
+
+#: src/gr-about-dialog.c:487
+msgid "OS"
+msgstr "Operačný systém"
+
+#: src/gr-about-dialog.c:490
+msgctxt "OS metadata"
+msgid "Name"
+msgstr "Názov"
+
+#: src/gr-about-dialog.c:492
+msgctxt "OS metadata"
+msgid "Type"
+msgstr "Typ"
+
+#: src/gr-about-dialog.c:495 src/gr-about-dialog.c:497
+msgctxt "OS metadata"
+msgid "Desktop"
+msgstr "Prostredie"
+
+#: src/gr-about-dialog.c:500
+msgid "System libraries"
+msgstr "Systémové knižnice"
+
+#: src/gr-about-dialog.c:820 src/gr-about-dialog.c:847
+msgid "System"
+msgstr "Systém"
+
+#: src/gr-about-dialog.c:922
+msgid "translator-credits"
+msgstr "Dušan Kazik <prescott66@gmail.com>"
+
+#: src/gr-about-dialog.c:925
+msgid "Learn more about Recipes"
+msgstr "Zistiť viac o aplikácii Recepty"
+
+#: src/gr-about-dialog.c:932
+msgid "Recipes by"
+msgstr ""
+
+#: src/gr-account.c:109
+#, c-format
+msgid "Got an error from Account portal"
+msgstr ""
+
+#: src/gr-account.c:137
+msgid ""
+"Allow your personal information to be included with recipes you share with "
+"your friends."
+msgstr ""
+
+#: src/gr-app.c:395
+msgid "Print the version and exit"
+msgstr ""
+
+#: src/gr-app.c:399
+msgid "Turn on verbose logging"
+msgstr ""
+
+#: src/gr-chef-dialog.c:159 src/gr-image-viewer.c:624
+msgid "Select an Image"
+msgstr "Výber obrázku"
+
+#: src/gr-chef-dialog.c:162 src/gr-image-viewer.c:627 src/gr-window.c:1132
+msgid "Open"
+msgstr "Otvoriť"
+
+#: src/gr-chef-dialog.c:167 src/gr-image-viewer.c:632
+msgid "Image files"
+msgstr "Súbory obrázkov"
+
+#: src/gr-chef-dialog.c:426
+msgid "New Chef"
+msgstr "Nový šéfkuchár"
+
+#: src/gr-cooking-page.c:249
+msgid "Cooking"
+msgstr "Varenie"
+
+#: src/gr-cooking-view.c:157
+#, c-format
+msgid "Step %d/%d"
+msgstr "Krok %d z %d"
+
+#: src/gr-cooking-view.c:163
+#, c-format
+msgid "Step %d"
+msgstr "Krok č. %d"
+
+#: src/gr-cooking-view.c:273
+msgid "GNOME Recipes"
+msgstr "Recepty prostredia GNOME"
+
+#: src/gr-cooking-view.c:393
+msgid "A cooking timer has expired"
+msgstr ""
+
+#: src/gr-cooking-view.c:411 src/gr-cooking-view.c:427
+#, c-format
+msgid "Timer for “%s” has expired."
+msgstr ""
+
+#: src/gr-cooking-view.c:425
+msgid "Timer is up!"
+msgstr ""
+
+#: src/gr-cuisine.c:45
+msgid "American"
+msgstr "americká"
+
+#: src/gr-cuisine.c:46
+msgid "Chinese"
+msgstr "čínska"
+
+#: src/gr-cuisine.c:47
+msgid "Indian"
+msgstr "indická"
+
+#: src/gr-cuisine.c:48
+msgid "Italian"
+msgstr "talianska"
+
+#: src/gr-cuisine.c:49
+msgid "French"
+msgstr "francúzska"
+
+#: src/gr-cuisine.c:50
+msgid "Greek"
+msgstr "grécka"
+
+#: src/gr-cuisine.c:51
+msgid "Mediterranean"
+msgstr "stredomorská"
+
+#: src/gr-cuisine.c:52
+msgid "Mexican"
+msgstr "mexická"
+
+#: src/gr-cuisine.c:53
+msgid "Nordic"
+msgstr "škandinávska"
+
+#: src/gr-cuisine.c:54
+msgid "Turkish"
+msgstr "turecká"
+
+#: src/gr-cuisine.c:58
+msgid "American Cuisine"
+msgstr "americká kuchyňa"
+
+#: src/gr-cuisine.c:59
+msgid "Chinese Cuisine"
+msgstr "čínska kuchyňa"
+
+#: src/gr-cuisine.c:60
+msgid "Indian Cuisine"
+msgstr "indická kuchyňa"
+
+#: src/gr-cuisine.c:61
+msgid "Italian Cuisine"
+msgstr "talianska kuchyňa"
+
+#: src/gr-cuisine.c:62
+msgid "French Cuisine"
+msgstr "francúzska kuchyňa"
+
+#: src/gr-cuisine.c:63
+msgid "Greek Cuisine"
+msgstr "grécka kuchyňa"
+
+#: src/gr-cuisine.c:64
+msgid "Mediterranean Cuisine"
+msgstr "stredomorská kuchyňa"
+
+#: src/gr-cuisine.c:65
+msgid "Mexican Cuisine"
+msgstr "mexická kuchyňa"
+
+#: src/gr-cuisine.c:66
+msgid "Nordic Cuisine"
+msgstr "škandinávska kuchyňa"
+
+#: src/gr-cuisine.c:67
+msgid "Turkish Cuisine"
+msgstr "turecká kuchyňa"
+
+#: src/gr-cuisine.c:71
+msgid ""
+"The cuisine of the United States reflects its history. The European "
+"colonization of the Americas yielded the introduction of a number of "
+"ingredients and cooking styles to the latter. The various styles continued "
+"expanding well into the 19th and 20th centuries, proportional to the influx "
+"of immigrants from many foreign nations; such influx developed a rich "
+"diversity in food preparation throughout the country."
+msgstr ""
+
+#: src/gr-cuisine.c:76
+msgid ""
+"Chinese cuisine includes styles originating from the diverse regions of "
+"China, as well as from Chinese people in other parts of the world including "
+"most Asian nations. The history of Chinese cuisine in China stretches back "
+"for thousands of years and has changed from period to period and in each "
+"region according to climate, imperial fashions, and local preferences. Over "
+"time, techniques and ingredients from the cuisines of other cultures were "
+"integrated into the cuisine of the Chinese people due both to imperial "
+"expansion and from the trade with nearby regions in pre-modern times, and "
+"from Europe and the New World in the modern period."
+msgstr ""
+
+#: src/gr-cuisine.c:84
+msgid ""
+"Indian cuisine encompasses a wide variety of regional and traditional "
+"cuisines native to India. Given the range of diversity in soil type, "
+"climate, culture, ethnic group and occupations, these cuisines vary "
+"significantly from each other and use locally available spices, herbs, "
+"vegetables and fruits. Indian food is also heavily influenced by religious "
+"and cultural choices and traditions. There has also been Middle Eastern and "
+"Central Asian influence on North Indian cuisine from the years of Mughal "
+"rule. Indian cuisine has been and is still evolving, as a result of the "
+"nation’s cultural interactions with other societies."
+msgstr ""
+
+#: src/gr-cuisine.c:92
+msgid ""
+"Italian cuisine is characterized by its simplicity, with many dishes having "
+"only four to eight ingredients. Italian cooks rely chiefly on the quality of "
+"the ingredients rather than on elaborate preparation. Ingredients and dishes "
+"vary by region. Many dishes that were once regional, however, have "
+"proliferated with variations throughout the country."
+msgstr ""
+
+#: src/gr-cuisine.c:96
+msgid ""
+"French cuisine was codified in the 20th century by Auguste Escoffier to "
+"become the modern haute cuisine; Escoffier, however, left out much of the "
+"local culinary character to be found in the regions of France and was "
+"considered difficult to execute by home cooks. Gastro-tourism and the Guide "
+"Michelin helped to acquaint people with the rich bourgeois and peasant "
+"cuisine of the French countryside starting in the 20th century. Gascon "
+"cuisine has also had great influence over the cuisine in the southwest of "
+"France. Many dishes that were once regional have proliferated in variations "
+"across the country."
+msgstr ""
+
+#: src/gr-cuisine.c:103
+msgid ""
+"Contemporary Greek cookery makes wide use of vegetables, olive oil, grains, "
+"fish, wine, and meat (white and red, including lamb, poultry, rabbit and "
+"pork). Other important ingredients include olives, cheese, eggplant "
+"(aubergine), zucchini (courgette), lemon juice, vegetables, herbs, bread and "
+"yoghurt. The most commonly used grain is wheat; barley is also used. Common "
+"dessert ingredients include nuts, honey, fruits, and filo pastry."
+msgstr ""
+
+#: src/gr-cuisine.c:108
+msgid ""
+"The mediterranean cuisine has a lot to offer, and is legendary for being "
+"very healthy too. Expect to see olives, yoghurt and garlic."
+msgstr ""
+
+#: src/gr-cuisine.c:109
+msgid ""
+"Mexican cuisine is primarily a fusion of indigenous Mesoamerican cooking "
+"with European, especially Spanish, elements added after the Spanish conquest "
+"of the Aztec Empire in the 16th century. The staples are native foods, such "
+"as corn, beans, avocados, tomatoes, and chili peppers, along with rice, "
+"which was brought by the Spanish. Europeans introduced a large number of "
+"other foods, the most important of which were meats from domesticated "
+"animals (beef, pork, chicken, goat, and sheep), dairy products (especially "
+"cheese), and various herbs and spices."
+msgstr ""
+
+#: src/gr-cuisine.c:116
+msgid ""
+"Cooking in Denmark has always been inspired by foreign and continental "
+"practises and the use of imported tropical spices like cinnamon, cardamom, "
+"nutmeg and black pepper can be traced to the Danish cuisine of the Middle "
+"Ages and some even to the Vikings."
+msgstr ""
+
+#: src/gr-cuisine.c:117
+msgid ""
+"You can find a great variety of mouth watering dishes in Turkish cuisine, "
+"which is mostly the heritage of Ottoman cuisine. It is the mixture and "
+"refinement of Central Asian, Middle Eastern and Balkan cuisines. Therefore "
+"it is impossible to fit Turkish cuisine into a short list."
+msgstr ""
+
+#: src/gr-details-page.c:323
+msgid "Could not find this recipe."
+msgstr ""
+
+#: src/gr-details-page.c:585
+#, c-format
+msgid "Timer: %s"
+msgstr ""
+
+#: src/gr-details-page.c:592
+#, c-format
+msgid "Image %d"
+msgstr ""
+
+#: src/gr-details-page.c:745 src/gr-edit-page.c:2130
+#, c-format
+msgid "Recipe by %s"
+msgstr ""
+
+#: src/gr-diet.c:34
+msgid "Gluten-free recipes"
+msgstr ""
+
+#: src/gr-diet.c:37
+msgid "Nut-free recipes"
+msgstr ""
+
+#: src/gr-diet.c:40
+msgid "Vegan recipes"
+msgstr ""
+
+#: src/gr-diet.c:43
+msgid "Vegetarian recipes"
+msgstr ""
+
+#: src/gr-diet.c:46
+msgid "Milk-free recipes"
+msgstr ""
+
+#: src/gr-diet.c:49 src/gr-diet.c:78
+msgid "Other dietary restrictions"
+msgstr ""
+
+#: src/gr-diet.c:63
+msgid ""
+"A gluten-free diet is a diet that excludes gluten, a protein composite found "
+"in wheat, barley, rye, and all their species and hybrids (such as spelt, "
+"kamut, and triticale). The inclusion of oats in a gluten-free diet remains "
+"controversial. Avenin present in oats may also be toxic for coeliac people; "
+"its toxicity depends on the cultivar consumed. Furthermore, oats are "
+"frequently cross-contaminated with cereals containing gluten.\n"
+"<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free\">Learn more…</"
+"a>"
+msgstr ""
+
+#: src/gr-diet.c:66
+msgid ""
+"A tree nut allergy is a hypersensitivity to dietary substances from tree "
+"nuts and edible tree seeds causing an overreaction of the immune system "
+"which may lead to severe physical symptoms. Tree nuts include, but are not "
+"limited to, almonds, Brazil nuts, cashews, chestnuts, filberts/hazelnuts, "
+"macadamia nuts, pecans, pistachios, pine nuts, shea nuts and walnuts.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">Learn more…</a>"
+msgstr ""
+
+#: src/gr-diet.c:69
+msgid ""
+"Veganism is both the practice of abstaining from the use of animal products, "
+"particularly in diet, and an associated philosophy that rejects the "
+"commodity status of animals.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Veganism\">Learn more…</a>"
+msgstr ""
+
+#: src/gr-diet.c:72
+msgid ""
+"Vegetarian cuisine is based on food that meets vegetarian standards by not "
+"including meat and animal tissue products (such as gelatin or animal-derived "
+"rennet). For lacto-ovo vegetarianism (the most common type of vegetarianism "
+"in the Western world), eggs and dairy products such as milk and cheese are "
+"permitted. For lacto vegetarianism, the earliest known type of vegetarianism "
+"(recorded in India), dairy products such as milk and cheese are permitted.\n"
+"The strictest forms of vegetarianism are veganism and fruitarianism, which "
+"exclude all animal products, including dairy products as well as honey, and "
+"even some refined sugars if filtered and whitened with bone char.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Vegetarianism\">Learn more…</a>"
+msgstr ""
+
+#: src/gr-diet.c:75
+msgid ""
+"Lactose intolerance is a condition in which people have symptoms due to the "
+"decreased ability to digest lactose, a sugar found in milk products. Those "
+"affected vary in the amount of lactose they can tolerate before symptoms "
+"develop. Symptoms may include abdominal pain, bloating, diarrhea, gas, and "
+"nausea. These typically start between half and two hours after drinking "
+"milk. Severity depends on the amount a person eats or drinks. It does not "
+"cause damage to the gastrointestinal tract.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Learn more…</a>"
+msgstr ""
+
+#: src/gr-edit-page.c:504
+msgid "Apply"
+msgstr "Použiť"
+
+#: src/gr-edit-page.c:1192
+msgid "hour"
+msgstr ""
+
+#: src/gr-edit-page.c:1193
+msgid "hours"
+msgstr ""
+
+#: src/gr-edit-page.c:1194
+msgctxt "hour abbreviation"
+msgid "h"
+msgstr ""
+
+#: src/gr-edit-page.c:1198
+msgid "minute"
+msgstr ""
+
+#: src/gr-edit-page.c:1199
+msgid "minutes"
+msgstr ""
+
+#: src/gr-edit-page.c:1200
+msgctxt "minute abbreviation"
+msgid "min"
+msgstr ""
+
+#: src/gr-edit-page.c:1201
+msgctxt "minute abbreviation"
+msgid "m"
+msgstr ""
+
+#: src/gr-edit-page.c:1205
+msgid "second"
+msgstr ""
+
+#: src/gr-edit-page.c:1206
+msgid "seconds"
+msgstr ""
+
+#: src/gr-edit-page.c:1207
+msgctxt "second abbreviation"
+msgid "sec"
+msgstr ""
+
+#: src/gr-edit-page.c:1208
+msgctxt "second abbreviation"
+msgid "s"
+msgstr ""
+
+#: src/gr-edit-page.c:1384
+msgid "Recipe Author"
+msgstr ""
+
+#: src/gr-edit-page.c:1819
+msgid "Name of the List"
+msgstr "Názov zoznamu"
+
+#: src/gr-edit-page.c:1853
+msgid "No ingredients added yet"
+msgstr ""
+
+#: src/gr-edit-page.c:1872
+msgid "Add Ingredient"
+msgstr "Pridá ingredienciu"
+
+#: src/gr-edit-page.c:1979
+msgid "Add List"
+msgstr "Pridať zoznam"
+
+#: src/gr-edit-page.c:2007
+msgid "Name Your Recipe"
+msgstr ""
+
+#: src/gr-edit-page.c:2186
+msgid "Name"
+msgstr ""
+
+#: src/gr-edit-page.c:2298 src/gr-recipe-store.c:1282
+#, c-format
+msgid "You need to provide a name for the recipe"
+msgstr ""
+
+#: src/gr-list-page.c:245
+msgid "Gluten-free Recipes"
+msgstr "Bezlepkové recepty"
+
+#: src/gr-list-page.c:247
+msgid "Nut-free Recipes"
+msgstr "Recepty bez orechov"
+
+#: src/gr-list-page.c:249
+msgid "Vegan Recipes"
+msgstr "Recepty pre vegánov"
+
+#: src/gr-list-page.c:251
+msgid "Vegetarian Recipes"
+msgstr "Recepty pre vegetariánov"
+
+#: src/gr-list-page.c:253
+msgid "Milk-free Recipes"
+msgstr "Recepty bez mlieka"
+
+#: src/gr-list-page.c:255
+msgid "Other Dietary Restrictions"
+msgstr "Iné diétne obmedzenia"
+
+#: src/gr-list-page.c:296
+#, c-format
+msgid "No %s found"
+msgstr ""
+
+#: src/gr-list-page.c:299 src/gr-list-page.c:358 src/gr-list-page.c:389
+msgid "You could add one using the “New Recipe” button."
+msgstr "Môžete ich pridať pomocou tlačidla „Nový recept“."
+
+#: src/gr-list-page.c:347
+#, c-format
+msgid "Recipes by %s"
+msgstr "Recepty od šéfkuchára %s"
+
+#: src/gr-list-page.c:354
+#, c-format
+msgid "No recipes by chef %s found"
+msgstr "Nenašli sa žiadne recepty od šéfkuchára %s"
+
+#: src/gr-list-page.c:360 src/gr-list-page.c:428 src/gr-list-page.c:453
+#: src/gr-list-page.c:486
+msgid "Sorry about this."
+msgstr "Ospravedlňujeme sa."
+
+#: src/gr-list-page.c:386
+#, c-format
+msgid "No recipes for %s found"
+msgstr "Nenašli sa žiadne recepty pre sezónu %s"
+
+#: src/gr-list-page.c:408
+msgid "No favorite recipes found"
+msgstr "Nenašli sa žiadne obľúbené recepty"
+
+#: src/gr-list-page.c:409
+msgid "Use the ♥ button to mark recipes as favorites."
+msgstr "Pomocou tlačidla ♥ označíte recepty ako obľúbené."
+
+#: src/gr-list-page.c:452
+msgid "No new recipes"
+msgstr "Žiadne nové recepty"
+
+#: src/gr-list-page.c:485
+msgid "No imported recipes found"
+msgstr "Nenašli sa žiadne importované recepty"
+
+#: src/gr-meal.c:44
+msgid "Main Course"
+msgstr ""
+
+#: src/gr-meal.c:45
+msgid "Snacks"
+msgstr ""
+
+#: src/gr-meal.c:46
+msgid "Breakfast"
+msgstr ""
+
+#: src/gr-meal.c:47
+msgid "Side Dishes"
+msgstr ""
+
+#: src/gr-meal.c:48
+msgid "Desserts"
+msgstr ""
+
+#: src/gr-meal.c:49
+msgid "Cake and Baking"
+msgstr ""
+
+#: src/gr-meal.c:50
+msgid "Drinks and Cocktails"
+msgstr ""
+
+#: src/gr-meal.c:51
+msgid "Pizza"
+msgstr ""
+
+#: src/gr-meal.c:52
+msgid "Pasta"
+msgstr ""
+
+#: src/gr-meal.c:53
+msgid "Other"
+msgstr ""
+
+#: src/gr-number.c:166 src/gr-number.c:183 src/gr-number.c:192
+#, c-format
+msgid "Could not parse %s as a fraction"
+msgstr ""
+
+#: src/gr-number.c:216
+#, c-format
+msgid "Could not parse %s as a integer"
+msgstr ""
+
+#: src/gr-number.c:238
+#, c-format
+msgid "Could not parse %s as a float"
+msgstr ""
+
+#: src/gr-number.c:286
+#, c-format
+msgid "Could not parse %s as a number"
+msgstr ""
+
+#: src/gr-recipe-exporter.c:163
+msgid "Save the exported recipe"
+msgstr "Uloženie exportovaného receptu"
+
+#: src/gr-recipe-exporter.c:166 src/gr-shopping-page.c:730
+msgid "Save"
+msgstr "Uložiť"
+
+#: src/gr-recipe-exporter.c:197
+msgid "Recipe contribution"
+msgstr ""
+
+#: src/gr-recipe-exporter.c:198
+msgid "Please accept my attached recipe contribution."
+msgstr ""
+
+#: src/gr-recipe-exporter.c:208
+msgid "Try this recipe"
+msgstr ""
+
+#: src/gr-recipe-exporter.c:209
+msgid ""
+"Hi,\n"
+"\n"
+"you should try this recipe."
+msgstr ""
+
+#: src/gr-recipe-exporter.c:212
+msgid "Try these recipes"
+msgstr ""
+
+#: src/gr-recipe-exporter.c:213
+msgid ""
+"Hi,\n"
+"\n"
+"you should try these recipes."
+msgstr ""
+
+#: src/gr-recipe-exporter.c:216
+msgid "(The attached file can be imported into GNOME Recipes.)"
+msgstr ""
+
+#: src/gr-recipe-exporter.c:412
+#, c-format
+msgid "This build does not support exporting"
+msgstr ""
+
+#: src/gr-recipe-exporter.c:494
+#, c-format
+msgid ""
+"Error while exporting:\n"
+"%s"
+msgstr ""
+
+#: src/gr-recipe-exporter.c:591
+#, c-format
+msgid "%d recipe selected for sharing"
+msgid_plural "%d recipes selected for sharing"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: src/gr-recipe-exporter.c:623
+msgid ""
+"Some of the selected recipes are included\n"
+"with GNOME Recipes. You should only contribute\n"
+"your own recipes."
+msgstr ""
+
+#: src/gr-recipe-formatter.c:53 src/gr-recipe-printer.c:156
+msgid "Author:"
+msgstr "Autor:"
+
+#: src/gr-recipe-formatter.c:54 src/gr-recipe-printer.c:157
+msgid "Preparation:"
+msgstr "Príprava:"
+
+#: src/gr-recipe-formatter.c:55 src/gr-recipe-printer.c:158
+msgid "Cooking:"
+msgstr "Varenie:"
+
+#: src/gr-recipe-formatter.c:56 src/gr-recipe-printer.c:159
+msgid "Serves:"
+msgstr "Porcie:"
+
+#: src/gr-recipe-importer.c:236
+#, c-format
+msgid ""
+"Error while importing recipe:\n"
+"%s"
+msgstr ""
+"Chyba počas importu receptu:\n"
+"%s"
+
+#: src/gr-recipe-importer.c:482
+#, c-format
+msgid "Failed to load recipe: Couldn’t parse Created key"
+msgstr ""
+
+#: src/gr-recipe-importer.c:493
+#, c-format
+msgid "Failed to load recipe: Couldn’t parse Modified key"
+msgstr ""
+
+#: src/gr-recipe-importer.c:795
+#, c-format
+msgid "This build does not support importing"
+msgstr "Táto zostava nepodporuje importovanie"
+
+#: src/gr-recipe-printer.c:411 src/gr-shopping-list-printer.c:297
+msgid "Error printing file:"
+msgstr "Chyba počas tlače súboru:"
+
+#: src/gr-recipe-printer.c:412 src/gr-shopping-list-printer.c:298
+msgid "No details"
+msgstr "Bez podrobností"
+
+#: src/gr-recipe-small-tile.c:105 src/gr-recipe-tile.c:86
+#, c-format
+msgid "by %s"
+msgstr ""
+
+#: src/gr-recipe-small-tile.c:105 src/gr-recipe-tile.c:86
+msgid "Anonymous"
+msgstr ""
+
+#: src/gr-recipes-page.c:223 src/gr-window.c:1354
+msgid "My Recipes"
+msgstr "Moje recepty"
+
+#: src/gr-recipes-page.c:224
+msgid "Favorites"
+msgstr "Obľúbené"
+
+#: src/gr-recipes-page.c:225 src/gr-window.c:1268
+msgid "All Recipes"
+msgstr "Všetky recepty"
+
+#: src/gr-recipes-page.c:226 src/gr-window.c:1284
+msgid "New Recipes"
+msgstr "Nové recepty"
+
+#: src/gr-recipes-page.c:274
+msgid "Last edited:"
+msgstr "Posledná úprava:"
+
+#: src/gr-recipes-page.c:373
+#, c-format
+msgid "Buy ingredients: <b>%s</b>"
+msgstr "Nakúpiť ingrediencie na: <b>%s</b>"
+
+#: src/gr-recipes-page.c:375
+#, c-format
+msgid "Buy ingredients: <b>%s and %s</b>"
+msgstr "Nakúpiť ingrediencie na: <b>%s a %s</b>"
+
+#: src/gr-recipes-page.c:377
+#, c-format
+msgid "Buy ingredients: <b>%s, %s and %d other</b>"
+msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
+msgstr[0] "Nakúpiť ingrediencie na: <b>%s, %s a %d ďalších</b>"
+msgstr[1] "Nakúpiť ingrediencie na: <b>%s, %s a %d ďalší</b>"
+msgstr[2] "Nakúpiť ingrediencie na: <b>%s, %s a %d ďalšie</b>"
+
+#: src/gr-recipe-store.c:1287
+#, c-format
+msgid ""
+"A recipe with this name and author already exists.\n"
+"Please choose a different name"
+msgstr ""
+
+#: src/gr-recipe-store.c:1316
+#, c-format
+msgid "You need to provide an ID for the recipe"
+msgstr ""
+
+#: src/gr-recipe-store.c:1322
+#, c-format
+msgid "A recipe with this ID already exists"
+msgstr ""
+
+#: src/gr-recipe-store.c:1491
+#, c-format
+msgid "You need to provide an ID"
+msgstr ""
+
+#: src/gr-recipe-store.c:1497
+#, c-format
+msgid "Sorry, this ID is taken"
+msgstr ""
+
+#: src/gr-recipe-store.c:1524
+#, c-format
+msgid "You need to provide an ID for the chef"
+msgstr ""
+
+#: src/gr-recipe-store.c:1530
+#, c-format
+msgid "A chef with this ID already exists"
+msgstr ""
+
+#: src/gr-season.c:41
+msgid "Thanksgiving"
+msgstr "Vďakyvzdanie"
+
+#: src/gr-season.c:42
+msgid "Christmas"
+msgstr "Vianoce"
+
+#: src/gr-season.c:43
+msgid "New Year’s"
+msgstr "Nový rok"
+
+#: src/gr-season.c:44
+msgid "Spring"
+msgstr "Jar"
+
+#: src/gr-season.c:45
+msgid "Summer"
+msgstr "Leto"
+
+#: src/gr-season.c:46
+msgid "Fall"
+msgstr "Jeseň"
+
+#: src/gr-season.c:47
+msgid "Winter"
+msgstr "Zima"
+
+#: src/gr-shopping-list-formatter.c:42 src/gr-shopping-list-printer.c:135
+#: src/gr-shopping-page.c:756
+msgid "Shopping List"
+msgstr "Nákupný zoznam"
+
+#: src/gr-shopping-list-formatter.c:44
+msgid "For the following recipes:"
+msgstr ""
+
+#: src/gr-shopping-list-printer.c:144
+msgid "For the following recipes"
+msgstr ""
+
+#: src/gr-shopping-list-printer.c:161
+msgid "Items"
+msgstr ""
+
+#: src/gr-shopping-page.c:100
+#, c-format
+msgid "%d ingredient marked for purchase"
+msgid_plural "%d ingredients marked for purchase"
+msgstr[0] "%d ingrediencií označených na nakúpenie"
+msgstr[1] "%d ingrediencia označená na nakúpenie"
+msgstr[2] "%d ingrediencie označené na nakúpenie"
+
+#: src/gr-shopping-page.c:119
+#, c-format
+msgid "Buy Ingredients (%d recipe)"
+msgid_plural "Buy Ingredients (%d recipes)"
+msgstr[0] "Nákup ingrediencií (%d receptov)"
+msgstr[1] "Nákup ingrediencií (%d recept)"
+msgstr[2] "Nákup ingrediencií (%d recepty)"
+
+#: src/gr-shopping-page.c:124
+#, c-format
+msgid "%d Recipe marked for preparation"
+msgid_plural "%d Recipes marked for preparation"
+msgstr[0] "%d receptov označených na prípravu"
+msgstr[1] "%d recept označený na prípravu"
+msgstr[2] "%d recepty označené na prípravu"
+
+#: src/gr-shopping-page.c:727
+msgid "Save the shopping list"
+msgstr "Uloženie nákupného zoznamu"
+
+#: src/gr-spice-row.c:131
+msgid "Mild or somewhat spicy"
+msgstr ""
+
+#: src/gr-spice-row.c:133
+msgid "At least somewhat spicy"
+msgstr ""
+
+#: src/gr-spice-row.c:137
+msgid "At most hot"
+msgstr ""
+
+#: src/gr-spice-row.c:139
+msgid "Hot or very spicy"
+msgstr ""
+
+#: src/gr-unit.c:40
+msgctxt "unit abbreviation"
+msgid "g"
+msgstr ""
+
+#: src/gr-unit.c:40
+msgctxt "unit name"
+msgid "gram"
+msgstr ""
+
+#: src/gr-unit.c:41
+msgctxt "unit abbreviation"
+msgid "kg"
+msgstr ""
+
+#: src/gr-unit.c:41
+msgctxt "unit name"
+msgid "kilogram"
+msgstr ""
+
+#: src/gr-unit.c:42
+msgctxt "unit abbreviation"
+msgid "lb"
+msgstr ""
+
+#: src/gr-unit.c:42
+msgctxt "unit name"
+msgid "pound"
+msgstr ""
+
+#: src/gr-unit.c:43
+msgctxt "unit abbreviation"
+msgid "oz"
+msgstr ""
+
+#: src/gr-unit.c:43
+msgctxt "unit name"
+msgid "ounce"
+msgstr ""
+
+#: src/gr-unit.c:44
+msgctxt "unit abbreviation"
+msgid "l"
+msgstr ""
+
+#: src/gr-unit.c:44
+msgctxt "unit name"
+msgid "liter"
+msgstr ""
+
+#: src/gr-unit.c:45
+msgctxt "unit abbreviation"
+msgid "dl"
+msgstr ""
+
+#: src/gr-unit.c:45
+msgctxt "unit name"
+msgid "deciliter"
+msgstr ""
+
+#: src/gr-unit.c:46
+msgctxt "unit abbreviation"
+msgid "ml"
+msgstr ""
+
+#: src/gr-unit.c:46
+msgctxt "unit name"
+msgid "milliliter"
+msgstr ""
+
+#: src/gr-unit.c:47
+msgctxt "unit abbreviation"
+msgid "fl oz"
+msgstr ""
+
+#: src/gr-unit.c:47
+msgctxt "unit name"
+msgid "fluid ounce"
+msgstr ""
+
+#: src/gr-unit.c:48
+msgctxt "unit abbreviation"
+msgid "pt"
+msgstr ""
+
+#: src/gr-unit.c:48
+msgctxt "unit name"
+msgid "pint"
+msgstr ""
+
+#: src/gr-unit.c:49
+msgctxt "unit abbreviation"
+msgid "qt"
+msgstr ""
+
+#: src/gr-unit.c:49
+msgctxt "unit name"
+msgid "quart"
+msgstr ""
+
+#: src/gr-unit.c:50
+msgctxt "unit abbreviation"
+msgid "gal"
+msgstr ""
+
+#: src/gr-unit.c:50
+msgctxt "unit name"
+msgid "gallon"
+msgstr ""
+
+#: src/gr-unit.c:51
+msgctxt "unit abbreviation"
+msgid "cup"
+msgstr ""
+
+#: src/gr-unit.c:51
+msgctxt "unit name"
+msgid "cup"
+msgstr ""
+
+#: src/gr-unit.c:52
+msgctxt "unit abbreviation"
+msgid "tbsp"
+msgstr ""
+
+#: src/gr-unit.c:52
+msgctxt "unit name"
+msgid "tablespoon"
+msgstr ""
+
+#: src/gr-unit.c:53
+msgctxt "unit abbreviation"
+msgid "tsp"
+msgstr ""
+
+#: src/gr-unit.c:53
+msgctxt "unit name"
+msgid "teaspoon"
+msgstr ""
+
+#: src/gr-unit.c:54
+msgctxt "unit abbreviation"
+msgid "box"
+msgstr ""
+
+#: src/gr-unit.c:54
+msgctxt "unit name"
+msgid "box"
+msgstr ""
+
+#: src/gr-unit.c:55
+msgctxt "unit abbreviation"
+msgid "pkg"
+msgstr ""
+
+#: src/gr-unit.c:55
+msgctxt "unit name"
+msgid "package"
+msgstr ""
+
+#: src/gr-unit.c:56
+msgctxt "unit abbreviation"
+msgid "glass"
+msgstr ""
+
+#: src/gr-unit.c:56
+msgctxt "unit name"
+msgid "glass"
+msgstr ""
+
+#: src/gr-unit.c:126
+#, c-format
+msgid "I don’t know this unit: %s"
+msgstr "Nepoznám túto jednotku: %s"
+
+#: src/gr-utils.c:334
+#, c-format
+msgid "more than a year ago"
+msgstr "pred viac ako rokom"
+
+#: src/gr-utils.c:337 src/gr-utils.c:341
+#, c-format
+msgid "%d month ago"
+msgid_plural "%d months ago"
+msgstr[0] "pred %d mesiacmi"
+msgstr[1] "pred %d mesiacom"
+msgstr[2] "pred %d mesiacmi"
+
+#: src/gr-utils.c:345
+#, c-format
+msgid "%d day ago"
+msgid_plural "%d days ago"
+msgstr[0] "pred %d dňami"
+msgstr[1] "pred %d dňom"
+msgstr[2] "pred %d dňami"
+
+#: src/gr-utils.c:348
+#, c-format
+msgid "just now"
+msgstr "práve teraz"
+
+#: src/gr-utils.c:350
+#, c-format
+msgid "10 minutes ago"
+msgstr "pred 10 minútami"
+
+#: src/gr-utils.c:352
+#, c-format
+msgid "half an hour ago"
+msgstr "pred pol hodinou"
+
+#: src/gr-utils.c:356
+#, c-format
+msgid "%d hour ago"
+msgid_plural "%d hours ago"
+msgstr[0] "pred %d hodinami"
+msgstr[1] "pred %d hodinou"
+msgstr[2] "pred %d hodinami"
+
+#: src/gr-utils.c:362
+msgid "some time ago"
+msgstr "pred chvíľou"
+
+#: src/gr-utils.c:385
+msgid "Could not connect to the session bus from inside the Flatpak sandbox."
+msgstr ""
+
+#: src/gr-utils.c:386
+msgid "Certain functionality will not be available."
+msgstr ""
+
+#: src/gr-utils.c:406
+msgid ""
+"Missing the desktop portal needed to open files from inside a Flatpak "
+"sandbox."
+msgstr ""
+
+#: src/gr-utils.c:408
+msgid ""
+"Missing the desktop portal needed to print from inside a Flatpak sandbox."
+msgstr ""
+
+#: src/gr-utils.c:410
+msgid ""
+"Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
+msgstr ""
+
+#: src/gr-utils.c:414
+msgid ""
+"Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
+msgstr ""
+
+#: src/gr-window.c:230
+msgid "Add a New Recipe"
+msgstr "Pridanie nového receptu"
+
+#: src/gr-window.c:517
+#, c-format
+msgid ""
+"The “%s” recipe has unsaved changes.\n"
+"Close the window anyway?"
+msgstr ""
+"Recept „%s“ obsahuje neuložené zmeny.\n"
+"Zavrieť okno aj napriek tomu?"
+
+#: src/gr-window.c:520
+msgid ""
+"The new recipe has not been saved.\n"
+"Close the window anyway?"
+msgstr ""
+"Nový recept nebol uložený.\n"
+"Zavrieť okno aj napriek tomu?"
+
+#: src/gr-window.c:651
+#, c-format
+msgid "Recipe “%s” deleted"
+msgstr "Recept „%s“ bol odstránený"
+
+#: src/gr-window.c:701
+#, c-format
+msgid "You updated your contributed “%s” recipe. Send an update?"
+msgstr ""
+
+#: src/gr-window.c:831
+msgid "Ready to Cook!"
+msgstr "Pripravené na varenie!"
+
+#: src/gr-window.c:1053
+msgid "Imported Recipes"
+msgstr "Importované recepty"
+
+#: src/gr-window.c:1129
+msgid "Select a recipe file"
+msgstr "Výber súboru s receptom"
+
+#: src/gr-window.c:1155
+#, c-format
+msgid "Recipes have been exported to “%s”"
+msgstr "Recepty boli exportované do súboru „%s“"
+
+#: src/gr-window.c:1193
+msgid "Select a file"
+msgstr ""
+
+#: src/gr-window.c:1196
+msgid "_Export"
+msgstr "_Exportovať"
+
+#: src/gr-window.c:1235
+#, c-format
+msgid "Chefs: %s"
+msgstr "Šéfkuchári: %s"
+
+#: src/gr-window.c:1252
+msgid "Favorite Recipes"
+msgstr "Obľúbené recepty"
+
+#: src/gr-window.c:1334
+msgid "Buy Ingredients"
+msgstr "Nákup ingrediencií"
+
+#. TRANSLATORS: %s gets replaced by a version number
+#: src/gr-window.c:1505
+#, c-format
+msgid "Recipes %s"
+msgstr ""
+
+#. TRANSLATORS: %s gets replaced by a date
+#: src/gr-window.c:1520
+#, c-format
+msgid "Released: %s"
+msgstr ""
+
+#: src/ingredients.inc:1
+msgid "Almond"
+msgstr ""
+
+#: src/ingredients.inc:2
+msgid "Amaretti"
+msgstr ""
+
+#: src/ingredients.inc:3
+msgid "Anchovies"
+msgstr ""
+
+#: src/ingredients.inc:4
+msgid "Apple"
+msgstr ""
+
+#: src/ingredients.inc:5
+msgid "Apricot"
+msgstr ""
+
+#: src/ingredients.inc:6
+msgid "Artichoke"
+msgstr ""
+
+#: src/ingredients.inc:7
+msgid "Asparagus"
+msgstr ""
+
+#: src/ingredients.inc:8
+msgid "Aubergine"
+msgstr ""
+
+#: src/ingredients.inc:9
+msgid "Bacon"
+msgstr ""
+
+#: src/ingredients.inc:10
+msgid "Bagel"
+msgstr ""
+
+#: src/ingredients.inc:11
+msgid "Baked beans"
+msgstr ""
+
+#: src/ingredients.inc:12
+msgid "Baking powder"
+msgstr ""
+
+#: src/ingredients.inc:13
+msgid "Banana"
+msgstr ""
+
+#: src/ingredients.inc:14
+msgid "Basil"
+msgstr ""
+
+#: src/ingredients.inc:15
+msgid "Basmati rice"
+msgstr ""
+
+#: src/ingredients.inc:16
+msgid "Bay leaf"
+msgstr ""
+
+#: src/ingredients.inc:17
+msgid "Beans"
+msgstr ""
+
+#: src/ingredients.inc:18
+msgid "Beef mince"
+msgstr ""
+
+#: src/ingredients.inc:19
+msgid "Beef sausage"
+msgstr ""
+
+#: src/ingredients.inc:20
+msgid "Beef stock"
+msgstr ""
+
+#: src/ingredients.inc:21
+msgid "Beetroot"
+msgstr ""
+
+#: src/ingredients.inc:22
+msgid "Berry"
+msgstr ""
+
+#: src/ingredients.inc:23
+msgid "Biscotti"
+msgstr ""
+
+#: src/ingredients.inc:24
+msgid "Bilberry"
+msgstr ""
+
+#: src/ingredients.inc:25
+msgid "Butter"
+msgstr ""
+
+#: src/ingredients.inc:26
+msgid "Carrot"
+msgstr ""
+
+#: src/ingredients.inc:27
+msgid "Cheese"
+msgstr ""
+
+#: src/ingredients.inc:28
+msgid "Cherries, pitted"
+msgstr ""
+
+#: src/ingredients.inc:29
+msgid "Chocolate frosting"
+msgstr ""
+
+#: src/ingredients.inc:30
+msgid "Cilantro"
+msgstr ""
+
+#: src/ingredients.inc:31
+msgid "Cocoa powder"
+msgstr ""
+
+#: src/ingredients.inc:32
+msgid "Couscous"
+msgstr ""
+
+#: src/ingredients.inc:33
+msgid "Date"
+msgstr ""
+
+#: src/ingredients.inc:34
+msgid "Egg"
+msgstr ""
+
+#: src/ingredients.inc:35
+msgid "Fig"
+msgstr ""
+
+#: src/ingredients.inc:36
+msgid "Flour"
+msgstr ""
+
+#: src/ingredients.inc:37
+msgid "Garlic"
+msgstr ""
+
+#: src/ingredients.inc:38
+msgid "Ground beef"
+msgstr ""
+
+#: src/ingredients.inc:39
+msgid "Honey"
+msgstr ""
+
+#: src/ingredients.inc:40
+msgid "Lemon"
+msgstr ""
+
+#: src/ingredients.inc:41
+msgid "Linseeds"
+msgstr ""
+
+#: src/ingredients.inc:42
+msgid "Mayonnaise"
+msgstr ""
+
+#: src/ingredients.inc:43
+msgid "Milk"
+msgstr ""
+
+#: src/ingredients.inc:44
+msgid "Mustard"
+msgstr ""
+
+#: src/ingredients.inc:45
+msgid "Oatmeal"
+msgstr ""
+
+#: src/ingredients.inc:46
+msgid "Oil"
+msgstr ""
+
+#: src/ingredients.inc:47
+msgid "Onion"
+msgstr ""
+
+#: src/ingredients.inc:48
+msgid "Olive oil, extra-virgin"
+msgstr ""
+
+#: src/ingredients.inc:49
+msgid "Orange"
+msgstr ""
+
+#: src/ingredients.inc:50
+msgid "Parsley"
+msgstr ""
+
+#: src/ingredients.inc:51
+msgid "Peperoni"
+msgstr ""
+
+#: src/ingredients.inc:52
+msgid "Pepper"
+msgstr ""
+
+#: src/ingredients.inc:53
+msgid "Peppers"
+msgstr ""
+
+#: src/ingredients.inc:54
+msgid "Pizza sauce"
+msgstr ""
+
+#: src/ingredients.inc:55
+msgid "Potato"
+msgstr ""
+
+#: src/ingredients.inc:56
+msgid "Pumpkin seeds"
+msgstr ""
+
+#: src/ingredients.inc:57
+msgid "Salt"
+msgstr ""
+
+#: src/ingredients.inc:58
+msgid "Soy sauce"
+msgstr ""
+
+#: src/ingredients.inc:59
+msgid "Sugar"
+msgstr ""
+
+#: src/ingredients.inc:60
+msgid "Sunflower seeds"
+msgstr ""
+
+#: src/ingredients.inc:61
+msgid "Squash"
+msgstr ""
+
+#: src/ingredients.inc:62
+msgid "Tangerine"
+msgstr ""
+
+#: src/ingredients.inc:63
+msgid "Tofu"
+msgstr ""
+
+#: src/ingredients.inc:64
+msgid "Tomato"
+msgstr ""
+
+#: src/ingredients.inc:65
+msgid "Turmeric, ground"
+msgstr ""
+
+#: src/ingredients.inc:66
+msgid "Vanilla sugar"
+msgstr ""
+
+#: src/ingredients.inc:67
+msgid "Vanilla pudding"
+msgstr ""
+
+#: src/ingredients.inc:68
+msgid "Vinegar"
+msgstr ""
+
+#: src/ingredients.inc:69
+msgid "Water"
+msgstr ""
+
+#: src/ingredients.inc:70
+msgid "Wine"
+msgstr ""
+
+#: src/ingredients.inc:71
+msgid "Yeast"
+msgstr ""
+
+#: src/ingredients.inc:72
+msgid "Yoghurt"
+msgstr ""
+
+#: src/ingredients.inc:73
+msgid "Zinfandel"
+msgstr ""
+
+#: src/no-ingredients.inc:1
+msgid "no Almond"
+msgstr ""
+
+#: src/no-ingredients.inc:2
+msgid "no Amaretti"
+msgstr ""
+
+#: src/no-ingredients.inc:3
+msgid "no Anchovies"
+msgstr ""
+
+#: src/no-ingredients.inc:4
+msgid "no Apple"
+msgstr ""
+
+#: src/no-ingredients.inc:5
+msgid "no Apricot"
+msgstr ""
+
+#: src/no-ingredients.inc:6
+msgid "no Artichoke"
+msgstr ""
+
+#: src/no-ingredients.inc:7
+msgid "no Asparagus"
+msgstr ""
+
+#: src/no-ingredients.inc:8
+msgid "no Aubergine"
+msgstr ""
+
+#: src/no-ingredients.inc:9
+msgid "no Bacon"
+msgstr ""
+
+#: src/no-ingredients.inc:10
+msgid "no Bagel"
+msgstr ""
+
+#: src/no-ingredients.inc:11
+msgid "no Baked beans"
+msgstr ""
+
+#: src/no-ingredients.inc:12
+msgid "no Baking powder"
+msgstr ""
+
+#: src/no-ingredients.inc:13
+msgid "no Banana"
+msgstr ""
+
+#: src/no-ingredients.inc:14
+msgid "no Basil"
+msgstr ""
+
+#: src/no-ingredients.inc:15
+msgid "no Basmati rice"
+msgstr ""
+
+#: src/no-ingredients.inc:16
+msgid "no Bay leaf"
+msgstr ""
+
+#: src/no-ingredients.inc:17
+msgid "no Beans"
+msgstr ""
+
+#: src/no-ingredients.inc:18
+msgid "no Beef mince"
+msgstr ""
+
+#: src/no-ingredients.inc:19
+msgid "no Beef sausage"
+msgstr ""
+
+#: src/no-ingredients.inc:20
+msgid "no Beef stock"
+msgstr ""
+
+#: src/no-ingredients.inc:21
+msgid "no Beetroot"
+msgstr ""
+
+#: src/no-ingredients.inc:22
+msgid "no Berry"
+msgstr ""
+
+#: src/no-ingredients.inc:23
+msgid "no Biscotti"
+msgstr ""
+
+#: src/no-ingredients.inc:24
+msgid "no Bilberry"
+msgstr ""
+
+#: src/no-ingredients.inc:25
+msgid "no Butter"
+msgstr ""
+
+#: src/no-ingredients.inc:26
+msgid "no Carrot"
+msgstr ""
+
+#: src/no-ingredients.inc:27
+msgid "no Cheese"
+msgstr ""
+
+#: src/no-ingredients.inc:28
+msgid "no Cherries, pitted"
+msgstr ""
+
+#: src/no-ingredients.inc:29
+msgid "no Chocolate frosting"
+msgstr ""
+
+#: src/no-ingredients.inc:30
+msgid "no Cilantro"
+msgstr ""
+
+#: src/no-ingredients.inc:31
+msgid "no Cocoa powder"
+msgstr ""
+
+#: src/no-ingredients.inc:32
+msgid "no Couscous"
+msgstr ""
+
+#: src/no-ingredients.inc:33
+msgid "no Date"
+msgstr ""
+
+#: src/no-ingredients.inc:34
+msgid "no Egg"
+msgstr ""
+
+#: src/no-ingredients.inc:35
+msgid "no Fig"
+msgstr ""
+
+#: src/no-ingredients.inc:36
+msgid "no Flour"
+msgstr ""
+
+#: src/no-ingredients.inc:37
+msgid "no Garlic"
+msgstr ""
+
+#: src/no-ingredients.inc:38
+msgid "no Ground beef"
+msgstr ""
+
+#: src/no-ingredients.inc:39
+msgid "no Honey"
+msgstr ""
+
+#: src/no-ingredients.inc:40
+msgid "no Lemon"
+msgstr ""
+
+#: src/no-ingredients.inc:41
+msgid "no Linseeds"
+msgstr ""
+
+#: src/no-ingredients.inc:42
+msgid "no Mayonnaise"
+msgstr ""
+
+#: src/no-ingredients.inc:43
+msgid "no Milk"
+msgstr ""
+
+#: src/no-ingredients.inc:44
+msgid "no Mustard"
+msgstr ""
+
+#: src/no-ingredients.inc:45
+msgid "no Oatmeal"
+msgstr ""
+
+#: src/no-ingredients.inc:46
+msgid "no Oil"
+msgstr ""
+
+#: src/no-ingredients.inc:47
+msgid "no Onion"
+msgstr ""
+
+#: src/no-ingredients.inc:48
+msgid "no Olive oil, extra-virgin"
+msgstr ""
+
+#: src/no-ingredients.inc:49
+msgid "no Orange"
+msgstr ""
+
+#: src/no-ingredients.inc:50
+msgid "no Parsley"
+msgstr ""
+
+#: src/no-ingredients.inc:51
+msgid "no Peperoni"
+msgstr ""
+
+#: src/no-ingredients.inc:52
+msgid "no Pepper"
+msgstr ""
+
+#: src/no-ingredients.inc:53
+msgid "no Peppers"
+msgstr ""
+
+#: src/no-ingredients.inc:54
+msgid "no Pizza sauce"
+msgstr ""
+
+#: src/no-ingredients.inc:55
+msgid "no Potato"
+msgstr ""
+
+#: src/no-ingredients.inc:56
+msgid "no Pumpkin seeds"
+msgstr ""
+
+#: src/no-ingredients.inc:57
+msgid "no Salt"
+msgstr ""
+
+#: src/no-ingredients.inc:58
+msgid "no Soy sauce"
+msgstr ""
+
+#: src/no-ingredients.inc:59
+msgid "no Sugar"
+msgstr ""
+
+#: src/no-ingredients.inc:60
+msgid "no Sunflower seeds"
+msgstr ""
+
+#: src/no-ingredients.inc:61
+msgid "no Squash"
+msgstr ""
+
+#: src/no-ingredients.inc:62
+msgid "no Tangerine"
+msgstr ""
+
+#: src/no-ingredients.inc:63
+msgid "no Tofu"
+msgstr ""
+
+#: src/no-ingredients.inc:64
+msgid "no Tomato"
+msgstr ""
+
+#: src/no-ingredients.inc:65
+msgid "no Turmeric, ground"
+msgstr ""
+
+#: src/no-ingredients.inc:66
+msgid "no Vanilla sugar"
+msgstr ""
+
+#: src/no-ingredients.inc:67
+msgid "no Vanilla pudding"
+msgstr ""
+
+#: src/no-ingredients.inc:68
+msgid "no Vinegar"
+msgstr ""
+
+#: src/no-ingredients.inc:69
+msgid "no Water"
+msgstr ""
+
+#: src/no-ingredients.inc:70
+msgid "no Wine"
+msgstr ""
+
+#: src/no-ingredients.inc:71
+msgid "no Yeast"
+msgstr ""
+
+#: src/no-ingredients.inc:72
+msgid "no Yoghurt"
+msgstr ""
+
+#: src/no-ingredients.inc:73
+msgid "no Zinfandel"
+msgstr ""
+
+#: src/segments.inc:1
+msgid "Dough"
+msgstr ""
+
+#: src/segments.inc:2
+msgid "Toppings"
+msgstr ""
