@@ -246,7 +246,7 @@ edit_ingredient (GrIngredientsViewerRow *row)
 {
         g_autofree char *tmp = NULL;
 
-        tmp = g_strconcat (row->amount, " ", row->unit, NULL);
+        tmp = g_strconcat (row->amount ? row->amount : "", " ", row->unit, NULL);
         gtk_entry_set_text (GTK_ENTRY (row->unit_entry), tmp);
         gtk_entry_set_text (GTK_ENTRY (row->ingredient_entry), row->ingredient);
 
