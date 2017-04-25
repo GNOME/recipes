@@ -183,19 +183,24 @@ gr_ingredients_viewer_row_set_editable (GrIngredientsViewerRow *row,
         gtk_list_box_row_set_activatable (GTK_LIST_BOX_ROW (row), editable);
 }
 
+static void save_row (GrIngredientsViewerRow *row);
+
 static void
 gr_ingredients_viewer_row_set_active (GrIngredientsViewerRow *row,
                                       gboolean                active)
 {
+        if (row->active && !active)
+                save_row (row);
+
         row->active = active;
         gtk_stack_set_visible_child_name (GTK_STACK (row->buttons_stack), active ? "buttons" : "empty");
 }
 
 static void
 gr_ingredients_viewer_row_set_property (GObject      *object,
-                                       guint         prop_id,
-                                       const GValue *value,
-                                       GParamSpec   *pspec)
+                                        guint         prop_id,
+                                        const GValue *value,
+                                        GParamSpec   *pspec)
 {
         GrIngredientsViewerRow *self = GR_INGREDIENTS_VIEWER_ROW (object);
 
