@@ -5,22 +5,72 @@
     <child>
       <object class="GtkBox" id="box">
         <property name="visible">1</property>
-        <property name="spacing">12</property>
+        <property name="spacing">10</property>
         <property name="margin-start">6</property>
         <property name="margin-end">6</property>
         <child>
-          <object class="GtkLabel" id="unit_label">
+          <object class="GtkStack" id="unit_stack">
             <property name="visible">1</property>
-            <property name="xalign">0</property>
-            <style>
-              <class name="dim-label"/>
-            </style>
+            <child>
+              <object class="GtkLabel" id="unit_label">
+                <property name="visible">1</property>
+                <property name="xalign">0</property>
+                <property name="width-chars">10</property>
+                <property name="margin-start">9</property>
+                <property name="margin-end">9</property>
+                <style>
+                  <class name="dim-label"/>
+                </style>
+              </object>
+              <packing>
+                <property name="name">unit_label</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="unit_entry">
+                <property name="visible">1</property>
+                <property name="xalign">0</property>
+                <property name="placeholder-text" translatable="yes">Amount</property>
+                <property name="width-chars">10</property>
+                <property name="margin-top">4</property>
+                <property name="margin-bottom">4</property>
+                <signal name="activate" handler="save_row" swapped="yes"/>
+              </object>
+              <packing>
+                <property name="name">unit_entry</property>
+              </packing>
+            </child>
           </object>
         </child>
         <child>
-          <object class="GtkLabel" id="ingredient_label">
+          <object class="GtkStack" id="ingredient_stack">
             <property name="visible">1</property>
-            <property name="xalign">0</property>
+            <child>
+              <object class="GtkLabel" id="ingredient_label">
+                <property name="visible">1</property>
+                <property name="xalign">0</property>
+                <property name="width-chars">20</property>
+                <property name="margin-start">9</property>
+                <property name="margin-end">9</property>
+              </object>
+              <packing>
+                <property name="name">ingredient_label</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="ingredient_entry">
+                <property name="visible">1</property>
+                <property name="xalign">0</property>
+                <property name="width-chars">20</property>
+                <property name="placeholder-text" translatable="yes">Ingredient</property>
+                <property name="margin-top">4</property>
+                <property name="margin-bottom">4</property>
+                <signal name="activate" handler="save_row" swapped="yes"/>
+              </object>
+              <packing>
+                <property name="name">ingredient_entry</property>
+              </packing>
+            </child>
           </object>
           <packing>
             <property name="expand">1</property>
@@ -45,6 +95,24 @@
                 <property name="visible">1</property>
                 <property name="orientation">horizontal</property>
                 <property name="margin">4</property>
+                <child>
+                  <object class="GtkButton">
+                    <property name="visible">1</property>
+                    <property name="relief">none</property>
+                    <signal name="clicked" handler="edit_ingredient" swapped="yes"/>
+                    <style>
+                      <class name="image-button"/>
+                      <class name="circular"/>
+                    </style>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">1</property>
+                        <property name="icon-name">document-edit-symbolic</property>
+                        <property name="icon-size">1</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
                 <child>
                   <object class="GtkButton">
                     <property name="visible">1</property>

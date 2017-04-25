@@ -32,9 +32,13 @@ struct _GrIngredientsViewerRow
 {
         GtkListBoxRow parent_instance;
 
-        GtkWidget *unit_label;
-        GtkWidget *ingredient_label;
         GtkWidget *buttons_stack;
+        GtkWidget *unit_stack;
+        GtkWidget *unit_label;
+        GtkWidget *unit_entry;
+        GtkWidget *ingredient_stack;
+        GtkWidget *ingredient_label;
+        GtkWidget *ingredient_entry;
         GtkWidget *ebox;
 
         char *amount;
@@ -62,6 +66,7 @@ enum {
 enum {
         DELETE,
         MOVE,
+        EDIT,
         N_SIGNALS
 };
 
@@ -162,10 +167,10 @@ gr_ingredients_viewer_row_set_size_group (GrIngredientsViewerRow *row,
                                           GtkSizeGroup           *group)
 {
         if (row->group)
-                gtk_size_group_remove_widget (row->group, row->unit_label);
+                gtk_size_group_remove_widget (row->group, row->unit_stack);
         g_set_object (&row->group, group);
         if (row->group)
-                gtk_size_group_add_widget (row->group, row->unit_label);
+                gtk_size_group_add_widget (row->group, row->unit_stack);
 }
 
 static void
@@ -176,19 +181,24 @@ gr_ingredients_viewer_row_set_editable (GrIngredientsViewerRow *row,
         gtk_list_box_row_set_activatable (GTK_LIST_BOX_ROW (row), editable);
 }
 
+static void save_row (GrIngredientsViewerRow *row);
+
 static void
 gr_ingredients_viewer_row_set_active (GrIngredientsViewerRow *row,
                                       gboolean                active)
 {
+        if (row->active && !active)
+                save_row (row);
+
         row->active = active;
         gtk_stack_set_visible_child_name (GTK_STACK (row->buttons_stack), active ? "buttons" : "empty");
 }
 
 static void
 gr_ingredients_viewer_row_set_property (GObject      *object,
-                                       guint         prop_id,
-                                       const GValue *value,
-                                       GParamSpec   *pspec)
+                                        guint         prop_id,
+                                        const GValue *value,
+                                        GParamSpec   *pspec)
 {
         GrIngredientsViewerRow *self = GR_INGREDIENTS_VIEWER_ROW (object);
 
@@ -232,6 +242,36 @@ emit_delete (GrIngredientsViewerRow *row)
 static void
 drag_handle_clicked (GrIngredientsViewerRow *row)
 {
+}
+
+static void
+edit_ingredient (GrIngredientsViewerRow *row)
+{
+        g_autofree char *tmp = NULL;
+
+        tmp = g_strconcat (row->amount ? row->amount : "", " ", row->unit, NULL);
+        gtk_entry_set_text (GTK_ENTRY (row->unit_entry), tmp);
+        gtk_entry_set_text (GTK_ENTRY (row->ingredient_entry), row->ingredient);
+
+        gtk_stack_set_visible_child_name (GTK_STACK (row->unit_stack), "unit_entry");
+        gtk_stack_set_visible_child_name (GTK_STACK (row->ingredient_stack), "ingredient_entry");
+        g_signal_emit (row, signals[EDIT], 0);
+
+}
+
+static void
+save_row (GrIngredientsViewerRow *row)
+{
+        char** strv = g_strsplit (gtk_entry_get_text (GTK_ENTRY (row->unit_entry)), " ", -1);
+
+        row->amount = strv[0];
+        row->unit = strv[1];
+        row->ingredient = g_strdup (gtk_entry_get_text (GTK_ENTRY (row->ingredient_entry)));
+        update_unit (row);
+        gtk_label_set_label (GTK_LABEL (row->ingredient_label), row->ingredient);
+
+        gtk_stack_set_visible_child_name (GTK_STACK (row->unit_stack), "unit_label");
+        gtk_stack_set_visible_child_name (GTK_STACK (row->ingredient_stack), "ingredient_label");
 }
 
 static void
@@ -290,16 +330,29 @@ gr_ingredients_viewer_row_class_init (GrIngredientsViewerRowClass *klass)
                                       NULL, NULL,
                                       NULL,
                                       G_TYPE_NONE, 1, GR_TYPE_INGREDIENTS_VIEWER_ROW);
+                signals[EDIT] = g_signal_new ("edit",
+                                      G_TYPE_FROM_CLASS (object_class),
+                                      G_SIGNAL_RUN_FIRST,
+                                      0,
+                                      NULL, NULL,
+                                      NULL,
+                                      G_TYPE_NONE, 0);
 
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-ingredients-viewer-row.ui");
 
+        gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, unit_stack);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, unit_label);
+        gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, unit_entry);
+        gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, ingredient_stack);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, ingredient_label);
+        gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, ingredient_entry);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, buttons_stack);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, ebox);
 
         gtk_widget_class_bind_template_callback (widget_class, emit_delete);
         gtk_widget_class_bind_template_callback (widget_class, drag_handle_clicked);
+        gtk_widget_class_bind_template_callback (widget_class, edit_ingredient);
+        gtk_widget_class_bind_template_callback (widget_class, save_row);
 }
 
 static GtkTargetEntry entries[] = {

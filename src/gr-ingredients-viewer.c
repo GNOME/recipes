@@ -225,6 +225,12 @@ move_row (GtkWidget           *source,
 
         g_object_notify (G_OBJECT (viewer), "ingredients");
 }
+static void
+edit_ingredient_row (GrIngredientsViewerRow *row,
+                     GrIngredientsViewer    *viewer)
+{
+        g_object_notify (G_OBJECT (viewer), "ingredients");
+}
 
 static void
 add_row (GtkButton           *button,
@@ -241,6 +247,7 @@ add_row (GtkButton           *button,
                             NULL);
         g_signal_connect (row, "delete", G_CALLBACK (delete_row), viewer);
         g_signal_connect (row, "move", G_CALLBACK (move_row), viewer);
+        g_signal_connect (row, "notify::ingredient" , G_CALLBACK(edit_ingredient_row), viewer);
 
         gtk_container_add (GTK_CONTAINER (viewer->list), row);
         g_object_notify (G_OBJECT (viewer), "ingredients");
@@ -286,6 +293,7 @@ gr_ingredients_viewer_set_ingredients (GrIngredientsViewer *viewer,
                                     NULL);
                 g_signal_connect (row, "delete", G_CALLBACK (delete_row), viewer);
                 g_signal_connect (row, "move", G_CALLBACK (move_row), viewer);
+                g_signal_connect (row, "edit", G_CALLBACK (edit_ingredient_row), viewer);
 
                 gtk_container_add (GTK_CONTAINER (viewer->list), row);
         }
