@@ -45,7 +45,6 @@ struct _GrIngredientsViewerRow
         char *amount;
         char *unit;
         char *ingredient;
-        char *current_amount;
 
         gboolean editable;
         gboolean active;
@@ -451,13 +450,43 @@ get_ingredients_model (void)
                 }
         }
 
-        return GTK_TREE_MODEL (store);
+        return GTK_TREE_MODEL (g_object_ref (store));
+}
+
+static void
+prepend_amount (GtkTreeModel *model,
+                GtkTreeIter  *iter,
+                GValue       *value,
+                gint          column,
+                gpointer      data)
+{
+        GrIngredientsViewerRow *row = data;
+        GtkTreeModelFilter *filter_model = GTK_TREE_MODEL_FILTER (model);
+        GtkTreeModel *child_model;
+        GtkTreeIter child_iter;
+        g_autofree char *unit = NULL;
+        g_autofree char *tmp = NULL;
+        g_autofree char *text = NULL;
+        g_auto(GStrv) strv = NULL;
+
+        text = g_strstrip (g_strdup (gtk_entry_get_text (GTK_ENTRY (row->unit_entry))));
+        strv = g_strsplit (text, " ", 2);
+
+        child_model = gtk_tree_model_filter_get_model (filter_model);
+        gtk_tree_model_filter_convert_iter_to_child_iter (filter_model, &child_iter, iter);
+
+        gtk_tree_model_get (child_model, &child_iter, column, &unit, -1);
+
+        tmp = g_strdup_printf ("%s %s", strv[0], unit);
+        g_value_set_string (value, tmp);
 }
 
 static GtkTreeModel *
-get_units_model (void)
+get_units_model (GrIngredientsViewerRow *row)
 {
         static GtkListStore *store = NULL;
+        GtkTreeModel *model;
+        GType types[1];
 
         if (store == NULL) {
                 const char **names;
@@ -473,63 +502,24 @@ get_units_model (void)
                 }
         }
 
-        return GTK_TREE_MODEL (store);
-}
+        model = gtk_tree_model_filter_new (GTK_TREE_MODEL (store), NULL);
+        types[0] = G_TYPE_STRING;
+        gtk_tree_model_filter_set_modify_func (GTK_TREE_MODEL_FILTER (model),
+                                               G_N_ELEMENTS (types),
+                                               types,
+                                               prepend_amount,
+                                               row,
+                                               NULL);
 
-static gboolean
-match_func (GtkEntryCompletion *completion,
-            const char         *key,
-            GtkTreeIter        *iter,
-            gpointer            data)
-{
-        GrIngredientsViewerRow *self = data;
-        GtkTreeModel *model;
-        const char *amount;
-        g_auto(GStrv) strv = NULL;
-        g_autofree char *unit = NULL;
-        g_autofree char *tmp = NULL;
-        g_autofree char *tmp2 = NULL;
-        g_autofree char *tmp3 = NULL;
-
-        model = gtk_entry_completion_get_model (completion);
-        gtk_tree_model_get (model, iter, 0, &unit, -1);
-
-        amount = gtk_entry_get_text (GTK_ENTRY (self->unit_entry));
-        strv = g_strsplit (amount, " ", 2);
-
-        tmp = g_strdup_printf ("%s %s", strv[0], unit);
-        tmp2 = g_utf8_normalize (tmp, -1, G_NORMALIZE_ALL);
-        tmp3 = g_utf8_casefold (tmp2, -1);
-
-        return g_str_has_prefix (tmp3, key);
-}
-
-static void
-format_unit (GtkCellLayout   *layout,
-             GtkCellRenderer *renderer,
-             GtkTreeModel    *model,
-             GtkTreeIter     *iter,
-             gpointer         data)
-{
-        GrIngredientsViewerRow *self = data;
-        const char *amount;
-        g_auto(GStrv) strv = NULL;
-        g_autofree char *unit = NULL;
-        g_autofree char *text = NULL;
-
-        amount = gtk_entry_get_text (GTK_ENTRY (self->unit_entry));
-        strv = g_strsplit (amount, " ", 2);
-
-        gtk_tree_model_get (model, iter, 0, &unit, -1);
-        text = g_strdup_printf ("%s %s", strv[0], unit);
-        g_object_set (renderer, "text", text, NULL);
+        return model;
 }
 
 static void
 gr_ingredients_viewer_row_init (GrIngredientsViewerRow *self)
 {
         g_autoptr(GtkEntryCompletion) completion = NULL;
-        GtkCellRenderer *renderer = NULL;
+        g_autoptr(GtkTreeModel) ingredients_model = NULL;
+        g_autoptr(GtkTreeModel) units_model = NULL;
 
         gtk_widget_set_has_window (GTK_WIDGET (self), FALSE);
         gtk_widget_init_template (GTK_WIDGET (self));
@@ -541,18 +531,15 @@ gr_ingredients_viewer_row_init (GrIngredientsViewerRow *self)
         gtk_drag_dest_set (GTK_WIDGET (self), GTK_DEST_DEFAULT_ALL, entries, 1, GDK_ACTION_MOVE);
         g_signal_connect (self, "drag-data-received", G_CALLBACK (drag_data_received), NULL);
 
+        ingredients_model = get_ingredients_model ();
         completion = gtk_entry_completion_new ();
-        gtk_entry_completion_set_model (completion, get_ingredients_model ());
+        gtk_entry_completion_set_model (completion, ingredients_model);
         gtk_entry_completion_set_text_column (completion, 0);
         gtk_entry_set_completion (GTK_ENTRY (self->ingredient_entry), completion);
 
+        units_model = get_units_model (self);
         completion = gtk_entry_completion_new ();
-        gtk_entry_completion_set_model (completion, get_units_model ());
-        gtk_entry_completion_set_match_func (completion, match_func, self, NULL);
-
-        renderer = gtk_cell_renderer_text_new ();
-        gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (completion), renderer, TRUE);
-        gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (completion), renderer, format_unit, self, NULL);
-
+        gtk_entry_completion_set_model (completion, units_model);
+        gtk_entry_completion_set_text_column (completion, 0);
         gtk_entry_set_completion (GTK_ENTRY (self->unit_entry), completion);
 }
