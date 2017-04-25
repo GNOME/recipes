@@ -264,7 +264,8 @@ edit_ingredient (GrIngredientsViewerRow *row)
 static void
 save_row (GrIngredientsViewerRow *row)
 {
-        char** strv = g_strsplit (gtk_entry_get_text (GTK_ENTRY (row->unit_entry)), " ", -1);
+        g_autofree char *tmp = g_strstrip (g_strdup (gtk_entry_get_text (GTK_ENTRY (row->unit_entry))));
+        char** strv = g_strsplit (tmp, " ", -1);
 
         row->amount = strv[0];
         row->unit = strv[1];
