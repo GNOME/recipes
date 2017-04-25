@@ -130,8 +130,12 @@ static void
 update_unit (GrIngredientsViewerRow *row)
 {
         g_autofree char *tmp = NULL;
+        const char *amount;
+        const char *unit;
 
-        tmp = g_strconcat (row->amount ? row->amount : "", " ", row->unit, NULL);
+        amount = row->amount ? row->amount : "";
+        unit = row->unit ? row->unit : "";
+        tmp = g_strdup_printf ("%s %s", amount, unit);
         gtk_label_set_label (GTK_LABEL (row->unit_label), tmp);
 }
 
@@ -261,13 +265,29 @@ edit_ingredient (GrIngredientsViewerRow *row)
 }
 
 static void
+parse_unit (const char  *text,
+            char       **amount,
+            char       **unit)
+{
+        g_autofree char *tmp = NULL;
+        g_autofree char **strv = NULL;
+
+        tmp = g_strstrip (g_strdup (text));
+        strv = g_strsplit (tmp, " ", 2);
+
+        g_clear_pointer (amount, g_free);
+        g_clear_pointer (unit, g_free);
+
+        *amount = strv[0];
+        if (g_strv_length (strv) > 1)
+                *unit = strv[1];
+}
+
+static void
 save_row (GrIngredientsViewerRow *row)
 {
-        g_autofree char *tmp = g_strstrip (g_strdup (gtk_entry_get_text (GTK_ENTRY (row->unit_entry))));
-        char** strv = g_strsplit (tmp, " ", -1);
+        parse_unit (gtk_entry_get_text (GTK_ENTRY (row->unit_entry)), &row->amount, &row->unit);
 
-        row->amount = strv[0];
-        row->unit = strv[1];
         row->ingredient = g_strdup (gtk_entry_get_text (GTK_ENTRY (row->ingredient_entry)));
         update_unit (row);
         gtk_label_set_label (GTK_LABEL (row->ingredient_label), row->ingredient);
@@ -464,20 +484,19 @@ prepend_amount (GtkTreeModel *model,
         GtkTreeModelFilter *filter_model = GTK_TREE_MODEL_FILTER (model);
         GtkTreeModel *child_model;
         GtkTreeIter child_iter;
-        g_autofree char *unit = NULL;
+        g_autofree char *amount = NULL;
         g_autofree char *tmp = NULL;
-        g_autofree char *text = NULL;
-        g_auto(GStrv) strv = NULL;
+        g_autofree char *unit = NULL;
+        g_autofree char *new_unit = NULL;
 
-        text = g_strstrip (g_strdup (gtk_entry_get_text (GTK_ENTRY (row->unit_entry))));
-        strv = g_strsplit (text, " ", 2);
+        parse_unit (gtk_entry_get_text (GTK_ENTRY (row->unit_entry)), &amount, &unit);
 
         child_model = gtk_tree_model_filter_get_model (filter_model);
         gtk_tree_model_filter_convert_iter_to_child_iter (filter_model, &child_iter, iter);
 
-        gtk_tree_model_get (child_model, &child_iter, column, &unit, -1);
+        gtk_tree_model_get (child_model, &child_iter, column, &new_unit, -1);
 
-        tmp = g_strdup_printf ("%s %s", strv[0], unit);
+        tmp = g_strdup_printf ("%s %s", amount, new_unit);
         g_value_set_string (value, tmp);
 }
 
