@@ -34,7 +34,11 @@ struct _GrIngredientsViewerRow
 
         GtkWidget *buttons_stack;
         GtkWidget *unit_stack;
+        GtkWidget *unit_label;
+        GtkWidget *unit_entry;
         GtkWidget *ingredient_stack;
+        GtkWidget *ingredient_label;
+        GtkWidget *ingredient_entry;
         GtkWidget *ebox;
 
         char *amount;
@@ -127,7 +131,7 @@ update_unit (GrIngredientsViewerRow *row)
         g_autofree char *tmp = NULL;
 
         tmp = g_strconcat (row->amount ? row->amount : "", " ", row->unit, NULL);
-        gtk_label_set_label (GTK_LABEL (gtk_stack_get_child_by_name (GTK_STACK (row->unit_stack), "unit_label")), tmp);
+        gtk_label_set_label (GTK_LABEL (row->unit_label), tmp);
 }
 
 
@@ -155,7 +159,7 @@ gr_ingredients_viewer_row_set_ingredient (GrIngredientsViewerRow *row,
 {
         g_free (row->ingredient);
         row->ingredient = g_strdup (ingredient);
-        gtk_label_set_label (GTK_LABEL (gtk_stack_get_child_by_name (GTK_STACK (row->ingredient_stack), "ingredient_label")), ingredient);
+        gtk_label_set_label (GTK_LABEL (row->ingredient_label), ingredient);
 }
 
 static void
@@ -238,13 +242,11 @@ drag_handle_clicked (GrIngredientsViewerRow *row)
 static void
 edit_ingredient (GrIngredientsViewerRow *row)
 {
-        GtkEntry *unit_entry = GTK_ENTRY (gtk_stack_get_child_by_name (GTK_STACK (row->unit_stack), "unit_entry"));
-        GtkEntry *ingredient_entry = GTK_ENTRY (gtk_stack_get_child_by_name (GTK_STACK (row->ingredient_stack), "ingredient_entry"));
         g_autofree char *tmp = NULL;
 
         tmp = g_strconcat (row->amount, " ", row->unit, NULL);
-        gtk_entry_set_text (unit_entry,tmp);
-        gtk_entry_set_text (ingredient_entry, gtk_label_get_text (GTK_LABEL (gtk_stack_get_child_by_name (GTK_STACK (row->ingredient_stack), "ingredient_label"))));
+        gtk_entry_set_text (GTK_ENTRY (row->unit_entry), tmp);
+        gtk_entry_set_text (GTK_ENTRY (row->ingredient_entry), row->ingredient);
 
         gtk_stack_set_visible_child_name (GTK_STACK (row->unit_stack), "unit_entry");
         gtk_stack_set_visible_child_name (GTK_STACK (row->ingredient_stack), "ingredient_entry");
@@ -255,14 +257,13 @@ edit_ingredient (GrIngredientsViewerRow *row)
 static void
 save_row (GrIngredientsViewerRow *row)
 {
-        char** strv = g_strsplit (gtk_entry_get_text (GTK_ENTRY (gtk_stack_get_child_by_name (GTK_STACK (row->unit_stack), "unit_entry"))), " ", -1);
-        GtkLabel *ingredient_label = GTK_LABEL(gtk_stack_get_child_by_name (GTK_STACK (row->ingredient_stack), "ingredient_label"));
+        char** strv = g_strsplit (gtk_entry_get_text (GTK_ENTRY (row->unit_entry)), " ", -1);
 
         row->amount = strv[0];
         row->unit = strv[1];
-        row->ingredient = g_strdup (gtk_entry_get_text (GTK_ENTRY (gtk_stack_get_child_by_name (GTK_STACK (row->ingredient_stack), "ingredient_entry"))));
-        update_unit(row);
-        gtk_label_set_label (ingredient_label, gtk_entry_get_text (GTK_ENTRY (gtk_stack_get_child_by_name (GTK_STACK (row->ingredient_stack), "ingredient_entry"))));
+        row->ingredient = g_strdup (gtk_entry_get_text (GTK_ENTRY (row->ingredient_entry)));
+        update_unit (row);
+        gtk_label_set_label (GTK_LABEL (row->ingredient_label), row->ingredient);
 
         gtk_stack_set_visible_child_name (GTK_STACK (row->unit_stack), "unit_label");
         gtk_stack_set_visible_child_name (GTK_STACK (row->ingredient_stack), "ingredient_label");
@@ -335,7 +336,11 @@ gr_ingredients_viewer_row_class_init (GrIngredientsViewerRowClass *klass)
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-ingredients-viewer-row.ui");
 
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, unit_stack);
+        gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, unit_label);
+        gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, unit_entry);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, ingredient_stack);
+        gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, ingredient_label);
+        gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, ingredient_entry);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, buttons_stack);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, ebox);
 
