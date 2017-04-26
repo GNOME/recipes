@@ -33,5 +33,7 @@ GrRecipePrinter *gr_recipe_printer_new   (GtkWindow       *window);
 
 void             gr_recipe_printer_print (GrRecipePrinter *printer,
                                           GrRecipe        *recipe);
+GFile           *gr_recipe_printer_get_pdf (GrRecipePrinter *printer,
+                                            GrRecipe        *recipe);
 
 G_END_DECLS

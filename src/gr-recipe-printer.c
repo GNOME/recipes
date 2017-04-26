@@ -424,6 +424,32 @@ print_done (GtkPrintOperation       *operation,
         g_object_unref (operation);
 }
 
+GFile *
+gr_recipe_printer_get_pdf (GrRecipePrinter *printer,
+                            GrRecipe        *recipe)
+{
+        GtkPrintOperation *operation = NULL;
+        g_autofree char *path = NULL;
+        g_autofree char *name = NULL;
+
+        name = g_strdup (gr_recipe_get_name (GR_RECIPE (recipe)));
+        g_strdelimit (name, "./", ' ');
+        path = g_strdup_printf ("%s/%s.pdf", get_user_data_dir (), name);
+
+        g_set_object (&printer->recipe, recipe);
+        operation = gtk_print_operation_new ();
+
+        g_signal_connect (operation, "begin-print", G_CALLBACK (begin_print), printer);
+        g_signal_connect (operation, "end-print", G_CALLBACK (end_print), printer);
+        g_signal_connect (operation, "draw-page", G_CALLBACK (draw_page), printer);
+        g_signal_connect (operation, "done", G_CALLBACK (print_done), printer);
+        gtk_print_operation_set_allow_async (operation, TRUE);
+        gtk_print_operation_set_export_filename (operation, path);
+
+        gtk_print_operation_run (operation, GTK_PRINT_OPERATION_ACTION_EXPORT, NULL, NULL);
+        return g_file_new_for_path (path);
+}
+
 void
 gr_recipe_printer_print (GrRecipePrinter *printer,
                          GrRecipe        *recipe)
