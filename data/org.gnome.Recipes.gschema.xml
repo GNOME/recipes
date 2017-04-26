@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
 
+  <enum id="org.gnome.recipes.TemperatureUnit">
+    <value nick="celsius" value="0"/>
+    <value nick="fahrenheit" value="1"/>
+  </enum>
+
   <schema path="/org/gnome/recipes/" id="org.gnome.Recipes" gettext-domain="gnome-recipes">
 
     <key type="s" name="user">
@@ -60,6 +65,14 @@
       <summary>The list of recipes to be exported</summary>
       <description>
         The list of recipes to be exported. Each entry in the list is the ID of a recipe.
+      </description>
+    </key>
+
+      <key name="temperature-unit" enum="org.gnome.recipes.TemperatureUnit">
+      <default>'celsius'</default>
+      <summary>The setting for which unit temperatures should be displayed in. </summary>
+      <description>
+      The setting for which unit temperatures should be displayed in.  Default is celsius.
       </description>
     </key>
 
