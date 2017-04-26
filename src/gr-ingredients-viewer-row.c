@@ -131,11 +131,13 @@ update_unit (GrIngredientsViewerRow *row)
 {
         g_autofree char *tmp = NULL;
         const char *amount;
+        const char *space;
         const char *unit;
 
         amount = row->amount ? row->amount : "";
+        space = amount[0] ? " " : "";
         unit = row->unit ? row->unit : "";
-        tmp = g_strdup_printf ("%s %s", amount, unit);
+        tmp = g_strdup_printf ("%s%s%s", amount, space, unit);
         gtk_label_set_label (GTK_LABEL (row->unit_label), tmp);
 }
 
@@ -253,8 +255,15 @@ static void
 edit_ingredient (GrIngredientsViewerRow *row)
 {
         g_autofree char *tmp = NULL;
+        const char *amount;
+        const char *space;
+        const char *unit;
 
-        tmp = g_strconcat (row->amount ? row->amount : "", " ", row->unit, NULL);
+        amount = row->amount ? row->amount : "";
+        space = amount[0] ? " " : "";
+        unit = row->unit ? row->unit : "";
+        tmp = g_strdup_printf ("%s%s%s", amount, space, unit);
+
         gtk_entry_set_text (GTK_ENTRY (row->unit_entry), tmp);
         gtk_entry_set_text (GTK_ENTRY (row->ingredient_entry), row->ingredient);
 

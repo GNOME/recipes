@@ -28,9 +28,8 @@
               <object class="GtkEntry" id="unit_entry">
                 <property name="visible">1</property>
                 <property name="xalign">0</property>
-                <property name="placeholder-text" translatable="yes">Amount Unit</property>
+                <property name="placeholder-text" translatable="yes">Amount</property>
                 <property name="width-chars">10</property>
-                <property name="max-length">10</property>
                 <signal name="activate" handler="save_row" swapped="yes"/>
               </object>
               <packing>
@@ -46,8 +45,7 @@
               <object class="GtkLabel" id="ingredient_label">
                 <property name="visible">1</property>
                 <property name="xalign">0</property>
-                <property name="width-chars">10</property>
-                <property name="width-chars">10</property>
+                <property name="width-chars">20</property>
               </object>
               <packing>
                 <property name="name">ingredient_label</property>
@@ -57,7 +55,7 @@
               <object class="GtkEntry" id="ingredient_entry">
                 <property name="visible">1</property>
                 <property name="xalign">0</property>
-                <property name="width-chars">10</property>
+                <property name="width-chars">20</property>
                 <property name="placeholder-text" translatable="yes">Ingredient</property>
                 <signal name="activate" handler="save_row" swapped="yes"/>
               </object>
