@@ -36,6 +36,7 @@
 #include "gr-recipe-store.h"
 #include "gr-utils.h"
 #include "gr-mail.h"
+#include "gr-recipe-printer.h"
 
 
 struct _GrRecipeExporter
@@ -51,6 +52,7 @@ struct _GrRecipeExporter
 #endif
         GFile *output; /* the location where compressor writes the archive */
         GList *sources; /* the list of all files */
+        GList *pdf_sources;
         char *dir;
 
         gboolean just_export;
@@ -71,6 +73,7 @@ gr_recipe_exporter_finalize (GObject *object)
         g_list_free_full (exporter->recipes, g_object_unref);
         g_clear_object (&exporter->output);
         g_list_free_full (exporter->sources, g_object_unref);
+        g_list_free_full (exporter->pdf_sources, g_object_unref);
         g_free (exporter->dir);
 
         G_OBJECT_CLASS (gr_recipe_exporter_parent_class)->finalize (object);
@@ -123,7 +126,9 @@ cleanup_export (GrRecipeExporter *exporter)
         exporter->recipes = NULL;
         g_clear_object (&exporter->output);
         g_list_free_full (exporter->sources, g_object_unref);
+        g_list_free_full (exporter->pdf_sources, g_object_unref);
         exporter->sources = NULL;
+        exporter->pdf_sources = NULL;
 
         gr_recipe_store_clear_export_list (gr_recipe_store_get ());
 }
@@ -184,7 +189,11 @@ completed_cb (AutoarCompressor *compressor,
         const char *address;
         const char *subject;
         g_autofree char *body = NULL;
-        const char *attachments[2];
+        g_auto(GStrv) attachments;
+        int i = 1;
+        GList *tmp_pdf_list;
+        int pdf_sources_length = g_list_length (exporter->pdf_sources);
+        attachments = g_new (char*, pdf_sources_length + 2);
 
         if (exporter->just_export) {
                 g_signal_emit (exporter, done_signal, 0, exporter->output);
@@ -228,11 +237,16 @@ completed_cb (AutoarCompressor *compressor,
 
         path = g_file_get_path (exporter->output);
 
-        attachments[0] = path;
-        attachments[1] = NULL;
+        attachments[0] = g_strdup (path);
+
+        for (tmp_pdf_list = exporter->pdf_sources; i-1 < pdf_sources_length; i++, tmp_pdf_list = tmp_pdf_list->next)
+                attachments[i] = g_file_get_path (tmp_pdf_list->data);
+
+        attachments[pdf_sources_length + 1] = NULL;
+
 
         gr_send_mail (GTK_WINDOW (exporter->window),
-                      address, subject, body, attachments,
+                      address, subject, body, (const char **)attachments,
                       mail_done, exporter);
 }
 #endif
@@ -269,6 +283,9 @@ export_one_recipe (GrRecipeExporter  *exporter,
         int i;
         g_autofree char *imagedir = NULL;
 
+        GrRecipePrinter *printer;
+        GFile *recipe_pdf;
+        printer = gr_recipe_printer_new (exporter->window);
         key = gr_recipe_get_id (recipe);
         name = gr_recipe_get_name (recipe);
         author = gr_recipe_get_author (recipe);
@@ -335,6 +352,9 @@ export_one_recipe (GrRecipeExporter  *exporter,
         g_key_file_set_integer (keyfile, key, "DefaultImage", default_image);
 
         g_key_file_set_string_list (keyfile, key, "Images", (const char * const *)paths, g_strv_length (paths));
+
+        recipe_pdf = gr_recipe_printer_get_pdf (printer, recipe);
+        exporter->pdf_sources = g_list_append (exporter->pdf_sources, recipe_pdf);
 
         if (ctime) {
                 g_autofree char *created = date_time_to_string (ctime);
@@ -424,6 +444,7 @@ prepare_export (GrRecipeExporter  *exporter,
 
         g_assert (exporter->dir == NULL);
         g_assert (exporter->sources == NULL);
+        g_assert (exporter->pdf_sources == NULL);
 
         exporter->dir = g_mkdtemp (g_build_filename (g_get_tmp_dir (), "recipeXXXXXX", NULL));
 
@@ -765,6 +786,7 @@ gr_recipe_exporter_export (GrRecipeExporter *exporter,
         keys = gr_recipe_store_get_export_list (store);
 
         g_list_free_full (exporter->recipes, g_object_unref);
+        g_list_free_full (exporter->pdf_sources, g_object_unref);
         exporter->recipes = NULL;
 
         for (i = 0; keys[i]; i++) {
