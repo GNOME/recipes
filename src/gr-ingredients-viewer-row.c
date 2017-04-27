@@ -269,6 +269,7 @@ edit_ingredient (GrIngredientsViewerRow *row)
 
         gtk_stack_set_visible_child_name (GTK_STACK (row->unit_stack), "unit_entry");
         gtk_stack_set_visible_child_name (GTK_STACK (row->ingredient_stack), "ingredient_entry");
+        gtk_widget_grab_focus (row->unit_entry);
         g_signal_emit (row, signals[EDIT], 0);
 
 }
