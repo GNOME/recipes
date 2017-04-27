@@ -295,14 +295,21 @@ parse_unit (const char  *text,
 static void
 save_row (GrIngredientsViewerRow *row)
 {
-        parse_unit (gtk_entry_get_text (GTK_ENTRY (row->unit_entry)), &row->amount, &row->unit);
+        const char *visible;
 
-        row->ingredient = g_strdup (gtk_entry_get_text (GTK_ENTRY (row->ingredient_entry)));
-        update_unit (row);
-        gtk_label_set_label (GTK_LABEL (row->ingredient_label), row->ingredient);
+        visible = gtk_stack_get_visible_child_name (GTK_STACK (row->unit_stack));
+        if (strcmp (visible, "unit_entry") == 0) {
+                parse_unit (gtk_entry_get_text (GTK_ENTRY (row->unit_entry)), &row->amount, &row->unit);
+                update_unit (row);
+                gtk_stack_set_visible_child_name (GTK_STACK (row->unit_stack), "unit_label");
+        }
 
-        gtk_stack_set_visible_child_name (GTK_STACK (row->unit_stack), "unit_label");
-        gtk_stack_set_visible_child_name (GTK_STACK (row->ingredient_stack), "ingredient_label");
+        visible = gtk_stack_get_visible_child_name (GTK_STACK (row->ingredient_stack));
+        if (strcmp (visible, "ingredient_entry") == 0) {
+                row->ingredient = g_strdup (gtk_entry_get_text (GTK_ENTRY (row->ingredient_entry)));
+                gtk_label_set_label (GTK_LABEL (row->ingredient_label), row->ingredient);
+                gtk_stack_set_visible_child_name (GTK_STACK (row->ingredient_stack), "ingredient_label");
+        }
 }
 
 static void
