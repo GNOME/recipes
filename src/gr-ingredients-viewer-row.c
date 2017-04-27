@@ -312,6 +312,19 @@ save_row (GrIngredientsViewerRow *row)
         }
 }
 
+static gboolean
+entry_key_press (GrIngredientsViewerRow *row,
+                 GdkEventKey            *event)
+{
+        if (event->keyval == GDK_KEY_Escape) {
+                gtk_stack_set_visible_child_name (GTK_STACK (row->unit_stack), "unit_label");
+                gtk_stack_set_visible_child_name (GTK_STACK (row->ingredient_stack), "ingredient_label");
+                return GDK_EVENT_STOP;
+        }
+
+        return GDK_EVENT_PROPAGATE;
+}
+
 static void
 gr_ingredients_viewer_row_class_init (GrIngredientsViewerRowClass *klass)
 {
@@ -391,6 +404,7 @@ gr_ingredients_viewer_row_class_init (GrIngredientsViewerRowClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, drag_handle_clicked);
         gtk_widget_class_bind_template_callback (widget_class, edit_ingredient);
         gtk_widget_class_bind_template_callback (widget_class, save_row);
+        gtk_widget_class_bind_template_callback (widget_class, entry_key_press);
 }
 
 static GtkTargetEntry entries[] = {
