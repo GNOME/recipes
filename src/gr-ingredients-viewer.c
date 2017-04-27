@@ -88,6 +88,9 @@ set_active_row (GrIngredientsViewer *viewer,
         gboolean was_active = FALSE;
         gboolean active = FALSE;
 
+        if (viewer->active_row == row)
+                return;
+
         if (viewer->active_row) {
                 g_object_set (viewer->active_row, "active", FALSE, NULL);
                 was_active = TRUE;
