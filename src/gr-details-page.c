@@ -36,6 +36,7 @@
 #include "gr-image.h"
 #include "gr-image-viewer.h"
 #include "gr-ingredients-list.h"
+#include "gr-ingredients-viewer.h"
 #include "gr-timer.h"
 #include "gr-recipe-printer.h"
 #include "gr-recipe-exporter.h"
@@ -52,6 +53,7 @@ struct _GrDetailsPage
         GrRecipe *recipe;
         GrChef *chef;
         GrIngredientsList *ingredients;
+        char *ing_text;
 
         GrRecipePrinter *printer;
         GrRecipeExporter *exporter;
@@ -237,6 +239,7 @@ details_page_finalize (GObject *object)
         g_clear_object (&self->printer);
         g_clear_object (&self->exporter);
         g_clear_pointer (&self->uri, g_free);
+        g_clear_pointer (&self->ing_text, g_free);
 
         G_OBJECT_CLASS (gr_details_page_parent_class)->finalize (object);
 }
@@ -455,64 +458,21 @@ populate_ingredients (GrDetailsPage *page,
 {
         g_autoptr(GtkSizeGroup) group = NULL;
         g_autofree char **segments = NULL;
-        int i, j;
+        int j;
         GtkWidget *list;
-        GtkWidget *label;
 
         container_remove_all (GTK_CONTAINER (page->ingredients_box));
 
         group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
         segments = gr_ingredients_list_get_segments (page->ingredients);
         for (j = 0; segments[j]; j++) {
-                g_auto(GStrv) ings = NULL;
-
-                if (segments[j] && segments[j][0]) {
-                        label = gtk_label_new (segments[j]);
-                        gtk_widget_show (label);
-                        gtk_label_set_xalign (GTK_LABEL (label), 0);
-                        gtk_style_context_add_class (gtk_widget_get_style_context (label), "heading");
-                        gtk_container_add (GTK_CONTAINER (page->ingredients_box), label);
-                }
-
-                list = gtk_list_box_new ();
-                gtk_widget_show (list);
-                gtk_style_context_add_class (gtk_widget_get_style_context (list), "frame");
-                gtk_list_box_set_selection_mode (GTK_LIST_BOX (list), GTK_SELECTION_NONE);
-                gtk_list_box_set_header_func (GTK_LIST_BOX (list), all_headers, NULL, NULL);
+                list = g_object_new (GR_TYPE_INGREDIENTS_VIEWER,
+                                     "title", segments[j],
+                                     "editable-title", FALSE,
+                                     "editable", FALSE,
+                                     "ingredients", page->ing_text,
+                                     NULL);
                 gtk_container_add (GTK_CONTAINER (page->ingredients_box), list);
-
-                ings = gr_ingredients_list_get_ingredients (page->ingredients, segments[j]);
-                for (i = 0; ings[i]; i++) {
-                        GtkWidget *row;
-                        GtkWidget *box;
-                        g_autofree char *s = NULL;
-
-                        box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-                        gtk_widget_show (box);
-
-                        s = gr_ingredients_list_scale_unit (page->ingredients, segments[j], ings[i], num, denom);
-                        label = gtk_label_new (s);
-                        g_object_set (label,
-                                      "visible", TRUE,
-                                      "xalign", 0.0,
-                                      "margin", 10,
-                                      NULL);
-                        gtk_style_context_add_class (gtk_widget_get_style_context (label), "dim-label");
-                        gtk_container_add (GTK_CONTAINER (box), label);
-                        gtk_size_group_add_widget (group, label);
-
-                        label = gtk_label_new (ings[i]);
-                        g_object_set (label,
-                                      "visible", TRUE,
-                                      "xalign", 0.0,
-                                      "margin", 10,
-                                      NULL);
-                        gtk_container_add (GTK_CONTAINER (box), label);
-
-                        gtk_container_add (GTK_CONTAINER (list), box);
-                        row = gtk_widget_get_parent (box);
-                        gtk_list_box_row_set_activatable (GTK_LIST_BOX_ROW (row), FALSE);
-                }
         }
 
         gtk_widget_hide (page->warning_box);
@@ -664,6 +624,8 @@ gr_details_page_set_recipe (GrDetailsPage *page,
 
         ing = gr_ingredients_list_new (ingredients);
         g_set_object (&page->ingredients, ing);
+        g_free (page->ing_text);
+        page->ing_text = g_strdup (ingredients);
 
         if (same_recipe)
                 want_serves = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (page->serves_spin));
