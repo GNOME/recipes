@@ -293,21 +293,23 @@ msgid ""
 "To advance to the next step, press any key on the\n"
 "keyboard."
 msgstr ""
+"Per avançar al pas següent, premeu qualsevol tecla."
 
 #: src/gr-cooking-page.ui:304
 msgid "To go back to the previous step, doubletap any key."
-msgstr ""
+msgstr "Per a tornar al pas anterior, feu doble toc a qualsevol tecla."
 
 #: src/gr-cooking-page.ui:326
 msgid ""
 "Alternatively, you can use the cursor keys to\n"
 "quickly seek within the directions."
 msgstr ""
+"Alternativament, podeu usar les tecles de cursor\n"
+"per despalaçar en la direcció de les tecles."
 
 #: src/gr-cooking-page.ui:350
-#, fuzzy
 msgid "To exit the process, press the Escape key."
-msgstr "Premeu 'q'  o ESC per sortir."
+msgstr "Per a sortir del procés, premeu la tecla d'escapada."
 
 #: src/gr-cooking-view.ui:64
 msgid "Time is up!"
@@ -2093,9 +2095,9 @@ msgid "Select a recipe file"
 msgstr "Tria un fitxer de recepta"
 
 #: src/gr-window.c:1155
-#, fuzzy, c-format
+#, c-format
 msgid "Recipes have been exported to “%s”"
-msgstr "S'ha exportat el canal de notícies al fitxer %S."
+msgstr "S'ha exportat les receptes to “%s”."
 
 #: src/gr-window.c:1193
 msgid "Select a file"
@@ -2434,9 +2436,8 @@ msgid "Zinfandel"
 msgstr ""
 
 #: src/no-ingredients.inc:1
-#, fuzzy
 msgid "no Almond"
-msgstr "Trobeu la papallona ametlla"
+msgstr "sense ametlla"
 
 #: src/no-ingredients.inc:2
 msgid "no Amaretti"
@@ -2444,33 +2445,31 @@ msgstr ""
 
 #: src/no-ingredients.inc:3
 msgid "no Anchovies"
-msgstr ""
+msgstr "sense anxoves"
 
 #: src/no-ingredients.inc:4
 msgid "no Apple"
 msgstr "sense poma"
 
 #: src/no-ingredients.inc:5
-#, fuzzy
 msgid "no Apricot"
-msgstr "Apricot Xen-II Ethernet integrada"
+msgstr "sense albercoc"
 
 #: src/no-ingredients.inc:6
 msgid "no Artichoke"
-msgstr ""
+msgstr "sense carxofa"
 
 #: src/no-ingredients.inc:7
 msgid "no Asparagus"
-msgstr ""
+msgstr "sense espàrrec"
 
 #: src/no-ingredients.inc:8
-#, fuzzy
 msgid "no Aubergine"
-msgstr "Albergínia"
+msgstr "sense albergínia"
 
 #: src/no-ingredients.inc:9
 msgid "no Bacon"
-msgstr ""
+msgstr "sense cansalada"
 
 #: src/no-ingredients.inc:10
 msgid "no Bagel"
@@ -2481,7 +2480,6 @@ msgid "no Baked beans"
 msgstr "sense fesols al forn"
 
 #: src/no-ingredients.inc:12
-#, fuzzy
 msgid "no Baking powder"
 msgstr "sense llevat en pols"
 
@@ -2666,7 +2664,7 @@ msgstr "sense patata"
 #: src/no-ingredients.inc:56
 #, fuzzy
 msgid "no Pumpkin seeds"
-msgstr "Llavors:"
+msgstr "sense llavors de carbassa"
 
 #: src/no-ingredients.inc:57
 msgid "no Salt"
