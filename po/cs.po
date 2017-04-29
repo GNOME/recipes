@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes recipes-1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-18 16:01+0000\n"
-"PO-Revision-Date: 2017-03-22 20:34+0100\n"
+"POT-Creation-Date: 2017-04-23 08:57+0000\n"
+"PO-Revision-Date: 2017-04-29 08:14+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>>\n"
 "Language: cs\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
-#: src/gr-window.ui:427 src/gr-about-dialog.c:911 src/gr-window.c:373
+#: src/gr-window.ui:427 src/gr-about-dialog.c:915 src/gr-window.c:373
 #: src/gr-window.c:998
 msgid "Recipes"
 msgstr "Recepty"
@@ -34,7 +34,7 @@ msgstr "Kuchaři z celého GNOME, spojte se!"
 msgid "org.gnome.Recipes"
 msgstr "org.gnome.Recipes"
 
-#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:915
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:919
 msgid "GNOME loves to cook"
 msgstr "GNOME miluje vaření"
 
@@ -400,7 +400,7 @@ msgstr "Sezóna"
 msgid "Note"
 msgstr "Poznámka"
 
-#: src/gr-details-page.ui:409 src/gr-edit-page.ui:654
+#: src/gr-details-page.ui:409 src/gr-edit-page.ui:690
 #: src/gr-recipe-formatter.c:86 src/gr-recipe-printer.c:242
 msgid "Directions"
 msgstr "Pokyny"
@@ -454,159 +454,159 @@ msgstr "Podrobnosti"
 msgid "_Name Your Recipe"
 msgstr "_Název vašeho receptu"
 
-#: src/gr-edit-page.ui:307
+#: src/gr-edit-page.ui:308
 msgid "Ser_ves"
 msgstr "_Porce"
 
-#: src/gr-edit-page.ui:337
+#: src/gr-edit-page.ui:338
 msgid "_Preparation Time"
 msgstr "Doba _přípravy"
 
-#: src/gr-edit-page.ui:358 src/gr-edit-page.ui:396
+#: src/gr-edit-page.ui:364 src/gr-edit-page.ui:412
 msgid "Less than 15 minutes"
 msgstr "méně než 15 minut"
 
-#: src/gr-edit-page.ui:359 src/gr-edit-page.ui:397
+#: src/gr-edit-page.ui:365 src/gr-edit-page.ui:413
 msgid "15 to 30 minutes"
 msgstr "15 až 30 minut"
 
-#: src/gr-edit-page.ui:360 src/gr-edit-page.ui:398
+#: src/gr-edit-page.ui:366 src/gr-edit-page.ui:414
 msgid "30 to 45 minutes"
 msgstr "30 až 45 minut"
 
-#: src/gr-edit-page.ui:361 src/gr-edit-page.ui:399
+#: src/gr-edit-page.ui:367 src/gr-edit-page.ui:415
 msgid "45 minutes to an hour"
 msgstr "45 minut až hodina"
 
-#: src/gr-edit-page.ui:362 src/gr-edit-page.ui:400
+#: src/gr-edit-page.ui:368 src/gr-edit-page.ui:416
 msgid "More than an hour"
 msgstr "více než hodina"
 
-#: src/gr-edit-page.ui:375
+#: src/gr-edit-page.ui:386
 msgid "C_ooking Time"
 msgstr "D_oba vaření/pečení"
 
-#: src/gr-edit-page.ui:413
+#: src/gr-edit-page.ui:434
 msgid "_Cuisine"
 msgstr "_Kuchyně"
 
-#: src/gr-edit-page.ui:444
+#: src/gr-edit-page.ui:470
 msgid "_Meal"
 msgstr "_Určení"
 
-#: src/gr-edit-page.ui:475
+#: src/gr-edit-page.ui:506
 msgid "S_eason"
 msgstr "Sezóna"
 
-#: src/gr-edit-page.ui:506
+#: src/gr-edit-page.ui:542
 msgid "S_piciness"
 msgstr "_Ostrost"
 
-#: src/gr-edit-page.ui:526 src/gr-spice-row.c:127
+#: src/gr-edit-page.ui:562 src/gr-spice-row.c:127
 msgid "Mild"
 msgstr "jemné"
 
-#: src/gr-edit-page.ui:527
+#: src/gr-edit-page.ui:563
 msgid "Somewhat spicy"
 msgstr "mírně pikantní"
 
-#: src/gr-edit-page.ui:528
+#: src/gr-edit-page.ui:564
 msgid "Hot"
 msgstr "pikantní"
 
-#: src/gr-edit-page.ui:529 src/gr-details-page.c:541 src/gr-spice-row.c:142
+#: src/gr-edit-page.ui:565 src/gr-details-page.c:541 src/gr-spice-row.c:142
 msgid "Very spicy"
 msgstr "velmi pikantní"
 
-#: src/gr-edit-page.ui:540
+#: src/gr-edit-page.ui:576
 msgid "Description"
 msgstr "Popis"
 
-#: src/gr-edit-page.ui:599 src/gr-diet-row.c:102
+#: src/gr-edit-page.ui:635 src/gr-diet-row.c:102
 msgid "Gluten free"
 msgstr "Bez lepku"
 
-#: src/gr-edit-page.ui:606 src/gr-diet-row.c:105
+#: src/gr-edit-page.ui:642 src/gr-diet-row.c:105
 msgid "Nut free"
 msgstr "Bez ořechů"
 
-#: src/gr-edit-page.ui:613 src/gr-diet-row.c:108
+#: src/gr-edit-page.ui:649 src/gr-diet-row.c:108
 msgid "Vegan"
 msgstr "Veganské"
 
-#: src/gr-edit-page.ui:620 src/gr-diet-row.c:111
+#: src/gr-edit-page.ui:656 src/gr-diet-row.c:111
 msgid "Vegetarian"
 msgstr "Vegetariánské"
 
-#: src/gr-edit-page.ui:627 src/gr-diet-row.c:114
+#: src/gr-edit-page.ui:663 src/gr-diet-row.c:114
 msgid "Milk free"
 msgstr "Bez mléka"
 
-#: src/gr-edit-page.ui:715 src/menus.ui:62
+#: src/gr-edit-page.ui:751 src/menus.ui:66
 msgid "Edit"
 msgstr "Upravit"
 
-#: src/gr-edit-page.ui:722
+#: src/gr-edit-page.ui:758
 msgid "Preview"
 msgstr "Náhled"
 
-#: src/gr-edit-page.ui:742
+#: src/gr-edit-page.ui:778
 msgid "Add Step"
 msgstr "Přidat krok"
 
-#: src/gr-edit-page.ui:750
+#: src/gr-edit-page.ui:786
 msgid "Add Image"
 msgstr "Přidat obrázek"
 
-#: src/gr-edit-page.ui:758
+#: src/gr-edit-page.ui:794
 msgid "Add Timer"
 msgstr "Přidat čas"
 
-#: src/gr-edit-page.ui:766
+#: src/gr-edit-page.ui:802
 msgid "Add Temperature"
 msgstr "Přidat teplotu"
 
-#: src/gr-edit-page.ui:830 src/gr-edit-page.ui:851 src/gr-edit-page.c:434
+#: src/gr-edit-page.ui:866 src/gr-edit-page.ui:887 src/gr-edit-page.c:434
 msgid "Ingredient"
 msgstr "Surovina"
 
-#: src/gr-edit-page.ui:879 src/gr-edit-page.ui:971 src/gr-query-editor.ui:283
+#: src/gr-edit-page.ui:915 src/gr-edit-page.ui:1007 src/gr-query-editor.ui:283
 msgid "Search…"
 msgstr "Hledat…"
 
-#: src/gr-edit-page.ui:909 src/gr-edit-page.ui:930 src/gr-edit-page.c:435
+#: src/gr-edit-page.ui:945 src/gr-edit-page.ui:966 src/gr-edit-page.c:435
 msgid "Amount"
 msgstr "Množství"
 
-#: src/gr-edit-page.ui:1002 src/gr-edit-page.c:438
+#: src/gr-edit-page.ui:1038 src/gr-edit-page.c:438
 msgid "Add"
 msgstr "Přidat"
 
-#: src/gr-edit-page.ui:1053
+#: src/gr-edit-page.ui:1089
 msgid "Title…"
 msgstr "Název…"
 
-#: src/gr-edit-page.ui:1128
+#: src/gr-edit-page.ui:1164
 msgid "Syntax"
 msgstr "Syntax"
 
-#: src/gr-edit-page.ui:1143
+#: src/gr-edit-page.ui:1179
 msgid "Use paragraphs to break directions into steps (2 newlines)."
 msgstr "K rozdělení instrukcí na kroky použijte odstavce (2 odřádkování)"
 
-#: src/gr-edit-page.ui:1156
+#: src/gr-edit-page.ui:1192
 msgid "You can provide an image or a time counter in each step."
 msgstr "U každého kroku můžete uvést obrázek a čas."
 
-#: src/gr-edit-page.ui:1168
+#: src/gr-edit-page.ui:1204
 msgid "Timer"
 msgstr "Čas"
 
-#: src/gr-edit-page.ui:1190
+#: src/gr-edit-page.ui:1226
 msgid "Image"
 msgstr "Obrázek"
 
-#: src/gr-edit-page.ui:1212
+#: src/gr-edit-page.ui:1248
 msgid "Temperature"
 msgstr "Teplota"
 
@@ -756,11 +756,11 @@ msgstr "Poslat aktualizaci"
 msgid "Cuisines"
 msgstr "Kuchyně"
 
-#: src/menus.ui:6 src/menus.ui:44
+#: src/menus.ui:6 src/menus.ui:48
 msgid "_Import"
 msgstr "_Importovat"
 
-#: src/menus.ui:11 src/menus.ui:49
+#: src/menus.ui:11 src/menus.ui:53
 msgid "_Export All"
 msgstr "_Exportovat vše"
 
@@ -768,48 +768,56 @@ msgstr "_Exportovat vše"
 msgid "_Chef Information"
 msgstr "In_formace o kuchaři"
 
-#: src/menus.ui:22
-msgid "_About"
-msgstr "O _aplikaci"
-
-#: src/menus.ui:26 src/menus.ui:85
+#: src/menus.ui:22 src/menus.ui:93
 msgid "_What’s New"
 msgstr "_Co je nového"
 
-#: src/menus.ui:30 src/menus.ui:89
+#: src/menus.ui:26
+msgid "_Help"
+msgstr "Nápo_věda"
+
+#: src/menus.ui:30
+msgid "_About"
+msgstr "O _aplikaci"
+
+#: src/menus.ui:34 src/menus.ui:97
 msgid "_Report Issue"
 msgstr "Nahlásit p_roblém"
 
-#: src/menus.ui:34
+#: src/menus.ui:38
 msgid "_Quit"
 msgstr "U_končit"
 
-#: src/menus.ui:41
+#: src/menus.ui:45
 msgid "File"
 msgstr "Soubor"
 
-#: src/menus.ui:56
+#: src/menus.ui:60
 msgid "Chef Information…"
 msgstr "Informace o kuchaři…"
 
-#: src/menus.ui:65
+#: src/menus.ui:69
 msgid "Copy"
 msgstr "Kopírovat"
 
-#: src/menus.ui:69
+#: src/menus.ui:73
 msgid "Paste"
 msgstr "Vložit"
 
-#: src/menus.ui:75
+#: src/menus.ui:79
 msgid "Find…"
 msgstr "Hledat…"
 
-#: src/menus.ui:82
+#: src/menus.ui:86
 msgid "Help"
 msgstr "Nápověda"
 
+#: src/menus.ui:89
+msgid "Recipes _Help"
+msgstr "Nápo_věda k Receptům"
+
 #: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:156
-#: src/gr-image-viewer.c:616 src/gr-recipe-exporter.c:169
+#: src/gr-image-viewer.c:616 src/gr-recipe-exporter.c:166
 #: src/gr-shopping-page.c:731 src/gr-window.c:1133
 msgid "Cancel"
 msgstr "Zrušit"
@@ -918,15 +926,15 @@ msgstr "Systémové knihovny"
 msgid "System"
 msgstr "Systém"
 
-#: src/gr-about-dialog.c:917
+#: src/gr-about-dialog.c:922
 msgid "translator-credits"
 msgstr "Marek Černocký <marek@manet.cz>"
 
-#: src/gr-about-dialog.c:920
+#: src/gr-about-dialog.c:925
 msgid "Learn more about Recipes"
 msgstr "Dozvědět se více o Receptech"
 
-#: src/gr-about-dialog.c:927
+#: src/gr-about-dialog.c:932
 msgid "Recipes by"
 msgstr "Recepty od"
 
@@ -943,11 +951,11 @@ msgstr ""
 "Umožňuje vložení vašich osobních informací do receptů, které sdílíte se "
 "svými přáteli."
 
-#: src/gr-app.c:378
+#: src/gr-app.c:393
 msgid "Print the version and exit"
 msgstr "Vypsat verzi a skončit"
 
-#: src/gr-app.c:382
+#: src/gr-app.c:397
 msgid "Turn on verbose logging"
 msgstr "Přepnout podrobné záznamy"
 
@@ -1591,27 +1599,27 @@ msgstr "Nelze zpracovat %s jako desetinné číslo"
 msgid "Could not parse %s as a number"
 msgstr "Nelze zpracovat %s jako číslo"
 
-#: src/gr-recipe-exporter.c:165
+#: src/gr-recipe-exporter.c:162
 msgid "Save the exported recipe"
 msgstr "Uložit exportované recepty"
 
-#: src/gr-recipe-exporter.c:168 src/gr-shopping-page.c:730
+#: src/gr-recipe-exporter.c:165 src/gr-shopping-page.c:730
 msgid "Save"
 msgstr "Uložit"
 
-#: src/gr-recipe-exporter.c:199
+#: src/gr-recipe-exporter.c:196
 msgid "Recipe contribution"
 msgstr "Příspěvek k receptu"
 
-#: src/gr-recipe-exporter.c:200
+#: src/gr-recipe-exporter.c:197
 msgid "Please accept my attached recipe contribution."
 msgstr "Přijměte prosím můj přiložený příspěvek k receptu"
 
-#: src/gr-recipe-exporter.c:210
+#: src/gr-recipe-exporter.c:207
 msgid "Try this recipe"
 msgstr "Zkus tento recept"
 
-#: src/gr-recipe-exporter.c:211
+#: src/gr-recipe-exporter.c:208
 msgid ""
 "Hi,\n"
 "\n"
@@ -1621,11 +1629,11 @@ msgstr ""
 "\n"
 "měl bys vyzkoušet tento recept."
 
-#: src/gr-recipe-exporter.c:214
+#: src/gr-recipe-exporter.c:211
 msgid "Try these recipes"
 msgstr "Zkus tyto recepty"
 
-#: src/gr-recipe-exporter.c:215
+#: src/gr-recipe-exporter.c:212
 msgid ""
 "Hi,\n"
 "\n"
@@ -1635,16 +1643,16 @@ msgstr ""
 "\n"
 "měl bys vyzkoušet tyto recepty."
 
-#: src/gr-recipe-exporter.c:218
+#: src/gr-recipe-exporter.c:215
 msgid "(The attached file can be imported into GNOME Recipes.)"
 msgstr "(Přiložený soubor se dá naimportovat do Receptů GNOME.)"
 
-#: src/gr-recipe-exporter.c:410
+#: src/gr-recipe-exporter.c:399
 #, c-format
 msgid "This build does not support exporting"
 msgstr "Toto sestavení nepodporuje exportování"
 
-#: src/gr-recipe-exporter.c:492
+#: src/gr-recipe-exporter.c:481
 #, c-format
 msgid ""
 "Error while exporting:\n"
@@ -1653,7 +1661,7 @@ msgstr ""
 "Chyba při exportu:\n"
 "%s"
 
-#: src/gr-recipe-exporter.c:590
+#: src/gr-recipe-exporter.c:578
 #, c-format
 msgid "%d recipe selected for sharing"
 msgid_plural "%d recipes selected for sharing"
@@ -1661,7 +1669,7 @@ msgstr[0] "%d recept vybrán ke sdílení"
 msgstr[1] "%d recepty vybrány ke sdílení"
 msgstr[2] "%d receptů vybráno ke sdílení"
 
-#: src/gr-recipe-exporter.c:622
+#: src/gr-recipe-exporter.c:610
 msgid ""
 "Some of the selected recipes are included\n"
 "with GNOME Recipes. You should only contribute\n"
@@ -1696,17 +1704,17 @@ msgstr ""
 "Chyba při importu receptu:\n"
 "%s"
 
-#: src/gr-recipe-importer.c:478
+#: src/gr-recipe-importer.c:480
 #, c-format
 msgid "Failed to load recipe: Couldn’t parse Created key"
 msgstr "Selhalo načtení receptu: Nelze zpracovat klíč Created (vytvořeno)"
 
-#: src/gr-recipe-importer.c:489
+#: src/gr-recipe-importer.c:491
 #, c-format
 msgid "Failed to load recipe: Couldn’t parse Modified key"
 msgstr "Selhalo načtení receptu: Nelze zpracovat klíč Modified (změněno)"
 
-#: src/gr-recipe-importer.c:791
+#: src/gr-recipe-importer.c:793
 #, c-format
 msgid "This build does not support importing"
 msgstr "Toto sestavení nepodporuje importování"
@@ -2829,3 +2837,4 @@ msgstr "Těsto"
 #: src/segments.inc:2
 msgid "Toppings"
 msgstr "Zdobení"
+
