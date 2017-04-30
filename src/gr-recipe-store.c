@@ -974,12 +974,13 @@ set_modified_request (SoupMessage *msg,
                                   NULL,
                                   NULL);
 
-        g_file_info_get_modification_time (info, &tv);
-        mtime = g_date_time_new_from_timeval_utc (&tv);
-        mod_date = g_date_time_format (mtime, "%a, %d %b %Y %H:%M:%S %Z");
-        soup_message_headers_append (msg->request_headers, "If-Modified-Since", mod_date);
+        if (info) {
+                g_file_info_get_modification_time (info, &tv);
+                mtime = g_date_time_new_from_timeval_utc (&tv);
+                mod_date = g_date_time_format (mtime, "%a, %d %b %Y %H:%M:%S %Z");
+                soup_message_headers_append (msg->request_headers, "If-Modified-Since", mod_date);
+        }
 }
-
 
 static void
 update_file_timestamp (const char *path)
