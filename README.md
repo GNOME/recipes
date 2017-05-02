@@ -21,7 +21,7 @@ Other information can be found here: https://wiki.gnome.org/Apps/Recipes
 Building
 --------
 
-Dependencies (at least): meson gtk+-3 gnome-autoar-0 gspell-1 libcanberra
+Dependencies (at least): meson gtk+-3 gnome-autoar-0 gspell-1 libcanberra itstool
 
 After the 1.0 release, Recipes has switched to exclusively use meson as build system.
 
