@@ -75,6 +75,28 @@ emit_ingredients (const char *s,
         }
 }
 
+static void
+emit_segments (const char *s)
+{
+        g_auto(GStrv) strv = NULL;
+        int i;
+
+        strv = g_strsplit (s, "\n", -1);
+
+        for (i = 0; strv[i]; i++) {
+                g_auto(GStrv) fields = NULL;
+
+                fields = g_strsplit (strv[i], "\t", -1);
+
+                if (g_strv_length (fields) != 4) {
+                        g_printerr ("Wrong number of fields; ignoring line: %s\n", strv[i]);
+                        continue;
+                }
+                if (fields[3][0] != 0)
+                        g_print ("N_(\"%s\")\n", fields[3]);
+        }
+}
+
 int
 main (int argc, char *argv[])
 {
@@ -93,7 +115,7 @@ main (int argc, char *argv[])
         const char *optional_keys[] = {
                 "Notes",
                 NULL,
-        };
+                };
         const char *chef_keys[] = {
                 "Description",
                 NULL
@@ -173,6 +195,17 @@ main (int argc, char *argv[])
                                 }
 
                                 emit_string (s);
+                        }
+                        if (!extract_chefs) {
+                                g_autofree char *s = NULL;
+                                s = g_key_file_get_string (keyfile, groups[i], "Ingredients", &error);
+                                if (!s) {
+                                        g_printerr ("Failed to get key '%s' for group '%s': %s\n", "Ingredients", groups[i], error->message);
+                                        g_clear_error (&error);
+                                }
+                                else {
+                                        emit_segments (s);
+                                }
                         }
                 }
         }
