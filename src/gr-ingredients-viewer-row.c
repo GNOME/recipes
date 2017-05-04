@@ -27,6 +27,7 @@
 #include "gr-ingredients-viewer.h"
 #include "gr-ingredient.h"
 #include "gr-unit.h"
+#include "gr-recipe-store.h"
 
 
 struct _GrIngredientsViewerRow
@@ -483,27 +484,65 @@ drag_data_received (GtkWidget        *widget,
         g_signal_emit (source, signals[MOVE], 0, target);
 }
 
+static int
+sort_func (GtkTreeModel *model,
+           GtkTreeIter  *a,
+           GtkTreeIter  *b,
+           gpointer      user_data)
+{
+        g_autofree char *as = NULL;
+        g_autofree char *bs = NULL;
+
+        gtk_tree_model_get (model, a, 0, &as, -1);
+        gtk_tree_model_get (model, b, 0, &bs, -1);
+
+        return g_strcmp0 (as, bs);
+}
+
+static GtkListStore *ingredients_model = NULL;
+
+static void
+clear_ingredients_model (GrRecipeStore *store)
+{
+        g_clear_object (&ingredients_model);
+}
+
 static GtkTreeModel *
 get_ingredients_model (void)
 {
-        static GtkListStore *store = NULL;
+        static gboolean signal_connected;
+        GrRecipeStore *store;
 
-        if (store == NULL) {
-                const char **names;
-                int length;
+        store = gr_recipe_store_get ();
+
+        if (!signal_connected) {
+                g_signal_connect (store, "recipe-added", G_CALLBACK (clear_ingredients_model), NULL);
+                g_signal_connect (store, "recipe-changed", G_CALLBACK (clear_ingredients_model), NULL);
+
+                signal_connected = TRUE;
+        }
+
+        if (ingredients_model == NULL) {
+                g_autofree char **names = NULL;
+                guint length;
                 int i;
 
-                store = gtk_list_store_new (1, G_TYPE_STRING);
+                ingredients_model = gtk_list_store_new (1, G_TYPE_STRING);
+                gtk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (ingredients_model),
+                                                         sort_func, NULL, NULL);
+                gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (ingredients_model),
+                                                      GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
+                                                      GTK_SORT_ASCENDING);
 
-                names = gr_ingredient_get_names (&length);
+                names = gr_recipe_store_get_all_ingredients (store, &length);
                 for (i = 0; i < length; i++) {
-                        gtk_list_store_insert_with_values (store, NULL, -1,
+                        gtk_list_store_insert_with_values (ingredients_model, NULL, -1,
                                                            0, names[i],
                                                            -1);
                 }
         }
 
-        return GTK_TREE_MODEL (g_object_ref (store));
+        return GTK_TREE_MODEL (g_object_ref (ingredients_model));
 }
 
 static void
@@ -545,6 +584,11 @@ get_units_model (GrIngredientsViewerRow *row)
                 int i;
 
                 store = gtk_list_store_new (1, G_TYPE_STRING);
+                gtk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (store),
+                                                         sort_func, NULL, NULL);
+                gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (store),
+                                                      GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
+                                                      GTK_SORT_ASCENDING);
 
                 names = gr_unit_get_names ();
                 for (i = 0; names[i]; i++) {
