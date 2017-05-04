@@ -31,6 +31,7 @@
 #include "gr-settings.h"
 #include "gr-utils.h"
 #include "gr-ingredients-list.h"
+#include "gr-ingredient.h"
 #include "gr-image.h"
 #include "gr-app.h"
 
@@ -1597,8 +1598,14 @@ gr_recipe_store_get_all_ingredients (GrRecipeStore *self,
         GHashTable *ingreds;
         char **result;
         int i, j;
+        const char **names;
+        int len;
 
-        ingreds = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
+        ingreds = g_hash_table_new_full (g_str_hash, g_str_equal, NULL, NULL);
+        names = gr_ingredient_get_names (&len);
+        for (i = 0; i < len; i++) {
+                g_hash_table_add (ingreds, (char *)names[i]);
+        }
 
         g_hash_table_iter_init (&iter, self->recipes);
         while (g_hash_table_iter_next (&iter, NULL, (gpointer *)&recipe)) {
