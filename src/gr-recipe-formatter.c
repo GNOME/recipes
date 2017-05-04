@@ -75,7 +75,7 @@ gr_recipe_format (GrRecipe *recipe)
         for (j = 0; segs[j]; j++) {
                 g_string_append (s, "\n");
                 if (segs[j][0] != 0)
-                        g_string_append_printf (s, "* %s *\n", segs[j]);
+                        g_string_append_printf (s, "* %s *\n", g_dgettext (GETTEXT_PACKAGE "-data", segs[j]));
                 else
                         g_string_append_printf (s, "* %s *\n", _("Ingredients"));
 

@@ -185,7 +185,7 @@ begin_print (GtkPrintOperation *operation,
                 attr->start_index = s->len;
 
                 if (segs[j][0] != 0)
-                        g_string_append (s, segs[j]);
+                        g_string_append (s, g_dgettext (GETTEXT_PACKAGE "-data", segs[j]));
                 else
                         g_string_append (s, _("Ingredients"));
 

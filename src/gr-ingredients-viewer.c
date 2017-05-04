@@ -303,11 +303,14 @@ static void
 gr_ingredients_viewer_set_title (GrIngredientsViewer *viewer,
                                  const char          *title)
 {
+        const char *display_title;
+
+        display_title = g_dgettext (GETTEXT_PACKAGE "-data", title);
+        gtk_label_set_label (GTK_LABEL (viewer->title_label), display_title);
+        gtk_entry_set_text (GTK_ENTRY (viewer->title_entry), display_title);
+
         g_free (viewer->title);
         viewer->title = g_strdup (title);
-
-        gtk_label_set_label (GTK_LABEL (viewer->title_label), title);
-        gtk_entry_set_text (GTK_ENTRY (viewer->title_entry), title);
 }
 
 static void

@@ -90,7 +90,7 @@ gr_ingredients_list_populate (GrIngredientsList  *ingredients,
                 amount = fields[0];
                 unit = fields[1];
                 ingredient = fields[2];
-                segment = (char *)(fields[3][0] ? _(fields[3]) : "");
+                segment = fields[3];
 
                 ing = g_new0 (Ingredient, 1);
                 gr_number_set_fraction (&ing->amount, 0, 0);
