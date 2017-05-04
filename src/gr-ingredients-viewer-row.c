@@ -180,12 +180,14 @@ gr_ingredients_viewer_row_set_size_group (GrIngredientsViewerRow *row,
                 gtk_size_group_add_widget (row->group, row->unit_stack);
 }
 
+static void setup_editable_row (GrIngredientsViewerRow *self);
+
 static void
 gr_ingredients_viewer_row_set_editable (GrIngredientsViewerRow *row,
                                         gboolean                editable)
 {
         row->editable = editable;
-        gtk_list_box_row_set_activatable (GTK_LIST_BOX_ROW (row), editable);
+        setup_editable_row (row);
 }
 
 static void save_row (GrIngredientsViewerRow *row);
@@ -567,29 +569,48 @@ get_units_model (GrIngredientsViewerRow *row)
 static void
 gr_ingredients_viewer_row_init (GrIngredientsViewerRow *self)
 {
-        g_autoptr(GtkEntryCompletion) completion = NULL;
-        g_autoptr(GtkTreeModel) ingredients_model = NULL;
-        g_autoptr(GtkTreeModel) units_model = NULL;
-
         gtk_widget_set_has_window (GTK_WIDGET (self), FALSE);
         gtk_widget_init_template (GTK_WIDGET (self));
+}
 
-        gtk_drag_source_set (self->ebox, GDK_BUTTON1_MASK, entries, 1, GDK_ACTION_MOVE);
-        g_signal_connect (self->ebox, "drag-begin", G_CALLBACK (drag_begin), NULL);
-        g_signal_connect (self->ebox, "drag-data-get", G_CALLBACK (drag_data_get), NULL);
+static void
+setup_editable_row (GrIngredientsViewerRow *self)
+{
+        gtk_list_box_row_set_activatable (GTK_LIST_BOX_ROW (self), self->editable);
 
-        gtk_drag_dest_set (GTK_WIDGET (self), GTK_DEST_DEFAULT_ALL, entries, 1, GDK_ACTION_MOVE);
-        g_signal_connect (self, "drag-data-received", G_CALLBACK (drag_data_received), NULL);
+        if (self->editable) {
+                g_autoptr(GtkEntryCompletion) completion = NULL;
+                g_autoptr(GtkTreeModel) ingredients_model = NULL;
+                g_autoptr(GtkTreeModel) units_model = NULL;
 
-        ingredients_model = get_ingredients_model ();
-        completion = gtk_entry_completion_new ();
-        gtk_entry_completion_set_model (completion, ingredients_model);
-        gtk_entry_completion_set_text_column (completion, 0);
-        gtk_entry_set_completion (GTK_ENTRY (self->ingredient_entry), completion);
+                gtk_drag_source_set (self->ebox, GDK_BUTTON1_MASK, entries, 1, GDK_ACTION_MOVE);
+                g_signal_connect (self->ebox, "drag-begin", G_CALLBACK (drag_begin), NULL);
+                g_signal_connect (self->ebox, "drag-data-get", G_CALLBACK (drag_data_get), NULL);
 
-        units_model = get_units_model (self);
-        completion = gtk_entry_completion_new ();
-        gtk_entry_completion_set_model (completion, units_model);
-        gtk_entry_completion_set_text_column (completion, 0);
-        gtk_entry_set_completion (GTK_ENTRY (self->unit_entry), completion);
+                gtk_drag_dest_set (GTK_WIDGET (self), GTK_DEST_DEFAULT_ALL, entries, 1, GDK_ACTION_MOVE);
+                g_signal_connect (self, "drag-data-received", G_CALLBACK (drag_data_received), NULL);
+
+                ingredients_model = get_ingredients_model ();
+                completion = gtk_entry_completion_new ();
+                gtk_entry_completion_set_model (completion, ingredients_model);
+                gtk_entry_completion_set_text_column (completion, 0);
+                gtk_entry_set_completion (GTK_ENTRY (self->ingredient_entry), completion);
+
+                units_model = get_units_model (self);
+                completion = gtk_entry_completion_new ();
+                gtk_entry_completion_set_model (completion, units_model);
+                gtk_entry_completion_set_text_column (completion, 0);
+                gtk_entry_set_completion (GTK_ENTRY (self->unit_entry), completion);
+        }
+        else {
+                gtk_drag_source_unset (self->ebox);
+                g_signal_handlers_disconnect_by_func (self->ebox, drag_begin, NULL);
+                g_signal_handlers_disconnect_by_func (self->ebox, drag_data_get, NULL);
+
+                gtk_drag_dest_unset (GTK_WIDGET (self));
+                g_signal_handlers_disconnect_by_func (self, drag_data_received, NULL);
+
+                gtk_entry_set_completion (GTK_ENTRY (self->ingredient_entry), NULL);
+                gtk_entry_set_completion (GTK_ENTRY (self->unit_entry), NULL);
+        }
 }
