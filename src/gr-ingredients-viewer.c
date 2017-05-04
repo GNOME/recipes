@@ -25,6 +25,7 @@
 #include "gr-ingredients-viewer.h"
 #include "gr-ingredients-viewer-row.h"
 #include "gr-ingredients-list.h"
+#include "gr-ingredient.h"
 #include "gr-utils.h"
 
 #ifdef ENABLE_GSPELL
@@ -137,6 +138,7 @@ collect_ingredients (GrIngredientsViewer *viewer)
                 g_autofree char *amount = NULL;
                 g_autofree char *unit = NULL;
                 g_autofree char *ingredient = NULL;
+                const char *id;
 
                 g_object_get (row,
                               "amount", &amount,
@@ -144,10 +146,12 @@ collect_ingredients (GrIngredientsViewer *viewer)
                               "ingredient", &ingredient,
                               NULL);
 
+                id = gr_ingredient_get_id (ingredient);
+
                 if (s->len > 0)
                         g_string_append (s, "\n");
                 g_string_append_printf (s, "%s\t%s\t%s\t%s",
-                                        amount, unit, ingredient, viewer->title);
+                                        amount, unit, id ? id : ingredient, viewer->title);
         }
         g_list_free (children);
 
