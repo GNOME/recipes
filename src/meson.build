@@ -4,7 +4,7 @@ enums = []
 
 # These generated files are #included
 list_to_c = find_program('list_to_c.py')
-foreach f : ['segments', 'ingredients']
+foreach f : ['ingredients']
   ofile = f + '.inc'
   ifile = files('../data/' + f + '.list')
   src_incs += [custom_target(f,
