@@ -645,8 +645,42 @@ time_spin_activate (GtkEntry *entry, GrEditPage *self)
 }
 
 static void
+populate_timer_popover (GrEditPage *self)
+{
+        GtkTextBuffer *buffer;
+        GtkTextIter pos;
+        GtkTextIter start;
+        GtkTextIter end;
+        g_autofree char *text = NULL;
+        g_autoptr(GPtrArray) steps = NULL;
+
+        buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->instructions_field));
+        gtk_text_buffer_get_iter_at_mark (buffer, &pos, gtk_text_buffer_get_insert (buffer));
+        if (!gtk_text_iter_backward_search (&pos, "\n\n", 0, NULL, &start, NULL))
+                gtk_text_buffer_get_start_iter (buffer, &start);
+        if (!gtk_text_iter_forward_search (&pos, "\n\n", 0, &end, NULL, NULL))
+                gtk_text_buffer_get_end_iter (buffer, &end);
+
+        text = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
+        g_print ("STEP: >%s<\n", text);
+        steps = gr_recipe_parse_instructions (text, FALSE);
+        if (steps->len == 1) {
+                GrRecipeStep *step = (GrRecipeStep *)g_ptr_array_index (steps, 0);
+                GtkAdjustment *adjustment;
+
+                adjustment = gtk_spin_button_get_adjustment (GTK_SPIN_BUTTON (self->timer_spin));
+                gtk_adjustment_set_value (adjustment, step->timer / G_TIME_SPAN_SECOND);
+                gtk_entry_set_text (GTK_ENTRY (self->timer_title), step->title);
+        }
+        else {
+                g_warning ("WTH?!");
+        }
+}
+
+static void
 add_timer (GtkButton *button, GrEditPage *page)
 {
+        populate_timer_popover (page);
         gtk_popover_popup (GTK_POPOVER (page->timer_popover));
 }
 
@@ -825,7 +859,7 @@ gr_edit_page_set_property (GObject      *object,
                            guint         prop_id,
                            const GValue *value,
                            GParamSpec   *pspec)
-{    
+{
         GrEditPage *self = GR_EDIT_PAGE (object);
         switch (prop_id) {
         case PROP_UNSAVED:
