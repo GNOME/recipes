@@ -99,10 +99,10 @@ update_label (GrDietRow *self)
         switch (self->diet)
           {
           case GR_DIET_GLUTEN_FREE:
-                gtk_label_set_label (GTK_LABEL (self->label), _("Gluten free"));
+                gtk_label_set_label (GTK_LABEL (self->label), _("Gluten-free"));
                 break;
           case GR_DIET_NUT_FREE:
-                gtk_label_set_label (GTK_LABEL (self->label), _("Nut free"));
+                gtk_label_set_label (GTK_LABEL (self->label), _("Nut-free"));
                 break;
           case GR_DIET_VEGAN:
                 gtk_label_set_label (GTK_LABEL (self->label), _("Vegan"));
@@ -111,7 +111,7 @@ update_label (GrDietRow *self)
                 gtk_label_set_label (GTK_LABEL (self->label), _("Vegetarian"));
                 break;
           case GR_DIET_MILK_FREE:
-                gtk_label_set_label (GTK_LABEL (self->label), _("Milk free"));
+                gtk_label_set_label (GTK_LABEL (self->label), _("Milk-free"));
                 break;
           default:
                 gtk_label_set_label (GTK_LABEL (self->label), "Unknown");

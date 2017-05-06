@@ -640,14 +640,14 @@
                         <child>
                           <object class="GtkCheckButton" id="gluten_free_check">
                             <property name="visible">1</property>
-                            <property name="label" translatable="yes">Gluten free</property>
+                            <property name="label" translatable="yes">Gluten-free</property>
                             <signal name="clicked" handler="set_unsaved" swapped="yes"/>
                           </object>
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="nut_free_check">
                             <property name="visible">1</property>
-                            <property name="label" translatable="yes">Nut free</property>
+                            <property name="label" translatable="yes">Nut-free</property>
                             <signal name="clicked" handler="set_unsaved" swapped="yes"/>
                           </object>
                         </child>
@@ -668,7 +668,7 @@
                         <child>
                           <object class="GtkCheckButton" id="milk_free_check">
                             <property name="visible">1</property>
-                            <property name="label" translatable="yes">Milk free</property>
+                            <property name="label" translatable="yes">Milk-free</property>
                             <signal name="clicked" handler="set_unsaved" swapped="yes"/>
                           </object>
                         </child>
