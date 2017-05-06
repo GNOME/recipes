@@ -258,7 +258,7 @@ static void
 reset_hide_timeout (GrImageViewer *viewer)
 {
         remove_hide_timeout (viewer);
-        viewer->hide_timeout = g_timeout_add (5000, hide_timeout, viewer);
+        viewer->hide_timeout = g_timeout_add (2000, hide_timeout, viewer);
 }
 
 static gboolean
@@ -275,7 +275,6 @@ enter_leave_notify (GtkWidget     *widget,
         }
         else {
                 hide_controls (viewer);
-                remove_hide_timeout (viewer);
         }
 
         return FALSE;
