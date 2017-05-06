@@ -53,6 +53,7 @@ struct _GrCuisinePage
         GtkWidget *category_box;
         GtkWidget *stack;
         GtkWidget *scroll_to_row;
+        GtkWidget *cuisine_label;
 
         int n_categories;
         Category *categories;
@@ -98,8 +99,10 @@ static void
 row_selected (GrCuisinePage *page,
               GtkListBoxRow *row)
 {
-        page->scroll_to_row = GTK_WIDGET (row);
-        g_idle_add (scroll_in_idle, page);
+        if (page->scroll_to_row != GTK_WIDGET (row)) {
+                page->scroll_to_row = GTK_WIDGET (row);
+                g_idle_add (scroll_in_idle, page);
+        }
 }
 
 static void
@@ -205,6 +208,7 @@ gr_cuisine_page_class_init (GrCuisinePageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrCuisinePage, scrolled_window);
         gtk_widget_class_bind_template_child (widget_class, GrCuisinePage, category_box);
         gtk_widget_class_bind_template_child (widget_class, GrCuisinePage, stack);
+        gtk_widget_class_bind_template_child (widget_class, GrCuisinePage, cuisine_label);
 
         gtk_widget_class_bind_template_callback (widget_class, row_selected);
 }
@@ -219,17 +223,6 @@ gr_cuisine_page_new (void)
         return GTK_WIDGET (page);
 }
 
-#if 0
-static gboolean
-unselect (gpointer data)
-{
-        GrCuisinePage *self = data;
-
-        gtk_list_box_unselect_all (GTK_LIST_BOX (self->sidebar));
-
-        return G_SOURCE_REMOVE;
-}
-#endif
 void
 gr_cuisine_page_set_cuisine (GrCuisinePage *self,
                              const char    *cuisine)
@@ -239,11 +232,17 @@ gr_cuisine_page_set_cuisine (GrCuisinePage *self,
         guint length;
         int i, j;
         gboolean has_recipe = FALSE;
+        const char *description;
+        GtkAdjustment *adj;
 
         if (self->cuisine != cuisine) {
                 g_free (self->cuisine);
                 self->cuisine = g_strdup (cuisine);
         }
+
+        gr_cuisine_get_data (cuisine, NULL, NULL, &description);
+        gtk_label_set_label (GTK_LABEL (self->cuisine_label), description);
+        gtk_widget_set_visible (self->cuisine_label, description != NULL);
 
         for (i = 0; i < self->n_categories; i++) {
                 container_remove_all (GTK_CONTAINER (self->categories[i].box));
@@ -291,8 +290,18 @@ gr_cuisine_page_set_cuisine (GrCuisinePage *self,
         gtk_stack_set_visible_child_name (GTK_STACK (self->stack), has_recipe ? "cuisine" : "empty");
 
         gtk_list_box_invalidate_filter (GTK_LIST_BOX (self->sidebar));
-        gtk_list_box_unselect_all (GTK_LIST_BOX (self->sidebar));
-        //g_idle_add (unselect, self);
+
+        /* scroll to top */
+        adj = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (self->scrolled_window));
+        gtk_adjustment_set_value (adj, gtk_adjustment_get_lower (adj));
+
+        /* prevent the row_selected handler from scrolling back to the first category */
+        for (i = 0; i < self->n_categories; i++) {
+                if (self->categories[i].filled) {
+                        self->scroll_to_row = gtk_widget_get_ancestor (self->categories[i].item, GTK_TYPE_LIST_BOX_ROW);
+                        break;
+                }
+        }
 }
 
 static void
