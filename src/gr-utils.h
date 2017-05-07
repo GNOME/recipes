@@ -81,3 +81,10 @@ char *import_image (const char *path);
 char *rotate_image (const char *path,
                     int         angle);
 void  remove_image (const char *path);
+
+void strv_remove (char       ***strv_in,
+                  const char   *s);
+void strv_prepend (char       ***strv_in,
+                   const char   *s);
+
+

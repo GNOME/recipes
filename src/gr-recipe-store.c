@@ -1637,49 +1637,6 @@ gr_recipe_store_get_all_ingredients (GrRecipeStore *self,
         return result;
 }
 
-static void
-strv_prepend (char       ***strv_in,
-              const char   *s)
-{
-        char **strv;
-        int length;
-        int i;
-
-        length = g_strv_length (*strv_in);
-        strv = g_new (char *, length + 2);
-        strv[0] = g_strdup (s);
-        for (i = 0; i < length; i++)
-                strv[i + 1] = (*strv_in)[i];
-        strv[length + 1] = NULL;
-
-        g_free (*strv_in);
-        *strv_in = strv;
-}
-
-static void
-strv_remove (char       ***strv_in,
-             const char   *s)
-{
-        int i, j;
-        char **strv;
-        int length;
-
-        length = g_strv_length (*strv_in);
-        strv = g_new (char *, length + 1);
-
-        for (i = 0, j = 0; i < length; i++) {
-                if (strcmp ((*strv_in)[i], s) == 0) {
-                        g_free ((*strv_in)[i]);
-                        continue;
-                }
-                strv[j++] = (*strv_in)[i];
-        }
-        strv[j] = NULL;
-
-        g_free (*strv_in);
-        *strv_in = strv;
-}
-
 void
 gr_recipe_store_add_favorite (GrRecipeStore *self,
                               GrRecipe      *recipe)
