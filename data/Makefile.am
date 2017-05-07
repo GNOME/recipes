@@ -48,6 +48,7 @@ dist_images_DATA = \
 	images/mwleeds.jpg		\
 	images/Sonic.jpg		\
 	images/tigert.jpg		\
+	images/Miss Sofia Holmes.jpg	\
 	images/borscht.jpg		\
 	images/cake_aux_lardons.jpg	\
 	images/cake_aux_lardons2.jpg	\
@@ -134,6 +135,7 @@ dist_images_DATA = \
 	images/salmonrice7.jpg		\
 	images/salmonrice8.jpg		\
 	images/salmonrice9.jpg		\
+	images/saltedfish.jpg		\
 	images/sambalikan1.jpg		\
 	images/sambalikan2.jpg		\
 	images/sambalikan3.jpg		\
