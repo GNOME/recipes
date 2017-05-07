@@ -1,5 +1,13 @@
 #if 0
 
+N_("Pesce alla sale")
+N_("It's an easy but tasty way to prepare fish.")
+N_("Despite all the salt, the result isn't salty but soft and nice.")
+N_("Preheat the oven.")
+N_("Stuff the fish with a mix of lemon and dill.")
+N_("Combine the salt and eggs. Spread this mix over the fish.")
+N_("Bake it 20' - 25'  or until the crust is brown. ")
+N_("Serve it with plain rice.")
 N_("Neapolitan Pizza")
 N_("Original pizza dough from Naples with tomato sauce on pizza stone.")
 N_("Toppings are not included in the recipe.")
