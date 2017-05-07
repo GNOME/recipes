@@ -1668,11 +1668,11 @@ strv_remove (char       ***strv_in,
         strv = g_new (char *, length + 1);
 
         for (i = 0, j = 0; i < length; i++) {
-                if (strcmp (strv[i], s) == 0) {
-                        g_free (strv[i]);
+                if (strcmp ((*strv_in)[i], s) == 0) {
+                        g_free ((*strv_in)[i]);
                         continue;
                 }
-                strv[j++] = strv[i];
+                strv[j++] = (*strv_in)[i];
         }
         strv[j] = NULL;
 
