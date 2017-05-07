@@ -684,12 +684,49 @@ add_timer (GtkButton *button, GrEditPage *page)
         gtk_popover_popup (GTK_POPOVER (page->timer_popover));
 }
 
+static gboolean
+find_temperature_tag (GtkTextBuffer  *buffer,
+                      GtkTextIter    *start,
+                      GtkTextIter    *end,
+                      char          **out_text)
+{
+        GtkTextIter pos;
+        GtkTextIter limit;
+        g_autofree char *text = NULL;
+
+        gtk_text_buffer_get_iter_at_mark (buffer, &pos, gtk_text_buffer_get_insert (buffer));
+        limit = pos;
+        gtk_text_iter_backward_lines (&limit, 1);
+        if (!gtk_text_iter_backward_search (&pos, "[", 0, start, NULL, &limit))
+                return FALSE;
+
+        limit = pos;
+        gtk_text_iter_forward_lines (&limit, 1);
+        if (!gtk_text_iter_forward_search (&pos, "]", 0, NULL, end, &limit))
+                return FALSE;
+
+        if (!gtk_text_iter_in_range (&pos, start, end))
+                return FALSE;
+
+        text = gtk_text_buffer_get_text (buffer, start, end, FALSE);
+        if (strncmp (text, "[temperature:", strlen ("[temperature:")) != 0)
+                return FALSE;
+
+        if (out_text)
+                *out_text = g_steal_pointer (&text);
+
+        return TRUE;
+}
+
 static void
 temperature_spin_activate (GtkEntry *entry, GrEditPage *self)
 {
         int value;
         g_autofree char *text = NULL;
         const char *unit;
+        GtkTextBuffer *buffer;
+        GtkTextIter start;
+        GtkTextIter end;
 
         gtk_spin_button_update (GTK_SPIN_BUTTON (entry));
 
@@ -700,14 +737,47 @@ temperature_spin_activate (GtkEntry *entry, GrEditPage *self)
                 unit = "F";
 
         text = g_strdup_printf ("[temperature:%d%s]", value, unit);
+
+        buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->instructions_field));
+        if (find_temperature_tag (buffer, &start, &end, NULL))
+                gtk_text_buffer_delete (buffer, &start, &end);
         add_tag_at_insert (self, text);
 
         gtk_popover_popdown (GTK_POPOVER (self->temperature_popover));
         gtk_widget_grab_focus (self->instructions_field);
 }
+
+static void
+populate_temperature_popover (GrEditPage *self)
+{
+        GtkTextBuffer *buffer;
+        GtkTextIter start;
+        GtkTextIter end;
+        g_autofree char *text = NULL;
+        const char *unit = "C";
+        int value = 0;
+
+        buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->instructions_field));
+        if (find_temperature_tag (buffer, &start, &end, &text)) {
+                const char *tmp;
+                char *endp;
+
+                tmp = text + strlen ("[temperature:");
+                value = strtol (tmp, &endp, 10);
+                if (endp[0] == 'F')
+                        unit = "F";
+                else
+                        unit = "C";
+        }
+
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (self->temperature_spin), value);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (self->celsius_button), unit[0] == 'C');
+}
+
 static void
 add_temperature (GtkButton *button, GrEditPage *page)
 {
+        populate_temperature_popover (page);
         gtk_popover_popup (GTK_POPOVER (page->temperature_popover));
 }
 
