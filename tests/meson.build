@@ -26,3 +26,8 @@ ids = executable('ids', 'ids.c',
                   include_directories : tests_inc,
                   dependencies: deps)
 test('ids', ids, env : env)
+
+strv = executable('strv', 'strv.c',
+                  include_directories : tests_inc,
+                  dependencies: deps)
+test('strv', strv, env : env)
