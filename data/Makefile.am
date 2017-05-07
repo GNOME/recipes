@@ -48,7 +48,7 @@ dist_images_DATA = \
 	images/mwleeds.jpg		\
 	images/Sonic.jpg		\
 	images/tigert.jpg		\
-	images/Miss Sofia Holmes.jpg	\
+	images/Miss_Sofia_Holmes.jpg	\
 	images/borscht.jpg		\
 	images/cake_aux_lardons.jpg	\
 	images/cake_aux_lardons2.jpg	\
