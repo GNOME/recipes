@@ -9,3 +9,5 @@ recipe_extract_LDADD = \
 
 recipe_extract_SOURCES = \
 	recipe-extract.c
+
+EXTRA_DIST = meson.build

@@ -54,6 +54,7 @@ EXTRA_DIST = \
 	ingredients-data/valid-4.expected ingredients-data/valid-4.in	\
 	number-data/number1.expected number-data/number1.in		\
 	unit-data/unit1.expected unit-data/unit1.in			\
-	id-data/ids.expected id-data/ids.in
+	id-data/ids.expected id-data/ids.in				\
+	meson.build
 
 -include $(top_srcdir)/git.mk

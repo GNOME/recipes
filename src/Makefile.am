@@ -195,6 +195,7 @@ EXTRA_DIST = \
 	recipes.gresource.xml 				\
 	$(resource_files)				\
 	types.h.template				\
-	types.c.template
+	types.c.template				\
+	meson.build
 
 -include $(top_srcdir)/git.mk

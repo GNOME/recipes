@@ -1,6 +1,9 @@
 SUBDIRS = . libgd tools data src po po-data tests help
 
-EXTRA_DIST = AUTHORS NEWS libgd.info
+EXTRA_DIST = AUTHORS NEWS libgd.info \
+	meson.build meson_options.txt meson_post_install.py \
+	po/meson.build \
+	po-data/meson.build
 
 CLEANFILES = AUTHORS NEWS libgd.info
 

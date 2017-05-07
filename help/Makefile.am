@@ -29,3 +29,5 @@ HELP_FILES = \
 	shop.page
 
 HELP_LINGUAS = de ko sv
+
+EXTRA_DIST = meson.build
