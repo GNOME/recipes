@@ -82,7 +82,7 @@ gr_ingredients_viewer_finalize (GObject *object)
         G_OBJECT_CLASS (gr_ingredients_viewer_parent_class)->finalize (object);
 }
 
-static void
+void
 set_active_row (GrIngredientsViewer *viewer,
                 GtkWidget           *row)
 {

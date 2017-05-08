@@ -28,5 +28,8 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrIngredientsViewer, gr_ingredients_viewer, GR, INGREDIENTS_VIEWER, GtkBox)
 
+void set_active_row (GrIngredientsViewer *viewer,
+                     GtkWidget           *row);
+
 G_END_DECLS
 
