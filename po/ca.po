@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-11 08:03+0000\n"
-"PO-Revision-Date: 2017-03-23 07:24+0100\n"
+"POT-Creation-Date: 2017-05-08 01:37+0000\n"
+"PO-Revision-Date: 2017-05-08 07:24+0100\n"
 "Last-Translator: \n"
 "Language-Team: Catalan <gnome@llistes.softcatala.org>\n"
 "Language: ca\n"
@@ -43,7 +43,9 @@ msgid ""
 "Recipes is an easy-to-use application that will help you to discover what to "
 "cook today, tomorrow, the rest of the week and for your special occasions."
 msgstr ""
-"El Receptes és una aplicació fàcil d'utilitzar que us ajudarà a descobrir què cuinar avui, demà, la resta de la setmana o en les seves ocasions especials."
+"El Receptes és una aplicació fàcil d'utilitzar que us ajudarà a descobrir "
+"què cuinar avui, demà, la resta de la setmana o en les seves ocasions "
+"especials."
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:13
 msgid ""
@@ -51,7 +53,9 @@ msgid ""
 "contributors from all over the world. It also lets you store your own "
 "recipes and share them with your friends."
 msgstr ""
-"El Receptes inclou una col·lecció de receptes que han estat recollides pels col·laboradors del GNOME de tot el món. També us permet emmagatzemar les vostres pròpies receptes i compartir-les amb els vostres amics."
+"El Receptes inclou una col·lecció de receptes que han estat recollides pels "
+"col·laboradors del GNOME de tot el món. També us permet emmagatzemar les "
+"vostres pròpies receptes i compartir-les amb els vostres amics."
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:18
 msgid "The major features of Recipes include:"
@@ -113,77 +117,88 @@ msgstr "Una recepta individual"
 msgid "An individual cuisine"
 msgstr "Una cuina individual"
 
-#: data/org.gnome.Recipes.gschema.xml:8
+#: data/org.gnome.Recipes.gschema.xml:13
 msgid "The user ID of the current user"
 msgstr "L'ID de l'usuari actual"
 
-#: data/org.gnome.Recipes.gschema.xml:9
+#: data/org.gnome.Recipes.gschema.xml:14
 msgid "The user ID of the current user."
 msgstr "L'ID de l'usuari actual."
 
-#: data/org.gnome.Recipes.gschema.xml:15
+#: data/org.gnome.Recipes.gschema.xml:20
 msgid "The number of times cooking mode has been presented"
 msgstr ""
 
-#: data/org.gnome.Recipes.gschema.xml:16
+#: data/org.gnome.Recipes.gschema.xml:21
 msgid "The number of times cooking mode has been presented."
 msgstr ""
 
-#: data/org.gnome.Recipes.gschema.xml:22
+#: data/org.gnome.Recipes.gschema.xml:27
 msgid "The timestamp of the last change to the favorites list"
 msgstr ""
 
-#: data/org.gnome.Recipes.gschema.xml:23
+#: data/org.gnome.Recipes.gschema.xml:28
 msgid ""
 "The timestamp of the last time an item was added to or removed from the "
 "favorites list."
 msgstr ""
 
-#: data/org.gnome.Recipes.gschema.xml:30
+#: data/org.gnome.Recipes.gschema.xml:35
 msgid "The list of favorites"
 msgstr "La llista dels favorits"
 
-#: data/org.gnome.Recipes.gschema.xml:31
+#: data/org.gnome.Recipes.gschema.xml:36
 msgid "The list of favorites. Each entry in the list is the ID of a recipe."
-msgstr "La llista dels favorits. Cada entrada a la llista és un identificador d'una recepta."
+msgstr ""
+"La llista dels favorits. Cada entrada a la llista és un identificador d'una "
+"recepta."
 
-#: data/org.gnome.Recipes.gschema.xml:37
+#: data/org.gnome.Recipes.gschema.xml:42
 msgid "The timestamp of the last change to the shopping list"
 msgstr ""
 
-#: data/org.gnome.Recipes.gschema.xml:38
+#: data/org.gnome.Recipes.gschema.xml:43
 msgid ""
 "The timestamp of the last time an item was added to or removed from the "
 "shopping list."
 msgstr ""
 
-#: data/org.gnome.Recipes.gschema.xml:45
+#: data/org.gnome.Recipes.gschema.xml:50
 msgid "The shopping list"
 msgstr "Llista de la compra"
 
-#: data/org.gnome.Recipes.gschema.xml:46
+#: data/org.gnome.Recipes.gschema.xml:51
 msgid ""
 "The shopping list. Each entry in the dictionary maps the ID of a recipe to a "
 "serving count."
 msgstr ""
 
-#: data/org.gnome.Recipes.gschema.xml:53
+#: data/org.gnome.Recipes.gschema.xml:58
 msgid "Ingredients that were removed from the shopping list"
 msgstr ""
 
-#: data/org.gnome.Recipes.gschema.xml:54
+#: data/org.gnome.Recipes.gschema.xml:59
 msgid "The names of ingredients that were removed from the shopping list."
 msgstr ""
 
-#: data/org.gnome.Recipes.gschema.xml:60
-#, fuzzy
+#: data/org.gnome.Recipes.gschema.xml:65
 msgid "The list of recipes to be exported"
-msgstr "Receptes exportades del Krecipes (dades comprimides)"
+msgstr "La llista de receptes a exportar"
 
-#: data/org.gnome.Recipes.gschema.xml:61
+#: data/org.gnome.Recipes.gschema.xml:66
 msgid ""
 "The list of recipes to be exported. Each entry in the list is the ID of a "
 "recipe."
+msgstr "La llista de receptes a exportar. Cada entrada a la llista és l'identificador d'una recepta."
+
+#: data/org.gnome.Recipes.gschema.xml:73
+msgid "The setting for which unit temperatures should be displayed in."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:74
+msgid ""
+"The setting for which unit temperatures should be displayed in. Default is "
+"celsius."
 msgstr ""
 
 #: src/chef-conflict-dialog.ui:10
@@ -235,6 +250,7 @@ msgstr "_Desa"
 msgid ""
 "This information may be shared with other users if you share your recipes."
 msgstr ""
+"Aquesta informació pot ser compartida amb altres usuaris si compartiu les vostres receptes."
 
 #: src/gr-chef-dialog.ui:119
 msgid "Other Chef"
@@ -257,9 +273,8 @@ msgid "Done"
 msgstr "Fet"
 
 #: src/gr-cooking-page.ui:185
-#, fuzzy
 msgid "Stop Cooking?"
-msgstr "Cuina"
+msgstr "Deixa de cuinar?"
 
 #: src/gr-cooking-page.ui:194
 msgid "Some timers are still running."
@@ -272,9 +287,8 @@ msgid ""
 msgstr ""
 
 #: src/gr-cooking-page.ui:212
-#, fuzzy
 msgid "Keep Cooking"
-msgstr "Cuina"
+msgstr "Continua cuinant"
 
 #: src/gr-cooking-page.ui:219
 msgid "Stop Timers"
@@ -292,8 +306,7 @@ msgstr "Controls"
 msgid ""
 "To advance to the next step, press any key on the\n"
 "keyboard."
-msgstr ""
-"Per avançar al pas següent, premeu qualsevol tecla."
+msgstr "Per avançar al pas següent, premeu qualsevol tecla."
 
 #: src/gr-cooking-page.ui:304
 msgid "To go back to the previous step, doubletap any key."
@@ -305,7 +318,7 @@ msgid ""
 "quickly seek within the directions."
 msgstr ""
 "Alternativament, podeu usar les tecles de cursor\n"
-"per despalaçar en la direcció de les tecles."
+"per desplaçar en la direcció de les tecles."
 
 #: src/gr-cooking-page.ui:350
 msgid "To exit the process, press the Escape key."
@@ -315,18 +328,18 @@ msgstr "Per a sortir del procés, premeu la tecla d'escapada."
 msgid "Time is up!"
 msgstr "S'ha acabat el temps"
 
-#: src/gr-cuisine-page.ui:67 src/gr-list-page.ui:111 src/gr-search-page.ui:29
+#: src/gr-cuisine-page.ui:77 src/gr-list-page.ui:111 src/gr-search-page.ui:29
 #: src/gr-list-page.c:427
 msgid "No recipes found"
 msgstr "No s'ha trobat cap recepta"
 
-#: src/gr-cuisine-page.ui:80
+#: src/gr-cuisine-page.ui:90
 msgid "There are no recipes for this cuisine."
-msgstr "No hi ha receptes per aquesta cuina"
+msgstr "No hi ha receptes per aquesta cuina."
 
 #: src/gr-cuisines-page.ui:8
 msgid "Cuisines page"
-msgstr "Pàgines del cuines"
+msgstr "Pàgines de les cuines"
 
 #: src/gr-cuisines-page.ui:28
 msgid "World Cuisines"
@@ -352,7 +365,7 @@ msgid ""
 "serving a person with gluten or dairy intolerance."
 msgstr ""
 
-#: src/gr-details-page.ui:126 src/gr-details-page.c:546
+#: src/gr-details-page.ui:126 src/gr-details-page.c:506
 msgid "Spicy"
 msgstr "Picant"
 
@@ -388,8 +401,8 @@ msgstr "Temporada"
 msgid "Note"
 msgstr "Nota"
 
-#: src/gr-details-page.ui:409 src/gr-edit-page.ui:690
-#: src/gr-recipe-formatter.c:86 src/gr-recipe-printer.c:241
+#: src/gr-details-page.ui:409 src/gr-edit-page.ui:698
+#: src/gr-recipe-formatter.c:99 src/gr-recipe-printer.c:241
 msgid "Directions"
 msgstr "Instruccions"
 
@@ -434,170 +447,184 @@ msgstr "Imatge predeterminada"
 msgid "Remove image"
 msgstr "Suprimeix la imatge"
 
-#: src/gr-edit-page.ui:259
+#: src/gr-edit-page.ui:249
+msgid "Add List"
+msgstr "Afegeix a la llista"
+
+#: src/gr-edit-page.ui:267
 msgid "Details"
 msgstr "Detalls"
 
-#: src/gr-edit-page.ui:276
+#: src/gr-edit-page.ui:284
 msgid "_Name Your Recipe"
 msgstr "_Nom de la recepta"
 
-#: src/gr-edit-page.ui:308
+#: src/gr-edit-page.ui:316
 msgid "Ser_ves"
 msgstr "_Porcions"
 
-#: src/gr-edit-page.ui:338
+#: src/gr-edit-page.ui:346
 msgid "_Preparation Time"
 msgstr "_Temps de preparació"
 
-#: src/gr-edit-page.ui:364 src/gr-edit-page.ui:412
+#: src/gr-edit-page.ui:372 src/gr-edit-page.ui:420
 msgid "Less than 15 minutes"
 msgstr "Menys de 15 minuts"
 
-#: src/gr-edit-page.ui:365 src/gr-edit-page.ui:413
+#: src/gr-edit-page.ui:373 src/gr-edit-page.ui:421
 msgid "15 to 30 minutes"
 msgstr "De 15 a 30 minuts"
 
-#: src/gr-edit-page.ui:366 src/gr-edit-page.ui:414
+#: src/gr-edit-page.ui:374 src/gr-edit-page.ui:422
 msgid "30 to 45 minutes"
 msgstr "De 30 a 45 minuts"
 
-#: src/gr-edit-page.ui:367 src/gr-edit-page.ui:415
+#: src/gr-edit-page.ui:375 src/gr-edit-page.ui:423
 msgid "45 minutes to an hour"
 msgstr "De 45 minuts a una hora"
 
-#: src/gr-edit-page.ui:368 src/gr-edit-page.ui:416
+#: src/gr-edit-page.ui:376 src/gr-edit-page.ui:424
 msgid "More than an hour"
 msgstr "Més d'una hora"
 
-#: src/gr-edit-page.ui:386
+#: src/gr-edit-page.ui:394
 msgid "C_ooking Time"
 msgstr "_Temps de cocció"
 
-#: src/gr-edit-page.ui:434
+#: src/gr-edit-page.ui:442
 msgid "_Cuisine"
 msgstr "_Cuina"
 
-#: src/gr-edit-page.ui:470
+#: src/gr-edit-page.ui:478
 msgid "_Meal"
 msgstr "À_pat"
 
-#: src/gr-edit-page.ui:506
+#: src/gr-edit-page.ui:514
 msgid "S_eason"
 msgstr "_Temporada"
 
-#: src/gr-edit-page.ui:542
+#: src/gr-edit-page.ui:550
 msgid "S_piciness"
 msgstr "_Com és de picant"
 
-#: src/gr-edit-page.ui:562 src/gr-spice-row.c:127
+#: src/gr-edit-page.ui:570 src/gr-spice-row.c:127
 msgid "Mild"
 msgstr "Poc"
 
-#: src/gr-edit-page.ui:563
+#: src/gr-edit-page.ui:571
 msgid "Somewhat spicy"
 msgstr "Una mica picant"
 
-#: src/gr-edit-page.ui:564
+#: src/gr-edit-page.ui:572
 msgid "Hot"
 msgstr "Picant"
 
-#: src/gr-edit-page.ui:565 src/gr-details-page.c:541 src/gr-spice-row.c:142
+#: src/gr-edit-page.ui:573 src/gr-details-page.c:501 src/gr-spice-row.c:142
 msgid "Very spicy"
 msgstr "Molt picant"
 
-#: src/gr-edit-page.ui:576
+#: src/gr-edit-page.ui:584
 msgid "Description"
 msgstr "Descripció"
 
-#: src/gr-edit-page.ui:635 src/gr-diet-row.c:102
-msgid "Gluten free"
+#: src/gr-edit-page.ui:643 src/gr-diet-row.c:102
+msgid "Gluten-free"
 msgstr "Sense gluten"
 
-#: src/gr-edit-page.ui:642 src/gr-diet-row.c:105
-msgid "Nut free"
+#: src/gr-edit-page.ui:650 src/gr-diet-row.c:105
+msgid "Nut-free"
 msgstr "Sense nous"
 
-#: src/gr-edit-page.ui:649 src/gr-diet-row.c:108
+#: src/gr-edit-page.ui:657 src/gr-diet-row.c:108
 msgid "Vegan"
 msgstr "Vegà"
 
-#: src/gr-edit-page.ui:656 src/gr-diet-row.c:111
+#: src/gr-edit-page.ui:664 src/gr-diet-row.c:111
 msgid "Vegetarian"
 msgstr "Vegetarià"
 
-#: src/gr-edit-page.ui:663 src/gr-diet-row.c:114
-msgid "Milk free"
+#: src/gr-edit-page.ui:671 src/gr-diet-row.c:114
+msgid "Milk-free"
 msgstr "Sense llet"
 
-#: src/gr-edit-page.ui:751 src/menus.ui:66
+#: src/gr-edit-page.ui:759 src/menus.ui:66
 msgid "Edit"
 msgstr "Edita"
 
-#: src/gr-edit-page.ui:758
+#: src/gr-edit-page.ui:766
 msgid "Preview"
 msgstr "Previsualització"
 
-#: src/gr-edit-page.ui:778
+#: src/gr-edit-page.ui:786
 msgid "Add Step"
 msgstr "Afegeix un pas"
 
-#: src/gr-edit-page.ui:786
+#: src/gr-edit-page.ui:794
 msgid "Add Image"
 msgstr "Afegeix una imatge"
 
-#: src/gr-edit-page.ui:794
+#: src/gr-edit-page.ui:802
 msgid "Add Timer"
 msgstr "Afegeix un temporitzador"
 
-#: src/gr-edit-page.ui:802
+#: src/gr-edit-page.ui:810
 msgid "Add Temperature"
 msgstr "Afegeix temperatura"
 
-#: src/gr-edit-page.ui:866 src/gr-edit-page.ui:887 src/gr-edit-page.c:453
-msgid "Ingredient"
-msgstr "Ingredient"
-
-#: src/gr-edit-page.ui:915 src/gr-edit-page.ui:1007 src/gr-query-editor.ui:283
-msgid "Search…"
-msgstr "Cerca..."
-
-#: src/gr-edit-page.ui:945 src/gr-edit-page.ui:966 src/gr-edit-page.c:454
-msgid "Amount"
-msgstr "Total"
-
-#: src/gr-edit-page.ui:1038 src/gr-edit-page.c:457
-msgid "Add"
-msgstr "Afegeix-ho"
-
-#: src/gr-edit-page.ui:1089
+#: src/gr-edit-page.ui:905
 msgid "Title…"
 msgstr "Títol..."
 
-#: src/gr-edit-page.ui:1164
+#: src/gr-edit-page.ui:980
 msgid "Syntax"
 msgstr "Sintaxi"
 
-#: src/gr-edit-page.ui:1179
+#: src/gr-edit-page.ui:995
 msgid "Use paragraphs to break directions into steps (2 newlines)."
 msgstr ""
 "Useu paràgrafs per dividir les instruccions en passes (2 noves línies)."
 
-#: src/gr-edit-page.ui:1192
+#: src/gr-edit-page.ui:1008
 msgid "You can provide an image or a time counter in each step."
 msgstr "Podeu proporcionar una imatge o un comptador de temps a cada pas."
 
-#: src/gr-edit-page.ui:1204
+#: src/gr-edit-page.ui:1020
 msgid "Timer"
 msgstr "Temporitzador"
 
-#: src/gr-edit-page.ui:1226
+#: src/gr-edit-page.ui:1042
 msgid "Image"
 msgstr "Imatge"
 
-#: src/gr-edit-page.ui:1248
+#: src/gr-edit-page.ui:1064
 msgid "Temperature"
 msgstr "Temperatura"
+
+#: src/gr-ingredients-viewer-row.ui:33
+msgid "Amount"
+msgstr "Total"
+
+#: src/gr-ingredients-viewer-row.ui:66
+msgid "Ingredient"
+msgstr "Ingredient"
+
+#: src/gr-ingredients-viewer.ui:13 src/gr-query-editor.ui:235
+#: src/gr-edit-page.c:1243 src/gr-recipe-formatter.c:80
+#: src/gr-recipe-printer.c:190
+msgid "Ingredients"
+msgstr "Ingredients"
+
+#: src/gr-ingredients-viewer.ui:33
+msgid "Name of the List"
+msgstr "Nom de la llista"
+
+#: src/gr-ingredients-viewer.ui:43 src/gr-recipe-small-tile.ui:125
+msgid "Remove"
+msgstr "Suprimeix"
+
+#: src/gr-ingredients-viewer.ui:72
+msgid "No ingredients added yet"
+msgstr "Encara no s'han afegit ingredients"
 
 #: src/gr-list-page.ui:124
 msgid "There are no recipes here yet."
@@ -626,20 +653,15 @@ msgstr "Restriccions en la dieta"
 msgid "No restrictions"
 msgstr "Sense restriccions"
 
-#: src/gr-query-editor.ui:235 src/gr-edit-page.c:1804
-#: src/gr-recipe-formatter.c:67 src/gr-recipe-printer.c:190
-msgid "Ingredients"
-msgstr "Ingredients"
-
 #. FIXME: repopulate
 #: src/gr-query-editor.ui:255 src/gr-query-editor.c:337
 #: src/gr-query-editor.c:766
 msgid "Anything"
 msgstr "Tot"
 
-#: src/gr-recipe-small-tile.ui:125 src/gr-edit-page.c:1834
-msgid "Remove"
-msgstr "Suprimeix"
+#: src/gr-query-editor.ui:283
+msgid "Search…"
+msgstr "Cerca..."
 
 #: src/gr-recipes-page.ui:8
 msgid "Recipes page"
@@ -718,9 +740,8 @@ msgid "_Done Shopping"
 msgstr "_Acabada la compra"
 
 #: src/gr-window.ui:205
-#, fuzzy
 msgid "All ingredients marked as stocked!"
-msgstr "Nota: Tots els camps marcats amb (*) són necessaris."
+msgstr "Es disposa de tots els ingredients marcats!"
 
 #: src/gr-window.ui:215
 msgid "_Undo"
@@ -807,7 +828,7 @@ msgid "Recipes _Help"
 msgstr "Ajuda del Receptes"
 
 #: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:163
-#: src/gr-image-viewer.c:628 src/gr-recipe-exporter.c:167
+#: src/gr-image-viewer.c:627 src/gr-recipe-exporter.c:172
 #: src/gr-shopping-page.c:731 src/gr-window.c:1133
 msgid "Cancel"
 msgstr "Cancel·la"
@@ -948,15 +969,15 @@ msgstr "Mostra la versió i surt"
 msgid "Turn on verbose logging"
 msgstr "Entrada verbosa:"
 
-#: src/gr-chef-dialog.c:159 src/gr-image-viewer.c:624
+#: src/gr-chef-dialog.c:159 src/gr-image-viewer.c:623
 msgid "Select an Image"
 msgstr "Selecciona una imatge"
 
-#: src/gr-chef-dialog.c:162 src/gr-image-viewer.c:627 src/gr-window.c:1132
+#: src/gr-chef-dialog.c:162 src/gr-image-viewer.c:626 src/gr-window.c:1132
 msgid "Open"
 msgstr "Obre"
 
-#: src/gr-chef-dialog.c:167 src/gr-image-viewer.c:632
+#: src/gr-chef-dialog.c:167 src/gr-image-viewer.c:631
 msgid "Image files"
 msgstr "Fitxers d'imatge"
 
@@ -1187,21 +1208,21 @@ msgid ""
 "it is impossible to fit Turkish cuisine into a short list."
 msgstr ""
 
-#: src/gr-details-page.c:323
+#: src/gr-details-page.c:326
 msgid "Could not find this recipe."
 msgstr "No s'ha pogut trobar aquesta recepta."
 
-#: src/gr-details-page.c:585
+#: src/gr-details-page.c:545
 #, c-format
 msgid "Timer: %s"
 msgstr "Temporitzador: %s"
 
-#: src/gr-details-page.c:592
+#: src/gr-details-page.c:552
 #, c-format
 msgid "Image %d"
 msgstr "Imatge %d"
 
-#: src/gr-details-page.c:745 src/gr-edit-page.c:2125
+#: src/gr-details-page.c:707 src/gr-edit-page.c:1402
 #, c-format
 msgid "Recipe by %s"
 msgstr "Recepta per %s"
@@ -1286,88 +1307,68 @@ msgid ""
 "<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Learn more…</a>"
 msgstr ""
 
-#: src/gr-edit-page.c:504
-msgid "Apply"
-msgstr "Aplica"
-
-#: src/gr-edit-page.c:1192
+#: src/gr-edit-page.c:532
 msgid "hour"
 msgstr "hora"
 
-#: src/gr-edit-page.c:1193
+#: src/gr-edit-page.c:533
 msgid "hours"
 msgstr "hores"
 
-#: src/gr-edit-page.c:1194
+#: src/gr-edit-page.c:534
 msgctxt "hour abbreviation"
 msgid "h"
 msgstr "h"
 
-#: src/gr-edit-page.c:1198
+#: src/gr-edit-page.c:538
 msgid "minute"
 msgstr "minut"
 
-#: src/gr-edit-page.c:1199
+#: src/gr-edit-page.c:539
 msgid "minutes"
 msgstr "minuts"
 
-#: src/gr-edit-page.c:1200
+#: src/gr-edit-page.c:540
 msgctxt "minute abbreviation"
 msgid "min"
 msgstr "min."
 
-#: src/gr-edit-page.c:1201
+#: src/gr-edit-page.c:541
 msgctxt "minute abbreviation"
 msgid "m"
 msgstr "m"
 
-#: src/gr-edit-page.c:1205
+#: src/gr-edit-page.c:545
 msgid "second"
 msgstr "segon"
 
-#: src/gr-edit-page.c:1206
+#: src/gr-edit-page.c:546
 msgid "seconds"
 msgstr "segons"
 
-#: src/gr-edit-page.c:1207
+#: src/gr-edit-page.c:547
 msgctxt "second abbreviation"
 msgid "sec"
 msgstr "s"
 
-#: src/gr-edit-page.c:1208
+#: src/gr-edit-page.c:548
 msgctxt "second abbreviation"
 msgid "s"
 msgstr "s."
 
-#: src/gr-edit-page.c:1384
+#: src/gr-edit-page.c:830
 msgid "Recipe Author"
 msgstr "Autor de la recepta"
 
-#: src/gr-edit-page.c:1819
-msgid "Name of the List"
-msgstr "Nom de la llista"
-
-#: src/gr-edit-page.c:1853
-msgid "No ingredients added yet"
-msgstr "Encara no s'han afegit ingredients"
-
-#: src/gr-edit-page.c:1872
-msgid "Add Ingredient"
-msgstr "Afegeix un ingredient"
-
-#: src/gr-edit-page.c:1979
-msgid "Add List"
-msgstr "Afegeix a la llista"
-
-#: src/gr-edit-page.c:2007
+#: src/gr-edit-page.c:1279
 msgid "Name Your Recipe"
 msgstr "Nom de la recepta"
 
-#: src/gr-edit-page.c:2181
+#: src/gr-edit-page.c:1458
 msgid "Name"
 msgstr "Nom"
 
-#: src/gr-edit-page.c:2293 src/gr-recipe-store.c:1281
+#: src/gr-edit-page.c:1570 src/gr-recipe-store.c:1284
 #, c-format
 msgid "You need to provide a name for the recipe"
 msgstr "Cal que proporcioneu un nom per la recepta"
@@ -1499,43 +1500,43 @@ msgstr "No s'ha pogut analitzar %s com a coma flotant"
 #: src/gr-number.c:286
 #, c-format
 msgid "Could not parse %s as a number"
-msgstr  "No s'ha pogut analitzar %s com a número"
+msgstr "No s'ha pogut analitzar %s com a número"
 
-#: src/gr-recipe-exporter.c:163
+#: src/gr-recipe-exporter.c:168
 msgid "Save the exported recipe"
 msgstr "Desa la recepta exportada"
 
-#: src/gr-recipe-exporter.c:166 src/gr-shopping-page.c:730
+#: src/gr-recipe-exporter.c:171 src/gr-shopping-page.c:730
 msgid "Save"
 msgstr "Desa"
 
-#: src/gr-recipe-exporter.c:197
+#: src/gr-recipe-exporter.c:206
 msgid "Recipe contribution"
 msgstr "Contribuir una recepta"
 
-#: src/gr-recipe-exporter.c:198
+#: src/gr-recipe-exporter.c:207
 msgid "Please accept my attached recipe contribution."
-msgstr "Si us plau accepteu la contribució de la meva recepta adjuntada"
+msgstr "Si us plau accepteu la contribució de la meva recepta adjuntada."
 
-#: src/gr-recipe-exporter.c:208
+#: src/gr-recipe-exporter.c:217
 msgid "Try this recipe"
 msgstr "Proveu aquesta recepta"
 
-#: src/gr-recipe-exporter.c:209
+#: src/gr-recipe-exporter.c:218
 msgid ""
 "Hi,\n"
 "\n"
 "you should try this recipe."
-msgstr
+msgstr ""
 "Hola,\n"
 "\n"
 "Hauríeu de tastar aquesta recepta."
 
-#: src/gr-recipe-exporter.c:212
+#: src/gr-recipe-exporter.c:221
 msgid "Try these recipes"
 msgstr "Tasteu aquestes receptes"
 
-#: src/gr-recipe-exporter.c:213
+#: src/gr-recipe-exporter.c:222
 msgid ""
 "Hi,\n"
 "\n"
@@ -1545,50 +1546,51 @@ msgstr ""
 "\n"
 "hauríeu de tastar aquestes receptes."
 
-#: src/gr-recipe-exporter.c:216
+#: src/gr-recipe-exporter.c:225
 msgid "(The attached file can be imported into GNOME Recipes.)"
 msgstr "(el fitxer adjuntat pot ser importat al Receptes del GNOME.)"
 
-#: src/gr-recipe-exporter.c:412
+#: src/gr-recipe-exporter.c:432
 #, c-format
 msgid "This build does not support exporting"
 msgstr "Aquesta construcció no admet exportació."
 
-#: src/gr-recipe-exporter.c:494
+#: src/gr-recipe-exporter.c:515
 #, c-format
 msgid ""
 "Error while exporting:\n"
 "%s"
-msgstr "S'ha produït un error en exportar:\n"
+msgstr ""
+"S'ha produït un error en exportar:\n"
 "%s"
 
-#: src/gr-recipe-exporter.c:591
+#: src/gr-recipe-exporter.c:612
 #, c-format
 msgid "%d recipe selected for sharing"
 msgid_plural "%d recipes selected for sharing"
 msgstr[0] "%d recepta seleccionada per a compartir"
 msgstr[1] "%d recepta seleccionada per a compartir"
 
-#: src/gr-recipe-exporter.c:623
+#: src/gr-recipe-exporter.c:644
 msgid ""
 "Some of the selected recipes are included\n"
 "with GNOME Recipes. You should only contribute\n"
 "your own recipes."
 msgstr ""
 
-#: src/gr-recipe-formatter.c:53 src/gr-recipe-printer.c:156
+#: src/gr-recipe-formatter.c:66 src/gr-recipe-printer.c:156
 msgid "Author:"
 msgstr "Autoria:"
 
-#: src/gr-recipe-formatter.c:54 src/gr-recipe-printer.c:157
+#: src/gr-recipe-formatter.c:67 src/gr-recipe-printer.c:157
 msgid "Preparation:"
 msgstr "Preparació:"
 
-#: src/gr-recipe-formatter.c:55 src/gr-recipe-printer.c:158
+#: src/gr-recipe-formatter.c:68 src/gr-recipe-printer.c:158
 msgid "Cooking:"
 msgstr "Cuinat:"
 
-#: src/gr-recipe-formatter.c:56 src/gr-recipe-printer.c:159
+#: src/gr-recipe-formatter.c:69 src/gr-recipe-printer.c:159
 msgid "Serves:"
 msgstr "Porcions:"
 
@@ -1597,7 +1599,8 @@ msgstr "Porcions:"
 msgid ""
 "Error while importing recipe:\n"
 "%s"
-msgstr "S'ha produït un error en importar la recepta:\n"
+msgstr ""
+"S'ha produït un error en importar la recepta:\n"
 "%s"
 
 #: src/gr-recipe-importer.c:482
@@ -1669,7 +1672,7 @@ msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/gr-recipe-store.c:1286
+#: src/gr-recipe-store.c:1289
 #, fuzzy, c-format
 msgid ""
 "A recipe with this name and author already exists.\n"
@@ -1677,32 +1680,32 @@ msgid ""
 msgstr ""
 "Ja existeix una llista de correu amb aquest nom. Trieu un nom diferent."
 
-#: src/gr-recipe-store.c:1315
+#: src/gr-recipe-store.c:1318
 #, c-format
 msgid "You need to provide an ID for the recipe"
 msgstr "Cal que indiqueu un ID per la recepta"
 
-#: src/gr-recipe-store.c:1321
+#: src/gr-recipe-store.c:1324
 #, c-format
 msgid "A recipe with this ID already exists"
 msgstr "L'ID d'aquesta recepta ja existeix"
 
-#: src/gr-recipe-store.c:1490
+#: src/gr-recipe-store.c:1493
 #, c-format
 msgid "You need to provide an ID"
 msgstr "Cal que indiqueu un ID"
 
-#: src/gr-recipe-store.c:1496
+#: src/gr-recipe-store.c:1499
 #, fuzzy, c-format
 msgid "Sorry, this ID is taken"
 msgstr "Trist que no hi ha cap missatge amb que id."
 
-#: src/gr-recipe-store.c:1523
+#: src/gr-recipe-store.c:1526
 #, fuzzy, c-format
 msgid "You need to provide an ID for the chef"
 msgstr "Necessites indicar una URL"
 
-#: src/gr-recipe-store.c:1529
+#: src/gr-recipe-store.c:1532
 #, fuzzy, c-format
 msgid "A chef with this ID already exists"
 msgstr "L'ID d'aquest contacte ja existeix."
@@ -1828,7 +1831,6 @@ msgid "pound"
 msgstr "lliura"
 
 #: src/gr-unit.c:43
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "oz"
 msgstr "oz"
@@ -1888,7 +1890,7 @@ msgctxt "unit name"
 msgid "pint"
 msgstr "pinta"
 
-#: src/gr-unit.c:49"qt"
+#: src/gr-unit.c:49
 msgctxt "unit abbreviation"
 msgid "qt"
 msgstr "qt"
@@ -1939,19 +1941,16 @@ msgid "teaspoon"
 msgstr "culleradeta"
 
 #: src/gr-unit.c:54
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "box"
 msgstr "caixa"
 
 #: src/gr-unit.c:54
-#, fuzzy
 msgctxt "unit name"
 msgid "box"
 msgstr "caixa"
 
 #: src/gr-unit.c:55
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "pkg"
 msgstr "pkg"
@@ -1990,8 +1989,8 @@ msgstr ""
 #, c-format
 msgid "%d month ago"
 msgid_plural "%d months ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "fa %d mes"
+msgstr[1] "fa %d mesos"
 
 #: src/gr-utils.c:345
 #, c-format
@@ -2097,7 +2096,7 @@ msgstr "Tria un fitxer de recepta"
 #: src/gr-window.c:1155
 #, c-format
 msgid "Recipes have been exported to “%s”"
-msgstr "S'ha exportat les receptes to “%s”."
+msgstr "S'han exportat les receptes to “%s”."
 
 #: src/gr-window.c:1193
 msgid "Select a file"
@@ -2739,13 +2738,14 @@ msgstr "sense iogurt"
 msgid "no Zinfandel"
 msgstr ""
 
-#: src/segments.inc:1
-msgid "Dough"
-msgstr ""
+#~ msgid "Add"
+#~ msgstr "Afegeix-ho"
 
-#: src/segments.inc:2
-msgid "Toppings"
-msgstr ""
+#~ msgid "Apply"
+#~ msgstr "Aplica"
+
+#~ msgid "Add Ingredient"
+#~ msgstr "Afegeix un ingredient"
 
 #~ msgid "Contains dairy products"
 #~ msgstr "Conté productes làctics"
