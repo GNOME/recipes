@@ -12,19 +12,22 @@
           <object class="GtkStack" id="unit_stack">
             <property name="visible">1</property>
             <child>
-              <object class="GtkLabel" id="unit_label">
+              <object class="GtkEventBox" id="unit_event_box">
                 <property name="visible">1</property>
-                <property name="xalign">0</property>
-                <property name="width-chars">10</property>
-                <property name="margin-start">9</property>
-                <property name="margin-end">9</property>
-                <style>
-                  <class name="dim-label"/>
-                </style>
+                <signal name="button-press-event" handler="edit_unit" swapped="yes"/>
+                <child>
+                  <object class="GtkLabel" id="unit_label">
+                    <property name="visible">1</property>
+                    <property name="xalign">0</property>
+                    <property name="width-chars">10</property>
+                    <property name="margin-start">9</property>
+                    <property name="margin-end">9</property>
+                    <style>
+                      <class name="dim-label"/>
+                    </style>
+                  </object>
+                </child>
               </object>
-              <packing>
-                <property name="name">unit_label</property>
-              </packing>
             </child>
             <child>
               <object class="GtkEntry" id="unit_entry">
@@ -47,16 +50,19 @@
           <object class="GtkStack" id="ingredient_stack">
             <property name="visible">1</property>
             <child>
-              <object class="GtkLabel" id="ingredient_label">
+              <object class="GtkEventBox" id="ingredient_event_box">
                 <property name="visible">1</property>
-                <property name="xalign">0</property>
-                <property name="width-chars">20</property>
-                <property name="margin-start">9</property>
-                <property name="margin-end">9</property>
+                <signal name="button-press-event" handler="edit_ingredient" swapped="yes"/>
+                <child>
+                  <object class="GtkLabel" id="ingredient_label">
+                    <property name="visible">1</property>
+                    <property name="xalign">0</property>
+                    <property name="width-chars">20</property>
+                    <property name="margin-start">9</property>
+                    <property name="margin-end">9</property>
+                  </object>
+                </child>
               </object>
-              <packing>
-                <property name="name">ingredient_label</property>
-              </packing>
             </child>
             <child>
               <object class="GtkEntry" id="ingredient_entry">
@@ -97,24 +103,6 @@
                 <property name="visible">1</property>
                 <property name="orientation">horizontal</property>
                 <property name="margin">4</property>
-                <child>
-                  <object class="GtkButton">
-                    <property name="visible">1</property>
-                    <property name="relief">none</property>
-                    <signal name="clicked" handler="edit_ingredient" swapped="yes"/>
-                    <style>
-                      <class name="image-button"/>
-                      <class name="circular"/>
-                    </style>
-                    <child>
-                      <object class="GtkImage">
-                        <property name="visible">1</property>
-                        <property name="icon-name">document-edit-symbolic</property>
-                        <property name="icon-size">1</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
                 <child>
                   <object class="GtkButton">
                     <property name="visible">1</property>

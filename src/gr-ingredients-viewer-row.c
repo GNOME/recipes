@@ -42,6 +42,8 @@ struct _GrIngredientsViewerRow
         GtkWidget *ingredient_label;
         GtkWidget *ingredient_entry;
         GtkWidget *ebox;
+        GtkWidget *unit_event_box;
+        GtkWidget *ingredient_event_box;
 
         char *amount;
         char *unit;
@@ -192,6 +194,8 @@ gr_ingredients_viewer_row_set_editable (GrIngredientsViewerRow *row,
 }
 
 static void save_row (GrIngredientsViewerRow *row);
+static void save_unit (GrIngredientsViewerRow *row);
+static void save_ingredient (GrIngredientsViewerRow *row);
 
 static void
 gr_ingredients_viewer_row_set_active (GrIngredientsViewerRow *row,
@@ -257,24 +261,38 @@ drag_handle_clicked (GrIngredientsViewerRow *row)
 static void
 edit_ingredient (GrIngredientsViewerRow *row)
 {
+        GrIngredientsViewer *viewer = GR_INGREDIENTS_VIEWER (gtk_widget_get_ancestor (GTK_WIDGET (row), GR_TYPE_INGREDIENTS_VIEWER));
+        save_unit (row);
+        if (row->editable) {
+                set_active_row (viewer, GTK_WIDGET (row));
+                gtk_entry_set_text (GTK_ENTRY (row->ingredient_entry), row->ingredient);
+                gtk_stack_set_visible_child_name (GTK_STACK (row->ingredient_stack), "ingredient_entry");
+                gtk_widget_grab_focus (row->ingredient_entry);
+                g_signal_emit (row, signals[EDIT], 0);
+        }
+}
+
+static void
+edit_unit (GrIngredientsViewerRow *row)
+{
         g_autofree char *tmp = NULL;
         const char *amount;
         const char *space;
         const char *unit;
-
         amount = row->amount ? row->amount : "";
         space = amount[0] ? " " : "";
         unit = row->unit ? row->unit : "";
         tmp = g_strdup_printf ("%s%s%s", amount, space, unit);
+        GrIngredientsViewer *viewer = GR_INGREDIENTS_VIEWER (gtk_widget_get_ancestor (GTK_WIDGET (row), GR_TYPE_INGREDIENTS_VIEWER));
+        save_ingredient (row);
 
-        gtk_entry_set_text (GTK_ENTRY (row->unit_entry), tmp);
-        gtk_entry_set_text (GTK_ENTRY (row->ingredient_entry), row->ingredient);
-
-        gtk_stack_set_visible_child_name (GTK_STACK (row->unit_stack), "unit_entry");
-        gtk_stack_set_visible_child_name (GTK_STACK (row->ingredient_stack), "ingredient_entry");
-        gtk_widget_grab_focus (row->unit_entry);
-        g_signal_emit (row, signals[EDIT], 0);
-
+        if (row->editable) {
+                set_active_row (viewer, GTK_WIDGET (row));
+                gtk_entry_set_text (GTK_ENTRY (row->unit_entry), tmp);
+                gtk_stack_set_visible_child_name (GTK_STACK (row->unit_stack), "unit_entry");
+                gtk_widget_grab_focus (row->unit_entry);
+                g_signal_emit (row, signals[EDIT], 0);
+        }
 }
 
 static void
@@ -297,23 +315,35 @@ parse_unit (const char  *text,
 }
 
 static void
-save_row (GrIngredientsViewerRow *row)
+save_unit (GrIngredientsViewerRow *row)
 {
-        const char *visible;
+        GtkWidget *visible;
 
-        visible = gtk_stack_get_visible_child_name (GTK_STACK (row->unit_stack));
-        if (strcmp (visible, "unit_entry") == 0) {
+        visible = gtk_stack_get_visible_child (GTK_STACK (row->unit_stack));
+        if (visible == row->unit_entry) {
                 parse_unit (gtk_entry_get_text (GTK_ENTRY (row->unit_entry)), &row->amount, &row->unit);
                 update_unit (row);
-                gtk_stack_set_visible_child_name (GTK_STACK (row->unit_stack), "unit_label");
+                gtk_stack_set_visible_child (GTK_STACK (row->unit_stack), row->unit_event_box);
         }
+}
 
-        visible = gtk_stack_get_visible_child_name (GTK_STACK (row->ingredient_stack));
-        if (strcmp (visible, "ingredient_entry") == 0) {
+static void
+save_ingredient (GrIngredientsViewerRow *row)
+{
+        GtkWidget *visible;
+        visible = gtk_stack_get_visible_child (GTK_STACK (row->ingredient_stack));
+        if (visible == row->ingredient_entry) {
                 row->ingredient = g_strdup (gtk_entry_get_text (GTK_ENTRY (row->ingredient_entry)));
                 gtk_label_set_label (GTK_LABEL (row->ingredient_label), row->ingredient);
-                gtk_stack_set_visible_child_name (GTK_STACK (row->ingredient_stack), "ingredient_label");
+                gtk_stack_set_visible_child (GTK_STACK (row->ingredient_stack), row->ingredient_event_box);
         }
+}
+
+static void
+save_row (GrIngredientsViewerRow *row)
+{
+        save_unit (row);
+        save_ingredient (row);
 }
 
 static gboolean
@@ -321,8 +351,8 @@ entry_key_press (GrIngredientsViewerRow *row,
                  GdkEventKey            *event)
 {
         if (event->keyval == GDK_KEY_Escape) {
-                gtk_stack_set_visible_child_name (GTK_STACK (row->unit_stack), "unit_label");
-                gtk_stack_set_visible_child_name (GTK_STACK (row->ingredient_stack), "ingredient_label");
+                gtk_stack_set_visible_child (GTK_STACK(row->unit_stack), row->unit_event_box);
+                gtk_stack_set_visible_child (GTK_STACK (row->ingredient_stack), row->ingredient_event_box);
                 return GDK_EVENT_STOP;
         }
 
@@ -403,9 +433,12 @@ gr_ingredients_viewer_row_class_init (GrIngredientsViewerRowClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, ingredient_entry);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, buttons_stack);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, ebox);
+        gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, unit_event_box);
+        gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, ingredient_event_box);
 
         gtk_widget_class_bind_template_callback (widget_class, emit_delete);
         gtk_widget_class_bind_template_callback (widget_class, drag_handle_clicked);
+        gtk_widget_class_bind_template_callback (widget_class, edit_unit);
         gtk_widget_class_bind_template_callback (widget_class, edit_ingredient);
         gtk_widget_class_bind_template_callback (widget_class, save_row);
         gtk_widget_class_bind_template_callback (widget_class, entry_key_press);
