@@ -237,8 +237,7 @@ edit_ingredient_row (GrIngredientsViewerRow *row,
 }
 
 static void
-add_row (GtkButton           *button,
-         GrIngredientsViewer *viewer)
+add_row (GrIngredientsViewer *viewer)
 {
         GtkWidget *row;
 

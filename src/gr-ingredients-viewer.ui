@@ -61,18 +61,24 @@
           <class name="frame"/>
         </style>
         <child type="placeholder">
-          <object class="GtkLabel">
+          <object class="GtkEventBox">
             <property name="visible">1</property>
-            <property name="xalign">0.5</property>
-            <property name="halign">fill</property>
-            <property name="margin-start">20</property>
-            <property name="margin-end">20</property>
-            <property name="margin-top">10</property>
-            <property name="margin-bottom">10</property>
-            <property name="label" translatable="yes">No ingredients added yet</property>
-            <style>
-              <class name="dim-label"/>
-            </style>
+            <signal name="button-press-event" handler="add_row" swapped="yes"/>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">1</property>
+                <property name="xalign">0.5</property>
+                <property name="halign">fill</property>
+                <property name="margin-start">20</property>
+                <property name="margin-end">20</property>
+                <property name="margin-top">10</property>
+                <property name="margin-bottom">10</property>
+                <property name="label" translatable="yes">No ingredients added yet</property>
+                <style>
+                  <class name="dim-label"/>
+                </style>
+              </object>
+            </child>
           </object>
         </child>
       </object>
@@ -82,7 +88,7 @@
         <property name="visible">1</property>
         <property name="halign">start</property>
         <property name="margin-top">10</property>
-        <signal name="clicked" handler="add_row"/>
+        <signal name="clicked" handler="add_row" swapped="yes"/>
         <style>
           <class name="dim-label"/>
         </style>
