@@ -1158,9 +1158,27 @@ get_spiciness (GrEditPage *page)
 }
 
 static void
-remove_list2 (GrIngredientsViewer *viewer, GrEditPage *page)
+update_editable_titles (GrEditPage *page)
+{
+        GList *children, *l;
+        gboolean editable_title;
+
+        children = gtk_container_get_children (GTK_CONTAINER (page->ingredients_box));
+
+        editable_title = children->next != NULL;
+
+        for (l = children; l; l = l->next) {
+                GrIngredientsViewer *list = l->data;
+                g_object_set (list, "editable-title", editable_title, NULL);
+        }
+        g_list_free (children);
+}
+
+static void
+remove_list (GrIngredientsViewer *viewer, GrEditPage *page)
 {
         gtk_widget_destroy (GTK_WIDGET (viewer));
+        update_editable_titles (page);
 }
 
 static void
@@ -1203,7 +1221,7 @@ add_list_full (GrEditPage *page,
         g_signal_connect_swapped (list, "notify::title", G_CALLBACK (set_unsaved), page);
         g_signal_connect_swapped (list, "notify::ingredients", G_CALLBACK (set_unsaved), page);
         g_signal_connect (list, "notify::active", G_CALLBACK (active_changed), page);
-        g_signal_connect (list, "delete", G_CALLBACK (remove_list2), page);
+        g_signal_connect (list, "delete", G_CALLBACK (remove_list), page);
 
         gtk_container_add (GTK_CONTAINER (page->ingredients_box), list);
 }
@@ -1212,6 +1230,7 @@ static void
 add_list (GrEditPage *page)
 {
         add_list_full (page, "", "", TRUE);
+        update_editable_titles (page);
 }
 
 static void
@@ -1221,7 +1240,7 @@ populate_ingredients (GrEditPage *page,
         container_remove_all (GTK_CONTAINER (page->ingredients_box));
 
         if (strcmp (text, "") == 0) {
-                add_list_full (page, "", "", FALSE);
+                add_list_full (page, _("Ingredients"), "", FALSE);
         }
         else {
                 g_autoptr(GrIngredientsList) ingredients = NULL;
