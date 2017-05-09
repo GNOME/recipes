@@ -127,6 +127,8 @@ struct _GrEditPage
         gboolean unsaved;
 
         GCancellable *cancellable;
+
+        GtkTextTag *no_spell_check;
 };
 
 G_DEFINE_TYPE (GrEditPage, gr_edit_page, GTK_TYPE_BOX)
@@ -254,34 +256,44 @@ add_image_cb (GrEditPage *page)
         set_unsaved (page);
 }
 
-static char *
-rewrite_instructions_for_removed_image (const char *instructions,
+static void
+rewrite_instructions_for_removed_image (GrEditPage *page,
+                                        const char *instructions,
                                         int         index)
 {
+        GtkTextBuffer *buffer;
         g_autoptr(GPtrArray) steps = NULL;
-        GString *s;
         int i;
+
+        buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (page->instructions_field));
+        gtk_text_buffer_set_text (buffer, "", -1);
 
         steps = gr_recipe_parse_instructions (instructions, FALSE);
 
-        for (i = 0; i < steps->len; i++) {
-                GrRecipeStep *step = g_ptr_array_index (steps, i);
+        if (index != -1) {
+                for (i = 0; i < steps->len; i++) {
+                        GrRecipeStep *step = g_ptr_array_index (steps, i);
 
-                if (step->image == index) {
-                        step->image = -1;
-                }
-                else if (step->image > index) {
-                        step->image -= 1;
+                        if (step->image == index) {
+                                step->image = -1;
+                        }
+                        else if (step->image > index) {
+                                step->image -= 1;
+                        }
                 }
         }
 
-        s = g_string_new ("");
-
         for (i = 0; i < steps->len; i++) {
                 GrRecipeStep *step = g_ptr_array_index (steps, i);
+                GtkTextIter iter;
+                g_autofree char *tmp = NULL;
+                char *p = NULL;
+                char *q = NULL;
 
-                if (i > 0)
-                        g_string_append (s, "\n\n");
+                if (i > 0) {
+                        gtk_text_buffer_get_end_iter (buffer, &iter);
+                        gtk_text_buffer_insert (buffer, &iter, "\n\n", 2);
+                }
 
                 if (step->timer != 0) {
                         int seconds;
@@ -294,16 +306,43 @@ rewrite_instructions_for_removed_image (const char *instructions,
                         hours = minutes / 60;
                         minutes = minutes - 60 * hours;
 
-                        g_string_append_printf (s, "[timer:%02d:%02d:%02d]", hours, minutes, seconds);
+                        gtk_text_buffer_get_end_iter (buffer, &iter);
+                        tmp = g_strdup_printf ("[timer:%02d:%02d:%02d]", hours, minutes, seconds);
+                        gtk_text_buffer_insert_with_tags (buffer, &iter,
+                                                          tmp, -1,
+                                                          page->no_spell_check,
+                                                          NULL);
                 }
                 else if (step->image != -1) {
-                        g_string_append_printf (s, "[image:%d]", step->image);
+                        gtk_text_buffer_get_end_iter (buffer, &iter);
+                        tmp = g_strdup_printf ("[image:%d]", step->image);
+                        gtk_text_buffer_insert_with_tags (buffer, &iter,
+                                                          tmp, -1,
+                                                          page->no_spell_check,
+                                                          NULL);
                 }
 
-                g_string_append (s, step->text);
+                p = strstr (step->text, "[temperature:");
+                if (p)
+                        q = strstr (p, "]");
+                if (q)
+                        q++;
+                if (p && q) {
+                        gtk_text_buffer_get_end_iter (buffer, &iter);
+                        gtk_text_buffer_insert (buffer, &iter, step->text, p - step->text);
+                        gtk_text_buffer_get_end_iter (buffer, &iter);
+                        gtk_text_buffer_insert_with_tags (buffer, &iter,
+                                                          p, q - p,
+                                                          page->no_spell_check,
+                                                          NULL);
+                        gtk_text_buffer_get_end_iter (buffer, &iter);
+                        gtk_text_buffer_insert (buffer, &iter, q, -1);
+                }
+                else {
+                        gtk_text_buffer_get_end_iter (buffer, &iter);
+                        gtk_text_buffer_insert (buffer, &iter, step->text, -1);
+                }
         }
-
-        return g_string_free (s, FALSE);
 }
 
 static void
@@ -311,14 +350,12 @@ remove_image_cb (GrEditPage *page)
 {
         int index;
         g_autofree char *instructions = NULL;
-        g_autofree char *rewritten = NULL;
 
         index = gr_image_viewer_get_index (GR_IMAGE_VIEWER (page->images));
         gr_image_viewer_remove_image (GR_IMAGE_VIEWER (page->images));
 
         instructions = get_text_view_text (GTK_TEXT_VIEW (page->instructions_field));
-        rewritten = rewrite_instructions_for_removed_image (instructions, index);
-        set_text_view_text (GTK_TEXT_VIEW (page->instructions_field), rewritten);
+        rewrite_instructions_for_removed_image (page, instructions, index);
         set_unsaved (page);
 }
 
@@ -472,7 +509,9 @@ add_tag_to_step (GrEditPage *self,
         gtk_text_buffer_get_iter_at_mark (buffer, &start, gtk_text_buffer_get_insert (buffer));
         gtk_text_iter_set_line_offset (&start, 0);
 
-        gtk_text_buffer_insert (buffer, &start, tag, -1);
+        gtk_text_buffer_insert_with_tags (buffer, &start, tag, -1,
+                                          self->no_spell_check,
+                                          NULL);
 }
 
 static void
@@ -484,7 +523,9 @@ add_tag_at_insert (GrEditPage *self,
 
         buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->instructions_field));
         gtk_text_buffer_get_iter_at_mark (buffer, &start, gtk_text_buffer_get_insert (buffer));
-        gtk_text_buffer_insert (buffer, &start, tag, -1);
+        gtk_text_buffer_insert_with_tags (buffer, &start, tag, -1,
+                                          self->no_spell_check,
+                                          NULL);
 }
 
 static void
@@ -838,6 +879,8 @@ edit_chef (GrEditPage *page)
 static void
 gr_edit_page_init (GrEditPage *page)
 {
+        GtkTextBuffer *buffer;
+
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
         gtk_widget_init_template (GTK_WIDGET (page));
 
@@ -858,6 +901,12 @@ gr_edit_page_init (GrEditPage *page)
                 gspell_text_view_basic_setup (gspell_view);
         }
 #endif
+
+        buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (page->instructions_field));
+        page->no_spell_check = gtk_text_buffer_create_tag (buffer,
+                                                           "gtksourceview:context-classes:no-spell-check",
+                                                           "style", PANGO_STYLE_ITALIC,
+                                                           NULL);
 }
 
 static void
@@ -1392,7 +1441,7 @@ gr_edit_page_edit (GrEditPage *page,
         set_spiciness (page, spiciness);
         gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), serves);
         set_text_view_text (GTK_TEXT_VIEW (page->description_field), description);
-        set_text_view_text ( GTK_TEXT_VIEW (page->instructions_field), instructions);
+        rewrite_instructions_for_removed_image (page, instructions, -1);
         gtk_stack_set_visible_child_name (GTK_STACK (page->preview_stack), "edit");
 
         populate_ingredients (page, ingredients);
