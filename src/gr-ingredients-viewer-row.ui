@@ -133,6 +133,7 @@
                     <property name="relief">none</property>
                     <signal name="clicked" handler="drag_handle_clicked" swapped="yes"/>
                     <signal name="focus-in-event" handler="save_row" swapped="yes" after="yes"/>
+                    <signal name="key-press-event" handler="drag_key_press"/>
                     <style>
                       <class name="image-button"/>
                       <class name="circular"/>
