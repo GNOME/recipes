@@ -261,7 +261,10 @@ drag_handle_clicked (GrIngredientsViewerRow *row)
 static void
 edit_ingredient (GrIngredientsViewerRow *row)
 {
-        GrIngredientsViewer *viewer = GR_INGREDIENTS_VIEWER (gtk_widget_get_ancestor (GTK_WIDGET (row), GR_TYPE_INGREDIENTS_VIEWER));
+        GrIngredientsViewer *viewer;
+
+        viewer = GR_INGREDIENTS_VIEWER (gtk_widget_get_ancestor (GTK_WIDGET (row), GR_TYPE_INGREDIENTS_VIEWER));
+
         save_unit (row);
         if (row->editable) {
                 set_active_row (viewer, GTK_WIDGET (row));
@@ -279,11 +282,15 @@ edit_unit (GrIngredientsViewerRow *row)
         const char *amount;
         const char *space;
         const char *unit;
+        GrIngredientsViewer *viewer;
+
         amount = row->amount ? row->amount : "";
         space = amount[0] ? " " : "";
         unit = row->unit ? row->unit : "";
         tmp = g_strdup_printf ("%s%s%s", amount, space, unit);
-        GrIngredientsViewer *viewer = GR_INGREDIENTS_VIEWER (gtk_widget_get_ancestor (GTK_WIDGET (row), GR_TYPE_INGREDIENTS_VIEWER));
+
+        viewer = GR_INGREDIENTS_VIEWER (gtk_widget_get_ancestor (GTK_WIDGET (row), GR_TYPE_INGREDIENTS_VIEWER));
+
         save_ingredient (row);
 
         if (row->editable) {
@@ -340,6 +347,7 @@ static void
 save_ingredient (GrIngredientsViewerRow *row)
 {
         GtkWidget *visible;
+
         visible = gtk_stack_get_visible_child (GTK_STACK (row->ingredient_stack));
         if (visible == row->ingredient_entry) {
                 row->ingredient = g_strdup (gtk_entry_get_text (GTK_ENTRY (row->ingredient_entry)));
@@ -451,7 +459,7 @@ gr_ingredients_viewer_row_class_init (GrIngredientsViewerRowClass *klass)
                                       NULL, NULL,
                                       NULL,
                                       G_TYPE_NONE, 1, GR_TYPE_INGREDIENTS_VIEWER_ROW);
-                signals[EDIT] = g_signal_new ("edit",
+        signals[EDIT] = g_signal_new ("edit",
                                       G_TYPE_FROM_CLASS (object_class),
                                       G_SIGNAL_RUN_FIRST,
                                       0,
