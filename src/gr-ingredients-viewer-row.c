@@ -296,6 +296,15 @@ edit_unit (GrIngredientsViewerRow *row)
 }
 
 static void
+edit_unit_or_focus_out (GrIngredientsViewerRow *row)
+{
+        if (!row->active)
+                edit_unit (row);
+        else
+                save_row (row);
+}
+
+static void
 parse_unit (const char  *text,
             char       **amount,
             char       **unit)
@@ -439,6 +448,7 @@ gr_ingredients_viewer_row_class_init (GrIngredientsViewerRowClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, emit_delete);
         gtk_widget_class_bind_template_callback (widget_class, drag_handle_clicked);
         gtk_widget_class_bind_template_callback (widget_class, edit_unit);
+        gtk_widget_class_bind_template_callback (widget_class, edit_unit_or_focus_out);
         gtk_widget_class_bind_template_callback (widget_class, edit_ingredient);
         gtk_widget_class_bind_template_callback (widget_class, save_row);
         gtk_widget_class_bind_template_callback (widget_class, entry_key_press);
