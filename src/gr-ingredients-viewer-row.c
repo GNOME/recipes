@@ -371,27 +371,26 @@ entry_key_press (GrIngredientsViewerRow *row,
 static gboolean
 drag_key_press (GtkButton              *button,
                 GdkEventKey            *event,
-                GrIngredientsViewerRow *row)
+                GrIngredientsViewerRow *source)
 {
         GtkWidget *list;
+        GtkWidget *target;
         int index;
 
-        list = gtk_widget_get_parent (GTK_WIDGET (row));
-        index = gtk_list_box_row_get_index (GTK_LIST_BOX_ROW (row));
+        list = gtk_widget_get_parent (GTK_WIDGET (source));
+        index = gtk_list_box_row_get_index (GTK_LIST_BOX_ROW (source));
 
         if (event->keyval == GDK_KEY_Up)
-                index -= 1;
+                target = GTK_WIDGET (gtk_list_box_get_row_at_index (GTK_LIST_BOX (list), index - 1));
         else if (event->keyval == GDK_KEY_Down)
-                index += 1;
+                target = GTK_WIDGET (gtk_list_box_get_row_at_index (GTK_LIST_BOX (list), index + 1));
         else
                 return GDK_EVENT_PROPAGATE;
 
-        g_object_ref (row);
-        gtk_container_remove (GTK_CONTAINER (list), GTK_WIDGET (row));
-        gtk_list_box_insert (GTK_LIST_BOX (list), GTK_WIDGET (row), index);
-        g_object_unref (row);
-
-        gtk_widget_grab_focus (GTK_WIDGET (button));
+        if (target) {
+                g_signal_emit (source, signals[MOVE], 0, target);
+                gtk_widget_grab_focus (GTK_WIDGET (button));
+        }
 
         return GDK_EVENT_STOP;
 }
