@@ -1317,80 +1317,6 @@ gr_edit_page_clear (GrEditPage *page)
 }
 
 static void
-set_instructions (GtkTextView *text_view,
-                  const char  *text)
-{
-        GtkTextBuffer *buffer;
-        GtkTextIter iter;
-        GtkTextTag *tag;
-        const char *p;
-        const char *p1, *p2, *q1, *q2, *r1, *r2;
-        GdkRGBA color;
-
-        gdk_rgba_parse (&color, "blue");
-        buffer = gtk_text_view_get_buffer (text_view);
-        gtk_text_buffer_set_text (buffer, "", -1);
-
-        p = text;
-        while (*p) {
-                g_autofree char *recipe_id = NULL;
-                g_autofree char *url = NULL;
-                int image_idx;
-
-                q1 = NULL;
-                r1 = NULL;
-                p1 = strstr (p, "<a href=\"");
-                if (!p1)
-                        break;
-                p2 = p1 + strlen ("<a href=\"");
-                if (strncmp (p2, "recipe:", strlen ("recipe:")) == 0) {
-                        p2 = p2 + strlen ("recipe:");
-                        q1 = strstr (p2, "\">");
-                        recipe_id = g_strndup (p2, q1 - p2);
-                        url = g_strconcat ("recipe:", recipe_id, NULL);
-                }
-                else if (strncmp (p2, "image:", strlen ("image:")) == 0) {
-                        p2 = p2 + strlen ("image:");
-                        q1 = strstr (p2, "\">");
-                        image_idx = (int)g_ascii_strtoll (p2, NULL, 10);
-                        url = g_strdup_printf ("image:%d", image_idx);
-                }
-                else {
-                        p = p2;
-                        continue;
-                }
-
-                if (!q1)
-                        break;
-
-                q2 = q1 + strlen ("\">");
-                r1 = strstr (q2, "</a>");
-
-                if (!r1)
-                        break;
-
-                r2 = r1 + strlen ("</a>");
-
-                gtk_text_buffer_get_end_iter (buffer, &iter);
-                gtk_text_buffer_insert (buffer, &iter, p, p1 - p);
-
-                tag = gtk_text_buffer_create_tag (buffer, NULL,
-                                                  "foreground-rgba", &color,
-                                                  "underline", PANGO_UNDERLINE_SINGLE,
-                                                  NULL);
-                g_object_set_data_full (G_OBJECT (tag), "href", g_strdup (url), g_free);
-
-                gtk_text_buffer_get_end_iter (buffer, &iter);
-                gtk_text_buffer_insert_with_tags (buffer, &iter, q2, r1 - q2, tag, NULL);
-
-                p = r2;
-        }
-
-        gtk_text_buffer_get_end_iter (buffer, &iter);
-        gtk_text_buffer_insert (buffer, &iter, p, -1);
-}
-
-static void
 update_author_label (GrEditPage *page,
                      GrChef     *chef)
 {
@@ -1466,7 +1392,7 @@ gr_edit_page_edit (GrEditPage *page,
         set_spiciness (page, spiciness);
         gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), serves);
         set_text_view_text (GTK_TEXT_VIEW (page->description_field), description);
-        set_instructions (GTK_TEXT_VIEW (page->instructions_field), instructions);
+        set_text_view_text ( GTK_TEXT_VIEW (page->instructions_field), instructions);
         gtk_stack_set_visible_child_name (GTK_STACK (page->preview_stack), "edit");
 
         populate_ingredients (page, ingredients);
