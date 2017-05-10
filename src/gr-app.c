@@ -173,25 +173,36 @@ category_activated (GSimpleAction *action,
                     gpointer       application)
 {
         GrApp *app = GR_APP (application);
-        GtkWindow *win;
+        GrWindow *win;
         const char *category;
 
         g_variant_get (parameter, "&s", &category);
 
         gr_app_activate (G_APPLICATION (app));
-        win = gtk_application_get_active_window (GTK_APPLICATION (app));
+        win = GR_WINDOW (gtk_application_get_active_window (GTK_APPLICATION (app)));
         if (g_strcmp0 (category, "mine") == 0)
-                gr_window_show_mine (GR_WINDOW (win));
+                gr_window_show_mine (win);
         else if (g_strcmp0 (category, "favorites") == 0)
-                gr_window_show_favorites (GR_WINDOW (win));
+                gr_window_show_favorites (win);
         else if (g_strcmp0 (category, "all") == 0)
-                gr_window_show_all (GR_WINDOW (win));
+                gr_window_show_all (win);
         else if (g_strcmp0 (category, "new") == 0)
-                gr_window_show_new (GR_WINDOW (win));
-        else if (g_strcmp0 (category, "help") == 0)
-                g_message ("Supported categories: mine, favorites, all, new, help");
+                gr_window_show_new (win);
+        else if (g_strcmp0 (category, "gluten-free") == 0)
+                gr_window_show_diet (win, gr_diet_get_label (GR_DIET_GLUTEN_FREE), GR_DIET_GLUTEN_FREE);
+        else if (g_strcmp0 (category, "nut-free") == 0)
+                gr_window_show_diet (win, gr_diet_get_label (GR_DIET_NUT_FREE), GR_DIET_NUT_FREE);
+        else if (g_strcmp0 (category, "vegan") == 0)
+                gr_window_show_diet (win, gr_diet_get_label (GR_DIET_VEGAN), GR_DIET_VEGAN);
+        else if (g_strcmp0 (category, "vegetarian") == 0)
+                gr_window_show_diet (win, gr_diet_get_label (GR_DIET_VEGETARIAN), GR_DIET_VEGETARIAN);
+        else if (g_strcmp0 (category, "milk-free") == 0)
+                gr_window_show_diet (win, gr_diet_get_label (GR_DIET_MILK_FREE), GR_DIET_MILK_FREE);
         else
-                g_warning ("Unknown category: %s", category);
+                g_print (_("Supported categories: %s\n"),
+                           "mine, favorites, all, "
+                           "new, gluten-free, nut-free, "
+                           "vegan, vegetarian, milk-free");
 }
 
 static void
