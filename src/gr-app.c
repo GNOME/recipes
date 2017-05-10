@@ -168,6 +168,33 @@ details_activated (GSimpleAction *action,
 }
 
 static void
+category_activated (GSimpleAction *action,
+                    GVariant      *parameter,
+                    gpointer       application)
+{
+        GrApp *app = GR_APP (application);
+        GtkWindow *win;
+        const char *category;
+
+        g_variant_get (parameter, "&s", &category);
+
+        gr_app_activate (G_APPLICATION (app));
+        win = gtk_application_get_active_window (GTK_APPLICATION (app));
+        if (g_strcmp0 (category, "mine") == 0)
+                gr_window_show_mine (GR_WINDOW (win));
+        else if (g_strcmp0 (category, "favorites") == 0)
+                gr_window_show_favorites (GR_WINDOW (win));
+        else if (g_strcmp0 (category, "all") == 0)
+                gr_window_show_all (GR_WINDOW (win));
+        else if (g_strcmp0 (category, "new") == 0)
+                gr_window_show_new (GR_WINDOW (win));
+        else if (g_strcmp0 (category, "help") == 0)
+                g_message ("Supported categories: mine, favorites, all, new, help");
+        else
+                g_warning ("Unknown category: %s", category);
+}
+
+static void
 search_activated (GSimpleAction *action,
                   GVariant      *parameter,
                   gpointer       application)
@@ -241,6 +268,7 @@ static GActionEntry app_entries[] =
         { "import", import_activated, NULL, NULL, NULL },
         { "export", export_activated, NULL, NULL, NULL },
         { "details", details_activated, "(ss)", NULL, NULL },
+        { "category", category_activated, "s", NULL, NULL },
         { "search", search_activated, "s", NULL, NULL },
         { "quit", quit_activated, NULL, NULL, NULL },
         { "report-issue", report_issue_activated, NULL, NULL, NULL },
@@ -397,6 +425,10 @@ gr_app_init (GrApp *self)
                                        "verbose", 0,
                                        G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE,
                                        _("Turn on verbose logging"), NULL);
+        g_application_add_main_option (G_APPLICATION (self),
+                                       "category", 0,
+                                       G_OPTION_FLAG_NONE, G_OPTION_ARG_STRING,
+                                       _("Show a category"), ("CATEGORY"));
 
         g_log_set_writer_func (gr_log_writer, NULL, NULL);
 
@@ -410,6 +442,7 @@ gr_app_handle_local_options (GApplication *app,
                              GVariantDict *options)
 {
         gboolean value;
+        const char *category;
 
         if (g_variant_dict_lookup (options, "version", "b", &value)) {
                 g_print ("%s %s\n", PACKAGE_NAME, PACKAGE_VERSION);
@@ -427,6 +460,19 @@ gr_app_handle_local_options (GApplication *app,
                 g_action_group_activate_action (G_ACTION_GROUP (app),
                                                 "verbose-logging",
                                                 g_variant_new_boolean (TRUE));
+        }
+
+        if (g_variant_dict_lookup (options, "category", "&s", &category)) {
+                g_autoptr(GError) error = NULL;
+
+                if (!g_application_register (app, NULL, &error)) {
+                        g_printerr ("Failed to register: %s\n", error->message);
+                        return 1;
+                }
+
+                g_action_group_activate_action (G_ACTION_GROUP (app),
+                                                "category",
+                                                g_variant_new_string (category));
         }
 
         return -1;
