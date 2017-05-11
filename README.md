@@ -63,7 +63,7 @@ brew install automake
 brew install libtool
 brew install gettext
 brew install pkg-config
-brew install mason
+brew install meson
 ```
 - MacOS Sierra and Gettext
 On Sierra (at the least) gettext formula is keg only, in order to let the configuration script
