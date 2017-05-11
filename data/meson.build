@@ -41,6 +41,9 @@ install_data('chefs.db',
 install_data('org.gnome.Recipes-mime.xml',
              install_dir: join_paths([datadir, 'mime/packages']))
 
+install_data('org.gnome.Recipes-search-provider.ini',
+             install_dir: join_paths([datadir, 'gnome-shell/search-providers']))
+
 msgfmt = find_program('msgfmt')
 
 custom_target('desktop-file',
