@@ -192,16 +192,14 @@ category_clicked (GrCategoryTile *tile,
         GtkWidget *window;
         GrDiets diet;
         const char *name;
-        const char *label;
 
         window = gtk_widget_get_ancestor (GTK_WIDGET (tile), GR_TYPE_WINDOW);
 
         diet = gr_category_tile_get_diet (tile);
         name = gr_category_tile_get_category (tile);
-        label = gr_category_tile_get_label (tile);
 
         if (diet)
-                gr_window_show_diet (GR_WINDOW (window), label, diet);
+                gr_window_show_diet (GR_WINDOW (window), diet);
         else if (strcmp (name, "favorites") == 0)
                 gr_window_show_favorites (GR_WINDOW (window));
         else if (strcmp (name, "mine") == 0)

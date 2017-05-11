@@ -1206,14 +1206,13 @@ gr_window_save_all (GrWindow *window)
 
 void
 gr_window_show_diet (GrWindow   *window,
-                     const char *title,
                      GrDiets     diet)
 {
         save_back_entry (window);
 
         gr_list_page_populate_from_diet (GR_LIST_PAGE (window->list_page), diet);
 
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), title);
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), gr_diet_get_label (diet));
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
         gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");

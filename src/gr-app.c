@@ -189,15 +189,15 @@ category_activated (GSimpleAction *action,
         else if (g_strcmp0 (category, "new") == 0)
                 gr_window_show_new (win);
         else if (g_strcmp0 (category, "gluten-free") == 0)
-                gr_window_show_diet (win, gr_diet_get_label (GR_DIET_GLUTEN_FREE), GR_DIET_GLUTEN_FREE);
+                gr_window_show_diet (win, GR_DIET_GLUTEN_FREE);
         else if (g_strcmp0 (category, "nut-free") == 0)
-                gr_window_show_diet (win, gr_diet_get_label (GR_DIET_NUT_FREE), GR_DIET_NUT_FREE);
+                gr_window_show_diet (win, GR_DIET_NUT_FREE);
         else if (g_strcmp0 (category, "vegan") == 0)
-                gr_window_show_diet (win, gr_diet_get_label (GR_DIET_VEGAN), GR_DIET_VEGAN);
+                gr_window_show_diet (win, GR_DIET_VEGAN);
         else if (g_strcmp0 (category, "vegetarian") == 0)
-                gr_window_show_diet (win, gr_diet_get_label (GR_DIET_VEGETARIAN), GR_DIET_VEGETARIAN);
+                gr_window_show_diet (win, GR_DIET_VEGETARIAN);
         else if (g_strcmp0 (category, "milk-free") == 0)
-                gr_window_show_diet (win, gr_diet_get_label (GR_DIET_MILK_FREE), GR_DIET_MILK_FREE);
+                gr_window_show_diet (win, GR_DIET_MILK_FREE);
         else
                 g_print (_("Supported categories: %s\n"),
                            "mine, favorites, all, "
