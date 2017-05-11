@@ -852,8 +852,10 @@ done_shopping (GrWindow *window)
         gr_recipe_store_clear_shopping_list (store);
 }
 
-static
-void make_save_sensitive (GrEditPage *edit_page, GParamSpec *pspec, gpointer data)
+static void
+make_save_sensitive (GrEditPage *edit_page,
+                     GParamSpec *pspec,
+                     gpointer    data)
 {
         GrWindow *window = GR_WINDOW (data);
         gboolean unsaved;
