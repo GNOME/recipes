@@ -44,24 +44,21 @@ static gint
 get_temperature_unit (void)
 {
         gint unit;
-        const gchar *fmt;
 
-        GSettings *settings = gr_settings_get();
-        unit =  g_settings_get_enum (settings, "temperature-unit"); 
-        if (unit == GR_TEMPERATURE_UNIT_CELSIUS || unit == GR_TEMPERATURE_UNIT_FAHRENHEIT) {
-                ;}
-        else if (unit == GR_TEMPERATURE_UNIT_LOCALE) {
-
-
+        GSettings *settings = gr_settings_get ();
+        unit =  g_settings_get_enum (settings, "temperature-unit");
+        if (unit == GR_TEMPERATURE_UNIT_LOCALE) {
+                const gchar *fmt;
 
                 fmt = nl_langinfo (_NL_MEASUREMENT_MEASUREMENT);
                 if (fmt && *fmt == 2)
                         unit = GR_TEMPERATURE_UNIT_FAHRENHEIT;
                 else
                         unit = GR_TEMPERATURE_UNIT_CELSIUS;
-        } 
-        return unit;
         }
+
+        return unit;
+}
 
 char *
 gr_recipe_format (GrRecipe *recipe)
