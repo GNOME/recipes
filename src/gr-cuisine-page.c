@@ -278,7 +278,7 @@ gr_cuisine_page_set_cuisine (GrCuisinePage *self,
 
                 gtk_widget_show (c->label);
                 gtk_widget_show (c->box);
-                self->categories[i].filled = TRUE;
+                c->filled = TRUE;
 
                 tile = gr_recipe_tile_new (recipe);
                 gtk_widget_show (tile);
