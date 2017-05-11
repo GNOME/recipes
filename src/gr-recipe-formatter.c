@@ -24,6 +24,8 @@
 #include "gr-settings.h"
 #include <stdlib.h>
 #include <glib/gi18n.h>
+#include <locale.h>
+#include <langinfo.h>
 
 #include "gr-recipe-formatter.h"
 #include "gr-ingredients-list.h"
@@ -34,14 +36,32 @@
 
 typedef enum {
         GR_TEMPERATURE_UNIT_CELSIUS    = 0,
-        GR_TEMPERATURE_UNIT_FAHRENHEIT = 1
+        GR_TEMPERATURE_UNIT_FAHRENHEIT = 1,
+        GR_TEMPERATURE_UNIT_LOCALE = 2
 } GrTemperatureUnit;
 
 static gint
 get_temperature_unit (void)
 {
+        gint unit;
+        const gchar *fmt;
+
         GSettings *settings = gr_settings_get();
-        return  g_settings_get_enum (settings, "temperature-unit"); }
+        unit =  g_settings_get_enum (settings, "temperature-unit"); 
+        if (unit == GR_TEMPERATURE_UNIT_CELSIUS || unit == GR_TEMPERATURE_UNIT_FAHRENHEIT) {
+                ;}
+        else if (unit == GR_TEMPERATURE_UNIT_LOCALE) {
+
+
+
+                fmt = nl_langinfo (_NL_MEASUREMENT_MEASUREMENT);
+                if (fmt && *fmt == 2)
+                        unit = GR_TEMPERATURE_UNIT_FAHRENHEIT;
+                else
+                        unit = GR_TEMPERATURE_UNIT_CELSIUS;
+        } 
+        return unit;
+        }
 
 char *
 gr_recipe_format (GrRecipe *recipe)
