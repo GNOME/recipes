@@ -436,3 +436,8 @@ dialog.about image.logo-image.small {
 dialog.about box.dialog-vbox {
   min-height: 460px;
 }
+
+.drag-handle {
+  opacity: 0.333;
+  border-right: 1px solid gray;
+}

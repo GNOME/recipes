@@ -41,7 +41,7 @@ struct _GrIngredientsViewerRow
         GtkWidget *ingredient_stack;
         GtkWidget *ingredient_label;
         GtkWidget *ingredient_entry;
-        GtkWidget *ebox;
+        GtkWidget *drag_handle;
         GtkWidget *unit_event_box;
         GtkWidget *ingredient_event_box;
 
@@ -251,11 +251,6 @@ static void
 emit_delete (GrIngredientsViewerRow *row)
 {
         g_signal_emit (row, signals[DELETE], 0);
-}
-
-static void
-drag_handle_clicked (GrIngredientsViewerRow *row)
-{
 }
 
 static void
@@ -476,12 +471,11 @@ gr_ingredients_viewer_row_class_init (GrIngredientsViewerRowClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, ingredient_label);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, ingredient_entry);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, buttons_stack);
-        gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, ebox);
+        gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, drag_handle);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, unit_event_box);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, ingredient_event_box);
 
         gtk_widget_class_bind_template_callback (widget_class, emit_delete);
-        gtk_widget_class_bind_template_callback (widget_class, drag_handle_clicked);
         gtk_widget_class_bind_template_callback (widget_class, edit_unit);
         gtk_widget_class_bind_template_callback (widget_class, edit_unit_or_focus_out);
         gtk_widget_class_bind_template_callback (widget_class, edit_ingredient);
@@ -706,9 +700,9 @@ setup_editable_row (GrIngredientsViewerRow *self)
                 g_autoptr(GtkTreeModel) ingredients_model = NULL;
                 g_autoptr(GtkTreeModel) units_model = NULL;
 
-                gtk_drag_source_set (self->ebox, GDK_BUTTON1_MASK, entries, 1, GDK_ACTION_MOVE);
-                g_signal_connect (self->ebox, "drag-begin", G_CALLBACK (drag_begin), NULL);
-                g_signal_connect (self->ebox, "drag-data-get", G_CALLBACK (drag_data_get), NULL);
+                gtk_drag_source_set (self->drag_handle, GDK_BUTTON1_MASK, entries, 1, GDK_ACTION_MOVE);
+                g_signal_connect (self->drag_handle, "drag-begin", G_CALLBACK (drag_begin), NULL);
+                g_signal_connect (self->drag_handle, "drag-data-get", G_CALLBACK (drag_data_get), NULL);
 
                 gtk_drag_dest_set (GTK_WIDGET (self), GTK_DEST_DEFAULT_ALL, entries, 1, GDK_ACTION_MOVE);
                 g_signal_connect (self, "drag-data-received", G_CALLBACK (drag_data_received), NULL);
@@ -726,9 +720,9 @@ setup_editable_row (GrIngredientsViewerRow *self)
                 gtk_entry_set_completion (GTK_ENTRY (self->unit_entry), completion);
         }
         else {
-                gtk_drag_source_unset (self->ebox);
-                g_signal_handlers_disconnect_by_func (self->ebox, drag_begin, NULL);
-                g_signal_handlers_disconnect_by_func (self->ebox, drag_data_get, NULL);
+                gtk_drag_source_unset (self->drag_handle);
+                g_signal_handlers_disconnect_by_func (self->drag_handle, drag_begin, NULL);
+                g_signal_handlers_disconnect_by_func (self->drag_handle, drag_data_get, NULL);
 
                 gtk_drag_dest_unset (GTK_WIDGET (self));
                 g_signal_handlers_disconnect_by_func (self, drag_data_received, NULL);

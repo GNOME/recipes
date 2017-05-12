@@ -7,8 +7,20 @@
       <object class="GtkBox" id="box">
         <property name="visible">1</property>
         <property name="spacing">10</property>
-        <property name="margin-start">6</property>
-        <property name="margin-end">6</property>
+        <child>
+          <object class="GtkEventBox" id="drag_handle">
+            <property name="visible" bind-source="GrIngredientsViewerRow" bind-property="editable" bind-flags="default|sync-create"/>
+            <style>
+              <class name="drag-handle"/>
+            </style>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">1</property>
+                <property name="icon-name">view-more-symbolic</property>
+              </object>
+            </child>
+          </object>
+        </child>
         <child>
           <object class="GtkStack" id="unit_stack">
             <property name="visible">1</property>
@@ -123,27 +135,6 @@
                         <property name="visible">1</property>
                         <property name="icon-name">user-trash-symbolic</property>
                         <property name="icon-size">1</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkButton" id="ebox">
-                    <property name="visible">1</property>
-                    <property name="relief">none</property>
-                    <signal name="clicked" handler="drag_handle_clicked" swapped="yes"/>
-                    <signal name="focus-in-event" handler="save_row" swapped="yes" after="yes"/>
-                    <signal name="key-press-event" handler="drag_key_press"/>
-                    <style>
-                      <class name="image-button"/>
-                      <class name="circular"/>
-                    </style>
-                    <child>
-                      <object class="GtkImage">
-                        <property name="visible">1</property>
-                        <property name="icon-name">open-menu-symbolic</property>
-                        <property name="icon-size">1</property>
-                        <property name="margin">4</property>
                       </object>
                     </child>
                   </object>
