@@ -3,6 +3,7 @@
   <template class="GrIngredientsViewerRow" parent="GtkListBoxRow">
     <property name="visible">1</property>
     <signal name="focus-in-event" handler="edit_unit_or_focus_out" swapped="yes"/>
+    <signal name="key-press-event" handler="drag_key_press" swapped="yes"/>
     <child>
       <object class="GtkBox" id="box">
         <property name="visible">1</property>
