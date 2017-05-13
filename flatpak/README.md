@@ -1,6 +1,5 @@
 The files in this folder are used to generate Flatpak builds of Recipes.
 
-They are used by the precipes-releases](https://github.com/matthiasclasen/recipes-releases)
-module to generate the Flatpak repository that is hosted at
+Stable Flatpak builds of Recipes are on [flathub.org](https://git.gnome.org/browse/recipes/plain/flatpak/gnome-recipes.flatpakref).
 
-http://matthiasclasen.github.io/recipes-releases/repo/
+Nightly Flatpak builds of the development version of Recipes are [here](https://git.gnome.org/browse/gnome-apps-nightly/plain/gnome-recipes.flatpakref).
