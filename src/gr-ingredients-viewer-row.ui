@@ -55,6 +55,7 @@
                 <property name="margin-bottom">4</property>
                 <signal name="activate" handler="save_row" swapped="yes"/>
                 <signal name="key-press-event" handler="entry_key_press" swapped="yes"/>
+                <signal name="notify::text" handler="unit_text_changed" swapped="yes"/>
               </object>
               <packing>
                 <property name="name">unit_entry</property>

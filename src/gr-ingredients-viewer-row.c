@@ -27,6 +27,7 @@
 #include "gr-ingredients-viewer.h"
 #include "gr-ingredient.h"
 #include "gr-unit.h"
+#include "gr-number.h"
 #include "gr-recipe-store.h"
 
 
@@ -213,7 +214,7 @@ gr_ingredients_viewer_row_set_editable (GrIngredientsViewerRow *row,
 }
 
 static void save_row (GrIngredientsViewerRow *row);
-static void save_unit (GrIngredientsViewerRow *row);
+static gboolean save_unit (GrIngredientsViewerRow *row);
 static void save_ingredient (GrIngredientsViewerRow *row);
 
 static void
@@ -279,9 +280,10 @@ edit_ingredient (GrIngredientsViewerRow *row)
 
         viewer = GR_INGREDIENTS_VIEWER (gtk_widget_get_ancestor (GTK_WIDGET (row), GR_TYPE_INGREDIENTS_VIEWER));
 
-        save_unit (row);
-        if (row->editable) {
+        if (row->editable)
                 set_active_row (viewer, GTK_WIDGET (row));
+
+        if (save_unit (row)) {
                 gtk_entry_set_text (GTK_ENTRY (row->ingredient_entry), row->ingredient);
                 gtk_stack_set_visible_child_name (GTK_STACK (row->ingredient_stack), "ingredient_entry");
                 gtk_widget_grab_focus (row->ingredient_entry);
@@ -325,7 +327,7 @@ edit_unit_or_focus_out (GrIngredientsViewerRow *row)
                 save_row (row);
 }
 
-static void
+static gboolean
 parse_unit (const char  *text,
             char       **amount,
             char       **unit)
@@ -339,22 +341,61 @@ parse_unit (const char  *text,
         g_clear_pointer (amount, g_free);
         g_clear_pointer (unit, g_free);
 
-        *amount = strv[0];
-        if (g_strv_length (strv) > 1)
+        if (g_strv_length (strv) > 1) {
+                GrNumber number;
+                g_autoptr(GError) error = NULL;
+                char *tmp = strv[0];
+
+                g_print ("parsing %s as number\n", tmp);
+                if (!gr_number_parse (&number, &tmp, &error)) {
+                        g_print ("failed to parse number: %s\n", error->message);
+                        return FALSE;
+                }
+
+                *amount = strv[0];
                 *unit = strv[1];
+        }
+        else {
+                *amount = strv[0];
+        }
+
+        return TRUE;
 }
 
 static void
+unit_text_changed (GrIngredientsViewerRow *row)
+{
+        gtk_style_context_remove_class (gtk_widget_get_style_context (row->unit_entry), "error");
+}
+
+static gboolean
+move_focus_back (gpointer data)
+{
+        GrIngredientsViewerRow *row = data;
+
+        gtk_widget_grab_focus (row->unit_entry);
+
+        return G_SOURCE_REMOVE;
+}
+
+static gboolean
 save_unit (GrIngredientsViewerRow *row)
 {
         GtkWidget *visible;
 
         visible = gtk_stack_get_visible_child (GTK_STACK (row->unit_stack));
         if (visible == row->unit_entry) {
-                parse_unit (gtk_entry_get_text (GTK_ENTRY (row->unit_entry)), &row->amount, &row->unit);
+                if (!parse_unit (gtk_entry_get_text (GTK_ENTRY (row->unit_entry)), &row->amount, &row->unit)) {
+                        gtk_style_context_add_class (gtk_widget_get_style_context (row->unit_entry), "error");
+                        g_idle_add (move_focus_back, row);
+                        return FALSE;
+                }
+
                 update_unit (row);
                 gtk_stack_set_visible_child (GTK_STACK (row->unit_stack), row->unit_event_box);
         }
+
+        return TRUE;
 }
 
 static void
@@ -500,6 +541,7 @@ gr_ingredients_viewer_row_class_init (GrIngredientsViewerRowClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, save_row);
         gtk_widget_class_bind_template_callback (widget_class, entry_key_press);
         gtk_widget_class_bind_template_callback (widget_class, drag_key_press);
+        gtk_widget_class_bind_template_callback (widget_class, unit_text_changed);
 }
 
 static GtkTargetEntry entries[] = {
