@@ -141,9 +141,28 @@ update_unit (GrIngredientsViewerRow *row)
         space = amount[0] ? " " : "";
         unit = row->unit ? row->unit : "";
         tmp = g_strdup_printf ("%s%s%s", amount, space, unit);
-        gtk_label_set_label (GTK_LABEL (row->unit_label), tmp);
+        if (tmp[0] == '\0') {
+                gtk_style_context_add_class (gtk_widget_get_style_context (row->unit_label), "dim-label");
+                gtk_label_set_label (GTK_LABEL (row->unit_label), _("Amount…"));
+        }
+        else {
+                gtk_style_context_remove_class (gtk_widget_get_style_context (row->unit_label), "dim-label");
+                gtk_label_set_label (GTK_LABEL (row->unit_label), tmp);
+        }
 }
 
+static void
+update_ingredient (GrIngredientsViewerRow *row)
+{
+      if (row->ingredient[0] == '\0') {
+                gtk_style_context_add_class (gtk_widget_get_style_context (row->ingredient_label), "dim-label");
+                gtk_label_set_label (GTK_LABEL (row->ingredient_label), _("Ingredient…"));
+      }
+      else {
+                gtk_style_context_remove_class (gtk_widget_get_style_context (row->ingredient_label), "dim-label");
+                gtk_label_set_label (GTK_LABEL (row->ingredient_label), row->ingredient);
+      }
+}
 
 static void
 gr_ingredients_viewer_row_set_amount (GrIngredientsViewerRow *row,
@@ -169,7 +188,7 @@ gr_ingredients_viewer_row_set_ingredient (GrIngredientsViewerRow *row,
 {
         g_free (row->ingredient);
         row->ingredient = g_strdup (ingredient);
-        gtk_label_set_label (GTK_LABEL (row->ingredient_label), ingredient);
+        update_ingredient (row);
 }
 
 static void
@@ -346,7 +365,7 @@ save_ingredient (GrIngredientsViewerRow *row)
         visible = gtk_stack_get_visible_child (GTK_STACK (row->ingredient_stack));
         if (visible == row->ingredient_entry) {
                 row->ingredient = g_strdup (gtk_entry_get_text (GTK_ENTRY (row->ingredient_entry)));
-                gtk_label_set_label (GTK_LABEL (row->ingredient_label), row->ingredient);
+                update_ingredient (row);
                 gtk_stack_set_visible_child (GTK_STACK (row->ingredient_stack), row->ingredient_event_box);
         }
 }
