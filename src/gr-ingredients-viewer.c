@@ -130,6 +130,8 @@ collect_ingredients (GrIngredientsViewer *viewer)
         GString *s;
         GList *children, *l;
 
+        set_active_row (viewer, NULL);
+
         s = g_string_new ("");
 
         children = gtk_container_get_children (GTK_CONTAINER (viewer->list));
