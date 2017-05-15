@@ -154,6 +154,7 @@
   <object class="GtkPopover" id="unit_help_popover">
     <property name="relative-to">unit_entry</property>
     <property name="constrain-to">none</property>
+    <property name="modal">0</property>
     <child>
       <object class="GtkGrid">
         <property name="visible">1</property>

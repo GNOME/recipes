@@ -441,3 +441,7 @@ dialog.about box.dialog-vbox {
   opacity: 0.333;
   border-right: 1px solid gray;
 }
+
+label.error {
+  text-decoration: underline wavy red;
+}

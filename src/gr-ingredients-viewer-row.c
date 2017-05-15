@@ -55,6 +55,8 @@ struct _GrIngredientsViewerRow
         gboolean editable;
         gboolean active;
 
+        gboolean unit_error;
+
         GtkSizeGroup *group;
 };
 
@@ -215,9 +217,9 @@ gr_ingredients_viewer_row_set_editable (GrIngredientsViewerRow *row,
         setup_editable_row (row);
 }
 
-static void save_row (GrIngredientsViewerRow *row);
-static gboolean save_unit (GrIngredientsViewerRow *row);
-static void save_ingredient (GrIngredientsViewerRow *row);
+static void     save_row        (GrIngredientsViewerRow *row);
+static gboolean save_unit       (GrIngredientsViewerRow *row);
+static void     save_ingredient (GrIngredientsViewerRow *row);
 
 static void
 gr_ingredients_viewer_row_set_active (GrIngredientsViewerRow *row,
@@ -293,6 +295,17 @@ edit_ingredient (GrIngredientsViewerRow *row)
         }
 }
 
+static gboolean
+show_help (gpointer data)
+{
+        GrIngredientsViewerRow *row = data;
+
+        if (row->unit_error)
+                gtk_popover_popup (GTK_POPOVER (row->unit_help_popover));
+
+        return G_SOURCE_REMOVE;
+}
+
 static void
 edit_unit (GrIngredientsViewerRow *row)
 {
@@ -316,6 +329,7 @@ edit_unit (GrIngredientsViewerRow *row)
                 gtk_entry_set_text (GTK_ENTRY (row->unit_entry), tmp);
                 gtk_stack_set_visible_child_name (GTK_STACK (row->unit_stack), "unit_entry");
                 gtk_widget_grab_focus (row->unit_entry);
+                show_help (row);
                 g_signal_emit (row, signals[EDIT], 0);
         }
 }
@@ -344,8 +358,10 @@ parse_unit (const char  *text,
         tmp = (char *)text;
         skip_whitespace (&tmp);
         str = tmp;
-        if (!gr_number_parse (&number, &tmp, NULL))
+        if (!gr_number_parse (&number, &tmp, NULL)) {
+                *unit = g_strdup (str);
                 return FALSE;
+        }
 
         *amount = g_strndup (str, tmp - str);
         skip_whitespace (&tmp);
@@ -356,21 +372,26 @@ parse_unit (const char  *text,
 }
 
 static void
-unit_text_changed (GrIngredientsViewerRow *row)
+set_unit_error (GrIngredientsViewerRow *row,
+                gboolean                error)
 {
-        gtk_style_context_remove_class (gtk_widget_get_style_context (row->unit_entry), "error");
-        gtk_popover_popdown (GTK_POPOVER (row->unit_help_popover));
+        row->unit_error = error;
+
+        if (error) {
+                gtk_style_context_add_class (gtk_widget_get_style_context (row->unit_entry), "error");
+                gtk_style_context_add_class (gtk_widget_get_style_context (row->unit_label), "error");
+        }
+        else {
+                gtk_style_context_remove_class (gtk_widget_get_style_context (row->unit_entry), "error");
+                gtk_style_context_remove_class (gtk_widget_get_style_context (row->unit_label), "error");
+                gtk_popover_popdown (GTK_POPOVER (row->unit_help_popover));
+        }
 }
 
-static gboolean
-move_focus_back (gpointer data)
+static void
+unit_text_changed (GrIngredientsViewerRow *row)
 {
-        GrIngredientsViewerRow *row = data;
-
-        gtk_widget_grab_focus (row->unit_entry);
-        gtk_popover_popup (GTK_POPOVER (row->unit_help_popover));
-
-        return G_SOURCE_REMOVE;
+        set_unit_error (row, FALSE);
 }
 
 static gboolean
@@ -381,9 +402,7 @@ save_unit (GrIngredientsViewerRow *row)
         visible = gtk_stack_get_visible_child (GTK_STACK (row->unit_stack));
         if (visible == row->unit_entry) {
                 if (!parse_unit (gtk_entry_get_text (GTK_ENTRY (row->unit_entry)), &row->amount, &row->unit)) {
-                        gtk_style_context_add_class (gtk_widget_get_style_context (row->unit_entry), "error");
-                        g_idle_add (move_focus_back, row);
-                        return FALSE;
+                        set_unit_error (row, TRUE);
                 }
 
                 update_unit (row);
