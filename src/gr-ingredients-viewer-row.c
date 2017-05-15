@@ -46,6 +46,7 @@ struct _GrIngredientsViewerRow
         GtkWidget *drag_handle;
         GtkWidget *unit_event_box;
         GtkWidget *ingredient_event_box;
+        GtkWidget *unit_help_popover;
 
         char *amount;
         char *unit;
@@ -358,6 +359,7 @@ static void
 unit_text_changed (GrIngredientsViewerRow *row)
 {
         gtk_style_context_remove_class (gtk_widget_get_style_context (row->unit_entry), "error");
+        gtk_popover_popdown (GTK_POPOVER (row->unit_help_popover));
 }
 
 static gboolean
@@ -366,6 +368,7 @@ move_focus_back (gpointer data)
         GrIngredientsViewerRow *row = data;
 
         gtk_widget_grab_focus (row->unit_entry);
+        gtk_popover_popup (GTK_POPOVER (row->unit_help_popover));
 
         return G_SOURCE_REMOVE;
 }
@@ -525,6 +528,7 @@ gr_ingredients_viewer_row_class_init (GrIngredientsViewerRowClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, drag_handle);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, unit_event_box);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, ingredient_event_box);
+        gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewerRow, unit_help_popover);
 
         gtk_widget_class_bind_template_callback (widget_class, emit_delete);
         gtk_widget_class_bind_template_callback (widget_class, edit_unit);
