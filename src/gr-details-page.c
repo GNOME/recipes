@@ -349,10 +349,11 @@ static void
 activate_image (GrDetailsPage *page)
 {
         GtkWidget *window;
-        g_autoptr(GPtrArray) images = NULL;
+        GPtrArray *images = NULL;
         int idx;
 
-        g_object_get (page->recipe_image, "images", &images, "index", &idx, NULL);
+        images = gr_image_viewer_get_images (GR_IMAGE_VIEWER (page->recipe_image));
+        idx = gr_image_viewer_get_index (GR_IMAGE_VIEWER (page->recipe_image));
 
         window = gtk_widget_get_ancestor (GTK_WIDGET (page->recipe_image), GTK_TYPE_APPLICATION_WINDOW);
         gr_window_show_image (GR_WINDOW (window), images, idx);

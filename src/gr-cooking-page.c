@@ -530,13 +530,13 @@ void
 gr_cooking_page_set_recipe (GrCookingPage *page,
                             GrRecipe      *recipe)
 {
-        g_autoptr(GPtrArray) images = NULL;
+        GPtrArray *images;
         const char *id;
         const char *instructions;
 
         g_set_object (&page->recipe, recipe);
 
-        g_object_get (recipe, "images", &images, NULL);
+        images = gr_recipe_get_images (recipe);
         id = gr_recipe_get_id (recipe);
         instructions = gr_recipe_get_translated_instructions (recipe);
 

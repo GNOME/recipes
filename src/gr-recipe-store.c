@@ -530,7 +530,7 @@ save_recipes (GrRecipeStore *self)
                 const char *ingredients;
                 const char *instructions;
                 const char *notes;
-                g_autoptr(GPtrArray) images = NULL;
+                GPtrArray *images;
                 int serves;
                 int spiciness;
                 GrDiets diets;
@@ -562,8 +562,7 @@ save_recipes (GrRecipeStore *self)
                 mtime = gr_recipe_get_mtime (recipe);
                 default_image = gr_recipe_get_default_image (recipe);
                 readonly = gr_recipe_is_readonly (recipe);
-
-                g_object_get (recipe, "images", &images, NULL);
+                images = gr_recipe_get_images (recipe);
 
                 paths = g_new0 (char *, images->len + 1);
                 for (i = 0; i < images->len; i++) {

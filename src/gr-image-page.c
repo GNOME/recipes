@@ -313,9 +313,10 @@ gr_image_page_set_images (GrImagePage *page,
 {
         g_object_freeze_notify (G_OBJECT (page));
 
+        g_ptr_array_ref (images);
         g_ptr_array_unref (page->images);
-        page->images = g_ptr_array_ref (images);
 
+        page->images = images;
         page->index = 0;
         set_current_image (page);
 
