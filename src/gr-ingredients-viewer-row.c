@@ -282,14 +282,14 @@ edit_ingredient (GrIngredientsViewerRow *row)
 
         viewer = GR_INGREDIENTS_VIEWER (gtk_widget_get_ancestor (GTK_WIDGET (row), GR_TYPE_INGREDIENTS_VIEWER));
 
-        if (row->editable)
+        if (row->editable) {
                 set_active_row (viewer, GTK_WIDGET (row));
-
-        if (save_unit (row)) {
-                gtk_entry_set_text (GTK_ENTRY (row->ingredient_entry), row->ingredient);
-                gtk_stack_set_visible_child_name (GTK_STACK (row->ingredient_stack), "ingredient_entry");
-                gtk_widget_grab_focus (row->ingredient_entry);
-                g_signal_emit (row, signals[EDIT], 0);
+                if (save_unit (row)) {
+                        gtk_entry_set_text (GTK_ENTRY (row->ingredient_entry), row->ingredient);
+                        gtk_stack_set_visible_child_name (GTK_STACK (row->ingredient_stack), "ingredient_entry");
+                        gtk_widget_grab_focus (row->ingredient_entry);
+                        g_signal_emit (row, signals[EDIT], 0);
+                }
         }
 }
 
