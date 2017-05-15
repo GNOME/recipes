@@ -27,6 +27,7 @@
 #include "gr-ingredients-viewer.h"
 #include "gr-ingredient.h"
 #include "gr-unit.h"
+#include "gr-utils.h"
 #include "gr-number.h"
 #include "gr-recipe-store.h"
 
@@ -332,32 +333,23 @@ parse_unit (const char  *text,
             char       **amount,
             char       **unit)
 {
-        g_autofree char *tmp = NULL;
-        g_autofree char **strv = NULL;
-
-        tmp = g_strstrip (g_strdup (text));
-        strv = g_strsplit (tmp, " ", 2);
+        char *tmp;
+        const char *str;
+        GrNumber number;
 
         g_clear_pointer (amount, g_free);
         g_clear_pointer (unit, g_free);
 
-        if (g_strv_length (strv) > 1) {
-                GrNumber number;
-                g_autoptr(GError) error = NULL;
-                char *tmp = strv[0];
+        tmp = (char *)text;
+        skip_whitespace (&tmp);
+        str = tmp;
+        if (!gr_number_parse (&number, &tmp, NULL))
+                return FALSE;
 
-                g_print ("parsing %s as number\n", tmp);
-                if (!gr_number_parse (&number, &tmp, &error)) {
-                        g_print ("failed to parse number: %s\n", error->message);
-                        return FALSE;
-                }
-
-                *amount = strv[0];
-                *unit = strv[1];
-        }
-        else {
-                *amount = strv[0];
-        }
+        *amount = g_strndup (str, tmp - str);
+        skip_whitespace (&tmp);
+        if (tmp)
+                *unit = g_strdup (tmp);
 
         return TRUE;
 }
