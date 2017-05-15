@@ -417,9 +417,19 @@ gr_image_load_full (GrImage         *ri,
         g_autoptr(GdkPixbuf) pixbuf = NULL;
         gboolean need_image;
         gboolean need_thumbnail;
+        g_autofree char *local_path = NULL;
 
-        if (ri->path[0] == '/') {
-                pixbuf = load_pixbuf (ri->path, width, height, fit);
+        /* We store images in local recipes with an absolute path nowadays.
+         * We used to store them as a relative path starting with images/,
+         * so try that case as well.
+         */
+        if (ri->path[0] == '/')
+                local_path = g_strdup (ri->path);
+        else if (g_str_has_prefix (ri->path, "images/"))
+                local_path = g_build_filename (get_user_data_dir (), ri->path, NULL);
+
+        if (local_path) {
+                pixbuf = load_pixbuf (local_path, width, height, fit);
                 if (pixbuf) {
                         g_debug ("Use local image for %s", ri->path);
                         callback (ri, pixbuf, data);
