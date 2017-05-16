@@ -262,18 +262,21 @@ gr_number_parse (GrNumber  *number,
 
         if (parse_as_integer (number, &orig, FALSE, NULL)) {
                 gboolean valid;
+                char *endofint;
                 GrNumber n;
 
+                endofint = orig;
                 valid = skip_whitespace (&orig);
 
                 if (parse_as_vulgar_fraction (&n, &orig, NULL) ||
                     parse_as_fraction (&n, &orig, NULL)) {
                         gr_number_add (number, &n, number);
-                        valid = TRUE;
+                        *input = orig;
+                        return TRUE;
                 }
 
                 if (valid || *orig == '\0') {
-                        *input = orig;
+                        *input = endofint;
                         return TRUE;
                 }
         }
