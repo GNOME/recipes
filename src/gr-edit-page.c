@@ -149,6 +149,7 @@ static void
 dismiss_error (GrEditPage *page)
 {
         gtk_revealer_set_reveal_child (GTK_REVEALER (page->error_revealer), FALSE);
+        gtk_widget_grab_focus (page->name_entry);
 }
 
 static void add_image_cb (GrEditPage *page);
@@ -1496,6 +1497,13 @@ gr_edit_page_save (GrEditPage *page)
         store = gr_recipe_store_get ();
 
         name = gtk_entry_get_text (GTK_ENTRY (page->name_entry));
+
+        if (name[0] == '\0') {
+                g_set_error (&error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                             _("You need to provide a name for the recipe"));
+                goto error;
+        }
+
         cuisine = get_combo_value (GTK_COMBO_BOX (page->cuisine_combo));
         category = get_combo_value (GTK_COMBO_BOX (page->category_combo));
         season = get_combo_value (GTK_COMBO_BOX (page->season_combo));
@@ -1583,6 +1591,7 @@ gr_edit_page_save (GrEditPage *page)
 
         gr_image_viewer_revert_changes (GR_IMAGE_VIEWER (page->images));
 
+error:
         gtk_label_set_label (GTK_LABEL (page->error_label), error->message);
         gtk_revealer_set_reveal_child (GTK_REVEALER (page->error_revealer), TRUE);
 
