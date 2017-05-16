@@ -217,9 +217,9 @@ gr_ingredients_viewer_row_set_editable (GrIngredientsViewerRow *row,
         setup_editable_row (row);
 }
 
-static void     save_row        (GrIngredientsViewerRow *row);
 static gboolean save_unit       (GrIngredientsViewerRow *row);
-static void     save_ingredient (GrIngredientsViewerRow *row);
+static gboolean save_ingredient (GrIngredientsViewerRow *row);
+static void     save_row        (GrIngredientsViewerRow *row);
 
 static void
 gr_ingredients_viewer_row_set_active (GrIngredientsViewerRow *row,
@@ -285,13 +285,13 @@ edit_ingredient (GrIngredientsViewerRow *row)
         viewer = GR_INGREDIENTS_VIEWER (gtk_widget_get_ancestor (GTK_WIDGET (row), GR_TYPE_INGREDIENTS_VIEWER));
 
         if (row->editable) {
+                save_unit (row);
+
                 set_active_row (viewer, GTK_WIDGET (row));
-                if (save_unit (row)) {
-                        gtk_entry_set_text (GTK_ENTRY (row->ingredient_entry), row->ingredient);
-                        gtk_stack_set_visible_child_name (GTK_STACK (row->ingredient_stack), "ingredient_entry");
-                        gtk_widget_grab_focus (row->ingredient_entry);
-                        g_signal_emit (row, signals[EDIT], 0);
-                }
+                gtk_entry_set_text (GTK_ENTRY (row->ingredient_entry), row->ingredient);
+                gtk_stack_set_visible_child_name (GTK_STACK (row->ingredient_stack), "ingredient_entry");
+                gtk_widget_grab_focus (row->ingredient_entry);
+                g_signal_emit (row, signals[EDIT], 0);
         }
 }
 
@@ -409,10 +409,10 @@ save_unit (GrIngredientsViewerRow *row)
                 gtk_stack_set_visible_child (GTK_STACK (row->unit_stack), row->unit_event_box);
         }
 
-        return TRUE;
+        return GDK_EVENT_PROPAGATE;
 }
 
-static void
+static gboolean
 save_ingredient (GrIngredientsViewerRow *row)
 {
         GtkWidget *visible;
@@ -423,6 +423,8 @@ save_ingredient (GrIngredientsViewerRow *row)
                 update_ingredient (row);
                 gtk_stack_set_visible_child (GTK_STACK (row->ingredient_stack), row->ingredient_event_box);
         }
+
+        return GDK_EVENT_PROPAGATE;
 }
 
 static void
@@ -551,9 +553,10 @@ gr_ingredients_viewer_row_class_init (GrIngredientsViewerRowClass *klass)
 
         gtk_widget_class_bind_template_callback (widget_class, emit_delete);
         gtk_widget_class_bind_template_callback (widget_class, edit_unit);
+        gtk_widget_class_bind_template_callback (widget_class, save_unit);
         gtk_widget_class_bind_template_callback (widget_class, edit_unit_or_focus_out);
         gtk_widget_class_bind_template_callback (widget_class, edit_ingredient);
-        gtk_widget_class_bind_template_callback (widget_class, save_row);
+        gtk_widget_class_bind_template_callback (widget_class, save_ingredient);
         gtk_widget_class_bind_template_callback (widget_class, entry_key_press);
         gtk_widget_class_bind_template_callback (widget_class, drag_key_press);
         gtk_widget_class_bind_template_callback (widget_class, unit_text_changed);
