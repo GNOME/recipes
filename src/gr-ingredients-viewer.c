@@ -160,6 +160,34 @@ collect_ingredients (GrIngredientsViewer *viewer)
         return g_string_free (s, FALSE);
 }
 
+GtkWidget *
+gr_ingredients_viewer_has_error (GrIngredientsViewer *viewer)
+{
+        GList *children, *l;
+
+        set_active_row (viewer, NULL);
+
+        children = gtk_container_get_children (GTK_CONTAINER (viewer->list));
+        for (l = children; l; l = l->next) {
+                GtkWidget *row = l->data;
+                g_autofree char *amount = NULL;
+                g_autofree char *unit = NULL;
+                g_autofree char *ingredient = NULL;
+
+                g_object_get (row,
+                              "amount", &amount,
+                              "unit", &unit,
+                              "ingredient", &ingredient,
+                              NULL);
+
+                if (amount == NULL || amount[0] == '\0' ||
+                    ingredient == NULL || ingredient[0] == '\0')
+                        return row;
+        }
+
+        return NULL;
+}
+
 static void
 gr_ingredients_viewer_get_property (GObject    *object,
                                     guint       prop_id,

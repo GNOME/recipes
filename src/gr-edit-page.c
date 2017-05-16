@@ -108,6 +108,8 @@ struct _GrEditPage
         GtkWidget *timer_title;
         GtkWidget *preview_stack;
 
+        GtkWidget *error_field;
+
         GrRecipeSearch *search;
 
         GtkSizeGroup *group;
@@ -149,7 +151,8 @@ static void
 dismiss_error (GrEditPage *page)
 {
         gtk_revealer_set_reveal_child (GTK_REVEALER (page->error_revealer), FALSE);
-        gtk_widget_grab_focus (page->name_entry);
+        if (page->error_field)
+                gtk_widget_grab_focus (page->error_field);
 }
 
 static void add_image_cb (GrEditPage *page);
@@ -455,8 +458,8 @@ populate_season_combo (GrEditPage *page)
         }
 }
 
-static char *
-collect_ingredients (GrEditPage *page)
+static gboolean
+collect_ingredients (GrEditPage *page, GtkWidget **error_field, char **ingredients)
 {
         GString *s;
         GList *children, *l;
@@ -468,6 +471,13 @@ collect_ingredients (GrEditPage *page)
                 GtkWidget *list = l->data;
                 g_autofree char *segment = NULL;
 
+                *error_field = gr_ingredients_viewer_has_error (GR_INGREDIENTS_VIEWER (list));
+                if (*error_field) {
+                        *ingredients = NULL;
+                        g_string_free (s, TRUE);
+                        return FALSE;
+                }
+
                 g_object_get (list, "ingredients", &segment, NULL);
                 if (s->len > 0)
                         g_string_append (s, "\n");
@@ -475,7 +485,10 @@ collect_ingredients (GrEditPage *page)
         }
         g_list_free (children);
 
-        return g_string_free (s, FALSE);
+        *error_field = NULL;
+        *ingredients = g_string_free (s, FALSE);
+
+        return TRUE;
 }
 
 static void
@@ -1494,11 +1507,14 @@ gr_edit_page_save (GrEditPage *page)
         GrDiets diets;
         GPtrArray *images;
 
+        page->error_field = NULL;
+
         store = gr_recipe_store_get ();
 
         name = gtk_entry_get_text (GTK_ENTRY (page->name_entry));
 
         if (name[0] == '\0') {
+                page->error_field = page->name_entry;
                 g_set_error (&error, G_IO_ERROR, G_IO_ERROR_FAILED,
                              _("You need to provide a name for the recipe"));
                 goto error;
@@ -1511,7 +1527,12 @@ gr_edit_page_save (GrEditPage *page)
         cook_time = get_combo_value (GTK_COMBO_BOX (page->cook_time_combo));
         spiciness = get_spiciness (page);
         serves = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (page->serves_spin));
-        ingredients = collect_ingredients (page);
+        if (!collect_ingredients (page, &page->error_field, &ingredients)) {
+                g_set_error (&error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                             _("Some ingredients need correction"));
+                goto error;
+        }
+
         description = get_text_view_text (GTK_TEXT_VIEW (page->description_field));
         instructions = get_text_view_text (GTK_TEXT_VIEW (page->instructions_field));
         diets = (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->gluten_free_check)) ? GR_DIET_GLUTEN_FREE : 0) |
