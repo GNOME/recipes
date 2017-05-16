@@ -753,6 +753,7 @@ import_chefs (GrRecipeImporter *importer)
         g_autoptr(GKeyFile) keyfile = NULL;
         g_autofree char *path = NULL;
         g_autoptr(GError) error = NULL;
+        gsize length;
 
         g_assert (importer->chefs_keyfile == NULL);
         g_assert (importer->chef_ids == NULL);
@@ -766,7 +767,14 @@ import_chefs (GrRecipeImporter *importer)
         }
 
         importer->chefs_keyfile = g_key_file_ref (keyfile);
-        importer->chef_ids = g_key_file_get_groups (keyfile, NULL);
+        importer->chef_ids = g_key_file_get_groups (keyfile, &length);
+        if (length == 0) {
+                g_set_error (&error, G_IO_ERROR, G_IO_ERROR_FAILED,
+                             _("No chef information found"));
+                error_cb (importer->extractor, error, importer);
+                return FALSE;
+        }
+
         return import_next_chef (importer);
 }
 
