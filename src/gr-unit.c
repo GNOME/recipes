@@ -54,6 +54,9 @@ static GrUnit units[] = {
         { "box",   NC_("unit abbreviation", "box"),   NC_("unit name", "box") },
         { "pkg",   NC_("unit abbreviation", "pkg"),   NC_("unit name", "package") },
         { "glass", NC_("unit abbreviation", "glass"), NC_("unit name", "glass") },
+        { "mm",    NC_("unit abbreviation", "mm"),    NC_("unit name", "millimeter") },
+        { "cm",    NC_("unit abbreviation", "cm"),    NC_("unit name", "centimeter") },
+        { "m",     NC_("unit abbreviation", "m"),     NC_("unit name", "meter") },
 };
 
 const char **
