@@ -170,19 +170,25 @@ gr_ingredients_viewer_has_error (GrIngredientsViewer *viewer)
         children = gtk_container_get_children (GTK_CONTAINER (viewer->list));
         for (l = children; l; l = l->next) {
                 GtkWidget *row = l->data;
+                GtkWidget *error_field;
+
+#if 0
                 g_autofree char *amount = NULL;
-                g_autofree char *unit = NULL;
                 g_autofree char *ingredient = NULL;
 
                 g_object_get (row,
                               "amount", &amount,
-                              "unit", &unit,
                               "ingredient", &ingredient,
                               NULL);
 
                 if (amount == NULL || amount[0] == '\0' ||
                     ingredient == NULL || ingredient[0] == '\0')
                         return row;
+#else
+                error_field = gr_ingredients_viewer_row_has_error (row);
+                if (error_field)
+                        return error_field;
+#endif
         }
 
         return NULL;

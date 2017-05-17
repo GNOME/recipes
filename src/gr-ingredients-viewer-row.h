@@ -28,4 +28,6 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GrIngredientsViewerRow, gr_ingredients_viewer_row, GR, INGREDIENTS_VIEWER_ROW, GtkListBoxRow)
 
+GtkWidget *gr_ingredients_viewer_row_has_error (GrIngredientsViewerRow *row);
+
 G_END_DECLS

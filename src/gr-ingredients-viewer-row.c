@@ -809,3 +809,15 @@ setup_editable_row (GrIngredientsViewerRow *self)
                 gtk_entry_set_completion (GTK_ENTRY (self->unit_entry), NULL);
         }
 }
+
+GtkWidget *
+gr_ingredients_viewer_row_has_error (GrIngredientsViewerRow *row)
+{
+        if (row->amount == NULL || row->amount[0] == '\0')
+                return gtk_widget_get_parent (row->unit_label);
+
+        if (row->ingredient == NULL || row->ingredient[0] == '\0')
+                return gtk_widget_get_parent (row->ingredient_label);
+
+        return NULL;
+}
