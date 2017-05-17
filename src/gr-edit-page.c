@@ -459,7 +459,9 @@ populate_season_combo (GrEditPage *page)
 }
 
 static gboolean
-collect_ingredients (GrEditPage *page, GtkWidget **error_field, char **ingredients)
+collect_ingredients (GrEditPage  *page,
+                     GtkWidget  **error_field,
+                     char       **ingredients)
 {
         GString *s;
         GList *children, *l;
