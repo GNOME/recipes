@@ -457,17 +457,6 @@ free_exported_data (gpointer data)
         g_free (d);
 }
 
-static gboolean
-handle_exported_idle (gpointer user_data)
-{
-        WaylandWindowHandleExportedData *data = user_data;
-
-        data->callback (data->window, data->handle_str, data->user_data);
-        free_exported_data (data);
-
-        return G_SOURCE_REMOVE;
-}
-
 static void
 wayland_window_handle_exported (GdkWindow  *window,
                                 const char *wayland_handle_str,
@@ -476,7 +465,7 @@ wayland_window_handle_exported (GdkWindow  *window,
         WaylandWindowHandleExportedData *data = user_data;
 
         data->handle_str = g_strdup_printf ("wayland:%s", wayland_handle_str);
-        g_idle_add (handle_exported_idle, data);
+        data->callback (data->window, data->handle_str, data->user_data);
 }
 #endif
 
@@ -510,13 +499,10 @@ window_export_handle (GtkWindow            *window,
                 if (!gdk_wayland_window_export_handle (gdk_window,
                                                        wayland_window_handle_exported,
                                                        data,
-                                                       free_exported_data)) {
-                        free_exported_data (data);
+                                                       free_exported_data))
                         return FALSE;
-                }
-                else {
+                else
                         return TRUE;
-                }
         }
 #endif
 
