@@ -509,6 +509,7 @@ collect_ingredients (GrShoppingPage *page)
         }
 
         container_remove_all (GTK_CONTAINER (page->ingredients_list));
+        container_remove_all (GTK_CONTAINER (page->removed_list));
         g_hash_table_iter_init (&iter, page->ingredients);
         while (g_hash_table_iter_next (&iter, NULL, (gpointer *)&ing)) {
                 g_autofree char *unit = NULL;
