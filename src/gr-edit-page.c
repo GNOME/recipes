@@ -151,6 +151,12 @@ static void
 dismiss_error (GrEditPage *page)
 {
         gtk_revealer_set_reveal_child (GTK_REVEALER (page->error_revealer), FALSE);
+}
+
+static void
+focus_error (GrEditPage *page)
+{
+        dismiss_error (page);
         if (page->error_field)
                 gtk_widget_grab_focus (page->error_field);
 }
@@ -1103,6 +1109,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, cooking_view);
 
         gtk_widget_class_bind_template_callback (widget_class, dismiss_error);
+        gtk_widget_class_bind_template_callback (widget_class, focus_error);
         gtk_widget_class_bind_template_callback (widget_class, add_image_cb);
         gtk_widget_class_bind_template_callback (widget_class, remove_image_cb);
         gtk_widget_class_bind_template_callback (widget_class, rotate_image_left_cb);

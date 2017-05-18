@@ -27,13 +27,20 @@
                 <child>
                   <object class="GtkBox">
                     <property name="visible">1</property>
-                    <property name="spacing">20</property>
-                    <property name="margin">10</property>
+                    <property name="spacing">10</property>
                     <child>
                       <object class="GtkLabel" id="error_label">
                         <property name="visible">1</property>
                         <property name="hexpand">1</property>
                         <property name="halign">start</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton">
+                        <property name="visible">1</property>
+                        <property name="focus-on-click">0</property>
+                        <property name="label" translatable="yes">Edit</property>
+                        <signal name="clicked" handler="focus_error" swapped="yes"/>
                       </object>
                     </child>
                     <child>
@@ -48,7 +55,7 @@
                         <child>
                           <object class="GtkImage">
                             <property name="visible">1</property>
-                            <property name="icon-name">error-correct-symbolic</property>
+                            <property name="icon-name">window-close-symbolic</property>
                             <property name="icon-size">1</property>
                           </object>
                         </child>
