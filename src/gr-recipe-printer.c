@@ -155,8 +155,8 @@ begin_print (GtkPrintOperation *operation,
         g_string_truncate (s, 0);
 
         g_string_append_printf (s, "%s %s\n", _("Author:"), gr_chef_get_fullname (chef));
-        g_string_append_printf (s, "%s %s\n", _("Preparation:"), gr_recipe_get_prep_time (printer->recipe));
-        g_string_append_printf (s, "%s %s\n", _("Cooking:"), gr_recipe_get_cook_time (printer->recipe));
+        g_string_append_printf (s, "%s %s\n", _("Preparation:"), _(gr_recipe_get_prep_time (printer->recipe)));
+        g_string_append_printf (s, "%s %s\n", _("Cooking:"), _(gr_recipe_get_cook_time (printer->recipe)));
         g_string_append_printf (s, "%s %d\n", _("Serves:"), gr_recipe_get_serves (printer->recipe));
         g_string_append (s, "\n");
 
