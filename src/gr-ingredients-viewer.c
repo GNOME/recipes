@@ -224,6 +224,8 @@ static void
 delete_row (GrIngredientsViewerRow *row,
             GrIngredientsViewer    *viewer)
 {
+        if ((GtkWidget*)row == viewer->active_row)
+                set_active_row (viewer, NULL);
         gtk_widget_destroy (GTK_WIDGET (row));
         g_object_notify (G_OBJECT (viewer), "ingredients");
 }
