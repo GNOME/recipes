@@ -278,7 +278,6 @@ add_row (GrIngredientsViewer *viewer)
 
         gtk_container_add (GTK_CONTAINER (viewer->list), row);
         gtk_widget_grab_focus (row);
-        gtk_widget_queue_draw (GTK_WIDGET (viewer));
         g_object_notify (G_OBJECT (viewer), "ingredients");
 }
 
