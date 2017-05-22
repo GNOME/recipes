@@ -59,16 +59,21 @@
     </screenshot>
   </screenshots>
   <releases>
-    <release version="1.4.4"  date="2017-05-10">
+    <release version="1.4.4"  date="2017-05-22">
       <description>
         <p>
-          This release adds new features.
+          This release completes the new editing experience for ingredients.
         </p>
         <ul>
+          <li>Error handling on the edit page has been improved</li>
           <li>A commandline option has been added for starting with a category view</li>
           <li>Temperatures are now displayed according to the locale</li>
           <li>Ingredients rows can now be reordered with the keyboard</li>
-          <li>New and updated translations: Slovenian</li>
+          <li>Fix crashes during import and when showing cuisines</li>
+          <li>Make exporting work with recent GTK+ versions</li>
+          <li>Add mm, cm and m to the list of known units</li>
+          <li>Minor fixes on the shopping list and with printing</li>
+          <li>New and updated translations: German, Indonesian, Polish, Slovenian, Spanish</li>
         </ul>
       </description>
     </release>
