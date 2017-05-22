@@ -52,50 +52,47 @@
       </object>
     </child>
     <child>
-      <object class="GtkListBox" id="list">
+      <object class="GtkBox">
         <property name="visible">1</property>
-        <property name="selection-mode">none</property>
-        <property name="activate-on-single-click">1</property>
-        <signal name="row-activated" handler="row_activated"/>
+        <property name="orientation">vertical</property>
         <style>
           <class name="frame"/>
+          <class name="view"/>
         </style>
-        <child type="placeholder">
-          <object class="GtkEventBox">
+        <child>
+          <object class="GtkListBox" id="list">
+            <property name="visible">1</property>
+            <property name="selection-mode">none</property>
+            <property name="activate-on-single-click">1</property>
+            <signal name="row-activated" handler="row_activated"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkSeparator">
+            <property name="visible">1</property>
+            <property name="expand">1</property>
+            <property name="valign">center</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkEventBox" id="add_row_box">
+            <property name="can-focus">1</property>
             <property name="visible">1</property>
             <signal name="button-press-event" handler="add_row" swapped="yes"/>
+            <signal name="focus-in-event" handler="add_row" swapped="yes"/>
             <child>
               <object class="GtkLabel">
                 <property name="visible">1</property>
                 <property name="xalign">0.5</property>
                 <property name="halign">fill</property>
+                <property name="width-chars">10</property>
                 <property name="margin-start">20</property>
                 <property name="margin-end">20</property>
                 <property name="margin-top">10</property>
                 <property name="margin-bottom">10</property>
-                <property name="label" translatable="yes">No ingredients added yet</property>
-                <style>
-                  <class name="dim-label"/>
-                </style>
+                <property name="label" translatable="yes">Add more ingredients</property>
               </object>
             </child>
-          </object>
-        </child>
-      </object>
-    </child>
-    <child>
-      <object class="GtkButton" id="add_button">
-        <property name="visible">1</property>
-        <property name="halign">start</property>
-        <property name="margin-top">10</property>
-        <signal name="clicked" handler="add_row" swapped="yes"/>
-        <style>
-          <class name="dim-label"/>
-        </style>
-        <child>
-          <object class="GtkImage">
-            <property name="visible">1</property>
-            <property name="icon-name">list-add-symbolic</property>
           </object>
         </child>
       </object>

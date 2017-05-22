@@ -41,7 +41,7 @@ struct _GrIngredientsViewer
         GtkWidget *title_entry;
         GtkWidget *title_label;
         GtkWidget *list;
-        GtkWidget *add_button;
+        GtkWidget *add_row_box;
 
         char *title;
         gboolean editable;
@@ -277,6 +277,8 @@ add_row (GrIngredientsViewer *viewer)
         g_signal_connect (row, "notify::ingredient" , G_CALLBACK(edit_ingredient_row), viewer);
 
         gtk_container_add (GTK_CONTAINER (viewer->list), row);
+        gtk_widget_grab_focus (row);
+        gtk_widget_queue_draw (GTK_WIDGET (viewer));
         g_object_notify (G_OBJECT (viewer), "ingredients");
 }
 
@@ -347,13 +349,14 @@ gr_ingredients_viewer_set_editable (GrIngredientsViewer *viewer,
         GList *children, *l;
 
         viewer->editable = editable;
-        gtk_widget_set_visible (viewer->add_button, editable);
+        gtk_widget_set_visible (viewer->add_row_box, editable);
 
         children = gtk_container_get_children (GTK_CONTAINER (viewer->list));
         for (l = children; l; l = l->next) {
                 GtkWidget *row = l->data;
 
-                g_object_set (row, "editable", viewer->editable, NULL);
+                if (GR_IS_INGREDIENTS_VIEWER_ROW (row))
+                        g_object_set (row, "editable", viewer->editable, NULL);
         }
         g_list_free (children);
 }
@@ -475,7 +478,7 @@ gr_ingredients_viewer_class_init (GrIngredientsViewerClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewer, title_entry);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewer, title_label);
         gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewer, list);
-        gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewer, add_button);
+        gtk_widget_class_bind_template_child (widget_class, GrIngredientsViewer, add_row_box);
 
         gtk_widget_class_bind_template_callback (widget_class, title_changed);
         gtk_widget_class_bind_template_callback (widget_class, row_activated);
