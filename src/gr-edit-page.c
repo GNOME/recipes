@@ -906,6 +906,12 @@ gr_edit_page_init (GrEditPage *page)
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
         gtk_widget_init_template (GTK_WIDGET (page));
 
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+        // Without this, we get border artifacts left behind when adding and removing
+        // ingredients :-(
+        gtk_container_set_reallocate_redraws (GTK_CONTAINER (page->ingredients_box), TRUE);
+G_GNUC_END_IGNORE_DEPRECATIONS
+
         page->group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 
         populate_cuisine_combo (page);
