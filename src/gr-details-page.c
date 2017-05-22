@@ -91,8 +91,6 @@ struct _GrDetailsPage
         GtkWidget *error_revealer;
 
         guint save_timeout;
-
-        char *uri;
 };
 
 G_DEFINE_TYPE (GrDetailsPage, gr_details_page, GTK_TYPE_BOX)
@@ -238,7 +236,6 @@ details_page_finalize (GObject *object)
         g_clear_object (&self->ingredients);
         g_clear_object (&self->printer);
         g_clear_object (&self->exporter);
-        g_clear_pointer (&self->uri, g_free);
         g_clear_pointer (&self->ing_text, g_free);
 
         G_OBJECT_CLASS (gr_details_page_parent_class)->finalize (object);
@@ -292,14 +289,10 @@ schedule_save (GtkTextBuffer *buffer, GrDetailsPage *page)
 }
 
 static gboolean
-activate_uri_at_idle (gpointer data)
+activate_link (GtkLabel      *label,
+               const char    *uri,
+               GrDetailsPage *page)
 {
-        GrDetailsPage *page = data;
-        g_autofree char *uri = NULL;
-
-        uri = page->uri;
-        page->uri = NULL;
-
         if (g_str_has_prefix (uri, "image:")) {
                 int idx;
 
@@ -327,20 +320,6 @@ activate_uri_at_idle (gpointer data)
                         gtk_revealer_set_reveal_child (GTK_REVEALER (page->error_revealer), TRUE);
                 }
         }
-
-        return G_SOURCE_REMOVE;
-}
-
-static gboolean
-activate_link (GtkLabel      *label,
-               const char    *uri,
-               GrDetailsPage *page)
-{
-        g_free (page->uri);
-        page->uri = g_strdup (uri);
-
-        // FIXME: We can avoid the idle with GTK+ 3.22.6 or newer
-        g_idle_add (activate_uri_at_idle, page);
 
         return TRUE;
 }
