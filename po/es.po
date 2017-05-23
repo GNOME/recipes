@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-21 20:15+0000\n"
-"PO-Revision-Date: 2017-05-22 15:46+0200\n"
+"POT-Creation-Date: 2017-05-22 13:50+0000\n"
+"PO-Revision-Date: 2017-05-23 12:41+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -40,50 +40,58 @@ msgid "GNOME loves to cook"
 msgstr "A GNOME le encanta cocinar"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:9
+#, fuzzy
+#| msgid ""
+#| "Recipes is an easy-to-use application that will help you to discover what "
+#| "to cook today, tomorrow, the rest of the week and for your special "
+#| "occasions."
 msgid ""
 "GNOME Recipes is an easy-to-use application that will help you to discover "
 "what to cook today, tomorrow, rest of the week and for your special "
 "occasions."
 msgstr ""
+"Recetas es una aplicación sencilla de usar que le ayudará a descubrir qué "
+"cocinar hoy, mañana, el resto de la semana y en ocasiones especiales."
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:13
+#, fuzzy
+#| msgid ""
+#| "Recipes comes with a collection of recipes that have been collected by "
+#| "GNOME contributors from all over the world. It also lets you store your "
+#| "own recipes and share them with your friends."
 msgid ""
 "Recipes comes with a collection of recipes that have been collected by GNOME "
 "contributors from all over the world. It also lets you store your own "
 "recipes, and share them with your friends."
 msgstr ""
+"Incluye una colección de recetas de colaboradores de GNOME de todo el mundo. "
+"También le permite guardar sus propias recetas y compartirlas con sus amigos."
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:18
 msgid "The major features of Recipes include:"
-msgstr ""
+msgstr "Entre las principales características de Recetas se incluyen:"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:22
-#| msgid "Add a New Recipe"
 msgid "Add and edit your own recipes"
 msgstr "Añadir y editar sus propias recetas"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:23
-#, fuzzy
-#| msgid "Share with a friend"
 msgid "Share recipes with your friends"
-msgstr "Compartir con un amigo"
+msgstr "Compartir recetas con sus amigos"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:24
-#, fuzzy
-#| msgid "A shopping list"
 msgid "Export and print shopping lists"
-msgstr "Una lista de la compra"
+msgstr "Exportar e imprimir listas de la compra"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:25
 msgid "Adjust quantities based on the number of servings"
-msgstr ""
+msgstr "Ajustar las cantidades en función de las raciones"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:26
 msgid "Mark recipes to cook later or add them to your favorites"
-msgstr ""
+msgstr "Marcar recetas para cocinarlas después o añadirlas a favoritos"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:27
-#| msgid "Nut-free recipes"
 msgid "Add notes to recipes"
 msgstr "Añadir notas a las recetas"
 
@@ -137,35 +145,38 @@ msgstr ""
 
 #: data/org.gnome.Recipes.gschema.xml:22
 msgid "The timestamp of the last change to the favorites list"
-msgstr ""
+msgstr "La marca de tiempo del último cambio en la lista de la favoritos"
 
 #: data/org.gnome.Recipes.gschema.xml:23
 msgid ""
 "The timestamp of the last time an item was added to or removed from the "
 "favorites list."
 msgstr ""
+"La marca de tiempo de la última vez que se añadió o se eliminó un elemento "
+"de la lista de favoritos."
 
 #: data/org.gnome.Recipes.gschema.xml:30
-#| msgid "Add to favorites"
 msgid "The list of favorites"
 msgstr "La lista de favoritos"
 
 #: data/org.gnome.Recipes.gschema.xml:31
 msgid "The list of favorites. Each entry in the list is the ID of a recipe."
 msgstr ""
+"La lista de favoritos. Cada entrada en la lista es el ID de una receta."
 
 #: data/org.gnome.Recipes.gschema.xml:37
 msgid "The timestamp of the last change to the shopping list"
-msgstr ""
+msgstr "La marca de tiempo del último cambio en la lista de la compra."
 
 #: data/org.gnome.Recipes.gschema.xml:38
 msgid ""
 "The timestamp of the last time an item was added to or removed from the "
 "shopping list."
 msgstr ""
+"La marca de tiempo de la última vez que se añadió o se eliminó un elemento "
+"de la lista de la compra."
 
 #: data/org.gnome.Recipes.gschema.xml:45
-#| msgid "A shopping list"
 msgid "The shopping list"
 msgstr "La lista de la compra"
 
@@ -174,14 +185,17 @@ msgid ""
 "The shopping list. Each entry in the dictionary maps the ID of a recipe to a "
 "serving count."
 msgstr ""
+"La lista de la compra. Cada entrada del diccionario mapea el ID de una "
+"receta para el número de raciones."
 
 #: data/org.gnome.Recipes.gschema.xml:53
 msgid "Ingredients that were removed from the shopping list"
-msgstr ""
+msgstr "Ingredientes que se han quitado de la lista de la compra"
 
 #: data/org.gnome.Recipes.gschema.xml:54
 msgid "The names of ingredients that were removed from the shopping list."
 msgstr ""
+"Los nombres de los ingredientes que se han quitado de la lista de la compra."
 
 #: data/org.gnome.Recipes.gschema.xml:60
 msgid "The list of recipes to be exported"
@@ -192,6 +206,8 @@ msgid ""
 "The list of recipes to be exported. Each entry in the list is the ID of a "
 "recipe."
 msgstr ""
+"La lista de recetas que exportar. Cada entrada de la lista es el ID de una "
+"receta."
 
 #: src/chef-conflict-dialog.ui:10
 msgid "Same Chef"
@@ -239,13 +255,11 @@ msgid "_Save"
 msgstr "_Guardar"
 
 #: src/gr-chef-dialog.ui:97
-#, fuzzy
-#| msgid "This data may be shared with other users if you share your recipes."
 msgid ""
 "This information may be shared with other users if you share your recipes."
 msgstr ""
-"Si compartes la receta, esta información se puede ser compartir con otros "
-"usuarios."
+"Esta información se puede ser compartir con otros usuarios si comparte sus "
+"recetas."
 
 #: src/gr-chef-dialog.ui:119
 msgid "Other Chef"
@@ -268,10 +282,8 @@ msgid "Done"
 msgstr "Hecho"
 
 #: src/gr-cooking-page.ui:185
-#, fuzzy
-#| msgid "_Start Cooking"
 msgid "Stop Cooking?"
-msgstr "_Comenzar a cocinar"
+msgstr "¿Dejar de cocinar?"
 
 #: src/gr-cooking-page.ui:194
 msgid "Some timers are still running."
@@ -284,12 +296,10 @@ msgid ""
 msgstr ""
 
 #: src/gr-cooking-page.ui:212
-#| msgid "Cooking"
 msgid "Keep Cooking"
 msgstr "Seguir cocinando"
 
 #: src/gr-cooking-page.ui:219
-#| msgid "Timer"
 msgid "Stop Timers"
 msgstr "Detener temporizadores"
 
@@ -308,20 +318,24 @@ msgid ""
 "To advance to the next step, press any key on the\n"
 "keyboard."
 msgstr ""
+"Para pasar al siguiente paso, pulse cualquier tecla\n"
+"del teclado."
 
 #: src/gr-cooking-page.ui:304
 msgid "To go back to the previous step, doubletap any key."
-msgstr ""
+msgstr "Para volver al paso anterior, pulse dos veces cualquier tecla."
 
 #: src/gr-cooking-page.ui:326
 msgid ""
 "Alternatively, you can use the cursor keys to\n"
 "quickly seek within the directions."
 msgstr ""
+"Alternativamente, puede usar las teclas de flechas\n"
+"para moverse rápidamente en ambas direcciones."
 
 #: src/gr-cooking-page.ui:350
 msgid "To exit the process, press the Escape key."
-msgstr ""
+msgstr "Para salir del proceso, pulse la tecla Esc."
 
 #: src/gr-cooking-view.ui:64
 msgid "Time is up!"
@@ -353,10 +367,9 @@ msgid "Contains garlic"
 msgstr "Contiene ajo"
 
 #: src/gr-details-page.ui:112
-#, fuzzy
 #| msgid "Contains garlic"
 msgid "Contains dairy products"
-msgstr "Contiene ajo"
+msgstr "Contiene productos lácteos"
 
 #: src/gr-details-page.ui:119
 msgid "Contains Gluten"
@@ -521,10 +534,12 @@ msgid "Description"
 msgstr "Descripción"
 
 #: src/gr-edit-page.ui:635 src/gr-diet-row.c:102
+#| msgid "Gluten-free"
 msgid "Gluten free"
-msgstr "Libre de gluten"
+msgstr "Sin gluten"
 
 #: src/gr-edit-page.ui:642 src/gr-diet-row.c:105
+#| msgid "Nut-free"
 msgid "Nut free"
 msgstr "Sin nueces"
 
@@ -537,6 +552,7 @@ msgid "Vegetarian"
 msgstr "Vegetariano"
 
 #: src/gr-edit-page.ui:663 src/gr-diet-row.c:114
+#| msgid "Milk-free"
 msgid "Milk free"
 msgstr "Sin lácteos"
 
@@ -591,10 +607,11 @@ msgstr "Sintaxis"
 #: src/gr-edit-page.ui:1179
 msgid "Use paragraphs to break directions into steps (2 newlines)."
 msgstr ""
+"Use párrafos para dividir las instrucciones en pasos (2 líneas nuevas)."
 
 #: src/gr-edit-page.ui:1192
 msgid "You can provide an image or a time counter in each step."
-msgstr ""
+msgstr "Puede proporcionar una imagen o un temporizador en cada paso."
 
 #: src/gr-edit-page.ui:1204
 msgid "Timer"
@@ -737,7 +754,6 @@ msgid "All ingredients marked as stocked!"
 msgstr "Todavía no se han añadido ingredientes"
 
 #: src/gr-window.ui:215
-#| msgid "Undo"
 msgid "_Undo"
 msgstr "_Deshacer"
 
@@ -766,12 +782,10 @@ msgid "_Import"
 msgstr "Importar"
 
 #: src/menus.ui:11 src/menus.ui:53
-#| msgid "_Export"
 msgid "_Export All"
 msgstr "_Exportar todo"
 
 #: src/menus.ui:16
-#| msgid "Chef Information"
 msgid "_Chef Information"
 msgstr "Información sobre el _cocinero"
 
@@ -800,7 +814,6 @@ msgid "File"
 msgstr "Archivo"
 
 #: src/menus.ui:60
-#| msgid "Chef Information"
 msgid "Chef Information…"
 msgstr "Información sobre el cocinero…"
 
@@ -809,7 +822,6 @@ msgid "Copy"
 msgstr "Copiar"
 
 #: src/menus.ui:73
-#| msgid "Pasta"
 msgid "Paste"
 msgstr "Pegar"
 
@@ -822,7 +834,6 @@ msgid "Help"
 msgstr "Ayuda"
 
 #: src/menus.ui:89
-#| msgid "Recipes page"
 msgid "Recipes _Help"
 msgstr "_Ayuda de recetas"
 
@@ -849,12 +860,11 @@ msgid "Share with a friend"
 msgstr "Compartir con un amigo"
 
 #: src/recipe-export-dialog.ui:63
-#| msgid "Contribute to GNOME recipes"
+#| msgid "Contribute to the Recipes project"
 msgid "Contribute to GNOME Recipes"
-msgstr "Colaborar con GNOME Recetas"
+msgstr "Colaborar con Recetas de GNOME"
 
 #: src/recipe-whats-new-dialog.ui:8
-#| msgid "Add a New Recipe"
 msgid "What’s New in Recipes"
 msgstr "Novedades en Recetas"
 
@@ -909,7 +919,7 @@ msgstr "Tiempo de ejecución"
 
 #: src/gr-about-dialog.c:457 src/gr-about-dialog.c:521
 msgid "Bundled libraries"
-msgstr ""
+msgstr "Bibliotecas incluídas"
 
 #: src/gr-about-dialog.c:487
 msgid "OS"
@@ -953,13 +963,15 @@ msgstr "Recetas de"
 #: src/gr-account.c:109
 #, c-format
 msgid "Got an error from Account portal"
-msgstr ""
+msgstr "Se obtuvo un error del portal de Cuentas"
 
 #: src/gr-account.c:137
 msgid ""
 "Allow your personal information to be included with recipes you share with "
 "your friends."
 msgstr ""
+"Permitir que su información personal se incluya en las recetas que comparte "
+"con sus amigos."
 
 #: src/gr-app.c:393
 msgid "Print the version and exit"
@@ -1016,8 +1028,6 @@ msgid "Timer for “%s” has expired."
 msgstr "El tiempo de cocina «%s» ha concluido."
 
 #: src/gr-cooking-view.c:405
-#, fuzzy
-#| msgid "Time is up!"
 msgid "Timer is up!"
 msgstr "¡Se acabó el tiempo!"
 
@@ -1221,10 +1231,9 @@ msgid "Could not find this recipe."
 msgstr "No se pudo encontrar esta receta."
 
 #: src/gr-details-page.c:585
-#, fuzzy, c-format
-#| msgid "Time is up!"
+#, c-format
 msgid "Timer: %s"
-msgstr "¡Se acabó el tiempo!"
+msgstr "Temporizador: %s"
 
 #: src/gr-details-page.c:592
 #, c-format
@@ -1378,10 +1387,13 @@ msgid "Name of the List"
 msgstr "Nombre de la lista"
 
 #: src/gr-edit-page.c:1764
+#, fuzzy
+#| msgid "Some ingredients need correction"
 msgid "No ingredients added yet"
-msgstr "Todavía no se han añadido ingredientes"
+msgstr "Algunos ingredientes necesitan una corrección"
 
 #: src/gr-edit-page.c:1783
+#| msgid "Ingredient"
 msgid "Add Ingredient"
 msgstr "Añadir ingrediente"
 
@@ -1390,7 +1402,6 @@ msgid "Add List"
 msgstr "Añadir lista"
 
 #: src/gr-edit-page.c:1918
-#| msgid "Name your recipe"
 msgid "Name Your Recipe"
 msgstr "Nombre de su receta"
 
@@ -1465,7 +1476,6 @@ msgid "Use the ♥ button to mark recipes as favorites."
 msgstr "Use el botón ♥ para marcar recetas como favoritas."
 
 #: src/gr-list-page.c:442
-#| msgid "_New Recipe"
 msgid "No new recipes"
 msgstr "No hay recetas nuevas"
 
@@ -1486,9 +1496,8 @@ msgid "Breakfast"
 msgstr "Desayuno"
 
 #: src/gr-meal.c:47
-#, fuzzy
 msgid "Side Dishes"
-msgstr "Plato secundario"
+msgstr "Segundos"
 
 #: src/gr-meal.c:48
 msgid "Desserts"
@@ -1535,12 +1544,10 @@ msgid "Could not parse %s as a number"
 msgstr "No se pudo inerpretar %s como un número"
 
 #: src/gr-recipe-exporter.c:162
-#| msgid "Imported Recipes"
 msgid "Save the exported recipe"
 msgstr "Guardar la receta exportada"
 
 #: src/gr-recipe-exporter.c:165 src/gr-shopping-page.c:740
-#| msgid "_Save"
 msgid "Save"
 msgstr "Guardar"
 
@@ -1555,25 +1562,22 @@ msgid "Please accept my attached recipe contribution."
 msgstr ""
 
 #: src/gr-recipe-exporter.c:207
-#, fuzzy
-#| msgid "My recipes"
 msgid "Try this recipe"
-msgstr "Mis recetas"
+msgstr "Pruebe esta receta"
 
 #: src/gr-recipe-exporter.c:208
-#, fuzzy
-#| msgid "Could not find this recipe."
 msgid ""
 "Hi,\n"
 "\n"
 "you should try this recipe."
-msgstr "No se pudo encontrar esta receta."
+msgstr ""
+"Hola,\n"
+"\n"
+"debería probar esta receta."
 
 #: src/gr-recipe-exporter.c:211
-#, fuzzy
-#| msgid "Nut-free recipes"
 msgid "Try these recipes"
-msgstr "Recetas libres de nueces"
+msgstr "Pruebe estas recetas"
 
 #: src/gr-recipe-exporter.c:212
 msgid ""
@@ -1581,15 +1585,18 @@ msgid ""
 "\n"
 "you should try these recipes."
 msgstr ""
+"Hola,\n"
+"\n"
+"debería probar estas recetas."
 
 #: src/gr-recipe-exporter.c:215
 msgid "(The attached file can be imported into GNOME Recipes.)"
-msgstr ""
+msgstr "(No se ha podido importar el archivo adjunto en Recetas de GNOME)"
 
 #: src/gr-recipe-exporter.c:399
 #, c-format
 msgid "This build does not support exporting"
-msgstr ""
+msgstr "Esta versión no soporta la exportación"
 
 #: src/gr-recipe-exporter.c:481
 #, c-format
@@ -1604,8 +1611,8 @@ msgstr ""
 #, c-format
 msgid "%d recipe selected for sharing"
 msgid_plural "%d recipes selected for sharing"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d receta seleccionada para compartir"
+msgstr[1] "%d recetas seleccionadas para compartir"
 
 #: src/gr-recipe-exporter.c:610
 msgid ""
@@ -1613,6 +1620,9 @@ msgid ""
 "with GNOME Recipes. You should only contribute\n"
 "your own recipes."
 msgstr ""
+"Algunas de las recetas seleccionadas ya\n"
+"están incluídas en Recetas de GNOME. Sólo debe\n"
+"contribuir con sus propias recetas"
 
 #: src/gr-recipe-formatter.c:53 src/gr-recipe-printer.c:157
 msgid "Author:"
@@ -1640,20 +1650,17 @@ msgstr ""
 "%s"
 
 #: src/gr-recipe-importer.c:480
-#, fuzzy, c-format
-#| msgid "Failed to load recipe: Couldn't parse Created key"
+#, c-format
 msgid "Failed to load recipe: Couldn’t parse Created key"
-msgstr "Error al cargar la receta: No se pudo procesar la llave creada"
+msgstr "Error al cargar la receta: no se pudo procesar la llave creada"
 
 #: src/gr-recipe-importer.c:491
-#, fuzzy, c-format
-#| msgid "Failed to load recipe: Couldn't parse Modified key"
+#, c-format
 msgid "Failed to load recipe: Couldn’t parse Modified key"
-msgstr "Error al cargar la receta: No se pudo procesar la llave modificada"
+msgstr "Error al cargar la receta: no se pudo procesar la llave modificada"
 
 #: src/gr-recipe-importer.c:771
 #, c-format
-#| msgid "No chef found"
 msgid "No chef information found"
 msgstr "No se ha encontrado información sobre el cocinero"
 
@@ -1692,13 +1699,12 @@ msgid "All Recipes"
 msgstr "Todas las recetas"
 
 #: src/gr-recipes-page.c:226 src/gr-window.c:1284
-#| msgid "_New Recipe"
 msgid "New Recipes"
 msgstr "Nuevas recetas"
 
 #: src/gr-recipes-page.c:274
 msgid "Last edited:"
-msgstr ""
+msgstr "Última edición:"
 
 #: src/gr-recipes-page.c:373
 #, c-format
@@ -1714,8 +1720,8 @@ msgstr "Comprar ingredientes: <b>%s y %s</b>"
 #, c-format
 msgid "Buy ingredients: <b>%s, %s and %d other</b>"
 msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Comprar ingredientes: <b>%s, %s y %d otro</b>"
+msgstr[1] "Comprar ingredientes: <b>%s, %s y %d otros</b>"
 
 #: src/gr-recipe-store.c:1012
 #, c-format
@@ -1765,6 +1771,8 @@ msgid "Christmas"
 msgstr "Navidad"
 
 #: src/gr-season.c:43
+#, fuzzy
+#| msgid "New Year’s"
 msgid "New Years"
 msgstr "Año nuevo"
 
@@ -1805,8 +1813,8 @@ msgstr "Elementos"
 #, c-format
 msgid "%d ingredient marked for purchase"
 msgid_plural "%d ingredients marked for purchase"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d ingrediente marcado para comprar"
+msgstr[1] "%d ingredientes marcados para comprar"
 
 #: src/gr-shopping-page.c:119
 #, c-format
@@ -1819,11 +1827,10 @@ msgstr[1] "Comprar ingredientes (%d recetas)"
 #, c-format
 msgid "%d Recipe marked for preparation"
 msgid_plural "%d Recipes marked for preparation"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d receta marcada para preparar"
+msgstr[1] "%d recetas marcadas para preparar"
 
 #: src/gr-shopping-page.c:737
-#| msgid "A shopping list"
 msgid "Save the shopping list"
 msgstr "Guardar la lista de la compra"
 
@@ -1840,7 +1847,6 @@ msgid "At most hot"
 msgstr ""
 
 #: src/gr-spice-row.c:139
-#| msgid "Very spicy"
 msgid "Hot or very spicy"
 msgstr "Picante o muy especiado"
 
@@ -1967,7 +1973,7 @@ msgstr "taza"
 #: src/gr-unit.c:52
 msgctxt "unit abbreviation"
 msgid "tbsp"
-msgstr ""
+msgstr "cda"
 
 #: src/gr-unit.c:52
 msgctxt "unit name"
@@ -1977,7 +1983,7 @@ msgstr "cucharada"
 #: src/gr-unit.c:53
 msgctxt "unit abbreviation"
 msgid "tsp"
-msgstr ""
+msgstr "cdta"
 
 #: src/gr-unit.c:53
 msgctxt "unit name"
@@ -2015,22 +2021,16 @@ msgid "glass"
 msgstr "vaso"
 
 #: src/gr-unit.c:57
-#| msgctxt "minute abbreviation"
-#| msgid "m"
 msgctxt "unit abbreviation"
 msgid "mm"
 msgstr "mm"
 
 #: src/gr-unit.c:57
-#| msgctxt "unit name"
-#| msgid "milliliter"
 msgctxt "unit name"
 msgid "millimeter"
 msgstr "milímetro"
 
 #: src/gr-unit.c:58
-#| msgctxt "minute abbreviation"
-#| msgid "m"
 msgctxt "unit abbreviation"
 msgid "cm"
 msgstr "cm"
@@ -2041,8 +2041,6 @@ msgid "centimeter"
 msgstr "centímetro"
 
 #: src/gr-unit.c:59
-#| msgctxt "minute abbreviation"
-#| msgid "m"
 msgctxt "unit abbreviation"
 msgid "m"
 msgstr "m"
@@ -2104,32 +2102,38 @@ msgstr "hace algún tiempo"
 
 #: src/gr-utils.c:438
 msgid "Could not connect to the session bus from inside the Flatpak sandbox."
-msgstr ""
+msgstr "No se pudo conectar al bus de sesión desde el entorno de Flatpak."
 
 #: src/gr-utils.c:439
 msgid "Certain functionality will not be available."
-msgstr ""
+msgstr "Determinada funcionalidad no estará disponible."
 
 #: src/gr-utils.c:459
 msgid ""
 "Missing the desktop portal needed to open files from inside a Flatpak "
 "sandbox."
 msgstr ""
+"Falta el portal de escritorio necesario para abrir archivos dentro de un "
+"entorno Flatpak."
 
 #: src/gr-utils.c:461
 msgid ""
 "Missing the desktop portal needed to print from inside a Flatpak sandbox."
 msgstr ""
+"Falta el portal de escritorio necesario para imprimir dentro de un entorno "
+"Flatpak."
 
 #: src/gr-utils.c:463
 msgid ""
 "Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
 msgstr ""
+"Falta el portal de escritorio necesario para abrir URL dentro de un entorno "
+"Flatpak."
 
 #: src/gr-utils.c:467
 msgid ""
 "Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
-msgstr ""
+msgstr "Instale xdg-desktop-portal y xdg-desktop-portal-gtk en su equipo"
 
 #: src/gr-window.c:230
 msgid "Add a New Recipe"
@@ -2147,6 +2151,8 @@ msgid ""
 "The new recipe has not been saved.\n"
 "Close the window anyway?"
 msgstr ""
+"La nueva receta no se ha guardado.\n"
+"¿Quiere cerrar la ventana de todos modos?"
 
 #: src/gr-window.c:651
 #, c-format
@@ -2160,7 +2166,7 @@ msgstr ""
 
 #: src/gr-window.c:831
 msgid "Ready to Cook!"
-msgstr ""
+msgstr "Listo para cocinar"
 
 #: src/gr-window.c:1053
 msgid "Imported Recipes"
@@ -2171,13 +2177,11 @@ msgid "Select a recipe file"
 msgstr "Seleccione un archivo de receta"
 
 #: src/gr-window.c:1155
-#, fuzzy, c-format
-#| msgid "The recipe %s has been exported as “%s”"
+#, c-format
 msgid "Recipes have been exported to “%s”"
-msgstr "La receta %s se ha exportado como «%s»"
+msgstr "Las recetas se han exportado a «%s»"
 
 #: src/gr-window.c:1193
-#| msgid "Select a recipe file"
 msgid "Select a file"
 msgstr "Seleccionar un archivo"
 
@@ -2191,7 +2195,6 @@ msgid "Chefs: %s"
 msgstr "Cocineros: %s"
 
 #: src/gr-window.c:1252
-#| msgid "Favorite recipes"
 msgid "Favorite Recipes"
 msgstr "Recetas favoritas"
 
@@ -2220,7 +2223,6 @@ msgid "Amaretti"
 msgstr "Amaretto"
 
 #: src/ingredients.inc:3
-#| msgid "Anchovis"
 msgid "Anchovies"
 msgstr "Anchoas"
 
@@ -2229,9 +2231,8 @@ msgid "Apple"
 msgstr "Manzana"
 
 #: src/ingredients.inc:5
-#, fuzzy
 msgid "Apricot"
-msgstr "Damasco"
+msgstr "Albaricoque"
 
 #: src/ingredients.inc:6
 msgid "Artichoke"
@@ -2298,14 +2299,12 @@ msgid "Beetroot"
 msgstr "Remolacha"
 
 #: src/ingredients.inc:22
-#, fuzzy
 msgid "Berry"
-msgstr "Berries"
+msgstr "Baya"
 
 #: src/ingredients.inc:23
-#, fuzzy
 msgid "Biscotti"
-msgstr "Biscotti"
+msgstr "Biscotes"
 
 #: src/ingredients.inc:24
 msgid "Bilberry"
@@ -2325,20 +2324,19 @@ msgstr "Queso"
 
 #: src/ingredients.inc:28
 msgid "Cherries, pitted"
-msgstr ""
+msgstr "Cerezas, picadas"
 
 #: src/ingredients.inc:29
 msgid "Chocolate frosting"
-msgstr ""
+msgstr "Crema de chocolate"
 
 #: src/ingredients.inc:30
-#| msgid "Silantro"
 msgid "Cilantro"
 msgstr "Cilantro"
 
 #: src/ingredients.inc:31
 msgid "Cocoa powder"
-msgstr ""
+msgstr "Cacao en polvo"
 
 #: src/ingredients.inc:32
 msgid "Couscous"
@@ -2366,7 +2364,7 @@ msgstr "Ajo"
 
 #: src/ingredients.inc:38
 msgid "Ground beef"
-msgstr ""
+msgstr "Carne picada"
 
 #: src/ingredients.inc:39
 msgid "Honey"
@@ -2378,7 +2376,7 @@ msgstr "Limón"
 
 #: src/ingredients.inc:41
 msgid "Linseeds"
-msgstr ""
+msgstr "Semillas de lino"
 
 #: src/ingredients.inc:42
 msgid "Mayonnaise"
@@ -2394,7 +2392,7 @@ msgstr "Mostaza"
 
 #: src/ingredients.inc:45
 msgid "Oatmeal"
-msgstr ""
+msgstr "Harina de avena"
 
 #: src/ingredients.inc:46
 msgid "Oil"
@@ -2418,7 +2416,7 @@ msgstr "Perejil"
 
 #: src/ingredients.inc:51
 msgid "Peperoni"
-msgstr ""
+msgstr "Pepperoni"
 
 #: src/ingredients.inc:52
 msgid "Pepper"
@@ -2429,10 +2427,8 @@ msgid "Peppers"
 msgstr "Pimientos"
 
 #: src/ingredients.inc:54
-#, fuzzy
-#| msgid "Pizza"
 msgid "Pizza sauce"
-msgstr "Pizza"
+msgstr "Salsa de pizza"
 
 #: src/ingredients.inc:55
 msgid "Potato"
@@ -2459,9 +2455,8 @@ msgid "Sunflower seeds"
 msgstr "Pipas de girasol"
 
 #: src/ingredients.inc:61
-#, fuzzy
 msgid "Squash"
-msgstr "Chayote"
+msgstr "Zumo"
 
 #: src/ingredients.inc:62
 msgid "Tangerine"
@@ -2477,15 +2472,15 @@ msgstr "Tomate"
 
 #: src/ingredients.inc:65
 msgid "Turmeric, ground"
-msgstr ""
+msgstr "Cúrcuma, molida"
 
 #: src/ingredients.inc:66
 msgid "Vanilla sugar"
-msgstr ""
+msgstr "Azúcar de vainilla"
 
 #: src/ingredients.inc:67
 msgid "Vanilla pudding"
-msgstr ""
+msgstr "Pudin de vainilla"
 
 #: src/ingredients.inc:68
 msgid "Vinegar"
@@ -2501,345 +2496,367 @@ msgstr "Vino"
 
 #: src/ingredients.inc:71
 msgid "Yeast"
-msgstr ""
+msgstr "Levadura"
 
 #: src/ingredients.inc:72
 msgid "Yoghurt"
 msgstr "Yogur"
 
 #: src/ingredients.inc:73
-#, fuzzy
 msgid "Zinfandel"
 msgstr "Zinfandel"
 
 #: src/no-ingredients.inc:1
 msgid "no Almond"
-msgstr "sin almendra"
+msgstr "no hay almendras"
 
 #: src/no-ingredients.inc:2
 msgid "no Amaretti"
-msgstr "sin amaretto"
+msgstr "no hay amaretto"
 
 #: src/no-ingredients.inc:3
-#, fuzzy
-#| msgid "no Anchovis"
 msgid "no Anchovies"
-msgstr "sin anchoas"
+msgstr "no hay anchoas"
 
 #: src/no-ingredients.inc:4
 msgid "no Apple"
-msgstr "sin manzana"
+msgstr "no hay manzana"
 
 #: src/no-ingredients.inc:5
-#, fuzzy
 msgid "no Apricot"
-msgstr "ohne Aprikose"
+msgstr "no hay albaricoque"
 
 #: src/no-ingredients.inc:6
 msgid "no Artichoke"
-msgstr "sin alcachofas"
+msgstr "no hay alcachofas"
 
 #: src/no-ingredients.inc:7
 msgid "no Asparagus"
-msgstr "sin espárragos"
+msgstr "no hay espárragos"
 
 #: src/no-ingredients.inc:8
-#, fuzzy
 msgid "no Aubergine"
-msgstr "ohne Aubergine"
+msgstr "no hay berenjena"
 
 #: src/no-ingredients.inc:9
 msgid "no Bacon"
-msgstr "sin bacon"
+msgstr "no hay bacon"
 
 #: src/no-ingredients.inc:10
-#, fuzzy
 msgid "no Bagel"
-msgstr "ohne Brötchen"
+msgstr "no hay rosquillas"
 
 #: src/no-ingredients.inc:11
-#, fuzzy
 msgid "no Baked beans"
-msgstr "ohne gebackene Bohnen"
+msgstr "no hay judías cocidas"
 
 #: src/no-ingredients.inc:12
 msgid "no Baking powder"
-msgstr "sin levadura"
+msgstr "no hay levadura"
 
 #: src/no-ingredients.inc:13
 msgid "no Banana"
-msgstr "sin plátano"
+msgstr "no hay plátano"
 
 #: src/no-ingredients.inc:14
-#, fuzzy
 msgid "no Basil"
-msgstr "ohne Basilikum"
+msgstr "no hay albahaca"
 
 #: src/no-ingredients.inc:15
 msgid "no Basmati rice"
-msgstr "Sin arroz basmati"
+msgstr "no hay arroz basmati"
 
 #: src/no-ingredients.inc:16
-#, fuzzy
 msgid "no Bay leaf"
-msgstr "ohne Lorbeerblatt"
+msgstr "no hay hojas de laurel"
 
 #: src/no-ingredients.inc:17
-#, fuzzy
 msgid "no Beans"
-msgstr "ohne Bohnen"
+msgstr "no hay judías"
 
 #: src/no-ingredients.inc:18
-#, fuzzy
 msgid "no Beef mince"
-msgstr "ohne Hackfleisch"
+msgstr "no hay carne picada"
 
 #: src/no-ingredients.inc:19
 msgid "no Beef sausage"
-msgstr "sin salchichas de ternera"
+msgstr "no hay salchichas de ternera"
 
 #: src/no-ingredients.inc:20
-#, fuzzy
 msgid "no Beef stock"
-msgstr "ohne Rinderbrühe"
+msgstr "no hay caldo de carne"
 
 #: src/no-ingredients.inc:21
-#, fuzzy
 msgid "no Beetroot"
-msgstr "ohne Rote Bete"
+msgstr "no hay remolacha"
 
 #: src/no-ingredients.inc:22
-#, fuzzy
 msgid "no Berry"
-msgstr "ohne Beeren"
+msgstr "no hay bayas"
 
 #: src/no-ingredients.inc:23
-#, fuzzy
 msgid "no Biscotti"
-msgstr "ohne Biscotti"
+msgstr "no hay biscotes"
 
 #: src/no-ingredients.inc:24
-#, fuzzy
 msgid "no Bilberry"
-msgstr "ohne Heidelbeere"
+msgstr "no hay arándanos"
 
 #: src/no-ingredients.inc:25
 msgid "no Butter"
-msgstr "sin mantequilla"
+msgstr "no hay mantequilla"
 
 #: src/no-ingredients.inc:26
 msgid "no Carrot"
-msgstr "sin zanahoria"
+msgstr "no hay zanahoria"
 
 #: src/no-ingredients.inc:27
 msgid "no Cheese"
-msgstr "sin queso"
+msgstr "no hay queso"
 
 #: src/no-ingredients.inc:28
 msgid "no Cherries, pitted"
-msgstr ""
+msgstr "no hay cerezas picadas"
 
 #: src/no-ingredients.inc:29
 msgid "no Chocolate frosting"
-msgstr ""
+msgstr "no hay crema de chocolate"
 
 #: src/no-ingredients.inc:30
-#| msgid "no Silantro"
 msgid "no Cilantro"
-msgstr "sin cilantro"
+msgstr "no hay cilantro"
 
 #: src/no-ingredients.inc:31
 msgid "no Cocoa powder"
-msgstr ""
+msgstr "no hay cacao en polvo"
 
 #: src/no-ingredients.inc:32
-#, fuzzy
 msgid "no Couscous"
-msgstr "ohne Couscous"
+msgstr "no hay Cous cous"
 
 #: src/no-ingredients.inc:33
-#, fuzzy
 msgid "no Date"
-msgstr "ohne Datteln"
+msgstr "no hay dátiles"
 
 #: src/no-ingredients.inc:34
 msgid "no Egg"
-msgstr "sin huevo"
+msgstr "no hay huevo"
 
 #: src/no-ingredients.inc:35
-#, fuzzy
 msgid "no Fig"
-msgstr "ohne Feigen"
+msgstr "no hay higos"
 
 #: src/no-ingredients.inc:36
 msgid "no Flour"
-msgstr "sin harina"
+msgstr "no hay harina"
 
 #: src/no-ingredients.inc:37
 msgid "no Garlic"
-msgstr "sin ajo"
+msgstr "no hay ajo"
 
 #: src/no-ingredients.inc:38
 msgid "no Ground beef"
-msgstr ""
+msgstr "no hay carne picada"
 
 #: src/no-ingredients.inc:39
 msgid "no Honey"
-msgstr "sin miel"
+msgstr "no hay miel"
 
 #: src/no-ingredients.inc:40
 msgid "no Lemon"
-msgstr "sin limón"
+msgstr "no hay limón"
 
 #: src/no-ingredients.inc:41
 msgid "no Linseeds"
-msgstr ""
+msgstr "no hay semillas de lino"
 
 #: src/no-ingredients.inc:42
 msgid "no Mayonnaise"
-msgstr "sin mayonesa"
+msgstr "no hay mayonesa"
 
 #: src/no-ingredients.inc:43
 msgid "no Milk"
-msgstr "sin leche"
+msgstr "no hay leche"
 
 #: src/no-ingredients.inc:44
 msgid "no Mustard"
-msgstr "sin mostaza"
+msgstr "no hay mostaza"
 
 #: src/no-ingredients.inc:45
-#, fuzzy
-#| msgid "Any meal"
 msgid "no Oatmeal"
-msgstr "Cualquier comida"
+msgstr "no hay harina de avena"
 
 #: src/no-ingredients.inc:46
 msgid "no Oil"
-msgstr "sin aceite"
+msgstr "no hay aceite"
 
 #: src/no-ingredients.inc:47
 msgid "no Onion"
-msgstr "sin cebolla"
+msgstr "no hay cebolla"
 
 #: src/no-ingredients.inc:48
 msgid "no Olive oil, extra-virgin"
-msgstr "sin aceite de oliva virgen extra"
+msgstr "no hay aceite de oliva virgen extra"
 
 #: src/no-ingredients.inc:49
 msgid "no Orange"
-msgstr "sin naranja"
+msgstr "no hay naranja"
 
 #: src/no-ingredients.inc:50
-#, fuzzy
 msgid "no Parsley"
-msgstr "ohne Petersilie"
+msgstr "no hay perejil"
 
 #: src/no-ingredients.inc:51
-#, fuzzy
 msgid "no Peperoni"
-msgstr "ohne Paprika"
+msgstr "no hay pepperoni"
 
 #: src/no-ingredients.inc:52
-#, fuzzy
 msgid "no Pepper"
-msgstr "ohne Paprika"
+msgstr "no hay pimienta"
 
 #: src/no-ingredients.inc:53
-#, fuzzy
 msgid "no Peppers"
-msgstr "ohne Paprika"
+msgstr "no hay pimientos"
 
 #: src/no-ingredients.inc:54
 msgid "no Pizza sauce"
-msgstr ""
+msgstr "no hay salsa de pizza"
 
 #: src/no-ingredients.inc:55
 msgid "no Potato"
-msgstr "sin patata"
+msgstr "no hay patata"
 
 #: src/no-ingredients.inc:56
 msgid "no Pumpkin seeds"
-msgstr "sin pipas de calabaza"
+msgstr "no hay pipas de calabaza"
 
 #: src/no-ingredients.inc:57
 msgid "no Salt"
-msgstr "sin sal"
+msgstr "no hay sal"
 
 #: src/no-ingredients.inc:58
 msgid "no Soy sauce"
-msgstr "sin salsa de soja"
+msgstr "no hay salsa de soja"
 
 #: src/no-ingredients.inc:59
 msgid "no Sugar"
-msgstr "sin azúcar"
+msgstr "no hay azúcar"
 
 #: src/no-ingredients.inc:60
 msgid "no Sunflower seeds"
-msgstr "sin pipas de girasol"
+msgstr "no hay pipas de girasol"
 
 #: src/no-ingredients.inc:61
-#, fuzzy
 msgid "no Squash"
-msgstr "ohne Kürbis"
+msgstr "no hay zumo"
 
 #: src/no-ingredients.inc:62
 msgid "no Tangerine"
-msgstr "sin mandarina"
+msgstr "no hay mandarina"
 
 #: src/no-ingredients.inc:63
 msgid "no Tofu"
-msgstr "sin tofu"
+msgstr "no hay tofu"
 
 #: src/no-ingredients.inc:64
 msgid "no Tomato"
-msgstr "sin tomate"
+msgstr "no hay tomate"
 
 #: src/no-ingredients.inc:65
 msgid "no Turmeric, ground"
-msgstr ""
+msgstr "no hay cúrcuma molida"
 
 #: src/no-ingredients.inc:66
-#, fuzzy
-#| msgid "no Vinegar"
 msgid "no Vanilla sugar"
-msgstr "sin vinagre"
+msgstr "no hay azúcar de vainilla"
 
 #: src/no-ingredients.inc:67
 msgid "no Vanilla pudding"
-msgstr ""
+msgstr "no hay pudin de vainilla"
 
 #: src/no-ingredients.inc:68
 msgid "no Vinegar"
-msgstr "sin vinagre"
+msgstr "no hay vinagre"
 
 #: src/no-ingredients.inc:69
 msgid "no Water"
-msgstr "sin agua"
+msgstr "no hay agua"
 
 #: src/no-ingredients.inc:70
 msgid "no Wine"
-msgstr "sin vino"
+msgstr "no hay vino"
 
 #: src/no-ingredients.inc:71
 msgid "no Yeast"
-msgstr ""
+msgstr "no hay levadura"
 
 #: src/no-ingredients.inc:72
 msgid "no Yoghurt"
-msgstr "sin yogur"
+msgstr "no hay yogur"
 
 #: src/no-ingredients.inc:73
-#, fuzzy
 msgid "no Zinfandel"
-msgstr "ohne Zinfandel"
+msgstr "no hay zinfandel"
 
 #: src/segments.inc:1
 msgid "Dough"
 msgstr ""
 
 #: src/segments.inc:2
+#, fuzzy
+#| msgid "Shopping List"
 msgid "Toppings"
-msgstr ""
+msgstr "Lista de la compra"
+
+#~ msgid "The setting for which unit temperatures should be displayed in."
+#~ msgstr "La configuración de las unidades de temperatura que se deben usar."
+
+#~ msgid ""
+#~ "The setting for which unit temperatures should be displayed in. Default "
+#~ "is 'locale', which means to use the LC_MEASUREMENT category of the "
+#~ "current locale to decide."
+#~ msgstr ""
+#~ "La configuración de las unidades de temperatura que se deben usar. El "
+#~ "valor predeterminado es 'locale', lo que significa que se usa la "
+#~ "categoría LC_MEASUREMENT de la configuración regional para decidirlo."
+
+#~ msgid ""
+#~ "Contains dairy products. Please always double-check the ingredients if "
+#~ "you are serving a person with gluten or dairy intolerance."
+#~ msgstr ""
+#~ "Contiene productos lácteos. Compruebe siempre los ingredientes si se "
+#~ "trata de una persona con intolerancia al gluten o a la lactosa."
+
+#~ msgid ""
+#~ "Contains Gluten. Please always double-check the ingredients if you are "
+#~ "serving a person with gluten or dairy intolerance."
+#~ msgstr ""
+#~ "Contiene gluten. Compruebe siempre los ingredientes si se trata de una "
+#~ "persona con intolerancia al gluten o a la lactosa."
+
+#~ msgid "Use a number, followed by an (optional) unit."
+#~ msgstr "Use un número seguido de una unidad (opcional)."
+
+#~ msgid "Examples: 1 kg, 2 1/2 pounds, 250 ml, 6"
+#~ msgstr "Ejemplos: 1 kg, 2 1/2 libras, 250 ml, 6"
+
+#~| msgid "Add Ingredient"
+#~ msgid "Add more ingredients"
+#~ msgstr "Añadir más ingredientes"
+
+#~ msgid "Supported categories: %s\n"
+#~ msgstr "Categorías soportadas: %s\n"
+
+#~ msgid "Show a category"
+#~ msgstr "Mostrar una categoría"
+
+#~| msgid "Amount"
+#~ msgid "Amount…"
+#~ msgstr "Cantidad…"
+
+#~| msgid "Ingredient"
+#~ msgid "Ingredient…"
+#~ msgstr "Ingrediente…"
 
 #, fuzzy
 #~| msgid "Recipe Author Information"
