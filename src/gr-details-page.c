@@ -118,6 +118,26 @@ delete_recipe (GrDetailsPage *page)
 }
 
 static void
+copy_recipe (GrDetailsPage *page)
+{
+        GrRecipeStore *store;
+        GtkWidget *window;
+        g_autoptr(GrRecipe) clone = NULL;
+        g_autoptr(GError) error = NULL;
+
+        store = gr_recipe_store_get ();
+
+        clone = gr_recipe_clone (page->recipe, gr_recipe_store_get_user_key (store));
+        if (!gr_recipe_store_add_recipe (store, clone, &error)) {
+                g_warning ("Failed to add cloned recipe: %s", error->message);
+                return;
+        }
+
+        window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
+        gr_window_edit_recipe (GR_WINDOW (window), clone);
+}
+
+static void
 edit_recipe (GrDetailsPage *page)
 {
         GtkWidget *window;
@@ -408,6 +428,7 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, error_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, error_revealer);
 
+        gtk_widget_class_bind_template_callback (widget_class, copy_recipe);
         gtk_widget_class_bind_template_callback (widget_class, edit_recipe);
         gtk_widget_class_bind_template_callback (widget_class, delete_recipe);
         gtk_widget_class_bind_template_callback (widget_class, more_recipes);

@@ -481,6 +481,15 @@
           </object>
         </child>
         <child>
+          <object class="GtkButton" id="copy_button">
+            <property name="visible">1</property>
+            <property name="use-underline">1</property>
+            <property name="focus-on-click">0</property>
+            <property name="label" translatable="yes">_Copy</property>
+            <signal name="clicked" handler="copy_recipe" swapped="true"/>
+          </object>
+        </child>
+        <child>
           <object class="GtkButton" id="delete_button">
             <property name="visible">1</property>
             <property name="use-underline">1</property>
