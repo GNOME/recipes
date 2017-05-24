@@ -814,3 +814,36 @@ gr_recipe_matches (GrRecipe    *recipe,
 
         return TRUE;
 }
+
+GrRecipe *
+gr_recipe_clone (GrRecipe   *recipe,
+                 const char *author)
+{
+        g_autofree char *name = NULL;
+        g_autofree char *id = NULL;
+        g_autoptr(GDateTime) now = NULL;
+
+        name = g_strdup_printf (_("%s (copy)"), recipe->name);
+        id = generate_id ("R_", name, "_by_", author, NULL);
+        now = g_date_time_new_now_utc ();
+
+        return g_object_new (GR_TYPE_RECIPE,
+                             "id", id,
+                             "author", author,
+                             "name", name,
+                             "cuisine", recipe->cuisine,
+                             "category", recipe->category,
+                             "season", recipe->season,
+                             "prep-time", recipe->prep_time,
+                             "cook-time", recipe->cook_time,
+                             "serves", recipe->serves,
+                             "spiciness", recipe->spiciness,
+                             "description", recipe->description,
+                             "ingredients", recipe->ingredients,
+                             "instructions", recipe->instructions,
+                             "diets", recipe->diets,
+                             "images", recipe->images,
+                             "mtime", now,
+                             "ctime", now,
+                             NULL);
+}
