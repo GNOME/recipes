@@ -49,6 +49,10 @@ struct _GrIngredientsViewer
         GtkSizeGroup *group;
 
         GtkWidget *active_row;
+
+        GtkWidget *drag_row;
+        GtkWidget *row_before;
+        GtkWidget *row_after;
 };
 
 
@@ -341,6 +345,184 @@ gr_ingredients_viewer_set_title (GrIngredientsViewer *viewer,
         viewer->title = g_strdup (title);
 }
 
+static GtkTargetEntry entries[] = {
+        { "GTK_LIST_BOX_ROW", GTK_TARGET_SAME_APP, 0 }
+};
+
+void
+gr_ingredients_viewer_set_drag_row (GrIngredientsViewer *viewer,
+                                    GtkWidget           *row)
+{
+        if (viewer->drag_row) {
+                gtk_style_context_remove_class (gtk_widget_get_style_context (viewer->drag_row), "drag-hover");
+                gtk_style_context_remove_class (gtk_widget_get_style_context (viewer->drag_row), "drag-row");
+        }
+
+        viewer->drag_row = row;
+
+        if (viewer->drag_row)
+                gtk_style_context_add_class (gtk_widget_get_style_context (viewer->drag_row), "drag-row");
+}
+
+static GtkListBoxRow *
+get_last_row (GtkListBox *list)
+{
+        int i;
+        GtkListBoxRow *row = NULL;
+
+        for (i = 0; ; i++) {
+                GtkListBoxRow *tmp = gtk_list_box_get_row_at_index (list, i);
+                if (tmp == NULL)
+                        return row;
+                row = tmp;
+        }
+        return row;
+}
+
+static GtkListBoxRow *
+get_row_before (GtkListBox    *list,
+                GtkListBoxRow *row)
+{
+        int pos = gtk_list_box_row_get_index (row);
+        return gtk_list_box_get_row_at_index (list, pos - 1);
+}
+
+static GtkListBoxRow *
+get_row_after (GtkListBox    *list,
+               GtkListBoxRow *row)
+{
+        int pos = gtk_list_box_row_get_index (row);
+        return gtk_list_box_get_row_at_index (list, pos + 1);
+}
+
+static void
+drag_data_received (GtkWidget        *widget,
+                    GdkDragContext   *context,
+                    gint              x,
+                    gint              y,
+                    GtkSelectionData *selection_data,
+                    guint             info,
+                    guint32           time,
+                    gpointer          data)
+{
+        GrIngredientsViewer *viewer = GR_INGREDIENTS_VIEWER (data);
+        GtkWidget *row_before;
+        GtkWidget *row_after;
+        GtkWidget *parent;
+        GtkWidget *row;
+        GtkWidget *source;
+        int pos;
+
+        row_before = viewer->row_before;
+        row_after = viewer->row_after;
+
+        viewer->row_before = NULL;
+        viewer->row_after = NULL;
+
+        if (row_before)
+                gtk_style_context_remove_class (gtk_widget_get_style_context (row_before), "drag-hover-bottom");
+        if (row_after)
+                gtk_style_context_remove_class (gtk_widget_get_style_context (row_after), "drag-hover-top");
+
+        row = (gpointer)* (gpointer*)gtk_selection_data_get_data (selection_data);
+        source = gtk_widget_get_ancestor (row, GTK_TYPE_LIST_BOX_ROW);
+
+        gtk_style_context_remove_class (gtk_widget_get_style_context (source), "drag-row");
+        gtk_style_context_remove_class (gtk_widget_get_style_context (source), "drag-hover");
+
+        if (source == row_after)
+                return;
+
+        g_object_ref (source);
+        gtk_container_remove (GTK_CONTAINER (gtk_widget_get_parent (source)), source);
+
+        if (row_after) {
+                pos = gtk_list_box_row_get_index (GTK_LIST_BOX_ROW (row_after));
+                parent = gtk_widget_get_parent (row_after);
+        }
+        else {
+                pos = gtk_list_box_row_get_index (GTK_LIST_BOX_ROW (row_before)) + 1;
+                parent = gtk_widget_get_parent (row_before);
+        }
+
+        gtk_list_box_insert (GTK_LIST_BOX (parent), source, pos);
+        g_object_unref (source);
+}
+
+static gboolean
+drag_motion (GtkWidget      *widget,
+             GdkDragContext *context,
+             int             x,
+             int             y,
+             guint           time,
+             gpointer        data)
+{
+        GrIngredientsViewer *viewer = GR_INGREDIENTS_VIEWER (data);
+        GtkAllocation alloc;
+        GtkWidget *row;
+        int hover_row_y;
+        int hover_row_height;
+
+        row = GTK_WIDGET (gtk_list_box_get_row_at_y (GTK_LIST_BOX (widget), y));
+
+        if (viewer->drag_row)
+                gtk_style_context_remove_class (gtk_widget_get_style_context (viewer->drag_row), "drag-hover");
+
+        if (viewer->row_before)
+                gtk_style_context_remove_class (gtk_widget_get_style_context (viewer->row_before), "drag-hover-bottom");
+        if (viewer->row_after)
+                gtk_style_context_remove_class (gtk_widget_get_style_context (viewer->row_after), "drag-hover-top");
+
+        if (row) {
+                gtk_widget_get_allocation (row, &alloc);
+                hover_row_y = alloc.y;
+                hover_row_height = alloc.height;
+
+                if (y < hover_row_y + hover_row_height/2) {
+                        viewer->row_after = row;
+                        viewer->row_before = GTK_WIDGET (get_row_before (GTK_LIST_BOX (widget), GTK_LIST_BOX_ROW (row)));
+                }
+                else {
+                        viewer->row_before = row;
+                        viewer->row_after = GTK_WIDGET (get_row_after (GTK_LIST_BOX (widget), GTK_LIST_BOX_ROW (row)));
+                }
+        }
+        else {
+                viewer->row_before = GTK_WIDGET (get_last_row (GTK_LIST_BOX (widget)));
+                viewer->row_after = NULL;
+        }
+
+        if (viewer->drag_row &&
+            (viewer->drag_row == viewer->row_before ||
+             viewer->drag_row == viewer->row_after)) {
+                gtk_style_context_add_class (gtk_widget_get_style_context (viewer->drag_row), "drag-hover");
+                return FALSE;
+        }
+
+        if (viewer->row_before)
+                gtk_style_context_add_class (gtk_widget_get_style_context (viewer->row_before), "drag-hover-bottom");
+        if (viewer->row_after)
+                gtk_style_context_add_class (gtk_widget_get_style_context (viewer->row_after), "drag-hover-top");
+
+        return TRUE;
+}
+
+static void
+drag_leave (GtkWidget      *widget,
+            GdkDragContext *context,
+            guint           time,
+            gpointer        data)
+{
+        GrIngredientsViewer *viewer = GR_INGREDIENTS_VIEWER (data);
+
+        if (viewer->drag_row)
+                gtk_style_context_remove_class (gtk_widget_get_style_context (viewer->drag_row), "drag-hover");
+        if (viewer->row_before)
+                gtk_style_context_remove_class (gtk_widget_get_style_context (viewer->row_before), "drag-hover-bottom");
+        if (viewer->row_after)
+                gtk_style_context_remove_class (gtk_widget_get_style_context (viewer->row_after), "drag-hover-top");
+}
+
 static void
 gr_ingredients_viewer_set_editable (GrIngredientsViewer *viewer,
                                     gboolean             editable)
@@ -358,6 +540,26 @@ gr_ingredients_viewer_set_editable (GrIngredientsViewer *viewer,
                         g_object_set (row, "editable", viewer->editable, NULL);
         }
         g_list_free (children);
+
+        if (editable) {
+                gtk_style_context_add_class (gtk_widget_get_style_context (viewer->list), "editable");
+                gtk_drag_dest_set (viewer->list,
+                                   GTK_DEST_DEFAULT_MOTION | GTK_DEST_DEFAULT_DROP,
+                                   entries, 1, GDK_ACTION_MOVE);
+                g_signal_connect (viewer->list, "drag-data-received",
+                                  G_CALLBACK (drag_data_received), viewer);
+                g_signal_connect (viewer->list, "drag-motion",
+                                  G_CALLBACK (drag_motion), viewer);
+                g_signal_connect (viewer->list, "drag-leave",
+                                  G_CALLBACK (drag_leave), viewer);
+        }
+        else {
+                gtk_style_context_remove_class (gtk_widget_get_style_context (viewer->list), "editable");
+                gtk_drag_dest_unset (viewer->list);
+                g_signal_handlers_disconnect_by_func (viewer->list, drag_data_received, viewer);
+                g_signal_handlers_disconnect_by_func (viewer->list, drag_motion, viewer);
+                g_signal_handlers_disconnect_by_func (viewer->list, drag_leave, viewer);
+        }
 }
 
 static void
@@ -413,8 +615,6 @@ gr_ingredients_viewer_init (GrIngredientsViewer *self)
 {
         gtk_widget_set_has_window (GTK_WIDGET (self), FALSE);
         gtk_widget_init_template (GTK_WIDGET (self));
-
-        gtk_list_box_set_header_func (GTK_LIST_BOX (self->list), all_headers, self, NULL);
 
         self->group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 

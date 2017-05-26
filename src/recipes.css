@@ -449,3 +449,35 @@ dialog.about box.dialog-vbox {
 label.error {
   text-decoration: underline wavy red;
 }
+
+row:not(:first-child) {
+  border-top: 1px solid alpha(gray,0.5);
+  border-bottom: 1px solid transparent;
+}
+
+.editable row:not(.drag-hover-bottom):last-child {
+  border-bottom: 1px solid alpha(gray,0.5);
+}
+
+row.drag-row {
+  color: gray;
+  background: alpha(gray,0.2);
+}
+
+row.drag-row.drag-hover {
+  border-top: 1px solid #4e9a06;
+  border-bottom: 1px solid #4e9a06;
+}
+
+row.drag-hover image,
+row.drag-hover label {
+  color: #4e9a06;
+}
+
+row.drag-hover-top {
+  border-top: 1px solid #4e9a06;
+}
+
+row.drag-hover-bottom {
+  border-bottom: 1px solid #4e9a06;
+}

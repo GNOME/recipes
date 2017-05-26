@@ -31,7 +31,9 @@ G_DECLARE_FINAL_TYPE (GrIngredientsViewer, gr_ingredients_viewer, GR, INGREDIENT
 void set_active_row (GrIngredientsViewer *viewer,
                      GtkWidget           *row);
 
-GtkWidget *gr_ingredients_viewer_has_error (GrIngredientsViewer *viewer);
+GtkWidget *gr_ingredients_viewer_has_error    (GrIngredientsViewer *viewer);
+void       gr_ingredients_viewer_set_drag_row (GrIngredientsViewer *viewer,
+                                               GtkWidget           *row);
 
 G_END_DECLS
 

@@ -576,6 +576,7 @@ drag_begin (GtkWidget      *widget,
         cairo_t *cr;
         GtkWidget *row;
         int x, y;
+        GtkWidget *viewer;
 
         row = gtk_widget_get_ancestor (widget, GTK_TYPE_LIST_BOX_ROW);
 
@@ -583,9 +584,9 @@ drag_begin (GtkWidget      *widget,
         surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, alloc.width, alloc.height);
         cr = cairo_create (surface);
 
-        gtk_style_context_add_class (gtk_widget_get_style_context (row), "during-dnd");
+        gtk_style_context_add_class (gtk_widget_get_style_context (row), "drag-icon");
         gtk_widget_draw (row, cr);
-        gtk_style_context_remove_class (gtk_widget_get_style_context (row), "during-dnd");
+        gtk_style_context_remove_class (gtk_widget_get_style_context (row), "drag-icon");
 
         gtk_widget_translate_coordinates (widget, row, 0, 0, &x, &y);
         cairo_surface_set_device_offset (surface, -x, -y);
@@ -593,6 +594,20 @@ drag_begin (GtkWidget      *widget,
 
         cairo_destroy (cr);
         cairo_surface_destroy (surface);
+
+        viewer = gtk_widget_get_ancestor (row, GR_TYPE_INGREDIENTS_VIEWER);
+        gr_ingredients_viewer_set_drag_row (GR_INGREDIENTS_VIEWER (viewer), row);
+}
+
+static void
+drag_end (GtkWidget      *widget,
+          GdkDragContext *context,
+          gpointer        data)
+{
+        GtkWidget *viewer;
+
+        viewer = gtk_widget_get_ancestor (widget, GR_TYPE_INGREDIENTS_VIEWER);
+        gr_ingredients_viewer_set_drag_row (GR_INGREDIENTS_VIEWER (viewer), NULL);
 }
 
 void
@@ -608,31 +623,6 @@ drag_data_get (GtkWidget        *widget,
                                 32,
                                 (const guchar *)&widget,
                                 sizeof (gpointer));
-}
-
-static void
-drag_data_received (GtkWidget        *widget,
-                    GdkDragContext   *context,
-                    gint              x,
-                    gint              y,
-                    GtkSelectionData *selection_data,
-                    guint             info,
-                    guint32           time,
-                    gpointer          data)
-{
-        GtkWidget *target;
-        GtkWidget *row;
-        GtkWidget *source;
-
-        target = gtk_widget_get_ancestor (widget, GTK_TYPE_LIST_BOX_ROW);
-
-        row = (gpointer)* (gpointer*)gtk_selection_data_get_data (selection_data);
-        source = gtk_widget_get_ancestor (row, GTK_TYPE_LIST_BOX_ROW);
-
-        if (target == source)
-                return;
-
-        g_signal_emit (source, signals[MOVE], 0, target);
 }
 
 static int
@@ -780,10 +770,8 @@ setup_editable_row (GrIngredientsViewerRow *self)
 
                 gtk_drag_source_set (self->drag_handle, GDK_BUTTON1_MASK, entries, 1, GDK_ACTION_MOVE);
                 g_signal_connect (self->drag_handle, "drag-begin", G_CALLBACK (drag_begin), NULL);
+                g_signal_connect (self->drag_handle, "drag-end", G_CALLBACK (drag_end), NULL);
                 g_signal_connect (self->drag_handle, "drag-data-get", G_CALLBACK (drag_data_get), NULL);
-
-                gtk_drag_dest_set (GTK_WIDGET (self), GTK_DEST_DEFAULT_ALL, entries, 1, GDK_ACTION_MOVE);
-                g_signal_connect (self, "drag-data-received", G_CALLBACK (drag_data_received), NULL);
 
                 ingredients_model = get_ingredients_model ();
                 completion = gtk_entry_completion_new ();
@@ -801,9 +789,6 @@ setup_editable_row (GrIngredientsViewerRow *self)
                 gtk_drag_source_unset (self->drag_handle);
                 g_signal_handlers_disconnect_by_func (self->drag_handle, drag_begin, NULL);
                 g_signal_handlers_disconnect_by_func (self->drag_handle, drag_data_get, NULL);
-
-                gtk_drag_dest_unset (GTK_WIDGET (self));
-                g_signal_handlers_disconnect_by_func (self, drag_data_received, NULL);
 
                 gtk_entry_set_completion (GTK_ENTRY (self->ingredient_entry), NULL);
                 gtk_entry_set_completion (GTK_ENTRY (self->unit_entry), NULL);
