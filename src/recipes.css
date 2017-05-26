@@ -450,6 +450,11 @@ label.error {
   text-decoration: underline wavy red;
 }
 
+row:first-child {
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+
 row:not(:first-child) {
   border-top: 1px solid alpha(gray,0.5);
   border-bottom: 1px solid transparent;
