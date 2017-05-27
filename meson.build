@@ -18,20 +18,30 @@ libgd_dep = libgd.get_variable('libgd_dep')
 
 # Extract LIBGD_INFO
 libgd_path = join_paths([meson.source_root(), 'subprojects', 'libgd'])
-git_run = run_command('git', ['-C', libgd_path, 'log', '-1', '--pretty=%h'])
-if git_run.returncode() == 0
-  conf.set_quoted('LIBGD_INFO', git_run.stdout().strip())
+
+conf.set_quoted('LIBGD_INFO', 'unknown')
+git_command = find_program('git', required: false)
+if not git_command.found()
+  message('Failed to extract git commit hash for libgd: git not found\n')
 else
-  message('Failed to extract git commit hash for libgd:\n' + git_run.stderr())
-  conf.set_quoted('LIBGD_INFO', 'unknown')
+  git_run = run_command('git', ['-C', libgd_path, 'log', '-1', '--pretty=%h'])
+  if git_run.returncode() == 0
+    conf.set_quoted('LIBGD_INFO', git_run.stdout().strip())
+  else
+    message('Failed to extract git commit hash for libgd:\n' + git_run.stderr())
+  endif
 endif
 
-git_run = run_command('git', ['-C', meson.source_root(), 'describe'])
-if git_run.returncode() == 0
-  conf.set_quoted('COMMIT_ID', git_run.stdout().strip())
+conf.set_quoted('COMMIT_ID', 'unknown')
+if not git_command.found()
+  message('Failed to extract git commit hash for libgd: git not found\n')
 else
-  message('Failed to extract git commit ID for recipes:\n' + git_run.stderr())
-  conf.set_quoted('COMMIT_ID', 'unknown')
+  git_run = run_command('git', ['-C', meson.source_root(), 'describe'])
+  if git_run.returncode() == 0
+    conf.set_quoted('COMMIT_ID', git_run.stdout().strip())
+  else
+    message('Failed to extract git commit ID for recipes:\n' + git_run.stderr())
+  endif
 endif
 
 # Options + dependency checking is overly verbose and repetitive right now, but
