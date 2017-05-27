@@ -406,7 +406,7 @@ save_unit (GrIngredientsViewerRow *row)
 
                 text = gtk_entry_get_text (GTK_ENTRY (row->unit_entry));
                 if (!parse_unit (text, &row->amount, &row->unit)) {
-                        if (text && *text)
+                        if (text && text[strspn (text, " ")])
                                 set_unit_error (row, TRUE);
                 }
 
