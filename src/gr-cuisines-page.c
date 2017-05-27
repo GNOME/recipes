@@ -169,6 +169,12 @@ populate_cuisines (GrCuisinesPage *page)
                 g_clear_pointer (&page->featured, g_free);
 
         length = g_strv_length (cuisines);
+
+        if (length == 0) {
+                g_warning ("No cuisines found");
+                return;
+        }
+
         if (!page->featured && length > 0) {
                 int pos;
                 pos = g_random_int_range (0, length);
