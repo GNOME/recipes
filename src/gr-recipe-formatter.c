@@ -48,12 +48,14 @@ get_temperature_unit (void)
         GSettings *settings = gr_settings_get ();
         unit =  g_settings_get_enum (settings, "temperature-unit");
         if (unit == GR_TEMPERATURE_UNIT_LOCALE) {
+#ifdef _NL_MEASUREMENT_MEASUREMENT
                 const gchar *fmt;
 
                 fmt = nl_langinfo (_NL_MEASUREMENT_MEASUREMENT);
                 if (fmt && *fmt == 2)
                         unit = GR_TEMPERATURE_UNIT_FAHRENHEIT;
                 else
+#endif
                         unit = GR_TEMPERATURE_UNIT_CELSIUS;
         }
 
