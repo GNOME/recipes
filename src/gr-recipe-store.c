@@ -1182,7 +1182,6 @@ gr_recipe_store_init (GrRecipeStore *self)
         load_updates (self);
 
         /* First load preinstalled data */
-#if 0
         if (load_recipes (self, cache_dir, TRUE)) {
                 g_autofree char *locale = NULL;
 
@@ -1192,9 +1191,7 @@ gr_recipe_store_init (GrRecipeStore *self)
                 load_chefs (self, cache_dir, TRUE);
                 load_picks (self, cache_dir);
         }
-        else 
-#endif
-{
+        else {
                 load_recipes (self, data_dir, TRUE);
                 load_chefs (self, data_dir, TRUE);
                 load_picks (self, data_dir);
