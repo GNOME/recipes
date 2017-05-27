@@ -40,16 +40,16 @@ typedef enum {
         GR_TEMPERATURE_UNIT_LOCALE = 2
 } GrTemperatureUnit;
 
-static gint
+static int
 get_temperature_unit (void)
 {
-        gint unit;
+        int unit;
 
         GSettings *settings = gr_settings_get ();
         unit =  g_settings_get_enum (settings, "temperature-unit");
         if (unit == GR_TEMPERATURE_UNIT_LOCALE) {
 #ifdef _NL_MEASUREMENT_MEASUREMENT
-                const gchar *fmt;
+                const char *fmt;
 
                 fmt = nl_langinfo (_NL_MEASUREMENT_MEASUREMENT);
                 if (fmt && *fmt == 2)
@@ -161,7 +161,7 @@ gr_recipe_parse_instructions (const char *instructions,
         GPtrArray *step_array;
         g_auto(GStrv) steps = NULL;
         int i;
-        gint user_unit = get_temperature_unit ();
+        int user_unit = get_temperature_unit ();
 
         step_array = g_ptr_array_new_with_free_func (recipe_step_free);
 
@@ -180,34 +180,39 @@ gr_recipe_parse_instructions (const char *instructions,
                         p = strstr (step, "[temperature:");
                         while (p) {
                                 g_autofree char *prefix = NULL;
-                                const char *unit;
+                                int unit;
                                 int num;
                                 char *tmp;
+                                const char *unit_str[2] = { "°C", "°F" };
 
                                 prefix = g_strndup (step, p - step);
 
                                 q = strstr (p, "]");
-                                if (q[-1] == 'C')
-                                        unit = "℃";
-                                else if (q[-1] == 'F')
-                                        unit ="℉";
+                                if (q[-1] == 'C') {
+                                        unit = GR_TEMPERATURE_UNIT_CELSIUS;
+                                }
+                                else if (q[-1] == 'F') {
+                                        unit = GR_TEMPERATURE_UNIT_FAHRENHEIT;
+                                }
                                 else {
                                         g_message ("Unsupported temperature unit: %c, using C", q[-1]);
-                                        unit = "℃";
+                                        unit = GR_TEMPERATURE_UNIT_CELSIUS;
                                 }
                                 num = atoi (p + strlen ("[temperature:"));
-                                
-                                if ((strcmp (unit, "℃") == 0 && (user_unit == GR_TEMPERATURE_UNIT_CELSIUS)) || (strcmp (unit, "℉") == 0 && (user_unit == GR_TEMPERATURE_UNIT_FAHRENHEIT))) 
-                                        {
-                                ;}
-                                else if (strcmp (unit, "℃") == 0 && (user_unit == GR_TEMPERATURE_UNIT_FAHRENHEIT)) {
+
+                                if (unit == user_unit) {
+                                        // no conversion needed
+                                }
+                                else if (unit == GR_TEMPERATURE_UNIT_CELSIUS &&
+                                         user_unit == GR_TEMPERATURE_UNIT_FAHRENHEIT) {
                                         num = (num * 1.8) + 32;
-                                        unit = "℉"; }
-                                else if (strcmp (unit, "℉") == 0 && (user_unit == GR_TEMPERATURE_UNIT_CELSIUS)){
+                                }
+                                else if (unit == GR_TEMPERATURE_UNIT_FAHRENHEIT &&
+                                         user_unit == GR_TEMPERATURE_UNIT_CELSIUS) {
                                         num = (num - 32) / 1.8;
-                                        unit = "℃"; }
-                                
-                                tmp = g_strdup_printf ("%s%d%s%s", prefix, num, unit, q + 1);
+                                }
+
+                                tmp = g_strdup_printf ("%s%d%s%s", prefix, num, unit_str[unit], q + 1);
                                 g_free (step);
                                 step = tmp;
 
