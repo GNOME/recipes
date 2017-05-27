@@ -157,7 +157,7 @@ collect_ingredients (GrIngredientsViewer *viewer)
                 if (s->len > 0)
                         g_string_append (s, "\n");
                 g_string_append_printf (s, "%s\t%s\t%s\t%s",
-                                        amount, unit, id ? id : ingredient, viewer->title);
+                                        amount ? amount : "", unit ? unit : "", id ? id : ingredient, viewer->title);
         }
         g_list_free (children);
 
