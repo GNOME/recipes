@@ -402,8 +402,12 @@ save_unit (GrIngredientsViewerRow *row)
 
         visible = gtk_stack_get_visible_child (GTK_STACK (row->unit_stack));
         if (visible == row->unit_entry) {
-                if (!parse_unit (gtk_entry_get_text (GTK_ENTRY (row->unit_entry)), &row->amount, &row->unit)) {
-                        set_unit_error (row, TRUE);
+                const char *text;
+
+                text = gtk_entry_get_text (GTK_ENTRY (row->unit_entry));
+                if (!parse_unit (text, &row->amount, &row->unit)) {
+                        if (text && *text)
+                                set_unit_error (row, TRUE);
                 }
 
                 update_unit (row);
