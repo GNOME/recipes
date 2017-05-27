@@ -233,7 +233,8 @@ parse_as_float (GrNumber  *number,
 
         value = g_strtod (*input, &end);
 
-        if (end != NULL && !space_or_nul (end[0])) {
+        if (*input == end ||
+            (end != NULL && !space_or_nul (end[0]))) {
                 g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
                              _("Could not parse %s as a float"), *input);
                 return FALSE;

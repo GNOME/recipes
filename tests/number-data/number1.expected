@@ -291,10 +291,14 @@ REST '--2'
 ERROR Could not parse --2 as a number
 
 INPUT '10 11.12'
-REST '11.12'
+REST ' 11.12'
 FRACTION 1
 NUMERATOR 10
 DENOMINATOR 1
 VALUE 10
 FORMATTED '10'
+
+INPUT ' '
+REST ' '
+ERROR Could not parse   as a number
 
