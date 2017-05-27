@@ -423,6 +423,11 @@ gr_image_load_full (GrImage         *ri,
          * We used to store them as a relative path starting with images/,
          * so try that case as well.
          */
+        if (ri->path == NULL) {
+                g_warning ("No image path");
+                return;
+        }
+
         if (ri->path[0] == '/')
                 local_path = g_strdup (ri->path);
         else if (g_str_has_prefix (ri->path, "images/"))
