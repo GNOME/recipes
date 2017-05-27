@@ -146,7 +146,7 @@ update_unit (GrIngredientsViewerRow *row)
         space = amount[0] ? " " : "";
         unit = row->unit ? row->unit : "";
         tmp = g_strdup_printf ("%s%s%s", amount, space, unit);
-        if (tmp[0] == '\0') {
+        if (tmp[0] == '\0' && row->editable) {
                 gtk_style_context_add_class (gtk_widget_get_style_context (row->unit_label), "dim-label");
                 gtk_label_set_label (GTK_LABEL (row->unit_label), _("Amount…"));
         }
