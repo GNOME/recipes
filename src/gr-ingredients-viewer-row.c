@@ -860,7 +860,7 @@ setup_editable_row (GrIngredientsViewerRow *self)
 GtkWidget *
 gr_ingredients_viewer_row_has_error (GrIngredientsViewerRow *row)
 {
-        if (row->amount == NULL || row->amount[0] == '\0')
+        if (gtk_style_context_has_class (gtk_widget_get_style_context (row->unit_label), "error"))
                 return gtk_widget_get_parent (row->unit_label);
 
         if (row->ingredient == NULL || row->ingredient[0] == '\0')
