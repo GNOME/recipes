@@ -731,6 +731,10 @@ get_units_model (GrIngredientsViewerRow *row)
                                                       GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
                                                       GTK_SORT_ASCENDING);
 
+                gtk_list_store_insert_with_values (store, NULL, -1,
+                                                   0, "",
+                                                   -1);
+
                 names = gr_unit_get_names ();
                 for (i = 0; names[i]; i++) {
                         gtk_list_store_insert_with_values (store, NULL, -1,
