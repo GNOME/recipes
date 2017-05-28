@@ -109,6 +109,23 @@ struct _GrWindow
 
 G_DEFINE_TYPE (GrWindow, gr_window, GTK_TYPE_APPLICATION_WINDOW)
 
+
+static void
+configure_window (GrWindow *window,
+                  const char *title,
+                  const char *start,
+                  const char *middle,
+                  const char *end,
+                  const char *main)
+{
+        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), title);
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), start);
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), middle);
+        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), end);
+        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), main);
+}
+
+
 /* Back button theory:
  *
  * We maintain a stack of entries so we can go back multiple steps if
@@ -200,13 +217,12 @@ go_back (GrWindow *window)
 
         gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (window->search_bar), FALSE);
 
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), entry->header_title);
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), entry->header_start_child);
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), entry->header_title_child);
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), entry->header_end_child);
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), entry->page);
+        configure_window (window,
+                          entry->header_title,
+                          entry->header_start_child,
+                          entry->header_title_child,
+                          entry->header_end_child,
+                          entry->page);
 
         if (strcmp (entry->page, "search") == 0) {
                 gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (window->search_bar), TRUE);
@@ -227,11 +243,7 @@ new_recipe (GrWindow *window)
         gr_edit_page_clear (GR_EDIT_PAGE (window->edit_page));
         gtk_widget_grab_focus (window->edit_page);
 
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Add a New Recipe"));
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "edit");
+        configure_window (window, _("Add a New Recipe"), "back", "title", "edit", "edit");
 
         gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "edit");
         gtk_widget_set_sensitive (window->save_button,FALSE);
@@ -286,11 +298,7 @@ search_mode_changed (GrWindow *window)
 static void
 switch_to_search (GrWindow *window)
 {
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "main");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "main");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "search");
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "search");
+        configure_window (window, "", "main", "main", "search", "search");
 }
 
 void
@@ -993,13 +1001,7 @@ void
 gr_window_go_back (GrWindow *window)
 {
         if (g_queue_is_empty (window->back_entry_stack)) {
-                gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "main");
-                gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "main");
-                gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "search");
-
-                gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Recipes"));
-
-                gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "recipes");
+                configure_window (window, _("Recipes"), "main", "main", "search", "recipes");
         }
         else {
                 go_back (window);
@@ -1018,13 +1020,7 @@ gr_window_show_recipe (GrWindow *window,
         gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (window->search_bar), FALSE);
         g_signal_handlers_unblock_by_func (window->search_bar, search_mode_changed, window);
 
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), gr_recipe_get_translated_name (recipe));
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "details");
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "details");
+        configure_window (window, gr_recipe_get_translated_name (recipe), "back", "title", "details", "details");
 }
 
 void
@@ -1036,14 +1032,8 @@ gr_window_edit_recipe (GrWindow *window,
         gr_edit_page_edit (GR_EDIT_PAGE (window->edit_page), recipe);
         gtk_widget_grab_focus (window->edit_page);
 
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), gr_recipe_get_translated_name (recipe));
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "edit");
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "edit");
-        gtk_widget_set_sensitive(window->save_button,FALSE);
+        configure_window (window, gr_recipe_get_translated_name (recipe), "back", "title", "edit", "edit");
+        gtk_widget_set_sensitive (window->save_button, FALSE);
 }
 
 static void
@@ -1213,14 +1203,7 @@ gr_window_show_diet (GrWindow   *window,
         save_back_entry (window);
 
         gr_list_page_populate_from_diet (GR_LIST_PAGE (window->list_page), diet);
-
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), gr_diet_get_label (diet));
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "list");
+        configure_window (window, gr_diet_get_label (diet), "back", "title", "list", "list");
 }
 
 void
@@ -1232,15 +1215,8 @@ gr_window_show_chef (GrWindow *window,
         save_back_entry (window);
 
         gr_list_page_populate_from_chef (GR_LIST_PAGE (window->chef_page), chef);
-
         title = g_strdup_printf (_("Chefs: %s"), gr_chef_get_fullname (chef));
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), title);
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "chef");
+        configure_window (window, title, "back", "title", "list", "chef");
 }
 
 void
@@ -1249,14 +1225,7 @@ gr_window_show_favorites (GrWindow *window)
         save_back_entry (window);
 
         gr_list_page_populate_from_favorites (GR_LIST_PAGE (window->list_page));
-
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Favorite Recipes"));
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "list");
+        configure_window (window, _("Favorite Recipes"), "back", "title", "list", "list");
 }
 
 void
@@ -1265,14 +1234,7 @@ gr_window_show_all (GrWindow *window)
         save_back_entry (window);
 
         gr_list_page_populate_from_all (GR_LIST_PAGE (window->list_page));
-
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("All Recipes"));
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "list");
+        configure_window (window, _("All Recicpes"), "back", "title", "list", "list");
 }
 
 void
@@ -1281,14 +1243,7 @@ gr_window_show_new (GrWindow *window)
         save_back_entry (window);
 
         gr_list_page_populate_from_new (GR_LIST_PAGE (window->list_page));
-
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("New Recipes"));
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "list");
+        configure_window (window, _("New Recipes"), "back", "title", "list", "list");
 }
 
 void
@@ -1299,14 +1254,7 @@ gr_window_show_list (GrWindow   *window,
         save_back_entry (window);
 
         gr_list_page_populate_from_list (GR_LIST_PAGE (window->list_page), recipes);
-
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), title);
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "list");
+        configure_window (window, title, "back", "title", "list", "list");
 }
 
 static void
@@ -1317,14 +1265,7 @@ gr_window_show_transient_list (GrWindow   *window,
         save_back_entry (window);
 
         gr_list_page_populate_from_list (GR_LIST_PAGE (window->transient_list_page), recipes);
-
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), title);
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "transient");
+        configure_window (window, title, "back", "title", "list", "transient");
 }
 
 void
@@ -1332,13 +1273,7 @@ gr_window_show_shopping (GrWindow *window)
 {
         save_back_entry (window);
 
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Buy Ingredients"));
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "shopping");
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "shopping");
+        configure_window (window, _("Buy Ingredients"), "back", "title", "shopping", "shopping");
         gr_shopping_page_populate (GR_SHOPPING_PAGE (window->shopping_page));
 }
 
@@ -1351,14 +1286,7 @@ do_show_mine (GrChef   *chef,
         save_back_entry (window);
 
         gr_list_page_populate_from_chef (GR_LIST_PAGE (window->chef_page), chef);
-
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header ), _("My Recipes"));
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "chef");
+        configure_window (window, _("My Recipes"), "back", "title", "list", "chef");
 }
 
 void
@@ -1375,14 +1303,7 @@ gr_window_show_cuisine (GrWindow   *window,
         save_back_entry (window);
 
         gr_cuisine_page_set_cuisine (GR_CUISINE_PAGE (window->cuisine_page), cuisine);
-
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), title);
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "cuisine");
+        configure_window (window, title, "back", "title", "list", "cuisine");
 }
 
 void
@@ -1393,14 +1314,7 @@ gr_window_show_season (GrWindow   *window,
         save_back_entry (window);
 
         gr_list_page_populate_from_season (GR_LIST_PAGE (window->list_page), season);
-
-        gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), title);
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_start_stack), "back");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_title_stack), "title");
-        gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
-
-        gtk_stack_set_visible_child_name (GTK_STACK (window->main_stack), "list");
+        configure_window (window, title, "back", "title", "list", "list");
 }
 
 void
