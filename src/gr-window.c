@@ -1429,10 +1429,16 @@ gr_release_info_new (const char *version,
         if (date) {
                 g_autofree char *formatted = NULL;
                 g_autofree char *release = NULL;
+                g_autoptr(GDateTime) now = g_date_time_new_now_utc ();
 
-                formatted = g_date_time_format (date, "%F");
-                /* TRANSLATORS: %s gets replaced by a date */
-                release = g_strdup_printf (_("Released: %s"), formatted);
+                if (g_date_time_compare (date, now) < 0) {
+                        formatted = g_date_time_format (date, "%F");
+                        /* TRANSLATORS: %s gets replaced by a date */
+                        release = g_strdup_printf (_("Released: %s"), formatted);
+                }
+                else {
+                        release = g_strdup_printf (_("Unreleased"));
+                }
                 label = gtk_label_new (release);
                 gtk_label_set_xalign (GTK_LABEL (label), 0.0);
                 gtk_container_add (GTK_CONTAINER (box), label);
