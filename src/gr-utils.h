@@ -61,10 +61,6 @@ gboolean in_flatpak_sandbox (void);
 gboolean portal_available (GtkWindow  *window,
                            const char *portal);
 
-void all_headers (GtkListBoxRow *row,
-                  GtkListBoxRow *before,
-                  gpointer       user_data);
-
 typedef void (*WindowHandleExported) (GtkWindow  *window,
                                       const char *handle,
                                       gpointer    user_data);
