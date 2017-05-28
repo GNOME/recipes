@@ -86,7 +86,7 @@ gr_ingredients_viewer_finalize (GObject *object)
         G_OBJECT_CLASS (gr_ingredients_viewer_parent_class)->finalize (object);
 }
 
-void
+static void
 set_active_row (GrIngredientsViewer *viewer,
                 GtkWidget           *row)
 {
@@ -257,10 +257,12 @@ move_row (GtkWidget           *source,
 
         g_object_notify (G_OBJECT (viewer), "ingredients");
 }
+
 static void
 edit_ingredient_row (GrIngredientsViewerRow *row,
                      GrIngredientsViewer    *viewer)
 {
+        set_active_row (viewer, GTK_WIDGET (row));
         g_object_notify (G_OBJECT (viewer), "ingredients");
 }
 

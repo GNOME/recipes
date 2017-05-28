@@ -280,14 +280,8 @@ emit_delete (GrIngredientsViewerRow *row)
 static void
 edit_ingredient (GrIngredientsViewerRow *row)
 {
-        GrIngredientsViewer *viewer;
-
-        viewer = GR_INGREDIENTS_VIEWER (gtk_widget_get_ancestor (GTK_WIDGET (row), GR_TYPE_INGREDIENTS_VIEWER));
-
         if (row->editable) {
                 save_unit (row);
-
-                set_active_row (viewer, GTK_WIDGET (row));
                 gtk_entry_set_text (GTK_ENTRY (row->ingredient_entry), row->ingredient);
                 gtk_stack_set_visible_child_name (GTK_STACK (row->ingredient_stack), "ingredient_entry");
                 gtk_widget_grab_focus (row->ingredient_entry);
@@ -313,19 +307,15 @@ edit_unit (GrIngredientsViewerRow *row)
         const char *amount;
         const char *space;
         const char *unit;
-        GrIngredientsViewer *viewer;
 
         amount = row->amount ? row->amount : "";
         space = amount[0] ? " " : "";
         unit = row->unit ? row->unit : "";
         tmp = g_strdup_printf ("%s%s%s", amount, space, unit);
 
-        viewer = GR_INGREDIENTS_VIEWER (gtk_widget_get_ancestor (GTK_WIDGET (row), GR_TYPE_INGREDIENTS_VIEWER));
-
         save_ingredient (row);
 
         if (row->editable) {
-                set_active_row (viewer, GTK_WIDGET (row));
                 gtk_entry_set_text (GTK_ENTRY (row->unit_entry), tmp);
                 gtk_stack_set_visible_child_name (GTK_STACK (row->unit_stack), "unit_entry");
                 gtk_widget_grab_focus (row->unit_entry);
