@@ -678,7 +678,7 @@ time_spin_output (GtkSpinButton *spin_button)
 }
 
 static void
-time_spin_activate (GtkEntry *entry, GrEditPage *self)
+do_add_timer (GrEditPage *self)
 {
         GtkAdjustment *adjustment;
         double hours;
@@ -716,6 +716,9 @@ populate_timer_popover (GrEditPage *self)
         GtkTextIter end;
         g_autofree char *text = NULL;
         g_autoptr(GPtrArray) steps = NULL;
+        double timer = 0.0;
+        const char *title = "";
+        GtkAdjustment *adjustment;
 
         buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->instructions_field));
         gtk_text_buffer_get_iter_at_mark (buffer, &pos, gtk_text_buffer_get_insert (buffer));
@@ -725,19 +728,16 @@ populate_timer_popover (GrEditPage *self)
                 gtk_text_buffer_get_end_iter (buffer, &end);
 
         text = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
-        g_print ("STEP: >%s<\n", text);
         steps = gr_recipe_parse_instructions (text, FALSE);
         if (steps->len == 1) {
                 GrRecipeStep *step = (GrRecipeStep *)g_ptr_array_index (steps, 0);
-                GtkAdjustment *adjustment;
+                timer = step->timer / G_TIME_SPAN_SECOND;
+                title = step->title ? step->title : "";
+        }
 
-                adjustment = gtk_spin_button_get_adjustment (GTK_SPIN_BUTTON (self->timer_spin));
-                gtk_adjustment_set_value (adjustment, step->timer / G_TIME_SPAN_SECOND);
-                gtk_entry_set_text (GTK_ENTRY (self->timer_title), step->title);
-        }
-        else {
-                g_warning ("WTH?!");
-        }
+        adjustment = gtk_spin_button_get_adjustment (GTK_SPIN_BUTTON (self->timer_spin));
+        gtk_adjustment_set_value (adjustment, timer / G_TIME_SPAN_SECOND);
+        gtk_entry_set_text (GTK_ENTRY (self->timer_title), title);
 }
 
 static void
@@ -782,7 +782,7 @@ find_temperature_tag (GtkTextBuffer  *buffer,
 }
 
 static void
-temperature_spin_activate (GtkEntry *entry, GrEditPage *self)
+do_add_temperature (GrEditPage *self)
 {
         int value;
         g_autofree char *text = NULL;
@@ -791,9 +791,9 @@ temperature_spin_activate (GtkEntry *entry, GrEditPage *self)
         GtkTextIter start;
         GtkTextIter end;
 
-        gtk_spin_button_update (GTK_SPIN_BUTTON (entry));
+        gtk_spin_button_update (GTK_SPIN_BUTTON (self->temperature_spin));
 
-        value = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (entry));
+        value = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (self->temperature_spin));
         if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (self->celsius_button)))
                 unit = "C";
         else
@@ -1134,14 +1134,14 @@ gr_edit_page_class_init (GrEditPageClass *klass)
 
         gtk_widget_class_bind_template_callback (widget_class, time_spin_input);
         gtk_widget_class_bind_template_callback (widget_class, time_spin_output);
-        gtk_widget_class_bind_template_callback (widget_class, time_spin_activate);
-        gtk_widget_class_bind_template_callback (widget_class, temperature_spin_activate);
         gtk_widget_class_bind_template_callback (widget_class, preview_visible_changed);
         gtk_widget_class_bind_template_callback (widget_class, prev_step);
         gtk_widget_class_bind_template_callback (widget_class, next_step);
         gtk_widget_class_bind_template_callback (widget_class, set_unsaved);
 
         gtk_widget_class_bind_template_callback (widget_class, add_list);
+        gtk_widget_class_bind_template_callback (widget_class, do_add_timer);
+        gtk_widget_class_bind_template_callback (widget_class, do_add_temperature);
 }
 
 GtkWidget *
