@@ -1234,7 +1234,7 @@ gr_window_show_all (GrWindow *window)
         save_back_entry (window);
 
         gr_list_page_populate_from_all (GR_LIST_PAGE (window->list_page));
-        configure_window (window, _("All Recicpes"), "back", "title", "list", "list");
+        configure_window (window, _("All Recipes"), "back", "title", "list", "list");
 }
 
 void
