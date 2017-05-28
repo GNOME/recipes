@@ -280,9 +280,6 @@ gr_chef_dialog_init (GrChefDialog *self)
 {
         gtk_widget_init_template (GTK_WIDGET (self));
 
-        gtk_list_box_set_header_func (GTK_LIST_BOX (self->chef_list),
-                                      all_headers, self, NULL);
-
         self->additions = g_ptr_array_new_with_free_func (g_free);
         self->removals = g_ptr_array_new_with_free_func (g_free);
 
