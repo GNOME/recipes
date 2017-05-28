@@ -296,6 +296,7 @@ remove_ingredient (GtkButton *button, GrShoppingPage *page)
 
         add_removed_row (page, unit, name);
 
+        page->active_row = NULL;
         gtk_widget_destroy (row);
 
         recount_ingredients (page);
@@ -384,12 +385,10 @@ set_active_row (GrShoppingPage *page,
 }
 
 static void
-selected_rows_changed (GtkListBox     *list,
-                       GrShoppingPage *page)
+row_activated (GtkListBox     *list,
+               GtkListBoxRow  *row,
+               GrShoppingPage *page)
 {
-        GtkListBoxRow *row;
-
-        row = gtk_list_box_get_selected_row (list);
         set_active_row (page, GTK_WIDGET (row));
 }
 
@@ -852,7 +851,7 @@ gr_shopping_page_class_init (GrShoppingPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, clear_list);
         gtk_widget_class_bind_template_callback (widget_class, print_list);
         gtk_widget_class_bind_template_callback (widget_class, share_list);
-        gtk_widget_class_bind_template_callback (widget_class, selected_rows_changed);
+        gtk_widget_class_bind_template_callback (widget_class, row_activated);
         gtk_widget_class_bind_template_callback (widget_class, removed_row_activated);
 }
 
