@@ -735,7 +735,6 @@ populate_recipe_list (GrRecipeExporter *exporter,
 {
         GList *l;
 
-        gtk_list_box_set_header_func (GTK_LIST_BOX (list), all_headers, NULL, NULL);
         gtk_list_box_set_sort_func (GTK_LIST_BOX (list), sort_recipe_row, NULL, NULL);
 
         g_signal_connect (list, "row-activated", G_CALLBACK (row_activated), exporter);
