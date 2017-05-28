@@ -164,20 +164,6 @@
         <child>
           <object class="GtkLabel">
             <property name="visible">1</property>
-            <property name="halign">center</property>
-            <property name="label" translatable="yes">Syntax</property>
-            <style>
-              <class name="heading"/>
-            </style>
-          </object>
-          <packing>
-            <property name="left-attach">0</property>
-            <property name="top-attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">1</property>
             <property name="xalign">0</property>
             <property name="margin-bottom">10</property>
             <property name="label" translatable="yes">Use a number, followed by an (optional) unit.</property>
