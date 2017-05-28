@@ -120,6 +120,8 @@ begin_print (GtkPrintOperation *operation,
         g_autofree char *instructions = NULL;
         g_autoptr(GrChef) chef = NULL;
         GrRecipeStore *store;
+        PangoLayout *layout;
+        int amount_width;
 
         store = gr_recipe_store_get ();
         chef = gr_recipe_store_get_chef (store, gr_recipe_get_author (printer->recipe));
@@ -163,23 +165,48 @@ begin_print (GtkPrintOperation *operation,
 
         g_string_truncate (s, 0);
 
+        ingredients = gr_ingredients_list_new (gr_recipe_get_ingredients (printer->recipe));
+        segs = gr_ingredients_list_get_segments (ingredients);
+
+        layout = gtk_print_context_create_pango_layout (context);
+        pango_layout_set_width (layout, width * PANGO_SCALE);
+        pango_layout_set_font_description (layout, body_font);
+
+        for (j = 0; segs[j]; j++) {
+                ings = gr_ingredients_list_get_ingredients (ingredients, segs[j]);
+                for (i = 0; ings[i]; i++) {
+                        g_autofree char *unit = NULL;
+
+                        unit = gr_ingredients_list_scale_unit (ingredients, segs[j], ings[i], 1, 1);
+                        g_string_append (s, unit);
+                        g_string_append (s, " \n");
+                }
+        }
+        pango_layout_set_text (layout, s->str, s->len);
+        pango_layout_get_size (layout, &amount_width, NULL);
+        g_clear_object (&layout);
+
+g_print ("width: %d amount width: %d\n", (int)width, amount_width);
+
+        g_string_truncate (s, 0);
+
         printer->bottom_layout = gtk_print_context_create_pango_layout (context);
         pango_layout_set_width (printer->bottom_layout, width * PANGO_SCALE);
         pango_layout_set_font_description (printer->bottom_layout, body_font);
-
-        tabs = pango_tab_array_new (2, FALSE);
-        pango_tab_array_set_tab (tabs, 0, PANGO_TAB_LEFT, 0);
-        pango_tab_array_set_tab (tabs, 1, PANGO_TAB_LEFT, (width / 2) * PANGO_SCALE);
-        pango_layout_set_tabs (printer->bottom_layout, tabs);
-        pango_tab_array_free (tabs);
 
         g_string_append (s, gr_recipe_get_translated_description (printer->recipe));
         g_string_append (s, "\n\n");
 
         attrs = pango_attr_list_new ();
 
-        ingredients = gr_ingredients_list_new (gr_recipe_get_ingredients (printer->recipe));
-        segs = gr_ingredients_list_get_segments (ingredients);
+        tabs = pango_tab_array_new (2, FALSE);
+        pango_tab_array_set_tab (tabs, 0, PANGO_TAB_LEFT, 0);
+        pango_tab_array_set_tab (tabs, 1, PANGO_TAB_LEFT, amount_width);
+        pango_tab_array_set_tab (tabs, 2, PANGO_TAB_LEFT, (width / 2) * PANGO_SCALE);
+        pango_tab_array_set_tab (tabs, 3, PANGO_TAB_LEFT, (width / 2) * PANGO_SCALE + amount_width);
+        pango_layout_set_tabs (printer->bottom_layout, tabs);
+        pango_tab_array_free (tabs);
+
         for (j = 0; segs[j]; j++) {
                 attr = pango_attr_font_desc_new (title_font);
                 attr->start_index = s->len;
@@ -200,34 +227,32 @@ begin_print (GtkPrintOperation *operation,
                         int mid;
                         mid = length / 2 + length % 2;
                         for (i = 0; i < mid; i++) {
-                                char *unit;
+                                g_autofree char *unit = NULL;
 
                                 g_string_append (s, "\n");
 
                                 unit = gr_ingredients_list_scale_unit (ingredients, segs[j], ings[i], 1, 1);
                                 g_string_append (s, unit);
-                                g_free (unit);
-                                g_string_append (s, " ");
+                                g_clear_pointer (&unit, g_free);
+                                g_string_append (s, "\t");
                                 g_string_append (s, ings[i]);
                                 g_string_append (s, "\t");
                                 if (mid + i < length) {
                                         unit = gr_ingredients_list_scale_unit (ingredients, segs[j], ings[mid + i], 1, 1);
                                         g_string_append (s, unit);
-                                        g_free (unit);
-                                        g_string_append (s, " ");
+                                        g_string_append (s, "\t");
                                         g_string_append (s, ings[mid + i]);
                                 }
                         }
                 }
                 else {
                         for (i = 0; i < length; i++) {
-                                char *unit;
+                                g_autofree char *unit = NULL;
 
                                 g_string_append (s, "\n");
                                 unit = gr_ingredients_list_scale_unit (ingredients, segs[j], ings[i], 1, 1);
                                 g_string_append (s, unit);
-                                g_free (unit);
-                                g_string_append (s, " ");
+                                g_string_append (s, "\t");
                                 g_string_append (s, ings[i]);
                         }
                 }
