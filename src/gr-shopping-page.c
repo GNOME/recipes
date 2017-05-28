@@ -785,11 +785,6 @@ gr_shopping_page_init (GrShoppingPage *page)
 
         page->group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
         page->ingredients = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, ingredient_free);
-
-        gtk_list_box_set_header_func (GTK_LIST_BOX (page->ingredients_list),
-                                      all_headers, page, NULL);
-        gtk_list_box_set_header_func (GTK_LIST_BOX (page->removed_list),
-                                      all_headers, page, NULL);
 }
 
 static void
