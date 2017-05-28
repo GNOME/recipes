@@ -450,6 +450,8 @@ populate_ingredients (GrDetailsPage *page,
                                      "title", segments[j],
                                      "editable-title", FALSE,
                                      "editable", FALSE,
+                                     "scale-num", num,
+                                     "scale-denom", denom,
                                      "ingredients", page->ing_text,
                                      NULL);
                 gtk_container_add (GTK_CONTAINER (page->ingredients_box), list);
