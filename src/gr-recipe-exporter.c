@@ -790,7 +790,8 @@ gr_recipe_exporter_export (GrRecipeExporter *exporter,
 
         for (i = 0; keys[i]; i++) {
                 g_autoptr(GrRecipe) r = gr_recipe_store_get_recipe (store, keys[i]);
-                exporter->recipes = g_list_prepend (exporter->recipes, g_object_ref (r));
+                if (r)
+                        exporter->recipes = g_list_prepend (exporter->recipes, g_object_ref (r));
         }
 
         show_export_dialog (exporter);
