@@ -28,6 +28,9 @@
 #include "gr-image.h"
 #include "gr-chef.h"
 #include "gr-recipe-store.h"
+#include "gr-cuisine.h"
+#include "gr-meal.h"
+#include "gr-season.h"
 #include "gr-utils.h"
 
 
@@ -122,6 +125,7 @@ begin_print (GtkPrintOperation *operation,
         GrRecipeStore *store;
         PangoLayout *layout;
         int amount_width;
+        const char *value;
 
         store = gr_recipe_store_get ();
         chef = gr_recipe_store_get_chef (store, gr_recipe_get_author (printer->recipe));
@@ -159,6 +163,21 @@ begin_print (GtkPrintOperation *operation,
         g_string_append_printf (s, "%s %s\n", _("Preparation:"), gr_recipe_get_prep_time (printer->recipe));
         g_string_append_printf (s, "%s %s\n", _("Cooking:"), gr_recipe_get_cook_time (printer->recipe));
         g_string_append_printf (s, "%s %d\n", _("Serves:"), gr_recipe_get_serves (printer->recipe));
+        value = gr_recipe_get_cuisine (printer->recipe);
+        if (value && *value) {
+                const char *title;
+                gr_cuisine_get_data (value, &title, NULL, NULL);
+                g_string_append_printf (s, "%s %s\n", _("Cuisine:"), title);
+        }
+        value = gr_recipe_get_category (printer->recipe);
+        if (value && *value) {
+                g_string_append_printf (s, "%s %s\n", _("Meal:"), gr_meal_get_title (value));
+        }
+        value = gr_recipe_get_season (printer->recipe);
+        if (value && *value) {
+                g_string_append_printf (s, "%s %s\n", _("Season:"), gr_season_get_title (value));
+        }
+
         g_string_append (s, "\n");
 
         pango_layout_set_text (printer->left_layout, s->str, s->len);
@@ -185,8 +204,6 @@ begin_print (GtkPrintOperation *operation,
         pango_layout_set_text (layout, s->str, s->len);
         pango_layout_get_size (layout, &amount_width, NULL);
         g_clear_object (&layout);
-
-g_print ("width: %d amount width: %d\n", (int)width, amount_width);
 
         g_string_truncate (s, 0);
 
