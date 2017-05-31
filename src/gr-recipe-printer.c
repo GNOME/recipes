@@ -216,6 +216,19 @@ begin_print (GtkPrintOperation *operation,
 
         attrs = pango_attr_list_new ();
 
+        value = gr_recipe_get_notes (printer->recipe);
+        if (value && *value) {
+                attr = pango_attr_font_desc_new (title_font);
+                attr->start_index = s->len;
+                g_string_append (s, _("Notes"));
+                attr->end_index = s->len + 1;
+                pango_attr_list_insert (attrs, attr);
+
+                g_string_append (s, "\n");
+                g_string_append (s, value);
+                g_string_append (s, "\n\n");
+        }
+
         tabs = pango_tab_array_new (2, FALSE);
         pango_tab_array_set_tab (tabs, 0, PANGO_TAB_LEFT, 0);
         pango_tab_array_set_tab (tabs, 1, PANGO_TAB_LEFT, amount_width);
