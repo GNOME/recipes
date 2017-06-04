@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 14:52+0000\n"
-"PO-Revision-Date: 2017-05-28 13:02+0200\n"
+"POT-Creation-Date: 2017-05-31 21:03+0000\n"
+"PO-Revision-Date: 2017-06-04 10:22+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -419,7 +419,7 @@ msgid "Note"
 msgstr "Notatka"
 
 #: src/gr-details-page.ui:409 src/gr-edit-page.ui:705
-#: src/gr-recipe-formatter.c:118 src/gr-recipe-printer.c:266
+#: src/gr-recipe-formatter.c:118 src/gr-recipe-printer.c:296
 msgid "Directions"
 msgstr "Instrukcja"
 
@@ -640,7 +640,7 @@ msgstr "Przykłady: 1 kg, 2 1/2 paczki, 250 ml, 6"
 
 #: src/gr-ingredients-viewer.ui:13 src/gr-query-editor.ui:235
 #: src/gr-edit-page.c:1321 src/gr-recipe-formatter.c:99
-#: src/gr-recipe-printer.c:217
+#: src/gr-recipe-printer.c:247
 msgid "Ingredients"
 msgstr "Składniki"
 
@@ -1724,19 +1724,19 @@ msgstr ""
 "Cześć zaznaczonych przepisów jest częścią Przepisów\n"
 "GNOME. Należy wysyłać tylko własne przepisy."
 
-#: src/gr-recipe-formatter.c:85 src/gr-recipe-printer.c:158
+#: src/gr-recipe-formatter.c:85 src/gr-recipe-printer.c:162
 msgid "Author:"
 msgstr "Autor:"
 
-#: src/gr-recipe-formatter.c:86 src/gr-recipe-printer.c:159
+#: src/gr-recipe-formatter.c:86 src/gr-recipe-printer.c:163
 msgid "Preparation:"
 msgstr "Przygotowanie:"
 
-#: src/gr-recipe-formatter.c:87 src/gr-recipe-printer.c:160
+#: src/gr-recipe-formatter.c:87 src/gr-recipe-printer.c:164
 msgid "Cooking:"
 msgstr "Gotowanie:"
 
-#: src/gr-recipe-formatter.c:88 src/gr-recipe-printer.c:161
+#: src/gr-recipe-formatter.c:88 src/gr-recipe-printer.c:165
 msgid "Serves:"
 msgstr "Porcje:"
 
@@ -1771,11 +1771,27 @@ msgstr "Nie odnaleziono informacji o kucharzu"
 msgid "This build does not support importing"
 msgstr "Ta wersja nie obsługuje importowania"
 
-#: src/gr-recipe-printer.c:436 src/gr-shopping-list-printer.c:297
+#: src/gr-recipe-printer.c:170
+msgid "Cuisine:"
+msgstr "Kuchnia:"
+
+#: src/gr-recipe-printer.c:174
+msgid "Meal:"
+msgstr "Potrawa:"
+
+#: src/gr-recipe-printer.c:178
+msgid "Season:"
+msgstr "Pora roku:"
+
+#: src/gr-recipe-printer.c:223
+msgid "Notes"
+msgstr "Notatki"
+
+#: src/gr-recipe-printer.c:466 src/gr-shopping-list-printer.c:297
 msgid "Error printing file:"
 msgstr "Błąd podczas drukowania pliku:"
 
-#: src/gr-recipe-printer.c:437 src/gr-shopping-list-printer.c:298
+#: src/gr-recipe-printer.c:467 src/gr-shopping-list-printer.c:298
 msgid "No details"
 msgstr "Brak informacji"
 
