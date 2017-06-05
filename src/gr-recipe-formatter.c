@@ -213,7 +213,7 @@ gr_recipe_parse_instructions (const char *instructions,
                                         num = (num - 32) / 1.8;
                                 }
 
-                                tmp = g_strdup_printf ("%s%d%s%s", prefix, num, unit_str[unit], q + 1);
+                                tmp = g_strdup_printf ("%s%d%s%s", prefix, num, unit_str[user_unit], q + 1);
                                 g_free (step);
                                 step = tmp;
 
