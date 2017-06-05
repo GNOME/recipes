@@ -44,11 +44,12 @@ static int
 get_temperature_unit (void)
 {
         int unit;
-
         GSettings *settings = gr_settings_get ();
-        unit =  g_settings_get_enum (settings, "temperature-unit");
+
+        unit = g_settings_get_enum (settings, "temperature-unit");
+
         if (unit == GR_TEMPERATURE_UNIT_LOCALE) {
-#ifdef _NL_MEASUREMENT_MEASUREMENT
+#ifdef LC_MEASUREMENT
                 const char *fmt;
 
                 fmt = nl_langinfo (_NL_MEASUREMENT_MEASUREMENT);
