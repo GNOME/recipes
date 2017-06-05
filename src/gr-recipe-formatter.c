@@ -37,7 +37,7 @@
 typedef enum {
         GR_TEMPERATURE_UNIT_CELSIUS    = 0,
         GR_TEMPERATURE_UNIT_FAHRENHEIT = 1,
-        GR_TEMPERATURE_UNIT_LOCALE = 2
+        GR_TEMPERATURE_UNIT_LOCALE     = 2
 } GrTemperatureUnit;
 
 static int
