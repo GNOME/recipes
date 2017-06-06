@@ -809,3 +809,14 @@ strv_remove (char       ***strv_in,
         g_free (*strv_in);
         *strv_in = strv;
 }
+
+const char *
+get_version (void)
+{
+        const char *p = strrchr (PACKAGE_VERSION, '.');
+
+        if (p && (atoi (p + 1) % 2 == 1))
+                return COMMIT_ID;
+        else
+                return PACKAGE_VERSION;
+}

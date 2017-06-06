@@ -83,4 +83,4 @@ void strv_remove (char       ***strv_in,
 void strv_prepend (char       ***strv_in,
                    const char   *s);
 
-
+const char *get_version (void);

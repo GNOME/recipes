@@ -456,7 +456,7 @@ gr_app_handle_local_options (GApplication *app,
         const char *category;
 
         if (g_variant_dict_lookup (options, "version", "b", &value)) {
-                g_print ("%s %s\n", PACKAGE_NAME, PACKAGE_VERSION);
+                g_print ("%s %s\n", PACKAGE_NAME, get_version ());
                 return 0;
         }
 

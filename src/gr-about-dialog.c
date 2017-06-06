@@ -895,8 +895,6 @@ gr_about_dialog_new (void)
         g_autofree char **recipe_authors = NULL;
         guint length;
         g_autoptr(GdkPixbuf) logo = NULL;
-        const char *p;
-        const char *version;
         GrRecipeStore *store;
 
         logo = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
@@ -905,15 +903,9 @@ gr_about_dialog_new (void)
                                          GTK_ICON_LOOKUP_FORCE_SIZE,
                                          NULL);
 
-        p = strrchr (PACKAGE_VERSION, '.');
-        if (p && (atoi (p + 1) % 2 == 1))
-                version = COMMIT_ID;
-        else
-                version = PACKAGE_VERSION;
-
         about = g_object_new (GR_TYPE_ABOUT_DIALOG,
                               "program-name", _("Recipes"),
-                              "version", version,
+                              "version", get_version (),
                               "copyright", "© 2016, 2017 Matthias Clasen",
                               "license-type", GTK_LICENSE_GPL_3_0,
                               "comments", _("GNOME loves to cook"),
