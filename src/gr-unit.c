@@ -26,7 +26,7 @@
 
 static const char * const unit_names[] = {
         "g", "kg", "lb", "oz", "l", "dl", "ml", "fl oz", "pt", "qt", "gal", "cup",
-        "tbsp", "tsp", "box", "pkg", "glass",
+        "tbsp", "tsp", "box", "pkg", "glass", "st", "pinch",  
         NULL
 };
 
@@ -34,17 +34,19 @@ typedef struct {
         const char *unit;
         const char *abbreviation;
         const char *display_name;
+        const char *plural;
 } GrUnit;
 
 static GrUnit units[] = {
-        { "g",     NC_("unit abbreviation", "g"),     NC_("unit name", "gram") },
-        { "kg",    NC_("unit abbreviation", "kg"),    NC_("unit name", "kilogram") },
+        { "g",     NC_("unit abbreviation", "g"),     NC_("unit name", "gram"), NC_("unit plural", "grams") },
+        { "kg",    NC_("unit abbreviation", "kg"),    NC_("unit name", "kilogram"), NC_("unit plural", "kilograms") },
         { "lb",    NC_("unit abbreviation", "lb"),    NC_("unit name", "pound") },
         { "oz",    NC_("unit abbreviation", "oz"),    NC_("unit name", "ounce") },
         { "l",     NC_("unit abbreviation", "l"),     NC_("unit name", "liter") },
         { "dl",    NC_("unit abbreviation", "dl"),    NC_("unit name", "deciliter") },
         { "ml",    NC_("unit abbreviation", "ml"),    NC_("unit name", "milliliter") },
         { "fl oz", NC_("unit abbreviation", "fl oz"), NC_("unit name", "fluid ounce") },
+        { "fl. oz.", NC_("unit abbreviation", "fl oz"), NC_("unit name", "fluid ounce") },        
         { "pt",    NC_("unit abbreviation", "pt"),    NC_("unit name", "pint") },
         { "qt",    NC_("unit abbreviation", "qt"),    NC_("unit name", "quart") },
         { "gal",   NC_("unit abbreviation", "gal"),   NC_("unit name", "gallon") },
@@ -57,6 +59,10 @@ static GrUnit units[] = {
         { "mm",    NC_("unit abbreviation", "mm"),    NC_("unit name", "millimeter") },
         { "cm",    NC_("unit abbreviation", "cm"),    NC_("unit name", "centimeter") },
         { "m",     NC_("unit abbreviation", "m"),     NC_("unit name", "meter") },
+        { "st",    NC_("unit abbreviation", "st"),     NC_("unit name", "stone") },
+        { "pinch", NC_("unit abbreviation", "pinch"),     NC_("unit name", "pinch") },
+        { "bunch", NC_("unit abbreviation", "bunch"), NC_("unit name", "bunch"), NC_("unit plural", "bunches") },
+
 };
 
 const char **
@@ -83,6 +89,16 @@ gr_unit_get_display_name (const char *name)
         if (unit)
                 return g_dpgettext2 (NULL, "unit name", unit->display_name);
         return NULL;
+}
+
+const char *
+gr_unit_get_plural (const char *name)
+{
+        GrUnit *unit = find_unit (name);
+        if (unit)
+                return g_dpgettext2 (NULL, "unit plural", unit->plural);
+        return NULL; 
+
 }
 
 const char *
