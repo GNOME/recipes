@@ -173,7 +173,6 @@ static void
 gr_ingredients_viewer_row_set_amount (GrIngredientsViewerRow *row,
                                       const char             *amount)
 {
-        //amount here is number before unit in ingredient box
         g_free (row->amount);
         row->amount = g_strdup (amount);
         update_unit (row);
@@ -184,9 +183,7 @@ gr_ingredients_viewer_row_set_unit (GrIngredientsViewerRow *row,
                                     const char             *unit)
 {
         g_free (row->unit);
-        //unit here is the unit
         row->unit = g_strdup (unit);
-        g_message(unit);
         update_unit (row);
 }
 
@@ -710,18 +707,10 @@ get_units_model (GrIngredientsViewerRow *row)
                 for (i = 0; names[i]; i++) {
                         const char *abbrev;
                         const char *name;
-                        const char *plural;
-
                         g_autofree char *tmp = NULL;
 
                         abbrev = gr_unit_get_abbreviation (names[i]);
                         name = gr_unit_get_display_name (names[i]);
-                        plural = gr_unit_get_plural (names[i]);
-
-                        if (plural != NULL) {
-                                g_message(plural);
-                        } 
-
                         if (strcmp (abbrev, name) == 0)
                                 tmp = g_strdup (name);
                         else
@@ -730,7 +719,6 @@ get_units_model (GrIngredientsViewerRow *row)
                                                            0, abbrev,
                                                            1, name,
                                                            2, tmp,
-                                                           3, plural,
                                                            -1);
                 }
         }
@@ -772,7 +760,6 @@ match_func (GtkEntryCompletion *completion,
         g_autofree char *name = NULL;
         g_autofree char *amount = NULL;
         g_autofree char *unit = NULL;
-        g_autofree char *plural = NULL;
 
         model = gtk_entry_completion_get_model (completion);
         gtk_tree_model_get (model, iter, 0, &abbrev, 1, &name, -1);
@@ -799,7 +786,6 @@ match_selected (GtkEntryCompletion *completion,
         g_autofree char *amount = NULL;
         g_autofree char *unit = NULL;
         g_autofree char *tmp = NULL;
-        g_autofree char *plural = NULL;
 
         gtk_tree_model_get (model, iter, 0, &abbrev, -1);
 
