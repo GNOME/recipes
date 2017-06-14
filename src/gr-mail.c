@@ -31,6 +31,7 @@ typedef struct {
         char *body;
         char **attachments;
         GTask *task;
+        guint response_signal_id;
 } MailData;
 
 static void
@@ -123,6 +124,45 @@ get_mail_portal_proxy (void)
 }
 
 static void
+compose_mail_response (GDBusConnection *connection,
+                       const char *sender_name,
+                       const char *object_path,
+                       const char *interface_name,
+                       const char *signal_name,
+                       GVariant *parameters,
+                       gpointer user_data)
+{
+        MailData *md = user_data;
+        guint32 response;
+        GVariant *options;
+
+        g_variant_get (parameters, "(u@a{sv})", &response, &options);
+
+        if (response == 0)
+                g_message ("Email success");
+        else if (response == 1)
+                g_message ("Email canceled");
+        else
+                g_message ("Email error");
+
+        if (md->response_signal_id != 0) {
+                g_dbus_connection_signal_unsubscribe (connection, md->response_signal_id);
+                md->response_signal_id = 0;
+        }
+
+        // FIXME: currently, the portal returns 1 when it should return 2, so we just
+        // check for != 0 for now
+        if (response != 0) {
+                g_info ("Falling back to mailto: url");
+                send_mail_using_mailto (md);
+                return;
+        }
+
+        g_task_return_boolean (md->task, TRUE);
+        mail_data_free (md);
+}
+
+static void
 compose_mail_done (GObject      *source,
                    GAsyncResult *result,
                    gpointer      data)
@@ -130,6 +170,7 @@ compose_mail_done (GObject      *source,
         g_autoptr(GVariant) reply = NULL;
         GError *error = NULL;
         MailData *md = data;
+        const char *handle;
 
         reply = g_dbus_proxy_call_finish (G_DBUS_PROXY (source), result, &error);
         if (g_error_matches (error, G_DBUS_ERROR, G_DBUS_ERROR_UNKNOWN_INTERFACE) ||
@@ -139,12 +180,23 @@ compose_mail_done (GObject      *source,
                 return;
         }
 
-        if (error)
+        if (error) {
                 g_task_return_error (md->task, error);
-        else
-                g_task_return_boolean (md->task, TRUE);
+                mail_data_free (md);
+                return;
+        }
 
-        mail_data_free (md);
+        g_variant_get (reply, "(&o)", &handle);
+        md->response_signal_id =
+                g_dbus_connection_signal_subscribe (g_dbus_proxy_get_connection (G_DBUS_PROXY (source)),
+                                                    "org.freedesktop.portal.Desktop",
+                                                    "org.freedesktop.portal.Request",
+                                                    "Response",
+                                                    handle,
+                                                    NULL,
+                                                    G_DBUS_SIGNAL_FLAGS_NO_MATCH_RULE,
+                                                    compose_mail_response,
+                                                    md, NULL);
 }
 
 static void
