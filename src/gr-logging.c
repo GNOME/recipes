@@ -69,8 +69,9 @@ gr_log_writer (GLogLevelFlags   log_level,
                         }
                 }
 
-                if (!verbose_logging || strcmp (log_domain, G_LOG_DOMAIN) != 0) {
-                        if (strcmp (domains, "all") != 0 &&
+                if (!verbose_logging || g_strcmp0 (log_domain, G_LOG_DOMAIN) != 0) {
+                        if (domains != NULL &&
+                            strcmp (domains, "all") != 0 &&
                             (log_domain == NULL || !strstr (domains, log_domain)))
                                 return G_LOG_WRITER_HANDLED;
                 }
