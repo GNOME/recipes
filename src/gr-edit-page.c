@@ -848,10 +848,13 @@ static void
 add_step (GtkButton *button, GrEditPage *self)
 {
         GtkTextBuffer *buffer;
+        GtkTextIter pos;
         GtkTextIter end;
 
         buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (self->instructions_field));
-        gtk_text_buffer_get_end_iter (buffer, &end);
+        gtk_text_buffer_get_iter_at_mark (buffer, &pos, gtk_text_buffer_get_insert (buffer));
+        if (!gtk_text_iter_forward_search (&pos, "\n\n", 0, &end, NULL, NULL))
+                gtk_text_buffer_get_end_iter (buffer, &end);
         gtk_text_buffer_place_cursor (buffer, &end);
         gtk_text_buffer_insert_at_cursor (buffer, "\n\n", 2);
         gtk_text_view_scroll_mark_onscreen (GTK_TEXT_VIEW (self->instructions_field),
