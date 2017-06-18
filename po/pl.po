@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-31 21:03+0000\n"
-"PO-Revision-Date: 2017-06-04 10:22+0200\n"
+"POT-Creation-Date: 2017-06-18 18:10+0000\n"
+"PO-Revision-Date: 2017-06-18 21:15+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
-#: src/gr-window.ui:427 src/gr-about-dialog.c:915 src/gr-window.c:381
+#: src/gr-window.ui:427 src/gr-about-dialog.c:907 src/gr-window.c:381
 #: src/gr-window.c:1004
 msgid "Recipes"
 msgstr "Przepisy"
@@ -35,7 +35,7 @@ msgstr "Kucharze wszystkich krajów, łączcie się!"
 msgid "org.gnome.Recipes"
 msgstr "org.gnome.Recipes"
 
-#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:919
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:911
 msgid "GNOME loves to cook"
 msgstr "GNOME uwielbia gotować"
 
@@ -382,7 +382,7 @@ msgstr ""
 "Zawiera gluten. Proszę zachować ostrożność i zawsze dwa razy sprawdzać "
 "składniki podawane osobie z nietolerancją glutenu lub laktozy."
 
-#: src/gr-details-page.ui:126 src/gr-details-page.c:488
+#: src/gr-details-page.ui:126 src/gr-details-page.c:492
 msgid "Spicy"
 msgstr "Pikantne"
 
@@ -419,7 +419,7 @@ msgid "Note"
 msgstr "Notatka"
 
 #: src/gr-details-page.ui:409 src/gr-edit-page.ui:705
-#: src/gr-recipe-formatter.c:118 src/gr-recipe-printer.c:296
+#: src/gr-recipe-formatter.c:119 src/gr-recipe-printer.c:296
 msgid "Directions"
 msgstr "Instrukcja"
 
@@ -540,7 +540,7 @@ msgstr "Trochę pikantne"
 msgid "Hot"
 msgstr "Ostre"
 
-#: src/gr-edit-page.ui:580 src/gr-details-page.c:483 src/gr-spice-row.c:142
+#: src/gr-edit-page.ui:580 src/gr-details-page.c:487 src/gr-spice-row.c:142
 msgid "Very spicy"
 msgstr "Bardzo pikantne"
 
@@ -639,7 +639,7 @@ msgid "Examples: 1 kg, 2 1/2 pounds, 250 ml, 6"
 msgstr "Przykłady: 1 kg, 2 1/2 paczki, 250 ml, 6"
 
 #: src/gr-ingredients-viewer.ui:13 src/gr-query-editor.ui:235
-#: src/gr-edit-page.c:1321 src/gr-recipe-formatter.c:99
+#: src/gr-edit-page.c:1321 src/gr-recipe-formatter.c:100
 #: src/gr-recipe-printer.c:247
 msgid "Ingredients"
 msgstr "Składniki"
@@ -967,17 +967,17 @@ msgstr "Biblioteki systemowe"
 msgid "System"
 msgstr "System"
 
-#: src/gr-about-dialog.c:922
+#: src/gr-about-dialog.c:914
 msgid "translator-credits"
 msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2016-2017\n"
 "Aviary.pl <community-poland@mozilla.org>, 2016-2017"
 
-#: src/gr-about-dialog.c:925
+#: src/gr-about-dialog.c:917
 msgid "Learn more about Recipes"
 msgstr "Więcej informacji o Przepisach"
 
-#: src/gr-about-dialog.c:932
+#: src/gr-about-dialog.c:924
 msgid "Recipes by"
 msgstr "Autorzy przepisów"
 
@@ -1297,21 +1297,21 @@ msgstr ""
 "smacznych potraw. Stanowi ona mieszanką i udoskonaleniem kuchni "
 "środkowoazjatyckiej, środkowowschodniej i bałkańskiej."
 
-#: src/gr-details-page.c:319
+#: src/gr-details-page.c:323
 msgid "Could not find this recipe."
 msgstr "Nie można odnaleźć tego przepisu."
 
-#: src/gr-details-page.c:527
+#: src/gr-details-page.c:531
 #, c-format
 msgid "Timer: %s"
 msgstr "Minutnik: %s"
 
-#: src/gr-details-page.c:534
+#: src/gr-details-page.c:538
 #, c-format
 msgid "Image %d"
 msgstr "%d. obraz"
 
-#: src/gr-details-page.c:689 src/gr-edit-page.c:1406
+#: src/gr-details-page.c:693 src/gr-edit-page.c:1406
 #, c-format
 msgid "Recipe by %s"
 msgstr "Autor przepisu: %s"
@@ -1724,19 +1724,19 @@ msgstr ""
 "Cześć zaznaczonych przepisów jest częścią Przepisów\n"
 "GNOME. Należy wysyłać tylko własne przepisy."
 
-#: src/gr-recipe-formatter.c:85 src/gr-recipe-printer.c:162
+#: src/gr-recipe-formatter.c:86 src/gr-recipe-printer.c:162
 msgid "Author:"
 msgstr "Autor:"
 
-#: src/gr-recipe-formatter.c:86 src/gr-recipe-printer.c:163
+#: src/gr-recipe-formatter.c:87 src/gr-recipe-printer.c:163
 msgid "Preparation:"
 msgstr "Przygotowanie:"
 
-#: src/gr-recipe-formatter.c:87 src/gr-recipe-printer.c:164
+#: src/gr-recipe-formatter.c:88 src/gr-recipe-printer.c:164
 msgid "Cooking:"
 msgstr "Gotowanie:"
 
-#: src/gr-recipe-formatter.c:88 src/gr-recipe-printer.c:165
+#: src/gr-recipe-formatter.c:89 src/gr-recipe-printer.c:165
 msgid "Serves:"
 msgstr "Porcje:"
 
@@ -1845,10 +1845,10 @@ msgstr[2] "Kup składniki: <b>%s, %s i %d więcej</b>"
 #: src/gr-recipe-store.c:1285
 #, c-format
 msgid ""
-"A recipe with this name and author already exists.\n"
+"A recipe with this name and author (%s) already exists.\n"
 "Please choose a different name"
 msgstr ""
-"Przepis o tej nazwie i autorze już istnieje.\n"
+"Przepis o tej nazwie i autorze (%s) już istnieje.\n"
 "Proszę wybrać inną nazwę"
 
 #: src/gr-recipe-store.c:1314
