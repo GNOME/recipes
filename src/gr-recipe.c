@@ -79,6 +79,9 @@ struct _GrRecipe
         char *translated_description;
         char *translated_instructions;
         char *translated_notes;
+
+        double yield;
+        char *yield_unit;
 };
 
 G_DEFINE_TYPE (GrRecipe, gr_recipe, G_TYPE_OBJECT)
@@ -97,6 +100,8 @@ enum {
         PROP_PREP_TIME,
         PROP_COOK_TIME,
         PROP_SERVES,
+        PROP_YIELD,
+        PROP_YIELD_UNIT,
         PROP_INGREDIENTS,
         PROP_INSTRUCTIONS,
         PROP_SPICINESS,
@@ -140,6 +145,8 @@ gr_recipe_finalize (GObject *object)
         g_free (self->translated_description);
         g_free (self->translated_instructions);
         g_free (self->translated_notes);
+
+        g_free (self->yield_unit);
 
         G_OBJECT_CLASS (gr_recipe_parent_class)->finalize (object);
 }
@@ -235,6 +242,14 @@ gr_recipe_get_property (GObject    *object,
 
         case PROP_CONTRIBUTED:
                 g_value_set_boolean (value, self->contributed);
+                break;
+
+        case PROP_YIELD:
+                g_value_set_double (value, self->yield);
+                break;
+
+        case PROP_YIELD_UNIT:
+                g_value_set_string (value, self->yield_unit);
                 break;
 
         default:
@@ -403,6 +418,15 @@ gr_recipe_set_property (GObject      *object,
                 self->contributed = g_value_get_boolean (value);
                 break;
 
+        case PROP_YIELD:
+                self->yield = g_value_get_double (value);
+                break;
+
+        case PROP_YIELD_UNIT:
+                g_free (self->yield_unit);
+                self->yield_unit = g_value_dup_string (value);
+                break;
+
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
         }
@@ -522,6 +546,16 @@ gr_recipe_class_init (GrRecipeClass *klass)
                                       FALSE,
                                       G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_CONTRIBUTED, pspec);
+
+        pspec = g_param_spec_double ("yield", NULL, NULL,
+                                     0.0, G_MAXDOUBLE, 0.0,
+                                     G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_YIELD, pspec);
+
+        pspec = g_param_spec_string ("yield-unit", NULL, NULL,
+                                     NULL,
+                                     G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_YIELD_UNIT, pspec);
 }
 
 static void
@@ -530,6 +564,7 @@ gr_recipe_init (GrRecipe *self)
         self->ctime = g_date_time_new_now_utc ();
         self->mtime = g_date_time_new_now_utc ();
         self->images = gr_image_array_new ();
+        self->yield = 0.0;
 }
 
 GrRecipe *
@@ -705,6 +740,18 @@ GPtrArray *
 gr_recipe_get_images (GrRecipe *recipe)
 {
         return recipe->images;
+}
+
+double
+gr_recipe_get_yield (GrRecipe *recipe)
+{
+        return recipe->yield;
+}
+
+const char *
+gr_recipe_get_yield_unit (GrRecipe *recipe)
+{
+        return recipe->yield_unit;
 }
 
 /* terms are assumed to be g_utf8_casefold'ed where appropriate */

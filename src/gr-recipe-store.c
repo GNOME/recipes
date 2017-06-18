@@ -180,6 +180,32 @@ gr_recipe_store_finalize (GObject *object)
 }
 
 static gboolean
+parse_yield (const char  *text,
+             double      *amount,
+             char       **unit)
+{
+        char *tmp;
+        const char *str;
+        g_autofree char *num = NULL;
+
+        g_clear_pointer (unit, g_free);
+
+        tmp = (char *)text;
+        skip_whitespace (&tmp);
+        str = tmp;
+        if (!gr_number_parse (amount, &tmp, NULL)) {
+                *unit = g_strdup (str);
+                return FALSE;
+        }
+
+        skip_whitespace (&tmp);
+        if (tmp)
+                *unit = g_strdup (tmp);
+
+        return TRUE;
+}
+
+static gboolean
 load_recipes (GrRecipeStore *self,
               const char    *dir,
               gboolean       contributed)
@@ -238,6 +264,9 @@ load_recipes (GrRecipeStore *self,
                 g_autofree char *ingredients = NULL;
                 g_autofree char *instructions = NULL;
                 g_autofree char *notes = NULL;
+                g_autofree char *yield_str = NULL;
+                g_autofree char *yield_unit = NULL;
+                double yield;
                 g_auto(GStrv) paths = NULL;
                 int serves;
                 int spiciness;
@@ -368,6 +397,23 @@ load_recipes (GrRecipeStore *self,
                         }
                         g_clear_error (&error);
                 }
+                yield_str = g_key_file_get_string (keyfile, groups[i], "Yield", &error);
+                if (error) {
+                        if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
+                                g_warning ("Failed to load recipe %s: %s", groups[i], error->message);
+                                continue;
+                        }
+                        g_clear_error (&error);
+                }
+                if (!yield_str) {
+                        yield = (double)serves;
+                        yield_unit = g_strdup (_("servings"));
+                }
+                else if (!parse_yield (yield_str, &yield, &yield_unit)) {
+                        g_warning ("Failed to load recipe %s: bad yield", groups[i]);
+                        continue;
+                }
+
                 spiciness = g_key_file_get_integer (keyfile, groups[i], "Spiciness", &error);
                 if (error) {
                         if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
@@ -454,11 +500,12 @@ load_recipes (GrRecipeStore *self,
                                               "cook-time", cook_time,
                                               "ingredients", ingredients,
                                               "instructions", instructions,
-                                              "serves", serves,
                                               "spiciness", spiciness,
                                               "diets", diets,
                                               "images", images,
                                               "default-image", default_image,
+                                              "yield-unit", yield_unit,
+                                              "yield", yield,
                                               "mtime", mtime,
                                               NULL);
                 }
@@ -479,11 +526,12 @@ load_recipes (GrRecipeStore *self,
                                                "ingredients", ingredients,
                                                "instructions", instructions,
                                                "notes", notes,
-                                               "serves", serves,
                                                "spiciness", spiciness,
                                                "diets", diets,
                                                "images", images,
                                                "default-image", default_image,
+                                               "yield-unit", yield_unit,
+                                               "yield", yield,
                                                "ctime", ctime,
                                                "mtime", mtime,
                                                "contributed", contributed,
@@ -530,8 +578,10 @@ save_recipes (GrRecipeStore *self)
                 const char *ingredients;
                 const char *instructions;
                 const char *notes;
+                const char *yield_unit;
+                double yield;
+                g_autofree char *yield_str = NULL;
                 GPtrArray *images;
-                int serves;
                 int spiciness;
                 GrDiets diets;
                 g_auto(GStrv) paths = NULL;
@@ -547,7 +597,9 @@ save_recipes (GrRecipeStore *self)
                 name = gr_recipe_get_name (recipe);
                 author = gr_recipe_get_author (recipe);
                 description = gr_recipe_get_description (recipe);
-                serves = gr_recipe_get_serves (recipe);
+                yield_unit = gr_recipe_get_yield_unit (recipe);
+                yield = gr_recipe_get_yield (recipe);
+                yield_str = g_strdup_printf ("%g %s", yield, yield_unit);
                 spiciness = gr_recipe_get_spiciness (recipe);
                 cuisine = gr_recipe_get_cuisine (recipe);
                 season = gr_recipe_get_season (recipe);
@@ -588,7 +640,8 @@ save_recipes (GrRecipeStore *self)
                 g_key_file_set_string (keyfile, key, "CookTime", cook_time ? cook_time : "");
                 g_key_file_set_string (keyfile, key, "Ingredients", ingredients ? ingredients : "");
                 g_key_file_set_string (keyfile, key, "Instructions", instructions ? instructions : "");
-                g_key_file_set_integer (keyfile, key, "Serves", serves);
+                g_key_file_set_integer (keyfile, key, "Serves", (int)yield);
+                g_key_file_set_string (keyfile, key, "Yield", yield_str ? yield_str : "");
                 g_key_file_set_integer (keyfile, key, "Spiciness", spiciness);
                 g_key_file_set_integer (keyfile, key, "Diets", diets);
                 g_key_file_set_integer (keyfile, key, "DefaultImage", default_image);

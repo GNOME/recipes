@@ -23,6 +23,7 @@
 #include <glib-object.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include "gr-diet.h"
+#include "gr-number.h"
 
 G_BEGIN_DECLS
 
@@ -56,6 +57,8 @@ GDateTime      *gr_recipe_get_mtime        (GrRecipe   *recipe);
 gboolean        gr_recipe_is_readonly      (GrRecipe   *recipe);
 gboolean        gr_recipe_is_contributed   (GrRecipe   *recipe);
 GPtrArray      *gr_recipe_get_images       (GrRecipe   *recipe);
+const char     *gr_recipe_get_yield_unit   (GrRecipe   *recipe);
+double          gr_recipe_get_yield        (GrRecipe   *recipe);
 
 const char     *gr_recipe_get_translated_name         (GrRecipe   *recipe);
 const char     *gr_recipe_get_translated_description  (GrRecipe   *recipe);
