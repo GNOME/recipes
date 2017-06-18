@@ -219,6 +219,7 @@ shop_it (GrDetailsPage *page)
 }
 
 static gboolean save_notes (gpointer data);
+static void details_page_reload (GrDetailsPage *page, GrRecipe *recipe);
 
 static void
 details_page_finalize (GObject *object)
@@ -267,9 +268,12 @@ save_notes (gpointer data)
         g_object_set (page->recipe, "notes", text, NULL);
 
         store = gr_recipe_store_get ();
+
+        g_signal_handlers_block_by_func (store, details_page_reload, page);
         if (!gr_recipe_store_update_recipe (store, page->recipe, id, &error)) {
                 g_warning ("Error: %s", error->message);
         }
+        g_signal_handlers_unblock_by_func (store, details_page_reload, page);
 
 out:
         page->save_timeout = 0;
