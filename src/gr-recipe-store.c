@@ -1282,7 +1282,7 @@ gr_recipe_store_add_recipe (GrRecipeStore  *self,
         }
         if (g_hash_table_contains (self->recipes, id)) {
                 g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
-                             _("A recipe with this name and author already exists.\nPlease choose a different name"));
+                             _("A recipe with this name and author (%s) already exists.\nPlease choose a different name"), id);
                 return FALSE;
         }
 
