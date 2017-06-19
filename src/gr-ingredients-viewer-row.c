@@ -22,6 +22,7 @@
 
 #include <glib.h>
 #include <glib/gi18n.h>
+#include <stdlib.h>
 
 #include "gr-ingredients-viewer-row.h"
 #include "gr-ingredients-viewer.h"
@@ -30,7 +31,6 @@
 #include "gr-utils.h"
 #include "gr-number.h"
 #include "gr-recipe-store.h"
-
 
 struct _GrIngredientsViewerRow
 {
@@ -47,6 +47,8 @@ struct _GrIngredientsViewerRow
         GtkWidget *unit_event_box;
         GtkWidget *ingredient_event_box;
         GtkWidget *unit_help_popover;
+        GtkEntryCompletion *unit_completion;
+        GtkCellRenderer *unit_cell;
 
         char *amount;
         char *unit;
@@ -690,7 +692,7 @@ get_units_model (GrIngredientsViewerRow *row)
                 const char **names;
                 int i;
 
-                store = gtk_list_store_new (3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
+                store = gtk_list_store_new (5, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
                 gtk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (store),
                                                          sort_func, NULL, NULL);
                 gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (store),
@@ -701,24 +703,40 @@ get_units_model (GrIngredientsViewerRow *row)
                                                    0, "",
                                                    1, "",
                                                    2, "",
+                                                   3, "",
+                                                   4, "",
                                                    -1);
 
                 names = gr_unit_get_names ();
                 for (i = 0; names[i]; i++) {
                         const char *abbrev;
                         const char *name;
+                        const char *plural;
+
                         g_autofree char *tmp = NULL;
+                        g_autofree char *tmp2 = NULL;
 
                         abbrev = gr_unit_get_abbreviation (names[i]);
                         name = gr_unit_get_display_name (names[i]);
+                        plural = gr_unit_get_plural (names[i]);
+
+
                         if (strcmp (abbrev, name) == 0)
                                 tmp = g_strdup (name);
                         else
                                 tmp = g_strdup_printf ("%s (%s)", name, abbrev);
+
+                        if (strcmp (abbrev, plural) == 0)
+                                tmp2 = g_strdup (name);
+                        else 
+                                tmp2 = g_strdup_printf ("%s (%s)", plural, abbrev);
+
                         gtk_list_store_insert_with_values (store, NULL, -1,
                                                            0, abbrev,
                                                            1, name,
                                                            2, tmp,
+                                                           3, plural,
+                                                           4, tmp2,
                                                            -1);
                 }
         }
@@ -743,7 +761,6 @@ get_amount (GtkCellLayout   *layout,
         GrIngredientsViewerRow *row = data;
         g_autofree char *amount = NULL;
         g_autofree char *unit = NULL;
-
         parse_unit (gtk_entry_get_text (GTK_ENTRY (row->unit_entry)), &amount, &unit);
         g_object_set (renderer, "text", amount, NULL);
 }
@@ -760,16 +777,19 @@ match_func (GtkEntryCompletion *completion,
         g_autofree char *name = NULL;
         g_autofree char *amount = NULL;
         g_autofree char *unit = NULL;
+        g_autofree char *plural = NULL;
 
         model = gtk_entry_completion_get_model (completion);
-        gtk_tree_model_get (model, iter, 0, &abbrev, 1, &name, -1);
+        gtk_tree_model_get (model, iter, 0, &abbrev, 1, &name, 3, &plural, -1);
 
         parse_unit (gtk_entry_get_text (GTK_ENTRY (row->unit_entry)), &amount, &unit);
 
         if (!amount || !unit)
                 return FALSE;
 
-        if (g_str_has_prefix (abbrev, unit) || g_str_has_prefix (name, unit))
+        if (g_str_has_prefix (abbrev, unit) ||
+            g_str_has_prefix (name, unit) ||
+            g_str_has_prefix (plural, unit))
                 return TRUE;
 
         return FALSE;
@@ -786,15 +806,35 @@ match_selected (GtkEntryCompletion *completion,
         g_autofree char *amount = NULL;
         g_autofree char *unit = NULL;
         g_autofree char *tmp = NULL;
+        g_autofree char *plural = NULL;
 
         gtk_tree_model_get (model, iter, 0, &abbrev, -1);
 
         parse_unit (gtk_entry_get_text (GTK_ENTRY (row->unit_entry)), &amount, &unit);
 
         tmp = g_strdup_printf ("%s %s", amount, abbrev);
+
         gtk_entry_set_text (GTK_ENTRY (row->unit_entry), tmp);
 
         return TRUE;
+}
+
+static void
+text_changed (GObject    *object,
+              GParamSpec *pspec,
+              gpointer    data)
+{
+        GtkEntry *entry = GTK_ENTRY (object);
+        GrIngredientsViewerRow *row = data;
+        GrNumber number;
+        char *text;
+
+        text = (char *) gtk_entry_get_text (entry);
+        gr_number_parse (&number, &text, NULL);
+        if (number.value > 1)
+                gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (row->unit_completion), row->unit_cell, "text", 4, NULL);
+        else
+                gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (row->unit_completion), row->unit_cell, "text", 2, NULL);
 }
 
 static void
@@ -807,7 +847,11 @@ setup_editable_row (GrIngredientsViewerRow *self)
                 g_autoptr(GtkTreeModel) ingredients_model = NULL;
                 g_autoptr(GtkTreeModel) units_model = NULL;
                 //PangoAttrList *attrs = NULL;
-                GtkCellRenderer *cell;
+                GtkCellRenderer *cell = NULL;
+
+                completion = gtk_entry_completion_new ();
+
+
 
                 gtk_drag_source_set (self->drag_handle, GDK_BUTTON1_MASK, entries, 1, GDK_ACTION_MOVE);
                 g_signal_connect (self->drag_handle, "drag-begin", G_CALLBACK (drag_begin), NULL);
@@ -815,10 +859,10 @@ setup_editable_row (GrIngredientsViewerRow *self)
                 g_signal_connect (self->drag_handle, "drag-data-get", G_CALLBACK (drag_data_get), NULL);
 
                 ingredients_model = get_ingredients_model ();
-                completion = gtk_entry_completion_new ();
                 gtk_entry_completion_set_model (completion, ingredients_model);
                 gtk_entry_completion_set_text_column (completion, 0);
                 gtk_entry_set_completion (GTK_ENTRY (self->ingredient_entry), completion);
+
 
                 units_model = get_units_model (self);
                 completion = gtk_entry_completion_new ();
@@ -831,7 +875,9 @@ setup_editable_row (GrIngredientsViewerRow *self)
 
                 cell = gtk_cell_renderer_text_new ();
                 gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (completion), cell, TRUE);
-                gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (completion), cell, "text", 2);
+                self->unit_cell = cell;
+                self->unit_completion = completion;
+                g_signal_connect (self->unit_entry, "notify::text", G_CALLBACK (text_changed), self);
 
                 gtk_entry_completion_set_match_func (completion, match_func, self, NULL);
                 g_signal_connect (completion, "match-selected", G_CALLBACK (match_selected), self);
