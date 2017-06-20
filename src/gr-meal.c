@@ -36,6 +36,7 @@ static const char *names[] = {
         "drinks",
         "pizza",
         "pasta",
+        "salad",
         "other",
         NULL
 };
@@ -50,6 +51,7 @@ static const char *titles[] = {
         N_("Drinks and Cocktails"),
         N_("Pizza"),
         N_("Pasta"),
+        N_("Salad"),
         N_("Other")
 };
 
