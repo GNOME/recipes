@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-30 12:17+0000\n"
+"POT-Creation-Date: 2017-06-19 23:04-0400\n"
 "PO-Revision-Date: 2017-03-30 21:47+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
@@ -16,1870 +16,3050 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/chefs.db.h:3
-msgid "I cook a lot, particularly Italian and Indian."
-msgstr "Jeg lager ofte mat. Spesielt italiensk og indisk."
-
-#: data/chefs.db.h:4
-msgid ""
-"A Kuala Lumpur native, transplanted to San Francisco. I bake, I cook, I work "
-"on GNOME engagement stuff occasionally. Every now and then I travel between "
-"North America, Asia and Europe. Follow me @adeliabakes."
+#: data/org.gnome.Recipes.desktop.in:3
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
+#: src/gr-window.ui:427 src/gr-about-dialog.c:907 src/gr-window.c:381
+#: src/gr-window.c:1004
+msgid "Recipes"
 msgstr ""
 
-#: data/chefs.db.h:5
-msgid "Adrià is originally from Barcelona, Spain."
-msgstr "Adrià er opprinnelig fra Barcalona i Spania."
-
-#: data/chefs.db.h:6
-msgid ""
-"Being from Strasbourg, Alexandre is knowledgeable about both Alsatian and "
-"French cuisine, but he's not afraid to experiment in other ones as well."
+#: data/org.gnome.Recipes.desktop.in:4
+msgid "GNOME cooks unite!"
 msgstr ""
 
-#: data/chefs.db.h:7
-msgid "The nordic cuisine maestro."
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Recipes.desktop.in:7
+msgid "org.gnome.Recipes"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:911
+msgid "GNOME loves to cook"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:9
+msgid ""
+"Recipes is an easy-to-use application that will help you to discover what to "
+"cook today, tomorrow, the rest of the week and for your special occasions."
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:13
+msgid ""
+"Recipes comes with a collection of recipes that have been collected by GNOME "
+"contributors from all over the world. It also lets you store your own "
+"recipes and share them with your friends."
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:18
+msgid "The major features of Recipes include:"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:22
+msgid "Add and edit your own recipes"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:23
+msgid "Share recipes with your friends"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:24
+msgid "Export and print shopping lists"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:25
+msgid "Adjust quantities based on the number of servings"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:26
+msgid "Mark recipes to cook later or add them to your favorites"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:27
+msgid "Add notes to recipes"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:28
+msgid "Hands-free cooking instruction mode"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:34
+msgid "Initial screen for the application"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:38
+#, fuzzy
+msgid "The cuisines page"
 msgstr "Den nordiske matmesteren."
 
-#: data/chefs.db.h:8
-msgid "He cooks with GTK+"
-msgstr "Han lager mat med GTK+"
-
-#: data/chefs.db.h:9
-msgid "Elvin lives in Istanbul."
-msgstr "Elvin bor i Istanbul."
-
-#: data/chefs.db.h:10
-msgid ""
-"Erusan is an American who has lived all over the country, loves GNOME, and "
-"enjoys cooking — primarily American, Asian, and Indian cuisine."
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:42
+msgid "A shopping list"
 msgstr ""
 
-#: data/chefs.db.h:11
-msgid "Georges is a vegan samurai, a GNOME contributor, and sometimes both."
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:46
+msgid "Cooking a recipe"
 msgstr ""
 
-#: data/chefs.db.h:12
-msgid ""
-"My name is Fredrik Fyksen. I am from Norway, but live in Denmark. I like "
-"food, computers and music. You can read more about me at <a href=\"https://"
-"www.fyksen.me/\">fyksen.me</a>."
-msgstr "Jeg heter Fredrik Fyksen. Jeg er fra Norge, men bor i Danmark. Jeg liker mat, datamaskiner og musikk. Du kan lese mer om meg på <a href=\"https://www.fyksen.me\">fyksen.me</a>."
-
-#: data/chefs.db.h:13
-msgid ""
-"Ray is a Desktop Software Engineer at Red Hat and vegetarian who "
-"occasionally enjoys cooking."
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:50
+msgid "Editing a recipe"
 msgstr ""
 
-#: data/chefs.db.h:14
-msgid "Just Link."
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:54
+msgid "An individual recipe"
 msgstr ""
 
-#: data/chefs.db.h:15
-msgid ""
-"Matthias is a manager in the Desktop team at Red Hat. He likes to cook as "
-"much as he likes to code."
-msgstr "Matthias er en av lederene i skrivebordsteamet hos Red Hat. Han liker å lage mat like mye som han liker å programmere."
-
-#: data/chefs.db.h:16
-msgid "Matthew is a vegan and a Computer Science student who loves FOSS."
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:58
+msgid "An individual cuisine"
 msgstr ""
 
-#: data/chefs.db.h:17
-msgid "I'm cooking from time to time and started to add recipes here."
+#: data/org.gnome.Recipes.gschema.xml:14
+msgid "The user ID of the current user"
 msgstr ""
 
-#: data/chefs.db.h:18
-msgid "Artist, Computer Scientist, Traveller."
+#: data/org.gnome.Recipes.gschema.xml:15
+msgid "The user ID of the current user."
 msgstr ""
-
-#: data/chefs.db.h:19
-msgid "I love cooking. :)"
-msgstr "Jeg elsker å lage mat. :)"
 
-#: data/chefs.db.h:20
-msgid "Aviation, making stuff, in Finland."
+#: data/org.gnome.Recipes.gschema.xml:21
+msgid "The number of times cooking mode has been presented"
 msgstr ""
 
-#: data/recipes.db.h:3
-msgid "Lemon Cake"
-msgstr "Sitronkake"
-
-#: data/recipes.db.h:4
-msgid "My favorite Lemon Cake recipe. The cake is light and juicy."
+#: data/org.gnome.Recipes.gschema.xml:22
+msgid "The number of times cooking mode has been presented."
 msgstr ""
 
-#: data/recipes.db.h:5
-msgid "Preheat the oven to [temperature:175C] - [temperature:195C]."
+#: data/org.gnome.Recipes.gschema.xml:28
+msgid "The timestamp of the last change to the favorites list"
 msgstr ""
 
-#: data/recipes.db.h:6
+#: data/org.gnome.Recipes.gschema.xml:29
 msgid ""
-"First abrade the shell of the lemons. Squeeze the juice out of two (per "
-"serve) lemons."
+"The timestamp of the last time an item was added to or removed from the "
+"favorites list."
 msgstr ""
 
-#: data/recipes.db.h:7
-msgid ""
-"Stir eggs and sugar foamy. Sieve the flour and add it with the vanilla "
-"sugar, baking powder, lemon shells and margarine one by one. Stir everything "
-"well."
+#: data/org.gnome.Recipes.gschema.xml:36
+msgid "The list of favorites"
 msgstr ""
 
-#: data/recipes.db.h:8
-msgid ""
-"[timer:00:20:00]Put the dough on a baking tray with baking paper and put it "
-"in the preheated oven. Bake it for 20min (middle rail)."
+#: data/org.gnome.Recipes.gschema.xml:37
+msgid "The list of favorites. Each entry in the list is the ID of a recipe."
 msgstr ""
 
-#: data/recipes.db.h:9
-msgid ""
-"Now mix the lemon juice little by little with the sieved powered sugar. Be "
-"sparing with the juice, the sugar icing must be pretty viscous."
+#: data/org.gnome.Recipes.gschema.xml:43
+msgid "The timestamp of the last change to the shopping list"
 msgstr ""
 
-#: data/recipes.db.h:10
+#: data/org.gnome.Recipes.gschema.xml:44
 msgid ""
-"Apply the sugar icing on the cake with a fork as long the cake is warm. Let "
-"the cake cool down."
+"The timestamp of the last time an item was added to or removed from the "
+"shopping list."
 msgstr ""
 
-#: data/recipes.db.h:11
-msgid "Henry's Goulash"
-msgstr "Henry's gulasj"
+#: data/org.gnome.Recipes.gschema.xml:51
+msgid "The shopping list"
+msgstr ""
 
-#: data/recipes.db.h:12
-msgid "Originally from Hungary, this dish is widespread in Central Europe."
+#: data/org.gnome.Recipes.gschema.xml:52
+msgid ""
+"The shopping list. Each entry in the dictionary maps the ID of a recipe to a "
+"serving count."
 msgstr ""
 
-#: data/recipes.db.h:13
-msgid "This is my friend Henry's version of it."
+#: data/org.gnome.Recipes.gschema.xml:59
+msgid "Ingredients that were removed from the shopping list"
 msgstr ""
 
-#: data/recipes.db.h:14
-msgid ""
-"Chop very minutely onions and garlic. Cut the meat in chunks. Chop red bell "
-"peppers in small squares."
+#: data/org.gnome.Recipes.gschema.xml:60
+msgid "The names of ingredients that were removed from the shopping list."
 msgstr ""
 
-#: data/recipes.db.h:15
-msgid ""
-"Cook first the meat, alone without salt or spices.  Keep it warm in a "
-"separated bowl."
+#: data/org.gnome.Recipes.gschema.xml:66
+msgid "The list of recipes to be exported"
 msgstr ""
 
-#: data/recipes.db.h:16
+#: data/org.gnome.Recipes.gschema.xml:67
 msgid ""
-"Fry in a mixture of butter and oil half of each pepper, onions and garlic.  "
-"When this is soft, add the tomato paste."
+"The list of recipes to be exported. Each entry in the list is the ID of a "
+"recipe."
 msgstr ""
 
-#: data/recipes.db.h:17
-msgid ""
-"When everything is almost ready, add meat, wine, spices and bay leaves.  "
+#: data/org.gnome.Recipes.gschema.xml:74
+msgid "The setting for which unit temperatures should be displayed in."
 msgstr ""
 
-#: data/recipes.db.h:18
+#: data/org.gnome.Recipes.gschema.xml:75
 msgid ""
-"Put everything in the oven at a low temperature and cook it for some two "
-"hours."
+"The setting for which unit temperatures should be displayed in. Default is "
+"'locale', which means to use the LC_MEASUREMENT category of the current "
+"locale to decide."
 msgstr ""
 
-#: data/recipes.db.h:19
-msgid ""
-"Meantime the goulash is in the oven, chop the potatoes in sledges and cook "
-"them with salt & pepper."
+#: src/chef-conflict-dialog.ui:10
+msgid "Same Chef"
 msgstr ""
 
-#: data/recipes.db.h:20
-msgid "Serve warm together."
+#: src/chef-conflict-dialog.ui:16
+msgid "Different Chef"
 msgstr ""
 
-#: data/recipes.db.h:21
-msgid "If you don't have or don't want potatoes, you can use pasta instead."
+#: src/chef-conflict-dialog.ui:30
+msgid "Existing Chef"
 msgstr ""
 
-#: data/recipes.db.h:22
-msgid "Borscht"
-msgstr "Borscht"
+#: src/chef-conflict-dialog.ui:43
+msgid "Imported Chef"
+msgstr ""
 
-#: data/recipes.db.h:23
-msgid ""
-"This is a traditional soup from East and Central Europe. There are an "
-"Ukrainian/Russian and a Polish version, but both a very similar so I put "
-"them together in a general recipe."
+#: src/chef-conflict-dialog.ui:57 src/chef-conflict-dialog.ui:69
+msgid "Short Name:"
 msgstr ""
 
-#: data/recipes.db.h:24
-msgid ""
-"[image:0]Over an open flame or under a broiler, roast 1 carrot and half of "
-"the onion until charred, about 3 minutes."
+#: src/chef-conflict-dialog.ui:80 src/chef-conflict-dialog.ui:92
+#: src/recipe-conflict-dialog.ui:38
+msgid "Name:"
 msgstr ""
 
-#: data/recipes.db.h:25
-msgid ""
-"[timer:00:08:00,Boil bones]Boil the bones in a large stockpot filled with "
-"water for 8 minutes, then drain and rinse thoroughly with cold water."
+#: src/chef-conflict-dialog.ui:103 src/chef-conflict-dialog.ui:115
+msgid "Description:"
 msgstr ""
 
-#: data/recipes.db.h:26
-msgid ""
-"[timer:02:00:00,Simmer]Clean the stockpot, then return the bones to the pot "
-"along with the charred carrot and half onion and the peppercorns. Add enough "
-"cold water to cover the bones by at least 1″, about 4 quarts. Bring to a "
-"boil, then reduce the heat and simmer on medium-low until the meat easily "
-"separates from the bone, about 2 hours. Be sure to skim any foam or fat that "
-"accumulates on the surface. Add water to replace any that evaporates."
-msgstr ""
-
-#: data/recipes.db.h:27
-msgid ""
-"[timer:00:45:00,Bake beets]As the bones simmer, preheat the oven to "
-"[temperature:375F]. Place the beets in aluminum foil, drizzle with the olive "
-"oil, and wrap tightly. Roast until easily pierced with a fork, 45-60 "
-"minutes. Remove from the oven, let cool, then slip off the skins and cut the "
-"beets into French fry-sized strips. Set aside."
+#: src/chef-conflict-dialog.ui:126 src/chef-conflict-dialog.ui:138
+msgid "Picture:"
 msgstr ""
 
-#: data/recipes.db.h:28
-msgid ""
-"[image:0]When the bones are ready, strain the broth and discard the "
-"vegetables and peppercorns, then return the broth to the stockpot. Set the "
-"meaty bones aside to cool; once cool, pick apart the meat and set aside. "
-"Discard the bones or reserve for making stock."
+#: src/gr-chef-dialog.ui:4 src/gr-window.c:1091
+msgid "Chef Information"
 msgstr ""
 
-#: data/recipes.db.h:29
-msgid ""
-"[image:0]Coarsely chop the remaining half onion and grate the other carrot. "
-"In a skillet, warm the butter on medium heat, then add the chopped onion and "
-"sauté until softened, about 5 minutes. Add the minced garlic and tomato "
-"paste and sauté until aromatic, about 1 minute."
+#: src/gr-chef-dialog.ui:10 src/gr-window.c:1189
+msgid "_Cancel"
 msgstr ""
 
-#: data/recipes.db.h:30
-msgid ""
-"[timer:00:10:00,Cook]Add the sautéed onion and garlic paste to the broth, "
-"along with the beets, red wine vinegar, and grated carrot. Bring to a simmer "
-"on medium heat, then add the shredded cabbage and cubed potatoes. Return to "
-"a simmer and cook for 10 more minutes, skimming any excess fat from the "
-"surface, then stir in the meat, parsley, and lemon juice. Season with salt "
-"and pepper to taste, about 1/2 tsp. each."
-msgstr ""
-
-#: data/recipes.db.h:31
-msgid ""
-"[image:0]Cover, remove from the heat, and allow to brew for 20 minutes. "
-"Serve with a dollop of sour cream and fresh dill sprinkled on top. For a "
-"more flavorful soup, allow the soup to brew overnight and reheat the next "
-"day."
+#: src/gr-chef-dialog.ui:20 src/gr-window.ui:130
+msgid "_Save"
 msgstr ""
 
-#: data/recipes.db.h:32
+#: src/gr-chef-dialog.ui:97
 msgid ""
-"It's easy to convert this soup in vegan or vegetarian by not adding the meat "
-"and cream."
+"This information may be shared with other users if you share your recipes."
 msgstr ""
 
-#: data/recipes.db.h:33
-msgid "It will lose a bit of personality though."
+#: src/gr-chef-dialog.ui:119
+msgid "Other Chef"
 msgstr ""
 
-#: data/recipes.db.h:34
-msgid ""
-"If you're in a hurry, use a canned broil as base and add around 600 g of "
-"chopped meat without bones, and follow the rest of instruccions. This way it "
-"will be ready in less than an hour."
+#: src/gr-chef-dialog.ui:132
+msgid "Name…"
 msgstr ""
 
-#: data/recipes.db.h:35
-msgid ""
-"Ingredients may vary. In example lemon juice instead of vinegar and ground "
-"or powder pepper instead of the peppercorns."
+#: src/gr-chef-dialog.ui:143
+msgid "Short Name…"
 msgstr ""
 
-#: data/recipes.db.h:36
-msgid "Breakfast Oats Jar"
+#: src/gr-cooking-page.ui:75
+msgid "Show"
 msgstr ""
 
-#: data/recipes.db.h:37
-msgid ""
-"This recipe is great for those who usually don't have time for breakfast. "
-"Prepare it in mason jars/portable food containers the night before, and you "
-"can have your homemade breakfast on-the-go! Make a couple batches in advance "
-"if you know you won't have time. This recipe is also very flexible as you "
-"can make it vegan, or gluten-free simply by substituting the components i.e. "
-"dairy milk with coconut milk, honey with agave, or use gluten-free oats. "
-"Also, any fruits of your choice, fresh or frozen."
-msgstr ""
-
-#: data/recipes.db.h:38
-msgid ""
-"[image:2]Add all the ingredients in a 16-oz container, or divide equally "
-"between two 8-oz containers."
+#: src/gr-cooking-page.ui:158
+msgid "Done"
 msgstr ""
 
-#: data/recipes.db.h:39
-msgid ""
-"[image:0]Mix well. Cover with lid(s), and place in the refrigerator for at "
-"least 4 hours or overnight. Thanks to the chia seeds, the mixture will "
-"develop a pudding-like texture."
+#: src/gr-cooking-page.ui:185
+msgid "Stop Cooking?"
 msgstr ""
 
-#: data/recipes.db.h:40
-msgid "[image:1]You can make ahead, but best to consume within 2-3 days."
+#: src/gr-cooking-page.ui:194
+msgid "Some timers are still running."
 msgstr ""
 
-#: data/recipes.db.h:41
-msgid "Carbonara"
-msgstr "Carbonara"
-
-#: data/recipes.db.h:42
+#: src/gr-cooking-page.ui:200
 msgid ""
-"\"Carbonara\" is a sauce that can be used with long pasta, like spaghetti or "
-"fettuccine."
+"Recipes can keep the timers running\n"
+"even if you leave cooking mode now."
 msgstr ""
 
-#: data/recipes.db.h:43
-msgid "Start by boiling about 1 litre of water for each 100g of pasta."
+#: src/gr-cooking-page.ui:212
+msgid "Keep Cooking"
 msgstr ""
 
-#: data/recipes.db.h:44
-msgid "[image:1]"
+#: src/gr-cooking-page.ui:219
+msgid "Stop Timers"
 msgstr ""
 
-#: data/recipes.db.h:45
-msgid ""
-"Once the water is boiling, pour 20g of coarse salt in it for every litre of "
-"water, and then throw the spaghetti in."
+#: src/gr-cooking-page.ui:226
+msgid "Continue Timers"
 msgstr ""
 
-#: data/recipes.db.h:46
+#: src/gr-cooking-page.ui:255
+msgid "Controls"
+msgstr ""
+
+#: src/gr-cooking-page.ui:281
 msgid ""
-"While the pasta is cooking, take a large bowl and put the parmesan cheese in "
-"it."
+"To advance to the next step, press any key on the\n"
+"keyboard."
 msgstr ""
 
-#: data/recipes.db.h:47
-msgid "[image:2]"
+#: src/gr-cooking-page.ui:304
+msgid "To go back to the previous step, doubletap any key."
 msgstr ""
 
-#: data/recipes.db.h:48
+#: src/gr-cooking-page.ui:326
 msgid ""
-"Add the whole egg and the yolks to the parmesan, and beat the eggs until you "
-"get a creamy sauce."
+"Alternatively, you can use the cursor keys to\n"
+"quickly seek within the directions."
 msgstr ""
 
-#: data/recipes.db.h:49
-msgid "[image:3]"
+#: src/gr-cooking-page.ui:350
+msgid "To exit the process, press the Escape key."
 msgstr ""
 
-#: data/recipes.db.h:50
-msgid ""
-"Put the guanciale in a small pan with a teaspoon of oil, and shallow fry it "
-"until the fat is transparent and the meat is crispy; then remove from the "
-"fire."
+#: src/gr-cooking-view.ui:64
+msgid "Time is up!"
 msgstr ""
 
-#: data/recipes.db.h:51
-msgid "[image:5]"
+#: src/gr-cuisine-page.ui:77 src/gr-list-page.ui:111 src/gr-search-page.ui:29
+#: src/gr-list-page.c:427
+msgid "No recipes found"
 msgstr ""
 
-#: data/recipes.db.h:52
-msgid ""
-"Once the pasta is ready, drain it and add it to the eggs and cheese. Then, "
-"add the guanciale."
+#: src/gr-cuisine-page.ui:90
+msgid "There are no recipes for this cuisine."
 msgstr ""
 
-#: data/recipes.db.h:53
-msgid "[image:6]"
+#: src/gr-cuisines-page.ui:8
+msgid "Cuisines page"
 msgstr ""
 
-#: data/recipes.db.h:54
-msgid "Season with salt and pepper to your liking."
+#: src/gr-cuisines-page.ui:28
+msgid "World Cuisines"
 msgstr ""
 
-#: data/recipes.db.h:55
-msgid ""
-"If you cannot find guanciale (cured pork cheek) you can substitute it with "
-"pancetta."
+#: src/gr-cuisines-page.ui:124
+msgid "Seasonal"
 msgstr ""
 
-#: data/recipes.db.h:56
-msgid "Classic Chicken Noodle Soup"
+#: src/gr-details-page.ui:105
+msgid "Contains garlic"
 msgstr ""
 
-#: data/recipes.db.h:57
-msgid "A simple take on a typical American meal."
+#: src/gr-details-page.ui:112
+msgid ""
+"Contains dairy products. Please always double-check the ingredients if you "
+"are serving a person with gluten or dairy intolerance."
 msgstr ""
 
-#: data/recipes.db.h:58
+#: src/gr-details-page.ui:119
 msgid ""
-"If you haven't butchered the chicken, do so. Depending on how meaty you want "
-"the soup, you can use more or less of the butchered parts (I recommend the "
-"dark leg meat for the soup). Use the remaining parts for another dish."
+"Contains Gluten. Please always double-check the ingredients if you are "
+"serving a person with gluten or dairy intolerance."
 msgstr ""
 
-#: data/recipes.db.h:59
-msgid ""
-"Wash the celery, carrots and herbs. Slice the carrots and celery. Coarsely "
-"chop the onion. Prepare the herbs using kitchen twine in a bouquet garni."
+#: src/gr-details-page.ui:126 src/gr-details-page.c:492
+msgid "Spicy"
 msgstr ""
 
-#: data/recipes.db.h:60
-msgid ""
-"[timer:02:00:00]In a large pot, add the chicken, the stock, 2 carrots, 1 "
-"stalk of celery, the onion and the bouquet garni. Fill the pot with water to "
-"cover the chicken. Bring to a boil and simmer for at least 2 hours."
+#: src/gr-details-page.ui:146
+msgid "_Buy Ingredients"
 msgstr ""
 
-#: data/recipes.db.h:61
-msgid ""
-"Using a cheese cloth strainer, strain the soup into another pot. Remove meat "
-"from the bones, gather any loose chicken and add it to the strained soup. "
-"Discard the bones and cooked vegetables."
+#: src/gr-details-page.ui:164 src/gr-recipe-small-tile.ui:101
+msgid "Serves"
 msgstr ""
 
-#: data/recipes.db.h:62
-msgid ""
-"Add the remaining carrots and celery to the soup. Bring to a boil and simmer "
-"for at least one hour. Season with salt and pepper to taste."
+#: src/gr-details-page.ui:198
+msgid "Preparation Time"
 msgstr ""
 
-#: data/recipes.db.h:63
-msgid ""
-"[timer:00:10:00]Add noodles and simmer for about 10 minutes, until the "
-"noodles are done."
+#: src/gr-details-page.ui:228
+msgid "Cooking Time"
 msgstr ""
 
-#: data/recipes.db.h:64
-msgid "Donauwellen"
-msgstr "Donauwellen"
+#: src/gr-details-page.ui:258
+msgid "Cuisine"
+msgstr ""
 
-#: data/recipes.db.h:65
-msgid ""
-"Donauwellen is a popular German cake with chocolate, vanilla cream and "
-"cherries. The name is due to the fact that the dough typically forms a wavy "
-"pattern."
+#: src/gr-details-page.ui:288 src/gr-query-editor.ui:46
+msgid "Meal"
 msgstr ""
 
-#: data/recipes.db.h:66
-msgid "[image:1]Mix the butter until it is creamy. Add sugar and egg."
+#: src/gr-details-page.ui:318
+msgid "Season"
 msgstr ""
 
-#: data/recipes.db.h:67
-msgid ""
-"[image:2]Mix the flour with the baking powder and mix it in. Separate a "
-"third of the dough and add the cocoa powder to it."
+#: src/gr-details-page.ui:379
+msgid "Note"
 msgstr ""
 
-#: data/recipes.db.h:68
-msgid ""
-"[image:4]Spread the light dough on a buttered baking sheet. Put the dark "
-"dough on top."
+#: src/gr-details-page.ui:409 src/gr-edit-page.ui:705
+#: src/gr-recipe-formatter.c:119 src/gr-recipe-printer.c:296
+msgid "Directions"
 msgstr ""
 
-#: data/recipes.db.h:69
-msgid "[image:4]Use a fork to make a wavy pattern."
+#: src/gr-details-page.ui:469
+msgid "_Notes"
 msgstr ""
 
-#: data/recipes.db.h:70
-msgid "[image:6]Spread the dried cherries on top of the dough."
+#: src/gr-details-page.ui:479 src/gr-shopping-page.ui:125
+msgid "_Edit"
 msgstr ""
 
-#: data/recipes.db.h:71
-msgid "[timer:00:30:00,Bake]Bake for 30 minutes at [temperature:200C]."
+#: src/gr-details-page.ui:488
+msgid "_Delete"
 msgstr ""
 
-#: data/recipes.db.h:72
-msgid ""
-"[image:7]Use the milk, sugar and pudding to cook vanilla pudding and let it "
-"cool down while stirring it frequently. Slowly add spoonfuls of the butter, "
-"which should be at room temperature."
+#: src/gr-details-page.ui:499 src/gr-shopping-page.ui:143
+#: src/recipe-export-dialog.ui:21
+msgid "_Share"
 msgstr ""
 
-#: data/recipes.db.h:73
-msgid "[image:8]Spread the butter cream on the cooled cake."
+#: src/gr-details-page.ui:511 src/gr-shopping-page.ui:154
+msgid "_Print"
 msgstr ""
 
-#: data/recipes.db.h:74
-msgid ""
-"[image:9]Melt the chocolate frosting in a hot water bath and sprinkle it on "
-"top."
+#: src/gr-details-page.ui:522
+msgid "Add to favorites"
 msgstr ""
 
-#: data/recipes.db.h:75
-msgid "Gingered Carrot Soup"
-msgstr "Gulrotsuppe med ingefær"
+#: src/gr-edit-page.ui:42 src/gr-edit-page.ui:766 src/menus.ui:66
+msgid "Edit"
+msgstr ""
 
-#: data/recipes.db.h:76
-msgid "A nutritious vegan soup that can be made relatively quickly"
+#: src/gr-edit-page.ui:119
+msgid "Add an image"
 msgstr ""
 
-#: data/recipes.db.h:77
-msgid ""
-"Place carrots in large saucepan with water, cover, bring to a boil. Lower "
-"heat, simmer until very tender (10-15 minutes). While carrots are cooking, "
-"saute in olive oil all the onions, 5 minutes, then add garlic, ginger, salt, "
-"and spices. When all is well mingled, stir in lemon juice. Use food "
-"processor or blender to puree everything together (including all the toasted "
-"cashews). If you like a more textured soup, only half puree."
-msgstr ""
-
-#: data/recipes.db.h:78
-msgid ""
-"Garnish with parsley, chives, mint or scallions if you want. Top with "
-"cayenne pepper if you want a spicier soup. You can also add any leftover "
-"grains like rice, barley, couscous, etc. at the last minute."
+#: src/gr-edit-page.ui:145 src/gr-edit-page.ui:171
+msgid "Rotate image"
 msgstr ""
 
-#: data/recipes.db.h:79
-msgid "This is my Aunt Wendy's recipe."
-msgstr "Denne oppskriften er min tante Wendy's"
+#: src/gr-edit-page.ui:197
+msgid "Default image"
+msgstr ""
 
-#: data/recipes.db.h:80
-msgid "Grumbeerekiechle"
-msgstr "Grumbeerekiechle"
+#: src/gr-edit-page.ui:223
+msgid "Remove image"
+msgstr ""
 
-#: data/recipes.db.h:81
-msgid ""
-"Traditional potato hash from Alsace. Usually served with lettuce, sometimes "
-"with smoked salmon."
+#: src/gr-edit-page.ui:256
+msgid "Add List"
 msgstr ""
 
-#: data/recipes.db.h:82
-msgid ""
-"[image:1]Peel and grate the potatoes. Peel and slice the onions. Mix with "
-"the rest of the ingredients in a large bowl."
+#: src/gr-edit-page.ui:274
+msgid "Details"
 msgstr ""
 
-#: data/recipes.db.h:83
-msgid "Put a frying pan on the hob at medium heat with a bit of oil."
+#: src/gr-edit-page.ui:291
+msgid "_Name Your Recipe"
 msgstr ""
 
-#: data/recipes.db.h:84
-msgid "[image:2]Form thin patties in the pan and brown them on both sides."
+#: src/gr-edit-page.ui:323
+msgid "Ser_ves"
 msgstr ""
 
-#: data/recipes.db.h:85
-msgid ""
-"[image:0]Serve hot. Can be kept in a fridge and reheated in a micro-wave "
-"oven."
+#: src/gr-edit-page.ui:353
+msgid "_Preparation Time"
 msgstr ""
 
-#: data/recipes.db.h:86
-msgid "Hazelnuts Butter"
-msgstr "Hasselnøttsmør"
+#: src/gr-edit-page.ui:379 src/gr-edit-page.ui:427
+msgid "Less than 15 minutes"
+msgstr ""
 
-#: data/recipes.db.h:87
-msgid "Vegan Hazelnuts Butter that tastes like Nutella©, but better."
+#: src/gr-edit-page.ui:380 src/gr-edit-page.ui:428
+msgid "15 to 30 minutes"
 msgstr ""
 
-#: data/recipes.db.h:88
-msgid "Make the Hazelnuts Milk (see my Hazelnuts Milk recipe)"
+#: src/gr-edit-page.ui:381 src/gr-edit-page.ui:429
+msgid "30 to 45 minutes"
 msgstr ""
 
-#: data/recipes.db.h:89
-msgid "Put the remaining paste in a bowl [image:0]"
+#: src/gr-edit-page.ui:382 src/gr-edit-page.ui:430
+msgid "45 minutes to an hour"
 msgstr ""
 
-#: data/recipes.db.h:90
-msgid "(With Chocolate) Mix melted 75% vegan chocolate"
+#: src/gr-edit-page.ui:383 src/gr-edit-page.ui:431
+msgid "More than an hour"
 msgstr ""
 
-#: data/recipes.db.h:91
-msgid "(With Cocoa Butter) Melt the cocoa butter [image:1]"
+#: src/gr-edit-page.ui:401
+msgid "C_ooking Time"
 msgstr ""
 
-#: data/recipes.db.h:92
-msgid ""
-"(With Cocoa Butter) Mix the hazelnuts milk, melted cocoa butter and the "
-"cocoa powder until the mass gets uniform [image:2]"
+#: src/gr-edit-page.ui:449
+msgid "_Cuisine"
 msgstr ""
 
-#: data/recipes.db.h:93
-msgid "Enjoy [image:3]"
+#: src/gr-edit-page.ui:485
+msgid "_Meal"
 msgstr ""
 
-#: data/recipes.db.h:94
-msgid "Hazelnuts Milk"
-msgstr "Hasselnøttmelk"
+#: src/gr-edit-page.ui:521
+msgid "S_eason"
+msgstr ""
 
-#: data/recipes.db.h:95
-msgid "Simple Hazelnuts Milk with a smooth, naturally sweet flavor."
+#: src/gr-edit-page.ui:557
+msgid "S_piciness"
 msgstr ""
 
-#: data/recipes.db.h:96
-msgid "Preheat the over at [temperature:200C]"
+#: src/gr-edit-page.ui:577 src/gr-spice-row.c:127
+msgid "Mild"
 msgstr ""
 
-#: data/recipes.db.h:97
-msgid "Place the hazelnuts in a tray [image:1]"
+#: src/gr-edit-page.ui:578
+msgid "Somewhat spicy"
 msgstr ""
 
-#: data/recipes.db.h:98
-msgid "Leave the tray in the oven for 15 minutes [timer:00:15:00]"
+#: src/gr-edit-page.ui:579
+msgid "Hot"
 msgstr ""
 
-#: data/recipes.db.h:99
-msgid ""
-"Put water in the tray and peel the hazelnuts. Some will peel easily, while "
-"others will require manual peeling [image:2]"
+#: src/gr-edit-page.ui:580 src/gr-details-page.c:487 src/gr-spice-row.c:142
+msgid "Very spicy"
 msgstr ""
 
-#: data/recipes.db.h:100
-msgid "Leave the hazelnuts underwater at least for 4 hours, or overnight"
+#: src/gr-edit-page.ui:591
+msgid "Description"
 msgstr ""
 
-#: data/recipes.db.h:101
-msgid ""
-"Whisk the nuts and 1l of water with the blender until it gets thicker "
-"[image:3]"
+#: src/gr-edit-page.ui:650 src/gr-diet-row.c:102
+msgid "Gluten-free"
 msgstr ""
 
-#: data/recipes.db.h:102
-msgid "Filter the resulting liquid with a nut milk sack (voal sack) [image:4]"
+#: src/gr-edit-page.ui:657 src/gr-diet-row.c:105
+msgid "Nut-free"
 msgstr ""
 
-#: data/recipes.db.h:103
-msgid ""
-"(Optional) You can make hazelnuts butter with the remaining paste (see my "
-"Hazelnuts Butter recipe) [image:5]"
+#: src/gr-edit-page.ui:664 src/gr-diet-row.c:108
+msgid "Vegan"
 msgstr ""
 
-#: data/recipes.db.h:104
-msgid "Enjoy your milk [image:6]"
-msgstr "Nyt melken din [image:6]"
+#: src/gr-edit-page.ui:671 src/gr-diet-row.c:111
+msgid "Vegetarian"
+msgstr ""
 
-#: data/recipes.db.h:105
-msgid "Kiwi-Mandarin Salsa"
-msgstr "Kiwi- og mandarinsalsa"
+#: src/gr-edit-page.ui:678 src/gr-diet-row.c:114
+msgid "Milk-free"
+msgstr ""
 
-#: data/recipes.db.h:106
-msgid ""
-"This salad is a sweet and sour addition which work well to most main "
-"courses, for example lasagna. The juicy fruits inside makes it a very "
-"refreshing salad."
+#: src/gr-edit-page.ui:773
+msgid "Preview"
 msgstr ""
 
-#: data/recipes.db.h:107
-msgid "[image:1]Wash the fruits and vegetables well."
+#: src/gr-edit-page.ui:793
+msgid "Add Step"
 msgstr ""
 
-#: data/recipes.db.h:108
-msgid "[image:2]Peel, slice and cut the kiwi into triangular pieces."
+#: src/gr-edit-page.ui:801
+msgid "Add Image"
 msgstr ""
 
-#: data/recipes.db.h:109
-msgid "[image:3]Peel the orange and cut it in pieces."
+#: src/gr-edit-page.ui:809
+msgid "Add Timer"
 msgstr ""
 
-#: data/recipes.db.h:110
-msgid "[image:4]Cut the red pepper in thin slices."
+#: src/gr-edit-page.ui:817
+msgid "Add Temperature"
 msgstr ""
 
-#: data/recipes.db.h:111
-msgid "[image:0]Mix fruits and vegetables in a bowl."
+#: src/gr-edit-page.ui:913
+msgid "Title…"
 msgstr ""
 
-#: data/recipes.db.h:112
-msgid "[image:5]Add lime as you please."
+#: src/gr-edit-page.ui:921 src/gr-edit-page.ui:992
+msgid "Add"
 msgstr ""
 
-#: data/recipes.db.h:113
-msgid "[image:6]Enjoy!"
+#: src/gr-edit-page.ui:1011
+msgid "Syntax"
 msgstr ""
 
-#: data/recipes.db.h:114
-msgid "Sylvia's Bratkartoffeln"
+#: src/gr-edit-page.ui:1026
+msgid "Use paragraphs to break directions into steps (2 newlines)."
 msgstr ""
 
-#: data/recipes.db.h:115
-msgid "Meatless version of a German classic."
+#: src/gr-edit-page.ui:1039
+msgid "You can provide an image or a time counter in each step."
 msgstr ""
 
-#: data/recipes.db.h:116
-msgid "Suitable for oven cooking."
+#: src/gr-edit-page.ui:1051
+msgid "Timer"
 msgstr ""
 
-#: data/recipes.db.h:117
-msgid "Peel and chop potatoes to fry, preferably in thick chips."
+#: src/gr-edit-page.ui:1073
+msgid "Image"
 msgstr ""
 
-#: data/recipes.db.h:118
-msgid "Peel and chop the onions."
-msgstr "Skrell og kutt løken."
+#: src/gr-edit-page.ui:1095
+msgid "Temperature"
+msgstr ""
 
-#: data/recipes.db.h:119
-msgid "Prepare the cheese  (if it's not already)."
+#: src/gr-ingredients-viewer-row.ui:52
+msgid "Amount"
 msgstr ""
 
-#: data/recipes.db.h:120
-msgid "Heat abundant oil and when is ready, carefully add the potatoes."
+#: src/gr-ingredients-viewer-row.ui:92
+msgid "Ingredient"
 msgstr ""
 
-#: data/recipes.db.h:121
-msgid ""
-"Once potatoes are half made, add the onions, and when everything is ready "
-"add the cheese."
+#: src/gr-ingredients-viewer-row.ui:169
+msgid "Use a number, followed by an (optional) unit."
 msgstr ""
 
-#: data/recipes.db.h:122
-msgid "** Alternatively, you can add the cheese at the moment of serving it."
+#: src/gr-ingredients-viewer-row.ui:180
+msgid "Examples: 1 kg, 2 1/2 pounds, 250 ml, 6"
 msgstr ""
 
-#: data/recipes.db.h:123
-msgid ""
-"** If you're using tofu, prepare the tofu first and add it at the moment of "
-"serving."
+#: src/gr-ingredients-viewer.ui:13 src/gr-query-editor.ui:235
+#: src/gr-edit-page.c:1324 src/gr-recipe-formatter.c:100
+#: src/gr-recipe-printer.c:247
+msgid "Ingredients"
 msgstr ""
 
-#: data/recipes.db.h:124
-msgid "You can make it vegan, switching the cheese for vegan cheese or tofu."
+#: src/gr-ingredients-viewer.ui:33
+msgid "Name of the List"
 msgstr ""
 
-#: data/recipes.db.h:125
-msgid ""
-"You can use prepared cheese (like grated or shredded), but it tastes better "
-"if you use the fresh one and prepare it yourself."
+#: src/gr-ingredients-viewer.ui:43 src/gr-recipe-small-tile.ui:125
+msgid "Remove"
 msgstr ""
 
-#: data/recipes.db.h:126
-msgid "Mantovana Cake"
-msgstr "Mantanovakake"
+#: src/gr-ingredients-viewer.ui:86
+msgid "Add more ingredients"
+msgstr ""
 
-#: data/recipes.db.h:127
-msgid ""
-"Mantovana cake (or Torta Mantovana in Italian) is a Tuscan classic. It is "
-"simple, yet rich and delicious. Very good for breakfast - Italian style - or "
-"as snacks, accompanied with coffee or tea. A small note; the vanilla baking "
-"powder is typical in Italy for baked sweet goods, and negates the need to "
-"add vanilla extract separately to a recipe. You are fine just using regular "
-"baking powder, but remember to add 1/2 teaspoon of vanilla extract. If you "
-"can't get hold of the vanilla powdered sugar for dusting, just use the "
-"regular powdered sugar."
-msgstr ""
-
-#: data/recipes.db.h:128
-msgid ""
-"[image:0]Preheat oven to [temperature:180C]. Line a 9-inch round cake pan "
-"with parchment paper and grease well."
+#: src/gr-list-page.ui:124
+msgid "There are no recipes here yet."
 msgstr ""
 
-#: data/recipes.db.h:129
-msgid ""
-"[image:0]Combine eggs and sugar in a mixing bowl. Beat (using a hand mixer) "
-"until light and fluffy."
+#: src/gr-query-editor.ui:66 src/gr-query-editor.c:490
+#: src/gr-query-editor.c:679
+msgid "Any meal"
 msgstr ""
 
-#: data/recipes.db.h:130
-msgid ""
-"[image:0]Into the mixture, add half of the flour and give it a little mix. "
-"Add the rest of the flour, together with the baking powder and lemon zest. "
-"Mix until the batter is just combined. Don't overmix. "
+#: src/gr-query-editor.ui:109
+msgid "Spiciness"
 msgstr ""
 
-#: data/recipes.db.h:131
-msgid ""
-"[image:0]Add the melted butter to the mixture. Using a spatula, stir to mix "
-"well."
+#: src/gr-query-editor.ui:129 src/gr-query-editor.c:557
+#: src/gr-query-editor.c:708
+msgid "Any spiciness"
 msgstr ""
 
-#: data/recipes.db.h:132
-msgid ""
-"[image:0]Pour the batter into a 9-inch round baking pan. Sprinkle the "
-"almonds on top making sure to cover the surface evenly."
+#: src/gr-query-editor.ui:172
+msgid "Dietary restrictions"
 msgstr ""
 
-#: data/recipes.db.h:133
-msgid ""
-"[timer:00:25:00,Bake]Bake for 25-30 minutes or until a cake tester inserted "
-"into the center cake comes out clean. The cake should have a nice golden "
-"colour."
+#: src/gr-query-editor.ui:192 src/gr-query-editor.c:406
+#: src/gr-query-editor.c:737
+msgid "No restrictions"
 msgstr ""
 
-#: data/recipes.db.h:134
-msgid ""
-"[image:0]Let rest in the pan for 10 minutes, then invert onto a cooling rack "
-"to cool completely."
+#. FIXME: repopulate
+#: src/gr-query-editor.ui:255 src/gr-query-editor.c:337
+#: src/gr-query-editor.c:766
+msgid "Anything"
 msgstr ""
 
-#: data/recipes.db.h:135
-msgid ""
-"[image:0]Before serving, dust the top generously with vanilla powdered sugar."
+#: src/gr-query-editor.ui:283
+msgid "Search…"
 msgstr ""
 
-#: data/recipes.db.h:136
-msgid "Nasi Lemak (Coconut Rice)"
+#: src/gr-recipes-page.ui:8
+msgid "Recipes page"
 msgstr ""
 
-#: data/recipes.db.h:137
-msgid ""
-"This is a truly Malaysian dish, very typically eaten for breakfast. It is a "
-"delightful combination of boiled rice, coconut milk and pandan (screwpine "
-"leaves), eaten with the sambal (hot sauce), and accompaniments such as "
-"sliced cucumbers, hard-boiled eggs, fried dried anchovies and fried "
-"groundnuts."
+#: src/gr-recipes-page.ui:27
+msgid "Today"
 msgstr ""
 
-#: data/recipes.db.h:138
-msgid ""
-"See my recipe for Sambal Ikan Bilis (Hot Sauce with Anchovies) to complete "
-"this dish."
+#: src/gr-recipes-page.ui:103
+msgid "Editor’s Picks"
 msgstr ""
 
-#: data/recipes.db.h:139
-msgid ""
-"In this recipe, I outlined the steps to cook the rice on a stove. If you "
-"have a rice cooker, then you'll only have two steps; 1) Combine all "
-"ingredients in the pot of the rice cooker, and 2) Hit the \"cook\" button."
+#: src/gr-recipes-page.ui:129
+msgid "Categories"
 msgstr ""
 
-#: data/recipes.db.h:140
-msgid ""
-"Prepare the rice; rinse, soak for 30 minutes, and drain. You can also use "
-"any long-grain rice instead of basmati."
+#: src/gr-recipes-page.ui:226
+msgid "Featured GNOME Chefs"
 msgstr ""
 
-#: data/recipes.db.h:141
-msgid "[image:0]Peel the shallots, garlic and ginger, then slice them thinly."
+#: src/gr-search-page.ui:42
+msgid "Try a different search"
 msgstr ""
 
-#: data/recipes.db.h:142
-msgid ""
-"[image:1]Mix the coconut milk, water, shallots, garlic and ginger in a "
-"medium-sized pot. Tie the pandan leaves in a knot, and add it to the "
-"mixture. If you can't get a hold of pandan, use one stalk of lemongrass as a "
-"substitute. Peel the tough outer leaves, slice off the lower bulb and the "
-"upper end of the stalk that is green and woody. Crush the lower bulby end, "
-"and throw it into the mixture. Season the mixture with salt. It should taste "
-"salty enough, and a bit more."
+#: src/gr-shopping-page.ui:40
+msgid "Buy ingredients"
 msgstr ""
 
-#: data/recipes.db.h:143
-msgid "Bring the mixture to a boil."
+#: src/gr-shopping-page.ui:93
+msgid "No shopping necessary!"
 msgstr ""
 
-#: data/recipes.db.h:144
-msgid ""
-"When the mixture has come to a boil, stir in the salt and fenugreek seeds "
-"(if using), and bring it back to a gentle simmer."
+#: src/gr-shopping-page.ui:132
+msgid "_Clear List"
 msgstr ""
 
-#: data/recipes.db.h:145
-msgid ""
-"Cover the pot and turn the heat down to low. Don't take off the lid while "
-"the rice is cooking."
+#: src/gr-shopping-page.ui:188
+msgid "Nothing to add"
 msgstr ""
 
-#: data/recipes.db.h:146
-msgid ""
-"Start checking the rice at around 20 minutes. When done, the rice will be "
-"firm but tender, and no longer crunchy."
+#: src/gr-time-widget.ui:31
+msgid "Start"
 msgstr ""
 
-#: data/recipes.db.h:147
-msgid "Turn off the heat and let stand about 5-7 minutes, covered."
+#: src/gr-time-widget.ui:60
+msgid "Pause"
 msgstr ""
 
-#: data/recipes.db.h:148
-msgid ""
-"Remove the lid, and fluff up the rice with a fork. Let it stand for a few "
-"more minutes to dry out the steam."
+#: src/gr-time-widget.ui:69
+msgid "Continue"
 msgstr ""
 
-#: data/recipes.db.h:149
-msgid ""
-"[image:2]Serve with sambal ikan bilis (hot sauce with anchovies), sunny-side "
-"up or hard-boiled egg, sliced cucumbers."
+#: src/gr-time-widget.ui:82
+msgid "Reset"
 msgstr ""
 
-#: data/recipes.db.h:150
-msgid "Non-knead buns"
+#: src/gr-window.ui:23
+msgid "_New Recipe"
 msgstr ""
 
-#: data/recipes.db.h:151
-msgid "Very quick fresh bread for breakfast with 5 minutes of work."
+#: src/gr-window.ui:40
+msgid "Go back"
 msgstr ""
 
-#: data/recipes.db.h:152
-msgid ""
-"[image:1]Preparation: Mix together all of the ingredients in a large bowl "
-"into a thick porridge-like dough. Do not knead the dough, just mix it "
-"together. "
+#: src/gr-window.ui:97
+msgid "Search"
 msgstr ""
 
-#: data/recipes.db.h:153
-msgid ""
-"Cover and leave to rise in room temperature for 8-12 hours. This can be done "
-"for example the previous night so you can bake them in the morning."
+#: src/gr-window.ui:116
+msgid "_Start Cooking"
 msgstr ""
 
-#: data/recipes.db.h:154
-msgid "Baking: Heat your oven to [temperature:250C]."
+#: src/gr-window.ui:144
+msgid "_Done Shopping"
 msgstr ""
 
-#: data/recipes.db.h:155
-msgid ""
-"[image:3]The dough will be more than double in size and full of bubbles and "
-"very sticky. Pour a generous amount of flour on your baking surface so it "
-"doesn't stick, and pour the dough over it."
+#: src/gr-window.ui:205
+msgid "All ingredients marked as stocked!"
 msgstr ""
 
-#: data/recipes.db.h:156
-msgid ""
-"[image:4]Form the dough into a thick snake, about the diameter of your arm "
-"and cut bun-sized pieces with scissors onto the baking sheet."
+#: src/gr-window.ui:215
+msgid "_Undo"
 msgstr ""
 
-#: data/recipes.db.h:157
-msgid ""
-"[timer:00:15:00]Bake until nice and brown, this will take approximately 15 "
-"minutes."
+#: src/gr-window.ui:264
+msgid "Ingredients to buy added."
 msgstr ""
 
-#: data/recipes.db.h:158
-msgid ""
-"[image:5]You can substitute half of the wheat flour with oats, seeds or "
-"different kind of flour if you want variety."
+#: src/gr-window.ui:274
+msgid "View Shopping List"
 msgstr ""
 
-#: data/recipes.db.h:159
-msgid "[image:0]Enjoy!"
+#: src/gr-window.ui:331
+msgid "Undo"
 msgstr ""
 
-#: data/recipes.db.h:160
-msgid "Pan pizza"
+#: src/gr-window.ui:391
+msgid "Send Update"
 msgstr ""
 
-#: data/recipes.db.h:161
-msgid "Pizza is an all-time favorite."
+#: src/gr-window.ui:466 src/gr-window.c:387
+msgid "Cuisines"
 msgstr ""
 
-#: data/recipes.db.h:162
-msgid ""
-"Put the flour, yeast, water and olive oil in a bowl and stir it up with your "
-"hands or a spoon until there's no dry flour left, and let it be."
+#: src/menus.ui:6 src/menus.ui:48
+msgid "_Import"
 msgstr ""
 
-#: data/recipes.db.h:163
-msgid ""
-"Cover the bowl tightly in plastic wrap and let it sit at room temperature "
-"overnight. "
+#: src/menus.ui:11 src/menus.ui:53
+msgid "_Export All"
 msgstr ""
 
-#: data/recipes.db.h:164
-msgid ""
-"The next day it should have rosen quite a bit. Dump it all out onto a "
-"floured surface, then divide it into balls."
+#: src/menus.ui:16
+msgid "_Chef Information"
 msgstr ""
 
-#: data/recipes.db.h:165
-msgid ""
-"Spread olive oil in a 10-inch cast iron skillet or round cake pan and place "
-"a dough ball in the middle."
+#: src/menus.ui:22 src/menus.ui:93
+msgid "_What’s New"
 msgstr ""
 
-#: data/recipes.db.h:166
-msgid ""
-"Rub the dough ball around and flip it a couple times until it is completely "
-"coated in oil and the oil completely coats the bottom and sides of the pan. "
-"Cover in plastic, and let it sit for another couple of hours without "
-"touching it."
+#: src/menus.ui:26
+msgid "_Help"
 msgstr ""
 
-#: data/recipes.db.h:167
-msgid ""
-"The dough should have spread on it own (takes about 2 hours). Lift the sides "
-"of the dough to let big air bubbles out."
+#: src/menus.ui:30
+msgid "_About"
 msgstr ""
 
-#: data/recipes.db.h:168
-msgid ""
-"Put in the oven at [temperature:280C]. (or as hot as your oven goes) for "
-"about 15 minutes. Peek underneath and if your pizza is a little pale, you "
-"can finish on the stovetop directly over medium heat until it is as dark and "
-"crisp as you like it."
+#: src/menus.ui:34 src/menus.ui:97
+msgid "_Report Issue"
 msgstr ""
 
-#: data/recipes.db.h:169
-msgid "Pineapple Upside Down Cake with Hot Buttered Rum Sauce"
+#: src/menus.ui:38
+msgid "_Quit"
 msgstr ""
 
-#: data/recipes.db.h:170
-msgid ""
-"This is a delicious, boozy update on a classic cake. The combination of rum "
-"and pineapple gives it a distinctively Caribbean flavor."
+#: src/menus.ui:45
+msgid "File"
 msgstr ""
 
-#: data/recipes.db.h:171
-msgid "Preheat the oven to [temperature:175C] (gas mark 4)."
+#: src/menus.ui:60
+msgid "Chef Information…"
 msgstr ""
 
-#: data/recipes.db.h:172
-msgid "Grease a round 20 cm cake tin."
+#: src/menus.ui:69
+msgid "Copy"
 msgstr ""
 
-#: data/recipes.db.h:173
-msgid ""
-"Line the bottom of the tin with as many whole pineapple rings as will fit. "
-"Cut the remaining rings in half and use them to line the sides of the tin."
+#: src/menus.ui:73
+msgid "Paste"
 msgstr ""
 
-#: data/recipes.db.h:174
-msgid ""
-"Crack the eggs into a bowl and add the caster sugar. Whisk until pale and "
-"light (an electric whisk is good for this, but not essential)."
+#: src/menus.ui:79
+msgid "Find…"
 msgstr ""
 
-#: data/recipes.db.h:175
-msgid ""
-"In a different bowl, combine the flour and baking powder, and then sift into "
-"the egg and sugar mixture, mixing as you go."
+#: src/menus.ui:86
+msgid "Help"
 msgstr ""
 
-#: data/recipes.db.h:176
-msgid ""
-"Melt the butter and combine with the milk, rum and vanilla extract. Zest "
-"half the lemon and add."
+#: src/menus.ui:89
+msgid "Recipes _Help"
 msgstr ""
 
-#: data/recipes.db.h:177
-msgid "Mix the wet mixture into the rest of the ingredients."
+#: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:163
+#: src/gr-image-viewer.c:627 src/gr-recipe-exporter.c:172
+#: src/gr-shopping-page.c:740 src/gr-window.c:1125
+msgid "Cancel"
 msgstr ""
 
-#: data/recipes.db.h:178
-msgid ""
-"[timer:00:40:00,Bake]Poor the cake mixture into the cake tin and bake for "
-"around 40 minutes, until the top is light brown and an inserted skewer comes "
-"out clean."
+#: src/recipe-conflict-dialog.ui:18
+msgid "Rename"
 msgstr ""
 
-#: data/recipes.db.h:179
-msgid ""
-"[timer:00:05:00,Cool]Leave the cake to cool for 5 minutes, then turn out on "
-"to a rack to cool completely."
+#: src/recipe-conflict-dialog.ui:28
+msgid "A recipe with this name already exists."
 msgstr ""
 
-#: data/recipes.db.h:180
-msgid ""
-"When it's time to eat, make the sauce: combine the muscovado sugar and cream "
-"in a saucepan and heat until the sugar has dissolved. Add the rum and simmer "
-"until it has thickened a little, then add the butter and let it melt into "
-"the sauce."
+#: src/recipe-export-dialog.ui:14
+msgid "_Add More"
 msgstr ""
 
-#: data/recipes.db.h:181
-msgid "Pour the hot sauce over the cake and serve."
+#: src/recipe-export-dialog.ui:56
+msgid "Share with a friend"
 msgstr ""
 
-#: data/recipes.db.h:182
-msgid "Pizzaburger"
+#: src/recipe-export-dialog.ui:63
+msgid "Contribute to the Recipes project"
 msgstr ""
 
-#: data/recipes.db.h:183
-msgid "Tomato dough with hamburger and cheese topping"
+#: src/recipe-whats-new-dialog.ui:8
+msgid "What’s New in Recipes"
 msgstr ""
 
-#: data/recipes.db.h:184
-msgid "Dissolve yeast in warm water. Let stand for 2 minutes."
+#: src/gr-about-dialog.c:132
+msgid "Learn more about Builder"
 msgstr ""
 
-#: data/recipes.db.h:185
-msgid ""
-"Add 1/2 cup tomato sauce, oil, salt, 1 tsp chili powder, and sugar. Mix well."
+#: src/gr-about-dialog.c:244 src/gr-about-dialog.c:327
+#: src/gr-about-dialog.c:329 src/gr-about-dialog.c:331
+#: src/gr-about-dialog.c:333 src/gr-about-dialog.c:335
+#: src/gr-about-dialog.c:337 src/gr-about-dialog.c:339
+#: src/gr-about-dialog.c:341 src/gr-about-dialog.c:343
+msgid "Unknown"
 msgstr ""
 
-#: data/recipes.db.h:186
-msgid "Gradually stir in flour. Dough will become sticky."
+#: src/gr-about-dialog.c:433
+msgid "Flatpak"
 msgstr ""
 
-#: data/recipes.db.h:187
-msgid "Optional: Let rise covered in a warm place for about an hour."
+#: src/gr-about-dialog.c:436
+msgctxt "Flatpak metadata"
+msgid "Version"
 msgstr ""
 
-#: data/recipes.db.h:188
-msgid "Brown diced onion and hamburger in frying pan."
+#: src/gr-about-dialog.c:439
+msgid "Application"
 msgstr ""
 
-#: data/recipes.db.h:189
-msgid ""
-"Add remaining 1 1/2 cups tomato sauce, salt, pepper, and 2 tsp chili powder."
+#: src/gr-about-dialog.c:442 src/gr-about-dialog.c:451
+msgctxt "Flatpak metadata"
+msgid "ID"
 msgstr ""
 
-#: data/recipes.db.h:190
-msgid "Remove from heat."
+#: src/gr-about-dialog.c:443 src/gr-about-dialog.c:452
+msgctxt "Flatpak metadata"
+msgid "Architecture"
 msgstr ""
 
-#: data/recipes.db.h:191
-msgid ""
-"Spread dough on greased cookie sheet (will be somewhat springy and pull back "
-"as it is spread out)."
+#: src/gr-about-dialog.c:444 src/gr-about-dialog.c:453
+msgctxt "Flatpak metadata"
+msgid "Branch"
 msgstr ""
 
-#: data/recipes.db.h:192
-msgid "Top with hamburger mixture and cover with cheese slices."
+#: src/gr-about-dialog.c:445 src/gr-about-dialog.c:454
+msgctxt "Flatpak metadata"
+msgid "Commit"
 msgstr ""
 
-#: data/recipes.db.h:193
-msgid ""
-"[timer:00:20:00]Bake at [temperature:400F] for 20 to 30 minutes until dough "
-"is baked."
+#: src/gr-about-dialog.c:448
+msgid "Runtime"
 msgstr ""
 
-#: data/recipes.db.h:194
-msgid "Råkost"
+#: src/gr-about-dialog.c:457 src/gr-about-dialog.c:521
+msgid "Bundled libraries"
 msgstr ""
 
-#: data/recipes.db.h:195
-msgid ""
-"A sweet and sour addition to your dinner. This salad has many variations of "
-"it and is a common winter side dish in Denmark."
+#: src/gr-about-dialog.c:487
+msgid "OS"
 msgstr ""
 
-#: data/recipes.db.h:196
-msgid "[image:1]Grate the carrots on the fine side of the grater."
+#: src/gr-about-dialog.c:490
+msgctxt "OS metadata"
+msgid "Name"
 msgstr ""
 
-#: data/recipes.db.h:197
-msgid "[image:0]Spread the carrot equally in a platter."
+#: src/gr-about-dialog.c:492
+msgctxt "OS metadata"
+msgid "Type"
 msgstr ""
 
-#: data/recipes.db.h:198
-msgid "[image:0]Divide and cut the apples into small bite-size pieces."
+#: src/gr-about-dialog.c:495 src/gr-about-dialog.c:497
+msgctxt "OS metadata"
+msgid "Desktop"
 msgstr ""
 
-#: data/recipes.db.h:199
-msgid "[image:0]Distribute the apples and blueberrys on top of the carrot."
+#: src/gr-about-dialog.c:500
+msgid "System libraries"
 msgstr ""
 
-#: data/recipes.db.h:200
-msgid ""
-"[image:0]Divide a lime in two and squeeze its juices across the whole "
-"platter."
+#: src/gr-about-dialog.c:820 src/gr-about-dialog.c:847
+msgid "System"
 msgstr ""
 
-#: data/recipes.db.h:201
-msgid ""
-"[image:2]Sprinkle a bit with linseeds if you want and it's then ready to "
-"eat. :-)"
+#: src/gr-about-dialog.c:914
+msgid "translator-credits"
 msgstr ""
 
-#: data/recipes.db.h:202
-msgid "Roots Pie"
+#: src/gr-about-dialog.c:917
+msgid "Learn more about Recipes"
 msgstr ""
 
-#: data/recipes.db.h:203
-msgid ""
-"This vegetable pie is my own spin off a traditional recipe. It has great "
-"taste, crusty dough and fancy colors too."
+#: src/gr-about-dialog.c:924
+msgid "Recipes by"
 msgstr ""
 
-#: data/recipes.db.h:204
-msgid "[image:12]Turn on the oven at [temperature:200C]."
+#: src/gr-account.c:109
+#, c-format
+msgid "Got an error from Account portal"
 msgstr ""
 
-#: data/recipes.db.h:205
+#: src/gr-account.c:137
 msgid ""
-"[image:2]Pour flour on the table, add salt. Divide the butter into small "
-"pieces and add water."
+"Allow your personal information to be included with recipes you share with "
+"your friends."
 msgstr ""
 
-#: data/recipes.db.h:206
-msgid "[image:3]Use the butter, water and yoghurt to work it all into a dough."
+#: src/gr-app.c:202
+#, c-format
+msgid "Supported categories: %s\n"
 msgstr ""
 
-#: data/recipes.db.h:207
-msgid "[image:4]Find a pie form."
+#: src/gr-app.c:434
+msgid "Print the version and exit"
 msgstr ""
 
-#: data/recipes.db.h:208
-msgid ""
-"[image:5]Takes pieces of the dough and start filling the pie form, until the "
-"whole form is full."
+#: src/gr-app.c:438
+msgid "Turn on verbose logging"
 msgstr ""
 
-#: data/recipes.db.h:209
-msgid "[image:6]Find a fork and punch holes in the bottom."
+#: src/gr-app.c:442
+msgid "Show a category"
 msgstr ""
 
-#: data/recipes.db.h:210
-msgid "[timer:00:15:00,Pre-bake]Pre-bake the dough for 15 minutes in the oven."
+#: src/gr-chef-dialog.c:159 src/gr-image-viewer.c:623
+msgid "Select an Image"
 msgstr ""
 
-#: data/recipes.db.h:211
-msgid ""
-"[image:7]Peel and chop the vegetables. Beetroots color a lot, so be careful. "
-"Do them last."
+#: src/gr-chef-dialog.c:162 src/gr-image-viewer.c:626 src/gr-window.c:1124
+msgid "Open"
 msgstr ""
 
-#: data/recipes.db.h:212
-msgid "[image:8]Mix eggs, cheese, yoghurt, salt and pepper in a bowl."
+#: src/gr-chef-dialog.c:167 src/gr-image-viewer.c:631
+msgid "Image files"
 msgstr ""
 
-#: data/recipes.db.h:213
-msgid "[image:9]Add beetroot, kale and lastly carrot to the pie."
+#: src/gr-chef-dialog.c:423
+msgid "New Chef"
 msgstr ""
 
-#: data/recipes.db.h:214
-msgid ""
-"[image:10]Pour the contents of the bowl over the vegetables so all of the "
-"pie is covered."
+#: src/gr-cooking-page.c:249
+msgid "Cooking"
 msgstr ""
 
-#: data/recipes.db.h:215
-msgid "[image:11]Decorate with extra cheese and linseeds for extra sazz."
+#: src/gr-cooking-view.c:157
+#, c-format
+msgid "Step %d/%d"
 msgstr ""
 
-#: data/recipes.db.h:216
-msgid "[timer:00:35:00,Bake]Bake the pie in the oven for 35 minutes."
+#: src/gr-cooking-view.c:163
+#, c-format
+msgid "Step %d"
 msgstr ""
 
-#: data/recipes.db.h:217
-msgid "[image:1]Enjoy!"
+#: src/gr-cooking-view.c:273
+msgid "GNOME Recipes"
 msgstr ""
 
-#: data/recipes.db.h:218
-msgid "Rosemary Scalloped Potatoes"
+#: src/gr-cooking-view.c:393
+msgid "A cooking timer has expired"
 msgstr ""
 
-#: data/recipes.db.h:219
-msgid ""
-"A holiday twist on a classic American comfort food dish. Easy to make and "
-"sure to please."
+#: src/gr-cooking-view.c:411 src/gr-cooking-view.c:427
+#, c-format
+msgid "Timer for “%s” has expired."
 msgstr ""
 
-#: data/recipes.db.h:220
-msgid "Substitutions and conversions:"
+#: src/gr-cooking-view.c:425
+msgid "Timer is up!"
 msgstr ""
 
-#: data/recipes.db.h:221
-msgid "5 potatoes = 5 cans sliced potatoes"
+#: src/gr-cuisine.c:45
+msgid "American"
 msgstr ""
 
-#: data/recipes.db.h:222
-msgid "1 stick butter = 8 Tbsp butter"
+#: src/gr-cuisine.c:46
+msgid "Chinese"
 msgstr ""
 
-#: data/recipes.db.h:223
-msgid "4 cloves garlic = 1/2 tsp powdered garlic"
+#: src/gr-cuisine.c:47
+msgid "Indian"
 msgstr ""
 
-#: data/recipes.db.h:224
-msgid "8 oz cream cheese = 1 pouch"
+#: src/gr-cuisine.c:48
+msgid "Italian"
 msgstr ""
 
-#: data/recipes.db.h:225
-msgid "1 cup half and half = one small carton"
+#: src/gr-cuisine.c:49
+msgid "French"
 msgstr ""
 
-#: data/recipes.db.h:226
-msgid "1 cup grated parmesan = 1 small bag"
+#: src/gr-cuisine.c:50
+msgid "Greek"
 msgstr ""
 
-#: data/recipes.db.h:227
-msgid "Preheat oven to [temperature:350F]."
+#: src/gr-cuisine.c:51
+msgid "Mediterranean"
 msgstr ""
 
-#: data/recipes.db.h:228
-msgid "Butter a 13x9 baking dish."
+#: src/gr-cuisine.c:52
+msgid "Mexican"
 msgstr ""
 
-#: data/recipes.db.h:229
-msgid "Into buttered baking dish:"
+#: src/gr-cuisine.c:53
+msgid "Nordic"
 msgstr ""
 
-#: data/recipes.db.h:230
-msgid ""
-"- Add 5 thinly sliced (use a mandoline) russet potatoes, or 5 cans rinsed "
-"pre-sliced potatoes."
+#: src/gr-cuisine.c:54
+msgid "Turkish"
 msgstr ""
 
-#: data/recipes.db.h:231
-msgid ""
-"- Salt and pepper potatoes (more will be added to creamy mixture later), "
-"stir lightly to separate slices."
+#: src/gr-cuisine.c:58
+msgid "American Cuisine"
 msgstr ""
 
-#: data/recipes.db.h:232
-msgid "In a frying pan on medium to medium-low heat:"
+#: src/gr-cuisine.c:59
+msgid "Chinese Cuisine"
 msgstr ""
 
-#: data/recipes.db.h:233
-msgid "- Melt 1 stick of butter."
+#: src/gr-cuisine.c:60
+msgid "Indian Cuisine"
 msgstr ""
 
-#: data/recipes.db.h:234
-msgid ""
-"- Add 1 chopped onion, garlic. Saute until translucent (about 5 minutes)."
+#: src/gr-cuisine.c:61
+msgid "Italian Cuisine"
 msgstr ""
 
-#: data/recipes.db.h:235
-msgid "- Add 8 oz cream cheese (quartered to help it melt faster)."
+#: src/gr-cuisine.c:62
+msgid "French Cuisine"
 msgstr ""
 
-#: data/recipes.db.h:236
-msgid "- When cream cheese is melted, add 1 cup half and half."
+#: src/gr-cuisine.c:63
+msgid "Greek Cuisine"
 msgstr ""
 
-#: data/recipes.db.h:237
-msgid ""
-"- Add salt and pepper to taste. (Don't be afraid to use more salt than you "
-"expect — it's a large dish, and potatoes need flavoring.) Recommend 1/2 Tbsp "
-"salt and 1/2 tsp pepper."
+#: src/gr-cuisine.c:64
+msgid "Mediterranean Cuisine"
 msgstr ""
 
-#: data/recipes.db.h:238
-msgid "- Add finely chopped fresh rosemary and chopped green onions."
+#: src/gr-cuisine.c:65
+msgid "Mexican Cuisine"
 msgstr ""
 
-#: data/recipes.db.h:239
-msgid "- Add 1/2 cup grated parmesan and melt into mixture."
+#: src/gr-cuisine.c:66
+msgid "Nordic Cuisine"
 msgstr ""
 
-#: data/recipes.db.h:240
-msgid "To bake:"
+#: src/gr-cuisine.c:67
+msgid "Turkish Cuisine"
 msgstr ""
 
-#: data/recipes.db.h:241
+#: src/gr-cuisine.c:71
 msgid ""
-"- Pour mixture over potatoes, stirring a bit to help the sauce cover "
-"everywhere. If using canned potatoes, be sure to separate the slices which "
-"are otherwise stuck together and prevent the mixture from seeping in."
+"The cuisine of the United States reflects its history. The European "
+"colonization of the Americas yielded the introduction of a number of "
+"ingredients and cooking styles to the latter. The various styles continued "
+"expanding well into the 19th and 20th centuries, proportional to the influx "
+"of immigrants from many foreign nations; such influx developed a rich "
+"diversity in food preparation throughout the country."
 msgstr ""
 
-#: data/recipes.db.h:242
+#: src/gr-cuisine.c:76
 msgid ""
-"- Spread remaining cheese over top to provide a nice texture and cheese "
-"flavoring."
+"Chinese cuisine includes styles originating from the diverse regions of "
+"China, as well as from Chinese people in other parts of the world including "
+"most Asian nations. The history of Chinese cuisine in China stretches back "
+"for thousands of years and has changed from period to period and in each "
+"region according to climate, imperial fashions, and local preferences. Over "
+"time, techniques and ingredients from the cuisines of other cultures were "
+"integrated into the cuisine of the Chinese people due both to imperial "
+"expansion and from the trade with nearby regions in pre-modern times, and "
+"from Europe and the New World in the modern period."
 msgstr ""
 
-#: data/recipes.db.h:243
+#: src/gr-cuisine.c:84
 msgid ""
-"- Bake for 1 to 1 1/2 hours, until liquid is bubbling and top cheese is "
-"browning."
+"Indian cuisine encompasses a wide variety of regional and traditional "
+"cuisines native to India. Given the range of diversity in soil type, "
+"climate, culture, ethnic group and occupations, these cuisines vary "
+"significantly from each other and use locally available spices, herbs, "
+"vegetables and fruits. Indian food is also heavily influenced by religious "
+"and cultural choices and traditions. There has also been Middle Eastern and "
+"Central Asian influence on North Indian cuisine from the years of Mughal "
+"rule. Indian cuisine has been and is still evolving, as a result of the "
+"nation’s cultural interactions with other societies."
 msgstr ""
 
-#: data/recipes.db.h:244
+#: src/gr-cuisine.c:92
 msgid ""
-"Note: Don't be afraid to use extra parmesan cheese and cream (half and "
-"half). This recipe makes just enough sauce, but extra creaminess never "
-"hurts, especially if you're using canned sliced potatoes. Garlic can be "
-"increased to taste, but be careful not to let the garlic overtake the "
-"rosemary."
+"Italian cuisine is characterized by its simplicity, with many dishes having "
+"only four to eight ingredients. Italian cooks rely chiefly on the quality of "
+"the ingredients rather than on elaborate preparation. Ingredients and dishes "
+"vary by region. Many dishes that were once regional, however, have "
+"proliferated with variations throughout the country."
 msgstr ""
 
-#: data/recipes.db.h:245
-msgid "Salmon Fried Rice"
+#: src/gr-cuisine.c:96
+msgid ""
+"French cuisine was codified in the 20th century by Auguste Escoffier to "
+"become the modern haute cuisine; Escoffier, however, left out much of the "
+"local culinary character to be found in the regions of France and was "
+"considered difficult to execute by home cooks. Gastro-tourism and the Guide "
+"Michelin helped to acquaint people with the rich bourgeois and peasant "
+"cuisine of the French countryside starting in the 20th century. Gascon "
+"cuisine has also had great influence over the cuisine in the southwest of "
+"France. Many dishes that were once regional have proliferated in variations "
+"across the country."
 msgstr ""
 
-#: data/recipes.db.h:246
+#: src/gr-cuisine.c:103
 msgid ""
-"A simple dish to throw together especially when you have leftover cooked "
-"rice and leftover baked/grilled salmon. "
+"Contemporary Greek cookery makes wide use of vegetables, olive oil, grains, "
+"fish, wine, and meat (white and red, including lamb, poultry, rabbit and "
+"pork). Other important ingredients include olives, cheese, eggplant "
+"(aubergine), zucchini (courgette), lemon juice, vegetables, herbs, bread and "
+"yoghurt. The most commonly used grain is wheat; barley is also used. Common "
+"dessert ingredients include nuts, honey, fruits, and filo pastry."
 msgstr ""
 
-#: data/recipes.db.h:247
+#: src/gr-cuisine.c:108
 msgid ""
-"What if you want to make Salmon Fried Rice now and don't have leftover rice "
-"and salmon? Easy; cook the rice and let it cool completely (uncovered for 15 "
-"minutes immediately after rice is just cooked, and then cover until you're "
-"ready to cook). Use frozen salmon fillets, but make sure to thaw "
-"sufficiently."
+"Mediterranean cuisine has a lot to offer, and is legendary for being very "
+"healthy too. Expect to see olives, yoghurt and garlic."
 msgstr ""
 
-#: data/recipes.db.h:248
-msgid "In this recipe, I'll show you how to do it."
+#: src/gr-cuisine.c:109
+msgid ""
+"Mexican cuisine is primarily a fusion of indigenous Mesoamerican cooking "
+"with European, especially Spanish, elements added after the Spanish conquest "
+"of the Aztec Empire in the 16th century. The staples are native foods, such "
+"as corn, beans, avocados, tomatoes, and chili peppers, along with rice, "
+"which was brought by the Spanish. Europeans introduced a large number of "
+"other foods, the most important of which were meats from domesticated "
+"animals (beef, pork, chicken, goat, and sheep), dairy products (especially "
+"cheese), and various herbs and spices."
 msgstr ""
 
-#: data/recipes.db.h:249
+#: src/gr-cuisine.c:116
 msgid ""
-"[image:0]Preheat the oven to [temperature:200C] and line a baking dish with "
-"aluminium foil. Rinse the salmon and pat dry. Drizzle a bit of olive oil and "
-"sprinkle salt on both sides of salmon. Bake in the oven for 15-20 minutes, "
-"until the flesh is cooked through. Alternatively, you can grill or pan-fry "
-"the salmon."
+"Cooking in Denmark has always been inspired by foreign and continental "
+"practises and the use of imported tropical spices like cinnamon, cardamom, "
+"nutmeg and black pepper can be traced to the Danish cuisine of the Middle "
+"Ages and some even to the Vikings."
 msgstr ""
 
-#: data/recipes.db.h:250
-msgid "[image:1]Allow the salmon to cool, flake the flesh and set aside."
+#: src/gr-cuisine.c:117
+msgid ""
+"You can find a great variety of mouth watering dishes in Turkish cuisine, "
+"which is mostly the heritage of Ottoman cuisine. It is the mixture and "
+"refinement of Central Asian, Middle Eastern and Balkan cuisines. Therefore "
+"it is impossible to fit Turkish cuisine into a short list."
 msgstr ""
 
-#: data/recipes.db.h:251
-msgid "[image:2]Peel and crush the garlic. Finely chop the spring onions."
+#: src/gr-details-page.c:323
+msgid "Could not find this recipe."
 msgstr ""
 
-#: data/recipes.db.h:252
-msgid ""
-"[image:3]Heat the sesame oil in a wok, or skillet, and when hot, add the "
-"spring onions and garlic. Toss for about 1 minute."
+#: src/gr-details-page.c:531
+#, c-format
+msgid "Timer: %s"
 msgstr ""
 
-#: data/recipes.db.h:253
-msgid "[image:4]Add the chili powder and toss for about 1 minute."
+#: src/gr-details-page.c:538
+#, c-format
+msgid "Image %d"
 msgstr ""
 
-#: data/recipes.db.h:254
-msgid ""
-"[image:5]Add a couple tablespoons of water to loosen up the mixture, then "
-"stir to mix."
+#: src/gr-details-page.c:693 src/gr-edit-page.c:1409
+#, c-format
+msgid "Recipe by %s"
 msgstr ""
 
-#: data/recipes.db.h:255
-msgid ""
-"[image:6]Add the rice and break the chunk of rice so the rice fry out and "
-"mix well together."
+#: src/gr-diet.c:34
+msgid "Gluten-free recipes"
 msgstr ""
 
-#: data/recipes.db.h:256
-msgid "[image:7]Add the fish and toss the rice again."
+#: src/gr-diet.c:37
+msgid "Nut-free recipes"
 msgstr ""
 
-#: data/recipes.db.h:257
-msgid ""
-"Add the fish sauce to taste. Fish sauce has a strong smell; if you don't "
-"fancy it, you can substitute it with soy sauce. Mix well to incorporate all "
-"the flavours."
+#: src/gr-diet.c:40
+msgid "Vegan recipes"
 msgstr ""
 
-#: data/recipes.db.h:258
-msgid ""
-"[image:8]Serve immediately with sunny-side up eggs, and garnish with spring "
-"onions."
+#: src/gr-diet.c:43
+msgid "Vegetarian recipes"
 msgstr ""
 
-#: data/recipes.db.h:259
-msgid "Sambal Ikan Bilis (Hot Sauce with Dried Anchovies)"
+#: src/gr-diet.c:46
+msgid "Milk-free recipes"
 msgstr ""
 
-#: data/recipes.db.h:260
-msgid ""
-"The sambal (hot sauce) is an essential component of nasi lemak. For this "
-"sambal, dried anchovies (ikan bilis) are used. These little salted fish can "
-"be found in Asian specialty supermarkets."
+#: src/gr-diet.c:49 src/gr-diet.c:78
+msgid "Other dietary restrictions"
 msgstr ""
 
-#: data/recipes.db.h:261
+#: src/gr-diet.c:63
 msgid ""
-"[image:0]Prep the dried chillies; remove the stalks, cut in 1-inch pieces "
-"and remove the seeds. Rinse, then soak in hot water to soften."
+"A gluten-free diet is a diet that excludes gluten, a protein composite found "
+"in wheat, barley, rye, and all their species and hybrids (such as spelt, "
+"kamut, and triticale). The inclusion of oats in a gluten-free diet remains "
+"controversial. Avenin present in oats may also be toxic for coeliac people; "
+"its toxicity depends on the cultivar consumed. Furthermore, oats are "
+"frequently cross-contaminated with cereals containing gluten.\n"
+"<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free\">Learn more…</"
+"a>"
 msgstr ""
 
-#: data/recipes.db.h:262
+#: src/gr-diet.c:66
 msgid ""
-"[image:1]Prep the dried anchovies; rinse, and soak in hot water to soften. "
-"Then drain and pat dry."
+"A tree nut allergy is a hypersensitivity to dietary substances from tree "
+"nuts and edible tree seeds causing an overreaction of the immune system "
+"which may lead to severe physical symptoms. Tree nuts include, but are not "
+"limited to, almonds, Brazil nuts, cashews, chestnuts, filberts/hazelnuts, "
+"macadamia nuts, pecans, pistachios, pine nuts, shea nuts and walnuts.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">Learn more…</a>"
 msgstr ""
 
-#: data/recipes.db.h:263
+#: src/gr-diet.c:69
 msgid ""
-"Peel the shallots, ginger and garlic. Put them in a blender together with "
-"the prepped dried chillies. Add 1 cup of water. Blend to a puree."
+"Veganism is both the practice of abstaining from the use of animal products, "
+"particularly in diet, and an associated philosophy that rejects the "
+"commodity status of animals.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Veganism\">Learn more…</a>"
 msgstr ""
 
-#: data/recipes.db.h:264
+#: src/gr-diet.c:72
 msgid ""
-"[image:2]Heat 1/4 cup of coconut oil in a pan and stir-fry the chilli-spice "
-"puree until the oil separates, about 20 minutes."
+"Vegetarian cuisine is based on food that meets vegetarian standards by not "
+"including meat and animal tissue products (such as gelatin or animal-derived "
+"rennet). For lacto-ovo vegetarianism (the most common type of vegetarianism "
+"in the Western world), eggs and dairy products such as milk and cheese are "
+"permitted. For lacto vegetarianism, the earliest known type of vegetarianism "
+"(recorded in India), dairy products such as milk and cheese are permitted.\n"
+"The strictest forms of vegetarianism are veganism and fruitarianism, which "
+"exclude all animal products, including dairy products as well as honey, and "
+"even some refined sugars if filtered and whitened with bone char.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Vegetarianism\">Learn more…</a>"
 msgstr ""
 
-#: data/recipes.db.h:265
+#: src/gr-diet.c:75
 msgid ""
-"[image:3]Pan-fry the dried anchovies in a separate small pan/skillet - using "
-"enough oil to cover bottom of pan - until light golden brown. Set aside."
+"Lactose intolerance is a condition in which people have symptoms due to the "
+"decreased ability to digest lactose, a sugar found in milk products. Those "
+"affected vary in the amount of lactose they can tolerate before symptoms "
+"develop. Symptoms may include abdominal pain, bloating, diarrhea, gas, and "
+"nausea. These typically start between half and two hours after drinking "
+"milk. Severity depends on the amount a person eats or drinks. It does not "
+"cause damage to the gastrointestinal tract.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Learn more…</a>"
 msgstr ""
 
-#: data/recipes.db.h:266
-msgid ""
-"Take the large onion, quarter it and slice across. Add these onions and the "
-"fried anchovies into the chilli-spice mixture and cook until the onion is "
-"transparent."
+#: src/gr-edit-page.c:595
+msgid "hour"
 msgstr ""
 
-#: data/recipes.db.h:267
-msgid ""
-"Add the coconut milk, tamarind paste and remaining 1 cup water, and bring to "
-"a boil on medium heat."
+#: src/gr-edit-page.c:596
+msgid "hours"
 msgstr ""
 
-#: data/recipes.db.h:268
-msgid ""
-"[image:4]Turn the heat down to low. Season with sugar and salt. The sambal "
-"must have a hint of sweetness."
+#: src/gr-edit-page.c:597
+msgctxt "hour abbreviation"
+msgid "h"
 msgstr ""
 
-#: data/recipes.db.h:269
-msgid ""
-"[image:5]Let the sambal simmer uncovered until oil appears on the surface. "
-"Stir every 15 minutes. This will take about an hour. The sambal will turn "
-"into a deep red shade."
+#: src/gr-edit-page.c:601
+msgid "minute"
 msgstr ""
 
-#: data/recipes.db.h:270
-msgid "[image:6]Serve with nasi lemak (coconut rice)."
+#: src/gr-edit-page.c:602
+msgid "minutes"
 msgstr ""
 
-#: data/recipes.db.h:271
-msgid "Savoury cakes"
+#: src/gr-edit-page.c:603
+msgctxt "minute abbreviation"
+msgid "min"
 msgstr ""
 
-#: data/recipes.db.h:272
-msgid ""
-"These savory cakes can be served as appetizers or as main course. There are "
-"several variations that you can bake with the same base depending on your "
-"mood and tastes. Quite common at French parties."
+#: src/gr-edit-page.c:604
+msgctxt "minute abbreviation"
+msgid "m"
 msgstr ""
 
-#: data/recipes.db.h:273
-msgid ""
-"Prepare the batter: melt butter in a large bowl, then mix with the eggs, "
-"flour and yeast in a bowl."
+#: src/gr-edit-page.c:608
+msgid "second"
 msgstr ""
 
-#: data/recipes.db.h:274
-msgid ""
-"Add the ingredients matching the variation you chose, preferably sliced or "
-"diced to turn them into small bits, and mix again. Try coming up with your "
-"own variations!"
+#: src/gr-edit-page.c:609
+msgid "seconds"
 msgstr ""
 
-#: data/recipes.db.h:275
-msgid "Pour the batter in a loaf tin."
+#: src/gr-edit-page.c:610
+msgctxt "second abbreviation"
+msgid "sec"
 msgstr ""
 
-#: data/recipes.db.h:276
-msgid ""
-"[timer:00:40:00,Bake]Put in the oven at [temperature:180C] for 40 minutes."
+#: src/gr-edit-page.c:611
+msgctxt "second abbreviation"
+msgid "s"
 msgstr ""
 
-#: data/recipes.db.h:277
-msgid ""
-"[image:1]Serve cold, cut in slices or cubes that people will get with a "
-"toothpick."
+#: src/gr-edit-page.c:896
+msgid "Recipe Author"
 msgstr ""
 
-#: data/recipes.db.h:278
-msgid "Spanish Omelet"
+#: src/gr-edit-page.c:1360
+msgid "Name Your Recipe"
 msgstr ""
 
-#: data/recipes.db.h:279
-msgid "Traditional Spanish Omelet, also known as \"Tortilla de Patata\""
+#: src/gr-edit-page.c:1465
+msgid "Name"
 msgstr ""
 
-#: data/recipes.db.h:280
-msgid ""
-"[image:0]Put a bit of oil in a pan and cover the surface with sliced onions."
+#: src/gr-edit-page.c:1537 src/gr-edit-page.c:1592 src/gr-recipe-store.c:1280
+#, c-format
+msgid "You need to provide a name for the recipe"
 msgstr ""
 
-#: data/recipes.db.h:281
-msgid "[image:3]Meanwhile, peel the potatoes and cut them in small pieces."
+#: src/gr-edit-page.c:1550
+#, c-format
+msgid "Some ingredients need correction"
 msgstr ""
 
-#: data/recipes.db.h:282
-msgid ""
-"[image:2]Once the onions start to take colour, put the potatoes into the pan "
-"and add some salt."
+#: src/gr-ingredients-viewer-row.c:153
+msgid "Amount…"
 msgstr ""
 
-#: data/recipes.db.h:283
-msgid ""
-"[image:1]Cover the pan and stir the contents from time to time, until "
-"potatoes are well cooked."
+#: src/gr-ingredients-viewer-row.c:166
+msgid "Ingredient…"
 msgstr ""
 
-#: data/recipes.db.h:284
-msgid "[image:7]Put the eggs in a big bowl and add some salt"
+#: src/gr-list-page.c:245
+msgid "Gluten-free Recipes"
 msgstr ""
 
-#: data/recipes.db.h:285
-msgid "[image:6]Whip the eggs."
+#: src/gr-list-page.c:247
+msgid "Nut-free Recipes"
 msgstr ""
 
-#: data/recipes.db.h:286
-msgid "[image:5]Put the contents of the pan in the bowl and mix it well."
+#: src/gr-list-page.c:249
+msgid "Vegan Recipes"
 msgstr ""
 
-#: data/recipes.db.h:287
-msgid ""
-"[image:4]Add some oil to the pan and put the whole mix back into the pan."
+#: src/gr-list-page.c:251
+msgid "Vegetarian Recipes"
 msgstr ""
 
-#: data/recipes.db.h:288
-msgid ""
-"[image:8]Once the lower side is cooked, with the help of a plate, turn the "
-"omelet."
+#: src/gr-list-page.c:253
+msgid "Milk-free Recipes"
 msgstr ""
 
-#: data/recipes.db.h:289
-msgid "Repeat the process until it is well cooked."
+#: src/gr-list-page.c:255
+msgid "Other Dietary Restrictions"
 msgstr ""
 
-#: data/recipes.db.h:290
-msgid "Tagliatelle alla Romana"
+#: src/gr-list-page.c:296
+#, c-format
+msgid "No %s found"
 msgstr ""
 
-#: data/recipes.db.h:291
-msgid ""
-"Pasta is one of my favourite things in the world, and this is one of my "
-"favourity pasta dishes. It's gutsy Italian food at its best."
+#: src/gr-list-page.c:299 src/gr-list-page.c:358 src/gr-list-page.c:389
+msgid "You could add one using the “New Recipe” button."
 msgstr ""
 
-#: data/recipes.db.h:292
-msgid ""
-"It's important to have good quality chicken livers for this recipe - get "
-"free range organic if possible. You can use dried pasta if you're unable to "
-"get fresh."
+#: src/gr-list-page.c:347
+#, c-format
+msgid "Recipes by %s"
 msgstr ""
 
-#: data/recipes.db.h:293
-msgid ""
-"Rinse the chicken livers and cut out any out any bits of sinew. Dry and "
-"season with salt and pepper."
+#: src/gr-list-page.c:354
+#, c-format
+msgid "No recipes by chef %s found"
 msgstr ""
 
-#: data/recipes.db.h:294
-msgid "Finely chop the red onion."
+#: src/gr-list-page.c:360 src/gr-list-page.c:428 src/gr-list-page.c:453
+#: src/gr-list-page.c:486
+msgid "Sorry about this."
 msgstr ""
 
-#: data/recipes.db.h:295
-msgid ""
-"Melt half the butter in a frying pan, then add the olive oil and cook the "
-"onion until soft, without letting it brown."
+#: src/gr-list-page.c:386
+#, c-format
+msgid "No recipes for %s found"
 msgstr ""
 
-#: data/recipes.db.h:296
-msgid ""
-"Add the livers to the pan and fry until lightly browned. Then add the "
-"tomatoes and cook on a low heat for 20 minutes, stirring occasionally."
+#: src/gr-list-page.c:408
+msgid "No favorite recipes found"
 msgstr ""
 
-#: data/recipes.db.h:297
-msgid ""
-"Put a deep pan of water on to boil and add a good pinch of salt to the water."
+#: src/gr-list-page.c:409
+msgid "Use the ♥ button to mark recipes as favorites."
 msgstr ""
 
-#: data/recipes.db.h:298
-msgid ""
-"Remove the livers from the pan and chop finely. Then add back to the sauce "
-"and continue to cook. Check for seasoning and add more salt and pepper if "
-"necessary."
+#: src/gr-list-page.c:452
+msgid "No new recipes"
 msgstr ""
 
-#: data/recipes.db.h:299
-msgid ""
-"Cook the pasta for 3 minutes if fresh (or put on earlier and follow packet "
-"instructions if using dry pasta)."
+#: src/gr-list-page.c:485
+msgid "No imported recipes found"
 msgstr ""
 
-#: data/recipes.db.h:300
-msgid ""
-"Drain the pasta, retaining a cup of the pasta water. Add the pasta to the "
-"sauce along with the remaining butter. Mix and cook on a low heat for "
-"several minutes, to allow the pasta to absorb the sauce."
+#: src/gr-meal.c:44
+msgid "Main Course"
 msgstr ""
 
-#: data/recipes.db.h:301
-msgid "If the sauce needs loosening, add a bit of the pasta cooking water."
+#: src/gr-meal.c:45
+msgid "Snacks"
 msgstr ""
 
-#: data/recipes.db.h:302
-msgid "Serve with plenty of black pepper."
+#: src/gr-meal.c:46
+msgid "Breakfast"
 msgstr ""
 
-#: data/recipes.db.h:303
-msgid "Tofu ‘Egg’ Scramble"
+#: src/gr-meal.c:47
+msgid "Side Dishes"
 msgstr ""
 
-#: data/recipes.db.h:304
-msgid "This vegan breakfast staple is perfect on a lazy saturday morning."
+#: src/gr-meal.c:48
+msgid "Desserts"
 msgstr ""
 
-#: data/recipes.db.h:305
-msgid ""
-"[image:0]Chop the onion. Open up the tofu package and slice it up, then "
-"crumble with your hands."
+#: src/gr-meal.c:49
+msgid "Cake and Baking"
+msgstr ""
+
+#: src/gr-meal.c:50
+msgid "Drinks and Cocktails"
+msgstr ""
+
+#: src/gr-meal.c:51
+msgid "Pizza"
+msgstr ""
+
+#: src/gr-meal.c:52
+msgid "Pasta"
+msgstr ""
+
+#: src/gr-meal.c:53
+msgid "Other"
+msgstr ""
+
+#: src/gr-number.c:166 src/gr-number.c:183 src/gr-number.c:192
+#, c-format
+msgid "Could not parse %s as a fraction"
+msgstr ""
+
+#: src/gr-number.c:216
+#, c-format
+msgid "Could not parse %s as a integer"
+msgstr ""
+
+#: src/gr-number.c:239
+#, c-format
+msgid "Could not parse %s as a float"
+msgstr ""
+
+#: src/gr-number.c:290
+#, c-format
+msgid "Could not parse %s as a number"
+msgstr ""
+
+#: src/gr-recipe-exporter.c:168
+msgid "Save the exported recipe"
+msgstr ""
+
+#: src/gr-recipe-exporter.c:171 src/gr-shopping-page.c:739
+msgid "Save"
+msgstr ""
+
+#: src/gr-recipe-exporter.c:206
+msgid "Recipe contribution"
+msgstr ""
+
+#: src/gr-recipe-exporter.c:207
+msgid "Please accept my attached recipe contribution."
+msgstr ""
+
+#: src/gr-recipe-exporter.c:217
+msgid "Try this recipe"
 msgstr ""
 
-#: data/recipes.db.h:306
+#: src/gr-recipe-exporter.c:218
 msgid ""
-"[timer:00:03:00,Sautee]Sautee the onion, tofu, and peppers for 3-5 minutes "
-"using the vegan butter."
+"Hi,\n"
+"\n"
+"you should try this recipe."
 msgstr ""
 
-#: data/recipes.db.h:307
+#: src/gr-recipe-exporter.c:221
+msgid "Try these recipes"
+msgstr ""
+
+#: src/gr-recipe-exporter.c:222
 msgid ""
-"[timer:00:05:00,Cook]Turn heat down to medium and add the rest of the "
-"ingredients – cook for 5-7 minutes more."
+"Hi,\n"
+"\n"
+"you should try these recipes."
+msgstr ""
+
+#: src/gr-recipe-exporter.c:225
+msgid "(The attached file can be imported into GNOME Recipes.)"
+msgstr ""
+
+#: src/gr-recipe-exporter.c:432
+#, c-format
+msgid "This build does not support exporting"
 msgstr ""
 
-#: data/recipes.db.h:308
-msgid "Traditional South Indian Tomato Chicken Curry, Fast Version"
+#: src/gr-recipe-exporter.c:515
+#, c-format
+msgid ""
+"Error while exporting:\n"
+"%s"
 msgstr ""
+
+#: src/gr-recipe-exporter.c:612
+#, c-format
+msgid "%d recipe selected for sharing"
+msgid_plural "%d recipes selected for sharing"
+msgstr[0] ""
+msgstr[1] ""
 
-#: data/recipes.db.h:309
+#: src/gr-recipe-exporter.c:644
 msgid ""
-"A quick and easy version of a traditional South Indian chicken curry dish, "
-"learned from a Mallu immigrant and cook."
+"Some of the selected recipes are included\n"
+"with GNOME Recipes. You should only contribute\n"
+"your own recipes."
+msgstr ""
+
+#: src/gr-recipe-formatter.c:86 src/gr-recipe-printer.c:162
+msgid "Author:"
 msgstr ""
 
-#: data/recipes.db.h:310
+#: src/gr-recipe-formatter.c:87 src/gr-recipe-printer.c:163
 msgid "Preparation:"
 msgstr ""
 
-#: data/recipes.db.h:311
-msgid "Cube 5 large chicken breasts (about 4 cups) into 1-1.5 inch cubes"
-msgstr ""
-
-#: data/recipes.db.h:312
-msgid "Thinly slice 1 large onion, chopping the final quarter of the onion"
-msgstr ""
-
-#: data/recipes.db.h:313
-msgid "Chop 2 medium tomatoes into large chunks"
-msgstr ""
-
-#: data/recipes.db.h:314
+#: src/gr-recipe-formatter.c:88 src/gr-recipe-printer.c:164
 msgid "Cooking:"
 msgstr ""
 
-#: data/recipes.db.h:315
+#: src/gr-recipe-formatter.c:89 src/gr-recipe-printer.c:165
+msgid "Serves:"
+msgstr ""
+
+#: src/gr-recipe-importer.c:236
+#, c-format
 msgid ""
-"In a large pot, heat 1 tbsp olive oil at medium/medium-high heat. Once oil "
-"is hot, add mustard seeds and fry until they pop (cover the pot to prevent "
-"splashing). Too much heat will burn the seeds."
+"Error while importing recipe:\n"
+"%s"
 msgstr ""
 
-#: data/recipes.db.h:316
+#: src/gr-recipe-importer.c:482
+#, c-format
+msgid "Failed to load recipe: Couldn’t parse Created key"
+msgstr ""
+
+#: src/gr-recipe-importer.c:493
+#, c-format
+msgid "Failed to load recipe: Couldn’t parse Modified key"
+msgstr ""
+
+#: src/gr-recipe-importer.c:773
+#, c-format
+msgid "No chef information found"
+msgstr ""
+
+#: src/gr-recipe-importer.c:803
+#, c-format
+msgid "This build does not support importing"
+msgstr ""
+
+#: src/gr-recipe-printer.c:170
+msgid "Cuisine:"
+msgstr ""
+
+#: src/gr-recipe-printer.c:174
+msgid "Meal:"
+msgstr ""
+
+#: src/gr-recipe-printer.c:178
+msgid "Season:"
+msgstr ""
+
+#: src/gr-recipe-printer.c:223
+msgid "Notes"
+msgstr ""
+
+#: src/gr-recipe-printer.c:466 src/gr-shopping-list-printer.c:297
+msgid "Error printing file:"
+msgstr ""
+
+#: src/gr-recipe-printer.c:467 src/gr-shopping-list-printer.c:298
+msgid "No details"
+msgstr ""
+
+#: src/gr-recipe-small-tile.c:105 src/gr-recipe-tile.c:86
+#, c-format
+msgid "by %s"
+msgstr ""
+
+#: src/gr-recipe-small-tile.c:105 src/gr-recipe-tile.c:86
+msgid "Anonymous"
+msgstr ""
+
+#: src/gr-recipes-page.c:221 src/gr-window.c:1289
+msgid "My Recipes"
+msgstr ""
+
+#: src/gr-recipes-page.c:222
+msgid "Favorites"
+msgstr ""
+
+#: src/gr-recipes-page.c:223 src/gr-window.c:1237
+msgid "All Recipes"
+msgstr ""
+
+#: src/gr-recipes-page.c:224 src/gr-window.c:1246
+msgid "New Recipes"
+msgstr ""
+
+#: src/gr-recipes-page.c:272
+msgid "Last edited:"
+msgstr ""
+
+#: src/gr-recipes-page.c:371
+#, c-format
+msgid "Buy ingredients: <b>%s</b>"
+msgstr ""
+
+#: src/gr-recipes-page.c:373
+#, c-format
+msgid "Buy ingredients: <b>%s and %s</b>"
+msgstr ""
+
+#: src/gr-recipes-page.c:375
+#, c-format
+msgid "Buy ingredients: <b>%s, %s and %d other</b>"
+msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/gr-recipe-store.c:1285
+#, c-format
 msgid ""
-"Once seeds have popped, turn down the heat to medium and add thinly sliced "
-"onion. Cover to retain moisture. Cook until translucent, stirring "
-"frequently. Add small amounts of water as necessary."
+"A recipe with this name and author (%s) already exists.\n"
+"Please choose a different name"
 msgstr ""
 
-#: data/recipes.db.h:317
+#: src/gr-recipe-store.c:1314
+#, c-format
+msgid "You need to provide an ID for the recipe"
+msgstr ""
+
+#: src/gr-recipe-store.c:1320
+#, c-format
+msgid "A recipe with this ID already exists"
+msgstr ""
+
+#: src/gr-recipe-store.c:1489
+#, c-format
+msgid "You need to provide an ID"
+msgstr ""
+
+#: src/gr-recipe-store.c:1495
+#, c-format
+msgid "Sorry, this ID is taken"
+msgstr ""
+
+#: src/gr-recipe-store.c:1522
+#, c-format
+msgid "You need to provide an ID for the chef"
+msgstr ""
+
+#: src/gr-recipe-store.c:1528
+#, c-format
+msgid "A chef with this ID already exists"
+msgstr ""
+
+#: src/gr-season.c:41
+msgid "Thanksgiving"
+msgstr ""
+
+#: src/gr-season.c:42
+msgid "Christmas"
+msgstr ""
+
+#: src/gr-season.c:43
+msgid "New Year’s"
+msgstr ""
+
+#: src/gr-season.c:44
+msgid "Spring"
+msgstr ""
+
+#: src/gr-season.c:45
+msgid "Summer"
+msgstr ""
+
+#: src/gr-season.c:46
+msgid "Fall"
+msgstr ""
+
+#: src/gr-season.c:47
+msgid "Winter"
+msgstr ""
+
+#: src/gr-shopping-list-formatter.c:42 src/gr-shopping-list-printer.c:135
+#: src/gr-shopping-page.c:765
+msgid "Shopping List"
+msgstr ""
+
+#: src/gr-shopping-list-formatter.c:44
+msgid "For the following recipes:"
+msgstr ""
+
+#: src/gr-shopping-list-printer.c:144
+msgid "For the following recipes"
+msgstr ""
+
+#: src/gr-shopping-list-printer.c:161
+msgid "Items"
+msgstr ""
+
+#: src/gr-shopping-page.c:100
+#, c-format
+msgid "%d ingredient marked for purchase"
+msgid_plural "%d ingredients marked for purchase"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/gr-shopping-page.c:119
+#, c-format
+msgid "Buy Ingredients (%d recipe)"
+msgid_plural "Buy Ingredients (%d recipes)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/gr-shopping-page.c:124
+#, c-format
+msgid "%d Recipe marked for preparation"
+msgid_plural "%d Recipes marked for preparation"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/gr-shopping-page.c:736
+msgid "Save the shopping list"
+msgstr ""
+
+#: src/gr-spice-row.c:131
+msgid "Mild or somewhat spicy"
+msgstr ""
+
+#: src/gr-spice-row.c:133
+msgid "At least somewhat spicy"
+msgstr ""
+
+#: src/gr-spice-row.c:137
+msgid "At most hot"
+msgstr ""
+
+#: src/gr-spice-row.c:139
+msgid "Hot or very spicy"
+msgstr ""
+
+#: src/gr-unit.c:41
+msgctxt "unit abbreviation"
+msgid "g"
+msgstr ""
+
+#: src/gr-unit.c:41
+msgctxt "unit name"
+msgid "gram"
+msgstr ""
+
+#: src/gr-unit.c:41
+msgctxt "unit plural"
+msgid "grams"
+msgstr ""
+
+#: src/gr-unit.c:42
+msgctxt "unit abbreviation"
+msgid "kg"
+msgstr ""
+
+#: src/gr-unit.c:42
+msgctxt "unit name"
+msgid "kilogram"
+msgstr ""
+
+#: src/gr-unit.c:42
+msgctxt "unit plural"
+msgid "kilograms"
+msgstr ""
+
+#: src/gr-unit.c:43
+msgctxt "unit abbreviation"
+msgid "lb"
+msgstr ""
+
+#: src/gr-unit.c:43
+msgctxt "unit name"
+msgid "pound"
+msgstr ""
+
+#: src/gr-unit.c:43
+msgctxt "unit plural"
+msgid "pounds"
+msgstr ""
+
+#: src/gr-unit.c:44
+msgctxt "unit abbreviation"
+msgid "oz"
+msgstr ""
+
+#: src/gr-unit.c:44
+msgctxt "unit name"
+msgid "ounce"
+msgstr ""
+
+#: src/gr-unit.c:44
+msgctxt "unit plural"
+msgid "ounces"
+msgstr ""
+
+#: src/gr-unit.c:45
+msgctxt "unit abbreviation"
+msgid "l"
+msgstr ""
+
+#: src/gr-unit.c:45
+msgctxt "unit name"
+msgid "liter"
+msgstr ""
+
+#: src/gr-unit.c:45
+msgctxt "unit plural"
+msgid "liters"
+msgstr ""
+
+#: src/gr-unit.c:46
+msgctxt "unit abbreviation"
+msgid "dl"
+msgstr ""
+
+#: src/gr-unit.c:46
+msgctxt "unit name"
+msgid "deciliter"
+msgstr ""
+
+#: src/gr-unit.c:46
+msgctxt "unit plural"
+msgid "deciliters"
+msgstr ""
+
+#: src/gr-unit.c:47
+msgctxt "unit abbreviation"
+msgid "ml"
+msgstr ""
+
+#: src/gr-unit.c:47
+msgctxt "unit name"
+msgid "milliliter"
+msgstr ""
+
+#: src/gr-unit.c:47
+msgctxt "unit plural"
+msgid "milliliters"
+msgstr ""
+
+#: src/gr-unit.c:48 src/gr-unit.c:49
+msgctxt "unit abbreviation"
+msgid "fl oz"
+msgstr ""
+
+#: src/gr-unit.c:48 src/gr-unit.c:49
+msgctxt "unit name"
+msgid "fluid ounce"
+msgstr ""
+
+#: src/gr-unit.c:48 src/gr-unit.c:49
+msgctxt "unit plural"
+msgid "fluid ounces"
+msgstr ""
+
+#: src/gr-unit.c:50
+msgctxt "unit abbreviation"
+msgid "pt"
+msgstr ""
+
+#: src/gr-unit.c:50
+msgctxt "unit name"
+msgid "pint"
+msgstr ""
+
+#: src/gr-unit.c:50
+msgctxt "unit plural"
+msgid "pints"
+msgstr ""
+
+#: src/gr-unit.c:51
+msgctxt "unit abbreviation"
+msgid "qt"
+msgstr ""
+
+#: src/gr-unit.c:51
+msgctxt "unit name"
+msgid "quart"
+msgstr ""
+
+#: src/gr-unit.c:51
+msgctxt "unit plural"
+msgid "quarts"
+msgstr ""
+
+#: src/gr-unit.c:52
+msgctxt "unit abbreviation"
+msgid "gal"
+msgstr ""
+
+#: src/gr-unit.c:52
+msgctxt "unit name"
+msgid "gallon"
+msgstr ""
+
+#: src/gr-unit.c:52
+msgctxt "unit plural"
+msgid "gallons"
+msgstr ""
+
+#: src/gr-unit.c:53
+msgctxt "unit abbreviation"
+msgid "cup"
+msgstr ""
+
+#: src/gr-unit.c:53
+msgctxt "unit name"
+msgid "cup"
+msgstr ""
+
+#: src/gr-unit.c:53
+msgctxt "unit plural"
+msgid "cups"
+msgstr ""
+
+#: src/gr-unit.c:54
+msgctxt "unit abbreviation"
+msgid "tbsp"
+msgstr ""
+
+#: src/gr-unit.c:54
+msgctxt "unit name"
+msgid "tablespoon"
+msgstr ""
+
+#: src/gr-unit.c:54
+msgctxt "unit plural"
+msgid "tablespoons"
+msgstr ""
+
+#: src/gr-unit.c:55
+msgctxt "unit abbreviation"
+msgid "tsp"
+msgstr ""
+
+#: src/gr-unit.c:55
+msgctxt "unit name"
+msgid "teaspoon"
+msgstr ""
+
+#: src/gr-unit.c:55
+msgctxt "unit plural"
+msgid "teaspoons"
+msgstr ""
+
+#: src/gr-unit.c:56
+msgctxt "unit abbreviation"
+msgid "box"
+msgstr ""
+
+#: src/gr-unit.c:56
+msgctxt "unit name"
+msgid "box"
+msgstr ""
+
+#: src/gr-unit.c:56
+msgctxt "unit plural"
+msgid "boxes"
+msgstr ""
+
+#: src/gr-unit.c:57
+msgctxt "unit abbreviation"
+msgid "pkg"
+msgstr ""
+
+#: src/gr-unit.c:57
+msgctxt "unit name"
+msgid "package"
+msgstr ""
+
+#: src/gr-unit.c:57
+msgctxt "unit plural"
+msgid "packages"
+msgstr ""
+
+#: src/gr-unit.c:58
+msgctxt "unit abbreviation"
+msgid "glass"
+msgstr ""
+
+#: src/gr-unit.c:58
+msgctxt "unit name"
+msgid "glass"
+msgstr ""
+
+#: src/gr-unit.c:58
+msgctxt "unit plural"
+msgid "glasses"
+msgstr ""
+
+#: src/gr-unit.c:59
+msgctxt "unit abbreviation"
+msgid "mm"
+msgstr ""
+
+#: src/gr-unit.c:59
+msgctxt "unit name"
+msgid "millimeter"
+msgstr ""
+
+#: src/gr-unit.c:59
+msgctxt "unit plural"
+msgid "millimeters"
+msgstr ""
+
+#: src/gr-unit.c:60
+msgctxt "unit abbreviation"
+msgid "cm"
+msgstr ""
+
+#: src/gr-unit.c:60
+msgctxt "unit name"
+msgid "centimeter"
+msgstr ""
+
+#: src/gr-unit.c:60
+msgctxt "unit plural"
+msgid "centimeters"
+msgstr ""
+
+#: src/gr-unit.c:61
+msgctxt "unit abbreviation"
+msgid "m"
+msgstr ""
+
+#: src/gr-unit.c:61
+msgctxt "unit name"
+msgid "meter"
+msgstr ""
+
+#: src/gr-unit.c:61
+msgctxt "unit plural"
+msgid "meters"
+msgstr ""
+
+#: src/gr-unit.c:62
+msgctxt "unit abbreviation"
+msgid "st"
+msgstr ""
+
+#: src/gr-unit.c:62
+msgctxt "unit name"
+msgid "stone"
+msgstr ""
+
+#: src/gr-unit.c:62
+msgctxt "unit plural"
+msgid "stone"
+msgstr ""
+
+#: src/gr-unit.c:63
+msgctxt "unit abbreviation"
+msgid "pinch"
+msgstr ""
+
+#: src/gr-unit.c:63
+msgctxt "unit name"
+msgid "pinch"
+msgstr ""
+
+#: src/gr-unit.c:63
+msgctxt "unit plural"
+msgid "pinches"
+msgstr ""
+
+#: src/gr-unit.c:64
+msgctxt "unit abbreviation"
+msgid "bunch"
+msgstr ""
+
+#: src/gr-unit.c:64
+msgctxt "unit name"
+msgid "bunch"
+msgstr ""
+
+#: src/gr-unit.c:64
+msgctxt "unit plural"
+msgid "bunches"
+msgstr ""
+
+#: src/gr-unit.c:145
+#, c-format
+msgid "I don’t know this unit: %s"
+msgstr ""
+
+#: src/gr-utils.c:334
+#, c-format
+msgid "more than a year ago"
+msgstr ""
+
+#: src/gr-utils.c:337 src/gr-utils.c:341
+#, c-format
+msgid "%d month ago"
+msgid_plural "%d months ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/gr-utils.c:345
+#, c-format
+msgid "%d day ago"
+msgid_plural "%d days ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/gr-utils.c:348
+#, c-format
+msgid "just now"
+msgstr ""
+
+#: src/gr-utils.c:350
+#, c-format
+msgid "10 minutes ago"
+msgstr ""
+
+#: src/gr-utils.c:352
+#, c-format
+msgid "half an hour ago"
+msgstr ""
+
+#: src/gr-utils.c:356
+#, c-format
+msgid "%d hour ago"
+msgid_plural "%d hours ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/gr-utils.c:362
+msgid "some time ago"
+msgstr ""
+
+#: src/gr-utils.c:385
+msgid "Could not connect to the session bus from inside the Flatpak sandbox."
+msgstr ""
+
+#: src/gr-utils.c:386
+msgid "Certain functionality will not be available."
+msgstr ""
+
+#: src/gr-utils.c:406
 msgid ""
-"While onions are cooking, blend remaining chopped onion and tomatoes to "
-"create a puree. Add water if necessary."
+"Missing the desktop portal needed to open files from inside a Flatpak "
+"sandbox."
 msgstr ""
 
-#: data/recipes.db.h:318
+#: src/gr-utils.c:408
 msgid ""
-"Once onions are translucent, increase heat to medium-high and immediately "
-"add all spices. Toast for 30 seconds until aromatic."
+"Missing the desktop portal needed to print from inside a Flatpak sandbox."
 msgstr ""
 
-#: data/recipes.db.h:319
+#: src/gr-utils.c:410
 msgid ""
-"Add the rest of the olive oil (2 more tbsp) and tomato and onion puree from "
-"blender. Cook until raw smell of onions and tomatoes is going — up to 5 "
-"minutes."
+"Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
 msgstr ""
 
-#: data/recipes.db.h:320
+#: src/gr-utils.c:414
 msgid ""
-"Turn down heat to medium. Add chopped chicken breast, cover, and allow to "
-"slowly cook. Add small amounts of water as necessary to achieve desired "
-"sauce consistency. (Chicken will release its own fat and water into the "
-"sauce, so wait a few minutes before adding extra.)"
+"Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
 msgstr ""
 
-#: data/recipes.db.h:321
+#: src/gr-window.c:246
+msgid "Add a New Recipe"
+msgstr ""
+
+#: src/gr-window.c:525
+#, c-format
 msgid ""
-"Can be served immediately or left to marinate in curry sauce, then reheated. "
-"Serve with rice or chapati/heated flour tortilla."
+"The “%s” recipe has unsaved changes.\n"
+"Close the window anyway?"
 msgstr ""
 
-#: data/recipes.db.h:322
+#: src/gr-window.c:528
 msgid ""
-"To make a more full-flavored curry, try adding garam masala (ground "
-"cardamom, cloves, fennel seeds, and nutmeg), along with fresh curry leaves."
+"The new recipe has not been saved.\n"
+"Close the window anyway?"
 msgstr ""
 
-#: data/recipes.db.h:323
-msgid "White fish for people who dont like fish."
+#: src/gr-window.c:659
+#, c-format
+msgid "Recipe “%s” deleted"
 msgstr ""
 
-#: data/recipes.db.h:324
-msgid ""
-"It is a fantastic dish for those of us that dont love fish, but know we have "
-"to eat it to stay healthy."
+#: src/gr-window.c:709
+#, c-format
+msgid "You updated your contributed “%s” recipe. Send an update?"
 msgstr ""
 
-#: data/recipes.db.h:325
-msgid ""
-"The key to get this dish good is to have high temperature on the stove when "
-"first frying the fish. Then turn it down after the initial fry."
+#: src/gr-window.c:839
+msgid "Ready to Cook!"
 msgstr ""
 
-#: data/recipes.db.h:326
-msgid ""
-"Set the stove to high (8/10), then put a good amount of oil in it. Any type "
-"of oil will do."
+#: src/gr-window.c:1045
+msgid "Imported Recipes"
 msgstr ""
 
-#: data/recipes.db.h:327
-msgid ""
-"Remove bone and skin from the fish (if any), and add salt and pepper. Give "
-"the stove some minutes to get really hot. Then put the fish in. 2-3 min on "
-"each side."
+#: src/gr-window.c:1121
+msgid "Select a recipe file"
 msgstr ""
 
-#: data/recipes.db.h:328
-msgid ""
-"Turn the temperature down to low (3/10). Add two spoons of butter, some "
-"thyme, rosemary and garlic. When the butter have melted, use a spoon to poor "
-"the melted butter and spice mix over the fish fillet."
+#: src/gr-window.c:1147
+#, c-format
+msgid "Recipes have been exported to “%s”"
 msgstr ""
 
-#: data/recipes.db.h:329
-msgid ""
-"After about 5 minutes your fish will be done. You can serve it with "
-"potatoes, rice, or noodles. Everything works."
+#: src/gr-window.c:1185
+msgid "Select a file"
 msgstr ""
 
-#: data/recipes.db.h:330
-msgid "Wholesome Crackers"
+#: src/gr-window.c:1188
+msgid "_Export"
 msgstr ""
 
-#: data/recipes.db.h:331
-msgid ""
-"Crackers are a fulfilling alternative snack and keeps your stomach going. "
-"Crackers consist of seeds, oat and flour. The recipe described here is very "
-"flexible. You can use whichever seeds, nuts and flour types you may have. "
-"I've personally tried almonds, sesame seeds, chia seeds, rye grains, millet "
-"and  buckwheat."
+#: src/gr-window.c:1218
+#, c-format
+msgid "Chefs: %s"
 msgstr ""
 
-#: data/recipes.db.h:332
-msgid ""
-"Turn on the oven at [temperature:200C]. Mix all dry ingredients (seeds, "
-"flour, oatmeal, baking powder and salt) together. Mix oil. Then add water "
-"gradually while mixing until the dough is firm and pasty. If you add too "
-"much water, the dough will end up sticking too much to the baking paper."
+#: src/gr-window.c:1228
+msgid "Favorite Recipes"
 msgstr ""
 
-#: data/recipes.db.h:333
-msgid ""
-"Cut a sheet of baking paper at the size of a baking tray and place the dough "
-"on it. Cut another sheet of baking paper and put on top. Use a rolling pin "
-"on top of the second baking sheet to flatten the dough. Make the dough as "
-"thing as possible. Afterwards, take off the second sheet. Bring forth a "
-"knife and cut creases from horizontally and vertically to form squares (see "
-"example on the picture). Optionally decorate with extra seeds on top before "
-"inserting into the preheated oven."
+#: src/gr-window.c:1276
+msgid "Buy Ingredients"
 msgstr ""
 
-#: data/recipes.db.h:334
-msgid ""
-"Wait for the crackers to become crisp, this takes around 17 minutes. You can "
-"check if they are done by touching the crackers or by pulling up a bit in "
-"the baking sheet and see if the crackers in the middle still bends.  The "
-"crackers take on a yellow golden color when they are done."
+#. TRANSLATORS: %s gets replaced by a version number
+#: src/gr-window.c:1420
+#, c-format
+msgid "Recipes %s"
 msgstr ""
 
-#: data/recipes.db.h:335
-msgid ""
-"Take out the crackers and leave them on the kitchen table to cool down for a "
-"few minutes."
+#. TRANSLATORS: %s gets replaced by a date
+#: src/gr-window.c:1437
+#, c-format
+msgid "Released: %s"
 msgstr ""
+
+#: src/gr-window.c:1440
+#, c-format
+msgid "Unreleased"
+msgstr ""
+
+#: src/ingredients.inc:1
+msgid "Almond"
+msgstr ""
+
+#: src/ingredients.inc:2
+msgid "Amaretti"
+msgstr ""
+
+#: src/ingredients.inc:3
+msgid "Anchovies"
+msgstr ""
+
+#: src/ingredients.inc:4
+msgid "Apple"
+msgstr ""
+
+#: src/ingredients.inc:5
+msgid "Apricot"
+msgstr ""
+
+#: src/ingredients.inc:6
+msgid "Artichoke"
+msgstr ""
+
+#: src/ingredients.inc:7
+msgid "Asparagus"
+msgstr ""
+
+#: src/ingredients.inc:8
+msgid "Aubergine"
+msgstr ""
+
+#: src/ingredients.inc:9
+msgid "Bacon"
+msgstr ""
+
+#: src/ingredients.inc:10
+msgid "Bagel"
+msgstr ""
+
+#: src/ingredients.inc:11
+msgid "Baked beans"
+msgstr ""
+
+#: src/ingredients.inc:12
+msgid "Baking powder"
+msgstr ""
+
+#: src/ingredients.inc:13
+msgid "Banana"
+msgstr ""
+
+#: src/ingredients.inc:14
+msgid "Basil"
+msgstr ""
+
+#: src/ingredients.inc:15
+msgid "Basmati rice"
+msgstr ""
+
+#: src/ingredients.inc:16
+msgid "Bay leaf"
+msgstr ""
+
+#: src/ingredients.inc:17
+msgid "Beans"
+msgstr ""
+
+#: src/ingredients.inc:18
+msgid "Beef mince"
+msgstr ""
+
+#: src/ingredients.inc:19
+msgid "Beef sausage"
+msgstr ""
+
+#: src/ingredients.inc:20
+msgid "Beef stock"
+msgstr ""
+
+#: src/ingredients.inc:21
+msgid "Beetroot"
+msgstr ""
+
+#: src/ingredients.inc:22
+msgid "Bell pepper"
+msgstr ""
+
+#: src/ingredients.inc:23
+msgid "Berry"
+msgstr ""
+
+#: src/ingredients.inc:24
+msgid "Biscotti"
+msgstr ""
+
+#: src/ingredients.inc:25
+msgid "Bilberry"
+msgstr ""
+
+#: src/ingredients.inc:26
+msgid "Breadcrumbs"
+msgstr ""
+
+#: src/ingredients.inc:27
+msgid "Butter"
+msgstr ""
+
+#: src/ingredients.inc:28
+msgid "Carrot"
+msgstr ""
+
+#: src/ingredients.inc:29
+msgid "Cheese"
+msgstr ""
+
+#: src/ingredients.inc:30
+msgid "Cherries, pitted"
+msgstr ""
+
+#: src/ingredients.inc:31
+msgid "Chocolate frosting"
+msgstr ""
+
+#: src/ingredients.inc:32
+msgid "Cilantro"
+msgstr ""
+
+#: src/ingredients.inc:33
+msgid "Cocoa powder"
+msgstr ""
+
+#: src/ingredients.inc:34
+msgid "Couscous"
+msgstr ""
+
+#: src/ingredients.inc:35
+msgid "Cream"
+msgstr ""
+
+#: src/ingredients.inc:36
+msgid "Date"
+msgstr ""
+
+#: src/ingredients.inc:37
+msgid "Egg"
+msgstr ""
+
+#: src/ingredients.inc:38
+msgid "Fig"
+msgstr ""
+
+#: src/ingredients.inc:39
+msgid "Fish"
+msgstr ""
+
+#: src/ingredients.inc:40
+msgid "Flour"
+msgstr ""
+
+#: src/ingredients.inc:41
+msgid "Garlic"
+msgstr ""
+
+#: src/ingredients.inc:42
+msgid "Grapes"
+msgstr ""
+
+#: src/ingredients.inc:43
+msgid "Ground beef"
+msgstr ""
+
+#: src/ingredients.inc:44
+msgid "Honey"
+msgstr ""
+
+#: src/ingredients.inc:45
+msgid "Horseradish"
+msgstr ""
+
+#: src/ingredients.inc:46
+#, fuzzy
+msgid "Lemon"
+msgstr "Sitronkake"
+
+#: src/ingredients.inc:47
+msgid "Linseeds"
+msgstr ""
+
+#: src/ingredients.inc:48
+msgid "Mayonnaise"
+msgstr ""
+
+#: src/ingredients.inc:49
+msgid "Milk"
+msgstr ""
+
+#: src/ingredients.inc:50
+msgid "Mustard"
+msgstr ""
+
+#: src/ingredients.inc:51
+msgid "Nut"
+msgstr ""
+
+#: src/ingredients.inc:52
+msgid "Oatmeal"
+msgstr ""
+
+#: src/ingredients.inc:53
+msgid "Oil"
+msgstr ""
+
+#: src/ingredients.inc:54
+msgid "Onion"
+msgstr ""
+
+#: src/ingredients.inc:55
+msgid "Olive oil, extra-virgin"
+msgstr ""
+
+#: src/ingredients.inc:56
+msgid "Orange"
+msgstr ""
+
+#: src/ingredients.inc:57
+msgid "Parsley"
+msgstr ""
+
+#: src/ingredients.inc:58
+msgid "Peperoni"
+msgstr ""
+
+#: src/ingredients.inc:59
+msgid "Pepper"
+msgstr ""
+
+#: src/ingredients.inc:60
+msgid "Peppers"
+msgstr ""
+
+#: src/ingredients.inc:61
+msgid "Pizza sauce"
+msgstr ""
+
+#: src/ingredients.inc:62
+msgid "Potato"
+msgstr ""
+
+#: src/ingredients.inc:63
+msgid "Pumpkin seeds"
+msgstr ""
+
+#: src/ingredients.inc:64
+msgid "Raisins"
+msgstr ""
+
+#: src/ingredients.inc:65
+msgid "Rice"
+msgstr ""
+
+#: src/ingredients.inc:66
+msgid "Salt"
+msgstr ""
+
+#: src/ingredients.inc:67
+msgid "Soy sauce"
+msgstr ""
+
+#: src/ingredients.inc:68
+msgid "Strawberry"
+msgstr ""
+
+#: src/ingredients.inc:69
+msgid "Sugar"
+msgstr ""
+
+#: src/ingredients.inc:70
+msgid "Sunflower seeds"
+msgstr ""
+
+#: src/ingredients.inc:71
+msgid "Squash"
+msgstr ""
+
+#: src/ingredients.inc:72
+msgid "Tangerine"
+msgstr ""
+
+#: src/ingredients.inc:73
+msgid "Tofu"
+msgstr ""
+
+#: src/ingredients.inc:74
+msgid "Tomato"
+msgstr ""
+
+#: src/ingredients.inc:75
+msgid "Turmeric, ground"
+msgstr ""
+
+#: src/ingredients.inc:76
+msgid "Vanilla sugar"
+msgstr ""
+
+#: src/ingredients.inc:77
+msgid "Vanilla pudding"
+msgstr ""
+
+#: src/ingredients.inc:78
+msgid "Vinegar"
+msgstr ""
+
+#: src/ingredients.inc:79
+msgid "Water"
+msgstr ""
+
+#: src/ingredients.inc:80
+msgid "Wine"
+msgstr ""
+
+#: src/ingredients.inc:81
+msgid "Yeast"
+msgstr ""
+
+#: src/ingredients.inc:82
+msgid "Yoghurt"
+msgstr ""
+
+#: src/ingredients.inc:83
+msgid "Zinfandel"
+msgstr ""
+
+#: src/ingredients.inc:84
+msgid "Zuccini"
+msgstr ""
+
+#: src/no-ingredients.inc:1
+msgid "no Almond"
+msgstr ""
+
+#: src/no-ingredients.inc:2
+msgid "no Amaretti"
+msgstr ""
+
+#: src/no-ingredients.inc:3
+msgid "no Anchovies"
+msgstr ""
+
+#: src/no-ingredients.inc:4
+msgid "no Apple"
+msgstr ""
+
+#: src/no-ingredients.inc:5
+msgid "no Apricot"
+msgstr ""
+
+#: src/no-ingredients.inc:6
+msgid "no Artichoke"
+msgstr ""
+
+#: src/no-ingredients.inc:7
+msgid "no Asparagus"
+msgstr ""
+
+#: src/no-ingredients.inc:8
+msgid "no Aubergine"
+msgstr ""
+
+#: src/no-ingredients.inc:9
+msgid "no Bacon"
+msgstr ""
+
+#: src/no-ingredients.inc:10
+msgid "no Bagel"
+msgstr ""
+
+#: src/no-ingredients.inc:11
+msgid "no Baked beans"
+msgstr ""
+
+#: src/no-ingredients.inc:12
+msgid "no Baking powder"
+msgstr ""
+
+#: src/no-ingredients.inc:13
+msgid "no Banana"
+msgstr ""
+
+#: src/no-ingredients.inc:14
+msgid "no Basil"
+msgstr ""
+
+#: src/no-ingredients.inc:15
+msgid "no Basmati rice"
+msgstr ""
+
+#: src/no-ingredients.inc:16
+msgid "no Bay leaf"
+msgstr ""
+
+#: src/no-ingredients.inc:17
+msgid "no Beans"
+msgstr ""
+
+#: src/no-ingredients.inc:18
+msgid "no Beef mince"
+msgstr ""
+
+#: src/no-ingredients.inc:19
+msgid "no Beef sausage"
+msgstr ""
+
+#: src/no-ingredients.inc:20
+msgid "no Beef stock"
+msgstr ""
+
+#: src/no-ingredients.inc:21
+msgid "no Beetroot"
+msgstr ""
+
+#: src/no-ingredients.inc:22
+msgid "no Bell pepper"
+msgstr ""
+
+#: src/no-ingredients.inc:23
+msgid "no Berry"
+msgstr ""
+
+#: src/no-ingredients.inc:24
+msgid "no Biscotti"
+msgstr ""
+
+#: src/no-ingredients.inc:25
+msgid "no Bilberry"
+msgstr ""
+
+#: src/no-ingredients.inc:26
+msgid "no Breadcrumbs"
+msgstr ""
+
+#: src/no-ingredients.inc:27
+#, fuzzy
+msgid "no Butter"
+msgstr "Hasselnøttsmør"
+
+#: src/no-ingredients.inc:28
+msgid "no Carrot"
+msgstr ""
+
+#: src/no-ingredients.inc:29
+msgid "no Cheese"
+msgstr ""
+
+#: src/no-ingredients.inc:30
+msgid "no Cherries, pitted"
+msgstr ""
+
+#: src/no-ingredients.inc:31
+msgid "no Chocolate frosting"
+msgstr ""
+
+#: src/no-ingredients.inc:32
+msgid "no Cilantro"
+msgstr ""
+
+#: src/no-ingredients.inc:33
+msgid "no Cocoa powder"
+msgstr ""
+
+#: src/no-ingredients.inc:34
+msgid "no Couscous"
+msgstr ""
+
+#: src/no-ingredients.inc:35
+msgid "no Cream"
+msgstr ""
+
+#: src/no-ingredients.inc:36
+msgid "no Date"
+msgstr ""
+
+#: src/no-ingredients.inc:37
+msgid "no Egg"
+msgstr ""
+
+#: src/no-ingredients.inc:38
+msgid "no Fig"
+msgstr ""
+
+#: src/no-ingredients.inc:39
+msgid "no Fish"
+msgstr ""
+
+#: src/no-ingredients.inc:40
+msgid "no Flour"
+msgstr ""
+
+#: src/no-ingredients.inc:41
+msgid "no Garlic"
+msgstr ""
+
+#: src/no-ingredients.inc:42
+msgid "no Grapes"
+msgstr ""
+
+#: src/no-ingredients.inc:43
+msgid "no Ground beef"
+msgstr ""
+
+#: src/no-ingredients.inc:44
+msgid "no Honey"
+msgstr ""
+
+#: src/no-ingredients.inc:45
+msgid "no Horseradish"
+msgstr ""
+
+#: src/no-ingredients.inc:46
+msgid "no Lemon"
+msgstr ""
+
+#: src/no-ingredients.inc:47
+msgid "no Linseeds"
+msgstr ""
+
+#: src/no-ingredients.inc:48
+msgid "no Mayonnaise"
+msgstr ""
+
+#: src/no-ingredients.inc:49
+msgid "no Milk"
+msgstr ""
+
+#: src/no-ingredients.inc:50
+msgid "no Mustard"
+msgstr ""
+
+#: src/no-ingredients.inc:51
+msgid "no Nut"
+msgstr ""
+
+#: src/no-ingredients.inc:52
+msgid "no Oatmeal"
+msgstr ""
+
+#: src/no-ingredients.inc:53
+msgid "no Oil"
+msgstr ""
+
+#: src/no-ingredients.inc:54
+msgid "no Onion"
+msgstr ""
+
+#: src/no-ingredients.inc:55
+msgid "no Olive oil, extra-virgin"
+msgstr ""
+
+#: src/no-ingredients.inc:56
+msgid "no Orange"
+msgstr ""
+
+#: src/no-ingredients.inc:57
+msgid "no Parsley"
+msgstr ""
+
+#: src/no-ingredients.inc:58
+msgid "no Peperoni"
+msgstr ""
+
+#: src/no-ingredients.inc:59
+msgid "no Pepper"
+msgstr ""
+
+#: src/no-ingredients.inc:60
+msgid "no Peppers"
+msgstr ""
+
+#: src/no-ingredients.inc:61
+msgid "no Pizza sauce"
+msgstr ""
+
+#: src/no-ingredients.inc:62
+msgid "no Potato"
+msgstr ""
+
+#: src/no-ingredients.inc:63
+msgid "no Pumpkin seeds"
+msgstr ""
+
+#: src/no-ingredients.inc:64
+msgid "no Raisins"
+msgstr ""
+
+#: src/no-ingredients.inc:65
+msgid "no Rice"
+msgstr ""
+
+#: src/no-ingredients.inc:66
+msgid "no Salt"
+msgstr ""
+
+#: src/no-ingredients.inc:67
+msgid "no Soy sauce"
+msgstr ""
+
+#: src/no-ingredients.inc:68
+msgid "no Strawberry"
+msgstr ""
+
+#: src/no-ingredients.inc:69
+msgid "no Sugar"
+msgstr ""
+
+#: src/no-ingredients.inc:70
+msgid "no Sunflower seeds"
+msgstr ""
+
+#: src/no-ingredients.inc:71
+msgid "no Squash"
+msgstr ""
+
+#: src/no-ingredients.inc:72
+msgid "no Tangerine"
+msgstr ""
+
+#: src/no-ingredients.inc:73
+msgid "no Tofu"
+msgstr ""
+
+#: src/no-ingredients.inc:74
+msgid "no Tomato"
+msgstr ""
+
+#: src/no-ingredients.inc:75
+msgid "no Turmeric, ground"
+msgstr ""
+
+#: src/no-ingredients.inc:76
+msgid "no Vanilla sugar"
+msgstr ""
+
+#: src/no-ingredients.inc:77
+msgid "no Vanilla pudding"
+msgstr ""
+
+#: src/no-ingredients.inc:78
+msgid "no Vinegar"
+msgstr ""
+
+#: src/no-ingredients.inc:79
+msgid "no Water"
+msgstr ""
+
+#: src/no-ingredients.inc:80
+msgid "no Wine"
+msgstr ""
+
+#: src/no-ingredients.inc:81
+msgid "no Yeast"
+msgstr ""
+
+#: src/no-ingredients.inc:82
+msgid "no Yoghurt"
+msgstr ""
+
+#: src/no-ingredients.inc:83
+msgid "no Zinfandel"
+msgstr ""
+
+#: src/no-ingredients.inc:84
+msgid "no Zuccini"
+msgstr ""
+
+#~ msgid "I cook a lot, particularly Italian and Indian."
+#~ msgstr "Jeg lager ofte mat. Spesielt italiensk og indisk."
+
+#~ msgid "Adrià is originally from Barcelona, Spain."
+#~ msgstr "Adrià er opprinnelig fra Barcalona i Spania."
+
+#~ msgid "He cooks with GTK+"
+#~ msgstr "Han lager mat med GTK+"
+
+#~ msgid "Elvin lives in Istanbul."
+#~ msgstr "Elvin bor i Istanbul."
+
+#~ msgid ""
+#~ "My name is Fredrik Fyksen. I am from Norway, but live in Denmark. I like "
+#~ "food, computers and music. You can read more about me at <a href="
+#~ "\"https://www.fyksen.me/\">fyksen.me</a>."
+#~ msgstr ""
+#~ "Jeg heter Fredrik Fyksen. Jeg er fra Norge, men bor i Danmark. Jeg liker "
+#~ "mat, datamaskiner og musikk. Du kan lese mer om meg på <a href=\"https://"
+#~ "www.fyksen.me\">fyksen.me</a>."
+
+#~ msgid ""
+#~ "Matthias is a manager in the Desktop team at Red Hat. He likes to cook as "
+#~ "much as he likes to code."
+#~ msgstr ""
+#~ "Matthias er en av lederene i skrivebordsteamet hos Red Hat. Han liker å "
+#~ "lage mat like mye som han liker å programmere."
+
+#~ msgid "I love cooking. :)"
+#~ msgstr "Jeg elsker å lage mat. :)"
+
+#~ msgid "Henry's Goulash"
+#~ msgstr "Henry's gulasj"
+
+#~ msgid "Borscht"
+#~ msgstr "Borscht"
+
+#~ msgid "Carbonara"
+#~ msgstr "Carbonara"
+
+#~ msgid "Donauwellen"
+#~ msgstr "Donauwellen"
+
+#~ msgid "Gingered Carrot Soup"
+#~ msgstr "Gulrotsuppe med ingefær"
+
+#~ msgid "This is my Aunt Wendy's recipe."
+#~ msgstr "Denne oppskriften er min tante Wendy's"
+
+#~ msgid "Grumbeerekiechle"
+#~ msgstr "Grumbeerekiechle"
+
+#~ msgid "Hazelnuts Milk"
+#~ msgstr "Hasselnøttmelk"
+
+#~ msgid "Enjoy your milk [image:6]"
+#~ msgstr "Nyt melken din [image:6]"
+
+#~ msgid "Kiwi-Mandarin Salsa"
+#~ msgstr "Kiwi- og mandarinsalsa"
+
+#~ msgid "Peel and chop the onions."
+#~ msgstr "Skrell og kutt løken."
+
+#~ msgid "Mantovana Cake"
+#~ msgstr "Mantanovakake"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-20 14:15+0000\n"
+"POT-Creation-Date: 2017-06-19 23:04-0400\n"
 "PO-Revision-Date: 2017-03-22 20:50+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
@@ -18,11 +18,10 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Gtranslator 2.91.7\n"
 
-#. (itstool) path: page/title
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
-#: src/gr-window.ui:427 src/gr-about-dialog.c:911 src/gr-window.c:373
-#: src/gr-window.c:998 help/C/index.page:11
+#: src/gr-window.ui:427 src/gr-about-dialog.c:907 src/gr-window.c:381
+#: src/gr-window.c:1004
 msgid "Recipes"
 msgstr "Recepty"
 
@@ -35,7 +34,7 @@ msgstr "Kuchaři z celého GNOME, spojte se!"
 msgid "org.gnome.Recipes"
 msgstr "org.gnome.Recipes"
 
-#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:915
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:911
 msgid "GNOME loves to cook"
 msgstr "GNOME miluje vaření"
 
@@ -117,27 +116,27 @@ msgstr "Jednotlivý recept"
 msgid "An individual cuisine"
 msgstr "Jednotlivá kuchyně"
 
-#: data/org.gnome.Recipes.gschema.xml:8
+#: data/org.gnome.Recipes.gschema.xml:14
 msgid "The user ID of the current user"
 msgstr "ID aktuálního uživatele"
 
-#: data/org.gnome.Recipes.gschema.xml:9
+#: data/org.gnome.Recipes.gschema.xml:15
 msgid "The user ID of the current user."
 msgstr "Uživatelské ID aktuálního uživatele."
 
-#: data/org.gnome.Recipes.gschema.xml:15
+#: data/org.gnome.Recipes.gschema.xml:21
 msgid "The number of times cooking mode has been presented"
 msgstr "Kolikrát byl použit režim vaření/pečení"
 
-#: data/org.gnome.Recipes.gschema.xml:16
+#: data/org.gnome.Recipes.gschema.xml:22
 msgid "The number of times cooking mode has been presented."
 msgstr "Počet, kolikrát byl zapnut režim vaření/pečení."
 
-#: data/org.gnome.Recipes.gschema.xml:22
+#: data/org.gnome.Recipes.gschema.xml:28
 msgid "The timestamp of the last change to the favorites list"
 msgstr "Časové razítko poslední změny v seznamu oblíbených"
 
-#: data/org.gnome.Recipes.gschema.xml:23
+#: data/org.gnome.Recipes.gschema.xml:29
 msgid ""
 "The timestamp of the last time an item was added to or removed from the "
 "favorites list."
@@ -145,19 +144,19 @@ msgstr ""
 "Casové razítko, kdy byla naposledy přídána položka do nebo odebrána ze "
 "seznamu oblíbených receptů."
 
-#: data/org.gnome.Recipes.gschema.xml:30
+#: data/org.gnome.Recipes.gschema.xml:36
 msgid "The list of favorites"
 msgstr "Seznam oblíbených"
 
-#: data/org.gnome.Recipes.gschema.xml:31
+#: data/org.gnome.Recipes.gschema.xml:37
 msgid "The list of favorites. Each entry in the list is the ID of a recipe."
 msgstr "Seznam oblíbených. Jednotlivé položky v seznamu jsou ID receptů."
 
-#: data/org.gnome.Recipes.gschema.xml:37
+#: data/org.gnome.Recipes.gschema.xml:43
 msgid "The timestamp of the last change to the shopping list"
 msgstr "Časové razítko poslední změny v nákupním seznamu"
 
-#: data/org.gnome.Recipes.gschema.xml:38
+#: data/org.gnome.Recipes.gschema.xml:44
 msgid ""
 "The timestamp of the last time an item was added to or removed from the "
 "shopping list."
@@ -165,11 +164,11 @@ msgstr ""
 "Casové razítko, kdy byla naposledy přídána položka do nebo odebrána z "
 "nákupního seznamu."
 
-#: data/org.gnome.Recipes.gschema.xml:45
+#: data/org.gnome.Recipes.gschema.xml:51
 msgid "The shopping list"
 msgstr "Nákupní seznam"
 
-#: data/org.gnome.Recipes.gschema.xml:46
+#: data/org.gnome.Recipes.gschema.xml:52
 msgid ""
 "The shopping list. Each entry in the dictionary maps the ID of a recipe to a "
 "serving count."
@@ -177,25 +176,36 @@ msgstr ""
 "Nákupní seznam. Jednotlivé položky ve slovníku mapují ID receptů na počet "
 "porcí."
 
-#: data/org.gnome.Recipes.gschema.xml:53
+#: data/org.gnome.Recipes.gschema.xml:59
 msgid "Ingredients that were removed from the shopping list"
 msgstr "Suroviny, který byly odebrány z nákupního seznamu."
 
-#: data/org.gnome.Recipes.gschema.xml:54
+#: data/org.gnome.Recipes.gschema.xml:60
 msgid "The names of ingredients that were removed from the shopping list."
 msgstr "Názvy surovin, které byly odebrány z nákupního seznamu."
 
-#: data/org.gnome.Recipes.gschema.xml:60
+#: data/org.gnome.Recipes.gschema.xml:66
 msgid "The list of recipes to be exported"
 msgstr "Seznam receptů, které budou exportovány"
 
-#: data/org.gnome.Recipes.gschema.xml:61
+#: data/org.gnome.Recipes.gschema.xml:67
 msgid ""
 "The list of recipes to be exported. Each entry in the list is the ID of a "
 "recipe."
 msgstr ""
 "Seznam receptů, které budou exportovány. Jednotlivé položky v seznamu jsou "
 "ID receptů."
+
+#: data/org.gnome.Recipes.gschema.xml:74
+msgid "The setting for which unit temperatures should be displayed in."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:75
+msgid ""
+"The setting for which unit temperatures should be displayed in. Default is "
+"'locale', which means to use the LC_MEASUREMENT category of the current "
+"locale to decide."
+msgstr ""
 
 #: src/chef-conflict-dialog.ui:10
 msgid "Same Chef"
@@ -230,11 +240,11 @@ msgstr "Popis:"
 msgid "Picture:"
 msgstr "Obrázek:"
 
-#: src/gr-chef-dialog.ui:4 src/gr-window.c:1099
+#: src/gr-chef-dialog.ui:4 src/gr-window.c:1091
 msgid "Chef Information"
 msgstr "Informace o kuchaři"
 
-#: src/gr-chef-dialog.ui:10 src/gr-window.c:1197
+#: src/gr-chef-dialog.ui:10 src/gr-window.c:1189
 msgid "_Cancel"
 msgstr "_Zrušit"
 
@@ -331,12 +341,12 @@ msgstr "Pro ukončení procesu zmáčkněte klávesu Esc."
 msgid "Time is up!"
 msgstr "Čas doběhl!"
 
-#: src/gr-cuisine-page.ui:67 src/gr-list-page.ui:111 src/gr-search-page.ui:29
-#: src/gr-list-page.c:417
+#: src/gr-cuisine-page.ui:77 src/gr-list-page.ui:111 src/gr-search-page.ui:29
+#: src/gr-list-page.c:427
 msgid "No recipes found"
 msgstr "Nebyl nalezen žádný recept"
 
-#: src/gr-cuisine-page.ui:80
+#: src/gr-cuisine-page.ui:90
 msgid "There are no recipes for this cuisine."
 msgstr "Pro tuto kuchyni nejsou žádné recepty."
 
@@ -357,14 +367,18 @@ msgid "Contains garlic"
 msgstr "Obsahuje česnek"
 
 #: src/gr-details-page.ui:112
-msgid "Contains dairy products"
-msgstr "Obsahuje mléčné výrobky"
+msgid ""
+"Contains dairy products. Please always double-check the ingredients if you "
+"are serving a person with gluten or dairy intolerance."
+msgstr ""
 
 #: src/gr-details-page.ui:119
-msgid "Contains Gluten"
-msgstr "Obsahuje lepek"
+msgid ""
+"Contains Gluten. Please always double-check the ingredients if you are "
+"serving a person with gluten or dairy intolerance."
+msgstr ""
 
-#: src/gr-details-page.ui:126 src/gr-details-page.c:546
+#: src/gr-details-page.ui:126 src/gr-details-page.c:492
 msgid "Spicy"
 msgstr "Pikantní"
 
@@ -400,8 +414,8 @@ msgstr "Sezóna"
 msgid "Note"
 msgstr "Poznámka"
 
-#: src/gr-details-page.ui:409 src/gr-edit-page.ui:654
-#: src/gr-recipe-formatter.c:86 src/gr-recipe-printer.c:242
+#: src/gr-details-page.ui:409 src/gr-edit-page.ui:705
+#: src/gr-recipe-formatter.c:119 src/gr-recipe-printer.c:296
 msgid "Directions"
 msgstr "Pokyny"
 
@@ -409,7 +423,7 @@ msgstr "Pokyny"
 msgid "_Notes"
 msgstr "Poz_námky"
 
-#: src/gr-details-page.ui:479 src/gr-shopping-page.ui:124
+#: src/gr-details-page.ui:479 src/gr-shopping-page.ui:125
 msgid "_Edit"
 msgstr "_Upravit"
 
@@ -417,12 +431,12 @@ msgstr "_Upravit"
 msgid "_Delete"
 msgstr "_Smazat"
 
-#: src/gr-details-page.ui:499 src/gr-shopping-page.ui:142
+#: src/gr-details-page.ui:499 src/gr-shopping-page.ui:143
 #: src/recipe-export-dialog.ui:21
 msgid "_Share"
 msgstr "_Sdílet"
 
-#: src/gr-details-page.ui:511 src/gr-shopping-page.ui:153
+#: src/gr-details-page.ui:511 src/gr-shopping-page.ui:154
 msgid "_Print"
 msgstr "_Tisk"
 
@@ -430,185 +444,215 @@ msgstr "_Tisk"
 msgid "Add to favorites"
 msgstr "Přidat do oblíbených"
 
-#: src/gr-edit-page.ui:112
-msgid "Add an image"
-msgstr "Přidat obrázek"
-
-#: src/gr-edit-page.ui:138 src/gr-edit-page.ui:164
-msgid "Rotate image"
-msgstr "Otočit obrázek"
-
-#: src/gr-edit-page.ui:190
-msgid "Default image"
-msgstr "Výchozí obrázek"
-
-#: src/gr-edit-page.ui:216
-msgid "Remove image"
-msgstr "Odebrat obrázek"
-
-#: src/gr-edit-page.ui:259
-msgid "Details"
-msgstr "Podrobnosti"
-
-#: src/gr-edit-page.ui:276
-msgid "_Name Your Recipe"
-msgstr "_Název vašeho receptu"
-
-#: src/gr-edit-page.ui:307
-msgid "Ser_ves"
-msgstr "_Porce"
-
-#: src/gr-edit-page.ui:337
-msgid "_Preparation Time"
-msgstr "Doba _přípravy"
-
-#: src/gr-edit-page.ui:358 src/gr-edit-page.ui:396
-msgid "Less than 15 minutes"
-msgstr "méně než 15 minut"
-
-#: src/gr-edit-page.ui:359 src/gr-edit-page.ui:397
-msgid "15 to 30 minutes"
-msgstr "15 až 30 minut"
-
-#: src/gr-edit-page.ui:360 src/gr-edit-page.ui:398
-msgid "30 to 45 minutes"
-msgstr "30 až 45 minut"
-
-#: src/gr-edit-page.ui:361 src/gr-edit-page.ui:399
-msgid "45 minutes to an hour"
-msgstr "45 minut až hodina"
-
-#: src/gr-edit-page.ui:362 src/gr-edit-page.ui:400
-msgid "More than an hour"
-msgstr "více než hodina"
-
-#: src/gr-edit-page.ui:375
-msgid "C_ooking Time"
-msgstr "D_oba vaření/pečení"
-
-#: src/gr-edit-page.ui:413
-msgid "_Cuisine"
-msgstr "_Kuchyně"
-
-#: src/gr-edit-page.ui:444
-msgid "_Meal"
-msgstr "_Určení"
-
-#: src/gr-edit-page.ui:475
-msgid "S_eason"
-msgstr "Sezóna"
-
-#: src/gr-edit-page.ui:506
-msgid "S_piciness"
-msgstr "_Ostrost"
-
-#: src/gr-edit-page.ui:526 src/gr-spice-row.c:127
-msgid "Mild"
-msgstr "jemné"
-
-#: src/gr-edit-page.ui:527
-msgid "Somewhat spicy"
-msgstr "mírně pikantní"
-
-#: src/gr-edit-page.ui:528
-msgid "Hot"
-msgstr "pikantní"
-
-#: src/gr-edit-page.ui:529 src/gr-details-page.c:541 src/gr-spice-row.c:142
-msgid "Very spicy"
-msgstr "velmi pikantní"
-
-#: src/gr-edit-page.ui:540
-msgid "Description"
-msgstr "Popis"
-
-#: src/gr-edit-page.ui:599 src/gr-diet-row.c:102
-msgid "Gluten free"
-msgstr "Bez lepku"
-
-#: src/gr-edit-page.ui:606 src/gr-diet-row.c:105
-msgid "Nut free"
-msgstr "Bez ořechů"
-
-#: src/gr-edit-page.ui:613 src/gr-diet-row.c:108
-msgid "Vegan"
-msgstr "Veganské"
-
-#: src/gr-edit-page.ui:620 src/gr-diet-row.c:111
-msgid "Vegetarian"
-msgstr "Vegetariánské"
-
-#: src/gr-edit-page.ui:627 src/gr-diet-row.c:114
-msgid "Milk free"
-msgstr "Bez mléka"
-
-#: src/gr-edit-page.ui:715 src/menus.ui:66
+#: src/gr-edit-page.ui:42 src/gr-edit-page.ui:766 src/menus.ui:66
 msgid "Edit"
 msgstr "Upravit"
 
-#: src/gr-edit-page.ui:722
+#: src/gr-edit-page.ui:119
+msgid "Add an image"
+msgstr "Přidat obrázek"
+
+#: src/gr-edit-page.ui:145 src/gr-edit-page.ui:171
+msgid "Rotate image"
+msgstr "Otočit obrázek"
+
+#: src/gr-edit-page.ui:197
+msgid "Default image"
+msgstr "Výchozí obrázek"
+
+#: src/gr-edit-page.ui:223
+msgid "Remove image"
+msgstr "Odebrat obrázek"
+
+#: src/gr-edit-page.ui:256
+msgid "Add List"
+msgstr "Přidat seznam"
+
+#: src/gr-edit-page.ui:274
+msgid "Details"
+msgstr "Podrobnosti"
+
+#: src/gr-edit-page.ui:291
+msgid "_Name Your Recipe"
+msgstr "_Název vašeho receptu"
+
+#: src/gr-edit-page.ui:323
+msgid "Ser_ves"
+msgstr "_Porce"
+
+#: src/gr-edit-page.ui:353
+msgid "_Preparation Time"
+msgstr "Doba _přípravy"
+
+#: src/gr-edit-page.ui:379 src/gr-edit-page.ui:427
+msgid "Less than 15 minutes"
+msgstr "méně než 15 minut"
+
+#: src/gr-edit-page.ui:380 src/gr-edit-page.ui:428
+msgid "15 to 30 minutes"
+msgstr "15 až 30 minut"
+
+#: src/gr-edit-page.ui:381 src/gr-edit-page.ui:429
+msgid "30 to 45 minutes"
+msgstr "30 až 45 minut"
+
+#: src/gr-edit-page.ui:382 src/gr-edit-page.ui:430
+msgid "45 minutes to an hour"
+msgstr "45 minut až hodina"
+
+#: src/gr-edit-page.ui:383 src/gr-edit-page.ui:431
+msgid "More than an hour"
+msgstr "více než hodina"
+
+#: src/gr-edit-page.ui:401
+msgid "C_ooking Time"
+msgstr "D_oba vaření/pečení"
+
+#: src/gr-edit-page.ui:449
+msgid "_Cuisine"
+msgstr "_Kuchyně"
+
+#: src/gr-edit-page.ui:485
+msgid "_Meal"
+msgstr "_Určení"
+
+#: src/gr-edit-page.ui:521
+msgid "S_eason"
+msgstr "Sezóna"
+
+#: src/gr-edit-page.ui:557
+msgid "S_piciness"
+msgstr "_Ostrost"
+
+#: src/gr-edit-page.ui:577 src/gr-spice-row.c:127
+msgid "Mild"
+msgstr "jemné"
+
+#: src/gr-edit-page.ui:578
+msgid "Somewhat spicy"
+msgstr "mírně pikantní"
+
+#: src/gr-edit-page.ui:579
+msgid "Hot"
+msgstr "pikantní"
+
+#: src/gr-edit-page.ui:580 src/gr-details-page.c:487 src/gr-spice-row.c:142
+msgid "Very spicy"
+msgstr "velmi pikantní"
+
+#: src/gr-edit-page.ui:591
+msgid "Description"
+msgstr "Popis"
+
+#: src/gr-edit-page.ui:650 src/gr-diet-row.c:102
+#, fuzzy
+msgid "Gluten-free"
+msgstr "Bez lepku"
+
+#: src/gr-edit-page.ui:657 src/gr-diet-row.c:105
+#, fuzzy
+msgid "Nut-free"
+msgstr "Bez ořechů"
+
+#: src/gr-edit-page.ui:664 src/gr-diet-row.c:108
+msgid "Vegan"
+msgstr "Veganské"
+
+#: src/gr-edit-page.ui:671 src/gr-diet-row.c:111
+msgid "Vegetarian"
+msgstr "Vegetariánské"
+
+#: src/gr-edit-page.ui:678 src/gr-diet-row.c:114
+#, fuzzy
+msgid "Milk-free"
+msgstr "Bez mléka"
+
+#: src/gr-edit-page.ui:773
 msgid "Preview"
 msgstr "Náhled"
 
-#: src/gr-edit-page.ui:742
+#: src/gr-edit-page.ui:793
 msgid "Add Step"
 msgstr "Přidat krok"
 
-#: src/gr-edit-page.ui:750
+#: src/gr-edit-page.ui:801
 msgid "Add Image"
 msgstr "Přidat obrázek"
 
-#: src/gr-edit-page.ui:758
+#: src/gr-edit-page.ui:809
 msgid "Add Timer"
 msgstr "Přidat čas"
 
-#: src/gr-edit-page.ui:766
+#: src/gr-edit-page.ui:817
 msgid "Add Temperature"
 msgstr "Přidat teplotu"
 
-#: src/gr-edit-page.ui:830 src/gr-edit-page.ui:851 src/gr-edit-page.c:434
-msgid "Ingredient"
-msgstr "Surovina"
-
-#: src/gr-edit-page.ui:879 src/gr-edit-page.ui:971 src/gr-query-editor.ui:283
-msgid "Search…"
-msgstr "Hledat…"
-
-#: src/gr-edit-page.ui:909 src/gr-edit-page.ui:930 src/gr-edit-page.c:435
-msgid "Amount"
-msgstr "Množství"
-
-#: src/gr-edit-page.ui:1002 src/gr-edit-page.c:438
-msgid "Add"
-msgstr "Přidat"
-
-#: src/gr-edit-page.ui:1053
+#: src/gr-edit-page.ui:913
 msgid "Title…"
 msgstr "Název…"
 
-#: src/gr-edit-page.ui:1128
+#: src/gr-edit-page.ui:921 src/gr-edit-page.ui:992
+msgid "Add"
+msgstr "Přidat"
+
+#: src/gr-edit-page.ui:1011
 msgid "Syntax"
 msgstr "Syntax"
 
-#: src/gr-edit-page.ui:1143
+#: src/gr-edit-page.ui:1026
 msgid "Use paragraphs to break directions into steps (2 newlines)."
 msgstr "K rozdělení instrukcí na kroky použijte odstavce (2 odřádkování)"
 
-#: src/gr-edit-page.ui:1156
+#: src/gr-edit-page.ui:1039
 msgid "You can provide an image or a time counter in each step."
 msgstr "U každého kroku můžete uvést obrázek a čas."
 
-#: src/gr-edit-page.ui:1168
+#: src/gr-edit-page.ui:1051
 msgid "Timer"
 msgstr "Čas"
 
-#: src/gr-edit-page.ui:1190
+#: src/gr-edit-page.ui:1073
 msgid "Image"
 msgstr "Obrázek"
 
-#: src/gr-edit-page.ui:1212
+#: src/gr-edit-page.ui:1095
 msgid "Temperature"
 msgstr "Teplota"
+
+#: src/gr-ingredients-viewer-row.ui:52
+msgid "Amount"
+msgstr "Množství"
+
+#: src/gr-ingredients-viewer-row.ui:92
+msgid "Ingredient"
+msgstr "Surovina"
+
+#: src/gr-ingredients-viewer-row.ui:169
+msgid "Use a number, followed by an (optional) unit."
+msgstr ""
+
+#: src/gr-ingredients-viewer-row.ui:180
+msgid "Examples: 1 kg, 2 1/2 pounds, 250 ml, 6"
+msgstr ""
+
+#: src/gr-ingredients-viewer.ui:13 src/gr-query-editor.ui:235
+#: src/gr-edit-page.c:1324 src/gr-recipe-formatter.c:100
+#: src/gr-recipe-printer.c:247
+msgid "Ingredients"
+msgstr "Suroviny"
+
+#: src/gr-ingredients-viewer.ui:33
+msgid "Name of the List"
+msgstr "Název seznamu"
+
+#: src/gr-ingredients-viewer.ui:43 src/gr-recipe-small-tile.ui:125
+msgid "Remove"
+msgstr "Odebrat"
+
+#: src/gr-ingredients-viewer.ui:86
+#, fuzzy
+msgid "Add more ingredients"
+msgstr "Přidat surovinu"
 
 #: src/gr-list-page.ui:124
 msgid "There are no recipes here yet."
@@ -637,20 +681,15 @@ msgstr "Dietní omezení"
 msgid "No restrictions"
 msgstr "Bez omezení"
 
-#: src/gr-query-editor.ui:235 src/gr-edit-page.c:1713
-#: src/gr-recipe-formatter.c:67 src/gr-recipe-printer.c:191
-msgid "Ingredients"
-msgstr "Suroviny"
-
 #. FIXME: repopulate
 #: src/gr-query-editor.ui:255 src/gr-query-editor.c:337
 #: src/gr-query-editor.c:766
 msgid "Anything"
 msgstr "Cokoliv"
 
-#: src/gr-recipe-small-tile.ui:125 src/gr-edit-page.c:1743
-msgid "Remove"
-msgstr "Odebrat"
+#: src/gr-query-editor.ui:283
+msgid "Search…"
+msgstr "Hledat…"
 
 #: src/gr-recipes-page.ui:8
 msgid "Recipes page"
@@ -680,15 +719,15 @@ msgstr "Zkusit jiné hledání"
 msgid "Buy ingredients"
 msgstr "Nákup surovin"
 
-#: src/gr-shopping-page.ui:91
+#: src/gr-shopping-page.ui:93
 msgid "No shopping necessary!"
 msgstr "Není potřeba nic nakupovat!"
 
-#: src/gr-shopping-page.ui:131
+#: src/gr-shopping-page.ui:132
 msgid "_Clear List"
 msgstr "_Vymazat seznam"
 
-#: src/gr-shopping-page.ui:187
+#: src/gr-shopping-page.ui:188
 msgid "Nothing to add"
 msgstr "Nic k přidání"
 
@@ -752,7 +791,7 @@ msgstr "Zpět"
 msgid "Send Update"
 msgstr "Poslat aktualizaci"
 
-#: src/gr-window.ui:466 src/gr-window.c:379
+#: src/gr-window.ui:466 src/gr-window.c:387
 msgid "Cuisines"
 msgstr "Kuchyně"
 
@@ -768,7 +807,7 @@ msgstr "_Exportovat vše"
 msgid "_Chef Information"
 msgstr "In_formace o kuchaři"
 
-#: src/menus.ui:22 src/menus.ui:89
+#: src/menus.ui:22 src/menus.ui:93
 msgid "_What’s New"
 msgstr "_Co je nového"
 
@@ -780,7 +819,7 @@ msgstr "Nápo_věda"
 msgid "_About"
 msgstr "O _aplikaci"
 
-#: src/menus.ui:34 src/menus.ui:93
+#: src/menus.ui:34 src/menus.ui:97
 msgid "_Report Issue"
 msgstr "Nahlásit p_roblém"
 
@@ -812,9 +851,14 @@ msgstr "Hledat…"
 msgid "Help"
 msgstr "Nápověda"
 
-#: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:156
-#: src/gr-image-viewer.c:616 src/gr-recipe-exporter.c:169
-#: src/gr-shopping-page.c:731 src/gr-window.c:1133
+#: src/menus.ui:89
+#, fuzzy
+msgid "Recipes _Help"
+msgstr "Stránka receptů"
+
+#: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:163
+#: src/gr-image-viewer.c:627 src/gr-recipe-exporter.c:172
+#: src/gr-shopping-page.c:740 src/gr-window.c:1125
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -922,15 +966,15 @@ msgstr "Systémové knihovny"
 msgid "System"
 msgstr "Systém"
 
-#: src/gr-about-dialog.c:917
+#: src/gr-about-dialog.c:914
 msgid "translator-credits"
 msgstr "Marek Černocký <marek@manet.cz>"
 
-#: src/gr-about-dialog.c:920
+#: src/gr-about-dialog.c:917
 msgid "Learn more about Recipes"
 msgstr "Dozvědět se více o Receptech"
 
-#: src/gr-about-dialog.c:927
+#: src/gr-about-dialog.c:924
 msgid "Recipes by"
 msgstr "Recepty od"
 
@@ -947,58 +991,67 @@ msgstr ""
 "Umožňuje vložení vašich osobních informací do receptů, které sdílíte se "
 "svými přáteli."
 
-#: src/gr-app.c:393
+#: src/gr-app.c:202
+#, c-format
+msgid "Supported categories: %s\n"
+msgstr ""
+
+#: src/gr-app.c:434
 msgid "Print the version and exit"
 msgstr "Vypsat verzi a skončit"
 
-#: src/gr-app.c:397
+#: src/gr-app.c:438
 msgid "Turn on verbose logging"
 msgstr "Přepnout podrobné záznamy"
 
-#: src/gr-chef-dialog.c:152 src/gr-image-viewer.c:612
+#: src/gr-app.c:442
+msgid "Show a category"
+msgstr ""
+
+#: src/gr-chef-dialog.c:159 src/gr-image-viewer.c:623
 msgid "Select an Image"
 msgstr "Výběr obrázku"
 
-#: src/gr-chef-dialog.c:155 src/gr-image-viewer.c:615 src/gr-window.c:1132
+#: src/gr-chef-dialog.c:162 src/gr-image-viewer.c:626 src/gr-window.c:1124
 msgid "Open"
 msgstr "Otevřít"
 
-#: src/gr-chef-dialog.c:160 src/gr-image-viewer.c:620
+#: src/gr-chef-dialog.c:167 src/gr-image-viewer.c:631
 msgid "Image files"
 msgstr "Soubory s obrázky"
 
-#: src/gr-chef-dialog.c:409
+#: src/gr-chef-dialog.c:423
 msgid "New Chef"
 msgstr "Nový kuchař"
 
-#: src/gr-cooking-page.c:248
+#: src/gr-cooking-page.c:249
 msgid "Cooking"
 msgstr "Vaření"
 
-#: src/gr-cooking-view.c:155
+#: src/gr-cooking-view.c:157
 #, c-format
 msgid "Step %d/%d"
 msgstr "Krok %d/%d"
 
-#: src/gr-cooking-view.c:161
+#: src/gr-cooking-view.c:163
 #, c-format
 msgid "Step %d"
 msgstr "Krok %d"
 
-#: src/gr-cooking-view.c:268
+#: src/gr-cooking-view.c:273
 msgid "GNOME Recipes"
 msgstr "Recepty GNOME"
 
-#: src/gr-cooking-view.c:373
+#: src/gr-cooking-view.c:393
 msgid "A cooking timer has expired"
 msgstr "Odpočet času vaření/pečení doběhl"
 
-#: src/gr-cooking-view.c:391 src/gr-cooking-view.c:407
+#: src/gr-cooking-view.c:411 src/gr-cooking-view.c:427
 #, c-format
 msgid "Timer for “%s” has expired."
 msgstr "Odpočet času pro „%s“ doběhl."
 
-#: src/gr-cooking-view.c:405
+#: src/gr-cooking-view.c:425
 msgid "Timer is up!"
 msgstr "Odpočet doběhl!"
 
@@ -1190,9 +1243,10 @@ msgstr ""
 "ořechy, med, ovoce a listové těsto."
 
 #: src/gr-cuisine.c:108
+#, fuzzy
 msgid ""
-"The mediterranean cuisine has a lot to offer, and is legendary for being "
-"very healthy too. Expect to see olives, yoghurt and garlic."
+"Mediterranean cuisine has a lot to offer, and is legendary for being very "
+"healthy too. Expect to see olives, yoghurt and garlic."
 msgstr ""
 "Středomořská kuchyně toho má hodně co nabídnout a je pověstná tím, že je "
 "velmi zdravá. Těšte se na olivy, jogurt a česnek."
@@ -1244,17 +1298,17 @@ msgstr ""
 msgid "Could not find this recipe."
 msgstr "Nelze najít tento recept."
 
-#: src/gr-details-page.c:585
+#: src/gr-details-page.c:531
 #, c-format
 msgid "Timer: %s"
 msgstr "Čas: %s"
 
-#: src/gr-details-page.c:592
+#: src/gr-details-page.c:538
 #, c-format
 msgid "Image %d"
 msgstr "Obrázek %d"
 
-#: src/gr-details-page.c:745 src/gr-edit-page.c:2035
+#: src/gr-details-page.c:693 src/gr-edit-page.c:1409
 #, c-format
 msgid "Recipe by %s"
 msgstr "Recepty od kuchaře %s"
@@ -1380,158 +1434,153 @@ msgstr ""
 "<a href=\"https://cs.wikipedia.org/wiki/Intolerance_lakt%C3%B3zy\">Dozvědět "
 "se více…</a>"
 
-#: src/gr-edit-page.c:485
-msgid "Apply"
-msgstr "Použít"
-
-#: src/gr-edit-page.c:1101
+#: src/gr-edit-page.c:595
 msgid "hour"
 msgstr "hodina"
 
-#: src/gr-edit-page.c:1102
+#: src/gr-edit-page.c:596
 msgid "hours"
 msgstr "hodiny"
 
-#: src/gr-edit-page.c:1103
+#: src/gr-edit-page.c:597
 msgctxt "hour abbreviation"
 msgid "h"
 msgstr "h"
 
-#: src/gr-edit-page.c:1107
+#: src/gr-edit-page.c:601
 msgid "minute"
 msgstr "minuta"
 
-#: src/gr-edit-page.c:1108
+#: src/gr-edit-page.c:602
 msgid "minutes"
 msgstr "minut"
 
-#: src/gr-edit-page.c:1109
+#: src/gr-edit-page.c:603
 msgctxt "minute abbreviation"
 msgid "min"
 msgstr "min"
 
-#: src/gr-edit-page.c:1110
+#: src/gr-edit-page.c:604
 msgctxt "minute abbreviation"
 msgid "m"
 msgstr "m"
 
-#: src/gr-edit-page.c:1114
+#: src/gr-edit-page.c:608
 msgid "second"
 msgstr "sekunda"
 
-#: src/gr-edit-page.c:1115
+#: src/gr-edit-page.c:609
 msgid "seconds"
 msgstr "sekund"
 
-#: src/gr-edit-page.c:1116
+#: src/gr-edit-page.c:610
 msgctxt "second abbreviation"
 msgid "sec"
 msgstr "sec"
 
-#: src/gr-edit-page.c:1117
+#: src/gr-edit-page.c:611
 msgctxt "second abbreviation"
 msgid "s"
 msgstr "s"
 
-#: src/gr-edit-page.c:1293
+#: src/gr-edit-page.c:896
 msgid "Recipe Author"
 msgstr "Autor receptu"
 
-#: src/gr-edit-page.c:1728
-msgid "Name of the List"
-msgstr "Název seznamu"
-
-#: src/gr-edit-page.c:1762
-msgid "No ingredients added yet"
-msgstr "Zatím nebyla přidána žádná surovina"
-
-#: src/gr-edit-page.c:1781
-msgid "Add Ingredient"
-msgstr "Přidat surovinu"
-
-#: src/gr-edit-page.c:1888
-msgid "Add List"
-msgstr "Přidat seznam"
-
-#: src/gr-edit-page.c:1916
+#: src/gr-edit-page.c:1360
 msgid "Name Your Recipe"
 msgstr "Název vašeho receptu"
 
-#: src/gr-edit-page.c:2092
+#: src/gr-edit-page.c:1465
 msgid "Name"
 msgstr "Název"
 
-#: src/gr-edit-page.c:2204 src/gr-recipe-store.c:1007
+#: src/gr-edit-page.c:1537 src/gr-edit-page.c:1592 src/gr-recipe-store.c:1280
 #, c-format
 msgid "You need to provide a name for the recipe"
 msgstr "Musíte dát receptu název"
 
-#: src/gr-list-page.c:235
+#: src/gr-edit-page.c:1550
+#, fuzzy, c-format
+msgid "Some ingredients need correction"
+msgstr "Zatím nebyla přidána žádná surovina"
+
+#: src/gr-ingredients-viewer-row.c:153
+#, fuzzy
+msgid "Amount…"
+msgstr "Množství"
+
+#: src/gr-ingredients-viewer-row.c:166
+#, fuzzy
+msgid "Ingredient…"
+msgstr "Surovina"
+
+#: src/gr-list-page.c:245
 msgid "Gluten-free Recipes"
 msgstr "Bezlepkové recepty"
 
-#: src/gr-list-page.c:237
+#: src/gr-list-page.c:247
 msgid "Nut-free Recipes"
 msgstr "Bezořechové recepty"
 
-#: src/gr-list-page.c:239
+#: src/gr-list-page.c:249
 msgid "Vegan Recipes"
 msgstr "Veganské recepty"
 
-#: src/gr-list-page.c:241
+#: src/gr-list-page.c:251
 msgid "Vegetarian Recipes"
 msgstr "Vegetariánské recepty"
 
-#: src/gr-list-page.c:243
+#: src/gr-list-page.c:253
 msgid "Milk-free Recipes"
 msgstr "Bezmléčné recepty"
 
-#: src/gr-list-page.c:245
+#: src/gr-list-page.c:255
 msgid "Other Dietary Restrictions"
 msgstr "Jiná dietní omezení"
 
-#: src/gr-list-page.c:286
+#: src/gr-list-page.c:296
 #, c-format
 msgid "No %s found"
 msgstr "Nebyla nalezena kategorie %s"
 
-#: src/gr-list-page.c:289 src/gr-list-page.c:348 src/gr-list-page.c:379
+#: src/gr-list-page.c:299 src/gr-list-page.c:358 src/gr-list-page.c:389
 msgid "You could add one using the “New Recipe” button."
 msgstr "Můžete jej přidat pomocí tlačítka „Nový recept“."
 
-#: src/gr-list-page.c:337
+#: src/gr-list-page.c:347
 #, c-format
 msgid "Recipes by %s"
 msgstr "Recepty od kuchaře %s"
 
-#: src/gr-list-page.c:344
+#: src/gr-list-page.c:354
 #, c-format
 msgid "No recipes by chef %s found"
 msgstr "Nebyly nalezeny žádné recepty od kuchaře %s"
 
-#: src/gr-list-page.c:350 src/gr-list-page.c:418 src/gr-list-page.c:443
-#: src/gr-list-page.c:476
+#: src/gr-list-page.c:360 src/gr-list-page.c:428 src/gr-list-page.c:453
+#: src/gr-list-page.c:486
 msgid "Sorry about this."
 msgstr "Omlouváme se za to."
 
-#: src/gr-list-page.c:376
+#: src/gr-list-page.c:386
 #, c-format
 msgid "No recipes for %s found"
 msgstr "Nebyly nalezeny žádné recepty pro období %s"
 
-#: src/gr-list-page.c:398
+#: src/gr-list-page.c:408
 msgid "No favorite recipes found"
 msgstr "Nebyly nalezeny žádné oblíbené recepty"
 
-#: src/gr-list-page.c:399
+#: src/gr-list-page.c:409
 msgid "Use the ♥ button to mark recipes as favorites."
 msgstr "Použijte tlačítko ♥ k označení jako oblíbený recept."
 
-#: src/gr-list-page.c:442
+#: src/gr-list-page.c:452
 msgid "No new recipes"
 msgstr "Žádný nový recept"
 
-#: src/gr-list-page.c:475
+#: src/gr-list-page.c:485
 msgid "No imported recipes found"
 msgstr "Nebyly nalezeny žádné importované recepty"
 
@@ -1585,37 +1634,37 @@ msgstr "Nelze zpracovat %s jako zlomek"
 msgid "Could not parse %s as a integer"
 msgstr "Nelze zpracovat %s jako celé číslo"
 
-#: src/gr-number.c:238
+#: src/gr-number.c:239
 #, c-format
 msgid "Could not parse %s as a float"
 msgstr "Nelze zpracovat %s jako desetinné číslo"
 
-#: src/gr-number.c:286
+#: src/gr-number.c:290
 #, c-format
 msgid "Could not parse %s as a number"
 msgstr "Nelze zpracovat %s jako číslo"
 
-#: src/gr-recipe-exporter.c:165
+#: src/gr-recipe-exporter.c:168
 msgid "Save the exported recipe"
 msgstr "Uložit exportované recepty"
 
-#: src/gr-recipe-exporter.c:168 src/gr-shopping-page.c:730
+#: src/gr-recipe-exporter.c:171 src/gr-shopping-page.c:739
 msgid "Save"
 msgstr "Uložit"
 
-#: src/gr-recipe-exporter.c:199
+#: src/gr-recipe-exporter.c:206
 msgid "Recipe contribution"
 msgstr "Příspěvek k receptu"
 
-#: src/gr-recipe-exporter.c:200
+#: src/gr-recipe-exporter.c:207
 msgid "Please accept my attached recipe contribution."
 msgstr "Přijměte prosím můj přiložený příspěvek k receptu"
 
-#: src/gr-recipe-exporter.c:210
+#: src/gr-recipe-exporter.c:217
 msgid "Try this recipe"
 msgstr "Zkus tento recept"
 
-#: src/gr-recipe-exporter.c:211
+#: src/gr-recipe-exporter.c:218
 msgid ""
 "Hi,\n"
 "\n"
@@ -1625,11 +1674,11 @@ msgstr ""
 "\n"
 "měl bys vyzkoušet tento recept."
 
-#: src/gr-recipe-exporter.c:214
+#: src/gr-recipe-exporter.c:221
 msgid "Try these recipes"
 msgstr "Zkus tyto recepty"
 
-#: src/gr-recipe-exporter.c:215
+#: src/gr-recipe-exporter.c:222
 msgid ""
 "Hi,\n"
 "\n"
@@ -1639,16 +1688,16 @@ msgstr ""
 "\n"
 "měl bys vyzkoušet tyto recepty."
 
-#: src/gr-recipe-exporter.c:218
+#: src/gr-recipe-exporter.c:225
 msgid "(The attached file can be imported into GNOME Recipes.)"
 msgstr "(Přiložený soubor se dá naimportovat do Receptů GNOME.)"
 
-#: src/gr-recipe-exporter.c:410
+#: src/gr-recipe-exporter.c:432
 #, c-format
 msgid "This build does not support exporting"
 msgstr "Toto sestavení nepodporuje exportování"
 
-#: src/gr-recipe-exporter.c:492
+#: src/gr-recipe-exporter.c:515
 #, c-format
 msgid ""
 "Error while exporting:\n"
@@ -1657,7 +1706,7 @@ msgstr ""
 "Chyba při exportu:\n"
 "%s"
 
-#: src/gr-recipe-exporter.c:590
+#: src/gr-recipe-exporter.c:612
 #, c-format
 msgid "%d recipe selected for sharing"
 msgid_plural "%d recipes selected for sharing"
@@ -1665,7 +1714,7 @@ msgstr[0] "%d recept vybrán ke sdílení"
 msgstr[1] "%d recepty vybrány ke sdílení"
 msgstr[2] "%d receptů vybráno ke sdílení"
 
-#: src/gr-recipe-exporter.c:622
+#: src/gr-recipe-exporter.c:644
 msgid ""
 "Some of the selected recipes are included\n"
 "with GNOME Recipes. You should only contribute\n"
@@ -1675,23 +1724,23 @@ msgstr ""
 "součástí Receptů GNOME. Přispívat můžete\n"
 "jen svými vlastními recepty."
 
-#: src/gr-recipe-formatter.c:53 src/gr-recipe-printer.c:157
+#: src/gr-recipe-formatter.c:86 src/gr-recipe-printer.c:162
 msgid "Author:"
 msgstr "Autor:"
 
-#: src/gr-recipe-formatter.c:54 src/gr-recipe-printer.c:158
+#: src/gr-recipe-formatter.c:87 src/gr-recipe-printer.c:163
 msgid "Preparation:"
 msgstr "Příprava:"
 
-#: src/gr-recipe-formatter.c:55 src/gr-recipe-printer.c:159
+#: src/gr-recipe-formatter.c:88 src/gr-recipe-printer.c:164
 msgid "Cooking:"
 msgstr "Vaření:"
 
-#: src/gr-recipe-formatter.c:56 src/gr-recipe-printer.c:160
+#: src/gr-recipe-formatter.c:89 src/gr-recipe-printer.c:165
 msgid "Serves:"
 msgstr "Porce:"
 
-#: src/gr-recipe-importer.c:235
+#: src/gr-recipe-importer.c:236
 #, c-format
 msgid ""
 "Error while importing recipe:\n"
@@ -1700,69 +1749,94 @@ msgstr ""
 "Chyba při importu receptu:\n"
 "%s"
 
-#: src/gr-recipe-importer.c:478
+#: src/gr-recipe-importer.c:482
 #, c-format
 msgid "Failed to load recipe: Couldn’t parse Created key"
 msgstr "Selhalo načtení receptu: Nelze zpracovat klíč Created (vytvořeno)"
 
-#: src/gr-recipe-importer.c:489
+#: src/gr-recipe-importer.c:493
 #, c-format
 msgid "Failed to load recipe: Couldn’t parse Modified key"
 msgstr "Selhalo načtení receptu: Nelze zpracovat klíč Modified (změněno)"
 
-#: src/gr-recipe-importer.c:791
+#: src/gr-recipe-importer.c:773
+#, fuzzy, c-format
+msgid "No chef information found"
+msgstr "Informace o kuchaři"
+
+#: src/gr-recipe-importer.c:803
 #, c-format
 msgid "This build does not support importing"
 msgstr "Toto sestavení nepodporuje importování"
 
-#: src/gr-recipe-printer.c:412 src/gr-shopping-list-printer.c:297
+#: src/gr-recipe-printer.c:170
+#, fuzzy
+msgid "Cuisine:"
+msgstr "Kuchyně"
+
+#: src/gr-recipe-printer.c:174
+#, fuzzy
+msgid "Meal:"
+msgstr "Jídlo"
+
+#: src/gr-recipe-printer.c:178
+#, fuzzy
+msgid "Season:"
+msgstr "Sezóna"
+
+#: src/gr-recipe-printer.c:223
+#, fuzzy
+msgid "Notes"
+msgstr "Poz_námky"
+
+#: src/gr-recipe-printer.c:466 src/gr-shopping-list-printer.c:297
 msgid "Error printing file:"
 msgstr "Chyba při tisku souboru:"
 
-#: src/gr-recipe-printer.c:413 src/gr-shopping-list-printer.c:298
+#: src/gr-recipe-printer.c:467 src/gr-shopping-list-printer.c:298
 msgid "No details"
 msgstr "Bez podrobností"
 
-#: src/gr-recipe-small-tile.c:100 src/gr-recipe-tile.c:81
+#: src/gr-recipe-small-tile.c:105 src/gr-recipe-tile.c:86
 #, c-format
 msgid "by %s"
 msgstr "od kuchaře %s"
 
-#: src/gr-recipe-small-tile.c:100 src/gr-recipe-tile.c:81
+#: src/gr-recipe-small-tile.c:105 src/gr-recipe-tile.c:86
 msgid "Anonymous"
 msgstr "anonym"
 
-#: src/gr-recipes-page.c:223 src/gr-window.c:1354
+#: src/gr-recipes-page.c:221 src/gr-window.c:1289
 msgid "My Recipes"
 msgstr "Moje recepty"
 
-#: src/gr-recipes-page.c:224
+#: src/gr-recipes-page.c:222
 msgid "Favorites"
 msgstr "Oblíbené"
 
-#: src/gr-recipes-page.c:225 src/gr-window.c:1268
+#: src/gr-recipes-page.c:223 src/gr-window.c:1237
 msgid "All Recipes"
 msgstr "Všechny recepty"
 
-#: src/gr-recipes-page.c:226 src/gr-window.c:1284
+#: src/gr-recipes-page.c:224 src/gr-window.c:1246
 msgid "New Recipes"
 msgstr "Nové recepty"
 
-#: src/gr-recipes-page.c:274
+#: src/gr-recipes-page.c:272
 msgid "Last edited:"
 msgstr "Naposledy upraveno:"
 
-#: src/gr-recipes-page.c:373
+#: src/gr-recipes-page.c:371
 #, c-format
 msgid "Buy ingredients: <b>%s</b>"
 msgstr "Nakoupit suroviny: <b>%s</b>"
 
-#: src/gr-recipes-page.c:375
+#: src/gr-recipes-page.c:373
 #, c-format
 msgid "Buy ingredients: <b>%s and %s</b>"
 msgstr "Nakoupit suroviny: <b>%s a %s</b>"
 
-#: src/gr-recipes-page.c:377
+#: src/gr-recipes-page.c:375
 #, c-format
 msgid "Buy ingredients: <b>%s, %s and %d other</b>"
 msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
@@ -1770,41 +1844,41 @@ msgstr[0] "Nakoupit suroviny: <b>%s, %s a %d další</b>"
 msgstr[1] "Nakoupit suroviny: <b>%s, %s a %d další</b>"
 msgstr[2] "Nakoupit suroviny: <b>%s, %s a %d dalších</b>"
 
-#: src/gr-recipe-store.c:1012
-#, c-format
+#: src/gr-recipe-store.c:1285
+#, fuzzy, c-format
 msgid ""
-"A recipe with this name and author already exists.\n"
+"A recipe with this name and author (%s) already exists.\n"
 "Please choose a different name"
 msgstr ""
 "Recept s tímto názvem a autorem již existuje.\n"
 "Zvolte prosím jiný název"
 
-#: src/gr-recipe-store.c:1041
+#: src/gr-recipe-store.c:1314
 #, c-format
 msgid "You need to provide an ID for the recipe"
 msgstr "Musíte receptu přidělit ID"
 
-#: src/gr-recipe-store.c:1047
+#: src/gr-recipe-store.c:1320
 #, c-format
 msgid "A recipe with this ID already exists"
 msgstr "Recept s tímto ID již existuje"
 
-#: src/gr-recipe-store.c:1198
+#: src/gr-recipe-store.c:1489
 #, c-format
 msgid "You need to provide an ID"
 msgstr "Musíte zadat ID"
 
-#: src/gr-recipe-store.c:1204
+#: src/gr-recipe-store.c:1495
 #, c-format
 msgid "Sorry, this ID is taken"
 msgstr "Bohužel, toto ID je zabrané"
 
-#: src/gr-recipe-store.c:1231
+#: src/gr-recipe-store.c:1522
 #, c-format
 msgid "You need to provide an ID for the chef"
 msgstr "Musíte kuchaři přidělit ID"
 
-#: src/gr-recipe-store.c:1237
+#: src/gr-recipe-store.c:1528
 #, c-format
 msgid "A chef with this ID already exists"
 msgstr "Kuchař s tímto ID již existuje"
@@ -1818,7 +1892,8 @@ msgid "Christmas"
 msgstr "Vánoce"
 
 #: src/gr-season.c:43
-msgid "New Years"
+#, fuzzy
+msgid "New Year’s"
 msgstr "Nový rok"
 
 #: src/gr-season.c:44
@@ -1838,7 +1913,7 @@ msgid "Winter"
 msgstr "Zima"
 
 #: src/gr-shopping-list-formatter.c:42 src/gr-shopping-list-printer.c:135
-#: src/gr-shopping-page.c:756
+#: src/gr-shopping-page.c:765
 msgid "Shopping List"
 msgstr "Nákupní seznam"
 
@@ -1878,7 +1953,7 @@ msgstr[0] "%d recept označen k přípravě"
 msgstr[1] "%d recepty označeny k přípravě"
 msgstr[2] "%d receptů označeno k přípravě"
 
-#: src/gr-shopping-page.c:727
+#: src/gr-shopping-page.c:736
 msgid "Save the shopping list"
 msgstr "Uložit nákupní seznam"
 
@@ -1898,187 +1973,383 @@ msgstr "značně pikantní"
 msgid "Hot or very spicy"
 msgstr "pikantní nebo hodně kořeněné"
 
-#: src/gr-unit.c:40
+#: src/gr-unit.c:41
 msgctxt "unit abbreviation"
 msgid "g"
 msgstr "g"
 
-#: src/gr-unit.c:40
+#: src/gr-unit.c:41
 msgctxt "unit name"
 msgid "gram"
 msgstr "gram"
 
 #: src/gr-unit.c:41
+#, fuzzy
+msgctxt "unit plural"
+msgid "grams"
+msgstr "gram"
+
+#: src/gr-unit.c:42
 msgctxt "unit abbreviation"
 msgid "kg"
 msgstr "kg"
 
-#: src/gr-unit.c:41
+#: src/gr-unit.c:42
 msgctxt "unit name"
 msgid "kilogram"
 msgstr "kilogram"
 
 #: src/gr-unit.c:42
+#, fuzzy
+msgctxt "unit plural"
+msgid "kilograms"
+msgstr "kilogram"
+
+#: src/gr-unit.c:43
 msgctxt "unit abbreviation"
 msgid "lb"
 msgstr "lb"
 
-#: src/gr-unit.c:42
+#: src/gr-unit.c:43
 msgctxt "unit name"
 msgid "pound"
 msgstr "libra"
 
 #: src/gr-unit.c:43
+#, fuzzy
+msgctxt "unit plural"
+msgid "pounds"
+msgstr "libra"
+
+#: src/gr-unit.c:44
 msgctxt "unit abbreviation"
 msgid "oz"
 msgstr "oz"
 
-#: src/gr-unit.c:43
+#: src/gr-unit.c:44
 msgctxt "unit name"
 msgid "ounce"
 msgstr "unce"
 
 #: src/gr-unit.c:44
+#, fuzzy
+msgctxt "unit plural"
+msgid "ounces"
+msgstr "unce"
+
+#: src/gr-unit.c:45
 msgctxt "unit abbreviation"
 msgid "l"
 msgstr "l"
 
-#: src/gr-unit.c:44
+#: src/gr-unit.c:45
 msgctxt "unit name"
 msgid "liter"
 msgstr "litr"
 
 #: src/gr-unit.c:45
+#, fuzzy
+msgctxt "unit plural"
+msgid "liters"
+msgstr "litr"
+
+#: src/gr-unit.c:46
 msgctxt "unit abbreviation"
 msgid "dl"
 msgstr "dl"
 
-#: src/gr-unit.c:45
+#: src/gr-unit.c:46
 msgctxt "unit name"
 msgid "deciliter"
 msgstr "decilitr"
 
 #: src/gr-unit.c:46
+#, fuzzy
+msgctxt "unit plural"
+msgid "deciliters"
+msgstr "decilitr"
+
+#: src/gr-unit.c:47
 msgctxt "unit abbreviation"
 msgid "ml"
 msgstr "ml"
 
-#: src/gr-unit.c:46
+#: src/gr-unit.c:47
 msgctxt "unit name"
 msgid "milliliter"
 msgstr "mililitr"
 
 #: src/gr-unit.c:47
+#, fuzzy
+msgctxt "unit plural"
+msgid "milliliters"
+msgstr "mililitr"
+
+#: src/gr-unit.c:48 src/gr-unit.c:49
 msgctxt "unit abbreviation"
 msgid "fl oz"
 msgstr "fl oz"
 
-#: src/gr-unit.c:47
+#: src/gr-unit.c:48 src/gr-unit.c:49
 msgctxt "unit name"
 msgid "fluid ounce"
 msgstr "dutá unce"
 
-#: src/gr-unit.c:48
+#: src/gr-unit.c:48 src/gr-unit.c:49
+#, fuzzy
+msgctxt "unit plural"
+msgid "fluid ounces"
+msgstr "dutá unce"
+
+#: src/gr-unit.c:50
 msgctxt "unit abbreviation"
 msgid "pt"
 msgstr "pt"
 
-#: src/gr-unit.c:48
+#: src/gr-unit.c:50
 msgctxt "unit name"
 msgid "pint"
 msgstr "pinta"
 
-#: src/gr-unit.c:49
+#: src/gr-unit.c:50
+#, fuzzy
+msgctxt "unit plural"
+msgid "pints"
+msgstr "pinta"
+
+#: src/gr-unit.c:51
 msgctxt "unit abbreviation"
 msgid "qt"
 msgstr "qt"
 
-#: src/gr-unit.c:49
+#: src/gr-unit.c:51
 msgctxt "unit name"
 msgid "quart"
 msgstr "quarta"
 
-#: src/gr-unit.c:50
+#: src/gr-unit.c:51
+#, fuzzy
+msgctxt "unit plural"
+msgid "quarts"
+msgstr "quarta"
+
+#: src/gr-unit.c:52
 msgctxt "unit abbreviation"
 msgid "gal"
 msgstr "gal"
 
-#: src/gr-unit.c:50
+#: src/gr-unit.c:52
 msgctxt "unit name"
 msgid "gallon"
 msgstr "galon"
 
-#: src/gr-unit.c:51
+#: src/gr-unit.c:52
+#, fuzzy
+msgctxt "unit plural"
+msgid "gallons"
+msgstr "galon"
+
+#: src/gr-unit.c:53
 msgctxt "unit abbreviation"
 msgid "cup"
 msgstr "šálek"
 
-#: src/gr-unit.c:51
+#: src/gr-unit.c:53
 msgctxt "unit name"
 msgid "cup"
 msgstr "šálek"
 
-#: src/gr-unit.c:52
+#: src/gr-unit.c:53
+msgctxt "unit plural"
+msgid "cups"
+msgstr ""
+
+#: src/gr-unit.c:54
 msgctxt "unit abbreviation"
 msgid "tbsp"
 msgstr "lžíce"
 
-#: src/gr-unit.c:52
+#: src/gr-unit.c:54
 msgctxt "unit name"
 msgid "tablespoon"
 msgstr "polévkové lžíce"
 
-#: src/gr-unit.c:53
+#: src/gr-unit.c:54
+#, fuzzy
+msgctxt "unit plural"
+msgid "tablespoons"
+msgstr "polévkové lžíce"
+
+#: src/gr-unit.c:55
 msgctxt "unit abbreviation"
 msgid "tsp"
 msgstr "lžička"
 
-#: src/gr-unit.c:53
+#: src/gr-unit.c:55
 msgctxt "unit name"
 msgid "teaspoon"
 msgstr "čajová lžička"
 
-#: src/gr-unit.c:54
+#: src/gr-unit.c:55
+#, fuzzy
+msgctxt "unit plural"
+msgid "teaspoons"
+msgstr "čajová lžička"
+
+#: src/gr-unit.c:56
 msgctxt "unit abbreviation"
 msgid "box"
 msgstr "krabice"
 
-#: src/gr-unit.c:54
+#: src/gr-unit.c:56
 msgctxt "unit name"
 msgid "box"
 msgstr "krabice"
 
-#: src/gr-unit.c:55
+#: src/gr-unit.c:56
+msgctxt "unit plural"
+msgid "boxes"
+msgstr ""
+
+#: src/gr-unit.c:57
 msgctxt "unit abbreviation"
 msgid "pkg"
 msgstr "bal"
 
-#: src/gr-unit.c:55
+#: src/gr-unit.c:57
 msgctxt "unit name"
 msgid "package"
 msgstr "balení"
 
-#: src/gr-unit.c:56
+#: src/gr-unit.c:57
+#, fuzzy
+msgctxt "unit plural"
+msgid "packages"
+msgstr "balení"
+
+#: src/gr-unit.c:58
 msgctxt "unit abbreviation"
 msgid "glass"
 msgstr "sklenice"
 
-#: src/gr-unit.c:56
+#: src/gr-unit.c:58
 msgctxt "unit name"
 msgid "glass"
 msgstr "sklenice"
 
-#: src/gr-unit.c:126
+#: src/gr-unit.c:58
+#, fuzzy
+msgctxt "unit plural"
+msgid "glasses"
+msgstr "sklenice"
+
+#: src/gr-unit.c:59
+#, fuzzy
+msgctxt "unit abbreviation"
+msgid "mm"
+msgstr "m"
+
+#: src/gr-unit.c:59
+#, fuzzy
+msgctxt "unit name"
+msgid "millimeter"
+msgstr "mililitr"
+
+#: src/gr-unit.c:59
+#, fuzzy
+msgctxt "unit plural"
+msgid "millimeters"
+msgstr "mililitr"
+
+#: src/gr-unit.c:60
+#, fuzzy
+msgctxt "unit abbreviation"
+msgid "cm"
+msgstr "m"
+
+#: src/gr-unit.c:60
+msgctxt "unit name"
+msgid "centimeter"
+msgstr ""
+
+#: src/gr-unit.c:60
+msgctxt "unit plural"
+msgid "centimeters"
+msgstr ""
+
+#: src/gr-unit.c:61
+#, fuzzy
+msgctxt "unit abbreviation"
+msgid "m"
+msgstr "m"
+
+#: src/gr-unit.c:61
+msgctxt "unit name"
+msgid "meter"
+msgstr ""
+
+#: src/gr-unit.c:61
+msgctxt "unit plural"
+msgid "meters"
+msgstr ""
+
+#: src/gr-unit.c:62
+#, fuzzy
+msgctxt "unit abbreviation"
+msgid "st"
+msgstr "s"
+
+#: src/gr-unit.c:62
+msgctxt "unit name"
+msgid "stone"
+msgstr ""
+
+#: src/gr-unit.c:62
+msgctxt "unit plural"
+msgid "stone"
+msgstr ""
+
+#: src/gr-unit.c:63
+msgctxt "unit abbreviation"
+msgid "pinch"
+msgstr ""
+
+#: src/gr-unit.c:63
+msgctxt "unit name"
+msgid "pinch"
+msgstr ""
+
+#: src/gr-unit.c:63
+msgctxt "unit plural"
+msgid "pinches"
+msgstr ""
+
+#: src/gr-unit.c:64
+msgctxt "unit abbreviation"
+msgid "bunch"
+msgstr ""
+
+#: src/gr-unit.c:64
+msgctxt "unit name"
+msgid "bunch"
+msgstr ""
+
+#: src/gr-unit.c:64
+msgctxt "unit plural"
+msgid "bunches"
+msgstr ""
+
+#: src/gr-unit.c:145
 #, c-format
 msgid "I don’t know this unit: %s"
 msgstr "Tato jednotka není zmámá: %s"
 
-#: src/gr-utils.c:387
+#: src/gr-utils.c:334
 #, c-format
 msgid "more than a year ago"
 msgstr "před více než rokem"
 
-#: src/gr-utils.c:390 src/gr-utils.c:394
+#: src/gr-utils.c:337 src/gr-utils.c:341
 #, c-format
 msgid "%d month ago"
 msgid_plural "%d months ago"
@@ -2086,7 +2357,7 @@ msgstr[0] "před %d měsícem"
 msgstr[1] "před %d měsíci"
 msgstr[2] "před %d měsíci"
 
-#: src/gr-utils.c:398
+#: src/gr-utils.c:345
 #, c-format
 msgid "%d day ago"
 msgid_plural "%d days ago"
@@ -2094,22 +2365,22 @@ msgstr[0] "před %d dnem"
 msgstr[1] "před %d dny"
 msgstr[2] "před %d dny"
 
-#: src/gr-utils.c:401
+#: src/gr-utils.c:348
 #, c-format
 msgid "just now"
 msgstr "právě teď"
 
-#: src/gr-utils.c:403
+#: src/gr-utils.c:350
 #, c-format
 msgid "10 minutes ago"
 msgstr "před 10 minutami"
 
-#: src/gr-utils.c:405
+#: src/gr-utils.c:352
 #, c-format
 msgid "half an hour ago"
 msgstr "před půl hodinou"
 
-#: src/gr-utils.c:409
+#: src/gr-utils.c:356
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
@@ -2117,21 +2388,21 @@ msgstr[0] "před %d hodnou"
 msgstr[1] "před %d hodinami"
 msgstr[2] "před %d hodinami"
 
-#: src/gr-utils.c:415
+#: src/gr-utils.c:362
 msgid "some time ago"
 msgstr "před nějakou dobou"
 
-#: src/gr-utils.c:438
+#: src/gr-utils.c:385
 msgid "Could not connect to the session bus from inside the Flatpak sandbox."
 msgstr ""
 "Nezdařilo se připojit ke sběrnici sezení zevnitř izolovaného prostředí "
 "Flatpak."
 
-#: src/gr-utils.c:439
+#: src/gr-utils.c:386
 msgid "Certain functionality will not be available."
 msgstr "Některá funkcionalita není k dispozici."
 
-#: src/gr-utils.c:459
+#: src/gr-utils.c:406
 msgid ""
 "Missing the desktop portal needed to open files from inside a Flatpak "
 "sandbox."
@@ -2139,32 +2410,32 @@ msgstr ""
 "Schází portál uživatelského prostředí potřebný k otevírání souborů zevnitř "
 "izolovaného prostředí Flatpak."
 
-#: src/gr-utils.c:461
+#: src/gr-utils.c:408
 msgid ""
 "Missing the desktop portal needed to print from inside a Flatpak sandbox."
 msgstr ""
 "Schází portál uživatelského prostředí potřebný k tisku zevnitř izolovaného "
 "prostředí Flatpak."
 
-#: src/gr-utils.c:463
+#: src/gr-utils.c:410
 msgid ""
 "Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
 msgstr ""
 "Schází portál uživatelského prostředí potřebný k otevírání adres URL zevnitř "
 "izolovaného prostředí Flatpak."
 
-#: src/gr-utils.c:467
+#: src/gr-utils.c:414
 msgid ""
 "Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
 msgstr ""
 "Nainstalujte prosím ve svém systému xdg-desktop-portal a xdg-desktop-portal-"
 "gtk"
 
-#: src/gr-window.c:230
+#: src/gr-window.c:246
 msgid "Add a New Recipe"
 msgstr "Přidání nového receptu"
 
-#: src/gr-window.c:517
+#: src/gr-window.c:525
 #, c-format
 msgid ""
 "The “%s” recipe has unsaved changes.\n"
@@ -2173,7 +2444,7 @@ msgstr ""
 "Recept „%s“ má neuložené změny.\n"
 "Chcete i přesto okno zavřít?"
 
-#: src/gr-window.c:520
+#: src/gr-window.c:528
 msgid ""
 "The new recipe has not been saved.\n"
 "Close the window anyway?"
@@ -2181,65 +2452,70 @@ msgstr ""
 "Nový recept nebyl uložen.\n"
 "Chcete i přesto okno zavřít?"
 
-#: src/gr-window.c:651
+#: src/gr-window.c:659
 #, c-format
 msgid "Recipe “%s” deleted"
 msgstr "Recept „%s“ byl smazán"
 
-#: src/gr-window.c:701
+#: src/gr-window.c:709
 #, c-format
 msgid "You updated your contributed “%s” recipe. Send an update?"
 msgstr ""
 "Aktualizoval(a) jste svůj příspěvek „%s“ do Receptů. Odeslat aktualizaci?"
 
-#: src/gr-window.c:831
+#: src/gr-window.c:839
 msgid "Ready to Cook!"
 msgstr "Připraveno k vaření/pečení!"
 
-#: src/gr-window.c:1053
+#: src/gr-window.c:1045
 msgid "Imported Recipes"
 msgstr "Importované recepty"
 
-#: src/gr-window.c:1129
+#: src/gr-window.c:1121
 msgid "Select a recipe file"
 msgstr "Výběr souboru s receptem"
 
-#: src/gr-window.c:1155
+#: src/gr-window.c:1147
 #, c-format
 msgid "Recipes have been exported to “%s”"
 msgstr "Recepty byly vyexportovány jako „%s“"
 
-#: src/gr-window.c:1193
+#: src/gr-window.c:1185
 msgid "Select a file"
 msgstr "Výběr souboru"
 
-#: src/gr-window.c:1196
+#: src/gr-window.c:1188
 msgid "_Export"
 msgstr "_Export"
 
-#: src/gr-window.c:1235
+#: src/gr-window.c:1218
 #, c-format
 msgid "Chefs: %s"
 msgstr "Kuchaři: %s"
 
-#: src/gr-window.c:1252
+#: src/gr-window.c:1228
 msgid "Favorite Recipes"
 msgstr "Oblíbené recepty"
 
-#: src/gr-window.c:1334
+#: src/gr-window.c:1276
 msgid "Buy Ingredients"
 msgstr "Nákup surovin"
 
 #. TRANSLATORS: %s gets replaced by a version number
-#: src/gr-window.c:1505
+#: src/gr-window.c:1420
 #, c-format
 msgid "Recipes %s"
 msgstr "Recepty %s"
 
 #. TRANSLATORS: %s gets replaced by a date
-#: src/gr-window.c:1520
+#: src/gr-window.c:1437
 #, c-format
 msgid "Released: %s"
+msgstr "Vydáno: %s"
+
+#: src/gr-window.c:1440
+#, fuzzy, c-format
+msgid "Unreleased"
 msgstr "Vydáno: %s"
 
 #: src/ingredients.inc:1
@@ -2327,212 +2603,258 @@ msgid "Beetroot"
 msgstr "červená řepa"
 
 #: src/ingredients.inc:22
+#, fuzzy
+msgid "Bell pepper"
+msgstr "bez pepře"
+
+#: src/ingredients.inc:23
 msgid "Berry"
 msgstr "lesní plod"
 
-#: src/ingredients.inc:23
+#: src/ingredients.inc:24
 msgid "Biscotti"
 msgstr "biscotti"
 
-#: src/ingredients.inc:24
+#: src/ingredients.inc:25
 msgid "Bilberry"
 msgstr "borůvka"
 
-#: src/ingredients.inc:25
+#: src/ingredients.inc:26
+msgid "Breadcrumbs"
+msgstr ""
+
+#: src/ingredients.inc:27
 msgid "Butter"
 msgstr "máslo"
 
-#: src/ingredients.inc:26
+#: src/ingredients.inc:28
 msgid "Carrot"
 msgstr "mrkev"
 
-#: src/ingredients.inc:27
+#: src/ingredients.inc:29
 msgid "Cheese"
 msgstr "sýr"
 
-#: src/ingredients.inc:28
+#: src/ingredients.inc:30
 msgid "Cherries, pitted"
 msgstr "vypeckované třešně"
 
-#: src/ingredients.inc:29
+#: src/ingredients.inc:31
 msgid "Chocolate frosting"
 msgstr "čokoládová poleva"
 
-#: src/ingredients.inc:30
+#: src/ingredients.inc:32
 msgid "Cilantro"
 msgstr "koriandr"
 
-#: src/ingredients.inc:31
+#: src/ingredients.inc:33
 msgid "Cocoa powder"
 msgstr "kakaový prášek"
 
-#: src/ingredients.inc:32
+#: src/ingredients.inc:34
 msgid "Couscous"
 msgstr "kuskus"
 
-#: src/ingredients.inc:33
+#: src/ingredients.inc:35
+msgid "Cream"
+msgstr ""
+
+#: src/ingredients.inc:36
 msgid "Date"
 msgstr "datle"
 
-#: src/ingredients.inc:34
+#: src/ingredients.inc:37
 msgid "Egg"
 msgstr "vejce"
 
-#: src/ingredients.inc:35
+#: src/ingredients.inc:38
 msgid "Fig"
 msgstr "fík"
 
-#: src/ingredients.inc:36
+#: src/ingredients.inc:39
+msgid "Fish"
+msgstr ""
+
+#: src/ingredients.inc:40
 msgid "Flour"
 msgstr "mouka"
 
-#: src/ingredients.inc:37
+#: src/ingredients.inc:41
 msgid "Garlic"
 msgstr "česnek"
 
-#: src/ingredients.inc:38
+#: src/ingredients.inc:42
+msgid "Grapes"
+msgstr ""
+
+#: src/ingredients.inc:43
 msgid "Ground beef"
 msgstr "mleté hovězí maso"
 
-#: src/ingredients.inc:39
+#: src/ingredients.inc:44
 msgid "Honey"
 msgstr "med"
 
-#: src/ingredients.inc:40
+#: src/ingredients.inc:45
+msgid "Horseradish"
+msgstr ""
+
+#: src/ingredients.inc:46
 msgid "Lemon"
 msgstr "citrón"
 
-#: src/ingredients.inc:41
+#: src/ingredients.inc:47
 msgid "Linseeds"
 msgstr "lněná semínka"
 
-#: src/ingredients.inc:42
+#: src/ingredients.inc:48
 msgid "Mayonnaise"
 msgstr "majonéza"
 
-#: src/ingredients.inc:43
+#: src/ingredients.inc:49
 msgid "Milk"
 msgstr "mléko"
 
-#: src/ingredients.inc:44
+#: src/ingredients.inc:50
 msgid "Mustard"
 msgstr "hořčice"
 
-#: src/ingredients.inc:45
+#: src/ingredients.inc:51
+msgid "Nut"
+msgstr ""
+
+#: src/ingredients.inc:52
 msgid "Oatmeal"
 msgstr "ovesné vločky"
 
-#: src/ingredients.inc:46
+#: src/ingredients.inc:53
 msgid "Oil"
 msgstr "olej"
 
-#: src/ingredients.inc:47
+#: src/ingredients.inc:54
 msgid "Onion"
 msgstr "cibule"
 
-#: src/ingredients.inc:48
+#: src/ingredients.inc:55
 msgid "Olive oil, extra-virgin"
 msgstr "olivový olej extra panenský"
 
-#: src/ingredients.inc:49
+#: src/ingredients.inc:56
 msgid "Orange"
 msgstr "pomeranč"
 
-#: src/ingredients.inc:50
+#: src/ingredients.inc:57
 msgid "Parsley"
 msgstr "petržel"
 
-#: src/ingredients.inc:51
+#: src/ingredients.inc:58
 msgid "Peperoni"
 msgstr "čabajka"
 
-#: src/ingredients.inc:52
+#: src/ingredients.inc:59
 msgid "Pepper"
 msgstr "pepř"
 
-#: src/ingredients.inc:53
+#: src/ingredients.inc:60
 msgid "Peppers"
 msgstr "pepře"
 
-#: src/ingredients.inc:54
+#: src/ingredients.inc:61
 msgid "Pizza sauce"
 msgstr "omáčka na pizzu"
 
-#: src/ingredients.inc:55
+#: src/ingredients.inc:62
 msgid "Potato"
 msgstr "brambora"
 
-#: src/ingredients.inc:56
+#: src/ingredients.inc:63
 msgid "Pumpkin seeds"
 msgstr "dýňová semínka"
 
-#: src/ingredients.inc:57
+#: src/ingredients.inc:64
+#, fuzzy
+msgid "Raisins"
+msgstr "Kuchyně"
+
+#: src/ingredients.inc:65
+msgid "Rice"
+msgstr ""
+
+#: src/ingredients.inc:66
 msgid "Salt"
 msgstr "sůl"
 
-#: src/ingredients.inc:58
+#: src/ingredients.inc:67
 msgid "Soy sauce"
 msgstr "sójová omáčka"
 
-#: src/ingredients.inc:59
+#: src/ingredients.inc:68
+msgid "Strawberry"
+msgstr ""
+
+#: src/ingredients.inc:69
 msgid "Sugar"
 msgstr "cukr"
 
-#: src/ingredients.inc:60
+#: src/ingredients.inc:70
 msgid "Sunflower seeds"
 msgstr "slunečnicová semínka"
 
-#: src/ingredients.inc:61
+#: src/ingredients.inc:71
 msgid "Squash"
 msgstr "dýně"
 
-#: src/ingredients.inc:62
+#: src/ingredients.inc:72
 msgid "Tangerine"
 msgstr "mandarinka"
 
-#: src/ingredients.inc:63
+#: src/ingredients.inc:73
 msgid "Tofu"
 msgstr "tofu"
 
-#: src/ingredients.inc:64
+#: src/ingredients.inc:74
 msgid "Tomato"
 msgstr "rajče"
 
-#: src/ingredients.inc:65
+#: src/ingredients.inc:75
 msgid "Turmeric, ground"
 msgstr "kurkuma"
 
-#: src/ingredients.inc:66
+#: src/ingredients.inc:76
 msgid "Vanilla sugar"
 msgstr "vanilkový cukr"
 
-#: src/ingredients.inc:67
+#: src/ingredients.inc:77
 msgid "Vanilla pudding"
 msgstr "vanilkový puding"
 
-#: src/ingredients.inc:68
+#: src/ingredients.inc:78
 msgid "Vinegar"
 msgstr "ocet"
 
-#: src/ingredients.inc:69
+#: src/ingredients.inc:79
 msgid "Water"
 msgstr "voda"
 
-#: src/ingredients.inc:70
+#: src/ingredients.inc:80
 msgid "Wine"
 msgstr "víno"
 
-#: src/ingredients.inc:71
+#: src/ingredients.inc:81
 msgid "Yeast"
 msgstr "droždí"
 
-#: src/ingredients.inc:72
+#: src/ingredients.inc:82
 msgid "Yoghurt"
 msgstr "jogurt"
 
-#: src/ingredients.inc:73
+#: src/ingredients.inc:83
 msgid "Zinfandel"
 msgstr "víno Zinfandel"
+
+#: src/ingredients.inc:84
+msgid "Zuccini"
+msgstr ""
 
 #: src/no-ingredients.inc:1
 msgid "no Almond"
@@ -2619,860 +2941,922 @@ msgid "no Beetroot"
 msgstr "bez červené řepy"
 
 #: src/no-ingredients.inc:22
+#, fuzzy
+msgid "no Bell pepper"
+msgstr "bez pepře"
+
+#: src/no-ingredients.inc:23
 msgid "no Berry"
 msgstr "bez lesních plodů"
 
-#: src/no-ingredients.inc:23
+#: src/no-ingredients.inc:24
 msgid "no Biscotti"
 msgstr "bez biscotti"
 
-#: src/no-ingredients.inc:24
+#: src/no-ingredients.inc:25
 msgid "no Bilberry"
 msgstr "bez borůvek"
 
-#: src/no-ingredients.inc:25
+#: src/no-ingredients.inc:26
+#, fuzzy
+msgid "no Breadcrumbs"
+msgstr "bez fazolí"
+
+#: src/no-ingredients.inc:27
 msgid "no Butter"
 msgstr "bez másla"
 
-#: src/no-ingredients.inc:26
+#: src/no-ingredients.inc:28
 msgid "no Carrot"
 msgstr "bez mrkve"
 
-#: src/no-ingredients.inc:27
+#: src/no-ingredients.inc:29
 msgid "no Cheese"
 msgstr "bez sýru"
 
-#: src/no-ingredients.inc:28
+#: src/no-ingredients.inc:30
 msgid "no Cherries, pitted"
 msgstr "bez vypeckovaných třešní"
 
-#: src/no-ingredients.inc:29
+#: src/no-ingredients.inc:31
 msgid "no Chocolate frosting"
 msgstr "bez čokoládové polevy"
 
-#: src/no-ingredients.inc:30
+#: src/no-ingredients.inc:32
 msgid "no Cilantro"
 msgstr "bez koriandru"
 
-#: src/no-ingredients.inc:31
+#: src/no-ingredients.inc:33
 msgid "no Cocoa powder"
 msgstr "bez kakaového prášku"
 
-#: src/no-ingredients.inc:32
+#: src/no-ingredients.inc:34
 msgid "no Couscous"
 msgstr "bez kuskusu"
 
-#: src/no-ingredients.inc:33
+#: src/no-ingredients.inc:35
+msgid "no Cream"
+msgstr ""
+
+#: src/no-ingredients.inc:36
 msgid "no Date"
 msgstr "bez datlí"
 
-#: src/no-ingredients.inc:34
+#: src/no-ingredients.inc:37
 msgid "no Egg"
 msgstr "bez vajec"
 
-#: src/no-ingredients.inc:35
+#: src/no-ingredients.inc:38
 msgid "no Fig"
 msgstr "bez fíků"
 
-#: src/no-ingredients.inc:36
+#: src/no-ingredients.inc:39
+#, fuzzy
+msgid "no Fish"
+msgstr "bez fíků"
+
+#: src/no-ingredients.inc:40
 msgid "no Flour"
 msgstr "bez mouky"
 
-#: src/no-ingredients.inc:37
+#: src/no-ingredients.inc:41
 msgid "no Garlic"
 msgstr "bez česneku"
 
-#: src/no-ingredients.inc:38
+#: src/no-ingredients.inc:42
+msgid "no Grapes"
+msgstr ""
+
+#: src/no-ingredients.inc:43
 msgid "no Ground beef"
 msgstr "bez mletého hovězího masa"
 
-#: src/no-ingredients.inc:39
+#: src/no-ingredients.inc:44
 msgid "no Honey"
 msgstr "bez medu"
 
-#: src/no-ingredients.inc:40
+#: src/no-ingredients.inc:45
+msgid "no Horseradish"
+msgstr ""
+
+#: src/no-ingredients.inc:46
 msgid "no Lemon"
 msgstr "bez citrónu"
 
-#: src/no-ingredients.inc:41
+#: src/no-ingredients.inc:47
 msgid "no Linseeds"
 msgstr "bez lněných semínek"
 
-#: src/no-ingredients.inc:42
+#: src/no-ingredients.inc:48
 msgid "no Mayonnaise"
 msgstr "bez majonézy"
 
-#: src/no-ingredients.inc:43
+#: src/no-ingredients.inc:49
 msgid "no Milk"
 msgstr "bez mléka"
 
-#: src/no-ingredients.inc:44
+#: src/no-ingredients.inc:50
 msgid "no Mustard"
 msgstr "bez hořčice"
 
-#: src/no-ingredients.inc:45
+#: src/no-ingredients.inc:51
+msgid "no Nut"
+msgstr ""
+
+#: src/no-ingredients.inc:52
 msgid "no Oatmeal"
 msgstr "bez ovesných vloček"
 
-#: src/no-ingredients.inc:46
+#: src/no-ingredients.inc:53
 msgid "no Oil"
 msgstr "bez oleje"
 
-#: src/no-ingredients.inc:47
+#: src/no-ingredients.inc:54
 msgid "no Onion"
 msgstr "bez cibule"
 
-#: src/no-ingredients.inc:48
+#: src/no-ingredients.inc:55
 msgid "no Olive oil, extra-virgin"
 msgstr "bez olivového oleje extra panenského"
 
-#: src/no-ingredients.inc:49
+#: src/no-ingredients.inc:56
 msgid "no Orange"
 msgstr "bez pomeranče"
 
-#: src/no-ingredients.inc:50
+#: src/no-ingredients.inc:57
 msgid "no Parsley"
 msgstr "bez petržele"
 
-#: src/no-ingredients.inc:51
+#: src/no-ingredients.inc:58
 msgid "no Peperoni"
 msgstr "bez čabajky"
 
-#: src/no-ingredients.inc:52
+#: src/no-ingredients.inc:59
 msgid "no Pepper"
 msgstr "bez pepře"
 
-#: src/no-ingredients.inc:53
+#: src/no-ingredients.inc:60
 msgid "no Peppers"
 msgstr "bez pepřů"
 
-#: src/no-ingredients.inc:54
+#: src/no-ingredients.inc:61
 msgid "no Pizza sauce"
 msgstr "bez omáčky na pizzu"
 
-#: src/no-ingredients.inc:55
+#: src/no-ingredients.inc:62
 msgid "no Potato"
 msgstr "bez brambor"
 
-#: src/no-ingredients.inc:56
+#: src/no-ingredients.inc:63
 msgid "no Pumpkin seeds"
 msgstr "bez dýňových semínek"
 
-#: src/no-ingredients.inc:57
+#: src/no-ingredients.inc:64
+msgid "no Raisins"
+msgstr ""
+
+#: src/no-ingredients.inc:65
+msgid "no Rice"
+msgstr ""
+
+#: src/no-ingredients.inc:66
 msgid "no Salt"
 msgstr "bez soli"
 
-#: src/no-ingredients.inc:58
+#: src/no-ingredients.inc:67
 msgid "no Soy sauce"
 msgstr "bez sójové omáčky"
 
-#: src/no-ingredients.inc:59
+#: src/no-ingredients.inc:68
+#, fuzzy
+msgid "no Strawberry"
+msgstr "bez borůvek"
+
+#: src/no-ingredients.inc:69
 msgid "no Sugar"
 msgstr "bez cukru"
 
-#: src/no-ingredients.inc:60
+#: src/no-ingredients.inc:70
 msgid "no Sunflower seeds"
 msgstr "bez slunečnicových semínek"
 
-#: src/no-ingredients.inc:61
+#: src/no-ingredients.inc:71
 msgid "no Squash"
 msgstr "bez dýně"
 
-#: src/no-ingredients.inc:62
+#: src/no-ingredients.inc:72
 msgid "no Tangerine"
 msgstr "bez mandarinek"
 
-#: src/no-ingredients.inc:63
+#: src/no-ingredients.inc:73
 msgid "no Tofu"
 msgstr "bez tofu"
 
-#: src/no-ingredients.inc:64
+#: src/no-ingredients.inc:74
 msgid "no Tomato"
 msgstr "bez rajčat"
 
-#: src/no-ingredients.inc:65
+#: src/no-ingredients.inc:75
 msgid "no Turmeric, ground"
 msgstr "bez kurkumy"
 
-#: src/no-ingredients.inc:66
+#: src/no-ingredients.inc:76
 msgid "no Vanilla sugar"
 msgstr "bez vanilkového cukru"
 
-#: src/no-ingredients.inc:67
+#: src/no-ingredients.inc:77
 msgid "no Vanilla pudding"
 msgstr "bez vanilkového pudingu"
 
-#: src/no-ingredients.inc:68
+#: src/no-ingredients.inc:78
 msgid "no Vinegar"
 msgstr "bez octa"
 
-#: src/no-ingredients.inc:69
+#: src/no-ingredients.inc:79
 msgid "no Water"
 msgstr "bez vody"
 
-#: src/no-ingredients.inc:70
+#: src/no-ingredients.inc:80
 msgid "no Wine"
 msgstr "bez vína"
 
-#: src/no-ingredients.inc:71
+#: src/no-ingredients.inc:81
 msgid "no Yeast"
 msgstr "bez droždí"
 
-#: src/no-ingredients.inc:72
+#: src/no-ingredients.inc:82
 msgid "no Yoghurt"
 msgstr "bez jogurtu"
 
-#: src/no-ingredients.inc:73
+#: src/no-ingredients.inc:83
 msgid "no Zinfandel"
 msgstr "bez vína Zinfandel"
 
-#: src/segments.inc:1
-msgid "Dough"
-msgstr "Těsto"
-
-#: src/segments.inc:2
-msgid "Toppings"
-msgstr "Zdobení"
-
-#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
-msgctxt "_"
-msgid "translator-credits"
-msgstr "Marek Černocký <marek@manet.cz>"
-
-#. (itstool) path: page/p
-#: help/C/index.page:13
-msgid "Recipes will be documented here."
-msgstr "Recepty budou zdokumentovány zde."
-
-msgid "Adrià is originally from Barcelona, Spain."
-msgstr "Adrià pochází z Barcelony ve Španělsku."
-
-msgid ""
-"Being from Strasbourg, Alexandre is knowledgeable about both Alsatian and "
-"French cuisine, but he's not afraid to experiment in other ones as well."
+#: src/no-ingredients.inc:84
+msgid "no Zuccini"
 msgstr ""
-"Původem ze Štrasburku zná Alexandr jak německou, tak francouzskou kuchyni, "
-"ale nebojí se experimentovat i s jinými."
-
-msgid "Aviation, making stuff, in Finland."
-msgstr "Letectví, vyvádění hloupostí, Finsko."
-
-msgid ""
-"Erusan is an American who has lived all over the country, loves GNOME, and "
-"enjoys cooking — primarily American, Asian, and Indian cuisine."
-msgstr ""
-"Erusan je Američan, který pobýval v zemích celého světa, miluje GNOME a "
-"užívá si vaření – převážně americké, asijské a indické kuchyně."
-
-msgid "I cook a lot, particularly Italian and Indian."
-msgstr "Vařím hodně, zejména italská a indická jídla."
-
-msgid ""
-"Ray is a Desktop Software Engineer at Red Hat and vegetarian who "
-"occasionally enjoys cooking."
-msgstr ""
-"Ray je softwarový inženýr pro desktop ve firmě Red Hat a vegetarián, který "
-"se příležitostně věnuje vaření."
-
-msgid ""
-"My name is Fredrik Fyksen. I am from Norway, but live in Denmark. I like "
-"food, computers and music. You can read more about me at <a href=\"https://"
-"www.fyksen.me/\">fyksen.me</a>."
-msgstr ""
-"Jmenuji se Fredrik Fyksen. Jsem z Norska, ale žiji v Dánsku. Mám rád jídlo, "
-"počítače a hudbu. Více si o mě můžete přečíst na <a href=\"https://www."
-"fyksen.me/\">fyksen.me</a>."
-
-msgid ""
-"Matthias is a manager in the Desktop team at Red Hat. He likes to cook as "
-"much as he likes to code."
-msgstr ""
-"Matthias je vedoucí desktopového týmu ve firmě Red Hat. Vaření má rád úplně "
-"stejně, jako programování."
-
-msgid "Matthew is a vegan and a Computer Science student who loves FOSS."
-msgstr "Matthew je vegan a student počítačových věd, který má rád FOSS."
-
-msgid "Elvin lives in Istanbul."
-msgstr "Elvin žije v Istanbulu."
-
-msgid "Spanish Omelet"
-msgstr "Španělská omeleta"
-
-msgid "Traditional Spanish Omelet, also known as \"Tortilla de Patata\""
-msgstr "Tradiční španělská omeleta známá pod názvem „Tortilla de Patata“"
-
-msgid ""
-"[image:0]Put a bit of oil in a pan and cover the surface with sliced onions."
-msgstr ""
-"[image:0]Nalijte na pánev trochu oleje a povrch pokryjte plátky cibule."
-
-msgid "[image:3]Meanwhile, peel the potatoes and cut them in small pieces."
-msgstr "[image:3]Mezitím oloupejte brambory a nakrájejte je na malé kousky."
-
-msgid ""
-"[image:2]Once the onions start to take colour, put the potatoes into the pan "
-"and add some salt."
-msgstr ""
-"[image:2]Jakmile začne cibule získávat barvu, vložte brambory na pánev a "
-"posolte je."
-
-msgid ""
-"[image:1]Cover the pan and stir the contents from time to time, until "
-"potatoes are well cooked."
-msgstr ""
-"[image:1]Pánev zakryjte a za občasného zamíchání nechejte brambory vařit, "
-"dokud nejsou hotové."
-
-msgid "[image:7]Put the eggs in a big bowl and add some salt"
-msgstr "[image:7]Rozklepněte vejce do velké mísy a posolte je."
-
-msgid "[image:6]Whip the eggs."
-msgstr "[image:6]Vejce rozšlehejte."
-
-msgid "[image:5]Put the contents of the pan in the bowl and mix it well."
-msgstr "[image:5]Obsah pánve vysypte do mísy a dobře promíchejte."
-
-msgid ""
-"[image:4]Add some oil to the pan and put the whole mix back into the pan."
-msgstr ""
-"[image:4]Na pánev přidejte trochu oleje a obsah mísy přesypejte zpět na "
-"pánev."
-
-msgid ""
-"[image:8]Once the lower side is cooked, with the help of a plate, turn the "
-"omelet."
-msgstr "[image:8]Až je spodní strana usmažená, omeletu obracečkou otočte."
-
-msgid "Repeat the process until it is well cooked."
-msgstr "Opakujte postup, dokud není vše dobře osmažené."
-
-msgid "White fish for people who dont like fish."
-msgstr "Bílá ryba pro lidi, kteří nemají rádi ryby."
-
-msgid ""
-"It is a fantastic dish for those of us that dont love fish, but know we have "
-"to eat it to stay healthy."
-msgstr ""
-"Jedná se o skvělé jídlo pro ty z nás, kteří nemáme ryby rádi, ale víme, že "
-"je zdravé je jíst."
-
-msgid ""
-"The key to get this dish good is to have high temperature on the stove when "
-"first frying the fish. Then turn it down after the initial fry."
-msgstr ""
-"Klíčové při přípravě tohoto jídla je, mít při prvním smažení na sporáku "
-"vysokou teplotu. Po počátečním osmahnutí ji zase můžete snížit."
-
-msgid ""
-"Set the stove to high (8/10), then put a good amount of oil in it. Any type "
-"of oil will do."
-msgstr ""
-"Nastavte plotnu na vysokou teplotu (8/10) a dejte na ni v pánvi rozehřát "
-"dostatečné množství oleje. Dá se použít jakýkoliv kuchyňský olej."
-
-msgid ""
-"Remove bone and skin from the fish (if any), and add salt and pepper. Give "
-"the stove some minutes to get really hot. Then put the fish in. 2-3 min on "
-"each side."
-msgstr ""
-"Z ryby odstraňte kosti a kůži (pokud nemáte již očištěné) a posypte je solí "
-"a pepřem. Vyčkejte, až se pánev dostatečně rozehřeje. Pak na ni položte rybu "
-"na 2 až 3 minuty pro každou stranu."
-
-msgid ""
-"Turn the temperature down to low (3/10). Add two spoons of butter, some "
-"thyme, rosemary and garlic. When the butter have melted, use a spoon to poor "
-"the melted butter and spice mix over the fish fillet."
-msgstr ""
-"Snižte teplotu (3/10). Přidejte dvě lžíce másla, trochu tymiánu, rozmarýnu a "
-"česneku. Až se máslo rozpustí, přelijte pomocí lžíce rybu máslem spolu se "
-"směsí koření."
-
-msgid ""
-"After about 5 minutes your fish will be done. You can serve it with "
-"potatoes, rice, or noodles. Everything works."
-msgstr ""
-"Po 5 minutách je vaše ryba hotová. Můžete ji podávat s bramborami, rýží nebo "
-"těstovinami. Hodí se k ní vše."
-
-msgid ""
-"Traditional potato hash from Alsace. Usually served with lettuce, sometimes "
-"with smoked salmon."
-msgstr ""
-"Tradiční bramborový trhanec z Alsaska. Obvykle se podává s ledovým salátem, "
-"někdy s uzeným lososem."
-
-msgid ""
-"[image:1]Peel and grate the potatoes. Peel and slice the onions. Mix with "
-"the rest of the ingredients in a large bowl."
-msgstr ""
-"[image:1]Oloupejte a nakrájejte brambory. Oloupejte a nakrájejte cibuli. "
-"Obojí promíchejte ve velké míse se zbytkem přísad."
-
-msgid "Put a frying pan on the hob at medium heat with a bit of oil."
-msgstr "Dejte na mírný oheň rozehřát pánev s trochou oleje."
-
-msgid "[image:2]Form thin patties in the pan and brown them on both sides."
-msgstr "[image:2]Tvořte na pánvi tenké placičky a nechejte je usmažit dohněda."
-
-msgid ""
-"[image:0]Serve hot. Can be kept in a fridge and reheated in a micro-wave "
-"oven."
-msgstr ""
-"[image:0]Podávejte teple. Dají se i uchovat v lednici a později ohřát v "
-"mikrovlnné troubě."
-
-msgid "Savoury cakes"
-msgstr "Slané koláče"
-
-msgid ""
-"This savoury cakes can be served as appetizers or as main course. There are "
-"several variations that you can bake with the same base depending on your "
-"mood and tastes. Quite common at French parties."
-msgstr ""
-"Tyto slané koláče mohou složit jako předkrm nebo jako hlavní chod. Existuje "
-"řada variant, které můžete upéct na stejném základě, ale přizpůsobit si je "
-"své náladě a chuti. Často se s nimi setkáte u Francouzů."
-
-msgid ""
-"Prepare the batter: melt butter in a large bowl, then mix with the eggs, "
-"flour and yeast in a bowl."
-msgstr ""
-"Připravte těsto: rozpusťte máslo ve velké míse a smíchejte s vejci, moukou a "
-"droždím."
-
-msgid ""
-"Add the ingredients matching the variation you chose, preferably sliced or "
-"diced to turn them into small bits, and mix again. Try coming up with your "
-"own variations!"
-msgstr ""
-"Přidejte přísady podle své volby, nejlépe rozkrájené na kostičky nebo "
-"nachystané tak, aby se rozpadly na malé kousky, a opět promíchejte. Zkuste "
-"si vymyslet i své vlastní variace."
-
-msgid "Pour the batter in a loaf tin."
-msgstr "Nalijte těsto do bochníkové formy."
-
-msgid "[timer:00:40:00]Put in the oven at 180°C for 40 minutes."
-msgstr "[timer:00:40:00]Vložte do trouby na 40 minut při 180 °C."
-
-msgid ""
-"[image:1]Serve cold, cut in slices or cubes that people will get with a "
-"toothpick."
-msgstr ""
-"[image:1]Podávejte po vychladnutí nařezané na plátky nebo kostky, aby si je "
-"lidé mohli napichovat na párátka."
-
-msgid "Tagliatelle alla Romana"
-msgstr "Tagliatelle na římský způsob"
-
-msgid ""
-"Pasta is one of my favourite things in the world, and this is one of my "
-"favourity pasta dishes. It's gutsy Italian food at its best."
-msgstr ""
-"Těstoviny jsou jedno z mých nejoblíbenějších jídel na světě a tohle u mě "
-"patří mezi těstovinami na první místo. Je to ukázka italského jídla v celé "
-"jeho kráse."
-
-msgid ""
-"It's important to have good quality chicken livers for this recipe - get "
-"free range organic if possible. You can use dried pasta if you're unable to "
-"get fresh."
-msgstr ""
-"Pro tento recept je důležité mít kvalitní kuřecí játra – pokud je to možné, "
-"kupte pocházející z volného chovu. Pokud neseženete čerstvé těstoviny, "
-"můžete použít sušené."
-
-msgid ""
-"Rinse the chicken livers and cut out any out any bits of sinew. Dry and "
-"season with salt and pepper."
-msgstr ""
-"Opláchněte kuřecí játra a zbavte je všech blan. Osušte je a ochuťte solí a "
-"pepřem."
-
-msgid "Finely chop the red onion."
-msgstr "Nakrájíme červenou cibuli na drobno."
-
-msgid ""
-"Melt half the butter in a frying pan, then add the olive oil and cook the "
-"onion until soft, without letting it brown."
-msgstr ""
-"Rozpusťte polovinu másla na pánvi, přidejte olivový olej a nechte na něm "
-"zesklovatět cibulku (nesmí zhnědnout)."
-
-msgid ""
-"Add the livers to the pan and fry until lightly browned. Then add the "
-"tomatoes and cook on a low heat for 20 minutes, stirring occasionally."
-msgstr ""
-"Přidejte na pánev játra a smažte, dokud nebudou lehce opečená. Pak přidejte "
-"rajčata a povařte 20 minut na mírném ohni za občasného promíchání."
-
-msgid ""
-"Put a deep pan of water on to boil and add a good pinch of salt to the water."
-msgstr ""
-"Do hrnce dejte vodu, přidejte do ní špetku soli a nechte ji přivést k varu."
-
-msgid ""
-"Remove the livers from the pan and chop finely. Then add back to the sauce "
-"and continue to cook. Check for seasoning and add more salt and pepper if "
-"necessary."
-msgstr ""
-"Mezi tím vyndejte z pánve játra a nakrájejte je na jemno. Pak je vraťte zpět "
-"do omáčky a nechejte dále vařit. V případě potřeby je můžete ještě dochutit "
-"solí a pepřem."
-
-msgid ""
-"Cook the pasta for 3 minutes if fresh (or put on earlier and follow packet "
-"instructions if using dry pasta)."
-msgstr ""
-"Uvařte těstoviny. Čerstvé se vaří 3 minuty, u sušených se řiďte instrukcemi "
-"na jejich obalu."
-
-msgid ""
-"Drain the pasta, retaining a cup of the pasta water. Add the pasta to the "
-"sauce along with the remaining butter. Mix and cook on a low heat for "
-"several minutes, to allow the pasta to absorb the sauce."
-msgstr ""
-"Odlejte si z uvařených těstovin šálek vody a zbytek jí slijte. Přidejte "
-"těstoviny do omáčky, spolu se zbytkem másla. Promíchejte a nechte na mírném "
-"ohni povařit několik minut, aby měly těstoviny čas nasát omáčku."
-
-msgid "If the sauce needs loosening, add a bit of the pasta cooking water."
-msgstr ""
-"Pokud potřebujete, máčku přiředit, použijte k tomu vodu odlitou do šálku."
-
-msgid "Serve with plenty of black pepper."
-msgstr "Podávejte s velkým množstvím černého pepře."
-
-msgid "Non-knead buns"
-msgstr "Nehnětené bochánky"
-
-msgid "Very quick fresh bread for breakfast with 5 minutes of work."
-msgstr "Velmi rychlý chléb na snídani, který zabere 5 minut práce."
-
-msgid ""
-"[image:1]Mix together all of the ingredients in a large bowl into a thick "
-"porridge-like dough. Do not knead the dough, just mix it together. "
-msgstr ""
-"[image:1]Smíchejte dohromady všechny přísady ve velké míse do husté kaše, "
-"podobně jako těsto. Ale nesnažte se uhníst těsto, stačí jen smíchat."
-
-msgid ""
-"Cover and leave to rise in room temperature for 8-12 hours. This can be done "
-"for example the previous night so you can bake them in the morning."
-msgstr ""
-"Zakryjte a nechejte kynout při pokojové teplotě po dobu 8 až 12 hodin. "
-"Přípravu můžete provést třeba večer a k pečení pak můžete přistoupit další "
-"den ráno."
-
-msgid "Heat your oven to 250 degrees Celsius."
-msgstr "Rozehřejte troubu na 250 stupňů Celsia"
-
-msgid "Classic Chicken Noodle Soup"
-msgstr "Klasická kuřecí polévka s nudlemi"
-
-msgid "A simple take on a typical American meal."
-msgstr "Jednoduše si připravte typické americké jídlo."
-
-msgid "Tomato dough with hamburger and cheese topping"
-msgstr "Rajčatové těsto s hamburgerem a sýrovou omáčkou"
-
-msgid "Dissolve yeast in warm water. Let stand for 2 minutes."
-msgstr "Rozpusťte droždí v teplé vodě. Nechejte 2 minuty ustát."
-
-msgid ""
-"Add 1/2 cup tomato sauce, oil, salt, 1 tsp chili powder, and sugar. Mix well."
-msgstr ""
-"Přidejte ½ šálku rajčatové omáčky, olej, sůl, 1 lžičku čili a cukr. Dobře "
-"promíchejte."
-
-msgid "Gradually stir in flour. Dough will become sticky."
-msgstr "Postupně vmíchejte mouku. Těsto by mělo lepit."
-
-msgid "Optional: Let rise covered in a warm place for about an hour."
-msgstr "Volitelný krok: Nechte zakryté kynou zhruba hodinu na teplém místě."
-
-msgid "Preheat the oven to 175°C/gas mark 4."
-msgstr "Předehřejte troubu na 175 °C (4 značku na plynové troubě)."
-
-msgid "Pour the hot sauce over the cake and serve."
-msgstr "Koláč přelijte horkou omáčkou a podávejte."
-
-msgid "Pizza is an all-time favorite."
-msgstr "Pizza je oblíbená kdykoliv kdekoliv."
-
-msgid ""
-"Put the flour, yeast, water and olive oil in a bowl and stir it up with your "
-"hands or a spoon until there's no dry flour left, and let it be."
-msgstr ""
-"Dejte do mísy mouku, droždí, vodu a olivový olej a hnětejte rukama nebo "
-"míchejte lžící, dokud nezůstane oddělená žádná suchá mouka."
-
-msgid ""
-"Cover the bowl tightly in plastic wrap and let it sit at room temperature "
-"overnight. "
-msgstr ""
-"Mísu neprodyšně zakryjte potravinářskou fólií a nechejte přes noc při "
-"pokojové teplotě."
-
-msgid ""
-"The next day it should have rosen quite a bit. Dump it all out onto a "
-"floured surface, then divide it into balls."
-msgstr ""
-"Do příštího dne by mělo těsto trochu nabýt. Vyklopte jej na pomoučenou "
-"pracovní desku a rozdělte na kuličky."
-
-msgid ""
-"Spread olive oil in a 10-inch cast iron skillet or round cake pan and place "
-"a dough ball in the middle."
-msgstr ""
-"Vytřete olejem 25cm litinovou pánev nebo dortovou formu a umístěte "
-"doprostřed kuličku těsta."
-
-msgid ""
-"Rub the dough ball around and flip it a couple times until it is completely "
-"coated in oil and the oil completely coats the bottom and sides of the pan. "
-"Cover in plastic, and let it sit for another couple of hours without "
-"touching it."
-msgstr ""
-"Těstovou kuličku rozmačkejte do šířky pánve nebo formy a několikrát jej "
-"převraťte, aby se pořádně omastilo olejem a zároveň se olej rovnoměrně "
-"rozetřel po dně i stranách pánve nebo formy. Zakryjte jej potravinářskou "
-"fólií a nechejte další dvě hodiny uležet, aniž byste s ním jakkoliv hýbali."
-
-msgid ""
-"The dough should have spread on it own (takes about 2 hours). Lift the sides "
-"of the dough to let big air bubbles out."
-msgstr ""
-"Těsto by se mělo samo rovnoměrně rozležet (zabere to zhruba 2 hodiny). "
-"Okraje těsta nadzdvihněte, čímž by se měly uvolnit velké vzduchové bubliny."
-
-msgid ""
-"Put in the oven at 280°C. (or as hot as your oven goes) for about 15 "
-"minutes. Peek underneath and if your pizza is a little pale, you can finish "
-"on the stovetop directly over medium heat until it is as dark and crisp as "
-"you like it."
-msgstr ""
-"Vložte jej do trouby na 280 °C (nebo aspoň na tolik, kolik vaše trouba "
-"zvládá) po dobu 15 minut. Nakoukněte na spodní stranu a pokud vám přijde "
-"nedopečená, můžete ji dopéct na sporáku na mírném ohni, dokud nezíská barvu, "
-"jaká vám vyhovuje."
-
-msgid "Wholesome Crackers"
-msgstr "Zdravé krekry"
-
-msgid ""
-"Crackers are a fulfilling alternative snack and keeps your stomach going. "
-"Crackers consist of seeds, oat and flour. The recipe described here is very "
-"flexible. You can use whichever seeds, nuts and flour types you may have. "
-"I've personally tried almonds, sesame seeds, chia seeds, rye grains, millet "
-"and  buckwheat."
-msgstr ""
-"Krekry jsou plnohodnotnou alternativou snídaně a udržují váš žaludek sytý. "
-"Obsahují semínka, oves a mouku. Zde uvedený recept se dá ale různě "
-"upravovat. Můžete použít různé druhy semínek, ořechy a typy mouky, jaké "
-"zrovna máte. Osobně jsem vyzkoušel mandle, sezamová semínka, chia semínka, "
-"žito, proso a pohanku."
-
-msgid ""
-"Turn on the oven at 473,15 K (200 °C). Mix all dry ingredients (seeds, "
-"flour, oatmeal, baking powder and salt) together. Mix oil. Then add water "
-"gradually while mixing until the dough is firm and pasty. If you add too "
-"much water, the dough will end up sticking too much to the baking paper."
-msgstr ""
-"Zapněte troubu na 473,15 K (200 °C). Promíchejte všechny suché přísady "
-"(semínka, mouku, ovesné vločky, prášek do pečiva a sůl). Přimíchejte olej. "
-"Pak za stálého míchání postupně přidávejte vodu, dokud se těsto nestane "
-"pevné a vláčné. Pokud přidáte vody moc, bude se vám těsto přichytávat k "
-"pečícímu papíru."
-
-msgid ""
-"Cut a sheet of baking paper at the size of a baking tray and place the dough "
-"on it. Cut another sheet of baking paper and put on top. Use a rolling pin "
-"on top of the second baking sheet to flatten the dough. Make the dough as "
-"thing as possible. Afterwards, take off the second sheet. Bring forth a "
-"knife and cut creases from horizontally and vertically to form squares (see "
-"example on the picture). Optionally decorate with extra seeds on top before "
-"inserting into the preheated oven."
-msgstr ""
-"Uřežte list pečícího papíru do pečícího plechu a umístěte na něj těsto. "
-"Další uřezaný list papíru položte na vrch na těsto. Použijte váleček a přes "
-"druhý list těsto rozválejte co nejvíce dotenka. Po té druhý list papíru "
-"sundejte. Vezměte nůž a rozřežte těsto vodorovně a svisle na čtverce (viz "
-"ukázkový obrázek). Volitelně jej před vložením do předehřáté trouby ozdobte "
-"na povrchu dalšími semínky."
-
-msgid ""
-"Wait for the crackers to become crisp, this takes around 17 minutes. You can "
-"check if they are done by touching the crackers or by pulling up a bit in "
-"the baking sheet and see if the crackers in the middle still bends.  The "
-"crackers take on a yellow golden color when they are done."
-msgstr ""
-"Vyčkejte, až začnou být krekry křupavé, což trvá tak 17 minut. Zkontrolovat "
-"to můžete buď dotekem krekru, nebo povysunutím plechu a pohledem, jestli se "
-"krekry uprostřed stále prohýbají. Hotové krekry by měly mít barvu dozlatova."
-
-msgid ""
-"Take out the crackers and leave them on the kitchen table to cool down for a "
-"few minutes."
-msgstr ""
-"Vyjměte krekry a ponechejte je na kuchyňské lince pár minut vychladnout."
-
-msgid "Tofu ‘Egg’ Scramble"
-msgstr "Míchaná vajíčka z tofu"
-
-msgid "This vegan breakfast staple is perfect on a lazy saturday morning."
-msgstr "Toto veganské jídlo je ideální na klidné sobotní ráno."
-
-msgid ""
-"Chop the onion. Open up the tofu package and slice it up, then crumble with "
-"your hands."
-msgstr ""
-"Cibuli nakrájejte na drobno. Otevřete balíček tofu, rozkrájejte jej a "
-"nakonec rozdrobte rukama."
-
-msgid ""
-"Sautee the onion, tofu, and peppers for 3-5 minutes using the vegan butter."
-msgstr "Zpěňte cibuli, tofu a papriky na 3 až 5 minut na veganském másle."
-
-msgid ""
-"Turn heat down to medium and add the rest of the ingredients – cook for 5-7 "
-"minutes more."
-msgstr ""
-"Zvyšte teplotu na střední hodnotu a přidejte zbytek přísad. Vařte dalších "
-"5 až 7 minut."
-
-msgid "Donauwellen"
-msgstr "Dunajské vlny"
-
-msgid ""
-"Donauwellen is a popular German cake with chocolate, vanilla cream and "
-"cherries. The name is due to the fact that the dough typically forms a wavy "
-"pattern."
-msgstr ""
-"Dunajské vlny (v originále Donauwellen) jsou oblíbený německý zákusek s "
-"čokoládou, vanilkovým krémem a třešněmi. Jeho název vznikl podle toho, že "
-"těsto tvoří typický vzor vlnek."
-
-msgid "[image:1]Mix the butter until it is creamy. Add sugar and egg."
-msgstr "[image:1]Hněťte máslo, dokud není krémovité. Přidejte cukr a vejce."
-
-msgid ""
-"[image:2]Mix the flour with the baking powder and mix it in. Separate a "
-"third of the dough and add the cocoa powder to it."
-msgstr ""
-"[image:2]Přidejte mouku s práškem do pečiva a promíchejte. Oddělte třetinu "
-"těsta a přidejte do ní kakaový prášek."
-
-msgid ""
-"[image:4]Spread the light dough on a buttered baking sheet. Put the dark "
-"dough on top."
-msgstr ""
-"[image:4]Na pečící plech vymazaný máslem rozetřete světlé těsto. Na něj pak "
-"tmavé těsto."
-
-msgid "[image:4]Use a fork to make a wavy pattern."
-msgstr "[image:4]Použijte vidličku k vytvoření vzoru vln."
-
-msgid "[image:6]Spread the dried cherries on top of the dough."
-msgstr "[image:6]Na vršek těsta naskládejte sušené třešně."
-
-msgid "[timer:00:30:00]Bake for 30 minutes at 200 °C."
-msgstr "[timer:00:30:00]Pečte 30 minut při 200 °C."
-
-msgid ""
-"Use the milk, sugar and pudding to cook vanilla pudding and let it cool down "
-"while stirring it frequently. Slowly add spoonfuls of the butter, which "
-"should be at room temperature."
-msgstr ""
-"Z mléka, cukru a vanilkového pudingového prášku uvařte puding a za stálého "
-"míchání jej nechejte vychladnout. Pomalu přimíchejte lžíce másla pokojové "
-"teploty."
-
-msgid "[image:8]Spread the butter cream on the cooled cake."
-msgstr "[image:8]Krém rozetřete na vychladlý korpus."
-
-msgid ""
-"[image:9]Melt the chocolate frosting in a hot water bath and sprinkle it on "
-"top."
-msgstr ""
-"[image:9]Rozpusťte čokoládovou polevu v horké lázni a polijte jí vršek "
-"rozetřeného pudingu."
-
-msgid "Gingered Carrot Soup"
-msgstr "Mrkvová polévka se zázvorem"
-
-msgid "A nutritious vegan soup that can be made relatively quickly"
-msgstr "Výživná veganská polévka s relativně rychlou přípravou"
-
-msgid "This is my Aunt Wendy's recipe."
-msgstr "Jedná se o recept mojí tety Wendy."
-
-msgid "Cook Now"
-msgstr "Uvařit hned"
-
-msgid "_Close"
-msgstr "_Zavřít"
-
-msgid ""
-"There was an error sending the exported recipes by e-mail.\n"
-"The exported data can be found at “%s”."
-msgstr ""
-"Došlo k chybě při odesílání exporotvaných receptů e-mailem.\n"
-"Nelze najít exportovaná data v „%s“."
-
-msgid "Failed to load recipe: Images and Angles length mismatch"
-msgstr "Selhalo načtení receptu: Obrázky a úhly navzájem nesouhlasí"
-
-msgid "Failed to load recipe: Images and DarkText length mismatch"
-msgstr ""
-"Selhalo načtení receptu: Obrázky a délka tmavého textu si navzájem nesouhlasí"
-
-msgid "There was an error sending the shopping list by e-mail.\n"
-msgstr "Došlo k chybě při odesílání nákupního seznamu e-mailem.\n"
-
-msgid ""
-"Spread the light dough on a buttered baking sheet. Put the dark dough on top.​"
-"<a href=\"image:4\">④</a> Use a fork to make a wavy pattern. Spread the "
-"dried cherries on top of the dough.​<a href=\"image:6\">⑥</a>"
-msgstr ""
-"Na pečící plech vymazaný máslem rozetřete světlé těsto. Na něj pak tmavé "
-"těsto.<a href=\"image:4\">④</a> Použijte vidličku k vytvoření vzoru vln. Na "
-"vršek těsta naskládejte sušené třešně.<a href=\"image:6\">⑥</a>"
-
-msgid ""
-"Oven\n"
-"preheated"
-msgstr ""
-"Trouba\n"
-"předehřátá"
-
-msgid ""
-"Instructions\n"
-"followed"
-msgstr ""
-"Pokyny\n"
-"přečtené"
-
-msgid "_Cook it later"
-msgstr "Poz_ději vyzkouším"
-
-msgid "Remaining time"
-msgstr "Zbývající čas"
-
-msgid "Stop"
-msgstr "Zastavit"
-
-msgid "Preferences"
-msgstr "Předvolby"
-
-msgid "_Preferences"
-msgstr "_Předvolby"
-
-msgid "Use dark text"
-msgstr "Použít tmavý text"
-
-msgid "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-msgstr "ABCČDEFGHIJKLMNOPQRŘSŠTUVWXYZŽ"
 
+#~ msgid "Contains dairy products"
+#~ msgstr "Obsahuje mléčné výrobky"
+
+#~ msgid "Contains Gluten"
+#~ msgstr "Obsahuje lepek"
+
+#~ msgid "Apply"
+#~ msgstr "Použít"
+
+#~ msgid "Dough"
+#~ msgstr "Těsto"
+
+#~ msgid "Toppings"
+#~ msgstr "Zdobení"
+
+#~ msgctxt "_"
+#~ msgid "translator-credits"
+#~ msgstr "Marek Černocký <marek@manet.cz>"
+
+#~ msgid "Recipes will be documented here."
+#~ msgstr "Recepty budou zdokumentovány zde."
+
+#~ msgid "Adrià is originally from Barcelona, Spain."
+#~ msgstr "Adrià pochází z Barcelony ve Španělsku."
+
+#~ msgid ""
+#~ "Being from Strasbourg, Alexandre is knowledgeable about both Alsatian and "
+#~ "French cuisine, but he's not afraid to experiment in other ones as well."
+#~ msgstr ""
+#~ "Původem ze Štrasburku zná Alexandr jak německou, tak francouzskou "
+#~ "kuchyni, ale nebojí se experimentovat i s jinými."
+
+#~ msgid "Aviation, making stuff, in Finland."
+#~ msgstr "Letectví, vyvádění hloupostí, Finsko."
+
+#~ msgid ""
+#~ "Erusan is an American who has lived all over the country, loves GNOME, "
+#~ "and enjoys cooking — primarily American, Asian, and Indian cuisine."
+#~ msgstr ""
+#~ "Erusan je Američan, který pobýval v zemích celého světa, miluje GNOME a "
+#~ "užívá si vaření – převážně americké, asijské a indické kuchyně."
+
+#~ msgid "I cook a lot, particularly Italian and Indian."
+#~ msgstr "Vařím hodně, zejména italská a indická jídla."
+
+#~ msgid ""
+#~ "Ray is a Desktop Software Engineer at Red Hat and vegetarian who "
+#~ "occasionally enjoys cooking."
+#~ msgstr ""
+#~ "Ray je softwarový inženýr pro desktop ve firmě Red Hat a vegetarián, "
+#~ "který se příležitostně věnuje vaření."
+
+#~ msgid ""
+#~ "My name is Fredrik Fyksen. I am from Norway, but live in Denmark. I like "
+#~ "food, computers and music. You can read more about me at <a href="
+#~ "\"https://www.fyksen.me/\">fyksen.me</a>."
+#~ msgstr ""
+#~ "Jmenuji se Fredrik Fyksen. Jsem z Norska, ale žiji v Dánsku. Mám rád "
+#~ "jídlo, počítače a hudbu. Více si o mě můžete přečíst na <a href=\"https://"
+#~ "www.fyksen.me/\">fyksen.me</a>."
+
+#~ msgid ""
+#~ "Matthias is a manager in the Desktop team at Red Hat. He likes to cook as "
+#~ "much as he likes to code."
+#~ msgstr ""
+#~ "Matthias je vedoucí desktopového týmu ve firmě Red Hat. Vaření má rád "
+#~ "úplně stejně, jako programování."
+
+#~ msgid "Matthew is a vegan and a Computer Science student who loves FOSS."
+#~ msgstr "Matthew je vegan a student počítačových věd, který má rád FOSS."
+
+#~ msgid "Elvin lives in Istanbul."
+#~ msgstr "Elvin žije v Istanbulu."
+
+#~ msgid "Spanish Omelet"
+#~ msgstr "Španělská omeleta"
+
+#~ msgid "Traditional Spanish Omelet, also known as \"Tortilla de Patata\""
+#~ msgstr "Tradiční španělská omeleta známá pod názvem „Tortilla de Patata“"
+
+#~ msgid ""
+#~ "[image:0]Put a bit of oil in a pan and cover the surface with sliced "
+#~ "onions."
+#~ msgstr ""
+#~ "[image:0]Nalijte na pánev trochu oleje a povrch pokryjte plátky cibule."
+
+#~ msgid "[image:3]Meanwhile, peel the potatoes and cut them in small pieces."
+#~ msgstr "[image:3]Mezitím oloupejte brambory a nakrájejte je na malé kousky."
+
+#~ msgid ""
+#~ "[image:2]Once the onions start to take colour, put the potatoes into the "
+#~ "pan and add some salt."
+#~ msgstr ""
+#~ "[image:2]Jakmile začne cibule získávat barvu, vložte brambory na pánev a "
+#~ "posolte je."
+
+#~ msgid ""
+#~ "[image:1]Cover the pan and stir the contents from time to time, until "
+#~ "potatoes are well cooked."
+#~ msgstr ""
+#~ "[image:1]Pánev zakryjte a za občasného zamíchání nechejte brambory vařit, "
+#~ "dokud nejsou hotové."
+
+#~ msgid "[image:7]Put the eggs in a big bowl and add some salt"
+#~ msgstr "[image:7]Rozklepněte vejce do velké mísy a posolte je."
+
+#~ msgid "[image:6]Whip the eggs."
+#~ msgstr "[image:6]Vejce rozšlehejte."
+
+#~ msgid "[image:5]Put the contents of the pan in the bowl and mix it well."
+#~ msgstr "[image:5]Obsah pánve vysypte do mísy a dobře promíchejte."
+
+#~ msgid ""
+#~ "[image:4]Add some oil to the pan and put the whole mix back into the pan."
+#~ msgstr ""
+#~ "[image:4]Na pánev přidejte trochu oleje a obsah mísy přesypejte zpět na "
+#~ "pánev."
+
+#~ msgid ""
+#~ "[image:8]Once the lower side is cooked, with the help of a plate, turn "
+#~ "the omelet."
+#~ msgstr "[image:8]Až je spodní strana usmažená, omeletu obracečkou otočte."
+
+#~ msgid "Repeat the process until it is well cooked."
+#~ msgstr "Opakujte postup, dokud není vše dobře osmažené."
+
+#~ msgid "White fish for people who dont like fish."
+#~ msgstr "Bílá ryba pro lidi, kteří nemají rádi ryby."
+
+#~ msgid ""
+#~ "It is a fantastic dish for those of us that dont love fish, but know we "
+#~ "have to eat it to stay healthy."
+#~ msgstr ""
+#~ "Jedná se o skvělé jídlo pro ty z nás, kteří nemáme ryby rádi, ale víme, "
+#~ "že je zdravé je jíst."
+
+#~ msgid ""
+#~ "The key to get this dish good is to have high temperature on the stove "
+#~ "when first frying the fish. Then turn it down after the initial fry."
+#~ msgstr ""
+#~ "Klíčové při přípravě tohoto jídla je, mít při prvním smažení na sporáku "
+#~ "vysokou teplotu. Po počátečním osmahnutí ji zase můžete snížit."
+
+#~ msgid ""
+#~ "Set the stove to high (8/10), then put a good amount of oil in it. Any "
+#~ "type of oil will do."
+#~ msgstr ""
+#~ "Nastavte plotnu na vysokou teplotu (8/10) a dejte na ni v pánvi rozehřát "
+#~ "dostatečné množství oleje. Dá se použít jakýkoliv kuchyňský olej."
+
+#~ msgid ""
+#~ "Remove bone and skin from the fish (if any), and add salt and pepper. "
+#~ "Give the stove some minutes to get really hot. Then put the fish in. 2-3 "
+#~ "min on each side."
+#~ msgstr ""
+#~ "Z ryby odstraňte kosti a kůži (pokud nemáte již očištěné) a posypte je "
+#~ "solí a pepřem. Vyčkejte, až se pánev dostatečně rozehřeje. Pak na ni "
+#~ "položte rybu na 2 až 3 minuty pro každou stranu."
+
+#~ msgid ""
+#~ "Turn the temperature down to low (3/10). Add two spoons of butter, some "
+#~ "thyme, rosemary and garlic. When the butter have melted, use a spoon to "
+#~ "poor the melted butter and spice mix over the fish fillet."
+#~ msgstr ""
+#~ "Snižte teplotu (3/10). Přidejte dvě lžíce másla, trochu tymiánu, "
+#~ "rozmarýnu a česneku. Až se máslo rozpustí, přelijte pomocí lžíce rybu "
+#~ "máslem spolu se směsí koření."
+
+#~ msgid ""
+#~ "After about 5 minutes your fish will be done. You can serve it with "
+#~ "potatoes, rice, or noodles. Everything works."
+#~ msgstr ""
+#~ "Po 5 minutách je vaše ryba hotová. Můžete ji podávat s bramborami, rýží "
+#~ "nebo těstovinami. Hodí se k ní vše."
+
+#~ msgid ""
+#~ "Traditional potato hash from Alsace. Usually served with lettuce, "
+#~ "sometimes with smoked salmon."
+#~ msgstr ""
+#~ "Tradiční bramborový trhanec z Alsaska. Obvykle se podává s ledovým "
+#~ "salátem, někdy s uzeným lososem."
+
+#~ msgid ""
+#~ "[image:1]Peel and grate the potatoes. Peel and slice the onions. Mix with "
+#~ "the rest of the ingredients in a large bowl."
+#~ msgstr ""
+#~ "[image:1]Oloupejte a nakrájejte brambory. Oloupejte a nakrájejte cibuli. "
+#~ "Obojí promíchejte ve velké míse se zbytkem přísad."
+
+#~ msgid "Put a frying pan on the hob at medium heat with a bit of oil."
+#~ msgstr "Dejte na mírný oheň rozehřát pánev s trochou oleje."
+
+#~ msgid "[image:2]Form thin patties in the pan and brown them on both sides."
+#~ msgstr ""
+#~ "[image:2]Tvořte na pánvi tenké placičky a nechejte je usmažit dohněda."
+
+#~ msgid ""
+#~ "[image:0]Serve hot. Can be kept in a fridge and reheated in a micro-wave "
+#~ "oven."
+#~ msgstr ""
+#~ "[image:0]Podávejte teple. Dají se i uchovat v lednici a později ohřát v "
+#~ "mikrovlnné troubě."
+
+#~ msgid "Savoury cakes"
+#~ msgstr "Slané koláče"
+
+#~ msgid ""
+#~ "This savoury cakes can be served as appetizers or as main course. There "
+#~ "are several variations that you can bake with the same base depending on "
+#~ "your mood and tastes. Quite common at French parties."
+#~ msgstr ""
+#~ "Tyto slané koláče mohou složit jako předkrm nebo jako hlavní chod. "
+#~ "Existuje řada variant, které můžete upéct na stejném základě, ale "
+#~ "přizpůsobit si je své náladě a chuti. Často se s nimi setkáte u Francouzů."
+
+#~ msgid ""
+#~ "Prepare the batter: melt butter in a large bowl, then mix with the eggs, "
+#~ "flour and yeast in a bowl."
+#~ msgstr ""
+#~ "Připravte těsto: rozpusťte máslo ve velké míse a smíchejte s vejci, "
+#~ "moukou a droždím."
+
+#~ msgid ""
+#~ "Add the ingredients matching the variation you chose, preferably sliced "
+#~ "or diced to turn them into small bits, and mix again. Try coming up with "
+#~ "your own variations!"
+#~ msgstr ""
+#~ "Přidejte přísady podle své volby, nejlépe rozkrájené na kostičky nebo "
+#~ "nachystané tak, aby se rozpadly na malé kousky, a opět promíchejte. "
+#~ "Zkuste si vymyslet i své vlastní variace."
+
+#~ msgid "Pour the batter in a loaf tin."
+#~ msgstr "Nalijte těsto do bochníkové formy."
+
+#~ msgid "[timer:00:40:00]Put in the oven at 180°C for 40 minutes."
+#~ msgstr "[timer:00:40:00]Vložte do trouby na 40 minut při 180 °C."
+
+#~ msgid ""
+#~ "[image:1]Serve cold, cut in slices or cubes that people will get with a "
+#~ "toothpick."
+#~ msgstr ""
+#~ "[image:1]Podávejte po vychladnutí nařezané na plátky nebo kostky, aby si "
+#~ "je lidé mohli napichovat na párátka."
+
+#~ msgid "Tagliatelle alla Romana"
+#~ msgstr "Tagliatelle na římský způsob"
+
+#~ msgid ""
+#~ "Pasta is one of my favourite things in the world, and this is one of my "
+#~ "favourity pasta dishes. It's gutsy Italian food at its best."
+#~ msgstr ""
+#~ "Těstoviny jsou jedno z mých nejoblíbenějších jídel na světě a tohle u mě "
+#~ "patří mezi těstovinami na první místo. Je to ukázka italského jídla v "
+#~ "celé jeho kráse."
+
+#~ msgid ""
+#~ "It's important to have good quality chicken livers for this recipe - get "
+#~ "free range organic if possible. You can use dried pasta if you're unable "
+#~ "to get fresh."
+#~ msgstr ""
+#~ "Pro tento recept je důležité mít kvalitní kuřecí játra – pokud je to "
+#~ "možné, kupte pocházející z volného chovu. Pokud neseženete čerstvé "
+#~ "těstoviny, můžete použít sušené."
+
+#~ msgid ""
+#~ "Rinse the chicken livers and cut out any out any bits of sinew. Dry and "
+#~ "season with salt and pepper."
+#~ msgstr ""
+#~ "Opláchněte kuřecí játra a zbavte je všech blan. Osušte je a ochuťte solí "
+#~ "a pepřem."
+
+#~ msgid "Finely chop the red onion."
+#~ msgstr "Nakrájíme červenou cibuli na drobno."
+
+#~ msgid ""
+#~ "Melt half the butter in a frying pan, then add the olive oil and cook the "
+#~ "onion until soft, without letting it brown."
+#~ msgstr ""
+#~ "Rozpusťte polovinu másla na pánvi, přidejte olivový olej a nechte na něm "
+#~ "zesklovatět cibulku (nesmí zhnědnout)."
+
+#~ msgid ""
+#~ "Add the livers to the pan and fry until lightly browned. Then add the "
+#~ "tomatoes and cook on a low heat for 20 minutes, stirring occasionally."
+#~ msgstr ""
+#~ "Přidejte na pánev játra a smažte, dokud nebudou lehce opečená. Pak "
+#~ "přidejte rajčata a povařte 20 minut na mírném ohni za občasného "
+#~ "promíchání."
+
+#~ msgid ""
+#~ "Put a deep pan of water on to boil and add a good pinch of salt to the "
+#~ "water."
+#~ msgstr ""
+#~ "Do hrnce dejte vodu, přidejte do ní špetku soli a nechte ji přivést k "
+#~ "varu."
+
+#~ msgid ""
+#~ "Remove the livers from the pan and chop finely. Then add back to the "
+#~ "sauce and continue to cook. Check for seasoning and add more salt and "
+#~ "pepper if necessary."
+#~ msgstr ""
+#~ "Mezi tím vyndejte z pánve játra a nakrájejte je na jemno. Pak je vraťte "
+#~ "zpět do omáčky a nechejte dále vařit. V případě potřeby je můžete ještě "
+#~ "dochutit solí a pepřem."
+
+#~ msgid ""
+#~ "Cook the pasta for 3 minutes if fresh (or put on earlier and follow "
+#~ "packet instructions if using dry pasta)."
+#~ msgstr ""
+#~ "Uvařte těstoviny. Čerstvé se vaří 3 minuty, u sušených se řiďte "
+#~ "instrukcemi na jejich obalu."
+
+#~ msgid ""
+#~ "Drain the pasta, retaining a cup of the pasta water. Add the pasta to the "
+#~ "sauce along with the remaining butter. Mix and cook on a low heat for "
+#~ "several minutes, to allow the pasta to absorb the sauce."
+#~ msgstr ""
+#~ "Odlejte si z uvařených těstovin šálek vody a zbytek jí slijte. Přidejte "
+#~ "těstoviny do omáčky, spolu se zbytkem másla. Promíchejte a nechte na "
+#~ "mírném ohni povařit několik minut, aby měly těstoviny čas nasát omáčku."
+
+#~ msgid "If the sauce needs loosening, add a bit of the pasta cooking water."
+#~ msgstr ""
+#~ "Pokud potřebujete, máčku přiředit, použijte k tomu vodu odlitou do šálku."
+
+#~ msgid "Serve with plenty of black pepper."
+#~ msgstr "Podávejte s velkým množstvím černého pepře."
+
+#~ msgid "Non-knead buns"
+#~ msgstr "Nehnětené bochánky"
+
+#~ msgid "Very quick fresh bread for breakfast with 5 minutes of work."
+#~ msgstr "Velmi rychlý chléb na snídani, který zabere 5 minut práce."
+
+#~ msgid ""
+#~ "[image:1]Mix together all of the ingredients in a large bowl into a thick "
+#~ "porridge-like dough. Do not knead the dough, just mix it together. "
+#~ msgstr ""
+#~ "[image:1]Smíchejte dohromady všechny přísady ve velké míse do husté kaše, "
+#~ "podobně jako těsto. Ale nesnažte se uhníst těsto, stačí jen smíchat."
+
+#~ msgid ""
+#~ "Cover and leave to rise in room temperature for 8-12 hours. This can be "
+#~ "done for example the previous night so you can bake them in the morning."
+#~ msgstr ""
+#~ "Zakryjte a nechejte kynout při pokojové teplotě po dobu 8 až 12 hodin. "
+#~ "Přípravu můžete provést třeba večer a k pečení pak můžete přistoupit "
+#~ "další den ráno."
+
+#~ msgid "Heat your oven to 250 degrees Celsius."
+#~ msgstr "Rozehřejte troubu na 250 stupňů Celsia"
+
+#~ msgid "Classic Chicken Noodle Soup"
+#~ msgstr "Klasická kuřecí polévka s nudlemi"
+
+#~ msgid "A simple take on a typical American meal."
+#~ msgstr "Jednoduše si připravte typické americké jídlo."
+
+#~ msgid "Tomato dough with hamburger and cheese topping"
+#~ msgstr "Rajčatové těsto s hamburgerem a sýrovou omáčkou"
+
+#~ msgid "Dissolve yeast in warm water. Let stand for 2 minutes."
+#~ msgstr "Rozpusťte droždí v teplé vodě. Nechejte 2 minuty ustát."
+
+#~ msgid ""
+#~ "Add 1/2 cup tomato sauce, oil, salt, 1 tsp chili powder, and sugar. Mix "
+#~ "well."
+#~ msgstr ""
+#~ "Přidejte ½ šálku rajčatové omáčky, olej, sůl, 1 lžičku čili a cukr. Dobře "
+#~ "promíchejte."
+
+#~ msgid "Gradually stir in flour. Dough will become sticky."
+#~ msgstr "Postupně vmíchejte mouku. Těsto by mělo lepit."
+
+#~ msgid "Optional: Let rise covered in a warm place for about an hour."
+#~ msgstr "Volitelný krok: Nechte zakryté kynou zhruba hodinu na teplém místě."
+
+#~ msgid "Preheat the oven to 175°C/gas mark 4."
+#~ msgstr "Předehřejte troubu na 175 °C (4 značku na plynové troubě)."
+
+#~ msgid "Pour the hot sauce over the cake and serve."
+#~ msgstr "Koláč přelijte horkou omáčkou a podávejte."
+
+#~ msgid "Pizza is an all-time favorite."
+#~ msgstr "Pizza je oblíbená kdykoliv kdekoliv."
+
+#~ msgid ""
+#~ "Put the flour, yeast, water and olive oil in a bowl and stir it up with "
+#~ "your hands or a spoon until there's no dry flour left, and let it be."
+#~ msgstr ""
+#~ "Dejte do mísy mouku, droždí, vodu a olivový olej a hnětejte rukama nebo "
+#~ "míchejte lžící, dokud nezůstane oddělená žádná suchá mouka."
+
+#~ msgid ""
+#~ "Cover the bowl tightly in plastic wrap and let it sit at room temperature "
+#~ "overnight. "
+#~ msgstr ""
+#~ "Mísu neprodyšně zakryjte potravinářskou fólií a nechejte přes noc při "
+#~ "pokojové teplotě."
+
+#~ msgid ""
+#~ "The next day it should have rosen quite a bit. Dump it all out onto a "
+#~ "floured surface, then divide it into balls."
+#~ msgstr ""
+#~ "Do příštího dne by mělo těsto trochu nabýt. Vyklopte jej na pomoučenou "
+#~ "pracovní desku a rozdělte na kuličky."
+
+#~ msgid ""
+#~ "Spread olive oil in a 10-inch cast iron skillet or round cake pan and "
+#~ "place a dough ball in the middle."
+#~ msgstr ""
+#~ "Vytřete olejem 25cm litinovou pánev nebo dortovou formu a umístěte "
+#~ "doprostřed kuličku těsta."
+
+#~ msgid ""
+#~ "Rub the dough ball around and flip it a couple times until it is "
+#~ "completely coated in oil and the oil completely coats the bottom and "
+#~ "sides of the pan. Cover in plastic, and let it sit for another couple of "
+#~ "hours without touching it."
+#~ msgstr ""
+#~ "Těstovou kuličku rozmačkejte do šířky pánve nebo formy a několikrát jej "
+#~ "převraťte, aby se pořádně omastilo olejem a zároveň se olej rovnoměrně "
+#~ "rozetřel po dně i stranách pánve nebo formy. Zakryjte jej potravinářskou "
+#~ "fólií a nechejte další dvě hodiny uležet, aniž byste s ním jakkoliv "
+#~ "hýbali."
+
+#~ msgid ""
+#~ "The dough should have spread on it own (takes about 2 hours). Lift the "
+#~ "sides of the dough to let big air bubbles out."
+#~ msgstr ""
+#~ "Těsto by se mělo samo rovnoměrně rozležet (zabere to zhruba 2 hodiny). "
+#~ "Okraje těsta nadzdvihněte, čímž by se měly uvolnit velké vzduchové "
+#~ "bubliny."
+
+#~ msgid ""
+#~ "Put in the oven at 280°C. (or as hot as your oven goes) for about 15 "
+#~ "minutes. Peek underneath and if your pizza is a little pale, you can "
+#~ "finish on the stovetop directly over medium heat until it is as dark and "
+#~ "crisp as you like it."
+#~ msgstr ""
+#~ "Vložte jej do trouby na 280 °C (nebo aspoň na tolik, kolik vaše trouba "
+#~ "zvládá) po dobu 15 minut. Nakoukněte na spodní stranu a pokud vám přijde "
+#~ "nedopečená, můžete ji dopéct na sporáku na mírném ohni, dokud nezíská "
+#~ "barvu, jaká vám vyhovuje."
+
+#~ msgid "Wholesome Crackers"
+#~ msgstr "Zdravé krekry"
+
+#~ msgid ""
+#~ "Crackers are a fulfilling alternative snack and keeps your stomach going. "
+#~ "Crackers consist of seeds, oat and flour. The recipe described here is "
+#~ "very flexible. You can use whichever seeds, nuts and flour types you may "
+#~ "have. I've personally tried almonds, sesame seeds, chia seeds, rye "
+#~ "grains, millet and  buckwheat."
+#~ msgstr ""
+#~ "Krekry jsou plnohodnotnou alternativou snídaně a udržují váš žaludek "
+#~ "sytý. Obsahují semínka, oves a mouku. Zde uvedený recept se dá ale různě "
+#~ "upravovat. Můžete použít různé druhy semínek, ořechy a typy mouky, jaké "
+#~ "zrovna máte. Osobně jsem vyzkoušel mandle, sezamová semínka, chia "
+#~ "semínka, žito, proso a pohanku."
+
+#~ msgid ""
+#~ "Turn on the oven at 473,15 K (200 °C). Mix all dry ingredients (seeds, "
+#~ "flour, oatmeal, baking powder and salt) together. Mix oil. Then add water "
+#~ "gradually while mixing until the dough is firm and pasty. If you add too "
+#~ "much water, the dough will end up sticking too much to the baking paper."
+#~ msgstr ""
+#~ "Zapněte troubu na 473,15 K (200 °C). Promíchejte všechny suché přísady "
+#~ "(semínka, mouku, ovesné vločky, prášek do pečiva a sůl). Přimíchejte "
+#~ "olej. Pak za stálého míchání postupně přidávejte vodu, dokud se těsto "
+#~ "nestane pevné a vláčné. Pokud přidáte vody moc, bude se vám těsto "
+#~ "přichytávat k pečícímu papíru."
+
+#~ msgid ""
+#~ "Cut a sheet of baking paper at the size of a baking tray and place the "
+#~ "dough on it. Cut another sheet of baking paper and put on top. Use a "
+#~ "rolling pin on top of the second baking sheet to flatten the dough. Make "
+#~ "the dough as thing as possible. Afterwards, take off the second sheet. "
+#~ "Bring forth a knife and cut creases from horizontally and vertically to "
+#~ "form squares (see example on the picture). Optionally decorate with extra "
+#~ "seeds on top before inserting into the preheated oven."
+#~ msgstr ""
+#~ "Uřežte list pečícího papíru do pečícího plechu a umístěte na něj těsto. "
+#~ "Další uřezaný list papíru položte na vrch na těsto. Použijte váleček a "
+#~ "přes druhý list těsto rozválejte co nejvíce dotenka. Po té druhý list "
+#~ "papíru sundejte. Vezměte nůž a rozřežte těsto vodorovně a svisle na "
+#~ "čtverce (viz ukázkový obrázek). Volitelně jej před vložením do předehřáté "
+#~ "trouby ozdobte na povrchu dalšími semínky."
+
+#~ msgid ""
+#~ "Wait for the crackers to become crisp, this takes around 17 minutes. You "
+#~ "can check if they are done by touching the crackers or by pulling up a "
+#~ "bit in the baking sheet and see if the crackers in the middle still "
+#~ "bends.  The crackers take on a yellow golden color when they are done."
+#~ msgstr ""
+#~ "Vyčkejte, až začnou být krekry křupavé, což trvá tak 17 minut. "
+#~ "Zkontrolovat to můžete buď dotekem krekru, nebo povysunutím plechu a "
+#~ "pohledem, jestli se krekry uprostřed stále prohýbají. Hotové krekry by "
+#~ "měly mít barvu dozlatova."
+
+#~ msgid ""
+#~ "Take out the crackers and leave them on the kitchen table to cool down "
+#~ "for a few minutes."
+#~ msgstr ""
+#~ "Vyjměte krekry a ponechejte je na kuchyňské lince pár minut vychladnout."
+
+#~ msgid "Tofu ‘Egg’ Scramble"
+#~ msgstr "Míchaná vajíčka z tofu"
+
+#~ msgid "This vegan breakfast staple is perfect on a lazy saturday morning."
+#~ msgstr "Toto veganské jídlo je ideální na klidné sobotní ráno."
+
+#~ msgid ""
+#~ "Chop the onion. Open up the tofu package and slice it up, then crumble "
+#~ "with your hands."
+#~ msgstr ""
+#~ "Cibuli nakrájejte na drobno. Otevřete balíček tofu, rozkrájejte jej a "
+#~ "nakonec rozdrobte rukama."
+
+#~ msgid ""
+#~ "Sautee the onion, tofu, and peppers for 3-5 minutes using the vegan "
+#~ "butter."
+#~ msgstr "Zpěňte cibuli, tofu a papriky na 3 až 5 minut na veganském másle."
+
+#~ msgid ""
+#~ "Turn heat down to medium and add the rest of the ingredients – cook for "
+#~ "5-7 minutes more."
+#~ msgstr ""
+#~ "Zvyšte teplotu na střední hodnotu a přidejte zbytek přísad. Vařte dalších "
+#~ "5 až 7 minut."
+
+#~ msgid "Donauwellen"
+#~ msgstr "Dunajské vlny"
+
+#~ msgid ""
+#~ "Donauwellen is a popular German cake with chocolate, vanilla cream and "
+#~ "cherries. The name is due to the fact that the dough typically forms a "
+#~ "wavy pattern."
+#~ msgstr ""
+#~ "Dunajské vlny (v originále Donauwellen) jsou oblíbený německý zákusek s "
+#~ "čokoládou, vanilkovým krémem a třešněmi. Jeho název vznikl podle toho, že "
+#~ "těsto tvoří typický vzor vlnek."
+
+#~ msgid "[image:1]Mix the butter until it is creamy. Add sugar and egg."
+#~ msgstr "[image:1]Hněťte máslo, dokud není krémovité. Přidejte cukr a vejce."
+
+#~ msgid ""
+#~ "[image:2]Mix the flour with the baking powder and mix it in. Separate a "
+#~ "third of the dough and add the cocoa powder to it."
+#~ msgstr ""
+#~ "[image:2]Přidejte mouku s práškem do pečiva a promíchejte. Oddělte "
+#~ "třetinu těsta a přidejte do ní kakaový prášek."
+
+#~ msgid ""
+#~ "[image:4]Spread the light dough on a buttered baking sheet. Put the dark "
+#~ "dough on top."
+#~ msgstr ""
+#~ "[image:4]Na pečící plech vymazaný máslem rozetřete světlé těsto. Na něj "
+#~ "pak tmavé těsto."
+
+#~ msgid "[image:4]Use a fork to make a wavy pattern."
+#~ msgstr "[image:4]Použijte vidličku k vytvoření vzoru vln."
+
+#~ msgid "[image:6]Spread the dried cherries on top of the dough."
+#~ msgstr "[image:6]Na vršek těsta naskládejte sušené třešně."
+
+#~ msgid "[timer:00:30:00]Bake for 30 minutes at 200 °C."
+#~ msgstr "[timer:00:30:00]Pečte 30 minut při 200 °C."
+
+#~ msgid ""
+#~ "Use the milk, sugar and pudding to cook vanilla pudding and let it cool "
+#~ "down while stirring it frequently. Slowly add spoonfuls of the butter, "
+#~ "which should be at room temperature."
+#~ msgstr ""
+#~ "Z mléka, cukru a vanilkového pudingového prášku uvařte puding a za "
+#~ "stálého míchání jej nechejte vychladnout. Pomalu přimíchejte lžíce másla "
+#~ "pokojové teploty."
+
+#~ msgid "[image:8]Spread the butter cream on the cooled cake."
+#~ msgstr "[image:8]Krém rozetřete na vychladlý korpus."
+
+#~ msgid ""
+#~ "[image:9]Melt the chocolate frosting in a hot water bath and sprinkle it "
+#~ "on top."
+#~ msgstr ""
+#~ "[image:9]Rozpusťte čokoládovou polevu v horké lázni a polijte jí vršek "
+#~ "rozetřeného pudingu."
+
+#~ msgid "Gingered Carrot Soup"
+#~ msgstr "Mrkvová polévka se zázvorem"
+
+#~ msgid "A nutritious vegan soup that can be made relatively quickly"
+#~ msgstr "Výživná veganská polévka s relativně rychlou přípravou"
+
+#~ msgid "This is my Aunt Wendy's recipe."
+#~ msgstr "Jedná se o recept mojí tety Wendy."
+
+#~ msgid "Cook Now"
+#~ msgstr "Uvařit hned"
+
+#~ msgid "_Close"
+#~ msgstr "_Zavřít"
+
+#~ msgid ""
+#~ "There was an error sending the exported recipes by e-mail.\n"
+#~ "The exported data can be found at “%s”."
+#~ msgstr ""
+#~ "Došlo k chybě při odesílání exporotvaných receptů e-mailem.\n"
+#~ "Nelze najít exportovaná data v „%s“."
+
+#~ msgid "Failed to load recipe: Images and Angles length mismatch"
+#~ msgstr "Selhalo načtení receptu: Obrázky a úhly navzájem nesouhlasí"
+
+#~ msgid "Failed to load recipe: Images and DarkText length mismatch"
+#~ msgstr ""
+#~ "Selhalo načtení receptu: Obrázky a délka tmavého textu si navzájem "
+#~ "nesouhlasí"
+
+#~ msgid "There was an error sending the shopping list by e-mail.\n"
+#~ msgstr "Došlo k chybě při odesílání nákupního seznamu e-mailem.\n"
+
+#~ msgid ""
+#~ "Spread the light dough on a buttered baking sheet. Put the dark dough on "
+#~ "top.​<a href=\"image:4\">④</a> Use a fork to make a wavy pattern. Spread "
+#~ "the dried cherries on top of the dough.​<a href=\"image:6\">⑥</a>"
+#~ msgstr ""
+#~ "Na pečící plech vymazaný máslem rozetřete světlé těsto. Na něj pak tmavé "
+#~ "těsto.<a href=\"image:4\">④</a> Použijte vidličku k vytvoření vzoru vln. "
+#~ "Na vršek těsta naskládejte sušené třešně.<a href=\"image:6\">⑥</a>"
+
+#~ msgid ""
+#~ "Oven\n"
+#~ "preheated"
+#~ msgstr ""
+#~ "Trouba\n"
+#~ "předehřátá"
+
+#~ msgid ""
+#~ "Instructions\n"
+#~ "followed"
+#~ msgstr ""
+#~ "Pokyny\n"
+#~ "přečtené"
+
+#~ msgid "_Cook it later"
+#~ msgstr "Poz_ději vyzkouším"
+
+#~ msgid "Remaining time"
+#~ msgstr "Zbývající čas"
+
+#~ msgid "Stop"
+#~ msgstr "Zastavit"
+
+#~ msgid "Preferences"
+#~ msgstr "Předvolby"
+
+#~ msgid "_Preferences"
+#~ msgstr "_Předvolby"
+
+#~ msgid "Use dark text"
+#~ msgstr "Použít tmavý text"
+
+#~ msgid "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ABCČDEFGHIJKLMNOPQRŘSŠTUVWXYZŽ"

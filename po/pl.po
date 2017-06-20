@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-18 18:10+0000\n"
+"POT-Creation-Date: 2017-06-19 23:04-0400\n"
 "PO-Revision-Date: 2017-06-18 21:15+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
@@ -639,7 +639,7 @@ msgid "Examples: 1 kg, 2 1/2 pounds, 250 ml, 6"
 msgstr "Przykłady: 1 kg, 2 1/2 paczki, 250 ml, 6"
 
 #: src/gr-ingredients-viewer.ui:13 src/gr-query-editor.ui:235
-#: src/gr-edit-page.c:1321 src/gr-recipe-formatter.c:100
+#: src/gr-edit-page.c:1324 src/gr-recipe-formatter.c:100
 #: src/gr-recipe-printer.c:247
 msgid "Ingredients"
 msgstr "Składniki"
@@ -1311,7 +1311,7 @@ msgstr "Minutnik: %s"
 msgid "Image %d"
 msgstr "%d. obraz"
 
-#: src/gr-details-page.c:693 src/gr-edit-page.c:1406
+#: src/gr-details-page.c:693 src/gr-edit-page.c:1409
 #, c-format
 msgid "Recipe by %s"
 msgstr "Autor przepisu: %s"
@@ -1486,33 +1486,33 @@ msgctxt "second abbreviation"
 msgid "s"
 msgstr "s"
 
-#: src/gr-edit-page.c:893
+#: src/gr-edit-page.c:896
 msgid "Recipe Author"
 msgstr "Autor przepisu"
 
-#: src/gr-edit-page.c:1357
+#: src/gr-edit-page.c:1360
 msgid "Name Your Recipe"
 msgstr "Nazwa przepisu"
 
-#: src/gr-edit-page.c:1462
+#: src/gr-edit-page.c:1465
 msgid "Name"
 msgstr "Nazwa"
 
-#: src/gr-edit-page.c:1534 src/gr-edit-page.c:1589 src/gr-recipe-store.c:1280
+#: src/gr-edit-page.c:1537 src/gr-edit-page.c:1592 src/gr-recipe-store.c:1280
 #, c-format
 msgid "You need to provide a name for the recipe"
 msgstr "Należy podać nazwę przepisu"
 
-#: src/gr-edit-page.c:1547
+#: src/gr-edit-page.c:1550
 #, c-format
 msgid "Some ingredients need correction"
 msgstr "Część składników wymaga poprawy"
 
-#: src/gr-ingredients-viewer-row.c:151
+#: src/gr-ingredients-viewer-row.c:153
 msgid "Amount…"
 msgstr "Ilość…"
 
-#: src/gr-ingredients-viewer-row.c:164
+#: src/gr-ingredients-viewer-row.c:166
 msgid "Ingredient…"
 msgstr "Składnik…"
 
@@ -1970,207 +1970,371 @@ msgstr "Co najwyżej ostre"
 msgid "Hot or very spicy"
 msgstr "Ostre lub bardzo pikantne"
 
-#: src/gr-unit.c:40
+#: src/gr-unit.c:41
 msgctxt "unit abbreviation"
 msgid "g"
 msgstr "g"
 
-#: src/gr-unit.c:40
+#: src/gr-unit.c:41
 msgctxt "unit name"
 msgid "gram"
 msgstr "gram"
 
 #: src/gr-unit.c:41
+#, fuzzy
+msgctxt "unit plural"
+msgid "grams"
+msgstr "gram"
+
+#: src/gr-unit.c:42
 msgctxt "unit abbreviation"
 msgid "kg"
 msgstr "kg"
 
-#: src/gr-unit.c:41
+#: src/gr-unit.c:42
 msgctxt "unit name"
 msgid "kilogram"
 msgstr "kilogram"
 
 #: src/gr-unit.c:42
+#, fuzzy
+msgctxt "unit plural"
+msgid "kilograms"
+msgstr "kilogram"
+
+#: src/gr-unit.c:43
 msgctxt "unit abbreviation"
 msgid "lb"
 msgstr "lb"
 
-#: src/gr-unit.c:42
+#: src/gr-unit.c:43
 msgctxt "unit name"
 msgid "pound"
 msgstr "funt"
 
 #: src/gr-unit.c:43
+#, fuzzy
+msgctxt "unit plural"
+msgid "pounds"
+msgstr "funt"
+
+#: src/gr-unit.c:44
 msgctxt "unit abbreviation"
 msgid "oz"
 msgstr "oz"
 
-#: src/gr-unit.c:43
+#: src/gr-unit.c:44
 msgctxt "unit name"
 msgid "ounce"
 msgstr "uncja"
 
 #: src/gr-unit.c:44
+#, fuzzy
+msgctxt "unit plural"
+msgid "ounces"
+msgstr "uncja"
+
+#: src/gr-unit.c:45
 msgctxt "unit abbreviation"
 msgid "l"
 msgstr "l"
 
-#: src/gr-unit.c:44
+#: src/gr-unit.c:45
 msgctxt "unit name"
 msgid "liter"
 msgstr "litr"
 
 #: src/gr-unit.c:45
+#, fuzzy
+msgctxt "unit plural"
+msgid "liters"
+msgstr "litr"
+
+#: src/gr-unit.c:46
 msgctxt "unit abbreviation"
 msgid "dl"
 msgstr "dl"
 
-#: src/gr-unit.c:45
+#: src/gr-unit.c:46
 msgctxt "unit name"
 msgid "deciliter"
 msgstr "decylitr"
 
 #: src/gr-unit.c:46
+#, fuzzy
+msgctxt "unit plural"
+msgid "deciliters"
+msgstr "decylitr"
+
+#: src/gr-unit.c:47
 msgctxt "unit abbreviation"
 msgid "ml"
 msgstr "ml"
 
-#: src/gr-unit.c:46
+#: src/gr-unit.c:47
 msgctxt "unit name"
 msgid "milliliter"
 msgstr "mililitr"
 
 #: src/gr-unit.c:47
+#, fuzzy
+msgctxt "unit plural"
+msgid "milliliters"
+msgstr "mililitr"
+
+#: src/gr-unit.c:48 src/gr-unit.c:49
 msgctxt "unit abbreviation"
 msgid "fl oz"
 msgstr "fl oz"
 
-#: src/gr-unit.c:47
+#: src/gr-unit.c:48 src/gr-unit.c:49
 msgctxt "unit name"
 msgid "fluid ounce"
 msgstr "uncja objętości"
 
-#: src/gr-unit.c:48
+#: src/gr-unit.c:48 src/gr-unit.c:49
+#, fuzzy
+msgctxt "unit plural"
+msgid "fluid ounces"
+msgstr "uncja objętości"
+
+#: src/gr-unit.c:50
 msgctxt "unit abbreviation"
 msgid "pt"
 msgstr "pt"
 
-#: src/gr-unit.c:48
+#: src/gr-unit.c:50
 msgctxt "unit name"
 msgid "pint"
 msgstr "półkwarta"
 
-#: src/gr-unit.c:49
+#: src/gr-unit.c:50
+#, fuzzy
+msgctxt "unit plural"
+msgid "pints"
+msgstr "półkwarta"
+
+#: src/gr-unit.c:51
 msgctxt "unit abbreviation"
 msgid "qt"
 msgstr "qt"
 
-#: src/gr-unit.c:49
+#: src/gr-unit.c:51
 msgctxt "unit name"
 msgid "quart"
 msgstr "kwarta"
 
-#: src/gr-unit.c:50
+#: src/gr-unit.c:51
+#, fuzzy
+msgctxt "unit plural"
+msgid "quarts"
+msgstr "kwarta"
+
+#: src/gr-unit.c:52
 msgctxt "unit abbreviation"
 msgid "gal"
 msgstr "gal"
 
-#: src/gr-unit.c:50
+#: src/gr-unit.c:52
 msgctxt "unit name"
 msgid "gallon"
 msgstr "galon"
 
-#: src/gr-unit.c:51
+#: src/gr-unit.c:52
+#, fuzzy
+msgctxt "unit plural"
+msgid "gallons"
+msgstr "galon"
+
+#: src/gr-unit.c:53
 msgctxt "unit abbreviation"
 msgid "cup"
 msgstr "filiżanka"
 
-#: src/gr-unit.c:51
+#: src/gr-unit.c:53
 msgctxt "unit name"
 msgid "cup"
 msgstr "filiżanka"
 
-#: src/gr-unit.c:52
+#: src/gr-unit.c:53
+msgctxt "unit plural"
+msgid "cups"
+msgstr ""
+
+#: src/gr-unit.c:54
 msgctxt "unit abbreviation"
 msgid "tbsp"
 msgstr "łyżki stołowe"
 
-#: src/gr-unit.c:52
+#: src/gr-unit.c:54
 msgctxt "unit name"
 msgid "tablespoon"
 msgstr "łyżka stołowa"
 
-#: src/gr-unit.c:53
+#: src/gr-unit.c:54
+#, fuzzy
+msgctxt "unit plural"
+msgid "tablespoons"
+msgstr "łyżka stołowa"
+
+#: src/gr-unit.c:55
 msgctxt "unit abbreviation"
 msgid "tsp"
 msgstr "łyżeczki"
 
-#: src/gr-unit.c:53
+#: src/gr-unit.c:55
 msgctxt "unit name"
 msgid "teaspoon"
 msgstr "łyżeczka"
 
-#: src/gr-unit.c:54
+#: src/gr-unit.c:55
+#, fuzzy
+msgctxt "unit plural"
+msgid "teaspoons"
+msgstr "łyżeczka"
+
+#: src/gr-unit.c:56
 msgctxt "unit abbreviation"
 msgid "box"
 msgstr "pojemnik"
 
-#: src/gr-unit.c:54
+#: src/gr-unit.c:56
 msgctxt "unit name"
 msgid "box"
 msgstr "pojemnik"
 
-#: src/gr-unit.c:55
+#: src/gr-unit.c:56
+msgctxt "unit plural"
+msgid "boxes"
+msgstr ""
+
+#: src/gr-unit.c:57
 msgctxt "unit abbreviation"
 msgid "pkg"
 msgstr "paczki"
 
-#: src/gr-unit.c:55
+#: src/gr-unit.c:57
 msgctxt "unit name"
 msgid "package"
 msgstr "paczka"
 
-#: src/gr-unit.c:56
+#: src/gr-unit.c:57
+#, fuzzy
+msgctxt "unit plural"
+msgid "packages"
+msgstr "paczka"
+
+#: src/gr-unit.c:58
 msgctxt "unit abbreviation"
 msgid "glass"
 msgstr "szklanka"
 
-#: src/gr-unit.c:56
+#: src/gr-unit.c:58
 msgctxt "unit name"
 msgid "glass"
 msgstr "szklanka"
 
-#: src/gr-unit.c:57
+#: src/gr-unit.c:58
+#, fuzzy
+msgctxt "unit plural"
+msgid "glasses"
+msgstr "szklanka"
+
+#: src/gr-unit.c:59
 msgctxt "unit abbreviation"
 msgid "mm"
 msgstr "mm"
 
-#: src/gr-unit.c:57
+#: src/gr-unit.c:59
 msgctxt "unit name"
 msgid "millimeter"
 msgstr "milimetr"
 
-#: src/gr-unit.c:58
+#: src/gr-unit.c:59
+#, fuzzy
+msgctxt "unit plural"
+msgid "millimeters"
+msgstr "milimetr"
+
+#: src/gr-unit.c:60
 msgctxt "unit abbreviation"
 msgid "cm"
 msgstr "cm"
 
-#: src/gr-unit.c:58
+#: src/gr-unit.c:60
 msgctxt "unit name"
 msgid "centimeter"
 msgstr "centymetr"
 
-#: src/gr-unit.c:59
+#: src/gr-unit.c:60
+#, fuzzy
+msgctxt "unit plural"
+msgid "centimeters"
+msgstr "centymetr"
+
+#: src/gr-unit.c:61
 msgctxt "unit abbreviation"
 msgid "m"
 msgstr "m"
 
-#: src/gr-unit.c:59
+#: src/gr-unit.c:61
 msgctxt "unit name"
 msgid "meter"
 msgstr "metr"
 
-#: src/gr-unit.c:129
+#: src/gr-unit.c:61
+#, fuzzy
+msgctxt "unit plural"
+msgid "meters"
+msgstr "metr"
+
+#: src/gr-unit.c:62
+#, fuzzy
+msgctxt "unit abbreviation"
+msgid "st"
+msgstr "s"
+
+#: src/gr-unit.c:62
+msgctxt "unit name"
+msgid "stone"
+msgstr ""
+
+#: src/gr-unit.c:62
+msgctxt "unit plural"
+msgid "stone"
+msgstr ""
+
+#: src/gr-unit.c:63
+msgctxt "unit abbreviation"
+msgid "pinch"
+msgstr ""
+
+#: src/gr-unit.c:63
+msgctxt "unit name"
+msgid "pinch"
+msgstr ""
+
+#: src/gr-unit.c:63
+msgctxt "unit plural"
+msgid "pinches"
+msgstr ""
+
+#: src/gr-unit.c:64
+msgctxt "unit abbreviation"
+msgid "bunch"
+msgstr ""
+
+#: src/gr-unit.c:64
+msgctxt "unit name"
+msgid "bunch"
+msgstr ""
+
+#: src/gr-unit.c:64
+msgctxt "unit plural"
+msgid "bunches"
+msgstr ""
+
+#: src/gr-unit.c:145
 #, c-format
 msgid "I don’t know this unit: %s"
 msgstr "Nierozpoznana jednostka: %s"

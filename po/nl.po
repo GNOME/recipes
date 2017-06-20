@@ -6,9 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=recipes&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-12-09 01:45+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-19 23:04-0400\n"
 "PO-Revision-Date: 2016-12-15 17:25+0100\n"
 "Last-Translator: Hannie Dumoleyn <hannie@ubuntu-nl.org>\n"
 "Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
@@ -20,584 +19,1156 @@ msgstr ""
 "X-Generator: Lokalize 1.5\n"
 
 #: data/org.gnome.Recipes.desktop.in:3
-msgid "GNOME Recipes"
-msgstr "Gnome Recepten"
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
+#: src/gr-window.ui:427 src/gr-about-dialog.c:907 src/gr-window.c:381
+#: src/gr-window.c:1004
+msgid "Recipes"
+msgstr "Recepten"
 
 #: data/org.gnome.Recipes.desktop.in:4
 msgid "GNOME cooks unite!"
 msgstr "Gnome-koks, verenigt u!"
 
-#: data/org.gnome.Recipes.desktop.in:6
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Recipes.desktop.in:7
 msgid "org.gnome.Recipes"
 msgstr "org.gnome.Recipes"
 
-#: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:172
-msgid "Recipes"
-msgstr "Recepten"
-
-#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-app.c:107
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:911
 msgid "GNOME loves to cook"
 msgstr "Gnome houdt van koken"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:9
+#, fuzzy
 msgid ""
-"GNOME Recipes is an easy-to-use application that will help you to discover "
-"what to cook today, tomorrow, rest of the week and for your special "
-"occasions."
+"Recipes is an easy-to-use application that will help you to discover what to "
+"cook today, tomorrow, the rest of the week and for your special occasions."
 msgstr ""
 "Gnome Recepten is een eenvoudig te gebruiken toepassing die u helpt uit te "
 "zoeken wat u vandaag, morgen, de rest van de week of bij speciale "
 "gelegenheden wilt klaarmaken."
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:13
+#, fuzzy
 msgid ""
 "Recipes comes with a collection of recipes that have been collected by GNOME "
 "contributors from all over the world. It also lets you store your own "
-"recipes, and share them with your friends."
+"recipes and share them with your friends."
 msgstr ""
 "Recepten bevat een verzameling recepten, samengesteld door medewerkers van "
-"Gnome van over de hele wereld. U kunt hierin ook uw eigen recepten opslaan en "
-"ze delen met uw vrienden."
+"Gnome van over de hele wereld. U kunt hierin ook uw eigen recepten opslaan "
+"en ze delen met uw vrienden."
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:18
+msgid "The major features of Recipes include:"
+msgstr ""
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:22
+#, fuzzy
+msgid "Add and edit your own recipes"
+msgstr "Een nieuw recept toevoegen"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:23
+msgid "Share recipes with your friends"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:24
+msgid "Export and print shopping lists"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:25
+msgid "Adjust quantities based on the number of servings"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:26
+msgid "Mark recipes to cook later or add them to your favorites"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:27
+#, fuzzy
+msgid "Add notes to recipes"
+msgstr "Een nieuw recept toevoegen"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:28
+msgid "Hands-free cooking instruction mode"
+msgstr ""
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:34
 msgid "Initial screen for the application"
 msgstr "Openingsscherm voor de toepassing"
 
-#: data/appdata/org.gnome.Recipes.appdata.xml.in:26
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:38
 msgid "The cuisines page"
 msgstr "De gerechtenpagina"
 
-#: data/appdata/org.gnome.Recipes.appdata.xml.in:30
-msgid "An individual cuisine"
-msgstr "Een individueel gerecht"
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:42
+msgid "A shopping list"
+msgstr ""
 
-#: data/appdata/org.gnome.Recipes.appdata.xml.in:34
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:46
+#, fuzzy
+msgid "Cooking a recipe"
+msgstr "Een nieuw recept aanmaken"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:50
+#, fuzzy
+msgid "Editing a recipe"
+msgstr "Een nieuw recept aanmaken"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:54
 msgid "An individual recipe"
 msgstr "Een individueel recept"
 
-#: data/appdata/org.gnome.Recipes.appdata.xml.in:38
-msgid "Creating a new recipe"
-msgstr "Een nieuw recept aanmaken"
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:58
+msgid "An individual cuisine"
+msgstr "Een individueel gerecht"
+
+#: data/org.gnome.Recipes.gschema.xml:14
+msgid "The user ID of the current user"
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:15
+msgid "The user ID of the current user."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:21
+msgid "The number of times cooking mode has been presented"
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:22
+msgid "The number of times cooking mode has been presented."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:28
+msgid "The timestamp of the last change to the favorites list"
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:29
+msgid ""
+"The timestamp of the last time an item was added to or removed from the "
+"favorites list."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:36
+msgid "The list of favorites"
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:37
+msgid "The list of favorites. Each entry in the list is the ID of a recipe."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:43
+msgid "The timestamp of the last change to the shopping list"
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:44
+msgid ""
+"The timestamp of the last time an item was added to or removed from the "
+"shopping list."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:51
+msgid "The shopping list"
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:52
+msgid ""
+"The shopping list. Each entry in the dictionary maps the ID of a recipe to a "
+"serving count."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:59
+msgid "Ingredients that were removed from the shopping list"
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:60
+msgid "The names of ingredients that were removed from the shopping list."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:66
+#, fuzzy
+msgid "The list of recipes to be exported"
+msgstr "Het recept %s is geëxporteerd als ‘%s’"
+
+#: data/org.gnome.Recipes.gschema.xml:67
+msgid ""
+"The list of recipes to be exported. Each entry in the list is the ID of a "
+"recipe."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:74
+msgid "The setting for which unit temperatures should be displayed in."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:75
+msgid ""
+"The setting for which unit temperatures should be displayed in. Default is "
+"'locale', which means to use the LC_MEASUREMENT category of the current "
+"locale to decide."
+msgstr ""
 
 #: src/chef-conflict-dialog.ui:10
-msgid "Merge"
-msgstr "Samenvoegen"
+#, fuzzy
+msgid "Same Chef"
+msgstr "Geïmporteerde chef"
 
-#: src/chef-conflict-dialog.ui:17 src/recipe-conflict-dialog.ui:17
-msgid "Rename"
-msgstr "Hernoemen"
+#: src/chef-conflict-dialog.ui:16
+msgid "Different Chef"
+msgstr ""
 
-#: src/chef-conflict-dialog.ui:31
+#: src/chef-conflict-dialog.ui:30
 msgid "Existing Chef"
 msgstr "Bestaande chef"
 
-#: src/chef-conflict-dialog.ui:44
+#: src/chef-conflict-dialog.ui:43
 msgid "Imported Chef"
 msgstr "Geïmporteerde chef"
 
-#: src/chef-conflict-dialog.ui:58 src/chef-conflict-dialog.ui:70
+#: src/chef-conflict-dialog.ui:57 src/chef-conflict-dialog.ui:69
 msgid "Short Name:"
 msgstr "Korte naam:"
 
-#: src/chef-conflict-dialog.ui:81 src/chef-conflict-dialog.ui:93
+#: src/chef-conflict-dialog.ui:80 src/chef-conflict-dialog.ui:92
 #: src/recipe-conflict-dialog.ui:38
 msgid "Name:"
 msgstr "Naam:"
 
-#: src/chef-conflict-dialog.ui:104 src/chef-conflict-dialog.ui:116
-#: src/gr-details-page.ui:206
+#: src/chef-conflict-dialog.ui:103 src/chef-conflict-dialog.ui:115
 msgid "Description:"
 msgstr "Beschrijving:"
 
-#: src/chef-conflict-dialog.ui:127 src/chef-conflict-dialog.ui:139
+#: src/chef-conflict-dialog.ui:126 src/chef-conflict-dialog.ui:138
 msgid "Picture:"
 msgstr "Afbeelding:"
 
-#: src/gr-cuisine-page.ui:70 src/gr-list-page.ui:30 src/gr-search-page.ui:30
-msgid "No recipes found"
-msgstr "Geen recepten gevonden"
-
-#: src/gr-cuisine-page.ui:83
-msgid "There are no recipes for this cuisine."
-msgstr "Er zijn geen recepten voor dit gerecht."
-
-#: src/gr-cuisines-page.ui:9
-msgid "Cuisines page"
-msgstr "Gerechtenpagina"
-
-#: src/gr-cuisines-page.ui:30
-msgid "World Cuisines"
-msgstr "Wereldgerechten"
-
-#: src/gr-cuisines-page.ui:56
-msgid "Seasonal"
-msgstr "Seizoensgebonden"
-
-#: src/gr-details-page.ui:33
-msgid ""
-"Ingredients\n"
-"gathered"
-msgstr ""
-"Ingrediënten\n"
-"verzameld"
-
-#: src/gr-details-page.ui:46
-msgid ""
-"Oven\n"
-"preheated"
-msgstr ""
-"Oven\n"
-"voorverwarmd"
-
-#: src/gr-details-page.ui:59
-msgid ""
-"Instructions\n"
-"followed"
-msgstr ""
-"Instructies\n"
-"gevolgd"
-
-#: src/gr-details-page.ui:139
-msgid "Preparation time:"
-msgstr "Bereidingstijd:"
-
-#: src/gr-details-page.ui:160
-msgid "Cooking time:"
-msgstr "Bereidingstijd:"
-
-#: src/gr-details-page.ui:181 src/gr-recipe-printer.c:122
-msgid "Serves:"
-msgstr "Porties:"
-
-#: src/gr-details-page.ui:267 src/gr-query-editor.ui:174 src/gr-window.ui:204
-#: src/gr-recipe-printer.c:141
-msgid "Ingredients"
-msgstr "Ingrediënten"
-
-#: src/gr-details-page.ui:299 src/gr-recipe-printer.c:181
-msgid "Instructions"
-msgstr "Instructies"
-
-#: src/gr-details-page.ui:321
-msgid "Additional notes"
-msgstr "Aanvullende notities"
-
-#: src/gr-details-page.ui:376
-msgid "_Cook it later"
-msgstr "_Later bereiden"
-
-#: src/gr-details-page.ui:384
-msgid "_Print"
-msgstr "Af_drukken"
-
-#: src/gr-details-page.ui:392
-msgid "_Export"
-msgstr "_Exporteren"
-
-#: src/gr-details-page.ui:400
-msgid "_Share"
-msgstr "_Delen"
-
-#: src/gr-details-page.ui:407
-msgid "_Delete"
-msgstr "Verwij_deren"
-
-#: src/gr-details-page.ui:418
-msgid "_Edit"
-msgstr "Be_werken"
-
-#: src/gr-details-page.ui:446
-msgid "Duration"
-msgstr "Duur"
-
-#: src/gr-details-page.ui:461
-msgid "Start"
-msgstr "Starten"
-
-#: src/gr-details-page.ui:482
-msgid "Remaining time"
-msgstr "Resterende tijd"
-
-#: src/gr-details-page.ui:495
-msgid "Stop"
-msgstr "Stoppen"
-
-#: src/gr-edit-page.ui:83
-msgid "_Name your recipe"
-msgstr "Uw recept een _naam geven"
-
-#: src/gr-edit-page.ui:105
-msgid "Ser_ves"
-msgstr "Por_ties"
-
-#: src/gr-edit-page.ui:144
-msgid "_Description"
-msgstr "_Beschrijving"
-
-#: src/gr-edit-page.ui:161
-msgid "Add an image"
-msgstr "Afbeelding toevoegen"
-
-#: src/gr-edit-page.ui:188
-msgid "Remove image"
-msgstr "Afbeelding verwijderen"
-
-#: src/gr-edit-page.ui:215 src/gr-edit-page.ui:242
-msgid "Rotate image"
-msgstr "Afbeelding roteren"
-
-#: src/gr-edit-page.ui:298
-msgid "_Cuisine"
-msgstr "_Gerecht"
-
-#: src/gr-edit-page.ui:311
-msgid "_Meal"
-msgstr "_Maaltijd"
-
-#: src/gr-edit-page.ui:344
-msgid "S_eason"
-msgstr "S_eizoen"
-
-#: src/gr-edit-page.ui:367
-msgid "_Preparation time"
-msgstr "_Voorbereidingstijd"
-
-#: src/gr-edit-page.ui:380
-msgid "C_ooking time"
-msgstr "Be_reidingstijd"
-
-#: src/gr-edit-page.ui:393 src/gr-edit-page.ui:410
-msgid "Less than 15 minutes"
-msgstr "Minder dan 15 minuten"
-
-#: src/gr-edit-page.ui:394 src/gr-edit-page.ui:411
-msgid "15 to 30 minutes"
-msgstr "15 tot 30 minuten"
-
-#: src/gr-edit-page.ui:395 src/gr-edit-page.ui:412
-msgid "30 to 45 minutes"
-msgstr "30 tot 45 minuten"
-
-#: src/gr-edit-page.ui:396 src/gr-edit-page.ui:413
-msgid "45 minutes to an hour"
-msgstr "45 minuten tot een uur"
-
-#: src/gr-edit-page.ui:397 src/gr-edit-page.ui:414
-msgid "More than an hour"
-msgstr "Meer dan een uur"
-
-#: src/gr-edit-page.ui:427
-msgid "_Ingredients"
-msgstr "I_ngrediënten"
-
-#: src/gr-edit-page.ui:458 src/gr-diet-row.c:101
-msgid "Gluten free"
-msgstr "Glutenvrij"
-
-#: src/gr-edit-page.ui:464 src/gr-diet-row.c:104
-msgid "Nut free"
-msgstr "Notenvrij"
-
-#: src/gr-edit-page.ui:470 src/gr-diet-row.c:107
-msgid "Vegan"
-msgstr "Veganistisch"
-
-#: src/gr-edit-page.ui:476 src/gr-diet-row.c:110
-msgid "Vegetarian"
-msgstr "Vegetarisch"
-
-#: src/gr-edit-page.ui:482 src/gr-diet-row.c:113
-msgid "Milk free"
-msgstr "Melkvrij"
-
-#: src/gr-edit-page.ui:497
-msgid "Instr_uctions"
-msgstr "Instr_ucties"
-
-#: src/gr-edit-page.ui:527
-msgid "_Additional notes"
-msgstr "_Aanvullende notities"
-
-#: src/gr-ingredients-page.ui:9
-msgid "Ingredients page"
-msgstr "Ingrediëntenpagina"
-
-#: src/gr-list-page.ui:43
-msgid "There are no recipes here yet."
-msgstr "Er zijn hier nog geen recepten."
-
-#: src/gr-preferences.ui:5
-msgid "Preferences"
-msgstr "Voorkeuren"
-
-#: src/gr-preferences.ui:69
-msgid "Recipe Author Information"
+#: src/gr-chef-dialog.ui:4 src/gr-window.c:1091
+#, fuzzy
+msgid "Chef Information"
 msgstr "Informatie auteur recept"
 
-#: src/gr-preferences.ui:82
-msgid "This data may be shared with other users if you share your recipes."
+#: src/gr-chef-dialog.ui:10 src/gr-window.c:1189
+#, fuzzy
+msgid "_Cancel"
+msgstr "Annuleren"
+
+#: src/gr-chef-dialog.ui:20 src/gr-window.ui:130
+msgid "_Save"
+msgstr "Op_slaan"
+
+#: src/gr-chef-dialog.ui:97
+#, fuzzy
+msgid ""
+"This information may be shared with other users if you share your recipes."
 msgstr ""
 "Deze gegevens mogen worden gedeeld met andere gebruikers als u uw recepten "
 "deelt."
 
-#: src/gr-preferences.ui:96
-msgid "_Short Name:"
-msgstr "_Korte naam:"
+#: src/gr-chef-dialog.ui:119
+#, fuzzy
+msgid "Other Chef"
+msgstr "Overig"
 
-#: src/gr-preferences.ui:118
-msgid "_Name:"
-msgstr "_Naam:"
+#: src/gr-chef-dialog.ui:132
+#, fuzzy
+msgid "Name…"
+msgstr "Naam:"
 
-#: src/gr-preferences.ui:140
-msgid "_Description:"
-msgstr "_Beschrijving:"
+#: src/gr-chef-dialog.ui:143
+#, fuzzy
+msgid "Short Name…"
+msgstr "Korte naam:"
 
-#: src/gr-preferences.ui:169
-msgid "_Picture:"
-msgstr "_Afbeelding:"
+#: src/gr-cooking-page.ui:75
+msgid "Show"
+msgstr ""
 
-#: src/gr-query-editor.ui:48
+#: src/gr-cooking-page.ui:158
+msgid "Done"
+msgstr ""
+
+#: src/gr-cooking-page.ui:185
+#, fuzzy
+msgid "Stop Cooking?"
+msgstr "De bereiding beëindigen"
+
+#: src/gr-cooking-page.ui:194
+msgid "Some timers are still running."
+msgstr ""
+
+#: src/gr-cooking-page.ui:200
+msgid ""
+"Recipes can keep the timers running\n"
+"even if you leave cooking mode now."
+msgstr ""
+
+#: src/gr-cooking-page.ui:212
+#, fuzzy
+msgid "Keep Cooking"
+msgstr "Bereiding:"
+
+#: src/gr-cooking-page.ui:219
+msgid "Stop Timers"
+msgstr ""
+
+#: src/gr-cooking-page.ui:226
+msgid "Continue Timers"
+msgstr ""
+
+#: src/gr-cooking-page.ui:255
+msgid "Controls"
+msgstr ""
+
+#: src/gr-cooking-page.ui:281
+msgid ""
+"To advance to the next step, press any key on the\n"
+"keyboard."
+msgstr ""
+
+#: src/gr-cooking-page.ui:304
+msgid "To go back to the previous step, doubletap any key."
+msgstr ""
+
+#: src/gr-cooking-page.ui:326
+msgid ""
+"Alternatively, you can use the cursor keys to\n"
+"quickly seek within the directions."
+msgstr ""
+
+#: src/gr-cooking-page.ui:350
+msgid "To exit the process, press the Escape key."
+msgstr ""
+
+#: src/gr-cooking-view.ui:64
+msgid "Time is up!"
+msgstr "De tijd is om!"
+
+#: src/gr-cuisine-page.ui:77 src/gr-list-page.ui:111 src/gr-search-page.ui:29
+#: src/gr-list-page.c:427
+msgid "No recipes found"
+msgstr "Geen recepten gevonden"
+
+#: src/gr-cuisine-page.ui:90
+msgid "There are no recipes for this cuisine."
+msgstr "Er zijn geen recepten voor dit gerecht."
+
+#: src/gr-cuisines-page.ui:8
+msgid "Cuisines page"
+msgstr "Gerechtenpagina"
+
+#: src/gr-cuisines-page.ui:28
+msgid "World Cuisines"
+msgstr "Wereldgerechten"
+
+#: src/gr-cuisines-page.ui:124
+msgid "Seasonal"
+msgstr "Seizoensgebonden"
+
+#: src/gr-details-page.ui:105
+msgid "Contains garlic"
+msgstr ""
+
+#: src/gr-details-page.ui:112
+msgid ""
+"Contains dairy products. Please always double-check the ingredients if you "
+"are serving a person with gluten or dairy intolerance."
+msgstr ""
+
+#: src/gr-details-page.ui:119
+msgid ""
+"Contains Gluten. Please always double-check the ingredients if you are "
+"serving a person with gluten or dairy intolerance."
+msgstr ""
+
+#: src/gr-details-page.ui:126 src/gr-details-page.c:492
+msgid "Spicy"
+msgstr ""
+
+#: src/gr-details-page.ui:146
+#, fuzzy
+msgid "_Buy Ingredients"
+msgstr "I_ngrediënten"
+
+#: src/gr-details-page.ui:164 src/gr-recipe-small-tile.ui:101
+#, fuzzy
+msgid "Serves"
+msgstr "Porties:"
+
+#: src/gr-details-page.ui:198
+#, fuzzy
+msgid "Preparation Time"
+msgstr "Bereidingstijd:"
+
+#: src/gr-details-page.ui:228
+#, fuzzy
+msgid "Cooking Time"
+msgstr "Bereidingstijd:"
+
+#: src/gr-details-page.ui:258
+#, fuzzy
+msgid "Cuisine"
+msgstr "_Gerecht"
+
+#: src/gr-details-page.ui:288 src/gr-query-editor.ui:46
 msgid "Meal"
 msgstr "Maaltijd"
 
-#: src/gr-query-editor.ui:68 src/gr-query-editor.c:449
-#: src/gr-query-editor.c:564
+#: src/gr-details-page.ui:318
+#, fuzzy
+msgid "Season"
+msgstr "S_eizoen"
+
+#: src/gr-details-page.ui:379
+msgid "Note"
+msgstr ""
+
+#: src/gr-details-page.ui:409 src/gr-edit-page.ui:705
+#: src/gr-recipe-formatter.c:119 src/gr-recipe-printer.c:296
+#, fuzzy
+msgid "Directions"
+msgstr "Dieetbeperkingen"
+
+#: src/gr-details-page.ui:469
+msgid "_Notes"
+msgstr ""
+
+#: src/gr-details-page.ui:479 src/gr-shopping-page.ui:125
+msgid "_Edit"
+msgstr "Be_werken"
+
+#: src/gr-details-page.ui:488
+msgid "_Delete"
+msgstr "Verwij_deren"
+
+#: src/gr-details-page.ui:499 src/gr-shopping-page.ui:143
+#: src/recipe-export-dialog.ui:21
+msgid "_Share"
+msgstr "_Delen"
+
+#: src/gr-details-page.ui:511 src/gr-shopping-page.ui:154
+msgid "_Print"
+msgstr "Af_drukken"
+
+#: src/gr-details-page.ui:522
+#, fuzzy
+msgid "Add to favorites"
+msgstr "Favorieten"
+
+#: src/gr-edit-page.ui:42 src/gr-edit-page.ui:766 src/menus.ui:66
+#, fuzzy
+msgid "Edit"
+msgstr "Be_werken"
+
+#: src/gr-edit-page.ui:119
+msgid "Add an image"
+msgstr "Afbeelding toevoegen"
+
+#: src/gr-edit-page.ui:145 src/gr-edit-page.ui:171
+msgid "Rotate image"
+msgstr "Afbeelding roteren"
+
+#: src/gr-edit-page.ui:197
+#, fuzzy
+msgid "Default image"
+msgstr "Afbeelding roteren"
+
+#: src/gr-edit-page.ui:223
+msgid "Remove image"
+msgstr "Afbeelding verwijderen"
+
+#: src/gr-edit-page.ui:256
+msgid "Add List"
+msgstr ""
+
+#: src/gr-edit-page.ui:274
+#, fuzzy
+msgid "Details"
+msgstr "Geen details"
+
+#: src/gr-edit-page.ui:291
+#, fuzzy
+msgid "_Name Your Recipe"
+msgstr "Uw recept een _naam geven"
+
+#: src/gr-edit-page.ui:323
+msgid "Ser_ves"
+msgstr "Por_ties"
+
+#: src/gr-edit-page.ui:353
+#, fuzzy
+msgid "_Preparation Time"
+msgstr "_Voorbereidingstijd"
+
+#: src/gr-edit-page.ui:379 src/gr-edit-page.ui:427
+msgid "Less than 15 minutes"
+msgstr "Minder dan 15 minuten"
+
+#: src/gr-edit-page.ui:380 src/gr-edit-page.ui:428
+msgid "15 to 30 minutes"
+msgstr "15 tot 30 minuten"
+
+#: src/gr-edit-page.ui:381 src/gr-edit-page.ui:429
+msgid "30 to 45 minutes"
+msgstr "30 tot 45 minuten"
+
+#: src/gr-edit-page.ui:382 src/gr-edit-page.ui:430
+msgid "45 minutes to an hour"
+msgstr "45 minuten tot een uur"
+
+#: src/gr-edit-page.ui:383 src/gr-edit-page.ui:431
+msgid "More than an hour"
+msgstr "Meer dan een uur"
+
+#: src/gr-edit-page.ui:401
+#, fuzzy
+msgid "C_ooking Time"
+msgstr "Be_reidingstijd"
+
+#: src/gr-edit-page.ui:449
+msgid "_Cuisine"
+msgstr "_Gerecht"
+
+#: src/gr-edit-page.ui:485
+msgid "_Meal"
+msgstr "_Maaltijd"
+
+#: src/gr-edit-page.ui:521
+msgid "S_eason"
+msgstr "S_eizoen"
+
+#: src/gr-edit-page.ui:557
+msgid "S_piciness"
+msgstr ""
+
+#: src/gr-edit-page.ui:577 src/gr-spice-row.c:127
+msgid "Mild"
+msgstr ""
+
+#: src/gr-edit-page.ui:578
+msgid "Somewhat spicy"
+msgstr ""
+
+#: src/gr-edit-page.ui:579
+msgid "Hot"
+msgstr ""
+
+#: src/gr-edit-page.ui:580 src/gr-details-page.c:487 src/gr-spice-row.c:142
+msgid "Very spicy"
+msgstr ""
+
+#: src/gr-edit-page.ui:591
+#, fuzzy
+msgid "Description"
+msgstr "Beschrijving:"
+
+#: src/gr-edit-page.ui:650 src/gr-diet-row.c:102
+#, fuzzy
+msgid "Gluten-free"
+msgstr "Glutenvrij"
+
+#: src/gr-edit-page.ui:657 src/gr-diet-row.c:105
+#, fuzzy
+msgid "Nut-free"
+msgstr "Notenvrij"
+
+#: src/gr-edit-page.ui:664 src/gr-diet-row.c:108
+msgid "Vegan"
+msgstr "Veganistisch"
+
+#: src/gr-edit-page.ui:671 src/gr-diet-row.c:111
+msgid "Vegetarian"
+msgstr "Vegetarisch"
+
+#: src/gr-edit-page.ui:678 src/gr-diet-row.c:114
+#, fuzzy
+msgid "Milk-free"
+msgstr "Melkvrij"
+
+#: src/gr-edit-page.ui:773
+msgid "Preview"
+msgstr ""
+
+#: src/gr-edit-page.ui:793
+msgid "Add Step"
+msgstr ""
+
+#: src/gr-edit-page.ui:801
+#, fuzzy
+msgid "Add Image"
+msgstr "Afbeelding toevoegen"
+
+#: src/gr-edit-page.ui:809
+#, fuzzy
+msgid "Add Timer"
+msgstr "Afbeelding toevoegen"
+
+#: src/gr-edit-page.ui:817
+msgid "Add Temperature"
+msgstr ""
+
+#: src/gr-edit-page.ui:913
+msgid "Title…"
+msgstr ""
+
+#: src/gr-edit-page.ui:921 src/gr-edit-page.ui:992
+msgid "Add"
+msgstr ""
+
+#: src/gr-edit-page.ui:1011
+msgid "Syntax"
+msgstr ""
+
+#: src/gr-edit-page.ui:1026
+msgid "Use paragraphs to break directions into steps (2 newlines)."
+msgstr ""
+
+#: src/gr-edit-page.ui:1039
+msgid "You can provide an image or a time counter in each step."
+msgstr ""
+
+#: src/gr-edit-page.ui:1051
+msgid "Timer"
+msgstr ""
+
+#: src/gr-edit-page.ui:1073
+#, fuzzy
+msgid "Image"
+msgstr "Afbeeldingsbestanden"
+
+#: src/gr-edit-page.ui:1095
+msgid "Temperature"
+msgstr ""
+
+#: src/gr-ingredients-viewer-row.ui:52
+msgid "Amount"
+msgstr ""
+
+#: src/gr-ingredients-viewer-row.ui:92
+#, fuzzy
+msgid "Ingredient"
+msgstr "Ingrediënten"
+
+#: src/gr-ingredients-viewer-row.ui:169
+msgid "Use a number, followed by an (optional) unit."
+msgstr ""
+
+#: src/gr-ingredients-viewer-row.ui:180
+msgid "Examples: 1 kg, 2 1/2 pounds, 250 ml, 6"
+msgstr ""
+
+#: src/gr-ingredients-viewer.ui:13 src/gr-query-editor.ui:235
+#: src/gr-edit-page.c:1324 src/gr-recipe-formatter.c:100
+#: src/gr-recipe-printer.c:247
+msgid "Ingredients"
+msgstr "Ingrediënten"
+
+#: src/gr-ingredients-viewer.ui:33
+msgid "Name of the List"
+msgstr ""
+
+#: src/gr-ingredients-viewer.ui:43 src/gr-recipe-small-tile.ui:125
+#, fuzzy
+msgid "Remove"
+msgstr "Afbeelding verwijderen"
+
+#: src/gr-ingredients-viewer.ui:86
+#, fuzzy
+msgid "Add more ingredients"
+msgstr "Ingrediënten"
+
+#: src/gr-list-page.ui:124
+msgid "There are no recipes here yet."
+msgstr "Er zijn hier nog geen recepten."
+
+#: src/gr-query-editor.ui:66 src/gr-query-editor.c:490
+#: src/gr-query-editor.c:679
 msgid "Any meal"
 msgstr "Elke maaltijd"
 
-#: src/gr-query-editor.ui:111
+#: src/gr-query-editor.ui:109
+msgid "Spiciness"
+msgstr ""
+
+#: src/gr-query-editor.ui:129 src/gr-query-editor.c:557
+#: src/gr-query-editor.c:708
+msgid "Any spiciness"
+msgstr ""
+
+#: src/gr-query-editor.ui:172
 msgid "Dietary restrictions"
 msgstr "Dieetbeperkingen"
 
-#: src/gr-query-editor.ui:131 src/gr-query-editor.c:365
-#: src/gr-query-editor.c:595
+#: src/gr-query-editor.ui:192 src/gr-query-editor.c:406
+#: src/gr-query-editor.c:737
 msgid "No restrictions"
 msgstr "Geen beperkingen"
 
 #. FIXME: repopulate
-#: src/gr-query-editor.ui:194 src/gr-query-editor.c:296
-#: src/gr-query-editor.c:626
+#: src/gr-query-editor.ui:255 src/gr-query-editor.c:337
+#: src/gr-query-editor.c:766
 msgid "Anything"
 msgstr "Wat dan ook"
 
-#: src/gr-query-editor.ui:222
+#: src/gr-query-editor.ui:283
 msgid "Search…"
 msgstr "Zoeken…"
 
-#: src/gr-recipes-page.ui:9
+#: src/gr-recipes-page.ui:8
 msgid "Recipes page"
 msgstr "Receptenpagina"
 
-#: src/gr-recipes-page.ui:29
+#: src/gr-recipes-page.ui:27
 msgid "Today"
 msgstr "Vandaag"
 
-#: src/gr-recipes-page.ui:54
-msgid "Editor's Picks"
+#: src/gr-recipes-page.ui:103
+#, fuzzy
+msgid "Editor’s Picks"
 msgstr "Keuzes van de redactie"
 
-#: src/gr-recipes-page.ui:79
+#: src/gr-recipes-page.ui:129
 msgid "Categories"
 msgstr "Categorieën"
 
-#: src/gr-recipes-page.ui:175
+#: src/gr-recipes-page.ui:226
 msgid "Featured GNOME Chefs"
 msgstr "Aanbevolen Gnome-chefs"
 
-#: src/gr-search-page.ui:43
+#: src/gr-search-page.ui:42
 msgid "Try a different search"
 msgstr "Probeer een andere zoekopdracht"
 
-#: src/gr-window.ui:20
+#: src/gr-shopping-page.ui:40
+#, fuzzy
+msgid "Buy ingredients"
+msgstr "Ingrediënten"
+
+#: src/gr-shopping-page.ui:93
+msgid "No shopping necessary!"
+msgstr ""
+
+#: src/gr-shopping-page.ui:132
+msgid "_Clear List"
+msgstr ""
+
+#: src/gr-shopping-page.ui:188
+msgid "Nothing to add"
+msgstr ""
+
+#: src/gr-time-widget.ui:31
+msgid "Start"
+msgstr "Starten"
+
+#: src/gr-time-widget.ui:60
+msgid "Pause"
+msgstr ""
+
+#: src/gr-time-widget.ui:69
+msgid "Continue"
+msgstr ""
+
+#: src/gr-time-widget.ui:82
+msgid "Reset"
+msgstr ""
+
+#: src/gr-window.ui:23
 msgid "_New Recipe"
 msgstr "_Nieuw recept"
 
-#: src/gr-window.ui:37
+#: src/gr-window.ui:40
 msgid "Go back"
 msgstr "Ga terug"
 
-#: src/gr-window.ui:94 src/gr-window.c:183
+#: src/gr-window.ui:97
 msgid "Search"
 msgstr "Zoeken"
 
-#: src/gr-window.ui:113
-msgid "_Start cooking"
+#: src/gr-window.ui:116
+#, fuzzy
+msgid "_Start Cooking"
 msgstr "_Beginnen met de bereiding"
 
-#: src/gr-window.ui:127
-msgid "_Save"
-msgstr "Op_slaan"
+#: src/gr-window.ui:144
+msgid "_Done Shopping"
+msgstr ""
 
-#: src/gr-window.ui:191
+#: src/gr-window.ui:205
+msgid "All ingredients marked as stocked!"
+msgstr ""
+
+#: src/gr-window.ui:215
+msgid "_Undo"
+msgstr ""
+
+#: src/gr-window.ui:264
+#, fuzzy
+msgid "Ingredients to buy added."
+msgstr "Ingrediëntenpagina"
+
+#: src/gr-window.ui:274
+msgid "View Shopping List"
+msgstr ""
+
+#: src/gr-window.ui:331
+msgid "Undo"
+msgstr ""
+
+#: src/gr-window.ui:391
+msgid "Send Update"
+msgstr ""
+
+#: src/gr-window.ui:466 src/gr-window.c:387
 msgid "Cuisines"
 msgstr "Gerechten"
 
-#: src/menus.ui:7
+#: src/menus.ui:6 src/menus.ui:48
 msgid "_Import"
 msgstr "I_mporteren"
 
-#: src/menus.ui:11
-msgid "_Preferences"
-msgstr "_Voorkeuren"
+#: src/menus.ui:11 src/menus.ui:53
+#, fuzzy
+msgid "_Export All"
+msgstr "_Exporteren"
 
-#: src/menus.ui:17
+#: src/menus.ui:16
+#, fuzzy
+msgid "_Chef Information"
+msgstr "Informatie auteur recept"
+
+#: src/menus.ui:22 src/menus.ui:93
+msgid "_What’s New"
+msgstr ""
+
+#: src/menus.ui:26
+msgid "_Help"
+msgstr ""
+
+#: src/menus.ui:30
 msgid "_About"
 msgstr "I_nfo"
 
-#: src/menus.ui:23
+#: src/menus.ui:34 src/menus.ui:97
+msgid "_Report Issue"
+msgstr ""
+
+#: src/menus.ui:38
 msgid "_Quit"
 msgstr "_Afsluiten"
 
-#: src/recipe-conflict-dialog.ui:10 src/gr-images.c:197 src/gr-preferences.c:94
-#: src/gr-window.c:488
+#: src/menus.ui:45
+msgid "File"
+msgstr ""
+
+#: src/menus.ui:60
+msgid "Chef Information…"
+msgstr ""
+
+#: src/menus.ui:69
+msgid "Copy"
+msgstr ""
+
+#: src/menus.ui:73
+#, fuzzy
+msgid "Paste"
+msgstr "Pasta"
+
+#: src/menus.ui:79
+msgid "Find…"
+msgstr ""
+
+#: src/menus.ui:86
+msgid "Help"
+msgstr ""
+
+#: src/menus.ui:89
+#, fuzzy
+msgid "Recipes _Help"
+msgstr "Receptenpagina"
+
+#: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:163
+#: src/gr-image-viewer.c:627 src/gr-recipe-exporter.c:172
+#: src/gr-shopping-page.c:740 src/gr-window.c:1125
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: src/recipe-conflict-dialog.ui:27
+#: src/recipe-conflict-dialog.ui:18
+msgid "Rename"
+msgstr "Hernoemen"
+
+#: src/recipe-conflict-dialog.ui:28
 msgid "A recipe with this name already exists."
 msgstr "Er bestaat al een recept met deze naam."
 
-#: src/gr-app.c:110
-msgid "About GNOME Recipes"
-msgstr "Informatie over Gnome Recepten"
+#: src/recipe-export-dialog.ui:14
+msgid "_Add More"
+msgstr ""
 
-#: src/gr-meal.c:44
-msgid "Main course"
-msgstr "Hoofdgerecht"
+#: src/recipe-export-dialog.ui:56
+msgid "Share with a friend"
+msgstr ""
 
-#: src/gr-meal.c:45
-msgid "Snacks"
-msgstr "Snacks"
+#: src/recipe-export-dialog.ui:63
+msgid "Contribute to the Recipes project"
+msgstr ""
 
-#: src/gr-meal.c:46
-msgid "Breakfast"
-msgstr "Ontbijt"
+#: src/recipe-whats-new-dialog.ui:8
+msgid "What’s New in Recipes"
+msgstr ""
 
-#: src/gr-meal.c:47
-msgid "Side dishes"
-msgstr "Bijgerechten"
+#: src/gr-about-dialog.c:132
+msgid "Learn more about Builder"
+msgstr ""
 
-#: src/gr-meal.c:48
-msgid "Desserts"
-msgstr "Nagerechten"
+#: src/gr-about-dialog.c:244 src/gr-about-dialog.c:327
+#: src/gr-about-dialog.c:329 src/gr-about-dialog.c:331
+#: src/gr-about-dialog.c:333 src/gr-about-dialog.c:335
+#: src/gr-about-dialog.c:337 src/gr-about-dialog.c:339
+#: src/gr-about-dialog.c:341 src/gr-about-dialog.c:343
+msgid "Unknown"
+msgstr ""
 
-#: src/gr-meal.c:49
-msgid "Cake and baking"
-msgstr "Gebak en bakken"
+#: src/gr-about-dialog.c:433
+msgid "Flatpak"
+msgstr ""
 
-#: src/gr-meal.c:50
-msgid "Drinks and cocktails"
-msgstr "Drankjes en cocktails"
+#: src/gr-about-dialog.c:436
+msgctxt "Flatpak metadata"
+msgid "Version"
+msgstr ""
 
-#: src/gr-meal.c:51
-msgid "Pizza"
-msgstr "Pizza"
+#: src/gr-about-dialog.c:439
+msgid "Application"
+msgstr ""
 
-#: src/gr-meal.c:52
-msgid "Pasta"
-msgstr "Pasta"
+#: src/gr-about-dialog.c:442 src/gr-about-dialog.c:451
+msgctxt "Flatpak metadata"
+msgid "ID"
+msgstr ""
 
-#: src/gr-meal.c:53
-msgid "Other"
-msgstr "Overig"
+#: src/gr-about-dialog.c:443 src/gr-about-dialog.c:452
+#, fuzzy
+msgctxt "Flatpak metadata"
+msgid "Architecture"
+msgstr "Afbeelding:"
 
-#: src/gr-category-tile.c:51 src/gr-list-page.c:114
-msgid "Gluten-free recipes"
-msgstr "Glutenvrije recepten"
+#: src/gr-about-dialog.c:444 src/gr-about-dialog.c:453
+msgctxt "Flatpak metadata"
+msgid "Branch"
+msgstr ""
 
-#: src/gr-category-tile.c:54 src/gr-list-page.c:117
-msgid "Nut-free recipes"
-msgstr "Notenvrije recepten"
+#: src/gr-about-dialog.c:445 src/gr-about-dialog.c:454
+msgctxt "Flatpak metadata"
+msgid "Commit"
+msgstr ""
 
-#: src/gr-category-tile.c:57 src/gr-list-page.c:120
-msgid "Vegan recipes"
-msgstr "Veganistische recepten"
+#: src/gr-about-dialog.c:448
+msgid "Runtime"
+msgstr ""
 
-#: src/gr-category-tile.c:60 src/gr-list-page.c:123
-msgid "Vegetarian recipes"
-msgstr "Vegetarische recepten"
+#: src/gr-about-dialog.c:457 src/gr-about-dialog.c:521
+msgid "Bundled libraries"
+msgstr ""
 
-#: src/gr-category-tile.c:63 src/gr-list-page.c:126
-msgid "Milk-free recipes"
-msgstr "Melkvrije recepten"
+#: src/gr-about-dialog.c:487
+msgid "OS"
+msgstr ""
 
-#: src/gr-category-tile.c:66 src/gr-list-page.c:129
-msgid "Other dietary restrictions"
-msgstr "Overige dieetbeperkingen"
+#: src/gr-about-dialog.c:490
+#, fuzzy
+msgctxt "OS metadata"
+msgid "Name"
+msgstr "Naam:"
 
-#: src/gr-cuisine.c:43
+#: src/gr-about-dialog.c:492
+msgctxt "OS metadata"
+msgid "Type"
+msgstr ""
+
+#: src/gr-about-dialog.c:495 src/gr-about-dialog.c:497
+msgctxt "OS metadata"
+msgid "Desktop"
+msgstr ""
+
+#: src/gr-about-dialog.c:500
+msgid "System libraries"
+msgstr ""
+
+#: src/gr-about-dialog.c:820 src/gr-about-dialog.c:847
+msgid "System"
+msgstr ""
+
+#: src/gr-about-dialog.c:914
+msgid "translator-credits"
+msgstr ""
+
+#: src/gr-about-dialog.c:917
+msgid "Learn more about Recipes"
+msgstr ""
+
+#: src/gr-about-dialog.c:924
+#, fuzzy
+msgid "Recipes by"
+msgstr "Recepten van %s"
+
+#: src/gr-account.c:109
+#, c-format
+msgid "Got an error from Account portal"
+msgstr ""
+
+#: src/gr-account.c:137
+msgid ""
+"Allow your personal information to be included with recipes you share with "
+"your friends."
+msgstr ""
+
+#: src/gr-app.c:202
+#, c-format
+msgid "Supported categories: %s\n"
+msgstr ""
+
+#: src/gr-app.c:434
+msgid "Print the version and exit"
+msgstr ""
+
+#: src/gr-app.c:438
+msgid "Turn on verbose logging"
+msgstr ""
+
+#: src/gr-app.c:442
+msgid "Show a category"
+msgstr ""
+
+#: src/gr-chef-dialog.c:159 src/gr-image-viewer.c:623
+msgid "Select an Image"
+msgstr "Afbeelding selecteren"
+
+#: src/gr-chef-dialog.c:162 src/gr-image-viewer.c:626 src/gr-window.c:1124
+msgid "Open"
+msgstr "Openen"
+
+#: src/gr-chef-dialog.c:167 src/gr-image-viewer.c:631
+msgid "Image files"
+msgstr "Afbeeldingsbestanden"
+
+#: src/gr-chef-dialog.c:423
+msgid "New Chef"
+msgstr ""
+
+#: src/gr-cooking-page.c:249
+#, fuzzy
+msgid "Cooking"
+msgstr "Bereiding:"
+
+#: src/gr-cooking-view.c:157
+#, c-format
+msgid "Step %d/%d"
+msgstr ""
+
+#: src/gr-cooking-view.c:163
+#, c-format
+msgid "Step %d"
+msgstr ""
+
+#: src/gr-cooking-view.c:273
+msgid "GNOME Recipes"
+msgstr "Gnome Recepten"
+
+#: src/gr-cooking-view.c:393
+#, fuzzy
+msgid "A cooking timer has expired"
+msgstr "De kooktijd voor ‘%s’ is verstreken."
+
+#: src/gr-cooking-view.c:411 src/gr-cooking-view.c:427
+#, fuzzy, c-format
+msgid "Timer for “%s” has expired."
+msgstr "De kooktijd voor ‘%s’ is verstreken."
+
+#: src/gr-cooking-view.c:425
+#, fuzzy
+msgid "Timer is up!"
+msgstr "De tijd is om!"
+
+#: src/gr-cuisine.c:45
 msgid "American"
 msgstr "Amerikaans"
 
-#: src/gr-cuisine.c:44
+#: src/gr-cuisine.c:46
 msgid "Chinese"
 msgstr "Chinees"
 
-#: src/gr-cuisine.c:45
+#: src/gr-cuisine.c:47
 msgid "Indian"
 msgstr "India's"
 
-#: src/gr-cuisine.c:46
+#: src/gr-cuisine.c:48
 msgid "Italian"
 msgstr "Italiaans"
 
-#: src/gr-cuisine.c:47
+#: src/gr-cuisine.c:49
 msgid "French"
 msgstr "Frans"
 
-#: src/gr-cuisine.c:48
+#: src/gr-cuisine.c:50
 msgid "Greek"
 msgstr "Grieks"
 
-#: src/gr-cuisine.c:49
+#: src/gr-cuisine.c:51
 msgid "Mediterranean"
 msgstr "Mediterraans"
 
-#: src/gr-cuisine.c:50
+#: src/gr-cuisine.c:52
 msgid "Mexican"
 msgstr "Mexicaans"
 
-#: src/gr-cuisine.c:51
+#: src/gr-cuisine.c:53
+msgid "Nordic"
+msgstr ""
+
+#: src/gr-cuisine.c:54
 msgid "Turkish"
 msgstr "Turks"
 
-#: src/gr-cuisine.c:55
+#: src/gr-cuisine.c:58
 msgid "American Cuisine"
 msgstr "Amerikaanse gerechten"
 
-#: src/gr-cuisine.c:56
+#: src/gr-cuisine.c:59
 msgid "Chinese Cuisine"
 msgstr "Chinese gerechten"
 
-#: src/gr-cuisine.c:57
+#: src/gr-cuisine.c:60
 msgid "Indian Cuisine"
 msgstr "Indiase gerechten"
 
-#: src/gr-cuisine.c:58
+#: src/gr-cuisine.c:61
 msgid "Italian Cuisine"
 msgstr "Italiaanse gerechten"
 
-#: src/gr-cuisine.c:59
+#: src/gr-cuisine.c:62
 msgid "French Cuisine"
 msgstr "Franse gerechten"
 
-#: src/gr-cuisine.c:60
+#: src/gr-cuisine.c:63
 msgid "Greek Cuisine"
 msgstr "Griekse gerechten"
 
-#: src/gr-cuisine.c:61
+#: src/gr-cuisine.c:64
 msgid "Mediterranean Cuisine"
 msgstr "Mediterraanse gerechten"
 
-#: src/gr-cuisine.c:62
+#: src/gr-cuisine.c:65
 msgid "Mexican Cuisine"
 msgstr "Mexicaanse gerechten"
 
-#: src/gr-cuisine.c:63
+#: src/gr-cuisine.c:66
+#, fuzzy
+msgid "Nordic Cuisine"
+msgstr "Wereldgerechten"
+
+#: src/gr-cuisine.c:67
 msgid "Turkish Cuisine"
 msgstr "Turkse gerechten"
 
-#: src/gr-cuisine.c:67
+#: src/gr-cuisine.c:71
 msgid ""
 "The cuisine of the United States reflects its history. The European "
 "colonization of the Americas yielded the introduction of a number of "
@@ -607,13 +1178,13 @@ msgid ""
 "diversity in food preparation throughout the country."
 msgstr ""
 "De keuken van de Verenigde Staten is een weerspiegeling van haar "
-"geschiedenis. De Europese kolonisatie van Amerika bracht de invoering van een "
-"aantal ingrediënten en kookstijlen met zich mee. De verschillende stijlen "
-"breidden zich uit tot ver in de 19e en 20e eeuw, evenredig met de instroom "
-"van immigranten uit verschillende landen; met deze instroom ontwikkelde zich "
-"een rijke diversiteit aan voedselbereiding in het hele land."
+"geschiedenis. De Europese kolonisatie van Amerika bracht de invoering van "
+"een aantal ingrediënten en kookstijlen met zich mee. De verschillende "
+"stijlen breidden zich uit tot ver in de 19e en 20e eeuw, evenredig met de "
+"instroom van immigranten uit verschillende landen; met deze instroom "
+"ontwikkelde zich een rijke diversiteit aan voedselbereiding in het hele land."
 
-#: src/gr-cuisine.c:72
+#: src/gr-cuisine.c:76
 msgid ""
 "Chinese cuisine includes styles originating from the diverse regions of "
 "China, as well as from Chinese people in other parts of the world including "
@@ -625,17 +1196,18 @@ msgid ""
 "expansion and from the trade with nearby regions in pre-modern times, and "
 "from Europe and the New World in the modern period."
 msgstr ""
-"De Chinese keuken omvat stijlen die afkomstig zijn van de diverse regio's van "
-"China, evenals van Chinezen uit andere delen van de wereld, met inbegrip van "
-"de meeste Aziatische landen. De geschiedenis van de Chinese keuken in China "
-"gaat duizenden jaren terug en is van periode tot periode veranderd in elke "
-"regio, afhankelijk van klimaat, keizerlijke modes en lokale voorkeuren. "
-"Mettertijd werden technieken en gerechten van andere culturen geïntegreerd in "
-"de keuken van de Chinezen, door zowel de uitbreiding van het keizerrijk als "
-"de handel met naburige regio's in de pre-moderne tijd en met Europa en de "
-"Nieuwe wereld in de moderne tijd."
+"De Chinese keuken omvat stijlen die afkomstig zijn van de diverse regio's "
+"van China, evenals van Chinezen uit andere delen van de wereld, met inbegrip "
+"van de meeste Aziatische landen. De geschiedenis van de Chinese keuken in "
+"China gaat duizenden jaren terug en is van periode tot periode veranderd in "
+"elke regio, afhankelijk van klimaat, keizerlijke modes en lokale voorkeuren. "
+"Mettertijd werden technieken en gerechten van andere culturen geïntegreerd "
+"in de keuken van de Chinezen, door zowel de uitbreiding van het keizerrijk "
+"als de handel met naburige regio's in de pre-moderne tijd en met Europa en "
+"de Nieuwe wereld in de moderne tijd."
 
-#: src/gr-cuisine.c:80
+#: src/gr-cuisine.c:84
+#, fuzzy
 msgid ""
 "Indian cuisine encompasses a wide variety of regional and traditional "
 "cuisines native to India. Given the range of diversity in soil type, "
@@ -645,20 +1217,20 @@ msgid ""
 "and cultural choices and traditions. There has also been Middle Eastern and "
 "Central Asian influence on North Indian cuisine from the years of Mughal "
 "rule. Indian cuisine has been and is still evolving, as a result of the "
-"nation's cultural interactions with other societies."
+"nation’s cultural interactions with other societies."
 msgstr ""
 "De Indiase keuken omvat een grote variëteit aan regionale en traditionele "
 "gerechten uit India. Gezien de grote verscheidenheid aan grondsoorten, "
 "klimaat, cultuur, etnische groeperingen en beroepen, zijn er grote "
-"verschillen tussen deze gerechten en worden er lokaal beschikbare specerijen, "
-"kruiden, groenten en fruit gebruikt. Indiaas eten wordt ook sterk beïnvloed "
-"door religieuze en culturele keuzes en tradities. Ook het Midden-Oosten en "
-"centraal Azië hebben invloed gehad op de Noord-Indiase keuken tijdens de "
-"jaren van het Mughal-bewind. De Indiase keuken is nog volop in ontwikkeling "
-"als gevolg van de culturele uitwisseling van het land met andere "
-"samenlevingen."
+"verschillen tussen deze gerechten en worden er lokaal beschikbare "
+"specerijen, kruiden, groenten en fruit gebruikt. Indiaas eten wordt ook "
+"sterk beïnvloed door religieuze en culturele keuzes en tradities. Ook het "
+"Midden-Oosten en centraal Azië hebben invloed gehad op de Noord-Indiase "
+"keuken tijdens de jaren van het Mughal-bewind. De Indiase keuken is nog "
+"volop in ontwikkeling als gevolg van de culturele uitwisseling van het land "
+"met andere samenlevingen."
 
-#: src/gr-cuisine.c:88
+#: src/gr-cuisine.c:92
 msgid ""
 "Italian cuisine is characterized by its simplicity, with many dishes having "
 "only four to eight ingredients. Italian cooks rely chiefly on the quality of "
@@ -669,11 +1241,11 @@ msgstr ""
 "De Italiaanse keuken wordt gekenmerkt door haar eenvoud, waarbij veel "
 "gerechten uit slechts vier tot acht ingrediënten bestaan. Italiaanse koks "
 "richten zich eerder op de kwaliteit van de ingrediënten dan op een "
-"ingewikkelde bereiding. Ingrediënten en gerechten verschillen per regio. Maar "
-"vele gerechten die ooit regionaal waren, hebben zich met variaties verspreid "
-"door het hele land."
+"ingewikkelde bereiding. Ingrediënten en gerechten verschillen per regio. "
+"Maar vele gerechten die ooit regionaal waren, hebben zich met variaties "
+"verspreid door het hele land."
 
-#: src/gr-cuisine.c:92
+#: src/gr-cuisine.c:96
 msgid ""
 "French cuisine was codified in the 20th century by Auguste Escoffier to "
 "become the modern haute cuisine; Escoffier, however, left out much of the "
@@ -688,14 +1260,15 @@ msgstr ""
 "De Franse keuken werd in de 20e eeuw door Auguste Escoffier aangemerkt om de "
 "moderne haute cuisine te worden; Maar Escoffier liet veel van het lokale "
 "culinaire karakter dat te vinden is in de Franse regio's achterwege en zijn "
-"recepten werden beschouwd als moeilijk uit te voeren door thuiskoks. Geholpen "
-"door het Gastro-toerisme en de Guide Michelin maakten mensen kennis met de "
-"keuken van de rijke burgerij en de boerenkeuken van het Franse platteland, "
-"beginnend in de 20e eeuw. De keuken van Gascogne heeft ook grote invloed "
-"gehad op de keuken in het zuidwesten van Frankrijk. Vele gerechten die ooit "
-"regionaal waren, hebben zich met variaties verspreid door het hele land."
+"recepten werden beschouwd als moeilijk uit te voeren door thuiskoks. "
+"Geholpen door het Gastro-toerisme en de Guide Michelin maakten mensen kennis "
+"met de keuken van de rijke burgerij en de boerenkeuken van het Franse "
+"platteland, beginnend in de 20e eeuw. De keuken van Gascogne heeft ook grote "
+"invloed gehad op de keuken in het zuidwesten van Frankrijk. Vele gerechten "
+"die ooit regionaal waren, hebben zich met variaties verspreid door het hele "
+"land."
 
-#: src/gr-cuisine.c:99
+#: src/gr-cuisine.c:103
 msgid ""
 "Contemporary Greek cookery makes wide use of vegetables, olive oil, grains, "
 "fish, wine, and meat (white and red, including lamb, poultry, rabbit and "
@@ -704,22 +1277,23 @@ msgid ""
 "yoghurt. The most commonly used grain is wheat; barley is also used. Common "
 "dessert ingredients include nuts, honey, fruits, and filo pastry."
 msgstr ""
-"De huidige Griekse keuken maakt veel gebruik van groenten, olijfolie, granen, "
-"vis, wijn en vlees (wit en rood, waaronder lamsvlees, kip, konijn en "
-"varkensvlees). Andere belangrijke ingrediënten zijn olijven, kaas, aubergine, "
-"courgette, citroensap, groenten, kruiden, brood en yoghurt. De meestgebruikte "
-"graansoort is tarwe; gerst wordt ook gebruikt. Veelgebruikte ingrediënten "
-"voor nagerechten zijn noten, honing, vruchten en bladerdeeg."
+"De huidige Griekse keuken maakt veel gebruik van groenten, olijfolie, "
+"granen, vis, wijn en vlees (wit en rood, waaronder lamsvlees, kip, konijn en "
+"varkensvlees). Andere belangrijke ingrediënten zijn olijven, kaas, "
+"aubergine, courgette, citroensap, groenten, kruiden, brood en yoghurt. De "
+"meestgebruikte graansoort is tarwe; gerst wordt ook gebruikt. Veelgebruikte "
+"ingrediënten voor nagerechten zijn noten, honing, vruchten en bladerdeeg."
 
-#: src/gr-cuisine.c:104
+#: src/gr-cuisine.c:108
+#, fuzzy
 msgid ""
-"The mediterranean cuisine has a lot to offer, and is legendary for being "
-"very healthy too. Expect to see olives, yoghurt and garlic."
+"Mediterranean cuisine has a lot to offer, and is legendary for being very "
+"healthy too. Expect to see olives, yoghurt and garlic."
 msgstr ""
 "De mediterrane keuken heeft veel te bieden en staat ook bekend als zeer "
 "gezond. Hier kunt u olijven, yoghurt en knoflook verwachten."
 
-#: src/gr-cuisine.c:105
+#: src/gr-cuisine.c:109
 msgid ""
 "Mexican cuisine is primarily a fusion of indigenous Mesoamerican cooking "
 "with European, especially Spanish, elements added after the Spanish conquest "
@@ -730,8 +1304,8 @@ msgid ""
 "animals (beef, pork, chicken, goat, and sheep), dairy products (especially "
 "cheese), and various herbs and spices."
 msgstr ""
-"De Mexicaanse keuken is hoofdzakelijk een samensmelting van de inlandse "
-"Meso-Amerikaanse keuken met Europese, vooral Spaanse, elementen die zijn "
+"De Mexicaanse keuken is hoofdzakelijk een samensmelting van de inlandse Meso-"
+"Amerikaanse keuken met Europese, vooral Spaanse, elementen die zijn "
 "toegevoegd na de Spaanse verovering van het Aztekenrijk in de 16e eeuw. De "
 "hoofdschotels bevatten inheemse ingrediënten zoals mais, bonen, avocado's, "
 "tomaten en chilipepers, samen met rijst, meegebracht door de Spanjaarden. "
@@ -740,7 +1314,15 @@ msgstr ""
 "geiten- en schapenvlees), zuivelproducten (vooral kaas), en verschillende "
 "kruiden en specerijen."
 
-#: src/gr-cuisine.c:112
+#: src/gr-cuisine.c:116
+msgid ""
+"Cooking in Denmark has always been inspired by foreign and continental "
+"practises and the use of imported tropical spices like cinnamon, cardamom, "
+"nutmeg and black pepper can be traced to the Danish cuisine of the Middle "
+"Ages and some even to the Vikings."
+msgstr ""
+
+#: src/gr-cuisine.c:117
 msgid ""
 "You can find a great variety of mouth watering dishes in Turkish cuisine, "
 "which is mostly the heritage of Ottoman cuisine. It is the mixture and "
@@ -752,666 +1334,422 @@ msgstr ""
 "verfijning van gerechten uit Centraal-Azië, het Midden-Oosten en de Balkan. "
 "Daarom is het onmogelijk om Turkse gerechten in een korte lijst op te nemen."
 
-#: src/gr-details-page.c:62
-#, c-format
-msgid "Your cooking timer for “%s” has expired."
-msgstr "De kooktijd voor ‘%s’ is verstreken."
+#: src/gr-details-page.c:323
+msgid "Could not find this recipe."
+msgstr ""
 
-#: src/gr-details-page.c:64
-msgid "Time is up!"
+#: src/gr-details-page.c:531
+#, fuzzy, c-format
+msgid "Timer: %s"
 msgstr "De tijd is om!"
 
-#: src/gr-details-page.c:352
+#: src/gr-details-page.c:538
+#, fuzzy, c-format
+msgid "Image %d"
+msgstr "Afbeeldingsbestanden"
+
+#: src/gr-details-page.c:693 src/gr-edit-page.c:1409
+#, fuzzy, c-format
+msgid "Recipe by %s"
+msgstr "Recepten van %s"
+
+#: src/gr-diet.c:34
+msgid "Gluten-free recipes"
+msgstr "Glutenvrije recepten"
+
+#: src/gr-diet.c:37
+msgid "Nut-free recipes"
+msgstr "Notenvrije recepten"
+
+#: src/gr-diet.c:40
+msgid "Vegan recipes"
+msgstr "Veganistische recepten"
+
+#: src/gr-diet.c:43
+msgid "Vegetarian recipes"
+msgstr "Vegetarische recepten"
+
+#: src/gr-diet.c:46
+msgid "Milk-free recipes"
+msgstr "Melkvrije recepten"
+
+#: src/gr-diet.c:49 src/gr-diet.c:78
+msgid "Other dietary restrictions"
+msgstr "Overige dieetbeperkingen"
+
+#: src/gr-diet.c:63
+msgid ""
+"A gluten-free diet is a diet that excludes gluten, a protein composite found "
+"in wheat, barley, rye, and all their species and hybrids (such as spelt, "
+"kamut, and triticale). The inclusion of oats in a gluten-free diet remains "
+"controversial. Avenin present in oats may also be toxic for coeliac people; "
+"its toxicity depends on the cultivar consumed. Furthermore, oats are "
+"frequently cross-contaminated with cereals containing gluten.\n"
+"<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free\">Learn more…</"
+"a>"
+msgstr ""
+
+#: src/gr-diet.c:66
+msgid ""
+"A tree nut allergy is a hypersensitivity to dietary substances from tree "
+"nuts and edible tree seeds causing an overreaction of the immune system "
+"which may lead to severe physical symptoms. Tree nuts include, but are not "
+"limited to, almonds, Brazil nuts, cashews, chestnuts, filberts/hazelnuts, "
+"macadamia nuts, pecans, pistachios, pine nuts, shea nuts and walnuts.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">Learn more…</a>"
+msgstr ""
+
+#: src/gr-diet.c:69
+msgid ""
+"Veganism is both the practice of abstaining from the use of animal products, "
+"particularly in diet, and an associated philosophy that rejects the "
+"commodity status of animals.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Veganism\">Learn more…</a>"
+msgstr ""
+
+#: src/gr-diet.c:72
+msgid ""
+"Vegetarian cuisine is based on food that meets vegetarian standards by not "
+"including meat and animal tissue products (such as gelatin or animal-derived "
+"rennet). For lacto-ovo vegetarianism (the most common type of vegetarianism "
+"in the Western world), eggs and dairy products such as milk and cheese are "
+"permitted. For lacto vegetarianism, the earliest known type of vegetarianism "
+"(recorded in India), dairy products such as milk and cheese are permitted.\n"
+"The strictest forms of vegetarianism are veganism and fruitarianism, which "
+"exclude all animal products, including dairy products as well as honey, and "
+"even some refined sugars if filtered and whitened with bone char.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Vegetarianism\">Learn more…</a>"
+msgstr ""
+
+#: src/gr-diet.c:75
+msgid ""
+"Lactose intolerance is a condition in which people have symptoms due to the "
+"decreased ability to digest lactose, a sugar found in milk products. Those "
+"affected vary in the amount of lactose they can tolerate before symptoms "
+"develop. Symptoms may include abdominal pain, bloating, diarrhea, gas, and "
+"nausea. These typically start between half and two hours after drinking "
+"milk. Severity depends on the amount a person eats or drinks. It does not "
+"cause damage to the gastrointestinal tract.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Learn more…</a>"
+msgstr ""
+
+#: src/gr-edit-page.c:595
 msgid "hour"
 msgstr "uur"
 
-#: src/gr-details-page.c:353
+#: src/gr-edit-page.c:596
 msgid "hours"
 msgstr "uur"
 
-#: src/gr-details-page.c:354
+#: src/gr-edit-page.c:597
 msgctxt "hour abbreviation"
 msgid "h"
 msgstr "h"
 
-#: src/gr-details-page.c:358
+#: src/gr-edit-page.c:601
 msgid "minute"
 msgstr "minuut"
 
-#: src/gr-details-page.c:359
+#: src/gr-edit-page.c:602
 msgid "minutes"
 msgstr "minuten"
 
-#: src/gr-details-page.c:360
+#: src/gr-edit-page.c:603
 msgctxt "minute abbreviation"
 msgid "min"
 msgstr "min"
 
-#: src/gr-details-page.c:361
+#: src/gr-edit-page.c:604
 msgctxt "minute abbreviation"
 msgid "m"
 msgstr "m"
 
-#: src/gr-details-page.c:365
+#: src/gr-edit-page.c:608
 msgid "second"
 msgstr "seconde"
 
-#: src/gr-details-page.c:366
+#: src/gr-edit-page.c:609
 msgid "seconds"
 msgstr "seconden"
 
-#: src/gr-details-page.c:367
+#: src/gr-edit-page.c:610
 msgctxt "second abbreviation"
 msgid "sec"
 msgstr "sec"
 
-#: src/gr-details-page.c:368
+#: src/gr-edit-page.c:611
 msgctxt "second abbreviation"
 msgid "s"
 msgstr "s"
 
-#: src/gr-details-page.c:633
-#, c-format
-msgid "Created on %c"
-msgstr "Aangemaakt op %c"
+#: src/gr-edit-page.c:896
+#, fuzzy
+msgid "Recipe Author"
+msgstr "Informatie auteur recept"
 
-#: src/gr-details-page.c:637
-#, c-format
-msgid "Last modified on %c"
-msgstr "Laatst gewijzigd op %c"
+#: src/gr-edit-page.c:1360
+#, fuzzy
+msgid "Name Your Recipe"
+msgstr "Uw recept een _naam geven"
 
-#: src/gr-details-page.c:642
+#: src/gr-edit-page.c:1465
+#, fuzzy
+msgid "Name"
+msgstr "Naam:"
+
+#: src/gr-edit-page.c:1537 src/gr-edit-page.c:1592 src/gr-recipe-store.c:1280
 #, c-format
-msgid ""
-"About GNOME chef %s:\n"
-"%s"
+msgid "You need to provide a name for the recipe"
+msgstr "U moet het recept een naam geven"
+
+#: src/gr-edit-page.c:1550
+#, c-format
+msgid "Some ingredients need correction"
 msgstr ""
-"Info Gnome-chef %s:\n"
-"%s"
 
-#: src/gr-details-page.c:646
-#, c-format
-msgid "A recipe by GNOME chef %s"
-msgstr "Een recept van Gnome-chef %s"
-
-#: src/gr-details-page.c:650
-#, c-format
-msgid "More recipes by %s"
-msgstr "Meer recepten van %s"
-
-#: src/gr-details-page.c:656
-#, c-format
-msgid "You've cooked this recipe before"
-msgid_plural "You've cooked this recipe %d times"
-msgstr[0] "U heeft dit recept al eerder bereid"
-msgstr[1] "U heeft dit recept %d keren bereid"
-
-#: src/gr-images.c:193 src/gr-preferences.c:90
-msgid "Select an Image"
-msgstr "Afbeelding selecteren"
-
-#: src/gr-images.c:196 src/gr-preferences.c:93 src/gr-window.c:487
-msgid "Open"
-msgstr "Openen"
-
-#: src/gr-images.c:201 src/gr-preferences.c:98
-msgid "Image files"
-msgstr "Afbeeldingsbestanden"
-
-#: src/gr-images.c:205
-msgid "Use dark text"
-msgstr "Gebruik donkere tekst"
-
-#: src/gr-ingredient.c:31
-msgid "Almond"
-msgstr "Amandel"
-
-#: src/gr-ingredient.c:32 src/gr-ingredient.c:82
-msgid "Amaretti"
-msgstr "Amaretti"
-
-#: src/gr-ingredient.c:33
-msgid "Apple"
-msgstr "Appel"
-
-#: src/gr-ingredient.c:34
-msgid "Apricot"
-msgstr "Abrikoos"
-
-#: src/gr-ingredient.c:35 src/gr-ingredient.c:85
-msgid "Anchovis"
-msgstr "Anchovis"
-
-#: src/gr-ingredient.c:36
-msgid "Artichoke"
-msgstr "Artisjok"
-
-#: src/gr-ingredient.c:37 src/gr-ingredient.c:87
-msgid "Asparagus"
-msgstr "Asperge"
-
-#: src/gr-ingredient.c:38
-msgid "Aubergine"
-msgstr "Aubergine"
-
-#: src/gr-ingredient.c:39 src/gr-ingredient.c:89
-msgid "Bacon"
-msgstr "Spek"
-
-#: src/gr-ingredient.c:40
-msgid "Banana"
-msgstr "Banaan"
-
-#: src/gr-ingredient.c:41 src/gr-ingredient.c:91
-msgid "Baked Beans"
-msgstr "Witte bonen in tomatensaus"
-
-#: src/gr-ingredient.c:42 src/gr-ingredient.c:92
-msgid "Basil"
-msgstr "Basilicum"
-
-#: src/gr-ingredient.c:43 src/gr-ingredient.c:93
-msgid "Beans"
-msgstr "Bonen"
-
-#: src/gr-ingredient.c:44
-msgid "Bagel"
-msgstr "Bagel"
-
-#: src/gr-ingredient.c:45 src/gr-ingredient.c:95
-msgid "Basmati rice"
-msgstr "Basmati rijst"
-
-#: src/gr-ingredient.c:46
-msgid "Bay leaf"
-msgstr "Laurierblad"
-
-#: src/gr-ingredient.c:47 src/gr-ingredient.c:97
-msgid "Beef mince"
-msgstr "Rundergehakt"
-
-#: src/gr-ingredient.c:48
-msgid "Berry"
-msgstr "Bes"
-
-#: src/gr-ingredient.c:49
-msgid "Beetroot"
-msgstr "Biet"
-
-#: src/gr-ingredient.c:50
-msgid "Biscotti"
-msgstr "Biscotti"
-
-#: src/gr-ingredient.c:51
-msgid "Beef sausage"
-msgstr "Runderworst"
-
-#: src/gr-ingredient.c:52 src/gr-ingredient.c:102
-msgid "Beef stock"
-msgstr "Runderbouillon"
-
-#: src/gr-ingredient.c:53
-msgid "Bilberry"
-msgstr "Bosbes"
-
-#: src/gr-ingredient.c:54
-msgid "Carrot"
-msgstr "Wortel"
-
-#: src/gr-ingredient.c:55 src/gr-ingredient.c:105
-msgid "Couscous"
-msgstr "Couscous"
-
-#: src/gr-ingredient.c:56
-msgid "Date"
-msgstr "Dadel"
-
-#: src/gr-ingredient.c:57
-msgid "Egg"
-msgstr "Ei"
-
-#: src/gr-ingredient.c:58
-msgid "Fig"
-msgstr "Vijg"
-
-#: src/gr-ingredient.c:59 src/gr-ingredient.c:109
-msgid "Garlic"
-msgstr "Knoflook"
-
-#: src/gr-ingredient.c:60 src/gr-ingredient.c:110
-msgid "Honey"
-msgstr "Honing"
-
-#: src/gr-ingredient.c:61
-msgid "Lemon"
-msgstr "Citroen"
-
-#: src/gr-ingredient.c:62 src/gr-ingredient.c:112
-msgid "Mayonnaise"
-msgstr "Mayonnaise"
-
-#: src/gr-ingredient.c:63 src/gr-ingredient.c:113
-msgid "Mustard"
-msgstr "Mosterd"
-
-#: src/gr-ingredient.c:64
-msgid "Onion"
-msgstr "Ui"
-
-#: src/gr-ingredient.c:65
-msgid "Orange"
-msgstr "Sinaasappel"
-
-#: src/gr-ingredient.c:66 src/gr-ingredient.c:116
-msgid "Parsley"
-msgstr "Peterselie"
-
-#: src/gr-ingredient.c:67
-msgid "Pepper"
-msgstr "Peper"
-
-#: src/gr-ingredient.c:68
-msgid "Potato"
-msgstr "Aardappel"
-
-#: src/gr-ingredient.c:69 src/gr-ingredient.c:119
-msgid "Silantro"
-msgstr "Koriander"
-
-#: src/gr-ingredient.c:70
-msgid "Squash"
-msgstr "Pompoen"
-
-#: src/gr-ingredient.c:71
-msgid "Tangerine"
-msgstr "Mandarijn"
-
-#: src/gr-ingredient.c:72
-msgid "Tomato"
-msgstr "Tomaat"
-
-#: src/gr-ingredient.c:73 src/gr-ingredient.c:123
-msgid "Vinegar"
-msgstr "Azijn"
-
-#: src/gr-ingredient.c:74
-msgid "Wine"
-msgstr "Wijn"
-
-#: src/gr-ingredient.c:75
-msgid "Yoghurt"
-msgstr "Yoghurt"
-
-#: src/gr-ingredient.c:76
-msgid "Zinfandel"
-msgstr "Zinfandel"
-
-#: src/gr-ingredient.c:81
-msgid "Almonds"
-msgstr "Amandelen"
-
-#: src/gr-ingredient.c:83
-msgid "Apples"
-msgstr "Appels"
-
-#: src/gr-ingredient.c:84
-msgid "Apricots"
-msgstr "Abrikozen"
-
-#: src/gr-ingredient.c:86
-msgid "Artichokes"
-msgstr "Artisjokken"
-
-#: src/gr-ingredient.c:88
-msgid "Aubergines"
-msgstr "Aubergines"
-
-#: src/gr-ingredient.c:90
-msgid "Bananas"
-msgstr "Bananen"
-
-#: src/gr-ingredient.c:94
-msgid "Bagels"
-msgstr "Bagels"
-
-#: src/gr-ingredient.c:96
-msgid "Bay leaves"
-msgstr "Laurierbladeren"
-
-#: src/gr-ingredient.c:98
-msgid "Berries"
-msgstr "Bessen"
-
-#: src/gr-ingredient.c:99
-msgid "Beetroots"
-msgstr "Bieten"
-
-#: src/gr-ingredient.c:100
-msgid "Biscottis"
-msgstr "Biscottis"
-
-#: src/gr-ingredient.c:101
-msgid "Beef sausages"
-msgstr "Runderworstjes"
-
-#: src/gr-ingredient.c:103
-msgid "Bilberries"
-msgstr "Bosbessen"
-
-#: src/gr-ingredient.c:104
-msgid "Carrots"
-msgstr "Wortelen"
-
-#: src/gr-ingredient.c:106
-msgid "Dates"
-msgstr "Dadels"
-
-#: src/gr-ingredient.c:107
-msgid "Eggs"
-msgstr "Eieren"
-
-#: src/gr-ingredient.c:108
-msgid "Figs"
-msgstr "Vijgen"
-
-#: src/gr-ingredient.c:111
-msgid "Lemons"
-msgstr "Citroenen"
-
-#: src/gr-ingredient.c:114
-msgid "Onions"
-msgstr "Uien"
-
-#: src/gr-ingredient.c:115
-msgid "Oranges"
-msgstr "Sinaasappelen"
-
-#: src/gr-ingredient.c:117
-msgid "Peppers"
-msgstr "Pepers"
-
-#: src/gr-ingredient.c:118
-msgid "Potatoes"
-msgstr "Aardappelen"
-
-#: src/gr-ingredient.c:120
-msgid "Squashs"
-msgstr "Pompoenen"
-
-#: src/gr-ingredient.c:121
-msgid "Tangerines"
-msgstr "Mandarijnen"
-
-#: src/gr-ingredient.c:122
-msgid "Tomatoes"
-msgstr "Tomaten"
-
-#: src/gr-ingredient.c:124
-msgid "Wines"
-msgstr "Wijnen"
-
-#: src/gr-ingredient.c:125
-msgid "Yoghurts"
-msgstr "Yoghurts"
-
-#: src/gr-ingredient.c:126
-msgid "Zinfandels"
-msgstr "Zinfandels"
-
-#: src/gr-ingredient.c:131
-msgid "no Almond"
-msgstr "geen Amandel"
-
-#: src/gr-ingredient.c:132
-msgid "no Amaretti"
-msgstr "geen Amaretti"
-
-#: src/gr-ingredient.c:133
-msgid "no Apple"
-msgstr "geen Appel"
-
-#: src/gr-ingredient.c:134
-msgid "no Apricot"
-msgstr "geen Abrikoos"
-
-#: src/gr-ingredient.c:135
-msgid "no Anchovis"
-msgstr "geen ansjovis"
-
-#: src/gr-ingredient.c:136
-msgid "no Artichoke"
-msgstr "geen Artisjok"
-
-#: src/gr-ingredient.c:137
-msgid "no Asparagus"
-msgstr "geen Asperge"
-
-#: src/gr-ingredient.c:138
-msgid "no Aubergine"
-msgstr "geen Aubergine"
-
-#: src/gr-ingredient.c:139
-msgid "no Bacon"
-msgstr "geen Spek"
-
-#: src/gr-ingredient.c:140
-msgid "no Banana"
-msgstr "geen Banaan"
-
-#: src/gr-ingredient.c:141
-msgid "no Baked Beans"
-msgstr "geen Witte bonen in tomatensaus"
-
-#: src/gr-ingredient.c:142
-msgid "no Basil"
-msgstr "geen Basilicum"
-
-#: src/gr-ingredient.c:143
-msgid "no Beans"
-msgstr "geen Bonen"
-
-#: src/gr-ingredient.c:144
-msgid "no Bagel"
-msgstr "geen Bagel"
-
-#: src/gr-ingredient.c:145
-msgid "no Basmati rice"
-msgstr "geen Basmati rijst"
-
-#: src/gr-ingredient.c:146
-msgid "no Bay leaf"
-msgstr "geen Laurierblad"
-
-#: src/gr-ingredient.c:147
-msgid "no Beef mince"
-msgstr "geen Rundergehakt"
-
-#: src/gr-ingredient.c:148
-msgid "no Berry"
-msgstr "geen Bes"
-
-#: src/gr-ingredient.c:149
-msgid "no Beetroot"
-msgstr "geen Biet"
-
-#: src/gr-ingredient.c:150
-msgid "no Biscotti"
-msgstr "geen Biscotti"
-
-#: src/gr-ingredient.c:151
-msgid "no Beef sausage"
-msgstr "geen Runderworst"
-
-#: src/gr-ingredient.c:152
-msgid "no Beef stock"
-msgstr "geen Runderbouillon"
-
-#: src/gr-ingredient.c:153
-msgid "no Bilberry"
-msgstr "geen Bosbes"
-
-#: src/gr-ingredient.c:154
-msgid "no Carrot"
-msgstr "geen Wortel"
-
-#: src/gr-ingredient.c:155
-msgid "no Couscous"
-msgstr "geen Couscous"
-
-#: src/gr-ingredient.c:156
-msgid "no Date"
-msgstr "geen Dadel"
-
-#: src/gr-ingredient.c:157
-msgid "no Egg"
-msgstr "geen Ei"
-
-#: src/gr-ingredient.c:158
-msgid "no Fig"
-msgstr "geen Vijg"
-
-#: src/gr-ingredient.c:159
-msgid "no Garlic"
-msgstr "geen Knoflook"
-
-#: src/gr-ingredient.c:160
-msgid "no Honey"
-msgstr "geen Honing"
-
-#: src/gr-ingredient.c:161
-msgid "no Lemon"
-msgstr "geen Citroen"
-
-#: src/gr-ingredient.c:162
-msgid "no Mayonnaise"
-msgstr "geen Mayonnaise"
-
-#: src/gr-ingredient.c:163
-msgid "no Mustard"
-msgstr "geen Mosterd"
-
-#: src/gr-ingredient.c:164
-msgid "no Onion"
-msgstr "geen Ui"
-
-#: src/gr-ingredient.c:165
-msgid "no Orange"
-msgstr "geen Sinaasappel"
-
-#: src/gr-ingredient.c:166
-msgid "no Parsley"
-msgstr "geen Peterselie"
-
-#: src/gr-ingredient.c:167
-msgid "no Pepper"
-msgstr "geen Peper"
-
-#: src/gr-ingredient.c:168
-msgid "no Potatoe"
-msgstr "geen Aardappel"
-
-#: src/gr-ingredient.c:169
-msgid "no Silantro"
-msgstr "geen Koriander"
-
-#: src/gr-ingredient.c:170
-msgid "no Squash"
-msgstr "geen Pompoen"
-
-#: src/gr-ingredient.c:171
-msgid "no Tangerine"
-msgstr "geen Mandarijn"
-
-#: src/gr-ingredient.c:172
-msgid "no Tomato"
-msgstr "geen Tomaat"
-
-#: src/gr-ingredient.c:173
-msgid "no Vinegar"
-msgstr "geen Azijn"
-
-#: src/gr-ingredient.c:174
-msgid "no Wine"
-msgstr "geen Wijn"
-
-#: src/gr-ingredient.c:175
-msgid "no Yoghurt"
-msgstr "geen Yoghurt"
-
-#: src/gr-ingredient.c:176
-msgid "no Zinfandel"
-msgstr "geen Zinfandel"
-
-#: src/gr-ingredients-list.c:83 src/gr-ingredients-list.c:91
-#, c-format
-msgid "Could not parse %s as a fraction"
-msgstr "Ontleden van %s als breuk mislukt"
-
-#: src/gr-ingredients-list.c:163
-#, c-format
-msgid "Could not parse %s as a number"
-msgstr "Ontleden van %s als getal mislukt"
-
-#: src/gr-ingredients-list.c:207
-#, c-format
-msgid "I don't know this unit: %s"
-msgstr "Onbekende eenheid: %s"
-
-#: src/gr-ingredients-page.c:130
-msgid "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-msgstr "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-#: src/gr-list-page.c:151
+#: src/gr-ingredients-viewer-row.c:153
+msgid "Amount…"
+msgstr ""
+
+#: src/gr-ingredients-viewer-row.c:166
+#, fuzzy
+msgid "Ingredient…"
+msgstr "Ingrediënten"
+
+#: src/gr-list-page.c:245
+#, fuzzy
+msgid "Gluten-free Recipes"
+msgstr "Glutenvrije recepten"
+
+#: src/gr-list-page.c:247
+#, fuzzy
+msgid "Nut-free Recipes"
+msgstr "Notenvrije recepten"
+
+#: src/gr-list-page.c:249
+#, fuzzy
+msgid "Vegan Recipes"
+msgstr "Veganistische recepten"
+
+#: src/gr-list-page.c:251
+#, fuzzy
+msgid "Vegetarian Recipes"
+msgstr "Vegetarische recepten"
+
+#: src/gr-list-page.c:253
+#, fuzzy
+msgid "Milk-free Recipes"
+msgstr "Melkvrije recepten"
+
+#: src/gr-list-page.c:255
+#, fuzzy
+msgid "Other Dietary Restrictions"
+msgstr "Overige dieetbeperkingen"
+
+#: src/gr-list-page.c:296
 #, c-format
 msgid "No %s found"
 msgstr "Geen %s gevonden"
 
-#: src/gr-list-page.c:154 src/gr-list-page.c:204 src/gr-list-page.c:254
+#: src/gr-list-page.c:299 src/gr-list-page.c:358 src/gr-list-page.c:389
 msgid "You could add one using the “New Recipe” button."
 msgstr "U zou er een kunnen toevoegen via de knop ‘Nieuw recept’."
 
-#: src/gr-list-page.c:200
+#: src/gr-list-page.c:347
+#, c-format
+msgid "Recipes by %s"
+msgstr "Recepten van %s"
+
+#: src/gr-list-page.c:354
 #, c-format
 msgid "No recipes by chef %s found"
 msgstr "Geen recepten van chef %s gevonden"
 
-#: src/gr-list-page.c:206
+#: src/gr-list-page.c:360 src/gr-list-page.c:428 src/gr-list-page.c:453
+#: src/gr-list-page.c:486
 msgid "Sorry about this."
 msgstr "Het spijt me."
 
-#: src/gr-list-page.c:251
+#: src/gr-list-page.c:386
 #, c-format
 msgid "No recipes for %s found"
 msgstr "Geen recepten voor %s gevonden"
 
-#: src/gr-list-page.c:292
+#: src/gr-list-page.c:408
 msgid "No favorite recipes found"
 msgstr "Geen favoriet recept gevonden"
 
-#: src/gr-list-page.c:293
-msgid "Use the “Cook later” button to mark recipes as favorites."
+#: src/gr-list-page.c:409
+#, fuzzy
+msgid "Use the ♥ button to mark recipes as favorites."
 msgstr "Gebruik de knop ‘Later bereiden’ om recepten als favoriet te markeren."
 
-#: src/gr-recipe-exporter.c:117 src/gr-recipe-exporter.c:124
-#, c-format
-msgid "The recipe %s has been exported as ‘%s’"
-msgstr "Het recept %s is geëxporteerd als ‘%s’"
+#: src/gr-list-page.c:452
+#, fuzzy
+msgid "No new recipes"
+msgstr "Een nieuw recept toevoegen"
 
-#: src/gr-recipe-exporter.c:143
+#: src/gr-list-page.c:485
+#, fuzzy
+msgid "No imported recipes found"
+msgstr "Geen favoriet recept gevonden"
+
+#: src/gr-meal.c:44
+#, fuzzy
+msgid "Main Course"
+msgstr "Hoofdgerecht"
+
+#: src/gr-meal.c:45
+msgid "Snacks"
+msgstr "Snacks"
+
+#: src/gr-meal.c:46
+msgid "Breakfast"
+msgstr "Ontbijt"
+
+#: src/gr-meal.c:47
+#, fuzzy
+msgid "Side Dishes"
+msgstr "Bijgerechten"
+
+#: src/gr-meal.c:48
+msgid "Desserts"
+msgstr "Nagerechten"
+
+#: src/gr-meal.c:49
+#, fuzzy
+msgid "Cake and Baking"
+msgstr "Gebak en bakken"
+
+#: src/gr-meal.c:50
+#, fuzzy
+msgid "Drinks and Cocktails"
+msgstr "Drankjes en cocktails"
+
+#: src/gr-meal.c:51
+msgid "Pizza"
+msgstr "Pizza"
+
+#: src/gr-meal.c:52
+msgid "Pasta"
+msgstr "Pasta"
+
+#: src/gr-meal.c:53
+msgid "Other"
+msgstr "Overig"
+
+#: src/gr-number.c:166 src/gr-number.c:183 src/gr-number.c:192
 #, c-format
+msgid "Could not parse %s as a fraction"
+msgstr "Ontleden van %s als breuk mislukt"
+
+#: src/gr-number.c:216
+#, fuzzy, c-format
+msgid "Could not parse %s as a integer"
+msgstr "Ontleden van %s als getal mislukt"
+
+#: src/gr-number.c:239
+#, fuzzy, c-format
+msgid "Could not parse %s as a float"
+msgstr "Ontleden van %s als breuk mislukt"
+
+#: src/gr-number.c:290
+#, c-format
+msgid "Could not parse %s as a number"
+msgstr "Ontleden van %s als getal mislukt"
+
+#: src/gr-recipe-exporter.c:168
+#, fuzzy
+msgid "Save the exported recipe"
+msgstr "Favoriete recepten"
+
+#: src/gr-recipe-exporter.c:171 src/gr-shopping-page.c:739
+#, fuzzy
+msgid "Save"
+msgstr "Op_slaan"
+
+#: src/gr-recipe-exporter.c:206
+#, fuzzy
+msgid "Recipe contribution"
+msgstr "Informatie auteur recept"
+
+#: src/gr-recipe-exporter.c:207
+msgid "Please accept my attached recipe contribution."
+msgstr ""
+
+#: src/gr-recipe-exporter.c:217
+#, fuzzy
+msgid "Try this recipe"
+msgstr "Mijn recepten"
+
+#: src/gr-recipe-exporter.c:218
 msgid ""
-"Error while exporting recipe %s:\n"
+"Hi,\n"
+"\n"
+"you should try this recipe."
+msgstr ""
+
+#: src/gr-recipe-exporter.c:221
+#, fuzzy
+msgid "Try these recipes"
+msgstr "Notenvrije recepten"
+
+#: src/gr-recipe-exporter.c:222
+msgid ""
+"Hi,\n"
+"\n"
+"you should try these recipes."
+msgstr ""
+
+#: src/gr-recipe-exporter.c:225
+msgid "(The attached file can be imported into GNOME Recipes.)"
+msgstr ""
+
+#: src/gr-recipe-exporter.c:432
+#, c-format
+msgid "This build does not support exporting"
+msgstr ""
+
+#: src/gr-recipe-exporter.c:515
+#, fuzzy, c-format
+msgid ""
+"Error while exporting:\n"
 "%s"
 msgstr ""
 "Fout bij het exporteren van recept %s:\n"
 "%s"
 
-#: src/gr-recipe-exporter.c:282
+#: src/gr-recipe-exporter.c:612
 #, c-format
-msgid "Chef %s not found"
-msgstr "Chef %s niet gevonden"
+msgid "%d recipe selected for sharing"
+msgid_plural "%d recipes selected for sharing"
+msgstr[0] ""
+msgstr[1] ""
 
-#: src/gr-recipe-importer.c:219
+#: src/gr-recipe-exporter.c:644
+msgid ""
+"Some of the selected recipes are included\n"
+"with GNOME Recipes. You should only contribute\n"
+"your own recipes."
+msgstr ""
+
+#: src/gr-recipe-formatter.c:86 src/gr-recipe-printer.c:162
+msgid "Author:"
+msgstr "Auteur:"
+
+#: src/gr-recipe-formatter.c:87 src/gr-recipe-printer.c:163
+msgid "Preparation:"
+msgstr "Voorbereiding:"
+
+#: src/gr-recipe-formatter.c:88 src/gr-recipe-printer.c:164
+msgid "Cooking:"
+msgstr "Bereiding:"
+
+#: src/gr-recipe-formatter.c:89 src/gr-recipe-printer.c:165
+msgid "Serves:"
+msgstr "Porties:"
+
+#: src/gr-recipe-importer.c:236
 #, c-format
 msgid ""
 "Error while importing recipe:\n"
@@ -1420,86 +1758,138 @@ msgstr ""
 "Fout bij het importeren van recept:\n"
 "%s"
 
-#: src/gr-recipe-importer.c:382 src/gr-recipe-importer.c:611
-#, c-format
-msgid "No recipe found"
-msgstr "Geen recept gevonden"
-
-#: src/gr-recipe-importer.c:411
-#, c-format
-msgid "Failed to load recipe: Couldn't parse Created key"
+#: src/gr-recipe-importer.c:482
+#, fuzzy, c-format
+msgid "Failed to load recipe: Couldn’t parse Created key"
 msgstr "Laden van recept mislukt: aangemaakte sleutel kon niet worden ontleed"
 
-#: src/gr-recipe-importer.c:422
-#, c-format
-msgid "Failed to load recipe: Couldn't parse Modified key"
+#: src/gr-recipe-importer.c:493
+#, fuzzy, c-format
+msgid "Failed to load recipe: Couldn’t parse Modified key"
 msgstr "Laden van recept mislukt: gewijzigde sleutel kon niet worden ontleed"
 
-#: src/gr-recipe-importer.c:433
+#: src/gr-recipe-importer.c:773
+#, fuzzy, c-format
+msgid "No chef information found"
+msgstr "Geen recepten voor %s gevonden"
+
+#: src/gr-recipe-importer.c:803
 #, c-format
-msgid "Failed to load recipe: Images and Angles length mismatch"
+msgid "This build does not support importing"
 msgstr ""
-"Laden van recept mislukt: lengte van Afbeeldingen en Hoeken komen niet overeen"
 
-#: src/gr-recipe-importer.c:441
-#, c-format
-msgid "Failed to load recipe: Images and DarkText length mismatch"
+#: src/gr-recipe-printer.c:170
+#, fuzzy
+msgid "Cuisine:"
+msgstr "_Gerecht"
+
+#: src/gr-recipe-printer.c:174
+#, fuzzy
+msgid "Meal:"
+msgstr "Maaltijd"
+
+#: src/gr-recipe-printer.c:178
+#, fuzzy
+msgid "Season:"
+msgstr "S_eizoen"
+
+#: src/gr-recipe-printer.c:223
+msgid "Notes"
 msgstr ""
-"Laden van recept mislukt: lengte van Afbeeldingen en DarkText komen niet "
-"overeen"
 
-#: src/gr-recipe-printer.c:119
-msgid "Author:"
-msgstr "Auteur:"
-
-#: src/gr-recipe-printer.c:120
-msgid "Preparation:"
-msgstr "Voorbereiding:"
-
-#: src/gr-recipe-printer.c:121
-msgid "Cooking:"
-msgstr "Bereiding:"
-
-#: src/gr-recipe-printer.c:352
+#: src/gr-recipe-printer.c:466 src/gr-shopping-list-printer.c:297
 msgid "Error printing file:"
 msgstr "Fout bij afdrukken van het bestand:"
 
-#: src/gr-recipe-printer.c:353
+#: src/gr-recipe-printer.c:467 src/gr-shopping-list-printer.c:298
 msgid "No details"
 msgstr "Geen details"
 
-#: src/gr-recipes-page.c:200
-msgid "My recipes"
-msgstr "Mijn recepten"
-
-#: src/gr-recipes-page.c:205
-msgid "Favorites"
-msgstr "Favorieten"
-
-#: src/gr-recipe-store.c:951 src/gr-recipe-store.c:985
-#, c-format
-msgid "You need to provide a name for the recipe"
-msgstr "U moet het recept een naam geven"
-
-#: src/gr-recipe-store.c:956 src/gr-recipe-store.c:991
-#, c-format
-msgid "A recipe with this name already exists"
-msgstr "Er bestaat al een recept met deze naam"
-
-#: src/gr-recipe-store.c:1119
-#, c-format
-msgid "You need to provide a name"
-msgstr "U moet een naam geven"
-
-#: src/gr-recipe-store.c:1125
-#, c-format
-msgid "Sorry, this name is taken"
-msgstr "Sorry, deze naam is al in gebruik"
-
-#: src/gr-recipe-tile.c:110
+#: src/gr-recipe-small-tile.c:105 src/gr-recipe-tile.c:86
 #, c-format
 msgid "by %s"
 msgstr "van %s"
+
+#: src/gr-recipe-small-tile.c:105 src/gr-recipe-tile.c:86
+msgid "Anonymous"
+msgstr ""
+
+#: src/gr-recipes-page.c:221 src/gr-window.c:1289
+#, fuzzy
+msgid "My Recipes"
+msgstr "Mijn recepten"
+
+#: src/gr-recipes-page.c:222
+msgid "Favorites"
+msgstr "Favorieten"
+
+#: src/gr-recipes-page.c:223 src/gr-window.c:1237
+#, fuzzy
+msgid "All Recipes"
+msgstr "Recepten"
+
+#: src/gr-recipes-page.c:224 src/gr-window.c:1246
+#, fuzzy
+msgid "New Recipes"
+msgstr "_Nieuw recept"
+
+#: src/gr-recipes-page.c:272
+msgid "Last edited:"
+msgstr ""
+
+#: src/gr-recipes-page.c:371
+#, c-format
+msgid "Buy ingredients: <b>%s</b>"
+msgstr ""
+
+#: src/gr-recipes-page.c:373
+#, c-format
+msgid "Buy ingredients: <b>%s and %s</b>"
+msgstr ""
+
+#: src/gr-recipes-page.c:375
+#, c-format
+msgid "Buy ingredients: <b>%s, %s and %d other</b>"
+msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/gr-recipe-store.c:1285
+#, fuzzy, c-format
+msgid ""
+"A recipe with this name and author (%s) already exists.\n"
+"Please choose a different name"
+msgstr "Er bestaat al een recept met deze naam."
+
+#: src/gr-recipe-store.c:1314
+#, fuzzy, c-format
+msgid "You need to provide an ID for the recipe"
+msgstr "U moet het recept een naam geven"
+
+#: src/gr-recipe-store.c:1320
+#, fuzzy, c-format
+msgid "A recipe with this ID already exists"
+msgstr "Er bestaat al een recept met deze naam"
+
+#: src/gr-recipe-store.c:1489
+#, fuzzy, c-format
+msgid "You need to provide an ID"
+msgstr "U moet een naam geven"
+
+#: src/gr-recipe-store.c:1495
+#, fuzzy, c-format
+msgid "Sorry, this ID is taken"
+msgstr "Sorry, deze naam is al in gebruik"
+
+#: src/gr-recipe-store.c:1522
+#, fuzzy, c-format
+msgid "You need to provide an ID for the chef"
+msgstr "U moet het recept een naam geven"
+
+#: src/gr-recipe-store.c:1528
+#, fuzzy, c-format
+msgid "A chef with this ID already exists"
+msgstr "Er bestaat al een recept met deze naam"
 
 #: src/gr-season.c:41
 msgid "Thanksgiving"
@@ -1510,7 +1900,8 @@ msgid "Christmas"
 msgstr "Kerstmis"
 
 #: src/gr-season.c:43
-msgid "New Years"
+#, fuzzy
+msgid "New Year’s"
 msgstr "Nieuwjaar"
 
 #: src/gr-season.c:44
@@ -1529,33 +1920,1482 @@ msgstr "Herfst"
 msgid "Winter"
 msgstr "Winter"
 
-#: src/gr-window.c:145
-msgid "Add a new recipe"
+#: src/gr-shopping-list-formatter.c:42 src/gr-shopping-list-printer.c:135
+#: src/gr-shopping-page.c:765
+msgid "Shopping List"
+msgstr ""
+
+#: src/gr-shopping-list-formatter.c:44
+#, fuzzy
+msgid "For the following recipes:"
+msgstr ""
+"Fout bij het exporteren van recept %s:\n"
+"%s"
+
+#: src/gr-shopping-list-printer.c:144
+#, fuzzy
+msgid "For the following recipes"
+msgstr "Favoriete recepten"
+
+#: src/gr-shopping-list-printer.c:161
+msgid "Items"
+msgstr ""
+
+#: src/gr-shopping-page.c:100
+#, c-format
+msgid "%d ingredient marked for purchase"
+msgid_plural "%d ingredients marked for purchase"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/gr-shopping-page.c:119
+#, fuzzy, c-format
+msgid "Buy Ingredients (%d recipe)"
+msgid_plural "Buy Ingredients (%d recipes)"
+msgstr[0] "Ingrediëntenpagina"
+msgstr[1] "Ingrediëntenpagina"
+
+#: src/gr-shopping-page.c:124
+#, c-format
+msgid "%d Recipe marked for preparation"
+msgid_plural "%d Recipes marked for preparation"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/gr-shopping-page.c:736
+msgid "Save the shopping list"
+msgstr ""
+
+#: src/gr-spice-row.c:131
+msgid "Mild or somewhat spicy"
+msgstr ""
+
+#: src/gr-spice-row.c:133
+msgid "At least somewhat spicy"
+msgstr ""
+
+#: src/gr-spice-row.c:137
+msgid "At most hot"
+msgstr ""
+
+#: src/gr-spice-row.c:139
+msgid "Hot or very spicy"
+msgstr ""
+
+#: src/gr-unit.c:41
+msgctxt "unit abbreviation"
+msgid "g"
+msgstr ""
+
+#: src/gr-unit.c:41
+msgctxt "unit name"
+msgid "gram"
+msgstr ""
+
+#: src/gr-unit.c:41
+msgctxt "unit plural"
+msgid "grams"
+msgstr ""
+
+#: src/gr-unit.c:42
+msgctxt "unit abbreviation"
+msgid "kg"
+msgstr ""
+
+#: src/gr-unit.c:42
+msgctxt "unit name"
+msgid "kilogram"
+msgstr ""
+
+#: src/gr-unit.c:42
+msgctxt "unit plural"
+msgid "kilograms"
+msgstr ""
+
+#: src/gr-unit.c:43
+msgctxt "unit abbreviation"
+msgid "lb"
+msgstr ""
+
+#: src/gr-unit.c:43
+msgctxt "unit name"
+msgid "pound"
+msgstr ""
+
+#: src/gr-unit.c:43
+msgctxt "unit plural"
+msgid "pounds"
+msgstr ""
+
+#: src/gr-unit.c:44
+msgctxt "unit abbreviation"
+msgid "oz"
+msgstr ""
+
+#: src/gr-unit.c:44
+msgctxt "unit name"
+msgid "ounce"
+msgstr ""
+
+#: src/gr-unit.c:44
+msgctxt "unit plural"
+msgid "ounces"
+msgstr ""
+
+#: src/gr-unit.c:45
+msgctxt "unit abbreviation"
+msgid "l"
+msgstr ""
+
+#: src/gr-unit.c:45
+msgctxt "unit name"
+msgid "liter"
+msgstr ""
+
+#: src/gr-unit.c:45
+msgctxt "unit plural"
+msgid "liters"
+msgstr ""
+
+#: src/gr-unit.c:46
+msgctxt "unit abbreviation"
+msgid "dl"
+msgstr ""
+
+#: src/gr-unit.c:46
+msgctxt "unit name"
+msgid "deciliter"
+msgstr ""
+
+#: src/gr-unit.c:46
+msgctxt "unit plural"
+msgid "deciliters"
+msgstr ""
+
+#: src/gr-unit.c:47
+#, fuzzy
+msgctxt "unit abbreviation"
+msgid "ml"
+msgstr "m"
+
+#: src/gr-unit.c:47
+msgctxt "unit name"
+msgid "milliliter"
+msgstr ""
+
+#: src/gr-unit.c:47
+msgctxt "unit plural"
+msgid "milliliters"
+msgstr ""
+
+#: src/gr-unit.c:48 src/gr-unit.c:49
+msgctxt "unit abbreviation"
+msgid "fl oz"
+msgstr ""
+
+#: src/gr-unit.c:48 src/gr-unit.c:49
+msgctxt "unit name"
+msgid "fluid ounce"
+msgstr ""
+
+#: src/gr-unit.c:48 src/gr-unit.c:49
+msgctxt "unit plural"
+msgid "fluid ounces"
+msgstr ""
+
+#: src/gr-unit.c:50
+msgctxt "unit abbreviation"
+msgid "pt"
+msgstr ""
+
+#: src/gr-unit.c:50
+msgctxt "unit name"
+msgid "pint"
+msgstr ""
+
+#: src/gr-unit.c:50
+msgctxt "unit plural"
+msgid "pints"
+msgstr ""
+
+#: src/gr-unit.c:51
+msgctxt "unit abbreviation"
+msgid "qt"
+msgstr ""
+
+#: src/gr-unit.c:51
+msgctxt "unit name"
+msgid "quart"
+msgstr ""
+
+#: src/gr-unit.c:51
+msgctxt "unit plural"
+msgid "quarts"
+msgstr ""
+
+#: src/gr-unit.c:52
+msgctxt "unit abbreviation"
+msgid "gal"
+msgstr ""
+
+#: src/gr-unit.c:52
+msgctxt "unit name"
+msgid "gallon"
+msgstr ""
+
+#: src/gr-unit.c:52
+msgctxt "unit plural"
+msgid "gallons"
+msgstr ""
+
+#: src/gr-unit.c:53
+msgctxt "unit abbreviation"
+msgid "cup"
+msgstr ""
+
+#: src/gr-unit.c:53
+msgctxt "unit name"
+msgid "cup"
+msgstr ""
+
+#: src/gr-unit.c:53
+msgctxt "unit plural"
+msgid "cups"
+msgstr ""
+
+#: src/gr-unit.c:54
+msgctxt "unit abbreviation"
+msgid "tbsp"
+msgstr ""
+
+#: src/gr-unit.c:54
+msgctxt "unit name"
+msgid "tablespoon"
+msgstr ""
+
+#: src/gr-unit.c:54
+msgctxt "unit plural"
+msgid "tablespoons"
+msgstr ""
+
+#: src/gr-unit.c:55
+msgctxt "unit abbreviation"
+msgid "tsp"
+msgstr ""
+
+#: src/gr-unit.c:55
+msgctxt "unit name"
+msgid "teaspoon"
+msgstr ""
+
+#: src/gr-unit.c:55
+msgctxt "unit plural"
+msgid "teaspoons"
+msgstr ""
+
+#: src/gr-unit.c:56
+msgctxt "unit abbreviation"
+msgid "box"
+msgstr ""
+
+#: src/gr-unit.c:56
+msgctxt "unit name"
+msgid "box"
+msgstr ""
+
+#: src/gr-unit.c:56
+msgctxt "unit plural"
+msgid "boxes"
+msgstr ""
+
+#: src/gr-unit.c:57
+msgctxt "unit abbreviation"
+msgid "pkg"
+msgstr ""
+
+#: src/gr-unit.c:57
+msgctxt "unit name"
+msgid "package"
+msgstr ""
+
+#: src/gr-unit.c:57
+msgctxt "unit plural"
+msgid "packages"
+msgstr ""
+
+#: src/gr-unit.c:58
+msgctxt "unit abbreviation"
+msgid "glass"
+msgstr ""
+
+#: src/gr-unit.c:58
+msgctxt "unit name"
+msgid "glass"
+msgstr ""
+
+#: src/gr-unit.c:58
+msgctxt "unit plural"
+msgid "glasses"
+msgstr ""
+
+#: src/gr-unit.c:59
+#, fuzzy
+msgctxt "unit abbreviation"
+msgid "mm"
+msgstr "m"
+
+#: src/gr-unit.c:59
+msgctxt "unit name"
+msgid "millimeter"
+msgstr ""
+
+#: src/gr-unit.c:59
+msgctxt "unit plural"
+msgid "millimeters"
+msgstr ""
+
+#: src/gr-unit.c:60
+#, fuzzy
+msgctxt "unit abbreviation"
+msgid "cm"
+msgstr "m"
+
+#: src/gr-unit.c:60
+msgctxt "unit name"
+msgid "centimeter"
+msgstr ""
+
+#: src/gr-unit.c:60
+msgctxt "unit plural"
+msgid "centimeters"
+msgstr ""
+
+#: src/gr-unit.c:61
+#, fuzzy
+msgctxt "unit abbreviation"
+msgid "m"
+msgstr "m"
+
+#: src/gr-unit.c:61
+msgctxt "unit name"
+msgid "meter"
+msgstr ""
+
+#: src/gr-unit.c:61
+msgctxt "unit plural"
+msgid "meters"
+msgstr ""
+
+#: src/gr-unit.c:62
+#, fuzzy
+msgctxt "unit abbreviation"
+msgid "st"
+msgstr "s"
+
+#: src/gr-unit.c:62
+msgctxt "unit name"
+msgid "stone"
+msgstr ""
+
+#: src/gr-unit.c:62
+msgctxt "unit plural"
+msgid "stone"
+msgstr ""
+
+#: src/gr-unit.c:63
+msgctxt "unit abbreviation"
+msgid "pinch"
+msgstr ""
+
+#: src/gr-unit.c:63
+msgctxt "unit name"
+msgid "pinch"
+msgstr ""
+
+#: src/gr-unit.c:63
+msgctxt "unit plural"
+msgid "pinches"
+msgstr ""
+
+#: src/gr-unit.c:64
+msgctxt "unit abbreviation"
+msgid "bunch"
+msgstr ""
+
+#: src/gr-unit.c:64
+msgctxt "unit name"
+msgid "bunch"
+msgstr ""
+
+#: src/gr-unit.c:64
+msgctxt "unit plural"
+msgid "bunches"
+msgstr ""
+
+#: src/gr-unit.c:145
+#, fuzzy, c-format
+msgid "I don’t know this unit: %s"
+msgstr "Onbekende eenheid: %s"
+
+#: src/gr-utils.c:334
+#, fuzzy, c-format
+msgid "more than a year ago"
+msgstr "Meer dan een uur"
+
+#: src/gr-utils.c:337 src/gr-utils.c:341
+#, c-format
+msgid "%d month ago"
+msgid_plural "%d months ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/gr-utils.c:345
+#, c-format
+msgid "%d day ago"
+msgid_plural "%d days ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/gr-utils.c:348
+#, c-format
+msgid "just now"
+msgstr ""
+
+#: src/gr-utils.c:350
+#, fuzzy, c-format
+msgid "10 minutes ago"
+msgstr "15 tot 30 minuten"
+
+#: src/gr-utils.c:352
+#, fuzzy, c-format
+msgid "half an hour ago"
+msgstr "Meer dan een uur"
+
+#: src/gr-utils.c:356
+#, c-format
+msgid "%d hour ago"
+msgid_plural "%d hours ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/gr-utils.c:362
+msgid "some time ago"
+msgstr ""
+
+#: src/gr-utils.c:385
+msgid "Could not connect to the session bus from inside the Flatpak sandbox."
+msgstr ""
+
+#: src/gr-utils.c:386
+msgid "Certain functionality will not be available."
+msgstr ""
+
+#: src/gr-utils.c:406
+msgid ""
+"Missing the desktop portal needed to open files from inside a Flatpak "
+"sandbox."
+msgstr ""
+
+#: src/gr-utils.c:408
+msgid ""
+"Missing the desktop portal needed to print from inside a Flatpak sandbox."
+msgstr ""
+
+#: src/gr-utils.c:410
+msgid ""
+"Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
+msgstr ""
+
+#: src/gr-utils.c:414
+msgid ""
+"Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
+msgstr ""
+
+#: src/gr-window.c:246
+#, fuzzy
+msgid "Add a New Recipe"
 msgstr "Een nieuw recept toevoegen"
 
-#: src/gr-window.c:245
-msgid "Stop cooking"
-msgstr "De bereiding beëindigen"
+#: src/gr-window.c:525
+#, c-format
+msgid ""
+"The “%s” recipe has unsaved changes.\n"
+"Close the window anyway?"
+msgstr ""
 
-#: src/gr-window.c:249
-msgid "Start cooking"
-msgstr "Beginnen met de bereiding"
+#: src/gr-window.c:528
+msgid ""
+"The new recipe has not been saved.\n"
+"Close the window anyway?"
+msgstr ""
 
-#: src/gr-window.c:484
+#: src/gr-window.c:659
+#, c-format
+msgid "Recipe “%s” deleted"
+msgstr ""
+
+#: src/gr-window.c:709
+#, c-format
+msgid "You updated your contributed “%s” recipe. Send an update?"
+msgstr ""
+
+#: src/gr-window.c:839
+msgid "Ready to Cook!"
+msgstr ""
+
+#: src/gr-window.c:1045
+#, fuzzy
+msgid "Imported Recipes"
+msgstr "Geïmporteerde chef"
+
+#: src/gr-window.c:1121
 msgid "Select a recipe file"
 msgstr "Een receptbestand selecteren"
 
-#: src/gr-window.c:524
-#, c-format
-msgid "Recipes by %s"
-msgstr "Recepten van %s"
+#: src/gr-window.c:1147
+#, fuzzy, c-format
+msgid "Recipes have been exported to “%s”"
+msgstr "Het recept %s is geëxporteerd als ‘%s’"
 
-#: src/gr-window.c:541
-msgid "Favorite recipes"
+#: src/gr-window.c:1185
+#, fuzzy
+msgid "Select a file"
+msgstr "Een receptbestand selecteren"
+
+#: src/gr-window.c:1188
+msgid "_Export"
+msgstr "_Exporteren"
+
+#: src/gr-window.c:1218
+#, c-format
+msgid "Chefs: %s"
+msgstr ""
+
+#: src/gr-window.c:1228
+#, fuzzy
+msgid "Favorite Recipes"
 msgstr "Favoriete recepten"
 
-#: src/gr-window.c:565
-msgid "My own recipes"
-msgstr "Mijn eigen recepten"
+#: src/gr-window.c:1276
+#, fuzzy
+msgid "Buy Ingredients"
+msgstr "Ingrediënten"
 
+#. TRANSLATORS: %s gets replaced by a version number
+#: src/gr-window.c:1420
+#, fuzzy, c-format
+msgid "Recipes %s"
+msgstr "Recepten van %s"
 
+#. TRANSLATORS: %s gets replaced by a date
+#: src/gr-window.c:1437
+#, c-format
+msgid "Released: %s"
+msgstr ""
+
+#: src/gr-window.c:1440
+#, c-format
+msgid "Unreleased"
+msgstr ""
+
+#: src/ingredients.inc:1
+msgid "Almond"
+msgstr "Amandel"
+
+#: src/ingredients.inc:2
+msgid "Amaretti"
+msgstr "Amaretti"
+
+#: src/ingredients.inc:3
+#, fuzzy
+msgid "Anchovies"
+msgstr "Anchovis"
+
+#: src/ingredients.inc:4
+msgid "Apple"
+msgstr "Appel"
+
+#: src/ingredients.inc:5
+msgid "Apricot"
+msgstr "Abrikoos"
+
+#: src/ingredients.inc:6
+msgid "Artichoke"
+msgstr "Artisjok"
+
+#: src/ingredients.inc:7
+msgid "Asparagus"
+msgstr "Asperge"
+
+#: src/ingredients.inc:8
+msgid "Aubergine"
+msgstr "Aubergine"
+
+#: src/ingredients.inc:9
+msgid "Bacon"
+msgstr "Spek"
+
+#: src/ingredients.inc:10
+msgid "Bagel"
+msgstr "Bagel"
+
+#: src/ingredients.inc:11
+#, fuzzy
+msgid "Baked beans"
+msgstr "Witte bonen in tomatensaus"
+
+#: src/ingredients.inc:12
+msgid "Baking powder"
+msgstr ""
+
+#: src/ingredients.inc:13
+msgid "Banana"
+msgstr "Banaan"
+
+#: src/ingredients.inc:14
+msgid "Basil"
+msgstr "Basilicum"
+
+#: src/ingredients.inc:15
+msgid "Basmati rice"
+msgstr "Basmati rijst"
+
+#: src/ingredients.inc:16
+msgid "Bay leaf"
+msgstr "Laurierblad"
+
+#: src/ingredients.inc:17
+msgid "Beans"
+msgstr "Bonen"
+
+#: src/ingredients.inc:18
+msgid "Beef mince"
+msgstr "Rundergehakt"
+
+#: src/ingredients.inc:19
+msgid "Beef sausage"
+msgstr "Runderworst"
+
+#: src/ingredients.inc:20
+msgid "Beef stock"
+msgstr "Runderbouillon"
+
+#: src/ingredients.inc:21
+msgid "Beetroot"
+msgstr "Biet"
+
+#: src/ingredients.inc:22
+#, fuzzy
+msgid "Bell pepper"
+msgstr "geen Peper"
+
+#: src/ingredients.inc:23
+msgid "Berry"
+msgstr "Bes"
+
+#: src/ingredients.inc:24
+msgid "Biscotti"
+msgstr "Biscotti"
+
+#: src/ingredients.inc:25
+msgid "Bilberry"
+msgstr "Bosbes"
+
+#: src/ingredients.inc:26
+msgid "Breadcrumbs"
+msgstr ""
+
+#: src/ingredients.inc:27
+msgid "Butter"
+msgstr ""
+
+#: src/ingredients.inc:28
+msgid "Carrot"
+msgstr "Wortel"
+
+#: src/ingredients.inc:29
+msgid "Cheese"
+msgstr ""
+
+#: src/ingredients.inc:30
+msgid "Cherries, pitted"
+msgstr ""
+
+#: src/ingredients.inc:31
+msgid "Chocolate frosting"
+msgstr ""
+
+#: src/ingredients.inc:32
+#, fuzzy
+msgid "Cilantro"
+msgstr "Koriander"
+
+#: src/ingredients.inc:33
+msgid "Cocoa powder"
+msgstr ""
+
+#: src/ingredients.inc:34
+msgid "Couscous"
+msgstr "Couscous"
+
+#: src/ingredients.inc:35
+msgid "Cream"
+msgstr ""
+
+#: src/ingredients.inc:36
+msgid "Date"
+msgstr "Dadel"
+
+#: src/ingredients.inc:37
+msgid "Egg"
+msgstr "Ei"
+
+#: src/ingredients.inc:38
+msgid "Fig"
+msgstr "Vijg"
+
+#: src/ingredients.inc:39
+msgid "Fish"
+msgstr ""
+
+#: src/ingredients.inc:40
+msgid "Flour"
+msgstr ""
+
+#: src/ingredients.inc:41
+msgid "Garlic"
+msgstr "Knoflook"
+
+#: src/ingredients.inc:42
+msgid "Grapes"
+msgstr ""
+
+#: src/ingredients.inc:43
+msgid "Ground beef"
+msgstr ""
+
+#: src/ingredients.inc:44
+msgid "Honey"
+msgstr "Honing"
+
+#: src/ingredients.inc:45
+msgid "Horseradish"
+msgstr ""
+
+#: src/ingredients.inc:46
+msgid "Lemon"
+msgstr "Citroen"
+
+#: src/ingredients.inc:47
+msgid "Linseeds"
+msgstr ""
+
+#: src/ingredients.inc:48
+msgid "Mayonnaise"
+msgstr "Mayonnaise"
+
+#: src/ingredients.inc:49
+#, fuzzy
+msgid "Milk"
+msgstr "Melkvrij"
+
+#: src/ingredients.inc:50
+msgid "Mustard"
+msgstr "Mosterd"
+
+#: src/ingredients.inc:51
+msgid "Nut"
+msgstr ""
+
+#: src/ingredients.inc:52
+msgid "Oatmeal"
+msgstr ""
+
+#: src/ingredients.inc:53
+msgid "Oil"
+msgstr ""
+
+#: src/ingredients.inc:54
+msgid "Onion"
+msgstr "Ui"
+
+#: src/ingredients.inc:55
+msgid "Olive oil, extra-virgin"
+msgstr ""
+
+#: src/ingredients.inc:56
+msgid "Orange"
+msgstr "Sinaasappel"
+
+#: src/ingredients.inc:57
+msgid "Parsley"
+msgstr "Peterselie"
+
+#: src/ingredients.inc:58
+msgid "Peperoni"
+msgstr ""
+
+#: src/ingredients.inc:59
+msgid "Pepper"
+msgstr "Peper"
+
+#: src/ingredients.inc:60
+msgid "Peppers"
+msgstr "Pepers"
+
+#: src/ingredients.inc:61
+#, fuzzy
+msgid "Pizza sauce"
+msgstr "Pizza"
+
+#: src/ingredients.inc:62
+msgid "Potato"
+msgstr "Aardappel"
+
+#: src/ingredients.inc:63
+msgid "Pumpkin seeds"
+msgstr ""
+
+#: src/ingredients.inc:64
+#, fuzzy
+msgid "Raisins"
+msgstr "Gerechten"
+
+#: src/ingredients.inc:65
+msgid "Rice"
+msgstr ""
+
+#: src/ingredients.inc:66
+msgid "Salt"
+msgstr ""
+
+#: src/ingredients.inc:67
+msgid "Soy sauce"
+msgstr ""
+
+#: src/ingredients.inc:68
+msgid "Strawberry"
+msgstr ""
+
+#: src/ingredients.inc:69
+msgid "Sugar"
+msgstr ""
+
+#: src/ingredients.inc:70
+msgid "Sunflower seeds"
+msgstr ""
+
+#: src/ingredients.inc:71
+msgid "Squash"
+msgstr "Pompoen"
+
+#: src/ingredients.inc:72
+msgid "Tangerine"
+msgstr "Mandarijn"
+
+#: src/ingredients.inc:73
+msgid "Tofu"
+msgstr ""
+
+#: src/ingredients.inc:74
+msgid "Tomato"
+msgstr "Tomaat"
+
+#: src/ingredients.inc:75
+msgid "Turmeric, ground"
+msgstr ""
+
+#: src/ingredients.inc:76
+msgid "Vanilla sugar"
+msgstr ""
+
+#: src/ingredients.inc:77
+msgid "Vanilla pudding"
+msgstr ""
+
+#: src/ingredients.inc:78
+msgid "Vinegar"
+msgstr "Azijn"
+
+#: src/ingredients.inc:79
+msgid "Water"
+msgstr ""
+
+#: src/ingredients.inc:80
+msgid "Wine"
+msgstr "Wijn"
+
+#: src/ingredients.inc:81
+msgid "Yeast"
+msgstr ""
+
+#: src/ingredients.inc:82
+msgid "Yoghurt"
+msgstr "Yoghurt"
+
+#: src/ingredients.inc:83
+msgid "Zinfandel"
+msgstr "Zinfandel"
+
+#: src/ingredients.inc:84
+msgid "Zuccini"
+msgstr ""
+
+#: src/no-ingredients.inc:1
+msgid "no Almond"
+msgstr "geen Amandel"
+
+#: src/no-ingredients.inc:2
+msgid "no Amaretti"
+msgstr "geen Amaretti"
+
+#: src/no-ingredients.inc:3
+#, fuzzy
+msgid "no Anchovies"
+msgstr "geen ansjovis"
+
+#: src/no-ingredients.inc:4
+msgid "no Apple"
+msgstr "geen Appel"
+
+#: src/no-ingredients.inc:5
+msgid "no Apricot"
+msgstr "geen Abrikoos"
+
+#: src/no-ingredients.inc:6
+msgid "no Artichoke"
+msgstr "geen Artisjok"
+
+#: src/no-ingredients.inc:7
+msgid "no Asparagus"
+msgstr "geen Asperge"
+
+#: src/no-ingredients.inc:8
+msgid "no Aubergine"
+msgstr "geen Aubergine"
+
+#: src/no-ingredients.inc:9
+msgid "no Bacon"
+msgstr "geen Spek"
+
+#: src/no-ingredients.inc:10
+msgid "no Bagel"
+msgstr "geen Bagel"
+
+#: src/no-ingredients.inc:11
+#, fuzzy
+msgid "no Baked beans"
+msgstr "geen Witte bonen in tomatensaus"
+
+#: src/no-ingredients.inc:12
+msgid "no Baking powder"
+msgstr ""
+
+#: src/no-ingredients.inc:13
+msgid "no Banana"
+msgstr "geen Banaan"
+
+#: src/no-ingredients.inc:14
+msgid "no Basil"
+msgstr "geen Basilicum"
+
+#: src/no-ingredients.inc:15
+msgid "no Basmati rice"
+msgstr "geen Basmati rijst"
+
+#: src/no-ingredients.inc:16
+msgid "no Bay leaf"
+msgstr "geen Laurierblad"
+
+#: src/no-ingredients.inc:17
+msgid "no Beans"
+msgstr "geen Bonen"
+
+#: src/no-ingredients.inc:18
+msgid "no Beef mince"
+msgstr "geen Rundergehakt"
+
+#: src/no-ingredients.inc:19
+msgid "no Beef sausage"
+msgstr "geen Runderworst"
+
+#: src/no-ingredients.inc:20
+msgid "no Beef stock"
+msgstr "geen Runderbouillon"
+
+#: src/no-ingredients.inc:21
+msgid "no Beetroot"
+msgstr "geen Biet"
+
+#: src/no-ingredients.inc:22
+#, fuzzy
+msgid "no Bell pepper"
+msgstr "geen Peper"
+
+#: src/no-ingredients.inc:23
+msgid "no Berry"
+msgstr "geen Bes"
+
+#: src/no-ingredients.inc:24
+msgid "no Biscotti"
+msgstr "geen Biscotti"
+
+#: src/no-ingredients.inc:25
+msgid "no Bilberry"
+msgstr "geen Bosbes"
+
+#: src/no-ingredients.inc:26
+#, fuzzy
+msgid "no Breadcrumbs"
+msgstr "geen Bonen"
+
+#: src/no-ingredients.inc:27
+#, fuzzy
+msgid "no Butter"
+msgstr "geen Bes"
+
+#: src/no-ingredients.inc:28
+msgid "no Carrot"
+msgstr "geen Wortel"
+
+#: src/no-ingredients.inc:29
+msgid "no Cheese"
+msgstr ""
+
+#: src/no-ingredients.inc:30
+msgid "no Cherries, pitted"
+msgstr ""
+
+#: src/no-ingredients.inc:31
+msgid "no Chocolate frosting"
+msgstr ""
+
+#: src/no-ingredients.inc:32
+#, fuzzy
+msgid "no Cilantro"
+msgstr "geen Koriander"
+
+#: src/no-ingredients.inc:33
+msgid "no Cocoa powder"
+msgstr ""
+
+#: src/no-ingredients.inc:34
+msgid "no Couscous"
+msgstr "geen Couscous"
+
+#: src/no-ingredients.inc:35
+msgid "no Cream"
+msgstr ""
+
+#: src/no-ingredients.inc:36
+msgid "no Date"
+msgstr "geen Dadel"
+
+#: src/no-ingredients.inc:37
+msgid "no Egg"
+msgstr "geen Ei"
+
+#: src/no-ingredients.inc:38
+msgid "no Fig"
+msgstr "geen Vijg"
+
+#: src/no-ingredients.inc:39
+#, fuzzy
+msgid "no Fish"
+msgstr "geen Vijg"
+
+#: src/no-ingredients.inc:40
+msgid "no Flour"
+msgstr ""
+
+#: src/no-ingredients.inc:41
+msgid "no Garlic"
+msgstr "geen Knoflook"
+
+#: src/no-ingredients.inc:42
+msgid "no Grapes"
+msgstr ""
+
+#: src/no-ingredients.inc:43
+msgid "no Ground beef"
+msgstr ""
+
+#: src/no-ingredients.inc:44
+msgid "no Honey"
+msgstr "geen Honing"
+
+#: src/no-ingredients.inc:45
+msgid "no Horseradish"
+msgstr ""
+
+#: src/no-ingredients.inc:46
+msgid "no Lemon"
+msgstr "geen Citroen"
+
+#: src/no-ingredients.inc:47
+msgid "no Linseeds"
+msgstr ""
+
+#: src/no-ingredients.inc:48
+msgid "no Mayonnaise"
+msgstr "geen Mayonnaise"
+
+#: src/no-ingredients.inc:49
+msgid "no Milk"
+msgstr ""
+
+#: src/no-ingredients.inc:50
+msgid "no Mustard"
+msgstr "geen Mosterd"
+
+#: src/no-ingredients.inc:51
+msgid "no Nut"
+msgstr ""
+
+#: src/no-ingredients.inc:52
+#, fuzzy
+msgid "no Oatmeal"
+msgstr "Elke maaltijd"
+
+#: src/no-ingredients.inc:53
+#, fuzzy
+msgid "no Oil"
+msgstr "geen Ui"
+
+#: src/no-ingredients.inc:54
+msgid "no Onion"
+msgstr "geen Ui"
+
+#: src/no-ingredients.inc:55
+msgid "no Olive oil, extra-virgin"
+msgstr ""
+
+#: src/no-ingredients.inc:56
+msgid "no Orange"
+msgstr "geen Sinaasappel"
+
+#: src/no-ingredients.inc:57
+msgid "no Parsley"
+msgstr "geen Peterselie"
+
+#: src/no-ingredients.inc:58
+#, fuzzy
+msgid "no Peperoni"
+msgstr "geen Peper"
+
+#: src/no-ingredients.inc:59
+msgid "no Pepper"
+msgstr "geen Peper"
+
+#: src/no-ingredients.inc:60
+#, fuzzy
+msgid "no Peppers"
+msgstr "geen Peper"
+
+#: src/no-ingredients.inc:61
+msgid "no Pizza sauce"
+msgstr ""
+
+#: src/no-ingredients.inc:62
+#, fuzzy
+msgid "no Potato"
+msgstr "geen Aardappel"
+
+#: src/no-ingredients.inc:63
+msgid "no Pumpkin seeds"
+msgstr ""
+
+#: src/no-ingredients.inc:64
+msgid "no Raisins"
+msgstr ""
+
+#: src/no-ingredients.inc:65
+msgid "no Rice"
+msgstr ""
+
+#: src/no-ingredients.inc:66
+#, fuzzy
+msgid "no Salt"
+msgstr "geen Koriander"
+
+#: src/no-ingredients.inc:67
+msgid "no Soy sauce"
+msgstr ""
+
+#: src/no-ingredients.inc:68
+#, fuzzy
+msgid "no Strawberry"
+msgstr "geen Bosbes"
+
+#: src/no-ingredients.inc:69
+#, fuzzy
+msgid "no Sugar"
+msgstr "geen Pompoen"
+
+#: src/no-ingredients.inc:70
+msgid "no Sunflower seeds"
+msgstr ""
+
+#: src/no-ingredients.inc:71
+msgid "no Squash"
+msgstr "geen Pompoen"
+
+#: src/no-ingredients.inc:72
+msgid "no Tangerine"
+msgstr "geen Mandarijn"
+
+#: src/no-ingredients.inc:73
+#, fuzzy
+msgid "no Tofu"
+msgstr "geen Tomaat"
+
+#: src/no-ingredients.inc:74
+msgid "no Tomato"
+msgstr "geen Tomaat"
+
+#: src/no-ingredients.inc:75
+msgid "no Turmeric, ground"
+msgstr ""
+
+#: src/no-ingredients.inc:76
+#, fuzzy
+msgid "no Vanilla sugar"
+msgstr "geen Azijn"
+
+#: src/no-ingredients.inc:77
+msgid "no Vanilla pudding"
+msgstr ""
+
+#: src/no-ingredients.inc:78
+msgid "no Vinegar"
+msgstr "geen Azijn"
+
+#: src/no-ingredients.inc:79
+#, fuzzy
+msgid "no Water"
+msgstr "geen Wijn"
+
+#: src/no-ingredients.inc:80
+msgid "no Wine"
+msgstr "geen Wijn"
+
+#: src/no-ingredients.inc:81
+msgid "no Yeast"
+msgstr ""
+
+#: src/no-ingredients.inc:82
+msgid "no Yoghurt"
+msgstr "geen Yoghurt"
+
+#: src/no-ingredients.inc:83
+msgid "no Zinfandel"
+msgstr "geen Zinfandel"
+
+#: src/no-ingredients.inc:84
+msgid "no Zuccini"
+msgstr ""
+
+#~ msgid "Merge"
+#~ msgstr "Samenvoegen"
+
+#~ msgid ""
+#~ "Ingredients\n"
+#~ "gathered"
+#~ msgstr ""
+#~ "Ingrediënten\n"
+#~ "verzameld"
+
+#~ msgid ""
+#~ "Oven\n"
+#~ "preheated"
+#~ msgstr ""
+#~ "Oven\n"
+#~ "voorverwarmd"
+
+#~ msgid ""
+#~ "Instructions\n"
+#~ "followed"
+#~ msgstr ""
+#~ "Instructies\n"
+#~ "gevolgd"
+
+#~ msgid "Instructions"
+#~ msgstr "Instructies"
+
+#~ msgid "Additional notes"
+#~ msgstr "Aanvullende notities"
+
+#~ msgid "_Cook it later"
+#~ msgstr "_Later bereiden"
+
+#~ msgid "Duration"
+#~ msgstr "Duur"
+
+#~ msgid "Remaining time"
+#~ msgstr "Resterende tijd"
+
+#~ msgid "Stop"
+#~ msgstr "Stoppen"
+
+#~ msgid "_Description"
+#~ msgstr "_Beschrijving"
+
+#~ msgid "Instr_uctions"
+#~ msgstr "Instr_ucties"
+
+#~ msgid "_Additional notes"
+#~ msgstr "_Aanvullende notities"
+
+#~ msgid "Preferences"
+#~ msgstr "Voorkeuren"
+
+#~ msgid "_Short Name:"
+#~ msgstr "_Korte naam:"
+
+#~ msgid "_Name:"
+#~ msgstr "_Naam:"
+
+#~ msgid "_Description:"
+#~ msgstr "_Beschrijving:"
+
+#~ msgid "_Picture:"
+#~ msgstr "_Afbeelding:"
+
+#~ msgid "_Preferences"
+#~ msgstr "_Voorkeuren"
+
+#~ msgid "About GNOME Recipes"
+#~ msgstr "Informatie over Gnome Recepten"
+
+#~ msgid "Created on %c"
+#~ msgstr "Aangemaakt op %c"
+
+#~ msgid "Last modified on %c"
+#~ msgstr "Laatst gewijzigd op %c"
+
+#~ msgid ""
+#~ "About GNOME chef %s:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Info Gnome-chef %s:\n"
+#~ "%s"
+
+#~ msgid "A recipe by GNOME chef %s"
+#~ msgstr "Een recept van Gnome-chef %s"
+
+#~ msgid "More recipes by %s"
+#~ msgstr "Meer recepten van %s"
+
+#~ msgid "You've cooked this recipe before"
+#~ msgid_plural "You've cooked this recipe %d times"
+#~ msgstr[0] "U heeft dit recept al eerder bereid"
+#~ msgstr[1] "U heeft dit recept %d keren bereid"
+
+#~ msgid "Use dark text"
+#~ msgstr "Gebruik donkere tekst"
+
+#~ msgid "Almonds"
+#~ msgstr "Amandelen"
+
+#~ msgid "Apples"
+#~ msgstr "Appels"
+
+#~ msgid "Apricots"
+#~ msgstr "Abrikozen"
+
+#~ msgid "Artichokes"
+#~ msgstr "Artisjokken"
+
+#~ msgid "Aubergines"
+#~ msgstr "Aubergines"
+
+#~ msgid "Bananas"
+#~ msgstr "Bananen"
+
+#~ msgid "Bagels"
+#~ msgstr "Bagels"
+
+#~ msgid "Bay leaves"
+#~ msgstr "Laurierbladeren"
+
+#~ msgid "Berries"
+#~ msgstr "Bessen"
+
+#~ msgid "Beetroots"
+#~ msgstr "Bieten"
+
+#~ msgid "Biscottis"
+#~ msgstr "Biscottis"
+
+#~ msgid "Beef sausages"
+#~ msgstr "Runderworstjes"
+
+#~ msgid "Bilberries"
+#~ msgstr "Bosbessen"
+
+#~ msgid "Carrots"
+#~ msgstr "Wortelen"
+
+#~ msgid "Dates"
+#~ msgstr "Dadels"
+
+#~ msgid "Eggs"
+#~ msgstr "Eieren"
+
+#~ msgid "Figs"
+#~ msgstr "Vijgen"
+
+#~ msgid "Lemons"
+#~ msgstr "Citroenen"
+
+#~ msgid "Onions"
+#~ msgstr "Uien"
+
+#~ msgid "Oranges"
+#~ msgstr "Sinaasappelen"
+
+#~ msgid "Potatoes"
+#~ msgstr "Aardappelen"
+
+#~ msgid "Squashs"
+#~ msgstr "Pompoenen"
+
+#~ msgid "Tangerines"
+#~ msgstr "Mandarijnen"
+
+#~ msgid "Tomatoes"
+#~ msgstr "Tomaten"
+
+#~ msgid "Wines"
+#~ msgstr "Wijnen"
+
+#~ msgid "Yoghurts"
+#~ msgstr "Yoghurts"
+
+#~ msgid "Zinfandels"
+#~ msgstr "Zinfandels"
+
+#~ msgid "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#~ msgstr "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+#~ msgid "Chef %s not found"
+#~ msgstr "Chef %s niet gevonden"
+
+#~ msgid "No recipe found"
+#~ msgstr "Geen recept gevonden"
+
+#~ msgid "Failed to load recipe: Images and Angles length mismatch"
+#~ msgstr ""
+#~ "Laden van recept mislukt: lengte van Afbeeldingen en Hoeken komen niet "
+#~ "overeen"
+
+#~ msgid "Failed to load recipe: Images and DarkText length mismatch"
+#~ msgstr ""
+#~ "Laden van recept mislukt: lengte van Afbeeldingen en DarkText komen niet "
+#~ "overeen"
+
+#~ msgid "Start cooking"
+#~ msgstr "Beginnen met de bereiding"
+
+#~ msgid "My own recipes"
+#~ msgstr "Mijn eigen recepten"

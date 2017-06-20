@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-30 12:17+0000\n"
+"POT-Creation-Date: 2017-06-19 23:04-0400\n"
 "PO-Revision-Date: 2017-03-31 16:24+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -21,8 +21,8 @@ msgstr ""
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
-#: src/gr-window.ui:427 src/gr-about-dialog.c:915 src/gr-window.c:373
-#: src/gr-window.c:998
+#: src/gr-window.ui:427 src/gr-about-dialog.c:907 src/gr-window.c:381
+#: src/gr-window.c:1004
 msgid "Recipes"
 msgstr "Recept"
 
@@ -35,7 +35,7 @@ msgstr "GNOME-kockar, förenen eder!"
 msgid "org.gnome.Recipes"
 msgstr "org.gnome.Recipes"
 
-#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:919
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:911
 msgid "GNOME loves to cook"
 msgstr "GNOME älskar att laga mat"
 
@@ -117,27 +117,27 @@ msgstr "Ett individuellt recept"
 msgid "An individual cuisine"
 msgstr "En individuell kokkonst"
 
-#: data/org.gnome.Recipes.gschema.xml:8
+#: data/org.gnome.Recipes.gschema.xml:14
 msgid "The user ID of the current user"
 msgstr "Användar-ID för aktuell användare"
 
-#: data/org.gnome.Recipes.gschema.xml:9
+#: data/org.gnome.Recipes.gschema.xml:15
 msgid "The user ID of the current user."
 msgstr "Användar-ID för aktuell användare."
 
-#: data/org.gnome.Recipes.gschema.xml:15
+#: data/org.gnome.Recipes.gschema.xml:21
 msgid "The number of times cooking mode has been presented"
 msgstr "Antalet gånger tillagningsläge har presenterats"
 
-#: data/org.gnome.Recipes.gschema.xml:16
+#: data/org.gnome.Recipes.gschema.xml:22
 msgid "The number of times cooking mode has been presented."
 msgstr "Antalet gånger tillagningsläge har presenterats."
 
-#: data/org.gnome.Recipes.gschema.xml:22
+#: data/org.gnome.Recipes.gschema.xml:28
 msgid "The timestamp of the last change to the favorites list"
 msgstr "Tidsstämpel för sista ändringen till favoritlistan"
 
-#: data/org.gnome.Recipes.gschema.xml:23
+#: data/org.gnome.Recipes.gschema.xml:29
 msgid ""
 "The timestamp of the last time an item was added to or removed from the "
 "favorites list."
@@ -145,19 +145,19 @@ msgstr ""
 "Tidsstämpel för senaste gången ett objekt lades till eller togs bort från "
 "favoritlistan."
 
-#: data/org.gnome.Recipes.gschema.xml:30
+#: data/org.gnome.Recipes.gschema.xml:36
 msgid "The list of favorites"
 msgstr "Listan över favoriter"
 
-#: data/org.gnome.Recipes.gschema.xml:31
+#: data/org.gnome.Recipes.gschema.xml:37
 msgid "The list of favorites. Each entry in the list is the ID of a recipe."
 msgstr "Listan över favoriter. Varje post i listan är ID för ett recept."
 
-#: data/org.gnome.Recipes.gschema.xml:37
+#: data/org.gnome.Recipes.gschema.xml:43
 msgid "The timestamp of the last change to the shopping list"
 msgstr "Tidsstämpel för sista ändringen till inköpslistan"
 
-#: data/org.gnome.Recipes.gschema.xml:38
+#: data/org.gnome.Recipes.gschema.xml:44
 msgid ""
 "The timestamp of the last time an item was added to or removed from the "
 "shopping list."
@@ -165,11 +165,11 @@ msgstr ""
 "Tidsstämpel för senaste gången ett objekt lades till eller togs bort från "
 "inköpslistan."
 
-#: data/org.gnome.Recipes.gschema.xml:45
+#: data/org.gnome.Recipes.gschema.xml:51
 msgid "The shopping list"
 msgstr "Inköpslistan"
 
-#: data/org.gnome.Recipes.gschema.xml:46
+#: data/org.gnome.Recipes.gschema.xml:52
 msgid ""
 "The shopping list. Each entry in the dictionary maps the ID of a recipe to a "
 "serving count."
@@ -177,24 +177,35 @@ msgstr ""
 "Inköpslistan. Varje post i ordlistan mappar ID för ett recept till ett "
 "portionsantal."
 
-#: data/org.gnome.Recipes.gschema.xml:53
+#: data/org.gnome.Recipes.gschema.xml:59
 msgid "Ingredients that were removed from the shopping list"
 msgstr "Ingredienser som togs bort från inköpslistan"
 
-#: data/org.gnome.Recipes.gschema.xml:54
+#: data/org.gnome.Recipes.gschema.xml:60
 msgid "The names of ingredients that were removed from the shopping list."
 msgstr "Namnen på ingredienserna som togs bort från inköpslistan."
 
-#: data/org.gnome.Recipes.gschema.xml:60
+#: data/org.gnome.Recipes.gschema.xml:66
 msgid "The list of recipes to be exported"
 msgstr "Listan över recept att exportera"
 
-#: data/org.gnome.Recipes.gschema.xml:61
+#: data/org.gnome.Recipes.gschema.xml:67
 msgid ""
 "The list of recipes to be exported. Each entry in the list is the ID of a "
 "recipe."
 msgstr ""
 "Listan över recept att exportera. Varje post i listan är ID för ett recept."
+
+#: data/org.gnome.Recipes.gschema.xml:74
+msgid "The setting for which unit temperatures should be displayed in."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:75
+msgid ""
+"The setting for which unit temperatures should be displayed in. Default is "
+"'locale', which means to use the LC_MEASUREMENT category of the current "
+"locale to decide."
+msgstr ""
 
 #: src/chef-conflict-dialog.ui:10
 msgid "Same Chef"
@@ -229,11 +240,11 @@ msgstr "Beskrivning:"
 msgid "Picture:"
 msgstr "Bild:"
 
-#: src/gr-chef-dialog.ui:4 src/gr-window.c:1099
+#: src/gr-chef-dialog.ui:4 src/gr-window.c:1091
 msgid "Chef Information"
 msgstr "Kock-information"
 
-#: src/gr-chef-dialog.ui:10 src/gr-window.c:1197
+#: src/gr-chef-dialog.ui:10 src/gr-window.c:1189
 msgid "_Cancel"
 msgstr "_Avbryt"
 
@@ -328,12 +339,12 @@ msgstr "För att avsluta processen, tryck ned Escape-tangenten."
 msgid "Time is up!"
 msgstr "Tiden är slut!"
 
-#: src/gr-cuisine-page.ui:67 src/gr-list-page.ui:111 src/gr-search-page.ui:29
-#: src/gr-list-page.c:417
+#: src/gr-cuisine-page.ui:77 src/gr-list-page.ui:111 src/gr-search-page.ui:29
+#: src/gr-list-page.c:427
 msgid "No recipes found"
 msgstr "Fann inga recept"
 
-#: src/gr-cuisine-page.ui:80
+#: src/gr-cuisine-page.ui:90
 msgid "There are no recipes for this cuisine."
 msgstr "Det finns inga recept för denna matkultur."
 
@@ -369,7 +380,7 @@ msgstr ""
 "Innehåller gluten. Dubbelkontrollera alltid ingredienserna om du serverar "
 "till en person som inte tål gluten eller mejeriprodukter."
 
-#: src/gr-details-page.ui:126 src/gr-details-page.c:546
+#: src/gr-details-page.ui:126 src/gr-details-page.c:492
 msgid "Spicy"
 msgstr "Kryddig"
 
@@ -405,8 +416,8 @@ msgstr "Årstid"
 msgid "Note"
 msgstr "Anteckning"
 
-#: src/gr-details-page.ui:409 src/gr-edit-page.ui:690
-#: src/gr-recipe-formatter.c:86 src/gr-recipe-printer.c:242
+#: src/gr-details-page.ui:409 src/gr-edit-page.ui:705
+#: src/gr-recipe-formatter.c:119 src/gr-recipe-printer.c:296
 msgid "Directions"
 msgstr "Instruktioner"
 
@@ -414,7 +425,7 @@ msgstr "Instruktioner"
 msgid "_Notes"
 msgstr "_Anteckningar"
 
-#: src/gr-details-page.ui:479 src/gr-shopping-page.ui:124
+#: src/gr-details-page.ui:479 src/gr-shopping-page.ui:125
 msgid "_Edit"
 msgstr "_Redigera"
 
@@ -422,12 +433,12 @@ msgstr "_Redigera"
 msgid "_Delete"
 msgstr "_Ta bort"
 
-#: src/gr-details-page.ui:499 src/gr-shopping-page.ui:142
+#: src/gr-details-page.ui:499 src/gr-shopping-page.ui:143
 #: src/recipe-export-dialog.ui:21
 msgid "_Share"
 msgstr "_Dela"
 
-#: src/gr-details-page.ui:511 src/gr-shopping-page.ui:153
+#: src/gr-details-page.ui:511 src/gr-shopping-page.ui:154
 msgid "_Print"
 msgstr "_Skriv ut"
 
@@ -435,185 +446,215 @@ msgstr "_Skriv ut"
 msgid "Add to favorites"
 msgstr "Lägg till i favoriter"
 
-#: src/gr-edit-page.ui:112
-msgid "Add an image"
-msgstr "Lägg till en bild"
-
-#: src/gr-edit-page.ui:138 src/gr-edit-page.ui:164
-msgid "Rotate image"
-msgstr "Rotera bild"
-
-#: src/gr-edit-page.ui:190
-msgid "Default image"
-msgstr "Standardbild"
-
-#: src/gr-edit-page.ui:216
-msgid "Remove image"
-msgstr "Ta bort bild"
-
-#: src/gr-edit-page.ui:259
-msgid "Details"
-msgstr "Detaljer"
-
-#: src/gr-edit-page.ui:276
-msgid "_Name Your Recipe"
-msgstr "_Namnge ditt recept"
-
-#: src/gr-edit-page.ui:308
-msgid "Ser_ves"
-msgstr "Portion_er"
-
-#: src/gr-edit-page.ui:338
-msgid "_Preparation Time"
-msgstr "_Förberedelsetid"
-
-#: src/gr-edit-page.ui:364 src/gr-edit-page.ui:412
-msgid "Less than 15 minutes"
-msgstr "Mindre än 15 minuter"
-
-#: src/gr-edit-page.ui:365 src/gr-edit-page.ui:413
-msgid "15 to 30 minutes"
-msgstr "15 till 30 minuter"
-
-#: src/gr-edit-page.ui:366 src/gr-edit-page.ui:414
-msgid "30 to 45 minutes"
-msgstr "30 till 45 minuter"
-
-#: src/gr-edit-page.ui:367 src/gr-edit-page.ui:415
-msgid "45 minutes to an hour"
-msgstr "45 minuter till en timme"
-
-#: src/gr-edit-page.ui:368 src/gr-edit-page.ui:416
-msgid "More than an hour"
-msgstr "Mer än en timme"
-
-#: src/gr-edit-page.ui:386
-msgid "C_ooking Time"
-msgstr "Tillagnings_tid"
-
-#: src/gr-edit-page.ui:434
-msgid "_Cuisine"
-msgstr "_Kokkonst"
-
-#: src/gr-edit-page.ui:470
-msgid "_Meal"
-msgstr "_Måltid"
-
-#: src/gr-edit-page.ui:506
-msgid "S_eason"
-msgstr "År_stid"
-
-#: src/gr-edit-page.ui:542
-msgid "S_piciness"
-msgstr "K_ryddighet"
-
-#: src/gr-edit-page.ui:562 src/gr-spice-row.c:127
-msgid "Mild"
-msgstr "Mild"
-
-#: src/gr-edit-page.ui:563
-msgid "Somewhat spicy"
-msgstr "Delvis het"
-
-#: src/gr-edit-page.ui:564
-msgid "Hot"
-msgstr "Het"
-
-#: src/gr-edit-page.ui:565 src/gr-details-page.c:541 src/gr-spice-row.c:142
-msgid "Very spicy"
-msgstr "Väldigt het"
-
-#: src/gr-edit-page.ui:576
-msgid "Description"
-msgstr "Beskrivning"
-
-#: src/gr-edit-page.ui:635 src/gr-diet-row.c:102
-msgid "Gluten free"
-msgstr "Glutenfri"
-
-#: src/gr-edit-page.ui:642 src/gr-diet-row.c:105
-msgid "Nut free"
-msgstr "Nötfri"
-
-#: src/gr-edit-page.ui:649 src/gr-diet-row.c:108
-msgid "Vegan"
-msgstr "Vegan"
-
-#: src/gr-edit-page.ui:656 src/gr-diet-row.c:111
-msgid "Vegetarian"
-msgstr "Vegetarian"
-
-#: src/gr-edit-page.ui:663 src/gr-diet-row.c:114
-msgid "Milk free"
-msgstr "Mjölkfri"
-
-#: src/gr-edit-page.ui:751 src/menus.ui:66
+#: src/gr-edit-page.ui:42 src/gr-edit-page.ui:766 src/menus.ui:66
 msgid "Edit"
 msgstr "Redigera"
 
-#: src/gr-edit-page.ui:758
+#: src/gr-edit-page.ui:119
+msgid "Add an image"
+msgstr "Lägg till en bild"
+
+#: src/gr-edit-page.ui:145 src/gr-edit-page.ui:171
+msgid "Rotate image"
+msgstr "Rotera bild"
+
+#: src/gr-edit-page.ui:197
+msgid "Default image"
+msgstr "Standardbild"
+
+#: src/gr-edit-page.ui:223
+msgid "Remove image"
+msgstr "Ta bort bild"
+
+#: src/gr-edit-page.ui:256
+msgid "Add List"
+msgstr "Lägg till lista"
+
+#: src/gr-edit-page.ui:274
+msgid "Details"
+msgstr "Detaljer"
+
+#: src/gr-edit-page.ui:291
+msgid "_Name Your Recipe"
+msgstr "_Namnge ditt recept"
+
+#: src/gr-edit-page.ui:323
+msgid "Ser_ves"
+msgstr "Portion_er"
+
+#: src/gr-edit-page.ui:353
+msgid "_Preparation Time"
+msgstr "_Förberedelsetid"
+
+#: src/gr-edit-page.ui:379 src/gr-edit-page.ui:427
+msgid "Less than 15 minutes"
+msgstr "Mindre än 15 minuter"
+
+#: src/gr-edit-page.ui:380 src/gr-edit-page.ui:428
+msgid "15 to 30 minutes"
+msgstr "15 till 30 minuter"
+
+#: src/gr-edit-page.ui:381 src/gr-edit-page.ui:429
+msgid "30 to 45 minutes"
+msgstr "30 till 45 minuter"
+
+#: src/gr-edit-page.ui:382 src/gr-edit-page.ui:430
+msgid "45 minutes to an hour"
+msgstr "45 minuter till en timme"
+
+#: src/gr-edit-page.ui:383 src/gr-edit-page.ui:431
+msgid "More than an hour"
+msgstr "Mer än en timme"
+
+#: src/gr-edit-page.ui:401
+msgid "C_ooking Time"
+msgstr "Tillagnings_tid"
+
+#: src/gr-edit-page.ui:449
+msgid "_Cuisine"
+msgstr "_Kokkonst"
+
+#: src/gr-edit-page.ui:485
+msgid "_Meal"
+msgstr "_Måltid"
+
+#: src/gr-edit-page.ui:521
+msgid "S_eason"
+msgstr "År_stid"
+
+#: src/gr-edit-page.ui:557
+msgid "S_piciness"
+msgstr "K_ryddighet"
+
+#: src/gr-edit-page.ui:577 src/gr-spice-row.c:127
+msgid "Mild"
+msgstr "Mild"
+
+#: src/gr-edit-page.ui:578
+msgid "Somewhat spicy"
+msgstr "Delvis het"
+
+#: src/gr-edit-page.ui:579
+msgid "Hot"
+msgstr "Het"
+
+#: src/gr-edit-page.ui:580 src/gr-details-page.c:487 src/gr-spice-row.c:142
+msgid "Very spicy"
+msgstr "Väldigt het"
+
+#: src/gr-edit-page.ui:591
+msgid "Description"
+msgstr "Beskrivning"
+
+#: src/gr-edit-page.ui:650 src/gr-diet-row.c:102
+#, fuzzy
+msgid "Gluten-free"
+msgstr "Glutenfri"
+
+#: src/gr-edit-page.ui:657 src/gr-diet-row.c:105
+#, fuzzy
+msgid "Nut-free"
+msgstr "Nötfri"
+
+#: src/gr-edit-page.ui:664 src/gr-diet-row.c:108
+msgid "Vegan"
+msgstr "Vegan"
+
+#: src/gr-edit-page.ui:671 src/gr-diet-row.c:111
+msgid "Vegetarian"
+msgstr "Vegetarian"
+
+#: src/gr-edit-page.ui:678 src/gr-diet-row.c:114
+#, fuzzy
+msgid "Milk-free"
+msgstr "Mjölkfri"
+
+#: src/gr-edit-page.ui:773
 msgid "Preview"
 msgstr "Förhandsvisa"
 
-#: src/gr-edit-page.ui:778
+#: src/gr-edit-page.ui:793
 msgid "Add Step"
 msgstr "Lägg till steg"
 
-#: src/gr-edit-page.ui:786
+#: src/gr-edit-page.ui:801
 msgid "Add Image"
 msgstr "Lägg till bild"
 
-#: src/gr-edit-page.ui:794
+#: src/gr-edit-page.ui:809
 msgid "Add Timer"
 msgstr "Lägg till tidtagare"
 
-#: src/gr-edit-page.ui:802
+#: src/gr-edit-page.ui:817
 msgid "Add Temperature"
 msgstr "Lägg till temperatur"
 
-#: src/gr-edit-page.ui:866 src/gr-edit-page.ui:887 src/gr-edit-page.c:443
-msgid "Ingredient"
-msgstr "Ingrediens"
-
-#: src/gr-edit-page.ui:915 src/gr-edit-page.ui:1007 src/gr-query-editor.ui:283
-msgid "Search…"
-msgstr "Sök…"
-
-#: src/gr-edit-page.ui:945 src/gr-edit-page.ui:966 src/gr-edit-page.c:444
-msgid "Amount"
-msgstr "Mängd"
-
-#: src/gr-edit-page.ui:1038 src/gr-edit-page.c:447
-msgid "Add"
-msgstr "Lägg till"
-
-#: src/gr-edit-page.ui:1089
+#: src/gr-edit-page.ui:913
 msgid "Title…"
 msgstr "Titel…"
 
-#: src/gr-edit-page.ui:1164
+#: src/gr-edit-page.ui:921 src/gr-edit-page.ui:992
+msgid "Add"
+msgstr "Lägg till"
+
+#: src/gr-edit-page.ui:1011
 msgid "Syntax"
 msgstr "Syntax"
 
-#: src/gr-edit-page.ui:1179
+#: src/gr-edit-page.ui:1026
 msgid "Use paragraphs to break directions into steps (2 newlines)."
 msgstr "Använda paragrafer för dela upp anvisningar i steg (2 nyrader)."
 
-#: src/gr-edit-page.ui:1192
+#: src/gr-edit-page.ui:1039
 msgid "You can provide an image or a time counter in each step."
 msgstr "Du kan för varje steg tillhandahålla en bild eller tidstagare."
 
-#: src/gr-edit-page.ui:1204
+#: src/gr-edit-page.ui:1051
 msgid "Timer"
 msgstr "Tidtagare"
 
-#: src/gr-edit-page.ui:1226
+#: src/gr-edit-page.ui:1073
 msgid "Image"
 msgstr "Bild"
 
-#: src/gr-edit-page.ui:1248
+#: src/gr-edit-page.ui:1095
 msgid "Temperature"
 msgstr "Temperatur"
+
+#: src/gr-ingredients-viewer-row.ui:52
+msgid "Amount"
+msgstr "Mängd"
+
+#: src/gr-ingredients-viewer-row.ui:92
+msgid "Ingredient"
+msgstr "Ingrediens"
+
+#: src/gr-ingredients-viewer-row.ui:169
+msgid "Use a number, followed by an (optional) unit."
+msgstr ""
+
+#: src/gr-ingredients-viewer-row.ui:180
+msgid "Examples: 1 kg, 2 1/2 pounds, 250 ml, 6"
+msgstr ""
+
+#: src/gr-ingredients-viewer.ui:13 src/gr-query-editor.ui:235
+#: src/gr-edit-page.c:1324 src/gr-recipe-formatter.c:100
+#: src/gr-recipe-printer.c:247
+msgid "Ingredients"
+msgstr "Ingredienser"
+
+#: src/gr-ingredients-viewer.ui:33
+msgid "Name of the List"
+msgstr "Namn på listan"
+
+#: src/gr-ingredients-viewer.ui:43 src/gr-recipe-small-tile.ui:125
+msgid "Remove"
+msgstr "Ta bort"
+
+#: src/gr-ingredients-viewer.ui:86
+#, fuzzy
+msgid "Add more ingredients"
+msgstr "Lägg till ingrediens"
 
 #: src/gr-list-page.ui:124
 msgid "There are no recipes here yet."
@@ -642,20 +683,15 @@ msgstr "Begränsningar i diet"
 msgid "No restrictions"
 msgstr "Inga begränsningar"
 
-#: src/gr-query-editor.ui:235 src/gr-edit-page.c:1794
-#: src/gr-recipe-formatter.c:67 src/gr-recipe-printer.c:191
-msgid "Ingredients"
-msgstr "Ingredienser"
-
 #. FIXME: repopulate
 #: src/gr-query-editor.ui:255 src/gr-query-editor.c:337
 #: src/gr-query-editor.c:766
 msgid "Anything"
 msgstr "Någonting"
 
-#: src/gr-recipe-small-tile.ui:125 src/gr-edit-page.c:1824
-msgid "Remove"
-msgstr "Ta bort"
+#: src/gr-query-editor.ui:283
+msgid "Search…"
+msgstr "Sök…"
 
 #: src/gr-recipes-page.ui:8
 msgid "Recipes page"
@@ -685,15 +721,15 @@ msgstr "Prova en annan sökning"
 msgid "Buy ingredients"
 msgstr "Köp ingredienser"
 
-#: src/gr-shopping-page.ui:91
+#: src/gr-shopping-page.ui:93
 msgid "No shopping necessary!"
 msgstr "Ingen handling nödvändig."
 
-#: src/gr-shopping-page.ui:131
+#: src/gr-shopping-page.ui:132
 msgid "_Clear List"
 msgstr "_Töm lista"
 
-#: src/gr-shopping-page.ui:187
+#: src/gr-shopping-page.ui:188
 msgid "Nothing to add"
 msgstr "Inget att lägga till"
 
@@ -757,7 +793,7 @@ msgstr "Ångra"
 msgid "Send Update"
 msgstr "Skicka uppdatering"
 
-#: src/gr-window.ui:466 src/gr-window.c:379
+#: src/gr-window.ui:466 src/gr-window.c:387
 msgid "Cuisines"
 msgstr "Matkulturer"
 
@@ -773,7 +809,7 @@ msgstr "_Exportera alla"
 msgid "_Chef Information"
 msgstr "_Kock-information"
 
-#: src/menus.ui:22 src/menus.ui:89
+#: src/menus.ui:22 src/menus.ui:93
 msgid "_What’s New"
 msgstr "_Vad är nytt"
 
@@ -785,7 +821,7 @@ msgstr "_Hjälp"
 msgid "_About"
 msgstr "_Om"
 
-#: src/menus.ui:34 src/menus.ui:93
+#: src/menus.ui:34 src/menus.ui:97
 msgid "_Report Issue"
 msgstr "_Rapportera problem"
 
@@ -817,9 +853,14 @@ msgstr "Sök…"
 msgid "Help"
 msgstr "Hjälp"
 
-#: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:156
-#: src/gr-image-viewer.c:616 src/gr-recipe-exporter.c:169
-#: src/gr-shopping-page.c:731 src/gr-window.c:1133
+#: src/menus.ui:89
+#, fuzzy
+msgid "Recipes _Help"
+msgstr "Receptsida"
+
+#: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:163
+#: src/gr-image-viewer.c:627 src/gr-recipe-exporter.c:172
+#: src/gr-shopping-page.c:740 src/gr-window.c:1125
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -928,7 +969,7 @@ msgstr "Systembibliotek"
 msgid "System"
 msgstr "System"
 
-#: src/gr-about-dialog.c:922
+#: src/gr-about-dialog.c:914
 msgid "translator-credits"
 msgstr ""
 "Josef Andersson <josef.andersson@fripost.se>\n"
@@ -936,11 +977,11 @@ msgstr ""
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: src/gr-about-dialog.c:925
+#: src/gr-about-dialog.c:917
 msgid "Learn more about Recipes"
 msgstr "Få reda på mer om Recept"
 
-#: src/gr-about-dialog.c:932
+#: src/gr-about-dialog.c:924
 msgid "Recipes by"
 msgstr "Recept av"
 
@@ -957,27 +998,36 @@ msgstr ""
 "Tillåt att din personliga information inkluderas med recept som du delar med "
 "dina vänner."
 
-#: src/gr-app.c:393
+#: src/gr-app.c:202
+#, c-format
+msgid "Supported categories: %s\n"
+msgstr ""
+
+#: src/gr-app.c:434
 msgid "Print the version and exit"
 msgstr "Skriv programversion och avsluta"
 
-#: src/gr-app.c:397
+#: src/gr-app.c:438
 msgid "Turn on verbose logging"
 msgstr "Slå på utförlig loggning"
 
-#: src/gr-chef-dialog.c:152 src/gr-image-viewer.c:612
+#: src/gr-app.c:442
+msgid "Show a category"
+msgstr ""
+
+#: src/gr-chef-dialog.c:159 src/gr-image-viewer.c:623
 msgid "Select an Image"
 msgstr "Välj en bild"
 
-#: src/gr-chef-dialog.c:155 src/gr-image-viewer.c:615 src/gr-window.c:1132
+#: src/gr-chef-dialog.c:162 src/gr-image-viewer.c:626 src/gr-window.c:1124
 msgid "Open"
 msgstr "Öppna"
 
-#: src/gr-chef-dialog.c:160 src/gr-image-viewer.c:620
+#: src/gr-chef-dialog.c:167 src/gr-image-viewer.c:631
 msgid "Image files"
 msgstr "Bildfiler"
 
-#: src/gr-chef-dialog.c:409
+#: src/gr-chef-dialog.c:423
 msgid "New Chef"
 msgstr "Ny kock"
 
@@ -985,30 +1035,30 @@ msgstr "Ny kock"
 msgid "Cooking"
 msgstr "Tillagning"
 
-#: src/gr-cooking-view.c:155
+#: src/gr-cooking-view.c:157
 #, c-format
 msgid "Step %d/%d"
 msgstr "Steg %d/%d"
 
-#: src/gr-cooking-view.c:161
+#: src/gr-cooking-view.c:163
 #, c-format
 msgid "Step %d"
 msgstr "Steg %d"
 
-#: src/gr-cooking-view.c:268
+#: src/gr-cooking-view.c:273
 msgid "GNOME Recipes"
 msgstr "GNOME Recept"
 
-#: src/gr-cooking-view.c:373
+#: src/gr-cooking-view.c:393
 msgid "A cooking timer has expired"
 msgstr "En tillagningstidtagare har gått ut"
 
-#: src/gr-cooking-view.c:391 src/gr-cooking-view.c:407
+#: src/gr-cooking-view.c:411 src/gr-cooking-view.c:427
 #, c-format
 msgid "Timer for “%s” has expired."
 msgstr "Tidtagaren för ”%s” har gått ut."
 
-#: src/gr-cooking-view.c:405
+#: src/gr-cooking-view.c:425
 msgid "Timer is up!"
 msgstr "Tiden är slut!"
 
@@ -1204,9 +1254,10 @@ msgstr ""
 "dessertingredienser omfattar nötter, honung, frukter och filodeg."
 
 #: src/gr-cuisine.c:108
+#, fuzzy
 msgid ""
-"The mediterranean cuisine has a lot to offer, and is legendary for being "
-"very healthy too. Expect to see olives, yoghurt and garlic."
+"Mediterranean cuisine has a lot to offer, and is legendary for being very "
+"healthy too. Expect to see olives, yoghurt and garlic."
 msgstr ""
 "Medelhavsmaten har massor att erbjuda och är legendarisk för att den också "
 "är hälsosam. Förvänta dig att se oliver, yoghurt och vitlök."
@@ -1258,17 +1309,17 @@ msgstr ""
 msgid "Could not find this recipe."
 msgstr "Kunde inte hitta detta recept."
 
-#: src/gr-details-page.c:585
+#: src/gr-details-page.c:531
 #, c-format
 msgid "Timer: %s"
 msgstr "Tidtagare: %s"
 
-#: src/gr-details-page.c:592
+#: src/gr-details-page.c:538
 #, c-format
 msgid "Image %d"
 msgstr "Bild %d"
 
-#: src/gr-details-page.c:745 src/gr-edit-page.c:2116
+#: src/gr-details-page.c:693 src/gr-edit-page.c:1409
 #, c-format
 msgid "Recipe by %s"
 msgstr "Recept av %s"
@@ -1388,158 +1439,153 @@ msgstr ""
 "person äter eller dricker. Det orsakar inte skada på mag-tarmkanalen.\n"
 "<a href=\"https://sv.wikipedia.org/wiki/Laktosintolerans\">Läs mer…</a>"
 
-#: src/gr-edit-page.c:494
-msgid "Apply"
-msgstr "Verkställ"
-
-#: src/gr-edit-page.c:1182
+#: src/gr-edit-page.c:595
 msgid "hour"
 msgstr "timme"
 
-#: src/gr-edit-page.c:1183
+#: src/gr-edit-page.c:596
 msgid "hours"
 msgstr "timmar"
 
-#: src/gr-edit-page.c:1184
+#: src/gr-edit-page.c:597
 msgctxt "hour abbreviation"
 msgid "h"
 msgstr "t"
 
-#: src/gr-edit-page.c:1188
+#: src/gr-edit-page.c:601
 msgid "minute"
 msgstr "minut"
 
-#: src/gr-edit-page.c:1189
+#: src/gr-edit-page.c:602
 msgid "minutes"
 msgstr "minuter"
 
-#: src/gr-edit-page.c:1190
+#: src/gr-edit-page.c:603
 msgctxt "minute abbreviation"
 msgid "min"
 msgstr "min"
 
-#: src/gr-edit-page.c:1191
+#: src/gr-edit-page.c:604
 msgctxt "minute abbreviation"
 msgid "m"
 msgstr "m"
 
-#: src/gr-edit-page.c:1195
+#: src/gr-edit-page.c:608
 msgid "second"
 msgstr "sekund"
 
-#: src/gr-edit-page.c:1196
+#: src/gr-edit-page.c:609
 msgid "seconds"
 msgstr "sekunder"
 
-#: src/gr-edit-page.c:1197
+#: src/gr-edit-page.c:610
 msgctxt "second abbreviation"
 msgid "sec"
 msgstr "sek"
 
-#: src/gr-edit-page.c:1198
+#: src/gr-edit-page.c:611
 msgctxt "second abbreviation"
 msgid "s"
 msgstr "s"
 
-#: src/gr-edit-page.c:1374
+#: src/gr-edit-page.c:896
 msgid "Recipe Author"
 msgstr "Receptupphovsman"
 
-#: src/gr-edit-page.c:1809
-msgid "Name of the List"
-msgstr "Namn på listan"
-
-#: src/gr-edit-page.c:1843
-msgid "No ingredients added yet"
-msgstr "Inga ingredienser tillagda än"
-
-#: src/gr-edit-page.c:1862
-msgid "Add Ingredient"
-msgstr "Lägg till ingrediens"
-
-#: src/gr-edit-page.c:1969
-msgid "Add List"
-msgstr "Lägg till lista"
-
-#: src/gr-edit-page.c:1997
+#: src/gr-edit-page.c:1360
 msgid "Name Your Recipe"
 msgstr "Namnge ditt recept"
 
-#: src/gr-edit-page.c:2173
+#: src/gr-edit-page.c:1465
 msgid "Name"
 msgstr "Namn"
 
-#: src/gr-edit-page.c:2285 src/gr-recipe-store.c:1008
+#: src/gr-edit-page.c:1537 src/gr-edit-page.c:1592 src/gr-recipe-store.c:1280
 #, c-format
 msgid "You need to provide a name for the recipe"
 msgstr "Du måste ange ett namn för receptet"
 
-#: src/gr-list-page.c:235
+#: src/gr-edit-page.c:1550
+#, fuzzy, c-format
+msgid "Some ingredients need correction"
+msgstr "Inga ingredienser tillagda än"
+
+#: src/gr-ingredients-viewer-row.c:153
+#, fuzzy
+msgid "Amount…"
+msgstr "Mängd"
+
+#: src/gr-ingredients-viewer-row.c:166
+#, fuzzy
+msgid "Ingredient…"
+msgstr "Ingrediens"
+
+#: src/gr-list-page.c:245
 msgid "Gluten-free Recipes"
 msgstr "Glutenfria recept"
 
-#: src/gr-list-page.c:237
+#: src/gr-list-page.c:247
 msgid "Nut-free Recipes"
 msgstr "Nötfria recept"
 
-#: src/gr-list-page.c:239
+#: src/gr-list-page.c:249
 msgid "Vegan Recipes"
 msgstr "Veganrecept"
 
-#: src/gr-list-page.c:241
+#: src/gr-list-page.c:251
 msgid "Vegetarian Recipes"
 msgstr "Vegetariska recept"
 
-#: src/gr-list-page.c:243
+#: src/gr-list-page.c:253
 msgid "Milk-free Recipes"
 msgstr "Mjölkfria recept"
 
-#: src/gr-list-page.c:245
+#: src/gr-list-page.c:255
 msgid "Other Dietary Restrictions"
 msgstr "Andra begränsningar i dieten"
 
-#: src/gr-list-page.c:286
+#: src/gr-list-page.c:296
 #, c-format
 msgid "No %s found"
 msgstr "Fann inga %s"
 
-#: src/gr-list-page.c:289 src/gr-list-page.c:348 src/gr-list-page.c:379
+#: src/gr-list-page.c:299 src/gr-list-page.c:358 src/gr-list-page.c:389
 msgid "You could add one using the “New Recipe” button."
 msgstr "Du kan lägga till ett med knappen ”Nytt recept”."
 
-#: src/gr-list-page.c:337
+#: src/gr-list-page.c:347
 #, c-format
 msgid "Recipes by %s"
 msgstr "Recept av %s"
 
-#: src/gr-list-page.c:344
+#: src/gr-list-page.c:354
 #, c-format
 msgid "No recipes by chef %s found"
 msgstr "Hittade inga recept från kocken %s"
 
-#: src/gr-list-page.c:350 src/gr-list-page.c:418 src/gr-list-page.c:443
-#: src/gr-list-page.c:476
+#: src/gr-list-page.c:360 src/gr-list-page.c:428 src/gr-list-page.c:453
+#: src/gr-list-page.c:486
 msgid "Sorry about this."
 msgstr "Ber om ursäkta för detta."
 
-#: src/gr-list-page.c:376
+#: src/gr-list-page.c:386
 #, c-format
 msgid "No recipes for %s found"
 msgstr "Hittade inga recept för %s"
 
-#: src/gr-list-page.c:398
+#: src/gr-list-page.c:408
 msgid "No favorite recipes found"
 msgstr "Hittade inga favoritrecept"
 
-#: src/gr-list-page.c:399
+#: src/gr-list-page.c:409
 msgid "Use the ♥ button to mark recipes as favorites."
 msgstr "Använd knappen ♥ för att markera recept som favoriter."
 
-#: src/gr-list-page.c:442
+#: src/gr-list-page.c:452
 msgid "No new recipes"
 msgstr "Inga nya recept"
 
-#: src/gr-list-page.c:475
+#: src/gr-list-page.c:485
 msgid "No imported recipes found"
 msgstr "Hittade inga importerade recept"
 
@@ -1593,37 +1639,37 @@ msgstr "Det gick inte att tolka %s som en bråkdel"
 msgid "Could not parse %s as a integer"
 msgstr "Det gick inte att tolka %s som ett heltal"
 
-#: src/gr-number.c:238
+#: src/gr-number.c:239
 #, c-format
 msgid "Could not parse %s as a float"
 msgstr "Det gick inte att tolka %s som ett flyttal"
 
-#: src/gr-number.c:286
+#: src/gr-number.c:290
 #, c-format
 msgid "Could not parse %s as a number"
 msgstr "Det gick inte att tolka %s som en siffra"
 
-#: src/gr-recipe-exporter.c:165
+#: src/gr-recipe-exporter.c:168
 msgid "Save the exported recipe"
 msgstr "Spara det exporterade receptet"
 
-#: src/gr-recipe-exporter.c:168 src/gr-shopping-page.c:730
+#: src/gr-recipe-exporter.c:171 src/gr-shopping-page.c:739
 msgid "Save"
 msgstr "Spara"
 
-#: src/gr-recipe-exporter.c:199
+#: src/gr-recipe-exporter.c:206
 msgid "Recipe contribution"
 msgstr "Receptbidrag"
 
-#: src/gr-recipe-exporter.c:200
+#: src/gr-recipe-exporter.c:207
 msgid "Please accept my attached recipe contribution."
 msgstr "Vänligen acceptera mitt bifogade receptbidrag."
 
-#: src/gr-recipe-exporter.c:210
+#: src/gr-recipe-exporter.c:217
 msgid "Try this recipe"
 msgstr "Prova det här receptet"
 
-#: src/gr-recipe-exporter.c:211
+#: src/gr-recipe-exporter.c:218
 msgid ""
 "Hi,\n"
 "\n"
@@ -1633,11 +1679,11 @@ msgstr ""
 "\n"
 "du borde prova detta recept."
 
-#: src/gr-recipe-exporter.c:214
+#: src/gr-recipe-exporter.c:221
 msgid "Try these recipes"
 msgstr "Prova de här recepten"
 
-#: src/gr-recipe-exporter.c:215
+#: src/gr-recipe-exporter.c:222
 msgid ""
 "Hi,\n"
 "\n"
@@ -1647,16 +1693,16 @@ msgstr ""
 "\n"
 "du borde prova dessa recept."
 
-#: src/gr-recipe-exporter.c:218
+#: src/gr-recipe-exporter.c:225
 msgid "(The attached file can be imported into GNOME Recipes.)"
 msgstr "(Den bifogade filen kan importeras till GNOME Recept.)"
 
-#: src/gr-recipe-exporter.c:410
+#: src/gr-recipe-exporter.c:432
 #, c-format
 msgid "This build does not support exporting"
 msgstr "Denna version stödjer inte export"
 
-#: src/gr-recipe-exporter.c:492
+#: src/gr-recipe-exporter.c:515
 #, c-format
 msgid ""
 "Error while exporting:\n"
@@ -1665,14 +1711,14 @@ msgstr ""
 "Fel under export:\n"
 "%s"
 
-#: src/gr-recipe-exporter.c:590
+#: src/gr-recipe-exporter.c:612
 #, c-format
 msgid "%d recipe selected for sharing"
 msgid_plural "%d recipes selected for sharing"
 msgstr[0] "%d recept valt för delning"
 msgstr[1] "%d recept valda för delning"
 
-#: src/gr-recipe-exporter.c:622
+#: src/gr-recipe-exporter.c:644
 msgid ""
 "Some of the selected recipes are included\n"
 "with GNOME Recipes. You should only contribute\n"
@@ -1682,23 +1728,23 @@ msgstr ""
 "med GNOME Recept. Bidra bara med dina\n"
 "egna recept."
 
-#: src/gr-recipe-formatter.c:53 src/gr-recipe-printer.c:157
+#: src/gr-recipe-formatter.c:86 src/gr-recipe-printer.c:162
 msgid "Author:"
 msgstr "Upphovsman:"
 
-#: src/gr-recipe-formatter.c:54 src/gr-recipe-printer.c:158
+#: src/gr-recipe-formatter.c:87 src/gr-recipe-printer.c:163
 msgid "Preparation:"
 msgstr "Förberedelser:"
 
-#: src/gr-recipe-formatter.c:55 src/gr-recipe-printer.c:159
+#: src/gr-recipe-formatter.c:88 src/gr-recipe-printer.c:164
 msgid "Cooking:"
 msgstr "Tillagning:"
 
-#: src/gr-recipe-formatter.c:56 src/gr-recipe-printer.c:160
+#: src/gr-recipe-formatter.c:89 src/gr-recipe-printer.c:165
 msgid "Serves:"
 msgstr "Portioner:"
 
-#: src/gr-recipe-importer.c:235
+#: src/gr-recipe-importer.c:236
 #, c-format
 msgid ""
 "Error while importing recipe:\n"
@@ -1707,110 +1753,135 @@ msgstr ""
 "Fel under import av receptet:\n"
 "%s"
 
-#: src/gr-recipe-importer.c:480
+#: src/gr-recipe-importer.c:482
 #, c-format
 msgid "Failed to load recipe: Couldn’t parse Created key"
 msgstr "Misslyckades med att läsa in recept: Kunde inte tolka skapad-nyckel"
 
-#: src/gr-recipe-importer.c:491
+#: src/gr-recipe-importer.c:493
 #, c-format
 msgid "Failed to load recipe: Couldn’t parse Modified key"
 msgstr "Misslyckades med att läsa in recept: Kunde inte tolka ändrad-nyckel"
 
-#: src/gr-recipe-importer.c:793
+#: src/gr-recipe-importer.c:773
+#, fuzzy, c-format
+msgid "No chef information found"
+msgstr "Fann ingen kock"
+
+#: src/gr-recipe-importer.c:803
 #, c-format
 msgid "This build does not support importing"
 msgstr "Denna version stödjer inte import"
 
-#: src/gr-recipe-printer.c:412 src/gr-shopping-list-printer.c:297
+#: src/gr-recipe-printer.c:170
+#, fuzzy
+msgid "Cuisine:"
+msgstr "Kokkonst"
+
+#: src/gr-recipe-printer.c:174
+#, fuzzy
+msgid "Meal:"
+msgstr "Måltid"
+
+#: src/gr-recipe-printer.c:178
+#, fuzzy
+msgid "Season:"
+msgstr "Årstid"
+
+#: src/gr-recipe-printer.c:223
+#, fuzzy
+msgid "Notes"
+msgstr "_Anteckningar"
+
+#: src/gr-recipe-printer.c:466 src/gr-shopping-list-printer.c:297
 msgid "Error printing file:"
 msgstr "Fel vid utskrift av filen:"
 
-#: src/gr-recipe-printer.c:413 src/gr-shopping-list-printer.c:298
+#: src/gr-recipe-printer.c:467 src/gr-shopping-list-printer.c:298
 msgid "No details"
 msgstr "Inga detaljer"
 
-#: src/gr-recipe-small-tile.c:100 src/gr-recipe-tile.c:81
+#: src/gr-recipe-small-tile.c:105 src/gr-recipe-tile.c:86
 #, c-format
 msgid "by %s"
 msgstr "av %s"
 
-#: src/gr-recipe-small-tile.c:100 src/gr-recipe-tile.c:81
+#: src/gr-recipe-small-tile.c:105 src/gr-recipe-tile.c:86
 msgid "Anonymous"
 msgstr "Anonym"
 
-#: src/gr-recipes-page.c:223 src/gr-window.c:1354
+#: src/gr-recipes-page.c:221 src/gr-window.c:1289
 msgid "My Recipes"
 msgstr "Mina recept"
 
-#: src/gr-recipes-page.c:224
+#: src/gr-recipes-page.c:222
 msgid "Favorites"
 msgstr "Favoriter"
 
-#: src/gr-recipes-page.c:225 src/gr-window.c:1268
+#: src/gr-recipes-page.c:223 src/gr-window.c:1237
 msgid "All Recipes"
 msgstr "Alla recept"
 
-#: src/gr-recipes-page.c:226 src/gr-window.c:1284
+#: src/gr-recipes-page.c:224 src/gr-window.c:1246
 msgid "New Recipes"
 msgstr "Nya recept"
 
-#: src/gr-recipes-page.c:274
+#: src/gr-recipes-page.c:272
 msgid "Last edited:"
 msgstr "Senast redigerad:"
 
-#: src/gr-recipes-page.c:373
+#: src/gr-recipes-page.c:371
 #, c-format
 msgid "Buy ingredients: <b>%s</b>"
 msgstr "Köp ingredienser: <b>%s</b>"
 
-#: src/gr-recipes-page.c:375
+#: src/gr-recipes-page.c:373
 #, c-format
 msgid "Buy ingredients: <b>%s and %s</b>"
 msgstr "Köp ingredienser: <b>%s och %s</b>"
 
-#: src/gr-recipes-page.c:377
+#: src/gr-recipes-page.c:375
 #, c-format
 msgid "Buy ingredients: <b>%s, %s and %d other</b>"
 msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
 msgstr[0] "Köp ingredienser: <b>%s, %s och %d annan</b>"
 msgstr[1] "Köp ingredienser: <b>%s, %s och %d andra</b>"
 
-#: src/gr-recipe-store.c:1013
-#, c-format
+#: src/gr-recipe-store.c:1285
+#, fuzzy, c-format
 msgid ""
-"A recipe with this name and author already exists.\n"
+"A recipe with this name and author (%s) already exists.\n"
 "Please choose a different name"
 msgstr ""
 "Ett recept med detta namn och denna upphovsman finns redan.\n"
 "Använd ett annat namn"
 
-#: src/gr-recipe-store.c:1042
+#: src/gr-recipe-store.c:1314
 #, c-format
 msgid "You need to provide an ID for the recipe"
 msgstr "Du måste ange ett ID för receptet"
 
-#: src/gr-recipe-store.c:1048
+#: src/gr-recipe-store.c:1320
 #, c-format
 msgid "A recipe with this ID already exists"
 msgstr "Ett recept med detta ID existerar redan"
 
-#: src/gr-recipe-store.c:1217
+#: src/gr-recipe-store.c:1489
 #, c-format
 msgid "You need to provide an ID"
 msgstr "Du måste ange ett ID"
 
-#: src/gr-recipe-store.c:1223
+#: src/gr-recipe-store.c:1495
 #, c-format
 msgid "Sorry, this ID is taken"
 msgstr "Tyvärr, detta ID är taget"
 
-#: src/gr-recipe-store.c:1250
+#: src/gr-recipe-store.c:1522
 #, c-format
 msgid "You need to provide an ID for the chef"
 msgstr "Du måste ange ett ID för kocken"
 
-#: src/gr-recipe-store.c:1256
+#: src/gr-recipe-store.c:1528
 #, c-format
 msgid "A chef with this ID already exists"
 msgstr "En kock med detta ID existerar redan"
@@ -1824,7 +1895,8 @@ msgid "Christmas"
 msgstr "Jul"
 
 #: src/gr-season.c:43
-msgid "New Year's"
+#, fuzzy
+msgid "New Year’s"
 msgstr "Nyår"
 
 #: src/gr-season.c:44
@@ -1844,7 +1916,7 @@ msgid "Winter"
 msgstr "Vinter"
 
 #: src/gr-shopping-list-formatter.c:42 src/gr-shopping-list-printer.c:135
-#: src/gr-shopping-page.c:756
+#: src/gr-shopping-page.c:765
 msgid "Shopping List"
 msgstr "Inhandlingslista"
 
@@ -1881,7 +1953,7 @@ msgid_plural "%d Recipes marked for preparation"
 msgstr[0] "%d recept markerat för förberedelse"
 msgstr[1] "%d recept markerade för förberedelse"
 
-#: src/gr-shopping-page.c:727
+#: src/gr-shopping-page.c:736
 msgid "Save the shopping list"
 msgstr "Spara inköpslistan"
 
@@ -1901,238 +1973,436 @@ msgstr "På sin höjd het"
 msgid "Hot or very spicy"
 msgstr "Väldigt het eller kryddig"
 
-#: src/gr-unit.c:40
+#: src/gr-unit.c:41
 msgctxt "unit abbreviation"
 msgid "g"
 msgstr "g"
 
-#: src/gr-unit.c:40
+#: src/gr-unit.c:41
 msgctxt "unit name"
 msgid "gram"
 msgstr "gram"
 
 #: src/gr-unit.c:41
+#, fuzzy
+msgctxt "unit plural"
+msgid "grams"
+msgstr "gram"
+
+#: src/gr-unit.c:42
 msgctxt "unit abbreviation"
 msgid "kg"
 msgstr "kg"
 
-#: src/gr-unit.c:41
+#: src/gr-unit.c:42
 msgctxt "unit name"
 msgid "kilogram"
 msgstr "kilogram"
 
 #: src/gr-unit.c:42
+#, fuzzy
+msgctxt "unit plural"
+msgid "kilograms"
+msgstr "kilogram"
+
+#: src/gr-unit.c:43
 msgctxt "unit abbreviation"
 msgid "lb"
 msgstr "lb"
 
-#: src/gr-unit.c:42
+#: src/gr-unit.c:43
 msgctxt "unit name"
 msgid "pound"
 msgstr "pund"
 
 #: src/gr-unit.c:43
+#, fuzzy
+msgctxt "unit plural"
+msgid "pounds"
+msgstr "pund"
+
+#: src/gr-unit.c:44
 msgctxt "unit abbreviation"
 msgid "oz"
 msgstr "uns"
 
-#: src/gr-unit.c:43
+#: src/gr-unit.c:44
 msgctxt "unit name"
 msgid "ounce"
 msgstr "uns"
 
 #: src/gr-unit.c:44
+#, fuzzy
+msgctxt "unit plural"
+msgid "ounces"
+msgstr "uns"
+
+#: src/gr-unit.c:45
 msgctxt "unit abbreviation"
 msgid "l"
 msgstr "l"
 
-#: src/gr-unit.c:44
+#: src/gr-unit.c:45
 msgctxt "unit name"
 msgid "liter"
 msgstr "liter"
 
 #: src/gr-unit.c:45
+#, fuzzy
+msgctxt "unit plural"
+msgid "liters"
+msgstr "liter"
+
+#: src/gr-unit.c:46
 msgctxt "unit abbreviation"
 msgid "dl"
 msgstr "dl"
 
-#: src/gr-unit.c:45
+#: src/gr-unit.c:46
 msgctxt "unit name"
 msgid "deciliter"
 msgstr "deciliter"
 
 #: src/gr-unit.c:46
+#, fuzzy
+msgctxt "unit plural"
+msgid "deciliters"
+msgstr "deciliter"
+
+#: src/gr-unit.c:47
 msgctxt "unit abbreviation"
 msgid "ml"
 msgstr "ml"
 
-#: src/gr-unit.c:46
+#: src/gr-unit.c:47
 msgctxt "unit name"
 msgid "milliliter"
 msgstr "milliliter"
 
 #: src/gr-unit.c:47
+#, fuzzy
+msgctxt "unit plural"
+msgid "milliliters"
+msgstr "milliliter"
+
+#: src/gr-unit.c:48 src/gr-unit.c:49
 msgctxt "unit abbreviation"
 msgid "fl oz"
 msgstr "fl uns"
 
-#: src/gr-unit.c:47
+#: src/gr-unit.c:48 src/gr-unit.c:49
 msgctxt "unit name"
 msgid "fluid ounce"
 msgstr "flytande uns"
 
-#: src/gr-unit.c:48
+#: src/gr-unit.c:48 src/gr-unit.c:49
+#, fuzzy
+msgctxt "unit plural"
+msgid "fluid ounces"
+msgstr "flytande uns"
+
+#: src/gr-unit.c:50
 msgctxt "unit abbreviation"
 msgid "pt"
 msgstr "pt"
 
-#: src/gr-unit.c:48
+#: src/gr-unit.c:50
 msgctxt "unit name"
 msgid "pint"
 msgstr "pint"
 
-#: src/gr-unit.c:49
+#: src/gr-unit.c:50
+#, fuzzy
+msgctxt "unit plural"
+msgid "pints"
+msgstr "pint"
+
+#: src/gr-unit.c:51
 msgctxt "unit abbreviation"
 msgid "qt"
 msgstr "qt"
 
-#: src/gr-unit.c:49
+#: src/gr-unit.c:51
 msgctxt "unit name"
 msgid "quart"
 msgstr "quart"
 
-#: src/gr-unit.c:50
+#: src/gr-unit.c:51
+#, fuzzy
+msgctxt "unit plural"
+msgid "quarts"
+msgstr "quart"
+
+#: src/gr-unit.c:52
 msgctxt "unit abbreviation"
 msgid "gal"
 msgstr "gal"
 
-#: src/gr-unit.c:50
+#: src/gr-unit.c:52
 msgctxt "unit name"
 msgid "gallon"
 msgstr "gallon"
 
-#: src/gr-unit.c:51
+#: src/gr-unit.c:52
+#, fuzzy
+msgctxt "unit plural"
+msgid "gallons"
+msgstr "gallon"
+
+#: src/gr-unit.c:53
 msgctxt "unit abbreviation"
 msgid "cup"
 msgstr "kopp"
 
 # https://sv.wikipedia.org/wiki/Kopp_(volym)
-#: src/gr-unit.c:51
+#: src/gr-unit.c:53
 msgctxt "unit name"
 msgid "cup"
 msgstr "kopp"
 
-#: src/gr-unit.c:52
+#: src/gr-unit.c:53
+msgctxt "unit plural"
+msgid "cups"
+msgstr ""
+
+#: src/gr-unit.c:54
 msgctxt "unit abbreviation"
 msgid "tbsp"
 msgstr "msk"
 
-#: src/gr-unit.c:52
+#: src/gr-unit.c:54
 msgctxt "unit name"
 msgid "tablespoon"
 msgstr "matsked"
 
-#: src/gr-unit.c:53
+#: src/gr-unit.c:54
+#, fuzzy
+msgctxt "unit plural"
+msgid "tablespoons"
+msgstr "matskedar"
+
+#: src/gr-unit.c:55
 msgctxt "unit abbreviation"
 msgid "tsp"
 msgstr "tsk"
 
-#: src/gr-unit.c:53
+#: src/gr-unit.c:55
 msgctxt "unit name"
 msgid "teaspoon"
 msgstr "tesked"
 
+#: src/gr-unit.c:55
+#, fuzzy
+msgctxt "unit plural"
+msgid "teaspoons"
+msgstr "teskedar"
+
 # osäker....
-#: src/gr-unit.c:54
+#: src/gr-unit.c:56
 msgctxt "unit abbreviation"
 msgid "box"
 msgstr "krt"
 
 # osäker....
-#: src/gr-unit.c:54
+#: src/gr-unit.c:56
 msgctxt "unit name"
 msgid "box"
 msgstr "kartong"
 
-#: src/gr-unit.c:55
+#: src/gr-unit.c:56
+#, fuzzy
+msgctxt "unit plural"
+msgid "boxes"
+msgstr "boxar"
+
+#: src/gr-unit.c:57
 msgctxt "unit abbreviation"
 msgid "pkg"
 msgstr "pkt"
 
-#: src/gr-unit.c:55
+#: src/gr-unit.c:57
 msgctxt "unit name"
 msgid "package"
 msgstr "paket"
 
-#: src/gr-unit.c:56
+#: src/gr-unit.c:57
+#, fuzzy
+msgctxt "unit plural"
+msgid "packages"
+msgstr "paket"
+
+#: src/gr-unit.c:58
 msgctxt "unit abbreviation"
 msgid "glass"
 msgstr "glas"
 
-#: src/gr-unit.c:56
+#: src/gr-unit.c:58
 msgctxt "unit name"
 msgid "glass"
 msgstr "glas"
 
-#: src/gr-unit.c:126
+#: src/gr-unit.c:58
+#, fuzzy
+msgctxt "unit plural"
+msgid "glasses"
+msgstr "glas"
+
+#: src/gr-unit.c:59
+#, fuzzy
+msgctxt "unit abbreviation"
+msgid "mm"
+msgstr "m"
+
+#: src/gr-unit.c:59
+#, fuzzy
+msgctxt "unit name"
+msgid "millimeter"
+msgstr "milliliter"
+
+#: src/gr-unit.c:59
+#, fuzzy
+msgctxt "unit plural"
+msgid "millimeters"
+msgstr "milliliter"
+
+#: src/gr-unit.c:60
+#, fuzzy
+msgctxt "unit abbreviation"
+msgid "cm"
+msgstr "m"
+
+#: src/gr-unit.c:60
+msgctxt "unit name"
+msgid "centimeter"
+msgstr ""
+
+#: src/gr-unit.c:60
+msgctxt "unit plural"
+msgid "centimeters"
+msgstr ""
+
+#: src/gr-unit.c:61
+#, fuzzy
+msgctxt "unit abbreviation"
+msgid "m"
+msgstr "m"
+
+#: src/gr-unit.c:61
+msgctxt "unit name"
+msgid "meter"
+msgstr ""
+
+#: src/gr-unit.c:61
+#, fuzzy
+msgctxt "unit plural"
+msgid "meters"
+msgstr "liter"
+
+#: src/gr-unit.c:62
+#, fuzzy
+msgctxt "unit abbreviation"
+msgid "st"
+msgstr "s"
+
+#: src/gr-unit.c:62
+msgctxt "unit name"
+msgid "stone"
+msgstr ""
+
+#: src/gr-unit.c:62
+msgctxt "unit plural"
+msgid "stone"
+msgstr ""
+
+#: src/gr-unit.c:63
+msgctxt "unit abbreviation"
+msgid "pinch"
+msgstr ""
+
+#: src/gr-unit.c:63
+msgctxt "unit name"
+msgid "pinch"
+msgstr ""
+
+#: src/gr-unit.c:63
+msgctxt "unit plural"
+msgid "pinches"
+msgstr ""
+
+#: src/gr-unit.c:64
+msgctxt "unit abbreviation"
+msgid "bunch"
+msgstr ""
+
+#: src/gr-unit.c:64
+msgctxt "unit name"
+msgid "bunch"
+msgstr ""
+
+#: src/gr-unit.c:64
+msgctxt "unit plural"
+msgid "bunches"
+msgstr ""
+
+#: src/gr-unit.c:145
 #, c-format
 msgid "I don’t know this unit: %s"
 msgstr "Jag känner inte till denna enhet: %s"
 
-#: src/gr-utils.c:325
+#: src/gr-utils.c:334
 #, c-format
 msgid "more than a year ago"
 msgstr "mer än ett år sedan"
 
-#: src/gr-utils.c:328 src/gr-utils.c:332
+#: src/gr-utils.c:337 src/gr-utils.c:341
 #, c-format
 msgid "%d month ago"
 msgid_plural "%d months ago"
 msgstr[0] "%d månad sedan"
 msgstr[1] "%d månader sedan"
 
-#: src/gr-utils.c:336
+#: src/gr-utils.c:345
 #, c-format
 msgid "%d day ago"
 msgid_plural "%d days ago"
 msgstr[0] "%d dag sedan"
 msgstr[1] "%d dagar sedan"
 
-#: src/gr-utils.c:339
+#: src/gr-utils.c:348
 #, c-format
 msgid "just now"
 msgstr "just nu"
 
-#: src/gr-utils.c:341
+#: src/gr-utils.c:350
 #, c-format
 msgid "10 minutes ago"
 msgstr "10 minuter sedan"
 
-#: src/gr-utils.c:343
+#: src/gr-utils.c:352
 #, c-format
 msgid "half an hour ago"
 msgstr "en halvtimme sedan"
 
-#: src/gr-utils.c:347
+#: src/gr-utils.c:356
 #, c-format
 msgid "%d hour ago"
 msgid_plural "%d hours ago"
 msgstr[0] "%d timme sedan"
 msgstr[1] "%d timmar sedan"
 
-#: src/gr-utils.c:353
+#: src/gr-utils.c:362
 msgid "some time ago"
 msgstr "ett tag sedan"
 
-#: src/gr-utils.c:376
+#: src/gr-utils.c:385
 msgid "Could not connect to the session bus from inside the Flatpak sandbox."
 msgstr "Kunde inte ansluta till sessionsbussen inifrån Flatpak-sandlådan."
 
-#: src/gr-utils.c:377
+#: src/gr-utils.c:386
 msgid "Certain functionality will not be available."
 msgstr "Viss funktionalitet kommer inte att finnas tillgänglig."
 
-#: src/gr-utils.c:397
+#: src/gr-utils.c:406
 msgid ""
 "Missing the desktop portal needed to open files from inside a Flatpak "
 "sandbox."
@@ -2140,31 +2410,31 @@ msgstr ""
 "Saknar skrivbordsportalen som krävs för att öppna filer inifrån en Flatpak-"
 "sandlåda."
 
-#: src/gr-utils.c:399
+#: src/gr-utils.c:408
 msgid ""
 "Missing the desktop portal needed to print from inside a Flatpak sandbox."
 msgstr ""
 "Saknar skrivbordsportalen som krävs för att skriva ut inifrån en Flatpak-"
 "sandlåda."
 
-#: src/gr-utils.c:401
+#: src/gr-utils.c:410
 msgid ""
 "Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
 msgstr ""
 "Saknar skrivbordsportalen som krävs för att öppna URL:er inifrån en Flatpak-"
 "sandlåda."
 
-#: src/gr-utils.c:405
+#: src/gr-utils.c:414
 msgid ""
 "Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
 msgstr ""
 "Installera xdg-desktop-portal och xdg-desktop-portal-gtk på ditt system"
 
-#: src/gr-window.c:230
+#: src/gr-window.c:246
 msgid "Add a New Recipe"
 msgstr "Lägg till ett nytt recept"
 
-#: src/gr-window.c:517
+#: src/gr-window.c:525
 #, c-format
 msgid ""
 "The “%s” recipe has unsaved changes.\n"
@@ -2173,7 +2443,7 @@ msgstr ""
 "Receptet ”%s” har osparade ändringar.\n"
 "Stäng fönstret i alla fall?"
 
-#: src/gr-window.c:520
+#: src/gr-window.c:528
 msgid ""
 "The new recipe has not been saved.\n"
 "Close the window anyway?"
@@ -2181,65 +2451,70 @@ msgstr ""
 "Det nya receptet har inte sparats.\n"
 "Stäng fönstret i alla fall?"
 
-#: src/gr-window.c:651
+#: src/gr-window.c:659
 #, c-format
 msgid "Recipe “%s” deleted"
 msgstr "Receptet ”%s” togs bort"
 
-#: src/gr-window.c:701
+#: src/gr-window.c:709
 #, c-format
 msgid "You updated your contributed “%s” recipe. Send an update?"
 msgstr ""
 "Du uppdaterade ditt recept ”%s” som du bidragit med. Skicka en uppdatering?"
 
-#: src/gr-window.c:831
+#: src/gr-window.c:839
 msgid "Ready to Cook!"
 msgstr "Redo att laga mat!"
 
-#: src/gr-window.c:1053
+#: src/gr-window.c:1045
 msgid "Imported Recipes"
 msgstr "Importerade recept"
 
-#: src/gr-window.c:1129
+#: src/gr-window.c:1121
 msgid "Select a recipe file"
 msgstr "Välj en receptfil"
 
-#: src/gr-window.c:1155
+#: src/gr-window.c:1147
 #, c-format
 msgid "Recipes have been exported to “%s”"
 msgstr "Recept har exporterats till ”%s”"
 
-#: src/gr-window.c:1193
+#: src/gr-window.c:1185
 msgid "Select a file"
 msgstr "Välj en fil"
 
-#: src/gr-window.c:1196
+#: src/gr-window.c:1188
 msgid "_Export"
 msgstr "_Exportera"
 
-#: src/gr-window.c:1235
+#: src/gr-window.c:1218
 #, c-format
 msgid "Chefs: %s"
 msgstr "Kockar: %s"
 
-#: src/gr-window.c:1252
+#: src/gr-window.c:1228
 msgid "Favorite Recipes"
 msgstr "Favoritrecept"
 
-#: src/gr-window.c:1334
+#: src/gr-window.c:1276
 msgid "Buy Ingredients"
 msgstr "Inhandla ingredienser"
 
 #. TRANSLATORS: %s gets replaced by a version number
-#: src/gr-window.c:1505
+#: src/gr-window.c:1420
 #, c-format
 msgid "Recipes %s"
 msgstr "Recept %s"
 
 #. TRANSLATORS: %s gets replaced by a date
-#: src/gr-window.c:1520
+#: src/gr-window.c:1437
 #, c-format
 msgid "Released: %s"
+msgstr "Utgiven: %s"
+
+#: src/gr-window.c:1440
+#, fuzzy, c-format
+msgid "Unreleased"
 msgstr "Utgiven: %s"
 
 #: src/ingredients.inc:1
@@ -2327,213 +2602,259 @@ msgid "Beetroot"
 msgstr "Rödbeta"
 
 #: src/ingredients.inc:22
+#, fuzzy
+msgid "Bell pepper"
+msgstr "ingen peppar"
+
+#: src/ingredients.inc:23
 msgid "Berry"
 msgstr "Bär"
 
-#: src/ingredients.inc:23
+#: src/ingredients.inc:24
 msgid "Biscotti"
 msgstr "Småkakor"
 
-#: src/ingredients.inc:24
+#: src/ingredients.inc:25
 msgid "Bilberry"
 msgstr "Blåbär"
 
-#: src/ingredients.inc:25
+#: src/ingredients.inc:26
+msgid "Breadcrumbs"
+msgstr ""
+
+#: src/ingredients.inc:27
 msgid "Butter"
 msgstr "Smör"
 
-#: src/ingredients.inc:26
+#: src/ingredients.inc:28
 msgid "Carrot"
 msgstr "Morot"
 
-#: src/ingredients.inc:27
+#: src/ingredients.inc:29
 msgid "Cheese"
 msgstr "Ost"
 
-#: src/ingredients.inc:28
+#: src/ingredients.inc:30
 msgid "Cherries, pitted"
 msgstr "Körsbär, urkärnade"
 
-#: src/ingredients.inc:29
+#: src/ingredients.inc:31
 msgid "Chocolate frosting"
 msgstr "Chokladglasyr"
 
-#: src/ingredients.inc:30
+#: src/ingredients.inc:32
 msgid "Cilantro"
 msgstr "Koriander"
 
-#: src/ingredients.inc:31
+#: src/ingredients.inc:33
 msgid "Cocoa powder"
 msgstr "Kakaopulver"
 
-#: src/ingredients.inc:32
+#: src/ingredients.inc:34
 msgid "Couscous"
 msgstr "Couscous"
 
-#: src/ingredients.inc:33
+#: src/ingredients.inc:35
+msgid "Cream"
+msgstr ""
+
+#: src/ingredients.inc:36
 msgid "Date"
 msgstr "Dadel"
 
-#: src/ingredients.inc:34
+#: src/ingredients.inc:37
 msgid "Egg"
 msgstr "Ägg"
 
-#: src/ingredients.inc:35
+#: src/ingredients.inc:38
 msgid "Fig"
 msgstr "Fikon"
 
-#: src/ingredients.inc:36
+#: src/ingredients.inc:39
+msgid "Fish"
+msgstr ""
+
+#: src/ingredients.inc:40
 msgid "Flour"
 msgstr "Mjöl"
 
-#: src/ingredients.inc:37
+#: src/ingredients.inc:41
 msgid "Garlic"
 msgstr "Vitlök"
 
-#: src/ingredients.inc:38
+#: src/ingredients.inc:42
+msgid "Grapes"
+msgstr ""
+
+#: src/ingredients.inc:43
 msgid "Ground beef"
 msgstr "Köttfärs"
 
-#: src/ingredients.inc:39
+#: src/ingredients.inc:44
 msgid "Honey"
 msgstr "Honung"
 
-#: src/ingredients.inc:40
+#: src/ingredients.inc:45
+msgid "Horseradish"
+msgstr ""
+
+#: src/ingredients.inc:46
 msgid "Lemon"
 msgstr "Citron"
 
-#: src/ingredients.inc:41
+#: src/ingredients.inc:47
 msgid "Linseeds"
 msgstr "Linfrön"
 
-#: src/ingredients.inc:42
+#: src/ingredients.inc:48
 msgid "Mayonnaise"
 msgstr "Majonnäs"
 
-#: src/ingredients.inc:43
+#: src/ingredients.inc:49
 msgid "Milk"
 msgstr "Mjölk"
 
-#: src/ingredients.inc:44
+#: src/ingredients.inc:50
 msgid "Mustard"
 msgstr "Senap"
 
-#: src/ingredients.inc:45
+#: src/ingredients.inc:51
+msgid "Nut"
+msgstr ""
+
+#: src/ingredients.inc:52
 msgid "Oatmeal"
 msgstr "Havregryn"
 
-#: src/ingredients.inc:46
+#: src/ingredients.inc:53
 msgid "Oil"
 msgstr "Olja"
 
-#: src/ingredients.inc:47
+#: src/ingredients.inc:54
 msgid "Onion"
 msgstr "Lök"
 
-#: src/ingredients.inc:48
+#: src/ingredients.inc:55
 msgid "Olive oil, extra-virgin"
 msgstr "Olivolja, extra jungfru"
 
-#: src/ingredients.inc:49
+#: src/ingredients.inc:56
 msgid "Orange"
 msgstr "Apelsin"
 
-#: src/ingredients.inc:50
+#: src/ingredients.inc:57
 msgid "Parsley"
 msgstr "Persilja"
 
-#: src/ingredients.inc:51
+#: src/ingredients.inc:58
 msgid "Peperoni"
 msgstr "Feferoni"
 
-#: src/ingredients.inc:52
+#: src/ingredients.inc:59
 msgid "Pepper"
 msgstr "Peppar"
 
 # Troligen paprika som avses, kallas "peppers" i brittisk engelska.
-#: src/ingredients.inc:53
+#: src/ingredients.inc:60
 msgid "Peppers"
 msgstr "Paprika"
 
-#: src/ingredients.inc:54
+#: src/ingredients.inc:61
 msgid "Pizza sauce"
 msgstr "Pizzasås"
 
-#: src/ingredients.inc:55
+#: src/ingredients.inc:62
 msgid "Potato"
 msgstr "Potatis"
 
-#: src/ingredients.inc:56
+#: src/ingredients.inc:63
 msgid "Pumpkin seeds"
 msgstr "Pumpafrön"
 
-#: src/ingredients.inc:57
+#: src/ingredients.inc:64
+#, fuzzy
+msgid "Raisins"
+msgstr "Matkulturer"
+
+#: src/ingredients.inc:65
+msgid "Rice"
+msgstr ""
+
+#: src/ingredients.inc:66
 msgid "Salt"
 msgstr "Salt"
 
-#: src/ingredients.inc:58
+#: src/ingredients.inc:67
 msgid "Soy sauce"
 msgstr "Sojasås"
 
-#: src/ingredients.inc:59
+#: src/ingredients.inc:68
+msgid "Strawberry"
+msgstr ""
+
+#: src/ingredients.inc:69
 msgid "Sugar"
 msgstr "Socker"
 
-#: src/ingredients.inc:60
+#: src/ingredients.inc:70
 msgid "Sunflower seeds"
 msgstr "Solroskärnor"
 
-#: src/ingredients.inc:61
+#: src/ingredients.inc:71
 msgid "Squash"
 msgstr "Squash"
 
-#: src/ingredients.inc:62
+#: src/ingredients.inc:72
 msgid "Tangerine"
 msgstr "Tangerin"
 
-#: src/ingredients.inc:63
+#: src/ingredients.inc:73
 msgid "Tofu"
 msgstr "Tofu"
 
-#: src/ingredients.inc:64
+#: src/ingredients.inc:74
 msgid "Tomato"
 msgstr "Tomat"
 
-#: src/ingredients.inc:65
+#: src/ingredients.inc:75
 msgid "Turmeric, ground"
 msgstr "Gurkmeja, mald"
 
-#: src/ingredients.inc:66
+#: src/ingredients.inc:76
 msgid "Vanilla sugar"
 msgstr "Vaniljsocker"
 
-#: src/ingredients.inc:67
+#: src/ingredients.inc:77
 msgid "Vanilla pudding"
 msgstr "Vaniljpudding"
 
-#: src/ingredients.inc:68
+#: src/ingredients.inc:78
 msgid "Vinegar"
 msgstr "Vinäger"
 
-#: src/ingredients.inc:69
+#: src/ingredients.inc:79
 msgid "Water"
 msgstr "Vatten"
 
-#: src/ingredients.inc:70
+#: src/ingredients.inc:80
 msgid "Wine"
 msgstr "Vin"
 
-#: src/ingredients.inc:71
+#: src/ingredients.inc:81
 msgid "Yeast"
 msgstr "Jäst"
 
-#: src/ingredients.inc:72
+#: src/ingredients.inc:82
 msgid "Yoghurt"
 msgstr "Yoghurt"
 
-#: src/ingredients.inc:73
+#: src/ingredients.inc:83
 msgid "Zinfandel"
 msgstr "Zinfandel"
+
+#: src/ingredients.inc:84
+msgid "Zuccini"
+msgstr ""
 
 #: src/no-ingredients.inc:1
 msgid "no Almond"
@@ -2620,222 +2941,271 @@ msgid "no Beetroot"
 msgstr "ingen rödbeta"
 
 #: src/no-ingredients.inc:22
+#, fuzzy
+msgid "no Bell pepper"
+msgstr "ingen peppar"
+
+#: src/no-ingredients.inc:23
 msgid "no Berry"
 msgstr "inga bär"
 
-#: src/no-ingredients.inc:23
+#: src/no-ingredients.inc:24
 msgid "no Biscotti"
 msgstr "ingen småkaka"
 
-#: src/no-ingredients.inc:24
+#: src/no-ingredients.inc:25
 msgid "no Bilberry"
 msgstr "inga blåbär"
 
-#: src/no-ingredients.inc:25
+#: src/no-ingredients.inc:26
+#, fuzzy
+msgid "no Breadcrumbs"
+msgstr "inga bönor"
+
+#: src/no-ingredients.inc:27
 msgid "no Butter"
 msgstr "inget smör"
 
-#: src/no-ingredients.inc:26
+#: src/no-ingredients.inc:28
 msgid "no Carrot"
 msgstr "ingen morot"
 
-#: src/no-ingredients.inc:27
+#: src/no-ingredients.inc:29
 msgid "no Cheese"
 msgstr "ingen ost"
 
-#: src/no-ingredients.inc:28
+#: src/no-ingredients.inc:30
 msgid "no Cherries, pitted"
 msgstr "inga körsbär, urkärnade"
 
-#: src/no-ingredients.inc:29
+#: src/no-ingredients.inc:31
 msgid "no Chocolate frosting"
 msgstr "ingen chokladglasyr"
 
-#: src/no-ingredients.inc:30
+#: src/no-ingredients.inc:32
 msgid "no Cilantro"
 msgstr "ingen koriander"
 
-#: src/no-ingredients.inc:31
+#: src/no-ingredients.inc:33
 msgid "no Cocoa powder"
 msgstr "inget kakaopulver"
 
-#: src/no-ingredients.inc:32
+#: src/no-ingredients.inc:34
 msgid "no Couscous"
 msgstr "ingen couscous"
 
-#: src/no-ingredients.inc:33
+#: src/no-ingredients.inc:35
+msgid "no Cream"
+msgstr ""
+
+#: src/no-ingredients.inc:36
 msgid "no Date"
 msgstr "ingen dadel"
 
-#: src/no-ingredients.inc:34
+#: src/no-ingredients.inc:37
 msgid "no Egg"
 msgstr "inget ägg"
 
-#: src/no-ingredients.inc:35
+#: src/no-ingredients.inc:38
 msgid "no Fig"
 msgstr "inga fikon"
 
-#: src/no-ingredients.inc:36
+#: src/no-ingredients.inc:39
+#, fuzzy
+msgid "no Fish"
+msgstr "inga fikon"
+
+#: src/no-ingredients.inc:40
 msgid "no Flour"
 msgstr "inget mjöl"
 
-#: src/no-ingredients.inc:37
+#: src/no-ingredients.inc:41
 msgid "no Garlic"
 msgstr "ingen vitlök"
 
-#: src/no-ingredients.inc:38
+#: src/no-ingredients.inc:42
+msgid "no Grapes"
+msgstr ""
+
+#: src/no-ingredients.inc:43
 msgid "no Ground beef"
 msgstr "ingen köttfärs"
 
-#: src/no-ingredients.inc:39
+#: src/no-ingredients.inc:44
 msgid "no Honey"
 msgstr "ingen honung"
 
-#: src/no-ingredients.inc:40
+#: src/no-ingredients.inc:45
+msgid "no Horseradish"
+msgstr ""
+
+#: src/no-ingredients.inc:46
 msgid "no Lemon"
 msgstr "ingen citron"
 
-#: src/no-ingredients.inc:41
+#: src/no-ingredients.inc:47
 msgid "no Linseeds"
 msgstr "inga linfrön"
 
-#: src/no-ingredients.inc:42
+#: src/no-ingredients.inc:48
 msgid "no Mayonnaise"
 msgstr "ingen majonnäs"
 
-#: src/no-ingredients.inc:43
+#: src/no-ingredients.inc:49
 msgid "no Milk"
 msgstr "ingen mjölk"
 
-#: src/no-ingredients.inc:44
+#: src/no-ingredients.inc:50
 msgid "no Mustard"
 msgstr "ingen senap"
 
-#: src/no-ingredients.inc:45
+#: src/no-ingredients.inc:51
+msgid "no Nut"
+msgstr ""
+
+#: src/no-ingredients.inc:52
 msgid "no Oatmeal"
 msgstr "inga havregryn"
 
-#: src/no-ingredients.inc:46
+#: src/no-ingredients.inc:53
 msgid "no Oil"
 msgstr "ingen olja"
 
-#: src/no-ingredients.inc:47
+#: src/no-ingredients.inc:54
 msgid "no Onion"
 msgstr "ingen lök"
 
-#: src/no-ingredients.inc:48
+#: src/no-ingredients.inc:55
 msgid "no Olive oil, extra-virgin"
 msgstr "ingen olivolja, extra jungfru"
 
-#: src/no-ingredients.inc:49
+#: src/no-ingredients.inc:56
 msgid "no Orange"
 msgstr "ingen apelsin"
 
-#: src/no-ingredients.inc:50
+#: src/no-ingredients.inc:57
 msgid "no Parsley"
 msgstr "ingen persilja"
 
-#: src/no-ingredients.inc:51
+#: src/no-ingredients.inc:58
 msgid "no Peperoni"
 msgstr "ingen feferoni"
 
-#: src/no-ingredients.inc:52
+#: src/no-ingredients.inc:59
 msgid "no Pepper"
 msgstr "ingen peppar"
 
 # Troligen paprika som avses, kallas
 # "peppers" i brittisk engelska.
-#: src/no-ingredients.inc:53
+#: src/no-ingredients.inc:60
 msgid "no Peppers"
 msgstr "ingen paprika"
 
-#: src/no-ingredients.inc:54
+#: src/no-ingredients.inc:61
 msgid "no Pizza sauce"
 msgstr "ingen pizzasås"
 
-#: src/no-ingredients.inc:55
+#: src/no-ingredients.inc:62
 msgid "no Potato"
 msgstr "ingen potatis"
 
-#: src/no-ingredients.inc:56
+#: src/no-ingredients.inc:63
 msgid "no Pumpkin seeds"
 msgstr "inga pumpafrön"
 
-#: src/no-ingredients.inc:57
+#: src/no-ingredients.inc:64
+msgid "no Raisins"
+msgstr ""
+
+#: src/no-ingredients.inc:65
+msgid "no Rice"
+msgstr ""
+
+#: src/no-ingredients.inc:66
 msgid "no Salt"
 msgstr "inget salt"
 
-#: src/no-ingredients.inc:58
+#: src/no-ingredients.inc:67
 msgid "no Soy sauce"
 msgstr "ingen sojasås"
 
-#: src/no-ingredients.inc:59
+#: src/no-ingredients.inc:68
+#, fuzzy
+msgid "no Strawberry"
+msgstr "inga blåbär"
+
+#: src/no-ingredients.inc:69
 msgid "no Sugar"
 msgstr "inget socker"
 
-#: src/no-ingredients.inc:60
+#: src/no-ingredients.inc:70
 msgid "no Sunflower seeds"
 msgstr "inga solroskärnor"
 
-#: src/no-ingredients.inc:61
+#: src/no-ingredients.inc:71
 msgid "no Squash"
 msgstr "ingen squash"
 
-#: src/no-ingredients.inc:62
+#: src/no-ingredients.inc:72
 msgid "no Tangerine"
 msgstr "ingen tangerin"
 
-#: src/no-ingredients.inc:63
+#: src/no-ingredients.inc:73
 msgid "no Tofu"
 msgstr "ingen tofu"
 
-#: src/no-ingredients.inc:64
+#: src/no-ingredients.inc:74
 msgid "no Tomato"
 msgstr "ingen tomat"
 
-#: src/no-ingredients.inc:65
+#: src/no-ingredients.inc:75
 msgid "no Turmeric, ground"
 msgstr "ingen gurkmeja, mald"
 
-#: src/no-ingredients.inc:66
+#: src/no-ingredients.inc:76
 msgid "no Vanilla sugar"
 msgstr "inget vaniljsocker"
 
-#: src/no-ingredients.inc:67
+#: src/no-ingredients.inc:77
 msgid "no Vanilla pudding"
 msgstr "ingen vaniljpudding"
 
-#: src/no-ingredients.inc:68
+#: src/no-ingredients.inc:78
 msgid "no Vinegar"
 msgstr "ingen vinäger"
 
-#: src/no-ingredients.inc:69
+#: src/no-ingredients.inc:79
 msgid "no Water"
 msgstr "inget vatten"
 
-#: src/no-ingredients.inc:70
+#: src/no-ingredients.inc:80
 msgid "no Wine"
 msgstr "inget vin"
 
-#: src/no-ingredients.inc:71
+#: src/no-ingredients.inc:81
 msgid "no Yeast"
 msgstr "ingen jäst"
 
-#: src/no-ingredients.inc:72
+#: src/no-ingredients.inc:82
 msgid "no Yoghurt"
 msgstr "ingen yoghurt"
 
-#: src/no-ingredients.inc:73
+#: src/no-ingredients.inc:83
 msgid "no Zinfandel"
 msgstr "ingen zinfandel"
 
-#: src/segments.inc:1
-msgid "Dough"
-msgstr "Deg"
+#: src/no-ingredients.inc:84
+msgid "no Zuccini"
+msgstr ""
 
-#: src/segments.inc:2
-msgid "Toppings"
-msgstr "Topping"
+#~ msgid "Apply"
+#~ msgstr "Verkställ"
+
+#~ msgid "Dough"
+#~ msgstr "Deg"
+
+#~ msgid "Toppings"
+#~ msgstr "Topping"
 
 #~ msgid "Contains dairy products"
 #~ msgstr "Innehåller mejeriprodukter"
@@ -3412,9 +3782,6 @@ msgstr "Topping"
 #~ msgid "No recipe found"
 #~ msgstr "Hittade inget recept"
 
-#~ msgid "No chef found"
-#~ msgstr "Fann ingen kock"
-
 #~ msgid "Start cooking"
 #~ msgstr "Börja tillaga"
 
@@ -3429,15 +3796,6 @@ msgstr "Topping"
 
 #~ msgid "Units"
 #~ msgstr "Enheter"
-
-#~ msgid "grams"
-#~ msgstr "gram"
-
-#~ msgid "kilograms"
-#~ msgstr "kilogram"
-
-#~ msgid "pounds"
-#~ msgstr "pund"
 
 #~ msgid "Almonds"
 #~ msgstr "Mandel"
@@ -3589,29 +3947,5 @@ msgstr "Topping"
 #~ msgstr "kilogram"
 
 #~ msgctxt "unit"
-#~ msgid "liters"
-#~ msgstr "liter"
-
-#~ msgctxt "unit"
-#~ msgid "deciliters"
-#~ msgstr "deciliter"
-
-#~ msgctxt "unit"
-#~ msgid "milliliters"
-#~ msgstr "milliliter"
-
-#~ msgctxt "unit"
 #~ msgid "pounds"
 #~ msgstr "pund"
-
-#~ msgctxt "unit"
-#~ msgid "boxes"
-#~ msgstr "boxar"
-
-#~ msgctxt "unit"
-#~ msgid "tablespoons"
-#~ msgstr "matskedar"
-
-#~ msgctxt "unit"
-#~ msgid "teaspoons"
-#~ msgstr "teskedar"
