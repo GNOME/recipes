@@ -7,8 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes 0.1.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-22 13:50+0000\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
+"product=recipes\n"
+"POT-Creation-Date: 2017-06-20 09:19-0400\n"
 "PO-Revision-Date: 2017-05-23 12:41+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
@@ -30,7 +31,6 @@ msgstr "Recetas"
 msgid "GNOME cooks unite!"
 msgstr "¡Cocineros de GNOME uníos!"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Recipes.desktop.in:7
 msgid "org.gnome.Recipes"
 msgstr "org.gnome.Recipes"
@@ -41,10 +41,6 @@ msgstr "A GNOME le encanta cocinar"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:9
 #, fuzzy
-#| msgid ""
-#| "Recipes is an easy-to-use application that will help you to discover what "
-#| "to cook today, tomorrow, the rest of the week and for your special "
-#| "occasions."
 msgid ""
 "GNOME Recipes is an easy-to-use application that will help you to discover "
 "what to cook today, tomorrow, rest of the week and for your special "
@@ -55,10 +51,6 @@ msgstr ""
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:13
 #, fuzzy
-#| msgid ""
-#| "Recipes comes with a collection of recipes that have been collected by "
-#| "GNOME contributors from all over the world. It also lets you store your "
-#| "own recipes and share them with your friends."
 msgid ""
 "Recipes comes with a collection of recipes that have been collected by GNOME "
 "contributors from all over the world. It also lets you store your own "
@@ -305,7 +297,6 @@ msgstr "Detener temporizadores"
 
 #: src/gr-cooking-page.ui:226
 #, fuzzy
-#| msgid "Continue"
 msgid "Continue Timers"
 msgstr "Continuar"
 
@@ -367,7 +358,6 @@ msgid "Contains garlic"
 msgstr "Contiene ajo"
 
 #: src/gr-details-page.ui:112
-#| msgid "Contains garlic"
 msgid "Contains dairy products"
 msgstr "Contiene productos lácteos"
 
@@ -534,12 +524,10 @@ msgid "Description"
 msgstr "Descripción"
 
 #: src/gr-edit-page.ui:635 src/gr-diet-row.c:102
-#| msgid "Gluten-free"
 msgid "Gluten free"
 msgstr "Sin gluten"
 
 #: src/gr-edit-page.ui:642 src/gr-diet-row.c:105
-#| msgid "Nut-free"
 msgid "Nut free"
 msgstr "Sin nueces"
 
@@ -552,7 +540,6 @@ msgid "Vegetarian"
 msgstr "Vegetariano"
 
 #: src/gr-edit-page.ui:663 src/gr-diet-row.c:114
-#| msgid "Milk-free"
 msgid "Milk free"
 msgstr "Sin lácteos"
 
@@ -641,7 +628,6 @@ msgstr "Sin especias"
 #: src/gr-query-editor.ui:129 src/gr-query-editor.c:557
 #: src/gr-query-editor.c:708
 #, fuzzy
-#| msgid "S_piciness"
 msgid "Any spiciness"
 msgstr "Sin es_pecias"
 
@@ -659,7 +645,6 @@ msgstr "Sin restricciones"
 msgid "Ingredients"
 msgstr "Ingredientes"
 
-#. FIXME: repopulate
 #: src/gr-query-editor.ui:255 src/gr-query-editor.c:337
 #: src/gr-query-editor.c:766
 msgid "Anything"
@@ -743,13 +728,11 @@ msgstr "_Comenzar a cocinar"
 
 #: src/gr-window.ui:144
 #, fuzzy
-#| msgid "View Shopping List"
 msgid "_Done Shopping"
 msgstr "Ver la lista de la compra"
 
 #: src/gr-window.ui:205
 #, fuzzy
-#| msgid "No ingredients added yet"
 msgid "All ingredients marked as stocked!"
 msgstr "Todavía no se han añadido ingredientes"
 
@@ -860,7 +843,6 @@ msgid "Share with a friend"
 msgstr "Compartir con un amigo"
 
 #: src/recipe-export-dialog.ui:63
-#| msgid "Contribute to the Recipes project"
 msgid "Contribute to GNOME Recipes"
 msgstr "Colaborar con Recetas de GNOME"
 
@@ -1017,13 +999,11 @@ msgstr "GNOME Recetas"
 
 #: src/gr-cooking-view.c:373
 #, fuzzy
-#| msgid "Your cooking timer for “%s” has expired."
 msgid "A cooking timer has expired"
 msgstr "El tiempo de cocina «%s» ha concluido."
 
 #: src/gr-cooking-view.c:391 src/gr-cooking-view.c:407
 #, fuzzy, c-format
-#| msgid "Your cooking timer for “%s” has expired."
 msgid "Timer for “%s” has expired."
 msgstr "El tiempo de cocina «%s» ha concluido."
 
@@ -1188,9 +1168,6 @@ msgstr ""
 
 #: src/gr-cuisine.c:108
 #, fuzzy
-#| msgid ""
-#| "The mediterranean quisine has a lot to offer, and is legendary for being "
-#| "very healthy too. Expect to see olives, yoghurt and garlic."
 msgid ""
 "The mediterranean cuisine has a lot to offer, and is legendary for being "
 "very healthy too. Expect to see olives, yoghurt and garlic."
@@ -1388,12 +1365,10 @@ msgstr "Nombre de la lista"
 
 #: src/gr-edit-page.c:1764
 #, fuzzy
-#| msgid "Some ingredients need correction"
 msgid "No ingredients added yet"
 msgstr "Algunos ingredientes necesitan una corrección"
 
 #: src/gr-edit-page.c:1783
-#| msgid "Ingredient"
 msgid "Add Ingredient"
 msgstr "Añadir ingrediente"
 
@@ -1553,7 +1528,6 @@ msgstr "Guardar"
 
 #: src/gr-recipe-exporter.c:196
 #, fuzzy
-#| msgid "Recipe Author"
 msgid "Recipe contribution"
 msgstr "Autor de la receta"
 
@@ -1772,7 +1746,6 @@ msgstr "Navidad"
 
 #: src/gr-season.c:43
 #, fuzzy
-#| msgid "New Year’s"
 msgid "New Years"
 msgstr "Año nuevo"
 
@@ -2804,7 +2777,6 @@ msgstr ""
 
 #: src/segments.inc:2
 #, fuzzy
-#| msgid "Shopping List"
 msgid "Toppings"
 msgstr "Lista de la compra"
 

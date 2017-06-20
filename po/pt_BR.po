@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-21 16:59+0000\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
+"product=recipes\n"
+"POT-Creation-Date: 2017-06-20 09:19-0400\n"
 "PO-Revision-Date: 2017-05-21 17:10-0200\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
@@ -31,7 +32,6 @@ msgstr "Receitas"
 msgid "GNOME cooks unite!"
 msgstr "Cozinheiros do GNOME, uni-vos!"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Recipes.desktop.in:7
 msgid "org.gnome.Recipes"
 msgstr "org.gnome.Recipes"
@@ -651,7 +651,6 @@ msgstr "Sem restrições"
 msgid "Ingredients"
 msgstr "Ingredientes"
 
-#. FIXME: repopulate
 #: src/gr-query-editor.ui:255 src/gr-query-editor.c:337
 #: src/gr-query-editor.c:766
 msgid "Anything"
@@ -1744,7 +1743,6 @@ msgstr ""
 
 #: src/gr-recipe-importer.c:771
 #, c-format
-#| msgid "Chef Information"
 msgid "No chef information found"
 msgstr "Nenhuma informação do chef encontrada"
 
@@ -2103,22 +2101,16 @@ msgid "glass"
 msgstr "copo"
 
 #: src/gr-unit.c:57
-#| msgctxt "minute abbreviation"
-#| msgid "m"
 msgctxt "unit abbreviation"
 msgid "mm"
 msgstr "mm"
 
 #: src/gr-unit.c:57
-#| msgctxt "unit name"
-#| msgid "milliliter"
 msgctxt "unit name"
 msgid "millimeter"
 msgstr "milímetro"
 
 #: src/gr-unit.c:58
-#| msgctxt "minute abbreviation"
-#| msgid "m"
 msgctxt "unit abbreviation"
 msgid "cm"
 msgstr "cm"
@@ -2129,8 +2121,6 @@ msgid "centimeter"
 msgstr "centímetro"
 
 #: src/gr-unit.c:59
-#| msgctxt "minute abbreviation"
-#| msgid "m"
 msgctxt "unit abbreviation"
 msgid "m"
 msgstr "m"

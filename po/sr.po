@@ -5,8 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-29 06:16+0000\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
+"product=recipes\n"
+"POT-Creation-Date: 2017-06-20 09:19-0400\n"
 "PO-Revision-Date: 2017-05-05 07:11+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: српски <gnome-sr@googlegroups.org>\n"
@@ -14,8 +15,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
-"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
 "X-Poedit-Language: sr\n"
 
@@ -30,7 +31,6 @@ msgstr "Рецепти"
 msgid "GNOME cooks unite!"
 msgstr "Гномова куварска јединица!"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Recipes.desktop.in:7
 msgid "org.gnome.Recipes"
 msgstr "org.gnome.Recipes"
@@ -406,7 +406,7 @@ msgstr "Правци"
 msgid "_Notes"
 msgstr "_Напомене"
 
-#: src/gr-details-page.ui:479 src/gr-shopping-page.ui:124
+#: src/gr-details-page.ui:479 src/gr-shopping-page.ui:123
 msgid "_Edit"
 msgstr "_Уреди"
 
@@ -414,12 +414,12 @@ msgstr "_Уреди"
 msgid "_Delete"
 msgstr "_Обриши"
 
-#: src/gr-details-page.ui:499 src/gr-shopping-page.ui:142
+#: src/gr-details-page.ui:499 src/gr-shopping-page.ui:141
 #: src/recipe-export-dialog.ui:21
 msgid "_Share"
 msgstr "_Дели"
 
-#: src/gr-details-page.ui:511 src/gr-shopping-page.ui:153
+#: src/gr-details-page.ui:511 src/gr-shopping-page.ui:152
 msgid "_Print"
 msgstr "_Штампај"
 
@@ -634,18 +634,17 @@ msgstr "Дијетска ограничења"
 msgid "No restrictions"
 msgstr "Без ограничења"
 
-#: src/gr-query-editor.ui:235 src/gr-edit-page.c:1713
+#: src/gr-query-editor.ui:235 src/gr-edit-page.c:1715
 #: src/gr-recipe-formatter.c:67 src/gr-recipe-printer.c:191
 msgid "Ingredients"
 msgstr "Састојци"
 
-#. FIXME: repopulate
 #: src/gr-query-editor.ui:255 src/gr-query-editor.c:337
 #: src/gr-query-editor.c:766
 msgid "Anything"
 msgstr "Било шта"
 
-#: src/gr-recipe-small-tile.ui:125 src/gr-edit-page.c:1743
+#: src/gr-recipe-small-tile.ui:125 src/gr-edit-page.c:1745
 msgid "Remove"
 msgstr "Уклони"
 
@@ -681,11 +680,11 @@ msgstr "Купите састојке"
 msgid "No shopping necessary!"
 msgstr "Није потребна куповина!"
 
-#: src/gr-shopping-page.ui:131
+#: src/gr-shopping-page.ui:130
 msgid "_Clear List"
 msgstr "_Очисти списак"
 
-#: src/gr-shopping-page.ui:187
+#: src/gr-shopping-page.ui:186
 msgid "Nothing to add"
 msgstr "Ништа за додати"
 
@@ -770,7 +769,6 @@ msgid "_What’s New"
 msgstr "_Шта је ново"
 
 #: src/menus.ui:26
-#| msgid "Help"
 msgid "_Help"
 msgstr "По_моћ"
 
@@ -811,13 +809,12 @@ msgid "Help"
 msgstr "Помоћ"
 
 #: src/menus.ui:89
-#| msgid "Recipes page"
 msgid "Recipes _Help"
 msgstr "Страница по_моћи"
 
 #: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:156
-#: src/gr-image-viewer.c:616 src/gr-recipe-exporter.c:166
-#: src/gr-shopping-page.c:731 src/gr-window.c:1133
+#: src/gr-image-viewer.c:615 src/gr-recipe-exporter.c:166
+#: src/gr-shopping-page.c:741 src/gr-window.c:1133
 msgid "Cancel"
 msgstr "Откажи"
 
@@ -958,15 +955,15 @@ msgstr "Исписује издање и излази"
 msgid "Turn on verbose logging"
 msgstr "Укључује опширно бележење"
 
-#: src/gr-chef-dialog.c:152 src/gr-image-viewer.c:612
+#: src/gr-chef-dialog.c:152 src/gr-image-viewer.c:611
 msgid "Select an Image"
 msgstr "Изаберите слику"
 
-#: src/gr-chef-dialog.c:155 src/gr-image-viewer.c:615 src/gr-window.c:1132
+#: src/gr-chef-dialog.c:155 src/gr-image-viewer.c:614 src/gr-window.c:1132
 msgid "Open"
 msgstr "Отвори"
 
-#: src/gr-chef-dialog.c:160 src/gr-image-viewer.c:620
+#: src/gr-chef-dialog.c:160 src/gr-image-viewer.c:619
 msgid "Image files"
 msgstr "Датотеке слика"
 
@@ -1259,7 +1256,7 @@ msgstr "Време: %s"
 msgid "Image %d"
 msgstr "Слика %d"
 
-#: src/gr-details-page.c:745 src/gr-edit-page.c:2035
+#: src/gr-details-page.c:745 src/gr-edit-page.c:2037
 #, c-format
 msgid "Recipe by %s"
 msgstr "Рецепт од „%s“"
@@ -1435,35 +1432,35 @@ msgctxt "second abbreviation"
 msgid "s"
 msgstr "с"
 
-#: src/gr-edit-page.c:1293
+#: src/gr-edit-page.c:1295
 msgid "Recipe Author"
 msgstr "Аутор рецепта"
 
-#: src/gr-edit-page.c:1728
+#: src/gr-edit-page.c:1730
 msgid "Name of the List"
 msgstr "Назив списка"
 
-#: src/gr-edit-page.c:1762
+#: src/gr-edit-page.c:1764
 msgid "No ingredients added yet"
 msgstr "Још увек нису додати састојци"
 
-#: src/gr-edit-page.c:1781
+#: src/gr-edit-page.c:1783
 msgid "Add Ingredient"
 msgstr "Додај састојак"
 
-#: src/gr-edit-page.c:1888
+#: src/gr-edit-page.c:1890
 msgid "Add List"
 msgstr "Додај списак"
 
-#: src/gr-edit-page.c:1916
+#: src/gr-edit-page.c:1918
 msgid "Name Your Recipe"
 msgstr "Дајте назив рецепту"
 
-#: src/gr-edit-page.c:2092
+#: src/gr-edit-page.c:2094
 msgid "Name"
 msgstr "Назив"
 
-#: src/gr-edit-page.c:2204 src/gr-recipe-store.c:1007
+#: src/gr-edit-page.c:2206 src/gr-recipe-store.c:1007
 #, c-format
 msgid "You need to provide a name for the recipe"
 msgstr "Треба да наведете назив за рецепт"
@@ -1601,7 +1598,7 @@ msgstr "Не могу да обрадим „%s“ као број"
 msgid "Save the exported recipe"
 msgstr "Сачувајте извезени рецепт"
 
-#: src/gr-recipe-exporter.c:165 src/gr-shopping-page.c:730
+#: src/gr-recipe-exporter.c:165 src/gr-shopping-page.c:740
 msgid "Save"
 msgstr "Сачувај"
 
@@ -1713,7 +1710,12 @@ msgstr "Нисам успео да учитам рецепт: Не могу да
 msgid "Failed to load recipe: Couldn’t parse Modified key"
 msgstr "Нисам успео да учитам рецепт: Не могу да обрадим измењени кључ"
 
-#: src/gr-recipe-importer.c:793
+#: src/gr-recipe-importer.c:771
+#, fuzzy, c-format
+msgid "No chef information found"
+msgstr "Подаци о кувару"
+
+#: src/gr-recipe-importer.c:801
 #, c-format
 msgid "This build does not support importing"
 msgstr "Ова изградња не подржава увоз"
@@ -1842,7 +1844,7 @@ msgid "Winter"
 msgstr "Зима"
 
 #: src/gr-shopping-list-formatter.c:42 src/gr-shopping-list-printer.c:135
-#: src/gr-shopping-page.c:756
+#: src/gr-shopping-page.c:766
 msgid "Shopping List"
 msgstr "Списак за куповину"
 
@@ -1885,7 +1887,7 @@ msgstr[1] "%d рецепта су означена за спремање"
 msgstr[2] "%d рецепата је означено за спремање"
 msgstr[3] "%d рецепт је означен за спремање"
 
-#: src/gr-shopping-page.c:727
+#: src/gr-shopping-page.c:737
 msgid "Save the shopping list"
 msgstr "Сачувај списак за куповину"
 
@@ -2075,7 +2077,41 @@ msgctxt "unit name"
 msgid "glass"
 msgstr "чаша"
 
-#: src/gr-unit.c:126
+#: src/gr-unit.c:57
+#, fuzzy
+msgctxt "unit abbreviation"
+msgid "mm"
+msgstr "м"
+
+#: src/gr-unit.c:57
+#, fuzzy
+msgctxt "unit name"
+msgid "millimeter"
+msgstr "милилитар"
+
+#: src/gr-unit.c:58
+#, fuzzy
+msgctxt "unit abbreviation"
+msgid "cm"
+msgstr "м"
+
+#: src/gr-unit.c:58
+msgctxt "unit name"
+msgid "centimeter"
+msgstr ""
+
+#: src/gr-unit.c:59
+#, fuzzy
+msgctxt "unit abbreviation"
+msgid "m"
+msgstr "м"
+
+#: src/gr-unit.c:59
+msgctxt "unit name"
+msgid "meter"
+msgstr ""
+
+#: src/gr-unit.c:129
 #, c-format
 msgid "I don’t know this unit: %s"
 msgstr "Није ми позната ова јединица: %s"

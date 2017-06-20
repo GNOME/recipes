@@ -6,8 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes recipes-1.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-21 20:15+0000\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
+"product=recipes\n"
+"POT-Creation-Date: 2017-06-20 09:19-0400\n"
 "PO-Revision-Date: 2017-05-22 11:18+0700\n"
 "Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
@@ -29,7 +30,6 @@ msgstr "Resep"
 msgid "GNOME cooks unite!"
 msgstr "Koki GNOME bersatu!"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Recipes.desktop.in:7
 msgid "org.gnome.Recipes"
 msgstr "org.gnome.Recipes"
@@ -640,7 +640,6 @@ msgstr "Tidak ada batasan"
 msgid "Ingredients"
 msgstr "Bahan"
 
-#. FIXME: repopulate
 #: src/gr-query-editor.ui:255 src/gr-query-editor.c:337
 #: src/gr-query-editor.c:766
 msgid "Anything"
