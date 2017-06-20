@@ -1,4 +1,4 @@
-project('gnome-recipes', 'c', version: '1.0.8',
+project('gnome-recipes', 'c', version: '1.0.10',
         meson_version : '>=0.36.0')
 
 i18n = import('i18n')
