@@ -36,6 +36,7 @@ dist_images_DATA = \
 	images/allan_day.jpg		\
 	images/bagel.jpg		\
 	images/Bastian.jpg		\
+	images/beefstewrice.jpg		\
 	images/chickencurry.jpg		\
 	images/chickensoup.jpg		\
 	images/ebassi-hackergotchi.png	\
@@ -50,6 +51,7 @@ dist_images_DATA = \
 	images/tigert.jpg		\
 	images/Miss_Sofia_Holmes.jpg	\
 	images/borscht.jpg		\
+	images/Bourbon_Pork.jpg		\
 	images/cake_aux_lardons.jpg	\
 	images/cake_aux_lardons2.jpg	\
 	images/donauwellen0.jpg		\
@@ -181,6 +183,12 @@ dist_images_DATA = \
 	images/big-mediterranean.png	\
 	images/big-nordic.jpg		\
 	images/big-turkish.png		\
+	images/20170408_1743341.jpg	\
+	images/20170408_1642190.jpg	\
+	images/20170408_1710330.jpg	\
+	images/20170408_1635180.jpg	\
+	images/20170408_1647440.jpg	\
+	images/20170408_1712180.jpg	\
 	images/20160205-beef-goulash-hungarian-recipe-food-lab-18.jpg
 
 dist_sounds_DATA = \
