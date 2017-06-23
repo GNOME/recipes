@@ -41,40 +41,41 @@ struct _GrRecipeSmallTile
         GtkWidget *author;
         GtkWidget *image;
         GtkWidget *box;
-        GtkWidget *serves_label;
+        GtkWidget *yield_label;
         GtkWidget *popover;
-        GtkWidget *serves_spin;
+        GtkWidget *yield_spin;
+        GtkWidget *yield_unit_label;
         GtkWidget *remove_button;
 
         GCancellable *cancellable;
 
-        int serves;
+        double yield;
 };
 
 G_DEFINE_TYPE (GrRecipeSmallTile, gr_recipe_small_tile, GTK_TYPE_BUTTON)
 
 enum {
         PROP_0,
-        PROP_SERVES,
+        PROP_YIELD,
         N_PROPS
 };
 
 void
-gr_recipe_small_tile_set_serves (GrRecipeSmallTile *tile,
-                                 int                serves)
+gr_recipe_small_tile_set_yield (GrRecipeSmallTile *tile,
+                                double             yield)
 {
         g_autofree char *tmp = NULL;
 
-        if (tile->serves == serves)
+        if (tile->yield == yield)
                 return;
 
-        tile->serves = serves;
+        tile->yield = yield;
 
-        tmp = g_strdup_printf ("%d", serves);
-        gtk_label_set_label (GTK_LABEL (tile->serves_label), tmp);
-        gtk_spin_button_set_value (GTK_SPIN_BUTTON (tile->serves_spin), serves);
+        tmp = gr_number_format (yield);
+        gtk_label_set_label (GTK_LABEL (tile->yield_label), tmp);
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (tile->yield_spin), yield);
 
-        g_object_notify (G_OBJECT (tile), "serves");
+        g_object_notify (G_OBJECT (tile), "yield");
 }
 
 static void
@@ -93,17 +94,20 @@ recipe_small_tile_set_recipe (GrRecipeSmallTile *tile,
         if (tile->recipe) {
                 const char *name;
                 const char *author;
+                const char *yield;
                 g_autoptr(GrChef) chef = NULL;
                 g_autofree char *tmp = NULL;
                 GPtrArray *images;
 
                 name = gr_recipe_get_translated_name (recipe);
                 author = gr_recipe_get_author (recipe);
+                yield = gr_recipe_get_yield_unit (recipe);
                 chef = gr_recipe_store_get_chef (store, author);
 
                 gtk_label_set_label (GTK_LABEL (tile->label), name);
                 tmp = g_strdup_printf (_("by %s"), chef ? gr_chef_get_name (chef) : _("Anonymous"));
                 gtk_label_set_label (GTK_LABEL (tile->author), tmp);
+                gtk_label_set_label (GTK_LABEL (tile->yield_unit_label), yield && yield[0] ? yield : _("servings"));
 
                 images = gr_recipe_get_images (recipe);
                 if (images->len > 0) {
@@ -130,12 +134,41 @@ tile_clicked (GrRecipeSmallTile *tile)
 }
 
 static void
-serves_value_changed (GrRecipeSmallTile *tile)
+yield_spin_value_changed (GrRecipeSmallTile *tile)
 {
-        int serves;
+        double yield;
 
-        serves = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (tile->serves_spin));
-        gr_recipe_small_tile_set_serves (tile, serves);
+        yield = gtk_spin_button_get_value (GTK_SPIN_BUTTON (tile->yield_spin));
+        gr_recipe_small_tile_set_yield (tile, yield);
+}
+
+static int
+yield_spin_input (GtkSpinButton *spin,
+                  double        *new_val)
+{
+        char *text;
+
+        text = (char *)gtk_entry_get_text (GTK_ENTRY (spin));
+
+        if (!gr_number_parse (new_val, &text, NULL)) {
+                *new_val = 0.0;
+                return GTK_INPUT_ERROR;
+        }
+
+        return TRUE;
+}
+
+static int
+yield_spin_output (GtkSpinButton *spin)
+{
+        GtkAdjustment *adj;
+        g_autofree char *text = NULL;
+
+        adj = gtk_spin_button_get_adjustment (spin);
+        text = gr_number_format (gtk_adjustment_get_value (adj));
+        gtk_entry_set_text (GTK_ENTRY (spin), text);
+
+        return TRUE;
 }
 
 static void
@@ -165,7 +198,7 @@ gr_recipe_small_tile_init (GrRecipeSmallTile *tile)
 {
         gtk_widget_set_has_window (GTK_WIDGET (tile), FALSE);
         gtk_widget_init_template (GTK_WIDGET (tile));
-        gr_recipe_small_tile_set_serves (tile, 1);
+        gr_recipe_small_tile_set_yield (tile, 1.0);
 }
 
 static void
@@ -177,8 +210,8 @@ recipe_small_tile_get_property (GObject    *object,
         GrRecipeSmallTile *self = GR_RECIPE_SMALL_TILE (object);
 
         switch (prop_id) {
-        case PROP_SERVES:
-                g_value_set_int (value, self->serves);
+        case PROP_YIELD:
+                g_value_set_double (value, self->yield);
                 break;
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -194,8 +227,8 @@ recipe_small_tile_set_property (GObject      *object,
         GrRecipeSmallTile *self = GR_RECIPE_SMALL_TILE (object);
 
         switch (prop_id) {
-        case PROP_SERVES:
-                gr_recipe_small_tile_set_serves (self, g_value_get_int (value));
+        case PROP_YIELD:
+                gr_recipe_small_tile_set_yield (self, g_value_get_double (value));
                 break;
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -213,10 +246,10 @@ gr_recipe_small_tile_class_init (GrRecipeSmallTileClass *klass)
         object_class->get_property = recipe_small_tile_get_property;
         object_class->set_property = recipe_small_tile_set_property;
 
-        pspec = g_param_spec_int ("serves", NULL, NULL,
-                                  0, G_MAXINT, 1,
-                                  G_PARAM_READWRITE);
-        g_object_class_install_property (object_class, PROP_SERVES, pspec);
+        pspec = g_param_spec_double ("yield", NULL, NULL,
+                                     0.0, G_MAXDOUBLE, 1.0,
+                                     G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_YIELD, pspec);
 
         gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-recipe-small-tile.ui");
 
@@ -224,25 +257,28 @@ gr_recipe_small_tile_class_init (GrRecipeSmallTileClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, author);
         gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, image);
         gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, box);
-        gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, serves_label);
+        gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, yield_label);
         gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, popover);
-        gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, serves_spin);
+        gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, yield_spin);
+        gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, yield_unit_label);
         gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, remove_button);
 
         gtk_widget_class_bind_template_callback (widget_class, tile_clicked);
-        gtk_widget_class_bind_template_callback (widget_class, serves_value_changed);
+        gtk_widget_class_bind_template_callback (widget_class, yield_spin_value_changed);
+        gtk_widget_class_bind_template_callback (widget_class, yield_spin_input);
+        gtk_widget_class_bind_template_callback (widget_class, yield_spin_output);
         gtk_widget_class_bind_template_callback (widget_class, remove_recipe);
 }
 
 GtkWidget *
 gr_recipe_small_tile_new (GrRecipe *recipe,
-                          int       serves)
+                          double    yield)
 {
         GrRecipeSmallTile *tile;
 
         tile = g_object_new (GR_TYPE_RECIPE_SMALL_TILE, NULL);
         recipe_small_tile_set_recipe (tile, recipe);
-        gr_recipe_small_tile_set_serves (tile, serves);
+        gr_recipe_small_tile_set_yield (tile, yield);
 
         return GTK_WIDGET (tile);
 }
@@ -253,8 +289,8 @@ gr_recipe_small_tile_get_recipe (GrRecipeSmallTile *tile)
         return tile->recipe;
 }
 
-int
-gr_recipe_small_tile_get_serves (GrRecipeSmallTile *tile)
+double
+gr_recipe_small_tile_get_yield (GrRecipeSmallTile *tile)
 {
-        return tile->serves;
+        return tile->yield;
 }

@@ -452,7 +452,7 @@ add_ingredient (GrShoppingPage *page,
 static void
 collect_ingredients_from_recipe (GrShoppingPage *page,
                                  GrRecipe       *recipe,
-                                 int             serves)
+                                 double          yield)
 {
         g_autoptr(GrIngredientsList) il = NULL;
         g_autofree char **seg = NULL;
@@ -468,7 +468,7 @@ collect_ingredients_from_recipe (GrShoppingPage *page,
                         double amount;
 
                         amount = gr_ingredients_list_get_amount (il, seg[i], ing[j]);
-                        amount = amount * serves / (double)gr_recipe_get_serves (recipe);
+                        amount = amount * yield / gr_recipe_get_yield (recipe);
                         unit = gr_ingredients_list_get_unit (il, seg[i], ing[j]);
                         add_ingredient (page, amount, unit, ing[j]);
                 }
@@ -492,11 +492,11 @@ collect_ingredients (GrShoppingPage *page)
         for (l = children; l; l = l->next) {
                 GtkWidget *tile = gtk_bin_get_child (GTK_BIN (l->data));
                 GrRecipe *recipe;
-                int serves;
+                double yield;
 
                 recipe = gr_recipe_small_tile_get_recipe (GR_RECIPE_SMALL_TILE (tile));
-                serves = gr_recipe_small_tile_get_serves (GR_RECIPE_SMALL_TILE (tile));
-                collect_ingredients_from_recipe (page, recipe, serves);
+                yield = gr_recipe_small_tile_get_yield (GR_RECIPE_SMALL_TILE (tile));
+                collect_ingredients_from_recipe (page, recipe, yield);
         }
         g_list_free (children);
 
@@ -520,24 +520,24 @@ collect_ingredients (GrShoppingPage *page)
 }
 
 static void
-serves_changed (GObject *object, GParamSpec *pspec, GrShoppingPage *page)
+yield_changed (GObject *object, GParamSpec *pspec, GrShoppingPage *page)
 {
         GrRecipeSmallTile *tile = GR_RECIPE_SMALL_TILE (object);
         GrRecipeStore *store;
         GrRecipe *recipe;
-        int serves;
+        double yield;
 
         recipe = gr_recipe_small_tile_get_recipe (tile);
-        serves = gr_recipe_small_tile_get_serves (tile);
+        yield = gr_recipe_small_tile_get_yield (tile);
 
         store = gr_recipe_store_get ();
 
-        gr_recipe_store_add_to_shopping (store, recipe, serves);
+        gr_recipe_store_add_to_shopping (store, recipe, yield);
 }
 
 static void
 search_started (GrRecipeSearch *search,
-                GrShoppingPage     *page)
+                GrShoppingPage *page)
 {
         container_remove_all (GTK_CONTAINER (page->recipe_list));
         page->recipe_count = 0;
@@ -556,11 +556,11 @@ search_hits_added (GrRecipeSearch *search,
         for (l = hits; l; l = l->next) {
                 GrRecipe *recipe = l->data;
                 GtkWidget *tile;
-                int serves;
+                double yield;
 
-                serves = gr_recipe_store_get_shopping_serves (store, recipe);
-                tile = gr_recipe_small_tile_new (recipe, serves);
-                g_signal_connect (tile, "notify::serves", G_CALLBACK (serves_changed), page);
+                yield = gr_recipe_store_get_shopping_yield (store, recipe);
+                tile = gr_recipe_small_tile_new (recipe, yield);
+                g_signal_connect (tile, "notify::yield", G_CALLBACK (yield_changed), page);
                 gtk_container_add (GTK_CONTAINER (page->recipe_list), tile);
                 page->recipe_count++;
         }
@@ -903,21 +903,21 @@ recipe_added (GrShoppingPage *page,
 {
         GrRecipeStore *store;
         GList *children, *l;
-        int serves;
+        double yield;
 
         if (!gtk_widget_is_drawable (GTK_WIDGET (page)))
                 return;
 
         store = gr_recipe_store_get ();
 
-        serves = gr_recipe_store_get_shopping_serves (store, recipe);
+        yield = gr_recipe_store_get_shopping_yield (store, recipe);
 
         children = gtk_container_get_children (GTK_CONTAINER (page->recipe_list));
         for (l = children; l; l = l->next) {
                 GtkWidget *tile = gtk_bin_get_child (GTK_BIN (l->data));
 
                 if (recipe == gr_recipe_small_tile_get_recipe (GR_RECIPE_SMALL_TILE (tile))) {
-                        gr_recipe_small_tile_set_serves (GR_RECIPE_SMALL_TILE (tile), serves);
+                        gr_recipe_small_tile_set_yield (GR_RECIPE_SMALL_TILE (tile), yield);
                         break;
                 }
         }
@@ -926,8 +926,8 @@ recipe_added (GrShoppingPage *page,
         if (l == NULL) {
                 GtkWidget *tile;
 
-                tile = gr_recipe_small_tile_new (recipe, serves);
-                g_signal_connect (tile, "notify::serves", G_CALLBACK (serves_changed), page);
+                tile = gr_recipe_small_tile_new (recipe, yield);
+                g_signal_connect (tile, "notify::yield", G_CALLBACK (yield_changed), page);
                 gtk_container_add (GTK_CONTAINER (page->recipe_list), tile);
         }
 

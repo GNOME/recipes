@@ -31,10 +31,10 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (GrRecipeSmallTile, gr_recipe_small_tile, GR, RECIPE_SMALL_TILE, GtkButton)
 
 GtkWidget      *gr_recipe_small_tile_new        (GrRecipe          *recipe,
-                                                 int                serves);
+                                                 double             yield);
 GrRecipe       *gr_recipe_small_tile_get_recipe (GrRecipeSmallTile *tile);
-int             gr_recipe_small_tile_get_serves (GrRecipeSmallTile *tile);
-void            gr_recipe_small_tile_set_serves (GrRecipeSmallTile *tile,
-                                                 int                serves);
+double          gr_recipe_small_tile_get_yield  (GrRecipeSmallTile *tile);
+void            gr_recipe_small_tile_set_yield  (GrRecipeSmallTile *tile,
+                                                 double             yield);
 
 G_END_DECLS
