@@ -20,6 +20,7 @@
 
 #include <glib/gi18n.h>
 #include <gio/gio.h>
+#include <math.h>
 
 #include "gr-number.h"
 #include "gr-utils.h"
@@ -42,6 +43,78 @@ gcd (int m, int n)
         }
 
         return m;
+}
+
+/*
+ * http://www.ics.uci.edu/~eppstein/numth/frap.c
+ *
+ * find rational approximation to given real number
+ * David Eppstein / UC Irvine / 8 Aug 1993
+ *
+ * With corrections from Arno Formella, May 2008
+ *
+ * based on the theory of continued fractions
+ * if x = a1 + 1/(a2 + 1/(a3 + 1/(a4 + ...)))
+ * then best approximation is found by truncating this series
+ * (with some adjustments in the last term).
+ *
+ * Note the fraction can be recovered as the first column of the matrix
+ *  ( a1 1 ) ( a2 1 ) ( a3 1 ) ...
+ *  ( 1  0 ) ( 1  0 ) ( 1  0 )
+ * Instead of keeping the sequence of continued fraction terms,
+ * we just keep the last partial product of these matrices.
+*/
+static void
+rational_approximation (double  input,
+                        int     max_denom,
+                        int    *num,
+                        int    *denom)
+{
+        long m[2][2];
+        double x, n0, d0, n1, d1;
+        long ai;
+
+        x = input;
+
+        m[0][0] = m[1][1] = 1;
+        m[0][1] = m[1][0] = 0;
+
+        while (m[1][0] * (ai = (long)x) + m[1][1] <= max_denom) {
+                long t;
+
+                t = m[0][0] * ai + m[0][1];
+                m[0][1] = m[0][0];
+                m[0][0] = t;
+                t = m[1][0] * ai + m[1][1];
+                m[1][1] = m[1][0];
+                m[1][0] = t;
+
+                if (x == (double)ai)
+                        break;
+
+                x = 1 / (x - (double)ai);
+
+                if (x > (double)0x7fffffff)
+                        break;
+        }
+
+        n0 = (double)m[0][0];
+        d0 = (double)m[1][0];
+
+        ai = (max_denom - m[1][1]) / m[1][0];
+        m[0][0] = m[0][0] * ai + m[0][1];
+        m[1][0] = m[1][0] * ai + m[1][1];
+
+        n1 = (double)m[0][0];
+        d1 = (double)m[1][0];
+
+        if (fabs (input - n0 / d0) < fabs (input - n1 / d1)) {
+                *num = (int)n0;
+                *denom = (int)d0;
+        } else {
+                *num = (int)n1;
+                *denom = (int)d1;
+        }
 }
 
 void
@@ -310,47 +383,54 @@ append_digits (GString    *s,
 }
 
 static char *
-format_fraction (int num, int denom)
+format_fraction (int integral,
+                 int num,
+                 int denom)
 {
         int i;
         GString *s;
 
-        for (i = 0; i < G_N_ELEMENTS (fractions); i++) {
-                if (fractions[i].num == num && fractions[i].denom == denom)
-                        return g_strdup (fractions[i].ch);
-        }
-
         s = g_string_new ("");
+
+        if (integral != 0)
+                g_string_append_printf (s, "%d", integral);
+
+        if (num == 0)
+                goto out;
+
+        if (integral != 0)
+                g_string_append (s, " ");
+
+        for (i = 0; i < G_N_ELEMENTS (fractions); i++) {
+                if (fractions[i].num == num && fractions[i].denom == denom) {
+                        g_string_append (s, fractions[i].ch);
+                        goto out;
+                }
+        }
 
         append_digits (s, sup, num);
         g_string_append (s, "⁄");
         append_digits (s, sub, denom);
 
+out:
         return g_string_free (s, FALSE);
 }
 
 char *
 gr_number_format (GrNumber *number)
 {
-        if (number->fraction) {
-                if (number->denom == 1)
-                        return g_strdup_printf ("%d", number->num);
-                else {
-                        int integral;
-                        g_autofree char *fraction = NULL;
-
-                        if (number->denom == 0)
-                                return g_strdup ("");
-
-                        integral = number->num / number->denom;
-                        fraction = format_fraction (number->num % number->denom, number->denom);
-                        if (integral == 0)
-                                return g_strdup_printf ("%s", fraction);
-                        else
-                                return g_strdup_printf ("%d %s", integral, fraction);
-                }
-        }
+        if (number->fraction)
+                return format_fraction (0, number->num, number->denom);
         else {
-                return g_strdup_printf ("%g", number->value);
+                double integral, rem;
+                int num, denom;
+
+                integral = floor (number->value);
+                rem = number->value - integral;
+
+                if (rational_approximation (rem, 20, &num, &denom))
+                        return format_fraction ((int)integral, num, denom);
+                else
+                        return g_strdup_printf ("%g", number->value);
         }
 }
