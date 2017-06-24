@@ -136,25 +136,12 @@ static VulgarFraction fractions[] = {
         { 1,  6, "⅙" },
         { 5,  6, "⅚" },
         { 1,  7, "⅐" },
-        { 2,  7, "²⁄₇" },
-        { 3,  7, "³⁄₇" },
-        { 4,  7, "⁴⁄₇" },
-        { 5,  7, "⁵⁄₇" },
-        { 6,  7, "⁶⁄₇" },
         { 1,  8, "⅛" },
         { 3,  8, "⅜" },
         { 5,  8, "⅝" },
         { 7,  8, "⅞" },
         { 1,  9, "⅑" },
-        { 2,  9, "²⁄₉" },
-        { 4,  9, "⁴⁄₉" },
-        { 5,  9, "⁵⁄₉" },
-        { 7,  9, "⁷⁄₉" },
-        { 8,  9, "⁸⁄₉" },
-        { 1, 10, "⅒" },
-        { 3, 10, "³⁄₁₀" },
-        { 7, 10, "⁷⁄₁₀" },
-        { 9, 10, "⁹⁄₁₀" }
+        { 1, 10, "⅒" }
 };
 
 static gboolean
@@ -305,17 +292,39 @@ gr_number_parse (GrNumber  *number,
         return FALSE;
 }
 
+static const char *sup[] = { "⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹" };
+static const char *sub[] = { "₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉" };
+
+static void
+append_digits (GString    *s,
+               const char *digits[],
+               int         n)
+{
+        if (n == 0)
+                return;
+
+        append_digits (s, digits, n / 10);
+        g_string_append (s, digits[n % 10]);
+}
+
 static char *
 format_fraction (int num, int denom)
 {
         int i;
+        GString *s;
 
         for (i = 0; i < G_N_ELEMENTS (fractions); i++) {
                 if (fractions[i].num == num && fractions[i].denom == denom)
                         return g_strdup (fractions[i].ch);
         }
 
-        return g_strdup_printf ("%d/%d", num, denom);
+        s = g_string_new ("");
+
+        append_digits (s, sup, num);
+        g_string_append (s, "⁄");
+        append_digits (s, sub, denom);
+
+        return g_string_free (s, FALSE);
 }
 
 char *
