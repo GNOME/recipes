@@ -122,28 +122,41 @@ typedef struct {
         const char *ch;
 } VulgarFraction;
 
+/* a workaround for poor availability of OpenType frak support in our fonts */
 static VulgarFraction fractions[] = {
-        { 1,  4, "¼" },
         { 1,  2, "½" },
-        { 3,  4, "¾" },
-        { 1,  7, "⅐" },
-        { 1,  9, "⅑" },
-        { 1, 10, "⅒" },
         { 1,  3, "⅓" },
         { 2,  3, "⅔" },
+        { 1,  4, "¼" },
+        { 3,  4, "¾" },
         { 1,  5, "⅕" },
         { 2,  5, "⅖" },
         { 3,  5, "⅗" },
         { 4,  5, "⅘" },
         { 1,  6, "⅙" },
         { 5,  6, "⅚" },
+        { 1,  7, "⅐" },
+        { 2,  7, "²⁄₇" },
+        { 3,  7, "³⁄₇" },
+        { 4,  7, "⁴⁄₇" },
+        { 5,  7, "⁵⁄₇" },
+        { 6,  7, "⁶⁄₇" },
         { 1,  8, "⅛" },
         { 3,  8, "⅜" },
         { 5,  8, "⅝" },
-        { 7,  8, "⅞" }
+        { 7,  8, "⅞" },
+        { 1,  9, "⅑" },
+        { 2,  9, "²⁄₉" },
+        { 4,  9, "⁴⁄₉" },
+        { 5,  9, "⁵⁄₉" },
+        { 7,  9, "⁷⁄₉" },
+        { 8,  9, "⁸⁄₉" },
+        { 1, 10, "⅒" },
+        { 3, 10, "³⁄₁₀" },
+        { 7, 10, "⁷⁄₁₀" },
+        { 9, 10, "⁹⁄₁₀" }
 };
 
-/* a workaround for poor availability of OpenType frak support in our fonts */
 static gboolean
 parse_as_vulgar_fraction (GrNumber  *number,
                           char     **input,
