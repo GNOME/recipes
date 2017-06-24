@@ -342,7 +342,7 @@ parse_unit (const char  *text,
 {
         char *tmp;
         const char *str;
-        GrNumber number;
+        double number;
         g_autofree char *num = NULL;
 
         g_clear_pointer (amount, g_free);
@@ -356,7 +356,7 @@ parse_unit (const char  *text,
                 return FALSE;
         }
 
-        *amount = gr_number_format (&number);
+        *amount = gr_number_format (number);
         skip_whitespace (&tmp);
         if (tmp)
                 *unit = g_strdup (tmp);
@@ -826,12 +826,12 @@ text_changed (GObject    *object,
 {
         GtkEntry *entry = GTK_ENTRY (object);
         GrIngredientsViewerRow *row = data;
-        GrNumber number;
+        double number;
         char *text;
 
         text = (char *) gtk_entry_get_text (entry);
         gr_number_parse (&number, &text, NULL);
-        if (number.value > 1)
+        if (number > 1)
                 gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (row->unit_completion), row->unit_cell, "text", 4, NULL);
         else
                 gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (row->unit_completion), row->unit_cell, "text", 2, NULL);

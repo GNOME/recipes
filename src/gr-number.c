@@ -25,25 +25,6 @@
 #include "gr-number.h"
 #include "gr-utils.h"
 
-static int
-gcd (int m, int n)
-{
-        int r;
-
-        if (m == 0 && n == 0)
-                return -1;
-
-        if (m < 0) m = -m;
-        if (n < 0) n = -n;
-
-        while (n) {
-                r = m % n;
-                m = n;
-                n = r;
-        }
-
-        return m;
-}
 
 /*
  * http://www.ics.uci.edu/~eppstein/numth/frap.c
@@ -117,108 +98,37 @@ rational_approximation (double  input,
         }
 }
 
-void
-gr_number_set_fraction (GrNumber *number,
-                        int       num,
-                        int       denom)
-{
-        int g;
-
-        if (denom < 0) {
-                num = -num;
-                denom = -denom;
-        }
-        g = gcd (num, denom);
-        number->fraction = TRUE;
-        number->num = num / g;
-        number->denom = denom / g;
-        number->value = ((double) num) / ((double) denom);
-}
-
-void
-gr_number_set_float (GrNumber *number,
-                     double    value)
-{
-        number->fraction = FALSE;
-        number->num = 0;
-        number->denom = 0;
-        number->value = value;
-}
-
-GrNumber *
-gr_number_new_fraction (int num, int denom)
-{
-        GrNumber *number;
-
-        number = g_new (GrNumber, 1);
-        gr_number_set_fraction (number, num, denom);
-
-        return number;
-}
-
-GrNumber *
-gr_number_new_float (double value)
-{
-        GrNumber *number;
-
-        number = g_new (GrNumber, 1);
-        gr_number_set_float (number, value);
-
-        return number;
-}
-
-void
-gr_number_multiply (GrNumber *a1,
-                    GrNumber *a2,
-                    GrNumber *b)
-{
-        if (a1->fraction && a2->fraction)
-                gr_number_set_fraction (b, a1->num * a2->num, a1->denom * a2->denom);
-        else
-                gr_number_set_float (b, a1->value * a2->value);
-}
-
-void
-gr_number_add (GrNumber *a1,
-               GrNumber *a2,
-               GrNumber *b)
-{
-        if (a1->fraction && a2->fraction)
-                gr_number_set_fraction (b, a1->num * a2->denom + a2->num * a1->denom, a1->denom * a2->denom);
-        else
-                gr_number_set_float (b, a1->value + a2->value);
-}
-
 typedef struct {
         int num;
         int denom;
         const char *ch;
+        double value;
 } VulgarFraction;
 
 /* a workaround for poor availability of OpenType frak support in our fonts */
 static VulgarFraction fractions[] = {
-        { 1,  2, "½" },
-        { 1,  3, "⅓" },
-        { 2,  3, "⅔" },
-        { 1,  4, "¼" },
-        { 3,  4, "¾" },
-        { 1,  5, "⅕" },
-        { 2,  5, "⅖" },
-        { 3,  5, "⅗" },
-        { 4,  5, "⅘" },
-        { 1,  6, "⅙" },
-        { 5,  6, "⅚" },
-        { 1,  7, "⅐" },
-        { 1,  8, "⅛" },
-        { 3,  8, "⅜" },
-        { 5,  8, "⅝" },
-        { 7,  8, "⅞" },
-        { 1,  9, "⅑" },
-        { 1, 10, "⅒" }
+        { 1,  2, "½", 1.0/2.0 },
+        { 1,  3, "⅓", 1.0/3.0 },
+        { 2,  3, "⅔", 2.0/3.0 },
+        { 1,  4, "¼", 1.0/4.0 },
+        { 3,  4, "¾", 3.0/4.0 },
+        { 1,  5, "⅕", 1.0/5.0 },
+        { 2,  5, "⅖", 2.0/5.0 },
+        { 3,  5, "⅗", 3.0/5.0 },
+        { 4,  5, "⅘", 4.0/5.0 },
+        { 1,  6, "⅙", 1.0/6.0 },
+        { 5,  6, "⅚", 5.0/6.0 },
+        { 1,  7, "⅐", 1.0/7.0 },
+        { 1,  8, "⅛", 1.0/8.0 },
+        { 3,  8, "⅜", 3.0/8.0 },
+        { 5,  8, "⅝", 5.0/8.0 },
+        { 7,  8, "⅞", 7.0/8.0 },
+        { 1,  9, "⅑", 1.0/9.0 },
+        { 1, 10, "⅒", 1.0/10.0 }
 };
 
 static gboolean
-parse_as_vulgar_fraction (GrNumber  *number,
+parse_as_vulgar_fraction (double    *number,
                           char     **input,
                           GError   **error)
 {
@@ -228,9 +138,8 @@ parse_as_vulgar_fraction (GrNumber  *number,
                 const char *vf = fractions[i].ch;
                 if (g_str_has_prefix (*input, vf) &&
                     space_or_nul ((*input)[strlen (vf)])) {
-                        gr_number_set_fraction (number, fractions[i].num, fractions[i].denom);
+                        *number = fractions[i].value;
                         *input += strlen (vf);
-
                         return TRUE;
                 }
         }
@@ -242,7 +151,7 @@ parse_as_vulgar_fraction (GrNumber  *number,
 }
 
 static gboolean
-parse_as_fraction (GrNumber  *number,
+parse_as_fraction (double    *number,
                    char     **input,
                    GError   **error)
 {
@@ -269,14 +178,13 @@ parse_as_fraction (GrNumber  *number,
                 denom = 1;
 
         *input = end;
-
-        gr_number_set_fraction (number, (int)num, (int)denom);
+        *number = (double)num / (double)MAX(denom, 1);
 
         return TRUE;
 }
 
 static gboolean
-parse_as_integer (GrNumber  *number,
+parse_as_integer (double    *number,
                   char     **input,
                   gboolean   require_whitespace,
                   GError   **error)
@@ -292,14 +200,13 @@ parse_as_integer (GrNumber  *number,
                return FALSE;
         }
         *input = end;
-
-        gr_number_set_fraction (number, (int)num, 1);
+        *number = (double)num;
 
         return TRUE;
 }
 
 static gboolean
-parse_as_float (GrNumber  *number,
+parse_as_float (double    *number,
                 char     **input,
                 GError   **error)
 {
@@ -315,14 +222,13 @@ parse_as_float (GrNumber  *number,
                 return FALSE;
         }
         *input = end;
-
-        gr_number_set_float (number, value);
+        *number = value;
 
         return TRUE;
 }
 
 gboolean
-gr_number_parse (GrNumber  *number,
+gr_number_parse (double    *number,
                  char     **input,
                  GError   **error)
 {
@@ -339,14 +245,14 @@ gr_number_parse (GrNumber  *number,
         if (parse_as_integer (number, &orig, FALSE, NULL)) {
                 gboolean valid;
                 char *endofint;
-                GrNumber n;
+                double n;
 
                 endofint = orig;
                 valid = skip_whitespace (&orig);
 
                 if (parse_as_vulgar_fraction (&n, &orig, NULL) ||
                     parse_as_fraction (&n, &orig, NULL)) {
-                        gr_number_add (number, &n, number);
+                        *number = *number + n;
                         *input = orig;
                         return TRUE;
                 }
@@ -417,20 +323,16 @@ out:
 }
 
 char *
-gr_number_format (GrNumber *number)
+gr_number_format (double number)
 {
-        if (number->fraction)
-                return format_fraction (0, number->num, number->denom);
-        else {
-                double integral, rem;
-                int num, denom;
+        double integral, rem;
+        int num, denom;
 
-                integral = floor (number->value);
-                rem = number->value - integral;
+        integral = floor (number);
+        rem = number - integral;
 
-                if (rational_approximation (rem, 20, &num, &denom))
-                        return format_fraction ((int)integral, num, denom);
-                else
-                        return g_strdup_printf ("%g", number->value);
-        }
+        if (rational_approximation (rem, 20, &num, &denom))
+                return format_fraction ((int)integral, num, denom);
+        else
+                return g_strdup_printf ("%g", number);
 }

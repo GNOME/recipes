@@ -22,28 +22,10 @@
 
 G_BEGIN_DECLS
 
-typedef struct {
-        gboolean fraction;
-        int num, denom;
-        double value;
-} GrNumber;
-
-GrNumber *gr_number_new_fraction (int num, int denom);
-GrNumber *gr_number_new_float    (double value);
-
-void      gr_number_set_fraction (GrNumber *number, int num, int denom);
-void      gr_number_set_float    (GrNumber *number, double value);
-void      gr_number_add          (GrNumber *a1,
-                                  GrNumber *a2,
-                                  GrNumber *b);
-void      gr_number_multiply     (GrNumber *a1,
-                                  GrNumber *a2,
-                                  GrNumber *b);
-
-gboolean  gr_number_parse  (GrNumber  *number,
+gboolean  gr_number_parse  (double    *number,
                             char     **input,
                             GError   **error);
-char     *gr_number_format (GrNumber *number);
+char     *gr_number_format (double     number);
 
 
 

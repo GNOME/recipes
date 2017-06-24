@@ -32,7 +32,7 @@
 
 typedef struct
 {
-        GrNumber amount;
+        double amount;
         gchar *unit;
         gchar *name;
         gchar *segment;
@@ -93,7 +93,7 @@ gr_ingredients_list_populate (GrIngredientsList  *ingredients,
                 segment = fields[3];
 
                 ing = g_new0 (Ingredient, 1);
-                gr_number_set_fraction (&ing->amount, 0, 1);
+                ing->amount = 1.0;
                 if (amount[0] != '\0' &&
                     !gr_number_parse (&ing->amount, &amount, &local_error)) {
                         g_message ("failed to parse amount '%s': %s", amount, local_error->message);
@@ -175,12 +175,11 @@ static void
 ingredient_scale_unit (Ingredient *ing, int num, int denom, GString *s)
 {
         g_autofree char *scaled = NULL;
-        GrNumber *snum;
+        double snum;
 
-        snum = gr_number_new_fraction (num, denom);
-        gr_number_multiply (&ing->amount, snum, snum);
+        snum = (double)num / (double)denom;
+        snum = snum * ing->amount;
         scaled = gr_number_format (snum);
-        g_free (snum);
 
         g_string_append (s, scaled);
         if (ing->unit) {
@@ -286,7 +285,7 @@ gr_ingredients_list_get_unit (GrIngredientsList *ingredients,
         return NULL;
 }
 
-GrNumber *
+double
 gr_ingredients_list_get_amount (GrIngredientsList *ingredients,
                                 const char        *segment,
                                 const char        *name)
@@ -298,11 +297,11 @@ gr_ingredients_list_get_amount (GrIngredientsList *ingredients,
 
                 if (g_strcmp0 (segment, ing->segment) == 0 &&
                     g_strcmp0 (name, ing->name) == 0) {
-                        return &ing->amount;
+                        return ing->amount;
                 }
         }
 
-        return NULL;
+        return 0.0;
 }
 
 

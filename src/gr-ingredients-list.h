@@ -22,8 +22,6 @@
 
 #include <gtk/gtk.h>
 
-#include "gr-number.h"
-
 G_BEGIN_DECLS
 
 #define GR_TYPE_INGREDIENTS_LIST (gr_ingredients_list_get_type ())
@@ -48,7 +46,7 @@ char             **gr_ingredients_list_get_ingredients (GrIngredientsList  *ingr
 const char        *gr_ingredients_list_get_unit        (GrIngredientsList  *list,
                                                         const char         *segment,
                                                         const char         *ingredient);
-GrNumber          *gr_ingredients_list_get_amount      (GrIngredientsList  *list,
+double             gr_ingredients_list_get_amount      (GrIngredientsList  *list,
                                                         const char         *segment,
                                                         const char         *ingredient);
 

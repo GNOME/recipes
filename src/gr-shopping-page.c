@@ -137,7 +137,7 @@ recount_recipes (GrShoppingPage *page)
 }
 
 typedef struct {
-        GrNumber amount;
+        double amount;
         char *unit;
 } Unit;
 
@@ -191,7 +191,7 @@ ingredient_clear (Ingredient *ing)
 
 static void
 ingredient_add (Ingredient *ing,
-                GrNumber   *amount,
+                double      amount,
                 const char *unit)
 {
         int i;
@@ -201,12 +201,12 @@ ingredient_add (Ingredient *ing,
                 Unit *u = &g_array_index (ing->units, Unit, i);
 
                 if (g_strcmp0 (u->unit, unit) == 0) {
-                        gr_number_add (&u->amount, amount, &u->amount);
+                        u->amount += amount;
                         return;
                 }
         }
 
-        nu.amount = *amount;
+        nu.amount = amount;
         nu.unit = g_strdup (unit);
 
         g_array_append_val (ing->units, nu);
@@ -225,7 +225,7 @@ ingredient_format_unit (Ingredient *ing)
                 g_autofree char *num = NULL;
                 if (s->len > 0)
                         g_string_append (s, ", ");
-                num = gr_number_format (&(u->amount));
+                num = gr_number_format (u->amount);
                 g_string_append (s, num);
                 g_string_append (s, " ");
                 if (u->unit)
@@ -434,7 +434,7 @@ removed_row_activated (GtkListBox     *list,
 
 static void
 add_ingredient (GrShoppingPage *page,
-                GrNumber *amount,
+                double      amount,
                 const char *unit,
                 const char *ingredient)
 {
@@ -465,11 +465,10 @@ collect_ingredients_from_recipe (GrShoppingPage *page,
                 ing = gr_ingredients_list_get_ingredients (il, seg[i]);
                 for (j = 0; ing[j]; j++) {
                         const char *unit;
-                        GrNumber *amount, *num;
+                        double amount;
+
                         amount = gr_ingredients_list_get_amount (il, seg[i], ing[j]);
-                        num = gr_number_new_fraction (serves, gr_recipe_get_serves (recipe));
-                        gr_number_multiply (num, amount, amount);
-                        g_free (num);
+                        amount = amount * serves / (double)gr_recipe_get_serves (recipe);
                         unit = gr_ingredients_list_get_unit (il, seg[i], ing[j]);
                         add_ingredient (page, amount, unit, ing[j]);
                 }
