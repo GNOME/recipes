@@ -93,7 +93,7 @@ gr_ingredients_list_populate (GrIngredientsList  *ingredients,
                 segment = fields[3];
 
                 ing = g_new0 (Ingredient, 1);
-                gr_number_set_fraction (&ing->amount, 0, 0);
+                gr_number_set_fraction (&ing->amount, 0, 1);
                 if (amount[0] != '\0' &&
                     !gr_number_parse (&ing->amount, &amount, &local_error)) {
                         g_message ("failed to parse amount '%s': %s", amount, local_error->message);
