@@ -31,7 +31,7 @@ static GString *string;
 static void
 test_line (const char *line)
 {
-        GrNumber number;
+        double number;
         char *input;
         g_autoptr(GError) error = NULL;
 
@@ -45,13 +45,10 @@ test_line (const char *line)
         else {
                 g_autofree char *formatted;
 
-                formatted = gr_number_format (&number);
+                formatted = gr_number_format (number);
 
                 g_string_append_printf (string, "REST '%s'\n", input);
-                g_string_append_printf (string, "FRACTION %d\n", number.fraction);
-                g_string_append_printf (string, "NUMERATOR %d\n", number.num);
-                g_string_append_printf (string, "DENOMINATOR %d\n", number.denom);
-                g_string_append_printf (string, "VALUE %g\n", number.value);
+                g_string_append_printf (string, "VALUE %g\n", number);
                 g_string_append_printf (string, "FORMATTED '%s'\n", formatted);
         }
 

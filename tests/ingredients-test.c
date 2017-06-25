@@ -54,10 +54,7 @@ test_file (const char *filename)
                 ingredients = gr_ingredients_list_new (contents);
                 for (l = ingredients->ingredients; l; l = l->next) {
                         Ingredient *ing = (Ingredient *)l->data;
-                        if (ing->amount.fraction)
-                                g_string_append_printf (string, "AMOUNT %d/%d\n", ing->amount.num, ing->amount.denom);
-                        else
-                                g_string_append_printf (string, "AMOUNT %f\n", ing->amount.value);
+                        g_string_append_printf (string, "AMOUNT %f\n", ing->amount);
                         g_string_append_printf (string, "UNIT %s\n", ing->unit);
                         g_string_append_printf (string, "NAME %s\n", ing->name);
                         g_string_append_printf (string, "\n");
