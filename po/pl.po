@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-19 23:04-0400\n"
-"PO-Revision-Date: 2017-06-18 21:15+0200\n"
+"POT-Creation-Date: 2017-06-20 19:25+0000\n"
+"PO-Revision-Date: 2017-06-25 20:11+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -1585,43 +1585,47 @@ msgstr "Nie ma nowych przepisów"
 msgid "No imported recipes found"
 msgstr "Nie odnaleziono zaimportowanych przepisów"
 
-#: src/gr-meal.c:44
+#: src/gr-meal.c:45
 msgid "Main Course"
 msgstr "Danie główne"
 
-#: src/gr-meal.c:45
+#: src/gr-meal.c:46
 msgid "Snacks"
 msgstr "Przekąski"
 
-#: src/gr-meal.c:46
+#: src/gr-meal.c:47
 msgid "Breakfast"
 msgstr "Śniadanie"
 
-#: src/gr-meal.c:47
+#: src/gr-meal.c:48
 msgid "Side Dishes"
 msgstr "Przystawki"
 
-#: src/gr-meal.c:48
+#: src/gr-meal.c:49
 msgid "Desserts"
 msgstr "Desery"
 
-#: src/gr-meal.c:49
+#: src/gr-meal.c:50
 msgid "Cake and Baking"
 msgstr "Ciasta i wypieki"
 
-#: src/gr-meal.c:50
+#: src/gr-meal.c:51
 msgid "Drinks and Cocktails"
 msgstr "Drinki i koktajle"
 
-#: src/gr-meal.c:51
+#: src/gr-meal.c:52
 msgid "Pizza"
 msgstr "Pizza"
 
-#: src/gr-meal.c:52
+#: src/gr-meal.c:53
 msgid "Pasta"
 msgstr "Makarony"
 
-#: src/gr-meal.c:53
+#: src/gr-meal.c:54
+msgid "Salad"
+msgstr "Sałatki"
+
+#: src/gr-meal.c:55
 msgid "Other"
 msgstr "Inne"
 
@@ -1981,10 +1985,9 @@ msgid "gram"
 msgstr "gram"
 
 #: src/gr-unit.c:41
-#, fuzzy
 msgctxt "unit plural"
 msgid "grams"
-msgstr "gram"
+msgstr "gramy"
 
 #: src/gr-unit.c:42
 msgctxt "unit abbreviation"
@@ -1997,10 +2000,9 @@ msgid "kilogram"
 msgstr "kilogram"
 
 #: src/gr-unit.c:42
-#, fuzzy
 msgctxt "unit plural"
 msgid "kilograms"
-msgstr "kilogram"
+msgstr "kilogramy"
 
 #: src/gr-unit.c:43
 msgctxt "unit abbreviation"
@@ -2013,10 +2015,9 @@ msgid "pound"
 msgstr "funt"
 
 #: src/gr-unit.c:43
-#, fuzzy
 msgctxt "unit plural"
 msgid "pounds"
-msgstr "funt"
+msgstr "funty"
 
 #: src/gr-unit.c:44
 msgctxt "unit abbreviation"
@@ -2029,10 +2030,9 @@ msgid "ounce"
 msgstr "uncja"
 
 #: src/gr-unit.c:44
-#, fuzzy
 msgctxt "unit plural"
 msgid "ounces"
-msgstr "uncja"
+msgstr "uncje"
 
 #: src/gr-unit.c:45
 msgctxt "unit abbreviation"
@@ -2045,10 +2045,9 @@ msgid "liter"
 msgstr "litr"
 
 #: src/gr-unit.c:45
-#, fuzzy
 msgctxt "unit plural"
 msgid "liters"
-msgstr "litr"
+msgstr "litry"
 
 #: src/gr-unit.c:46
 msgctxt "unit abbreviation"
@@ -2061,10 +2060,9 @@ msgid "deciliter"
 msgstr "decylitr"
 
 #: src/gr-unit.c:46
-#, fuzzy
 msgctxt "unit plural"
 msgid "deciliters"
-msgstr "decylitr"
+msgstr "decylitry"
 
 #: src/gr-unit.c:47
 msgctxt "unit abbreviation"
@@ -2077,10 +2075,9 @@ msgid "milliliter"
 msgstr "mililitr"
 
 #: src/gr-unit.c:47
-#, fuzzy
 msgctxt "unit plural"
 msgid "milliliters"
-msgstr "mililitr"
+msgstr "mililitry"
 
 #: src/gr-unit.c:48 src/gr-unit.c:49
 msgctxt "unit abbreviation"
@@ -2093,10 +2090,9 @@ msgid "fluid ounce"
 msgstr "uncja objętości"
 
 #: src/gr-unit.c:48 src/gr-unit.c:49
-#, fuzzy
 msgctxt "unit plural"
 msgid "fluid ounces"
-msgstr "uncja objętości"
+msgstr "uncje objętości"
 
 #: src/gr-unit.c:50
 msgctxt "unit abbreviation"
@@ -2109,10 +2105,9 @@ msgid "pint"
 msgstr "półkwarta"
 
 #: src/gr-unit.c:50
-#, fuzzy
 msgctxt "unit plural"
 msgid "pints"
-msgstr "półkwarta"
+msgstr "półkwarty"
 
 #: src/gr-unit.c:51
 msgctxt "unit abbreviation"
@@ -2125,10 +2120,9 @@ msgid "quart"
 msgstr "kwarta"
 
 #: src/gr-unit.c:51
-#, fuzzy
 msgctxt "unit plural"
 msgid "quarts"
-msgstr "kwarta"
+msgstr "kwarty"
 
 #: src/gr-unit.c:52
 msgctxt "unit abbreviation"
@@ -2141,10 +2135,9 @@ msgid "gallon"
 msgstr "galon"
 
 #: src/gr-unit.c:52
-#, fuzzy
 msgctxt "unit plural"
 msgid "gallons"
-msgstr "galon"
+msgstr "galony"
 
 #: src/gr-unit.c:53
 msgctxt "unit abbreviation"
@@ -2159,7 +2152,7 @@ msgstr "filiżanka"
 #: src/gr-unit.c:53
 msgctxt "unit plural"
 msgid "cups"
-msgstr ""
+msgstr "filiżanki"
 
 #: src/gr-unit.c:54
 msgctxt "unit abbreviation"
@@ -2172,10 +2165,9 @@ msgid "tablespoon"
 msgstr "łyżka stołowa"
 
 #: src/gr-unit.c:54
-#, fuzzy
 msgctxt "unit plural"
 msgid "tablespoons"
-msgstr "łyżka stołowa"
+msgstr "łyżki stołowe"
 
 #: src/gr-unit.c:55
 msgctxt "unit abbreviation"
@@ -2188,10 +2180,9 @@ msgid "teaspoon"
 msgstr "łyżeczka"
 
 #: src/gr-unit.c:55
-#, fuzzy
 msgctxt "unit plural"
 msgid "teaspoons"
-msgstr "łyżeczka"
+msgstr "łyżeczki"
 
 #: src/gr-unit.c:56
 msgctxt "unit abbreviation"
@@ -2206,7 +2197,7 @@ msgstr "pojemnik"
 #: src/gr-unit.c:56
 msgctxt "unit plural"
 msgid "boxes"
-msgstr ""
+msgstr "pojemniki"
 
 #: src/gr-unit.c:57
 msgctxt "unit abbreviation"
@@ -2219,15 +2210,14 @@ msgid "package"
 msgstr "paczka"
 
 #: src/gr-unit.c:57
-#, fuzzy
 msgctxt "unit plural"
 msgid "packages"
-msgstr "paczka"
+msgstr "paczki"
 
 #: src/gr-unit.c:58
 msgctxt "unit abbreviation"
 msgid "glass"
-msgstr "szklanka"
+msgstr "szklanki"
 
 #: src/gr-unit.c:58
 msgctxt "unit name"
@@ -2235,10 +2225,9 @@ msgid "glass"
 msgstr "szklanka"
 
 #: src/gr-unit.c:58
-#, fuzzy
 msgctxt "unit plural"
 msgid "glasses"
-msgstr "szklanka"
+msgstr "szklanki"
 
 #: src/gr-unit.c:59
 msgctxt "unit abbreviation"
@@ -2251,10 +2240,9 @@ msgid "millimeter"
 msgstr "milimetr"
 
 #: src/gr-unit.c:59
-#, fuzzy
 msgctxt "unit plural"
 msgid "millimeters"
-msgstr "milimetr"
+msgstr "milimetry"
 
 #: src/gr-unit.c:60
 msgctxt "unit abbreviation"
@@ -2267,10 +2255,9 @@ msgid "centimeter"
 msgstr "centymetr"
 
 #: src/gr-unit.c:60
-#, fuzzy
 msgctxt "unit plural"
 msgid "centimeters"
-msgstr "centymetr"
+msgstr "centymetry"
 
 #: src/gr-unit.c:61
 msgctxt "unit abbreviation"
@@ -2283,56 +2270,54 @@ msgid "meter"
 msgstr "metr"
 
 #: src/gr-unit.c:61
-#, fuzzy
 msgctxt "unit plural"
 msgid "meters"
-msgstr "metr"
+msgstr "metry"
 
 #: src/gr-unit.c:62
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "st"
-msgstr "s"
+msgstr "pestka"
 
 #: src/gr-unit.c:62
 msgctxt "unit name"
 msgid "stone"
-msgstr ""
+msgstr "pestka"
 
 #: src/gr-unit.c:62
 msgctxt "unit plural"
 msgid "stone"
-msgstr ""
+msgstr "pestki"
 
 #: src/gr-unit.c:63
 msgctxt "unit abbreviation"
 msgid "pinch"
-msgstr ""
+msgstr "szczypta"
 
 #: src/gr-unit.c:63
 msgctxt "unit name"
 msgid "pinch"
-msgstr ""
+msgstr "szczypta"
 
 #: src/gr-unit.c:63
 msgctxt "unit plural"
 msgid "pinches"
-msgstr ""
+msgstr "szczypty"
 
 #: src/gr-unit.c:64
 msgctxt "unit abbreviation"
 msgid "bunch"
-msgstr ""
+msgstr "pęczek"
 
 #: src/gr-unit.c:64
 msgctxt "unit name"
 msgid "bunch"
-msgstr ""
+msgstr "pęczek"
 
 #: src/gr-unit.c:64
 msgctxt "unit plural"
 msgid "bunches"
-msgstr ""
+msgstr "pęczki"
 
 #: src/gr-unit.c:145
 #, c-format
