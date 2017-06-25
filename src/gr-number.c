@@ -174,10 +174,10 @@ parse_as_fraction (GrNumber  *number,
                    GError   **error)
 {
         char *orig = *input;
-        guint64 num, denom;
+        gint64 num, denom;
         char *end = NULL;
 
-        num = g_ascii_strtoull (orig, &end, 10);
+        num = g_ascii_strtoll (orig, &end, 10);
         if (end == NULL || end == orig || end[0] != '/') {
                 g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
                              _("Could not parse %s as a fraction"), *input);
@@ -186,12 +186,14 @@ parse_as_fraction (GrNumber  *number,
 
         orig = end + 1;
 
-        denom = g_ascii_strtoull (orig, &end, 10);
+        denom = g_ascii_strtoll (orig, &end, 10);
         if (end != NULL && !space_or_nul (end[0])) {
                 g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
                              _("Could not parse %s as a fraction"), *input);
                 return FALSE;
         }
+        if (denom == 0)
+                denom = 1;
 
         *input = end;
 
@@ -206,10 +208,10 @@ parse_as_integer (GrNumber  *number,
                   gboolean   require_whitespace,
                   GError   **error)
 {
-        guint64 num;
+        gint64 num;
         char *end = NULL;
 
-        num = g_ascii_strtoull (*input, &end, 10);
+        num = g_ascii_strtoll (*input, &end, 10);
         if (end == *input ||
             (require_whitespace && end != NULL && !space_or_nul (end[0]))) {
                 g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
