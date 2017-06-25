@@ -828,13 +828,15 @@ text_changed (GObject    *object,
         GrIngredientsViewerRow *row = data;
         double number;
         char *text;
+        int col;
 
         text = (char *) gtk_entry_get_text (entry);
         gr_number_parse (&number, &text, NULL);
-        if (number > 1)
-                gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (row->unit_completion), row->unit_cell, "text", 4, NULL);
-        else
-                gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (row->unit_completion), row->unit_cell, "text", 2, NULL);
+        col = number > 1 ? 4 : 2;
+        gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (row->unit_completion),
+                                        row->unit_cell,
+                                        "text", col,
+                                        NULL);
 }
 
 static void
@@ -843,15 +845,11 @@ setup_editable_row (GrIngredientsViewerRow *self)
         gtk_list_box_row_set_activatable (GTK_LIST_BOX_ROW (self), self->editable);
 
         if (self->editable) {
-                g_autoptr(GtkEntryCompletion) completion = NULL;
+                g_autoptr(GtkEntryCompletion) ingredient_completion = NULL;
                 g_autoptr(GtkTreeModel) ingredients_model = NULL;
+                g_autoptr(GtkEntryCompletion) unit_completion = NULL;
                 g_autoptr(GtkTreeModel) units_model = NULL;
-                //PangoAttrList *attrs = NULL;
                 GtkCellRenderer *cell = NULL;
-
-                completion = gtk_entry_completion_new ();
-
-
 
                 gtk_drag_source_set (self->drag_handle, GDK_BUTTON1_MASK, entries, 1, GDK_ACTION_MOVE);
                 g_signal_connect (self->drag_handle, "drag-begin", G_CALLBACK (drag_begin), NULL);
@@ -859,29 +857,29 @@ setup_editable_row (GrIngredientsViewerRow *self)
                 g_signal_connect (self->drag_handle, "drag-data-get", G_CALLBACK (drag_data_get), NULL);
 
                 ingredients_model = get_ingredients_model ();
-                gtk_entry_completion_set_model (completion, ingredients_model);
-                gtk_entry_completion_set_text_column (completion, 0);
-                gtk_entry_set_completion (GTK_ENTRY (self->ingredient_entry), completion);
-
+                ingredient_completion = gtk_entry_completion_new ();
+                gtk_entry_completion_set_model (ingredient_completion, ingredients_model);
+                gtk_entry_completion_set_text_column (ingredient_completion, 0);
+                gtk_entry_set_completion (GTK_ENTRY (self->ingredient_entry), ingredient_completion);
 
                 units_model = get_units_model (self);
-                completion = gtk_entry_completion_new ();
-                gtk_entry_completion_set_model (completion, units_model);
-                g_object_set (completion, "text-column", 2, NULL);
+                unit_completion = gtk_entry_completion_new ();
+                gtk_entry_completion_set_model (unit_completion, units_model);
+                g_object_set (unit_completion, "text-column", 2, NULL);
 
                 cell = gtk_cell_renderer_text_new ();
-                gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (completion), cell, get_amount, self, NULL);
-                gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (completion), cell, FALSE);
+                gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (unit_completion), cell, get_amount, self, NULL);
+                gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (unit_completion), cell, FALSE);
 
                 cell = gtk_cell_renderer_text_new ();
-                gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (completion), cell, TRUE);
+                gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (unit_completion), cell, TRUE);
                 self->unit_cell = cell;
-                self->unit_completion = completion;
+                self->unit_completion = unit_completion;
                 g_signal_connect (self->unit_entry, "notify::text", G_CALLBACK (text_changed), self);
 
-                gtk_entry_completion_set_match_func (completion, match_func, self, NULL);
-                g_signal_connect (completion, "match-selected", G_CALLBACK (match_selected), self);
-                gtk_entry_set_completion (GTK_ENTRY (self->unit_entry), completion);
+                gtk_entry_completion_set_match_func (unit_completion, match_func, self, NULL);
+                g_signal_connect (unit_completion, "match-selected", G_CALLBACK (match_selected), self);
+                gtk_entry_set_completion (GTK_ENTRY (self->unit_entry), unit_completion);
         }
         else {
                 gtk_drag_source_unset (self->drag_handle);
