@@ -288,7 +288,7 @@
                         <property name="visible">1</property>
                         <property name="use-underline">1</property>
                         <property name="mnemonic-widget">name_entry</property>
-                        <property name="label" translatable="yes">_Name Your Recipe</property>
+                        <property name="label" translatable="yes">_Name</property>
                         <property name="xalign">1</property>
                         <property name="valign">baseline</property>
                         <style>
@@ -398,7 +398,7 @@
                         <property name="visible">1</property>
                         <property name="use-underline">1</property>
                         <property name="mnemonic-widget">cook_time_combo</property>
-                        <property name="label" translatable="yes">C_ooking Time</property>
+                        <property name="label" translatable="yes">_Cooking Time</property>
                         <property name="xalign">1</property>
                         <property name="valign">center</property>
                         <property name="margin-bottom">40</property>
@@ -446,7 +446,7 @@
                         <property name="visible">1</property>
                         <property name="use-underline">1</property>
                         <property name="mnemonic-widget">cuisine_combo</property>
-                        <property name="label" translatable="yes">_Cuisine</property>
+                        <property name="label" translatable="yes">C_uisine</property>
                         <property name="xalign">1</property>
                         <property name="valign">center</property>
                         <property name="margin-bottom">10</property>
@@ -554,7 +554,7 @@
                         <property name="visible">1</property>
                         <property name="use-underline">1</property>
                         <property name="mnemonic-widget">spiciness_combo</property>
-                        <property name="label" translatable="yes">S_piciness</property>
+                        <property name="label" translatable="yes">_Spiciness</property>
                         <property name="xalign">1</property>
                         <property name="valign">center</property>
                         <property name="margin-bottom">20</property>
@@ -588,7 +588,9 @@
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">1</property>
-                        <property name="label" translatable="yes">Description</property>
+                        <property name="use-underline">1</property>
+                        <property name="mnemonic-widget">description_field</property>
+                        <property name="label" translatable="yes">_Description</property>
                         <property name="xalign">0</property>
                         <style>
                           <class name="heading"/>
@@ -702,7 +704,9 @@
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">1</property>
-                        <property name="label" translatable="yes">Directions</property>
+                        <property name="use-underline">1</property>
+                        <property name="mnemonic-widget">instructions_field</property>
+                        <property name="label" translatable="yes">Di_rections</property>
                         <property name="xalign">0</property>
                       </object>
                     </child>

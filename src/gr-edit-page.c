@@ -1357,7 +1357,7 @@ gr_edit_page_clear (GrEditPage *page)
 
         store = gr_recipe_store_get ();
 
-        gtk_label_set_label (GTK_LABEL (page->name_label), _("Name Your Recipe"));
+        gtk_label_set_label (GTK_LABEL (page->name_label), _("_Name Your Recipe"));
         gtk_entry_set_text (GTK_ENTRY (page->name_entry), "");
         set_combo_value (GTK_COMBO_BOX (page->cuisine_combo), "");
         set_combo_value (GTK_COMBO_BOX (page->category_combo), "");
@@ -1462,8 +1462,7 @@ gr_edit_page_edit (GrEditPage *page,
 
         chef = gr_recipe_store_get_chef (store, author ? author : "");
 
-        gtk_label_set_label (GTK_LABEL (page->name_label), _("Name"));
-
+        gtk_label_set_label (GTK_LABEL (page->name_label), _("_Name"));
         gtk_entry_set_text (GTK_ENTRY (page->name_entry), name);
         set_combo_value (GTK_COMBO_BOX (page->cuisine_combo), cuisine);
         set_combo_value (GTK_COMBO_BOX (page->category_combo), category);
