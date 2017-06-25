@@ -320,7 +320,7 @@
                         <property name="visible">1</property>
                         <property name="use-underline">1</property>
                         <property name="mnemonic-widget">serves_spin</property>
-                        <property name="label" translatable="yes">Ser_ves</property>
+                        <property name="label" translatable="yes">_Yield</property>
                         <property name="valign">baseline</property>
                         <property name="xalign">1</property>
                         <style>
@@ -333,12 +333,32 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkSpinButton" id="serves_spin">
+                      <object class="GtkBox">
                         <property name="visible">1</property>
-                        <property name="adjustment">serves_adjustment</property>
+                        <property name="orientation">horizontal</property>
                         <property name="halign">start</property>
                         <property name="valign">baseline</property>
-                        <property name="margin-bottom">10</property>
+                        <property name="spacing">10</property>
+                        <child>
+                          <object class="GtkSpinButton" id="serves_spin">
+                            <property name="visible">1</property>
+                            <property name="halign">start</property>
+                            <property name="valign">baseline</property>
+                            <property name="adjustment">serves_adjustment</property>
+                            <property name="width-chars">4</property>
+                            <property name="margin-bottom">10</property>
+                            <signal name="input" handler="serves_spin_input"/>
+                            <signal name="output" handler="serves_spin_output"/>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkEntry" id="yield_entry">
+                            <property name="visible">1</property>
+                            <property name="valign">baseline</property>
+                            <property name="margin-bottom">10</property>
+                            <signal name="notify::text" handler="set_unsaved" swapped="yes"/>
+                          </object>
+                        </child>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -585,7 +605,7 @@
                         <property name="top-attach">8</property>
                       </packing>
                     </child>
-                    <child>
+                    _<child>
                       <object class="GtkLabel">
                         <property name="visible">1</property>
                         <property name="use-underline">1</property>

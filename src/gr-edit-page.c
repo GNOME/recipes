@@ -73,6 +73,7 @@ struct _GrEditPage
         GtkWidget *description_field;
         GtkWidget *instructions_field;
         GtkWidget *serves_spin;
+        GtkWidget *yield_entry;
         GtkWidget *gluten_free_check;
         GtkWidget *nut_free_check;
         GtkWidget *vegan_check;
@@ -1044,6 +1045,35 @@ set_unsaved (GrEditPage *page)
         g_object_set (G_OBJECT (page), "unsaved", TRUE, NULL);
 }
 
+static int
+serves_spin_input (GtkSpinButton *spin,
+                   double        *new_val)
+{
+        char *text;
+
+        text = (char *)gtk_entry_get_text (GTK_ENTRY (spin));
+
+        if (!gr_number_parse (new_val, &text, NULL)) {
+                *new_val = 0.0;
+                return GTK_INPUT_ERROR;
+        }
+
+        return TRUE;
+}
+
+static int
+serves_spin_output (GtkSpinButton *spin)
+{
+        GtkAdjustment *adj;
+        g_autofree char *text = NULL;
+
+        adj = gtk_spin_button_get_adjustment (spin);
+        text = gr_number_format (gtk_adjustment_get_value (adj));
+        gtk_entry_set_text (GTK_ENTRY (spin), text);
+
+        return TRUE;
+}
+
 static void
 gr_edit_page_grab_focus (GtkWidget *widget)
 {
@@ -1099,6 +1129,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, rotate_image_right_button);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, author_label);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, ingredients_box);
+        gtk_widget_class_bind_template_child (widget_class, GrEditPage, yield_entry);
 
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, add_step_button);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, link_image_button);
@@ -1141,6 +1172,8 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, prev_step);
         gtk_widget_class_bind_template_callback (widget_class, next_step);
         gtk_widget_class_bind_template_callback (widget_class, set_unsaved);
+        gtk_widget_class_bind_template_callback (widget_class, serves_spin_input);
+        gtk_widget_class_bind_template_callback (widget_class, serves_spin_output);
 
         gtk_widget_class_bind_template_callback (widget_class, add_list);
         gtk_widget_class_bind_template_callback (widget_class, do_add_timer);
@@ -1364,7 +1397,7 @@ gr_edit_page_clear (GrEditPage *page)
         set_combo_value (GTK_COMBO_BOX (page->season_combo), "");
         set_combo_value (GTK_COMBO_BOX (page->prep_time_combo), "");
         set_combo_value (GTK_COMBO_BOX (page->cook_time_combo), "");
-        gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), 1);
+        gtk_entry_set_text (GTK_ENTRY (page->yield_entry), "");
         set_spiciness (page, 0);
         populate_ingredients (page, "");
         set_text_view_text (GTK_TEXT_VIEW (page->description_field), "");
@@ -1426,7 +1459,8 @@ gr_edit_page_edit (GrEditPage *page,
         const char *prep_time;
         const char *cook_time;
         const char *author;
-        int serves;
+        const char *yield_unit;
+        double yield;
         int spiciness;
         const char *description;
         const char *instructions;
@@ -1442,7 +1476,7 @@ gr_edit_page_edit (GrEditPage *page,
         store = gr_recipe_store_get ();
 
         name = gr_recipe_get_name (recipe);
-        serves = gr_recipe_get_serves (recipe);
+        yield = gr_recipe_get_yield (recipe);
         spiciness = gr_recipe_get_spiciness (recipe);
         cuisine = gr_recipe_get_cuisine (recipe);
         category = gr_recipe_get_category (recipe);
@@ -1456,6 +1490,7 @@ gr_edit_page_edit (GrEditPage *page,
         author = gr_recipe_get_author (recipe);
         index = gr_recipe_get_default_image (recipe);
         images = gr_recipe_get_images (recipe);
+        yield_unit = gr_recipe_get_yield_unit (recipe);
 
         g_free (page->author);
         page->author = g_strdup (author);
@@ -1470,7 +1505,8 @@ gr_edit_page_edit (GrEditPage *page,
         set_combo_value (GTK_COMBO_BOX (page->prep_time_combo), prep_time);
         set_combo_value (GTK_COMBO_BOX (page->cook_time_combo), cook_time);
         set_spiciness (page, spiciness);
-        gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), serves);
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), yield);
+        gtk_entry_set_text (GTK_ENTRY (page->yield_entry), yield_unit);
         set_text_view_text (GTK_TEXT_VIEW (page->description_field), description);
         rewrite_instructions_for_removed_image (page, instructions, -1);
         gtk_stack_set_visible_child_name (GTK_STACK (page->preview_stack), "edit");
@@ -1513,11 +1549,12 @@ gr_edit_page_save (GrEditPage *page)
         g_autofree char *season = NULL;
         g_autofree char *prep_time = NULL;
         g_autofree char *cook_time = NULL;
-        int serves;
         int spiciness;
         g_autofree char *description = NULL;
         g_autofree char *ingredients = NULL;
         g_autofree char *instructions = NULL;
+        double yield;
+        const char *yield_unit;
         GrRecipeStore *store;
         g_autoptr(GError) error = NULL;
         gboolean ret = TRUE;
@@ -1543,7 +1580,9 @@ gr_edit_page_save (GrEditPage *page)
         prep_time = get_combo_value (GTK_COMBO_BOX (page->prep_time_combo));
         cook_time = get_combo_value (GTK_COMBO_BOX (page->cook_time_combo));
         spiciness = get_spiciness (page);
-        serves = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (page->serves_spin));
+        yield = gtk_spin_button_get_value (GTK_SPIN_BUTTON (page->serves_spin));
+        yield_unit = gtk_entry_get_text (GTK_ENTRY (page->yield_entry));
+
         if (!collect_ingredients (page, &page->error_field, &ingredients)) {
                 g_set_error (&error, G_IO_ERROR, G_IO_ERROR_FAILED,
                              _("Some ingredients need correction"));
@@ -1575,7 +1614,8 @@ gr_edit_page_save (GrEditPage *page)
                               "season", season,
                               "prep-time", prep_time,
                               "cook-time", cook_time,
-                              "serves", serves,
+                              "yield", yield,
+                              "yield-unit", yield_unit,
                               "spiciness", spiciness,
                               "description", description,
                               "ingredients", ingredients,
@@ -1608,7 +1648,8 @@ gr_edit_page_save (GrEditPage *page)
                                        "season", season,
                                        "prep-time", prep_time,
                                        "cook-time", cook_time,
-                                       "serves", serves,
+                                       "yield", yield,
+                                       "yield-unit", yield_unit,
                                        "spiciness", spiciness,
                                        "description", description,
                                        "ingredients", ingredients,
