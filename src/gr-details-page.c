@@ -70,7 +70,8 @@ struct _GrDetailsPage
         GtkWidget *meal_label;
         GtkWidget *season_desc;
         GtkWidget *season_label;
-        GtkWidget *serves_spin;
+        GtkWidget *yield_spin;
+        GtkWidget *yield_label;
         GtkWidget *warning_box;
         GtkWidget *spicy_warning;
         GtkWidget *garlic_warning;
@@ -176,19 +177,62 @@ gr_details_page_contribute_recipe (GrDetailsPage *page)
         gr_recipe_exporter_contribute (page->exporter, page->recipe);
 }
 
-static void populate_ingredients (GrDetailsPage *page,
-                                  int            num,
-                                  int            denom);
+static void populate_ingredients (GrDetailsPage *page, double scale);
 
 static void
-serves_value_changed (GrDetailsPage *page)
+update_yield_label (GrDetailsPage *page,
+                    double         yield)
 {
-        int serves;
-        int new_value;
+        const char *yield_unit;
 
-        new_value = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (page->serves_spin));
-        serves = gr_recipe_get_serves (page->recipe);
-        populate_ingredients (page, new_value, serves);
+        yield_unit = gr_recipe_get_yield_unit (page->recipe);
+        if (yield_unit && yield_unit[0])
+                gtk_label_set_label (GTK_LABEL (page->yield_label), yield_unit);
+        else
+                gtk_label_set_label (GTK_LABEL (page->yield_label),
+                                     yield == 1.0 ? _("serving") : _("servings"));
+}
+
+static void
+yield_spin_value_changed (GrDetailsPage *page)
+{
+        double yield;
+        double new_value;
+
+        new_value = gtk_spin_button_get_value (GTK_SPIN_BUTTON (page->yield_spin));
+        yield = gr_recipe_get_yield (page->recipe);
+
+        update_yield_label (page, new_value);
+        populate_ingredients (page, new_value / yield);
+}
+
+static int
+yield_spin_input (GtkSpinButton *spin,
+                   double        *new_val)
+{
+        char *text;
+
+        text = (char *)gtk_entry_get_text (GTK_ENTRY (spin));
+
+        if (!gr_number_parse (new_val, &text, NULL)) {
+                *new_val = 0.0;
+                return GTK_INPUT_ERROR;
+        }
+
+        return TRUE;
+}
+
+static int
+yield_spin_output (GtkSpinButton *spin)
+{
+        GtkAdjustment *adj;
+        g_autofree char *text = NULL;
+
+        adj = gtk_spin_button_get_adjustment (spin);
+        text = gr_number_format (gtk_adjustment_get_value (adj));
+        gtk_entry_set_text (GTK_ENTRY (spin), text);
+
+        return TRUE;
 }
 
 static void
@@ -208,11 +252,11 @@ shop_it (GrDetailsPage *page)
 {
         GrRecipeStore *store;
         GtkWidget *window;
-        int serves;
+        double yield;
 
         store = gr_recipe_store_get ();
-        serves = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (page->serves_spin));
-        gr_recipe_store_add_to_shopping (store, page->recipe, serves);
+        yield = gtk_spin_button_get_value (GTK_SPIN_BUTTON (page->yield_spin));
+        gr_recipe_store_add_to_shopping (store, page->recipe, yield);
 
         window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
         gr_window_offer_shopping (GR_WINDOW (window));
@@ -392,7 +436,8 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, meal_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, season_desc);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, season_label);
-        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, serves_spin);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, yield_spin);
+        gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, yield_label);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, warning_box);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, spicy_warning);
         gtk_widget_class_bind_template_child (widget_class, GrDetailsPage, garlic_warning);
@@ -417,7 +462,9 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, more_recipes);
         gtk_widget_class_bind_template_callback (widget_class, print_recipe);
         gtk_widget_class_bind_template_callback (widget_class, export_recipe);
-        gtk_widget_class_bind_template_callback (widget_class, serves_value_changed);
+        gtk_widget_class_bind_template_callback (widget_class, yield_spin_value_changed);
+        gtk_widget_class_bind_template_callback (widget_class, yield_spin_input);
+        gtk_widget_class_bind_template_callback (widget_class, yield_spin_output);
         gtk_widget_class_bind_template_callback (widget_class, cook_it_later);
         gtk_widget_class_bind_template_callback (widget_class, shop_it);
         gtk_widget_class_bind_template_callback (widget_class, activate_link);
@@ -437,8 +484,7 @@ gr_details_page_new (void)
 
 static void
 populate_ingredients (GrDetailsPage *page,
-                      int            num,
-                      int            denom)
+                      double         scale)
 {
         g_autoptr(GtkSizeGroup) group = NULL;
         g_autofree char **segments = NULL;
@@ -454,8 +500,7 @@ populate_ingredients (GrDetailsPage *page,
                                      "title", segments[j],
                                      "editable-title", FALSE,
                                      "editable", FALSE,
-                                     "scale-num", num,
-                                     "scale-denom", denom,
+                                     "scale", scale,
                                      "ingredients", page->ing_text,
                                      NULL);
                 gtk_container_add (GTK_CONTAINER (page->ingredients_box), list);
@@ -565,7 +610,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         const char *cuisine;
         const char *meal;
         const char *season;
-        int serves;
+        double yield;
         const char *ingredients;
         const char *instructions;
         const char *notes;
@@ -577,11 +622,13 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         gboolean favorite;
         int index;
         g_autofree char *processed = NULL;
+        g_autofree char *amount = NULL;
+        g_autofree char *unit = NULL;
 
         g_set_object (&page->recipe, recipe);
 
         author = gr_recipe_get_author (recipe);
-        serves = gr_recipe_get_serves (recipe);
+        yield = gr_recipe_get_yield (recipe);
         prep_time = gr_recipe_get_prep_time (recipe);
         cook_time = gr_recipe_get_cook_time (recipe);
         cuisine = gr_recipe_get_cuisine (recipe);
@@ -601,7 +648,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         g_free (page->ing_text);
         page->ing_text = g_strdup (ingredients);
 
-        populate_ingredients (page, serves, serves);
+        populate_ingredients (page, yield);
 
         if (prep_time[0] == '\0') {
                 gtk_widget_hide (page->prep_time_label);
@@ -657,8 +704,9 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         gtk_label_set_label (GTK_LABEL (page->instructions_label), processed);
         gtk_label_set_track_visited_links (GTK_LABEL (page->instructions_label), FALSE);
 
-        gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), serves);
-        gtk_widget_set_sensitive (page->serves_spin, ing != NULL);
+        update_yield_label (page, yield);
+        gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->yield_spin), yield);
+        gtk_widget_set_sensitive (page->yield_spin, ing != NULL);
 
         store = gr_recipe_store_get ();
 
