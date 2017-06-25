@@ -54,8 +54,7 @@ struct _GrIngredientsViewer
         GtkWidget *row_before;
         GtkWidget *row_after;
 
-        int scale_num;
-        int scale_denom;
+        double scale;
 };
 
 
@@ -69,7 +68,8 @@ enum {
         PROP_ACTIVE,
         PROP_INGREDIENTS,
         PROP_SCALE_NUM,
-        PROP_SCALE_DENOM
+        PROP_SCALE_DENOM,
+        PROP_SCALE
 };
 
 enum {
@@ -224,12 +224,8 @@ gr_ingredients_viewer_get_property (GObject    *object,
                 g_value_set_boolean (value, self->active_row != NULL);
                 break;
 
-          case PROP_SCALE_NUM:
-                g_value_set_int (value, self->scale_num);
-                break;
-
-          case PROP_SCALE_DENOM:
-                g_value_set_int (value, self->scale_denom);
+          case PROP_SCALE:
+                g_value_set_double (value, self->scale);
                 break;
 
           default:
@@ -326,7 +322,7 @@ gr_ingredients_viewer_set_ingredients (GrIngredientsViewer *viewer,
                 const char *unit;
                 GtkWidget *row;
 
-                s = gr_ingredients_list_scale_unit (ingredients, viewer->title, ings[i], viewer->scale_num, viewer->scale_denom);
+                s = gr_ingredients_list_scale_unit (ingredients, viewer->title, ings[i], viewer->scale);
                 strv = g_strsplit (s, " ", 2);
                 amount = strv[0];
                 unit = strv[1] ? strv[1] : "";
@@ -616,12 +612,8 @@ gr_ingredients_viewer_set_property (GObject      *object,
                 gr_ingredients_viewer_set_active (self, g_value_get_boolean (value));
                 break;
 
-          case PROP_SCALE_NUM:
-                self->scale_num = g_value_get_int (value);
-                break;
-
-          case PROP_SCALE_DENOM:
-                self->scale_denom = g_value_get_int (value);
+          case PROP_SCALE:
+                self->scale = g_value_get_double (value);
                 break;
 
           case PROP_INGREDIENTS:
@@ -639,8 +631,7 @@ gr_ingredients_viewer_init (GrIngredientsViewer *self)
         gtk_widget_set_has_window (GTK_WIDGET (self), FALSE);
         gtk_widget_init_template (GTK_WIDGET (self));
 
-        self->scale_num = 1;
-        self->scale_denom = 1;
+        self->scale = 1.0;
         self->group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 
 #if defined(ENABLE_GSPELL) && defined(GSPELL_TYPE_ENTRY)
@@ -698,6 +689,11 @@ gr_ingredients_viewer_class_init (GrIngredientsViewerClass *klass)
                                   1, G_MAXINT, 1,
                                   G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_SCALE_DENOM, pspec);
+
+        pspec = g_param_spec_double ("scale", NULL, NULL,
+                                  0.0, G_MAXDOUBLE, 1.0,
+                                  G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_SCALE, pspec);
 
         signals[DELETE] = g_signal_new ("delete",
                                         G_TYPE_FROM_CLASS (object_class),

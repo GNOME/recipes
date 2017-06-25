@@ -198,7 +198,7 @@ begin_print (GtkPrintOperation *operation,
                 for (i = 0; ings[i]; i++) {
                         g_autofree char *unit = NULL;
 
-                        unit = gr_ingredients_list_scale_unit (ingredients, segs[j], ings[i], 1, 1);
+                        unit = gr_ingredients_list_scale_unit (ingredients, segs[j], ings[i], 1.0);
                         g_string_append (s, unit);
                         g_string_append (s, " \n");
                 }
@@ -263,14 +263,14 @@ begin_print (GtkPrintOperation *operation,
 
                                 g_string_append (s, "\n");
 
-                                unit = gr_ingredients_list_scale_unit (ingredients, segs[j], ings[i], 1, 1);
+                                unit = gr_ingredients_list_scale_unit (ingredients, segs[j], ings[i], 1.0);
                                 g_string_append (s, unit);
                                 g_clear_pointer (&unit, g_free);
                                 g_string_append (s, "\t");
                                 g_string_append (s, ings[i]);
                                 g_string_append (s, "\t");
                                 if (mid + i < length) {
-                                        unit = gr_ingredients_list_scale_unit (ingredients, segs[j], ings[mid + i], 1, 1);
+                                        unit = gr_ingredients_list_scale_unit (ingredients, segs[j], ings[mid + i], 1.0);
                                         g_string_append (s, unit);
                                         g_string_append (s, "\t");
                                         g_string_append (s, ings[mid + i]);
@@ -282,7 +282,7 @@ begin_print (GtkPrintOperation *operation,
                                 g_autofree char *unit = NULL;
 
                                 g_string_append (s, "\n");
-                                unit = gr_ingredients_list_scale_unit (ingredients, segs[j], ings[i], 1, 1);
+                                unit = gr_ingredients_list_scale_unit (ingredients, segs[j], ings[i], 1.0);
                                 g_string_append (s, unit);
                                 g_string_append (s, "\t");
                                 g_string_append (s, ings[i]);

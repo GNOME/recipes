@@ -109,7 +109,7 @@ gr_recipe_format (GrRecipe *recipe)
                         char *unit;
 
                         g_string_append (s, "\n");
-                        unit = gr_ingredients_list_scale_unit (ingredients, segs[j], ings[i], 1, 1);
+                        unit = gr_ingredients_list_scale_unit (ingredients, segs[j], ings[i], 1.0);
                         g_string_append (s, unit);
                         g_free (unit);
                         g_string_append (s, " ");
