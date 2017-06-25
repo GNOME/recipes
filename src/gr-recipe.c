@@ -57,7 +57,6 @@ struct _GrRecipe
         char *category;
         char *prep_time;
         char *cook_time;
-        int serves;
         char *ingredients;
         char *instructions;
         char *notes;
@@ -99,7 +98,6 @@ enum {
         PROP_CATEGORY,
         PROP_PREP_TIME,
         PROP_COOK_TIME,
-        PROP_SERVES,
         PROP_YIELD,
         PROP_YIELD_UNIT,
         PROP_INGREDIENTS,
@@ -202,10 +200,6 @@ gr_recipe_get_property (GObject    *object,
 
         case PROP_COOK_TIME:
                 g_value_set_string (value, self->cook_time);
-                break;
-
-        case PROP_SERVES:
-                g_value_set_int (value, self->serves);
                 break;
 
         case PROP_SPICINESS:
@@ -356,10 +350,6 @@ gr_recipe_set_property (GObject      *object,
                 self->cook_time = g_value_dup_string (value);
                 break;
 
-        case PROP_SERVES:
-                self->serves = g_value_get_int (value);
-                break;
-
         case PROP_SPICINESS:
                 self->spiciness = g_value_get_int (value);
                 break;
@@ -502,11 +492,6 @@ gr_recipe_class_init (GrRecipeClass *klass)
                                      G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_COOK_TIME, pspec);
 
-        pspec = g_param_spec_int ("serves", NULL, NULL,
-                                  0, 100, 0,
-                                  G_PARAM_READWRITE);
-        g_object_class_install_property (object_class, PROP_SERVES, pspec);
-
         pspec = g_param_spec_string ("ingredients", NULL, NULL,
                                      NULL,
                                      G_PARAM_READWRITE);
@@ -613,12 +598,6 @@ const char *
 gr_recipe_get_translated_notes (GrRecipe *recipe)
 {
         return recipe->translated_notes;
-}
-
-int
-gr_recipe_get_serves (GrRecipe *recipe)
-{
-        return recipe->serves;
 }
 
 const char *
