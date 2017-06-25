@@ -325,14 +325,12 @@ out:
 char *
 gr_number_format (double number)
 {
-        double integral, rem;
+        double integral;
         int num, denom;
 
         integral = floor (number);
-        rem = number - integral;
+        number -= integral;
 
-        if (rational_approximation (rem, 20, &num, &denom))
-                return format_fraction ((int)integral, num, denom);
-        else
-                return g_strdup_printf ("%g", number);
+        rational_approximation (number, 20, &num, &denom);
+        return format_fraction ((int)integral, num, denom);
 }
