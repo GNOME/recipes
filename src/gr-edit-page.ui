@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="gnome-recipes">
-  <object class="GtkAdjustment" id="serves_adjustment">
-    <property name="lower">1</property>
-    <property name="upper">99</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">10</property>
-    <signal name="value-changed" handler="set_unsaved" swapped="yes"/>
-  </object>
   <template class="GrEditPage" parent="GtkBox">
     <property name="visible">True</property>
     <property name="orientation">vertical</property>
@@ -319,7 +312,7 @@
                       <object class="GtkLabel">
                         <property name="visible">1</property>
                         <property name="use-underline">1</property>
-                        <property name="mnemonic-widget">serves_spin</property>
+                        <property name="mnemonic-widget">yield_entry</property>
                         <property name="label" translatable="yes">_Yield</property>
                         <property name="valign">baseline</property>
                         <property name="xalign">1</property>
@@ -333,32 +326,12 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkEntry" id="yield_entry">
                         <property name="visible">1</property>
-                        <property name="orientation">horizontal</property>
-                        <property name="halign">start</property>
+                        <property name="halign">fill</property>
                         <property name="valign">baseline</property>
-                        <property name="spacing">10</property>
-                        <child>
-                          <object class="GtkSpinButton" id="serves_spin">
-                            <property name="visible">1</property>
-                            <property name="halign">start</property>
-                            <property name="valign">baseline</property>
-                            <property name="adjustment">serves_adjustment</property>
-                            <property name="width-chars">4</property>
-                            <property name="margin-bottom">10</property>
-                            <signal name="input" handler="serves_spin_input"/>
-                            <signal name="output" handler="serves_spin_output"/>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="yield_entry">
-                            <property name="visible">1</property>
-                            <property name="valign">baseline</property>
-                            <property name="margin-bottom">10</property>
-                            <signal name="notify::text" handler="set_unsaved" swapped="yes"/>
-                          </object>
-                        </child>
+                        <property name="margin-bottom">10</property>
+                        <signal name="notify::text" handler="set_unsaved" swapped="yes"/>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>

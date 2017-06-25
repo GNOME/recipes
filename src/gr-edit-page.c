@@ -72,7 +72,6 @@ struct _GrEditPage
         GtkWidget *cook_time_combo;
         GtkWidget *description_field;
         GtkWidget *instructions_field;
-        GtkWidget *serves_spin;
         GtkWidget *yield_entry;
         GtkWidget *gluten_free_check;
         GtkWidget *nut_free_check;
@@ -132,6 +131,10 @@ struct _GrEditPage
         GCancellable *cancellable;
 
         GtkTextTag *no_spell_check;
+
+        int yield_unit_col;
+        GtkCellRenderer *yield_unit_cell;
+        GtkEntryCompletion *yield_completion;
 };
 
 G_DEFINE_TYPE (GrEditPage, gr_edit_page, GTK_TYPE_BOX)
@@ -900,12 +903,172 @@ edit_chef (GrEditPage *page)
         return TRUE;
 }
 
+static int
+sort_func (GtkTreeModel *model,
+           GtkTreeIter  *a,
+           GtkTreeIter  *b,
+           gpointer      user_data)
+{
+        g_autofree char *as = NULL;
+        g_autofree char *bs = NULL;
 
+        gtk_tree_model_get (model, a, 0, &as, -1);
+        gtk_tree_model_get (model, b, 0, &bs, -1);
+
+        return g_strcmp0 (as, bs);
+}
+
+static GtkTreeModel *
+get_units_model (GrEditPage *page)
+{
+        static GtkListStore *store = NULL;
+
+        if (store == NULL) {
+                store = gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_STRING);
+                gtk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (store),
+                                                         sort_func, NULL, NULL);
+                gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (store),
+                                                      GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
+                                                      GTK_SORT_ASCENDING);
+
+                gtk_list_store_insert_with_values (store, NULL, -1,
+                                                   0, _("serving"),
+                                                   1, _("servings"),
+                                                   -1);
+                gtk_list_store_insert_with_values (store, NULL, -1,
+                                                   0, _("loaf"),
+                                                   1, _("loafs"),
+                                                   -1);
+                gtk_list_store_insert_with_values (store, NULL, -1,
+                                                   0, _("ounce"),
+                                                   1, _("ounces"),
+                                                   -1);
+        }
+
+        return g_object_ref (store);
+}
+
+static gboolean
+parse_yield (const char  *text,
+             double      *amount,
+             char       **unit)
+{
+        char *tmp;
+        const char *str;
+        g_autofree char *num = NULL;
+
+        g_clear_pointer (unit, g_free);
+
+        tmp = (char *)text;
+        skip_whitespace (&tmp);
+        str = tmp;
+        if (!gr_number_parse (amount, &tmp, NULL)) {
+                *unit = g_strdup (str);
+                return FALSE;
+        }
+
+        skip_whitespace (&tmp);
+        if (tmp)
+                *unit = g_strdup (tmp);
+
+        return TRUE;
+}
+
+static void
+get_amount (GtkCellLayout   *layout,
+            GtkCellRenderer *renderer,
+            GtkTreeModel    *model,
+            GtkTreeIter     *iter,
+            gpointer         data)
+{
+        GrEditPage *page = data;
+        double amount;
+        g_autofree char *unit = NULL;
+        g_autofree char *tmp = NULL;
+
+        parse_yield (gtk_entry_get_text (GTK_ENTRY (page->yield_entry)), &amount, &unit);
+        tmp = gr_number_format (amount);
+        g_object_set (renderer, "text", tmp, NULL);
+}
+
+static gboolean
+match_func (GtkEntryCompletion *completion,
+            const char         *key,
+            GtkTreeIter        *iter,
+            gpointer            data)
+{
+        GrEditPage *page = data;
+        GtkTreeModel *model;
+        g_autofree char *name = NULL;
+        g_autofree char *plural = NULL;
+        double amount;
+        g_autofree char *unit = NULL;
+
+        model = gtk_entry_completion_get_model (completion);
+        gtk_tree_model_get (model, iter, 0, &name, 1, &plural, -1);
+
+        if (!parse_yield (gtk_entry_get_text (GTK_ENTRY (page->yield_entry)), &amount, &unit))
+                return FALSE;
+
+        if (!unit)
+                return FALSE;
+
+        if (g_str_has_prefix (name, unit) ||
+            g_str_has_prefix (plural, unit))
+                return TRUE;
+
+        return FALSE;
+}
+
+static gboolean
+match_selected (GtkEntryCompletion *completion,
+                GtkTreeModel       *model,
+                GtkTreeIter        *iter,
+                gpointer            data)
+{
+        GrEditPage *page = data;
+        g_autofree char *abbrev = NULL;
+        double amount;
+        g_autofree char *unit = NULL;
+        g_autofree char *tmp = NULL;
+        g_autofree char *tmp2 = NULL;
+
+        gtk_tree_model_get (model, iter, page->yield_unit_col, &abbrev, -1);
+
+        parse_yield (gtk_entry_get_text (GTK_ENTRY (page->yield_entry)), &amount, &unit);
+        tmp = gr_number_format (amount);
+        tmp2 = g_strdup_printf ("%s %s", tmp, abbrev);
+        gtk_entry_set_text (GTK_ENTRY (page->yield_entry), tmp2);
+
+        return TRUE;
+}
+
+static void
+text_changed (GObject    *object,
+              GParamSpec *pspec,
+              gpointer    data)
+{
+        GtkEntry *entry = GTK_ENTRY (object);
+        GrEditPage *page = data;
+        double number;
+        char *text;
+
+        text = (char *) gtk_entry_get_text (entry);
+        gr_number_parse (&number, &text, NULL);
+        page->yield_unit_col = number > 1 ? 1 : 0;
+        gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (page->yield_completion),
+                                        page->yield_unit_cell,
+                                        "text", page->yield_unit_col,
+                                        NULL);
+}
 
 static void
 gr_edit_page_init (GrEditPage *page)
 {
         GtkTextBuffer *buffer;
+        g_autoptr(GtkTreeModel) units_model = NULL;
+        g_autoptr(GtkEntryCompletion) completion = NULL;
+        GtkCellRenderer *cell;
 
         gtk_widget_set_has_window (GTK_WIDGET (page), FALSE);
         gtk_widget_init_template (GTK_WIDGET (page));
@@ -939,6 +1102,27 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                                            "gtksourceview:context-classes:no-spell-check",
                                                            "style", PANGO_STYLE_ITALIC,
                                                            NULL);
+
+        units_model = get_units_model (page);
+        completion = gtk_entry_completion_new ();
+        gtk_entry_completion_set_model (completion, units_model);
+        g_object_set (completion, "text-column", 2, NULL);
+
+        cell = gtk_cell_renderer_text_new ();
+        gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (completion), cell, get_amount, page, NULL);
+        gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (completion), cell, FALSE);
+
+        cell = gtk_cell_renderer_text_new ();
+        gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (completion), cell, TRUE);
+        page->yield_unit_cell = cell;
+        page->yield_completion = completion;
+        page->yield_unit_col = 0;
+
+        g_signal_connect (page->yield_entry, "notify::text", G_CALLBACK (text_changed), page);
+
+        gtk_entry_completion_set_match_func (completion, match_func, page, NULL);
+        g_signal_connect (completion, "match-selected", G_CALLBACK (match_selected), page);
+        gtk_entry_set_completion (GTK_ENTRY (page->yield_entry), completion);
 }
 
 static void
@@ -1045,35 +1229,6 @@ set_unsaved (GrEditPage *page)
         g_object_set (G_OBJECT (page), "unsaved", TRUE, NULL);
 }
 
-static int
-serves_spin_input (GtkSpinButton *spin,
-                   double        *new_val)
-{
-        char *text;
-
-        text = (char *)gtk_entry_get_text (GTK_ENTRY (spin));
-
-        if (!gr_number_parse (new_val, &text, NULL)) {
-                *new_val = 0.0;
-                return GTK_INPUT_ERROR;
-        }
-
-        return TRUE;
-}
-
-static int
-serves_spin_output (GtkSpinButton *spin)
-{
-        GtkAdjustment *adj;
-        g_autofree char *text = NULL;
-
-        adj = gtk_spin_button_get_adjustment (spin);
-        text = gr_number_format (gtk_adjustment_get_value (adj));
-        gtk_entry_set_text (GTK_ENTRY (spin), text);
-
-        return TRUE;
-}
-
 static void
 gr_edit_page_grab_focus (GtkWidget *widget)
 {
@@ -1111,7 +1266,6 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, season_combo);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, prep_time_combo);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, cook_time_combo);
-        gtk_widget_class_bind_template_child (widget_class, GrEditPage, serves_spin);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, spiciness_combo);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, description_field);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, instructions_field);
@@ -1172,8 +1326,6 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, prev_step);
         gtk_widget_class_bind_template_callback (widget_class, next_step);
         gtk_widget_class_bind_template_callback (widget_class, set_unsaved);
-        gtk_widget_class_bind_template_callback (widget_class, serves_spin_input);
-        gtk_widget_class_bind_template_callback (widget_class, serves_spin_output);
 
         gtk_widget_class_bind_template_callback (widget_class, add_list);
         gtk_widget_class_bind_template_callback (widget_class, do_add_timer);
@@ -1470,6 +1622,7 @@ gr_edit_page_edit (GrEditPage *page,
         GPtrArray *images;
         g_autoptr(GrChef) chef = NULL;
         GrRecipeStore *store;
+        char *tmp, *tmp2;
 
         gr_image_viewer_revert_changes (GR_IMAGE_VIEWER (page->images));
 
@@ -1505,8 +1658,11 @@ gr_edit_page_edit (GrEditPage *page,
         set_combo_value (GTK_COMBO_BOX (page->prep_time_combo), prep_time);
         set_combo_value (GTK_COMBO_BOX (page->cook_time_combo), cook_time);
         set_spiciness (page, spiciness);
-        gtk_spin_button_set_value (GTK_SPIN_BUTTON (page->serves_spin), yield);
-        gtk_entry_set_text (GTK_ENTRY (page->yield_entry), yield_unit);
+        tmp = gr_number_format (yield);
+        tmp2 = g_strdup_printf ("%s %s", tmp, yield_unit);
+        gtk_entry_set_text (GTK_ENTRY (page->yield_entry), tmp2);
+        g_free (tmp2);
+        g_free (tmp);
         set_text_view_text (GTK_TEXT_VIEW (page->description_field), description);
         rewrite_instructions_for_removed_image (page, instructions, -1);
         gtk_stack_set_visible_child_name (GTK_STACK (page->preview_stack), "edit");
@@ -1554,12 +1710,13 @@ gr_edit_page_save (GrEditPage *page)
         g_autofree char *ingredients = NULL;
         g_autofree char *instructions = NULL;
         double yield;
-        const char *yield_unit;
+        g_autofree char *yield_unit = NULL;
         GrRecipeStore *store;
         g_autoptr(GError) error = NULL;
         gboolean ret = TRUE;
         GrDiets diets;
         GPtrArray *images;
+        char *text;
 
         page->error_field = NULL;
 
@@ -1580,8 +1737,11 @@ gr_edit_page_save (GrEditPage *page)
         prep_time = get_combo_value (GTK_COMBO_BOX (page->prep_time_combo));
         cook_time = get_combo_value (GTK_COMBO_BOX (page->cook_time_combo));
         spiciness = get_spiciness (page);
-        yield = gtk_spin_button_get_value (GTK_SPIN_BUTTON (page->serves_spin));
-        yield_unit = gtk_entry_get_text (GTK_ENTRY (page->yield_entry));
+        text = (char *)gtk_entry_get_text (GTK_ENTRY (page->yield_entry));
+        if (!parse_yield (text, &yield, &yield_unit)) {
+                yield = 1.0;
+                yield_unit = g_strdup (text);
+        }
 
         if (!collect_ingredients (page, &page->error_field, &ingredients)) {
                 g_set_error (&error, G_IO_ERROR, G_IO_ERROR_FAILED,
