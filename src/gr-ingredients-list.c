@@ -30,16 +30,8 @@
 #include "gr-utils.h"
 
 
-typedef struct
-{
-        double amount;
-        gchar *unit;
-        gchar *name;
-        gchar *segment;
-} Ingredient;
-
 static void
-ingredient_free (Ingredient *ing)
+ingredient_free (IngredientObj *ing)
 {
         g_free (ing->name);
         g_free (ing->unit);
@@ -75,7 +67,7 @@ gr_ingredients_list_populate (GrIngredientsList  *ingredients,
                 char *segment;
                 const char *u;
                 const char *s;
-                Ingredient *ing;
+                IngredientObj *ing;
                 g_autoptr(GError) local_error = NULL;
 
                 if (lines[i][0] == '\0')
@@ -92,7 +84,7 @@ gr_ingredients_list_populate (GrIngredientsList  *ingredients,
                 ingredient = fields[2];
                 segment = fields[3];
 
-                ing = g_new0 (Ingredient, 1);
+                ing = g_new0 (IngredientObj, 1);
                 ing->amount = 1.0;
                 if (amount[0] != '\0' &&
                     !gr_number_parse (&ing->amount, &amount, &local_error)) {
@@ -172,7 +164,11 @@ gr_ingredients_list_validate (const char  *text,
 }
 
 static void
+<<<<<<< fd7e9ce6bc998a11c0b79f4b509fea298bf54776
 ingredient_scale_unit (Ingredient *ing, double scale, GString *s)
+=======
+ingredient_scale_unit (IngredientObj *ing, int num, int denom, GString *s)
+>>>>>>> Attempt at moving amount to double, unit failing
 {
         g_autofree char *scaled = NULL;
 
@@ -186,7 +182,7 @@ ingredient_scale_unit (Ingredient *ing, double scale, GString *s)
 }
 
 static void
-ingredient_scale (Ingredient *ing, int num, int denom, GString *s)
+ingredient_scale (IngredientObj *ing, int num, int denom, GString *s)
 {
         ingredient_scale_unit (ing, (double)num / (double)denom, s);
         g_string_append (s, " ");
@@ -205,7 +201,7 @@ gr_ingredients_list_scale (GrIngredientsList *ingredients,
         s = g_string_new ("");
 
         for (l = ingredients->ingredients; l; l = l->next) {
-                Ingredient *ing = (Ingredient *)l->data;
+                IngredientObj *ing = (IngredientObj *)l->data;
 
                 ingredient_scale (ing, num, denom, s);
         }
@@ -229,7 +225,7 @@ gr_ingredients_list_get_ingredients (GrIngredientsList *ingredients,
 
         ret = g_new0 (char *, g_list_length (ingredients->ingredients) + 1);
         for (i = 0, l = ingredients->ingredients; l; l = l->next) {
-                Ingredient *ing = (Ingredient *)l->data;
+                IngredientObj *ing = (IngredientObj *)l->data;
                 if (g_strcmp0 (segment, ing->segment) == 0)
                         ret[i++] = g_strdup (ing->name);
         }
@@ -246,7 +242,7 @@ gr_ingredients_list_scale_unit (GrIngredientsList *ingredients,
         GList *l;
 
         for (l = ingredients->ingredients; l; l = l->next) {
-                Ingredient *ing = (Ingredient *)l->data;
+                IngredientObj *ing = (IngredientObj *)l->data;
 
                 if (g_strcmp0 (segment, ing->segment) == 0 &&
                     g_strcmp0 (name, ing->name) == 0) {
@@ -270,7 +266,7 @@ gr_ingredients_list_get_unit (GrIngredientsList *ingredients,
         GList *l;
 
         for (l = ingredients->ingredients; l; l = l->next) {
-                Ingredient *ing = (Ingredient *)l->data;
+                IngredientObj *ing = (IngredientObj *)l->data;
 
                 if (g_strcmp0 (segment, ing->segment) == 0 &&
                     g_strcmp0 (name, ing->name) == 0) {
@@ -289,7 +285,7 @@ gr_ingredients_list_get_amount (GrIngredientsList *ingredients,
         GList *l;
 
         for (l = ingredients->ingredients; l; l = l->next) {
-                Ingredient *ing = (Ingredient *)l->data;
+                IngredientObj *ing = (IngredientObj *)l->data;
 
                 if (g_strcmp0 (segment, ing->segment) == 0 &&
                     g_strcmp0 (name, ing->name) == 0) {

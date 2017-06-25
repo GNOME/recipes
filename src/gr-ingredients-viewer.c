@@ -27,6 +27,7 @@
 #include "gr-ingredients-list.h"
 #include "gr-ingredient.h"
 #include "gr-utils.h"
+#include "gr-number.h"
 
 #ifdef ENABLE_GSPELL
 #include <gspell/gspell.h>
@@ -318,14 +319,20 @@ gr_ingredients_viewer_set_ingredients (GrIngredientsViewer *viewer,
         for (i = 0; ings && ings[i]; i++) {
                 g_autofree char *s = NULL;
                 g_auto(GStrv) strv = NULL;
-                const char *amount;
+                double amount;
                 const char *unit;
                 GtkWidget *row;
 
                 s = gr_ingredients_list_scale_unit (ingredients, viewer->title, ings[i], viewer->scale);
-                strv = g_strsplit (s, " ", 2);
-                amount = strv[0];
+                //strv = g_strsplit (s, " ", 2);
+                //amount = strv[0];
                 unit = strv[1] ? strv[1] : "";
+                unit = gr_ingredients_list_get_unit(ingredients, viewer->title, ings[i]);
+                amount = gr_ingredients_list_get_amount(ingredients, viewer->title, ings[i]);
+
+                g_message("segment is %s", viewer->title);
+                g_message("amount is %f", amount);
+                g_message("unit is %s", unit);
 
                 row = g_object_new (GR_TYPE_INGREDIENTS_VIEWER_ROW,
                                     "amount", amount,

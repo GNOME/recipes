@@ -26,6 +26,14 @@ G_BEGIN_DECLS
 
 #define GR_TYPE_INGREDIENTS_LIST (gr_ingredients_list_get_type ())
 
+typedef struct
+{
+        double amount;
+        gchar *unit;
+        gchar *name;
+        gchar *segment;
+} IngredientObj;
+
 G_DECLARE_FINAL_TYPE (GrIngredientsList, gr_ingredients_list, GR, INGREDIENTS_LIST, GObject)
 
 GrIngredientsList *gr_ingredients_list_new             (const char         *text);
