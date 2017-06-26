@@ -190,6 +190,21 @@ search_finished (GrRecipeSearch *search,
                                           page->count > 0 ? "list" : "empty");
 }
 
+static int
+sort_func (GtkFlowBoxChild *child1,
+           GtkFlowBoxChild *child2,
+           gpointer         data)
+{
+        GtkWidget *tile1 = gtk_bin_get_child (GTK_BIN (child1));
+        GtkWidget *tile2 = gtk_bin_get_child (GTK_BIN (child2));
+        GrRecipe *recipe1 = gr_recipe_tile_get_recipe (GR_RECIPE_TILE (tile1));
+        GrRecipe *recipe2 = gr_recipe_tile_get_recipe (GR_RECIPE_TILE (tile2));
+        const char *name1 = gr_recipe_get_name (recipe1);
+        const char *name2 = gr_recipe_get_name (recipe2);
+
+        return strcmp (name1, name2);
+}
+
 static void
 gr_list_page_init (GrListPage *page)
 {
@@ -202,6 +217,8 @@ gr_list_page_init (GrListPage *page)
         g_signal_connect (page->search, "hits-added", G_CALLBACK (search_hits_added), page);
         g_signal_connect (page->search, "hits-removed", G_CALLBACK (search_hits_removed), page);
         g_signal_connect (page->search, "finished", G_CALLBACK (search_finished), page);
+
+        gtk_flow_box_set_sort_func (GTK_FLOW_BOX (page->flow_box), sort_func, page, NULL);
 }
 
 static void
