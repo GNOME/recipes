@@ -329,6 +329,10 @@ gr_ingredients_viewer_set_ingredients (GrIngredientsViewer *viewer,
                 unit = strv[1] ? strv[1] : "";
                 unit = gr_ingredients_list_get_unit(ingredients, viewer->title, ings[i]);
                 amount = gr_ingredients_list_get_amount(ingredients, viewer->title, ings[i]);
+                
+                //strv = g_strsplit (s, " ", 2);
+                //amount = strv[0];
+                //unit = strv[1] ? strv[1] : "";
 
                 g_message("segment is %s", viewer->title);
                 g_message("amount is %f", amount);

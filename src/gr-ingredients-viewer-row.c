@@ -50,7 +50,7 @@ struct _GrIngredientsViewerRow
         GtkEntryCompletion *unit_completion;
         GtkCellRenderer *unit_cell;
 
-        char *amount;
+        double amount;
         char *unit;
         char *ingredient;
 
@@ -88,7 +88,7 @@ gr_ingredients_viewer_row_finalize (GObject *object)
 {
         GrIngredientsViewerRow *self = GR_INGREDIENTS_VIEWER_ROW (object);
 
-        g_free (self->amount);
+        //g_free (self->amount);
         g_free (self->unit);
         g_free (self->ingredient);
 
@@ -108,7 +108,7 @@ gr_ingredients_viewer_row_get_property (GObject    *object,
         switch (prop_id)
           {
           case PROP_AMOUNT:
-                g_value_set_string (value, self->amount);
+                g_value_set_double (value, self->amount);
                 break;
 
           case PROP_UNIT:
@@ -140,14 +140,14 @@ static void
 update_unit (GrIngredientsViewerRow *row)
 {
         g_autofree char *tmp = NULL;
-        const char *amount;
+        double amount;
         const char *space;
         const char *unit;
 
-        amount = row->amount ? row->amount : "";
-        space = amount[0] ? " " : "";
+        amount = row->amount ? row->amount : 0;
+        //space = amount[0] ? " " : "";
         unit = row->unit ? row->unit : "";
-        tmp = g_strdup_printf ("%s%s%s", amount, space, unit);
+        tmp = g_strdup_printf ("%f %s", amount, unit);
         if (tmp[0] == '\0' && row->editable) {
                 gtk_style_context_add_class (gtk_widget_get_style_context (row->unit_label), "dim-label");
                 gtk_label_set_label (GTK_LABEL (row->unit_label), _("Amount…"));
@@ -173,10 +173,10 @@ update_ingredient (GrIngredientsViewerRow *row)
 
 static void
 gr_ingredients_viewer_row_set_amount (GrIngredientsViewerRow *row,
-                                      const char             *amount)
+                                      double             amount)
 {
-        g_free (row->amount);
-        row->amount = g_strdup (amount);
+        //g_free (row->amount);
+        row->amount = amount;
         update_unit (row);
 }
 
@@ -245,7 +245,7 @@ gr_ingredients_viewer_row_set_property (GObject      *object,
         switch (prop_id)
           {
           case PROP_AMOUNT:
-                gr_ingredients_viewer_row_set_amount (self, g_value_get_string (value));
+                gr_ingredients_viewer_row_set_amount (self, g_value_get_double (value));
                 break;
 
           case PROP_UNIT:
@@ -306,14 +306,14 @@ static void
 edit_unit (GrIngredientsViewerRow *row)
 {
         g_autofree char *tmp = NULL;
-        const char *amount;
+        double amount;
         const char *space;
         const char *unit;
 
-        amount = row->amount ? row->amount : "";
-        space = amount[0] ? " " : "";
+        amount = row->amount ? row->amount : 0;
+        //space = amount[0] ? " " : "";
         unit = row->unit ? row->unit : "";
-        tmp = g_strdup_printf ("%s%s%s", amount, space, unit);
+        tmp = g_strdup_printf ("%f%s%s", amount, space, unit);
 
         save_ingredient (row);
 
@@ -356,7 +356,7 @@ parse_unit (const char  *text,
                 return FALSE;
         }
 
-        *amount = gr_number_format (number);
+        amount = gr_number_format (number);
         skip_whitespace (&tmp);
         if (tmp)
                 *unit = g_strdup (tmp);
@@ -481,8 +481,8 @@ gr_ingredients_viewer_row_class_init (GrIngredientsViewerRowClass *klass)
         object_class->get_property = gr_ingredients_viewer_row_get_property;
         object_class->set_property = gr_ingredients_viewer_row_set_property;
 
-        pspec = g_param_spec_string ("amount", NULL, NULL,
-                                     NULL,
+        pspec = g_param_spec_double ("amount", NULL, NULL,
+                                     0.0, G_MAXDOUBLE, 1.0,
                                      G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_AMOUNT, pspec);
 
@@ -812,7 +812,7 @@ match_selected (GtkEntryCompletion *completion,
 
         parse_unit (gtk_entry_get_text (GTK_ENTRY (row->unit_entry)), &amount, &unit);
 
-        tmp = g_strdup_printf ("%s %s", amount, abbrev);
+        tmp = g_strdup_printf ("%f %s", amount, abbrev);
 
         gtk_entry_set_text (GTK_ENTRY (row->unit_entry), tmp);
 
