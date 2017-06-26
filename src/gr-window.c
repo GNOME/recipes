@@ -560,7 +560,7 @@ gr_window_new (GrApp *app)
 
 typedef struct {
         GrRecipe *recipe;
-        int serves;
+        double yield;
 } ShoppingListEntry;
 
 static void
@@ -800,7 +800,7 @@ back_to_shopping (GrWindow *window)
 
         for (l = window->shopping_done_list; l; l = l->next) {
                 ShoppingListEntry *entry = l->data;
-                gr_recipe_store_add_to_shopping (store, entry->recipe, entry->serves);
+                gr_recipe_store_add_to_shopping (store, entry->recipe, entry->yield);
         }
         for (i = 0; window->removed_ingredients && window->removed_ingredients[i]; i++) {
                 gr_recipe_store_remove_shopping_ingredient (store, window->removed_ingredients[i]);
@@ -849,7 +849,7 @@ done_shopping (GrWindow *window)
 
                 entry = g_new (ShoppingListEntry, 1);
                 entry->recipe = g_object_ref (recipe);
-                entry->serves = gr_recipe_store_get_shopping_serves (store, recipe);
+                entry->yield = gr_recipe_store_get_shopping_yield (store, recipe);
                 window->shopping_done_list = g_list_append (window->shopping_done_list, entry);
         }
         g_list_free_full (recipes, g_object_unref);

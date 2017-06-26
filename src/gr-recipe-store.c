@@ -1812,12 +1812,12 @@ gr_recipe_store_clear_export_list (GrRecipeStore *self)
 void
 gr_recipe_store_add_to_shopping (GrRecipeStore *self,
                                  GrRecipe      *recipe,
-                                 int            serves)
+                                 double         yield)
 {
         const char *id;
 
         id = gr_recipe_get_id (recipe);
-        g_variant_dict_insert (self->shopping_list, id, "u", (guint)serves);
+        g_variant_dict_insert (self->shopping_list, id, "d", yield);
 
         if (self->shopping_change)
                 g_date_time_unref (self->shopping_change);
@@ -1903,18 +1903,18 @@ gr_recipe_store_get_shopping_list (GrRecipeStore *self)
         return list;
 }
 
-int
-gr_recipe_store_get_shopping_serves (GrRecipeStore *self,
-                                     GrRecipe      *recipe)
+double
+gr_recipe_store_get_shopping_yield (GrRecipeStore *self,
+                                    GrRecipe      *recipe)
 {
         const char *id;
-        guint serves;
+        double yield;
 
         id = gr_recipe_get_id (recipe);
-        if (g_variant_dict_lookup (self->shopping_list, id, "u", &serves))
-                return (int)serves;
+        if (g_variant_dict_lookup (self->shopping_list, id, "d", &yield))
+                return yield;
 
-        return 0;
+        return 0.0;
 }
 
 gboolean

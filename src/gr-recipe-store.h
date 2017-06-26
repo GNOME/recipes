@@ -91,14 +91,14 @@ const char    **gr_recipe_store_get_export_list     (GrRecipeStore  *self);
 
 void            gr_recipe_store_add_to_shopping      (GrRecipeStore  *self,
                                                       GrRecipe       *recipe,
-                                                      int             serves);
+                                                      double          yield);
 void            gr_recipe_store_remove_from_shopping (GrRecipeStore  *self,
                                                       GrRecipe       *recipe);
 void            gr_recipe_store_clear_shopping_list  (GrRecipeStore *self);
 gboolean        gr_recipe_store_is_in_shopping       (GrRecipeStore  *self,
                                                       GrRecipe       *recipe);
 GList          *gr_recipe_store_get_shopping_list    (GrRecipeStore  *self);
-int             gr_recipe_store_get_shopping_serves  (GrRecipeStore  *self,
+double          gr_recipe_store_get_shopping_yield   (GrRecipeStore  *self,
                                                       GrRecipe       *recipe);
 gboolean        gr_recipe_store_not_shopping_ingredient    (GrRecipeStore *self,
                                                             const char    *ingredient);
