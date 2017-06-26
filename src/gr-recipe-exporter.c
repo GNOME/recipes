@@ -272,7 +272,9 @@ export_one_recipe (GrRecipeExporter  *exporter,
         const char *ingredients;
         const char *instructions;
         const char *notes;
-        int serves;
+        double yield;
+        const char *yield_unit;
+        g_autofree char *yield_str = NULL;
         int default_image;
         int spiciness;
         GrDiets diets;
@@ -290,7 +292,8 @@ export_one_recipe (GrRecipeExporter  *exporter,
         name = gr_recipe_get_name (recipe);
         author = gr_recipe_get_author (recipe);
         description = gr_recipe_get_description (recipe);
-        serves = gr_recipe_get_serves (recipe);
+        yield = gr_recipe_get_yield (recipe);
+        yield_unit = gr_recipe_get_yield_unit (recipe);
         cuisine = gr_recipe_get_cuisine (recipe);
         season = gr_recipe_get_season (recipe);
         category = gr_recipe_get_category (recipe);
@@ -346,7 +349,9 @@ export_one_recipe (GrRecipeExporter  *exporter,
         g_key_file_set_string (keyfile, key, "Ingredients", ingredients ? ingredients : "");
         g_key_file_set_string (keyfile, key, "Instructions", instructions ? instructions : "");
         g_key_file_set_string (keyfile, key, "Notes", notes ? notes : "");
-        g_key_file_set_integer (keyfile, key, "Serves", serves);
+        g_key_file_set_integer (keyfile, key, "Serves", (int)yield);
+        yield_str = g_strdup_printf ("%g %s", yield, yield_unit);
+        g_key_file_set_string (keyfile, key, "Yield", yield_str);
         g_key_file_set_integer (keyfile, key, "Spiciness", spiciness);
         g_key_file_set_integer (keyfile, key, "Diets", diets);
         g_key_file_set_integer (keyfile, key, "DefaultImage", default_image);
