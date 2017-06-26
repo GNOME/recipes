@@ -323,10 +323,14 @@ gr_ingredients_viewer_set_ingredients (GrIngredientsViewer *viewer,
                 const char *unit;
                 GtkWidget *row;
 
+<<<<<<< 5304691ced802de6f16064e89f48e6c38b5de0df
                 s = gr_ingredients_list_scale_unit (ingredients, viewer->title, ings[i], viewer->scale);
                 //strv = g_strsplit (s, " ", 2);
                 //amount = strv[0];
                 unit = strv[1] ? strv[1] : "";
+=======
+                s = gr_ingredients_list_scale_unit (ingredients, viewer->title, ings[i], viewer->scale_num, viewer->scale_denom);
+>>>>>>> got convert-temp working, need to work on scaling the display
                 unit = gr_ingredients_list_get_unit(ingredients, viewer->title, ings[i]);
                 amount = gr_ingredients_list_get_amount(ingredients, viewer->title, ings[i]);
                 
