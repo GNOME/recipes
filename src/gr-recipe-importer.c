@@ -82,7 +82,8 @@ struct _GrRecipeImporter
         char *recipe_instructions;
         char *recipe_notes;
         char **recipe_paths;
-        int recipe_serves;
+        double recipe_yield;
+        char *recipe_yield_unit;
         int recipe_spiciness;
         int recipe_default_image;
         GrDiets recipe_diets;
@@ -324,7 +325,8 @@ import_recipe (GrRecipeImporter *importer)
                       "ingredients", importer->recipe_ingredients,
                       "instructions", importer->recipe_instructions,
                       "notes", importer->recipe_notes,
-                      "serves", importer->recipe_serves,
+                      "yield", importer->recipe_yield,
+                      "yield-unit", importer->recipe_yield_unit,
                       "spiciness", importer->recipe_spiciness,
                       "default-image", importer->recipe_default_image,
                       "diets", importer->recipe_diets,
@@ -411,6 +413,32 @@ show_recipe_conflict_dialog (GrRecipeImporter *importer)
         gtk_widget_show (dialog);
 }
 
+static gboolean
+parse_yield (const char  *text,
+             double      *amount,
+             char       **unit)
+{
+        char *tmp;
+        const char *str;
+        g_autofree char *num = NULL;
+
+        g_clear_pointer (unit, g_free);
+
+        tmp = (char *)text;
+        skip_whitespace (&tmp);
+        str = tmp;
+        if (!gr_number_parse (amount, &tmp, NULL)) {
+                *unit = g_strdup (str);
+                return FALSE;
+        }
+
+        skip_whitespace (&tmp);
+        if (tmp)
+                *unit = g_strdup (tmp);
+
+        return TRUE;
+}
+
 #define handle_or_clear_error(error) \
         if (error) { \
                 if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) { \
@@ -435,6 +463,7 @@ import_next_recipe (GrRecipeImporter *importer)
         gsize length2;
         g_autoptr(GError) error = NULL;
         const char *id;
+        g_autofree char *yield_str = NULL;
 
         store = gr_recipe_store_get ();
 
@@ -465,8 +494,14 @@ next:
         importer->recipe_ingredients = key_file_get_string (importer->recipes_keyfile, id, "Ingredients");
         importer->recipe_instructions = key_file_get_string (importer->recipes_keyfile, id, "Instructions");
         importer->recipe_notes = key_file_get_string (importer->recipes_keyfile, id, "Notes");
-        importer->recipe_serves = g_key_file_get_integer (importer->recipes_keyfile, id, "Serves", &error);
+
+        yield_str = key_file_get_string (importer->recipes_keyfile, id, "Yield");
         handle_or_clear_error (error);
+        if (!yield_str || !parse_yield (yield_str, &importer->recipe_yield, &importer->recipe_yield_unit)) {
+
+                importer->recipe_yield = (double)g_key_file_get_integer (importer->recipes_keyfile, id, "Serves", &error);
+                importer->recipe_yield_unit = g_strdup (_("servings"));
+        }
         importer->recipe_spiciness = g_key_file_get_integer (importer->recipes_keyfile, id, "Spiciness", &error);
         handle_or_clear_error (error);
         importer->recipe_default_image = g_key_file_get_integer (importer->recipes_keyfile, id, "DefaultImage", &error);
