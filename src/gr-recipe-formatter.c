@@ -72,6 +72,8 @@ gr_recipe_format (GrRecipe *recipe)
         g_autoptr(GrIngredientsList) ingredients = NULL;
         g_autofree char **segs = NULL;
         g_auto(GStrv) ings = NULL;
+        g_autofree char *amount = NULL;
+        g_autofree char *yield_str = NULL;
         int i, j;
         int length;
         g_autoptr(GPtrArray) steps = NULL;
@@ -86,7 +88,9 @@ gr_recipe_format (GrRecipe *recipe)
         g_string_append_printf (s, "%s %s\n", _("Author:"), gr_chef_get_fullname (chef));
         g_string_append_printf (s, "%s %s\n", _("Preparation:"), gr_recipe_get_prep_time (recipe));
         g_string_append_printf (s, "%s %s\n", _("Cooking:"), gr_recipe_get_cook_time (recipe));
-        g_string_append_printf (s, "%s %d\n", _("Serves:"), gr_recipe_get_serves (recipe));
+        amount = gr_number_format (gr_recipe_get_yield (recipe));
+        yield_str = g_strdup_printf ("%s %s", amount, gr_recipe_get_yield_unit (recipe));
+        g_string_append_printf (s, "%s %s\n", _("Yield:"), yield_str);
         g_string_append (s, "\n");
         g_string_append_printf (s, "%s\n", gr_recipe_get_translated_description (recipe));
 
