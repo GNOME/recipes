@@ -361,7 +361,6 @@ visible_page_changed (GrWindow *window)
                 g_signal_handlers_block_by_func (window->search_bar, search_changed, window);
                 gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (window->search_button), FALSE);
                 g_signal_handlers_unblock_by_func (window->search_bar, search_changed, window);
-                gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
         }
 
         if (strcmp (visible, "edit") != 0) {
