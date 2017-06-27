@@ -361,6 +361,7 @@ visible_page_changed (GrWindow *window)
                 g_signal_handlers_block_by_func (window->search_bar, search_changed, window);
                 gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (window->search_button), FALSE);
                 g_signal_handlers_unblock_by_func (window->search_bar, search_changed, window);
+                gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "list");
         }
 
         if (strcmp (visible, "edit") != 0) {
@@ -385,12 +386,14 @@ visible_page_changed (GrWindow *window)
                 gr_recipes_page_refresh (GR_RECIPES_PAGE (window->recipes_page));
                 gr_recipes_page_unexpand (GR_RECIPES_PAGE (window->recipes_page));
                 gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Recipes"));
+                gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "main");
         }
 
         if (strcmp (visible, "cuisines") == 0) {
                 gr_cuisines_page_refresh (GR_CUISINES_PAGE (window->cuisines_page));
                 gr_cuisines_page_unexpand (GR_CUISINES_PAGE (window->cuisines_page));
                 gtk_header_bar_set_title (GTK_HEADER_BAR (window->header), _("Cuisines"));
+                gtk_stack_set_visible_child_name (GTK_STACK (window->header_end_stack), "main");
         }
 }
 
