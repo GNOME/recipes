@@ -85,7 +85,6 @@
           <object class="GtkStack" id="header_end_stack">
             <property name="visible">1</property>
             <property name="hhomogeneous">0</property>
-            <signal name="notify::visible-child-name" handler="hide_or_show_header_end_stack"/>
             <child>
               <object class="GtkToggleButton" id="search_button">
                 <property name="visible">1</property>
@@ -106,7 +105,7 @@
                 </child>
               </object>
               <packing>
-                <property name="name">search</property>
+                <property name="name">main</property>
               </packing>
             </child>
             <child>
@@ -152,8 +151,61 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEventBox">
+              <object class="GtkBox">
                 <property name="visible">1</property>
+                <property name="orientation">horizontal</property>
+                <property name="spacing">6</property>
+                <child>
+                  <object class="GtkMenuButton">
+                    <property name="visible">1</property>
+                    <property name="popover">sort_popover</property>
+                    <style>
+                      <class name="text-button"/>
+                    </style>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="visible">1</property>
+                        <property name="orientation">horizontal</property>
+                        <property name="spacing">10</property>
+                        <property name="halign">fill</property>
+                        <child>
+                          <object class="GtkLabel" id="sort_by_label">
+                            <property name="visible">1</property>
+                            <property name="label">Sorted by Name</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">1</property>
+                            <property name="icon-name">pan-down-symbolic</property>
+                            <property name="icon-size">1</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkToggleButton" id="search_button2">
+                    <property name="visible">1</property>
+                    <property name="active" bind-source="search_button" bind-property="active" bind-flags="bidirectional"/>
+                    <style>
+                      <class name="image-button"/>
+                    </style>
+                    <child internal-child="accessible">
+                      <object class="AtkObject">
+                        <property name="accessible-name" translatable="yes">Search</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">1</property>
+                        <property name="icon-name">edit-find-symbolic</property>
+                        <property name="icon-size">1</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="name">list</property>
@@ -505,4 +557,30 @@
       </object>
     </child>
   </template>
+  <object class="GtkPopover" id="sort_popover">
+    <child>
+      <object class="GtkBox">
+        <property name="visible">1</property>
+        <property name="orientation">vertical</property>
+        <property name="margin">10</property>
+        <child>
+          <object class="GtkModelButton" id="sort_by_name_button">
+            <property name="visible">1</property>
+            <property name="role">radio</property>
+            <property name="active">1</property>
+            <property name="text" translatable="yes">Name</property>
+            <signal name="clicked" handler="sort_clicked"/>
+          </object>
+        </child>
+        <child>
+          <object class="GtkModelButton" id="sort_by_recency_button">
+            <property name="visible">1</property>
+            <property name="role">radio</property>
+            <property name="text" translatable="yes">Recency</property>
+            <signal name="clicked" handler="sort_clicked"/>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
 </interface>

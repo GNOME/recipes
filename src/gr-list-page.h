@@ -46,4 +46,9 @@ void            gr_list_page_populate_from_new       (GrListPage *self);
 void            gr_list_page_clear                   (GrListPage *self);
 void            gr_list_page_repopulate              (GrListPage *self);
 
+typedef enum {
+        SORT_BY_NAME,
+        SORT_BY_RECENCY
+} GrSortKey;
+
 G_END_DECLS

@@ -7,6 +7,11 @@
     <value nick="locale" value="2"/>
   </enum>
 
+  <enum id="org.gnome.recipes.SortKey">
+    <value nick="name" value="0"/>
+    <value nick="recency" value="1"/>
+  </enum>
+
   <schema path="/org/gnome/recipes/" id="org.gnome.Recipes" gettext-domain="gnome-recipes">
 
     <key type="s" name="user">
@@ -68,13 +73,19 @@
         The list of recipes to be exported. Each entry in the list is the ID of a recipe.
       </description>
     </key>
-
-      <key name="temperature-unit" enum="org.gnome.recipes.TemperatureUnit">
+    <key name="temperature-unit" enum="org.gnome.recipes.TemperatureUnit">
       <default>'locale'</default>
       <summary>The setting for which unit temperatures should be displayed in. </summary>
       <description>
         The setting for which unit temperatures should be displayed in. Default is 'locale',
         which means to use the LC_MEASUREMENT category of the current locale to decide.
+      </description>
+    </key>
+    <key name="sort-key" enum="org.gnome.recipes.SortKey">
+      <default>'name'</default>
+      <summary>By which key to sort lists.</summary>
+      <description>
+        The setting determines which key is used to sort lists of recipes by.
       </description>
     </key>
 

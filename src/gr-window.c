@@ -46,6 +46,7 @@
 #include "gr-account.h"
 #include "gr-utils.h"
 #include "gr-appdata.h"
+#include "gr-settings.h"
 
 
 struct _GrWindow
@@ -74,6 +75,11 @@ struct _GrWindow
         GtkWidget *cuisine_page;
         GtkWidget *image_page;
         GtkWidget *cooking_page;
+
+        GtkWidget *sort_by_label;
+        GtkWidget *sort_by_name_button;
+        GtkWidget *sort_by_recency_button;
+        GtkWidget *sort_popover;
 
         GtkWidget *undo_revealer;
         GtkWidget *undo_label;
@@ -298,7 +304,7 @@ search_mode_changed (GrWindow *window)
 static void
 switch_to_search (GrWindow *window)
 {
-        configure_window (window, "", "main", "main", "search", "search");
+        configure_window (window, "", "main", "main", "list", "search");
 }
 
 void
@@ -539,17 +545,6 @@ window_delete_handler (GtkWidget *widget)
         }
 
         return FALSE;
-}
-
-static void
-hide_or_show_header_end_stack (GObject    *object,
-                               GParamSpec *pspec,
-                               GrWindow   *window)
-{
-        const char *visible;
-
-        visible = gtk_stack_get_visible_child_name (GTK_STACK (window->header_end_stack));
-        gtk_widget_set_visible (window->header_end_stack, strcmp (visible, "list") != 0);
 }
 
 GrWindow *
@@ -876,6 +871,37 @@ make_save_sensitive (GrEditPage *edit_page,
 }
 
 static void
+update_sort_menu (GrWindow *window)
+{
+        switch (g_settings_get_enum (gr_settings_get (), "sort-key")) {
+        case SORT_BY_NAME:
+                g_object_set (window->sort_by_name_button, "active", TRUE, NULL);
+                g_object_set (window->sort_by_recency_button, "active", FALSE, NULL);
+                g_object_set (window->sort_by_label, "label", _("Sorted by Name"), NULL);
+                break;
+        case SORT_BY_RECENCY:
+                g_object_set (window->sort_by_name_button, "active", FALSE, NULL);
+                g_object_set (window->sort_by_recency_button, "active", TRUE, NULL);
+                g_object_set (window->sort_by_label, "label", _("Sorted by Recency"), NULL);
+                break;
+        default:
+                g_assert_not_reached ();
+        }
+}
+
+static void
+sort_clicked (GtkWidget *button,
+              GrWindow  *window)
+{
+        GSettings *settings = gr_settings_get ();
+
+        gtk_popover_popdown (GTK_POPOVER (window->sort_popover));
+        g_settings_set_enum (settings, "sort-key",
+                             button == window->sort_by_name_button ? SORT_BY_NAME : SORT_BY_RECENCY);
+        update_sort_menu (window);
+}
+
+static void
 gr_window_class_init (GrWindowClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -913,13 +939,16 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrWindow, remind_label);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, shopping_added_revealer);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, shopping_done_revealer);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, sort_by_label);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, sort_by_name_button);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, sort_by_recency_button);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, sort_popover);
 
         gtk_widget_class_bind_template_callback (widget_class, new_recipe);
         gtk_widget_class_bind_template_callback (widget_class, go_back);
         gtk_widget_class_bind_template_callback (widget_class, add_recipe);
         gtk_widget_class_bind_template_callback (widget_class, visible_page_changed);
         gtk_widget_class_bind_template_callback (widget_class, start_cooking);
-        gtk_widget_class_bind_template_callback (widget_class, hide_or_show_header_end_stack);
         gtk_widget_class_bind_template_callback (widget_class, search_changed);
         gtk_widget_class_bind_template_callback (widget_class, stop_search);
         gtk_widget_class_bind_template_callback (widget_class, search_mode_changed);
@@ -939,6 +968,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, close_shopping_done);
         gtk_widget_class_bind_template_callback (widget_class, back_to_shopping);
         gtk_widget_class_bind_template_callback (widget_class, make_save_sensitive);
+        gtk_widget_class_bind_template_callback (widget_class, sort_clicked);
 }
 
 static GtkClipboard *
@@ -995,13 +1025,18 @@ gr_window_init (GrWindow *self)
         g_action_map_add_action_entries (G_ACTION_MAP (self),
                                          entries, G_N_ELEMENTS (entries),
                                          self);
+
+        update_sort_menu (self);
 }
 
 void
 gr_window_go_back (GrWindow *window)
 {
-        if (g_queue_is_empty (window->back_entry_stack)) {
-                configure_window (window, _("Recipes"), "main", "main", "search", "recipes");
+        if (gtk_search_bar_get_search_mode (GTK_SEARCH_BAR (window->search_bar))) {
+                gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (window->search_bar), FALSE);
+        }
+        else if (g_queue_is_empty (window->back_entry_stack)) {
+                configure_window (window, _("Recipes"), "main", "main", "main", "recipes");
         }
         else {
                 go_back (window);

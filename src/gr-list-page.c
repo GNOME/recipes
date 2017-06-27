@@ -32,6 +32,7 @@
 #include "gr-category-tile.h"
 #include "gr-image.h"
 #include "gr-app.h"
+#include "gr-settings.h"
 
 struct _GrListPage
 {
@@ -191,9 +192,9 @@ search_finished (GrRecipeSearch *search,
 }
 
 static int
-sort_func (GtkFlowBoxChild *child1,
-           GtkFlowBoxChild *child2,
-           gpointer         data)
+name_sort_func (GtkFlowBoxChild *child1,
+                GtkFlowBoxChild *child2,
+                gpointer         data)
 {
         GtkWidget *tile1 = gtk_bin_get_child (GTK_BIN (child1));
         GtkWidget *tile2 = gtk_bin_get_child (GTK_BIN (child2));
@@ -203,6 +204,49 @@ sort_func (GtkFlowBoxChild *child1,
         const char *name2 = gr_recipe_get_name (recipe2);
 
         return strcmp (name1, name2);
+}
+
+static int
+date_sort_func (GtkFlowBoxChild *child1,
+                GtkFlowBoxChild *child2,
+                gpointer         data)
+{
+        GtkWidget *tile1 = gtk_bin_get_child (GTK_BIN (child1));
+        GtkWidget *tile2 = gtk_bin_get_child (GTK_BIN (child2));
+        GrRecipe *recipe1 = gr_recipe_tile_get_recipe (GR_RECIPE_TILE (tile1));
+        GrRecipe *recipe2 = gr_recipe_tile_get_recipe (GR_RECIPE_TILE (tile2));
+        GDateTime *mtime1 = gr_recipe_get_mtime (recipe1);
+        GDateTime *mtime2 = gr_recipe_get_mtime (recipe2);
+
+        return g_date_time_compare (mtime2, mtime1);
+}
+
+static void
+gr_list_page_set_sort (GrListPage *page,
+                       GrSortKey   sort)
+{
+        switch (sort) {
+        case SORT_BY_NAME:
+                gtk_flow_box_set_sort_func (GTK_FLOW_BOX (page->flow_box), name_sort_func, page, NULL);
+                break;
+        case SORT_BY_RECENCY:
+                gtk_flow_box_set_sort_func (GTK_FLOW_BOX (page->flow_box), date_sort_func, page, NULL);
+                break;
+        default:
+                g_assert_not_reached ();
+        }
+}
+
+static void
+sort_key_changed (GrListPage *page)
+{
+        GrSortKey sort;
+
+        if (!gtk_widget_get_visible (GTK_WIDGET (page)))
+                return;
+
+        sort = g_settings_get_enum (gr_settings_get (), "sort-key");
+        gr_list_page_set_sort (page, sort);
 }
 
 static void
@@ -218,7 +262,8 @@ gr_list_page_init (GrListPage *page)
         g_signal_connect (page->search, "hits-removed", G_CALLBACK (search_hits_removed), page);
         g_signal_connect (page->search, "finished", G_CALLBACK (search_finished), page);
 
-        gtk_flow_box_set_sort_func (GTK_FLOW_BOX (page->flow_box), sort_func, page, NULL);
+        g_signal_connect_swapped (gr_settings_get (), "changed::sort-key", G_CALLBACK (sort_key_changed), page);
+        g_signal_connect (page, "notify::visible", G_CALLBACK (sort_key_changed), NULL);
 }
 
 static void
