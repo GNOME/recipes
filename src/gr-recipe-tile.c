@@ -83,7 +83,7 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
                 chef = gr_recipe_store_get_chef (store, author);
 
                 gtk_label_set_label (GTK_LABEL (tile->label), name);
-                tmp = g_strdup_printf (_("by %s"), chef ? gr_chef_get_name (chef) : _("Anonymous"));
+                tmp = g_strdup_printf (_("by %s"), chef ? gr_chef_get_fullname (chef) : _("Anonymous"));
                 gtk_label_set_label (GTK_LABEL (tile->author), tmp);
 
                 images = gr_recipe_get_images (recipe);
