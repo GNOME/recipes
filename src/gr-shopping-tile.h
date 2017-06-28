@@ -26,15 +26,15 @@
 
 G_BEGIN_DECLS
 
-#define GR_TYPE_RECIPE_SMALL_TILE (gr_recipe_small_tile_get_type ())
+#define GR_TYPE_SHOPPING_TILE (gr_shopping_tile_get_type ())
 
-G_DECLARE_FINAL_TYPE (GrRecipeSmallTile, gr_recipe_small_tile, GR, RECIPE_SMALL_TILE, GtkButton)
+G_DECLARE_FINAL_TYPE (GrShoppingTile, gr_shopping_tile, GR, SHOPPING_TILE, GtkButton)
 
-GtkWidget      *gr_recipe_small_tile_new        (GrRecipe          *recipe,
-                                                 double             yield);
-GrRecipe       *gr_recipe_small_tile_get_recipe (GrRecipeSmallTile *tile);
-double          gr_recipe_small_tile_get_yield  (GrRecipeSmallTile *tile);
-void            gr_recipe_small_tile_set_yield  (GrRecipeSmallTile *tile,
-                                                 double             yield);
+GtkWidget      *gr_shopping_tile_new        (GrRecipe       *recipe,
+                                             double          yield);
+GrRecipe       *gr_shopping_tile_get_recipe (GrShoppingTile *tile);
+double          gr_shopping_tile_get_yield  (GrShoppingTile *tile);
+void            gr_shopping_tile_set_yield  (GrShoppingTile *tile,
+                                             double          yield);
 
 G_END_DECLS

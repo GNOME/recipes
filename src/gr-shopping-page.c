@@ -24,9 +24,9 @@
 #include <gtk/gtk.h>
 
 #include "gr-shopping-page.h"
+#include "gr-shopping-tile.h"
 #include "gr-recipe-store.h"
 #include "gr-recipe.h"
-#include "gr-recipe-small-tile.h"
 #include "gr-utils.h"
 #include "gr-ingredients-list.h"
 #include "gr-window.h"
@@ -494,8 +494,8 @@ collect_ingredients (GrShoppingPage *page)
                 GrRecipe *recipe;
                 double yield;
 
-                recipe = gr_recipe_small_tile_get_recipe (GR_RECIPE_SMALL_TILE (tile));
-                yield = gr_recipe_small_tile_get_yield (GR_RECIPE_SMALL_TILE (tile));
+                recipe = gr_shopping_tile_get_recipe (GR_SHOPPING_TILE (tile));
+                yield = gr_shopping_tile_get_yield (GR_SHOPPING_TILE (tile));
                 collect_ingredients_from_recipe (page, recipe, yield);
         }
         g_list_free (children);
@@ -522,13 +522,13 @@ collect_ingredients (GrShoppingPage *page)
 static void
 yield_changed (GObject *object, GParamSpec *pspec, GrShoppingPage *page)
 {
-        GrRecipeSmallTile *tile = GR_RECIPE_SMALL_TILE (object);
+        GrShoppingTile *tile = GR_SHOPPING_TILE (object);
         GrRecipeStore *store;
         GrRecipe *recipe;
         double yield;
 
-        recipe = gr_recipe_small_tile_get_recipe (tile);
-        yield = gr_recipe_small_tile_get_yield (tile);
+        recipe = gr_shopping_tile_get_recipe (tile);
+        yield = gr_shopping_tile_get_yield (tile);
 
         store = gr_recipe_store_get ();
 
@@ -559,7 +559,7 @@ search_hits_added (GrRecipeSearch *search,
                 double yield;
 
                 yield = gr_recipe_store_get_shopping_yield (store, recipe);
-                tile = gr_recipe_small_tile_new (recipe, yield);
+                tile = gr_shopping_tile_new (recipe, yield);
                 g_signal_connect (tile, "notify::yield", G_CALLBACK (yield_changed), page);
                 gtk_container_add (GTK_CONTAINER (page->recipe_list), tile);
                 page->recipe_count++;
@@ -580,7 +580,7 @@ search_hits_removed (GrRecipeSearch *search,
                 GrRecipe *recipe;
 
                 tile = gtk_bin_get_child (GTK_BIN (item));
-                recipe = gr_recipe_small_tile_get_recipe (GR_RECIPE_SMALL_TILE (tile));
+                recipe = gr_shopping_tile_get_recipe (GR_SHOPPING_TILE (tile));
                 if (g_list_find (hits, recipe)) {
                         gtk_container_remove (GTK_CONTAINER (page->recipe_list), item);
                         page->recipe_count--;
@@ -629,7 +629,7 @@ get_recipes (GrShoppingPage *page)
                 GtkWidget *tile = gtk_bin_get_child (GTK_BIN (l->data));
                 GrRecipe *recipe;
 
-                recipe = gr_recipe_small_tile_get_recipe (GR_RECIPE_SMALL_TILE (tile));
+                recipe = gr_shopping_tile_get_recipe (GR_SHOPPING_TILE (tile));
                 recipes = g_list_append (recipes, g_object_ref (recipe));
         }
         g_list_free (children);
@@ -884,7 +884,7 @@ recipe_removed (GrShoppingPage *page,
         for (l = children; l; l = l->next) {
                 GtkWidget *tile = gtk_bin_get_child (GTK_BIN (l->data));
 
-                if (recipe == gr_recipe_small_tile_get_recipe (GR_RECIPE_SMALL_TILE (tile))) {
+                if (recipe == gr_shopping_tile_get_recipe (GR_SHOPPING_TILE (tile))) {
                         gtk_widget_destroy (GTK_WIDGET (l->data));
 
                         collect_ingredients (page);
@@ -916,8 +916,8 @@ recipe_added (GrShoppingPage *page,
         for (l = children; l; l = l->next) {
                 GtkWidget *tile = gtk_bin_get_child (GTK_BIN (l->data));
 
-                if (recipe == gr_recipe_small_tile_get_recipe (GR_RECIPE_SMALL_TILE (tile))) {
-                        gr_recipe_small_tile_set_yield (GR_RECIPE_SMALL_TILE (tile), yield);
+                if (recipe == gr_shopping_tile_get_recipe (GR_SHOPPING_TILE (tile))) {
+                        gr_shopping_tile_set_yield (GR_SHOPPING_TILE (tile), yield);
                         break;
                 }
         }
@@ -926,7 +926,7 @@ recipe_added (GrShoppingPage *page,
         if (l == NULL) {
                 GtkWidget *tile;
 
-                tile = gr_recipe_small_tile_new (recipe, yield);
+                tile = gr_shopping_tile_new (recipe, yield);
                 g_signal_connect (tile, "notify::yield", G_CALLBACK (yield_changed), page);
                 gtk_container_add (GTK_CONTAINER (page->recipe_list), tile);
         }

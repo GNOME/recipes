@@ -1,4 +1,4 @@
-/* gr-recipe-small-tile.c:
+/* gr-shopping-tile.c:
  *
  * Copyright (C) 2017 Matthias Clasen <mclasen@redhat.com>
  *
@@ -24,14 +24,14 @@
 #include <gtk/gtk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 
-#include "gr-recipe-small-tile.h"
+#include "gr-shopping-tile.h"
 #include "gr-recipe-store.h"
 #include "gr-window.h"
 #include "gr-utils.h"
 #include "gr-image.h"
 
 
-struct _GrRecipeSmallTile
+struct _GrShoppingTile
 {
         GtkButton parent_instance;
 
@@ -52,7 +52,7 @@ struct _GrRecipeSmallTile
         double yield;
 };
 
-G_DEFINE_TYPE (GrRecipeSmallTile, gr_recipe_small_tile, GTK_TYPE_BUTTON)
+G_DEFINE_TYPE (GrShoppingTile, gr_shopping_tile, GTK_TYPE_BUTTON)
 
 enum {
         PROP_0,
@@ -61,8 +61,8 @@ enum {
 };
 
 void
-gr_recipe_small_tile_set_yield (GrRecipeSmallTile *tile,
-                                double             yield)
+gr_shopping_tile_set_yield (GrShoppingTile *tile,
+                            double          yield)
 {
         g_autofree char *tmp = NULL;
 
@@ -79,8 +79,8 @@ gr_recipe_small_tile_set_yield (GrRecipeSmallTile *tile,
 }
 
 static void
-recipe_small_tile_set_recipe (GrRecipeSmallTile *tile,
-                              GrRecipe          *recipe)
+shopping_tile_set_recipe (GrShoppingTile *tile,
+                          GrRecipe       *recipe)
 {
         GrRecipeStore *store;
 
@@ -128,18 +128,18 @@ recipe_small_tile_set_recipe (GrRecipeSmallTile *tile,
 }
 
 static void
-tile_clicked (GrRecipeSmallTile *tile)
+tile_clicked (GrShoppingTile *tile)
 {
         gtk_popover_popup (GTK_POPOVER (tile->popover));
 }
 
 static void
-yield_spin_value_changed (GrRecipeSmallTile *tile)
+yield_spin_value_changed (GrShoppingTile *tile)
 {
         double yield;
 
         yield = gtk_spin_button_get_value (GTK_SPIN_BUTTON (tile->yield_spin));
-        gr_recipe_small_tile_set_yield (tile, yield);
+        gr_shopping_tile_set_yield (tile, yield);
 }
 
 static int
@@ -172,7 +172,7 @@ yield_spin_output (GtkSpinButton *spin)
 }
 
 static void
-remove_recipe (GrRecipeSmallTile *tile)
+remove_recipe (GrShoppingTile *tile)
 {
         GrRecipeStore *store;
 
@@ -182,32 +182,32 @@ remove_recipe (GrRecipeSmallTile *tile)
 }
 
 static void
-recipe_small_tile_finalize (GObject *object)
+shopping_tile_finalize (GObject *object)
 {
-        GrRecipeSmallTile *tile = GR_RECIPE_SMALL_TILE (object);
+        GrShoppingTile *tile = GR_SHOPPING_TILE (object);
 
         g_cancellable_cancel (tile->cancellable);
         g_clear_object (&tile->cancellable);
         g_clear_object (&tile->recipe);
 
-        G_OBJECT_CLASS (gr_recipe_small_tile_parent_class)->finalize (object);
+        G_OBJECT_CLASS (gr_shopping_tile_parent_class)->finalize (object);
 }
 
 static void
-gr_recipe_small_tile_init (GrRecipeSmallTile *tile)
+gr_shopping_tile_init (GrShoppingTile *tile)
 {
         gtk_widget_set_has_window (GTK_WIDGET (tile), FALSE);
         gtk_widget_init_template (GTK_WIDGET (tile));
-        gr_recipe_small_tile_set_yield (tile, 1.0);
+        gr_shopping_tile_set_yield (tile, 1.0);
 }
 
 static void
-recipe_small_tile_get_property (GObject    *object,
-                                guint       prop_id,
-                                GValue     *value,
-                                GParamSpec *pspec)
+shopping_tile_get_property (GObject    *object,
+                            guint       prop_id,
+                            GValue     *value,
+                            GParamSpec *pspec)
 {
-        GrRecipeSmallTile *self = GR_RECIPE_SMALL_TILE (object);
+        GrShoppingTile *self = GR_SHOPPING_TILE (object);
 
         switch (prop_id) {
         case PROP_YIELD:
@@ -219,16 +219,16 @@ recipe_small_tile_get_property (GObject    *object,
 }
 
 static void
-recipe_small_tile_set_property (GObject      *object,
-                                guint         prop_id,
-                                const GValue *value,
-                                GParamSpec   *pspec)
+shopping_tile_set_property (GObject      *object,
+                            guint         prop_id,
+                            const GValue *value,
+                            GParamSpec   *pspec)
 {
-        GrRecipeSmallTile *self = GR_RECIPE_SMALL_TILE (object);
+        GrShoppingTile *self = GR_SHOPPING_TILE (object);
 
         switch (prop_id) {
         case PROP_YIELD:
-                gr_recipe_small_tile_set_yield (self, g_value_get_double (value));
+                gr_shopping_tile_set_yield (self, g_value_get_double (value));
                 break;
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -236,32 +236,32 @@ recipe_small_tile_set_property (GObject      *object,
 }
 
 static void
-gr_recipe_small_tile_class_init (GrRecipeSmallTileClass *klass)
+gr_shopping_tile_class_init (GrShoppingTileClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
         GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
         GParamSpec *pspec;
 
-        object_class->finalize = recipe_small_tile_finalize;
-        object_class->get_property = recipe_small_tile_get_property;
-        object_class->set_property = recipe_small_tile_set_property;
+        object_class->finalize = shopping_tile_finalize;
+        object_class->get_property = shopping_tile_get_property;
+        object_class->set_property = shopping_tile_set_property;
 
         pspec = g_param_spec_double ("yield", NULL, NULL,
                                      0.0, G_MAXDOUBLE, 1.0,
                                      G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_YIELD, pspec);
 
-        gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-recipe-small-tile.ui");
+        gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Recipes/gr-shopping-tile.ui");
 
-        gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, label);
-        gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, author);
-        gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, image);
-        gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, box);
-        gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, yield_label);
-        gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, popover);
-        gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, yield_spin);
-        gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, yield_unit_label);
-        gtk_widget_class_bind_template_child (widget_class, GrRecipeSmallTile, remove_button);
+        gtk_widget_class_bind_template_child (widget_class, GrShoppingTile, label);
+        gtk_widget_class_bind_template_child (widget_class, GrShoppingTile, author);
+        gtk_widget_class_bind_template_child (widget_class, GrShoppingTile, image);
+        gtk_widget_class_bind_template_child (widget_class, GrShoppingTile, box);
+        gtk_widget_class_bind_template_child (widget_class, GrShoppingTile, yield_label);
+        gtk_widget_class_bind_template_child (widget_class, GrShoppingTile, popover);
+        gtk_widget_class_bind_template_child (widget_class, GrShoppingTile, yield_spin);
+        gtk_widget_class_bind_template_child (widget_class, GrShoppingTile, yield_unit_label);
+        gtk_widget_class_bind_template_child (widget_class, GrShoppingTile, remove_button);
 
         gtk_widget_class_bind_template_callback (widget_class, tile_clicked);
         gtk_widget_class_bind_template_callback (widget_class, yield_spin_value_changed);
@@ -271,26 +271,26 @@ gr_recipe_small_tile_class_init (GrRecipeSmallTileClass *klass)
 }
 
 GtkWidget *
-gr_recipe_small_tile_new (GrRecipe *recipe,
-                          double    yield)
+gr_shopping_tile_new (GrRecipe *recipe,
+                      double    yield)
 {
-        GrRecipeSmallTile *tile;
+        GrShoppingTile *tile;
 
-        tile = g_object_new (GR_TYPE_RECIPE_SMALL_TILE, NULL);
-        recipe_small_tile_set_recipe (tile, recipe);
-        gr_recipe_small_tile_set_yield (tile, yield);
+        tile = g_object_new (GR_TYPE_SHOPPING_TILE, NULL);
+        shopping_tile_set_recipe (tile, recipe);
+        gr_shopping_tile_set_yield (tile, yield);
 
         return GTK_WIDGET (tile);
 }
 
 GrRecipe *
-gr_recipe_small_tile_get_recipe (GrRecipeSmallTile *tile)
+gr_shopping_tile_get_recipe (GrShoppingTile *tile)
 {
         return tile->recipe;
 }
 
 double
-gr_recipe_small_tile_get_yield (GrRecipeSmallTile *tile)
+gr_shopping_tile_get_yield (GrShoppingTile *tile)
 {
         return tile->yield;
 }
