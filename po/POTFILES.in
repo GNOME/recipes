@@ -20,11 +20,11 @@ src/gr-ingredients-viewer-row.ui
 src/gr-ingredients-viewer.ui
 src/gr-list-page.ui
 src/gr-query-editor.ui
-src/gr-recipe-small-tile.ui
 src/gr-recipes-page.ui
 src/gr-recipe-tile.ui
 src/gr-search-page.ui
 src/gr-shopping-page.ui
+src/gr-shopping-tile.ui
 src/gr-time-widget.ui
 src/gr-window.ui
 src/menus.ui
@@ -63,7 +63,6 @@ src/gr-recipe-exporter.c
 src/gr-recipe-formatter.c
 src/gr-recipe-importer.c
 src/gr-recipe-printer.c
-src/gr-recipe-small-tile.c
 src/gr-recipes-page.c
 src/gr-recipe-store.c
 src/gr-recipe-tile.c
@@ -72,6 +71,7 @@ src/gr-season.c
 src/gr-shopping-list-formatter.c
 src/gr-shopping-list-printer.c
 src/gr-shopping-page.c
+src/gr-shopping-tile.c
 src/gr-spice-row.c
 src/gr-unit.c
 src/gr-utils.c
