@@ -35,7 +35,8 @@ GtkWidget      *gr_list_page_new                     (void);
 void            gr_list_page_populate_from_diet      (GrListPage *self,
                                                       GrDiets     diet);
 void            gr_list_page_populate_from_chef      (GrListPage *self,
-                                                      GrChef     *chef);
+                                                      GrChef     *chef,
+                                                      gboolean    show_shared);
 void            gr_list_page_populate_from_season    (GrListPage *self,
                                                       const char *season);
 void            gr_list_page_populate_from_favorites (GrListPage *self);
@@ -45,6 +46,8 @@ void            gr_list_page_populate_from_all       (GrListPage *self);
 void            gr_list_page_populate_from_new       (GrListPage *self);
 void            gr_list_page_clear                   (GrListPage *self);
 void            gr_list_page_repopulate              (GrListPage *self);
+void            gr_list_page_set_show_shared         (GrListPage *self,
+                                                      gboolean    show_shared);
 
 typedef enum {
         SORT_BY_NAME,

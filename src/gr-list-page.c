@@ -61,6 +61,8 @@ struct _GrListPage
         GtkWidget *heading;
         GtkWidget *diet_description;
 
+        gboolean show_shared;
+
         int count;
         GrRecipeSearch *search;
 };
@@ -150,6 +152,7 @@ search_hits_added (GrRecipeSearch *search,
                 GtkWidget *tile;
 
                 tile = gr_recipe_tile_new (recipe);
+                gr_recipe_tile_set_show_shared (GR_RECIPE_TILE (tile), page->show_shared);
                 gtk_widget_show (tile);
                 gtk_container_add (GTK_CONTAINER (page->flow_box), tile);
 
@@ -344,6 +347,8 @@ gr_list_page_populate_from_diet (GrListPage *self,
         char *tmp;
         g_autofree char *term = NULL;
 
+        self->show_shared = FALSE;
+
         clear_data (self);
         self->diet = diet;
 
@@ -367,8 +372,16 @@ gr_list_page_populate_from_diet (GrListPage *self,
 }
 
 void
+gr_list_page_set_show_shared (GrListPage *self,
+                              gboolean    show_shared)
+{
+        self->show_shared = show_shared;
+}
+
+void
 gr_list_page_populate_from_chef (GrListPage *self,
-                                 GrChef     *chef)
+                                 GrChef     *chef,
+                                 gboolean    show_shared)
 {
         GrRecipeStore *store;
         const char *id;
@@ -378,6 +391,8 @@ gr_list_page_populate_from_chef (GrListPage *self,
         const char *path;
         char *tmp;
         g_autofree char *term = NULL;
+
+        self->show_shared = show_shared;
 
         g_object_ref (chef);
         clear_data (self);
@@ -436,6 +451,8 @@ gr_list_page_populate_from_season (GrListPage *self,
         char *tmp;
         g_autofree char *term = NULL;
 
+        self->show_shared = FALSE;
+
         tmp = g_strdup (season);
         clear_data (self);
         self->season = tmp;
@@ -459,6 +476,8 @@ gr_list_page_populate_from_season (GrListPage *self,
 void
 gr_list_page_populate_from_favorites (GrListPage *self)
 {
+        self->show_shared = FALSE;
+
         clear_data (self);
         self->favorites = TRUE;
 
@@ -478,6 +497,8 @@ gr_list_page_populate_from_favorites (GrListPage *self)
 void
 gr_list_page_populate_from_all (GrListPage *self)
 {
+        self->show_shared = FALSE;
+
         clear_data (self);
         self->all = TRUE;
 
@@ -502,6 +523,8 @@ gr_list_page_populate_from_new (GrListPage *self)
         g_autofree char *timestamp = NULL;
         g_autofree char *query = NULL;
         const char *terms[2];
+
+        self->show_shared = FALSE;
 
         clear_data (self);
         self->new = TRUE;
@@ -532,6 +555,8 @@ gr_list_page_populate_from_list (GrListPage *self,
         GrRecipeStore *store;
         GList *l;
         gboolean empty;
+
+        self->show_shared = FALSE;
 
         store = gr_recipe_store_get ();
 
@@ -572,7 +597,7 @@ void
 gr_list_page_repopulate (GrListPage *page)
 {
         if (page->chef)
-                gr_list_page_populate_from_chef (page, page->chef);
+                gr_list_page_populate_from_chef (page, page->chef, page->show_shared);
         else if (page->diet)
                 gr_list_page_populate_from_diet (page, page->diet);
         else if (page->favorites)

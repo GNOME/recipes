@@ -43,8 +43,10 @@ struct _GrRecipeTile
         GtkWidget *author;
         GtkWidget *image;
         GtkWidget *box;
+        GtkWidget *shared_icon;
 
         GCancellable *cancellable;
+        gboolean show_shared;
 };
 
 G_DEFINE_TYPE (GrRecipeTile, gr_recipe_tile, GTK_TYPE_BUTTON)
@@ -56,6 +58,17 @@ show_details (GrRecipeTile *tile)
 
         window = gtk_widget_get_ancestor (GTK_WIDGET (tile), GR_TYPE_WINDOW);
         gr_window_show_recipe (GR_WINDOW (window), tile->recipe);
+}
+
+static void
+update_shared_icon (GrRecipeTile *tile)
+{
+        if (tile->show_shared && tile->recipe) {
+                gtk_widget_set_visible (tile->shared_icon, gr_recipe_is_contributed (tile->recipe));
+        }
+        else {
+                gtk_widget_hide (tile->shared_icon);
+        }
 }
 
 static void
@@ -142,6 +155,7 @@ gr_recipe_tile_class_init (GrRecipeTileClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrRecipeTile, author);
         gtk_widget_class_bind_template_child (widget_class, GrRecipeTile, image);
         gtk_widget_class_bind_template_child (widget_class, GrRecipeTile, box);
+        gtk_widget_class_bind_template_child (widget_class, GrRecipeTile, shared_icon);
 
         gtk_widget_class_bind_template_callback (widget_class, show_details);
 }
@@ -174,4 +188,13 @@ GrRecipe *
 gr_recipe_tile_get_recipe (GrRecipeTile *tile)
 {
         return tile->recipe;
+}
+
+void
+gr_recipe_tile_set_show_shared (GrRecipeTile *tile,
+                                gboolean      show_shared)
+{
+        tile->show_shared = show_shared;
+
+        update_shared_icon (tile);
 }

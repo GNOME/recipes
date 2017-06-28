@@ -1251,7 +1251,7 @@ gr_window_show_chef (GrWindow *window,
 
         save_back_entry (window);
 
-        gr_list_page_populate_from_chef (GR_LIST_PAGE (window->chef_page), chef);
+        gr_list_page_populate_from_chef (GR_LIST_PAGE (window->chef_page), chef,  FALSE);
         title = g_strdup_printf (_("Chefs: %s"), gr_chef_get_fullname (chef));
         configure_window (window, title, "back", "title", "list", "chef");
 }
@@ -1322,7 +1322,7 @@ do_show_mine (GrChef   *chef,
 
         save_back_entry (window);
 
-        gr_list_page_populate_from_chef (GR_LIST_PAGE (window->chef_page), chef);
+        gr_list_page_populate_from_chef (GR_LIST_PAGE (window->chef_page), chef, TRUE);
         configure_window (window, _("My Recipes"), "back", "title", "list", "chef");
 }
 

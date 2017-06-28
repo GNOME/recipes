@@ -113,6 +113,11 @@ label.chef.name {
   min-height: 64px;
 }
 
+box.recipe.name {
+  background: @theme_base_color;
+  color: @theme_fg_color;
+}
+
 label.recipe.name {
   background: @theme_base_color;
   color: @theme_fg_color;
