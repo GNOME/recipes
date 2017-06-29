@@ -41,7 +41,9 @@ typedef enum {
 } GrVolumeUnit;
 
 int             get_temperature_unit        (void);
-void            convert_temp                (int *num, int *unit, int user_unit);
+void            convert_temp                (int *num, int *unit, int user_unit); 
+void            convert_volume              (double *amount, char **unit); 
+
 
 
 

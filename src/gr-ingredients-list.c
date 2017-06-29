@@ -164,17 +164,12 @@ gr_ingredients_list_validate (const char  *text,
 }
 
 static void
-<<<<<<< fd7e9ce6bc998a11c0b79f4b509fea298bf54776
-ingredient_scale_unit (Ingredient *ing, double scale, GString *s)
-=======
-ingredient_scale_unit (IngredientObj *ing, int num, int denom, GString *s)
->>>>>>> Attempt at moving amount to double, unit failing
+ingredient_scale_unit (IngredientObj *ing, double scale, GString *s)
 {
         g_autofree char *scaled = NULL;
 
         scaled = gr_number_format (scale * ing->amount);
 
-        g_string_append (s, scaled);
         if (ing->unit) {
                 g_string_append (s, " ");
                 g_string_append (s, ing->unit);

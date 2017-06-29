@@ -176,7 +176,7 @@ gr_recipe_parse_instructions (const char *instructions,
                                         unit = GR_TEMPERATURE_UNIT_CELSIUS;
                                 }
                                 num = atoi (p + strlen ("[temperature:"));
-                                g_message("num before convert: %i \n unit before convert: %s", num, unit);
+                                g_message("num before convert: %i \n unit before convert: %i", num, unit);
 
                                 convert_temp(&num, &unit, user_unit);
                                 g_message("num after convert: %i \n unit after convert: %i", num, unit);
@@ -187,6 +187,17 @@ gr_recipe_parse_instructions (const char *instructions,
 
                                 p = strstr (step, "[temperature:");
                         }
+                }
+
+                p = strstr (step, "[image:");
+                if (p) {
+                        g_autofree char *prefix = NULL;
+                        char *tmp;
+
+                        image = atoi (p + strlen ("[image:"));
+
+                        prefix = g_strndup (step, p - step);
+                        q = strstr (p, "]");
                 }
 
                 p = strstr (step, "[image:");

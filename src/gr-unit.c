@@ -112,6 +112,15 @@ gr_unit_get_abbreviation (const char *name)
 }
 
 const char *
+gr_unit_get_measure (const char *name)
+{
+        GrUnit *unit = find_unit (name);
+        if (unit)
+                return g_dpgettext2 (NULL, "unit measure", unit->measure);
+        return NULL;
+}
+
+const char *
 gr_unit_parse (char   **input,
                GError **error)
 {

@@ -82,20 +82,20 @@ convert_temp (int *num, int *unit, int user_unit)
     int num1 = *num;
     int unit1 = *unit;
                 
-        if (unit1 == user_unit) {
+   /*     if (unit1 == user_unit) {
             // no conversion needed
             }
-        else if (unit1 == GR_TEMPERATURE_UNIT_CELSIUS &&
+        else */ if (unit1 == GR_TEMPERATURE_UNIT_CELSIUS &&
                 user_unit == GR_TEMPERATURE_UNIT_FAHRENHEIT) {
                     num1 = (num1 * 1.8) + 32;
                     unit1 = user_unit;
-                    g_message("temp should be: %i", num1);
+                    //g_message("temp should be: %i", num1);
                                 }
         else if (unit1 == GR_TEMPERATURE_UNIT_FAHRENHEIT &&
                 user_unit == GR_TEMPERATURE_UNIT_CELSIUS) {
                     num1 = (num1 - 32) / 1.8;
                     unit1 = user_unit;
-                    g_message("temp should be: %i", num1);
+                    //g_message("temp should be: %i", num1);
 
                 }
                                 
@@ -107,10 +107,36 @@ convert_temp (int *num, int *unit, int user_unit)
 }
 
 
-/*
-void 
-convert_volume ()
-{
 
+void 
+convert_volume (double *amount, char **unit)
+{
+        double amount1 = *amount;        
+        char *unit1 = *unit;
+
+        g_message("%f is the amount in convert-unit", amount1);
+        g_message("%s is the unit in convert-unit", unit1);
+
+        int user_volume_unit = get_volume_unit();
+
+                if (user_volume_unit == 1) {
+                       if (strcmp(unit1, "ml") == 0)
+                                {
+                                        amount1 = (amount1 / 4.92892);
+                                        unit1 = "tsp";
+                                }
+                        else if (strcmp(unit1, "dl") == 0)
+                                {
+                                        amount1 = (amount1 / 0.422675);
+                                        unit1 = "cup";
+                                }
+                        else if (strcmp(unit1, "l") == 0)
+                        {
+                                amount1 = (amount1 * 4.22675);
+                                unit1 = "cup";
+                        }
+        }
+
+                                *amount = amount1;
+                                *unit = unit1;
 }
-*/

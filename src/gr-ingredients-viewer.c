@@ -28,6 +28,8 @@
 #include "gr-ingredient.h"
 #include "gr-utils.h"
 #include "gr-number.h"
+#include "gr-convert-units.h"
+#include "gr-unit.h"
 
 #ifdef ENABLE_GSPELL
 #include <gspell/gspell.h>
@@ -320,27 +322,29 @@ gr_ingredients_viewer_set_ingredients (GrIngredientsViewer *viewer,
                 g_autofree char *s = NULL;
                 g_auto(GStrv) strv = NULL;
                 double amount;
-                const char *unit;
+                char *unit;
                 GtkWidget *row;
+                const char *measure;
 
-<<<<<<< 5304691ced802de6f16064e89f48e6c38b5de0df
-                s = gr_ingredients_list_scale_unit (ingredients, viewer->title, ings[i], viewer->scale);
-                //strv = g_strsplit (s, " ", 2);
-                //amount = strv[0];
-                unit = strv[1] ? strv[1] : "";
-=======
-                s = gr_ingredients_list_scale_unit (ingredients, viewer->title, ings[i], viewer->scale_num, viewer->scale_denom);
->>>>>>> got convert-temp working, need to work on scaling the display
+                double scale = viewer->scale;
+
                 unit = gr_ingredients_list_get_unit(ingredients, viewer->title, ings[i]);
-                amount = gr_ingredients_list_get_amount(ingredients, viewer->title, ings[i]);
-                
-                //strv = g_strsplit (s, " ", 2);
-                //amount = strv[0];
-                //unit = strv[1] ? strv[1] : "";
+                amount = (gr_ingredients_list_get_amount(ingredients, viewer->title, ings[i]) * scale);
+                measure = gr_unit_get_measure(unit);
+                //gr_ingredients_list_scale_unit (&amount, viewer->scale);
+                g_message("%f is the amount in the viewer", amount);
 
+               
+               if (measure) {
+               if (strcmp(measure, "volume") == 0) {
+                        g_message ("measure is %s", measure);
+                        convert_volume(&amount, &unit);
+                  }
+               }
                 g_message("segment is %s", viewer->title);
-                g_message("amount is %f", amount);
+
                 g_message("unit is %s", unit);
+                        //g_message ("measure is %s", measure);
 
                 row = g_object_new (GR_TYPE_INGREDIENTS_VIEWER_ROW,
                                     "amount", amount,
