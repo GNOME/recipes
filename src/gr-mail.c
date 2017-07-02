@@ -19,6 +19,7 @@
  */
 
 #include "config.h"
+#include <string.h>
 
 #include "gr-mail.h"
 #include "gr-utils.h"
@@ -31,6 +32,7 @@ typedef struct {
         char *body;
         char **attachments;
         GTask *task;
+        char *response_handle;
         guint response_signal_id;
 } MailData;
 
@@ -48,6 +50,7 @@ mail_data_free (gpointer data)
         g_free (md->body);
         g_strfreev (md->attachments);
         g_object_unref (md->task);
+        g_free (md->response_handle);
         g_free (md);
 }
 
@@ -187,16 +190,23 @@ compose_mail_done (GObject      *source,
         }
 
         g_variant_get (reply, "(&o)", &handle);
-        md->response_signal_id =
-                g_dbus_connection_signal_subscribe (g_dbus_proxy_get_connection (G_DBUS_PROXY (source)),
-                                                    "org.freedesktop.portal.Desktop",
-                                                    "org.freedesktop.portal.Request",
-                                                    "Response",
-                                                    handle,
-                                                    NULL,
-                                                    G_DBUS_SIGNAL_FLAGS_NO_MATCH_RULE,
-                                                    compose_mail_response,
-                                                    md, NULL);
+        if (strcmp (md->response_handle, handle) != 0) {
+                g_free (md->response_handle);
+                md->response_handle = g_strdup (handle);
+                g_dbus_connection_signal_unsubscribe (g_dbus_proxy_get_connection (G_DBUS_PROXY (source)),
+                                                      md->response_signal_id);
+
+                md->response_signal_id =
+                        g_dbus_connection_signal_subscribe (g_dbus_proxy_get_connection (G_DBUS_PROXY (source)),
+                                                            "org.freedesktop.portal.Desktop",
+                                                            "org.freedesktop.portal.Request",
+                                                            "Response",
+                                                            handle,
+                                                            NULL,
+                                                            G_DBUS_SIGNAL_FLAGS_NO_MATCH_RULE,
+                                                            compose_mail_response,
+                                                            md, NULL);
+        }
 }
 
 static void
@@ -207,6 +217,9 @@ window_handle_exported (GtkWindow  *window,
         MailData *md = data;
         GVariantBuilder opt_builder;
         GDBusProxy *proxy;
+        g_autofree char *token = NULL;
+        g_autofree char *sender = NULL;
+        int i;
 
         md->handle = g_strdup (handle_str);
 
@@ -218,7 +231,27 @@ window_handle_exported (GtkWindow  *window,
                 return;
         }
 
+
+        token = g_strdup_printf ("app%d", g_random_int_range (0, G_MAXINT));
+        sender = g_strdup (g_dbus_connection_get_unique_name (g_dbus_proxy_get_connection (proxy)) + 1);
+        for (i = 0; sender[i]; i++)
+                if (sender[i] == '.')
+                        sender[i] = '_';
+
+        md->response_handle = g_strdup_printf ("/org/fredesktop/portal/desktop/request/%s/%s", sender, token);
+        md->response_signal_id =
+                g_dbus_connection_signal_subscribe (g_dbus_proxy_get_connection (proxy),
+                                                    "org.freedesktop.portal.Desktop",
+                                                    "org.freedesktop.portal.Request",
+                                                    "Response",
+                                                    md->response_handle,
+                                                    NULL,
+                                                    G_DBUS_SIGNAL_FLAGS_NO_MATCH_RULE,
+                                                    compose_mail_response,
+                                                    md, NULL);
+
         g_variant_builder_init (&opt_builder, G_VARIANT_TYPE ("a{sv}"));
+        g_variant_builder_add (&opt_builder, "{sv}", "handle_token", g_variant_new_string (token));
         g_variant_builder_add (&opt_builder, "{sv}", "address", g_variant_new_string (md->address));
         g_variant_builder_add (&opt_builder, "{sv}", "subject", g_variant_new_string (md->subject));
         g_variant_builder_add (&opt_builder, "{sv}", "body", g_variant_new_string (md->body));
