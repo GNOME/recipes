@@ -33,6 +33,7 @@ typedef struct {
         GDestroyNotify destroy;
         GDBusConnection *connection;
         guint response_id;
+        char *handle;
 } CallbackData;
 
 static void
@@ -49,6 +50,7 @@ free_callback_data (gpointer data)
                 g_dbus_connection_signal_unsubscribe (cbdata->connection, cbdata->response_id);
 
         g_clear_object (&cbdata->connection);
+        g_free (cbdata->handle);
 
         g_free (cbdata);
 }
@@ -124,6 +126,9 @@ window_handle_exported (GtkWindow  *window,
         g_autoptr(GVariant) ret = NULL;
         const char *handle;
         GVariantBuilder opt_builder;
+        g_autofree char *token = NULL;
+        g_autofree char *sender = NULL;
+        int i;
 
         cbdata->connection = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, &error);
 	if (!cbdata->connection) {
@@ -133,7 +138,27 @@ window_handle_exported (GtkWindow  *window,
                 return;
 	}
 
+        token = g_strdup_printf ("app%d", g_random_int_range (0, G_MAXINT));
+        sender = g_strdup (g_dbus_connection_get_unique_name (cbdata->connection) + 1);
+        for (i = 0; sender[i]; i++)
+                if (sender[i] == '.')
+                        sender[i] = '_';
+
+        cbdata->handle = g_strdup_printf ("/org/fredesktop/portal/desktop/request/%s/%s", sender, token);
+
+        cbdata->response_id =
+                g_dbus_connection_signal_subscribe (cbdata->connection,
+                                                    "org.freedesktop.portal.Desktop",
+                                                    "org.freedesktop.portal.Request",
+                                                    "Response",
+                                                    cbdata->handle,
+                                                    NULL,
+                                                    G_DBUS_SIGNAL_FLAGS_NO_MATCH_RULE,
+                                                    account_response,
+                                                    user_data, NULL);
+
         g_variant_builder_init (&opt_builder, G_VARIANT_TYPE ("a{sv}"));
+        g_variant_builder_add (&opt_builder, "{sv}", "token", g_variant_new_string (token));
         g_variant_builder_add (&opt_builder, "{sv}", "reason", g_variant_new_string (_("Allow your personal information to be included with recipes you share with your friends.")));
 
         ret = g_dbus_connection_call_sync (cbdata->connection,
@@ -157,16 +182,21 @@ window_handle_exported (GtkWindow  *window,
 
         g_variant_get (ret, "(&o)", &handle);
 
-        cbdata->response_id =
-                g_dbus_connection_signal_subscribe (cbdata->connection,
-                                                    "org.freedesktop.portal.Desktop",
-                                                    "org.freedesktop.portal.Request",
-                                                    "Response",
-                                                    handle,
-                                                    NULL,
-                                                    G_DBUS_SIGNAL_FLAGS_NO_MATCH_RULE,
-                                                    account_response,
-                                                    user_data, NULL);
+        if (strcmp (cbdata->handle, handle) != 0) {
+                g_free (cbdata->handle);
+                cbdata->handle = g_strdup (handle);
+                g_dbus_connection_signal_unsubscribe (cbdata->connection, cbdata->response_id);
+                cbdata->response_id =
+                        g_dbus_connection_signal_subscribe (cbdata->connection,
+                                                            "org.freedesktop.portal.Desktop",
+                                                            "org.freedesktop.portal.Request",
+                                                            "Response",
+                                                            handle,
+                                                            NULL,
+                                                            G_DBUS_SIGNAL_FLAGS_NO_MATCH_RULE,
+                                                            account_response,
+                                                            user_data, NULL);
+        }
 }
 
 void
