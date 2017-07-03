@@ -336,11 +336,16 @@ gr_ingredients_viewer_set_ingredients (GrIngredientsViewer *viewer,
 
                
                if (measure) {
-               if (strcmp(measure, "volume") == 0) {
+                if (strcmp(measure, "volume") == 0) {
                         g_message ("measure is %s", measure);
                         convert_volume(&amount, &unit);
-                  }
+                        }
+                if (strcmp(measure, "weight") == 0) {
+                        g_message ("measure is %s", measure);
+                        convert_weight(&amount, &unit);
+                        }
                }
+               human_readable(&amount, &unit);
                 g_message("segment is %s", viewer->title);
 
                 g_message("unit is %s", unit);

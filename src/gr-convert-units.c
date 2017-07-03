@@ -75,6 +75,29 @@ get_volume_unit (void)
         return unit;
 }
 
+static int
+get_weight_unit (void)
+{
+        int unit;
+        GSettings *settings = gr_settings_get ();
+
+        unit = g_settings_get_enum (settings, "weight-unit");
+
+        if (unit == GR_VOLUME_UNIT_LOCALE) {
+#ifdef LC_MEASUREMENT
+                const char *fmt;
+
+                fmt = nl_langinfo (_NL_MEASUREMENT_MEASUREMENT);
+                if (fmt && *fmt == 2)
+                        unit = GR_VOLUME_UNIT_IMPERIAL;
+                else
+#endif
+                        unit = GR_VOLUME_UNIT_METRIC;
+        }
+
+        return unit;
+}
+
 
 void
 convert_temp (int *num, int *unit, int user_unit)
@@ -106,20 +129,15 @@ convert_temp (int *num, int *unit, int user_unit)
 
 }
 
-
-
 void 
 convert_volume (double *amount, char **unit)
 {
         double amount1 = *amount;        
         char *unit1 = *unit;
 
-        g_message("%f is the amount in convert-unit", amount1);
-        g_message("%s is the unit in convert-unit", unit1);
-
         int user_volume_unit = get_volume_unit();
 
-                if (user_volume_unit == 1) {
+                if (user_volume_unit == GR_VOLUME_UNIT_IMPERIAL) {
                        if (strcmp(unit1, "ml") == 0)
                                 {
                                         amount1 = (amount1 / 4.92892);
@@ -127,16 +145,122 @@ convert_volume (double *amount, char **unit)
                                 }
                         else if (strcmp(unit1, "dl") == 0)
                                 {
-                                        amount1 = (amount1 / 0.422675);
-                                        unit1 = "cup";
+                                        amount1 = (amount1 * 20.2884);
+                                        unit1 = "tsp";
                                 }
                         else if (strcmp(unit1, "l") == 0)
                         {
-                                amount1 = (amount1 * 4.22675);
-                                unit1 = "cup";
+                                amount1 = (amount1 * 202.884);
+                                unit1 = "tsp";
+                        }
+        }
+                if (user_volume_unit == GR_VOLUME_UNIT_METRIC) {
+                       if (strcmp(unit1, "tsp") == 0)
+                                {
+                                        amount1 = (amount1 * 4.92892);
+                                        unit1 = "ml";
+                                }
+                        else if (strcmp(unit1, "tbsp") == 0)
+                                {
+                                        amount1 = (amount1 * 14.79);
+                                        unit1 = "ml";
+                                }
+                        else if (strcmp(unit1, "cup") == 0)
+                        {
+                                amount1 = (amount1 * 236.59);
+                                unit1 = "ml";
+                        }
+                        else if (strcmp(unit1, "pt") == 0)
+                                {
+                                        amount1 = (amount1 * 473.176);
+                                        unit1 = "ml";
+                                }
+                        else if (strcmp(unit1, "qt") == 0)
+                        {
+                                amount1 = (amount1 * 946.353);
+                                unit1 = "ml";
+                        }
+                        else if (strcmp(unit1, "gal") == 0)
+                        {
+                                amount1 = (amount1 * 3785.41);
+                                unit1 = "ml";
+                        }
+                        else if (strcmp(unit1, "fl oz") == 0)
+                        {
+                                amount1 = (amount1 * 29.5735);
+                                unit1 = "ml";
+                        }
+                        else if (strcmp(unit1, "fl. oz.") == 0)
+                        {
+                                amount1 = (amount1 * 29.5735);
+                                unit1 = "ml";
                         }
         }
 
                                 *amount = amount1;
                                 *unit = unit1;
+}
+
+void 
+convert_weight (double *amount, char **unit)
+{
+        double amount1 = *amount;        
+        char *unit1 = *unit;
+
+        int user_weight_unit = get_weight_unit();
+
+        if (user_weight_unit == GR_VOLUME_UNIT_IMPERIAL) {
+
+                       if (strcmp(unit1, "g") == 0)
+                                {
+                                        amount1 = (amount1 * 0.035274);
+                                        unit1 = "oz";
+                                }
+                        else if (strcmp(unit1, "kg") == 0)
+                                {
+                                        amount1 = (amount1 * 35.274);
+                                        unit1 = "oz";
+                                }
+                
+        }
+                if (user_weight_unit == GR_VOLUME_UNIT_METRIC) {
+
+                       if (strcmp(unit1, "oz") == 0)
+                                {
+                                        amount1 = (amount1 * 28.3495);
+                                        unit1 = "g";
+                                }
+                        else if (strcmp(unit1, "lb") == 0)
+                                {
+                                        amount1 = (amount1 * 453.592);
+                                        unit1 = "g";
+                                }
+                        else if (strcmp(unit1, "st") == 0)
+                        {
+                                        amount1 = (amount1 * 6350.29);
+                                        unit1 = "g";
+                        } 
+        }
+                                *amount = amount1;
+                                *unit = unit1;
+}
+
+void 
+human_readable (double *amount, char **unit)
+{
+        double amount1 = *amount;        
+        char *unit1 = *unit;
+
+        if ((strcmp(unit1, "g") == 0) && (amount1 >= 1000) )
+        {
+                amount1 = (amount1 / 1000);
+                unit1 = "kg";
+        }
+        if ((strcmp(unit1, "oz") == 0) && (amount1 >= 16) )
+        {
+                amount1 = (amount1 / 16);
+                unit1 = "lb";
+        } 
+                        *amount = amount1;
+                        *unit = unit1;
 }

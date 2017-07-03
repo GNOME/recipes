@@ -43,6 +43,9 @@ typedef enum {
 int             get_temperature_unit        (void);
 void            convert_temp                (int *num, int *unit, int user_unit); 
 void            convert_volume              (double *amount, char **unit); 
+void            convert_weight              (double *amount, char **unit);
+void            human_readable              (double *amount, char **unit);
+
 
 
 
