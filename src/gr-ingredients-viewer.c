@@ -325,34 +325,29 @@ gr_ingredients_viewer_set_ingredients (GrIngredientsViewer *viewer,
                 char *unit;
                 GtkWidget *row;
                 const char *measure;
+                const char *endAmount;
 
                 double scale = viewer->scale;
 
                 unit = gr_ingredients_list_get_unit(ingredients, viewer->title, ings[i]);
                 amount = (gr_ingredients_list_get_amount(ingredients, viewer->title, ings[i]) * scale);
                 measure = gr_unit_get_measure(unit);
-                //gr_ingredients_list_scale_unit (&amount, viewer->scale);
-                g_message("%f is the amount in the viewer", amount);
-
                
                if (measure) {
                 if (strcmp(measure, "volume") == 0) {
-                        g_message ("measure is %s", measure);
                         convert_volume(&amount, &unit);
                         }
                 if (strcmp(measure, "weight") == 0) {
-                        g_message ("measure is %s", measure);
                         convert_weight(&amount, &unit);
                         }
                }
-               human_readable(&amount, &unit);
-                g_message("segment is %s", viewer->title);
+                
+                human_readable(&amount, &unit);
 
-                g_message("unit is %s", unit);
-                        //g_message ("measure is %s", measure);
+                endAmount = gr_number_format(amount);                
 
                 row = g_object_new (GR_TYPE_INGREDIENTS_VIEWER_ROW,
-                                    "amount", amount,
+                                    "amount", endAmount,
                                     "unit", unit,
                                     "ingredient", ings[i],
                                     "size-group", viewer->group,
