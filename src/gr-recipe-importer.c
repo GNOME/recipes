@@ -36,6 +36,7 @@
 #include "gr-utils.h"
 #include "gr-recipe-tile.h"
 #include "gr-chef-tile.h"
+#include "gr-gourmet-format.h"
 
 
 struct _GrRecipeImporter
@@ -838,6 +839,22 @@ gr_recipe_importer_import_from (GrRecipeImporter *importer,
                      _("This build does not support importing"));
         error_cb (NULL, error, importer);
 #else
+        g_autofree char *basename = NULL;
+
+        basename = g_file_get_basename (file);
+        if (g_str_has_suffix (basename, ".xml")) {
+                g_autoptr(GError) error = NULL;
+                GList *recipes;
+
+                if (!(recipes = gr_gourmet_format_import (file, &error)))
+                        error_cb (NULL, error, importer);
+
+                g_signal_emit (importer, done_signal, 0, recipes);
+                g_list_free (recipes);
+
+                return;
+        }
+
         importer->dir = g_mkdtemp (g_build_filename (g_get_tmp_dir (), "recipeXXXXXX", NULL));
         importer->output = g_file_new_for_path (importer->dir);
 
