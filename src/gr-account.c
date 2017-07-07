@@ -158,7 +158,7 @@ window_handle_exported (GtkWindow  *window,
                                                     user_data, NULL);
 
         g_variant_builder_init (&opt_builder, G_VARIANT_TYPE ("a{sv}"));
-        g_variant_builder_add (&opt_builder, "{sv}", "token", g_variant_new_string (token));
+        g_variant_builder_add (&opt_builder, "{sv}", "handle_token", g_variant_new_string (token));
         g_variant_builder_add (&opt_builder, "{sv}", "reason", g_variant_new_string (_("Allow your personal information to be included with recipes you share with your friends.")));
 
         ret = g_dbus_connection_call_sync (cbdata->connection,

@@ -251,7 +251,7 @@ window_handle_exported (GtkWindow  *window,
                                                     md, NULL);
 
         g_variant_builder_init (&opt_builder, G_VARIANT_TYPE ("a{sv}"));
-        g_variant_builder_add (&opt_builder, "{sv}", "token", g_variant_new_string (token));
+        g_variant_builder_add (&opt_builder, "{sv}", "handle_token", g_variant_new_string (token));
         g_variant_builder_add (&opt_builder, "{sv}", "address", g_variant_new_string (md->address));
         g_variant_builder_add (&opt_builder, "{sv}", "subject", g_variant_new_string (md->subject));
         g_variant_builder_add (&opt_builder, "{sv}", "body", g_variant_new_string (md->body));
