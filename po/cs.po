@@ -6,10 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes recipes-1.0\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=recipes\n"
-"POT-Creation-Date: 2017-06-20 09:19-0400\n"
-"PO-Revision-Date: 2017-04-29 08:14+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-20 14:03+0000\n"
+"PO-Revision-Date: 2017-07-07 14:00+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>>\n"
 "Language: cs\n"
@@ -30,6 +29,7 @@ msgstr "Recepty"
 msgid "GNOME cooks unite!"
 msgstr "Kuchaři z celého GNOME, spojte se!"
 
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Recipes.desktop.in:7
 msgid "org.gnome.Recipes"
 msgstr "org.gnome.Recipes"
@@ -642,6 +642,7 @@ msgstr "Bez omezení"
 msgid "Ingredients"
 msgstr "Suroviny"
 
+#. FIXME: repopulate
 #: src/gr-query-editor.ui:255 src/gr-query-editor.c:337
 #: src/gr-query-editor.c:766
 msgid "Anything"
@@ -1714,9 +1715,9 @@ msgid "Failed to load recipe: Couldn’t parse Modified key"
 msgstr "Selhalo načtení receptu: Nelze zpracovat klíč Modified (změněno)"
 
 #: src/gr-recipe-importer.c:771
-#, fuzzy, c-format
+#, c-format
 msgid "No chef information found"
-msgstr "Informace o kuchaři"
+msgstr "Nebyla nalezena žádná informace o kuchaři"
 
 #: src/gr-recipe-importer.c:801
 #, c-format
@@ -2077,30 +2078,26 @@ msgid "glass"
 msgstr "sklenice"
 
 #: src/gr-unit.c:57
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "mm"
-msgstr "m"
+msgstr "mm"
 
 #: src/gr-unit.c:57
-#, fuzzy
 msgctxt "unit name"
 msgid "millimeter"
-msgstr "mililitr"
+msgstr "milimetr"
 
 #: src/gr-unit.c:58
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "cm"
-msgstr "m"
+msgstr "cm"
 
 #: src/gr-unit.c:58
 msgctxt "unit name"
 msgid "centimeter"
-msgstr ""
+msgstr "centimetr"
 
 #: src/gr-unit.c:59
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "m"
 msgstr "m"
@@ -2108,7 +2105,7 @@ msgstr "m"
 #: src/gr-unit.c:59
 msgctxt "unit name"
 msgid "meter"
-msgstr ""
+msgstr "metr"
 
 #: src/gr-unit.c:129
 #, c-format

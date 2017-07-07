@@ -6,12 +6,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes recipes-1.0\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=recipes\n"
-"POT-Creation-Date: 2017-06-20 09:20-0400\n"
-"PO-Revision-Date: 2017-04-17 22:39+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-20 14:03+0000\n"
+"PO-Revision-Date: 2017-07-07 13:58+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
-"Language-Team: čeština <gnome-cs-list@gnome.org>\n"
+"Language-Team: čeština <gnome-cs-list@gnome.org>>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -112,14 +111,12 @@ msgid "I'm cooking from time to time and started to add recipes here."
 msgstr "Sem tam vařím a tak jsem sem začal přidávat recepty."
 
 #: data/chefs.db.h:19
-#, fuzzy
 msgid "Artist, Computer Scientist, Translator."
 msgstr "Umělec, počítačový inženýr, cestovatel."
 
 #: data/chefs.db.h:20
-#, fuzzy
 msgid "I love cooking and learning."
-msgstr "Miluji vaření. :)"
+msgstr "Miluji vaření a vzdělávání se."
 
 #: data/chefs.db.h:21
 msgid "Artist, Computer Scientist, Traveller."
@@ -135,17 +132,19 @@ msgstr "Letectví, vyvádění hloupostí, Finsko."
 
 #: data/recipes.db.h:3
 msgid "Bourbon Pork Loin"
-msgstr ""
+msgstr "Vepřová panenka pečená na bourbonu"
 
 #: data/recipes.db.h:4
 msgid "This is a modified version of a recipe found on a website."
-msgstr ""
+msgstr "Jedná se o upravenou verzi z Internetu."
 
 #: data/recipes.db.h:5
 msgid ""
 "1. Combine the spice rub ingredients, and rub all over the pork. Let sit at "
 "room temperature as you preheat your oven to 110ºC."
 msgstr ""
+"1. Promíchejte všechna koření a rozetřete jej po celé panence. Nechejte "
+"zaležet při pokojové teplotě, dokud se vám nepředehřeje trouba na 110 °C."
 
 #: data/recipes.db.h:6
 msgid ""
@@ -154,6 +153,10 @@ msgid ""
 "small saucepan; bring to a simmer over medium-low heat and simmer until dark "
 "and thickened, about 15 minutes. Set the glaze aside."
 msgstr ""
+"2. Dejte panenku na plech, strčte ji do trouby a opékejte po dobu 35 minut. "
+"Zatímco se bude péct, smíchejte přísady na potírání v malém kastrólku. "
+"Přiveďte je k varu na středním ohni a nechejte vařit, dokud neztmavnou a "
+"nezhoustnou, tj. zhruba 15 minut. Výslednou máčku odložte stranou."
 
 #: data/recipes.db.h:7
 msgid ""
@@ -164,30 +167,44 @@ msgid ""
 "once onions start to caramelize they will quickly burn. Cover the pork "
 "liberally with glaze."
 msgstr ""
+"3. Maso vyjměte z trouby a přendejte na prkénko, volně jej oviňte "
+"potravinářskou fólií a nechejte odležet. Zvyšte teplotu trouby na 260 °C. "
+"Zatímco se trouba rozehřátá, přemístěte plech na varnou desku a přidejte do "
+"něj olej, cibuli a několik špetek soli. Pečte, dokud cibule nezměkne. Dobře "
+"ji při tom hlídejte, protože jakmile začne cibule karamelizovat, dokáže se "
+"rychle připálit. Povrch panenky potřete připravenou omáčkou."
 
 #: data/recipes.db.h:8
 msgid ""
 "4. Roast a little bit more, less than 5 minutes. Let it rest and serve with "
 "smashed potatoes and vegs."
 msgstr ""
+"4. Dejte panenku ještě trochu dopéct, ale ne více než 5 minut. Nechejte ji "
+"odležet a podávejte se šťouchanými brambory a zeleninovou oblohou."
 
 #: data/recipes.db.h:9
 msgid ""
 "** If you decide to add apples, they go at the end of the 3rd step, before "
 "dripping glaze on the meat."
 msgstr ""
+"** Pokud se rozhodnete přidat i jablka, učiňte tak na konci kroku 3, dříve "
+"než maso potřete omáčkou."
 
 #: data/recipes.db.h:10
 msgid ""
 "Some use maple syrup but I prefer the taste of pure honey mixed with the "
 "flavour of pork meat."
 msgstr ""
+"Někteří používají javorový sirup, ale já dávám přednost chuti čistého medu "
+"smíchaného promíšeného s vepřovým."
 
 #: data/recipes.db.h:11
 msgid ""
 "Same for apples; as some people add one or two. I don't like them but you if "
 "you fancy, feel free to add them."
 msgstr ""
+"To stejné s jablky: někteří lidé přidávají jedno, dvě jablka. Mně to "
+"nechutná, ale jestli vám ano, neváhejte je přidat."
 
 #: data/recipes.db.h:12
 msgid ""
@@ -195,77 +212,89 @@ msgid ""
 "as its flavour will be missed. But if you have nothing else, use them. It "
 "won't hurt."
 msgstr ""
+"Také použití sádla dělá toto jídlo těžkým, na druhou stanu použít olivový "
+"olej je zbytečné, protože jeho chuť se stejně ztratí. Ale pokud nemáte nic "
+"jiného, použijte jej. Nic hrozného se nestane."
 
 #: data/recipes.db.h:13
-#, fuzzy
 msgid "Henry's original stew"
-msgstr "Henryho guláš"
+msgstr "Henryho originální dušené"
 
 #: data/recipes.db.h:14
 msgid "My friend Heinrich made up this stew a winter Saturday."
-msgstr ""
+msgstr "Můj přítel Heinrich připravil toto dušené jedné zimní Soboty."
 
 #: data/recipes.db.h:15
 msgid "It can be eaten with rice or alone."
-msgstr ""
+msgstr "Je dobré s rýží i samotné."
 
 #: data/recipes.db.h:16
 msgid ""
 "Cook the meat with the species, not completely, just enough to get it "
 "toasted and mix the flavours. "
 msgstr ""
+"Povařte maso s kořením, ale ne úplně, jen dostatečně na to, aby se dalo "
+"opékat a smíchat s příchutěmi."
 
 #: data/recipes.db.h:17
 msgid "Add the vegetables and beans.  Cook a bit more.  "
-msgstr ""
+msgstr "Přidejte zeleninu a fazole. Nechejte trochu povařit."
 
 #: data/recipes.db.h:18
 msgid ""
 "Add abundant broth, cover the pot and let it cook on slow fire until is "
 "done. "
 msgstr ""
+"Přidejte silný vývar, zakryjte hrnec a nechejte vařit na mírném ohni, dokud "
+"není hotové."
 
 #: data/recipes.db.h:19
 msgid "Can be served with rice  (like in the picture)  or alone."
-msgstr ""
+msgstr "Můžete podávat s rýži (jako na obrázku) nebo jen tak samotné."
 
 #: data/recipes.db.h:20
 msgid ""
 "Beans can be of any kind, and can be bought canned, in which case would be a "
 "can of each kind."
 msgstr ""
+"Fazole mohou být libovolného druhu a mohou být i konzervované. V případě "
+"konzerv můžete koupit klidně každou jinou."
 
 #: data/recipes.db.h:21
 msgid "Juniper berries and Bay leaves are optional."
-msgstr ""
+msgstr "Jalovcové bobule a bobkový list nejsou nutné."
 
 #: data/recipes.db.h:22
 msgid "Crispy olives"
-msgstr ""
+msgstr "Křupavé olivy"
 
 #: data/recipes.db.h:23
 msgid ""
 "These olives in cheese dough are quick and easy to make and are great as a "
 "side dish or snack."
 msgstr ""
+"Tyto olivy v sýrovém těstíčku jsou rychle a jednoduše připravené a hodí se "
+"skvěle jako doplněk k hlavnímu jídlu i jako samostatné občerstvení."
 
 #: data/recipes.db.h:24
-#, fuzzy
 msgid "[image:1]Grate the cheese."
-msgstr "[image:6]Vejce rozšlehejte."
+msgstr "[image:1]Nastrouhejte sýr."
 
 #: data/recipes.db.h:25
 msgid ""
 "[image:4]Mix the flour and butter into a dough, add the cheese and salt and "
 "knead it until it is smooth."
 msgstr ""
+"[image:4]Smíchejte mouku a máslo do těsta, přidejte sýr a sůl a hnětejte, "
+"dokud těsto není hladké."
 
 #: data/recipes.db.h:26
-#, fuzzy
 msgid ""
 "[timer:00:30:00,Rise]Form the dough into a roll and let it rise in the "
 "fridge for 30 minutes."
-msgstr "[timer:00:35:00,pečení]Pečte koláč v troubě po dobu 35 minut."
+msgstr ""
+"[timer:00:30:00,uležení]Zformujte těsto do válce a nechejte je 30 minut "
+"uležet v lednici."
 
 #: data/recipes.db.h:27
 msgid ""
@@ -273,11 +302,13 @@ msgid ""
 "them. You can roll the dough between your hands until it forms a little ball "
 "around the olive."
 msgstr ""
+"[image:2]Rozřezejte válec těsta na 1 cm silné plátky a vtlačte do nich "
+"olivy. Můžete těsto v ruce uválet do malých kuliček, které olivu dokola "
+"obalí."
 
 #: data/recipes.db.h:28
-#, fuzzy
 msgid "[timer:00:20:00,Bake]Bake for 20 minutes at [temperature:220C]."
-msgstr "[timer:00:30:00,pečení]Pečte 30 minut při [temperature:200C]."
+msgstr "[timer:00:20:00,pečení]Pečte 20 minut při [temperature:220C]."
 
 #: data/recipes.db.h:29 data/recipes.db.h:221
 msgid "[image:0]Enjoy!"
@@ -285,36 +316,37 @@ msgstr "[image:0]Užijte si!"
 
 #: data/recipes.db.h:30
 msgid "Pesce alla sale"
-msgstr ""
+msgstr "Ryba pečená v soli"
 
 #: data/recipes.db.h:31
 msgid "It's an easy but tasty way to prepare fish."
-msgstr ""
+msgstr "Jde o jednoduchý způsob, jak připravit chutnou rybu."
 
 #: data/recipes.db.h:32
 msgid "Despite all the salt, the result isn't salty but soft and nice."
 msgstr ""
+"Navzdory velkému množství soli není výsledkem ryba přesolená, ale měkká a "
+"dobrá."
 
 #: data/recipes.db.h:33
 msgid "Preheat the oven."
-msgstr ""
+msgstr "Předehřejte troubu."
 
 #: data/recipes.db.h:34
 msgid "Stuff the fish with a mix of lemon and dill."
-msgstr ""
+msgstr "Naplňte rybu směsí citrónu a kopru."
 
 #: data/recipes.db.h:35
 msgid "Combine the salt and eggs. Spread this mix over the fish."
-msgstr ""
+msgstr "Smíchejte sůl s vejci. Směs přelijte přes rybu."
 
 #: data/recipes.db.h:36
 msgid "Bake it 20' - 25'  or until the crust is brown. "
-msgstr ""
+msgstr "Pečte 20 až 25 minut, nebo dokud nezhnědne kůrka."
 
 #: data/recipes.db.h:37
-#, fuzzy
 msgid "Serve it with plain rice."
-msgstr "Podávejte s velkým množstvím černého pepře."
+msgstr "Podávejte s obyčejnou rýží."
 
 #: data/recipes.db.h:38
 msgid "Neapolitan Pizza"
@@ -555,13 +587,13 @@ msgstr ""
 "šťávou opatrně, poleva musí mít konzistenci husté kaše."
 
 #: data/recipes.db.h:72
-#, fuzzy
 msgid ""
 "As long as the cake is warm prick little holes with a fork allover the cake. "
 "Then spread the sugar icing on the warm cake. Let the cake cool down."
 msgstr ""
-"Dokud je dort teplý, naneste na něj vidličkou cukrovou polevu. Pak jej "
-"nechte vychladnout."
+"Dokud je dort teplý, propíchejte do něj vidličkou rovnoměrně po celé ploše "
+"malé otvory. Pak na něj ještě teplý rozetřete cukrovou polevu a nechte jej "
+"vychladnout."
 
 #: data/recipes.db.h:73
 msgid "Henry's Goulash"
