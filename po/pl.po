@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-27 22:35+0000\n"
-"PO-Revision-Date: 2017-07-02 18:02+0200\n"
+"POT-Creation-Date: 2017-07-08 13:35+0000\n"
+"PO-Revision-Date: 2017-07-09 17:40+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -21,8 +21,8 @@ msgstr ""
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
-#: src/gr-window.ui:479 src/gr-about-dialog.c:907 src/gr-window.c:388
-#: src/gr-window.c:1042
+#: src/gr-window.ui:479 src/gr-about-dialog.c:907 src/gr-window.c:387
+#: src/gr-window.c:1041
 msgid "Recipes"
 msgstr "Przepisy"
 
@@ -248,11 +248,11 @@ msgstr "Opis:"
 msgid "Picture:"
 msgstr "Zdjęcie:"
 
-#: src/gr-chef-dialog.ui:4 src/gr-window.c:1129
+#: src/gr-chef-dialog.ui:4 src/gr-window.c:1128
 msgid "Chef Information"
 msgstr "Informacje o kucharzu"
 
-#: src/gr-chef-dialog.ui:10 src/gr-window.c:1227
+#: src/gr-chef-dialog.ui:10 src/gr-window.c:1226
 msgid "_Cancel"
 msgstr "_Anuluj"
 
@@ -350,7 +350,7 @@ msgid "Time is up!"
 msgstr "Czas minął!"
 
 #: src/gr-cuisine-page.ui:77 src/gr-list-page.ui:111 src/gr-search-page.ui:29
-#: src/gr-list-page.c:489
+#: src/gr-list-page.c:510
 msgid "No recipes found"
 msgstr "Nie odnaleziono przepisów"
 
@@ -656,7 +656,7 @@ msgstr "Składniki"
 msgid "Name of the List"
 msgstr "Nazwa listy"
 
-#: src/gr-ingredients-viewer.ui:43 src/gr-recipe-small-tile.ui:137
+#: src/gr-ingredients-viewer.ui:43 src/gr-shopping-tile.ui:137
 msgid "Remove"
 msgstr "Usuń"
 
@@ -701,10 +701,6 @@ msgstr "Wszystko"
 msgid "Search…"
 msgstr "Wyszukiwanie…"
 
-#: src/gr-recipe-small-tile.ui:101
-msgid "Yield"
-msgstr "Porcja"
-
 #: src/gr-recipes-page.ui:8
 msgid "Recipes page"
 msgstr "Strona przepisów"
@@ -744,6 +740,10 @@ msgstr "Wy_czyść listę"
 #: src/gr-shopping-page.ui:188
 msgid "Nothing to add"
 msgstr "Nie ma nic do dodania"
+
+#: src/gr-shopping-tile.ui:101
+msgid "Yield"
+msgstr "Porcja"
 
 #: src/gr-time-widget.ui:31
 msgid "Start"
@@ -805,7 +805,7 @@ msgstr "Cofnij"
 msgid "Send Update"
 msgstr "Wyślij zmiany"
 
-#: src/gr-window.ui:518 src/gr-window.c:395
+#: src/gr-window.ui:518 src/gr-window.c:394
 msgid "Cuisines"
 msgstr "Kuchnie"
 
@@ -879,7 +879,7 @@ msgstr "Pomo_c"
 
 #: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:163
 #: src/gr-image-viewer.c:627 src/gr-recipe-exporter.c:172
-#: src/gr-shopping-page.c:739 src/gr-window.c:1163
+#: src/gr-shopping-page.c:739 src/gr-window.c:1162
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -1001,12 +1001,12 @@ msgstr "Więcej informacji o Przepisach"
 msgid "Recipes by"
 msgstr "Autorzy przepisów"
 
-#: src/gr-account.c:109
+#: src/gr-account.c:111
 #, c-format
 msgid "Got an error from Account portal"
 msgstr "Błąd portalu „Konto”"
 
-#: src/gr-account.c:137
+#: src/gr-account.c:162
 msgid ""
 "Allow your personal information to be included with recipes you share with "
 "your friends."
@@ -1035,7 +1035,7 @@ msgstr "Wyświetla kategorię"
 msgid "Select an Image"
 msgstr "Wybór obrazu"
 
-#: src/gr-chef-dialog.c:162 src/gr-image-viewer.c:626 src/gr-window.c:1162
+#: src/gr-chef-dialog.c:162 src/gr-image-viewer.c:626 src/gr-window.c:1161
 msgid "Open"
 msgstr "Otwórz"
 
@@ -1322,8 +1322,8 @@ msgid "serving"
 msgstr "porcja"
 
 #: src/gr-details-page.c:193 src/gr-edit-page.c:936
-#: src/gr-recipe-importer.c:503 src/gr-recipe-small-tile.c:110
-#: src/gr-recipe-store.c:410
+#: src/gr-recipe-importer.c:504 src/gr-recipe-store.c:410
+#: src/gr-shopping-tile.c:110
 msgid "servings"
 msgstr "porcje"
 
@@ -1550,6 +1550,11 @@ msgstr "Należy podać nazwę przepisu"
 msgid "Some ingredients need correction"
 msgstr "Część składników wymaga poprawy"
 
+#: src/gr-gourmet-format.c:174
+#, c-format
+msgid "Not a Gourmet XML document"
+msgstr "Plik nie jest dokumentem XML programu Gourmet"
+
 #: src/gr-ingredients-viewer-row.c:153
 msgid "Amount…"
 msgstr "Ilość…"
@@ -1558,72 +1563,72 @@ msgstr "Ilość…"
 msgid "Ingredient…"
 msgstr "Składnik…"
 
-#: src/gr-list-page.c:307
+#: src/gr-list-page.c:310
 msgid "Gluten-free Recipes"
 msgstr "Przepisy bez glutenu"
 
-#: src/gr-list-page.c:309
+#: src/gr-list-page.c:312
 msgid "Nut-free Recipes"
 msgstr "Przepisy bez orzechów"
 
-#: src/gr-list-page.c:311
+#: src/gr-list-page.c:314
 msgid "Vegan Recipes"
 msgstr "Przepisy wegańskie"
 
-#: src/gr-list-page.c:313
+#: src/gr-list-page.c:316
 msgid "Vegetarian Recipes"
 msgstr "Przepisy wegetariańskie"
 
-#: src/gr-list-page.c:315
+#: src/gr-list-page.c:318
 msgid "Milk-free Recipes"
 msgstr "Przepisy bez mleka"
 
-#: src/gr-list-page.c:317
+#: src/gr-list-page.c:320
 msgid "Other Dietary Restrictions"
 msgstr "Inne ograniczenia żywieniowe"
 
-#: src/gr-list-page.c:358
+#: src/gr-list-page.c:363
 #, c-format
 msgid "No %s found"
 msgstr "Nie odnaleziono „%s”"
 
-#: src/gr-list-page.c:361 src/gr-list-page.c:420 src/gr-list-page.c:451
+#: src/gr-list-page.c:366 src/gr-list-page.c:435 src/gr-list-page.c:468
 msgid "You could add one using the “New Recipe” button."
 msgstr "Można dodać przepis za pomocą przycisku „Nowy przepis”."
 
-#: src/gr-list-page.c:409
+#: src/gr-list-page.c:424
 #, c-format
 msgid "Recipes by %s"
 msgstr "Przepisy autora: %s"
 
-#: src/gr-list-page.c:416
+#: src/gr-list-page.c:431
 #, c-format
 msgid "No recipes by chef %s found"
 msgstr "Nie odnaleziono przepisów kucharza: %s"
 
-#: src/gr-list-page.c:422 src/gr-list-page.c:490 src/gr-list-page.c:515
-#: src/gr-list-page.c:548
+#: src/gr-list-page.c:437 src/gr-list-page.c:511 src/gr-list-page.c:538
+#: src/gr-list-page.c:573
 msgid "Sorry about this."
 msgstr "Przepraszamy."
 
-#: src/gr-list-page.c:448
+#: src/gr-list-page.c:465
 #, c-format
 msgid "No recipes for %s found"
 msgstr "Nie odnaleziono przepisów dla „%s”"
 
-#: src/gr-list-page.c:470
+#: src/gr-list-page.c:489
 msgid "No favorite recipes found"
 msgstr "Nie odnaleziono ulubionych przepisów"
 
-#: src/gr-list-page.c:471
+#: src/gr-list-page.c:490
 msgid "Use the ♥ button to mark recipes as favorites."
 msgstr "Przyciskiem ♥ można oznaczać przepisy jako ulubione."
 
-#: src/gr-list-page.c:514
+#: src/gr-list-page.c:537
 msgid "No new recipes"
 msgstr "Nie ma nowych przepisów"
 
-#: src/gr-list-page.c:547
+#: src/gr-list-page.c:572
 msgid "No imported recipes found"
 msgstr "Nie odnaleziono zaimportowanych przepisów"
 
@@ -1744,7 +1749,7 @@ msgstr "(Załączony plik może zostać zaimportowany do Przepisów GNOME)."
 msgid "This build does not support exporting"
 msgstr "Ta wersja nie obsługuje eksportowania"
 
-#: src/gr-recipe-exporter.c:520
+#: src/gr-recipe-exporter.c:519
 #, c-format
 msgid ""
 "Error while exporting:\n"
@@ -1753,7 +1758,7 @@ msgstr ""
 "Błąd podczas eksportowania:\n"
 "%s"
 
-#: src/gr-recipe-exporter.c:617
+#: src/gr-recipe-exporter.c:616
 #, c-format
 msgid "%d recipe selected for sharing"
 msgid_plural "%d recipes selected for sharing"
@@ -1761,7 +1766,7 @@ msgstr[0] "Zaznaczono %d przepis do wysłania"
 msgstr[1] "Zaznaczono %d przepisy do wysłania"
 msgstr[2] "Zaznaczono %d przepisów do wysłania"
 
-#: src/gr-recipe-exporter.c:649
+#: src/gr-recipe-exporter.c:648
 msgid ""
 "Some of the selected recipes are included\n"
 "with GNOME Recipes. You should only contribute\n"
@@ -1786,7 +1791,7 @@ msgstr "Gotowanie:"
 msgid "Yield:"
 msgstr "Porcja:"
 
-#: src/gr-recipe-importer.c:237
+#: src/gr-recipe-importer.c:238
 #, c-format
 msgid ""
 "Error while importing recipe:\n"
@@ -1795,24 +1800,24 @@ msgstr ""
 "Błąd podczas importowania przepisu:\n"
 "%s"
 
-#: src/gr-recipe-importer.c:517
+#: src/gr-recipe-importer.c:518
 #, c-format
 msgid "Failed to load recipe: Couldn’t parse Created key"
 msgstr ""
 "Wczytanie przepisu się nie powiodło: nie można przetworzyć klucza „Created”"
 
-#: src/gr-recipe-importer.c:528
+#: src/gr-recipe-importer.c:529
 #, c-format
 msgid "Failed to load recipe: Couldn’t parse Modified key"
 msgstr ""
 "Wczytanie przepisu się nie powiodło: nie można przetworzyć klucza „Modified”"
 
-#: src/gr-recipe-importer.c:808
+#: src/gr-recipe-importer.c:809
 #, c-format
 msgid "No chef information found"
 msgstr "Nie odnaleziono informacji o kucharzu"
 
-#: src/gr-recipe-importer.c:838
+#: src/gr-recipe-importer.c:839
 #, c-format
 msgid "This build does not support importing"
 msgstr "Ta wersja nie obsługuje importowania"
@@ -1841,16 +1846,7 @@ msgstr "Błąd podczas drukowania pliku:"
 msgid "No details"
 msgstr "Brak informacji"
 
-#: src/gr-recipe-small-tile.c:108 src/gr-recipe-tile.c:86
-#, c-format
-msgid "by %s"
-msgstr "Autor: %s"
-
-#: src/gr-recipe-small-tile.c:108 src/gr-recipe-tile.c:86
-msgid "Anonymous"
-msgstr "Anonim"
-
-#: src/gr-recipes-page.c:221 src/gr-window.c:1327
+#: src/gr-recipes-page.c:221 src/gr-window.c:1326
 msgid "My Recipes"
 msgstr "Moje przepisy"
 
@@ -1858,11 +1854,11 @@ msgstr "Moje przepisy"
 msgid "Favorites"
 msgstr "Ulubione"
 
-#: src/gr-recipes-page.c:223 src/gr-window.c:1275
+#: src/gr-recipes-page.c:223 src/gr-window.c:1274
 msgid "All Recipes"
 msgstr "Wszystkie przepisy"
 
-#: src/gr-recipes-page.c:224 src/gr-window.c:1284
+#: src/gr-recipes-page.c:224 src/gr-window.c:1283
 msgid "New Recipes"
 msgstr "Nowe przepisy"
 
@@ -1926,6 +1922,15 @@ msgstr "Należy podać identyfikator kucharza"
 #, c-format
 msgid "A chef with this ID already exists"
 msgstr "Kucharz o tym identyfikatorze już istnieje"
+
+#: src/gr-recipe-tile.c:99 src/gr-shopping-tile.c:108
+#, c-format
+msgid "by %s"
+msgstr "Autor: %s"
+
+#: src/gr-recipe-tile.c:99 src/gr-shopping-tile.c:108
+msgid "Anonymous"
+msgstr "Anonim"
 
 #: src/gr-season.c:41
 msgid "Thanksgiving"
@@ -2450,7 +2455,7 @@ msgstr ""
 msgid "Add a New Recipe"
 msgstr "Dodanie nowego przepisu"
 
-#: src/gr-window.c:534
+#: src/gr-window.c:533
 #, c-format
 msgid ""
 "The “%s” recipe has unsaved changes.\n"
@@ -2459,7 +2464,7 @@ msgstr ""
 "Przepis „%s” ma niezapisane zmiany.\n"
 "Zamknąć okno mimo to?"
 
-#: src/gr-window.c:537
+#: src/gr-window.c:536
 msgid ""
 "The new recipe has not been saved.\n"
 "Close the window anyway?"
@@ -2467,75 +2472,75 @@ msgstr ""
 "Nowy przepis nie został zapisany.\n"
 "Zamknąć okno mimo to?"
 
-#: src/gr-window.c:657
+#: src/gr-window.c:656
 #, c-format
 msgid "Recipe “%s” deleted"
 msgstr "Usunięto przepis „%s”"
 
-#: src/gr-window.c:707
+#: src/gr-window.c:706
 #, c-format
 msgid "You updated your contributed “%s” recipe. Send an update?"
 msgstr "Zmieniono już wysłany przepis „%s”. Wysłać zmiany?"
 
-#: src/gr-window.c:837
+#: src/gr-window.c:836
 msgid "Ready to Cook!"
 msgstr "Można gotować!"
 
-#: src/gr-window.c:883
+#: src/gr-window.c:882
 msgid "Sorted by Name"
 msgstr "Porządkowanie według nazwy"
 
-#: src/gr-window.c:888
+#: src/gr-window.c:887
 msgid "Sorted by Recency"
 msgstr "Porządkowanie według najnowszych"
 
-#: src/gr-window.c:1083
+#: src/gr-window.c:1082
 msgid "Imported Recipes"
 msgstr "Zaimportowane przepisy"
 
-#: src/gr-window.c:1159
+#: src/gr-window.c:1158
 msgid "Select a recipe file"
 msgstr "Wybór pliku przepisu"
 
-#: src/gr-window.c:1185
+#: src/gr-window.c:1184
 #, c-format
 msgid "Recipes have been exported to “%s”"
 msgstr "Wyeksportowano przepisy do pliku „%s”"
 
-#: src/gr-window.c:1223
+#: src/gr-window.c:1222
 msgid "Select a file"
 msgstr "Wybór pliku"
 
-#: src/gr-window.c:1226
+#: src/gr-window.c:1225
 msgid "_Export"
 msgstr "Wy_eksportuj"
 
-#: src/gr-window.c:1256
+#: src/gr-window.c:1255
 #, c-format
 msgid "Chefs: %s"
 msgstr "Kucharze: %s"
 
-#: src/gr-window.c:1266
+#: src/gr-window.c:1265
 msgid "Favorite Recipes"
 msgstr "Ulubione przepisy"
 
-#: src/gr-window.c:1314
+#: src/gr-window.c:1313
 msgid "Buy Ingredients"
 msgstr "Kup składniki"
 
 #. TRANSLATORS: %s gets replaced by a version number
-#: src/gr-window.c:1458
+#: src/gr-window.c:1457
 #, c-format
 msgid "Recipes %s"
 msgstr "Przepisy %s"
 
 #. TRANSLATORS: %s gets replaced by a date
-#: src/gr-window.c:1475
+#: src/gr-window.c:1474
 #, c-format
 msgid "Released: %s"
 msgstr "Data wydania: %s"
 
-#: src/gr-window.c:1478
+#: src/gr-window.c:1477
 #, c-format
 msgid "Unreleased"
 msgstr "Wersja rozwojowa"
