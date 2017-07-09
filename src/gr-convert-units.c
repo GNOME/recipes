@@ -1,6 +1,6 @@
 /* gr-convert-units.c:
  *
- * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
+ * Copyright (C) 2017 Paxana Xander <paxana@paxana.me>
  *
  * Licensed under the GNU General Public License Version 3
  *
@@ -28,6 +28,7 @@
 #include <gtk/gtk.h>
 #include "gr-unit.h"
 #include "gr-convert-units.h"
+#include <math.h>
 
 int
 get_temperature_unit (void)
@@ -250,12 +251,53 @@ human_readable (double *amount, char **unit)
                 amount1 = (amount1 / 1000);
                 unit1 = "kg";
         }
-        if ((strcmp(unit1, "oz") == 0) && (amount1 >= 16) )
+        else if ((strcmp(unit1, "oz") == 0) && (amount1 >= 16) )
         {
                 amount1 = (amount1 / 16);
                 unit1 = "lb";
         } 
+        else if ((strcmp(unit1, "tsp") == 0) && (amount1 >= 3) )
+        {
+                amount1 = (amount1 / 3);
+                unit1 = "tbsp";
+        }
+        else if ((strcmp(unit1, "tbsp") == 0) && (amount1 >= 16) )
+        {
+                amount1 = (amount1 / 16);
+                unit1 = "cup";
+        }
 
         *amount = amount1;
         *unit = unit1;
+}
+
+void 
+round_amount (double *amount, char **unit)
+{
+        double amount1 = *amount;        
+        char *unit1 = *unit;
+
+                double integral;
+                double fractional;
+
+                g_message("amount before is %f", amount1);
+                fractional = modf(amount1, &integral);
+
+                printf("%f\n", integral);
+                printf("%f\n", fractional);
+
+                if (fractional > .5) {
+                        double difference = (1 - fractional);
+                        amount1 = (amount1 + difference);
+                }
+                if (fractional < .5 )
+                {
+                        double difference = (1 - fractional);
+                        amount1 = (amount1 - difference); 
+                }
+
+                g_message("amount after is %f", amount1);
+
+                *amount = amount1;
+                *unit = unit1;
 }

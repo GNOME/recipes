@@ -1,6 +1,6 @@
 /* gr-chef.h:
  *
- * Copyright (C) 2016 Matthias Clasen <mclasen@redhat.com>
+ * Copyright (C) 2016 Paxana Xander <paxana@paxana.me>
  *
  * Licensed under the GNU General Public License Version 3
  *
@@ -45,7 +45,7 @@ void            convert_temp                (int *num, int *unit, int user_unit)
 void            convert_volume              (double *amount, char **unit); 
 void            convert_weight              (double *amount, char **unit);
 void            human_readable              (double *amount, char **unit);
-
+void            round_amount                (double *amount, char **unit);
 
 
 
