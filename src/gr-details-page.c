@@ -648,7 +648,7 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         g_free (page->ing_text);
         page->ing_text = g_strdup (ingredients);
 
-        populate_ingredients (page, yield);
+        populate_ingredients (page, 1.0);
 
         if (prep_time[0] == '\0') {
                 gtk_widget_hide (page->prep_time_label);
