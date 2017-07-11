@@ -18,8 +18,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#define _GNU_SOURCE 1
 #include "config.h"
+
 #include <string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <glib/gstdio.h>
+#include <gio/gunixfdlist.h>
 
 #include "gr-mail.h"
 #include "gr-utils.h"
@@ -220,6 +228,7 @@ window_handle_exported (GtkWindow  *window,
         g_autofree char *token = NULL;
         g_autofree char *sender = NULL;
         int i;
+        g_autoptr(GUnixFDList) fd_list = NULL;
 
         md->handle = g_strdup (handle_str);
 
@@ -255,19 +264,45 @@ window_handle_exported (GtkWindow  *window,
         g_variant_builder_add (&opt_builder, "{sv}", "address", g_variant_new_string (md->address));
         g_variant_builder_add (&opt_builder, "{sv}", "subject", g_variant_new_string (md->subject));
         g_variant_builder_add (&opt_builder, "{sv}", "body", g_variant_new_string (md->body));
-        if (md->attachments)
-                g_variant_builder_add (&opt_builder, "{sv}", "attachments", g_variant_new_strv ((const char * const *)md->attachments, -1));
 
-        g_dbus_proxy_call (proxy,
-                           "ComposeEmail",
-                           g_variant_new ("(sa{sv})",
-                                          handle_str,
-                                          &opt_builder),
-                           G_DBUS_CALL_FLAGS_NONE,
-                           G_MAXINT,
-                           NULL,
-                           compose_mail_done,
-                           data);
+        if (md->attachments) {
+                GVariantBuilder attach_fds;
+
+                fd_list = g_unix_fd_list_new ();
+                g_variant_builder_init (&attach_fds, G_VARIANT_TYPE ("ah"));
+
+                for (i = 0; md->attachments[i]; i++) {
+                        g_autoptr(GError) error = NULL;
+                        int fd;
+                        int fd_in;
+
+                        fd = g_open (md->attachments[i], O_PATH | O_CLOEXEC);
+                        if (fd == -1) {
+                                g_warning ("Failed to open %s, skipping", md->attachments[i]);
+                                continue;
+                        }
+                        fd_in = g_unix_fd_list_append (fd_list, fd, &error);
+                        if (error) {
+                                g_warning ("Failed to add %s to request, skipping: %s", md->attachments[i], error->message);
+                                continue;
+                        }
+                        g_variant_builder_add (&attach_fds, "h", fd_in);
+                }
+
+                g_variant_builder_add (&opt_builder, "{sv}", "attachment_fds", g_variant_builder_end (&attach_fds));
+        }
+
+        g_dbus_proxy_call_with_unix_fd_list (proxy,
+                                             "ComposeEmail",
+                                             g_variant_new ("(sa{sv})",
+                                                            handle_str,
+                                                            &opt_builder),
+                                             G_DBUS_CALL_FLAGS_NONE,
+                                             G_MAXINT,
+                                             fd_list,
+                                             NULL,
+                                             compose_mail_done,
+                                             data);
 }
 
 void
