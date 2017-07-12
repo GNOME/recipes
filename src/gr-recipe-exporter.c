@@ -435,6 +435,7 @@ prepare_export (GrRecipeExporter  *exporter,
 #ifndef ENABLE_AUTOAR
         g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
                      _("This build does not support exporting"));
+
         return FALSE;
 #else
         g_autofree char *path = NULL;
@@ -564,9 +565,9 @@ do_export (GrRecipeExporter *exporter)
                 g_autofree char *tmp;
 
                 if (i == 0)
-                        tmp = g_strdup_printf ("%s/%s.gnome-recipes-export", g_get_tmp_dir (), name);
+                        tmp = g_strdup_printf ("%s/%s.gnome-recipes-export", get_user_data_dir (), name);
                 else
-                        tmp = g_strdup_printf ("%s/%s(%d).gnome-recipes-export", g_get_tmp_dir (), name, i);
+                        tmp = g_strdup_printf ("%s/%s(%d).gnome-recipes-export", get_user_data_dir (), name, i);
 
                 if (!g_file_test (tmp, G_FILE_TEST_EXISTS)) {
                         path = g_strdup (tmp);

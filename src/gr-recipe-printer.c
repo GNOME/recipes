@@ -491,7 +491,7 @@ gr_recipe_printer_get_pdf (GrRecipePrinter *printer,
 
         name = g_strdup (gr_recipe_get_name (GR_RECIPE (recipe)));
         g_strdelimit (name, "./", ' ');
-        path = g_strdup_printf ("%s/%s.pdf", g_get_tmp_dir (), name);
+        path = g_strdup_printf ("%s/%s.pdf", get_user_data_dir (), name);
 
         g_set_object (&printer->recipe, recipe);
         operation = gtk_print_operation_new ();
