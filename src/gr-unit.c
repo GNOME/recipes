@@ -109,7 +109,7 @@ gr_unit_get_id_number (const char *name)
         GrUnit *unit = find_unit (name);
         if (unit)
                 return unit->id_number;
-        return NULL;
+        return 0;
 }
 
 const char *
