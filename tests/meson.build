@@ -31,3 +31,8 @@ strv = executable('strv', 'strv.c',
                   include_directories : tests_inc,
                   dependencies: deps)
 test('strv', strv, env : env)
+
+convert = executable('convert', 'convert.c',
+                  include_directories : tests_inc,
+                  dependencies: deps)
+test('convert', convert, env : env)
