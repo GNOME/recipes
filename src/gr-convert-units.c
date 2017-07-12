@@ -190,7 +190,6 @@ convert_volume (double *amount, char **unit)
                                 unit1 = "ml";
                         }
         }
-
                                 *amount = amount1;
                                 *unit = unit1;
 }
@@ -208,7 +207,7 @@ convert_weight (double *amount, char **unit)
                         if (strcmp(unit1, "g") == 0)
                         {
                                 amount1 = (amount1 * 0.035274);
-                                unit1 = "oz";
+                                unit1 = "oz";   
                         }
                         else if (strcmp(unit1, "kg") == 0)
                         {
@@ -246,31 +245,109 @@ human_readable (double *amount, char **unit)
         double amount1 = *amount;        
         char *unit1 = *unit;
 
+        int id = gr_unit_get_id_number(*unit);
+        g_message("UNIT is %s", unit1);
+        g_message("ID is %i", id);
+        g_message("amount is %f", amount1);
+
+        switch (id) {
+                case GR_UNIT_GRAM: 
+                        if (amount1 >= 1000) {
+                                amount1 = (amount1 / 1000);
+                                unit1 = "kg";  
+                        }
+                break;
+
+                case GR_UNIT_OUNCE:
+                        if (amount1 >= 16) {
+                                amount1 = (amount1 / 16);
+                                unit1 = "lb";  
+                        }
+                break;
+
+                case GR_UNIT_TEASPOON:
+                        if (amount1 >= 3) {
+                                amount1 = (amount1 / 3);
+                                unit1 = "tbsp";     
+                        }
+                break;
+
+                case GR_UNIT_TABLESPOON:
+                        if (amount1 >= 16) {
+                                amount1 = (amount1 / 16);
+                                unit1 = "cup";
+                        }
+                        
+                        else if (amount1 < 3) {
+                                g_message("Here I am");
+                                amount1 = (amount1 * 3);
+                                unit1 = "tsp";
+                        }
+                        
+                break;
+                
+                case GR_UNIT_CUP:
+                        if (amount1 >= 4) {
+                                amount1 = (amount1 / 4);
+                                unit1 = "qt";
+                        }
+                        
+                        else if (amount1 < 1) {
+                                amount1 = amount1 / 16;
+                                unit1 = "tbsp";
+                        }
+                break;
+
+                default:
+                g_message("default"); 
+        }
+        
+        *amount = amount1;
+        *unit = unit1;
+}
+
+/*
         if ((strcmp(unit1, "g") == 0) && (amount1 >= 1000) )
         {
                 amount1 = (amount1 / 1000);
                 unit1 = "kg";
         }
-        else if ((strcmp(unit1, "oz") == 0) && (amount1 >= 16) )
+        if ((strcmp(unit1, "oz") == 0) && (amount1 >= 16) )
         {
                 amount1 = (amount1 / 16);
                 unit1 = "lb";
         } 
-        else if ((strcmp(unit1, "tsp") == 0) && (amount1 >= 3) )
+        if ((strcmp(unit1, "tsp") == 0) && (amount1 >= 3) )
         {
                 amount1 = (amount1 / 3);
                 unit1 = "tbsp";
         }
-        else if ((strcmp(unit1, "tbsp") == 0) && (amount1 >= 16) )
+        if ((strcmp(unit1, "tbsp") == 0) && (amount1 >= 16) )
         {
                 amount1 = (amount1 / 16);
                 unit1 = "cup";
         }
+        if ((strcmp(unit1, "cup") == 0) && (amount1 >= 4) )
+        {
+                amount1 = (amount1 / 4);
+                unit1 = "qt";
+        }
+        if ((strcmp(unit1, "qt") == 0) && (amount1 >= 4) )
+        {
+                amount1 = (amount1 / 4);
+                unit1 = "gal";
+        }
+        if ((strcmp(unit1, "ml") == 0) && (amount1 >= 1000) )
+        {
+                amount1 = (amount1 / 1000);
+                unit1 = "l";
+                }
 
         *amount = amount1;
         *unit = unit1;
-}
 
+}
+        */
 void 
 round_amount (double *amount, char **unit)
 {

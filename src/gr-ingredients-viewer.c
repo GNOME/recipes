@@ -328,9 +328,9 @@ gr_ingredients_viewer_set_ingredients (GrIngredientsViewer *viewer,
                 const char *endAmount;
 
                 double scale = viewer->scale;
-
+                
                 unit = gr_ingredients_list_get_unit(ingredients, viewer->title, ings[i]);
-                amount = (gr_ingredients_list_get_amount(ingredients, viewer->title, ings[i]) * scale);
+                amount = gr_ingredients_list_get_amount(ingredients, viewer->title, ings[i]) * scale;
                 measure = gr_unit_get_measure(unit);
                
                if (measure) {
@@ -341,9 +341,9 @@ gr_ingredients_viewer_set_ingredients (GrIngredientsViewer *viewer,
                         convert_weight(&amount, &unit);
                         }
                }
+        
+                human_readable(&amount, &unit);  
                 
-                human_readable(&amount, &unit);
-
                 endAmount = gr_number_format(amount);                
 
                 row = g_object_new (GR_TYPE_INGREDIENTS_VIEWER_ROW,
