@@ -121,8 +121,10 @@ static GDBusProxy *
 get_mail_portal_proxy (void)
 {
         static GDBusProxy *proxy = NULL;
+        g_autoptr(GVariant) prop = NULL;
+        guint32 version;
 
-        if (proxy == NULL)
+        if (proxy == NULL) {
                 proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,
                                                        G_DBUS_PROXY_FLAGS_NONE,
                                                        NULL,
@@ -130,6 +132,12 @@ get_mail_portal_proxy (void)
                                                        "/org/freedesktop/portal/desktop",
                                                        "org.freedesktop.portal.Email",
                                                        NULL, NULL);
+        }
+
+        prop = g_dbus_proxy_get_cached_property (proxy, "version");
+        g_variant_get (prop, "u", &version);
+        if (version < 2)
+                return NULL;
 
         return proxy;
 }
