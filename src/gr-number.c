@@ -26,76 +26,76 @@
 #include "gr-utils.h"
 
 
-/*
- * http://www.ics.uci.edu/~eppstein/numth/frap.c
- *
- * find rational approximation to given real number
- * David Eppstein / UC Irvine / 8 Aug 1993
- *
- * With corrections from Arno Formella, May 2008
- *
- * based on the theory of continued fractions
- * if x = a1 + 1/(a2 + 1/(a3 + 1/(a4 + ...)))
- * then best approximation is found by truncating this series
- * (with some adjustments in the last term).
- *
- * Note the fraction can be recovered as the first column of the matrix
- *  ( a1 1 ) ( a2 1 ) ( a3 1 ) ...
- *  ( 1  0 ) ( 1  0 ) ( 1  0 )
- * Instead of keeping the sequence of continued fraction terms,
- * we just keep the last partial product of these matrices.
-*/
+typedef struct {
+        int num;
+        int denom;
+        double value;
+} Approximation;
+
+/* These are all candidates with 'nice' denominators
+ * (i.e. 2, 3, 4, 5, 6, 8, 10, 12, 15, 16), sorted
+ * by size.
+ */
+static Approximation approx[] = {
+  {  0,  1, 0.0/1.0 },
+  {  1, 16, 1.0/16.0 },
+  {  1, 15, 1.0/15.0 },
+  {  1, 12, 1.0/12.0 },
+  {  1, 10, 1.0/10.0 },
+  {  1,  8, 1.0/8.0 },
+  {  2, 15, 2.0/15.0 },
+  {  1,  6, 1.0/6.0 },
+  {  3, 16, 3.0/16.0 },
+  {  1,  5, 1.0/5.0 },
+  {  1,  4, 1.0/4.0 },
+  {  4, 15, 4.0/15.0 },
+  {  3, 10, 3.0/10.0 },
+  {  5, 16, 5.0/16.0 },
+  {  1,  3, 1.0/3.0 },
+  {  3,  8, 3.0/8.0 },
+  {  2,  5, 2.0/5.0 },
+  {  5, 12, 5.0/12.0 },
+  {  7, 16, 7.0/16.0 },
+  {  7, 15, 7.0/15.0 },
+  {  1,  2, 1.0/2.0 },
+  {  8, 15, 8.0/15.0 },
+  {  9, 16, 9.0/16.0 },
+  {  7, 12, 7.0/12.0 },
+  {  3,  5, 3.0/5.0 },
+  {  5,  8, 5.0/8.0 },
+  {  2,  3, 2.0/3.0 },
+  { 11, 16, 11.0/16.0 },
+  {  7, 10, 7.0/10.0 },
+  { 11, 15, 11.0/15.0 },
+  {  3,  4, 3.0/4.0 },
+  {  4,  5, 4.0/5.0 },
+  { 13, 16, 13.0/16.0 },
+  {  5,  6, 5.0/6.0 },
+  { 13, 15, 13.0/15.0 },
+  {  7,  8, 7.0/8.0 },
+  {  9, 10, 9.0/10.0 },
+  { 11, 12, 11.0/12.0 },
+  { 14, 15, 14.0/15.0 },
+  { 15, 16, 15.0/16.0 },
+  {  1,  1, 1.0/1.0 }
+};
+
 static void
 rational_approximation (double  input,
-                        int     max_denom,
                         int    *num,
                         int    *denom)
 {
-        long m[2][2];
-        double x, n0, d0, n1, d1;
-        long ai;
+        int i;
 
-        x = input;
-
-        m[0][0] = m[1][1] = 1;
-        m[0][1] = m[1][0] = 0;
-
-        while (m[1][0] * (ai = (long)x) + m[1][1] <= max_denom) {
-                long t;
-
-                t = m[0][0] * ai + m[0][1];
-                m[0][1] = m[0][0];
-                m[0][0] = t;
-                t = m[1][0] * ai + m[1][1];
-                m[1][1] = m[1][0];
-                m[1][0] = t;
-
-                if (x == (double)ai)
+        for (i = 0; i < G_N_ELEMENTS (approx); i++) {
+                if (approx[i].value >= input) {
+                        if (i > 0 && input - approx[i - 1].value < approx[i].value - input)
+                                i--;
                         break;
-
-                x = 1 / (x - (double)ai);
-
-                if (x > (double)0x7fffffff)
-                        break;
+                }
         }
-
-        n0 = (double)m[0][0];
-        d0 = (double)m[1][0];
-
-        ai = (max_denom - m[1][1]) / m[1][0];
-        m[0][0] = m[0][0] * ai + m[0][1];
-        m[1][0] = m[1][0] * ai + m[1][1];
-
-        n1 = (double)m[0][0];
-        d1 = (double)m[1][0];
-
-        if (fabs (input - n0 / d0) < fabs (input - n1 / d1)) {
-                *num = (int)n0;
-                *denom = (int)d0;
-        } else {
-                *num = (int)n1;
-                *denom = (int)d1;
-        }
+        *num = approx[i].num;
+        *denom = approx[i].denom;
 }
 
 typedef struct {
@@ -331,6 +331,6 @@ gr_number_format (double number)
         integral = floor (number);
         number -= integral;
 
-        rational_approximation (number, 20, &num, &denom);
+        rational_approximation (number, &num, &denom);
         return format_fraction ((int)integral, num, denom);
 }
