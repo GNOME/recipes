@@ -92,13 +92,49 @@ get_expected_filename (const char *filename)
         return expected;
 }
 
+static char *
+diff_with_file (const char  *file1,
+                GString     *string,
+                GError     **error)
+{
+        const char *command[] = { "diff", "-u", file1, NULL, NULL };
+        char *diff, *tmpfile;
+        int fd;
+
+        diff = NULL;
+
+        /* write the text buffer to a temporary file */
+        fd = g_file_open_tmp (NULL, &tmpfile, error);
+        if (fd < 0)
+                return NULL;
+
+        if (write (fd, string->str, string->len) != (int) string->len) {
+                close (fd);
+                g_set_error (error,
+                             G_FILE_ERROR, G_FILE_ERROR_FAILED,
+                             "Could not write data to temporary file '%s'", tmpfile);
+                goto done;
+        }
+        close (fd);
+        command[3] = tmpfile;
+
+        /* run diff command */
+        g_spawn_sync (NULL, (char **)command, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, &diff, NULL, NULL, error);
+
+done:
+        g_unlink (tmpfile);
+        g_free (tmpfile);
+
+        return diff;
+}
+
 static void
 test_parse (gconstpointer d)
 {
         const char *filename = d;
         char *expected_file;
-        char *expected;
         GError *error = NULL;
+        char *diff;
 
         expected_file = get_expected_filename (filename);
 
@@ -106,10 +142,14 @@ test_parse (gconstpointer d)
 
         test_file (filename);
 
-        g_file_get_contents (expected_file, &expected, NULL, &error);
+        diff = diff_with_file (expected_file, string, &error);
         g_assert_no_error (error);
-        g_assert_cmpstr (string->str, ==, expected);
-        g_free (expected);
+
+        if (diff && diff[0]) {
+                g_test_message ("Resulting output doesn't match reference:\n%s", diff);
+                g_test_fail ();
+        }
+        g_free (diff);
 
         g_string_free (string, TRUE);
 
