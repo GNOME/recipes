@@ -1500,6 +1500,44 @@ gr_release_info_new (const char *version,
         return box;
 }
 
+static gboolean
+should_show_surprise (void)
+{
+        g_autoptr(GDateTime) now = NULL;
+        g_autoptr(GDateTime) start = NULL;
+        g_autoptr(GDateTime) end = NULL;
+
+        if (g_getenv ("SHOW_SURPRISE"))
+                return TRUE;
+
+        now = g_date_time_new_now_utc ();
+        start = g_date_time_new_utc (2017, 7, 27, 0, 0, 0);
+        end = g_date_time_new_utc (2017, 12, 31, 0, 0, 0);
+
+        if (g_date_time_compare (start, now) < 0 && g_date_time_compare (now, end) < 0)
+                return TRUE;
+
+        return FALSE;
+}
+
+void
+gr_window_show_surprise (GrWindow *window)
+{
+        g_autoptr(GtkBuilder) builder = NULL;
+        GtkWindow *dialog;
+        GtkWidget *button;
+
+        if (!should_show_surprise ())
+                return;
+
+        builder = gtk_builder_new_from_resource ("/org/gnome/Recipes/recipe-surprise.ui");
+        dialog = GTK_WINDOW (gtk_builder_get_object (builder, "dialog"));
+        button = GTK_WIDGET (gtk_builder_get_object (builder, "close_button"));
+        g_signal_connect_swapped (button, "clicked", G_CALLBACK (gtk_widget_destroy), dialog);
+        gtk_window_set_transient_for (dialog, GTK_WINDOW (window));
+        gr_window_present_dialog (window, dialog);
+}
+
 void
 gr_window_show_news (GrWindow *window)
 {

@@ -76,6 +76,7 @@ void            gr_window_show_my_chef_information   (GrWindow   *window);
 void            gr_window_show_about_dialog          (GrWindow   *window);
 void            gr_window_show_report_issue          (GrWindow   *window);
 void            gr_window_show_news                  (GrWindow   *window);
+void            gr_window_show_surprise              (GrWindow   *window);
 
 void            gr_window_load_recipe                (GrWindow   *window,
                                                       GFile      *file);
