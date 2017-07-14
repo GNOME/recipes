@@ -1557,6 +1557,9 @@ gr_window_show_report_issue (GrWindow *window)
         gtk_show_uri_on_window (GTK_WINDOW (window), uri, GDK_CURRENT_TIME, NULL);
 }
 
+/* Show the surprise dialog between the first day of GUADEC and
+ * the end of the year, but only once.
+ */
 static gboolean
 should_show_surprise (void)
 {
@@ -1564,8 +1567,8 @@ should_show_surprise (void)
         g_autoptr(GDateTime) start = NULL;
         g_autoptr(GDateTime) end = NULL;
 
-        if (g_getenv ("SHOW_SURPRISE"))
-                return TRUE;
+        if (!g_settings_get_boolean (gr_settings_get (), "show-surprise-dialog"))
+                return FALSE;
 
         now = g_date_time_new_now_utc ();
         start = g_date_time_new_utc (2017, 7, 27, 0, 0, 0);
@@ -1601,6 +1604,13 @@ play_tada_sound (GtkWindow *win)
 }
 
 void
+surprise_dialog_closed (GtkWidget *window)
+{
+        g_settings_set_boolean (gr_settings_get (), "show-surprise-dialog", FALSE);
+        gtk_widget_destroy (window);
+}
+
+void
 gr_window_show_surprise (GrWindow *window)
 {
         g_autoptr(GtkBuilder) builder = NULL;
@@ -1613,9 +1623,8 @@ gr_window_show_surprise (GrWindow *window)
         builder = gtk_builder_new_from_resource ("/org/gnome/Recipes/recipe-surprise.ui");
         dialog = GTK_WINDOW (gtk_builder_get_object (builder, "dialog"));
         button = GTK_WIDGET (gtk_builder_get_object (builder, "close_button"));
-        g_signal_connect_swapped (button, "clicked", G_CALLBACK (gtk_widget_destroy), dialog);
+        g_signal_connect_swapped (button, "clicked", G_CALLBACK (surprise_dialog_closed), dialog);
         gtk_window_set_transient_for (dialog, GTK_WINDOW (window));
         gr_window_present_dialog (window, dialog);
         play_tada_sound (dialog);
 }
-
