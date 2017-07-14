@@ -38,6 +38,16 @@ search_provider = gnome.gdbus_codegen('gr-shell-search-provider-dbus',
                                       interface_prefix: 'org.gnome.',
                                       namespace: 'Gr')
 
+libsrc = [
+       'gr-number.c',
+       'gr-unit.c',
+       'gr-utils.c'
+]
+
+librecipes = static_library('recipes', libsrc,
+                            install : false,
+                            include_directories : top_inc,
+                            dependencies: deps)
 
 src += ['main.c',
        'gr-about-dialog.c',
@@ -75,7 +85,6 @@ src += ['main.c',
        'gr-mail.c',
        'gr-meal.c',
        'gr-meal-row.c',
-       'gr-number.c',
        'gr-query-editor.c',
        'gr-recipe.c',
        'gr-recipe-exporter.c',
@@ -97,8 +106,6 @@ src += ['main.c',
        'gr-time-widget.c',
        'gr-timer.c',
        'gr-timer-widget.c',
-       'gr-unit.c',
-       'gr-utils.c',
        'gr-window.c',
   enums,
   search_provider,
@@ -106,6 +113,7 @@ src += ['main.c',
 
 executable('gnome-recipes',
            src,
+           link_with: librecipes,
            install : true,
            include_directories : top_inc,
            dependencies: deps)
