@@ -21,10 +21,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <glib.h>
+#include <glib/gstdio.h>
 #include "gr-number.h"
-#include "gr-number.c"
 #include "gr-utils.h"
-#include "gr-utils.c"
 
 static GString *string;
 

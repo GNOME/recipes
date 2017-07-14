@@ -21,7 +21,6 @@
 #include <stdio.h>
 #include <glib.h>
 #include "gr-utils.h"
-#include "gr-utils.c"
 
 static void
 test_strv_prepend (void)

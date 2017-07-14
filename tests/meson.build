@@ -14,20 +14,24 @@ test('ingredients', ingredients, env : env)
 
 number = executable('number', 'number.c',
                      include_directories : tests_inc,
+                     link_with: librecipes,
                      dependencies: deps)
 test('number', number, env : env)
 
 unit = executable('unit', 'unit.c',
                   include_directories : tests_inc,
+                  link_with: librecipes,
                   dependencies: deps)
 test('unit', unit, env : env)
 
 ids = executable('ids', 'ids.c',
                   include_directories : tests_inc,
+                  link_with: librecipes,
                   dependencies: deps)
 test('ids', ids, env : env)
 
 strv = executable('strv', 'strv.c',
                   include_directories : tests_inc,
+                  link_with: librecipes,
                   dependencies: deps)
 test('strv', strv, env : env)
