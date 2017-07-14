@@ -31,6 +31,7 @@ install_data(   'images/american.png',
                 install_dir: join_paths([pkgdatadir,'images']))
 
 install_data('sounds/complete.oga',
+             'sounds/tada.wav',
              install_dir: join_paths([pkgdatadir,'sounds']))
 
 install_data('chefs.db',

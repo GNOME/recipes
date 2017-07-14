@@ -48,6 +48,10 @@
 #include "gr-appdata.h"
 #include "gr-settings.h"
 
+#ifdef ENABLE_CANBERRA
+#include <canberra.h>
+#endif
+
 
 struct _GrWindow
 {
@@ -1520,6 +1524,29 @@ should_show_surprise (void)
         return FALSE;
 }
 
+static void
+play_tada_sound (GtkWindow *win)
+{
+#ifdef ENABLE_CANBERRA
+        g_autofree char *path;
+        ca_context *c;
+
+        ca_context_create (&c);
+        g_object_set_data_full (G_OBJECT (win), "ca-context", c, (GDestroyNotify) ca_context_destroy);
+        ca_context_change_props (c,
+                                 CA_PROP_APPLICATION_NAME, _("GNOME Recipes"),
+                                 CA_PROP_APPLICATION_ID, "org.gnome.Recipes",
+                                 CA_PROP_APPLICATION_ICON_NAME, "org.gnome.Recipes",
+                                 NULL);
+        path = g_build_filename (get_pkg_data_dir (), "sounds", "tada.wav", NULL);
+        ca_context_play (c, 0,
+                         CA_PROP_MEDIA_ROLE, "alert",
+                         CA_PROP_MEDIA_FILENAME, path,
+                         CA_PROP_MEDIA_NAME, _("GNOME turns 20 !"),
+                         NULL);
+#endif
+}
+
 void
 gr_window_show_surprise (GrWindow *window)
 {
@@ -1536,6 +1563,7 @@ gr_window_show_surprise (GrWindow *window)
         g_signal_connect_swapped (button, "clicked", G_CALLBACK (gtk_widget_destroy), dialog);
         gtk_window_set_transient_for (dialog, GTK_WINDOW (window));
         gr_window_present_dialog (window, dialog);
+        play_tada_sound (dialog);
 }
 
 void
