@@ -1504,6 +1504,59 @@ gr_release_info_new (const char *version,
         return box;
 }
 
+void
+gr_window_show_news (GrWindow *window)
+{
+        g_autoptr(GPtrArray) news = NULL;
+        g_autoptr(GtkBuilder) builder = NULL;
+        GtkWindow *dialog;
+        GtkWidget *box;
+        int i;
+
+        if (window->news_dialog)
+                return;
+
+        news = get_release_info (PACKAGE_VERSION, "1.0.0");
+        if (news->len == 0)
+                return;
+
+        builder = gtk_builder_new_from_resource ("/org/gnome/Recipes/recipe-whats-new-dialog.ui");
+        dialog = GTK_WINDOW (gtk_builder_get_object (builder, "dialog"));
+        gtk_window_set_transient_for (dialog, GTK_WINDOW (window));
+
+        window->news_dialog = (GtkWidget *)dialog;
+
+        gtk_widget_realize (GTK_WIDGET (dialog));
+        gdk_window_set_functions (gtk_widget_get_window (GTK_WIDGET (dialog)),
+                                  GDK_FUNC_ALL | GDK_FUNC_MINIMIZE | GDK_FUNC_MAXIMIZE);
+
+        box = GTK_WIDGET (gtk_builder_get_object (builder, "box"));
+
+        for (i = 0; i < news->len; i++) {
+                ReleaseInfo *ri = g_ptr_array_index (news, i);
+                GtkWidget *info;
+
+                info = gr_release_info_new (ri->version, ri->date, ri->news->str);
+                gtk_container_add (GTK_CONTAINER (box), info);
+        }
+
+        gtk_widget_show_all (box);
+        g_signal_connect (dialog, "delete-event", G_CALLBACK (news_dialog_closed), window);
+        gr_window_present_dialog (GR_WINDOW (window), dialog);
+}
+
+void
+gr_window_show_report_issue (GrWindow *window)
+{
+        const char *uri = "https://bugzilla.gnome.org/enter_bug.cgi?product=recipes";
+
+        if (in_flatpak_sandbox () &&
+            !portal_available (GTK_WINDOW (window), "org.freedesktop.portal.OpenURI"))
+                return;
+
+        gtk_show_uri_on_window (GTK_WINDOW (window), uri, GDK_CURRENT_TIME, NULL);
+}
+
 static gboolean
 should_show_surprise (void)
 {
@@ -1566,55 +1619,3 @@ gr_window_show_surprise (GrWindow *window)
         play_tada_sound (dialog);
 }
 
-void
-gr_window_show_news (GrWindow *window)
-{
-        g_autoptr(GPtrArray) news = NULL;
-        g_autoptr(GtkBuilder) builder = NULL;
-        GtkWindow *dialog;
-        GtkWidget *box;
-        int i;
-
-        if (window->news_dialog)
-                return;
-
-        news = get_release_info (PACKAGE_VERSION, "1.0.0");
-        if (news->len == 0)
-                return;
-
-        builder = gtk_builder_new_from_resource ("/org/gnome/Recipes/recipe-whats-new-dialog.ui");
-        dialog = GTK_WINDOW (gtk_builder_get_object (builder, "dialog"));
-        gtk_window_set_transient_for (dialog, GTK_WINDOW (window));
-
-        window->news_dialog = (GtkWidget *)dialog;
-
-        gtk_widget_realize (GTK_WIDGET (dialog));
-        gdk_window_set_functions (gtk_widget_get_window (GTK_WIDGET (dialog)),
-                                  GDK_FUNC_ALL | GDK_FUNC_MINIMIZE | GDK_FUNC_MAXIMIZE);
-
-        box = GTK_WIDGET (gtk_builder_get_object (builder, "box"));
-
-        for (i = 0; i < news->len; i++) {
-                ReleaseInfo *ri = g_ptr_array_index (news, i);
-                GtkWidget *info;
-
-                info = gr_release_info_new (ri->version, ri->date, ri->news->str);
-                gtk_container_add (GTK_CONTAINER (box), info);
-        }
-
-        gtk_widget_show_all (box);
-        g_signal_connect (dialog, "delete-event", G_CALLBACK (news_dialog_closed), window);
-        gr_window_present_dialog (GR_WINDOW (window), dialog);
-}
-
-void
-gr_window_show_report_issue (GrWindow *window)
-{
-        const char *uri = "https://bugzilla.gnome.org/enter_bug.cgi?product=recipes";
-
-        if (in_flatpak_sandbox () &&
-            !portal_available (GTK_WINDOW (window), "org.freedesktop.portal.OpenURI"))
-                return;
-
-        gtk_show_uri_on_window (GTK_WINDOW (window), uri, GDK_CURRENT_TIME, NULL);
-}
