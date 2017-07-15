@@ -27,38 +27,48 @@
             <property name="visible">1</property>
             <property name="label" translatable="yes">GNOME turns 20 !</property>
             <style>
-              <class name="welcome"/>
+              <class name="surprise"/>
               <class name="heading"/>
             </style>
           </object>
         </child>
         <child>
-          <object class="GtkImage">
+          <object class="GtkBox">
             <property name="visible">1</property>
-            <property name="resource">/org/gnome/Recipes/surprise.jpg</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkLabel" id="label">
-            <property name="visible">1</property>
-            <property name="xalign">0</property>
-            <property name="yalign">0</property>
-            <property name="label" translatable="yes">YEARS
+            <property name="orientation">vertical</property>
+            <property name="margin">10</property>
+            <property name="halign">center</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">1</property>
+                <property name="resource">/org/gnome/Recipes/surprise.jpg</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="label">
+                <property name="visible">1</property>
+                <property name="xalign">0</property>
+                <property name="yalign">0</property>
+                <property name="label" translatable="yes">YEARS
 STRONG</property>
-            <property name="margin-start">75</property>
-            <property name="margin-bottom">10</property>
-            <style>
-              <class name="surprise"/>
-            </style>
+                <style>
+                  <class name="surprise"/>
+                  <class name="image"/>
+                </style>
+              </object>
+            </child>
           </object>
         </child>
         <child>
           <object class="GtkLabel">
             <property name="visible">1</property>
             <property name="wrap">1</property>
-            <property name="max-width-chars">55</property>
-            <property name="width-chars">55</property>
+            <property name="max-width-chars">65</property>
+            <property name="width-chars">65</property>
             <property name="label" translatable="yes">Recipes is a present to GNOME for its 20th birthday. We invite the GNOME community all over the world to share recipes and enjoy a good meal together.</property>
+            <style>
+              <class name="surprise"/>
+            </style>
           </object>
         </child>
         <child>
