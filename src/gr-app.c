@@ -69,7 +69,7 @@ gr_app_activate (GApplication *app)
                 win = GTK_WINDOW (gr_window_new (GR_APP (app)));
         gtk_window_present (win);
 
-        gr_window_show_surprise (win);
+        gr_window_show_surprise (GR_WINDOW (win));
 }
 
 static void
