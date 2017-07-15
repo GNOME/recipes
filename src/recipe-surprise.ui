@@ -6,7 +6,7 @@
     <property name="type-hint">dialog</property>
     <property name="destroy-with-parent">1</property>
     <style>
-      <class name="view"/>
+      <class name="surprise"/>
     </style>
     <child type="titlebar">
       <object class="GtkHeaderBar">
@@ -20,7 +20,7 @@
         <property name="margin">20</property>
         <property name="orientation">vertical</property>
         <style>
-          <class name="view"/>
+          <class name="surprise"/>
         </style>
         <child>
           <object class="GtkLabel">
