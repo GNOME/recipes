@@ -1601,6 +1601,7 @@ play_tada_sound (GtkWindow *win)
         ca_context_play (c, 0,
                          CA_PROP_MEDIA_ROLE, "alert",
                          CA_PROP_MEDIA_FILENAME, path,
+                         /* Translators: there is a thin space before the !, on purpose */
                          CA_PROP_MEDIA_NAME, _("GNOME turns 20 !"),
                          NULL);
 #endif
