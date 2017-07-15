@@ -1567,6 +1567,9 @@ should_show_surprise (void)
         g_autoptr(GDateTime) start = NULL;
         g_autoptr(GDateTime) end = NULL;
 
+        if (g_getenv ("SHOW_SURPRISE"))
+                return TRUE;
+
         if (!g_settings_get_boolean (gr_settings_get (), "show-surprise-dialog"))
                 return FALSE;
 
@@ -1616,15 +1619,18 @@ gr_window_show_surprise (GrWindow *window)
         g_autoptr(GtkBuilder) builder = NULL;
         GtkWindow *dialog;
         GtkWidget *button;
+        GtkWidget *label;
 
         if (!should_show_surprise ())
                 return;
 
         builder = gtk_builder_new_from_resource ("/org/gnome/Recipes/recipe-surprise.ui");
         dialog = GTK_WINDOW (gtk_builder_get_object (builder, "dialog"));
+        label = GTK_WIDGET (gtk_builder_get_object (builder, "label"));
         button = GTK_WIDGET (gtk_builder_get_object (builder, "close_button"));
         g_signal_connect_swapped (button, "clicked", G_CALLBACK (surprise_dialog_closed), dialog);
         gtk_window_set_transient_for (dialog, GTK_WINDOW (window));
         gr_window_present_dialog (window, dialog);
+        pango_layout_set_spacing (gtk_label_get_layout (GTK_LABEL (label)), - pango_units_from_double (10.0));
         play_tada_sound (dialog);
 }
