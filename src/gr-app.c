@@ -63,13 +63,18 @@ static void
 gr_app_activate (GApplication *app)
 {
         GtkWindow *win;
+        gboolean new_window = FALSE;
 
         win = gtk_application_get_active_window (GTK_APPLICATION (app));
-        if (!win)
+        if (!win) {
                 win = GTK_WINDOW (gr_window_new (GR_APP (app)));
+                new_window = TRUE;
+        }
+
         gtk_window_present (win);
 
-        gr_window_show_surprise (GR_WINDOW (win));
+        if (new_window)
+                gr_window_show_surprise (GR_WINDOW (win));
 }
 
 static void
