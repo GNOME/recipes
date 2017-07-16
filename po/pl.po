@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-08 13:35+0000\n"
-"PO-Revision-Date: 2017-07-09 17:40+0200\n"
+"POT-Creation-Date: 2017-07-16 16:01+0000\n"
+"PO-Revision-Date: 2017-07-16 18:02+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -214,6 +214,16 @@ msgstr "Według którego klucza porządkować listy."
 #: data/org.gnome.Recipes.gschema.xml:87
 msgid "The setting determines which key is used to sort lists of recipes by."
 msgstr "Który klucz jest używany do porządkowania list przepisów."
+
+#: data/org.gnome.Recipes.gschema.xml:93
+msgid "Whether the surprise dialog should be shown."
+msgstr "Czy wyświetlać okno niespodzianki."
+
+#: data/org.gnome.Recipes.gschema.xml:94
+msgid ""
+"The setting determines whether the surprise dialog should be shown on "
+"startup."
+msgstr "Czy wyświetlać okno niespodzianki po uruchomieniu."
 
 #: src/chef-conflict-dialog.ui:10
 msgid "Same Chef"
@@ -907,6 +917,31 @@ msgstr "Wysłanie do bazy przepisów"
 msgid "What’s New in Recipes"
 msgstr "Co nowego"
 
+#: src/recipe-surprise.ui:28
+msgid "GNOME turns 20 !"
+msgstr "GNOME ma 20 lat!"
+
+#: src/recipe-surprise.ui:52
+msgid ""
+"YEARS\n"
+"STRONG"
+msgstr ""
+"LAT\n"
+"RAZEM"
+
+#: src/recipe-surprise.ui:68
+msgid ""
+"Recipes is a present to GNOME for its 20th birthday. We invite the GNOME "
+"community all over the world to share recipes and enjoy a good meal together."
+msgstr ""
+"Program Przepisy to prezent dla GNOME z okazji 20. urodzin. Zapraszamy "
+"społeczność GNOME z całego świata do dzielenia się przepisami i radowania "
+"wspólnym posiłkiem."
+
+#: src/recipe-surprise.ui:79
+msgid "Let’s Party"
+msgstr "Zabawmy się!"
+
 #: src/gr-about-dialog.c:132
 msgid "Learn more about Builder"
 msgstr "Więcej informacji o programie Builder"
@@ -1014,20 +1049,20 @@ msgstr ""
 "Umożliwienie dołączenia informacji o użytkowniku do przepisów wysyłanych do "
 "znajomych."
 
-#: src/gr-app.c:202
+#: src/gr-app.c:209
 #, c-format
 msgid "Supported categories: %s\n"
 msgstr "Obsługiwane kategorie: %s\n"
 
-#: src/gr-app.c:434
+#: src/gr-app.c:441
 msgid "Print the version and exit"
 msgstr "Wyświetla wersję i kończy działanie"
 
-#: src/gr-app.c:438
+#: src/gr-app.c:445
 msgid "Turn on verbose logging"
 msgstr "Włącza więcej komunikatów dziennika"
 
-#: src/gr-app.c:442
+#: src/gr-app.c:449
 msgid "Show a category"
 msgstr "Wyświetla kategorię"
 
@@ -1749,7 +1784,7 @@ msgstr "(Załączony plik może zostać zaimportowany do Przepisów GNOME)."
 msgid "This build does not support exporting"
 msgstr "Ta wersja nie obsługuje eksportowania"
 
-#: src/gr-recipe-exporter.c:519
+#: src/gr-recipe-exporter.c:520
 #, c-format
 msgid ""
 "Error while exporting:\n"
@@ -1758,7 +1793,7 @@ msgstr ""
 "Błąd podczas eksportowania:\n"
 "%s"
 
-#: src/gr-recipe-exporter.c:616
+#: src/gr-recipe-exporter.c:617
 #, c-format
 msgid "%d recipe selected for sharing"
 msgid_plural "%d recipes selected for sharing"
@@ -1766,7 +1801,7 @@ msgstr[0] "Zaznaczono %d przepis do wysłania"
 msgstr[1] "Zaznaczono %d przepisy do wysłania"
 msgstr[2] "Zaznaczono %d przepisów do wysłania"
 
-#: src/gr-recipe-exporter.c:648
+#: src/gr-recipe-exporter.c:649
 msgid ""
 "Some of the selected recipes are included\n"
 "with GNOME Recipes. You should only contribute\n"
