@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-19 23:04-0400\n"
-"PO-Revision-Date: 2017-05-10 13:00+0700\n"
+"POT-Creation-Date: 2017-07-15 23:31+0000\n"
+"PO-Revision-Date: 2017-07-20 16:10+0700\n"
 "Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
@@ -16,12 +16,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.2\n"
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
-#: src/gr-window.ui:427 src/gr-about-dialog.c:907 src/gr-window.c:381
-#: src/gr-window.c:1004
+#: src/gr-window.ui:479 src/gr-about-dialog.c:907 src/gr-window.c:387
+#: src/gr-window.c:1041
 msgid "Recipes"
 msgstr "Resep"
 
@@ -117,27 +117,27 @@ msgstr "Resep individual"
 msgid "An individual cuisine"
 msgstr "Masakan individu"
 
-#: data/org.gnome.Recipes.gschema.xml:14
+#: data/org.gnome.Recipes.gschema.xml:19
 msgid "The user ID of the current user"
 msgstr "ID pengguna dari pengguna sekarang"
 
-#: data/org.gnome.Recipes.gschema.xml:15
+#: data/org.gnome.Recipes.gschema.xml:20
 msgid "The user ID of the current user."
 msgstr "ID pengguna dari pengguna sekarang."
 
-#: data/org.gnome.Recipes.gschema.xml:21
+#: data/org.gnome.Recipes.gschema.xml:26
 msgid "The number of times cooking mode has been presented"
 msgstr "Cacah jumlah mode memasak yang telah disajikan"
 
-#: data/org.gnome.Recipes.gschema.xml:22
+#: data/org.gnome.Recipes.gschema.xml:27
 msgid "The number of times cooking mode has been presented."
 msgstr "Cacah jumlah mode memasak yang telah disajikan."
 
-#: data/org.gnome.Recipes.gschema.xml:28
+#: data/org.gnome.Recipes.gschema.xml:33
 msgid "The timestamp of the last change to the favorites list"
 msgstr "Stempel waktu dari perubahan terakhir ke daftar favorit"
 
-#: data/org.gnome.Recipes.gschema.xml:29
+#: data/org.gnome.Recipes.gschema.xml:34
 msgid ""
 "The timestamp of the last time an item was added to or removed from the "
 "favorites list."
@@ -145,19 +145,19 @@ msgstr ""
 "Stempel waktu dari terakhir kali item ditambahkan atau dihapus dari daftar "
 "favorit."
 
-#: data/org.gnome.Recipes.gschema.xml:36
+#: data/org.gnome.Recipes.gschema.xml:41
 msgid "The list of favorites"
 msgstr "Daftar favorit"
 
-#: data/org.gnome.Recipes.gschema.xml:37
+#: data/org.gnome.Recipes.gschema.xml:42
 msgid "The list of favorites. Each entry in the list is the ID of a recipe."
 msgstr "Daftar favorit. Setiap entri dalam daftar adalah ID dari resep."
 
-#: data/org.gnome.Recipes.gschema.xml:43
+#: data/org.gnome.Recipes.gschema.xml:48
 msgid "The timestamp of the last change to the shopping list"
 msgstr "Stempel waktu dari perubahan terakhir ke daftar belanja"
 
-#: data/org.gnome.Recipes.gschema.xml:44
+#: data/org.gnome.Recipes.gschema.xml:49
 msgid ""
 "The timestamp of the last time an item was added to or removed from the "
 "shopping list."
@@ -165,11 +165,11 @@ msgstr ""
 "Stempel waktu dari terakhir kali item ditambahkan atau dihapus dari daftar "
 "belanja."
 
-#: data/org.gnome.Recipes.gschema.xml:51
+#: data/org.gnome.Recipes.gschema.xml:56
 msgid "The shopping list"
 msgstr "Daftar belanja"
 
-#: data/org.gnome.Recipes.gschema.xml:52
+#: data/org.gnome.Recipes.gschema.xml:57
 msgid ""
 "The shopping list. Each entry in the dictionary maps the ID of a recipe to a "
 "serving count."
@@ -177,37 +177,58 @@ msgstr ""
 "Daftar belanja. Setiap entri dalam kamus memetakan ID dari resep untuk "
 "hitungan melayani."
 
-#: data/org.gnome.Recipes.gschema.xml:59
+#: data/org.gnome.Recipes.gschema.xml:64
 msgid "Ingredients that were removed from the shopping list"
 msgstr "Bahan-bahan yang telah dihapus dari daftar belanja"
 
-#: data/org.gnome.Recipes.gschema.xml:60
+#: data/org.gnome.Recipes.gschema.xml:65
 msgid "The names of ingredients that were removed from the shopping list."
 msgstr "Nama-nama bahan-bahan yang telah dihapus dari daftar belanja."
 
-#: data/org.gnome.Recipes.gschema.xml:66
+#: data/org.gnome.Recipes.gschema.xml:71
 msgid "The list of recipes to be exported"
 msgstr "Daftar resep untuk diekspor"
 
-#: data/org.gnome.Recipes.gschema.xml:67
+#: data/org.gnome.Recipes.gschema.xml:72
 msgid ""
 "The list of recipes to be exported. Each entry in the list is the ID of a "
 "recipe."
 msgstr ""
 "Daftar resep untuk diekspor. Setiap entri dalam daftar adalah ID dari resep."
 
-#: data/org.gnome.Recipes.gschema.xml:74
+#: data/org.gnome.Recipes.gschema.xml:78
 msgid "The setting for which unit temperatures should be displayed in."
 msgstr "Pengaturan suhu unit mana yang harus ditampilkan."
 
-#: data/org.gnome.Recipes.gschema.xml:75
-#, fuzzy
+#: data/org.gnome.Recipes.gschema.xml:79
 msgid ""
 "The setting for which unit temperatures should be displayed in. Default is "
 "'locale', which means to use the LC_MEASUREMENT category of the current "
 "locale to decide."
 msgstr ""
-"Pengaturan suhu unit mana yang harus ditampilkan. Bawaan adalah celsius."
+"Pengaturan untuk suhu unit yang harus ditampilkan. Bawaan adalah 'locale', "
+"yang berarti menggunakan kategori LC_MEASUREMENT dari lokasi saat ini untuk "
+"diputuskan."
+
+#: data/org.gnome.Recipes.gschema.xml:86
+msgid "By which key to sort lists."
+msgstr "Dengan kunci mana untuk mengurutkan daftar."
+
+#: data/org.gnome.Recipes.gschema.xml:87
+msgid "The setting determines which key is used to sort lists of recipes by."
+msgstr ""
+"Pengaturan menentukan kunci yang digunakan untuk mengurutkan daftar resep."
+
+#: data/org.gnome.Recipes.gschema.xml:93
+msgid "Whether the surprise dialog should be shown."
+msgstr "Apakah dialog kejutan harus ditunjukkan."
+
+#: data/org.gnome.Recipes.gschema.xml:94
+msgid ""
+"The setting determines whether the surprise dialog should be shown on "
+"startup."
+msgstr ""
+"Pengaturan menentukan apakah dialog kejutan harus ditampilkan saat awal mula."
 
 #: src/chef-conflict-dialog.ui:10
 msgid "Same Chef"
@@ -242,15 +263,15 @@ msgstr "Deskripsi:"
 msgid "Picture:"
 msgstr "Gambar:"
 
-#: src/gr-chef-dialog.ui:4 src/gr-window.c:1091
+#: src/gr-chef-dialog.ui:4 src/gr-window.c:1128
 msgid "Chef Information"
 msgstr "Informasi Koki"
 
-#: src/gr-chef-dialog.ui:10 src/gr-window.c:1189
+#: src/gr-chef-dialog.ui:10 src/gr-window.c:1226
 msgid "_Cancel"
 msgstr "_Batal"
 
-#: src/gr-chef-dialog.ui:20 src/gr-window.ui:130
+#: src/gr-chef-dialog.ui:20 src/gr-window.ui:129
 msgid "_Save"
 msgstr "_Simpan"
 
@@ -341,7 +362,7 @@ msgid "Time is up!"
 msgstr "Waktu habis!"
 
 #: src/gr-cuisine-page.ui:77 src/gr-list-page.ui:111 src/gr-search-page.ui:29
-#: src/gr-list-page.c:427
+#: src/gr-list-page.c:510
 msgid "No recipes found"
 msgstr "Tidak ada resep yang ditemukan"
 
@@ -381,7 +402,7 @@ msgstr ""
 "Mengandung Gluten. Harap selalu periksa bahan-bahan jika Anda melayani orang "
 "dengan gluten atau intoleransi produk susu."
 
-#: src/gr-details-page.ui:126 src/gr-details-page.c:492
+#: src/gr-details-page.ui:126 src/gr-details-page.c:537
 msgid "Spicy"
 msgstr "Pedas"
 
@@ -389,234 +410,234 @@ msgstr "Pedas"
 msgid "_Buy Ingredients"
 msgstr "Mem_beli Bahan"
 
-#: src/gr-details-page.ui:164 src/gr-recipe-small-tile.ui:101
-msgid "Serves"
-msgstr "Menyajikan"
+#: src/gr-details-page.ui:164 src/gr-edit-page.ui:316
+msgid "_Yield"
+msgstr "_Yield"
 
-#: src/gr-details-page.ui:198
+#: src/gr-details-page.ui:218
 msgid "Preparation Time"
 msgstr "Waktu Persiapan"
 
-#: src/gr-details-page.ui:228
+#: src/gr-details-page.ui:248
 msgid "Cooking Time"
 msgstr "Waktu Memasak"
 
-#: src/gr-details-page.ui:258
+#: src/gr-details-page.ui:278
 msgid "Cuisine"
 msgstr "Masakan"
 
-#: src/gr-details-page.ui:288 src/gr-query-editor.ui:46
+#: src/gr-details-page.ui:308 src/gr-query-editor.ui:46
 msgid "Meal"
 msgstr "Makan"
 
-#: src/gr-details-page.ui:318
+#: src/gr-details-page.ui:338
 msgid "Season"
 msgstr "Musim"
 
-#: src/gr-details-page.ui:379
+#: src/gr-details-page.ui:399
 msgid "Note"
 msgstr "Catatan"
 
-#: src/gr-details-page.ui:409 src/gr-edit-page.ui:705
-#: src/gr-recipe-formatter.c:119 src/gr-recipe-printer.c:296
+#: src/gr-details-page.ui:429 src/gr-recipe-formatter.c:123
+#: src/gr-recipe-printer.c:298
 msgid "Directions"
 msgstr "Petunjuk"
 
-#: src/gr-details-page.ui:469
+#: src/gr-details-page.ui:489
 msgid "_Notes"
 msgstr "_Catatan"
 
-#: src/gr-details-page.ui:479 src/gr-shopping-page.ui:125
+#: src/gr-details-page.ui:499 src/gr-shopping-page.ui:125
 msgid "_Edit"
 msgstr "_Sunting"
 
-#: src/gr-details-page.ui:488
+#: src/gr-details-page.ui:508
 msgid "_Delete"
 msgstr "_Hapus"
 
-#: src/gr-details-page.ui:499 src/gr-shopping-page.ui:143
+#: src/gr-details-page.ui:519 src/gr-shopping-page.ui:143
 #: src/recipe-export-dialog.ui:21
 msgid "_Share"
 msgstr "_Bagikan"
 
-#: src/gr-details-page.ui:511 src/gr-shopping-page.ui:154
+#: src/gr-details-page.ui:531 src/gr-shopping-page.ui:154
 msgid "_Print"
 msgstr "C_etak"
 
-#: src/gr-details-page.ui:522
+#: src/gr-details-page.ui:542
 msgid "Add to favorites"
 msgstr "Menambahkan ke favorit"
 
-#: src/gr-edit-page.ui:42 src/gr-edit-page.ui:766 src/menus.ui:66
+#: src/gr-edit-page.ui:35 src/gr-edit-page.ui:763 src/menus.ui:66
 msgid "Edit"
 msgstr "Sunting"
 
-#: src/gr-edit-page.ui:119
+#: src/gr-edit-page.ui:112
 msgid "Add an image"
 msgstr "Menambahkan gambar"
 
-#: src/gr-edit-page.ui:145 src/gr-edit-page.ui:171
+#: src/gr-edit-page.ui:138 src/gr-edit-page.ui:164
 msgid "Rotate image"
 msgstr "Memutar gambar"
 
-#: src/gr-edit-page.ui:197
+#: src/gr-edit-page.ui:190
 msgid "Default image"
 msgstr "Gambar bawaan"
 
-#: src/gr-edit-page.ui:223
+#: src/gr-edit-page.ui:216
 msgid "Remove image"
 msgstr "Menghapus gambar"
 
-#: src/gr-edit-page.ui:256
+#: src/gr-edit-page.ui:249
 msgid "Add List"
 msgstr "Menambahkan Daftar"
 
-#: src/gr-edit-page.ui:274
+#: src/gr-edit-page.ui:267
 msgid "Details"
 msgstr "Rincian"
 
-#: src/gr-edit-page.ui:291
-msgid "_Name Your Recipe"
-msgstr "_Nama Resep Anda"
+#: src/gr-edit-page.ui:284 src/gr-edit-page.c:1653
+msgid "_Name"
+msgstr "_Nama"
 
-#: src/gr-edit-page.ui:323
-msgid "Ser_ves"
-msgstr "Mela_yani"
-
-#: src/gr-edit-page.ui:353
+#: src/gr-edit-page.ui:346
 msgid "_Preparation Time"
 msgstr "Waktu _Persiapan"
 
-#: src/gr-edit-page.ui:379 src/gr-edit-page.ui:427
+#: src/gr-edit-page.ui:372 src/gr-edit-page.ui:420
 msgid "Less than 15 minutes"
 msgstr "Kurang dari 15 menit"
 
-#: src/gr-edit-page.ui:380 src/gr-edit-page.ui:428
+#: src/gr-edit-page.ui:373 src/gr-edit-page.ui:421
 msgid "15 to 30 minutes"
 msgstr "15 sampai 30 menit"
 
-#: src/gr-edit-page.ui:381 src/gr-edit-page.ui:429
+#: src/gr-edit-page.ui:374 src/gr-edit-page.ui:422
 msgid "30 to 45 minutes"
 msgstr "30 sampai 45 menit"
 
-#: src/gr-edit-page.ui:382 src/gr-edit-page.ui:430
+#: src/gr-edit-page.ui:375 src/gr-edit-page.ui:423
 msgid "45 minutes to an hour"
 msgstr "45 menit sampai satu jam"
 
-#: src/gr-edit-page.ui:383 src/gr-edit-page.ui:431
+#: src/gr-edit-page.ui:376 src/gr-edit-page.ui:424
 msgid "More than an hour"
 msgstr "Lebih dari satu jam"
 
-#: src/gr-edit-page.ui:401
-msgid "C_ooking Time"
-msgstr "Wakt_u Memasak"
+#: src/gr-edit-page.ui:394
+msgid "_Cooking Time"
+msgstr "Waktu Mem_asak"
 
-#: src/gr-edit-page.ui:449
-msgid "_Cuisine"
-msgstr "M_asakan"
+#: src/gr-edit-page.ui:442
+msgid "C_uisine"
+msgstr "Masa_kan"
 
-#: src/gr-edit-page.ui:485
+#: src/gr-edit-page.ui:478
 msgid "_Meal"
 msgstr "_Makan"
 
-#: src/gr-edit-page.ui:521
+#: src/gr-edit-page.ui:514
 msgid "S_eason"
 msgstr "Mus_im"
 
-#: src/gr-edit-page.ui:557
-msgid "S_piciness"
-msgstr "Ke_pedasan"
+#: src/gr-edit-page.ui:550
+msgid "_Spiciness"
+msgstr "Kepeda_san"
 
-#: src/gr-edit-page.ui:577 src/gr-spice-row.c:127
+#: src/gr-edit-page.ui:570 src/gr-spice-row.c:127
 msgid "Mild"
 msgstr "Ringan"
 
-#: src/gr-edit-page.ui:578
+#: src/gr-edit-page.ui:571
 msgid "Somewhat spicy"
 msgstr "Agak pedas"
 
-#: src/gr-edit-page.ui:579
+#: src/gr-edit-page.ui:572
 msgid "Hot"
 msgstr "Pedas"
 
-#: src/gr-edit-page.ui:580 src/gr-details-page.c:487 src/gr-spice-row.c:142
+#: src/gr-edit-page.ui:573 src/gr-details-page.c:532 src/gr-spice-row.c:142
 msgid "Very spicy"
 msgstr "Sangat pedas"
 
-#: src/gr-edit-page.ui:591
-msgid "Description"
-msgstr "Deskripsi"
+#: src/gr-edit-page.ui:586
+msgid "_Description"
+msgstr "_Deskripsi"
 
-#: src/gr-edit-page.ui:650 src/gr-diet-row.c:102
+#: src/gr-edit-page.ui:645 src/gr-diet-row.c:102
 msgid "Gluten-free"
 msgstr "Bebas-Gluten"
 
-#: src/gr-edit-page.ui:657 src/gr-diet-row.c:105
+#: src/gr-edit-page.ui:652 src/gr-diet-row.c:105
 msgid "Nut-free"
 msgstr "Bebas-kacang"
 
-#: src/gr-edit-page.ui:664 src/gr-diet-row.c:108
+#: src/gr-edit-page.ui:659 src/gr-diet-row.c:108
 msgid "Vegan"
 msgstr "Vegan"
 
-#: src/gr-edit-page.ui:671 src/gr-diet-row.c:111
+#: src/gr-edit-page.ui:666 src/gr-diet-row.c:111
 msgid "Vegetarian"
 msgstr "Vegetarian"
 
-#: src/gr-edit-page.ui:678 src/gr-diet-row.c:114
+#: src/gr-edit-page.ui:673 src/gr-diet-row.c:114
 msgid "Milk-free"
 msgstr "Bebas-susu"
 
-#: src/gr-edit-page.ui:773
+#: src/gr-edit-page.ui:702
+msgid "Di_rections"
+msgstr "Pe_tunjuk"
+
+#: src/gr-edit-page.ui:770
 msgid "Preview"
 msgstr "Pratinjau"
 
-#: src/gr-edit-page.ui:793
+#: src/gr-edit-page.ui:790
 msgid "Add Step"
 msgstr "Menambahkan Langkah"
 
-#: src/gr-edit-page.ui:801
+#: src/gr-edit-page.ui:798
 msgid "Add Image"
 msgstr "Menambahkan Gambar"
 
-#: src/gr-edit-page.ui:809
+#: src/gr-edit-page.ui:806
 msgid "Add Timer"
 msgstr "Menambahkan Pengukur Waktu"
 
-#: src/gr-edit-page.ui:817
+#: src/gr-edit-page.ui:814
 msgid "Add Temperature"
 msgstr "Menambahkan Suhu"
 
-#: src/gr-edit-page.ui:913
+#: src/gr-edit-page.ui:910
 msgid "Title…"
 msgstr "Judul…"
 
-#: src/gr-edit-page.ui:921 src/gr-edit-page.ui:992
+#: src/gr-edit-page.ui:918 src/gr-edit-page.ui:989
 msgid "Add"
 msgstr "Tambah"
 
-#: src/gr-edit-page.ui:1011
+#: src/gr-edit-page.ui:1008
 msgid "Syntax"
 msgstr "Sintaks"
 
-#: src/gr-edit-page.ui:1026
+#: src/gr-edit-page.ui:1023
 msgid "Use paragraphs to break directions into steps (2 newlines)."
 msgstr ""
 "Gunakan paragraf untuk memecah petunjuk ke dalam langkah (2 baris baru)."
 
-#: src/gr-edit-page.ui:1039
+#: src/gr-edit-page.ui:1036
 msgid "You can provide an image or a time counter in each step."
 msgstr "Anda dapat memberikan gambar atau counter waktu di setiap langkah."
 
-#: src/gr-edit-page.ui:1051
+#: src/gr-edit-page.ui:1048
 msgid "Timer"
 msgstr "Pengukur Waktu"
 
-#: src/gr-edit-page.ui:1073
+#: src/gr-edit-page.ui:1070
 msgid "Image"
 msgstr "Gambar"
 
-#: src/gr-edit-page.ui:1095
+#: src/gr-edit-page.ui:1092
 msgid "Temperature"
 msgstr "Suhu"
 
@@ -630,15 +651,15 @@ msgstr "Bahan"
 
 #: src/gr-ingredients-viewer-row.ui:169
 msgid "Use a number, followed by an (optional) unit."
-msgstr ""
+msgstr "Gunakan angka, diikuti oleh unit (opsional)."
 
 #: src/gr-ingredients-viewer-row.ui:180
 msgid "Examples: 1 kg, 2 1/2 pounds, 250 ml, 6"
-msgstr ""
+msgstr "Contoh: 1 kg, 2 1/2 pon, 250 ml, 6"
 
 #: src/gr-ingredients-viewer.ui:13 src/gr-query-editor.ui:235
-#: src/gr-edit-page.c:1324 src/gr-recipe-formatter.c:100
-#: src/gr-recipe-printer.c:247
+#: src/gr-edit-page.c:1509 src/gr-recipe-formatter.c:104
+#: src/gr-recipe-printer.c:249
 msgid "Ingredients"
 msgstr "Bahan"
 
@@ -646,14 +667,13 @@ msgstr "Bahan"
 msgid "Name of the List"
 msgstr "Nama dari Daftar"
 
-#: src/gr-ingredients-viewer.ui:43 src/gr-recipe-small-tile.ui:125
+#: src/gr-ingredients-viewer.ui:43 src/gr-shopping-tile.ui:137
 msgid "Remove"
 msgstr "Hapus"
 
 #: src/gr-ingredients-viewer.ui:86
-#, fuzzy
 msgid "Add more ingredients"
-msgstr "Menambahkan Bahan"
+msgstr "Menambahkan lebih banyak bahan"
 
 #: src/gr-list-page.ui:124
 msgid "There are no recipes here yet."
@@ -732,6 +752,10 @@ msgstr "_Bersihkan daftar"
 msgid "Nothing to add"
 msgstr "Tidak ada yang menambahkan"
 
+#: src/gr-shopping-tile.ui:101
+msgid "Yield"
+msgstr "Yield"
+
 #: src/gr-time-widget.ui:31
 msgid "Start"
 msgstr "Mulai"
@@ -756,45 +780,53 @@ msgstr "Resep B_aru"
 msgid "Go back"
 msgstr "Kembali"
 
-#: src/gr-window.ui:97
+#: src/gr-window.ui:96 src/gr-window.ui:197
 msgid "Search"
 msgstr "Cari"
 
-#: src/gr-window.ui:116
+#: src/gr-window.ui:115
 msgid "_Start Cooking"
 msgstr "Mulai Mema_sak"
 
-#: src/gr-window.ui:144
+#: src/gr-window.ui:143
 msgid "_Done Shopping"
 msgstr "S_elesai Memasak"
 
-#: src/gr-window.ui:205
+#: src/gr-window.ui:257
 msgid "All ingredients marked as stocked!"
 msgstr "Semua bahan ditandai sebagai ditebar!"
 
-#: src/gr-window.ui:215
+#: src/gr-window.ui:267
 msgid "_Undo"
 msgstr "_Tak Jadi"
 
-#: src/gr-window.ui:264
+#: src/gr-window.ui:316
 msgid "Ingredients to buy added."
 msgstr "Bahan untuk membeli ditambahkan."
 
-#: src/gr-window.ui:274
+#: src/gr-window.ui:326
 msgid "View Shopping List"
 msgstr "Lihat Daftar Belanja"
 
-#: src/gr-window.ui:331
+#: src/gr-window.ui:383
 msgid "Undo"
 msgstr "Tak Jadi"
 
-#: src/gr-window.ui:391
+#: src/gr-window.ui:443
 msgid "Send Update"
 msgstr "Kirim Pemutakhiran"
 
-#: src/gr-window.ui:466 src/gr-window.c:387
+#: src/gr-window.ui:518 src/gr-window.c:394
 msgid "Cuisines"
 msgstr "Masakan"
+
+#: src/gr-window.ui:571
+msgid "Name"
+msgstr "Nama"
+
+#: src/gr-window.ui:579
+msgid "Recency"
+msgstr "Keterkinian"
 
 #: src/menus.ui:6 src/menus.ui:48
 msgid "_Import"
@@ -858,7 +890,7 @@ msgstr "_Bantuan Resep"
 
 #: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:163
 #: src/gr-image-viewer.c:627 src/gr-recipe-exporter.c:172
-#: src/gr-shopping-page.c:740 src/gr-window.c:1125
+#: src/gr-shopping-page.c:739 src/gr-window.c:1162
 msgid "Cancel"
 msgstr "Batal"
 
@@ -885,6 +917,31 @@ msgstr "Berkontribusi untuk Proyek GNOME"
 #: src/recipe-whats-new-dialog.ui:8
 msgid "What’s New in Recipes"
 msgstr "Apa yang Baru di Resep"
+
+#: src/recipe-surprise.ui:28
+msgid "GNOME turns 20 !"
+msgstr "GNOME berubah ke 20!"
+
+#: src/recipe-surprise.ui:52
+msgid ""
+"YEARS\n"
+"STRONG"
+msgstr ""
+"TAHUN\n"
+"YANG KUAT"
+
+#: src/recipe-surprise.ui:68
+msgid ""
+"Recipes is a present to GNOME for its 20th birthday. We invite the GNOME "
+"community all over the world to share recipes and enjoy a good meal together."
+msgstr ""
+"Resep adalah hadiah untuk GNOME untuk ulang tahun ke 20. Kami mengundang "
+"komunitas GNOME di seluruh dunia untuk berbagi resep dan menikmati makanan "
+"yang enak bersama."
+
+#: src/recipe-surprise.ui:79
+msgid "Let’s Party"
+msgstr "Ayo Berpesta"
 
 #: src/gr-about-dialog.c:132
 msgid "Learn more about Builder"
@@ -978,12 +1035,12 @@ msgstr "Pelajari lebih lanjut tentang Resep"
 msgid "Recipes by"
 msgstr "Resep oleh"
 
-#: src/gr-account.c:109
+#: src/gr-account.c:111
 #, c-format
 msgid "Got an error from Account portal"
 msgstr "Mendapat galat dari portal Akun"
 
-#: src/gr-account.c:137
+#: src/gr-account.c:162
 msgid ""
 "Allow your personal information to be included with recipes you share with "
 "your friends."
@@ -991,28 +1048,28 @@ msgstr ""
 "Memungkinkan informasi pribadi Anda untuk dimasukkan dengan resep yang Anda "
 "bagi dengan teman-teman Anda."
 
-#: src/gr-app.c:202
+#: src/gr-app.c:209
 #, c-format
 msgid "Supported categories: %s\n"
-msgstr ""
+msgstr "Kategori yang didukung: %s\n"
 
-#: src/gr-app.c:434
+#: src/gr-app.c:441
 msgid "Print the version and exit"
 msgstr "Cetak versi dan keluar"
 
-#: src/gr-app.c:438
+#: src/gr-app.c:445
 msgid "Turn on verbose logging"
 msgstr "Aktifkan logging verbose"
 
-#: src/gr-app.c:442
+#: src/gr-app.c:449
 msgid "Show a category"
-msgstr ""
+msgstr "Tampilkan kategori"
 
 #: src/gr-chef-dialog.c:159 src/gr-image-viewer.c:623
 msgid "Select an Image"
 msgstr "Pilih gambar"
 
-#: src/gr-chef-dialog.c:162 src/gr-image-viewer.c:626 src/gr-window.c:1124
+#: src/gr-chef-dialog.c:162 src/gr-image-viewer.c:626 src/gr-window.c:1161
 msgid "Open"
 msgstr "Buka"
 
@@ -1049,7 +1106,7 @@ msgstr "Pengukur waktu memasak telah berakhir"
 #: src/gr-cooking-view.c:411 src/gr-cooking-view.c:427
 #, c-format
 msgid "Timer for “%s” has expired."
-msgstr "Pengukur waktu untuk \"%s\" telah berakhir"
+msgstr "Pengukur waktu untuk \"%s\" telah berakhir."
 
 #: src/gr-cooking-view.c:425
 msgid "Timer is up!"
@@ -1246,7 +1303,6 @@ msgstr ""
 "umum makanan penutup termasuk kacang, madu, buah-buahan, dan filo pastry."
 
 #: src/gr-cuisine.c:108
-#, fuzzy
 msgid ""
 "Mediterranean cuisine has a lot to offer, and is legendary for being very "
 "healthy too. Expect to see olives, yoghurt and garlic."
@@ -1298,21 +1354,31 @@ msgstr ""
 "penyempurnaan dari Asia Tengah, Timur Tengah dan masakan Balkan. Oleh karena "
 "itu mustahil untuk cocok dengan masakan Turki dalam jangka pendek."
 
-#: src/gr-details-page.c:323
+#: src/gr-details-page.c:193 src/gr-edit-page.c:935
+msgid "serving"
+msgstr "porsi"
+
+#: src/gr-details-page.c:193 src/gr-edit-page.c:936
+#: src/gr-recipe-importer.c:504 src/gr-recipe-store.c:410
+#: src/gr-shopping-tile.c:110
+msgid "servings"
+msgstr "porsi"
+
+#: src/gr-details-page.c:367
 msgid "Could not find this recipe."
 msgstr "Tidak dapat menemukan resep ini."
 
-#: src/gr-details-page.c:531
+#: src/gr-details-page.c:576
 #, c-format
 msgid "Timer: %s"
 msgstr "Pengukur Waktu: %s"
 
-#: src/gr-details-page.c:538
+#: src/gr-details-page.c:583
 #, c-format
 msgid "Image %d"
 msgstr "Gambar %d"
 
-#: src/gr-details-page.c:693 src/gr-edit-page.c:1409
+#: src/gr-details-page.c:724 src/gr-edit-page.c:1594
 #, c-format
 msgid "Recipe by %s"
 msgstr "Resep oleh %s"
@@ -1439,212 +1505,231 @@ msgstr ""
 "<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance"
 "\">Selengkapnya ...</a>"
 
-#: src/gr-edit-page.c:595
+#: src/gr-edit-page.c:599
 msgid "hour"
 msgstr "jam"
 
-#: src/gr-edit-page.c:596
+#: src/gr-edit-page.c:600
 msgid "hours"
 msgstr "jam"
 
-#: src/gr-edit-page.c:597
+#: src/gr-edit-page.c:601
 msgctxt "hour abbreviation"
 msgid "h"
 msgstr "j"
 
-#: src/gr-edit-page.c:601
+#: src/gr-edit-page.c:605
 msgid "minute"
 msgstr "menit"
 
-#: src/gr-edit-page.c:602
+#: src/gr-edit-page.c:606
 msgid "minutes"
 msgstr "menit"
 
-#: src/gr-edit-page.c:603
+#: src/gr-edit-page.c:607
 msgctxt "minute abbreviation"
 msgid "min"
 msgstr "men"
 
-#: src/gr-edit-page.c:604
+#: src/gr-edit-page.c:608
 msgctxt "minute abbreviation"
 msgid "m"
 msgstr "m"
 
-#: src/gr-edit-page.c:608
+#: src/gr-edit-page.c:612
 msgid "second"
 msgstr "detik"
 
-#: src/gr-edit-page.c:609
+#: src/gr-edit-page.c:613
 msgid "seconds"
 msgstr "detik"
 
-#: src/gr-edit-page.c:610
+#: src/gr-edit-page.c:614
 msgctxt "second abbreviation"
 msgid "sec"
 msgstr "det"
 
-#: src/gr-edit-page.c:611
+#: src/gr-edit-page.c:615
 msgctxt "second abbreviation"
 msgid "s"
-msgstr "d  "
+msgstr "d"
 
-#: src/gr-edit-page.c:896
+#: src/gr-edit-page.c:900
 msgid "Recipe Author"
 msgstr "Penulis Resep"
 
-#: src/gr-edit-page.c:1360
-msgid "Name Your Recipe"
-msgstr "Nama Resep Anda"
+#: src/gr-edit-page.c:939
+msgid "loaf"
+msgstr "roti"
 
-#: src/gr-edit-page.c:1465
-msgid "Name"
-msgstr "Nama"
+#: src/gr-edit-page.c:940
+msgid "loafs"
+msgstr "roti"
 
-#: src/gr-edit-page.c:1537 src/gr-edit-page.c:1592 src/gr-recipe-store.c:1280
+#: src/gr-edit-page.c:943
+msgid "ounce"
+msgstr "ons"
+
+#: src/gr-edit-page.c:944
+msgid "ounces"
+msgstr "ons"
+
+#: src/gr-edit-page.c:1545
+msgid "_Name Your Recipe"
+msgstr "_Nama Resep Anda"
+
+#: src/gr-edit-page.c:1730 src/gr-edit-page.c:1791 src/gr-recipe-store.c:1333
 #, c-format
 msgid "You need to provide a name for the recipe"
 msgstr "Anda perlu menyediakan nama untuk resep"
 
-#: src/gr-edit-page.c:1550
-#, fuzzy, c-format
+#: src/gr-edit-page.c:1748
+#, c-format
 msgid "Some ingredients need correction"
-msgstr "Belum ada bahan yang ditambahkan"
+msgstr "Beberapa bahan perlu koreksi"
+
+#: src/gr-gourmet-format.c:174
+#, c-format
+msgid "Not a Gourmet XML document"
+msgstr "Bukan dokumen XML Gourmet"
 
 #: src/gr-ingredients-viewer-row.c:153
-#, fuzzy
 msgid "Amount…"
-msgstr "Jumlah"
+msgstr "Jumlah…"
 
 #: src/gr-ingredients-viewer-row.c:166
-#, fuzzy
 msgid "Ingredient…"
-msgstr "Bahan"
+msgstr "Bahan…"
 
-#: src/gr-list-page.c:245
+#: src/gr-list-page.c:310
 msgid "Gluten-free Recipes"
 msgstr "Resep Bebas Gluten"
 
-#: src/gr-list-page.c:247
+#: src/gr-list-page.c:312
 msgid "Nut-free Recipes"
 msgstr "Resep Bebas Kacang"
 
-#: src/gr-list-page.c:249
+#: src/gr-list-page.c:314
 msgid "Vegan Recipes"
 msgstr "Resep Vegan"
 
-#: src/gr-list-page.c:251
+#: src/gr-list-page.c:316
 msgid "Vegetarian Recipes"
 msgstr "Resep Vegetarian"
 
-#: src/gr-list-page.c:253
+#: src/gr-list-page.c:318
 msgid "Milk-free Recipes"
 msgstr "Resep Bebas Susu"
 
-#: src/gr-list-page.c:255
+#: src/gr-list-page.c:320
 msgid "Other Dietary Restrictions"
 msgstr "Pantangan Lainnya"
 
-#: src/gr-list-page.c:296
+#: src/gr-list-page.c:363
 #, c-format
 msgid "No %s found"
 msgstr "Tidak ada %s yang ditemukan"
 
-#: src/gr-list-page.c:299 src/gr-list-page.c:358 src/gr-list-page.c:389
+#: src/gr-list-page.c:366 src/gr-list-page.c:435 src/gr-list-page.c:468
 msgid "You could add one using the “New Recipe” button."
 msgstr "Anda bisa menambahkan resep menggunakan tombol \"Resep Baru\"."
 
-#: src/gr-list-page.c:347
+#: src/gr-list-page.c:424
 #, c-format
 msgid "Recipes by %s"
 msgstr "Resep oleh %s"
 
-#: src/gr-list-page.c:354
+#: src/gr-list-page.c:431
 #, c-format
 msgid "No recipes by chef %s found"
 msgstr "Tidak ada resep oleh koki %s ditemukan"
 
-#: src/gr-list-page.c:360 src/gr-list-page.c:428 src/gr-list-page.c:453
-#: src/gr-list-page.c:486
+#: src/gr-list-page.c:437 src/gr-list-page.c:511 src/gr-list-page.c:538
+#: src/gr-list-page.c:573
 msgid "Sorry about this."
 msgstr "Maaf soal ini."
 
-#: src/gr-list-page.c:386
+#: src/gr-list-page.c:465
 #, c-format
 msgid "No recipes for %s found"
 msgstr "Tidak ada resep untuk %s ditemukan"
 
-#: src/gr-list-page.c:408
+#: src/gr-list-page.c:489
 msgid "No favorite recipes found"
 msgstr "Tidak ada resep favorit ditemukan"
 
-#: src/gr-list-page.c:409
+#: src/gr-list-page.c:490
 msgid "Use the ♥ button to mark recipes as favorites."
 msgstr "Gunakan tombol ♥ untuk menandai resep sebagai favorit."
 
-#: src/gr-list-page.c:452
+#: src/gr-list-page.c:537
 msgid "No new recipes"
 msgstr "Tidak ada resep baru"
 
-#: src/gr-list-page.c:485
+#: src/gr-list-page.c:572
 msgid "No imported recipes found"
 msgstr "Tidak ada resep yang diimpor ditemukan"
 
-#: src/gr-meal.c:44
+#: src/gr-meal.c:45
 msgid "Main Course"
 msgstr "Menu Utama"
 
-#: src/gr-meal.c:45
+#: src/gr-meal.c:46
 msgid "Snacks"
 msgstr "Makanan ringan"
 
-#: src/gr-meal.c:46
+#: src/gr-meal.c:47
 msgid "Breakfast"
 msgstr "Sarapan"
 
-#: src/gr-meal.c:47
+#: src/gr-meal.c:48
 msgid "Side Dishes"
 msgstr "Lauk Pauk"
 
-#: src/gr-meal.c:48
+#: src/gr-meal.c:49
 msgid "Desserts"
 msgstr "Pencuci mulut"
 
-#: src/gr-meal.c:49
+#: src/gr-meal.c:50
 msgid "Cake and Baking"
 msgstr "Kue dan Panggangan"
 
-#: src/gr-meal.c:50
+#: src/gr-meal.c:51
 msgid "Drinks and Cocktails"
 msgstr "Minuman dan Koktail"
 
-#: src/gr-meal.c:51
+#: src/gr-meal.c:52
 msgid "Pizza"
 msgstr "Pizza"
 
-#: src/gr-meal.c:52
+#: src/gr-meal.c:53
 msgid "Pasta"
 msgstr "Pasta"
 
-#: src/gr-meal.c:53
+#: src/gr-meal.c:54
+msgid "Salad"
+msgstr "Salad"
+
+#: src/gr-meal.c:55
 msgid "Other"
 msgstr "Lainnya"
 
-#: src/gr-number.c:166 src/gr-number.c:183 src/gr-number.c:192
+#: src/gr-number.c:148 src/gr-number.c:165 src/gr-number.c:174
 #, c-format
 msgid "Could not parse %s as a fraction"
 msgstr "Tidak dapat menguraikan %s sebagai pecahan"
 
-#: src/gr-number.c:216
+#: src/gr-number.c:199
 #, c-format
 msgid "Could not parse %s as a integer"
 msgstr "Tidak dapat menguraikan %s sebagai integer"
 
-#: src/gr-number.c:239
+#: src/gr-number.c:221
 #, c-format
 msgid "Could not parse %s as a float"
 msgstr "Tidak dapat menguraikan %s sebagai float"
 
-#: src/gr-number.c:290
+#: src/gr-number.c:271
 #, c-format
 msgid "Could not parse %s as a number"
 msgstr "Tidak dapat menguraikan %s sebagai angka"
@@ -1653,7 +1738,7 @@ msgstr "Tidak dapat menguraikan %s sebagai angka"
 msgid "Save the exported recipe"
 msgstr "Simpan resep yang diekspor"
 
-#: src/gr-recipe-exporter.c:171 src/gr-shopping-page.c:739
+#: src/gr-recipe-exporter.c:171 src/gr-shopping-page.c:738
 msgid "Save"
 msgstr "Simpan"
 
@@ -1697,12 +1782,12 @@ msgstr ""
 msgid "(The attached file can be imported into GNOME Recipes.)"
 msgstr "(Berkas terlampir dapat diimpor ke GNOME Resep.)"
 
-#: src/gr-recipe-exporter.c:432
+#: src/gr-recipe-exporter.c:437
 #, c-format
 msgid "This build does not support exporting"
 msgstr "Build ini tidak mendukung ekspor"
 
-#: src/gr-recipe-exporter.c:515
+#: src/gr-recipe-exporter.c:520
 #, c-format
 msgid ""
 "Error while exporting:\n"
@@ -1711,13 +1796,13 @@ msgstr ""
 "Galat saat mengekspor:\n"
 "%s"
 
-#: src/gr-recipe-exporter.c:612
+#: src/gr-recipe-exporter.c:617
 #, c-format
 msgid "%d recipe selected for sharing"
 msgid_plural "%d recipes selected for sharing"
 msgstr[0] "%d resep yang dipilih untuk berbagi"
 
-#: src/gr-recipe-exporter.c:644
+#: src/gr-recipe-exporter.c:649
 msgid ""
 "Some of the selected recipes are included\n"
 "with GNOME Recipes. You should only contribute\n"
@@ -1727,23 +1812,23 @@ msgstr ""
 "dengan GNOME Resep. Anda hanya harus \n"
 "memberikan kontribusi resep Anda sendiri."
 
-#: src/gr-recipe-formatter.c:86 src/gr-recipe-printer.c:162
+#: src/gr-recipe-formatter.c:88 src/gr-recipe-printer.c:163
 msgid "Author:"
 msgstr "Penulis:"
 
-#: src/gr-recipe-formatter.c:87 src/gr-recipe-printer.c:163
+#: src/gr-recipe-formatter.c:89 src/gr-recipe-printer.c:164
 msgid "Preparation:"
 msgstr "Persiapan:"
 
-#: src/gr-recipe-formatter.c:88 src/gr-recipe-printer.c:164
+#: src/gr-recipe-formatter.c:90 src/gr-recipe-printer.c:165
 msgid "Cooking:"
 msgstr "Memasak:"
 
-#: src/gr-recipe-formatter.c:89 src/gr-recipe-printer.c:165
-msgid "Serves:"
-msgstr "Penyajian:"
+#: src/gr-recipe-formatter.c:93 src/gr-recipe-printer.c:167
+msgid "Yield:"
+msgstr "Yield:"
 
-#: src/gr-recipe-importer.c:236
+#: src/gr-recipe-importer.c:238
 #, c-format
 msgid ""
 "Error while importing recipe:\n"
@@ -1752,64 +1837,51 @@ msgstr ""
 "Galat saat mengimpor resep:\n"
 "%s"
 
-#: src/gr-recipe-importer.c:482
+#: src/gr-recipe-importer.c:518
 #, c-format
 msgid "Failed to load recipe: Couldn’t parse Created key"
 msgstr "Gagal memuat resep: Tidak dapat mengurai kunci yang dibuat"
 
-#: src/gr-recipe-importer.c:493
+#: src/gr-recipe-importer.c:529
 #, c-format
 msgid "Failed to load recipe: Couldn’t parse Modified key"
 msgstr "Gagal memuat resep: Tidak dapat mengurai kunci yang diubah"
 
-#: src/gr-recipe-importer.c:773
-#, fuzzy, c-format
+#: src/gr-recipe-importer.c:809
+#, c-format
 msgid "No chef information found"
-msgstr "Informasi Koki"
+msgstr "Informasi koki tidak ditemukan"
 
-#: src/gr-recipe-importer.c:803
+#: src/gr-recipe-importer.c:839
 #, c-format
 msgid "This build does not support importing"
 msgstr "Build ini tidak mendukung impor"
 
-#: src/gr-recipe-printer.c:170
-#, fuzzy
+#: src/gr-recipe-printer.c:172
 msgid "Cuisine:"
-msgstr "Masakan"
+msgstr "Masakan:"
 
-#: src/gr-recipe-printer.c:174
-#, fuzzy
+#: src/gr-recipe-printer.c:176
 msgid "Meal:"
-msgstr "Makan"
+msgstr "Makanan:"
 
-#: src/gr-recipe-printer.c:178
-#, fuzzy
+#: src/gr-recipe-printer.c:180
 msgid "Season:"
-msgstr "Musim"
+msgstr "Musim:"
 
-#: src/gr-recipe-printer.c:223
-#, fuzzy
+#: src/gr-recipe-printer.c:225
 msgid "Notes"
-msgstr "_Catatan"
+msgstr "Catatan"
 
-#: src/gr-recipe-printer.c:466 src/gr-shopping-list-printer.c:297
+#: src/gr-recipe-printer.c:468 src/gr-shopping-list-printer.c:297
 msgid "Error printing file:"
 msgstr "Galat saat mencetak berkas:"
 
-#: src/gr-recipe-printer.c:467 src/gr-shopping-list-printer.c:298
+#: src/gr-recipe-printer.c:469 src/gr-shopping-list-printer.c:298
 msgid "No details"
 msgstr "Tidak ada rincian"
 
-#: src/gr-recipe-small-tile.c:105 src/gr-recipe-tile.c:86
-#, c-format
-msgid "by %s"
-msgstr "oleh %s"
-
-#: src/gr-recipe-small-tile.c:105 src/gr-recipe-tile.c:86
-msgid "Anonymous"
-msgstr "Anonim"
-
-#: src/gr-recipes-page.c:221 src/gr-window.c:1289
+#: src/gr-recipes-page.c:221 src/gr-window.c:1326
 msgid "My Recipes"
 msgstr "Resep saya"
 
@@ -1817,11 +1889,11 @@ msgstr "Resep saya"
 msgid "Favorites"
 msgstr "Favorit"
 
-#: src/gr-recipes-page.c:223 src/gr-window.c:1237
+#: src/gr-recipes-page.c:223 src/gr-window.c:1274
 msgid "All Recipes"
 msgstr "Semua Resep"
 
-#: src/gr-recipes-page.c:224 src/gr-window.c:1246
+#: src/gr-recipes-page.c:224 src/gr-window.c:1283
 msgid "New Recipes"
 msgstr "Resep Baru"
 
@@ -1845,44 +1917,53 @@ msgid "Buy ingredients: <b>%s, %s and %d other</b>"
 msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
 msgstr[0] "Membeli bahan-bahan: <b>%s, %s dan %d lainnya</b>"
 
-#: src/gr-recipe-store.c:1285
-#, fuzzy, c-format
+#: src/gr-recipe-store.c:1338
+#, c-format
 msgid ""
 "A recipe with this name and author (%s) already exists.\n"
 "Please choose a different name"
 msgstr ""
-"Resep dengan nama dan penulis ini sudah ada.\n"
-"Pilih nama yang berbeda"
+"Resep dengan nama dan penulis ini (%s) sudah ada.\n"
+"Silahkan pilih nama yang berbeda"
 
-#: src/gr-recipe-store.c:1314
+#: src/gr-recipe-store.c:1367
 #, c-format
 msgid "You need to provide an ID for the recipe"
 msgstr "Anda perlu menyediakan ID untuk resep"
 
-#: src/gr-recipe-store.c:1320
+#: src/gr-recipe-store.c:1373
 #, c-format
 msgid "A recipe with this ID already exists"
 msgstr "Resep dengan ID ini sudah ada"
 
-#: src/gr-recipe-store.c:1489
+#: src/gr-recipe-store.c:1542
 #, c-format
 msgid "You need to provide an ID"
 msgstr "Anda perlu memberikan ID"
 
-#: src/gr-recipe-store.c:1495
+#: src/gr-recipe-store.c:1548
 #, c-format
 msgid "Sorry, this ID is taken"
 msgstr "Maaf, ID ini sudah ada"
 
-#: src/gr-recipe-store.c:1522
+#: src/gr-recipe-store.c:1575
 #, c-format
 msgid "You need to provide an ID for the chef"
 msgstr "Anda perlu menyediakan ID untuk koki"
 
-#: src/gr-recipe-store.c:1528
+#: src/gr-recipe-store.c:1581
 #, c-format
 msgid "A chef with this ID already exists"
 msgstr "Koki dengan ID ini sudah ada"
+
+#: src/gr-recipe-tile.c:99 src/gr-shopping-tile.c:108
+#, c-format
+msgid "by %s"
+msgstr "oleh %s"
+
+#: src/gr-recipe-tile.c:99 src/gr-shopping-tile.c:108
+msgid "Anonymous"
+msgstr "Anonim"
 
 #: src/gr-season.c:41
 msgid "Thanksgiving"
@@ -1913,7 +1994,7 @@ msgid "Winter"
 msgstr "Musim dingin"
 
 #: src/gr-shopping-list-formatter.c:42 src/gr-shopping-list-printer.c:135
-#: src/gr-shopping-page.c:765
+#: src/gr-shopping-page.c:764
 msgid "Shopping List"
 msgstr "Daftar Belanja"
 
@@ -1947,7 +2028,7 @@ msgid "%d Recipe marked for preparation"
 msgid_plural "%d Recipes marked for preparation"
 msgstr[0] "%d Resep ditandai untuk persiapan"
 
-#: src/gr-shopping-page.c:736
+#: src/gr-shopping-page.c:735
 msgid "Save the shopping list"
 msgstr "Menyimpan daftar belanja"
 
@@ -1978,7 +2059,6 @@ msgid "gram"
 msgstr "gram"
 
 #: src/gr-unit.c:41
-#, fuzzy
 msgctxt "unit plural"
 msgid "grams"
 msgstr "gram"
@@ -1994,7 +2074,6 @@ msgid "kilogram"
 msgstr "kilogram"
 
 #: src/gr-unit.c:42
-#, fuzzy
 msgctxt "unit plural"
 msgid "kilograms"
 msgstr "kilogram"
@@ -2010,7 +2089,6 @@ msgid "pound"
 msgstr "pound"
 
 #: src/gr-unit.c:43
-#, fuzzy
 msgctxt "unit plural"
 msgid "pounds"
 msgstr "pound"
@@ -2026,7 +2104,6 @@ msgid "ounce"
 msgstr "ons"
 
 #: src/gr-unit.c:44
-#, fuzzy
 msgctxt "unit plural"
 msgid "ounces"
 msgstr "ons"
@@ -2042,7 +2119,6 @@ msgid "liter"
 msgstr "liter"
 
 #: src/gr-unit.c:45
-#, fuzzy
 msgctxt "unit plural"
 msgid "liters"
 msgstr "liter"
@@ -2058,7 +2134,6 @@ msgid "deciliter"
 msgstr "desiliter"
 
 #: src/gr-unit.c:46
-#, fuzzy
 msgctxt "unit plural"
 msgid "deciliters"
 msgstr "desiliter"
@@ -2074,7 +2149,6 @@ msgid "milliliter"
 msgstr "milliliter"
 
 #: src/gr-unit.c:47
-#, fuzzy
 msgctxt "unit plural"
 msgid "milliliters"
 msgstr "milliliter"
@@ -2090,7 +2164,6 @@ msgid "fluid ounce"
 msgstr "ons cairan"
 
 #: src/gr-unit.c:48 src/gr-unit.c:49
-#, fuzzy
 msgctxt "unit plural"
 msgid "fluid ounces"
 msgstr "ons cairan"
@@ -2106,7 +2179,6 @@ msgid "pint"
 msgstr "pint"
 
 #: src/gr-unit.c:50
-#, fuzzy
 msgctxt "unit plural"
 msgid "pints"
 msgstr "pint"
@@ -2122,7 +2194,6 @@ msgid "quart"
 msgstr "kuart"
 
 #: src/gr-unit.c:51
-#, fuzzy
 msgctxt "unit plural"
 msgid "quarts"
 msgstr "kuart"
@@ -2138,7 +2209,6 @@ msgid "gallon"
 msgstr "galon"
 
 #: src/gr-unit.c:52
-#, fuzzy
 msgctxt "unit plural"
 msgid "gallons"
 msgstr "galon"
@@ -2156,7 +2226,7 @@ msgstr "cangkir"
 #: src/gr-unit.c:53
 msgctxt "unit plural"
 msgid "cups"
-msgstr ""
+msgstr "cangkir"
 
 #: src/gr-unit.c:54
 msgctxt "unit abbreviation"
@@ -2169,7 +2239,6 @@ msgid "tablespoon"
 msgstr "sendok makan"
 
 #: src/gr-unit.c:54
-#, fuzzy
 msgctxt "unit plural"
 msgid "tablespoons"
 msgstr "sendok makan"
@@ -2185,7 +2254,6 @@ msgid "teaspoon"
 msgstr "sendok teh"
 
 #: src/gr-unit.c:55
-#, fuzzy
 msgctxt "unit plural"
 msgid "teaspoons"
 msgstr "sendok teh"
@@ -2203,7 +2271,7 @@ msgstr "kotak"
 #: src/gr-unit.c:56
 msgctxt "unit plural"
 msgid "boxes"
-msgstr ""
+msgstr "kotak"
 
 #: src/gr-unit.c:57
 msgctxt "unit abbreviation"
@@ -2216,7 +2284,6 @@ msgid "package"
 msgstr "paket"
 
 #: src/gr-unit.c:57
-#, fuzzy
 msgctxt "unit plural"
 msgid "packages"
 msgstr "paket"
@@ -2232,47 +2299,41 @@ msgid "glass"
 msgstr "gelas"
 
 #: src/gr-unit.c:58
-#, fuzzy
 msgctxt "unit plural"
 msgid "glasses"
 msgstr "gelas"
 
 #: src/gr-unit.c:59
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "mm"
-msgstr "m"
+msgstr "mm"
 
 #: src/gr-unit.c:59
-#, fuzzy
 msgctxt "unit name"
 msgid "millimeter"
-msgstr "milliliter"
+msgstr "millimeter"
 
 #: src/gr-unit.c:59
-#, fuzzy
 msgctxt "unit plural"
 msgid "millimeters"
-msgstr "milliliter"
+msgstr "millimeter"
 
 #: src/gr-unit.c:60
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "cm"
-msgstr "m"
+msgstr "cm"
 
 #: src/gr-unit.c:60
 msgctxt "unit name"
 msgid "centimeter"
-msgstr ""
+msgstr "sentimeter"
 
 #: src/gr-unit.c:60
 msgctxt "unit plural"
 msgid "centimeters"
-msgstr ""
+msgstr "sentimeter"
 
 #: src/gr-unit.c:61
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "m"
 msgstr "m"
@@ -2280,58 +2341,57 @@ msgstr "m"
 #: src/gr-unit.c:61
 msgctxt "unit name"
 msgid "meter"
-msgstr ""
+msgstr "meter"
 
 #: src/gr-unit.c:61
 msgctxt "unit plural"
 msgid "meters"
-msgstr ""
+msgstr "meter"
 
 #: src/gr-unit.c:62
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "st"
-msgstr "d  "
+msgstr "d"
 
 #: src/gr-unit.c:62
 msgctxt "unit name"
 msgid "stone"
-msgstr ""
+msgstr "biji"
 
 #: src/gr-unit.c:62
 msgctxt "unit plural"
 msgid "stone"
-msgstr ""
+msgstr "biji"
 
 #: src/gr-unit.c:63
 msgctxt "unit abbreviation"
 msgid "pinch"
-msgstr ""
+msgstr "pinch"
 
 #: src/gr-unit.c:63
 msgctxt "unit name"
 msgid "pinch"
-msgstr ""
+msgstr "pinch"
 
 #: src/gr-unit.c:63
 msgctxt "unit plural"
 msgid "pinches"
-msgstr ""
+msgstr "pinch"
 
 #: src/gr-unit.c:64
 msgctxt "unit abbreviation"
 msgid "bunch"
-msgstr ""
+msgstr "ikat"
 
 #: src/gr-unit.c:64
 msgctxt "unit name"
 msgid "bunch"
-msgstr ""
+msgstr "ikat"
 
 #: src/gr-unit.c:64
 msgctxt "unit plural"
 msgid "bunches"
-msgstr ""
+msgstr "ikat"
 
 #: src/gr-unit.c:145
 #, c-format
@@ -2368,7 +2428,7 @@ msgstr "10 menit yang lalu"
 #: src/gr-utils.c:352
 #, c-format
 msgid "half an hour ago"
-msgstr "Setengah jam yang lalu"
+msgstr "setengah jam yang lalu"
 
 #: src/gr-utils.c:356
 #, c-format
@@ -2417,11 +2477,11 @@ msgstr ""
 "Silahkan pasang xdg-desktop-portal dan xdg-desktop-portal-gtk pada sistem "
 "Anda"
 
-#: src/gr-window.c:246
+#: src/gr-window.c:252
 msgid "Add a New Recipe"
 msgstr "Menambahkan Resep Baru"
 
-#: src/gr-window.c:525
+#: src/gr-window.c:533
 #, c-format
 msgid ""
 "The “%s” recipe has unsaved changes.\n"
@@ -2430,7 +2490,7 @@ msgstr ""
 "Resep “%s” memiliki perubahan yang belum disimpan.\n"
 "Menutup jendela saja?"
 
-#: src/gr-window.c:528
+#: src/gr-window.c:536
 msgid ""
 "The new recipe has not been saved.\n"
 "Close the window anyway?"
@@ -2438,71 +2498,79 @@ msgstr ""
 "Resep baru belum disimpan.\n"
 "Menutup jendela saja?"
 
-#: src/gr-window.c:659
+#: src/gr-window.c:656
 #, c-format
 msgid "Recipe “%s” deleted"
 msgstr "Resep “%s” dihapus"
 
-#: src/gr-window.c:709
+#: src/gr-window.c:706
 #, c-format
 msgid "You updated your contributed “%s” recipe. Send an update?"
 msgstr ""
 "Anda memutakhirkan kontribusi Anda pada resep \"%s\". Kirim pemutakhiran?"
 
-#: src/gr-window.c:839
+#: src/gr-window.c:836
 msgid "Ready to Cook!"
 msgstr "Siap untuk Memasak!"
 
-#: src/gr-window.c:1045
+#: src/gr-window.c:882
+msgid "Sorted by Name"
+msgstr "Diurutkan menurut Nama"
+
+#: src/gr-window.c:887
+msgid "Sorted by Recency"
+msgstr "Diurutkan menurut Keterkinian"
+
+#: src/gr-window.c:1082
 msgid "Imported Recipes"
 msgstr "Resep yang Diimpor"
 
-#: src/gr-window.c:1121
+#: src/gr-window.c:1158
 msgid "Select a recipe file"
 msgstr "Pilih berkas resep"
 
-#: src/gr-window.c:1147
+#: src/gr-window.c:1184
 #, c-format
 msgid "Recipes have been exported to “%s”"
 msgstr "Resep telah diekspor ke \"%s\""
 
-#: src/gr-window.c:1185
+#: src/gr-window.c:1222
 msgid "Select a file"
 msgstr "Pilih berkas"
 
-#: src/gr-window.c:1188
+#: src/gr-window.c:1225
 msgid "_Export"
 msgstr "_Ekspor"
 
-#: src/gr-window.c:1218
+#: src/gr-window.c:1255
 #, c-format
 msgid "Chefs: %s"
 msgstr "Koki: %s"
 
-#: src/gr-window.c:1228
+#: src/gr-window.c:1265
 msgid "Favorite Recipes"
 msgstr "Resep Favorit"
 
-#: src/gr-window.c:1276
+#: src/gr-window.c:1313
 msgid "Buy Ingredients"
 msgstr "Membeli Bahan"
 
 #. TRANSLATORS: %s gets replaced by a version number
-#: src/gr-window.c:1420
+#: src/gr-window.c:1457
 #, c-format
 msgid "Recipes %s"
 msgstr "Resep %s"
 
 #. TRANSLATORS: %s gets replaced by a date
-#: src/gr-window.c:1437
+#: src/gr-window.c:1474
 #, c-format
 msgid "Released: %s"
 msgstr "Dirilis: %s"
 
-#: src/gr-window.c:1440
-#, fuzzy, c-format
+#: src/gr-window.c:1477
+#, c-format
 msgid "Unreleased"
-msgstr "Dirilis: %s"
+msgstr "Belum pernah dirilis"
 
 #: src/ingredients.inc:1
 msgid "Almond"
@@ -2589,9 +2657,8 @@ msgid "Beetroot"
 msgstr "Akar bit"
 
 #: src/ingredients.inc:22
-#, fuzzy
 msgid "Bell pepper"
-msgstr "tidak ada Lada"
+msgstr "Paprika"
 
 #: src/ingredients.inc:23
 msgid "Berry"
@@ -2607,7 +2674,7 @@ msgstr "Bilberry"
 
 #: src/ingredients.inc:26
 msgid "Breadcrumbs"
-msgstr ""
+msgstr "Remah Roti"
 
 #: src/ingredients.inc:27
 msgid "Butter"
@@ -2643,7 +2710,7 @@ msgstr "Couscous"
 
 #: src/ingredients.inc:35
 msgid "Cream"
-msgstr ""
+msgstr "Krim"
 
 #: src/ingredients.inc:36
 msgid "Date"
@@ -2659,7 +2726,7 @@ msgstr "Ara"
 
 #: src/ingredients.inc:39
 msgid "Fish"
-msgstr ""
+msgstr "Ikan"
 
 #: src/ingredients.inc:40
 msgid "Flour"
@@ -2671,7 +2738,7 @@ msgstr "Bawang putih"
 
 #: src/ingredients.inc:42
 msgid "Grapes"
-msgstr ""
+msgstr "Anggur"
 
 #: src/ingredients.inc:43
 msgid "Ground beef"
@@ -2683,7 +2750,7 @@ msgstr "Madu"
 
 #: src/ingredients.inc:45
 msgid "Horseradish"
-msgstr ""
+msgstr "Lobak"
 
 #: src/ingredients.inc:46
 msgid "Lemon"
@@ -2707,7 +2774,7 @@ msgstr "Moster"
 
 #: src/ingredients.inc:51
 msgid "Nut"
-msgstr ""
+msgstr "Kacang"
 
 #: src/ingredients.inc:52
 msgid "Oatmeal"
@@ -2723,7 +2790,7 @@ msgstr "Bawang"
 
 #: src/ingredients.inc:55
 msgid "Olive oil, extra-virgin"
-msgstr "minyak zaitun, ekstra-virgin"
+msgstr "Minyak zaitun, ekstra-virgin"
 
 #: src/ingredients.inc:56
 msgid "Orange"
@@ -2758,13 +2825,12 @@ msgid "Pumpkin seeds"
 msgstr "Biji labu"
 
 #: src/ingredients.inc:64
-#, fuzzy
 msgid "Raisins"
-msgstr "Masakan"
+msgstr "Kismis"
 
 #: src/ingredients.inc:65
 msgid "Rice"
-msgstr ""
+msgstr "Beras"
 
 #: src/ingredients.inc:66
 msgid "Salt"
@@ -2776,7 +2842,7 @@ msgstr "Kecap"
 
 #: src/ingredients.inc:68
 msgid "Strawberry"
-msgstr ""
+msgstr "Stroberi"
 
 #: src/ingredients.inc:69
 msgid "Sugar"
@@ -2840,7 +2906,7 @@ msgstr "Zinfandel"
 
 #: src/ingredients.inc:84
 msgid "Zuccini"
-msgstr ""
+msgstr "Zukini"
 
 #: src/no-ingredients.inc:1
 msgid "no Almond"
@@ -2927,9 +2993,8 @@ msgid "no Beetroot"
 msgstr "tidak ada Akar bit"
 
 #: src/no-ingredients.inc:22
-#, fuzzy
 msgid "no Bell pepper"
-msgstr "tidak ada Lada"
+msgstr "tidak ada Paprika"
 
 #: src/no-ingredients.inc:23
 msgid "no Berry"
@@ -2944,9 +3009,8 @@ msgid "no Bilberry"
 msgstr "tidak ada Bilberry"
 
 #: src/no-ingredients.inc:26
-#, fuzzy
 msgid "no Breadcrumbs"
-msgstr "tidak ada Kacang polong"
+msgstr "tidak ada Remah Roti"
 
 #: src/no-ingredients.inc:27
 msgid "no Butter"
@@ -2982,7 +3046,7 @@ msgstr "tidak ada Couscous"
 
 #: src/no-ingredients.inc:35
 msgid "no Cream"
-msgstr ""
+msgstr "tidak ada Krim"
 
 #: src/no-ingredients.inc:36
 msgid "no Date"
@@ -2997,9 +3061,8 @@ msgid "no Fig"
 msgstr "tidak ada Ara"
 
 #: src/no-ingredients.inc:39
-#, fuzzy
 msgid "no Fish"
-msgstr "tidak ada Ara"
+msgstr "tidak ada Ikan"
 
 #: src/no-ingredients.inc:40
 msgid "no Flour"
@@ -3011,7 +3074,7 @@ msgstr "tidak ada Bawang putih"
 
 #: src/no-ingredients.inc:42
 msgid "no Grapes"
-msgstr ""
+msgstr "tidak ada Anggur"
 
 #: src/no-ingredients.inc:43
 msgid "no Ground beef"
@@ -3023,7 +3086,7 @@ msgstr "tidak ada Madu"
 
 #: src/no-ingredients.inc:45
 msgid "no Horseradish"
-msgstr ""
+msgstr "tidak ada Lobak"
 
 #: src/no-ingredients.inc:46
 msgid "no Lemon"
@@ -3047,7 +3110,7 @@ msgstr "tidak ada Moster"
 
 #: src/no-ingredients.inc:51
 msgid "no Nut"
-msgstr ""
+msgstr "tidak ada Kacang"
 
 #: src/no-ingredients.inc:52
 msgid "no Oatmeal"
@@ -3099,11 +3162,11 @@ msgstr "tidak ada Biji labu"
 
 #: src/no-ingredients.inc:64
 msgid "no Raisins"
-msgstr ""
+msgstr "tidak ada Kismis"
 
 #: src/no-ingredients.inc:65
 msgid "no Rice"
-msgstr ""
+msgstr "tidak ada Beras"
 
 #: src/no-ingredients.inc:66
 msgid "no Salt"
@@ -3114,9 +3177,8 @@ msgid "no Soy sauce"
 msgstr "tidak ada Kecap"
 
 #: src/no-ingredients.inc:68
-#, fuzzy
 msgid "no Strawberry"
-msgstr "tidak ada Bilberry"
+msgstr "tidak ada Stroberi"
 
 #: src/no-ingredients.inc:69
 msgid "no Sugar"
@@ -3180,7 +3242,31 @@ msgstr "tidak ada Zinfandel"
 
 #: src/no-ingredients.inc:84
 msgid "no Zuccini"
-msgstr ""
+msgstr "tidak ada Zukini"
+
+#~ msgid "Serves"
+#~ msgstr "Menyajikan"
+
+#~ msgid "Ser_ves"
+#~ msgstr "Mela_yani"
+
+#~ msgid "C_ooking Time"
+#~ msgstr "Wakt_u Memasak"
+
+#~ msgid "_Cuisine"
+#~ msgstr "M_asakan"
+
+#~ msgid "S_piciness"
+#~ msgstr "Ke_pedasan"
+
+#~ msgid "No ingredients added yet"
+#~ msgstr "Belum ada bahan yang ditambahkan"
+
+#~ msgid "Name Your Recipe"
+#~ msgstr "Nama Resep Anda"
+
+#~ msgid "Serves:"
+#~ msgstr "Penyajian:"
 
 #~ msgid "Apply"
 #~ msgstr "Terapkan"
