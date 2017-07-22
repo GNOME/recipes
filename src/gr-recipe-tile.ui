@@ -57,6 +57,10 @@
                         <property name="icon-size">1</property>
                         <property name="halign">end</property>
                         <property name="margin-end">10</property>
+                        <property name="tooltip-text" translatable="yes">Contributed recipe</property>
+                        <style>
+                          <class name="dim-label"/>
+                        </style>
                       </object>
                       <packing>
                         <property name="expand">1</property>
