@@ -138,7 +138,7 @@ recount_recipes (GrShoppingPage *page)
 
 typedef struct {
         double amount;
-        char *unit;
+        GrUnit unit;
 } Unit;
 
 typedef struct {
@@ -146,14 +146,6 @@ typedef struct {
         GArray *units;
         gboolean removed;
 } Ingredient;
-
-static void
-clear_unit (gpointer data)
-{
-        Unit *unit = data;
-
-        g_free (unit->unit);
-}
 
 static Ingredient *
 ingredient_new (const char *ingredient)
@@ -166,7 +158,6 @@ ingredient_new (const char *ingredient)
         ing = g_new0 (Ingredient, 1);
         ing->ingredient = g_strdup (ingredient);
         ing->units = g_array_new (FALSE, TRUE, sizeof (Unit));
-        g_array_set_clear_func (ing->units, clear_unit);
 
         ing->removed = gr_recipe_store_not_shopping_ingredient (store, ingredient);
 
@@ -192,7 +183,7 @@ ingredient_clear (Ingredient *ing)
 static void
 ingredient_add (Ingredient *ing,
                 double      amount,
-                const char *unit)
+                GrUnit      unit)
 {
         int i;
         Unit nu;
@@ -200,14 +191,14 @@ ingredient_add (Ingredient *ing,
         for (i = 0; i < ing->units->len; i++) {
                 Unit *u = &g_array_index (ing->units, Unit, i);
 
-                if (g_strcmp0 (u->unit, unit) == 0) {
+                if (u->unit == unit) {
                         u->amount += amount;
                         return;
                 }
         }
 
         nu.amount = amount;
-        nu.unit = g_strdup (unit);
+        nu.unit = unit;
 
         g_array_append_val (ing->units, nu);
 }
@@ -229,7 +220,7 @@ ingredient_format_unit (Ingredient *ing)
                 g_string_append (s, num);
                 g_string_append (s, " ");
                 if (u->unit)
-                        g_string_append (s, u->unit);
+                        g_string_append (s, gr_unit_get_abbreviation (u->unit));
         }
 
         return g_strdup (s->str);
@@ -435,7 +426,7 @@ removed_row_activated (GtkListBox     *list,
 static void
 add_ingredient (GrShoppingPage *page,
                 double      amount,
-                const char *unit,
+                GrUnit      unit,
                 const char *ingredient)
 {
         Ingredient *ing;
@@ -464,7 +455,7 @@ collect_ingredients_from_recipe (GrShoppingPage *page,
                 g_auto(GStrv) ing = NULL;
                 ing = gr_ingredients_list_get_ingredients (il, seg[i]);
                 for (j = 0; ing[j]; j++) {
-                        const char *unit;
+                        GrUnit unit;
                         double amount;
 
                         amount = gr_ingredients_list_get_amount (il, seg[i], ing[j]);

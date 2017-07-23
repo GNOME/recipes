@@ -22,6 +22,8 @@
 
 #include <gtk/gtk.h>
 
+#include "gr-unit.h"
+
 G_BEGIN_DECLS
 
 #define GR_TYPE_INGREDIENTS_LIST (gr_ingredients_list_get_type ())
@@ -42,7 +44,7 @@ char              *gr_ingredients_list_scale_unit      (GrIngredientsList  *ingr
 char             **gr_ingredients_list_get_segments    (GrIngredientsList  *ingredients);
 char             **gr_ingredients_list_get_ingredients (GrIngredientsList  *ingredients,
                                                         const char         *segment);
-const char        *gr_ingredients_list_get_unit        (GrIngredientsList  *list,
+GrUnit             gr_ingredients_list_get_unit        (GrIngredientsList  *list,
                                                         const char         *segment,
                                                         const char         *ingredient);
 double             gr_ingredients_list_get_amount      (GrIngredientsList  *list,

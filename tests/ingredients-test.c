@@ -55,7 +55,7 @@ test_file (const char *filename)
                 for (l = ingredients->ingredients; l; l = l->next) {
                         Ingredient *ing = (Ingredient *)l->data;
                         g_string_append_printf (string, "AMOUNT %f\n", ing->amount);
-                        g_string_append_printf (string, "UNIT %s\n", ing->unit);
+                        g_string_append_printf (string, "UNIT %s\n", gr_unit_get_name (ing->unit));
                         g_string_append_printf (string, "NAME %s\n", ing->name);
                         g_string_append_printf (string, "\n");
                 }

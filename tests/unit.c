@@ -30,20 +30,20 @@ static void
 test_line (const char *line)
 {
         char *input;
-        const char *unit;
+        GrUnit unit;
         g_autoptr(GError) error = NULL;
 
         g_string_append_printf (string, "INPUT '%s'\n", line);
 
         input = (char *)line;
         unit = gr_unit_parse (&input, &error);
-        if (!unit) {
+        if (unit == GR_UNIT_UNKNOWN) {
                 g_string_append_printf (string, "REST '%s'\n", input);
                 g_string_append_printf (string, "ERROR %s\n", error->message);
         }
         else {
                 g_string_append_printf (string, "REST '%s'\n", input);
-                g_string_append_printf (string, "UNIT %s\n", unit);
+                g_string_append_printf (string, "UNIT %s\n", gr_unit_get_name (unit));
                 g_string_append_printf (string, "NAME %s\n", gr_unit_get_display_name (unit));
                 g_string_append_printf (string, "ABBREVIATION %s\n", gr_unit_get_abbreviation (unit));
         }
