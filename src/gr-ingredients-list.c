@@ -33,7 +33,7 @@
 typedef struct
 {
         double amount;
-        gchar *unit;
+        GrUnit unit;
         gchar *name;
         gchar *segment;
 } Ingredient;
@@ -42,7 +42,6 @@ static void
 ingredient_free (Ingredient *ing)
 {
         g_free (ing->name);
-        g_free (ing->unit);
         g_free (ing->segment);
         g_free (ing);
 }
@@ -73,7 +72,7 @@ gr_ingredients_list_populate (GrIngredientsList  *ingredients,
                 char *unit;
                 char *ingredient;
                 char *segment;
-                const char *u;
+                GrUnit u;
                 const char *s;
                 Ingredient *ing;
                 g_autoptr(GError) local_error = NULL;
@@ -101,14 +100,13 @@ gr_ingredients_list_populate (GrIngredientsList  *ingredients,
                         continue;
                 }
 
-                u = "";
+                u = GR_UNIT_UNKNOWN;
                 if (unit[0] != '\0' &&
-                    ((u = gr_unit_parse (&unit, &local_error)) == NULL)) {
+                    ((u = gr_unit_parse (&unit, &local_error)) == GR_UNIT_UNKNOWN)) {
                         g_message ("%s; using %s as-is", local_error->message, unit);
-                        u = unit;
                 }
 
-                ing->unit = g_strdup (u);
+                ing->unit = u;
                 ing->segment = g_strdup (segment);
 
                 s = gr_ingredient_find (ingredient);
@@ -181,7 +179,7 @@ ingredient_scale_unit (Ingredient *ing, double scale, GString *s)
         g_string_append (s, scaled);
         if (ing->unit) {
                 g_string_append (s, " ");
-                g_string_append (s, ing->unit);
+                g_string_append (s, gr_unit_get_abbreviation (ing->unit));
         }
 }
 
@@ -262,7 +260,7 @@ gr_ingredients_list_scale_unit (GrIngredientsList *ingredients,
         return NULL;
 }
 
-const char *
+GrUnit
 gr_ingredients_list_get_unit (GrIngredientsList *ingredients,
                               const char        *segment,
                               const char        *name)
@@ -278,7 +276,7 @@ gr_ingredients_list_get_unit (GrIngredientsList *ingredients,
                 }
         }
 
-        return NULL;
+        return GR_UNIT_UNKNOWN;
 }
 
 double

@@ -689,7 +689,6 @@ get_units_model (GrIngredientsViewerRow *row)
         static GtkListStore *store = NULL;
 
         if (store == NULL) {
-                const char **names;
                 int i;
 
                 store = gtk_list_store_new (5, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
@@ -707,8 +706,7 @@ get_units_model (GrIngredientsViewerRow *row)
                                                    4, "",
                                                    -1);
 
-                names = gr_unit_get_names ();
-                for (i = 0; names[i]; i++) {
+                for (i = GR_UNIT_UNKNOWN; i <= GR_LAST_UNIT; i++) {
                         const char *abbrev;
                         const char *name;
                         const char *plural;
@@ -716,9 +714,9 @@ get_units_model (GrIngredientsViewerRow *row)
                         g_autofree char *tmp = NULL;
                         g_autofree char *tmp2 = NULL;
 
-                        abbrev = gr_unit_get_abbreviation (names[i]);
-                        name = gr_unit_get_display_name (names[i]);
-                        plural = gr_unit_get_plural (names[i]);
+                        abbrev = gr_unit_get_abbreviation (i);
+                        name = gr_unit_get_display_name (i);
+                        plural = gr_unit_get_plural (i);
 
 
                         if (strcmp (abbrev, name) == 0)
