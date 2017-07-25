@@ -6,10 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=recipes\n"
-"POT-Creation-Date: 2017-06-20 09:19-0400\n"
-"PO-Revision-Date: 2017-04-07 11:53+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-07 16:37+0000\n"
+"PO-Revision-Date: 2017-07-25 12:20+0100\n"
 "Last-Translator: Bruce Cowan <bruce@bcowan.eu>\n"
 "Language-Team: British English <en@li.org>\n"
 "Language: en_GB\n"
@@ -30,6 +29,7 @@ msgstr "Recipes"
 msgid "GNOME cooks unite!"
 msgstr "GNOME cooks unite!"
 
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Recipes.desktop.in:7
 msgid "org.gnome.Recipes"
 msgstr "org.gnome.Recipes"
@@ -311,7 +311,7 @@ msgstr ""
 
 #: src/gr-cooking-page.ui:304
 msgid "To go back to the previous step, doubletap any key."
-msgstr "To go back to the previous step, doubletap any key."
+msgstr "To go back to the previous step, double tap any key."
 
 #: src/gr-cooking-page.ui:326
 msgid ""
@@ -640,6 +640,7 @@ msgstr "No restrictions"
 msgid "Ingredients"
 msgstr "Ingredients"
 
+#. FIXME: repopulate
 #: src/gr-query-editor.ui:255 src/gr-query-editor.c:337
 #: src/gr-query-editor.c:766
 msgid "Anything"
@@ -935,12 +936,12 @@ msgstr "Learn more about Recipes"
 msgid "Recipes by"
 msgstr "Recipes by"
 
-#: src/gr-account.c:109
+#: src/gr-account.c:111
 #, c-format
 msgid "Got an error from Account portal"
 msgstr "Got an error from Account portal"
 
-#: src/gr-account.c:137
+#: src/gr-account.c:162
 msgid ""
 "Allow your personal information to be included with recipes you share with "
 "your friends."
@@ -1175,7 +1176,7 @@ msgstr ""
 "considered difficult to execute by home cooks. Gastro-tourism and the Guide "
 "Michelin helped to acquaint people with the rich bourgeois and peasant "
 "cuisine of the French countryside starting in the 20th century. Gascon "
-"cuisine has also had great influence over the cuisine in the southwest of "
+"cuisine has also had great influence over the cuisine in the south west of "
 "France. Many dishes that were once regional have proliferated in variations "
 "across the country."
 
@@ -1200,7 +1201,7 @@ msgid ""
 "The mediterranean cuisine has a lot to offer, and is legendary for being "
 "very healthy too. Expect to see olives, yoghurt and garlic."
 msgstr ""
-"The mediterranean cuisine has a lot to offer, and is legendary for being "
+"The Mediterranean cuisine has a lot to offer, and is legendary for being "
 "very healthy too. Expect to see olives, yoghurt and garlic."
 
 #: src/gr-cuisine.c:109
@@ -1217,10 +1218,10 @@ msgstr ""
 "Mexican cuisine is primarily a fusion of indigenous Mesoamerican cooking "
 "with European, especially Spanish, elements added after the Spanish conquest "
 "of the Aztec Empire in the 16th century. The staples are native foods, such "
-"as corn, beans, avocados, tomatoes, and chilli peppers, along with rice, "
+"as corn, beans, avocados, tomatoes and chilli peppers, along with rice, "
 "which was brought by the Spanish. Europeans introduced a large number of "
 "other foods, the most important of which were meats from domesticated "
-"animals (beef, pork, chicken, goat, and sheep), dairy products (especially "
+"animals (beef, pork, chicken, goat and sheep), dairy products (especially "
 "cheese), and various herbs and spices."
 
 #: src/gr-cuisine.c:116
@@ -1231,7 +1232,7 @@ msgid ""
 "Ages and some even to the Vikings."
 msgstr ""
 "Cooking in Denmark has always been inspired by foreign and continental "
-"practises and the use of imported tropical spices like cinnamon, cardamom, "
+"practices and the use of imported tropical spices like cinnamon, cardamom, "
 "nutmeg and black pepper can be traced to the Danish cuisine of the Middle "
 "Ages and some even to the Vikings."
 
@@ -1302,7 +1303,7 @@ msgid ""
 "a>"
 msgstr ""
 "A gluten-free diet is a diet that excludes gluten, a protein composite found "
-"in wheat, barley, rye, and all their species and hybrids (such as spelt, "
+"in wheat, barley, rye and all their species and hybrids (such as spelt, "
 "kamut, and triticale). The inclusion of oats in a gluten-free diet remains "
 "controversial. Avenin present in oats may also be toxic for coeliac people; "
 "its toxicity depends on the cultivar consumed. Furthermore, oats are "
@@ -1376,7 +1377,7 @@ msgstr ""
 "Lactose intolerance is a condition in which people have symptoms due to the "
 "decreased ability to digest lactose, a sugar found in milk products. Those "
 "affected vary in the amount of lactose they can tolerate before symptoms "
-"develop. Symptoms may include abdominal pain, bloating, diarrhoea, gas, and "
+"develop. Symptoms may include abdominal pain, bloating, diarrhoea, gas and "
 "nausea. These typically start between half and two hours after drinking "
 "milk. Severity depends on the amount a person eats or drinks. It does not "
 "cause damage to the gastrointestinal tract.\n"
@@ -1712,9 +1713,9 @@ msgid "Failed to load recipe: Couldn’t parse Modified key"
 msgstr "Failed to load recipe: Couldn’t parse Modified key"
 
 #: src/gr-recipe-importer.c:771
-#, fuzzy, c-format
+#, c-format
 msgid "No chef information found"
-msgstr "Chef Information"
+msgstr "No chef information found"
 
 #: src/gr-recipe-importer.c:801
 #, c-format
@@ -2071,30 +2072,26 @@ msgid "glass"
 msgstr "glass"
 
 #: src/gr-unit.c:57
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "mm"
-msgstr "m"
+msgstr "mm"
 
 #: src/gr-unit.c:57
-#, fuzzy
 msgctxt "unit name"
 msgid "millimeter"
-msgstr "millilitre"
+msgstr "millimetre"
 
 #: src/gr-unit.c:58
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "cm"
-msgstr "m"
+msgstr "cm"
 
 #: src/gr-unit.c:58
 msgctxt "unit name"
 msgid "centimeter"
-msgstr ""
+msgstr "centimetre"
 
 #: src/gr-unit.c:59
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "m"
 msgstr "m"
@@ -2102,7 +2099,7 @@ msgstr "m"
 #: src/gr-unit.c:59
 msgctxt "unit name"
 msgid "meter"
-msgstr ""
+msgstr "metre"
 
 #: src/gr-unit.c:129
 #, c-format
