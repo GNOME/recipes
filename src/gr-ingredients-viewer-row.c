@@ -706,7 +706,7 @@ get_units_model (GrIngredientsViewerRow *row)
                                                    4, "",
                                                    -1);
 
-                for (i = GR_UNIT_UNKNOWN; i <= GR_LAST_UNIT; i++) {
+                for (i = GR_UNIT_UNKNOWN + 1; i <= GR_LAST_UNIT; i++) {
                         const char *abbrev;
                         const char *name;
                         const char *plural;
@@ -718,15 +718,14 @@ get_units_model (GrIngredientsViewerRow *row)
                         name = gr_unit_get_display_name (i);
                         plural = gr_unit_get_plural (i);
 
-
-                        if (strcmp (abbrev, name) == 0)
+                        if (g_strcmp0 (abbrev, name) == 0)
                                 tmp = g_strdup (name);
                         else
                                 tmp = g_strdup_printf ("%s (%s)", name, abbrev);
 
-                        if (strcmp (abbrev, plural) == 0)
+                        if (g_strcmp0 (abbrev, plural) == 0)
                                 tmp2 = g_strdup (name);
-                        else 
+                        else
                                 tmp2 = g_strdup_printf ("%s (%s)", plural, abbrev);
 
                         gtk_list_store_insert_with_values (store, NULL, -1,
