@@ -56,7 +56,7 @@ static GrUnitData units[] = {
         { GR_UNIT_TABLESPOON,  GR_DIMENSION_VOLUME,   "tbsp",    NC_("unit abbreviation", "tbsp"),  NC_("unit name", "tablespoon"), NC_("unit plural", "tablespoons") },
         { GR_UNIT_TEASPOON,    GR_DIMENSION_VOLUME,   "tsp",     NC_("unit abbreviation", "tsp"),   NC_("unit name", "teaspoon"), NC_("unit plural", "teaspoons") },
         { GR_UNIT_BOX,         GR_DIMENSION_DISCRETE, "box",     NC_("unit abbreviation", "box"),   NC_("unit name", "box"), NC_("unit plural", "boxes") },
-        { GR_UNIT_BOX,         GR_DIMENSION_DISCRETE, "pkg",     NC_("unit abbreviation", "pkg"),   NC_("unit name", "package"), NC_("unit plural", "packages") },
+        { GR_UNIT_PACKAGE,     GR_DIMENSION_DISCRETE, "pkg",     NC_("unit abbreviation", "pkg"),   NC_("unit name", "package"), NC_("unit plural", "packages") },
         { GR_UNIT_GLASS,       GR_DIMENSION_DISCRETE, "glass",   NC_("unit abbreviation", "glass"), NC_("unit name", "glass"), NC_("unit plural", "glasses") },
         { GR_UNIT_MILLIMETER,  GR_DIMENSION_LENGTH,   "mm",      NC_("unit abbreviation", "mm"),    NC_("unit name", "millimeter"), NC_("unit plural", "millimeters") },
         { GR_UNIT_CENTIMETER,  GR_DIMENSION_LENGTH,   "cm",      NC_("unit abbreviation", "cm"),    NC_("unit name", "centimeter"), NC_("unit plural", "centimeters") },
@@ -98,7 +98,7 @@ gr_unit_get_display_name (GrUnit unit)
         GrUnitData *data = find_unit (unit);
         if (data)
                 return g_dpgettext2 (NULL, "unit name", data->display_name);
-        return NULL;
+        return gr_unit_get_name (unit);
 }
 
 const char *
