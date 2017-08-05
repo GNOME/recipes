@@ -332,5 +332,11 @@ gr_number_format (double number)
         number -= integral;
 
         rational_approximation (number, &num, &denom);
+
+        if (num == 1 && denom == 1) {
+                integral += 1;
+                num = denom = 0;
+        }
+
         return format_fraction ((int)integral, num, denom);
 }
