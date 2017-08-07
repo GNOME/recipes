@@ -6,10 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=recipes\n"
-"POT-Creation-Date: 2017-06-20 09:19-0400\n"
-"PO-Revision-Date: 2017-03-21 22:43+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-07 16:37+0000\n"
+"PO-Revision-Date: 2017-06-25 12:54+0200\n"
 "Last-Translator: Meskó Balázs <meskobalazs@fedoraproject.org>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
@@ -30,6 +29,7 @@ msgstr "Receptek"
 msgid "GNOME cooks unite!"
 msgstr "GNOME szakácsok egyesüljetek!"
 
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Recipes.desktop.in:7
 msgid "org.gnome.Recipes"
 msgstr "org.gnome.Recipes"
@@ -645,6 +645,7 @@ msgstr "Nincsenek korlátozások"
 msgid "Ingredients"
 msgstr "Hozzávalók"
 
+#. FIXME: repopulate
 #: src/gr-query-editor.ui:255 src/gr-query-editor.c:337
 #: src/gr-query-editor.c:766
 msgid "Anything"
@@ -775,9 +776,8 @@ msgid "_What’s New"
 msgstr "Új_donságok"
 
 #: src/menus.ui:26
-#, fuzzy
 msgid "_Help"
-msgstr "Súgó"
+msgstr "_Súgó"
 
 #: src/menus.ui:30
 msgid "_About"
@@ -816,9 +816,8 @@ msgid "Help"
 msgstr "Súgó"
 
 #: src/menus.ui:89
-#, fuzzy
 msgid "Recipes _Help"
-msgstr "Receptek oldala"
+msgstr "Receptek _súgó"
 
 #: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:156
 #: src/gr-image-viewer.c:615 src/gr-recipe-exporter.c:166
@@ -942,12 +941,12 @@ msgstr "Tudjon meg többet a Receptekről"
 msgid "Recipes by"
 msgstr "Receptek:"
 
-#: src/gr-account.c:109
+#: src/gr-account.c:111
 #, c-format
 msgid "Got an error from Account portal"
 msgstr "Hiba érkezett a Fiókok portálról"
 
-#: src/gr-account.c:137
+#: src/gr-account.c:162
 msgid ""
 "Allow your personal information to be included with recipes you share with "
 "your friends."
@@ -1099,6 +1098,11 @@ msgid ""
 "of immigrants from many foreign nations; such influx developed a rich "
 "diversity in food preparation throughout the country."
 msgstr ""
+"Az Egyesült Államok konyhája tükrözi a történelmét. Amerika európai "
+"gyarmatosítása számos hozzávaló és főzési stílus megjelenését okozta. A "
+"különböző stílusok terjeszkedése folytatódott a XIX. és a XX. században, a "
+"bevándorlók számával arányosan, sok különböző országból; ez a beáramlás "
+"gazdag változatosságot hozott létre az ételkészítésben országszerte."
 
 #: src/gr-cuisine.c:76
 msgid ""
@@ -1157,12 +1161,21 @@ msgid ""
 "yoghurt. The most commonly used grain is wheat; barley is also used. Common "
 "dessert ingredients include nuts, honey, fruits, and filo pastry."
 msgstr ""
+"A kortárs görög konyha széles körben használja a zöldségeket, olívaolajat, "
+"gabonát, halat, bort és húst (fehér és vörös húsokat, köztök a bárányt, "
+"baromfit, nyulat és sertést). Fontos hozzávalónak számít az olívabogyó, "
+"sajt, padlizsán, cukkini, citromlé, a különféle zöldségek, fűszernövények, a "
+"kenyér és a joghurt. A legtöbbet használt gabona a búza, de az árpát is "
+"használják. Népszerű desszert-összetevő a dió, a méz, a gyümölcsök és a "
+"rétestészta."
 
 #: src/gr-cuisine.c:108
 msgid ""
 "The mediterranean cuisine has a lot to offer, and is legendary for being "
 "very healthy too. Expect to see olives, yoghurt and garlic."
 msgstr ""
+"A mediterrán konyha sok mindent kínál, és legendásan egészséges is. Sok "
+"olívabogyó, joghurt és fokhagyma várható."
 
 #: src/gr-cuisine.c:109
 msgid ""
@@ -1175,6 +1188,14 @@ msgid ""
 "animals (beef, pork, chicken, goat, and sheep), dairy products (especially "
 "cheese), and various herbs and spices."
 msgstr ""
+"A mexikói konyha leginkább az őshonos közép-amerikai, és az európai – főleg "
+"spanyol – elemek ötvözete, amely az Azték Birodalom Spanyolország általi "
+"meghódítása után érkeztek a XVI. században. A legfontosabbak az őshonos "
+"ételek, mint a kukorica, bab, avokádó, paradicsom és a csilipaprika; a rizs "
+"mellett, amit a spanyolok hoztak be. Az európaiak számos más ételt is "
+"behoztak, melyek közül a legfontosabbak a háziasított állatok húsai (marha, "
+"sertés, csirke, kecske és bárány), a tejtermékek (különösen a sajt), és a "
+"különféle fűszernövények."
 
 #: src/gr-cuisine.c:116
 msgid ""
@@ -1183,6 +1204,10 @@ msgid ""
 "nutmeg and black pepper can be traced to the Danish cuisine of the Middle "
 "Ages and some even to the Vikings."
 msgstr ""
+"Dániában a főzést mindig is az idegen és a kontinentális gyakorlatok "
+"inspirálták. Az olyan importált trópusi fűszerek, mint a fahéj, kardámom, "
+"szerecsendió és a fekete bors visszavezethető a középkorig, sőt egyes "
+"esetekben a vikingekig is."
 
 #: src/gr-cuisine.c:117
 msgid ""
@@ -1191,6 +1216,10 @@ msgid ""
 "refinement of Central Asian, Middle Eastern and Balkan cuisines. Therefore "
 "it is impossible to fit Turkish cuisine into a short list."
 msgstr ""
+"Sokféle ínycsiklandozó étel található a török konyhában, amely leginkább az "
+"oszmán konyha öröksége. A török konyha a közép-ázsiai, közel-keleti és "
+"balkáni konyhák keveréke és finomítása. Ezért lehetetlen a török konyhát egy "
+"rövid listával leírni."
 
 #: src/gr-details-page.c:323
 msgid "Could not find this recipe."
@@ -1246,6 +1275,15 @@ msgid ""
 "<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free\">Learn more…</"
 "a>"
 msgstr ""
+"A gluténmentes étrend egy olyan diéta, amely mellőzi a glutént, amely egy "
+"búzában, árpában, rozsban, ezek alfajaiban és hibridjeikben (mint a tönköly, "
+"kamut, tritikálé) megtalálható összetett fehérje. A zabok bevétele a "
+"gluténmentes étrendbe vitatott. A zabokban lévő avenin mérgező lehet a "
+"cöliákiás emberek számára; a mérgezősége függ az elfogyasztott "
+"kultúrnövénytől. Továbbá, a zabok gyakran glutént tartalmazó gabonával "
+"szennyezettek.\n"
+"<a href=\"https://hu.wikipedia.org/wiki/Liszt%C3%A9rz%C3%A9kenys%C3%A9g"
+"\">Tudjon meg többet…</a>"
 
 #: src/gr-diet.c:66
 msgid ""
@@ -1256,6 +1294,14 @@ msgid ""
 "macadamia nuts, pecans, pistachios, pine nuts, shea nuts and walnuts.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">Learn more…</a>"
 msgstr ""
+"A dióallergia egy hiperérzékenység a diófélékből származó anyagokra, amelyek "
+"túlzott immunválaszt okoznak, amely súlyos fizikai tüneteket okozhat. A "
+"diófélékhez többek között a következők tartoznak: mandula, brazil dió, "
+"kesudió, gesztenye, mogyoró, makadámdió, pekándió, pisztácia, fenyőmag, shea "
+"dió.\n"
+"\n"
+"<a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">Tudjon meg többet…"
+"</a>"
 
 #: src/gr-diet.c:69
 msgid ""
@@ -1264,6 +1310,10 @@ msgid ""
 "commodity status of animals.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Veganism\">Learn more…</a>"
 msgstr ""
+"A veganizmus az állati termékek használatának mellőzése, mely a "
+"leglátványosabban a táplálkozás terén nyilvánul meg, és a hozzá kapcsolódó "
+"filozófia, amely elutasítja az állatok árucikk státuszát.\n"
+"<a href=\"https://hu.wikipedia.org/wiki/Veganizmus\">Tudjon meg többet…</a>"
 
 #: src/gr-diet.c:72
 msgid ""
@@ -1624,9 +1674,9 @@ msgstr ""
 "kulcsot"
 
 #: src/gr-recipe-importer.c:771
-#, fuzzy, c-format
+#, c-format
 msgid "No chef information found"
-msgstr "Konyhafőnök-információk"
+msgstr "Nem találhatóak konyhafőnök-információk"
 
 #: src/gr-recipe-importer.c:801
 #, c-format
@@ -1983,38 +2033,34 @@ msgid "glass"
 msgstr "pohár"
 
 #: src/gr-unit.c:57
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "mm"
-msgstr "p"
+msgstr "mm"
 
 #: src/gr-unit.c:57
-#, fuzzy
 msgctxt "unit name"
 msgid "millimeter"
-msgstr "milliliter"
+msgstr "milliméter"
 
 #: src/gr-unit.c:58
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "cm"
-msgstr "p"
+msgstr "cm"
 
 #: src/gr-unit.c:58
 msgctxt "unit name"
 msgid "centimeter"
-msgstr ""
+msgstr "centiméter"
 
 #: src/gr-unit.c:59
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "m"
-msgstr "p"
+msgstr "m"
 
 #: src/gr-unit.c:59
 msgctxt "unit name"
 msgid "meter"
-msgstr ""
+msgstr "méter"
 
 #: src/gr-unit.c:129
 #, c-format
