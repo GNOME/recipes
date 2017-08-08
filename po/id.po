@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-15 23:31+0000\n"
-"PO-Revision-Date: 2017-07-20 16:10+0700\n"
+"POT-Creation-Date: 2017-07-26 19:02+0000\n"
+"PO-Revision-Date: 2017-08-03 15:48+0700\n"
 "Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.3\n"
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
@@ -732,6 +732,10 @@ msgstr "Kategori"
 msgid "Featured GNOME Chefs"
 msgstr "Koki GNOME Unggulan"
 
+#: src/gr-recipe-tile.ui:58
+msgid "Contributed recipe"
+msgstr "Resep kontributor"
+
 #: src/gr-search-page.ui:42
 msgid "Try a different search"
 msgstr "Coba pencarian berbeda"
@@ -842,7 +846,7 @@ msgstr "Informasi _Koki"
 
 #: src/menus.ui:22 src/menus.ui:93
 msgid "_What’s New"
-msgstr "\\Apa _yang baru"
+msgstr "Apa _yang baru"
 
 #: src/menus.ui:26
 msgid "_Help"
@@ -890,7 +894,7 @@ msgstr "_Bantuan Resep"
 
 #: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:163
 #: src/gr-image-viewer.c:627 src/gr-recipe-exporter.c:172
-#: src/gr-shopping-page.c:739 src/gr-window.c:1162
+#: src/gr-shopping-page.c:730 src/gr-window.c:1162
 msgid "Cancel"
 msgstr "Batal"
 
@@ -1738,7 +1742,7 @@ msgstr "Tidak dapat menguraikan %s sebagai angka"
 msgid "Save the exported recipe"
 msgstr "Simpan resep yang diekspor"
 
-#: src/gr-recipe-exporter.c:171 src/gr-shopping-page.c:738
+#: src/gr-recipe-exporter.c:171 src/gr-shopping-page.c:729
 msgid "Save"
 msgstr "Simpan"
 
@@ -1994,7 +1998,7 @@ msgid "Winter"
 msgstr "Musim dingin"
 
 #: src/gr-shopping-list-formatter.c:42 src/gr-shopping-list-printer.c:135
-#: src/gr-shopping-page.c:764
+#: src/gr-shopping-page.c:755
 msgid "Shopping List"
 msgstr "Daftar Belanja"
 
@@ -2028,7 +2032,7 @@ msgid "%d Recipe marked for preparation"
 msgid_plural "%d Recipes marked for preparation"
 msgstr[0] "%d Resep ditandai untuk persiapan"
 
-#: src/gr-shopping-page.c:735
+#: src/gr-shopping-page.c:726
 msgid "Save the shopping list"
 msgstr "Menyimpan daftar belanja"
 
@@ -2048,352 +2052,352 @@ msgstr "Paling banyak pedas"
 msgid "Hot or very spicy"
 msgstr "Panas atau sangat pedas"
 
-#: src/gr-unit.c:41
+#: src/gr-unit.c:43
 msgctxt "unit abbreviation"
 msgid "g"
 msgstr "g"
 
-#: src/gr-unit.c:41
+#: src/gr-unit.c:43
 msgctxt "unit name"
 msgid "gram"
 msgstr "gram"
 
-#: src/gr-unit.c:41
+#: src/gr-unit.c:43
 msgctxt "unit plural"
 msgid "grams"
 msgstr "gram"
 
-#: src/gr-unit.c:42
+#: src/gr-unit.c:44
 msgctxt "unit abbreviation"
 msgid "kg"
 msgstr "kg"
 
-#: src/gr-unit.c:42
+#: src/gr-unit.c:44
 msgctxt "unit name"
 msgid "kilogram"
 msgstr "kilogram"
 
-#: src/gr-unit.c:42
+#: src/gr-unit.c:44
 msgctxt "unit plural"
 msgid "kilograms"
 msgstr "kilogram"
 
-#: src/gr-unit.c:43
+#: src/gr-unit.c:45
 msgctxt "unit abbreviation"
 msgid "lb"
 msgstr "lb"
 
-#: src/gr-unit.c:43
+#: src/gr-unit.c:45
 msgctxt "unit name"
 msgid "pound"
 msgstr "pound"
 
-#: src/gr-unit.c:43
+#: src/gr-unit.c:45
 msgctxt "unit plural"
 msgid "pounds"
 msgstr "pound"
 
-#: src/gr-unit.c:44
+#: src/gr-unit.c:46
 msgctxt "unit abbreviation"
 msgid "oz"
 msgstr "ons"
 
-#: src/gr-unit.c:44
+#: src/gr-unit.c:46
 msgctxt "unit name"
 msgid "ounce"
 msgstr "ons"
 
-#: src/gr-unit.c:44
+#: src/gr-unit.c:46
 msgctxt "unit plural"
 msgid "ounces"
 msgstr "ons"
 
-#: src/gr-unit.c:45
+#: src/gr-unit.c:47
 msgctxt "unit abbreviation"
 msgid "l"
 msgstr "l"
 
-#: src/gr-unit.c:45
+#: src/gr-unit.c:47
 msgctxt "unit name"
 msgid "liter"
 msgstr "liter"
 
-#: src/gr-unit.c:45
+#: src/gr-unit.c:47
 msgctxt "unit plural"
 msgid "liters"
 msgstr "liter"
 
-#: src/gr-unit.c:46
+#: src/gr-unit.c:48
 msgctxt "unit abbreviation"
 msgid "dl"
 msgstr "dl"
 
-#: src/gr-unit.c:46
+#: src/gr-unit.c:48
 msgctxt "unit name"
 msgid "deciliter"
 msgstr "desiliter"
 
-#: src/gr-unit.c:46
+#: src/gr-unit.c:48
 msgctxt "unit plural"
 msgid "deciliters"
 msgstr "desiliter"
 
-#: src/gr-unit.c:47
+#: src/gr-unit.c:49
 msgctxt "unit abbreviation"
 msgid "ml"
 msgstr "ml"
 
-#: src/gr-unit.c:47
+#: src/gr-unit.c:49
 msgctxt "unit name"
 msgid "milliliter"
 msgstr "milliliter"
 
-#: src/gr-unit.c:47
+#: src/gr-unit.c:49
 msgctxt "unit plural"
 msgid "milliliters"
 msgstr "milliliter"
 
-#: src/gr-unit.c:48 src/gr-unit.c:49
+#: src/gr-unit.c:50 src/gr-unit.c:51
 msgctxt "unit abbreviation"
 msgid "fl oz"
 msgstr "fl oz"
 
-#: src/gr-unit.c:48 src/gr-unit.c:49
+#: src/gr-unit.c:50 src/gr-unit.c:51
 msgctxt "unit name"
 msgid "fluid ounce"
 msgstr "ons cairan"
 
-#: src/gr-unit.c:48 src/gr-unit.c:49
+#: src/gr-unit.c:50 src/gr-unit.c:51
 msgctxt "unit plural"
 msgid "fluid ounces"
 msgstr "ons cairan"
 
-#: src/gr-unit.c:50
+#: src/gr-unit.c:52
 msgctxt "unit abbreviation"
 msgid "pt"
 msgstr "pt"
 
-#: src/gr-unit.c:50
+#: src/gr-unit.c:52
 msgctxt "unit name"
 msgid "pint"
 msgstr "pint"
 
-#: src/gr-unit.c:50
+#: src/gr-unit.c:52
 msgctxt "unit plural"
 msgid "pints"
 msgstr "pint"
 
-#: src/gr-unit.c:51
+#: src/gr-unit.c:53
 msgctxt "unit abbreviation"
 msgid "qt"
 msgstr "qt"
 
-#: src/gr-unit.c:51
+#: src/gr-unit.c:53
 msgctxt "unit name"
 msgid "quart"
 msgstr "kuart"
 
-#: src/gr-unit.c:51
+#: src/gr-unit.c:53
 msgctxt "unit plural"
 msgid "quarts"
 msgstr "kuart"
 
-#: src/gr-unit.c:52
+#: src/gr-unit.c:54
 msgctxt "unit abbreviation"
 msgid "gal"
 msgstr "gal"
 
-#: src/gr-unit.c:52
+#: src/gr-unit.c:54
 msgctxt "unit name"
 msgid "gallon"
 msgstr "galon"
 
-#: src/gr-unit.c:52
+#: src/gr-unit.c:54
 msgctxt "unit plural"
 msgid "gallons"
 msgstr "galon"
 
-#: src/gr-unit.c:53
+#: src/gr-unit.c:55
 msgctxt "unit abbreviation"
 msgid "cup"
 msgstr "cangkir"
 
-#: src/gr-unit.c:53
+#: src/gr-unit.c:55
 msgctxt "unit name"
 msgid "cup"
 msgstr "cangkir"
 
-#: src/gr-unit.c:53
+#: src/gr-unit.c:55
 msgctxt "unit plural"
 msgid "cups"
 msgstr "cangkir"
 
-#: src/gr-unit.c:54
+#: src/gr-unit.c:56
 msgctxt "unit abbreviation"
 msgid "tbsp"
 msgstr "sdm"
 
-#: src/gr-unit.c:54
+#: src/gr-unit.c:56
 msgctxt "unit name"
 msgid "tablespoon"
 msgstr "sendok makan"
 
-#: src/gr-unit.c:54
+#: src/gr-unit.c:56
 msgctxt "unit plural"
 msgid "tablespoons"
 msgstr "sendok makan"
 
-#: src/gr-unit.c:55
+#: src/gr-unit.c:57
 msgctxt "unit abbreviation"
 msgid "tsp"
 msgstr "sdt"
 
-#: src/gr-unit.c:55
+#: src/gr-unit.c:57
 msgctxt "unit name"
 msgid "teaspoon"
 msgstr "sendok teh"
 
-#: src/gr-unit.c:55
+#: src/gr-unit.c:57
 msgctxt "unit plural"
 msgid "teaspoons"
 msgstr "sendok teh"
 
-#: src/gr-unit.c:56
+#: src/gr-unit.c:58
 msgctxt "unit abbreviation"
 msgid "box"
 msgstr "kotak"
 
-#: src/gr-unit.c:56
+#: src/gr-unit.c:58
 msgctxt "unit name"
 msgid "box"
 msgstr "kotak"
 
-#: src/gr-unit.c:56
+#: src/gr-unit.c:58
 msgctxt "unit plural"
 msgid "boxes"
 msgstr "kotak"
 
-#: src/gr-unit.c:57
+#: src/gr-unit.c:59
 msgctxt "unit abbreviation"
 msgid "pkg"
 msgstr "pkt"
 
-#: src/gr-unit.c:57
+#: src/gr-unit.c:59
 msgctxt "unit name"
 msgid "package"
 msgstr "paket"
 
-#: src/gr-unit.c:57
+#: src/gr-unit.c:59
 msgctxt "unit plural"
 msgid "packages"
 msgstr "paket"
 
-#: src/gr-unit.c:58
+#: src/gr-unit.c:60
 msgctxt "unit abbreviation"
 msgid "glass"
 msgstr "gelas"
 
-#: src/gr-unit.c:58
+#: src/gr-unit.c:60
 msgctxt "unit name"
 msgid "glass"
 msgstr "gelas"
 
-#: src/gr-unit.c:58
+#: src/gr-unit.c:60
 msgctxt "unit plural"
 msgid "glasses"
 msgstr "gelas"
 
-#: src/gr-unit.c:59
+#: src/gr-unit.c:61
 msgctxt "unit abbreviation"
 msgid "mm"
 msgstr "mm"
 
-#: src/gr-unit.c:59
+#: src/gr-unit.c:61
 msgctxt "unit name"
 msgid "millimeter"
 msgstr "millimeter"
 
-#: src/gr-unit.c:59
+#: src/gr-unit.c:61
 msgctxt "unit plural"
 msgid "millimeters"
 msgstr "millimeter"
 
-#: src/gr-unit.c:60
+#: src/gr-unit.c:62
 msgctxt "unit abbreviation"
 msgid "cm"
 msgstr "cm"
 
-#: src/gr-unit.c:60
+#: src/gr-unit.c:62
 msgctxt "unit name"
 msgid "centimeter"
 msgstr "sentimeter"
 
-#: src/gr-unit.c:60
+#: src/gr-unit.c:62
 msgctxt "unit plural"
 msgid "centimeters"
 msgstr "sentimeter"
 
-#: src/gr-unit.c:61
+#: src/gr-unit.c:63
 msgctxt "unit abbreviation"
 msgid "m"
 msgstr "m"
 
-#: src/gr-unit.c:61
+#: src/gr-unit.c:63
 msgctxt "unit name"
 msgid "meter"
 msgstr "meter"
 
-#: src/gr-unit.c:61
+#: src/gr-unit.c:63
 msgctxt "unit plural"
 msgid "meters"
 msgstr "meter"
 
-#: src/gr-unit.c:62
+#: src/gr-unit.c:64
 msgctxt "unit abbreviation"
 msgid "st"
 msgstr "d"
 
-#: src/gr-unit.c:62
+#: src/gr-unit.c:64
 msgctxt "unit name"
 msgid "stone"
 msgstr "biji"
 
-#: src/gr-unit.c:62
+#: src/gr-unit.c:64
 msgctxt "unit plural"
 msgid "stone"
 msgstr "biji"
 
-#: src/gr-unit.c:63
+#: src/gr-unit.c:65
 msgctxt "unit abbreviation"
 msgid "pinch"
 msgstr "pinch"
 
-#: src/gr-unit.c:63
+#: src/gr-unit.c:65
 msgctxt "unit name"
 msgid "pinch"
 msgstr "pinch"
 
-#: src/gr-unit.c:63
+#: src/gr-unit.c:65
 msgctxt "unit plural"
 msgid "pinches"
 msgstr "pinch"
 
-#: src/gr-unit.c:64
+#: src/gr-unit.c:66
 msgctxt "unit abbreviation"
 msgid "bunch"
 msgstr "ikat"
 
-#: src/gr-unit.c:64
+#: src/gr-unit.c:66
 msgctxt "unit name"
 msgid "bunch"
 msgstr "ikat"
 
-#: src/gr-unit.c:64
+#: src/gr-unit.c:66
 msgctxt "unit plural"
 msgid "bunches"
 msgstr "ikat"
 
-#: src/gr-unit.c:145
+#: src/gr-unit.c:164
 #, c-format
 msgid "I don’t know this unit: %s"
 msgstr "Aku tidak tahu unit ini: %s"
