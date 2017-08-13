@@ -1,5 +1,18 @@
 #if 0
 
+N_("Rouladen")
+N_("This is the German version of a popular Greek dish.")
+N_("In Spanish is called  \"Niños envueltos\"  and in Greek is \"Dolmades\".")
+N_("In the original recipe (Greek/Turkish) the meat rolls are wrapped with vine or cabbage leafs. Some versions use the leafs only without the meat.")
+N_("Cut the meat in thin slices and paint each one with mustard. ")
+N_("Chop two onions and parsley very little, and the other onion in big chunks. ")
+N_("Peel and chop the potatoes. Cook them until they're exceedingly tender.  Take them out of the pot and smash them. ")
+N_("Fry everything (vegs+wine+tomato+saucenbinden) except beef, pancetta and cucumbers. This will be the filling together with the cucumbers. ")
+N_("When the filling is warm, place a pancetta slice in the centre, some filling on it, cucumbers and then roll the meat. ")
+N_("Tie it with cord  (heat resistant, please!). ")
+N_("Place in the oven and cook them until they're done. ")
+N_("Serve the rouladen with baked potatoes or plain rice.")
+N_("Where it says  \"package of cucumbers\"  should be read as a bottle or pot.")
 N_("Burjji")
 N_("Burjji is one of those treats that you can have at any time.  It is usually served at roadside restaurants or stalls along highways but can also be seen in the cities as well.")
 N_("This is basically indian style scrambled eggs with veggies and chillis.  There are a lot of variations.")
