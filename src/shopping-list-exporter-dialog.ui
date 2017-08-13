@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="gnome-recipes">
+  <object class="GtkDialog" id="dialog">
+    <property name="use-header-bar">1</property>
+    <property name="modal">1</property>
+    <property name="resizable">0</property>
+    <property name="destroy-with-parent">1</property>
+    <property name="default-width">420</property>
+    <property name="default-height">280</property>
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="header">
+        <property name="visible">1</property>
+        <property name="title" translatable="yes">Export Ingredients</property>
+        <child>
+          <object class="GtkStack" id="header_start_stack">
+            <property name="visible">1</property>
+            <child>
+              <object class="GtkButton" id="cancel_button">
+                <property name="visible">1</property>
+                <property name="use-underline">1</property>
+                <property name="label" translatable="yes">Cancel</property>
+              </object>
+              <packing>
+                <property name="name">cancel_button</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="back_button">
+                <property name="visible">1</property>
+                <property name="halign">start</property>
+                <signal name="clicked" handler="go_back" swapped="yes"/>
+                <style>
+                  <class name="image-button"/>
+                </style>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">1</property>
+                    <property name="icon-name">go-previous-symbolic</property>
+                    <property name="icon-size">1</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="name">back</property>
+              </packing>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child type="action">
+      <object class="GtkButton" id="export_button">
+        <property name="visible">1</property>
+        <property name="use-underline">1</property>
+        <property name="label" translatable="yes">Export</property>
+        <signal name="clicked" handler="show_providers"/>
+      </object>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <child>
+          <object class="GtkStack" id="dialog_stack">
+            <property name="visible">1</property>
+              <child>
+                <object class="GtkBox" id="accounts_box">
+                  <property name="margin">20</property>
+                  <property name="spacing">20</property>
+                  <property name="visible">1</property>
+                  <property name="orientation">vertical</property>
+                  <child>
+                    <object class="GtkListBox" id="accounts_list">
+                      <property name="visible">1</property>
+                      <property name="selection_mode">single</property>
+                      <style>
+                        <class name="frame"/>
+                      </style>
+                      <child>
+                        <object class="GtkListBoxRow">
+                          <property name="visible">1</property>
+                          <property name="can_focus">1</property>
+                          <child>
+                            <object class="GtkGrid">
+                              <property name="visible">1</property>
+                              <property name="border_width">6</property>
+                              <property name="margin_end">18</property>
+                              <property name="column_spacing">12</property>
+                              <child>
+                                <object class="GtkImage">
+                                  <property name="visible">1</property>
+                                  <property name="pixel_size">32</property>
+                                  <property name="icon_name">mail-unread-symbolic</property>
+                                </object>
+                                <packing>
+                                  <property name="left_attach">0</property>
+                                  <property name="top_attach">0</property>
+                                </packing>
+                              </child>
+                              <child>
+                                <object class="GtkLabel">
+                                  <property name="visible">1</property>
+                                  <property name="label" translatable="yes">Email</property>
+                                  <property name="xalign">0</property>
+                                </object>
+                                <packing>
+                                  <property name="left_attach">1</property>
+                                  <property name="top_attach">0</property>
+                                </packing>
+                              </child>
+                            </object>
+                          </child>
+                        </object>
+                      </child>
+                      <child>
+                        <object class="GtkListBoxRow" id="todoist_account_row">
+                          <property name="can_focus">1</property>
+                          <child>
+                            <object class="GtkGrid">
+                              <property name="visible">1</property>
+                              <property name="border_width">6</property>
+                              <property name="margin_end">18</property>
+                              <property name="column_spacing">12</property>
+                              <child>
+                                <object class="GtkImage">
+                                  <property name="visible">1</property>
+                                  <property name="pixel_size">32</property>
+                                  <property name="icon_name">goa-account-todoist</property>
+                                </object>
+                                <packing>
+                                  <property name="left_attach">0</property>
+                                  <property name="top_attach">0</property>
+                                </packing>
+                              </child>
+                              <child>
+                                <object class="GtkLabel" id="todoist_label">
+                                  <property name="visible">1</property>
+                                  <property name="label" translatable="yes">Todoist</property>
+                                  <property name="xalign">0</property>
+                                </object>
+                                <packing>
+                                  <property name="left_attach">1</property>
+                                  <property name="top_attach">0</property>
+                                </packing>
+                              </child>
+                            </object>
+                          </child>
+                        </object>
+                      </child>
+                    </object>
+                  </child>
+                  <child>
+                    <object class="GtkLinkButton" id="add_service">
+                      <property name="label">Add service</property>
+                       <property name="visible">1</property>
+                       <property name="use_underline">0</property>
+                    </object>
+                  </child>
+                </object>
+                <packing>
+                  <property name="name">accounts_box</property>
+                </packing >
+              </child>
+              <child>
+                <object class="GtkBox" id="providers_box">
+                  <property name="margin">20</property>
+                  <property name="spacing">20</property>
+                  <property name="visible">1</property>
+                  <property name="orientation">vertical</property>
+                  <child>
+                    <object class="GtkListBox" id="providers_list">
+                      <property name="selection_mode">single</property>
+                      <property name="visible">1</property>
+                      <signal name="selected-rows-changed" handler="row_changed"/>
+                      <style>
+                            <class name="frame"/>
+                      </style>
+                      <child>
+                        <object class="GtkListBoxRow" id="todoist_provider_row">
+                          <property name="visible">1</property>
+                          <property name="can_focus">1</property>
+                          <child>
+                            <object class="GtkGrid" >
+                              <property name="visible">1</property>
+                              <property name="border_width">6</property>
+                              <property name="margin_end">18</property>
+                              <property name="column_spacing">12</property>
+                              <child>
+                                <object class="GtkImage">
+                                  <property name="visible">1</property>
+                                  <property name="pixel_size">32</property>
+                                  <property name="icon_name">goa-account-todoist</property>
+                                </object>
+                                <packing>
+                                  <property name="left_attach">0</property>
+                                  <property name="top_attach">0</property>
+                                </packing>
+                              </child>
+                              <child>
+                                <object class="GtkLabel">
+                                  <property name="visible">1</property>
+                                  <property name="label" translatable="yes">Todoist</property>
+                                  <property name="xalign">0</property>
+                                </object>
+                                <packing>
+                                  <property name="left_attach">1</property>
+                                  <property name="top_attach">0</property>
+                                </packing>
+                              </child>
+                            </object>
+                          </child>
+                        </object>
+                      </child>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="name">providers_box</property>
+              </packing >
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
