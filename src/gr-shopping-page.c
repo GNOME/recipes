@@ -35,6 +35,7 @@
 #include "gr-shopping-list-formatter.h"
 #include "gr-mail.h"
 #include "gr-convert-units.h"
+#include "gr-shopping-list-exporter.h"
 
 
 struct _GrShoppingPage
@@ -51,6 +52,7 @@ struct _GrShoppingPage
         int ingredient_count;
         int recipe_count;
         GrRecipeSearch *search;
+        GrShoppingListExporter *exporter;
 
         GtkSizeGroup *group;
         GHashTable *ingredients;
@@ -630,7 +632,7 @@ clear_list (GrShoppingPage *page)
         gr_window_go_back (GR_WINDOW (window));
 }
 
-static GList *
+GList *
 get_recipes (GrShoppingPage *page)
 {
         GList *children, *l, *recipes;
@@ -649,7 +651,7 @@ get_recipes (GrShoppingPage *page)
         return recipes;
 }
 
-static GList *
+GList *
 get_ingredients (GrShoppingPage *page)
 {
         GList *children, *l, *ingredients;
@@ -759,7 +761,21 @@ mail_done (GObject      *source,
 }
 
 static void
-share_list (GrShoppingPage *page)
+open_export_shopping_list_dialog (GrShoppingPage *page)
+{
+        GList *items;
+        items = get_ingredients (page);
+        if (!page->exporter) {
+                GtkWidget *window;
+
+                window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
+                page->exporter = gr_shopping_list_exporter_new (GTK_WINDOW (window));
+                gr_shopping_list_exporter_export (page->exporter, items);
+        }
+}
+
+
+static void share_list (GrShoppingPage *page)
 {
         GList *recipes, *items;
         g_autofree char *text = NULL;
@@ -861,7 +877,7 @@ gr_shopping_page_class_init (GrShoppingPageClass *klass)
 
         gtk_widget_class_bind_template_callback (widget_class, clear_list);
         gtk_widget_class_bind_template_callback (widget_class, print_list);
-        gtk_widget_class_bind_template_callback (widget_class, share_list);
+        gtk_widget_class_bind_template_callback (widget_class, open_export_shopping_list_dialog);
         gtk_widget_class_bind_template_callback (widget_class, row_activated);
         gtk_widget_class_bind_template_callback (widget_class, removed_row_activated);
 }

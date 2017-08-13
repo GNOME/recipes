@@ -141,7 +141,7 @@
             <property name="visible">1</property>
             <property name="use-underline">1</property>
             <property name="label" translatable="yes">_Share</property>
-            <signal name="clicked" handler="share_list" swapped="yes"/>
+            <signal name="clicked" handler="open_export_shopping_list_dialog" swapped="yes"/>
           </object>
           <packing>
             <property name="pack-type">end</property>
