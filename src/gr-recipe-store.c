@@ -1890,8 +1890,10 @@ gr_recipe_store_get_shopping_list (GrRecipeStore *self)
                 GrRecipe *recipe;
 
                 recipe = g_hash_table_lookup (self->recipes, key);
-
-                list = g_list_append (list, g_object_ref (recipe));
+                if (recipe)
+                        list = g_list_append (list, g_object_ref (recipe));
+                else
+                        g_warning ("ignoring nonexisting recipe on shopping list: %s", key);
 
                 g_variant_unref (value);
                 g_free (key);
