@@ -36,4 +36,8 @@ GList * get_ingredients (GrShoppingPage *page);
 
 void            gr_shopping_page_populate (GrShoppingPage *self);
 
+gboolean		gr_send_mail_finish (GAsyncResult *result, GError **error);
+
+void			item_free (gpointer data);
+
 G_END_DECLS

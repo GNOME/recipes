@@ -75,7 +75,7 @@
                         <class name="frame"/>
                       </style>
                       <child>
-                        <object class="GtkListBoxRow">
+                        <object class="GtkListBoxRow" id="email_account_row">
                           <property name="visible">1</property>
                           <property name="can_focus">1</property>
                           <child>

@@ -674,7 +674,7 @@ get_ingredients (GrShoppingPage *page)
         return ingredients;
 }
 
-static void
+void
 item_free (gpointer data)
 {
         ShoppingListItem *item = data;
@@ -705,61 +705,6 @@ print_list (GrShoppingPage *page)
         g_list_free_full (items, item_free);
 }
 
-
-static void
-file_chooser_response (GtkNativeDialog  *self,
-                       int               response_id,
-                       GrShoppingPage   *page)
-{
-        if (response_id == GTK_RESPONSE_ACCEPT) {
-                GList *recipes, *items;
-                g_autoptr(GFile) file = NULL;
-                g_autofree char *text = NULL;
-
-                recipes = get_recipes (page);
-                items = get_ingredients (page);
-
-                text = gr_shopping_list_format (recipes, items);
-
-                g_list_free_full (recipes, g_object_unref);
-                g_list_free_full (items, item_free);
-
-                file = gtk_file_chooser_get_file (GTK_FILE_CHOOSER (self));
-                g_file_replace_contents (file, text, -1, NULL, FALSE, 0, NULL, NULL, NULL);
-        }
-
-        gtk_native_dialog_destroy (self);
-}
-
-static void
-mail_done (GObject      *source,
-           GAsyncResult *result,
-           gpointer      data)
-{
-        GrShoppingPage *page = data;
-        g_autoptr(GError) error = NULL;
-
-        if (!gr_send_mail_finish (result, &error)) {
-                GObject *file_chooser;
-                GtkWidget *window;
-
-                g_info ("Sending mail failed: %s", error->message);
-
-                window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
-                file_chooser = (GObject *)gtk_file_chooser_native_new (_("Save the shopping list"),
-                                                                       GTK_WINDOW (window),
-                                                                       GTK_FILE_CHOOSER_ACTION_SAVE,
-                                                                       _("Save"),
-                                                                       _("Cancel"));
-                gtk_native_dialog_set_modal (GTK_NATIVE_DIALOG (file_chooser), TRUE);
-
-                g_signal_connect (file_chooser, "response", G_CALLBACK (file_chooser_response), page);
-
-                gtk_native_dialog_show (GTK_NATIVE_DIALOG (file_chooser));
-                return;
-        }
-}
-
 static void
 open_export_shopping_list_dialog (GrShoppingPage *page)
 {
@@ -772,28 +717,6 @@ open_export_shopping_list_dialog (GrShoppingPage *page)
                 page->exporter = gr_shopping_list_exporter_new (GTK_WINDOW (window));
                 gr_shopping_list_exporter_export (page->exporter, items);
         }
-}
-
-
-static void share_list (GrShoppingPage *page)
-{
-        GList *recipes, *items;
-        g_autofree char *text = NULL;
-        GtkWidget *window;
-
-        recipes = get_recipes (page);
-        items = get_ingredients (page);
-
-        text = gr_shopping_list_format (recipes, items);
-
-        window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
-
-        gr_send_mail (GTK_WINDOW (window),
-                      NULL, _("Shopping List"), text, NULL,
-                      mail_done, page);
-
-        g_list_free_full (recipes, g_object_unref);
-        g_list_free_full (items, item_free);
 }
 
 static void

@@ -31,6 +31,8 @@
 #include "gr-shopping-list-exporter.h"
 #include "gr-recipe-store.h"
 #include "gr-shopping-page.h"
+#include "gr-shopping-list-formatter.h"
+#include "gr-mail.h"
 
 #define TODOIST_URL "https://todoist.com/API/v7/sync"
 
@@ -51,6 +53,7 @@ struct _GrShoppingListExporter
         GtkWidget *cancel_button;
         GtkWidget *back_button;
         GtkWidget *todoist_row;
+        GtkWidget *email_row;
         GtkWidget *accounts_box;
         GtkWidget *providers_box;
         GtkWidget *dialog_stack;
@@ -472,6 +475,84 @@ get_project_id (GrShoppingListExporter *exporter)
 }
 
 static void
+file_chooser_response (GtkNativeDialog  *self,
+                       int               response_id,
+                       GrShoppingListExporter   *exporter)
+{
+	GrRecipeStore *store;
+	if (response_id == GTK_RESPONSE_ACCEPT) {
+		GList *recipes, *items;
+		g_autoptr (GFile) file = NULL;
+		g_autofree char *text = NULL;
+
+		store = gr_recipe_store_get ();
+		recipes = gr_recipe_store_get_shopping_list (store);
+
+		items = exporter->ingredients;
+
+		text = gr_shopping_list_format (recipes, items);
+
+		g_list_free_full (recipes, g_object_unref);
+		g_list_free_full (items, item_free);
+
+		file = gtk_file_chooser_get_file (GTK_FILE_CHOOSER (self));
+		g_file_replace_contents (file, text, -1, NULL, FALSE, 0, NULL, NULL, NULL);
+        }
+        gtk_native_dialog_destroy (self);
+}
+
+static void
+mail_done (GObject      *source,
+           GAsyncResult *result,
+           gpointer      data)
+{
+        GrShoppingListExporter *exporter = data;
+        g_autoptr (GError) error = NULL;
+
+        if (!gr_send_mail_finish (result, &error)) {
+                GObject *file_chooser;
+                GtkWidget *window;
+
+                g_info ("Sending mail failed: %s", error->message);
+
+                window = gtk_widget_get_ancestor (GTK_WIDGET (exporter->dialog), GTK_TYPE_APPLICATION_WINDOW);
+                file_chooser = (GObject *)gtk_file_chooser_native_new (_("Save the shopping list"),
+                                                                       GTK_WINDOW (window),
+                                                                       GTK_FILE_CHOOSER_ACTION_SAVE,
+                                                                       _("Save"),
+                                                                       _("Cancel"));
+                gtk_native_dialog_set_modal (GTK_NATIVE_DIALOG (file_chooser), TRUE);
+
+                g_signal_connect (file_chooser, "response", G_CALLBACK (file_chooser_response), exporter);
+                gtk_native_dialog_show (GTK_NATIVE_DIALOG (file_chooser));
+                return;
+        }
+}
+
+static void
+share_list (GrShoppingListExporter *exporter)
+{
+        GList *recipes, *items;
+        g_autofree char *text = NULL;
+        GtkWidget *window;
+        GrRecipeStore *store;
+
+        store = gr_recipe_store_get ();
+        recipes = gr_recipe_store_get_shopping_list (store);
+        items = exporter->ingredients;
+
+        text = gr_shopping_list_format (recipes, items);
+        window = gtk_widget_get_ancestor (GTK_WIDGET (exporter->dialog), GTK_TYPE_APPLICATION_WINDOW);
+
+        gr_send_mail (GTK_WINDOW (window),
+                      NULL, _("Shopping List"), text, NULL,
+                      mail_done, exporter);
+
+        g_list_free_full (recipes, g_object_unref);
+        g_list_free_full (items, item_free);
+}
+
+static void
 initialize_export (GrShoppingListExporter *exporter)
 {
 
@@ -482,6 +563,10 @@ initialize_export (GrShoppingListExporter *exporter)
 		if (!exporter->project_id) {
 			get_project_id (exporter);
 		}
+	}
+	else if (exporter->account_row_selected == exporter->email_row)
+	{
+		share_list(exporter);
 	}
 }
 
@@ -496,6 +581,7 @@ show_export_dialog (GrShoppingListExporter *exporter)
         builder = gtk_builder_new_from_resource ("/org/gnome/Recipes/shopping-list-exporter-dialog.ui");
         exporter->dialog = GTK_WIDGET (gtk_builder_get_object (builder, "dialog"));
         exporter->todoist_row = GTK_WIDGET (gtk_builder_get_object (builder, "todoist_account_row"));
+        exporter->email_row = GTK_WIDGET (gtk_builder_get_object (builder, "email_account_row"));
         add_service = gtk_builder_get_object (builder, "add_service");
 
         exporter->export_button = GTK_WIDGET (gtk_builder_get_object (builder, "export_button"));
