@@ -47,6 +47,7 @@
 #include "gr-utils.h"
 #include "gr-appdata.h"
 #include "gr-settings.h"
+#include "gr-shopping-list-exporter.h"
 
 
 struct _GrWindow
@@ -824,6 +825,7 @@ done_shopping (GrWindow *window)
         GList *recipes, *l;
         GrRecipeStore *store;
         const char **removed_ingredients;
+        GrShoppingListExporter *exporter = NULL;
 
         store = gr_recipe_store_get ();
 
@@ -855,6 +857,13 @@ done_shopping (GrWindow *window)
         window->removed_ingredients = g_strdupv ((char **)removed_ingredients);
 
         gr_recipe_store_clear_shopping_list (store);
+        if (!exporter) {
+                GtkWidget *shopping_window;
+
+                shopping_window = gtk_widget_get_ancestor (GTK_WIDGET (window->shopping_page), GTK_TYPE_APPLICATION_WINDOW);
+                exporter = gr_shopping_list_exporter_new (GTK_WINDOW (shopping_window));
+                done_shopping_in_todoist (exporter);
+        }
 }
 
 static void
