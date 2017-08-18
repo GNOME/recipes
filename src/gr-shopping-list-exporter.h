@@ -32,6 +32,7 @@ G_DECLARE_FINAL_TYPE (GrShoppingListExporter, gr_shopping_list_exporter, GR, SHO
 
 GrShoppingListExporter *gr_shopping_list_exporter_new    (GtkWindow        *window);
 
-void              gr_shopping_list_exporter_export (GrShoppingListExporter *exporter, GList *items);
+void					gr_shopping_list_exporter_export (GrShoppingListExporter *exporter, GList *items);
 
+void					done_shopping_in_todoist (GrShoppingListExporter *exporter);
 G_END_DECLS

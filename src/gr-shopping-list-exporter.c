@@ -102,6 +102,151 @@ gr_shopping_list_exporter_new (GtkWindow *parent)
         return exporter;
 }
 
+static void
+complete_items_callback (RestProxyCall *call,
+			 GError *error,
+			 GObject *obj,
+			 GrShoppingListExporter *exporter)
+{
+
+	guint status_code;
+
+	status_code = rest_proxy_call_get_status_code (call);
+
+	if (status_code != 200) {
+		g_warning ("Couldn't complete items in todoist");
+	}
+
+}
+
+static void
+complete_items (GrShoppingListExporter *exporter, GList *items)
+{
+	RestProxy *proxy;
+	RestProxyCall *call;
+	GError *error;
+	g_autofree gchar *uuid = g_uuid_string_random ();
+
+	GList *l;
+	GString *commands;
+	commands = g_string_new ("");
+	g_string_append_printf (commands , "[{\"type\": \"item_complete\", \"uuid\": \"%s\", \"args\": {\"ids\": [", uuid);
+	for (l = items; l != NULL; l = l->next) {
+		JsonObject *object;
+		double id;
+		glong item_id;
+
+		object = json_node_get_object (l->data);
+		id = json_object_get_double_member (object, "id");
+		item_id = (glong) id;
+		g_string_append_printf (commands, "%ld,", item_id);
+	}
+	commands = g_string_truncate (commands, commands->len-1);
+	g_string_append_printf (commands, "]}}]");
+
+	error = NULL;
+
+	proxy = rest_proxy_new (TODOIST_URL, FALSE);
+	call = rest_proxy_new_call (proxy);
+	rest_proxy_call_set_method (call, "POST");
+	rest_proxy_call_add_header (call, "content-type", "application/x-www-form-urlencoded");
+	rest_proxy_call_add_param (call, "token", exporter->access_token);
+
+	if (!exporter->sync_token)
+		rest_proxy_call_add_param (call, "sync_token", "\'*\'");
+	else
+		rest_proxy_call_add_param (call, "sync_token", exporter->sync_token);
+
+	rest_proxy_call_add_param (call, "commands", commands->str);
+
+	if (!rest_proxy_call_async (call, (RestProxyCallAsyncCallback) complete_items_callback,
+				    NULL, exporter, &error))
+	{
+	    g_warning ("Couldn't execute RestProxyCall");
+	    goto out;
+	}
+	out:
+	  g_object_unref (proxy);
+	  g_object_unref (call);
+}
+
+static void
+get_project_data_callback (RestProxyCall *call,
+			   GError *error,
+			   GObject *obj,
+			   GrShoppingListExporter *exporter)
+{
+	JsonObject *object = NULL;
+	JsonParser *parser = NULL;
+	GError *parse_error;
+	const gchar *payload;
+	guint status_code;
+	gsize payload_length;
+
+	JsonArray *json_items;
+	GList *items;
+
+	status_code = rest_proxy_call_get_status_code (call);
+
+	if (status_code != 200) {
+		g_warning ("status code %d", status_code);
+		goto out;
+	}
+
+	parser = json_parser_new ();
+	payload = rest_proxy_call_get_payload (call);
+	payload_length = rest_proxy_call_get_payload_length (call);
+	if (!json_parser_load_from_data (parser, payload, payload_length, &parse_error)) {
+		g_clear_error (&parse_error);
+		g_warning ("Couldn't load payload");
+		goto out;
+	}
+
+	object = json_node_dup_object (json_parser_get_root (parser));
+
+	if (!object) {
+		g_warning ("No Data found");
+		goto out;
+	}
+
+	json_items = json_object_get_array_member (object, "items");
+	items = json_array_get_elements (json_items);
+	if (items)
+	{
+		complete_items (exporter, items);
+	}
+	out:
+	  g_object_unref (parser);
+	  g_object_unref (object);
+}
+
+static void
+get_project_data (GrShoppingListExporter *exporter)
+{
+	RestProxy *proxy;
+	RestProxyCall *call;
+	GError *error;
+	const gchar *id;
+	id = g_strdup_printf ("%ld", exporter->project_id);
+
+	proxy = rest_proxy_new ("https://todoist.com/api/v7/projects/get_data", FALSE);
+	call = rest_proxy_new_call (proxy);
+	rest_proxy_call_set_method (call, "POST");
+	rest_proxy_call_add_header (call, "content-type", "application/x-www-form-urlencoded");
+	rest_proxy_call_add_param (call, "token", exporter->access_token);
+	rest_proxy_call_add_param (call, "project_id", id);
+
+	if (!rest_proxy_call_async (call, (RestProxyCallAsyncCallback) get_project_data_callback,
+				    NULL, exporter, &error))
+	{
+		g_warning ("Couldn't execute RestProxyCall");
+		goto out;
+	}
+
+	out:
+	  g_object_unref (proxy);
+	  g_object_unref (call);
+}
 
 static void
 switch_dialog_contents (GrShoppingListExporter *exporter)
@@ -286,6 +431,19 @@ get_access_token (GrShoppingListExporter *exporter)
 	out:
           g_clear_object (&exporter->account_object);
 
+}
+
+void
+done_shopping_in_todoist (GrShoppingListExporter *exporter)
+{
+	gboolean project_present = FALSE;
+	if (get_todoist_account (exporter)) {
+		get_access_token (exporter);
+		if (!exporter->project_id)
+			project_present = get_project_id (exporter);
+		if (project_present)
+			get_project_data (exporter);
+	}
 }
 
 static void
