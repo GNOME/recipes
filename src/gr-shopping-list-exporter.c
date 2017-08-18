@@ -489,6 +489,7 @@ file_chooser_response (GtkNativeDialog  *self,
 		recipes = gr_recipe_store_get_shopping_list (store);
 
 		items = exporter->ingredients;
+		exporter->ingredients = NULL;
 
 		text = gr_shopping_list_format (recipes, items);
 
@@ -527,6 +528,7 @@ mail_done (GObject      *source,
                 gtk_native_dialog_show (GTK_NATIVE_DIALOG (file_chooser));
                 return;
         }
+        close_dialog (exporter);
 }
 
 static void
@@ -542,7 +544,7 @@ share_list (GrShoppingListExporter *exporter)
         items = exporter->ingredients;
 
         text = gr_shopping_list_format (recipes, items);
-        window = gtk_widget_get_ancestor (GTK_WIDGET (exporter->dialog), GTK_TYPE_APPLICATION_WINDOW);
+        window = GTK_WIDGET (exporter->window);
 
         gr_send_mail (GTK_WINDOW (window),
                       NULL, _("Shopping List"), text, NULL,
