@@ -36,7 +36,7 @@
 
 #define TODOIST_URL "https://todoist.com/API/v7/sync"
 
-static void get_project_id (GrShoppingListExporter *exporter);
+static gboolean get_project_id (GrShoppingListExporter *exporter);
 
 struct _GrShoppingListExporter
 {
@@ -382,7 +382,7 @@ add_project_id (GrShoppingListExporter *exporter)
 	  g_object_unref (call);
 }
 
-static void
+static gboolean
 get_project_id (GrShoppingListExporter *exporter)
 {
 	RestProxy *proxy;
@@ -457,21 +457,20 @@ get_project_id (GrShoppingListExporter *exporter)
 		if (strcmp (name, list_title) == 0) {
 			id = json_object_get_double_member (object, "id");
 			exporter->project_id = (glong) id;
-			goto export;
+			break;
 		}
 	}
 
-	if (!exporter->project_id)
-		add_project_id (exporter);
-
-	export:
-	  sync_token = json_object_get_string_member (object, "sync_token");
-	  exporter->sync_token = sync_token;
-	  export_shopping_list_to_todoist (exporter);
+	sync_token = json_object_get_string_member (object, "sync_token");
+	exporter->sync_token = sync_token;
 
 	out:
 	  g_object_unref (proxy);
 	  g_object_unref (call);
+	  if (exporter->project_id)
+		return TRUE;
+	  else
+		return FALSE;
 }
 
 static void
@@ -557,14 +556,17 @@ share_list (GrShoppingListExporter *exporter)
 static void
 initialize_export (GrShoppingListExporter *exporter)
 {
-
+	gboolean project_present;
 	if (exporter->account_row_selected == exporter->todoist_row) {
 		if (!exporter->access_token) {
 			get_access_token (exporter);
 		}
-		if (!exporter->project_id) {
-			get_project_id (exporter);
+		project_present = get_project_id (exporter);
+		if (!project_present)
+		{
+			add_project_id (exporter);
 		}
+		export_shopping_list_to_todoist (exporter);
 	}
 	else if (exporter->account_row_selected == exporter->email_row)
 	{
