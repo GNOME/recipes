@@ -715,8 +715,8 @@ open_export_shopping_list_dialog (GrShoppingPage *page)
 
                 window = gtk_widget_get_ancestor (GTK_WIDGET (page), GTK_TYPE_APPLICATION_WINDOW);
                 page->exporter = gr_shopping_list_exporter_new (GTK_WINDOW (window));
-                gr_shopping_list_exporter_export (page->exporter, items);
         }
+        gr_shopping_list_exporter_export (page->exporter, items);
 }
 
 static void
