@@ -216,8 +216,10 @@ get_project_data_callback (RestProxyCall *call,
 		complete_items (exporter, items);
 	}
 	out:
-	  g_object_unref (parser);
-	  g_object_unref (object);
+	  if (parser)
+		g_object_unref (parser);
+	  if (object)
+		json_object_unref (object);
 }
 
 static void
