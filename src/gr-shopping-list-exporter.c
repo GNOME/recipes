@@ -36,6 +36,7 @@
 
 #define TODOIST_URL "https://todoist.com/API/v7/sync"
 
+static gboolean get_todoist_account (GrShoppingListExporter *exporter);
 static gboolean get_project_id (GrShoppingListExporter *exporter);
 
 struct _GrShoppingListExporter
@@ -62,6 +63,7 @@ struct _GrShoppingListExporter
         GtkWidget *providers_list;
         GtkWidget *accounts_list;
         GtkWidget *account_row_selected;
+        GtkWidget *todoist_provider_row;
 
         GList *ingredients;
 };
@@ -254,12 +256,16 @@ static void
 switch_dialog_contents (GrShoppingListExporter *exporter)
 {
 	if (gtk_stack_get_visible_child (GTK_STACK (exporter->dialog_stack)) == exporter->accounts_box) {
+		if (!get_todoist_account (exporter))
+			gtk_widget_set_visible (exporter->todoist_row, FALSE);
 		gtk_widget_set_visible (exporter->export_button, FALSE);
 		gtk_stack_set_visible_child_name (GTK_STACK (exporter->dialog_stack), "providers_box");
 		gtk_stack_set_visible_child_name (GTK_STACK (exporter->header_start_stack), "back");
 		gtk_header_bar_set_title (GTK_HEADER_BAR (exporter->header), _("Add Account"));
 	}
 	else {
+		if (get_todoist_account (exporter))
+			gtk_widget_set_visible (exporter->todoist_row, TRUE);
 		gtk_widget_set_visible (exporter->export_button, TRUE);
 		gtk_stack_set_visible_child (GTK_STACK (exporter->dialog_stack), exporter->accounts_box);
 		gtk_stack_set_visible_child_name (GTK_STACK (exporter->header_start_stack), "cancel_button");
@@ -734,6 +740,58 @@ initialize_export (GrShoppingListExporter *exporter)
 	}
 }
 
+static GVariant*
+build_dbus_parameters (const gchar *action,
+                       const gchar *arg)
+{
+	GVariantBuilder builder;
+	GVariant *array[1], *params2[3];
+
+	g_variant_builder_init (&builder, G_VARIANT_TYPE ("av"));
+
+	if (!action && !arg) {
+		g_variant_builder_add (&builder, "v", g_variant_new_string (""));
+	}
+	else {
+		if (action)
+			g_variant_builder_add (&builder, "v", g_variant_new_string (action));
+		if (arg)
+			g_variant_builder_add (&builder, "v", g_variant_new_string (arg));
+	}
+
+	array[0] = g_variant_new ("v", g_variant_new ("(sav)", "online-accounts", &builder));
+
+	params2[0] = g_variant_new_string ("launch-panel");
+	params2[1] = g_variant_new_array (G_VARIANT_TYPE ("v"), array, 1);
+	params2[2] = g_variant_new_array (G_VARIANT_TYPE ("{sv}"), NULL, 0);
+
+	return g_variant_new_tuple (params2, 3);
+}
+
+static void
+add_todoist_account (GtkListBox    *list,
+                     GtkListBoxRow *row,
+                     GrShoppingListExporter *exporter)
+{
+	const char *action = "add";
+	const char *arg = "todoist";
+	if (GTK_WIDGET (row) == exporter->todoist_provider_row) {
+		GDBusProxy *proxy;
+
+		proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION, G_DBUS_PROXY_FLAGS_NONE, NULL,
+						       "org.gnome.ControlCenter", "/org/gnome/ControlCenter",
+						       "org.gtk.Actions", NULL, NULL);
+		if (!proxy) {
+			g_warning ("Couldn't open Online Accounts panel");
+			return;
+		}
+
+		g_dbus_proxy_call_sync (proxy, "Activate", build_dbus_parameters (action, arg),
+					G_DBUS_CALL_FLAGS_NONE, -1, NULL, NULL);
+		g_clear_object (&proxy);
+	}
+}
+
 
 static void
 show_export_dialog (GrShoppingListExporter *exporter)
@@ -741,12 +799,15 @@ show_export_dialog (GrShoppingListExporter *exporter)
 
         g_autoptr (GtkBuilder) builder = NULL;
         GObject *add_service;
+        GtkWidget *providers_list;
 
         builder = gtk_builder_new_from_resource ("/org/gnome/Recipes/shopping-list-exporter-dialog.ui");
         exporter->dialog = GTK_WIDGET (gtk_builder_get_object (builder, "dialog"));
         exporter->todoist_row = GTK_WIDGET (gtk_builder_get_object (builder, "todoist_account_row"));
+        exporter->todoist_provider_row = GTK_WIDGET (gtk_builder_get_object (builder, "todoist_provider_row"));
         exporter->email_row = GTK_WIDGET (gtk_builder_get_object (builder, "email_account_row"));
         add_service = gtk_builder_get_object (builder, "add_service");
+        providers_list = GTK_WIDGET (gtk_builder_get_object (builder, "providers_list"));
 
         exporter->export_button = GTK_WIDGET (gtk_builder_get_object (builder, "export_button"));
         exporter->cancel_button = GTK_WIDGET (gtk_builder_get_object (builder, "cancel_button"));
@@ -764,6 +825,7 @@ show_export_dialog (GrShoppingListExporter *exporter)
         g_signal_connect_swapped (exporter->export_button, "clicked", G_CALLBACK (initialize_export), exporter);
         g_signal_connect_swapped (exporter->cancel_button, "clicked", G_CALLBACK (close_dialog), exporter);
         g_signal_connect (exporter->accounts_list, "selected-rows-changed", G_CALLBACK (get_selected_account), exporter);
+        g_signal_connect (providers_list, "row-activated", G_CALLBACK (add_todoist_account), exporter);
 
         if (get_todoist_account (exporter)) {
 		gtk_widget_set_visible (exporter->todoist_row, TRUE);

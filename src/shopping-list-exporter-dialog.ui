@@ -167,7 +167,7 @@
                   <property name="orientation">vertical</property>
                   <child>
                     <object class="GtkListBox" id="providers_list">
-                      <property name="selection_mode">single</property>
+                      <property name="selection_mode">none</property>
                       <property name="visible">1</property>
                       <signal name="selected-rows-changed" handler="row_changed"/>
                       <style>
