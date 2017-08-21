@@ -792,13 +792,23 @@ back_to_shopping (GrWindow *window)
 {
         GrRecipeStore *store;
         GList *l;
+        GList *items;
         int i;
+        GrShoppingListExporter *exporter = NULL;
 
         store = gr_recipe_store_get ();
 
         for (l = window->shopping_done_list; l; l = l->next) {
                 ShoppingListEntry *entry = l->data;
                 gr_recipe_store_add_to_shopping (store, entry->recipe, entry->yield);
+        }
+        items = get_ingredients (GR_SHOPPING_PAGE (window->shopping_page));
+        if (!exporter) {
+                GtkWidget *shopping_window;
+
+                shopping_window = gtk_widget_get_ancestor (GTK_WIDGET (window->shopping_page), GTK_TYPE_APPLICATION_WINDOW);
+                exporter = gr_shopping_list_exporter_new (GTK_WINDOW (shopping_window));
+                do_undo_in_todoist (exporter, items);
         }
         for (i = 0; window->removed_ingredients && window->removed_ingredients[i]; i++) {
                 gr_recipe_store_remove_shopping_ingredient (store, window->removed_ingredients[i]);

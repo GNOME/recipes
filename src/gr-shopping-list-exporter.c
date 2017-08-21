@@ -321,7 +321,8 @@ export_shopping_list_callback (RestProxyCall *call,
 
 	out:
 	  g_object_unref (parser);
-	  close_dialog (exporter);
+	  if (exporter->dialog)
+		close_dialog (exporter);
 }
 
 static void
@@ -725,6 +726,9 @@ initialize_export (GrShoppingListExporter *exporter)
 	gboolean project_present;
 	if (exporter->account_row_selected == exporter->todoist_row) {
 		if (!exporter->access_token) {
+			if (!exporter->account_object) {
+				get_todoist_account (exporter);
+			}
 			get_access_token (exporter);
 		}
 		project_present = get_project_id (exporter);
@@ -739,6 +743,16 @@ initialize_export (GrShoppingListExporter *exporter)
 		share_list(exporter);
 	}
 }
+
+void
+do_undo_in_todoist (GrShoppingListExporter *exporter, GList *items)
+{
+	if (!exporter->ingredients)
+		exporter->ingredients = items;
+
+	initialize_export (exporter);
+}
+
 
 static GVariant*
 build_dbus_parameters (const gchar *action,
