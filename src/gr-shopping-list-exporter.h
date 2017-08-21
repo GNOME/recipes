@@ -35,4 +35,6 @@ GrShoppingListExporter *gr_shopping_list_exporter_new    (GtkWindow        *wind
 void					gr_shopping_list_exporter_export (GrShoppingListExporter *exporter, GList *items);
 
 void					done_shopping_in_todoist (GrShoppingListExporter *exporter);
+
+void					do_undo_in_todoist (GrShoppingListExporter *exporter, GList *items);
 G_END_DECLS
