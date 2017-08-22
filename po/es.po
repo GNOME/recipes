@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-29 20:47+0000\n"
-"PO-Revision-Date: 2017-08-02 10:34+0200\n"
+"POT-Creation-Date: 2017-08-08 23:40+0000\n"
+"PO-Revision-Date: 2017-08-22 11:23+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -497,10 +497,9 @@ msgid "Details"
 msgstr "Detalles"
 
 #: src/gr-edit-page.ui:284 src/gr-edit-page.c:1653
-#, fuzzy
 #| msgid "_Name:"
 msgid "_Name"
-msgstr "_Nombre:"
+msgstr "_Nombre"
 
 #: src/gr-edit-page.ui:346
 msgid "_Preparation Time"
@@ -533,10 +532,9 @@ msgid "_Cooking Time"
 msgstr "Tiempo de cocción"
 
 #: src/gr-edit-page.ui:442
-#, fuzzy
 #| msgid "Cuisine"
 msgid "C_uisine"
-msgstr "Cocina"
+msgstr "C_ocina"
 
 #: src/gr-edit-page.ui:478
 msgid "_Meal"
@@ -593,10 +591,9 @@ msgid "Milk-free"
 msgstr "Sin lácteos"
 
 #: src/gr-edit-page.ui:702
-#, fuzzy
 #| msgid "Directions"
 msgid "Di_rections"
-msgstr "Pasos"
+msgstr "Pa_sos"
 
 #: src/gr-edit-page.ui:770
 msgid "Preview"
@@ -806,9 +803,8 @@ msgid "_Start Cooking"
 msgstr "_Comenzar a cocinar"
 
 #: src/gr-window.ui:143
-#, fuzzy
 msgid "_Done Shopping"
-msgstr "Ver la lista de la compra"
+msgstr "_Compra hecha"
 
 #: src/gr-window.ui:257
 #, fuzzy
@@ -939,7 +935,7 @@ msgstr "Novedades en Recetas"
 
 #: src/recipe-surprise.ui:28
 msgid "GNOME turns 20 !"
-msgstr ""
+msgstr "¡GNOME cumple 20 años!"
 
 #: src/recipe-surprise.ui:52
 msgid ""
@@ -1490,16 +1486,14 @@ msgid "loafs"
 msgstr ""
 
 #: src/gr-edit-page.c:943
-#, fuzzy
 #| msgctxt "unit name"
 #| msgid "ounce"
 msgid "ounce"
 msgstr "onza"
 
 #: src/gr-edit-page.c:944
-#, fuzzy
 msgid "ounces"
-msgstr "onza"
+msgstr "onzas"
 
 #: src/gr-edit-page.c:1545
 msgid "_Name Your Recipe"
@@ -1802,9 +1796,8 @@ msgid "Season:"
 msgstr "Temporada"
 
 #: src/gr-recipe-printer.c:225
-#, fuzzy
 msgid "Notes"
-msgstr "_Notas"
+msgstr "Notas"
 
 #: src/gr-recipe-printer.c:468 src/gr-shopping-list-printer.c:297
 msgid "Error printing file:"
@@ -1996,7 +1989,6 @@ msgid "gram"
 msgstr "gramo"
 
 #: src/gr-unit.c:43
-#, fuzzy
 msgctxt "unit plural"
 msgid "grams"
 msgstr "gramos"
@@ -2012,10 +2004,9 @@ msgid "kilogram"
 msgstr "kilo"
 
 #: src/gr-unit.c:44
-#, fuzzy
 msgctxt "unit plural"
 msgid "kilograms"
-msgstr "kilos"
+msgstr "kilogramos"
 
 #: src/gr-unit.c:45
 msgctxt "unit abbreviation"
@@ -2028,7 +2019,6 @@ msgid "pound"
 msgstr "libra"
 
 #: src/gr-unit.c:45
-#, fuzzy
 msgctxt "unit plural"
 msgid "pounds"
 msgstr "libras"
@@ -2044,10 +2034,9 @@ msgid "ounce"
 msgstr "onza"
 
 #: src/gr-unit.c:46
-#, fuzzy
 msgctxt "unit plural"
 msgid "ounces"
-msgstr "onza"
+msgstr "onzas"
 
 #: src/gr-unit.c:47
 msgctxt "unit abbreviation"
@@ -2060,7 +2049,6 @@ msgid "liter"
 msgstr "litro"
 
 #: src/gr-unit.c:47
-#, fuzzy
 msgctxt "unit plural"
 msgid "liters"
 msgstr "litros"
@@ -2076,10 +2064,9 @@ msgid "deciliter"
 msgstr "decilitro"
 
 #: src/gr-unit.c:48
-#, fuzzy
 msgctxt "unit plural"
 msgid "deciliters"
-msgstr "decilitro"
+msgstr "decilitros"
 
 #: src/gr-unit.c:49
 msgctxt "unit abbreviation"
@@ -2092,7 +2079,6 @@ msgid "milliliter"
 msgstr "mililitro"
 
 #: src/gr-unit.c:49
-#, fuzzy
 msgctxt "unit plural"
 msgid "milliliters"
 msgstr "mililitros"
@@ -2108,10 +2094,9 @@ msgid "fluid ounce"
 msgstr "onza líquida"
 
 #: src/gr-unit.c:50 src/gr-unit.c:51
-#, fuzzy
 msgctxt "unit plural"
 msgid "fluid ounces"
-msgstr "onza líquida"
+msgstr "onzas líquidas"
 
 #: src/gr-unit.c:52
 msgctxt "unit abbreviation"
@@ -2124,10 +2109,9 @@ msgid "pint"
 msgstr "pinta"
 
 #: src/gr-unit.c:52
-#, fuzzy
 msgctxt "unit plural"
 msgid "pints"
-msgstr "pinta"
+msgstr "pintas"
 
 #: src/gr-unit.c:53
 msgctxt "unit abbreviation"
@@ -2140,10 +2124,9 @@ msgid "quart"
 msgstr "cuarto"
 
 #: src/gr-unit.c:53
-#, fuzzy
 msgctxt "unit plural"
 msgid "quarts"
-msgstr "cuarto"
+msgstr "cuartos"
 
 #: src/gr-unit.c:54
 msgctxt "unit abbreviation"
@@ -2156,10 +2139,9 @@ msgid "gallon"
 msgstr "galón"
 
 #: src/gr-unit.c:54
-#, fuzzy
 msgctxt "unit plural"
 msgid "gallons"
-msgstr "galón"
+msgstr "galones"
 
 #: src/gr-unit.c:55
 msgctxt "unit abbreviation"
@@ -2174,7 +2156,7 @@ msgstr "taza"
 #: src/gr-unit.c:55
 msgctxt "unit plural"
 msgid "cups"
-msgstr ""
+msgstr "tazas"
 
 #: src/gr-unit.c:56
 msgctxt "unit abbreviation"
@@ -2187,7 +2169,6 @@ msgid "tablespoon"
 msgstr "cucharada"
 
 #: src/gr-unit.c:56
-#, fuzzy
 msgctxt "unit plural"
 msgid "tablespoons"
 msgstr "cucharadas"
@@ -2203,7 +2184,6 @@ msgid "teaspoon"
 msgstr "cucharada de té"
 
 #: src/gr-unit.c:57
-#, fuzzy
 msgctxt "unit plural"
 msgid "teaspoons"
 msgstr "cucharadas de té"
@@ -2219,7 +2199,6 @@ msgid "box"
 msgstr "caja"
 
 #: src/gr-unit.c:58
-#, fuzzy
 msgctxt "unit plural"
 msgid "boxes"
 msgstr "cajas"
@@ -2235,10 +2214,9 @@ msgid "package"
 msgstr "paquete"
 
 #: src/gr-unit.c:59
-#, fuzzy
 msgctxt "unit plural"
 msgid "packages"
-msgstr "paquete"
+msgstr "paquetes"
 
 #: src/gr-unit.c:60
 msgctxt "unit abbreviation"
@@ -2251,10 +2229,9 @@ msgid "glass"
 msgstr "vaso"
 
 #: src/gr-unit.c:60
-#, fuzzy
 msgctxt "unit plural"
 msgid "glasses"
-msgstr "vaso"
+msgstr "vasos"
 
 #: src/gr-unit.c:61
 msgctxt "unit abbreviation"
@@ -2267,10 +2244,9 @@ msgid "millimeter"
 msgstr "milímetro"
 
 #: src/gr-unit.c:61
-#, fuzzy
 msgctxt "unit plural"
 msgid "millimeters"
-msgstr "milímetro"
+msgstr "milímetros"
 
 #: src/gr-unit.c:62
 msgctxt "unit abbreviation"
@@ -2283,10 +2259,9 @@ msgid "centimeter"
 msgstr "centímetro"
 
 #: src/gr-unit.c:62
-#, fuzzy
 msgctxt "unit plural"
 msgid "centimeters"
-msgstr "centímetro"
+msgstr "centímetros"
 
 #: src/gr-unit.c:63
 msgctxt "unit abbreviation"
@@ -2299,10 +2274,9 @@ msgid "meter"
 msgstr "metro"
 
 #: src/gr-unit.c:63
-#, fuzzy
 msgctxt "unit plural"
 msgid "meters"
-msgstr "metro"
+msgstr "metros"
 
 #: src/gr-unit.c:64
 #, fuzzy
@@ -2323,17 +2297,17 @@ msgstr ""
 #: src/gr-unit.c:65
 msgctxt "unit abbreviation"
 msgid "pinch"
-msgstr ""
+msgstr "pellizco"
 
 #: src/gr-unit.c:65
 msgctxt "unit name"
 msgid "pinch"
-msgstr ""
+msgstr "pellizco"
 
 #: src/gr-unit.c:65
 msgctxt "unit plural"
 msgid "pinches"
-msgstr ""
+msgstr "pellizcos"
 
 #: src/gr-unit.c:66
 msgctxt "unit abbreviation"
@@ -2527,9 +2501,9 @@ msgid "Released: %s"
 msgstr "Publicado: %s"
 
 #: src/gr-window.c:1477
-#, fuzzy, c-format
+#, c-format
 msgid "Unreleased"
-msgstr "Publicado: %s"
+msgstr "No publicada"
 
 #: src/ingredients.inc:1
 msgid "Almond"
@@ -2686,7 +2660,7 @@ msgstr "Higo"
 
 #: src/ingredients.inc:39
 msgid "Fish"
-msgstr ""
+msgstr "Pescado"
 
 #: src/ingredients.inc:40
 msgid "Flour"
@@ -2698,7 +2672,7 @@ msgstr "Ajo"
 
 #: src/ingredients.inc:42
 msgid "Grapes"
-msgstr ""
+msgstr "Uvas"
 
 #: src/ingredients.inc:43
 msgid "Ground beef"
@@ -2791,7 +2765,7 @@ msgstr "Cocinas"
 
 #: src/ingredients.inc:65
 msgid "Rice"
-msgstr ""
+msgstr "Arroz"
 
 #: src/ingredients.inc:66
 msgid "Salt"
@@ -2803,7 +2777,7 @@ msgstr "Salsa de soja"
 
 #: src/ingredients.inc:68
 msgid "Strawberry"
-msgstr ""
+msgstr "Fresa"
 
 #: src/ingredients.inc:69
 msgid "Sugar"
@@ -3024,9 +2998,8 @@ msgid "no Fig"
 msgstr "no hay higos"
 
 #: src/no-ingredients.inc:39
-#, fuzzy
 msgid "no Fish"
-msgstr "no hay higos"
+msgstr "no hay pescado"
 
 #: src/no-ingredients.inc:40
 msgid "no Flour"
@@ -3130,7 +3103,7 @@ msgstr ""
 
 #: src/no-ingredients.inc:65
 msgid "no Rice"
-msgstr ""
+msgstr "no hay arroz"
 
 #: src/no-ingredients.inc:66
 msgid "no Salt"
@@ -3141,9 +3114,8 @@ msgid "no Soy sauce"
 msgstr "no hay salsa de soja"
 
 #: src/no-ingredients.inc:68
-#, fuzzy
 msgid "no Strawberry"
-msgstr "no hay arándanos"
+msgstr "no hay fresas"
 
 #: src/no-ingredients.inc:69
 msgid "no Sugar"
