@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-20 22:46+0000\n"
-"PO-Revision-Date: 2017-08-21 21:12+0200\n"
+"PO-Revision-Date: 2017-08-22 21:52+0200\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
@@ -1026,7 +1026,6 @@ msgid "System"
 msgstr "Sustav"
 
 #: src/gr-about-dialog.c:914
-#, fuzzy
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -1115,7 +1114,7 @@ msgstr "Odbrojavanje vremena kuhanja za “%s” je završilo."
 
 #: src/gr-cooking-view.c:425
 msgid "Timer is up!"
-msgstr ""
+msgstr "Vrijeme kuhanja je završilo!"
 
 #: src/gr-cuisine.c:45
 msgid "American"
@@ -1363,6 +1362,15 @@ msgid ""
 "<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free\">Learn more…</"
 "a>"
 msgstr ""
+"Bezgltenska dijeta je dijeta koja isključuje gluten, protein koji se nalazi "
+"u pšenici, ječmu, raži i svim njihovim vrstama i hibridima (poput pravog "
+"pira, horasanske pšenice i pšenoraži). Uključivanje zobi u prehranu bez "
+"glutena još uvijek je kontroverzno. Avenin prisutan u zobi također može biti "
+"toksičan za ljude koji boluju od celijakije; Njezina toksičnost ovisi o "
+"konzumaciji kultivara. Štoviše, zob su često kontaminirane žitaricama koje "
+"sadrže gluten.\n"
+"<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free\">Saznajte više…"
+"</a>"
 
 #: src/gr-diet.c:66
 msgid ""
@@ -1373,6 +1381,13 @@ msgid ""
 "macadamia nuts, pecans, pistachios, pine nuts, shea nuts and walnuts.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">Learn more…</a>"
 msgstr ""
+"Alergija na orašaste plodove je preosjetljivost na prehrambene tvari od "
+"orašastih plodova i jestivih sjemenki stabala, što uzrokuje pretjeranu "
+"reakciju imunološkog sustava koja može dovesti do teških fizičkih simptoma. "
+"Odgovorni orašasti plodovi su, ali nije ograničeno na njih, badem, brazilski "
+"oraščić, indijski orah, kesten, lješnjak, makadamija, pekan orah, pistacija, "
+"pinjolj, shea orah i orah.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">Saznajte više…</a>"
 
 #: src/gr-diet.c:69
 msgid ""
@@ -1381,6 +1396,10 @@ msgid ""
 "commodity status of animals.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Veganism\">Learn more…</a>"
 msgstr ""
+"Veganstvo je oboje, praksa u suzdržavanju od korištenja proizvoda "
+"životinjskog podrijetla, osobito u prehrani, i povezana je s filozofijom "
+"koja odbacuje status životinja kao robe.\n"
+"<a href=\"https://hr.wikipedia.org/wiki/Veganstvo\">Saznajte više…</a>"
 
 #: src/gr-diet.c:72
 msgid ""
@@ -1395,6 +1414,19 @@ msgid ""
 "even some refined sugars if filtered and whitened with bone char.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Vegetarianism\">Learn more…</a>"
 msgstr ""
+"Vegetarijanska kuhinja je temeljena na hrani koja zadovoljava vegetarijanske "
+"standarde, ne uključuje proizvode od mesa i životinjskog porijekla (kao što "
+"su želatina ili životinjsko sirište). Za ovolaktovegetarijanstvo (najčešća "
+"vrsta vegetarijanstva u zapadnom svijetu), jaja i mliječni proizvodi kao što "
+"su mlijeko i sir su dopušteni. Za laktovegetarijanstvo, najranija poznatia "
+"vrsta vegetarijanstva (zabilježena u Indiji), mliječni proizvodi kao što su "
+"mlijeko i sir su dopušteni.\n"
+"Najstroži oblici vegetarijanstva su veganstvo i frutarijanizam, koji "
+"isključuju sve životinjske proizvode, uključujući i mliječne proizvode, kao "
+"i med, pa čak i neke od rafiniranog šećera, ako su filtrirani i izbjeljivani "
+"s koštanim granulama.\n"
+"<a href=\"https://hr.wikipedia.org/wiki/Vegetarijanska_prehrana\">Saznajte "
+"više…</a>"
 
 #: src/gr-diet.c:75
 msgid ""
@@ -1407,6 +1439,15 @@ msgid ""
 "cause damage to the gastrointestinal tract.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Learn more…</a>"
 msgstr ""
+"Netolerancija na laktozu je stanje u kojem ljudi imaju simptome zbog "
+"smanjene sposobnosti probavljanja laktoze, šećera koji se nalazi u mliječnim "
+"proizvodima. Oni koji su zahvaćeni variraju u količini laktoze koju mogu "
+"tolerirati prije nego što se simptomi razviju. Simptomi mogu uključivati bol "
+"u trbuhu, nadutost, proljev, plinove i mučninu. To obično počinje između "
+"pola i dva sata nakon konzumiranja mlijeka. Ozbiljnost ovisi o količini koju "
+"osoba pojede ili popije. Ne uzrokuje oštećenja gastrointestinalnog trakta.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Saznajte više…"
+"</a>"
 
 #: src/gr-edit-page.c:599
 msgid "hour"
@@ -2553,272 +2594,271 @@ msgstr "Grah"
 
 #: src/ingredients.inc:18
 msgid "Beef mince"
-msgstr ""
+msgstr "Mljevena govedina"
 
 #: src/ingredients.inc:19
 msgid "Beef sausage"
-msgstr ""
+msgstr "Goveđa kobasica"
 
 #: src/ingredients.inc:20
 msgid "Beef stock"
-msgstr ""
+msgstr "Goveđi temeljac"
 
 #: src/ingredients.inc:21
 msgid "Beetroot"
-msgstr ""
+msgstr "Cikla"
 
 #: src/ingredients.inc:22
 msgid "Bell pepper"
-msgstr ""
+msgstr "Paprika babura"
 
 #: src/ingredients.inc:23
 msgid "Berry"
-msgstr ""
+msgstr "Bobica"
 
 #: src/ingredients.inc:24
 msgid "Biscotti"
-msgstr ""
+msgstr "Biskvit"
 
 #: src/ingredients.inc:25
 msgid "Bilberry"
-msgstr ""
+msgstr "Borovnica"
 
 #: src/ingredients.inc:26
 msgid "Breadcrumbs"
-msgstr ""
+msgstr "Krušne mrvice"
 
 #: src/ingredients.inc:27
 msgid "Butter"
-msgstr ""
+msgstr "Maslac"
 
 #: src/ingredients.inc:28
 msgid "Carrot"
-msgstr ""
+msgstr "Mrkva"
 
 #: src/ingredients.inc:29
 msgid "Cheese"
-msgstr ""
+msgstr "Sir"
 
 #: src/ingredients.inc:30
 msgid "Cherries, pitted"
-msgstr ""
+msgstr "Trešnje, bez koštica"
 
 #: src/ingredients.inc:31
 msgid "Chocolate frosting"
-msgstr ""
+msgstr "Čokoladna glazura"
 
 #: src/ingredients.inc:32
 msgid "Cilantro"
-msgstr ""
+msgstr "Korijandar"
 
 #: src/ingredients.inc:33
 msgid "Cocoa powder"
-msgstr ""
+msgstr "Kakao u prahu"
 
 #: src/ingredients.inc:34
 msgid "Couscous"
-msgstr ""
+msgstr "Kuskus"
 
 #: src/ingredients.inc:35
 msgid "Cream"
-msgstr ""
+msgstr "Krema"
 
 #: src/ingredients.inc:36
-#, fuzzy
 msgid "Date"
-msgstr "Datum"
+msgstr "Datulja"
 
 #: src/ingredients.inc:37
 msgid "Egg"
-msgstr ""
+msgstr "Jaje"
 
 #: src/ingredients.inc:38
 msgid "Fig"
-msgstr ""
+msgstr "Smokva"
 
 #: src/ingredients.inc:39
 msgid "Fish"
-msgstr ""
+msgstr "Riba"
 
 #: src/ingredients.inc:40
 msgid "Flour"
-msgstr ""
+msgstr "Brašno"
 
 #: src/ingredients.inc:41
 msgid "Garlic"
-msgstr ""
+msgstr "Češnjak"
 
 #: src/ingredients.inc:42
 msgid "Grapes"
-msgstr ""
+msgstr "Grožđe"
 
 #: src/ingredients.inc:43
 msgid "Ground beef"
-msgstr ""
+msgstr "Mljevena junetina"
 
 #: src/ingredients.inc:44
 msgid "Honey"
-msgstr ""
+msgstr "Med"
 
 #: src/ingredients.inc:45
 msgid "Horseradish"
-msgstr ""
+msgstr "Hren"
 
 #: src/ingredients.inc:46
 msgid "Lemon"
-msgstr ""
+msgstr "Limun"
 
 #: src/ingredients.inc:47
 msgid "Linseeds"
-msgstr ""
+msgstr "Sjemenke lana"
 
 #: src/ingredients.inc:48
 msgid "Mayonnaise"
-msgstr ""
+msgstr "Majoneza"
 
 #: src/ingredients.inc:49
 msgid "Milk"
-msgstr ""
+msgstr "Mlijeko"
 
 #: src/ingredients.inc:50
 msgid "Mustard"
-msgstr ""
+msgstr "Senf"
 
 #: src/ingredients.inc:51
 msgid "Nut"
-msgstr ""
+msgstr "Orah"
 
 #: src/ingredients.inc:52
 msgid "Oatmeal"
-msgstr ""
+msgstr "Zobena kaša"
 
 #: src/ingredients.inc:53
 msgid "Oil"
-msgstr ""
+msgstr "Ulje"
 
 #: src/ingredients.inc:54
 msgid "Onion"
-msgstr ""
+msgstr "Luk"
 
 #: src/ingredients.inc:55
 msgid "Olive oil, extra-virgin"
-msgstr ""
+msgstr "Maslinovo ulje, ekstra djevičansko"
 
 #: src/ingredients.inc:56
 msgid "Orange"
-msgstr ""
+msgstr "Naranča"
 
 #: src/ingredients.inc:57
 msgid "Parsley"
-msgstr ""
+msgstr "Peršin"
 
 #: src/ingredients.inc:58
 msgid "Peperoni"
-msgstr ""
+msgstr "Feferoni"
 
 #: src/ingredients.inc:59
 msgid "Pepper"
-msgstr ""
+msgstr "Papar"
 
 #: src/ingredients.inc:60
 msgid "Peppers"
-msgstr ""
+msgstr "Paprika"
 
 #: src/ingredients.inc:61
 msgid "Pizza sauce"
-msgstr ""
+msgstr "Umak za pizzu"
 
 #: src/ingredients.inc:62
 msgid "Potato"
-msgstr ""
+msgstr "Krumpir"
 
 #: src/ingredients.inc:63
 msgid "Pumpkin seeds"
-msgstr ""
+msgstr "Sjemenke bundeve"
 
 #: src/ingredients.inc:64
 msgid "Raisins"
-msgstr ""
+msgstr "Grožđice"
 
 #: src/ingredients.inc:65
 msgid "Rice"
-msgstr ""
+msgstr "Riža"
 
 #: src/ingredients.inc:66
 msgid "Salt"
-msgstr ""
+msgstr "Sol"
 
 #: src/ingredients.inc:67
 msgid "Soy sauce"
-msgstr ""
+msgstr "Umak od soje"
 
 #: src/ingredients.inc:68
 msgid "Strawberry"
-msgstr ""
+msgstr "Jagoda"
 
 #: src/ingredients.inc:69
 msgid "Sugar"
-msgstr ""
+msgstr "Šećer"
 
 #: src/ingredients.inc:70
 msgid "Sunflower seeds"
-msgstr ""
+msgstr "Sjemenke suncokreta"
 
 #: src/ingredients.inc:71
 msgid "Squash"
-msgstr ""
+msgstr "Tikva"
 
 #: src/ingredients.inc:72
 msgid "Tangerine"
-msgstr ""
+msgstr "Mandarina"
 
 #: src/ingredients.inc:73
 msgid "Tofu"
-msgstr ""
+msgstr "Tofu"
 
 #: src/ingredients.inc:74
 msgid "Tomato"
-msgstr ""
+msgstr "Rajčica"
 
 #: src/ingredients.inc:75
 msgid "Turmeric, ground"
-msgstr ""
+msgstr "Kurkuma, mljevena"
 
 #: src/ingredients.inc:76
 msgid "Vanilla sugar"
-msgstr ""
+msgstr "Vanilij šećer"
 
 #: src/ingredients.inc:77
 msgid "Vanilla pudding"
-msgstr ""
+msgstr "Puding od vanilije"
 
 #: src/ingredients.inc:78
 msgid "Vinegar"
-msgstr ""
+msgstr "Ocat"
 
 #: src/ingredients.inc:79
 msgid "Water"
-msgstr ""
+msgstr "Voda"
 
 #: src/ingredients.inc:80
 msgid "Wine"
-msgstr ""
+msgstr "Vino"
 
 #: src/ingredients.inc:81
 msgid "Yeast"
-msgstr ""
+msgstr "Kvasac"
 
 #: src/ingredients.inc:82
 msgid "Yoghurt"
-msgstr ""
+msgstr "Jogurt"
 
 #: src/ingredients.inc:83
 msgid "Zinfandel"
-msgstr ""
+msgstr "Zinfandel"
 
 #: src/ingredients.inc:84
 msgid "Zuccini"
-msgstr ""
+msgstr "Tikvica"
 
 #: src/no-ingredients.inc:1
 msgid "no Almond"
