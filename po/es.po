@@ -7,10 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes 0.1.0\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=recipes\n"
-"POT-Creation-Date: 2017-06-20 09:19-0400\n"
-"PO-Revision-Date: 2017-05-23 12:41+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-07 09:07+0000\n"
+"PO-Revision-Date: 2017-08-22 11:48+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -31,6 +30,7 @@ msgstr "Recetas"
 msgid "GNOME cooks unite!"
 msgstr "¡Cocineros de GNOME uníos!"
 
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Recipes.desktop.in:7
 msgid "org.gnome.Recipes"
 msgstr "org.gnome.Recipes"
@@ -623,7 +623,7 @@ msgstr "Cualquier comida"
 
 #: src/gr-query-editor.ui:109
 msgid "Spiciness"
-msgstr "Sin especias"
+msgstr "Picante"
 
 #: src/gr-query-editor.ui:129 src/gr-query-editor.c:557
 #: src/gr-query-editor.c:708
@@ -645,6 +645,7 @@ msgstr "Sin restricciones"
 msgid "Ingredients"
 msgstr "Ingredientes"
 
+#. FIXME: repopulate
 #: src/gr-query-editor.ui:255 src/gr-query-editor.c:337
 #: src/gr-query-editor.c:766
 msgid "Anything"
@@ -942,12 +943,12 @@ msgstr "Aprender más sobre Recetas"
 msgid "Recipes by"
 msgstr "Recetas de"
 
-#: src/gr-account.c:109
+#: src/gr-account.c:111
 #, c-format
 msgid "Got an error from Account portal"
 msgstr "Se obtuvo un error del portal de Cuentas"
 
-#: src/gr-account.c:137
+#: src/gr-account.c:162
 msgid ""
 "Allow your personal information to be included with recipes you share with "
 "your friends."
