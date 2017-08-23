@@ -23,4 +23,4 @@
                    'images/search.png',
                    'images/star.png',
                    'images/trash.png'],
-            languages: ['de', 'ko', 'sv'])
+            languages: ['de', 'es', 'ko', 'sv'])
