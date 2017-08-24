@@ -100,6 +100,9 @@ struct _GrWindow
         GList *shopping_done_list;
         char **removed_ingredients;
 
+        GtkWidget *export_done_revealer;
+        guint export_done_timeout_id;
+
         GObject *file_chooser;
         GrRecipeImporter *importer;
         GrRecipeExporter *exporter;
@@ -602,6 +605,10 @@ gr_window_finalize (GObject *object)
                 g_source_remove (self->shopping_done_timeout_id);
                 self->shopping_done_timeout_id = 0;
         }
+        if (self->export_done_timeout_id) {
+                g_source_remove (self->export_done_timeout_id);
+                self->export_done_timeout_id = 0;
+        }
 
         g_list_free (self->dialogs);
 
@@ -876,6 +883,35 @@ done_shopping (GrWindow *window)
         }
 }
 
+
+static void
+close_export_done (GrWindow *window)
+{
+    if (window->export_done_timeout_id) {
+            g_source_remove (window->export_done_timeout_id);
+            window->export_done_timeout_id = 0;
+    }
+
+    gtk_revealer_set_reveal_child (GTK_REVEALER (window->export_done_revealer), FALSE);
+}
+
+static gboolean
+export_done_timeout (gpointer data)
+{
+        GrWindow *window = data;
+
+        close_export_done (window);
+
+        return G_SOURCE_REMOVE;
+}
+
+void
+gr_window_confirm_shopping_exported (GrWindow *window)
+{
+    gtk_revealer_set_reveal_child (GTK_REVEALER (window->export_done_revealer), TRUE);
+    window->export_done_timeout_id = g_timeout_add_seconds (10, export_done_timeout, window);
+}
+
 static void
 make_save_sensitive (GrEditPage *edit_page,
                      GParamSpec *pspec,
@@ -960,6 +996,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrWindow, remind_label);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, shopping_added_revealer);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, shopping_done_revealer);
+        gtk_widget_class_bind_template_child (widget_class, GrWindow, export_done_revealer);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, sort_by_label);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, sort_by_name_button);
         gtk_widget_class_bind_template_child (widget_class, GrWindow, sort_by_recency_button);
@@ -990,6 +1027,7 @@ gr_window_class_init (GrWindowClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, back_to_shopping);
         gtk_widget_class_bind_template_callback (widget_class, make_save_sensitive);
         gtk_widget_class_bind_template_callback (widget_class, sort_clicked);
+        gtk_widget_class_bind_template_callback (widget_class, close_export_done);
 }
 
 static GtkClipboard *

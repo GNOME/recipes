@@ -84,5 +84,6 @@ void            gr_window_save_all                   (GrWindow   *window);
 void            gr_window_timer_expired              (GrWindow   *window,
                                                       GrRecipe   *recipe,
                                                       int         step);
+void            gr_window_confirm_shopping_exported  (GrWindow *window);
 
 G_END_DECLS

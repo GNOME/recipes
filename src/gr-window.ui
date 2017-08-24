@@ -468,6 +468,56 @@
                 </child>
               </object>
             </child>
+            <child type="overlay">
+              <object class="GtkRevealer" id="export_done_revealer">
+                <property name="visible">1</property>
+                <property name="halign">center</property>
+                <property name="valign">start</property>
+                <child>
+                  <object class="GtkFrame">
+                    <property name="visible">1</property>
+                    <style>
+                      <class name="app-notification"/>
+                    </style>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="visible">1</property>
+                        <property name="spacing">10</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">1</property>
+                            <property name="hexpand">1</property>
+                            <property name="halign">center</property>
+                            <property name="label" translatable="yes">Shopping List has been exported to Todoist</property>
+                            <style>
+                              <class name="notification-label"/>
+                            </style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkButton">
+                            <property name="visible">1</property>
+                            <property name="focus-on-click">0</property>
+                            <property name="relief">none</property>
+                            <signal name="clicked" handler="close_export_done" swapped="yes"/>
+                            <style>
+                              <class name="image-button"/>
+                            </style>
+                            <child>
+                              <object class="GtkImage">
+                                <property name="visible">1</property>
+                                <property name="icon-name">window-close-symbolic</property>
+                                <property name="icon-size">1</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
             <child>
               <object class="GtkStack" id="main_stack">
                 <property name="visible">1</property>
