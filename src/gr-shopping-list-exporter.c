@@ -49,6 +49,7 @@ struct _GrShoppingListExporter
         GoaObject *account_object;
         const gchar *sync_token;
         glong project_id;
+        gboolean delete_items;
 
         GtkWidget *dialog;
         GtkWidget *export_button;
@@ -106,7 +107,7 @@ gr_shopping_list_exporter_new (GtkWindow *parent)
 }
 
 static void
-complete_items_callback (RestProxyCall *call,
+remove_items_callback (RestProxyCall *call,
 			       GError *error,
 			       GObject *obj,
 			       GrShoppingListExporter *exporter)
@@ -123,7 +124,7 @@ complete_items_callback (RestProxyCall *call,
 }
 
 static void
-complete_items (GrShoppingListExporter *exporter, GList *items)
+remove_items (GrShoppingListExporter *exporter, GList *items)
 {
 	RestProxy *proxy;
 	RestProxyCall *call;
@@ -133,7 +134,11 @@ complete_items (GrShoppingListExporter *exporter, GList *items)
 	GList *l;
 	GString *commands;
 	commands = g_string_new ("");
-	g_string_append_printf (commands , "[{\"type\": \"item_complete\", \"uuid\": \"%s\", \"args\": {\"ids\": [", uuid);
+	if (exporter->delete_items)
+		g_string_append_printf (commands , "[{\"type\": \"item_delete\", \"uuid\": \"%s\", \"args\": {\"ids\": [", uuid);
+	else
+		g_string_append_printf (commands , "[{\"type\": \"item_complete\", \"uuid\": \"%s\", \"args\": {\"ids\": [", uuid);
+	
 	for (l = items; l != NULL; l = l->next) {
 		JsonObject *object;
 		double id;
@@ -162,7 +167,7 @@ complete_items (GrShoppingListExporter *exporter, GList *items)
 
 	rest_proxy_call_add_param (call, "commands", commands->str);
 
-	if (!rest_proxy_call_async (call, (RestProxyCallAsyncCallback) complete_items_callback,
+	if (!rest_proxy_call_async (call, (RestProxyCallAsyncCallback) remove_items_callback,
 				    NULL, exporter, &error))
 	{
 	    g_warning ("Couldn't execute RestProxyCall");
@@ -216,7 +221,7 @@ get_project_data_callback (RestProxyCall *call,
 	items = json_array_get_elements (json_items);
 	if (items)
 	{
-		complete_items (exporter, items);
+		remove_items (exporter, items);
 	}
 	out:
 	  if (parser)
@@ -449,6 +454,7 @@ void
 done_shopping_in_todoist (GrShoppingListExporter *exporter)
 {
 	gboolean project_present = FALSE;
+	exporter->delete_items = FALSE;
 	if (get_todoist_account (exporter)) {
 		get_access_token (exporter);
 		if (!exporter->project_id)
@@ -728,6 +734,7 @@ static void
 initialize_export (GrShoppingListExporter *exporter)
 {
 	gboolean project_present;
+	exporter->delete_items = TRUE;
 	if (exporter->account_row_selected == exporter->todoist_row) {
 		if (!exporter->access_token) {
 			if (!exporter->account_object) {
@@ -736,10 +743,10 @@ initialize_export (GrShoppingListExporter *exporter)
 				get_access_token (exporter);
 			}
 		project_present = get_project_id (exporter);
-		if (!project_present)
-		{
+		if (project_present)
+			get_project_data (exporter);
+		else
 			add_project_id (exporter);
-		}
 		export_shopping_list_to_todoist (exporter);
 	}
 	else if (exporter->account_row_selected == exporter->email_row)
