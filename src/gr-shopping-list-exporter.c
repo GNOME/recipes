@@ -33,6 +33,7 @@
 #include "gr-shopping-page.h"
 #include "gr-shopping-list-formatter.h"
 #include "gr-mail.h"
+#include "gr-window.h"
 
 #define TODOIST_URL "https://todoist.com/API/v7/sync"
 
@@ -323,6 +324,7 @@ export_shopping_list_callback (RestProxyCall *call,
 	  g_object_unref (parser);
 	  if (exporter->dialog)
 		close_dialog (exporter);
+	  gr_window_confirm_shopping_exported (GR_WINDOW (exporter->window));
 }
 
 static void
