@@ -5,6 +5,7 @@ N_("A Kuala Lumpur native, transplanted to San Francisco. I bake, I cook, I work
 N_("Adrià is originally from Barcelona, Spain.")
 N_("Being from Strasbourg, Alexandre is knowledgeable about both Alsatian and French cuisine, but he's not afraid to experiment in other ones as well.")
 N_("The nordic cuisine maestro.")
+N_("I love to blend and juice.")
 N_("He cooks with GTK+")
 N_("Elvin lives in Istanbul.")
 N_("Erusan is an American who has lived all over the country, loves GNOME, and enjoys cooking — primarily American, Asian, and Indian cuisine.")

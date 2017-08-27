@@ -1,5 +1,18 @@
 #if 0
 
+N_("Original V-8 Recipe")
+N_("Yield roughly 32 oz. Trust me best served cold. If you add Tabasco, black pepper, and Worcestershire sauce you got yourself a spicy V-8.")
+N_("This recipe is intended for juicing.")
+N_("Peach Pine Delight")
+N_("Peaches, pineapple, and pomegranate juice blended to perfection. I hope you enjoy!")
+N_("Place items in blender and blend it.")
+N_("Endurance 1.0")
+N_("This is intended for blending. However if you want to juice this I recommend. ")
+N_("1 package cherries")
+N_("1 bushel Kale")
+N_("4 large bananas")
+N_("½ medium sweet potatoes")
+N_("This is intended for blending")
 N_("Okonomiyaki (Osaka style)")
 N_("Okonomiyaki: 'Okonomi' meaning \"your choice\", and 'yaki' meaning \"fried\".  This dish, as I have experienced it, is a cabbage pancake.")
 N_("This recipe is vegetarian, but it is also apparently very good if you fry okonomiyaki on top of a weave of bacon. When you have finished cooking, you can also top your okonomiyaki with katsuoboshi (bonito flakes) for a fun fishy topping.")
