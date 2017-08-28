@@ -321,46 +321,22 @@ gr_ingredients_viewer_set_ingredients (GrIngredientsViewer *viewer,
                 double amount;
                 GrUnit unit;
                 GtkWidget *row;
-                GrDimension dimension;
+                g_autoptr(GString) s = NULL;
+                s = g_string_new ("");
                 double scale = viewer->scale;
 
                 unit = gr_ingredients_list_get_unit (ingredients, viewer->title, ings[i]);
                 amount = gr_ingredients_list_get_amount (ingredients, viewer->title, ings[i]) * scale;
-                dimension = gr_unit_get_dimension (unit);
 
-                if (dimension) {
-                        if (dimension == GR_DIMENSION_VOLUME) {
-                                GrPreferredUnit user_volume_unit = gr_convert_get_volume_unit ();
-                                gr_convert_volume (&amount, &unit, user_volume_unit);
-                        }
-
-                        if (dimension == GR_DIMENSION_MASS) {
-                                GrPreferredUnit user_weight_unit = gr_convert_get_weight_unit ();
-                                gr_convert_weight (&amount, &unit, user_weight_unit);
-                        }
-                }
-
-                gr_convert_human_readable (&amount, &unit);
-
-                char *a_final = gr_number_format (amount);
-                const char *u_final = gr_unit_get_name (unit);
-
-                char for_display[128];
-                if (u_final == NULL) {
-                        snprintf (for_display, sizeof for_display, "%s", a_final);
-                }
-                else {
-                        snprintf (for_display, sizeof for_display, "%s %s", a_final, u_final);
-                }
-
-                u_final = for_display;
+                gr_convert_format (s, amount, unit);
 
                 row = g_object_new (GR_TYPE_INGREDIENTS_VIEWER_ROW,
-                                    "unit", u_final,
+                                    "unit", g_strdup (s->str),
                                     "ingredient", ings[i],
                                     "size-group", viewer->group,
                                     "editable", viewer->editable,
                                     NULL);
+
                 g_signal_connect (row, "delete", G_CALLBACK (delete_row), viewer);
                 g_signal_connect (row, "move", G_CALLBACK (move_row), viewer);
                 g_signal_connect (row, "edit", G_CALLBACK (edit_ingredient_row), viewer);

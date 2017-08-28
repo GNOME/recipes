@@ -48,7 +48,6 @@ GrUnit             gr_ingredients_list_get_unit        (GrIngredientsList  *list
                                                         const char         *segment,
                                                         const char         *ingredient);
 double             gr_ingredients_list_get_amount      (GrIngredientsList  *list,
-                                                        const char         *segment,
                                                         const char         *ingredient);
 
 G_END_DECLS
