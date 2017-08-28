@@ -316,3 +316,110 @@ gr_convert_weight (double *amount, GrUnit *unit, GrPreferredUnit user_weight_uni
          *amount = amount1;
          *unit = unit1;
 }
+
+void
+gr_convert_human_readable (double *amount, GrUnit *unit)
+{
+    double amount1 = *amount;        
+    GrUnit unit1 = *unit;
+        
+    gboolean unit_changed = TRUE;
+
+    while(unit_changed) {
+        switch (unit1) {
+                case GR_UNIT_GRAM: 
+                    if (amount1 >= 1000) {
+                        amount1 = (amount1 / 1000);
+                        unit1 = GR_UNIT_KILOGRAM;
+                    }
+                break;
+
+                case GR_UNIT_KILOGRAM:
+                    if (amount1 < 1) {
+                        amount1 = (amount1 * 1000);
+                        unit1 = GR_UNIT_GRAM;
+                    }
+                break;
+
+                case GR_UNIT_POUND:
+                    if (amount1 < 1) {
+                        amount1 = (amount1 * 16);
+                        unit1 = GR_UNIT_OUNCE;
+                    }
+                break;
+
+                case GR_UNIT_OUNCE:
+                    if (amount1 >= 16) {
+                        amount1 = (amount1 / 16);
+                        unit1 = GR_UNIT_POUND;  
+                    }
+                break;
+
+                case GR_UNIT_TEASPOON:
+                    if (amount1 >= 3) {
+                        amount1 = (amount1 / 3);
+                        unit1 = GR_UNIT_TABLESPOON; 
+                    }
+                break;
+
+                case GR_UNIT_TABLESPOON:
+                    if (amount1 >= 16) {
+                        amount1 = (amount1 / 16);
+                        unit1 = GR_UNIT_CUP;
+                    }
+                        
+                    else if ((amount1 < 1) && (amount1 > 0)) {
+                        amount1 = (amount1 * 3);
+                        unit1 = GR_UNIT_TEASPOON;
+                    }     
+                break;
+                
+                case GR_UNIT_CUP:
+                    if (amount1 >= 4) {
+                        amount1 = (amount1 / 4);
+                        unit1 = GR_UNIT_QUART;
+                    }
+                        
+                    else if (amount1 < 1) {
+                        amount1 = amount1 / 16;
+                        unit1 = GR_UNIT_TABLESPOON;
+                    }
+                break;
+
+                case GR_UNIT_MILLILITER:
+                    if (amount1 >= 1000) {
+                        amount1 = amount1 / 1000;
+                        unit1 = GR_UNIT_LITER;
+                    }
+                break;
+
+                case GR_UNIT_DECILITER:
+                    if (amount1 < 1) {
+                        amount1 = amount1 * 100;
+                        unit1 = GR_UNIT_MILLILITER;
+                    }
+                    else if (amount1 >= 10) {
+                        amount1 = amount1 / 10;
+                        unit1 = GR_UNIT_LITER;
+                    }
+                break;
+
+                case GR_UNIT_LITER: 
+                    if (amount1 < 1) {
+                        amount1 = amount1 * 1000;
+                        unit1 = GR_UNIT_MILLILITER;
+                    }
+                break;
+
+                default:
+                ;
+    }
+
+                if (*unit == unit1) {
+                unit_changed = FALSE; 
+                }
+                
+                *amount = amount1;
+                *unit = unit1;
+    }
+}
