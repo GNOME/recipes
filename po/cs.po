@@ -7,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-07 12:08+0000\n"
-"PO-Revision-Date: 2017-07-08 15:29+0200\n"
+"POT-Creation-Date: 2017-08-27 20:13+0000\n"
+"PO-Revision-Date: 2017-08-28 18:46+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
-"Language-Team: čeština <gnome-cs-list@gnome.org>>\n"
+"Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -217,6 +217,18 @@ msgstr "Podle jakého klíče řadit seznamy"
 #: data/org.gnome.Recipes.gschema.xml:87
 msgid "The setting determines which key is used to sort lists of recipes by."
 msgstr "Nastavení určuje, který klíč se použije k řazení seznamů s recepty."
+
+#: data/org.gnome.Recipes.gschema.xml:93
+msgid "Whether the surprise dialog should be shown."
+msgstr "Zda se má zobrazit dialogové okno s překvapením"
+
+#: data/org.gnome.Recipes.gschema.xml:94
+msgid ""
+"The setting determines whether the surprise dialog should be shown on "
+"startup."
+msgstr ""
+"Nastavení určuje, jestli se má při spuštění zobrazit dialogové okno s "
+"překvapením."
 
 #: src/chef-conflict-dialog.ui:10
 msgid "Same Chef"
@@ -722,6 +734,10 @@ msgstr "Kategorie"
 msgid "Featured GNOME Chefs"
 msgstr "Doporučují kuchaři z GNOME"
 
+#: src/gr-recipe-tile.ui:58
+msgid "Contributed recipe"
+msgstr "Recept od přispěvatele"
+
 #: src/gr-search-page.ui:42
 msgid "Try a different search"
 msgstr "Zkusit jiné hledání"
@@ -880,7 +896,7 @@ msgstr "Nápo_věda k Receptům"
 
 #: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:163
 #: src/gr-image-viewer.c:627 src/gr-recipe-exporter.c:172
-#: src/gr-shopping-page.c:739 src/gr-window.c:1162
+#: src/gr-shopping-page.c:730 src/gr-window.c:1162
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -907,6 +923,30 @@ msgstr "Přispět do projektu Recepty"
 #: src/recipe-whats-new-dialog.ui:8
 msgid "What’s New in Recipes"
 msgstr "Co je v Receptech nového"
+
+#: src/recipe-surprise.ui:28
+msgid "GNOME turns 20 !"
+msgstr "GNOME dovršilo 20 let!"
+
+#: src/recipe-surprise.ui:52
+msgid ""
+"YEARS\n"
+"STRONG"
+msgstr ""
+"VYZRÁLÉ, JAK\n"
+"DOBRÉ VÍNO"
+
+#: src/recipe-surprise.ui:68
+msgid ""
+"Recipes is a present to GNOME for its 20th birthday. We invite the GNOME "
+"community all over the world to share recipes and enjoy a good meal together."
+msgstr ""
+"Recepty jsou dárkem projektu GNOME k jeho dvacetinám. Zveme komunitu GNOME z "
+"celého světa, aby sdílela recepty a užívala si společně dobrého jídla."
+
+#: src/recipe-surprise.ui:79
+msgid "Let’s Party"
+msgstr "Pojďme to oslavit"
 
 #: src/gr-about-dialog.c:132
 msgid "Learn more about Builder"
@@ -1013,20 +1053,20 @@ msgstr ""
 "Umožňuje vložení vašich osobních informací do receptů, které sdílíte se "
 "svými přáteli."
 
-#: src/gr-app.c:202
+#: src/gr-app.c:209
 #, c-format
 msgid "Supported categories: %s\n"
 msgstr "Podporované kategorie: %s\n"
 
-#: src/gr-app.c:434
+#: src/gr-app.c:441
 msgid "Print the version and exit"
 msgstr "Vypsat verzi a skončit"
 
-#: src/gr-app.c:438
+#: src/gr-app.c:445
 msgid "Turn on verbose logging"
 msgstr "Přepnout podrobné záznamy"
 
-#: src/gr-app.c:442
+#: src/gr-app.c:449
 msgid "Show a category"
 msgstr "Zobrazit kategorii"
 
@@ -1698,7 +1738,7 @@ msgstr "Nelze zpracovat %s jako číslo"
 msgid "Save the exported recipe"
 msgstr "Uložit exportované recepty"
 
-#: src/gr-recipe-exporter.c:171 src/gr-shopping-page.c:738
+#: src/gr-recipe-exporter.c:171 src/gr-shopping-page.c:729
 msgid "Save"
 msgstr "Uložit"
 
@@ -1747,7 +1787,7 @@ msgstr "(Přiložený soubor se dá naimportovat do Receptů GNOME.)"
 msgid "This build does not support exporting"
 msgstr "Toto sestavení nepodporuje exportování"
 
-#: src/gr-recipe-exporter.c:519
+#: src/gr-recipe-exporter.c:520
 #, c-format
 msgid ""
 "Error while exporting:\n"
@@ -1756,7 +1796,7 @@ msgstr ""
 "Chyba při exportu:\n"
 "%s"
 
-#: src/gr-recipe-exporter.c:616
+#: src/gr-recipe-exporter.c:617
 #, c-format
 msgid "%d recipe selected for sharing"
 msgid_plural "%d recipes selected for sharing"
@@ -1764,7 +1804,7 @@ msgstr[0] "%d recept vybrán ke sdílení"
 msgstr[1] "%d recepty vybrány ke sdílení"
 msgstr[2] "%d receptů vybráno ke sdílení"
 
-#: src/gr-recipe-exporter.c:648
+#: src/gr-recipe-exporter.c:649
 msgid ""
 "Some of the selected recipes are included\n"
 "with GNOME Recipes. You should only contribute\n"
@@ -1958,7 +1998,7 @@ msgid "Winter"
 msgstr "Zima"
 
 #: src/gr-shopping-list-formatter.c:42 src/gr-shopping-list-printer.c:135
-#: src/gr-shopping-page.c:764
+#: src/gr-shopping-page.c:755
 msgid "Shopping List"
 msgstr "Nákupní seznam"
 
@@ -1998,7 +2038,7 @@ msgstr[0] "%d recept označen k přípravě"
 msgstr[1] "%d recepty označeny k přípravě"
 msgstr[2] "%d receptů označeno k přípravě"
 
-#: src/gr-shopping-page.c:735
+#: src/gr-shopping-page.c:726
 msgid "Save the shopping list"
 msgstr "Uložit nákupní seznam"
 
@@ -2018,352 +2058,352 @@ msgstr "značně pikantní"
 msgid "Hot or very spicy"
 msgstr "pikantní nebo hodně kořeněné"
 
-#: src/gr-unit.c:41
+#: src/gr-unit.c:43
 msgctxt "unit abbreviation"
 msgid "g"
 msgstr "g"
 
-#: src/gr-unit.c:41
+#: src/gr-unit.c:43
 msgctxt "unit name"
 msgid "gram"
 msgstr "gram"
 
-#: src/gr-unit.c:41
+#: src/gr-unit.c:43
 msgctxt "unit plural"
 msgid "grams"
 msgstr "gramů"
 
-#: src/gr-unit.c:42
+#: src/gr-unit.c:44
 msgctxt "unit abbreviation"
 msgid "kg"
 msgstr "kg"
 
-#: src/gr-unit.c:42
+#: src/gr-unit.c:44
 msgctxt "unit name"
 msgid "kilogram"
 msgstr "kilogram"
 
-#: src/gr-unit.c:42
+#: src/gr-unit.c:44
 msgctxt "unit plural"
 msgid "kilograms"
 msgstr "kilogramů"
 
-#: src/gr-unit.c:43
+#: src/gr-unit.c:45
 msgctxt "unit abbreviation"
 msgid "lb"
 msgstr "lb"
 
-#: src/gr-unit.c:43
+#: src/gr-unit.c:45
 msgctxt "unit name"
 msgid "pound"
 msgstr "libra"
 
-#: src/gr-unit.c:43
+#: src/gr-unit.c:45
 msgctxt "unit plural"
 msgid "pounds"
 msgstr "liber"
 
-#: src/gr-unit.c:44
+#: src/gr-unit.c:46
 msgctxt "unit abbreviation"
 msgid "oz"
 msgstr "oz"
 
-#: src/gr-unit.c:44
+#: src/gr-unit.c:46
 msgctxt "unit name"
 msgid "ounce"
 msgstr "unce"
 
-#: src/gr-unit.c:44
+#: src/gr-unit.c:46
 msgctxt "unit plural"
 msgid "ounces"
 msgstr "uncí"
 
-#: src/gr-unit.c:45
+#: src/gr-unit.c:47
 msgctxt "unit abbreviation"
 msgid "l"
 msgstr "l"
 
-#: src/gr-unit.c:45
+#: src/gr-unit.c:47
 msgctxt "unit name"
 msgid "liter"
 msgstr "litr"
 
-#: src/gr-unit.c:45
+#: src/gr-unit.c:47
 msgctxt "unit plural"
 msgid "liters"
 msgstr "litrů"
 
-#: src/gr-unit.c:46
+#: src/gr-unit.c:48
 msgctxt "unit abbreviation"
 msgid "dl"
 msgstr "dl"
 
-#: src/gr-unit.c:46
+#: src/gr-unit.c:48
 msgctxt "unit name"
 msgid "deciliter"
 msgstr "decilitr"
 
-#: src/gr-unit.c:46
+#: src/gr-unit.c:48
 msgctxt "unit plural"
 msgid "deciliters"
 msgstr "decilitrů"
 
-#: src/gr-unit.c:47
+#: src/gr-unit.c:49
 msgctxt "unit abbreviation"
 msgid "ml"
 msgstr "ml"
 
-#: src/gr-unit.c:47
+#: src/gr-unit.c:49
 msgctxt "unit name"
 msgid "milliliter"
 msgstr "mililitr"
 
-#: src/gr-unit.c:47
+#: src/gr-unit.c:49
 msgctxt "unit plural"
 msgid "milliliters"
 msgstr "mililitrů"
 
-#: src/gr-unit.c:48 src/gr-unit.c:49
+#: src/gr-unit.c:50 src/gr-unit.c:51
 msgctxt "unit abbreviation"
 msgid "fl oz"
 msgstr "fl oz"
 
-#: src/gr-unit.c:48 src/gr-unit.c:49
+#: src/gr-unit.c:50 src/gr-unit.c:51
 msgctxt "unit name"
 msgid "fluid ounce"
 msgstr "dutá unce"
 
-#: src/gr-unit.c:48 src/gr-unit.c:49
+#: src/gr-unit.c:50 src/gr-unit.c:51
 msgctxt "unit plural"
 msgid "fluid ounces"
 msgstr "dutých uncí"
 
-#: src/gr-unit.c:50
+#: src/gr-unit.c:52
 msgctxt "unit abbreviation"
 msgid "pt"
 msgstr "pt"
 
-#: src/gr-unit.c:50
+#: src/gr-unit.c:52
 msgctxt "unit name"
 msgid "pint"
 msgstr "pinta"
 
-#: src/gr-unit.c:50
+#: src/gr-unit.c:52
 msgctxt "unit plural"
 msgid "pints"
 msgstr "pint"
 
-#: src/gr-unit.c:51
+#: src/gr-unit.c:53
 msgctxt "unit abbreviation"
 msgid "qt"
 msgstr "qt"
 
-#: src/gr-unit.c:51
+#: src/gr-unit.c:53
 msgctxt "unit name"
 msgid "quart"
 msgstr "quarta"
 
-#: src/gr-unit.c:51
+#: src/gr-unit.c:53
 msgctxt "unit plural"
 msgid "quarts"
 msgstr "quart"
 
-#: src/gr-unit.c:52
+#: src/gr-unit.c:54
 msgctxt "unit abbreviation"
 msgid "gal"
 msgstr "gal"
 
-#: src/gr-unit.c:52
+#: src/gr-unit.c:54
 msgctxt "unit name"
 msgid "gallon"
 msgstr "galon"
 
-#: src/gr-unit.c:52
+#: src/gr-unit.c:54
 msgctxt "unit plural"
 msgid "gallons"
 msgstr "galonů"
 
-#: src/gr-unit.c:53
+#: src/gr-unit.c:55
 msgctxt "unit abbreviation"
 msgid "cup"
 msgstr "šálek"
 
-#: src/gr-unit.c:53
+#: src/gr-unit.c:55
 msgctxt "unit name"
 msgid "cup"
 msgstr "šálek"
 
-#: src/gr-unit.c:53
+#: src/gr-unit.c:55
 msgctxt "unit plural"
 msgid "cups"
 msgstr "šálků"
 
-#: src/gr-unit.c:54
+#: src/gr-unit.c:56
 msgctxt "unit abbreviation"
 msgid "tbsp"
 msgstr "lžíce"
 
-#: src/gr-unit.c:54
+#: src/gr-unit.c:56
 msgctxt "unit name"
 msgid "tablespoon"
 msgstr "polévkové lžíce"
 
-#: src/gr-unit.c:54
+#: src/gr-unit.c:56
 msgctxt "unit plural"
 msgid "tablespoons"
 msgstr "polévkových lžic"
 
-#: src/gr-unit.c:55
+#: src/gr-unit.c:57
 msgctxt "unit abbreviation"
 msgid "tsp"
 msgstr "lžička"
 
-#: src/gr-unit.c:55
+#: src/gr-unit.c:57
 msgctxt "unit name"
 msgid "teaspoon"
 msgstr "čajová lžička"
 
-#: src/gr-unit.c:55
+#: src/gr-unit.c:57
 msgctxt "unit plural"
 msgid "teaspoons"
 msgstr "čajových lžiček"
 
-#: src/gr-unit.c:56
+#: src/gr-unit.c:58
 msgctxt "unit abbreviation"
 msgid "box"
 msgstr "krabice"
 
-#: src/gr-unit.c:56
+#: src/gr-unit.c:58
 msgctxt "unit name"
 msgid "box"
 msgstr "krabice"
 
-#: src/gr-unit.c:56
+#: src/gr-unit.c:58
 msgctxt "unit plural"
 msgid "boxes"
 msgstr "krabic"
 
-#: src/gr-unit.c:57
+#: src/gr-unit.c:59
 msgctxt "unit abbreviation"
 msgid "pkg"
 msgstr "bal"
 
-#: src/gr-unit.c:57
+#: src/gr-unit.c:59
 msgctxt "unit name"
 msgid "package"
 msgstr "balení"
 
-#: src/gr-unit.c:57
+#: src/gr-unit.c:59
 msgctxt "unit plural"
 msgid "packages"
 msgstr "balení"
 
-#: src/gr-unit.c:58
+#: src/gr-unit.c:60
 msgctxt "unit abbreviation"
 msgid "glass"
 msgstr "sklenice"
 
-#: src/gr-unit.c:58
+#: src/gr-unit.c:60
 msgctxt "unit name"
 msgid "glass"
 msgstr "sklenice"
 
-#: src/gr-unit.c:58
+#: src/gr-unit.c:60
 msgctxt "unit plural"
 msgid "glasses"
 msgstr "sklenic"
 
-#: src/gr-unit.c:59
+#: src/gr-unit.c:61
 msgctxt "unit abbreviation"
 msgid "mm"
 msgstr "mm"
 
-#: src/gr-unit.c:59
+#: src/gr-unit.c:61
 msgctxt "unit name"
 msgid "millimeter"
 msgstr "milimetr"
 
-#: src/gr-unit.c:59
+#: src/gr-unit.c:61
 msgctxt "unit plural"
 msgid "millimeters"
 msgstr "milimetrů"
 
-#: src/gr-unit.c:60
+#: src/gr-unit.c:62
 msgctxt "unit abbreviation"
 msgid "cm"
 msgstr "cm"
 
-#: src/gr-unit.c:60
+#: src/gr-unit.c:62
 msgctxt "unit name"
 msgid "centimeter"
 msgstr "centimetr"
 
-#: src/gr-unit.c:60
+#: src/gr-unit.c:62
 msgctxt "unit plural"
 msgid "centimeters"
 msgstr "centimetrů"
 
-#: src/gr-unit.c:61
+#: src/gr-unit.c:63
 msgctxt "unit abbreviation"
 msgid "m"
 msgstr "m"
 
-#: src/gr-unit.c:61
+#: src/gr-unit.c:63
 msgctxt "unit name"
 msgid "meter"
 msgstr "metr"
 
-#: src/gr-unit.c:61
+#: src/gr-unit.c:63
 msgctxt "unit plural"
 msgid "meters"
 msgstr "metrů"
 
-#: src/gr-unit.c:62
+#: src/gr-unit.c:64
 msgctxt "unit abbreviation"
 msgid "st"
 msgstr "st"
 
-#: src/gr-unit.c:62
+#: src/gr-unit.c:64
 msgctxt "unit name"
 msgid "stone"
 msgstr "stone"
 
-#: src/gr-unit.c:62
+#: src/gr-unit.c:64
 msgctxt "unit plural"
 msgid "stone"
 msgstr "stone"
 
-#: src/gr-unit.c:63
+#: src/gr-unit.c:65
 msgctxt "unit abbreviation"
 msgid "pinch"
 msgstr "špetka"
 
-#: src/gr-unit.c:63
+#: src/gr-unit.c:65
 msgctxt "unit name"
 msgid "pinch"
 msgstr "špetka"
 
-#: src/gr-unit.c:63
+#: src/gr-unit.c:65
 msgctxt "unit plural"
 msgid "pinches"
 msgstr "špetek"
 
-#: src/gr-unit.c:64
+#: src/gr-unit.c:66
 msgctxt "unit abbreviation"
 msgid "bunch"
 msgstr "svazek"
 
-#: src/gr-unit.c:64
+#: src/gr-unit.c:66
 msgctxt "unit name"
 msgid "bunch"
 msgstr "svazek"
 
-#: src/gr-unit.c:64
+#: src/gr-unit.c:66
 msgctxt "unit plural"
 msgid "bunches"
 msgstr "svazků"
 
-#: src/gr-unit.c:145
+#: src/gr-unit.c:164
 #, c-format
 msgid "I don’t know this unit: %s"
 msgstr "Tato jednotka není zmámá: %s"
