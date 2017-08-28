@@ -279,7 +279,6 @@ gr_ingredients_list_get_unit (GrIngredientsList *ingredients,
 
 double
 gr_ingredients_list_get_amount (GrIngredientsList *ingredients,
-                                const char        *segment,
                                 const char        *name)
 {
         GList *l;
@@ -287,8 +286,7 @@ gr_ingredients_list_get_amount (GrIngredientsList *ingredients,
         for (l = ingredients->ingredients; l; l = l->next) {
                 Ingredient *ing = (Ingredient *)l->data;
 
-                if (g_strcmp0 (segment, ing->segment) == 0 &&
-                    g_strcmp0 (name, ing->name) == 0) {
+                if (g_strcmp0 (name, ing->name) == 0) {
                         return ing->amount;
                 }
         }
