@@ -340,6 +340,8 @@ gr_ingredients_viewer_set_ingredients (GrIngredientsViewer *viewer,
                         }
                 }
 
+                gr_convert_human_readable (&amount, &unit);
+
                 char *a_final = gr_number_format (amount);
                 const char *u_final = gr_unit_get_name (unit);
 
