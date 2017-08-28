@@ -18,20 +18,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "config.h"
-
-#include <string.h>
-
-#include "gr-ingredients-viewer.h"
-#include "gr-ingredients-viewer-row.h"
-#include "gr-ingredients-list.h"
-#include "gr-ingredient.h"
-#include "gr-utils.h"
-
-#ifdef ENABLE_GSPELL
-#include <gspell/gspell.h>
-#endif
-
+ #include "config.h"
+ 
+ #include <string.h>
+ 
+ #include "gr-ingredients-viewer.h"
+ #include "gr-ingredients-viewer-row.h"
+ #include "gr-ingredients-list.h"
+ #include "gr-ingredient.h"
+ #include "gr-utils.h"
+ #include "gr-number.h"
+ #include "gr-convert-units.h"
+ #include "gr-unit.h"
+ 
+ #ifdef ENABLE_GSPELL
+ #include <gspell/gspell.h>
+ #endif
 
 struct _GrIngredientsViewer
 {
@@ -316,24 +318,49 @@ gr_ingredients_viewer_set_ingredients (GrIngredientsViewer *viewer,
         ingredients = gr_ingredients_list_new (text);
         ings = gr_ingredients_list_get_ingredients (ingredients, viewer->title);
         for (i = 0; ings && ings[i]; i++) {
-                g_autofree char *s = NULL;
-                g_auto(GStrv) strv = NULL;
-                const char *amount;
-                const char *unit;
+                
+                double amount;
+                GrUnit unit;
                 GtkWidget *row;
+                GrDimension dimension;
+                double scale = viewer->scale;
 
-                s = gr_ingredients_list_scale_unit (ingredients, viewer->title, ings[i], viewer->scale);
-                strv = g_strsplit (s, " ", 2);
-                amount = strv[0];
-                unit = strv[1] ? strv[1] : "";
+                unit = gr_ingredients_list_get_unit(ingredients, ings[i]);
+                amount = gr_ingredients_list_get_amount(ingredients, viewer->title, ings[i]) * scale;
+                dimension = gr_unit_get_dimension(unit);
+
+                if (dimension) {
+                
+                        if (dimension == GR_DIMENSION_VOLUME) {
+                                GrPreferredUnit user_volume_unit = gr_convert_get_volume_unit();
+                                gr_convert_volume(&amount, &unit, user_volume_unit); 
+                        }
+
+                        if (dimension == GR_DIMENSION_MASS) {
+                                GrPreferredUnit user_weight_unit = gr_convert_get_weight_unit();
+                                gr_convert_weight(&amount, &unit, user_weight_unit);
+                        }
+                }
+
+                char *a_final = gr_number_format(amount);
+                const char *u_final = gr_unit_get_name(unit);
+        
+                char for_display[128];
+                if (u_final == NULL) {
+                        snprintf(for_display, sizeof for_display, "%s", a_final);
+                }
+                else {
+                        snprintf(for_display, sizeof for_display, "%s %s", a_final, u_final);
+                }
+
+                u_final = for_display;
 
                 row = g_object_new (GR_TYPE_INGREDIENTS_VIEWER_ROW,
-                                    "amount", amount,
-                                    "unit", unit,
-                                    "ingredient", ings[i],
-                                    "size-group", viewer->group,
-                                    "editable", viewer->editable,
-                                    NULL);
+                                        "unit", u_final,
+                                        "ingredient", ings[i],
+                                        "size-group", viewer->group,
+                                        "editable", viewer->editable,
+                                        NULL);
                 g_signal_connect (row, "delete", G_CALLBACK (delete_row), viewer);
                 g_signal_connect (row, "move", G_CALLBACK (move_row), viewer);
                 g_signal_connect (row, "edit", G_CALLBACK (edit_ingredient_row), viewer);
