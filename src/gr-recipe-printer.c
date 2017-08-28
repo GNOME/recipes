@@ -32,6 +32,7 @@
 #include "gr-meal.h"
 #include "gr-season.h"
 #include "gr-utils.h"
+#include "gr-convert-units.h"
 
 
 struct _GrRecipePrinter
