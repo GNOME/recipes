@@ -34,6 +34,7 @@
 #include "gr-shopping-list-printer.h"
 #include "gr-shopping-list-formatter.h"
 #include "gr-mail.h"
+#include "gr-convert-units.h"
 
 
 struct _GrShoppingPage
@@ -208,20 +209,40 @@ ingredient_format_unit (Ingredient *ing)
 {
         g_autoptr(GString) s = NULL;
         int i;
-
+        GrPreferredUnit user_volume_unit = gr_convert_get_volume_unit();
+        GrPreferredUnit user_weight_unit = gr_convert_get_weight_unit();
+        GrUnit u1;
+        double a1;
+        GrDimension dimension;
         s = g_string_new ("");
 
         for (i = 0; i < ing->units->len; i++) {
-                Unit *u = &g_array_index (ing->units, Unit, i);
-                g_autofree char *num = NULL;
-                if (s->len > 0)
-                        g_string_append (s, ", ");
-                num = gr_number_format (u->amount);
-                g_string_append (s, num);
-                g_string_append (s, " ");
-                if (u->unit)
-                        g_string_append (s, gr_unit_get_abbreviation (u->unit));
+                Unit *unit = &g_array_index (ing->units, Unit, i);
+                double a = unit->amount;
+                GrUnit u = unit->unit;
+
+                dimension = gr_unit_get_dimension (u);
+
+                if (dimension == GR_DIMENSION_VOLUME) {
+                        gr_convert_volume (&a, &u, user_volume_unit);
+                }
+                else if (dimension == GR_DIMENSION_MASS) {
+                        gr_convert_weight (&a, &u, user_weight_unit);
+                }
+
+                if (i == 0) {
+                        u1 = u;
+                        a1 = a;
+                }
+                else if (u == u1) {
+                        a1 += a;
+                }
+                else {
+                        g_error ("conversion yielded different units...why...");
+                }
         }
+
+        gr_convert_format (s, a1, u1);
 
         return g_strdup (s->str);
 }
