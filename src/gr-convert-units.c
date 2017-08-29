@@ -31,90 +31,69 @@
 #include "gr-convert-units.h"
 #include "gr-number.h"
 #include "gr-utils.h"
- 
-GrTemperatureUnit
-gr_convert_get_temperature_unit (void)
-{
-        int unit;
-        GSettings *settings = gr_settings_get ();
 
-        unit = g_settings_get_enum (settings, "temperature-unit");
-
-        if (unit == GR_TEMPERATURE_UNIT_LOCALE) {
-        #ifdef LC_MEASUREMENT
-            const char *fmt;
-
-            fmt = nl_langinfo (_NL_MEASUREMENT_MEASUREMENT);
-        
-            if (fmt && *fmt == 2)
-                unit = GR_TEMPERATURE_UNIT_FAHRENHEIT;
-            else
-        #endif
-                unit = GR_TEMPERATURE_UNIT_CELSIUS;
-        }
-
-        return unit;
-}
- 
 GrPreferredUnit
-gr_convert_get_volume_unit (void)
- {
-    int unit;
+gr_convert_metric_or_imperial (const char *setting)
+{
+    GrPreferredUnit unit;
     GSettings *settings = gr_settings_get ();
 
-    unit = g_settings_get_enum (settings, "volume-unit");
+    unit = g_settings_get_enum (settings, setting);
 
     if (unit == GR_PREFERRED_UNIT_LOCALE) {
-#ifdef LC_MEASUREMENT
-                const char *fmt;
+        #ifdef LC_MEASUREMENT
+            const char *fmt;
 
             fmt = nl_langinfo (_NL_MEASUREMENT_MEASUREMENT);
             if (fmt && *fmt == 2)
                 unit = GR_PREFERRED_UNIT_IMPERIAL;
             else
-#endif
+        #endif
                 unit = GR_PREFERRED_UNIT_METRIC;
-        }
+    }
+    return unit;
+}
 
-        return unit;
+GrTemperatureUnit
+gr_convert_get_temperature_unit (void)
+{
+    GrPreferredUnit pref = gr_convert_metric_or_imperial("temperature-unit");
+
+    if (pref == GR_PREFERRED_UNIT_IMPERIAL) {
+        return GR_TEMPERATURE_UNIT_FAHRENHEIT;
+    }
+    else if (pref == GR_PREFERRED_UNIT_METRIC) {
+        return GR_TEMPERATURE_UNIT_CELSIUS;
+    }
+    else {
+        return GR_TEMPERATURE_UNIT_CELSIUS;
+    }    
+}
+ 
+GrPreferredUnit
+gr_convert_get_volume_unit (void)
+{
+    return gr_convert_metric_or_imperial("volume-unit");
 }
  
 GrPreferredUnit
 gr_convert_get_weight_unit (void)
 {
-    int unit;
-    GSettings *settings = gr_settings_get ();
- 
-    unit = g_settings_get_enum (settings, "weight-unit");
- 
-        if (unit == GR_PREFERRED_UNIT_LOCALE) {
- 
-            #ifdef LC_MEASUREMENT
-                 const char *fmt;
- 
-                fmt = nl_langinfo (_NL_MEASUREMENT_MEASUREMENT);
-                
-                if (fmt && *fmt == 2)
-                    unit = GR_PREFERRED_UNIT_IMPERIAL;
-                else
-            #endif
-                    unit = GR_PREFERRED_UNIT_METRIC;
-        }
-        return unit;
+    return gr_convert_metric_or_imperial("weight-unit");
 }
  
  
 void
 gr_convert_temp (int *num, int *unit, int user_unit)
 {
-int num1 = *num;
-int unit1 = *unit;
+    int num1 = *num;
+    int unit1 = *unit;
                 
     if (unit1 == GR_TEMPERATURE_UNIT_CELSIUS &&
-            user_unit == GR_TEMPERATURE_UNIT_FAHRENHEIT) {
-                num1 = (num1 * 1.8) + 32;
-                unit1 = user_unit;
-            }
+        user_unit == GR_TEMPERATURE_UNIT_FAHRENHEIT) {
+            num1 = (num1 * 1.8) + 32;
+            unit1 = user_unit;
+        }
 
         else if (unit1 == GR_TEMPERATURE_UNIT_FAHRENHEIT &&
             user_unit == GR_TEMPERATURE_UNIT_CELSIUS) {
@@ -286,8 +265,8 @@ gr_convert_weight (double *amount, GrUnit *unit, GrPreferredUnit user_weight_uni
  
             default:
                     ;        
-                 }
-         }
+                }
+        }
          
     if (user_weight_unit == GR_PREFERRED_UNIT_METRIC) {
         switch (unit1) {
@@ -332,7 +311,7 @@ gr_convert_human_readable (double *amount, GrUnit *unit)
         
     gboolean unit_changed = TRUE;
 
-    while(unit_changed) {
+    while (unit_changed) {
         switch (unit1) {
                 case GR_UNIT_GRAM: 
                     if (amount1 >= 1000) {
@@ -423,7 +402,7 @@ gr_convert_human_readable (double *amount, GrUnit *unit)
     }
 
     if (*unit == unit1) {
-    unit_changed = FALSE; 
+        unit_changed = FALSE; 
     }
     
     *amount = amount1;
@@ -434,27 +413,24 @@ gr_convert_human_readable (double *amount, GrUnit *unit)
 void
 gr_convert_multiple_units (double *amount1, GrUnit *unit1, double *amount2, GrUnit *unit2)
 {
-
     double n1 = *amount1;
     double n2 = *amount2;
     GrUnit u1 = *unit1;
     GrUnit u2 = *unit2;
     double fractional, integer;
 
-    gr_convert_human_readable(&n1, &u1);
+    gr_convert_human_readable (&n1, &u1);
 
-    fractional = modf(n1, &integer);
+    fractional = modf (n1, &integer);
 
     if (u1 != GR_UNIT_UNKNOWN) {
-            if (fractional > 0)
-            {
+            if (fractional > 0) {
                 n2 = fractional;
                 u2 = u1;
-                gr_convert_human_readable(&n2, &u2);
+                gr_convert_human_readable (&n2, &u2);
 
-                if (u1 != u2)
-                {
-                        n1 = integer;
+                if (u1 != u2) {
+                    n1 = integer;
                 }
                 
                 else 
@@ -487,10 +463,10 @@ void
 gr_convert_format_for_display  (GString *s, double a1, GrUnit u1, double a2, GrUnit u2) 
 {
 
-    if (u1 == GR_UNIT_UNKNOWN || (!u1)) {
+    if (u1 == GR_UNIT_UNKNOWN) {
         g_autofree char *num = NULL;
         num = gr_number_format (a1);
-        g_string_append(s, num);
+        g_string_append (s, num);
     }
 
     else if (u2 == GR_UNIT_UNKNOWN) {
@@ -498,7 +474,7 @@ gr_convert_format_for_display  (GString *s, double a1, GrUnit u1, double a2, GrU
         num = gr_number_format (a1);
         g_string_append (s, num);
         g_string_append (s, " ");
-        g_string_append (s, gr_unit_get_display_name (u1));
+        g_string_append (s, gr_unit_get_abbreviation (u1));
     }
 
     else {
@@ -509,11 +485,11 @@ gr_convert_format_for_display  (GString *s, double a1, GrUnit u1, double a2, GrU
         num2 = gr_number_format (a2);
         g_string_append(s, num1);
         g_string_append(s, " ");
-        g_string_append(s, gr_unit_get_display_name (u1));
+        g_string_append(s, gr_unit_get_abbreviation (u1));
         g_string_append(s, ", ");
         g_string_append(s, num2);
         g_string_append(s, " ");
-        g_string_append(s, gr_unit_get_display_name (u2));
+        g_string_append(s, gr_unit_get_abbreviation (u2));
     }
 }
 
@@ -525,7 +501,7 @@ gr_convert_format (GString *s, double amount, GrUnit unit)
     double amount2 = 0;
     GrUnit unit2 = GR_UNIT_UNKNOWN;
         
-    GrDimension dimension = gr_unit_get_dimension(unit);
+    GrDimension dimension = gr_unit_get_dimension (unit);
 
         if (dimension) {
 
@@ -543,7 +519,7 @@ gr_convert_format (GString *s, double amount, GrUnit unit)
                     gr_convert_multiple_units(&amount, &unit, &amount2, &unit2);  
             }
             else {
-                    gr_convert_human_readable(&amount, &unit);
+                    gr_convert_human_readable (&amount, &unit);
             }
                 
     gr_convert_format_for_display (s, amount, unit, amount2, unit2);
