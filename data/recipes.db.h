@@ -1,5 +1,16 @@
 #if 0
 
+N_("Stamina v1")
+N_("This is considered a health drink.")
+N_(" Good for stamina")
+N_("This is the tinted for blending.")
+N_("Depending on the blender but for me this is what I do.")
+N_("1 Cut up your beetroot in to four piedes. ")
+N_("2 Cut your Kale into four pieces. ")
+N_("3 Make sure the dry skin is off the garlic clove Before putting in blender.")
+N_("4 Add the coconut water. ")
+N_("5 blend away to your perfection")
+N_("I hope you enjoy!!!")
 N_("Original V-8 Recipe")
 N_("Yield roughly 32 oz. Trust me best served cold. If you add Tabasco, black pepper, and Worcestershire sauce you got yourself a spicy V-8.")
 N_("This recipe is intended for juicing.")
