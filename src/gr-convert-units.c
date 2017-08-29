@@ -226,8 +226,8 @@ gr_convert_volume (double *amount, GrUnit *unit, GrPreferredUnit user_volume_uni
                 ;        
         }
     }                      
-         *amount = amount1;
-         *unit = unit1;
+    *amount = amount1;
+    *unit = unit1;
  }
 
 void 
@@ -402,11 +402,7 @@ gr_convert_human_readable (double *amount, GrUnit *unit)
     }
 
     if (*unit == unit1) {
-<<<<<<< HEAD
         unit_changed = FALSE; 
-=======
-    unit_changed = FALSE; 
->>>>>>> 729cb62c0629e58674905b968ef81e1aa4c7c304
     }
     
     *amount = amount1;
@@ -417,65 +413,41 @@ gr_convert_human_readable (double *amount, GrUnit *unit)
 void
 gr_convert_multiple_units (double *amount1, GrUnit *unit1, double *amount2, GrUnit *unit2)
 {
-<<<<<<< HEAD
-=======
-
->>>>>>> 729cb62c0629e58674905b968ef81e1aa4c7c304
     double n1 = *amount1;
     double n2 = *amount2;
     GrUnit u1 = *unit1;
     GrUnit u2 = *unit2;
     double fractional, integer;
 
-<<<<<<< HEAD
     gr_convert_human_readable (&n1, &u1);
 
     fractional = modf (n1, &integer);
 
     if (u1 != GR_UNIT_UNKNOWN) {
-            if (fractional > 0) {
-                n2 = fractional;
-                u2 = u1;
-                gr_convert_human_readable (&n2, &u2);
+        if (fractional > 0) {
+            n2 = fractional;
+            u2 = u1;
+            gr_convert_human_readable (&n2, &u2);
 
-                if (u1 != u2) {
-                    n1 = integer;
-=======
-    gr_convert_human_readable(&n1, &u1);
-
-    fractional = modf(n1, &integer);
-
-    if (u1 != GR_UNIT_UNKNOWN) {
-            if (fractional > 0)
-            {
-                n2 = fractional;
-                u2 = u1;
-                gr_convert_human_readable(&n2, &u2);
-
-                if (u1 != u2)
-                {
-                        n1 = integer;
->>>>>>> 729cb62c0629e58674905b968ef81e1aa4c7c304
-                }
-                
-                else 
-                {
-                        n2 = 0;
-                        u2 = GR_UNIT_UNKNOWN;
-                }
-        }
-        
-        else
-        {
+            if (u1 != u2) {
+                n1 = integer;
+            }
+            
+            else {
                 n2 = 0;
                 u2 = GR_UNIT_UNKNOWN;
+            }
+    }
+        
+        else {
+            n2 = 0;
+            u2 = GR_UNIT_UNKNOWN;
         }
     }
 
-    else
-    {
-            n2 = 0;
-            u2 = GR_UNIT_UNKNOWN;
+    else {
+        n2 = 0;
+        u2 = GR_UNIT_UNKNOWN;
     }
 
     *amount1 = n1;
@@ -488,17 +460,10 @@ void
 gr_convert_format_for_display  (GString *s, double a1, GrUnit u1, double a2, GrUnit u2) 
 {
 
-<<<<<<< HEAD
     if (u1 == GR_UNIT_UNKNOWN) {
         g_autofree char *num = NULL;
         num = gr_number_format (a1);
         g_string_append (s, num);
-=======
-    if (u1 == GR_UNIT_UNKNOWN || (!u1)) {
-        g_autofree char *num = NULL;
-        num = gr_number_format (a1);
-        g_string_append(s, num);
->>>>>>> 729cb62c0629e58674905b968ef81e1aa4c7c304
     }
 
     else if (u2 == GR_UNIT_UNKNOWN) {
@@ -506,11 +471,7 @@ gr_convert_format_for_display  (GString *s, double a1, GrUnit u1, double a2, GrU
         num = gr_number_format (a1);
         g_string_append (s, num);
         g_string_append (s, " ");
-<<<<<<< HEAD
         g_string_append (s, gr_unit_get_abbreviation (u1));
-=======
-        g_string_append (s, gr_unit_get_display_name (u1));
->>>>>>> 729cb62c0629e58674905b968ef81e1aa4c7c304
     }
 
     else {
@@ -519,21 +480,13 @@ gr_convert_format_for_display  (GString *s, double a1, GrUnit u1, double a2, GrU
 
         num1 = gr_number_format (a1);
         num2 = gr_number_format (a2);
-        g_string_append(s, num1);
-        g_string_append(s, " ");
-<<<<<<< HEAD
-        g_string_append(s, gr_unit_get_abbreviation (u1));
-        g_string_append(s, ", ");
-        g_string_append(s, num2);
-        g_string_append(s, " ");
-        g_string_append(s, gr_unit_get_abbreviation (u2));
-=======
-        g_string_append(s, gr_unit_get_display_name (u1));
-        g_string_append(s, ", ");
-        g_string_append(s, num2);
-        g_string_append(s, " ");
-        g_string_append(s, gr_unit_get_display_name (u2));
->>>>>>> 729cb62c0629e58674905b968ef81e1aa4c7c304
+        g_string_append (s, num1);
+        g_string_append (s, " ");
+        g_string_append (s, gr_unit_get_abbreviation (u1));
+        g_string_append (s, ", ");
+        g_string_append (s, num2);
+        g_string_append (s, " ");
+        g_string_append (s, gr_unit_get_abbreviation (u2));
     }
 }
 
@@ -545,11 +498,7 @@ gr_convert_format (GString *s, double amount, GrUnit unit)
     double amount2 = 0;
     GrUnit unit2 = GR_UNIT_UNKNOWN;
         
-<<<<<<< HEAD
     GrDimension dimension = gr_unit_get_dimension (unit);
-=======
-    GrDimension dimension = gr_unit_get_dimension(unit);
->>>>>>> 729cb62c0629e58674905b968ef81e1aa4c7c304
 
         if (dimension) {
 
@@ -559,24 +508,17 @@ gr_convert_format (GString *s, double amount, GrUnit unit)
 
             if (dimension == GR_DIMENSION_MASS) {
                 gr_convert_weight(&amount, &unit, user_weight_unit);
-                }
             }
+        }
 
             if ((dimension == GR_DIMENSION_VOLUME && user_volume_unit == GR_PREFERRED_UNIT_IMPERIAL) || 
                 (dimension == GR_DIMENSION_MASS && user_weight_unit == GR_PREFERRED_UNIT_IMPERIAL)) {
                     gr_convert_multiple_units(&amount, &unit, &amount2, &unit2);  
             }
+
             else {
-<<<<<<< HEAD
                     gr_convert_human_readable (&amount, &unit);
             }
                 
     gr_convert_format_for_display (s, amount, unit, amount2, unit2);
 }
-=======
-                    gr_convert_human_readable(&amount, &unit);
-            }
-                
-    gr_convert_format_for_display (s, amount, unit, amount2, unit2);
-}
->>>>>>> 729cb62c0629e58674905b968ef81e1aa4c7c304
