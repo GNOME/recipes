@@ -18,20 +18,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "config.h"
-
-#include <string.h>
-
-#include "gr-ingredients-viewer.h"
-#include "gr-ingredients-viewer-row.h"
-#include "gr-ingredients-list.h"
-#include "gr-ingredient.h"
-#include "gr-utils.h"
-
-#ifdef ENABLE_GSPELL
-#include <gspell/gspell.h>
-#endif
-
+ #include "config.h"
+ 
+ #include <string.h>
+ 
+ #include "gr-ingredients-viewer.h"
+ #include "gr-ingredients-viewer-row.h"
+ #include "gr-ingredients-list.h"
+ #include "gr-ingredient.h"
+ #include "gr-utils.h"
+ #include "gr-number.h"
+ #include "gr-convert-units.h"
+ #include "gr-unit.h"
+ 
+ #ifdef ENABLE_GSPELL
+ #include <gspell/gspell.h>
+ #endif
 
 struct _GrIngredientsViewer
 {
@@ -316,24 +318,25 @@ gr_ingredients_viewer_set_ingredients (GrIngredientsViewer *viewer,
         ingredients = gr_ingredients_list_new (text);
         ings = gr_ingredients_list_get_ingredients (ingredients, viewer->title);
         for (i = 0; ings && ings[i]; i++) {
-                g_autofree char *s = NULL;
-                g_auto(GStrv) strv = NULL;
-                const char *amount;
-                const char *unit;
+                
+                double amount;
+                GrUnit unit;
                 GtkWidget *row;
+                g_autoptr(GString) s = NULL;
+                s = g_string_new ("");
+                double scale = viewer->scale;
 
-                s = gr_ingredients_list_scale_unit (ingredients, viewer->title, ings[i], viewer->scale);
-                strv = g_strsplit (s, " ", 2);
-                amount = strv[0];
-                unit = strv[1] ? strv[1] : "";
+                unit = gr_ingredients_list_get_unit(ingredients, ings[i]);
+                amount = gr_ingredients_list_get_amount(ingredients, ings[i]) * scale;
+
+                gr_convert_format(s, amount, unit);
 
                 row = g_object_new (GR_TYPE_INGREDIENTS_VIEWER_ROW,
-                                    "amount", amount,
-                                    "unit", unit,
-                                    "ingredient", ings[i],
-                                    "size-group", viewer->group,
-                                    "editable", viewer->editable,
-                                    NULL);
+                                        "unit", g_strdup (s->str),
+                                        "ingredient", ings[i],
+                                        "size-group", viewer->group,
+                                        "editable", viewer->editable,
+                                        NULL);
                 g_signal_connect (row, "delete", G_CALLBACK (delete_row), viewer);
                 g_signal_connect (row, "move", G_CALLBACK (move_row), viewer);
                 g_signal_connect (row, "edit", G_CALLBACK (edit_ingredient_row), viewer);

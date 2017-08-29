@@ -7,6 +7,12 @@
     <value nick="locale" value="2"/>
   </enum>
 
+  <enum id="org.gnome.recipes.MetricOrImperial">
+    <value nick="metric" value="0"/>
+    <value nick="imperial" value="1"/>
+    <value nick="locale" value="2"/>
+  </enum>
+
   <enum id="org.gnome.recipes.SortKey">
     <value nick="name" value="0"/>
     <value nick="recency" value="1"/>
@@ -95,7 +101,20 @@
         The setting determines whether the surprise dialog should be shown on startup.
       </description>
     </key>
-
+    <key name="volume-unit" enum="org.gnome.recipes.MetricOrImperial">
+      <default>'locale'</default>
+      <summary>The setting for which unit volume should be displayed in. </summary>
+      <description>
+         The setting for which unit volume should be displayed in. Default is 'locale',
+      </description>
+     </key>
+    <key name="weight-unit" enum="org.gnome.recipes.MetricOrImperial">
+      <default>'locale'</default>
+      <summary>The setting for which unit mass should be displayed in. </summary>
+      <description>
+         The setting for which unit mass should be displayed in. Default is 'locale',
+      </description>
+     </key>
   </schema>
 
 </schemalist>
