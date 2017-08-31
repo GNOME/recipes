@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "POT-Creation-Date: 2017-08-23 18:30+0000\n"
-"PO-Revision-Date: 2017-08-30 13:27+0200\n"
+"PO-Revision-Date: 2017-08-31 12:07+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -488,6 +488,9 @@ msgid ""
 "then press <gui>Add</gui>. Or you can enter the amount and choose the "
 "measurement from the list and then press the <gui>Add</gui> button."
 msgstr ""
+"En la caja desplegable <gui>Cantidad</gui> puede introducir la cantidad "
+"necesaria y pulsar <gui>Añadir</gui>. O puede introducir la cantidad y "
+"elegir la medida en la lista y luego pulsar el botón <gui>Añadir</gui>."
 
 #. (itstool) path: item/p
 #: C/add-recipe-ingredients.page:58
@@ -545,6 +548,11 @@ msgid ""
 "have created or to share recipes with friends and family. To add your chef "
 "information:"
 msgstr ""
+"Puede añadir un su información personal a <app>Recetas</app>, incluyendo su "
+"nombre completo, su nombre corto y una foto. Esto creará un perfil de "
+"cocinero. que se usará cuando cree una receta. También le ayudará a buscar "
+"recetas que ha creado o compartido con familiares y amigos. Para añadir su "
+"información de cocinero:"
 
 #. (itstool) path: item/p
 #: C/chef.page:33
@@ -758,6 +766,9 @@ msgid ""
 "<em>Subject</em> and <em>To:</em> line will be automatically filled out for "
 "you."
 msgstr ""
+"Su aplicación de correo-e se abrirá y se redactará un mensaje nuevo. "
+"<app>Recetas</app> habrá incluido la receta como adjunto y las líneas de "
+"<em>Asunto</em> y <em>Para:</em> se rellenarán automáticamente."
 
 #. (itstool) path: item/p
 #: C/contribute.page:62
@@ -786,6 +797,10 @@ msgid ""
 "view the steps to make a recipe, including starting timers or seeing photos "
 "of each step, if they were included in the recipe."
 msgstr ""
+"<app>Recetas</app> incluye un modo de manos libres par ayudarle con las "
+"instrucciones de una receta cuando vaya a prepararla. Este modo hace que sea "
+"más sencillo ver los pasos de elaboración, incluyendo iniciar los tiempos o "
+"ver las fotos de cada paso, si estaban incluidas en la receta."
 
 #. (itstool) path: page/p
 #: C/cooking.page:27
@@ -809,6 +824,8 @@ msgid ""
 "<app>Recipes</app> will change to full screen mode, also known as hands-free "
 "mode and display the first step to cook the recipe."
 msgstr ""
+"<app>Recetas</app> cambiará al modo de pantalla completa, también conocido "
+"como modo de manos libres y mostrará el primer paso para preparar la receta."
 
 #. (itstool) path: item/p
 #: C/cooking.page:43 C/cooking.page:67
@@ -833,6 +850,13 @@ msgid ""
 "timer is done, your computer will beep and <gui>Time is up!</gui> will be "
 "shown."
 msgstr ""
+"Para iniciar un temporizador, pulse el botón <gui>Comenzar</gui> "
+"<key>Espacio</key>. Una vez que lo haya iniciado, puede pulsar <gui>Pausa</"
+"gui> o <gui>Reiniciar</gui> para que empiece de nuevo desde el principio. "
+"Puede tener varios temporizadores al a vez y los nombres de cada apso "
+"asociados a cada uno de ellos se mostrará en la esquina superior izquierda "
+"de <app>Recetas</app>. Cuando termine, el equipo emitirá un sonido y se "
+"mostrará el mensaje <gui>¡Se acabó el tiempo!</gui>."
 
 #. (itstool) path: item/p
 #: C/cooking.page:62
@@ -841,6 +865,9 @@ msgid ""
 "left corner of hands-free mode. You can move to the next steps while a timer "
 "is running."
 msgstr ""
+"Cuando un temporizador está corriendo, su nombre se mostrará en la esquina "
+"superior izquierda del modo manos libres. Puede pasar a los pasos siguientes "
+"aunque el temporizador esté corriendo."
 
 #. (itstool) path: item/p
 #: C/cooking.page:72
@@ -933,6 +960,12 @@ msgid ""
 "its:translate=\"yes\"> <span its:translate=\"yes\">Down</span></media> and "
 "choose from one or more categories."
 msgstr ""
+"También puede acotar la búsqueda por categoría. Pulse el botón <media type="
+"\"image\" mime=\"image/png\" src=\"images/search.png\" its:translate=\"yes"
+"\"> <span its:translate=\"yes\">Buscar</span></media> y el icono <media type="
+"\"image\" mime=\"image/png\" src=\"images/down.png\" its:translate=\"yes\"> "
+"<span its:translate=\"yes\">Abajo</span></media> y elija una o más "
+"categorías.."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:50
@@ -961,6 +994,9 @@ msgid ""
 "it in the search bar. You can then enter text to search within that category "
 "and tag."
 msgstr ""
+"<app>Recetas</app> añadirá una etiqueta para la categoría que seleccione y "
+"la mostrará en la barra de búsqueda. Puede introducir texto o buscar dentro "
+"de esa categoría y etiqueta."
 
 #. (itstool) path: section/p
 #: C/find-recipe.page:69
@@ -1018,6 +1054,10 @@ msgid ""
 "Category with a <gui>Read More</gui> link you can click to learn more about "
 "the Category."
 msgstr ""
+"Si elige alguna de las categorías vegana, vegetariana, sin lactosa, sin "
+"gluten o sin nueces, los resultados de la búsqueda también mostrarán una "
+"descripción de la categoría, con un enlace <gui>Ver más</gui> que puede "
+"pulsar para saber más sobre esa categoría."
 
 #. (itstool) path: section/title
 #: C/find-recipe.page:103
@@ -1063,6 +1103,14 @@ msgid ""
 "bananas in the recipe will be displayed. To remove the tag from search, "
 "press <gui>x</gui> on the tag in the search bar."
 msgstr ""
+"LA etiqueta para ese ingrediente, como por ejemplo <em>plátano</em>, se "
+"mostrará en la barra de búsqueda y todas las recetas que contengan plátano "
+"se mostrarán. Si no hay recetas que coincidan, se mostrará el mensaje "
+"<gui>No se han encontrado recetas</gui>. Pulse en la etiqueta <gui>Plátano</"
+"gui> en la barra de búsqueda y cambiará a <gui>Sin plátano</gui>, y se "
+"mostrarán todas las recetas que no contengan plátano. Para quitar la "
+"etiqueta de la búsqueda, pulse <gui>x</gui> sobre la etiqueta en la barra de "
+"búsqueda."
 
 #. (itstool) path: section/title
 #: C/find-recipe.page:130
@@ -1323,6 +1371,11 @@ msgid ""
 "They can download the attachment and double-click it to import the recipe "
 "you shared into <app>Recipes</app>."
 msgstr ""
+"Puede enviar por correo una lista de la compra o una receta a un amigo. Las "
+"listas de la compra contendrán todos los ingredientes necesarios en el "
+"cuerpo del correo. Si envía una receta, el destinatario del correo la "
+"recibirá como un adjunto. La puede descargar y pulsa sobre ella dos veces "
+"para importarla en <app>Recetas</app>."
 
 #. (itstool) path: note/p
 #: C/share.page:38
@@ -1351,6 +1404,10 @@ msgid ""
 "shopping list, the shopping list will be included in the body of the email. "
 "If you are sharing a recipe, the recipe will be attached to the email."
 msgstr ""
+"Se abrirá un mensaje nuevo ya redactado. La línea del <em>asunto</em> y el "
+"cuerpo se rellenarán automáticamente. Si está enviando una lista de la "
+"compra ésta se incluirá en el cuerpo del correo. Si está compartiendo una "
+"receta se enviará como adjunto en el correo."
 
 #. (itstool) path: item/p
 #: C/share.page:74
@@ -1473,6 +1530,10 @@ msgid ""
 "Shopping List</gui> button, or return to the main <app>Recipes</app> window "
 "and click the <gui>Buy ingredients</gui> bar in the <gui>Today</gui> section."
 msgstr ""
+"Cuando termine de añadir la lista de la compra, pulse el botón <gui>Ver "
+"lista de la compra</gui> o vuelva a la página principal de <app>Recetas</"
+"app> y pulse en la barra <gui>Comprar ingredientes</gui> en la sección "
+"<gui>Hoy</gui>."
 
 #. (itstool) path: page/p
 #: C/shop.page:48
