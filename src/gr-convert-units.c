@@ -480,7 +480,7 @@ gr_convert_format_for_display (GString *s, double a1, GrUnit u1, double a2, GrUn
                 num = gr_number_format (a1);
                 g_string_append (s, num);
                 g_string_append (s, " ");
-                g_string_append (s, gr_unit_get_display_name (u1));
+                g_string_append (s, gr_unit_get_abbreviation (u1));
         }
         else {
                 g_autofree char *num1 = NULL;
@@ -490,11 +490,11 @@ gr_convert_format_for_display (GString *s, double a1, GrUnit u1, double a2, GrUn
                 num2 = gr_number_format (a2);
                 g_string_append (s, num1);
                 g_string_append (s, " ");
-                g_string_append (s, gr_unit_get_display_name (u1));
+                g_string_append (s, gr_unit_get_abbreviation (u1));
                 g_string_append (s, ", ");
                 g_string_append (s, num2);
                 g_string_append (s, " ");
-                g_string_append (s, gr_unit_get_display_name (u2));
+                g_string_append (s, gr_unit_get_abbreviation (u2));
         }
 }
 
