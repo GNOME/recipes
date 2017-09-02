@@ -460,7 +460,7 @@ collect_ingredients_from_recipe (GrShoppingPage *page,
 
                         amount = gr_ingredients_list_get_amount (il, seg[i], ing[j]);
                         amount = amount * yield / gr_recipe_get_yield (recipe);
-                        unit = gr_ingredients_list_get_unit (il, ing[j]);
+                        unit = gr_ingredients_list_get_unit (il, seg[i], ing[j]);
                         add_ingredient (page, amount, unit, ing[j]);
                 }
         }

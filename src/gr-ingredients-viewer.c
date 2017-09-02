@@ -325,7 +325,7 @@ gr_ingredients_viewer_set_ingredients (GrIngredientsViewer *viewer,
                 GrDimension dimension;
                 double scale = viewer->scale;
 
-                unit = gr_ingredients_list_get_unit(ingredients, ings[i]);
+                unit = gr_ingredients_list_get_unit(ingredients, viewer->title, ings[i]);
                 amount = gr_ingredients_list_get_amount(ingredients, viewer->title, ings[i]) * scale;
                 dimension = gr_unit_get_dimension(unit);
 
