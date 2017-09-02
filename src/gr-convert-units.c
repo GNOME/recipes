@@ -424,116 +424,103 @@ void
 gr_convert_multiple_units (double *amount1, GrUnit *unit1, double *amount2, GrUnit *unit2)
 {
 
-    double n1 = *amount1;
-    double n2 = *amount2;
-    GrUnit u1 = *unit1;
-    GrUnit u2 = *unit2;
-    double fractional, integer;
+        double n1 = *amount1;
+        double n2 = *amount2;
+        GrUnit u1 = *unit1;
+        GrUnit u2 = *unit2;
+        double fractional, integer;
 
-    gr_convert_human_readable(&n1, &u1);
+        gr_convert_human_readable (&n1, &u1);
 
-    fractional = modf(n1, &integer);
+        fractional = modf (n1, &integer);
 
-    if (u1 != GR_UNIT_UNKNOWN) {
-            if (fractional > 0)
-            {
-                n2 = fractional;
-                u2 = u1;
-                gr_convert_human_readable(&n2, &u2);
+        if (u1 != GR_UNIT_UNKNOWN) {
+                if (fractional > 0) {
+                        n2 = fractional;
+                        u2 = u1;
+                        gr_convert_human_readable (&n2, &u2);
 
-                if (u1 != u2)
-                {
-                        n1 = integer;
+                        if (u1 != u2) {
+                                n1 = integer;
+                        }
+                        else {
+                                n2 = 0;
+                                u2 = GR_UNIT_UNKNOWN;
+                        }
                 }
-                
-                else 
-                {
+                else {
                         n2 = 0;
                         u2 = GR_UNIT_UNKNOWN;
                 }
         }
-        
-        else
-        {
+        else {
                 n2 = 0;
                 u2 = GR_UNIT_UNKNOWN;
         }
-    }
 
-    else
-    {
-            n2 = 0;
-            u2 = GR_UNIT_UNKNOWN;
-    }
-
-    *amount1 = n1;
-    *unit1 = u1;
-    *amount2 = n2;
-    *unit2 = u2;
+        *amount1 = n1;
+        *unit1 = u1;
+        *amount2 = n2;
+        *unit2 = u2;
 }
 
 void
-gr_convert_format_for_display  (GString *s, double a1, GrUnit u1, double a2, GrUnit u2) 
+gr_convert_format_for_display (GString *s, double a1, GrUnit u1, double a2, GrUnit u2)
 {
 
-    if (u1 == GR_UNIT_UNKNOWN || (!u1)) {
-        g_autofree char *num = NULL;
-        num = gr_number_format (a1);
-        g_string_append(s, num);
-    }
+        if (u1 == GR_UNIT_UNKNOWN) {
+                g_autofree char *num = NULL;
 
-    else if (u2 == GR_UNIT_UNKNOWN) {
-        g_autofree char *num = NULL;
-        num = gr_number_format (a1);
-        g_string_append (s, num);
-        g_string_append (s, " ");
-        g_string_append (s, gr_unit_get_display_name (u1));
-    }
+                num = gr_number_format (a1);
+                g_string_append (s, num);
+        }
+        else if (u2 == GR_UNIT_UNKNOWN) {
+                g_autofree char *num = NULL;
 
-    else {
-        g_autofree char *num1 = NULL;
-        g_autofree char *num2 = NULL;
+                num = gr_number_format (a1);
+                g_string_append (s, num);
+                g_string_append (s, " ");
+                g_string_append (s, gr_unit_get_display_name (u1));
+        }
+        else {
+                g_autofree char *num1 = NULL;
+                g_autofree char *num2 = NULL;
 
-        num1 = gr_number_format (a1);
-        num2 = gr_number_format (a2);
-        g_string_append(s, num1);
-        g_string_append(s, " ");
-        g_string_append(s, gr_unit_get_display_name (u1));
-        g_string_append(s, ", ");
-        g_string_append(s, num2);
-        g_string_append(s, " ");
-        g_string_append(s, gr_unit_get_display_name (u2));
-    }
+                num1 = gr_number_format (a1);
+                num2 = gr_number_format (a2);
+                g_string_append (s, num1);
+                g_string_append (s, " ");
+                g_string_append (s, gr_unit_get_display_name (u1));
+                g_string_append (s, ", ");
+                g_string_append (s, num2);
+                g_string_append (s, " ");
+                g_string_append (s, gr_unit_get_display_name (u2));
+        }
 }
 
 void
 gr_convert_format (GString *s, double amount, GrUnit unit)
 {
-    GrPreferredUnit user_volume_unit = gr_convert_get_volume_unit();
-    GrPreferredUnit user_weight_unit = gr_convert_get_weight_unit();
-    double amount2 = 0;
-    GrUnit unit2 = GR_UNIT_UNKNOWN;
-        
-    GrDimension dimension = gr_unit_get_dimension(unit);
+        GrPreferredUnit user_volume_unit = gr_convert_get_volume_unit ();
+        GrPreferredUnit user_weight_unit = gr_convert_get_weight_unit ();
+        double amount2 = 0;
+        GrUnit unit2 = GR_UNIT_UNKNOWN;
+        GrDimension dimension = gr_unit_get_dimension (unit);
 
-        if (dimension) {
+        if (dimension == GR_DIMENSION_VOLUME) {
+                gr_convert_volume (&amount, &unit, user_volume_unit);
+        }
+        if (dimension == GR_DIMENSION_MASS) {
+                gr_convert_weight (&amount, &unit, user_weight_unit);
+        }
 
-            if (dimension == GR_DIMENSION_VOLUME) {
-                gr_convert_volume(&amount, &unit, user_volume_unit); 
-            }
+        if ((dimension == GR_DIMENSION_VOLUME && user_volume_unit == GR_PREFERRED_UNIT_IMPERIAL) ||
+            (dimension == GR_DIMENSION_MASS && user_weight_unit == GR_PREFERRED_UNIT_IMPERIAL)) {
+                gr_convert_multiple_units (&amount, &unit, &amount2, &unit2);
+        }
+        else {
+                gr_convert_human_readable (&amount, &unit);
+        }
 
-            if (dimension == GR_DIMENSION_MASS) {
-                gr_convert_weight(&amount, &unit, user_weight_unit);
-                }
-            }
-
-            if ((dimension == GR_DIMENSION_VOLUME && user_volume_unit == GR_PREFERRED_UNIT_IMPERIAL) || 
-                (dimension == GR_DIMENSION_MASS && user_weight_unit == GR_PREFERRED_UNIT_IMPERIAL)) {
-                    gr_convert_multiple_units(&amount, &unit, &amount2, &unit2);  
-            }
-            else {
-                    gr_convert_human_readable(&amount, &unit);
-            }
-                
-    gr_convert_format_for_display (s, amount, unit, amount2, unit2);
+        gr_convert_format_for_display (s, amount, unit, amount2, unit2);
 }
