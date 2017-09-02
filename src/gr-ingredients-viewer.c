@@ -331,7 +331,7 @@ gr_ingredients_viewer_set_ingredients (GrIngredientsViewer *viewer,
                 gr_convert_format (s, amount, unit);
 
                 row = g_object_new (GR_TYPE_INGREDIENTS_VIEWER_ROW,
-                                    "unit", g_strdup (s->str),
+                                    "unit", s->str,
                                     "ingredient", ings[i],
                                     "size-group", viewer->group,
                                     "editable", viewer->editable,
