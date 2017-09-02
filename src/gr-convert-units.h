@@ -43,8 +43,8 @@ typedef enum {
 GrTemperatureUnit   gr_convert_get_temperature_unit     (void);
 GrPreferredUnit     gr_convert_get_volume_unit          (void);
 GrPreferredUnit     gr_convert_get_weight_unit          (void);
-void                gr_convert_temp                     (int *num, int *unit, int user_unit); 
-void                gr_convert_volume                   (double *amount, GrUnit *unit, GrPreferredUnit user_volume_unit); 
+void                gr_convert_temp                     (int *num, int *unit, int user_unit);
+void                gr_convert_volume                   (double *amount, GrUnit *unit, GrPreferredUnit user_volume_unit);
 void                gr_convert_weight                   (double *amount, GrUnit *unit, GrPreferredUnit user_weight_unit);
 
 G_END_DECLS
