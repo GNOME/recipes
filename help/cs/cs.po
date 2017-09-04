@@ -1,0 +1,1797 @@
+# Czech translation for recipes.
+# Copyright (C) 2017 recipes's COPYRIGHT HOLDER
+# This file is distributed under the same license as the recipes package.
+# Marek Černocký <marek@manet.cz>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: recipes master\n"
+"POT-Creation-Date: 2017-08-31 10:13+0000\n"
+"PO-Revision-Date: 2017-09-04 10:54+0200\n"
+"Last-Translator: Marek Černocký <marek@manet.cz>\n"
+"Language-Team: čeština <gnome-cs-list@gnome.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Gtranslator 2.91.7\n"
+
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+msgctxt "_"
+msgid "translator-credits"
+msgstr "Marek Černocký <marek@manet.cz>"
+
+#. (itstool) path: info/desc
+#: C/add-recipe-description.page:12
+msgid "How to add a recipe description and dietary restrictions."
+msgstr "Jak přidat popis receptu a dietní omezení."
+
+#. (itstool) path: credit/name
+#: C/add-recipe-description.page:15 C/add-recipe-details.page:16
+#: C/add-recipe-directions.page:15 C/add-recipe-images.page:15
+#: C/add-recipe-ingredients.page:15 C/add-recipe.page:11 C/chef.page:14
+#: C/common-problems.page:11 C/contribute.page:12 C/cooking.page:12
+#: C/find-recipe.page:11 C/index.page:10 C/notes.page:11 C/share.page:12
+#: C/shop.page:12
+msgid "Paul Cutler"
+msgstr "Paul Cutler"
+
+#. (itstool) path: license/p
+#: C/add-recipe-description.page:19 C/add-recipe-details.page:20
+#: C/add-recipe-directions.page:19 C/add-recipe-images.page:19
+#: C/add-recipe-ingredients.page:19 C/add-recipe.page:15 C/chef.page:18
+#: C/common-problems.page:15 C/contribute.page:16 C/cooking.page:16
+#: C/find-recipe.page:15 C/index.page:15 C/notes.page:15 C/share.page:24
+#: C/shop.page:16
+msgid "Creative Commons Share Alike 4.0"
+msgstr "Creative Commons Share Alike 4.0"
+
+#. (itstool) path: page/title
+#: C/add-recipe-description.page:23
+msgid "Add a Description"
+msgstr "Přidání popisu"
+
+#. (itstool) path: page/p
+#: C/add-recipe-description.page:25
+msgid ""
+"Press the <gui>New Recipe</gui> in the upper left corner of <app>Recipes</"
+"app>. In the <gui>Description</gui> section, use the text box to describe "
+"the recipe in detail."
+msgstr ""
+"Zmáčkněte <gui>Nový recept</gui> levém horním rohu okna <app>Recepty</app>. "
+"V části <gui>Popis</gui> použijte textové pole k zadání podrobného popisu "
+"receptu."
+
+#. (itstool) path: page/p
+#: C/add-recipe-description.page:28
+msgid ""
+"Below the Description field you can select a checkbox if the recipe meets "
+"any dietary restrictions. The dietary restrictions will help for searching "
+"recipes later."
+msgstr ""
+"Pod polem <gui>Popis</gui> můžete zaškrtnou políčko, když recept splňuje "
+"nějaká dietní omezení. Tyto údaje pomohou později při vyhledávání receptu."
+
+#. (itstool) path: item/p
+#: C/add-recipe-description.page:33
+msgid ""
+"<gui>Gluten-free</gui>: Select for recipes that do not include wheat or "
+"related grains."
+msgstr ""
+"<gui>Bez lepku</gui>: Zaškrtněte u receptů, které neobsahují pšenici nebo "
+"podobné obilniny."
+
+#. (itstool) path: item/p
+#: C/add-recipe-description.page:35
+msgid ""
+"<gui>Vegetarian</gui>: Select for recipes that only include vegetables and "
+"do not include meat, poultry or seafood. Vegetarian recipes may include "
+"dairy or eggs."
+msgstr ""
+"<gui>Vegetariánské</gui>: Zaškrtněte recepty, které obsahují zeleninu a "
+"neobsahují maso, včetně drůbežího a mořských plodů. Vegetariánské recepty "
+"mohou obsahovat mléčné produkty a vejce."
+
+#. (itstool) path: item/p
+#: C/add-recipe-description.page:38
+msgid "<gui>Nut-free</gui>: Select for recipes that do not include any nuts."
+msgstr ""
+"<gui>Bez ořechů</gui>: Zaškrtněte u receptů, které neobsahují žádné ořechy."
+
+#. (itstool) path: item/p
+#: C/add-recipe-description.page:40
+msgid ""
+"<gui>Milk-free</gui>: Select for recipes that do not include dairy products, "
+"such as milk or cheese."
+msgstr ""
+"<gui>Bez mléka</gui>: Zaškrtněte u receptů, které neobsahují žádné mléčné "
+"výrobky, jako je mléko nebo sýr."
+
+#. (itstool) path: item/p
+#: C/add-recipe-description.page:42
+msgid ""
+"<gui>Vegan</gui>: Recipes that do not include any product from an animal. "
+"This includes meat, dairy, eggs and more."
+msgstr ""
+"<gui>Veganské</gui>: Zaškrtněte u receptů, které neobsahují žádný produkt z "
+"zvířat. Včetně masa, mléčných výrobků, vajec a pod."
+
+#. (itstool) path: info/desc
+#: C/add-recipe-details.page:12
+msgid "Add recipe name, serving size, cooking and preparation time, and more."
+msgstr ""
+"Jak přidat název receptu, množství porcí, dobu přípravy a vaření a další "
+"věci."
+
+#. (itstool) path: page/title
+#: C/add-recipe-details.page:24
+msgid "Add Recipe Details"
+msgstr "Přidání podrobných údajů do receptu"
+
+#. (itstool) path: page/p
+#: C/add-recipe-details.page:25
+msgid ""
+"Press the <gui>New Recipe</gui> in the upper left corner of <app>Recipes</"
+"app> and include the following information about your recipe in the "
+"<gui>Details</gui> section. The recipe name and serving size is required and "
+"all other fields are optional. It is helpful to fill as many fields as "
+"possible to help when searching <app>Recipes</app>."
+msgstr ""
+"Zmáčkněte <gui>Nový recept</gui> v levém horním rohu okna <app>Recepty</app> "
+"a zadejte následující údaje o svém receptu v části <gui>Podrobnosti</gui>. "
+"Název receptu a počet porcí jsou povinné údaje, vše ostatní je volitelné. Je "
+"ale dobré vyplnit co nejvíce údajů, abyste usnadnili vyhledávání receptů."
+
+#. (itstool) path: item/p
+#: C/add-recipe-details.page:32
+msgid ""
+"<gui>Name Your Recipe</gui>: Enter the name of the recipe in the text box."
+msgstr ""
+"<gui>Název vašeho receptu</gui>: Zadejte do textového pole název receptu."
+
+#. (itstool) path: item/p
+#: C/add-recipe-details.page:35
+msgid ""
+"<gui>Serves</gui>: Enter a number or press the <gui style=\"button\">+</gui> "
+"button to enter how many servings the recipe will make."
+msgstr ""
+"<gui>Množství</gui>: Zadejte počet porcí, které se připraví z určeného "
+"množství surovin, nebo použijte tlačítka <gui style=\"button\">+</gui> a "
+"<gui style=\"button\">-</gui>."
+
+#. (itstool) path: item/p
+#: C/add-recipe-details.page:39
+msgid ""
+"<gui>Preparation Time</gui>: From the drop down box, choose how long it "
+"takes to pepare the ingredients prior to cooking."
+msgstr ""
+"<gui>Doba přípravy</gui>: Z rozbalovacího seznamu vyberte, kolik času zabere "
+"příprava surovin, než můžete začít vařit/péct."
+
+#. (itstool) path: item/p
+#: C/add-recipe-details.page:42
+msgid ""
+"<gui>Cooking Time</gui>: From the drop down box, choose how long it takes to "
+"cook the recipe."
+msgstr ""
+"<gui>Doba vaření/pečení</gui>: Z rozbalovacího seznamu vyberte, kolik času "
+"zabere recept uvařit či upéct."
+
+#. (itstool) path: item/p
+#: C/add-recipe-details.page:45
+msgid ""
+"<gui>Cuisine</gui>: From the drop down box, choose the type of food or the "
+"region from where the recipe comes from. You can also enter the type of "
+"cuisine if it is not included in the list."
+msgstr ""
+"<gui>Kuchyě</gui>: Z rozbalovacího seznamu vyberte typ jídla nebo zeměpisnou "
+"oblast, ze které recept pochází. Pokud se v seznamu nenachází, můžete ji i "
+"ručně vepsat."
+
+#. (itstool) path: item/p
+#: C/add-recipe-details.page:49
+msgid ""
+"<gui>Meal</gui>: From the drop down box, choose what type of meal the recipe "
+"makes. Examples include breakfast or dinner; or types of food such as pasta "
+"or cocktails. You can also enter the type of meal if it is not included in "
+"the list."
+msgstr ""
+"<gui>Určení</gui>: Z rozbalovacího seznamu vyberte typ jídla, na které "
+"recept cílí. Například snídaně nebo večeře, nebo typ jídla, jako jsou "
+"těstoviny nebo koktejly. Pokud se v seznamu vhodný typ nenachází, můžete jej "
+"i ručně vepsat."
+
+#. (itstool) path: item/p
+#: C/add-recipe-details.page:54
+msgid ""
+"<gui>Season</gui>: From the drop down box, choose from the season or holiday "
+"that the recipe is typically associated with. You can also enter the season "
+"or holiday if it is not included in the list."
+msgstr ""
+"<gui>Sezóna</gui>: Z rozbalovacího seznamu vyberte roční období nebo svátek, "
+"ke kterému se recepty typicky váže. Pokud v seznamu správný údaj nenajdete, "
+"můžete jej i ručně vepsat."
+
+#. (itstool) path: item/p
+#: C/add-recipe-details.page:59
+msgid ""
+"<gui>Spiciness</gui>: From the drop down menu, choose how spicy the recipe "
+"is."
+msgstr ""
+"<gui>Ostrost</gui>: Z rozbalovací nabídky vyberte, jak moc pikantní recept "
+"je."
+
+#. (itstool) path: info/desc
+#: C/add-recipe-directions.page:12
+msgid "How to add each step to cook a recipe and at what temperature."
+msgstr ""
+"Jak přidat návod popisující jednotlivé kroky receptu a použitou teplotu."
+
+#. (itstool) path: page/title
+#: C/add-recipe-directions.page:23
+msgid "Add Cooking Directions"
+msgstr "Přidání pokynů"
+
+#. (itstool) path: section/title
+#: C/add-recipe-directions.page:26
+msgid "Add steps"
+msgstr "Přidání kroků"
+
+#. (itstool) path: section/p
+#: C/add-recipe-directions.page:27
+msgid ""
+"Press the <gui>New Recipe</gui> in the upper left corner of <app>Recipes</"
+"app>. In the Directions text box, type the steps needed to create the "
+"recipe. To separate each step, press <key>Enter</key> twice to create a new "
+"paragraph for each step. <app>Recipes</app> will automatically create a "
+"separate steps for each paragraph in your recipe. These steps will be used "
+"when it is time to cook using full screen mode in <app>Recipes</app>."
+msgstr ""
+"Zmáčkněte <gui>Nový recept</gui> v levém horním rohu okna <app>Recepty</"
+"app>. V textovém poli <gui>Pokyny</gui> napište kroky potřebné k přípravě "
+"jídla podle receptu. Pro oddělení jednotlivých kroků zmáčkněte dvakrát "
+"klávesu <key>Enter</key>, čímž se vytvoří nový odstavec. <app>Recepty</app> "
+"automaticky vytvoří oddělené kroky pro jednotlivé odstavce. Tyto kroky se "
+"pak využijí ve chvíli vaření/pečení v režimu celé obrazovky."
+
+#. (itstool) path: section/p
+#: C/add-recipe-directions.page:34
+msgid ""
+"In each paragraph for each step, you can include the following tags for "
+"adding images, timers or temperature. You can only use an image or a timer, "
+"but not both in an individual step. The information in the tags will be "
+"available when viewing the recipe or when in hands-free mode. All tags are "
+"enclosed within brackets."
+msgstr ""
+"V kterémkoliv odstavci pro každý krok můžete zadat značky image (obrázek), "
+"timer (časový údaj) nebo temperature (teplota). Můžete použít buď image nebo "
+"timer, ale ne obojí dohromady v jednom kroku. Informace uvedené u značky "
+"jsou pak dostupné při prohlížení receptu nebo v režimu celé obrazovky. "
+"Všechny značky se zadávají do hranatých závorek."
+
+#. (itstool) path: section/title
+#: C/add-recipe-directions.page:42
+msgid "Add timers"
+msgstr "Přidání časových údajů"
+
+#. (itstool) path: section/p
+#: C/add-recipe-directions.page:43
+msgid ""
+"To create a timer, enter how long the timer should be within brackets. The "
+"format is [timer:hours:minutes:seconds, description]."
+msgstr ""
+"Když chcete přidat časový údaj, který se dá při vaření použít k časovému "
+"odpočtu (obdoba kuchyňské minutky), zadejte čas do hranatých závorek. Formát "
+"je [timer:hodiny:minuty:sekundy,popis]"
+
+#. (itstool) path: section/p
+#: C/add-recipe-directions.page:46
+msgid "Timer examples:"
+msgstr "Příklady časových údajů"
+
+#. (itstool) path: item/p
+#: C/add-recipe-directions.page:50
+msgid ""
+"<cmd>[timer:00:30, stir ingredients]</cmd> - Stir ingredients for thirty "
+"seconds."
+msgstr ""
+"<cmd>[timer:00:30,stir ingredients]</cmd> – Míchání surovin po dobu 30 "
+"sekund."
+
+#. (itstool) path: item/p
+#: C/add-recipe-directions.page:55
+msgid ""
+"<cmd>[timer:01:30, stir ingredients]</cmd> - Stir ingredients for one minute "
+"and thirty seconds."
+msgstr ""
+"<cmd>[timer:01:30,stir ingredients]</cmd> – Míchání surovin po dobu jedné "
+"minuty a třiceti sekund."
+
+#. (itstool) path: item/p
+#: C/add-recipe-directions.page:60
+msgid ""
+"<cmd>[timer:01:01:30, preheat oven]</cmd> - Preheat oven for one hour, one "
+"minute and thirty seconds."
+msgstr ""
+"<cmd>[timer:01:01:30,preheat oven]</cmd> – Předehřátí trouby po dobu jedné "
+"hodiny, jedné minuty a třiceti sekund."
+
+#. (itstool) path: section/title
+#: C/add-recipe-directions.page:68
+msgid "Add images to each step"
+msgstr "Přidání obrázků k jednotlivým krokům"
+
+#. (itstool) path: section/title
+#: C/add-recipe-directions.page:69
+msgid "Images"
+msgstr "Obrázky"
+
+#. (itstool) path: section/p
+#: C/add-recipe-directions.page:70
+msgid ""
+"You can add an image or photo of the finished recipe and also a photo of "
+"each each step of making a recipe. See <link xref=\"add-recipe-images\"/> "
+"for how to add an image or images to your recipe."
+msgstr ""
+"Můžete přidat obrázek nebo fotografii hotového jídla a také fotografie "
+"jednotlivých kroků receptu. Jak přidat obrázek nebo obrázky do receptu, "
+"najdete v <link xref=\"add-recipe-images\"/>."
+
+#. (itstool) path: item/p
+#: C/add-recipe-directions.page:77
+msgid ""
+"To assign one of the photos you have added, you will need to know the "
+"image's number. Press the <gui>Add Image</gui> button at the bottom "
+"<app>Recipes</app> window. Thumbnails of each photo you have added will be "
+"displayed. The first image would be number one, the second would be number "
+"two and so on."
+msgstr ""
+"Abyste mohli ke krokům přiřadit fotografie, kterou jste přidali, potřebujete "
+"znát jejich čísla. Zmáčkněte tlačítko <gui>Přidat obrázek</gui> ve spodní "
+"části okna <app>Recepty</app>. Zobrazí se miniatury fotografií, které již "
+"máte přidané. První obrázek má číslo jedna, druhý číslo dva atd."
+
+#. (itstool) path: item/p
+#: C/add-recipe-directions.page:85
+msgid "Add the tag <cmd>[image:1]</cmd> to add the first image to a step."
+msgstr ""
+"Pro přidání prvního obrázku ke kroku použijte značku <cmd>[image:1]</cmd>."
+
+#. (itstool) path: item/p
+#: C/add-recipe-directions.page:90
+msgid ""
+"Add additional image tags with the correct number for as many steps as you "
+"wish."
+msgstr ""
+"K přidání dalších obrázků použijte tu stejnou značku, akorát s jiným "
+"správným číslem. Můžete ji přidat k tolika krokům, kolik si budete přát."
+
+#. (itstool) path: section/title
+#: C/add-recipe-directions.page:99
+msgid "Temperature"
+msgstr "Teplota"
+
+#. (itstool) path: section/p
+#: C/add-recipe-directions.page:100
+msgid ""
+"You can add the temperature a step needs to be cooked at by adding a "
+"temperature tag."
+msgstr ""
+"K jednotlivým krokům můžete přidat pomocí značky „temperature“ teplotu, "
+"která je k vaření/pečení potřeba."
+
+#. (itstool) path: item/p
+#: C/add-recipe-directions.page:104
+msgid ""
+"Add the tag <cmd>[temperature:200C]</cmd>. You can set the temperature in "
+"Celsius with a C or Fahrenheit with an F following the temperature."
+msgstr ""
+"Přidejte značku <cmd>[temperature:200C]</cmd>. Teplotu můžete zadat ve "
+"stupních Celsia uvedením C za teplotou, nebo Fahrenheita použitím F."
+
+#. (itstool) path: info/desc
+#: C/add-recipe-images.page:12
+msgid "How to add images to a recipe and for each step when cooking."
+msgstr ""
+"Jak přidat fotografie do receptu jako celku i k jednotlivým krokům postupu."
+
+#. (itstool) path: page/title
+#: C/add-recipe-images.page:23
+msgid "Add Images and Photos"
+msgstr "Přidání obrázků a fotek"
+
+#. (itstool) path: page/p
+#: C/add-recipe-images.page:24
+msgid ""
+"Press the <gui>New Recipe</gui> in the upper left corner of <app>Recipes</"
+"app>. To add an image to your recipe:"
+msgstr ""
+"Zmáčkněte tlačítko <gui>Nový recept</gui> v levém horním rohu okna "
+"<app>Recepty</app>. Když chcete do receptu přidat obrázek:"
+
+#. (itstool) path: item/p
+#: C/add-recipe-images.page:28 C/add-recipe-images.page:49
+msgid ""
+"Press the <gui style=\"button\">+</gui> button below the camera icon or "
+"press <guiseq> <gui>Add Image</gui> <gui style=\"button\">+</gui></guiseq> "
+"at the bottom of the <app>Recipes</app> window."
+msgstr ""
+"Zmáčkněte tlačítko <gui style=\"button\">+</gui> pod ikonou fotoaparátu nebo "
+"zmáčkněte <guiseq><gui>Přidat obrázek</gui> <gui style=\"button\">+</gui></"
+"guiseq> v dolní části okna."
+
+#. (itstool) path: item/p
+#: C/add-recipe-images.page:35
+msgid "Select the image you would like to add."
+msgstr "Vyberte obrázek, který chcete přidat."
+
+#. (itstool) path: item/p
+#: C/add-recipe-images.page:39 C/add-recipe-images.page:61
+msgid "Press <gui>Open</gui>"
+msgstr "Zmáčkněte <gui>Otevřít</gui>."
+
+#. (itstool) path: page/p
+#: C/add-recipe-images.page:44
+msgid ""
+"You may want to add multiple images to the recipe. When using hands-free "
+"mode, <app>Recipes</app> can display an image for each step when cooking. To "
+"add multiple images:"
+msgstr ""
+"Můžete chtít v receptu i více obrázků. Například protože v režimu volných "
+"rukou umí <app>Recepty</app> u každého kroku zobrazit obrázek pro upřesnění "
+"instrukce. Když chcete přidat více obrázků:"
+
+#. (itstool) path: item/p
+#: C/add-recipe-images.page:56
+msgid ""
+"Select multiple images by pressing <key>Control</key> and the images you "
+"would like to add."
+msgstr ""
+"Vyberte více obrázků podržením klávey <key>Ctrl</key> a klikáním na obrázky, "
+"které chcete přidat."
+
+#. (itstool) path: page/p
+#: C/add-recipe-images.page:65
+msgid ""
+"After adding an image, you can rotate it, make it the default image for the "
+"recipe, or remove it from the recipe."
+msgstr ""
+"Po přidání můžete obrázek otočit, nastavit jej jako hlavní pro daný recept, "
+"nebo jej z receptu zase odstranit."
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/add-recipe-images.page:73
+msgctxt "_"
+msgid ""
+"external ref='images/rotate-left.png' md5='b939aa1d6573f18f6e85672c9406346f'"
+msgstr ""
+"external ref='images/rotate-left.png' md5='b939aa1d6573f18f6e85672c9406346f'"
+
+#. (itstool) path: item/p
+#: C/add-recipe-images.page:70
+msgid ""
+"To rotate an image to the left press the <gui>Rotate Image</gui> button: "
+"<media type=\"image\" mime=\"image/png\" src=\"images/rotate-left.png\" its:"
+"translate=\"yes\"><span its:translate=\"yes\">Rotate Image</span> </media>"
+msgstr ""
+"Pro otočení obrázku doleva zmáčkněte tlačítko <gui>Otočit obrázek</gui>: "
+"<media type=\"image\" mime=\"image/png\" src=\"images/rotate-left.png\" its:"
+"translate=\"yes\"><span its:translate=\"yes\">Otočit obrázek</span></media>"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/add-recipe-images.page:80
+msgctxt "_"
+msgid ""
+"external ref='images/rotate-right.png' md5='f459dc336c62fe96e3ab6edd90a0b1ea'"
+msgstr ""
+"external ref='images/rotate-right.png' md5='f459dc336c62fe96e3ab6edd90a0b1ea'"
+
+#. (itstool) path: item/p
+#: C/add-recipe-images.page:77
+msgid ""
+"To rotate an image to the right press the <gui>Rotate Image</gui> button: "
+"<media type=\"image\" mime=\"image/png\" src=\"images/rotate-right.png\" its:"
+"translate=\"yes\"><span its:translate=\"yes\">Rotate Image</span> </media>"
+msgstr ""
+"Pro otočení obrázku doprava zmáčkněte tlačítko <gui>Otočit obrázek</gui>: "
+"<media type=\"image\" mime=\"image/png\" src=\"images/rotate-right.png\" its:"
+"translate=\"yes\"><span its:translate=\"yes\">Otočit obrázek</span></media>"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/add-recipe-images.page:87
+msgctxt "_"
+msgid "external ref='images/star.png' md5='d117abab03b6751c30a15e7fc8d2df51'"
+msgstr "external ref='images/star.png' md5='d117abab03b6751c30a15e7fc8d2df51'"
+
+#. (itstool) path: item/p
+#: C/add-recipe-images.page:84
+msgid ""
+"To make an image the default image for the recipe, press the <gui>Default "
+"Image</gui> button: <media type=\"image\" mime=\"image/png\" src=\"images/"
+"star.png\" its:translate=\"yes\"><span its:translate=\"yes\">Default Image </"
+"span></media>"
+msgstr ""
+"Abyste některý obrázek určili pro recept jako hlavní, zmáčkněte tlačítko "
+"<gui>Hlavní obrázek</gui>: <media type=\"image\" mime=\"image/png\" src="
+"\"images/star.png\" its:translate=\"yes\"><span its:translate=\"yes\">Hlavní "
+"obrázek</span></media>\t"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/add-recipe-images.page:94 C/shop.page:89
+msgctxt "_"
+msgid "external ref='images/trash.png' md5='803809373918657f15776ff05db8f33c'"
+msgstr "external ref='images/trash.png' md5='803809373918657f15776ff05db8f33c'"
+
+#. (itstool) path: item/p
+#: C/add-recipe-images.page:91
+msgid ""
+"To remove an image from the the recipe, press the <gui>Remove Image</gui> "
+"button: <media type=\"image\" mime=\"image/png\" src=\"images/trash.png\" "
+"its:translate=\"yes\"><span its:translate=\"yes\">Remove Image </span></"
+"media>"
+msgstr ""
+"Když chcete obrázek z receptů odstranit, zmáčkněte tlačítko <gui>Odebrat "
+"obrázek</gui>: <media type=\"image\" mime=\"image/png\" src=\"images/trash."
+"png\" its:translate=\"yes\"><span its:translate=\"yes\">Odebrat obrázek</"
+"span></media>"
+
+#. (itstool) path: info/desc
+#: C/add-recipe-ingredients.page:12
+msgid "How to add ingredients and lists."
+msgstr "Jak přidat suroviny a seznamy surovin."
+
+#. (itstool) path: page/title
+#: C/add-recipe-ingredients.page:23
+msgid "Add Ingredients"
+msgstr "Přidání surovin"
+
+#. (itstool) path: page/p
+#: C/add-recipe-ingredients.page:24
+msgid ""
+"You can add the ingredients and create lists for the recipe. Lists are used "
+"for recipes that have different parts, such as a cake that has an ingredient "
+"list for the cake and an ingredient list for the frosting. To create a list:"
+msgstr ""
+"Můžete přidávat suroviny a vytvářet seznam surovin pro recept. Seznamy se "
+"používají u receptů, které mají různé části přípravy. Například dort může "
+"mít seznam surovin pro korpus a seznam suroviny pro polevu. Když chcete "
+"vytvořit seznam surovin:"
+
+#. (itstool) path: item/p
+#: C/add-recipe-ingredients.page:29
+msgid ""
+"Press the <gui>New Recipe</gui> in the upper left corner of <app>Recipes</"
+"app>."
+msgstr ""
+"Zmáčkněte tlačítko <gui>Nový recept</gui> v levém horním rohu okna "
+"<app>Recepty</app>."
+
+#. (itstool) path: item/p
+#: C/add-recipe-ingredients.page:32
+msgid ""
+"Press the <gui>Add List</gui> button in the <gui>Ingredients</gui> section."
+msgstr ""
+"Zmáčkněte tlačítko <gui>Přidat seznam</gui> v části <gui>Suroviny</gui>."
+
+#. (itstool) path: item/p
+#: C/add-recipe-ingredients.page:35
+msgid ""
+"Enter the name of the list, such as cake, in the <gui>Name of the List</gui> "
+"text box."
+msgstr ""
+"Do textového pole <gui>Název seznamu</gui> zadejte název, například „Korpus“."
+
+#. (itstool) path: item/p
+#: C/add-recipe-ingredients.page:38
+msgid "Repeat this step for as many lists as you may need."
+msgstr "Zopakujte tento krok tolikrát, kolik seznamů potřebujete."
+
+#. (itstool) path: page/p
+#: C/add-recipe-ingredients.page:41
+msgid "To add ingredients to a recipe or to a list:"
+msgstr "Když chcete do receptu nebo seznamu přidat suroviny:"
+
+#. (itstool) path: item/p
+#: C/add-recipe-ingredients.page:43
+msgid "Press the <gui style=\"button\">+</gui> button."
+msgstr "Zmáčkněte tlačítko <gui style=\"button\">+</gui>."
+
+#. (itstool) path: item/p
+#: C/add-recipe-ingredients.page:45
+msgid ""
+"Choose the ingredient from the list or enter the ingredient in the "
+"<gui>Search</gui> box."
+msgstr "Vyberte surovinu ze seznamu, nebo zadejte do pole její název celý."
+
+#. (itstool) path: item/p
+#: C/add-recipe-ingredients.page:48
+msgid ""
+"Press the <gui>Add</gui> button to add the ingredient to the list or click "
+"<gui>Amount</gui> to how much of the ingredient is needed."
+msgstr ""
+"Zmáčknutím tlačítka <gui>Přidat</gui> můžete do seznamu přidat další "
+"surovinu, nebo kliknutím na <gui>Množství</gui> můžete určit, jak moc jí je "
+"potřeba."
+
+#. (itstool) path: item/p
+#: C/add-recipe-ingredients.page:52
+msgid ""
+"In the <gui>Amount</gui> drop down box you can enter the quantity needed and "
+"then press <gui>Add</gui>. Or you can enter the amount and choose the "
+"measurement from the list and then press the <gui>Add</gui> button."
+msgstr ""
+"V rozbalovacím poli <gui>Množství</gui> můžete zadat potřebné množství a pak "
+"zmáčknout <gui>Přidat</gui>. Nebo zadejte jen číselnou hodnotu a k ní v "
+"rozbaleném seznamu vybrat jednotu a pak zmáčknout tlačítko <gui>Přidat</gui>."
+
+#. (itstool) path: item/p
+#: C/add-recipe-ingredients.page:58
+msgid ""
+"Repeat these steps until all ingredients have been added to the list or "
+"recipe."
+msgstr ""
+"Opakujte tyto kroky, dokud nemáte v seznamu nebo receptu přidány všechny "
+"suroviny."
+
+#. (itstool) path: note/p
+#: C/add-recipe-ingredients.page:63
+msgid ""
+"<app>Recipes</app> does not currently support the ability to convert between "
+"metric units and imperial units."
+msgstr ""
+"<app>Recepty</app> zatím neumí provádět přepočty mezi metrickými a "
+"imperiálními jednotkami."
+
+#. (itstool) path: info/desc
+#: C/add-recipe.page:8
+msgid "Learn how to add your own recipe."
+msgstr "Jak přidat svůj vlastní recept."
+
+#. (itstool) path: page/title
+#: C/add-recipe.page:19
+msgid "Add a Recipe"
+msgstr "Přidání receptu"
+
+#. (itstool) path: page/p
+#: C/add-recipe.page:21
+msgid ""
+"If you are new to <app>Recipes</app>, these topics will help you to add the "
+"following categories to a recipe."
+msgstr ""
+"Pokud s <app>Recepty</app> teprve začínáte, pomohou vám následující témata s "
+"přidáním jednotlivých částí receptu."
+
+#. (itstool) path: info/desc
+#: C/chef.page:11
+msgid "How to add your personal information to recipes."
+msgstr "Jak k receptům přidat informace o sobě."
+
+#. (itstool) path: page/title
+#: C/chef.page:22
+msgid "Add Chef Information"
+msgstr "Přidání informací o kuchaři"
+
+#. (itstool) path: page/p
+#: C/chef.page:24
+msgid ""
+"You can add your personal information including your full name, short name "
+"and a photo to <app>Recipes</app>. This will create a chef profile that is "
+"used when you create a recipe. This will also help to search for recipes you "
+"have created or to share recipes with friends and family. To add your chef "
+"information:"
+msgstr ""
+"Do <app>Receptů</app> můžete zadat své osobní údaje, včetně celého jména, "
+"přezdívky a fotky. Tím se vytvoří profil kuchaře, který se používá, když "
+"vytváříte recept. Pomáhá také při hledá receptů, které jste vytvořili a "
+"sdílíte s přáteli nebo rodinou. Když chcete zadat informace o sobě, jako "
+"kuchaři:"
+
+#. (itstool) path: item/p
+#: C/chef.page:33
+msgid ""
+"Open the <app>Recipes</app> menu from the top bar in the top-right next to "
+"<link href=\"help:gnome-help/shell-introduction#activities\">Activites</"
+"link>."
+msgstr ""
+"Otevřete nabídku aplikace <app>Recepty</app> na horní liště vedle <link href="
+"\"help:gnome-help/shell-introduction#activities\">Činností</link>."
+
+#. (itstool) path: item/p
+#: C/chef.page:38
+msgid "Select <gui>Chef Informaton</gui>."
+msgstr "Vyberte <gui>Informace o kuchaři</gui>."
+
+#. (itstool) path: item/p
+#: C/chef.page:42
+msgid "Enter your full name in the <gui>Name..</gui> text box."
+msgstr "Do textového pole <gui>Jméno</gui> vyplňte celé jméno."
+
+#. (itstool) path: item/p
+#: C/chef.page:46
+msgid ""
+"Enter your first name or nickname in the <gui>Short Name..</gui> text box."
+msgstr ""
+"Do textového pole <gui>Zkrácené jméno</gui> zadejte své křestní jméno nebo "
+"přezdívku."
+
+#. (itstool) path: item/p
+#: C/chef.page:51
+msgid ""
+"Press the camera icon and select an image to add as your personal photo and "
+"then press <gui>Open</gui>."
+msgstr ""
+"Zmáčkněte ikonu fotoaparátu, vyberte obrázek se svojí osobní fotografií, "
+"kterou chcete vložit, a zmáčkněte <gui>Otevřít</gui>."
+
+#. (itstool) path: item/p
+#: C/chef.page:56
+msgid ""
+"Press the <gui>Save</gui> button to finish entering your chef information."
+msgstr ""
+"Zmáčknutím tlačítka <gui>Uložit</gui> zadávání informací o kuchaři dokončete."
+
+#. (itstool) path: info/desc
+#: C/common-problems.page:8
+msgid "Solutions to common problems with <app>Recipes</app>."
+msgstr "Řešení běžných problémů s <app>Recepty</app>."
+
+#. (itstool) path: section/title
+#: C/common-problems.page:20
+msgid "Editing Your Recipes"
+msgstr "Úpravy ve vlastních receptech"
+
+#. (itstool) path: section/p
+#: C/common-problems.page:21
+msgid ""
+"If you have change the login or user ID you use to log into your computer, "
+"and you can no longer edit the recipes you have created, you will need to "
+"update the <app>Recipes</app> database."
+msgstr ""
+"Pokud jste změnili své přihlašovací jméno nebo ID, které používáte k "
+"přihlášení do počítače, a nemůžete teď upravit recept, který jste původně "
+"vytvořili, musíte aktualizovat databázi aplikace <app>Recepty</app>."
+
+#. (itstool) path: note/p
+#: C/common-problems.page:26
+msgid ""
+"You must have the <sys>dconf-editor</sys> package installed. Be very careful "
+"editing application data in <app>dconf-editor</app>. By editing an "
+"application's settings, you may cause that application to stop working "
+"correctly."
+msgstr ""
+"Musíte mít nainstalovaný balíček <sys>dconf-editor</sys>. Při úpravách dat v "
+"aplikaci <app>dconf-editor</app> buďte velmi opatrní. Nesprávné změny mohou "
+"znemožnit správné fungování aplikace."
+
+#. (itstool) path: section/p
+#: C/common-problems.page:32
+msgid ""
+"To update <app>Recipes</app> to use the old user to allow you to edit your "
+"recipes:"
+msgstr ""
+"Když chcete aktualizovat <app>Recepty</app>, aby používaly staré uživatelské "
+"ID, abyste mohli upravit své recepty:"
+
+#. (itstool) path: item/p
+#: C/common-problems.page:36
+msgid "Open <app>dconf-editor</app>."
+msgstr "Otevřete <app>dconf-editor</app>."
+
+#. (itstool) path: item/p
+#: C/common-problems.page:39
+msgid ""
+"Select <guiseq><gui>org</gui> <gui>gnome</gui> <gui>recipes</gui> <gui>user</"
+"gui></guiseq>"
+msgstr ""
+"Vyberte <guiseq><gui>org</gui> <gui>gnome</gui> <gui>recipes</gui> "
+"<gui>user</gui></guiseq>"
+
+#. (itstool) path: steps/item
+#: C/common-problems.page:38 C/common-problems.page:45
+msgid "<_:p-1/>."
+msgstr "<_:p-1/>."
+
+#. (itstool) path: item/p
+#: C/common-problems.page:43
+msgid "In the <gui>Custom value</gui> field, enter the old user ID."
+msgstr "Do pole <gui>Vlastní hodnota</gui> zadejte staré uživatelské ID."
+
+#. (itstool) path: item/p
+#: C/common-problems.page:46
+msgid "Close <app>dconf-editor</app>"
+msgstr "Zavřete <app>dconf-editor</app>."
+
+#. (itstool) path: item/p
+#: C/common-problems.page:49
+msgid ""
+"Open <app>Recipes</app>. You will now be able to open and edit recipes you "
+"have created."
+msgstr ""
+"Otevřete <app>Recetpy</app>. Nyní budete moci otevřít a upravit recepty, "
+"které jste vytvořili."
+
+#. (itstool) path: section/title
+#: C/common-problems.page:56
+msgid "Remove or Edit Included Recipes"
+msgstr "Odstranění nebo úpravy dodávaných receptů"
+
+#. (itstool) path: section/p
+#: C/common-problems.page:57
+msgid ""
+"You can only remove or edit the recipes you create, not the recipes included."
+msgstr ""
+"Smazat nebo upravit můžete jen recepty, které jste si vytvořili. Ty, které "
+"jsou přímo součástí aplikace, ne."
+
+#. (itstool) path: info/desc
+#: C/contribute.page:9
+msgid "How to share your recipes with the GNOME community."
+msgstr "Jak sdílet své recepty s komunitou GNOME."
+
+#. (itstool) path: page/title
+#: C/contribute.page:20
+msgid "Contribute Recipes"
+msgstr "Přispění recepty"
+
+#. (itstool) path: page/p
+#: C/contribute.page:22
+msgid ""
+"You can share your recipe with the <app>Recipes</app> developers who may "
+"include your recipe in the <app>Recipes</app> application. Recipes you share "
+"should be of your own creation. To send your recipe:"
+msgstr ""
+"Můžete své recepty sdílet s vývojáři aplikace <app>Recepty</app>, kteří je "
+"mohou zařadit do oficiálního vydání aplikace. Recepty, které sdílíte, byste "
+"měli napsat vy sami. Když chcete svůj recept odeslat:"
+
+#. (itstool) path: item/p
+#: C/contribute.page:28
+msgid "Open the recipe you want to share."
+msgstr "Otevřete recept, který chcete sdílet."
+
+#. (itstool) path: item/p
+#: C/contribute.page:32 C/share.page:47
+msgid "Press the <gui>Share</gui> button."
+msgstr "Zmáčkněte tlačítko <gui>Sdílet</gui>."
+
+#. (itstool) path: item/p
+#: C/contribute.page:36 C/share.page:51
+msgid ""
+"If you would like to share multiple recipes, press the <gui>Add More</gui> "
+"button in the top-right window and open another recipe and then press "
+"<gui>Share</gui> again."
+msgstr ""
+"Jestli chcete sdílet více receptů, zmáčkněte tlačítko <gui>Přidat další</"
+"gui> v pravém horním rohu okna, otevřete jiný recept a zmáčkněte "
+"<gui>Sdílet</gui> znovu."
+
+#. (itstool) path: item/p
+#: C/contribute.page:42
+msgid "Press the <gui>Share</gui> button in the upper-right corner."
+msgstr "Zmáčkněte tlačítko <gui>Sdílet</gui> v pravém horním rohu."
+
+#. (itstool) path: item/p
+#: C/contribute.page:46
+msgid "Select <gui>Contribute to Recipes</gui> in the bottom-right corner."
+msgstr "Vyberte <gui>Přispět do projektu Recepty</gui> v pravém dolním rohu."
+
+#. (itstool) path: item/p
+#: C/contribute.page:50 C/share.page:61
+msgid ""
+"Choose the email application from the list you want to use to email the "
+"recipe and press the <gui>Select</gui> button."
+msgstr ""
+"V seznamu vyberte poštovní aplikaci, kterou chcete použít k zaslání receptu "
+"e-mailem a zmáčkněte tlačítko <gui>Vybrat</gui>."
+
+#. (itstool) path: item/p
+#: C/contribute.page:55
+msgid ""
+"Your email application will open and a new email message will be composed. "
+"<app>Recipes</app> will have included the recipe as an attachment and the "
+"<em>Subject</em> and <em>To:</em> line will be automatically filled out for "
+"you."
+msgstr ""
+"Vybraná poštovní aplikace se otevře a vytvoří se v ní nová e-mailová zpráva. "
+"<app>Recepty</app> do ní vloží recept jako přílohu a automaticky vám vyplní "
+"<em>Předmět</em> a <em>Příjemce</em> zprávy."
+
+#. (itstool) path: item/p
+#: C/contribute.page:62
+msgid ""
+"Press <gui>Send</gui> to email your recipe to the <app>Recipe</app> "
+"developers who will review your recipe for possible inclusion."
+msgstr ""
+"Zmáčknutím <gui>Odeslat</gui> pošlete svůj recept e-mailem vývojářům "
+"aplikace <app>Recepty</app>. Ti jej zkontrolují a případně začlení "
+"<gui>Receptů</gui>."
+
+#. (itstool) path: info/desc
+#: C/cooking.page:9
+msgid "Use hands-free mode or timers to help you cook."
+msgstr ""
+"Jak používat režim volných rukou a odpočet času jako pomocníky při vaření "
+"nebo pečení."
+
+#. (itstool) path: page/title
+#: C/cooking.page:20
+msgid "Start Cooking"
+msgstr "Začínáme vařit"
+
+#. (itstool) path: page/p
+#: C/cooking.page:22
+msgid ""
+"<app>Recipes</app> features a hands-free mode to help you with recipe "
+"directions when you want to cook a recipe. Hands-free mode makes it easy to "
+"view the steps to make a recipe, including starting timers or seeing photos "
+"of each step, if they were included in the recipe."
+msgstr ""
+"<app>Recepty</app> obsahují režim „volných rukou“, který vám pomůže s "
+"instrukcemi při vaření podle receptu. V tomto režimu můžete jednoduše "
+"procházet jednotlivé kroky receptu, včetně spouštění odpočtu času (obdoba "
+"kuchyňské minutky) a prohlížení fotografií k jednotlivým krokům, pokud jsou "
+"k dispozici."
+
+#. (itstool) path: page/p
+#: C/cooking.page:27
+msgid "To start cooking with hands-free mode:"
+msgstr "Když chcete začít vařit nebo péct v režimu volných rukou:"
+
+#. (itstool) path: item/p
+#: C/cooking.page:30
+msgid "Open the recipe you want to cook."
+msgstr "Otevřete recept, který chcete uvařit/upéct."
+
+#. (itstool) path: item/p
+#: C/cooking.page:34
+msgid "Press the <gui>Start Cooking</gui> button in the top right corner."
+msgstr "Zmáčkněte tlačítko <gui>Začít vařit</gui> v pravém horním rohu."
+
+#. (itstool) path: item/p
+#: C/cooking.page:38
+msgid ""
+"<app>Recipes</app> will change to full screen mode, also known as hands-free "
+"mode and display the first step to cook the recipe."
+msgstr ""
+"<app>Recepty</app> se přepnou do režimu celé obrazovky, který funguje jako "
+"režim pro volné ruce pro vaření, a zobrazí se první krok postupu."
+
+#. (itstool) path: item/p
+#: C/cooking.page:43 C/cooking.page:67
+msgid "To move to the next step of the recipe, press any key on the keyboard."
+msgstr ""
+"Pro přesun na následující krok receptu zmáčkněte libovolnou klávesu na "
+"klávesnici."
+
+#. (itstool) path: item/p
+#: C/cooking.page:48
+msgid "To move to the previous step, press the left arrow key on the keyboard."
+msgstr "Pro přesun na předchozí krok zmáčkněte na klávesnici šipku doleva."
+
+#. (itstool) path: item/p
+#: C/cooking.page:53
+msgid ""
+"To start a timer, press the <gui>Start</gui> button or <key>Spacebar</key>. "
+"Once you have started a timer, you can press <gui>Pause</gui> to pause the "
+"timer or <gui>Reset</gui> to re-start the timer from the beginning. You can "
+"have multiple timers running and the names of the step associated with each "
+"timer will be shown in the upper left corner of <app>Recipes</app>. When the "
+"timer is done, your computer will beep and <gui>Time is up!</gui> will be "
+"shown."
+msgstr ""
+"Když chcete spustit odpočet času, zmáčkněte tlačítko <gui>Začít</gui> nebo "
+"zmáčkněte <key>mezerník</key>. Jakmile je odpočet spuštěný, můžete jej "
+"zmáčknutím <gui>Pozastavit</gui> pozastavit nebo zmáčknutím <gui>Vynulovat</"
+"gui> nastavit zpátky na začátek odpočtu. Můžete mít spuštěných i několik "
+"odpočtů naráz a jejich názvy se vám budou zobrazovat v levém horním rohu. "
+"Když odpočet doběhne, váš počítač vydá zvukové upozornění a zobrazí se "
+"<gui>Čas doběhl</gui>."
+
+#. (itstool) path: item/p
+#: C/cooking.page:62
+msgid ""
+"When a timer is running, the name of the timer will be shown in the upper "
+"left corner of hands-free mode. You can move to the next steps while a timer "
+"is running."
+msgstr ""
+"Když běží odpočet času, zobrazí se jeho název v levém horním rohu obrazovky. "
+"Můžete se přesouvat na jiné kroky instrukcí, zatímco odpočet bude pokračovat."
+
+#. (itstool) path: item/p
+#: C/cooking.page:72
+msgid ""
+"When you have completed all the steps or to exit hands-free mode at any "
+"time, press the <key>Escape</key> key or press the <gui>x</gui> button in "
+"the top-right corner."
+msgstr ""
+"Když máte vše hotové, nebo kdykoliv chcete opustit režim volných rukou, "
+"zmáčkněte klávesu <key>Esc</key> nebo tlačítko <gui>×</gui> v pravém horním "
+"rohu."
+
+#. (itstool) path: C/cooking.page/page
+#: C/cooking.page:4
+msgid "<_:info-1/> <_:title-2/> <_:p-3/> <_:p-4/>. <_:steps-5/>"
+msgstr "<_:info-1/> <_:title-2/> <_:p-3/> <_:p-4/>. <_:steps-5/>"
+
+#. (itstool) path: info/desc
+#: C/find-recipe.page:8
+msgid "Find a recipe by name, category, cuisine, or chef."
+msgstr "Jak najít recept podle názvu, kategorie, kuchyně nebo kuchaře."
+
+#. (itstool) path: page/title
+#: C/find-recipe.page:19
+msgid "Search Recipes"
+msgstr "Hledání receptů"
+
+#. (itstool) path: section/title
+#: C/find-recipe.page:22
+msgid "Search by Recipe Name, Ingredient or Chef"
+msgstr "Hledání podle názvu receptu, surovin nebo kuchaře"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/find-recipe.page:24 C/find-recipe.page:42
+msgctxt "_"
+msgid "external ref='images/search.png' md5='b0c894f87d0a0bca717b52ecf0b4a12e'"
+msgstr ""
+"external ref='images/search.png' md5='b0c894f87d0a0bca717b52ecf0b4a12e'"
+
+#. (itstool) path: section/p
+#: C/find-recipe.page:23
+msgid ""
+"Press the search button <media type=\"image\" mime=\"image/png\" src="
+"\"images/search.png\" its:translate=\"yes\"> <span its:translate=\"yes"
+"\">Search</span></media> and enter your search query. The search results can "
+"include:"
+msgstr ""
+"Zmáčkněte vyhledávací tlačítko <media type=\"image\" mime=\"image/png\" src="
+"\"images/search.png\" its:translate=\"yes\"><span its:translate=\"yes"
+"\">Hledat</span></media> a zadejte hledaný text. Ve výsledcích hledání se "
+"mohou objevit:"
+
+#. (itstool) path: item/p
+#: C/find-recipe.page:30
+msgid "Recipes that include the text you searched for."
+msgstr "Recepty, které obsahují hledaný text."
+
+#. (itstool) path: item/p
+#: C/find-recipe.page:33
+msgid "Ingredients that include the text you searched for."
+msgstr "Suroviny, které obsahují hledaný text."
+
+#. (itstool) path: item/p
+#: C/find-recipe.page:36
+msgid "Chef names."
+msgstr "Název kuchaře."
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/find-recipe.page:45 C/find-recipe.page:84 C/find-recipe.page:113
+#: C/find-recipe.page:152
+msgctxt "_"
+msgid "external ref='images/down.png' md5='384329e0a17b79aca6085fe4aab1361f'"
+msgstr "external ref='images/down.png' md5='384329e0a17b79aca6085fe4aab1361f'"
+
+#. (itstool) path: section/p
+#: C/find-recipe.page:40
+msgid ""
+"You can also do a more narrow search by category. Press the search button "
+"<media type=\"image\" mime=\"image/png\" src=\"images/search.png\" its:"
+"translate=\"yes\"> <span its:translate=\"yes\">Search</span></media> and "
+"down icon <media type=\"image\" mime=\"image/png\" src=\"images/down.png\" "
+"its:translate=\"yes\"> <span its:translate=\"yes\">Down</span></media> and "
+"choose from one or more categories."
+msgstr ""
+"Rozsah hledání můžete zúžit pomocí kategorie. Zmáčkněte tlačítko hledání "
+"<media type=\"image\" mime=\"image/png\" src=\"images/search.png\" its:"
+"translate=\"yes\"><span its:translate=\"yes\">Hledat</span></media>, "
+"klikněte na rozbalovací šipku <media type=\"image\" mime=\"image/png\" src="
+"\"images/down.png\" its:translate=\"yes\"><span its:translate=\"yes\">Dolů</"
+"span></media> a vyberte si z jedné nebo více kategorií."
+
+#. (itstool) path: item/p
+#: C/find-recipe.page:50
+msgid "Meal"
+msgstr "Jídlo"
+
+#. (itstool) path: item/p
+#: C/find-recipe.page:54
+msgid "Spiciness"
+msgstr "Ostrost"
+
+#. (itstool) path: item/p
+#: C/find-recipe.page:58
+msgid "Dietary restrictions"
+msgstr "Dietní omezení"
+
+#. (itstool) path: item/p
+#: C/find-recipe.page:62
+msgid "Ingredients"
+msgstr "Suroviny"
+
+#. (itstool) path: section/p
+#: C/find-recipe.page:66
+msgid ""
+"<app>Recipes</app> will add a tag for the category you selected and display "
+"it in the search bar. You can then enter text to search within that category "
+"and tag."
+msgstr ""
+"<app>Recepty</app> přidají štítek pro kategorii, kterou jste si vybrali a "
+"zobrazí jej na vyhledávací liště. Můžete pak zadat text, který chcete hledat "
+"v rámci kategorie prezentované štítkem."
+
+#. (itstool) path: section/p
+#: C/find-recipe.page:69
+msgid ""
+"To remove the tag from search, press <gui>x</gui> on the tag in the search "
+"bar."
+msgstr ""
+"Když chcete štítek z hledání odebrat, zmáčkněte <gui>×</gui> vedle něj ve "
+"vyhledávací liště."
+
+#. (itstool) path: section/title
+#: C/find-recipe.page:74
+msgid "Search by Categories"
+msgstr "Hledání podle kategorií"
+
+#. (itstool) path: section/p
+#: C/find-recipe.page:75
+msgid ""
+"When you create a recipe, you can select if a recipe is in a category, such "
+"as vegan or nut free. To search by category:"
+msgstr ""
+"Při vytváření receptu se dá vybrat, jestli má být recept v nějaké kategorii, "
+"jako třeba „Veganské recepty“ nebo „Bezořechové recepty“. Když pak chcete "
+"podle kategorie hledat:"
+
+#. (itstool) path: item/p
+#: C/find-recipe.page:78
+msgid ""
+"From the main <app>Recipes</app> window scroll down to <gui>Categories</gui>."
+msgstr ""
+"V hlavním okně <app>Recepty</app> se přesuňte dolů, do části <gui>Kategorie</"
+"gui>."
+
+#. (itstool) path: item/p
+#: C/find-recipe.page:82
+msgid ""
+"You can also expand the Categories list by pressing the down icon<media type="
+"\"image\" mime=\"image/png\" src=\"images/down.png\" its:translate=\"yes\"> "
+"<span its:translate=\"yes\">Down</span></media> to show all Categories."
+msgstr ""
+"Seznam kategorií můžete rozbalit zmáčknutím ikony se šipkou dolů <media type="
+"\"image\" mime=\"image/png\" src=\"images/down.png\" its:translate=\"yes"
+"\"><span its:translate=\"yes\">Dolů</span></media>, abyste viděli všechny "
+"kategorie."
+
+#. (itstool) path: item/p
+#: C/find-recipe.page:89
+msgid "Press the <gui>Category</gui> to view all recipes in that Category."
+msgstr ""
+"Zmáčkněte některou <gui>kategorii</gui> a zobrazí se vám všechny recepty z "
+"této kategorie."
+
+#. (itstool) path: section/p
+#: C/find-recipe.page:95
+msgid ""
+"If you choose from the vegan, vegetarian, dairy-free, gluten-free or nut-"
+"free categories, the search results will also display a description of the "
+"Category with a <gui>Read More</gui> link you can click to learn more about "
+"the Category."
+msgstr ""
+"Když si vyberete kategorii veganské, vegetariánské, bezmléčné nebo "
+"bezořechové, zobrazí se u výsledků hledání také popis kategorie s odkazem "
+"<gui>Dozvědět se více</gui>, který vás po kliknutí nasměruje na podrobnější "
+"informace."
+
+#. (itstool) path: section/p
+#: C/find-recipe.page:100
+msgid ""
+"Note that the information about dietary restrictions is provided by the "
+"recipe authors themselves and cannot be guaranteed to be accurate. Please "
+"always double-check the ingredients if you are serving a person with a "
+"gluten or dairy intolerance."
+msgstr ""
+"Upozorňujeme, že informace o dietních omezeních receptů zadává autor receptu "
+"a nelze tak garantovat jejich přesnost. Proto vždy dobře překontrolujte "
+"suroviny, když hostíte osobu, která má alergii na lepek nebo mléčné produkty."
+
+#. (itstool) path: section/title
+#: C/find-recipe.page:107
+msgid "Search for recipes with or without a specific ingredient"
+msgstr "Hledání receptu s nebo bez konkrétní suroviny"
+
+#. (itstool) path: section/p
+#: C/find-recipe.page:108
+msgid ""
+"You can search for recipes that include or do not include a specific "
+"ingredient."
+msgstr ""
+"Můžete hledat recepty, které obsahují, nebo naopak neobsahují konkrétní "
+"suroviny."
+
+#. (itstool) path: item/p
+#: C/find-recipe.page:112
+msgid ""
+"Press the down arrow <media type=\"image\" mime=\"image/png\" src=\"images/"
+"down.png\" its:translate=\"yes\"> <span its:translate=\"yes\">Down</span></"
+"media> in the search bar."
+msgstr ""
+"Zmáčkněte šipku dolů <media type=\"image\" mime=\"image/png\" src=\"images/"
+"down.png\" its:translate=\"yes\"><span its:translate=\"yes\">Dolů</span></"
+"media> na vyhledávací liště."
+
+#. (itstool) path: item/p
+#: C/find-recipe.page:117
+msgid "Select the <gui>Ingredients</gui> drop down box."
+msgstr "Rozbalte seznam <gui>Suroviny</gui>."
+
+#. (itstool) path: item/p
+#: C/find-recipe.page:120
+msgid "Select an ingredient from the list, such as <em>Banana</em>."
+msgstr "V seznamu vyberte příslušnou surovinu, například <em>banán</em>."
+
+#. (itstool) path: section/p
+#: C/find-recipe.page:123
+msgid ""
+"A tag for that ingredient, such as <em>Banana</em>, will be displayed in the "
+"search bar and all recipes that include that bananas will be displayed. If "
+"there are no recipes that match, <gui>No recipes found</gui> will be "
+"displayed. Press the tag in the search bar for <gui>Banana</gui> and the tag "
+"will now show <gui>No Banana</gui> and all recipes that do not include "
+"bananas in the recipe will be displayed. To remove the tag from search, "
+"press <gui>x</gui> on the tag in the search bar."
+msgstr ""
+"Ve vyhledávací liště se zobrazí štítek pro danou surovinu, například "
+"<em>banán</em>, a zobrazí se všechny recepty, které obsahují banán. Pokud "
+"žádné takové recepty nejsou k dispozici, zobrazí se <gui>Nebyl nalezen žádný "
+"recept</gui>. Když kliknete na štítek <gui>banán</gui>, změní se na <gui>bez "
+"banánů</gui> a zobrazí se všechny recepty, které neobsahují banány. Když "
+"chcete štítek z vyhledávací lišty odstranit, zmáčkněte <gui>×</gui> vedle "
+"něj na vyhledávací liště."
+
+#. (itstool) path: section/title
+#: C/find-recipe.page:134
+msgid "Search by Cuisines"
+msgstr "Hledání podle kuchyně"
+
+#. (itstool) path: section/p
+#: C/find-recipe.page:135
+msgid ""
+"You can also search for a recipe by what type of cuisine the recipe is or "
+"region it is from. This also includes searching for seasonal recipes that "
+"might be made during certain holidays or times of year."
+msgstr ""
+"Recepty můžete hledat také podle typu kuchyně nebo oblasti, ze které "
+"pochází. K tomu patří také hledání sezónních receptů, které se dají "
+"připravovat kvůli surovinám jen v konkrétním ročním období, nebo jsou vhodné "
+"pro nějaký svátek."
+
+#. (itstool) path: item/p
+#: C/find-recipe.page:140
+msgid ""
+"In the top menu bar of <app>Recipes</app>, press the <gui style=\"button"
+"\">Cuisines</gui> button."
+msgstr ""
+"V hlavičkové liště <app>Receptů</app> zmáčkněte tlačítko <gui style=\"button"
+"\">Kuchyně</gui>."
+
+#. (itstool) path: item/p
+#: C/find-recipe.page:144
+msgid ""
+"A list of cuisines from around the world with brief descriptions are "
+"displayed. Click on a world cuisine to see all recipes in that category "
+"sorted by the type of dish."
+msgstr ""
+"Zobrazí se seznam kuchyní z celého světa včetně stručného popisu. Kliknutím "
+"na některou z kuchyní se zobrazí všechny recepty, které do ní náleží, "
+"uspořádané podle typu jídla."
+
+#. (itstool) path: item/p
+#: C/find-recipe.page:150
+msgid ""
+"Scroll down to see a list of seasonal categories and press the down icon "
+"<media type=\"image\" mime=\"image/png\" src=\"images/down.png\" its:"
+"translate=\"yes\"> <span its:translate=\"yes\">Down</span></media> to see "
+"all seasonal categories."
+msgstr ""
+"Když se v seznamu kuchyní posunete níž, uvidíte začátek seznamu sezonních "
+"kategorií. Kliknutím na ikonu se šipkou dolů <media type=\"image\" mime="
+"\"image/png\" src=\"images/down.png\" its:translate=\"yes\"><span its:"
+"translate=\"yes\">Dolů</span></media> si zobrazíte všechny sezónní kategorie."
+
+#. (itstool) path: item/p
+#: C/find-recipe.page:157
+msgid "Select a holiday or season to show all recipes that match."
+msgstr ""
+"Vyberte svátek nebo roční období, aby se vám zobrazily všechny recepty, "
+"které k němu patří."
+
+#. (itstool) path: info/title
+#: C/index.page:7
+msgctxt "text"
+msgid "Recipes"
+msgstr "Recepty"
+
+#. (itstool) path: info/desc
+#: C/index.page:19
+msgid "A recipe manager to help you cook."
+msgstr "Správce receptů, který vám pomůže s vařením."
+
+#. (itstool) path: page/p
+#: C/index.page:22
+msgid ""
+"<app>Recipes</app> is an easy to use application that will help you discover "
+"what to cook today, tomorrow, the rest of the week, and for special "
+"occasions."
+msgstr ""
+"<app>Recepty</app> jsou jednoduše použitelnou aplikací, která vám pomůže "
+"najít, co uvařit dnes, co zítra, po zbytek týdne a při speciálních "
+"příležitostech."
+
+#. (itstool) path: page/title
+#: C/index.page:26
+msgid "<_:media-1/> Recipes"
+msgstr "<_:media-1/> Recepty"
+
+#. (itstool) path: section/title
+#: C/index.page:32
+msgid "Managing Recipes"
+msgstr "Správa receptů"
+
+#. (itstool) path: section/title
+#: C/index.page:37
+msgid "Cooking"
+msgstr "Vaření a pečení"
+
+#. (itstool) path: section/title
+#. (itstool) path: page/title
+#: C/index.page:41 C/share.page:28
+msgid "Printing and Sharing"
+msgstr "Tisk a sdílení"
+
+#. (itstool) path: section/title
+#: C/index.page:46
+msgid "Common Problems"
+msgstr "Běžné problémy"
+
+#. (itstool) path: p/link
+#: C/legal.xml:5
+msgid "Creative Commons Attribution-ShareAlike 4.0 International"
+msgstr "Creative Commons Attribution-ShareAlike 4.0 International"
+
+#. (itstool) path: license/p
+#: C/legal.xml:4
+msgid "This work is licensed under a <_:link-1/> license."
+msgstr "Toto dílo je licencováno pod <_:link-1/>."
+
+#. (itstool) path: license/p
+#: C/legal.xml:8
+msgid ""
+"As a special exception, the copyright holders give you permission to copy, "
+"modify, and distribute the example code contained in this documentation "
+"under the terms of your choosing, without restriction."
+msgstr ""
+"Jako zvláštní výjimka se vám držitelem autorských práv uděluje svolení "
+"kopírovat, upravovat a šířit ukázkový kód obsažený v tomto dokumentu za "
+"podmínek, které si sami zvolíte, bez dalších omezení."
+
+#. (itstool) path: info/desc
+#: C/notes.page:8
+msgid "How to add notes to a recipe or make it a favorite."
+msgstr "Jak k receptu přidat poznámky nebo jej označit jako oblíbený."
+
+#. (itstool) path: page/title
+#: C/notes.page:19
+msgid "Add Notes"
+msgstr "Přidání poznámek"
+
+#. (itstool) path: section/title
+#: C/notes.page:22
+msgid "Add a Note to a Recipe."
+msgstr "Přidání poznámky do receptu"
+
+#. (itstool) path: section/p
+#: C/notes.page:23
+msgid ""
+"You can add personal notes to any recipe. You may want to make a note how "
+"you changed the recipe, or if a recipe needed to be cooked shorter or "
+"longer, or if it became a favorite of a friend or family member. To add a "
+"note to a recipe:"
+msgstr ""
+"Do kteréhokoliv receptu si můžete přidat osobní poznámky. Například, když si "
+"chcete poznačit, jak jste si recept upravili, nebo když je podle vašich "
+"zkušeností potřeba vařit delší nebo kratší dobu a nebo, že si recept oblíbil "
+"kamarád nebo člen rodiny. Když chcete do receptu přidat poznámku:"
+
+#. (itstool) path: item/p
+#: C/notes.page:29 C/notes.page:52 C/shop.page:26
+msgid "Open a recipe."
+msgstr "Otevřete recept."
+
+#. (itstool) path: item/p
+#: C/notes.page:32
+msgid ""
+"Press the <gui style=\"button\">Notes</gui> button in the lower-left corner."
+msgstr ""
+"Zmáčkněte tlačítko <gui style=\"button\">Poznámky</gui> v levém dolním rohu."
+
+#. (itstool) path: item/p
+#: C/notes.page:36
+msgid "Enter your notes in the text box."
+msgstr "Do textového pole napište své poznámky."
+
+#. (itstool) path: item/p
+#: C/notes.page:39
+msgid ""
+"Press the <gui style=\"button\">Notes</gui> button again lower-left corner "
+"when finished."
+msgstr ""
+"Zmáčknutím tlačítka <gui style=\"button\">Poznámky</gui> v levém dolním rohu "
+"psaní dokončete."
+
+#. (itstool) path: section/p
+#: C/notes.page:43
+msgid ""
+"Your note will now be displayed below the recipe description and above the "
+"recipe directions."
+msgstr ""
+"Vaše poznámka se nyní bude zobrazovat pod popisem receptu a nad instrukcemi "
+"receptu."
+
+#. (itstool) path: section/title
+#: C/notes.page:48
+msgid "Make a recipe a favorite."
+msgstr "Označení receptu jako oblíbeného"
+
+#. (itstool) path: section/p
+#: C/notes.page:49
+msgid "You can make a recipe a favorite. To favorite a recipe:"
+msgstr "Recept si můžete označit jako oblíbený. Když to chcete udělat:"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/notes.page:57
+msgctxt "_"
+msgid "external ref='images/love.png' md5='2ae9287b28d11513d16239afc00147b7'"
+msgstr "external ref='images/love.png' md5='2ae9287b28d11513d16239afc00147b7'"
+
+#. (itstool) path: item/p
+#: C/notes.page:55
+msgid ""
+"Press the <gui>Add to Favorites</gui> <media type=\"image\" mime=\"image/png"
+"\" src=\"images/love.png\" its:translate=\"yes\"> <span its:translate=\"yes"
+"\">Add to Favorites</span></media> button."
+msgstr ""
+"Zmáčkněte tlačítko <gui>Přidat do oblíbených</gui> <media type=\"image\" "
+"mime=\"image/png\" src=\"images/love.png\" its:translate=\"yes\"> <span its:"
+"translate=\"yes\">Přidat do oblíbených</span></media>."
+
+#. (itstool) path: section/p
+#: C/notes.page:62
+msgid ""
+"To remove from favorites, press the <gui>Add to Favorites</gui> button again."
+msgstr ""
+"Když chcete recept z oblíbených vyřadit, zmáčkněte tlačítko <gui>Přidat do "
+"oblíbených</gui> znovu."
+
+#. (itstool) path: info/desc
+#: C/share.page:9
+msgid "How to print or share recipes and shopping lists."
+msgstr "Jak vytisknout nebo sdílet recepty a nákupní seznamy."
+
+#. (itstool) path: credit/name
+#: C/share.page:16
+msgid "Jim Campbell"
+msgstr "Jim Campbell"
+
+#. (itstool) path: credit/name
+#: C/share.page:20
+msgid "Sindhu S"
+msgstr "Sindhu S"
+
+#. (itstool) path: section/title
+#: C/share.page:31
+msgid "Share a Recipe or Shopping List Using Email"
+msgstr "Sdílení receptů a nákupních seznamů přes e-mail"
+
+#. (itstool) path: section/p
+#: C/share.page:32
+msgid ""
+"You can email a shopping list or recipe to a friend. Shopping lists will "
+"email all of the ingredients needed in the body of an email. If you email a "
+"recipe, the email recipient will receive the recipe as an email attachment. "
+"They can download the attachment and double-click it to import the recipe "
+"you shared into <app>Recipes</app>."
+msgstr ""
+"Nákupní seznam nebo recept můžete poslat přátelům e-mailem. Nákupní seznam "
+"se všemi potřebnými surovinami se pošle v těle zprávy. Když budete posílat "
+"recept, obdrží je příjemce jako přílohu e-mailu. Může si jej uložit na disk "
+"a dvojitým kliknutím si jej naimportovat do <app>Receptů</app>."
+
+#. (itstool) path: note/p
+#: C/share.page:38
+msgid ""
+"You must use an email application to share recipes. Web based email, like "
+"Gmail or Yahoo!, will not work to share recipes."
+msgstr ""
+"Pro sdílení receptů musíte použít poštovní aplikaci. Webové e-maily, jako je "
+"Gmail nebo Seznam jsou pro tyto účely nepoužitelné."
+
+#. (itstool) path: item/p
+#: C/share.page:43
+msgid "Open the recipe or shopping list you want to email."
+msgstr "Otevřete recept nebo nákupní seznam, které chcete poslat e-mailem."
+
+#. (itstool) path: item/p
+#: C/share.page:57
+msgid "Press the <gui>Share</gui> button in the bottom-right corner."
+msgstr "Zmáčkněte tlačítko <gui>Sdílet</gui> v pravém dolním rohu."
+
+#. (itstool) path: item/p
+#: C/share.page:66
+msgid ""
+"A new email message will be opened composed. The <em>Subject</em> line and "
+"email body will be automatically filled out for you. If you are emailing a "
+"shopping list, the shopping list will be included in the body of the email. "
+"If you are sharing a recipe, the recipe will be attached to the email."
+msgstr ""
+"Otevře se editor s novou e-mailovou zprávou. Hlavička <em>Předmět</em> a "
+"tělo zprávy budou automaticky předvyplněné. Když posíláte nákupní seznam, "
+"bude vložený v těle zprávy. Když sdílíte recept, bude ke zprávě přiložený "
+"jako příloha."
+
+#. (itstool) path: item/p
+#: C/share.page:74
+msgid ""
+"Enter the email address of the person you would like to share with and any "
+"additional information in the email body and send your email."
+msgstr ""
+"Zadejte e-mailovou adresu osoby, se kterou chcete údaje sdílet, popřípadě do "
+"těla zprávy dopiště doplňující text a e-mail odešlete."
+
+#. (itstool) path: section/title
+#: C/share.page:82
+msgid "Print a Recipe"
+msgstr "Tisk receptu"
+
+#. (itstool) path: note/p
+#: C/share.page:85
+msgid ""
+"Printing a recipe requires that you have connected and configured your "
+"printer. If you have not done this, please consult the <link href=\"help:"
+"gnome-help/printing\">printing help for GNOME</link>."
+msgstr ""
+"Abyste mohli recept vytisknout, musíte mít připojenou a správně nastavenou "
+"tiskárnu. Pokud tomu tak není, podívejte se na <link href=\"help:gnome-help/"
+"printing\">nápovědu k tisku v GNOME</link>."
+
+#. (itstool) path: section/p
+#: C/share.page:90
+msgid ""
+"You can print your recipes using a local or remote printer. To print a "
+"recipe:"
+msgstr ""
+"Recepty si můžete vytisknout, ať už na místní nebo síťové tiskárně. Když "
+"chcete recept vytisknout:"
+
+#. (itstool) path: item/p
+#: C/share.page:95
+msgid ""
+"Press the <gui style=\"menuitem\">Print</gui> button in the bottom-right "
+"corner when viewing a recipe."
+msgstr ""
+"Zmáčkněte při prohlížení receptu tlačítko <gui style=\"menuitem\">Tisk</gui> "
+"v pravém dolním rohu."
+
+#. (itstool) path: item/p
+#: C/share.page:99
+msgid "Select the desired printer from the list of printers available."
+msgstr "Vyberte v seznamu dostupných tiskáren tu, kterou chcete použít."
+
+#. (itstool) path: item/p
+#: C/share.page:102
+msgid ""
+"You can preview the file using <gui style=\"button\">Print Preview</gui> and "
+"once you are satisfied with the settings, press <gui style=\"button\">Print</"
+"gui> to send the file to printer."
+msgstr ""
+"Pomocí <gui style=\"button\">Náhled tisku</gui> se můžete dopředu podívat na "
+"podobu výtisku a když jste spokojení, zmáčknutím <gui style=\"button\">Tisk</"
+"gui> poslat recept na tiskárnu."
+
+#. (itstool) path: info/desc
+#: C/shop.page:8
+msgid ""
+"Automatically create a shopping list with the ingredients needed for a "
+"recipe."
+msgstr ""
+"Jak automaticky vytvořit nákupní seznam se surovinami potřebnými na recept."
+
+#. (itstool) path: page/title
+#: C/shop.page:20
+msgid "Create a Shopping List"
+msgstr "Vytvoření nákupního seznamu"
+
+#. (itstool) path: page/p
+#: C/shop.page:22
+msgid ""
+"<app>Recipes</app> will help you create shopping list based on the "
+"ingredients in a recipe. To create a shopping list:"
+msgstr ""
+"<app>Recepty</app> vám pomohou vytvořit nákupní seznam na základě surovin v "
+"receptu. Když chcete vytvořit nákupní seznam:"
+
+#. (itstool) path: item/p
+#: C/shop.page:29
+msgid ""
+"Press the <gui>Buy Ingredients</gui> button located under the ingredient "
+"list."
+msgstr ""
+"Zmáčkněte tlačítko <gui>Nakoupit suroviny</gui>, které najdete pod seznamem "
+"surovin."
+
+#. (itstool) path: item/p
+#: C/shop.page:33
+msgid ""
+"<app>Recipes</app> will display a pop-up at the top. To view the shopping "
+"list, press the <gui>View Shopping List</gui> button or press <gui>x</gui> "
+"to close the pop-up."
+msgstr ""
+"<app>Recepty</app> zobrazí v horní části vyskakovací zprávu. Můžete si "
+"seznam zobrazit zmáčknutím <gui>Zobrazit nákupní seznam</gui> nebo "
+"zmáčknutím <gui>×</gui> zprávu zavřít."
+
+#. (itstool) path: item/p
+#: C/shop.page:38
+msgid ""
+"Repeat steps for any other recipes you would like the ingredients to be "
+"added to your shopping list."
+msgstr ""
+"Zopakujte kroky pro libovolné další recepty, pro které chcete přidat "
+"suroviny do nákupního seznamu."
+
+#. (itstool) path: page/p
+#: C/shop.page:43
+msgid ""
+"When you are finished adding to the shopping list, press the <gui>View "
+"Shopping List</gui> button, or return to the main <app>Recipes</app> window "
+"and click the <gui>Buy ingredients</gui> bar in the <gui>Today</gui> section."
+msgstr ""
+"Až přidávání do nákupního seznamu dokončíte, zmáčkněte <gui>Zobrazit nákupní "
+"seznam</gui>, nebo se vraťte do hlavního okna <app>Receptů</app> a klikněte "
+"na lištu <gui>Nakoupit suroviny</gui> v části <gui>Dnes</gui>."
+
+#. (itstool) path: page/p
+#: C/shop.page:48
+msgid ""
+"<app>Recipes</app> will display the <gui>Buy Ingredients</gui> page. The "
+"ingredients you need to purchase for all of the recipes will be displayed in "
+"a list below the recipes that require them."
+msgstr ""
+"<app>Recepty</app> vám zobrazí stránku <gui>Nakoupit suroviny</gui>. "
+"Suroviny, které je potřeba nakoupit pro všechny recepty, se vám zobrazí v "
+"podobě seznamu pod recepty, které je požadují."
+
+#. (itstool) path: section/title
+#: C/shop.page:55
+msgid "Edit the Shopping List"
+msgstr "Úprava nákupního seznamu"
+
+#. (itstool) path: section/p
+#: C/shop.page:56
+msgid ""
+"You can increase the serving side of a recipe and the shopping list will "
+"automatically increase the quantities of the ingredients you need to "
+"purchase."
+msgstr ""
+"Můžete změnit počet porcí a nákupní seznam se automaticky přepočítá na "
+"správné množství surovin, které je třeba nakoupit."
+
+#. (itstool) path: item/p
+#: C/shop.page:62
+msgid ""
+"The recipes you have added to the shopping list are shown at the top. In the "
+"upper right corner of the recipe the serving size is shown. Click the number "
+"displayed in the recipe."
+msgstr ""
+"Recept, který přidáte do nákupního seznamu, se objeví nahoře. V pravém "
+"horním rohu receptu je zobrazený počet porcí. Klikněte na zobrazené číslo."
+
+#. (itstool) path: item/p
+#: C/shop.page:68
+msgid ""
+"Increase or decrease the serving size of the recipe by pressing <gui>+</gui> "
+"or <gui>-</gui>."
+msgstr ""
+"Zvyšte nebo snižte počet porcí zmáčknutím <gui>+</gui> nebo <gui>-</gui>."
+
+#. (itstool) path: section/p
+#: C/shop.page:74
+msgid ""
+"The shopping list will automatically adjust the ingredients needed to "
+"purchase based on the new serving size of the recipe."
+msgstr ""
+"Nákupní seznam automaticky přizpůsobí množství surovin na potřebu nového "
+"počtu porcí v receptu."
+
+#. (itstool) path: section/title
+#: C/shop.page:80
+msgid "Remove an Item"
+msgstr "Odebrání položky"
+
+#. (itstool) path: section/p
+#: C/shop.page:81
+msgid "To remove an item from the shopping list:"
+msgstr "Když chcete odebrat položku z nákupního seznamu:"
+
+#. (itstool) path: item/p
+#: C/shop.page:84
+msgid "Select an item from the list."
+msgstr "Vyberte položku v seznamu."
+
+#. (itstool) path: item/p
+#: C/shop.page:87
+msgid ""
+"Press the Trash <media type=\"image\" mime=\"image/png\" src=\"images/trash."
+"png\" its:translate=\"yes\"> <span its:translate=\"yes\">Trash</span></"
+"media> button and the ingredient is removed from the shopping list."
+msgstr ""
+"Zmáčkněte tlačítko koše <media type=\"image\" mime=\"image/png\" src="
+"\"images/trash.png\" its:translate=\"yes\"><span its:translate=\"yes\">Koš</"
+"span></media> a surovina se odebere z nákupního seznamu."
+
+#. (itstool) path: section/p
+#: C/shop.page:94
+msgid "To add an ingredient back to the shopping list after you removed it:"
+msgstr ""
+"Když chcete surovinu přidat zpět do nákupního seznamu, po té co jste ji "
+"odebrali:"
+
+#. (itstool) path: item/p
+#: C/shop.page:97
+msgid "Press the <gui>+</gui> at the bottom of the shopping list."
+msgstr "Zmáčkněte <gui>+</gui> v dolní části nákupního seznamu."
+
+#. (itstool) path: item/p
+#: C/shop.page:100
+msgid ""
+"Select the item you would like added and it will appear in the shopping list."
+msgstr ""
+"Vyberte položku, kterou byste chtěli přidat a ta se objeví v nákupním "
+"seznamu."
+
+#. (itstool) path: section/p
+#: C/shop.page:104
+msgid ""
+"After you have completed your shopping, press the <gui> Done Shopping</gui> "
+"to clear your shopping list."
+msgstr ""
+"Až vše potřebné nakoupíte, zmáčkněte <gui>Nakoupeno</gui>, aby se nákupní "
+"seznam vymazal."
