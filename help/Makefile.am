@@ -28,6 +28,6 @@ HELP_FILES = \
 	share.page \
 	shop.page
 
-HELP_LINGUAS = de es ko sv
+HELP_LINGUAS = cs de es ko sv
 
 EXTRA_DIST = meson.build
