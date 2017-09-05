@@ -45,10 +45,8 @@ char             **gr_ingredients_list_get_segments    (GrIngredientsList  *ingr
 char             **gr_ingredients_list_get_ingredients (GrIngredientsList  *ingredients,
                                                         const char         *segment);
 GrUnit             gr_ingredients_list_get_unit        (GrIngredientsList  *list,
-                                                        const char         *segment,
                                                         const char         *ingredient);
 double             gr_ingredients_list_get_amount      (GrIngredientsList  *list,
-                                                        const char         *segment,
                                                         const char         *ingredient);
 
 G_END_DECLS
