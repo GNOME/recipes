@@ -194,17 +194,17 @@ begin_print (GtkPrintOperation *operation,
         pango_layout_set_width (layout, width * PANGO_SCALE);
         pango_layout_set_font_description (layout, body_font);
 
-        for (i = 0; ings && ings[i]; i++) {
-                
-                                double amount;
-                                GrUnit unit;       
-                                double scale = 1.0;
-                                
-                                unit = gr_ingredients_list_get_unit(ingredients, ings[i]);
-                
-                                amount = gr_ingredients_list_get_amount(ingredients, ings[i]) * scale;
-                
-                                gr_convert_format(s, amount, unit);
+        for (j = 0; segs[j]; j++) {
+                ings = gr_ingredients_list_get_ingredients (ingredients, segs[j]);
+                for (i = 0; ings[i]; i++) {
+                        double amount;
+                        GrUnit unit;
+                        double scale = 1.0;
+
+                        unit = gr_ingredients_list_get_unit (ingredients, segs[j], ings[i]);
+                        amount = gr_ingredients_list_get_amount (ingredients, segs[j], ings[i]) * scale;
+                        gr_convert_format (s, amount, unit);
+                }
         }
 
         pango_layout_set_text (layout, s->str, s->len);

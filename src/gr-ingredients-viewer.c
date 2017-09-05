@@ -318,7 +318,6 @@ gr_ingredients_viewer_set_ingredients (GrIngredientsViewer *viewer,
         ingredients = gr_ingredients_list_new (text);
         ings = gr_ingredients_list_get_ingredients (ingredients, viewer->title);
         for (i = 0; ings && ings[i]; i++) {
-                
                 double amount;
                 GrUnit unit;
                 GtkWidget *row;
@@ -326,17 +325,18 @@ gr_ingredients_viewer_set_ingredients (GrIngredientsViewer *viewer,
                 s = g_string_new ("");
                 double scale = viewer->scale;
 
-                unit = gr_ingredients_list_get_unit(ingredients, ings[i]);
-                amount = gr_ingredients_list_get_amount(ingredients, ings[i]) * scale;
+                unit = gr_ingredients_list_get_unit (ingredients, viewer->title, ings[i]);
+                amount = gr_ingredients_list_get_amount (ingredients, viewer->title, ings[i]) * scale;
 
-                gr_convert_format(s, amount, unit);
+                gr_convert_format (s, amount, unit);
 
                 row = g_object_new (GR_TYPE_INGREDIENTS_VIEWER_ROW,
-                                        "unit", g_strdup (s->str),
-                                        "ingredient", ings[i],
-                                        "size-group", viewer->group,
-                                        "editable", viewer->editable,
-                                        NULL);
+                                    "unit", s->str,
+                                    "ingredient", ings[i],
+                                    "size-group", viewer->group,
+                                    "editable", viewer->editable,
+                                    NULL);
+
                 g_signal_connect (row, "delete", G_CALLBACK (delete_row), viewer);
                 g_signal_connect (row, "move", G_CALLBACK (move_row), viewer);
                 g_signal_connect (row, "edit", G_CALLBACK (edit_ingredient_row), viewer);
