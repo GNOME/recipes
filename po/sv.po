@@ -1,5 +1,5 @@
 # Swedish translation for recipes.
-# Copyright © 2016 recipes's COPYRIGHT HOLDER
+# Copyright © 2016, 2017 recipes's COPYRIGHT HOLDER
 # This file is distributed under the same license as the recipes package.
 # Josef Andersson <l10nl18nsweja@gmail.com>, 2016, 2017.
 # Anders Jonsson <anders.jonsson@norsjovallen.se>, 2017.
@@ -7,10 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=recipes\n"
-"POT-Creation-Date: 2017-06-20 09:19-0400\n"
-"PO-Revision-Date: 2017-03-15 23:13+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-09-08 11:37+0000\n"
+"PO-Revision-Date: 2017-09-12 00:29+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -18,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.3\n"
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
@@ -31,6 +30,7 @@ msgstr "Recept"
 msgid "GNOME cooks unite!"
 msgstr "GNOME-kockar, förenen eder!"
 
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Recipes.desktop.in:7
 msgid "org.gnome.Recipes"
 msgstr "org.gnome.Recipes"
@@ -254,11 +254,11 @@ msgstr "Andrekock"
 
 #: src/gr-chef-dialog.ui:132
 msgid "Name…"
-msgstr "Namn..."
+msgstr "Namn…"
 
 #: src/gr-chef-dialog.ui:143
 msgid "Short Name…"
-msgstr "Kortnamn..."
+msgstr "Kortnamn…"
 
 #: src/gr-cooking-page.ui:75
 msgid "Show"
@@ -640,6 +640,7 @@ msgstr "Inga begränsningar"
 msgid "Ingredients"
 msgstr "Ingredienser"
 
+#. FIXME: repopulate
 #: src/gr-query-editor.ui:255 src/gr-query-editor.c:337
 #: src/gr-query-editor.c:766
 msgid "Anything"
@@ -679,7 +680,7 @@ msgstr "Köp ingredienser"
 
 #: src/gr-shopping-page.ui:91
 msgid "No shopping necessary!"
-msgstr "Ingen handling nödvändig."
+msgstr "Ingen handling nödvändig!"
 
 #: src/gr-shopping-page.ui:130
 msgid "_Clear List"
@@ -770,9 +771,8 @@ msgid "_What’s New"
 msgstr "_Vad är nytt"
 
 #: src/menus.ui:26
-#, fuzzy
 msgid "_Help"
-msgstr "Hjälp"
+msgstr "_Hjälp"
 
 #: src/menus.ui:30
 msgid "_About"
@@ -811,9 +811,8 @@ msgid "Help"
 msgstr "Hjälp"
 
 #: src/menus.ui:89
-#, fuzzy
 msgid "Recipes _Help"
-msgstr "Receptsida"
+msgstr "_Hjälp för Recept"
 
 #: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:156
 #: src/gr-image-viewer.c:615 src/gr-recipe-exporter.c:166
@@ -942,12 +941,12 @@ msgstr "Få reda på mer om Recept"
 msgid "Recipes by"
 msgstr "Recept av"
 
-#: src/gr-account.c:109
+#: src/gr-account.c:111
 #, c-format
 msgid "Got an error from Account portal"
 msgstr "Fel från kontoportalen"
 
-#: src/gr-account.c:137
+#: src/gr-account.c:162
 msgid ""
 "Allow your personal information to be included with recipes you share with "
 "your friends."
@@ -1716,9 +1715,9 @@ msgid "Failed to load recipe: Couldn’t parse Modified key"
 msgstr "Misslyckades med att läsa in recept: Kunde inte tolka ändrad-nyckel"
 
 #: src/gr-recipe-importer.c:771
-#, fuzzy, c-format
+#, c-format
 msgid "No chef information found"
-msgstr "Fann ingen kock"
+msgstr "Ingen kockinformation hittades"
 
 #: src/gr-recipe-importer.c:801
 #, c-format
@@ -2078,30 +2077,26 @@ msgid "glass"
 msgstr "glas"
 
 #: src/gr-unit.c:57
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "mm"
-msgstr "m"
+msgstr "mm"
 
 #: src/gr-unit.c:57
-#, fuzzy
 msgctxt "unit name"
 msgid "millimeter"
-msgstr "milliliter"
+msgstr "millimeter"
 
 #: src/gr-unit.c:58
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "cm"
-msgstr "m"
+msgstr "cm"
 
 #: src/gr-unit.c:58
 msgctxt "unit name"
 msgid "centimeter"
-msgstr ""
+msgstr "centimeter"
 
 #: src/gr-unit.c:59
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "m"
 msgstr "m"
@@ -2109,7 +2104,7 @@ msgstr "m"
 #: src/gr-unit.c:59
 msgctxt "unit name"
 msgid "meter"
-msgstr ""
+msgstr "meter"
 
 #: src/gr-unit.c:129
 #, c-format
