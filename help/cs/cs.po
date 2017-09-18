@@ -6,14 +6,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
-"POT-Creation-Date: 2017-08-31 10:13+0000\n"
-"PO-Revision-Date: 2017-09-04 10:54+0200\n"
+"POT-Creation-Date: 2017-09-17 12:58+0000\n"
+"PO-Revision-Date: 2017-09-18 09:05+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Gtranslator 2.91.7\n"
 
@@ -322,13 +322,8 @@ msgstr ""
 msgid "Add images to each step"
 msgstr "Přidání obrázků k jednotlivým krokům"
 
-#. (itstool) path: section/title
-#: C/add-recipe-directions.page:69
-msgid "Images"
-msgstr "Obrázky"
-
 #. (itstool) path: section/p
-#: C/add-recipe-directions.page:70
+#: C/add-recipe-directions.page:69
 msgid ""
 "You can add an image or photo of the finished recipe and also a photo of "
 "each each step of making a recipe. See <link xref=\"add-recipe-images\"/> "
@@ -339,7 +334,7 @@ msgstr ""
 "najdete v <link xref=\"add-recipe-images\"/>."
 
 #. (itstool) path: item/p
-#: C/add-recipe-directions.page:77
+#: C/add-recipe-directions.page:76
 msgid ""
 "To assign one of the photos you have added, you will need to know the "
 "image's number. Press the <gui>Add Image</gui> button at the bottom "
@@ -353,13 +348,13 @@ msgstr ""
 "máte přidané. První obrázek má číslo jedna, druhý číslo dva atd."
 
 #. (itstool) path: item/p
-#: C/add-recipe-directions.page:85
+#: C/add-recipe-directions.page:84
 msgid "Add the tag <cmd>[image:1]</cmd> to add the first image to a step."
 msgstr ""
 "Pro přidání prvního obrázku ke kroku použijte značku <cmd>[image:1]</cmd>."
 
 #. (itstool) path: item/p
-#: C/add-recipe-directions.page:90
+#: C/add-recipe-directions.page:89
 msgid ""
 "Add additional image tags with the correct number for as many steps as you "
 "wish."
@@ -368,12 +363,12 @@ msgstr ""
 "správným číslem. Můžete ji přidat k tolika krokům, kolik si budete přát."
 
 #. (itstool) path: section/title
-#: C/add-recipe-directions.page:99
+#: C/add-recipe-directions.page:98
 msgid "Temperature"
 msgstr "Teplota"
 
 #. (itstool) path: section/p
-#: C/add-recipe-directions.page:100
+#: C/add-recipe-directions.page:99
 msgid ""
 "You can add the temperature a step needs to be cooked at by adding a "
 "temperature tag."
@@ -382,7 +377,7 @@ msgstr ""
 "která je k vaření/pečení potřeba."
 
 #. (itstool) path: item/p
-#: C/add-recipe-directions.page:104
+#: C/add-recipe-directions.page:103
 msgid ""
 "Add the tag <cmd>[temperature:200C]</cmd>. You can set the temperature in "
 "Celsius with a C or Fahrenheit with an F following the temperature."
@@ -752,13 +747,19 @@ msgstr ""
 msgid "Solutions to common problems with <app>Recipes</app>."
 msgstr "Řešení běžných problémů s <app>Recepty</app>."
 
+#. (itstool) path: page/title
 #. (itstool) path: section/title
-#: C/common-problems.page:20
+#: C/common-problems.page:19 C/index.page:46
+msgid "Common Problems"
+msgstr "Běžné problémy"
+
+#. (itstool) path: section/title
+#: C/common-problems.page:22
 msgid "Editing Your Recipes"
 msgstr "Úpravy ve vlastních receptech"
 
 #. (itstool) path: section/p
-#: C/common-problems.page:21
+#: C/common-problems.page:23
 msgid ""
 "If you have change the login or user ID you use to log into your computer, "
 "and you can no longer edit the recipes you have created, you will need to "
@@ -769,7 +770,7 @@ msgstr ""
 "vytvořili, musíte aktualizovat databázi aplikace <app>Recepty</app>."
 
 #. (itstool) path: note/p
-#: C/common-problems.page:26
+#: C/common-problems.page:28
 msgid ""
 "You must have the <sys>dconf-editor</sys> package installed. Be very careful "
 "editing application data in <app>dconf-editor</app>. By editing an "
@@ -781,7 +782,7 @@ msgstr ""
 "znemožnit správné fungování aplikace."
 
 #. (itstool) path: section/p
-#: C/common-problems.page:32
+#: C/common-problems.page:34
 msgid ""
 "To update <app>Recipes</app> to use the old user to allow you to edit your "
 "recipes:"
@@ -790,36 +791,31 @@ msgstr ""
 "ID, abyste mohli upravit své recepty:"
 
 #. (itstool) path: item/p
-#: C/common-problems.page:36
+#: C/common-problems.page:38
 msgid "Open <app>dconf-editor</app>."
 msgstr "Otevřete <app>dconf-editor</app>."
 
 #. (itstool) path: item/p
-#: C/common-problems.page:39
+#: C/common-problems.page:41
 msgid ""
 "Select <guiseq><gui>org</gui> <gui>gnome</gui> <gui>recipes</gui> <gui>user</"
-"gui></guiseq>"
+"gui></guiseq>."
 msgstr ""
 "Vyberte <guiseq><gui>org</gui> <gui>gnome</gui> <gui>recipes</gui> "
-"<gui>user</gui></guiseq>"
-
-#. (itstool) path: steps/item
-#: C/common-problems.page:38 C/common-problems.page:45
-msgid "<_:p-1/>."
-msgstr "<_:p-1/>."
+"<gui>user</gui></guiseq>."
 
 #. (itstool) path: item/p
-#: C/common-problems.page:43
+#: C/common-problems.page:45
 msgid "In the <gui>Custom value</gui> field, enter the old user ID."
 msgstr "Do pole <gui>Vlastní hodnota</gui> zadejte staré uživatelské ID."
 
 #. (itstool) path: item/p
-#: C/common-problems.page:46
-msgid "Close <app>dconf-editor</app>"
+#: C/common-problems.page:48
+msgid "Close <app>dconf-editor</app>."
 msgstr "Zavřete <app>dconf-editor</app>."
 
 #. (itstool) path: item/p
-#: C/common-problems.page:49
+#: C/common-problems.page:51
 msgid ""
 "Open <app>Recipes</app>. You will now be able to open and edit recipes you "
 "have created."
@@ -828,12 +824,12 @@ msgstr ""
 "které jste vytvořili."
 
 #. (itstool) path: section/title
-#: C/common-problems.page:56
+#: C/common-problems.page:58
 msgid "Remove or Edit Included Recipes"
 msgstr "Odstranění nebo úpravy dodávaných receptů"
 
 #. (itstool) path: section/p
-#: C/common-problems.page:57
+#: C/common-problems.page:59
 msgid ""
 "You can only remove or edit the recipes you create, not the recipes included."
 msgstr ""
@@ -1024,11 +1020,6 @@ msgstr ""
 "Když máte vše hotové, nebo kdykoliv chcete opustit režim volných rukou, "
 "zmáčkněte klávesu <key>Esc</key> nebo tlačítko <gui>×</gui> v pravém horním "
 "rohu."
-
-#. (itstool) path: C/cooking.page/page
-#: C/cooking.page:4
-msgid "<_:info-1/> <_:title-2/> <_:p-3/> <_:p-4/>. <_:steps-5/>"
-msgstr "<_:info-1/> <_:title-2/> <_:p-3/> <_:p-4/>. <_:steps-5/>"
 
 #. (itstool) path: info/desc
 #: C/find-recipe.page:8
@@ -1341,8 +1332,13 @@ msgstr "Recepty"
 msgid "A recipe manager to help you cook."
 msgstr "Správce receptů, který vám pomůže s vařením."
 
-#. (itstool) path: page/p
+#. (itstool) path: page/title
 #: C/index.page:22
+msgid "<_:media-1/> Recipes"
+msgstr "<_:media-1/> Recepty"
+
+#. (itstool) path: page/p
+#: C/index.page:27
 msgid ""
 "<app>Recipes</app> is an easy to use application that will help you discover "
 "what to cook today, tomorrow, the rest of the week, and for special "
@@ -1351,11 +1347,6 @@ msgstr ""
 "<app>Recepty</app> jsou jednoduše použitelnou aplikací, která vám pomůže "
 "najít, co uvařit dnes, co zítra, po zbytek týdne a při speciálních "
 "příležitostech."
-
-#. (itstool) path: page/title
-#: C/index.page:26
-msgid "<_:media-1/> Recipes"
-msgstr "<_:media-1/> Recepty"
 
 #. (itstool) path: section/title
 #: C/index.page:32
@@ -1372,11 +1363,6 @@ msgstr "Vaření a pečení"
 #: C/index.page:41 C/share.page:28
 msgid "Printing and Sharing"
 msgstr "Tisk a sdílení"
-
-#. (itstool) path: section/title
-#: C/index.page:46
-msgid "Common Problems"
-msgstr "Běžné problémy"
 
 #. (itstool) path: p/link
 #: C/legal.xml:5
