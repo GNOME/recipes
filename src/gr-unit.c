@@ -40,7 +40,7 @@
  } GrUnitData;
  
  static GrUnitData units[] = {
-         { GR_UNIT_UNKNOWN,     GR_DIMENSION_DISCRETE, "",        NC_("unit abbreviation", ""),      NC_("unit name", ""),      NC_("unit plural", "") },
+         { GR_UNIT_UNKNOWN,     GR_DIMENSION_DISCRETE, "",        "",                                "", "") },
          { GR_UNIT_GRAM,        GR_DIMENSION_MASS,     "g",       NC_("unit abbreviation", "g"),     NC_("unit name", "gram"), NC_("unit plural", "grams") },
          { GR_UNIT_KILOGRAM,    GR_DIMENSION_MASS,     "kg",      NC_("unit abbreviation", "kg"),    NC_("unit name", "kilogram"), NC_("unit plural", "kilograms") },
          { GR_UNIT_POUND,       GR_DIMENSION_MASS,     "lb",      NC_("unit abbreviation", "lb"),    NC_("unit name", "pound"), NC_("unit plural", "pounds") },
