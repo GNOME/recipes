@@ -59,6 +59,20 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.6.4"  date="2017-09-20">
+      <description>
+        <p>
+          This release adds new features.
+        </p>
+        <p>
+          Unit conversion support has landed. There are new settings, volume-unit
+          and weight-unit, which can be set to 'locale' (the default), 'metric' or
+          'imperial' to control how units are displayed. We are also formatting
+          numbers in a human-friendly way and separate them into multiple units
+          where appropriate.
+        </p>
+      </description>
+    </release>
     <release version="1.6.2"  date="2017-07-26">
       <description>
         <p>
