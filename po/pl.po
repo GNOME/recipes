@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-22 18:02+0000\n"
-"PO-Revision-Date: 2017-07-23 16:25+0200\n"
+"POT-Creation-Date: 2017-09-20 00:17+0000\n"
+"PO-Revision-Date: 2017-09-20 01:18+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -118,55 +118,55 @@ msgstr "Jeden przepis"
 msgid "An individual cuisine"
 msgstr "Jedna kuchnia"
 
-#: data/org.gnome.Recipes.gschema.xml:19
+#: data/org.gnome.Recipes.gschema.xml:25
 msgid "The user ID of the current user"
 msgstr "Identyfikator obecnego użytkownika"
 
-#: data/org.gnome.Recipes.gschema.xml:20
+#: data/org.gnome.Recipes.gschema.xml:26
 msgid "The user ID of the current user."
 msgstr "Identyfikator obecnego użytkownika."
 
-#: data/org.gnome.Recipes.gschema.xml:26
+#: data/org.gnome.Recipes.gschema.xml:32
 msgid "The number of times cooking mode has been presented"
 msgstr "Ile razy użyto trybu gotowania"
 
-#: data/org.gnome.Recipes.gschema.xml:27
+#: data/org.gnome.Recipes.gschema.xml:33
 msgid "The number of times cooking mode has been presented."
 msgstr "Ile razy użyto trybu gotowania."
 
-#: data/org.gnome.Recipes.gschema.xml:33
+#: data/org.gnome.Recipes.gschema.xml:39
 msgid "The timestamp of the last change to the favorites list"
 msgstr "Czas ostatniej zmiany listy ulubionych"
 
-#: data/org.gnome.Recipes.gschema.xml:34
+#: data/org.gnome.Recipes.gschema.xml:40
 msgid ""
 "The timestamp of the last time an item was added to or removed from the "
 "favorites list."
 msgstr "Czas ostatniego dodania lub usunięcia elementu z listy ulubionych."
 
-#: data/org.gnome.Recipes.gschema.xml:41
+#: data/org.gnome.Recipes.gschema.xml:47
 msgid "The list of favorites"
 msgstr "Lista ulubionych"
 
-#: data/org.gnome.Recipes.gschema.xml:42
+#: data/org.gnome.Recipes.gschema.xml:48
 msgid "The list of favorites. Each entry in the list is the ID of a recipe."
 msgstr "Lista ulubionych. Każdy wpis na liście jest identyfikatorem przepisu."
 
-#: data/org.gnome.Recipes.gschema.xml:48
+#: data/org.gnome.Recipes.gschema.xml:54
 msgid "The timestamp of the last change to the shopping list"
 msgstr "Czas ostatniej zmiany listy zakupów"
 
-#: data/org.gnome.Recipes.gschema.xml:49
+#: data/org.gnome.Recipes.gschema.xml:55
 msgid ""
 "The timestamp of the last time an item was added to or removed from the "
 "shopping list."
 msgstr "Czas ostatniego dodania lub usunięcia elementu z listy zakupów."
 
-#: data/org.gnome.Recipes.gschema.xml:56
+#: data/org.gnome.Recipes.gschema.xml:62
 msgid "The shopping list"
 msgstr "Lista zakupów"
 
-#: data/org.gnome.Recipes.gschema.xml:57
+#: data/org.gnome.Recipes.gschema.xml:63
 msgid ""
 "The shopping list. Each entry in the dictionary maps the ID of a recipe to a "
 "serving count."
@@ -174,19 +174,19 @@ msgstr ""
 "Lista zakupów. Każdy wpis w słowniku łączy identyfikator przepisu z liczbą "
 "porcji."
 
-#: data/org.gnome.Recipes.gschema.xml:64
+#: data/org.gnome.Recipes.gschema.xml:70
 msgid "Ingredients that were removed from the shopping list"
 msgstr "Składniki usunięte z listy zakupów"
 
-#: data/org.gnome.Recipes.gschema.xml:65
+#: data/org.gnome.Recipes.gschema.xml:71
 msgid "The names of ingredients that were removed from the shopping list."
 msgstr "Nazwy składników usuniętych z listy zakupów."
 
-#: data/org.gnome.Recipes.gschema.xml:71
+#: data/org.gnome.Recipes.gschema.xml:77
 msgid "The list of recipes to be exported"
 msgstr "Lista eksportowanych przepisów"
 
-#: data/org.gnome.Recipes.gschema.xml:72
+#: data/org.gnome.Recipes.gschema.xml:78
 msgid ""
 "The list of recipes to be exported. Each entry in the list is the ID of a "
 "recipe."
@@ -194,11 +194,11 @@ msgstr ""
 "Lista eksportowanych przepisów. Każdy wpis na liście jest identyfikatorem "
 "przepisu."
 
-#: data/org.gnome.Recipes.gschema.xml:78
+#: data/org.gnome.Recipes.gschema.xml:84
 msgid "The setting for which unit temperatures should be displayed in."
 msgstr "Jednostka temperatury."
 
-#: data/org.gnome.Recipes.gschema.xml:79
+#: data/org.gnome.Recipes.gschema.xml:85
 msgid ""
 "The setting for which unit temperatures should be displayed in. Default is "
 "'locale', which means to use the LC_MEASUREMENT category of the current "
@@ -207,23 +207,43 @@ msgstr ""
 "Używana jednostka temperatury. Domyślnie to „locale”, co oznacza, że używana "
 "jest kategoria LC_MEASUREMENT obecnych ustawień regionalnych."
 
-#: data/org.gnome.Recipes.gschema.xml:86
+#: data/org.gnome.Recipes.gschema.xml:92
 msgid "By which key to sort lists."
 msgstr "Według którego klucza porządkować listy."
 
-#: data/org.gnome.Recipes.gschema.xml:87
+#: data/org.gnome.Recipes.gschema.xml:93
 msgid "The setting determines which key is used to sort lists of recipes by."
 msgstr "Który klucz jest używany do porządkowania list przepisów."
 
-#: data/org.gnome.Recipes.gschema.xml:93
+#: data/org.gnome.Recipes.gschema.xml:99
 msgid "Whether the surprise dialog should be shown."
 msgstr "Czy wyświetlać okno niespodzianki."
 
-#: data/org.gnome.Recipes.gschema.xml:94
+#: data/org.gnome.Recipes.gschema.xml:100
 msgid ""
 "The setting determines whether the surprise dialog should be shown on "
 "startup."
 msgstr "Czy wyświetlać okno niespodzianki po uruchomieniu."
+
+#: data/org.gnome.Recipes.gschema.xml:106
+msgid "The setting for which unit volumes should be displayed in."
+msgstr "Jednostka objętości."
+
+#: data/org.gnome.Recipes.gschema.xml:107
+msgid ""
+"The setting for which unit volumes should be displayed in. Default is "
+"'locale',"
+msgstr "Używana jednostka objętości. Domyślnie to „locale”."
+
+#: data/org.gnome.Recipes.gschema.xml:113
+msgid "The setting for which unit weights should be displayed in."
+msgstr "Jednostka wagi."
+
+#: data/org.gnome.Recipes.gschema.xml:114
+msgid ""
+"The setting for which unit weights should be displayed in. Default is "
+"'locale',"
+msgstr "Używana jednostka wagi. Domyślnie to „locale”."
 
 #: src/chef-conflict-dialog.ui:10
 msgid "Same Chef"
@@ -437,7 +457,7 @@ msgid "Note"
 msgstr "Notatka"
 
 #: src/gr-details-page.ui:429 src/gr-recipe-formatter.c:123
-#: src/gr-recipe-printer.c:298
+#: src/gr-recipe-printer.c:302
 msgid "Directions"
 msgstr "Instrukcja"
 
@@ -658,7 +678,7 @@ msgstr "Przykłady: 1 kg, 2 1/2 paczki, 250 ml, 6"
 
 #: src/gr-ingredients-viewer.ui:13 src/gr-query-editor.ui:235
 #: src/gr-edit-page.c:1509 src/gr-recipe-formatter.c:104
-#: src/gr-recipe-printer.c:249
+#: src/gr-recipe-printer.c:253
 msgid "Ingredients"
 msgstr "Składniki"
 
@@ -731,7 +751,7 @@ msgstr "Kategorie"
 msgid "Featured GNOME Chefs"
 msgstr "Polecani kucharze GNOME"
 
-#: src/gr-recipe-tile.ui:60
+#: src/gr-recipe-tile.ui:58
 msgid "Contributed recipe"
 msgstr "Wysłany przepis"
 
@@ -893,7 +913,7 @@ msgstr "Pomo_c"
 
 #: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:163
 #: src/gr-image-viewer.c:627 src/gr-recipe-exporter.c:172
-#: src/gr-shopping-page.c:739 src/gr-window.c:1162
+#: src/gr-shopping-page.c:751 src/gr-window.c:1162
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -1739,7 +1759,7 @@ msgstr "Nie można przetworzyć „%s” jako liczby"
 msgid "Save the exported recipe"
 msgstr "Zapis wyeksportowanego przepisu"
 
-#: src/gr-recipe-exporter.c:171 src/gr-shopping-page.c:738
+#: src/gr-recipe-exporter.c:171 src/gr-shopping-page.c:750
 msgid "Save"
 msgstr "Zapisz"
 
@@ -1814,19 +1834,19 @@ msgstr ""
 "Cześć zaznaczonych przepisów jest częścią Przepisów\n"
 "GNOME. Należy wysyłać tylko własne przepisy."
 
-#: src/gr-recipe-formatter.c:88 src/gr-recipe-printer.c:163
+#: src/gr-recipe-formatter.c:88 src/gr-recipe-printer.c:164
 msgid "Author:"
 msgstr "Autor:"
 
-#: src/gr-recipe-formatter.c:89 src/gr-recipe-printer.c:164
+#: src/gr-recipe-formatter.c:89 src/gr-recipe-printer.c:165
 msgid "Preparation:"
 msgstr "Przygotowanie:"
 
-#: src/gr-recipe-formatter.c:90 src/gr-recipe-printer.c:165
+#: src/gr-recipe-formatter.c:90 src/gr-recipe-printer.c:166
 msgid "Cooking:"
 msgstr "Gotowanie:"
 
-#: src/gr-recipe-formatter.c:93 src/gr-recipe-printer.c:167
+#: src/gr-recipe-formatter.c:93 src/gr-recipe-printer.c:168
 msgid "Yield:"
 msgstr "Porcja:"
 
@@ -1861,27 +1881,27 @@ msgstr "Nie odnaleziono informacji o kucharzu"
 msgid "This build does not support importing"
 msgstr "Ta wersja nie obsługuje importowania"
 
-#: src/gr-recipe-printer.c:172
+#: src/gr-recipe-printer.c:173
 msgid "Cuisine:"
 msgstr "Kuchnia:"
 
-#: src/gr-recipe-printer.c:176
+#: src/gr-recipe-printer.c:177
 msgid "Meal:"
 msgstr "Potrawa:"
 
-#: src/gr-recipe-printer.c:180
+#: src/gr-recipe-printer.c:181
 msgid "Season:"
 msgstr "Pora roku:"
 
-#: src/gr-recipe-printer.c:225
+#: src/gr-recipe-printer.c:229
 msgid "Notes"
 msgstr "Notatki"
 
-#: src/gr-recipe-printer.c:468 src/gr-shopping-list-printer.c:297
+#: src/gr-recipe-printer.c:472 src/gr-shopping-list-printer.c:297
 msgid "Error printing file:"
 msgstr "Błąd podczas drukowania pliku:"
 
-#: src/gr-recipe-printer.c:469 src/gr-shopping-list-printer.c:298
+#: src/gr-recipe-printer.c:473 src/gr-shopping-list-printer.c:298
 msgid "No details"
 msgstr "Brak informacji"
 
@@ -2000,7 +2020,7 @@ msgid "Winter"
 msgstr "Zima"
 
 #: src/gr-shopping-list-formatter.c:42 src/gr-shopping-list-printer.c:135
-#: src/gr-shopping-page.c:764
+#: src/gr-shopping-page.c:776
 msgid "Shopping List"
 msgstr "Lista zakupów"
 
@@ -2016,7 +2036,7 @@ msgstr "Na te przepisy"
 msgid "Items"
 msgstr "Składniki"
 
-#: src/gr-shopping-page.c:100
+#: src/gr-shopping-page.c:101
 #, c-format
 msgid "%d ingredient marked for purchase"
 msgid_plural "%d ingredients marked for purchase"
@@ -2024,7 +2044,7 @@ msgstr[0] "%d składnik oznaczony do zakupu"
 msgstr[1] "%d składniki oznaczone do zakupu"
 msgstr[2] "%d składników oznaczonych do zakupu"
 
-#: src/gr-shopping-page.c:119
+#: src/gr-shopping-page.c:120
 #, c-format
 msgid "Buy Ingredients (%d recipe)"
 msgid_plural "Buy Ingredients (%d recipes)"
@@ -2032,7 +2052,7 @@ msgstr[0] "Kup składniki (%d przepis)"
 msgstr[1] "Kup składniki (%d przepisy)"
 msgstr[2] "Kup składniki (%d przepisów)"
 
-#: src/gr-shopping-page.c:124
+#: src/gr-shopping-page.c:125
 #, c-format
 msgid "%d Recipe marked for preparation"
 msgid_plural "%d Recipes marked for preparation"
@@ -2040,7 +2060,7 @@ msgstr[0] "%d przepis oznaczony do przygotowania"
 msgstr[1] "%d przepisy oznaczone do przygotowania"
 msgstr[2] "%d przepisów oznaczonych do przygotowania"
 
-#: src/gr-shopping-page.c:735
+#: src/gr-shopping-page.c:747
 msgid "Save the shopping list"
 msgstr "Zapis listy zakupów"
 
@@ -2060,352 +2080,352 @@ msgstr "Co najwyżej ostre"
 msgid "Hot or very spicy"
 msgstr "Ostre lub bardzo pikantne"
 
-#: src/gr-unit.c:41
+#: src/gr-unit.c:44
 msgctxt "unit abbreviation"
 msgid "g"
 msgstr "g"
 
-#: src/gr-unit.c:41
+#: src/gr-unit.c:44
 msgctxt "unit name"
 msgid "gram"
 msgstr "gram"
 
-#: src/gr-unit.c:41
+#: src/gr-unit.c:44
 msgctxt "unit plural"
 msgid "grams"
 msgstr "gramy"
 
-#: src/gr-unit.c:42
+#: src/gr-unit.c:45
 msgctxt "unit abbreviation"
 msgid "kg"
 msgstr "kg"
 
-#: src/gr-unit.c:42
+#: src/gr-unit.c:45
 msgctxt "unit name"
 msgid "kilogram"
 msgstr "kilogram"
 
-#: src/gr-unit.c:42
+#: src/gr-unit.c:45
 msgctxt "unit plural"
 msgid "kilograms"
 msgstr "kilogramy"
 
-#: src/gr-unit.c:43
+#: src/gr-unit.c:46
 msgctxt "unit abbreviation"
 msgid "lb"
 msgstr "lb"
 
-#: src/gr-unit.c:43
+#: src/gr-unit.c:46
 msgctxt "unit name"
 msgid "pound"
 msgstr "funt"
 
-#: src/gr-unit.c:43
+#: src/gr-unit.c:46
 msgctxt "unit plural"
 msgid "pounds"
 msgstr "funty"
 
-#: src/gr-unit.c:44
+#: src/gr-unit.c:47
 msgctxt "unit abbreviation"
 msgid "oz"
 msgstr "oz"
 
-#: src/gr-unit.c:44
+#: src/gr-unit.c:47
 msgctxt "unit name"
 msgid "ounce"
 msgstr "uncja"
 
-#: src/gr-unit.c:44
+#: src/gr-unit.c:47
 msgctxt "unit plural"
 msgid "ounces"
 msgstr "uncje"
 
-#: src/gr-unit.c:45
+#: src/gr-unit.c:48
 msgctxt "unit abbreviation"
 msgid "l"
 msgstr "l"
 
-#: src/gr-unit.c:45
+#: src/gr-unit.c:48
 msgctxt "unit name"
 msgid "liter"
 msgstr "litr"
 
-#: src/gr-unit.c:45
+#: src/gr-unit.c:48
 msgctxt "unit plural"
 msgid "liters"
 msgstr "litry"
 
-#: src/gr-unit.c:46
+#: src/gr-unit.c:49
 msgctxt "unit abbreviation"
 msgid "dl"
 msgstr "dl"
 
-#: src/gr-unit.c:46
+#: src/gr-unit.c:49
 msgctxt "unit name"
 msgid "deciliter"
 msgstr "decylitr"
 
-#: src/gr-unit.c:46
+#: src/gr-unit.c:49
 msgctxt "unit plural"
 msgid "deciliters"
 msgstr "decylitry"
 
-#: src/gr-unit.c:47
+#: src/gr-unit.c:50
 msgctxt "unit abbreviation"
 msgid "ml"
 msgstr "ml"
 
-#: src/gr-unit.c:47
+#: src/gr-unit.c:50
 msgctxt "unit name"
 msgid "milliliter"
 msgstr "mililitr"
 
-#: src/gr-unit.c:47
+#: src/gr-unit.c:50
 msgctxt "unit plural"
 msgid "milliliters"
 msgstr "mililitry"
 
-#: src/gr-unit.c:48 src/gr-unit.c:49
+#: src/gr-unit.c:51 src/gr-unit.c:52
 msgctxt "unit abbreviation"
 msgid "fl oz"
 msgstr "fl oz"
 
-#: src/gr-unit.c:48 src/gr-unit.c:49
+#: src/gr-unit.c:51 src/gr-unit.c:52
 msgctxt "unit name"
 msgid "fluid ounce"
 msgstr "uncja objętości"
 
-#: src/gr-unit.c:48 src/gr-unit.c:49
+#: src/gr-unit.c:51 src/gr-unit.c:52
 msgctxt "unit plural"
 msgid "fluid ounces"
 msgstr "uncje objętości"
 
-#: src/gr-unit.c:50
+#: src/gr-unit.c:53
 msgctxt "unit abbreviation"
 msgid "pt"
 msgstr "pt"
 
-#: src/gr-unit.c:50
+#: src/gr-unit.c:53
 msgctxt "unit name"
 msgid "pint"
 msgstr "półkwarta"
 
-#: src/gr-unit.c:50
+#: src/gr-unit.c:53
 msgctxt "unit plural"
 msgid "pints"
 msgstr "półkwarty"
 
-#: src/gr-unit.c:51
+#: src/gr-unit.c:54
 msgctxt "unit abbreviation"
 msgid "qt"
 msgstr "qt"
 
-#: src/gr-unit.c:51
+#: src/gr-unit.c:54
 msgctxt "unit name"
 msgid "quart"
 msgstr "kwarta"
 
-#: src/gr-unit.c:51
+#: src/gr-unit.c:54
 msgctxt "unit plural"
 msgid "quarts"
 msgstr "kwarty"
 
-#: src/gr-unit.c:52
+#: src/gr-unit.c:55
 msgctxt "unit abbreviation"
 msgid "gal"
 msgstr "gal"
 
-#: src/gr-unit.c:52
+#: src/gr-unit.c:55
 msgctxt "unit name"
 msgid "gallon"
 msgstr "galon"
 
-#: src/gr-unit.c:52
+#: src/gr-unit.c:55
 msgctxt "unit plural"
 msgid "gallons"
 msgstr "galony"
 
-#: src/gr-unit.c:53
+#: src/gr-unit.c:56
 msgctxt "unit abbreviation"
 msgid "cup"
 msgstr "filiżanka"
 
-#: src/gr-unit.c:53
+#: src/gr-unit.c:56
 msgctxt "unit name"
 msgid "cup"
 msgstr "filiżanka"
 
-#: src/gr-unit.c:53
+#: src/gr-unit.c:56
 msgctxt "unit plural"
 msgid "cups"
 msgstr "filiżanki"
 
-#: src/gr-unit.c:54
+#: src/gr-unit.c:57
 msgctxt "unit abbreviation"
 msgid "tbsp"
 msgstr "łyżki stołowe"
 
-#: src/gr-unit.c:54
+#: src/gr-unit.c:57
 msgctxt "unit name"
 msgid "tablespoon"
 msgstr "łyżka stołowa"
 
-#: src/gr-unit.c:54
+#: src/gr-unit.c:57
 msgctxt "unit plural"
 msgid "tablespoons"
 msgstr "łyżki stołowe"
 
-#: src/gr-unit.c:55
+#: src/gr-unit.c:58
 msgctxt "unit abbreviation"
 msgid "tsp"
 msgstr "łyżeczki"
 
-#: src/gr-unit.c:55
+#: src/gr-unit.c:58
 msgctxt "unit name"
 msgid "teaspoon"
 msgstr "łyżeczka"
 
-#: src/gr-unit.c:55
+#: src/gr-unit.c:58
 msgctxt "unit plural"
 msgid "teaspoons"
 msgstr "łyżeczki"
 
-#: src/gr-unit.c:56
+#: src/gr-unit.c:59
 msgctxt "unit abbreviation"
 msgid "box"
 msgstr "pojemnik"
 
-#: src/gr-unit.c:56
+#: src/gr-unit.c:59
 msgctxt "unit name"
 msgid "box"
 msgstr "pojemnik"
 
-#: src/gr-unit.c:56
+#: src/gr-unit.c:59
 msgctxt "unit plural"
 msgid "boxes"
 msgstr "pojemniki"
 
-#: src/gr-unit.c:57
+#: src/gr-unit.c:60
 msgctxt "unit abbreviation"
 msgid "pkg"
 msgstr "paczki"
 
-#: src/gr-unit.c:57
+#: src/gr-unit.c:60
 msgctxt "unit name"
 msgid "package"
 msgstr "paczka"
 
-#: src/gr-unit.c:57
+#: src/gr-unit.c:60
 msgctxt "unit plural"
 msgid "packages"
 msgstr "paczki"
 
-#: src/gr-unit.c:58
+#: src/gr-unit.c:61
 msgctxt "unit abbreviation"
 msgid "glass"
 msgstr "szklanki"
 
-#: src/gr-unit.c:58
+#: src/gr-unit.c:61
 msgctxt "unit name"
 msgid "glass"
 msgstr "szklanka"
 
-#: src/gr-unit.c:58
+#: src/gr-unit.c:61
 msgctxt "unit plural"
 msgid "glasses"
 msgstr "szklanki"
 
-#: src/gr-unit.c:59
+#: src/gr-unit.c:62
 msgctxt "unit abbreviation"
 msgid "mm"
 msgstr "mm"
 
-#: src/gr-unit.c:59
+#: src/gr-unit.c:62
 msgctxt "unit name"
 msgid "millimeter"
 msgstr "milimetr"
 
-#: src/gr-unit.c:59
+#: src/gr-unit.c:62
 msgctxt "unit plural"
 msgid "millimeters"
 msgstr "milimetry"
 
-#: src/gr-unit.c:60
+#: src/gr-unit.c:63
 msgctxt "unit abbreviation"
 msgid "cm"
 msgstr "cm"
 
-#: src/gr-unit.c:60
+#: src/gr-unit.c:63
 msgctxt "unit name"
 msgid "centimeter"
 msgstr "centymetr"
 
-#: src/gr-unit.c:60
+#: src/gr-unit.c:63
 msgctxt "unit plural"
 msgid "centimeters"
 msgstr "centymetry"
 
-#: src/gr-unit.c:61
+#: src/gr-unit.c:64
 msgctxt "unit abbreviation"
 msgid "m"
 msgstr "m"
 
-#: src/gr-unit.c:61
+#: src/gr-unit.c:64
 msgctxt "unit name"
 msgid "meter"
 msgstr "metr"
 
-#: src/gr-unit.c:61
+#: src/gr-unit.c:64
 msgctxt "unit plural"
 msgid "meters"
 msgstr "metry"
 
-#: src/gr-unit.c:62
+#: src/gr-unit.c:65
 msgctxt "unit abbreviation"
 msgid "st"
 msgstr "pestka"
 
-#: src/gr-unit.c:62
+#: src/gr-unit.c:65
 msgctxt "unit name"
 msgid "stone"
 msgstr "pestka"
 
-#: src/gr-unit.c:62
+#: src/gr-unit.c:65
 msgctxt "unit plural"
 msgid "stone"
 msgstr "pestki"
 
-#: src/gr-unit.c:63
+#: src/gr-unit.c:66
 msgctxt "unit abbreviation"
 msgid "pinch"
 msgstr "szczypta"
 
-#: src/gr-unit.c:63
+#: src/gr-unit.c:66
 msgctxt "unit name"
 msgid "pinch"
 msgstr "szczypta"
 
-#: src/gr-unit.c:63
+#: src/gr-unit.c:66
 msgctxt "unit plural"
 msgid "pinches"
 msgstr "szczypty"
 
-#: src/gr-unit.c:64
+#: src/gr-unit.c:67
 msgctxt "unit abbreviation"
 msgid "bunch"
 msgstr "pęczek"
 
-#: src/gr-unit.c:64
+#: src/gr-unit.c:67
 msgctxt "unit name"
 msgid "bunch"
 msgstr "pęczek"
 
-#: src/gr-unit.c:64
+#: src/gr-unit.c:67
 msgctxt "unit plural"
 msgid "bunches"
 msgstr "pęczki"
 
-#: src/gr-unit.c:145
+#: src/gr-unit.c:165
 #, c-format
 msgid "I don’t know this unit: %s"
 msgstr "Nierozpoznana jednostka: %s"
