@@ -1,5 +1,13 @@
 #if 0
 
+N_("Any meat marinade")
+N_("This is a very simple marinade that suits any kind of meat.")
+N_("The best result is making a lot and storing it in pots in a cool place.")
+N_("Mix everything and store it in jars or pots to further use.")
+N_("Ingredients")
+N_("Ingredients")
+N_("Ingredients")
+N_("Ingredients")
 N_("Farikal")
 N_("Fårikål is a Norwegian lamb and cabbage stew, very simple but really good for cold winters. This is my personal version (with Basil).")
 N_("1. Layer the bottom of a stockpot or dutch oven with lamb pieces, then sprinkle with a little of the salt. Add a layer of cabbage, then another layer of lamb and salt, and so on. Add the peppercorns and broth, then enough water to just cover everything. Bring to a simmer over high heat, then reduce heat to low and gently simmer until the lamb pulls away easily from the bone, about 2 hours. Add the potatoes during the last 30 minutes of simmering.")
