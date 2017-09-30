@@ -1,5 +1,15 @@
 #if 0
 
+N_("Chicken gravy")
+N_("This is a recipe I found in a book about Swabian cuisine. I just translated it.")
+N_("Mix everything. Cook it. Use it or store it.")
+N_("It works well to use it in the spot or to store it for later.")
+N_("Ingredients")
+N_("Ingredients")
+N_("Ingredients")
+N_("Ingredients")
+N_("Ingredients")
+N_("Ingredients")
 N_("Any meat marinade")
 N_("This is a very simple marinade that suits any kind of meat.")
 N_("The best result is making a lot and storing it in pots in a cool place.")
