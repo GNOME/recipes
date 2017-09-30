@@ -1,5 +1,15 @@
 #if 0
 
+N_("Farikal")
+N_("Fårikål is a Norwegian lamb and cabbage stew, very simple but really good for cold winters. This is my personal version (with Basil).")
+N_("1. Layer the bottom of a stockpot or dutch oven with lamb pieces, then sprinkle with a little of the salt. Add a layer of cabbage, then another layer of lamb and salt, and so on. Add the peppercorns and broth, then enough water to just cover everything. Bring to a simmer over high heat, then reduce heat to low and gently simmer until the lamb pulls away easily from the bone, about 2 hours. Add the potatoes during the last 30 minutes of simmering.")
+N_("2. Preheat your oven on the broil setting. Carefully remove the lamb pieces from the oven and place on a baking sheet. Broil the lamb until darkened and crispy, about 2 minutes per side. Return the lamb to the pot, season the stew with salt to taste, and serve.")
+N_("Ingredients")
+N_("Ingredients")
+N_("Ingredients")
+N_("Ingredients")
+N_("Ingredients")
+N_("Ingredients")
 N_("Colita con Chimichurri")
 N_("This recipe is original from Argentine and contains one of the many version of a popular sauce: Chimichurri.")
 N_("It's not restricted to Christmas and actually can be eaten warm or cold, and taste awesome in any way.")
