@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-19 12:37+0000\n"
-"PO-Revision-Date: 2017-09-19 15:15+0200\n"
+"POT-Creation-Date: 2017-10-02 14:52+0000\n"
+"PO-Revision-Date: 2017-10-03 19:24+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -250,7 +250,8 @@ msgid ""
 "The setting for which unit weights should be displayed in. Default is "
 "'locale',"
 msgstr ""
-"Nastavení jednotek, ve kterých se má zobrazovat hmotnost. Výchozí je 'locale'."
+"Nastavení jednotek, ve kterých se má zobrazovat hmotnost. Výchozí je "
+"'locale'."
 
 #: src/chef-conflict-dialog.ui:10
 msgid "Same Chef"
@@ -2080,50 +2081,6 @@ msgstr "značně pikantní"
 msgid "Hot or very spicy"
 msgstr "pikantní nebo hodně kořeněné"
 
-# Czech translation for recipes.
-# Copyright (C) 2016 recipes's COPYRIGHT HOLDER
-# This file is distributed under the same license as the recipes package.
-# Marek Černocký <marek@manet.cz>, 2016, 2017.
-#
-#: src/gr-unit.c:43
-#, fuzzy
-#| msgid ""
-msgctxt "unit abbreviation"
-msgid ""
-msgstr ""
-"Project-Id-Version: recipes\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-27 20:13+0000\n"
-"PO-Revision-Date: 2017-08-28 18:46+0200\n"
-"Last-Translator: Marek Černocký <marek@manet.cz>\n"
-"Language-Team: čeština <gnome-cs-list@gnome.org>\n"
-"Language: cs\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Gtranslator 2.91.7\n"
-
-# Czech translation for recipes.
-# Copyright (C) 2016 recipes's COPYRIGHT HOLDER
-# This file is distributed under the same license as the recipes package.
-# Marek Černocký <marek@manet.cz>, 2016, 2017.
-#
-#: src/gr-unit.c:43
-msgctxt "unit name"
-msgid ""
-msgstr ""
-
-# Czech translation for recipes.
-# Copyright (C) 2016 recipes's COPYRIGHT HOLDER
-# This file is distributed under the same license as the recipes package.
-# Marek Černocký <marek@manet.cz>, 2016, 2017.
-#
-#: src/gr-unit.c:43
-msgctxt "unit plural"
-msgid ""
-msgstr ""
-
 #: src/gr-unit.c:44
 msgctxt "unit abbreviation"
 msgid "g"
@@ -2673,322 +2630,1154 @@ msgid "Apple"
 msgstr "jablko"
 
 #: src/ingredients.inc:5
+msgid "Apple Vinegar"
+msgstr "jablečný ocet"
+
+#: src/ingredients.inc:6
 msgid "Apricot"
 msgstr "meruňka"
 
-#: src/ingredients.inc:6
+#: src/ingredients.inc:7
 msgid "Artichoke"
 msgstr "artyčoky"
 
-#: src/ingredients.inc:7
+#: src/ingredients.inc:8
 msgid "Asparagus"
 msgstr "chřest"
 
-#: src/ingredients.inc:8
+#: src/ingredients.inc:9
 msgid "Aubergine"
 msgstr "lilek"
 
-#: src/ingredients.inc:9
+#: src/ingredients.inc:10
+msgid "Baby Spinach"
+msgstr "špenát baby"
+
+#: src/ingredients.inc:11
 msgid "Bacon"
 msgstr "slanina"
 
-#: src/ingredients.inc:10
+#: src/ingredients.inc:12
 msgid "Bagel"
 msgstr "bagel"
 
-#: src/ingredients.inc:11
+#: src/ingredients.inc:13
 msgid "Baked beans"
 msgstr "pečené fazole"
 
-#: src/ingredients.inc:12
+#: src/ingredients.inc:14
 msgid "Baking powder"
 msgstr "prášek do pečiva"
 
-#: src/ingredients.inc:13
+#: src/ingredients.inc:15
 msgid "Banana"
 msgstr "banán"
 
-#: src/ingredients.inc:14
+#: src/ingredients.inc:16
 msgid "Basil"
 msgstr "bazalka"
 
-#: src/ingredients.inc:15
+#: src/ingredients.inc:17
 msgid "Basmati rice"
 msgstr "rýže basmati"
 
-#: src/ingredients.inc:16
+#: src/ingredients.inc:18
 msgid "Bay leaf"
 msgstr "bobkový list"
 
-#: src/ingredients.inc:17
+#: src/ingredients.inc:19
 msgid "Beans"
 msgstr "fazole"
 
-#: src/ingredients.inc:18
+#: src/ingredients.inc:20
+msgid "Bean sprouts"
+msgstr ""
+
+#: src/ingredients.inc:21
+msgid "Beef"
+msgstr ""
+
+#: src/ingredients.inc:22
 msgid "Beef mince"
 msgstr "mleté hovězí maso"
 
-#: src/ingredients.inc:19
+#: src/ingredients.inc:23
 msgid "Beef sausage"
 msgstr "hovězí klobása"
 
-#: src/ingredients.inc:20
+#: src/ingredients.inc:24
+msgid "Beef (sirloin)"
+msgstr ""
+
+#: src/ingredients.inc:25
 msgid "Beef stock"
 msgstr "hovězí vývar"
 
-#: src/ingredients.inc:21
+#: src/ingredients.inc:26
 msgid "Beetroot"
 msgstr "červená řepa"
 
-#: src/ingredients.inc:22
+#: src/ingredients.inc:27
 msgid "Bell pepper"
 msgstr "kapie"
 
-#: src/ingredients.inc:23
+#: src/ingredients.inc:28
+msgid "Bell Pepper (green)"
+msgstr "kapie (zelená)"
+
+#: src/ingredients.inc:29
 msgid "Berry"
 msgstr "lesní plod"
 
-#: src/ingredients.inc:24
-msgid "Biscotti"
-msgstr "biscotti"
-
-#: src/ingredients.inc:25
+#: src/ingredients.inc:30
 msgid "Bilberry"
 msgstr "borůvka"
 
-#: src/ingredients.inc:26
+#: src/ingredients.inc:31
+msgid "Biscotti"
+msgstr "biscotti"
+
+#: src/ingredients.inc:32
+msgid "Black cardamom pod"
+msgstr ""
+
+#: src/ingredients.inc:33
+msgid "Black peppercorns"
+msgstr "celý černý pepř"
+
+#: src/ingredients.inc:34
+msgid "Blueberry"
+msgstr "borůvka"
+
+#: src/ingredients.inc:35
+msgid "Bourbon whiskey"
+msgstr ""
+
+#: src/ingredients.inc:36
 msgid "Breadcrumbs"
 msgstr "strouhanka"
 
-#: src/ingredients.inc:27
+#: src/ingredients.inc:37
+msgid "Brewer's yeast"
+msgstr ""
+
+#: src/ingredients.inc:38
+msgid "Broad beans"
+msgstr "velké fazole"
+
+#: src/ingredients.inc:39
+msgid "Broth"
+msgstr ""
+
+#: src/ingredients.inc:40
+msgid "Brown sugar"
+msgstr "hnědý cukru"
+
+#: src/ingredients.inc:41
 msgid "Butter"
 msgstr "máslo"
 
-#: src/ingredients.inc:28
+#: src/ingredients.inc:42
+#, fuzzy
+#| msgid "Butter"
+msgid "Butter, melted"
+msgstr "máslo"
+
+#: src/ingredients.inc:43
+msgid "Button mushroom"
+msgstr ""
+
+#: src/ingredients.inc:44
+msgid "Cabbage"
+msgstr ""
+
+#: src/ingredients.inc:45
+msgid "Cake flour"
+msgstr "cukrářská mouka"
+
+#: src/ingredients.inc:46
+#, fuzzy
+#| msgid "Baked beans"
+msgid "Canellini beans"
+msgstr "pečené fazole"
+
+#: src/ingredients.inc:47
+msgid "Canned black beans, rinsed"
+msgstr ""
+
+#: src/ingredients.inc:48
+msgid "Canned chopped tomatoes"
+msgstr ""
+
+#: src/ingredients.inc:49
 msgid "Carrot"
 msgstr "mrkev"
 
-#: src/ingredients.inc:29
+#: src/ingredients.inc:50
+msgid "Cashews, lightly toasted"
+msgstr ""
+
+#: src/ingredients.inc:51
+msgid "Caster sugar"
+msgstr "cukr krupice"
+
+#: src/ingredients.inc:52
+msgid "celery"
+msgstr "celer"
+
+#: src/ingredients.inc:53
+msgid "Celey"
+msgstr ""
+
+#: src/ingredients.inc:54
+msgid "Champignons"
+msgstr "žampióny"
+
+#: src/ingredients.inc:55
 msgid "Cheese"
 msgstr "sýr"
 
-#: src/ingredients.inc:30
+#: src/ingredients.inc:56
+msgid "Cheese slices"
+msgstr "plátkový sýr"
+
+#: src/ingredients.inc:57
 msgid "Cherries, pitted"
 msgstr "vypeckované třešně"
 
-#: src/ingredients.inc:31
+#: src/ingredients.inc:58
+msgid "cherry tomatoes, halved"
+msgstr ""
+
+#: src/ingredients.inc:59
+msgid "Chia seeds"
+msgstr "semínka chia"
+
+#: src/ingredients.inc:60
+msgid "Chicken breasts, large"
+msgstr ""
+
+#: src/ingredients.inc:61
+msgid "Chicken livers"
+msgstr "kuřecí játra"
+
+#: src/ingredients.inc:62
+msgid "chicken stock"
+msgstr "kuřecí vývar"
+
+#: src/ingredients.inc:63
+msgid "Chili flakes"
+msgstr "drcené čili"
+
+#: src/ingredients.inc:64
+msgid "Chili powder"
+msgstr "mleté čili"
+
+#: src/ingredients.inc:65
+msgid "chili sauce (e.g. sriracha)"
+msgstr "čili omáčka (např. sriracha)"
+
+#: src/ingredients.inc:66
+msgid "Chocolate"
+msgstr "čokoláda"
+
+#: src/ingredients.inc:67
 msgid "Chocolate frosting"
 msgstr "čokoládová poleva"
 
-#: src/ingredients.inc:32
+#: src/ingredients.inc:68
+msgid "Chorizo"
+msgstr "chorizo"
+
+#: src/ingredients.inc:69
+msgid "Ciboulette"
+msgstr "pažitka"
+
+#: src/ingredients.inc:70
 msgid "Cilantro"
 msgstr "koriandr"
 
-#: src/ingredients.inc:33
+#: src/ingredients.inc:71
+msgid "cilantro leaves"
+msgstr "koriandrové listy"
+
+#: src/ingredients.inc:72
+msgid "Cinnamon"
+msgstr "skořice"
+
+#: src/ingredients.inc:73
+msgid "Cinnamon sticks"
+msgstr "skořicová kůra"
+
+#: src/ingredients.inc:74
+msgid "Cloves"
+msgstr "hřebíček"
+
+#: src/ingredients.inc:75
+msgid "Cocoa butter"
+msgstr "kakaové máslo"
+
+#: src/ingredients.inc:76
 msgid "Cocoa powder"
 msgstr "kakaový prášek"
 
-#: src/ingredients.inc:34
+#: src/ingredients.inc:77
+msgid "Coconut milk"
+msgstr "kokosové mléko"
+
+#: src/ingredients.inc:78
+msgid "Coconut oil"
+msgstr "kokosový olej"
+
+#: src/ingredients.inc:79
+msgid "Coconut water"
+msgstr "kokosová voda"
+
+#: src/ingredients.inc:80
+msgid "cold water"
+msgstr "studená voda"
+
+#: src/ingredients.inc:81
+#, fuzzy
+#| msgid "no Ground beef"
+msgid "cooked beef"
+msgstr "bez mletého hovězího masa"
+
+#: src/ingredients.inc:82
+msgid "Coriander"
+msgstr "koriandr"
+
+#: src/ingredients.inc:83
+#, fuzzy
+#| msgid "no Linseeds"
+msgid "coriandre seeds"
+msgstr "bez lněných semínek"
+
+#: src/ingredients.inc:84
 msgid "Couscous"
 msgstr "kuskus"
 
-#: src/ingredients.inc:35
+#: src/ingredients.inc:85
+#, fuzzy
+#| msgid "Bell pepper"
+msgid "Cracked pepper"
+msgstr "kapie"
+
+#: src/ingredients.inc:86
 msgid "Cream"
 msgstr "smetana"
 
-#: src/ingredients.inc:36
+#: src/ingredients.inc:87
+msgid "Cream cheese"
+msgstr "krémový sýr"
+
+#: src/ingredients.inc:88
+msgid "Crushed red peper flakes"
+msgstr "drcená červená paprika"
+
+#: src/ingredients.inc:89
+msgid "Cucumber"
+msgstr "okurka"
+
+#: src/ingredients.inc:90
+msgid "Cucumber (large)"
+msgstr "okurka (velká)"
+
+#: src/ingredients.inc:91
+msgid "Cumin"
+msgstr "římský kmín"
+
+#: src/ingredients.inc:92
+msgid "Cumin seeds"
+msgstr "semínka římského kmínu"
+
+#: src/ingredients.inc:93
+msgid "Dark Jamaican rum"
+msgstr ""
+
+#: src/ingredients.inc:94
 msgid "Date"
 msgstr "datle"
 
-#: src/ingredients.inc:37
+#: src/ingredients.inc:95
+msgid "Dill"
+msgstr ""
+
+#: src/ingredients.inc:96
+#, fuzzy
+#| msgid "no Cream"
+msgid "Double cream"
+msgstr "bez smetany"
+
+#: src/ingredients.inc:97
+#, fuzzy
+#| msgid "Anchovies"
+msgid "Dried anchovies"
+msgstr "ančovičky"
+
+#: src/ingredients.inc:98
+msgid "Dried chillies"
+msgstr ""
+
+#: src/ingredients.inc:99
+msgid "Dry or fresh cilantro"
+msgstr ""
+
+#: src/ingredients.inc:100
+msgid "Dry yeast"
+msgstr ""
+
+#: src/ingredients.inc:101
+msgid "Durum wheat semolina"
+msgstr ""
+
+#: src/ingredients.inc:102
+msgid "Earth Balance vegan buttery stick"
+msgstr ""
+
+#: src/ingredients.inc:103
 msgid "Egg"
 msgstr "vejce"
 
-#: src/ingredients.inc:38
+#: src/ingredients.inc:104
+msgid "Egg yolks"
+msgstr ""
+
+#: src/ingredients.inc:105
+msgid "Fenugreek seeds"
+msgstr ""
+
+#: src/ingredients.inc:106
 msgid "Fig"
 msgstr "fík"
 
-#: src/ingredients.inc:39
+#: src/ingredients.inc:107
+msgid "Finely chopped cilantro"
+msgstr ""
+
+#: src/ingredients.inc:108
+msgid "Finely chopped onions"
+msgstr ""
+
+#: src/ingredients.inc:109
+msgid "Finely chopped thai chillies or green chillis"
+msgstr ""
+
+#: src/ingredients.inc:110
+msgid "Finely chopped tomato"
+msgstr ""
+
+#: src/ingredients.inc:111
 msgid "Fish"
 msgstr "ryba"
 
-#: src/ingredients.inc:40
+#: src/ingredients.inc:112
+#, fuzzy
+#| msgid "Pizza sauce"
+msgid "Fish sauce"
+msgstr "omáčka na pizzu"
+
+#: src/ingredients.inc:113
 msgid "Flour"
 msgstr "mouka"
 
-#: src/ingredients.inc:41
+#: src/ingredients.inc:114
+msgid "Flour (all-purpose)"
+msgstr ""
+
+#: src/ingredients.inc:115
+msgid "Flour (Tipo 00)"
+msgstr ""
+
+#: src/ingredients.inc:116
+msgid "Fresh rosemary"
+msgstr ""
+
+#: src/ingredients.inc:117
+msgid "Fresh tagliatelle"
+msgstr ""
+
+#: src/ingredients.inc:118
+msgid "Garam masala"
+msgstr ""
+
+#: src/ingredients.inc:119
 msgid "Garlic"
 msgstr "česnek"
 
-#: src/ingredients.inc:42
+#: src/ingredients.inc:120
+#, fuzzy
+#| msgid "Garlic"
+msgid "Garlic cloves"
+msgstr "česnek"
+
+#: src/ingredients.inc:121
+#, fuzzy
+#| msgid "Baking powder"
+msgid "Garlic powder"
+msgstr "prášek do pečiva"
+
+#: src/ingredients.inc:122
+msgid "Ginger"
+msgstr ""
+
+#: src/ingredients.inc:123
+msgid "Ginger, freshly grated"
+msgstr ""
+
+#: src/ingredients.inc:124
+#, fuzzy
+#| msgid "no Turmeric, ground"
+msgid "Ginger ground"
+msgstr "bez kurkumy"
+
+#: src/ingredients.inc:125
+msgid "Goat cheese"
+msgstr "kozí sýr"
+
+#: src/ingredients.inc:126
+msgid "Golden caster sugar"
+msgstr ""
+
+#: src/ingredients.inc:127
+msgid "Good, dry red wine"
+msgstr "dobré suché červené víno"
+
+#: src/ingredients.inc:128
+msgid "Gouda cheese"
+msgstr "gouda"
+
+#: src/ingredients.inc:129
+msgid "Goulash spices"
+msgstr "gulášové koření"
+
+#: src/ingredients.inc:130
+msgid "Guanciale cubes"
+msgstr "kostky guanciale"
+
+#: src/ingredients.inc:131
+msgid "Long pasta, e.g. spaghetti"
+msgstr "dlouhé těstoviny, např. špagety"
+
+#: src/ingredients.inc:132
+msgid "Parmesan cheese"
+msgstr "parmazán"
+
+#: src/ingredients.inc:133
 msgid "Grapes"
 msgstr "hrozny"
 
-#: src/ingredients.inc:43
+#: src/ingredients.inc:134
+msgid "Grated French Emmental"
+msgstr "strouhaný francouzský ementál"
+
+#: src/ingredients.inc:135
+msgid "Green Apple"
+msgstr "zelené jablko"
+
+#: src/ingredients.inc:136
+msgid "Green Bell Pepper"
+msgstr "zelená kapie"
+
+#: src/ingredients.inc:137
+msgid "Green Cabbage"
+msgstr ""
+
+#: src/ingredients.inc:138
+msgid "Green olive"
+msgstr "zelené olivy"
+
+#: src/ingredients.inc:139
+msgid "Green onions"
+msgstr "zelená cibulka"
+
+#: src/ingredients.inc:140
+msgid "green onions, chopped"
+msgstr "zelená cibulka, nasekaná"
+
+#: src/ingredients.inc:141
 msgid "Ground beef"
 msgstr "mleté hovězí maso"
 
-#: src/ingredients.inc:44
+#: src/ingredients.inc:142
+msgid "Ground coriander (optional)"
+msgstr "mletý koriandr (volitelné)"
+
+#: src/ingredients.inc:143
+msgid "Ground cumin"
+msgstr "mletý římský kmín"
+
+#: src/ingredients.inc:144
+msgid "Ground fennel"
+msgstr "mletý fenykl"
+
+#: src/ingredients.inc:145
+#, fuzzy
+#| msgid "Ground beef"
+msgid "Ground pepper"
+msgstr "mleté hovězí maso"
+
+#: src/ingredients.inc:146
+msgid "Ham"
+msgstr "šunka"
+
+#: src/ingredients.inc:147
+msgid "Hazelnuts"
+msgstr "lískové oříšky"
+
+#: src/ingredients.inc:148
+msgid "Hazelnuts milk"
+msgstr "lískooříškové mléko"
+
+#: src/ingredients.inc:149
+msgid "Hoisin sauce"
+msgstr "omáčka hoisin"
+
+#: src/ingredients.inc:150
 msgid "Honey"
 msgstr "med"
 
-#: src/ingredients.inc:45
+#: src/ingredients.inc:151
 msgid "Horseradish"
 msgstr "křen"
 
-#: src/ingredients.inc:46
+#: src/ingredients.inc:152
+msgid "Japanese mayonaisse"
+msgstr "japonská majonéza"
+
+#: src/ingredients.inc:153
+msgid "Juniper berries"
+msgstr "jalovcové bobule"
+
+#: src/ingredients.inc:154
+msgid "Kale"
+msgstr "kapusta"
+
+#: src/ingredients.inc:155
+msgid "Ketchup"
+msgstr "kečup"
+
+#: src/ingredients.inc:156
+msgid "Kiwis"
+msgstr "kiwi"
+
+#: src/ingredients.inc:157
+msgid "Lamb"
+msgstr "jehněčí"
+
+#: src/ingredients.inc:158
+msgid "Lardons"
+msgstr "špek"
+
+#: src/ingredients.inc:159
+msgid "Lard or oil"
+msgstr "sádlo nebo olej"
+
+#: src/ingredients.inc:160
 msgid "Lemon"
 msgstr "citrón"
 
-#: src/ingredients.inc:47
+#: src/ingredients.inc:161
+msgid "Lemon juice"
+msgstr "citrónový džus"
+
+#: src/ingredients.inc:162
+msgid "Lemon (untreated)"
+msgstr ""
+
+#: src/ingredients.inc:163
+msgid "Lettuce"
+msgstr "hlávkový salát"
+
+#: src/ingredients.inc:164
+msgid "Light muscovado sugar"
+msgstr ""
+
+#: src/ingredients.inc:165
+msgid "Lime"
+msgstr "limetka"
+
+#: src/ingredients.inc:166
+msgid "Lime juice"
+msgstr "limetkový džus"
+
+#: src/ingredients.inc:167
 msgid "Linseeds"
 msgstr "lněná semínka"
 
-#: src/ingredients.inc:48
+#: src/ingredients.inc:168
+#, fuzzy
+#| msgid "no Orange"
+msgid "Mandarin Oranges"
+msgstr "bez pomeranče"
+
+#: src/ingredients.inc:169
+msgid "Margarine"
+msgstr "rostlinný tuk"
+
+#: src/ingredients.inc:170
 msgid "Mayonnaise"
 msgstr "majonéza"
 
-#: src/ingredients.inc:49
+#: src/ingredients.inc:171
+msgid "Meat"
+msgstr "maso"
+
+#: src/ingredients.inc:172
+msgid "Meat and bones"
+msgstr ""
+
+#: src/ingredients.inc:173
 msgid "Milk"
 msgstr "mléko"
 
-#: src/ingredients.inc:50
+#: src/ingredients.inc:174
+msgid "Mixed berries"
+msgstr "směs lesních plodů"
+
+#: src/ingredients.inc:175
+#, fuzzy
+#| msgid "no Bell pepper"
+msgid "Mixed frozen bell peppers"
+msgstr "bez kapie"
+
+#: src/ingredients.inc:176
+msgid "Mori-nu organic silken tofu (firm)"
+msgstr ""
+
+#: src/ingredients.inc:177
+msgid "Mushrooms"
+msgstr "houby"
+
+#: src/ingredients.inc:178
 msgid "Mustard"
 msgstr "hořčice"
 
-#: src/ingredients.inc:51
+#: src/ingredients.inc:179
+msgid "Mustard seeds"
+msgstr "hořčičná semínka"
+
+#: src/ingredients.inc:180
 msgid "Nut"
 msgstr "ořech"
 
-#: src/ingredients.inc:52
+#: src/ingredients.inc:181
+msgid "Nutmeg"
+msgstr "muškátový oříšek"
+
+#: src/ingredients.inc:182
+msgid "Nutritional yeast"
+msgstr "lahůdkové droždí"
+
+#: src/ingredients.inc:183
 msgid "Oatmeal"
 msgstr "ovesné vločky"
 
-#: src/ingredients.inc:53
+#: src/ingredients.inc:184
 msgid "Oil"
 msgstr "olej"
 
-#: src/ingredients.inc:54
-msgid "Onion"
-msgstr "cibule"
+#: src/ingredients.inc:185
+msgid "Okonomiyaki sauce"
+msgstr "omáčka okonomiyaki"
 
-#: src/ingredients.inc:55
+#: src/ingredients.inc:186
+msgid "Olive oil"
+msgstr "olivový olej"
+
+#: src/ingredients.inc:187
 msgid "Olive oil, extra-virgin"
 msgstr "olivový olej extra panenský"
 
-#: src/ingredients.inc:56
+#: src/ingredients.inc:188
+msgid "Olives, pitted"
+msgstr "vypeckované olivy"
+
+#: src/ingredients.inc:189
+msgid "Onion"
+msgstr "cibule"
+
+#: src/ingredients.inc:190
+msgid "Onion powder"
+msgstr "mletá cibule"
+
+#: src/ingredients.inc:191
 msgid "Orange"
 msgstr "pomeranč"
 
-#: src/ingredients.inc:57
+#: src/ingredients.inc:192
+msgid "Oregano"
+msgstr "oregano"
+
+#: src/ingredients.inc:193
+msgid "Pancetta"
+msgstr "pancetta"
+
+#: src/ingredients.inc:194
+msgid "Pandan leaves"
+msgstr "pandanové listy"
+
+#: src/ingredients.inc:195
+msgid "Paprika"
+msgstr "Paprika"
+
+#: src/ingredients.inc:196
+msgid "Parmesan cheese, grated"
+msgstr ""
+
+#: src/ingredients.inc:197
 msgid "Parsley"
 msgstr "petržel"
 
-#: src/ingredients.inc:58
+#: src/ingredients.inc:198
+msgid "Peach"
+msgstr "broskev"
+
+#: src/ingredients.inc:199
 msgid "Peperoni"
 msgstr "čabajka"
 
-#: src/ingredients.inc:59
+#: src/ingredients.inc:200
 msgid "Pepper"
 msgstr "pepř"
 
-#: src/ingredients.inc:60
+#: src/ingredients.inc:201
 msgid "Peppers"
 msgstr "pepře"
 
-#: src/ingredients.inc:61
+#: src/ingredients.inc:202
+msgid "Pickles"
+msgstr "sterilované okurky"
+
+#: src/ingredients.inc:203
+msgid "Pineapple"
+msgstr "ananas"
+
+#: src/ingredients.inc:204
 msgid "Pizza sauce"
 msgstr "omáčka na pizzu"
 
-#: src/ingredients.inc:62
+#: src/ingredients.inc:205
+msgid "Plain flour"
+msgstr "hrubá mouka"
+
+#: src/ingredients.inc:206
+msgid "Pomegranate"
+msgstr "granátové jablko"
+
+#: src/ingredients.inc:207
+msgid "Pomegranate juice"
+msgstr "džus z granátového jablka"
+
+#: src/ingredients.inc:208
+msgid "Pork fat"
+msgstr ""
+
+#: src/ingredients.inc:209
+msgid "Pork loin"
+msgstr ""
+
+#: src/ingredients.inc:210
 msgid "Potato"
 msgstr "brambora"
 
-#: src/ingredients.inc:63
+#: src/ingredients.inc:211
+msgid "Powdered sugar"
+msgstr "cukr moučka"
+
+#: src/ingredients.inc:212
 msgid "Pumpkin seeds"
 msgstr "dýňová semínka"
 
-#: src/ingredients.inc:64
+#: src/ingredients.inc:213
+msgid "Quinoa"
+msgstr "merlík"
+
+#: src/ingredients.inc:214
+msgid "Radish"
+msgstr "ředkvička"
+
+#: src/ingredients.inc:215
 msgid "Raisins"
 msgstr "hrozinky"
 
-#: src/ingredients.inc:65
+#: src/ingredients.inc:216
+msgid "Red bell pepper"
+msgstr "červená kapie"
+
+#: src/ingredients.inc:217
+msgid "Red onion"
+msgstr "červená cibule"
+
+#: src/ingredients.inc:218
+msgid "Red Pepper"
+msgstr ""
+
+#: src/ingredients.inc:219
+msgid "Red wine"
+msgstr "červené víno"
+
+#: src/ingredients.inc:220
 msgid "Rice"
 msgstr "rýže"
 
-#: src/ingredients.inc:66
+#: src/ingredients.inc:221
+msgid "Rice, cooked"
+msgstr ""
+
+#: src/ingredients.inc:222
+msgid "Rice vermicelli noodles"
+msgstr ""
+
+#: src/ingredients.inc:223
+msgid "Rock sugar"
+msgstr "cukr krystal"
+
+#: src/ingredients.inc:224
+msgid "Rolled oats"
+msgstr ""
+
+#: src/ingredients.inc:225
+msgid "Rosemary"
+msgstr "rozmarýn"
+
+#: src/ingredients.inc:226
+msgid "Sachet levure"
+msgstr ""
+
+#: src/ingredients.inc:227
+msgid "Saffron"
+msgstr "šafrán"
+
+#: src/ingredients.inc:228
+msgid "Sage"
+msgstr "šalvěj"
+
+#: src/ingredients.inc:229
+msgid "Salmon"
+msgstr "losos"
+
+#: src/ingredients.inc:230
 msgid "Salt"
 msgstr "sůl"
 
-#: src/ingredients.inc:67
+#: src/ingredients.inc:231
+msgid "Salt and pepper"
+msgstr "sůl a pepř"
+
+#: src/ingredients.inc:232
+msgid "Saucebinder"
+msgstr ""
+
+#: src/ingredients.inc:233
+msgid "Scallions"
+msgstr "pórek"
+
+#: src/ingredients.inc:234
+msgid "Sea salt"
+msgstr "mořská sůl"
+
+#: src/ingredients.inc:235
+msgid "Semi-skimmed milk"
+msgstr "polotučné mléko"
+
+#: src/ingredients.inc:236
+msgid "Sesame oil"
+msgstr "sezamový olej"
+
+#: src/ingredients.inc:237
+msgid "Sesame seeds"
+msgstr "sezamová semínka"
+
+#: src/ingredients.inc:238
+msgid "Shallots"
+msgstr "šalotka"
+
+#: src/ingredients.inc:239
+msgid "Shrimps"
+msgstr ""
+
+#: src/ingredients.inc:240
+msgid "Slivered almonds, toasted"
+msgstr ""
+
+#: src/ingredients.inc:241
+#, fuzzy
+#| msgid "no Cream"
+msgid "Sour cream"
+msgstr "bez smetany"
+
+#: src/ingredients.inc:242
 msgid "Soy sauce"
 msgstr "sójová omáčka"
 
-#: src/ingredients.inc:68
-msgid "Strawberry"
-msgstr "jahoda"
+#: src/ingredients.inc:243
+msgid "Spinach"
+msgstr "špenát"
 
-#: src/ingredients.inc:69
-msgid "Sugar"
-msgstr "cukr"
+#: src/ingredients.inc:244
+msgid "Spring onion"
+msgstr "jarní cibulka"
 
-#: src/ingredients.inc:70
-msgid "Sunflower seeds"
-msgstr "slunečnicová semínka"
-
-#: src/ingredients.inc:71
+#: src/ingredients.inc:245
 msgid "Squash"
 msgstr "dýně"
 
-#: src/ingredients.inc:72
+#: src/ingredients.inc:246
+msgid "Star anise"
+msgstr "badyán"
+
+#: src/ingredients.inc:247
+msgid "Strawberry"
+msgstr "jahoda"
+
+#: src/ingredients.inc:248
+msgid "Sugar"
+msgstr "cukr"
+
+#: src/ingredients.inc:249
+msgid "Sunflower seeds"
+msgstr "slunečnicová semínka"
+
+#: src/ingredients.inc:250
+msgid "Sweet potatoes"
+msgstr ""
+
+#: src/ingredients.inc:251
+msgid "Tamarind paste"
+msgstr ""
+
+#: src/ingredients.inc:252
 msgid "Tangerine"
 msgstr "mandarinka"
 
-#: src/ingredients.inc:73
+#: src/ingredients.inc:253
+msgid "Thai basil leaves"
+msgstr ""
+
+#: src/ingredients.inc:254
+msgid "Thai chillies"
+msgstr ""
+
+#: src/ingredients.inc:255
+msgid "Thai fish sauce"
+msgstr ""
+
+#: src/ingredients.inc:256
+msgid "Thyme"
+msgstr "tymián"
+
+#: src/ingredients.inc:257
+msgid "Tinned pineapple rings"
+msgstr ""
+
+#: src/ingredients.inc:258
 msgid "Tofu"
 msgstr "tofu"
 
-#: src/ingredients.inc:74
+#: src/ingredients.inc:259
 msgid "Tomato"
 msgstr "rajče"
 
-#: src/ingredients.inc:75
-msgid "Turmeric, ground"
+#: src/ingredients.inc:260
+msgid "Tomato paste"
+msgstr "rajčatový protlak"
+
+#: src/ingredients.inc:261
+#, fuzzy
+#| msgid "Soy sauce"
+msgid "Tomato sauce"
+msgstr "sójová omáčka"
+
+#: src/ingredients.inc:262
+msgid "Tumeric ground"
 msgstr "kurkuma"
 
-#: src/ingredients.inc:76
-msgid "Vanilla sugar"
-msgstr "vanilkový cukr"
+#: src/ingredients.inc:263
+msgid "Tuna fish"
+msgstr "tuňák"
 
-#: src/ingredients.inc:77
+#: src/ingredients.inc:264
+msgid "Unsalted butter"
+msgstr "nesolené máslo"
+
+#: src/ingredients.inc:265
+msgid "Vanilla baking powder"
+msgstr "vanilkový prášek do pečiva"
+
+#: src/ingredients.inc:266
+msgid "Vanilla extract"
+msgstr "vanilková tresť"
+
+#: src/ingredients.inc:267
+msgid "Vanilla powdered sugar, for dusting"
+msgstr ""
+
+#: src/ingredients.inc:268
 msgid "Vanilla pudding"
 msgstr "vanilkový puding"
 
-#: src/ingredients.inc:78
+#: src/ingredients.inc:269
+msgid "Vanilla sugar"
+msgstr "vanilkový cukr"
+
+#: src/ingredients.inc:270
+msgid "Vegetable oil"
+msgstr "rostlinný olej"
+
+#: src/ingredients.inc:271
 msgid "Vinegar"
 msgstr "ocet"
 
-#: src/ingredients.inc:79
+#: src/ingredients.inc:272
 msgid "Water"
 msgstr "voda"
 
-#: src/ingredients.inc:80
+#: src/ingredients.inc:273
+msgid "Wheat flour"
+msgstr "pšeničná mouka"
+
+#: src/ingredients.inc:274
+msgid "White fish"
+msgstr "bílá ryba"
+
+#: src/ingredients.inc:275
+msgid "White onion"
+msgstr "bílá cibule"
+
+#: src/ingredients.inc:276
+msgid "Whole chicken"
+msgstr "celé kuře"
+
+#: src/ingredients.inc:277
 msgid "Wine"
 msgstr "víno"
 
-#: src/ingredients.inc:81
+#: src/ingredients.inc:278
+msgid "Worcestershire sauce"
+msgstr "worcestrová omáčka"
+
+#: src/ingredients.inc:279
 msgid "Yeast"
 msgstr "droždí"
 
-#: src/ingredients.inc:82
+#: src/ingredients.inc:280
+msgid "Yellow bell pepper"
+msgstr "žlutá kapie"
+
+#: src/ingredients.inc:281
 msgid "Yoghurt"
 msgstr "jogurt"
 
-#: src/ingredients.inc:83
+#: src/ingredients.inc:282
+msgid "Zest of 1 lemon (organic)"
+msgstr "kůra z 1 citrónu (bio)"
+
+#: src/ingredients.inc:283
 msgid "Zinfandel"
 msgstr "víno Zinfandel"
 
-#: src/ingredients.inc:84
+#: src/ingredients.inc:284
 msgid "Zuccini"
 msgstr "cuketa"
 
@@ -3009,321 +3798,1198 @@ msgid "no Apple"
 msgstr "bez jablek"
 
 #: src/no-ingredients.inc:5
+msgid "no Apple Vinegar"
+msgstr "bez vinného octa"
+
+#: src/no-ingredients.inc:6
 msgid "no Apricot"
 msgstr "bez meruněk"
 
-#: src/no-ingredients.inc:6
+#: src/no-ingredients.inc:7
 msgid "no Artichoke"
 msgstr "bez artyčoků"
 
-#: src/no-ingredients.inc:7
+#: src/no-ingredients.inc:8
 msgid "no Asparagus"
 msgstr "bez chřestu"
 
-#: src/no-ingredients.inc:8
+#: src/no-ingredients.inc:9
 msgid "no Aubergine"
 msgstr "bez lilku"
 
-#: src/no-ingredients.inc:9
+#: src/no-ingredients.inc:10
+#| msgid "no Bay leaf"
+msgid "no Baby Spinach"
+msgstr "bez špenátu baby"
+
+#: src/no-ingredients.inc:11
 msgid "no Bacon"
 msgstr "bez slaniny"
 
-#: src/no-ingredients.inc:10
+#: src/no-ingredients.inc:12
 msgid "no Bagel"
 msgstr "bez bagela"
 
-#: src/no-ingredients.inc:11
+#: src/no-ingredients.inc:13
 msgid "no Baked beans"
 msgstr "bez pečených fazolí"
 
-#: src/no-ingredients.inc:12
+#: src/no-ingredients.inc:14
 msgid "no Baking powder"
 msgstr "bez prášku do pečiva"
 
-#: src/no-ingredients.inc:13
+#: src/no-ingredients.inc:15
 msgid "no Banana"
 msgstr "bez banánů"
 
-#: src/no-ingredients.inc:14
+#: src/no-ingredients.inc:16
 msgid "no Basil"
 msgstr "bez bazalky"
 
-#: src/no-ingredients.inc:15
+#: src/no-ingredients.inc:17
 msgid "no Basmati rice"
 msgstr "bez rýže basmati"
 
-#: src/no-ingredients.inc:16
+#: src/no-ingredients.inc:18
 msgid "no Bay leaf"
 msgstr "bez bobkových listů"
 
-#: src/no-ingredients.inc:17
+#: src/no-ingredients.inc:19
 msgid "no Beans"
 msgstr "bez fazolí"
 
-#: src/no-ingredients.inc:18
+#: src/no-ingredients.inc:20
+#, fuzzy
+#| msgid "no Beans"
+msgid "no Bean sprouts"
+msgstr "bez fazolí"
+
+#: src/no-ingredients.inc:21
+#, fuzzy
+#| msgid "no Beef mince"
+msgid "no Beef"
+msgstr "bez mletého hovězího masa"
+
+#: src/no-ingredients.inc:22
 msgid "no Beef mince"
 msgstr "bez mletého hovězího masa"
 
-#: src/no-ingredients.inc:19
+#: src/no-ingredients.inc:23
 msgid "no Beef sausage"
 msgstr "bez hovězích klobás"
 
-#: src/no-ingredients.inc:20
+#: src/no-ingredients.inc:24
+#, fuzzy
+#| msgid "no Beef mince"
+msgid "no Beef (sirloin)"
+msgstr "bez mletého hovězího masa"
+
+#: src/no-ingredients.inc:25
 msgid "no Beef stock"
 msgstr "bez hovězího vývaru"
 
-#: src/no-ingredients.inc:21
+#: src/no-ingredients.inc:26
 msgid "no Beetroot"
 msgstr "bez červené řepy"
 
-#: src/no-ingredients.inc:22
+#: src/no-ingredients.inc:27
 msgid "no Bell pepper"
 msgstr "bez kapie"
 
-#: src/no-ingredients.inc:23
+#: src/no-ingredients.inc:28
+msgid "no Bell Pepper (green)"
+msgstr "bez kapie (zelené)"
+
+#: src/no-ingredients.inc:29
 msgid "no Berry"
 msgstr "bez lesních plodů"
 
-#: src/no-ingredients.inc:24
-msgid "no Biscotti"
-msgstr "bez biscotti"
-
-#: src/no-ingredients.inc:25
+#: src/no-ingredients.inc:30
 msgid "no Bilberry"
 msgstr "bez borůvek"
 
-#: src/no-ingredients.inc:26
+#: src/no-ingredients.inc:31
+msgid "no Biscotti"
+msgstr "bez biscotti"
+
+#: src/no-ingredients.inc:32
+msgid "no Black cardamom pod"
+msgstr ""
+
+#: src/no-ingredients.inc:33
+msgid "no Black peppercorns"
+msgstr "bez celého černého pepře"
+
+#: src/no-ingredients.inc:34
+msgid "no Blueberry"
+msgstr "bez borůvek"
+
+#: src/no-ingredients.inc:35
+msgid "no Bourbon whiskey"
+msgstr ""
+
+#: src/no-ingredients.inc:36
 msgid "no Breadcrumbs"
 msgstr "bez strouhanky"
 
-#: src/no-ingredients.inc:27
+#: src/no-ingredients.inc:37
+#, fuzzy
+#| msgid "no Beef stock"
+msgid "no Brewer's yeast"
+msgstr "bez hovězího vývaru"
+
+#: src/no-ingredients.inc:38
+msgid "no Broad beans"
+msgstr "bez velkých fazolí"
+
+#: src/no-ingredients.inc:39
+#, fuzzy
+#| msgid "no Beetroot"
+msgid "no Broth"
+msgstr "bez červené řepy"
+
+#: src/no-ingredients.inc:40
+msgid "no Brown sugar"
+msgstr "bez hnědého cukru"
+
+#: src/no-ingredients.inc:41
 msgid "no Butter"
 msgstr "bez másla"
 
-#: src/no-ingredients.inc:28
+#: src/no-ingredients.inc:42
+#, fuzzy
+#| msgid "no Butter"
+msgid "no Butter, melted"
+msgstr "bez másla"
+
+#: src/no-ingredients.inc:43
+msgid "no Button mushroom"
+msgstr ""
+
+#: src/no-ingredients.inc:44
+msgid "no Cabbage"
+msgstr ""
+
+#: src/no-ingredients.inc:45
+msgid "no Cake flour"
+msgstr "bez cukrářské mouky"
+
+#: src/no-ingredients.inc:46
+#, fuzzy
+#| msgid "no Baked beans"
+msgid "no Canellini beans"
+msgstr "bez pečených fazolí"
+
+#: src/no-ingredients.inc:47
+msgid "no Canned black beans, rinsed"
+msgstr ""
+
+#: src/no-ingredients.inc:48
+msgid "no Canned chopped tomatoes"
+msgstr ""
+
+#: src/no-ingredients.inc:49
 msgid "no Carrot"
 msgstr "bez mrkve"
 
-#: src/no-ingredients.inc:29
+#: src/no-ingredients.inc:50
+#, fuzzy
+#| msgid "no Cherries, pitted"
+msgid "no Cashews, lightly toasted"
+msgstr "bez vypeckovaných třešní"
+
+#: src/no-ingredients.inc:51
+msgid "no Caster sugar"
+msgstr "bez cukru krupice"
+
+#: src/no-ingredients.inc:52
+msgid "no celery"
+msgstr "bez celeru"
+
+#: src/no-ingredients.inc:53
+#, fuzzy
+#| msgid "no Cheese"
+msgid "no Celey"
+msgstr "bez sýru"
+
+#: src/no-ingredients.inc:54
+msgid "no Champignons"
+msgstr "bez žampiónů"
+
+#: src/no-ingredients.inc:55
 msgid "no Cheese"
 msgstr "bez sýru"
 
-#: src/no-ingredients.inc:30
+#: src/no-ingredients.inc:56
+msgid "no Cheese slices"
+msgstr "bez plátkového sýru"
+
+#: src/no-ingredients.inc:57
 msgid "no Cherries, pitted"
 msgstr "bez vypeckovaných třešní"
 
-#: src/no-ingredients.inc:31
+#: src/no-ingredients.inc:58
+msgid "no cherry tomatoes, halved"
+msgstr ""
+
+#: src/no-ingredients.inc:59
+msgid "no Chia seeds"
+msgstr "bez semínek chia"
+
+#: src/no-ingredients.inc:60
+msgid "no Chicken breasts, large"
+msgstr ""
+
+#: src/no-ingredients.inc:61
+msgid "no Chicken livers"
+msgstr "bez kuřecích jater"
+
+#: src/no-ingredients.inc:62
+msgid "no chicken stock"
+msgstr "bez kuřecího vývaru"
+
+#: src/no-ingredients.inc:63
+msgid "no Chili flakes"
+msgstr "bez drceného čili"
+
+#: src/no-ingredients.inc:64
+msgid "no Chili powder"
+msgstr "bez mletého čili"
+
+#: src/no-ingredients.inc:65
+msgid "no chili sauce (e.g. sriracha)"
+msgstr "bez čili omáčky (např. sriracha)"
+
+#: src/no-ingredients.inc:66
+msgid "no Chocolate"
+msgstr "bez čokolády"
+
+#: src/no-ingredients.inc:67
 msgid "no Chocolate frosting"
 msgstr "bez čokoládové polevy"
 
-#: src/no-ingredients.inc:32
+#: src/no-ingredients.inc:68
+msgid "no Chorizo"
+msgstr "bez choriza"
+
+#: src/no-ingredients.inc:69
+msgid "no Ciboulette"
+msgstr "bez pažitky"
+
+#: src/no-ingredients.inc:70
 msgid "no Cilantro"
 msgstr "bez koriandru"
 
-#: src/no-ingredients.inc:33
+#: src/no-ingredients.inc:71
+msgid "no cilantro leaves"
+msgstr "bez koriandrových listů"
+
+#: src/no-ingredients.inc:72
+msgid "no Cinnamon"
+msgstr "bez skořice"
+
+#: src/no-ingredients.inc:73
+msgid "no Cinnamon sticks"
+msgstr "bez skořicové kůry"
+
+#: src/no-ingredients.inc:74
+msgid "no Cloves"
+msgstr "bez hřebíčku"
+
+#: src/no-ingredients.inc:75
+msgid "no Cocoa butter"
+msgstr "bez kakaového másla"
+
+#: src/no-ingredients.inc:76
 msgid "no Cocoa powder"
 msgstr "bez kakaového prášku"
 
-#: src/no-ingredients.inc:34
+#: src/no-ingredients.inc:77
+msgid "no Coconut milk"
+msgstr "bez kokosového mléka"
+
+#: src/no-ingredients.inc:78
+msgid "no Coconut oil"
+msgstr "bez kokosového oleje"
+
+#: src/no-ingredients.inc:79
+msgid "no Coconut water"
+msgstr "bez kokosové vody"
+
+#: src/no-ingredients.inc:80
+msgid "no cold water"
+msgstr "bez studené vody"
+
+#: src/no-ingredients.inc:81
+#, fuzzy
+#| msgid "no Ground beef"
+msgid "no cooked beef"
+msgstr "bez mletého hovězího masa"
+
+#: src/no-ingredients.inc:82
+msgid "no Coriander"
+msgstr "bez koriandru"
+
+#: src/no-ingredients.inc:83
+#, fuzzy
+#| msgid "no Linseeds"
+msgid "no coriandre seeds"
+msgstr "bez lněných semínek"
+
+#: src/no-ingredients.inc:84
 msgid "no Couscous"
 msgstr "bez kuskusu"
 
-#: src/no-ingredients.inc:35
+#: src/no-ingredients.inc:85
+#, fuzzy
+#| msgid "no Bell pepper"
+msgid "no Cracked pepper"
+msgstr "bez kapie"
+
+#: src/no-ingredients.inc:86
 msgid "no Cream"
 msgstr "bez smetany"
 
-#: src/no-ingredients.inc:36
+#: src/no-ingredients.inc:87
+msgid "no Cream cheese"
+msgstr "bez krémového sýra"
+
+#: src/no-ingredients.inc:88
+msgid "no Crushed red peper flakes"
+msgstr "bez drcené červené papriky"
+
+#: src/no-ingredients.inc:89
+msgid "no Cucumber"
+msgstr "bez okurky"
+
+#: src/no-ingredients.inc:90
+msgid "no Cucumber (large)"
+msgstr "bez okurky (velké)"
+
+#: src/no-ingredients.inc:91
+msgid "no Cumin"
+msgstr "bez římského kmínu"
+
+#: src/no-ingredients.inc:92
+msgid "no Cumin seeds"
+msgstr "bez semínek římského kmínu"
+
+#: src/no-ingredients.inc:93
+msgid "no Dark Jamaican rum"
+msgstr ""
+
+#: src/no-ingredients.inc:94
 msgid "no Date"
 msgstr "bez datlí"
 
-#: src/no-ingredients.inc:37
+#: src/no-ingredients.inc:95
+msgid "no Dill"
+msgstr ""
+
+#: src/no-ingredients.inc:96
+#, fuzzy
+#| msgid "no Cream"
+msgid "no Double cream"
+msgstr "bez smetany"
+
+#: src/no-ingredients.inc:97
+#, fuzzy
+#| msgid "no Anchovies"
+msgid "no Dried anchovies"
+msgstr "bez ančoviček"
+
+#: src/no-ingredients.inc:98
+msgid "no Dried chillies"
+msgstr ""
+
+#: src/no-ingredients.inc:99
+msgid "no Dry or fresh cilantro"
+msgstr ""
+
+#: src/no-ingredients.inc:100
+#, fuzzy
+#| msgid "no Yeast"
+msgid "no Dry yeast"
+msgstr "bez droždí"
+
+#: src/no-ingredients.inc:101
+msgid "no Durum wheat semolina"
+msgstr ""
+
+#: src/no-ingredients.inc:102
+msgid "no Earth Balance vegan buttery stick"
+msgstr ""
+
+#: src/no-ingredients.inc:103
 msgid "no Egg"
 msgstr "bez vajec"
 
-#: src/no-ingredients.inc:38
+#: src/no-ingredients.inc:104
+#, fuzzy
+#| msgid "no Egg"
+msgid "no Egg yolks"
+msgstr "bez vajec"
+
+#: src/no-ingredients.inc:105
+#, fuzzy
+#| msgid "no Pumpkin seeds"
+msgid "no Fenugreek seeds"
+msgstr "bez dýňových semínek"
+
+#: src/no-ingredients.inc:106
 msgid "no Fig"
 msgstr "bez fíků"
 
-#: src/no-ingredients.inc:39
+#: src/no-ingredients.inc:107
+msgid "no Finely chopped cilantro"
+msgstr ""
+
+#: src/no-ingredients.inc:108
+msgid "no Finely chopped onions"
+msgstr ""
+
+#: src/no-ingredients.inc:109
+msgid "no Finely chopped thai chillies or green chillis"
+msgstr ""
+
+#: src/no-ingredients.inc:110
+msgid "no Finely chopped tomato"
+msgstr ""
+
+#: src/no-ingredients.inc:111
 msgid "no Fish"
 msgstr "bez ryb"
 
-#: src/no-ingredients.inc:40
+#: src/no-ingredients.inc:112
+#, fuzzy
+#| msgid "no Pizza sauce"
+msgid "no Fish sauce"
+msgstr "bez omáčky na pizzu"
+
+#: src/no-ingredients.inc:113
 msgid "no Flour"
 msgstr "bez mouky"
 
-#: src/no-ingredients.inc:41
+#: src/no-ingredients.inc:114
+msgid "no Flour (all-purpose)"
+msgstr ""
+
+#: src/no-ingredients.inc:115
+#, fuzzy
+#| msgid "no Flour"
+msgid "no Flour (Tipo 00)"
+msgstr "bez mouky"
+
+#: src/no-ingredients.inc:116
+msgid "no Fresh rosemary"
+msgstr ""
+
+#: src/no-ingredients.inc:117
+msgid "no Fresh tagliatelle"
+msgstr ""
+
+#: src/no-ingredients.inc:118
+msgid "no Garam masala"
+msgstr ""
+
+#: src/no-ingredients.inc:119
 msgid "no Garlic"
 msgstr "bez česneku"
 
-#: src/no-ingredients.inc:42
+#: src/no-ingredients.inc:120
+#, fuzzy
+#| msgid "no Garlic"
+msgid "no Garlic cloves"
+msgstr "bez česneku"
+
+#: src/no-ingredients.inc:121
+#, fuzzy
+#| msgid "no Baking powder"
+msgid "no Garlic powder"
+msgstr "bez prášku do pečiva"
+
+#: src/no-ingredients.inc:122
+#, fuzzy
+#| msgid "no Tangerine"
+msgid "no Ginger"
+msgstr "bez mandarinek"
+
+#: src/no-ingredients.inc:123
+msgid "no Ginger, freshly grated"
+msgstr ""
+
+#: src/no-ingredients.inc:124
+#, fuzzy
+#| msgid "no Turmeric, ground"
+msgid "no Ginger ground"
+msgstr "bez kurkumy"
+
+#: src/no-ingredients.inc:125
+msgid "no Goat cheese"
+msgstr "bez kozího sýru"
+
+#: src/no-ingredients.inc:126
+msgid "no Golden caster sugar"
+msgstr ""
+
+#: src/no-ingredients.inc:127
+msgid "no Good, dry red wine"
+msgstr "bez dobrého suchého červeného vína"
+
+#: src/no-ingredients.inc:128
+msgid "no Gouda cheese"
+msgstr "bez goudy"
+
+#: src/no-ingredients.inc:129
+msgid "no Goulash spices"
+msgstr "bez gulášového koření"
+
+#: src/no-ingredients.inc:130
+msgid "no Guanciale cubes"
+msgstr "bez kostek guanciale"
+
+#: src/no-ingredients.inc:131
+msgid "no Long pasta, e.g. spaghetti"
+msgstr "bez dlouhých těstovin, např. špaget"
+
+#: src/no-ingredients.inc:132
+msgid "no Parmesan cheese"
+msgstr "bez parmazáná"
+
+#: src/no-ingredients.inc:133
 msgid "no Grapes"
 msgstr "bez hroznů"
 
-#: src/no-ingredients.inc:43
+#: src/no-ingredients.inc:134
+msgid "no Grated French Emmental"
+msgstr "bez strouhaného francouzského ementálu"
+
+#: src/no-ingredients.inc:135
+msgid "no Green Apple"
+msgstr "bez zelených jablek"
+
+#: src/no-ingredients.inc:136
+msgid "no Green Bell Pepper"
+msgstr "bez zelené kapie"
+
+#: src/no-ingredients.inc:137
+#, fuzzy
+#| msgid "no Ground beef"
+msgid "no Green Cabbage"
+msgstr "bez mletého hovězího masa"
+
+#: src/no-ingredients.inc:138
+msgid "no Green olive"
+msgstr "bez zelených oliv"
+
+#: src/no-ingredients.inc:139
+msgid "no Green onions"
+msgstr "bez zelené cibulky"
+
+#: src/no-ingredients.inc:140
+msgid "no green onions, chopped"
+msgstr "bez zelené cibulky, nasekané"
+
+#: src/no-ingredients.inc:141
 msgid "no Ground beef"
 msgstr "bez mletého hovězího masa"
 
-#: src/no-ingredients.inc:44
+#: src/no-ingredients.inc:142
+msgid "no Ground coriander (optional)"
+msgstr "bez mletého koriandru (volitelné)"
+
+#: src/no-ingredients.inc:143
+msgid "no Ground cumin"
+msgstr "bez mletého římského kmínu"
+
+#: src/no-ingredients.inc:144
+msgid "no Ground fennel"
+msgstr "bez mletého fenyklu"
+
+#: src/no-ingredients.inc:145
+#, fuzzy
+#| msgid "no Ground beef"
+msgid "no Ground pepper"
+msgstr "bez mletého hovězího masa"
+
+#: src/no-ingredients.inc:146
+msgid "no Ham"
+msgstr "bez šunky"
+
+#: src/no-ingredients.inc:147
+msgid "no Hazelnuts"
+msgstr "bez lískových oříšků"
+
+#: src/no-ingredients.inc:148
+msgid "no Hazelnuts milk"
+msgstr "bez lískooříškového mléka"
+
+#: src/no-ingredients.inc:149
+msgid "no Hoisin sauce"
+msgstr "bez omáčky hoisin"
+
+#: src/no-ingredients.inc:150
 msgid "no Honey"
 msgstr "bez medu"
 
-#: src/no-ingredients.inc:45
+#: src/no-ingredients.inc:151
 msgid "no Horseradish"
 msgstr "bez křenu"
 
-#: src/no-ingredients.inc:46
+#: src/no-ingredients.inc:152
+msgid "no Japanese mayonaisse"
+msgstr "bez japonské majonézy"
+
+#: src/no-ingredients.inc:153
+msgid "no Juniper berries"
+msgstr "bez jalovcových bobulí"
+
+#: src/no-ingredients.inc:154
+msgid "no Kale"
+msgstr "bez kapusty"
+
+#: src/no-ingredients.inc:155
+msgid "no Ketchup"
+msgstr "bez kečupu"
+
+#: src/no-ingredients.inc:156
+msgid "no Kiwis"
+msgstr "bez kiwi"
+
+#: src/no-ingredients.inc:157
+msgid "no Lamb"
+msgstr "bez jehněčího"
+
+#: src/no-ingredients.inc:158
+msgid "no Lardons"
+msgstr "bez špeku"
+
+#: src/no-ingredients.inc:159
+msgid "no Lard or oil"
+msgstr "bez sádla nebo oleje"
+
+#: src/no-ingredients.inc:160
 msgid "no Lemon"
 msgstr "bez citrónu"
 
-#: src/no-ingredients.inc:47
+#: src/no-ingredients.inc:161
+msgid "no Lemon juice"
+msgstr "bez citrónového džusu"
+
+#: src/no-ingredients.inc:162
+msgid "no Lemon (untreated)"
+msgstr ""
+
+#: src/no-ingredients.inc:163
+msgid "no Lettuce"
+msgstr "bez hlávkového salátu"
+
+#: src/no-ingredients.inc:164
+msgid "no Light muscovado sugar"
+msgstr ""
+
+#: src/no-ingredients.inc:165
+msgid "no Lime"
+msgstr "bez limetky"
+
+#: src/no-ingredients.inc:166
+msgid "no Lime juice"
+msgstr "bez limetkového džusu"
+
+#: src/no-ingredients.inc:167
 msgid "no Linseeds"
 msgstr "bez lněných semínek"
 
-#: src/no-ingredients.inc:48
+#: src/no-ingredients.inc:168
+#, fuzzy
+#| msgid "no Orange"
+msgid "no Mandarin Oranges"
+msgstr "bez pomeranče"
+
+#: src/no-ingredients.inc:169
+msgid "no Margarine"
+msgstr "bez rostlinného tuku"
+
+#: src/no-ingredients.inc:170
 msgid "no Mayonnaise"
 msgstr "bez majonézy"
 
-#: src/no-ingredients.inc:49
+#: src/no-ingredients.inc:171
+msgid "no Meat"
+msgstr "bez masa"
+
+#: src/no-ingredients.inc:172
+msgid "no Meat and bones"
+msgstr ""
+
+#: src/no-ingredients.inc:173
 msgid "no Milk"
 msgstr "bez mléka"
 
-#: src/no-ingredients.inc:50
+#: src/no-ingredients.inc:174
+msgid "no Mixed berries"
+msgstr "bez směsi lesních plodů"
+
+#: src/no-ingredients.inc:175
+#, fuzzy
+#| msgid "no Bell pepper"
+msgid "no Mixed frozen bell peppers"
+msgstr "bez kapie"
+
+#: src/no-ingredients.inc:176
+msgid "no Mori-nu organic silken tofu (firm)"
+msgstr ""
+
+#: src/no-ingredients.inc:177
+msgid "no Mushrooms"
+msgstr "bez hub"
+
+#: src/no-ingredients.inc:178
 msgid "no Mustard"
 msgstr "bez hořčice"
 
-#: src/no-ingredients.inc:51
+#: src/no-ingredients.inc:179
+msgid "no Mustard seeds"
+msgstr "bez hořčičných semínek"
+
+#: src/no-ingredients.inc:180
 msgid "no Nut"
 msgstr "bez ořechů"
 
-#: src/no-ingredients.inc:52
+#: src/no-ingredients.inc:181
+msgid "no Nutmeg"
+msgstr "bez muškátového oříšku"
+
+#: src/no-ingredients.inc:182
+msgid "no Nutritional yeast"
+msgstr "bez lahůdkového droždí"
+
+#: src/no-ingredients.inc:183
 msgid "no Oatmeal"
 msgstr "bez ovesných vloček"
 
-#: src/no-ingredients.inc:53
+#: src/no-ingredients.inc:184
 msgid "no Oil"
 msgstr "bez oleje"
 
-#: src/no-ingredients.inc:54
-msgid "no Onion"
-msgstr "bez cibule"
+#: src/no-ingredients.inc:185
+msgid "no Okonomiyaki sauce"
+msgstr "bez omáčky okonomiyaki"
 
-#: src/no-ingredients.inc:55
+#: src/no-ingredients.inc:186
+msgid "no Olive oil"
+msgstr "bez olivového oleje"
+
+#: src/no-ingredients.inc:187
 msgid "no Olive oil, extra-virgin"
 msgstr "bez olivového oleje extra panenského"
 
-#: src/no-ingredients.inc:56
+#: src/no-ingredients.inc:188
+msgid "no Olives, pitted"
+msgstr "bez vypeckovaných oliv"
+
+#: src/no-ingredients.inc:189
+msgid "no Onion"
+msgstr "bez cibule"
+
+#: src/no-ingredients.inc:190
+msgid "no Onion powder"
+msgstr "bez mleté cibule"
+
+#: src/no-ingredients.inc:191
 msgid "no Orange"
 msgstr "bez pomeranče"
 
-#: src/no-ingredients.inc:57
+#: src/no-ingredients.inc:192
+msgid "no Oregano"
+msgstr "bez oregana"
+
+#: src/no-ingredients.inc:193
+msgid "no Pancetta"
+msgstr "bez pancetty"
+
+#: src/no-ingredients.inc:194
+msgid "no Pandan leaves"
+msgstr "bez pandanových listů"
+
+#: src/no-ingredients.inc:195
+msgid "no Paprika"
+msgstr "bez papriky"
+
+#: src/no-ingredients.inc:196
+msgid "no Parmesan cheese, grated"
+msgstr ""
+
+#: src/no-ingredients.inc:197
 msgid "no Parsley"
 msgstr "bez petržele"
 
-#: src/no-ingredients.inc:58
+#: src/no-ingredients.inc:198
+msgid "no Peach"
+msgstr "bez broskví"
+
+#: src/no-ingredients.inc:199
 msgid "no Peperoni"
 msgstr "bez čabajky"
 
-#: src/no-ingredients.inc:59
+#: src/no-ingredients.inc:200
 msgid "no Pepper"
 msgstr "bez pepře"
 
-#: src/no-ingredients.inc:60
+#: src/no-ingredients.inc:201
 msgid "no Peppers"
 msgstr "bez pepřů"
 
-#: src/no-ingredients.inc:61
+#: src/no-ingredients.inc:202
+msgid "no Pickles"
+msgstr "bez sterilovaných okurek"
+
+#: src/no-ingredients.inc:203
+msgid "no Pineapple"
+msgstr "bez ananasu"
+
+#: src/no-ingredients.inc:204
 msgid "no Pizza sauce"
 msgstr "bez omáčky na pizzu"
 
-#: src/no-ingredients.inc:62
+#: src/no-ingredients.inc:205
+msgid "no Plain flour"
+msgstr "bez hrubé mouky"
+
+#: src/no-ingredients.inc:206
+msgid "no Pomegranate"
+msgstr "bez granátového jablka"
+
+#: src/no-ingredients.inc:207
+msgid "no Pomegranate juice"
+msgstr "bez džusu z granátového jablka"
+
+#: src/no-ingredients.inc:208
+#, fuzzy
+#| msgid "no Potato"
+msgid "no Pork fat"
+msgstr "bez brambor"
+
+#: src/no-ingredients.inc:209
+#, fuzzy
+#| msgid "no Peperoni"
+msgid "no Pork loin"
+msgstr "bez čabajky"
+
+#: src/no-ingredients.inc:210
 msgid "no Potato"
 msgstr "bez brambor"
 
-#: src/no-ingredients.inc:63
+#: src/no-ingredients.inc:211
+msgid "no Powdered sugar"
+msgstr "bez cukru moučky"
+
+#: src/no-ingredients.inc:212
 msgid "no Pumpkin seeds"
 msgstr "bez dýňových semínek"
 
-#: src/no-ingredients.inc:64
+#: src/no-ingredients.inc:213
+msgid "no Quinoa"
+msgstr "bez merlíku"
+
+#: src/no-ingredients.inc:214
+msgid "no Radish"
+msgstr "bez ředkviček"
+
+#: src/no-ingredients.inc:215
 msgid "no Raisins"
 msgstr "bez hrozinek"
 
-#: src/no-ingredients.inc:65
+#: src/no-ingredients.inc:216
+msgid "no Red bell pepper"
+msgstr "bez červené kapie"
+
+#: src/no-ingredients.inc:217
+msgid "no Red onion"
+msgstr "bez červené cibule"
+
+#: src/no-ingredients.inc:218
+#, fuzzy
+#| msgid "no Pepper"
+msgid "no Red Pepper"
+msgstr "bez pepře"
+
+#: src/no-ingredients.inc:219
+msgid "no Red wine"
+msgstr "bez červeného vína"
+
+#: src/no-ingredients.inc:220
 msgid "no Rice"
 msgstr "bez rýže"
 
-#: src/no-ingredients.inc:66
+#: src/no-ingredients.inc:221
+#, fuzzy
+#| msgid "no Rice"
+msgid "no Rice, cooked"
+msgstr "bez rýže"
+
+#: src/no-ingredients.inc:222
+msgid "no Rice vermicelli noodles"
+msgstr ""
+
+#: src/no-ingredients.inc:223
+msgid "no Rock sugar"
+msgstr "bez cukru krystal"
+
+#: src/no-ingredients.inc:224
+msgid "no Rolled oats"
+msgstr ""
+
+#: src/no-ingredients.inc:225
+msgid "no Rosemary"
+msgstr "bez rozmarýnu"
+
+#: src/no-ingredients.inc:226
+msgid "no Sachet levure"
+msgstr ""
+
+#: src/no-ingredients.inc:227
+msgid "no Saffron"
+msgstr "bez šafránu"
+
+#: src/no-ingredients.inc:228
+msgid "no Sage"
+msgstr "bez šalvěje"
+
+#: src/no-ingredients.inc:229
+msgid "no Salmon"
+msgstr "bez lososa"
+
+#: src/no-ingredients.inc:230
 msgid "no Salt"
 msgstr "bez soli"
 
-#: src/no-ingredients.inc:67
+#: src/no-ingredients.inc:231
+msgid "no Salt and pepper"
+msgstr "bez soli a pepře"
+
+#: src/no-ingredients.inc:232
+#, fuzzy
+#| msgid "no Soy sauce"
+msgid "no Saucebinder"
+msgstr "bez sójové omáčky"
+
+#: src/no-ingredients.inc:233
+msgid "no Scallions"
+msgstr "bez pórku"
+
+#: src/no-ingredients.inc:234
+msgid "no Sea salt"
+msgstr "bez mořské soli"
+
+#: src/no-ingredients.inc:235
+msgid "no Semi-skimmed milk"
+msgstr "bez polotučného mléka"
+
+#: src/no-ingredients.inc:236
+msgid "no Sesame oil"
+msgstr "bez sezamového oleje"
+
+#: src/no-ingredients.inc:237
+msgid "no Sesame seeds"
+msgstr "bez sezamových semínek"
+
+#: src/no-ingredients.inc:238
+msgid "no Shallots"
+msgstr "bez šalotky"
+
+#: src/no-ingredients.inc:239
+msgid "no Shrimps"
+msgstr ""
+
+#: src/no-ingredients.inc:240
+msgid "no Slivered almonds, toasted"
+msgstr ""
+
+#: src/no-ingredients.inc:241
+#, fuzzy
+#| msgid "no Cream"
+msgid "no Sour cream"
+msgstr "bez smetany"
+
+#: src/no-ingredients.inc:242
 msgid "no Soy sauce"
 msgstr "bez sójové omáčky"
 
-#: src/no-ingredients.inc:68
-msgid "no Strawberry"
-msgstr "bez jahod"
+#: src/no-ingredients.inc:243
+msgid "no Spinach"
+msgstr "bez špenátu"
 
-#: src/no-ingredients.inc:69
-msgid "no Sugar"
-msgstr "bez cukru"
+#: src/no-ingredients.inc:244
+msgid "no Spring onion"
+msgstr "bez jarní cibulky"
 
-#: src/no-ingredients.inc:70
-msgid "no Sunflower seeds"
-msgstr "bez slunečnicových semínek"
-
-#: src/no-ingredients.inc:71
+#: src/no-ingredients.inc:245
 msgid "no Squash"
 msgstr "bez dýně"
 
-#: src/no-ingredients.inc:72
+#: src/no-ingredients.inc:246
+msgid "no Star anise"
+msgstr "bez badyánu"
+
+#: src/no-ingredients.inc:247
+msgid "no Strawberry"
+msgstr "bez jahod"
+
+#: src/no-ingredients.inc:248
+msgid "no Sugar"
+msgstr "bez cukru"
+
+#: src/no-ingredients.inc:249
+msgid "no Sunflower seeds"
+msgstr "bez slunečnicových semínek"
+
+#: src/no-ingredients.inc:250
+#, fuzzy
+#| msgid "no Potato"
+msgid "no Sweet potatoes"
+msgstr "bez brambor"
+
+#: src/no-ingredients.inc:251
+#, fuzzy
+#| msgid "no Tangerine"
+msgid "no Tamarind paste"
+msgstr "bez mandarinek"
+
+#: src/no-ingredients.inc:252
 msgid "no Tangerine"
 msgstr "bez mandarinek"
 
-#: src/no-ingredients.inc:73
+#: src/no-ingredients.inc:253
+msgid "no Thai basil leaves"
+msgstr ""
+
+#: src/no-ingredients.inc:254
+msgid "no Thai chillies"
+msgstr ""
+
+#: src/no-ingredients.inc:255
+#, fuzzy
+#| msgid "no Pizza sauce"
+msgid "no Thai fish sauce"
+msgstr "bez omáčky na pizzu"
+
+#: src/no-ingredients.inc:256
+msgid "no Thyme"
+msgstr "bez tymiánu"
+
+#: src/no-ingredients.inc:257
+msgid "no Tinned pineapple rings"
+msgstr ""
+
+#: src/no-ingredients.inc:258
 msgid "no Tofu"
 msgstr "bez tofu"
 
-#: src/no-ingredients.inc:74
+#: src/no-ingredients.inc:259
 msgid "no Tomato"
 msgstr "bez rajčat"
 
-#: src/no-ingredients.inc:75
-msgid "no Turmeric, ground"
+#: src/no-ingredients.inc:260
+msgid "no Tomato paste"
+msgstr "bez rajčatového protlaku"
+
+#: src/no-ingredients.inc:261
+#, fuzzy
+#| msgid "no Tomato"
+msgid "no Tomato sauce"
+msgstr "bez rajčat"
+
+#: src/no-ingredients.inc:262
+msgid "no Tumeric ground"
 msgstr "bez kurkumy"
 
-#: src/no-ingredients.inc:76
-msgid "no Vanilla sugar"
-msgstr "bez vanilkového cukru"
+#: src/no-ingredients.inc:263
+msgid "no Tuna fish"
+msgstr "bez tuňáka"
 
-#: src/no-ingredients.inc:77
+#: src/no-ingredients.inc:264
+msgid "no Unsalted butter"
+msgstr "bez nesoleného másla"
+
+#: src/no-ingredients.inc:265
+msgid "no Vanilla baking powder"
+msgstr "bez vanilkového prášku do pečiva"
+
+#: src/no-ingredients.inc:266
+msgid "no Vanilla extract"
+msgstr "bez vanilkové tresti"
+
+#: src/no-ingredients.inc:267
+#, fuzzy
+#| msgid "no Vanilla pudding"
+msgid "no Vanilla powdered sugar, for dusting"
+msgstr "bez vanilkového pudingu"
+
+#: src/no-ingredients.inc:268
 msgid "no Vanilla pudding"
 msgstr "bez vanilkového pudingu"
 
-#: src/no-ingredients.inc:78
+#: src/no-ingredients.inc:269
+msgid "no Vanilla sugar"
+msgstr "bez vanilkového cukru"
+
+#: src/no-ingredients.inc:270
+msgid "no Vegetable oil"
+msgstr "bez rostlinného oleje"
+
+#: src/no-ingredients.inc:271
 msgid "no Vinegar"
 msgstr "bez octa"
 
-#: src/no-ingredients.inc:79
+#: src/no-ingredients.inc:272
 msgid "no Water"
 msgstr "bez vody"
 
-#: src/no-ingredients.inc:80
+#: src/no-ingredients.inc:273
+msgid "no Wheat flour"
+msgstr "bez pšeničné mouky"
+
+#: src/no-ingredients.inc:274
+msgid "no White fish"
+msgstr "bez bílé ryby"
+
+#: src/no-ingredients.inc:275
+msgid "no White onion"
+msgstr "bez bílé cibule"
+
+#: src/no-ingredients.inc:276
+msgid "no Whole chicken"
+msgstr "bez celého kuřete"
+
+#: src/no-ingredients.inc:277
 msgid "no Wine"
 msgstr "bez vína"
 
-#: src/no-ingredients.inc:81
+#: src/no-ingredients.inc:278
+msgid "no Worcestershire sauce"
+msgstr "be worcestrové omáčky"
+
+#: src/no-ingredients.inc:279
 msgid "no Yeast"
 msgstr "bez droždí"
 
-#: src/no-ingredients.inc:82
+#: src/no-ingredients.inc:280
+msgid "no Yellow bell pepper"
+msgstr "bez žluté kapie"
+
+#: src/no-ingredients.inc:281
 msgid "no Yoghurt"
 msgstr "bez jogurtu"
 
-#: src/no-ingredients.inc:83
+#: src/no-ingredients.inc:282
+msgid "no Zest of 1 lemon (organic)"
+msgstr "bez kůry z 1 citrónu (bio)"
+
+#: src/no-ingredients.inc:283
 msgid "no Zinfandel"
 msgstr "bez vína Zinfandel"
 
-#: src/no-ingredients.inc:84
+#: src/no-ingredients.inc:284
 msgid "no Zuccini"
 msgstr "bez cuket"
