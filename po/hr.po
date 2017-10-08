@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-24 14:14+0000\n"
-"PO-Revision-Date: 2017-08-27 22:26+0200\n"
+"POT-Creation-Date: 2017-10-02 14:52+0000\n"
+"PO-Revision-Date: 2017-10-08 20:05+0200\n"
 "Last-Translator: \n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.4\n"
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
@@ -119,27 +119,27 @@ msgstr "Pojedinačni recept"
 msgid "An individual cuisine"
 msgstr "Pojedinačna kuhinja"
 
-#: data/org.gnome.Recipes.gschema.xml:19
+#: data/org.gnome.Recipes.gschema.xml:25
 msgid "The user ID of the current user"
 msgstr "ID trenutnog korisnika"
 
-#: data/org.gnome.Recipes.gschema.xml:20
+#: data/org.gnome.Recipes.gschema.xml:26
 msgid "The user ID of the current user."
 msgstr "ID trenutnog korisnika."
 
-#: data/org.gnome.Recipes.gschema.xml:26
+#: data/org.gnome.Recipes.gschema.xml:32
 msgid "The number of times cooking mode has been presented"
 msgstr "Broj koliko je puta postupak kuhanja bio prezentiran"
 
-#: data/org.gnome.Recipes.gschema.xml:27
+#: data/org.gnome.Recipes.gschema.xml:33
 msgid "The number of times cooking mode has been presented."
 msgstr "Broj koliko je puta postupak kuhanja bio prezentiran."
 
-#: data/org.gnome.Recipes.gschema.xml:33
+#: data/org.gnome.Recipes.gschema.xml:39
 msgid "The timestamp of the last change to the favorites list"
 msgstr "Vrijeme posljednje promjene popisa omiljenih"
 
-#: data/org.gnome.Recipes.gschema.xml:34
+#: data/org.gnome.Recipes.gschema.xml:40
 msgid ""
 "The timestamp of the last time an item was added to or removed from the "
 "favorites list."
@@ -147,19 +147,19 @@ msgstr ""
 "Vrijeme posljednje promjene dodavanja ili uklanjanja stavke na popisu "
 "omiljenih recepata."
 
-#: data/org.gnome.Recipes.gschema.xml:41
+#: data/org.gnome.Recipes.gschema.xml:47
 msgid "The list of favorites"
 msgstr "Popis omiljenih recepata"
 
-#: data/org.gnome.Recipes.gschema.xml:42
+#: data/org.gnome.Recipes.gschema.xml:48
 msgid "The list of favorites. Each entry in the list is the ID of a recipe."
 msgstr "Popis omiljenih recepata. Svaka stavka na popisu je ID recepta."
 
-#: data/org.gnome.Recipes.gschema.xml:48
+#: data/org.gnome.Recipes.gschema.xml:54
 msgid "The timestamp of the last change to the shopping list"
 msgstr "Vrijeme posljednje promjene popisa za kupovinu"
 
-#: data/org.gnome.Recipes.gschema.xml:49
+#: data/org.gnome.Recipes.gschema.xml:55
 msgid ""
 "The timestamp of the last time an item was added to or removed from the "
 "shopping list."
@@ -167,40 +167,40 @@ msgstr ""
 "Vrijeme posljednje promjene dodavanja ili uklanjanja stavke na popisu za "
 "kupovinu."
 
-#: data/org.gnome.Recipes.gschema.xml:56
+#: data/org.gnome.Recipes.gschema.xml:62
 msgid "The shopping list"
 msgstr "Popis za kupovinu"
 
-#: data/org.gnome.Recipes.gschema.xml:57
+#: data/org.gnome.Recipes.gschema.xml:63
 msgid ""
 "The shopping list. Each entry in the dictionary maps the ID of a recipe to a "
 "serving count."
 msgstr ""
 "Popis za kupovinu. Svaka stavka u rječniku mapira ID recepta na broj porcija."
 
-#: data/org.gnome.Recipes.gschema.xml:64
+#: data/org.gnome.Recipes.gschema.xml:70
 msgid "Ingredients that were removed from the shopping list"
 msgstr "Sastojci koji su uklonjeni iz popisa za kupovinu"
 
-#: data/org.gnome.Recipes.gschema.xml:65
+#: data/org.gnome.Recipes.gschema.xml:71
 msgid "The names of ingredients that were removed from the shopping list."
 msgstr "Nazivi sastojaka koji su uklonjeni iz popisa za kupovinu."
 
-#: data/org.gnome.Recipes.gschema.xml:71
+#: data/org.gnome.Recipes.gschema.xml:77
 msgid "The list of recipes to be exported"
 msgstr "Popis recepata za izvoz"
 
-#: data/org.gnome.Recipes.gschema.xml:72
+#: data/org.gnome.Recipes.gschema.xml:78
 msgid ""
 "The list of recipes to be exported. Each entry in the list is the ID of a "
 "recipe."
 msgstr "Popis recepata za izvoz. Svaka stavka na popisu je ID recepta."
 
-#: data/org.gnome.Recipes.gschema.xml:78
+#: data/org.gnome.Recipes.gschema.xml:84
 msgid "The setting for which unit temperatures should be displayed in."
 msgstr "Postavka za prikaz temperature."
 
-#: data/org.gnome.Recipes.gschema.xml:79
+#: data/org.gnome.Recipes.gschema.xml:85
 msgid ""
 "The setting for which unit temperatures should be displayed in. Default is "
 "'locale', which means to use the LC_MEASUREMENT category of the current "
@@ -209,24 +209,44 @@ msgstr ""
 "Postavka za prikaz temperature. Zadano je 'locale', što znači da se koristi "
 "LC_MEASUREMENT kategorija trenutne lokalizacije."
 
-#: data/org.gnome.Recipes.gschema.xml:86
+#: data/org.gnome.Recipes.gschema.xml:92
 msgid "By which key to sort lists."
 msgstr "Prema kojem svojstvu razvrstati popis."
 
-#: data/org.gnome.Recipes.gschema.xml:87
+#: data/org.gnome.Recipes.gschema.xml:93
 msgid "The setting determines which key is used to sort lists of recipes by."
 msgstr "Postavka određuje prema kojemu svojstvu će se razvrstati recepti."
 
-#: data/org.gnome.Recipes.gschema.xml:93
+#: data/org.gnome.Recipes.gschema.xml:99
 msgid "Whether the surprise dialog should be shown."
 msgstr "Treba li prikazati dijalog iznenađenja."
 
-#: data/org.gnome.Recipes.gschema.xml:94
+#: data/org.gnome.Recipes.gschema.xml:100
 msgid ""
 "The setting determines whether the surprise dialog should be shown on "
 "startup."
 msgstr ""
 "Postavka određuje treba li se dijalog iznenađenja prikazati pri pokretanju."
+
+#: data/org.gnome.Recipes.gschema.xml:106
+msgid "The setting for which unit volumes should be displayed in."
+msgstr "Postavka za prikaz jedinice volumena."
+
+#: data/org.gnome.Recipes.gschema.xml:107
+msgid ""
+"The setting for which unit volumes should be displayed in. Default is "
+"'locale',"
+msgstr "Postavka za prikaz jedinice volumena. Zadano je 'locale',"
+
+#: data/org.gnome.Recipes.gschema.xml:113
+msgid "The setting for which unit weights should be displayed in."
+msgstr "Postavka za prikaz jedinice težine."
+
+#: data/org.gnome.Recipes.gschema.xml:114
+msgid ""
+"The setting for which unit weights should be displayed in. Default is "
+"'locale',"
+msgstr "Postavka za prikaz jedinice težine. Zadano je 'locale',"
 
 #: src/chef-conflict-dialog.ui:10
 msgid "Same Chef"
@@ -439,7 +459,7 @@ msgid "Note"
 msgstr "Napomena"
 
 #: src/gr-details-page.ui:429 src/gr-recipe-formatter.c:123
-#: src/gr-recipe-printer.c:298
+#: src/gr-recipe-printer.c:302
 msgid "Directions"
 msgstr "Postupak kuhanja"
 
@@ -660,7 +680,7 @@ msgstr "Primjeri: 1 kg, 2 1/2 kilograma, 250 ml, 6"
 
 #: src/gr-ingredients-viewer.ui:13 src/gr-query-editor.ui:235
 #: src/gr-edit-page.c:1509 src/gr-recipe-formatter.c:104
-#: src/gr-recipe-printer.c:249
+#: src/gr-recipe-printer.c:253
 msgid "Ingredients"
 msgstr "Sastojci"
 
@@ -895,7 +915,7 @@ msgstr "Pomoć _recepata"
 
 #: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:163
 #: src/gr-image-viewer.c:627 src/gr-recipe-exporter.c:172
-#: src/gr-shopping-page.c:730 src/gr-window.c:1162
+#: src/gr-shopping-page.c:751 src/gr-window.c:1162
 msgid "Cancel"
 msgstr "Odustani"
 
@@ -1743,7 +1763,7 @@ msgstr "Nemoguća obrada %s kao broj"
 msgid "Save the exported recipe"
 msgstr "Spremi izvezeni recept"
 
-#: src/gr-recipe-exporter.c:171 src/gr-shopping-page.c:729
+#: src/gr-recipe-exporter.c:171 src/gr-shopping-page.c:750
 msgid "Save"
 msgstr "Spremi"
 
@@ -1813,19 +1833,19 @@ msgstr ""
 "u GNOME Recepte. Trebali bi samo doprinositi\n"
 "svojim vlastitim receptima."
 
-#: src/gr-recipe-formatter.c:88 src/gr-recipe-printer.c:163
+#: src/gr-recipe-formatter.c:88 src/gr-recipe-printer.c:164
 msgid "Author:"
 msgstr "Autor:"
 
-#: src/gr-recipe-formatter.c:89 src/gr-recipe-printer.c:164
+#: src/gr-recipe-formatter.c:89 src/gr-recipe-printer.c:165
 msgid "Preparation:"
 msgstr "Pripreme:"
 
-#: src/gr-recipe-formatter.c:90 src/gr-recipe-printer.c:165
+#: src/gr-recipe-formatter.c:90 src/gr-recipe-printer.c:166
 msgid "Cooking:"
 msgstr "Kuhanje:"
 
-#: src/gr-recipe-formatter.c:93 src/gr-recipe-printer.c:167
+#: src/gr-recipe-formatter.c:93 src/gr-recipe-printer.c:168
 msgid "Yield:"
 msgstr "Količina:"
 
@@ -1858,27 +1878,27 @@ msgstr "Nema pronađenih informacija o kuharu"
 msgid "This build does not support importing"
 msgstr "Ova izgradnja ne podržava uvoz"
 
-#: src/gr-recipe-printer.c:172
+#: src/gr-recipe-printer.c:173
 msgid "Cuisine:"
 msgstr "Kuhinja:"
 
-#: src/gr-recipe-printer.c:176
+#: src/gr-recipe-printer.c:177
 msgid "Meal:"
 msgstr "Obrok:"
 
-#: src/gr-recipe-printer.c:180
+#: src/gr-recipe-printer.c:181
 msgid "Season:"
 msgstr "Sezona:"
 
-#: src/gr-recipe-printer.c:225
+#: src/gr-recipe-printer.c:229
 msgid "Notes"
 msgstr "Napomene"
 
-#: src/gr-recipe-printer.c:468 src/gr-shopping-list-printer.c:297
+#: src/gr-recipe-printer.c:472 src/gr-shopping-list-printer.c:297
 msgid "Error printing file:"
 msgstr "Greška ispisa datoteke:"
 
-#: src/gr-recipe-printer.c:469 src/gr-shopping-list-printer.c:298
+#: src/gr-recipe-printer.c:473 src/gr-shopping-list-printer.c:298
 msgid "No details"
 msgstr "Nema pojedinosti"
 
@@ -1997,7 +2017,7 @@ msgid "Winter"
 msgstr "Zima"
 
 #: src/gr-shopping-list-formatter.c:42 src/gr-shopping-list-printer.c:135
-#: src/gr-shopping-page.c:755
+#: src/gr-shopping-page.c:776
 msgid "Shopping List"
 msgstr "Popis za kupovinu"
 
@@ -2013,7 +2033,7 @@ msgstr "Za sljedeće recepte"
 msgid "Items"
 msgstr "Stavke"
 
-#: src/gr-shopping-page.c:100
+#: src/gr-shopping-page.c:101
 #, c-format
 msgid "%d ingredient marked for purchase"
 msgid_plural "%d ingredients marked for purchase"
@@ -2021,7 +2041,7 @@ msgstr[0] "%d sastojak je označen za kupovinu"
 msgstr[1] "%d sastojka su označena za kupovinu"
 msgstr[2] "%d sastojaka je označeno za kupovinu"
 
-#: src/gr-shopping-page.c:119
+#: src/gr-shopping-page.c:120
 #, c-format
 msgid "Buy Ingredients (%d recipe)"
 msgid_plural "Buy Ingredients (%d recipes)"
@@ -2029,7 +2049,7 @@ msgstr[0] "Kupite sastojke (%d recept)"
 msgstr[1] "Kupite sastojke (%d recepta)"
 msgstr[2] "Kupite sastojke (%d recepta)"
 
-#: src/gr-shopping-page.c:124
+#: src/gr-shopping-page.c:125
 #, c-format
 msgid "%d Recipe marked for preparation"
 msgid_plural "%d Recipes marked for preparation"
@@ -2037,7 +2057,7 @@ msgstr[0] "%d recept je označen za pripremu"
 msgstr[1] "%d recepta su označena za pripremu"
 msgstr[2] "%d recepta je označeno za pripremu"
 
-#: src/gr-shopping-page.c:726
+#: src/gr-shopping-page.c:747
 msgid "Save the shopping list"
 msgstr "Spremi popis za kupovinu"
 
@@ -2057,352 +2077,352 @@ msgstr "Jače začinjeno"
 msgid "Hot or very spicy"
 msgstr "Jače ili vrlo začinjeno"
 
-#: src/gr-unit.c:43
+#: src/gr-unit.c:44
 msgctxt "unit abbreviation"
 msgid "g"
 msgstr "g"
 
-#: src/gr-unit.c:43
+#: src/gr-unit.c:44
 msgctxt "unit name"
 msgid "gram"
 msgstr "gram"
 
-#: src/gr-unit.c:43
+#: src/gr-unit.c:44
 msgctxt "unit plural"
 msgid "grams"
 msgstr "grama"
 
-#: src/gr-unit.c:44
+#: src/gr-unit.c:45
 msgctxt "unit abbreviation"
 msgid "kg"
 msgstr "kg"
 
-#: src/gr-unit.c:44
+#: src/gr-unit.c:45
 msgctxt "unit name"
 msgid "kilogram"
 msgstr "kilogram"
 
-#: src/gr-unit.c:44
+#: src/gr-unit.c:45
 msgctxt "unit plural"
 msgid "kilograms"
 msgstr "kilograma"
 
-#: src/gr-unit.c:45
+#: src/gr-unit.c:46
 msgctxt "unit abbreviation"
 msgid "lb"
 msgstr "lb"
 
-#: src/gr-unit.c:45
+#: src/gr-unit.c:46
 msgctxt "unit name"
 msgid "pound"
 msgstr "funta"
 
-#: src/gr-unit.c:45
+#: src/gr-unit.c:46
 msgctxt "unit plural"
 msgid "pounds"
 msgstr "funta"
 
-#: src/gr-unit.c:46
+#: src/gr-unit.c:47
 msgctxt "unit abbreviation"
 msgid "oz"
 msgstr "oz"
 
-#: src/gr-unit.c:46
+#: src/gr-unit.c:47
 msgctxt "unit name"
 msgid "ounce"
 msgstr "unca"
 
-#: src/gr-unit.c:46
+#: src/gr-unit.c:47
 msgctxt "unit plural"
 msgid "ounces"
 msgstr "unca"
 
-#: src/gr-unit.c:47
+#: src/gr-unit.c:48
 msgctxt "unit abbreviation"
 msgid "l"
 msgstr "l"
 
-#: src/gr-unit.c:47
+#: src/gr-unit.c:48
 msgctxt "unit name"
 msgid "liter"
 msgstr "litra"
 
-#: src/gr-unit.c:47
+#: src/gr-unit.c:48
 msgctxt "unit plural"
 msgid "liters"
 msgstr "litra"
 
-#: src/gr-unit.c:48
+#: src/gr-unit.c:49
 msgctxt "unit abbreviation"
 msgid "dl"
 msgstr "dl"
 
-#: src/gr-unit.c:48
+#: src/gr-unit.c:49
 msgctxt "unit name"
 msgid "deciliter"
 msgstr "decilitar"
 
-#: src/gr-unit.c:48
+#: src/gr-unit.c:49
 msgctxt "unit plural"
 msgid "deciliters"
 msgstr "decilitara"
 
-#: src/gr-unit.c:49
+#: src/gr-unit.c:50
 msgctxt "unit abbreviation"
 msgid "ml"
 msgstr "ml"
 
-#: src/gr-unit.c:49
+#: src/gr-unit.c:50
 msgctxt "unit name"
 msgid "milliliter"
 msgstr "millilitra"
 
-#: src/gr-unit.c:49
+#: src/gr-unit.c:50
 msgctxt "unit plural"
 msgid "milliliters"
 msgstr "millilitara"
 
-#: src/gr-unit.c:50 src/gr-unit.c:51
+#: src/gr-unit.c:51 src/gr-unit.c:52
 msgctxt "unit abbreviation"
 msgid "fl oz"
 msgstr "tekući oz"
 
-#: src/gr-unit.c:50 src/gr-unit.c:51
+#: src/gr-unit.c:51 src/gr-unit.c:52
 msgctxt "unit name"
 msgid "fluid ounce"
 msgstr "tekuća unca"
 
-#: src/gr-unit.c:50 src/gr-unit.c:51
+#: src/gr-unit.c:51 src/gr-unit.c:52
 msgctxt "unit plural"
 msgid "fluid ounces"
 msgstr "tekuća unca"
 
-#: src/gr-unit.c:52
+#: src/gr-unit.c:53
 msgctxt "unit abbreviation"
 msgid "pt"
 msgstr "pt"
 
-#: src/gr-unit.c:52
+#: src/gr-unit.c:53
 msgctxt "unit name"
 msgid "pint"
 msgstr "pinta"
 
-#: src/gr-unit.c:52
+#: src/gr-unit.c:53
 msgctxt "unit plural"
 msgid "pints"
 msgstr "pinta"
 
-#: src/gr-unit.c:53
+#: src/gr-unit.c:54
 msgctxt "unit abbreviation"
 msgid "qt"
 msgstr ""
 
-#: src/gr-unit.c:53
+#: src/gr-unit.c:54
 msgctxt "unit name"
 msgid "quart"
 msgstr ""
 
-#: src/gr-unit.c:53
+#: src/gr-unit.c:54
 msgctxt "unit plural"
 msgid "quarts"
 msgstr ""
 
-#: src/gr-unit.c:54
+#: src/gr-unit.c:55
 msgctxt "unit abbreviation"
 msgid "gal"
 msgstr "gal"
 
-#: src/gr-unit.c:54
+#: src/gr-unit.c:55
 msgctxt "unit name"
 msgid "gallon"
 msgstr "galon"
 
-#: src/gr-unit.c:54
+#: src/gr-unit.c:55
 msgctxt "unit plural"
 msgid "gallons"
 msgstr "galona"
 
-#: src/gr-unit.c:55
+#: src/gr-unit.c:56
 msgctxt "unit abbreviation"
 msgid "cup"
 msgstr "šalica"
 
-#: src/gr-unit.c:55
+#: src/gr-unit.c:56
 msgctxt "unit name"
 msgid "cup"
 msgstr "šalica"
 
-#: src/gr-unit.c:55
+#: src/gr-unit.c:56
 msgctxt "unit plural"
 msgid "cups"
 msgstr "šalica"
 
-#: src/gr-unit.c:56
+#: src/gr-unit.c:57
 msgctxt "unit abbreviation"
 msgid "tbsp"
 msgstr "žlica"
 
-#: src/gr-unit.c:56
+#: src/gr-unit.c:57
 msgctxt "unit name"
 msgid "tablespoon"
 msgstr "žlica"
 
-#: src/gr-unit.c:56
+#: src/gr-unit.c:57
 msgctxt "unit plural"
 msgid "tablespoons"
 msgstr "žlica"
 
-#: src/gr-unit.c:57
+#: src/gr-unit.c:58
 msgctxt "unit abbreviation"
 msgid "tsp"
 msgstr "žličica"
 
-#: src/gr-unit.c:57
+#: src/gr-unit.c:58
 msgctxt "unit name"
 msgid "teaspoon"
 msgstr "žličica"
 
-#: src/gr-unit.c:57
+#: src/gr-unit.c:58
 msgctxt "unit plural"
 msgid "teaspoons"
 msgstr "žličica"
 
-#: src/gr-unit.c:58
+#: src/gr-unit.c:59
 msgctxt "unit abbreviation"
 msgid "box"
 msgstr "kutija"
 
-#: src/gr-unit.c:58
+#: src/gr-unit.c:59
 msgctxt "unit name"
 msgid "box"
 msgstr "kutija"
 
-#: src/gr-unit.c:58
+#: src/gr-unit.c:59
 msgctxt "unit plural"
 msgid "boxes"
 msgstr "kutija"
 
-#: src/gr-unit.c:59
+#: src/gr-unit.c:60
 msgctxt "unit abbreviation"
 msgid "pkg"
 msgstr "paket"
 
-#: src/gr-unit.c:59
+#: src/gr-unit.c:60
 msgctxt "unit name"
 msgid "package"
 msgstr "paketa"
 
-#: src/gr-unit.c:59
+#: src/gr-unit.c:60
 msgctxt "unit plural"
 msgid "packages"
 msgstr "paketa"
 
-#: src/gr-unit.c:60
+#: src/gr-unit.c:61
 msgctxt "unit abbreviation"
 msgid "glass"
 msgstr "čaša"
 
-#: src/gr-unit.c:60
+#: src/gr-unit.c:61
 msgctxt "unit name"
 msgid "glass"
 msgstr "čaša"
 
-#: src/gr-unit.c:60
+#: src/gr-unit.c:61
 msgctxt "unit plural"
 msgid "glasses"
 msgstr "čaša"
 
-#: src/gr-unit.c:61
+#: src/gr-unit.c:62
 msgctxt "unit abbreviation"
 msgid "mm"
 msgstr "mm"
 
-#: src/gr-unit.c:61
+#: src/gr-unit.c:62
 msgctxt "unit name"
 msgid "millimeter"
 msgstr "millimetar"
 
-#: src/gr-unit.c:61
+#: src/gr-unit.c:62
 msgctxt "unit plural"
 msgid "millimeters"
 msgstr "millimetara"
 
-#: src/gr-unit.c:62
+#: src/gr-unit.c:63
 msgctxt "unit abbreviation"
 msgid "cm"
 msgstr "cm"
 
-#: src/gr-unit.c:62
+#: src/gr-unit.c:63
 msgctxt "unit name"
 msgid "centimeter"
 msgstr "centimetar"
 
-#: src/gr-unit.c:62
+#: src/gr-unit.c:63
 msgctxt "unit plural"
 msgid "centimeters"
 msgstr "centimetara"
 
-#: src/gr-unit.c:63
+#: src/gr-unit.c:64
 msgctxt "unit abbreviation"
 msgid "m"
 msgstr "m"
 
-#: src/gr-unit.c:63
+#: src/gr-unit.c:64
 msgctxt "unit name"
 msgid "meter"
 msgstr "metar"
 
-#: src/gr-unit.c:63
+#: src/gr-unit.c:64
 msgctxt "unit plural"
 msgid "meters"
 msgstr "metara"
 
-#: src/gr-unit.c:64
+#: src/gr-unit.c:65
 msgctxt "unit abbreviation"
 msgid "st"
 msgstr ""
 
-#: src/gr-unit.c:64
+#: src/gr-unit.c:65
 msgctxt "unit name"
 msgid "stone"
 msgstr ""
 
-#: src/gr-unit.c:64
+#: src/gr-unit.c:65
 msgctxt "unit plural"
 msgid "stone"
 msgstr ""
 
-#: src/gr-unit.c:65
+#: src/gr-unit.c:66
 msgctxt "unit abbreviation"
 msgid "pinch"
 msgstr "prstohvat"
 
-#: src/gr-unit.c:65
+#: src/gr-unit.c:66
 msgctxt "unit name"
 msgid "pinch"
 msgstr "prstohvat"
 
-#: src/gr-unit.c:65
+#: src/gr-unit.c:66
 msgctxt "unit plural"
 msgid "pinches"
 msgstr "prstohvata"
 
-#: src/gr-unit.c:66
+#: src/gr-unit.c:67
 msgctxt "unit abbreviation"
 msgid "bunch"
 msgstr "mnogo"
 
-#: src/gr-unit.c:66
+#: src/gr-unit.c:67
 msgctxt "unit name"
 msgid "bunch"
 msgstr "mnogo"
 
-#: src/gr-unit.c:66
+#: src/gr-unit.c:67
 msgctxt "unit plural"
 msgid "bunches"
 msgstr "mnogo"
 
-#: src/gr-unit.c:164
+#: src/gr-unit.c:165
 #, c-format
 msgid "I don’t know this unit: %s"
 msgstr "Ne poznajem ovu jedinicu: %s"
@@ -2602,322 +2622,1193 @@ msgid "Apple"
 msgstr "Jabuka"
 
 #: src/ingredients.inc:5
+msgid "Apple Vinegar"
+msgstr "Jabučni ocat"
+
+#: src/ingredients.inc:6
 msgid "Apricot"
 msgstr "Marelica"
 
-#: src/ingredients.inc:6
+#: src/ingredients.inc:7
 msgid "Artichoke"
 msgstr "Artičoka"
 
-#: src/ingredients.inc:7
+#: src/ingredients.inc:8
 msgid "Asparagus"
 msgstr "Šparoga"
 
-#: src/ingredients.inc:8
+#: src/ingredients.inc:9
 msgid "Aubergine"
 msgstr "Plavi patlidžan"
 
-#: src/ingredients.inc:9
+#: src/ingredients.inc:10
+msgid "Baby Spinach"
+msgstr "Mladi špinat"
+
+#: src/ingredients.inc:11
 msgid "Bacon"
 msgstr "Slanina"
 
-#: src/ingredients.inc:10
+#: src/ingredients.inc:12
 msgid "Bagel"
 msgstr "Pecivo"
 
-#: src/ingredients.inc:11
+#: src/ingredients.inc:13
 msgid "Baked beans"
 msgstr "Zapečeni grah"
 
-#: src/ingredients.inc:12
+#: src/ingredients.inc:14
 msgid "Baking powder"
 msgstr "Prašak za pecivo"
 
-#: src/ingredients.inc:13
+#: src/ingredients.inc:15
 msgid "Banana"
 msgstr "Banana"
 
-#: src/ingredients.inc:14
+#: src/ingredients.inc:16
 msgid "Basil"
 msgstr "Bosiljak"
 
-#: src/ingredients.inc:15
+#: src/ingredients.inc:17
 msgid "Basmati rice"
 msgstr "Basmati riža"
 
-#: src/ingredients.inc:16
+#: src/ingredients.inc:18
 msgid "Bay leaf"
 msgstr "Lišajni list"
 
-#: src/ingredients.inc:17
+#: src/ingredients.inc:19
 msgid "Beans"
 msgstr "Grah"
 
-#: src/ingredients.inc:18
+#: src/ingredients.inc:20
+msgid "Bean sprouts"
+msgstr "Klice graha"
+
+#: src/ingredients.inc:21
+msgid "Beef"
+msgstr "Govedina"
+
+#: src/ingredients.inc:22
 msgid "Beef mince"
 msgstr "Mljevena govedina"
 
-#: src/ingredients.inc:19
+#: src/ingredients.inc:23
 msgid "Beef sausage"
 msgstr "Goveđa kobasica"
 
-#: src/ingredients.inc:20
+#: src/ingredients.inc:24
+msgid "Beef (sirloin)"
+msgstr "Goveđa (pečenica)"
+
+#: src/ingredients.inc:25
 msgid "Beef stock"
 msgstr "Goveđi temeljac"
 
-#: src/ingredients.inc:21
+#: src/ingredients.inc:26
 msgid "Beetroot"
 msgstr "Cikla"
 
-#: src/ingredients.inc:22
+#: src/ingredients.inc:27
 msgid "Bell pepper"
 msgstr "Paprika babura"
 
-#: src/ingredients.inc:23
+#: src/ingredients.inc:28
+msgid "Bell Pepper (green)"
+msgstr "Paprika babura (zelena)"
+
+#: src/ingredients.inc:29
 msgid "Berry"
 msgstr "Bobica"
 
-#: src/ingredients.inc:24
-msgid "Biscotti"
-msgstr "Biskvit"
-
-#: src/ingredients.inc:25
+#: src/ingredients.inc:30
 msgid "Bilberry"
 msgstr "Borovnica"
 
-#: src/ingredients.inc:26
+#: src/ingredients.inc:31
+msgid "Biscotti"
+msgstr "Biskvit"
+
+#: src/ingredients.inc:32
+msgid "Black cardamom pod"
+msgstr "Crni kardamom pod"
+
+#: src/ingredients.inc:33
+msgid "Black peppercorns"
+msgstr "Crni papar"
+
+#: src/ingredients.inc:34
+msgid "Blueberry"
+msgstr "Borovnica"
+
+#: src/ingredients.inc:35
+msgid "Bourbon whiskey"
+msgstr "Bourbonski viski"
+
+#: src/ingredients.inc:36
 msgid "Breadcrumbs"
 msgstr "Krušne mrvice"
 
-#: src/ingredients.inc:27
+#: src/ingredients.inc:37
+msgid "Brewer's yeast"
+msgstr "Pivski kvasac"
+
+#: src/ingredients.inc:38
+msgid "Broad beans"
+msgstr "Bob"
+
+#: src/ingredients.inc:39
+msgid "Broth"
+msgstr "Temeljac"
+
+#: src/ingredients.inc:40
+#, fuzzy
+#| msgid "no Sugar"
+msgid "Brown sugar"
+msgstr "nema šećera"
+
+#: src/ingredients.inc:41
 msgid "Butter"
 msgstr "Maslac"
 
-#: src/ingredients.inc:28
+#: src/ingredients.inc:42
+msgid "Butter, melted"
+msgstr "Maslac, rastopljen"
+
+#: src/ingredients.inc:43
+msgid "Button mushroom"
+msgstr "Šampinjoni"
+
+#: src/ingredients.inc:44
+msgid "Cabbage"
+msgstr "Kupus"
+
+#: src/ingredients.inc:45
+msgid "Cake flour"
+msgstr "Brašno za kolače"
+
+#: src/ingredients.inc:46
+msgid "Canellini beans"
+msgstr "Bijeli grah"
+
+#: src/ingredients.inc:47
+msgid "Canned black beans, rinsed"
+msgstr "Crni grah konzerviran, ispran"
+
+#: src/ingredients.inc:48
+msgid "Canned chopped tomatoes"
+msgstr "Konzervirana sjeckana rajčica"
+
+#: src/ingredients.inc:49
 msgid "Carrot"
 msgstr "Mrkva"
 
-#: src/ingredients.inc:29
+#: src/ingredients.inc:50
+msgid "Cashews, lightly toasted"
+msgstr "Indijski oraščić, lagano pržen"
+
+#: src/ingredients.inc:51
+msgid "Caster sugar"
+msgstr "Šećer u prahu"
+
+#: src/ingredients.inc:52
+msgid "celery"
+msgstr "celer"
+
+#: src/ingredients.inc:53
+msgid "Celey"
+msgstr ""
+
+#: src/ingredients.inc:54
+msgid "Champignons"
+msgstr "Šampinjoni"
+
+#: src/ingredients.inc:55
 msgid "Cheese"
 msgstr "Sir"
 
-#: src/ingredients.inc:30
+#: src/ingredients.inc:56
+msgid "Cheese slices"
+msgstr "Šnite sira"
+
+#: src/ingredients.inc:57
 msgid "Cherries, pitted"
 msgstr "Trešnje, bez koštica"
 
-#: src/ingredients.inc:31
+#: src/ingredients.inc:58
+msgid "cherry tomatoes, halved"
+msgstr "cherry rajčica, prepolovljena"
+
+#: src/ingredients.inc:59
+msgid "Chia seeds"
+msgstr "Čija sjemenke"
+
+#: src/ingredients.inc:60
+msgid "Chicken breasts, large"
+msgstr "Pileća prsa, velika"
+
+#: src/ingredients.inc:61
+msgid "Chicken livers"
+msgstr "Pileća jetra"
+
+#: src/ingredients.inc:62
+#, fuzzy
+#| msgid "Beef stock"
+msgid "chicken stock"
+msgstr "Goveđi temeljac"
+
+#: src/ingredients.inc:63
+msgid "Chili flakes"
+msgstr "Usitnjeni čili"
+
+#: src/ingredients.inc:64
+msgid "Chili powder"
+msgstr "Čili u prahu"
+
+#: src/ingredients.inc:65
+msgid "chili sauce (e.g. sriracha)"
+msgstr "umak od čilija (npr. sriracha)"
+
+#: src/ingredients.inc:66
+msgid "Chocolate"
+msgstr "Čokolada"
+
+#: src/ingredients.inc:67
 msgid "Chocolate frosting"
 msgstr "Čokoladna glazura"
 
-#: src/ingredients.inc:32
+#: src/ingredients.inc:68
+msgid "Chorizo"
+msgstr "Chorizo"
+
+#: src/ingredients.inc:69
+msgid "Ciboulette"
+msgstr "Vlasac"
+
+#: src/ingredients.inc:70
 msgid "Cilantro"
 msgstr "Korijandar"
 
-#: src/ingredients.inc:33
+#: src/ingredients.inc:71
+#, fuzzy
+#| msgid "Cilantro"
+msgid "cilantro leaves"
+msgstr "Korijandar"
+
+#: src/ingredients.inc:72
+msgid "Cinnamon"
+msgstr "Cimet"
+
+#: src/ingredients.inc:73
+msgid "Cinnamon sticks"
+msgstr "Štapići cimeta"
+
+#: src/ingredients.inc:74
+msgid "Cloves"
+msgstr "Klinčić"
+
+#: src/ingredients.inc:75
+msgid "Cocoa butter"
+msgstr "Kakao maslac"
+
+#: src/ingredients.inc:76
 msgid "Cocoa powder"
 msgstr "Kakao u prahu"
 
-#: src/ingredients.inc:34
+#: src/ingredients.inc:77
+msgid "Coconut milk"
+msgstr "Kokosovo mlijeko"
+
+#: src/ingredients.inc:78
+msgid "Coconut oil"
+msgstr "Kokosovo ulje"
+
+#: src/ingredients.inc:79
+msgid "Coconut water"
+msgstr "Kokosova voda"
+
+#: src/ingredients.inc:80
+msgid "cold water"
+msgstr "hladna voda"
+
+#: src/ingredients.inc:81
+msgid "cooked beef"
+msgstr "kuhana govedina"
+
+#: src/ingredients.inc:82
+msgid "Coriander"
+msgstr "Korijandar"
+
+#: src/ingredients.inc:83
+msgid "coriandre seeds"
+msgstr "sjemenke korijandera"
+
+#: src/ingredients.inc:84
 msgid "Couscous"
 msgstr "Kuskus"
 
-#: src/ingredients.inc:35
+#: src/ingredients.inc:85
+msgid "Cracked pepper"
+msgstr "Mljeveni papar"
+
+#: src/ingredients.inc:86
 msgid "Cream"
 msgstr "Krema"
 
-#: src/ingredients.inc:36
+#: src/ingredients.inc:87
+msgid "Cream cheese"
+msgstr "Kremasti sir"
+
+#: src/ingredients.inc:88
+msgid "Crushed red peper flakes"
+msgstr "Usitnjena crvena paprika"
+
+#: src/ingredients.inc:89
+msgid "Cucumber"
+msgstr "Krastavac"
+
+#: src/ingredients.inc:90
+msgid "Cucumber (large)"
+msgstr "Krastavac (veliki)"
+
+#: src/ingredients.inc:91
+msgid "Cumin"
+msgstr "Kumin"
+
+#: src/ingredients.inc:92
+msgid "Cumin seeds"
+msgstr "Sjemenke kumina"
+
+#: src/ingredients.inc:93
+msgid "Dark Jamaican rum"
+msgstr "Tamni jamajčanski rum"
+
+#: src/ingredients.inc:94
 msgid "Date"
 msgstr "Datulja"
 
-#: src/ingredients.inc:37
+#: src/ingredients.inc:95
+msgid "Dill"
+msgstr "Kopar"
+
+#: src/ingredients.inc:96
+#, fuzzy
+#| msgid "no Cream"
+msgid "Double cream"
+msgstr "nema kreme"
+
+#: src/ingredients.inc:97
+msgid "Dried anchovies"
+msgstr "Osušeni inčuni"
+
+#: src/ingredients.inc:98
+msgid "Dried chillies"
+msgstr "Osušene čili papričice"
+
+#: src/ingredients.inc:99
+msgid "Dry or fresh cilantro"
+msgstr "Suhi ili svježi korijandar"
+
+#: src/ingredients.inc:100
+msgid "Dry yeast"
+msgstr "Suhi kvasac"
+
+#: src/ingredients.inc:101
+msgid "Durum wheat semolina"
+msgstr "Durum pšenična krupica"
+
+#: src/ingredients.inc:102
+msgid "Earth Balance vegan buttery stick"
+msgstr ""
+
+#: src/ingredients.inc:103
 msgid "Egg"
 msgstr "Jaje"
 
-#: src/ingredients.inc:38
+#: src/ingredients.inc:104
+msgid "Egg yolks"
+msgstr "Žumanjci"
+
+#: src/ingredients.inc:105
+msgid "Fenugreek seeds"
+msgstr "Pšenično sjeme"
+
+#: src/ingredients.inc:106
 msgid "Fig"
 msgstr "Smokva"
 
-#: src/ingredients.inc:39
+#: src/ingredients.inc:107
+msgid "Finely chopped cilantro"
+msgstr "Sitno sjeckani korijandar"
+
+#: src/ingredients.inc:108
+msgid "Finely chopped onions"
+msgstr "Sitno sjeckani luk"
+
+#: src/ingredients.inc:109
+msgid "Finely chopped thai chillies or green chillis"
+msgstr "Sitno sjeckani tajlandski čili ili zeleni čili"
+
+#: src/ingredients.inc:110
+msgid "Finely chopped tomato"
+msgstr "Sitno sjeckana rajčica"
+
+#: src/ingredients.inc:111
 msgid "Fish"
 msgstr "Riba"
 
-#: src/ingredients.inc:40
+#: src/ingredients.inc:112
+msgid "Fish sauce"
+msgstr "Riblji umak"
+
+#: src/ingredients.inc:113
 msgid "Flour"
 msgstr "Brašno"
 
-#: src/ingredients.inc:41
+#: src/ingredients.inc:114
+msgid "Flour (all-purpose)"
+msgstr "Višenamjensko brašno"
+
+#: src/ingredients.inc:115
+msgid "Flour (Tipo 00)"
+msgstr "Brašno (Tip 00)"
+
+#: src/ingredients.inc:116
+msgid "Fresh rosemary"
+msgstr "Svježi ružmarin"
+
+#: src/ingredients.inc:117
+msgid "Fresh tagliatelle"
+msgstr "Svježi rezanci"
+
+#: src/ingredients.inc:118
+msgid "Garam masala"
+msgstr "Garam masala"
+
+#: src/ingredients.inc:119
 msgid "Garlic"
 msgstr "Češnjak"
 
-#: src/ingredients.inc:42
+#: src/ingredients.inc:120
+msgid "Garlic cloves"
+msgstr "Češnja češnjaka"
+
+#: src/ingredients.inc:121
+msgid "Garlic powder"
+msgstr "Češnjak u prahu"
+
+#: src/ingredients.inc:122
+msgid "Ginger"
+msgstr "Đumbir"
+
+#: src/ingredients.inc:123
+msgid "Ginger, freshly grated"
+msgstr "Đumbir, svježe ribani"
+
+#: src/ingredients.inc:124
+#, fuzzy
+#| msgid "no Turmeric, ground"
+msgid "Ginger ground"
+msgstr "nema kurkume, mljevene"
+
+#: src/ingredients.inc:125
+#, fuzzy
+#| msgid "no Cheese"
+msgid "Goat cheese"
+msgstr "nema sira"
+
+#: src/ingredients.inc:126
+msgid "Golden caster sugar"
+msgstr "Smeđi šećer"
+
+#: src/ingredients.inc:127
+msgid "Good, dry red wine"
+msgstr "Dobro, suho crno vino"
+
+#: src/ingredients.inc:128
+#, fuzzy
+#| msgid "no Cheese"
+msgid "Gouda cheese"
+msgstr "nema sira"
+
+#: src/ingredients.inc:129
+msgid "Goulash spices"
+msgstr "Začini za gulaš"
+
+#: src/ingredients.inc:130
+msgid "Guanciale cubes"
+msgstr "Kockice slanine"
+
+#: src/ingredients.inc:131
+msgid "Long pasta, e.g. spaghetti"
+msgstr "Dugačka tjestenina, npr. špageti"
+
+#: src/ingredients.inc:132
+msgid "Parmesan cheese"
+msgstr "Parmezan"
+
+#: src/ingredients.inc:133
 msgid "Grapes"
 msgstr "Grožđe"
 
-#: src/ingredients.inc:43
+#: src/ingredients.inc:134
+msgid "Grated French Emmental"
+msgstr "Ribani francuski ementaler"
+
+#: src/ingredients.inc:135
+#, fuzzy
+#| msgid "no Apple"
+msgid "Green Apple"
+msgstr "nema  jabuke"
+
+#: src/ingredients.inc:136
+#, fuzzy
+#| msgid "no Bell pepper"
+msgid "Green Bell Pepper"
+msgstr "nema paprike babure"
+
+#: src/ingredients.inc:137
+msgid "Green Cabbage"
+msgstr "Zeleni kupus"
+
+#: src/ingredients.inc:138
+msgid "Green olive"
+msgstr "Zelene masline"
+
+#: src/ingredients.inc:139
+#, fuzzy
+#| msgid "no Onion"
+msgid "Green onions"
+msgstr "nema luka"
+
+#: src/ingredients.inc:140
+msgid "green onions, chopped"
+msgstr "zeleni luk, sjeckani"
+
+#: src/ingredients.inc:141
 msgid "Ground beef"
 msgstr "Mljevena junetina"
 
-#: src/ingredients.inc:44
+#: src/ingredients.inc:142
+msgid "Ground coriander (optional)"
+msgstr "Mljeveni korijandar (neobavezno)"
+
+#: src/ingredients.inc:143
+msgid "Ground cumin"
+msgstr "Mljeveni kumin"
+
+#: src/ingredients.inc:144
+msgid "Ground fennel"
+msgstr "Mljeveni komorač"
+
+#: src/ingredients.inc:145
+msgid "Ground pepper"
+msgstr "Mljeveni papar"
+
+#: src/ingredients.inc:146
+msgid "Ham"
+msgstr "Šunka"
+
+#: src/ingredients.inc:147
+msgid "Hazelnuts"
+msgstr "Lješnjak"
+
+#: src/ingredients.inc:148
+msgid "Hazelnuts milk"
+msgstr "Lješnjakovo mlijeko"
+
+#: src/ingredients.inc:149
+msgid "Hoisin sauce"
+msgstr "Hoisin umak"
+
+#: src/ingredients.inc:150
 msgid "Honey"
 msgstr "Med"
 
-#: src/ingredients.inc:45
+#: src/ingredients.inc:151
 msgid "Horseradish"
 msgstr "Hren"
 
-#: src/ingredients.inc:46
+#: src/ingredients.inc:152
+#, fuzzy
+#| msgid "no Mayonnaise"
+msgid "Japanese mayonaisse"
+msgstr "nema majoneze"
+
+#: src/ingredients.inc:153
+msgid "Juniper berries"
+msgstr "Bobice borovice"
+
+#: src/ingredients.inc:154
+msgid "Kale"
+msgstr "Kelj"
+
+#: src/ingredients.inc:155
+msgid "Ketchup"
+msgstr "Kečap"
+
+#: src/ingredients.inc:156
+msgid "Kiwis"
+msgstr "Kivija"
+
+#: src/ingredients.inc:157
+msgid "Lamb"
+msgstr "Janjetina"
+
+#: src/ingredients.inc:158
+msgid "Lardons"
+msgstr "Slanina"
+
+#: src/ingredients.inc:159
+msgid "Lard or oil"
+msgstr "Masti ili ulja"
+
+#: src/ingredients.inc:160
 msgid "Lemon"
 msgstr "Limun"
 
-#: src/ingredients.inc:47
+#: src/ingredients.inc:161
+msgid "Lemon juice"
+msgstr "Limunov sok"
+
+#: src/ingredients.inc:162
+msgid "Lemon (untreated)"
+msgstr ""
+
+#: src/ingredients.inc:163
+msgid "Lettuce"
+msgstr ""
+
+#: src/ingredients.inc:164
+msgid "Light muscovado sugar"
+msgstr ""
+
+#: src/ingredients.inc:165
+msgid "Lime"
+msgstr ""
+
+#: src/ingredients.inc:166
+msgid "Lime juice"
+msgstr ""
+
+#: src/ingredients.inc:167
 msgid "Linseeds"
 msgstr "Sjemenke lana"
 
-#: src/ingredients.inc:48
+#: src/ingredients.inc:168
+#, fuzzy
+#| msgid "no Orange"
+msgid "Mandarin Oranges"
+msgstr "nema naranče"
+
+#: src/ingredients.inc:169
+#, fuzzy
+#| msgid "Tangerine"
+msgid "Margarine"
+msgstr "Mandarina"
+
+#: src/ingredients.inc:170
 msgid "Mayonnaise"
 msgstr "Majoneza"
 
-#: src/ingredients.inc:49
+#: src/ingredients.inc:171
+msgid "Meat"
+msgstr ""
+
+#: src/ingredients.inc:172
+msgid "Meat and bones"
+msgstr ""
+
+#: src/ingredients.inc:173
 msgid "Milk"
 msgstr "Mlijeko"
 
-#: src/ingredients.inc:50
+#: src/ingredients.inc:174
+#, fuzzy
+#| msgid "Bundled libraries"
+msgid "Mixed berries"
+msgstr "Biblioteke paketa"
+
+#: src/ingredients.inc:175
+#, fuzzy
+#| msgid "no Bell pepper"
+msgid "Mixed frozen bell peppers"
+msgstr "nema paprike babure"
+
+#: src/ingredients.inc:176
+msgid "Mori-nu organic silken tofu (firm)"
+msgstr ""
+
+#: src/ingredients.inc:177
+msgid "Mushrooms"
+msgstr ""
+
+#: src/ingredients.inc:178
 msgid "Mustard"
 msgstr "Senf"
 
-#: src/ingredients.inc:51
+#: src/ingredients.inc:179
+#, fuzzy
+#| msgid "Mustard"
+msgid "Mustard seeds"
+msgstr "Senf"
+
+#: src/ingredients.inc:180
 msgid "Nut"
 msgstr "Orah"
 
-#: src/ingredients.inc:52
+#: src/ingredients.inc:181
+msgid "Nutmeg"
+msgstr ""
+
+#: src/ingredients.inc:182
+msgid "Nutritional yeast"
+msgstr ""
+
+#: src/ingredients.inc:183
 msgid "Oatmeal"
 msgstr "Zobena kaša"
 
-#: src/ingredients.inc:53
+#: src/ingredients.inc:184
 msgid "Oil"
 msgstr "Ulje"
 
-#: src/ingredients.inc:54
-msgid "Onion"
-msgstr "Luk"
+#: src/ingredients.inc:185
+#, fuzzy
+#| msgid "no Pizza sauce"
+msgid "Okonomiyaki sauce"
+msgstr "nema umaka za pizzu"
 
-#: src/ingredients.inc:55
+#: src/ingredients.inc:186
+msgid "Olive oil"
+msgstr "Maslinovo ulje"
+
+#: src/ingredients.inc:187
 msgid "Olive oil, extra-virgin"
 msgstr "Maslinovo ulje, ekstra djevičansko"
 
-#: src/ingredients.inc:56
+#: src/ingredients.inc:188
+#, fuzzy
+#| msgid "Cherries, pitted"
+msgid "Olives, pitted"
+msgstr "Trešnje, bez koštica"
+
+#: src/ingredients.inc:189
+msgid "Onion"
+msgstr "Luk"
+
+#: src/ingredients.inc:190
+#, fuzzy
+#| msgid "Baking powder"
+msgid "Onion powder"
+msgstr "Prašak za pecivo"
+
+#: src/ingredients.inc:191
 msgid "Orange"
 msgstr "Naranča"
 
-#: src/ingredients.inc:57
+#: src/ingredients.inc:192
+#, fuzzy
+#| msgid "Vegan"
+msgid "Oregano"
+msgstr "Vegan"
+
+#: src/ingredients.inc:193
+msgid "Pancetta"
+msgstr ""
+
+#: src/ingredients.inc:194
+msgid "Pandan leaves"
+msgstr ""
+
+#: src/ingredients.inc:195
+msgid "Paprika"
+msgstr ""
+
+#: src/ingredients.inc:196
+msgid "Parmesan cheese, grated"
+msgstr ""
+
+#: src/ingredients.inc:197
 msgid "Parsley"
 msgstr "Peršin"
 
-#: src/ingredients.inc:58
+#: src/ingredients.inc:198
+msgid "Peach"
+msgstr ""
+
+#: src/ingredients.inc:199
 msgid "Peperoni"
 msgstr "Feferoni"
 
-#: src/ingredients.inc:59
+#: src/ingredients.inc:200
 msgid "Pepper"
 msgstr "Papar"
 
-#: src/ingredients.inc:60
+#: src/ingredients.inc:201
 msgid "Peppers"
 msgstr "Paprika"
 
-#: src/ingredients.inc:61
+#: src/ingredients.inc:202
+msgid "Pickles"
+msgstr ""
+
+#: src/ingredients.inc:203
+msgid "Pineapple"
+msgstr ""
+
+#: src/ingredients.inc:204
 msgid "Pizza sauce"
 msgstr "Umak za pizzu"
 
-#: src/ingredients.inc:62
+#: src/ingredients.inc:205
+#, fuzzy
+#| msgid "Main Course"
+msgid "Plain flour"
+msgstr "Glavno jelo"
+
+#: src/ingredients.inc:206
+msgid "Pomegranate"
+msgstr ""
+
+#: src/ingredients.inc:207
+msgid "Pomegranate juice"
+msgstr ""
+
+#: src/ingredients.inc:208
+msgid "Pork fat"
+msgstr ""
+
+#: src/ingredients.inc:209
+msgid "Pork loin"
+msgstr ""
+
+#: src/ingredients.inc:210
 msgid "Potato"
 msgstr "Krumpir"
 
-#: src/ingredients.inc:63
+#: src/ingredients.inc:211
+msgid "Powdered sugar"
+msgstr ""
+
+#: src/ingredients.inc:212
 msgid "Pumpkin seeds"
 msgstr "Sjemenke bundeve"
 
-#: src/ingredients.inc:64
+#: src/ingredients.inc:213
+msgid "Quinoa"
+msgstr ""
+
+#: src/ingredients.inc:214
+msgid "Radish"
+msgstr ""
+
+#: src/ingredients.inc:215
 msgid "Raisins"
 msgstr "Grožđice"
 
-#: src/ingredients.inc:65
+#: src/ingredients.inc:216
+#, fuzzy
+#| msgid "Bell pepper"
+msgid "Red bell pepper"
+msgstr "Paprika babura"
+
+#: src/ingredients.inc:217
+msgid "Red onion"
+msgstr "Crveni luk"
+
+#: src/ingredients.inc:218
+msgid "Red Pepper"
+msgstr "Crveni papar"
+
+#: src/ingredients.inc:219
+msgid "Red wine"
+msgstr "Crno vino"
+
+#: src/ingredients.inc:220
 msgid "Rice"
 msgstr "Riža"
 
-#: src/ingredients.inc:66
+#: src/ingredients.inc:221
+msgid "Rice, cooked"
+msgstr ""
+
+#: src/ingredients.inc:222
+msgid "Rice vermicelli noodles"
+msgstr ""
+
+#: src/ingredients.inc:223
+#, fuzzy
+#| msgid "no Sugar"
+msgid "Rock sugar"
+msgstr "nema šećera"
+
+#: src/ingredients.inc:224
+msgid "Rolled oats"
+msgstr ""
+
+#: src/ingredients.inc:225
+msgid "Rosemary"
+msgstr ""
+
+#: src/ingredients.inc:226
+msgid "Sachet levure"
+msgstr ""
+
+#: src/ingredients.inc:227
+msgid "Saffron"
+msgstr ""
+
+#: src/ingredients.inc:228
+msgid "Sage"
+msgstr ""
+
+#: src/ingredients.inc:229
+#, fuzzy
+#| msgid "Almond"
+msgid "Salmon"
+msgstr "Badem"
+
+#: src/ingredients.inc:230
 msgid "Salt"
 msgstr "Sol"
 
-#: src/ingredients.inc:67
+#: src/ingredients.inc:231
+#, fuzzy
+#| msgid "Bell pepper"
+msgid "Salt and pepper"
+msgstr "Paprika babura"
+
+#: src/ingredients.inc:232
+msgid "Saucebinder"
+msgstr ""
+
+#: src/ingredients.inc:233
+msgid "Scallions"
+msgstr ""
+
+#: src/ingredients.inc:234
+msgid "Sea salt"
+msgstr ""
+
+#: src/ingredients.inc:235
+msgid "Semi-skimmed milk"
+msgstr ""
+
+#: src/ingredients.inc:236
+msgid "Sesame oil"
+msgstr ""
+
+#: src/ingredients.inc:237
+msgid "Sesame seeds"
+msgstr ""
+
+#: src/ingredients.inc:238
+#, fuzzy
+#| msgctxt "unit plural"
+#| msgid "gallons"
+msgid "Shallots"
+msgstr "galona"
+
+#: src/ingredients.inc:239
+msgid "Shrimps"
+msgstr ""
+
+#: src/ingredients.inc:240
+msgid "Slivered almonds, toasted"
+msgstr ""
+
+#: src/ingredients.inc:241
+#, fuzzy
+#| msgid "no Cream"
+msgid "Sour cream"
+msgstr "nema kreme"
+
+#: src/ingredients.inc:242
 msgid "Soy sauce"
 msgstr "Umak od soje"
 
-#: src/ingredients.inc:68
-msgid "Strawberry"
-msgstr "Jagoda"
+#: src/ingredients.inc:243
+msgid "Spinach"
+msgstr ""
 
-#: src/ingredients.inc:69
-msgid "Sugar"
-msgstr "Šećer"
+#: src/ingredients.inc:244
+#, fuzzy
+#| msgid "Spring"
+msgid "Spring onion"
+msgstr "Proljeće"
 
-#: src/ingredients.inc:70
-msgid "Sunflower seeds"
-msgstr "Sjemenke suncokreta"
-
-#: src/ingredients.inc:71
+#: src/ingredients.inc:245
 msgid "Squash"
 msgstr "Tikva"
 
-#: src/ingredients.inc:72
+#: src/ingredients.inc:246
+msgid "Star anise"
+msgstr ""
+
+#: src/ingredients.inc:247
+msgid "Strawberry"
+msgstr "Jagoda"
+
+#: src/ingredients.inc:248
+msgid "Sugar"
+msgstr "Šećer"
+
+#: src/ingredients.inc:249
+msgid "Sunflower seeds"
+msgstr "Sjemenke suncokreta"
+
+#: src/ingredients.inc:250
+msgid "Sweet potatoes"
+msgstr ""
+
+#: src/ingredients.inc:251
+msgid "Tamarind paste"
+msgstr ""
+
+#: src/ingredients.inc:252
 msgid "Tangerine"
 msgstr "Mandarina"
 
-#: src/ingredients.inc:73
+#: src/ingredients.inc:253
+msgid "Thai basil leaves"
+msgstr ""
+
+#: src/ingredients.inc:254
+msgid "Thai chillies"
+msgstr ""
+
+#: src/ingredients.inc:255
+msgid "Thai fish sauce"
+msgstr ""
+
+#: src/ingredients.inc:256
+msgid "Thyme"
+msgstr ""
+
+#: src/ingredients.inc:257
+msgid "Tinned pineapple rings"
+msgstr ""
+
+#: src/ingredients.inc:258
 msgid "Tofu"
 msgstr "Tofu"
 
-#: src/ingredients.inc:74
+#: src/ingredients.inc:259
 msgid "Tomato"
 msgstr "Rajčica"
 
-#: src/ingredients.inc:75
-msgid "Turmeric, ground"
+#: src/ingredients.inc:260
+#, fuzzy
+#| msgid "Tomato"
+msgid "Tomato paste"
+msgstr "Rajčica"
+
+#: src/ingredients.inc:261
+#, fuzzy
+#| msgid "Soy sauce"
+msgid "Tomato sauce"
+msgstr "Umak od soje"
+
+#: src/ingredients.inc:262
+#, fuzzy
+#| msgid "Turmeric, ground"
+msgid "Tumeric ground"
 msgstr "Kurkuma, mljevena"
 
-#: src/ingredients.inc:76
-msgid "Vanilla sugar"
+#: src/ingredients.inc:263
+msgid "Tuna fish"
+msgstr ""
+
+#: src/ingredients.inc:264
+msgid "Unsalted butter"
+msgstr ""
+
+#: src/ingredients.inc:265
+#, fuzzy
+#| msgid "no Baking powder"
+msgid "Vanilla baking powder"
+msgstr "nema praška za pecivo"
+
+#: src/ingredients.inc:266
+#, fuzzy
+#| msgid "Vanilla sugar"
+msgid "Vanilla extract"
 msgstr "Vanilij šećer"
 
-#: src/ingredients.inc:77
+#: src/ingredients.inc:267
+msgid "Vanilla powdered sugar, for dusting"
+msgstr ""
+
+#: src/ingredients.inc:268
 msgid "Vanilla pudding"
 msgstr "Puding od vanilije"
 
-#: src/ingredients.inc:78
+#: src/ingredients.inc:269
+msgid "Vanilla sugar"
+msgstr "Vanilij šećer"
+
+#: src/ingredients.inc:270
+#, fuzzy
+#| msgid "Vegetarian"
+msgid "Vegetable oil"
+msgstr "Vegetarijanska"
+
+#: src/ingredients.inc:271
 msgid "Vinegar"
 msgstr "Ocat"
 
-#: src/ingredients.inc:79
+#: src/ingredients.inc:272
 msgid "Water"
 msgstr "Voda"
 
-#: src/ingredients.inc:80
+#: src/ingredients.inc:273
+msgid "Wheat flour"
+msgstr ""
+
+#: src/ingredients.inc:274
+msgid "White fish"
+msgstr ""
+
+#: src/ingredients.inc:275
+msgid "White onion"
+msgstr ""
+
+#: src/ingredients.inc:276
+msgid "Whole chicken"
+msgstr ""
+
+#: src/ingredients.inc:277
 msgid "Wine"
 msgstr "Vino"
 
-#: src/ingredients.inc:81
+#: src/ingredients.inc:278
+msgid "Worcestershire sauce"
+msgstr ""
+
+#: src/ingredients.inc:279
 msgid "Yeast"
 msgstr "Kvasac"
 
-#: src/ingredients.inc:82
+#: src/ingredients.inc:280
+#, fuzzy
+#| msgid "no Bell pepper"
+msgid "Yellow bell pepper"
+msgstr "nema paprike babure"
+
+#: src/ingredients.inc:281
 msgid "Yoghurt"
 msgstr "Jogurt"
 
-#: src/ingredients.inc:83
+#: src/ingredients.inc:282
+msgid "Zest of 1 lemon (organic)"
+msgstr ""
+
+#: src/ingredients.inc:283
 msgid "Zinfandel"
 msgstr "Zinfandel"
 
-#: src/ingredients.inc:84
+#: src/ingredients.inc:284
 msgid "Zuccini"
 msgstr "Tikvica"
 
@@ -2938,321 +3829,1367 @@ msgid "no Apple"
 msgstr "nema  jabuke"
 
 #: src/no-ingredients.inc:5
+#, fuzzy
+#| msgid "no Vinegar"
+msgid "no Apple Vinegar"
+msgstr "nema octa"
+
+#: src/no-ingredients.inc:6
 msgid "no Apricot"
 msgstr "nema marelica"
 
-#: src/no-ingredients.inc:6
+#: src/no-ingredients.inc:7
 msgid "no Artichoke"
 msgstr "nema artičoka"
 
-#: src/no-ingredients.inc:7
+#: src/no-ingredients.inc:8
 msgid "no Asparagus"
 msgstr "nema šparoga"
 
-#: src/no-ingredients.inc:8
+#: src/no-ingredients.inc:9
 msgid "no Aubergine"
 msgstr "nema plavog patlidžana"
 
-#: src/no-ingredients.inc:9
+#: src/no-ingredients.inc:10
+#, fuzzy
+#| msgid "no Bay leaf"
+msgid "no Baby Spinach"
+msgstr "nema lišajnog lista"
+
+#: src/no-ingredients.inc:11
 msgid "no Bacon"
 msgstr "nema slanine"
 
-#: src/no-ingredients.inc:10
+#: src/no-ingredients.inc:12
 msgid "no Bagel"
 msgstr "nema peciva"
 
-#: src/no-ingredients.inc:11
+#: src/no-ingredients.inc:13
 msgid "no Baked beans"
 msgstr "nema zapečenog graha"
 
-#: src/no-ingredients.inc:12
+#: src/no-ingredients.inc:14
 msgid "no Baking powder"
 msgstr "nema praška za pecivo"
 
-#: src/no-ingredients.inc:13
+#: src/no-ingredients.inc:15
 msgid "no Banana"
 msgstr "nema banana"
 
-#: src/no-ingredients.inc:14
+#: src/no-ingredients.inc:16
 msgid "no Basil"
 msgstr "nema bosiljka"
 
-#: src/no-ingredients.inc:15
+#: src/no-ingredients.inc:17
 msgid "no Basmati rice"
 msgstr "nema basmati riže"
 
-#: src/no-ingredients.inc:16
+#: src/no-ingredients.inc:18
 msgid "no Bay leaf"
 msgstr "nema lišajnog lista"
 
-#: src/no-ingredients.inc:17
+#: src/no-ingredients.inc:19
 msgid "no Beans"
 msgstr "nema graha"
 
-#: src/no-ingredients.inc:18
+#: src/no-ingredients.inc:20
+#, fuzzy
+#| msgid "no Beans"
+msgid "no Bean sprouts"
+msgstr "nema graha"
+
+#: src/no-ingredients.inc:21
+#, fuzzy
+#| msgid "no Beef mince"
+msgid "no Beef"
+msgstr "nema mljevene govedine"
+
+#: src/no-ingredients.inc:22
 msgid "no Beef mince"
 msgstr "nema mljevene govedine"
 
-#: src/no-ingredients.inc:19
+#: src/no-ingredients.inc:23
 msgid "no Beef sausage"
 msgstr "nema goveđih kobasica"
 
-#: src/no-ingredients.inc:20
+#: src/no-ingredients.inc:24
+#, fuzzy
+#| msgid "no Beef mince"
+msgid "no Beef (sirloin)"
+msgstr "nema mljevene govedine"
+
+#: src/no-ingredients.inc:25
 msgid "no Beef stock"
 msgstr "nema goveđeg temeljca"
 
-#: src/no-ingredients.inc:21
+#: src/no-ingredients.inc:26
 msgid "no Beetroot"
 msgstr "nema cikle"
 
-#: src/no-ingredients.inc:22
+#: src/no-ingredients.inc:27
 msgid "no Bell pepper"
 msgstr "nema paprike babure"
 
-#: src/no-ingredients.inc:23
+#: src/no-ingredients.inc:28
+#, fuzzy
+#| msgid "no Bell pepper"
+msgid "no Bell Pepper (green)"
+msgstr "nema paprike babure"
+
+#: src/no-ingredients.inc:29
 msgid "no Berry"
 msgstr "nema bobica"
 
-#: src/no-ingredients.inc:24
-msgid "no Biscotti"
-msgstr "nema biskvita"
-
-#: src/no-ingredients.inc:25
+#: src/no-ingredients.inc:30
 msgid "no Bilberry"
 msgstr "nema borovnice"
 
-#: src/no-ingredients.inc:26
+#: src/no-ingredients.inc:31
+msgid "no Biscotti"
+msgstr "nema biskvita"
+
+#: src/no-ingredients.inc:32
+msgid "no Black cardamom pod"
+msgstr ""
+
+#: src/no-ingredients.inc:33
+#, fuzzy
+#| msgid "no Bell pepper"
+msgid "no Black peppercorns"
+msgstr "nema paprike babure"
+
+#: src/no-ingredients.inc:34
+#, fuzzy
+#| msgid "no Bilberry"
+msgid "no Blueberry"
+msgstr "nema borovnice"
+
+#: src/no-ingredients.inc:35
+msgid "no Bourbon whiskey"
+msgstr ""
+
+#: src/no-ingredients.inc:36
 msgid "no Breadcrumbs"
 msgstr "nema krušnih mrvica"
 
-#: src/no-ingredients.inc:27
+#: src/no-ingredients.inc:37
+#, fuzzy
+#| msgid "no Beef stock"
+msgid "no Brewer's yeast"
+msgstr "nema goveđeg temeljca"
+
+#: src/no-ingredients.inc:38
+#, fuzzy
+#| msgid "no Baked beans"
+msgid "no Broad beans"
+msgstr "nema zapečenog graha"
+
+#: src/no-ingredients.inc:39
+#, fuzzy
+#| msgid "no Beetroot"
+msgid "no Broth"
+msgstr "nema cikle"
+
+#: src/no-ingredients.inc:40
+#, fuzzy
+#| msgid "no Vanilla sugar"
+msgid "no Brown sugar"
+msgstr "nema vanilij šećera"
+
+#: src/no-ingredients.inc:41
 msgid "no Butter"
 msgstr "nema maslaca"
 
-#: src/no-ingredients.inc:28
+#: src/no-ingredients.inc:42
+#, fuzzy
+#| msgid "no Butter"
+msgid "no Butter, melted"
+msgstr "nema maslaca"
+
+#: src/no-ingredients.inc:43
+msgid "no Button mushroom"
+msgstr ""
+
+#: src/no-ingredients.inc:44
+msgid "no Cabbage"
+msgstr ""
+
+#: src/no-ingredients.inc:45
+#, fuzzy
+#| msgid "no Flour"
+msgid "no Cake flour"
+msgstr "nema brašna"
+
+#: src/no-ingredients.inc:46
+#, fuzzy
+#| msgid "no Baked beans"
+msgid "no Canellini beans"
+msgstr "nema zapečenog graha"
+
+#: src/no-ingredients.inc:47
+msgid "no Canned black beans, rinsed"
+msgstr ""
+
+#: src/no-ingredients.inc:48
+msgid "no Canned chopped tomatoes"
+msgstr ""
+
+#: src/no-ingredients.inc:49
 msgid "no Carrot"
 msgstr "nema mrkve"
 
-#: src/no-ingredients.inc:29
+#: src/no-ingredients.inc:50
+#, fuzzy
+#| msgid "no Cherries, pitted"
+msgid "no Cashews, lightly toasted"
+msgstr "nema trešnje, bez koštica"
+
+#: src/no-ingredients.inc:51
+#, fuzzy
+#| msgid "no Vanilla sugar"
+msgid "no Caster sugar"
+msgstr "nema vanilij šećera"
+
+#: src/no-ingredients.inc:52
+msgid "no celery"
+msgstr ""
+
+#: src/no-ingredients.inc:53
+#, fuzzy
+#| msgid "no Cheese"
+msgid "no Celey"
+msgstr "nema sira"
+
+#: src/no-ingredients.inc:54
+msgid "no Champignons"
+msgstr ""
+
+#: src/no-ingredients.inc:55
 msgid "no Cheese"
 msgstr "nema sira"
 
-#: src/no-ingredients.inc:30
+#: src/no-ingredients.inc:56
+#, fuzzy
+#| msgid "no Cheese"
+msgid "no Cheese slices"
+msgstr "nema sira"
+
+#: src/no-ingredients.inc:57
 msgid "no Cherries, pitted"
 msgstr "nema trešnje, bez koštica"
 
-#: src/no-ingredients.inc:31
+#: src/no-ingredients.inc:58
+msgid "no cherry tomatoes, halved"
+msgstr ""
+
+#: src/no-ingredients.inc:59
+#, fuzzy
+#| msgid "no Linseeds"
+msgid "no Chia seeds"
+msgstr "nema sjemenka lana"
+
+#: src/no-ingredients.inc:60
+msgid "no Chicken breasts, large"
+msgstr ""
+
+#: src/no-ingredients.inc:61
+#, fuzzy
+#| msgid "no Cheese"
+msgid "no Chicken livers"
+msgstr "nema sira"
+
+#: src/no-ingredients.inc:62
+#, fuzzy
+#| msgid "no Beef stock"
+msgid "no chicken stock"
+msgstr "nema goveđeg temeljca"
+
+#: src/no-ingredients.inc:63
+msgid "no Chili flakes"
+msgstr ""
+
+#: src/no-ingredients.inc:64
+#, fuzzy
+#| msgid "no Cocoa powder"
+msgid "no Chili powder"
+msgstr "nema kakaa u prahu"
+
+#: src/no-ingredients.inc:65
+msgid "no chili sauce (e.g. sriracha)"
+msgstr ""
+
+#: src/no-ingredients.inc:66
+#, fuzzy
+#| msgid "no Chocolate frosting"
+msgid "no Chocolate"
+msgstr "nema čokoladne glazure"
+
+#: src/no-ingredients.inc:67
 msgid "no Chocolate frosting"
 msgstr "nema čokoladne glazure"
 
-#: src/no-ingredients.inc:32
+#: src/no-ingredients.inc:68
+#, fuzzy
+#| msgid "no Carrot"
+msgid "no Chorizo"
+msgstr "nema mrkve"
+
+#: src/no-ingredients.inc:69
+msgid "no Ciboulette"
+msgstr ""
+
+#: src/no-ingredients.inc:70
 msgid "no Cilantro"
 msgstr "nema korijandera"
 
-#: src/no-ingredients.inc:33
+#: src/no-ingredients.inc:71
+#, fuzzy
+#| msgid "no Cilantro"
+msgid "no cilantro leaves"
+msgstr "nema korijandera"
+
+#: src/no-ingredients.inc:72
+#, fuzzy
+#| msgid "no Cilantro"
+msgid "no Cinnamon"
+msgstr "nema korijandera"
+
+#: src/no-ingredients.inc:73
+msgid "no Cinnamon sticks"
+msgstr ""
+
+#: src/no-ingredients.inc:74
+#, fuzzy
+#| msgid "no Cheese"
+msgid "no Cloves"
+msgstr "nema sira"
+
+#: src/no-ingredients.inc:75
+#, fuzzy
+#| msgid "no Cocoa powder"
+msgid "no Cocoa butter"
+msgstr "nema kakaa u prahu"
+
+#: src/no-ingredients.inc:76
 msgid "no Cocoa powder"
 msgstr "nema kakaa u prahu"
 
-#: src/no-ingredients.inc:34
+#: src/no-ingredients.inc:77
+#, fuzzy
+#| msgid "no Couscous"
+msgid "no Coconut milk"
+msgstr "nema kuskusa"
+
+#: src/no-ingredients.inc:78
+#, fuzzy
+#| msgid "no Couscous"
+msgid "no Coconut oil"
+msgstr "nema kuskusa"
+
+#: src/no-ingredients.inc:79
+#, fuzzy
+#| msgid "no Cocoa powder"
+msgid "no Coconut water"
+msgstr "nema kakaa u prahu"
+
+#: src/no-ingredients.inc:80
+#, fuzzy
+#| msgid "no Water"
+msgid "no cold water"
+msgstr "nema vode"
+
+#: src/no-ingredients.inc:81
+#, fuzzy
+#| msgid "no Ground beef"
+msgid "no cooked beef"
+msgstr "nema mljevene junetina"
+
+#: src/no-ingredients.inc:82
+#, fuzzy
+#| msgid "no Cilantro"
+msgid "no Coriander"
+msgstr "nema korijandera"
+
+#: src/no-ingredients.inc:83
+#, fuzzy
+#| msgid "no Linseeds"
+msgid "no coriandre seeds"
+msgstr "nema sjemenka lana"
+
+#: src/no-ingredients.inc:84
 msgid "no Couscous"
 msgstr "nema kuskusa"
 
-#: src/no-ingredients.inc:35
+#: src/no-ingredients.inc:85
+#, fuzzy
+#| msgid "no Bell pepper"
+msgid "no Cracked pepper"
+msgstr "nema paprike babure"
+
+#: src/no-ingredients.inc:86
 msgid "no Cream"
 msgstr "nema kreme"
 
-#: src/no-ingredients.inc:36
+#: src/no-ingredients.inc:87
+#, fuzzy
+#| msgid "no Cheese"
+msgid "no Cream cheese"
+msgstr "nema sira"
+
+#: src/no-ingredients.inc:88
+msgid "no Crushed red peper flakes"
+msgstr ""
+
+#: src/no-ingredients.inc:89
+#, fuzzy
+#| msgid "no Couscous"
+msgid "no Cucumber"
+msgstr "nema kuskusa"
+
+#: src/no-ingredients.inc:90
+msgid "no Cucumber (large)"
+msgstr ""
+
+#: src/no-ingredients.inc:91
+#, fuzzy
+#| msgid "no Cilantro"
+msgid "no Cumin"
+msgstr "nema korijandera"
+
+#: src/no-ingredients.inc:92
+#, fuzzy
+#| msgid "no Pumpkin seeds"
+msgid "no Cumin seeds"
+msgstr "nema sjemenka bundeve"
+
+#: src/no-ingredients.inc:93
+msgid "no Dark Jamaican rum"
+msgstr ""
+
+#: src/no-ingredients.inc:94
 msgid "no Date"
 msgstr "nema datulja"
 
-#: src/no-ingredients.inc:37
+#: src/no-ingredients.inc:95
+msgid "no Dill"
+msgstr ""
+
+#: src/no-ingredients.inc:96
+#, fuzzy
+#| msgid "no Cream"
+msgid "no Double cream"
+msgstr "nema kreme"
+
+#: src/no-ingredients.inc:97
+#, fuzzy
+#| msgid "no Anchovies"
+msgid "no Dried anchovies"
+msgstr "nema  inčuna"
+
+#: src/no-ingredients.inc:98
+msgid "no Dried chillies"
+msgstr ""
+
+#: src/no-ingredients.inc:99
+msgid "no Dry or fresh cilantro"
+msgstr ""
+
+#: src/no-ingredients.inc:100
+#, fuzzy
+#| msgid "no Yeast"
+msgid "no Dry yeast"
+msgstr "nema kvasca"
+
+#: src/no-ingredients.inc:101
+msgid "no Durum wheat semolina"
+msgstr ""
+
+#: src/no-ingredients.inc:102
+msgid "no Earth Balance vegan buttery stick"
+msgstr ""
+
+#: src/no-ingredients.inc:103
 msgid "no Egg"
 msgstr "nema jaja"
 
-#: src/no-ingredients.inc:38
+#: src/no-ingredients.inc:104
+#, fuzzy
+#| msgid "no Egg"
+msgid "no Egg yolks"
+msgstr "nema jaja"
+
+#: src/no-ingredients.inc:105
+#, fuzzy
+#| msgid "no Pumpkin seeds"
+msgid "no Fenugreek seeds"
+msgstr "nema sjemenka bundeve"
+
+#: src/no-ingredients.inc:106
 msgid "no Fig"
 msgstr "nema smokva"
 
-#: src/no-ingredients.inc:39
+#: src/no-ingredients.inc:107
+msgid "no Finely chopped cilantro"
+msgstr ""
+
+#: src/no-ingredients.inc:108
+msgid "no Finely chopped onions"
+msgstr ""
+
+#: src/no-ingredients.inc:109
+msgid "no Finely chopped thai chillies or green chillis"
+msgstr ""
+
+#: src/no-ingredients.inc:110
+msgid "no Finely chopped tomato"
+msgstr ""
+
+#: src/no-ingredients.inc:111
 msgid "no Fish"
 msgstr "nema ribe"
 
-#: src/no-ingredients.inc:40
+#: src/no-ingredients.inc:112
+#, fuzzy
+#| msgid "no Pizza sauce"
+msgid "no Fish sauce"
+msgstr "nema umaka za pizzu"
+
+#: src/no-ingredients.inc:113
 msgid "no Flour"
 msgstr "nema brašna"
 
-#: src/no-ingredients.inc:41
+#: src/no-ingredients.inc:114
+msgid "no Flour (all-purpose)"
+msgstr ""
+
+#: src/no-ingredients.inc:115
+#, fuzzy
+#| msgid "no Flour"
+msgid "no Flour (Tipo 00)"
+msgstr "nema brašna"
+
+#: src/no-ingredients.inc:116
+msgid "no Fresh rosemary"
+msgstr ""
+
+#: src/no-ingredients.inc:117
+msgid "no Fresh tagliatelle"
+msgstr ""
+
+#: src/no-ingredients.inc:118
+msgid "no Garam masala"
+msgstr ""
+
+#: src/no-ingredients.inc:119
 msgid "no Garlic"
 msgstr "nema češnjaka"
 
-#: src/no-ingredients.inc:42
+#: src/no-ingredients.inc:120
+#, fuzzy
+#| msgid "no Garlic"
+msgid "no Garlic cloves"
+msgstr "nema češnjaka"
+
+#: src/no-ingredients.inc:121
+#, fuzzy
+#| msgid "no Baking powder"
+msgid "no Garlic powder"
+msgstr "nema praška za pecivo"
+
+#: src/no-ingredients.inc:122
+#, fuzzy
+#| msgid "no Tangerine"
+msgid "no Ginger"
+msgstr "nema mandarina"
+
+#: src/no-ingredients.inc:123
+msgid "no Ginger, freshly grated"
+msgstr ""
+
+#: src/no-ingredients.inc:124
+#, fuzzy
+#| msgid "no Turmeric, ground"
+msgid "no Ginger ground"
+msgstr "nema kurkume, mljevene"
+
+#: src/no-ingredients.inc:125
+#, fuzzy
+#| msgid "no Cheese"
+msgid "no Goat cheese"
+msgstr "nema sira"
+
+#: src/no-ingredients.inc:126
+msgid "no Golden caster sugar"
+msgstr ""
+
+#: src/no-ingredients.inc:127
+msgid "no Good, dry red wine"
+msgstr ""
+
+#: src/no-ingredients.inc:128
+#, fuzzy
+#| msgid "no Ground beef"
+msgid "no Gouda cheese"
+msgstr "nema mljevene junetina"
+
+#: src/no-ingredients.inc:129
+#, fuzzy
+#| msgid "no Grapes"
+msgid "no Goulash spices"
+msgstr "nema grožđa"
+
+#: src/no-ingredients.inc:130
+msgid "no Guanciale cubes"
+msgstr ""
+
+#: src/no-ingredients.inc:131
+msgid "no Long pasta, e.g. spaghetti"
+msgstr ""
+
+#: src/no-ingredients.inc:132
+msgid "no Parmesan cheese"
+msgstr ""
+
+#: src/no-ingredients.inc:133
 msgid "no Grapes"
 msgstr "nema grožđa"
 
-#: src/no-ingredients.inc:43
+#: src/no-ingredients.inc:134
+msgid "no Grated French Emmental"
+msgstr ""
+
+#: src/no-ingredients.inc:135
+#, fuzzy
+#| msgid "no Apple"
+msgid "no Green Apple"
+msgstr "nema  jabuke"
+
+#: src/no-ingredients.inc:136
+#, fuzzy
+#| msgid "no Bell pepper"
+msgid "no Green Bell Pepper"
+msgstr "nema paprike babure"
+
+#: src/no-ingredients.inc:137
+#, fuzzy
+#| msgid "no Ground beef"
+msgid "no Green Cabbage"
+msgstr "nema mljevene junetina"
+
+#: src/no-ingredients.inc:138
+#, fuzzy
+#| msgid "no Garlic"
+msgid "no Green olive"
+msgstr "nema češnjaka"
+
+#: src/no-ingredients.inc:139
+#, fuzzy
+#| msgid "no Onion"
+msgid "no Green onions"
+msgstr "nema luka"
+
+#: src/no-ingredients.inc:140
+msgid "no green onions, chopped"
+msgstr ""
+
+#: src/no-ingredients.inc:141
 msgid "no Ground beef"
 msgstr "nema mljevene junetina"
 
-#: src/no-ingredients.inc:44
+#: src/no-ingredients.inc:142
+msgid "no Ground coriander (optional)"
+msgstr ""
+
+#: src/no-ingredients.inc:143
+#, fuzzy
+#| msgid "no Ground beef"
+msgid "no Ground cumin"
+msgstr "nema mljevene junetina"
+
+#: src/no-ingredients.inc:144
+#, fuzzy
+#| msgid "no Ground beef"
+msgid "no Ground fennel"
+msgstr "nema mljevene junetina"
+
+#: src/no-ingredients.inc:145
+#, fuzzy
+#| msgid "no Ground beef"
+msgid "no Ground pepper"
+msgstr "nema mljevene junetina"
+
+#: src/no-ingredients.inc:146
+msgid "no Ham"
+msgstr ""
+
+#: src/no-ingredients.inc:147
+msgid "no Hazelnuts"
+msgstr ""
+
+#: src/no-ingredients.inc:148
+msgid "no Hazelnuts milk"
+msgstr ""
+
+#: src/no-ingredients.inc:149
+#, fuzzy
+#| msgid "no Soy sauce"
+msgid "no Hoisin sauce"
+msgstr "nema umaka od soje"
+
+#: src/no-ingredients.inc:150
 msgid "no Honey"
 msgstr "nema meda"
 
-#: src/no-ingredients.inc:45
+#: src/no-ingredients.inc:151
 msgid "no Horseradish"
 msgstr "nema hrena"
 
-#: src/no-ingredients.inc:46
+#: src/no-ingredients.inc:152
+#, fuzzy
+#| msgid "no Mayonnaise"
+msgid "no Japanese mayonaisse"
+msgstr "nema majoneze"
+
+#: src/no-ingredients.inc:153
+msgid "no Juniper berries"
+msgstr ""
+
+#: src/no-ingredients.inc:154
+msgid "no Kale"
+msgstr ""
+
+#: src/no-ingredients.inc:155
+msgid "no Ketchup"
+msgstr ""
+
+#: src/no-ingredients.inc:156
+msgid "no Kiwis"
+msgstr ""
+
+#: src/no-ingredients.inc:157
+#, fuzzy
+#| msgid "no Lemon"
+msgid "no Lamb"
+msgstr "nema limuna"
+
+#: src/no-ingredients.inc:158
+#, fuzzy
+#| msgid "no Lemon"
+msgid "no Lardons"
+msgstr "nema limuna"
+
+#: src/no-ingredients.inc:159
+msgid "no Lard or oil"
+msgstr ""
+
+#: src/no-ingredients.inc:160
 msgid "no Lemon"
 msgstr "nema limuna"
 
-#: src/no-ingredients.inc:47
+#: src/no-ingredients.inc:161
+#, fuzzy
+#| msgid "no Lemon"
+msgid "no Lemon juice"
+msgstr "nema limuna"
+
+#: src/no-ingredients.inc:162
+msgid "no Lemon (untreated)"
+msgstr ""
+
+#: src/no-ingredients.inc:163
+msgid "no Lettuce"
+msgstr ""
+
+#: src/no-ingredients.inc:164
+msgid "no Light muscovado sugar"
+msgstr ""
+
+#: src/no-ingredients.inc:165
+#, fuzzy
+#| msgid "no Linseeds"
+msgid "no Lime"
+msgstr "nema sjemenka lana"
+
+#: src/no-ingredients.inc:166
+msgid "no Lime juice"
+msgstr ""
+
+#: src/no-ingredients.inc:167
 msgid "no Linseeds"
 msgstr "nema sjemenka lana"
 
-#: src/no-ingredients.inc:48
+#: src/no-ingredients.inc:168
+#, fuzzy
+#| msgid "no Orange"
+msgid "no Mandarin Oranges"
+msgstr "nema naranče"
+
+#: src/no-ingredients.inc:169
+#, fuzzy
+#| msgid "no Tangerine"
+msgid "no Margarine"
+msgstr "nema mandarina"
+
+#: src/no-ingredients.inc:170
 msgid "no Mayonnaise"
 msgstr "nema majoneze"
 
-#: src/no-ingredients.inc:49
+#: src/no-ingredients.inc:171
+msgid "no Meat"
+msgstr ""
+
+#: src/no-ingredients.inc:172
+msgid "no Meat and bones"
+msgstr ""
+
+#: src/no-ingredients.inc:173
 msgid "no Milk"
 msgstr "nema mlijeka"
 
-#: src/no-ingredients.inc:50
+#: src/no-ingredients.inc:174
+#, fuzzy
+#| msgid "Bundled libraries"
+msgid "no Mixed berries"
+msgstr "Biblioteke paketa"
+
+#: src/no-ingredients.inc:175
+#, fuzzy
+#| msgid "no Bell pepper"
+msgid "no Mixed frozen bell peppers"
+msgstr "nema paprike babure"
+
+#: src/no-ingredients.inc:176
+msgid "no Mori-nu organic silken tofu (firm)"
+msgstr ""
+
+#: src/no-ingredients.inc:177
+#, fuzzy
+#| msgid "no Mustard"
+msgid "no Mushrooms"
+msgstr "nema senfa"
+
+#: src/no-ingredients.inc:178
 msgid "no Mustard"
 msgstr "nema senfa"
 
-#: src/no-ingredients.inc:51
+#: src/no-ingredients.inc:179
+#, fuzzy
+#| msgid "no Mustard"
+msgid "no Mustard seeds"
+msgstr "nema senfa"
+
+#: src/no-ingredients.inc:180
 msgid "no Nut"
 msgstr "nema oraha"
 
-#: src/no-ingredients.inc:52
+#: src/no-ingredients.inc:181
+#, fuzzy
+#| msgid "no Nut"
+msgid "no Nutmeg"
+msgstr "nema oraha"
+
+#: src/no-ingredients.inc:182
+msgid "no Nutritional yeast"
+msgstr ""
+
+#: src/no-ingredients.inc:183
 msgid "no Oatmeal"
 msgstr "nema zobene kaše"
 
-#: src/no-ingredients.inc:53
+#: src/no-ingredients.inc:184
 msgid "no Oil"
 msgstr "nema ulja"
 
-#: src/no-ingredients.inc:54
-msgid "no Onion"
-msgstr "nema luka"
+#: src/no-ingredients.inc:185
+#, fuzzy
+#| msgid "no Soy sauce"
+msgid "no Okonomiyaki sauce"
+msgstr "nema umaka od soje"
 
-#: src/no-ingredients.inc:55
+#: src/no-ingredients.inc:186
+#, fuzzy
+#| msgid "no Oil"
+msgid "no Olive oil"
+msgstr "nema ulja"
+
+#: src/no-ingredients.inc:187
 msgid "no Olive oil, extra-virgin"
 msgstr "nema maslinovog ulja, ekstra djevičanskog"
 
-#: src/no-ingredients.inc:56
+#: src/no-ingredients.inc:188
+#, fuzzy
+#| msgid "no Cherries, pitted"
+msgid "no Olives, pitted"
+msgstr "nema trešnje, bez koštica"
+
+#: src/no-ingredients.inc:189
+msgid "no Onion"
+msgstr "nema luka"
+
+#: src/no-ingredients.inc:190
+#, fuzzy
+#| msgid "no Baking powder"
+msgid "no Onion powder"
+msgstr "nema praška za pecivo"
+
+#: src/no-ingredients.inc:191
 msgid "no Orange"
 msgstr "nema naranče"
 
-#: src/no-ingredients.inc:57
+#: src/no-ingredients.inc:192
+#, fuzzy
+#| msgid "no Orange"
+msgid "no Oregano"
+msgstr "nema naranče"
+
+#: src/no-ingredients.inc:193
+#, fuzzy
+#| msgid "no Potato"
+msgid "no Pancetta"
+msgstr "nema krumpira"
+
+#: src/no-ingredients.inc:194
+msgid "no Pandan leaves"
+msgstr ""
+
+#: src/no-ingredients.inc:195
+#, fuzzy
+#| msgid "no Peperoni"
+msgid "no Paprika"
+msgstr "nema feferona"
+
+#: src/no-ingredients.inc:196
+msgid "no Parmesan cheese, grated"
+msgstr ""
+
+#: src/no-ingredients.inc:197
 msgid "no Parsley"
 msgstr "nema peršina"
 
-#: src/no-ingredients.inc:58
+#: src/no-ingredients.inc:198
+msgid "no Peach"
+msgstr ""
+
+#: src/no-ingredients.inc:199
 msgid "no Peperoni"
 msgstr "nema feferona"
 
-#: src/no-ingredients.inc:59
+#: src/no-ingredients.inc:200
 msgid "no Pepper"
 msgstr "nema papra"
 
-#: src/no-ingredients.inc:60
+#: src/no-ingredients.inc:201
 msgid "no Peppers"
 msgstr "nema paprike"
 
-#: src/no-ingredients.inc:61
+#: src/no-ingredients.inc:202
+#, fuzzy
+#| msgid "no Parsley"
+msgid "no Pickles"
+msgstr "nema peršina"
+
+#: src/no-ingredients.inc:203
+#, fuzzy
+#| msgid "no Pepper"
+msgid "no Pineapple"
+msgstr "nema papra"
+
+#: src/no-ingredients.inc:204
 msgid "no Pizza sauce"
 msgstr "nema umaka za pizzu"
 
-#: src/no-ingredients.inc:62
+#: src/no-ingredients.inc:205
+#, fuzzy
+#| msgid "no Flour"
+msgid "no Plain flour"
+msgstr "nema brašna"
+
+#: src/no-ingredients.inc:206
+#, fuzzy
+#| msgid "no Potato"
+msgid "no Pomegranate"
+msgstr "nema krumpira"
+
+#: src/no-ingredients.inc:207
+msgid "no Pomegranate juice"
+msgstr ""
+
+#: src/no-ingredients.inc:208
+#, fuzzy
+#| msgid "no Potato"
+msgid "no Pork fat"
+msgstr "nema krumpira"
+
+#: src/no-ingredients.inc:209
+#, fuzzy
+#| msgid "no Peperoni"
+msgid "no Pork loin"
+msgstr "nema feferona"
+
+#: src/no-ingredients.inc:210
 msgid "no Potato"
 msgstr "nema krumpira"
 
-#: src/no-ingredients.inc:63
+#: src/no-ingredients.inc:211
+msgid "no Powdered sugar"
+msgstr ""
+
+#: src/no-ingredients.inc:212
 msgid "no Pumpkin seeds"
 msgstr "nema sjemenka bundeve"
 
-#: src/no-ingredients.inc:64
+#: src/no-ingredients.inc:213
+msgid "no Quinoa"
+msgstr ""
+
+#: src/no-ingredients.inc:214
+#, fuzzy
+#| msgid "no Raisins"
+msgid "no Radish"
+msgstr "nema grožđica"
+
+#: src/no-ingredients.inc:215
 msgid "no Raisins"
 msgstr "nema grožđica"
 
-#: src/no-ingredients.inc:65
+#: src/no-ingredients.inc:216
+#, fuzzy
+#| msgid "no Bell pepper"
+msgid "no Red bell pepper"
+msgstr "nema paprike babure"
+
+#: src/no-ingredients.inc:217
+#, fuzzy
+#| msgid "no Onion"
+msgid "no Red onion"
+msgstr "nema luka"
+
+#: src/no-ingredients.inc:218
+#, fuzzy
+#| msgid "no Pepper"
+msgid "no Red Pepper"
+msgstr "nema papra"
+
+#: src/no-ingredients.inc:219
+#, fuzzy
+#| msgid "no Rice"
+msgid "no Red wine"
+msgstr "nema riže"
+
+#: src/no-ingredients.inc:220
 msgid "no Rice"
 msgstr "nema riže"
 
-#: src/no-ingredients.inc:66
+#: src/no-ingredients.inc:221
+#, fuzzy
+#| msgid "no Rice"
+msgid "no Rice, cooked"
+msgstr "nema riže"
+
+#: src/no-ingredients.inc:222
+msgid "no Rice vermicelli noodles"
+msgstr ""
+
+#: src/no-ingredients.inc:223
+#, fuzzy
+#| msgid "no Sugar"
+msgid "no Rock sugar"
+msgstr "nema šećera"
+
+#: src/no-ingredients.inc:224
+msgid "no Rolled oats"
+msgstr ""
+
+#: src/no-ingredients.inc:225
+msgid "no Rosemary"
+msgstr ""
+
+#: src/no-ingredients.inc:226
+msgid "no Sachet levure"
+msgstr ""
+
+#: src/no-ingredients.inc:227
+#, fuzzy
+#| msgid "no Sugar"
+msgid "no Saffron"
+msgstr "nema šećera"
+
+#: src/no-ingredients.inc:228
+#, fuzzy
+#| msgid "no Salt"
+msgid "no Sage"
+msgstr "nema soli"
+
+#: src/no-ingredients.inc:229
+#, fuzzy
+#| msgid "no Almond"
+msgid "no Salmon"
+msgstr "nema badem"
+
+#: src/no-ingredients.inc:230
 msgid "no Salt"
 msgstr "nema soli"
 
-#: src/no-ingredients.inc:67
+#: src/no-ingredients.inc:231
+#, fuzzy
+#| msgid "no Bell pepper"
+msgid "no Salt and pepper"
+msgstr "nema paprike babure"
+
+#: src/no-ingredients.inc:232
+#, fuzzy
+#| msgid "no Soy sauce"
+msgid "no Saucebinder"
+msgstr "nema umaka od soje"
+
+#: src/no-ingredients.inc:233
+#, fuzzy
+#| msgid "no Salt"
+msgid "no Scallions"
+msgstr "nema soli"
+
+#: src/no-ingredients.inc:234
+#, fuzzy
+#| msgid "no Salt"
+msgid "no Sea salt"
+msgstr "nema soli"
+
+#: src/no-ingredients.inc:235
+msgid "no Semi-skimmed milk"
+msgstr ""
+
+#: src/no-ingredients.inc:236
+#, fuzzy
+#| msgid "no Salt"
+msgid "no Sesame oil"
+msgstr "nema soli"
+
+#: src/no-ingredients.inc:237
+#, fuzzy
+#| msgid "no Sunflower seeds"
+msgid "no Sesame seeds"
+msgstr "nema sjemenka suncokreta"
+
+#: src/no-ingredients.inc:238
+#, fuzzy
+#| msgid "no Salt"
+msgid "no Shallots"
+msgstr "nema soli"
+
+#: src/no-ingredients.inc:239
+msgid "no Shrimps"
+msgstr ""
+
+#: src/no-ingredients.inc:240
+msgid "no Slivered almonds, toasted"
+msgstr ""
+
+#: src/no-ingredients.inc:241
+#, fuzzy
+#| msgid "no Cream"
+msgid "no Sour cream"
+msgstr "nema kreme"
+
+#: src/no-ingredients.inc:242
 msgid "no Soy sauce"
 msgstr "nema umaka od soje"
 
-#: src/no-ingredients.inc:68
-msgid "no Strawberry"
-msgstr "nema jagoda"
+#: src/no-ingredients.inc:243
+#, fuzzy
+#| msgid "no Squash"
+msgid "no Spinach"
+msgstr "nema tikve"
 
-#: src/no-ingredients.inc:69
-msgid "no Sugar"
-msgstr "nema šećera"
+#: src/no-ingredients.inc:244
+#, fuzzy
+#| msgid "no Onion"
+msgid "no Spring onion"
+msgstr "nema luka"
 
-#: src/no-ingredients.inc:70
-msgid "no Sunflower seeds"
-msgstr "nema sjemenka suncokreta"
-
-#: src/no-ingredients.inc:71
+#: src/no-ingredients.inc:245
 msgid "no Squash"
 msgstr "nema tikve"
 
-#: src/no-ingredients.inc:72
+#: src/no-ingredients.inc:246
+#, fuzzy
+#| msgid "no Strawberry"
+msgid "no Star anise"
+msgstr "nema jagoda"
+
+#: src/no-ingredients.inc:247
+msgid "no Strawberry"
+msgstr "nema jagoda"
+
+#: src/no-ingredients.inc:248
+msgid "no Sugar"
+msgstr "nema šećera"
+
+#: src/no-ingredients.inc:249
+msgid "no Sunflower seeds"
+msgstr "nema sjemenka suncokreta"
+
+#: src/no-ingredients.inc:250
+#, fuzzy
+#| msgid "no Potato"
+msgid "no Sweet potatoes"
+msgstr "nema krumpira"
+
+#: src/no-ingredients.inc:251
+#, fuzzy
+#| msgid "no Tangerine"
+msgid "no Tamarind paste"
+msgstr "nema mandarina"
+
+#: src/no-ingredients.inc:252
 msgid "no Tangerine"
 msgstr "nema mandarina"
 
-#: src/no-ingredients.inc:73
+#: src/no-ingredients.inc:253
+msgid "no Thai basil leaves"
+msgstr ""
+
+#: src/no-ingredients.inc:254
+msgid "no Thai chillies"
+msgstr ""
+
+#: src/no-ingredients.inc:255
+#, fuzzy
+#| msgid "no Pizza sauce"
+msgid "no Thai fish sauce"
+msgstr "nema umaka za pizzu"
+
+#: src/no-ingredients.inc:256
+msgid "no Thyme"
+msgstr ""
+
+#: src/no-ingredients.inc:257
+msgid "no Tinned pineapple rings"
+msgstr ""
+
+#: src/no-ingredients.inc:258
 msgid "no Tofu"
 msgstr "nema tofua"
 
-#: src/no-ingredients.inc:74
+#: src/no-ingredients.inc:259
 msgid "no Tomato"
 msgstr "nema rajčica"
 
-#: src/no-ingredients.inc:75
-msgid "no Turmeric, ground"
+#: src/no-ingredients.inc:260
+#, fuzzy
+#| msgid "no Tomato"
+msgid "no Tomato paste"
+msgstr "nema rajčica"
+
+#: src/no-ingredients.inc:261
+#, fuzzy
+#| msgid "no Tomato"
+msgid "no Tomato sauce"
+msgstr "nema rajčica"
+
+#: src/no-ingredients.inc:262
+#, fuzzy
+#| msgid "no Turmeric, ground"
+msgid "no Tumeric ground"
 msgstr "nema kurkume, mljevene"
 
-#: src/no-ingredients.inc:76
-msgid "no Vanilla sugar"
+#: src/no-ingredients.inc:263
+msgid "no Tuna fish"
+msgstr ""
+
+#: src/no-ingredients.inc:264
+msgid "no Unsalted butter"
+msgstr ""
+
+#: src/no-ingredients.inc:265
+#, fuzzy
+#| msgid "no Baking powder"
+msgid "no Vanilla baking powder"
+msgstr "nema praška za pecivo"
+
+#: src/no-ingredients.inc:266
+#, fuzzy
+#| msgid "no Vanilla sugar"
+msgid "no Vanilla extract"
 msgstr "nema vanilij šećera"
 
-#: src/no-ingredients.inc:77
+#: src/no-ingredients.inc:267
+#, fuzzy
+#| msgid "no Vanilla pudding"
+msgid "no Vanilla powdered sugar, for dusting"
+msgstr "nema pudinga od vanilije"
+
+#: src/no-ingredients.inc:268
 msgid "no Vanilla pudding"
 msgstr "nema pudinga od vanilije"
 
-#: src/no-ingredients.inc:78
+#: src/no-ingredients.inc:269
+msgid "no Vanilla sugar"
+msgstr "nema vanilij šećera"
+
+#: src/no-ingredients.inc:270
+msgid "no Vegetable oil"
+msgstr ""
+
+#: src/no-ingredients.inc:271
 msgid "no Vinegar"
 msgstr "nema octa"
 
-#: src/no-ingredients.inc:79
+#: src/no-ingredients.inc:272
 msgid "no Water"
 msgstr "nema vode"
 
-#: src/no-ingredients.inc:80
+#: src/no-ingredients.inc:273
+#, fuzzy
+#| msgid "no Flour"
+msgid "no Wheat flour"
+msgstr "nema brašna"
+
+#: src/no-ingredients.inc:274
+#, fuzzy
+#| msgid "no Wine"
+msgid "no White fish"
+msgstr "nema vina"
+
+#: src/no-ingredients.inc:275
+#, fuzzy
+#| msgid "no Onion"
+msgid "no White onion"
+msgstr "nema luka"
+
+#: src/no-ingredients.inc:276
+msgid "no Whole chicken"
+msgstr ""
+
+#: src/no-ingredients.inc:277
 msgid "no Wine"
 msgstr "nema vina"
 
-#: src/no-ingredients.inc:81
+#: src/no-ingredients.inc:278
+msgid "no Worcestershire sauce"
+msgstr ""
+
+#: src/no-ingredients.inc:279
 msgid "no Yeast"
 msgstr "nema kvasca"
 
-#: src/no-ingredients.inc:82
+#: src/no-ingredients.inc:280
+#, fuzzy
+#| msgid "no Bell pepper"
+msgid "no Yellow bell pepper"
+msgstr "nema paprike babure"
+
+#: src/no-ingredients.inc:281
 msgid "no Yoghurt"
 msgstr "nema jogurta"
 
-#: src/no-ingredients.inc:83
+#: src/no-ingredients.inc:282
+msgid "no Zest of 1 lemon (organic)"
+msgstr ""
+
+#: src/no-ingredients.inc:283
 msgid "no Zinfandel"
 msgstr "nema zinfandela"
 
-#: src/no-ingredients.inc:84
+#: src/no-ingredients.inc:284
 msgid "no Zuccini"
 msgstr "nema tikvica"
