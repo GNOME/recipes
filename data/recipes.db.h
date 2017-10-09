@@ -1,5 +1,17 @@
 #if 0
 
+N_("Midsummer Night's Dream")
+N_("I made up this dessert in a very hot evening of summer.")
+N_("Fill a cup with ice cream adding Muesli, Chocolate and Nuts on top.")
+N_("Optionally, if you like it very sweet, you can add a bit of honey or caramel.")
+N_("If you use chocolate ice cream instead of vanilla, skip the chocolate on top.")
+N_("I made it with Vanilla, but you can try with other plain flavours like sabayon, chocolate or strawberry. ")
+N_("Nuts can be anything, walnuts, pecans, hazelnuts...  Cashews aren't that nice in sweet dishes but if you like them, go ahead.")
+N_("Ingredients")
+N_("Ingredients")
+N_("Ingredients")
+N_("Ingredients")
+N_("Ingredients")
 N_("Boeuf Bourguignon")
 N_("A slightly modified version of a classic. Perfect to serve with potatoes in midwinter. ")
 N_("1. Warm a stockpot or dutch oven over medium heat; add the bacon and saute until crispy and its fat has rendered, about 10 minutes, stirring occasionally. Remove the bacon with a slotted spoon and set aside; increase heat to medium-high. Toss the beef in 2 tbsp of the flour plus the salt and pepper until well-coated; retain any excess flour. Add the beef pieces to the stockpot and brown until darkened and crispy, about 4 minutes per side, in batches if needed to prevent overcrowding.")
