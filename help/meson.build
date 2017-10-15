@@ -23,4 +23,4 @@ gnome.yelp('org.gnome.Recipes',
                    'images/search.png',
                    'images/star.png',
                    'images/trash.png'],
-           languages: ['cs', 'de', 'es', 'ko', 'sv'])
+           languages: ['cs', 'de', 'es', 'ko', 'pl', 'sv'])
