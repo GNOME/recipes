@@ -1,5 +1,16 @@
 #if 0
 
+N_("Struwen")
+N_("Struven are yeast pancakes which are traditionally eaten on good Friday in Germany, predominantly in Münsterland, but also in lower Rhine region.")
+N_("https://de.wikipedia.org/wiki/Struwen")
+N_("[image:1]Heat up 375ml milk in the microwave or on the stove until it is lukewarm. Don't boil!")
+N_("[image:2]Mix flour, yeast, sugar, eggs, warm milk and salt with a mixer.")
+N_("[image:5]Fold in the raisins with a spoon.")
+N_("[timer:00:30:00]Cover and let rise.")
+N_("[image:8]Use two table spoons to lift small balls of the soft dough into boiling oil and brown the small pancakes from both sides on medium heat.")
+N_("[image:0]Serve with cinnamon, sugar and applesauce.")
+N_("Struven can easily burn, therefore use only medium heat when browning.")
+N_("Use several pans to speed things up.")
 N_("Sous Vide")
 N_("An extremely simple French recipe.")
 N_("It goes well with any soft side dish like plain rice, cooked potatoes or tomato&lettuce salad.")

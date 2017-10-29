@@ -26,6 +26,7 @@ N_("GNOME contributor and cook")
 N_("Artist, Computer Scientist, Traveller.")
 N_("I love cooking. :)")
 N_("Aviation, making stuff, in Finland.")
+N_("Just another chef")
 
 
 #endif
