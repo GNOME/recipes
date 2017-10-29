@@ -49,6 +49,24 @@
             ]
         },
         {
+            "name": "rest",
+            "sources": [
+                    {
+                        "type": "git",
+                        "url": "git://git.gnome.org/librest"
+                    }
+            ]
+        },
+        {
+            "name": "gnome-online-accounts",
+            "sources": [
+                    {
+                        "type": "git",
+                        "url": "git://git.gnome.org/gnome-online-accounts"
+                    }
+            ]
+        },
+        {
             "name": "recipes",
             "buildsystem": "meson",
             "builddir": true,
