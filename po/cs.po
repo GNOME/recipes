@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-02 14:52+0000\n"
-"PO-Revision-Date: 2017-10-03 19:24+0200\n"
+"POT-Creation-Date: 2017-10-27 18:09+0000\n"
+"PO-Revision-Date: 2017-10-29 09:08+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -20,8 +20,8 @@ msgstr ""
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
-#: src/gr-window.ui:479 src/gr-about-dialog.c:907 src/gr-window.c:387
-#: src/gr-window.c:1041
+#: src/gr-window.ui:529 src/gr-about-dialog.c:907 src/gr-window.c:391
+#: src/gr-window.c:1098
 msgid "Recipes"
 msgstr "Recepty"
 
@@ -286,11 +286,11 @@ msgstr "Popis:"
 msgid "Picture:"
 msgstr "Obrázek:"
 
-#: src/gr-chef-dialog.ui:4 src/gr-window.c:1128
+#: src/gr-chef-dialog.ui:4 src/gr-window.c:1185
 msgid "Chef Information"
 msgstr "Informace o kuchaři"
 
-#: src/gr-chef-dialog.ui:10 src/gr-window.c:1226
+#: src/gr-chef-dialog.ui:10 src/gr-window.c:1283
 msgid "_Cancel"
 msgstr "_Zrušit"
 
@@ -845,15 +845,19 @@ msgstr "Zpět"
 msgid "Send Update"
 msgstr "Poslat aktualizaci"
 
-#: src/gr-window.ui:518 src/gr-window.c:394
+#: src/gr-window.ui:491
+msgid "Shopping List has been exported to Todoist"
+msgstr "Nákupní seznam byl vyexportován do Todoist"
+
+#: src/gr-window.ui:568 src/gr-window.c:398
 msgid "Cuisines"
 msgstr "Kuchyně"
 
-#: src/gr-window.ui:571
+#: src/gr-window.ui:621
 msgid "Name"
 msgstr "názvu"
 
-#: src/gr-window.ui:579
+#: src/gr-window.ui:629
 msgid "Recency"
 msgstr "novosti"
 
@@ -917,9 +921,10 @@ msgstr "Nápověda"
 msgid "Recipes _Help"
 msgstr "Nápo_věda k Receptům"
 
-#: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:163
-#: src/gr-image-viewer.c:627 src/gr-recipe-exporter.c:172
-#: src/gr-shopping-page.c:751 src/gr-window.c:1162
+#: src/recipe-conflict-dialog.ui:10 src/shopping-list-exporter-dialog.ui:21
+#: src/gr-chef-dialog.c:163 src/gr-image-viewer.c:627
+#: src/gr-recipe-exporter.c:172 src/gr-shopping-list-exporter.c:698
+#: src/gr-window.c:1219
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -942,10 +947,6 @@ msgstr "Sdílet s přáteli"
 #: src/recipe-export-dialog.ui:63
 msgid "Contribute to the Recipes project"
 msgstr "Přispět do projektu Recepty"
-
-#: src/recipe-whats-new-dialog.ui:8
-msgid "What’s New in Recipes"
-msgstr "Co je v Receptech nového"
 
 #: src/recipe-surprise.ui:28
 msgid "GNOME turns 20 !"
@@ -970,6 +971,31 @@ msgstr ""
 #: src/recipe-surprise.ui:79
 msgid "Let’s Party"
 msgstr "Pojďme to oslavit"
+
+#: src/recipe-whats-new-dialog.ui:8
+msgid "What’s New in Recipes"
+msgstr "Co je v Receptech nového"
+
+#: src/shopping-list-exporter-dialog.ui:13 src/gr-shopping-list-exporter.c:278
+msgid "Export Ingredients"
+msgstr "Export surovin"
+
+#: src/shopping-list-exporter-dialog.ui:55
+msgid "Export"
+msgstr "Export"
+
+#: src/shopping-list-exporter-dialog.ui:101
+msgid "Email"
+msgstr "E-mail"
+
+#: src/shopping-list-exporter-dialog.ui:136
+#: src/shopping-list-exporter-dialog.ui:201
+msgid "Todoist"
+msgstr "Todoist"
+
+#: src/shopping-list-exporter-dialog.ui:152
+msgid "Add service"
+msgstr "Přidat službu"
 
 #: src/gr-about-dialog.c:132
 msgid "Learn more about Builder"
@@ -1097,7 +1123,7 @@ msgstr "Zobrazit kategorii"
 msgid "Select an Image"
 msgstr "Výběr obrázku"
 
-#: src/gr-chef-dialog.c:162 src/gr-image-viewer.c:626 src/gr-window.c:1161
+#: src/gr-chef-dialog.c:162 src/gr-image-viewer.c:626 src/gr-window.c:1218
 msgid "Open"
 msgstr "Otevřít"
 
@@ -1761,7 +1787,7 @@ msgstr "Nelze zpracovat %s jako číslo"
 msgid "Save the exported recipe"
 msgstr "Uložit exportované recepty"
 
-#: src/gr-recipe-exporter.c:171 src/gr-shopping-page.c:750
+#: src/gr-recipe-exporter.c:171 src/gr-shopping-list-exporter.c:697
 msgid "Save"
 msgstr "Uložit"
 
@@ -1906,7 +1932,7 @@ msgstr "Chyba při tisku souboru:"
 msgid "No details"
 msgstr "Bez podrobností"
 
-#: src/gr-recipes-page.c:221 src/gr-window.c:1326
+#: src/gr-recipes-page.c:221 src/gr-window.c:1383
 msgid "My Recipes"
 msgstr "Moje recepty"
 
@@ -1914,11 +1940,11 @@ msgstr "Moje recepty"
 msgid "Favorites"
 msgstr "Oblíbené"
 
-#: src/gr-recipes-page.c:223 src/gr-window.c:1274
+#: src/gr-recipes-page.c:223 src/gr-window.c:1331
 msgid "All Recipes"
 msgstr "Všechny recepty"
 
-#: src/gr-recipes-page.c:224 src/gr-window.c:1283
+#: src/gr-recipes-page.c:224 src/gr-window.c:1340
 msgid "New Recipes"
 msgstr "Nové recepty"
 
@@ -2020,8 +2046,20 @@ msgstr "Podzim"
 msgid "Winter"
 msgstr "Zima"
 
-#: src/gr-shopping-list-formatter.c:42 src/gr-shopping-list-printer.c:135
-#: src/gr-shopping-page.c:776
+#: src/gr-shopping-list-exporter.c:270
+msgid "Add Account"
+msgstr "Přidání účtu"
+
+#: src/gr-shopping-list-exporter.c:476 src/gr-shopping-list-exporter.c:566
+msgid "Shopping List from Recipes"
+msgstr "Nákupní seznam z Receptů"
+
+#: src/gr-shopping-list-exporter.c:694
+msgid "Save the shopping list"
+msgstr "Uložit nákupní seznam"
+
+#: src/gr-shopping-list-exporter.c:724 src/gr-shopping-list-formatter.c:42
+#: src/gr-shopping-list-printer.c:135
 msgid "Shopping List"
 msgstr "Nákupní seznam"
 
@@ -2037,7 +2075,7 @@ msgstr "Pro následující recepty"
 msgid "Items"
 msgstr "Položky"
 
-#: src/gr-shopping-page.c:101
+#: src/gr-shopping-page.c:103
 #, c-format
 msgid "%d ingredient marked for purchase"
 msgid_plural "%d ingredients marked for purchase"
@@ -2045,7 +2083,7 @@ msgstr[0] "%d přísada označena k nákupu"
 msgstr[1] "%d přísady označeny k nákupu"
 msgstr[2] "%d přísad označeno k nákupu"
 
-#: src/gr-shopping-page.c:120
+#: src/gr-shopping-page.c:122
 #, c-format
 msgid "Buy Ingredients (%d recipe)"
 msgid_plural "Buy Ingredients (%d recipes)"
@@ -2053,17 +2091,13 @@ msgstr[0] "Nakoupit suroviny (%d recept)"
 msgstr[1] "Nakoupit suroviny (%d recepty)"
 msgstr[2] "Nakoupit suroviny (%d receptů)"
 
-#: src/gr-shopping-page.c:125
+#: src/gr-shopping-page.c:127
 #, c-format
 msgid "%d Recipe marked for preparation"
 msgid_plural "%d Recipes marked for preparation"
 msgstr[0] "%d recept označen k přípravě"
 msgstr[1] "%d recepty označeny k přípravě"
 msgstr[2] "%d receptů označeno k přípravě"
-
-#: src/gr-shopping-page.c:747
-msgid "Save the shopping list"
-msgstr "Uložit nákupní seznam"
 
 #: src/gr-spice-row.c:131
 msgid "Mild or somewhat spicy"
@@ -2518,11 +2552,11 @@ msgstr ""
 "Nainstalujte prosím ve svém systému xdg-desktop-portal a xdg-desktop-portal-"
 "gtk"
 
-#: src/gr-window.c:252
+#: src/gr-window.c:256
 msgid "Add a New Recipe"
 msgstr "Přidání nového receptu"
 
-#: src/gr-window.c:533
+#: src/gr-window.c:537
 #, c-format
 msgid ""
 "The “%s” recipe has unsaved changes.\n"
@@ -2531,7 +2565,7 @@ msgstr ""
 "Recept „%s“ má neuložené změny.\n"
 "Chcete i přesto okno zavřít?"
 
-#: src/gr-window.c:536
+#: src/gr-window.c:540
 msgid ""
 "The new recipe has not been saved.\n"
 "Close the window anyway?"
@@ -2539,76 +2573,76 @@ msgstr ""
 "Nový recept nebyl uložen.\n"
 "Chcete i přesto okno zavřít?"
 
-#: src/gr-window.c:656
+#: src/gr-window.c:664
 #, c-format
 msgid "Recipe “%s” deleted"
 msgstr "Recept „%s“ byl smazán"
 
-#: src/gr-window.c:706
+#: src/gr-window.c:714
 #, c-format
 msgid "You updated your contributed “%s” recipe. Send an update?"
 msgstr ""
 "Aktualizoval(a) jste svůj příspěvek „%s“ do Receptů. Odeslat aktualizaci?"
 
-#: src/gr-window.c:836
+#: src/gr-window.c:855
 msgid "Ready to Cook!"
 msgstr "Připraveno k vaření/pečení!"
 
-#: src/gr-window.c:882
+#: src/gr-window.c:937
 msgid "Sorted by Name"
 msgstr "Seřazeno podle názvu"
 
-#: src/gr-window.c:887
+#: src/gr-window.c:942
 msgid "Sorted by Recency"
 msgstr "Seřazeno podle novosti"
 
-#: src/gr-window.c:1082
+#: src/gr-window.c:1139
 msgid "Imported Recipes"
 msgstr "Importované recepty"
 
-#: src/gr-window.c:1158
+#: src/gr-window.c:1215
 msgid "Select a recipe file"
 msgstr "Výběr souboru s receptem"
 
-#: src/gr-window.c:1184
+#: src/gr-window.c:1241
 #, c-format
 msgid "Recipes have been exported to “%s”"
 msgstr "Recepty byly vyexportovány jako „%s“"
 
-#: src/gr-window.c:1222
+#: src/gr-window.c:1279
 msgid "Select a file"
 msgstr "Výběr souboru"
 
-#: src/gr-window.c:1225
+#: src/gr-window.c:1282
 msgid "_Export"
 msgstr "_Export"
 
-#: src/gr-window.c:1255
+#: src/gr-window.c:1312
 #, c-format
 msgid "Chefs: %s"
 msgstr "Kuchaři: %s"
 
-#: src/gr-window.c:1265
+#: src/gr-window.c:1322
 msgid "Favorite Recipes"
 msgstr "Oblíbené recepty"
 
-#: src/gr-window.c:1313
+#: src/gr-window.c:1370
 msgid "Buy Ingredients"
 msgstr "Nákup surovin"
 
 #. TRANSLATORS: %s gets replaced by a version number
-#: src/gr-window.c:1457
+#: src/gr-window.c:1514
 #, c-format
 msgid "Recipes %s"
 msgstr "Recepty %s"
 
 #. TRANSLATORS: %s gets replaced by a date
-#: src/gr-window.c:1474
+#: src/gr-window.c:1531
 #, c-format
 msgid "Released: %s"
 msgstr "Vydáno: %s"
 
-#: src/gr-window.c:1477
+#: src/gr-window.c:1534
 #, c-format
 msgid "Unreleased"
 msgstr "Nevydáno"
