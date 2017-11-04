@@ -32,6 +32,10 @@
 #include "gr-mail.h"
 #include "gr-utils.h"
 
+#ifndef O_PATH
+#define O_PATH 0
+#endif
+
 typedef struct {
         GtkWindow *window;
         char *handle;
