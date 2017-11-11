@@ -150,10 +150,62 @@ parse_as_vulgar_fraction (double    *number,
         return FALSE;
 }
 
+static const char *sup[] = { "⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹" };
+static const char *sub[] = { "₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉" };
+
 static gboolean
-parse_as_fraction (double    *number,
-                   char     **input,
-                   GError   **error)
+parse_as_fancy_fraction (double    *number,
+                         char     **input,
+                         GError   **error)
+{
+        char *p;
+        int num, denom;
+        int i;
+
+        num = 0;
+        denom = 0;
+        p = *input;
+        while (*p) {
+                for (i = 0; i < 10; i++) {
+                        if (strncmp (p, sup[i], strlen (sup[i])) == 0) {
+                                num = 10 * num + i;
+                                p += strlen (sup[i]);
+                                break;
+                        }
+                }
+                if (i == 10)
+                        break;
+        }
+        if (strncmp (p, "⁄", strlen ("⁄")) != 0)
+                return FALSE;
+        p += strlen ("⁄");
+        while (*p) {
+                for (i = 0; i < 10; i++) {
+                        if (strncmp (p, sub[i], strlen (sub[i])) == 0) {
+                                denom = 10 * denom + i;
+                                p += strlen (sub[i]);
+                                break;
+                        }
+                }
+                if (i == 10)
+                        break;
+        }
+        if (*p != '\0' && *p != ' ')
+                return FALSE;
+
+        if (num == 0 || denom == 0)
+                return FALSE;
+
+        *number = (double)num/(double)denom;
+        *input = p;
+
+        return TRUE;
+}
+
+static gboolean
+parse_as_ascii_fraction (double    *number,
+                         char     **input,
+                         GError   **error)
 {
         char *orig = *input;
         gint64 num, denom;
@@ -234,11 +286,9 @@ gr_number_parse (double    *number,
 {
         char *orig = *input;
 
-        if (parse_as_vulgar_fraction (number, input, NULL)) {
-                return TRUE;
-        }
-
-        if (parse_as_fraction (number, input, NULL)) {
+        if (parse_as_vulgar_fraction (number, input, NULL) ||
+            parse_as_fancy_fraction (number, input, NULL) ||
+            parse_as_ascii_fraction (number, input, NULL)) {
                 return TRUE;
         }
 
@@ -251,7 +301,8 @@ gr_number_parse (double    *number,
                 valid = skip_whitespace (&orig);
 
                 if (parse_as_vulgar_fraction (&n, &orig, NULL) ||
-                    parse_as_fraction (&n, &orig, NULL)) {
+                    parse_as_fancy_fraction (&n, &orig, NULL) ||
+                    parse_as_ascii_fraction (&n, &orig, NULL)) {
                         *number = *number + n;
                         *input = orig;
                         return TRUE;
@@ -272,9 +323,6 @@ gr_number_parse (double    *number,
 
         return FALSE;
 }
-
-static const char *sup[] = { "⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹" };
-static const char *sub[] = { "₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉" };
 
 static void
 append_digits (GString    *s,
