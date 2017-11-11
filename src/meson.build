@@ -29,7 +29,7 @@ resources = gnome.compile_resources('resources',
                                     source_dir: 'src')
 
 enums += gnome.mkenums('types',
-                       sources: 'gr-diet.h',
+                       sources: [ 'gr-diet.h', 'gr-unit.h' ],
                        c_template: 'types.c.template',
                        h_template: 'types.h.template')
 
