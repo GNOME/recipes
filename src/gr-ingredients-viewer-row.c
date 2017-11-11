@@ -31,6 +31,8 @@
 #include "gr-utils.h"
 #include "gr-number.h"
 #include "gr-recipe-store.h"
+#include "gr-convert-units.h"
+#include "types.h"
 
 struct _GrIngredientsViewerRow
 {
@@ -50,8 +52,9 @@ struct _GrIngredientsViewerRow
         GtkEntryCompletion *unit_completion;
         GtkCellRenderer *unit_cell;
 
+        double value;
+        GrUnit unit;
         char *amount;
-        char *unit;
         char *ingredient;
 
         gboolean editable;
@@ -67,6 +70,7 @@ G_DEFINE_TYPE (GrIngredientsViewerRow, gr_ingredients_viewer_row, GTK_TYPE_LIST_
 enum {
         PROP_0,
         PROP_AMOUNT,
+        PROP_VALUE,
         PROP_UNIT,
         PROP_INGREDIENT,
         PROP_SIZE_GROUP,
@@ -89,7 +93,6 @@ gr_ingredients_viewer_row_finalize (GObject *object)
         GrIngredientsViewerRow *self = GR_INGREDIENTS_VIEWER_ROW (object);
 
         g_free (self->amount);
-        g_free (self->unit);
         g_free (self->ingredient);
 
         g_clear_object (&self->group);
@@ -111,8 +114,12 @@ gr_ingredients_viewer_row_get_property (GObject    *object,
                 g_value_set_string (value, self->amount);
                 break;
 
+          case PROP_VALUE:
+                g_value_set_double (value, self->value);
+                break;
+
           case PROP_UNIT:
-                g_value_set_string (value, self->unit);
+                g_value_set_enum (value, self->unit);
                 break;
 
           case PROP_INGREDIENT:
@@ -139,23 +146,24 @@ gr_ingredients_viewer_row_get_property (GObject    *object,
 static void
 update_unit (GrIngredientsViewerRow *row)
 {
-        g_autofree char *tmp = NULL;
-        const char *amount;
-        const char *space;
-        const char *unit;
+        GString *s;
 
-        amount = row->amount ? row->amount : "";
-        space = amount[0] ? " " : "";
-        unit = row->unit ? row->unit : "";
-        tmp = g_strdup_printf ("%s%s%s", amount, space, unit);
-        if (tmp[0] == '\0' && row->editable) {
+        s = g_string_new ("");
+        if (row->amount)
+                g_string_append (s, row->amount);
+        else
+                gr_convert_format (s, row->value, row->unit);
+
+        if (s->len == 0 && row->editable) {
                 gtk_style_context_add_class (gtk_widget_get_style_context (row->unit_label), "dim-label");
                 gtk_label_set_label (GTK_LABEL (row->unit_label), _("Amount…"));
         }
         else {
                 gtk_style_context_remove_class (gtk_widget_get_style_context (row->unit_label), "dim-label");
-                gtk_label_set_label (GTK_LABEL (row->unit_label), tmp);
+                gtk_label_set_label (GTK_LABEL (row->unit_label), s->str);
         }
+
+        g_string_free (s, TRUE);
 }
 
 static void
@@ -181,11 +189,18 @@ gr_ingredients_viewer_row_set_amount (GrIngredientsViewerRow *row,
 }
 
 static void
-gr_ingredients_viewer_row_set_unit (GrIngredientsViewerRow *row,
-                                    const char             *unit)
+gr_ingredients_viewer_row_set_value (GrIngredientsViewerRow *row,
+                                     double                  value)
 {
-        g_free (row->unit);
-        row->unit = g_strdup (unit);
+        row->value = value;
+        update_unit (row);
+}
+
+static void
+gr_ingredients_viewer_row_set_unit (GrIngredientsViewerRow *row,
+                                    GrUnit                  unit)
+{
+        row->unit = unit;
         update_unit (row);
 }
 
@@ -248,8 +263,12 @@ gr_ingredients_viewer_row_set_property (GObject      *object,
                 gr_ingredients_viewer_row_set_amount (self, g_value_get_string (value));
                 break;
 
+          case PROP_VALUE:
+                gr_ingredients_viewer_row_set_value (self, g_value_get_double (value));
+                break;
+
           case PROP_UNIT:
-                gr_ingredients_viewer_row_set_unit (self, g_value_get_string (value));
+                gr_ingredients_viewer_row_set_unit (self, g_value_get_enum (value));
                 break;
 
           case PROP_INGREDIENT:
@@ -305,25 +324,25 @@ show_help (gpointer data)
 static void
 edit_unit (GrIngredientsViewerRow *row)
 {
-        g_autofree char *tmp = NULL;
-        const char *amount;
-        const char *space;
-        const char *unit;
+        GString *s;
 
-        amount = row->amount ? row->amount : "";
-        space = amount[0] ? " " : "";
-        unit = row->unit ? row->unit : "";
-        tmp = g_strdup_printf ("%s%s%s", amount, space, unit);
+        s = g_string_new ("");
+        if (row->amount)
+                g_string_append (s, row->amount);
+        else
+                gr_convert_format (s, row->value, row->unit);
 
         save_ingredient (row);
 
         if (row->editable) {
-                gtk_entry_set_text (GTK_ENTRY (row->unit_entry), tmp);
+                gtk_entry_set_text (GTK_ENTRY (row->unit_entry), s->str);
                 gtk_stack_set_visible_child_name (GTK_STACK (row->unit_stack), "unit_entry");
                 gtk_widget_grab_focus (row->unit_entry);
                 show_help (row);
                 g_signal_emit (row, signals[EDIT], 0);
         }
+
+        g_string_free (s, TRUE);
 }
 
 static void
@@ -366,11 +385,14 @@ parse_unit (const char  *text,
 
 static void
 set_unit_error (GrIngredientsViewerRow *row,
-                gboolean                error)
+                const char             *text)
 {
-        row->unit_error = error;
+        g_free (row->amount);
+        row->amount = g_strdup (text);
 
-        if (error) {
+        row->unit_error = text != NULL;
+
+        if (text != NULL) {
                 gtk_style_context_add_class (gtk_widget_get_style_context (row->unit_entry), "error");
                 gtk_style_context_add_class (gtk_widget_get_style_context (row->unit_label), "error");
         }
@@ -384,7 +406,7 @@ set_unit_error (GrIngredientsViewerRow *row,
 static void
 unit_text_changed (GrIngredientsViewerRow *row)
 {
-        set_unit_error (row, FALSE);
+        set_unit_error (row, NULL);
 }
 
 static gboolean
@@ -397,9 +419,8 @@ save_unit (GrIngredientsViewerRow *row)
                 const char *text;
 
                 text = gtk_entry_get_text (GTK_ENTRY (row->unit_entry));
-                if (!parse_unit (text, &row->amount, &row->unit)) {
-                        if (text && text[strspn (text, " ")])
-                                set_unit_error (row, TRUE);
+                if (!gr_parse_units (text, &row->value, &row->unit)) {
+                        set_unit_error (row, text);
                 }
 
                 update_unit (row);
@@ -486,9 +507,14 @@ gr_ingredients_viewer_row_class_init (GrIngredientsViewerRowClass *klass)
                                      G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_AMOUNT, pspec);
 
-        pspec = g_param_spec_string ("unit", NULL, NULL,
-                                     NULL,
+        pspec = g_param_spec_double ("value", NULL, NULL,
+                                     -G_MINDOUBLE, G_MAXDOUBLE, 0.0,
                                      G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_VALUE, pspec);
+
+        pspec = g_param_spec_enum ("unit", NULL, NULL,
+                                   GR_TYPE_UNIT, GR_UNIT_UNKNOWN,
+                                   G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_UNIT, pspec);
 
         pspec = g_param_spec_string ("ingredient", NULL, NULL,
@@ -706,7 +732,7 @@ get_units_model (GrIngredientsViewerRow *row)
                                                    4, "",
                                                    -1);
 
-                for (i = GR_UNIT_UNKNOWN + 1; i <= GR_LAST_UNIT; i++) {
+                for (i = GR_UNIT_NUMBER + 1; i <= GR_LAST_UNIT; i++) {
                         const char *abbrev;
                         const char *name;
                         const char *plural;

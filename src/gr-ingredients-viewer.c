@@ -148,23 +148,26 @@ collect_ingredients (GrIngredientsViewer *viewer)
         children = gtk_container_get_children (GTK_CONTAINER (viewer->list));
         for (l = children; l; l = l->next) {
                 GrIngredientsViewerRow *row = l->data;
-                g_autofree char *amount = NULL;
-                g_autofree char *unit = NULL;
+                double amount;
+                GrUnit unit;
                 g_autofree char *ingredient = NULL;
                 const char *id;
+                const char *unit_name;
 
                 g_object_get (row,
-                              "amount", &amount,
+                              "value", &amount,
                               "unit", &unit,
                               "ingredient", &ingredient,
                               NULL);
 
                 id = gr_ingredient_get_id (ingredient);
 
+                unit_name = gr_unit_get_abbreviation (unit);
+
                 if (s->len > 0)
                         g_string_append (s, "\n");
-                g_string_append_printf (s, "%s\t%s\t%s\t%s",
-                                        amount ? amount : "", unit ? unit : "", id ? id : ingredient, viewer->title);
+                g_string_append_printf (s, "%g\t%s\t%s\t%s",
+                                        amount, unit_name, id ? id : ingredient, viewer->title);
         }
         g_list_free (children);
 
@@ -283,8 +286,8 @@ add_row (GrIngredientsViewer *viewer)
         GtkWidget *row;
 
         row = g_object_new (GR_TYPE_INGREDIENTS_VIEWER_ROW,
-                            "amount", "",
-                            "unit", "",
+                            "value", 0.0,
+                            "unit", GR_UNIT_UNKNOWN,
                             "ingredient", "",
                             "size-group", viewer->group,
                             "editable", viewer->editable,
@@ -328,10 +331,9 @@ gr_ingredients_viewer_set_ingredients (GrIngredientsViewer *viewer,
                 unit = gr_ingredients_list_get_unit (ingredients, viewer->title, ings[i]);
                 amount = gr_ingredients_list_get_amount (ingredients, viewer->title, ings[i]) * scale;
 
-                gr_convert_format (s, amount, unit);
-
                 row = g_object_new (GR_TYPE_INGREDIENTS_VIEWER_ROW,
-                                    "unit", s->str,
+                                    "unit", unit,
+                                    "value", amount,
                                     "ingredient", ings[i],
                                     "size-group", viewer->group,
                                     "editable", viewer->editable,
