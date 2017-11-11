@@ -524,3 +524,91 @@ gr_convert_format (GString *s, double amount, GrUnit unit)
 
         gr_convert_format_for_display (s, amount, unit, amount2, unit2);
 }
+
+static gboolean
+parse_unit (const char  *text,
+            double      *number,
+            GrUnit      *unit)
+{
+        char *tmp;
+        g_autofree char *num = NULL;
+
+        tmp = (char *)text;
+        skip_whitespace (&tmp);
+        if (!gr_number_parse (number, &tmp, NULL)) {
+                *unit = GR_UNIT_UNKNOWN;
+        }
+        else {
+                skip_whitespace (&tmp);
+                *unit = gr_unit_parse (&tmp, NULL);
+        }
+
+        return *unit != GR_UNIT_UNKNOWN;
+}
+
+gboolean
+gr_parse_units (const char  *text,
+                double      *amount,
+                GrUnit      *unit)
+{
+        char *p;
+        GSettings *settings = gr_settings_get ();
+
+        if ((p = strchr (text, ',')) != NULL) {
+                g_autofree char *text1 = NULL;
+                g_autofree char *text2 = NULL;
+                double a1, a2;
+                GrUnit u1, u2;
+                GrDimension dim1, dim2;
+
+                text1 = g_strndup (text, p - text);
+                text2 = g_strdup (p + 1);
+
+                if (!parse_unit (text1, &a1, &u1) ||
+                    !parse_unit (text2, &a2, &u2)) {
+                        *amount = 0.0;
+                        *unit = GR_UNIT_UNKNOWN;
+
+                        return FALSE;
+                }
+
+                dim1 = gr_unit_get_dimension (u1);
+                dim2 = gr_unit_get_dimension (u2);
+
+                if (dim1 == GR_DIMENSION_VOLUME &&
+                    dim2 == GR_DIMENSION_VOLUME) {
+                        int preferred;
+
+                        preferred = g_settings_get_enum (settings, "volume-unit");
+                        gr_convert_volume (&a1, &u1, preferred);
+                        gr_convert_volume (&a2, &u2, preferred);
+
+                        *amount = a1 + a2;
+                        *unit = u1;
+
+                        return TRUE;
+                }
+                else if (dim1 == GR_DIMENSION_MASS &&
+                         dim2 == GR_DIMENSION_MASS) {
+                        int preferred;
+
+                        preferred = g_settings_get_enum (settings, "weight-unit");
+                        gr_convert_weight (&a1, &u1, preferred);
+                        gr_convert_weight (&a2, &u2, preferred);
+
+                        *amount = a1 + a2;
+                        *unit = u1;
+
+                        return TRUE;
+                }
+                else {
+                        *amount = 0.0;
+                        *unit = GR_UNIT_UNKNOWN;
+
+                        return FALSE;
+                }
+        }
+        else {
+                return parse_unit (text, amount, unit);
+        }
+}

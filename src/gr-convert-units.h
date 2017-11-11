@@ -50,5 +50,6 @@ void                gr_convert_human_readable           (double *amount, GrUnit 
 void                gr_convert_multiple_units           (double *amount1, GrUnit *unit1, double *amount2, GrUnit *unit2);
 void                gr_convert_format_for_display       (GString *s, double a1, GrUnit u1, double a2, GrUnit u2);
 void                gr_convert_format                   (GString *s, double amount, GrUnit unit);
+gboolean            gr_parse_units                      (const char *text, double *amount, GrUnit *unit);
 
 G_END_DECLS
