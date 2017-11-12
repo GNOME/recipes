@@ -24,6 +24,8 @@
  
  typedef enum {
          GR_UNIT_UNKNOWN,
+         GR_UNIT_NONE,
+         GR_UNIT_NUMBER,
          GR_UNIT_GRAM,
          GR_UNIT_KILOGRAM,
          GR_UNIT_POUND,
@@ -51,10 +53,11 @@
  } GrUnit;
  
  typedef enum {
-         GR_DIMENSION_DISCRETE,
-         GR_DIMENSION_VOLUME,
-         GR_DIMENSION_MASS,
-         GR_DIMENSION_LENGTH
+        GR_DIMENSION_NONE,
+        GR_DIMENSION_DISCRETE,
+        GR_DIMENSION_VOLUME,
+        GR_DIMENSION_MASS,
+        GR_DIMENSION_LENGTH
  } GrDimension;
  
  GrUnit       gr_unit_parse (char   **string,

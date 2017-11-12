@@ -40,7 +40,9 @@
  } GrUnitData;
  
  static GrUnitData units[] = {
-         { GR_UNIT_UNKNOWN,     GR_DIMENSION_DISCRETE, "",        "",                                "",                       "" },
+         { GR_UNIT_UNKNOWN,     GR_DIMENSION_NONE,      "",        "",                                "",                       "" },
+         { GR_UNIT_NONE,        GR_DIMENSION_NONE,      "",        "",                                "",                       "" },
+         { GR_UNIT_NUMBER,      GR_DIMENSION_DISCRETE,  "",        "",                                "",                       "" },
          { GR_UNIT_GRAM,        GR_DIMENSION_MASS,     "g",       NC_("unit abbreviation", "g"),     NC_("unit name", "gram"), NC_("unit plural", "grams") },
          { GR_UNIT_KILOGRAM,    GR_DIMENSION_MASS,     "kg",      NC_("unit abbreviation", "kg"),    NC_("unit name", "kilogram"), NC_("unit plural", "kilograms") },
          { GR_UNIT_POUND,       GR_DIMENSION_MASS,     "lb",      NC_("unit abbreviation", "lb"),    NC_("unit name", "pound"), NC_("unit plural", "pounds") },
@@ -127,7 +129,7 @@
          GrUnitData *data = find_unit (unit);
          if (data)
                  return data->dimension;
-         return GR_DIMENSION_DISCRETE;
+         return GR_DIMENSION_NONE;
  }
  
  GrUnit
@@ -137,7 +139,7 @@
          int i;
          const char *nu;
  
-         for (i = 0; i < G_N_ELEMENTS (units); i++) {
+         for (i = 1; i < G_N_ELEMENTS (units); i++) {
                  nu = g_dpgettext2 (NULL, "unit name", units[i].display_name);
                  if (g_str_has_prefix (*input, nu) && space_or_nul ((*input)[strlen (nu)])) {
                          *input += strlen (nu);
@@ -145,7 +147,7 @@
                  }
          }
  
-         for (i = 0; i < G_N_ELEMENTS (units); i++) {
+         for (i = 1; i < G_N_ELEMENTS (units); i++) {
                  nu = g_dpgettext2 (NULL, "unit abbreviation", units[i].abbreviation);
                  if (g_str_has_prefix (*input, nu) && space_or_nul ((*input)[strlen (nu)])) {
                          *input += strlen (nu);
@@ -153,7 +155,7 @@
                  }
          }
  
-         for (i = 0; i < G_N_ELEMENTS (units); i++) {
+         for (i = 1; i < G_N_ELEMENTS (units); i++) {
                  nu = units[i].name;
                  if (g_str_has_prefix (*input, nu) && space_or_nul ((*input)[strlen (nu)])) {
                          *input += strlen (nu);
