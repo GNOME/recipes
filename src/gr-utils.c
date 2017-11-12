@@ -631,7 +631,7 @@ remove_image (const char *path)
                 g_remove (path);
         }
         else {
-                g_print ("Not removing image %s", path);
+                g_debug ("Not removing image %s", path);
         }
 }
 
