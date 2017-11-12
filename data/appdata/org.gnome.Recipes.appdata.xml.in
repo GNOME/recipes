@@ -59,6 +59,23 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="2.0.2"  date="2017-11-11">
+      <description>
+        <p>
+          This release fixes a serious bug in version 2.0.0, which could cause
+          all ingredients to lose their amounts when editing a recipe.
+        </p>
+        <p>
+          We also fixed an issue where ingredients without amount would always
+          get displayed with an errant '1' as amount.
+        </p>
+        <ul>
+          <li>Allow recipes to have long names</li>
+          <li>New recipes: Tzatziki, Soy Chicken, Rice Maize Apple Cake</li>
+          <li>New and updated translations: Czech, German</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.0.0"  date="2017-10-30">
       <description>
         <p>
