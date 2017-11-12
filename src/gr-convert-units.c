@@ -468,7 +468,9 @@ void
 gr_convert_format_for_display (GString *s, double a1, GrUnit u1, double a2, GrUnit u2)
 {
 
-        if (u1 == GR_UNIT_UNKNOWN) {
+        if (u1 == GR_UNIT_NONE) {
+        }
+        if (u1 == GR_UNIT_NUMBER) {
                 g_autofree char *num = NULL;
 
                 num = gr_number_format (a1);
@@ -535,12 +537,19 @@ parse_unit (const char  *text,
 
         tmp = (char *)text;
         skip_whitespace (&tmp);
-        if (!gr_number_parse (number, &tmp, NULL)) {
+        if (tmp[0] == '\0') {
+                *number = 0.0;
+                *unit = GR_UNIT_NONE;
+        }
+        else if (!gr_number_parse (number, &tmp, NULL)) {
                 *unit = GR_UNIT_UNKNOWN;
         }
         else {
                 skip_whitespace (&tmp);
-                *unit = gr_unit_parse (&tmp, NULL);
+                if (tmp[0] == '\0')
+                        *unit = GR_UNIT_NUMBER;
+                else
+                        *unit = gr_unit_parse (&tmp, NULL);
         }
 
         return *unit != GR_UNIT_UNKNOWN;
