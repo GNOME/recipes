@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: recipes 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-10-31 22:07+0000\n"
-"PO-Revision-Date: 2017-11-11 18:29+0100\n"
+"PO-Revision-Date: 2017-11-13 22:43+0100\n"
 "Last-Translator: José María Martínez <josemar1992@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -316,7 +316,7 @@ msgstr ""
 #: data/recipes.db.h:28
 msgid "[timer:00:20:00,Bake]Bake for 20 minutes at [temperature:220C]."
 msgstr ""
-"[tiempo:00:20:00,horneando]Hornear durante 30 minutos a [temperature:220C]."
+"[timer:00:20:00,horneando]Hornear durante 30 minutos a [temperature:220C]."
 
 #: data/recipes.db.h:29 data/recipes.db.h:221
 msgid "[image:0]Enjoy!"
@@ -563,7 +563,7 @@ msgstr "Mi receta favorita de pastel de limón. Sale ligero y jugoso."
 
 #: data/recipes.db.h:67
 msgid "Preheat the oven to [temperature:175C] - [temperature:195C]."
-msgstr "Precalentar el horno a [temperatura:175ºC] - [temperatura:195ºC]."
+msgstr "Precalentar el horno a [temperature:175C] - [temperature:195C]."
 
 #: data/recipes.db.h:68
 msgid ""
@@ -732,8 +732,8 @@ msgid ""
 "beets into French fry-sized strips. Set aside."
 msgstr ""
 "[timer:00:45:00,Hornear las remolachas]Cuando los huesos hiervan a fuego "
-"lento, precaliente el horno a [temperatura: 190ºC]. Coloque las remolachas "
-"en papel de aluminio, aderécelas con el aceite de oliva, y envuelvalas bien. "
+"lento, precaliente el horno a [temperature: 190C]. Coloque las remolachas en "
+"papel de aluminio, aderécelas con el aceite de oliva, y envuelvalas bien. "
 "Áselas hasta que se puedan pinchar con un tenedor, 45-60 minutos. Retírelas "
 "del horno, déjelas enfriar, luego pélelas y córtelas en tiras. Apártelas."
 
@@ -1856,7 +1856,7 @@ msgid ""
 "[timer:00:20:00]Bake at [temperature:400F] for 20 to 30 minutes until dough "
 "is baked."
 msgstr ""
-"[timer:00:20:00]Hornee a [temperature:400F] durante 20 o 30 minutos hasta "
+"[timer:00:20:00]Hornee a [temperature:200C] durante 20 o 30 minutos hasta "
 "que la masa esté hecha."
 
 #: data/recipes.db.h:256
@@ -1916,7 +1916,7 @@ msgstr ""
 
 #: data/recipes.db.h:266
 msgid "[image:12]Turn on the oven at [temperature:200C]."
-msgstr "[image:12]Encender el horno a [temperatura:200ºC]."
+msgstr "[image:12]Encender el horno a [temperature:200C]."
 
 #: data/recipes.db.h:267
 msgid ""
