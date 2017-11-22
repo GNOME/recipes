@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-14 09:31+0000\n"
-"PO-Revision-Date: 2017-11-17 11:55+0100\n"
+"POT-Creation-Date: 2017-11-21 06:51+0000\n"
+"PO-Revision-Date: 2017-11-22 12:43+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -214,7 +214,7 @@ msgstr ""
 
 #: data/org.gnome.Recipes.gschema.xml:92
 msgid "By which key to sort lists."
-msgstr ""
+msgstr "La clave por la que ordenar las listas."
 
 #: data/org.gnome.Recipes.gschema.xml:93
 msgid "The setting determines which key is used to sort lists of recipes by."
@@ -436,7 +436,7 @@ msgstr "_Comprar ingredientes"
 
 #: src/gr-details-page.ui:164 src/gr-edit-page.ui:315
 msgid "_Yield"
-msgstr ""
+msgstr "_Cantidad"
 
 #: src/gr-details-page.ui:218
 msgid "Preparation Time"
@@ -549,10 +549,9 @@ msgid "More than an hour"
 msgstr "Más de una hora"
 
 #: src/gr-edit-page.ui:393
-#, fuzzy
 #| msgid "Cooking Time"
 msgid "_Cooking Time"
-msgstr "Tiempo de cocción"
+msgstr "Tiempo de _cocción"
 
 #: src/gr-edit-page.ui:441
 msgid "C_uisine"
@@ -567,10 +566,9 @@ msgid "S_eason"
 msgstr "_Estación"
 
 #: src/gr-edit-page.ui:549
-#, fuzzy
 #| msgid "Spiciness"
 msgid "_Spiciness"
-msgstr "Sin especias"
+msgstr "_Picante"
 
 #: src/gr-edit-page.ui:569 src/gr-spice-row.c:127
 msgid "Mild"
@@ -578,7 +576,7 @@ msgstr "Medio"
 
 #: src/gr-edit-page.ui:570
 msgid "Somewhat spicy"
-msgstr ""
+msgstr "Algo picante"
 
 #: src/gr-edit-page.ui:571
 msgid "Hot"
@@ -789,7 +787,7 @@ msgstr "Nada que añadir"
 
 #: src/gr-shopping-tile.ui:101
 msgid "Yield"
-msgstr ""
+msgstr "Cantidad"
 
 #: src/gr-time-widget.ui:31
 msgid "Start"
@@ -868,7 +866,7 @@ msgstr "Nombre"
 
 #: src/gr-window.ui:630
 msgid "Recency"
-msgstr ""
+msgstr "Frescura"
 
 #: src/menus.ui:6 src/menus.ui:48
 msgid "_Import"
@@ -982,12 +980,10 @@ msgid "What’s New in Recipes"
 msgstr "Novedades en Recetas"
 
 #: src/shopping-list-exporter-dialog.ui:13 src/gr-shopping-list-exporter.c:278
-#| msgid "Ingredients"
 msgid "Export Ingredients"
 msgstr "Exportar ingredientes"
 
 #: src/shopping-list-exporter-dialog.ui:55
-#| msgid "_Export"
 msgid "Export"
 msgstr "Exportar"
 
@@ -1257,7 +1253,6 @@ msgid "Turkish Cuisine"
 msgstr "Cocina turca"
 
 #: src/gr-cuisine.c:71
-#, fuzzy
 msgid ""
 "The cuisine of the United States reflects its history. The European "
 "colonization of the Americas yielded the introduction of a number of "
@@ -1266,12 +1261,12 @@ msgid ""
 "of immigrants from many foreign nations; such influx developed a rich "
 "diversity in food preparation throughout the country."
 msgstr ""
-"La cocina de los Estados Unidos refleja su historia. La colonización del "
-"país dio lugar a la introducción de una serie de ingredientes y estilos de "
-"cocina. Los diversos estilos continuaron expandiéndose en los siglos 19 y "
-"20, con la influencia de inmigrantes de muchas naciones extranjeras; tal "
-"afluencia desarrolló una rica diversidad en la preparación de alimentos en "
-"todo el país."
+"la cocina de los Estados Unidos refleja su historia. La colonización europea "
+"de las Américas permitió la introducción de varios ingredientes y estilos de "
+"cocina a este último. Los diversos estilos continuaron expandiéndose hasta "
+"los siglos XIX y XX, proporcional a la afluencia de inmigrantes de muchas "
+"naciones extranjeras; dicha afluencia desarrolló una rica diversidad en la "
+"preparación de alimentos en todo el país."
 
 #: src/gr-cuisine.c:76
 msgid ""
@@ -1285,6 +1280,15 @@ msgid ""
 "expansion and from the trade with nearby regions in pre-modern times, and "
 "from Europe and the New World in the modern period."
 msgstr ""
+"La cocina china incluye estilos que provienen de las diversas regiones de "
+"China, así como de los chinos en otras partes del mundo, incluida la mayoría "
+"de las naciones asiáticas. La historia de la cocina china en China se "
+"remonta a miles de años y ha cambiado de un período a otro y en cada región "
+"según el clima, las modas imperiales y las preferencias locales. Con el "
+"tiempo, las técnicas e ingredientes de las cocinas de otras culturas se "
+"integraron en la cocina del pueblo chino debido tanto a la expansión "
+"imperial como al comercio con regiones cercanas en tiempos premodernos, y "
+"desde Europa y el Nuevo Mundo en el período moderno."
 
 #: src/gr-cuisine.c:84
 msgid ""
@@ -1298,6 +1302,16 @@ msgid ""
 "rule. Indian cuisine has been and is still evolving, as a result of the "
 "nation’s cultural interactions with other societies."
 msgstr ""
+"La cocina india abarca una amplia variedad de cocinas regionales y "
+"tradicionales nativas de la India. Dado el rango de diversidad en el tipo de "
+"suelo, clima, cultura, grupo étnico y ocupaciones, estas cocinas varían "
+"significativamente unas de otras y usan especias, hierbas, vegetales y "
+"frutas disponibles localmente. La comida india también está fuertemente "
+"influenciada por opciones y tradiciones religiosas y culturales. También ha "
+"habido influencia de Medio Oriente y Asia Central en la cocina del norte de "
+"la India desde los años del gobierno de Mughal. La cocina india ha estado y "
+"sigue evolucionando como resultado de las interacciones culturales de la "
+"nación con otras sociedades."
 
 #: src/gr-cuisine.c:92
 msgid ""
@@ -1307,6 +1321,12 @@ msgid ""
 "vary by region. Many dishes that were once regional, however, have "
 "proliferated with variations throughout the country."
 msgstr ""
+"La cocina italiana se caracteriza por su simplicidad, con muchos platos que "
+"tienen solo de cuatro a ocho ingredientes. Los cocineros italianos se basan "
+"principalmente en la calidad de los ingredientes más que en una preparación "
+"elaborada. Los ingredientes y platos varían según la región. Muchos platos "
+"que una vez fueron regionales, sin embargo, han proliferado con variaciones "
+"en todo el país."
 
 #: src/gr-cuisine.c:96
 msgid ""
@@ -1320,6 +1340,15 @@ msgid ""
 "France. Many dishes that were once regional have proliferated in variations "
 "across the country."
 msgstr ""
+"La cocina francesa se codificó en el siglo XX por Auguste Escoffier para "
+"convertirse en la alta cocina moderna; Escoffier, sin embargo, dejó fuera "
+"gran parte del carácter culinario local que se encuentra en las regiones de "
+"Francia y fue considerada difícil de ejecutar por los cocineros caseros. El "
+"turismo gastronómico y la gGía Michelín ayudaron a familiarizar a la gente "
+"con la rica gastronomía burguesa y campesina de la campiña francesa a partir "
+"del siglo XX. La cocina Gascon también ha tenido una gran influencia sobre "
+"la cocina en el suroeste de Francia. Muchos platos que una vez fueron "
+"regionales han proliferado en variaciones en todo el país."
 
 #: src/gr-cuisine.c:103
 msgid ""
@@ -1330,6 +1359,13 @@ msgid ""
 "yoghurt. The most commonly used grain is wheat; barley is also used. Common "
 "dessert ingredients include nuts, honey, fruits, and filo pastry."
 msgstr ""
+"La cocina griega contemporánea hace un amplio uso de vegetales, aceite de "
+"oliva, cereales, pescado, vino y carne (blanca y roja, incluyendo cordero, "
+"pollo, conejo y cerdo). Otros ingredientes importantes incluyen aceitunas, "
+"queso, berenjena, calabacín, zumo de limón, verduras, hierbas, pan y yogur. "
+"El cereal más comúnmente usado es el trigo aunque la cebada también se usa. "
+"Los ingredientes comunes para el postre incluyen nueces, miel, frutas y "
+"pasta filo."
 
 #: src/gr-cuisine.c:108
 #, fuzzy
@@ -1351,6 +1387,15 @@ msgid ""
 "animals (beef, pork, chicken, goat, and sheep), dairy products (especially "
 "cheese), and various herbs and spices."
 msgstr ""
+"La cocina mexicana es principalmente una fusión de la cocina indígena "
+"mesoamericana con elementos europeos, especialmente españoles, añadidos "
+"después de la conquista española del imperio azteca en el siglo XVI. Los "
+"alimentos básicos son alimentos nativos, como maíz, frijoles, aguacates, "
+"tomates y chiles, junto con el arroz, que trajeron los españoles. Los "
+"europeos introdujeron una gran cantidad de otros alimentos, el más "
+"importante de los cuales eran las carnes de animales domésticos (carne de "
+"vaca, cerdo, pollo, cabra y oveja), productos lácteos (especialmente queso) "
+"y varias hierbas y especias."
 
 #: src/gr-cuisine.c:116
 msgid ""
@@ -1359,6 +1404,10 @@ msgid ""
 "nutmeg and black pepper can be traced to the Danish cuisine of the Middle "
 "Ages and some even to the Vikings."
 msgstr ""
+"La cocina en Dinamarca siempre se ha inspirado en las prácticas extranjeras "
+"y continentales y el uso de especias tropicales importadas como la canela, "
+"el cardamomo, la nuez moscada y la pimienta negra se remonta a la cocina "
+"danesa de la Edad Media e incluso a los vikingos."
 
 #: src/gr-cuisine.c:117
 msgid ""
@@ -1367,6 +1416,10 @@ msgid ""
 "refinement of Central Asian, Middle Eastern and Balkan cuisines. Therefore "
 "it is impossible to fit Turkish cuisine into a short list."
 msgstr ""
+"Puede encontrar una gran variedad de platos deliciosos en la cocina turca, "
+"que es principalmente el patrimonio de la cocina otomana. Es la mezcla y el "
+"refinamiento de las cocinas de Asia Central, Oriente Medio y los Balcanes. "
+"Por lo tanto, es imposible incluir la cocina turca en una lista corta."
 
 #: src/gr-details-page.c:193 src/gr-edit-page.c:935
 msgid "serving"
@@ -1532,11 +1585,11 @@ msgstr "Autor de la receta"
 
 #: src/gr-edit-page.c:939
 msgid "loaf"
-msgstr ""
+msgstr "pan"
 
 #: src/gr-edit-page.c:940
 msgid "loafs"
-msgstr ""
+msgstr "panes"
 
 #: src/gr-edit-page.c:943
 msgid "ounce"
@@ -1680,7 +1733,7 @@ msgstr "Pasta"
 
 #: src/gr-meal.c:54
 msgid "Salad"
-msgstr ""
+msgstr "Ensalada"
 
 #: src/gr-meal.c:55
 msgid "Other"
@@ -1800,7 +1853,7 @@ msgstr "Cocción:"
 
 #: src/gr-recipe-formatter.c:93 src/gr-recipe-printer.c:168
 msgid "Yield:"
-msgstr ""
+msgstr "Cantidad:"
 
 #: src/gr-recipe-importer.c:238
 #, c-format
@@ -1841,9 +1894,8 @@ msgid "Meal:"
 msgstr "Comida"
 
 #: src/gr-recipe-printer.c:181
-#, fuzzy
 msgid "Season:"
-msgstr "Temporada"
+msgstr "Temporada:"
 
 #: src/gr-recipe-printer.c:229
 msgid "Notes"
@@ -1895,12 +1947,12 @@ msgstr[0] "Comprar ingredientes: <b>%s, %s y %d otro</b>"
 msgstr[1] "Comprar ingredientes: <b>%s, %s y %d otros</b>"
 
 #: src/gr-recipe-store.c:1338
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "A recipe with this name and author (%s) already exists.\n"
 "Please choose a different name"
 msgstr ""
-"Ya existe una receta con este nombre.\n"
+"Ya existe una receta con este nombre y autor (%s).\n"
 "Elija un nombre diferente"
 
 #: src/gr-recipe-store.c:1367
@@ -2024,15 +2076,15 @@ msgstr[1] "%d recetas marcadas para preparar"
 
 #: src/gr-spice-row.c:131
 msgid "Mild or somewhat spicy"
-msgstr ""
+msgstr "Suave o poco picante"
 
 #: src/gr-spice-row.c:133
 msgid "At least somewhat spicy"
-msgstr ""
+msgstr "Poco picante"
 
 #: src/gr-spice-row.c:137
 msgid "At most hot"
-msgstr ""
+msgstr "Picante"
 
 #: src/gr-spice-row.c:139
 msgid "Hot or very spicy"
@@ -2372,17 +2424,17 @@ msgstr "pellizcos"
 #: src/gr-unit.c:69
 msgctxt "unit abbreviation"
 msgid "bunch"
-msgstr ""
+msgstr "manojo"
 
 #: src/gr-unit.c:69
 msgctxt "unit name"
 msgid "bunch"
-msgstr ""
+msgstr "manojo"
 
 #: src/gr-unit.c:69
 msgctxt "unit plural"
 msgid "bunches"
-msgstr ""
+msgstr "manojos"
 
 #: src/gr-unit.c:167
 #, c-format
@@ -2479,6 +2531,8 @@ msgid ""
 "The “%s” recipe has unsaved changes.\n"
 "Close the window anyway?"
 msgstr ""
+"La receta «%s» tiene cambios sin guardar.\n"
+"¿Quiere cerrar la ventana de todos modos?"
 
 #: src/gr-window.c:540
 msgid ""
@@ -2603,7 +2657,7 @@ msgstr "Berenjena"
 
 #: src/ingredients.inc:10
 msgid "Baby Spinach"
-msgstr ""
+msgstr "Espinacas baby"
 
 #: src/ingredients.inc:11
 msgid "Bacon"
@@ -2643,11 +2697,11 @@ msgstr "Judías"
 
 #: src/ingredients.inc:20
 msgid "Bean sprouts"
-msgstr ""
+msgstr "Brotes de soja"
 
 #: src/ingredients.inc:21
 msgid "Beef"
-msgstr "Carne"
+msgstr "Carne de vaca"
 
 #: src/ingredients.inc:22
 msgid "Beef mince"
@@ -2659,7 +2713,7 @@ msgstr "Salchicha de ternera"
 
 #: src/ingredients.inc:24
 msgid "Beef (sirloin)"
-msgstr ""
+msgstr "Solomillo de vaca"
 
 #: src/ingredients.inc:25
 msgid "Beef stock"
@@ -2691,15 +2745,13 @@ msgstr "Biscotes"
 
 #: src/ingredients.inc:32
 msgid "Black cardamom pod"
-msgstr ""
+msgstr "Vaina de cardamomo negro"
 
 #: src/ingredients.inc:33
-#, fuzzy
 msgid "Black peppercorns"
-msgstr "no hay pimienta"
+msgstr "Granos de pimienta negra"
 
 #: src/ingredients.inc:34
-#| msgid "Bilberry"
 msgid "Blueberry"
 msgstr "Arándanos"
 
@@ -2713,13 +2765,12 @@ msgstr "Migas de pan"
 
 #: src/ingredients.inc:37
 msgid "Brewer's yeast"
-msgstr ""
+msgstr "Levadura"
 
 #: src/ingredients.inc:38
-#, fuzzy
 #| msgid "Baked beans"
 msgid "Broad beans"
-msgstr "Judías cocidas"
+msgstr "Habas"
 
 #: src/ingredients.inc:39
 msgid "Broth"
@@ -2734,10 +2785,9 @@ msgid "Butter"
 msgstr "Mantequilla"
 
 #: src/ingredients.inc:42
-#, fuzzy
 #| msgid "Butter"
 msgid "Butter, melted"
-msgstr "Mantequilla"
+msgstr "Mantequilla derretida"
 
 #: src/ingredients.inc:43
 msgid "Button mushroom"
@@ -2752,18 +2802,17 @@ msgid "Cake flour"
 msgstr "Harina de pastelería"
 
 #: src/ingredients.inc:46
-#, fuzzy
 #| msgid "Baked beans"
 msgid "Canellini beans"
-msgstr "Judías cocidas"
+msgstr "Frijoles Cannellini"
 
 #: src/ingredients.inc:47
 msgid "Canned black beans, rinsed"
-msgstr ""
+msgstr "Frijoles negros en lata, enjuagados"
 
 #: src/ingredients.inc:48
 msgid "Canned chopped tomatoes"
-msgstr ""
+msgstr "Tomates picados en lata"
 
 #: src/ingredients.inc:49
 msgid "Carrot"
@@ -2771,7 +2820,7 @@ msgstr "Zanahoria"
 
 #: src/ingredients.inc:50
 msgid "Cashews, lightly toasted"
-msgstr ""
+msgstr "Anacardos, ligeramente tostados"
 
 #: src/ingredients.inc:51
 msgid "Caster sugar"
@@ -2803,7 +2852,7 @@ msgstr "Cerezas, picadas"
 
 #: src/ingredients.inc:58
 msgid "cherry tomatoes, halved"
-msgstr ""
+msgstr "tomates cherry cortados por la mitad"
 
 #: src/ingredients.inc:59
 msgid "Chia seeds"
@@ -2811,30 +2860,28 @@ msgstr "Semillas de chía"
 
 #: src/ingredients.inc:60
 msgid "Chicken breasts, large"
-msgstr ""
+msgstr "Pechugas de pollo grandes"
 
 #: src/ingredients.inc:61
 msgid "Chicken livers"
 msgstr "Higaditos de pollo"
 
 #: src/ingredients.inc:62
-#, fuzzy
 #| msgid "Beef stock"
 msgid "chicken stock"
-msgstr "Caldo de carne"
+msgstr "Caldo de pollo"
 
 #: src/ingredients.inc:63
 msgid "Chili flakes"
-msgstr ""
+msgstr "Chile en copos"
 
 #: src/ingredients.inc:64
-#| msgid "Cocoa powder"
 msgid "Chili powder"
 msgstr "Chile en polvo"
 
 #: src/ingredients.inc:65
 msgid "chili sauce (e.g. sriracha)"
-msgstr ""
+msgstr "salsa de chile (ej. sriracha)"
 
 #: src/ingredients.inc:66
 msgid "Chocolate"
@@ -2907,19 +2954,17 @@ msgid "Coriander"
 msgstr "Cilantro"
 
 #: src/ingredients.inc:83
-#, fuzzy
 #| msgid "no Linseeds"
 msgid "coriandre seeds"
-msgstr "no hay semillas de lino"
+msgstr "semillas de cilantro"
 
 #: src/ingredients.inc:84
 msgid "Couscous"
 msgstr "Cous cous"
 
 #: src/ingredients.inc:85
-#, fuzzy
 msgid "Cracked pepper"
-msgstr "no hay pimienta"
+msgstr "Pimienta molida"
 
 #: src/ingredients.inc:86
 msgid "Cream"
@@ -2931,7 +2976,7 @@ msgstr "Crema de queso"
 
 #: src/ingredients.inc:88
 msgid "Crushed red peper flakes"
-msgstr ""
+msgstr "Copos de pimiento rojo triturado"
 
 #: src/ingredients.inc:89
 msgid "Cucumber"
@@ -2939,14 +2984,13 @@ msgstr "Pepino"
 
 #: src/ingredients.inc:90
 msgid "Cucumber (large)"
-msgstr ""
+msgstr "Pepino grande"
 
 #: src/ingredients.inc:91
 msgid "Cumin"
 msgstr "Comino"
 
 #: src/ingredients.inc:92
-#| msgid "Pumpkin seeds"
 msgid "Cumin seeds"
 msgstr "Semillas de comino"
 
@@ -2964,10 +3008,9 @@ msgstr "Eneldo"
 
 #: src/ingredients.inc:96
 msgid "Double cream"
-msgstr ""
+msgstr "Crema doble"
 
 #: src/ingredients.inc:97
-#| msgid "Anchovies"
 msgid "Dried anchovies"
 msgstr "Anchoas secas"
 
@@ -2985,7 +3028,7 @@ msgstr "Levadura seca"
 
 #: src/ingredients.inc:101
 msgid "Durum wheat semolina"
-msgstr ""
+msgstr "Sémola de trigo duro"
 
 #: src/ingredients.inc:102
 msgid "Earth Balance vegan buttery stick"
@@ -3009,29 +3052,28 @@ msgstr "Higo"
 
 #: src/ingredients.inc:107
 msgid "Finely chopped cilantro"
-msgstr ""
+msgstr "Cilantro picado fino"
 
 #: src/ingredients.inc:108
 msgid "Finely chopped onions"
-msgstr ""
+msgstr "Cebollas picadas finas"
 
 #: src/ingredients.inc:109
 msgid "Finely chopped thai chillies or green chillis"
-msgstr ""
+msgstr "Chiles tailandeses picados finos o chiles verdes"
 
 #: src/ingredients.inc:110
 msgid "Finely chopped tomato"
-msgstr ""
+msgstr "Tomate picado fino"
 
 #: src/ingredients.inc:111
 msgid "Fish"
 msgstr "Pescado"
 
 #: src/ingredients.inc:112
-#, fuzzy
 #| msgid "Pizza sauce"
 msgid "Fish sauce"
-msgstr "Salsa de pizza"
+msgstr "Salsa de pescado"
 
 #: src/ingredients.inc:113
 msgid "Flour"
@@ -3062,12 +3104,10 @@ msgid "Garlic"
 msgstr "Ajo"
 
 #: src/ingredients.inc:120
-#| msgid "Garlic"
 msgid "Garlic cloves"
 msgstr "Dientes de ajo"
 
 #: src/ingredients.inc:121
-#| msgid "Baking powder"
 msgid "Garlic powder"
 msgstr "Ajo en polvo"
 
@@ -3080,7 +3120,6 @@ msgid "Ginger, freshly grated"
 msgstr "Jengibre fresco rallado"
 
 #: src/ingredients.inc:124
-#| msgid "no Turmeric, ground"
 msgid "Ginger ground"
 msgstr "Jengibre molido"
 
@@ -3122,7 +3161,7 @@ msgstr "Uvas"
 
 #: src/ingredients.inc:134
 msgid "Grated French Emmental"
-msgstr ""
+msgstr "Emmental frances rallado"
 
 #: src/ingredients.inc:135
 msgid "Green Apple"
@@ -3134,7 +3173,7 @@ msgstr "Pimiento verde"
 
 #: src/ingredients.inc:137
 msgid "Green Cabbage"
-msgstr ""
+msgstr "Repollo verde"
 
 #: src/ingredients.inc:138
 msgid "Green olive"
@@ -3146,31 +3185,27 @@ msgstr "Cebollas verdes"
 
 #: src/ingredients.inc:140
 msgid "green onions, chopped"
-msgstr ""
+msgstr "cebollas verdes picadas"
 
 #: src/ingredients.inc:141
 msgid "Ground beef"
 msgstr "Carne picada"
 
 #: src/ingredients.inc:142
-#, fuzzy
 #| msgid "Description (optional)"
 msgid "Ground coriander (optional)"
-msgstr "Descripción (opcional)"
+msgstr "Cilantro molido (opcional)"
 
 #: src/ingredients.inc:143
-#| msgid "Ground beef"
 msgid "Ground cumin"
 msgstr "Comino picado"
 
 #: src/ingredients.inc:144
-#, fuzzy
 #| msgid "Ground beef"
 msgid "Ground fennel"
-msgstr "Carne picada"
+msgstr "Hinojo molido"
 
 #: src/ingredients.inc:145
-#| msgid "Ground beef"
 msgid "Ground pepper"
 msgstr "Pimienta molida"
 
@@ -3187,10 +3222,9 @@ msgid "Hazelnuts milk"
 msgstr "Leche de almendras"
 
 #: src/ingredients.inc:149
-#, fuzzy
 #| msgid "Soy sauce"
 msgid "Hoisin sauce"
-msgstr "Salsa de soja"
+msgstr "Salsa Hoisin"
 
 #: src/ingredients.inc:150
 msgid "Honey"
@@ -3205,7 +3239,6 @@ msgid "Japanese mayonaisse"
 msgstr "Mayonesa japonesa"
 
 #: src/ingredients.inc:153
-#| msgid "Bilberries"
 msgid "Juniper berries"
 msgstr "Bayas de enebro"
 
@@ -3290,15 +3323,13 @@ msgid "Milk"
 msgstr "Leche"
 
 #: src/ingredients.inc:174
-#, fuzzy
 #| msgid "Bilberries"
 msgid "Mixed berries"
-msgstr "Arándanos"
+msgstr "Mezcla de bayas"
 
 #: src/ingredients.inc:175
-#, fuzzy
 msgid "Mixed frozen bell peppers"
-msgstr "no hay pimienta"
+msgstr "Mezcla de pimientos congelados"
 
 #: src/ingredients.inc:176
 msgid "Mori-nu organic silken tofu (firm)"
@@ -3325,10 +3356,9 @@ msgid "Nutmeg"
 msgstr "Nuez moscada"
 
 #: src/ingredients.inc:182
-#, fuzzy
 #| msgid "Additional notes"
 msgid "Nutritional yeast"
-msgstr "Notas adicionales"
+msgstr ""
 
 #: src/ingredients.inc:183
 msgid "Oatmeal"
@@ -3359,7 +3389,6 @@ msgid "Onion"
 msgstr "Cebolla"
 
 #: src/ingredients.inc:190
-#| msgid "Baking powder"
 msgid "Onion powder"
 msgstr "Cebolla en polvo"
 
@@ -3376,10 +3405,9 @@ msgid "Pancetta"
 msgstr "Panceta"
 
 #: src/ingredients.inc:194
-#, fuzzy
 #| msgid "Bay leaves"
 msgid "Pandan leaves"
-msgstr "Hojas de laurel"
+msgstr "Hojas de pandan"
 
 #: src/ingredients.inc:195
 msgid "Paprika"
@@ -3387,7 +3415,7 @@ msgstr "Pimentón"
 
 #: src/ingredients.inc:196
 msgid "Parmesan cheese, grated"
-msgstr ""
+msgstr "Queso parmesano rallado"
 
 #: src/ingredients.inc:197
 msgid "Parsley"
@@ -3422,10 +3450,9 @@ msgid "Pizza sauce"
 msgstr "Salsa de pizza"
 
 #: src/ingredients.inc:205
-#, fuzzy
 #| msgid "Main Course"
 msgid "Plain flour"
-msgstr "Plato principal"
+msgstr "Harina común"
 
 #: src/ingredients.inc:206
 msgid "Pomegranate"
@@ -3476,7 +3503,6 @@ msgid "Red onion"
 msgstr "Cebolla morada"
 
 #: src/ingredients.inc:218
-#| msgid "Pepper"
 msgid "Red Pepper"
 msgstr "Pimiento rojo"
 
@@ -3490,11 +3516,11 @@ msgstr "Arroz"
 
 #: src/ingredients.inc:221
 msgid "Rice, cooked"
-msgstr ""
+msgstr "Arroz cocido"
 
 #: src/ingredients.inc:222
 msgid "Rice vermicelli noodles"
-msgstr ""
+msgstr "Fideos de arroz"
 
 #: src/ingredients.inc:223
 msgid "Rock sugar"
@@ -3502,21 +3528,20 @@ msgstr "Terrones de azúcar"
 
 #: src/ingredients.inc:224
 msgid "Rolled oats"
-msgstr ""
+msgstr "Copos de avena"
 
 #: src/ingredients.inc:225
 msgid "Rosemary"
 msgstr "Romero"
 
 #: src/ingredients.inc:226
-#, fuzzy
 #| msgid "Red wine"
 msgid "Rosé wine"
-msgstr "Vino tinto"
+msgstr "Vino rosado"
 
 #: src/ingredients.inc:227
 msgid "Sachet levure"
-msgstr ""
+msgstr "Bolsa de levadura"
 
 #: src/ingredients.inc:228
 msgid "Saffron"
@@ -3524,7 +3549,7 @@ msgstr "Azafrán"
 
 #: src/ingredients.inc:229
 msgid "Sage"
-msgstr ""
+msgstr "Salvia"
 
 #: src/ingredients.inc:230
 msgid "Salmon"
@@ -3540,11 +3565,11 @@ msgstr "Sal y pimienta"
 
 #: src/ingredients.inc:233
 msgid "Saucebinder"
-msgstr ""
+msgstr "Salsa espesante"
 
 #: src/ingredients.inc:234
 msgid "Scallions"
-msgstr ""
+msgstr "Cebolletas"
 
 #: src/ingredients.inc:235
 msgid "Sea salt"
@@ -3552,7 +3577,7 @@ msgstr "Sal marina"
 
 #: src/ingredients.inc:236
 msgid "Semi-skimmed milk"
-msgstr ""
+msgstr "Leche semi-desnatada"
 
 #: src/ingredients.inc:237
 msgid "Sesame oil"
@@ -3572,11 +3597,11 @@ msgstr "Gambas"
 
 #: src/ingredients.inc:241
 msgid "Slivered almonds, toasted"
-msgstr ""
+msgstr "Almendras molidas tostadas"
 
 #: src/ingredients.inc:242
 msgid "Sour cream"
-msgstr ""
+msgstr "Crema agria"
 
 #: src/ingredients.inc:243
 msgid "Soy sauce"
@@ -3611,7 +3636,6 @@ msgid "Sunflower seeds"
 msgstr "Pipas de girasol"
 
 #: src/ingredients.inc:251
-#| msgid "Potatoes"
 msgid "Sweet potatoes"
 msgstr "Patatas dulces"
 
@@ -3625,23 +3649,23 @@ msgstr "Mandarina"
 
 #: src/ingredients.inc:254
 msgid "Thai basil leaves"
-msgstr ""
+msgstr "Hojas de albahaca tailandesa"
 
 #: src/ingredients.inc:255
 msgid "Thai chillies"
-msgstr ""
+msgstr "Chiles tailandeses"
 
 #: src/ingredients.inc:256
 msgid "Thai fish sauce"
-msgstr ""
+msgstr "Salsa de pescado tailandesa"
 
 #: src/ingredients.inc:257
 msgid "Thyme"
-msgstr ""
+msgstr "Tomillo"
 
 #: src/ingredients.inc:258
 msgid "Tinned pineapple rings"
-msgstr ""
+msgstr "Rodajas de piña en lata"
 
 #: src/ingredients.inc:259
 msgid "Tofu"
@@ -3660,7 +3684,6 @@ msgid "Tomato sauce"
 msgstr "Salsa de tomate"
 
 #: src/ingredients.inc:263
-#| msgid "Turmeric, ground"
 msgid "Tumeric ground"
 msgstr "Cúrcuma molida"
 
@@ -3673,10 +3696,9 @@ msgid "Unsalted butter"
 msgstr "Mantequilla sin sal"
 
 #: src/ingredients.inc:266
-#, fuzzy
 #| msgid "no Baking powder"
 msgid "Vanilla baking powder"
-msgstr "no hay levadura"
+msgstr "Polvo de hornear de vainilla"
 
 #: src/ingredients.inc:267
 msgid "Vanilla extract"
@@ -3684,7 +3706,7 @@ msgstr "Extracto de vainilla"
 
 #: src/ingredients.inc:268
 msgid "Vanilla powdered sugar, for dusting"
-msgstr ""
+msgstr "Azúcar de vainilla en polvo, para espolvorear"
 
 #: src/ingredients.inc:269
 msgid "Vanilla pudding"
@@ -3719,13 +3741,12 @@ msgid "White onion"
 msgstr "Cebolla blanca"
 
 #: src/ingredients.inc:277
-#| msgid "White fish"
 msgid "White wine"
 msgstr "Vino blanco"
 
 #: src/ingredients.inc:278
 msgid "Whole chicken"
-msgstr ""
+msgstr "Pollo entero"
 
 #: src/ingredients.inc:279
 msgid "Wine"
@@ -3733,7 +3754,7 @@ msgstr "Vino"
 
 #: src/ingredients.inc:280
 msgid "Worcestershire sauce"
-msgstr ""
+msgstr "Salsa Worcestershire"
 
 #: src/ingredients.inc:281
 msgid "Yeast"
@@ -3749,7 +3770,7 @@ msgstr "Yogur"
 
 #: src/ingredients.inc:284
 msgid "Zest of 1 lemon (organic)"
-msgstr ""
+msgstr "Ralladura de 1 limón (orgánica)"
 
 #: src/ingredients.inc:285
 msgid "Zinfandel"
@@ -3757,7 +3778,7 @@ msgstr "Zinfandel"
 
 #: src/ingredients.inc:286
 msgid "Zuccini"
-msgstr ""
+msgstr "Calabacín"
 
 #: src/no-ingredients.inc:1
 msgid "no Almond"
@@ -3796,10 +3817,9 @@ msgid "no Aubergine"
 msgstr "no hay berenjena"
 
 #: src/no-ingredients.inc:10
-#, fuzzy
 #| msgid "no Bay leaf"
 msgid "no Baby Spinach"
-msgstr "no hay hojas de laurel"
+msgstr "no hay espinacas baby"
 
 #: src/no-ingredients.inc:11
 msgid "no Bacon"
@@ -3838,13 +3858,11 @@ msgid "no Beans"
 msgstr "no hay judías"
 
 #: src/no-ingredients.inc:20
-#, fuzzy
 #| msgid "no Beans"
 msgid "no Bean sprouts"
-msgstr "no hay judías"
+msgstr "no hay brotes de soja"
 
 #: src/no-ingredients.inc:21
-#| msgid "no Beef mince"
 msgid "no Beef"
 msgstr "no hay carne"
 
@@ -3857,10 +3875,9 @@ msgid "no Beef sausage"
 msgstr "no hay salchichas de ternera"
 
 #: src/no-ingredients.inc:24
-#, fuzzy
 #| msgid "no Beef mince"
 msgid "no Beef (sirloin)"
-msgstr "no hay carne picada"
+msgstr "no hay solomillo de vaca"
 
 #: src/no-ingredients.inc:25
 msgid "no Beef stock"
@@ -3892,15 +3909,13 @@ msgstr "no hay biscotes"
 
 #: src/no-ingredients.inc:32
 msgid "no Black cardamom pod"
-msgstr ""
+msgstr "no hay vainas de cardamomo negro"
 
 #: src/no-ingredients.inc:33
-#, fuzzy
 msgid "no Black peppercorns"
-msgstr "no hay pimienta"
+msgstr "no hay granos de pimienta negra"
 
 #: src/no-ingredients.inc:34
-#| msgid "no Bilberry"
 msgid "no Blueberry"
 msgstr "no hay arándanos"
 
@@ -3913,19 +3928,16 @@ msgid "no Breadcrumbs"
 msgstr "no hay migas de pan"
 
 #: src/no-ingredients.inc:37
-#, fuzzy
 #| msgid "no Beef stock"
 msgid "no Brewer's yeast"
-msgstr "no hay caldo de carne"
+msgstr "no hay levadura"
 
 #: src/no-ingredients.inc:38
-#, fuzzy
 #| msgid "no Baked beans"
 msgid "no Broad beans"
-msgstr "no hay judías cocidas"
+msgstr "no hay habas"
 
 #: src/no-ingredients.inc:39
-#| msgid "no Beetroot"
 msgid "no Broth"
 msgstr "no hay caldo"
 
@@ -3938,10 +3950,9 @@ msgid "no Butter"
 msgstr "no hay mantequilla"
 
 #: src/no-ingredients.inc:42
-#, fuzzy
 #| msgid "no Butter"
 msgid "no Butter, melted"
-msgstr "no hay mantequilla"
+msgstr "no hay mantequilla derretida"
 
 #: src/no-ingredients.inc:43
 msgid "no Button mushroom"
@@ -3952,42 +3963,38 @@ msgid "no Cabbage"
 msgstr "no hay repollo"
 
 #: src/no-ingredients.inc:45
-#| msgid "no Flour"
 msgid "no Cake flour"
 msgstr "no hay harina de pastelería"
 
 #: src/no-ingredients.inc:46
-#, fuzzy
 #| msgid "no Baked beans"
 msgid "no Canellini beans"
-msgstr "no hay judías cocidas"
+msgstr "no hay frijoles Canellini"
 
 #: src/no-ingredients.inc:47
 msgid "no Canned black beans, rinsed"
-msgstr ""
+msgstr "no hay frijoles negros en lata, enjuagados"
 
 #: src/no-ingredients.inc:48
 msgid "no Canned chopped tomatoes"
-msgstr ""
+msgstr "no hay tomate picado en lata"
 
 #: src/no-ingredients.inc:49
 msgid "no Carrot"
 msgstr "no hay zanahoria"
 
 #: src/no-ingredients.inc:50
-#, fuzzy
 #| msgid "no Cherries, pitted"
 msgid "no Cashews, lightly toasted"
-msgstr "no hay cerezas picadas"
+msgstr "no hay anacardos ligeramente tostados"
 
 #: src/no-ingredients.inc:51
-#| msgid "no Vanilla sugar"
 msgid "no Caster sugar"
 msgstr "no hay azúcar en polvo"
 
 #: src/no-ingredients.inc:52
 msgid "no celery"
-msgstr "no hay cilantro"
+msgstr "no hay apio"
 
 #: src/no-ingredients.inc:53
 #, fuzzy
@@ -4004,7 +4011,6 @@ msgid "no Cheese"
 msgstr "no hay queso"
 
 #: src/no-ingredients.inc:56
-#| msgid "no Cheese"
 msgid "no Cheese slices"
 msgstr "no hay lonchas de queso"
 
@@ -4014,40 +4020,36 @@ msgstr "no hay cerezas picadas"
 
 #: src/no-ingredients.inc:58
 msgid "no cherry tomatoes, halved"
-msgstr ""
+msgstr "no hay tomates cherry partidos por la mitad"
 
 #: src/no-ingredients.inc:59
-#| msgid "no Linseeds"
 msgid "no Chia seeds"
 msgstr "no hay semillas de chía"
 
 #: src/no-ingredients.inc:60
 msgid "no Chicken breasts, large"
-msgstr ""
+msgstr "no hay pechugas de pollo grandes"
 
 #: src/no-ingredients.inc:61
-#| msgid "no Cheese"
 msgid "no Chicken livers"
 msgstr "no hay higaditos de pollo"
 
 #: src/no-ingredients.inc:62
-#, fuzzy
 #| msgid "no Beef stock"
 msgid "no chicken stock"
-msgstr "no hay caldo de carne"
+msgstr "no hay caldo de pollo"
 
 #: src/no-ingredients.inc:63
 msgid "no Chili flakes"
-msgstr ""
+msgstr "no hay chile en copos"
 
 #: src/no-ingredients.inc:64
-#| msgid "no Cocoa powder"
 msgid "no Chili powder"
 msgstr "no hay chile en polvo"
 
 #: src/no-ingredients.inc:65
 msgid "no chili sauce (e.g. sriracha)"
-msgstr ""
+msgstr "no hay salsa de chile (ej. sriracha)"
 
 #: src/no-ingredients.inc:66
 msgid "no Chocolate"
@@ -4082,7 +4084,6 @@ msgid "no Cinnamon sticks"
 msgstr "no hay canela en rama"
 
 #: src/no-ingredients.inc:74
-#| msgid "no Cheese"
 msgid "no Cloves"
 msgstr "no hay clavos"
 
@@ -4103,10 +4104,9 @@ msgid "no Coconut oil"
 msgstr "no hay aceite de coco"
 
 #: src/no-ingredients.inc:79
-#, fuzzy
 #| msgid "no Cocoa powder"
 msgid "no Coconut water"
-msgstr "no hay cacao en polvo"
+msgstr "no hay agua de coco"
 
 #: src/no-ingredients.inc:80
 msgid "no cold water"
@@ -4119,31 +4119,27 @@ msgid "no cooked beef"
 msgstr "no hay carne picada"
 
 #: src/no-ingredients.inc:82
-#| msgid "no Cilantro"
 msgid "no Coriander"
 msgstr "no hay cilantro"
 
 #: src/no-ingredients.inc:83
-#, fuzzy
 #| msgid "no Linseeds"
 msgid "no coriandre seeds"
-msgstr "no hay semillas de lino"
+msgstr "no hay semillas de cilantro"
 
 #: src/no-ingredients.inc:84
 msgid "no Couscous"
 msgstr "no hay Cous cous"
 
 #: src/no-ingredients.inc:85
-#, fuzzy
 msgid "no Cracked pepper"
-msgstr "no hay pimienta"
+msgstr "no hay pimienta molida"
 
 #: src/no-ingredients.inc:86
 msgid "no Cream"
 msgstr "no hay crema"
 
 #: src/no-ingredients.inc:87
-#| msgid "no Cheese"
 msgid "no Cream cheese"
 msgstr "no hay crema de queso"
 
@@ -4157,15 +4153,13 @@ msgstr "no hay hay pepino"
 
 #: src/no-ingredients.inc:90
 msgid "no Cucumber (large)"
-msgstr ""
+msgstr "no hay pepino grande"
 
 #: src/no-ingredients.inc:91
-#| msgid "no Cilantro"
 msgid "no Cumin"
 msgstr "no hay comino"
 
 #: src/no-ingredients.inc:92
-#| msgid "no Pumpkin seeds"
 msgid "no Cumin seeds"
 msgstr "no hay semillas de comino"
 
@@ -4183,10 +4177,9 @@ msgstr "no hay eneldo"
 
 #: src/no-ingredients.inc:96
 msgid "no Double cream"
-msgstr ""
+msgstr "no hay crema doble"
 
 #: src/no-ingredients.inc:97
-#| msgid "no Anchovies"
 msgid "no Dried anchovies"
 msgstr "no hay anchoas secas"
 
@@ -4199,13 +4192,12 @@ msgid "no Dry or fresh cilantro"
 msgstr "no hay cilantro fresco o seco"
 
 #: src/no-ingredients.inc:100
-#| msgid "no Yeast"
 msgid "no Dry yeast"
 msgstr "no hay levadura seca"
 
 #: src/no-ingredients.inc:101
 msgid "no Durum wheat semolina"
-msgstr ""
+msgstr "no hay sémola de trigo duro"
 
 #: src/no-ingredients.inc:102
 msgid "no Earth Balance vegan buttery stick"
@@ -4220,7 +4212,6 @@ msgid "no Egg yolks"
 msgstr "no hay yema de huevo"
 
 #: src/no-ingredients.inc:105
-#| msgid "no Pumpkin seeds"
 msgid "no Fenugreek seeds"
 msgstr "no hay semillas de fenogreco"
 
@@ -4230,29 +4221,28 @@ msgstr "no hay higos"
 
 #: src/no-ingredients.inc:107
 msgid "no Finely chopped cilantro"
-msgstr ""
+msgstr "no hay cilantro picado fino"
 
 #: src/no-ingredients.inc:108
 msgid "no Finely chopped onions"
-msgstr ""
+msgstr "no hay cebollas picadas finas"
 
 #: src/no-ingredients.inc:109
 msgid "no Finely chopped thai chillies or green chillis"
-msgstr ""
+msgstr "no hay Chiles tailandeses picados finos o chiles verdes"
 
 #: src/no-ingredients.inc:110
 msgid "no Finely chopped tomato"
-msgstr ""
+msgstr "no hay tomate picado fino"
 
 #: src/no-ingredients.inc:111
 msgid "no Fish"
 msgstr "no hay pescado"
 
 #: src/no-ingredients.inc:112
-#, fuzzy
 #| msgid "no Pizza sauce"
 msgid "no Fish sauce"
-msgstr "no hay salsa de pizza"
+msgstr "no hay salsa de pescado"
 
 #: src/no-ingredients.inc:113
 msgid "no Flour"
@@ -4263,7 +4253,6 @@ msgid "no Flour (all-purpose)"
 msgstr ""
 
 #: src/no-ingredients.inc:115
-#| msgid "no Flour"
 msgid "no Flour (Tipo 00)"
 msgstr "no hay harina (tipo 00)"
 
@@ -4288,7 +4277,6 @@ msgid "no Garlic cloves"
 msgstr "no hay dientes de ajo"
 
 #: src/no-ingredients.inc:121
-#| msgid "no Baking powder"
 msgid "no Garlic powder"
 msgstr "no hay ajo en polvo"
 
@@ -4329,9 +4317,8 @@ msgid "no Guanciale cubes"
 msgstr ""
 
 #: src/no-ingredients.inc:131
-#, fuzzy
 msgid "no Long pasta, e.g. spaghetti"
-msgstr "no hay pasta lara, ej. espaghetis"
+msgstr "no hay pasta larga, ej. espaguetis"
 
 #: src/no-ingredients.inc:132
 msgid "no Parmesan cheese"
@@ -4354,10 +4341,9 @@ msgid "no Green Bell Pepper"
 msgstr "no hay pimiento verde"
 
 #: src/no-ingredients.inc:137
-#, fuzzy
 #| msgid "no Ground beef"
 msgid "no Green Cabbage"
-msgstr "no hay carne picada"
+msgstr "no hay repollo verde"
 
 #: src/no-ingredients.inc:138
 msgid "no Green olive"
@@ -4369,7 +4355,7 @@ msgstr "no hay cebollas verdes"
 
 #: src/no-ingredients.inc:140
 msgid "no green onions, chopped"
-msgstr ""
+msgstr "no hay cebollas verdes picadas"
 
 #: src/no-ingredients.inc:141
 msgid "no Ground beef"
@@ -4377,21 +4363,18 @@ msgstr "no hay carne picada"
 
 #: src/no-ingredients.inc:142
 msgid "no Ground coriander (optional)"
-msgstr ""
+msgstr "no hay cilantro molido (opcional)"
 
 #: src/no-ingredients.inc:143
-#| msgid "no Ground beef"
 msgid "no Ground cumin"
 msgstr "no hay comino molido"
 
 #: src/no-ingredients.inc:144
-#, fuzzy
 #| msgid "no Ground beef"
 msgid "no Ground fennel"
-msgstr "no hay carne picada"
+msgstr "no hay hinojo molido"
 
 #: src/no-ingredients.inc:145
-#| msgid "no Ground beef"
 msgid "no Ground pepper"
 msgstr "no hay pimienta molida"
 
@@ -4408,10 +4391,9 @@ msgid "no Hazelnuts milk"
 msgstr "no hay leche de almendras"
 
 #: src/no-ingredients.inc:149
-#, fuzzy
 #| msgid "no Soy sauce"
 msgid "no Hoisin sauce"
-msgstr "no hay salsa de soja"
+msgstr "no hay salsa Hoisin"
 
 #: src/no-ingredients.inc:150
 msgid "no Honey"
@@ -4446,7 +4428,6 @@ msgid "no Lamb"
 msgstr "no hay cordero"
 
 #: src/no-ingredients.inc:158
-#| msgid "no Lemon"
 msgid "no Lardons"
 msgstr "no hay tocino"
 
@@ -4472,7 +4453,7 @@ msgstr "no hay lechuga"
 
 #: src/no-ingredients.inc:164
 msgid "no Light muscovado sugar"
-msgstr ""
+msgstr "no hay azúcar ligero de mascabado"
 
 #: src/no-ingredients.inc:165
 msgid "no Lime"
@@ -4511,15 +4492,13 @@ msgid "no Milk"
 msgstr "no hay leche"
 
 #: src/no-ingredients.inc:174
-#, fuzzy
 #| msgid "Bilberries"
 msgid "no Mixed berries"
-msgstr "Arándanos"
+msgstr "no hay bayas mezcla de bayas"
 
 #: src/no-ingredients.inc:175
-#, fuzzy
 msgid "no Mixed frozen bell peppers"
-msgstr "no hay pimienta"
+msgstr "no hay mezcla de pimientos congelados"
 
 #: src/no-ingredients.inc:176
 msgid "no Mori-nu organic silken tofu (firm)"
@@ -4558,10 +4537,9 @@ msgid "no Oil"
 msgstr "no hay aceite"
 
 #: src/no-ingredients.inc:185
-#, fuzzy
 #| msgid "no Soy sauce"
 msgid "no Okonomiyaki sauce"
-msgstr "no hay salsa de soja"
+msgstr "no hay salsa Okonomiyaki"
 
 #: src/no-ingredients.inc:186
 msgid "no Olive oil"
@@ -4580,7 +4558,6 @@ msgid "no Onion"
 msgstr "no hay cebolla"
 
 #: src/no-ingredients.inc:190
-#| msgid "no Baking powder"
 msgid "no Onion powder"
 msgstr "no hay cebolla en polvo"
 
@@ -4597,10 +4574,9 @@ msgid "no Pancetta"
 msgstr "no hay panceta"
 
 #: src/no-ingredients.inc:194
-#, fuzzy
 #| msgid "Bay leaves"
 msgid "no Pandan leaves"
-msgstr "Hojas de laurel"
+msgstr "no hay hojas de pandan"
 
 #: src/no-ingredients.inc:195
 msgid "no Paprika"
@@ -4631,7 +4607,6 @@ msgid "no Peppers"
 msgstr "no hay pimientos"
 
 #: src/no-ingredients.inc:202
-#| msgid "no Parsley"
 msgid "no Pickles"
 msgstr "no hay pepinillos"
 
@@ -4644,13 +4619,11 @@ msgid "no Pizza sauce"
 msgstr "no hay salsa de pizza"
 
 #: src/no-ingredients.inc:205
-#, fuzzy
 #| msgid "no Flour"
 msgid "no Plain flour"
-msgstr "no hay harina"
+msgstr "no hay harina común"
 
 #: src/no-ingredients.inc:206
-#| msgid "no Potato"
 msgid "no Pomegranate"
 msgstr "no hay granada"
 
@@ -4659,12 +4632,10 @@ msgid "no Pomegranate juice"
 msgstr "no hay zumo de granada"
 
 #: src/no-ingredients.inc:208
-#| msgid "no Potato"
 msgid "no Pork fat"
 msgstr "no hay manteca de cerdo"
 
 #: src/no-ingredients.inc:209
-#| msgid "no Peperoni"
 msgid "no Pork loin"
 msgstr "no hay manteca de cerdo"
 
@@ -4685,7 +4656,6 @@ msgid "no Quinoa"
 msgstr "no hay quinoa"
 
 #: src/no-ingredients.inc:214
-#| msgid "no Rice"
 msgid "no Radish"
 msgstr "no hay rábano"
 
@@ -4698,12 +4668,10 @@ msgid "no Red bell pepper"
 msgstr "no hay pimiento rojo"
 
 #: src/no-ingredients.inc:217
-#| msgid "no Onion"
 msgid "no Red onion"
 msgstr "no hay cebolla roja"
 
 #: src/no-ingredients.inc:218
-#| msgid "no Pepper"
 msgid "no Red Pepper"
 msgstr "no hay pimiento rojo"
 
@@ -4716,14 +4684,13 @@ msgid "no Rice"
 msgstr "no hay arroz"
 
 #: src/no-ingredients.inc:221
-#, fuzzy
 #| msgid "no Rice"
 msgid "no Rice, cooked"
-msgstr "no hay arroz"
+msgstr "no hay arroz cocido"
 
 #: src/no-ingredients.inc:222
 msgid "no Rice vermicelli noodles"
-msgstr ""
+msgstr "no hay fideos de arroz"
 
 #: src/no-ingredients.inc:223
 msgid "no Rock sugar"
@@ -4738,23 +4705,21 @@ msgid "no Rosemary"
 msgstr "no hay romero"
 
 #: src/no-ingredients.inc:226
-#| msgid "no Red wine"
 msgid "no Rosé wine"
 msgstr "no hay vino rosado"
 
 #: src/no-ingredients.inc:227
 msgid "no Sachet levure"
-msgstr ""
+msgstr "no hay bolsa de levadura"
 
 #: src/no-ingredients.inc:228
 msgid "no Saffron"
 msgstr "no hay azafrán"
 
 #: src/no-ingredients.inc:229
-#, fuzzy
 #| msgid "no Salt"
 msgid "no Sage"
-msgstr "no hay sal"
+msgstr "no hay salvia"
 
 #: src/no-ingredients.inc:230
 msgid "no Salmon"
@@ -4769,16 +4734,14 @@ msgid "no Salt and pepper"
 msgstr "no hay sal ni pimienta"
 
 #: src/no-ingredients.inc:233
-#, fuzzy
 #| msgid "no Soy sauce"
 msgid "no Saucebinder"
-msgstr "no hay salsa de soja"
+msgstr "no hay salsa espesante"
 
 #: src/no-ingredients.inc:234
-#, fuzzy
 #| msgid "no Salt"
 msgid "no Scallions"
-msgstr "no hay sal"
+msgstr "no hay cebolletas"
 
 #: src/no-ingredients.inc:235
 msgid "no Sea salt"
@@ -4786,7 +4749,7 @@ msgstr "no hay sal marina"
 
 #: src/no-ingredients.inc:236
 msgid "no Semi-skimmed milk"
-msgstr ""
+msgstr "no hay leche semi-desnatada"
 
 #: src/no-ingredients.inc:237
 msgid "no Sesame oil"
@@ -4806,13 +4769,12 @@ msgstr "no hay gambas"
 
 #: src/no-ingredients.inc:241
 msgid "no Slivered almonds, toasted"
-msgstr ""
+msgstr "no hay almendras molidas tostadas"
 
 #: src/no-ingredients.inc:242
-#, fuzzy
 #| msgid "no Soy sauce"
 msgid "no Sour cream"
-msgstr "no hay salsa de soja"
+msgstr "no hay crema agria"
 
 #: src/no-ingredients.inc:243
 msgid "no Soy sauce"
@@ -4851,7 +4813,6 @@ msgid "no Sweet potatoes"
 msgstr "no hay patatas"
 
 #: src/no-ingredients.inc:252
-#| msgid "no Tangerine"
 msgid "no Tamarind paste"
 msgstr "no hay pasta de tamarindo"
 
@@ -4861,25 +4822,24 @@ msgstr "no hay mandarina"
 
 #: src/no-ingredients.inc:254
 msgid "no Thai basil leaves"
-msgstr ""
+msgstr "no hay hojas de albahaca tailandesa"
 
 #: src/no-ingredients.inc:255
 msgid "no Thai chillies"
-msgstr ""
+msgstr "no hay chiles tailandeses"
 
 #: src/no-ingredients.inc:256
-#, fuzzy
 #| msgid "no Pizza sauce"
 msgid "no Thai fish sauce"
-msgstr "no hay salsa de pizza"
+msgstr "no hay salsa de pescado tailandesa"
 
 #: src/no-ingredients.inc:257
 msgid "no Thyme"
-msgstr ""
+msgstr "no hay tomillo"
 
 #: src/no-ingredients.inc:258
 msgid "no Tinned pineapple rings"
-msgstr ""
+msgstr "no hay rodajas de piña en lata"
 
 #: src/no-ingredients.inc:259
 msgid "no Tofu"
@@ -4910,20 +4870,18 @@ msgid "no Unsalted butter"
 msgstr "no hay mantequilla sin sal"
 
 #: src/no-ingredients.inc:266
-#, fuzzy
 #| msgid "no Baking powder"
 msgid "no Vanilla baking powder"
-msgstr "no hay levadura"
+msgstr "no hay polvo de hornear de vainilla"
 
 #: src/no-ingredients.inc:267
 msgid "no Vanilla extract"
 msgstr "no hay extracto de vainilla"
 
 #: src/no-ingredients.inc:268
-#, fuzzy
 #| msgid "no Vanilla pudding"
 msgid "no Vanilla powdered sugar, for dusting"
-msgstr "no hay pudin de vainilla"
+msgstr "no hay azúcar de vainilla en polvo, para espolvorear"
 
 #: src/no-ingredients.inc:269
 msgid "no Vanilla pudding"
@@ -4958,13 +4916,12 @@ msgid "no White onion"
 msgstr "no hay cebolla blanca"
 
 #: src/no-ingredients.inc:277
-#| msgid "no White onion"
 msgid "no White wine"
 msgstr "no hay vino blanco"
 
 #: src/no-ingredients.inc:278
 msgid "no Whole chicken"
-msgstr ""
+msgstr "no hay pollo entero"
 
 #: src/no-ingredients.inc:279
 msgid "no Wine"
@@ -4972,7 +4929,7 @@ msgstr "no hay vino"
 
 #: src/no-ingredients.inc:280
 msgid "no Worcestershire sauce"
-msgstr ""
+msgstr "no hay salsa Worcestershire"
 
 #: src/no-ingredients.inc:281
 msgid "no Yeast"
@@ -4988,7 +4945,7 @@ msgstr "no hay yogur"
 
 #: src/no-ingredients.inc:284
 msgid "no Zest of 1 lemon (organic)"
-msgstr ""
+msgstr "no hay ralladura de limón (orgánica)"
 
 #: src/no-ingredients.inc:285
 msgid "no Zinfandel"
@@ -4996,7 +4953,7 @@ msgstr "no hay zinfandel"
 
 #: src/no-ingredients.inc:286
 msgid "no Zuccini"
-msgstr ""
+msgstr "no hay calabacín"
 
 #~ msgid "Serves"
 #~ msgstr "Raciones"
