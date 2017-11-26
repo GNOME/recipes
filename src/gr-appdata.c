@@ -258,7 +258,7 @@ get_release_info (const char *new_version,
 {
         g_autofree char *file = NULL;
 
-        file = g_build_filename (DATADIR, "appdata", "org.gnome.Recipes.appdata.xml", NULL);
+        file = g_build_filename (DATADIR, "metainfo", "org.gnome.Recipes.appdata.xml", NULL);
 
         g_info ("Loading release information for version %s to %s from %s", old_version, new_version, file);
 

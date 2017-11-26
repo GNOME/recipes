@@ -57,7 +57,7 @@ custom_target('appdata',
               output: 'org.gnome.Recipes.appdata.xml',
               input: files('appdata/org.gnome.Recipes.appdata.xml.in'),
               install: true,
-              install_dir: join_paths([datadir,'appdata']),
+              install_dir: join_paths([datadir,'metainfo']),
               command: [msgfmt, '--xml', '-d', '../po', '--template', '@INPUT@', '-o', '@OUTPUT@'])
 
 configure_file(input: 'org.gnome.Recipes.service.in',
