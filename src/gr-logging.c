@@ -23,6 +23,7 @@
 #include <string.h>
 
 #include <gr-logging.h>
+#include <gr-utils.h>
 
 /* verbose_logging turns enables DEBUG and INFO messages just for our log domain.
  * We also respect the G_MESSAGES_DEBUG environment variable.
@@ -34,6 +35,8 @@ void
 gr_set_verbose_logging (gboolean verbose)
 {
         verbose_logging = verbose;
+
+        g_debug ("org.gnome.Recipes %s", get_version ());
 }
 
 
