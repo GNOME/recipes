@@ -140,8 +140,10 @@ get_mail_portal_proxy (void)
 
         prop = g_dbus_proxy_get_cached_property (proxy, "version");
         g_variant_get (prop, "u", &version);
-        if (version < 2)
+        if (version < 2) {
+                g_info ("Email portal version too old (%d, need 2)", version);
                 return NULL;
+        }
 
         return proxy;
 }
