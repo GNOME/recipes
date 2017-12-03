@@ -6,10 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=recipes\n"
-"POT-Creation-Date: 2017-06-20 09:19-0400\n"
-"PO-Revision-Date: 2017-05-21 17:10-0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-23 11:23+0000\n"
+"PO-Revision-Date: 2017-12-03 07:14-0200\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -32,6 +31,7 @@ msgstr "Receitas"
 msgid "GNOME cooks unite!"
 msgstr "Cozinheiros do GNOME, uni-vos!"
 
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Recipes.desktop.in:7
 msgid "org.gnome.Recipes"
 msgstr "org.gnome.Recipes"
@@ -651,6 +651,7 @@ msgstr "Sem restrições"
 msgid "Ingredients"
 msgstr "Ingredientes"
 
+#. FIXME: repopulate
 #: src/gr-query-editor.ui:255 src/gr-query-editor.c:337
 #: src/gr-query-editor.c:766
 msgid "Anything"
@@ -948,12 +949,12 @@ msgstr "Saiba mais sobre o Receitas"
 msgid "Recipes by"
 msgstr "Receitas por"
 
-#: src/gr-account.c:109
+#: src/gr-account.c:111
 #, c-format
 msgid "Got an error from Account portal"
 msgstr "Obteve um erro do porta de conta"
 
-#: src/gr-account.c:137
+#: src/gr-account.c:162
 msgid ""
 "Allow your personal information to be included with recipes you share with "
 "your friends."
@@ -2563,7 +2564,7 @@ msgstr "Açafrão-da-terra"
 
 #: src/ingredients.inc:66
 msgid "Vanilla sugar"
-msgstr "Açúcar de baunilha"
+msgstr "Açúcar baunilhado"
 
 #: src/ingredients.inc:67
 msgid "Vanilla pudding"
