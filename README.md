@@ -2,7 +2,7 @@ GNOME Recipes
 =============
 
 <p align="center">
-  <img src="https://github.com/matthiasclasen/gr/blob/master/data/icons/512x512/org.gnome.Recipes.png?raw=true" alt="Recipes icon"/>
+  <img src="https://gitlab.gnome.org/GNOME/recipes/raw/master/data/icons/512x512/org.gnome.Recipes.png" alt="Recipes icon"/>
 </p>
 
 This app is about cooking and recipes.
@@ -34,7 +34,7 @@ To build Recipes from git, use the following steps: (note that the ninja tools i
 called ninja-build on Fedora)
 
 ```
-git clone --recursive git://git.gnome.org/recipes
+git clone --recursive https://gitlab.gnome.org/GNOME/recipes.git
 cd recipes
 rm -rf build
 meson --prefix=<your prefix> build
@@ -81,7 +81,7 @@ brew install gspell
 ```
 - Clone from git:
 ```
-git clone --recursive git://git.gnome.org/recipes
+git clone --recursive https://gitlab.gnome.org/GNOME/recipes.git
 ```
 - Build from git as usual, disabling some problematic dependencies:
 ```
@@ -103,10 +103,10 @@ Testing
 If you don't feel like building from source yourself, you can use Flatpak, like this:
 
 ```
-flatpak install --from https://git.gnome.org/browse/recipes/plain/flatpak/gnome-recipes.flatpakref
+flatpak install --from https://gitlab.gnome.org/GNOME/recipes/blob/master/flatpak/gnome-recipes.flatpakref
 ```
 
-If you are lucky, just clicking this [link](https://git.gnome.org/browse/recipes/plain/flatpak/gnome-recipes.flatpakref) will do the right thing.
+If you are lucky, just clicking this [link](https://gitlab.gnome.org/GNOME/recipes/blob/master/flatpak/gnome-recipes.flatpakref) will do the right thing.
 
 After installing the Flatpak, the applications will show up in the GNOME shell overview, but you can also launch it from the commandline:
 
