@@ -1,3 +1,5 @@
+[![pipeline status](https://gitlab.gnome.org/GNOME/recipes/badges/master/pipeline.svg)](https://gitlab.gnome.org/GNOME/recipes/commits/master)
+
 GNOME Recipes
 =============
 
