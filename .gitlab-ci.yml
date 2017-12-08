@@ -1,7 +1,7 @@
 build-fedora:
   image: fedora:latest
   before_script:
-    - dnf install -y git gcc meson gettext itstool gtk3-devel gnome-autoar-devel gnome-online-accounts-devel gspell-devel libcanberra-devel libsoup-devel
+    - dnf install -y git gcc meson gettext itstool gtk3-devel gnome-autoar-devel gnome-online-accounts-devel gspell-devel libcanberra-devel libsoup-devel rest-devel
   script:
     - meson build
     - ninja -C build
