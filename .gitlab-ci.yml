@@ -1,0 +1,8 @@
+build-fedora:
+  image: fedora:latest
+  before_script:
+    - dnf install -y meson gettext itstool gtk3-devel gnome-autoar-devel gspell-devel libcanberra-devel libsoup-devel
+  script:
+    - meson build
+    - ninja -C build
+    - ninja -C build test
