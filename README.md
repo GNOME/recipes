@@ -103,10 +103,10 @@ Testing
 If you don't feel like building from source yourself, you can use Flatpak, like this:
 
 ```
-flatpak install --from https://gitlab.gnome.org/GNOME/recipes/blob/master/flatpak/gnome-recipes.flatpakref
+flatpak install --from https://gitlab.gnome.org/GNOME/recipes/raw/master/flatpak/gnome-recipes.flatpakref
 ```
 
-If you are lucky, just clicking this [link](https://gitlab.gnome.org/GNOME/recipes/blob/master/flatpak/gnome-recipes.flatpakref) will do the right thing.
+If you are lucky, just clicking this [link](https://gitlab.gnome.org/GNOME/recipes/raw/master/flatpak/gnome-recipes.flatpakref) will do the right thing.
 
 After installing the Flatpak, the applications will show up in the GNOME shell overview, but you can also launch it from the commandline:
 
