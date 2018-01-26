@@ -1,14 +1,15 @@
 # Hungarian translation for recipes.
-# Copyright (C) 2017 Free Software Foundation, Inc.
+# Copyright (C) 2017, 2018 Free Software Foundation, Inc.
 # This file is distributed under the same license as the recipes package.
 #
-# Balázs Úr <urbalazs@gmail.com>, 2017.
+# Balázs Meskó <mesko.balazs at fsf dot hu>, 2017, 2018.
+# Balázs Úr <urbalazs at gmail dot com>, 2017, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-19 23:04-0400\n"
-"PO-Revision-Date: 2017-03-18 22:42+0100\n"
+"POT-Creation-Date: 2017-12-08 20:21+0000\n"
+"PO-Revision-Date: 2018-01-27 00:01+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
@@ -20,8 +21,8 @@ msgstr ""
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
-#: src/gr-window.ui:427 src/gr-about-dialog.c:907 src/gr-window.c:381
-#: src/gr-window.c:1004
+#: src/gr-window.ui:530 src/gr-about-dialog.c:907 src/gr-window.c:391
+#: src/gr-window.c:1098
 msgid "Recipes"
 msgstr "Receptek"
 
@@ -119,27 +120,27 @@ msgstr "Egy egyedi recept"
 msgid "An individual cuisine"
 msgstr "Egy egyedi konyha"
 
-#: data/org.gnome.Recipes.gschema.xml:14
+#: data/org.gnome.Recipes.gschema.xml:25
 msgid "The user ID of the current user"
 msgstr "A jelenlegi felhasználó felhasználó-azonosítója"
 
-#: data/org.gnome.Recipes.gschema.xml:15
+#: data/org.gnome.Recipes.gschema.xml:26
 msgid "The user ID of the current user."
 msgstr "A jelenlegi felhasználó felhasználó-azonosítója."
 
-#: data/org.gnome.Recipes.gschema.xml:21
+#: data/org.gnome.Recipes.gschema.xml:32
 msgid "The number of times cooking mode has been presented"
 msgstr "Hányszor lett megjelenítve a főzési mód"
 
-#: data/org.gnome.Recipes.gschema.xml:22
+#: data/org.gnome.Recipes.gschema.xml:33
 msgid "The number of times cooking mode has been presented."
 msgstr "Hányszor lett megjelenítve a főzési mód."
 
-#: data/org.gnome.Recipes.gschema.xml:28
+#: data/org.gnome.Recipes.gschema.xml:39
 msgid "The timestamp of the last change to the favorites list"
 msgstr "A kedvencek listája utolsó változásának időbélyege"
 
-#: data/org.gnome.Recipes.gschema.xml:29
+#: data/org.gnome.Recipes.gschema.xml:40
 msgid ""
 "The timestamp of the last time an item was added to or removed from the "
 "favorites list."
@@ -147,20 +148,20 @@ msgstr ""
 "A legutolsó időpont időbélyege, amikor egy elem hozzá lett adva vagy el lett "
 "távolítva a kedvencek listájáról."
 
-#: data/org.gnome.Recipes.gschema.xml:36
+#: data/org.gnome.Recipes.gschema.xml:47
 msgid "The list of favorites"
 msgstr "A kedvencek listája"
 
-#: data/org.gnome.Recipes.gschema.xml:37
+#: data/org.gnome.Recipes.gschema.xml:48
 msgid "The list of favorites. Each entry in the list is the ID of a recipe."
 msgstr ""
 "A kedvencek listája. A listán minden egyes bejegyzés egy recept azonosítója."
 
-#: data/org.gnome.Recipes.gschema.xml:43
+#: data/org.gnome.Recipes.gschema.xml:54
 msgid "The timestamp of the last change to the shopping list"
 msgstr "A bevásárlólista utolsó változásának időbélyege"
 
-#: data/org.gnome.Recipes.gschema.xml:44
+#: data/org.gnome.Recipes.gschema.xml:55
 msgid ""
 "The timestamp of the last time an item was added to or removed from the "
 "shopping list."
@@ -168,11 +169,11 @@ msgstr ""
 "A legutolsó időpont időbélyege, amikor egy elem hozzá lett adva vagy el lett "
 "távolítva a bevásárlólistáról."
 
-#: data/org.gnome.Recipes.gschema.xml:51
+#: data/org.gnome.Recipes.gschema.xml:62
 msgid "The shopping list"
 msgstr "A bevásárlólista"
 
-#: data/org.gnome.Recipes.gschema.xml:52
+#: data/org.gnome.Recipes.gschema.xml:63
 msgid ""
 "The shopping list. Each entry in the dictionary maps the ID of a recipe to a "
 "serving count."
@@ -180,19 +181,19 @@ msgstr ""
 "A bevásárlólista. A szótárban minden egyes bejegyzés egy recept azonosítóját "
 "képezi le egy adag darabszámára."
 
-#: data/org.gnome.Recipes.gschema.xml:59
+#: data/org.gnome.Recipes.gschema.xml:70
 msgid "Ingredients that were removed from the shopping list"
 msgstr "Hozzávalók, amelyek el lettek távolítva a bevásárlólistáról"
 
-#: data/org.gnome.Recipes.gschema.xml:60
+#: data/org.gnome.Recipes.gschema.xml:71
 msgid "The names of ingredients that were removed from the shopping list."
 msgstr "A hozzávalók nevei, amelyek el lettek távolítva a bevásárlólistáról."
 
-#: data/org.gnome.Recipes.gschema.xml:66
+#: data/org.gnome.Recipes.gschema.xml:77
 msgid "The list of recipes to be exported"
 msgstr "Az exportálandó receptek listája"
 
-#: data/org.gnome.Recipes.gschema.xml:67
+#: data/org.gnome.Recipes.gschema.xml:78
 msgid ""
 "The list of recipes to be exported. Each entry in the list is the ID of a "
 "recipe."
@@ -200,16 +201,66 @@ msgstr ""
 "Az exportálandó receptek listája. A listán minden egyes bejegyzés egy recept "
 "azonosítója."
 
-#: data/org.gnome.Recipes.gschema.xml:74
+#: data/org.gnome.Recipes.gschema.xml:84
 msgid "The setting for which unit temperatures should be displayed in."
-msgstr ""
+msgstr "A beállítás, hogy a hőmérsékletek milyen egységben jelenjenek meg."
 
-#: data/org.gnome.Recipes.gschema.xml:75
+#: data/org.gnome.Recipes.gschema.xml:85
 msgid ""
 "The setting for which unit temperatures should be displayed in. Default is "
 "'locale', which means to use the LC_MEASUREMENT category of the current "
 "locale to decide."
 msgstr ""
+"A beállítás, hogy a hőmérsékletek milyen egységben jelenjenek meg. Az "
+"alapértelmezett a „locale”, amely a jelenlegi területi beállítás "
+"LC_MEASUREMENT kategóriáját használja az eldöntéshez."
+
+#: data/org.gnome.Recipes.gschema.xml:92
+msgid "By which key to sort lists."
+msgstr "Mely kulcs szerint legyenek a listák rendezve."
+
+#: data/org.gnome.Recipes.gschema.xml:93
+msgid "The setting determines which key is used to sort lists of recipes by."
+msgstr ""
+"A beállítás meghatározza, hogy mely kulcs szerint legyenek a receptek "
+"rendezve."
+
+#: data/org.gnome.Recipes.gschema.xml:99
+msgid "Whether the surprise dialog should be shown."
+msgstr "Megjelenjen-e a meglepetés párbeszédablak."
+
+#: data/org.gnome.Recipes.gschema.xml:100
+msgid ""
+"The setting determines whether the surprise dialog should be shown on "
+"startup."
+msgstr ""
+"A beállítás meghatározza, hogy indításkor megjelenjen-e a meglepetés "
+"párbeszédablak."
+
+#: data/org.gnome.Recipes.gschema.xml:106
+msgid "The setting for which unit volumes should be displayed in."
+msgstr "A beállítás, hogy az űrmértékek milyen egységben jelenjenek meg."
+
+#: data/org.gnome.Recipes.gschema.xml:107
+msgid ""
+"The setting for which unit volumes should be displayed in. Default is "
+"'locale',"
+msgstr ""
+"A beállítás, hogy az űrmértékek milyen egységben jelenjenek meg. Az "
+"alapértelmezett a „locale”."
+
+#: data/org.gnome.Recipes.gschema.xml:113
+msgid "The setting for which unit weights should be displayed in."
+msgstr "A beállítás, hogy az súlyok milyen egységben jelenjenek meg."
+
+#: data/org.gnome.Recipes.gschema.xml:114
+msgid ""
+"The setting for which unit weights should be displayed in. Default is "
+"'locale',"
+msgstr ""
+"A beállítás, hogy a súlyok milyen egységben jelenjenek meg. Az "
+"alapértelmezett "
+"a „locale”."
 
 #: src/chef-conflict-dialog.ui:10
 msgid "Same Chef"
@@ -244,11 +295,11 @@ msgstr "Leírás:"
 msgid "Picture:"
 msgstr "Fénykép:"
 
-#: src/gr-chef-dialog.ui:4 src/gr-window.c:1091
+#: src/gr-chef-dialog.ui:4 src/gr-window.c:1185
 msgid "Chef Information"
 msgstr "Konyhafőnök-információk"
 
-#: src/gr-chef-dialog.ui:10 src/gr-window.c:1189
+#: src/gr-chef-dialog.ui:10 src/gr-window.c:1283
 msgid "_Cancel"
 msgstr "_Mégse"
 
@@ -344,7 +395,7 @@ msgid "Time is up!"
 msgstr "Lejárt az idő!"
 
 #: src/gr-cuisine-page.ui:77 src/gr-list-page.ui:111 src/gr-search-page.ui:29
-#: src/gr-list-page.c:427
+#: src/gr-list-page.c:510
 msgid "No recipes found"
 msgstr "Nem található recept"
 
@@ -373,14 +424,18 @@ msgid ""
 "Contains dairy products. Please always double-check the ingredients if you "
 "are serving a person with gluten or dairy intolerance."
 msgstr ""
+"Tejterméket tartalmaz. Mindig kétszer ellenőrizze a hozzávalókat, ha glutén- "
+"vagy tejtermék intoleranciás személynek szolgál fel."
 
 #: src/gr-details-page.ui:119
 msgid ""
 "Contains Gluten. Please always double-check the ingredients if you are "
 "serving a person with gluten or dairy intolerance."
 msgstr ""
+"Glutént tartalmaz. Mindig kétszer ellenőrizze a hozzávalókat, ha glutén- "
+"vagy tejtermék intoleranciás személynek szolgál fel."
 
-#: src/gr-details-page.ui:126 src/gr-details-page.c:492
+#: src/gr-details-page.ui:126 src/gr-details-page.c:537
 msgid "Spicy"
 msgstr "Fűszeres"
 
@@ -388,237 +443,241 @@ msgstr "Fűszeres"
 msgid "_Buy Ingredients"
 msgstr "Hozzávalók _vásárlása"
 
-#: src/gr-details-page.ui:164 src/gr-recipe-small-tile.ui:101
-msgid "Serves"
-msgstr "Adag"
+#: src/gr-details-page.ui:164 src/gr-edit-page.ui:315
+#, fuzzy
+msgid "_Yield"
+msgstr "_Hozam"
 
-#: src/gr-details-page.ui:198
+#: src/gr-details-page.ui:218
 msgid "Preparation Time"
 msgstr "Előkészítési idő"
 
-#: src/gr-details-page.ui:228
+#: src/gr-details-page.ui:248
 msgid "Cooking Time"
 msgstr "Főzési idő"
 
-#: src/gr-details-page.ui:258
+#: src/gr-details-page.ui:278
 msgid "Cuisine"
 msgstr "Konyha"
 
-#: src/gr-details-page.ui:288 src/gr-query-editor.ui:46
+#: src/gr-details-page.ui:308 src/gr-query-editor.ui:46
 msgid "Meal"
 msgstr "Étkezés"
 
-#: src/gr-details-page.ui:318
+#: src/gr-details-page.ui:338
 msgid "Season"
 msgstr "Évszak"
 
-#: src/gr-details-page.ui:379
+#: src/gr-details-page.ui:399
 msgid "Note"
 msgstr "Jegyzet"
 
-#: src/gr-details-page.ui:409 src/gr-edit-page.ui:705
-#: src/gr-recipe-formatter.c:119 src/gr-recipe-printer.c:296
+#: src/gr-details-page.ui:429 src/gr-recipe-formatter.c:123
+#: src/gr-recipe-printer.c:302
 msgid "Directions"
 msgstr "Utasítások"
 
-#: src/gr-details-page.ui:469
+#: src/gr-details-page.ui:489
 msgid "_Notes"
 msgstr "_Jegyzetek"
 
-#: src/gr-details-page.ui:479 src/gr-shopping-page.ui:125
+#: src/gr-details-page.ui:499 src/gr-shopping-page.ui:125
 msgid "_Edit"
 msgstr "_Szerkesztés"
 
-#: src/gr-details-page.ui:488
+#: src/gr-details-page.ui:508
 msgid "_Delete"
 msgstr "_Törlés"
 
-#: src/gr-details-page.ui:499 src/gr-shopping-page.ui:143
+#: src/gr-details-page.ui:519 src/gr-shopping-page.ui:143
 #: src/recipe-export-dialog.ui:21
 msgid "_Share"
 msgstr "_Megosztás"
 
-#: src/gr-details-page.ui:511 src/gr-shopping-page.ui:154
+#: src/gr-details-page.ui:531 src/gr-shopping-page.ui:154
 msgid "_Print"
 msgstr "_Nyomtatás"
 
-#: src/gr-details-page.ui:522
+#: src/gr-details-page.ui:542
 msgid "Add to favorites"
 msgstr "Hozzáadás a kedvencekhez"
 
-#: src/gr-edit-page.ui:42 src/gr-edit-page.ui:766 src/menus.ui:66
+#: src/gr-edit-page.ui:35 src/gr-edit-page.ui:762 src/menus.ui:66
 msgid "Edit"
 msgstr "Szerkesztés"
 
-#: src/gr-edit-page.ui:119
+#: src/gr-edit-page.ui:112
 msgid "Add an image"
 msgstr "Kép hozzáadása"
 
-#: src/gr-edit-page.ui:145 src/gr-edit-page.ui:171
+#: src/gr-edit-page.ui:138 src/gr-edit-page.ui:164
 msgid "Rotate image"
 msgstr "Kép forgatása"
 
-#: src/gr-edit-page.ui:197
+#: src/gr-edit-page.ui:190
 msgid "Default image"
 msgstr "Alapértelmezett kép"
 
-#: src/gr-edit-page.ui:223
+#: src/gr-edit-page.ui:216
 msgid "Remove image"
 msgstr "Kép eltávolítása"
 
-#: src/gr-edit-page.ui:256
+#: src/gr-edit-page.ui:249
 msgid "Add List"
 msgstr "Lista hozzáadása"
 
-#: src/gr-edit-page.ui:274
+#: src/gr-edit-page.ui:267
 msgid "Details"
 msgstr "Részletek"
 
-#: src/gr-edit-page.ui:291
-msgid "_Name Your Recipe"
-msgstr "_Nevezze el a receptjét"
+#: src/gr-edit-page.ui:284 src/gr-edit-page.c:1653
+#| msgid "Name"
+msgid "_Name"
+msgstr "_Név"
 
-#: src/gr-edit-page.ui:323
-msgid "Ser_ves"
-msgstr "_Adag"
-
-#: src/gr-edit-page.ui:353
+#: src/gr-edit-page.ui:345
 msgid "_Preparation Time"
 msgstr "_Előkészítési idő"
 
-#: src/gr-edit-page.ui:379 src/gr-edit-page.ui:427
+#: src/gr-edit-page.ui:371 src/gr-edit-page.ui:419
 msgid "Less than 15 minutes"
 msgstr "Kevesebb mint 15 perc"
 
-#: src/gr-edit-page.ui:380 src/gr-edit-page.ui:428
+#: src/gr-edit-page.ui:372 src/gr-edit-page.ui:420
 msgid "15 to 30 minutes"
 msgstr "15 és 30 perc között"
 
-#: src/gr-edit-page.ui:381 src/gr-edit-page.ui:429
+#: src/gr-edit-page.ui:373 src/gr-edit-page.ui:421
 msgid "30 to 45 minutes"
 msgstr "30 és 45 perc között"
 
-#: src/gr-edit-page.ui:382 src/gr-edit-page.ui:430
+#: src/gr-edit-page.ui:374 src/gr-edit-page.ui:422
 msgid "45 minutes to an hour"
 msgstr "45 perc és egy óra között"
 
-#: src/gr-edit-page.ui:383 src/gr-edit-page.ui:431
+#: src/gr-edit-page.ui:375 src/gr-edit-page.ui:423
 msgid "More than an hour"
 msgstr "Több mint egy óra"
 
-#: src/gr-edit-page.ui:401
-msgid "C_ooking Time"
-msgstr "_Főzési idő"
+#: src/gr-edit-page.ui:393
+#| msgid "Cooking Time"
+msgid "_Cooking Time"
+msgstr "Főzési _idő"
 
-#: src/gr-edit-page.ui:449
-msgid "_Cuisine"
+#: src/gr-edit-page.ui:441
+#| msgid "Cuisine"
+msgid "C_uisine"
 msgstr "_Konyha"
 
-#: src/gr-edit-page.ui:485
+#: src/gr-edit-page.ui:477
 msgid "_Meal"
 msgstr "Étk_ezés"
 
-#: src/gr-edit-page.ui:521
+#: src/gr-edit-page.ui:513
 msgid "S_eason"
 msgstr "É_vszak"
 
-#: src/gr-edit-page.ui:557
-msgid "S_piciness"
-msgstr "Fűszeresség"
+#: src/gr-edit-page.ui:549
+#| msgid "Spiciness"
+msgid "_Spiciness"
+msgstr "_Fűszeresség"
 
-#: src/gr-edit-page.ui:577 src/gr-spice-row.c:127
+#: src/gr-edit-page.ui:569 src/gr-spice-row.c:127
 msgid "Mild"
 msgstr "Enyhe"
 
-#: src/gr-edit-page.ui:578
+#: src/gr-edit-page.ui:570
 msgid "Somewhat spicy"
 msgstr "Kissé fűszeres"
 
-#: src/gr-edit-page.ui:579
+#: src/gr-edit-page.ui:571
 msgid "Hot"
 msgstr "Erős"
 
-#: src/gr-edit-page.ui:580 src/gr-details-page.c:487 src/gr-spice-row.c:142
+#: src/gr-edit-page.ui:572 src/gr-details-page.c:532 src/gr-spice-row.c:142
 msgid "Very spicy"
 msgstr "Nagyon fűszeres"
 
-#: src/gr-edit-page.ui:591
-msgid "Description"
-msgstr "Leírás"
+#: src/gr-edit-page.ui:585
+#| msgid "Description"
+msgid "_Description"
+msgstr "_Leírás"
 
-#: src/gr-edit-page.ui:650 src/gr-diet-row.c:102
-#, fuzzy
+#: src/gr-edit-page.ui:644 src/gr-diet-row.c:102
 msgid "Gluten-free"
 msgstr "Gluténmentes"
 
-#: src/gr-edit-page.ui:657 src/gr-diet-row.c:105
-#, fuzzy
+#: src/gr-edit-page.ui:651 src/gr-diet-row.c:105
 msgid "Nut-free"
 msgstr "Diómentes"
 
-#: src/gr-edit-page.ui:664 src/gr-diet-row.c:108
+#: src/gr-edit-page.ui:658 src/gr-diet-row.c:108
 msgid "Vegan"
 msgstr "Vegán"
 
-#: src/gr-edit-page.ui:671 src/gr-diet-row.c:111
+#: src/gr-edit-page.ui:665 src/gr-diet-row.c:111
 msgid "Vegetarian"
 msgstr "Vegetáriánus"
 
-#: src/gr-edit-page.ui:678 src/gr-diet-row.c:114
-#, fuzzy
+#: src/gr-edit-page.ui:672 src/gr-diet-row.c:114
 msgid "Milk-free"
 msgstr "Tejmentes"
 
-#: src/gr-edit-page.ui:773
+#: src/gr-edit-page.ui:701
+#| msgid "Directions"
+msgid "Di_rections"
+msgstr "_Utasítások"
+
+#: src/gr-edit-page.ui:769
 msgid "Preview"
 msgstr "Előnézet"
 
-#: src/gr-edit-page.ui:793
+#: src/gr-edit-page.ui:789
 msgid "Add Step"
 msgstr "Lépés hozzáadása"
 
-#: src/gr-edit-page.ui:801
+#: src/gr-edit-page.ui:797
 msgid "Add Image"
 msgstr "Kép hozzáadása"
 
-#: src/gr-edit-page.ui:809
+#: src/gr-edit-page.ui:805
 msgid "Add Timer"
 msgstr "Időmérő hozzáadása"
 
-#: src/gr-edit-page.ui:817
+#: src/gr-edit-page.ui:813
 msgid "Add Temperature"
 msgstr "Hőmérséklet hozzáadása"
 
-#: src/gr-edit-page.ui:913
+#: src/gr-edit-page.ui:909
 msgid "Title…"
 msgstr "Cím…"
 
-#: src/gr-edit-page.ui:921 src/gr-edit-page.ui:992
+#: src/gr-edit-page.ui:917 src/gr-edit-page.ui:988
 msgid "Add"
 msgstr "Hozzáadás"
 
-#: src/gr-edit-page.ui:1011
+#: src/gr-edit-page.ui:1007
 msgid "Syntax"
 msgstr "Szintaxis"
 
-#: src/gr-edit-page.ui:1026
+#: src/gr-edit-page.ui:1022
 msgid "Use paragraphs to break directions into steps (2 newlines)."
 msgstr ""
 "Használjon bekezdéseket az utasítások lépésekké tördeléséhez (2 soremelés)."
 
-#: src/gr-edit-page.ui:1039
+#: src/gr-edit-page.ui:1035
 msgid "You can provide an image or a time counter in each step."
 msgstr "Megadhat egy képet vagy egy időmérőt minden lépésben."
 
-#: src/gr-edit-page.ui:1051
+#: src/gr-edit-page.ui:1047
 msgid "Timer"
 msgstr "Időmérő"
 
-#: src/gr-edit-page.ui:1073
+#: src/gr-edit-page.ui:1069
 msgid "Image"
 msgstr "Kép"
 
-#: src/gr-edit-page.ui:1095
+#: src/gr-edit-page.ui:1091
 msgid "Temperature"
 msgstr "Hőmérséklet"
 
@@ -632,15 +691,15 @@ msgstr "Hozzávaló"
 
 #: src/gr-ingredients-viewer-row.ui:169
 msgid "Use a number, followed by an (optional) unit."
-msgstr ""
+msgstr "Használjon egy számot, utána pedig egy (választható) egységet."
 
 #: src/gr-ingredients-viewer-row.ui:180
 msgid "Examples: 1 kg, 2 1/2 pounds, 250 ml, 6"
-msgstr ""
+msgstr "Példák: 1 kg, 2 1/2 font, 250 ml, 6"
 
 #: src/gr-ingredients-viewer.ui:13 src/gr-query-editor.ui:235
-#: src/gr-edit-page.c:1324 src/gr-recipe-formatter.c:100
-#: src/gr-recipe-printer.c:247
+#: src/gr-edit-page.c:1509 src/gr-recipe-formatter.c:104
+#: src/gr-recipe-printer.c:253
 msgid "Ingredients"
 msgstr "Hozzávalók"
 
@@ -648,14 +707,13 @@ msgstr "Hozzávalók"
 msgid "Name of the List"
 msgstr "A lista neve"
 
-#: src/gr-ingredients-viewer.ui:43 src/gr-recipe-small-tile.ui:125
+#: src/gr-ingredients-viewer.ui:43 src/gr-shopping-tile.ui:137
 msgid "Remove"
 msgstr "Eltávolítás"
 
 #: src/gr-ingredients-viewer.ui:86
-#, fuzzy
 msgid "Add more ingredients"
-msgstr "Hozzávaló hozzáadása"
+msgstr "Több hozzávaló hozzáadása"
 
 #: src/gr-list-page.ui:124
 msgid "There are no recipes here yet."
@@ -714,6 +772,11 @@ msgstr "Kategóriák"
 msgid "Featured GNOME Chefs"
 msgstr "Kiemelt GNOME konyhafőnökök"
 
+#: src/gr-recipe-tile.ui:58
+#| msgid "Imported Recipes"
+msgid "Contributed recipe"
+msgstr "Közzétett recept"
+
 #: src/gr-search-page.ui:42
 msgid "Try a different search"
 msgstr "Próbáljon másfajta keresést"
@@ -733,6 +796,10 @@ msgstr "Lista _törlése"
 #: src/gr-shopping-page.ui:188
 msgid "Nothing to add"
 msgstr "Nincs mit hozzáadni"
+
+#: src/gr-shopping-tile.ui:101
+msgid "Yield"
+msgstr ""
 
 #: src/gr-time-widget.ui:31
 msgid "Start"
@@ -758,7 +825,7 @@ msgstr "Ú_j recept"
 msgid "Go back"
 msgstr "Vissza"
 
-#: src/gr-window.ui:97
+#: src/gr-window.ui:97 src/gr-window.ui:198
 msgid "Search"
 msgstr "Keresés"
 
@@ -770,33 +837,46 @@ msgstr "_Főzés elkezdése"
 msgid "_Done Shopping"
 msgstr "Vásárlás _befejezése"
 
-#: src/gr-window.ui:205
+#: src/gr-window.ui:258
 msgid "All ingredients marked as stocked!"
 msgstr "Az összes hozzávaló megjelölve készleten lévőként!"
 
-#: src/gr-window.ui:215
+#: src/gr-window.ui:268
 msgid "_Undo"
 msgstr "_Visszavonás"
 
-#: src/gr-window.ui:264
+#: src/gr-window.ui:317
 msgid "Ingredients to buy added."
 msgstr "Vásárolandó hozzávalók hozzáadva."
 
-#: src/gr-window.ui:274
+#: src/gr-window.ui:327
 msgid "View Shopping List"
 msgstr "Bevásárlólista megtekintése"
 
-#: src/gr-window.ui:331
+#: src/gr-window.ui:384
 msgid "Undo"
 msgstr "Visszavonás"
 
-#: src/gr-window.ui:391
+#: src/gr-window.ui:444
 msgid "Send Update"
 msgstr "Frissítés küldése"
 
-#: src/gr-window.ui:466 src/gr-window.c:387
+#: src/gr-window.ui:492
+#| msgid "Recipes have been exported to “%s”"
+msgid "Shopping List has been exported to Todoist"
+msgstr "A bevásárlólista exportálva lett a Todoistre"
+
+#: src/gr-window.ui:569 src/gr-window.c:398
 msgid "Cuisines"
 msgstr "Konyhák"
+
+#: src/gr-window.ui:622
+msgid "Name"
+msgstr "Név"
+
+#: src/gr-window.ui:630
+msgid "Recency"
+msgstr "Frissesség"
 
 #: src/menus.ui:6 src/menus.ui:48
 msgid "_Import"
@@ -855,13 +935,13 @@ msgid "Help"
 msgstr "Súgó"
 
 #: src/menus.ui:89
-#, fuzzy
 msgid "Recipes _Help"
-msgstr "Receptek oldala"
+msgstr "Receptek _súgó"
 
-#: src/recipe-conflict-dialog.ui:10 src/gr-chef-dialog.c:163
-#: src/gr-image-viewer.c:627 src/gr-recipe-exporter.c:172
-#: src/gr-shopping-page.c:740 src/gr-window.c:1125
+#: src/recipe-conflict-dialog.ui:10 src/shopping-list-exporter-dialog.ui:21
+#: src/gr-chef-dialog.c:163 src/gr-image-viewer.c:627
+#: src/gr-recipe-exporter.c:172 src/gr-shopping-list-exporter.c:698
+#: src/gr-window.c:1219
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -885,9 +965,58 @@ msgstr "Megosztás egy ismerőssel"
 msgid "Contribute to the Recipes project"
 msgstr "Hozzájárulás a Receptek projekthez"
 
+#: src/recipe-surprise.ui:28
+msgid "GNOME turns 20 !"
+msgstr "A GNOME 20 !"
+
+#: src/recipe-surprise.ui:52
+msgid ""
+"YEARS\n"
+"STRONG"
+msgstr ""
+"ÉVES\n"
+"LESZ"
+
+#: src/recipe-surprise.ui:68
+msgid ""
+"Recipes is a present to GNOME for its 20th birthday. We invite the GNOME "
+"community all over the world to share recipes and enjoy a good meal together."
+msgstr ""
+"A Receptek egy ajándék a GNOME 20. születésnapjára. Arra invitáljuk a GNOME "
+"közösséget a világ minden tájáról, hogy ossza meg a receptjeit, és élvezzen "
+"egy közös étkezést."
+
+#: src/recipe-surprise.ui:79
+msgid "Let’s Party"
+msgstr "Bulizzunk"
+
 #: src/recipe-whats-new-dialog.ui:8
 msgid "What’s New in Recipes"
 msgstr "A Receptek újdonságai"
+
+#: src/shopping-list-exporter-dialog.ui:13 src/gr-shopping-list-exporter.c:278
+#| msgid "Ingredients"
+msgid "Export Ingredients"
+msgstr "Hozzávalók exportálása"
+
+#: src/shopping-list-exporter-dialog.ui:55
+#| msgid "_Export"
+msgid "Export"
+msgstr "Exportálás"
+
+#: src/shopping-list-exporter-dialog.ui:101
+msgid "Email"
+msgstr "E-mail"
+
+#: src/shopping-list-exporter-dialog.ui:136
+#: src/shopping-list-exporter-dialog.ui:201
+msgid "Todoist"
+msgstr "Todoist"
+
+#: src/shopping-list-exporter-dialog.ui:152
+#| msgid "Add Timer"
+msgid "Add service"
+msgstr "Szolgáltatás hozzáadása"
 
 #: src/gr-about-dialog.c:132
 msgid "Learn more about Builder"
@@ -971,7 +1100,9 @@ msgstr "Rendszer"
 
 #: src/gr-about-dialog.c:914
 msgid "translator-credits"
-msgstr "Úr Balázs <urbalazs@gmail.com>, 2017."
+msgstr ""
+"Meskó Balázs <mesko.balazs at fsf dot hu>, 2017, 2018.\n"
+"Úr Balázs <urbalazs at gmail dot com>, 2017, 2018."
 
 #: src/gr-about-dialog.c:917
 msgid "Learn more about Recipes"
@@ -979,14 +1110,14 @@ msgstr "Tudjon meg többet a Receptekről"
 
 #: src/gr-about-dialog.c:924
 msgid "Recipes by"
-msgstr "Receptek:"
+msgstr "Receptek tőle:"
 
-#: src/gr-account.c:109
+#: src/gr-account.c:111
 #, c-format
 msgid "Got an error from Account portal"
 msgstr "Hiba érkezett a Fiókok portálról"
 
-#: src/gr-account.c:137
+#: src/gr-account.c:162
 msgid ""
 "Allow your personal information to be included with recipes you share with "
 "your friends."
@@ -994,28 +1125,28 @@ msgstr ""
 "Személyes információk hozzáfűzésének engedélyezése azokhoz a receptekhez, "
 "amelyeket megoszt az ismerőseivel."
 
-#: src/gr-app.c:202
+#: src/gr-app.c:209
 #, c-format
 msgid "Supported categories: %s\n"
-msgstr ""
+msgstr "Támogatott kategóriák: %s\n"
 
-#: src/gr-app.c:434
+#: src/gr-app.c:441
 msgid "Print the version and exit"
 msgstr "Verzió kiírása és kilépés"
 
-#: src/gr-app.c:438
+#: src/gr-app.c:445
 msgid "Turn on verbose logging"
 msgstr "Bőbeszédű naplózás bekapcsolása"
 
-#: src/gr-app.c:442
+#: src/gr-app.c:449
 msgid "Show a category"
-msgstr ""
+msgstr "Kategória megjelenítése"
 
 #: src/gr-chef-dialog.c:159 src/gr-image-viewer.c:623
 msgid "Select an Image"
 msgstr "Válasszon képet"
 
-#: src/gr-chef-dialog.c:162 src/gr-image-viewer.c:626 src/gr-window.c:1124
+#: src/gr-chef-dialog.c:162 src/gr-image-viewer.c:626 src/gr-window.c:1218
 msgid "Open"
 msgstr "Megnyitás"
 
@@ -1147,6 +1278,11 @@ msgid ""
 "of immigrants from many foreign nations; such influx developed a rich "
 "diversity in food preparation throughout the country."
 msgstr ""
+"Az Egyesült Államok konyhája tükrözi a történelmét. Amerika európai "
+"kolonizációja számos hozzávaló és főzési stílus megjelenését okozta. A "
+"különböző stílusok terjeszkedése folytatódott a XIX. és a XX. században, a "
+"bevándorlók számával arányosan sok különböző országból; ez a beáramlás "
+"gazdag változatosságot hozott létre az ételkészítésben országszerte."
 
 #: src/gr-cuisine.c:76
 msgid ""
@@ -1205,12 +1341,21 @@ msgid ""
 "yoghurt. The most commonly used grain is wheat; barley is also used. Common "
 "dessert ingredients include nuts, honey, fruits, and filo pastry."
 msgstr ""
+"A kortárs görög konyha széles körben használja a zöldségeket, olívaolajat, "
+"gabonát, halat, bort és húst (fehér és vörös húsokat, köztök a bárányt, "
+"baromfit, nyulat és sertést). Fontos hozzávalónak számít az olívabogyó, "
+"sajt, padlizsán, cukkini, citromlé, a különféle zöldségek, fűszernövények, a "
+"kenyér és a joghurt. A legtöbbet használt gabona a búza, de az árpát is "
+"használják. Népszerű desszert-összetevő a dió, a méz, a gyümölcsök és a "
+"rétestészta."
 
 #: src/gr-cuisine.c:108
 msgid ""
 "Mediterranean cuisine has a lot to offer, and is legendary for being very "
 "healthy too. Expect to see olives, yoghurt and garlic."
 msgstr ""
+"A mediterrán konyha sok mindent kínál, és legendásan egészséges is. Sok "
+"olívabogyó, joghurt és fokhagyma várható."
 
 #: src/gr-cuisine.c:109
 msgid ""
@@ -1223,6 +1368,14 @@ msgid ""
 "animals (beef, pork, chicken, goat, and sheep), dairy products (especially "
 "cheese), and various herbs and spices."
 msgstr ""
+"A mexikói konyha leginkább az őshonos közép-amerikai, és az európai – főleg "
+"spanyol – elemek ötvözete, amely az Azték Birodalom Spanyolország általi "
+"meghódítása után érkeztek a XVI. században. A legfontosabbak az őshonos "
+"ételek, mint a kukorica, bab, avokádó, paradicsom és a csilipaprika; a rizs "
+"mellett, amit a spanyolok hoztak be. Az európaiak számos más ételt is "
+"behoztak, amelyek közül a legfontosabbak a háziasított állatok húsai (marha, "
+"sertés, csirke, kecske és bárány), a tejtermékek (különösen a sajt), és a "
+"különféle fűszernövények."
 
 #: src/gr-cuisine.c:116
 msgid ""
@@ -1231,6 +1384,10 @@ msgid ""
 "nutmeg and black pepper can be traced to the Danish cuisine of the Middle "
 "Ages and some even to the Vikings."
 msgstr ""
+"Dániában a főzést mindig is az idegen és a kontinentális gyakorlatok "
+"inspirálták. Az olyan importált trópusi fűszerek, mint a fahéj, kardámom, "
+"szerecsendió és a fekete bors visszavezethető a középkori dán konyháig, sőt "
+"egyes esetekben a vikingekig is."
 
 #: src/gr-cuisine.c:117
 msgid ""
@@ -1239,22 +1396,36 @@ msgid ""
 "refinement of Central Asian, Middle Eastern and Balkan cuisines. Therefore "
 "it is impossible to fit Turkish cuisine into a short list."
 msgstr ""
+"Sokféle ínycsiklandozó étel található a török konyhában, amely leginkább az "
+"oszmán konyha öröksége. A török konyha a közép-ázsiai, közel-keleti és "
+"balkáni konyhák keveréke és finomítása. Ezért lehetetlen a török konyhát egy "
+"rövid listával leírni."
 
-#: src/gr-details-page.c:323
+#: src/gr-details-page.c:193 src/gr-edit-page.c:935
+msgid "serving"
+msgstr "adag"
+
+#: src/gr-details-page.c:193 src/gr-edit-page.c:936
+#: src/gr-recipe-importer.c:504 src/gr-recipe-store.c:410
+#: src/gr-shopping-tile.c:110
+msgid "servings"
+msgstr "adag"
+
+#: src/gr-details-page.c:367
 msgid "Could not find this recipe."
 msgstr "Nem található ez a recept."
 
-#: src/gr-details-page.c:531
+#: src/gr-details-page.c:576
 #, c-format
 msgid "Timer: %s"
 msgstr "Időmérő: %s"
 
-#: src/gr-details-page.c:538
+#: src/gr-details-page.c:583
 #, c-format
 msgid "Image %d"
 msgstr "%d. kép"
 
-#: src/gr-details-page.c:693 src/gr-edit-page.c:1409
+#: src/gr-details-page.c:724 src/gr-edit-page.c:1594
 #, c-format
 msgid "Recipe by %s"
 msgstr "%s receptje"
@@ -1294,8 +1465,18 @@ msgid ""
 "<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free\">Learn more…</"
 "a>"
 msgstr ""
+"A gluténmentes étrend egy olyan diéta, amely mellőzi a glutént, amely egy "
+"búzában, árpában, rozsban, ezek alfajaiban és hibridjeikben (mint a tönköly, "
+"kamut, tritikálé) megtalálható összetett fehérje. A zabok bevétele a "
+"gluténmentes étrendbe vitatott. A zabokban lévő avenin mérgező lehet a "
+"cöliákiás emberek számára; a mérgezősége függ az elfogyasztott "
+"kultúrnövénytől. Továbbá a zabok gyakran glutént tartalmazó gabonával "
+"szennyezettek.\n"
+"<a href=\"https://hu.wikipedia.org/wiki/Liszt%C3%A9rz%C3%A9kenys%C3%A9g"
+"\">Tudjon meg többet…</a>"
 
 #: src/gr-diet.c:66
+#, fuzzy
 msgid ""
 "A tree nut allergy is a hypersensitivity to dietary substances from tree "
 "nuts and edible tree seeds causing an overreaction of the immune system "
@@ -1304,6 +1485,14 @@ msgid ""
 "macadamia nuts, pecans, pistachios, pine nuts, shea nuts and walnuts.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">Learn more…</a>"
 msgstr ""
+"A dióallergia egy hiperérzékenység a diófélékből származó anyagokra, amelyek "
+"túlzott immunválaszt okoznak, amely súlyos fizikai tüneteket okoznak. A "
+"diófélékhez többek között a következők tartoznak: mandula, brazil dió, "
+"kesudió, gesztenye, mogyoró, makadámdió, pekándió, pisztácia, fenyőmag, shea "
+"dió.\n"
+"\n"
+"<a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">Tudjon meg többet…"
+"</a>"
 
 #: src/gr-diet.c:69
 msgid ""
@@ -1312,6 +1501,10 @@ msgid ""
 "commodity status of animals.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Veganism\">Learn more…</a>"
 msgstr ""
+"A veganizmus az állati termékek használatának mellőzése, amely a "
+"leglátványosabban a táplálkozás terén nyilvánul meg, és a hozzá kapcsolódó "
+"filozófia, amely elutasítja az állatok árucikk státuszát.\n"
+"<a href=\"https://hu.wikipedia.org/wiki/Veganizmus\">Tudjon meg többet…</a>"
 
 #: src/gr-diet.c:72
 msgid ""
@@ -1339,212 +1532,233 @@ msgid ""
 "<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Learn more…</a>"
 msgstr ""
 
-#: src/gr-edit-page.c:595
+#: src/gr-edit-page.c:599
 msgid "hour"
 msgstr "óra"
 
-#: src/gr-edit-page.c:596
+#: src/gr-edit-page.c:600
 msgid "hours"
 msgstr "óra"
 
-#: src/gr-edit-page.c:597
+#: src/gr-edit-page.c:601
 msgctxt "hour abbreviation"
 msgid "h"
 msgstr "ó"
 
-#: src/gr-edit-page.c:601
+#: src/gr-edit-page.c:605
 msgid "minute"
 msgstr "perc"
 
-#: src/gr-edit-page.c:602
+#: src/gr-edit-page.c:606
 msgid "minutes"
 msgstr "perc"
 
-#: src/gr-edit-page.c:603
+#: src/gr-edit-page.c:607
 msgctxt "minute abbreviation"
 msgid "min"
 msgstr "p"
 
-#: src/gr-edit-page.c:604
+#: src/gr-edit-page.c:608
 msgctxt "minute abbreviation"
 msgid "m"
 msgstr "p"
 
-#: src/gr-edit-page.c:608
+#: src/gr-edit-page.c:612
 msgid "second"
 msgstr "másodperc"
 
-#: src/gr-edit-page.c:609
+#: src/gr-edit-page.c:613
 msgid "seconds"
 msgstr "másodperc"
 
-#: src/gr-edit-page.c:610
+#: src/gr-edit-page.c:614
 msgctxt "second abbreviation"
 msgid "sec"
 msgstr "mp"
 
-#: src/gr-edit-page.c:611
+#: src/gr-edit-page.c:615
 msgctxt "second abbreviation"
 msgid "s"
 msgstr "mp"
 
-#: src/gr-edit-page.c:896
+#: src/gr-edit-page.c:900
 msgid "Recipe Author"
 msgstr "Recept szerzője"
 
-#: src/gr-edit-page.c:1360
-msgid "Name Your Recipe"
-msgstr "Nevezze el a receptjét"
+#: src/gr-edit-page.c:939
+msgid "loaf"
+msgstr "vekni"
 
-#: src/gr-edit-page.c:1465
-msgid "Name"
-msgstr "Név"
+#: src/gr-edit-page.c:940
+msgid "loafs"
+msgstr "vekni"
 
-#: src/gr-edit-page.c:1537 src/gr-edit-page.c:1592 src/gr-recipe-store.c:1280
+#: src/gr-edit-page.c:943
+#| msgctxt "unit name"
+#| msgid "ounce"
+msgid "ounce"
+msgstr "uncia"
+
+#: src/gr-edit-page.c:944
+msgid "ounces"
+msgstr "uncia"
+
+#: src/gr-edit-page.c:1545
+msgid "_Name Your Recipe"
+msgstr "_Nevezze el a receptjét"
+
+#: src/gr-edit-page.c:1730 src/gr-edit-page.c:1791 src/gr-recipe-store.c:1333
 #, c-format
 msgid "You need to provide a name for the recipe"
 msgstr "Meg kell adnia egy nevet a recepthez"
 
-#: src/gr-edit-page.c:1550
-#, fuzzy, c-format
+#: src/gr-edit-page.c:1748
+#, c-format
 msgid "Some ingredients need correction"
-msgstr "Még nem lett hozzávaló hozzáadva"
+msgstr "Néhány hozzávaló javítást igényel"
 
-#: src/gr-ingredients-viewer-row.c:153
-#, fuzzy
+#: src/gr-gourmet-format.c:174
+#, c-format
+msgid "Not a Gourmet XML document"
+msgstr "Nem Gourmet XML dokumentum"
+
+#: src/gr-ingredients-viewer-row.c:159
 msgid "Amount…"
-msgstr "Mennyiség"
+msgstr "Mennyiség…"
 
-#: src/gr-ingredients-viewer-row.c:166
-#, fuzzy
+#: src/gr-ingredients-viewer-row.c:174
 msgid "Ingredient…"
-msgstr "Hozzávaló"
+msgstr "Hozzávaló…"
 
-#: src/gr-list-page.c:245
+#: src/gr-list-page.c:310
 msgid "Gluten-free Recipes"
 msgstr "Gluténmentes receptek"
 
-#: src/gr-list-page.c:247
+#: src/gr-list-page.c:312
 msgid "Nut-free Recipes"
 msgstr "Diómentes receptek"
 
-#: src/gr-list-page.c:249
+#: src/gr-list-page.c:314
 msgid "Vegan Recipes"
 msgstr "Vegán receptek"
 
-#: src/gr-list-page.c:251
+#: src/gr-list-page.c:316
 msgid "Vegetarian Recipes"
 msgstr "Vegetáriánus receptek"
 
-#: src/gr-list-page.c:253
+#: src/gr-list-page.c:318
 msgid "Milk-free Recipes"
 msgstr "Tejmentes receptek"
 
-#: src/gr-list-page.c:255
+#: src/gr-list-page.c:320
 msgid "Other Dietary Restrictions"
 msgstr "Egyéb étrendi korlátozások"
 
-#: src/gr-list-page.c:296
+#: src/gr-list-page.c:363
 #, c-format
 msgid "No %s found"
 msgstr "Nem található %s"
 
-#: src/gr-list-page.c:299 src/gr-list-page.c:358 src/gr-list-page.c:389
+#: src/gr-list-page.c:366 src/gr-list-page.c:435 src/gr-list-page.c:468
 msgid "You could add one using the “New Recipe” button."
 msgstr "Hozzáadhat egyet az „Új recept” gomb használatával."
 
-#: src/gr-list-page.c:347
+#: src/gr-list-page.c:424
 #, c-format
 msgid "Recipes by %s"
 msgstr "%s receptjei"
 
-#: src/gr-list-page.c:354
+#: src/gr-list-page.c:431
 #, c-format
 msgid "No recipes by chef %s found"
 msgstr "Nem találhatók %s konyhafőnök receptjei"
 
-#: src/gr-list-page.c:360 src/gr-list-page.c:428 src/gr-list-page.c:453
-#: src/gr-list-page.c:486
+#: src/gr-list-page.c:437 src/gr-list-page.c:511 src/gr-list-page.c:538
+#: src/gr-list-page.c:573
 msgid "Sorry about this."
 msgstr "Elnézést."
 
-#: src/gr-list-page.c:386
+#: src/gr-list-page.c:465
 #, c-format
 msgid "No recipes for %s found"
 msgstr "Nem található recept ehhez: %s"
 
-#: src/gr-list-page.c:408
+#: src/gr-list-page.c:489
 msgid "No favorite recipes found"
 msgstr "Nem találhatók kedvenc receptek"
 
-#: src/gr-list-page.c:409
+#: src/gr-list-page.c:490
 msgid "Use the ♥ button to mark recipes as favorites."
 msgstr "A ♥ gomb használatával megjelölheti a recepteket kedvencként."
 
-#: src/gr-list-page.c:452
+#: src/gr-list-page.c:537
 msgid "No new recipes"
 msgstr "Nincsenek új receptek"
 
-#: src/gr-list-page.c:485
+#: src/gr-list-page.c:572
 msgid "No imported recipes found"
 msgstr "Nem találhatók importált receptek"
 
-#: src/gr-meal.c:44
+#: src/gr-meal.c:45
 msgid "Main Course"
 msgstr "Főétel"
 
-#: src/gr-meal.c:45
-msgid "Snacks"
-msgstr "Rágcsálni valók"
-
 #: src/gr-meal.c:46
+msgid "Snacks"
+msgstr "Rágcsálnivalók"
+
+#: src/gr-meal.c:47
 msgid "Breakfast"
 msgstr "Reggeli"
 
-#: src/gr-meal.c:47
+#: src/gr-meal.c:48
 msgid "Side Dishes"
 msgstr "Köretek"
 
-#: src/gr-meal.c:48
+#: src/gr-meal.c:49
 msgid "Desserts"
 msgstr "Desszertek"
 
-#: src/gr-meal.c:49
+#: src/gr-meal.c:50
 msgid "Cake and Baking"
 msgstr "Torta és sütemény"
 
-#: src/gr-meal.c:50
+#: src/gr-meal.c:51
 msgid "Drinks and Cocktails"
 msgstr "Italok és koktélok"
 
-#: src/gr-meal.c:51
+#: src/gr-meal.c:52
 msgid "Pizza"
 msgstr "Pizza"
 
-#: src/gr-meal.c:52
+#: src/gr-meal.c:53
 msgid "Pasta"
 msgstr "Tészta"
 
-#: src/gr-meal.c:53
+#: src/gr-meal.c:54
+msgid "Salad"
+msgstr "Saláta"
+
+#: src/gr-meal.c:55
 msgid "Other"
 msgstr "Egyéb"
 
-#: src/gr-number.c:166 src/gr-number.c:183 src/gr-number.c:192
+#: src/gr-number.c:148 src/gr-number.c:217 src/gr-number.c:226
 #, c-format
 msgid "Could not parse %s as a fraction"
 msgstr "Nem sikerült a(z) %s feldolgozása törtként"
 
-#: src/gr-number.c:216
+#: src/gr-number.c:251
 #, c-format
 msgid "Could not parse %s as a integer"
 msgstr "Nem sikerült a(z) %s feldolgozása egész számként"
 
-#: src/gr-number.c:239
+#: src/gr-number.c:273
 #, c-format
 msgid "Could not parse %s as a float"
 msgstr "Nem sikerült a(z) %s feldolgozása lebegőpontos számként"
 
-#: src/gr-number.c:290
+#: src/gr-number.c:322
 #, c-format
 msgid "Could not parse %s as a number"
 msgstr "Nem sikerült a(z) %s feldolgozása számként"
@@ -1553,7 +1767,7 @@ msgstr "Nem sikerült a(z) %s feldolgozása számként"
 msgid "Save the exported recipe"
 msgstr "Az exportált recept mentése"
 
-#: src/gr-recipe-exporter.c:171 src/gr-shopping-page.c:739
+#: src/gr-recipe-exporter.c:171 src/gr-shopping-list-exporter.c:697
 msgid "Save"
 msgstr "Mentés"
 
@@ -1597,12 +1811,12 @@ msgstr ""
 msgid "(The attached file can be imported into GNOME Recipes.)"
 msgstr "(A mellékelt fájl importálható a GNOME Receptekbe.)"
 
-#: src/gr-recipe-exporter.c:432
+#: src/gr-recipe-exporter.c:437
 #, c-format
 msgid "This build does not support exporting"
 msgstr "Ez az összeállítás nem támogatja az exportálást"
 
-#: src/gr-recipe-exporter.c:515
+#: src/gr-recipe-exporter.c:520
 #, c-format
 msgid ""
 "Error while exporting:\n"
@@ -1611,14 +1825,14 @@ msgstr ""
 "Hiba az exportálás közben:\n"
 "%s"
 
-#: src/gr-recipe-exporter.c:612
+#: src/gr-recipe-exporter.c:617
 #, c-format
 msgid "%d recipe selected for sharing"
 msgid_plural "%d recipes selected for sharing"
 msgstr[0] "%d recept lett kijelölve a megosztáshoz"
 msgstr[1] "%d recept lett kijelölve a megosztáshoz"
 
-#: src/gr-recipe-exporter.c:644
+#: src/gr-recipe-exporter.c:649
 msgid ""
 "Some of the selected recipes are included\n"
 "with GNOME Recipes. You should only contribute\n"
@@ -1627,23 +1841,24 @@ msgstr ""
 "Néhány kijelölt receptet tartalmaz a GNOME Receptek.\n"
 "Csak saját receptekkel járulhat hozzá."
 
-#: src/gr-recipe-formatter.c:86 src/gr-recipe-printer.c:162
+#: src/gr-recipe-formatter.c:88 src/gr-recipe-printer.c:164
 msgid "Author:"
 msgstr "Szerző:"
 
-#: src/gr-recipe-formatter.c:87 src/gr-recipe-printer.c:163
+#: src/gr-recipe-formatter.c:89 src/gr-recipe-printer.c:165
 msgid "Preparation:"
 msgstr "Előkészítés:"
 
-#: src/gr-recipe-formatter.c:88 src/gr-recipe-printer.c:164
+#: src/gr-recipe-formatter.c:90 src/gr-recipe-printer.c:166
 msgid "Cooking:"
 msgstr "Főzés:"
 
-#: src/gr-recipe-formatter.c:89 src/gr-recipe-printer.c:165
-msgid "Serves:"
-msgstr "Adag:"
+#: src/gr-recipe-formatter.c:93 src/gr-recipe-printer.c:168
+#, fuzzy
+msgid "Yield:"
+msgstr "Hozam:"
 
-#: src/gr-recipe-importer.c:236
+#: src/gr-recipe-importer.c:238
 #, c-format
 msgid ""
 "Error while importing recipe:\n"
@@ -1652,68 +1867,55 @@ msgstr ""
 "Hiba a recept importálása során:\n"
 "%s"
 
-#: src/gr-recipe-importer.c:482
+#: src/gr-recipe-importer.c:518
 #, c-format
 msgid "Failed to load recipe: Couldn’t parse Created key"
 msgstr ""
 "Nem sikerült betölteni a receptet: nem sikerült feldolgozni a „Created” "
 "kulcsot"
 
-#: src/gr-recipe-importer.c:493
+#: src/gr-recipe-importer.c:529
 #, c-format
 msgid "Failed to load recipe: Couldn’t parse Modified key"
 msgstr ""
 "Nem sikerült betölteni a receptet: nem sikerült feldolgozni a „Modified” "
 "kulcsot"
 
-#: src/gr-recipe-importer.c:773
-#, fuzzy, c-format
+#: src/gr-recipe-importer.c:809
+#, c-format
 msgid "No chef information found"
-msgstr "Konyhafőnök-információk"
+msgstr "Nem találhatók konyhafőnök-információk"
 
-#: src/gr-recipe-importer.c:803
+#: src/gr-recipe-importer.c:839
 #, c-format
 msgid "This build does not support importing"
 msgstr "Ez az összeállítás nem támogatja az importálást"
 
-#: src/gr-recipe-printer.c:170
-#, fuzzy
+#: src/gr-recipe-printer.c:173
 msgid "Cuisine:"
-msgstr "Konyha"
+msgstr "Konyha:"
 
-#: src/gr-recipe-printer.c:174
-#, fuzzy
+#: src/gr-recipe-printer.c:177
 msgid "Meal:"
-msgstr "Étkezés"
+msgstr "Étkezés:"
 
-#: src/gr-recipe-printer.c:178
-#, fuzzy
+#: src/gr-recipe-printer.c:181
 msgid "Season:"
-msgstr "Évszak"
+msgstr "Évszak:"
 
-#: src/gr-recipe-printer.c:223
-#, fuzzy
+#: src/gr-recipe-printer.c:229
 msgid "Notes"
-msgstr "_Jegyzetek"
+msgstr "Jegyzetek"
 
-#: src/gr-recipe-printer.c:466 src/gr-shopping-list-printer.c:297
+#: src/gr-recipe-printer.c:472 src/gr-shopping-list-printer.c:297
 msgid "Error printing file:"
 msgstr "Hiba a fájl nyomtatásakor:"
 
-#: src/gr-recipe-printer.c:467 src/gr-shopping-list-printer.c:298
+#: src/gr-recipe-printer.c:473 src/gr-shopping-list-printer.c:298
 msgid "No details"
 msgstr "Nincsenek részletek"
 
-#: src/gr-recipe-small-tile.c:105 src/gr-recipe-tile.c:86
-#, c-format
-msgid "by %s"
-msgstr "- %s"
-
-#: src/gr-recipe-small-tile.c:105 src/gr-recipe-tile.c:86
-msgid "Anonymous"
-msgstr "Névtelen"
-
-#: src/gr-recipes-page.c:221 src/gr-window.c:1289
+#: src/gr-recipes-page.c:221 src/gr-window.c:1383
 msgid "My Recipes"
 msgstr "Saját receptek"
 
@@ -1721,11 +1923,11 @@ msgstr "Saját receptek"
 msgid "Favorites"
 msgstr "Kedvencek"
 
-#: src/gr-recipes-page.c:223 src/gr-window.c:1237
+#: src/gr-recipes-page.c:223 src/gr-window.c:1331
 msgid "All Recipes"
 msgstr "Összes recept"
 
-#: src/gr-recipes-page.c:224 src/gr-window.c:1246
+#: src/gr-recipes-page.c:224 src/gr-window.c:1340
 msgid "New Recipes"
 msgstr "Új receptek"
 
@@ -1750,44 +1952,53 @@ msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
 msgstr[0] "Hozzávalók vásárlása: <b>%s, %s és további %d</b>"
 msgstr[1] "Hozzávalók vásárlása: <b>%s, %s és további %d</b>"
 
-#: src/gr-recipe-store.c:1285
-#, fuzzy, c-format
+#: src/gr-recipe-store.c:1338
+#, c-format
 msgid ""
 "A recipe with this name and author (%s) already exists.\n"
 "Please choose a different name"
 msgstr ""
-"Már létezik ilyen nevű és szerzőjű recept.\n"
-"Válasszon egy másik nevet."
+"Már létezik ilyen nevű és szerzőjű (%s) recept.\n"
+"Válasszon egy másik nevet"
 
-#: src/gr-recipe-store.c:1314
+#: src/gr-recipe-store.c:1367
 #, c-format
 msgid "You need to provide an ID for the recipe"
 msgstr "Meg kell adnia egy azonosítót a recepthez"
 
-#: src/gr-recipe-store.c:1320
+#: src/gr-recipe-store.c:1373
 #, c-format
 msgid "A recipe with this ID already exists"
 msgstr "Már létezik ilyen azonosítójú recept"
 
-#: src/gr-recipe-store.c:1489
+#: src/gr-recipe-store.c:1542
 #, c-format
 msgid "You need to provide an ID"
 msgstr "Meg kell adnia egy azonosítót"
 
-#: src/gr-recipe-store.c:1495
+#: src/gr-recipe-store.c:1548
 #, c-format
 msgid "Sorry, this ID is taken"
 msgstr "Elnézést, ez az azonosító már foglalt"
 
-#: src/gr-recipe-store.c:1522
+#: src/gr-recipe-store.c:1575
 #, c-format
 msgid "You need to provide an ID for the chef"
 msgstr "Meg kell adnia egy azonosítót a konyhafőnökhöz"
 
-#: src/gr-recipe-store.c:1528
+#: src/gr-recipe-store.c:1581
 #, c-format
 msgid "A chef with this ID already exists"
 msgstr "Már létezik ilyen azonosítójú konyhafőnök"
+
+#: src/gr-recipe-tile.c:99 src/gr-shopping-tile.c:108
+#, c-format
+msgid "by %s"
+msgstr "- %s"
+
+#: src/gr-recipe-tile.c:99 src/gr-shopping-tile.c:108
+msgid "Anonymous"
+msgstr "Névtelen"
 
 #: src/gr-season.c:41
 msgid "Thanksgiving"
@@ -1798,7 +2009,6 @@ msgid "Christmas"
 msgstr "Karácsony"
 
 #: src/gr-season.c:43
-#, fuzzy
 msgid "New Year’s"
 msgstr "Újév"
 
@@ -1818,8 +2028,21 @@ msgstr "Ősz"
 msgid "Winter"
 msgstr "Tél"
 
-#: src/gr-shopping-list-formatter.c:42 src/gr-shopping-list-printer.c:135
-#: src/gr-shopping-page.c:765
+#: src/gr-shopping-list-exporter.c:270
+msgid "Add Account"
+msgstr "Fiók hozzáadása"
+
+#: src/gr-shopping-list-exporter.c:476 src/gr-shopping-list-exporter.c:566
+#| msgid "Shopping List"
+msgid "Shopping List from Recipes"
+msgstr "Bevásárlólista a Receptekből"
+
+#: src/gr-shopping-list-exporter.c:694
+msgid "Save the shopping list"
+msgstr "A bevásárlólista mentése"
+
+#: src/gr-shopping-list-exporter.c:724 src/gr-shopping-list-formatter.c:42
+#: src/gr-shopping-list-printer.c:135
 msgid "Shopping List"
 msgstr "Bevásárlólista"
 
@@ -1835,30 +2058,26 @@ msgstr "A következő receptekhez"
 msgid "Items"
 msgstr "Elemek"
 
-#: src/gr-shopping-page.c:100
+#: src/gr-shopping-page.c:103
 #, c-format
 msgid "%d ingredient marked for purchase"
 msgid_plural "%d ingredients marked for purchase"
 msgstr[0] "%d hozzávaló megjelölve a vásárláshoz"
 msgstr[1] "%d hozzávaló megjelölve a vásárláshoz"
 
-#: src/gr-shopping-page.c:119
+#: src/gr-shopping-page.c:122
 #, c-format
 msgid "Buy Ingredients (%d recipe)"
 msgid_plural "Buy Ingredients (%d recipes)"
 msgstr[0] "Hozzávalók vásárlása (%d recept)"
 msgstr[1] "Hozzávalók vásárlása (%d recept)"
 
-#: src/gr-shopping-page.c:124
+#: src/gr-shopping-page.c:127
 #, c-format
 msgid "%d Recipe marked for preparation"
 msgid_plural "%d Recipes marked for preparation"
 msgstr[0] "%d recept megjelölve az előkészítéshez"
 msgstr[1] "%d recept megjelölve az előkészítéshez"
-
-#: src/gr-shopping-page.c:736
-msgid "Save the shopping list"
-msgstr "A bevásárlólista mentése"
 
 #: src/gr-spice-row.c:131
 msgid "Mild or somewhat spicy"
@@ -1876,373 +2095,353 @@ msgstr "Legfeljebb erős"
 msgid "Hot or very spicy"
 msgstr "Erős vagy nagyon fűszeres"
 
-#: src/gr-unit.c:41
+#: src/gr-unit.c:46
 msgctxt "unit abbreviation"
 msgid "g"
 msgstr "g"
 
-#: src/gr-unit.c:41
+#: src/gr-unit.c:46
 msgctxt "unit name"
 msgid "gram"
 msgstr "gramm"
 
-#: src/gr-unit.c:41
-#, fuzzy
+#: src/gr-unit.c:46
 msgctxt "unit plural"
 msgid "grams"
 msgstr "gramm"
 
-#: src/gr-unit.c:42
+#: src/gr-unit.c:47
 msgctxt "unit abbreviation"
 msgid "kg"
 msgstr "kg"
 
-#: src/gr-unit.c:42
+#: src/gr-unit.c:47
 msgctxt "unit name"
 msgid "kilogram"
 msgstr "kilogramm"
 
-#: src/gr-unit.c:42
-#, fuzzy
+#: src/gr-unit.c:47
 msgctxt "unit plural"
 msgid "kilograms"
 msgstr "kilogramm"
 
-#: src/gr-unit.c:43
+#: src/gr-unit.c:48
 msgctxt "unit abbreviation"
 msgid "lb"
 msgstr "lb"
 
-#: src/gr-unit.c:43
+#: src/gr-unit.c:48
 msgctxt "unit name"
 msgid "pound"
 msgstr "font"
 
-#: src/gr-unit.c:43
-#, fuzzy
+#: src/gr-unit.c:48
 msgctxt "unit plural"
 msgid "pounds"
 msgstr "font"
 
-#: src/gr-unit.c:44
+#: src/gr-unit.c:49
 msgctxt "unit abbreviation"
 msgid "oz"
 msgstr "oz"
 
-#: src/gr-unit.c:44
+#: src/gr-unit.c:49
 msgctxt "unit name"
 msgid "ounce"
 msgstr "uncia"
 
-#: src/gr-unit.c:44
-#, fuzzy
+#: src/gr-unit.c:49
 msgctxt "unit plural"
 msgid "ounces"
 msgstr "uncia"
 
-#: src/gr-unit.c:45
+#: src/gr-unit.c:50
 msgctxt "unit abbreviation"
 msgid "l"
 msgstr "l"
 
-#: src/gr-unit.c:45
+#: src/gr-unit.c:50
 msgctxt "unit name"
 msgid "liter"
 msgstr "liter"
 
-#: src/gr-unit.c:45
-#, fuzzy
+#: src/gr-unit.c:50
 msgctxt "unit plural"
 msgid "liters"
 msgstr "liter"
 
-#: src/gr-unit.c:46
+#: src/gr-unit.c:51
 msgctxt "unit abbreviation"
 msgid "dl"
 msgstr "dl"
 
-#: src/gr-unit.c:46
+#: src/gr-unit.c:51
 msgctxt "unit name"
 msgid "deciliter"
 msgstr "deciliter"
 
-#: src/gr-unit.c:46
-#, fuzzy
+#: src/gr-unit.c:51
 msgctxt "unit plural"
 msgid "deciliters"
 msgstr "deciliter"
 
-#: src/gr-unit.c:47
+#: src/gr-unit.c:52
 msgctxt "unit abbreviation"
 msgid "ml"
 msgstr "ml"
 
-#: src/gr-unit.c:47
+#: src/gr-unit.c:52
 msgctxt "unit name"
 msgid "milliliter"
 msgstr "milliliter"
 
-#: src/gr-unit.c:47
-#, fuzzy
+#: src/gr-unit.c:52
 msgctxt "unit plural"
 msgid "milliliters"
 msgstr "milliliter"
 
-#: src/gr-unit.c:48 src/gr-unit.c:49
+#: src/gr-unit.c:53 src/gr-unit.c:54
 msgctxt "unit abbreviation"
 msgid "fl oz"
 msgstr "fl oz"
 
-#: src/gr-unit.c:48 src/gr-unit.c:49
+#: src/gr-unit.c:53 src/gr-unit.c:54
 msgctxt "unit name"
 msgid "fluid ounce"
 msgstr "folyékony uncia"
 
-#: src/gr-unit.c:48 src/gr-unit.c:49
-#, fuzzy
+#: src/gr-unit.c:53 src/gr-unit.c:54
 msgctxt "unit plural"
 msgid "fluid ounces"
 msgstr "folyékony uncia"
 
-#: src/gr-unit.c:50
+#: src/gr-unit.c:55
 msgctxt "unit abbreviation"
 msgid "pt"
 msgstr "pt"
 
-#: src/gr-unit.c:50
+#: src/gr-unit.c:55
 msgctxt "unit name"
 msgid "pint"
 msgstr "pint"
 
-#: src/gr-unit.c:50
-#, fuzzy
+#: src/gr-unit.c:55
 msgctxt "unit plural"
 msgid "pints"
 msgstr "pint"
 
-#: src/gr-unit.c:51
+#: src/gr-unit.c:56
 msgctxt "unit abbreviation"
 msgid "qt"
 msgstr "qt"
 
-#: src/gr-unit.c:51
+#: src/gr-unit.c:56
 msgctxt "unit name"
 msgid "quart"
 msgstr "kvart"
 
-#: src/gr-unit.c:51
-#, fuzzy
+#: src/gr-unit.c:56
 msgctxt "unit plural"
 msgid "quarts"
 msgstr "kvart"
 
-#: src/gr-unit.c:52
+#: src/gr-unit.c:57
 msgctxt "unit abbreviation"
 msgid "gal"
 msgstr "gal"
 
-#: src/gr-unit.c:52
+#: src/gr-unit.c:57
 msgctxt "unit name"
 msgid "gallon"
 msgstr "gallon"
 
-#: src/gr-unit.c:52
-#, fuzzy
+#: src/gr-unit.c:57
 msgctxt "unit plural"
 msgid "gallons"
 msgstr "gallon"
 
-#: src/gr-unit.c:53
+#: src/gr-unit.c:58
 msgctxt "unit abbreviation"
 msgid "cup"
 msgstr "csésze"
 
-#: src/gr-unit.c:53
+#: src/gr-unit.c:58
 msgctxt "unit name"
 msgid "cup"
 msgstr "csésze"
 
-#: src/gr-unit.c:53
+#: src/gr-unit.c:58
 msgctxt "unit plural"
 msgid "cups"
-msgstr ""
+msgstr "csésze"
 
-#: src/gr-unit.c:54
+#: src/gr-unit.c:59
 msgctxt "unit abbreviation"
 msgid "tbsp"
 msgstr "ek"
 
-#: src/gr-unit.c:54
+#: src/gr-unit.c:59
 msgctxt "unit name"
 msgid "tablespoon"
 msgstr "evőkanál"
 
-#: src/gr-unit.c:54
-#, fuzzy
+#: src/gr-unit.c:59
 msgctxt "unit plural"
 msgid "tablespoons"
 msgstr "evőkanál"
 
-#: src/gr-unit.c:55
+#: src/gr-unit.c:60
 msgctxt "unit abbreviation"
 msgid "tsp"
 msgstr "tk"
 
-#: src/gr-unit.c:55
+#: src/gr-unit.c:60
 msgctxt "unit name"
 msgid "teaspoon"
 msgstr "teáskanál"
 
-#: src/gr-unit.c:55
-#, fuzzy
+#: src/gr-unit.c:60
 msgctxt "unit plural"
 msgid "teaspoons"
 msgstr "teáskanál"
 
-#: src/gr-unit.c:56
+#: src/gr-unit.c:61
 msgctxt "unit abbreviation"
 msgid "box"
 msgstr "doboz"
 
-#: src/gr-unit.c:56
+#: src/gr-unit.c:61
 msgctxt "unit name"
 msgid "box"
 msgstr "doboz"
 
-#: src/gr-unit.c:56
+#: src/gr-unit.c:61
 msgctxt "unit plural"
 msgid "boxes"
-msgstr ""
+msgstr "doboz"
 
-#: src/gr-unit.c:57
+#: src/gr-unit.c:62
 msgctxt "unit abbreviation"
 msgid "pkg"
 msgstr "pkg"
 
-#: src/gr-unit.c:57
+#: src/gr-unit.c:62
 msgctxt "unit name"
 msgid "package"
 msgstr "csomag"
 
-#: src/gr-unit.c:57
-#, fuzzy
+#: src/gr-unit.c:62
 msgctxt "unit plural"
 msgid "packages"
 msgstr "csomag"
 
-#: src/gr-unit.c:58
+#: src/gr-unit.c:63
 msgctxt "unit abbreviation"
 msgid "glass"
 msgstr "pohár"
 
-#: src/gr-unit.c:58
+#: src/gr-unit.c:63
 msgctxt "unit name"
 msgid "glass"
 msgstr "pohár"
 
-#: src/gr-unit.c:58
-#, fuzzy
+#: src/gr-unit.c:63
 msgctxt "unit plural"
 msgid "glasses"
 msgstr "pohár"
 
-#: src/gr-unit.c:59
-#, fuzzy
+#: src/gr-unit.c:64
 msgctxt "unit abbreviation"
 msgid "mm"
-msgstr "p"
+msgstr "mm"
 
-#: src/gr-unit.c:59
-#, fuzzy
+#: src/gr-unit.c:64
 msgctxt "unit name"
 msgid "millimeter"
-msgstr "milliliter"
+msgstr "milliméter"
 
-#: src/gr-unit.c:59
-#, fuzzy
+#: src/gr-unit.c:64
 msgctxt "unit plural"
 msgid "millimeters"
-msgstr "milliliter"
+msgstr "milliméter"
 
-#: src/gr-unit.c:60
-#, fuzzy
+#: src/gr-unit.c:65
 msgctxt "unit abbreviation"
 msgid "cm"
-msgstr "p"
+msgstr "cm"
 
-#: src/gr-unit.c:60
+#: src/gr-unit.c:65
 msgctxt "unit name"
 msgid "centimeter"
-msgstr ""
+msgstr "centiméter"
 
-#: src/gr-unit.c:60
+#: src/gr-unit.c:65
 msgctxt "unit plural"
 msgid "centimeters"
-msgstr ""
+msgstr "centiméter"
 
-#: src/gr-unit.c:61
-#, fuzzy
+#: src/gr-unit.c:66
 msgctxt "unit abbreviation"
 msgid "m"
-msgstr "p"
+msgstr "m"
 
-#: src/gr-unit.c:61
+#: src/gr-unit.c:66
 msgctxt "unit name"
 msgid "meter"
-msgstr ""
+msgstr "méter"
 
-#: src/gr-unit.c:61
+#: src/gr-unit.c:66
 msgctxt "unit plural"
 msgid "meters"
-msgstr ""
+msgstr "méter"
 
-#: src/gr-unit.c:62
+#: src/gr-unit.c:67
 #, fuzzy
 msgctxt "unit abbreviation"
 msgid "st"
-msgstr "mp"
+msgstr "kő"
 
-#: src/gr-unit.c:62
+#: src/gr-unit.c:67
 msgctxt "unit name"
 msgid "stone"
-msgstr ""
+msgstr "kő"
 
-#: src/gr-unit.c:62
+#: src/gr-unit.c:67
 msgctxt "unit plural"
 msgid "stone"
-msgstr ""
+msgstr "kő"
 
-#: src/gr-unit.c:63
+#: src/gr-unit.c:68
 msgctxt "unit abbreviation"
 msgid "pinch"
-msgstr ""
+msgstr "csipet"
 
-#: src/gr-unit.c:63
+#: src/gr-unit.c:68
 msgctxt "unit name"
 msgid "pinch"
-msgstr ""
+msgstr "csipet"
 
-#: src/gr-unit.c:63
+#: src/gr-unit.c:68
 msgctxt "unit plural"
 msgid "pinches"
-msgstr ""
+msgstr "csipet"
 
-#: src/gr-unit.c:64
+#: src/gr-unit.c:69
 msgctxt "unit abbreviation"
 msgid "bunch"
-msgstr ""
+msgstr "csokor"
 
-#: src/gr-unit.c:64
+#: src/gr-unit.c:69
 msgctxt "unit name"
 msgid "bunch"
-msgstr ""
+msgstr "csokor"
 
-#: src/gr-unit.c:64
+#: src/gr-unit.c:69
 msgctxt "unit plural"
 msgid "bunches"
-msgstr ""
+msgstr "csokor"
 
-#: src/gr-unit.c:145
+#: src/gr-unit.c:167
 #, c-format
 msgid "I don’t know this unit: %s"
 msgstr "Nem ismerem ezt a mértékegységet: %s"
@@ -2331,11 +2530,11 @@ msgstr ""
 "Telepítse az xdg-desktop-portal és az xdg-desktop-portal-gtk csomagokat a "
 "rendszerére"
 
-#: src/gr-window.c:246
+#: src/gr-window.c:256
 msgid "Add a New Recipe"
 msgstr "Új recept hozzáadása"
 
-#: src/gr-window.c:525
+#: src/gr-window.c:537
 #, c-format
 msgid ""
 "The “%s” recipe has unsaved changes.\n"
@@ -2344,7 +2543,7 @@ msgstr ""
 "A(z) „%s” recept mentetlen változást tartalmaz.\n"
 "Mindenképp bezárja az ablakot?"
 
-#: src/gr-window.c:528
+#: src/gr-window.c:540
 msgid ""
 "The new recipe has not been saved.\n"
 "Close the window anyway?"
@@ -2352,70 +2551,80 @@ msgstr ""
 "Az új recept nincs elmentve.\n"
 "Mindenképp bezárja az ablakot?"
 
-#: src/gr-window.c:659
+#: src/gr-window.c:664
 #, c-format
 msgid "Recipe “%s” deleted"
 msgstr "A(z) „%s” recept törölve"
 
-#: src/gr-window.c:709
+#: src/gr-window.c:714
 #, c-format
 msgid "You updated your contributed “%s” recipe. Send an update?"
 msgstr "Frissítette a közzétett „%s” receptet. Küld frissítést?"
 
-#: src/gr-window.c:839
+#: src/gr-window.c:855
 msgid "Ready to Cook!"
 msgstr "Főzése kész!"
 
-#: src/gr-window.c:1045
+#: src/gr-window.c:937
+#| msgid "Short Name:"
+msgid "Sorted by Name"
+msgstr "Név szerint rendezve"
+
+#: src/gr-window.c:942
+#| msgid "Imported Recipes"
+msgid "Sorted by Recency"
+msgstr "Frissesség szerint rendezve"
+
+#: src/gr-window.c:1139
 msgid "Imported Recipes"
 msgstr "Importált receptek"
 
-#: src/gr-window.c:1121
+#: src/gr-window.c:1215
 msgid "Select a recipe file"
 msgstr "Válasszon egy receptfájlt"
 
-#: src/gr-window.c:1147
+#: src/gr-window.c:1241
 #, c-format
 msgid "Recipes have been exported to “%s”"
 msgstr "A receptek exportálva lettek ide: „%s”"
 
-#: src/gr-window.c:1185
+#: src/gr-window.c:1279
 msgid "Select a file"
 msgstr "Válasszon egy fájlt"
 
-#: src/gr-window.c:1188
+#: src/gr-window.c:1282
 msgid "_Export"
 msgstr "_Exportálás"
 
-#: src/gr-window.c:1218
+#: src/gr-window.c:1312
 #, c-format
 msgid "Chefs: %s"
 msgstr "Konyhafőnökök: %s"
 
-#: src/gr-window.c:1228
+#: src/gr-window.c:1322
 msgid "Favorite Recipes"
 msgstr "Kedvenc receptek"
 
-#: src/gr-window.c:1276
+#: src/gr-window.c:1370
 msgid "Buy Ingredients"
 msgstr "Hozzávalók vásárlása"
 
 #. TRANSLATORS: %s gets replaced by a version number
-#: src/gr-window.c:1420
+#: src/gr-window.c:1514
 #, c-format
 msgid "Recipes %s"
 msgstr "%s receptek"
 
 #. TRANSLATORS: %s gets replaced by a date
-#: src/gr-window.c:1437
+#: src/gr-window.c:1531
 #, c-format
 msgid "Released: %s"
 msgstr "Kiadva: %s"
 
-#: src/gr-window.c:1440
-#, fuzzy, c-format
+#: src/gr-window.c:1534
+#, c-format
 msgid "Unreleased"
-msgstr "Kiadva: %s"
+msgstr "Nem kiadott"
 
 #: src/ingredients.inc:1
 msgid "Almond"
@@ -2434,326 +2643,1183 @@ msgid "Apple"
 msgstr "Alma"
 
 #: src/ingredients.inc:5
+#| msgid "Vinegar"
+msgid "Apple Vinegar"
+msgstr "Almaecet"
+
+#: src/ingredients.inc:6
 msgid "Apricot"
 msgstr "Sárgabarack"
 
-#: src/ingredients.inc:6
+#: src/ingredients.inc:7
 msgid "Artichoke"
 msgstr "Articsóka"
 
-#: src/ingredients.inc:7
+#: src/ingredients.inc:8
 msgid "Asparagus"
 msgstr "Spárga"
 
-#: src/ingredients.inc:8
+#: src/ingredients.inc:9
 msgid "Aubergine"
 msgstr "Padlizsán"
 
-#: src/ingredients.inc:9
+#: src/ingredients.inc:10
+msgid "Baby Spinach"
+msgstr "Bébispenót"
+
+#: src/ingredients.inc:11
 msgid "Bacon"
 msgstr "Angol szalonna"
 
-#: src/ingredients.inc:10
+#: src/ingredients.inc:12
 msgid "Bagel"
 msgstr "Bécsi kifli"
 
-#: src/ingredients.inc:11
+#: src/ingredients.inc:13
 msgid "Baked beans"
 msgstr "Sült bab"
 
-#: src/ingredients.inc:12
+#: src/ingredients.inc:14
 msgid "Baking powder"
 msgstr "Sütőpor"
 
-#: src/ingredients.inc:13
+#: src/ingredients.inc:15
 msgid "Banana"
 msgstr "Banán"
 
-#: src/ingredients.inc:14
+#: src/ingredients.inc:16
 msgid "Basil"
 msgstr "Bazsalikom"
 
-#: src/ingredients.inc:15
+#: src/ingredients.inc:17
 msgid "Basmati rice"
 msgstr "Basmati rizs"
 
-#: src/ingredients.inc:16
+#: src/ingredients.inc:18
 msgid "Bay leaf"
 msgstr "Babérlevél"
 
-#: src/ingredients.inc:17
+#: src/ingredients.inc:19
 msgid "Beans"
 msgstr "Bab"
 
-#: src/ingredients.inc:18
+#: src/ingredients.inc:20
+msgid "Bean sprouts"
+msgstr "Babcsíra"
+
+#: src/ingredients.inc:21
+msgid "Beef"
+msgstr "Marhahús"
+
+#: src/ingredients.inc:22
 msgid "Beef mince"
 msgstr "Darált marhahús"
 
-#: src/ingredients.inc:19
+#: src/ingredients.inc:23
 msgid "Beef sausage"
 msgstr "Marha kolbász"
 
-#: src/ingredients.inc:20
-msgid "Beef stock"
-msgstr ""
+#: src/ingredients.inc:24
+msgid "Beef (sirloin)"
+msgstr "Marha hátszín"
 
-#: src/ingredients.inc:21
+#: src/ingredients.inc:25
+msgid "Beef stock"
+msgstr "Marhahúsleves"
+
+#: src/ingredients.inc:26
 msgid "Beetroot"
 msgstr "Cékla"
 
-#: src/ingredients.inc:22
-#, fuzzy
+#: src/ingredients.inc:27
 msgid "Bell pepper"
-msgstr "nincs paprika"
+msgstr "Kaliforniai paprika"
 
-#: src/ingredients.inc:23
+#: src/ingredients.inc:28
+msgid "Bell Pepper (green)"
+msgstr "Kaliforniai paprika (zöld)"
+
+#: src/ingredients.inc:29
 msgid "Berry"
 msgstr "Bogyó"
 
-#: src/ingredients.inc:24
-msgid "Biscotti"
-msgstr "Kétszersült"
-
-#: src/ingredients.inc:25
+#: src/ingredients.inc:30
 msgid "Bilberry"
 msgstr "Áfonya"
 
-#: src/ingredients.inc:26
-msgid "Breadcrumbs"
-msgstr ""
+#: src/ingredients.inc:31
+msgid "Biscotti"
+msgstr "Kétszersült"
 
-#: src/ingredients.inc:27
+#: src/ingredients.inc:32
+msgid "Black cardamom pod"
+msgstr "Fekete kardamom hüvely"
+
+#: src/ingredients.inc:33
+msgid "Black peppercorns"
+msgstr "Szemes fekete bors"
+
+#: src/ingredients.inc:34
+#| msgid "Bilberry"
+msgid "Blueberry"
+msgstr "Áfonya"
+
+#: src/ingredients.inc:35
+msgid "Bourbon whiskey"
+msgstr "Bourbon whisky"
+
+#: src/ingredients.inc:36
+msgid "Breadcrumbs"
+msgstr "Zsemlemorzsa"
+
+#: src/ingredients.inc:37
+msgid "Brewer's yeast"
+msgstr "Sörélesztő"
+
+#: src/ingredients.inc:38
+#| msgid "Baked beans"
+msgid "Broad beans"
+msgstr "Lóbab"
+
+#: src/ingredients.inc:39
+msgid "Broth"
+msgstr "Erőleves"
+
+#: src/ingredients.inc:40
+#| msgid "no Sugar"
+msgid "Brown sugar"
+msgstr "Barnacukor"
+
+#: src/ingredients.inc:41
 msgid "Butter"
 msgstr "Vaj"
 
-#: src/ingredients.inc:28
+#: src/ingredients.inc:42
+#| msgid "Butter"
+msgid "Butter, melted"
+msgstr "Vaj, olvasztott"
+
+#: src/ingredients.inc:43
+msgid "Button mushroom"
+msgstr "Csiperkegomba"
+
+#: src/ingredients.inc:44
+msgid "Cabbage"
+msgstr "Káposzta"
+
+#: src/ingredients.inc:45
+msgid "Cake flour"
+msgstr "Rétesliszt"
+
+#: src/ingredients.inc:46
+#| msgid "Baked beans"
+msgid "Canellini beans"
+msgstr "Fehér bab (canellini)"
+
+#: src/ingredients.inc:47
+msgid "Canned black beans, rinsed"
+msgstr "Dobozos fekete bab, öblített"
+
+#: src/ingredients.inc:48
+msgid "Canned chopped tomatoes"
+msgstr "Dobozos, apróra vágott paradicsom"
+
+#: src/ingredients.inc:49
 msgid "Carrot"
 msgstr "Sárgarépa"
 
-#: src/ingredients.inc:29
+#: src/ingredients.inc:50
+msgid "Cashews, lightly toasted"
+msgstr "Kesudió, enyhén pirított"
+
+#: src/ingredients.inc:51
+msgid "Caster sugar"
+msgstr "Porcukor"
+
+#: src/ingredients.inc:52
+msgid "celery"
+msgstr "zeller"
+
+#: src/ingredients.inc:53
+msgid "Celey"
+msgstr "Zeller"
+
+#: src/ingredients.inc:54
+msgid "Champignons"
+msgstr "Csiperkegomba"
+
+#: src/ingredients.inc:55
 msgid "Cheese"
 msgstr "Sajt"
 
-#: src/ingredients.inc:30
+#: src/ingredients.inc:56
+#| msgid "Chinese Cuisine"
+msgid "Cheese slices"
+msgstr "Sajtszelet"
+
+#: src/ingredients.inc:57
 msgid "Cherries, pitted"
 msgstr "Cseresznye, kimagozott"
 
-#: src/ingredients.inc:31
+#: src/ingredients.inc:58
+msgid "cherry tomatoes, halved"
+msgstr "koktélparadicsom, felezett"
+
+#: src/ingredients.inc:59
+#| msgid "Linseeds"
+msgid "Chia seeds"
+msgstr "Chia magok"
+
+#: src/ingredients.inc:60
+msgid "Chicken breasts, large"
+msgstr "Csirkemell, nagy"
+
+#: src/ingredients.inc:61
+msgid "Chicken livers"
+msgstr "Csirkemáj"
+
+#: src/ingredients.inc:62
+msgid "chicken stock"
+msgstr "csirkehúsleves"
+
+#: src/ingredients.inc:63
+msgid "Chili flakes"
+msgstr "Csili darabok"
+
+#: src/ingredients.inc:64
+#| msgid "Cocoa powder"
+msgid "Chili powder"
+msgstr "Csilipor"
+
+#: src/ingredients.inc:65
+msgid "chili sauce (e.g. sriracha)"
+msgstr "csiliszósz (pl. sriracha)"
+
+#: src/ingredients.inc:66
+#| msgid "Chocolate frosting"
+msgid "Chocolate"
+msgstr "Csokoládé"
+
+#: src/ingredients.inc:67
 msgid "Chocolate frosting"
 msgstr "Csokoládémáz"
 
-#: src/ingredients.inc:32
+#: src/ingredients.inc:68
+msgid "Chorizo"
+msgstr "Chorizo kolbász"
+
+#: src/ingredients.inc:69
+msgid "Ciboulette"
+msgstr "Metélőhagyma"
+
+#: src/ingredients.inc:70
 msgid "Cilantro"
 msgstr "Koriander"
 
-#: src/ingredients.inc:33
+#: src/ingredients.inc:71
+#| msgid "Cilantro"
+msgid "cilantro leaves"
+msgstr "korianderlevél"
+
+#: src/ingredients.inc:72
+msgid "Cinnamon"
+msgstr "Fahéj"
+
+#: src/ingredients.inc:73
+msgid "Cinnamon sticks"
+msgstr "Fahéjrúd"
+
+#: src/ingredients.inc:74
+msgid "Cloves"
+msgstr "Szegfűszeg"
+
+#: src/ingredients.inc:75
+#| msgid "Cocoa powder"
+msgid "Cocoa butter"
+msgstr "Kakaóvaj"
+
+#: src/ingredients.inc:76
 msgid "Cocoa powder"
 msgstr "Kakaópor"
 
-#: src/ingredients.inc:34
+#: src/ingredients.inc:77
+msgid "Coconut milk"
+msgstr "Kókusztej"
+
+#: src/ingredients.inc:78
+msgid "Coconut oil"
+msgstr "Kókuszolaj"
+
+#: src/ingredients.inc:79
+#| msgid "Cocoa powder"
+msgid "Coconut water"
+msgstr "Kókusztej"
+
+#: src/ingredients.inc:80
+#| msgid "no Water"
+msgid "cold water"
+msgstr "hideg víz"
+
+#: src/ingredients.inc:81
+msgid "cooked beef"
+msgstr "főtt marhahús"
+
+#: src/ingredients.inc:82
+msgid "Coriander"
+msgstr "Koriander"
+
+#: src/ingredients.inc:83
+#| msgid "no Linseeds"
+msgid "coriandre seeds"
+msgstr "koriandermag"
+
+#: src/ingredients.inc:84
 msgid "Couscous"
 msgstr "Kuszkusz"
 
-#: src/ingredients.inc:35
+#: src/ingredients.inc:85
+msgid "Cracked pepper"
+msgstr "Őrölt bors"
+
+#: src/ingredients.inc:86
 msgid "Cream"
+msgstr "Tejszín"
+
+#: src/ingredients.inc:87
+#| msgid "Cheese"
+msgid "Cream cheese"
+msgstr "Krémsajt"
+
+#: src/ingredients.inc:88
+msgid "Crushed red peper flakes"
 msgstr ""
 
-#: src/ingredients.inc:36
+#: src/ingredients.inc:89
+msgid "Cucumber"
+msgstr "Uborka"
+
+#: src/ingredients.inc:90
+msgid "Cucumber (large)"
+msgstr "Uborka (nagy)"
+
+#: src/ingredients.inc:91
+msgid "Cumin"
+msgstr "Kömény"
+
+#: src/ingredients.inc:92
+#| msgid "Pumpkin seeds"
+msgid "Cumin seeds"
+msgstr "Köménymag"
+
+#: src/ingredients.inc:93
+msgid "Dark Jamaican rum"
+msgstr "Sötét jamaicai rum"
+
+#: src/ingredients.inc:94
 msgid "Date"
 msgstr "Datolya"
 
-#: src/ingredients.inc:37
+#: src/ingredients.inc:95
+msgid "Dill"
+msgstr "Kapor"
+
+#: src/ingredients.inc:96
+msgid "Double cream"
+msgstr ""
+
+#: src/ingredients.inc:97
+#| msgid "Anchovies"
+msgid "Dried anchovies"
+msgstr "Szárított szardella"
+
+#: src/ingredients.inc:98
+msgid "Dried chillies"
+msgstr "Szárított csili"
+
+#: src/ingredients.inc:99
+msgid "Dry or fresh cilantro"
+msgstr "Szárított vagy friss koriander"
+
+#: src/ingredients.inc:100
+msgid "Dry yeast"
+msgstr "Száraz élesztő"
+
+#: src/ingredients.inc:101
+msgid "Durum wheat semolina"
+msgstr "Durum búzadara"
+
+#: src/ingredients.inc:102
+msgid "Earth Balance vegan buttery stick"
+msgstr ""
+
+#: src/ingredients.inc:103
 msgid "Egg"
 msgstr "Tojás"
 
-#: src/ingredients.inc:38
+#: src/ingredients.inc:104
+msgid "Egg yolks"
+msgstr "Tojás sárgája"
+
+#: src/ingredients.inc:105
+msgid "Fenugreek seeds"
+msgstr ""
+
+#: src/ingredients.inc:106
 msgid "Fig"
 msgstr "Füge"
 
-#: src/ingredients.inc:39
-msgid "Fish"
+#: src/ingredients.inc:107
+msgid "Finely chopped cilantro"
 msgstr ""
 
-#: src/ingredients.inc:40
+#: src/ingredients.inc:108
+msgid "Finely chopped onions"
+msgstr "Finomra vágott vöröshagyma"
+
+#: src/ingredients.inc:109
+msgid "Finely chopped thai chillies or green chillis"
+msgstr ""
+
+#: src/ingredients.inc:110
+msgid "Finely chopped tomato"
+msgstr "Finomra vágott paradicsom"
+
+#: src/ingredients.inc:111
+msgid "Fish"
+msgstr "Hal"
+
+#: src/ingredients.inc:112
+#| msgid "Pizza sauce"
+msgid "Fish sauce"
+msgstr "Halszósz"
+
+#: src/ingredients.inc:113
 msgid "Flour"
 msgstr "Liszt"
 
-#: src/ingredients.inc:41
+#: src/ingredients.inc:114
+msgid "Flour (all-purpose)"
+msgstr ""
+
+#: src/ingredients.inc:115
+msgid "Flour (Tipo 00)"
+msgstr ""
+
+#: src/ingredients.inc:116
+msgid "Fresh rosemary"
+msgstr "Friss rozmaring"
+
+#: src/ingredients.inc:117
+msgid "Fresh tagliatelle"
+msgstr ""
+
+#: src/ingredients.inc:118
+msgid "Garam masala"
+msgstr "Garam masala"
+
+#: src/ingredients.inc:119
 msgid "Garlic"
 msgstr "Fokhagyma"
 
-#: src/ingredients.inc:42
+#: src/ingredients.inc:120
+#| msgid "Garlic"
+msgid "Garlic cloves"
+msgstr "Fokhagyma gerezd"
+
+#: src/ingredients.inc:121
+#| msgid "Baking powder"
+msgid "Garlic powder"
+msgstr "Fokhagymapor"
+
+#: src/ingredients.inc:122
+msgid "Ginger"
+msgstr "Gyömbér"
+
+#: src/ingredients.inc:123
+msgid "Ginger, freshly grated"
+msgstr "Gyömbér, frissen reszelt"
+
+#: src/ingredients.inc:124
+msgid "Ginger ground"
+msgstr "Őrölt gyömbér"
+
+#: src/ingredients.inc:125
+#| msgid "no Cheese"
+msgid "Goat cheese"
+msgstr "Kecskesajt"
+
+#: src/ingredients.inc:126
+#, fuzzy
+msgid "Golden caster sugar"
+msgstr "Barnacukor"
+
+#: src/ingredients.inc:127
+msgid "Good, dry red wine"
+msgstr "Jó, száraz vörösbor"
+
+#: src/ingredients.inc:128
+#| msgid "no Cheese"
+msgid "Gouda cheese"
+msgstr "Gouda sajt"
+
+#: src/ingredients.inc:129
+msgid "Goulash spices"
+msgstr "Gulyásfűszerek"
+
+#: src/ingredients.inc:130
+msgid "Guanciale cubes"
+msgstr ""
+
+#: src/ingredients.inc:131
+msgid "Long pasta, e.g. spaghetti"
+msgstr "Hosszú tészta, például spagetti"
+
+#: src/ingredients.inc:132
+msgid "Parmesan cheese"
+msgstr "Parmezánsajt"
+
+#: src/ingredients.inc:133
 msgid "Grapes"
-msgstr ""
+msgstr "Szőlő"
 
-#: src/ingredients.inc:43
+#: src/ingredients.inc:134
+msgid "Grated French Emmental"
+msgstr "Reszelt francia ementáli"
+
+#: src/ingredients.inc:135
+#| msgid "no Apple"
+msgid "Green Apple"
+msgstr "Zöld alma"
+
+#: src/ingredients.inc:136
+msgid "Green Bell Pepper"
+msgstr "Zöld kaliforniai paprika"
+
+#: src/ingredients.inc:137
+msgid "Green Cabbage"
+msgstr "Zöld káposzta"
+
+#: src/ingredients.inc:138
+msgid "Green olive"
+msgstr "Zöld olíva"
+
+#: src/ingredients.inc:139
+#| msgid "no Onion"
+msgid "Green onions"
+msgstr "Zöldhagyma"
+
+#: src/ingredients.inc:140
+msgid "green onions, chopped"
+msgstr "zöldhagyma, apróra vágott"
+
+#: src/ingredients.inc:141
 msgid "Ground beef"
-msgstr ""
+msgstr "Darált marhahús"
 
-#: src/ingredients.inc:44
+#: src/ingredients.inc:142
+msgid "Ground coriander (optional)"
+msgstr "Őrölt koriander (nem kötelező)"
+
+#: src/ingredients.inc:143
+msgid "Ground cumin"
+msgstr "Őrölt kömény"
+
+#: src/ingredients.inc:144
+msgid "Ground fennel"
+msgstr "Őrölt édeskömény"
+
+#: src/ingredients.inc:145
+#| msgid "no Pepper"
+msgid "Ground pepper"
+msgstr "Őrölt bors"
+
+#: src/ingredients.inc:146
+msgid "Ham"
+msgstr "Sonka"
+
+#: src/ingredients.inc:147
+msgid "Hazelnuts"
+msgstr "Mogyoró"
+
+#: src/ingredients.inc:148
+msgid "Hazelnuts milk"
+msgstr "Mogyorótej"
+
+#: src/ingredients.inc:149
+#| msgid "Soy sauce"
+msgid "Hoisin sauce"
+msgstr "Hoisin szósz"
+
+#: src/ingredients.inc:150
 msgid "Honey"
 msgstr "Méz"
 
-#: src/ingredients.inc:45
+#: src/ingredients.inc:151
 msgid "Horseradish"
+msgstr "Retek"
+
+#: src/ingredients.inc:152
+#| msgid "no Mayonnaise"
+msgid "Japanese mayonaisse"
+msgstr "Japán majonéz"
+
+#: src/ingredients.inc:153
+#| msgid "Bundled libraries"
+msgid "Juniper berries"
+msgstr "Borókabogyó"
+
+#: src/ingredients.inc:154
+msgid "Kale"
+msgstr "Kelkáposzta"
+
+#: src/ingredients.inc:155
+msgid "Ketchup"
+msgstr "Ketchup"
+
+#: src/ingredients.inc:156
+msgid "Kiwis"
+msgstr "Kiwi"
+
+#: src/ingredients.inc:157
+msgid "Lamb"
+msgstr "Bárány"
+
+#: src/ingredients.inc:158
+msgid "Lardons"
 msgstr ""
 
-#: src/ingredients.inc:46
+#: src/ingredients.inc:159
+msgid "Lard or oil"
+msgstr "Zsír vagy olaj"
+
+#: src/ingredients.inc:160
 msgid "Lemon"
 msgstr "Citrom"
 
-#: src/ingredients.inc:47
+#: src/ingredients.inc:161
+#| msgid "Lemon"
+msgid "Lemon juice"
+msgstr "Citromlé"
+
+#: src/ingredients.inc:162
+msgid "Lemon (untreated)"
+msgstr "Citrom (kezeletlen)"
+
+#: src/ingredients.inc:163
+msgid "Lettuce"
+msgstr "Saláta"
+
+#: src/ingredients.inc:164
+msgid "Light muscovado sugar"
+msgstr ""
+
+#: src/ingredients.inc:165
+msgid "Lime"
+msgstr "Lime"
+
+#: src/ingredients.inc:166
+msgid "Lime juice"
+msgstr "Limelé"
+
+#: src/ingredients.inc:167
 msgid "Linseeds"
 msgstr "Lenmag"
 
-#: src/ingredients.inc:48
+#: src/ingredients.inc:168
+#| msgid "no Orange"
+msgid "Mandarin Oranges"
+msgstr "Mandarin narancs"
+
+#: src/ingredients.inc:169
+#| msgid "Tangerine"
+msgid "Margarine"
+msgstr "Margarin"
+
+#: src/ingredients.inc:170
 msgid "Mayonnaise"
 msgstr "Majonéz"
 
-#: src/ingredients.inc:49
+#: src/ingredients.inc:171
+msgid "Meat"
+msgstr "Hús"
+
+#: src/ingredients.inc:172
+msgid "Meat and bones"
+msgstr "Hús és csont"
+
+#: src/ingredients.inc:173
 msgid "Milk"
 msgstr "Tej"
 
-#: src/ingredients.inc:50
+#: src/ingredients.inc:174
+#| msgid "Bundled libraries"
+msgid "Mixed berries"
+msgstr "Vegyes bogyók"
+
+#: src/ingredients.inc:175
+msgid "Mixed frozen bell peppers"
+msgstr "Vegyes fagyasztott kaliforniai paprika"
+
+#: src/ingredients.inc:176
+msgid "Mori-nu organic silken tofu (firm)"
+msgstr ""
+
+#: src/ingredients.inc:177
+msgid "Mushrooms"
+msgstr "Gomba"
+
+#: src/ingredients.inc:178
 msgid "Mustard"
 msgstr "Mustár"
 
-#: src/ingredients.inc:51
-msgid "Nut"
-msgstr ""
+#: src/ingredients.inc:179
+#| msgid "Mustard"
+msgid "Mustard seeds"
+msgstr "Mustármag"
 
-#: src/ingredients.inc:52
+#: src/ingredients.inc:180
+msgid "Nut"
+msgstr "Dió"
+
+#: src/ingredients.inc:181
+msgid "Nutmeg"
+msgstr "Szerecsendió"
+
+#: src/ingredients.inc:182
+msgid "Nutritional yeast"
+msgstr "Étkezési élesztő"
+
+#: src/ingredients.inc:183
 msgid "Oatmeal"
 msgstr "Zabpehely"
 
-#: src/ingredients.inc:53
+#: src/ingredients.inc:184
 msgid "Oil"
 msgstr "Olaj"
 
-#: src/ingredients.inc:54
+#: src/ingredients.inc:185
+#| msgid "no Pizza sauce"
+msgid "Okonomiyaki sauce"
+msgstr "Okonomijaki szósz"
+
+#: src/ingredients.inc:186
+msgid "Olive oil"
+msgstr "Olívaolaj"
+
+#: src/ingredients.inc:187
+msgid "Olive oil, extra-virgin"
+msgstr "Olívaolaj, extra szűz"
+
+#: src/ingredients.inc:188
+#| msgid "Cherries, pitted"
+msgid "Olives, pitted"
+msgstr "Olívabogyó, kimagozott"
+
+#: src/ingredients.inc:189
 msgid "Onion"
 msgstr "Hagyma"
 
-#: src/ingredients.inc:55
-msgid "Olive oil, extra-virgin"
-msgstr "Olíva olaj, extra szűz"
+#: src/ingredients.inc:190
+#| msgid "Baking powder"
+msgid "Onion powder"
+msgstr "Hagymapor"
 
-#: src/ingredients.inc:56
+#: src/ingredients.inc:191
 msgid "Orange"
 msgstr "Narancs"
 
-#: src/ingredients.inc:57
+#: src/ingredients.inc:192
+#| msgid "Vegan"
+msgid "Oregano"
+msgstr "Oregánó"
+
+#: src/ingredients.inc:193
+msgid "Pancetta"
+msgstr ""
+
+#: src/ingredients.inc:194
+msgid "Pandan leaves"
+msgstr ""
+
+#: src/ingredients.inc:195
+msgid "Paprika"
+msgstr "Paprika"
+
+#: src/ingredients.inc:196
+msgid "Parmesan cheese, grated"
+msgstr "Parmezánsajt, reszelt"
+
+#: src/ingredients.inc:197
 msgid "Parsley"
 msgstr "Petrezselyem"
 
-#: src/ingredients.inc:58
+#: src/ingredients.inc:198
+msgid "Peach"
+msgstr "Őszibarack"
+
+#: src/ingredients.inc:199
 msgid "Peperoni"
 msgstr "Pepperoni"
 
-#: src/ingredients.inc:59
+#: src/ingredients.inc:200
 msgid "Pepper"
-msgstr "Paprika"
+msgstr "Bors"
 
-#: src/ingredients.inc:60
+#: src/ingredients.inc:201
 msgid "Peppers"
 msgstr "Paprika"
 
-#: src/ingredients.inc:61
+#: src/ingredients.inc:202
+msgid "Pickles"
+msgstr "Savanyú uborka"
+
+#: src/ingredients.inc:203
+msgid "Pineapple"
+msgstr "Ananász"
+
+#: src/ingredients.inc:204
 msgid "Pizza sauce"
 msgstr "Pizzaszósz"
 
-#: src/ingredients.inc:62
+#: src/ingredients.inc:205
+#| msgid "Main Course"
+msgid "Plain flour"
+msgstr "Finomliszt"
+
+#: src/ingredients.inc:206
+msgid "Pomegranate"
+msgstr "Gránátalma"
+
+#: src/ingredients.inc:207
+msgid "Pomegranate juice"
+msgstr "Gránátalmalé"
+
+#: src/ingredients.inc:208
+msgid "Pork fat"
+msgstr "Disznózsír"
+
+#: src/ingredients.inc:209
+msgid "Pork loin"
+msgstr "Sertéskaraj"
+
+#: src/ingredients.inc:210
 msgid "Potato"
 msgstr "Burgonya"
 
-#: src/ingredients.inc:63
+#: src/ingredients.inc:211
+msgid "Powdered sugar"
+msgstr "Porcukor"
+
+#: src/ingredients.inc:212
 msgid "Pumpkin seeds"
 msgstr "Tökmag"
 
-#: src/ingredients.inc:64
-#, fuzzy
-msgid "Raisins"
-msgstr "Konyhák"
+#: src/ingredients.inc:213
+msgid "Quinoa"
+msgstr "Kinoa"
 
-#: src/ingredients.inc:65
+#: src/ingredients.inc:214
+msgid "Radish"
+msgstr "Retek"
+
+#: src/ingredients.inc:215
+msgid "Raisins"
+msgstr "Mazsola"
+
+#: src/ingredients.inc:216
+msgid "Red bell pepper"
+msgstr "Vörös kaliforniai paprika"
+
+#: src/ingredients.inc:217
+msgid "Red onion"
+msgstr "Vöröshagyma"
+
+#: src/ingredients.inc:218
+#| msgid "Pepper"
+msgid "Red Pepper"
+msgstr "Pirospaprika"
+
+#: src/ingredients.inc:219
+msgid "Red wine"
+msgstr "Vörösbor"
+
+#: src/ingredients.inc:220
 msgid "Rice"
+msgstr "Rizs"
+
+#: src/ingredients.inc:221
+msgid "Rice, cooked"
+msgstr "Rizs, főtt"
+
+#: src/ingredients.inc:222
+msgid "Rice vermicelli noodles"
 msgstr ""
 
-#: src/ingredients.inc:66
+#: src/ingredients.inc:223
+#| msgid "no Sugar"
+msgid "Rock sugar"
+msgstr "Sziklacukor"
+
+#: src/ingredients.inc:224
+msgid "Rolled oats"
+msgstr ""
+
+#: src/ingredients.inc:225
+msgid "Rosemary"
+msgstr "Rozmaring"
+
+#: src/ingredients.inc:226
+msgid "Rosé wine"
+msgstr "Rosé bor"
+
+#: src/ingredients.inc:227
+msgid "Sachet levure"
+msgstr ""
+
+#: src/ingredients.inc:228
+msgid "Saffron"
+msgstr "Sáfrány"
+
+#: src/ingredients.inc:229
+msgid "Sage"
+msgstr "Zsálya"
+
+#: src/ingredients.inc:230
+#| msgid "Almond"
+msgid "Salmon"
+msgstr "Lazac"
+
+#: src/ingredients.inc:231
 msgid "Salt"
 msgstr "Só"
 
-#: src/ingredients.inc:67
-msgid "Soy sauce"
-msgstr "szójaszósz"
+#: src/ingredients.inc:232
+msgid "Salt and pepper"
+msgstr "Só és bors"
 
-#: src/ingredients.inc:68
-msgid "Strawberry"
+#: src/ingredients.inc:233
+msgid "Saucebinder"
 msgstr ""
 
-#: src/ingredients.inc:69
-msgid "Sugar"
-msgstr "Cukor"
+#: src/ingredients.inc:234
+msgid "Scallions"
+msgstr "Mogyoróhagyma"
 
-#: src/ingredients.inc:70
-msgid "Sunflower seeds"
-msgstr "Napraforgómag"
+#: src/ingredients.inc:235
+msgid "Sea salt"
+msgstr "Tengeri só"
 
-#: src/ingredients.inc:71
+#: src/ingredients.inc:236
+msgid "Semi-skimmed milk"
+msgstr ""
+
+#: src/ingredients.inc:237
+msgid "Sesame oil"
+msgstr "Szezámmagolaj"
+
+#: src/ingredients.inc:238
+msgid "Sesame seeds"
+msgstr "Szezámmag"
+
+#: src/ingredients.inc:239
+msgid "Shallots"
+msgstr "Mogyoróhagyma"
+
+#: src/ingredients.inc:240
+msgid "Shrimps"
+msgstr "Garnélarák"
+
+#: src/ingredients.inc:241
+msgid "Slivered almonds, toasted"
+msgstr ""
+
+#: src/ingredients.inc:242
+msgid "Sour cream"
+msgstr "Tejföl"
+
+#: src/ingredients.inc:243
+msgid "Soy sauce"
+msgstr "Szójaszósz"
+
+#: src/ingredients.inc:244
+msgid "Spinach"
+msgstr "Spenót"
+
+#: src/ingredients.inc:245
+#| msgid "Spring"
+msgid "Spring onion"
+msgstr "Újhagyma"
+
+#: src/ingredients.inc:246
 msgid "Squash"
 msgstr "Tök"
 
-#: src/ingredients.inc:72
+#: src/ingredients.inc:247
+msgid "Star anise"
+msgstr "Csillagánizs"
+
+#: src/ingredients.inc:248
+msgid "Strawberry"
+msgstr "Eper"
+
+#: src/ingredients.inc:249
+msgid "Sugar"
+msgstr "Cukor"
+
+#: src/ingredients.inc:250
+msgid "Sunflower seeds"
+msgstr "Napraforgómag"
+
+#: src/ingredients.inc:251
+msgid "Sweet potatoes"
+msgstr "Édesburgonya"
+
+#: src/ingredients.inc:252
+#, fuzzy
+msgid "Tamarind paste"
+msgstr "Tamarind paszta"
+
+#: src/ingredients.inc:253
 msgid "Tangerine"
 msgstr "Mandarin"
 
-#: src/ingredients.inc:73
+#: src/ingredients.inc:254
+msgid "Thai basil leaves"
+msgstr "Thai bazsalikom levél"
+
+#: src/ingredients.inc:255
+msgid "Thai chillies"
+msgstr "Thai csili"
+
+#: src/ingredients.inc:256
+msgid "Thai fish sauce"
+msgstr "Thai halszósz"
+
+#: src/ingredients.inc:257
+msgid "Thyme"
+msgstr "Kakukkfű"
+
+#: src/ingredients.inc:258
+msgid "Tinned pineapple rings"
+msgstr "Konzerv ananászkarika"
+
+#: src/ingredients.inc:259
 msgid "Tofu"
 msgstr "Tofu"
 
-#: src/ingredients.inc:74
+#: src/ingredients.inc:260
 msgid "Tomato"
 msgstr "Paradicsom"
 
-#: src/ingredients.inc:75
-msgid "Turmeric, ground"
-msgstr ""
+#: src/ingredients.inc:261
+#, fuzzy
+#| msgid "Tomato"
+msgid "Tomato paste"
+msgstr "Paradicsomszósz"
 
-#: src/ingredients.inc:76
-msgid "Vanilla sugar"
-msgstr "Vaníliás cukor"
+#: src/ingredients.inc:262
+#| msgid "Soy sauce"
+msgid "Tomato sauce"
+msgstr "Paradicsomszósz"
 
-#: src/ingredients.inc:77
+#: src/ingredients.inc:263
+msgid "Tumeric ground"
+msgstr "Kurkuma, őrölt"
+
+#: src/ingredients.inc:264
+msgid "Tuna fish"
+msgstr "Tonhal"
+
+#: src/ingredients.inc:265
+msgid "Unsalted butter"
+msgstr "Sózatlan vaj"
+
+#: src/ingredients.inc:266
+#| msgid "no Baking powder"
+msgid "Vanilla baking powder"
+msgstr "Vaníliás sütőpor"
+
+#: src/ingredients.inc:267
+#| msgid "Vanilla sugar"
+msgid "Vanilla extract"
+msgstr "Vanília kivonat"
+
+#: src/ingredients.inc:268
+msgid "Vanilla powdered sugar, for dusting"
+msgstr "Vaníliás porcukor, szórásra"
+
+#: src/ingredients.inc:269
 msgid "Vanilla pudding"
 msgstr "Vaníliapuding"
 
-#: src/ingredients.inc:78
+#: src/ingredients.inc:270
+msgid "Vanilla sugar"
+msgstr "Vaníliás cukor"
+
+#: src/ingredients.inc:271
+#| msgid "Vegetarian"
+msgid "Vegetable oil"
+msgstr "Növényi olaj"
+
+#: src/ingredients.inc:272
 msgid "Vinegar"
 msgstr "Ecet"
 
-#: src/ingredients.inc:79
+#: src/ingredients.inc:273
 msgid "Water"
 msgstr "Víz"
 
-#: src/ingredients.inc:80
+#: src/ingredients.inc:274
+msgid "Wheat flour"
+msgstr "Búzaliszt"
+
+#: src/ingredients.inc:275
+msgid "White fish"
+msgstr "Fehér húsú hal"
+
+#: src/ingredients.inc:276
+msgid "White onion"
+msgstr "Fehér hagyma"
+
+#: src/ingredients.inc:277
+msgid "White wine"
+msgstr "Fehérbor"
+
+#: src/ingredients.inc:278
+msgid "Whole chicken"
+msgstr "Egész csirke"
+
+#: src/ingredients.inc:279
 msgid "Wine"
 msgstr "Bor"
 
-#: src/ingredients.inc:81
+#: src/ingredients.inc:280
+msgid "Worcestershire sauce"
+msgstr "Worcestershire szósz"
+
+#: src/ingredients.inc:281
 msgid "Yeast"
 msgstr "Élesztő"
 
-#: src/ingredients.inc:82
+#: src/ingredients.inc:282
+msgid "Yellow bell pepper"
+msgstr "Sárga kaliforniai paprika"
+
+#: src/ingredients.inc:283
 msgid "Yoghurt"
 msgstr "Joghurt"
 
-#: src/ingredients.inc:83
+#: src/ingredients.inc:284
+msgid "Zest of 1 lemon (organic)"
+msgstr "1 citrom leve (organikus)"
+
+#: src/ingredients.inc:285
 msgid "Zinfandel"
 msgstr "Fekete szőlő"
 
-#: src/ingredients.inc:84
+#: src/ingredients.inc:286
 msgid "Zuccini"
-msgstr ""
+msgstr "Cukkini"
 
 #: src/no-ingredients.inc:1
 msgid "no Almond"
@@ -2772,360 +3838,1234 @@ msgid "no Apple"
 msgstr "nincs alma"
 
 #: src/no-ingredients.inc:5
+#| msgid "no Vinegar"
+msgid "no Apple Vinegar"
+msgstr "nincs almaecet"
+
+#: src/no-ingredients.inc:6
 msgid "no Apricot"
 msgstr "nincs sárgabarack"
 
-#: src/no-ingredients.inc:6
+#: src/no-ingredients.inc:7
 msgid "no Artichoke"
 msgstr "nincs articsóka"
 
-#: src/no-ingredients.inc:7
+#: src/no-ingredients.inc:8
 msgid "no Asparagus"
 msgstr "nincs spárga"
 
-#: src/no-ingredients.inc:8
+#: src/no-ingredients.inc:9
 msgid "no Aubergine"
 msgstr "nincs padlizsán"
 
-#: src/no-ingredients.inc:9
+#: src/no-ingredients.inc:10
+#| msgid "no Bay leaf"
+msgid "no Baby Spinach"
+msgstr "nincs bébispenót"
+
+#: src/no-ingredients.inc:11
 msgid "no Bacon"
 msgstr "nincs angol szalonna"
 
-#: src/no-ingredients.inc:10
+#: src/no-ingredients.inc:12
 msgid "no Bagel"
 msgstr "nincs bécsi kifli"
 
-#: src/no-ingredients.inc:11
+#: src/no-ingredients.inc:13
 msgid "no Baked beans"
 msgstr "nincs sült bab"
 
-#: src/no-ingredients.inc:12
+#: src/no-ingredients.inc:14
 msgid "no Baking powder"
 msgstr "nincs sütőpor"
 
-#: src/no-ingredients.inc:13
+#: src/no-ingredients.inc:15
 msgid "no Banana"
 msgstr "nincs banán"
 
-#: src/no-ingredients.inc:14
+#: src/no-ingredients.inc:16
 msgid "no Basil"
 msgstr "nincs bazsalikom"
 
-#: src/no-ingredients.inc:15
+#: src/no-ingredients.inc:17
 msgid "no Basmati rice"
 msgstr "nincs basmati rizs"
 
-#: src/no-ingredients.inc:16
+#: src/no-ingredients.inc:18
 msgid "no Bay leaf"
 msgstr "nincs babérlevél"
 
-#: src/no-ingredients.inc:17
+#: src/no-ingredients.inc:19
 msgid "no Beans"
 msgstr "nincs bab"
 
-#: src/no-ingredients.inc:18
+#: src/no-ingredients.inc:20
+#| msgid "no Beans"
+msgid "no Bean sprouts"
+msgstr "nincs babcsíra"
+
+#: src/no-ingredients.inc:21
+#| msgid "no Beef mince"
+msgid "no Beef"
+msgstr "nincs marhahús"
+
+#: src/no-ingredients.inc:22
 msgid "no Beef mince"
 msgstr "nincs darált marhahús"
 
-#: src/no-ingredients.inc:19
+#: src/no-ingredients.inc:23
 msgid "no Beef sausage"
 msgstr "nincs marha kolbász"
 
-#: src/no-ingredients.inc:20
-msgid "no Beef stock"
-msgstr ""
+#: src/no-ingredients.inc:24
+#| msgid "no Beef mince"
+msgid "no Beef (sirloin)"
+msgstr "nincs marha hátszín"
 
-#: src/no-ingredients.inc:21
+#: src/no-ingredients.inc:25
+msgid "no Beef stock"
+msgstr "nincs marhahúsleves"
+
+#: src/no-ingredients.inc:26
 msgid "no Beetroot"
 msgstr "nincs cékla"
 
-#: src/no-ingredients.inc:22
-#, fuzzy
+#: src/no-ingredients.inc:27
 msgid "no Bell pepper"
-msgstr "nincs paprika"
+msgstr "nincs kaliforniai paprika"
 
-#: src/no-ingredients.inc:23
+#: src/no-ingredients.inc:28
+msgid "no Bell Pepper (green)"
+msgstr "nincs kaliforniai paprika (zöld)"
+
+#: src/no-ingredients.inc:29
 msgid "no Berry"
 msgstr "nincs bogyó"
 
-#: src/no-ingredients.inc:24
-msgid "no Biscotti"
-msgstr "nincs kétszersült"
-
-#: src/no-ingredients.inc:25
+#: src/no-ingredients.inc:30
 msgid "no Bilberry"
 msgstr "nincs áfonya"
 
-#: src/no-ingredients.inc:26
-#, fuzzy
-msgid "no Breadcrumbs"
-msgstr "nincs bab"
+#: src/no-ingredients.inc:31
+msgid "no Biscotti"
+msgstr "nincs kétszersült"
 
-#: src/no-ingredients.inc:27
+#: src/no-ingredients.inc:32
+msgid "no Black cardamom pod"
+msgstr "nincs fekete kardamom hüvely"
+
+#: src/no-ingredients.inc:33
+msgid "no Black peppercorns"
+msgstr "nincs szemes fekete bors"
+
+#: src/no-ingredients.inc:34
+#| msgid "no Bilberry"
+msgid "no Blueberry"
+msgstr "nincs áfonya"
+
+#: src/no-ingredients.inc:35
+msgid "no Bourbon whiskey"
+msgstr "nincs bourbon whisky"
+
+#: src/no-ingredients.inc:36
+msgid "no Breadcrumbs"
+msgstr "nincs zsemlemorzsa"
+
+#: src/no-ingredients.inc:37
+msgid "no Brewer's yeast"
+msgstr "nincs sörélesztő"
+
+#: src/no-ingredients.inc:38
+#| msgid "no Baked beans"
+msgid "no Broad beans"
+msgstr "nincs lóbab"
+
+#: src/no-ingredients.inc:39
+#| msgid "no Beetroot"
+msgid "no Broth"
+msgstr "nincs erőleves"
+
+#: src/no-ingredients.inc:40
+#| msgid "no Vanilla sugar"
+msgid "no Brown sugar"
+msgstr "nincs barnacukor"
+
+#: src/no-ingredients.inc:41
 msgid "no Butter"
 msgstr "nincs vaj"
 
-#: src/no-ingredients.inc:28
+#: src/no-ingredients.inc:42
+#| msgid "no Butter"
+msgid "no Butter, melted"
+msgstr "nincs olvasztott vaj"
+
+#: src/no-ingredients.inc:43
+msgid "no Button mushroom"
+msgstr "nincs csiperkegomba"
+
+#: src/no-ingredients.inc:44
+msgid "no Cabbage"
+msgstr "nincs káposzta"
+
+#: src/no-ingredients.inc:45
+#| msgid "no Flour"
+msgid "no Cake flour"
+msgstr "nincs rétesliszt"
+
+#: src/no-ingredients.inc:46
+#| msgid "no Baked beans"
+msgid "no Canellini beans"
+msgstr "nincs fehér bab (canellini)"
+
+#: src/no-ingredients.inc:47
+msgid "no Canned black beans, rinsed"
+msgstr "nincs dobozos fekete bab, öblített"
+
+#: src/no-ingredients.inc:48
+msgid "no Canned chopped tomatoes"
+msgstr "nincs dobozos, apróra vágott paradicsom"
+
+#: src/no-ingredients.inc:49
 msgid "no Carrot"
 msgstr "nincs sárgarépa"
 
-#: src/no-ingredients.inc:29
+#: src/no-ingredients.inc:50
+#| msgid "no Cherries, pitted"
+msgid "no Cashews, lightly toasted"
+msgstr "nincs kesudió, enyhén pirított"
+
+#: src/no-ingredients.inc:51
+#| msgid "no Vanilla sugar"
+msgid "no Caster sugar"
+msgstr "nincs porcukor"
+
+#: src/no-ingredients.inc:52
+msgid "no celery"
+msgstr "nincs zeller"
+
+#: src/no-ingredients.inc:53
+#| msgid "no Cheese"
+msgid "no Celey"
+msgstr "nincs zeller"
+
+#: src/no-ingredients.inc:54
+msgid "no Champignons"
+msgstr "nincs csiperkegomba"
+
+#: src/no-ingredients.inc:55
 msgid "no Cheese"
 msgstr "nincs sajt"
 
-#: src/no-ingredients.inc:30
+#: src/no-ingredients.inc:56
+#| msgid "no Cheese"
+msgid "no Cheese slices"
+msgstr "nincs sajtszelet"
+
+#: src/no-ingredients.inc:57
 msgid "no Cherries, pitted"
 msgstr "nincs cseresznye, kimagozott"
 
-#: src/no-ingredients.inc:31
+#: src/no-ingredients.inc:58
+msgid "no cherry tomatoes, halved"
+msgstr "nincs koktélparadicsom, felezett"
+
+#: src/no-ingredients.inc:59
+#| msgid "no Linseeds"
+msgid "no Chia seeds"
+msgstr "nincsenek chia magok"
+
+#: src/no-ingredients.inc:60
+msgid "no Chicken breasts, large"
+msgstr "nincs csirkemell, nagy"
+
+#: src/no-ingredients.inc:61
+#| msgid "no Cheese"
+msgid "no Chicken livers"
+msgstr "nincs csirkemáj"
+
+#: src/no-ingredients.inc:62
+msgid "no chicken stock"
+msgstr "nincs csirkehúsleves"
+
+#: src/no-ingredients.inc:63
+msgid "no Chili flakes"
+msgstr "nincsenek csili darabok"
+
+#: src/no-ingredients.inc:64
+#| msgid "no Cocoa powder"
+msgid "no Chili powder"
+msgstr "nincs csilipor"
+
+#: src/no-ingredients.inc:65
+msgid "no chili sauce (e.g. sriracha)"
+msgstr "nincs csiliszósz (például sriracha)"
+
+#: src/no-ingredients.inc:66
+#| msgid "no Chocolate frosting"
+msgid "no Chocolate"
+msgstr "nincs csokoládé"
+
+#: src/no-ingredients.inc:67
 msgid "no Chocolate frosting"
 msgstr "nincs csokoládémáz"
 
-#: src/no-ingredients.inc:32
+#: src/no-ingredients.inc:68
+#| msgid "no Carrot"
+msgid "no Chorizo"
+msgstr "nincs chorizo kolbász"
+
+#: src/no-ingredients.inc:69
+msgid "no Ciboulette"
+msgstr "nincs metélőhagyma"
+
+#: src/no-ingredients.inc:70
 msgid "no Cilantro"
 msgstr "nincs koriander"
 
-#: src/no-ingredients.inc:33
+#: src/no-ingredients.inc:71
+#| msgid "no Cilantro"
+msgid "no cilantro leaves"
+msgstr "nincs korianderlevél"
+
+#: src/no-ingredients.inc:72
+#| msgid "no Cilantro"
+msgid "no Cinnamon"
+msgstr "nincs fahéj"
+
+#: src/no-ingredients.inc:73
+msgid "no Cinnamon sticks"
+msgstr "nincs fahéjrúd"
+
+#: src/no-ingredients.inc:74
+#| msgid "no Cheese"
+msgid "no Cloves"
+msgstr "nincs szegfűszeg"
+
+#: src/no-ingredients.inc:75
+#| msgid "no Cocoa powder"
+msgid "no Cocoa butter"
+msgstr "nincs kakaóvaj"
+
+#: src/no-ingredients.inc:76
 msgid "no Cocoa powder"
 msgstr "nincs kakaópor"
 
-#: src/no-ingredients.inc:34
+#: src/no-ingredients.inc:77
+#| msgid "no Couscous"
+msgid "no Coconut milk"
+msgstr "nincs kókusztej"
+
+#: src/no-ingredients.inc:78
+#| msgid "no Couscous"
+msgid "no Coconut oil"
+msgstr "nincs kókuszolaj"
+
+#: src/no-ingredients.inc:79
+#| msgid "no Cocoa powder"
+msgid "no Coconut water"
+msgstr "nincs kókusztej"
+
+#: src/no-ingredients.inc:80
+#| msgid "no Water"
+msgid "no cold water"
+msgstr "nincs hideg víz"
+
+#: src/no-ingredients.inc:81
+#| msgid "no Baked beans"
+msgid "no cooked beef"
+msgstr "nincs főtt marhahús"
+
+#: src/no-ingredients.inc:82
+#| msgid "no Cilantro"
+msgid "no Coriander"
+msgstr "nincs koriander"
+
+#: src/no-ingredients.inc:83
+#| msgid "no Linseeds"
+msgid "no coriandre seeds"
+msgstr "nincs koriandermag"
+
+#: src/no-ingredients.inc:84
 msgid "no Couscous"
 msgstr "nincs kuszkusz"
 
-#: src/no-ingredients.inc:35
+#: src/no-ingredients.inc:85
+msgid "no Cracked pepper"
+msgstr "nincs őrölt bors"
+
+#: src/no-ingredients.inc:86
 msgid "no Cream"
+msgstr "nincs tejszín"
+
+#: src/no-ingredients.inc:87
+#| msgid "no Cheese"
+msgid "no Cream cheese"
+msgstr "nincs krémsajt"
+
+#: src/no-ingredients.inc:88
+msgid "no Crushed red peper flakes"
 msgstr ""
 
-#: src/no-ingredients.inc:36
+#: src/no-ingredients.inc:89
+#| msgid "no Couscous"
+msgid "no Cucumber"
+msgstr "nincs uborka"
+
+#: src/no-ingredients.inc:90
+msgid "no Cucumber (large)"
+msgstr "nincs uborka (nagy)"
+
+#: src/no-ingredients.inc:91
+#| msgid "no Cilantro"
+msgid "no Cumin"
+msgstr "nincs kömény"
+
+#: src/no-ingredients.inc:92
+#| msgid "no Pumpkin seeds"
+msgid "no Cumin seeds"
+msgstr "nincs köménymag"
+
+#: src/no-ingredients.inc:93
+msgid "no Dark Jamaican rum"
+msgstr "nincs sötét jamaicai rum"
+
+#: src/no-ingredients.inc:94
 msgid "no Date"
 msgstr "nincs datolya"
 
-#: src/no-ingredients.inc:37
+#: src/no-ingredients.inc:95
+msgid "no Dill"
+msgstr "nincs kapor"
+
+#: src/no-ingredients.inc:96
+msgid "no Double cream"
+msgstr ""
+
+#: src/no-ingredients.inc:97
+#| msgid "no Anchovies"
+msgid "no Dried anchovies"
+msgstr "nincs szárított szardella"
+
+#: src/no-ingredients.inc:98
+msgid "no Dried chillies"
+msgstr "nincs szárított csili"
+
+#: src/no-ingredients.inc:99
+msgid "no Dry or fresh cilantro"
+msgstr "nincs szárított vagy friss koriander"
+
+#: src/no-ingredients.inc:100
+#| msgid "no Yeast"
+msgid "no Dry yeast"
+msgstr "nincs száraz élesztő"
+
+#: src/no-ingredients.inc:101
+msgid "no Durum wheat semolina"
+msgstr "nincs durum búzadara"
+
+#: src/no-ingredients.inc:102
+msgid "no Earth Balance vegan buttery stick"
+msgstr ""
+
+#: src/no-ingredients.inc:103
 msgid "no Egg"
 msgstr "nincs tojás"
 
-#: src/no-ingredients.inc:38
+#: src/no-ingredients.inc:104
+#| msgid "no Egg"
+msgid "no Egg yolks"
+msgstr "nincs tojás sárgája"
+
+#: src/no-ingredients.inc:105
+#| msgid "no Pumpkin seeds"
+msgid "no Fenugreek seeds"
+msgstr ""
+
+#: src/no-ingredients.inc:106
 msgid "no Fig"
 msgstr "nincs füge"
 
-#: src/no-ingredients.inc:39
-#, fuzzy
-msgid "no Fish"
-msgstr "nincs füge"
+#: src/no-ingredients.inc:107
+msgid "no Finely chopped cilantro"
+msgstr ""
 
-#: src/no-ingredients.inc:40
+#: src/no-ingredients.inc:108
+msgid "no Finely chopped onions"
+msgstr "nincs finomra vágott vöröshagyma"
+
+#: src/no-ingredients.inc:109
+msgid "no Finely chopped thai chillies or green chillis"
+msgstr ""
+
+#: src/no-ingredients.inc:110
+msgid "no Finely chopped tomato"
+msgstr "nincs finomra vágott paradicsom"
+
+#: src/no-ingredients.inc:111
+msgid "no Fish"
+msgstr "nincs hal"
+
+#: src/no-ingredients.inc:112
+#| msgid "no Pizza sauce"
+msgid "no Fish sauce"
+msgstr "nincs halszósz"
+
+#: src/no-ingredients.inc:113
 msgid "no Flour"
 msgstr "nincs liszt"
 
-#: src/no-ingredients.inc:41
+#: src/no-ingredients.inc:114
+msgid "no Flour (all-purpose)"
+msgstr ""
+
+#: src/no-ingredients.inc:115
+#, fuzzy
+#| msgid "no Flour"
+msgid "no Flour (Tipo 00)"
+msgstr "nincs liszt"
+
+#: src/no-ingredients.inc:116
+msgid "no Fresh rosemary"
+msgstr "nincs friss rozmaring"
+
+#: src/no-ingredients.inc:117
+msgid "no Fresh tagliatelle"
+msgstr ""
+
+#: src/no-ingredients.inc:118
+msgid "no Garam masala"
+msgstr "nincs garam masala"
+
+#: src/no-ingredients.inc:119
 msgid "no Garlic"
 msgstr "nincs fokhagyma"
 
-#: src/no-ingredients.inc:42
+#: src/no-ingredients.inc:120
+#| msgid "no Garlic"
+msgid "no Garlic cloves"
+msgstr "nincs fokhagyma gerezd"
+
+#: src/no-ingredients.inc:121
+#| msgid "no Baking powder"
+msgid "no Garlic powder"
+msgstr "nincs fokhagymapor"
+
+#: src/no-ingredients.inc:122
+#| msgid "no Tangerine"
+msgid "no Ginger"
+msgstr "nincs gyömbér"
+
+#: src/no-ingredients.inc:123
+msgid "no Ginger, freshly grated"
+msgstr "nincs gyömbér, frissen reszelt"
+
+#: src/no-ingredients.inc:124
+msgid "no Ginger ground"
+msgstr "nincs őrölt gyömbér"
+
+#: src/no-ingredients.inc:125
+#| msgid "no Cheese"
+msgid "no Goat cheese"
+msgstr "nincs kecskesajt"
+
+#: src/no-ingredients.inc:126
+msgid "no Golden caster sugar"
+msgstr ""
+
+#: src/no-ingredients.inc:127
+msgid "no Good, dry red wine"
+msgstr "nincs jó, száraz vörösbor"
+
+#: src/no-ingredients.inc:128
+#| msgid "no Cheese"
+msgid "no Gouda cheese"
+msgstr "nincs gouda sajt"
+
+#: src/no-ingredients.inc:129
+msgid "no Goulash spices"
+msgstr "nincsenek gulyásfűszerek"
+
+#: src/no-ingredients.inc:130
+msgid "no Guanciale cubes"
+msgstr ""
+
+#: src/no-ingredients.inc:131
+msgid "no Long pasta, e.g. spaghetti"
+msgstr "nincs hosszú tészta, például spagetti"
+
+#: src/no-ingredients.inc:132
+msgid "no Parmesan cheese"
+msgstr "nincs parmezánsajt"
+
+#: src/no-ingredients.inc:133
 msgid "no Grapes"
-msgstr ""
+msgstr "nincs szőlő"
 
-#: src/no-ingredients.inc:43
+#: src/no-ingredients.inc:134
+msgid "no Grated French Emmental"
+msgstr "nincs reszelt francia ementáli"
+
+#: src/no-ingredients.inc:135
+#| msgid "no Apple"
+msgid "no Green Apple"
+msgstr "nincs zöld alma"
+
+#: src/no-ingredients.inc:136
+msgid "no Green Bell Pepper"
+msgstr "nincs zöld kaliforniai paprika"
+
+#: src/no-ingredients.inc:137
+msgid "no Green Cabbage"
+msgstr "nincs zöld káposzta"
+
+#: src/no-ingredients.inc:138
+#| msgid "no Garlic"
+msgid "no Green olive"
+msgstr "nincs zöld olíva"
+
+#: src/no-ingredients.inc:139
+#| msgid "no Onion"
+msgid "no Green onions"
+msgstr "nincs zöldhagyma"
+
+#: src/no-ingredients.inc:140
+msgid "no green onions, chopped"
+msgstr "nincs zöldhagyma, apróra vágott"
+
+#: src/no-ingredients.inc:141
 msgid "no Ground beef"
-msgstr ""
+msgstr "nincs darált marhahús"
 
-#: src/no-ingredients.inc:44
+#: src/no-ingredients.inc:142
+msgid "no Ground coriander (optional)"
+msgstr "nincs őrölt koriander (nem kötelező)"
+
+#: src/no-ingredients.inc:143
+msgid "no Ground cumin"
+msgstr "nincs őrölt kömény"
+
+#: src/no-ingredients.inc:144
+msgid "no Ground fennel"
+msgstr "nincs őrölt édeskömény"
+
+#: src/no-ingredients.inc:145
+msgid "no Ground pepper"
+msgstr "nincs őrölt bors"
+
+#: src/no-ingredients.inc:146
+msgid "no Ham"
+msgstr "nincs sonka"
+
+#: src/no-ingredients.inc:147
+msgid "no Hazelnuts"
+msgstr "nincs mogyoró"
+
+#: src/no-ingredients.inc:148
+msgid "no Hazelnuts milk"
+msgstr "nincs mogyorótej"
+
+#: src/no-ingredients.inc:149
+#| msgid "no Soy sauce"
+msgid "no Hoisin sauce"
+msgstr "nincs hoisin szósz"
+
+#: src/no-ingredients.inc:150
 msgid "no Honey"
 msgstr "nincs méz"
 
-#: src/no-ingredients.inc:45
+#: src/no-ingredients.inc:151
 msgid "no Horseradish"
+msgstr "nincs retek"
+
+#: src/no-ingredients.inc:152
+#| msgid "no Mayonnaise"
+msgid "no Japanese mayonaisse"
+msgstr "nincs japán majonéz"
+
+#: src/no-ingredients.inc:153
+msgid "no Juniper berries"
+msgstr "nincs borókabogyó"
+
+#: src/no-ingredients.inc:154
+msgid "no Kale"
+msgstr "nincs kelkáposzta"
+
+#: src/no-ingredients.inc:155
+msgid "no Ketchup"
+msgstr "nincs ketchup"
+
+#: src/no-ingredients.inc:156
+msgid "no Kiwis"
+msgstr "nincs kiwi"
+
+#: src/no-ingredients.inc:157
+#| msgid "no Lemon"
+msgid "no Lamb"
+msgstr "nincs bárány"
+
+#: src/no-ingredients.inc:158
+#| msgid "no Lemon"
+msgid "no Lardons"
 msgstr ""
 
-#: src/no-ingredients.inc:46
+#: src/no-ingredients.inc:159
+msgid "no Lard or oil"
+msgstr "nincs zsír vagy olaj"
+
+#: src/no-ingredients.inc:160
 msgid "no Lemon"
 msgstr "nincs citrom"
 
-#: src/no-ingredients.inc:47
+#: src/no-ingredients.inc:161
+#| msgid "no Lemon"
+msgid "no Lemon juice"
+msgstr "nincs citromlé"
+
+#: src/no-ingredients.inc:162
+msgid "no Lemon (untreated)"
+msgstr "nincs citrom (kezeletlen)"
+
+#: src/no-ingredients.inc:163
+msgid "no Lettuce"
+msgstr "nincs saláta"
+
+#: src/no-ingredients.inc:164
+msgid "no Light muscovado sugar"
+msgstr ""
+
+#: src/no-ingredients.inc:165
+#| msgid "no Linseeds"
+msgid "no Lime"
+msgstr "nincs lime"
+
+#: src/no-ingredients.inc:166
+msgid "no Lime juice"
+msgstr "nincs limelé"
+
+#: src/no-ingredients.inc:167
 msgid "no Linseeds"
 msgstr "nincs lenmag"
 
-#: src/no-ingredients.inc:48
+#: src/no-ingredients.inc:168
+#| msgid "no Orange"
+msgid "no Mandarin Oranges"
+msgstr "nincs mandarin narancs"
+
+#: src/no-ingredients.inc:169
+#| msgid "no Tangerine"
+msgid "no Margarine"
+msgstr "nincs margarin"
+
+#: src/no-ingredients.inc:170
 msgid "no Mayonnaise"
 msgstr "nincs majonéz"
 
-#: src/no-ingredients.inc:49
+#: src/no-ingredients.inc:171
+msgid "no Meat"
+msgstr "nincs hús"
+
+#: src/no-ingredients.inc:172
+msgid "no Meat and bones"
+msgstr "nincs hús és csont"
+
+#: src/no-ingredients.inc:173
 msgid "no Milk"
 msgstr "nincs tej"
 
-#: src/no-ingredients.inc:50
+#: src/no-ingredients.inc:174
+#| msgid "Bundled libraries"
+msgid "no Mixed berries"
+msgstr "nincs vegyes bogyó"
+
+#: src/no-ingredients.inc:175
+msgid "no Mixed frozen bell peppers"
+msgstr "nincs vegyes fagyasztott kaliforniai paprika"
+
+#: src/no-ingredients.inc:176
+msgid "no Mori-nu organic silken tofu (firm)"
+msgstr ""
+
+#: src/no-ingredients.inc:177
+#| msgid "no Mustard"
+msgid "no Mushrooms"
+msgstr "nincs gomba"
+
+#: src/no-ingredients.inc:178
 msgid "no Mustard"
 msgstr "nincs mustár"
 
-#: src/no-ingredients.inc:51
-msgid "no Nut"
-msgstr ""
+#: src/no-ingredients.inc:179
+#| msgid "no Mustard"
+msgid "no Mustard seeds"
+msgstr "nincs mustármag"
 
-#: src/no-ingredients.inc:52
+#: src/no-ingredients.inc:180
+msgid "no Nut"
+msgstr "nincs dió"
+
+#: src/no-ingredients.inc:181
+msgid "no Nutmeg"
+msgstr "nincs szerecsendió"
+
+#: src/no-ingredients.inc:182
+msgid "no Nutritional yeast"
+msgstr "nincs étkezési élesztő"
+
+#: src/no-ingredients.inc:183
 msgid "no Oatmeal"
 msgstr "nincs zabpehely"
 
-#: src/no-ingredients.inc:53
+#: src/no-ingredients.inc:184
 msgid "no Oil"
 msgstr "nincs olaj"
 
-#: src/no-ingredients.inc:54
-msgid "no Onion"
-msgstr "nincs hagyma"
+#: src/no-ingredients.inc:185
+#| msgid "no Soy sauce"
+msgid "no Okonomiyaki sauce"
+msgstr "nincs okonomijaki szósz"
 
-#: src/no-ingredients.inc:55
+#: src/no-ingredients.inc:186
+#| msgid "no Oil"
+msgid "no Olive oil"
+msgstr "nincs olívaolaj"
+
+#: src/no-ingredients.inc:187
 msgid "no Olive oil, extra-virgin"
 msgstr "nincs olíva olaj, extra szűz"
 
-#: src/no-ingredients.inc:56
+#: src/no-ingredients.inc:188
+#| msgid "no Cherries, pitted"
+msgid "no Olives, pitted"
+msgstr "nincs olívabogyó, kimagozott"
+
+#: src/no-ingredients.inc:189
+msgid "no Onion"
+msgstr "nincs hagyma"
+
+#: src/no-ingredients.inc:190
+#| msgid "no Baking powder"
+msgid "no Onion powder"
+msgstr "nincs hagymapor"
+
+#: src/no-ingredients.inc:191
 msgid "no Orange"
 msgstr "nincs narancs"
 
-#: src/no-ingredients.inc:57
+#: src/no-ingredients.inc:192
+#| msgid "no Orange"
+msgid "no Oregano"
+msgstr "nincs oregánó"
+
+#: src/no-ingredients.inc:193
+#| msgid "no Potato"
+msgid "no Pancetta"
+msgstr ""
+
+#: src/no-ingredients.inc:194
+msgid "no Pandan leaves"
+msgstr ""
+
+#: src/no-ingredients.inc:195
+#| msgid "no Peperoni"
+msgid "no Paprika"
+msgstr "nincs paprika"
+
+#: src/no-ingredients.inc:196
+msgid "no Parmesan cheese, grated"
+msgstr "nincs parmezánsajt, reszelt"
+
+#: src/no-ingredients.inc:197
 msgid "no Parsley"
 msgstr "nincs petrezselyem"
 
-#: src/no-ingredients.inc:58
+#: src/no-ingredients.inc:198
+msgid "no Peach"
+msgstr "nincs őszibarack"
+
+#: src/no-ingredients.inc:199
 msgid "no Peperoni"
 msgstr "nincs pepperoni"
 
-#: src/no-ingredients.inc:59
+#: src/no-ingredients.inc:200
 msgid "no Pepper"
 msgstr "nincs paprika"
 
-#: src/no-ingredients.inc:60
+#: src/no-ingredients.inc:201
 msgid "no Peppers"
 msgstr "nincs paprika"
 
-#: src/no-ingredients.inc:61
+#: src/no-ingredients.inc:202
+#| msgid "no Parsley"
+msgid "no Pickles"
+msgstr "nincs savanyú uborka"
+
+#: src/no-ingredients.inc:203
+#| msgid "no Pepper"
+msgid "no Pineapple"
+msgstr "nincs ananász"
+
+#: src/no-ingredients.inc:204
 msgid "no Pizza sauce"
 msgstr "nincs pizzaszósz"
 
-#: src/no-ingredients.inc:62
+#: src/no-ingredients.inc:205
+#| msgid "no Flour"
+msgid "no Plain flour"
+msgstr "nincs finomliszt"
+
+#: src/no-ingredients.inc:206
+#| msgid "no Potato"
+msgid "no Pomegranate"
+msgstr "nincs gránátalma"
+
+#: src/no-ingredients.inc:207
+msgid "no Pomegranate juice"
+msgstr "nincs gránátalmalé"
+
+#: src/no-ingredients.inc:208
+#| msgid "no Potato"
+msgid "no Pork fat"
+msgstr "nincs disznózsír"
+
+#: src/no-ingredients.inc:209
+#| msgid "no Peperoni"
+msgid "no Pork loin"
+msgstr "nincs sertéskaraj"
+
+#: src/no-ingredients.inc:210
 msgid "no Potato"
 msgstr "nincs burgonya"
 
-#: src/no-ingredients.inc:63
+#: src/no-ingredients.inc:211
+msgid "no Powdered sugar"
+msgstr "nincs porcukor"
+
+#: src/no-ingredients.inc:212
 msgid "no Pumpkin seeds"
 msgstr "nincs tökmag"
 
-#: src/no-ingredients.inc:64
+#: src/no-ingredients.inc:213
+msgid "no Quinoa"
+msgstr "no kinoa"
+
+#: src/no-ingredients.inc:214
+msgid "no Radish"
+msgstr "nincs retek"
+
+#: src/no-ingredients.inc:215
 msgid "no Raisins"
 msgstr ""
 
-#: src/no-ingredients.inc:65
+#: src/no-ingredients.inc:216
+msgid "no Red bell pepper"
+msgstr "nincs vörös kaliforniai paprika"
+
+#: src/no-ingredients.inc:217
+#| msgid "no Onion"
+msgid "no Red onion"
+msgstr "nincs vöröshagyma"
+
+#: src/no-ingredients.inc:218
+#| msgid "no Pepper"
+msgid "no Red Pepper"
+msgstr "nincs vörös paprika"
+
+#: src/no-ingredients.inc:219
+msgid "no Red wine"
+msgstr "nincs vörösbor"
+
+#: src/no-ingredients.inc:220
 msgid "no Rice"
+msgstr "nincs rizs"
+
+#: src/no-ingredients.inc:221
+msgid "no Rice, cooked"
+msgstr "nincs főtt rizs"
+
+#: src/no-ingredients.inc:222
+msgid "no Rice vermicelli noodles"
 msgstr ""
 
-#: src/no-ingredients.inc:66
+#: src/no-ingredients.inc:223
+#| msgid "no Sugar"
+msgid "no Rock sugar"
+msgstr "nincs sziklacukor"
+
+#: src/no-ingredients.inc:224
+msgid "no Rolled oats"
+msgstr ""
+
+#: src/no-ingredients.inc:225
+msgid "no Rosemary"
+msgstr "nincs rozmaring"
+
+#: src/no-ingredients.inc:226
+msgid "no Rosé wine"
+msgstr "nincs rosé bor"
+
+#: src/no-ingredients.inc:227
+msgid "no Sachet levure"
+msgstr ""
+
+#: src/no-ingredients.inc:228
+#| msgid "no Sugar"
+msgid "no Saffron"
+msgstr "nincs sáfrány"
+
+#: src/no-ingredients.inc:229
+#| msgid "no Salt"
+msgid "no Sage"
+msgstr "nincs zsálya"
+
+#: src/no-ingredients.inc:230
+#| msgid "no Almond"
+msgid "no Salmon"
+msgstr "nincs lazac"
+
+#: src/no-ingredients.inc:231
 msgid "no Salt"
 msgstr "nincs só"
 
-#: src/no-ingredients.inc:67
+#: src/no-ingredients.inc:232
+msgid "no Salt and pepper"
+msgstr "nincs só és bors"
+
+#: src/no-ingredients.inc:233
+#| msgid "no Soy sauce"
+msgid "no Saucebinder"
+msgstr ""
+
+#: src/no-ingredients.inc:234
+#| msgid "no Salt"
+msgid "no Scallions"
+msgstr "nincs mogyoróhagyma"
+
+#: src/no-ingredients.inc:235
+#| msgid "no Salt"
+msgid "no Sea salt"
+msgstr "nincs tengeri só"
+
+#: src/no-ingredients.inc:236
+msgid "no Semi-skimmed milk"
+msgstr ""
+
+#: src/no-ingredients.inc:237
+#| msgid "no Salt"
+msgid "no Sesame oil"
+msgstr "nincs szezámmagolaj"
+
+#: src/no-ingredients.inc:238
+#| msgid "no Sunflower seeds"
+msgid "no Sesame seeds"
+msgstr "nincs szezámmag"
+
+#: src/no-ingredients.inc:239
+#| msgid "no Salt"
+msgid "no Shallots"
+msgstr "nincs mogyoróhagyma"
+
+#: src/no-ingredients.inc:240
+msgid "no Shrimps"
+msgstr "nincs garnélarák"
+
+#: src/no-ingredients.inc:241
+msgid "no Slivered almonds, toasted"
+msgstr ""
+
+#: src/no-ingredients.inc:242
+#| msgid "no Soy sauce"
+msgid "no Sour cream"
+msgstr "nincs tejföl"
+
+#: src/no-ingredients.inc:243
 msgid "no Soy sauce"
 msgstr "nincs szójaszósz"
 
-#: src/no-ingredients.inc:68
-#, fuzzy
-msgid "no Strawberry"
-msgstr "nincs áfonya"
+#: src/no-ingredients.inc:244
+#| msgid "no Squash"
+msgid "no Spinach"
+msgstr "nincs spenót"
 
-#: src/no-ingredients.inc:69
-msgid "no Sugar"
-msgstr "nincs cukor"
+#: src/no-ingredients.inc:245
+#| msgid "no Onion"
+msgid "no Spring onion"
+msgstr "nincs újhagyma"
 
-#: src/no-ingredients.inc:70
-msgid "no Sunflower seeds"
-msgstr "nincs napraforgómag"
-
-#: src/no-ingredients.inc:71
+#: src/no-ingredients.inc:246
 msgid "no Squash"
 msgstr "nincs tök"
 
-#: src/no-ingredients.inc:72
+#: src/no-ingredients.inc:247
+msgid "no Star anise"
+msgstr "nincs csillagánizs"
+
+#: src/no-ingredients.inc:248
+msgid "no Strawberry"
+msgstr "nincs eper"
+
+#: src/no-ingredients.inc:249
+msgid "no Sugar"
+msgstr "nincs cukor"
+
+#: src/no-ingredients.inc:250
+msgid "no Sunflower seeds"
+msgstr "nincs napraforgómag"
+
+#: src/no-ingredients.inc:251
+#| msgid "no Potato"
+msgid "no Sweet potatoes"
+msgstr "nincs édesburgonya"
+
+#: src/no-ingredients.inc:252
+#, fuzzy
+#| msgid "no Tangerine"
+msgid "no Tamarind paste"
+msgstr "nincs tamarind szósz"
+
+#: src/no-ingredients.inc:253
 msgid "no Tangerine"
 msgstr "nincs mandarin"
 
-#: src/no-ingredients.inc:73
+#: src/no-ingredients.inc:254
+msgid "no Thai basil leaves"
+msgstr "nincs thai bazsalikom levél"
+
+#: src/no-ingredients.inc:255
+msgid "no Thai chillies"
+msgstr "nincs thai csili"
+
+#: src/no-ingredients.inc:256
+#| msgid "no Pizza sauce"
+msgid "no Thai fish sauce"
+msgstr "nincs thai halszósz"
+
+#: src/no-ingredients.inc:257
+msgid "no Thyme"
+msgstr "nincs kakukkfű"
+
+#: src/no-ingredients.inc:258
+msgid "no Tinned pineapple rings"
+msgstr "nincs konzerv ananászkarika"
+
+#: src/no-ingredients.inc:259
 msgid "no Tofu"
 msgstr "nincs tofu"
 
-#: src/no-ingredients.inc:74
+#: src/no-ingredients.inc:260
 msgid "no Tomato"
 msgstr "nincs paradicsom"
 
-#: src/no-ingredients.inc:75
-msgid "no Turmeric, ground"
-msgstr ""
+#: src/no-ingredients.inc:261
+#, fuzzy
+#| msgid "no Tomato"
+msgid "no Tomato paste"
+msgstr "nincs paradicsom"
 
-#: src/no-ingredients.inc:76
-msgid "no Vanilla sugar"
-msgstr "nincs vaníliás cukor"
+#: src/no-ingredients.inc:262
+#| msgid "no Tomato"
+msgid "no Tomato sauce"
+msgstr "nincs paradicsomszósz"
 
-#: src/no-ingredients.inc:77
+#: src/no-ingredients.inc:263
+msgid "no Tumeric ground"
+msgstr "nincs őrölt kurkuma"
+
+#: src/no-ingredients.inc:264
+msgid "no Tuna fish"
+msgstr "nincs tonhal"
+
+#: src/no-ingredients.inc:265
+msgid "no Unsalted butter"
+msgstr "nincs sózatlan vaj"
+
+#: src/no-ingredients.inc:266
+#| msgid "no Baking powder"
+msgid "no Vanilla baking powder"
+msgstr "nincs vaníliás sütőpor"
+
+#: src/no-ingredients.inc:267
+#| msgid "no Vanilla sugar"
+msgid "no Vanilla extract"
+msgstr "nincs vanília kivonat"
+
+#: src/no-ingredients.inc:268
+#| msgid "no Vanilla pudding"
+msgid "no Vanilla powdered sugar, for dusting"
+msgstr "nincs vaníliás porcukor, szórásra"
+
+#: src/no-ingredients.inc:269
 msgid "no Vanilla pudding"
 msgstr "nincs vaníliapuding"
 
-#: src/no-ingredients.inc:78
+#: src/no-ingredients.inc:270
+msgid "no Vanilla sugar"
+msgstr "nincs vaníliás cukor"
+
+#: src/no-ingredients.inc:271
+msgid "no Vegetable oil"
+msgstr "nincs növényi olaj"
+
+#: src/no-ingredients.inc:272
 msgid "no Vinegar"
 msgstr "nincs ecet"
 
-#: src/no-ingredients.inc:79
+#: src/no-ingredients.inc:273
 msgid "no Water"
 msgstr "nincs víz"
 
-#: src/no-ingredients.inc:80
+#: src/no-ingredients.inc:274
+#| msgid "no Flour"
+msgid "no Wheat flour"
+msgstr "nincs búzaliszt"
+
+#: src/no-ingredients.inc:275
+#| msgid "no Wine"
+msgid "no White fish"
+msgstr "nincs fehér húsú hal"
+
+#: src/no-ingredients.inc:276
+#| msgid "no Onion"
+msgid "no White onion"
+msgstr "nincs fehér hagyma"
+
+#: src/no-ingredients.inc:277
+#| msgid "no Wine"
+msgid "no White wine"
+msgstr "nincs fehérbor"
+
+#: src/no-ingredients.inc:278
+msgid "no Whole chicken"
+msgstr "nincs egész csirke"
+
+#: src/no-ingredients.inc:279
 msgid "no Wine"
 msgstr "nincs bor"
 
-#: src/no-ingredients.inc:81
+#: src/no-ingredients.inc:280
+msgid "no Worcestershire sauce"
+msgstr "nincs worcestershire szósz"
+
+#: src/no-ingredients.inc:281
 msgid "no Yeast"
 msgstr "nincs élesztő"
 
-#: src/no-ingredients.inc:82
+#: src/no-ingredients.inc:282
+msgid "no Yellow bell pepper"
+msgstr "nincs sárga kaliforniai paprika"
+
+#: src/no-ingredients.inc:283
 msgid "no Yoghurt"
 msgstr "nincs joghurt"
 
-#: src/no-ingredients.inc:83
+#: src/no-ingredients.inc:284
+msgid "no Zest of 1 lemon (organic)"
+msgstr "nincs 1 citrom leve (organikus)"
+
+#: src/no-ingredients.inc:285
 msgid "no Zinfandel"
 msgstr "nincs fekete szőlő"
 
-#: src/no-ingredients.inc:84
+#: src/no-ingredients.inc:286
 msgid "no Zuccini"
-msgstr ""
+msgstr "nincs cukkini"
 
-#~ msgid "Contains dairy products"
-#~ msgstr "Tejterméket tartalmaz"
-
-#~ msgid "Contains Gluten"
-#~ msgstr "Glutént tartalmaz"
-
-#~ msgid "Apply"
-#~ msgstr "Alkalmaz"
-
-#~ msgid "Dough"
-#~ msgstr "Kelt tészta"
-
-#~ msgid "Toppings"
-#~ msgstr "Öntetek"
-
-#~| msgid "translator-credits"
-#~ msgctxt "_"
-#~ msgid "translator-credits"
-#~ msgstr "Úr Balázs <urbalazs@gmail.com>, 2017."
-
-#~ msgid "Recipes will be documented here."
-#~ msgstr "A Receptek itt lesz dokumentálva."
-
-#~ msgid "_Close"
-#~ msgstr "_Bezárás"
-
-#~ msgid "My Chef Information"
-#~ msgstr "Saját konyhafőnök-információk"
-
-#~ msgid "My own Recipes"
-#~ msgstr "Saját receptjeim"
-
-#~ msgid "Report Issue"
-#~ msgstr "Probléma jelentése"
