@@ -434,6 +434,11 @@ populate_diets_list (GrQueryEditor *self)
         gtk_container_add (GTK_CONTAINER (self->diet_list), row);
         gr_diet_row_set_entry (GR_DIET_ROW (row), GD_TAGGED_ENTRY (self->entry));
 
+        row = GTK_WIDGET (gr_diet_row_new (GR_DIET_HALAL));
+        gtk_widget_show (row);
+        gtk_container_add (GTK_CONTAINER (self->diet_list), row);
+        gr_diet_row_set_entry (GR_DIET_ROW (row), GD_TAGGED_ENTRY (self->entry));
+
         gtk_list_box_set_header_func (GTK_LIST_BOX (self->diet_list),
                                       diet_header_func, self, NULL);
 

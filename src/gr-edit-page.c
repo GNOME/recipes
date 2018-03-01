@@ -78,6 +78,7 @@ struct _GrEditPage
         GtkWidget *vegan_check;
         GtkWidget *vegetarian_check;
         GtkWidget *milk_free_check;
+        GtkWidget *halal_check;
         GtkWidget *images;
         GtkWidget *add_image_button;
         GtkWidget *remove_image_button;
@@ -1274,6 +1275,7 @@ gr_edit_page_class_init (GrEditPageClass *klass)
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, vegan_check);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, vegetarian_check);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, milk_free_check);
+        gtk_widget_class_bind_template_child (widget_class, GrEditPage, halal_check);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, images);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, add_image_button);
         gtk_widget_class_bind_template_child (widget_class, GrEditPage, remove_image_button);
@@ -1559,6 +1561,7 @@ gr_edit_page_clear (GrEditPage *page)
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->vegan_check), FALSE);
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->vegetarian_check), FALSE);
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->milk_free_check), FALSE);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->halal_check), FALSE);
         gtk_widget_hide (page->author_label);
 
         images = gr_image_array_new ();
@@ -1674,6 +1677,7 @@ gr_edit_page_edit (GrEditPage *page,
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->vegan_check), (diets & GR_DIET_VEGAN) != 0);
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->vegetarian_check), (diets & GR_DIET_VEGETARIAN) != 0);
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->milk_free_check), (diets & GR_DIET_MILK_FREE) != 0);
+        gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page->halal_check), (diets & GR_DIET_HALAL) != 0);
 
         gr_image_viewer_set_images (GR_IMAGE_VIEWER (page->images), images, index);
 
@@ -1754,8 +1758,9 @@ gr_edit_page_save (GrEditPage *page)
         diets = (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->gluten_free_check)) ? GR_DIET_GLUTEN_FREE : 0) |
                 (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->nut_free_check)) ? GR_DIET_NUT_FREE : 0) |
                 (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->vegan_check)) ? GR_DIET_VEGAN : 0) |
-               (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->vegetarian_check)) ? GR_DIET_VEGETARIAN : 0) |
-                (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->milk_free_check)) ? GR_DIET_MILK_FREE : 0);
+                (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->vegetarian_check)) ? GR_DIET_VEGETARIAN : 0) |
+                (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->milk_free_check)) ? GR_DIET_MILK_FREE : 0) |
+                (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page->halal_check)) ? GR_DIET_HALAL : 0);
 
         images = gr_image_viewer_get_images (GR_IMAGE_VIEWER (page->images));
 
