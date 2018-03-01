@@ -1171,7 +1171,6 @@ chef_done (GrChefDialog *dialog,
            GrChef       *chef,
            GrWindow     *window)
 {
-        window->chef_dialog = NULL;
         gtk_widget_destroy (GTK_WIDGET (dialog));
 }
 
@@ -1182,6 +1181,7 @@ present_my_chef_dialog (GrChef   *chef,
         GrWindow *window = data;
 
         window->chef_dialog = (GtkWidget *)gr_chef_dialog_new (chef, FALSE);
+        g_object_add_weak_pointer (G_OBJECT (window->chef_dialog), (gpointer *)&window->chef_dialog);
         gtk_window_set_title (GTK_WINDOW (window->chef_dialog), _("Chef Information"));
         g_signal_connect (window->chef_dialog, "done", G_CALLBACK (chef_done), window);
         gr_window_present_dialog (window, GTK_WINDOW (window->chef_dialog));
