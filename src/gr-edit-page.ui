@@ -673,6 +673,13 @@
                             <signal name="clicked" handler="set_unsaved" swapped="yes"/>
                           </object>
                         </child>
+                        <child>
+                          <object class="GtkCheckButton" id="halal_check">
+                            <property name="visible">1</property>
+                            <property name="label" translatable="yes">Halal</property>
+                            <signal name="clicked" handler="set_unsaved" swapped="yes"/>
+                          </object>
+                        </child>
                       </object>
                       <packing>
                         <property name="left-attach">0</property>

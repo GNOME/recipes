@@ -45,6 +45,9 @@ gr_diet_get_label (GrDiets diet)
         case GR_DIET_MILK_FREE:
                 label = _("Milk-free recipes");
                 break;
+        case GR_DIET_HALAL:
+                label = _("Halal");
+                break;
         default:
                 label = _("Other dietary restrictions");
                 break;
