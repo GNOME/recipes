@@ -781,6 +781,7 @@ gr_recipe_matches (GrRecipe    *recipe,
                                 { GR_DIET_VEGAN,       "vegan" },
                                 { GR_DIET_VEGETARIAN,  "vegetarian" },
                                 { GR_DIET_MILK_FREE,   "milk-free" },
+                                { GR_DIET_HALAL,       "halal" },
                                 { 0, NULL }
                         };
                         GrDiets d = 0;

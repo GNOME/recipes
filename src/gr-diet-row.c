@@ -113,6 +113,9 @@ update_label (GrDietRow *self)
           case GR_DIET_MILK_FREE:
                 gtk_label_set_label (GTK_LABEL (self->label), _("Milk-free"));
                 break;
+          case GR_DIET_HALAL:
+                gtk_label_set_label (GTK_LABEL (self->label), _("Halal"));
+                break;
           default:
                 gtk_label_set_label (GTK_LABEL (self->label), "Unknown");
                 break;
@@ -258,6 +261,8 @@ gr_diet_row_get_diet (GrDietRow *row)
                 return "vegetarian";
           case GR_DIET_MILK_FREE:
                 return "milk-free";
+          case GR_DIET_HALAL:
+                return "halal";
           default:
                 return NULL;
           }
