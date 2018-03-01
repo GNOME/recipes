@@ -240,10 +240,15 @@ ingredient_format_unit (Ingredient *ing)
                         a1 += a;
                 }
                 else {
-                        g_error ("conversion yielded different units...why...");
+                        if (s->len > 0)
+                          g_string_append (s, ", ");
+                        gr_convert_format (s, a, u);
+                        g_warning ("conversion yielded different units (%s: %s vs %s)...why...", ing->ingredient, gr_unit_get_name (u), gr_unit_get_name (u1));
                 }
         }
 
+        if (s->len > 0)
+          g_string_append (s, ", ");
         gr_convert_format (s, a1, u1);
 
         return g_strdup (s->str);
