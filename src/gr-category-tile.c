@@ -51,7 +51,8 @@ get_category_color (GrDiets diets)
         case GR_DIET_VEGAN:       return g_strdup_printf ("color-tile%d", 2);
         case GR_DIET_VEGETARIAN:  return g_strdup_printf ("color-tile%d", 3);
         case GR_DIET_MILK_FREE:   return g_strdup_printf ("color-tile%d", 4);
-        default:                  return g_strdup_printf ("color-tile%d", 5);
+        case GR_DIET_HALAL:       return g_strdup_printf ("color-tile%d", 5);
+        default:                  return g_strdup_printf ("color-tile%d", 6);
         }
 }
 
