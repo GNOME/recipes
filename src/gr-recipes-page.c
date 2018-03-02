@@ -223,12 +223,13 @@ populate_categories_from_store (GrRecipesPage *self)
                 { "all",       N_("All Recipes") },
                 { "new",       N_("New Recipes") },
         };
-        GrDiets diets[5] = {
+        GrDiets diets[6] = {
                 GR_DIET_GLUTEN_FREE,
                 GR_DIET_NUT_FREE,
                 GR_DIET_VEGAN,
                 GR_DIET_VEGETARIAN,
-                GR_DIET_MILK_FREE
+                GR_DIET_MILK_FREE,
+                GR_DIET_HALAL
         };
         GtkWidget *tile;
 
