@@ -46,7 +46,7 @@ gr_diet_get_label (GrDiets diet)
                 label = _("Milk-free recipes");
                 break;
         case GR_DIET_HALAL:
-                label = _("Halal");
+                label = _("Halal recipes");
                 break;
         default:
                 label = _("Other dietary restrictions");
@@ -76,6 +76,9 @@ gr_diet_get_description (GrDiets diet)
                 break;
         case GR_DIET_MILK_FREE:
                 label = _("Lactose intolerance is a condition in which people have symptoms due to the decreased ability to digest lactose, a sugar found in milk products. Those affected vary in the amount of lactose they can tolerate before symptoms develop. Symptoms may include abdominal pain, bloating, diarrhea, gas, and nausea. These typically start between half and two hours after drinking milk. Severity depends on the amount a person eats or drinks. It does not cause damage to the gastrointestinal tract.\n<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Learn more…</a>");
+                break;
+        case GR_DIET_HALAL:
+                label = _("Halal meat is prepared according to Islamic traditions");
                 break;
         default:
                 label = _("Other dietary restrictions");
