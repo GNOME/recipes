@@ -316,6 +316,8 @@ get_category_title (GrDiets diet)
                 return _("Vegetarian Recipes");
         case GR_DIET_MILK_FREE:
                 return _("Milk-free Recipes");
+        case GR_DIET_HALAL:
+                return _("Halal Recipes");
         default:
                 return  _("Other Dietary Restrictions");
         }
@@ -335,6 +337,8 @@ get_diet_name (GrDiets diet)
                 return "vegetarian";
         case GR_DIET_MILK_FREE:
                 return "milk-free";
+        case GR_DIET_HALAL:
+                return "halal";
         default:
                 return "";
         }
