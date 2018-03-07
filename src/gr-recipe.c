@@ -74,11 +74,6 @@ struct _GrRecipe
         gboolean readonly;
         gboolean contributed;
 
-        char *translated_name;
-        char *translated_description;
-        char *translated_instructions;
-        char *translated_notes;
-
         double yield;
         char *yield_unit;
 };
@@ -138,11 +133,6 @@ gr_recipe_finalize (GObject *object)
         g_free (self->cf_ingredients);
         g_date_time_unref (self->mtime);
         g_date_time_unref (self->ctime);
-
-        g_free (self->translated_name);
-        g_free (self->translated_description);
-        g_free (self->translated_instructions);
-        g_free (self->translated_notes);
 
         g_free (self->yield_unit);
 
@@ -295,23 +285,19 @@ gr_recipe_set_property (GObject      *object,
 
         case PROP_NAME:
                 g_clear_pointer (&self->name, g_free);
-                g_clear_pointer (&self->translated_name, g_free);
                 g_clear_pointer (&self->cf_name, g_free);
                 self->name = g_value_dup_string (value);
                 if (self->name) {
-                        self->translated_name = translate_multiline_string (self->name);
-                        self->cf_name = g_utf8_casefold (self->translated_name, -1);
+                        self->cf_name = g_utf8_casefold (self->name, -1);
                 }
                 break;
 
         case PROP_DESCRIPTION:
                 g_clear_pointer (&self->description, g_free);
-                g_clear_pointer (&self->translated_description, g_free);
                 g_clear_pointer (&self->cf_description, g_free);
                 self->description = g_value_dup_string (value);
                 if (self->description) {
-                        self->translated_description = translate_multiline_string (self->description);
-                        self->cf_description = g_utf8_casefold (self->translated_description, -1);
+                        self->cf_description = g_utf8_casefold (self->description, -1);
                 }
                 break;
 
@@ -370,18 +356,12 @@ gr_recipe_set_property (GObject      *object,
 
         case PROP_INSTRUCTIONS:
                 g_clear_pointer (&self->instructions, g_free);
-                g_clear_pointer (&self->translated_instructions, g_free);
                 self->instructions = g_value_dup_string (value);
-                if (self->instructions)
-                        self->translated_instructions = translate_multiline_string (self->instructions);
                 break;
 
         case PROP_NOTES:
                 g_clear_pointer (&self->notes, g_free);
-                g_clear_pointer (&self->translated_notes, g_free);
                 self->notes = g_value_dup_string (value);
-                if (self->notes)
-                        self->translated_notes = translate_multiline_string (self->notes);
                 break;
 
         case PROP_DIETS:
@@ -571,12 +551,6 @@ gr_recipe_get_name (GrRecipe *recipe)
 }
 
 const char *
-gr_recipe_get_translated_name (GrRecipe *recipe)
-{
-        return recipe->translated_name;
-}
-
-const char *
 gr_recipe_get_author (GrRecipe *recipe)
 {
         return recipe->author;
@@ -586,18 +560,6 @@ const char *
 gr_recipe_get_description (GrRecipe *recipe)
 {
         return recipe->description;
-}
-
-const char *
-gr_recipe_get_translated_description (GrRecipe *recipe)
-{
-        return recipe->translated_description;
-}
-
-const char *
-gr_recipe_get_translated_notes (GrRecipe *recipe)
-{
-        return recipe->translated_notes;
 }
 
 const char *
@@ -646,12 +608,6 @@ const char *
 gr_recipe_get_instructions (GrRecipe *recipe)
 {
         return recipe->instructions;
-}
-
-const char *
-gr_recipe_get_translated_instructions (GrRecipe *recipe)
-{
-        return recipe->translated_instructions;
 }
 
 const char *

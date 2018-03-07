@@ -59,11 +59,6 @@ GPtrArray      *gr_recipe_get_images       (GrRecipe   *recipe);
 const char     *gr_recipe_get_yield_unit   (GrRecipe   *recipe);
 double          gr_recipe_get_yield        (GrRecipe   *recipe);
 
-const char     *gr_recipe_get_translated_name         (GrRecipe   *recipe);
-const char     *gr_recipe_get_translated_description  (GrRecipe   *recipe);
-const char     *gr_recipe_get_translated_instructions (GrRecipe   *recipe);
-const char     *gr_recipe_get_translated_notes        (GrRecipe   *recipe);
-
 gboolean        gr_recipe_matches          (GrRecipe    *recipe,
                                             const char **terms);
 
