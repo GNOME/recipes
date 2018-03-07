@@ -1,12 +1,14 @@
 {
-    "id": "org.gnome.Recipes",
-    "runtime": "org.gnome.Platform",
-    "runtime-version": "master",
-    "sdk": "org.gnome.Sdk",
-    "command": "gnome-recipes",
-    "tags": ["nightly"],
-    "desktop-file-name-prefix": "(Nightly) ",
-    "finish-args": [
+    "id" : "org.gnome.Recipes",
+    "runtime" : "org.gnome.Platform",
+    "runtime-version" : "master",
+    "sdk" : "org.gnome.Sdk",
+    "command" : "gnome-recipes",
+    "tags" : [
+        "nightly"
+    ],
+    "desktop-file-name-prefix" : "(Nightly) ",
+    "finish-args" : [
         "--share=ipc",
         "--share=network",
         "--socket=wayland",
@@ -17,7 +19,7 @@
         "--talk-name=ca.desrt.dconf",
         "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
     ],
-    "cleanup": [
+    "cleanup" : [
         "/include",
         "/lib/pkgconfig",
         "/share/pkgconfig",
@@ -29,54 +31,52 @@
         "*.la",
         "*.a"
     ],
-    "modules": [
+    "modules" : [
         {
-            "name": "gspell",
-            "sources": [
-                    {
-                        "type": "git",
-                        "url": "git://git.gnome.org/gspell"
-                    }
+            "name" : "gnome-autoar",
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "git://git.gnome.org/gnome-autoar"
+                }
             ]
         },
         {
-            "name": "gnome-autoar",
-            "sources": [
-                    {
-                        "type": "git",
-                        "url": "git://git.gnome.org/gnome-autoar"
-                    }
+            "name" : "rest",
+            "sources" : [
+                {
+                    "type" : "archive",
+                    "url" : "https://download.gnome.org/sources/rest/0.7/rest-0.7.93.tar.xz",
+                    "sha256" : "c710644455340a44ddc005c645c466f05c0d779993138ea21a62c6082108b216"
+                }
             ]
         },
         {
-            "name": "rest",
-            "sources": [
-                    {
-                        "type": "archive",
-                        "url": "https://download.gnome.org/sources/rest/0.7/rest-0.7.93.tar.xz",
-                        "sha256": "c710644455340a44ddc005c645c466f05c0d779993138ea21a62c6082108b216"
-                    }
+            "name" : "gnome-online-accounts",
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "git://git.gnome.org/gnome-online-accounts"
+                }
             ]
         },
         {
-            "name": "gnome-online-accounts",
-            "sources": [
-                    {
-                        "type": "git",
-                        "url": "git://git.gnome.org/gnome-online-accounts"
-                    }
-            ]
-        },
-        {
-            "name": "recipes",
-            "buildsystem": "meson",
-            "builddir": true,
-            "sources": [
-                    {
-                        "type": "git",
-                        "url": "git://git.gnome.org/recipes"
-                    }
+            "name" : "recipes",
+            "buildsystem" : "meson",
+            "builddir" : true,
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "git://git.gnome.org/recipes"
+                }
+            ],
+            "config-opts" : [
+                "-Denable-gspell=no"
             ]
         }
-    ]
+    ],
+    "build-options" : {
+        "env" : {
+        }
+    }
 }
