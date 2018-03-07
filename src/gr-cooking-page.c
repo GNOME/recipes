@@ -538,7 +538,7 @@ gr_cooking_page_set_recipe (GrCookingPage *page,
 
         images = gr_recipe_get_images (recipe);
         id = gr_recipe_get_id (recipe);
-        instructions = gr_recipe_get_translated_instructions (recipe);
+        instructions = gr_recipe_get_instructions (recipe);
 
         container_remove_all (GTK_CONTAINER (page->mini_timer_box));
 

@@ -109,10 +109,12 @@ gr_ingredients_list_populate (GrIngredientsList  *ingredients,
                 ing->unit = u;
                 ing->segment = g_strdup (segment);
 
+#if 0
                 s = gr_ingredient_find (ingredient);
                 if (s)
                         ing->name = g_strdup (s);
                 else
+#endif
                         ing->name = g_strdup (ingredient);
 
                 g_hash_table_add (ingredients->segments, g_strdup (segment));

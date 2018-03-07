@@ -415,6 +415,11 @@ gr_details_page_init (GrDetailsPage *page)
 }
 
 static void
+show_in_english (GrDetailsPage *page)
+{
+}
+
+static void
 gr_details_page_class_init (GrDetailsPageClass *klass)
 {
         GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -470,6 +475,7 @@ gr_details_page_class_init (GrDetailsPageClass *klass)
         gtk_widget_class_bind_template_callback (widget_class, activate_link);
         gtk_widget_class_bind_template_callback (widget_class, dismiss_error);
         gtk_widget_class_bind_template_callback (widget_class, activate_image);
+        gtk_widget_class_bind_template_callback (widget_class, show_in_english);
 }
 
 GtkWidget *
@@ -635,9 +641,9 @@ gr_details_page_set_recipe (GrDetailsPage *page,
         meal = gr_recipe_get_category (recipe);
         season = gr_recipe_get_season (recipe);
         ingredients = gr_recipe_get_ingredients (recipe);
-        notes = gr_recipe_get_translated_notes (recipe);
-        instructions = gr_recipe_get_translated_instructions (recipe);
-        description = gr_recipe_get_translated_description (recipe);
+        notes = gr_recipe_get_notes (recipe);
+        instructions = gr_recipe_get_instructions (recipe);
+        description = gr_recipe_get_description (recipe);
         index = gr_recipe_get_default_image (recipe);
 
         images = gr_recipe_get_images (recipe);

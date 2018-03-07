@@ -149,7 +149,7 @@ begin_print (GtkPrintOperation *operation,
 
         for (l = printer->recipes; l; l = l->next) {
                 GrRecipe *recipe = l->data;
-                g_string_append (s, gr_recipe_get_translated_name (recipe));
+                g_string_append (s, gr_recipe_get_name (recipe));
                 g_string_append (s, "\n");
         }
 

@@ -91,7 +91,7 @@ recipe_tile_set_recipe (GrRecipeTile *tile,
                 g_autofree char *tmp = NULL;
                 GPtrArray *images;
 
-                name = gr_recipe_get_translated_name (recipe);
+                name = gr_recipe_get_name (recipe);
                 author = gr_recipe_get_author (recipe);
                 chef = gr_recipe_store_get_chef (store, author);
 

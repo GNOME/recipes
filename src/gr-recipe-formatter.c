@@ -83,7 +83,7 @@ gr_recipe_format (GrRecipe *recipe)
 
         s = g_string_new ("");
 
-        g_string_append_printf (s, "*** %s ***\n", gr_recipe_get_translated_name (recipe));
+        g_string_append_printf (s, "*** %s ***\n", gr_recipe_get_name (recipe));
         g_string_append (s, "\n");
         g_string_append_printf (s, "%s %s\n", _("Author:"), gr_chef_get_fullname (chef));
         g_string_append_printf (s, "%s %s\n", _("Preparation:"), gr_recipe_get_prep_time (recipe));
@@ -92,7 +92,7 @@ gr_recipe_format (GrRecipe *recipe)
         yield_str = g_strdup_printf ("%s %s", amount, gr_recipe_get_yield_unit (recipe));
         g_string_append_printf (s, "%s %s\n", _("Yield:"), yield_str);
         g_string_append (s, "\n");
-        g_string_append_printf (s, "%s\n", gr_recipe_get_translated_description (recipe));
+        g_string_append_printf (s, "%s\n", gr_recipe_get_description (recipe));
 
         ingredients = gr_ingredients_list_new (gr_recipe_get_ingredients (recipe));
         segs = gr_ingredients_list_get_segments (ingredients);
@@ -123,7 +123,7 @@ gr_recipe_format (GrRecipe *recipe)
         g_string_append_printf (s, "* %s *\n", _("Directions"));
         g_string_append (s, "\n");
 
-        steps = gr_recipe_parse_instructions (gr_recipe_get_translated_instructions (recipe), TRUE);
+        steps = gr_recipe_parse_instructions (gr_recipe_get_instructions (recipe), TRUE);
         for (i = 0; i < steps->len; i++) {
                 GrRecipeStep *step = g_ptr_array_index (steps, i);
                 g_string_append (s, step->text);

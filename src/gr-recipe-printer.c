@@ -150,7 +150,7 @@ begin_print (GtkPrintOperation *operation,
         pango_layout_set_font_description (printer->title_layout, title_font);
 
         s = g_string_new ("");
-        g_string_append (s, gr_recipe_get_translated_name (printer->recipe));
+        g_string_append (s, gr_recipe_get_name (printer->recipe));
         g_string_append (s, "\n\n");
 
         pango_layout_set_text (printer->title_layout, s->str, s->len);
@@ -217,7 +217,7 @@ begin_print (GtkPrintOperation *operation,
         pango_layout_set_width (printer->bottom_layout, width * PANGO_SCALE);
         pango_layout_set_font_description (printer->bottom_layout, body_font);
 
-        g_string_append (s, gr_recipe_get_translated_description (printer->recipe));
+        g_string_append (s, gr_recipe_get_description (printer->recipe));
         g_string_append (s, "\n\n");
 
         attrs = pango_attr_list_new ();
@@ -304,7 +304,7 @@ begin_print (GtkPrintOperation *operation,
         attr->end_index = s->len + 1;
         pango_attr_list_insert (attrs, attr);
 
-        instructions = process_instructions (gr_recipe_get_translated_instructions (printer->recipe));
+        instructions = process_instructions (gr_recipe_get_instructions (printer->recipe));
 
         g_string_append (s, "\n\n");
         g_string_append (s, instructions);

@@ -44,7 +44,7 @@ gr_shopping_list_format (GList *recipes,
         g_string_append_printf (s, "%s\n", _("For the following recipes:"));
         for (l = recipes; l; l = l->next) {
                 GrRecipe *recipe = l->data;
-                g_string_append_printf (s, "%s\n", gr_recipe_get_translated_name (recipe));
+                g_string_append_printf (s, "%s\n", gr_recipe_get_name (recipe));
         }
 
         for (l = items; l; l = l->next) {

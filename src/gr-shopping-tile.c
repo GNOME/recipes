@@ -99,7 +99,7 @@ shopping_tile_set_recipe (GrShoppingTile *tile,
                 g_autofree char *tmp = NULL;
                 GPtrArray *images;
 
-                name = gr_recipe_get_translated_name (recipe);
+                name = gr_recipe_get_name (recipe);
                 author = gr_recipe_get_author (recipe);
                 yield = gr_recipe_get_yield_unit (recipe);
                 chef = gr_recipe_store_get_chef (store, author);

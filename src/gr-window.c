@@ -1114,7 +1114,7 @@ gr_window_show_recipe (GrWindow *window,
         gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (window->search_bar), FALSE);
         g_signal_handlers_unblock_by_func (window->search_bar, search_mode_changed, window);
 
-        configure_window (window, gr_recipe_get_translated_name (recipe), "back", "title", "details", "details");
+        configure_window (window, gr_recipe_get_name (recipe), "back", "title", "details", "details");
 }
 
 void
@@ -1126,7 +1126,7 @@ gr_window_edit_recipe (GrWindow *window,
         gr_edit_page_edit (GR_EDIT_PAGE (window->edit_page), recipe);
         gtk_widget_grab_focus (window->edit_page);
 
-        configure_window (window, gr_recipe_get_translated_name (recipe), "back", "title", "edit", "edit");
+        configure_window (window, gr_recipe_get_name (recipe), "back", "title", "edit", "edit");
         gtk_widget_set_sensitive (window->save_button, FALSE);
 }
 

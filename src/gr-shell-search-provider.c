@@ -207,11 +207,11 @@ handle_get_result_metas (GrShellSearchProvider2 *skeleton,
 
                 g_variant_builder_init (&meta, G_VARIANT_TYPE ("a{sv}"));
                 g_variant_builder_add (&meta, "{sv}", "id", g_variant_new_string (gr_recipe_get_id (recipe)));
-                g_variant_builder_add (&meta, "{sv}", "name", g_variant_new_string (gr_recipe_get_translated_name (recipe)));
+                g_variant_builder_add (&meta, "{sv}", "name", g_variant_new_string (gr_recipe_get_name (recipe)));
                 pixbuf = gr_recipe_get_pixbuf (recipe);
                 if (pixbuf != NULL)
                         g_variant_builder_add (&meta, "{sv}", "icon", g_icon_serialize (G_ICON (pixbuf)));
-                g_variant_builder_add (&meta, "{sv}", "description", g_variant_new_string (gr_recipe_get_translated_description (recipe)));
+                g_variant_builder_add (&meta, "{sv}", "description", g_variant_new_string (gr_recipe_get_description (recipe)));
                 meta_variant = g_variant_builder_end (&meta);
                 g_hash_table_insert (self->metas_cache, g_strdup (gr_recipe_get_id (recipe)), g_variant_ref_sink (meta_variant));
 
