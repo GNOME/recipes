@@ -76,6 +76,8 @@ struct _GrRecipe
 
         double yield;
         char *yield_unit;
+
+        char *language;
 };
 
 G_DEFINE_TYPE (GrRecipe, gr_recipe, G_TYPE_OBJECT)
@@ -100,6 +102,7 @@ enum {
         PROP_SPICINESS,
         PROP_NOTES,
         PROP_DIETS,
+        PROP_LANGUAGE,
         PROP_CTIME,
         PROP_MTIME,
         PROP_READONLY,
@@ -135,6 +138,7 @@ gr_recipe_finalize (GObject *object)
         g_date_time_unref (self->ctime);
 
         g_free (self->yield_unit);
+        g_free (self->language);
 
         G_OBJECT_CLASS (gr_recipe_parent_class)->finalize (object);
 }
@@ -234,6 +238,10 @@ gr_recipe_get_property (GObject    *object,
 
         case PROP_YIELD_UNIT:
                 g_value_set_string (value, self->yield_unit);
+                break;
+
+        case PROP_LANGUAGE:
+                g_value_set_string (value, self->language);
                 break;
 
         default:
@@ -397,6 +405,11 @@ gr_recipe_set_property (GObject      *object,
                 self->yield_unit = g_value_dup_string (value);
                 break;
 
+        case PROP_LANGUAGE:
+                g_free (self->language);
+                self->language = g_value_dup_string (value);
+                break;
+
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
         }
@@ -521,6 +534,11 @@ gr_recipe_class_init (GrRecipeClass *klass)
                                      NULL,
                                      G_PARAM_READWRITE);
         g_object_class_install_property (object_class, PROP_YIELD_UNIT, pspec);
+
+        pspec = g_param_spec_string ("language", NULL, NULL,
+                                     NULL,
+                                     G_PARAM_READWRITE);
+        g_object_class_install_property (object_class, PROP_LANGUAGE, pspec);
 }
 
 static void
@@ -687,6 +705,12 @@ const char *
 gr_recipe_get_yield_unit (GrRecipe *recipe)
 {
         return recipe->yield_unit;
+}
+
+const char *
+gr_recipe_get_language (GrRecipe *recipe)
+{
+        return recipe->language;
 }
 
 /* terms are assumed to be g_utf8_casefold'ed where appropriate */

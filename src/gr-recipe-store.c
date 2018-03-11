@@ -266,6 +266,7 @@ load_recipes (GrRecipeStore *self,
                 g_autofree char *notes = NULL;
                 g_autofree char *yield_str = NULL;
                 g_autofree char *yield_unit = NULL;
+                g_autofree char *language = NULL;
                 double yield;
                 g_auto(GStrv) paths = NULL;
                 int serves;
@@ -414,6 +415,15 @@ load_recipes (GrRecipeStore *self,
                         continue;
                 }
 
+                language = g_key_file_get_string (keyfile, groups[i], "Language", &error);
+                if (error) {
+                        if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
+                                g_warning ("Failed to load recipe %s: %s", groups[i], error->message);
+                                continue;
+                        }
+                        g_clear_error (&error);
+                }
+
                 spiciness = g_key_file_get_integer (keyfile, groups[i], "Spiciness", &error);
                 if (error) {
                         if (!g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_KEY_NOT_FOUND)) {
@@ -506,6 +516,7 @@ load_recipes (GrRecipeStore *self,
                                               "default-image", default_image,
                                               "yield-unit", yield_unit,
                                               "yield", yield,
+                                              "language", language,
                                               "mtime", mtime,
                                               NULL);
                 }
@@ -532,6 +543,7 @@ load_recipes (GrRecipeStore *self,
                                                "default-image", default_image,
                                                "yield-unit", yield_unit,
                                                "yield", yield,
+                                               "language", language,
                                                "ctime", ctime,
                                                "mtime", mtime,
                                                "contributed", contributed,
@@ -579,6 +591,7 @@ save_recipes (GrRecipeStore *self)
                 const char *instructions;
                 const char *notes;
                 const char *yield_unit;
+                const char *language;
                 double yield;
                 g_autofree char *yield_str = NULL;
                 GPtrArray *images;
@@ -615,6 +628,7 @@ save_recipes (GrRecipeStore *self)
                 default_image = gr_recipe_get_default_image (recipe);
                 readonly = gr_recipe_is_readonly (recipe);
                 images = gr_recipe_get_images (recipe);
+                language = gr_recipe_get_language (recipe);
 
                 paths = g_new0 (char *, images->len + 1);
                 for (i = 0; i < images->len; i++) {
@@ -646,6 +660,7 @@ save_recipes (GrRecipeStore *self)
                 g_key_file_set_integer (keyfile, key, "Diets", diets);
                 g_key_file_set_integer (keyfile, key, "DefaultImage", default_image);
                 g_key_file_set_string_list (keyfile, key, "Images", (const char * const *)paths, images->len);
+                g_key_file_set_string (keyfile, key, "Language", language ? language : "");
                 if (ctime) {
                         g_autofree char *created = date_time_to_string (ctime);
                         g_key_file_set_string (keyfile, key, "Created", created);
