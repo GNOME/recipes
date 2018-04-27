@@ -2,14 +2,15 @@
 # This file is distributed under the same license as the recipes package.
 #
 # José María Martínez <josemar1992@gmail.com>, 2017.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2016, 2017.
+# Rodrigo <rodhos92@gmail.com>, 2018.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2016, 2017, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-14 09:31+0000\n"
-"PO-Revision-Date: 2017-11-15 12:23+0100\n"
+"POT-Creation-Date: 2018-04-25 13:54+0000\n"
+"PO-Revision-Date: 2018-04-27 11:50+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -49,9 +50,10 @@ msgstr ""
 msgid "The nordic cuisine maestro."
 msgstr "El maestro de la cocina nórdica"
 
+# En algunos paises de latinoamética se le llama jugo en vez de zumo.
 #: data/chefs.db.h:8
 msgid "I love to blend and juice."
-msgstr ""
+msgstr "Me encanta mezclar y el zumo."
 
 #: data/chefs.db.h:9
 msgid "He cooks with GTK+"
@@ -71,7 +73,7 @@ msgstr ""
 
 #: data/chefs.db.h:12 data/chefs.db.h:14 data/chefs.db.h:31
 msgid "Just another chef"
-msgstr ""
+msgstr "Otro chef más"
 
 #: data/chefs.db.h:13
 msgid "Georges is a vegan samurai, a GNOME contributor, and sometimes both."
@@ -133,21 +135,19 @@ msgstr "Me encanta cocinar y aprender."
 
 #: data/chefs.db.h:24
 msgid "Another designer who loves to cook"
-msgstr ""
+msgstr "Otro diseñador al que le encanta cocinar"
 
 #: data/chefs.db.h:25
 msgid "Computer science student and aspiring software developer."
-msgstr ""
+msgstr "Estudiante de Informática y aspirante a desarrollador de software."
 
 #: data/chefs.db.h:26
 msgid "<a href=\"https://krourke.org\">https://krourke.org</a>"
-msgstr ""
+msgstr "<a href=\"https://krourke.org\">https://krourke.org</a>"
 
 #: data/chefs.db.h:27
-#, fuzzy
-#| msgid "GNOME loves to cook"
 msgid "GNOME contributor and cook"
-msgstr "A GNOME le encanta cocinar"
+msgstr "Colaborador de GNOME y cocinero"
 
 #: data/chefs.db.h:28
 msgid "Artist, Computer Scientist, Traveller."
@@ -163,42 +163,44 @@ msgstr "Aviación, hacer cosas, en Finlandia."
 
 #: data/recipes.db.h:3
 msgid "Rice Maize Apple Cake"
-msgstr ""
+msgstr "Pastel de manzana, maíz y arroz"
 
 #: data/recipes.db.h:4
 msgid ""
 "Simple wheat-free yeast dough. You can use rice and maize flour from your "
 "local Asian food store."
 msgstr ""
+"Masa fermentada simple libre de trigo. Puede usar harina de arroz y de maíz "
+"de su tienda de comida asiática local."
 
 #: data/recipes.db.h:5
 msgid "Peel and wedge apples."
-msgstr ""
+msgstr "Pele y corte las manzanas en rodajas."
 
 #: data/recipes.db.h:6
 msgid "Mix dry ingredients for the dough."
-msgstr ""
+msgstr "Mezcle los ingredientes secos para la masa."
 
 #: data/recipes.db.h:7
 msgid "Add rice drink to dough."
-msgstr ""
+msgstr "Añada bebida de arroz a la masa."
 
 #: data/recipes.db.h:8
 msgid ""
 "Knead dough with a dough mixer with dough hook until no small clumps remain."
-msgstr ""
+msgstr "Amase con una máquina amasadora hasta que no queden grumos."
 
 #: data/recipes.db.h:9
 msgid "[timer:00:20:00]Let the dough rest."
-msgstr ""
+msgstr "[timer:00:20:00]Deje reposar la masa."
 
 #: data/recipes.db.h:10
 msgid "Place parchment paper on a baking tray."
-msgstr ""
+msgstr "Coloque papel vegetal en una bandeja de horneado."
 
 #: data/recipes.db.h:11
 msgid "Spread the dough onto the parchment paper."
-msgstr ""
+msgstr "Extienda la masa sobre el papel vegetal."
 
 #: data/recipes.db.h:12
 msgid "Push the apple wedges into the dough."
@@ -234,7 +236,6 @@ msgid "Apples"
 msgstr "Manzanas"
 
 #: data/recipes.db.h:25
-#| msgid "Pizza"
 msgid "Tzatziki sauce"
 msgstr "Salsa tzatziki"
 
@@ -984,7 +985,6 @@ msgid "-  Rice flour makes for a fine substitute to wheat flour"
 msgstr ""
 
 #: data/recipes.db.h:224
-#| msgid "Other Chef"
 msgid "Other notes:"
 msgstr "Otras notas:"
 
@@ -1159,7 +1159,6 @@ msgid ""
 msgstr ""
 
 #: data/recipes.db.h:287
-#| msgid "This is my friend Henry's version of it."
 msgid "This is Henry's version of it."
 msgstr "Esta es la versión de Henry."
 
@@ -1348,7 +1347,6 @@ msgid "Seasoning"
 msgstr "_Estación"
 
 #: data/recipes.db.h:367
-#| msgid "no Mayonnaise"
 msgid "Homemade Mayonnaise"
 msgstr "Mayonesa casera"
 
@@ -1628,7 +1626,6 @@ msgid "The Meat"
 msgstr "La carne"
 
 #: data/recipes.db.h:442 data/recipes.db.h:443 data/recipes.db.h:444
-#| msgid "Other"
 msgid "Others"
 msgstr "Otros"
 
@@ -1930,7 +1927,6 @@ msgstr "Pizza"
 #: data/recipes.db.h:497 data/recipes.db.h:498 data/recipes.db.h:499
 #: data/recipes.db.h:500 data/recipes.db.h:501 data/recipes.db.h:502
 #: data/recipes.db.h:503 data/recipes.db.h:504 data/recipes.db.h:505
-#| msgid "Pizza"
 msgid "Pizza Sauce"
 msgstr "Salsa de pizza"
 
@@ -3244,7 +3240,6 @@ msgstr "Vierta la salsa caliente sobre el bizcocho y sirva."
 
 #: data/recipes.db.h:716 data/recipes.db.h:717 data/recipes.db.h:718
 #: data/recipes.db.h:719
-#| msgid "Soy sauce"
 msgid "Sauce"
 msgstr "Salsa"
 
@@ -3459,7 +3454,6 @@ msgstr "[image:1]¡Disfrute!"
 #: data/recipes.db.h:774 data/recipes.db.h:775 data/recipes.db.h:776
 #: data/recipes.db.h:777 data/recipes.db.h:778 data/recipes.db.h:779
 #: data/recipes.db.h:780
-#| msgid "Continue"
 msgid "Contents"
 msgstr "Contenido"
 
