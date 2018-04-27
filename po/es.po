@@ -3,21 +3,22 @@
 # This file is distributed under the same license as the recipes package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # Daniel Mustieles <daniel.mustieles@gmail.com>, 2016, 2017, 2018.
+# Rodrigo <rodhos92@gmail.com>, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-11 09:07+0000\n"
-"PO-Revision-Date: 2018-04-25 13:35+0200\n"
-"Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
-"Language-Team: es <gnome-es-list@gnome.org>\n"
+"POT-Creation-Date: 2018-04-25 13:54+0000\n"
+"PO-Revision-Date: 2018-04-27 08:37+0200\n"
+"Last-Translator: Rodrigo <rodhos92@gmail.com>\n"
+"Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
@@ -765,7 +766,6 @@ msgid "Featured GNOME Chefs"
 msgstr "Cocineros de GNOME"
 
 #: src/gr-recipe-tile.ui:58
-#| msgid "Imported Recipes"
 msgid "Contributed recipe"
 msgstr "Recetas compartida"
 
@@ -958,19 +958,24 @@ msgstr "Colaborar con el proyecto Recetas"
 
 #: src/recipe-surprise.ui:28
 msgid "GNOME turns 20 !"
-msgstr "¡GNOME cumple 20 años!"
+msgstr "¡GNOME cumple 20  años!"
 
 #: src/recipe-surprise.ui:52
 msgid ""
 "YEARS\n"
 "STRONG"
 msgstr ""
+"AÑOS\n"
+"FUERTE"
 
 #: src/recipe-surprise.ui:68
 msgid ""
 "Recipes is a present to GNOME for its 20th birthday. We invite the GNOME "
 "community all over the world to share recipes and enjoy a good meal together."
 msgstr ""
+"Recetas es un regalo a GNOME por su 20 cumpleaños. Invitamos a la comunidad "
+"de GNOME de todo el mundo a compartir recetas y a disfrutar de una buena "
+"comida juntos."
 
 #: src/recipe-surprise.ui:79
 msgid "Let’s Party"
@@ -1468,7 +1473,6 @@ msgid "Milk-free recipes"
 msgstr "Recetas libres de lactosa"
 
 #: src/gr-diet.c:49
-#| msgid "All Recipes"
 msgid "Halal recipes"
 msgstr "Recetas de halal"
 
@@ -1663,7 +1667,7 @@ msgstr "Algunos ingredientes necesitan una corrección"
 #: src/gr-gourmet-format.c:174
 #, c-format
 msgid "Not a Gourmet XML document"
-msgstr ""
+msgstr "No es un documento XML Gourmet"
 
 #: src/gr-ingredients-viewer-row.c:159
 msgid "Amount…"
@@ -1694,7 +1698,6 @@ msgid "Milk-free Recipes"
 msgstr "Recetas sin lactosa"
 
 #: src/gr-list-page.c:320
-#| msgid "All Recipes"
 msgid "Halal Recipes"
 msgstr "Recetas de halal"
 
@@ -2868,7 +2871,6 @@ msgid "Caster sugar"
 msgstr "Azúcar en polvo"
 
 #: src/ingredients.inc:52
-#| msgid "no Cheese"
 msgid "Celery"
 msgstr "Apio"
 
@@ -2889,7 +2891,6 @@ msgid "Cherries, pitted"
 msgstr "Cerezas, picadas"
 
 #: src/ingredients.inc:57
-#| msgid "cherry tomatoes, halved"
 msgid "Cherry tomatoes, halved"
 msgstr "Tomates cherry cortados por la mitad"
 
@@ -2918,7 +2919,6 @@ msgid "Chili powder"
 msgstr "Chile en polvo"
 
 #: src/ingredients.inc:64
-#| msgid "chili sauce (e.g. sriracha)"
 msgid "Chili sauce (e.g. sriracha)"
 msgstr "Salsa de chile (ej. sriracha)"
 
@@ -2943,7 +2943,6 @@ msgid "Cilantro"
 msgstr "Cilantro"
 
 #: src/ingredients.inc:70
-#| msgid "cilantro leaves"
 msgid "Cilantro leaves"
 msgstr "Hojas de cilantro"
 
@@ -2980,7 +2979,6 @@ msgid "Coconut water"
 msgstr "Agua de coco"
 
 #: src/ingredients.inc:79
-#| msgid "cold water"
 msgid "Cold water"
 msgstr "Agua fría"
 
@@ -2993,7 +2991,6 @@ msgid "Coriander"
 msgstr "Cilantro"
 
 #: src/ingredients.inc:82
-#| msgid "coriandre seeds"
 msgid "Coriandre seeds"
 msgstr "Semillas de cilantro"
 
@@ -3014,7 +3011,6 @@ msgid "Cream cheese"
 msgstr "Crema de queso"
 
 #: src/ingredients.inc:87
-#| msgid "Crushed red peper flakes"
 msgid "Crushed red pepper flakes"
 msgstr "Copos de pimiento rojo triturado"
 
@@ -3182,9 +3178,10 @@ msgstr "Queso gouda"
 msgid "Goulash spices"
 msgstr "Especias para goulash"
 
+# El guanciale son mejillas de cerdo curado italiano
 #: src/ingredients.inc:129
 msgid "Guanciale cubes"
-msgstr ""
+msgstr "Cubos de guanciale"
 
 #: src/ingredients.inc:130
 msgid "Long pasta, e.g. spaghetti"
@@ -3366,10 +3363,13 @@ msgstr "Mezcla de bayas"
 msgid "Mixed frozen bell peppers"
 msgstr "Mezcla de pimientos congelados"
 
+# Traducción oficial de la tienda online:
+# http://www.morinu.com/es/tienda-online/mori-nu-silken-firm-tofu-12-pack.html
 #: src/ingredients.inc:175
 msgid "Mori-nu organic silken tofu (firm)"
-msgstr ""
+msgstr "Mori-nu tofu de seda firme"
 
+# En España setas
 #: src/ingredients.inc:176
 msgid "Mushrooms"
 msgstr "Champiñones"
@@ -4011,7 +4011,6 @@ msgid "no Caster sugar"
 msgstr "no hay azúcar en polvo"
 
 #: src/no-ingredients.inc:52
-#| msgid "no Cheese"
 msgid "no Celery"
 msgstr "no hay apio"
 
@@ -4032,7 +4031,6 @@ msgid "no Cherries, pitted"
 msgstr "no hay cerezas picadas"
 
 #: src/no-ingredients.inc:57
-#| msgid "no cherry tomatoes, halved"
 msgid "no Cherry tomatoes, halved"
 msgstr "no hay tomates cherry partidos por la mitad"
 
@@ -4061,7 +4059,6 @@ msgid "no Chili powder"
 msgstr "no hay chile en polvo"
 
 #: src/no-ingredients.inc:64
-#| msgid "no chili sauce (e.g. sriracha)"
 msgid "no Chili sauce (e.g. sriracha)"
 msgstr "no hay salsa de chile (ej. sriracha)"
 
@@ -4086,7 +4083,6 @@ msgid "no Cilantro"
 msgstr "no hay cilantro"
 
 #: src/no-ingredients.inc:70
-#| msgid "no cilantro leaves"
 msgid "no Cilantro leaves"
 msgstr "no hay hojas de cilantro"
 
@@ -4123,7 +4119,6 @@ msgid "no Coconut water"
 msgstr "no hay agua de coco"
 
 #: src/no-ingredients.inc:79
-#| msgid "no cold water"
 msgid "no Cold water"
 msgstr "no hay agua fría"
 
@@ -4136,7 +4131,6 @@ msgid "no Coriander"
 msgstr "no hay cilantro"
 
 #: src/no-ingredients.inc:82
-#| msgid "no coriandre seeds"
 msgid "no Coriandre seeds"
 msgstr "no hay semillas de cilantro"
 
@@ -4157,7 +4151,6 @@ msgid "no Cream cheese"
 msgstr "no hay crema de queso"
 
 #: src/no-ingredients.inc:87
-#| msgid "no Crushed red peper flakes"
 msgid "no Crushed red pepper flakes"
 msgstr "no hay copos de pimiento rojo triturado"
 
@@ -4322,15 +4315,14 @@ msgid "no Gouda cheese"
 msgstr "no hay queso gouda"
 
 #: src/no-ingredients.inc:128
-#| msgid "no Gouda cheese"
 msgid "no Goulash spices"
 msgstr "no hay especias para goulash"
 
+# Cubos de cerdo
 #: src/no-ingredients.inc:129
-#, fuzzy
 #| msgid "no Gouda cheese"
 msgid "no Guanciale cubes"
-msgstr "no hay queso gouda"
+msgstr "no hay cubos de guanciale"
 
 #: src/no-ingredients.inc:130
 msgid "no Long pasta, e.g. spaghetti"
@@ -4457,7 +4449,6 @@ msgid "no Lemon juice"
 msgstr "no hay zumo de limón"
 
 #: src/no-ingredients.inc:161
-#| msgid "no Lemon juice"
 msgid "no Lemon (untreated)"
 msgstr "no hay limón (sin tratar)"
 
@@ -4513,9 +4504,10 @@ msgstr "no hay bayas mezcla de bayas"
 msgid "no Mixed frozen bell peppers"
 msgstr "no hay mezcla de pimientos congelados"
 
+# Traducción de la tienda oficial
 #: src/no-ingredients.inc:175
 msgid "no Mori-nu organic silken tofu (firm)"
-msgstr ""
+msgstr "no hay Mori-nu tofu de seda firme"
 
 #: src/no-ingredients.inc:176
 msgid "no Mushrooms"
@@ -4538,7 +4530,6 @@ msgid "no Nutmeg"
 msgstr "no hay nuez moscada"
 
 #: src/no-ingredients.inc:181
-#| msgid "no Dry yeast"
 msgid "no Nutritional yeast"
 msgstr "no hay levadura nutricional"
 
