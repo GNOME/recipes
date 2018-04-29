@@ -2,23 +2,23 @@
 # This file is distributed under the same license as the recipes package.
 #
 # José María Martínez <josemar1992@gmail.com>, 2017.
-# Rodrigo <rodhos92@gmail.com>, 2018.
 # Daniel Mustieles <daniel.mustieles@gmail.com>, 2016, 2017, 2018.
+# Rodrigo <rodhos92@gmail.com>, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-25 13:54+0000\n"
-"PO-Revision-Date: 2018-04-27 11:50+0200\n"
-"Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
-"Language-Team: es <gnome-es-list@gnome.org>\n"
+"POT-Creation-Date: 2018-04-27 09:57+0000\n"
+"PO-Revision-Date: 2018-04-27 18:44+0200\n"
+"Last-Translator: Rodrigo <rodhos92@gmail.com>\n"
+"Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #: data/chefs.db.h:3
 msgid "I cook a lot, particularly Italian and Indian."
@@ -204,20 +204,17 @@ msgstr "Extienda la masa sobre el papel vegetal."
 
 #: data/recipes.db.h:12
 msgid "Push the apple wedges into the dough."
-msgstr ""
+msgstr "Empuje los trozos de manzana dentro de la masa."
 
 #: data/recipes.db.h:13
 msgid "Put cinnamon sugar on top."
-msgstr ""
+msgstr "Esparza azúcar con canela por encima."
 
 #: data/recipes.db.h:14
-#, fuzzy
 #| msgid ""
 #| "[timer:00:40:00,Bake]Put in the oven at [temperature:180C] for 40 minutes."
 msgid "[timer:00:45:00][temperature:180C]Bake in the oven."
-msgstr ""
-"[timer:00:40:00,Bake]Póngalo en el horno a [temperature:180C] durante 40 "
-"minutos."
+msgstr "[timer:00:40:00][temperature:180C]Déjelo hornear."
 
 #: data/recipes.db.h:15 data/recipes.db.h:16 data/recipes.db.h:17
 #: data/recipes.db.h:18 data/recipes.db.h:19 data/recipes.db.h:20
@@ -229,7 +226,7 @@ msgstr ""
 #: data/recipes.db.h:767 data/recipes.db.h:768 data/recipes.db.h:769
 #: data/recipes.db.h:770
 msgid "Dough"
-msgstr ""
+msgstr "Masa"
 
 #: data/recipes.db.h:23 data/recipes.db.h:24
 msgid "Apples"
@@ -249,12 +246,17 @@ msgid ""
 "the seeds of the cucumber and grate it into a large bowl. Season with salt "
 "and pepper and leave aside for 10 minutes."
 msgstr ""
+"Para preparar esta receta de salsa griega tzatziki tradicional, quite la "
+"piel y las semillas a un pepino y rállelo en un cuenco grande. Condimente "
+"con sal y pimienta y deje reposar por 10 minutos."
 
 #: data/recipes.db.h:28
 msgid ""
 "    Wrap the grated cucumber in a towel and squeeze, in order to get rid of "
 "the excess water."
 msgstr ""
+"    Envuelva el pepino rallado en una toalla y estruje, para eliminar el "
+"exceso de agua."
 
 #: data/recipes.db.h:29
 msgid ""
@@ -266,6 +268,14 @@ msgid ""
 "rest of the ingredients using a spoon. This will help the garlic to mix "
 "better with the rest of the ingredients)."
 msgstr ""
+"    Montar la salsa tzatziki. En un cuenco, agregue el pepino junto con ajo "
+"picado y aceite de oliva, yogur, 1 a 2 cucharadas de vinagre de vino tinto, "
+"una pizca de sal y mezcle, hasta que los ingredientes se combinen. Guarde la "
+"salsa tzatziki en el refrigerador y sirva siempre fría. (Alternativamente, "
+"si tiene una licuadora, vierta el aceite de oliva y el ajo y mezcle hasta "
+"que estén combinados. Luego mezcle con el resto de los ingredientes con una "
+"cuchara. Esto ayudará a que el ajo se mezcle mejor con el resto de los "
+"ingredientes)."
 
 #: data/recipes.db.h:30
 msgid ""
@@ -273,6 +283,9 @@ msgid ""
 "serve as a delicious dip with some warm pita breads aside, or as a sauce for "
 "Greek-style souvlaki. Enjoy!"
 msgstr ""
+"    Prepare esta tradicional salsa tzatziki para sus amigos y familiares y "
+"sirva como una deliciosa salsa para untar con algunos panes de pita "
+"calientes, o como salsa para el souvlaki al estilo griego. ¡A disfrutar!"
 
 #: data/recipes.db.h:31 data/recipes.db.h:32 data/recipes.db.h:33
 #: data/recipes.db.h:34 data/recipes.db.h:35 data/recipes.db.h:36
@@ -316,7 +329,7 @@ msgstr "Ingredientes"
 
 #: data/recipes.db.h:37
 msgid "Soy Chicken (See Yao Gai)"
-msgstr ""
+msgstr "Pollo a la soja (Consulte Yao Gai)"
 
 #: data/recipes.db.h:38
 msgid ""
@@ -324,21 +337,31 @@ msgid ""
 "then becomes Bok Yao Gai (White Boiled Chicken). Never the less a very easy "
 "way of making a Chinese boiled chicken. (My recipe tested over 20 years)"
 msgstr ""
+"Debe seguir esta receta el pie de la letra. Si no añade la salsa de soja "
+"entonces es Bok Yao Gai (Pollo blanco hervido). Sin embargo es un forma muy "
+"fácil de hacer pollo hervido chino. (He hecho esta receta durante 20 años)"
 
+# Nota del traductor: ¡Advertencia, hacer esto puede extender los gérmenes por toda su cocina y causar sarmonela!
 #: data/recipes.db.h:39
 msgid ""
 "Take your chicken out of the refrigerator an hour before you plan to cook. "
 "You'll want it at room temperature when it hits the pot. Remove the giblets, "
 "and thoroughly rinse the chicken inside and out."
 msgstr ""
+"Saque el pollo del refrigerador una hora antes de que lo vaya a cocinar. Se "
+"necesita que esté a temperatura ambiente cuando lo meta en la cacerola. "
+"Desmenuce y lave cuidadosamente el pollo por dentro y por fuera."
 
 #: data/recipes.db.h:40
 msgid "Add all ingredients into the pot."
-msgstr ""
+msgstr "Agregue todos los ingredientes a la cacerola."
 
+# Notas:
+# échele un ojo suena un poco mal
+# (Editar)
 #: data/recipes.db.h:41
 msgid "Add enough water to cover the chicken. (eye ball it)"
-msgstr ""
+msgstr "Añada agua suficiente hasta que cubra el pollo. (manténgase atento)"
 
 #: data/recipes.db.h:42
 msgid ""
@@ -346,6 +369,9 @@ msgid ""
 "make sure the water covers the chicken completely.Add more water at this "
 "point to cover the chicken completely."
 msgstr ""
+"Haga hervir el agua y lentamente inserte el pollo en la cacerola. Ahora "
+"asegúrese de que el agua cubra completamente al pollo. Agregue más agua si "
+"es necesario."
 
 #: data/recipes.db.h:43
 msgid ""
