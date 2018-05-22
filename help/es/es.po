@@ -1,13 +1,13 @@
 # Spanish translation for recipes.
 # Copyright (C) 2017 recipes's COPYRIGHT HOLDER
 # This file is distributed under the same license as the recipes package.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2017.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2017, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
-"POT-Creation-Date: 2017-08-31 10:10+0000\n"
-"PO-Revision-Date: 2017-08-31 12:11+0200\n"
+"POT-Creation-Date: 2018-03-11 09:08+0000\n"
+"PO-Revision-Date: 2018-05-22 09:29+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -76,9 +76,6 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/add-recipe-description.page:33
-#| msgid ""
-#| "<gui>Gluten free</gui>: Select for recipes that do not include wheat or "
-#| "related grains."
 msgid ""
 "<gui>Gluten-free</gui>: Select for recipes that do not include wheat or "
 "related grains."
@@ -99,8 +96,6 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/add-recipe-description.page:38
-#| msgid ""
-#| "<gui>Nut free</gui>: Select for recipes that do not include any nuts."
 msgid "<gui>Nut-free</gui>: Select for recipes that do not include any nuts."
 msgstr ""
 "<gui>Sin nueces</gui>: seleccionar para recetas que no contienen ningún tipo "
@@ -108,9 +103,6 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/add-recipe-description.page:40
-#| msgid ""
-#| "<gui>Milk free</gui>: Select for recipes that do not include dairy "
-#| "products, such as milk or cheese."
 msgid ""
 "<gui>Milk-free</gui>: Select for recipes that do not include dairy products, "
 "such as milk or cheese."
@@ -333,13 +325,8 @@ msgstr ""
 msgid "Add images to each step"
 msgstr "Añadir imágenes a cada paso"
 
-#. (itstool) path: section/title
-#: C/add-recipe-directions.page:69
-msgid "Images"
-msgstr "Imágenes"
-
 #. (itstool) path: section/p
-#: C/add-recipe-directions.page:70
+#: C/add-recipe-directions.page:69
 msgid ""
 "You can add an image or photo of the finished recipe and also a photo of "
 "each each step of making a recipe. See <link xref=\"add-recipe-images\"/> "
@@ -350,7 +337,7 @@ msgstr ""
 "images\"/> para saber cómo añadir imágenes a su receta."
 
 #. (itstool) path: item/p
-#: C/add-recipe-directions.page:77
+#: C/add-recipe-directions.page:76
 msgid ""
 "To assign one of the photos you have added, you will need to know the "
 "image's number. Press the <gui>Add Image</gui> button at the bottom "
@@ -365,14 +352,14 @@ msgstr ""
 "dos, y así sucesivamente."
 
 #. (itstool) path: item/p
-#: C/add-recipe-directions.page:85
+#: C/add-recipe-directions.page:84
 msgid "Add the tag <cmd>[image:1]</cmd> to add the first image to a step."
 msgstr ""
 "Añada la etiqueta <cmd>[image:1]</cmd> para añadir la primera imagen a un "
 "paso."
 
 #. (itstool) path: item/p
-#: C/add-recipe-directions.page:90
+#: C/add-recipe-directions.page:89
 msgid ""
 "Add additional image tags with the correct number for as many steps as you "
 "wish."
@@ -381,12 +368,12 @@ msgstr ""
 "pasos como quieras."
 
 #. (itstool) path: section/title
-#: C/add-recipe-directions.page:99
+#: C/add-recipe-directions.page:98
 msgid "Temperature"
 msgstr "Temperatura"
 
 #. (itstool) path: section/p
-#: C/add-recipe-directions.page:100
+#: C/add-recipe-directions.page:99
 msgid ""
 "You can add the temperature a step needs to be cooked at by adding a "
 "temperature tag."
@@ -395,7 +382,7 @@ msgstr ""
 "temperatura."
 
 #. (itstool) path: item/p
-#: C/add-recipe-directions.page:104
+#: C/add-recipe-directions.page:103
 msgid ""
 "Add the tag <cmd>[temperature:200C]</cmd>. You can set the temperature in "
 "Celsius with a C or Fahrenheit with an F following the temperature."
@@ -767,13 +754,19 @@ msgstr ""
 msgid "Solutions to common problems with <app>Recipes</app>."
 msgstr "Soluciones a problemas comunes con <app>Recetas</app>."
 
+#. (itstool) path: page/title
 #. (itstool) path: section/title
-#: C/common-problems.page:20
+#: C/common-problems.page:19 C/index.page:46
+msgid "Common Problems"
+msgstr "Problemas comunes"
+
+#. (itstool) path: section/title
+#: C/common-problems.page:22
 msgid "Editing Your Recipes"
 msgstr "Editar sus recetas"
 
 #. (itstool) path: section/p
-#: C/common-problems.page:21
+#: C/common-problems.page:23
 msgid ""
 "If you have change the login or user ID you use to log into your computer, "
 "and you can no longer edit the recipes you have created, you will need to "
@@ -784,7 +777,7 @@ msgstr ""
 "actualizar la base de datos de <app>Recetas</app>."
 
 #. (itstool) path: note/p
-#: C/common-problems.page:26
+#: C/common-problems.page:28
 msgid ""
 "You must have the <sys>dconf-editor</sys> package installed. Be very careful "
 "editing application data in <app>dconf-editor</app>. By editing an "
@@ -797,7 +790,7 @@ msgstr ""
 "correctamente."
 
 #. (itstool) path: section/p
-#: C/common-problems.page:32
+#: C/common-problems.page:34
 msgid ""
 "To update <app>Recipes</app> to use the old user to allow you to edit your "
 "recipes:"
@@ -806,37 +799,36 @@ msgstr ""
 "permitirle editar sus recetas:"
 
 #. (itstool) path: item/p
-#: C/common-problems.page:36
+#: C/common-problems.page:38
 msgid "Open <app>dconf-editor</app>."
 msgstr "Abra <app>dconf-editor</app>."
 
 #. (itstool) path: item/p
-#: C/common-problems.page:39
+#: C/common-problems.page:41
+#| msgid ""
+#| "Select <guiseq><gui>org</gui> <gui>gnome</gui> <gui>recipes</gui> "
+#| "<gui>user</gui></guiseq>"
 msgid ""
 "Select <guiseq><gui>org</gui> <gui>gnome</gui> <gui>recipes</gui> <gui>user</"
-"gui></guiseq>"
+"gui></guiseq>."
 msgstr ""
 "Seleccione <guiseq><gui>org</gui> <gui>gnome</gui> <gui>recipes</gui> "
-"<gui>user</gui></guiseq>"
-
-#. (itstool) path: steps/item
-#: C/common-problems.page:38 C/common-problems.page:45
-msgid "<_:p-1/>."
-msgstr "<_:p-1/>."
+"<gui>user</gui></guiseq>."
 
 #. (itstool) path: item/p
-#: C/common-problems.page:43
+#: C/common-problems.page:45
 msgid "In the <gui>Custom value</gui> field, enter the old user ID."
 msgstr ""
 "En el campo <gui>Custom value</gui> introduzca el ID del anterior usuario."
 
 #. (itstool) path: item/p
-#: C/common-problems.page:46
-msgid "Close <app>dconf-editor</app>"
-msgstr "Cierre <app>dconf-editor</app>"
+#: C/common-problems.page:48
+#| msgid "Close <app>dconf-editor</app>"
+msgid "Close <app>dconf-editor</app>."
+msgstr "Cierre <app>dconf-editor</app>."
 
 #. (itstool) path: item/p
-#: C/common-problems.page:49
+#: C/common-problems.page:51
 msgid ""
 "Open <app>Recipes</app>. You will now be able to open and edit recipes you "
 "have created."
@@ -844,12 +836,12 @@ msgstr ""
 "Abra <app>Recetas</app>. Ya podrá abrir y editar las recetas que ha creado."
 
 #. (itstool) path: section/title
-#: C/common-problems.page:56
+#: C/common-problems.page:58
 msgid "Remove or Edit Included Recipes"
 msgstr "Quitar o editar las recetas incluidas"
 
 #. (itstool) path: section/p
-#: C/common-problems.page:57
+#: C/common-problems.page:59
 msgid ""
 "You can only remove or edit the recipes you create, not the recipes included."
 msgstr ""
@@ -905,8 +897,6 @@ msgstr "Pulse el botón <gui>Compartir</gui> en la esquina superior derecha."
 
 #. (itstool) path: item/p
 #: C/contribute.page:46
-#| msgid ""
-#| "Select <gui>Contribute to GNOME Recipes</gui> in the bottom-right corner."
 msgid "Select <gui>Contribute to Recipes</gui> in the bottom-right corner."
 msgstr ""
 "Elija <gui>Contribuir con Recetas de GNOME</gui> en la esquina inferior "
@@ -1042,11 +1032,6 @@ msgstr ""
 "Cuando haya completado todos los pasos, o para salir del modo manos libres "
 "en cualquier momento, pulse la tecla <key>Esc</key> o el botón <gui>x</gui> "
 "en la esquina superior derecha."
-
-#. (itstool) path: C/cooking.page/page
-#: C/cooking.page:4
-msgid "<_:info-1/> <_:title-2/> <_:p-3/> <_:p-4/>. <_:steps-5/>"
-msgstr "<_:info-1/> <_:title-2/> <_:p-3/> <_:p-4/>. <_:steps-5/>"
 
 #. (itstool) path: info/desc
 #: C/find-recipe.page:8
@@ -1306,9 +1291,6 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:140
-#| msgid ""
-#| "In the top menu bar of <app>Recipes</app>, press the <gui style=\"button"
-#| "\">Cuisines</gui> button"
 msgid ""
 "In the top menu bar of <app>Recipes</app>, press the <gui style=\"button"
 "\">Cuisines</gui> button."
@@ -1353,12 +1335,16 @@ msgstr "Recetas"
 
 #. (itstool) path: info/desc
 #: C/index.page:19
-#| msgid "A recipe manager to hep you cook."
 msgid "A recipe manager to help you cook."
 msgstr "Un gestor de recetas que le ayuda a cocinar."
 
-#. (itstool) path: page/p
+#. (itstool) path: page/title
 #: C/index.page:22
+msgid "<_:media-1/> Recipes"
+msgstr "<_:media-1/> Recetas"
+
+#. (itstool) path: page/p
+#: C/index.page:27
 msgid ""
 "<app>Recipes</app> is an easy to use application that will help you discover "
 "what to cook today, tomorrow, the rest of the week, and for special "
@@ -1367,11 +1353,6 @@ msgstr ""
 "<app>Recetas</app> es una aplicación fácil de usar que le ayudará a "
 "descubrir qué cocinar hoy, mañana, el resto de la semana y en ocasiones "
 "especiales."
-
-#. (itstool) path: page/title
-#: C/index.page:26
-msgid "<_:media-1/> Recipes"
-msgstr "<_:media-1/> Recetas"
 
 #. (itstool) path: section/title
 #: C/index.page:32
@@ -1388,11 +1369,6 @@ msgstr "Cocinar"
 #: C/index.page:41 C/share.page:28
 msgid "Printing and Sharing"
 msgstr "Imprimir y compartir"
-
-#. (itstool) path: section/title
-#: C/index.page:46
-msgid "Common Problems"
-msgstr "Problemas comunes"
 
 #. (itstool) path: p/link
 #: C/legal.xml:5
@@ -1740,10 +1716,6 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/shop.page:62
-#| msgid ""
-#| "The recipes you have added to the shopping list are shown at the top. In "
-#| "the upper right corner of the recipe the serving size is shown. Click the "
-#| "number displayed int he recipe."
 msgid ""
 "The recipes you have added to the shopping list are shown at the top. In the "
 "upper right corner of the recipe the serving size is shown. Click the number "
@@ -1824,3 +1796,12 @@ msgid ""
 msgstr ""
 "Después de hacer la compra, pulse el botón <gui>Compra hecha</gui> para "
 "limpiar su lista de la compra."
+
+#~ msgid "Images"
+#~ msgstr "Imágenes"
+
+#~ msgid "<_:p-1/>."
+#~ msgstr "<_:p-1/>."
+
+#~ msgid "<_:info-1/> <_:title-2/> <_:p-3/> <_:p-4/>. <_:steps-5/>"
+#~ msgstr "<_:info-1/> <_:title-2/> <_:p-3/> <_:p-4/>. <_:steps-5/>"
