@@ -1,0 +1,89 @@
+app-id: org.gnome.RecipesDevel
+runtime: org.gnome.Platform
+runtime-version: 3.28
+sdk: org.gnome.Sdk
+command: gnome-recipes
+tags:
+  - devel
+  - nightly
+desktop-file-name-prefix: (Development)
+
+finish-args:
+  - --filesystem=host
+  - --share=ipc
+  - --share=network
+  - --socket=x11
+  - --socket=wayland
+  - --socket=pulseaudio
+  - --filesystem=host
+  - --filesystem=xdg-run/dconf
+  - --filesystem=~/.config/dconf:ro
+  # Remove to something better for dconf when ready.
+  # See https://github.com/flatpak/flatpak/issues/78
+  - --talk-name=ca.desrt.dconf
+  - --env=DCONF_USER_CONFIG_DIR=.config/dconf
+
+cleanup:
+  - /include
+  - /lib/pkgconfig
+  - /share/pkgconfig
+  - /share/aclocal
+  - /man
+  - /share/man
+  - /share/gtk-doc
+  - /share/vala
+  - \*.la
+  - \*.a
+
+modules:
+  - name: meson
+    buildsystem: simple
+    build-commands:
+      - python3 setup.py install --prefix=/app
+    sources:
+      - type: archive
+        url: https://github.com/mesonbuild/meson/archive/0.46.1.tar.gz
+        sha256: 2d917692d2cc194e12295f00469fbdf3c045e85d0295e5e59ced69115920ffa0
+
+
+  - name: enchant
+    sources:
+      - type: archive
+        url: https://github.com/AbiWord/enchant/releases/download/v2.1.3/enchant-2.1.3.tar.gz
+        sha256: 086f37cdecd42eacd0e1dc291f5410d9ca2c5ed2cd9cd9367729e3d2d18a8550
+    cleanup:
+      - /bin
+      - /share
+
+  - name: gspell
+    sources:
+      - type: git
+        url: https://gitlab.gnome.org/GNOME/gspell.git
+
+  - name: rest
+    sources:
+      - type: archive
+        url: https://download.gnome.org/sources/rest/0.7/rest-0.7.93.tar.xz
+        sha256: c710644455340a44ddc005c645c466f05c0d779993138ea21a62c6082108b216
+
+  - name: gnome-online-accounts
+    sources:
+      - type: git
+        url: https://gitlab.gnome.org/GNOME/gnome-online-accounts
+
+  - name: gnome-autoar
+    sources:
+      - type: git
+        url: https://gitlab.gnome.org/GNOME/gnome-autoar.git
+        tag: 0.2.3
+
+  - name: recipes
+    buildsystem: meson
+    builddir: true
+    build-options:
+      config-opts:
+        - --libdir=/app/lib
+        - -Dprofile=development
+    sources:
+      - type: git
+        url: https://gitlab.gnome.org/GNOME/recipes.git
