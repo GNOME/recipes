@@ -5,7 +5,34 @@ project('gnome-recipes', 'c',
 i18n = import('i18n')
 gnome = import('gnome')
 
+# Configuration
 conf = configuration_data()
+
+if get_option('profile') == 'development'
+  profile = 'Devel'
+  name_suffix = ' (Development Snapshot)'
+elif get_option('profile') == 'stable-flatpak'
+  profile = 'StableFlatpak'
+  version_array = meson.project_version().split('.')
+  name_suffix = ' (@0@.@1@ Flatpak)'.format(version_array[0], version_array[1])
+else
+  profile = ''
+  name_suffix = ''
+endif
+
+application_id = 'org.gnome.Recipes@0@'.format(profile)
+
+conf.set_quoted('VERSION', '@0@-@VCS_TAG@'.format(meson.project_version()))
+conf.set_quoted('PACKAGE_VERSION', meson.project_version())
+conf.set_quoted('GETTEXT_PACKAGE', 'gnome-recipes')
+conf.set_quoted('LOCALEDIR', join_paths(prefix, get_option('localedir')))
+conf.set_quoted('NAUTILUS_DATADIR', join_paths(datadir, 'gnome-recipes'))
+conf.set_quoted('NAUTILUS_EXTENSIONDIR', join_paths(prefix, extensiondir))
+conf.set_quoted('APPLICATION_ID', application_id)
+conf.set_quoted('INSTALL_PREFIX', prefix)
+conf.set_quoted('PROFILE', profile)
+conf.set_quoted('NAME_SUFFIX', name_suffix)
+
 
 # Needed to find config.h
 top_inc = include_directories('.')
