@@ -47,7 +47,7 @@ install_data('org.gnome.Recipes-search-provider.ini',
 msgfmt = find_program('msgfmt')
 
 custom_target('desktop-file',
-              output: 'org.gnome.Recipes.desktop',
+              output: '@@@.desktop'.format(application_id),
               input: files('org.gnome.Recipes.desktop.in'),
               install: true,
               install_dir: join_paths([datadir,'applications']),
