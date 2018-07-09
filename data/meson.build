@@ -62,16 +62,30 @@ custom_target('desktop-file',
               install_dir: join_paths([datadir,'applications']),
               command: [msgfmt, '--desktop', '-d', '../po', '--template', '@INPUT@', '-o', '@OUTPUT@'])
 
+
+appdata_conf = configuration_data()
+
+appdata_conf.set('appid', application_id)
+
 custom_target('appdata',
-              output: 'org.gnome.Recipes.appdata.xml',
-              input: files('appdata/org.gnome.Recipes.appdata.xml.in'),
+              output: '@@@.appdata.xml'.format(application_id),
+              input: configure_file(
+                input: files(join_paths('appdata', 'org.gnome.Recipes.appdata.xml.in.in')),
+                output: join_paths('appdata', 'org.gnome.Recipes.appdata.xml.in'),
+                configuration: appdata_conf
+              ),
               install: true,
               install_dir: join_paths([datadir,'metainfo']),
               command: [msgfmt, '--xml', '-d', '../po', '--template', '@INPUT@', '-o', '@OUTPUT@'])
 
+service_conf = configuration_data()
+
+service_conf.set('appid', application_id)
+service_conf.set('bindir', join_paths(prefix, bindir))
+
 configure_file(input: 'org.gnome.Recipes.service.in',
-               output: 'org.gnome.Recipes.service',
-               configuration: conf,
+               output: '@@@.service'.format(application_id),
+               configuration: service_conf,
                install_dir: join_paths([datadir,'dbus-1/services']))
 
 gnome.compile_schemas(build_by_default: true)
