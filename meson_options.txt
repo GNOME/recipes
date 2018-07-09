@@ -1,3 +1,13 @@
 option('autoar', type: 'combo', choices: ['auto', 'yes', 'no'], value: 'auto', description: 'Use gnome-autoar')
 option('gspell', type: 'combo', choices: ['auto', 'yes', 'no'], value: 'auto', description: 'Use gspell')
 option('canberra', type: 'combo', choices: ['auto', 'yes', 'no'], value: 'auto', description: 'Use libcanberra')
+option(
+  'profile',
+  type: 'combo',
+  choices: [
+    'default',
+    'stable-flatpak',
+    'development'
+  ],
+  value: 'default'
+)
