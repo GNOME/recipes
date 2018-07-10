@@ -104,7 +104,7 @@ install_data('org.gnome.Recipes.gschema.xml',
 
 foreach icon_size: ['16x16', '24x24', '32x32', '48x48', '512x512']
   icondir = join_paths('icons', icon_size)
-  icon_destdir = join_paths('icons', 'hicolor', icon_size, 'app')
+  icon_destdir = join_paths('icons', 'hicolor', icon_size, 'apps')
 
   install_data(
     join_paths(icondir, 'org.gnome.Recipes.png'),
