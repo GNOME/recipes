@@ -80,7 +80,7 @@ custom_target('appdata',
               output: '@@@.appdata.xml'.format(application_id),
               input: configure_file(
                 input: files(join_paths('appdata', 'org.gnome.Recipes.appdata.xml.in.in')),
-                output: join_paths('appdata', 'org.gnome.Recipes.appdata.xml.in'),
+                output: 'org.gnome.Recipes.appdata.xml.in',
                 configuration: appdata_conf
               ),
               install: true,
