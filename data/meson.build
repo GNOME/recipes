@@ -77,7 +77,7 @@ appdata_conf = configuration_data()
 appdata_conf.set('appid', application_id)
 
 custom_target('appdata',
-              output: '@@@.appdata.xml'.format(application_id),
+              output: '@0@.appdata.xml'.format(application_id),
               input: configure_file(
                 input: files(join_paths('appdata', 'org.gnome.Recipes.appdata.xml.in.in')),
                 output: 'org.gnome.Recipes.appdata.xml.in',
