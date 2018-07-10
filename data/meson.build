@@ -103,25 +103,27 @@ install_data('org.gnome.Recipes.gschema.xml',
              install_dir: schemadir)
 
 foreach icon_size: ['16x16', '24x24', '32x32', '48x48', '512x512']
-  icondir = join_paths('icons', 'hicolor', icon_size)
+  icondir = join_paths('icons', icon_size)
+  icondest_dir = join_paths('icons', 'hicolor', icon_size, 'app')
 
   install_data(
     join_paths(icondir, 'org.gnome.Recipes.png'),
-    install_dir: join_paths(datadir, icondir),
+    install_dir: join_paths(datadir, icon_destdir),
     rename: '@0@.png'.format(application_id)
   )
 
   install_data(
     join_paths(icondir, 'org.gnome.Recipes-symbolic.symbolic.png'),
-    install_dir: join_paths(datadir, icondir, 'apps'),
+    install_dir: join_paths(datadir, icon_destdir),
     rename: '@0@-symbolic.symbolic.png'.format(application_id)
   )
 endforeach
 
-icondir = join_paths('icons', 'hicolor', 'symbolic')
+icondir = join_paths('icons', 'symbolic')
+icondest_dir = join_paths('icons', 'hicolor', 'symbolic', 'apps')
 
 install_data(
   join_paths(icondir, 'org.gnome.Recipes-symbolic.svg'),
-  install_dir: join_paths(datadir, icondir, 'apps'),
+  install_dir: join_paths(datadir, icon_destdir),
   rename: '@0@-symbolic.svg'.format(application_id)
 )
