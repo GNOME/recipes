@@ -60,7 +60,7 @@ desktop_conf = configuration_data()
 desktop_conf.set('icon', application_id)
 
 custom_target('desktop-file',
-              output: '@@@.desktop'.format(application_id),
+              output: '@0@.desktop'.format(application_id),
               input: files('org.gnome.Recipes.desktop.in'),
               input: configure_file(
                 input: files('org.gnome.Recipes.desktop.in.in'),
