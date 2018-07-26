@@ -71,6 +71,7 @@
         },
         {
             "name": "gnome-online-accounts",
+            "config-opts" : [ "--disable-Werror" ],
             "sources": [
                     {
                         "type": "git",
