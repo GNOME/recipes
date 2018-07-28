@@ -8,11 +8,11 @@
 #    - ninja -C build test
 
 flatpak:
-    image: registry.gitlab.gnome.org/gnome/gnome-runtime-images/gnome:3.28
+    image: registry.gitlab.gnome.org/gnome/gnome-runtime-images/gnome:master
     stage: test
     variables:
         BUNDLE: "gnome-recipes-dev.flatpak"
-        MANIFEST_PATH: "flatpak/org.gnome.Recipes-mr.yml"
+        MANIFEST_PATH: "flatpak/org.gnome.Recipes-mr.json"
         MESON_ARGS: "-Dprofile=development -Dtests=all"
         FLATPAK_MODULE: "recipes"
         RUNTIME_REPO: "https://sdk.gnome.org/gnome.flatpakrepo"
