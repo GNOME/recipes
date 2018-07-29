@@ -11,6 +11,7 @@ flatpak:
     image: registry.gitlab.gnome.org/gnome/gnome-runtime-images/gnome:master
     stage: test
     variables:
+        GIT_SUBMODULE_STRATEGY: normal
         BUNDLE: "gnome-recipes-dev.flatpak"
         MANIFEST_PATH: "flatpak/org.gnome.Recipes-mr.json"
         MESON_ARGS: "-Dprofile=development -Dtests=all"
