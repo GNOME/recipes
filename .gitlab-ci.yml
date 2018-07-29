@@ -6,3 +6,35 @@ build-fedora:
     - meson build
     - ninja -C build
     - ninja -C build test
+
+flatpak:
+    image: registry.gitlab.gnome.org/gnome/gnome-runtime-images/gnome:master
+    stage: test
+    variables:
+        GIT_SUBMODULE_STRATEGY: normal
+        BUNDLE: "gnome-recipes-dev.flatpak"
+        MANIFEST_PATH: "flatpak/org.gnome.Recipes-devel.json"
+        MESON_ARGS: "-Dprofile=development -Dtests=all"
+        FLATPAK_MODULE: "recipes"
+        RUNTIME_REPO: "https://sdk.gnome.org/gnome.flatpakrepo"
+        DBUS_ID: "org.gnome.RecipesDevel"
+
+    script:
+        - flatpak-builder --stop-at=${FLATPAK_MODULE} app ${MANIFEST_PATH}
+        # Make sure to keep this in sync with the Flatpak manifest, all arguments
+        # are passed except the config-args because we build it ourselves
+        - flatpak build app meson --prefix=/app ${MESON_ARGS} _build
+        - flatpak build app ninja -C _build install
+        - flatpak-builder --finish-only --repo=repo app ${MANIFEST_PATH}
+        # Run automatic tests inside the Flatpak env
+        - xvfb-run -a -s "-screen 0 1024x768x24" flatpak build app ninja -C _build test
+        # Generate a Flatpak bundle
+        - flatpak build-bundle repo ${BUNDLE} --runtime-repo=${RUNTIME_REPO} ${DBUS_ID}
+    artifacts:
+        paths:
+            - ${BUNDLE}
+            - _build/meson-logs/
+        expire_in: 30 days
+    cache:
+        paths:
+            - .flatpak-builder/cache
