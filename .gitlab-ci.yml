@@ -14,7 +14,7 @@ flatpak:
         GIT_SUBMODULE_STRATEGY: normal
         BUNDLE: "gnome-recipes-dev.flatpak"
         MANIFEST_PATH: "flatpak/org.gnome.Recipes-mr.json"
-        MESON_ARGS: "-Dprofile=development -Dtests=all"
+        MESON_ARGS: "-Dprofile=development -Dtests=all --buildtype=debug"
         FLATPAK_MODULE: "recipes"
         RUNTIME_REPO: "https://sdk.gnome.org/gnome.flatpakrepo"
         DBUS_ID: "org.gnome.RecipesDevel"
