@@ -27,10 +27,6 @@ endif
 
 application_id = 'org.gnome.Recipes@0@'.format(profile)
 
-conf.set_quoted('VERSION', '@0@-@VCS_TAG@'.format(meson.project_version()))
-conf.set_quoted('PACKAGE_VERSION', meson.project_version())
-conf.set_quoted('GETTEXT_PACKAGE', 'gnome-recipes')
-conf.set_quoted('LOCALEDIR', join_paths(prefix, get_option('localedir')))
 conf.set_quoted('APPLICATION_ID', application_id)
 conf.set_quoted('INSTALL_PREFIX', prefix)
 conf.set_quoted('PROFILE', profile)
