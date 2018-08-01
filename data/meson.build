@@ -70,20 +70,26 @@ gnome.compile_schemas(build_by_default: true)
 install_data('org.gnome.Recipes.gschema.xml',
              install_dir: schemadir)
 
-install_data(   'icons/16x16/org.gnome.Recipes.png',
-                'icons/16x16/org.gnome.Recipes-symbolic.symbolic.png',
-                install_dir: join_paths([datadir,'icons/hicolor/16x16/apps']))
-install_data(   'icons/24x24/org.gnome.Recipes.png',
-                'icons/24x24/org.gnome.Recipes-symbolic.symbolic.png',
-                install_dir: join_paths([datadir,'icons/hicolor/24x24/apps']))
-install_data(   'icons/32x32/org.gnome.Recipes.png',
-                'icons/32x32/org.gnome.Recipes-symbolic.symbolic.png',
-                install_dir: join_paths([datadir,'icons/hicolor/32x32/apps']))
-install_data(   'icons/48x48/org.gnome.Recipes.png',
-                'icons/48x48/org.gnome.Recipes-symbolic.symbolic.png',
-                install_dir: join_paths([datadir,'icons/hicolor/48x48/apps']))
-install_data(   'icons/512x512/org.gnome.Recipes.png',
-                'icons/512x512/org.gnome.Recipes-symbolic.symbolic.png',
-                install_dir: join_paths([datadir,'icons/hicolor/512x512/apps']))
-install_data(   'icons/symbolic/org.gnome.Recipes-symbolic.svg',
-                install_dir: join_paths([datadir,'icons/hicolor/symbolic/apps']))
+foreach icon_size: ['16x16', '24x24', '32x32', '48x48', '512x512']
+  icondir = join_paths('icons', 'hicolor', icon_size, 'apps')
+
+  install_data(
+    join_paths(icondir, 'org.gnome.Recipes.png'),
+    install_dir: join_paths(datadir, icondir),
+    rename: '@0@.png'.format(application_id)
+  )
+
+  install_data(
+    join_paths(icondir, 'org.gnome.Recipes-symbolic.symbolic.png'),
+    install_dir: join_paths(datadir, icondir),
+    rename: '@0@-symbolic.symbolic.png'.format(application_id)
+  )
+endforeach
+
+icondir = join_paths('icons', 'hicolor', 'symbolic', 'apps')
+
+install_data(
+  join_paths(icondir, 'org.gnome.Recipes-symbolic.svg'),
+  install_dir: join_paths(datadir, icondir),
+  rename: '@0@-symbolic.svg'.format(application_id)
+)
