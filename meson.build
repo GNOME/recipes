@@ -5,7 +5,19 @@ project('gnome-recipes', 'c',
 i18n = import('i18n')
 gnome = import('gnome')
 
+if get_option('profile') == 'development'
+  profile = 'Devel'
+  name_suffix = ' (Development)'
+else
+  profile = ''
+  name_suffix = ''
+endif
+
+application_id = 'org.gnome.Recipes@0@'.format(profile)
+
 conf = configuration_data()
+
+conf.set_quoted('PROFILE', profile)
 
 # Needed to find config.h
 top_inc = include_directories('.')
@@ -80,17 +92,6 @@ if get_option('canberra') != 'no'
   endif
 endif
 
-deps = [ dependency('gtk+-3.0', version : '>=3.22'),
-         dependency('gmodule-export-2.0'),
-         dependency('libsoup-2.4'),
-         dependency('goa-1.0'),
-         dependency('rest-0.7'),
-         dependency('json-glib-1.0'),
-         autoar_dep,
-         gspell_dep,
-         canberra_dep,
-         libgd_dep ]
-
 datadir = join_paths([ get_option('prefix'),
                        get_option('datadir') ])
 pkgdatadir = join_paths([ get_option('prefix'),
@@ -117,7 +118,29 @@ conf.set_quoted('bindir', bindir)
 # Must be unquoted for dbus service file
 conf.set('BINDIR', bindir)
 
-configure_file(output : 'config.h', configuration : conf)
+config_h = declare_dependency(
+  sources: vcs_tag(
+    command: ['git', 'rev-parse', '--short', 'HEAD'],
+    fallback: get_option('profile') != 'default'? 'devel' : 'stable',
+    input: configure_file(
+      output: 'config.h.in',
+      configuration: conf
+    ),
+    output: 'config.h'
+  )
+)
+
+deps = [ dependency('gtk+-3.0', version : '>=3.22'),
+         dependency('gmodule-export-2.0'),
+         dependency('libsoup-2.4'),
+         dependency('goa-1.0'),
+         dependency('rest-0.7'),
+         dependency('json-glib-1.0'),
+         autoar_dep,
+         gspell_dep,
+         canberra_dep,
+         libgd_dep,
+         config_h ]
 
 subdir('src')
 subdir('tools')
