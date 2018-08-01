@@ -41,8 +41,15 @@ install_data('chefs.db',
 install_data('org.gnome.Recipes-mime.xml',
              install_dir: join_paths([datadir, 'mime/packages']))
 
-install_data('org.gnome.Recipes-search-provider.ini',
-             install_dir: join_paths([datadir, 'gnome-shell/search-providers']))
+search_provider_conf = configuration_data()
+search_provider_conf.set('appid', application_id)
+search_provider_conf.set('profile', profile)
+configure_file(
+  configuration: search_provider_conf,
+  input: files('org.gnome.Recipes.search-provider.ini.in'),
+  install_dir: join_paths(datadir, 'gnome-shell', 'search-providers'),
+  output: '@0@.search-provider.ini'.format(application_id)
+)
 
 po_dir = join_paths(meson.source_root(), 'po')
 
