@@ -44,14 +44,23 @@ install_data('org.gnome.Recipes-mime.xml',
 install_data('org.gnome.Recipes-search-provider.ini',
              install_dir: join_paths([datadir, 'gnome-shell/search-providers']))
 
-msgfmt = find_program('msgfmt')
+po_dir = join_paths(meson.source_root(), 'po')
 
-custom_target('desktop-file',
-              output: 'org.gnome.Recipes.desktop',
-              input: files('org.gnome.Recipes.desktop.in'),
-              install: true,
-              install_dir: join_paths([datadir,'applications']),
-              command: [msgfmt, '--desktop', '-d', '../po', '--template', '@INPUT@', '-o', '@OUTPUT@'])
+desktop_conf = configuration_data()
+desktop_conf.set('icon', application_id)
+desktop = i18n.merge_file(
+  'desktop',
+  input: configure_file(
+    input: files('org.gnome.Recipes.desktop.in.in'),
+    output: 'org.gnome.Recipes.desktop.in',
+    configuration: desktop_conf
+  ),
+  output: '@0@.desktop'.format(application_id),
+  install: true,
+  install_dir: desktopdir,
+  po_dir: po_dir,
+  type: 'desktop'
+)
 
 custom_target('appdata',
               output: 'org.gnome.Recipes.appdata.xml',
