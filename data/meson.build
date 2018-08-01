@@ -62,12 +62,20 @@ desktop = i18n.merge_file(
   type: 'desktop'
 )
 
-custom_target('appdata',
-              output: 'org.gnome.Recipes.appdata.xml',
-              input: files('appdata/org.gnome.Recipes.appdata.xml.in'),
-              install: true,
-              install_dir: join_paths([datadir,'metainfo']),
-              command: [msgfmt, '--xml', '-d', '../po', '--template', '@INPUT@', '-o', '@OUTPUT@'])
+appdata_conf = configuration_data()
+appdata_conf.set('appid', application_id)
+appdata = i18n.merge_file(
+  'appdata',
+  input: configure_file(
+    input: files('appdata/org.gnome.Recipes.appdata.xml.in.in'),
+    output: 'org.gnome.Recipes.appdata.xml.in',
+    configuration: appdata_conf
+  ),
+  output: '@0@.appdata.xml'.format(application_id),
+  install: true,
+  install_dir: join_paths(datadir, 'metainfo'),
+  po_dir: po_dir
+)
 
 configure_file(input: 'org.gnome.Recipes.service.in',
                output: 'org.gnome.Recipes.service',
