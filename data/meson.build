@@ -77,10 +77,15 @@ appdata = i18n.merge_file(
   po_dir: po_dir
 )
 
-configure_file(input: 'org.gnome.Recipes.service.in',
-               output: 'org.gnome.Recipes.service',
-               configuration: conf,
-               install_dir: join_paths([datadir,'dbus-1/services']))
+service_conf = configuration_data()
+service_conf.set('appid', application_id)
+service_conf.set('bindir', join_paths(prefix, bindir))
+configure_file(
+  input: 'org.gnome.Recipes.service.in',
+  output: '@0@.service'.format(application_id),
+  configuration: service_conf,
+  install_dir: servicedir
+)
 
 gnome.compile_schemas(build_by_default: true)
 
