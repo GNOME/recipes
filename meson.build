@@ -92,6 +92,7 @@ if get_option('canberra') != 'no'
   endif
 endif
 
+prefix = get_option('prefix')
 datadir = join_paths([ get_option('prefix'),
                        get_option('datadir') ])
 pkgdatadir = join_paths([ get_option('prefix'),
@@ -100,6 +101,7 @@ pkgdatadir = join_paths([ get_option('prefix'),
 bindir = join_paths([ get_option('prefix'), 'bin' ])
 schemadir = join_paths([ datadir, 'glib-2.0', 'schemas' ])
 desktopdir = join_paths(datadir, 'applications')
+servicedir = join_paths(datadir, 'dbus-1', 'services')
 
 conf.set('G_LOG_USE_STRUCTURED', true)
 conf.set_quoted('G_LOG_DOMAIN', 'org.gnome.Recipes')
