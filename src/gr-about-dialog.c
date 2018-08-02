@@ -898,13 +898,14 @@ gr_about_dialog_new (void)
         GrRecipeStore *store;
 
         logo = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
-                                         "org.gnome.Recipes",
+                                         APPLICATION_ID,
                                          256,
                                          GTK_ICON_LOOKUP_FORCE_SIZE,
                                          NULL);
 
+        char *program_name = g_strconcat (_("Recipes"), NAME_SUFFIX, NULL);
         about = g_object_new (GR_TYPE_ABOUT_DIALOG,
-                              "program-name", _("Recipes"),
+                              "program-name", program_name,
                               "version", get_version (),
                               "copyright", "© 2016, 2017 Matthias Clasen",
                               "license-type", GTK_LICENSE_GPL_3_0,

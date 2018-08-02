@@ -276,7 +276,7 @@ gr_shell_search_provider_register (GrShellSearchProvider  *self,
 {
         return g_dbus_interface_skeleton_export (G_DBUS_INTERFACE_SKELETON (self->skeleton),
                                                  connection,
-                                                 "/org/gnome/Recipes/SearchProvider",
+                                                 "/org/gnome/Recipes" PROFILE "/SearchProvider",
                                                  error);
 }
 
