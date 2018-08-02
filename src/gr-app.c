@@ -516,7 +516,7 @@ GrApp *
 gr_app_new (void)
 {
         return g_object_new (GR_TYPE_APP,
-                             "application-id", "org.gnome.Recipes",
+                             "application-id", APPLICATION_ID,
                              "flags", G_APPLICATION_HANDLES_OPEN | G_APPLICATION_CAN_OVERRIDE_APP_ID,
                              NULL);
 }

@@ -113,6 +113,8 @@ conf.set_quoted('PKGDATADIR', pkgdatadir)
 conf.set_quoted('LOCALEDIR', join_paths([ get_option('prefix'),
                                           get_option('datadir'),
                                           'locale' ]))
+conf.set_quoted('APPLICATION_ID', application_id)
+conf.set_quoted('NAME_SUFFIX', name_suffix)
 
 # Used while generating cuisine.css
 conf.set_quoted('pkgdatadir', pkgdatadir)
