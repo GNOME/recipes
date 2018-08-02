@@ -816,7 +816,7 @@ get_version (void)
         const char *p = strrchr (PACKAGE_VERSION, '.');
 
         if (p && (atoi (p + 1) % 2 == 1))
-                return COMMIT_ID;
+                return VERSION;
         else
                 return PACKAGE_VERSION;
 }
