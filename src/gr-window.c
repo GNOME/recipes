@@ -556,7 +556,17 @@ window_delete_handler (GtkWidget *widget)
 GrWindow *
 gr_window_new (GrApp *app)
 {
-        return g_object_new (GR_TYPE_WINDOW, "application", app, NULL);
+        GrWindow *win =  g_object_new (GR_TYPE_WINDOW, "application", app, NULL);
+        char *application_id = g_application_get_application_id (G_APPLICATION (app));
+        if (g_strcmp0 (application_id, "org.gnome.RecipesDevel") == 0)
+        {
+            GtkStyleContext *style_context;
+
+            style_context = gtk_widget_get_style_context (GTK_WIDGET (win));
+            gtk_style_context_add_class (style_context, "devel");
+        }
+
+        return win;
 }
 
 typedef struct {
