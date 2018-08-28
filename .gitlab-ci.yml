@@ -6,3 +6,6 @@ build-fedora:
     - meson build
     - ninja -C build
     - ninja -C build test
+
+variables:
+  GIT_SUBMODULE_STRATEGY: normal
