@@ -1,13 +1,13 @@
 # Catalan translation for recipes.
 # Copyright (C) 2017 recipes's COPYRIGHT HOLDER
 # This file is distributed under the same license as the recipes package.
-# Jordi Mas i Hernàndez <jmas@softcatala.org>, 2017.
+# Jordi Mas i Hernàndez <jmas@softcatala.org>, 2017, 2018
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-19 23:04-0400\n"
+"POT-Creation-Date: 2018-06-23 14:22+0000\n"
 "PO-Revision-Date: 2017-06-03 07:04+0200\n"
 "Last-Translator: \n"
 "Language-Team: Catalan <gnome@llistes.softcatala.org>\n"
@@ -29,8 +29,7 @@ msgstr "Receptes"
 msgid "GNOME cooks unite!"
 msgstr "Cuiners del GNOME uniu-vos"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon
-#. file name)!
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Recipes.desktop.in:7
 msgid "org.gnome.Recipes"
 msgstr "org.gnome.Recipes"
@@ -41,8 +40,8 @@ msgstr "Al GNOME li encanta cuinar"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:9
 msgid ""
-"Recipes is an easy-to-use application that will help you to discover what to"
-" cook today, tomorrow, the rest of the week and for your special occasions."
+"Recipes is an easy-to-use application that will help you to discover what to "
+"cook today, tomorrow, the rest of the week and for your special occasions."
 msgstr ""
 "El Receptes és una aplicació fàcil d'utilitzar que us ajudarà a descobrir "
 "què cuinar avui, demà, la resta de la setmana o en les seves ocasions "
@@ -50,8 +49,8 @@ msgstr ""
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:13
 msgid ""
-"Recipes comes with a collection of recipes that have been collected by GNOME"
-" contributors from all over the world. It also lets you store your own "
+"Recipes comes with a collection of recipes that have been collected by GNOME "
+"contributors from all over the world. It also lets you store your own "
 "recipes and share them with your friends."
 msgstr ""
 "El Receptes inclou una col·lecció de receptes que han estat recollides pels "
@@ -175,8 +174,8 @@ msgstr "Llista de la compra"
 
 #: data/org.gnome.Recipes.gschema.xml:63
 msgid ""
-"The shopping list. Each entry in the dictionary maps the ID of a recipe to a"
-" serving count."
+"The shopping list. Each entry in the dictionary maps the ID of a recipe to a "
+"serving count."
 msgstr ""
 "Llista de la compra. Cada entrada del diccionari mapeja el ID d'una recepta "
 "al nombre de racions."
@@ -187,8 +186,7 @@ msgstr "Ingredients que s'han retirat de la llista de la compra"
 
 #: data/org.gnome.Recipes.gschema.xml:71
 msgid "The names of ingredients that were removed from the shopping list."
-msgstr ""
-"Els noms dels ingredients que s'han retirat de la llista de la compra."
+msgstr "Els noms dels ingredients que s'han retirat de la llista de la compra."
 
 #: data/org.gnome.Recipes.gschema.xml:77
 msgid "The list of recipes to be exported"
@@ -213,8 +211,7 @@ msgid ""
 "locale to decide."
 msgstr ""
 "Configuració en la qual s'han de mostrar les unitats de temperatura. Per "
-"defecte és 'locale', cosa que significa que s'usa la categoria "
-"LC_MEASUREMENT"
+"defecte és 'locale', cosa que significa que s'usa la categoria LC_MEASUREMENT"
 
 #: data/org.gnome.Recipes.gschema.xml:92
 msgid "By which key to sort lists."
@@ -235,7 +232,7 @@ msgid ""
 "The setting determines whether the surprise dialog should be shown on "
 "startup."
 msgstr ""
-"La configuració determina si s'ha de mostrar el diàleg sorpresa al iniciar "
+"La configuració determina si s'ha de mostrar el diàleg sorpresa a l'iniciar "
 "l'aplicatiu."
 
 #: data/org.gnome.Recipes.gschema.xml:106
@@ -973,12 +970,11 @@ msgstr ""
 #: src/recipe-surprise.ui:68
 msgid ""
 "Recipes is a present to GNOME for its 20th birthday. We invite the GNOME "
-"community all over the world to share recipes and enjoy a good meal "
-"together."
+"community all over the world to share recipes and enjoy a good meal together."
 msgstr ""
-"Recipes és un regal per a GNOME pel sue 20è aniversari. Convidem a la "
-"comunitat de GNOME de tot el món a compartir receptes i gaudir d'un bon àpat"
-" junts."
+"Recipes és un regal per a GNOME pel seu 20è aniversari. Convidem a la "
+"comunitat de GNOME de tot el món a compartir receptes i gaudir d'un bon àpat "
+"junts."
 
 #: src/recipe-surprise.ui:79
 msgid "Let’s Party"
@@ -1104,7 +1100,7 @@ msgstr "Receptes per"
 #: src/gr-account.c:111
 #, c-format
 msgid "Got an error from Account portal"
-msgstr "Error des del del Compte del portal"
+msgstr "Error des del compte del portal"
 
 #: src/gr-account.c:162
 msgid ""
@@ -1272,7 +1268,7 @@ msgstr ""
 "d'ingredients i estils de cuina. Els diferents estils van continuar "
 "expandint-se fins als segles XIX i XX, de forma proporcional a l'afluència "
 "d'immigrants de les diferents nacions estrangeres; tal influx va provocar "
-"una rica diversitat en les preparacions culinaries a tot el país."
+"una rica diversitat en les preparacions culinàries a tot el país."
 
 #: src/gr-cuisine.c:76
 msgid ""
@@ -1316,15 +1312,15 @@ msgstr ""
 "fortament influenciat per les tradicions religioses i culturals. La cuina "
 "del Nord de l'índia també hi ha tingut influències de l'Orient Mitjà i de "
 "l'Àsia Central pels anys de govern de l'imperi Mogol. La cuina índia ha, i "
-"continua evolucionant com a conseqüència de les interaccions culturals de la"
-" nació amb altres societats."
+"continua evolucionant com a conseqüència de les interaccions culturals de la "
+"nació amb altres societats."
 
 #: src/gr-cuisine.c:92
 msgid ""
 "Italian cuisine is characterized by its simplicity, with many dishes having "
-"only four to eight ingredients. Italian cooks rely chiefly on the quality of"
-" the ingredients rather than on elaborate preparation. Ingredients and "
-"dishes vary by region. Many dishes that were once regional, however, have "
+"only four to eight ingredients. Italian cooks rely chiefly on the quality of "
+"the ingredients rather than on elaborate preparation. Ingredients and dishes "
+"vary by region. Many dishes that were once regional, however, have "
 "proliferated with variations throughout the country."
 msgstr ""
 "La cuina italiana es caracteritza per la seva senzillesa, amb molts plats "
@@ -1347,26 +1343,25 @@ msgid ""
 "across the country."
 msgstr ""
 "La cuina francesa va ser sistematitzada al segle XX per Auguste Escoffier "
-"per convertir-se en l'alta cuina moderna; Escoffier, tanmateix, va abandonar"
-" gran part del caràcter culinari local que es trobava a les regions de "
-"França i es considerava difícil d'executar a la cuina casolana. a A partir "
-"del segle XX, el gastro-turisme i la guia Michelin van ajudar a "
-"familiaritzar-se amb la rica cuina burgesa i camperola. La cuina gascona "
-"també ha tingut una gran influència sobre la cuina del sud-oest de França. "
-"Molts plats que havien estat regionals han proliferat en variacions a tot el"
-" país."
+"per convertir-se en l'alta cuina moderna; Escoffier, tanmateix, va abandonar "
+"gran part del caràcter culinari local que es trobava a les regions de França "
+"i es considerava difícil d'executar a la cuina casolana. a A partir del "
+"segle XX, el gastro-turisme i la guia Michelin van ajudar a familiaritzar-se "
+"amb la rica cuina burgesa i camperola. La cuina gascona també ha tingut una "
+"gran influència sobre la cuina del sud-oest de França. Molts plats que "
+"havien estat regionals han proliferat en variacions a tot el país."
 
 #: src/gr-cuisine.c:103
 msgid ""
 "Contemporary Greek cookery makes wide use of vegetables, olive oil, grains, "
 "fish, wine, and meat (white and red, including lamb, poultry, rabbit and "
 "pork). Other important ingredients include olives, cheese, eggplant "
-"(aubergine), zucchini (courgette), lemon juice, vegetables, herbs, bread and"
-" yoghurt. The most commonly used grain is wheat; barley is also used. Common"
-" dessert ingredients include nuts, honey, fruits, and filo pastry."
+"(aubergine), zucchini (courgette), lemon juice, vegetables, herbs, bread and "
+"yoghurt. The most commonly used grain is wheat; barley is also used. Common "
+"dessert ingredients include nuts, honey, fruits, and filo pastry."
 msgstr ""
-"La cuina grega contemporània fa un ús ampli de verdures, oli d'oliva, grans,"
-" peix, vi i carn (blanca i vermella, incloent xai, aus, conill i porc). "
+"La cuina grega contemporània fa un ús ampli de verdures, oli d'oliva, grans, "
+"peix, vi i carn (blanca i vermella, incloent xai, aus, conill i porc). "
 "Altres ingredients importants inclouen olives, formatge, albergínia, "
 "carbassó, suc de llimona, verdures, herbes, pa i iogurt. El gra més "
 "utilitzat és el blat; També s'utilitza l'ordi. Els ingredients de postres "
@@ -1383,9 +1378,9 @@ msgstr ""
 #: src/gr-cuisine.c:109
 msgid ""
 "Mexican cuisine is primarily a fusion of indigenous Mesoamerican cooking "
-"with European, especially Spanish, elements added after the Spanish conquest"
-" of the Aztec Empire in the 16th century. The staples are native foods, such"
-" as corn, beans, avocados, tomatoes, and chili peppers, along with rice, "
+"with European, especially Spanish, elements added after the Spanish conquest "
+"of the Aztec Empire in the 16th century. The staples are native foods, such "
+"as corn, beans, avocados, tomatoes, and chili peppers, along with rice, "
 "which was brought by the Spanish. Europeans introduced a large number of "
 "other foods, the most important of which were meats from domesticated "
 "animals (beef, pork, chicken, goat, and sheep), dairy products (especially "
@@ -1393,8 +1388,8 @@ msgid ""
 msgstr ""
 "La cuina mexicana és principalment una fusió de la cuina indígena "
 "mesoamericana amb elements europeus, especialment espanyols, després de la "
-"conquesta espanyola de l'Imperi asteca al segle XVI. Els aliments bàsics són"
-" autòctons, com el blat de moro, fesols, alvocats, tomàquets i pebrots, "
+"conquesta espanyola de l'Imperi asteca al segle XVI. Els aliments bàsics són "
+"autòctons, com el blat de moro, fesols, alvocats, tomàquets i pebrots, "
 "juntament amb l'arròs, que va ser portat pels castellans. Els europeus van "
 "introduir una gran quantitat d'altres aliments, els més importants van ser "
 "les carns dels animals domesticats (carn de bou, porc, pollastre, cabra i "
@@ -1411,7 +1406,7 @@ msgstr ""
 "La cuina a Dinamarca sempre s'ha inspirat en pràctiques estrangeres i "
 "continentals i l'ús d'espècies tropicals importades com la canyella, el "
 "cardamom, la nou moscada i el pebre negre es pot localitzar a la cuina "
-"danesa de l'edat mitjana i fins i tot a la dels víkings."
+"danesa de l'edat mitjana i fins i tot a la dels vikings."
 
 #: src/gr-cuisine.c:117
 msgid ""
@@ -1422,8 +1417,8 @@ msgid ""
 msgstr ""
 "Podeu trobar una gran varietat de plats deliciosos a la cuina turca, que en "
 "la seva majoria són patrimoni de la cuina otomana. És la barreja i el "
-"refinament de les cuines d'Àsia Central, d'Orient Mitjà i Balcans. Per tant,"
-" és impossible incloure la cuina turca en una llista curta."
+"refinament de les cuines d'Àsia Central, d'Orient Mitjà i Balcans. Per tant, "
+"és impossible incloure la cuina turca en una llista curta."
 
 #: src/gr-details-page.c:193 src/gr-edit-page.c:936
 msgid "serving"
@@ -1484,45 +1479,101 @@ msgstr "Altres restriccions alimentàries"
 
 #: src/gr-diet.c:66
 msgid ""
-"A gluten-free diet is a diet that excludes gluten, a protein composite found in wheat, barley, rye, and all their species and hybrids (such as spelt, kamut, and triticale). The inclusion of oats in a gluten-free diet remains controversial. Avenin present in oats may also be toxic for coeliac people; its toxicity depends on the cultivar consumed. Furthermore, oats are frequently cross-contaminated with cereals containing gluten.\n"
-"<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free\">Learn more…</a>"
+"A gluten-free diet is a diet that excludes gluten, a protein composite found "
+"in wheat, barley, rye, and all their species and hybrids (such as spelt, "
+"kamut, and triticale). The inclusion of oats in a gluten-free diet remains "
+"controversial. Avenin present in oats may also be toxic for coeliac people; "
+"its toxicity depends on the cultivar consumed. Furthermore, oats are "
+"frequently cross-contaminated with cereals containing gluten.\n"
+"<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free\">Learn more…</"
+"a>"
 msgstr ""
-"Una dieta sense gluten és una dieta que exclou el gluten, un compost de proteïnes que es troba al blat, l'ordi, el sègol i totes les seves espècies i híbrides (com l'espelta, el kamut i el triticale). Incloure la civada en una dieta sense gluten continua sent polèmica. Les avenines presents a la civada també poden ser tòxiques per als celíacs; la seva toxicitat depèn del conreu consumit. La civada freqüentment està contaminada amb cereals que contenen gluten.\n"
-"<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free\">Saber-ne més…</a>"
+"Una dieta sense gluten és una dieta que exclou el gluten, un compost de "
+"proteïnes que es troba al blat, l'ordi, el sègol i totes les seves espècies "
+"i híbrides (com l'espelta, el kamut i el triticale). Incloure la civada en "
+"una dieta sense gluten continua sent polèmica. Les avenines presents a la "
+"civada també poden ser tòxiques per als celíacs; la seva toxicitat depèn del "
+"conreu consumit. La civada freqüentment està contaminada amb cereals que "
+"contenen gluten.\n"
+"<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free\">Saber-ne més…"
+"</a>"
 
 #: src/gr-diet.c:69
 msgid ""
-"A tree nut allergy is a hypersensitivity to dietary substances from tree nuts and edible tree seeds causing an overreaction of the immune system which may lead to severe physical symptoms. Tree nuts include, but are not limited to, almonds, Brazil nuts, cashews, chestnuts, filberts/hazelnuts, macadamia nuts, pecans, pistachios, pine nuts, shea nuts and walnuts.\n"
+"A tree nut allergy is a hypersensitivity to dietary substances from tree "
+"nuts and edible tree seeds causing an overreaction of the immune system "
+"which may lead to severe physical symptoms. Tree nuts include, but are not "
+"limited to, almonds, Brazil nuts, cashews, chestnuts, filberts/hazelnuts, "
+"macadamia nuts, pecans, pistachios, pine nuts, shea nuts and walnuts.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">Learn more…</a>"
 msgstr ""
-"Les al·lèrgies als fruits secs és una hipersensibilitat a substàncies alimentàries contingudes als fruits secs i les llavors que provoquen una reacció excessiva del sistema immunològic i que poden provocar símptomes físics greus. Els fruits secs inclouen, però no es limiten a, ametlles, nous de Brasil, anacards, castanyes, avellanes, nous de macadàmia, cacauets, pistatxos, pinyons, nous de karité i nous.\n"
+"Les al·lèrgies als fruits secs és una hipersensibilitat a substàncies "
+"alimentàries contingudes als fruits secs i les llavors que provoquen una "
+"reacció excessiva del sistema immunològic i que poden provocar símptomes "
+"físics greus. Els fruits secs inclouen, però no es limiten a, ametlles, nous "
+"de Brasil, anacards, castanyes, avellanes, nous de macadàmia, cacauets, "
+"pistatxos, pinyons, nous de karité i nous.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">Saber-ne més…</a>"
 
 #: src/gr-diet.c:72
 msgid ""
-"Veganism is both the practice of abstaining from the use of animal products, particularly in diet, and an associated philosophy that rejects the commodity status of animals.\n"
+"Veganism is both the practice of abstaining from the use of animal products, "
+"particularly in diet, and an associated philosophy that rejects the "
+"commodity status of animals.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Veganism\">Learn more…</a>"
 msgstr ""
-"El veganisme és tant la pràctica d'abstenir-se en l'ús dl productes d'origen animal, especialment en la dieta, com una filosofia associada que rebutja el mercadeig amb els animals.\n"
+"El veganisme és tant la pràctica d'abstenir-se en l'ús dl productes d'origen "
+"animal, especialment en la dieta, com una filosofia associada que rebutja el "
+"mercadeig amb els animals.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Veganism\">Saber-ne més…</a>"
 
 #: src/gr-diet.c:75
 msgid ""
-"Vegetarian cuisine is based on food that meets vegetarian standards by not including meat and animal tissue products (such as gelatin or animal-derived rennet). For lacto-ovo vegetarianism (the most common type of vegetarianism in the Western world), eggs and dairy products such as milk and cheese are permitted. For lacto vegetarianism, the earliest known type of vegetarianism (recorded in India), dairy products such as milk and cheese are permitted.\n"
-"The strictest forms of vegetarianism are veganism and fruitarianism, which exclude all animal products, including dairy products as well as honey, and even some refined sugars if filtered and whitened with bone char.\n"
+"Vegetarian cuisine is based on food that meets vegetarian standards by not "
+"including meat and animal tissue products (such as gelatin or animal-derived "
+"rennet). For lacto-ovo vegetarianism (the most common type of vegetarianism "
+"in the Western world), eggs and dairy products such as milk and cheese are "
+"permitted. For lacto vegetarianism, the earliest known type of vegetarianism "
+"(recorded in India), dairy products such as milk and cheese are permitted.\n"
+"The strictest forms of vegetarianism are veganism and fruitarianism, which "
+"exclude all animal products, including dairy products as well as honey, and "
+"even some refined sugars if filtered and whitened with bone char.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Vegetarianism\">Learn more…</a>"
 msgstr ""
-"La cuina vegetariana es basa en aliments que compleixen els estàndards vegetarians, sense incloure carn ni teixits animals (com ara gelatina o quall d'origen animal). Els vegetarians lacto-ovins (el tipus més comú de vegetarianisme al món occidental) es permeten ous i productes lactis, com ara llet i formatge. Per al vegetarianisme lacto, el primer tipus de vegetarianisme conegut (registrat a l'Índia), es permeten productes lactis, com ara llet i formatge.\n"
-"Les formes més estrictes del vegetarianisme són el veganisme i el fruitarisme, que exclouen tots els productes animals, inclosos els productes lactis, així com la mel, i fins i tot alguns sucres refinats si es filtren i blanquegen amb carbó animal.\n"
+"La cuina vegetariana es basa en aliments que compleixen els estàndards "
+"vegetarians, sense incloure carn ni teixits animals (com ara gelatina o "
+"quall d'origen animal). Els vegetarians lacto-ovins (el tipus més comú de "
+"vegetarianisme al món occidental) es permeten ous i productes lactis, com "
+"ara llet i formatge. Per al vegetarianisme lacto, el primer tipus de "
+"vegetarianisme conegut (registrat a l'Índia), es permeten productes lactis, "
+"com ara llet i formatge.\n"
+"Les formes més estrictes del vegetarianisme són el veganisme i el "
+"fruitarisme, que exclouen tots els productes animals, inclosos els productes "
+"lactis, així com la mel, i fins i tot alguns sucres refinats si es filtren i "
+"blanquegen amb carbó animal.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Vegetarianism\">Saber-ne més…</a>"
 
 #: src/gr-diet.c:78
 msgid ""
-"Lactose intolerance is a condition in which people have symptoms due to the decreased ability to digest lactose, a sugar found in milk products. Those affected vary in the amount of lactose they can tolerate before symptoms develop. Symptoms may include abdominal pain, bloating, diarrhea, gas, and nausea. These typically start between half and two hours after drinking milk. Severity depends on the amount a person eats or drinks. It does not cause damage to the gastrointestinal tract.\n"
+"Lactose intolerance is a condition in which people have symptoms due to the "
+"decreased ability to digest lactose, a sugar found in milk products. Those "
+"affected vary in the amount of lactose they can tolerate before symptoms "
+"develop. Symptoms may include abdominal pain, bloating, diarrhea, gas, and "
+"nausea. These typically start between half and two hours after drinking "
+"milk. Severity depends on the amount a person eats or drinks. It does not "
+"cause damage to the gastrointestinal tract.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Learn more…</a>"
 msgstr ""
-"La intolerància a la lactosa és una afectació en la què les persones tenen símptomes deguts a la disminució de la capacitat de digerir lactosa, un sucre que es troba en els productes lactis. En els afectats varia la quantitat de lactosa que poden tolerar abans de desenvolupar els símptomes. Els símptomes poden incloure dolor abdominal, inflor, diarrea, gasos i nàusees. Normalment comencen entre mitja i dues hores després de beure llet. La gravetat depèn de la quantitat que es mengi o begui. No causa danys al tracte gastrointestinal.\n"
-"<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Saber-ne més…</a>"
+"La intolerància a la lactosa és una afectació en la què les persones tenen "
+"símptomes deguts a la disminució de la capacitat de digerir lactosa, un "
+"sucre que es troba en els productes lactis. En els afectats varia la "
+"quantitat de lactosa que poden tolerar abans de desenvolupar els símptomes. "
+"Els símptomes poden incloure dolor abdominal, inflor, diarrea, gasos i "
+"nàusees. Normalment comencen entre mitja i dues hores després de beure llet. "
+"La gravetat depèn de la quantitat que es mengi o begui. No causa danys al "
+"tracte gastrointestinal.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Saber-ne més…</"
+"a>"
 
 #: src/gr-diet.c:81
 msgid "Halal meat is prepared according to Islamic traditions"
@@ -1854,7 +1905,7 @@ msgstr "Cuinat:"
 
 #: src/gr-recipe-formatter.c:93 src/gr-recipe-printer.c:168
 msgid "Yield:"
-msgstr "Rendiment"
+msgstr "Rendiment:"
 
 #: src/gr-recipe-importer.c:238
 #, c-format
@@ -1875,8 +1926,7 @@ msgstr ""
 #, c-format
 msgid "Failed to load recipe: Couldn’t parse Modified key"
 msgstr ""
-"No s'ha pogut carregar la recepta. No s'ha pogut analitzar la clau "
-"Modificada"
+"No s'ha pogut carregar la recepta. No s'ha pogut analitzar la clau Modificada"
 
 #: src/gr-recipe-importer.c:809
 #, c-format
@@ -2511,8 +2561,7 @@ msgstr ""
 
 #: src/gr-utils.c:410
 msgid ""
-"Missing the desktop portal needed to open URLs from inside a Flatpak "
-"sandbox."
+"Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
 msgstr ""
 "Falta el portal d'escriptori necessari per obrir URL's des d'un entorn "
 "Flatpak."
@@ -3135,7 +3184,7 @@ msgstr "Cubs de bacon"
 
 #: src/ingredients.inc:130
 msgid "Long pasta, e.g. spaghetti"
-msgstr "Pasta llarga, ex. espaguetis"
+msgstr "Pasta llarga, p. ex. espaguetis"
 
 #: src/ingredients.inc:131
 msgid "Parmesan cheese"
@@ -3743,7 +3792,7 @@ msgstr "Iogurt"
 
 #: src/ingredients.inc:282
 msgid "Zest of 1 lemon (organic)"
-msgstr "Pela de 1 llimona (orgànica)"
+msgstr "Pela d'1 llimona (orgànica)"
 
 #: src/ingredients.inc:283
 msgid "Zinfandel"
@@ -3899,15 +3948,15 @@ msgstr "sense Pa ratllat"
 
 #: src/no-ingredients.inc:37
 msgid "no Brewer's yeast"
-msgstr "sense Llevat de cervesa"
+msgstr "sense llevat de cervesa"
 
 #: src/no-ingredients.inc:38
 msgid "no Broad beans"
-msgstr "sense Mongetes"
+msgstr "sense mongetes"
 
 #: src/no-ingredients.inc:39
 msgid "no Broth"
-msgstr "sense Caldo"
+msgstr "sense caldo"
 
 #: src/no-ingredients.inc:40
 msgid "no Brown sugar"
@@ -3919,7 +3968,7 @@ msgstr "sense mantega"
 
 #: src/no-ingredients.inc:42
 msgid "no Butter, melted"
-msgstr "sense Mantega, desfeta"
+msgstr "sense mantega, desfeta"
 
 #: src/no-ingredients.inc:43
 msgid "no Button mushroom"
@@ -3927,7 +3976,7 @@ msgstr "sense xampinyons"
 
 #: src/no-ingredients.inc:44
 msgid "no Cabbage"
-msgstr "sense Col"
+msgstr "sense col"
 
 #: src/no-ingredients.inc:45
 msgid "no Cake flour"
@@ -3935,7 +3984,7 @@ msgstr "sense farina de rebosteria"
 
 #: src/no-ingredients.inc:46
 msgid "no Canellini beans"
-msgstr "sense mongetes Cannellini"
+msgstr "sense mongetes cannellini"
 
 #: src/no-ingredients.inc:47
 msgid "no Canned black beans, rinsed"
@@ -3943,7 +3992,7 @@ msgstr "sense ongetes negres en conserva, esbandides"
 
 #: src/no-ingredients.inc:48
 msgid "no Canned chopped tomatoes"
-msgstr "sense cnserves de tomàquet picat"
+msgstr "sense conserves de tomàquet picat"
 
 #: src/no-ingredients.inc:49
 msgid "no Carrot"
@@ -4271,7 +4320,7 @@ msgstr "sense cubs de bacon"
 
 #: src/no-ingredients.inc:130
 msgid "no Long pasta, e.g. spaghetti"
-msgstr "sense pasta llarga, ex. espaguetis"
+msgstr "sense pasta llarga, p. ex. espaguetis"
 
 #: src/no-ingredients.inc:131
 msgid "no Parmesan cheese"
@@ -4867,7 +4916,7 @@ msgstr "sense salsa Worcestershire"
 
 #: src/no-ingredients.inc:279
 msgid "no Yeast"
-msgstr "sense Llevat"
+msgstr "sense llevat"
 
 #: src/no-ingredients.inc:280
 msgid "no Yellow bell pepper"
@@ -4879,7 +4928,7 @@ msgstr "sense iogurt"
 
 #: src/no-ingredients.inc:282
 msgid "no Zest of 1 lemon (organic)"
-msgstr "sense pela de 1 llimona (orgànica)"
+msgstr "sense pela d'1 llimona (orgànica)"
 
 #: src/no-ingredients.inc:283
 msgid "no Zinfandel"
