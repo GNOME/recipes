@@ -1,46 +1,48 @@
 # German translation of the gnome-recipes manual.
 # Copyright (C) 2017 gnome-recipes's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-recipes package.
-# Mario Blättermann <mario.blaettermann@gmail.com>, 2017.
+# Mario Blättermann <mario.blaettermann@gmail.com>, 2017-2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-recipes\n"
-"POT-Creation-Date: 2017-05-25 21:14+0000\n"
-"PO-Revision-Date: 2017-07-29 22:45+0200\n"
+"POT-Creation-Date: 2018-06-10 18:12+0000\n"
+"PO-Revision-Date: 2018-09-18 11:28+0200\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
-msgstr "Mario Blättermann <mario.blaettermann@gmail.com>, 2017."
+msgstr "Mario Blättermann <mario.blaettermann@gmail.com>, 2017-2018."
 
 #. (itstool) path: info/desc
 #: C/add-recipe-description.page:12
 msgid "How to add a recipe description and dietary restrictions."
-msgstr ""
+msgstr "Eine Rezeptbeschreibung und Diätanweisungen hinzufügen."
 
 #. (itstool) path: credit/name
 #: C/add-recipe-description.page:15 C/add-recipe-details.page:16
-#: C/add-recipe-directions.page:15 C/add-recipe-ingredients.page:15
-#: C/add-recipe.page:11 C/chef.page:14 C/common-problems.page:11
-#: C/contribute.page:12 C/cooking.page:12 C/find-recipe.page:11 C/index.page:11
-#: C/notes.page:11 C/share.page:12 C/shop.page:12
+#: C/add-recipe-directions.page:15 C/add-recipe-images.page:15
+#: C/add-recipe-ingredients.page:15 C/add-recipe.page:11 C/chef.page:14
+#: C/common-problems.page:11 C/contribute.page:12 C/cooking.page:12
+#: C/find-recipe.page:11 C/index.page:10 C/notes.page:11 C/share.page:12
+#: C/shop.page:12
 msgid "Paul Cutler"
 msgstr "Paul Cutler"
 
 #. (itstool) path: license/p
 #: C/add-recipe-description.page:19 C/add-recipe-details.page:20
-#: C/add-recipe-directions.page:19 C/add-recipe-ingredients.page:19
-#: C/add-recipe.page:15 C/chef.page:18 C/common-problems.page:15
-#: C/contribute.page:16 C/cooking.page:16 C/find-recipe.page:15 C/index.page:16
-#: C/notes.page:15 C/share.page:24 C/shop.page:16
+#: C/add-recipe-directions.page:19 C/add-recipe-images.page:19
+#: C/add-recipe-ingredients.page:19 C/add-recipe.page:15 C/chef.page:18
+#: C/common-problems.page:15 C/contribute.page:16 C/cooking.page:16
+#: C/find-recipe.page:15 C/index.page:15 C/notes.page:15 C/share.page:24
+#: C/shop.page:16
 msgid "Creative Commons Share Alike 4.0"
 msgstr "Creative Commons Share Alike 4.0"
 
@@ -67,13 +69,18 @@ msgid ""
 "any dietary restrictions. The dietary restrictions will help for searching "
 "recipes later."
 msgstr ""
+"Unterhalb der Beschreibung können Sie mit einem Ankreuzfeld bestimmen, ob "
+"das Rezept bestimmten Diät-Einschränkungen entspricht. Diese Angaben helfen "
+"Ihnen später beim Durchsuchen der Rezepte."
 
 #. (itstool) path: item/p
 #: C/add-recipe-description.page:33
 msgid ""
-"<gui>Gluten free</gui>: Select for recipes that do not include wheat or "
+"<gui>Gluten-free</gui>: Select for recipes that do not include wheat or "
 "related grains."
 msgstr ""
+"<gui>Ohne Gluten</gui>: Rezepte, die keinen Weizen oder ähnliche "
+"Getreideprodukte enthalten."
 
 #. (itstool) path: item/p
 #: C/add-recipe-description.page:35
@@ -82,18 +89,23 @@ msgid ""
 "do not include meat, poultry or seafood. Vegetarian recipes may include "
 "dairy or eggs."
 msgstr ""
+"<gui>Vegetarisch</gui>: Rezepte, deren Zutaten nur pflanzlichen Ursprungs "
+"sind und kein Fleisch, Geflügel oder Meeresfrüchte enthalten. Vegetarische "
+"Rezepte können aber Milchprodukte oder Eier enthalten."
 
 #. (itstool) path: item/p
 #: C/add-recipe-description.page:38
-msgid "<gui>Nut free</gui>: Select for recipes that do not include any nuts."
-msgstr ""
+msgid "<gui>Nut-free</gui>: Select for recipes that do not include any nuts."
+msgstr "<gui>Ohne Nüsse</gui>: Rezepte, die keinerlei Nüsse enthalten."
 
 #. (itstool) path: item/p
 #: C/add-recipe-description.page:40
 msgid ""
-"<gui>Milk free</gui>: Select for recipes that do not include dairy products, "
+"<gui>Milk-free</gui>: Select for recipes that do not include dairy products, "
 "such as milk or cheese."
 msgstr ""
+"<gui>Ohne Milch</gui>: Rezepte, die keine Milch oder Milchprodukte "
+"enthalten, zum Beispiel Käse."
 
 #. (itstool) path: item/p
 #: C/add-recipe-description.page:42
@@ -101,11 +113,15 @@ msgid ""
 "<gui>Vegan</gui>: Recipes that do not include any product from an animal. "
 "This includes meat, dairy, eggs and more."
 msgstr ""
+"<gui>Vegan</gui>: Rezepte, die keinerlei tierische Produkte enthalten, also "
+"kein Fleisch, keine Milchprodukte, keine Eier u.a."
 
 #. (itstool) path: info/desc
 #: C/add-recipe-details.page:12
 msgid "Add recipe name, serving size, cooking and preparation time, and more."
 msgstr ""
+"Den Namen des Gerichts, Anzahl der Portionen, Koch- und Vorbereitungszeit "
+"und weiteres hinzufügen."
 
 #. (itstool) path: page/title
 #: C/add-recipe-details.page:24
@@ -121,12 +137,20 @@ msgid ""
 "all other fields are optional. It is helpful to fill as many fields as "
 "possible to help when searching <app>Recipes</app>."
 msgstr ""
+"Klicken Sie auf <gui>Neues Rezept</gui> in der oberen linken Ecke von "
+"<app>Rezepte</app> und geben Sie die folgenden Informationen zu Ihrem Rezept "
+"im Abschnitt <gui>Details</gui> ein. Der Name des Rezepts sowie die Anzahl "
+"der Portionen sind obligatorisch, alle anderen Felder sind optional. Es ist "
+"jedoch hilfreich für die Suche in <app>Rezepte</app>, so viele Felder wie "
+"möglich auszufüllen."
 
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:32
 msgid ""
 "<gui>Name Your Recipe</gui>: Enter the name of the recipe in the text box."
 msgstr ""
+"<gui>Name des Rezeptes</gui>: Geben Sie den Namen des Rezepts in das "
+"Textfeld ein."
 
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:35
@@ -134,6 +158,9 @@ msgid ""
 "<gui>Serves</gui>: Enter a number or press the <gui style=\"button\">+</gui> "
 "button to enter how many servings the recipe will make."
 msgstr ""
+"<gui>Portionen</gui>: Geben Sie eine Zahl ein oder klicken Sie auf den <gui "
+"style=\"button\">+</gui>-Knopf, um die Anzahl der Portionen anzugeben, die "
+"das Rezept ergibt."
 
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:39
@@ -141,6 +168,8 @@ msgid ""
 "<gui>Preparation Time</gui>: From the drop down box, choose how long it "
 "takes to pepare the ingredients prior to cooking."
 msgstr ""
+"<gui>Vorbereitungszeit</gui>:  Wählen Sie im Auswahlmenü aus, wie viel "
+"Vorbereitungszeit vor dem Kochen erforderlich ist."
 
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:42
@@ -148,6 +177,8 @@ msgid ""
 "<gui>Cooking Time</gui>: From the drop down box, choose how long it takes to "
 "cook the recipe."
 msgstr ""
+"<gui>Kochzeit</gui>:  Wählen Sie im Auswahlmenü aus, wie viel Kochzeit das "
+"Rezept erfordert."
 
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:45
@@ -156,6 +187,10 @@ msgid ""
 "region from where the recipe comes from. You can also enter the type of "
 "cuisine if it is not included in the list."
 msgstr ""
+"<gui>Küche</gui>:  Wählen Sie im Auswahlmenü aus, welcher Art das Gericht "
+"ist beziehungsweise ordnen Sie es einer regionalen Küche zu. Sie können auch "
+"eine eigene Bezeichnung eingeben, falls Sie nichts Passendes in der "
+"Auswahlliste finden."
 
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:49
@@ -165,6 +200,11 @@ msgid ""
 "or cocktails. You can also enter the type of meal if it is not included in "
 "the list."
 msgstr ""
+"<gui>Mahlzeit</gui>:  Wählen Sie im Auswahlmenü aus, welcher Art das Rezept "
+"ist. Beispiele wären Frühstück oder Abendessen als Zuordnung der Tageszeit, "
+"oder andere Zuordnungen wie Pasta oder Cocktails. Sie können auch eine "
+"eigene Bezeichnung eingeben, falls Sie nichts Passendes in der Auswahlliste "
+"finden."
 
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:54
@@ -173,6 +213,10 @@ msgid ""
 "that the recipe is typically associated with. You can also enter the season "
 "or holiday if it is not included in the list."
 msgstr ""
+"<gui>Saison</gui>: Wählen Sie im Auswahlmenü aus, welcher Saison oder "
+"bestimmten Feiertagen dieses Rezept zuzuordnen ist. Sie können auch eine "
+"eigene Bezeichnung eingeben, falls Sie nichts Passendes in der Auswahlliste "
+"finden."
 
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:59
@@ -186,7 +230,7 @@ msgstr ""
 #. (itstool) path: info/desc
 #: C/add-recipe-directions.page:12
 msgid "How to add each step to cook a recipe and at what temperature."
-msgstr ""
+msgstr "Hinzufügen der einzelnen Schritte der Zubereitung und der Temperatur."
 
 #. (itstool) path: page/title
 #: C/add-recipe-directions.page:23
@@ -208,6 +252,14 @@ msgid ""
 "separate steps for each paragraph in your recipe. These steps will be used "
 "when it is time to cook using full screen mode in <app>Recipes</app>."
 msgstr ""
+"Klicken Sie auf <gui>Neues Rezept</gui> in der oberen linken Ecke von "
+"<app>Rezepte</app>. Im Textfeld <gui>Anleitungen</gui> geben Sie die "
+"Schritte ein, die nötig sind, um das Rezept zuzubereiten. Um die einzelnen "
+"Schritte voneinander zu trennen, drücken Sie die <key>Eingabetaste</key> "
+"zweimal, um einen Absatz für den nächsten Schritt anzulegen. <app>Rezepte</"
+"app> erstellt automatisch separate Schritte für jeden Absatz in Ihrem "
+"Rezept. Diese Schritte werden beim Kochen bei der Anzeige im Vollbildmodus "
+"verwendet."
 
 #. (itstool) path: section/p
 #: C/add-recipe-directions.page:34
@@ -218,11 +270,16 @@ msgid ""
 "available when viewing the recipe or when in hands-free mode. All tags are "
 "enclosed within brackets."
 msgstr ""
+"In jedem der Absätze können Sie die folgenden Markierungen für Bilder, "
+"Alarme oder Temperaturen hinzufügen. Sie können in einem Schritt nur ein "
+"Bild oder einen Alarm, aber nicht beides verwenden. Die Informationen in den "
+"Markierungen werden beim Betrachten des Rezepts oder im freihändigen Kochen "
+"angezeigt. Alle diese Markierungen werden in Klammern gesetzt."
 
 #. (itstool) path: section/title
 #: C/add-recipe-directions.page:42
 msgid "Add timers"
-msgstr ""
+msgstr "Alarme hinzufügen"
 
 #. (itstool) path: section/p
 #: C/add-recipe-directions.page:43
@@ -230,11 +287,13 @@ msgid ""
 "To create a timer, enter how long the timer should be within brackets. The "
 "format is [timer:hours:minutes:seconds, description]."
 msgstr ""
+"Um einen Alarm anzulegen, geben Sie in Klammern dessen Zeit ein. Das Format "
+"ist [Alarm:Stunden:Minuten:Sekunden, Beschreibung]."
 
 #. (itstool) path: section/p
 #: C/add-recipe-directions.page:46
 msgid "Timer examples:"
-msgstr ""
+msgstr "Beispiele für Alarme:"
 
 #. (itstool) path: item/p
 #: C/add-recipe-directions.page:50
@@ -242,6 +301,8 @@ msgid ""
 "<cmd>[timer:00:30, stir ingredients]</cmd> - Stir ingredients for thirty "
 "seconds."
 msgstr ""
+"<cmd>[timer:00:30, Zutaten rühren]</cmd> - Verrühren Sie die Zutaten für 30 "
+"Sekunden."
 
 #. (itstool) path: item/p
 #: C/add-recipe-directions.page:55
@@ -249,6 +310,8 @@ msgid ""
 "<cmd>[timer:01:30, stir ingredients]</cmd> - Stir ingredients for one minute "
 "and thirty seconds."
 msgstr ""
+"<cmd>[timer:01:30, Zutaten rühren]</cmd> - Verrühren Sie die Zutaten für 1 "
+"Minute und 30 Sekunden."
 
 #. (itstool) path: item/p
 #: C/add-recipe-directions.page:60
@@ -256,27 +319,27 @@ msgid ""
 "<cmd>[timer:01:01:30, preheat oven]</cmd> - Preheat oven for one hour, one "
 "minute and thirty seconds."
 msgstr ""
+"<cmd>[timer:01:01:30, Ofen vorheizen</cmd> - Heizen Sie den Ofen 1 Stunde, 1 "
+"Minute und 30 Sekunden vor."
 
 #. (itstool) path: section/title
 #: C/add-recipe-directions.page:68
 msgid "Add images to each step"
 msgstr "Bilder zu jedem Schritt hinzufügen"
 
-#. (itstool) path: section/title
-#: C/add-recipe-directions.page:69
-msgid "Images"
-msgstr "Bilder"
-
 #. (itstool) path: section/p
-#: C/add-recipe-directions.page:70
+#: C/add-recipe-directions.page:69
 msgid ""
 "You can add an image or photo of the finished recipe and also a photo of "
 "each each step of making a recipe. See <link xref=\"add-recipe-images\"/> "
 "for how to add an image or images to your recipe."
 msgstr ""
+"Sie können ein Bild des fertigen Gerichts und auch ein Foto für jeden "
+"ausgeführten Zubereitungsschritt hinzufügen. Weitere Informationen finden "
+"Sie in <link xref=\"add-recipe-images\"/>."
 
 #. (itstool) path: item/p
-#: C/add-recipe-directions.page:77
+#: C/add-recipe-directions.page:76
 msgid ""
 "To assign one of the photos you have added, you will need to know the "
 "image's number. Press the <gui>Add Image</gui> button at the bottom "
@@ -286,35 +349,197 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/add-recipe-directions.page:85
+#: C/add-recipe-directions.page:84
 msgid "Add the tag <cmd>[image:1]</cmd> to add the first image to a step."
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/add-recipe-directions.page:90
+#: C/add-recipe-directions.page:89
 msgid ""
 "Add additional image tags with the correct number for as many steps as you "
 "wish."
 msgstr ""
 
 #. (itstool) path: section/title
-#: C/add-recipe-directions.page:99
+#: C/add-recipe-directions.page:98
 msgid "Temperature"
 msgstr "Temperatur"
 
 #. (itstool) path: section/p
-#: C/add-recipe-directions.page:100
+#: C/add-recipe-directions.page:99
 msgid ""
 "You can add the temperature a step needs to be cooked at by adding a "
 "temperature tag."
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/add-recipe-directions.page:104
+#: C/add-recipe-directions.page:103
 msgid ""
 "Add the tag <cmd>[temperature:200C]</cmd>. You can set the temperature in "
 "Celsius with a C or Fahrenheit with an F following the temperature."
 msgstr ""
+
+#. (itstool) path: info/desc
+#: C/add-recipe-images.page:12
+msgid "How to add images to a recipe and for each step when cooking."
+msgstr ""
+"Hinzufügen von Bildern zu einem Rezept und für jeden Zubereitungsschritt."
+
+#. (itstool) path: page/title
+#: C/add-recipe-images.page:23
+msgid "Add Images and Photos"
+msgstr "Bilder und Fotos hinzufügen"
+
+#. (itstool) path: page/p
+#: C/add-recipe-images.page:24
+msgid ""
+"Press the <gui>New Recipe</gui> in the upper left corner of <app>Recipes</"
+"app>. To add an image to your recipe:"
+msgstr ""
+"Klicken Sie auf <gui>Neues Rezept</gui> in der linken oberen Ecke des "
+"<app>Rezepte</app>-Fensters. So fügen Sie ein Bild zu Ihrem Rezept hinzu:"
+
+#. (itstool) path: item/p
+#: C/add-recipe-images.page:28 C/add-recipe-images.page:49
+msgid ""
+"Press the <gui style=\"button\">+</gui> button below the camera icon or "
+"press <guiseq> <gui>Add Image</gui> <gui style=\"button\">+</gui></guiseq> "
+"at the bottom of the <app>Recipes</app> window."
+msgstr ""
+"Klicken Sie auf den <gui style=\"button\">+</gui>-Knopf unterhalb des "
+"Kamerasysmbols oder auf <guiseq> <gui>Bild einfügen</gui> <gui style=\"button"
+"\">+</gui></guiseq> am unteren Rand des <app>Rezepte</app>-Fensters."
+
+#. (itstool) path: item/p
+#: C/add-recipe-images.page:35
+msgid "Select the image you would like to add."
+msgstr "Wählen Sie das hinzuzufügende Bild aus."
+
+#. (itstool) path: item/p
+#: C/add-recipe-images.page:39 C/add-recipe-images.page:61
+msgid "Press <gui>Open</gui>"
+msgstr "Klicken Sie auf <gui>Öffnen</gui>."
+
+#. (itstool) path: page/p
+#: C/add-recipe-images.page:44
+msgid ""
+"You may want to add multiple images to the recipe. When using hands-free "
+"mode, <app>Recipes</app> can display an image for each step when cooking. To "
+"add multiple images:"
+msgstr ""
+"Sie können mehrere Bilder zu einem Rezept hinzufügen. Im freihändigen Modus "
+"kann <app>Rezepte</app> ein Bild für jeden Zubereitungsschritt anzeigen. So "
+"fügen Sie mehrere Bilder hinzu:"
+
+#. (itstool) path: item/p
+#: C/add-recipe-images.page:56
+msgid ""
+"Select multiple images by pressing <key>Control</key> and the images you "
+"would like to add."
+msgstr ""
+"Wenn Sie die <key>Strg</key>-Taste gedrückt halten, können Sie mehrere "
+"Bilder auswählen."
+
+#. (itstool) path: page/p
+#: C/add-recipe-images.page:65
+msgid ""
+"After adding an image, you can rotate it, make it the default image for the "
+"recipe, or remove it from the recipe."
+msgstr ""
+"Nach dem Hinzufügen eines Bildes können Sie es drehen, als Standardbild "
+"festlegen oder es aus dem Rezept löschen."
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/add-recipe-images.page:73
+msgctxt "_"
+msgid ""
+"external ref='images/rotate-left.png' md5='b939aa1d6573f18f6e85672c9406346f'"
+msgstr "original'"
+
+#. (itstool) path: item/p
+#: C/add-recipe-images.page:70
+msgid ""
+"To rotate an image to the left press the <gui>Rotate Image</gui> button: "
+"<media type=\"image\" mime=\"image/png\" src=\"images/rotate-left.png\" its:"
+"translate=\"yes\"><span its:translate=\"yes\">Rotate Image</span> </media>"
+msgstr ""
+"Um ein Bild nach links zu drehen, klicken Sie einfach auf den <gui>Bild "
+"drehen</gui>-Knopf: <media type=\"image\" mime=\"image/png\" src=\"images/"
+"rotate-left.png\" its:translate=\"yes\"><span its:translate=\"yes\">Bild "
+"drehen</span> </media>"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/add-recipe-images.page:80
+msgctxt "_"
+msgid ""
+"external ref='images/rotate-right.png' md5='f459dc336c62fe96e3ab6edd90a0b1ea'"
+msgstr "original'"
+
+#. (itstool) path: item/p
+#: C/add-recipe-images.page:77
+msgid ""
+"To rotate an image to the right press the <gui>Rotate Image</gui> button: "
+"<media type=\"image\" mime=\"image/png\" src=\"images/rotate-right.png\" its:"
+"translate=\"yes\"><span its:translate=\"yes\">Rotate Image</span> </media>"
+msgstr ""
+"Um ein Bild nach rechts zu drehen, klicken Sie einfach auf den <gui>Bild "
+"drehen</gui>-Knopf: <media type=\"image\" mime=\"image/png\" src=\"images/"
+"rotate-right.png\" its:translate=\"yes\"><span its:translate=\"yes\">Bild "
+"drehen</span> </media>"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/add-recipe-images.page:87
+msgctxt "_"
+msgid "external ref='images/star.png' md5='d117abab03b6751c30a15e7fc8d2df51'"
+msgstr "original'"
+
+#. (itstool) path: item/p
+#: C/add-recipe-images.page:84
+msgid ""
+"To make an image the default image for the recipe, press the <gui>Default "
+"Image</gui> button: <media type=\"image\" mime=\"image/png\" src=\"images/"
+"star.png\" its:translate=\"yes\"><span its:translate=\"yes\">Default Image </"
+"span></media>"
+msgstr ""
+"Um ein Bild als Standardbild für das Rezept festzulegen, klicken Sie auf den "
+"<gui>Titelbild</gui>-Knopf: <media type=\"image\" mime=\"image/png\" src="
+"\"images/star.png\" its:translate=\"yes\"><span its:translate=\"yes"
+"\">Titelbild </span></media>"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/add-recipe-images.page:94 C/shop.page:89
+msgctxt "_"
+msgid "external ref='images/trash.png' md5='803809373918657f15776ff05db8f33c'"
+msgstr "original'"
+
+#. (itstool) path: item/p
+#: C/add-recipe-images.page:91
+msgid ""
+"To remove an image from the the recipe, press the <gui>Remove Image</gui> "
+"button: <media type=\"image\" mime=\"image/png\" src=\"images/trash.png\" "
+"its:translate=\"yes\"><span its:translate=\"yes\">Remove Image </span></"
+"media>"
+msgstr ""
+"Um ein Bild aus einem Rezept zu entfernen, klicken Sie auf <gui>Bild "
+"löschen</gui>: <media type=\"image\" mime=\"image/png\" src=\"images/trash."
+"png\" its:translate=\"yes\"><span its:translate=\"yes\">Bild löschen </"
+"span></media>"
 
 #. (itstool) path: info/desc
 #: C/add-recipe-ingredients.page:12
@@ -333,6 +558,10 @@ msgid ""
 "for recipes that have different parts, such as a cake that has an ingredient "
 "list for the cake and an ingredient list for the frosting. To create a list:"
 msgstr ""
+"Sie können die Zutaten hinzufügen und Listen für das Rezept erstellen. "
+"Listen können für Rezepte mit verschiedenen Teilen verwendet werden, zum "
+"Beispiel für einen Kuchen eine Liste für den Teig und eine für den Belag. So "
+"erstellen Sie eine Liste:"
 
 #. (itstool) path: item/p
 #: C/add-recipe-ingredients.page:29
@@ -340,12 +569,15 @@ msgid ""
 "Press the <gui>New Recipe</gui> in the upper left corner of <app>Recipes</"
 "app>."
 msgstr ""
+"Klicken Sie auf <gui>Neues Rezept</gui> in der oberen linken Ecke von "
+"<app>Rezepte</app>."
 
 #. (itstool) path: item/p
 #: C/add-recipe-ingredients.page:32
 msgid ""
 "Press the <gui>Add List</gui> button in the <gui>Ingredients</gui> section."
 msgstr ""
+"Klicken Sie auf <gui>Neue Zutatenliste</gui> im Abschnitt <gui>Zutaten</gui>."
 
 #. (itstool) path: item/p
 #: C/add-recipe-ingredients.page:35
@@ -353,11 +585,13 @@ msgid ""
 "Enter the name of the list, such as cake, in the <gui>Name of the List</gui> "
 "text box."
 msgstr ""
+"Geben Sie den Namen der Liste im Textfeld <gui>Name der Zutatenliste</gui> "
+"ein."
 
 #. (itstool) path: item/p
 #: C/add-recipe-ingredients.page:38
 msgid "Repeat this step for as many lists as you may need."
-msgstr ""
+msgstr "Wiederholen Sie diesen Schritt für so viele Listen, wie Sie benötigen."
 
 #. (itstool) path: page/p
 #: C/add-recipe-ingredients.page:41
@@ -375,6 +609,8 @@ msgid ""
 "Choose the ingredient from the list or enter the ingredient in the "
 "<gui>Search</gui> box."
 msgstr ""
+"Wählen Sie die Zutat in der Liste aus oder geben Sie sie in das <gui>Suchen</"
+"gui>-Feld ein."
 
 #. (itstool) path: item/p
 #: C/add-recipe-ingredients.page:48
@@ -382,6 +618,8 @@ msgid ""
 "Press the <gui>Add</gui> button to add the ingredient to the list or click "
 "<gui>Amount</gui> to how much of the ingredient is needed."
 msgstr ""
+"Klicken Sie zum Hinzufügen der Zutat auf den <gui>Hinzufügen</gui>-Knopf "
+"oder auf <gui>Menge</gui>, um die benötigte Menge anzugeben."
 
 #. (itstool) path: item/p
 #: C/add-recipe-ingredients.page:52
@@ -390,6 +628,10 @@ msgid ""
 "then press <gui>Add</gui>. Or you can enter the amount and choose the "
 "measurement from the list and then press the <gui>Add</gui> button."
 msgstr ""
+"Im Auswahlfeld <gui>Menge</gui> können Sie die benötigte Menge eingeben und "
+"dann auf <gui>Hinzufügen</gui> klicken, oder Sie geben die Menge ein und "
+"wählen die Maßeinheit in der Liste aus und klicken dann auf <gui>Hinzufügen</"
+"gui>."
 
 #. (itstool) path: item/p
 #: C/add-recipe-ingredients.page:58
@@ -406,6 +648,8 @@ msgid ""
 "<app>Recipes</app> does not currently support the ability to convert between "
 "metric units and imperial units."
 msgstr ""
+"<app>Rezepte</app> kann derzeit noch keine Umwandlung zwischen metrischen "
+"und angloamerikanischen Maßeinheiten vornehmen."
 
 #. (itstool) path: info/desc
 #: C/add-recipe.page:8
@@ -423,11 +667,13 @@ msgid ""
 "If you are new to <app>Recipes</app>, these topics will help you to add the "
 "following categories to a recipe."
 msgstr ""
+"Wenn Sie noch neu in <app>Rezepte</app> sind, helfen Ihnen diese Themen, die "
+"folgenden Kategorien zu einem Rezept hinzuzufügen."
 
 #. (itstool) path: info/desc
 #: C/chef.page:11
 msgid "How to add your personal information to recipes."
-msgstr ""
+msgstr "Persönliche Informationen zu Rezepten hinzufügen."
 
 #. (itstool) path: page/title
 #: C/chef.page:22
@@ -443,6 +689,12 @@ msgid ""
 "have created or to share recipes with friends and family. To add your chef "
 "information:"
 msgstr ""
+"Sie können persönliche Informationen wie Ihren vollständigen Namen, "
+"Spitznamen und ein Foto zu <app>Rezepte</app> hinzufügen. Dadurch wird ein "
+"Koch-Profil erstellt, das beim Erstellen eines Rezepts verwendet wird. Das "
+"hilft auch bei der Suche nach den von Ihnen erstellten Rezepten oder beim "
+"Teilen von Rezepten mit Freunden oder der Familie. So fügen Sie die Koch-"
+"Informationen hinzu:"
 
 #. (itstool) path: item/p
 #: C/chef.page:33
@@ -451,11 +703,14 @@ msgid ""
 "<link href=\"help:gnome-help/shell-introduction#activities\">Activites</"
 "link>."
 msgstr ""
+"Öffnen Sie das <app>Rezepte</app>-Menü in der oberen Leiste oben rechts "
+"neben <link href=\"help:gnome-help/shell-introduction#activities"
+"\">Aktivitäten</link>."
 
 #. (itstool) path: item/p
 #: C/chef.page:38
 msgid "Select <gui>Chef Informaton</gui>."
-msgstr ""
+msgstr "Wählen Sie <gui>Koch-Information</gui>."
 
 #. (itstool) path: item/p
 #: C/chef.page:42
@@ -467,6 +722,7 @@ msgstr "Geben Sie Ihren vollständigen Namen im Textfeld <gui>Name..</gui> ein."
 msgid ""
 "Enter your first name or nickname in the <gui>Short Name..</gui> text box."
 msgstr ""
+"Geben Sie Ihren Vornamen oder Spitznamen im Textfeld <gui>Name</gui> ein."
 
 #. (itstool) path: item/p
 #: C/chef.page:51
@@ -490,64 +746,76 @@ msgstr ""
 msgid "Solutions to common problems with <app>Recipes</app>."
 msgstr "Lösungen für häufig auftretende Probleme mit <app>Rezepte</app>."
 
+#. (itstool) path: page/title
 #. (itstool) path: section/title
-#: C/common-problems.page:20
+#: C/common-problems.page:19 C/index.page:46
+msgid "Common Problems"
+msgstr "Häufig auftretende Probleme"
+
+#. (itstool) path: section/title
+#: C/common-problems.page:22
 msgid "Editing Your Recipes"
 msgstr "Ihre Rezepte bearbeiten"
 
 #. (itstool) path: section/p
-#: C/common-problems.page:21
+#: C/common-problems.page:23
 msgid ""
 "If you have change the login or user ID you use to log into your computer, "
 "and you can no longer edit the recipes you have created, you will need to "
 "update the <app>Recipes</app> database."
 msgstr ""
+"Wenn Sie Anmeldenamen oder Benutzerkennung beim Anmelden an Ihrem Rechner "
+"ändern und dadurch nicht mehr die von Ihnen erstellten Rezepte bearbeiten "
+"können, müssen Sie die <app>Rezepte</app>-Datenbank aktualisieren."
 
 #. (itstool) path: note/p
-#: C/common-problems.page:26
+#: C/common-problems.page:28
 msgid ""
 "You must have the <sys>dconf-editor</sys> package installed. Be very careful "
 "editing application data in <app>dconf-editor</app>. By editing an "
 "application's settings, you may cause that application to stop working "
 "correctly."
 msgstr ""
+"Dafür muss das Paket <sys>dconf-editor</sys> installiert sein. Seien Sie "
+"beim Bearbeiten der Anwendungsdaten in <app>dconf-editor</app> vorsichtig. "
+"Es kann passieren, dass die Anwendung nicht mehr richtig funktioniert."
 
 #. (itstool) path: section/p
-#: C/common-problems.page:32
+#: C/common-problems.page:34
 msgid ""
 "To update <app>Recipes</app> to use the old user to allow you to edit your "
 "recipes:"
 msgstr ""
+"Für die Aktualisierung der <app>Rezepte</app>-Datenbank müssen Sie dem alten "
+"Benutzer erlauben, Ihre Rezepte zu bearbeiten:"
 
 #. (itstool) path: item/p
-#: C/common-problems.page:36
+#: C/common-problems.page:38
 msgid "Open <app>dconf-editor</app>."
 msgstr "Öffnen Sie den <app>dconf-editor</app>."
 
 #. (itstool) path: item/p
-#: C/common-problems.page:39
+#: C/common-problems.page:41
 msgid ""
 "Select <guiseq><gui>org</gui> <gui>gnome</gui> <gui>recipes</gui> <gui>user</"
-"gui></guiseq>"
+"gui></guiseq>."
 msgstr ""
-
-#. (itstool) path: steps/item
-#: C/common-problems.page:38 C/common-problems.page:45 C/find-recipe.page:135
-msgid "<_:p-1/>."
-msgstr "<_:p-1/>."
+"Wählen Sie <guiseq><gui>org</gui> <gui>gnome</gui> <gui>recipes</gui> "
+"<gui>user</gui></guiseq>."
 
 #. (itstool) path: item/p
-#: C/common-problems.page:43
+#: C/common-problems.page:45
 msgid "In the <gui>Custom value</gui> field, enter the old user ID."
 msgstr ""
+"Geben Sie im Feld <gui>Eigener Wert</gui> die alte Benutzerkennung ein."
 
 #. (itstool) path: item/p
-#: C/common-problems.page:46
-msgid "Close <app>dconf-editor</app>"
+#: C/common-problems.page:48
+msgid "Close <app>dconf-editor</app>."
 msgstr "Schließen Sie den <app>dconf-editor</app>."
 
 #. (itstool) path: item/p
-#: C/common-problems.page:49
+#: C/common-problems.page:51
 msgid ""
 "Open <app>Recipes</app>. You will now be able to open and edit recipes you "
 "have created."
@@ -556,20 +824,22 @@ msgstr ""
 "erstellten Rezepte öffnen und bearbeiten."
 
 #. (itstool) path: section/title
-#: C/common-problems.page:56
+#: C/common-problems.page:58
 msgid "Remove or Edit Included Recipes"
 msgstr "Mitgelieferte Rezepte entfernen oder bearbeiten"
 
 #. (itstool) path: section/p
-#: C/common-problems.page:57
+#: C/common-problems.page:59
 msgid ""
 "You can only remove or edit the recipes you create, not the recipes included."
 msgstr ""
+"Sie können nur Rezepte bearbeiten oder entfernen, die Sie selbst erstellt "
+"haben, nicht jedoch die mitgelieferten Rezepte."
 
 #. (itstool) path: info/desc
 #: C/contribute.page:9
 msgid "How to share your recipes with the GNOME community."
-msgstr ""
+msgstr "Ihre Rezepte mit der GNOME-Gemeinschaft teilen."
 
 #. (itstool) path: page/title
 #: C/contribute.page:20
@@ -583,6 +853,9 @@ msgid ""
 "include your recipe in the <app>Recipes</app> application. Recipes you share "
 "should be of your own creation. To send your recipe:"
 msgstr ""
+"Sie können Ihr Rezept mit den <app>Rezepte</app>-Entwicklern teilen, die es "
+"dann in die Anwendung aufnehmen können. Solche Rezepte sollten von Ihnen "
+"selbst kreiert worden sein. So schicken Sie den Entwicklern Ihr Rezept:"
 
 #. (itstool) path: item/p
 #: C/contribute.page:28
@@ -601,6 +874,9 @@ msgid ""
 "button in the top-right window and open another recipe and then press "
 "<gui>Share</gui> again."
 msgstr ""
+"Wenn Sie mehrere Rezepte freigeben wollen, klicken Sie auf <gui>Weitere "
+"hinzufügen</gui> in der oberen rechten Ecke, öffnen ein weiteres Rezept und "
+"klicken wiederum auf <gui>Freigeben</gui>."
 
 #. (itstool) path: item/p
 #: C/contribute.page:42
@@ -610,9 +886,10 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/contribute.page:46
-msgid ""
-"Select <gui>Contribute to GNOME Recipes</gui> in the bottom-right corner."
+msgid "Select <gui>Contribute to Recipes</gui> in the bottom-right corner."
 msgstr ""
+"Klicken Sie auf den <gui>Zum Rezepte-Projekt beitragen</gui>-Knopf in der "
+"unteren rechten Ecke."
 
 #. (itstool) path: item/p
 #: C/contribute.page:50 C/share.page:61
@@ -620,6 +897,8 @@ msgid ""
 "Choose the email application from the list you want to use to email the "
 "recipe and press the <gui>Select</gui> button."
 msgstr ""
+"Wählen Sie eine E-Mail-Anwendung aus der Liste aus, um das Rezept per E-Mail "
+"verschicken zu können, und klicken Sie auf <gui>Auswählen</gui>."
 
 #. (itstool) path: item/p
 #: C/contribute.page:55
@@ -629,6 +908,10 @@ msgid ""
 "<em>Subject</em> and <em>To:</em> line will be automatically filled out for "
 "you."
 msgstr ""
+"Ihre E-Mail-Anwendung wird mit einer neu zu erstellenden Nachricht geöffnet. "
+"<app>Rezepte</app> hat das Rezept bereits als Anhang hinzugefügt, ebenso "
+"werden die Felder <em>Betreff</em> and <em>An:</em> automatisch für Sie "
+"ausgefüllt."
 
 #. (itstool) path: item/p
 #: C/contribute.page:62
@@ -636,11 +919,14 @@ msgid ""
 "Press <gui>Send</gui> to email your recipe to the <app>Recipe</app> "
 "developers who will review your recipe for possible inclusion."
 msgstr ""
+"Klicken Sie auf <gui>Senden</gui>, um Ihr Rezept an die <app>Rezepte</app>-"
+"Entwickler zu senden, die es für eine mögliche Aufnahme in die Anwendung "
+"überprüfen."
 
 #. (itstool) path: info/desc
 #: C/cooking.page:9
 msgid "Use hands-free mode or timers to help you cook."
-msgstr ""
+msgstr "Den freihändigen Modus oder Alarme als Hilfe beim Kochen nutzen."
 
 #. (itstool) path: page/title
 #: C/cooking.page:20
@@ -655,11 +941,16 @@ msgid ""
 "view the steps to make a recipe, including starting timers or seeing photos "
 "of each step, if they were included in the recipe."
 msgstr ""
+"<app>Rezepte</app> verfügt über einen freihändigen Modus, in dem Anweisungen "
+"angezeigt werden, während Sie ein Rezept zubereiten. Der freihändige Modus "
+"vereinfacht die Ansicht der Schritte beim Kochen, wie die Start-Alarme oder "
+"die Anzeige der Fotos für jeden Schritt, sofern diese im jeweiligen Rezept "
+"enthalten sind."
 
 #. (itstool) path: page/p
 #: C/cooking.page:27
 msgid "To start cooking with hands-free mode:"
-msgstr ""
+msgstr "So beginnen Sie mit dem Kochen im freihändigen Modus:"
 
 #. (itstool) path: item/p
 #: C/cooking.page:30
@@ -669,7 +960,7 @@ msgstr "Öffnen Sie das Rezept, das Sie zubereiten wollen."
 #. (itstool) path: item/p
 #: C/cooking.page:34
 msgid "Press the <gui>Start Cooking</gui> button in the top right corner."
-msgstr ""
+msgstr "Klicken Sie auf <gui>Jetzt kochen</gui> in der oberen rechten Ecke."
 
 #. (itstool) path: item/p
 #: C/cooking.page:38
@@ -677,6 +968,8 @@ msgid ""
 "<app>Recipes</app> will change to full screen mode, also known as hands-free "
 "mode and display the first step to cook the recipe."
 msgstr ""
+"<app>Rezepte</app> wechselt nun in den Vollbild- bzw. freihändigen Modus und "
+"zeigt den ersten Zubereitungsschritt an."
 
 #. (itstool) path: item/p
 #: C/cooking.page:43 C/cooking.page:67
@@ -720,15 +1013,10 @@ msgid ""
 "the top-right corner."
 msgstr ""
 
-#. (itstool) path: C/cooking.page/page
-#: C/cooking.page:4
-msgid "<_:info-1/> <_:title-2/> <_:p-3/> <_:p-4/>. <_:steps-5/>"
-msgstr "<_:info-1/> <_:title-2/> <_:p-3/> <_:p-4/>. <_:steps-5/>"
-
 #. (itstool) path: info/desc
 #: C/find-recipe.page:8
 msgid "Find a recipe by name, category, cuisine, or chef."
-msgstr ""
+msgstr "Finden Sie ein Rezept nach Name, Kategorie, Küche oder Koch."
 
 #. (itstool) path: page/title
 #: C/find-recipe.page:19
@@ -748,7 +1036,7 @@ msgstr "Suche nach Rezeptname, Zutat oder Koch"
 #: C/find-recipe.page:24 C/find-recipe.page:42
 msgctxt "_"
 msgid "external ref='images/search.png' md5='b0c894f87d0a0bca717b52ecf0b4a12e'"
-msgstr "ok"
+msgstr "ok'"
 
 #. (itstool) path: section/p
 #: C/find-recipe.page:23
@@ -758,16 +1046,20 @@ msgid ""
 "\">Search</span></media> and enter your search query. The search results can "
 "include:"
 msgstr ""
+"Klicken Sie auf <media type=\"image\" mime=\"image/png\" src=\"images/search."
+"png\" its:translate=\"yes\"> <span its:translate=\"yes\">Suche</span></"
+"media> und geben Sie Ihren Suchbegriff ein. Die Suchergebnisse können "
+"Folgendes enthalten:"
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:30
 msgid "Recipes that include the text you searched for."
-msgstr ""
+msgstr "Rezepte, die den von Ihnen gesuchten Text enthalten."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:33
 msgid "Ingredients that include the text you searched for."
-msgstr ""
+msgstr "Zutaten, die den von Ihnen gesuchten Text enthalten."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:36
@@ -779,11 +1071,11 @@ msgstr "Kochnamen."
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/find-recipe.page:45 C/find-recipe.page:84 C/find-recipe.page:109
-#: C/find-recipe.page:148
+#: C/find-recipe.page:45 C/find-recipe.page:84 C/find-recipe.page:113
+#: C/find-recipe.page:152
 msgctxt "_"
 msgid "external ref='images/down.png' md5='384329e0a17b79aca6085fe4aab1361f'"
-msgstr "ok"
+msgstr "ok'"
 
 #. (itstool) path: section/p
 #: C/find-recipe.page:40
@@ -795,6 +1087,12 @@ msgid ""
 "its:translate=\"yes\"> <span its:translate=\"yes\">Down</span></media> and "
 "choose from one or more categories."
 msgstr ""
+"Sie können die Suche auch anhand von Kategorien verfeinern. Klicken Sie auf "
+"<media type=\"image\" mime=\"image/png\" src=\"images/search.png\" its:"
+"translate=\"yes\"> <span its:translate=\"yes\">Suchen</span></media> und den "
+"Abwärtspfeil <media type=\"image\" mime=\"image/png\" src=\"images/down.png"
+"\" its:translate=\"yes\"> <span its:translate=\"yes\">Ab</span></media> und "
+"wählen Sie aus einer oder mehreren Kategorien aus."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:50
@@ -873,20 +1171,29 @@ msgid ""
 "the Category."
 msgstr ""
 
+#. (itstool) path: section/p
+#: C/find-recipe.page:100
+msgid ""
+"Note that the information about dietary restrictions is provided by the "
+"recipe authors themselves and cannot be guaranteed to be accurate. Please "
+"always double-check the ingredients if you are serving a person with a "
+"gluten or dairy intolerance."
+msgstr ""
+
 #. (itstool) path: section/title
-#: C/find-recipe.page:103
+#: C/find-recipe.page:107
 msgid "Search for recipes with or without a specific ingredient"
 msgstr "Suche nach Rezepten mit oder ohne eine bestimmte Zutat"
 
 #. (itstool) path: section/p
-#: C/find-recipe.page:104
+#: C/find-recipe.page:108
 msgid ""
 "You can search for recipes that include or do not include a specific "
 "ingredient."
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:108
+#: C/find-recipe.page:112
 msgid ""
 "Press the down arrow <media type=\"image\" mime=\"image/png\" src=\"images/"
 "down.png\" its:translate=\"yes\"> <span its:translate=\"yes\">Down</span></"
@@ -894,18 +1201,18 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:113
+#: C/find-recipe.page:117
 msgid "Select the <gui>Ingredients</gui> drop down box."
-msgstr ""
+msgstr "Öffnen Sie das Auswahlmenü <gui>Zutaten</gui>."
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:116
+#: C/find-recipe.page:120
 msgid "Select an ingredient from the list, such as <em>Banana</em>."
 msgstr ""
 "Wählen Sie eine Zutat aus der Liste aus, zum Beispiel <em>Bananen</em>."
 
 #. (itstool) path: section/p
-#: C/find-recipe.page:119
+#: C/find-recipe.page:123
 msgid ""
 "A tag for that ingredient, such as <em>Banana</em>, will be displayed in the "
 "search bar and all recipes that include that bananas will be displayed. If "
@@ -917,12 +1224,12 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: section/title
-#: C/find-recipe.page:130
+#: C/find-recipe.page:134
 msgid "Search by Cuisines"
-msgstr ""
+msgstr "Nach Küche suchen"
 
 #. (itstool) path: section/p
-#: C/find-recipe.page:131
+#: C/find-recipe.page:135
 msgid ""
 "You can also search for a recipe by what type of cuisine the recipe is or "
 "region it is from. This also includes searching for seasonal recipes that "
@@ -930,14 +1237,17 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:136
+#: C/find-recipe.page:140
+#| msgid "Press the <gui style=\"button\">+</gui> button."
 msgid ""
 "In the top menu bar of <app>Recipes</app>, press the <gui style=\"button"
-"\">Cuisines</gui> button"
+"\">Cuisines</gui> button."
 msgstr ""
+"Klicken Sie in der oberen Menüleiste von  <app>Rezepte</app> auf den <gui "
+"style=\"button\">Küchen</gui>-Knopf."
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:140
+#: C/find-recipe.page:144
 msgid ""
 "A list of cuisines from around the world with brief descriptions are "
 "displayed. Click on a world cuisine to see all recipes in that category "
@@ -945,7 +1255,7 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:146
+#: C/find-recipe.page:150
 msgid ""
 "Scroll down to see a list of seasonal categories and press the down icon "
 "<media type=\"image\" mime=\"image/png\" src=\"images/down.png\" its:"
@@ -954,7 +1264,7 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:153
+#: C/find-recipe.page:157
 msgid "Select a holiday or season to show all recipes that match."
 msgstr ""
 
@@ -965,43 +1275,41 @@ msgid "Recipes"
 msgstr "Rezepte"
 
 #. (itstool) path: info/desc
-#: C/index.page:20
-msgid "A recipe manager to hep you cook."
+#: C/index.page:19
+msgid "A recipe manager to help you cook."
 msgstr "Eine Rezeptverwaltung, die Sie beim Kochen unterstützt."
 
+#. (itstool) path: page/title
+#: C/index.page:22
+msgid "<_:media-1/> Recipes"
+msgstr "<_:media-1/> Rezepte"
+
 #. (itstool) path: page/p
-#: C/index.page:23
+#: C/index.page:27
 msgid ""
 "<app>Recipes</app> is an easy to use application that will help you discover "
 "what to cook today, tomorrow, the rest of the week, and for special "
 "occasions."
 msgstr ""
-
-#. (itstool) path: page/title
-#: C/index.page:27
-msgid "<_:media-1/> Recipes"
-msgstr "<_:media-1/> Rezepte"
+"<app>Rezepte</app> ist eine einfach zu benutzende Anwendung, die Sie bei der "
+"Suche dabei unterstützt, was Sie heute, morgen, den Rest der Woche und für "
+"besondere Anlässe kochen könnten."
 
 #. (itstool) path: section/title
-#: C/index.page:33
+#: C/index.page:32
 msgid "Managing Recipes"
 msgstr "Rezepte verwalten"
 
 #. (itstool) path: section/title
-#: C/index.page:38
+#: C/index.page:37
 msgid "Cooking"
 msgstr "Kochen"
 
 #. (itstool) path: section/title
 #. (itstool) path: page/title
-#: C/index.page:42 C/share.page:28
+#: C/index.page:41 C/share.page:28
 msgid "Printing and Sharing"
 msgstr "Drucken und Weitergeben"
-
-#. (itstool) path: section/title
-#: C/index.page:47
-msgid "Common Problems"
-msgstr "Häufig auftretende Probleme"
 
 #. (itstool) path: p/link
 #: C/legal.xml:5
@@ -1058,6 +1366,8 @@ msgstr "Öffnen Sie ein Rezept."
 msgid ""
 "Press the <gui style=\"button\">Notes</gui> button in the lower-left corner."
 msgstr ""
+"Klicken Sie auf <gui style=\"button\">Notizen</gui> in der unteren linken "
+"Ecke."
 
 #. (itstool) path: item/p
 #: C/notes.page:36
@@ -1070,6 +1380,8 @@ msgid ""
 "Press the <gui style=\"button\">Notes</gui> button again lower-left corner "
 "when finished."
 msgstr ""
+"Klicken Sie erneut auf <gui style=\"button\">Notizen</gui> in der unteren "
+"linken Ecke, wenn Sie fertig sind."
 
 #. (itstool) path: section/p
 #: C/notes.page:43
@@ -1087,6 +1399,8 @@ msgstr "Ein Rezept zum Lieblingsrezept erklären."
 #: C/notes.page:49
 msgid "You can make a recipe a favorite. To favorite a recipe:"
 msgstr ""
+"Sie können ein Rezept zum Lieblingsrezept erklären. Gehen Sie dabei wie "
+"folgt vor:"
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -1096,7 +1410,7 @@ msgstr ""
 #: C/notes.page:57
 msgctxt "_"
 msgid "external ref='images/love.png' md5='2ae9287b28d11513d16239afc00147b7'"
-msgstr "ok"
+msgstr "ok'"
 
 #. (itstool) path: item/p
 #: C/notes.page:55
@@ -1153,6 +1467,8 @@ msgstr ""
 #: C/share.page:43
 msgid "Open the recipe or shopping list you want to email."
 msgstr ""
+"Öffnen Sie das Rezept oder die Einkaufsliste, die Sie als E-Mail versenden "
+"wollen."
 
 #. (itstool) path: item/p
 #: C/share.page:57
@@ -1188,6 +1504,10 @@ msgid ""
 "printer. If you have not done this, please consult the <link href=\"help:"
 "gnome-help/printing\">printing help for GNOME</link>."
 msgstr ""
+"Das Drucken eines Rezepts setzt voraus, dass Ihr Drucker bereits "
+"angeschlossen und eingerichtet ist. Falls dies noch nicht erledigt ist, "
+"können Sie die <link href=\"help:gnome-help/printing\">Hilfe zum Drucken in "
+"GNOME</link> zu Rate ziehen."
 
 #. (itstool) path: section/p
 #: C/share.page:90
@@ -1195,6 +1515,8 @@ msgid ""
 "You can print your recipes using a local or remote printer. To print a "
 "recipe:"
 msgstr ""
+"Sie können Ihr Rezept auf einem lokalen oder entfernten Drucker ausgeben. So "
+"drucken Sie ein Rezept:"
 
 #. (itstool) path: item/p
 #: C/share.page:95
@@ -1202,6 +1524,8 @@ msgid ""
 "Press the <gui style=\"menuitem\">Print</gui> button in the bottom-right "
 "corner when viewing a recipe."
 msgstr ""
+"Klicken Sie beim Betrachten eines Rezepts auf <gui style=\"menuitem"
+"\">Drucken</gui> in der unteren rechten Ecke."
 
 #. (itstool) path: item/p
 #: C/share.page:99
@@ -1223,6 +1547,8 @@ msgid ""
 "Automatically create a shopping list with the ingredients needed for a "
 "recipe."
 msgstr ""
+"Eine Einkaufsliste mit den nötigen Zutaten für ein Rezept automatisch "
+"erstellen."
 
 #. (itstool) path: page/title
 #: C/shop.page:20
@@ -1243,7 +1569,7 @@ msgstr ""
 msgid ""
 "Press the <gui>Buy Ingredients</gui> button located under the ingredient "
 "list."
-msgstr ""
+msgstr "Klicken Sie auf <gui>Zutaten kaufen</gui> unter der Zutatenliste."
 
 #. (itstool) path: item/p
 #: C/shop.page:33
@@ -1294,7 +1620,7 @@ msgstr ""
 msgid ""
 "The recipes you have added to the shopping list are shown at the top. In the "
 "upper right corner of the recipe the serving size is shown. Click the number "
-"displayed int he recipe."
+"displayed in the recipe."
 msgstr ""
 
 #. (itstool) path: item/p
@@ -1326,16 +1652,6 @@ msgstr "So entfernen Sie einen Eintrag aus der Einkaufsliste:"
 msgid "Select an item from the list."
 msgstr "Wählen Sie einen Listeneintrag aus."
 
-#. (itstool) path: p/media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/shop.page:89
-msgctxt "_"
-msgid "external ref='images/trash.png' md5='803809373918657f15776ff05db8f33c'"
-msgstr "ok"
-
 #. (itstool) path: item/p
 #: C/shop.page:87
 msgid ""
@@ -1343,11 +1659,17 @@ msgid ""
 "png\" its:translate=\"yes\"> <span its:translate=\"yes\">Trash</span></"
 "media> button and the ingredient is removed from the shopping list."
 msgstr ""
+"Klicken Sie auf den Papierkorb <media type=\"image\" mime=\"image/png\" src="
+"\"images/trash.png\" its:translate=\"yes\"> <span its:translate=\"yes"
+"\">Papierkorb</span></media> und die Zutat wird aus der Einkaufsliste "
+"entfernt."
 
 #. (itstool) path: section/p
 #: C/shop.page:94
 msgid "To add an ingredient back to the shopping list after you removed it:"
 msgstr ""
+"So fügen Sie eine Zutat wieder zur Einkaufsliste hinzu, nachdem Sie sie "
+"entfernt haben:"
 
 #. (itstool) path: item/p
 #: C/shop.page:97
@@ -1359,6 +1681,8 @@ msgstr "Klicken Sie auf das <gui>+</gui> am unteren Rand der Einkaufsliste."
 msgid ""
 "Select the item you would like added and it will appear in the shopping list."
 msgstr ""
+"Wählen Sie die hinzuzufügende Zutat aus und sie erscheint wieder in der "
+"Einkaufsliste."
 
 #. (itstool) path: section/p
 #: C/shop.page:104
@@ -1366,3 +1690,5 @@ msgid ""
 "After you have completed your shopping, press the <gui> Done Shopping</gui> "
 "to clear your shopping list."
 msgstr ""
+"Wenn Ihr Einkauf erledigt ist, klicken Sie auf <gui>Einkauf abgeschlossen</"
+"gui>, um die Einkaufsliste zu leeren."
