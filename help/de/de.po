@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-recipes\n"
-"POT-Creation-Date: 2018-06-10 18:12+0000\n"
-"PO-Revision-Date: 2018-09-18 11:28+0200\n"
+"POT-Creation-Date: 2018-09-18 09:30+0000\n"
+"PO-Revision-Date: 2018-10-03 21:41+0200\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -1004,6 +1004,9 @@ msgid ""
 "left corner of hands-free mode. You can move to the next steps while a timer "
 "is running."
 msgstr ""
+"Wenn ein Alarm aktiv ist, wird der Name des Alarms im freihändigen Modus in "
+"der oberen linken Ecke angezeigt. Sie können zu den nächsten Schritten "
+"springen, während ein Alarm aktiv ist."
 
 #. (itstool) path: item/p
 #: C/cooking.page:72
@@ -1012,6 +1015,9 @@ msgid ""
 "time, press the <key>Escape</key> key or press the <gui>x</gui> button in "
 "the top-right corner."
 msgstr ""
+"Wenn Sie alle Schritte ausgeführt haben oder den freihändigen Modus beenden "
+"wollen, drücken Sie <key>Esc</key> oder klicken Sie auf das <gui>x</gui> in "
+"der oberen rechten Ecke."
 
 #. (itstool) path: info/desc
 #: C/find-recipe.page:8
@@ -1146,6 +1152,8 @@ msgstr ""
 msgid ""
 "From the main <app>Recipes</app> window scroll down to <gui>Categories</gui>."
 msgstr ""
+"Rollen Sie im <app>Rezepte</app>-Hauptfenster hinunter zu <gui>Kategorien</"
+"gui>."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:82
@@ -1154,6 +1162,10 @@ msgid ""
 "\"image\" mime=\"image/png\" src=\"images/down.png\" its:translate=\"yes\"> "
 "<span its:translate=\"yes\">Down</span></media> to show all Categories."
 msgstr ""
+"Sie können die Liste der Kategorien auch ausklappen, indem Sie das "
+"Abwärtspfeil-Symbol <media type=\"image\" mime=\"image/png\" src=\"images/"
+"down.png\" its:translate=\"yes\"> <span its:translate=\"yes\">Ab</span></"
+"media> anklicken, woraufhin alle Kategorien angezeigt werden."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:89
@@ -1170,6 +1182,10 @@ msgid ""
 "Category with a <gui>Read More</gui> link you can click to learn more about "
 "the Category."
 msgstr ""
+"Wenn Sie aus den veganen, vegetarischen, Milchprodukte-freien, glutenfreien "
+"oder nussfreien Kategorien auswählen, zeigen die Suchergebnisse zusätzlich "
+"eine Beschreibung der Kategorie an, mit einem <gui>Erfahren Sie mehr</gui>-"
+"Link, über den Sie weitere Informationen zu dieser Kategorie enthalten."
 
 #. (itstool) path: section/p
 #: C/find-recipe.page:100
@@ -1179,6 +1195,10 @@ msgid ""
 "always double-check the ingredients if you are serving a person with a "
 "gluten or dairy intolerance."
 msgstr ""
+"Beachten Sie, dass die Informationen zu den Diät-Einschränkungen von den "
+"Autoren der Rezepte selbst stammen. Daher kann deren Korrektheit nicht "
+"garantiert werden. Bitte überprüfen Sie die Zutaten sorgfältig, wenn Sie für "
+"eine Person mit einer Gluten- oder Milchprodukte-Intoleranz kochen."
 
 #. (itstool) path: section/title
 #: C/find-recipe.page:107
@@ -1191,6 +1211,8 @@ msgid ""
 "You can search for recipes that include or do not include a specific "
 "ingredient."
 msgstr ""
+"Sie können nach Rezepten suchen, die eine bestimmte Zutat enthalten oder "
+"nicht enthalten."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:112
@@ -1199,6 +1221,9 @@ msgid ""
 "down.png\" its:translate=\"yes\"> <span its:translate=\"yes\">Down</span></"
 "media> in the search bar."
 msgstr ""
+"Klicken Sie auf den Abwärtspfeil <media type=\"image\" mime=\"image/png\" "
+"src=\"images/down.png\" its:translate=\"yes\"> <span its:translate=\"yes"
+"\">Ab</span></media> in der Suchleiste."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:117
@@ -1235,10 +1260,13 @@ msgid ""
 "region it is from. This also includes searching for seasonal recipes that "
 "might be made during certain holidays or times of year."
 msgstr ""
+"Sie können auch anhand des Küchentyps oder der regionalen Herkunft nach "
+"einem Rezept suchen. Das schließt auch die Suche nach saisonalen Rezepten "
+"ein, die insbesondere zu bestimmten Feiertagen oder Jahreszeiten zubereitet "
+"werden."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:140
-#| msgid "Press the <gui style=\"button\">+</gui> button."
 msgid ""
 "In the top menu bar of <app>Recipes</app>, press the <gui style=\"button"
 "\">Cuisines</gui> button."
@@ -1253,6 +1281,9 @@ msgid ""
 "displayed. Click on a world cuisine to see all recipes in that category "
 "sorted by the type of dish."
 msgstr ""
+"Eine Liste der Küchen aus aller Welt mit Kurzbeschreibungen wird angezeigt. "
+"Klicken Sie auf eine davon, um alle Rezepte in dieser Kategorie anzuzeigen, "
+"sortiert nach der Art des Gerichts."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:150
@@ -1262,11 +1293,16 @@ msgid ""
 "translate=\"yes\"> <span its:translate=\"yes\">Down</span></media> to see "
 "all seasonal categories."
 msgstr ""
+"Rollen Sie nach unten, um eine Liste der saisonalen Kategorien anzuzeigen, "
+"und klicken Sie auf den Abwärtspfeil <media type=\"image\" mime=\"image/png"
+"\" src=\"images/down.png\" its:translate=\"yes\"> <span its:translate=\"yes"
+"\">Ab</span></media>, um alle saisonalen Kategorien anzuzeigen."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:157
 msgid "Select a holiday or season to show all recipes that match."
 msgstr ""
+"Wählen Sie ein Fest oder eine Saison, um alle passenden Rezepte anzuzeigen."
 
 #. (itstool) path: info/title
 #: C/index.page:7
@@ -1335,7 +1371,7 @@ msgstr ""
 #. (itstool) path: info/desc
 #: C/notes.page:8
 msgid "How to add notes to a recipe or make it a favorite."
-msgstr ""
+msgstr "Notizen zu einem Rezept hinzufügen oder es zum Lieblingsrezept machen."
 
 #. (itstool) path: page/title
 #: C/notes.page:19
@@ -1355,6 +1391,10 @@ msgid ""
 "longer, or if it became a favorite of a friend or family member. To add a "
 "note to a recipe:"
 msgstr ""
+"Sie können persönliche Notizen zu einem Rezept hinzufügen. Vielleicht wollen "
+"Sie vermerken, was Sie daran verändert haben oder ob die Kochzeit kürzer "
+"oder länger sein sollte, oder ob es ein Lieblingsrezept eines Freundes oder "
+"Familienmitglieds ist. So fügen Sie eine Notiz zu einem Rezept hinzu:"
 
 #. (itstool) path: item/p
 #: C/notes.page:29 C/notes.page:52 C/shop.page:26
@@ -1389,6 +1429,8 @@ msgid ""
 "Your note will now be displayed below the recipe description and above the "
 "recipe directions."
 msgstr ""
+"Ihre Notiz wird nun zwischen der Rezeptbeschreibung und den "
+"Zubereitungsanweisungen angezeigt."
 
 #. (itstool) path: section/title
 #: C/notes.page:48
@@ -1419,12 +1461,18 @@ msgid ""
 "\" src=\"images/love.png\" its:translate=\"yes\"> <span its:translate=\"yes"
 "\">Add to Favorites</span></media> button."
 msgstr ""
+"Klicken Sie auf den Knopf <gui>Zu Lieblingsrezepten hinzufügen</gui> <media "
+"type=\"image\" mime=\"image/png\" src=\"images/love.png\" its:translate=\"yes"
+"\"> <span its:translate=\"yes\">Zu Lieblingsrezepten hinzufügen</span></"
+"media>."
 
 #. (itstool) path: section/p
 #: C/notes.page:62
 msgid ""
 "To remove from favorites, press the <gui>Add to Favorites</gui> button again."
 msgstr ""
+"Um es aus den Lieblingsrezepten zu entfernen, klicken Sie erneut auf <gui>Zu "
+"Lieblingsrezepten hinzufügen</gui>"
 
 #. (itstool) path: info/desc
 #: C/share.page:9
@@ -1455,6 +1503,12 @@ msgid ""
 "They can download the attachment and double-click it to import the recipe "
 "you shared into <app>Recipes</app>."
 msgstr ""
+"Sie können eine Einkaufsliste oder ein Rezept per E-Mail verschicken. In den "
+"als E-Mail verschickten Einkaufslisten enthaltene Zutaten werden dabei im "
+"Nachrichtentext der E-Mail aufgeführt. Wenn Sie ein Rezept per E-Mail "
+"verschicken, erhält es der Empfänger als E-Mail-Anhang. Der Anhang kann "
+"heruntergeladen und per Doppelklick geöffnet werden, um es in <app>Rezepte</"
+"app> zu importieren."
 
 #. (itstool) path: note/p
 #: C/share.page:38
@@ -1462,6 +1516,8 @@ msgid ""
 "You must use an email application to share recipes. Web based email, like "
 "Gmail or Yahoo!, will not work to share recipes."
 msgstr ""
+"Sie müssen eine E-Mail-Anwendung verwenden, um Rezepte freizugeben. "
+"Webbasierte E-Mail wie Gmail oder Yahoo! funktioniert nicht."
 
 #. (itstool) path: item/p
 #: C/share.page:43
@@ -1491,6 +1547,9 @@ msgid ""
 "Enter the email address of the person you would like to share with and any "
 "additional information in the email body and send your email."
 msgstr ""
+"Geben Sie die E-Mail-Adresse der Person ein, für die Sie das Rezept "
+"freigeben wollen, sowie etwaige zusätzliche Informationen, und verschicken "
+"Sie Ihre E-Mail."
 
 #. (itstool) path: section/title
 #: C/share.page:82
