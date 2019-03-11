@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-10 18:12+0000\n"
-"PO-Revision-Date: 2019-03-09 12:04+0100\n"
+"PO-Revision-Date: 2019-03-11 12:52+0100\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
@@ -61,7 +61,7 @@ msgstr ""
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:18
 msgid "The major features of Recipes include:"
-msgstr ""
+msgstr "Lis funzionalitâts principâls di Ricetis a includin:"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:22
 msgid "Add and edit your own recipes"
@@ -77,11 +77,11 @@ msgstr "Espuarte e stampe lis listis de spese"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:25
 msgid "Adjust quantities based on the number of servings"
-msgstr ""
+msgstr "Justâ lis cuantitâts in base al numar di plats"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:26
 msgid "Mark recipes to cook later or add them to your favorites"
-msgstr ""
+msgstr "Segnâ lis ricetis di preparâ plui tart o zontâlis tai preferîts"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:27
 msgid "Add notes to recipes"
@@ -121,11 +121,11 @@ msgstr "Une cusine individuâl"
 
 #: data/org.gnome.Recipes.gschema.xml:25
 msgid "The user ID of the current user"
-msgstr ""
+msgstr "Il ID utent dal utent atuâl"
 
 #: data/org.gnome.Recipes.gschema.xml:26
 msgid "The user ID of the current user."
-msgstr ""
+msgstr "Il ID utent dal utent atuâl."
 
 #: data/org.gnome.Recipes.gschema.xml:32
 msgid "The number of times cooking mode has been presented"
@@ -151,7 +151,7 @@ msgstr "La liste dai preferîts"
 
 #: data/org.gnome.Recipes.gschema.xml:48
 msgid "The list of favorites. Each entry in the list is the ID of a recipe."
-msgstr ""
+msgstr "La liste dai preferîts. Ogni vôs inte liste e je il ID di une ricete."
 
 #: data/org.gnome.Recipes.gschema.xml:54
 msgid "The timestamp of the last change to the shopping list"
@@ -175,21 +175,23 @@ msgstr ""
 
 #: data/org.gnome.Recipes.gschema.xml:70
 msgid "Ingredients that were removed from the shopping list"
-msgstr ""
+msgstr "I ingredients che a son stât gjavât de liste de spese"
 
 #: data/org.gnome.Recipes.gschema.xml:71
 msgid "The names of ingredients that were removed from the shopping list."
-msgstr ""
+msgstr "I nons dai ingredients che a son stât gjavâts de liste de spese."
 
 #: data/org.gnome.Recipes.gschema.xml:77
 msgid "The list of recipes to be exported"
-msgstr ""
+msgstr "La liste des ricetis di espuartâ"
 
 #: data/org.gnome.Recipes.gschema.xml:78
 msgid ""
 "The list of recipes to be exported. Each entry in the list is the ID of a "
 "recipe."
 msgstr ""
+"La liste des ricetis di espuartâ. Ogni vôs inte liste e je il ID di une "
+"ricete."
 
 #: data/org.gnome.Recipes.gschema.xml:84
 msgid "The setting for which unit temperatures should be displayed in."
@@ -662,11 +664,11 @@ msgstr "Ingredient"
 
 #: src/gr-ingredients-viewer-row.ui:169
 msgid "Use a number, followed by an (optional) unit."
-msgstr ""
+msgstr "Dopre une numar, seguît di une unitât (opzionâl)."
 
 #: src/gr-ingredients-viewer-row.ui:180
 msgid "Examples: 1 kg, 2 1/2 pounds, 250 ml, 6"
-msgstr ""
+msgstr "Esemplis: 1 kg, 2 1/2 liris, 250 ml, 6"
 
 #: src/gr-ingredients-viewer.ui:13 src/gr-query-editor.ui:235
 #: src/gr-edit-page.c:1511 src/gr-recipe-formatter.c:104
@@ -836,7 +838,7 @@ msgstr "Invie inzornament"
 
 #: src/gr-window.ui:492
 msgid "Shopping List has been exported to Todoist"
-msgstr ""
+msgstr "La liste de spese e je stade espuartade su Todoist"
 
 #: src/gr-window.ui:569 src/gr-window.c:398
 msgid "Cuisines"
@@ -953,6 +955,9 @@ msgid ""
 "Recipes is a present to GNOME for its 20th birthday. We invite the GNOME "
 "community all over the world to share recipes and enjoy a good meal together."
 msgstr ""
+"Ricetis al è un regâl a GNOME pai siei 20 agns. O invidin la comunitât di "
+"GNOME ator pal mont a condividi lis ricetis e gjoldi di une buine mangjade "
+"ducj adun."
 
 #: src/recipe-surprise.ui:79
 msgid "Let’s Party"
@@ -1099,11 +1104,11 @@ msgstr "Stampe la version e jes"
 
 #: src/gr-app.c:445
 msgid "Turn on verbose logging"
-msgstr ""
+msgstr "Ative regjistrazion prolisse"
 
 #: src/gr-app.c:449
 msgid "Show a category"
-msgstr ""
+msgstr "Mostre une categorie"
 
 #: src/gr-chef-dialog.c:159 src/gr-image-viewer.c:623
 msgid "Select an Image"
