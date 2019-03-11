@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-10 18:12+0000\n"
-"PO-Revision-Date: 2019-03-11 12:52+0100\n"
+"PO-Revision-Date: 2019-03-11 13:18+0100\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
@@ -405,12 +405,16 @@ msgid ""
 "Contains dairy products. Please always double-check the ingredients if you "
 "are serving a person with gluten or dairy intolerance."
 msgstr ""
+"Al conten prodots derivâts dal lat. Par plasê controle simpri dôs voltis i "
+"ingredients se si sta servint une persone cun intolerance al glutin o al lat."
 
 #: src/gr-details-page.ui:119
 msgid ""
 "Contains Gluten. Please always double-check the ingredients if you are "
 "serving a person with gluten or dairy intolerance."
 msgstr ""
+"Al conten glutin. Par plasê controle simpri dôs voltis i ingredients se si "
+"sta servint une persone cun intolerance al glutin o al lat."
 
 #: src/gr-details-page.ui:126 src/gr-details-page.c:537
 msgid "Spicy"
@@ -936,13 +940,12 @@ msgid "Share with a friend"
 msgstr "Condivît cuntun amî"
 
 #: src/recipe-export-dialog.ui:63
-#, fuzzy
 msgid "Contribute to the Recipes project"
-msgstr "Contribuìs aes ricetis GNOME"
+msgstr "Contribuìs al progjet Ricetis"
 
 #: src/recipe-surprise.ui:28
 msgid "GNOME turns 20 !"
-msgstr ""
+msgstr "GNOME al à passât i 20!"
 
 #: src/recipe-surprise.ui:52
 msgid ""
@@ -1096,7 +1099,7 @@ msgstr ""
 #: src/gr-app.c:209
 #, c-format
 msgid "Supported categories: %s\n"
-msgstr ""
+msgstr "Categoriis supuartadis: %s\n"
 
 #: src/gr-app.c:441
 msgid "Print the version and exit"
@@ -1351,13 +1354,12 @@ msgstr ""
 "par dolç plui comuns a includin nolis, mîl, pomis e paste sfueade."
 
 #: src/gr-cuisine.c:108
-#, fuzzy
 msgid ""
 "Mediterranean cuisine has a lot to offer, and is legendary for being very "
 "healthy too. Expect to see olives, yoghurt and garlic."
 msgstr ""
-"La cusine mediteranie e à tant di ufrî e e je famose par jessi ancje "
-"salutâr. Spietiti di viodi ulivis, jogurt e ai."
+"La cusine mediteranie e à tant di ufrî e e je famose par jessi ancje une "
+"vore salutâr. Spietiti di viodi ulivis, jogurt e ai."
 
 #: src/gr-cuisine.c:109
 msgid ""
@@ -1652,7 +1654,7 @@ msgstr "Nissun ingredient ancjemò zontât"
 #: src/gr-gourmet-format.c:174
 #, c-format
 msgid "Not a Gourmet XML document"
-msgstr ""
+msgstr "Nol è un document XML Gourmet"
 
 #: src/gr-ingredients-viewer-row.c:159
 msgid "Amount…"
@@ -1846,7 +1848,6 @@ msgstr ""
 "tu varessis di provâ chestis ricetis."
 
 #: src/gr-recipe-exporter.c:225
-#, fuzzy
 msgid "(The attached file can be imported into GNOME Recipes.)"
 msgstr "(Il file alegât al pues jessi impuartât in GNOME Ricetis.)"
 
@@ -1872,7 +1873,6 @@ msgstr[0] "%d ricete selezionade pe condivision"
 msgstr[1] "%d ricetis selezionadis pe condivision"
 
 #: src/gr-recipe-exporter.c:649
-#, fuzzy
 msgid ""
 "Some of the selected recipes are included\n"
 "with GNOME Recipes. You should only contribute\n"
@@ -1919,9 +1919,9 @@ msgstr ""
 "No si è rivâts a cjariâ la ricete: impussibil analizâ la clâf Modificât"
 
 #: src/gr-recipe-importer.c:809
-#, fuzzy, c-format
+#, c-format
 msgid "No chef information found"
-msgstr "Informazion cogo"
+msgstr "Nissune informazion sul cogo cjatade"
 
 #: src/gr-recipe-importer.c:839
 #, c-format
@@ -1990,12 +1990,12 @@ msgstr[0] "Compre ingredients: <b>%s, %s e %d altri</b>"
 msgstr[1] "Compre ingredients: <b>%s, %s e %d altris</b>"
 
 #: src/gr-recipe-store.c:1338
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "A recipe with this name and author (%s) already exists.\n"
 "Please choose a different name"
 msgstr ""
-"Une ricete cun chest non e autôr e esist za.\n"
+"Une ricete cun chest non e autôr (%s) e esist za.\n"
 "Sielç un altri non"
 
 #: src/gr-recipe-store.c:1367
@@ -2072,7 +2072,6 @@ msgstr "Zonte un Account"
 
 #: src/gr-shopping-list-exporter.c:476 src/gr-shopping-list-exporter.c:566
 #, fuzzy
-#| msgid "Shopping List"
 msgid "Shopping List from Recipes"
 msgstr "Liste de spese"
 
@@ -2175,10 +2174,9 @@ msgid "pound"
 msgstr "lire"
 
 #: src/gr-unit.c:48
-#, fuzzy
 msgctxt "unit plural"
 msgid "pounds"
-msgstr "lire"
+msgstr "liris"
 
 #: src/gr-unit.c:49
 msgctxt "unit abbreviation"
@@ -2413,12 +2411,12 @@ msgstr "cm"
 #: src/gr-unit.c:65
 msgctxt "unit name"
 msgid "centimeter"
-msgstr ""
+msgstr "centimetri"
 
 #: src/gr-unit.c:65
 msgctxt "unit plural"
 msgid "centimeters"
-msgstr ""
+msgstr "centimetris"
 
 #: src/gr-unit.c:66
 msgctxt "unit abbreviation"
@@ -2428,12 +2426,12 @@ msgstr "m"
 #: src/gr-unit.c:66
 msgctxt "unit name"
 msgid "meter"
-msgstr ""
+msgstr "metri"
 
 #: src/gr-unit.c:66
 msgctxt "unit plural"
 msgid "meters"
-msgstr ""
+msgstr "metris"
 
 #: src/gr-unit.c:67
 #, fuzzy
@@ -2582,12 +2580,16 @@ msgid ""
 "The “%s” recipe has unsaved changes.\n"
 "Close the window anyway?"
 msgstr ""
+"La ricete “%s” e à modifichis no salvadis.\n"
+"Sierâ distès il barcon?"
 
 #: src/gr-window.c:540
 msgid ""
 "The new recipe has not been saved.\n"
 "Close the window anyway?"
 msgstr ""
+"La gnove ricete no je stade salvade.\n"
+"Sierâ distès il barcon?"
 
 #: src/gr-window.c:664
 #, c-format
@@ -2604,10 +2606,8 @@ msgid "Ready to Cook!"
 msgstr ""
 
 #: src/gr-window.c:937
-#, fuzzy
-#| msgid "Short Name:"
 msgid "Sorted by Name"
-msgstr "Non curt:"
+msgstr "Ordenât par non"
 
 #: src/gr-window.c:942
 #, fuzzy
@@ -2626,7 +2626,7 @@ msgstr "Selezione un file di ricete"
 #: src/gr-window.c:1241
 #, c-format
 msgid "Recipes have been exported to “%s”"
-msgstr ""
+msgstr "Lis ricetis a son stadis espuartadis a “%s”"
 
 #: src/gr-window.c:1279
 msgid "Select a file"
@@ -3664,19 +3664,17 @@ msgid "Sage"
 msgstr ""
 
 #: src/ingredients.inc:228
-#, fuzzy
 #| msgid "Almond"
 msgid "Salmon"
-msgstr "Mandule"
+msgstr "Salmon"
 
 #: src/ingredients.inc:229
 msgid "Salt"
 msgstr "Sâl"
 
 #: src/ingredients.inc:230
-#, fuzzy
 msgid "Salt and pepper"
-msgstr "cence pevar"
+msgstr "Sâl e pevar"
 
 #: src/ingredients.inc:231
 msgid "Saucebinder"
