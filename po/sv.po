@@ -1,15 +1,15 @@
 # Swedish translation for recipes.
-# Copyright © 2016-2018 recipes's COPYRIGHT HOLDER
+# Copyright © 2016-2019 recipes's COPYRIGHT HOLDER
 # This file is distributed under the same license as the recipes package.
 # Josef Andersson <l10nl18nsweja@gmail.com>, 2016, 2017.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2017, 2018.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2017, 2018, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-02 04:20+0000\n"
-"PO-Revision-Date: 2018-03-11 19:52+0100\n"
+"POT-Creation-Date: 2018-06-10 18:12+0000\n"
+"PO-Revision-Date: 2019-05-11 20:09+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
@@ -198,7 +198,7 @@ msgstr ""
 
 #: data/org.gnome.Recipes.gschema.xml:84
 msgid "The setting for which unit temperatures should be displayed in."
-msgstr ""
+msgstr "Inställningen för vilken enhet som temperaturer ska visas i."
 
 #: data/org.gnome.Recipes.gschema.xml:85
 msgid ""
@@ -206,44 +206,50 @@ msgid ""
 "'locale', which means to use the LC_MEASUREMENT category of the current "
 "locale to decide."
 msgstr ""
+"Inställningen för vilken enhet som temperaturer ska visas i. Standard är "
+"”locale”, vilket betyder att använda LC_MEASUREMENT-kategorin för aktuell "
+"lokal för att bestämma det."
 
 #: data/org.gnome.Recipes.gschema.xml:92
 msgid "By which key to sort lists."
-msgstr ""
+msgstr "Enligt vilken nyckel listor ska sorteras."
 
 #: data/org.gnome.Recipes.gschema.xml:93
 msgid "The setting determines which key is used to sort lists of recipes by."
-msgstr ""
+msgstr "Inställningen avgör vilken nyckel som receptlistor ska sorteras efter."
 
 #: data/org.gnome.Recipes.gschema.xml:99
 msgid "Whether the surprise dialog should be shown."
-msgstr ""
+msgstr "Huruvida överraskningsdialogen ska visas."
 
 #: data/org.gnome.Recipes.gschema.xml:100
 msgid ""
 "The setting determines whether the surprise dialog should be shown on "
 "startup."
 msgstr ""
+"Inställningen avgör huruvida överraskningsdialogen ska visas vid uppstart."
 
 #: data/org.gnome.Recipes.gschema.xml:106
 msgid "The setting for which unit volumes should be displayed in."
-msgstr ""
+msgstr "Inställningen för vilken enhet som volym ska visas i."
 
 #: data/org.gnome.Recipes.gschema.xml:107
 msgid ""
 "The setting for which unit volumes should be displayed in. Default is "
 "'locale',"
 msgstr ""
+"Inställningen för vilken enhet som volym ska visas i. Standard är ”locale”,"
 
 #: data/org.gnome.Recipes.gschema.xml:113
 msgid "The setting for which unit weights should be displayed in."
-msgstr ""
+msgstr "Inställningen för vilken enhet som vikt ska visas i."
 
 #: data/org.gnome.Recipes.gschema.xml:114
 msgid ""
 "The setting for which unit weights should be displayed in. Default is "
 "'locale',"
 msgstr ""
+"Inställningen för vilken enhet som vikt ska visas i. Standard är ”locale”,"
 
 #: src/chef-conflict-dialog.ui:10
 msgid "Same Chef"
@@ -428,7 +434,7 @@ msgstr "_Inhandla ingredienser"
 
 #: src/gr-details-page.ui:164 src/gr-edit-page.ui:315
 msgid "_Yield"
-msgstr ""
+msgstr "_Antal"
 
 #: src/gr-details-page.ui:218
 msgid "Preparation Time"
@@ -541,16 +547,12 @@ msgid "More than an hour"
 msgstr "Mer än en timme"
 
 #: src/gr-edit-page.ui:393
-#, fuzzy
-#| msgid "Cooking Time"
 msgid "_Cooking Time"
-msgstr "Tillagningstid"
+msgstr "_Tillagningstid"
 
 #: src/gr-edit-page.ui:441
-#, fuzzy
-#| msgid "Cuisine"
 msgid "C_uisine"
-msgstr "Kokkonst"
+msgstr "K_okkonst"
 
 #: src/gr-edit-page.ui:477
 msgid "_Meal"
@@ -561,10 +563,8 @@ msgid "S_eason"
 msgstr "År_stid"
 
 #: src/gr-edit-page.ui:549
-#, fuzzy
-#| msgid "Spiciness"
 msgid "_Spiciness"
-msgstr "Kryddighet"
+msgstr "_Kryddighet"
 
 #: src/gr-edit-page.ui:569 src/gr-spice-row.c:127
 msgid "Mild"
@@ -611,10 +611,8 @@ msgid "Halal"
 msgstr "Halal"
 
 #: src/gr-edit-page.ui:708
-#, fuzzy
-#| msgid "Directions"
 msgid "Di_rections"
-msgstr "Instruktioner"
+msgstr "Inst_ruktioner"
 
 #: src/gr-edit-page.ui:776
 msgid "Preview"
@@ -678,11 +676,11 @@ msgstr "Ingrediens"
 
 #: src/gr-ingredients-viewer-row.ui:169
 msgid "Use a number, followed by an (optional) unit."
-msgstr ""
+msgstr "Använd ett tal, (valfritt) följt av en enhet."
 
 #: src/gr-ingredients-viewer-row.ui:180
 msgid "Examples: 1 kg, 2 1/2 pounds, 250 ml, 6"
-msgstr ""
+msgstr "Exempel: 1 kg, 2 1/2 liter, 250 ml, 6"
 
 #: src/gr-ingredients-viewer.ui:13 src/gr-query-editor.ui:235
 #: src/gr-edit-page.c:1511 src/gr-recipe-formatter.c:104
@@ -699,9 +697,8 @@ msgid "Remove"
 msgstr "Ta bort"
 
 #: src/gr-ingredients-viewer.ui:86
-#, fuzzy
 msgid "Add more ingredients"
-msgstr "Lägg till ingrediens"
+msgstr "Lägg till fler ingredienser"
 
 #: src/gr-list-page.ui:124
 msgid "There are no recipes here yet."
@@ -761,10 +758,8 @@ msgid "Featured GNOME Chefs"
 msgstr "GNOME-kockar i blickfånget"
 
 #: src/gr-recipe-tile.ui:58
-#, fuzzy
-#| msgid "Imported Recipes"
 msgid "Contributed recipe"
-msgstr "Importerade recept"
+msgstr "Bidraget recept"
 
 #: src/gr-search-page.ui:42
 msgid "Try a different search"
@@ -788,7 +783,7 @@ msgstr "Inget att lägga till"
 
 #: src/gr-shopping-tile.ui:101
 msgid "Yield"
-msgstr ""
+msgstr "Antal"
 
 #: src/gr-time-widget.ui:31
 msgid "Start"
@@ -840,7 +835,7 @@ msgstr "Ingredienser för inhandling lades till."
 
 #: src/gr-window.ui:327
 msgid "View Shopping List"
-msgstr "Visa inhandlingslista"
+msgstr "Visa inköpslista"
 
 #: src/gr-window.ui:384
 msgid "Undo"
@@ -851,10 +846,8 @@ msgid "Send Update"
 msgstr "Skicka uppdatering"
 
 #: src/gr-window.ui:492
-#, fuzzy
-#| msgid "Recipes have been exported to “%s”"
 msgid "Shopping List has been exported to Todoist"
-msgstr "Recept har exporterats till ”%s”"
+msgstr "Inköpslista har exporterats till Todoist"
 
 #: src/gr-window.ui:569 src/gr-window.c:398
 msgid "Cuisines"
@@ -865,8 +858,9 @@ msgid "Name"
 msgstr "Namn"
 
 #: src/gr-window.ui:630
+#, fuzzy
 msgid "Recency"
-msgstr ""
+msgstr "Nylighet"
 
 #: src/menus.ui:6 src/menus.ui:48
 msgid "_Import"
@@ -925,9 +919,8 @@ msgid "Help"
 msgstr "Hjälp"
 
 #: src/menus.ui:89
-#, fuzzy
 msgid "Recipes _Help"
-msgstr "Receptsida"
+msgstr "_Hjälp för Recept"
 
 #: src/recipe-conflict-dialog.ui:10 src/shopping-list-exporter-dialog.ui:21
 #: src/gr-chef-dialog.c:163 src/gr-image-viewer.c:627
@@ -965,36 +958,37 @@ msgid ""
 "YEARS\n"
 "STRONG"
 msgstr ""
+"ÅR\n"
+"STARKA"
 
 #: src/recipe-surprise.ui:68
 msgid ""
 "Recipes is a present to GNOME for its 20th birthday. We invite the GNOME "
 "community all over the world to share recipes and enjoy a good meal together."
 msgstr ""
+"Recept är en present till GNOME på dess 20:e födelsedag. Vi bjuder in GNOME-"
+"gemenskapen över hela världen att dela sina recept och avnjuta en härlig "
+"måltid tillsammans."
 
 #: src/recipe-surprise.ui:79
 msgid "Let’s Party"
-msgstr ""
+msgstr "Låt festen börja"
 
 #: src/recipe-whats-new-dialog.ui:8
 msgid "What’s New in Recipes"
 msgstr "Vad är nytt i Recept"
 
 #: src/shopping-list-exporter-dialog.ui:13 src/gr-shopping-list-exporter.c:278
-#, fuzzy
-#| msgid "Ingredients"
 msgid "Export Ingredients"
-msgstr "Ingredienser"
+msgstr "Exportera ingredienser"
 
 #: src/shopping-list-exporter-dialog.ui:55
-#, fuzzy
-#| msgid "_Export"
 msgid "Export"
-msgstr "_Exportera"
+msgstr "Exportera"
 
 #: src/shopping-list-exporter-dialog.ui:101
 msgid "Email"
-msgstr ""
+msgstr "E-post"
 
 #: src/shopping-list-exporter-dialog.ui:136
 #: src/shopping-list-exporter-dialog.ui:201
@@ -1002,10 +996,8 @@ msgid "Todoist"
 msgstr "Todoist"
 
 #: src/shopping-list-exporter-dialog.ui:152
-#, fuzzy
-#| msgid "Add Timer"
 msgid "Add service"
-msgstr "Lägg till tidtagare"
+msgstr "Lägg till tjänst"
 
 # Tooltip för knappen "Built with Builder"
 #: src/gr-about-dialog.c:132
@@ -1092,6 +1084,7 @@ msgstr "System"
 msgid "translator-credits"
 msgstr ""
 "Josef Andersson <josef.andersson@fripost.se>\n"
+"Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "\n"
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
@@ -1120,7 +1113,7 @@ msgstr ""
 #: src/gr-app.c:209
 #, c-format
 msgid "Supported categories: %s\n"
-msgstr ""
+msgstr "Kategorier som stöds: %s\n"
 
 #: src/gr-app.c:441
 msgid "Print the version and exit"
@@ -1373,13 +1366,12 @@ msgstr ""
 "dessertingredienser omfattar nötter, honung, frukter och filodeg."
 
 #: src/gr-cuisine.c:108
-#, fuzzy
 msgid ""
 "Mediterranean cuisine has a lot to offer, and is legendary for being very "
 "healthy too. Expect to see olives, yoghurt and garlic."
 msgstr ""
-"Medelhavsmaten har massor att erbjuda och är legendarisk för att den också "
-"är hälsosam. Förvänta dig att se oliver, yoghurt och vitlök."
+"Medelhavsmaten har massor att erbjuda och är legendarisk för att också vara "
+"väldigt hälsosam. Förvänta dig att se oliver, yoghurt och vitlök."
 
 #: src/gr-cuisine.c:109
 msgid ""
@@ -1426,13 +1418,13 @@ msgstr ""
 
 #: src/gr-details-page.c:193 src/gr-edit-page.c:936
 msgid "serving"
-msgstr ""
+msgstr "portion"
 
 #: src/gr-details-page.c:193 src/gr-edit-page.c:937
 #: src/gr-recipe-importer.c:504 src/gr-recipe-store.c:410
 #: src/gr-shopping-tile.c:110
 msgid "servings"
-msgstr ""
+msgstr "portioner"
 
 #: src/gr-details-page.c:367
 msgid "Could not find this recipe."
@@ -1574,7 +1566,7 @@ msgstr ""
 
 #: src/gr-diet.c:81
 msgid "Halal meat is prepared according to Islamic traditions"
-msgstr ""
+msgstr "Halalkött tillreds enligt islamiska traditioner"
 
 #: src/gr-edit-page.c:600
 msgid "hour"
@@ -1631,21 +1623,17 @@ msgstr "Receptupphovsman"
 
 #: src/gr-edit-page.c:940
 msgid "loaf"
-msgstr ""
+msgstr "skiva"
 
 #: src/gr-edit-page.c:941
 msgid "loafs"
-msgstr ""
+msgstr "skivor"
 
 #: src/gr-edit-page.c:944
-#, fuzzy
-#| msgctxt "unit name"
-#| msgid "ounce"
 msgid "ounce"
 msgstr "uns"
 
 #: src/gr-edit-page.c:945
-#, fuzzy
 msgid "ounces"
 msgstr "uns"
 
@@ -1659,14 +1647,14 @@ msgid "You need to provide a name for the recipe"
 msgstr "Du måste ange ett namn för receptet"
 
 #: src/gr-edit-page.c:1752
-#, fuzzy, c-format
+#, c-format
 msgid "Some ingredients need correction"
-msgstr "Inga ingredienser tillagda än"
+msgstr "Några ingredienser behöver korrigering"
 
 #: src/gr-gourmet-format.c:174
 #, c-format
 msgid "Not a Gourmet XML document"
-msgstr ""
+msgstr "Inte ett Gourmet XML-dokument"
 
 #: src/gr-ingredients-viewer-row.c:159
 msgid "Amount…"
@@ -1697,10 +1685,8 @@ msgid "Milk-free Recipes"
 msgstr "Mjölkfria recept"
 
 #: src/gr-list-page.c:320
-#, fuzzy
-#| msgid "All Recipes"
 msgid "Halal Recipes"
-msgstr "Alla recept"
+msgstr "Halalrecept"
 
 #: src/gr-list-page.c:322
 msgid "Other Dietary Restrictions"
@@ -1908,7 +1894,7 @@ msgstr "Tillagning:"
 
 #: src/gr-recipe-formatter.c:93 src/gr-recipe-printer.c:168
 msgid "Yield:"
-msgstr ""
+msgstr "Antal:"
 
 #: src/gr-recipe-importer.c:238
 #, c-format
@@ -1952,9 +1938,8 @@ msgid "Season:"
 msgstr "Årstid:"
 
 #: src/gr-recipe-printer.c:229
-#, fuzzy
 msgid "Notes"
-msgstr "_Anteckningar"
+msgstr "Anteckningar"
 
 #: src/gr-recipe-printer.c:472 src/gr-shopping-list-printer.c:297
 msgid "Error printing file:"
@@ -2082,10 +2067,8 @@ msgid "Add Account"
 msgstr "Lägg till konto"
 
 #: src/gr-shopping-list-exporter.c:476 src/gr-shopping-list-exporter.c:566
-#, fuzzy
-#| msgid "Shopping List"
 msgid "Shopping List from Recipes"
-msgstr "Inhandlingslista"
+msgstr "Inköpslista från Recept"
 
 #: src/gr-shopping-list-exporter.c:694
 msgid "Save the shopping list"
@@ -2094,7 +2077,7 @@ msgstr "Spara inköpslistan"
 #: src/gr-shopping-list-exporter.c:724 src/gr-shopping-list-formatter.c:42
 #: src/gr-shopping-list-printer.c:135
 msgid "Shopping List"
-msgstr "Inhandlingslista"
+msgstr "Inköpslista"
 
 #: src/gr-shopping-list-formatter.c:44
 msgid "For the following recipes:"
@@ -2193,7 +2176,7 @@ msgstr "pund"
 #: src/gr-unit.c:49
 msgctxt "unit abbreviation"
 msgid "oz"
-msgstr "uns"
+msgstr "oz"
 
 #: src/gr-unit.c:49
 msgctxt "unit name"
@@ -2253,7 +2236,7 @@ msgstr "milliliter"
 #: src/gr-unit.c:53 src/gr-unit.c:54
 msgctxt "unit abbreviation"
 msgid "fl oz"
-msgstr "fl uns"
+msgstr "fl oz"
 
 #: src/gr-unit.c:53 src/gr-unit.c:54
 msgctxt "unit name"
@@ -2276,10 +2259,9 @@ msgid "pint"
 msgstr "pint"
 
 #: src/gr-unit.c:55
-#, fuzzy
 msgctxt "unit plural"
 msgid "pints"
-msgstr "pint"
+msgstr "pints"
 
 #: src/gr-unit.c:56
 msgctxt "unit abbreviation"
@@ -2292,10 +2274,9 @@ msgid "quart"
 msgstr "quart"
 
 #: src/gr-unit.c:56
-#, fuzzy
 msgctxt "unit plural"
 msgid "quarts"
-msgstr "quart"
+msgstr "quarts"
 
 #: src/gr-unit.c:57
 msgctxt "unit abbreviation"
@@ -2308,10 +2289,9 @@ msgid "gallon"
 msgstr "gallon"
 
 #: src/gr-unit.c:57
-#, fuzzy
 msgctxt "unit plural"
 msgid "gallons"
-msgstr "gallon"
+msgstr "gallons"
 
 #: src/gr-unit.c:58
 msgctxt "unit abbreviation"
@@ -2327,7 +2307,7 @@ msgstr "kopp"
 #: src/gr-unit.c:58
 msgctxt "unit plural"
 msgid "cups"
-msgstr ""
+msgstr "koppar"
 
 #: src/gr-unit.c:59
 msgctxt "unit abbreviation"
@@ -2372,7 +2352,6 @@ msgid "box"
 msgstr "kartong"
 
 #: src/gr-unit.c:61
-#, fuzzy
 msgctxt "unit plural"
 msgid "boxes"
 msgstr "kartonger"
@@ -2453,50 +2432,52 @@ msgid "meters"
 msgstr "meter"
 
 #: src/gr-unit.c:67
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "st"
-msgstr "s"
+msgstr "st"
 
 #: src/gr-unit.c:67
 msgctxt "unit name"
 msgid "stone"
-msgstr ""
+msgstr "stone"
 
 #: src/gr-unit.c:67
 msgctxt "unit plural"
 msgid "stone"
-msgstr ""
+msgstr "stone"
 
 #: src/gr-unit.c:68
 msgctxt "unit abbreviation"
 msgid "pinch"
-msgstr ""
+msgstr "nypa"
 
 #: src/gr-unit.c:68
 msgctxt "unit name"
 msgid "pinch"
-msgstr ""
+msgstr "nypa"
 
 #: src/gr-unit.c:68
 msgctxt "unit plural"
 msgid "pinches"
-msgstr ""
+msgstr "nypor"
 
 #: src/gr-unit.c:69
+#, fuzzy
 msgctxt "unit abbreviation"
 msgid "bunch"
-msgstr ""
+msgstr "klase"
 
 #: src/gr-unit.c:69
+#, fuzzy
 msgctxt "unit name"
 msgid "bunch"
-msgstr ""
+msgstr "klase"
 
 #: src/gr-unit.c:69
+#, fuzzy
 msgctxt "unit plural"
 msgid "bunches"
-msgstr ""
+msgstr "klasar"
 
 #: src/gr-unit.c:167
 #, c-format
@@ -2621,16 +2602,13 @@ msgid "Ready to Cook!"
 msgstr "Redo att laga mat!"
 
 #: src/gr-window.c:937
-#, fuzzy
-#| msgid "Short Name:"
 msgid "Sorted by Name"
-msgstr "Kortnamn:"
+msgstr "Sorterat efter namn"
 
 #: src/gr-window.c:942
 #, fuzzy
-#| msgid "Imported Recipes"
 msgid "Sorted by Recency"
-msgstr "Importerade recept"
+msgstr "Sorterat efter senast använd"
 
 #: src/gr-window.c:1139
 msgid "Imported Recipes"
@@ -2679,9 +2657,9 @@ msgid "Released: %s"
 msgstr "Utgiven: %s"
 
 #: src/gr-window.c:1534
-#, fuzzy, c-format
+#, c-format
 msgid "Unreleased"
-msgstr "Utgiven: %s"
+msgstr "Ej utgiven"
 
 #: src/ingredients.inc:1
 msgid "Almond"
@@ -2700,10 +2678,8 @@ msgid "Apple"
 msgstr "Äpple"
 
 #: src/ingredients.inc:5
-#, fuzzy
-#| msgid "Vinegar"
 msgid "Apple Vinegar"
-msgstr "Vinäger"
+msgstr "Äppelvinäger"
 
 #: src/ingredients.inc:6
 msgid "Apricot"
@@ -2723,7 +2699,7 @@ msgstr "Aubergine"
 
 #: src/ingredients.inc:10
 msgid "Baby Spinach"
-msgstr ""
+msgstr "Babyspenat"
 
 #: src/ingredients.inc:11
 msgid "Bacon"
@@ -2763,15 +2739,15 @@ msgstr "Bönor"
 
 #: src/ingredients.inc:20
 msgid "Bean sprouts"
-msgstr ""
+msgstr "Böngroddar"
 
 #: src/ingredients.inc:21
 msgid "Beef"
-msgstr ""
+msgstr "Nötkött"
 
 #: src/ingredients.inc:22
 msgid "Beef mince"
-msgstr "Köttfärs"
+msgstr "Nötfärs"
 
 #: src/ingredients.inc:23
 msgid "Beef sausage"
@@ -2779,7 +2755,7 @@ msgstr "Köttkorv"
 
 #: src/ingredients.inc:24
 msgid "Beef (sirloin)"
-msgstr ""
+msgstr "Nötkött (ryggbiff)"
 
 #: src/ingredients.inc:25
 msgid "Beef stock"
@@ -2790,14 +2766,12 @@ msgid "Beetroot"
 msgstr "Rödbeta"
 
 #: src/ingredients.inc:27
-#, fuzzy
 msgid "Bell pepper"
-msgstr "ingen peppar"
+msgstr "Paprika"
 
 #: src/ingredients.inc:28
-#, fuzzy
 msgid "Bell Pepper (green)"
-msgstr "ingen peppar"
+msgstr "Paprika (grön)"
 
 #: src/ingredients.inc:29
 msgid "Berry"
@@ -2813,82 +2787,73 @@ msgstr "Småkakor"
 
 #: src/ingredients.inc:32
 msgid "Black cardamom pod"
-msgstr ""
+msgstr "Svart kardemummakapsel"
 
 #: src/ingredients.inc:33
-#, fuzzy
 msgid "Black peppercorns"
-msgstr "ingen peppar"
+msgstr "Svartpepparkorn"
 
 #: src/ingredients.inc:34
-#, fuzzy
-#| msgid "Bilberry"
 msgid "Blueberry"
 msgstr "Blåbär"
 
 #: src/ingredients.inc:35
 msgid "Bourbon whiskey"
-msgstr ""
+msgstr "Bourbon"
 
 #: src/ingredients.inc:36
 msgid "Breadcrumbs"
-msgstr ""
+msgstr "Ströbröd"
 
 #: src/ingredients.inc:37
 msgid "Brewer's yeast"
-msgstr ""
+msgstr "Öljäst"
 
 #: src/ingredients.inc:38
-#, fuzzy
-#| msgid "Baked beans"
 msgid "Broad beans"
-msgstr "Vita bönor i tomatsås"
+msgstr "Bondbönor"
 
 #: src/ingredients.inc:39
 msgid "Broth"
-msgstr ""
+msgstr "Buljong"
 
 #: src/ingredients.inc:40
-#, fuzzy
-#| msgid "no Sugar"
 msgid "Brown sugar"
-msgstr "inget socker"
+msgstr "Farinsocker"
 
 #: src/ingredients.inc:41
 msgid "Butter"
 msgstr "Smör"
 
 #: src/ingredients.inc:42
-#, fuzzy
-#| msgid "Butter"
 msgid "Butter, melted"
-msgstr "Smör"
+msgstr "Smör, smält"
 
 #: src/ingredients.inc:43
 msgid "Button mushroom"
-msgstr ""
+msgstr "Trädgårdschampinjon"
 
 #: src/ingredients.inc:44
+#, fuzzy
 msgid "Cabbage"
-msgstr ""
+msgstr "Kål"
 
 #: src/ingredients.inc:45
+#, fuzzy
 msgid "Cake flour"
-msgstr ""
+msgstr "Tårtmjöl"
 
 #: src/ingredients.inc:46
-#, fuzzy
-#| msgid "Baked beans"
 msgid "Canellini beans"
-msgstr "Vita bönor i tomatsås"
+msgstr "Canellinibönor"
 
 #: src/ingredients.inc:47
 msgid "Canned black beans, rinsed"
-msgstr ""
+msgstr "Svarta bönor på burk, sköljda"
 
 #: src/ingredients.inc:48
 msgid "Canned chopped tomatoes"
-msgstr ""
+msgstr "Hackade tomater på burk"
 
 #: src/ingredients.inc:49
 msgid "Carrot"
@@ -2896,29 +2861,27 @@ msgstr "Morot"
 
 #: src/ingredients.inc:50
 msgid "Cashews, lightly toasted"
-msgstr ""
+msgstr "Cashewnötter, lättrostade"
 
 #: src/ingredients.inc:51
 msgid "Caster sugar"
-msgstr ""
+msgstr "Fint strösocker"
 
 #: src/ingredients.inc:52
 msgid "Celery"
-msgstr ""
+msgstr "Selleri"
 
 #: src/ingredients.inc:53
 msgid "Champignons"
-msgstr ""
+msgstr "Champinjoner"
 
 #: src/ingredients.inc:54
 msgid "Cheese"
 msgstr "Ost"
 
 #: src/ingredients.inc:55
-#, fuzzy
-#| msgid "Chinese Cuisine"
 msgid "Cheese slices"
-msgstr "Kinesisk kokkonst"
+msgstr "Ostskivor"
 
 #: src/ingredients.inc:56
 msgid "Cherries, pitted"
@@ -2926,47 +2889,39 @@ msgstr "Körsbär, urkärnade"
 
 #: src/ingredients.inc:57
 msgid "Cherry tomatoes, halved"
-msgstr ""
+msgstr "Körsbärstomater, halva"
 
 #: src/ingredients.inc:58
-#, fuzzy
-#| msgid "Linseeds"
 msgid "Chia seeds"
-msgstr "Linfrön"
+msgstr "Chiafrön"
 
 #: src/ingredients.inc:59
 msgid "Chicken breasts, large"
-msgstr ""
+msgstr "Kycklingbröst, stora"
 
 #: src/ingredients.inc:60
 msgid "Chicken livers"
-msgstr ""
+msgstr "Kycklinglever"
 
 #: src/ingredients.inc:61
-#, fuzzy
-#| msgid "Beef stock"
 msgid "chicken stock"
-msgstr "Köttbuljong"
+msgstr "kycklingbuljong"
 
 #: src/ingredients.inc:62
 msgid "Chili flakes"
-msgstr ""
+msgstr "Chiliflingor"
 
 #: src/ingredients.inc:63
-#, fuzzy
-#| msgid "Cocoa powder"
 msgid "Chili powder"
-msgstr "Kakaopulver"
+msgstr "Chilipulver"
 
 #: src/ingredients.inc:64
 msgid "Chili sauce (e.g. sriracha)"
-msgstr ""
+msgstr "Chilisås (t.ex. sriracha)"
 
 #: src/ingredients.inc:65
-#, fuzzy
-#| msgid "Chocolate frosting"
 msgid "Chocolate"
-msgstr "Chokladglasyr"
+msgstr "Choklad"
 
 #: src/ingredients.inc:66
 msgid "Chocolate frosting"
@@ -2974,39 +2929,35 @@ msgstr "Chokladglasyr"
 
 #: src/ingredients.inc:67
 msgid "Chorizo"
-msgstr ""
+msgstr "Chorizo"
 
 #: src/ingredients.inc:68
 msgid "Ciboulette"
-msgstr ""
+msgstr "Gräslök"
 
 #: src/ingredients.inc:69
 msgid "Cilantro"
 msgstr "Koriander"
 
 #: src/ingredients.inc:70
-#, fuzzy
-#| msgid "Cilantro"
 msgid "Cilantro leaves"
-msgstr "Koriander"
+msgstr "Korianderlöv"
 
 #: src/ingredients.inc:71
 msgid "Cinnamon"
-msgstr ""
+msgstr "Kanel"
 
 #: src/ingredients.inc:72
 msgid "Cinnamon sticks"
-msgstr ""
+msgstr "Kanelstänger"
 
 #: src/ingredients.inc:73
 msgid "Cloves"
-msgstr ""
+msgstr "Kryddnejlika"
 
 #: src/ingredients.inc:74
-#, fuzzy
-#| msgid "Cocoa powder"
 msgid "Cocoa butter"
-msgstr "Kakaopulver"
+msgstr "Kakaosmör"
 
 #: src/ingredients.inc:75
 msgid "Cocoa powder"
@@ -3014,58 +2965,48 @@ msgstr "Kakaopulver"
 
 #: src/ingredients.inc:76
 msgid "Coconut milk"
-msgstr ""
+msgstr "Kokosmjölk"
 
 #: src/ingredients.inc:77
 msgid "Coconut oil"
-msgstr ""
+msgstr "Kokosolja"
 
 #: src/ingredients.inc:78
-#, fuzzy
-#| msgid "_Cook it later"
 msgid "Coconut water"
-msgstr "_Tillaga senare"
+msgstr "Kokosvatten"
 
 #: src/ingredients.inc:79
-#, fuzzy
-#| msgid "no Water"
 msgid "Cold water"
-msgstr "inget vatten"
+msgstr "Kallt vatten"
 
 #: src/ingredients.inc:80
-#, fuzzy
-#| msgid "no Ground beef"
 msgid "cooked beef"
-msgstr "ingen köttfärs"
+msgstr "tillagat nötkött"
 
 #: src/ingredients.inc:81
 msgid "Coriander"
-msgstr ""
+msgstr "Koriander"
 
 #: src/ingredients.inc:82
-#, fuzzy
-#| msgid "no Linseeds"
 msgid "Coriandre seeds"
-msgstr "inga linfrön"
+msgstr "Korianderfrön"
 
 #: src/ingredients.inc:83
 msgid "Couscous"
 msgstr "Couscous"
 
 #: src/ingredients.inc:84
-#, fuzzy
 msgid "Cracked pepper"
-msgstr "ingen peppar"
+msgstr "Krossad peppar"
 
 #: src/ingredients.inc:85
 msgid "Cream"
-msgstr ""
+msgstr "Grädde"
 
 #: src/ingredients.inc:86
-#, fuzzy
 #| msgid "Cheese"
 msgid "Cream cheese"
-msgstr "Ost"
+msgstr "Cream cheese"
 
 #: src/ingredients.inc:87
 msgid "Crushed red pepper flakes"
@@ -3073,25 +3014,23 @@ msgstr ""
 
 #: src/ingredients.inc:88
 msgid "Cucumber"
-msgstr ""
+msgstr "Gurka"
 
 #: src/ingredients.inc:89
 msgid "Cucumber (large)"
-msgstr ""
+msgstr "Gurka (stor)"
 
 #: src/ingredients.inc:90
 msgid "Cumin"
-msgstr ""
+msgstr "Spiskummin"
 
 #: src/ingredients.inc:91
-#, fuzzy
-#| msgid "Pumpkin seeds"
 msgid "Cumin seeds"
-msgstr "Pumpafrön"
+msgstr "Spiskumminfrön"
 
 #: src/ingredients.inc:92
 msgid "Dark Jamaican rum"
-msgstr ""
+msgstr "Mörk jamaicansk rom"
 
 #: src/ingredients.inc:93
 msgid "Date"
@@ -3099,37 +3038,37 @@ msgstr "Dadel"
 
 #: src/ingredients.inc:94
 msgid "Dill"
-msgstr ""
+msgstr "Dill"
 
 #: src/ingredients.inc:95
+#, fuzzy
 msgid "Double cream"
-msgstr ""
+msgstr "Dubbelgrädde"
 
 #: src/ingredients.inc:96
-#, fuzzy
-#| msgid "Anchovies"
 msgid "Dried anchovies"
-msgstr "Ansjovis"
+msgstr "Torkad ansjovis"
 
 #: src/ingredients.inc:97
 msgid "Dried chillies"
-msgstr ""
+msgstr "Torkad chili"
 
 #: src/ingredients.inc:98
 msgid "Dry or fresh cilantro"
-msgstr ""
+msgstr "Torr eller färsk koriander"
 
 #: src/ingredients.inc:99
 msgid "Dry yeast"
-msgstr ""
+msgstr "Torrjäst"
 
 #: src/ingredients.inc:100
 msgid "Durum wheat semolina"
-msgstr ""
+msgstr "Mannagryn"
 
 #: src/ingredients.inc:101
+#, fuzzy
 msgid "Earth Balance vegan buttery stick"
-msgstr ""
+msgstr "Earth Balance vegansk smörpinne"
 
 #: src/ingredients.inc:102
 msgid "Egg"
@@ -3137,220 +3076,190 @@ msgstr "Ägg"
 
 #: src/ingredients.inc:103
 msgid "Egg yolks"
-msgstr ""
+msgstr "Äggulor"
 
 #: src/ingredients.inc:104
 msgid "Fenugreek seeds"
-msgstr ""
+msgstr "Bockhornsklöverfrön"
 
 #: src/ingredients.inc:105
 msgid "Fig"
 msgstr "Fikon"
 
 #: src/ingredients.inc:106
-#, fuzzy
-#| msgid "Finely chop the red onion."
 msgid "Finely chopped cilantro"
-msgstr "Finhacka den röda löken."
+msgstr "Finhackad koriander"
 
 #: src/ingredients.inc:107
-#, fuzzy
-#| msgid "Finely chop the red onion."
 msgid "Finely chopped onions"
-msgstr "Finhacka den röda löken."
+msgstr "Finhackad lök"
 
 #: src/ingredients.inc:108
 msgid "Finely chopped thai chillies or green chillis"
-msgstr ""
+msgstr "Finhackad thaichili eller grön chili"
 
 #: src/ingredients.inc:109
-#, fuzzy
-#| msgid "Finely chop the red onion."
 msgid "Finely chopped tomato"
-msgstr "Finhacka den röda löken."
+msgstr "Finhackad tomat"
 
 #: src/ingredients.inc:110
 msgid "Fish"
 msgstr "Fisk"
 
 #: src/ingredients.inc:111
-#, fuzzy
-#| msgid "Pizza sauce"
 msgid "Fish sauce"
-msgstr "Pizzasås"
+msgstr "Fisksås"
 
 #: src/ingredients.inc:112
 msgid "Flour"
 msgstr "Mjöl"
 
 #: src/ingredients.inc:113
+#, fuzzy
 msgid "Flour (all-purpose)"
-msgstr ""
+msgstr "Mjöl (vanligt)"
 
 #: src/ingredients.inc:114
 msgid "Flour (Tipo 00)"
-msgstr ""
+msgstr "Mjöl (Tipo 00)"
 
 #: src/ingredients.inc:115
 msgid "Fresh rosemary"
-msgstr ""
+msgstr "Färsk rosmarin"
 
 #: src/ingredients.inc:116
 msgid "Fresh tagliatelle"
-msgstr ""
+msgstr "Färsk tagliatelle"
 
 #: src/ingredients.inc:117
 msgid "Garam masala"
-msgstr ""
+msgstr "Garam masala"
 
 #: src/ingredients.inc:118
 msgid "Garlic"
 msgstr "Vitlök"
 
 #: src/ingredients.inc:119
-#, fuzzy
-#| msgid "Garlic"
 msgid "Garlic cloves"
-msgstr "Vitlök"
+msgstr "Vitlöksklyftor"
 
 #: src/ingredients.inc:120
-#, fuzzy
-#| msgid "Baking powder"
 msgid "Garlic powder"
-msgstr "Bakpulver"
+msgstr "Vitlökspulver"
 
 #: src/ingredients.inc:121
 msgid "Ginger"
-msgstr ""
+msgstr "Ingefära"
 
 #: src/ingredients.inc:122
 msgid "Ginger, freshly grated"
-msgstr ""
+msgstr "Ingefära, nyriven"
 
 #: src/ingredients.inc:123
-#, fuzzy
-#| msgid "no Turmeric, ground"
 msgid "Ginger ground"
-msgstr "ingen gurkmeja, mald"
+msgstr "Ingefära, mald"
 
 #: src/ingredients.inc:124
-#, fuzzy
-#| msgid "no Cheese"
 msgid "Goat cheese"
-msgstr "ingen ost"
+msgstr "Getost"
 
 #: src/ingredients.inc:125
+#, fuzzy
 msgid "Golden caster sugar"
-msgstr ""
+msgstr "Oraffinerat fint strösocker"
 
 #: src/ingredients.inc:126
 msgid "Good, dry red wine"
-msgstr ""
+msgstr "Fint, torrt rött vin"
 
 #: src/ingredients.inc:127
-#, fuzzy
-#| msgid "no Cheese"
 msgid "Gouda cheese"
-msgstr "ingen ost"
+msgstr "Goudaost"
 
 #: src/ingredients.inc:128
 msgid "Goulash spices"
-msgstr ""
+msgstr "Gulaschkryddor"
 
 #: src/ingredients.inc:129
 msgid "Guanciale cubes"
-msgstr ""
+msgstr "Guanciale-kuber"
 
 #: src/ingredients.inc:130
 msgid "Long pasta, e.g. spaghetti"
-msgstr ""
+msgstr "Lång pasta, t.ex. spaghetti"
 
 #: src/ingredients.inc:131
 msgid "Parmesan cheese"
-msgstr ""
+msgstr "Parmesanost"
 
 #: src/ingredients.inc:132
 msgid "Grapes"
-msgstr ""
+msgstr "Druvor"
 
 #: src/ingredients.inc:133
 msgid "Grated French Emmental"
-msgstr ""
+msgstr "Riven fransk Emmentaler"
 
 #: src/ingredients.inc:134
-#, fuzzy
-#| msgid "no Apple"
 msgid "Green Apple"
-msgstr "inget äpple"
+msgstr "Grönt äpple"
 
 #: src/ingredients.inc:135
-#, fuzzy
 msgid "Green Bell Pepper"
-msgstr "ingen peppar"
+msgstr "Grön paprika"
 
 #: src/ingredients.inc:136
+#, fuzzy
 msgid "Green Cabbage"
-msgstr ""
+msgstr "Kål"
 
 #: src/ingredients.inc:137
 msgid "Green olive"
-msgstr ""
+msgstr "Gröna oliver"
 
 #: src/ingredients.inc:138
-#, fuzzy
-#| msgid "no Onion"
 msgid "Green onions"
-msgstr "ingen lök"
+msgstr "Salladslökar"
 
 #: src/ingredients.inc:139
 msgid "green onions, chopped"
-msgstr ""
+msgstr "grön lök, hackad"
 
 #: src/ingredients.inc:140
 msgid "Ground beef"
-msgstr "Köttfärs"
+msgstr "Nötfärs"
 
 #: src/ingredients.inc:141
-#, fuzzy
-#| msgid "Description (optional)"
 msgid "Ground coriander (optional)"
-msgstr "Beskrivning (valfritt)"
+msgstr "Malen koriander (valfritt)"
 
 #: src/ingredients.inc:142
-#, fuzzy
-#| msgid "Ground beef"
 msgid "Ground cumin"
-msgstr "Köttfärs"
+msgstr "Malen spiskummin"
 
 #: src/ingredients.inc:143
-#, fuzzy
-#| msgid "Ground beef"
 msgid "Ground fennel"
-msgstr "Köttfärs"
+msgstr "Malen fänkål"
 
 #: src/ingredients.inc:144
-#, fuzzy
-#| msgid "Ground beef"
 msgid "Ground pepper"
-msgstr "Köttfärs"
+msgstr "Malen peppar"
 
 #: src/ingredients.inc:145
 msgid "Ham"
-msgstr ""
+msgstr "Skinka"
 
 #: src/ingredients.inc:146
 msgid "Hazelnuts"
-msgstr ""
+msgstr "Hasselnötter"
 
 #: src/ingredients.inc:147
 msgid "Hazelnuts milk"
-msgstr ""
+msgstr "Hasselnötsmjölk"
 
 #: src/ingredients.inc:148
-#, fuzzy
-#| msgid "Soy sauce"
 msgid "Hoisin sauce"
-msgstr "Sojasås"
+msgstr "Hoisinsås"
 
 #: src/ingredients.inc:149
 msgid "Honey"
@@ -3358,89 +3267,81 @@ msgstr "Honung"
 
 #: src/ingredients.inc:150
 msgid "Horseradish"
-msgstr ""
+msgstr "Pepparrot"
 
 #: src/ingredients.inc:151
-#, fuzzy
-#| msgid "no Mayonnaise"
 msgid "Japanese mayonaisse"
-msgstr "ingen majonnäs"
+msgstr "Japansk majonnäs"
 
 #: src/ingredients.inc:152
-#, fuzzy
-#| msgid "Bilberries"
 msgid "Juniper berries"
-msgstr "Blåbär"
+msgstr "Enbär"
 
 #: src/ingredients.inc:153
 msgid "Kale"
-msgstr ""
+msgstr "Grönkål"
 
 #: src/ingredients.inc:154
 msgid "Ketchup"
-msgstr ""
+msgstr "Ketchup"
 
 #: src/ingredients.inc:155
 msgid "Kiwis"
-msgstr ""
+msgstr "Kiwi"
 
 #: src/ingredients.inc:156
 msgid "Lamb"
-msgstr ""
+msgstr "Lamm"
 
 #: src/ingredients.inc:157
+#, fuzzy
 msgid "Lardons"
-msgstr ""
+msgstr "Bacon"
 
 #: src/ingredients.inc:158
 msgid "Lard or oil"
-msgstr ""
+msgstr "Ister eller olja"
 
 #: src/ingredients.inc:159
 msgid "Lemon"
 msgstr "Citron"
 
 #: src/ingredients.inc:160
-#, fuzzy
-#| msgid "Lemon"
 msgid "Lemon juice"
-msgstr "Citron"
+msgstr "Citronjuice"
 
 #: src/ingredients.inc:161
 msgid "Lemon (untreated)"
-msgstr ""
+msgstr "Citron (obehandlad)"
 
 #: src/ingredients.inc:162
 msgid "Lettuce"
-msgstr ""
+msgstr "Sallat"
 
 #: src/ingredients.inc:163
 msgid "Light muscovado sugar"
-msgstr ""
+msgstr "Ljust muscovadosocker"
 
 #: src/ingredients.inc:164
 msgid "Lime"
-msgstr ""
+msgstr "Lime"
 
 #: src/ingredients.inc:165
 msgid "Lime juice"
-msgstr ""
+msgstr "Limejuice"
 
 #: src/ingredients.inc:166
 msgid "Linseeds"
 msgstr "Linfrön"
 
 #: src/ingredients.inc:167
-#, fuzzy
-#| msgid "no Orange"
 msgid "Mandarin Oranges"
-msgstr "ingen apelsin"
+msgstr "Mandariner"
 
 #: src/ingredients.inc:168
-#, fuzzy
 #| msgid "Tangerine"
 msgid "Margarine"
-msgstr "Tangerin"
+msgstr "Margarin"
 
 #: src/ingredients.inc:169
 msgid "Mayonnaise"
@@ -3448,56 +3349,52 @@ msgstr "Majonnäs"
 
 #: src/ingredients.inc:170
 msgid "Meat"
-msgstr ""
+msgstr "Kött"
 
 #: src/ingredients.inc:171
 msgid "Meat and bones"
-msgstr ""
+msgstr "Kött och ben"
 
 #: src/ingredients.inc:172
 msgid "Milk"
 msgstr "Mjölk"
 
 #: src/ingredients.inc:173
-#, fuzzy
-#| msgid "Bilberries"
 msgid "Mixed berries"
-msgstr "Blåbär"
+msgstr "Blandade bär"
 
 #: src/ingredients.inc:174
 #, fuzzy
 msgid "Mixed frozen bell peppers"
-msgstr "ingen peppar"
+msgstr "Blandad fryst paprika"
 
 #: src/ingredients.inc:175
 msgid "Mori-nu organic silken tofu (firm)"
-msgstr ""
+msgstr "Mori-nu organisk silkestofu (fast)"
 
 #: src/ingredients.inc:176
 msgid "Mushrooms"
-msgstr ""
+msgstr "Svamp"
 
 #: src/ingredients.inc:177
 msgid "Mustard"
 msgstr "Senap"
 
 #: src/ingredients.inc:178
-#, fuzzy
-#| msgid "Mustard"
 msgid "Mustard seeds"
-msgstr "Senap"
+msgstr "Senapsfrön"
 
 #: src/ingredients.inc:179
 msgid "Nut"
-msgstr ""
+msgstr "Nötter"
 
 #: src/ingredients.inc:180
 msgid "Nutmeg"
-msgstr ""
+msgstr "Muskot"
 
 #: src/ingredients.inc:181
 msgid "Nutritional yeast"
-msgstr ""
+msgstr "Näringsjäst"
 
 #: src/ingredients.inc:182
 msgid "Oatmeal"
@@ -3508,62 +3405,53 @@ msgid "Oil"
 msgstr "Olja"
 
 #: src/ingredients.inc:184
-#, fuzzy
-#| msgid "no Pizza sauce"
 msgid "Okonomiyaki sauce"
-msgstr "ingen pizzasås"
+msgstr "Okonomiyakisås"
 
 #: src/ingredients.inc:185
 msgid "Olive oil"
-msgstr ""
+msgstr "Olivolja"
 
 #: src/ingredients.inc:186
 msgid "Olive oil, extra-virgin"
 msgstr "Olivolja, extra jungfru"
 
 #: src/ingredients.inc:187
-#, fuzzy
-#| msgid "Cherries, pitted"
 msgid "Olives, pitted"
-msgstr "Körsbär, urkärnade"
+msgstr "Oliver, urkärnade"
 
 #: src/ingredients.inc:188
 msgid "Onion"
 msgstr "Lök"
 
 #: src/ingredients.inc:189
-#, fuzzy
-#| msgid "Baking powder"
 msgid "Onion powder"
-msgstr "Bakpulver"
+msgstr "Lökpulver"
 
 #: src/ingredients.inc:190
 msgid "Orange"
 msgstr "Apelsin"
 
 #: src/ingredients.inc:191
-#, fuzzy
 #| msgid "Vegan"
 msgid "Oregano"
-msgstr "Vegan"
+msgstr "Oregano"
 
 #: src/ingredients.inc:192
 msgid "Pancetta"
-msgstr ""
+msgstr "Pancetta"
 
 #: src/ingredients.inc:193
-#, fuzzy
-#| msgid "Bay leaves"
 msgid "Pandan leaves"
-msgstr "Lagerblad"
+msgstr "Pandanlöv"
 
 #: src/ingredients.inc:194
 msgid "Paprika"
-msgstr ""
+msgstr "Paprikapulver"
 
 #: src/ingredients.inc:195
 msgid "Parmesan cheese, grated"
-msgstr ""
+msgstr "Parmesanost, riven"
 
 #: src/ingredients.inc:196
 msgid "Parsley"
@@ -3571,7 +3459,7 @@ msgstr "Persilja"
 
 #: src/ingredients.inc:197
 msgid "Peach"
-msgstr ""
+msgstr "Persika"
 
 #: src/ingredients.inc:198
 msgid "Peperoni"
@@ -3588,11 +3476,11 @@ msgstr "Paprika"
 
 #: src/ingredients.inc:201
 msgid "Pickles"
-msgstr ""
+msgstr "Pickles"
 
 #: src/ingredients.inc:202
 msgid "Pineapple"
-msgstr ""
+msgstr "Ananas"
 
 #: src/ingredients.inc:203
 msgid "Pizza sauce"
@@ -3600,25 +3488,25 @@ msgstr "Pizzasås"
 
 #: src/ingredients.inc:204
 #, fuzzy
-#| msgid "Main Course"
 msgid "Plain flour"
-msgstr "Huvudrätt"
+msgstr "Vanligt mjöl"
 
 #: src/ingredients.inc:205
 msgid "Pomegranate"
-msgstr ""
+msgstr "Granatäpple"
 
 #: src/ingredients.inc:206
 msgid "Pomegranate juice"
-msgstr ""
+msgstr "Granatäppeljuice"
 
 #: src/ingredients.inc:207
 msgid "Pork fat"
-msgstr ""
+msgstr "Grisfett"
 
 #: src/ingredients.inc:208
+#, fuzzy
 msgid "Pork loin"
-msgstr ""
+msgstr "Fläskkotlett"
 
 #: src/ingredients.inc:209
 msgid "Potato"
@@ -3626,7 +3514,7 @@ msgstr "Potatis"
 
 #: src/ingredients.inc:210
 msgid "Powdered sugar"
-msgstr ""
+msgstr "Florsocker"
 
 #: src/ingredients.inc:211
 msgid "Pumpkin seeds"
@@ -3634,24 +3522,23 @@ msgstr "Pumpafrön"
 
 #: src/ingredients.inc:212
 msgid "Quinoa"
-msgstr ""
+msgstr "Quinoa"
 
 #: src/ingredients.inc:213
 msgid "Radish"
-msgstr ""
+msgstr "Rädisa"
 
 #: src/ingredients.inc:214
 msgid "Raisins"
 msgstr "Russin"
 
 #: src/ingredients.inc:215
-#, fuzzy
 msgid "Red bell pepper"
-msgstr "ingen peppar"
+msgstr "Röd paprika"
 
 #: src/ingredients.inc:216
 msgid "Red onion"
-msgstr ""
+msgstr "Rödlök"
 
 #: src/ingredients.inc:217
 #, fuzzy
@@ -3661,7 +3548,7 @@ msgstr "Peppar"
 
 #: src/ingredients.inc:218
 msgid "Red wine"
-msgstr ""
+msgstr "Rött vin"
 
 #: src/ingredients.inc:219
 msgid "Rice"
@@ -3669,93 +3556,89 @@ msgstr "Ris"
 
 #: src/ingredients.inc:220
 msgid "Rice, cooked"
-msgstr ""
+msgstr "Ris, kokt"
 
 #: src/ingredients.inc:221
 msgid "Rice vermicelli noodles"
 msgstr ""
 
 #: src/ingredients.inc:222
-#, fuzzy
-#| msgid "no Sugar"
 msgid "Rock sugar"
-msgstr "inget socker"
+msgstr "Kandisocker"
 
 #: src/ingredients.inc:223
 msgid "Rolled oats"
-msgstr ""
+msgstr "Havregryn"
 
 #: src/ingredients.inc:224
 msgid "Rosemary"
-msgstr ""
+msgstr "Rosmarin"
 
 #: src/ingredients.inc:225
 msgid "Rosé wine"
-msgstr ""
+msgstr "Rosévin"
 
 #: src/ingredients.inc:226
 msgid "Saffron"
-msgstr ""
+msgstr "Saffran"
 
 #: src/ingredients.inc:227
 msgid "Sage"
-msgstr ""
+msgstr "Kryddsalvia"
 
 #: src/ingredients.inc:228
-#, fuzzy
-#| msgid "Almond"
 msgid "Salmon"
-msgstr "Mandel"
+msgstr "Lax"
 
 #: src/ingredients.inc:229
 msgid "Salt"
 msgstr "Salt"
 
 #: src/ingredients.inc:230
-#, fuzzy
 msgid "Salt and pepper"
-msgstr "ingen peppar"
+msgstr "Salt och peppar"
 
 #: src/ingredients.inc:231
+#, fuzzy
 msgid "Saucebinder"
-msgstr ""
+msgstr "Såsförtjockare"
 
 #: src/ingredients.inc:232
 msgid "Scallions"
-msgstr ""
+msgstr "Salladslökar"
 
 #: src/ingredients.inc:233
 msgid "Sea salt"
-msgstr ""
+msgstr "Havssalt"
 
 #: src/ingredients.inc:234
+#, fuzzy
 msgid "Semi-skimmed milk"
-msgstr ""
+msgstr "Mellanmjölk"
 
 #: src/ingredients.inc:235
 msgid "Sesame oil"
-msgstr ""
+msgstr "Sesamolja"
 
 #: src/ingredients.inc:236
 msgid "Sesame seeds"
-msgstr ""
+msgstr "Sesamfrön"
 
 #: src/ingredients.inc:237
-#, fuzzy
 msgid "Shallots"
-msgstr "gallon"
+msgstr "Schalottenlökar"
 
 #: src/ingredients.inc:238
 msgid "Shrimps"
-msgstr ""
+msgstr "Räkor"
 
 #: src/ingredients.inc:239
 msgid "Slivered almonds, toasted"
-msgstr ""
+msgstr "Mandelspån, rostade"
 
 #: src/ingredients.inc:240
 msgid "Sour cream"
-msgstr ""
+msgstr "Gräddfil"
 
 #: src/ingredients.inc:241
 msgid "Soy sauce"
@@ -3763,13 +3646,11 @@ msgstr "Sojasås"
 
 #: src/ingredients.inc:242
 msgid "Spinach"
-msgstr ""
+msgstr "Spenat"
 
 #: src/ingredients.inc:243
-#, fuzzy
-#| msgid "Spring"
 msgid "Spring onion"
-msgstr "Vår"
+msgstr "Salladslök"
 
 #: src/ingredients.inc:244
 msgid "Squash"
@@ -3777,7 +3658,7 @@ msgstr "Squash"
 
 #: src/ingredients.inc:245
 msgid "Star anise"
-msgstr ""
+msgstr "Stjärnanis"
 
 #: src/ingredients.inc:246
 msgid "Strawberry"
@@ -3792,14 +3673,12 @@ msgid "Sunflower seeds"
 msgstr "Solroskärnor"
 
 #: src/ingredients.inc:249
-#, fuzzy
-#| msgid "Potatoes"
 msgid "Sweet potatoes"
-msgstr "Potatis"
+msgstr "Sötpotatis"
 
 #: src/ingredients.inc:250
 msgid "Tamarind paste"
-msgstr ""
+msgstr "Tamarindpasta"
 
 #: src/ingredients.inc:251
 msgid "Tangerine"
@@ -3807,23 +3686,23 @@ msgstr "Tangerin"
 
 #: src/ingredients.inc:252
 msgid "Thai basil leaves"
-msgstr ""
+msgstr "Thaibasilikablad"
 
 #: src/ingredients.inc:253
 msgid "Thai chillies"
-msgstr ""
+msgstr "Thaichili"
 
 #: src/ingredients.inc:254
 msgid "Thai fish sauce"
-msgstr ""
+msgstr "Thaifisksås"
 
 #: src/ingredients.inc:255
 msgid "Thyme"
-msgstr ""
+msgstr "Timjan"
 
 #: src/ingredients.inc:256
 msgid "Tinned pineapple rings"
-msgstr ""
+msgstr "Ananasringar på burk"
 
 #: src/ingredients.inc:257
 msgid "Tofu"
@@ -3834,42 +3713,32 @@ msgid "Tomato"
 msgstr "Tomat"
 
 #: src/ingredients.inc:259
-#, fuzzy
-#| msgid "Tomatoes"
 msgid "Tomato paste"
-msgstr "Tomater"
+msgstr "Tomatpuré"
 
 #: src/ingredients.inc:260
-#, fuzzy
-#| msgid "Tomatoes"
 msgid "Tomato sauce"
-msgstr "Tomater"
+msgstr "Tomatsås"
 
 #: src/ingredients.inc:261
-#, fuzzy
-#| msgid "Turmeric, ground"
 msgid "Tumeric ground"
 msgstr "Gurkmeja, mald"
 
 #: src/ingredients.inc:262
 msgid "Tuna fish"
-msgstr ""
+msgstr "Tonfisk"
 
 #: src/ingredients.inc:263
 msgid "Unsalted butter"
-msgstr ""
+msgstr "Osaltat smör"
 
 #: src/ingredients.inc:264
-#, fuzzy
-#| msgid "no Baking powder"
 msgid "Vanilla baking powder"
-msgstr "inget bakpulver"
+msgstr "Vaniljbakpulver"
 
 #: src/ingredients.inc:265
-#, fuzzy
-#| msgid "Vanilla sugar"
 msgid "Vanilla extract"
-msgstr "Vaniljsocker"
+msgstr "Vaniljextrakt"
 
 #: src/ingredients.inc:266
 msgid "Vanilla powdered sugar, for dusting"
@@ -3884,10 +3753,8 @@ msgid "Vanilla sugar"
 msgstr "Vaniljsocker"
 
 #: src/ingredients.inc:269
-#, fuzzy
-#| msgid "Vegetarian"
 msgid "Vegetable oil"
-msgstr "Vegetarian"
+msgstr "Vegetabilisk olja"
 
 #: src/ingredients.inc:270
 msgid "Vinegar"
@@ -3899,23 +3766,29 @@ msgstr "Vatten"
 
 #: src/ingredients.inc:272
 msgid "Wheat flour"
-msgstr ""
+msgstr "Vetemjöl"
 
+# Internationellt anses begreppet white
+# fish inom fiskerinäringen innefatta arter
+# som lever nära eller på havsbotten. T.ex.
+# torsk, kolja, hälleflundra.
 #: src/ingredients.inc:273
+#, fuzzy
 msgid "White fish"
-msgstr ""
+msgstr "White fish"
 
 #: src/ingredients.inc:274
+#, fuzzy
 msgid "White onion"
-msgstr ""
+msgstr "Lök"
 
 #: src/ingredients.inc:275
 msgid "White wine"
-msgstr ""
+msgstr "Vitt vin"
 
 #: src/ingredients.inc:276
 msgid "Whole chicken"
-msgstr ""
+msgstr "Hel kyckling"
 
 #: src/ingredients.inc:277
 msgid "Wine"
@@ -3923,16 +3796,15 @@ msgstr "Vin"
 
 #: src/ingredients.inc:278
 msgid "Worcestershire sauce"
-msgstr ""
+msgstr "Worcestershiresås"
 
 #: src/ingredients.inc:279
 msgid "Yeast"
 msgstr "Jäst"
 
 #: src/ingredients.inc:280
-#, fuzzy
 msgid "Yellow bell pepper"
-msgstr "ingen peppar"
+msgstr "Gul paprika"
 
 #: src/ingredients.inc:281
 msgid "Yoghurt"
@@ -3940,7 +3812,7 @@ msgstr "Yoghurt"
 
 #: src/ingredients.inc:282
 msgid "Zest of 1 lemon (organic)"
-msgstr ""
+msgstr "Strimlat skal av 1 citron (organiskt)"
 
 #: src/ingredients.inc:283
 msgid "Zinfandel"
@@ -3948,7 +3820,7 @@ msgstr "Zinfandel"
 
 #: src/ingredients.inc:284
 msgid "Zuccini"
-msgstr ""
+msgstr "Zucchini"
 
 #: src/no-ingredients.inc:1
 msgid "no Almond"
@@ -3967,10 +3839,8 @@ msgid "no Apple"
 msgstr "inget äpple"
 
 #: src/no-ingredients.inc:5
-#, fuzzy
-#| msgid "no Vinegar"
 msgid "no Apple Vinegar"
-msgstr "ingen vinäger"
+msgstr "ingen äppelvinäger"
 
 #: src/no-ingredients.inc:6
 msgid "no Apricot"
@@ -3989,10 +3859,8 @@ msgid "no Aubergine"
 msgstr "ingen aubergine"
 
 #: src/no-ingredients.inc:10
-#, fuzzy
-#| msgid "no Bay leaf"
 msgid "no Baby Spinach"
-msgstr "inga lagerblad"
+msgstr "ingen babyspenat"
 
 #: src/no-ingredients.inc:11
 msgid "no Bacon"
@@ -4031,30 +3899,24 @@ msgid "no Beans"
 msgstr "inga bönor"
 
 #: src/no-ingredients.inc:20
-#, fuzzy
-#| msgid "no Beans"
 msgid "no Bean sprouts"
-msgstr "inga bönor"
+msgstr "inga böngroddar"
 
 #: src/no-ingredients.inc:21
-#, fuzzy
-#| msgid "no Beef mince"
 msgid "no Beef"
-msgstr "ingen köttfärs"
+msgstr "inget nötkött"
 
 #: src/no-ingredients.inc:22
 msgid "no Beef mince"
-msgstr "ingen köttfärs"
+msgstr "ingen nötfärs"
 
 #: src/no-ingredients.inc:23
 msgid "no Beef sausage"
 msgstr "ingen köttkorv"
 
 #: src/no-ingredients.inc:24
-#, fuzzy
-#| msgid "no Beef mince"
 msgid "no Beef (sirloin)"
-msgstr "ingen köttfärs"
+msgstr "inget nötkött (ryggbiff)"
 
 #: src/no-ingredients.inc:25
 msgid "no Beef stock"
@@ -4065,14 +3927,12 @@ msgid "no Beetroot"
 msgstr "ingen rödbeta"
 
 #: src/no-ingredients.inc:27
-#, fuzzy
 msgid "no Bell pepper"
-msgstr "ingen peppar"
+msgstr "ingen paprika"
 
 #: src/no-ingredients.inc:28
-#, fuzzy
 msgid "no Bell Pepper (green)"
-msgstr "ingen peppar"
+msgstr "ingen paprika (grön)"
 
 #: src/no-ingredients.inc:29
 msgid "no Berry"
@@ -4088,318 +3948,250 @@ msgstr "ingen småkaka"
 
 #: src/no-ingredients.inc:32
 msgid "no Black cardamom pod"
-msgstr ""
+msgstr "ingen svart kardemummakapsel"
 
 #: src/no-ingredients.inc:33
-#, fuzzy
 msgid "no Black peppercorns"
-msgstr "ingen peppar"
+msgstr "inga svartpepparkorn"
 
 #: src/no-ingredients.inc:34
-#, fuzzy
-#| msgid "no Bilberry"
 msgid "no Blueberry"
 msgstr "inga blåbär"
 
 #: src/no-ingredients.inc:35
 msgid "no Bourbon whiskey"
-msgstr ""
+msgstr "ingen Bourbon"
 
 #: src/no-ingredients.inc:36
-#, fuzzy
 msgid "no Breadcrumbs"
-msgstr "inga bönor"
+msgstr "inget ströbröd"
 
 #: src/no-ingredients.inc:37
-#, fuzzy
-#| msgid "no Beef stock"
 msgid "no Brewer's yeast"
-msgstr "ingen köttbuljong"
+msgstr "ingen öljäst"
 
 #: src/no-ingredients.inc:38
-#, fuzzy
-#| msgid "no Baked beans"
 msgid "no Broad beans"
-msgstr "inga vita bönor i tomatsås"
+msgstr "inga bondbönor"
 
 #: src/no-ingredients.inc:39
-#, fuzzy
-#| msgid "no Beetroot"
 msgid "no Broth"
-msgstr "ingen rödbeta"
+msgstr "ingen buljong"
 
 #: src/no-ingredients.inc:40
-#, fuzzy
-#| msgid "no Vanilla sugar"
 msgid "no Brown sugar"
-msgstr "inget vaniljsocker"
+msgstr "inget farinsocker"
 
 #: src/no-ingredients.inc:41
 msgid "no Butter"
 msgstr "inget smör"
 
 #: src/no-ingredients.inc:42
-#, fuzzy
-#| msgid "no Butter"
 msgid "no Butter, melted"
-msgstr "inget smör"
+msgstr "inget smör, smält"
 
 #: src/no-ingredients.inc:43
 msgid "no Button mushroom"
-msgstr ""
+msgstr "ingen trädgårdschampinjon"
 
 #: src/no-ingredients.inc:44
+#, fuzzy
 msgid "no Cabbage"
-msgstr ""
+msgstr "ingen kål"
 
 #: src/no-ingredients.inc:45
 #, fuzzy
-#| msgid "no Flour"
 msgid "no Cake flour"
-msgstr "inget mjöl"
+msgstr "inget tårtmjöl"
 
 #: src/no-ingredients.inc:46
-#, fuzzy
 #| msgid "no Baked beans"
 msgid "no Canellini beans"
-msgstr "inga vita bönor i tomatsås"
+msgstr "inga canellinibönor"
 
 #: src/no-ingredients.inc:47
 msgid "no Canned black beans, rinsed"
-msgstr ""
+msgstr "inga svarta bönor på burk, sköljda"
 
 #: src/no-ingredients.inc:48
 msgid "no Canned chopped tomatoes"
-msgstr ""
+msgstr "inga hackade tomater på burk"
 
 #: src/no-ingredients.inc:49
 msgid "no Carrot"
 msgstr "ingen morot"
 
 #: src/no-ingredients.inc:50
-#, fuzzy
-#| msgid "no Cherries, pitted"
 msgid "no Cashews, lightly toasted"
-msgstr "inga körsbär, urkärnade"
+msgstr "inga cashewnötter, lättrostade"
 
 #: src/no-ingredients.inc:51
-#, fuzzy
-#| msgid "no Vanilla sugar"
 msgid "no Caster sugar"
-msgstr "inget vaniljsocker"
+msgstr "inget fint strösocker"
 
 #: src/no-ingredients.inc:52
-#, fuzzy
-#| msgid "no Cheese"
 msgid "no Celery"
-msgstr "ingen ost"
+msgstr "ingen selleri"
 
 #: src/no-ingredients.inc:53
 msgid "no Champignons"
-msgstr ""
+msgstr "inga champinjoner"
 
 #: src/no-ingredients.inc:54
 msgid "no Cheese"
 msgstr "ingen ost"
 
 #: src/no-ingredients.inc:55
-#, fuzzy
-#| msgid "no Cheese"
 msgid "no Cheese slices"
-msgstr "ingen ost"
+msgstr "inga ostskivor"
 
 #: src/no-ingredients.inc:56
 msgid "no Cherries, pitted"
 msgstr "inga körsbär, urkärnade"
 
 #: src/no-ingredients.inc:57
-#, fuzzy
-#| msgid "no Cherries, pitted"
 msgid "no Cherry tomatoes, halved"
-msgstr "inga körsbär, urkärnade"
+msgstr "inga körsbärstomater, halva"
 
 #: src/no-ingredients.inc:58
-#, fuzzy
-#| msgid "no Linseeds"
 msgid "no Chia seeds"
-msgstr "inga linfrön"
+msgstr "inga chiafrön"
 
 #: src/no-ingredients.inc:59
 msgid "no Chicken breasts, large"
-msgstr ""
+msgstr "inga kycklingbröst, stora"
 
 #: src/no-ingredients.inc:60
-#, fuzzy
-#| msgid "no Cheese"
 msgid "no Chicken livers"
-msgstr "ingen ost"
+msgstr "ingen kycklinglever"
 
 #: src/no-ingredients.inc:61
-#, fuzzy
-#| msgid "no Beef stock"
 msgid "no chicken stock"
-msgstr "ingen köttbuljong"
+msgstr "ingen kycklingbuljong"
 
 #: src/no-ingredients.inc:62
 msgid "no Chili flakes"
-msgstr ""
+msgstr "inga chiliflingor"
 
 #: src/no-ingredients.inc:63
-#, fuzzy
-#| msgid "no Cocoa powder"
 msgid "no Chili powder"
-msgstr "inget kakaopulver"
+msgstr "inget chilipulver"
 
 #: src/no-ingredients.inc:64
 msgid "no Chili sauce (e.g. sriracha)"
-msgstr ""
+msgstr "ingen chilisås (t.ex. sriracha)"
 
 #: src/no-ingredients.inc:65
-#, fuzzy
-#| msgid "no Chocolate frosting"
 msgid "no Chocolate"
-msgstr "ingen chokladglasyr"
+msgstr "ingen choklad"
 
 #: src/no-ingredients.inc:66
 msgid "no Chocolate frosting"
 msgstr "ingen chokladglasyr"
 
 #: src/no-ingredients.inc:67
-#, fuzzy
-#| msgid "no Carrot"
 msgid "no Chorizo"
-msgstr "ingen morot"
+msgstr "ingen chorizo"
 
 #: src/no-ingredients.inc:68
 msgid "no Ciboulette"
-msgstr ""
+msgstr "ingen gräslök"
 
 #: src/no-ingredients.inc:69
 msgid "no Cilantro"
 msgstr "ingen koriander"
 
 #: src/no-ingredients.inc:70
-#, fuzzy
-#| msgid "no Cilantro"
 msgid "no Cilantro leaves"
-msgstr "ingen koriander"
+msgstr "inga korianderlöv"
 
 #: src/no-ingredients.inc:71
-#, fuzzy
-#| msgid "no Cilantro"
 msgid "no Cinnamon"
-msgstr "ingen koriander"
+msgstr "ingen kanel"
 
 #: src/no-ingredients.inc:72
 msgid "no Cinnamon sticks"
-msgstr ""
+msgstr "inga kanelstänger"
 
 #: src/no-ingredients.inc:73
-#, fuzzy
-#| msgid "no Cheese"
 msgid "no Cloves"
-msgstr "ingen ost"
+msgstr "ingen kryddnejlika"
 
 #: src/no-ingredients.inc:74
-#, fuzzy
-#| msgid "no Cocoa powder"
 msgid "no Cocoa butter"
-msgstr "inget kakaopulver"
+msgstr "inget kakaosmör"
 
 #: src/no-ingredients.inc:75
 msgid "no Cocoa powder"
 msgstr "inget kakaopulver"
 
 #: src/no-ingredients.inc:76
-#, fuzzy
-#| msgid "no Couscous"
 msgid "no Coconut milk"
-msgstr "ingen couscous"
+msgstr "ingen kokosmjölk"
 
 #: src/no-ingredients.inc:77
-#, fuzzy
-#| msgid "no Couscous"
 msgid "no Coconut oil"
-msgstr "ingen couscous"
+msgstr "ingen kokosolja"
 
 #: src/no-ingredients.inc:78
-#, fuzzy
-#| msgid "no Cocoa powder"
 msgid "no Coconut water"
-msgstr "inget kakaopulver"
+msgstr "inget kokosvatten"
 
 #: src/no-ingredients.inc:79
-#, fuzzy
-#| msgid "no Cilantro"
 msgid "no Cold water"
-msgstr "ingen koriander"
+msgstr "inget kallt vatten"
 
 #: src/no-ingredients.inc:80
-#, fuzzy
-#| msgid "no Ground beef"
 msgid "no cooked beef"
-msgstr "ingen köttfärs"
+msgstr "inget tillagat nötkött"
 
 #: src/no-ingredients.inc:81
-#, fuzzy
-#| msgid "no Cilantro"
 msgid "no Coriander"
 msgstr "ingen koriander"
 
 #: src/no-ingredients.inc:82
-#, fuzzy
-#| msgid "no Linseeds"
 msgid "no Coriandre seeds"
-msgstr "inga linfrön"
+msgstr "inga korianderfrön"
 
 #: src/no-ingredients.inc:83
 msgid "no Couscous"
 msgstr "ingen couscous"
 
 #: src/no-ingredients.inc:84
-#, fuzzy
 msgid "no Cracked pepper"
-msgstr "ingen peppar"
+msgstr "ingen krossad peppar"
 
 #: src/no-ingredients.inc:85
 msgid "no Cream"
-msgstr ""
+msgstr "ingen grädde"
 
 #: src/no-ingredients.inc:86
-#, fuzzy
-#| msgid "no Cheese"
 msgid "no Cream cheese"
-msgstr "ingen ost"
+msgstr "ingen cream cheese"
 
 #: src/no-ingredients.inc:87
 msgid "no Crushed red pepper flakes"
 msgstr ""
 
 #: src/no-ingredients.inc:88
-#, fuzzy
-#| msgid "no Couscous"
 msgid "no Cucumber"
-msgstr "ingen couscous"
+msgstr "ingen gurka"
 
 #: src/no-ingredients.inc:89
 msgid "no Cucumber (large)"
-msgstr ""
+msgstr "ingen gurka (stor)"
 
 #: src/no-ingredients.inc:90
-#, fuzzy
-#| msgid "no Cilantro"
 msgid "no Cumin"
-msgstr "ingen koriander"
+msgstr "ingen spiskummin"
 
 #: src/no-ingredients.inc:91
-#, fuzzy
-#| msgid "no Pumpkin seeds"
 msgid "no Cumin seeds"
-msgstr "inga pumpafrön"
+msgstr "inga spiskumminfrön"
 
 #: src/no-ingredients.inc:92
 msgid "no Dark Jamaican rum"
-msgstr ""
+msgstr "ingen mörk jamaicansk rom"
 
 #: src/no-ingredients.inc:93
 msgid "no Date"
@@ -4407,270 +4199,228 @@ msgstr "ingen dadel"
 
 #: src/no-ingredients.inc:94
 msgid "no Dill"
-msgstr ""
+msgstr "ingen dill"
 
 #: src/no-ingredients.inc:95
+#, fuzzy
 msgid "no Double cream"
-msgstr ""
+msgstr "ingen dubbelgrädde"
 
 #: src/no-ingredients.inc:96
-#, fuzzy
-#| msgid "no Anchovies"
 msgid "no Dried anchovies"
-msgstr "ingen ansjovis"
+msgstr "ingen torkad ansjovis"
 
 #: src/no-ingredients.inc:97
 msgid "no Dried chillies"
-msgstr ""
+msgstr "ingen torkad chili"
 
 #: src/no-ingredients.inc:98
 msgid "no Dry or fresh cilantro"
-msgstr ""
+msgstr "ingen torr eller färsk koriander"
 
 #: src/no-ingredients.inc:99
-#, fuzzy
-#| msgid "no Yeast"
 msgid "no Dry yeast"
-msgstr "ingen jäst"
+msgstr "ingen torrjäst"
 
 #: src/no-ingredients.inc:100
 msgid "no Durum wheat semolina"
-msgstr ""
+msgstr "inget mannagryn"
 
 #: src/no-ingredients.inc:101
+#, fuzzy
 msgid "no Earth Balance vegan buttery stick"
-msgstr ""
+msgstr "ingen Earth Balance vegansk smörpinne"
 
 #: src/no-ingredients.inc:102
 msgid "no Egg"
 msgstr "inget ägg"
 
 #: src/no-ingredients.inc:103
-#, fuzzy
-#| msgid "no Egg"
 msgid "no Egg yolks"
-msgstr "inget ägg"
+msgstr "inga äggulor"
 
 #: src/no-ingredients.inc:104
-#, fuzzy
-#| msgid "no Pumpkin seeds"
 msgid "no Fenugreek seeds"
-msgstr "inga pumpafrön"
+msgstr "inga bockhornsklöverfrön"
 
 #: src/no-ingredients.inc:105
 msgid "no Fig"
 msgstr "inga fikon"
 
 #: src/no-ingredients.inc:106
-#, fuzzy
-#| msgid "Finely chop the red onion."
 msgid "no Finely chopped cilantro"
-msgstr "Finhacka den röda löken."
+msgstr "ingen finhackad koriander"
 
 #: src/no-ingredients.inc:107
-#, fuzzy
-#| msgid "Finely chop the red onion."
 msgid "no Finely chopped onions"
-msgstr "Finhacka den röda löken."
+msgstr "ingen finhackad lök"
 
 #: src/no-ingredients.inc:108
 msgid "no Finely chopped thai chillies or green chillis"
-msgstr ""
+msgstr "ingen finhackad thaichili eller grön chili"
 
 #: src/no-ingredients.inc:109
-#, fuzzy
-#| msgid "Finely chop the red onion."
 msgid "no Finely chopped tomato"
-msgstr "Finhacka den röda löken."
+msgstr "ingen finhackad tomat"
 
 #: src/no-ingredients.inc:110
 msgid "no Fish"
 msgstr "ingen fisk"
 
 #: src/no-ingredients.inc:111
-#, fuzzy
-#| msgid "no Pizza sauce"
 msgid "no Fish sauce"
-msgstr "ingen pizzasås"
+msgstr "ingen fisksås"
 
 #: src/no-ingredients.inc:112
 msgid "no Flour"
 msgstr "inget mjöl"
 
 #: src/no-ingredients.inc:113
+#, fuzzy
 msgid "no Flour (all-purpose)"
-msgstr ""
+msgstr "inget mjöl (vanligt)"
 
 #: src/no-ingredients.inc:114
-#, fuzzy
-#| msgid "no Flour"
 msgid "no Flour (Tipo 00)"
-msgstr "inget mjöl"
+msgstr "inget mjöl (Tipo 00)"
 
 #: src/no-ingredients.inc:115
 msgid "no Fresh rosemary"
-msgstr ""
+msgstr "ingen färsk rosmarin"
 
 #: src/no-ingredients.inc:116
 msgid "no Fresh tagliatelle"
-msgstr ""
+msgstr "ingen färsk tagliatelle"
 
 #: src/no-ingredients.inc:117
 msgid "no Garam masala"
-msgstr ""
+msgstr "ingen garam masala"
 
 #: src/no-ingredients.inc:118
 msgid "no Garlic"
 msgstr "ingen vitlök"
 
 #: src/no-ingredients.inc:119
-#, fuzzy
-#| msgid "no Garlic"
 msgid "no Garlic cloves"
-msgstr "ingen vitlök"
+msgstr "inga vitlöksklyftor"
 
 #: src/no-ingredients.inc:120
-#, fuzzy
-#| msgid "no Baking powder"
 msgid "no Garlic powder"
-msgstr "inget bakpulver"
+msgstr "inget vitlökspulver"
 
 #: src/no-ingredients.inc:121
-#, fuzzy
-#| msgid "no Tangerine"
 msgid "no Ginger"
-msgstr "ingen tangerin"
+msgstr "ingen ingefära"
 
 #: src/no-ingredients.inc:122
 msgid "no Ginger, freshly grated"
-msgstr ""
+msgstr "ingen ingefära, nyriven"
 
 #: src/no-ingredients.inc:123
-#, fuzzy
-#| msgid "no Turmeric, ground"
 msgid "no Ginger ground"
-msgstr "ingen gurkmeja, mald"
+msgstr "ingen ingefära, mald"
 
 #: src/no-ingredients.inc:124
-#, fuzzy
-#| msgid "no Cheese"
 msgid "no Goat cheese"
-msgstr "ingen ost"
+msgstr "ingen getost"
 
 #: src/no-ingredients.inc:125
+#, fuzzy
 msgid "no Golden caster sugar"
-msgstr ""
+msgstr "inget oraffinerat fint strösocker"
 
 #: src/no-ingredients.inc:126
 msgid "no Good, dry red wine"
-msgstr ""
+msgstr "inget fint, torrt rött vin"
 
 #: src/no-ingredients.inc:127
-#, fuzzy
-#| msgid "no Ground beef"
 msgid "no Gouda cheese"
-msgstr "ingen köttfärs"
+msgstr "ingen goudaost"
 
 #: src/no-ingredients.inc:128
 msgid "no Goulash spices"
-msgstr ""
+msgstr "inga gulaschkryddor"
 
 #: src/no-ingredients.inc:129
 msgid "no Guanciale cubes"
-msgstr ""
+msgstr "inga guanciale-kuber"
 
 #: src/no-ingredients.inc:130
 msgid "no Long pasta, e.g. spaghetti"
-msgstr ""
+msgstr "ingen lång pasta, t.ex. spaghetti"
 
 #: src/no-ingredients.inc:131
 msgid "no Parmesan cheese"
-msgstr ""
+msgstr "ingen parmesanost"
 
 #: src/no-ingredients.inc:132
 msgid "no Grapes"
-msgstr ""
+msgstr "inga druvor"
 
 #: src/no-ingredients.inc:133
 msgid "no Grated French Emmental"
-msgstr ""
+msgstr "ingen riven fransk Emmentaler"
 
 #: src/no-ingredients.inc:134
-#, fuzzy
-#| msgid "no Apple"
 msgid "no Green Apple"
-msgstr "inget äpple"
+msgstr "inget grönt äpple"
 
 #: src/no-ingredients.inc:135
-#, fuzzy
 msgid "no Green Bell Pepper"
-msgstr "ingen peppar"
+msgstr "ingen grön paprika"
 
 #: src/no-ingredients.inc:136
 #, fuzzy
-#| msgid "no Ground beef"
 msgid "no Green Cabbage"
-msgstr "ingen köttfärs"
+msgstr "ingen kål"
 
 #: src/no-ingredients.inc:137
-#, fuzzy
-#| msgid "no Garlic"
 msgid "no Green olive"
-msgstr "ingen vitlök"
+msgstr "inga gröna oliver"
 
 #: src/no-ingredients.inc:138
-#, fuzzy
-#| msgid "no Onion"
 msgid "no Green onions"
-msgstr "ingen lök"
+msgstr "inga salladslökar"
 
 #: src/no-ingredients.inc:139
 msgid "no green onions, chopped"
-msgstr ""
+msgstr "ingen grön lök, hackad"
 
 #: src/no-ingredients.inc:140
 msgid "no Ground beef"
-msgstr "ingen köttfärs"
+msgstr "ingen nötfärs"
 
 #: src/no-ingredients.inc:141
 msgid "no Ground coriander (optional)"
-msgstr ""
+msgstr "ingen malen koriander (valfritt)"
 
 #: src/no-ingredients.inc:142
-#, fuzzy
-#| msgid "no Ground beef"
 msgid "no Ground cumin"
-msgstr "ingen köttfärs"
+msgstr "ingen malen spiskummin"
 
 #: src/no-ingredients.inc:143
-#, fuzzy
-#| msgid "no Ground beef"
 msgid "no Ground fennel"
-msgstr "ingen köttfärs"
+msgstr "ingen malen fänkål"
 
 #: src/no-ingredients.inc:144
-#, fuzzy
-#| msgid "no Ground beef"
 msgid "no Ground pepper"
-msgstr "ingen köttfärs"
+msgstr "ingen malen peppar"
 
 #: src/no-ingredients.inc:145
 msgid "no Ham"
-msgstr ""
+msgstr "ingen skinka"
 
 #: src/no-ingredients.inc:146
 msgid "no Hazelnuts"
-msgstr ""
+msgstr "inga hasselnötter"
 
 #: src/no-ingredients.inc:147
 msgid "no Hazelnuts milk"
-msgstr ""
+msgstr "ingen hasselnötsmjölk"
 
 #: src/no-ingredients.inc:148
-#, fuzzy
-#| msgid "no Soy sauce"
 msgid "no Hoisin sauce"
-msgstr "ingen sojasås"
+msgstr "ingen hoisinsås"
 
 #: src/no-ingredients.inc:149
 msgid "no Honey"
@@ -4678,93 +4428,80 @@ msgstr "ingen honung"
 
 #: src/no-ingredients.inc:150
 msgid "no Horseradish"
-msgstr ""
+msgstr "ingen pepparrot"
 
 #: src/no-ingredients.inc:151
-#, fuzzy
-#| msgid "no Mayonnaise"
 msgid "no Japanese mayonaisse"
-msgstr "ingen majonnäs"
+msgstr "ingen japansk majonnäs"
 
 #: src/no-ingredients.inc:152
 msgid "no Juniper berries"
-msgstr ""
+msgstr "inga enbär"
 
 #: src/no-ingredients.inc:153
 msgid "no Kale"
-msgstr ""
+msgstr "ingen grönkål"
 
 #: src/no-ingredients.inc:154
 msgid "no Ketchup"
-msgstr ""
+msgstr "ingen ketchup"
 
 #: src/no-ingredients.inc:155
 msgid "no Kiwis"
-msgstr ""
+msgstr "ingen kiwi"
 
 #: src/no-ingredients.inc:156
-#, fuzzy
-#| msgid "no Lemon"
 msgid "no Lamb"
-msgstr "ingen citron"
+msgstr "inget lamm"
 
 #: src/no-ingredients.inc:157
 #, fuzzy
-#| msgid "no Lemon"
 msgid "no Lardons"
-msgstr "ingen citron"
+msgstr "ingen bacon"
 
 #: src/no-ingredients.inc:158
 msgid "no Lard or oil"
-msgstr ""
+msgstr "ingen ister eller olja"
 
 #: src/no-ingredients.inc:159
 msgid "no Lemon"
 msgstr "ingen citron"
 
 #: src/no-ingredients.inc:160
-#, fuzzy
-#| msgid "no Lemon"
 msgid "no Lemon juice"
-msgstr "ingen citron"
+msgstr "ingen citronjuice"
 
 #: src/no-ingredients.inc:161
 msgid "no Lemon (untreated)"
-msgstr ""
+msgstr "ingen citron (obehandlad)"
 
 #: src/no-ingredients.inc:162
 msgid "no Lettuce"
-msgstr ""
+msgstr "ingen sallat"
 
 #: src/no-ingredients.inc:163
 msgid "no Light muscovado sugar"
-msgstr ""
+msgstr "inget ljust muscovadosocker"
 
 #: src/no-ingredients.inc:164
-#, fuzzy
-#| msgid "no Linseeds"
 msgid "no Lime"
-msgstr "inga linfrön"
+msgstr "ingen lime"
 
 #: src/no-ingredients.inc:165
 msgid "no Lime juice"
-msgstr ""
+msgstr "ingen limejuice"
 
 #: src/no-ingredients.inc:166
 msgid "no Linseeds"
 msgstr "inga linfrön"
 
 #: src/no-ingredients.inc:167
-#, fuzzy
-#| msgid "no Orange"
 msgid "no Mandarin Oranges"
-msgstr "ingen apelsin"
+msgstr "inga mandariner"
 
 #: src/no-ingredients.inc:168
-#, fuzzy
-#| msgid "no Tangerine"
 msgid "no Margarine"
-msgstr "ingen tangerin"
+msgstr "inget margarin"
 
 #: src/no-ingredients.inc:169
 msgid "no Mayonnaise"
@@ -4772,58 +4509,52 @@ msgstr "ingen majonnäs"
 
 #: src/no-ingredients.inc:170
 msgid "no Meat"
-msgstr ""
+msgstr "inget kött"
 
 #: src/no-ingredients.inc:171
 msgid "no Meat and bones"
-msgstr ""
+msgstr "inget kött och ben"
 
 #: src/no-ingredients.inc:172
 msgid "no Milk"
 msgstr "ingen mjölk"
 
 #: src/no-ingredients.inc:173
-#, fuzzy
-#| msgid "Bilberries"
 msgid "no Mixed berries"
-msgstr "Blåbär"
+msgstr "inga blandade bär"
 
 #: src/no-ingredients.inc:174
 #, fuzzy
 msgid "no Mixed frozen bell peppers"
-msgstr "ingen peppar"
+msgstr "ingen blandad fryst paprika"
 
 #: src/no-ingredients.inc:175
 msgid "no Mori-nu organic silken tofu (firm)"
-msgstr ""
+msgstr "ingen Mori-nu organisk silkestofu (fast)"
 
 #: src/no-ingredients.inc:176
-#, fuzzy
-#| msgid "no Mustard"
 msgid "no Mushrooms"
-msgstr "ingen senap"
+msgstr "ingen svamp"
 
 #: src/no-ingredients.inc:177
 msgid "no Mustard"
 msgstr "ingen senap"
 
 #: src/no-ingredients.inc:178
-#, fuzzy
-#| msgid "no Mustard"
 msgid "no Mustard seeds"
-msgstr "ingen senap"
+msgstr "inga senapsfrön"
 
 #: src/no-ingredients.inc:179
 msgid "no Nut"
-msgstr ""
+msgstr "inga nötter"
 
 #: src/no-ingredients.inc:180
 msgid "no Nutmeg"
-msgstr ""
+msgstr "ingen muskot"
 
 #: src/no-ingredients.inc:181
 msgid "no Nutritional yeast"
-msgstr ""
+msgstr "ingen näringsjäst"
 
 #: src/no-ingredients.inc:182
 msgid "no Oatmeal"
@@ -4834,68 +4565,52 @@ msgid "no Oil"
 msgstr "ingen olja"
 
 #: src/no-ingredients.inc:184
-#, fuzzy
-#| msgid "no Soy sauce"
 msgid "no Okonomiyaki sauce"
-msgstr "ingen sojasås"
+msgstr "ingen okonomiyakisås"
 
 #: src/no-ingredients.inc:185
-#, fuzzy
-#| msgid "no Oil"
 msgid "no Olive oil"
-msgstr "ingen olja"
+msgstr "ingen olivolja"
 
 #: src/no-ingredients.inc:186
 msgid "no Olive oil, extra-virgin"
 msgstr "ingen olivolja, extra jungfru"
 
 #: src/no-ingredients.inc:187
-#, fuzzy
-#| msgid "no Cherries, pitted"
 msgid "no Olives, pitted"
-msgstr "inga körsbär, urkärnade"
+msgstr "inga oliver, urkärnade"
 
 #: src/no-ingredients.inc:188
 msgid "no Onion"
 msgstr "ingen lök"
 
 #: src/no-ingredients.inc:189
-#, fuzzy
-#| msgid "no Baking powder"
 msgid "no Onion powder"
-msgstr "inget bakpulver"
+msgstr "inget lökpulver"
 
 #: src/no-ingredients.inc:190
 msgid "no Orange"
 msgstr "ingen apelsin"
 
 #: src/no-ingredients.inc:191
-#, fuzzy
-#| msgid "no Orange"
 msgid "no Oregano"
-msgstr "ingen apelsin"
+msgstr "ingen oregano"
 
 #: src/no-ingredients.inc:192
-#, fuzzy
-#| msgid "no Potato"
 msgid "no Pancetta"
-msgstr "ingen potatis"
+msgstr "ingen pancetta"
 
 #: src/no-ingredients.inc:193
-#, fuzzy
-#| msgid "Bay leaves"
 msgid "no Pandan leaves"
-msgstr "Lagerblad"
+msgstr "inga pandanlöv"
 
 #: src/no-ingredients.inc:194
-#, fuzzy
-#| msgid "no Peperoni"
 msgid "no Paprika"
-msgstr "ingen feferoni"
+msgstr "inget paprikapulver"
 
 #: src/no-ingredients.inc:195
 msgid "no Parmesan cheese, grated"
-msgstr ""
+msgstr "ingen parmesanost, riven"
 
 #: src/no-ingredients.inc:196
 msgid "no Parsley"
@@ -4903,7 +4618,7 @@ msgstr "ingen persilja"
 
 #: src/no-ingredients.inc:197
 msgid "no Peach"
-msgstr ""
+msgstr "ingen persika"
 
 #: src/no-ingredients.inc:198
 msgid "no Peperoni"
@@ -4920,16 +4635,12 @@ msgid "no Peppers"
 msgstr "ingen paprika"
 
 #: src/no-ingredients.inc:201
-#, fuzzy
-#| msgid "no Parsley"
 msgid "no Pickles"
-msgstr "ingen persilja"
+msgstr "inga pickles"
 
 #: src/no-ingredients.inc:202
-#, fuzzy
-#| msgid "no Pepper"
 msgid "no Pineapple"
-msgstr "ingen peppar"
+msgstr "ingen ananas"
 
 #: src/no-ingredients.inc:203
 msgid "no Pizza sauce"
@@ -4937,31 +4648,25 @@ msgstr "ingen pizzasås"
 
 #: src/no-ingredients.inc:204
 #, fuzzy
-#| msgid "no Flour"
 msgid "no Plain flour"
-msgstr "inget mjöl"
+msgstr "inget vanligt mjöl"
 
 #: src/no-ingredients.inc:205
-#, fuzzy
-#| msgid "no Potato"
 msgid "no Pomegranate"
-msgstr "ingen potatis"
+msgstr "inget granatäpple"
 
 #: src/no-ingredients.inc:206
 msgid "no Pomegranate juice"
-msgstr ""
+msgstr "ingen granatäppeljuice"
 
 #: src/no-ingredients.inc:207
-#, fuzzy
-#| msgid "no Potato"
 msgid "no Pork fat"
-msgstr "ingen potatis"
+msgstr "inget grisfett"
 
 #: src/no-ingredients.inc:208
 #, fuzzy
-#| msgid "no Peperoni"
 msgid "no Pork loin"
-msgstr "ingen feferoni"
+msgstr "ingen fläskkotlett"
 
 #: src/no-ingredients.inc:209
 msgid "no Potato"
@@ -4969,7 +4674,7 @@ msgstr "ingen potatis"
 
 #: src/no-ingredients.inc:210
 msgid "no Powdered sugar"
-msgstr ""
+msgstr "inget florsocker"
 
 #: src/no-ingredients.inc:211
 msgid "no Pumpkin seeds"
@@ -4977,28 +4682,23 @@ msgstr "inga pumpafrön"
 
 #: src/no-ingredients.inc:212
 msgid "no Quinoa"
-msgstr ""
+msgstr "ingen quinoa"
 
 #: src/no-ingredients.inc:213
-#, fuzzy
-#| msgid "no Raisins"
 msgid "no Radish"
-msgstr "inga russin"
+msgstr "ingen rädisa"
 
 #: src/no-ingredients.inc:214
 msgid "no Raisins"
 msgstr "inga russin"
 
 #: src/no-ingredients.inc:215
-#, fuzzy
 msgid "no Red bell pepper"
-msgstr "ingen peppar"
+msgstr "ingen röd paprika"
 
 #: src/no-ingredients.inc:216
-#, fuzzy
-#| msgid "no Onion"
 msgid "no Red onion"
-msgstr "ingen lök"
+msgstr "ingen rödlök"
 
 #: src/no-ingredients.inc:217
 #, fuzzy
@@ -5007,151 +4707,118 @@ msgid "no Red Pepper"
 msgstr "ingen peppar"
 
 #: src/no-ingredients.inc:218
-#, fuzzy
-#| msgid "no Rice"
 msgid "no Red wine"
-msgstr "inget ris"
+msgstr "inget rött vin"
 
 #: src/no-ingredients.inc:219
 msgid "no Rice"
 msgstr "inget ris"
 
 #: src/no-ingredients.inc:220
-#, fuzzy
-#| msgid "no Rice"
 msgid "no Rice, cooked"
-msgstr "inget ris"
+msgstr "inget ris, kokt"
 
 #: src/no-ingredients.inc:221
 msgid "no Rice vermicelli noodles"
 msgstr ""
 
 #: src/no-ingredients.inc:222
-#, fuzzy
-#| msgid "no Sugar"
 msgid "no Rock sugar"
-msgstr "inget socker"
+msgstr "inget kandisocker"
 
 #: src/no-ingredients.inc:223
 msgid "no Rolled oats"
-msgstr ""
+msgstr "inget havregryn"
 
 #: src/no-ingredients.inc:224
 msgid "no Rosemary"
-msgstr ""
+msgstr "ingen rosmarin"
 
 #: src/no-ingredients.inc:225
-#, fuzzy
-#| msgid "no Raisins"
 msgid "no Rosé wine"
-msgstr "inga russin"
+msgstr "inget rosévin"
 
 #: src/no-ingredients.inc:226
-#, fuzzy
-#| msgid "no Sugar"
 msgid "no Saffron"
-msgstr "inget socker"
+msgstr "ingen saffran"
 
 #: src/no-ingredients.inc:227
-#, fuzzy
-#| msgid "no Salt"
 msgid "no Sage"
-msgstr "inget salt"
+msgstr "ingen kryddsalvia"
 
 #: src/no-ingredients.inc:228
-#, fuzzy
-#| msgid "no Almond"
 msgid "no Salmon"
-msgstr "ingen mandel"
+msgstr "ingen lax"
 
 #: src/no-ingredients.inc:229
 msgid "no Salt"
 msgstr "inget salt"
 
 #: src/no-ingredients.inc:230
-#, fuzzy
 msgid "no Salt and pepper"
-msgstr "ingen peppar"
+msgstr "inget salt och peppar"
 
 #: src/no-ingredients.inc:231
 #, fuzzy
-#| msgid "no Soy sauce"
 msgid "no Saucebinder"
-msgstr "ingen sojasås"
+msgstr "ingen såsförtjockare"
 
 #: src/no-ingredients.inc:232
-#, fuzzy
-#| msgid "no Salt"
 msgid "no Scallions"
-msgstr "inget salt"
+msgstr "inga salladslökar"
 
 #: src/no-ingredients.inc:233
-#, fuzzy
-#| msgid "no Salt"
 msgid "no Sea salt"
-msgstr "inget salt"
+msgstr "inget havssalt"
 
 #: src/no-ingredients.inc:234
+#, fuzzy
 msgid "no Semi-skimmed milk"
-msgstr ""
+msgstr "ingen mellanmjölk"
 
 #: src/no-ingredients.inc:235
-#, fuzzy
-#| msgid "no Salt"
 msgid "no Sesame oil"
-msgstr "inget salt"
+msgstr "ingen sesamolja"
 
 #: src/no-ingredients.inc:236
-#, fuzzy
-#| msgid "no Sunflower seeds"
 msgid "no Sesame seeds"
-msgstr "inga solroskärnor"
+msgstr "inga sesamfrön"
 
 #: src/no-ingredients.inc:237
-#, fuzzy
-#| msgid "no Salt"
 msgid "no Shallots"
-msgstr "inget salt"
+msgstr "inga schalottenlökar"
 
 #: src/no-ingredients.inc:238
 msgid "no Shrimps"
-msgstr ""
+msgstr "inga räkor"
 
 #: src/no-ingredients.inc:239
 msgid "no Slivered almonds, toasted"
-msgstr ""
+msgstr "inga mandelspån, rostade"
 
 #: src/no-ingredients.inc:240
-#, fuzzy
-#| msgid "no Soy sauce"
 msgid "no Sour cream"
-msgstr "ingen sojasås"
+msgstr "ingen gräddfil"
 
 #: src/no-ingredients.inc:241
 msgid "no Soy sauce"
 msgstr "ingen sojasås"
 
 #: src/no-ingredients.inc:242
-#, fuzzy
-#| msgid "no Squash"
 msgid "no Spinach"
-msgstr "ingen squash"
+msgstr "ingen spenat"
 
 #: src/no-ingredients.inc:243
-#, fuzzy
-#| msgid "no Onion"
 msgid "no Spring onion"
-msgstr "ingen lök"
+msgstr "ingen salladslök"
 
 #: src/no-ingredients.inc:244
 msgid "no Squash"
 msgstr "ingen squash"
 
 #: src/no-ingredients.inc:245
-#, fuzzy
-#| msgid "no Strawberry"
 msgid "no Star anise"
-msgstr "ingen jordgubbe"
+msgstr "ingen stjärnanis"
 
 #: src/no-ingredients.inc:246
 msgid "no Strawberry"
@@ -5166,16 +4833,12 @@ msgid "no Sunflower seeds"
 msgstr "inga solroskärnor"
 
 #: src/no-ingredients.inc:249
-#, fuzzy
-#| msgid "no Potato"
 msgid "no Sweet potatoes"
-msgstr "ingen potatis"
+msgstr "ingen sötpotatis"
 
 #: src/no-ingredients.inc:250
-#, fuzzy
-#| msgid "no Tangerine"
 msgid "no Tamarind paste"
-msgstr "ingen tangerin"
+msgstr "ingen tamarindpasta"
 
 #: src/no-ingredients.inc:251
 msgid "no Tangerine"
@@ -5183,25 +4846,23 @@ msgstr "ingen tangerin"
 
 #: src/no-ingredients.inc:252
 msgid "no Thai basil leaves"
-msgstr ""
+msgstr "inga thaibasilikablad"
 
 #: src/no-ingredients.inc:253
 msgid "no Thai chillies"
-msgstr ""
+msgstr "ingen thaichili"
 
 #: src/no-ingredients.inc:254
-#, fuzzy
-#| msgid "no Pizza sauce"
 msgid "no Thai fish sauce"
-msgstr "ingen pizzasås"
+msgstr "ingen thaifisksås"
 
 #: src/no-ingredients.inc:255
 msgid "no Thyme"
-msgstr ""
+msgstr "ingen timjan"
 
 #: src/no-ingredients.inc:256
 msgid "no Tinned pineapple rings"
-msgstr ""
+msgstr "inga ananasringar på burk"
 
 #: src/no-ingredients.inc:257
 msgid "no Tofu"
@@ -5212,48 +4873,37 @@ msgid "no Tomato"
 msgstr "ingen tomat"
 
 #: src/no-ingredients.inc:259
-#, fuzzy
-#| msgid "no Tomato"
 msgid "no Tomato paste"
-msgstr "ingen tomat"
+msgstr "ingen tomatpuré"
 
 #: src/no-ingredients.inc:260
-#, fuzzy
-#| msgid "no Tomato"
 msgid "no Tomato sauce"
-msgstr "ingen tomat"
+msgstr "ingen tomatsås"
 
 #: src/no-ingredients.inc:261
-#, fuzzy
-#| msgid "no Turmeric, ground"
 msgid "no Tumeric ground"
 msgstr "ingen gurkmeja, mald"
 
 #: src/no-ingredients.inc:262
 msgid "no Tuna fish"
-msgstr ""
+msgstr "ingen tonfisk"
 
 #: src/no-ingredients.inc:263
 msgid "no Unsalted butter"
-msgstr ""
+msgstr "inget osaltat smör"
 
 #: src/no-ingredients.inc:264
-#, fuzzy
-#| msgid "no Baking powder"
 msgid "no Vanilla baking powder"
-msgstr "inget bakpulver"
+msgstr "inget vaniljbakpulver"
 
 #: src/no-ingredients.inc:265
-#, fuzzy
-#| msgid "no Vanilla sugar"
 msgid "no Vanilla extract"
-msgstr "inget vaniljsocker"
+msgstr "inget vaniljextrakt"
 
 #: src/no-ingredients.inc:266
 #, fuzzy
-#| msgid "no Vanilla pudding"
 msgid "no Vanilla powdered sugar, for dusting"
-msgstr "ingen vaniljpudding"
+msgstr "ingen vaniljflorsocker"
 
 #: src/no-ingredients.inc:267
 msgid "no Vanilla pudding"
@@ -5265,7 +4915,7 @@ msgstr "inget vaniljsocker"
 
 #: src/no-ingredients.inc:269
 msgid "no Vegetable oil"
-msgstr ""
+msgstr "ingen vegetabilisk olja"
 
 #: src/no-ingredients.inc:270
 msgid "no Vinegar"
@@ -5276,16 +4926,14 @@ msgid "no Water"
 msgstr "inget vatten"
 
 #: src/no-ingredients.inc:272
-#, fuzzy
-#| msgid "no Flour"
 msgid "no Wheat flour"
-msgstr "inget mjöl"
+msgstr "inget vetemjöl"
 
+# Internationellt anses begreppet white fish inom fiskerinäringen innefatta arter som lever nära eller på havsbotten. T.ex. torsk, kolja, hälleflundra.
 #: src/no-ingredients.inc:273
 #, fuzzy
-#| msgid "no Wine"
 msgid "no White fish"
-msgstr "inget vin"
+msgstr "ingen white fish"
 
 #: src/no-ingredients.inc:274
 #, fuzzy
@@ -5294,14 +4942,12 @@ msgid "no White onion"
 msgstr "ingen lök"
 
 #: src/no-ingredients.inc:275
-#, fuzzy
-#| msgid "no Wine"
 msgid "no White wine"
-msgstr "inget vin"
+msgstr "inget vitt vin"
 
 #: src/no-ingredients.inc:276
 msgid "no Whole chicken"
-msgstr ""
+msgstr "ingen hel kyckling"
 
 #: src/no-ingredients.inc:277
 msgid "no Wine"
@@ -5309,16 +4955,15 @@ msgstr "inget vin"
 
 #: src/no-ingredients.inc:278
 msgid "no Worcestershire sauce"
-msgstr ""
+msgstr "ingen Worcestershiresås"
 
 #: src/no-ingredients.inc:279
 msgid "no Yeast"
 msgstr "ingen jäst"
 
 #: src/no-ingredients.inc:280
-#, fuzzy
 msgid "no Yellow bell pepper"
-msgstr "ingen peppar"
+msgstr "ingen gul paprika"
 
 #: src/no-ingredients.inc:281
 msgid "no Yoghurt"
@@ -5326,7 +4971,7 @@ msgstr "ingen yoghurt"
 
 #: src/no-ingredients.inc:282
 msgid "no Zest of 1 lemon (organic)"
-msgstr ""
+msgstr "inget strimlat skal av 1 citron (organiskt)"
 
 #: src/no-ingredients.inc:283
 msgid "no Zinfandel"
@@ -5334,7 +4979,7 @@ msgstr "ingen zinfandel"
 
 #: src/no-ingredients.inc:284
 msgid "no Zuccini"
-msgstr ""
+msgstr "ingen zucchini"
 
 #~ msgid "Serves"
 #~ msgstr "Portioner"
