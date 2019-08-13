@@ -132,7 +132,7 @@ msgstr "El nombre de vegades que s'ha mostrat el mode de cocció"
 
 #: data/org.gnome.Recipes.gschema.xml:33
 msgid "The number of times cooking mode has been presented."
-msgstr "El nombre de vegades que s'ha mostrat el mode de cocció"
+msgstr "El nombre de vegades que s'ha mostrat el mode de cocció."
 
 #: data/org.gnome.Recipes.gschema.xml:39
 msgid "The timestamp of the last change to the favorites list"
@@ -211,7 +211,7 @@ msgid ""
 "locale to decide."
 msgstr ""
 "Configuració en la qual s'han de mostrar les unitats de temperatura. Per "
-"defecte és 'locale', cosa que significa que s'usa la categoria LC_MEASUREMENT"
+"defecte és «locale», cosa que significa que s'usa la categoria LC_MEASUREMENT"
 
 #: data/org.gnome.Recipes.gschema.xml:92
 msgid "By which key to sort lists."
@@ -1168,7 +1168,7 @@ msgstr "Ha expirat el temporitzador de cocció"
 #: src/gr-cooking-view.c:411 src/gr-cooking-view.c:427
 #, c-format
 msgid "Timer for “%s” has expired."
-msgstr "El temporitzador “%s” ha vençut."
+msgstr "El temporitzador «%s» ha vençut."
 
 #: src/gr-cooking-view.c:425
 msgid "Timer is up!"
@@ -1863,7 +1863,7 @@ msgstr "(el fitxer adjuntat pot ser importat al Receptes del GNOME.)"
 #: src/gr-recipe-exporter.c:437
 #, c-format
 msgid "This build does not support exporting"
-msgstr "Aquesta construcció no admet exportació."
+msgstr "Aquesta construcció no admet exportació"
 
 #: src/gr-recipe-exporter.c:520
 #, c-format
@@ -1879,7 +1879,7 @@ msgstr ""
 msgid "%d recipe selected for sharing"
 msgid_plural "%d recipes selected for sharing"
 msgstr[0] "%d recepta seleccionada per a compartir"
-msgstr[1] "%d recepta seleccionada per a compartir"
+msgstr[1] "%d receptes seleccionades per a compartir"
 
 #: src/gr-recipe-exporter.c:649
 msgid ""
@@ -2582,7 +2582,7 @@ msgid ""
 "The “%s” recipe has unsaved changes.\n"
 "Close the window anyway?"
 msgstr ""
-"La recepta “%s” té canvis que no s'han desat\n"
+"La recepta «%s» té canvis que no s'han desat\n"
 "Tancar la finestra de totes maneres?"
 
 #: src/gr-window.c:540
@@ -2596,12 +2596,12 @@ msgstr ""
 #: src/gr-window.c:664
 #, c-format
 msgid "Recipe “%s” deleted"
-msgstr "Recepta “%s” esborrada"
+msgstr "Recepta «%s» esborrada"
 
 #: src/gr-window.c:714
 #, c-format
 msgid "You updated your contributed “%s” recipe. Send an update?"
-msgstr "Heu actualitzat la vostra recepta “%s”. Enviar una actualització?"
+msgstr "Heu actualitzat la vostra recepta «%s». Enviar una actualització?"
 
 #: src/gr-window.c:855
 msgid "Ready to Cook!"
@@ -2626,7 +2626,7 @@ msgstr "Tria un fitxer de recepta"
 #: src/gr-window.c:1241
 #, c-format
 msgid "Recipes have been exported to “%s”"
-msgstr "S'han exportat les receptes to “%s”."
+msgstr "S'han exportat les receptes a «%s»"
 
 #: src/gr-window.c:1279
 msgid "Select a file"
