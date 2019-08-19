@@ -1601,7 +1601,7 @@ gr_window_show_news (GrWindow *window)
 void
 gr_window_show_report_issue (GrWindow *window)
 {
-        const char *uri = "https://bugzilla.gnome.org/enter_bug.cgi?product=recipes";
+        const char *uri = "https://gitlab.gnome.org/GNOME/recipes/issues/new";
 
         if (in_flatpak_sandbox () &&
             !portal_available (GTK_WINDOW (window), "org.freedesktop.portal.OpenURI"))
