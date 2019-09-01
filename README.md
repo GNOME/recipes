@@ -13,7 +13,7 @@ The design can be found here: <https://wiki.gnome.org/Design/Apps/Recipes>
 
 Other information can be found here: <https://wiki.gnome.org/Apps/Recipes>
 
-<a href='https://flathub.org/apps/details/org.gnome.Recipes'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-i-en.png'/></a>
+[![Download on Flathub](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Flathub-badge-en.svg/240px-Flathub-badge-en.svg.png)](https://flathub.org/apps/details/org.gnome.Recipes)
 
 ## Building
 
