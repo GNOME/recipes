@@ -22,5 +22,4 @@ gnome.yelp('org.gnome.Recipes',
                    'images/rotate-right.png',
                    'images/search.png',
                    'images/star.png',
-                   'images/trash.png'],
-           languages: ['cs', 'de', 'es', 'fr', 'ko', 'pl', 'sv'])
+                   'images/trash.png'])
