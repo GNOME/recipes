@@ -91,7 +91,7 @@
                     <property name="relief">none</property>
                     <signal name="clicked" handler="cuisines_expander_button_clicked" swapped="yes"/>
                     <style>
-                      <class name="image-cutton"/>
+                      <class name="image-button"/>
                       <class name="circular"/>
                     </style>
                     <child>
@@ -188,7 +188,7 @@
                     <property name="relief">none</property>
                     <signal name="clicked" handler="season_expander_button_clicked" swapped="yes"/>
                     <style>
-                      <class name="image-cutton"/>
+                      <class name="image-button"/>
                       <class name="circular"/>
                     </style>
                     <child>
