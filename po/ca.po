@@ -232,7 +232,7 @@ msgid ""
 "The setting determines whether the surprise dialog should be shown on "
 "startup."
 msgstr ""
-"La configuració determina si s'ha de mostrar el diàleg sorpresa a l'iniciar "
+"La configuració determina si s'ha de mostrar el diàleg sorpresa en iniciar "
 "l'aplicatiu."
 
 #: data/org.gnome.Recipes.gschema.xml:106
@@ -957,7 +957,7 @@ msgstr "Col·labora al projecte Receptes"
 
 #: src/recipe-surprise.ui:28
 msgid "GNOME turns 20 !"
-msgstr "GNOME fa 20  anys!"
+msgstr "GNOME fa 20 anys!"
 
 #: src/recipe-surprise.ui:52
 msgid ""
@@ -986,11 +986,11 @@ msgstr "Novetats al Receptes"
 
 #: src/shopping-list-exporter-dialog.ui:13 src/gr-shopping-list-exporter.c:278
 msgid "Export Ingredients"
-msgstr "Exportar Ingredients"
+msgstr "Exporta els ingredients"
 
 #: src/shopping-list-exporter-dialog.ui:55
 msgid "Export"
-msgstr "Exportar"
+msgstr "Exporta"
 
 #: src/shopping-list-exporter-dialog.ui:101
 msgid "Email"
@@ -1003,7 +1003,7 @@ msgstr "Todoist"
 
 #: src/shopping-list-exporter-dialog.ui:152
 msgid "Add service"
-msgstr "Afegir un servei"
+msgstr "Afegeix un servei"
 
 #: src/gr-about-dialog.c:132
 msgid "Learn more about Builder"
@@ -1121,7 +1121,7 @@ msgstr "Mostra la versió i surt"
 
 #: src/gr-app.c:445
 msgid "Turn on verbose logging"
-msgstr "Activa registre descriptiu"
+msgstr "Activa el registre descriptiu"
 
 #: src/gr-app.c:449
 msgid "Show a category"
@@ -1312,7 +1312,7 @@ msgstr ""
 "fortament influenciat per les tradicions religioses i culturals. La cuina "
 "del Nord de l'índia també hi ha tingut influències de l'Orient Mitjà i de "
 "l'Àsia Central pels anys de govern de l'imperi Mogol. La cuina índia ha, i "
-"continua evolucionant com a conseqüència de les interaccions culturals de la "
+"continua evolucionant a conseqüència de les interaccions culturals de la "
 "nació amb altres societats."
 
 #: src/gr-cuisine.c:92
@@ -1345,7 +1345,7 @@ msgstr ""
 "La cuina francesa va ser sistematitzada al segle XX per Auguste Escoffier "
 "per convertir-se en l'alta cuina moderna; Escoffier, tanmateix, va abandonar "
 "gran part del caràcter culinari local que es trobava a les regions de França "
-"i es considerava difícil d'executar a la cuina casolana. a A partir del "
+"i es considerava difícil d'executar a la cuina casolana. A partir del "
 "segle XX, el gastro-turisme i la guia Michelin van ajudar a familiaritzar-se "
 "amb la rica cuina burgesa i camperola. La cuina gascona també ha tingut una "
 "gran influència sobre la cuina del sud-oest de França. Molts plats que "
@@ -1471,7 +1471,7 @@ msgstr "Receptes sense llet"
 
 #: src/gr-diet.c:49
 msgid "Halal recipes"
-msgstr "Receptes Halal"
+msgstr "Receptes halal"
 
 #: src/gr-diet.c:52 src/gr-diet.c:84
 msgid "Other dietary restrictions"
@@ -1548,7 +1548,7 @@ msgstr ""
 "vegetarianisme conegut (registrat a l'Índia), es permeten productes lactis, "
 "com ara llet i formatge.\n"
 "Les formes més estrictes del vegetarianisme són el veganisme i el "
-"fruitarisme, que exclouen tots els productes animals, inclosos els productes "
+"frugivorisme, que exclouen tots els productes animals, inclosos els productes "
 "lactis, així com la mel, i fins i tot alguns sucres refinats si es filtren i "
 "blanquegen amb carbó animal.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Vegetarianism\">Saber-ne més…</a>"
@@ -3408,7 +3408,7 @@ msgstr "Oli d'oliva"
 
 #: src/ingredients.inc:186
 msgid "Olive oil, extra-virgin"
-msgstr "Oli d'oliva, extra verge"
+msgstr "Oli d'oliva, extraverge"
 
 #: src/ingredients.inc:187
 msgid "Olives, pitted"
@@ -3508,7 +3508,7 @@ msgstr "Sucre en pols"
 
 #: src/ingredients.inc:211
 msgid "Pumpkin seeds"
-msgstr "Llavors de carbassa"
+msgstr "Llavors de carabassa"
 
 #: src/ingredients.inc:212
 msgid "Quinoa"
@@ -3800,7 +3800,7 @@ msgstr "Zinfandel"
 
 #: src/ingredients.inc:284
 msgid "Zuccini"
-msgstr "Carbassó"
+msgstr "Carabassó"
 
 #: src/no-ingredients.inc:1
 msgid "no Almond"
@@ -3808,7 +3808,7 @@ msgstr "sense ametlla"
 
 #: src/no-ingredients.inc:2
 msgid "no Amaretti"
-msgstr "No Amaretti"
+msgstr "sense amaretti"
 
 #: src/no-ingredients.inc:3
 msgid "no Anchovies"
@@ -3916,7 +3916,7 @@ msgstr "sense pebrot (verd)"
 
 #: src/no-ingredients.inc:29
 msgid "no Berry"
-msgstr "sense Baies"
+msgstr "sense baies"
 
 #: src/no-ingredients.inc:30
 msgid "no Bilberry"
@@ -3936,7 +3936,7 @@ msgstr "sense grans de pebre negre"
 
 #: src/no-ingredients.inc:34
 msgid "no Blueberry"
-msgstr "sense Nabius"
+msgstr "sense nabius"
 
 #: src/no-ingredients.inc:35
 msgid "no Bourbon whiskey"
@@ -3988,7 +3988,7 @@ msgstr "sense mongetes cannellini"
 
 #: src/no-ingredients.inc:47
 msgid "no Canned black beans, rinsed"
-msgstr "sense ongetes negres en conserva, esbandides"
+msgstr "sense mongetes negres en conserva, esbandides"
 
 #: src/no-ingredients.inc:48
 msgid "no Canned chopped tomatoes"
@@ -4000,7 +4000,7 @@ msgstr "sense pastanaga"
 
 #: src/no-ingredients.inc:50
 msgid "no Cashews, lightly toasted"
-msgstr "sense aacards, lleugerament torrats"
+msgstr "sense anacards, lleugerament torrats"
 
 #: src/no-ingredients.inc:51
 msgid "no Caster sugar"
@@ -4008,7 +4008,7 @@ msgstr "sense sucre llustre"
 
 #: src/no-ingredients.inc:52
 msgid "no Celery"
-msgstr "sense Api"
+msgstr "sense api"
 
 #: src/no-ingredients.inc:53
 msgid "no Champignons"
@@ -4072,7 +4072,7 @@ msgstr "sense xoriç"
 
 #: src/no-ingredients.inc:68
 msgid "no Ciboulette"
-msgstr "sense Cibulet"
+msgstr "sense cibulet"
 
 #: src/no-ingredients.inc:69
 msgid "no Cilantro"
@@ -4092,7 +4092,7 @@ msgstr "sense branques de canyella"
 
 #: src/no-ingredients.inc:73
 msgid "no Cloves"
-msgstr "sense Clau"
+msgstr "sense clau"
 
 #: src/no-ingredients.inc:74
 msgid "no Cocoa butter"
@@ -4544,7 +4544,7 @@ msgstr "sense oli d'oliva"
 
 #: src/no-ingredients.inc:186
 msgid "no Olive oil, extra-virgin"
-msgstr "sense oli d'oliva, extra verge"
+msgstr "sense oli d'oliva, extraverge"
 
 #: src/no-ingredients.inc:187
 msgid "no Olives, pitted"
@@ -4644,7 +4644,7 @@ msgstr "sense sucre en pols"
 
 #: src/no-ingredients.inc:211
 msgid "no Pumpkin seeds"
-msgstr "sense llavors de carbassa"
+msgstr "sense llavors de carabassa"
 
 #: src/no-ingredients.inc:212
 msgid "no Quinoa"
@@ -4724,7 +4724,7 @@ msgstr "sense sal ni pebre"
 
 #: src/no-ingredients.inc:231
 msgid "no Saucebinder"
-msgstr "sense salsa espessidora "
+msgstr "sense salsa espessidora"
 
 #: src/no-ingredients.inc:232
 msgid "no Scallions"
@@ -4760,7 +4760,7 @@ msgstr "sense ametlles triturades, torrades"
 
 #: src/no-ingredients.inc:240
 msgid "no Sour cream"
-msgstr "sense cema agra"
+msgstr "sense nata agra"
 
 #: src/no-ingredients.inc:241
 msgid "no Soy sauce"
@@ -4932,8 +4932,8 @@ msgstr "sense pela d'1 llimona (orgànica)"
 
 #: src/no-ingredients.inc:283
 msgid "no Zinfandel"
-msgstr "sense Zinfandel"
+msgstr "sense zinfandel"
 
 #: src/no-ingredients.inc:284
 msgid "no Zuccini"
-msgstr "sense carbassó"
+msgstr "sense carabassó"
