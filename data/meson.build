@@ -70,20 +70,7 @@ gnome.compile_schemas(build_by_default: true)
 install_data('org.gnome.Recipes.gschema.xml',
              install_dir: schemadir)
 
-install_data(   'icons/16x16/org.gnome.Recipes.png',
-                'icons/16x16/org.gnome.Recipes-symbolic.symbolic.png',
-                install_dir: join_paths([datadir,'icons/hicolor/16x16/apps']))
-install_data(   'icons/24x24/org.gnome.Recipes.png',
-                'icons/24x24/org.gnome.Recipes-symbolic.symbolic.png',
-                install_dir: join_paths([datadir,'icons/hicolor/24x24/apps']))
-install_data(   'icons/32x32/org.gnome.Recipes.png',
-                'icons/32x32/org.gnome.Recipes-symbolic.symbolic.png',
-                install_dir: join_paths([datadir,'icons/hicolor/32x32/apps']))
-install_data(   'icons/48x48/org.gnome.Recipes.png',
-                'icons/48x48/org.gnome.Recipes-symbolic.symbolic.png',
-                install_dir: join_paths([datadir,'icons/hicolor/48x48/apps']))
-install_data(   'icons/512x512/org.gnome.Recipes.png',
-                'icons/512x512/org.gnome.Recipes-symbolic.symbolic.png',
-                install_dir: join_paths([datadir,'icons/hicolor/512x512/apps']))
+install_data(   'icons/scalable/org.gnome.Recipes.svg',
+                install_dir: join_paths([datadir,'icons/hicolor/scalable/apps']))
 install_data(   'icons/symbolic/org.gnome.Recipes-symbolic.svg',
                 install_dir: join_paths([datadir,'icons/hicolor/symbolic/apps']))
