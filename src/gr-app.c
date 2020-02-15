@@ -262,7 +262,9 @@ help_activated (GSimpleAction *action,
         g_autoptr(GError) error = NULL;
 
         info = g_app_info_get_default_for_uri_scheme ("help");
-        if (!g_app_info_launch_uris (info, &uris, NULL, &error))
+        if (info == NULL)
+                g_warning ("Failed to get a launcher for the URI scheme 'help:'");
+        else if (!g_app_info_launch_uris (info, &uris, NULL, &error))
                 g_warning ("Failed to launch %s: %s", g_app_info_get_name (info), error->message);
 }
 
