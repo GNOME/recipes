@@ -1,15 +1,15 @@
 # Hungarian translation for recipes.
-# Copyright (C) 2017, 2018, 2019 Free Software Foundation, Inc.
+# Copyright (C) 2017, 2018, 2019, 2020 Free Software Foundation, Inc.
 # This file is distributed under the same license as the recipes package.
 #
 # Balázs Meskó <mesko.balazs at fsf dot hu>, 2017, 2018, 2019.
-# Balázs Úr <ur.balazs at fsf dot hu>, 2017, 2018, 2019.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2017, 2018, 2019, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-07 16:41+0000\n"
-"PO-Revision-Date: 2019-09-27 21:11+0200\n"
+"POT-Creation-Date: 2020-02-17 03:58+0000\n"
+"PO-Revision-Date: 2020-02-17 23:33+0100\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 18.12.3\n"
+"X-Generator: Lokalize 19.04.3\n"
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
@@ -427,8 +427,11 @@ msgstr ""
 "vagy tejtermék intoleranciás személynek szolgál fel."
 
 #: src/gr-details-page.ui:119
+#| msgid ""
+#| "Contains Gluten. Please always double-check the ingredients if you are "
+#| "serving a person with gluten or dairy intolerance."
 msgid ""
-"Contains Gluten. Please always double-check the ingredients if you are "
+"Contains gluten. Please always double-check the ingredients if you are "
 "serving a person with gluten or dairy intolerance."
 msgstr ""
 "Glutént tartalmaz. Mindig kétszer ellenőrizze a hozzávalókat, ha glutén- "
@@ -1549,18 +1552,18 @@ msgid ""
 msgstr ""
 "A vegetáriánus konyha olyan ételeken alapszik, amelyek megfelelnek a "
 "vegetáriánus előírásoknak, mivel nem tartalmaznak húst és állati szövetekből "
-"készült termékeket (például zselatint vagy az állati eredetű oltót). A "
-"lakto-ovo vegetarianizmus (a nyugati világ leggyakoribb vegetáriánus típusa) "
-"esetében tojás és tejtermékek, például tej és sajt megengedettek. A "
-"lakto-vegetarianizmus, a vegetarianizmus legkorábbi ismert típusa (Indiában "
+"készült termékeket (például zselatint vagy az állati eredetű oltót). A lakto-"
+"ovo vegetarianizmus (a nyugati világ leggyakoribb vegetáriánus típusa) "
+"esetében tojás és tejtermékek, például tej és sajt megengedettek. A lakto-"
+"vegetarianizmus, a vegetarianizmus legkorábbi ismert típusa (Indiában "
 "figyelték meg) esetében olyan tejtermékek megengedettek, mint a tej és a "
 "sajt.\n"
 "A vegetarianizmus legszigorúbb formái a veganizmus és a gyümölcsdiéta, "
 "amelyek kizárják az összes állati terméket, beleértve a tejtermékeket és a "
 "mézet, sőt még a finomított cukrokat is, ha szűrt és csontszenesítéssel "
 "fehérített.\n"
-"<a href=\"https://hu.wikipedia.org/wiki/Vegetarianizmus\">Tudjon meg többet…<"
-"/a>"
+"<a href=\"https://hu.wikipedia.org/wiki/Vegetarianizmus\">Tudjon meg többet…"
+"</a>"
 
 #: src/gr-diet.c:78
 msgid ""
@@ -1581,8 +1584,8 @@ msgstr ""
 "fogyasztása utáni fél és két óra között kezdődnek. A súlyosság attól a "
 "mennyiségtől függ, amennyit egy ember eszik vagy iszik. Nem okoz kárt a "
 "gyomorban és a bélrendszerben.\n"
-"<a href=\"https://hu.wikipedia.org/wiki/Lakt%C3%B3z%C3%A9rz%C3%A9kenys%C3"
-"%A9g\">Tudjon meg többet…</a>"
+"<a href=\"https://hu.wikipedia.org/wiki/Lakt%C3%B3z%C3%A9rz%C3%A9kenys%C3%A9g"
+"\">Tudjon meg többet…</a>"
 
 #: src/gr-diet.c:81
 msgid "Halal meat is prepared according to Islamic traditions"
@@ -2546,17 +2549,30 @@ msgstr[1] "%d órával ezelőtt"
 msgid "some time ago"
 msgstr "nem sokkal ezelőtt"
 
-#: src/gr-utils.c:385
+#: src/gr-utils.c:386
 msgid "Could not connect to the session bus from inside the Flatpak sandbox."
 msgstr ""
 "Nem sikerült kapcsolódni a munkamenetbuszhoz az elkülönített Flatpak "
 "környezeten belülről."
 
-#: src/gr-utils.c:386
+#: src/gr-utils.c:387
 msgid "Certain functionality will not be available."
 msgstr "Bizonyos funkcionalitás nem lesz elérhető."
 
-#: src/gr-utils.c:406
+#: src/gr-utils.c:400
+#, c-format
+msgid ""
+"Could not create D-Bus proxy for org.freedesktop.portal.Desktop interface %s"
+msgstr ""
+"Nem sikerül létrehozni D-Bus proxyt a(z) %s org.freedesktop.portal.Desktop"
+" interfészhez"
+
+#: src/gr-utils.c:401
+#, c-format
+msgid "Error: %s"
+msgstr "Hiba: %s"
+
+#: src/gr-utils.c:412
 msgid ""
 "Missing the desktop portal needed to open files from inside a Flatpak "
 "sandbox."
@@ -2564,21 +2580,21 @@ msgstr ""
 "Hiányozik az asztali portál, amely az elkülönített Flatpak környezeten "
 "belülről történő fájlok megnyitásához szükséges."
 
-#: src/gr-utils.c:408
+#: src/gr-utils.c:414
 msgid ""
 "Missing the desktop portal needed to print from inside a Flatpak sandbox."
 msgstr ""
 "Hiányozik az asztali portál, amely az elkülönített Flatpak környezeten "
 "belülről történő nyomtatáshoz szükséges."
 
-#: src/gr-utils.c:410
+#: src/gr-utils.c:416
 msgid ""
 "Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
 msgstr ""
 "Hiányozik az asztali portál, amely az elkülönített Flatpak környezeten "
 "belülről történő URL-ek megnyitásához szükséges."
 
-#: src/gr-utils.c:414
+#: src/gr-utils.c:420
 msgid ""
 "Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
 msgstr ""
