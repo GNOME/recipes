@@ -81,6 +81,9 @@ if get_option('canberra') != 'no'
 endif
 
 deps = [ dependency('gtk+-3.0', version : '>=3.22'),
+         dependency('glib-2.0'),
+         dependency('gio-2.0'),
+         dependency('gio-unix-2.0'),
          dependency('gmodule-export-2.0'),
          dependency('libsoup-2.4'),
          dependency('goa-1.0'),
