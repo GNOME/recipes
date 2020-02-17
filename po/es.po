@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the recipes package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # Rodrigo <rodhos92@gmail.com>, 2018.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2016-2019.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2016-2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-02 09:00+0000\n"
-"PO-Revision-Date: 2019-11-05 15:10+0100\n"
+"POT-Creation-Date: 2020-02-17 03:58+0000\n"
+"PO-Revision-Date: 2020-02-17 11:55+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -424,9 +424,6 @@ msgstr ""
 "de una persona con intolerancia al gluten o a la lactosa."
 
 #: src/gr-details-page.ui:119
-#| msgid ""
-#| "Contains Gluten. Please always double-check the ingredients if you are "
-#| "serving a person with gluten or dairy intolerance."
 msgid ""
 "Contains gluten. Please always double-check the ingredients if you are "
 "serving a person with gluten or dairy intolerance."
@@ -2539,15 +2536,28 @@ msgstr[1] "Hace %d horas"
 msgid "some time ago"
 msgstr "hace algún tiempo"
 
-#: src/gr-utils.c:385
+#: src/gr-utils.c:386
 msgid "Could not connect to the session bus from inside the Flatpak sandbox."
 msgstr "No se pudo conectar al bus de sesión desde el entorno de Flatpak."
 
-#: src/gr-utils.c:386
+#: src/gr-utils.c:387
 msgid "Certain functionality will not be available."
 msgstr "Determinada funcionalidad no estará disponible."
 
-#: src/gr-utils.c:406
+#: src/gr-utils.c:400
+#, c-format
+msgid ""
+"Could not create D-Bus proxy for org.freedesktop.portal.Desktop interface %s"
+msgstr ""
+"No se ha podido crear el proxy de D-Bus para la interfaz de org.freedesktop."
+"portal.Desktop %s "
+
+#: src/gr-utils.c:401
+#, c-format
+msgid "Error: %s"
+msgstr "Error: %s"
+
+#: src/gr-utils.c:412
 msgid ""
 "Missing the desktop portal needed to open files from inside a Flatpak "
 "sandbox."
@@ -2555,21 +2565,21 @@ msgstr ""
 "Falta el portal de escritorio necesario para abrir archivos dentro de un "
 "entorno Flatpak."
 
-#: src/gr-utils.c:408
+#: src/gr-utils.c:414
 msgid ""
 "Missing the desktop portal needed to print from inside a Flatpak sandbox."
 msgstr ""
 "Falta el portal de escritorio necesario para imprimir dentro de un entorno "
 "Flatpak."
 
-#: src/gr-utils.c:410
+#: src/gr-utils.c:416
 msgid ""
 "Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
 msgstr ""
 "Falta el portal de escritorio necesario para abrir URL dentro de un entorno "
 "Flatpak."
 
-#: src/gr-utils.c:414
+#: src/gr-utils.c:420
 msgid ""
 "Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
 msgstr "Instale xdg-desktop-portal y xdg-desktop-portal-gtk en su equipo"
