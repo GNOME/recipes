@@ -376,14 +376,15 @@ portal_available (GtkWindow  *window,
         g_autoptr(GDBusProxy) proxy = NULL;
         g_autofree char *owner = NULL;
         g_autoptr(GVariant) version = NULL;
-        const char *message1;
-        const char *message2;
+        g_autoptr(GError) local_error = NULL;
+        g_autofree char *message1 = NULL;
+        g_autofree char *message2 = NULL;
         GtkWidget *dialog;
 
         bus = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL);
         if (!bus) {
-                message1 = _("Could not connect to the session bus from inside the Flatpak sandbox.");
-                message2 = _("Certain functionality will not be available.");
+                message1 = g_strdup (_("Could not connect to the session bus from inside the Flatpak sandbox."));
+                message2 = g_strdup (_("Certain functionality will not be available."));
                 goto dialog;
         }
 
@@ -394,7 +395,12 @@ portal_available (GtkWindow  *window,
                                        "/org/freedesktop/portal/desktop",
                                        interface,
                                        NULL,
-                                       NULL);
+                                       &local_error);
+        if (proxy == NULL) {
+                message1 = g_strdup_printf (_("Could not create D-Bus proxy for org.freedesktop.portal.Desktop interface %s"), interface);
+                message2 = g_strdup_printf (_("Error: %s"), local_error->message);
+                goto dialog;
+        }
 
         owner = g_dbus_proxy_get_name_owner (proxy);
         version = g_dbus_proxy_get_cached_property (proxy, "version");
@@ -403,15 +409,15 @@ portal_available (GtkWindow  *window,
                 return TRUE;
 
         if (strcmp (interface, "org.freedesktop.portal.FileChooser") == 0)
-                message1 = _("Missing the desktop portal needed to open files from inside a Flatpak sandbox.");
+                message1 = g_strdup (_("Missing the desktop portal needed to open files from inside a Flatpak sandbox."));
         else if (strcmp (interface, "org.freedesktop.portal.Print") == 0)
-                message1 = _("Missing the desktop portal needed to print from inside a Flatpak sandbox.");
+                message1 = g_strdup (_("Missing the desktop portal needed to print from inside a Flatpak sandbox."));
         else if (strcmp (interface, "org.freedesktop.portal.OpenURI") == 0)
-                message1 = _("Missing the desktop portal needed to open URLs from inside a Flatpak sandbox.");
+                message1 = g_strdup (_("Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."));
         else
-                message1 = "";
+                message1 = g_strdup ("");
 
-        message2 = _("Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system");
+        message2 = g_strdup (_("Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"));
 
 dialog:
         dialog = gtk_message_dialog_new (window,
