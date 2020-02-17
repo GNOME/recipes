@@ -838,10 +838,10 @@ gr_recipe_exporter_export_all (GrRecipeExporter *exporter,
 {
         collect_all_recipes (exporter);
 
-        g_info ("Exporting %d recipes", g_list_length (exporter->recipes));
-
         if (exporter->recipes == NULL)
                 return;
+
+        g_info ("Exporting %d recipes", g_list_length (exporter->recipes));
 
         exporter->output = file;
 
