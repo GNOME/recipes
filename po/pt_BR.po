@@ -1,15 +1,15 @@
 # Brazilian Portuguese translation for recipes.
-# Copyright (C) 2018 recipes's COPYRIGHT HOLDER
+# Copyright (C) 2020 recipes's COPYRIGHT HOLDER
 # This file is distributed under the same license as the recipes package.
 # Enrico Nicoletto <liverig@gmail.com>, 2016, 2017.
-# Rafael Fontenelle <rafaelff@gnome.org>, 2016-2019.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2016-2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-02 09:00+0000\n"
-"PO-Revision-Date: 2019-11-29 04:53-0300\n"
+"POT-Creation-Date: 2020-02-17 03:58+0000\n"
+"PO-Revision-Date: 2020-02-20 19:42-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -432,9 +432,6 @@ msgstr ""
 "ou à lactose."
 
 #: src/gr-details-page.ui:119
-#| msgid ""
-#| "Contains Gluten. Please always double-check the ingredients if you are "
-#| "serving a person with gluten or dairy intolerance."
 msgid ""
 "Contains gluten. Please always double-check the ingredients if you are "
 "serving a person with gluten or dairy intolerance."
@@ -1103,8 +1100,8 @@ msgstr "Sistema"
 #: src/gr-about-dialog.c:914
 msgid "translator-credits"
 msgstr ""
-"Enrico Nicoletto <liverig@gmail.com>, 2016, 2017.\n"
-"Rafael Fontenelle <rafaelff@gnome.org>, 2016, 2017."
+"Enrico Nicoletto <liverig@gmail.com>\n"
+"Rafael Fontenelle <rafaelff@gnome.org>"
 
 #: src/gr-about-dialog.c:917
 msgid "Learn more about Recipes"
@@ -2560,17 +2557,30 @@ msgstr[1] "%d horas atrás"
 msgid "some time ago"
 msgstr "algum tempo atrás"
 
-#: src/gr-utils.c:385
+#: src/gr-utils.c:386
 msgid "Could not connect to the session bus from inside the Flatpak sandbox."
 msgstr ""
 "Não foi possível conectar ao barramento de sessão de dentro de sandbox do "
 "Flatpak."
 
-#: src/gr-utils.c:386
+#: src/gr-utils.c:387
 msgid "Certain functionality will not be available."
 msgstr "Certas funcionalidades não estarão disponíveis."
 
-#: src/gr-utils.c:406
+#: src/gr-utils.c:400
+#, c-format
+msgid ""
+"Could not create D-Bus proxy for org.freedesktop.portal.Desktop interface %s"
+msgstr ""
+"Não foi possível criar um proxy D-Bus para interface org.freedesktop.portal."
+"Desktop %s"
+
+#: src/gr-utils.c:401
+#, c-format
+msgid "Error: %s"
+msgstr "Erro: %s"
+
+#: src/gr-utils.c:412
 msgid ""
 "Missing the desktop portal needed to open files from inside a Flatpak "
 "sandbox."
@@ -2578,21 +2588,21 @@ msgstr ""
 "Faltando os portais desktop necessários para abrir arquivos de dentro do "
 "sandbox do Flatpak."
 
-#: src/gr-utils.c:408
+#: src/gr-utils.c:414
 msgid ""
 "Missing the desktop portal needed to print from inside a Flatpak sandbox."
 msgstr ""
 "Faltando os portais desktop necessários para imprimir arquivos de dentro do "
 "sandbox do Flatpak."
 
-#: src/gr-utils.c:410
+#: src/gr-utils.c:416
 msgid ""
 "Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
 msgstr ""
 "Faltando os portais desktop necessários para abrir URLs de dentro do sandbox "
 "do Flatpak."
 
-#: src/gr-utils.c:414
+#: src/gr-utils.c:420
 msgid ""
 "Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
 msgstr ""
