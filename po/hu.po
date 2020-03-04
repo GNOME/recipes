@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-17 03:58+0000\n"
-"PO-Revision-Date: 2020-02-17 23:33+0100\n"
+"POT-Creation-Date: 2020-02-17 22:34+0000\n"
+"PO-Revision-Date: 2020-03-04 10:49+0100\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
@@ -427,9 +427,6 @@ msgstr ""
 "vagy tejtermék intoleranciás személynek szolgál fel."
 
 #: src/gr-details-page.ui:119
-#| msgid ""
-#| "Contains Gluten. Please always double-check the ingredients if you are "
-#| "serving a person with gluten or dairy intolerance."
 msgid ""
 "Contains gluten. Please always double-check the ingredients if you are "
 "serving a person with gluten or dairy intolerance."
@@ -447,7 +444,7 @@ msgstr "Hozzávalók _vásárlása"
 
 #: src/gr-details-page.ui:164 src/gr-edit-page.ui:315
 msgid "_Yield"
-msgstr "_Hozam"
+msgstr "_Mennyiség"
 
 #: src/gr-details-page.ui:218
 msgid "Preparation Time"
@@ -797,7 +794,7 @@ msgstr "Nincs mit hozzáadni"
 
 #: src/gr-shopping-tile.ui:101
 msgid "Yield"
-msgstr "Hozam"
+msgstr "Mennyiség"
 
 #: src/gr-time-widget.ui:31
 msgid "Start"
@@ -1124,15 +1121,15 @@ msgstr ""
 msgid "Supported categories: %s\n"
 msgstr "Támogatott kategóriák: %s\n"
 
-#: src/gr-app.c:441
+#: src/gr-app.c:443
 msgid "Print the version and exit"
 msgstr "Verzió kiírása és kilépés"
 
-#: src/gr-app.c:445
+#: src/gr-app.c:447
 msgid "Turn on verbose logging"
 msgstr "Bőbeszédű naplózás bekapcsolása"
 
-#: src/gr-app.c:449
+#: src/gr-app.c:451
 msgid "Show a category"
 msgstr "Kategória megjelenítése"
 
@@ -1916,7 +1913,7 @@ msgstr "Főzés:"
 
 #: src/gr-recipe-formatter.c:93 src/gr-recipe-printer.c:168
 msgid "Yield:"
-msgstr "Hozam:"
+msgstr "Mennyiség:"
 
 #: src/gr-recipe-importer.c:238
 #, c-format
@@ -2564,8 +2561,8 @@ msgstr "Bizonyos funkcionalitás nem lesz elérhető."
 msgid ""
 "Could not create D-Bus proxy for org.freedesktop.portal.Desktop interface %s"
 msgstr ""
-"Nem sikerül létrehozni D-Bus proxyt a(z) %s org.freedesktop.portal.Desktop"
-" interfészhez"
+"Nem sikerül létrehozni D-Bus proxyt a(z) %s org.freedesktop.portal.Desktop "
+"interfészhez"
 
 #: src/gr-utils.c:401
 #, c-format
