@@ -59,6 +59,22 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="2.0.4"  date="2020-03-05">
+      <description>
+        <ul>
+          <li>Fix a few crasher bugs</li>
+          <li>Fix an issue where the chef dialog wouldn't reopen when closed using Esc key</li>
+          <li>Fix the Flatpak build and the CI build</li>
+          <li>Fix the build dependencies known to meson (make gio-unix-2.0 explicit)</li>
+          <li>Update the AppStream data (add OARS data, fix the SPDX license identifier, etc.)</li>
+          <li>Update the bug reporting URL to GNOME GitLab</li>
+          <li>Add a label for Halal recipes</li>
+          <li>Fix the labels on "White fish for people who don't like fish" so it doesn't claim to be vegetarian</li>
+          <li>Tweak the wording on two recipes in the Vegetarian category, now called "Gravy" and "Marinade"</li>
+          <li>New and updated translations: Basque, Norwegian, Catalan, Croatian, Czech, English (United Kingdom), French, Friulian, German, Hungarian, Indonesian, Polish, Portuguese (Brazil), Spanish, Swedish</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.0.2"  date="2017-11-11">
       <description>
         <p>
