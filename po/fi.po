@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-06 07:56+0000\n"
-"PO-Revision-Date: 2020-03-08 16:31+0200\n"
+"POT-Creation-Date: 2020-03-08 14:32+0000\n"
+"PO-Revision-Date: 2020-03-15 14:12+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -1080,7 +1080,7 @@ msgstr ""
 #: src/gr-app.c:209
 #, c-format
 msgid "Supported categories: %s\n"
-msgstr ""
+msgstr "Tuetut luokat: %s\n"
 
 #: src/gr-app.c:443
 msgid "Print the version and exit"
@@ -1092,7 +1092,7 @@ msgstr ""
 
 #: src/gr-app.c:451
 msgid "Show a category"
-msgstr ""
+msgstr "Näytä luokka"
 
 #: src/gr-chef-dialog.c:159 src/gr-image-viewer.c:623
 msgid "Select an Image"
@@ -1586,7 +1586,7 @@ msgstr "Jotkin ainesosat vaativat korjauksia"
 #: src/gr-gourmet-format.c:174
 #, c-format
 msgid "Not a Gourmet XML document"
-msgstr ""
+msgstr "Ei Gourmet XML -asiakirja"
 
 #: src/gr-ingredients-viewer-row.c:159
 msgid "Amount…"
@@ -1622,7 +1622,7 @@ msgstr "Halal-reseptit"
 
 #: src/gr-list-page.c:322
 msgid "Other Dietary Restrictions"
-msgstr ""
+msgstr "Muut ruokavaliorajoitteet"
 
 #: src/gr-list-page.c:367
 #, c-format
@@ -1631,7 +1631,7 @@ msgstr ""
 
 #: src/gr-list-page.c:370 src/gr-list-page.c:439 src/gr-list-page.c:472
 msgid "You could add one using the “New Recipe” button."
-msgstr ""
+msgstr "Voit lisätä uuden reseptin napsauttamalla “Uusi resepti”-painiketta."
 
 #: src/gr-list-page.c:428
 #, c-format
@@ -1641,7 +1641,7 @@ msgstr "Reseptit, jotka on tehnyt %s"
 #: src/gr-list-page.c:435
 #, c-format
 msgid "No recipes by chef %s found"
-msgstr ""
+msgstr "Kokin %s tekemiä reseptejä ei löytynyt"
 
 #: src/gr-list-page.c:441 src/gr-list-page.c:515 src/gr-list-page.c:542
 #: src/gr-list-page.c:577
@@ -1671,7 +1671,7 @@ msgstr "Tuotuja reseptejä ei löytynyt"
 
 #: src/gr-meal.c:45
 msgid "Main Course"
-msgstr "Pääruoat\t"
+msgstr "Pääruoat"
 
 #: src/gr-meal.c:46
 msgid "Snacks"
@@ -1845,9 +1845,9 @@ msgid "Failed to load recipe: Couldn’t parse Modified key"
 msgstr "Reseptiä ei voitu ladata: ei voitu jäsentää Modified-avainta"
 
 #: src/gr-recipe-importer.c:809
-#, fuzzy, c-format
+#, c-format
 msgid "No chef information found"
-msgstr "Kokin tiedot"
+msgstr "Kokkitietoja ei löytynyt"
 
 #: src/gr-recipe-importer.c:839
 #, c-format
@@ -1916,11 +1916,13 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: src/gr-recipe-store.c:1338
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "A recipe with this name and author (%s) already exists.\n"
 "Please choose a different name"
-msgstr "Resepti tällä nimellä on jo olemassa."
+msgstr ""
+"Resepti tällä nimellä ja tekijällä (%s) on jo olemassa.\n"
+"Valitse eri nimi"
 
 #: src/gr-recipe-store.c:1367
 #, c-format
@@ -1994,10 +1996,8 @@ msgid "Add Account"
 msgstr "Lisää tili"
 
 #: src/gr-shopping-list-exporter.c:476 src/gr-shopping-list-exporter.c:566
-#, fuzzy
-#| msgid "Shopping List"
 msgid "Shopping List from Recipes"
-msgstr "Ostoslista"
+msgstr "Ostoslista reseptisovelluksesta"
 
 #: src/gr-shopping-list-exporter.c:694
 msgid "Save the shopping list"
@@ -2659,7 +2659,7 @@ msgstr "Basmatiriisi"
 
 #: src/ingredients.inc:18
 msgid "Bay leaf"
-msgstr ""
+msgstr "Laakerinlehti"
 
 #: src/ingredients.inc:19
 msgid "Beans"
@@ -2761,7 +2761,7 @@ msgstr "Voi, sulatettu"
 
 #: src/ingredients.inc:43
 msgid "Button mushroom"
-msgstr ""
+msgstr "Herkkusieni"
 
 #: src/ingredients.inc:44
 msgid "Cabbage"
@@ -2897,11 +2897,11 @@ msgstr "Kaakaojauhe"
 
 #: src/ingredients.inc:76
 msgid "Coconut milk"
-msgstr ""
+msgstr "Kookosmaito"
 
 #: src/ingredients.inc:77
 msgid "Coconut oil"
-msgstr ""
+msgstr "Kookosöljy"
 
 #: src/ingredients.inc:78
 #, fuzzy
@@ -2933,7 +2933,7 @@ msgstr "Kuskus"
 
 #: src/ingredients.inc:84
 msgid "Cracked pepper"
-msgstr ""
+msgstr "Murskattua pippuria"
 
 #: src/ingredients.inc:85
 msgid "Cream"
@@ -2993,7 +2993,7 @@ msgstr ""
 
 #: src/ingredients.inc:98
 msgid "Dry or fresh cilantro"
-msgstr ""
+msgstr "Kuivaa tai tuoretta korianteria"
 
 #: src/ingredients.inc:99
 msgid "Dry yeast"
@@ -3017,7 +3017,7 @@ msgstr "Munankeltuaisia"
 
 #: src/ingredients.inc:104
 msgid "Fenugreek seeds"
-msgstr ""
+msgstr "Sarviapilan siemeniä"
 
 #: src/ingredients.inc:105
 msgid "Fig"
@@ -3055,7 +3055,7 @@ msgstr "Jauho"
 
 #: src/ingredients.inc:113
 msgid "Flour (all-purpose)"
-msgstr ""
+msgstr "Jauhoa (yleiskäyttöistä)"
 
 #: src/ingredients.inc:114
 msgid "Flour (Tipo 00)"
@@ -3067,11 +3067,11 @@ msgstr "Tuoretta rosmariinia"
 
 #: src/ingredients.inc:116
 msgid "Fresh tagliatelle"
-msgstr ""
+msgstr "Tuoretta tagliatellea"
 
 #: src/ingredients.inc:117
 msgid "Garam masala"
-msgstr ""
+msgstr "Garam masala"
 
 #: src/ingredients.inc:118
 msgid "Garlic"
@@ -3095,7 +3095,7 @@ msgstr "Inkivääri"
 
 #: src/ingredients.inc:122
 msgid "Ginger, freshly grated"
-msgstr ""
+msgstr "Inkivääriä, äskettäin raastettua"
 
 #: src/ingredients.inc:123
 msgid "Ginger ground"
@@ -3139,7 +3139,7 @@ msgstr "Greippejä"
 
 #: src/ingredients.inc:133
 msgid "Grated French Emmental"
-msgstr ""
+msgstr "Raastettua ranskalaista emmentalia"
 
 #: src/ingredients.inc:134
 #, fuzzy
@@ -3233,7 +3233,7 @@ msgstr "Ketsuppi"
 
 #: src/ingredients.inc:155
 msgid "Kiwis"
-msgstr ""
+msgstr "Kiiwejä"
 
 #: src/ingredients.inc:156
 msgid "Lamb"
@@ -3257,7 +3257,7 @@ msgstr "Sitruunamehu"
 
 #: src/ingredients.inc:161
 msgid "Lemon (untreated)"
-msgstr ""
+msgstr "Sitruuna (käsittelemätön)"
 
 #: src/ingredients.inc:162
 msgid "Lettuce"
@@ -3281,7 +3281,7 @@ msgstr "Pellavasiemen"
 
 #: src/ingredients.inc:167
 msgid "Mandarin Oranges"
-msgstr ""
+msgstr "Mandariineja"
 
 #: src/ingredients.inc:168
 msgid "Margarine"
@@ -3384,7 +3384,6 @@ msgid "Orange"
 msgstr "Appelsiini"
 
 #: src/ingredients.inc:191
-#| msgid "Vegan"
 msgid "Oregano"
 msgstr "Oregano"
 
@@ -3402,7 +3401,7 @@ msgstr "Paprika"
 
 #: src/ingredients.inc:195
 msgid "Parmesan cheese, grated"
-msgstr ""
+msgstr "Parmesanjuustoa, raastettua"
 
 #: src/ingredients.inc:196
 msgid "Parsley"
@@ -3426,7 +3425,7 @@ msgstr ""
 
 #: src/ingredients.inc:201
 msgid "Pickles"
-msgstr ""
+msgstr "Pikkelssi"
 
 #: src/ingredients.inc:202
 msgid "Pineapple"
@@ -3464,7 +3463,7 @@ msgstr "Peruna"
 
 #: src/ingredients.inc:210
 msgid "Powdered sugar"
-msgstr ""
+msgstr "Tomusokeri"
 
 #: src/ingredients.inc:211
 msgid "Pumpkin seeds"
