@@ -235,17 +235,15 @@ should_try_load (const char *path)
                                   G_FILE_QUERY_INFO_NONE,
                                   NULL,
                                   NULL);
-        if (info) {
+        if (info &&
+            g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_TIME_MODIFIED)) {
                 goffset size;
-                GTimeVal tv;
                 g_autoptr(GDateTime) now = NULL;
                 g_autoptr(GDateTime) mtime = NULL;
 
                 size = g_file_info_get_size (info);
-                g_file_info_get_modification_time (info, &tv);
-
                 now = g_date_time_new_now_utc ();
-                mtime = g_date_time_new_from_timeval_utc (&tv);
+                mtime = g_file_info_get_modification_date_time (info);
 
                 if (size == 6) {
                         result = g_date_time_difference (now, mtime) > G_TIME_SPAN_DAY;
@@ -297,13 +295,12 @@ set_modified_request (SoupMessage *msg,
                                   G_FILE_QUERY_INFO_NONE,
                                   NULL,
                                   NULL);
-        if (info) {
-                GTimeVal tv;
+        if (info &&
+            g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_TIME_MODIFIED)) {
                 g_autoptr(GDateTime) mtime = NULL;
                 g_autofree char *mod_date = NULL;
 
-                g_file_info_get_modification_time (info, &tv);
-                mtime = g_date_time_new_from_timeval_utc (&tv);
+                mtime = g_file_info_get_modification_date_time (info);
                 mod_date = g_date_time_format (mtime, "%a, %d %b %Y %H:%M:%S %Z");
                 soup_message_headers_append (msg->request_headers, "If-Modified-Since", mod_date);
         }
