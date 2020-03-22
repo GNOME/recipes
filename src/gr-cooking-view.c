@@ -663,7 +663,7 @@ gr_cooking_view_stop (GrCookingView *view,
                 container_remove_all (GTK_CONTAINER (view->timer_box));
 
         g_clear_pointer (&view->instructions, g_free);
-        g_clear_pointer (&view->images, g_array_unref);
+        g_clear_pointer (&view->images, g_ptr_array_unref);
         g_ptr_array_set_size (view->steps, 0);
 
         if (stop_timers) {
