@@ -1,3 +1,4 @@
 recipe_extract = executable('recipe-extract', 'recipe-extract.c',
            include_directories : top_inc,
-           dependencies: deps)
+           dependencies : dependency('glib-2.0', native: true),
+           native : true)
