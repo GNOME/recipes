@@ -764,7 +764,7 @@ get_units_model (GrIngredientsViewerRow *row)
                 }
         }
 
-        return g_object_ref (store);
+        return GTK_TREE_MODEL (g_object_ref (store));
 }
 
 static void
