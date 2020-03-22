@@ -127,7 +127,7 @@ gr_image_viewer_finalize (GObject *object)
         g_clear_pointer (&viewer->additions, g_ptr_array_unref);
         g_clear_pointer (&viewer->removals, g_ptr_array_unref);
 
-        g_clear_pointer (&viewer->images, g_ptr_array_unref);
+        g_clear_pointer (&viewer->images, g_array_unref);
         remove_hide_timeout (viewer);
         g_clear_object (&viewer->gesture);
 
