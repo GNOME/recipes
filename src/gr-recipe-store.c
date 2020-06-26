@@ -2332,7 +2332,7 @@ gr_recipe_search_class_init (GrRecipeSearchClass *klass)
          * GrRecipeSearch::hits-added:
          *
          * Gets emitted whenever more results are added to the total result set.
-         * Users are expeted to update their list of results.
+         * Users are expected to update their list of results.
          */
         search_signals[HITS_ADDED] =
                 g_signal_new ("hits-added",
@@ -2349,7 +2349,7 @@ gr_recipe_search_class_init (GrRecipeSearchClass *klass)
          *
          * Gets emitted when existing results are removed from the total result set.
          * This can happen when a narrower query is set.
-         * Users are expeted to update their list of results.
+         * Users are expected to update their list of results.
          */
         search_signals[HITS_REMOVED] =
                 g_signal_new ("hits-removed",
