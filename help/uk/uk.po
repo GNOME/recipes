@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "POT-Creation-Date: 2020-06-26 21:51+0000\n"
-"PO-Revision-Date: 2020-06-27 10:27+0300\n"
+"PO-Revision-Date: 2020-06-27 18:25+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -92,6 +92,9 @@ msgid ""
 "do not include meat, poultry or seafood. Vegetarian recipes may include "
 "dairy or eggs."
 msgstr ""
+"<gui>Вегетаріанські</gui> — позначте для рецептів, до яких включено лише"
+" овочі і фрукти, без м'яса тварин, птахів та риби. До вегетаріанських"
+" рецептів може бути включено молочні продукти та яйця."
 
 #. (itstool) path: item/p
 #: C/add-recipe-description.page:39
@@ -106,6 +109,8 @@ msgid ""
 "<gui>Milk-free</gui>: Select for recipes that do not include dairy products, "
 "such as milk or cheese."
 msgstr ""
+"<gui>Вільні від молока</gui> — позначте цим обмеженням рецепти, до яких не"
+" входять молочні продукти, зокрема молоко і сир."
 
 #. (itstool) path: item/p
 #: C/add-recipe-description.page:43
@@ -113,6 +118,8 @@ msgid ""
 "<gui>Vegan</gui>: Recipes that do not include any product from an animal. "
 "This includes meat, dairy, eggs and more."
 msgstr ""
+"<gui>Веганські</gui> — рецепти, які не містять будь-яких тваринних складових."
+" Це стосується, зокрема, м'яса, молочних продуктів та яєць."
 
 #. (itstool) path: info/desc
 #: C/add-recipe-details.page:12
@@ -134,12 +141,20 @@ msgid ""
 "all other fields are optional. It is helpful to fill as many fields as "
 "possible to help when searching <app>Recipes</app>."
 msgstr ""
+"Натисніть кнопку <gui>Новий рецепт</gui> у верхньому лівому куті вікна <app"
+">Рецептів</"
+"app> і впишіть вказані нижче дані щодо вашого рецепта до розділу <gui"
+">Подробиці</gui>. Обов'язково слід вказати назву рецепта та розмір порції."
+" Усі інші дані є необов'язковими. Корисно заповнити максимальну кількість"
+" полів, щоб спростити пошук у <app>Рецептах</app>."
 
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:31
 msgid ""
 "<gui>Name Your Recipe</gui>: Enter the name of the recipe in the text box."
 msgstr ""
+"<gui>Назва вашого рецепта</gui>: впишіть до поля для введення тексту назву"
+" вашого рецепта."
 
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:34
@@ -147,6 +162,8 @@ msgid ""
 "<gui>Serves</gui>: Enter a number or press the <gui style=\"button\">+</gui> "
 "button to enter how many servings the recipe will make."
 msgstr ""
+"<gui>Порції</gui>: вкажіть число або натисніть кнопку <gui style=\"button\""
+">+</gui>, що ввести кількість порцій, які можна приготувати за рецептом."
 
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:38
@@ -154,6 +171,8 @@ msgid ""
 "<gui>Preparation Time</gui>: From the drop down box, choose how long it "
 "takes to prepare the ingredients prior to cooking."
 msgstr ""
+"<gui>Тривалість готування</gui>: зі спадного меню виберіть, наскільки довго"
+" триває приготування складових перед, власне, приготуванням страви."
 
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:41
@@ -161,6 +180,8 @@ msgid ""
 "<gui>Cooking Time</gui>: From the drop down box, choose how long it takes to "
 "cook the recipe."
 msgstr ""
+"<gui>Тривалість приготування</gui>: зі спадного меню виберіть, наскільки"
+" довго триває приготування самої страви."
 
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:44
@@ -315,6 +336,8 @@ msgid ""
 "You can add the temperature a step needs to be cooked at by adding a "
 "temperature tag."
 msgstr ""
+"Ви можете додати температуру приготування на певному кроці за допомогою теґу"
+" температури."
 
 #. (itstool) path: item/p
 #: C/add-recipe-directions.page:102
@@ -459,6 +482,11 @@ msgid ""
 "star.png\" its:translate=\"yes\"><span its:translate=\"yes\">Default Image </"
 "span></media>"
 msgstr ""
+"Щоб зробити зображення типовим зображенням рецепта, натисніть кнопку <gui"
+">Типове зображення</gui>: <media type=\"image\" mime=\"image/png\""
+" src=\"images/"
+"star.png\" its:translate=\"yes\"><span its:translate=\"yes\">Типове"
+" зображення</span></media>"
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -478,6 +506,10 @@ msgid ""
 "its:translate=\"yes\"><span its:translate=\"yes\">Remove Image </span></"
 "media>"
 msgstr ""
+"Щоб вилучити зображення з рецепта, натисніть кнопку <gui>Вилучити зображення<"
+"/gui>: <media type=\"image\" mime=\"image/png\" src=\"images/trash.png\" "
+"its:translate=\"yes\"><span its:translate=\"yes\">Вилучити зображення</span><"
+"/media>"
 
 #. (itstool) path: info/desc
 #: C/add-recipe-ingredients.page:12
@@ -551,6 +583,9 @@ msgid ""
 "Press the <gui>Add</gui> button to add the ingredient to the list or click "
 "<gui>Amount</gui> to how much of the ingredient is needed."
 msgstr ""
+"Натисніть кнопку <gui>Додати</gui>, щоб додати складову до списку або"
+" натисніть кнопку <gui>Кількість</gui>, щоб вказати кількість потрібної для"
+" приготування складової."
 
 #. (itstool) path: item/p
 #: C/add-recipe-ingredients.page:51
@@ -566,6 +601,8 @@ msgid ""
 "Repeat these steps until all ingredients have been added to the list or "
 "recipe."
 msgstr ""
+"Повторюйте ці кроки, аж доки до списку або рецепта не буде додано усі"
+" складові."
 
 #. (itstool) path: note/p
 #: C/add-recipe-ingredients.page:62
@@ -573,6 +610,8 @@ msgid ""
 "<app>Recipes</app> does not currently support the ability to convert between "
 "metric units and imperial units."
 msgstr ""
+"У поточній версії <app>Рецептів</app> не передбачено можливості перетворення"
+" між метричними та імперськими одиницями виміру."
 
 #. (itstool) path: info/desc
 #: C/add-recipe.page:8
@@ -590,6 +629,9 @@ msgid ""
 "If you are new to <app>Recipes</app>, these topics will help you to add the "
 "following categories to a recipe."
 msgstr ""
+"Якщо ви не є досвідченим користувачем <app>Рецептів</app>, ці теми"
+" обговорення будуть корисними, якщо ви захочете додати вказані нижче"
+" категорії до рецепта."
 
 #. (itstool) path: info/desc
 #: C/chef.page:11
@@ -635,7 +677,7 @@ msgstr "Введіть ваше ім'я повністю до поля <gui>Ім
 #: C/chef.page:49
 msgid ""
 "Enter your first name or nickname in the <gui>Short Name..</gui> text box."
-msgstr "Введіть ваше ім'я або псевдонім до поля <gui>Коротка назва</gui>."
+msgstr "Введіть ваше ім'я або псевдонім до поля <gui>Коротке ім'я</gui>."
 
 #. (itstool) path: item/p
 #: C/chef.page:54
@@ -685,6 +727,10 @@ msgid ""
 "application's settings, you may cause that application to stop working "
 "correctly."
 msgstr ""
+"У вашій системі має бути встановлено пакунок <sys>dconf-editor</sys>. Будьте"
+" дуже обережні із редагуванням даних програм у <app>dconf-editor</app>."
+" Редагування параметрів програми може призвести до проблем із належною"
+" роботою програми."
 
 #. (itstool) path: section/p
 #: C/common-problems.page:33
@@ -692,6 +738,8 @@ msgid ""
 "To update <app>Recipes</app> to use the old user to allow you to edit your "
 "recipes:"
 msgstr ""
+"Щоб оновити <app>Рецепти</app> і скористатися старим записом користувача для"
+" уможливлення редагування ваших рецептів, виконайте такі дії:"
 
 #. (itstool) path: item/p
 #: C/common-problems.page:37
@@ -758,6 +806,10 @@ msgid ""
 "include your recipe in the <app>Recipes</app> application. Recipes you share "
 "should be of your own creation. To send your recipe:"
 msgstr ""
+"Ви можете поділитися вашим рецептом із розробниками <app>Рецептів</app>, які"
+" можуть включити ваш рецепт до пакунка програми <app>Рецепти</app>. Рецепти,"
+" якими ви ділитеся, мають бути вашими власними. Щоб надіслати рецепт,"
+" виконайте такі дії:"
 
 #. (itstool) path: item/p
 #: C/contribute.page:27
@@ -776,16 +828,23 @@ msgid ""
 "button in the top-right window and open another recipe and then press "
 "<gui>Share</gui> again."
 msgstr ""
+"Якщо ви хочете оприлюднити декілька рецептів, натисніть кнопку <gui>Додати"
+" ще</gui> у верхньому правому куті вікна і відкрийте ще один рецепт, а потім"
+" натисніть кнопку <gui>Оприлюднити</gui> ще раз."
 
 #. (itstool) path: item/p
 #: C/contribute.page:41
 msgid "Press the <gui>Share</gui> button in the upper-right corner."
 msgstr ""
+"Натисніть кнопку <gui>Оприлюднити</gui> у верхньому правому куті вікна"
+" програми."
 
 #. (itstool) path: item/p
 #: C/contribute.page:45
 msgid "Select <gui>Contribute to Recipes</gui> in the bottom-right corner."
 msgstr ""
+"Виберіть <gui>Взяти участь у проєкті «Рецепти»</gui> у нижньому правому куті"
+" вікна."
 
 #. (itstool) path: item/p
 #: C/contribute.page:49 C/share.page:62
@@ -793,6 +852,8 @@ msgid ""
 "Choose the email application from the list you want to use to email the "
 "recipe and press the <gui>Select</gui> button."
 msgstr ""
+"Виберіть бажану для надсилання рецепта електронною поштою програму для роботи"
+" з електронною поштою зі списку і натисніть кнопку <gui>Вибрати</gui>."
 
 #. (itstool) path: item/p
 #: C/contribute.page:54
@@ -802,6 +863,10 @@ msgid ""
 "<em>Subject</em> and <em>To:</em> line will be automatically filled out for "
 "you."
 msgstr ""
+"Буде відкрито вказану вами програму для роботи з електронною поштою і"
+" розпочато редагування нового повідомлення електронної пошти. <app>Рецепти<"
+"/app> включать рецепт як долучення і автоматично заповнять поля <em>Тема</em>"
+" і <em>Кому:</em>."
 
 #. (itstool) path: item/p
 #: C/contribute.page:61
@@ -809,6 +874,9 @@ msgid ""
 "Press <gui>Send</gui> to email your recipe to the <app>Recipe</app> "
 "developers who will review your recipe for possible inclusion."
 msgstr ""
+"Натисніть кнопку <gui>Надіслати</gui>, щоб надіслати ваш рецепт електронною"
+" поштою розробникам <app>Рецептів</app>. Ваш рецепт буде розглянуто і,"
+" можливо, включено до наступної версії програми."
 
 #. (itstool) path: info/desc
 #: C/cooking.page:9
@@ -829,6 +897,10 @@ msgid ""
 "view the steps to make a recipe, including starting timers or seeing photos "
 "of each step, if they were included in the recipe."
 msgstr ""
+"У <app>Рецептах</app> передбачено режим «руки зайнято», який допоможе вам"
+" паралельно читати рецепт і готувати за рецептом. Режим «руки зайнято»"
+" спрощує перегляд кроків рецепта, зокрема запуск таймерів та перегляд"
+" фотографій кожного кроку, якщо їх включено до рецепта."
 
 #. (itstool) path: page/p
 #: C/cooking.page:26
@@ -846,6 +918,8 @@ msgstr "Відкрийте рецепт, за яким ви хочете при�
 #: C/cooking.page:33
 msgid "Press the <gui>Start Cooking</gui> button in the top right corner."
 msgstr ""
+"Натисніть кнопку <gui>Почати приготування</gui> у верхньому правому куті"
+" вікна програми."
 
 #. (itstool) path: item/p
 #: C/cooking.page:37
@@ -853,6 +927,8 @@ msgid ""
 "<app>Recipes</app> will change to full screen mode, also known as hands-free "
 "mode and display the first step to cook the recipe."
 msgstr ""
+"<app>Рецепти</app> перейдуть у повноекранний режим, який називається режимом"
+" «руки зайнято», і покаже перший крок приготування за рецептом."
 
 #. (itstool) path: item/p
 #: C/cooking.page:42 C/cooking.page:66
@@ -879,6 +955,14 @@ msgid ""
 "timer is done, your computer will beep and <gui>Time is up!</gui> will be "
 "shown."
 msgstr ""
+"Щоб запустити відлік за таймером, натисніть кнопку <gui>Почати</gui> або"
+" клавішу <key>Пробіл</key>. Після того, як відлік за таймером буде розпочато,"
+" ви можете натиснути кнопку <gui>Призупинити</gui>, щоб призупинити відлік,"
+" або кнопку <gui>Скинути</gui>, щоб розпочати відлік за таймером з початку."
+" Можливе одночасне використання декількох таймерів — назви кроків, пов'язаних"
+" із кожним з таймерів буде показано у верхньому лівому куті вікна <app"
+">Рецептів</app>. Коли відлік за таймером буде завершено, комп'ютер видасть"
+" звуковий сигнал і покаже повідомлення <gui>Час вичерпано!</gui>."
 
 #. (itstool) path: item/p
 #: C/cooking.page:61
@@ -887,6 +971,9 @@ msgid ""
 "left corner of hands-free mode. You can move to the next steps while a timer "
 "is running."
 msgstr ""
+"Під час відліку за таймером назву таймера буде показано у верхньому лівому"
+" куті вікна у режимі «руки зайнято». Ви можете перейти до наступних кроків,"
+" доки триває відлік за таймером."
 
 #. (itstool) path: item/p
 #: C/cooking.page:71
@@ -895,6 +982,9 @@ msgid ""
 "time, press the <key>Escape</key> key or press the <gui>x</gui> button in "
 "the top-right corner."
 msgstr ""
+"Якщо ви виконали усі кроки приготування або хочете вийти з режиму «руки"
+" зайнято», натисніть клавішу <key>Escape</key> або кнопку <gui>x</gui> у"
+" верхньому правому куті екрана."
 
 #. (itstool) path: info/desc
 #: C/find-recipe.page:8
@@ -930,21 +1020,25 @@ msgid ""
 "\">Search</span></media> and enter your search query. The search results can "
 "include:"
 msgstr ""
+"Натисніть кнопку пошуку <media type=\"image\" mime=\"image/png\" src="
+"\"images/search.png\" its:translate=\"yes\"> <span its:translate=\"yes"
+"\">Шукати</span></media> і введіть ваше ключове слово пошуку. До результатів"
+" пошуку буде включено:"
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:34
 msgid "Recipes that include the text you searched for."
-msgstr ""
+msgstr "Рецепти, до тексту яких входить ключове слово пошуку."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:37
 msgid "Ingredients that include the text you searched for."
-msgstr ""
+msgstr "Складові, до тексту яких входить ключове слово пошуку."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:40
 msgid "Chef names."
-msgstr ""
+msgstr "Імена кухарів."
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -967,6 +1061,13 @@ msgid ""
 "its:translate=\"yes\"> <span its:translate=\"yes\">Down</span></media> and "
 "choose from one or more categories."
 msgstr ""
+"Ви можете виконати звужений пошук за категорією. Натисніть кнопку пошуку <"
+"media type=\"image\" mime=\"image/png\" src=\"images/search.png\" its:"
+"translate=\"yes\"> <span its:translate=\"yes\">Шукати</span></media> або"
+" піктограму зі стрілкою вниз <media type=\"image\" mime=\"image/png\""
+" src=\"images/down.png\" "
+"its:translate=\"yes\"> <span its:translate=\"yes\">Вниз</span></media> і"
+" виберіть одну або декілька категорій."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:54
@@ -995,6 +1096,9 @@ msgid ""
 "it in the search bar. You can then enter text to search within that category "
 "and tag."
 msgstr ""
+"<app>Рецепти</app> додадуть теґ для вибраної вами категорії і покажуть її на"
+" панелі пошуку. Після цього ви можете ввести текст для пошуку у вибраній"
+" категорії і тезі."
 
 #. (itstool) path: section/p
 #: C/find-recipe.page:73
@@ -1002,6 +1106,8 @@ msgid ""
 "To remove the tag from search, press <gui>x</gui> on the tag in the search "
 "bar."
 msgstr ""
+"Щоб вилучити теґ з пошуку, натисніть кнопку <gui>x</gui> на тезі, який"
+" показано на панелі пошуку."
 
 #. (itstool) path: section/title
 #: C/find-recipe.page:78
@@ -1014,12 +1120,17 @@ msgid ""
 "When you create a recipe, you can select if a recipe is in a category, such "
 "as vegan or nut free. To search by category:"
 msgstr ""
+"При створення рецепта ви можете вказати для нього категорію, зокрема"
+" «веганський» або «вільний від горіхів». Щоб шукати за категорією, виконайте"
+" такі дії:"
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:82
 msgid ""
 "From the main <app>Recipes</app> window scroll down to <gui>Categories</gui>."
 msgstr ""
+"У основному вікні <app>Рецептів</app> гортайте список до пункту <gui"
+">Категорії</gui>."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:86
@@ -1028,11 +1139,18 @@ msgid ""
 "\"image\" mime=\"image/png\" src=\"images/down.png\" its:translate=\"yes\"> "
 "<span its:translate=\"yes\">Down</span></media> to show all Categories."
 msgstr ""
+"Ви також можете розгорнути список категорій натисканням піктограми зі"
+" стрілкою вниз<media type="
+"\"image\" mime=\"image/png\" src=\"images/down.png\" its:translate=\"yes\"> "
+"<span its:translate=\"yes\">Вниз</span></media>, щоб переглянути усі"
+" категорії."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:93
 msgid "Press the <gui>Category</gui> to view all recipes in that Category."
 msgstr ""
+"Натисніть пункт <gui>Категорія</gui>, щоб побачити усі рецепти у відповідній"
+" категорії."
 
 #. (itstool) path: section/p
 #: C/find-recipe.page:99
@@ -1055,7 +1173,7 @@ msgstr ""
 #. (itstool) path: section/title
 #: C/find-recipe.page:111
 msgid "Search for recipes with or without a specific ingredient"
-msgstr ""
+msgstr "Пошук рецептів із певною складовою або без неї"
 
 #. (itstool) path: section/p
 #: C/find-recipe.page:112
@@ -1063,6 +1181,8 @@ msgid ""
 "You can search for recipes that include or do not include a specific "
 "ingredient."
 msgstr ""
+"Ви можете виконати пошук рецептів, до яких включено або не включено певну"
+" складову."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:116
@@ -1071,16 +1191,20 @@ msgid ""
 "down.png\" its:translate=\"yes\"> <span its:translate=\"yes\">Down</span></"
 "media> in the search bar."
 msgstr ""
+"Натисніть кнопку зі стрілкою вниз <media type=\"image\" mime=\"image/png\""
+" src=\"images/"
+"down.png\" its:translate=\"yes\"> <span its:translate=\"yes\">Вниз</span><"
+"/media> на панелі пошуку."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:121
 msgid "Select the <gui>Ingredients</gui> drop down box."
-msgstr ""
+msgstr "Виберіть <gui>Складові</gui> зі спадного списку."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:124
 msgid "Select an ingredient from the list, such as <em>Banana</em>."
-msgstr ""
+msgstr "Виберіть якусь складову зі списку, наприклад, <em>Буряк</em>."
 
 #. (itstool) path: section/p
 #: C/find-recipe.page:127
@@ -1134,7 +1258,7 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/find-recipe.page:161
 msgid "Select a holiday or season to show all recipes that match."
-msgstr ""
+msgstr "Виберіть свято або пору року, щоб переглянути усі відповідні рецепти."
 
 #. (itstool) path: info/title
 #: C/index.page:7
@@ -1145,7 +1269,7 @@ msgstr "Рецепти"
 #. (itstool) path: info/desc
 #: C/index.page:15
 msgid "A recipe manager to help you cook."
-msgstr ""
+msgstr "Керування рецептами, яке допомагає вам у приготуванні."
 
 #. (itstool) path: page/title
 #: C/index.page:18
@@ -1352,6 +1476,8 @@ msgstr ""
 #: C/share.page:58
 msgid "Press the <gui>Share</gui> button in the bottom-right corner."
 msgstr ""
+"Натисніть кнопку <gui>Оприлюднити</gui> у нижньому правому куті вікна"
+" програми."
 
 #. (itstool) path: item/p
 #: C/share.page:67
@@ -1574,3 +1700,5 @@ msgid ""
 "After you have completed your shopping, press the <gui> Done Shopping</gui> "
 "to clear your shopping list."
 msgstr ""
+"Після придбання продуктів натисніть кнопку <gui>Закупівлі завершено</gui>,"
+" щоб спорожнити список закупівель."
