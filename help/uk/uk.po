@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "POT-Creation-Date: 2020-06-26 21:51+0000\n"
-"PO-Revision-Date: 2020-06-27 18:25+0300\n"
+"PO-Revision-Date: 2020-06-28 10:18+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -190,6 +190,9 @@ msgid ""
 "region from where the recipe comes from. You can also enter the type of "
 "cuisine if it is not included in the list."
 msgstr ""
+"<gui>Кухня</gui>: зі спадного списку виберіть тип їжі або частину світу,"
+" звідки походить рецепт. Ви також можете ввести тип кухні, якщо такого немає"
+" у списку."
 
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:48
@@ -199,6 +202,10 @@ msgid ""
 "or cocktails. You can also enter the type of meal if it is not included in "
 "the list."
 msgstr ""
+"<gui>Страва</gui>: зі спадного списку виберіть тип прийняття їжі, для якого"
+" призначено рецепт. Прикладами є сніданок або вечеря або тип їжі, зокрема"
+" паста або коктейль. Ви також можете ввести тип їжі, якщо його не включено до"
+" списку."
 
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:53
@@ -207,6 +214,9 @@ msgid ""
 "that the recipe is typically associated with. You can also enter the season "
 "or holiday if it is not included in the list."
 msgstr ""
+"<gui>Пора року</gui>: зі спадного списку виберіть пору року або свято, із"
+" яким типово пов'язано рецепт. Крім того, ви можете ввести пору року або"
+" свято, якщо їх немає у списку."
 
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:58
@@ -214,6 +224,7 @@ msgid ""
 "<gui>Spiciness</gui>: From the drop down menu, choose how spicy the recipe "
 "is."
 msgstr ""
+"<gui>Гострота</gui>: зі спадного меню виберіть, наскільки гострою є страва."
 
 #. (itstool) path: info/desc
 #: C/add-recipe-directions.page:12
@@ -241,6 +252,13 @@ msgid ""
 "separate steps for each paragraph in your recipe. These steps will be used "
 "when it is time to cook using full screen mode in <app>Recipes</app>."
 msgstr ""
+"Натисніть кнопку <gui>Новий рецепт</gui> у верхньому лівому куті вікна <app"
+">Рецептів</app>. У полі настанов введіть кроки, які слід виконати для"
+" реалізації рецепта. Для відокремлення кроків скористайтеся натисканням"
+" клавіші <key>Enter</key> двічі — створіть для кожного кроку окремий абзац. <"
+"app>Рецепти</app> автоматично створять окремий крок для кожного з абзаців у"
+" рецепті. Ці кроки буде використано, коли ви готуватимете страву у"
+" повноекранному режимі у <app>Рецептах</app>."
 
 #. (itstool) path: section/p
 #: C/add-recipe-directions.page:33
@@ -251,6 +269,11 @@ msgid ""
 "available when viewing the recipe or when in hands-free mode. All tags are "
 "enclosed within brackets."
 msgstr ""
+"До кожного абзацу для кожного кроку ви можете включити вказані нижче теґи для"
+" додавання зображень, таймерів або температури. На кожному кроці ви можете"
+" додати або зображення, або таймер, але не зображення і таймер одночасно."
+" Дані у теґах можна буде переглянути у рецепті або у режимі «руки зайнято»."
+" Усі теґи слід вказувати у квадратних дужках."
 
 #. (itstool) path: section/title
 #: C/add-recipe-directions.page:41
@@ -263,6 +286,8 @@ msgid ""
 "To create a timer, enter how long the timer should be within brackets. The "
 "format is [timer:hours:minutes:seconds, description]."
 msgstr ""
+"Щоб створити таймер, введіть час відліку за таймером у квадратних дужках."
+" Формат є таким: [timer:години:хвилини:секунди, опис]."
 
 #. (itstool) path: section/p
 #: C/add-recipe-directions.page:45
@@ -275,6 +300,8 @@ msgid ""
 "<cmd>[timer:00:30, stir ingredients]</cmd> - Stir ingredients for thirty "
 "seconds."
 msgstr ""
+"<cmd>[timer:00:30, перемішати складові]</cmd> — перемішувати складові"
+" тридцять секунд."
 
 #. (itstool) path: item/p
 #: C/add-recipe-directions.page:54
@@ -282,6 +309,8 @@ msgid ""
 "<cmd>[timer:01:30, stir ingredients]</cmd> - Stir ingredients for one minute "
 "and thirty seconds."
 msgstr ""
+"<cmd>[timer:01:30, перемішати складові]</cmd> — перемішувати складові одну"
+" хвилину і тридцять секунд."
 
 #. (itstool) path: item/p
 #: C/add-recipe-directions.page:59
@@ -289,6 +318,8 @@ msgid ""
 "<cmd>[timer:01:01:30, preheat oven]</cmd> - Preheat oven for one hour, one "
 "minute and thirty seconds."
 msgstr ""
+"<cmd>[timer:01:01:30, прогріти піч]</cmd> — прогріти піч протягом однієї"
+" години, однієї хвилини і тридцяти секунд."
 
 #. (itstool) path: section/title
 #: C/add-recipe-directions.page:67
@@ -302,6 +333,10 @@ msgid ""
 "each each step of making a recipe. See <link xref=\"add-recipe-images\"/> "
 "for how to add an image or images to your recipe."
 msgstr ""
+"Ви можете додати зображення або фотографію приготованої страви або фотографію"
+" кожного кроку приготування за рецептом. Див. розділ <link"
+" xref=\"add-recipe-images\"/>, щоб дізнатися про те, які додати зображення до"
+" вашого рецепта."
 
 #. (itstool) path: item/p
 #: C/add-recipe-directions.page:75
@@ -312,11 +347,16 @@ msgid ""
 "displayed. The first image would be number one, the second would be number "
 "two and so on."
 msgstr ""
+"Щоб пов'язати одну з доданих фотографій з рецептом, вам потрібен буде номер"
+" зображення. Натисніть кнопку <gui>Додати зображення</gui> у нижній частині"
+" вікна <app>Рецептів</app>. Програма покаже мініатюри усіх фотографій, які ви"
+" додали. Перше зображення матиме номер один, друге матиме номер два, тощо."
 
 #. (itstool) path: item/p
 #: C/add-recipe-directions.page:83
 msgid "Add the tag <cmd>[image:1]</cmd> to add the first image to a step."
 msgstr ""
+"Додайте теґ <cmd>[image:1]</cmd>, щоб додати перше зображення до кроку."
 
 #. (itstool) path: item/p
 #: C/add-recipe-directions.page:88
@@ -324,6 +364,8 @@ msgid ""
 "Add additional image tags with the correct number for as many steps as you "
 "wish."
 msgstr ""
+"Додайте теґи зображень із відповідними номерами для потрібної вам кількості"
+" кроків."
 
 #. (itstool) path: section/title
 #: C/add-recipe-directions.page:97
@@ -345,6 +387,9 @@ msgid ""
 "Add the tag <cmd>[temperature:200C]</cmd>. You can set the temperature in "
 "Celsius with a C or Fahrenheit with an F following the temperature."
 msgstr ""
+"Додайте теґ <cmd>[temperature:200C]</cmd>. Ви можете вказати температуру у"
+" градусах Цельсія за допомогою літери C або у градусах Фаренгейта за"
+" допомогою літери F після кількісного значення температури."
 
 #. (itstool) path: info/desc
 #: C/add-recipe-images.page:12
@@ -395,6 +440,10 @@ msgid ""
 "mode, <app>Recipes</app> can display an image for each step when cooking. To "
 "add multiple images:"
 msgstr ""
+"Ви можете додати декілька зображень до вашого рецепта. При використанні"
+" режиму «руки зайнято» <app>Рецепти</app> можуть показувати зображення для"
+" кожного кроку під час приготування. Щоб додати декілька зображень, виконайте"
+" такі дії:"
 
 #. (itstool) path: item/p
 #: C/add-recipe-images.page:55
@@ -528,6 +577,10 @@ msgid ""
 "for recipes that have different parts, such as a cake that has an ingredient "
 "list for the cake and an ingredient list for the frosting. To create a list:"
 msgstr ""
+"Ви можете додати складові і створити списки для рецепта. Списки"
+" використовуються для рецептів, які складаються з різних частин, наприклад,"
+" рецепт печива, який має список складових для самого печива і список"
+" складових для глазурі. Щоб створити список, виконайте такі дії:"
 
 #. (itstool) path: item/p
 #: C/add-recipe-ingredients.page:28
@@ -594,6 +647,9 @@ msgid ""
 "then press <gui>Add</gui>. Or you can enter the amount and choose the "
 "measurement from the list and then press the <gui>Add</gui> button."
 msgstr ""
+"У спадному списку <gui>Кількість</gui> ви можете ввести потрібну кількість, а"
+" потім натисніть кнопку <gui>Додати</gui>. Або ви можете ввести кількість і"
+" вибрати одиницю виміру зі списку, а потім натисніть кнопку <gui>Додати</gui>."
 
 #. (itstool) path: item/p
 #: C/add-recipe-ingredients.page:57
@@ -657,6 +713,11 @@ msgid ""
 "have created or to share recipes with friends and family. To add your chef "
 "information:"
 msgstr ""
+"У <app>Рецептах</app> ви можете додати особисті дані, включно із вашим повним"
+" ім'ям, коротким ім'ям і фотографією. У відповідь буде створено профіль"
+" кухаря, який використовуватиметься для створення рецепта. Це також допоможе"
+" вам шукати створені вами рецепти або ділитися рецептами із друзями та"
+" родиною. Щоб додати ваші дані щодо кухаря, виконайте такі дії:"
 
 #. (itstool) path: item/p
 #: C/chef.page:37
@@ -718,6 +779,10 @@ msgid ""
 "and you can no longer edit the recipes you have created, you will need to "
 "update the <app>Recipes</app> database."
 msgstr ""
+"Якщо ви змінили назву облікового запису або ідентифікатор користувача, яким"
+" ви користуєтеся для входу до операційної системи, і ви не можете більше"
+" редагувати створені вами рецепти, вам доведеться оновити базу даних <app"
+">Рецептів</app>."
 
 #. (itstool) path: note/p
 #: C/common-problems.page:27
@@ -1160,6 +1225,10 @@ msgid ""
 "Category with a <gui>Read More</gui> link you can click to learn more about "
 "the Category."
 msgstr ""
+"Якщо ви вибрали категорію веганської, вегетаріанської, вільної від молочних"
+" продуктів, глютену або горіхів їжі, у результатах пошуку буде також показано"
+" опис категорії із посиланням <gui>Більше</gui>, яке ви зможете натиснути,"
+" щоб дізнатися більше про відповідну категорію."
 
 #. (itstool) path: section/p
 #: C/find-recipe.page:104
@@ -1169,6 +1238,10 @@ msgid ""
 "always double-check the ingredients if you are serving a person with a "
 "gluten or dairy intolerance."
 msgstr ""
+"Зауважте, що дані щодо дієтичних обмежень надаються самими авторами рецептів."
+" Не можна гарантувати їхню абсолютну точність. Будь ласка, ретельно"
+" перевіряйте складові, якщо ви готуєте для осіб із проблемами із засвоєнням"
+" продуктів із глютеном або молочних продуктів."
 
 #. (itstool) path: section/title
 #: C/find-recipe.page:111
@@ -1217,6 +1290,13 @@ msgid ""
 "bananas in the recipe will be displayed. To remove the tag from search, "
 "press <gui>x</gui> on the tag in the search bar."
 msgstr ""
+"Теґ складової, наприклад <em>Буряк</em>, буде показано на панелі пошуку."
+" Програма покаже усі рецепти із використанням буряка. Якщо жодного рецепта не"
+" буде знайдено, буде показано повідомлення <gui>Рецептів не знайдено</gui>."
+" Натисніть теґ <gui>Буряк</gui> на панелі пошуку, і програма покаже замість"
+" нього <gui>Без буряка</gui> та усі рецепти, для приготування за якими не"
+" потрібен буряк. Щоб вилучити теґ з пошуку, натисніть кнопку <gui>x</gui> у"
+" записі теґу на панелі пошуку."
 
 #. (itstool) path: section/title
 #: C/find-recipe.page:138
@@ -1230,6 +1310,9 @@ msgid ""
 "region it is from. This also includes searching for seasonal recipes that "
 "might be made during certain holidays or times of year."
 msgstr ""
+"Крім того, ви можете шукати рецепт за належністю до кухні або певної частини"
+" світу. Це також стосується пошуку сезонних рецептів страв, які готують на"
+" певні свята або у певні пори року."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:144
@@ -1237,6 +1320,8 @@ msgid ""
 "In the top menu bar of <app>Recipes</app>, press the <gui style=\"button"
 "\">Cuisines</gui> button."
 msgstr ""
+"На верхній панелі меню <app>Рецептів</app> натисніть кнопку <gui"
+" style=\"button\">Кухні</gui>."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:148
@@ -1245,6 +1330,9 @@ msgid ""
 "displayed. Click on a world cuisine to see all recipes in that category "
 "sorted by the type of dish."
 msgstr ""
+"Буде показано список кухонь з усього світу із короткими описами. Натисніть на"
+" пункті загальносвітової кухні, щоб побачити усі рецепти категорії,"
+" впорядковані за типами страв."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:154
@@ -1254,6 +1342,11 @@ msgid ""
 "translate=\"yes\"> <span its:translate=\"yes\">Down</span></media> to see "
 "all seasonal categories."
 msgstr ""
+"Виконайте гортання вниз для перегляду списку сезонних категорій і натисніть"
+" піктограму зі стрілкою вниз <media type=\"image\" mime=\"image/png\""
+" src=\"images/down.png\" its:"
+"translate=\"yes\"> <span its:translate=\"yes\">Вниз</span></media>, щоб"
+" переглянути сезонні категорії."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:161
@@ -1347,6 +1440,11 @@ msgid ""
 "longer, or if it became a favorite of a friend or family member. To add a "
 "note to a recipe:"
 msgstr ""
+"Ви можете додати особисті нотатки до будь-якого рецепта. Наприклад, ви можете"
+" лишити нотатку щодо того, як ви змінили рецепт, або того, чи слід збільшити"
+" чи зменшити час приготування, або того, що рецепт є улюбленим рецептом"
+" вашого друга, подруги чи родича. Щоб додати нотатку до рецепта, виконайте"
+" такі дії:"
 
 #. (itstool) path: item/p
 #: C/notes.page:28 C/notes.page:51 C/shop.page:25
@@ -1454,6 +1552,13 @@ msgid ""
 "They can download the attachment and double-click it to import the recipe "
 "you shared into <app>Recipes</app>."
 msgstr ""
+"Ви можете надіслати список закупівель або рецепт другу або подрузі"
+" електронною поштою. Для списків закупівель усі складові буде вказано у"
+" тексті повідомлення електронної пошти. Якщо ж ви надсилаєте рецепт,"
+" отримувач повідомлення електронної пошти матиме рецепт як долучення до"
+" повідомлення. Це долучення можна буде отримати з сервера і клацнути на ньому"
+" двічі лівою кнопкою миші для імпортування поширеного вами рецепта до <app"
+">Рецептів</app>."
 
 #. (itstool) path: note/p
 #: C/share.page:39
@@ -1487,6 +1592,11 @@ msgid ""
 "shopping list, the shopping list will be included in the body of the email. "
 "If you are sharing a recipe, the recipe will be attached to the email."
 msgstr ""
+"Буде відкрито редактор повідомлень із новим повідомленням електронної пошти."
+" Поле <em>Тема</em> та текст повідомлення буде заповнено автоматично. Якщо ви"
+" надсилаєте список закупівель, цей список буде включено до тексту"
+" повідомлення. Якщо ви ділитеся рецептом, рецепт буде долучено до"
+" повідомлення."
 
 #. (itstool) path: item/p
 #: C/share.page:75
@@ -1570,6 +1680,8 @@ msgid ""
 "<app>Recipes</app> will help you create shopping list based on the "
 "ingredients in a recipe. To create a shopping list:"
 msgstr ""
+"<app>Рецепти</app> допоможуть вам створити список закупівель на основі"
+" складових рецепта. Щоб створити список закупівель, виконайте такі дії:"
 
 #. (itstool) path: item/p
 #: C/shop.page:28
@@ -1577,6 +1689,8 @@ msgid ""
 "Press the <gui>Buy Ingredients</gui> button located under the ingredient "
 "list."
 msgstr ""
+"Натисніть кнопку <gui>Придбати складові</gui>, яку розташовано під списком"
+" складових."
 
 #. (itstool) path: item/p
 #: C/shop.page:32
@@ -1585,6 +1699,9 @@ msgid ""
 "list, press the <gui>View Shopping List</gui> button or press <gui>x</gui> "
 "to close the pop-up."
 msgstr ""
+"<app>Рецепти</app> покажуть контекстну панель згори. Щоб переглянути список"
+" закупівель, натисніть кнопку <gui>Переглянути список закупівель</gui>. Ви"
+" також можете натиснути кнопку <gui>x</gui>, щоб закрити контекстну панель."
 
 #. (itstool) path: item/p
 #: C/shop.page:37
@@ -1592,6 +1709,8 @@ msgid ""
 "Repeat steps for any other recipes you would like the ingredients to be "
 "added to your shopping list."
 msgstr ""
+"Повторіть кроки для усіх інших рецептів, складові яких ви хочете додати до"
+" списку закупівель."
 
 #. (itstool) path: page/p
 #: C/shop.page:42
@@ -1600,6 +1719,9 @@ msgid ""
 "Shopping List</gui> button, or return to the main <app>Recipes</app> window "
 "and click the <gui>Buy ingredients</gui> bar in the <gui>Today</gui> section."
 msgstr ""
+"Коли усі складові буде додано, натисніть кнопку <gui>Переглянути список"
+" закупівель</gui>, або поверніться до головного вікна <app>Рецептів</app> і"
+" натисніть кнопку <gui>Придбати складові</gui> у розділі <gui>Сьогодні</gui>."
 
 #. (itstool) path: page/p
 #: C/shop.page:47
@@ -1608,6 +1730,9 @@ msgid ""
 "ingredients you need to purchase for all of the recipes will be displayed in "
 "a list below the recipes that require them."
 msgstr ""
+"У відповідь <app>Рецепти</app> покажуть сторінку <gui>Придбати складові</gui"
+">. Складові, які вам слід придбати для усіх рецептів, буде показано у списку"
+" під рецептами, приготування за якими потребує цих складових."
 
 #. (itstool) path: section/title
 #: C/shop.page:54
@@ -1621,6 +1746,8 @@ msgid ""
 "automatically increase the quantities of the ingredients you need to "
 "purchase."
 msgstr ""
+"Ви можете збільшити кількість порцій за рецептом — обсяги складових у списку"
+" закупівель буде автоматично приведено у відповідність до кількості порцій."
 
 #. (itstool) path: item/p
 #: C/shop.page:61
@@ -1629,6 +1756,9 @@ msgid ""
 "upper right corner of the recipe the serving size is shown. Click the number "
 "displayed in the recipe."
 msgstr ""
+"Рецепти, які було додано до списку закупівель, буде показано у верхній"
+" частині списку. У верхньому правому куті пункту рецепта буде показано"
+" кількість порцій. Клацніть на цьому числі, яке показано у пункті рецепта."
 
 #. (itstool) path: item/p
 #: C/shop.page:67
