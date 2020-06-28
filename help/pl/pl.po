@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes-help\n"
-"POT-Creation-Date: 2020-05-21 19:32+0000\n"
+"POT-Creation-Date: 2020-06-26 21:51+0000\n"
 "PO-Revision-Date: 2019-03-03 14:40+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
@@ -45,8 +45,8 @@ msgstr "Paul Cutler"
 #: C/add-recipe-directions.page:17 C/add-recipe-images.page:17
 #: C/add-recipe-ingredients.page:17 C/add-recipe.page:13 C/chef.page:16
 #: C/common-problems.page:13 C/contribute.page:14 C/cooking.page:14
-#: C/find-recipe.page:13 C/index.page:12 C/notes.page:13 C/share.page:14
-#: C/share.page:19 C/share.page:24 C/shop.page:14
+#: C/find-recipe.page:13 C/find-recipe.page:18 C/index.page:12 C/notes.page:13
+#: C/share.page:14 C/share.page:19 C/share.page:24 C/shop.page:14
 msgid "2017"
 msgstr "2017"
 
@@ -167,7 +167,7 @@ msgstr ""
 #: C/add-recipe-details.page:38
 msgid ""
 "<gui>Preparation Time</gui>: From the drop down box, choose how long it "
-"takes to pepare the ingredients prior to cooking."
+"takes to prepare the ingredients prior to cooking."
 msgstr ""
 "<gui>Czas przygotowania</gui>: z rozwijanego menu wybierz czas "
 "przygotowywania składników przed gotowaniem."
@@ -702,7 +702,7 @@ msgstr "Kliknij przycisk menu w górnym prawym rogu okna."
 
 #. (itstool) path: item/p
 #: C/chef.page:41
-msgid "Select <gui>Chef Informaton</gui>."
+msgid "Select <gui>Chef Information</gui>."
 msgstr "Wybierz <gui>Informacje o kucharzu</gui>."
 
 #. (itstool) path: item/p
@@ -1019,12 +1019,12 @@ msgid "Find a recipe by name, category, cuisine, or chef."
 msgstr "Wyszukiwanie przepisu według nazwy, kategorii, kuchni lub kucharza."
 
 #. (itstool) path: page/title
-#: C/find-recipe.page:18
+#: C/find-recipe.page:23
 msgid "Search Recipes"
 msgstr "Wyszukiwanie przepisów"
 
 #. (itstool) path: section/title
-#: C/find-recipe.page:21
+#: C/find-recipe.page:26
 msgid "Search by Recipe Name, Ingredient or Chef"
 msgstr "Wyszukiwanie według nazwy przepisu, składnika lub kucharza"
 
@@ -1033,14 +1033,14 @@ msgstr "Wyszukiwanie według nazwy przepisu, składnika lub kucharza"
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/find-recipe.page:23 C/find-recipe.page:41
+#: C/find-recipe.page:28 C/find-recipe.page:46
 msgctxt "_"
 msgid "external ref='images/search.png' md5='b0c894f87d0a0bca717b52ecf0b4a12e'"
 msgstr ""
 "external ref='images/search.png' md5='b0c894f87d0a0bca717b52ecf0b4a12e'"
 
 #. (itstool) path: section/p
-#: C/find-recipe.page:22
+#: C/find-recipe.page:27
 msgid ""
 "Press the search button <media type=\"image\" mime=\"image/png\" src="
 "\"images/search.png\" its:translate=\"yes\"> <span its:translate=\"yes"
@@ -1052,17 +1052,17 @@ msgstr ""
 "\">Wyszukiwanie</span></media> i wpisz wyszukiwany tekst. Można znaleźć:"
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:29
+#: C/find-recipe.page:34
 msgid "Recipes that include the text you searched for."
 msgstr "Przepisy zawierające wyszukiwany tekst."
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:32
+#: C/find-recipe.page:37
 msgid "Ingredients that include the text you searched for."
 msgstr "Składniki zawierające wyszukiwany tekst."
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:35
+#: C/find-recipe.page:40
 msgid "Chef names."
 msgstr "Nazwy kucharzy."
 
@@ -1071,14 +1071,14 @@ msgstr "Nazwy kucharzy."
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/find-recipe.page:44 C/find-recipe.page:83 C/find-recipe.page:112
-#: C/find-recipe.page:151
+#: C/find-recipe.page:49 C/find-recipe.page:88 C/find-recipe.page:117
+#: C/find-recipe.page:156
 msgctxt "_"
 msgid "external ref='images/down.png' md5='384329e0a17b79aca6085fe4aab1361f'"
 msgstr "external ref='images/down.png' md5='384329e0a17b79aca6085fe4aab1361f'"
 
 #. (itstool) path: section/p
-#: C/find-recipe.page:39
+#: C/find-recipe.page:44
 msgid ""
 "You can also do a more narrow search by category. Press the search button "
 "<media type=\"image\" mime=\"image/png\" src=\"images/search.png\" its:"
@@ -1095,27 +1095,27 @@ msgstr ""
 "media> i wybierz jedną lub więcej kategorii."
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:49
+#: C/find-recipe.page:54
 msgid "Meal"
 msgstr "Potrawa"
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:53
+#: C/find-recipe.page:58
 msgid "Spiciness"
 msgstr "Pikantność"
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:57
+#: C/find-recipe.page:62
 msgid "Dietary restrictions"
 msgstr "Ograniczenia żywieniowe"
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:61
+#: C/find-recipe.page:66
 msgid "Ingredients"
 msgstr "Składniki"
 
 #. (itstool) path: section/p
-#: C/find-recipe.page:65
+#: C/find-recipe.page:70
 msgid ""
 "<app>Recipes</app> will add a tag for the category you selected and display "
 "it in the search bar. You can then enter text to search within that category "
@@ -1126,7 +1126,7 @@ msgstr ""
 "w ramach tej kategorii i etykiety."
 
 #. (itstool) path: section/p
-#: C/find-recipe.page:68
+#: C/find-recipe.page:73
 msgid ""
 "To remove the tag from search, press <gui>x</gui> on the tag in the search "
 "bar."
@@ -1135,12 +1135,12 @@ msgstr ""
 "etykiecie na pasku wyszukiwania."
 
 #. (itstool) path: section/title
-#: C/find-recipe.page:73
+#: C/find-recipe.page:78
 msgid "Search by Categories"
 msgstr "Wyszukiwanie według kategorii"
 
 #. (itstool) path: section/p
-#: C/find-recipe.page:74
+#: C/find-recipe.page:79
 msgid ""
 "When you create a recipe, you can select if a recipe is in a category, such "
 "as vegan or nut free. To search by category:"
@@ -1149,7 +1149,7 @@ msgstr ""
 "wegańskie lub bez orzechów. Aby wyszukać według kategorii:"
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:77
+#: C/find-recipe.page:82
 msgid ""
 "From the main <app>Recipes</app> window scroll down to <gui>Categories</gui>."
 msgstr ""
@@ -1157,7 +1157,7 @@ msgstr ""
 "<gui>Kategorie</gui>."
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:81
+#: C/find-recipe.page:86
 msgid ""
 "You can also expand the Categories list by pressing the down icon<media type="
 "\"image\" mime=\"image/png\" src=\"images/down.png\" its:translate=\"yes\"> "
@@ -1169,14 +1169,14 @@ msgstr ""
 "wszystkie kategorie."
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:88
+#: C/find-recipe.page:93
 msgid "Press the <gui>Category</gui> to view all recipes in that Category."
 msgstr ""
 "Kliknij <gui>Kategorię</gui>, aby wyświetlić wszystkiej przepisy w niej "
 "zawarte."
 
 #. (itstool) path: section/p
-#: C/find-recipe.page:94
+#: C/find-recipe.page:99
 msgid ""
 "If you choose from the vegan, vegetarian, dairy-free, gluten-free or nut-"
 "free categories, the search results will also display a description of the "
@@ -1189,7 +1189,7 @@ msgstr ""
 "więcej informacji o kategorii."
 
 #. (itstool) path: section/p
-#: C/find-recipe.page:99
+#: C/find-recipe.page:104
 msgid ""
 "Note that the information about dietary restrictions is provided by the "
 "recipe authors themselves and cannot be guaranteed to be accurate. Please "
@@ -1202,12 +1202,12 @@ msgstr ""
 "glutenu lub laktozy."
 
 #. (itstool) path: section/title
-#: C/find-recipe.page:106
+#: C/find-recipe.page:111
 msgid "Search for recipes with or without a specific ingredient"
 msgstr "Wyszukiwanie przepisów z lub bez konkretnego składnika"
 
 #. (itstool) path: section/p
-#: C/find-recipe.page:107
+#: C/find-recipe.page:112
 msgid ""
 "You can search for recipes that include or do not include a specific "
 "ingredient."
@@ -1216,7 +1216,7 @@ msgstr ""
 "składnika."
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:111
+#: C/find-recipe.page:116
 msgid ""
 "Press the down arrow <media type=\"image\" mime=\"image/png\" src=\"images/"
 "down.png\" its:translate=\"yes\"> <span its:translate=\"yes\">Down</span></"
@@ -1227,17 +1227,17 @@ msgstr ""
 "media> na pasku wyszukiwania."
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:116
+#: C/find-recipe.page:121
 msgid "Select the <gui>Ingredients</gui> drop down box."
 msgstr "Wybierz rozwijane menu <gui>Składniki</gui>."
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:119
+#: C/find-recipe.page:124
 msgid "Select an ingredient from the list, such as <em>Banana</em>."
 msgstr "Wybierz składnik z listy, na przykład <em>Banan</em>."
 
 #. (itstool) path: section/p
-#: C/find-recipe.page:122
+#: C/find-recipe.page:127
 msgid ""
 "A tag for that ingredient, such as <em>Banana</em>, will be displayed in the "
 "search bar and all recipes that include that bananas will be displayed. If "
@@ -1257,12 +1257,12 @@ msgstr ""
 "wyszukiwania."
 
 #. (itstool) path: section/title
-#: C/find-recipe.page:133
+#: C/find-recipe.page:138
 msgid "Search by Cuisines"
 msgstr "Wyszukiwanie według kuchni"
 
 #. (itstool) path: section/p
-#: C/find-recipe.page:134
+#: C/find-recipe.page:139
 msgid ""
 "You can also search for a recipe by what type of cuisine the recipe is or "
 "region it is from. This also includes searching for seasonal recipes that "
@@ -1272,7 +1272,7 @@ msgstr ""
 "Obejmuje to także wyszukiwanie przepisów dla danego święta lub pory roku."
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:139
+#: C/find-recipe.page:144
 msgid ""
 "In the top menu bar of <app>Recipes</app>, press the <gui style=\"button"
 "\">Cuisines</gui> button."
@@ -1281,7 +1281,7 @@ msgstr ""
 "style=\"button\">Kuchnie</gui>."
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:143
+#: C/find-recipe.page:148
 msgid ""
 "A list of cuisines from around the world with brief descriptions are "
 "displayed. Click on a world cuisine to see all recipes in that category "
@@ -1292,7 +1292,7 @@ msgstr ""
 "typów potraw."
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:149
+#: C/find-recipe.page:154
 msgid ""
 "Scroll down to see a list of seasonal categories and press the down icon "
 "<media type=\"image\" mime=\"image/png\" src=\"images/down.png\" its:"
@@ -1305,7 +1305,7 @@ msgstr ""
 "media>, aby wyświetlić wszystkie kategorie tego typu."
 
 #. (itstool) path: item/p
-#: C/find-recipe.page:156
+#: C/find-recipe.page:161
 msgid "Select a holiday or season to show all recipes that match."
 msgstr ""
 "Wybierz święto lub porę roku, aby wyświetlić wszystkie pasujące przepisy."
