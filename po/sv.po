@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-10 18:12+0000\n"
-"PO-Revision-Date: 2019-05-11 20:09+0200\n"
+"POT-Creation-Date: 2020-06-23 04:28+0000\n"
+"PO-Revision-Date: 2020-10-09 23:47+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
@@ -418,7 +418,7 @@ msgstr ""
 
 #: src/gr-details-page.ui:119
 msgid ""
-"Contains Gluten. Please always double-check the ingredients if you are "
+"Contains gluten. Please always double-check the ingredients if you are "
 "serving a person with gluten or dairy intolerance."
 msgstr ""
 "Innehåller gluten. Dubbelkontrollera alltid ingredienserna om du serverar "
@@ -1115,15 +1115,15 @@ msgstr ""
 msgid "Supported categories: %s\n"
 msgstr "Kategorier som stöds: %s\n"
 
-#: src/gr-app.c:441
+#: src/gr-app.c:443
 msgid "Print the version and exit"
 msgstr "Skriv programversion och avsluta"
 
-#: src/gr-app.c:445
+#: src/gr-app.c:447
 msgid "Turn on verbose logging"
 msgstr "Slå på utförlig loggning"
 
-#: src/gr-app.c:449
+#: src/gr-app.c:451
 msgid "Show a category"
 msgstr "Visa en kategori"
 
@@ -1428,7 +1428,7 @@ msgstr "portioner"
 
 #: src/gr-details-page.c:367
 msgid "Could not find this recipe."
-msgstr "Kunde inte hitta detta recept."
+msgstr "Det gick inte att hitta detta recept."
 
 #: src/gr-details-page.c:576
 #, c-format
@@ -1641,7 +1641,7 @@ msgstr "uns"
 msgid "_Name Your Recipe"
 msgstr "_Namnge ditt recept"
 
-#: src/gr-edit-page.c:1734 src/gr-edit-page.c:1796 src/gr-recipe-store.c:1333
+#: src/gr-edit-page.c:1734 src/gr-edit-page.c:1796 src/gr-recipe-store.c:1330
 #, c-format
 msgid "You need to provide a name for the recipe"
 msgstr "Du måste ange ett namn för receptet"
@@ -1986,7 +1986,7 @@ msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
 msgstr[0] "Köp ingredienser: <b>%s, %s och %d annan</b>"
 msgstr[1] "Köp ingredienser: <b>%s, %s och %d andra</b>"
 
-#: src/gr-recipe-store.c:1338
+#: src/gr-recipe-store.c:1335
 #, c-format
 msgid ""
 "A recipe with this name and author (%s) already exists.\n"
@@ -1995,32 +1995,32 @@ msgstr ""
 "Ett recept med detta namn och denna upphovsman (%s) finns redan.\n"
 "Välj ett annat namn"
 
-#: src/gr-recipe-store.c:1367
+#: src/gr-recipe-store.c:1364
 #, c-format
 msgid "You need to provide an ID for the recipe"
 msgstr "Du måste ange ett ID för receptet"
 
-#: src/gr-recipe-store.c:1373
+#: src/gr-recipe-store.c:1370
 #, c-format
 msgid "A recipe with this ID already exists"
 msgstr "Ett recept med detta ID existerar redan"
 
-#: src/gr-recipe-store.c:1542
+#: src/gr-recipe-store.c:1539
 #, c-format
 msgid "You need to provide an ID"
 msgstr "Du måste ange ett ID"
 
-#: src/gr-recipe-store.c:1548
+#: src/gr-recipe-store.c:1545
 #, c-format
 msgid "Sorry, this ID is taken"
 msgstr "Tyvärr, detta ID är taget"
 
-#: src/gr-recipe-store.c:1575
+#: src/gr-recipe-store.c:1572
 #, c-format
 msgid "You need to provide an ID for the chef"
 msgstr "Du måste ange ett ID för kocken"
 
-#: src/gr-recipe-store.c:1581
+#: src/gr-recipe-store.c:1578
 #, c-format
 msgid "A chef with this ID already exists"
 msgstr "En kock med detta ID existerar redan"
@@ -2529,15 +2529,29 @@ msgstr[1] "%d timmar sedan"
 msgid "some time ago"
 msgstr "ett tag sedan"
 
-#: src/gr-utils.c:385
-msgid "Could not connect to the session bus from inside the Flatpak sandbox."
-msgstr "Kunde inte ansluta till sessionsbussen inifrån Flatpak-sandlådan."
-
 #: src/gr-utils.c:386
+msgid "Could not connect to the session bus from inside the Flatpak sandbox."
+msgstr ""
+"Det gick inte att ansluta till sessionsbussen inifrån Flatpak-sandlådan."
+
+#: src/gr-utils.c:387
 msgid "Certain functionality will not be available."
 msgstr "Viss funktionalitet kommer inte att finnas tillgänglig."
 
-#: src/gr-utils.c:406
+#: src/gr-utils.c:400
+#, c-format
+msgid ""
+"Could not create D-Bus proxy for org.freedesktop.portal.Desktop interface %s"
+msgstr ""
+"Det gick inte att skapa en D-Bus-proxy för org.freedesktop.portal.Desktop-"
+"gränssnittet %s"
+
+#: src/gr-utils.c:401
+#, c-format
+msgid "Error: %s"
+msgstr "Fel: %s"
+
+#: src/gr-utils.c:412
 msgid ""
 "Missing the desktop portal needed to open files from inside a Flatpak "
 "sandbox."
@@ -2545,21 +2559,21 @@ msgstr ""
 "Saknar skrivbordsportalen som krävs för att öppna filer inifrån en Flatpak-"
 "sandlåda."
 
-#: src/gr-utils.c:408
+#: src/gr-utils.c:414
 msgid ""
 "Missing the desktop portal needed to print from inside a Flatpak sandbox."
 msgstr ""
 "Saknar skrivbordsportalen som krävs för att skriva ut inifrån en Flatpak-"
 "sandlåda."
 
-#: src/gr-utils.c:410
+#: src/gr-utils.c:416
 msgid ""
 "Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
 msgstr ""
 "Saknar skrivbordsportalen som krävs för att öppna URL:er inifrån en Flatpak-"
 "sandlåda."
 
-#: src/gr-utils.c:414
+#: src/gr-utils.c:420
 msgid ""
 "Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
 msgstr ""
@@ -3004,7 +3018,6 @@ msgid "Cream"
 msgstr "Grädde"
 
 #: src/ingredients.inc:86
-#| msgid "Cheese"
 msgid "Cream cheese"
 msgstr "Cream cheese"
 
@@ -3339,7 +3352,6 @@ msgid "Mandarin Oranges"
 msgstr "Mandariner"
 
 #: src/ingredients.inc:168
-#| msgid "Tangerine"
 msgid "Margarine"
 msgstr "Margarin"
 
@@ -3433,7 +3445,6 @@ msgid "Orange"
 msgstr "Apelsin"
 
 #: src/ingredients.inc:191
-#| msgid "Vegan"
 msgid "Oregano"
 msgstr "Oregano"
 
@@ -4005,7 +4016,6 @@ msgid "no Cake flour"
 msgstr "inget tårtmjöl"
 
 #: src/no-ingredients.inc:46
-#| msgid "no Baked beans"
 msgid "no Canellini beans"
 msgstr "inga canellinibönor"
 
