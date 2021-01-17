@@ -1,13 +1,13 @@
 # Swedish translation for recipes.
-# Copyright © 2017 recipes's COPYRIGHT HOLDER
+# Copyright © 2017-2021 recipes's COPYRIGHT HOLDER
 # This file is distributed under the same license as the recipes package.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2017.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2017, 2020, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
-"POT-Creation-Date: 2020-06-26 21:51+0000\n"
-"PO-Revision-Date: 2020-12-20 17:40+0100\n"
+"POT-Creation-Date: 2020-12-20 16:41+0000\n"
+"PO-Revision-Date: 2021-01-17 12:48+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -20,12 +20,12 @@ msgstr ""
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
-msgstr "Anders Jonsson <anders.jonsson@norsjovallen.se>, 2017"
+msgstr "Anders Jonsson <anders.jonsson@norsjovallen.se>, 2017, 2021"
 
 #. (itstool) path: info/desc
 #: C/add-recipe-description.page:12
 msgid "How to add a recipe description and dietary restrictions."
-msgstr ""
+msgstr "Hur du lägger till en receptbeskrivning och begränsningar i diet."
 
 #. (itstool) path: credit/name
 #: C/add-recipe-description.page:15 C/add-recipe-details.page:16
@@ -59,6 +59,9 @@ msgid ""
 "app>. In the <gui>Description</gui> section, use the text box to describe "
 "the recipe in detail."
 msgstr ""
+"Tryck på <gui>Nytt recept</gui> i det övre vänstra hörnet i <app>Recept</"
+"app>. Använd i avsnittet <gui>Beskrivning</gui> textrutan för att detaljerat "
+"beskriva receptet."
 
 #. (itstool) path: page/p
 #: C/add-recipe-description.page:29
@@ -67,6 +70,9 @@ msgid ""
 "any dietary restrictions. The dietary restrictions will help for searching "
 "recipes later."
 msgstr ""
+"Under fältet Beskrivning kan du kryssa i en kryssruta om receptet följer "
+"några dietbegränsningar. Begränsningarna i diet kommer hjälpa till att söka "
+"recept senare."
 
 #. (itstool) path: item/p
 #: C/add-recipe-description.page:34
@@ -74,6 +80,8 @@ msgid ""
 "<gui>Gluten-free</gui>: Select for recipes that do not include wheat or "
 "related grains."
 msgstr ""
+"<gui>Glutenfri</gui>: Välj för recept som inte innehåller vete eller "
+"relaterade spannmål."
 
 #. (itstool) path: item/p
 #: C/add-recipe-description.page:36
@@ -82,11 +90,14 @@ msgid ""
 "do not include meat, poultry or seafood. Vegetarian recipes may include "
 "dairy or eggs."
 msgstr ""
+"<gui>Vegetarisk</gui>: Välj för recept som endast innehåller grönsaker och "
+"inte innehåller kött, kyckling eller skaldjur. Vegetariska recept kan "
+"innehålla mejeriprodukter eller ägg."
 
 #. (itstool) path: item/p
 #: C/add-recipe-description.page:39
 msgid "<gui>Nut-free</gui>: Select for recipes that do not include any nuts."
-msgstr ""
+msgstr "<gui>Nötfri</gui>: Välj för recept som inte innehåller några nötter."
 
 #. (itstool) path: item/p
 #: C/add-recipe-description.page:41
@@ -94,6 +105,8 @@ msgid ""
 "<gui>Milk-free</gui>: Select for recipes that do not include dairy products, "
 "such as milk or cheese."
 msgstr ""
+"<gui>Mjölkfri</gui>: Välj för recept som inte innehåller mejeriprodukter, så "
+"som mjölk eller ost."
 
 #. (itstool) path: item/p
 #: C/add-recipe-description.page:43
@@ -101,16 +114,20 @@ msgid ""
 "<gui>Vegan</gui>: Recipes that do not include any product from an animal. "
 "This includes meat, dairy, eggs and more."
 msgstr ""
+"<gui>Vegansk</gui>: Recept som inte innehåller produkter från något djur. "
+"Detta inkluderar kött, mejeriprodukter, ägg med mera."
 
 #. (itstool) path: info/desc
 #: C/add-recipe-details.page:12
 msgid "Add recipe name, serving size, cooking and preparation time, and more."
 msgstr ""
+"Lägg till namn på receptet, portionsstorlek, tid för tillagning och "
+"förberedelser med mera."
 
 #. (itstool) path: page/title
 #: C/add-recipe-details.page:23
 msgid "Add Recipe Details"
-msgstr ""
+msgstr "Lägg till receptdetaljer"
 
 #. (itstool) path: page/p
 #: C/add-recipe-details.page:24
@@ -121,19 +138,27 @@ msgid ""
 "all other fields are optional. It is helpful to fill as many fields as "
 "possible to help when searching <app>Recipes</app>."
 msgstr ""
+"Tryck på <gui>Nytt recept</gui> i det övre vänstra hörnet i <app>Recept</"
+"app> och inkludera följande information om ditt recept i avsnittet "
+"<gui>Detaljer</gui>. Receptets namn och portionsstorlek krävs och alla andra "
+"fält är valfria. Det underlättar att fylla i så många fält som möjligt för "
+"att hjälpa till vid sökning i <app>Recept</app>."
 
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:31
 msgid ""
 "<gui>Name Your Recipe</gui>: Enter the name of the recipe in the text box."
-msgstr ""
+msgstr "<gui>Namnge ditt recept</gui>: Ange namnet på receptet i textrutan."
 
+# TODO: Is named "Yield" now?
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:34
 msgid ""
 "<gui>Serves</gui>: Enter a number or press the <gui style=\"button\">+</gui> "
 "button to enter how many servings the recipe will make."
 msgstr ""
+"<gui>Antal</gui>: Ange ett antal eller tryck på <gui style=\"button\">+</"
+"gui>-knappen för att ange hur många portioner som receptet kommer att ge."
 
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:38
@@ -141,6 +166,8 @@ msgid ""
 "<gui>Preparation Time</gui>: From the drop down box, choose how long it "
 "takes to prepare the ingredients prior to cooking."
 msgstr ""
+"<gui>Förberedelsetid</gui>: Välj från rullgardinsrutan hur lång tid det tar "
+"att förbereda ingredienserna innan tillagning."
 
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:41
@@ -148,6 +175,8 @@ msgid ""
 "<gui>Cooking Time</gui>: From the drop down box, choose how long it takes to "
 "cook the recipe."
 msgstr ""
+"<gui>Tillagningstid</gui>: Välj från rullgardinsrutan hur lång tid det tar "
+"att tillaga receptet."
 
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:44
@@ -156,6 +185,9 @@ msgid ""
 "region from where the recipe comes from. You can also enter the type of "
 "cuisine if it is not included in the list."
 msgstr ""
+"<gui>Matkultur</gui>: Välj från rullgardinsrutan typen av mat eller regionen "
+"som receptet kommer från. Du kan också mata in typen av matkultur om den "
+"inte finns i listan."
 
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:48
@@ -165,6 +197,10 @@ msgid ""
 "or cocktails. You can also enter the type of meal if it is not included in "
 "the list."
 msgstr ""
+"<gui>Måltid</gui>: Välj från rullgardinsrutan vilken typ av måltid som "
+"receptet tillagar. Exempel på detta är frukost eller middag, eller mattyper "
+"som pasta eller cocktailar. Du kan också mata in måltidstypen om den inte "
+"finns i listan."
 
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:53
@@ -173,6 +209,9 @@ msgid ""
 "that the recipe is typically associated with. You can also enter the season "
 "or holiday if it is not included in the list."
 msgstr ""
+"<gui>Säsong</gui>: Välj från rullgardinsrutan den säsong eller högtid som "
+"receptet vanligen associeras med. Du kan också mata in säsongen eller "
+"högtiden om den inte finns i listan."
 
 #. (itstool) path: item/p
 #: C/add-recipe-details.page:58
@@ -180,22 +219,26 @@ msgid ""
 "<gui>Spiciness</gui>: From the drop down menu, choose how spicy the recipe "
 "is."
 msgstr ""
+"<gui>Kryddighet</gui>: Välj från rullgardinsrutan hur kryddigt receptet är."
 
 #. (itstool) path: info/desc
 #: C/add-recipe-directions.page:12
 msgid "How to add each step to cook a recipe and at what temperature."
 msgstr ""
+"Hur du lägger till varje steg för att tillaga ett recept och vid vilken "
+"temperatur."
 
 #. (itstool) path: page/title
 #: C/add-recipe-directions.page:22
 msgid "Add Cooking Directions"
-msgstr ""
+msgstr "Lägg till tillagningsinstruktioner"
 
 #. (itstool) path: section/title
 #: C/add-recipe-directions.page:25
 msgid "Add steps"
-msgstr ""
+msgstr "Lägg till steg"
 
+# TODO: a separate step
 #. (itstool) path: section/p
 #: C/add-recipe-directions.page:26
 msgid ""
@@ -206,6 +249,12 @@ msgid ""
 "separate steps for each paragraph in your recipe. These steps will be used "
 "when it is time to cook using full screen mode in <app>Recipes</app>."
 msgstr ""
+"Tryck på <gui>Nytt recept</gui> i det övre vänstra hörnet i <app>Recept</"
+"app>. Skriv i textrutan Instruktioner in stegen som behövs för att utföra "
+"receptet. Tryck <key>Retur</key> två gånger för att skapa ett nytt stycke "
+"för att skilja stegen åt. <app>Recept</app> kommer automatiskt skapa ett "
+"separat steg för varje stycke i ditt recept. Dessa steg kommer användas när "
+"det är dags för matlagning med helskärmsläge i <app>Recept</app>."
 
 #. (itstool) path: section/p
 #: C/add-recipe-directions.page:33
@@ -216,11 +265,16 @@ msgid ""
 "available when viewing the recipe or when in hands-free mode. All tags are "
 "enclosed within brackets."
 msgstr ""
+"I varje stycke för varje steg kan du inkludera följande taggar för att lägga "
+"till bilder, tidtagare eller temperatur. Du kan använda endast en bild eller "
+"en tidtagare, men inte båda i ett enskilt steg. Informationen i taggarna "
+"kommer vara tillgänglig när du tittar på receptet eller i frihandsläge. Alla "
+"taggar omges av hakparenteser."
 
 #. (itstool) path: section/title
 #: C/add-recipe-directions.page:41
 msgid "Add timers"
-msgstr ""
+msgstr "Lägg till tidtagare"
 
 #. (itstool) path: section/p
 #: C/add-recipe-directions.page:42
@@ -228,11 +282,13 @@ msgid ""
 "To create a timer, enter how long the timer should be within brackets. The "
 "format is [timer:hours:minutes:seconds, description]."
 msgstr ""
+"För att skapa en tidtagare, ange hur länge tidtagaren ska köras i "
+"hakparenteser. Formatet är [timer:timmar:minuter:sekunder, beskrivning]."
 
 #. (itstool) path: section/p
 #: C/add-recipe-directions.page:45
 msgid "Timer examples:"
-msgstr ""
+msgstr "Tidtagarexempel:"
 
 #. (itstool) path: item/p
 #: C/add-recipe-directions.page:49
@@ -240,6 +296,8 @@ msgid ""
 "<cmd>[timer:00:30, stir ingredients]</cmd> - Stir ingredients for thirty "
 "seconds."
 msgstr ""
+"<cmd>[timer:00:30, rör om ingredienser]</cmd> - Rör om ingredienser under "
+"trettio sekunder."
 
 #. (itstool) path: item/p
 #: C/add-recipe-directions.page:54
@@ -247,6 +305,8 @@ msgid ""
 "<cmd>[timer:01:30, stir ingredients]</cmd> - Stir ingredients for one minute "
 "and thirty seconds."
 msgstr ""
+"<cmd>[timer:01:30, rör om ingredienser]</cmd> - Rör om ingredienser under en "
+"och en halv minut."
 
 #. (itstool) path: item/p
 #: C/add-recipe-directions.page:59
@@ -254,11 +314,13 @@ msgid ""
 "<cmd>[timer:01:01:30, preheat oven]</cmd> - Preheat oven for one hour, one "
 "minute and thirty seconds."
 msgstr ""
+"<cmd>[timer:01:01:30, förvärm ugn]</cmd> - Förvärm ugnen under en timme, en "
+"minut och trettio sekunder."
 
 #. (itstool) path: section/title
 #: C/add-recipe-directions.page:67
 msgid "Add images to each step"
-msgstr ""
+msgstr "Lägg till bilder till varje steg"
 
 #. (itstool) path: section/p
 #: C/add-recipe-directions.page:68
@@ -267,7 +329,12 @@ msgid ""
 "each each step of making a recipe. See <link xref=\"add-recipe-images\"/> "
 "for how to add an image or images to your recipe."
 msgstr ""
+"Du kan lägga till en bild eller ett foto av det slutförda receptet och även "
+"ett foto av varje steg av utförandet av ett recept. Se <link xref=\"add-"
+"recipe-images\"/> för hur du kan lägga till en eller flera bilder till ditt "
+"recept."
 
+# TODO: at the bottom *of the*
 #. (itstool) path: item/p
 #: C/add-recipe-directions.page:75
 msgid ""
@@ -277,11 +344,18 @@ msgid ""
 "displayed. The first image would be number one, the second would be number "
 "two and so on."
 msgstr ""
+"För att använda en av bilderna som du lagt till så behöver du veta bildens "
+"nummer. Tryck på knappen <gui>Lägg till bild</gui> längst ner i fönstret för "
+"<app>Recept</app>. Miniatyrbilder kommer att visas för varje bild som du "
+"lagt till. Den första bilden kommer vara nummer ett, den andra nummer två "
+"och så vidare."
 
 #. (itstool) path: item/p
 #: C/add-recipe-directions.page:83
 msgid "Add the tag <cmd>[image:1]</cmd> to add the first image to a step."
 msgstr ""
+"Lägg till taggen <cmd>[image:1]</cmd> för att lägga till den första bilden "
+"till ett steg."
 
 #. (itstool) path: item/p
 #: C/add-recipe-directions.page:88
@@ -289,11 +363,13 @@ msgid ""
 "Add additional image tags with the correct number for as many steps as you "
 "wish."
 msgstr ""
+"Lägg till ytterligare bildtaggar med rätt nummer för så många steg som du "
+"vill."
 
 #. (itstool) path: section/title
 #: C/add-recipe-directions.page:97
 msgid "Temperature"
-msgstr ""
+msgstr "Temperatur"
 
 #. (itstool) path: section/p
 #: C/add-recipe-directions.page:98
@@ -301,6 +377,8 @@ msgid ""
 "You can add the temperature a step needs to be cooked at by adding a "
 "temperature tag."
 msgstr ""
+"Du kan lägga till temperaturen som ett steg behöver tillagas på genom att "
+"lägga till en temperaturtagg."
 
 #. (itstool) path: item/p
 #: C/add-recipe-directions.page:102
@@ -308,16 +386,20 @@ msgid ""
 "Add the tag <cmd>[temperature:200C]</cmd>. You can set the temperature in "
 "Celsius with a C or Fahrenheit with an F following the temperature."
 msgstr ""
+"Lägg till taggen <cmd>[temperature:200C]</cmd>. Du kan ställa in "
+"temperaturen i Celsius med ett C eller Fahrenheit med ett F efter "
+"temperaturen."
 
 #. (itstool) path: info/desc
 #: C/add-recipe-images.page:12
 msgid "How to add images to a recipe and for each step when cooking."
 msgstr ""
+"Hur du lägger till bilder till ett recept och för varje steg vid tillagning."
 
 #. (itstool) path: page/title
 #: C/add-recipe-images.page:22
 msgid "Add Images and Photos"
-msgstr ""
+msgstr "Lägg till bilder och foton"
 
 #. (itstool) path: page/p
 #: C/add-recipe-images.page:23
@@ -325,6 +407,8 @@ msgid ""
 "Press the <gui>New Recipe</gui> in the upper left corner of <app>Recipes</"
 "app>. To add an image to your recipe:"
 msgstr ""
+"Tryck på <gui>Nytt recept</gui> i det övre vänstra hörnet i <app>Recept</"
+"app>. För att lägga till en bild till ditt recept:"
 
 #. (itstool) path: item/p
 #: C/add-recipe-images.page:27 C/add-recipe-images.page:48
@@ -333,16 +417,19 @@ msgid ""
 "press <guiseq> <gui>Add Image</gui> <gui style=\"button\">+</gui></guiseq> "
 "at the bottom of the <app>Recipes</app> window."
 msgstr ""
+"Tryck på <gui style=\"button\">+</gui>-knappen under kameraikonen eller "
+"tryck på <guiseq> <gui>Lägg till bild</gui> <gui style=\"button\">+</gui></"
+"guiseq> längst ner i fönstret för <app>Recept</app>."
 
 #. (itstool) path: item/p
 #: C/add-recipe-images.page:34
 msgid "Select the image you would like to add."
-msgstr ""
+msgstr "Välj bilden som du vill lägga till."
 
 #. (itstool) path: item/p
 #: C/add-recipe-images.page:38 C/add-recipe-images.page:60
 msgid "Press <gui>Open</gui>"
-msgstr ""
+msgstr "Tryck på <gui>Öppna</gui>"
 
 #. (itstool) path: page/p
 #: C/add-recipe-images.page:43
@@ -351,13 +438,19 @@ msgid ""
 "mode, <app>Recipes</app> can display an image for each step when cooking. To "
 "add multiple images:"
 msgstr ""
+"Du kan vilja lägga till flera bilder till receptet. När du använder "
+"frihandsläge kan <app>Recept</app> visa en bild för varje steg vid "
+"tillagning. För att lägga till flera bilder:"
 
+# TODO: missing word , e.g "clicking on the images"
 #. (itstool) path: item/p
 #: C/add-recipe-images.page:55
 msgid ""
 "Select multiple images by pressing <key>Control</key> and the images you "
 "would like to add."
 msgstr ""
+"Välj flera bilder genom att trycka ner <key>Ctrl</key> och klicka på "
+"bilderna som du vill lägga till."
 
 #. (itstool) path: page/p
 #: C/add-recipe-images.page:64
@@ -365,6 +458,8 @@ msgid ""
 "After adding an image, you can rotate it, make it the default image for the "
 "recipe, or remove it from the recipe."
 msgstr ""
+"Efter att ha lagt till bilden kan du rotera den, göra den till "
+"standardbilden för receptet, eller ta bort den från receptet."
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -385,6 +480,9 @@ msgid ""
 "<media type=\"image\" mime=\"image/png\" src=\"images/rotate-left.png\" its:"
 "translate=\"yes\"><span its:translate=\"yes\">Rotate Image</span> </media>"
 msgstr ""
+"Tryck på knappen <gui>Rotera bild</gui> för att rotera en bild till vänster: "
+"<media type=\"image\" mime=\"image/png\" src=\"images/rotate-left.png\" its:"
+"translate=\"yes\"><span its:translate=\"yes\">Rotera bild</span> </media>"
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -405,6 +503,9 @@ msgid ""
 "<media type=\"image\" mime=\"image/png\" src=\"images/rotate-right.png\" its:"
 "translate=\"yes\"><span its:translate=\"yes\">Rotate Image</span> </media>"
 msgstr ""
+"Tryck på knappen <gui>Rotera bild</gui> för att rotera en bild till höger: "
+"<media type=\"image\" mime=\"image/png\" src=\"images/rotate-right.png\" its:"
+"translate=\"yes\"><span its:translate=\"yes\">Rotera bild</span> </media>"
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -424,6 +525,10 @@ msgid ""
 "star.png\" its:translate=\"yes\"><span its:translate=\"yes\">Default Image </"
 "span></media>"
 msgstr ""
+"Tryck på knappen <gui>Standardbild</gui> för att göra en bild till "
+"standardbild för receptet: <media type=\"image\" mime=\"image/png\" src="
+"\"images/star.png\" its:translate=\"yes\"><span its:translate=\"yes"
+"\">Standardbild </span></media>"
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -443,16 +548,20 @@ msgid ""
 "its:translate=\"yes\"><span its:translate=\"yes\">Remove Image </span></"
 "media>"
 msgstr ""
+"Tryck på knappen <gui>Ta bort bild</gui> för att ta bort en bild från "
+"receptet: <media type=\"image\" mime=\"image/png\" src=\"images/trash.png\" "
+"its:translate=\"yes\"><span its:translate=\"yes\">Ta bort bild </span></"
+"media>"
 
 #. (itstool) path: info/desc
 #: C/add-recipe-ingredients.page:12
 msgid "How to add ingredients and lists."
-msgstr ""
+msgstr "Hur du lägger till ingredienser och listor."
 
 #. (itstool) path: page/title
 #: C/add-recipe-ingredients.page:22
 msgid "Add Ingredients"
-msgstr ""
+msgstr "Lägg till ingredienser"
 
 #. (itstool) path: page/p
 #: C/add-recipe-ingredients.page:23
@@ -461,6 +570,10 @@ msgid ""
 "for recipes that have different parts, such as a cake that has an ingredient "
 "list for the cake and an ingredient list for the frosting. To create a list:"
 msgstr ""
+"Du kan lägga till ingredienserna och skapa listor för receptet. Listor "
+"används för recept som har olika delar, så som en tårta som har en "
+"ingredienslista för själva tårtan och en för glasyren. För att skapa en "
+"lista:"
 
 #. (itstool) path: item/p
 #: C/add-recipe-ingredients.page:28
@@ -468,12 +581,16 @@ msgid ""
 "Press the <gui>New Recipe</gui> in the upper left corner of <app>Recipes</"
 "app>."
 msgstr ""
+"Tryck på <gui>Nytt recept</gui> i det övre vänstra hörnet i <app>Recept</"
+"app>."
 
 #. (itstool) path: item/p
 #: C/add-recipe-ingredients.page:31
 msgid ""
 "Press the <gui>Add List</gui> button in the <gui>Ingredients</gui> section."
 msgstr ""
+"Tryck på knappen <gui>Lägg till lista</gui> i avsnittet <gui>Ingredienser</"
+"gui>."
 
 #. (itstool) path: item/p
 #: C/add-recipe-ingredients.page:34
@@ -481,21 +598,23 @@ msgid ""
 "Enter the name of the list, such as cake, in the <gui>Name of the List</gui> "
 "text box."
 msgstr ""
+"Skriv in namnet på listan, så som tårta, i textrutan <gui>Namn på listan</"
+"gui>."
 
 #. (itstool) path: item/p
 #: C/add-recipe-ingredients.page:37
 msgid "Repeat this step for as many lists as you may need."
-msgstr ""
+msgstr "Upprepa detta steg för så många listor som du behöver."
 
 #. (itstool) path: page/p
 #: C/add-recipe-ingredients.page:40
 msgid "To add ingredients to a recipe or to a list:"
-msgstr ""
+msgstr "För att lägga till ingredienser till ett recept eller en lista:"
 
 #. (itstool) path: item/p
 #: C/add-recipe-ingredients.page:42
 msgid "Press the <gui style=\"button\">+</gui> button."
-msgstr ""
+msgstr "Tryck på <gui style=\"button\">+</gui>-knappen."
 
 #. (itstool) path: item/p
 #: C/add-recipe-ingredients.page:44
@@ -503,6 +622,7 @@ msgid ""
 "Choose the ingredient from the list or enter the ingredient in the "
 "<gui>Search</gui> box."
 msgstr ""
+"Välj ingrediensen från listan eller ange ingrediensen i <gui>Sök</gui>-rutan."
 
 #. (itstool) path: item/p
 #: C/add-recipe-ingredients.page:47
@@ -510,6 +630,9 @@ msgid ""
 "Press the <gui>Add</gui> button to add the ingredient to the list or click "
 "<gui>Amount</gui> to how much of the ingredient is needed."
 msgstr ""
+"Tryck på knappen <gui>Lägg till</gui> för att lägga till ingrediensen till "
+"listan eller klicka på <gui>Mängd</gui> för att ange hur mycket av "
+"ingrediensen som krävs."
 
 #. (itstool) path: item/p
 #: C/add-recipe-ingredients.page:51
@@ -518,6 +641,9 @@ msgid ""
 "then press <gui>Add</gui>. Or you can enter the amount and choose the "
 "measurement from the list and then press the <gui>Add</gui> button."
 msgstr ""
+"I rullgardinsrutan <gui>Mängd</gui> kan du ange mängden som behövs och sedan "
+"trycka på <gui>Lägg till</gui>. Eller så kan du ange mängden och välja "
+"måttet från listan och sedan trycka på knappen <gui>Lägg till</gui>."
 
 #. (itstool) path: item/p
 #: C/add-recipe-ingredients.page:57
@@ -525,6 +651,8 @@ msgid ""
 "Repeat these steps until all ingredients have been added to the list or "
 "recipe."
 msgstr ""
+"Upprepa dessa steg tills alla ingredienser har lagts till i listan eller "
+"receptet."
 
 #. (itstool) path: note/p
 #: C/add-recipe-ingredients.page:62
@@ -532,11 +660,13 @@ msgid ""
 "<app>Recipes</app> does not currently support the ability to convert between "
 "metric units and imperial units."
 msgstr ""
+"<app>Recept</app> har för närvarande inte stöd för konvertering mellan "
+"metriska enheter och imperiella enheter."
 
 #. (itstool) path: info/desc
 #: C/add-recipe.page:8
 msgid "Learn how to add your own recipe."
-msgstr ""
+msgstr "Lär dig hur du lägger till ditt eget recept."
 
 #. (itstool) path: page/title
 #: C/add-recipe.page:18
@@ -549,11 +679,13 @@ msgid ""
 "If you are new to <app>Recipes</app>, these topics will help you to add the "
 "following categories to a recipe."
 msgstr ""
+"Om du just börjat använda <app>Recept</app> så kommer dessa ämnen hjälpa dig "
+"att lägga till följande kategorier till ett recept."
 
 #. (itstool) path: info/desc
 #: C/chef.page:11
 msgid "How to add your personal information to recipes."
-msgstr ""
+msgstr "Hur du lägger till din personliga information till recept."
 
 #. (itstool) path: credit/years
 #: C/chef.page:21
@@ -563,7 +695,7 @@ msgstr "2019"
 #. (itstool) path: page/title
 #: C/chef.page:26
 msgid "Add Chef Information"
-msgstr ""
+msgstr "Lägg till kockinformation"
 
 #. (itstool) path: page/p
 #: C/chef.page:28
@@ -574,27 +706,34 @@ msgid ""
 "have created or to share recipes with friends and family. To add your chef "
 "information:"
 msgstr ""
+"Du kan lägga till din personliga information till <app>Recept</app>, både "
+"ditt fullständiga namn, ett kortnamn och ett foto. Detta kommer skapa en "
+"kockprofil som används när du skapar ett recept. Detta kommer också hjälpa "
+"till att söka efter recept som du har skapat eller för att dela recept med "
+"vänner och familj. För att lägga till din kockinformation:"
 
 #. (itstool) path: item/p
 #: C/chef.page:37
 msgid "Press the menu button in the top-right corner of the window."
-msgstr ""
+msgstr "Tryck på menyknappen i fönstrets övre högra hörn."
 
 #. (itstool) path: item/p
 #: C/chef.page:41
 msgid "Select <gui>Chef Information</gui>."
-msgstr ""
+msgstr "Välj <gui>Kockinformation</gui>."
 
+# TODO: ..->…
 #. (itstool) path: item/p
 #: C/chef.page:45
 msgid "Enter your full name in the <gui>Name..</gui> text box."
-msgstr ""
+msgstr "Mata in ditt fullständiga namn i textrutan <gui>Namn…</gui>."
 
+# TODO: ..->…
 #. (itstool) path: item/p
 #: C/chef.page:49
 msgid ""
 "Enter your first name or nickname in the <gui>Short Name..</gui> text box."
-msgstr ""
+msgstr "Mata in ditt förnamn eller smeknamn i textrutan <gui>Kortnamn…</gui>."
 
 #. (itstool) path: item/p
 #: C/chef.page:54
@@ -602,29 +741,34 @@ msgid ""
 "Press the camera icon and select an image to add as your personal photo and "
 "then press <gui>Open</gui>."
 msgstr ""
+"Tryck på kameraikonen och välj en bild att lägga till som ditt personliga "
+"foto och tryck sedan på <gui>Öppna</gui>."
 
 #. (itstool) path: item/p
 #: C/chef.page:59
 msgid ""
 "Press the <gui>Save</gui> button to finish entering your chef information."
 msgstr ""
+"Tryck på knappen <gui>Spara</gui> för att slutföra inmatning av din "
+"kockinformation."
 
 #. (itstool) path: info/desc
 #: C/common-problems.page:8
 msgid "Solutions to common problems with <app>Recipes</app>."
-msgstr ""
+msgstr "Lösningar på vanliga problem med <app>Recept</app>."
 
 #. (itstool) path: page/title
 #. (itstool) path: section/title
 #: C/common-problems.page:18 C/index.page:42
 msgid "Common Problems"
-msgstr ""
+msgstr "Vanliga problem"
 
 #. (itstool) path: section/title
 #: C/common-problems.page:21
 msgid "Editing Your Recipes"
-msgstr ""
+msgstr "Redigera dina recept"
 
+# TODO: have change*d*
 #. (itstool) path: section/p
 #: C/common-problems.page:22
 msgid ""
@@ -632,6 +776,9 @@ msgid ""
 "and you can no longer edit the recipes you have created, you will need to "
 "update the <app>Recipes</app> database."
 msgstr ""
+"Om du har ändrat inloggnings- eller användar-ID:t som du använder för att "
+"logga in på din dator, och du inte längre kan redigera recepten som du har "
+"skapat, så kommer du behöva uppdatera databasen för <app>Recept</app>."
 
 #. (itstool) path: note/p
 #: C/common-problems.page:27
@@ -641,6 +788,10 @@ msgid ""
 "application's settings, you may cause that application to stop working "
 "correctly."
 msgstr ""
+"Du måste ha paketet <sys>dconf-editor</sys> installerat. Var väldigt "
+"försiktig då du redigerar programdata i <app>dconf-editor</app>. Genom att "
+"redigera ett programs inställningar kan du få det programmet att sluta "
+"fungera korrekt."
 
 #. (itstool) path: section/p
 #: C/common-problems.page:33
@@ -648,11 +799,13 @@ msgid ""
 "To update <app>Recipes</app> to use the old user to allow you to edit your "
 "recipes:"
 msgstr ""
+"För att uppdatera <app>Recept</app> så att det använder den gamla användaren "
+"vilket låter dig redigera dina recept:"
 
 #. (itstool) path: item/p
 #: C/common-problems.page:37
 msgid "Open <app>dconf-editor</app>."
-msgstr ""
+msgstr "Öppna <app>dconf-editor</app>."
 
 #. (itstool) path: item/p
 #: C/common-problems.page:40
@@ -660,16 +813,18 @@ msgid ""
 "Select <guiseq><gui>org</gui> <gui>gnome</gui> <gui>recipes</gui> <gui>user</"
 "gui></guiseq>."
 msgstr ""
+"Välj <guiseq><gui>org</gui> <gui>gnome</gui> <gui>recipes</gui> <gui>user</"
+"gui></guiseq>."
 
 #. (itstool) path: item/p
 #: C/common-problems.page:44
 msgid "In the <gui>Custom value</gui> field, enter the old user ID."
-msgstr ""
+msgstr "I fältet <gui>Anpassat värde</gui>, ange det gamla användar-ID:t."
 
 #. (itstool) path: item/p
 #: C/common-problems.page:47
 msgid "Close <app>dconf-editor</app>."
-msgstr ""
+msgstr "Stäng <app>dconf-editor</app>."
 
 #. (itstool) path: item/p
 #: C/common-problems.page:50
@@ -677,27 +832,31 @@ msgid ""
 "Open <app>Recipes</app>. You will now be able to open and edit recipes you "
 "have created."
 msgstr ""
+"Öppna <app>Recept</app>. Du kommer nu kunna öppna och redigera recept som du "
+"har skapat."
 
 #. (itstool) path: section/title
 #: C/common-problems.page:57
 msgid "Remove or Edit Included Recipes"
-msgstr ""
+msgstr "Ta bort eller redigera inkluderade recept"
 
 #. (itstool) path: section/p
 #: C/common-problems.page:58
 msgid ""
 "You can only remove or edit the recipes you create, not the recipes included."
 msgstr ""
+"Du kan endast ta bort eller redigera recepten du skapar, inte de inkluderade "
+"recepten."
 
 #. (itstool) path: info/desc
 #: C/contribute.page:9
 msgid "How to share your recipes with the GNOME community."
-msgstr ""
+msgstr "Hur du delar dina recept med GNOME-gemenskapen."
 
 #. (itstool) path: page/title
 #: C/contribute.page:19
 msgid "Contribute Recipes"
-msgstr ""
+msgstr "Bidra med recept"
 
 #. (itstool) path: page/p
 #: C/contribute.page:21
@@ -706,16 +865,19 @@ msgid ""
 "include your recipe in the <app>Recipes</app> application. Recipes you share "
 "should be of your own creation. To send your recipe:"
 msgstr ""
+"Du kan dela ditt recept med <app>Recept</app>-utvecklarna som kan inkludera "
+"ditt recept i programmet <app>Recept</app>. Recept du delar ska ha skapats "
+"av dig själv. För att skicka ditt recept:"
 
 #. (itstool) path: item/p
 #: C/contribute.page:27
 msgid "Open the recipe you want to share."
-msgstr ""
+msgstr "Öppna receptet som du vill dela."
 
 #. (itstool) path: item/p
 #: C/contribute.page:31 C/share.page:48
 msgid "Press the <gui>Share</gui> button."
-msgstr ""
+msgstr "Tryck på <gui>Dela</gui>-knappen."
 
 #. (itstool) path: item/p
 #: C/contribute.page:35 C/share.page:52
@@ -724,16 +886,20 @@ msgid ""
 "button in the top-right window and open another recipe and then press "
 "<gui>Share</gui> again."
 msgstr ""
+"Om du vill dela flera recept, tryck på knappen <gui>Lägg till fler</gui> "
+"längst upp till höger i fönstret, öppna ett annat recept och tryck sedan på "
+"<gui>Dela</gui> igen."
 
 #. (itstool) path: item/p
 #: C/contribute.page:41
 msgid "Press the <gui>Share</gui> button in the upper-right corner."
-msgstr ""
+msgstr "Tryck på <gui>Dela</gui>-knappen i det övre högra hörnet."
 
+# TODO: Is really "Contribute to the Recipes project"?
 #. (itstool) path: item/p
 #: C/contribute.page:45
 msgid "Select <gui>Contribute to Recipes</gui> in the bottom-right corner."
-msgstr ""
+msgstr "Välj <gui>Bidra till Recept</gui> i det nedre högra hörnet."
 
 #. (itstool) path: item/p
 #: C/contribute.page:49 C/share.page:62
@@ -741,6 +907,8 @@ msgid ""
 "Choose the email application from the list you want to use to email the "
 "recipe and press the <gui>Select</gui> button."
 msgstr ""
+"Välj e-postprogrammet som du vill använda för att skicka receptet från "
+"listan och tryck på <gui>Välj</gui>-knappen."
 
 #. (itstool) path: item/p
 #: C/contribute.page:54
@@ -750,6 +918,10 @@ msgid ""
 "<em>Subject</em> and <em>To:</em> line will be automatically filled out for "
 "you."
 msgstr ""
+"Ditt e-postprogram kommer att öppnas och ett nytt e-postmeddelande kommer "
+"att skapas. <app>Recept</app> kommer ha inkluderat receptet som en bilaga "
+"och raderna för <em>Ämne</em> och <em>Till:</em> kommer ha fyllts i "
+"automatiskt åt dig."
 
 #. (itstool) path: item/p
 #: C/contribute.page:61
@@ -757,16 +929,20 @@ msgid ""
 "Press <gui>Send</gui> to email your recipe to the <app>Recipe</app> "
 "developers who will review your recipe for possible inclusion."
 msgstr ""
+"Tryck på <gui>Skicka</gui> för att skicka ditt recept med e-post till "
+"<app>Recept</app>-utvecklarna som kommer att granska ditt recept för möjlig "
+"inkludering."
 
 #. (itstool) path: info/desc
 #: C/cooking.page:9
 msgid "Use hands-free mode or timers to help you cook."
 msgstr ""
+"Använd frihandsläge eller tidtagare för att hjälpa dig med tillagningen."
 
 #. (itstool) path: page/title
 #: C/cooking.page:19
 msgid "Start Cooking"
-msgstr ""
+msgstr "Börja tillaga"
 
 #. (itstool) path: page/p
 #: C/cooking.page:21
@@ -776,21 +952,25 @@ msgid ""
 "view the steps to make a recipe, including starting timers or seeing photos "
 "of each step, if they were included in the recipe."
 msgstr ""
+"<app>Recept</app> har ett frihandsläge för att hjälpa dig med "
+"receptinstruktioner när du vill tillaga ett recept. Frihandsläge gör det "
+"lätt att se stegen för att följa ett recept, inklusive att starta tidtagare "
+"eller se foton för varje steg, om sådana finns med i receptet."
 
 #. (itstool) path: page/p
 #: C/cooking.page:26
 msgid "To start cooking with hands-free mode:"
-msgstr ""
+msgstr "För att börja tillagning med frihandsläge:"
 
 #. (itstool) path: item/p
 #: C/cooking.page:29
 msgid "Open the recipe you want to cook."
-msgstr ""
+msgstr "Öppna receptet som du vill tillaga."
 
 #. (itstool) path: item/p
 #: C/cooking.page:33
 msgid "Press the <gui>Start Cooking</gui> button in the top right corner."
-msgstr ""
+msgstr "Tryck på knappen <gui>Börja tillaga</gui> i det övre högra hörnet."
 
 #. (itstool) path: item/p
 #: C/cooking.page:37
@@ -798,16 +978,22 @@ msgid ""
 "<app>Recipes</app> will change to full screen mode, also known as hands-free "
 "mode and display the first step to cook the recipe."
 msgstr ""
+"<app>Recept</app> kommer växla till helskärmsläge, även känt som "
+"frihandsläge, och visa det första steget för att tillaga receptet."
 
 #. (itstool) path: item/p
 #: C/cooking.page:42 C/cooking.page:66
 msgid "To move to the next step of the recipe, press any key on the keyboard."
 msgstr ""
+"Tryck ned valfri tangent på tangentbordet för att gå vidare till nästa steg "
+"i receptet."
 
 #. (itstool) path: item/p
 #: C/cooking.page:47
 msgid "To move to the previous step, press the left arrow key on the keyboard."
 msgstr ""
+"Tryck ned vänster piltangent på tangentbordet för att gå till föregående "
+"steg."
 
 #. (itstool) path: item/p
 #: C/cooking.page:52
@@ -820,6 +1006,13 @@ msgid ""
 "timer is done, your computer will beep and <gui>Time is up!</gui> will be "
 "shown."
 msgstr ""
+"För att starta en tidtagare, tryck på <gui>Start</gui>-knappen eller "
+"<key>Blanksteg</key>. När du har startat en tidtagare kan du trycka på "
+"<gui>Pausa</gui> för att pausa tidtagaren eller <gui>Återställ</gui> för att "
+"starta om tidtagaren från början. Du kan ha flera tidtagare igång samtidigt "
+"och namnen på stegen som är associerade med varje tidtagare kommer visas i "
+"det övre vänstra hörnet i <app>Recept</app>. När tidtagaren är klar kommer "
+"din dator att plinga och <gui>Tiden är slut!</gui> kommer att visas."
 
 #. (itstool) path: item/p
 #: C/cooking.page:61
@@ -828,6 +1021,9 @@ msgid ""
 "left corner of hands-free mode. You can move to the next steps while a timer "
 "is running."
 msgstr ""
+"När en tidtagare körs kommer namnet på tidtagaren att visas i det övre "
+"vänstra hörnet under frihandsläge. Du kan gå vidare till följande steg under "
+"tiden en tidtagare körs."
 
 #. (itstool) path: item/p
 #: C/cooking.page:71
@@ -836,11 +1032,14 @@ msgid ""
 "time, press the <key>Escape</key> key or press the <gui>x</gui> button in "
 "the top-right corner."
 msgstr ""
+"När du har slutfört alla steg, eller närhelst du vill gå ut ur frihandsläge, "
+"trycker du på <key>Esc</key>-tangenten eller på <gui>x</gui>-knappen i det "
+"övre högra hörnet."
 
 #. (itstool) path: info/desc
 #: C/find-recipe.page:8
 msgid "Find a recipe by name, category, cuisine, or chef."
-msgstr ""
+msgstr "Sök ett recept efter namn, kategori, matkultur eller kock."
 
 #. (itstool) path: page/title
 #: C/find-recipe.page:23
@@ -850,7 +1049,7 @@ msgstr "Sök recept"
 #. (itstool) path: section/title
 #: C/find-recipe.page:26
 msgid "Search by Recipe Name, Ingredient or Chef"
-msgstr ""
+msgstr "Sök efter namn på recept, ingrediens eller kock"
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -871,21 +1070,24 @@ msgid ""
 "\">Search</span></media> and enter your search query. The search results can "
 "include:"
 msgstr ""
+"Tryck på sökknappen <media type=\"image\" mime=\"image/png\" src=\"images/"
+"search.png\" its:translate=\"yes\"> <span its:translate=\"yes\">Sök</span></"
+"media> och mata in din sökning. Sökresultaten kan innehålla:"
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:34
 msgid "Recipes that include the text you searched for."
-msgstr ""
+msgstr "Recept som innehåller texten som du sökte efter."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:37
 msgid "Ingredients that include the text you searched for."
-msgstr ""
+msgstr "Ingredienser som innehåller texten som du sökte efter."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:40
 msgid "Chef names."
-msgstr ""
+msgstr "Namn på kockar."
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -908,26 +1110,32 @@ msgid ""
 "its:translate=\"yes\"> <span its:translate=\"yes\">Down</span></media> and "
 "choose from one or more categories."
 msgstr ""
+"Du kan också göra en smalare sökning efter kategori. Tryck på sökknappen "
+"<media type=\"image\" mime=\"image/png\" src=\"images/search.png\" its:"
+"translate=\"yes\"> <span its:translate=\"yes\">Sök</span></media> och "
+"nedåtikonen <media type=\"image\" mime=\"image/png\" src=\"images/down.png\" "
+"its:translate=\"yes\"> <span its:translate=\"yes\">Nedåt</span></media> och "
+"välj från en eller flera kategorier."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:54
 msgid "Meal"
-msgstr ""
+msgstr "Måltid"
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:58
 msgid "Spiciness"
-msgstr ""
+msgstr "Kryddighet"
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:62
 msgid "Dietary restrictions"
-msgstr ""
+msgstr "Begränsningar i diet"
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:66
 msgid "Ingredients"
-msgstr ""
+msgstr "Ingredienser"
 
 #. (itstool) path: section/p
 #: C/find-recipe.page:70
@@ -936,6 +1144,9 @@ msgid ""
 "it in the search bar. You can then enter text to search within that category "
 "and tag."
 msgstr ""
+"<app>Recept</app> kommer lägga till en tagg för kategorin som du valt och "
+"visa den i sökraden. Du kan sedan mata in text att söka inom den kategorin "
+"och taggen."
 
 #. (itstool) path: section/p
 #: C/find-recipe.page:73
@@ -943,11 +1154,13 @@ msgid ""
 "To remove the tag from search, press <gui>x</gui> on the tag in the search "
 "bar."
 msgstr ""
+"För att ta bort taggen från sökningen, tryck på <gui>x</gui> på taggen i "
+"sökraden."
 
 #. (itstool) path: section/title
 #: C/find-recipe.page:78
 msgid "Search by Categories"
-msgstr ""
+msgstr "Sök efter kategorier"
 
 #. (itstool) path: section/p
 #: C/find-recipe.page:79
@@ -955,12 +1168,15 @@ msgid ""
 "When you create a recipe, you can select if a recipe is in a category, such "
 "as vegan or nut free. To search by category:"
 msgstr ""
+"När du skapar ett recept kan du välja om det hör till en kategori, så som "
+"vegetariskt eller nötfritt. För att söka efter kategori:"
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:82
 msgid ""
 "From the main <app>Recipes</app> window scroll down to <gui>Categories</gui>."
 msgstr ""
+"I huvudfönstret för <app>Recipes</app>, rulla ner till <gui>Kategorier</gui>."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:86
@@ -969,11 +1185,16 @@ msgid ""
 "\"image\" mime=\"image/png\" src=\"images/down.png\" its:translate=\"yes\"> "
 "<span its:translate=\"yes\">Down</span></media> to show all Categories."
 msgstr ""
+"Du kan också expandera kategorilistan genom att trycka på nedåtikonen <media "
+"type=\"image\" mime=\"image/png\" src=\"images/down.png\" its:translate=\"yes"
+"\"> <span its:translate=\"yes\">Nedåt</span></media> för att visa alla "
+"kategorier."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:93
 msgid "Press the <gui>Category</gui> to view all recipes in that Category."
 msgstr ""
+"Tryck på en <gui>kategori</gui> för att visa alla recept i den kategorin."
 
 #. (itstool) path: section/p
 #: C/find-recipe.page:99
@@ -983,6 +1204,10 @@ msgid ""
 "Category with a <gui>Read More</gui> link you can click to learn more about "
 "the Category."
 msgstr ""
+"Om du väljer någon av kategorierna vegansk, vegetarisk, mjölkfri, glutenfri "
+"eller nötfri så kommer sökresultaten också visa en beskrivning av kategorin "
+"med en <gui>Läs mer</gui>-länk som du kan klicka på för att lära dig mer om "
+"kategorin."
 
 #. (itstool) path: section/p
 #: C/find-recipe.page:104
@@ -992,11 +1217,15 @@ msgid ""
 "always double-check the ingredients if you are serving a person with a "
 "gluten or dairy intolerance."
 msgstr ""
+"Observera att informationen om begränsningar i diet tillhandahålls av "
+"receptens författare och att det inte kan garanteras att de är korrekta. "
+"Dubbelkontrollera alltid ingredienserna om du serverar en person med gluten- "
+"eller mjölkallergi."
 
 #. (itstool) path: section/title
 #: C/find-recipe.page:111
 msgid "Search for recipes with or without a specific ingredient"
-msgstr ""
+msgstr "Sök recept med eller utan en viss ingrediens"
 
 #. (itstool) path: section/p
 #: C/find-recipe.page:112
@@ -1004,6 +1233,8 @@ msgid ""
 "You can search for recipes that include or do not include a specific "
 "ingredient."
 msgstr ""
+"Du kan söka efter recept som innehåller eller inte innehåller en viss "
+"ingrediens."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:116
@@ -1012,16 +1243,19 @@ msgid ""
 "down.png\" its:translate=\"yes\"> <span its:translate=\"yes\">Down</span></"
 "media> in the search bar."
 msgstr ""
+"Tryck på nedåtpilen <media type=\"image\" mime=\"image/png\" src=\"images/"
+"down.png\" its:translate=\"yes\"> <span its:translate=\"yes\">Nedåt</span></"
+"media> i sökraden."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:121
 msgid "Select the <gui>Ingredients</gui> drop down box."
-msgstr ""
+msgstr "Välj rullgardinsrutan <gui>Ingredienser</gui>."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:124
 msgid "Select an ingredient from the list, such as <em>Banana</em>."
-msgstr ""
+msgstr "Välj en ingrediens från listan, exempelvis <em>Banan</em>."
 
 #. (itstool) path: section/p
 #: C/find-recipe.page:127
@@ -1034,11 +1268,18 @@ msgid ""
 "bananas in the recipe will be displayed. To remove the tag from search, "
 "press <gui>x</gui> on the tag in the search bar."
 msgstr ""
+"En tagg för den ingrediensen, exempelvis <em>Banan</em>, kommer visas i "
+"sökraden och alla recept som innehåller den ingrediensen att visas. Om det "
+"inte finns några recept som matchar kommer <gui>Fann inga recept</gui> att "
+"visas. Tryck på taggen för <gui>Banan</gui> i sökraden så kommer taggen nu "
+"visa <gui>Ingen banan</gui>, och alla recept som inte innehåller banan "
+"kommer att visas. För att ta bort taggen från sökningen kan du trycka på "
+"<gui>x</gui> på taggen i sökraden."
 
 #. (itstool) path: section/title
 #: C/find-recipe.page:138
 msgid "Search by Cuisines"
-msgstr ""
+msgstr "Sök efter matkultur"
 
 #. (itstool) path: section/p
 #: C/find-recipe.page:139
@@ -1047,6 +1288,10 @@ msgid ""
 "region it is from. This also includes searching for seasonal recipes that "
 "might be made during certain holidays or times of year."
 msgstr ""
+"Du kan också söka efter ett recept efter typen av matkultur det tillhör "
+"eller regionen som receptet kommer från. Detta inkluderar sökning efter "
+"säsongsbetonade recept som kanske tillagas under vissa högtider eller tider "
+"på året."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:144
@@ -1054,6 +1299,8 @@ msgid ""
 "In the top menu bar of <app>Recipes</app>, press the <gui style=\"button"
 "\">Cuisines</gui> button."
 msgstr ""
+"I menyraden högst upp i <app>Recept</app>, tryck på knappen <gui style="
+"\"button\">Matkulturer</gui>."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:148
@@ -1062,6 +1309,9 @@ msgid ""
 "displayed. Click on a world cuisine to see all recipes in that category "
 "sorted by the type of dish."
 msgstr ""
+"En lista över matkulturer från hela världen visas med korta beskrivningar. "
+"Klicka på en av världsmatkulturerna för att se alla recept i den kategorin "
+"sorterade efter vad det är för sorts rätt."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:154
@@ -1071,11 +1321,15 @@ msgid ""
 "translate=\"yes\"> <span its:translate=\"yes\">Down</span></media> to see "
 "all seasonal categories."
 msgstr ""
+"Rulla nedåt för att se en lista över säsongskategorier och tryck på "
+"nedåtikonen <media type=\"image\" mime=\"image/png\" src=\"images/down.png\" "
+"its:translate=\"yes\"> <span its:translate=\"yes\">Nedåt</span></media> för "
+"att se alla säsongskategorier."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:161
 msgid "Select a holiday or season to show all recipes that match."
-msgstr ""
+msgstr "Välj en högtid eller säsong för att se alla recept som matchar."
 
 #. (itstool) path: info/title
 #: C/index.page:7
@@ -1086,7 +1340,7 @@ msgstr "Recept"
 #. (itstool) path: info/desc
 #: C/index.page:15
 msgid "A recipe manager to help you cook."
-msgstr ""
+msgstr "En recepthanterare för att hjälpa dig laga mat."
 
 #. (itstool) path: page/title
 #: C/index.page:18
@@ -1100,6 +1354,8 @@ msgid ""
 "what to cook today, tomorrow, the rest of the week, and for special "
 "occasions."
 msgstr ""
+"<app>Recept</app> är ett lättanvänt program som hjälper dig med vad du ska "
+"laga för mat idag, imorgon, resten av veckan och för speciella tillfällen."
 
 #. (itstool) path: section/title
 #: C/index.page:28
@@ -1109,13 +1365,13 @@ msgstr "Hantera recept"
 #. (itstool) path: section/title
 #: C/index.page:33
 msgid "Cooking"
-msgstr ""
+msgstr "Matlagning"
 
 #. (itstool) path: section/title
 #. (itstool) path: page/title
 #: C/index.page:37 C/share.page:29
 msgid "Printing and Sharing"
-msgstr ""
+msgstr "Utskrift och delning"
 
 #. (itstool) path: p/link
 #: C/legal.xml:5
@@ -1142,16 +1398,18 @@ msgstr ""
 #: C/notes.page:8
 msgid "How to add notes to a recipe or make it a favorite."
 msgstr ""
+"Hur du lägger till anteckningar till ett recept eller gör det till en "
+"favorit."
 
 #. (itstool) path: page/title
 #: C/notes.page:18
 msgid "Add Notes"
-msgstr ""
+msgstr "Lägg till anteckningar"
 
 #. (itstool) path: section/title
 #: C/notes.page:21
 msgid "Add a Note to a Recipe."
-msgstr ""
+msgstr "Lägg till en anteckning till ett recept."
 
 #. (itstool) path: section/p
 #: C/notes.page:22
@@ -1161,22 +1419,28 @@ msgid ""
 "longer, or if it became a favorite of a friend or family member. To add a "
 "note to a recipe:"
 msgstr ""
+"Du kan lägga till personliga anteckningar till alla recept. Du kanske vill "
+"göra en anteckning om hur du ändrat receptet, eller om ett recept behövde "
+"tillagas kortare eller längre, eller om det blivit en favorit hos en vän "
+"eller familjemedlem. För att lägga till en anteckning till ett recept:"
 
 #. (itstool) path: item/p
 #: C/notes.page:28 C/notes.page:51 C/shop.page:25
 msgid "Open a recipe."
-msgstr ""
+msgstr "Öppna ett recept."
 
 #. (itstool) path: item/p
 #: C/notes.page:31
 msgid ""
 "Press the <gui style=\"button\">Notes</gui> button in the lower-left corner."
 msgstr ""
+"Tryck på knappen <gui style=\"button\">Anteckningar</gui> i det nedre "
+"vänstra hörnet."
 
 #. (itstool) path: item/p
 #: C/notes.page:35
 msgid "Enter your notes in the text box."
-msgstr ""
+msgstr "Skriv in dina anteckningar i textrutan."
 
 #. (itstool) path: item/p
 #: C/notes.page:38
@@ -1184,6 +1448,8 @@ msgid ""
 "Press the <gui style=\"button\">Notes</gui> button again lower-left corner "
 "when finished."
 msgstr ""
+"Tryck på knappen <gui style=\"button\">Anteckningar</gui> igen i det nedre "
+"vänstra hörnet när du är klar."
 
 #. (itstool) path: section/p
 #: C/notes.page:42
@@ -1191,16 +1457,20 @@ msgid ""
 "Your note will now be displayed below the recipe description and above the "
 "recipe directions."
 msgstr ""
+"Din anteckning kommer nu visas nedanför receptbeskrivningen och ovanför "
+"receptinstruktionerna."
 
 #. (itstool) path: section/title
 #: C/notes.page:47
 msgid "Make a recipe a favorite."
-msgstr ""
+msgstr "Gör ett recept till en favorit."
 
 #. (itstool) path: section/p
 #: C/notes.page:48
 msgid "You can make a recipe a favorite. To favorite a recipe:"
 msgstr ""
+"Du kan göra ett recept till en favorit. För att lägga till ett recept bland "
+"favoriterna:"
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -1219,17 +1489,22 @@ msgid ""
 "\" src=\"images/love.png\" its:translate=\"yes\"> <span its:translate=\"yes"
 "\">Add to Favorites</span></media> button."
 msgstr ""
+"Tryck på knappen <gui>Lägg till i favoriter</gui> <media type=\"image\" mime="
+"\"image/png\" src=\"images/love.png\" its:translate=\"yes\"> <span its:"
+"translate=\"yes\">Lägg till i favoriter</span></media>."
 
 #. (itstool) path: section/p
 #: C/notes.page:61
 msgid ""
 "To remove from favorites, press the <gui>Add to Favorites</gui> button again."
 msgstr ""
+"För att ta bort från favoriter, tryck på knappen <gui>Lägg till i favoriter</"
+"gui> igen."
 
 #. (itstool) path: info/desc
 #: C/share.page:9
 msgid "How to print or share recipes and shopping lists."
-msgstr ""
+msgstr "Hur du skriver ut eller delar recept och inköpslistor."
 
 #. (itstool) path: credit/name
 #: C/share.page:17
@@ -1244,7 +1519,7 @@ msgstr "Sindhu S"
 #. (itstool) path: section/title
 #: C/share.page:32
 msgid "Share a Recipe or Shopping List Using Email"
-msgstr ""
+msgstr "Dela ett recept eller en inköpslista via e-post"
 
 #. (itstool) path: section/p
 #: C/share.page:33
@@ -1255,6 +1530,11 @@ msgid ""
 "They can download the attachment and double-click it to import the recipe "
 "you shared into <app>Recipes</app>."
 msgstr ""
+"Du kan e-posta en inköpslista eller ett recept till en vän. Inköpslistor "
+"kommer e-posta alla ingredienser som behövs i texten för ett e-"
+"postmeddelande. Om du e-postar ett recept kommer e-postmottagaren erhålla "
+"receptet som en e-postbilaga. De kan hämta bilagan och dubbelklicka på den "
+"för att importera receptet som du delat till <app>Recept</app>."
 
 #. (itstool) path: note/p
 #: C/share.page:39
@@ -1262,16 +1542,18 @@ msgid ""
 "You must use an email application to share recipes. Web based email, like "
 "Gmail or Yahoo!, will not work to share recipes."
 msgstr ""
+"Du måste använda ett e-postprogram för att dela recept. Webbaserad e-post, "
+"så som Gmail eller Yahoo! kommer inte att fungera för att dela recept."
 
 #. (itstool) path: item/p
 #: C/share.page:44
 msgid "Open the recipe or shopping list you want to email."
-msgstr ""
+msgstr "Öppna receptet eller inköpslistan som du vill e-posta."
 
 #. (itstool) path: item/p
 #: C/share.page:58
 msgid "Press the <gui>Share</gui> button in the bottom-right corner."
-msgstr ""
+msgstr "Tryck på <gui>Dela</gui>-knappen i det nedre högra hörnet."
 
 #. (itstool) path: item/p
 #: C/share.page:67
@@ -1281,6 +1563,10 @@ msgid ""
 "shopping list, the shopping list will be included in the body of the email. "
 "If you are sharing a recipe, the recipe will be attached to the email."
 msgstr ""
+"Ett nytt e-postmeddelande kommer öppnas för redigering. Raden <em>Ämne</em> "
+"och e-posttexten kommer automatiskt ha fyllts i åt dig. Om du e-postar en "
+"inköpslista kommer inköpslistan ingå i meddelandet. Om du delar ett recept "
+"så kommer receptet vara en bilaga till e-postmeddelandet."
 
 #. (itstool) path: item/p
 #: C/share.page:75
@@ -1288,11 +1574,13 @@ msgid ""
 "Enter the email address of the person you would like to share with and any "
 "additional information in the email body and send your email."
 msgstr ""
+"Ange e-postadressen för personen som du vill dela med samt eventuell "
+"ytterligare information i meddelandetexten, och skicka ditt meddelande."
 
 #. (itstool) path: section/title
 #: C/share.page:83
 msgid "Print a Recipe"
-msgstr ""
+msgstr "Skriv ut ett recept"
 
 #. (itstool) path: note/p
 #: C/share.page:86
@@ -1301,6 +1589,9 @@ msgid ""
 "printer. If you have not done this, please consult the <link href=\"help:"
 "gnome-help/printing\">printing help for GNOME</link>."
 msgstr ""
+"Att skriva ut ett recept kräver att du har anslutit och konfigurerat din "
+"skrivare. Om du inte har gjort detta, konsultera <link href=\"help:gnome-"
+"help/printing\">utskriftshjälpen för GNOME</link>."
 
 #. (itstool) path: section/p
 #: C/share.page:91
@@ -1308,6 +1599,8 @@ msgid ""
 "You can print your recipes using a local or remote printer. To print a "
 "recipe:"
 msgstr ""
+"Du kan skriva ut dina recept med en lokal skrivare eller en fjärrskrivare. "
+"För att skriva ut ett recept:"
 
 #. (itstool) path: item/p
 #: C/share.page:96
@@ -1315,11 +1608,13 @@ msgid ""
 "Press the <gui style=\"menuitem\">Print</gui> button in the bottom-right "
 "corner when viewing a recipe."
 msgstr ""
+"Tryck på knappen <gui style=\"menuitem\">Skriv ut</gui> i det nedre högra "
+"hörnet när du tittar på ett recept."
 
 #. (itstool) path: item/p
 #: C/share.page:100
 msgid "Select the desired printer from the list of printers available."
-msgstr ""
+msgstr "Välj den önskade skrivaren från listan av tillgängliga skrivare."
 
 #. (itstool) path: item/p
 #: C/share.page:103
@@ -1328,6 +1623,9 @@ msgid ""
 "once you are satisfied with the settings, press <gui style=\"button\">Print</"
 "gui> to send the file to printer."
 msgstr ""
+"Du kan förhandsgranska filen med <gui style=\"button\">Förhandsvisa</gui>, "
+"och då du är nöjd med inställningarna kan du klicka <gui style=\"button"
+"\">Skriv ut</gui> för att sända filen till skrivaren."
 
 #. (itstool) path: info/desc
 #: C/shop.page:8
@@ -1335,11 +1633,13 @@ msgid ""
 "Automatically create a shopping list with the ingredients needed for a "
 "recipe."
 msgstr ""
+"Skapa automatiskt en inköpslista med ingredienserna som behövs för ett "
+"recept."
 
 #. (itstool) path: page/title
 #: C/shop.page:19
 msgid "Create a Shopping List"
-msgstr ""
+msgstr "Skapa en inköpslista"
 
 #. (itstool) path: page/p
 #: C/shop.page:21
@@ -1347,6 +1647,8 @@ msgid ""
 "<app>Recipes</app> will help you create shopping list based on the "
 "ingredients in a recipe. To create a shopping list:"
 msgstr ""
+"<app>Recept</app> kommer hjälpa dig att skapa en inköpslista baserad på de "
+"ingredienser som ingår i ett recept. För att skapa en inköpslista:"
 
 #. (itstool) path: item/p
 #: C/shop.page:28
@@ -1354,6 +1656,8 @@ msgid ""
 "Press the <gui>Buy Ingredients</gui> button located under the ingredient "
 "list."
 msgstr ""
+"Tryck på knappen <gui>Köp ingredienser</gui> som finns under "
+"ingredienslistan."
 
 #. (itstool) path: item/p
 #: C/shop.page:32
@@ -1362,6 +1666,9 @@ msgid ""
 "list, press the <gui>View Shopping List</gui> button or press <gui>x</gui> "
 "to close the pop-up."
 msgstr ""
+"<app>Recept</app> kommer visa en poppupp högst upp. För att se inköpslistan, "
+"tryck på knappen <gui>Visa inköpslista</gui> eller tryck på <gui>x</gui> för "
+"att stänga poppuppen."
 
 #. (itstool) path: item/p
 #: C/shop.page:37
@@ -1369,6 +1676,8 @@ msgid ""
 "Repeat steps for any other recipes you would like the ingredients to be "
 "added to your shopping list."
 msgstr ""
+"Upprepa stegen för alla andra recept för vilka du vill att ingredienserna "
+"ska läggas till i din inköpslista."
 
 #. (itstool) path: page/p
 #: C/shop.page:42
@@ -1377,6 +1686,9 @@ msgid ""
 "Shopping List</gui> button, or return to the main <app>Recipes</app> window "
 "and click the <gui>Buy ingredients</gui> bar in the <gui>Today</gui> section."
 msgstr ""
+"När du är klar med att lägga till i inköpslistan, tryck på knappen <gui>Visa "
+"inköpslista</gui> eller gå tillbaka till huvudfönstret för <app>Recept</app> "
+"och klicka på raden <gui>Köp ingredienser</gui> i sektionen <gui>Idag</gui>."
 
 #. (itstool) path: page/p
 #: C/shop.page:47
@@ -1385,11 +1697,14 @@ msgid ""
 "ingredients you need to purchase for all of the recipes will be displayed in "
 "a list below the recipes that require them."
 msgstr ""
+"<app>Recept</app> kommer att visa sidan <gui>Köp ingredienser</gui>. "
+"Ingredienserna som du behöver köpa för alla recept kommer visas i en lista "
+"under recepten som kräver dem."
 
 #. (itstool) path: section/title
 #: C/shop.page:54
 msgid "Edit the Shopping List"
-msgstr ""
+msgstr "Redigera inköpslistan"
 
 #. (itstool) path: section/p
 #: C/shop.page:55
@@ -1398,6 +1713,8 @@ msgid ""
 "automatically increase the quantities of the ingredients you need to "
 "purchase."
 msgstr ""
+"Du kan öka portionsdelen för ett recept så kommer inköpslistan automatiskt "
+"öka mängderna för ingredienserna som du behöver köpa."
 
 #. (itstool) path: item/p
 #: C/shop.page:61
@@ -1406,6 +1723,9 @@ msgid ""
 "upper right corner of the recipe the serving size is shown. Click the number "
 "displayed in the recipe."
 msgstr ""
+"Recepten som du har lagt till i inköpslistan visas högst upp. I receptets "
+"övre högra hörn visas antalet portioner. Klicka på antalet som visas i "
+"receptet."
 
 #. (itstool) path: item/p
 #: C/shop.page:67
@@ -1413,6 +1733,8 @@ msgid ""
 "Increase or decrease the serving size of the recipe by pressing <gui>+</gui> "
 "or <gui>-</gui>."
 msgstr ""
+"Öka eller minska portionsantalet för receptet genom att trycka på <gui>+</"
+"gui> eller <gui>-</gui>."
 
 #. (itstool) path: section/p
 #: C/shop.page:73
@@ -1420,21 +1742,23 @@ msgid ""
 "The shopping list will automatically adjust the ingredients needed to "
 "purchase based on the new serving size of the recipe."
 msgstr ""
+"Shoppinglistan kommer automatiskt justera ingredienserna som behöver köpas "
+"beroende på det nya portionsantalet för receptet."
 
 #. (itstool) path: section/title
 #: C/shop.page:79
 msgid "Remove an Item"
-msgstr ""
+msgstr "Ta bort ett objekt"
 
 #. (itstool) path: section/p
 #: C/shop.page:80
 msgid "To remove an item from the shopping list:"
-msgstr ""
+msgstr "För att ta bort ett objekt från inköpslistan:"
 
 #. (itstool) path: item/p
 #: C/shop.page:83
 msgid "Select an item from the list."
-msgstr ""
+msgstr "Välj ett objekt från listan."
 
 #. (itstool) path: item/p
 #: C/shop.page:86
@@ -1443,22 +1767,28 @@ msgid ""
 "png\" its:translate=\"yes\"> <span its:translate=\"yes\">Trash</span></"
 "media> button and the ingredient is removed from the shopping list."
 msgstr ""
+"Tryck på knappen Papperskorg <media type=\"image\" mime=\"image/png\" src="
+"\"images/trash.png\" its:translate=\"yes\"> <span its:translate=\"yes"
+"\">Papperskorg</span></media> så tas ingrediensen bort från inköpslistan."
 
 #. (itstool) path: section/p
 #: C/shop.page:93
 msgid "To add an ingredient back to the shopping list after you removed it:"
 msgstr ""
+"För att lägga till en ingrediens till inköpslistan igen efter att ha tagit "
+"bort den:"
 
 #. (itstool) path: item/p
 #: C/shop.page:96
 msgid "Press the <gui>+</gui> at the bottom of the shopping list."
-msgstr ""
+msgstr "Tryck på <gui>+</gui> längst ner i inköpslistan."
 
 #. (itstool) path: item/p
 #: C/shop.page:99
 msgid ""
 "Select the item you would like added and it will appear in the shopping list."
 msgstr ""
+"Välj objektet som du vill lägga till så kommer det att visas i inköpslistan."
 
 #. (itstool) path: section/p
 #: C/shop.page:103
@@ -1466,6 +1796,8 @@ msgid ""
 "After you have completed your shopping, press the <gui> Done Shopping</gui> "
 "to clear your shopping list."
 msgstr ""
+"Efter att ha handlat klart kan du trycka på <gui>Klar med inhandling</gui> "
+"för att tömma din inköpslista."
 
 #~ msgid "Recipes will be documented here."
 #~ msgstr "Recept kommer att dokumenteras här."
