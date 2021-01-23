@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-10 18:12+0000\n"
-"PO-Revision-Date: 2019-03-11 13:18+0100\n"
+"POT-Creation-Date: 2020-06-23 04:28+0000\n"
+"PO-Revision-Date: 2021-01-23 09:22+0100\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
@@ -301,11 +301,11 @@ msgstr "Altri cogo"
 
 #: src/gr-chef-dialog.ui:132
 msgid "Name…"
-msgstr "Non..."
+msgstr "Non…"
 
 #: src/gr-chef-dialog.ui:143
 msgid "Short Name…"
-msgstr "Non curt..."
+msgstr "Non curt…"
 
 #: src/gr-cooking-page.ui:75
 msgid "Show"
@@ -409,8 +409,12 @@ msgstr ""
 "ingredients se si sta servint une persone cun intolerance al glutin o al lat."
 
 #: src/gr-details-page.ui:119
+#, fuzzy
+#| msgid ""
+#| "Contains Gluten. Please always double-check the ingredients if you are "
+#| "serving a person with gluten or dairy intolerance."
 msgid ""
-"Contains Gluten. Please always double-check the ingredients if you are "
+"Contains gluten. Please always double-check the ingredients if you are "
 "serving a person with gluten or dairy intolerance."
 msgstr ""
 "Al conten glutin. Par plasê controle simpri dôs voltis i ingredients se si "
@@ -600,7 +604,7 @@ msgstr "Cence lat"
 
 #: src/gr-edit-page.ui:679 src/gr-diet-row.c:117
 msgid "Halal"
-msgstr ""
+msgstr "Halal"
 
 #: src/gr-edit-page.ui:708
 msgid "Di_rections"
@@ -628,7 +632,7 @@ msgstr "Zonte temperadure"
 
 #: src/gr-edit-page.ui:916
 msgid "Title…"
-msgstr "Titul..."
+msgstr "Titul…"
 
 #: src/gr-edit-page.ui:924 src/gr-edit-page.ui:995
 msgid "Add"
@@ -727,7 +731,7 @@ msgstr "Cualsisei"
 
 #: src/gr-query-editor.ui:283
 msgid "Search…"
-msgstr "Cîr..."
+msgstr "Cîr…"
 
 #: src/gr-recipes-page.ui:8
 msgid "Recipes page"
@@ -750,10 +754,8 @@ msgid "Featured GNOME Chefs"
 msgstr "Cogos di GNOME in prin plan"
 
 #: src/gr-recipe-tile.ui:58
-#, fuzzy
-#| msgid "Imported Recipes"
 msgid "Contributed recipe"
-msgstr "Ricetis impuartadis"
+msgstr "Ricete contribuide"
 
 #: src/gr-search-page.ui:42
 msgid "Try a different search"
@@ -894,7 +896,7 @@ msgstr "File"
 
 #: src/menus.ui:60
 msgid "Chef Information…"
-msgstr "Informazion sul cogo.."
+msgstr "Informazions sul cogo…"
 
 #: src/menus.ui:69
 msgid "Copy"
@@ -1073,7 +1075,7 @@ msgstr "Sisteme"
 
 #: src/gr-about-dialog.c:914
 msgid "translator-credits"
-msgstr "Fabio Tomat <f.t.public@gmail.com>, 2017"
+msgstr "Fabio Tomat <f.t.public@gmail.com>, 2021"
 
 #: src/gr-about-dialog.c:917
 msgid "Learn more about Recipes"
@@ -1101,15 +1103,15 @@ msgstr ""
 msgid "Supported categories: %s\n"
 msgstr "Categoriis supuartadis: %s\n"
 
-#: src/gr-app.c:441
+#: src/gr-app.c:443
 msgid "Print the version and exit"
 msgstr "Stampe la version e jes"
 
-#: src/gr-app.c:445
+#: src/gr-app.c:447
 msgid "Turn on verbose logging"
 msgstr "Ative regjistrazion prolisse"
 
-#: src/gr-app.c:449
+#: src/gr-app.c:451
 msgid "Show a category"
 msgstr "Mostre une categorie"
 
@@ -1408,13 +1410,13 @@ msgstr ""
 
 #: src/gr-details-page.c:193 src/gr-edit-page.c:936
 msgid "serving"
-msgstr ""
+msgstr "plat"
 
 #: src/gr-details-page.c:193 src/gr-edit-page.c:937
 #: src/gr-recipe-importer.c:504 src/gr-recipe-store.c:410
 #: src/gr-shopping-tile.c:110
 msgid "servings"
-msgstr ""
+msgstr "plats"
 
 #: src/gr-details-page.c:367
 msgid "Could not find this recipe."
@@ -1456,10 +1458,8 @@ msgid "Milk-free recipes"
 msgstr "Ricetis cence lat"
 
 #: src/gr-diet.c:49
-#, fuzzy
-#| msgid "All Recipes"
 msgid "Halal recipes"
-msgstr "Dutis lis ricetis"
+msgstr "Ricetis halal"
 
 #: src/gr-diet.c:52 src/gr-diet.c:84
 msgid "Other dietary restrictions"
@@ -1530,17 +1530,18 @@ msgid ""
 "even some refined sugars if filtered and whitened with bone char.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Vegetarianism\">Learn more…</a>"
 msgstr ""
-"La cusine vegjetariane e je basade su nudriments che a rispietin i standard "
+"La cusine vegjetariane e je basade su nudriments che a rispietin i standards "
 "vegjetarians, duncje no includint cjar e prodots di tiessûts animâl (come "
-"gjelatine o cali derivât di animâl). Pal vegjetarianisim lat-ûf (il plui "
+"gjeladine o cali derivât di animâl). Pal vegjetarianisim lat-ûf (il plui "
 "comun gjenar di vegjetarianisim te part ocidentâl dal mont), i ûfs e i "
 "prodots casearis come il lat e il formadi a son permetûts. Pal lat-"
 "vegjetarianisim, il plui resint gjenar di vegjetarianisim (regjistrât in "
 "Indie), i prodots casearis come il lat e il formadi a son permetûts.\n"
 "Lis formis plui rigjidis di vegjetarianisim a son il veganisim e il "
 "frutarianisim, che a escludin ducj i prodots di origjin animâl, includût i "
-"prodots casearis cussì come la mîl e cualchi zucar rafinât se filtrât e "
-"sblancjât cun cjarbon di vues."
+"prodots casearis e cussì ancje la mîl e cualchi zucar rafinât se filtrât e "
+"sblancjât cun cjarbon di vues.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Vegetarianism\">Par savê di plui…</a>"
 
 #: src/gr-diet.c:78
 msgid ""
@@ -1566,7 +1567,7 @@ msgstr ""
 
 #: src/gr-diet.c:81
 msgid "Halal meat is prepared according to Islamic traditions"
-msgstr ""
+msgstr "La cjar di Halal e ven preparade secont lis tradizions islamichis"
 
 #: src/gr-edit-page.c:600
 msgid "hour"
@@ -1623,11 +1624,11 @@ msgstr "Autôr de ricete"
 
 #: src/gr-edit-page.c:940
 msgid "loaf"
-msgstr ""
+msgstr "pagnoche"
 
 #: src/gr-edit-page.c:941
 msgid "loafs"
-msgstr ""
+msgstr "pagnochis"
 
 #: src/gr-edit-page.c:944
 msgid "ounce"
@@ -1641,7 +1642,7 @@ msgstr "oncis"
 msgid "_Name Your Recipe"
 msgstr "_Da un non ae ricete"
 
-#: src/gr-edit-page.c:1734 src/gr-edit-page.c:1796 src/gr-recipe-store.c:1333
+#: src/gr-edit-page.c:1734 src/gr-edit-page.c:1796 src/gr-recipe-store.c:1330
 #, c-format
 msgid "You need to provide a name for the recipe"
 msgstr "Tu scugnis dâ un non pe ricete"
@@ -1685,10 +1686,8 @@ msgid "Milk-free Recipes"
 msgstr "Ricetis cence lat"
 
 #: src/gr-list-page.c:320
-#, fuzzy
-#| msgid "All Recipes"
 msgid "Halal Recipes"
-msgstr "Dutis lis ricetis"
+msgstr "Ricetis halal"
 
 #: src/gr-list-page.c:322
 msgid "Other Dietary Restrictions"
@@ -1989,7 +1988,7 @@ msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
 msgstr[0] "Compre ingredients: <b>%s, %s e %d altri</b>"
 msgstr[1] "Compre ingredients: <b>%s, %s e %d altris</b>"
 
-#: src/gr-recipe-store.c:1338
+#: src/gr-recipe-store.c:1335
 #, c-format
 msgid ""
 "A recipe with this name and author (%s) already exists.\n"
@@ -1998,32 +1997,32 @@ msgstr ""
 "Une ricete cun chest non e autôr (%s) e esist za.\n"
 "Sielç un altri non"
 
-#: src/gr-recipe-store.c:1367
+#: src/gr-recipe-store.c:1364
 #, c-format
 msgid "You need to provide an ID for the recipe"
 msgstr "Tu scugnis furnî un ID pe ricete"
 
-#: src/gr-recipe-store.c:1373
+#: src/gr-recipe-store.c:1370
 #, c-format
 msgid "A recipe with this ID already exists"
 msgstr "Une ricete cun chest ID e esist za"
 
-#: src/gr-recipe-store.c:1542
+#: src/gr-recipe-store.c:1539
 #, c-format
 msgid "You need to provide an ID"
 msgstr "Tu scugnis furnî un ID"
 
-#: src/gr-recipe-store.c:1548
+#: src/gr-recipe-store.c:1545
 #, c-format
 msgid "Sorry, this ID is taken"
 msgstr "Mi displâs, chest ID al è doprât"
 
-#: src/gr-recipe-store.c:1575
+#: src/gr-recipe-store.c:1572
 #, c-format
 msgid "You need to provide an ID for the chef"
 msgstr "Tu scugnis furnî un ID pal cogo"
 
-#: src/gr-recipe-store.c:1581
+#: src/gr-recipe-store.c:1578
 #, c-format
 msgid "A chef with this ID already exists"
 msgstr "Un cogo cun chest ID al esist za"
@@ -2311,7 +2310,7 @@ msgstr "cjicare"
 #: src/gr-unit.c:58
 msgctxt "unit plural"
 msgid "cups"
-msgstr ""
+msgstr "cjicare"
 
 #: src/gr-unit.c:59
 msgctxt "unit abbreviation"
@@ -2529,15 +2528,26 @@ msgstr[1] "%d oris indaûr"
 msgid "some time ago"
 msgstr "un pôc di timp indaûr"
 
-#: src/gr-utils.c:385
+#: src/gr-utils.c:386
 msgid "Could not connect to the session bus from inside the Flatpak sandbox."
 msgstr ""
 
-#: src/gr-utils.c:386
+#: src/gr-utils.c:387
 msgid "Certain functionality will not be available."
+msgstr "Ciertis funzionalitâts no saran disponibilis."
+
+#: src/gr-utils.c:400
+#, c-format
+msgid ""
+"Could not create D-Bus proxy for org.freedesktop.portal.Desktop interface %s"
 msgstr ""
 
-#: src/gr-utils.c:406
+#: src/gr-utils.c:401
+#, c-format
+msgid "Error: %s"
+msgstr "Erôr: %s"
+
+#: src/gr-utils.c:412
 #, fuzzy
 msgid ""
 "Missing the desktop portal needed to open files from inside a Flatpak "
@@ -2547,7 +2557,7 @@ msgstr ""
 "sandbox flatpack. Si domande di instalâ xdg-desktop-portal e xdg-desktop-"
 "portal-gtk sul sisteme."
 
-#: src/gr-utils.c:408
+#: src/gr-utils.c:414
 #, fuzzy
 msgid ""
 "Missing the desktop portal needed to print from inside a Flatpak sandbox."
@@ -2556,7 +2566,7 @@ msgstr ""
 "flatpack. Si domande di instalâ xdg-desktop-portal e xdg-desktop-portal-gtk "
 "sul sisteme."
 
-#: src/gr-utils.c:410
+#: src/gr-utils.c:416
 #, fuzzy
 msgid ""
 "Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
@@ -2565,7 +2575,7 @@ msgstr ""
 "sandbox flatpack. Si domande di instalâ xdg-desktop-portal e xdg-desktop-"
 "portal-gtk sul sisteme."
 
-#: src/gr-utils.c:414
+#: src/gr-utils.c:420
 msgid ""
 "Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
 msgstr "Instale xdg-desktop-portal e xdg-desktop-portal-gtk sul sisteme"
@@ -2603,7 +2613,7 @@ msgstr "Tu âs inzornât la tô ricete “%s” contribuide. Inviâ un inzorname
 
 #: src/gr-window.c:855
 msgid "Ready to Cook!"
-msgstr ""
+msgstr "Pront par cusin!"
 
 #: src/gr-window.c:937
 msgid "Sorted by Name"
@@ -2662,9 +2672,9 @@ msgid "Released: %s"
 msgstr "Publicade: %s"
 
 #: src/gr-window.c:1534
-#, fuzzy, c-format
+#, c-format
 msgid "Unreleased"
-msgstr "Publicade: %s"
+msgstr "No publicade"
 
 #: src/ingredients.inc:1
 msgid "Almond"
@@ -2749,7 +2759,7 @@ msgstr ""
 
 #: src/ingredients.inc:21
 msgid "Beef"
-msgstr ""
+msgstr "Manç"
 
 #: src/ingredients.inc:22
 msgid "Beef mince"
@@ -2761,7 +2771,7 @@ msgstr "Luianie di manç"
 
 #: src/ingredients.inc:24
 msgid "Beef (sirloin)"
-msgstr ""
+msgstr "Manç (cuintrifilet)"
 
 #: src/ingredients.inc:25
 msgid "Beef stock"
@@ -2810,7 +2820,7 @@ msgstr "Cernicule"
 
 #: src/ingredients.inc:35
 msgid "Bourbon whiskey"
-msgstr ""
+msgstr "Whisky Bourbon"
 
 #: src/ingredients.inc:36
 msgid "Breadcrumbs"
@@ -2818,7 +2828,7 @@ msgstr ""
 
 #: src/ingredients.inc:37
 msgid "Brewer's yeast"
-msgstr ""
+msgstr "Levan di bire"
 
 #: src/ingredients.inc:38
 #, fuzzy
@@ -2828,34 +2838,31 @@ msgstr "Stofât di fasui"
 
 #: src/ingredients.inc:39
 msgid "Broth"
-msgstr ""
+msgstr "Brût"
 
 #: src/ingredients.inc:40
-#, fuzzy
 msgid "Brown sugar"
-msgstr "Zucar maron"
+msgstr "Zucar di cjane"
 
 #: src/ingredients.inc:41
 msgid "Butter"
 msgstr "Spongje"
 
 #: src/ingredients.inc:42
-#, fuzzy
-#| msgid "Butter"
 msgid "Butter, melted"
-msgstr "Spongje"
+msgstr "Spongje, fondude"
 
 #: src/ingredients.inc:43
 msgid "Button mushroom"
-msgstr ""
+msgstr "Fonc Champignon"
 
 #: src/ingredients.inc:44
 msgid "Cabbage"
-msgstr ""
+msgstr "Verze"
 
 #: src/ingredients.inc:45
 msgid "Cake flour"
-msgstr ""
+msgstr "Farine par tortis"
 
 #: src/ingredients.inc:46
 #, fuzzy
@@ -2881,7 +2888,7 @@ msgstr ""
 
 #: src/ingredients.inc:51
 msgid "Caster sugar"
-msgstr ""
+msgstr "Semule di zucar"
 
 #: src/ingredients.inc:52
 msgid "Celery"
@@ -2889,17 +2896,15 @@ msgstr ""
 
 #: src/ingredients.inc:53
 msgid "Champignons"
-msgstr ""
+msgstr "Champignons"
 
 #: src/ingredients.inc:54
 msgid "Cheese"
 msgstr "Formadi"
 
 #: src/ingredients.inc:55
-#, fuzzy
-#| msgid "Chinese Cuisine"
 msgid "Cheese slices"
-msgstr "Cusine cinese"
+msgstr "Fetis di formadi"
 
 #: src/ingredients.inc:56
 msgid "Cherries, pitted"
@@ -2907,7 +2912,7 @@ msgstr "Cjariesis, disvuessadis"
 
 #: src/ingredients.inc:57
 msgid "Cherry tomatoes, halved"
-msgstr ""
+msgstr "Pomodoros cjariesuts, taiâts a metât"
 
 #: src/ingredients.inc:58
 #, fuzzy
@@ -2917,11 +2922,11 @@ msgstr "Sepis di lin"
 
 #: src/ingredients.inc:59
 msgid "Chicken breasts, large"
-msgstr ""
+msgstr "Pet di poleç, grant"
 
 #: src/ingredients.inc:60
 msgid "Chicken livers"
-msgstr ""
+msgstr "Figadins di poleç"
 
 #: src/ingredients.inc:61
 #, fuzzy
@@ -2971,11 +2976,11 @@ msgstr "Coriandul"
 
 #: src/ingredients.inc:71
 msgid "Cinnamon"
-msgstr ""
+msgstr "Canele"
 
 #: src/ingredients.inc:72
 msgid "Cinnamon sticks"
-msgstr ""
+msgstr "Stec di canele"
 
 #: src/ingredients.inc:73
 msgid "Cloves"
@@ -2993,11 +2998,11 @@ msgstr "Cacau in polvar"
 
 #: src/ingredients.inc:76
 msgid "Coconut milk"
-msgstr ""
+msgstr "Lat di coco"
 
 #: src/ingredients.inc:77
 msgid "Coconut oil"
-msgstr ""
+msgstr "Vueli di coco"
 
 #: src/ingredients.inc:78
 #, fuzzy
@@ -3017,7 +3022,7 @@ msgstr "cence cjar di manç masanade"
 
 #: src/ingredients.inc:81
 msgid "Coriander"
-msgstr ""
+msgstr "Coriandul"
 
 #: src/ingredients.inc:82
 #, fuzzy
@@ -3050,15 +3055,15 @@ msgstr ""
 
 #: src/ingredients.inc:88
 msgid "Cucumber"
-msgstr ""
+msgstr "Cudumar"
 
 #: src/ingredients.inc:89
 msgid "Cucumber (large)"
-msgstr ""
+msgstr "Cudumar (grant)"
 
 #: src/ingredients.inc:90
 msgid "Cumin"
-msgstr ""
+msgstr "Cumin"
 
 #: src/ingredients.inc:91
 #, fuzzy
@@ -3068,7 +3073,7 @@ msgstr "Sepis di coce"
 
 #: src/ingredients.inc:92
 msgid "Dark Jamaican rum"
-msgstr ""
+msgstr "Rum gjamaican scûr"
 
 #: src/ingredients.inc:93
 msgid "Date"
@@ -3141,13 +3146,11 @@ msgstr ""
 
 #: src/ingredients.inc:110
 msgid "Fish"
-msgstr ""
+msgstr "Pes"
 
 #: src/ingredients.inc:111
-#, fuzzy
-#| msgid "Pizza sauce"
 msgid "Fish sauce"
-msgstr "Salse di pize"
+msgstr "Salse di pes"
 
 #: src/ingredients.inc:112
 msgid "Flour"
@@ -3155,15 +3158,15 @@ msgstr "Farine"
 
 #: src/ingredients.inc:113
 msgid "Flour (all-purpose)"
-msgstr ""
+msgstr "Farine (gjeneriche)"
 
 #: src/ingredients.inc:114
 msgid "Flour (Tipo 00)"
-msgstr ""
+msgstr "Farine (Gjenar 00)"
 
 #: src/ingredients.inc:115
 msgid "Fresh rosemary"
-msgstr ""
+msgstr "Osmarin fresc"
 
 #: src/ingredients.inc:116
 msgid "Fresh tagliatelle"
@@ -3184,18 +3187,16 @@ msgid "Garlic cloves"
 msgstr "Ai"
 
 #: src/ingredients.inc:120
-#, fuzzy
-#| msgid "Baking powder"
 msgid "Garlic powder"
-msgstr "Levan in polvar"
+msgstr "Ai in polvar"
 
 #: src/ingredients.inc:121
 msgid "Ginger"
-msgstr ""
+msgstr "Zenzevar"
 
 #: src/ingredients.inc:122
 msgid "Ginger, freshly grated"
-msgstr ""
+msgstr "Zenzevar, gratât fresc"
 
 #: src/ingredients.inc:123
 #, fuzzy
@@ -3208,37 +3209,35 @@ msgstr "Formadi di cjavre"
 
 #: src/ingredients.inc:125
 msgid "Golden caster sugar"
-msgstr ""
+msgstr "Semule di zucar di cjane"
 
 #: src/ingredients.inc:126
 msgid "Good, dry red wine"
-msgstr ""
+msgstr "Bon vin ros sec"
 
 #: src/ingredients.inc:127
-#, fuzzy
-#| msgid "no Cheese"
 msgid "Gouda cheese"
-msgstr "cence formadi"
+msgstr "Formadi Gouda"
 
 #: src/ingredients.inc:128
 msgid "Goulash spices"
-msgstr ""
+msgstr "Droghis pal Goulash"
 
 #: src/ingredients.inc:129
 msgid "Guanciale cubes"
-msgstr ""
+msgstr "Daduts di cussinet"
 
 #: src/ingredients.inc:130
 msgid "Long pasta, e.g. spaghetti"
-msgstr ""
+msgstr "Paste lungje, p.e. spaghets"
 
 #: src/ingredients.inc:131
 msgid "Parmesan cheese"
-msgstr ""
+msgstr "Formadi parmesan"
 
 #: src/ingredients.inc:132
 msgid "Grapes"
-msgstr ""
+msgstr "Ue"
 
 #: src/ingredients.inc:133
 msgid "Grated French Emmental"
@@ -3255,17 +3254,15 @@ msgstr "cence pevar"
 
 #: src/ingredients.inc:136
 msgid "Green Cabbage"
-msgstr ""
+msgstr "Verze verde"
 
 #: src/ingredients.inc:137
 msgid "Green olive"
-msgstr ""
+msgstr "Ulive verde"
 
 #: src/ingredients.inc:138
-#, fuzzy
-#| msgid "no Onion"
 msgid "Green onions"
-msgstr "cence civole"
+msgstr "Civolis verdis"
 
 #: src/ingredients.inc:139
 msgid "green onions, chopped"
@@ -3310,10 +3307,8 @@ msgid "Hazelnuts milk"
 msgstr ""
 
 #: src/ingredients.inc:148
-#, fuzzy
-#| msgid "Soy sauce"
 msgid "Hoisin sauce"
-msgstr "Salse di soie"
+msgstr "Salse Hoisin"
 
 #: src/ingredients.inc:149
 msgid "Honey"
@@ -3364,10 +3359,8 @@ msgid "Lemon"
 msgstr "Limon"
 
 #: src/ingredients.inc:160
-#, fuzzy
-#| msgid "Lemon"
 msgid "Lemon juice"
-msgstr "Limon"
+msgstr "Struc di limon"
 
 #: src/ingredients.inc:161
 msgid "Lemon (untreated)"
@@ -3400,10 +3393,9 @@ msgid "Mandarin Oranges"
 msgstr "cence narant"
 
 #: src/ingredients.inc:168
-#, fuzzy
 #| msgid "Tangerine"
 msgid "Margarine"
-msgstr "Mandarin"
+msgstr "Margarine"
 
 #: src/ingredients.inc:169
 msgid "Mayonnaise"
@@ -3445,10 +3437,8 @@ msgid "Mustard"
 msgstr "Mostarde"
 
 #: src/ingredients.inc:178
-#, fuzzy
-#| msgid "Mustard"
 msgid "Mustard seeds"
-msgstr "Mostarde"
+msgstr "Semence di mostarde"
 
 #: src/ingredients.inc:179
 msgid "Nut"
@@ -3471,10 +3461,8 @@ msgid "Oil"
 msgstr "Vueli"
 
 #: src/ingredients.inc:184
-#, fuzzy
-#| msgid "no Pizza sauce"
 msgid "Okonomiyaki sauce"
-msgstr "cence salse di pize"
+msgstr "Salse Okonomiyaki"
 
 #: src/ingredients.inc:185
 msgid "Olive oil"
@@ -3485,20 +3473,16 @@ msgid "Olive oil, extra-virgin"
 msgstr "Vueli di ulive, extra-vergjin"
 
 #: src/ingredients.inc:187
-#, fuzzy
-#| msgid "Cherries, pitted"
 msgid "Olives, pitted"
-msgstr "Cjariesis, disvuessadis"
+msgstr "Ulivis, disvuessadis"
 
 #: src/ingredients.inc:188
 msgid "Onion"
 msgstr "Civole"
 
 #: src/ingredients.inc:189
-#, fuzzy
-#| msgid "Baking powder"
 msgid "Onion powder"
-msgstr "Levan in polvar"
+msgstr "Civole in polvar"
 
 #: src/ingredients.inc:190
 msgid "Orange"
@@ -3664,7 +3648,6 @@ msgid "Sage"
 msgstr ""
 
 #: src/ingredients.inc:228
-#| msgid "Almond"
 msgid "Salmon"
 msgstr "Salmon"
 
