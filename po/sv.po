@@ -1,15 +1,15 @@
 # Swedish translation for recipes.
-# Copyright © 2016-2019 recipes's COPYRIGHT HOLDER
+# Copyright © 2016-2021 recipes's COPYRIGHT HOLDER
 # This file is distributed under the same license as the recipes package.
 # Josef Andersson <l10nl18nsweja@gmail.com>, 2016, 2017.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2017, 2018, 2019.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2017, 2018, 2019, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-23 04:28+0000\n"
-"PO-Revision-Date: 2020-10-09 23:47+0200\n"
+"POT-Creation-Date: 2020-10-09 21:49+0000\n"
+"PO-Revision-Date: 2021-02-02 21:07+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
@@ -87,7 +87,7 @@ msgstr "Lägg till anteckningar till recept"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:28
 msgid "Hands-free cooking instruction mode"
-msgstr "Handlöst tillagningsinstruktionsläge"
+msgstr "Tillagningsinstruktionsläge för fria händer"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:34
 msgid "Initial screen for the application"
@@ -286,7 +286,7 @@ msgstr "Bild:"
 
 #: src/gr-chef-dialog.ui:4 src/gr-window.c:1185
 msgid "Chef Information"
-msgstr "Kock-information"
+msgstr "Kockinformation"
 
 #: src/gr-chef-dialog.ui:10 src/gr-window.c:1283
 msgid "_Cancel"
@@ -596,11 +596,11 @@ msgstr "Nötfri"
 
 #: src/gr-edit-page.ui:658 src/gr-diet-row.c:108
 msgid "Vegan"
-msgstr "Vegan"
+msgstr "Vegansk"
 
 #: src/gr-edit-page.ui:665 src/gr-diet-row.c:111
 msgid "Vegetarian"
-msgstr "Vegetarian"
+msgstr "Vegetarisk"
 
 #: src/gr-edit-page.ui:672 src/gr-diet-row.c:114
 msgid "Milk-free"
@@ -858,9 +858,8 @@ msgid "Name"
 msgstr "Namn"
 
 #: src/gr-window.ui:630
-#, fuzzy
 msgid "Recency"
-msgstr "Nylighet"
+msgstr "Senast"
 
 #: src/menus.ui:6 src/menus.ui:48
 msgid "_Import"
@@ -872,7 +871,7 @@ msgstr "_Exportera alla"
 
 #: src/menus.ui:16
 msgid "_Chef Information"
-msgstr "_Kock-information"
+msgstr "_Kockinformation"
 
 #: src/menus.ui:22 src/menus.ui:93
 msgid "_What’s New"
@@ -900,7 +899,7 @@ msgstr "Arkiv"
 
 #: src/menus.ui:60
 msgid "Chef Information…"
-msgstr "Kock-information…"
+msgstr "Kockinformation…"
 
 #: src/menus.ui:69
 msgid "Copy"
@@ -1927,7 +1926,7 @@ msgstr "Denna version stödjer inte import"
 
 #: src/gr-recipe-printer.c:173
 msgid "Cuisine:"
-msgstr "Kokkonst:"
+msgstr "Matkultur:"
 
 #: src/gr-recipe-printer.c:177
 msgid "Meal:"
@@ -1935,7 +1934,7 @@ msgstr "Måltid:"
 
 #: src/gr-recipe-printer.c:181
 msgid "Season:"
-msgstr "Årstid:"
+msgstr "Säsong:"
 
 #: src/gr-recipe-printer.c:229
 msgid "Notes"
@@ -2620,9 +2619,8 @@ msgid "Sorted by Name"
 msgstr "Sorterat efter namn"
 
 #: src/gr-window.c:942
-#, fuzzy
 msgid "Sorted by Recency"
-msgstr "Sorterat efter senast använd"
+msgstr "Sorterat efter senast skapad"
 
 #: src/gr-window.c:1139
 msgid "Imported Recipes"
@@ -2656,7 +2654,7 @@ msgstr "Favoritrecept"
 
 #: src/gr-window.c:1370
 msgid "Buy Ingredients"
-msgstr "Inhandla ingredienser"
+msgstr "Köp ingredienser"
 
 #. TRANSLATORS: %s gets replaced by a version number
 #: src/gr-window.c:1514
@@ -3023,7 +3021,7 @@ msgstr "Cream cheese"
 
 #: src/ingredients.inc:87
 msgid "Crushed red pepper flakes"
-msgstr ""
+msgstr "Flingor av krossad röd chilipeppar"
 
 #: src/ingredients.inc:88
 msgid "Cucumber"
@@ -3571,7 +3569,7 @@ msgstr "Ris, kokt"
 
 #: src/ingredients.inc:221
 msgid "Rice vermicelli noodles"
-msgstr ""
+msgstr "Vermicelli-risnudlar"
 
 #: src/ingredients.inc:222
 msgid "Rock sugar"
@@ -3752,8 +3750,9 @@ msgid "Vanilla extract"
 msgstr "Vaniljextrakt"
 
 #: src/ingredients.inc:266
+#, fuzzy
 msgid "Vanilla powdered sugar, for dusting"
-msgstr ""
+msgstr "Vaniljflorsocker, för att strö"
 
 #: src/ingredients.inc:267
 msgid "Vanilla pudding"
@@ -3791,7 +3790,7 @@ msgstr "White fish"
 #: src/ingredients.inc:274
 #, fuzzy
 msgid "White onion"
-msgstr "Lök"
+msgstr "Vit lök"
 
 #: src/ingredients.inc:275
 msgid "White wine"
@@ -3915,7 +3914,7 @@ msgstr "inga böngroddar"
 
 #: src/no-ingredients.inc:21
 msgid "no Beef"
-msgstr "inget nötkött"
+msgstr "ingetnötkött"
 
 #: src/no-ingredients.inc:22
 msgid "no Beef mince"
@@ -4181,7 +4180,7 @@ msgstr "ingen cream cheese"
 
 #: src/no-ingredients.inc:87
 msgid "no Crushed red pepper flakes"
-msgstr ""
+msgstr "inga flingor av krossad röd chilipeppar"
 
 #: src/no-ingredients.inc:88
 msgid "no Cucumber"
@@ -4659,7 +4658,7 @@ msgstr "ingen pizzasås"
 #: src/no-ingredients.inc:204
 #, fuzzy
 msgid "no Plain flour"
-msgstr "inget vanligt mjöl"
+msgstr "ingetvanligt mjöl"
 
 #: src/no-ingredients.inc:205
 msgid "no Pomegranate"
@@ -4722,7 +4721,7 @@ msgstr "inget rött vin"
 
 #: src/no-ingredients.inc:219
 msgid "no Rice"
-msgstr "inget ris"
+msgstr "ingetris"
 
 #: src/no-ingredients.inc:220
 msgid "no Rice, cooked"
@@ -4730,7 +4729,7 @@ msgstr "inget ris, kokt"
 
 #: src/no-ingredients.inc:221
 msgid "no Rice vermicelli noodles"
-msgstr ""
+msgstr "inga vermicelli-risnudlar"
 
 #: src/no-ingredients.inc:222
 msgid "no Rock sugar"
@@ -4913,7 +4912,7 @@ msgstr "inget vaniljextrakt"
 #: src/no-ingredients.inc:266
 #, fuzzy
 msgid "no Vanilla powdered sugar, for dusting"
-msgstr "ingen vaniljflorsocker"
+msgstr "inget vaniljflorsocker, för att strö"
 
 #: src/no-ingredients.inc:267
 msgid "no Vanilla pudding"
@@ -4947,9 +4946,8 @@ msgstr "ingen white fish"
 
 #: src/no-ingredients.inc:274
 #, fuzzy
-#| msgid "no Onion"
 msgid "no White onion"
-msgstr "ingen lök"
+msgstr "ingen vit lök"
 
 #: src/no-ingredients.inc:275
 msgid "no White wine"
@@ -4990,752 +4988,3 @@ msgstr "ingen zinfandel"
 #: src/no-ingredients.inc:284
 msgid "no Zuccini"
 msgstr "ingen zucchini"
-
-#~ msgid "Serves"
-#~ msgstr "Portioner"
-
-#~ msgid "Ser_ves"
-#~ msgstr "Portion_er"
-
-#~ msgid "C_ooking Time"
-#~ msgstr "Tillagnings_tid"
-
-#~ msgid "_Cuisine"
-#~ msgstr "_Kokkonst"
-
-#~ msgid "S_piciness"
-#~ msgstr "K_ryddighet"
-
-#~ msgid "Description"
-#~ msgstr "Beskrivning"
-
-#~ msgid "Name Your Recipe"
-#~ msgstr "Namnge ditt recept"
-
-#~ msgid "Serves:"
-#~ msgstr "Portioner:"
-
-#~ msgid "Apply"
-#~ msgstr "Verkställ"
-
-#~ msgid "Dough"
-#~ msgstr "Deg"
-
-#~ msgid "Toppings"
-#~ msgstr "Topping"
-
-#~ msgid "Contains dairy products"
-#~ msgstr "Innehåller mejeriprodukter"
-
-#~ msgid "Contains Gluten"
-#~ msgstr "Innehåller gluten"
-
-#~ msgctxt "_"
-#~ msgid "translator-credits"
-#~ msgstr ""
-#~ "Josef Andersson <josef.andersson@fripost.se>\n"
-#~ "Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
-#~ "\n"
-#~ "Skicka synpunkter på översättningen till\n"
-#~ "<tp-sv@listor.tp-sv.se>."
-
-#~ msgid "Recipes will be documented here."
-#~ msgstr "Recept kommer att dokumenteras här."
-
-#~ msgid "My Chef Information"
-#~ msgstr "Min kockinformation"
-
-#~ msgid "_Close"
-#~ msgstr "S_täng"
-
-#~ msgid "My own Recipes"
-#~ msgstr "Mina egna recept"
-
-#~ msgid "Report Issue"
-#~ msgstr "Rapportera problem"
-
-#~ msgid "_My Chef Information"
-#~ msgstr "_Min kockinformation"
-
-#~ msgid "Canel"
-#~ msgstr "Avbryt"
-
-#~ msgid "Adrià is originally from Barcelona, Spain."
-#~ msgstr "Adrià härstammar från början från Barcelona, Spanien."
-
-#~ msgid ""
-#~ "Being from Strasbourg, Alexandre is knowledgeable about both Alsatian and "
-#~ "French cuisine, but he's not afraid to experiment in other ones as well."
-#~ msgstr ""
-#~ "Kommandes från Strasbourg har Alexandre stor kunskap om både Alsatian och "
-#~ "Fransk kokkonst, men han är inte heller rädd för att experimentera med "
-#~ "andra."
-
-#~ msgid "Aviation, making stuff, in Finland."
-#~ msgstr "Flyg, tillverka saker, i Finland."
-
-#~ msgid ""
-#~ "Erusan is an American who has lived all over the country, loves GNOME, "
-#~ "and enjoys cooking — primarily American, Asian, and Indian cuisine."
-#~ msgstr ""
-#~ "Erusan är en amerikan som har bott överallt i landet, älskar GNOME och "
-#~ "gillar matlagning - huvudsakligen amerikanskt, asiatiskt och indiskt."
-
-#~ msgid "I cook a lot, particularly Italian and Indian."
-#~ msgstr "Jag lagar en hel del, speciellt italienskt och indiskt."
-
-#~ msgid "The nordic cuisine maestro."
-#~ msgstr "Läran om den nordiska  kokkonsten."
-
-#~ msgid ""
-#~ "Ray is a Desktop Software Engineer at Red Hat and vegetarian who "
-#~ "occasionally enjoys cooking."
-#~ msgstr ""
-#~ "Ray är en mjukvaruingenjör för skrivbordet på Red Hat och en vegetarian "
-#~ "som ibland gillar matlagning."
-
-#~ msgid ""
-#~ "My name is Fredrik Fyksen. I am from Norway, but live in Denmark. I like "
-#~ "food, computers and music. You can read more about me at <a href="
-#~ "\"https://www.fyksen.me/\">fyksen.me</a>."
-#~ msgstr ""
-#~ "Mitt namn är Fredrik Fyksen. Jag är från Norge, men bor i Danmark. Jag "
-#~ "gillar mat, datorer och musik. Du kan läsa mer om mig på <a href="
-#~ "\"https://www.fyksen.me/\">fyksen.me</a>."
-
-#~ msgid ""
-#~ "Matthias is a manager in the Desktop team at Red Hat. He likes to cook as "
-#~ "much as he likes to code."
-#~ msgstr ""
-#~ "Matthias är en chef på Red Hats skrivbordsteam. Han gillar att laga mat "
-#~ "lika mycket som att programmera."
-
-#~ msgid "Matthew is a vegan and a Computer Science student who loves FOSS."
-#~ msgstr "Matthew är vegan, datavetenskapsstudent och älskar FOSS."
-
-#~ msgid "Elvin lives in Istanbul."
-#~ msgstr "Elvin bor i Istanbul."
-
-#~ msgid "He cooks with GTK+"
-#~ msgstr "Han lagar mat med GTK+."
-
-#~ msgid "Carbonara"
-#~ msgstr "Carbonara"
-
-#~ msgid ""
-#~ "\"Carbonara\" is a sauce that can be used with long pasta, like spaghetti "
-#~ "or fettuccine."
-#~ msgstr ""
-#~ "”Carbonara” är en röra som kan användas med lång pasta, som spagetti "
-#~ "eller fettucine."
-
-#~ msgid "Start by boiling about 1 litre of water for each 100g of pasta."
-#~ msgstr ""
-#~ "Börja med att koka upp ungefär en liter vatten för var 100:e gram pasta."
-
-#~ msgid "[image:1]"
-#~ msgstr "[image:1]"
-
-#~ msgid ""
-#~ "Once the water is boiling, pour 20g of coarse salt in it for every litre "
-#~ "of water, and then throw the spaghetti in."
-#~ msgstr ""
-#~ "När vattnet väl kokar, häll i 20g salt i det för var liter vatten och "
-#~ "kasta sedan i spagettin."
-
-#~ msgid ""
-#~ "While the pasta is cooking, take a large bowl and put the parmesan cheese "
-#~ "in it."
-#~ msgstr ""
-#~ "Medan pastan kokar, ta fram en stor skål och lägg parmesanosten i den."
-
-#~ msgid "[image:2]"
-#~ msgstr "[image:2]"
-
-#~ msgid ""
-#~ "Add the whole egg and the yolks to the parmesan, and beat the eggs until "
-#~ "you get a creamy sauce."
-#~ msgstr ""
-#~ "Lägg till hela ägget och gulorna till parmesanen och vispa äggen tills du "
-#~ "har fått en krämig sås."
-
-#~ msgid "[image:3]"
-#~ msgstr "[image:3]"
-
-#~ msgid ""
-#~ "Put the guanciale in a small pan with a teaspoon of oil, and shallow fry "
-#~ "it until the fat is transparent and the meat is crispy; then remove from "
-#~ "the fire."
-#~ msgstr ""
-#~ "Lägg i guancialen i en liten stekpanna med en tesked olja, och grundstek "
-#~ "den tills fettet är transparent och köttet är knaprigt; ta sedan bort den "
-#~ "från hettan."
-
-#~ msgid "[image:5]"
-#~ msgstr "[image:5]"
-
-#~ msgid ""
-#~ "Once the pasta is ready, drain it and add it to the eggs and cheese. "
-#~ "Then, add the guanciale."
-#~ msgstr ""
-#~ "När väl pastan är klar, dränera den och lägg till den till äggen och "
-#~ "osten. Lägg sedan till guanciale."
-
-#~ msgid "[image:6]"
-#~ msgstr "[image:6]"
-
-#~ msgid "Season with salt and pepper to your liking."
-#~ msgstr "Krydda med salt och peppar utefter tycke."
-
-#~ msgid "Roots Pie"
-#~ msgstr "Rotpaj"
-
-#~ msgid "[image:12]Turn on the oven at 200 ℃."
-#~ msgstr "[image:12]Slå på ugnen till 200 ℃."
-
-#~ msgid "[timer:00:15:00]Pre-bake the dough for 15 minutes in the oven."
-#~ msgstr "[timer:00:15:00]Förbaka degen  i 15 minuter i ugnen."
-
-#~ msgid "[timer:00:35:00]Bake the pie in the oven for 35 minutes."
-#~ msgstr "[timer:00:35:00]Baka pajen i ugnen i 35 minuter."
-
-#~ msgid "Spanish Omelet"
-#~ msgstr "Spansk omelett"
-
-#~ msgid "Traditional Spanish Omelet, also known as \"Tortilla de Patata\""
-#~ msgstr "Traditionell spansk omelett, också känd som ”Tortilla de Patata”"
-
-#~ msgid "White fish for people who dont like fish."
-#~ msgstr "Vit fisk för folk som inte gillar fisk."
-
-#~ msgid ""
-#~ "It is a fantastic dish for those of us that dont love fish, but know we "
-#~ "have to eat it to stay healthy."
-#~ msgstr ""
-#~ "Det är en fantastisk maträtt för de av oss som inte älskar fisk, men ändå "
-#~ "äter det för att hålla sig friska."
-
-#~ msgid ""
-#~ "The key to get this dish good is to have high temperature on the stove "
-#~ "when first frying the fish. Then turn it down after the initial fry."
-#~ msgstr ""
-#~ "Nyckeln till att få denna maträtt god är att ha en hög temperatur på "
-#~ "ugnen när fisken steks först. Slå av den efter första stekningen."
-
-#~ msgid ""
-#~ "Set the stove to high (8/10), then put a good amount of oil in it. Any "
-#~ "type of oil will do."
-#~ msgstr ""
-#~ "Sätt ugnen till hög (8/10) och olja sedan in den väl. Vilken olja som "
-#~ "helst duger."
-
-#~ msgid ""
-#~ "Remove bone and skin from the fish (if any), and add salt and pepper. "
-#~ "Give the stove some minutes to get really hot. Then put the fish in. 2-3 "
-#~ "min on each side."
-#~ msgstr ""
-#~ "Rensa fisken (om det behövs) och tillför salt och peppar. Ge ugnen några "
-#~ "att bli riktigt varm på. Stoppa sedan in fisken i 2-3 minuter på varje "
-#~ "sida."
-
-#~ msgid ""
-#~ "Turn the temperature down to low (3/10). Add two spoons of butter, some "
-#~ "thyme, rosemary and garlic. When the butter have melted, use a spoon to "
-#~ "poor the melted butter and spice mix over the fish fillet."
-#~ msgstr ""
-#~ "Sätt temperaturen till låg (3/10). Lägg till två skedar smör, lite "
-#~ "timjan, rosmarin och vitlök. När smöret har smält, använd en sked till "
-#~ "hälla det smälta smöret och kryddmixen över fiskfilen."
-
-#~ msgid ""
-#~ "After about 5 minutes your fish will be done. You can serve it with "
-#~ "potatoes, rice, or noodles. Everything works."
-#~ msgstr ""
-#~ "Efter ungefär fem minuter kommer din fisk att vara klar. Du kan serverar "
-#~ "den med potatis, ris eller nudlar. Allt fungerar."
-
-#~ msgid "Grumbeerekiechle"
-#~ msgstr "Grumbeerekiechle"
-
-#~ msgid ""
-#~ "Traditional potato hash from Alsace. Usually served with lettuce, "
-#~ "sometimes with smoked salmon."
-#~ msgstr ""
-#~ "Traditionell potatismos från Alsace. Vanligtvis serverad med sallad, "
-#~ "ibland med rökt lax."
-
-#~ msgid ""
-#~ "[image:1]Peel and grate the potatoes. Peel and slice the onions. Mix with "
-#~ "the rest of the ingredients in a large bowl."
-#~ msgstr ""
-#~ "[image:1]Skala och gratinera potatisen. Skala och hacka löken. Blanda med "
-#~ "resten av ingredienserna i en stor skål."
-
-#~ msgid "[image:0]Preparation:"
-#~ msgstr "[image:0]Förberedelser:"
-
-#~ msgid "Baking:"
-#~ msgstr "Bakning:"
-
-#~ msgid "To bake:"
-#~ msgstr "Att baka"
-
-#~ msgid "Pizzaburger"
-#~ msgstr "Pizzaburgare"
-
-#~ msgid "Remove from heat."
-#~ msgstr "Ta bort från hetta."
-
-#~ msgid "Pan pizza"
-#~ msgstr "Panpizza"
-
-#~ msgid "Pizza is an all-time favorite."
-#~ msgstr "Pizza är en alla tiders favorit."
-
-#~ msgid ""
-#~ "Put the flour, yeast, water and olive oil in a bowl and stir it up with "
-#~ "your hands or a spoon until there's no dry flour left, and let it be."
-#~ msgstr ""
-#~ "Lägg mjölet, jästen, vattnet och olivoljan i en skål och rör om med dina "
-#~ "händer eller en sked tills det inte finns någon torr mjöl kvar."
-
-#~ msgid ""
-#~ "Cover the bowl tightly in plastic wrap and let it sit at room temperature "
-#~ "overnight. "
-#~ msgstr ""
-#~ "Täck över skålen ordentligt i plast och låt den vara i rumstemperatur "
-#~ "över natten. "
-
-#~ msgid ""
-#~ "The next day it should have rosen quite a bit. Dump it all out onto a "
-#~ "floured surface, then divide it into balls."
-#~ msgstr ""
-#~ "Nästa dag borde den ha stigit en hel del. Häll ut den på en mjölig yta "
-#~ "och dela sedan upp den i bollar."
-
-#~ msgid ""
-#~ "Spread olive oil in a 10-inch cast iron skillet or round cake pan and "
-#~ "place a dough ball in the middle."
-#~ msgstr ""
-#~ "Sprid ut olivolja i en 10-tums gjutjärnspanna eller kakform och lägg en "
-#~ "degboll i mitten."
-
-#~ msgid ""
-#~ "Rub the dough ball around and flip it a couple times until it is "
-#~ "completely coated in oil and the oil completely coats the bottom and "
-#~ "sides of the pan. Cover in plastic, and let it sit for another couple of "
-#~ "hours without touching it."
-#~ msgstr ""
-#~ "Rulla runt och vänd på degbollen några gånger tills den är helt täckt i "
-#~ "olja samt att oljan helt täcker botten och sidorna på stekpannan. Täck "
-#~ "den i plast och låt den vara så några timmar utan att röra den."
-
-#~ msgid ""
-#~ "The dough should have spread on it own (takes about 2 hours). Lift the "
-#~ "sides of the dough to let big air bubbles out."
-#~ msgstr ""
-#~ "Degen borde ha spridits av sig själv (tar cirka två timmar). Lyft upp "
-#~ "sidan av degen för att släppa ut de stora luftbubblorna."
-
-#~ msgid ""
-#~ "Put in the oven at 280°C. (or as hot as your oven goes) for about 15 "
-#~ "minutes. Peek underneath and if your pizza is a little pale, you can "
-#~ "finish on the stovetop directly over medium heat until it is as dark and "
-#~ "crisp as you like it."
-#~ msgstr ""
-#~ "Stoppa in den i ugnen på  280°C. (eller så varm som din ugn nu kan bli) i "
-#~ "ungefär 15 minuter. Titta underifrån, och om din pizza är lite blek kan "
-#~ "du avsluta längst upp i ugnen på medelhetta tills du får den så mörk och "
-#~ "krispig som du vill ha den."
-
-#~ msgid "Wholesome Crackers"
-#~ msgstr "Hälsosamma kex"
-
-#~ msgid ""
-#~ "Crackers are a fulfilling alternative snack and keeps your stomach going. "
-#~ "Crackers consist of seeds, oat and flour. The recipe described here is "
-#~ "very flexible. You can use whichever seeds, nuts and flour types you may "
-#~ "have. I've personally tried almonds, sesame seeds, chia seeds, rye "
-#~ "grains, millet and  buckwheat."
-#~ msgstr ""
-#~ "Kex kan vara ett tillfredsställande alternativt tilltugg och hålla igång "
-#~ "din mage. Kex kan bestå av frön, havre och mjöl. Receptet som beskrivs "
-#~ "här är väldigt flexibelt. Du kan använda vad som helst för frön, nötter "
-#~ "och mjöl. Personligen har jag provat mandel, sesamfrön, chiafrön, råg, "
-#~ "hirs och bovete."
-
-#, fuzzy
-#~| msgid ""
-#~| "Turn on the oven at 473,15 °K (200 °C). Mix all dry ingredients (seeds, "
-#~| "flour, oatmeal, baking powder and salt) together. Mix oil. Then add "
-#~| "water gradually while mixing until the dough is firm and pasty. If you "
-#~| "add too much water, the dough will end up sticking too much to the "
-#~| "baking paper."
-#~ msgid ""
-#~ "Turn on the oven at 473,15 K (200 °C). Mix all dry ingredients (seeds, "
-#~ "flour, oatmeal, baking powder and salt) together. Mix oil. Then add water "
-#~ "gradually while mixing until the dough is firm and pasty. If you add too "
-#~ "much water, the dough will end up sticking too much to the baking paper."
-#~ msgstr ""
-#~ "Slå på ugnen på 473,15 °K (200 °C). Blanda alla torra ingredienser (frön, "
-#~ "mjöl, havregryn, bakpulver och salt) tillsammans. Blanda i olja. Lägg "
-#~ "sedan till vatten gradvis vid mixning tills degen är fast och kletig. Om "
-#~ "du lägger till för mycket vatten kommer degen att fastna på "
-#~ "bakplåtspappret."
-
-#~ msgid ""
-#~ "Cut a sheet of baking paper at the size of a baking tray and place the "
-#~ "dough on it. Cut another sheet of baking paper and put on top. Use a "
-#~ "rolling pin on top of the second baking sheet to flatten the dough. Make "
-#~ "the dough as thing as possible. Afterwards, take off the second sheet. "
-#~ "Bring forth a knife and cut creases from horizontally and vertically to "
-#~ "form squares (see example on the picture). Optionally decorate with extra "
-#~ "seeds on top before inserting into the preheated oven."
-#~ msgstr ""
-#~ "Klipp ut ett ark bakplåtspapper i storlek av en bakplåt och lägg degen på "
-#~ "det. Klipp ut ett annat ark bakplåtspapper och lägg det överst. Använd en "
-#~ "kavel på det andra bakplåtspappret för att platta ut degen. Gör degen så "
-#~ "tunn som möjligt. Ta sedan ett till ark. Ta en kniv och skär veck h "
-#~ "horisontellt och vertikalt för att forma kvadrater (se exempel i bilden). "
-#~ "Dekorera valfritt med extra frön innan du stoppar in den i den upphettade "
-#~ "ugnen."
-
-#~ msgid ""
-#~ "Wait for the crackers to become crisp, this takes around 17 minutes. You "
-#~ "can check if they are done by touching the crackers or by pulling up a "
-#~ "bit in the baking sheet and see if the crackers in the middle still "
-#~ "bends.  The crackers take on a yellow golden color when they are done."
-#~ msgstr ""
-#~ "Vänta på att kexen ska bli krispiga, det tar cirka 17 minuter. Du kan "
-#~ "kontrollera om de är klara genom att röra vid kexen eller genom att dra "
-#~ "upp en bit i bakplåtspappret och se om kexen i mitten fortfarande böjs. "
-#~ "Kexen får en gulaktig ton när de är klara."
-
-#~ msgid ""
-#~ "Take out the crackers and leave them on the kitchen table to cool down "
-#~ "for a few minutes."
-#~ msgstr ""
-#~ "Ta ut kexen och lämna dem på köksbordet för att svalna några minuter."
-
-#~ msgid "Tofu ‘Egg’ Scramble"
-#~ msgstr "Tofu ”Äggröra“"
-
-#~ msgid "This vegan breakfast staple is perfect on a lazy saturday morning."
-#~ msgstr "Detta veganska mål är perfekt en slapp lördagsmorgon."
-
-#, fuzzy
-#~| msgid ""
-#~| "Chop the onion. Open up the tofu package and slice it up, then crumble "
-#~| "with your hands."
-#~ msgid ""
-#~ "[image:0]Chop the onion. Open up the tofu package and slice it up, then "
-#~ "crumble with your hands."
-#~ msgstr ""
-#~ "Klipp löken. Öppna tofupaketet och skär upp dem, och mosa dem med "
-#~ "händerna."
-
-#, fuzzy
-#~| msgid ""
-#~| "Sautee the onion, tofu, and peppers for 3-5 minutes using the vegan "
-#~| "butter."
-#~ msgid ""
-#~ "[timer:00:03:00]Sautee the onion, tofu, and peppers for 3-5 minutes using "
-#~ "the vegan butter."
-#~ msgstr "Stuva löken, tofun och pepparn i 3-5 minuter med veganskt smör."
-
-#, fuzzy
-#~| msgid ""
-#~| "Turn heat down to medium and add the rest of the ingredients – cook for "
-#~| "5-7 minutes more."
-#~ msgid ""
-#~ "[timer:00:05:00]Turn heat down to medium and add the rest of the "
-#~ "ingredients – cook for 5-7 minutes more."
-#~ msgstr ""
-#~ "Minska värmen till medel och lägg till resten av ingredienserna -- "
-#~ "tillaga i 5-7 minuter till."
-
-#~ msgid "Donauwellen"
-#~ msgstr "Donauwellen"
-
-#~ msgid ""
-#~ "Donauwellen is a popular German cake with chocolate, vanilla cream and "
-#~ "cherries. The name is due to the fact that the dough typically forms a "
-#~ "wavy pattern."
-#~ msgstr ""
-#~ "Donauwellen är en populär tysk kaka med choklad, vaniljkräm och körsbär. "
-#~ "Namnet härstammar från att degen vanligen formar ett vågigt mönster."
-
-#, fuzzy
-#~| msgid ""
-#~| "Mix the butter until it is creamy. Add sugar and eggs. Mix the flour "
-#~| "with the baking powder and mix it in. Separate a third of the dough and "
-#~| "add the cocoa powder to it."
-#~ msgid ""
-#~ "[image:2]Mix the flour with the baking powder and mix it in. Separate a "
-#~ "third of the dough and add the cocoa powder to it."
-#~ msgstr ""
-#~ "Blanda smöret tills det är krämigt. Lägg till socker och ägg. Blanda "
-#~ "mjölet med bakpulvret och mixa i det. Separera en tredjedel av degen och "
-#~ "lägg till kakaopulvret till det."
-
-#, fuzzy
-#~| msgid ""
-#~| "Spread the light dough on a buttered baking sheet. Put the dark dough on "
-#~| "top. Use a fork to make a wavy pattern. Spread the dried cherries on top "
-#~| "of the dough."
-#~ msgid ""
-#~ "[image:4]Spread the light dough on a buttered baking sheet. Put the dark "
-#~ "dough on top."
-#~ msgstr ""
-#~ "Sprid ut den tunna degen på ett smörat bakplåtspapper. Lägg den mörka "
-#~ "degen överst. Använd en kniv till att skapa ett vågigt mönster. Sprid ut "
-#~ "de torkade körsbären överst på degen."
-
-#, fuzzy
-#~| msgid "Bake for 30 minutes at 200 °C."
-#~ msgid "[timer:00:30:00]Bake for 30 minutes at 200 °C."
-#~ msgstr "Baka i 30 minuter vid 200 °C."
-
-#, fuzzy
-#~| msgid ""
-#~| "Use the milk, sugar and pudding to cook vanilla pudding and let it cool "
-#~| "down while stirring it frequently. Slowly add spoonfuls of the butter, "
-#~| "which should be at room temperature. Spread the butter cream on the "
-#~| "cooled cake."
-#~ msgid ""
-#~ "[image:7]Use the milk, sugar and pudding to cook vanilla pudding and let "
-#~ "it cool down while stirring it frequently. Slowly add spoonfuls of the "
-#~ "butter, which should be at room temperature."
-#~ msgstr ""
-#~ "Använd mjölken, sockret och kräm för att tillaga vaniljkräm och låt den "
-#~ "kylas ned medan den rörs om kraftigt. Lägg långsamt till småskedar smör "
-#~ "som är rumstempererat. Sprid ut smörkrämen på den kalla kakan."
-
-#, fuzzy
-#~| msgid ""
-#~| "Melt the chocolate frosting in a hot water bath and sprinkle it on top."
-#~ msgid ""
-#~ "[image:9]Melt the chocolate frosting in a hot water bath and sprinkle it "
-#~ "on top."
-#~ msgstr "Smält chokladglasyren i ett varmt vattenbad och häll den överst."
-
-#~ msgid "Failed to load recipe: Images and Angles length mismatch"
-#~ msgstr ""
-#~ "Misslyckades med att öppna recept: Bilder och vinkellängd stämmer inte"
-
-#~ msgid "Failed to load recipe: Images and DarkText length mismatch"
-#~ msgstr ""
-#~ "Misslyckades med att öppna recept: Bilder och mörktextlängd stämmer inte"
-
-#~ msgid "Somewhat Spicy"
-#~ msgstr "Delvis het"
-
-#~ msgid "Very Spicy"
-#~ msgstr "Väldigt het"
-
-#~ msgid ""
-#~ "Ingredients\n"
-#~ "gathered"
-#~ msgstr ""
-#~ "Införskaffat\n"
-#~ "ingredienser"
-
-#~ msgid ""
-#~ "Oven\n"
-#~ "preheated"
-#~ msgstr ""
-#~ "Värmt upp\n"
-#~ "ugn"
-
-#~ msgid ""
-#~ "Instructions\n"
-#~ "followed"
-#~ msgstr ""
-#~ "Följt\n"
-#~ "instruktioner"
-
-#~ msgid "Duration"
-#~ msgstr "Längd"
-
-#~ msgid "Remaining time"
-#~ msgstr "Återstående tid"
-
-#~ msgid "Stop"
-#~ msgstr "Stoppa"
-
-#~ msgid "Preferences"
-#~ msgstr "Inställningar"
-
-#~ msgid "_Short Name:"
-#~ msgstr "_Kortnamn:"
-
-#~ msgid "_Picture:"
-#~ msgstr "_Bild:"
-
-#~ msgid "_Preferences"
-#~ msgstr "_Inställningar"
-
-#~ msgid "Use dark text"
-#~ msgstr "Använd mörk text"
-
-#~ msgid "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#~ msgstr "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-#~ msgid "No recipe found"
-#~ msgstr "Hittade inget recept"
-
-#~ msgid "Start cooking"
-#~ msgstr "Börja tillaga"
-
-#~ msgid "Ingredients for …"
-#~ msgstr "Ingredienser för …"
-
-#~ msgid "Instructions"
-#~ msgstr "Instruktioner"
-
-#~ msgid "Remove an ingredient"
-#~ msgstr "Ta bort en ingrediens"
-
-#~ msgid "Units"
-#~ msgstr "Enheter"
-
-#~ msgid "Almonds"
-#~ msgstr "Mandel"
-
-#~ msgid "Apples"
-#~ msgstr "Äpplen"
-
-#~ msgid "Apricots"
-#~ msgstr "Aprikoser"
-
-#~ msgid "Artichokes"
-#~ msgstr "Kronärtskockor"
-
-#~ msgid "Aubergines"
-#~ msgstr "Auberginer"
-
-#~ msgid "Bananas"
-#~ msgstr "Bananer"
-
-#~ msgid "Bagels"
-#~ msgstr "Baglar"
-
-#~ msgid "Berries"
-#~ msgstr "Bär"
-
-#~ msgid "Beetroots"
-#~ msgstr "Rödbetor"
-
-#~ msgid "Biscottis"
-#~ msgstr "Småkakor"
-
-#~ msgid "Beef sausages"
-#~ msgstr "Köttkorvar"
-
-#~ msgid "Carrots"
-#~ msgstr "Morötter"
-
-#~ msgid "Dates"
-#~ msgstr "Dadlar"
-
-#~ msgid "Eggs"
-#~ msgstr "Ägg"
-
-#~ msgid "Figs"
-#~ msgstr "Fikon"
-
-#~ msgid "Lemons"
-#~ msgstr "Citron"
-
-#~ msgid "Onions"
-#~ msgstr "Lök"
-
-#~ msgid "Oranges"
-#~ msgstr "Apelsiner"
-
-#~ msgid "Squashs"
-#~ msgstr "Squash"
-
-#~ msgid "Tangerines"
-#~ msgstr "Citrus"
-
-#~ msgid "Wines"
-#~ msgstr "Vin"
-
-#~ msgid "Yoghurts"
-#~ msgstr "Yoghurt"
-
-#~ msgid "Zinfandels"
-#~ msgstr "Zinfandel"
-
-#~ msgctxt "number"
-#~ msgid "a dozen"
-#~ msgstr "ett dussin"
-
-#~ msgctxt "number"
-#~ msgid "a"
-#~ msgstr "en"
-
-#~ msgctxt "number"
-#~ msgid "an"
-#~ msgstr "en"
-
-#~ msgctxt "number"
-#~ msgid "one"
-#~ msgstr "ett"
-
-#~ msgctxt "number"
-#~ msgid "two"
-#~ msgstr "två"
-
-#~ msgctxt "number"
-#~ msgid "three"
-#~ msgstr "tre"
-
-#~ msgctxt "number"
-#~ msgid "four"
-#~ msgstr "fyra"
-
-#~ msgctxt "number"
-#~ msgid "five"
-#~ msgstr "fem"
-
-#~ msgctxt "number"
-#~ msgid "six"
-#~ msgstr "sex"
-
-#~ msgctxt "number"
-#~ msgid "seven"
-#~ msgstr "sju"
-
-#~ msgctxt "number"
-#~ msgid "eight"
-#~ msgstr "åtta"
-
-#~ msgctxt "number"
-#~ msgid "nine"
-#~ msgstr "nio"
-
-#~ msgctxt "number"
-#~ msgid "ten"
-#~ msgstr "tio"
-
-#~ msgctxt "number"
-#~ msgid "eleven"
-#~ msgstr "elva"
-
-#~ msgctxt "number"
-#~ msgid "twelve"
-#~ msgstr "tolv"
-
-#~ msgctxt "unit"
-#~ msgid "grams"
-#~ msgstr "gram"
-
-#~ msgctxt "unit"
-#~ msgid "kilograms"
-#~ msgstr "kilogram"
-
-#~ msgctxt "unit"
-#~ msgid "pounds"
-#~ msgstr "pund"
