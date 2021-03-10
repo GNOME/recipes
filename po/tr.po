@@ -1,0 +1,4944 @@
+# Turkish translation for recipes.
+# Copyright (C) 2019 recipes's COPYRIGHT HOLDER
+# This file is distributed under the same license as the recipes package.
+#
+# Sabri Ünal <libreajans@gmail.com>, 2019.
+msgid ""
+msgstr ""
+"Project-Id-Version: recipes master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-02-03 11:19+0000\n"
+"PO-Revision-Date: 2020-02-19 15:21+0300\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
+"Language-Team: Turkish <tr@li.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#: data/org.gnome.Recipes.desktop.in:3
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
+#: src/gr-window.ui:530 src/gr-about-dialog.c:907 src/gr-window.c:391
+#: src/gr-window.c:1098
+msgid "Recipes"
+msgstr "Tarifler"
+
+#: data/org.gnome.Recipes.desktop.in:4
+msgid "GNOME cooks unite!"
+msgstr "GNOME aşçıları birleşin!"
+
+# Çevirmeyin!
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Recipes.desktop.in:7
+msgid "org.gnome.Recipes"
+msgstr "org.gnome.Recipes"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:911
+msgid "GNOME loves to cook"
+msgstr "GNOME yemek yapmayı seviyor"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:9
+msgid ""
+"Recipes is an easy-to-use application that will help you to discover what to "
+"cook today, tomorrow, the rest of the week and for your special occasions."
+msgstr ""
+"Tarifler bugün, yarın, haftanın geri kalanında ve özel günleriniz için ne "
+"pişireceğinizi keşfetmenize yardımcı olacak, kullanımı kolay bir uygulamadır."
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:13
+msgid ""
+"Recipes comes with a collection of recipes that have been collected by GNOME "
+"contributors from all over the world. It also lets you store your own "
+"recipes and share them with your friends."
+msgstr ""
+"Tarifler, tüm dünyadan GNOME katılımcıları tarafından yazılmış tarif "
+"koleksiyonunu da içermektedir. Ayrıca kendi tariflerinizi saklamanızı ve "
+"arkadaşlarınızla paylaşmanızı da sağlar."
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:18
+msgid "The major features of Recipes include:"
+msgstr "Tarifler uygulamasının temel özellikleri:"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:22
+msgid "Add and edit your own recipes"
+msgstr "Kendi tariflerinizi ekleyin ve düzenleyin"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:23
+msgid "Share recipes with your friends"
+msgstr "Tarifleri arkadaşlarınızla paylaşın"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:24
+msgid "Export and print shopping lists"
+msgstr "Alışveriş listelerini içe aktarın ve yazdırın"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:25
+msgid "Adjust quantities based on the number of servings"
+msgstr "Porsiyon sayısına göre miktarları ayarlayın"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:26
+msgid "Mark recipes to cook later or add them to your favorites"
+msgstr ""
+"Daha sonra pişirmek için tarifleri işaretleyin veya beğenilerinize ekleyin"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:27
+msgid "Add notes to recipes"
+msgstr "Tariflere notlarınızı ekleyin"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:28
+msgid "Hands-free cooking instruction mode"
+msgstr "Eller serbest pişirme talimatı kipi"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:34
+msgid "Initial screen for the application"
+msgstr "Uygulama için başlangıç ekranı"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:38
+msgid "The cuisines page"
+msgstr "Mutfaklar sayfası"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:42
+msgid "A shopping list"
+msgstr "Alışveriş listesi"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:46
+msgid "Cooking a recipe"
+msgstr "Bir tarifi pişirmek"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:50
+msgid "Editing a recipe"
+msgstr "Bir tarifi düzenlemek"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:54
+msgid "An individual recipe"
+msgstr "Bağımsız tarif"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:58
+msgid "An individual cuisine"
+msgstr "Bağımsız mutfak"
+
+#: data/org.gnome.Recipes.gschema.xml:25
+msgid "The user ID of the current user"
+msgstr "Geçerli kullanıcının kimliği"
+
+#: data/org.gnome.Recipes.gschema.xml:26
+msgid "The user ID of the current user."
+msgstr "Geçerli kullanıcının kimliği."
+
+#: data/org.gnome.Recipes.gschema.xml:32
+msgid "The number of times cooking mode has been presented"
+msgstr "Pişirme kipinin kaç defa sunulduğu"
+
+#: data/org.gnome.Recipes.gschema.xml:33
+msgid "The number of times cooking mode has been presented."
+msgstr "Pişirme kipinin kaç defa sunulduğu."
+
+#: data/org.gnome.Recipes.gschema.xml:39
+msgid "The timestamp of the last change to the favorites list"
+msgstr "Beğeniler listesinde yapılan son değişikliğin zaman damgası"
+
+#: data/org.gnome.Recipes.gschema.xml:40
+msgid ""
+"The timestamp of the last time an item was added to or removed from the "
+"favorites list."
+msgstr ""
+"Bir öğenin beğeniler listesine eklendiği veya kaldırıldığı son zamanın zaman "
+"damgası."
+
+#: data/org.gnome.Recipes.gschema.xml:47
+msgid "The list of favorites"
+msgstr "Beğeniler listesi"
+
+#: data/org.gnome.Recipes.gschema.xml:48
+msgid "The list of favorites. Each entry in the list is the ID of a recipe."
+msgstr "Beğeniler listesi. Listedeki her giriş bir tarifin kimliğidir."
+
+#: data/org.gnome.Recipes.gschema.xml:54
+msgid "The timestamp of the last change to the shopping list"
+msgstr "Alışveriş listesindeki son değişimin zaman damgası"
+
+#: data/org.gnome.Recipes.gschema.xml:55
+msgid ""
+"The timestamp of the last time an item was added to or removed from the "
+"shopping list."
+msgstr ""
+"Bir öğenin alışveriş listesine eklendiği veya çıkarıldığı son zamanın zaman "
+"damgası."
+
+#: data/org.gnome.Recipes.gschema.xml:62
+msgid "The shopping list"
+msgstr "Alışveriş listesi"
+
+#: data/org.gnome.Recipes.gschema.xml:63
+msgid ""
+"The shopping list. Each entry in the dictionary maps the ID of a recipe to a "
+"serving count."
+msgstr ""
+"Alışveriş listesi. Sözlükteki her giriş, tarifin kimliğini bir servis sayımı "
+"ile eşleştirir."
+
+#: data/org.gnome.Recipes.gschema.xml:70
+msgid "Ingredients that were removed from the shopping list"
+msgstr "Alışveriş listenizden kaldırılan malzemeler"
+
+#: data/org.gnome.Recipes.gschema.xml:71
+msgid "The names of ingredients that were removed from the shopping list."
+msgstr "Alışveriş listenizden kaldırılan malzemelerin isimleri."
+
+#: data/org.gnome.Recipes.gschema.xml:77
+msgid "The list of recipes to be exported"
+msgstr "Dışa aktarılacak tariflerin listesi"
+
+#: data/org.gnome.Recipes.gschema.xml:78
+msgid ""
+"The list of recipes to be exported. Each entry in the list is the ID of a "
+"recipe."
+msgstr ""
+"Dışa aktarılacak tariflerin listesi. Listedeki her giriş bir tarifin "
+"kimliğidir."
+
+#: data/org.gnome.Recipes.gschema.xml:84
+msgid "The setting for which unit temperatures should be displayed in."
+msgstr "Hangi sıcaklık biriminin gösterileceğini belirleyen ayar."
+
+#: data/org.gnome.Recipes.gschema.xml:85
+msgid ""
+"The setting for which unit temperatures should be displayed in. Default is "
+"'locale', which means to use the LC_MEASUREMENT category of the current "
+"locale to decide."
+msgstr ""
+"Hangi sıcaklık biriminin gösterileceğini belirleyen ayar. Varsayılan değer "
+"'locale' olup, karar vermek için, geçerli yerelin LC_MEASUREMENT "
+"kategorisini kullanmak anlamındadır."
+
+#: data/org.gnome.Recipes.gschema.xml:92
+msgid "By which key to sort lists."
+msgstr "Listeyi sıralamak için hangi anahtarın kullanılacağı."
+
+#: data/org.gnome.Recipes.gschema.xml:93
+msgid "The setting determines which key is used to sort lists of recipes by."
+msgstr ""
+"Bu ayar, tarif listesini sıralamak için hangi anahtarın kullanılacağını "
+"belirler."
+
+#: data/org.gnome.Recipes.gschema.xml:99
+msgid "Whether the surprise dialog should be shown."
+msgstr "Sürpriz iletişim penceresinin gösterim durumunu belirler."
+
+#: data/org.gnome.Recipes.gschema.xml:100
+msgid ""
+"The setting determines whether the surprise dialog should be shown on "
+"startup."
+msgstr ""
+"Bu ayar, sürpriz iletişim penceresinin başlangıçtaki gösterim durumunu "
+"belirler."
+
+#: data/org.gnome.Recipes.gschema.xml:106
+msgid "The setting for which unit volumes should be displayed in."
+msgstr "Bu ayar, hangi hacim ölçüsünün kullanılacağını belirler."
+
+# Açıklama geliştirildi.
+#: data/org.gnome.Recipes.gschema.xml:107
+msgid ""
+"The setting for which unit volumes should be displayed in. Default is "
+"'locale',"
+msgstr ""
+"Bu ayar, hangi hacim ölçüsünün kullanılacağını belirler. Varsayılan değer "
+"'locale' olup, karar vermek için, geçerli yerelin LC_MEASUREMENT "
+"kategorisini kullanmak anlamındadır."
+
+#: data/org.gnome.Recipes.gschema.xml:113
+msgid "The setting for which unit weights should be displayed in."
+msgstr "Bu ayar, hangi ağırlık ölçüsünün kullanılacağını belirler."
+
+# Açıklama geliştirildi.
+#: data/org.gnome.Recipes.gschema.xml:114
+msgid ""
+"The setting for which unit weights should be displayed in. Default is "
+"'locale',"
+msgstr ""
+"Bu ayar, hangi ağırlık ölçüsünün kullanılacağını belirler. Varsayılan değer "
+"'locale' olup, karar vermek için, geçerli yerelin LC_MEASUREMENT "
+"kategorisini kullanmak anlamındadır."
+
+#: src/chef-conflict-dialog.ui:10
+msgid "Same Chef"
+msgstr "Aynı Şef"
+
+#: src/chef-conflict-dialog.ui:16
+msgid "Different Chef"
+msgstr "Farklı Şef"
+
+#: src/chef-conflict-dialog.ui:30
+msgid "Existing Chef"
+msgstr "Varolan Şef"
+
+#: src/chef-conflict-dialog.ui:43
+msgid "Imported Chef"
+msgstr "İçe Aktarılmış Şef"
+
+#: src/chef-conflict-dialog.ui:57 src/chef-conflict-dialog.ui:69
+msgid "Short Name:"
+msgstr "Kısa İsim:"
+
+#: src/chef-conflict-dialog.ui:80 src/chef-conflict-dialog.ui:92
+#: src/recipe-conflict-dialog.ui:38
+msgid "Name:"
+msgstr "İsim:"
+
+#: src/chef-conflict-dialog.ui:103 src/chef-conflict-dialog.ui:115
+msgid "Description:"
+msgstr "Açıklama:"
+
+#: src/chef-conflict-dialog.ui:126 src/chef-conflict-dialog.ui:138
+msgid "Picture:"
+msgstr "Fotoğraf:"
+
+#: src/gr-chef-dialog.ui:4 src/gr-window.c:1185
+msgid "Chef Information"
+msgstr "Şef bilgisi"
+
+#: src/gr-chef-dialog.ui:10 src/gr-window.c:1283
+msgid "_Cancel"
+msgstr "İ_ptal Et"
+
+#: src/gr-chef-dialog.ui:20 src/gr-window.ui:130
+msgid "_Save"
+msgstr "_Kaydet"
+
+#: src/gr-chef-dialog.ui:97
+msgid ""
+"This information may be shared with other users if you share your recipes."
+msgstr ""
+"Tarifinizi paylaşırsanız, bu bilgiler diğer kullanılılarla paylaşılabilir."
+
+#: src/gr-chef-dialog.ui:119
+msgid "Other Chef"
+msgstr "Diğer Şefler"
+
+#: src/gr-chef-dialog.ui:132
+msgid "Name…"
+msgstr "İsim…"
+
+#: src/gr-chef-dialog.ui:143
+msgid "Short Name…"
+msgstr "Kısa İsim…"
+
+#: src/gr-cooking-page.ui:75
+msgid "Show"
+msgstr "Göster"
+
+#: src/gr-cooking-page.ui:158
+msgid "Done"
+msgstr "Bitti"
+
+#: src/gr-cooking-page.ui:185
+msgid "Stop Cooking?"
+msgstr "Pişirme Durdurulsun mu?"
+
+#: src/gr-cooking-page.ui:194
+msgid "Some timers are still running."
+msgstr "Bazı kronometreler hala çalışıyor."
+
+#: src/gr-cooking-page.ui:200
+msgid ""
+"Recipes can keep the timers running\n"
+"even if you leave cooking mode now."
+msgstr ""
+"Tarifler, pişirme kipinden şimdi çıksanız bile \n"
+"kronometreleri çalıştırmaya devam edecek."
+
+#: src/gr-cooking-page.ui:212
+msgid "Keep Cooking"
+msgstr "Pişirmeye devam et"
+
+#: src/gr-cooking-page.ui:219
+msgid "Stop Timers"
+msgstr "Kronometreyi Durdur"
+
+#: src/gr-cooking-page.ui:226
+msgid "Continue Timers"
+msgstr "Kronometreyi Devam Ettir"
+
+#: src/gr-cooking-page.ui:255
+msgid "Controls"
+msgstr "Denetimler"
+
+#: src/gr-cooking-page.ui:281
+msgid ""
+"To advance to the next step, press any key on the\n"
+"keyboard."
+msgstr "Sonraki aşamaya geçmek için, klavyeden herhangi bir tuşa basınız."
+
+#: src/gr-cooking-page.ui:304
+msgid "To go back to the previous step, doubletap any key."
+msgstr "Önceki aşamaya geri dönmek için, herhangi bir tuşa iki defa basınız."
+
+# cursor key = klavye tuşları olarak çevrilmiştir
+#: src/gr-cooking-page.ui:326
+msgid ""
+"Alternatively, you can use the cursor keys to\n"
+"quickly seek within the directions."
+msgstr "Alternatif olarak, klavye tuşlarını da kullanabilirsiniz."
+
+#: src/gr-cooking-page.ui:350
+msgid "To exit the process, press the Escape key."
+msgstr "Çıkmak için ESC tuşuna basın."
+
+#: src/gr-cooking-view.ui:64
+msgid "Time is up!"
+msgstr "Süre doldu!"
+
+#: src/gr-cuisine-page.ui:77 src/gr-list-page.ui:111 src/gr-search-page.ui:29
+#: src/gr-list-page.c:514
+msgid "No recipes found"
+msgstr "Hiçbir tarif bulunamadı"
+
+#: src/gr-cuisine-page.ui:90
+msgid "There are no recipes for this cuisine."
+msgstr "Bu mutfak için hiçbir tarif bulunamadı."
+
+#: src/gr-cuisines-page.ui:8
+msgid "Cuisines page"
+msgstr "Mutfaklar sayfası"
+
+#: src/gr-cuisines-page.ui:28
+msgid "World Cuisines"
+msgstr "Dünya Mutfakları"
+
+#: src/gr-cuisines-page.ui:124
+msgid "Seasonal"
+msgstr "Mevsimsel"
+
+#: src/gr-details-page.ui:105
+msgid "Contains garlic"
+msgstr "Sarımsak içerir"
+
+#: src/gr-details-page.ui:112
+msgid ""
+"Contains dairy products. Please always double-check the ingredients if you "
+"are serving a person with gluten or dairy intolerance."
+msgstr ""
+"Süt ürünleri içerir. Lütfen süt intoleransı olan kişilere servis "
+"yapacaksanız, malzemeleri her zaman iki kez kontrol edin."
+
+#: src/gr-details-page.ui:119
+msgid ""
+"Contains gluten. Please always double-check the ingredients if you are "
+"serving a person with gluten or dairy intolerance."
+msgstr ""
+"Gluten içerir. Lütfen gluten ya da süt intoleransı olan kişilere servis "
+"yapacaksanız, malzemeleri her zaman iki kez kontrol edin."
+
+#: src/gr-details-page.ui:126 src/gr-details-page.c:537
+msgid "Spicy"
+msgstr "Baharatlı"
+
+#: src/gr-details-page.ui:146
+msgid "_Buy Ingredients"
+msgstr "Malzeme _Satın Al"
+
+#: src/gr-details-page.ui:164 src/gr-edit-page.ui:315
+msgid "_Yield"
+msgstr "_Kaç Kişilik"
+
+#: src/gr-details-page.ui:218
+msgid "Preparation Time"
+msgstr "Hazırlanış Süresi"
+
+#: src/gr-details-page.ui:248
+msgid "Cooking Time"
+msgstr "Pişirme Süresi"
+
+#: src/gr-details-page.ui:278
+msgid "Cuisine"
+msgstr "Mutfak"
+
+#: src/gr-details-page.ui:308 src/gr-query-editor.ui:46
+msgid "Meal"
+msgstr "Ögün"
+
+# mevsim anlamı daha yüksek ama, açılır listede bulunan
+# Noel ve Yeni Yıl yüzünden bu şekilde çevrilmiştir
+#: src/gr-details-page.ui:338
+msgid "Season"
+msgstr "Sezon"
+
+#: src/gr-details-page.ui:399
+msgid "Note"
+msgstr "Not"
+
+#: src/gr-details-page.ui:429 src/gr-recipe-formatter.c:123
+#: src/gr-recipe-printer.c:302
+msgid "Directions"
+msgstr "Yönergeler"
+
+#: src/gr-details-page.ui:489
+msgid "_Notes"
+msgstr "_Notlar"
+
+#: src/gr-details-page.ui:499 src/gr-shopping-page.ui:125
+msgid "_Edit"
+msgstr "Dü_zenle"
+
+#: src/gr-details-page.ui:508
+msgid "_Delete"
+msgstr "_Sil"
+
+#: src/gr-details-page.ui:519 src/gr-shopping-page.ui:143
+#: src/recipe-export-dialog.ui:21
+msgid "_Share"
+msgstr "_Paylaş"
+
+#: src/gr-details-page.ui:531 src/gr-shopping-page.ui:154
+msgid "_Print"
+msgstr "Yaz_dır"
+
+#: src/gr-details-page.ui:542
+msgid "Add to favorites"
+msgstr "Beğenilere ekle"
+
+#: src/gr-edit-page.ui:35 src/gr-edit-page.ui:769 src/menus.ui:66
+msgid "Edit"
+msgstr "Düzenle"
+
+#: src/gr-edit-page.ui:112
+msgid "Add an image"
+msgstr "Bir görüntü ekle"
+
+#: src/gr-edit-page.ui:138 src/gr-edit-page.ui:164
+msgid "Rotate image"
+msgstr "Görüntüyü döndür"
+
+#: src/gr-edit-page.ui:190
+msgid "Default image"
+msgstr "Öntanımlı görüntü"
+
+#: src/gr-edit-page.ui:216
+msgid "Remove image"
+msgstr "Görüntüyü kaldır"
+
+#: src/gr-edit-page.ui:249
+msgid "Add List"
+msgstr "Liste Ekle"
+
+#: src/gr-edit-page.ui:267
+msgid "Details"
+msgstr "Detaylar"
+
+#: src/gr-edit-page.ui:284 src/gr-edit-page.c:1656
+msgid "_Name"
+msgstr "_Ad"
+
+#: src/gr-edit-page.ui:345
+msgid "_Preparation Time"
+msgstr "_Hazırlanış Süresi"
+
+#: src/gr-edit-page.ui:371 src/gr-edit-page.ui:419
+msgid "Less than 15 minutes"
+msgstr "15 dakikadan az"
+
+#: src/gr-edit-page.ui:372 src/gr-edit-page.ui:420
+msgid "15 to 30 minutes"
+msgstr "15-30 dakika arası"
+
+#: src/gr-edit-page.ui:373 src/gr-edit-page.ui:421
+msgid "30 to 45 minutes"
+msgstr "30-45 dakika arası"
+
+#: src/gr-edit-page.ui:374 src/gr-edit-page.ui:422
+msgid "45 minutes to an hour"
+msgstr "45 dakika ile 1 saat arası"
+
+#: src/gr-edit-page.ui:375 src/gr-edit-page.ui:423
+msgid "More than an hour"
+msgstr "1 saatten fazla"
+
+#: src/gr-edit-page.ui:393
+msgid "_Cooking Time"
+msgstr "_Pişirme Süresi"
+
+#: src/gr-edit-page.ui:441
+msgid "C_uisine"
+msgstr "M_utfak"
+
+#: src/gr-edit-page.ui:477
+msgid "_Meal"
+msgstr "_Ögün"
+
+#: src/gr-edit-page.ui:513
+msgid "S_eason"
+msgstr "M_evsim"
+
+#: src/gr-edit-page.ui:549
+msgid "_Spiciness"
+msgstr "_Acı Düzeyi"
+
+#: src/gr-edit-page.ui:569 src/gr-spice-row.c:127
+msgid "Mild"
+msgstr "Normal"
+
+#: src/gr-edit-page.ui:570
+msgid "Somewhat spicy"
+msgstr "Biraz acı"
+
+#: src/gr-edit-page.ui:571
+msgid "Hot"
+msgstr "Acı"
+
+#: src/gr-edit-page.ui:572 src/gr-details-page.c:532 src/gr-spice-row.c:142
+msgid "Very spicy"
+msgstr "Çok acı"
+
+#: src/gr-edit-page.ui:585
+msgid "_Description"
+msgstr "_Açıklama"
+
+#: src/gr-edit-page.ui:644 src/gr-diet-row.c:102
+msgid "Gluten-free"
+msgstr "Glüten içermesin"
+
+#: src/gr-edit-page.ui:651 src/gr-diet-row.c:105
+msgid "Nut-free"
+msgstr "Kuruyemiş içermesin"
+
+#: src/gr-edit-page.ui:658 src/gr-diet-row.c:108
+msgid "Vegan"
+msgstr "Vegan"
+
+#: src/gr-edit-page.ui:665 src/gr-diet-row.c:111
+msgid "Vegetarian"
+msgstr "Vejetaryen"
+
+#: src/gr-edit-page.ui:672 src/gr-diet-row.c:114
+msgid "Milk-free"
+msgstr "Süt içermesin"
+
+#: src/gr-edit-page.ui:679 src/gr-diet-row.c:117
+msgid "Halal"
+msgstr "Helal"
+
+#: src/gr-edit-page.ui:708
+msgid "Di_rections"
+msgstr "Yö_nergeler"
+
+#: src/gr-edit-page.ui:776
+msgid "Preview"
+msgstr "Önizle"
+
+#: src/gr-edit-page.ui:796
+msgid "Add Step"
+msgstr "Aşama Ekle"
+
+#: src/gr-edit-page.ui:804
+msgid "Add Image"
+msgstr "Görüntü Ekle"
+
+#: src/gr-edit-page.ui:812
+msgid "Add Timer"
+msgstr "Kronometre Ekle"
+
+#: src/gr-edit-page.ui:820
+msgid "Add Temperature"
+msgstr "Sıcaklık Ekle"
+
+#: src/gr-edit-page.ui:916
+msgid "Title…"
+msgstr "Başlık…"
+
+#: src/gr-edit-page.ui:924 src/gr-edit-page.ui:995
+msgid "Add"
+msgstr "Ekle"
+
+#: src/gr-edit-page.ui:1014
+msgid "Syntax"
+msgstr "Sözdizimi"
+
+#: src/gr-edit-page.ui:1029
+msgid "Use paragraphs to break directions into steps (2 newlines)."
+msgstr "Yönergeleri adımlara ayırmak için paragrafları kullanın (çift satır)"
+
+#: src/gr-edit-page.ui:1042
+msgid "You can provide an image or a time counter in each step."
+msgstr "Her aşama için bir görüntü veya zaman süresi belirtebilirsiniz."
+
+#: src/gr-edit-page.ui:1054
+msgid "Timer"
+msgstr "Kronometre"
+
+#: src/gr-edit-page.ui:1076
+msgid "Image"
+msgstr "Görüntü"
+
+#: src/gr-edit-page.ui:1098
+msgid "Temperature"
+msgstr "Sıcaklık"
+
+#: src/gr-ingredients-viewer-row.ui:52
+msgid "Amount"
+msgstr "Miktar"
+
+#: src/gr-ingredients-viewer-row.ui:92
+msgid "Ingredient"
+msgstr "Malzeme"
+
+#: src/gr-ingredients-viewer-row.ui:169
+msgid "Use a number, followed by an (optional) unit."
+msgstr "Bir sayı, ardından (isteğe bağlı olarak) bir ölçü birimi belirtin."
+
+#: src/gr-ingredients-viewer-row.ui:180
+msgid "Examples: 1 kg, 2 1/2 pounds, 250 ml, 6"
+msgstr "Örnek olarak: 1 kg, 2 1/2 paund, 250 ml, 6"
+
+#: src/gr-ingredients-viewer.ui:13 src/gr-query-editor.ui:235
+#: src/gr-edit-page.c:1511 src/gr-recipe-formatter.c:104
+#: src/gr-recipe-printer.c:253
+msgid "Ingredients"
+msgstr "Malzemeler"
+
+#: src/gr-ingredients-viewer.ui:33
+msgid "Name of the List"
+msgstr "Liste İsmi"
+
+#: src/gr-ingredients-viewer.ui:43 src/gr-shopping-tile.ui:137
+msgid "Remove"
+msgstr "Kaldır"
+
+#: src/gr-ingredients-viewer.ui:86
+msgid "Add more ingredients"
+msgstr "Daha fazla malzeme ekle"
+
+#: src/gr-list-page.ui:124
+msgid "There are no recipes here yet."
+msgstr "Henüz hiçbir tarif yok."
+
+#: src/gr-query-editor.ui:66 src/gr-query-editor.c:495
+#: src/gr-query-editor.c:684
+msgid "Any meal"
+msgstr "Herhangi bir öğün"
+
+#: src/gr-query-editor.ui:109
+msgid "Spiciness"
+msgstr "Acı Düzeyi"
+
+#: src/gr-query-editor.ui:129 src/gr-query-editor.c:562
+#: src/gr-query-editor.c:713
+msgid "Any spiciness"
+msgstr "Herhangi bir acı düzeyi"
+
+#: src/gr-query-editor.ui:172
+msgid "Dietary restrictions"
+msgstr "Diyet kısıtlamaları"
+
+#: src/gr-query-editor.ui:192 src/gr-query-editor.c:406
+#: src/gr-query-editor.c:742
+msgid "No restrictions"
+msgstr "Kısıtlama yok"
+
+#. FIXME: repopulate
+#: src/gr-query-editor.ui:255 src/gr-query-editor.c:337
+#: src/gr-query-editor.c:771
+msgid "Anything"
+msgstr "Herhangi bir şey"
+
+#: src/gr-query-editor.ui:283
+msgid "Search…"
+msgstr "Ara…"
+
+#: src/gr-recipes-page.ui:8
+msgid "Recipes page"
+msgstr "Tarifler sayfası"
+
+#: src/gr-recipes-page.ui:27
+msgid "Today"
+msgstr "Bugün"
+
+#: src/gr-recipes-page.ui:103
+msgid "Editor’s Picks"
+msgstr "Editörün Seçtikleri"
+
+#: src/gr-recipes-page.ui:129
+msgid "Categories"
+msgstr "Kategoriler"
+
+#: src/gr-recipes-page.ui:226
+msgid "Featured GNOME Chefs"
+msgstr "Öne Çıkan GNOME Şefleri"
+
+#: src/gr-recipe-tile.ui:58
+msgid "Contributed recipe"
+msgstr "Katkı verilen tarif"
+
+#: src/gr-search-page.ui:42
+msgid "Try a different search"
+msgstr "Başka bir arama dene"
+
+#: src/gr-shopping-page.ui:40
+msgid "Buy ingredients"
+msgstr "Malzeme satın al"
+
+#: src/gr-shopping-page.ui:93
+msgid "No shopping necessary!"
+msgstr "Alışveriş gerekmiyor!"
+
+#: src/gr-shopping-page.ui:132
+msgid "_Clear List"
+msgstr "_Listeyi Temizle"
+
+#: src/gr-shopping-page.ui:188
+msgid "Nothing to add"
+msgstr "Eklenecek hiçbir şey yok"
+
+#: src/gr-shopping-tile.ui:101
+msgid "Yield"
+msgstr "Kaç kişilik"
+
+#: src/gr-time-widget.ui:31
+msgid "Start"
+msgstr "Başlat"
+
+#: src/gr-time-widget.ui:60
+msgid "Pause"
+msgstr "Duraklat"
+
+#: src/gr-time-widget.ui:69
+msgid "Continue"
+msgstr "Devam Et"
+
+#: src/gr-time-widget.ui:82
+msgid "Reset"
+msgstr "Sıfırla"
+
+#: src/gr-window.ui:23
+msgid "_New Recipe"
+msgstr "_Yeni Tarif"
+
+#: src/gr-window.ui:40
+msgid "Go back"
+msgstr "Geri git"
+
+#: src/gr-window.ui:97 src/gr-window.ui:198
+msgid "Search"
+msgstr "Ara"
+
+#: src/gr-window.ui:116
+msgid "_Start Cooking"
+msgstr "Pişirmeye _Başla"
+
+#: src/gr-window.ui:144
+msgid "_Done Shopping"
+msgstr "Alışveriş _Tamamlandı"
+
+#: src/gr-window.ui:258
+msgid "All ingredients marked as stocked!"
+msgstr "Tüm malzemeler var olarak işareklendi!"
+
+#: src/gr-window.ui:268
+msgid "_Undo"
+msgstr "_Geri Al"
+
+#: src/gr-window.ui:317
+msgid "Ingredients to buy added."
+msgstr "Malzameler alışveriş için eklendi."
+
+#: src/gr-window.ui:327
+msgid "View Shopping List"
+msgstr "Alışveriş Listesini Görüntüle"
+
+#: src/gr-window.ui:384
+msgid "Undo"
+msgstr "Geri Al"
+
+#: src/gr-window.ui:444
+msgid "Send Update"
+msgstr "Güncelleme Gönder"
+
+#: src/gr-window.ui:492
+msgid "Shopping List has been exported to Todoist"
+msgstr "Alışveriş listesi Todoist uygulamasına aktarıldı"
+
+#: src/gr-window.ui:569 src/gr-window.c:398
+msgid "Cuisines"
+msgstr "Mutfaklar"
+
+#: src/gr-window.ui:622
+msgid "Name"
+msgstr "Ad"
+
+#: src/gr-window.ui:630
+msgid "Recency"
+msgstr "Yenilik"
+
+#: src/menus.ui:6 src/menus.ui:48
+msgid "_Import"
+msgstr "İçe _Aktar"
+
+#: src/menus.ui:11 src/menus.ui:53
+msgid "_Export All"
+msgstr "Tümünü _Dışa Aktar"
+
+#: src/menus.ui:16
+msgid "_Chef Information"
+msgstr "_Şef Bilgisi"
+
+#: src/menus.ui:22 src/menus.ui:93
+msgid "_What’s New"
+msgstr "Ye_nilikler"
+
+#: src/menus.ui:26
+msgid "_Help"
+msgstr "Ya_rdım"
+
+#: src/menus.ui:30
+msgid "_About"
+msgstr "_Hakkında"
+
+#: src/menus.ui:34 src/menus.ui:97
+msgid "_Report Issue"
+msgstr "Hata _Raporla"
+
+#: src/menus.ui:38
+msgid "_Quit"
+msgstr "_Çık"
+
+#: src/menus.ui:45
+msgid "File"
+msgstr "Dosya"
+
+#: src/menus.ui:60
+msgid "Chef Information…"
+msgstr "Şef Bilgisi…"
+
+#: src/menus.ui:69
+msgid "Copy"
+msgstr "Ko_pyala"
+
+#: src/menus.ui:73
+msgid "Paste"
+msgstr "Yapıştır"
+
+#: src/menus.ui:79
+msgid "Find…"
+msgstr "Bul…"
+
+#: src/menus.ui:86
+msgid "Help"
+msgstr "_Yardım"
+
+#: src/menus.ui:89
+msgid "Recipes _Help"
+msgstr "Tarifler _Yardım"
+
+#: src/recipe-conflict-dialog.ui:10 src/shopping-list-exporter-dialog.ui:21
+#: src/gr-chef-dialog.c:163 src/gr-image-viewer.c:627
+#: src/gr-recipe-exporter.c:172 src/gr-shopping-list-exporter.c:698
+#: src/gr-window.c:1219
+msgid "Cancel"
+msgstr "İptal Et"
+
+#: src/recipe-conflict-dialog.ui:18
+msgid "Rename"
+msgstr "Yeniden adlandır"
+
+#: src/recipe-conflict-dialog.ui:28
+msgid "A recipe with this name already exists."
+msgstr "Bu isimde bir tarif zaten var."
+
+#: src/recipe-export-dialog.ui:14
+msgid "_Add More"
+msgstr "Daha _Fazla Ekle"
+
+#: src/recipe-export-dialog.ui:56
+msgid "Share with a friend"
+msgstr "Bir arkadaşınla paylaş"
+
+#: src/recipe-export-dialog.ui:63
+msgid "Contribute to the Recipes project"
+msgstr "Tarifler projesine katkıda bulun"
+
+#: src/recipe-surprise.ui:28
+msgid "GNOME turns 20 !"
+msgstr "GNOME 20  yaşında!"
+
+#: src/recipe-surprise.ui:52
+msgid ""
+"YEARS\n"
+"STRONG"
+msgstr "MUTLU YILLAR"
+
+#: src/recipe-surprise.ui:68
+msgid ""
+"Recipes is a present to GNOME for its 20th birthday. We invite the GNOME "
+"community all over the world to share recipes and enjoy a good meal together."
+msgstr ""
+"Tarifler, 20. doğum günü için GNOME'a hediye edildi. Dünyanın her yerindeki "
+"GNOME topluluğunu tarifleri paylaşmaya ve birlikte iyi bir yemeğin tadını "
+"çıkarmaya davet ediyoruz."
+
+#: src/recipe-surprise.ui:79
+msgid "Let’s Party"
+msgstr "Parti Zamanı"
+
+#: src/recipe-whats-new-dialog.ui:8
+msgid "What’s New in Recipes"
+msgstr "Tarifler Uygulamasındaki Yenilikler"
+
+#: src/shopping-list-exporter-dialog.ui:13 src/gr-shopping-list-exporter.c:278
+msgid "Export Ingredients"
+msgstr "İçindekileri Dışa Aktar"
+
+#: src/shopping-list-exporter-dialog.ui:55
+msgid "Export"
+msgstr "Dışa aktar"
+
+#: src/shopping-list-exporter-dialog.ui:101
+msgid "Email"
+msgstr "E-posta"
+
+#: src/shopping-list-exporter-dialog.ui:136
+#: src/shopping-list-exporter-dialog.ui:201
+msgid "Todoist"
+msgstr "Todoist"
+
+#: src/shopping-list-exporter-dialog.ui:152
+msgid "Add service"
+msgstr "Hizmet ekle"
+
+#: src/gr-about-dialog.c:132
+msgid "Learn more about Builder"
+msgstr "GNOME Builder hakkında daha fazla bilgi öğrenin"
+
+#: src/gr-about-dialog.c:244 src/gr-about-dialog.c:327
+#: src/gr-about-dialog.c:329 src/gr-about-dialog.c:331
+#: src/gr-about-dialog.c:333 src/gr-about-dialog.c:335
+#: src/gr-about-dialog.c:337 src/gr-about-dialog.c:339
+#: src/gr-about-dialog.c:341 src/gr-about-dialog.c:343
+msgid "Unknown"
+msgstr "Bilinmeyen"
+
+#: src/gr-about-dialog.c:433
+msgid "Flatpak"
+msgstr "Flatpak"
+
+#: src/gr-about-dialog.c:436
+msgctxt "Flatpak metadata"
+msgid "Version"
+msgstr "Sürüm"
+
+#: src/gr-about-dialog.c:439
+msgid "Application"
+msgstr "Uygulama"
+
+#: src/gr-about-dialog.c:442 src/gr-about-dialog.c:451
+msgctxt "Flatpak metadata"
+msgid "ID"
+msgstr "Kimlik"
+
+#: src/gr-about-dialog.c:443 src/gr-about-dialog.c:452
+msgctxt "Flatpak metadata"
+msgid "Architecture"
+msgstr "Mimari"
+
+#: src/gr-about-dialog.c:444 src/gr-about-dialog.c:453
+msgctxt "Flatpak metadata"
+msgid "Branch"
+msgstr "Dal"
+
+#: src/gr-about-dialog.c:445 src/gr-about-dialog.c:454
+msgctxt "Flatpak metadata"
+msgid "Commit"
+msgstr "Gönderi"
+
+#: src/gr-about-dialog.c:448
+msgid "Runtime"
+msgstr "Çalışma zamanı"
+
+#: src/gr-about-dialog.c:457 src/gr-about-dialog.c:521
+msgid "Bundled libraries"
+msgstr "Bağlanmış küpüthaneler"
+
+#: src/gr-about-dialog.c:487
+msgid "OS"
+msgstr "İşletim Sistemi"
+
+#: src/gr-about-dialog.c:490
+msgctxt "OS metadata"
+msgid "Name"
+msgstr "Ad"
+
+#: src/gr-about-dialog.c:492
+msgctxt "OS metadata"
+msgid "Type"
+msgstr "Tür"
+
+#: src/gr-about-dialog.c:495 src/gr-about-dialog.c:497
+msgctxt "OS metadata"
+msgid "Desktop"
+msgstr "Masaüstü"
+
+#: src/gr-about-dialog.c:500
+msgid "System libraries"
+msgstr "Sistem kütüphaneleri"
+
+#: src/gr-about-dialog.c:820 src/gr-about-dialog.c:847
+msgid "System"
+msgstr "Sistem"
+
+#: src/gr-about-dialog.c:914
+msgid "translator-credits"
+msgstr "Sabri Ünal <libreajans@gmail.com>"
+
+#: src/gr-about-dialog.c:917
+msgid "Learn more about Recipes"
+msgstr "Tarifler hakkında daha fazlasını öğrenin"
+
+#: src/gr-about-dialog.c:924
+msgid "Recipes by"
+msgstr "Tarifler yazarları"
+
+#: src/gr-account.c:111
+#, c-format
+msgid "Got an error from Account portal"
+msgstr "Hesap portalından bir hata alındı"
+
+#: src/gr-account.c:162
+msgid ""
+"Allow your personal information to be included with recipes you share with "
+"your friends."
+msgstr ""
+"Kişisel bilgilerinizin arkadaşlarınızla paylaştığınız tariflere eklenmesine "
+"izin verin."
+
+#: src/gr-app.c:209
+#, c-format
+msgid "Supported categories: %s\n"
+msgstr "Desteklenen Kategoriler: %s\n"
+
+#: src/gr-app.c:443
+msgid "Print the version and exit"
+msgstr "Sürümü yazdır ve çık"
+
+#: src/gr-app.c:447
+msgid "Turn on verbose logging"
+msgstr "Ayrıntılı çıktıyı etkinleştir"
+
+#: src/gr-app.c:451
+msgid "Show a category"
+msgstr "Bir kategori göster"
+
+#: src/gr-chef-dialog.c:159 src/gr-image-viewer.c:623
+msgid "Select an Image"
+msgstr "Bir görüntü seç"
+
+#: src/gr-chef-dialog.c:162 src/gr-image-viewer.c:626 src/gr-window.c:1218
+msgid "Open"
+msgstr "Aç"
+
+#: src/gr-chef-dialog.c:167 src/gr-image-viewer.c:631
+msgid "Image files"
+msgstr "Görüntü dosyaları"
+
+#: src/gr-chef-dialog.c:423
+msgid "New Chef"
+msgstr "Yeni Şef"
+
+#: src/gr-cooking-page.c:249
+msgid "Cooking"
+msgstr "Pişirme"
+
+#: src/gr-cooking-view.c:157
+#, c-format
+msgid "Step %d/%d"
+msgstr "Aşama %d/%d"
+
+#: src/gr-cooking-view.c:163
+#, c-format
+msgid "Step %d"
+msgstr "Aşama %d"
+
+#: src/gr-cooking-view.c:273
+msgid "GNOME Recipes"
+msgstr "GNOME Tarifler"
+
+#: src/gr-cooking-view.c:393
+msgid "A cooking timer has expired"
+msgstr "Pişirme süresi doldu"
+
+#: src/gr-cooking-view.c:411 src/gr-cooking-view.c:427
+#, c-format
+msgid "Timer for “%s” has expired."
+msgstr "“%s” için süre doldu."
+
+#: src/gr-cooking-view.c:425
+msgid "Timer is up!"
+msgstr "Süre doldu!"
+
+#: src/gr-cuisine.c:45
+msgid "American"
+msgstr "Amerikan"
+
+#: src/gr-cuisine.c:46
+msgid "Chinese"
+msgstr "Çin"
+
+#: src/gr-cuisine.c:47
+msgid "Indian"
+msgstr "Hint"
+
+#: src/gr-cuisine.c:48
+msgid "Italian"
+msgstr "İtalyan"
+
+#: src/gr-cuisine.c:49
+msgid "French"
+msgstr "Fransız"
+
+#: src/gr-cuisine.c:50
+msgid "Greek"
+msgstr "Yunan"
+
+#: src/gr-cuisine.c:51
+msgid "Mediterranean"
+msgstr "Orta doğu"
+
+#: src/gr-cuisine.c:52
+msgid "Mexican"
+msgstr "Meksika"
+
+#: src/gr-cuisine.c:53
+msgid "Nordic"
+msgstr "İskandinav"
+
+#: src/gr-cuisine.c:54
+msgid "Turkish"
+msgstr "Türk"
+
+#: src/gr-cuisine.c:58
+msgid "American Cuisine"
+msgstr "Amerikan Mutfağı"
+
+#: src/gr-cuisine.c:59
+msgid "Chinese Cuisine"
+msgstr "Çin Mutfağı"
+
+#: src/gr-cuisine.c:60
+msgid "Indian Cuisine"
+msgstr "Hint Mutfağı"
+
+#: src/gr-cuisine.c:61
+msgid "Italian Cuisine"
+msgstr "İtalyan Mutfağı"
+
+#: src/gr-cuisine.c:62
+msgid "French Cuisine"
+msgstr "Fransız  Mutfağı"
+
+#: src/gr-cuisine.c:63
+msgid "Greek Cuisine"
+msgstr "Yunan Mutfağı"
+
+#: src/gr-cuisine.c:64
+msgid "Mediterranean Cuisine"
+msgstr "Orta Doğu Mutfağı"
+
+#: src/gr-cuisine.c:65
+msgid "Mexican Cuisine"
+msgstr "Meksika Mutfağı"
+
+#: src/gr-cuisine.c:66
+msgid "Nordic Cuisine"
+msgstr "İskandinav Mutfağı"
+
+#: src/gr-cuisine.c:67
+msgid "Turkish Cuisine"
+msgstr "Türk Mutfağı"
+
+#: src/gr-cuisine.c:71
+msgid ""
+"The cuisine of the United States reflects its history. The European "
+"colonization of the Americas yielded the introduction of a number of "
+"ingredients and cooking styles to the latter. The various styles continued "
+"expanding well into the 19th and 20th centuries, proportional to the influx "
+"of immigrants from many foreign nations; such influx developed a rich "
+"diversity in food preparation throughout the country."
+msgstr ""
+"Amerikan mutfağı tarihini yansıtır. Amerika kıtasının Avrupalılarca "
+"sömürgeleştirmesi, kıtaya bir dizi yeni bileşen ve pişirme tarzını da "
+"beraberinde getirmiştir. Çeşitli stiller, birçok ülkeden gelen göçmenlerin "
+"akını ile orantılı olarak 19. ve 20. yüzyıllara kadar gelişmeye devam etmiş, "
+"ve bu akın ülkeye gıda hazırlığı konusunda zengin bir çeşitlilik "
+"kazandırmıştır."
+
+#: src/gr-cuisine.c:76
+msgid ""
+"Chinese cuisine includes styles originating from the diverse regions of "
+"China, as well as from Chinese people in other parts of the world including "
+"most Asian nations. The history of Chinese cuisine in China stretches back "
+"for thousands of years and has changed from period to period and in each "
+"region according to climate, imperial fashions, and local preferences. Over "
+"time, techniques and ingredients from the cuisines of other cultures were "
+"integrated into the cuisine of the Chinese people due both to imperial "
+"expansion and from the trade with nearby regions in pre-modern times, and "
+"from Europe and the New World in the modern period."
+msgstr ""
+"Çin mutfağı, Çin'in çeşitli bölgelerinden, ve ayrıca çoğunluğu Asya ülkeleri "
+"olmak üzere, dünyanın diğer bölgelerindeki Çinlilerden kaynaklanan stilleri "
+"de içerir. Çin'deki Çin mutfağının tarihi binlerce yıl öncesine uzanır ve "
+"iklim, kraliyet modası ve yerel tercihlere göre, dönemler arası ve her "
+"bölgede değişir. Zamanla, diğer kültürlerin mutfaklarından gelen teknikler "
+"ve malzemeler, hem emperyalist genişlememeyle beraber, hem de modern öncesi "
+"dönemde yakın bölgelerle ve modern dönemde Avrupa ve Amerika kıtasıyla olan "
+"ticaretlerle Çin halkının mutfağına entegre edilmiştir."
+
+#: src/gr-cuisine.c:84
+msgid ""
+"Indian cuisine encompasses a wide variety of regional and traditional "
+"cuisines native to India. Given the range of diversity in soil type, "
+"climate, culture, ethnic group and occupations, these cuisines vary "
+"significantly from each other and use locally available spices, herbs, "
+"vegetables and fruits. Indian food is also heavily influenced by religious "
+"and cultural choices and traditions. There has also been Middle Eastern and "
+"Central Asian influence on North Indian cuisine from the years of Mughal "
+"rule. Indian cuisine has been and is still evolving, as a result of the "
+"nation’s cultural interactions with other societies."
+msgstr ""
+"Hint mutfağı, Hindistan'a özgü çok çeşitli bölgesel ve geleneksel mutfakları "
+"kapsar. Toprak tipi, iklim, kültür, etnik grup ve mesleklerdeki çeşitlilik "
+"yelpazesi göz önüne alındığında, bu mutfaklar birbirinden önemli ölçüde "
+"farklılık gösterir ve yerel olarak mevcut baharatları, bitkileri, sebzeleri "
+"ve meyveleri kullanır. Hint yemekleri de dini ve kültürel seçimlerden ve "
+"geleneklerden ağır şekilde etkilenir. Babür yönetiminin yıllarından itibaren "
+"Kuzey Hint mutfağı üzerinde Orta Doğu ve Orta Asya etkisi olmuştur. Hint "
+"mutfağı, ülkenin diğer toplumlarla olan kültürel etkileşimlerinin bir sonucu "
+"olarak gelişmeye devam ediyor ve hala gelişiyor."
+
+#: src/gr-cuisine.c:92
+msgid ""
+"Italian cuisine is characterized by its simplicity, with many dishes having "
+"only four to eight ingredients. Italian cooks rely chiefly on the quality of "
+"the ingredients rather than on elaborate preparation. Ingredients and dishes "
+"vary by region. Many dishes that were once regional, however, have "
+"proliferated with variations throughout the country."
+msgstr ""
+"İtalyan mutfağı sadeliği ile karakterize edilir, birçok yemek sadece dört - "
+"sekiz malzeme içerir. İtalyan aşçılar, detaylı hazırlanıştan ziyade, temel "
+"olarak malzemelerin kalitesine güvenir. Malzeme ve yemekler bölgesel olarak "
+"değişir. Ancak bir zamanlar bölgesel olan birçok yemek ülke genelinde "
+"çeşitlilik göstererek çoğalmıştır."
+
+#: src/gr-cuisine.c:96
+msgid ""
+"French cuisine was codified in the 20th century by Auguste Escoffier to "
+"become the modern haute cuisine; Escoffier, however, left out much of the "
+"local culinary character to be found in the regions of France and was "
+"considered difficult to execute by home cooks. Gastro-tourism and the Guide "
+"Michelin helped to acquaint people with the rich bourgeois and peasant "
+"cuisine of the French countryside starting in the 20th century. Gascon "
+"cuisine has also had great influence over the cuisine in the southwest of "
+"France. Many dishes that were once regional have proliferated in variations "
+"across the country."
+msgstr ""
+"Fransız mutfağı 20. yüzyılın sonlarında Auguste Escoffier tarafından modern "
+"üst düzey mutfak olarak yazılmıştır; Ancak Escoffier, Fransa'nın yöresel "
+"mutfak karakterinin çoğunu dışarıda bırakmış ve bu ev aşçıları tarafından "
+"yürütülmesi zor kabul edilmiştir. Mutfak turizmi uzmanı ve Rehber Michelin, "
+"20. yüzyıldan itibaren Fransız kırsalının zengin burjuva ve köylü mutfağı "
+"hakkında bilgiler verir. Gascony mutfağı, güney batı  Fransa mutfağını da "
+"çok etkilemiştir. Bir zamanlar yöresel olan birçok yemek ülke genelinde "
+"çeşitlilik göstererek çoğalmıştır."
+
+#: src/gr-cuisine.c:103
+msgid ""
+"Contemporary Greek cookery makes wide use of vegetables, olive oil, grains, "
+"fish, wine, and meat (white and red, including lamb, poultry, rabbit and "
+"pork). Other important ingredients include olives, cheese, eggplant "
+"(aubergine), zucchini (courgette), lemon juice, vegetables, herbs, bread and "
+"yoghurt. The most commonly used grain is wheat; barley is also used. Common "
+"dessert ingredients include nuts, honey, fruits, and filo pastry."
+msgstr ""
+"Çağdaş Yunan mutfağı, sebze, zeytinyağı, tahıl, balık, şarap ve eti (kuzu, "
+"kümes hayvanları, tavşan ve domuz eti dahil beyaz ve kırmızı eti) geniş bir "
+"şekilde kullanılır. Diğer önemli içerikler arasında zeytin, peynir, "
+"patlıcan, kabak, limon suyu, sebzeler, otlar, ekmek ve yoğurt sayılabilir. "
+"En sık kullanılan tahıl buğdaydır; arpa da kullanılır. Yaygın tatlı "
+"malzemeler arasında yemişler, bal, meyve ve filo böreği bulunur."
+
+#: src/gr-cuisine.c:108
+msgid ""
+"Mediterranean cuisine has a lot to offer, and is legendary for being very "
+"healthy too. Expect to see olives, yoghurt and garlic."
+msgstr ""
+"Akdeniz mutfağının size sunacakları çok şey var, ve Akdeniz mutfağı çok "
+"sağlıklı olması ile efsaneleşmiştir. Zeytin, yoğurt ve sarımsak görmeyi "
+"bekleyin."
+
+#: src/gr-cuisine.c:109
+msgid ""
+"Mexican cuisine is primarily a fusion of indigenous Mesoamerican cooking "
+"with European, especially Spanish, elements added after the Spanish conquest "
+"of the Aztec Empire in the 16th century. The staples are native foods, such "
+"as corn, beans, avocados, tomatoes, and chili peppers, along with rice, "
+"which was brought by the Spanish. Europeans introduced a large number of "
+"other foods, the most important of which were meats from domesticated "
+"animals (beef, pork, chicken, goat, and sheep), dairy products (especially "
+"cheese), and various herbs and spices."
+msgstr ""
+"Meksika mutfağı, öncelikli olarak 16. yüzyılda Aztek İmparatorluğu'nun "
+"İspanyol işgaline uğramasından sonra eklenen Avrupalı yemek pişirme unsunlar "
+"ile, yerli Meso-Amerikan mutfağının bir birleşimidir. Temel malzemeler "
+"arasında mısır, fasulye, avokado, domates ve biber gibi doğal yiyecekler ve "
+"İspanyollar tarafından getirilen pirinç sayılabilir. Avrupalı malzemelerden "
+"en önemlileri evcil hayvanlardan elde edilen etler (sığır eti, domuz eti, "
+"tavuk, keçi ve koyun eti), süt ürünleri (özellikle peynir) ve çeşitli bitki "
+"ve baharatlar sayılabilir."
+
+#: src/gr-cuisine.c:116
+msgid ""
+"Cooking in Denmark has always been inspired by foreign and continental "
+"practises and the use of imported tropical spices like cinnamon, cardamom, "
+"nutmeg and black pepper can be traced to the Danish cuisine of the Middle "
+"Ages and some even to the Vikings."
+msgstr ""
+"Danimarka'da yemek pişirme her zaman yabancı ve Avrupa kıtasındaki "
+"uygulamalardan ilham almıştır. Tarçın, kakule, hint cevizi ve karabiber gibi "
+"ithal tropikal baharatların kullanımı, Orta Çağ Danimarka mutfağına ve hatta "
+"bazı Vikinglere kadar izlenebilir."
+
+#: src/gr-cuisine.c:117
+msgid ""
+"You can find a great variety of mouth watering dishes in Turkish cuisine, "
+"which is mostly the heritage of Ottoman cuisine. It is the mixture and "
+"refinement of Central Asian, Middle Eastern and Balkan cuisines. Therefore "
+"it is impossible to fit Turkish cuisine into a short list."
+msgstr ""
+"Osmanlı mutfağının mirası olan Türk mutfağında çok çeşitli ağız sulandıran "
+"yemekler bulabilirsiniz. Türk mutfağı, Orta Asya, Orta Doğu ve Balkan "
+"mutfaklarının karışımı ve en rafine halidir. Bu sebeple, Türk mutfağını kısa "
+"bir listeye sığdırmak mümkün değildir."
+
+# Bölünmüş çeviri:
+# Yield: %s serving.
+#: src/gr-details-page.c:193 src/gr-edit-page.c:936
+msgid "serving"
+msgstr "porsiyon"
+
+# Bölünmüş çeviri:
+# Yield: %s servings.
+#: src/gr-details-page.c:193 src/gr-edit-page.c:937
+#: src/gr-recipe-importer.c:504 src/gr-recipe-store.c:410
+#: src/gr-shopping-tile.c:110
+msgid "servings"
+msgstr "porsiyon"
+
+#: src/gr-details-page.c:367
+msgid "Could not find this recipe."
+msgstr "Tarif bulunamadı."
+
+#: src/gr-details-page.c:576
+#, c-format
+msgid "Timer: %s"
+msgstr "Kronometre: %s"
+
+#: src/gr-details-page.c:583
+#, c-format
+msgid "Image %d"
+msgstr "Göründü %d"
+
+#: src/gr-details-page.c:724 src/gr-edit-page.c:1597
+#, c-format
+msgid "Recipe by %s"
+msgstr "Tarif sahibi: %s"
+
+#: src/gr-diet.c:34
+msgid "Gluten-free recipes"
+msgstr "Glütensiz tarifler"
+
+#: src/gr-diet.c:37
+msgid "Nut-free recipes"
+msgstr "Kuruyemişsiz tarifler"
+
+#: src/gr-diet.c:40
+msgid "Vegan recipes"
+msgstr "Vegan tarifler"
+
+#: src/gr-diet.c:43
+msgid "Vegetarian recipes"
+msgstr "Vejetaryen tarifler"
+
+#: src/gr-diet.c:46
+msgid "Milk-free recipes"
+msgstr "Sütsüz tarifler"
+
+#: src/gr-diet.c:49
+msgid "Halal recipes"
+msgstr "Helal tarifler"
+
+#: src/gr-diet.c:52 src/gr-diet.c:84
+msgid "Other dietary restrictions"
+msgstr "Diğer diyet kısıtlamaları"
+
+#: src/gr-diet.c:66
+msgid ""
+"A gluten-free diet is a diet that excludes gluten, a protein composite found "
+"in wheat, barley, rye, and all their species and hybrids (such as spelt, "
+"kamut, and triticale). The inclusion of oats in a gluten-free diet remains "
+"controversial. Avenin present in oats may also be toxic for coeliac people; "
+"its toxicity depends on the cultivar consumed. Furthermore, oats are "
+"frequently cross-contaminated with cereals containing gluten.\n"
+"<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free\">Learn more…</"
+"a>"
+msgstr ""
+"Glütensiz diyet, buğday, arpa, çavdar gibi ürünlerde ve türevlerinde "
+"bulunan, bir protein bileşiği olan glüteni dışlayan bir diyettir. Yulafın "
+"glütensiz bir diyete dahil edilmesi tartışmalıdır. Yulafta bulunan Avenin "
+"bileşiği de çölyak hastaları için toksik/zehirli olabilir; zehirlilik düzeyi "
+"tüketilen çeşidine bağlıdır. Ayrıca, yulaf sıklıkla glüten içeren tahıllarla "
+"çapraz etkileşime girer.\n"
+"<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free\">Daha "
+"fazlasını öğrenin…</a>"
+
+#: src/gr-diet.c:69
+msgid ""
+"A tree nut allergy is a hypersensitivity to dietary substances from tree "
+"nuts and edible tree seeds causing an overreaction of the immune system "
+"which may lead to severe physical symptoms. Tree nuts include, but are not "
+"limited to, almonds, Brazil nuts, cashews, chestnuts, filberts/hazelnuts, "
+"macadamia nuts, pecans, pistachios, pine nuts, shea nuts and walnuts.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">Learn more…</a>"
+msgstr ""
+"Ağaç fındıkları alerjisi, ağaç fındıkları ve yenilebilir ağaç tohumlarından "
+"elde edilen yiyecek maddelerine karşı aşırı duyarlılık durumudur. Bağışıklık "
+"sisteminin aşırı tepki vermesi sonucu ciddi fiziksel tepkilere yol "
+"açabilmektedir. Ağaç fındıkları arasında, badem, Brezilya fıstığı, kaju, "
+"kestane, fındık, macadamia fındığı, pikin (amerikan) cevizi, fıstık (antep "
+"fıstığı), çam fıstığı, shea fıstığı bulunur, ve liste bunlarla sınırlı "
+"değildir.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">Daha fazlasını "
+"öğrenin…</a>"
+
+#: src/gr-diet.c:72
+msgid ""
+"Veganism is both the practice of abstaining from the use of animal products, "
+"particularly in diet, and an associated philosophy that rejects the "
+"commodity status of animals.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Veganism\">Learn more…</a>"
+msgstr ""
+"Veganizm, özellikle yiyecek ürünlerde hayvansal ürün kullanımından kaçınma "
+"uygulamasıdır ve hayvanların emtia durumunu reddeden bir felsefedir.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Veganism\">Daha fazlasını öğrenin…</"
+"a>"
+
+#: src/gr-diet.c:75
+msgid ""
+"Vegetarian cuisine is based on food that meets vegetarian standards by not "
+"including meat and animal tissue products (such as gelatin or animal-derived "
+"rennet). For lacto-ovo vegetarianism (the most common type of vegetarianism "
+"in the Western world), eggs and dairy products such as milk and cheese are "
+"permitted. For lacto vegetarianism, the earliest known type of vegetarianism "
+"(recorded in India), dairy products such as milk and cheese are permitted.\n"
+"The strictest forms of vegetarianism are veganism and fruitarianism, which "
+"exclude all animal products, including dairy products as well as honey, and "
+"even some refined sugars if filtered and whitened with bone char.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Vegetarianism\">Learn more…</a>"
+msgstr ""
+"Vejetaryen mutfağı, et ve hayvansal doku ürünlerini (jelatin veya "
+"hayvanlardan elde edilmiş peynir mayası gibi) dahil etmeden, vejetaryen "
+"standartlara uygun yiyeceğe dayanmaktadır. Lakto-ovo vejetaryenlık (Batı "
+"dünyasında en yaygın vejetaryenlık türü) yumurta, süt ve peynir gibi süt "
+"ürünleri tüketimine izin verilir. Lakto vejetaryenlık ise, süt ve peynir "
+"gibi süt ürünlerinin tüketimine izin verir. \n"
+"Vejeteryanlığın en katı biçimleri, bal ve süt ürünleri de dahil tüm "
+"hayvansal ürünleri ve hatta kemik kömürü ile süzülmüş ve beyazlatılmış bazı "
+"rafine şekerleri hariç tutan veganizm ve meyveciliktir.\n"
+"\n"
+"<a href=\"https://en.wikipedia.org/wiki/Vegetarianism\">Daha fazlasını "
+"öğrenin…</a>"
+
+#: src/gr-diet.c:78
+msgid ""
+"Lactose intolerance is a condition in which people have symptoms due to the "
+"decreased ability to digest lactose, a sugar found in milk products. Those "
+"affected vary in the amount of lactose they can tolerate before symptoms "
+"develop. Symptoms may include abdominal pain, bloating, diarrhea, gas, and "
+"nausea. These typically start between half and two hours after drinking "
+"milk. Severity depends on the amount a person eats or drinks. It does not "
+"cause damage to the gastrointestinal tract.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Learn more…</a>"
+msgstr ""
+"Laktoz intoleransı, insanların süt ürünlerinde bulunan bir şeker olan "
+"laktozu sindirme yeteneğinin azalması sonucu oluşan bir durumdur. Etkileri, "
+"semptomlar gelişmeden önce tolere edilebilen laktoz miktarına göre değişir. "
+"Belirtileri karın ağrısı, şişkinlik, ishal, gaz ve bulantı olabilir. Bunlar "
+"genellikle süt içtikten yarım saat ila iki saat sonra başlar. Şiddeti, "
+"kişinin yediği veya içtiği miktara bağlıdır. Mide-bağırsak sistemine zarar "
+"vermez.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Daha fazlasını "
+"öğrenin…</a>"
+
+#: src/gr-diet.c:81
+msgid "Halal meat is prepared according to Islamic traditions"
+msgstr "Helal et, islami usullere göre hazırlanır"
+
+#: src/gr-edit-page.c:600
+msgid "hour"
+msgstr "saat"
+
+#: src/gr-edit-page.c:601
+msgid "hours"
+msgstr "saat"
+
+#: src/gr-edit-page.c:602
+msgctxt "hour abbreviation"
+msgid "h"
+msgstr "sa"
+
+#: src/gr-edit-page.c:606
+msgid "minute"
+msgstr "dakika"
+
+#: src/gr-edit-page.c:607
+msgid "minutes"
+msgstr "dakika"
+
+#: src/gr-edit-page.c:608
+msgctxt "minute abbreviation"
+msgid "min"
+msgstr "dk"
+
+#: src/gr-edit-page.c:609
+msgctxt "minute abbreviation"
+msgid "m"
+msgstr "dk"
+
+#: src/gr-edit-page.c:613
+msgid "second"
+msgstr "saniye"
+
+#: src/gr-edit-page.c:614
+msgid "seconds"
+msgstr "saniye"
+
+#: src/gr-edit-page.c:615
+msgctxt "second abbreviation"
+msgid "sec"
+msgstr "sn"
+
+#: src/gr-edit-page.c:616
+msgctxt "second abbreviation"
+msgid "s"
+msgstr "sn"
+
+#: src/gr-edit-page.c:901
+msgid "Recipe Author"
+msgstr "Tarif Yazarı"
+
+#: src/gr-edit-page.c:940
+msgid "loaf"
+msgstr "yaprak"
+
+#: src/gr-edit-page.c:941
+msgid "loafs"
+msgstr "yaprak"
+
+#: src/gr-edit-page.c:944
+msgid "ounce"
+msgstr "ons"
+
+#: src/gr-edit-page.c:945
+msgid "ounces"
+msgstr "ons"
+
+#: src/gr-edit-page.c:1547
+msgid "_Name Your Recipe"
+msgstr "Tarifi_ni İsimlendir"
+
+#: src/gr-edit-page.c:1734 src/gr-edit-page.c:1796 src/gr-recipe-store.c:1330
+#, c-format
+msgid "You need to provide a name for the recipe"
+msgstr "Tarif için bir isim belirtmelisiniz"
+
+#: src/gr-edit-page.c:1752
+#, c-format
+msgid "Some ingredients need correction"
+msgstr "Bazı malzemelerin düzeltilmesi gerekiyor"
+
+#: src/gr-gourmet-format.c:174
+#, c-format
+msgid "Not a Gourmet XML document"
+msgstr "Gourmet XML belgesi değil"
+
+#: src/gr-ingredients-viewer-row.c:159
+msgid "Amount…"
+msgstr "Miktar…"
+
+#: src/gr-ingredients-viewer-row.c:174
+msgid "Ingredient…"
+msgstr "Malzemeler…"
+
+#: src/gr-list-page.c:310
+msgid "Gluten-free Recipes"
+msgstr "Glütensiz Tarifler"
+
+#: src/gr-list-page.c:312
+msgid "Nut-free Recipes"
+msgstr "Kuruyemişsiz Tarifler"
+
+#: src/gr-list-page.c:314
+msgid "Vegan Recipes"
+msgstr "Vegan Tarifler"
+
+#: src/gr-list-page.c:316
+msgid "Vegetarian Recipes"
+msgstr "Vejetaryen Tarifler"
+
+#: src/gr-list-page.c:318
+msgid "Milk-free Recipes"
+msgstr "Sütsüz Tarifler"
+
+#: src/gr-list-page.c:320
+msgid "Halal Recipes"
+msgstr "Helal Tarifler"
+
+#: src/gr-list-page.c:322
+msgid "Other Dietary Restrictions"
+msgstr "Diğer Diyet Kısıtlamaları"
+
+#: src/gr-list-page.c:367
+#, c-format
+msgid "No %s found"
+msgstr "%s bulunamadı"
+
+#: src/gr-list-page.c:370 src/gr-list-page.c:439 src/gr-list-page.c:472
+msgid "You could add one using the “New Recipe” button."
+msgstr "“Yeni Tarif” düğmesiyle bir tane ekleyebilirsiniz."
+
+#: src/gr-list-page.c:428
+#, c-format
+msgid "Recipes by %s"
+msgstr "%s şefinin diğer tarifleri"
+
+#: src/gr-list-page.c:435
+#, c-format
+msgid "No recipes by chef %s found"
+msgstr "%s şefine ait başka tarif bulunamadı"
+
+#: src/gr-list-page.c:441 src/gr-list-page.c:515 src/gr-list-page.c:542
+#: src/gr-list-page.c:577
+msgid "Sorry about this."
+msgstr "Bunun hakkında üzgünüz."
+
+#: src/gr-list-page.c:469
+#, c-format
+msgid "No recipes for %s found"
+msgstr "%s için tarif bulunamadı"
+
+#: src/gr-list-page.c:493
+msgid "No favorite recipes found"
+msgstr "Beğenilen tarifler bulunamadı"
+
+#: src/gr-list-page.c:494
+msgid "Use the ♥ button to mark recipes as favorites."
+msgstr "Tarifi, beğenilere eklemek için ♥ düğmesini kullanın."
+
+#: src/gr-list-page.c:541
+msgid "No new recipes"
+msgstr "Yeni tarif yok"
+
+#: src/gr-list-page.c:576
+msgid "No imported recipes found"
+msgstr "İçe aktarılan tarif yok"
+
+#: src/gr-meal.c:45
+msgid "Main Course"
+msgstr "Ana Öğün"
+
+#: src/gr-meal.c:46
+msgid "Snacks"
+msgstr "Atıştırmalık"
+
+#: src/gr-meal.c:47
+msgid "Breakfast"
+msgstr "Kahvaltı"
+
+#: src/gr-meal.c:48
+msgid "Side Dishes"
+msgstr "Garnitür"
+
+#: src/gr-meal.c:49
+msgid "Desserts"
+msgstr "Tatlı"
+
+#: src/gr-meal.c:50
+msgid "Cake and Baking"
+msgstr "Kek ve Fırınlama"
+
+#: src/gr-meal.c:51
+msgid "Drinks and Cocktails"
+msgstr "İçecek ve Kokteyl"
+
+#: src/gr-meal.c:52
+msgid "Pizza"
+msgstr "Pizza"
+
+#: src/gr-meal.c:53
+msgid "Pasta"
+msgstr "Makarna"
+
+#: src/gr-meal.c:54
+msgid "Salad"
+msgstr "Salata"
+
+#: src/gr-meal.c:55
+msgid "Other"
+msgstr "Diğer"
+
+#: src/gr-number.c:148 src/gr-number.c:217 src/gr-number.c:226
+#, c-format
+msgid "Could not parse %s as a fraction"
+msgstr "%s kesir olarak ayrıştırılamadı"
+
+#: src/gr-number.c:251
+#, c-format
+msgid "Could not parse %s as a integer"
+msgstr "%s tam sayı olarak ayrıştırılamadı"
+
+#: src/gr-number.c:273
+#, c-format
+msgid "Could not parse %s as a float"
+msgstr "%s kayan noktalı sayı olarak ayrıştırılamadı"
+
+#: src/gr-number.c:322
+#, c-format
+msgid "Could not parse %s as a number"
+msgstr "%s bir sayı olarak ayrıştırılamadı"
+
+#: src/gr-recipe-exporter.c:168
+msgid "Save the exported recipe"
+msgstr "Dışa aktarılan tarifleri kaydet"
+
+#: src/gr-recipe-exporter.c:171 src/gr-shopping-list-exporter.c:697
+msgid "Save"
+msgstr "Kaydet"
+
+#: src/gr-recipe-exporter.c:206
+msgid "Recipe contribution"
+msgstr "Tarif önerisi"
+
+#: src/gr-recipe-exporter.c:207
+msgid "Please accept my attached recipe contribution."
+msgstr "Lütfen ekli tarifimi, bir katkı olarak kabul et."
+
+#: src/gr-recipe-exporter.c:217
+msgid "Try this recipe"
+msgstr "Bu tarifi dene"
+
+#: src/gr-recipe-exporter.c:218
+msgid ""
+"Hi,\n"
+"\n"
+"you should try this recipe."
+msgstr ""
+"Merhaba,\n"
+"\n"
+"bu tarifi denemeni öneririm."
+
+#: src/gr-recipe-exporter.c:221
+msgid "Try these recipes"
+msgstr "Bu tarifleri bir dene"
+
+#: src/gr-recipe-exporter.c:222
+msgid ""
+"Hi,\n"
+"\n"
+"you should try these recipes."
+msgstr ""
+"Merhaba,\n"
+"\n"
+"bu tarifleri denemeni öneririm."
+
+#: src/gr-recipe-exporter.c:225
+msgid "(The attached file can be imported into GNOME Recipes.)"
+msgstr "(Eklenen dosya GNOME Tarifler içine aktarılabilir.)"
+
+#: src/gr-recipe-exporter.c:437
+#, c-format
+msgid "This build does not support exporting"
+msgstr "Bu inşa içe aktarmayı desteklemiyor"
+
+#: src/gr-recipe-exporter.c:520
+#, c-format
+msgid ""
+"Error while exporting:\n"
+"%s"
+msgstr ""
+"Dışa aktarırken hata:\n"
+"%s"
+
+#: src/gr-recipe-exporter.c:617
+#, c-format
+msgid "%d recipe selected for sharing"
+msgid_plural "%d recipes selected for sharing"
+msgstr[0] "%d tarif paylaşım için seçildi"
+
+#: src/gr-recipe-exporter.c:649
+msgid ""
+"Some of the selected recipes are included\n"
+"with GNOME Recipes. You should only contribute\n"
+"your own recipes."
+msgstr ""
+"Seçilen tariflerin bir kısmı GNOME Tarifler uygulamasına eklenmiştir.\n"
+"Lütfen sadece kendi tariflerinize katkıda bulununuz."
+
+#: src/gr-recipe-formatter.c:88 src/gr-recipe-printer.c:164
+msgid "Author:"
+msgstr "Yazar:"
+
+#: src/gr-recipe-formatter.c:89 src/gr-recipe-printer.c:165
+msgid "Preparation:"
+msgstr "Hazırlanışı:"
+
+#: src/gr-recipe-formatter.c:90 src/gr-recipe-printer.c:166
+msgid "Cooking:"
+msgstr "Pişirme:"
+
+#: src/gr-recipe-formatter.c:93 src/gr-recipe-printer.c:168
+msgid "Yield:"
+msgstr "Kaç Kişilik:"
+
+#: src/gr-recipe-importer.c:238
+#, c-format
+msgid ""
+"Error while importing recipe:\n"
+"%s"
+msgstr ""
+"Tarif içe aktarılırken hata:\n"
+"%s"
+
+#: src/gr-recipe-importer.c:518
+#, c-format
+msgid "Failed to load recipe: Couldn’t parse Created key"
+msgstr "Tarif yükleme başarısız oldu: Created anahtarı ayrıştırılamadı"
+
+#: src/gr-recipe-importer.c:529
+#, c-format
+msgid "Failed to load recipe: Couldn’t parse Modified key"
+msgstr "Tarif yükleme başarısız oldu: Modified anahtarı ayrıştırılamadı"
+
+#: src/gr-recipe-importer.c:809
+#, c-format
+msgid "No chef information found"
+msgstr "Şef bilgisi bulunamadı"
+
+#: src/gr-recipe-importer.c:839
+#, c-format
+msgid "This build does not support importing"
+msgstr "İnşa içe aktarmayı desteklemiyor"
+
+#: src/gr-recipe-printer.c:173
+msgid "Cuisine:"
+msgstr "Mutfak:"
+
+#: src/gr-recipe-printer.c:177
+msgid "Meal:"
+msgstr "Yemek:"
+
+#: src/gr-recipe-printer.c:181
+msgid "Season:"
+msgstr "Mevsim:"
+
+#: src/gr-recipe-printer.c:229
+msgid "Notes"
+msgstr "Notlar"
+
+#: src/gr-recipe-printer.c:472 src/gr-shopping-list-printer.c:297
+msgid "Error printing file:"
+msgstr "Dosya yazdırılırken hata:"
+
+#: src/gr-recipe-printer.c:473 src/gr-shopping-list-printer.c:298
+msgid "No details"
+msgstr "Detay yok"
+
+#: src/gr-recipes-page.c:221 src/gr-window.c:1383
+msgid "My Recipes"
+msgstr "Tariflerim"
+
+#: src/gr-recipes-page.c:222
+msgid "Favorites"
+msgstr "Beğeniler"
+
+#: src/gr-recipes-page.c:223 src/gr-window.c:1331
+msgid "All Recipes"
+msgstr "Tüm Tarifler"
+
+#: src/gr-recipes-page.c:224 src/gr-window.c:1340
+msgid "New Recipes"
+msgstr "Yeni Tarifler"
+
+#: src/gr-recipes-page.c:273
+msgid "Last edited:"
+msgstr "Son Düzenlenme:"
+
+#: src/gr-recipes-page.c:372
+#, c-format
+msgid "Buy ingredients: <b>%s</b>"
+msgstr "Malzeme satın al: <b>%s</b>"
+
+#: src/gr-recipes-page.c:374
+#, c-format
+msgid "Buy ingredients: <b>%s and %s</b>"
+msgstr "Malzeme satın al: <b>%s ve %s</b>"
+
+#: src/gr-recipes-page.c:376
+#, c-format
+msgid "Buy ingredients: <b>%s, %s and %d other</b>"
+msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
+msgstr[0] "Malzeme satın al: <b>%s, %s ve %d diğer</b>"
+
+#: src/gr-recipe-store.c:1335
+#, c-format
+msgid ""
+"A recipe with this name and author (%s) already exists.\n"
+"Please choose a different name"
+msgstr ""
+"Bu isimde bir tarif ve yazarı (%s) zaten var.\n"
+"Lütfen başka bir isim seçiniz"
+
+#: src/gr-recipe-store.c:1364
+#, c-format
+msgid "You need to provide an ID for the recipe"
+msgstr "Tarif için bir kimlik bilgisi belirtmelisiniz"
+
+#: src/gr-recipe-store.c:1370
+#, c-format
+msgid "A recipe with this ID already exists"
+msgstr "Bu kimlikte bir tarif zaten var"
+
+#: src/gr-recipe-store.c:1539
+#, c-format
+msgid "You need to provide an ID"
+msgstr "Bir kimlik belirtmelisiniz"
+
+#: src/gr-recipe-store.c:1545
+#, c-format
+msgid "Sorry, this ID is taken"
+msgstr "Üzgünüm, bu kimlik alınmış"
+
+#: src/gr-recipe-store.c:1572
+#, c-format
+msgid "You need to provide an ID for the chef"
+msgstr "Şef için bir kimlik belirtmelisiniz"
+
+#: src/gr-recipe-store.c:1578
+#, c-format
+msgid "A chef with this ID already exists"
+msgstr "Bu kimlikte bir şef zaten var"
+
+#: src/gr-recipe-tile.c:99 src/gr-shopping-tile.c:108
+#, c-format
+msgid "by %s"
+msgstr "%s tarafından"
+
+#: src/gr-recipe-tile.c:99 src/gr-shopping-tile.c:108
+msgid "Anonymous"
+msgstr "Anonim"
+
+#: src/gr-season.c:41
+msgid "Thanksgiving"
+msgstr "Şükran Günü"
+
+#: src/gr-season.c:42
+msgid "Christmas"
+msgstr "Noel"
+
+#: src/gr-season.c:43
+msgid "New Year’s"
+msgstr "Yeni Yıl"
+
+#: src/gr-season.c:44
+msgid "Spring"
+msgstr "Bahar"
+
+#: src/gr-season.c:45
+msgid "Summer"
+msgstr "Yaz"
+
+#: src/gr-season.c:46
+msgid "Fall"
+msgstr "Sonbahar"
+
+#: src/gr-season.c:47
+msgid "Winter"
+msgstr "Kış"
+
+#: src/gr-shopping-list-exporter.c:270
+msgid "Add Account"
+msgstr "Hesap Ekle"
+
+#: src/gr-shopping-list-exporter.c:476 src/gr-shopping-list-exporter.c:566
+msgid "Shopping List from Recipes"
+msgstr "Tarifler uygulamasından Alışveriş Listesi"
+
+#: src/gr-shopping-list-exporter.c:694
+msgid "Save the shopping list"
+msgstr "Alışveriş listesini kaydet"
+
+#: src/gr-shopping-list-exporter.c:724 src/gr-shopping-list-formatter.c:42
+#: src/gr-shopping-list-printer.c:135
+msgid "Shopping List"
+msgstr "Alışveriş Listesi"
+
+#: src/gr-shopping-list-formatter.c:44
+msgid "For the following recipes:"
+msgstr "Takip eden tarifler için:"
+
+#: src/gr-shopping-list-printer.c:144
+msgid "For the following recipes"
+msgstr "Takip eden tarifler için"
+
+#: src/gr-shopping-list-printer.c:161
+msgid "Items"
+msgstr "Nesneler"
+
+#: src/gr-shopping-page.c:103
+#, c-format
+msgid "%d ingredient marked for purchase"
+msgid_plural "%d ingredients marked for purchase"
+msgstr[0] "%d malzeme satın alma için işaretlendi"
+
+#: src/gr-shopping-page.c:122
+#, c-format
+msgid "Buy Ingredients (%d recipe)"
+msgid_plural "Buy Ingredients (%d recipes)"
+msgstr[0] "Malzeme satın al (%d tarif)"
+
+#: src/gr-shopping-page.c:127
+#, c-format
+msgid "%d Recipe marked for preparation"
+msgid_plural "%d Recipes marked for preparation"
+msgstr[0] "%d tarif hazırlama için işaretlendi"
+
+#: src/gr-spice-row.c:131
+msgid "Mild or somewhat spicy"
+msgstr "Normal veya hafif acı"
+
+#: src/gr-spice-row.c:133
+msgid "At least somewhat spicy"
+msgstr "Acıya yakın"
+
+#: src/gr-spice-row.c:137
+msgid "At most hot"
+msgstr "Neredeyse acı"
+
+#: src/gr-spice-row.c:139
+msgid "Hot or very spicy"
+msgstr "Acı veya çok acı"
+
+#: src/gr-unit.c:46
+msgctxt "unit abbreviation"
+msgid "g"
+msgstr "gr"
+
+#: src/gr-unit.c:46
+msgctxt "unit name"
+msgid "gram"
+msgstr "gram"
+
+#: src/gr-unit.c:46
+msgctxt "unit plural"
+msgid "grams"
+msgstr "gram"
+
+#: src/gr-unit.c:47
+msgctxt "unit abbreviation"
+msgid "kg"
+msgstr "kg"
+
+#: src/gr-unit.c:47
+msgctxt "unit name"
+msgid "kilogram"
+msgstr "kilo"
+
+#: src/gr-unit.c:47
+msgctxt "unit plural"
+msgid "kilograms"
+msgstr "kilo"
+
+#: src/gr-unit.c:48
+msgctxt "unit abbreviation"
+msgid "lb"
+msgstr "lb"
+
+#: src/gr-unit.c:48
+msgctxt "unit name"
+msgid "pound"
+msgstr "pound"
+
+#: src/gr-unit.c:48
+msgctxt "unit plural"
+msgid "pounds"
+msgstr "pound"
+
+#: src/gr-unit.c:49
+msgctxt "unit abbreviation"
+msgid "oz"
+msgstr "ons"
+
+#: src/gr-unit.c:49
+msgctxt "unit name"
+msgid "ounce"
+msgstr "ons"
+
+#: src/gr-unit.c:49
+msgctxt "unit plural"
+msgid "ounces"
+msgstr "ons"
+
+#: src/gr-unit.c:50
+msgctxt "unit abbreviation"
+msgid "l"
+msgstr "l"
+
+#: src/gr-unit.c:50
+msgctxt "unit name"
+msgid "liter"
+msgstr "litre"
+
+#: src/gr-unit.c:50
+msgctxt "unit plural"
+msgid "liters"
+msgstr "litre"
+
+#: src/gr-unit.c:51
+msgctxt "unit abbreviation"
+msgid "dl"
+msgstr "dl"
+
+#: src/gr-unit.c:51
+msgctxt "unit name"
+msgid "deciliter"
+msgstr "desilitre"
+
+#: src/gr-unit.c:51
+msgctxt "unit plural"
+msgid "deciliters"
+msgstr "desilitre"
+
+#: src/gr-unit.c:52
+msgctxt "unit abbreviation"
+msgid "ml"
+msgstr "ml"
+
+#: src/gr-unit.c:52
+msgctxt "unit name"
+msgid "milliliter"
+msgstr "milliliter"
+
+#: src/gr-unit.c:52
+msgctxt "unit plural"
+msgid "milliliters"
+msgstr "mililitre"
+
+#: src/gr-unit.c:53 src/gr-unit.c:54
+msgctxt "unit abbreviation"
+msgid "fl oz"
+msgstr "sıvı ons"
+
+#: src/gr-unit.c:53 src/gr-unit.c:54
+msgctxt "unit name"
+msgid "fluid ounce"
+msgstr "sıvı ons"
+
+#: src/gr-unit.c:53 src/gr-unit.c:54
+msgctxt "unit plural"
+msgid "fluid ounces"
+msgstr "sıvı ons"
+
+#: src/gr-unit.c:55
+msgctxt "unit abbreviation"
+msgid "pt"
+msgstr "pt"
+
+#: src/gr-unit.c:55
+msgctxt "unit name"
+msgid "pint"
+msgstr "pint"
+
+#: src/gr-unit.c:55
+msgctxt "unit plural"
+msgid "pints"
+msgstr "pint"
+
+#: src/gr-unit.c:56
+msgctxt "unit abbreviation"
+msgid "qt"
+msgstr "çeyrek"
+
+#: src/gr-unit.c:56
+msgctxt "unit name"
+msgid "quart"
+msgstr "çeyrek"
+
+#: src/gr-unit.c:56
+msgctxt "unit plural"
+msgid "quarts"
+msgstr "çeyrek"
+
+#: src/gr-unit.c:57
+msgctxt "unit abbreviation"
+msgid "gal"
+msgstr "gal"
+
+#: src/gr-unit.c:57
+msgctxt "unit name"
+msgid "gallon"
+msgstr "galon"
+
+#: src/gr-unit.c:57
+msgctxt "unit plural"
+msgid "gallons"
+msgstr "galon"
+
+#: src/gr-unit.c:58
+msgctxt "unit abbreviation"
+msgid "cup"
+msgstr "bardak"
+
+#: src/gr-unit.c:58
+msgctxt "unit name"
+msgid "cup"
+msgstr "bardak"
+
+#: src/gr-unit.c:58
+msgctxt "unit plural"
+msgid "cups"
+msgstr "bardak"
+
+#: src/gr-unit.c:59
+msgctxt "unit abbreviation"
+msgid "tbsp"
+msgstr "yemek kaşığı"
+
+#: src/gr-unit.c:59
+msgctxt "unit name"
+msgid "tablespoon"
+msgstr "yemek kaşığı"
+
+#: src/gr-unit.c:59
+msgctxt "unit plural"
+msgid "tablespoons"
+msgstr "yemek kaşığı"
+
+#: src/gr-unit.c:60
+msgctxt "unit abbreviation"
+msgid "tsp"
+msgstr "çay kaşığı"
+
+#: src/gr-unit.c:60
+msgctxt "unit name"
+msgid "teaspoon"
+msgstr "çay kaşığı"
+
+#: src/gr-unit.c:60
+msgctxt "unit plural"
+msgid "teaspoons"
+msgstr "çay kaşığı"
+
+#: src/gr-unit.c:61
+msgctxt "unit abbreviation"
+msgid "box"
+msgstr "kutu"
+
+#: src/gr-unit.c:61
+msgctxt "unit name"
+msgid "box"
+msgstr "kutu"
+
+#: src/gr-unit.c:61
+msgctxt "unit plural"
+msgid "boxes"
+msgstr "kutu"
+
+#: src/gr-unit.c:62
+msgctxt "unit abbreviation"
+msgid "pkg"
+msgstr "paket"
+
+#: src/gr-unit.c:62
+msgctxt "unit name"
+msgid "package"
+msgstr "paket"
+
+#: src/gr-unit.c:62
+msgctxt "unit plural"
+msgid "packages"
+msgstr "paket"
+
+#: src/gr-unit.c:63
+msgctxt "unit abbreviation"
+msgid "glass"
+msgstr "bardak"
+
+#: src/gr-unit.c:63
+msgctxt "unit name"
+msgid "glass"
+msgstr "bardak"
+
+#: src/gr-unit.c:63
+msgctxt "unit plural"
+msgid "glasses"
+msgstr "bardak"
+
+#: src/gr-unit.c:64
+msgctxt "unit abbreviation"
+msgid "mm"
+msgstr "mm"
+
+#: src/gr-unit.c:64
+msgctxt "unit name"
+msgid "millimeter"
+msgstr "milimetre"
+
+#: src/gr-unit.c:64
+msgctxt "unit plural"
+msgid "millimeters"
+msgstr "milimetre"
+
+#: src/gr-unit.c:65
+msgctxt "unit abbreviation"
+msgid "cm"
+msgstr "cm"
+
+#: src/gr-unit.c:65
+msgctxt "unit name"
+msgid "centimeter"
+msgstr "santimetre"
+
+#: src/gr-unit.c:65
+msgctxt "unit plural"
+msgid "centimeters"
+msgstr "santimetre"
+
+#: src/gr-unit.c:66
+msgctxt "unit abbreviation"
+msgid "m"
+msgstr "m"
+
+#: src/gr-unit.c:66
+msgctxt "unit name"
+msgid "meter"
+msgstr "metre"
+
+#: src/gr-unit.c:66
+msgctxt "unit plural"
+msgid "meters"
+msgstr "metre"
+
+#: src/gr-unit.c:67
+msgctxt "unit abbreviation"
+msgid "st"
+msgstr "st"
+
+#: src/gr-unit.c:67
+msgctxt "unit name"
+msgid "stone"
+msgstr "stone"
+
+#: src/gr-unit.c:67
+msgctxt "unit plural"
+msgid "stone"
+msgstr "stone"
+
+#: src/gr-unit.c:68
+msgctxt "unit abbreviation"
+msgid "pinch"
+msgstr "tutam"
+
+#: src/gr-unit.c:68
+msgctxt "unit name"
+msgid "pinch"
+msgstr "tutam"
+
+#: src/gr-unit.c:68
+msgctxt "unit plural"
+msgid "pinches"
+msgstr "tutam"
+
+#: src/gr-unit.c:69
+msgctxt "unit abbreviation"
+msgid "bunch"
+msgstr "demet"
+
+#: src/gr-unit.c:69
+msgctxt "unit name"
+msgid "bunch"
+msgstr "demet"
+
+#: src/gr-unit.c:69
+msgctxt "unit plural"
+msgid "bunches"
+msgstr "demet"
+
+#: src/gr-unit.c:167
+#, c-format
+msgid "I don’t know this unit: %s"
+msgstr "Bilinmeyen ölçü birimi: %s"
+
+#: src/gr-utils.c:334
+#, c-format
+msgid "more than a year ago"
+msgstr "bir yıldan daha önce"
+
+#: src/gr-utils.c:337 src/gr-utils.c:341
+#, c-format
+msgid "%d month ago"
+msgid_plural "%d months ago"
+msgstr[0] "%d ay önce"
+
+#: src/gr-utils.c:345
+#, c-format
+msgid "%d day ago"
+msgid_plural "%d days ago"
+msgstr[0] "%d gün önce"
+
+#: src/gr-utils.c:348
+#, c-format
+msgid "just now"
+msgstr "şimdi"
+
+#: src/gr-utils.c:350
+#, c-format
+msgid "10 minutes ago"
+msgstr "10 dakika önce"
+
+#: src/gr-utils.c:352
+#, c-format
+msgid "half an hour ago"
+msgstr "yarım saat önce"
+
+#: src/gr-utils.c:356
+#, c-format
+msgid "%d hour ago"
+msgid_plural "%d hours ago"
+msgstr[0] "%d saat önce"
+
+#: src/gr-utils.c:362
+msgid "some time ago"
+msgstr "bir süre önce"
+
+#: src/gr-utils.c:386
+msgid "Could not connect to the session bus from inside the Flatpak sandbox."
+msgstr ""
+"Flatpak sanal ortamı içinden oturum veriyoluna (session bus) bağlanılamadı."
+
+#: src/gr-utils.c:387
+msgid "Certain functionality will not be available."
+msgstr "Belirli işlevler etkin olmayacaktır."
+
+#: src/gr-utils.c:400
+#, c-format
+msgid ""
+"Could not create D-Bus proxy for org.freedesktop.portal.Desktop interface %s"
+msgstr ""
+
+#: src/gr-utils.c:401
+#, c-format
+msgid "Error: %s"
+msgstr "Hata: %s"
+
+#: src/gr-utils.c:412
+msgid ""
+"Missing the desktop portal needed to open files from inside a Flatpak "
+"sandbox."
+msgstr ""
+"Flatpak sanal ortamı içinden dosyaları açmak için masaüstü portalı eksik."
+
+#: src/gr-utils.c:414
+msgid ""
+"Missing the desktop portal needed to print from inside a Flatpak sandbox."
+msgstr ""
+"Flatpak sanal ortamı içinden dosya yazdırmak için masaüstü portalı eksik."
+
+#: src/gr-utils.c:416
+msgid ""
+"Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
+msgstr ""
+"Flatpak sanal ortamı içinden adresleri açmak için masaüstü portalı eksik."
+
+#: src/gr-utils.c:420
+msgid ""
+"Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
+msgstr ""
+"Lütfen, şu paketleri sisteminize yükleyiniz: xdg-desktop-portal desktop-"
+"portal-gtk"
+
+#: src/gr-window.c:256
+msgid "Add a New Recipe"
+msgstr "Yeni Tarif Ekle"
+
+#: src/gr-window.c:537
+#, c-format
+msgid ""
+"The “%s” recipe has unsaved changes.\n"
+"Close the window anyway?"
+msgstr ""
+"“%s” tarifi kaydedilmemiş değişiklikler içeriyor.\n"
+"Pencere yine de kapatılsın mı?"
+
+#: src/gr-window.c:540
+msgid ""
+"The new recipe has not been saved.\n"
+"Close the window anyway?"
+msgstr ""
+"Yeni tarif kaydedilmedi.\n"
+"Pencere yine de kapatılsın mı?"
+
+#: src/gr-window.c:664
+#, c-format
+msgid "Recipe “%s” deleted"
+msgstr "“%s” tarifi silindi"
+
+#: src/gr-window.c:714
+#, c-format
+msgid "You updated your contributed “%s” recipe. Send an update?"
+msgstr ""
+"Katkı vermiş olduğunuz “%s” tarifini güncellediniz. Bir güncelleme "
+"gönderilsin mi?"
+
+#: src/gr-window.c:855
+msgid "Ready to Cook!"
+msgstr "Pişirmeye hazır!"
+
+#: src/gr-window.c:937
+msgid "Sorted by Name"
+msgstr "İsme Göre Sırala"
+
+#: src/gr-window.c:942
+msgid "Sorted by Recency"
+msgstr "Tarihe Göre Sırala"
+
+#: src/gr-window.c:1139
+msgid "Imported Recipes"
+msgstr "İçe Aktarılan tarifler"
+
+#: src/gr-window.c:1215
+msgid "Select a recipe file"
+msgstr "Bir tarif dosyası seç"
+
+#: src/gr-window.c:1241
+#, c-format
+msgid "Recipes have been exported to “%s”"
+msgstr "Tarifler “%s” konumuna dışa aktarıldı"
+
+#: src/gr-window.c:1279
+msgid "Select a file"
+msgstr "Dosya seç"
+
+#: src/gr-window.c:1282
+msgid "_Export"
+msgstr "_Dışa Aktar"
+
+#: src/gr-window.c:1312
+#, c-format
+msgid "Chefs: %s"
+msgstr "Şef: %s"
+
+#: src/gr-window.c:1322
+msgid "Favorite Recipes"
+msgstr "Beğenilen Tarifler"
+
+#: src/gr-window.c:1370
+msgid "Buy Ingredients"
+msgstr "Malzeme Satın Al"
+
+#. TRANSLATORS: %s gets replaced by a version number
+#: src/gr-window.c:1514
+#, c-format
+msgid "Recipes %s"
+msgstr "Tarifler %s"
+
+#. TRANSLATORS: %s gets replaced by a date
+#: src/gr-window.c:1531
+#, c-format
+msgid "Released: %s"
+msgstr "Yayınlanma Tarihi: %s"
+
+#: src/gr-window.c:1534
+#, c-format
+msgid "Unreleased"
+msgstr "Yayınlanmadı"
+
+#: src/ingredients.inc:1
+msgid "Almond"
+msgstr "Badem"
+
+#: src/ingredients.inc:2
+msgid "Amaretti"
+msgstr "Amaretti"
+
+#: src/ingredients.inc:3
+msgid "Anchovies"
+msgstr "Ançuez"
+
+#: src/ingredients.inc:4
+msgid "Apple"
+msgstr "Elma"
+
+#: src/ingredients.inc:5
+msgid "Apple Vinegar"
+msgstr "Elma sirkesi"
+
+#: src/ingredients.inc:6
+msgid "Apricot"
+msgstr "Kayısı"
+
+#: src/ingredients.inc:7
+msgid "Artichoke"
+msgstr "Enginar"
+
+#: src/ingredients.inc:8
+msgid "Asparagus"
+msgstr "Kuşkonmaz"
+
+#: src/ingredients.inc:9
+msgid "Aubergine"
+msgstr "Patlıcan"
+
+#: src/ingredients.inc:10
+msgid "Baby Spinach"
+msgstr "Küçük ıspanak"
+
+#: src/ingredients.inc:11
+msgid "Bacon"
+msgstr "Domuz pastırması"
+
+# Farklı çeviri önerilerine açıktır.
+# Simit in dilimizdeki özel anlamından dolayı
+# direk simit olarak kullanmadım.
+#: src/ingredients.inc:12
+msgid "Bagel"
+msgstr "Amerikan simidi"
+
+#: src/ingredients.inc:13
+msgid "Baked beans"
+msgstr "Kuru fasülye"
+
+#: src/ingredients.inc:14
+msgid "Baking powder"
+msgstr "Kabartma tozu"
+
+#: src/ingredients.inc:15
+msgid "Banana"
+msgstr "Muz"
+
+#: src/ingredients.inc:16
+msgid "Basil"
+msgstr "Fesleğen"
+
+#: src/ingredients.inc:17
+msgid "Basmati rice"
+msgstr "Basmati pirinci"
+
+#: src/ingredients.inc:18
+msgid "Bay leaf"
+msgstr "Defne yaprağı"
+
+#: src/ingredients.inc:19
+msgid "Beans"
+msgstr "Fasülye"
+
+#: src/ingredients.inc:20
+msgid "Bean sprouts"
+msgstr "Fasülye filizi"
+
+#: src/ingredients.inc:21
+msgid "Beef"
+msgstr "Sığır eti"
+
+#: src/ingredients.inc:22
+msgid "Beef mince"
+msgstr "Dana kıyma"
+
+#: src/ingredients.inc:23
+msgid "Beef sausage"
+msgstr "Sığır eti sosisi"
+
+#: src/ingredients.inc:24
+msgid "Beef (sirloin)"
+msgstr "Sığır eti (sığır filetosu)"
+
+#: src/ingredients.inc:25
+msgid "Beef stock"
+msgstr "Sığır eti suyu (bulyon)"
+
+#: src/ingredients.inc:26
+msgid "Beetroot"
+msgstr "Kırmızı pancar"
+
+#: src/ingredients.inc:27
+msgid "Bell pepper"
+msgstr "Dolmalık biber"
+
+#: src/ingredients.inc:28
+msgid "Bell Pepper (green)"
+msgstr "Dolmalık biber (yeşil)"
+
+#: src/ingredients.inc:29
+msgid "Berry"
+msgstr "Yemiş"
+
+#: src/ingredients.inc:30
+msgid "Bilberry"
+msgstr "Çoban üzümü"
+
+#: src/ingredients.inc:31
+msgid "Biscotti"
+msgstr "Biscotti"
+
+#: src/ingredients.inc:32
+msgid "Black cardamom pod"
+msgstr "Siyah kakule"
+
+#: src/ingredients.inc:33
+msgid "Black peppercorns"
+msgstr "Karabiber"
+
+#: src/ingredients.inc:34
+msgid "Blueberry"
+msgstr "Maviyemiş"
+
+#: src/ingredients.inc:35
+msgid "Bourbon whiskey"
+msgstr "Bourbon viski"
+
+#: src/ingredients.inc:36
+msgid "Breadcrumbs"
+msgstr "Galeta unu"
+
+#: src/ingredients.inc:37
+msgid "Brewer's yeast"
+msgstr "Bira mayası"
+
+#: src/ingredients.inc:38
+msgid "Broad beans"
+msgstr "Bakla"
+
+#: src/ingredients.inc:39
+msgid "Broth"
+msgstr "Et suyu"
+
+#: src/ingredients.inc:40
+msgid "Brown sugar"
+msgstr "Kahverengi şeker"
+
+#: src/ingredients.inc:41
+msgid "Butter"
+msgstr "Tereyağ"
+
+#: src/ingredients.inc:42
+msgid "Butter, melted"
+msgstr "Tereyağ, eritilmiş"
+
+#: src/ingredients.inc:43
+msgid "Button mushroom"
+msgstr "Kültür mantarı"
+
+#: src/ingredients.inc:44
+msgid "Cabbage"
+msgstr "Beyaz lahana"
+
+#: src/ingredients.inc:45
+msgid "Cake flour"
+msgstr "Kek unu"
+
+#: src/ingredients.inc:46
+msgid "Canellini beans"
+msgstr "Cannellini fasülyesi"
+
+#: src/ingredients.inc:47
+msgid "Canned black beans, rinsed"
+msgstr "Konserve siyah kuru fasülye, durulanmış"
+
+#: src/ingredients.inc:48
+msgid "Canned chopped tomatoes"
+msgstr "Konserve doğranmış domates"
+
+#: src/ingredients.inc:49
+msgid "Carrot"
+msgstr "Havuç"
+
+#: src/ingredients.inc:50
+msgid "Cashews, lightly toasted"
+msgstr "Kaju, hafifçe kızartılmış"
+
+#: src/ingredients.inc:51
+msgid "Caster sugar"
+msgstr "Pudra şekeri"
+
+#: src/ingredients.inc:52
+msgid "Celery"
+msgstr "Kereviz"
+
+#: src/ingredients.inc:53
+msgid "Champignons"
+msgstr "Yemeklik mantar"
+
+#: src/ingredients.inc:54
+msgid "Cheese"
+msgstr "Peynir"
+
+#: src/ingredients.inc:55
+msgid "Cheese slices"
+msgstr "Peynir dilimleri"
+
+#: src/ingredients.inc:56
+msgid "Cherries, pitted"
+msgstr "Kiraz, çekirdeksiz"
+
+#: src/ingredients.inc:57
+msgid "Cherry tomatoes, halved"
+msgstr "Çeri domates, yarıya kesilmiş"
+
+#: src/ingredients.inc:58
+msgid "Chia seeds"
+msgstr "Chia çekirdeği"
+
+#: src/ingredients.inc:59
+msgid "Chicken breasts, large"
+msgstr "Tavuk göğsü, geniş"
+
+#: src/ingredients.inc:60
+msgid "Chicken livers"
+msgstr "Tavuk ciğeri"
+
+#: src/ingredients.inc:61
+msgid "chicken stock"
+msgstr "Tavuk suyu"
+
+#: src/ingredients.inc:62
+msgid "Chili flakes"
+msgstr "Pul biber (kırmızı)"
+
+#: src/ingredients.inc:63
+msgid "Chili powder"
+msgstr "Biber tozu"
+
+#: src/ingredients.inc:64
+msgid "Chili sauce (e.g. sriracha)"
+msgstr "Biber sosu (örn: sriracha)"
+
+#: src/ingredients.inc:65
+msgid "Chocolate"
+msgstr "Çikolata"
+
+#: src/ingredients.inc:66
+msgid "Chocolate frosting"
+msgstr "Çikolatalı pasta kaplaması"
+
+#: src/ingredients.inc:67
+msgid "Chorizo"
+msgstr "Domuz sucuğu"
+
+#: src/ingredients.inc:68
+msgid "Ciboulette"
+msgstr "Frenk soğanı (Ciboulette)"
+
+#: src/ingredients.inc:69
+msgid "Cilantro"
+msgstr "Kişniş"
+
+#: src/ingredients.inc:70
+msgid "Cilantro leaves"
+msgstr "Kişniş yaprağı"
+
+#: src/ingredients.inc:71
+msgid "Cinnamon"
+msgstr "Tarçın"
+
+#: src/ingredients.inc:72
+msgid "Cinnamon sticks"
+msgstr "Tarçın çubuğu"
+
+#: src/ingredients.inc:73
+msgid "Cloves"
+msgstr "Karanfil"
+
+#: src/ingredients.inc:74
+msgid "Cocoa butter"
+msgstr "Kakao yağı"
+
+#: src/ingredients.inc:75
+msgid "Cocoa powder"
+msgstr "Kakao tozu"
+
+#: src/ingredients.inc:76
+msgid "Coconut milk"
+msgstr "Hindistan cevizi sütü"
+
+#: src/ingredients.inc:77
+msgid "Coconut oil"
+msgstr "Hindistan cevizi yağı"
+
+#: src/ingredients.inc:78
+msgid "Coconut water"
+msgstr "Hindistan cevizi suyu"
+
+#: src/ingredients.inc:79
+msgid "Cold water"
+msgstr "Soğuk su"
+
+#: src/ingredients.inc:80
+msgid "cooked beef"
+msgstr "Pişmiş sığır eti"
+
+#: src/ingredients.inc:81
+msgid "Coriander"
+msgstr "Kişniş"
+
+#: src/ingredients.inc:82
+msgid "Coriandre seeds"
+msgstr "Kişniş tohumu"
+
+#: src/ingredients.inc:83
+msgid "Couscous"
+msgstr "Kuskus"
+
+#: src/ingredients.inc:84
+msgid "Cracked pepper"
+msgstr "Pul biber (siyah)"
+
+#: src/ingredients.inc:85
+msgid "Cream"
+msgstr "Krema"
+
+#: src/ingredients.inc:86
+msgid "Cream cheese"
+msgstr "Krem peynir"
+
+#: src/ingredients.inc:87
+msgid "Crushed red pepper flakes"
+msgstr "Pul biber (ezilmiş)"
+
+#: src/ingredients.inc:88
+msgid "Cucumber"
+msgstr "Salatalık"
+
+#: src/ingredients.inc:89
+msgid "Cucumber (large)"
+msgstr "Salatalık (geniş)"
+
+#: src/ingredients.inc:90
+msgid "Cumin"
+msgstr "Kimyon"
+
+#: src/ingredients.inc:91
+msgid "Cumin seeds"
+msgstr "Kimyon çekirdeği"
+
+#: src/ingredients.inc:92
+msgid "Dark Jamaican rum"
+msgstr "Koyu Jamaika romu"
+
+#: src/ingredients.inc:93
+msgid "Date"
+msgstr "Hurma"
+
+#: src/ingredients.inc:94
+msgid "Dill"
+msgstr "Dereotu"
+
+#: src/ingredients.inc:95
+msgid "Double cream"
+msgstr "Çifte krema"
+
+#: src/ingredients.inc:96
+msgid "Dried anchovies"
+msgstr "Kuru ançuez"
+
+#: src/ingredients.inc:97
+msgid "Dried chillies"
+msgstr "Kuru biber"
+
+#: src/ingredients.inc:98
+msgid "Dry or fresh cilantro"
+msgstr "Kuru veya taze kişniş"
+
+#: src/ingredients.inc:99
+msgid "Dry yeast"
+msgstr "Kuru maya"
+
+#: src/ingredients.inc:100
+msgid "Durum wheat semolina"
+msgstr "Makarnalık buğday (irmik)"
+
+#: src/ingredients.inc:101
+msgid "Earth Balance vegan buttery stick"
+msgstr "Earth Balance vegan tereyağlı çubuk"
+
+#: src/ingredients.inc:102
+msgid "Egg"
+msgstr "Yumurta"
+
+#: src/ingredients.inc:103
+msgid "Egg yolks"
+msgstr "Yumurta sarısı"
+
+#: src/ingredients.inc:104
+msgid "Fenugreek seeds"
+msgstr "Çemen tohumu"
+
+#: src/ingredients.inc:105
+msgid "Fig"
+msgstr "İncir"
+
+#: src/ingredients.inc:106
+msgid "Finely chopped cilantro"
+msgstr "İnce doğranmış kişniş"
+
+#: src/ingredients.inc:107
+msgid "Finely chopped onions"
+msgstr "İnce doğranmış soğan"
+
+#: src/ingredients.inc:108
+msgid "Finely chopped thai chillies or green chillis"
+msgstr "İnce doğranmış tay biberi veya yeşil biber"
+
+#: src/ingredients.inc:109
+msgid "Finely chopped tomato"
+msgstr "İnce doğranmış domates"
+
+#: src/ingredients.inc:110
+msgid "Fish"
+msgstr "Balık"
+
+#: src/ingredients.inc:111
+msgid "Fish sauce"
+msgstr "Balık sosu"
+
+#: src/ingredients.inc:112
+msgid "Flour"
+msgstr "Un"
+
+#: src/ingredients.inc:113
+msgid "Flour (all-purpose)"
+msgstr "Un (genel amaçlı)"
+
+#: src/ingredients.inc:114
+msgid "Flour (Tipo 00)"
+msgstr "Un (Tipo 00)"
+
+#: src/ingredients.inc:115
+msgid "Fresh rosemary"
+msgstr "Taze biberiye"
+
+#: src/ingredients.inc:116
+msgid "Fresh tagliatelle"
+msgstr "Taze tagliatelle"
+
+#: src/ingredients.inc:117
+msgid "Garam masala"
+msgstr "Garam masala"
+
+#: src/ingredients.inc:118
+msgid "Garlic"
+msgstr "Sarımsak"
+
+#: src/ingredients.inc:119
+msgid "Garlic cloves"
+msgstr "Diş sarımsak"
+
+#: src/ingredients.inc:120
+msgid "Garlic powder"
+msgstr "Sarımsak tozu"
+
+#: src/ingredients.inc:121
+msgid "Ginger"
+msgstr "Zencefil"
+
+#: src/ingredients.inc:122
+msgid "Ginger, freshly grated"
+msgstr "Zencefil, taze doğranmış"
+
+#: src/ingredients.inc:123
+msgid "Ginger ground"
+msgstr "Zencefil, öğütülmüş"
+
+#: src/ingredients.inc:124
+msgid "Goat cheese"
+msgstr "Keçi peyniri"
+
+#: src/ingredients.inc:125
+msgid "Golden caster sugar"
+msgstr "Pudra şekeri"
+
+#: src/ingredients.inc:126
+msgid "Good, dry red wine"
+msgstr "Güzel, kuru kırmızı şarap"
+
+#: src/ingredients.inc:127
+msgid "Gouda cheese"
+msgstr "Gouda peyniri"
+
+#: src/ingredients.inc:128
+msgid "Goulash spices"
+msgstr "Goulash baharatları"
+
+#: src/ingredients.inc:129
+msgid "Guanciale cubes"
+msgstr "Guanciale küpleri"
+
+#: src/ingredients.inc:130
+msgid "Long pasta, e.g. spaghetti"
+msgstr "Uzun makarna, yani spagetti"
+
+#: src/ingredients.inc:131
+msgid "Parmesan cheese"
+msgstr "Parmesan peyniri"
+
+#: src/ingredients.inc:132
+msgid "Grapes"
+msgstr "Üzüm"
+
+#: src/ingredients.inc:133
+msgid "Grated French Emmental"
+msgstr " Fransız emmental, rendelenmiş"
+
+#: src/ingredients.inc:134
+msgid "Green Apple"
+msgstr "Yeşil elma"
+
+#: src/ingredients.inc:135
+msgid "Green Bell Pepper"
+msgstr "Yeşil dolmalık biber"
+
+#: src/ingredients.inc:136
+msgid "Green Cabbage"
+msgstr "Yeşil lahana"
+
+#: src/ingredients.inc:137
+msgid "Green olive"
+msgstr "Yeşil zeytin"
+
+#: src/ingredients.inc:138
+msgid "Green onions"
+msgstr "Yeşil soğan"
+
+#: src/ingredients.inc:139
+msgid "green onions, chopped"
+msgstr "Yeşil soğan, doğranmış"
+
+#: src/ingredients.inc:140
+msgid "Ground beef"
+msgstr "Köftelik dana kıyma"
+
+#: src/ingredients.inc:141
+msgid "Ground coriander (optional)"
+msgstr "Öğütülmüş kişniş (isteğe bağlı)"
+
+#: src/ingredients.inc:142
+msgid "Ground cumin"
+msgstr "Öğütülmüş kimyon"
+
+#: src/ingredients.inc:143
+msgid "Ground fennel"
+msgstr "Öğütülmüş rezene"
+
+#: src/ingredients.inc:144
+msgid "Ground pepper"
+msgstr "Öğütülmüş biber"
+
+#: src/ingredients.inc:145
+msgid "Ham"
+msgstr "Domuz eti"
+
+#: src/ingredients.inc:146
+msgid "Hazelnuts"
+msgstr "Fındık"
+
+#: src/ingredients.inc:147
+msgid "Hazelnuts milk"
+msgstr "Fındık sütü"
+
+#: src/ingredients.inc:148
+msgid "Hoisin sauce"
+msgstr "Hoisin sosu"
+
+#: src/ingredients.inc:149
+msgid "Honey"
+msgstr "Bal"
+
+#: src/ingredients.inc:150
+msgid "Horseradish"
+msgstr "Yabanturpu"
+
+#: src/ingredients.inc:151
+msgid "Japanese mayonaisse"
+msgstr "Japon mayonezi"
+
+#: src/ingredients.inc:152
+msgid "Juniper berries"
+msgstr "Ardıç meyvesi"
+
+#: src/ingredients.inc:153
+msgid "Kale"
+msgstr "Kıvırcık lahana"
+
+#: src/ingredients.inc:154
+msgid "Ketchup"
+msgstr "Ketçap"
+
+#: src/ingredients.inc:155
+msgid "Kiwis"
+msgstr "Kivi"
+
+#: src/ingredients.inc:156
+msgid "Lamb"
+msgstr "Kuzu eti"
+
+#: src/ingredients.inc:157
+msgid "Lardons"
+msgstr "Domuz yağı parçaları"
+
+#: src/ingredients.inc:158
+msgid "Lard or oil"
+msgstr "Domuz yağı veya yağ"
+
+#: src/ingredients.inc:159
+msgid "Lemon"
+msgstr "Limon"
+
+#: src/ingredients.inc:160
+msgid "Lemon juice"
+msgstr "Limon suyu"
+
+#: src/ingredients.inc:161
+msgid "Lemon (untreated)"
+msgstr "Limon (işlenmemiş)"
+
+#: src/ingredients.inc:162
+msgid "Lettuce"
+msgstr "Kıvırcık"
+
+#: src/ingredients.inc:163
+msgid "Light muscovado sugar"
+msgstr "Hafif muscovado şekeri"
+
+#: src/ingredients.inc:164
+msgid "Lime"
+msgstr "Misket limonu"
+
+#: src/ingredients.inc:165
+msgid "Lime juice"
+msgstr "Misket limonu suyu"
+
+#: src/ingredients.inc:166
+msgid "Linseeds"
+msgstr "Keten tohumu"
+
+#: src/ingredients.inc:167
+msgid "Mandarin Oranges"
+msgstr "Mandalina"
+
+#: src/ingredients.inc:168
+msgid "Margarine"
+msgstr "Margarin"
+
+#: src/ingredients.inc:169
+msgid "Mayonnaise"
+msgstr "Mayonez"
+
+#: src/ingredients.inc:170
+msgid "Meat"
+msgstr "Et"
+
+#: src/ingredients.inc:171
+msgid "Meat and bones"
+msgstr "Kemikli et"
+
+#: src/ingredients.inc:172
+msgid "Milk"
+msgstr "Süt"
+
+#: src/ingredients.inc:173
+msgid "Mixed berries"
+msgstr "Karışık yemişler"
+
+#: src/ingredients.inc:174
+msgid "Mixed frozen bell peppers"
+msgstr "Karışık dondurulmuş dolmalık biber"
+
+#: src/ingredients.inc:175
+msgid "Mori-nu organic silken tofu (firm)"
+msgstr "Mori-nu organik ipeksi tofu (katı)"
+
+#: src/ingredients.inc:176
+msgid "Mushrooms"
+msgstr "Mantar"
+
+#: src/ingredients.inc:177
+msgid "Mustard"
+msgstr "Hardal"
+
+#: src/ingredients.inc:178
+msgid "Mustard seeds"
+msgstr "Hardal tohumu"
+
+#: src/ingredients.inc:179
+msgid "Nut"
+msgstr "Ceviz"
+
+#: src/ingredients.inc:180
+msgid "Nutmeg"
+msgstr "Hint cevizi"
+
+#: src/ingredients.inc:181
+msgid "Nutritional yeast"
+msgstr "Beslenme mayası"
+
+#: src/ingredients.inc:182
+msgid "Oatmeal"
+msgstr "Yulaf"
+
+#: src/ingredients.inc:183
+msgid "Oil"
+msgstr "Yağ"
+
+#: src/ingredients.inc:184
+msgid "Okonomiyaki sauce"
+msgstr "Okonomiyaki sosu"
+
+#: src/ingredients.inc:185
+msgid "Olive oil"
+msgstr "Zeytin yağı"
+
+#: src/ingredients.inc:186
+msgid "Olive oil, extra-virgin"
+msgstr "Zeytin yağı, sızma"
+
+#: src/ingredients.inc:187
+msgid "Olives, pitted"
+msgstr "Zeytin, çekirdeksiz"
+
+#: src/ingredients.inc:188
+msgid "Onion"
+msgstr "Soğan"
+
+#: src/ingredients.inc:189
+msgid "Onion powder"
+msgstr "Soğan tozu"
+
+#: src/ingredients.inc:190
+msgid "Orange"
+msgstr "Portakal"
+
+#: src/ingredients.inc:191
+msgid "Oregano"
+msgstr "Kekik"
+
+#: src/ingredients.inc:192
+msgid "Pancetta"
+msgstr "Pancetta (İtalyan domuz pastırması)"
+
+#: src/ingredients.inc:193
+msgid "Pandan leaves"
+msgstr "Pandan yaprakları"
+
+#: src/ingredients.inc:194
+msgid "Paprika"
+msgstr "Paprika"
+
+#: src/ingredients.inc:195
+msgid "Parmesan cheese, grated"
+msgstr "Parmesan peyniri, öğütülmüş"
+
+#: src/ingredients.inc:196
+msgid "Parsley"
+msgstr "Maydanoz"
+
+#: src/ingredients.inc:197
+msgid "Peach"
+msgstr "Şeftali"
+
+#: src/ingredients.inc:198
+msgid "Peperoni"
+msgstr "Peperoni"
+
+#: src/ingredients.inc:199
+msgid "Pepper"
+msgstr "Biber"
+
+#: src/ingredients.inc:200
+msgid "Peppers"
+msgstr "Biber"
+
+#: src/ingredients.inc:201
+msgid "Pickles"
+msgstr "Salatalık turşusu"
+
+#: src/ingredients.inc:202
+msgid "Pineapple"
+msgstr "Ananas"
+
+#: src/ingredients.inc:203
+msgid "Pizza sauce"
+msgstr "Pizza sosu"
+
+#: src/ingredients.inc:204
+msgid "Plain flour"
+msgstr "Normal un"
+
+#: src/ingredients.inc:205
+msgid "Pomegranate"
+msgstr "Nar"
+
+#: src/ingredients.inc:206
+msgid "Pomegranate juice"
+msgstr "Nar suyu"
+
+#: src/ingredients.inc:207
+msgid "Pork fat"
+msgstr "Domuz yağı"
+
+#: src/ingredients.inc:208
+msgid "Pork loin"
+msgstr "Domuz filetosu"
+
+#: src/ingredients.inc:209
+msgid "Potato"
+msgstr "Patates"
+
+#: src/ingredients.inc:210
+msgid "Powdered sugar"
+msgstr "Toz şeker"
+
+#: src/ingredients.inc:211
+msgid "Pumpkin seeds"
+msgstr "Balkabağı çekirdeği"
+
+#: src/ingredients.inc:212
+msgid "Quinoa"
+msgstr "Kinoa"
+
+#: src/ingredients.inc:213
+msgid "Radish"
+msgstr "Turp"
+
+#: src/ingredients.inc:214
+msgid "Raisins"
+msgstr "Kuru üzüm"
+
+#: src/ingredients.inc:215
+msgid "Red bell pepper"
+msgstr "Kırmızı dolmalık biber"
+
+#: src/ingredients.inc:216
+msgid "Red onion"
+msgstr "Kırmızı soğan"
+
+#: src/ingredients.inc:217
+msgid "Red Pepper"
+msgstr "Kırmızı biber"
+
+#: src/ingredients.inc:218
+msgid "Red wine"
+msgstr "Kırmızı şarap"
+
+#: src/ingredients.inc:219
+msgid "Rice"
+msgstr "Pirinç"
+
+#: src/ingredients.inc:220
+msgid "Rice, cooked"
+msgstr "Pirinç, pişmiş"
+
+#: src/ingredients.inc:221
+msgid "Rice vermicelli noodles"
+msgstr "Prinç eriştesi"
+
+#: src/ingredients.inc:222
+msgid "Rock sugar"
+msgstr "Küp şeker"
+
+#: src/ingredients.inc:223
+msgid "Rolled oats"
+msgstr "Yulaf ezmesi"
+
+#: src/ingredients.inc:224
+msgid "Rosemary"
+msgstr "Biberiye"
+
+#: src/ingredients.inc:225
+msgid "Rosé wine"
+msgstr "Gül şarabı"
+
+#: src/ingredients.inc:226
+msgid "Saffron"
+msgstr "Safran"
+
+#: src/ingredients.inc:227
+msgid "Sage"
+msgstr "Adaçayı"
+
+#: src/ingredients.inc:228
+msgid "Salmon"
+msgstr "Somon balığı"
+
+#: src/ingredients.inc:229
+msgid "Salt"
+msgstr "Tuz"
+
+#: src/ingredients.inc:230
+msgid "Salt and pepper"
+msgstr "Tuz ve biber"
+
+#: src/ingredients.inc:231
+msgid "Saucebinder"
+msgstr "Saucenbinder"
+
+#: src/ingredients.inc:232
+msgid "Scallions"
+msgstr "Yeşil soğan"
+
+#: src/ingredients.inc:233
+msgid "Sea salt"
+msgstr "Deniz tuzu"
+
+#: src/ingredients.inc:234
+msgid "Semi-skimmed milk"
+msgstr "Yarım yağlı süt"
+
+#: src/ingredients.inc:235
+msgid "Sesame oil"
+msgstr "Susam yağı"
+
+#: src/ingredients.inc:236
+msgid "Sesame seeds"
+msgstr "Susam taneleri"
+
+#: src/ingredients.inc:237
+msgid "Shallots"
+msgstr "Papaz yahnisi"
+
+#: src/ingredients.inc:238
+msgid "Shrimps"
+msgstr "Karides"
+
+#: src/ingredients.inc:239
+msgid "Slivered almonds, toasted"
+msgstr "Şerit badem, kızartılmış"
+
+#: src/ingredients.inc:240
+msgid "Sour cream"
+msgstr "Ekşi krema"
+
+#: src/ingredients.inc:241
+msgid "Soy sauce"
+msgstr "Soya sosu"
+
+#: src/ingredients.inc:242
+msgid "Spinach"
+msgstr "Ispanak"
+
+#: src/ingredients.inc:243
+msgid "Spring onion"
+msgstr "Taze soğan"
+
+#: src/ingredients.inc:244
+msgid "Squash"
+msgstr "Kabak"
+
+#: src/ingredients.inc:245
+msgid "Star anise"
+msgstr "Yıldız anason"
+
+#: src/ingredients.inc:246
+msgid "Strawberry"
+msgstr "Çilek"
+
+#: src/ingredients.inc:247
+msgid "Sugar"
+msgstr "Şeker"
+
+#: src/ingredients.inc:248
+msgid "Sunflower seeds"
+msgstr "Ayçiçeği çekirdeği"
+
+#: src/ingredients.inc:249
+msgid "Sweet potatoes"
+msgstr "Tatlı patates"
+
+#: src/ingredients.inc:250
+msgid "Tamarind paste"
+msgstr "Demirhindi ezmesi"
+
+#: src/ingredients.inc:251
+msgid "Tangerine"
+msgstr "Mandalina"
+
+#: src/ingredients.inc:252
+msgid "Thai basil leaves"
+msgstr "Tay fesleğen yaprağı"
+
+#: src/ingredients.inc:253
+msgid "Thai chillies"
+msgstr "Tay biberi"
+
+#: src/ingredients.inc:254
+msgid "Thai fish sauce"
+msgstr "Tay balık sosu"
+
+#: src/ingredients.inc:255
+msgid "Thyme"
+msgstr "Kekik"
+
+#: src/ingredients.inc:256
+msgid "Tinned pineapple rings"
+msgstr "Konserve ananas halkası"
+
+#: src/ingredients.inc:257
+msgid "Tofu"
+msgstr "Tofu"
+
+#: src/ingredients.inc:258
+msgid "Tomato"
+msgstr "Domates"
+
+#: src/ingredients.inc:259
+msgid "Tomato paste"
+msgstr "Salça"
+
+#: src/ingredients.inc:260
+msgid "Tomato sauce"
+msgstr "Domates sosu"
+
+#: src/ingredients.inc:261
+msgid "Tumeric ground"
+msgstr "Zerdeçal, öğütülmüş"
+
+#: src/ingredients.inc:262
+msgid "Tuna fish"
+msgstr "Tuna balığı"
+
+#: src/ingredients.inc:263
+msgid "Unsalted butter"
+msgstr "Tuzsuz tereyağı"
+
+#: src/ingredients.inc:264
+msgid "Vanilla baking powder"
+msgstr "Vanilya kabartma tozu"
+
+#: src/ingredients.inc:265
+msgid "Vanilla extract"
+msgstr "Vanilya özü"
+
+#: src/ingredients.inc:266
+msgid "Vanilla powdered sugar, for dusting"
+msgstr "Vanilyalı pudra şekeri, terbiye için"
+
+#: src/ingredients.inc:267
+msgid "Vanilla pudding"
+msgstr "Vanilya pudingi"
+
+#: src/ingredients.inc:268
+msgid "Vanilla sugar"
+msgstr "Vanilya şekeri"
+
+#: src/ingredients.inc:269
+msgid "Vegetable oil"
+msgstr "Yemeklik yağ"
+
+#: src/ingredients.inc:270
+msgid "Vinegar"
+msgstr "Sirke"
+
+#: src/ingredients.inc:271
+msgid "Water"
+msgstr "Su"
+
+#: src/ingredients.inc:272
+msgid "Wheat flour"
+msgstr "Beyaz un"
+
+#: src/ingredients.inc:273
+msgid "White fish"
+msgstr "Alabalık"
+
+#: src/ingredients.inc:274
+msgid "White onion"
+msgstr "Beyaz soğan"
+
+#: src/ingredients.inc:275
+msgid "White wine"
+msgstr "Beyaz şarap"
+
+#: src/ingredients.inc:276
+msgid "Whole chicken"
+msgstr "Bütün tavuk"
+
+#: src/ingredients.inc:277
+msgid "Wine"
+msgstr "Şarap"
+
+#: src/ingredients.inc:278
+msgid "Worcestershire sauce"
+msgstr "Worcestershire sosu"
+
+#: src/ingredients.inc:279
+msgid "Yeast"
+msgstr "Maya"
+
+#: src/ingredients.inc:280
+msgid "Yellow bell pepper"
+msgstr "Sarı dolmalık biber"
+
+#: src/ingredients.inc:281
+msgid "Yoghurt"
+msgstr "Yoğurt"
+
+#: src/ingredients.inc:282
+msgid "Zest of 1 lemon (organic)"
+msgstr "Limon kabuğu, rendelenmiş (organik)"
+
+#: src/ingredients.inc:283
+msgid "Zinfandel"
+msgstr "Zinfandel"
+
+#: src/ingredients.inc:284
+msgid "Zuccini"
+msgstr "Kabak"
+
+#: src/no-ingredients.inc:1
+msgid "no Almond"
+msgstr "Badem içermesin"
+
+#: src/no-ingredients.inc:2
+msgid "no Amaretti"
+msgstr "Amaretti içermesin"
+
+#: src/no-ingredients.inc:3
+msgid "no Anchovies"
+msgstr "Ançuez içermesin"
+
+#: src/no-ingredients.inc:4
+msgid "no Apple"
+msgstr "Elma içermesin"
+
+#: src/no-ingredients.inc:5
+msgid "no Apple Vinegar"
+msgstr "Elma sirkesi içermesin"
+
+#: src/no-ingredients.inc:6
+msgid "no Apricot"
+msgstr "Kayısı içermesin"
+
+#: src/no-ingredients.inc:7
+msgid "no Artichoke"
+msgstr "Enginar içermesin"
+
+#: src/no-ingredients.inc:8
+msgid "no Asparagus"
+msgstr "Kuşkonmaz içermesin"
+
+#: src/no-ingredients.inc:9
+msgid "no Aubergine"
+msgstr "Patlıcan içermesin"
+
+#: src/no-ingredients.inc:10
+msgid "no Baby Spinach"
+msgstr "Küçük ıspanak içermesin"
+
+#: src/no-ingredients.inc:11
+msgid "no Bacon"
+msgstr "Domuz pastırması içermesin"
+
+#: src/no-ingredients.inc:12
+msgid "no Bagel"
+msgstr "Amerikan simidi içermesin"
+
+#: src/no-ingredients.inc:13
+msgid "no Baked beans"
+msgstr "Kuru fasülye içermesin"
+
+#: src/no-ingredients.inc:14
+msgid "no Baking powder"
+msgstr "Kabartma tozu içermesin"
+
+#: src/no-ingredients.inc:15
+msgid "no Banana"
+msgstr "Muz içermesin"
+
+#: src/no-ingredients.inc:16
+msgid "no Basil"
+msgstr "Fesleğen içermesin"
+
+#: src/no-ingredients.inc:17
+msgid "no Basmati rice"
+msgstr "Basmati pirinci içermesin"
+
+#: src/no-ingredients.inc:18
+msgid "no Bay leaf"
+msgstr "Defne yaprağı içermesin"
+
+#: src/no-ingredients.inc:19
+msgid "no Beans"
+msgstr "Fasülye içermesin"
+
+#: src/no-ingredients.inc:20
+msgid "no Bean sprouts"
+msgstr "Fasülye filizi içermesin"
+
+#: src/no-ingredients.inc:21
+msgid "no Beef"
+msgstr "Sığır eti içermesin"
+
+#: src/no-ingredients.inc:22
+msgid "no Beef mince"
+msgstr "Dana kıyma"
+
+#: src/no-ingredients.inc:23
+msgid "no Beef sausage"
+msgstr "Sığır eti sosisi içermesin"
+
+#: src/no-ingredients.inc:24
+msgid "no Beef (sirloin)"
+msgstr "Sığır eti (sığır filetosu) içermesin"
+
+#: src/no-ingredients.inc:25
+msgid "no Beef stock"
+msgstr "Sığır eti suyu (bulyon) içermesin"
+
+#: src/no-ingredients.inc:26
+msgid "no Beetroot"
+msgstr "Kırmızı pancar içermesin"
+
+#: src/no-ingredients.inc:27
+msgid "no Bell pepper"
+msgstr "Dolmalık biber içermesin"
+
+#: src/no-ingredients.inc:28
+msgid "no Bell Pepper (green)"
+msgstr "Dolmalık biber (yeşil) içermesin"
+
+#: src/no-ingredients.inc:29
+msgid "no Berry"
+msgstr "Yemiş içermesin"
+
+#: src/no-ingredients.inc:30
+msgid "no Bilberry"
+msgstr "Çoban üzümü (Bilberry) içermesin"
+
+#: src/no-ingredients.inc:31
+msgid "no Biscotti"
+msgstr "Biscotti içermesin"
+
+#: src/no-ingredients.inc:32
+msgid "no Black cardamom pod"
+msgstr "Siyah kakule içermesin"
+
+#: src/no-ingredients.inc:33
+msgid "no Black peppercorns"
+msgstr "Karabiber içermesin"
+
+#: src/no-ingredients.inc:34
+msgid "no Blueberry"
+msgstr "Maviyemiş içermesin"
+
+#: src/no-ingredients.inc:35
+msgid "no Bourbon whiskey"
+msgstr "Bourbon viski içermesin"
+
+#: src/no-ingredients.inc:36
+msgid "no Breadcrumbs"
+msgstr "Galeta unu içermesin"
+
+#: src/no-ingredients.inc:37
+msgid "no Brewer's yeast"
+msgstr "Bira mayası içermesin"
+
+#: src/no-ingredients.inc:38
+msgid "no Broad beans"
+msgstr "Bakla içermesin"
+
+#: src/no-ingredients.inc:39
+msgid "no Broth"
+msgstr "Et suyu içermesin"
+
+#: src/no-ingredients.inc:40
+msgid "no Brown sugar"
+msgstr "Kahverengi şeker içermesin"
+
+#: src/no-ingredients.inc:41
+msgid "no Butter"
+msgstr "Tereyağ içermesin"
+
+#: src/no-ingredients.inc:42
+msgid "no Butter, melted"
+msgstr "Tereyağ, eritilmiş içermesin"
+
+#: src/no-ingredients.inc:43
+msgid "no Button mushroom"
+msgstr "Kültür mantarı içermesin"
+
+#: src/no-ingredients.inc:44
+msgid "no Cabbage"
+msgstr "Beyaz lahana içermesin"
+
+#: src/no-ingredients.inc:45
+msgid "no Cake flour"
+msgstr "Kek unu içermesin"
+
+#: src/no-ingredients.inc:46
+msgid "no Canellini beans"
+msgstr "Cannellini fasülyesi içermesin"
+
+#: src/no-ingredients.inc:47
+msgid "no Canned black beans, rinsed"
+msgstr "Konserve siyah kuru fasülye, durulanmış, içermesin"
+
+#: src/no-ingredients.inc:48
+msgid "no Canned chopped tomatoes"
+msgstr "Konserve doğranmış domates içermesin"
+
+#: src/no-ingredients.inc:49
+msgid "no Carrot"
+msgstr "Havuç içermesin"
+
+#: src/no-ingredients.inc:50
+msgid "no Cashews, lightly toasted"
+msgstr "Kaju, hafifçe kızartılmış içermesin"
+
+#: src/no-ingredients.inc:51
+msgid "no Caster sugar"
+msgstr "Pudra şekeri içermesin"
+
+#: src/no-ingredients.inc:52
+msgid "no Celery"
+msgstr "Kereviz içermesin"
+
+#: src/no-ingredients.inc:53
+msgid "no Champignons"
+msgstr "Yemeklik mantar içermesin"
+
+#: src/no-ingredients.inc:54
+msgid "no Cheese"
+msgstr "Peynir içermesin"
+
+#: src/no-ingredients.inc:55
+msgid "no Cheese slices"
+msgstr "Peynir dilimleri içermesin"
+
+#: src/no-ingredients.inc:56
+msgid "no Cherries, pitted"
+msgstr "Kiraz, çekirdeksiz içermesin"
+
+#: src/no-ingredients.inc:57
+msgid "no Cherry tomatoes, halved"
+msgstr "Çeri domates, yarıya kesilmiş içermesin"
+
+#: src/no-ingredients.inc:58
+msgid "no Chia seeds"
+msgstr "Chia çekirdeği içermesin"
+
+#: src/no-ingredients.inc:59
+msgid "no Chicken breasts, large"
+msgstr "Tavuk göğsü, geniş içermesin"
+
+#: src/no-ingredients.inc:60
+msgid "no Chicken livers"
+msgstr "Tavuk ciğeri içermesin"
+
+#: src/no-ingredients.inc:61
+msgid "no chicken stock"
+msgstr "Tavuk suyu içermesin"
+
+#: src/no-ingredients.inc:62
+msgid "no Chili flakes"
+msgstr "Pul biber (kırmızı) içermesin"
+
+#: src/no-ingredients.inc:63
+msgid "no Chili powder"
+msgstr "Biber tozu içermesin"
+
+#: src/no-ingredients.inc:64
+msgid "no Chili sauce (e.g. sriracha)"
+msgstr "Biber sosu (örn: sriracha) içermesin"
+
+#: src/no-ingredients.inc:65
+msgid "no Chocolate"
+msgstr "Çikolata içermesin"
+
+#: src/no-ingredients.inc:66
+msgid "no Chocolate frosting"
+msgstr "Çikolatalı pasta kaplaması içermesin"
+
+#: src/no-ingredients.inc:67
+msgid "no Chorizo"
+msgstr "Domuz sucuğu içermesin"
+
+#: src/no-ingredients.inc:68
+msgid "no Ciboulette"
+msgstr "Frenk soğanı (Ciboulette) içermesin"
+
+#: src/no-ingredients.inc:69
+msgid "no Cilantro"
+msgstr "Kişniş içermesin"
+
+#: src/no-ingredients.inc:70
+msgid "no Cilantro leaves"
+msgstr "Kişniş yaprağı içermesin"
+
+#: src/no-ingredients.inc:71
+msgid "no Cinnamon"
+msgstr "Tarçın içermesin"
+
+#: src/no-ingredients.inc:72
+msgid "no Cinnamon sticks"
+msgstr "Tarçın çubuğu içermesin"
+
+#: src/no-ingredients.inc:73
+msgid "no Cloves"
+msgstr "Karanfil içermesin"
+
+#: src/no-ingredients.inc:74
+msgid "no Cocoa butter"
+msgstr "Kakao yağı içermesin"
+
+#: src/no-ingredients.inc:75
+msgid "no Cocoa powder"
+msgstr "Kakao tozu içermesin"
+
+#: src/no-ingredients.inc:76
+msgid "no Coconut milk"
+msgstr "Hindistan cevizi sütü içermesin"
+
+#: src/no-ingredients.inc:77
+msgid "no Coconut oil"
+msgstr "Hindistan cevizi yağı içermesin"
+
+#: src/no-ingredients.inc:78
+msgid "no Coconut water"
+msgstr "Hindistan cevizi suyu içermesin"
+
+#: src/no-ingredients.inc:79
+msgid "no Cold water"
+msgstr "Soğuk su içermesin"
+
+#: src/no-ingredients.inc:80
+msgid "no cooked beef"
+msgstr "Pişmiş sığır eti içermesin"
+
+#: src/no-ingredients.inc:81
+msgid "no Coriander"
+msgstr "Kişniş içermesin"
+
+#: src/no-ingredients.inc:82
+msgid "no Coriandre seeds"
+msgstr "Kişniş tohumu içermesin"
+
+#: src/no-ingredients.inc:83
+msgid "no Couscous"
+msgstr "Kuskus içermesin"
+
+#: src/no-ingredients.inc:84
+msgid "no Cracked pepper"
+msgstr "Pul biber (siyah) içermesin"
+
+#: src/no-ingredients.inc:85
+msgid "no Cream"
+msgstr "Krema içermesin"
+
+#: src/no-ingredients.inc:86
+msgid "no Cream cheese"
+msgstr "Krem peynir içermesin"
+
+#: src/no-ingredients.inc:87
+msgid "no Crushed red pepper flakes"
+msgstr "Pul biber (ezilmiş) içermesin"
+
+#: src/no-ingredients.inc:88
+msgid "no Cucumber"
+msgstr "Salatalık içermesin"
+
+#: src/no-ingredients.inc:89
+msgid "no Cucumber (large)"
+msgstr "Salatalık (geniş) içermesin"
+
+#: src/no-ingredients.inc:90
+msgid "no Cumin"
+msgstr "Kimyon içermesin"
+
+#: src/no-ingredients.inc:91
+msgid "no Cumin seeds"
+msgstr "Kimyon çekirdeği içermesin"
+
+#: src/no-ingredients.inc:92
+msgid "no Dark Jamaican rum"
+msgstr "Koyu Jamaika romu içermesin"
+
+#: src/no-ingredients.inc:93
+msgid "no Date"
+msgstr "Hurma içermesin"
+
+#: src/no-ingredients.inc:94
+msgid "no Dill"
+msgstr "Dereotu içermesin"
+
+#: src/no-ingredients.inc:95
+msgid "no Double cream"
+msgstr "Çifte krema içermesin"
+
+#: src/no-ingredients.inc:96
+msgid "no Dried anchovies"
+msgstr "Kuru ançuez içermesin"
+
+#: src/no-ingredients.inc:97
+msgid "no Dried chillies"
+msgstr "Kuru biber içermesin"
+
+#: src/no-ingredients.inc:98
+msgid "no Dry or fresh cilantro"
+msgstr "Kuru veya taze kişniş içermesin"
+
+#: src/no-ingredients.inc:99
+msgid "no Dry yeast"
+msgstr "Kuru maya içermesin"
+
+#: src/no-ingredients.inc:100
+msgid "no Durum wheat semolina"
+msgstr "Makarnalık buğday (irmik) içermesin"
+
+#: src/no-ingredients.inc:101
+msgid "no Earth Balance vegan buttery stick"
+msgstr "Earth Balance vegan tereyağlı çubuk içermesin"
+
+#: src/no-ingredients.inc:102
+msgid "no Egg"
+msgstr "Yumurta içermesin"
+
+#: src/no-ingredients.inc:103
+msgid "no Egg yolks"
+msgstr "Yumurta sarısı içermesin"
+
+#: src/no-ingredients.inc:104
+msgid "no Fenugreek seeds"
+msgstr "Çemen tohumu içermesin"
+
+#: src/no-ingredients.inc:105
+msgid "no Fig"
+msgstr "İncir içermesin"
+
+#: src/no-ingredients.inc:106
+msgid "no Finely chopped cilantro"
+msgstr "İnce doğranmış kişniş içermesin"
+
+#: src/no-ingredients.inc:107
+msgid "no Finely chopped onions"
+msgstr "İnce doğranmış soğan içermesin"
+
+#: src/no-ingredients.inc:108
+msgid "no Finely chopped thai chillies or green chillis"
+msgstr "İnce doğranmış tay biberi veya yeşil biber içermesin"
+
+#: src/no-ingredients.inc:109
+msgid "no Finely chopped tomato"
+msgstr "İnce doğranmış domates içermesin"
+
+#: src/no-ingredients.inc:110
+msgid "no Fish"
+msgstr "Balık içermesin"
+
+#: src/no-ingredients.inc:111
+msgid "no Fish sauce"
+msgstr "Balık sosu içermesin"
+
+#: src/no-ingredients.inc:112
+msgid "no Flour"
+msgstr "Un içermesin"
+
+#: src/no-ingredients.inc:113
+msgid "no Flour (all-purpose)"
+msgstr "Un (genel amaçlı) içermesin"
+
+#: src/no-ingredients.inc:114
+msgid "no Flour (Tipo 00)"
+msgstr "Un (Tipo 00) içermesin"
+
+#: src/no-ingredients.inc:115
+msgid "no Fresh rosemary"
+msgstr "Taze biberiye içermesin"
+
+#: src/no-ingredients.inc:116
+msgid "no Fresh tagliatelle"
+msgstr "Taze tagliatelle içermesin"
+
+#: src/no-ingredients.inc:117
+msgid "no Garam masala"
+msgstr "Garam masala içermesin"
+
+#: src/no-ingredients.inc:118
+msgid "no Garlic"
+msgstr "Sarımsak içermesin"
+
+#: src/no-ingredients.inc:119
+msgid "no Garlic cloves"
+msgstr "Diş sarımsak içermesin"
+
+#: src/no-ingredients.inc:120
+msgid "no Garlic powder"
+msgstr "Sarımsak tozu içermesin"
+
+#: src/no-ingredients.inc:121
+msgid "no Ginger"
+msgstr "Zencefil içermesin"
+
+#: src/no-ingredients.inc:122
+msgid "no Ginger, freshly grated"
+msgstr "Zencefil, taze doğranmış içermesin"
+
+#: src/no-ingredients.inc:123
+msgid "no Ginger ground"
+msgstr "Zencefil, öğütülmüş içermesin"
+
+#: src/no-ingredients.inc:124
+msgid "no Goat cheese"
+msgstr "Keçi peyniri içermesin"
+
+#: src/no-ingredients.inc:125
+msgid "no Golden caster sugar"
+msgstr "Pudra şekeri içermesin"
+
+#: src/no-ingredients.inc:126
+msgid "no Good, dry red wine"
+msgstr "Güzel, kuru kırmızı şarap içermesin"
+
+#: src/no-ingredients.inc:127
+msgid "no Gouda cheese"
+msgstr "Gouda peyniri içermesin"
+
+#: src/no-ingredients.inc:128
+msgid "no Goulash spices"
+msgstr "Goulash baharatları içermesin"
+
+#: src/no-ingredients.inc:129
+msgid "no Guanciale cubes"
+msgstr "Guanciale küpleri içermesin"
+
+#: src/no-ingredients.inc:130
+msgid "no Long pasta, e.g. spaghetti"
+msgstr "Uzun makarna, yani spagetti içermesin"
+
+#: src/no-ingredients.inc:131
+msgid "no Parmesan cheese"
+msgstr "Parmesan peyniri içermesin"
+
+#: src/no-ingredients.inc:132
+msgid "no Grapes"
+msgstr "Üzüm içermesin"
+
+#: src/no-ingredients.inc:133
+msgid "no Grated French Emmental"
+msgstr " Fransız emmental, rendelenmiş içermesin"
+
+#: src/no-ingredients.inc:134
+msgid "no Green Apple"
+msgstr "Yeşil elma içermesin"
+
+#: src/no-ingredients.inc:135
+msgid "no Green Bell Pepper"
+msgstr "Yeşil dolmalık biber içermesin"
+
+#: src/no-ingredients.inc:136
+msgid "no Green Cabbage"
+msgstr "Yeşil lahana içermesin"
+
+#: src/no-ingredients.inc:137
+msgid "no Green olive"
+msgstr "Yeşil zeytin içermesin"
+
+#: src/no-ingredients.inc:138
+msgid "no Green onions"
+msgstr "Yeşil soğan içermesin"
+
+#: src/no-ingredients.inc:139
+msgid "no green onions, chopped"
+msgstr "yeşil soğan, doğranmış, içermesin"
+
+#: src/no-ingredients.inc:140
+msgid "no Ground beef"
+msgstr "Köftelik dana kıyma içermesin"
+
+#: src/no-ingredients.inc:141
+msgid "no Ground coriander (optional)"
+msgstr "Öğütülmüş kişniş (isteğe bağlı) içermesin"
+
+#: src/no-ingredients.inc:142
+msgid "no Ground cumin"
+msgstr "Öğütülmüş kimyon içermesin"
+
+#: src/no-ingredients.inc:143
+msgid "no Ground fennel"
+msgstr "Öğütülmüş rezene içermesin"
+
+#: src/no-ingredients.inc:144
+msgid "no Ground pepper"
+msgstr "Öğütülmüş biber içermesin"
+
+#: src/no-ingredients.inc:145
+msgid "no Ham"
+msgstr "Domuz eti içermesin"
+
+#: src/no-ingredients.inc:146
+msgid "no Hazelnuts"
+msgstr "Fındık içermesin"
+
+#: src/no-ingredients.inc:147
+msgid "no Hazelnuts milk"
+msgstr "Fındık sütü içermesin"
+
+#: src/no-ingredients.inc:148
+msgid "no Hoisin sauce"
+msgstr "Hoisin sosu içermesin"
+
+#: src/no-ingredients.inc:149
+msgid "no Honey"
+msgstr "Bal içermesin"
+
+#: src/no-ingredients.inc:150
+msgid "no Horseradish"
+msgstr "Yabanturpu içermesin"
+
+#: src/no-ingredients.inc:151
+msgid "no Japanese mayonaisse"
+msgstr "Japon mayonezi içermesin"
+
+#: src/no-ingredients.inc:152
+msgid "no Juniper berries"
+msgstr "Ardıç meyvesi içermesin"
+
+#: src/no-ingredients.inc:153
+msgid "no Kale"
+msgstr "Kıvırcık lahana içermesin"
+
+#: src/no-ingredients.inc:154
+msgid "no Ketchup"
+msgstr "Ketçap içermesin"
+
+#: src/no-ingredients.inc:155
+msgid "no Kiwis"
+msgstr "Kivi içermesin"
+
+#: src/no-ingredients.inc:156
+msgid "no Lamb"
+msgstr "Kuzu eti içermesin"
+
+#: src/no-ingredients.inc:157
+msgid "no Lardons"
+msgstr "Domuz yağı parçaları içermesin"
+
+#: src/no-ingredients.inc:158
+msgid "no Lard or oil"
+msgstr "Domuz yağı veya yağ içermesin"
+
+#: src/no-ingredients.inc:159
+msgid "no Lemon"
+msgstr "Limon içermesin"
+
+#: src/no-ingredients.inc:160
+msgid "no Lemon juice"
+msgstr "Limon suyu içermesin"
+
+#: src/no-ingredients.inc:161
+msgid "no Lemon (untreated)"
+msgstr "Limon (işlenmemiş) içermesin"
+
+#: src/no-ingredients.inc:162
+msgid "no Lettuce"
+msgstr "Kıvırcık içermesin"
+
+#: src/no-ingredients.inc:163
+msgid "no Light muscovado sugar"
+msgstr "Hafif muscovado şekeri içermesin"
+
+#: src/no-ingredients.inc:164
+msgid "no Lime"
+msgstr "Misket limonu içermesin"
+
+#: src/no-ingredients.inc:165
+msgid "no Lime juice"
+msgstr "Misket limonu suyu içermesin"
+
+#: src/no-ingredients.inc:166
+msgid "no Linseeds"
+msgstr "Keten tohumu içermesin"
+
+#: src/no-ingredients.inc:167
+msgid "no Mandarin Oranges"
+msgstr "Mandalina içermesin"
+
+#: src/no-ingredients.inc:168
+msgid "no Margarine"
+msgstr "Margarin içermesin"
+
+#: src/no-ingredients.inc:169
+msgid "no Mayonnaise"
+msgstr "Mayonez içermesin"
+
+#: src/no-ingredients.inc:170
+msgid "no Meat"
+msgstr "Et içermesin"
+
+#: src/no-ingredients.inc:171
+msgid "no Meat and bones"
+msgstr "Kemikli et içermesin"
+
+#: src/no-ingredients.inc:172
+msgid "no Milk"
+msgstr "Süt içermesin"
+
+#: src/no-ingredients.inc:173
+msgid "no Mixed berries"
+msgstr "Karışık yemişler içermesin"
+
+#: src/no-ingredients.inc:174
+msgid "no Mixed frozen bell peppers"
+msgstr "Karışık dondurulmuş dolmalık biber içermesin"
+
+#: src/no-ingredients.inc:175
+msgid "no Mori-nu organic silken tofu (firm)"
+msgstr "Mori-nu organik ipeksi tofu (katı) içermesin"
+
+#: src/no-ingredients.inc:176
+msgid "no Mushrooms"
+msgstr "Mantar içermesin"
+
+#: src/no-ingredients.inc:177
+msgid "no Mustard"
+msgstr "Hardal içermesin"
+
+#: src/no-ingredients.inc:178
+msgid "no Mustard seeds"
+msgstr "Hardal tohumu içermesin"
+
+#: src/no-ingredients.inc:179
+msgid "no Nut"
+msgstr "Ceviz içermesin"
+
+#: src/no-ingredients.inc:180
+msgid "no Nutmeg"
+msgstr "Hint cevizi içermesin"
+
+#: src/no-ingredients.inc:181
+msgid "no Nutritional yeast"
+msgstr "Beslenme mayası içermesin"
+
+#: src/no-ingredients.inc:182
+msgid "no Oatmeal"
+msgstr "Yulaf içermesin"
+
+#: src/no-ingredients.inc:183
+msgid "no Oil"
+msgstr "Yağ içermesin"
+
+#: src/no-ingredients.inc:184
+msgid "no Okonomiyaki sauce"
+msgstr "Okonomiyaki sosu içermesin"
+
+#: src/no-ingredients.inc:185
+msgid "no Olive oil"
+msgstr "Zeytin yağı içermesin"
+
+#: src/no-ingredients.inc:186
+msgid "no Olive oil, extra-virgin"
+msgstr "Zeytin yağı, sızma içermesin"
+
+#: src/no-ingredients.inc:187
+msgid "no Olives, pitted"
+msgstr "Zeytin, çekirdeksiz içermesin"
+
+#: src/no-ingredients.inc:188
+msgid "no Onion"
+msgstr "Soğan içermesin"
+
+#: src/no-ingredients.inc:189
+msgid "no Onion powder"
+msgstr "Soğan tozu içermesin"
+
+#: src/no-ingredients.inc:190
+msgid "no Orange"
+msgstr "Portakal içermesin"
+
+#: src/no-ingredients.inc:191
+msgid "no Oregano"
+msgstr "Kekik içermesin"
+
+#: src/no-ingredients.inc:192
+msgid "no Pancetta"
+msgstr "Pancetta (İtalyan domuz pastırması) içermesin"
+
+#: src/no-ingredients.inc:193
+msgid "no Pandan leaves"
+msgstr "Pandan yaprakları içermesin"
+
+#: src/no-ingredients.inc:194
+msgid "no Paprika"
+msgstr "Paprika içermesin"
+
+#: src/no-ingredients.inc:195
+msgid "no Parmesan cheese, grated"
+msgstr "Parmesan peyniri, öğütülmüş içermesin"
+
+#: src/no-ingredients.inc:196
+msgid "no Parsley"
+msgstr "Maydanoz içermesin"
+
+#: src/no-ingredients.inc:197
+msgid "no Peach"
+msgstr "Şeftali içermesin"
+
+#: src/no-ingredients.inc:198
+msgid "no Peperoni"
+msgstr "Peperoni içermesin"
+
+#: src/no-ingredients.inc:199
+msgid "no Pepper"
+msgstr "Biber içermesin"
+
+#: src/no-ingredients.inc:200
+msgid "no Peppers"
+msgstr "Biber içermesin"
+
+#: src/no-ingredients.inc:201
+msgid "no Pickles"
+msgstr "Salatalık turşusu içermesin"
+
+#: src/no-ingredients.inc:202
+msgid "no Pineapple"
+msgstr "Ananas içermesin"
+
+#: src/no-ingredients.inc:203
+msgid "no Pizza sauce"
+msgstr "Pizza sosu içermesin"
+
+#: src/no-ingredients.inc:204
+msgid "no Plain flour"
+msgstr "Normal un içermesin"
+
+#: src/no-ingredients.inc:205
+msgid "no Pomegranate"
+msgstr "Nar içermesin"
+
+#: src/no-ingredients.inc:206
+msgid "no Pomegranate juice"
+msgstr "Nar suyu içermesin"
+
+#: src/no-ingredients.inc:207
+msgid "no Pork fat"
+msgstr "Domuz yağı içermesin"
+
+#: src/no-ingredients.inc:208
+msgid "no Pork loin"
+msgstr "Domuz filetosu içermesin"
+
+#: src/no-ingredients.inc:209
+msgid "no Potato"
+msgstr "Patates içermesin"
+
+#: src/no-ingredients.inc:210
+msgid "no Powdered sugar"
+msgstr "Toz şeker içermesin"
+
+#: src/no-ingredients.inc:211
+msgid "no Pumpkin seeds"
+msgstr "Balkabağı çekirdeği içermesin"
+
+#: src/no-ingredients.inc:212
+msgid "no Quinoa"
+msgstr "Kinoa içermesin"
+
+#: src/no-ingredients.inc:213
+msgid "no Radish"
+msgstr "Turp içermesin"
+
+#: src/no-ingredients.inc:214
+msgid "no Raisins"
+msgstr "Kuru üzüm içermesin"
+
+#: src/no-ingredients.inc:215
+msgid "no Red bell pepper"
+msgstr "Kırmızı dolmalık biber içermesin"
+
+#: src/no-ingredients.inc:216
+msgid "no Red onion"
+msgstr "Kırmızı soğan içermesin"
+
+#: src/no-ingredients.inc:217
+msgid "no Red Pepper"
+msgstr "Kırmızı biber içermesin"
+
+#: src/no-ingredients.inc:218
+msgid "no Red wine"
+msgstr "Kırmızı şarap içermesin"
+
+#: src/no-ingredients.inc:219
+msgid "no Rice"
+msgstr "Pirinç içermesin"
+
+#: src/no-ingredients.inc:220
+msgid "no Rice, cooked"
+msgstr "Pirinç, pişmiş içermesin"
+
+#: src/no-ingredients.inc:221
+msgid "no Rice vermicelli noodles"
+msgstr "Prinç eriştesi içermesin"
+
+#: src/no-ingredients.inc:222
+msgid "no Rock sugar"
+msgstr "Küp şeker içermesin"
+
+#: src/no-ingredients.inc:223
+msgid "no Rolled oats"
+msgstr "Yulaf ezmesi içermesin"
+
+#: src/no-ingredients.inc:224
+msgid "no Rosemary"
+msgstr "Biberiye içermesin"
+
+#: src/no-ingredients.inc:225
+msgid "no Rosé wine"
+msgstr "Gül şarabı içermesin"
+
+#: src/no-ingredients.inc:226
+msgid "no Saffron"
+msgstr "Safran içermesin"
+
+#: src/no-ingredients.inc:227
+msgid "no Sage"
+msgstr "Adaçayı içermesin"
+
+#: src/no-ingredients.inc:228
+msgid "no Salmon"
+msgstr "Somon balığı içermesin"
+
+#: src/no-ingredients.inc:229
+msgid "no Salt"
+msgstr "Tuz içermesin"
+
+#: src/no-ingredients.inc:230
+msgid "no Salt and pepper"
+msgstr "Tuz ve biber içermesin"
+
+#: src/no-ingredients.inc:231
+msgid "no Saucebinder"
+msgstr "Saucenbinder içermesin"
+
+#: src/no-ingredients.inc:232
+msgid "no Scallions"
+msgstr "Yeşil soğan içermesin"
+
+#: src/no-ingredients.inc:233
+msgid "no Sea salt"
+msgstr "Deniz tuzu içermesin"
+
+#: src/no-ingredients.inc:234
+msgid "no Semi-skimmed milk"
+msgstr "Yarım yağlı süt içermesin"
+
+#: src/no-ingredients.inc:235
+msgid "no Sesame oil"
+msgstr "Susam yağı içermesin"
+
+#: src/no-ingredients.inc:236
+msgid "no Sesame seeds"
+msgstr "Susam taneleri içermesin"
+
+#: src/no-ingredients.inc:237
+msgid "no Shallots"
+msgstr "Papaz yahnisi içermesin"
+
+#: src/no-ingredients.inc:238
+msgid "no Shrimps"
+msgstr "Karides içermesin"
+
+#: src/no-ingredients.inc:239
+msgid "no Slivered almonds, toasted"
+msgstr "Şerit badem, kızartılmış içermesin"
+
+#: src/no-ingredients.inc:240
+msgid "no Sour cream"
+msgstr "Ekşi krema içermesin"
+
+#: src/no-ingredients.inc:241
+msgid "no Soy sauce"
+msgstr "Soya sosu içermesin"
+
+#: src/no-ingredients.inc:242
+msgid "no Spinach"
+msgstr "Ispanak içermesin"
+
+#: src/no-ingredients.inc:243
+msgid "no Spring onion"
+msgstr "Taze soğan içermesin"
+
+#: src/no-ingredients.inc:244
+msgid "no Squash"
+msgstr "Kabak içermesin"
+
+#: src/no-ingredients.inc:245
+msgid "no Star anise"
+msgstr "Yıldız anason içermesin"
+
+#: src/no-ingredients.inc:246
+msgid "no Strawberry"
+msgstr "Çilek içermesin"
+
+#: src/no-ingredients.inc:247
+msgid "no Sugar"
+msgstr "Şeker içermesin"
+
+#: src/no-ingredients.inc:248
+msgid "no Sunflower seeds"
+msgstr "Ayçiçeği çekirdeği"
+
+#: src/no-ingredients.inc:249
+msgid "no Sweet potatoes"
+msgstr "Tatlı patates içermesin"
+
+#: src/no-ingredients.inc:250
+msgid "no Tamarind paste"
+msgstr "Demirhindi ezmesi içermesin"
+
+#: src/no-ingredients.inc:251
+msgid "no Tangerine"
+msgstr "Mandalina içermesin"
+
+#: src/no-ingredients.inc:252
+msgid "no Thai basil leaves"
+msgstr "Tay fesleğen yaprağı içermesin"
+
+#: src/no-ingredients.inc:253
+msgid "no Thai chillies"
+msgstr "Tay biberi içermesin"
+
+#: src/no-ingredients.inc:254
+msgid "no Thai fish sauce"
+msgstr "Tay balık sosu içermesin"
+
+#: src/no-ingredients.inc:255
+msgid "no Thyme"
+msgstr "Kekik içermesin"
+
+#: src/no-ingredients.inc:256
+msgid "no Tinned pineapple rings"
+msgstr "Konserve ananas halkası içermesin"
+
+#: src/no-ingredients.inc:257
+msgid "no Tofu"
+msgstr "Tofu içermesin"
+
+#: src/no-ingredients.inc:258
+msgid "no Tomato"
+msgstr "Domates içermesin"
+
+#: src/no-ingredients.inc:259
+msgid "no Tomato paste"
+msgstr "Salça içermesin"
+
+#: src/no-ingredients.inc:260
+msgid "no Tomato sauce"
+msgstr "Domates sosu içermesin"
+
+#: src/no-ingredients.inc:261
+msgid "no Tumeric ground"
+msgstr "Zerdeçal, öğütülmüş içermesin"
+
+#: src/no-ingredients.inc:262
+msgid "no Tuna fish"
+msgstr "Tuna balık eti içermesin"
+
+#: src/no-ingredients.inc:263
+msgid "no Unsalted butter"
+msgstr "Tuzsuz tereyağ içermesin"
+
+#: src/no-ingredients.inc:264
+msgid "no Vanilla baking powder"
+msgstr "Vanilya kabartma tozu içermesin"
+
+#: src/no-ingredients.inc:265
+msgid "no Vanilla extract"
+msgstr "Vanilya özü içermesin"
+
+#: src/no-ingredients.inc:266
+msgid "no Vanilla powdered sugar, for dusting"
+msgstr "Vanilyalı pudra şekeri, terbiye için içermesin"
+
+#: src/no-ingredients.inc:267
+msgid "no Vanilla pudding"
+msgstr "Vanilya pudingi içermesin"
+
+#: src/no-ingredients.inc:268
+msgid "no Vanilla sugar"
+msgstr "Vanilya şekeri içermesin"
+
+#: src/no-ingredients.inc:269
+msgid "no Vegetable oil"
+msgstr "Yemeklik yağ içermesin"
+
+#: src/no-ingredients.inc:270
+msgid "no Vinegar"
+msgstr "Sirke içermesin"
+
+#: src/no-ingredients.inc:271
+msgid "no Water"
+msgstr "Su içermesin"
+
+#: src/no-ingredients.inc:272
+msgid "no Wheat flour"
+msgstr "Beyaz un içermesin"
+
+#: src/no-ingredients.inc:273
+msgid "no White fish"
+msgstr "Alabalık içermesin"
+
+#: src/no-ingredients.inc:274
+msgid "no White onion"
+msgstr "Beyaz soğan içermesin"
+
+#: src/no-ingredients.inc:275
+msgid "no White wine"
+msgstr "Beyaz şarap içermesin"
+
+#: src/no-ingredients.inc:276
+msgid "no Whole chicken"
+msgstr "Bütün tavuk içermesin"
+
+#: src/no-ingredients.inc:277
+msgid "no Wine"
+msgstr "Şarap içermesin"
+
+#: src/no-ingredients.inc:278
+msgid "no Worcestershire sauce"
+msgstr "Worcestershire sosu içermesin"
+
+#: src/no-ingredients.inc:279
+msgid "no Yeast"
+msgstr "Maya içermesin"
+
+#: src/no-ingredients.inc:280
+msgid "no Yellow bell pepper"
+msgstr "Sarı dolmalık biber içermesin"
+
+#: src/no-ingredients.inc:281
+msgid "no Yoghurt"
+msgstr "Yoğurt içermesin"
+
+#: src/no-ingredients.inc:282
+msgid "no Zest of 1 lemon (organic)"
+msgstr "Limon kabuğu, rendelenmiş (organik) içermesin"
+
+#: src/no-ingredients.inc:283
+msgid "no Zinfandel"
+msgstr "Zinfandel içermesin"
+
+#: src/no-ingredients.inc:284
+msgid "no Zuccini"
+msgstr "Kabak içermesin"
