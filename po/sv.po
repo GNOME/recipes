@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-09 21:49+0000\n"
-"PO-Revision-Date: 2021-02-02 21:07+0100\n"
+"POT-Creation-Date: 2021-02-02 20:09+0000\n"
+"PO-Revision-Date: 2021-06-07 18:33+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -2461,22 +2461,19 @@ msgid "pinches"
 msgstr "nypor"
 
 #: src/gr-unit.c:69
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "bunch"
-msgstr "klase"
+msgstr "knippe"
 
 #: src/gr-unit.c:69
-#, fuzzy
 msgctxt "unit name"
 msgid "bunch"
-msgstr "klase"
+msgstr "knippe"
 
 #: src/gr-unit.c:69
-#, fuzzy
 msgctxt "unit plural"
 msgid "bunches"
-msgstr "klasar"
+msgstr "knippen"
 
 #: src/gr-unit.c:167
 #, c-format
@@ -2846,14 +2843,13 @@ msgid "Button mushroom"
 msgstr "Trädgårdschampinjon"
 
 #: src/ingredients.inc:44
-#, fuzzy
 msgid "Cabbage"
-msgstr "Kål"
+msgstr "Vitkål"
 
+# Inget bakpulver i cake flour
 #: src/ingredients.inc:45
-#, fuzzy
 msgid "Cake flour"
-msgstr "Tårtmjöl"
+msgstr "Kakmjöl (mjöl med majsstärkelse)"
 
 #: src/ingredients.inc:46
 msgid "Canellini beans"
@@ -3052,9 +3048,8 @@ msgid "Dill"
 msgstr "Dill"
 
 #: src/ingredients.inc:95
-#, fuzzy
 msgid "Double cream"
-msgstr "Dubbelgrädde"
+msgstr "Double cream"
 
 #: src/ingredients.inc:96
 msgid "Dried anchovies"
@@ -3077,7 +3072,6 @@ msgid "Durum wheat semolina"
 msgstr "Mannagryn"
 
 #: src/ingredients.inc:101
-#, fuzzy
 msgid "Earth Balance vegan buttery stick"
 msgstr "Earth Balance vegansk smörpinne"
 
@@ -3125,8 +3119,8 @@ msgstr "Fisksås"
 msgid "Flour"
 msgstr "Mjöl"
 
+# Mixture of hard and soft wheat, has 8-11% gluten, aka plain flour in many countries, they are synonyms
 #: src/ingredients.inc:113
-#, fuzzy
 msgid "Flour (all-purpose)"
 msgstr "Mjöl (vanligt)"
 
@@ -3174,10 +3168,10 @@ msgstr "Ingefära, mald"
 msgid "Goat cheese"
 msgstr "Getost"
 
+# Oraffinerat finkornigt strösocker
 #: src/ingredients.inc:125
-#, fuzzy
 msgid "Golden caster sugar"
-msgstr "Oraffinerat fint strösocker"
+msgstr "Golden caster-socker"
 
 #: src/ingredients.inc:126
 msgid "Good, dry red wine"
@@ -3220,9 +3214,8 @@ msgid "Green Bell Pepper"
 msgstr "Grön paprika"
 
 #: src/ingredients.inc:136
-#, fuzzy
 msgid "Green Cabbage"
-msgstr "Kål"
+msgstr "Vitkål"
 
 #: src/ingredients.inc:137
 msgid "Green olive"
@@ -3234,7 +3227,7 @@ msgstr "Salladslökar"
 
 #: src/ingredients.inc:139
 msgid "green onions, chopped"
-msgstr "grön lök, hackad"
+msgstr "salladslökar, hackade"
 
 #: src/ingredients.inc:140
 msgid "Ground beef"
@@ -3305,9 +3298,8 @@ msgid "Lamb"
 msgstr "Lamm"
 
 #: src/ingredients.inc:157
-#, fuzzy
 msgid "Lardons"
-msgstr "Bacon"
+msgstr "Lardons (baconremsor)"
 
 #: src/ingredients.inc:158
 msgid "Lard or oil"
@@ -3374,7 +3366,6 @@ msgid "Mixed berries"
 msgstr "Blandade bär"
 
 #: src/ingredients.inc:174
-#, fuzzy
 msgid "Mixed frozen bell peppers"
 msgstr "Blandad fryst paprika"
 
@@ -3496,7 +3487,6 @@ msgid "Pizza sauce"
 msgstr "Pizzasås"
 
 #: src/ingredients.inc:204
-#, fuzzy
 msgid "Plain flour"
 msgstr "Vanligt mjöl"
 
@@ -3513,9 +3503,8 @@ msgid "Pork fat"
 msgstr "Grisfett"
 
 #: src/ingredients.inc:208
-#, fuzzy
 msgid "Pork loin"
-msgstr "Fläskkotlett"
+msgstr "Kotlettrad"
 
 #: src/ingredients.inc:209
 msgid "Potato"
@@ -3550,10 +3539,8 @@ msgid "Red onion"
 msgstr "Rödlök"
 
 #: src/ingredients.inc:217
-#, fuzzy
-#| msgid "Pepper"
 msgid "Red Pepper"
-msgstr "Peppar"
+msgstr "Röd paprika"
 
 #: src/ingredients.inc:218
 msgid "Red wine"
@@ -3607,10 +3594,10 @@ msgstr "Salt"
 msgid "Salt and pepper"
 msgstr "Salt och peppar"
 
+# Soßenbinder är ett tyskt såsförtjockningsmedel
 #: src/ingredients.inc:231
-#, fuzzy
 msgid "Saucebinder"
-msgstr "Såsförtjockare"
+msgstr "Såsredning"
 
 #: src/ingredients.inc:232
 msgid "Scallions"
@@ -3621,7 +3608,6 @@ msgid "Sea salt"
 msgstr "Havssalt"
 
 #: src/ingredients.inc:234
-#, fuzzy
 msgid "Semi-skimmed milk"
 msgstr "Mellanmjölk"
 
@@ -3750,7 +3736,6 @@ msgid "Vanilla extract"
 msgstr "Vaniljextrakt"
 
 #: src/ingredients.inc:266
-#, fuzzy
 msgid "Vanilla powdered sugar, for dusting"
 msgstr "Vaniljflorsocker, för att strö"
 
@@ -3778,19 +3763,15 @@ msgstr "Vatten"
 msgid "Wheat flour"
 msgstr "Vetemjöl"
 
-# Internationellt anses begreppet white
-# fish inom fiskerinäringen innefatta arter
-# som lever nära eller på havsbotten. T.ex.
-# torsk, kolja, hälleflundra.
+# Ej att blanda ihop med vitfisk som i
+# svenskan innefattar exempelvis mört.
 #: src/ingredients.inc:273
-#, fuzzy
 msgid "White fish"
-msgstr "White fish"
+msgstr "Vit fisk"
 
 #: src/ingredients.inc:274
-#, fuzzy
 msgid "White onion"
-msgstr "Vit lök"
+msgstr "Silverlök"
 
 #: src/ingredients.inc:275
 msgid "White wine"
@@ -3914,7 +3895,7 @@ msgstr "inga böngroddar"
 
 #: src/no-ingredients.inc:21
 msgid "no Beef"
-msgstr "ingetnötkött"
+msgstr "inget nötkött"
 
 #: src/no-ingredients.inc:22
 msgid "no Beef mince"
@@ -4005,14 +3986,12 @@ msgid "no Button mushroom"
 msgstr "ingen trädgårdschampinjon"
 
 #: src/no-ingredients.inc:44
-#, fuzzy
 msgid "no Cabbage"
-msgstr "ingen kål"
+msgstr "ingen vitkål"
 
 #: src/no-ingredients.inc:45
-#, fuzzy
 msgid "no Cake flour"
-msgstr "inget tårtmjöl"
+msgstr "inget kakmjöl (mjöl med majsstärkelse)"
 
 #: src/no-ingredients.inc:46
 msgid "no Canellini beans"
@@ -4211,9 +4190,8 @@ msgid "no Dill"
 msgstr "ingen dill"
 
 #: src/no-ingredients.inc:95
-#, fuzzy
 msgid "no Double cream"
-msgstr "ingen dubbelgrädde"
+msgstr "ingen double cream"
 
 #: src/no-ingredients.inc:96
 msgid "no Dried anchovies"
@@ -4236,7 +4214,6 @@ msgid "no Durum wheat semolina"
 msgstr "inget mannagryn"
 
 #: src/no-ingredients.inc:101
-#, fuzzy
 msgid "no Earth Balance vegan buttery stick"
 msgstr "ingen Earth Balance vegansk smörpinne"
 
@@ -4285,7 +4262,6 @@ msgid "no Flour"
 msgstr "inget mjöl"
 
 #: src/no-ingredients.inc:113
-#, fuzzy
 msgid "no Flour (all-purpose)"
 msgstr "inget mjöl (vanligt)"
 
@@ -4334,9 +4310,8 @@ msgid "no Goat cheese"
 msgstr "ingen getost"
 
 #: src/no-ingredients.inc:125
-#, fuzzy
 msgid "no Golden caster sugar"
-msgstr "inget oraffinerat fint strösocker"
+msgstr "inget golden caster-socker"
 
 #: src/no-ingredients.inc:126
 msgid "no Good, dry red wine"
@@ -4379,9 +4354,8 @@ msgid "no Green Bell Pepper"
 msgstr "ingen grön paprika"
 
 #: src/no-ingredients.inc:136
-#, fuzzy
 msgid "no Green Cabbage"
-msgstr "ingen kål"
+msgstr "ingen vitkål"
 
 #: src/no-ingredients.inc:137
 msgid "no Green olive"
@@ -4393,7 +4367,7 @@ msgstr "inga salladslökar"
 
 #: src/no-ingredients.inc:139
 msgid "no green onions, chopped"
-msgstr "ingen grön lök, hackad"
+msgstr "inga salladslökar, hackade"
 
 #: src/no-ingredients.inc:140
 msgid "no Ground beef"
@@ -4464,9 +4438,8 @@ msgid "no Lamb"
 msgstr "inget lamm"
 
 #: src/no-ingredients.inc:157
-#, fuzzy
 msgid "no Lardons"
-msgstr "ingen bacon"
+msgstr "inga lardons (baconremsor)"
 
 #: src/no-ingredients.inc:158
 msgid "no Lard or oil"
@@ -4533,7 +4506,6 @@ msgid "no Mixed berries"
 msgstr "inga blandade bär"
 
 #: src/no-ingredients.inc:174
-#, fuzzy
 msgid "no Mixed frozen bell peppers"
 msgstr "ingen blandad fryst paprika"
 
@@ -4656,9 +4628,8 @@ msgid "no Pizza sauce"
 msgstr "ingen pizzasås"
 
 #: src/no-ingredients.inc:204
-#, fuzzy
 msgid "no Plain flour"
-msgstr "ingetvanligt mjöl"
+msgstr "inget vanligt mjöl"
 
 #: src/no-ingredients.inc:205
 msgid "no Pomegranate"
@@ -4673,9 +4644,8 @@ msgid "no Pork fat"
 msgstr "inget grisfett"
 
 #: src/no-ingredients.inc:208
-#, fuzzy
 msgid "no Pork loin"
-msgstr "ingen fläskkotlett"
+msgstr "ingen kotlettrad"
 
 #: src/no-ingredients.inc:209
 msgid "no Potato"
@@ -4710,10 +4680,8 @@ msgid "no Red onion"
 msgstr "ingen rödlök"
 
 #: src/no-ingredients.inc:217
-#, fuzzy
-#| msgid "no Pepper"
 msgid "no Red Pepper"
-msgstr "ingen peppar"
+msgstr "ingen röd paprika"
 
 #: src/no-ingredients.inc:218
 msgid "no Red wine"
@@ -4768,9 +4736,8 @@ msgid "no Salt and pepper"
 msgstr "inget salt och peppar"
 
 #: src/no-ingredients.inc:231
-#, fuzzy
 msgid "no Saucebinder"
-msgstr "ingen såsförtjockare"
+msgstr "ingen såsredning"
 
 #: src/no-ingredients.inc:232
 msgid "no Scallions"
@@ -4781,7 +4748,6 @@ msgid "no Sea salt"
 msgstr "inget havssalt"
 
 #: src/no-ingredients.inc:234
-#, fuzzy
 msgid "no Semi-skimmed milk"
 msgstr "ingen mellanmjölk"
 
@@ -4910,7 +4876,6 @@ msgid "no Vanilla extract"
 msgstr "inget vaniljextrakt"
 
 #: src/no-ingredients.inc:266
-#, fuzzy
 msgid "no Vanilla powdered sugar, for dusting"
 msgstr "inget vaniljflorsocker, för att strö"
 
@@ -4938,16 +4903,14 @@ msgstr "inget vatten"
 msgid "no Wheat flour"
 msgstr "inget vetemjöl"
 
-# Internationellt anses begreppet white fish inom fiskerinäringen innefatta arter som lever nära eller på havsbotten. T.ex. torsk, kolja, hälleflundra.
+# Ej att blanda ihop med vitfisk som i svenskan innefattar exempelvis mört.
 #: src/no-ingredients.inc:273
-#, fuzzy
 msgid "no White fish"
-msgstr "ingen white fish"
+msgstr "ingen vit fisk"
 
 #: src/no-ingredients.inc:274
-#, fuzzy
 msgid "no White onion"
-msgstr "ingen vit lök"
+msgstr "ingen silverlök"
 
 #: src/no-ingredients.inc:275
 msgid "no White wine"
