@@ -9,17 +9,16 @@ msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-07 03:11+0000\n"
-"PO-Revision-Date: 2021-05-25 21:32+0200\n"
+"PO-Revision-Date: 2021-07-14 14:29+0200\n"
 "Last-Translator: Matej Urbančič <mateju@src.gnome.org>\n"
 "Language-Team: Slovenščina <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0\n"
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
@@ -92,19 +91,16 @@ msgid "Hands-free cooking instruction mode"
 msgstr "Način navodil za prostoročno kuhanje"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:34
-#, fuzzy
 msgid "Initial screen for the application"
-msgstr "Zaslon"
+msgstr "Začetni zaslon programa"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:38
-#, fuzzy
 msgid "The cuisines page"
-msgstr "STRAN"
+msgstr "Stran kulinarike"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:42
-#, fuzzy
 msgid "A shopping list"
-msgstr "Nakupovanje"
+msgstr "Nakupovalni seznam"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:46
 msgid "Cooking a recipe"
@@ -115,47 +111,44 @@ msgid "Editing a recipe"
 msgstr "Urajanje recepta"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:54
-#, fuzzy
 msgid "An individual recipe"
-msgstr "Posamezno"
+msgstr "Posamezni recept"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:58
-#, fuzzy
 msgid "An individual cuisine"
-msgstr "Posamezno"
+msgstr "Posamezna kuhinja"
 
 #: data/org.gnome.Recipes.gschema.xml:25
-#, fuzzy
 msgid "The user ID of the current user"
-msgstr "ID uporabnika"
+msgstr "ID trenutnega uporabnika"
 
 #: data/org.gnome.Recipes.gschema.xml:26
-#, fuzzy
 msgid "The user ID of the current user."
-msgstr "ID uporabnika"
+msgstr "Uporabniški ID trenutnega uporabnika."
 
 #: data/org.gnome.Recipes.gschema.xml:32
 msgid "The number of times cooking mode has been presented"
-msgstr ""
+msgstr "Število ponovitev uporabe kuharskega načina."
 
 #: data/org.gnome.Recipes.gschema.xml:33
 msgid "The number of times cooking mode has been presented."
-msgstr ""
+msgstr "Kolikokrat je bil uporabljen kuharski način."
 
 #: data/org.gnome.Recipes.gschema.xml:39
 msgid "The timestamp of the last change to the favorites list"
-msgstr ""
+msgstr "Časovni žig zadnje spremembe seznama priljubljenih"
 
 #: data/org.gnome.Recipes.gschema.xml:40
 msgid ""
 "The timestamp of the last time an item was added to or removed from the "
 "favorites list."
 msgstr ""
+"Časovni žig zadnjega dodajanja oziroma odstranjevanja predmeta s seznama "
+"priljubljenih"
 
 #: data/org.gnome.Recipes.gschema.xml:47
-#, fuzzy
 msgid "The list of favorites"
-msgstr "Izpis vseh priljubljenih poizvedb"
+msgstr "Seznam priljubljenih"
 
 #: data/org.gnome.Recipes.gschema.xml:48
 msgid "The list of favorites. Each entry in the list is the ID of a recipe."
@@ -172,9 +165,8 @@ msgid ""
 msgstr ""
 
 #: data/org.gnome.Recipes.gschema.xml:62
-#, fuzzy
 msgid "The shopping list"
-msgstr "Nakupovanje"
+msgstr "Nakupovalni seznam"
 
 #: data/org.gnome.Recipes.gschema.xml:63
 msgid ""
@@ -245,30 +237,28 @@ msgid "The setting for which unit weights should be displayed in."
 msgstr ""
 
 #: data/org.gnome.Recipes.gschema.xml:114
+#, fuzzy
 msgid ""
 "The setting for which unit weights should be displayed in. Default is "
 "'locale',"
 msgstr ""
+"Nastavitev, v kateri je treba prikazati uteži enot. Privzeto je \"locale\","
 
 #: src/chef-conflict-dialog.ui:10
-#, fuzzy
 msgid "Same Chef"
-msgstr "Enako"
+msgstr "Isti kuhar"
 
 #: src/chef-conflict-dialog.ui:16
-#, fuzzy
 msgid "Different Chef"
-msgstr "Različno"
+msgstr "Drug kuhar"
 
 #: src/chef-conflict-dialog.ui:30
-#, fuzzy
 msgid "Existing Chef"
-msgstr "Le obstoječe"
+msgstr "Obstoječ kuhar"
 
 #: src/chef-conflict-dialog.ui:43
-#, fuzzy
 msgid "Imported Chef"
-msgstr "Ni uvoženo"
+msgstr "Uvožen kuhar"
 
 #: src/chef-conflict-dialog.ui:57 src/chef-conflict-dialog.ui:69
 msgid "Short Name:"
@@ -306,9 +296,8 @@ msgstr ""
 "Te podrobnosti so objavljene drugim uporabnikom, če objavite vaše recepte."
 
 #: src/gr-chef-dialog.ui:119
-#, fuzzy
 msgid "Other Chef"
-msgstr "Drugi"
+msgstr "Drug kuhar"
 
 #: src/gr-chef-dialog.ui:132
 msgid "Name…"
@@ -375,9 +364,8 @@ msgid ""
 msgstr ""
 
 #: src/gr-cooking-page.ui:350
-#, fuzzy
 msgid "To exit the process, press the Escape key."
-msgstr "(katerakoli tipka za izkod)"
+msgstr "Za končanje opravila pritisnite ubežno tipko"
 
 #: src/gr-cooking-view.ui:64
 msgid "Time is up!"
@@ -426,7 +414,7 @@ msgstr ""
 
 #: src/gr-details-page.ui:126 src/gr-details-page.c:537
 msgid "Spicy"
-msgstr ""
+msgstr "Začinjeno"
 
 #: src/gr-details-page.ui:146
 msgid "_Buy Ingredients"
@@ -565,20 +553,17 @@ msgstr "Za '%s':"
 
 #: src/gr-edit-page.ui:549
 msgid "_Spiciness"
-msgstr ""
+msgstr "_Ostrost"
 
 #: src/gr-edit-page.ui:569 src/gr-spice-row.c:127
-#, fuzzy
 msgid "Mild"
 msgstr "Nežno pekoče"
 
 #: src/gr-edit-page.ui:570
-#, fuzzy
 msgid "Somewhat spicy"
 msgstr "Nekoliko pekoče"
 
 #: src/gr-edit-page.ui:571
-#, fuzzy
 msgid "Hot"
 msgstr "Pekoče"
 
@@ -715,13 +700,12 @@ msgstr "Katerikoli obrok"
 
 #: src/gr-query-editor.ui:109
 msgid "Spiciness"
-msgstr ""
+msgstr "Začinjenost"
 
 #: src/gr-query-editor.ui:129 src/gr-query-editor.c:562
 #: src/gr-query-editor.c:713
-#, fuzzy
 msgid "Any spiciness"
-msgstr "--Katerikoli"
+msgstr "Kakršnakoli začinjenost"
 
 #: src/gr-query-editor.ui:172
 msgid "Dietary restrictions"
@@ -743,9 +727,8 @@ msgid "Search…"
 msgstr "Poišči …"
 
 #: src/gr-recipes-page.ui:8
-#, fuzzy
 msgid "Recipes page"
-msgstr "Prevodi kuharskih receptov"
+msgstr "Stran receptov"
 
 #: src/gr-recipes-page.ui:27
 msgid "Today"
@@ -777,18 +760,16 @@ msgid "Buy ingredients"
 msgstr "Nakup sestavin"
 
 #: src/gr-shopping-page.ui:93
-#, fuzzy
 msgid "No shopping necessary!"
-msgstr "Nakupovanje"
+msgstr "Vse sestavine so pri roki!"
 
 #: src/gr-shopping-page.ui:132
 msgid "_Clear List"
 msgstr "_Počisti seznam"
 
 #: src/gr-shopping-page.ui:188
-#, fuzzy
 msgid "Nothing to add"
-msgstr "Ničesar"
+msgstr "Ni ničesar za dodajanje"
 
 #: src/gr-shopping-tile.ui:101
 msgid "Yield"
@@ -962,7 +943,7 @@ msgstr "Prevodi kuharskih receptov"
 
 #: src/recipe-surprise.ui:28
 msgid "GNOME turns 20 !"
-msgstr ""
+msgstr "GNOME dopolni 20!"
 
 #: src/recipe-surprise.ui:52
 msgid ""
@@ -983,14 +964,12 @@ msgid "Let’s Party"
 msgstr "Naj se zabava začne"
 
 #: src/recipe-whats-new-dialog.ui:8
-#, fuzzy
 msgid "What’s New in Recipes"
-msgstr "Kaj je to?"
+msgstr "Kaj je novega v programu"
 
 #: src/shopping-list-exporter-dialog.ui:13 src/gr-shopping-list-exporter.c:278
-#, fuzzy
 msgid "Export Ingredients"
-msgstr "Vi ne kupite zemljevida"
+msgstr "Izvozi sestavine"
 
 #: src/shopping-list-exporter-dialog.ui:55
 msgid "Export"
@@ -1010,7 +989,6 @@ msgid "Add service"
 msgstr "Dodaj storitev"
 
 #: src/gr-about-dialog.c:132
-#, fuzzy
 msgid "Learn more about Builder"
 msgstr "Več podrobnosti o programu GNOME Builder"
 
@@ -1104,9 +1082,9 @@ msgid "Recipes by"
 msgstr "Prevodi kuharskih receptov"
 
 #: src/gr-account.c:111
-#, fuzzy, c-format
+#, c-format
 msgid "Got an error from Account portal"
-msgstr "S strežnika je pridobljena koda napake \"%s\""
+msgstr "S strežnika je prejeta napaka"
 
 #: src/gr-account.c:162
 msgid ""
@@ -1126,9 +1104,8 @@ msgid "Print the version and exit"
 msgstr "Izpiši različico in zapri"
 
 #: src/gr-app.c:447
-#, fuzzy
 msgid "Turn on verbose logging"
-msgstr "Izključi podrobni izpis"
+msgstr "Omogoči podrobno beleženje"
 
 #: src/gr-app.c:451
 msgid "Show a category"
@@ -1147,13 +1124,12 @@ msgid "Image files"
 msgstr "Slikovne datoteke"
 
 #: src/gr-chef-dialog.c:423
-#, fuzzy
 msgid "New Chef"
-msgstr "Je nov"
+msgstr "Nov kuhar"
 
 #: src/gr-cooking-page.c:249
 msgid "Cooking"
-msgstr ""
+msgstr "Kuhanje"
 
 #: src/gr-cooking-view.c:157
 #, c-format
@@ -1322,7 +1298,6 @@ msgstr ""
 "interakcij nacije z drugimi družbe."
 
 #: src/gr-cuisine.c:92
-#, fuzzy
 msgid ""
 "Italian cuisine is characterized by its simplicity, with many dishes having "
 "only four to eight ingredients. Italian cooks rely chiefly on the quality of "
@@ -1330,14 +1305,13 @@ msgid ""
 "vary by region. Many dishes that were once regional, however, have "
 "proliferated with variations throughout the country."
 msgstr ""
-"Za italijansko kulinariko je značilna njegova poenostavitev, saj imajo "
-"številne jedi le štiri do osem sestavin. Italijanski kuharji se zanašajo "
-"predvsem na kakovost sestavin in ne na dovršeno pripravo. Sestavine in jedi "
-"se razlikujejo po regijah. Številne jedi, ki so bile nekoč regionalne, pa so "
-"se po vsej državi razmnožele s spremembami."
+"Za italijansko kulinariko je značilna poenostavitev. Številne jedi imajo le "
+"štiri do osem sestavin. Italijanski kuharji se zanašajo predvsem na kakovost "
+"sestavin in ne le na dovršeno pripravo. Sestavine in jedi se sicer "
+"razlikujejo po regijah. Številne so bile nekoč regionalne, a so se s "
+"razširjanjem nadgradile s posebnimi dodanimi okusi."
 
 #: src/gr-cuisine.c:96
-#, fuzzy
 msgid ""
 "French cuisine was codified in the 20th century by Auguste Escoffier to "
 "become the modern haute cuisine; Escoffier, however, left out much of the "
@@ -1349,14 +1323,14 @@ msgid ""
 "France. Many dishes that were once regional have proliferated in variations "
 "across the country."
 msgstr ""
-"Francosko kulinariko je v 20. stoletju kodificiral Auguste Escoffier, da bi "
-"postala sodobna haute kuhinja; Escoffier pa je izpustila veliko lokalnega "
-"kulinaričnega značaja, ki ga je treba najti v regijah Francije in ga domači "
-"kuharji težko usmrtijo. Gastro-turizem in vodnik Michelin je pomagal "
-"spoznati ljudi z bogato bourgeois in kmetje kuhinje francoske podeželja, ki "
-"se začne v 20. stoletju. Gascon kuhinja je imela velik vpliv tudi na "
-"kulinariko na jugozahodu Francije. Številne jedi, ki so bile nekoč "
-"regionalne, so se po vsej državi razmnožele."
+"Francosko kulinariko je Auguste Escoffier v 20. stoletju povzdignil v "
+"sodobno visoko kuhinjo. Escoffier je izpustil pridih krajevnega "
+"kulinaričnega značaja, ki ga je mogoče najti v različnih francoskih regijah, "
+"zato je sodobne jedi pogosto težko pripraviti v domačem okolju. Gurmanski "
+"turizem in seveda Michelinov vodnik sta pomembno vplivala na spoznavanje "
+"posebnih okusov. Kuhinja Gascon je imela velik vpliv tudi na kulinariko "
+"jugozahodne Francije. Številne jedi, ki so bile nekoč regionalne, so se "
+"razširile po vsej državi."
 
 #: src/gr-cuisine.c:103
 msgid ""
@@ -1451,7 +1425,7 @@ msgstr "Slika %d"
 #: src/gr-details-page.c:724 src/gr-edit-page.c:1597
 #, c-format
 msgid "Recipe by %s"
-msgstr ""
+msgstr "Priprava recepta: %s"
 
 #: src/gr-diet.c:34
 msgid "Gluten-free recipes"
@@ -1756,24 +1730,24 @@ msgid "Other"
 msgstr "Drugo"
 
 #: src/gr-number.c:148 src/gr-number.c:217 src/gr-number.c:226
-#, fuzzy, c-format
+#, c-format
 msgid "Could not parse %s as a fraction"
-msgstr "Ni mogoče razčleniti naslova URL '%s'"
+msgstr "Ni mogoče razčleniti %s kot ulomka"
 
 #: src/gr-number.c:251
-#, fuzzy, c-format
+#, c-format
 msgid "Could not parse %s as a integer"
-msgstr "Razčlenjevanje števila \"%s\" je spodletelo"
+msgstr "Ni mogoče razčleniti %s kot celo število"
 
 #: src/gr-number.c:273
-#, fuzzy, c-format
+#, c-format
 msgid "Could not parse %s as a float"
-msgstr "Ni mogoče razčleniti naslova URL '%s'"
+msgstr "Ni mogoče razčleniti %s kot vrednost s plavajočo vejico"
 
 #: src/gr-number.c:322
-#, fuzzy, c-format
+#, c-format
 msgid "Could not parse %s as a number"
-msgstr "Ni mogoče razčleniti naslova URL '%s'"
+msgstr "Ni mogoče razčleniti %s kot število"
 
 #: src/gr-recipe-exporter.c:168
 msgid "Save the exported recipe"
@@ -1870,21 +1844,25 @@ msgid "Yield:"
 msgstr "Za:"
 
 #: src/gr-recipe-importer.c:238
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Error while importing recipe:\n"
 "%s"
-msgstr "Med uvažanjem je prišlo do napake: %s"
+msgstr ""
+"Med uvažanjem recepta je prišlo do napake:\n"
+"%s"
 
 #: src/gr-recipe-importer.c:518
 #, c-format
 msgid "Failed to load recipe: Couldn’t parse Created key"
 msgstr ""
+"Nalaganje recepta je spodletelo: ni mogoče razčleniti ustvarjenega ključa"
 
 #: src/gr-recipe-importer.c:529
 #, c-format
 msgid "Failed to load recipe: Couldn’t parse Modified key"
 msgstr ""
+"Nalaganje recepta je spodletelo: ni mogoče razčleniti spremenjenega ključa"
 
 #: src/gr-recipe-importer.c:809
 #, c-format
@@ -1892,9 +1870,9 @@ msgid "No chef information found"
 msgstr "Ni podrobnosti o kuharju"
 
 #: src/gr-recipe-importer.c:839
-#, fuzzy, c-format
+#, c-format
 msgid "This build does not support importing"
-msgstr "Izgradi podporna orodja"
+msgstr "Izgradnja programa podporna uvažanja"
 
 #: src/gr-recipe-printer.c:173
 msgid "Cuisine:"
@@ -1941,9 +1919,9 @@ msgid "Last edited:"
 msgstr "Nazadnje posodobljeno:"
 
 #: src/gr-recipes-page.c:372
-#, fuzzy, c-format
+#, c-format
 msgid "Buy ingredients: <b>%s</b>"
-msgstr "<b>Predlogi za '%s'</b>"
+msgstr "Nakup sestavin: <b>%s</b>"
 
 #: src/gr-recipes-page.c:374
 #, fuzzy, c-format
@@ -2218,22 +2196,19 @@ msgid "milliliters"
 msgstr "millilitri"
 
 #: src/gr-unit.c:53 src/gr-unit.c:54
-#, fuzzy
 msgctxt "unit abbreviation"
 msgid "fl oz"
-msgstr "%s unč"
+msgstr "unč"
 
 #: src/gr-unit.c:53 src/gr-unit.c:54
-#, fuzzy
 msgctxt "unit name"
 msgid "fluid ounce"
-msgstr "unča,unče,oz"
+msgstr "unča"
 
 #: src/gr-unit.c:53 src/gr-unit.c:54
-#, fuzzy
 msgctxt "unit plural"
 msgid "fluid ounces"
-msgstr "unča,unče,oz"
+msgstr "unče"
 
 #: src/gr-unit.c:55
 msgctxt "unit abbreviation"
@@ -2528,9 +2503,8 @@ msgid "Could not connect to the session bus from inside the Flatpak sandbox."
 msgstr ""
 
 #: src/gr-utils.c:387
-#, fuzzy
 msgid "Certain functionality will not be available."
-msgstr "Kako razširiti zmožnosti programa"
+msgstr "Nekatere zmožnosti programa ne bodo na voljo."
 
 #: src/gr-utils.c:400
 #, c-format
@@ -2616,9 +2590,9 @@ msgid "Select a recipe file"
 msgstr "Izbor datoteke recepta"
 
 #: src/gr-window.c:1241
-#, fuzzy, c-format
+#, c-format
 msgid "Recipes have been exported to “%s”"
-msgstr "Članstvo v skupini za »%s« jezik je preklicano."
+msgstr "Recepti so izvoženi v »%s«."
 
 #: src/gr-window.c:1279
 msgid "Select a file"
@@ -3005,7 +2979,7 @@ msgstr ""
 
 #: src/ingredients.inc:87
 msgid "Crushed red pepper flakes"
-msgstr ""
+msgstr "Paprika, drobljena rdeča"
 
 #: src/ingredients.inc:88
 msgid "Cucumber"
@@ -3021,11 +2995,11 @@ msgstr "Kumina"
 
 #: src/ingredients.inc:91
 msgid "Cumin seeds"
-msgstr "Semena kumine"
+msgstr "Kumina, semena"
 
 #: src/ingredients.inc:92
 msgid "Dark Jamaican rum"
-msgstr "Temni jamajški rum"
+msgstr "Rum, temni jamajški"
 
 #: src/ingredients.inc:93
 msgid "Date"
@@ -3053,7 +3027,7 @@ msgstr "Koriander, suh ali svež"
 
 #: src/ingredients.inc:99
 msgid "Dry yeast"
-msgstr "Suhi kvas"
+msgstr "Kvas, suhi"
 
 #: src/ingredients.inc:100
 msgid "Durum wheat semolina"
@@ -3089,7 +3063,7 @@ msgstr "Čebula, drobno sesekljana"
 
 #: src/ingredients.inc:108
 msgid "Finely chopped thai chillies or green chillis"
-msgstr "Tajski ali zeleni čili, drobno sesekljan"
+msgstr "Čili, tajski ali zeleni, drobno sesekljan"
 
 #: src/ingredients.inc:109
 msgid "Finely chopped tomato"
@@ -3161,7 +3135,7 @@ msgstr ""
 
 #: src/ingredients.inc:126
 msgid "Good, dry red wine"
-msgstr ""
+msgstr "Vino, rdeče, suho"
 
 #: src/ingredients.inc:127
 msgid "Gouda cheese"
@@ -3169,7 +3143,7 @@ msgstr "Sir gauda"
 
 #: src/ingredients.inc:128
 msgid "Goulash spices"
-msgstr ""
+msgstr "Začimbe za golaž"
 
 #: src/ingredients.inc:129
 msgid "Guanciale cubes"
@@ -3177,7 +3151,7 @@ msgstr ""
 
 #: src/ingredients.inc:130
 msgid "Long pasta, e.g. spaghetti"
-msgstr "Dolge testenine, špageti"
+msgstr "Testenine, dolge, špageti"
 
 #: src/ingredients.inc:131
 msgid "Parmesan cheese"
@@ -3452,13 +3426,12 @@ msgid "Peperoni"
 msgstr ""
 
 #: src/ingredients.inc:199
-#, fuzzy
 msgid "Pepper"
-msgstr "poper"
+msgstr "Poper"
 
 #: src/ingredients.inc:200
 msgid "Peppers"
-msgstr ""
+msgstr "Popri, mešanica"
 
 #: src/ingredients.inc:201
 msgid "Pickles"
@@ -3470,7 +3443,7 @@ msgstr "Ananas"
 
 #: src/ingredients.inc:203
 msgid "Pizza sauce"
-msgstr ""
+msgstr "Omaka za pico"
 
 #: src/ingredients.inc:204
 msgid "Plain flour"
@@ -3518,16 +3491,15 @@ msgstr "Rozine"
 
 #: src/ingredients.inc:215
 msgid "Red bell pepper"
-msgstr ""
+msgstr "Rdeča paprika"
 
 #: src/ingredients.inc:216
 msgid "Red onion"
 msgstr "Čebula, rdeča"
 
 #: src/ingredients.inc:217
-#, fuzzy
 msgid "Red Pepper"
-msgstr "poper"
+msgstr "Rdeča paprika"
 
 #: src/ingredients.inc:218
 msgid "Red wine"
@@ -3574,9 +3546,8 @@ msgid "Salmon"
 msgstr "Losos"
 
 #: src/ingredients.inc:229
-#, fuzzy
 msgid "Salt"
-msgstr "SRTP salt (šestnajstiško)"
+msgstr "Sol"
 
 #: src/ingredients.inc:230
 msgid "Salt and pepper"
@@ -3588,7 +3559,7 @@ msgstr ""
 
 #: src/ingredients.inc:232
 msgid "Scallions"
-msgstr ""
+msgstr "Čebula, mlada"
 
 #: src/ingredients.inc:233
 msgid "Sea salt"
@@ -3636,7 +3607,7 @@ msgstr "Čebula, spomladanska"
 
 #: src/ingredients.inc:244
 msgid "Squash"
-msgstr ""
+msgstr "Skvoš"
 
 #: src/ingredients.inc:245
 msgid "Star anise"
@@ -3717,7 +3688,7 @@ msgstr "Maslo, nesoljeno"
 
 #: src/ingredients.inc:264
 msgid "Vanilla baking powder"
-msgstr ""
+msgstr "Pecilni prašek, vaniljev"
 
 #: src/ingredients.inc:265
 msgid "Vanilla extract"
@@ -3725,7 +3696,7 @@ msgstr "Vanilja, izvleček"
 
 #: src/ingredients.inc:266
 msgid "Vanilla powdered sugar, for dusting"
-msgstr ""
+msgstr "Vanilja, sladkor"
 
 #: src/ingredients.inc:267
 msgid "Vanilla pudding"
@@ -3797,12 +3768,11 @@ msgstr ""
 
 #: src/ingredients.inc:284
 msgid "Zuccini"
-msgstr ""
+msgstr "Bučka cukini"
 
 #: src/no-ingredients.inc:1
-#, fuzzy
 msgid "no Almond"
-msgstr "marcipan"
+msgstr "ni mandljevmarcipan"
 
 #: src/no-ingredients.inc:2
 msgid "no Amaretti"
@@ -3810,42 +3780,39 @@ msgstr ""
 
 #: src/no-ingredients.inc:3
 msgid "no Anchovies"
-msgstr ""
+msgstr "ni inčunov"
 
 #: src/no-ingredients.inc:4
-#, fuzzy
 msgid "no Apple"
-msgstr "Apple"
+msgstr "ni jabolk"
 
 #: src/no-ingredients.inc:5
-#, fuzzy
 msgid "no Apple Vinegar"
-msgstr "sladkor / sladko | kis"
+msgstr "ni jabolčnega kisa"
 
 #: src/no-ingredients.inc:6
 msgid "no Apricot"
-msgstr ""
+msgstr "ni marelic"
 
 #: src/no-ingredients.inc:7
 msgid "no Artichoke"
-msgstr ""
+msgstr "ni artičok"
 
 #: src/no-ingredients.inc:8
 msgid "no Asparagus"
-msgstr ""
+msgstr "ni špargljev"
 
 #: src/no-ingredients.inc:9
 msgid "no Aubergine"
-msgstr ""
+msgstr "ni jajčevcev"
 
 #: src/no-ingredients.inc:10
-#, fuzzy
 msgid "no Baby Spinach"
-msgstr "Amerika/Glace_Bay"
+msgstr "ni mlade špinače"
 
 #: src/no-ingredients.inc:11
 msgid "no Bacon"
-msgstr ""
+msgstr "ni slanine"
 
 #: src/no-ingredients.inc:12
 msgid "no Bagel"
@@ -3853,31 +3820,27 @@ msgstr ""
 
 #: src/no-ingredients.inc:13
 msgid "no Baked beans"
-msgstr ""
+msgstr "ni pečenega fižola"
 
 #: src/no-ingredients.inc:14
-#, fuzzy
 msgid "no Baking powder"
-msgstr "sprano modra"
+msgstr "ni pecilnega praška"
 
 #: src/no-ingredients.inc:15
-#, fuzzy
 msgid "no Banana"
-msgstr "Banana"
+msgstr "ni banan"
 
 #: src/no-ingredients.inc:16
 msgid "no Basil"
-msgstr ""
+msgstr "ni bazilike"
 
 #: src/no-ingredients.inc:17
-#, fuzzy
 msgid "no Basmati rice"
-msgstr "Riž"
+msgstr "ni riža basmati"
 
 #: src/no-ingredients.inc:18
-#, fuzzy
 msgid "no Bay leaf"
-msgstr "Amerika/Glace_Bay"
+msgstr "ni lovorjevih listov"
 
 #: src/no-ingredients.inc:19
 msgid "no Beans"
@@ -3900,39 +3863,36 @@ msgid "no Beef sausage"
 msgstr "brez goveje klobase"
 
 #: src/no-ingredients.inc:24
-#, fuzzy
 msgid "no Beef (sirloin)"
-msgstr "Sklad"
+msgstr ""
 
 #: src/no-ingredients.inc:25
-#, fuzzy
 msgid "no Beef stock"
-msgstr "Sklad"
+msgstr ""
 
 #: src/no-ingredients.inc:26
 msgid "no Beetroot"
 msgstr ""
 
 #: src/no-ingredients.inc:27
-#, fuzzy
 msgid "no Bell pepper"
-msgstr "poper"
+msgstr "ni paprike"
 
 #: src/no-ingredients.inc:28
 msgid "no Bell Pepper (green)"
-msgstr ""
+msgstr "ni zelene paprike"
 
 #: src/no-ingredients.inc:29
 msgid "no Berry"
-msgstr ""
+msgstr "ni jagodičja"
 
 #: src/no-ingredients.inc:30
 msgid "no Bilberry"
-msgstr ""
+msgstr "ni evropskih borovnic"
 
 #: src/no-ingredients.inc:31
 msgid "no Biscotti"
-msgstr ""
+msgstr "ni piškotov"
 
 #: src/no-ingredients.inc:32
 msgid "no Black cardamom pod"
@@ -3940,12 +3900,11 @@ msgstr ""
 
 #: src/no-ingredients.inc:33
 msgid "no Black peppercorns"
-msgstr ""
+msgstr "ni zrn črnega popra"
 
 #: src/no-ingredients.inc:34
-#, fuzzy
 msgid "no Blueberry"
-msgstr "maslena"
+msgstr "ni ameriških borovnic"
 
 #: src/no-ingredients.inc:35
 msgid "no Bourbon whiskey"
@@ -3953,7 +3912,7 @@ msgstr ""
 
 #: src/no-ingredients.inc:36
 msgid "no Breadcrumbs"
-msgstr ""
+msgstr "ni krušnih drobtin"
 
 #: src/no-ingredients.inc:37
 #, fuzzy
@@ -3967,22 +3926,19 @@ msgstr "V primeru, da se dotaknejo tal, morajo nadaljevati."
 
 #: src/no-ingredients.inc:39
 msgid "no Broth"
-msgstr ""
+msgstr "ni juhe"
 
 #: src/no-ingredients.inc:40
-#, fuzzy
 msgid "no Brown sugar"
-msgstr "Vanilija"
+msgstr "ni rjavega sladkorja"
 
 #: src/no-ingredients.inc:41
-#, fuzzy
 msgid "no Butter"
-msgstr "maslena"
+msgstr "ni masla"
 
 #: src/no-ingredients.inc:42
-#, fuzzy
 msgid "no Butter, melted"
-msgstr "maslena"
+msgstr "ni staljenega masla"
 
 #: src/no-ingredients.inc:43
 msgid "no Button mushroom"
@@ -3990,28 +3946,27 @@ msgstr ""
 
 #: src/no-ingredients.inc:44
 msgid "no Cabbage"
-msgstr ""
+msgstr "ni zelja"
 
 #: src/no-ingredients.inc:45
 msgid "no Cake flour"
-msgstr ""
+msgstr "ni tortne moke"
 
 #: src/no-ingredients.inc:46
 msgid "no Canellini beans"
-msgstr ""
+msgstr "ni fižola kanellini"
 
 #: src/no-ingredients.inc:47
 msgid "no Canned black beans, rinsed"
-msgstr ""
+msgstr "ni konzerviranega temnega fižola"
 
 #: src/no-ingredients.inc:48
 msgid "no Canned chopped tomatoes"
-msgstr ""
+msgstr "ni konzerviranega sesekljanega paradižnika"
 
 #: src/no-ingredients.inc:49
-#, fuzzy
 msgid "no Carrot"
-msgstr "Korenje"
+msgstr "ni korenja"
 
 #: src/no-ingredients.inc:50
 msgid "no Cashews, lightly toasted"
@@ -4023,23 +3978,20 @@ msgid "no Caster sugar"
 msgstr "Vanilija"
 
 #: src/no-ingredients.inc:52
-#, fuzzy
 msgid "no Celery"
-msgstr "Cheese"
+msgstr "ni zelene"
 
 #: src/no-ingredients.inc:53
 msgid "no Champignons"
 msgstr ""
 
 #: src/no-ingredients.inc:54
-#, fuzzy
 msgid "no Cheese"
-msgstr "Cheese"
+msgstr "ni sira"
 
 #: src/no-ingredients.inc:55
-#, fuzzy
 msgid "no Cheese slices"
-msgstr "Cheese"
+msgstr "ni rezin sira"
 
 #: src/no-ingredients.inc:56
 msgid "no Cherries, pitted"
@@ -4050,18 +4002,16 @@ msgid "no Cherry tomatoes, halved"
 msgstr ""
 
 #: src/no-ingredients.inc:58
-#, fuzzy
 msgid "no Chia seeds"
-msgstr "Cheese"
+msgstr "ni semen čija"
 
 #: src/no-ingredients.inc:59
 msgid "no Chicken breasts, large"
-msgstr ""
+msgstr "ni piščančjih prsi"
 
 #: src/no-ingredients.inc:60
-#, fuzzy
 msgid "no Chicken livers"
-msgstr "Cheese"
+msgstr "ni piščančjih jeter"
 
 #: src/no-ingredients.inc:61
 #, fuzzy
@@ -4073,18 +4023,16 @@ msgid "no Chili flakes"
 msgstr ""
 
 #: src/no-ingredients.inc:63
-#, fuzzy
 msgid "no Chili powder"
-msgstr "sprano modra"
+msgstr "ni čilija v prahu"
 
 #: src/no-ingredients.inc:64
 msgid "no Chili sauce (e.g. sriracha)"
-msgstr ""
+msgstr "ni omake čili"
 
 #: src/no-ingredients.inc:65
-#, fuzzy
 msgid "no Chocolate"
-msgstr "čokoladno rjava"
+msgstr "ni čokolade"
 
 #: src/no-ingredients.inc:66
 #, fuzzy
@@ -4109,66 +4057,56 @@ msgid "no Cilantro leaves"
 msgstr ""
 
 #: src/no-ingredients.inc:71
-#, fuzzy
 msgid "no Cinnamon"
-msgstr "Korenje"
+msgstr "ni cimeta"
 
 #: src/no-ingredients.inc:72
 msgid "no Cinnamon sticks"
-msgstr ""
+msgstr "ni cimetovih palčk"
 
 #: src/no-ingredients.inc:73
-#, fuzzy
 msgid "no Cloves"
-msgstr "Cheese"
+msgstr "ni nageljnovih žbic"
 
 #: src/no-ingredients.inc:74
-#, fuzzy
 msgid "no Cocoa butter"
-msgstr "sprano modra"
+msgstr "ni kakavovega masla"
 
 #: src/no-ingredients.inc:75
-#, fuzzy
 msgid "no Cocoa powder"
-msgstr "sprano modra"
+msgstr "ki kakava v prahu"
 
 #: src/no-ingredients.inc:76
 msgid "no Coconut milk"
-msgstr ""
+msgstr "ni kokosovega mleka"
 
 #: src/no-ingredients.inc:77
-#, fuzzy
 msgid "no Coconut oil"
-msgstr "čokoladno rjava"
+msgstr "ni kokosovega olja"
 
 #: src/no-ingredients.inc:78
-#, fuzzy
 msgid "no Coconut water"
-msgstr "sprano modra"
+msgstr "ni kokosovega mleka"
 
 #: src/no-ingredients.inc:79
-#, fuzzy
 msgid "no Cold water"
-msgstr "Vodni učinek"
+msgstr "ni hladne vode"
 
 #: src/no-ingredients.inc:80
-#, fuzzy
 msgid "no cooked beef"
-msgstr "V primeru, da se dotaknejo tal, morajo nadaljevati."
+msgstr "ni kuhane govedine"
 
 #: src/no-ingredients.inc:81
-#, fuzzy
 msgid "no Coriander"
-msgstr "sprano modra"
+msgstr "ni koriandra"
 
 #: src/no-ingredients.inc:82
-#, fuzzy
 msgid "no Coriandre seeds"
-msgstr "buča"
+msgstr "ni semen koriandra"
 
 #: src/no-ingredients.inc:83
 msgid "no Couscous"
-msgstr ""
+msgstr "ni kuskusa"
 
 #: src/no-ingredients.inc:84
 #, fuzzy
@@ -4190,33 +4128,31 @@ msgstr ""
 
 #: src/no-ingredients.inc:88
 msgid "no Cucumber"
-msgstr ""
+msgstr "ni kumaric"
 
 #: src/no-ingredients.inc:89
 msgid "no Cucumber (large)"
-msgstr ""
+msgstr "ni kumare"
 
 #: src/no-ingredients.inc:90
 msgid "no Cumin"
-msgstr ""
+msgstr "ni kumine"
 
 #: src/no-ingredients.inc:91
-#, fuzzy
 msgid "no Cumin seeds"
-msgstr "buča"
+msgstr "ni semen kumine"
 
 #: src/no-ingredients.inc:92
 msgid "no Dark Jamaican rum"
-msgstr ""
+msgstr "ni temnega jamajškega ruma"
 
 #: src/no-ingredients.inc:93
-#, fuzzy
 msgid "no Date"
-msgstr "/Datum"
+msgstr "ni datljev"
 
 #: src/no-ingredients.inc:94
 msgid "no Dill"
-msgstr ""
+msgstr "ni kopra"
 
 #: src/no-ingredients.inc:95
 msgid "no Double cream"
@@ -4224,20 +4160,19 @@ msgstr ""
 
 #: src/no-ingredients.inc:96
 msgid "no Dried anchovies"
-msgstr ""
+msgstr "ni sušenih inčunov"
 
 #: src/no-ingredients.inc:97
 msgid "no Dried chillies"
-msgstr ""
+msgstr "ni suhega čilija"
 
 #: src/no-ingredients.inc:98
 msgid "no Dry or fresh cilantro"
 msgstr ""
 
 #: src/no-ingredients.inc:99
-#, fuzzy
 msgid "no Dry yeast"
-msgstr "/Datum"
+msgstr "ni suhega kvasa"
 
 #: src/no-ingredients.inc:100
 msgid "no Durum wheat semolina"
@@ -4253,16 +4188,15 @@ msgstr "brez jajc"
 
 #: src/no-ingredients.inc:103
 msgid "no Egg yolks"
-msgstr ""
+msgstr "ni jajčnih rumenjakov"
 
 #: src/no-ingredients.inc:104
-#, fuzzy
 msgid "no Fenugreek seeds"
-msgstr "buča"
+msgstr ""
 
 #: src/no-ingredients.inc:105
 msgid "no Fig"
-msgstr ""
+msgstr "ni fig"
 
 #: src/no-ingredients.inc:106
 msgid "no Finely chopped cilantro"
@@ -4270,39 +4204,39 @@ msgstr ""
 
 #: src/no-ingredients.inc:107
 msgid "no Finely chopped onions"
-msgstr ""
+msgstr "ni drobno sesekljane čebule"
 
 #: src/no-ingredients.inc:108
 msgid "no Finely chopped thai chillies or green chillis"
-msgstr ""
+msgstr "ni drobno sesekljanega tajskega ali zelenega čilija"
 
 #: src/no-ingredients.inc:109
 msgid "no Finely chopped tomato"
-msgstr ""
+msgstr "ni drobno sesekljanega paradižnika"
 
 #: src/no-ingredients.inc:110
 msgid "no Fish"
-msgstr ""
+msgstr "ni rib"
 
 #: src/no-ingredients.inc:111
 msgid "no Fish sauce"
-msgstr ""
+msgstr "ni ribje omake"
 
 #: src/no-ingredients.inc:112
 msgid "no Flour"
-msgstr ""
+msgstr "ni moke"
 
 #: src/no-ingredients.inc:113
 msgid "no Flour (all-purpose)"
-msgstr ""
+msgstr "ni večnamenske moke"
 
 #: src/no-ingredients.inc:114
 msgid "no Flour (Tipo 00)"
-msgstr ""
+msgstr "ni moke tip 00"
 
 #: src/no-ingredients.inc:115
 msgid "no Fresh rosemary"
-msgstr ""
+msgstr "ni svežega rožmarina"
 
 #: src/no-ingredients.inc:116
 msgid "no Fresh tagliatelle"
@@ -4313,37 +4247,32 @@ msgid "no Garam masala"
 msgstr ""
 
 #: src/no-ingredients.inc:118
-#, fuzzy
 msgid "no Garlic"
-msgstr "česen"
+msgstr "ni česna"
 
 #: src/no-ingredients.inc:119
-#, fuzzy
 msgid "no Garlic cloves"
-msgstr "česen"
+msgstr "ni česna v stroku"
 
 #: src/no-ingredients.inc:120
-#, fuzzy
 msgid "no Garlic powder"
-msgstr "sprano modra"
+msgstr "ni česna v prahu"
 
 #: src/no-ingredients.inc:121
 msgid "no Ginger"
-msgstr ""
+msgstr "ni ingverja"
 
 #: src/no-ingredients.inc:122
 msgid "no Ginger, freshly grated"
-msgstr ""
+msgstr "ni sveže ribanega ingverja"
 
 #: src/no-ingredients.inc:123
-#, fuzzy
 msgid "no Ginger ground"
-msgstr "V primeru, da se dotaknejo tal, morajo nadaljevati."
+msgstr "ni mletega ingverja"
 
 #: src/no-ingredients.inc:124
-#, fuzzy
 msgid "no Goat cheese"
-msgstr "Cheese"
+msgstr "ni kozjega sira"
 
 #: src/no-ingredients.inc:125
 msgid "no Golden caster sugar"
@@ -4351,16 +4280,15 @@ msgstr ""
 
 #: src/no-ingredients.inc:126
 msgid "no Good, dry red wine"
-msgstr ""
+msgstr "ni rdečega suhega vina"
 
 #: src/no-ingredients.inc:127
-#, fuzzy
 msgid "no Gouda cheese"
-msgstr "V primeru, da se dotaknejo tal, morajo nadaljevati."
+msgstr "ni gaude"
 
 #: src/no-ingredients.inc:128
 msgid "no Goulash spices"
-msgstr ""
+msgstr "ni začimb za golaž"
 
 #: src/no-ingredients.inc:129
 msgid "no Guanciale cubes"
@@ -4368,80 +4296,71 @@ msgstr ""
 
 #: src/no-ingredients.inc:130
 msgid "no Long pasta, e.g. spaghetti"
-msgstr ""
+msgstr "ni dolgih testenin, špagetov"
 
 #: src/no-ingredients.inc:131
 msgid "no Parmesan cheese"
-msgstr ""
+msgstr "ni parmezana"
 
 #: src/no-ingredients.inc:132
 msgid "no Grapes"
-msgstr ""
+msgstr "ni grozdja"
 
 #: src/no-ingredients.inc:133
 msgid "no Grated French Emmental"
-msgstr ""
+msgstr "ni naribanega ementalerja"
 
 #: src/no-ingredients.inc:134
-#, fuzzy
 msgid "no Green Apple"
-msgstr "Apple"
+msgstr "ni zelenih jabolk"
 
 #: src/no-ingredients.inc:135
-#, fuzzy
 msgid "no Green Bell Pepper"
-msgstr "poper"
+msgstr "ni zelene paprike"
 
 #: src/no-ingredients.inc:136
-#, fuzzy
 msgid "no Green Cabbage"
-msgstr "V primeru, da se dotaknejo tal, morajo nadaljevati."
+msgstr "ni zelenega zelja"
 
 #: src/no-ingredients.inc:137
-#, fuzzy
 msgid "no Green olive"
-msgstr "česen"
+msgstr "ni zelenih oliv"
 
 #: src/no-ingredients.inc:138
-#, fuzzy
 msgid "no Green onions"
-msgstr "Čebula"
+msgstr "ni zelene čebule"
 
 #: src/no-ingredients.inc:139
 msgid "no green onions, chopped"
-msgstr ""
+msgstr "ni sesekljane zelene čebule"
 
 #: src/no-ingredients.inc:140
-#, fuzzy
 msgid "no Ground beef"
-msgstr "V primeru, da se dotaknejo tal, morajo nadaljevati."
+msgstr "ni mlete govedine"
 
 #: src/no-ingredients.inc:141
 msgid "no Ground coriander (optional)"
-msgstr ""
+msgstr "ni mletega koriandra"
 
 #: src/no-ingredients.inc:142
-#, fuzzy
 msgid "no Ground cumin"
-msgstr "V primeru, da se dotaknejo tal, morajo nadaljevati."
+msgstr "ni mlete kumine"
 
 #: src/no-ingredients.inc:143
-#, fuzzy
 msgid "no Ground fennel"
-msgstr "V primeru, da se dotaknejo tal, morajo nadaljevati."
+msgstr "ni mletega koromača"
 
 #: src/no-ingredients.inc:144
-#, fuzzy
 msgid "no Ground pepper"
-msgstr "V primeru, da se dotaknejo tal, morajo nadaljevati."
+msgstr "ni mletega popra"
 
 #: src/no-ingredients.inc:145
 msgid "no Ham"
-msgstr ""
+msgstr "ni šunke"
 
 #: src/no-ingredients.inc:146
 msgid "no Hazelnuts"
-msgstr ""
+msgstr "ni lešnikov"
 
 #: src/no-ingredients.inc:147
 msgid "no Hazelnuts milk"
@@ -4453,19 +4372,19 @@ msgstr ""
 
 #: src/no-ingredients.inc:149
 msgid "no Honey"
-msgstr ""
+msgstr "ni medu"
 
 #: src/no-ingredients.inc:150
 msgid "no Horseradish"
-msgstr ""
+msgstr "ni hrena"
 
 #: src/no-ingredients.inc:151
 msgid "no Japanese mayonaisse"
-msgstr ""
+msgstr "ni japonske majoneze"
 
 #: src/no-ingredients.inc:152
 msgid "no Juniper berries"
-msgstr ""
+msgstr "ni brinovih jagod"
 
 #: src/no-ingredients.inc:153
 msgid "no Kale"
@@ -4473,16 +4392,15 @@ msgstr ""
 
 #: src/no-ingredients.inc:154
 msgid "no Ketchup"
-msgstr ""
+msgstr "ni kečapa"
 
 #: src/no-ingredients.inc:155
 msgid "no Kiwis"
-msgstr ""
+msgstr "ni kivija"
 
 #: src/no-ingredients.inc:156
-#, fuzzy
 msgid "no Lamb"
-msgstr "sladko limonska"
+msgstr "ni jagnjetine"
 
 #: src/no-ingredients.inc:157
 #, fuzzy
@@ -4494,14 +4412,12 @@ msgid "no Lard or oil"
 msgstr ""
 
 #: src/no-ingredients.inc:159
-#, fuzzy
 msgid "no Lemon"
-msgstr "sladko limonska"
+msgstr "ni limon"
 
 #: src/no-ingredients.inc:160
-#, fuzzy
 msgid "no Lemon juice"
-msgstr "sladko limonska"
+msgstr "ni limoninega soka"
 
 #: src/no-ingredients.inc:161
 msgid "no Lemon (untreated)"
@@ -4509,58 +4425,55 @@ msgstr ""
 
 #: src/no-ingredients.inc:162
 msgid "no Lettuce"
-msgstr ""
+msgstr "ni solate"
 
 #: src/no-ingredients.inc:163
 msgid "no Light muscovado sugar"
 msgstr ""
 
 #: src/no-ingredients.inc:164
-#, fuzzy
 msgid "no Lime"
-msgstr "sladko limonska"
+msgstr "ni limet"
 
 #: src/no-ingredients.inc:165
 msgid "no Lime juice"
-msgstr ""
+msgstr "ni limetinega soka"
 
 #: src/no-ingredients.inc:166
 msgid "no Linseeds"
-msgstr ""
+msgstr "ni lanenega semena"
 
 #: src/no-ingredients.inc:167
-#, fuzzy
 msgid "no Mandarin Oranges"
-msgstr "Oranžna"
+msgstr "ni mandarin"
 
 #: src/no-ingredients.inc:168
 msgid "no Margarine"
-msgstr ""
+msgstr "ni margarine"
 
 #: src/no-ingredients.inc:169
 msgid "no Mayonnaise"
-msgstr ""
+msgstr "ni majoneze"
 
 #: src/no-ingredients.inc:170
 msgid "no Meat"
-msgstr ""
+msgstr "ni mesa"
 
 #: src/no-ingredients.inc:171
 msgid "no Meat and bones"
-msgstr ""
+msgstr "ni mesa in kosti"
 
 #: src/no-ingredients.inc:172
 msgid "no Milk"
-msgstr ""
+msgstr "ni mleka"
 
 #: src/no-ingredients.inc:173
-#, fuzzy
 msgid "no Mixed berries"
-msgstr "Knjižnice"
+msgstr "ni mešanih gozdnih jagod"
 
 #: src/no-ingredients.inc:174
 msgid "no Mixed frozen bell peppers"
-msgstr ""
+msgstr "ni mešane zmrznjene paprike"
 
 #: src/no-ingredients.inc:175
 msgid "no Mori-nu organic silken tofu (firm)"
@@ -4568,16 +4481,15 @@ msgstr ""
 
 #: src/no-ingredients.inc:176
 msgid "no Mushrooms"
-msgstr ""
+msgstr "ni gob"
 
 #: src/no-ingredients.inc:177
 msgid "no Mustard"
-msgstr ""
+msgstr "ni gorčice"
 
 #: src/no-ingredients.inc:178
-#, fuzzy
 msgid "no Mustard seeds"
-msgstr "buča"
+msgstr "ni gorčičnih semen"
 
 #: src/no-ingredients.inc:179
 msgid "no Nut"
@@ -4585,11 +4497,11 @@ msgstr ""
 
 #: src/no-ingredients.inc:180
 msgid "no Nutmeg"
-msgstr ""
+msgstr "ni muškatnega oreščka"
 
 #: src/no-ingredients.inc:181
 msgid "no Nutritional yeast"
-msgstr ""
+msgstr "ni prehranskega kvasa"
 
 #: src/no-ingredients.inc:182
 msgid "no Oatmeal"
@@ -4597,252 +4509,227 @@ msgstr ""
 
 #: src/no-ingredients.inc:183
 msgid "no Oil"
-msgstr ""
+msgstr "ni olja"
 
 #: src/no-ingredients.inc:184
 msgid "no Okonomiyaki sauce"
 msgstr ""
 
 #: src/no-ingredients.inc:185
-#, fuzzy
 msgid "no Olive oil"
-msgstr "Čebula"
+msgstr "ni olivnega olja"
 
 #: src/no-ingredients.inc:186
 msgid "no Olive oil, extra-virgin"
-msgstr ""
+msgstr "ni ekstra deviškega olivnega olja"
 
 #: src/no-ingredients.inc:187
 msgid "no Olives, pitted"
-msgstr ""
+msgstr "ni oliv brez koščic"
 
 #: src/no-ingredients.inc:188
-#, fuzzy
 msgid "no Onion"
-msgstr "Čebula"
+msgstr "ni čebule"
 
 #: src/no-ingredients.inc:189
-#, fuzzy
 msgid "no Onion powder"
-msgstr "sprano modra"
+msgstr "ni čebule v prahu"
 
 #: src/no-ingredients.inc:190
-#, fuzzy
 msgid "no Orange"
-msgstr "Oranžna"
+msgstr "ni pomaranč"
 
 #: src/no-ingredients.inc:191
-#, fuzzy
 msgid "no Oregano"
-msgstr "Oranžna"
+msgstr "ni origana"
 
 #: src/no-ingredients.inc:192
-#, fuzzy
 msgid "no Pancetta"
-msgstr "krompir"
+msgstr "ni pancete"
 
 #: src/no-ingredients.inc:193
 msgid "no Pandan leaves"
 msgstr ""
 
 #: src/no-ingredients.inc:194
-#, fuzzy
 msgid "no Paprika"
-msgstr "poper"
+msgstr ""
 
 #: src/no-ingredients.inc:195
 msgid "no Parmesan cheese, grated"
-msgstr ""
+msgstr "ni naribanega parmezana"
 
 #: src/no-ingredients.inc:196
 msgid "no Parsley"
-msgstr ""
+msgstr "ni peteršilja"
 
 #: src/no-ingredients.inc:197
 msgid "no Peach"
-msgstr ""
+msgstr "ni breskev"
 
 #: src/no-ingredients.inc:198
 msgid "no Peperoni"
 msgstr ""
 
 #: src/no-ingredients.inc:199
-#, fuzzy
 msgid "no Pepper"
-msgstr "poper"
+msgstr "ni popra"
 
 #: src/no-ingredients.inc:200
 msgid "no Peppers"
-msgstr ""
+msgstr "ni poprov"
 
 #: src/no-ingredients.inc:201
 msgid "no Pickles"
-msgstr ""
+msgstr "ni kumaric"
 
 #: src/no-ingredients.inc:202
-#, fuzzy
 msgid "no Pineapple"
-msgstr "poper"
+msgstr "ni ananasa"
 
 #: src/no-ingredients.inc:203
 msgid "no Pizza sauce"
-msgstr ""
+msgstr "ni omake za pico"
 
 #: src/no-ingredients.inc:204
 msgid "no Plain flour"
-msgstr ""
+msgstr "ni navadne moke"
 
 #: src/no-ingredients.inc:205
-#, fuzzy
 msgid "no Pomegranate"
-msgstr "krompir"
+msgstr "ni granatnih jabolk"
 
 #: src/no-ingredients.inc:206
 msgid "no Pomegranate juice"
-msgstr ""
+msgstr "ni soka granatnega jabolka"
 
 #: src/no-ingredients.inc:207
-#, fuzzy
 msgid "no Pork fat"
-msgstr "krompir"
+msgstr "ni svinske masti"
 
 #: src/no-ingredients.inc:208
 msgid "no Pork loin"
-msgstr ""
+msgstr "ni prašičjih ledij"
 
 #: src/no-ingredients.inc:209
-#, fuzzy
 msgid "no Potato"
-msgstr "krompir"
+msgstr "ni krompirja"
 
 #: src/no-ingredients.inc:210
 msgid "no Powdered sugar"
 msgstr ""
 
 #: src/no-ingredients.inc:211
-#, fuzzy
 msgid "no Pumpkin seeds"
-msgstr "buča"
+msgstr "ni bučnih semen"
 
 #: src/no-ingredients.inc:212
 msgid "no Quinoa"
-msgstr ""
+msgstr "ni kvinoje"
 
 #: src/no-ingredients.inc:213
 msgid "no Radish"
-msgstr ""
+msgstr "ni redkve"
 
 #: src/no-ingredients.inc:214
 msgid "no Raisins"
-msgstr ""
+msgstr "ni rozin"
 
 #: src/no-ingredients.inc:215
 msgid "no Red bell pepper"
 msgstr ""
 
 #: src/no-ingredients.inc:216
-#, fuzzy
 msgid "no Red onion"
-msgstr "Čebula"
+msgstr "ni rdeče čebule"
 
 #: src/no-ingredients.inc:217
-#, fuzzy
 msgid "no Red Pepper"
-msgstr "poper"
+msgstr ""
 
 #: src/no-ingredients.inc:218
 msgid "no Red wine"
-msgstr ""
+msgstr "ni rdečega vina"
 
 #: src/no-ingredients.inc:219
 msgid "no Rice"
-msgstr ""
+msgstr "ni riža"
 
 #: src/no-ingredients.inc:220
 msgid "no Rice, cooked"
-msgstr ""
+msgstr "ni kuhanega riža"
 
 #: src/no-ingredients.inc:221
 msgid "no Rice vermicelli noodles"
-msgstr ""
+msgstr "ni riževih rezancev"
 
 #: src/no-ingredients.inc:222
-#, fuzzy
 msgid "no Rock sugar"
-msgstr "sladkor / sladko | kis"
+msgstr "ni sladkorja v kockah"
 
 #: src/no-ingredients.inc:223
 msgid "no Rolled oats"
-msgstr ""
+msgstr "ni valjanih ovsenih kosmičev"
 
 #: src/no-ingredients.inc:224
 msgid "no Rosemary"
-msgstr ""
+msgstr "ni rožmarina"
 
 #: src/no-ingredients.inc:225
 msgid "no Rosé wine"
-msgstr ""
+msgstr "ni vina rosé"
 
 #: src/no-ingredients.inc:226
-#, fuzzy
 msgid "no Saffron"
-msgstr "sladkor / sladko | kis"
+msgstr "ni žafrana"
 
 #: src/no-ingredients.inc:227
-#, fuzzy
 msgid "no Sage"
-msgstr "SRTP salt (šestnajstiško)"
+msgstr "ni žajblja"
 
 #: src/no-ingredients.inc:228
-#, fuzzy
 msgid "no Salmon"
-msgstr "marcipan"
+msgstr "ni lososa"
 
 #: src/no-ingredients.inc:229
-#, fuzzy
 msgid "no Salt"
-msgstr "SRTP salt (šestnajstiško)"
+msgstr "ni soli"
 
 #: src/no-ingredients.inc:230
 msgid "no Salt and pepper"
-msgstr ""
+msgstr "ni soli in popra"
 
 #: src/no-ingredients.inc:231
 msgid "no Saucebinder"
 msgstr ""
 
 #: src/no-ingredients.inc:232
-#, fuzzy
 msgid "no Scallions"
-msgstr "SRTP salt (šestnajstiško)"
+msgstr "ni mlade čebule"
 
 #: src/no-ingredients.inc:233
-#, fuzzy
 msgid "no Sea salt"
-msgstr "SRTP salt (šestnajstiško)"
+msgstr "ni morske soli"
 
 #: src/no-ingredients.inc:234
 msgid "no Semi-skimmed milk"
-msgstr ""
+msgstr "ni delno posnetega mleka"
 
 #: src/no-ingredients.inc:235
-#, fuzzy
 msgid "no Sesame oil"
-msgstr "SRTP salt (šestnajstiško)"
+msgstr "ni sezamovega olja"
 
 #: src/no-ingredients.inc:236
-#, fuzzy
 msgid "no Sesame seeds"
-msgstr "buča"
+msgstr "ni sezamovih semen"
 
 #: src/no-ingredients.inc:237
-#, fuzzy
 msgid "no Shallots"
-msgstr "SRTP salt (šestnajstiško)"
+msgstr "ni šalotke"
 
 #: src/no-ingredients.inc:238
 msgid "no Shrimps"
-msgstr ""
+msgstr "ni kozic"
 
 #: src/no-ingredients.inc:239
 msgid "no Slivered almonds, toasted"
@@ -4850,29 +4737,27 @@ msgstr ""
 
 #: src/no-ingredients.inc:240
 msgid "no Sour cream"
-msgstr ""
+msgstr "ni kisle smetane"
 
 #: src/no-ingredients.inc:241
 msgid "no Soy sauce"
-msgstr ""
+msgstr "ni sojine omake"
 
 #: src/no-ingredients.inc:242
 msgid "no Spinach"
-msgstr "brez špinače"
+msgstr "ni špinače"
 
 #: src/no-ingredients.inc:243
-#, fuzzy
 msgid "no Spring onion"
-msgstr "Čebula"
+msgstr "ni spomladanske čebule"
 
 #: src/no-ingredients.inc:244
-#, fuzzy
 msgid "no Squash"
-msgstr "Squash"
+msgstr "ni skovša"
 
 #: src/no-ingredients.inc:245
 msgid "no Star anise"
-msgstr ""
+msgstr "ni zvezdastega janeža"
 
 #: src/no-ingredients.inc:246
 msgid "no Strawberry"
@@ -4884,11 +4769,11 @@ msgstr "brez sladkorja"
 
 #: src/no-ingredients.inc:248
 msgid "no Sunflower seeds"
-msgstr ""
+msgstr "ni sončničnih semen"
 
 #: src/no-ingredients.inc:249
 msgid "no Sweet potatoes"
-msgstr "brez sladkega krompirja"
+msgstr "ni sladkega krompirja"
 
 #: src/no-ingredients.inc:250
 msgid "no Tamarind paste"
@@ -4896,118 +4781,111 @@ msgstr ""
 
 #: src/no-ingredients.inc:251
 msgid "no Tangerine"
-msgstr ""
+msgstr "ni mandarin"
 
 #: src/no-ingredients.inc:252
 msgid "no Thai basil leaves"
-msgstr ""
+msgstr "ni tajske bazilike"
 
 #: src/no-ingredients.inc:253
 msgid "no Thai chillies"
-msgstr ""
+msgstr "ni tajskega čilija"
 
 #: src/no-ingredients.inc:254
 msgid "no Thai fish sauce"
-msgstr ""
+msgstr "ni tajske ribje omake"
 
 #: src/no-ingredients.inc:255
 msgid "no Thyme"
-msgstr ""
+msgstr "ni timijana"
 
 #: src/no-ingredients.inc:256
 msgid "no Tinned pineapple rings"
-msgstr ""
+msgstr "ni konzerviranega ananasa"
 
 #: src/no-ingredients.inc:257
 msgid "no Tofu"
-msgstr "brez tofuja"
+msgstr "ni tofuja"
 
 #: src/no-ingredients.inc:258
-#, fuzzy
 msgid "no Tomato"
-msgstr "paradižnikova"
+msgstr "ni paradižnika"
 
 #: src/no-ingredients.inc:259
-#, fuzzy
 msgid "no Tomato paste"
-msgstr "paradižnikova"
+msgstr "ni paradižnikove mezge"
 
 #: src/no-ingredients.inc:260
 msgid "no Tomato sauce"
-msgstr "brez paradižnikove omake"
+msgstr "ni paradižnikove omake"
 
 #: src/no-ingredients.inc:261
-#, fuzzy
 msgid "no Tumeric ground"
-msgstr "V primeru, da se dotaknejo tal, morajo nadaljevati."
+msgstr ""
 
 #: src/no-ingredients.inc:262
 msgid "no Tuna fish"
-msgstr "brez tune"
+msgstr "ni tune"
 
 #: src/no-ingredients.inc:263
 msgid "no Unsalted butter"
-msgstr ""
+msgstr "ni nesoljenega masla"
 
 #: src/no-ingredients.inc:264
-#, fuzzy
 msgid "no Vanilla baking powder"
-msgstr "sprano modra"
+msgstr "ni vaniljevega pecilnega praška"
 
 #: src/no-ingredients.inc:265
-#, fuzzy
 msgid "no Vanilla extract"
-msgstr "Vanilija"
+msgstr ""
 
 #: src/no-ingredients.inc:266
-#, fuzzy
 msgid "no Vanilla powdered sugar, for dusting"
-msgstr "Vanilija"
+msgstr ""
 
 #: src/no-ingredients.inc:267
 msgid "no Vanilla pudding"
-msgstr "brez vaniljevega pudinga"
+msgstr "ni vaniljevega pudinga"
 
 #: src/no-ingredients.inc:268
 msgid "no Vanilla sugar"
-msgstr "brez vaniljevega sladkorja"
+msgstr "ni vaniljevega sladkorja"
 
 #: src/no-ingredients.inc:269
 msgid "no Vegetable oil"
-msgstr "brez rastlinskega olja"
+msgstr "ni rastlinskega olja"
 
 #: src/no-ingredients.inc:270
 msgid "no Vinegar"
-msgstr "brez kisa"
+msgstr "ni kisa"
 
 #: src/no-ingredients.inc:271
 msgid "no Water"
-msgstr "brez vode"
+msgstr "ni vode"
 
 #: src/no-ingredients.inc:272
 msgid "no Wheat flour"
-msgstr "brez bele moke"
+msgstr "ni bele moke"
 
 #: src/no-ingredients.inc:273
-#, fuzzy
 msgid "no White fish"
-msgstr "vino / grozd | rum"
+msgstr "ni bele ribe"
 
 #: src/no-ingredients.inc:274
 msgid "no White onion"
-msgstr "brez bele čebule"
+msgstr "ni bele čebule"
 
 #: src/no-ingredients.inc:275
 msgid "no White wine"
-msgstr "brez belega vina"
+msgstr "ni belega vina"
 
 #: src/no-ingredients.inc:276
 msgid "no Whole chicken"
-msgstr "brez celega piščanca"
+msgstr "ni celega piščanca"
 
 #: src/no-ingredients.inc:277
 msgid "no Wine"
-msgstr "brez vina"
+msgstr "ni vina"
 
 #: src/no-ingredients.inc:278
 msgid "no Worcestershire sauce"
@@ -5015,15 +4893,15 @@ msgstr ""
 
 #: src/no-ingredients.inc:279
 msgid "no Yeast"
-msgstr "brez kvasa"
+msgstr "ni kvasa"
 
 #: src/no-ingredients.inc:280
 msgid "no Yellow bell pepper"
-msgstr ""
+msgstr "ni rumene paprike"
 
 #: src/no-ingredients.inc:281
 msgid "no Yoghurt"
-msgstr "brez jogurta"
+msgstr "ni jogurta"
 
 #: src/no-ingredients.inc:282
 msgid "no Zest of 1 lemon (organic)"
@@ -5035,7 +4913,7 @@ msgstr ""
 
 #: src/no-ingredients.inc:284
 msgid "no Zuccini"
-msgstr ""
+msgstr "ni bučk cukini"
 
 #, fuzzy
 #~ msgid "Ser_ves"
