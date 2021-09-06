@@ -1,14 +1,15 @@
 # Czech translation for recipes.
 # Copyright (C) 2016 recipes's COPYRIGHT HOLDER
 # This file is distributed under the same license as the recipes package.
-# Marek Černocký <marek@manet.cz>, 2016, 2017, 2018.
+#
+# Marek Černocký <marek@manet.cz>, 2016, 2017, 2018, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-05 15:37+0000\n"
-"PO-Revision-Date: 2018-03-10 12:03+0100\n"
+"POT-Creation-Date: 2020-06-23 04:28+0000\n"
+"PO-Revision-Date: 2021-09-06 10:53+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -422,7 +423,7 @@ msgstr ""
 
 #: src/gr-details-page.ui:119
 msgid ""
-"Contains Gluten. Please always double-check the ingredients if you are "
+"Contains gluten. Please always double-check the ingredients if you are "
 "serving a person with gluten or dairy intolerance."
 msgstr ""
 "Obsahuje lepek. Vždy prosím raději dvakrát zkontrolujte, co jídlo obsahuje, "
@@ -1111,15 +1112,15 @@ msgstr ""
 msgid "Supported categories: %s\n"
 msgstr "Podporované kategorie: %s\n"
 
-#: src/gr-app.c:441
+#: src/gr-app.c:443
 msgid "Print the version and exit"
 msgstr "Vypsat verzi a skončit"
 
-#: src/gr-app.c:445
+#: src/gr-app.c:447
 msgid "Turn on verbose logging"
 msgstr "Přepnout podrobné záznamy"
 
-#: src/gr-app.c:449
+#: src/gr-app.c:451
 msgid "Show a category"
 msgstr "Zobrazit kategorii"
 
@@ -1641,7 +1642,7 @@ msgstr "uncí"
 msgid "_Name Your Recipe"
 msgstr "_Název receptu"
 
-#: src/gr-edit-page.c:1734 src/gr-edit-page.c:1796 src/gr-recipe-store.c:1333
+#: src/gr-edit-page.c:1734 src/gr-edit-page.c:1796 src/gr-recipe-store.c:1330
 #, c-format
 msgid "You need to provide a name for the recipe"
 msgstr "Musíte dát receptu název"
@@ -1988,7 +1989,7 @@ msgstr[0] "Nakoupit suroviny: <b>%s, %s a %d další</b>"
 msgstr[1] "Nakoupit suroviny: <b>%s, %s a %d další</b>"
 msgstr[2] "Nakoupit suroviny: <b>%s, %s a %d dalších</b>"
 
-#: src/gr-recipe-store.c:1338
+#: src/gr-recipe-store.c:1335
 #, c-format
 msgid ""
 "A recipe with this name and author (%s) already exists.\n"
@@ -1997,32 +1998,32 @@ msgstr ""
 "Recept s tímto názvem a autorem (%s) již existuje.\n"
 "Zvolte prosím jiný název"
 
-#: src/gr-recipe-store.c:1367
+#: src/gr-recipe-store.c:1364
 #, c-format
 msgid "You need to provide an ID for the recipe"
 msgstr "Musíte receptu přidělit ID"
 
-#: src/gr-recipe-store.c:1373
+#: src/gr-recipe-store.c:1370
 #, c-format
 msgid "A recipe with this ID already exists"
 msgstr "Recept s tímto ID již existuje"
 
-#: src/gr-recipe-store.c:1542
+#: src/gr-recipe-store.c:1539
 #, c-format
 msgid "You need to provide an ID"
 msgstr "Musíte zadat ID"
 
-#: src/gr-recipe-store.c:1548
+#: src/gr-recipe-store.c:1545
 #, c-format
 msgid "Sorry, this ID is taken"
 msgstr "Bohužel, toto ID je zabrané"
 
-#: src/gr-recipe-store.c:1575
+#: src/gr-recipe-store.c:1572
 #, c-format
 msgid "You need to provide an ID for the chef"
 msgstr "Musíte kuchaři přidělit ID"
 
-#: src/gr-recipe-store.c:1581
+#: src/gr-recipe-store.c:1578
 #, c-format
 msgid "A chef with this ID already exists"
 msgstr "Kuchař s tímto ID již existuje"
@@ -2531,17 +2532,30 @@ msgstr[2] "před %d hodinami"
 msgid "some time ago"
 msgstr "před nějakou dobou"
 
-#: src/gr-utils.c:385
+#: src/gr-utils.c:386
 msgid "Could not connect to the session bus from inside the Flatpak sandbox."
 msgstr ""
 "Nezdařilo se připojit ke sběrnici sezení zevnitř izolovaného prostředí "
 "Flatpak."
 
-#: src/gr-utils.c:386
+#: src/gr-utils.c:387
 msgid "Certain functionality will not be available."
 msgstr "Některá funkcionalita není k dispozici."
 
-#: src/gr-utils.c:406
+#: src/gr-utils.c:400
+#, c-format
+msgid ""
+"Could not create D-Bus proxy for org.freedesktop.portal.Desktop interface %s"
+msgstr ""
+"Nezdařilo se vytvořit D-Bus proxy pro rozhraní org.freedesktop.portal.Desktop "
+"%s"
+
+#: src/gr-utils.c:401
+#, c-format
+msgid "Error: %s"
+msgstr "Chyba: %s"
+
+#: src/gr-utils.c:412
 msgid ""
 "Missing the desktop portal needed to open files from inside a Flatpak "
 "sandbox."
@@ -2549,21 +2563,21 @@ msgstr ""
 "Schází portál uživatelského prostředí potřebný k otevírání souborů zevnitř "
 "izolovaného prostředí Flatpak."
 
-#: src/gr-utils.c:408
+#: src/gr-utils.c:414
 msgid ""
 "Missing the desktop portal needed to print from inside a Flatpak sandbox."
 msgstr ""
 "Schází portál uživatelského prostředí potřebný k tisku zevnitř izolovaného "
 "prostředí Flatpak."
 
-#: src/gr-utils.c:410
+#: src/gr-utils.c:416
 msgid ""
 "Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
 msgstr ""
 "Schází portál uživatelského prostředí potřebný k otevírání adres URL zevnitř "
 "izolovaného prostředí Flatpak."
 
-#: src/gr-utils.c:414
+#: src/gr-utils.c:420
 msgid ""
 "Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
 msgstr ""
