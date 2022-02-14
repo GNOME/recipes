@@ -8,15 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-07 03:11+0000\n"
-"PO-Revision-Date: 2021-07-14 14:29+0200\n"
+"POT-Creation-Date: 2021-12-23 16:10+0000\n"
+"PO-Revision-Date: 2022-02-14 12:19+0100\n"
 "Last-Translator: Matej Urbančič <mateju@src.gnome.org>\n"
 "Language-Team: Slovenščina <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Generator: Poedit 3.0\n"
 
@@ -25,7 +26,7 @@ msgstr ""
 #: src/gr-window.ui:530 src/gr-about-dialog.c:907 src/gr-window.c:391
 #: src/gr-window.c:1098
 msgid "Recipes"
-msgstr "Kuharski recepti"
+msgstr "Kuhar'ca"
 
 #: data/org.gnome.Recipes.desktop.in:4
 msgid "GNOME cooks unite!"
@@ -45,8 +46,8 @@ msgid ""
 "Recipes is an easy-to-use application that will help you to discover what to "
 "cook today, tomorrow, the rest of the week and for your special occasions."
 msgstr ""
-"Recepti je enostaven program, ki omogoča odkrivanje novih jedi danes, jutri, "
-"prek celega tedna in za vse posebne dogodke."
+"Kuhar'ca je enostaven program, ki omogoča odkrivanje novih jedi danes, "
+"jutri, vsak dan v tednu in za raznovrstne posebne dogodke."
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:13
 msgid ""
@@ -54,9 +55,9 @@ msgid ""
 "contributors from all over the world. It also lets you store your own "
 "recipes and share them with your friends."
 msgstr ""
-"Program vključuje zbirko receptov, ki jih izbira skupnost GNOME s celega "
-"sveta. Omogoča tudi shranjevanje dodatnih receptov in seveda izmenjavo s "
-"prijatelji in znanci."
+"Program Kuhar'ca vključuje zbirko receptov, ki jih izbira in objavlja "
+"skupnost GNOME, sodelujejo pa posamezniki s celega sveta. Omogoča tudi "
+"shranjevanje novih receptov in seveda izmenjavo s prijatelji in znanci."
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:18
 msgid "The major features of Recipes include:"
@@ -68,7 +69,7 @@ msgstr "dodajanje in urejanje kuharskih receptov"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:23
 msgid "Share recipes with your friends"
-msgstr "izmenjava receptov s prijatelji"
+msgstr "možnost izmenjave receptov s prijatelji"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:24
 msgid "Export and print shopping lists"
@@ -80,7 +81,7 @@ msgstr "prilagajanje količin na število porcij"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:26
 msgid "Mark recipes to cook later or add them to your favorites"
-msgstr "označevanje receptov po priljubljenosti oziroma načrtovanju"
+msgstr "označevanje receptov za načrtovanje in dodajanje med priljubljene"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:27
 msgid "Add notes to recipes"
@@ -124,7 +125,7 @@ msgstr "ID trenutnega uporabnika"
 
 #: data/org.gnome.Recipes.gschema.xml:26
 msgid "The user ID of the current user."
-msgstr "Uporabniški ID trenutnega uporabnika."
+msgstr "Uporabniško določilo ID trenutnega uporabnika."
 
 #: data/org.gnome.Recipes.gschema.xml:32
 msgid "The number of times cooking mode has been presented"
@@ -153,16 +154,20 @@ msgstr "Seznam priljubljenih"
 #: data/org.gnome.Recipes.gschema.xml:48
 msgid "The list of favorites. Each entry in the list is the ID of a recipe."
 msgstr ""
+"Seznam receptov, označenih kot priljubljeni. Vsak vnos na seznamu je "
+"določilo ID recepta."
 
 #: data/org.gnome.Recipes.gschema.xml:54
 msgid "The timestamp of the last change to the shopping list"
-msgstr ""
+msgstr "Časovni žig zadnje spremembe nakupovalnega seznama"
 
 #: data/org.gnome.Recipes.gschema.xml:55
 msgid ""
 "The timestamp of the last time an item was added to or removed from the "
 "shopping list."
 msgstr ""
+"Časovni žig zadnjega dodajanja ali odstranjevanje vnosa na seznam za "
+"nakupovanje."
 
 #: data/org.gnome.Recipes.gschema.xml:62
 msgid "The shopping list"
@@ -173,29 +178,32 @@ msgid ""
 "The shopping list. Each entry in the dictionary maps the ID of a recipe to a "
 "serving count."
 msgstr ""
+"Nakupovalni seznam za načrtovane recepte. Vsak vnos preslika določilo ID "
+"recepta na število porcij."
 
 #: data/org.gnome.Recipes.gschema.xml:70
 msgid "Ingredients that were removed from the shopping list"
-msgstr ""
+msgstr "Sestavine, odstranjene z nakupovalnega seznama"
 
 #: data/org.gnome.Recipes.gschema.xml:71
 msgid "The names of ingredients that were removed from the shopping list."
-msgstr ""
+msgstr "Imena sestavin, ki so bile odstranjene z nakupovalnega seznama."
 
 #: data/org.gnome.Recipes.gschema.xml:77
-#, fuzzy
 msgid "The list of recipes to be exported"
-msgstr "Prevodi kuharskih receptov"
+msgstr "Seznam receptov za izvoz"
 
 #: data/org.gnome.Recipes.gschema.xml:78
 msgid ""
 "The list of recipes to be exported. Each entry in the list is the ID of a "
 "recipe."
 msgstr ""
+"Seznam receptov, ki so pripravljeni za izvos. Vsak vnos na seznamu je "
+"določilo ID recepta."
 
 #: data/org.gnome.Recipes.gschema.xml:84
 msgid "The setting for which unit temperatures should be displayed in."
-msgstr ""
+msgstr "Nastavitev enote temperature"
 
 #: data/org.gnome.Recipes.gschema.xml:85
 msgid ""
@@ -203,46 +211,54 @@ msgid ""
 "'locale', which means to use the LC_MEASUREMENT category of the current "
 "locale to decide."
 msgstr ""
+"Nastavitev enote temperature, ki naj bo prikazana v receptih. Privzeto je "
+"določeno »krajevno«, kar pomeni uporabo določila med sistemskimi "
+"nastavitvami jezikovnih določil za LC_MEASUREMENT."
 
 #: data/org.gnome.Recipes.gschema.xml:92
 msgid "By which key to sort lists."
-msgstr ""
+msgstr "Po katerem ključu naj bodo razvrščeni seznami."
 
 #: data/org.gnome.Recipes.gschema.xml:93
 msgid "The setting determines which key is used to sort lists of recipes by."
-msgstr ""
+msgstr "Nastavitev določa, kako naj se razvrščajo seznami receptov."
 
 #: data/org.gnome.Recipes.gschema.xml:99
 msgid "Whether the surprise dialog should be shown."
-msgstr ""
+msgstr "Ali naj se prikaže pogovorno okno presenečenja."
 
 #: data/org.gnome.Recipes.gschema.xml:100
 msgid ""
 "The setting determines whether the surprise dialog should be shown on "
 "startup."
 msgstr ""
+"Nastavitev določa, ali naj se prikaže pogovorno okno ob zagonu programa."
 
 #: data/org.gnome.Recipes.gschema.xml:106
 msgid "The setting for which unit volumes should be displayed in."
-msgstr ""
+msgstr "Nastavitev enote prostornine"
 
 #: data/org.gnome.Recipes.gschema.xml:107
 msgid ""
 "The setting for which unit volumes should be displayed in. Default is "
 "'locale',"
 msgstr ""
+"Nastavitev enote prostornine, ki naj bo prikazana v receptih. Privzeto je "
+"določeno »krajevno«, kar pomeni uporabo določila med sistemskimi "
+"nastavitvami jezikovnih določil."
 
 #: data/org.gnome.Recipes.gschema.xml:113
 msgid "The setting for which unit weights should be displayed in."
-msgstr ""
+msgstr "Nastavitev enote mase"
 
 #: data/org.gnome.Recipes.gschema.xml:114
-#, fuzzy
 msgid ""
 "The setting for which unit weights should be displayed in. Default is "
 "'locale',"
 msgstr ""
-"Nastavitev, v kateri je treba prikazati uteži enot. Privzeto je \"locale\","
+"Nastavitev enote mase, ki naj bo prikazana v receptih. Privzeto je določeno "
+"»krajevno«, kar pomeni uporabo določila med sistemskimi nastavitvami "
+"jezikovnih določil."
 
 #: src/chef-conflict-dialog.ui:10
 msgid "Same Chef"
@@ -348,20 +364,27 @@ msgid "Controls"
 msgstr "Tipke"
 
 #: src/gr-cooking-page.ui:281
+#, fuzzy
 msgid ""
 "To advance to the next step, press any key on the\n"
 "keyboard."
 msgstr ""
+"Če želite napredovati v naslednji korak, pritisnite katero koli tipko na\n"
+"tipkovnica."
 
 #: src/gr-cooking-page.ui:304
+#, fuzzy
 msgid "To go back to the previous step, doubletap any key."
-msgstr ""
+msgstr "Če se želite vrniti na prejšnji korak, dvotapnite kateri koli ključ."
 
 #: src/gr-cooking-page.ui:326
+#, fuzzy
 msgid ""
 "Alternatively, you can use the cursor keys to\n"
 "quickly seek within the directions."
 msgstr ""
+"Druga možnost je, da uporabite tipke kazalke za\n"
+"hitro poiščite v navodilih."
 
 #: src/gr-cooking-page.ui:350
 msgid "To exit the process, press the Escape key."
@@ -547,9 +570,8 @@ msgid "_Meal"
 msgstr "_Obrok"
 
 #: src/gr-edit-page.ui:513
-#, fuzzy
 msgid "S_eason"
-msgstr "Za '%s':"
+msgstr "_Sezona"
 
 #: src/gr-edit-page.ui:549
 msgid "_Spiciness"
@@ -747,9 +769,8 @@ msgid "Featured GNOME Chefs"
 msgstr "Kuharji se predstavljajo"
 
 #: src/gr-recipe-tile.ui:58
-#, fuzzy
 msgid "Contributed recipe"
-msgstr "Uvoženo"
+msgstr "Prispevan recept"
 
 #: src/gr-search-page.ui:42
 msgid "Try a different search"
@@ -773,7 +794,7 @@ msgstr "Ni ničesar za dodajanje"
 
 #: src/gr-shopping-tile.ui:101
 msgid "Yield"
-msgstr ""
+msgstr "Za"
 
 #: src/gr-time-widget.ui:31
 msgid "Start"
@@ -923,23 +944,20 @@ msgid "Rename"
 msgstr "Preimenuj"
 
 #: src/recipe-conflict-dialog.ui:28
-#, fuzzy
 msgid "A recipe with this name already exists."
-msgstr "Mapa z enakim imenom že obstaja."
+msgstr "Recept z enakim imenom že obstaja."
 
 #: src/recipe-export-dialog.ui:14
 msgid "_Add More"
 msgstr "_Dodaj več"
 
 #: src/recipe-export-dialog.ui:56
-#, fuzzy
 msgid "Share with a friend"
-msgstr "Daj v souporabo"
+msgstr "Objavi med prijatelji"
 
 #: src/recipe-export-dialog.ui:63
-#, fuzzy
 msgid "Contribute to the Recipes project"
-msgstr "Prevodi kuharskih receptov"
+msgstr "Prispevaj recept projektu"
 
 #: src/recipe-surprise.ui:28
 msgid "GNOME turns 20 !"
@@ -1155,9 +1173,8 @@ msgid "Timer for “%s” has expired."
 msgstr "Časomer %s"
 
 #: src/gr-cooking-view.c:425
-#, fuzzy
 msgid "Timer is up!"
-msgstr "Časomer"
+msgstr "Čas je potekel!"
 
 #: src/gr-cuisine.c:45
 msgid "American"
@@ -1275,7 +1292,6 @@ msgstr ""
 "vključno z vplivom, ki ga je prinesla Evropa in Novi svet.."
 
 #: src/gr-cuisine.c:84
-#, fuzzy
 msgid ""
 "Indian cuisine encompasses a wide variety of regional and traditional "
 "cuisines native to India. Given the range of diversity in soil type, "
@@ -1287,15 +1303,14 @@ msgid ""
 "rule. Indian cuisine has been and is still evolving, as a result of the "
 "nation’s cultural interactions with other societies."
 msgstr ""
-"Indijska kuhinja je na voljo v različnih regionalnih in tradicionalnih "
-"kuhinjah iz Indije. Glede na vrsto raznolikosti v tipu tal, podnebju, "
-"kulturi, etnični skupini in poklicih se te kulinarike med seboj bistveno "
-"razlikujejo in uporabljajo lokalno dostopne začimbe, zelišča, zelenjavo in "
-"sadje. Na indijsko hrano močno vplivajo tudi verske in kulturne izbire in "
-"tradicije. Vpliv Bližnje vzhodne in srednjeazijske kuhinje na "
-"severnoindijsko kulinariko je bil tudi iz let vladavine Mughala. Indijska "
-"kuhinja je bila in se še vedno razvija, kar je posledica kulturnih "
-"interakcij nacije z drugimi družbe."
+"Indijska kuhinja sestavlja različne regionalne in tradicionalne kuhinje iz "
+"Indije. Glede na vrsto raznolikost tal, podnebij, kultur, etničnih skupin in "
+"poklicih se kuhinje med seboj bistveno razlikujejo in vključujejo lokalno "
+"dostopne začimbe, zelišča, zelenjavo in sadje. Na indijsko hrano močno "
+"vplivajo tudi verske in kulturne tradicije. Vpliv bližnjevzhodne in "
+"srednjeazijske kuhinje na severnoindijsko je znan od časa vladavine Mughala. "
+"Indijska kuhinja je bila in se še vedno razvija, kar je posledica kulturnih "
+"interakcij."
 
 #: src/gr-cuisine.c:92
 msgid ""
@@ -1391,12 +1406,17 @@ msgstr ""
 "Vikingov."
 
 #: src/gr-cuisine.c:117
+#, fuzzy
 msgid ""
 "You can find a great variety of mouth watering dishes in Turkish cuisine, "
 "which is mostly the heritage of Ottoman cuisine. It is the mixture and "
 "refinement of Central Asian, Middle Eastern and Balkan cuisines. Therefore "
 "it is impossible to fit Turkish cuisine into a short list."
 msgstr ""
+"V turški kulinariki, ki je večinoma dediščina otomanski kulinarike, lahko "
+"najdete veliko različnih jedi zalivanja ust. Gre za mešanico in "
+"dopolnjevanje srednjeazijske, bližnje vzhodne in balkanske kuhinje. Zato je "
+"turško kuhinjo nemogoče vklopiti v kratek seznam."
 
 #: src/gr-details-page.c:193 src/gr-edit-page.c:936
 msgid "serving"
@@ -1456,6 +1476,7 @@ msgid "Other dietary restrictions"
 msgstr "Druge prehranske omejitve"
 
 #: src/gr-diet.c:66
+#, fuzzy
 msgid ""
 "A gluten-free diet is a diet that excludes gluten, a protein composite found "
 "in wheat, barley, rye, and all their species and hybrids (such as spelt, "
@@ -1466,8 +1487,17 @@ msgid ""
 "<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free\">Learn more…</"
 "a>"
 msgstr ""
+"Prehrana brez glutena je prehrana, ki izključuje gluten, beljakovinski "
+"komposit, ki ga najdemo v pšenici, ječmenu, ražu in vseh njihovih vrstah in "
+"hibridih (kot so pir, kamut in tritikale). Vključitev ovsa v prehrano brez "
+"glutena ostaja sporna. Avenin, prisoten v ovsu, je lahko strupen tudi za "
+"koelijake; njegova toksičnost je odvisna od zaužitega kultivarja. Poleg tega "
+"je ovs pogosto navzkrižno kontaminiran z žiti, ki vsebujejo gluten.\n"
+"Preberite <a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free"
+"\">več...</a>"
 
 #: src/gr-diet.c:69
+#, fuzzy
 msgid ""
 "A tree nut allergy is a hypersensitivity to dietary substances from tree "
 "nuts and edible tree seeds causing an overreaction of the immune system "
@@ -1476,16 +1506,30 @@ msgid ""
 "macadamia nuts, pecans, pistachios, pine nuts, shea nuts and walnuts.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">Learn more…</a>"
 msgstr ""
+"Alergija na drevesne orehe je preobčutljivost za prehranske snovi iz "
+"drevesnih orehov in užitnih dreves, ki povzročijo pretiravanje imunskega "
+"sistema, kar lahko povzroči hude fizične simptome. Med drevesne orehe "
+"spadajo, vendar niso omejeni na mandlje, brazilske orehe, indijske oreščke, "
+"kostanje, filberte/lešnike, makadamske orehe, orehe, pistače, borove orehe, "
+"rešake in orehe.\n"
+"Preberite <a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">več...</"
+"a>"
 
 #: src/gr-diet.c:72
+#, fuzzy
 msgid ""
 "Veganism is both the practice of abstaining from the use of animal products, "
 "particularly in diet, and an associated philosophy that rejects the "
 "commodity status of animals.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Veganism\">Learn more…</a>"
 msgstr ""
+"Veginstvo je praksa vzdrževanja uporabe živalskih proizvodov, zlasti v "
+"prehrani, in z njim povezana filozofija, ki zavrača proizvodni status "
+"živali.\n"
+"Preberite <a href=\"https://en.wikipedia.org/wiki/Veganism\">več...</a>"
 
 #: src/gr-diet.c:75
+#, fuzzy
 msgid ""
 "Vegetarian cuisine is based on food that meets vegetarian standards by not "
 "including meat and animal tissue products (such as gelatin or animal-derived "
@@ -1498,8 +1542,20 @@ msgid ""
 "even some refined sugars if filtered and whitened with bone char.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Vegetarianism\">Learn more…</a>"
 msgstr ""
+"Vegetarijanska kuhinja temelji na hrani, ki izpolnjuje vegetarijanske "
+"standarde, tako da ne vključuje mesnih in živalskih tkiv (kot so želatina "
+"ali živalski rennet). Za lakto-ovo vegetarijanstvo (najpogostejši tip "
+"vegetarijanstva v zahodnem svetu) so dovoljena jajca in mlečni izdelki, kot "
+"sta mleko in sir. Za lakto vegetarijanstvo je dovoljen najranejši znani tip "
+"vegetarijanstva (zabeležen v Indiji), mlečni izdelki, kot sta mleko in sir.\n"
+"Najstrožje oblike vegetarijanstva sta veganizem in sadjarstvo, ki "
+"izključujeta vse živalske proizvode, vključno z mlečnimi izdelki, kot tudi "
+"med, in celo nekaj rafinirano sladkorjev, če jih filtriramo in belimo s "
+"kostnim charom.\n"
+"Preberite <a href=\"https://en.wikipedia.org/wiki/Vegetarianism\">več...</a>"
 
 #: src/gr-diet.c:78
+#, fuzzy
 msgid ""
 "Lactose intolerance is a condition in which people have symptoms due to the "
 "decreased ability to digest lactose, a sugar found in milk products. Those "
@@ -1510,6 +1566,15 @@ msgid ""
 "cause damage to the gastrointestinal tract.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Learn more…</a>"
 msgstr ""
+"Intoleranca na laktozo je stanje, v katerem imajo ljudje simptome zaradi "
+"zmanjšane sposobnosti prebave laktoze, sladkorja, ki ga najdemo v mlečnih "
+"izdelkih. Prizadeti se razlikujejo po količini laktoze, ki jo lahko "
+"prenašajo pred razvojem simptomov. Simptomi lahko vključujejo bolečine v "
+"trebuhu, napihnjenost, drisko, plin in slabost. Ti se običajno začnejo od "
+"pol do dveh ur po pitju mleka. Resnost je odvisna od količine, ki jo oseba "
+"poje ali pije. Ne povzroča poškodb prebavil.\n"
+"Preberite <a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance"
+"\">več...</a>"
 
 #: src/gr-diet.c:81
 msgid "Halal meat is prepared according to Islamic traditions"
@@ -1665,9 +1730,9 @@ msgid "Sorry about this."
 msgstr "O programu"
 
 #: src/gr-list-page.c:469
-#, fuzzy, c-format
+#, c-format
 msgid "No recipes for %s found"
-msgstr "Prevodi kuharskih receptov"
+msgstr "Za %s ni najdenih nobenih receptov"
 
 #: src/gr-list-page.c:493
 msgid "No favorite recipes found"
@@ -1794,8 +1859,9 @@ msgstr ""
 "te recepte se splača poskusiti."
 
 #: src/gr-recipe-exporter.c:225
+#, fuzzy
 msgid "(The attached file can be imported into GNOME Recipes.)"
-msgstr ""
+msgstr "(Priloženo datoteko je mogoče uvoziti v recepte GNOME.)"
 
 #: src/gr-recipe-exporter.c:437
 #, c-format
@@ -1826,6 +1892,9 @@ msgid ""
 "with GNOME Recipes. You should only contribute\n"
 "your own recipes."
 msgstr ""
+"Nekateri izbrani recepti so vključeni v nabor\n"
+"receptov GNOME. V Kuhar'co lahko prispevate\n"
+"le svoje pripravljene recepte."
 
 #: src/gr-recipe-formatter.c:88 src/gr-recipe-printer.c:164
 msgid "Author:"
@@ -1932,10 +2001,10 @@ msgstr "<b>Predlogi za '%s'</b>"
 #, c-format
 msgid "Buy ingredients: <b>%s, %s and %d other</b>"
 msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Nabavi sestavine: <b>%s, %s in %d drugih.</b>"
+msgstr[1] "Nabavi sestavine: <b>%s, %s in %d drugo.</b>"
+msgstr[2] "Nabavi sestavine: <b>%s, %s in %d drugi.</b>"
+msgstr[3] "Nabavi sestavine: <b>%s, %s in %d druge.</b>"
 
 #: src/gr-recipe-store.c:1335
 #, fuzzy, c-format
@@ -1947,27 +2016,27 @@ msgstr "Mapa z enakim imenom že obstaja."
 #: src/gr-recipe-store.c:1364
 #, c-format
 msgid "You need to provide an ID for the recipe"
-msgstr ""
+msgstr "Navesti je treba ID recepta"
 
 #: src/gr-recipe-store.c:1370
-#, fuzzy, c-format
+#, c-format
 msgid "A recipe with this ID already exists"
-msgstr "ID stika že obstaja"
+msgstr "Recept z enakim ID že obstaja."
 
 #: src/gr-recipe-store.c:1539
 #, c-format
 msgid "You need to provide an ID"
-msgstr ""
+msgstr "Navesti je treba ID"
 
 #: src/gr-recipe-store.c:1545
-#, fuzzy, c-format
+#, c-format
 msgid "Sorry, this ID is taken"
-msgstr "Oprostite"
+msgstr "Ta ID je že zaseden"
 
 #: src/gr-recipe-store.c:1572
 #, c-format
 msgid "You need to provide an ID for the chef"
-msgstr ""
+msgstr "Navesti je treba ID kuharja"
 
 #: src/gr-recipe-store.c:1578
 #, c-format
@@ -2016,9 +2085,8 @@ msgid "Add Account"
 msgstr "Dodaj račun"
 
 #: src/gr-shopping-list-exporter.c:476 src/gr-shopping-list-exporter.c:566
-#, fuzzy
 msgid "Shopping List from Recipes"
-msgstr "Nakupovanje"
+msgstr "Nakupovalni seznam Receptov"
 
 #: src/gr-shopping-list-exporter.c:694
 msgid "Save the shopping list"
@@ -2030,14 +2098,12 @@ msgid "Shopping List"
 msgstr "Nakupovalni seznam"
 
 #: src/gr-shopping-list-formatter.c:44
-#, fuzzy
 msgid "For the following recipes:"
-msgstr "Prevodi kuharskih receptov"
+msgstr "Za navedene recepte:"
 
 #: src/gr-shopping-list-printer.c:144
-#, fuzzy
 msgid "For the following recipes"
-msgstr "Prevodi kuharskih receptov"
+msgstr "Za navedene recepte"
 
 #: src/gr-shopping-list-printer.c:161
 msgid "Items"
@@ -2056,10 +2122,10 @@ msgstr[3] "Na seznamu za nakup so %d sestavine."
 #, c-format
 msgid "Buy Ingredients (%d recipe)"
 msgid_plural "Buy Ingredients (%d recipes)"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Nakup sestavin (%d receptov)"
+msgstr[1] "Nakup sestavin (%d recept)"
+msgstr[2] "Nakup sestavin (%d recepta)"
+msgstr[3] "Nakup sestavin (%d recepti)"
 
 #: src/gr-shopping-page.c:127
 #, c-format
@@ -2071,24 +2137,20 @@ msgstr[2] "Za pripravo sta načrtovana %d recepta."
 msgstr[3] "Za pripravo so načrtovani %d recepti."
 
 #: src/gr-spice-row.c:131
-#, fuzzy
 msgid "Mild or somewhat spicy"
-msgstr "Med pogovorom je treba biti podroben"
+msgstr "Nežno pekoče ali nekoliko začinjeno"
 
 #: src/gr-spice-row.c:133
-#, fuzzy
 msgid "At least somewhat spicy"
-msgstr "Med pogovorom je treba biti podroben"
+msgstr "Vsaj malenkost pekoče"
 
 #: src/gr-spice-row.c:137
-#, fuzzy
 msgid "At most hot"
-msgstr "Hitra tipka:"
+msgstr "Pekoče"
 
 #: src/gr-spice-row.c:139
-#, fuzzy
 msgid "Hot or very spicy"
-msgstr "Hitra tipka:"
+msgstr "Pekoče ali zelo začinjeno"
 
 #: src/gr-unit.c:46
 msgctxt "unit abbreviation"
@@ -2361,8 +2423,6 @@ msgid "millimeters"
 msgstr "millilitrov"
 
 #: src/gr-unit.c:65
-#| msgctxt "minute abbreviation"
-#| msgid "m"
 msgctxt "unit abbreviation"
 msgid "cm"
 msgstr "cm"
@@ -2378,8 +2438,6 @@ msgid "centimeters"
 msgstr "centimetri"
 
 #: src/gr-unit.c:66
-#| msgctxt "minute abbreviation"
-#| msgid "m"
 msgctxt "unit abbreviation"
 msgid "m"
 msgstr "m"
@@ -2499,18 +2557,23 @@ msgid "some time ago"
 msgstr "pred nekaj časa"
 
 #: src/gr-utils.c:386
+#, fuzzy
 msgid "Could not connect to the session bus from inside the Flatpak sandbox."
 msgstr ""
+"Povezave z avtobusom seje ni bilo mogoče povezati znotraj peskovnega "
+"nabiralnika Flatpak."
 
 #: src/gr-utils.c:387
 msgid "Certain functionality will not be available."
 msgstr "Nekatere zmožnosti programa ne bodo na voljo."
 
 #: src/gr-utils.c:400
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "Could not create D-Bus proxy for org.freedesktop.portal.Desktop interface %s"
 msgstr ""
+"Ni bilo mogoče ustvariti D-Bus proxy za org.freedesktop.portal.Desktop "
+"vmesnik %s"
 
 #: src/gr-utils.c:401
 #, c-format
@@ -2518,25 +2581,34 @@ msgid "Error: %s"
 msgstr "Napaka: %s"
 
 #: src/gr-utils.c:412
+#, fuzzy
 msgid ""
 "Missing the desktop portal needed to open files from inside a Flatpak "
 "sandbox."
 msgstr ""
+"Manjka namizni portal, ki ga potrebujete za odpiranje datotek v peskovniku "
+"Flatpak."
 
 #: src/gr-utils.c:414
+#, fuzzy
 msgid ""
 "Missing the desktop portal needed to print from inside a Flatpak sandbox."
 msgstr ""
+"Manjka namizni portal, ki ga potrebujete za tiskanje v peskovniku Flatpak."
 
 #: src/gr-utils.c:416
+#, fuzzy
 msgid ""
 "Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
 msgstr ""
+"Manjka namizni portal, ki ga potrebujete za odpiranje URL-jev v peskovniku "
+"Flatpak."
 
 #: src/gr-utils.c:420
+#, fuzzy
 msgid ""
 "Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
-msgstr ""
+msgstr "Namestite xdg-desktop-portal in xdg-desktop-portal-gtk na vaš sistem"
 
 #: src/gr-window.c:256
 msgid "Add a New Recipe"
@@ -2863,7 +2935,7 @@ msgstr "Češnjev paradižnik, prepolovljen"
 
 #: src/ingredients.inc:58
 msgid "Chia seeds"
-msgstr ""
+msgstr "Semena čije"
 
 #: src/ingredients.inc:59
 msgid "Chicken breasts, large"
@@ -2907,11 +2979,11 @@ msgstr ""
 
 #: src/ingredients.inc:69
 msgid "Cilantro"
-msgstr ""
+msgstr "Koriander"
 
 #: src/ingredients.inc:70
 msgid "Cilantro leaves"
-msgstr ""
+msgstr "Koriander, listi"
 
 #: src/ingredients.inc:71
 msgid "Cinnamon"
@@ -2967,7 +3039,7 @@ msgstr "Kuskus"
 
 #: src/ingredients.inc:84
 msgid "Cracked pepper"
-msgstr ""
+msgstr "Poper, drobljen"
 
 #: src/ingredients.inc:85
 msgid "Cream"
@@ -2975,7 +3047,7 @@ msgstr "Smetana"
 
 #: src/ingredients.inc:86
 msgid "Cream cheese"
-msgstr ""
+msgstr "Sirni namaz"
 
 #: src/ingredients.inc:87
 msgid "Crushed red pepper flakes"
@@ -3011,7 +3083,7 @@ msgstr "Koper"
 
 #: src/ingredients.inc:95
 msgid "Double cream"
-msgstr ""
+msgstr "Smetana, polnomastna"
 
 #: src/ingredients.inc:96
 msgid "Dried anchovies"
@@ -3243,7 +3315,7 @@ msgstr "Brinove jagode"
 
 #: src/ingredients.inc:153
 msgid "Kale"
-msgstr ""
+msgstr "Ohrovt, kodrolistni"
 
 #: src/ingredients.inc:154
 msgid "Ketchup"
@@ -3263,7 +3335,7 @@ msgstr ""
 
 #: src/ingredients.inc:158
 msgid "Lard or oil"
-msgstr ""
+msgstr "Svinjska mast ali olje"
 
 #: src/ingredients.inc:159
 msgid "Lemon"
@@ -3291,7 +3363,7 @@ msgstr "Limeta"
 
 #: src/ingredients.inc:165
 msgid "Lime juice"
-msgstr ""
+msgstr "Limetin sok"
 
 #: src/ingredients.inc:166
 msgid "Linseeds"
@@ -3631,7 +3703,7 @@ msgstr "Sladki krompir"
 
 #: src/ingredients.inc:250
 msgid "Tamarind paste"
-msgstr ""
+msgstr "Tamarindina mezga"
 
 #: src/ingredients.inc:251
 msgid "Tangerine"
@@ -3872,7 +3944,7 @@ msgstr ""
 
 #: src/no-ingredients.inc:26
 msgid "no Beetroot"
-msgstr ""
+msgstr "ni rdeče pese"
 
 #: src/no-ingredients.inc:27
 msgid "no Bell pepper"
@@ -3908,21 +3980,19 @@ msgstr "ni ameriških borovnic"
 
 #: src/no-ingredients.inc:35
 msgid "no Bourbon whiskey"
-msgstr ""
+msgstr "ni bourbonskega viskija"
 
 #: src/no-ingredients.inc:36
 msgid "no Breadcrumbs"
 msgstr "ni krušnih drobtin"
 
 #: src/no-ingredients.inc:37
-#, fuzzy
 msgid "no Brewer's yeast"
-msgstr "Sklad"
+msgstr "ni pivovarskega kvasa"
 
 #: src/no-ingredients.inc:38
-#, fuzzy
 msgid "no Broad beans"
-msgstr "V primeru, da se dotaknejo tal, morajo nadaljevati."
+msgstr "ni boba"
 
 #: src/no-ingredients.inc:39
 msgid "no Broth"
@@ -3973,9 +4043,8 @@ msgid "no Cashews, lightly toasted"
 msgstr ""
 
 #: src/no-ingredients.inc:51
-#, fuzzy
 msgid "no Caster sugar"
-msgstr "Vanilija"
+msgstr ""
 
 #: src/no-ingredients.inc:52
 msgid "no Celery"
@@ -3983,7 +4052,7 @@ msgstr "ni zelene"
 
 #: src/no-ingredients.inc:53
 msgid "no Champignons"
-msgstr ""
+msgstr "ni šampinjonov"
 
 #: src/no-ingredients.inc:54
 msgid "no Cheese"
@@ -3995,11 +4064,11 @@ msgstr "ni rezin sira"
 
 #: src/no-ingredients.inc:56
 msgid "no Cherries, pitted"
-msgstr ""
+msgstr "ni češenj s koščicami"
 
 #: src/no-ingredients.inc:57
 msgid "no Cherry tomatoes, halved"
-msgstr ""
+msgstr "ni češnjevega paradižnika"
 
 #: src/no-ingredients.inc:58
 msgid "no Chia seeds"
@@ -4014,9 +4083,8 @@ msgid "no Chicken livers"
 msgstr "ni piščančjih jeter"
 
 #: src/no-ingredients.inc:61
-#, fuzzy
 msgid "no chicken stock"
-msgstr "Sklad"
+msgstr ""
 
 #: src/no-ingredients.inc:62
 msgid "no Chili flakes"
@@ -4035,14 +4103,12 @@ msgid "no Chocolate"
 msgstr "ni čokolade"
 
 #: src/no-ingredients.inc:66
-#, fuzzy
 msgid "no Chocolate frosting"
-msgstr "čokoladno rjava"
+msgstr ""
 
 #: src/no-ingredients.inc:67
-#, fuzzy
 msgid "no Chorizo"
-msgstr "Korenje"
+msgstr ""
 
 #: src/no-ingredients.inc:68
 msgid "no Ciboulette"
@@ -4109,18 +4175,16 @@ msgid "no Couscous"
 msgstr "ni kuskusa"
 
 #: src/no-ingredients.inc:84
-#, fuzzy
 msgid "no Cracked pepper"
-msgstr "poper"
+msgstr "ni drobljenega popra"
 
 #: src/no-ingredients.inc:85
 msgid "no Cream"
-msgstr ""
+msgstr "ni smetane"
 
 #: src/no-ingredients.inc:86
-#, fuzzy
 msgid "no Cream cheese"
-msgstr "Cheese"
+msgstr "ni sirnega namaza"
 
 #: src/no-ingredients.inc:87
 msgid "no Crushed red pepper flakes"
@@ -4156,7 +4220,7 @@ msgstr "ni kopra"
 
 #: src/no-ingredients.inc:95
 msgid "no Double cream"
-msgstr ""
+msgstr "ni polnomastne smetane"
 
 #: src/no-ingredients.inc:96
 msgid "no Dried anchovies"
@@ -4244,7 +4308,7 @@ msgstr ""
 
 #: src/no-ingredients.inc:117
 msgid "no Garam masala"
-msgstr ""
+msgstr "ni garam masale"
 
 #: src/no-ingredients.inc:118
 msgid "no Garlic"
@@ -4364,7 +4428,7 @@ msgstr "ni lešnikov"
 
 #: src/no-ingredients.inc:147
 msgid "no Hazelnuts milk"
-msgstr ""
+msgstr "ni lešnikovega mleka"
 
 #: src/no-ingredients.inc:148
 msgid "no Hoisin sauce"
@@ -4388,7 +4452,7 @@ msgstr "ni brinovih jagod"
 
 #: src/no-ingredients.inc:153
 msgid "no Kale"
-msgstr ""
+msgstr "ni kodrolistnega ohrovta"
 
 #: src/no-ingredients.inc:154
 msgid "no Ketchup"
@@ -4403,13 +4467,12 @@ msgid "no Lamb"
 msgstr "ni jagnjetine"
 
 #: src/no-ingredients.inc:157
-#, fuzzy
 msgid "no Lardons"
-msgstr "sladko limonska"
+msgstr ""
 
 #: src/no-ingredients.inc:158
 msgid "no Lard or oil"
-msgstr ""
+msgstr "ni svinjske masti ali olja"
 
 #: src/no-ingredients.inc:159
 msgid "no Lemon"
@@ -4421,7 +4484,7 @@ msgstr "ni limoninega soka"
 
 #: src/no-ingredients.inc:161
 msgid "no Lemon (untreated)"
-msgstr ""
+msgstr "ni limon"
 
 #: src/no-ingredients.inc:162
 msgid "no Lettuce"
@@ -4493,7 +4556,7 @@ msgstr "ni gorčičnih semen"
 
 #: src/no-ingredients.inc:179
 msgid "no Nut"
-msgstr ""
+msgstr "ni orehov"
 
 #: src/no-ingredients.inc:180
 msgid "no Nutmeg"
@@ -4505,7 +4568,7 @@ msgstr "ni prehranskega kvasa"
 
 #: src/no-ingredients.inc:182
 msgid "no Oatmeal"
-msgstr ""
+msgstr "ni ovsenih kosmičev"
 
 #: src/no-ingredients.inc:183
 msgid "no Oil"
@@ -4617,7 +4680,7 @@ msgstr "ni krompirja"
 
 #: src/no-ingredients.inc:210
 msgid "no Powdered sugar"
-msgstr ""
+msgstr "ni sladkorja v prahu"
 
 #: src/no-ingredients.inc:211
 msgid "no Pumpkin seeds"
@@ -4637,7 +4700,7 @@ msgstr "ni rozin"
 
 #: src/no-ingredients.inc:215
 msgid "no Red bell pepper"
-msgstr ""
+msgstr "ni rdeče paprike"
 
 #: src/no-ingredients.inc:216
 msgid "no Red onion"
@@ -4777,7 +4840,7 @@ msgstr "ni sladkega krompirja"
 
 #: src/no-ingredients.inc:250
 msgid "no Tamarind paste"
-msgstr ""
+msgstr "ni tamarindine mezge"
 
 #: src/no-ingredients.inc:251
 msgid "no Tangerine"
@@ -4837,7 +4900,7 @@ msgstr "ni vaniljevega pecilnega praška"
 
 #: src/no-ingredients.inc:265
 msgid "no Vanilla extract"
-msgstr ""
+msgstr "ni izvlečka vanilje"
 
 #: src/no-ingredients.inc:266
 msgid "no Vanilla powdered sugar, for dusting"
