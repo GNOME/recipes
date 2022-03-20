@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-23 16:10+0000\n"
-"PO-Revision-Date: 2022-02-14 12:19+0100\n"
-"Last-Translator: Matej Urbančič <mateju@src.gnome.org>\n"
+"POT-Creation-Date: 2022-03-14 19:12+0000\n"
+"PO-Revision-Date: 2022-03-20 11:45+0100\n"
+"Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenščina <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
@@ -364,27 +364,24 @@ msgid "Controls"
 msgstr "Tipke"
 
 #: src/gr-cooking-page.ui:281
-#, fuzzy
 msgid ""
 "To advance to the next step, press any key on the\n"
 "keyboard."
 msgstr ""
-"Če želite napredovati v naslednji korak, pritisnite katero koli tipko na\n"
-"tipkovnica."
+"Če želite napredovati v naslednji korak, pritisnite poljubno tipko na\n"
+"tipkovnici."
 
 #: src/gr-cooking-page.ui:304
-#, fuzzy
 msgid "To go back to the previous step, doubletap any key."
-msgstr "Če se želite vrniti na prejšnji korak, dvotapnite kateri koli ključ."
+msgstr "Če se želite vrniti na prejšnji korak, dvotapnite poljubno tipko."
 
 #: src/gr-cooking-page.ui:326
-#, fuzzy
 msgid ""
 "Alternatively, you can use the cursor keys to\n"
 "quickly seek within the directions."
 msgstr ""
-"Druga možnost je, da uporabite tipke kazalke za\n"
-"hitro poiščite v navodilih."
+"Druga možnost je, da uporabite smerne tipke za\n"
+"hitro iskanje po navodilih."
 
 #: src/gr-cooking-page.ui:350
 msgid "To exit the process, press the Escape key."
@@ -968,6 +965,8 @@ msgid ""
 "YEARS\n"
 "STRONG"
 msgstr ""
+"KREPKIH\n"
+"LET"
 
 #: src/recipe-surprise.ui:68
 msgid ""
@@ -1095,9 +1094,8 @@ msgid "Learn more about Recipes"
 msgstr "Več o programu GNOME Recepti"
 
 #: src/gr-about-dialog.c:924
-#, fuzzy
 msgid "Recipes by"
-msgstr "Prevodi kuharskih receptov"
+msgstr "Avtorji kuharskih receptov"
 
 #: src/gr-account.c:111
 #, c-format
@@ -1168,9 +1166,9 @@ msgid "A cooking timer has expired"
 msgstr "Čas kuhanja je potekel"
 
 #: src/gr-cooking-view.c:411 src/gr-cooking-view.c:427
-#, fuzzy, c-format
+#, c-format
 msgid "Timer for “%s” has expired."
-msgstr "Časomer %s"
+msgstr "Časovnik za »%s« je potekel."
 
 #: src/gr-cooking-view.c:425
 msgid "Timer is up!"
@@ -1406,17 +1404,16 @@ msgstr ""
 "Vikingov."
 
 #: src/gr-cuisine.c:117
-#, fuzzy
 msgid ""
 "You can find a great variety of mouth watering dishes in Turkish cuisine, "
 "which is mostly the heritage of Ottoman cuisine. It is the mixture and "
 "refinement of Central Asian, Middle Eastern and Balkan cuisines. Therefore "
 "it is impossible to fit Turkish cuisine into a short list."
 msgstr ""
-"V turški kulinariki, ki je večinoma dediščina otomanski kulinarike, lahko "
-"najdete veliko različnih jedi zalivanja ust. Gre za mešanico in "
+"V turški kulinariki, ki je večinoma dediščina otomanske kulinarike, lahko "
+"najdete veliko različnih jedi, da se vam cedijo sline. Gre za mešanico in "
 "dopolnjevanje srednjeazijske, bližnje vzhodne in balkanske kuhinje. Zato je "
-"turško kuhinjo nemogoče vklopiti v kratek seznam."
+"turško kuhinjo nemogoče strniti v kratek seznam."
 
 #: src/gr-details-page.c:193 src/gr-edit-page.c:936
 msgid "serving"
@@ -1476,7 +1473,6 @@ msgid "Other dietary restrictions"
 msgstr "Druge prehranske omejitve"
 
 #: src/gr-diet.c:66
-#, fuzzy
 msgid ""
 "A gluten-free diet is a diet that excludes gluten, a protein composite found "
 "in wheat, barley, rye, and all their species and hybrids (such as spelt, "
@@ -1488,16 +1484,16 @@ msgid ""
 "a>"
 msgstr ""
 "Prehrana brez glutena je prehrana, ki izključuje gluten, beljakovinski "
-"komposit, ki ga najdemo v pšenici, ječmenu, ražu in vseh njihovih vrstah in "
-"hibridih (kot so pir, kamut in tritikale). Vključitev ovsa v prehrano brez "
+"kompozit, ki ga najdemo v pšenici, ječmenu, rži in vseh njihovih vrstah in "
+"hibridih (kot so pira, kamut in tritikala). Vključitev ovsa v prehrano brez "
 "glutena ostaja sporna. Avenin, prisoten v ovsu, je lahko strupen tudi za "
-"koelijake; njegova toksičnost je odvisna od zaužitega kultivarja. Poleg tega "
-"je ovs pogosto navzkrižno kontaminiran z žiti, ki vsebujejo gluten.\n"
+"osebe s celiakijo; njegova toksičnost je odvisna od zaužitega kultivarja. "
+"Poleg tega je oves pogosto navzkrižno kontaminiran z žiti, ki vsebujejo "
+"gluten.\n"
 "Preberite <a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free"
-"\">več...</a>"
+"\">več ...</a> (v angl.)"
 
 #: src/gr-diet.c:69
-#, fuzzy
 msgid ""
 "A tree nut allergy is a hypersensitivity to dietary substances from tree "
 "nuts and edible tree seeds causing an overreaction of the immune system "
@@ -1506,30 +1502,28 @@ msgid ""
 "macadamia nuts, pecans, pistachios, pine nuts, shea nuts and walnuts.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">Learn more…</a>"
 msgstr ""
-"Alergija na drevesne orehe je preobčutljivost za prehranske snovi iz "
-"drevesnih orehov in užitnih dreves, ki povzročijo pretiravanje imunskega "
-"sistema, kar lahko povzroči hude fizične simptome. Med drevesne orehe "
-"spadajo, vendar niso omejeni na mandlje, brazilske orehe, indijske oreščke, "
-"kostanje, filberte/lešnike, makadamske orehe, orehe, pistače, borove orehe, "
-"rešake in orehe.\n"
-"Preberite <a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">več...</"
-"a>"
+"Alergija na oreščke je preobčutljivost za prehranske snovi iz drevesnih "
+"orehov in užitnih oreščkov dreves, ki povzročijo prekomeren odziv imunskega "
+"sistema, kar lahko povzroči hude fizične simptome. Med drevesne oreščke "
+"sodijo (vendar niso omejeni nanje) mandlji, brazilski orehi, indijski "
+"oreščki, kostanji, filberti/lešniki, makadamski orehi, orehi, pistacije, "
+"pinjole, karitejeve orehe in orehe.\n"
+"Preberite <a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">več ..."
+"</a> (v angl.)"
 
 #: src/gr-diet.c:72
-#, fuzzy
 msgid ""
 "Veganism is both the practice of abstaining from the use of animal products, "
 "particularly in diet, and an associated philosophy that rejects the "
 "commodity status of animals.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Veganism\">Learn more…</a>"
 msgstr ""
-"Veginstvo je praksa vzdrževanja uporabe živalskih proizvodov, zlasti v "
-"prehrani, in z njim povezana filozofija, ki zavrača proizvodni status "
-"živali.\n"
-"Preberite <a href=\"https://en.wikipedia.org/wiki/Veganism\">več...</a>"
+"Veganstvo je praksa vzdržnosti od uporabe oz. zauživanja živalskih "
+"proizvodov, zlasti v prehrani, in s tem povezana filozofija, ki zavrača "
+"proizvodni status živali.\n"
+"Preberite <a href=\"https://sl.wikipedia.org/wiki/Veganstvo\">več ...</a>"
 
 #: src/gr-diet.c:75
-#, fuzzy
 msgid ""
 "Vegetarian cuisine is based on food that meets vegetarian standards by not "
 "including meat and animal tissue products (such as gelatin or animal-derived "
@@ -1543,19 +1537,19 @@ msgid ""
 "<a href=\"https://en.wikipedia.org/wiki/Vegetarianism\">Learn more…</a>"
 msgstr ""
 "Vegetarijanska kuhinja temelji na hrani, ki izpolnjuje vegetarijanske "
-"standarde, tako da ne vključuje mesnih in živalskih tkiv (kot so želatina "
-"ali živalski rennet). Za lakto-ovo vegetarijanstvo (najpogostejši tip "
-"vegetarijanstva v zahodnem svetu) so dovoljena jajca in mlečni izdelki, kot "
-"sta mleko in sir. Za lakto vegetarijanstvo je dovoljen najranejši znani tip "
-"vegetarijanstva (zabeležen v Indiji), mlečni izdelki, kot sta mleko in sir.\n"
-"Najstrožje oblike vegetarijanstva sta veganizem in sadjarstvo, ki "
+"standarde, tako da ne vključuje produktov iz mesnih in živalskih tkiv (kot "
+"so želatina ali živalsko sirilo). Za laktoovovegetarijanstvo (najpogostejši "
+"tip vegetarijanstva v zahodnem svetu) so dovoljena jajca in mlečni izdelki, "
+"kot sta mleko in sir. Pri laktovegetarijanstvu, najzgodnejši znani vrsti "
+"vegetarijanstva (zabeleženi v Indiji), je dovoljeno zaužitje mlečnih "
+"izdelkov, kot sta mleko in sir.\n"
+"Najstrožje oblike vegetarijanstva sta veganstvo in sadjejedstvo, ki "
 "izključujeta vse živalske proizvode, vključno z mlečnimi izdelki, kot tudi "
-"med, in celo nekaj rafinirano sladkorjev, če jih filtriramo in belimo s "
-"kostnim charom.\n"
+"med in celo nekaj rafiniranih sladkorjev, če jih filtriramo in belimo s "
+"kostno moko.\n"
 "Preberite <a href=\"https://en.wikipedia.org/wiki/Vegetarianism\">več...</a>"
 
 #: src/gr-diet.c:78
-#, fuzzy
 msgid ""
 "Lactose intolerance is a condition in which people have symptoms due to the "
 "decreased ability to digest lactose, a sugar found in milk products. Those "
@@ -1566,15 +1560,15 @@ msgid ""
 "cause damage to the gastrointestinal tract.\n"
 "<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Learn more…</a>"
 msgstr ""
-"Intoleranca na laktozo je stanje, v katerem imajo ljudje simptome zaradi "
+"Laktozna netoleranca je stanje, v katerem imajo ljudje simptome zaradi "
 "zmanjšane sposobnosti prebave laktoze, sladkorja, ki ga najdemo v mlečnih "
 "izdelkih. Prizadeti se razlikujejo po količini laktoze, ki jo lahko "
-"prenašajo pred razvojem simptomov. Simptomi lahko vključujejo bolečine v "
-"trebuhu, napihnjenost, drisko, plin in slabost. Ti se običajno začnejo od "
-"pol do dveh ur po pitju mleka. Resnost je odvisna od količine, ki jo oseba "
-"poje ali pije. Ne povzroča poškodb prebavil.\n"
-"Preberite <a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance"
-"\">več...</a>"
+"prenesejo pred razvojem simptomov. Simptomi lahko vključujejo bolečine v "
+"trebuhu, napihnjenost, drisko, vetrove in slabost. Ti se običajno začnejo od "
+"pol ure do dveh ur po pitju mleka. Resnost je odvisna od količine, ki jo "
+"oseba zaužije. Ne povzroča poškodb prebavil.\n"
+"Preberite <a href=\"https://sl.wikipedia.org/wiki/Laktozna_netoleranca"
+"\">več ...</a>"
 
 #: src/gr-diet.c:81
 msgid "Halal meat is prepared according to Islamic traditions"
@@ -1705,29 +1699,28 @@ msgid "Other Dietary Restrictions"
 msgstr "Druge prehranske omejitve"
 
 #: src/gr-list-page.c:367
-#, fuzzy, c-format
+#, c-format
 msgid "No %s found"
-msgstr "Noben predmet za URI '%s' ni bil najden"
+msgstr "%s ni mogoče najti"
 
 #: src/gr-list-page.c:370 src/gr-list-page.c:439 src/gr-list-page.c:472
 msgid "You could add one using the “New Recipe” button."
-msgstr ""
+msgstr "Lahko dodate recept z gumbom »Nov recept«."
 
 #: src/gr-list-page.c:428
-#, fuzzy, c-format
+#, c-format
 msgid "Recipes by %s"
-msgstr "Prevodi kuharskih receptov"
+msgstr "Recepti avtorja/ev %s"
 
 #: src/gr-list-page.c:435
-#, fuzzy, c-format
+#, c-format
 msgid "No recipes by chef %s found"
-msgstr "Lastnost %s::%s ne obstaja\n"
+msgstr "Receptov kuharskega mojstra %s ni mogoče najti"
 
 #: src/gr-list-page.c:441 src/gr-list-page.c:515 src/gr-list-page.c:542
 #: src/gr-list-page.c:577
-#, fuzzy
 msgid "Sorry about this."
-msgstr "O programu"
+msgstr "Žal nam je zaradi tega."
 
 #: src/gr-list-page.c:469
 #, c-format
@@ -1828,7 +1821,7 @@ msgstr "Prispevek recepta"
 
 #: src/gr-recipe-exporter.c:207
 msgid "Please accept my attached recipe contribution."
-msgstr ""
+msgstr "Prosimo, sprejmite moj prispevek: priloženi recept."
 
 #: src/gr-recipe-exporter.c:217
 msgid "Try this recipe"
@@ -1859,9 +1852,8 @@ msgstr ""
 "te recepte se splača poskusiti."
 
 #: src/gr-recipe-exporter.c:225
-#, fuzzy
 msgid "(The attached file can be imported into GNOME Recipes.)"
-msgstr "(Priloženo datoteko je mogoče uvoziti v recepte GNOME.)"
+msgstr "(Priloženo datoteko je mogoče uvoziti v Kuhar’co GNOME.)"
 
 #: src/gr-recipe-exporter.c:437
 #, c-format
@@ -1881,10 +1873,10 @@ msgstr ""
 #, c-format
 msgid "%d recipe selected for sharing"
 msgid_plural "%d recipes selected for sharing"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "%d recept, izbran za deljenje z drugimi"
+msgstr[1] "%d recepta, izbrana za deljenje z drugimi"
+msgstr[2] "%d recepti, izbrani za deljenje z drugimi"
+msgstr[3] "%d receptov, izbranih za deljenje z drugimi"
 
 #: src/gr-recipe-exporter.c:649
 msgid ""
@@ -1993,9 +1985,9 @@ msgid "Buy ingredients: <b>%s</b>"
 msgstr "Nakup sestavin: <b>%s</b>"
 
 #: src/gr-recipes-page.c:374
-#, fuzzy, c-format
+#, c-format
 msgid "Buy ingredients: <b>%s and %s</b>"
-msgstr "<b>Predlogi za '%s'</b>"
+msgstr "Kupi sestavine: <b>%s in %s</b>"
 
 #: src/gr-recipes-page.c:376
 #, c-format
@@ -2007,11 +1999,13 @@ msgstr[2] "Nabavi sestavine: <b>%s, %s in %d drugi.</b>"
 msgstr[3] "Nabavi sestavine: <b>%s, %s in %d druge.</b>"
 
 #: src/gr-recipe-store.c:1335
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "A recipe with this name and author (%s) already exists.\n"
 "Please choose a different name"
-msgstr "Mapa z enakim imenom že obstaja."
+msgstr ""
+"Recept z enakim imenom in avtorjem (%s) že obstaja.\n"
+"Izberite drugo ime"
 
 #: src/gr-recipe-store.c:1364
 #, c-format
@@ -2165,7 +2159,7 @@ msgstr "gram"
 #: src/gr-unit.c:46
 msgctxt "unit plural"
 msgid "grams"
-msgstr "grami"
+msgstr "gramov"
 
 #: src/gr-unit.c:47
 msgctxt "unit abbreviation"
@@ -2180,7 +2174,7 @@ msgstr "kilogram"
 #: src/gr-unit.c:47
 msgctxt "unit plural"
 msgid "kilograms"
-msgstr "kilogrami"
+msgstr "kilogramov"
 
 #: src/gr-unit.c:48
 msgctxt "unit abbreviation"
@@ -2195,7 +2189,7 @@ msgstr "funt"
 #: src/gr-unit.c:48
 msgctxt "unit plural"
 msgid "pounds"
-msgstr "funti"
+msgstr "funtov"
 
 #: src/gr-unit.c:49
 msgctxt "unit abbreviation"
@@ -2210,7 +2204,7 @@ msgstr "unča"
 #: src/gr-unit.c:49
 msgctxt "unit plural"
 msgid "ounces"
-msgstr "unče"
+msgstr "unč"
 
 #: src/gr-unit.c:50
 msgctxt "unit abbreviation"
@@ -2225,7 +2219,7 @@ msgstr "liter"
 #: src/gr-unit.c:50
 msgctxt "unit plural"
 msgid "liters"
-msgstr "litri"
+msgstr "litrov"
 
 #: src/gr-unit.c:51
 msgctxt "unit abbreviation"
@@ -2240,7 +2234,7 @@ msgstr "deciliter"
 #: src/gr-unit.c:51
 msgctxt "unit plural"
 msgid "deciliters"
-msgstr "deciliteri"
+msgstr "decilitrov"
 
 #: src/gr-unit.c:52
 msgctxt "unit abbreviation"
@@ -2255,7 +2249,7 @@ msgstr "milliliter"
 #: src/gr-unit.c:52
 msgctxt "unit plural"
 msgid "milliliters"
-msgstr "millilitri"
+msgstr "millilitrov"
 
 #: src/gr-unit.c:53 src/gr-unit.c:54
 msgctxt "unit abbreviation"
@@ -2270,12 +2264,12 @@ msgstr "unča"
 #: src/gr-unit.c:53 src/gr-unit.c:54
 msgctxt "unit plural"
 msgid "fluid ounces"
-msgstr "unče"
+msgstr "unč"
 
 #: src/gr-unit.c:55
 msgctxt "unit abbreviation"
 msgid "pt"
-msgstr ""
+msgstr "pt"
 
 #: src/gr-unit.c:55
 msgctxt "unit name"
@@ -2285,7 +2279,7 @@ msgstr "pinta"
 #: src/gr-unit.c:55
 msgctxt "unit plural"
 msgid "pints"
-msgstr "pinte"
+msgstr "pint"
 
 #: src/gr-unit.c:56
 msgctxt "unit abbreviation"
@@ -2300,7 +2294,7 @@ msgstr "kvart"
 #: src/gr-unit.c:56
 msgctxt "unit plural"
 msgid "quarts"
-msgstr "kvarti"
+msgstr "kvartov"
 
 #: src/gr-unit.c:57
 msgctxt "unit abbreviation"
@@ -2415,12 +2409,12 @@ msgstr "mm"
 #: src/gr-unit.c:64
 msgctxt "unit name"
 msgid "millimeter"
-msgstr "milliliter"
+msgstr "milimeter"
 
 #: src/gr-unit.c:64
 msgctxt "unit plural"
 msgid "millimeters"
-msgstr "millilitrov"
+msgstr "milimetrov"
 
 #: src/gr-unit.c:65
 msgctxt "unit abbreviation"
@@ -2435,7 +2429,7 @@ msgstr "centimeter"
 #: src/gr-unit.c:65
 msgctxt "unit plural"
 msgid "centimeters"
-msgstr "centimetri"
+msgstr "centimetrov"
 
 #: src/gr-unit.c:66
 msgctxt "unit abbreviation"
@@ -2450,60 +2444,57 @@ msgstr "meter"
 #: src/gr-unit.c:66
 msgctxt "unit plural"
 msgid "meters"
-msgstr "meterov"
+msgstr "metrov"
 
 #: src/gr-unit.c:67
-#, fuzzy
-#| msgctxt "second abbreviation"
-#| msgid "s"
 msgctxt "unit abbreviation"
 msgid "st"
-msgstr "s"
+msgstr "st"
 
 #: src/gr-unit.c:67
 msgctxt "unit name"
 msgid "stone"
-msgstr ""
+msgstr "ston"
 
 #: src/gr-unit.c:67
 msgctxt "unit plural"
 msgid "stone"
-msgstr ""
+msgstr "stonov"
 
 #: src/gr-unit.c:68
 msgctxt "unit abbreviation"
 msgid "pinch"
-msgstr ""
+msgstr "ščepec"
 
 #: src/gr-unit.c:68
 msgctxt "unit name"
 msgid "pinch"
-msgstr ""
+msgstr "ščepec"
 
 #: src/gr-unit.c:68
 msgctxt "unit plural"
 msgid "pinches"
-msgstr ""
+msgstr "ščepcev"
 
 #: src/gr-unit.c:69
 msgctxt "unit abbreviation"
 msgid "bunch"
-msgstr ""
+msgstr "šop"
 
 #: src/gr-unit.c:69
 msgctxt "unit name"
 msgid "bunch"
-msgstr ""
+msgstr "šop"
 
 #: src/gr-unit.c:69
 msgctxt "unit plural"
 msgid "bunches"
-msgstr ""
+msgstr "šopov"
 
 #: src/gr-unit.c:167
 #, c-format
 msgid "I don’t know this unit: %s"
-msgstr "Ne poznam enote: %s"
+msgstr "Neznana enota: %s"
 
 #: src/gr-utils.c:334
 #, c-format
@@ -2557,23 +2548,22 @@ msgid "some time ago"
 msgstr "pred nekaj časa"
 
 #: src/gr-utils.c:386
-#, fuzzy
 msgid "Could not connect to the session bus from inside the Flatpak sandbox."
 msgstr ""
-"Povezave z avtobusom seje ni bilo mogoče povezati znotraj peskovnega "
-"nabiralnika Flatpak."
+"Povezave z vodilom seje ni bilo mogoče vzpostaviti znotraj peskovnika "
+"Flatpak."
 
 #: src/gr-utils.c:387
 msgid "Certain functionality will not be available."
 msgstr "Nekatere zmožnosti programa ne bodo na voljo."
 
 #: src/gr-utils.c:400
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not create D-Bus proxy for org.freedesktop.portal.Desktop interface %s"
 msgstr ""
-"Ni bilo mogoče ustvariti D-Bus proxy za org.freedesktop.portal.Desktop "
-"vmesnik %s"
+"Ni bilo mogoče ustvariti posrednega D-vodila za vmesnik %s org.freedesktop."
+"portal.Desktop"
 
 #: src/gr-utils.c:401
 #, c-format
@@ -2581,7 +2571,6 @@ msgid "Error: %s"
 msgstr "Napaka: %s"
 
 #: src/gr-utils.c:412
-#, fuzzy
 msgid ""
 "Missing the desktop portal needed to open files from inside a Flatpak "
 "sandbox."
@@ -2590,14 +2579,12 @@ msgstr ""
 "Flatpak."
 
 #: src/gr-utils.c:414
-#, fuzzy
 msgid ""
 "Missing the desktop portal needed to print from inside a Flatpak sandbox."
 msgstr ""
 "Manjka namizni portal, ki ga potrebujete za tiskanje v peskovniku Flatpak."
 
 #: src/gr-utils.c:416
-#, fuzzy
 msgid ""
 "Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
 msgstr ""
@@ -2605,10 +2592,9 @@ msgstr ""
 "Flatpak."
 
 #: src/gr-utils.c:420
-#, fuzzy
 msgid ""
 "Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
-msgstr "Namestite xdg-desktop-portal in xdg-desktop-portal-gtk na vaš sistem"
+msgstr "Namestite xdg-desktop-portal in xdg-desktop-portal-gtk na svoj sistem"
 
 #: src/gr-window.c:256
 msgid "Add a New Recipe"
@@ -2640,6 +2626,8 @@ msgstr "Recept »%s« je izbrisan."
 #, c-format
 msgid "You updated your contributed “%s” recipe. Send an update?"
 msgstr ""
+"Posodobili ste recept »%s«, ki ste ga sami prispevali. Ali želite poslati "
+"posodobitev?"
 
 #: src/gr-window.c:855
 msgid "Ready to Cook!"
@@ -2750,7 +2738,7 @@ msgstr "Slanina"
 
 #: src/ingredients.inc:12
 msgid "Bagel"
-msgstr ""
+msgstr "Žemlja, bela"
 
 #: src/ingredients.inc:13
 msgid "Baked beans"
@@ -2798,12 +2786,11 @@ msgstr "Goveja klobasa"
 
 #: src/ingredients.inc:24
 msgid "Beef (sirloin)"
-msgstr ""
+msgstr "Goveje meso (rostbif)"
 
 #: src/ingredients.inc:25
-#, fuzzy
 msgid "Beef stock"
-msgstr "Sklad"
+msgstr "Jušna osnova (goveja)"
 
 #: src/ingredients.inc:26
 msgid "Beetroot"
@@ -2831,7 +2818,7 @@ msgstr "Piškoti"
 
 #: src/ingredients.inc:32
 msgid "Black cardamom pod"
-msgstr ""
+msgstr "Črni kardamom v stroku"
 
 #: src/ingredients.inc:33
 msgid "Black peppercorns"
@@ -2875,7 +2862,7 @@ msgstr "Maslo, staljeno"
 
 #: src/ingredients.inc:43
 msgid "Button mushroom"
-msgstr ""
+msgstr "Kukmak"
 
 #: src/ingredients.inc:44
 msgid "Cabbage"
@@ -2907,7 +2894,7 @@ msgstr "Indijski oreščki, rahlo popečeni"
 
 #: src/ingredients.inc:51
 msgid "Caster sugar"
-msgstr ""
+msgstr "Finozrnati sladkor"
 
 #: src/ingredients.inc:52
 msgid "Celery"
@@ -2947,11 +2934,11 @@ msgstr "Piščančja jetra"
 
 #: src/ingredients.inc:61
 msgid "chicken stock"
-msgstr ""
+msgstr "Jušna osnova (kokošja)"
 
 #: src/ingredients.inc:62
 msgid "Chili flakes"
-msgstr ""
+msgstr "Čili v kosmičih"
 
 #: src/ingredients.inc:63
 msgid "Chili powder"
@@ -2971,11 +2958,11 @@ msgstr "Čokoladna glazura"
 
 #: src/ingredients.inc:67
 msgid "Chorizo"
-msgstr ""
+msgstr "Salama chorizo"
 
 #: src/ingredients.inc:68
 msgid "Ciboulette"
-msgstr ""
+msgstr "Drobnjak"
 
 #: src/ingredients.inc:69
 msgid "Cilantro"
@@ -3107,7 +3094,7 @@ msgstr "Zdrob iz trde pšenice"
 
 #: src/ingredients.inc:101
 msgid "Earth Balance vegan buttery stick"
-msgstr ""
+msgstr "Veganska maslena palica Earth Balance"
 
 #: src/ingredients.inc:102
 msgid "Egg"
@@ -3119,7 +3106,7 @@ msgstr "Jajčni rumenjaki"
 
 #: src/ingredients.inc:104
 msgid "Fenugreek seeds"
-msgstr ""
+msgstr "Grško seno, semena"
 
 #: src/ingredients.inc:105
 msgid "Fig"
@@ -3167,7 +3154,7 @@ msgstr "Rožmarin, sveži"
 
 #: src/ingredients.inc:116
 msgid "Fresh tagliatelle"
-msgstr ""
+msgstr "Sveže tagliatelle"
 
 #: src/ingredients.inc:117
 msgid "Garam masala"
@@ -3203,7 +3190,7 @@ msgstr "Sir, kozji"
 
 #: src/ingredients.inc:125
 msgid "Golden caster sugar"
-msgstr ""
+msgstr "Zlati finozrnati sladkor"
 
 #: src/ingredients.inc:126
 msgid "Good, dry red wine"
@@ -3219,7 +3206,7 @@ msgstr "Začimbe za golaž"
 
 #: src/ingredients.inc:129
 msgid "Guanciale cubes"
-msgstr ""
+msgstr "Svinjske ličnice, narezane na koščke"
 
 #: src/ingredients.inc:130
 msgid "Long pasta, e.g. spaghetti"
@@ -3295,7 +3282,7 @@ msgstr "Lešnikovo mleko"
 
 #: src/ingredients.inc:148
 msgid "Hoisin sauce"
-msgstr ""
+msgstr "Omaka hoisin"
 
 #: src/ingredients.inc:149
 msgid "Honey"
@@ -3331,7 +3318,7 @@ msgstr "Jagnjetina"
 
 #: src/ingredients.inc:157
 msgid "Lardons"
-msgstr ""
+msgstr "Slanina, narezana na podolgovate koščke"
 
 #: src/ingredients.inc:158
 msgid "Lard or oil"
@@ -3355,7 +3342,7 @@ msgstr "Solata"
 
 #: src/ingredients.inc:163
 msgid "Light muscovado sugar"
-msgstr ""
+msgstr "Lahki sladkor, muscovado"
 
 #: src/ingredients.inc:164
 msgid "Lime"
@@ -3371,7 +3358,7 @@ msgstr "Laneno seme"
 
 #: src/ingredients.inc:167
 msgid "Mandarin Oranges"
-msgstr ""
+msgstr "Mandarine"
 
 #: src/ingredients.inc:168
 msgid "Margarine"
@@ -3399,11 +3386,11 @@ msgstr "Mešane gozdne jagode"
 
 #: src/ingredients.inc:174
 msgid "Mixed frozen bell peppers"
-msgstr ""
+msgstr "Mešana zamrznjena zvončasta paprika"
 
 #: src/ingredients.inc:175
 msgid "Mori-nu organic silken tofu (firm)"
-msgstr ""
+msgstr "Bio svileni tofu Mori-nu (čvrst)"
 
 #: src/ingredients.inc:176
 msgid "Mushrooms"
@@ -3439,7 +3426,7 @@ msgstr "Olje"
 
 #: src/ingredients.inc:184
 msgid "Okonomiyaki sauce"
-msgstr ""
+msgstr "Omaka okonomijaki"
 
 #: src/ingredients.inc:185
 msgid "Olive oil"
@@ -3475,11 +3462,11 @@ msgstr "Panceta"
 
 #: src/ingredients.inc:193
 msgid "Pandan leaves"
-msgstr ""
+msgstr "Pandanovi listi"
 
 #: src/ingredients.inc:194
 msgid "Paprika"
-msgstr ""
+msgstr "Paprika"
 
 #: src/ingredients.inc:195
 msgid "Parmesan cheese, grated"
@@ -3495,7 +3482,7 @@ msgstr "Breskev"
 
 #: src/ingredients.inc:198
 msgid "Peperoni"
-msgstr ""
+msgstr "Feferon"
 
 #: src/ingredients.inc:199
 msgid "Pepper"
@@ -3627,7 +3614,7 @@ msgstr "Sol in poper"
 
 #: src/ingredients.inc:231
 msgid "Saucebinder"
-msgstr ""
+msgstr "Gostilo za omake"
 
 #: src/ingredients.inc:232
 msgid "Scallions"
@@ -3659,7 +3646,7 @@ msgstr "Kozice"
 
 #: src/ingredients.inc:239
 msgid "Slivered almonds, toasted"
-msgstr ""
+msgstr "Mandlji v lističih, praženi"
 
 #: src/ingredients.inc:240
 msgid "Sour cream"
@@ -3746,9 +3733,8 @@ msgid "Tomato sauce"
 msgstr "Paradižnikova omaka"
 
 #: src/ingredients.inc:261
-#, fuzzy
 msgid "Tumeric ground"
-msgstr "V primeru, da se dotaknejo tal, morajo nadaljevati."
+msgstr "Kurkuma v prahu"
 
 #: src/ingredients.inc:262
 msgid "Tuna fish"
@@ -3816,7 +3802,7 @@ msgstr "Vino"
 
 #: src/ingredients.inc:278
 msgid "Worcestershire sauce"
-msgstr ""
+msgstr "Worcesterska omaka"
 
 #: src/ingredients.inc:279
 msgid "Yeast"
@@ -3832,11 +3818,11 @@ msgstr "Jogurt"
 
 #: src/ingredients.inc:282
 msgid "Zest of 1 lemon (organic)"
-msgstr ""
+msgstr "Sok 1 limone (bio)"
 
 #: src/ingredients.inc:283
 msgid "Zinfandel"
-msgstr ""
+msgstr "Zinfandel"
 
 #: src/ingredients.inc:284
 msgid "Zuccini"
@@ -3848,7 +3834,7 @@ msgstr "ni mandljevmarcipan"
 
 #: src/no-ingredients.inc:2
 msgid "no Amaretti"
-msgstr ""
+msgstr "ni amaretov"
 
 #: src/no-ingredients.inc:3
 msgid "no Anchovies"
@@ -3888,7 +3874,7 @@ msgstr "ni slanine"
 
 #: src/no-ingredients.inc:12
 msgid "no Bagel"
-msgstr ""
+msgstr "ni bele žemlje"
 
 #: src/no-ingredients.inc:13
 msgid "no Baked beans"
@@ -3928,7 +3914,7 @@ msgstr "brez govedine"
 
 #: src/no-ingredients.inc:22
 msgid "no Beef mince"
-msgstr ""
+msgstr "ni mlete govedine"
 
 #: src/no-ingredients.inc:23
 msgid "no Beef sausage"
@@ -3936,11 +3922,11 @@ msgstr "brez goveje klobase"
 
 #: src/no-ingredients.inc:24
 msgid "no Beef (sirloin)"
-msgstr ""
+msgstr "ni govedine (rostbif)"
 
 #: src/no-ingredients.inc:25
 msgid "no Beef stock"
-msgstr ""
+msgstr "ni jušne osnove (goveje)"
 
 #: src/no-ingredients.inc:26
 msgid "no Beetroot"
@@ -3968,7 +3954,7 @@ msgstr "ni piškotov"
 
 #: src/no-ingredients.inc:32
 msgid "no Black cardamom pod"
-msgstr ""
+msgstr "ni črnega kardamoma v stroku"
 
 #: src/no-ingredients.inc:33
 msgid "no Black peppercorns"
@@ -4012,7 +3998,7 @@ msgstr "ni staljenega masla"
 
 #: src/no-ingredients.inc:43
 msgid "no Button mushroom"
-msgstr ""
+msgstr "ni kukmakov"
 
 #: src/no-ingredients.inc:44
 msgid "no Cabbage"
@@ -4040,11 +4026,11 @@ msgstr "ni korenja"
 
 #: src/no-ingredients.inc:50
 msgid "no Cashews, lightly toasted"
-msgstr ""
+msgstr "ni indijskih oreščkov, rahlo praženih"
 
 #: src/no-ingredients.inc:51
 msgid "no Caster sugar"
-msgstr ""
+msgstr "ni finozrnatega sladkorja"
 
 #: src/no-ingredients.inc:52
 msgid "no Celery"
@@ -4084,11 +4070,11 @@ msgstr "ni piščančjih jeter"
 
 #: src/no-ingredients.inc:61
 msgid "no chicken stock"
-msgstr ""
+msgstr "ni jušne osnove (kokošje)"
 
 #: src/no-ingredients.inc:62
 msgid "no Chili flakes"
-msgstr ""
+msgstr "ni čilija v kosmičih"
 
 #: src/no-ingredients.inc:63
 msgid "no Chili powder"
@@ -4104,23 +4090,23 @@ msgstr "ni čokolade"
 
 #: src/no-ingredients.inc:66
 msgid "no Chocolate frosting"
-msgstr ""
+msgstr "ni čokolade za glazuro"
 
 #: src/no-ingredients.inc:67
 msgid "no Chorizo"
-msgstr ""
+msgstr "ni salame chorizo"
 
 #: src/no-ingredients.inc:68
 msgid "no Ciboulette"
-msgstr ""
+msgstr "ni drobnjaka"
 
 #: src/no-ingredients.inc:69
 msgid "no Cilantro"
-msgstr ""
+msgstr "ni koriandra"
 
 #: src/no-ingredients.inc:70
 msgid "no Cilantro leaves"
-msgstr ""
+msgstr "ni listov koriandra"
 
 #: src/no-ingredients.inc:71
 msgid "no Cinnamon"
@@ -4188,7 +4174,7 @@ msgstr "ni sirnega namaza"
 
 #: src/no-ingredients.inc:87
 msgid "no Crushed red pepper flakes"
-msgstr ""
+msgstr "ni drobljene rdeče paprike"
 
 #: src/no-ingredients.inc:88
 msgid "no Cucumber"
@@ -4232,7 +4218,7 @@ msgstr "ni suhega čilija"
 
 #: src/no-ingredients.inc:98
 msgid "no Dry or fresh cilantro"
-msgstr ""
+msgstr "ni suhega ali svežega koriandra"
 
 #: src/no-ingredients.inc:99
 msgid "no Dry yeast"
@@ -4240,11 +4226,11 @@ msgstr "ni suhega kvasa"
 
 #: src/no-ingredients.inc:100
 msgid "no Durum wheat semolina"
-msgstr ""
+msgstr "ni zdroba iz trde pšenice (durum)"
 
 #: src/no-ingredients.inc:101
 msgid "no Earth Balance vegan buttery stick"
-msgstr ""
+msgstr "ni veganskih maslenih palic Earth Balance"
 
 #: src/no-ingredients.inc:102
 msgid "no Egg"
@@ -4256,7 +4242,7 @@ msgstr "ni jajčnih rumenjakov"
 
 #: src/no-ingredients.inc:104
 msgid "no Fenugreek seeds"
-msgstr ""
+msgstr "ni grškega sena v semenih"
 
 #: src/no-ingredients.inc:105
 msgid "no Fig"
@@ -4264,7 +4250,7 @@ msgstr "ni fig"
 
 #: src/no-ingredients.inc:106
 msgid "no Finely chopped cilantro"
-msgstr ""
+msgstr "ni na drobno sesekljanega koriandra"
 
 #: src/no-ingredients.inc:107
 msgid "no Finely chopped onions"
@@ -4304,7 +4290,7 @@ msgstr "ni svežega rožmarina"
 
 #: src/no-ingredients.inc:116
 msgid "no Fresh tagliatelle"
-msgstr ""
+msgstr "ni svežih tagliatel"
 
 #: src/no-ingredients.inc:117
 msgid "no Garam masala"
@@ -4340,7 +4326,7 @@ msgstr "ni kozjega sira"
 
 #: src/no-ingredients.inc:125
 msgid "no Golden caster sugar"
-msgstr ""
+msgstr "ni zlatega finozrnatega sladkorja"
 
 #: src/no-ingredients.inc:126
 msgid "no Good, dry red wine"
@@ -4356,7 +4342,7 @@ msgstr "ni začimb za golaž"
 
 #: src/no-ingredients.inc:129
 msgid "no Guanciale cubes"
-msgstr ""
+msgstr "ni svinjskih ličnic, narezanih na koščke"
 
 #: src/no-ingredients.inc:130
 msgid "no Long pasta, e.g. spaghetti"
@@ -4432,7 +4418,7 @@ msgstr "ni lešnikovega mleka"
 
 #: src/no-ingredients.inc:148
 msgid "no Hoisin sauce"
-msgstr ""
+msgstr "ni omake hoisin"
 
 #: src/no-ingredients.inc:149
 msgid "no Honey"
@@ -4468,7 +4454,7 @@ msgstr "ni jagnjetine"
 
 #: src/no-ingredients.inc:157
 msgid "no Lardons"
-msgstr ""
+msgstr "ni slanine, narezane na podolgovate koščke"
 
 #: src/no-ingredients.inc:158
 msgid "no Lard or oil"
@@ -4492,7 +4478,7 @@ msgstr "ni solate"
 
 #: src/no-ingredients.inc:163
 msgid "no Light muscovado sugar"
-msgstr ""
+msgstr "ni lahkega sladkorja muscovado"
 
 #: src/no-ingredients.inc:164
 msgid "no Lime"
@@ -4540,7 +4526,7 @@ msgstr "ni mešane zmrznjene paprike"
 
 #: src/no-ingredients.inc:175
 msgid "no Mori-nu organic silken tofu (firm)"
-msgstr ""
+msgstr "ni bio svilenega tofuja Mori-nu (čvrstega)"
 
 #: src/no-ingredients.inc:176
 msgid "no Mushrooms"
@@ -4576,7 +4562,7 @@ msgstr "ni olja"
 
 #: src/no-ingredients.inc:184
 msgid "no Okonomiyaki sauce"
-msgstr ""
+msgstr "ni omake okonomi(jaki)"
 
 #: src/no-ingredients.inc:185
 msgid "no Olive oil"
@@ -4612,11 +4598,11 @@ msgstr "ni pancete"
 
 #: src/no-ingredients.inc:193
 msgid "no Pandan leaves"
-msgstr ""
+msgstr "ni pandanovih listov"
 
 #: src/no-ingredients.inc:194
 msgid "no Paprika"
-msgstr ""
+msgstr "ni paprike"
 
 #: src/no-ingredients.inc:195
 msgid "no Parmesan cheese, grated"
@@ -4632,7 +4618,7 @@ msgstr "ni breskev"
 
 #: src/no-ingredients.inc:198
 msgid "no Peperoni"
-msgstr ""
+msgstr "ni feferonov"
 
 #: src/no-ingredients.inc:199
 msgid "no Pepper"
@@ -4708,7 +4694,7 @@ msgstr "ni rdeče čebule"
 
 #: src/no-ingredients.inc:217
 msgid "no Red Pepper"
-msgstr ""
+msgstr "ni rdeče paprike"
 
 #: src/no-ingredients.inc:218
 msgid "no Red wine"
@@ -4764,7 +4750,7 @@ msgstr "ni soli in popra"
 
 #: src/no-ingredients.inc:231
 msgid "no Saucebinder"
-msgstr ""
+msgstr "ni gostila za omake"
 
 #: src/no-ingredients.inc:232
 msgid "no Scallions"
@@ -4796,7 +4782,7 @@ msgstr "ni kozic"
 
 #: src/no-ingredients.inc:239
 msgid "no Slivered almonds, toasted"
-msgstr ""
+msgstr "ni mandljev v lističih, praženih"
 
 #: src/no-ingredients.inc:240
 msgid "no Sour cream"
@@ -4884,7 +4870,7 @@ msgstr "ni paradižnikove omake"
 
 #: src/no-ingredients.inc:261
 msgid "no Tumeric ground"
-msgstr ""
+msgstr "ni kurkume v prahu"
 
 #: src/no-ingredients.inc:262
 msgid "no Tuna fish"
@@ -4904,7 +4890,7 @@ msgstr "ni izvlečka vanilje"
 
 #: src/no-ingredients.inc:266
 msgid "no Vanilla powdered sugar, for dusting"
-msgstr ""
+msgstr "ni vanilijevega sladkorja v prahu, za posip"
 
 #: src/no-ingredients.inc:267
 msgid "no Vanilla pudding"
@@ -4952,7 +4938,7 @@ msgstr "ni vina"
 
 #: src/no-ingredients.inc:278
 msgid "no Worcestershire sauce"
-msgstr ""
+msgstr "ni worcesterske omake"
 
 #: src/no-ingredients.inc:279
 msgid "no Yeast"
@@ -4968,24 +4954,12 @@ msgstr "ni jogurta"
 
 #: src/no-ingredients.inc:282
 msgid "no Zest of 1 lemon (organic)"
-msgstr ""
+msgstr "ni soka 1 limone (bio)"
 
 #: src/no-ingredients.inc:283
 msgid "no Zinfandel"
-msgstr ""
+msgstr "ni zinfandla"
 
 #: src/no-ingredients.inc:284
 msgid "no Zuccini"
 msgstr "ni bučk cukini"
-
-#, fuzzy
-#~ msgid "Ser_ves"
-#~ msgstr "_Storitev:"
-
-#, fuzzy
-#~ msgid "C_ooking Time"
-#~ msgstr "Čas prepletanja plasti C"
-
-#, fuzzy
-#~ msgid "Name Your Recipe"
-#~ msgstr "Ime prve zbirke"
