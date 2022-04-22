@@ -51,7 +51,7 @@ msgstr ""
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:18
 msgid "The major features of Recipes include:"
-msgstr ""
+msgstr "Errezetak aplikazioaren eginbide nagusiak:"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:22
 msgid "Add and edit your own recipes"
@@ -67,11 +67,11 @@ msgstr "Esportatu eta inprimatu erosketa-zerrendak"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:25
 msgid "Adjust quantities based on the number of servings"
-msgstr ""
+msgstr "Doitu kantitateak errazio kopuruaren arabera"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:26
 msgid "Mark recipes to cook later or add them to your favorites"
-msgstr ""
+msgstr "Markatu errezetak geroago prestatzeko edo gehitu zure gogokoei"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:27
 msgid "Add notes to recipes"
@@ -79,7 +79,7 @@ msgstr "Gehitu oharrak errezetei"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:28
 msgid "Hands-free cooking instruction mode"
-msgstr ""
+msgstr "Eskuak libre argibideak jaso bitartean"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:34
 msgid "Initial screen for the application"
@@ -141,17 +141,17 @@ msgstr "Gogokoen zerrenda"
 
 #: data/org.gnome.Recipes.gschema.xml:48
 msgid "The list of favorites. Each entry in the list is the ID of a recipe."
-msgstr ""
+msgstr "Gogokoen zerrenda. Zerrendako sarrera bakoitza errezeta baten IDa da."
 
 #: data/org.gnome.Recipes.gschema.xml:54
 msgid "The timestamp of the last change to the shopping list"
-msgstr ""
+msgstr "Erosketa-zerrendari egindako azken aldaketaren denbora-zigilua"
 
 #: data/org.gnome.Recipes.gschema.xml:55
 msgid ""
 "The timestamp of the last time an item was added to or removed from the "
 "shopping list."
-msgstr ""
+msgstr "Elementu bat erosketa-zerrendara gehitu deneko edo bertatik kendu deneko denbora-zigilua."
 
 #: data/org.gnome.Recipes.gschema.xml:62
 msgid "The shopping list"
@@ -161,15 +161,15 @@ msgstr "Erosketa-zerrenda"
 msgid ""
 "The shopping list. Each entry in the dictionary maps the ID of a recipe to a "
 "serving count."
-msgstr ""
+msgstr "Erosketa-zerrenda. Hiztegiko sarrera bakoitza errezeta baten eta errazio kopuru baten IDarekin lotuta dago."
 
 #: data/org.gnome.Recipes.gschema.xml:70
 msgid "Ingredients that were removed from the shopping list"
-msgstr ""
+msgstr "Erosketa-zerrendatik kendu diren osagaiak"
 
 #: data/org.gnome.Recipes.gschema.xml:71
 msgid "The names of ingredients that were removed from the shopping list."
-msgstr ""
+msgstr "Erosketa-zerrendatik kendu diren osagaien izenak."
 
 #: data/org.gnome.Recipes.gschema.xml:77
 msgid "The list of recipes to be exported"
@@ -183,7 +183,7 @@ msgstr "Esportatuko den errezeta-zerrenda. Zerrendako sarreretako bana errezeta 
 
 #: data/org.gnome.Recipes.gschema.xml:84
 msgid "The setting for which unit temperatures should be displayed in."
-msgstr ""
+msgstr "Tenperatura zein unitatetan bistaratuko den finkatzen duen ezarpena."
 
 #: data/org.gnome.Recipes.gschema.xml:85
 msgid ""
@@ -194,21 +194,21 @@ msgstr ""
 
 #: data/org.gnome.Recipes.gschema.xml:92
 msgid "By which key to sort lists."
-msgstr ""
+msgstr "Zein gakoren arabera ordenatuko diren zerrendak."
 
 #: data/org.gnome.Recipes.gschema.xml:93
 msgid "The setting determines which key is used to sort lists of recipes by."
-msgstr ""
+msgstr "Ezarpen honek zehazten du zein gako erabiliko den errezeten zerrenda ordenatzeko."
 
 #: data/org.gnome.Recipes.gschema.xml:99
 msgid "Whether the surprise dialog should be shown."
-msgstr ""
+msgstr "Ustekabeko elkarrizketa-koadroa erakutsiko den ala ez."
 
 #: data/org.gnome.Recipes.gschema.xml:100
 msgid ""
 "The setting determines whether the surprise dialog should be shown on "
 "startup."
-msgstr ""
+msgstr "Ezarpen honek zehazten du abioan ustekabeko elkarrizketa-koadroa erakutsiko den ala ez."
 
 #: data/org.gnome.Recipes.gschema.xml:106
 msgid "The setting for which unit volumes should be displayed in."
@@ -302,7 +302,7 @@ msgstr "Eginda"
 
 #: src/gr-cooking-page.ui:185
 msgid "Stop Cooking?"
-msgstr "Gelditu sukaldatzea?"
+msgstr "Gelditu prestaketa?"
 
 #: src/gr-cooking-page.ui:194
 msgid "Some timers are still running."
@@ -316,7 +316,7 @@ msgstr ""
 
 #: src/gr-cooking-page.ui:212
 msgid "Keep Cooking"
-msgstr "Jarraitu sukaldatzen"
+msgstr "Jarraitu prestatzen"
 
 #: src/gr-cooking-page.ui:219
 msgid "Stop Timers"
@@ -338,13 +338,14 @@ msgstr "Hurrengo urratsera aurrera egiteko, sakatu teklatuko edozein tekla"
 
 #: src/gr-cooking-page.ui:304
 msgid "To go back to the previous step, doubletap any key."
-msgstr ""
+msgstr "Aurreko urratsera itzultzeko, eman kolpetxo bikoitza edozein teklatan."
 
 #: src/gr-cooking-page.ui:326
 msgid ""
 "Alternatively, you can use the cursor keys to\n"
 "quickly seek within the directions."
-msgstr ""
+msgstr "Kurtsore-teklak ere erabili daitezke\n"
+"norabideen artean azkar bilatzeko."
 
 #: src/gr-cooking-page.ui:350
 msgid "To exit the process, press the Escape key."
@@ -401,7 +402,7 @@ msgstr "_Erosi osagaiak"
 
 #: src/gr-details-page.ui:164 src/gr-edit-page.ui:315
 msgid "_Yield"
-msgstr ""
+msgstr "_Emaitza"
 
 #: src/gr-details-page.ui:218
 msgid "Preparation Time"
@@ -409,7 +410,7 @@ msgstr "Prestaketa-denbora"
 
 #: src/gr-details-page.ui:248
 msgid "Cooking Time"
-msgstr "Sukladatze-denbora"
+msgstr "Kozinatze-denbora"
 
 #: src/gr-details-page.ui:278
 msgid "Cuisine"
@@ -430,7 +431,7 @@ msgstr "Oharra"
 #: src/gr-details-page.ui:429 src/gr-recipe-formatter.c:123
 #: src/gr-recipe-printer.c:302
 msgid "Directions"
-msgstr "Norabideak"
+msgstr "Argibideak"
 
 #: src/gr-details-page.ui:489
 msgid "_Notes"
@@ -515,7 +516,7 @@ msgstr "Ordubete baino gehiago"
 
 #: src/gr-edit-page.ui:393
 msgid "_Cooking Time"
-msgstr ""
+msgstr "_Prestatze-denbora"
 
 #: src/gr-edit-page.ui:441
 msgid "C_uisine"
@@ -523,15 +524,15 @@ msgstr "S_ukaldaritza"
 
 #: src/gr-edit-page.ui:477
 msgid "_Meal"
-msgstr ""
+msgstr "_Otordua"
 
 #: src/gr-edit-page.ui:513
 msgid "S_eason"
-msgstr ""
+msgstr "O_ngailuak"
 
 #: src/gr-edit-page.ui:549
 msgid "_Spiciness"
-msgstr ""
+msgstr "_Mintasuna"
 
 #: src/gr-edit-page.ui:569 src/gr-spice-row.c:127
 msgid "Mild"
@@ -579,7 +580,7 @@ msgstr "Halal"
 
 #: src/gr-edit-page.ui:708
 msgid "Di_rections"
-msgstr ""
+msgstr "A_rgibideak"
 
 #: src/gr-edit-page.ui:776
 msgid "Preview"
@@ -615,11 +616,11 @@ msgstr "Sintaxia"
 
 #: src/gr-edit-page.ui:1029
 msgid "Use paragraphs to break directions into steps (2 newlines)."
-msgstr ""
+msgstr "Erabili paragrafoak argibideak urratsetan banatzeko (2 lerro berri)."
 
 #: src/gr-edit-page.ui:1042
 msgid "You can provide an image or a time counter in each step."
-msgstr ""
+msgstr "Irudi bat edo kronometro bat eman dezakezu urrats bakoitzerako."
 
 #: src/gr-edit-page.ui:1054
 msgid "Timer"
@@ -643,11 +644,11 @@ msgstr "Osagaia"
 
 #: src/gr-ingredients-viewer-row.ui:169
 msgid "Use a number, followed by an (optional) unit."
-msgstr ""
+msgstr "Erabili zenbaki bat eta (aukerako) unitate bat."
 
 #: src/gr-ingredients-viewer-row.ui:180
 msgid "Examples: 1 kg, 2 1/2 pounds, 250 ml, 6"
-msgstr ""
+msgstr "Adibideak: 1 kg, 2 1/2 libera, 250 ml, 6"
 
 #: src/gr-ingredients-viewer.ui:13 src/gr-query-editor.ui:235
 #: src/gr-edit-page.c:1511 src/gr-recipe-formatter.c:104
@@ -678,12 +679,12 @@ msgstr "Edozein plater"
 
 #: src/gr-query-editor.ui:109
 msgid "Spiciness"
-msgstr ""
+msgstr "Mintasuna"
 
 #: src/gr-query-editor.ui:129 src/gr-query-editor.c:562
 #: src/gr-query-editor.c:713
 msgid "Any spiciness"
-msgstr ""
+msgstr "Edozein mintasun-maila"
 
 #: src/gr-query-editor.ui:172
 msgid "Dietary restrictions"
@@ -798,7 +799,7 @@ msgstr "_Desegin"
 
 #: src/gr-window.ui:317
 msgid "Ingredients to buy added."
-msgstr ""
+msgstr "Erosi beharreko osagaiak gehitu dira."
 
 #: src/gr-window.ui:327
 msgid "View Shopping List"
@@ -814,7 +815,7 @@ msgstr "Bidali eguneraketa"
 
 #: src/gr-window.ui:492
 msgid "Shopping List has been exported to Todoist"
-msgstr ""
+msgstr "Erosketa-zerrenda Todoist-era esportatu da"
 
 #: src/gr-window.ui:569 src/gr-window.c:398
 msgid "Cuisines"
@@ -901,7 +902,7 @@ msgstr "Aldatu izena"
 
 #: src/recipe-conflict-dialog.ui:28
 msgid "A recipe with this name already exists."
-msgstr ""
+msgstr "Badago izen hori duen errezeta bat."
 
 #: src/recipe-export-dialog.ui:14
 msgid "_Add More"
@@ -923,7 +924,8 @@ msgstr "GNOMEk 20 urte ditu !"
 msgid ""
 "YEARS\n"
 "STRONG"
-msgstr ""
+msgstr "URTE\n"
+"INDARTSU"
 
 #: src/recipe-surprise.ui:68
 msgid ""
@@ -1055,13 +1057,13 @@ msgstr "Errezeten egilea:"
 #: src/gr-account.c:111
 #, c-format
 msgid "Got an error from Account portal"
-msgstr ""
+msgstr "Errorea jaso da kontuen ataritik"
 
 #: src/gr-account.c:162
 msgid ""
 "Allow your personal information to be included with recipes you share with "
 "your friends."
-msgstr ""
+msgstr "Onartu zure informazio pertsonala errezetekin partekatu dadin zure lagunekin."
 
 #: src/gr-app.c:209
 #, c-format
@@ -1074,7 +1076,7 @@ msgstr "Inprimatu bertsioa eta irten"
 
 #: src/gr-app.c:447
 msgid "Turn on verbose logging"
-msgstr ""
+msgstr "Aktibatu erregistro xehea"
 
 #: src/gr-app.c:451
 msgid "Show a category"
@@ -1098,7 +1100,7 @@ msgstr "Sukaldari berria"
 
 #: src/gr-cooking-page.c:249
 msgid "Cooking"
-msgstr ""
+msgstr "Prestaketa"
 
 #: src/gr-cooking-view.c:157
 #, c-format
@@ -1116,12 +1118,12 @@ msgstr "GNOME Errezetak"
 
 #: src/gr-cooking-view.c:393
 msgid "A cooking timer has expired"
-msgstr ""
+msgstr "Tenporizadore bat iraungi da"
 
 #: src/gr-cooking-view.c:411 src/gr-cooking-view.c:427
 #, c-format
 msgid "Timer for “%s” has expired."
-msgstr ""
+msgstr "“%s” urratserako tenporizadorea iraungi da."
 
 #: src/gr-cooking-view.c:425
 msgid "Timer is up!"
@@ -1311,13 +1313,13 @@ msgstr ""
 
 #: src/gr-details-page.c:193 src/gr-edit-page.c:936
 msgid "serving"
-msgstr ""
+msgstr "errazio"
 
 #: src/gr-details-page.c:193 src/gr-edit-page.c:937
 #: src/gr-recipe-importer.c:504 src/gr-recipe-store.c:410
 #: src/gr-shopping-tile.c:110
 msgid "servings"
-msgstr ""
+msgstr "errazio"
 
 #: src/gr-details-page.c:367
 msgid "Could not find this recipe."
@@ -1481,19 +1483,19 @@ msgstr "Errezetaren egilea"
 
 #: src/gr-edit-page.c:940
 msgid "loaf"
-msgstr ""
+msgstr "xerra"
 
 #: src/gr-edit-page.c:941
 msgid "loafs"
-msgstr ""
+msgstr "xerra"
 
 #: src/gr-edit-page.c:944
 msgid "ounce"
-msgstr ""
+msgstr "ontza"
 
 #: src/gr-edit-page.c:945
 msgid "ounces"
-msgstr ""
+msgstr "ontza"
 
 #: src/gr-edit-page.c:1547
 msgid "_Name Your Recipe"
@@ -1557,17 +1559,17 @@ msgstr "Ez da %s aurkitu"
 
 #: src/gr-list-page.c:370 src/gr-list-page.c:439 src/gr-list-page.c:472
 msgid "You could add one using the “New Recipe” button."
-msgstr ""
+msgstr "Beste errezeta bat gehitu daiteke \"Errezeta berria\" botoia sakatuta."
 
 #: src/gr-list-page.c:428
 #, c-format
 msgid "Recipes by %s"
-msgstr ""
+msgstr "Errezeten egilea: %s"
 
 #: src/gr-list-page.c:435
 #, c-format
 msgid "No recipes by chef %s found"
-msgstr ""
+msgstr "Ez da aurkitu %s sukaldariaren errezetarik"
 
 #: src/gr-list-page.c:441 src/gr-list-page.c:515 src/gr-list-page.c:542
 #: src/gr-list-page.c:577
@@ -1577,7 +1579,7 @@ msgstr "Barkatu horregatik."
 #: src/gr-list-page.c:469
 #, c-format
 msgid "No recipes for %s found"
-msgstr ""
+msgstr "Ez da aurkitu %s sukaldariaren errezetarik"
 
 #: src/gr-list-page.c:493
 msgid "No favorite recipes found"
@@ -1585,7 +1587,7 @@ msgstr "Ez da gogoko errezetarik aurkitu"
 
 #: src/gr-list-page.c:494
 msgid "Use the ♥ button to mark recipes as favorites."
-msgstr ""
+msgstr "Erabili ♥ botoia errezetak gogokoetan sartzeko."
 
 #: src/gr-list-page.c:541
 msgid "No new recipes"
@@ -1601,7 +1603,7 @@ msgstr "Plater nagusia"
 
 #: src/gr-meal.c:46
 msgid "Snacks"
-msgstr ""
+msgstr "Mokaduak"
 
 #: src/gr-meal.c:47
 msgid "Breakfast"
@@ -1609,7 +1611,7 @@ msgstr "Gosaria"
 
 #: src/gr-meal.c:48
 msgid "Side Dishes"
-msgstr ""
+msgstr "Hornigaiak"
 
 #: src/gr-meal.c:49
 msgid "Desserts"
@@ -1617,11 +1619,11 @@ msgstr "Azkenburukoak"
 
 #: src/gr-meal.c:50
 msgid "Cake and Baking"
-msgstr ""
+msgstr "Pastelak"
 
 #: src/gr-meal.c:51
 msgid "Drinks and Cocktails"
-msgstr ""
+msgstr "Edariak eta koktelak"
 
 #: src/gr-meal.c:52
 msgid "Pizza"
@@ -1642,22 +1644,22 @@ msgstr "Bestelakoa"
 #: src/gr-number.c:148 src/gr-number.c:217 src/gr-number.c:226
 #, c-format
 msgid "Could not parse %s as a fraction"
-msgstr ""
+msgstr "Ezin da %s analizatu zatiki gisa"
 
 #: src/gr-number.c:251
 #, c-format
 msgid "Could not parse %s as a integer"
-msgstr ""
+msgstr "Ezin da %s analizatu osoko gisa"
 
 #: src/gr-number.c:273
 #, c-format
 msgid "Could not parse %s as a float"
-msgstr ""
+msgstr "Ezin da %s analizatu koma mugikorreko zenbaki gisa"
 
 #: src/gr-number.c:322
 #, c-format
 msgid "Could not parse %s as a number"
-msgstr ""
+msgstr "Ezin da %s analizatu zenbaki gisa"
 
 #: src/gr-recipe-exporter.c:168
 msgid "Save the exported recipe"
@@ -1703,33 +1705,36 @@ msgstr "Aizu,\n"
 
 #: src/gr-recipe-exporter.c:225
 msgid "(The attached file can be imported into GNOME Recipes.)"
-msgstr ""
+msgstr "(Erantsitako fitxategia GNOME Errezetak aplikaziora inportatu daiteke.)"
 
 #: src/gr-recipe-exporter.c:437
 #, c-format
 msgid "This build does not support exporting"
-msgstr ""
+msgstr "Eraikuntza honek ez du onartzen esportazioa"
 
 #: src/gr-recipe-exporter.c:520
 #, c-format
 msgid ""
 "Error while exporting:\n"
 "%s"
-msgstr ""
+msgstr "Errorea esportatzean:\n"
+"%s"
 
 #: src/gr-recipe-exporter.c:617
 #, c-format
 msgid "%d recipe selected for sharing"
 msgid_plural "%d recipes selected for sharing"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Errezeta %d hautatu da partekatzeko"
+msgstr[1] "%d errezeta hautatu dira partekatzeko"
 
 #: src/gr-recipe-exporter.c:649
 msgid ""
 "Some of the selected recipes are included\n"
 "with GNOME Recipes. You should only contribute\n"
 "your own recipes."
-msgstr ""
+msgstr "Hautatutako errezetetako batzuk jadanik\n"
+"GNOME Errezetak aplikazioan daude. Zure errezeta\n"
+"propioak sartu besterik ez duzu egin behar."
 
 #: src/gr-recipe-formatter.c:88 src/gr-recipe-printer.c:164
 msgid "Author:"
@@ -1741,11 +1746,11 @@ msgstr "Prestaketa:"
 
 #: src/gr-recipe-formatter.c:90 src/gr-recipe-printer.c:166
 msgid "Cooking:"
-msgstr "Sukaldatzea:"
+msgstr "Kozinatzea:"
 
 #: src/gr-recipe-formatter.c:93 src/gr-recipe-printer.c:168
 msgid "Yield:"
-msgstr ""
+msgstr "Emaitza:"
 
 #: src/gr-recipe-importer.c:238
 #, c-format
@@ -1758,7 +1763,7 @@ msgstr "Errorea errezeta inportatzean:\n"
 #: src/gr-recipe-importer.c:518
 #, c-format
 msgid "Failed to load recipe: Couldn’t parse Created key"
-msgstr ""
+msgstr "Huts egin du errezeta kargatzeak: Ezin da 'Sortzailea' gakoa analizatu"
 
 #: src/gr-recipe-importer.c:529
 #, c-format
@@ -1768,7 +1773,7 @@ msgstr ""
 #: src/gr-recipe-importer.c:809
 #, c-format
 msgid "No chef information found"
-msgstr ""
+msgstr "Ez da sukaldariaren informaziorik aurkitu"
 
 #: src/gr-recipe-importer.c:839
 #, c-format
@@ -1789,7 +1794,7 @@ msgstr "Sasoia"
 
 #: src/gr-recipe-printer.c:229
 msgid "Notes"
-msgstr "Notes"
+msgstr "Oharrak"
 
 #: src/gr-recipe-printer.c:472 src/gr-shopping-list-printer.c:297
 msgid "Error printing file:"
@@ -1827,51 +1832,52 @@ msgstr "Erosi osagaiak: <b>%s</b>"
 #: src/gr-recipes-page.c:374
 #, c-format
 msgid "Buy ingredients: <b>%s and %s</b>"
-msgstr ""
+msgstr "Erosi osagaiak: <b>%s eta %s</b>"
 
 #: src/gr-recipes-page.c:376
 #, c-format
 msgid "Buy ingredients: <b>%s, %s and %d other</b>"
 msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Erosi osagaiak: <b>%s, %s eta %d gehiago</b>"
+msgstr[1] "Erosi osagaiak: <b>%s, %s eta %d gehiago</b>"
 
 #: src/gr-recipe-store.c:1335
 #, c-format
 msgid ""
 "A recipe with this name and author (%s) already exists.\n"
 "Please choose a different name"
-msgstr ""
+msgstr "Badago izen eta egile hori (%s) duen errezeta bat.\n"
+"Aukeratu beste izen bat"
 
 #: src/gr-recipe-store.c:1364
 #, c-format
 msgid "You need to provide an ID for the recipe"
-msgstr ""
+msgstr "ID bat eman behar diozu errezetari"
 
 #: src/gr-recipe-store.c:1370
 #, c-format
 msgid "A recipe with this ID already exists"
-msgstr ""
+msgstr "Bagago ID hori duen errezeta bat"
 
 #: src/gr-recipe-store.c:1539
 #, c-format
 msgid "You need to provide an ID"
-msgstr ""
+msgstr "ID bat eman behar duzu"
 
 #: src/gr-recipe-store.c:1545
 #, c-format
 msgid "Sorry, this ID is taken"
-msgstr ""
+msgstr "ID hori hartuta dago"
 
 #: src/gr-recipe-store.c:1572
 #, c-format
 msgid "You need to provide an ID for the chef"
-msgstr ""
+msgstr "ID bat eman behar duzu sukaldariarentzako"
 
 #: src/gr-recipe-store.c:1578
 #, c-format
 msgid "A chef with this ID already exists"
-msgstr ""
+msgstr "Badago ID hori duen sukaldari bat"
 
 #: src/gr-recipe-tile.c:99 src/gr-shopping-tile.c:108
 #, c-format
@@ -1884,7 +1890,7 @@ msgstr "Anonimoa"
 
 #: src/gr-season.c:41
 msgid "Thanksgiving"
-msgstr ""
+msgstr "Esker Ematearen eguna"
 
 #: src/gr-season.c:42
 msgid "Christmas"
@@ -1916,7 +1922,7 @@ msgstr "Gehitu kontua"
 
 #: src/gr-shopping-list-exporter.c:476 src/gr-shopping-list-exporter.c:566
 msgid "Shopping List from Recipes"
-msgstr ""
+msgstr "Errezetetako erosketa-zerrenda"
 
 #: src/gr-shopping-list-exporter.c:694
 msgid "Save the shopping list"
@@ -1929,11 +1935,11 @@ msgstr "Erosketa-zerrenda"
 
 #: src/gr-shopping-list-formatter.c:44
 msgid "For the following recipes:"
-msgstr ""
+msgstr "Honako errezetetatik:"
 
 #: src/gr-shopping-list-printer.c:144
 msgid "For the following recipes"
-msgstr ""
+msgstr "Honako errezetetatik"
 
 #: src/gr-shopping-list-printer.c:161
 msgid "Items"
@@ -1943,143 +1949,143 @@ msgstr "Elementuak"
 #, c-format
 msgid "%d ingredient marked for purchase"
 msgid_plural "%d ingredients marked for purchase"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Osagai %d markatu da erosteko"
+msgstr[1] "%d osagai markatu dira erosteko"
 
 #: src/gr-shopping-page.c:122
 #, c-format
 msgid "Buy Ingredients (%d recipe)"
 msgid_plural "Buy Ingredients (%d recipes)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Erosi osagaiak (errezeta %d)"
+msgstr[1] "Erosi osagaiak (%d errezeta)"
 
 #: src/gr-shopping-page.c:127
 #, c-format
 msgid "%d Recipe marked for preparation"
 msgid_plural "%d Recipes marked for preparation"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Errezeta %d markatu da prestatzeko"
+msgstr[1] "%d errezeta markatu dira prestatzeko"
 
 #: src/gr-spice-row.c:131
 msgid "Mild or somewhat spicy"
-msgstr ""
+msgstr "Arina edo pixka bat mina"
 
 #: src/gr-spice-row.c:133
 msgid "At least somewhat spicy"
-msgstr ""
+msgstr "Pixka bat mina"
 
 #: src/gr-spice-row.c:137
 msgid "At most hot"
-msgstr ""
+msgstr "Mina"
 
 #: src/gr-spice-row.c:139
 msgid "Hot or very spicy"
-msgstr ""
+msgstr "Oso mina"
 
 #: src/gr-unit.c:46
 msgctxt "unit abbreviation"
 msgid "g"
-msgstr ""
+msgstr "g"
 
 #: src/gr-unit.c:46
 msgctxt "unit name"
 msgid "gram"
-msgstr ""
+msgstr "gramo"
 
 #: src/gr-unit.c:46
 msgctxt "unit plural"
 msgid "grams"
-msgstr ""
+msgstr "gramo"
 
 #: src/gr-unit.c:47
 msgctxt "unit abbreviation"
 msgid "kg"
-msgstr ""
+msgstr "kg"
 
 #: src/gr-unit.c:47
 msgctxt "unit name"
 msgid "kilogram"
-msgstr ""
+msgstr "kilogramo"
 
 #: src/gr-unit.c:47
 msgctxt "unit plural"
 msgid "kilograms"
-msgstr ""
+msgstr "kilogramo"
 
 #: src/gr-unit.c:48
 msgctxt "unit abbreviation"
 msgid "lb"
-msgstr ""
+msgstr "lb"
 
 #: src/gr-unit.c:48
 msgctxt "unit name"
 msgid "pound"
-msgstr ""
+msgstr "libera"
 
 #: src/gr-unit.c:48
 msgctxt "unit plural"
 msgid "pounds"
-msgstr "libera esterlinaren ikurra"
+msgstr "libera"
 
 #: src/gr-unit.c:49
 msgctxt "unit abbreviation"
 msgid "oz"
-msgstr ""
+msgstr "oz"
 
 #: src/gr-unit.c:49
 msgctxt "unit name"
 msgid "ounce"
-msgstr ""
+msgstr "ontza"
 
 #: src/gr-unit.c:49
 msgctxt "unit plural"
 msgid "ounces"
-msgstr ""
+msgstr "ontza"
 
 #: src/gr-unit.c:50
 msgctxt "unit abbreviation"
 msgid "l"
-msgstr ""
+msgstr "l"
 
 #: src/gr-unit.c:50
 msgctxt "unit name"
 msgid "liter"
-msgstr ""
+msgstr "litro"
 
 #: src/gr-unit.c:50
 msgctxt "unit plural"
 msgid "liters"
-msgstr ""
+msgstr "litro"
 
 #: src/gr-unit.c:51
 msgctxt "unit abbreviation"
 msgid "dl"
-msgstr ""
+msgstr "dl"
 
 #: src/gr-unit.c:51
 msgctxt "unit name"
 msgid "deciliter"
-msgstr ""
+msgstr "dezilitro"
 
 #: src/gr-unit.c:51
 msgctxt "unit plural"
 msgid "deciliters"
-msgstr ""
+msgstr "dezilitro"
 
 #: src/gr-unit.c:52
 msgctxt "unit abbreviation"
 msgid "ml"
-msgstr ""
+msgstr "ml"
 
 #: src/gr-unit.c:52
 msgctxt "unit name"
 msgid "milliliter"
-msgstr ""
+msgstr "mililitro"
 
 #: src/gr-unit.c:52
 msgctxt "unit plural"
 msgid "milliliters"
-msgstr ""
+msgstr "mililitro"
 
 #: src/gr-unit.c:53 src/gr-unit.c:54
 msgctxt "unit abbreviation"
@@ -2104,132 +2110,132 @@ msgstr "pt"
 #: src/gr-unit.c:55
 msgctxt "unit name"
 msgid "pint"
-msgstr ""
+msgstr "pinta"
 
 #: src/gr-unit.c:55
 msgctxt "unit plural"
 msgid "pints"
-msgstr ""
+msgstr "pinta"
 
 #: src/gr-unit.c:56
 msgctxt "unit abbreviation"
 msgid "qt"
-msgstr ""
+msgstr "qt"
 
 #: src/gr-unit.c:56
 msgctxt "unit name"
 msgid "quart"
-msgstr ""
+msgstr "laurden"
 
 #: src/gr-unit.c:56
 msgctxt "unit plural"
 msgid "quarts"
-msgstr ""
+msgstr "laurden"
 
 #: src/gr-unit.c:57
 msgctxt "unit abbreviation"
 msgid "gal"
-msgstr ""
+msgstr "gal"
 
 #: src/gr-unit.c:57
 msgctxt "unit name"
 msgid "gallon"
-msgstr ""
+msgstr "galoi"
 
 #: src/gr-unit.c:57
 msgctxt "unit plural"
 msgid "gallons"
-msgstr ""
+msgstr "galoi"
 
 #: src/gr-unit.c:58
 msgctxt "unit abbreviation"
 msgid "cup"
-msgstr ""
+msgstr "cup"
 
 #: src/gr-unit.c:58
 msgctxt "unit name"
 msgid "cup"
-msgstr ""
+msgstr "katilu"
 
 #: src/gr-unit.c:58
 msgctxt "unit plural"
 msgid "cups"
-msgstr ""
+msgstr "katilu"
 
 #: src/gr-unit.c:59
 msgctxt "unit abbreviation"
 msgid "tbsp"
-msgstr ""
+msgstr "tbsp"
 
 #: src/gr-unit.c:59
 msgctxt "unit name"
 msgid "tablespoon"
-msgstr ""
+msgstr "koilarakada"
 
 #: src/gr-unit.c:59
 msgctxt "unit plural"
 msgid "tablespoons"
-msgstr ""
+msgstr "koilarakada"
 
 #: src/gr-unit.c:60
 msgctxt "unit abbreviation"
 msgid "tsp"
-msgstr ""
+msgstr "tsp"
 
 #: src/gr-unit.c:60
 msgctxt "unit name"
 msgid "teaspoon"
-msgstr ""
+msgstr "koilarakada txiki"
 
 #: src/gr-unit.c:60
 msgctxt "unit plural"
 msgid "teaspoons"
-msgstr ""
+msgstr "koilarakada txiki"
 
 #: src/gr-unit.c:61
 msgctxt "unit abbreviation"
 msgid "box"
-msgstr ""
+msgstr "box"
 
 #: src/gr-unit.c:61
 msgctxt "unit name"
 msgid "box"
-msgstr ""
+msgstr "kutxa"
 
 #: src/gr-unit.c:61
 msgctxt "unit plural"
 msgid "boxes"
-msgstr ""
+msgstr "kutxa"
 
 #: src/gr-unit.c:62
 msgctxt "unit abbreviation"
 msgid "pkg"
-msgstr ""
+msgstr "pkg"
 
 #: src/gr-unit.c:62
 msgctxt "unit name"
 msgid "package"
-msgstr ""
+msgstr "pakete"
 
 #: src/gr-unit.c:62
 msgctxt "unit plural"
 msgid "packages"
-msgstr ""
+msgstr "pakete"
 
 #: src/gr-unit.c:63
 msgctxt "unit abbreviation"
 msgid "glass"
-msgstr ""
+msgstr "glass"
 
 #: src/gr-unit.c:63
 msgctxt "unit name"
 msgid "glass"
-msgstr ""
+msgstr "edalontzi"
 
 #: src/gr-unit.c:63
 msgctxt "unit plural"
 msgid "glasses"
-msgstr ""
+msgstr "edalontzi"
 
 #: src/gr-unit.c:64
 msgctxt "unit abbreviation"
@@ -2239,7 +2245,7 @@ msgstr "mm"
 #: src/gr-unit.c:64
 msgctxt "unit name"
 msgid "millimeter"
-msgstr ""
+msgstr "milimetro"
 
 #: src/gr-unit.c:64
 msgctxt "unit plural"
@@ -2254,12 +2260,12 @@ msgstr "cm"
 #: src/gr-unit.c:65
 msgctxt "unit name"
 msgid "centimeter"
-msgstr ""
+msgstr "zentimetro"
 
 #: src/gr-unit.c:65
 msgctxt "unit plural"
 msgid "centimeters"
-msgstr ""
+msgstr "zentimetro"
 
 #: src/gr-unit.c:66
 msgctxt "unit abbreviation"
@@ -2269,57 +2275,57 @@ msgstr "m"
 #: src/gr-unit.c:66
 msgctxt "unit name"
 msgid "meter"
-msgstr ""
+msgstr "metro"
 
 #: src/gr-unit.c:66
 msgctxt "unit plural"
 msgid "meters"
-msgstr "metroak"
+msgstr "metro"
 
 #: src/gr-unit.c:67
 msgctxt "unit abbreviation"
 msgid "st"
-msgstr ""
+msgstr "st"
 
 #: src/gr-unit.c:67
 msgctxt "unit name"
 msgid "stone"
-msgstr ""
+msgstr "harri"
 
 #: src/gr-unit.c:67
 msgctxt "unit plural"
 msgid "stone"
-msgstr ""
+msgstr "harri"
 
 #: src/gr-unit.c:68
 msgctxt "unit abbreviation"
 msgid "pinch"
-msgstr ""
+msgstr "pinch"
 
 #: src/gr-unit.c:68
 msgctxt "unit name"
 msgid "pinch"
-msgstr ""
+msgstr "pitin"
 
 #: src/gr-unit.c:68
 msgctxt "unit plural"
 msgid "pinches"
-msgstr ""
+msgstr "pitin"
 
 #: src/gr-unit.c:69
 msgctxt "unit abbreviation"
 msgid "bunch"
-msgstr ""
+msgstr "bunch"
 
 #: src/gr-unit.c:69
 msgctxt "unit name"
 msgid "bunch"
-msgstr ""
+msgstr "mordo"
 
 #: src/gr-unit.c:69
 msgctxt "unit plural"
 msgid "bunches"
-msgstr ""
+msgstr "mordo"
 
 #: src/gr-unit.c:167
 #, c-format
@@ -2369,7 +2375,7 @@ msgstr[1] "duela %d ordu"
 
 #: src/gr-utils.c:362
 msgid "some time ago"
-msgstr ""
+msgstr "duela denbora bat"
 
 #: src/gr-utils.c:386
 msgid "Could not connect to the session bus from inside the Flatpak sandbox."
@@ -2377,7 +2383,7 @@ msgstr ""
 
 #: src/gr-utils.c:387
 msgid "Certain functionality will not be available."
-msgstr ""
+msgstr "Zenbait funtzionaltasun ez dira eskuragarri egongo."
 
 #: src/gr-utils.c:400
 #, c-format
@@ -2388,7 +2394,7 @@ msgstr ""
 #: src/gr-utils.c:401
 #, c-format
 msgid "Error: %s"
-msgstr ""
+msgstr "Errorea: %s"
 
 #: src/gr-utils.c:412
 msgid ""
@@ -2867,7 +2873,7 @@ msgstr "Kumino haziak"
 
 #: src/ingredients.inc:92
 msgid "Dark Jamaican rum"
-msgstr ""
+msgstr "Jamaikar ron iluna"
 
 #: src/ingredients.inc:93
 msgid "Date"
@@ -2931,7 +2937,7 @@ msgstr "Tipula xehatua"
 
 #: src/ingredients.inc:108
 msgid "Finely chopped thai chillies or green chillis"
-msgstr ""
+msgstr "Thai pipermin edo piper berde xehatuak"
 
 #: src/ingredients.inc:109
 msgid "Finely chopped tomato"
@@ -3003,7 +3009,7 @@ msgstr ""
 
 #: src/ingredients.inc:126
 msgid "Good, dry red wine"
-msgstr ""
+msgstr "Ardo beltz lehor ona"
 
 #: src/ingredients.inc:127
 msgid "Gouda cheese"
@@ -3215,15 +3221,15 @@ msgstr "Ziape-haziak"
 
 #: src/ingredients.inc:179
 msgid "Nut"
-msgstr ""
+msgstr "Intxaurra"
 
 #: src/ingredients.inc:180
 msgid "Nutmeg"
-msgstr ""
+msgstr "Intxaur muskatua"
 
 #: src/ingredients.inc:181
 msgid "Nutritional yeast"
-msgstr ""
+msgstr "Elikadura-legamia"
 
 #: src/ingredients.inc:182
 msgid "Oatmeal"
@@ -3271,7 +3277,7 @@ msgstr "Hirugiharra"
 
 #: src/ingredients.inc:193
 msgid "Pandan leaves"
-msgstr ""
+msgstr "Pandan-hostoak"
 
 #: src/ingredients.inc:194
 msgid "Paprika"
@@ -3339,7 +3345,7 @@ msgstr "Patata"
 
 #: src/ingredients.inc:210
 msgid "Powdered sugar"
-msgstr ""
+msgstr "Azukre-hautsa"
 
 #: src/ingredients.inc:211
 msgid "Pumpkin seeds"
@@ -3387,11 +3393,11 @@ msgstr "Arrozezko vermicelli noodleak"
 
 #: src/ingredients.inc:222
 msgid "Rock sugar"
-msgstr ""
+msgstr "Azukre-arroka"
 
 #: src/ingredients.inc:223
 msgid "Rolled oats"
-msgstr ""
+msgstr "Olo zanpatua"
 
 #: src/ingredients.inc:224
 msgid "Rosemary"
@@ -3423,7 +3429,7 @@ msgstr "Gatza eta piperrautsa"
 
 #: src/ingredients.inc:231
 msgid "Saucebinder"
-msgstr ""
+msgstr "Saltsa-loditzailea"
 
 #: src/ingredients.inc:232
 msgid "Scallions"
@@ -3499,7 +3505,7 @@ msgstr "Batata gozoak"
 
 #: src/ingredients.inc:250
 msgid "Tamarind paste"
-msgstr ""
+msgstr "Tamarindo-pasta"
 
 #: src/ingredients.inc:251
 msgid "Tangerine"
@@ -3507,15 +3513,15 @@ msgstr "Mandarina"
 
 #: src/ingredients.inc:252
 msgid "Thai basil leaves"
-msgstr ""
+msgstr "Albaka-hosto tailandiarrak"
 
 #: src/ingredients.inc:253
 msgid "Thai chillies"
-msgstr ""
+msgstr "Txile tailandiarrak"
 
 #: src/ingredients.inc:254
 msgid "Thai fish sauce"
-msgstr ""
+msgstr "Arrain-saltsa tailandiarra"
 
 #: src/ingredients.inc:255
 msgid "Thyme"
@@ -3555,19 +3561,19 @@ msgstr "Gatzik gabeko gurina"
 
 #: src/ingredients.inc:264
 msgid "Vanilla baking powder"
-msgstr ""
+msgstr "Hauts altxagarri banilladuna"
 
 #: src/ingredients.inc:265
 msgid "Vanilla extract"
-msgstr ""
+msgstr "Banilla-estraktua"
 
 #: src/ingredients.inc:266
 msgid "Vanilla powdered sugar, for dusting"
-msgstr ""
+msgstr "Azukre-hauts banilladuna, hautseztatzeko"
 
 #: src/ingredients.inc:267
 msgid "Vanilla pudding"
-msgstr ""
+msgstr "Banilla-budina"
 
 #: src/ingredients.inc:268
 msgid "Vanilla sugar"
@@ -3775,7 +3781,7 @@ msgstr ""
 
 #: src/no-ingredients.inc:35
 msgid "no Bourbon whiskey"
-msgstr ""
+msgstr "Bourbonik ez"
 
 #: src/no-ingredients.inc:36
 msgid "no Breadcrumbs"
@@ -3783,15 +3789,15 @@ msgstr "Ogi birrindurik ez"
 
 #: src/no-ingredients.inc:37
 msgid "no Brewer's yeast"
-msgstr ""
+msgstr "Garagardo-legamirik ez"
 
 #: src/no-ingredients.inc:38
 msgid "no Broad beans"
-msgstr ""
+msgstr "Baba handirik ez"
 
 #: src/no-ingredients.inc:39
 msgid "no Broth"
-msgstr ""
+msgstr "Saldarik ez"
 
 #: src/no-ingredients.inc:40
 msgid "no Brown sugar"
@@ -3807,7 +3813,7 @@ msgstr "Gurin urturik ez"
 
 #: src/no-ingredients.inc:43
 msgid "no Button mushroom"
-msgstr ""
+msgstr "Barrengorri txikirik ez"
 
 #: src/no-ingredients.inc:44
 msgid "no Cabbage"
@@ -3815,7 +3821,7 @@ msgstr "Azarik ez"
 
 #: src/no-ingredients.inc:45
 msgid "no Cake flour"
-msgstr ""
+msgstr "Gozogintza-irinik ez"
 
 #: src/no-ingredients.inc:46
 msgid "no Canellini beans"
@@ -3823,11 +3829,11 @@ msgstr ""
 
 #: src/no-ingredients.inc:47
 msgid "no Canned black beans, rinsed"
-msgstr ""
+msgstr "Poteko babarrun beltzak, xukatuta, ez"
 
 #: src/no-ingredients.inc:48
 msgid "no Canned chopped tomatoes"
-msgstr ""
+msgstr "Poteko tomate birrindurik ez"
 
 #: src/no-ingredients.inc:49
 msgid "no Carrot"
@@ -3859,7 +3865,7 @@ msgstr "Gazta-xerrarik ez"
 
 #: src/no-ingredients.inc:56
 msgid "no Cherries, pitted"
-msgstr ""
+msgstr "Hezurrik gabeko gerezirik ez"
 
 #: src/no-ingredients.inc:57
 msgid "no Cherry tomatoes, halved"
@@ -3879,19 +3885,19 @@ msgstr "Oilasko-gibelik ez"
 
 #: src/no-ingredients.inc:61
 msgid "no chicken stock"
-msgstr ""
+msgstr "Oilasko-saldarik ez"
 
 #: src/no-ingredients.inc:62
 msgid "no Chili flakes"
-msgstr ""
+msgstr "Txile-malutarik ez"
 
 #: src/no-ingredients.inc:63
 msgid "no Chili powder"
-msgstr ""
+msgstr "Txile-hautsik ez"
 
 #: src/no-ingredients.inc:64
 msgid "no Chili sauce (e.g. sriracha)"
-msgstr ""
+msgstr "Txile-saltsarik (adib. sriracha) ez"
 
 #: src/no-ingredients.inc:65
 msgid "no Chocolate"
@@ -3899,7 +3905,7 @@ msgstr "Txokolaterik ez"
 
 #: src/no-ingredients.inc:66
 msgid "no Chocolate frosting"
-msgstr ""
+msgstr "Txokolate-glasaturik ez"
 
 #: src/no-ingredients.inc:67
 msgid "no Chorizo"
@@ -3907,15 +3913,15 @@ msgstr "Txorizorik ez"
 
 #: src/no-ingredients.inc:68
 msgid "no Ciboulette"
-msgstr ""
+msgstr "Tipulinarik ez"
 
 #: src/no-ingredients.inc:69
 msgid "no Cilantro"
-msgstr ""
+msgstr "Martorririk ez"
 
 #: src/no-ingredients.inc:70
 msgid "no Cilantro leaves"
-msgstr ""
+msgstr "Martorri-hostorik ez"
 
 #: src/no-ingredients.inc:71
 msgid "no Cinnamon"
@@ -3955,7 +3961,7 @@ msgstr "Ur hotzik ez"
 
 #: src/no-ingredients.inc:80
 msgid "no cooked beef"
-msgstr ""
+msgstr "Behiki egosirik ez"
 
 #: src/no-ingredients.inc:81
 msgid "no Coriander"
@@ -3971,7 +3977,7 @@ msgstr "Kuskusik ez"
 
 #: src/no-ingredients.inc:84
 msgid "no Cracked pepper"
-msgstr ""
+msgstr "Piperbeltzik ez"
 
 #: src/no-ingredients.inc:85
 msgid "no Cream"
@@ -3983,7 +3989,7 @@ msgstr "Krema gaztarik ez"
 
 #: src/no-ingredients.inc:87
 msgid "no Crushed red pepper flakes"
-msgstr ""
+msgstr "Piper gorrien maluta birrindurik ez"
 
 #: src/no-ingredients.inc:88
 msgid "no Cucumber"
@@ -4003,7 +4009,7 @@ msgstr "Kumino-hazirik ez"
 
 #: src/no-ingredients.inc:92
 msgid "no Dark Jamaican rum"
-msgstr ""
+msgstr "Jamaikar ron ilunik ez"
 
 #: src/no-ingredients.inc:93
 msgid "no Date"
@@ -4035,7 +4041,7 @@ msgstr "Legami lehorrik ez"
 
 #: src/no-ingredients.inc:100
 msgid "no Durum wheat semolina"
-msgstr ""
+msgstr "Gari gogorraren semolarik ez"
 
 #: src/no-ingredients.inc:101
 msgid "no Earth Balance vegan buttery stick"
@@ -4051,7 +4057,7 @@ msgstr "Arrautza-gorringorik ez"
 
 #: src/no-ingredients.inc:104
 msgid "no Fenugreek seeds"
-msgstr ""
+msgstr "Ailorbe-hazirik ez"
 
 #: src/no-ingredients.inc:105
 msgid "no Fig"
@@ -4059,79 +4065,79 @@ msgstr "Pikurik ez"
 
 #: src/no-ingredients.inc:106
 msgid "no Finely chopped cilantro"
-msgstr ""
+msgstr "Martorri xehaturik ez"
 
 #: src/no-ingredients.inc:107
 msgid "no Finely chopped onions"
-msgstr ""
+msgstr "Tipula xehaturik ez"
 
 #: src/no-ingredients.inc:108
 msgid "no Finely chopped thai chillies or green chillis"
-msgstr ""
+msgstr "Thai pipermin edo piper berde xehaturik ez"
 
 #: src/no-ingredients.inc:109
 msgid "no Finely chopped tomato"
-msgstr ""
+msgstr "Tomate xehaturik ez"
 
 #: src/no-ingredients.inc:110
 msgid "no Fish"
-msgstr ""
+msgstr "Arrainik ez"
 
 #: src/no-ingredients.inc:111
 msgid "no Fish sauce"
-msgstr ""
+msgstr "Arrain-saltsarik ez"
 
 #: src/no-ingredients.inc:112
 msgid "no Flour"
-msgstr ""
+msgstr "Irinik ez"
 
 #: src/no-ingredients.inc:113
 msgid "no Flour (all-purpose)"
-msgstr ""
+msgstr "Irin arruntzik ez"
 
 #: src/no-ingredients.inc:114
 msgid "no Flour (Tipo 00)"
-msgstr ""
+msgstr "00 motako irinik ez"
 
 #: src/no-ingredients.inc:115
 msgid "no Fresh rosemary"
-msgstr ""
+msgstr "Erromero freskorik ez"
 
 #: src/no-ingredients.inc:116
 msgid "no Fresh tagliatelle"
-msgstr ""
+msgstr "Tagliatelle freskorik ez"
 
 #: src/no-ingredients.inc:117
 msgid "no Garam masala"
-msgstr ""
+msgstr "Garam masalarik ez"
 
 #: src/no-ingredients.inc:118
 msgid "no Garlic"
-msgstr ""
+msgstr "Berekatzik ez"
 
 #: src/no-ingredients.inc:119
 msgid "no Garlic cloves"
-msgstr ""
+msgstr "Berakatz-atalik ez"
 
 #: src/no-ingredients.inc:120
 msgid "no Garlic powder"
-msgstr ""
+msgstr "Berakatz-hautsik ez"
 
 #: src/no-ingredients.inc:121
 msgid "no Ginger"
-msgstr ""
+msgstr "Jengibrerik ez"
 
 #: src/no-ingredients.inc:122
 msgid "no Ginger, freshly grated"
-msgstr ""
+msgstr "Jengibre fresko birrindurik ez"
 
 #: src/no-ingredients.inc:123
 msgid "no Ginger ground"
-msgstr ""
+msgstr "Jengibre-hautsik ez"
 
 #: src/no-ingredients.inc:124
 msgid "no Goat cheese"
-msgstr ""
+msgstr "Ahuntz-gaztarik ez"
 
 #: src/no-ingredients.inc:125
 msgid "no Golden caster sugar"
@@ -4139,151 +4145,151 @@ msgstr ""
 
 #: src/no-ingredients.inc:126
 msgid "no Good, dry red wine"
-msgstr ""
+msgstr "Ardo beltz lehor onik ez"
 
 #: src/no-ingredients.inc:127
 msgid "no Gouda cheese"
-msgstr ""
+msgstr "Gouda gaztarik ez"
 
 #: src/no-ingredients.inc:128
 msgid "no Goulash spices"
-msgstr ""
+msgstr "Goulash espeziarik ez"
 
 #: src/no-ingredients.inc:129
 msgid "no Guanciale cubes"
-msgstr ""
+msgstr "Guanciale kuborik ez"
 
 #: src/no-ingredients.inc:130
 msgid "no Long pasta, e.g. spaghetti"
-msgstr ""
+msgstr "Pasta luzea, adib. espagetiak, ez"
 
 #: src/no-ingredients.inc:131
 msgid "no Parmesan cheese"
-msgstr ""
+msgstr "Parmesano gaztarik ez"
 
 #: src/no-ingredients.inc:132
 msgid "no Grapes"
-msgstr ""
+msgstr "Mahatsik ez"
 
 #: src/no-ingredients.inc:133
 msgid "no Grated French Emmental"
-msgstr ""
+msgstr "Emmental frantziar birrindurik ez"
 
 #: src/no-ingredients.inc:134
 msgid "no Green Apple"
-msgstr ""
+msgstr "Sagar berderik ez"
 
 #: src/no-ingredients.inc:135
 msgid "no Green Bell Pepper"
-msgstr ""
+msgstr "Pipermorro berderik ez"
 
 #: src/no-ingredients.inc:136
 msgid "no Green Cabbage"
-msgstr ""
+msgstr "Aza berderik ez"
 
 #: src/no-ingredients.inc:137
 msgid "no Green olive"
-msgstr ""
+msgstr "Oliba berderik ez"
 
 #: src/no-ingredients.inc:138
 msgid "no Green onions"
-msgstr ""
+msgstr "Tipulinik ez"
 
 #: src/no-ingredients.inc:139
 msgid "no green onions, chopped"
-msgstr ""
+msgstr "Tipulin xehaturik ez"
 
 #: src/no-ingredients.inc:140
 msgid "no Ground beef"
-msgstr ""
+msgstr "Behiki xehaturik ez"
 
 #: src/no-ingredients.inc:141
 msgid "no Ground coriander (optional)"
-msgstr ""
+msgstr "Martorri xehatua (aukerakoa) ez"
 
 #: src/no-ingredients.inc:142
 msgid "no Ground cumin"
-msgstr ""
+msgstr "Kumino xehaturik ez"
 
 #: src/no-ingredients.inc:143
 msgid "no Ground fennel"
-msgstr ""
+msgstr "Mihilu xehaturik ez"
 
 #: src/no-ingredients.inc:144
 msgid "no Ground pepper"
-msgstr ""
+msgstr "Piper xehaturik ez"
 
 #: src/no-ingredients.inc:145
 msgid "no Ham"
-msgstr ""
+msgstr "Urdaiazpikorik ez"
 
 #: src/no-ingredients.inc:146
 msgid "no Hazelnuts"
-msgstr ""
+msgstr "Urrik ez"
 
 #: src/no-ingredients.inc:147
 msgid "no Hazelnuts milk"
-msgstr ""
+msgstr "Ur-esnerik ez"
 
 #: src/no-ingredients.inc:148
 msgid "no Hoisin sauce"
-msgstr ""
+msgstr "Hosin saltsarik ez"
 
 #: src/no-ingredients.inc:149
 msgid "no Honey"
-msgstr ""
+msgstr "Eztirik ez"
 
 #: src/no-ingredients.inc:150
 msgid "no Horseradish"
-msgstr ""
+msgstr "Errefau minik ez"
 
 #: src/no-ingredients.inc:151
 msgid "no Japanese mayonaisse"
-msgstr ""
+msgstr "Japoniar maionesarik ez"
 
 #: src/no-ingredients.inc:152
 msgid "no Juniper berries"
-msgstr ""
+msgstr "Galbulurik ez"
 
 #: src/no-ingredients.inc:153
 msgid "no Kale"
-msgstr ""
+msgstr "Kalerik ez"
 
 #: src/no-ingredients.inc:154
 msgid "no Ketchup"
-msgstr ""
+msgstr "Ketchupik ez"
 
 #: src/no-ingredients.inc:155
 msgid "no Kiwis"
-msgstr ""
+msgstr "Kiwirik ez"
 
 #: src/no-ingredients.inc:156
 msgid "no Lamb"
-msgstr ""
+msgstr "Bildotsik ez"
 
 #: src/no-ingredients.inc:157
 msgid "no Lardons"
-msgstr ""
+msgstr "Urdai-xerrarik ez"
 
 #: src/no-ingredients.inc:158
 msgid "no Lard or oil"
-msgstr ""
+msgstr "Gantza edo oliorik ez"
 
 #: src/no-ingredients.inc:159
 msgid "no Lemon"
-msgstr ""
+msgstr "Limoirik ez"
 
 #: src/no-ingredients.inc:160
 msgid "no Lemon juice"
-msgstr ""
+msgstr "Limoi-zukurik ez"
 
 #: src/no-ingredients.inc:161
 msgid "no Lemon (untreated)"
-msgstr ""
+msgstr "Tratatu gabeko limoirik ez"
 
 #: src/no-ingredients.inc:162
 msgid "no Lettuce"
-msgstr ""
+msgstr "Letxugarik ez"
 
 #: src/no-ingredients.inc:163
 msgid "no Light muscovado sugar"
@@ -4291,47 +4297,47 @@ msgstr ""
 
 #: src/no-ingredients.inc:164
 msgid "no Lime"
-msgstr ""
+msgstr "Limarik ez"
 
 #: src/no-ingredients.inc:165
 msgid "no Lime juice"
-msgstr ""
+msgstr "Lima-zukurik ez"
 
 #: src/no-ingredients.inc:166
 msgid "no Linseeds"
-msgstr ""
+msgstr "Linazirik ez"
 
 #: src/no-ingredients.inc:167
 msgid "no Mandarin Oranges"
-msgstr ""
+msgstr "Mandarinarik ez"
 
 #: src/no-ingredients.inc:168
 msgid "no Margarine"
-msgstr ""
+msgstr "Margarinarik ez"
 
 #: src/no-ingredients.inc:169
 msgid "no Mayonnaise"
-msgstr ""
+msgstr "Maionesarik ez"
 
 #: src/no-ingredients.inc:170
 msgid "no Meat"
-msgstr ""
+msgstr "Okelarik ez"
 
 #: src/no-ingredients.inc:171
 msgid "no Meat and bones"
-msgstr ""
+msgstr "Okela eta hezurrik ez"
 
 #: src/no-ingredients.inc:172
 msgid "no Milk"
-msgstr ""
+msgstr "Esnerik ez"
 
 #: src/no-ingredients.inc:173
 msgid "no Mixed berries"
-msgstr ""
+msgstr "Baia nahasirik ez"
 
 #: src/no-ingredients.inc:174
 msgid "no Mixed frozen bell peppers"
-msgstr ""
+msgstr "Pipermorro izoztu nahasirik ez"
 
 #: src/no-ingredients.inc:175
 msgid "no Mori-nu organic silken tofu (firm)"
@@ -4351,15 +4357,15 @@ msgstr "Ziape-hazirik ez"
 
 #: src/no-ingredients.inc:179
 msgid "no Nut"
-msgstr ""
+msgstr "Intxaurrik ez"
 
 #: src/no-ingredients.inc:180
 msgid "no Nutmeg"
-msgstr ""
+msgstr "Intxaur muskaturik ez"
 
 #: src/no-ingredients.inc:181
 msgid "no Nutritional yeast"
-msgstr ""
+msgstr "Elikadura-legamirik ez"
 
 #: src/no-ingredients.inc:182
 msgid "no Oatmeal"
@@ -4379,7 +4385,7 @@ msgstr "Oliba-oliorik ez"
 
 #: src/no-ingredients.inc:186
 msgid "no Olive oil, extra-virgin"
-msgstr ""
+msgstr "Oliba olio estra birjinarik ez"
 
 #: src/no-ingredients.inc:187
 msgid "no Olives, pitted"
@@ -4407,7 +4413,7 @@ msgstr "Hirugiharrik ez"
 
 #: src/no-ingredients.inc:193
 msgid "no Pandan leaves"
-msgstr ""
+msgstr "Pandan-hostorik ez"
 
 #: src/no-ingredients.inc:194
 msgid "no Paprika"
@@ -4415,7 +4421,7 @@ msgstr "Piperrautsik ez"
 
 #: src/no-ingredients.inc:195
 msgid "no Parmesan cheese, grated"
-msgstr ""
+msgstr "Gazta parmesano birrindurik ez"
 
 #: src/no-ingredients.inc:196
 msgid "no Parsley"
@@ -4463,11 +4469,11 @@ msgstr "Granada-zukurik ez"
 
 #: src/no-ingredients.inc:207
 msgid "no Pork fat"
-msgstr ""
+msgstr "Txerri-gantzik ez"
 
 #: src/no-ingredients.inc:208
 msgid "no Pork loin"
-msgstr ""
+msgstr "Txerri-azpizunik ez"
 
 #: src/no-ingredients.inc:209
 msgid "no Potato"
@@ -4475,7 +4481,7 @@ msgstr "Patatarik ez"
 
 #: src/no-ingredients.inc:210
 msgid "no Powdered sugar"
-msgstr ""
+msgstr "Azukre-hautsik ez"
 
 #: src/no-ingredients.inc:211
 msgid "no Pumpkin seeds"
@@ -4519,15 +4525,15 @@ msgstr "Arroz egosirik ez"
 
 #: src/no-ingredients.inc:221
 msgid "no Rice vermicelli noodles"
-msgstr ""
+msgstr "Arrozezko vermicelli noodle-ik ez"
 
 #: src/no-ingredients.inc:222
 msgid "no Rock sugar"
-msgstr ""
+msgstr "Azukre-arrokarik ez"
 
 #: src/no-ingredients.inc:223
 msgid "no Rolled oats"
-msgstr ""
+msgstr "Olo zanpaturik ez"
 
 #: src/no-ingredients.inc:224
 msgid "no Rosemary"
@@ -4559,11 +4565,11 @@ msgstr "Gatzik eta piperbeltzik ez"
 
 #: src/no-ingredients.inc:231
 msgid "no Saucebinder"
-msgstr ""
+msgstr "Saltsa-loditzailerik ez"
 
 #: src/no-ingredients.inc:232
 msgid "no Scallions"
-msgstr ""
+msgstr "Tipulinik ez"
 
 #: src/no-ingredients.inc:233
 msgid "no Sea salt"
@@ -4571,7 +4577,7 @@ msgstr "Itsas gatzik ez"
 
 #: src/no-ingredients.inc:234
 msgid "no Semi-skimmed milk"
-msgstr ""
+msgstr "Esne erdigaingabeturik ez"
 
 #: src/no-ingredients.inc:235
 msgid "no Sesame oil"
@@ -4591,7 +4597,7 @@ msgstr "Izkirarik ez"
 
 #: src/no-ingredients.inc:239
 msgid "no Slivered almonds, toasted"
-msgstr ""
+msgstr "Almendra-xafla txigorturik ez"
 
 #: src/no-ingredients.inc:240
 msgid "no Sour cream"
@@ -4635,7 +4641,7 @@ msgstr "Batatarik ez"
 
 #: src/no-ingredients.inc:250
 msgid "no Tamarind paste"
-msgstr ""
+msgstr "Tamarindo-pastarik ez"
 
 #: src/no-ingredients.inc:251
 msgid "no Tangerine"
@@ -4643,15 +4649,15 @@ msgstr "Mandarinarik ez"
 
 #: src/no-ingredients.inc:252
 msgid "no Thai basil leaves"
-msgstr ""
+msgstr "Albaka-hosto tailandiarrik ez"
 
 #: src/no-ingredients.inc:253
 msgid "no Thai chillies"
-msgstr ""
+msgstr "Txile tailandiarrik ez"
 
 #: src/no-ingredients.inc:254
 msgid "no Thai fish sauce"
-msgstr ""
+msgstr "Arrain-saltsa tailandiarrik ez"
 
 #: src/no-ingredients.inc:255
 msgid "no Thyme"
@@ -4659,7 +4665,7 @@ msgstr "Ezkairik ez"
 
 #: src/no-ingredients.inc:256
 msgid "no Tinned pineapple rings"
-msgstr ""
+msgstr "Poteko piña-eraztunik ez"
 
 #: src/no-ingredients.inc:257
 msgid "no Tofu"
@@ -4679,7 +4685,7 @@ msgstr "Tomate-saltsarik ez"
 
 #: src/no-ingredients.inc:261
 msgid "no Tumeric ground"
-msgstr ""
+msgstr "Kurkuma-hautsik ez"
 
 #: src/no-ingredients.inc:262
 msgid "no Tuna fish"
@@ -4691,23 +4697,23 @@ msgstr "Gatzik gabeko gurinik ez"
 
 #: src/no-ingredients.inc:264
 msgid "no Vanilla baking powder"
-msgstr ""
+msgstr "Hauts altxagarri banilladunik ez"
 
 #: src/no-ingredients.inc:265
 msgid "no Vanilla extract"
-msgstr ""
+msgstr "Banilla-estrakturik ez"
 
 #: src/no-ingredients.inc:266
 msgid "no Vanilla powdered sugar, for dusting"
-msgstr ""
+msgstr "Azukre-hauts banilladuna, hautseztatzeko, ez"
 
 #: src/no-ingredients.inc:267
 msgid "no Vanilla pudding"
-msgstr ""
+msgstr "Banilla-budinik ez"
 
 #: src/no-ingredients.inc:268
 msgid "no Vanilla sugar"
-msgstr ""
+msgstr "Banilla-azukrerik ez"
 
 #: src/no-ingredients.inc:269
 msgid "no Vegetable oil"
