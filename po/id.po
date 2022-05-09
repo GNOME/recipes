@@ -2,13 +2,13 @@
 # Copyright (C) 2017 recipes's COPYRIGHT HOLDER
 # This file is distributed under the same license as the recipes package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018, 2020.
+# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018, 2020, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-17 03:58+0000\n"
-"PO-Revision-Date: 2020-02-23 20:56+0700\n"
+"POT-Creation-Date: 2022-05-08 20:44+0000\n"
+"PO-Revision-Date: 2022-05-09 09:40+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
@@ -28,11 +28,6 @@ msgstr "Resep"
 #: data/org.gnome.Recipes.desktop.in:4
 msgid "GNOME cooks unite!"
 msgstr "Koki GNOME bersatu!"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Recipes.desktop.in:7
-msgid "org.gnome.Recipes"
-msgstr "org.gnome.Recipes"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:911
 msgid "GNOME loves to cook"
@@ -116,6 +111,10 @@ msgstr "Resep individual"
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:58
 msgid "An individual cuisine"
 msgstr "Masakan individu"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:483
+msgid "Matthias Clasen and others"
+msgstr "Matthias Clasen dan lainnya"
 
 #: data/org.gnome.Recipes.gschema.xml:25
 msgid "The user ID of the current user"
@@ -1081,7 +1080,7 @@ msgstr "Sistem"
 
 #: src/gr-about-dialog.c:914
 msgid "translator-credits"
-msgstr "Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018, 2020."
+msgstr "Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018, 2020, 2022."
 
 #: src/gr-about-dialog.c:917
 msgid "Learn more about Recipes"
@@ -1109,15 +1108,15 @@ msgstr ""
 msgid "Supported categories: %s\n"
 msgstr "Kategori yang didukung: %s\n"
 
-#: src/gr-app.c:441
+#: src/gr-app.c:443
 msgid "Print the version and exit"
 msgstr "Cetak versi dan keluar"
 
-#: src/gr-app.c:445
+#: src/gr-app.c:447
 msgid "Turn on verbose logging"
 msgstr "Aktifkan logging verbose"
 
-#: src/gr-app.c:449
+#: src/gr-app.c:451
 msgid "Show a category"
 msgstr "Tampilkan kategori"
 
@@ -1642,7 +1641,7 @@ msgstr "ons"
 msgid "_Name Your Recipe"
 msgstr "_Nama Resep Anda"
 
-#: src/gr-edit-page.c:1734 src/gr-edit-page.c:1796 src/gr-recipe-store.c:1333
+#: src/gr-edit-page.c:1734 src/gr-edit-page.c:1796 src/gr-recipe-store.c:1330
 #, c-format
 msgid "You need to provide a name for the recipe"
 msgstr "Anda perlu menyediakan nama untuk resep"
@@ -1985,7 +1984,7 @@ msgid "Buy ingredients: <b>%s, %s and %d other</b>"
 msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
 msgstr[0] "Membeli bahan-bahan: <b>%s, %s dan %d lainnya</b>"
 
-#: src/gr-recipe-store.c:1338
+#: src/gr-recipe-store.c:1335
 #, c-format
 msgid ""
 "A recipe with this name and author (%s) already exists.\n"
@@ -1994,32 +1993,32 @@ msgstr ""
 "Resep dengan nama dan penulis ini (%s) sudah ada.\n"
 "Silahkan pilih nama yang berbeda"
 
-#: src/gr-recipe-store.c:1367
+#: src/gr-recipe-store.c:1364
 #, c-format
 msgid "You need to provide an ID for the recipe"
 msgstr "Anda perlu menyediakan ID untuk resep"
 
-#: src/gr-recipe-store.c:1373
+#: src/gr-recipe-store.c:1370
 #, c-format
 msgid "A recipe with this ID already exists"
 msgstr "Resep dengan ID ini sudah ada"
 
-#: src/gr-recipe-store.c:1542
+#: src/gr-recipe-store.c:1539
 #, c-format
 msgid "You need to provide an ID"
 msgstr "Anda perlu memberikan ID"
 
-#: src/gr-recipe-store.c:1548
+#: src/gr-recipe-store.c:1545
 #, c-format
 msgid "Sorry, this ID is taken"
 msgstr "Maaf, ID ini sudah ada"
 
-#: src/gr-recipe-store.c:1575
+#: src/gr-recipe-store.c:1572
 #, c-format
 msgid "You need to provide an ID for the chef"
 msgstr "Anda perlu menyediakan ID untuk koki"
 
-#: src/gr-recipe-store.c:1581
+#: src/gr-recipe-store.c:1578
 #, c-format
 msgid "A chef with this ID already exists"
 msgstr "Koki dengan ID ini sudah ada"
@@ -4934,6 +4933,9 @@ msgstr "tidak ada Zinfandel"
 #: src/no-ingredients.inc:284
 msgid "no Zuccini"
 msgstr "tidak ada Zukini"
+
+#~ msgid "org.gnome.Recipes"
+#~ msgstr "org.gnome.Recipes"
 
 #~ msgid "celery"
 #~ msgstr "seledri"
