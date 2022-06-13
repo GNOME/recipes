@@ -1,13 +1,13 @@
 # Serbian translation for recipes.
 # Copyright © 2016 recipes's COPYRIGHT HOLDER
 # This file is distributed under the same license as the recipes package.
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2016—2021.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2016—2021, 2022.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: recipes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-23 04:28+0000\n"
-"PO-Revision-Date: 2021-01-31 11:50+0200\n"
+"POT-Creation-Date: 2022-05-08 20:44+0000\n"
+"PO-Revision-Date: 2022-06-13 06:36+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: српски <gnome-sr@googlegroups.org>\n"
 "Language: sr\n"
@@ -29,11 +29,6 @@ msgstr "Рецептинко"
 #: data/org.gnome.Recipes.desktop.in:4
 msgid "GNOME cooks unite!"
 msgstr "Гномова куварска јединица!"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Recipes.desktop.in:7
-msgid "org.gnome.Recipes"
-msgstr "org.gnome.Recipes"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:911
 msgid "GNOME loves to cook"
@@ -117,6 +112,10 @@ msgstr "Рецепт појединца"
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:58
 msgid "An individual cuisine"
 msgstr "Кухиња појединца"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:483
+msgid "Matthias Clasen and others"
+msgstr "Матијас Класен и други"
 
 #: data/org.gnome.Recipes.gschema.xml:25
 msgid "The user ID of the current user"
@@ -522,7 +521,6 @@ msgid "Details"
 msgstr "Појединости"
 
 #: src/gr-edit-page.ui:284 src/gr-edit-page.c:1656
-#| msgid "Name"
 msgid "_Name"
 msgstr "_Назив"
 
@@ -551,12 +549,10 @@ msgid "More than an hour"
 msgstr "више од једног сата"
 
 #: src/gr-edit-page.ui:393
-#| msgid "Cooking Time"
 msgid "_Cooking Time"
 msgstr "_Време кувања"
 
 #: src/gr-edit-page.ui:441
-#| msgid "Cuisine"
 msgid "C_uisine"
 msgstr "_Кухиња"
 
@@ -569,7 +565,6 @@ msgid "S_eason"
 msgstr "С_езона"
 
 #: src/gr-edit-page.ui:549
-#| msgid "Spiciness"
 msgid "_Spiciness"
 msgstr "_Зачињеност"
 
@@ -590,7 +585,6 @@ msgid "Very spicy"
 msgstr "Врло љуто"
 
 #: src/gr-edit-page.ui:585
-#| msgid "Description"
 msgid "_Description"
 msgstr "_Опис"
 
@@ -619,7 +613,6 @@ msgid "Halal"
 msgstr "Халал"
 
 #: src/gr-edit-page.ui:708
-#| msgid "Directions"
 msgid "Di_rections"
 msgstr "П_равци"
 
@@ -767,7 +760,6 @@ msgid "Featured GNOME Chefs"
 msgstr "Напредни Гномови кувари"
 
 #: src/gr-recipe-tile.ui:58
-#| msgid "Imported Recipes"
 msgid "Contributed recipe"
 msgstr "Рецепт из доприноса"
 
@@ -856,7 +848,6 @@ msgid "Send Update"
 msgstr "Пошаљи освежење"
 
 #: src/gr-window.ui:492
-#| msgid "Recipes have been exported to “%s”"
 msgid "Shopping List has been exported to Todoist"
 msgstr "Списак за куповину је извезен у послове за урадити"
 
@@ -989,12 +980,10 @@ msgid "What’s New in Recipes"
 msgstr "Шта је ново у Рецептинку"
 
 #: src/shopping-list-exporter-dialog.ui:13 src/gr-shopping-list-exporter.c:278
-#| msgid "Ingredients"
 msgid "Export Ingredients"
 msgstr "Извези састојке"
 
 #: src/shopping-list-exporter-dialog.ui:55
-#| msgid "_Export"
 msgid "Export"
 msgstr "Извези"
 
@@ -1008,7 +997,6 @@ msgid "Todoist"
 msgstr "За урадити"
 
 #: src/shopping-list-exporter-dialog.ui:152
-#| msgid "Add Timer"
 msgid "Add service"
 msgstr "Додај услугу"
 
@@ -1471,7 +1459,6 @@ msgid "Milk-free recipes"
 msgstr "Рецепти без млека"
 
 #: src/gr-diet.c:49
-#| msgid "All Recipes"
 msgid "Halal recipes"
 msgstr "Халал рецепти"
 
@@ -1491,14 +1478,14 @@ msgid ""
 "a>"
 msgstr ""
 "Исхрана без глутена је исхрана која искључује глутен, протеински састојак "
-"који се налази у пшеници, ражи, јечму и у свим њиховим врстама и хибридима ("
-"као што је пир, камут и тритикалеа). Укључивање зоби у исхрани без глутена "
+"који се налази у пшеници, ражи, јечму и у свим њиховим врстама и хибридима "
+"(као што је пир, камут и тритикалеа). Укључивање зоби у исхрани без глутена "
 "остаје контроверзно. Авенин присутан у зоби може такође бити токсичан за "
 "особе са целијакијском болешћу; његова токсичност зависи од унешене сорте. "
-"Осим тога, овас је често унакрсно контаминиран житарицама које садрже глутен."
-"\n"
-"<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free\">Сазнајте "
-"више…</a>"
+"Осим тога, овас је често унакрсно контаминиран житарицама које садрже "
+"глутен.\n"
+"<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free\">Сазнајте више…"
+"</a>"
 
 #: src/gr-diet.c:69
 msgid ""
@@ -1543,8 +1530,8 @@ msgid ""
 msgstr ""
 "Вегетаријанска кухиња се заснива на храни која задовољава вегетаријанске "
 "стандарде без укључивања меса и производа животињских ткива (као што су "
-"желатин или сирила животињског порекла). За лакто-ово вегетаријанство ("
-"најчешће врсте вегетаријанства у западном свету), јаја и млечни производи "
+"желатин или сирила животињског порекла). За лакто-ово вегетаријанство "
+"(најчешће врсте вегетаријанства у западном свету), јаја и млечни производи "
 "као што су млеко и сир су дозвољени. За лакто вегетаријанство, најранију "
 "познату врсту вегетаријанства (забележеног у Индији), млечни производи као "
 "што су млеко и сир су дозвољени.\n"
@@ -1572,8 +1559,8 @@ msgstr ""
 "мучнина. Обично се јављају од пола до два сата након конзумирања млека. "
 "Озбиљност зависи од количине коју особа унесе. Не изазива оштећење "
 "гастроинтестиналног тракта.\n"
-"<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Сазнајте "
-"више…</a>"
+"<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Сазнајте више…"
+"</a>"
 
 #: src/gr-diet.c:81
 msgid "Halal meat is prepared according to Islamic traditions"
@@ -1641,8 +1628,6 @@ msgid "loafs"
 msgstr "кришке"
 
 #: src/gr-edit-page.c:944
-#| msgctxt "unit name"
-#| msgid "ounce"
 msgid "ounce"
 msgstr "унца"
 
@@ -1698,7 +1683,6 @@ msgid "Milk-free Recipes"
 msgstr "Рецепти без млека"
 
 #: src/gr-list-page.c:320
-#| msgid "All Recipes"
 msgid "Halal Recipes"
 msgstr "Халал рецепти"
 
@@ -2085,7 +2069,6 @@ msgid "Add Account"
 msgstr "Додај налог"
 
 #: src/gr-shopping-list-exporter.c:476 src/gr-shopping-list-exporter.c:566
-#| msgid "Shopping List"
 msgid "Shopping List from Recipes"
 msgstr "Списак за куповину из Рецептинка"
 
@@ -2568,8 +2551,8 @@ msgstr "Одређене функционалности неће бити дос
 msgid ""
 "Could not create D-Bus proxy for org.freedesktop.portal.Desktop interface %s"
 msgstr ""
-"Не могу да створим посредника Д-сабирнице за „org.freedesktop.portal.Desktop“"
-" сучеље „%s“"
+"Не могу да створим посредника Д-сабирнице за „org.freedesktop.portal."
+"Desktop“ сучеље „%s“"
 
 #: src/gr-utils.c:401
 #, c-format
@@ -2640,12 +2623,10 @@ msgid "Ready to Cook!"
 msgstr "Спремни за кување!"
 
 #: src/gr-window.c:937
-#| msgid "Short Name:"
 msgid "Sorted by Name"
 msgstr "Поређани по називу"
 
 #: src/gr-window.c:942
-#| msgid "Imported Recipes"
 msgid "Sorted by Recency"
 msgstr "Поређани по датуму"
 
@@ -2717,7 +2698,6 @@ msgid "Apple"
 msgstr "Јабука"
 
 #: src/ingredients.inc:5
-#| msgid "Vinegar"
 msgid "Apple Vinegar"
 msgstr "Јабуково сирће"
 
@@ -2834,7 +2814,6 @@ msgid "Black peppercorns"
 msgstr "Зрна црног бибера"
 
 #: src/ingredients.inc:34
-#| msgid "Bilberry"
 msgid "Blueberry"
 msgstr "Боровница"
 
@@ -2851,7 +2830,6 @@ msgid "Brewer's yeast"
 msgstr "Пивски квасац"
 
 #: src/ingredients.inc:38
-#| msgid "Baked beans"
 msgid "Broad beans"
 msgstr "Боб"
 
@@ -2860,7 +2838,6 @@ msgid "Broth"
 msgstr "Чорба"
 
 #: src/ingredients.inc:40
-#| msgid "no Sugar"
 msgid "Brown sugar"
 msgstr "Жути шећер"
 
@@ -2869,7 +2846,6 @@ msgid "Butter"
 msgstr "Маслац"
 
 #: src/ingredients.inc:42
-#| msgid "Butter"
 msgid "Butter, melted"
 msgstr "Маслац, топљени"
 
@@ -2886,7 +2862,6 @@ msgid "Cake flour"
 msgstr "Брашно за колаче"
 
 #: src/ingredients.inc:46
-#| msgid "Baked beans"
 msgid "Canellini beans"
 msgstr "Пасуљ канелини"
 
@@ -2923,7 +2898,6 @@ msgid "Cheese"
 msgstr "Сир"
 
 #: src/ingredients.inc:55
-#| msgid "Chinese Cuisine"
 msgid "Cheese slices"
 msgstr "Кришке сира"
 
@@ -2936,7 +2910,6 @@ msgid "Cherry tomatoes, halved"
 msgstr "Чери парадајз, преполовљен"
 
 #: src/ingredients.inc:58
-#| msgid "Linseeds"
 msgid "Chia seeds"
 msgstr "Чиа семенке"
 
@@ -2949,7 +2922,6 @@ msgid "Chicken livers"
 msgstr "Пилећа јетра"
 
 #: src/ingredients.inc:61
-#| msgid "Beef stock"
 msgid "chicken stock"
 msgstr "пилећи одрезак"
 
@@ -2958,7 +2930,6 @@ msgid "Chili flakes"
 msgstr "Чили пахуљице"
 
 #: src/ingredients.inc:63
-#| msgid "Cocoa powder"
 msgid "Chili powder"
 msgstr "Чили прах"
 
@@ -2967,7 +2938,6 @@ msgid "Chili sauce (e.g. sriracha)"
 msgstr "Чили сос (нпр. срирача)"
 
 #: src/ingredients.inc:65
-#| msgid "Chocolate frosting"
 msgid "Chocolate"
 msgstr "Чоколада"
 
@@ -2988,7 +2958,6 @@ msgid "Cilantro"
 msgstr "Першун лишћар"
 
 #: src/ingredients.inc:70
-#| msgid "Cilantro"
 msgid "Cilantro leaves"
 msgstr "Лишће першуна лишћара"
 
@@ -3005,7 +2974,6 @@ msgid "Cloves"
 msgstr "Каранфилић"
 
 #: src/ingredients.inc:74
-#| msgid "Cocoa powder"
 msgid "Cocoa butter"
 msgstr "Какао путер"
 
@@ -3022,17 +2990,14 @@ msgid "Coconut oil"
 msgstr "Уље кокоса"
 
 #: src/ingredients.inc:78
-#| msgid "Cocoa powder"
 msgid "Coconut water"
 msgstr "Вода кокоса"
 
 #: src/ingredients.inc:79
-#| msgid "no Water"
 msgid "Cold water"
 msgstr "Хладна вода"
 
 #: src/ingredients.inc:80
-#| msgid "no Ground beef"
 msgid "cooked beef"
 msgstr "кувана говедина"
 
@@ -3041,7 +3006,6 @@ msgid "Coriander"
 msgstr "Коријандер"
 
 #: src/ingredients.inc:82
-#| msgid "no Linseeds"
 msgid "Coriandre seeds"
 msgstr "Семенке коријандера"
 
@@ -3058,7 +3022,6 @@ msgid "Cream"
 msgstr "Крем"
 
 #: src/ingredients.inc:86
-#| msgid "Cheese"
 msgid "Cream cheese"
 msgstr "Крем сир"
 
@@ -3079,7 +3042,6 @@ msgid "Cumin"
 msgstr "Кумин"
 
 #: src/ingredients.inc:91
-#| msgid "Pumpkin seeds"
 msgid "Cumin seeds"
 msgstr "Семенке кумина"
 
@@ -3100,7 +3062,6 @@ msgid "Double cream"
 msgstr "Салтка павлака"
 
 #: src/ingredients.inc:96
-#| msgid "Anchovies"
 msgid "Dried anchovies"
 msgstr "Сушени инћуни"
 
@@ -3161,7 +3122,6 @@ msgid "Fish"
 msgstr "Риба"
 
 #: src/ingredients.inc:111
-#| msgid "Pizza sauce"
 msgid "Fish sauce"
 msgstr "Рибљи сос"
 
@@ -3194,12 +3154,10 @@ msgid "Garlic"
 msgstr "Бели лук"
 
 #: src/ingredients.inc:119
-#| msgid "Garlic"
 msgid "Garlic cloves"
 msgstr "Чен белог лука"
 
 #: src/ingredients.inc:120
-#| msgid "Baking powder"
 msgid "Garlic powder"
 msgstr "Бели лук у праху"
 
@@ -3212,12 +3170,10 @@ msgid "Ginger, freshly grated"
 msgstr "Ђумбир, свеже нарендан"
 
 #: src/ingredients.inc:123
-#| msgid "no Turmeric, ground"
 msgid "Ginger ground"
 msgstr "Ђумбир млевени"
 
 #: src/ingredients.inc:124
-#| msgid "no Cheese"
 msgid "Goat cheese"
 msgstr "Козји сир"
 
@@ -3230,7 +3186,6 @@ msgid "Good, dry red wine"
 msgstr "Добро, суво црвено вино"
 
 #: src/ingredients.inc:127
-#| msgid "no Cheese"
 msgid "Gouda cheese"
 msgstr "Гауда сир"
 
@@ -3259,7 +3214,6 @@ msgid "Grated French Emmental"
 msgstr "Рендани француски ементал"
 
 #: src/ingredients.inc:134
-#| msgid "no Apple"
 msgid "Green Apple"
 msgstr "Зелена јабука"
 
@@ -3276,7 +3230,6 @@ msgid "Green olive"
 msgstr "Зелена маслинка"
 
 #: src/ingredients.inc:138
-#| msgid "no Onion"
 msgid "Green onions"
 msgstr "Зелени црни лук"
 
@@ -3293,17 +3246,14 @@ msgid "Ground coriander (optional)"
 msgstr "Млевени коријандер (опционално)"
 
 #: src/ingredients.inc:142
-#| msgid "Ground beef"
 msgid "Ground cumin"
 msgstr "Млевени кумин"
 
 #: src/ingredients.inc:143
-#| msgid "Ground beef"
 msgid "Ground fennel"
 msgstr "Млевени коморач"
 
 #: src/ingredients.inc:144
-#| msgid "Ground beef"
 msgid "Ground pepper"
 msgstr "Млевени бибер"
 
@@ -3320,7 +3270,6 @@ msgid "Hazelnuts milk"
 msgstr "Млеко од лешника"
 
 #: src/ingredients.inc:148
-#| msgid "Soy sauce"
 msgid "Hoisin sauce"
 msgstr "Хоисин сос"
 
@@ -3333,12 +3282,10 @@ msgid "Horseradish"
 msgstr "Рен"
 
 #: src/ingredients.inc:151
-#| msgid "no Mayonnaise"
 msgid "Japanese mayonaisse"
 msgstr "Јапански мајонез"
 
 #: src/ingredients.inc:152
-#| msgid "Bundled libraries"
 msgid "Juniper berries"
 msgstr "Бобице клеке"
 
@@ -3371,7 +3318,6 @@ msgid "Lemon"
 msgstr "Лимун"
 
 #: src/ingredients.inc:160
-#| msgid "Lemon"
 msgid "Lemon juice"
 msgstr "Сок од лимуна"
 
@@ -3400,12 +3346,10 @@ msgid "Linseeds"
 msgstr "Семе лана"
 
 #: src/ingredients.inc:167
-#| msgid "no Orange"
 msgid "Mandarin Oranges"
 msgstr "Мандарине"
 
 #: src/ingredients.inc:168
-#| msgid "Tangerine"
 msgid "Margarine"
 msgstr "Маргарин"
 
@@ -3426,7 +3370,6 @@ msgid "Milk"
 msgstr "Млеко"
 
 #: src/ingredients.inc:173
-#| msgid "Bundled libraries"
 msgid "Mixed berries"
 msgstr "Мешовито бобичасто воће"
 
@@ -3447,7 +3390,6 @@ msgid "Mustard"
 msgstr "Сенф"
 
 #: src/ingredients.inc:178
-#| msgid "Mustard"
 msgid "Mustard seeds"
 msgstr "Семенке сенфа"
 
@@ -3472,7 +3414,6 @@ msgid "Oil"
 msgstr "Уље"
 
 #: src/ingredients.inc:184
-#| msgid "no Pizza sauce"
 msgid "Okonomiyaki sauce"
 msgstr "Окономијаки сос"
 
@@ -3485,7 +3426,6 @@ msgid "Olive oil, extra-virgin"
 msgstr "Маслиново уље, екстра девичанско"
 
 #: src/ingredients.inc:187
-#| msgid "Cherries, pitted"
 msgid "Olives, pitted"
 msgstr "Маслинке, без коштице"
 
@@ -3494,7 +3434,6 @@ msgid "Onion"
 msgstr "Црни лук"
 
 #: src/ingredients.inc:189
-#| msgid "Baking powder"
 msgid "Onion powder"
 msgstr "Црни лук у праху"
 
@@ -3503,7 +3442,6 @@ msgid "Orange"
 msgstr "Поморанџа"
 
 #: src/ingredients.inc:191
-#| msgid "Vegan"
 msgid "Oregano"
 msgstr "Орегано"
 
@@ -3556,7 +3494,6 @@ msgid "Pizza sauce"
 msgstr "Сос за пицу"
 
 #: src/ingredients.inc:204
-#| msgid "Main Course"
 msgid "Plain flour"
 msgstr "Чисто брашно"
 
@@ -3609,7 +3546,6 @@ msgid "Red onion"
 msgstr "Црвени лук"
 
 #: src/ingredients.inc:217
-#| msgid "Pepper"
 msgid "Red Pepper"
 msgstr "Црвени бибер"
 
@@ -3630,7 +3566,6 @@ msgid "Rice vermicelli noodles"
 msgstr "Пиринчани резанци"
 
 #: src/ingredients.inc:222
-#| msgid "no Sugar"
 msgid "Rock sugar"
 msgstr "Камени шећер"
 
@@ -3655,7 +3590,6 @@ msgid "Sage"
 msgstr "Жалфија"
 
 #: src/ingredients.inc:228
-#| msgid "Almond"
 msgid "Salmon"
 msgstr "Лосос"
 
@@ -3716,7 +3650,6 @@ msgid "Spinach"
 msgstr "Спанаћ"
 
 #: src/ingredients.inc:243
-#| msgid "Spring"
 msgid "Spring onion"
 msgstr "Млади црни лук"
 
@@ -3781,17 +3714,14 @@ msgid "Tomato"
 msgstr "Парадајз"
 
 #: src/ingredients.inc:259
-#| msgid "Tomato"
 msgid "Tomato paste"
 msgstr "Пасирани парадајз"
 
 #: src/ingredients.inc:260
-#| msgid "Soy sauce"
 msgid "Tomato sauce"
 msgstr "Сос од парадајза"
 
 #: src/ingredients.inc:261
-#| msgid "Turmeric, ground"
 msgid "Tumeric ground"
 msgstr "Куркума млевена"
 
@@ -3804,12 +3734,10 @@ msgid "Unsalted butter"
 msgstr "Неслани маслац"
 
 #: src/ingredients.inc:264
-#| msgid "no Baking powder"
 msgid "Vanilla baking powder"
 msgstr "Ванилин прашак за пециво"
 
 #: src/ingredients.inc:265
-#| msgid "Vanilla sugar"
 msgid "Vanilla extract"
 msgstr "Екстракт ваниле"
 
@@ -3826,7 +3754,6 @@ msgid "Vanilla sugar"
 msgstr "Ванилин шећер"
 
 #: src/ingredients.inc:269
-#| msgid "Vegetarian"
 msgid "Vegetable oil"
 msgstr "Биљно уље"
 
@@ -3907,7 +3834,6 @@ msgid "no Apple"
 msgstr "без јабуке"
 
 #: src/no-ingredients.inc:5
-#| msgid "no Vinegar"
 msgid "no Apple Vinegar"
 msgstr "без јабуковог сирћа"
 
@@ -3928,7 +3854,6 @@ msgid "no Aubergine"
 msgstr "без плавог патлиџана"
 
 #: src/no-ingredients.inc:10
-#| msgid "no Bay leaf"
 msgid "no Baby Spinach"
 msgstr "без спанаћа"
 
@@ -3969,12 +3894,10 @@ msgid "no Beans"
 msgstr "без пасуља"
 
 #: src/no-ingredients.inc:20
-#| msgid "no Beans"
 msgid "no Bean sprouts"
 msgstr "без бораније"
 
 #: src/no-ingredients.inc:21
-#| msgid "no Beef mince"
 msgid "no Beef"
 msgstr "без говедне"
 
@@ -3987,7 +3910,6 @@ msgid "no Beef sausage"
 msgstr "без говеђе кобасице"
 
 #: src/no-ingredients.inc:24
-#| msgid "no Beef mince"
 msgid "no Beef (sirloin)"
 msgstr "без говедине (печенице)"
 
@@ -4028,7 +3950,6 @@ msgid "no Black peppercorns"
 msgstr "без зрна црног бибера"
 
 #: src/no-ingredients.inc:34
-#| msgid "no Bilberry"
 msgid "no Blueberry"
 msgstr "без боровнице"
 
@@ -4041,22 +3962,18 @@ msgid "no Breadcrumbs"
 msgstr "без презли"
 
 #: src/no-ingredients.inc:37
-#| msgid "no Beef stock"
 msgid "no Brewer's yeast"
 msgstr "без пивског квасца"
 
 #: src/no-ingredients.inc:38
-#| msgid "no Baked beans"
 msgid "no Broad beans"
 msgstr "без боба"
 
 #: src/no-ingredients.inc:39
-#| msgid "no Beetroot"
 msgid "no Broth"
 msgstr "без чорбе"
 
 #: src/no-ingredients.inc:40
-#| msgid "no Vanilla sugar"
 msgid "no Brown sugar"
 msgstr "без жутог шећера"
 
@@ -4065,7 +3982,6 @@ msgid "no Butter"
 msgstr "без маслаца"
 
 #: src/no-ingredients.inc:42
-#| msgid "no Butter"
 msgid "no Butter, melted"
 msgstr "без маслаца, топљеног"
 
@@ -4078,12 +3994,10 @@ msgid "no Cabbage"
 msgstr "без купуса"
 
 #: src/no-ingredients.inc:45
-#| msgid "no Flour"
 msgid "no Cake flour"
 msgstr "без брашна за колаче"
 
 #: src/no-ingredients.inc:46
-#| msgid "no Baked beans"
 msgid "no Canellini beans"
 msgstr "без пасуља канелини"
 
@@ -4100,17 +4014,14 @@ msgid "no Carrot"
 msgstr "без шаргарепе"
 
 #: src/no-ingredients.inc:50
-#| msgid "no Cherries, pitted"
 msgid "no Cashews, lightly toasted"
 msgstr "без индијског ораха, лагано печеног"
 
 #: src/no-ingredients.inc:51
-#| msgid "no Vanilla sugar"
 msgid "no Caster sugar"
 msgstr "без кристал шећера"
 
 #: src/no-ingredients.inc:52
-#| msgid "no Cheese"
 msgid "no Celery"
 msgstr "без целера"
 
@@ -4123,7 +4034,6 @@ msgid "no Cheese"
 msgstr "без сира"
 
 #: src/no-ingredients.inc:55
-#| msgid "no Cheese"
 msgid "no Cheese slices"
 msgstr "без кришки сира"
 
@@ -4132,12 +4042,10 @@ msgid "no Cherries, pitted"
 msgstr "без очишћене трешње"
 
 #: src/no-ingredients.inc:57
-#| msgid "no Cherries, pitted"
 msgid "no Cherry tomatoes, halved"
 msgstr "без чери парадајза, преполовљеног"
 
 #: src/no-ingredients.inc:58
-#| msgid "no Linseeds"
 msgid "no Chia seeds"
 msgstr "без чиа семенки"
 
@@ -4146,12 +4054,10 @@ msgid "no Chicken breasts, large"
 msgstr "без пилећих груди, великих"
 
 #: src/no-ingredients.inc:60
-#| msgid "no Cheese"
 msgid "no Chicken livers"
 msgstr "без пилеће јетре"
 
 #: src/no-ingredients.inc:61
-#| msgid "no Beef stock"
 msgid "no chicken stock"
 msgstr "без пилећег одреска"
 
@@ -4160,7 +4066,6 @@ msgid "no Chili flakes"
 msgstr "без чили пахуљица"
 
 #: src/no-ingredients.inc:63
-#| msgid "no Cocoa powder"
 msgid "no Chili powder"
 msgstr "без чили праха"
 
@@ -4169,7 +4074,6 @@ msgid "no Chili sauce (e.g. sriracha)"
 msgstr "без чили соса (нпр. срираче)"
 
 #: src/no-ingredients.inc:65
-#| msgid "no Chocolate frosting"
 msgid "no Chocolate"
 msgstr "без чоколаде"
 
@@ -4178,7 +4082,6 @@ msgid "no Chocolate frosting"
 msgstr "без чоколадне глазуре"
 
 #: src/no-ingredients.inc:67
-#| msgid "no Carrot"
 msgid "no Chorizo"
 msgstr "без чоризоа"
 
@@ -4191,12 +4094,10 @@ msgid "no Cilantro"
 msgstr "без першуна лишћара"
 
 #: src/no-ingredients.inc:70
-#| msgid "no Cilantro"
 msgid "no Cilantro leaves"
 msgstr "без лишћа першуна лишћара"
 
 #: src/no-ingredients.inc:71
-#| msgid "no Cilantro"
 msgid "no Cinnamon"
 msgstr "без цимета"
 
@@ -4205,12 +4106,10 @@ msgid "no Cinnamon sticks"
 msgstr "без штапића цимета"
 
 #: src/no-ingredients.inc:73
-#| msgid "no Cheese"
 msgid "no Cloves"
 msgstr "без каранфилића"
 
 #: src/no-ingredients.inc:74
-#| msgid "no Cocoa powder"
 msgid "no Cocoa butter"
 msgstr "без какао путера"
 
@@ -4219,37 +4118,30 @@ msgid "no Cocoa powder"
 msgstr "без какаоа у праху"
 
 #: src/no-ingredients.inc:76
-#| msgid "no Couscous"
 msgid "no Coconut milk"
 msgstr "без млека кокоса"
 
 #: src/no-ingredients.inc:77
-#| msgid "no Couscous"
 msgid "no Coconut oil"
 msgstr "без уља кокоса"
 
 #: src/no-ingredients.inc:78
-#| msgid "no Cocoa powder"
 msgid "no Coconut water"
 msgstr "без какаоа у праху"
 
 #: src/no-ingredients.inc:79
-#| msgid "no Cilantro"
 msgid "no Cold water"
 msgstr "без хладне воде"
 
 #: src/no-ingredients.inc:80
-#| msgid "no Ground beef"
 msgid "no cooked beef"
 msgstr "без куване говедине"
 
 #: src/no-ingredients.inc:81
-#| msgid "no Cilantro"
 msgid "no Coriander"
 msgstr "без коријандера"
 
 #: src/no-ingredients.inc:82
-#| msgid "no Linseeds"
 msgid "no Coriandre seeds"
 msgstr "без семенки коријандера"
 
@@ -4266,7 +4158,6 @@ msgid "no Cream"
 msgstr "без крема"
 
 #: src/no-ingredients.inc:86
-#| msgid "no Cheese"
 msgid "no Cream cheese"
 msgstr "без крем сира"
 
@@ -4275,7 +4166,6 @@ msgid "no Crushed red pepper flakes"
 msgstr "без ломљених пахуљица црвеног бибера"
 
 #: src/no-ingredients.inc:88
-#| msgid "no Couscous"
 msgid "no Cucumber"
 msgstr "без краставаца"
 
@@ -4284,12 +4174,10 @@ msgid "no Cucumber (large)"
 msgstr "без краставаца (дугог)"
 
 #: src/no-ingredients.inc:90
-#| msgid "no Cilantro"
 msgid "no Cumin"
 msgstr "без кумина"
 
 #: src/no-ingredients.inc:91
-#| msgid "no Pumpkin seeds"
 msgid "no Cumin seeds"
 msgstr "без семенки кумина"
 
@@ -4310,7 +4198,6 @@ msgid "no Double cream"
 msgstr "без слатке павлаке"
 
 #: src/no-ingredients.inc:96
-#| msgid "no Anchovies"
 msgid "no Dried anchovies"
 msgstr "без сушеног инћуна"
 
@@ -4323,7 +4210,6 @@ msgid "no Dry or fresh cilantro"
 msgstr "без сувог или свежег першуна лишћара"
 
 #: src/no-ingredients.inc:99
-#| msgid "no Yeast"
 msgid "no Dry yeast"
 msgstr "без сувог квасца"
 
@@ -4340,12 +4226,10 @@ msgid "no Egg"
 msgstr "баз јаја"
 
 #: src/no-ingredients.inc:103
-#| msgid "no Egg"
 msgid "no Egg yolks"
 msgstr "без жуманца"
 
 #: src/no-ingredients.inc:104
-#| msgid "no Pumpkin seeds"
 msgid "no Fenugreek seeds"
 msgstr "без семенки пискавица"
 
@@ -4374,7 +4258,6 @@ msgid "no Fish"
 msgstr "без рибе"
 
 #: src/no-ingredients.inc:111
-#| msgid "no Pizza sauce"
 msgid "no Fish sauce"
 msgstr "без рибљег соса"
 
@@ -4387,7 +4270,6 @@ msgid "no Flour (all-purpose)"
 msgstr "без брашна (за све сврхе)"
 
 #: src/no-ingredients.inc:114
-#| msgid "no Flour"
 msgid "no Flour (Tipo 00)"
 msgstr "без брашна (Типа 00)"
 
@@ -4408,17 +4290,14 @@ msgid "no Garlic"
 msgstr "без белог лука"
 
 #: src/no-ingredients.inc:119
-#| msgid "no Garlic"
 msgid "no Garlic cloves"
 msgstr "без чешњева белог лука"
 
 #: src/no-ingredients.inc:120
-#| msgid "no Baking powder"
 msgid "no Garlic powder"
 msgstr "без белог лука у праху"
 
 #: src/no-ingredients.inc:121
-#| msgid "no Tangerine"
 msgid "no Ginger"
 msgstr "без ђумбира"
 
@@ -4427,12 +4306,10 @@ msgid "no Ginger, freshly grated"
 msgstr "без ђумбира, свеже наренданог"
 
 #: src/no-ingredients.inc:123
-#| msgid "no Turmeric, ground"
 msgid "no Ginger ground"
 msgstr "без ђумбира млевеног"
 
 #: src/no-ingredients.inc:124
-#| msgid "no Cheese"
 msgid "no Goat cheese"
 msgstr "без козјег сира"
 
@@ -4445,7 +4322,6 @@ msgid "no Good, dry red wine"
 msgstr "без доброг, сувог црвеног вина"
 
 #: src/no-ingredients.inc:127
-#| msgid "no Ground beef"
 msgid "no Gouda cheese"
 msgstr "без гауда сира"
 
@@ -4474,7 +4350,6 @@ msgid "no Grated French Emmental"
 msgstr "без ренданог француског ементала"
 
 #: src/no-ingredients.inc:134
-#| msgid "no Apple"
 msgid "no Green Apple"
 msgstr "без зелене јабуке"
 
@@ -4483,17 +4358,14 @@ msgid "no Green Bell Pepper"
 msgstr "без бабуре зелене"
 
 #: src/no-ingredients.inc:136
-#| msgid "no Ground beef"
 msgid "no Green Cabbage"
 msgstr "без зеленог купуса"
 
 #: src/no-ingredients.inc:137
-#| msgid "no Garlic"
 msgid "no Green olive"
 msgstr "без зелене маслинке"
 
 #: src/no-ingredients.inc:138
-#| msgid "no Onion"
 msgid "no Green onions"
 msgstr "без зеленог црног лука"
 
@@ -4510,17 +4382,14 @@ msgid "no Ground coriander (optional)"
 msgstr "без млевеног коријандера (опционално)"
 
 #: src/no-ingredients.inc:142
-#| msgid "no Ground beef"
 msgid "no Ground cumin"
 msgstr "без млевеног кумина"
 
 #: src/no-ingredients.inc:143
-#| msgid "no Ground beef"
 msgid "no Ground fennel"
 msgstr "без млевеног коморача"
 
 #: src/no-ingredients.inc:144
-#| msgid "no Ground beef"
 msgid "no Ground pepper"
 msgstr "без млевеног бибера"
 
@@ -4537,7 +4406,6 @@ msgid "no Hazelnuts milk"
 msgstr "без млека од лешника"
 
 #: src/no-ingredients.inc:148
-#| msgid "no Soy sauce"
 msgid "no Hoisin sauce"
 msgstr "без хоисин соса"
 
@@ -4550,7 +4418,6 @@ msgid "no Horseradish"
 msgstr "без рена"
 
 #: src/no-ingredients.inc:151
-#| msgid "no Mayonnaise"
 msgid "no Japanese mayonaisse"
 msgstr "без јапанског мајонеза"
 
@@ -4571,12 +4438,10 @@ msgid "no Kiwis"
 msgstr "без кивија"
 
 #: src/no-ingredients.inc:156
-#| msgid "no Lemon"
 msgid "no Lamb"
 msgstr "без јагњетине"
 
 #: src/no-ingredients.inc:157
-#| msgid "no Lemon"
 msgid "no Lardons"
 msgstr "без сала"
 
@@ -4589,7 +4454,6 @@ msgid "no Lemon"
 msgstr "без лимуна"
 
 #: src/no-ingredients.inc:160
-#| msgid "no Lemon"
 msgid "no Lemon juice"
 msgstr "без сока од лимуна"
 
@@ -4606,7 +4470,6 @@ msgid "no Light muscovado sugar"
 msgstr "без лаганог масковадо шећера"
 
 #: src/no-ingredients.inc:164
-#| msgid "no Linseeds"
 msgid "no Lime"
 msgstr "без лимете"
 
@@ -4619,12 +4482,10 @@ msgid "no Linseeds"
 msgstr "без семена лана"
 
 #: src/no-ingredients.inc:167
-#| msgid "no Orange"
 msgid "no Mandarin Oranges"
 msgstr "без мандарина"
 
 #: src/no-ingredients.inc:168
-#| msgid "no Tangerine"
 msgid "no Margarine"
 msgstr "без маргарина"
 
@@ -4645,7 +4506,6 @@ msgid "no Milk"
 msgstr "без млека"
 
 #: src/no-ingredients.inc:173
-#| msgid "Bundled libraries"
 msgid "no Mixed berries"
 msgstr "без мешовитог бобичастог воћа"
 
@@ -4658,7 +4518,6 @@ msgid "no Mori-nu organic silken tofu (firm)"
 msgstr "без мори-ну свиленог тофуа (чврстог)"
 
 #: src/no-ingredients.inc:176
-#| msgid "no Mustard"
 msgid "no Mushrooms"
 msgstr "без печурки"
 
@@ -4667,7 +4526,6 @@ msgid "no Mustard"
 msgstr "без сенфа"
 
 #: src/no-ingredients.inc:178
-#| msgid "no Mustard"
 msgid "no Mustard seeds"
 msgstr "без семенки сенфа"
 
@@ -4692,12 +4550,10 @@ msgid "no Oil"
 msgstr "без уља"
 
 #: src/no-ingredients.inc:184
-#| msgid "no Soy sauce"
 msgid "no Okonomiyaki sauce"
 msgstr "без окономијаки соса"
 
 #: src/no-ingredients.inc:185
-#| msgid "no Oil"
 msgid "no Olive oil"
 msgstr "без маслиновог уља"
 
@@ -4706,7 +4562,6 @@ msgid "no Olive oil, extra-virgin"
 msgstr "без маслиновог уља, екстра девичанског"
 
 #: src/no-ingredients.inc:187
-#| msgid "no Cherries, pitted"
 msgid "no Olives, pitted"
 msgstr "без маслинки, без коштице"
 
@@ -4715,7 +4570,6 @@ msgid "no Onion"
 msgstr "без црног лука"
 
 #: src/no-ingredients.inc:189
-#| msgid "no Baking powder"
 msgid "no Onion powder"
 msgstr "без црног лука у праху"
 
@@ -4724,12 +4578,10 @@ msgid "no Orange"
 msgstr "без наранџе"
 
 #: src/no-ingredients.inc:191
-#| msgid "no Orange"
 msgid "no Oregano"
 msgstr "без орегана"
 
 #: src/no-ingredients.inc:192
-#| msgid "no Potato"
 msgid "no Pancetta"
 msgstr "без трбушине"
 
@@ -4738,7 +4590,6 @@ msgid "no Pandan leaves"
 msgstr "без лишћа пандана"
 
 #: src/no-ingredients.inc:194
-#| msgid "no Peperoni"
 msgid "no Paprika"
 msgstr "без паприке"
 
@@ -4767,12 +4618,10 @@ msgid "no Peppers"
 msgstr "без папричице"
 
 #: src/no-ingredients.inc:201
-#| msgid "no Parsley"
 msgid "no Pickles"
 msgstr "без киселих краставаца"
 
 #: src/no-ingredients.inc:202
-#| msgid "no Pepper"
 msgid "no Pineapple"
 msgstr "без ананаса"
 
@@ -4781,12 +4630,10 @@ msgid "no Pizza sauce"
 msgstr "без соса за пицу"
 
 #: src/no-ingredients.inc:204
-#| msgid "no Flour"
 msgid "no Plain flour"
 msgstr "без чистог брашна"
 
 #: src/no-ingredients.inc:205
-#| msgid "no Potato"
 msgid "no Pomegranate"
 msgstr "без нара"
 
@@ -4795,12 +4642,10 @@ msgid "no Pomegranate juice"
 msgstr "без сока од нара"
 
 #: src/no-ingredients.inc:207
-#| msgid "no Potato"
 msgid "no Pork fat"
 msgstr "без свињске масти"
 
 #: src/no-ingredients.inc:208
-#| msgid "no Peperoni"
 msgid "no Pork loin"
 msgstr "без свињске слабине"
 
@@ -4833,12 +4678,10 @@ msgid "no Red bell pepper"
 msgstr "без црвене бабуре"
 
 #: src/no-ingredients.inc:216
-#| msgid "no Onion"
 msgid "no Red onion"
 msgstr "без црвеног лука"
 
 #: src/no-ingredients.inc:217
-#| msgid "no Pepper"
 msgid "no Red Pepper"
 msgstr "без црвеног бибера"
 
@@ -4859,7 +4702,6 @@ msgid "no Rice vermicelli noodles"
 msgstr "без пиринчаних резанаца"
 
 #: src/no-ingredients.inc:222
-#| msgid "no Sugar"
 msgid "no Rock sugar"
 msgstr "без каменог шећера"
 
@@ -4876,17 +4718,14 @@ msgid "no Rosé wine"
 msgstr "без розе вина"
 
 #: src/no-ingredients.inc:226
-#| msgid "no Sugar"
 msgid "no Saffron"
 msgstr "без шафрана"
 
 #: src/no-ingredients.inc:227
-#| msgid "no Salt"
 msgid "no Sage"
 msgstr "без жалфије"
 
 #: src/no-ingredients.inc:228
-#| msgid "no Almond"
 msgid "no Salmon"
 msgstr "без лососа"
 
@@ -4899,17 +4738,14 @@ msgid "no Salt and pepper"
 msgstr "без соли и бибера"
 
 #: src/no-ingredients.inc:231
-#| msgid "no Soy sauce"
 msgid "no Saucebinder"
 msgstr "без скробног соса"
 
 #: src/no-ingredients.inc:232
-#| msgid "no Salt"
 msgid "no Scallions"
 msgstr "без младог лука"
 
 #: src/no-ingredients.inc:233
-#| msgid "no Salt"
 msgid "no Sea salt"
 msgstr "без морске соли"
 
@@ -4918,17 +4754,14 @@ msgid "no Semi-skimmed milk"
 msgstr "без полуобраног млека"
 
 #: src/no-ingredients.inc:235
-#| msgid "no Salt"
 msgid "no Sesame oil"
 msgstr "без уља сусама"
 
 #: src/no-ingredients.inc:236
-#| msgid "no Sunflower seeds"
 msgid "no Sesame seeds"
 msgstr "без семенки сусама"
 
 #: src/no-ingredients.inc:237
-#| msgid "no Salt"
 msgid "no Shallots"
 msgstr "без влашца"
 
@@ -4941,7 +4774,6 @@ msgid "no Slivered almonds, toasted"
 msgstr "без изрезаног бадема, печеног"
 
 #: src/no-ingredients.inc:240
-#| msgid "no Soy sauce"
 msgid "no Sour cream"
 msgstr "без киселе павлаке"
 
@@ -4950,12 +4782,10 @@ msgid "no Soy sauce"
 msgstr "без соса од соје"
 
 #: src/no-ingredients.inc:242
-#| msgid "no Squash"
 msgid "no Spinach"
 msgstr "без спанаћа"
 
 #: src/no-ingredients.inc:243
-#| msgid "no Onion"
 msgid "no Spring onion"
 msgstr "без младог црног лука"
 
@@ -4980,12 +4810,10 @@ msgid "no Sunflower seeds"
 msgstr "без семенки сунцокрета"
 
 #: src/no-ingredients.inc:249
-#| msgid "no Potato"
 msgid "no Sweet potatoes"
 msgstr "без батата (слатког кромпира)"
 
 #: src/no-ingredients.inc:250
-#| msgid "no Tangerine"
 msgid "no Tamarind paste"
 msgstr "без намаза тамаринда"
 
@@ -5002,7 +4830,6 @@ msgid "no Thai chillies"
 msgstr "без тајландског чилија"
 
 #: src/no-ingredients.inc:254
-#| msgid "no Pizza sauce"
 msgid "no Thai fish sauce"
 msgstr "без тајландског рибљег соса"
 
@@ -5023,17 +4850,14 @@ msgid "no Tomato"
 msgstr "без парадајза"
 
 #: src/no-ingredients.inc:259
-#| msgid "no Tomato"
 msgid "no Tomato paste"
 msgstr "без пасираног парадајза"
 
 #: src/no-ingredients.inc:260
-#| msgid "no Tomato"
 msgid "no Tomato sauce"
 msgstr "без соса од парадајза"
 
 #: src/no-ingredients.inc:261
-#| msgid "no Turmeric, ground"
 msgid "no Tumeric ground"
 msgstr "без куркуме млевене"
 
@@ -5046,17 +4870,14 @@ msgid "no Unsalted butter"
 msgstr "без несланог маслаца"
 
 #: src/no-ingredients.inc:264
-#| msgid "no Baking powder"
 msgid "no Vanilla baking powder"
 msgstr "без ванилин прашка за пециво"
 
 #: src/no-ingredients.inc:265
-#| msgid "no Vanilla sugar"
 msgid "no Vanilla extract"
 msgstr "без екстракта ваниле"
 
 #: src/no-ingredients.inc:266
-#| msgid "no Vanilla pudding"
 msgid "no Vanilla powdered sugar, for dusting"
 msgstr "без ванилин шећера у праху, за посипање"
 
@@ -5081,22 +4902,18 @@ msgid "no Water"
 msgstr "без воде"
 
 #: src/no-ingredients.inc:272
-#| msgid "no Flour"
 msgid "no Wheat flour"
 msgstr "без пшеничног брашна"
 
 #: src/no-ingredients.inc:273
-#| msgid "no Wine"
 msgid "no White fish"
 msgstr "без беле рибе"
 
 #: src/no-ingredients.inc:274
-#| msgid "no Onion"
 msgid "no White onion"
 msgstr "без белог црног лука"
 
 #: src/no-ingredients.inc:275
-#| msgid "no Wine"
 msgid "no White wine"
 msgstr "без белог вина"
 
@@ -5135,6 +4952,9 @@ msgstr "без хамбурге"
 #: src/no-ingredients.inc:284
 msgid "no Zuccini"
 msgstr "без тиквица"
+
+#~ msgid "org.gnome.Recipes"
+#~ msgstr "org.gnome.Recipes"
 
 #~ msgid "Serves"
 #~ msgstr "Сервирање"
