@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-23 04:28+0000\n"
-"PO-Revision-Date: 2021-11-03 16:23+0100\n"
+"POT-Creation-Date: 2022-07-29 07:22+0000\n"
+"PO-Revision-Date: 2022-08-13 22:28+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
@@ -29,11 +29,6 @@ msgstr "Recepti"
 #: data/org.gnome.Recipes.desktop.in:4
 msgid "GNOME cooks unite!"
 msgstr "GNOME kuharica!"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Recipes.desktop.in:7
-msgid "org.gnome.Recipes"
-msgstr "org.gnome.Recipes"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:911
 msgid "GNOME loves to cook"
@@ -118,6 +113,10 @@ msgstr "Pojedinačni recept"
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:58
 msgid "An individual cuisine"
 msgstr "Pojedinačna kuhinja"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:483
+msgid "Matthias Clasen and others"
+msgstr "Matthias Clasen i ostali"
 
 #: data/org.gnome.Recipes.gschema.xml:25
 msgid "The user ID of the current user"
@@ -4938,3 +4937,6 @@ msgstr "nema zinfandela"
 #: src/no-ingredients.inc:284
 msgid "no Zuccini"
 msgstr "nema tikvica"
+
+#~ msgid "org.gnome.Recipes"
+#~ msgstr "org.gnome.Recipes"
