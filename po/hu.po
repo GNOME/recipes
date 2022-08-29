@@ -1,15 +1,15 @@
 # Hungarian translation for recipes.
-# Copyright (C) 2017, 2018, 2019, 2020 Free Software Foundation, Inc.
+# Copyright (C) 2017, 2018, 2019, 2020, 2022 Free Software Foundation, Inc.
 # This file is distributed under the same license as the recipes package.
 #
 # Balázs Meskó <mesko.balazs at fsf dot hu>, 2017, 2018, 2019.
-# Balázs Úr <ur.balazs at fsf dot hu>, 2017, 2018, 2019, 2020.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2017, 2018, 2019, 2020, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-17 22:34+0000\n"
-"PO-Revision-Date: 2020-03-04 10:49+0100\n"
+"POT-Creation-Date: 2022-07-29 07:22+0000\n"
+"PO-Revision-Date: 2022-08-30 00:51+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 19.04.3\n"
+"X-Generator: Lokalize 19.12.3\n"
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
@@ -29,11 +29,6 @@ msgstr "Receptek"
 #: data/org.gnome.Recipes.desktop.in:4
 msgid "GNOME cooks unite!"
 msgstr "GNOME szakácsok egyesüljetek!"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Recipes.desktop.in:7
-msgid "org.gnome.Recipes"
-msgstr "org.gnome.Recipes"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:911
 msgid "GNOME loves to cook"
@@ -119,6 +114,10 @@ msgstr "Egy egyedi recept"
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:58
 msgid "An individual cuisine"
 msgstr "Egy egyedi konyha"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:483
+msgid "Matthias Clasen and others"
+msgstr "Matthias Clasen és mások"
 
 #: data/org.gnome.Recipes.gschema.xml:25
 msgid "The user ID of the current user"
@@ -1661,7 +1660,7 @@ msgstr "uncia"
 msgid "_Name Your Recipe"
 msgstr "_Nevezze el a receptjét"
 
-#: src/gr-edit-page.c:1734 src/gr-edit-page.c:1796 src/gr-recipe-store.c:1333
+#: src/gr-edit-page.c:1734 src/gr-edit-page.c:1796 src/gr-recipe-store.c:1330
 #, c-format
 msgid "You need to provide a name for the recipe"
 msgstr "Meg kell adnia egy nevet a recepthez"
@@ -2009,7 +2008,7 @@ msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
 msgstr[0] "Hozzávalók vásárlása: <b>%s, %s és további %d</b>"
 msgstr[1] "Hozzávalók vásárlása: <b>%s, %s és további %d</b>"
 
-#: src/gr-recipe-store.c:1338
+#: src/gr-recipe-store.c:1335
 #, c-format
 msgid ""
 "A recipe with this name and author (%s) already exists.\n"
@@ -2018,32 +2017,32 @@ msgstr ""
 "Már létezik ilyen nevű és szerzőjű (%s) recept.\n"
 "Válasszon egy másik nevet"
 
-#: src/gr-recipe-store.c:1367
+#: src/gr-recipe-store.c:1364
 #, c-format
 msgid "You need to provide an ID for the recipe"
 msgstr "Meg kell adnia egy azonosítót a recepthez"
 
-#: src/gr-recipe-store.c:1373
+#: src/gr-recipe-store.c:1370
 #, c-format
 msgid "A recipe with this ID already exists"
 msgstr "Már létezik ilyen azonosítójú recept"
 
-#: src/gr-recipe-store.c:1542
+#: src/gr-recipe-store.c:1539
 #, c-format
 msgid "You need to provide an ID"
 msgstr "Meg kell adnia egy azonosítót"
 
-#: src/gr-recipe-store.c:1548
+#: src/gr-recipe-store.c:1545
 #, c-format
 msgid "Sorry, this ID is taken"
 msgstr "Elnézést, ez az azonosító már foglalt"
 
-#: src/gr-recipe-store.c:1575
+#: src/gr-recipe-store.c:1572
 #, c-format
 msgid "You need to provide an ID for the chef"
 msgstr "Meg kell adnia egy azonosítót a konyhafőnökhöz"
 
-#: src/gr-recipe-store.c:1581
+#: src/gr-recipe-store.c:1578
 #, c-format
 msgid "A chef with this ID already exists"
 msgstr "Már létezik ilyen azonosítójú konyhafőnök"
