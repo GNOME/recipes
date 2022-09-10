@@ -1,23 +1,23 @@
 # Brazilian Portuguese translation for recipes.
 # Copyright (C) 2020 recipes's COPYRIGHT HOLDER
 # This file is distributed under the same license as the recipes package.
-# Enrico Nicoletto <liverig@gmail.com>, 2016, 2017.
+# Enrico Nicoletto <hiko@duck.com>, 2016-2017, 2022.
 # Rafael Fontenelle <rafaelff@gnome.org>, 2016-2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-17 03:58+0000\n"
-"PO-Revision-Date: 2020-02-20 19:42-0300\n"
-"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
+"POT-Creation-Date: 2022-07-29 07:22+0000\n"
+"PO-Revision-Date: 2022-09-10 08:28-0300\n"
+"Last-Translator: Enrico Nicoletto <hiko@duck.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
-"X-Generator: Gtranslator 3.32.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Project-Style: gnome\n"
 
 #: data/org.gnome.Recipes.desktop.in:3
@@ -31,11 +31,6 @@ msgstr "Receitas"
 #: data/org.gnome.Recipes.desktop.in:4
 msgid "GNOME cooks unite!"
 msgstr "Cozinheiros do GNOME, uni-vos!"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Recipes.desktop.in:7
-msgid "org.gnome.Recipes"
-msgstr "org.gnome.Recipes"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:911
 msgid "GNOME loves to cook"
@@ -120,6 +115,10 @@ msgstr "Uma receita individual"
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:58
 msgid "An individual cuisine"
 msgstr "Uma cozinha individual"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:483
+msgid "Matthias Clasen and others"
+msgstr "Matthias Clasen e outros"
 
 #: data/org.gnome.Recipes.gschema.xml:25
 msgid "The user ID of the current user"
@@ -1100,7 +1099,7 @@ msgstr "Sistema"
 #: src/gr-about-dialog.c:914
 msgid "translator-credits"
 msgstr ""
-"Enrico Nicoletto <liverig@gmail.com>\n"
+"Enrico Nicoletto <hiko@duck.com>\n"
 "Rafael Fontenelle <rafaelff@gnome.org>"
 
 #: src/gr-about-dialog.c:917
@@ -1129,15 +1128,15 @@ msgstr ""
 msgid "Supported categories: %s\n"
 msgstr "Categorias aceitas: %s\n"
 
-#: src/gr-app.c:441
+#: src/gr-app.c:443
 msgid "Print the version and exit"
 msgstr "Exibe a versão e sai"
 
-#: src/gr-app.c:445
+#: src/gr-app.c:447
 msgid "Turn on verbose logging"
 msgstr "Liga o modo verboso de registro de logs"
 
-#: src/gr-app.c:449
+#: src/gr-app.c:451
 msgid "Show a category"
 msgstr "Mostra uma categoria"
 
@@ -1671,7 +1670,7 @@ msgstr "onças"
 msgid "_Name Your Recipe"
 msgstr "_Nomear sua receita"
 
-#: src/gr-edit-page.c:1734 src/gr-edit-page.c:1796 src/gr-recipe-store.c:1333
+#: src/gr-edit-page.c:1734 src/gr-edit-page.c:1796 src/gr-recipe-store.c:1330
 #, c-format
 msgid "You need to provide a name for the recipe"
 msgstr "Você precisa fornecer um nome para a receita"
@@ -2020,7 +2019,7 @@ msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
 msgstr[0] "Comprar ingredientes: <b>%s, %s e %d outro</b>"
 msgstr[1] "Comprar ingredientes: <b>%s, %s e %d outros</b>"
 
-#: src/gr-recipe-store.c:1338
+#: src/gr-recipe-store.c:1335
 #, c-format
 msgid ""
 "A recipe with this name and author (%s) already exists.\n"
@@ -2029,32 +2028,32 @@ msgstr ""
 "Uma receita com este nome e autor (%s) já existe.\n"
 "Por favor, escolha um nome diferente"
 
-#: src/gr-recipe-store.c:1367
+#: src/gr-recipe-store.c:1364
 #, c-format
 msgid "You need to provide an ID for the recipe"
 msgstr "Você precisa fornecer um ID para a receita"
 
-#: src/gr-recipe-store.c:1373
+#: src/gr-recipe-store.c:1370
 #, c-format
 msgid "A recipe with this ID already exists"
 msgstr "Já existe uma receita com este ID"
 
-#: src/gr-recipe-store.c:1542
+#: src/gr-recipe-store.c:1539
 #, c-format
 msgid "You need to provide an ID"
 msgstr "Você precisa fornecer um ID"
 
-#: src/gr-recipe-store.c:1548
+#: src/gr-recipe-store.c:1545
 #, c-format
 msgid "Sorry, this ID is taken"
 msgstr "Desculpe-me, este ID já foi tirado"
 
-#: src/gr-recipe-store.c:1575
+#: src/gr-recipe-store.c:1572
 #, c-format
 msgid "You need to provide an ID for the chef"
 msgstr "Você precisa fornecer um ID para o chef"
 
-#: src/gr-recipe-store.c:1581
+#: src/gr-recipe-store.c:1578
 #, c-format
 msgid "A chef with this ID already exists"
 msgstr "Já existe um chef com este ID"
@@ -2946,7 +2945,7 @@ msgstr "Fígado de frango"
 
 #: src/ingredients.inc:61
 msgid "chicken stock"
-msgstr "Caldo de galinha"
+msgstr "caldo de galinha"
 
 #: src/ingredients.inc:62
 msgid "Chili flakes"
@@ -2958,7 +2957,7 @@ msgstr "Pimenta em pó"
 
 #: src/ingredients.inc:64
 msgid "Chili sauce (e.g. sriracha)"
-msgstr "molho de pimenta (ex.: sriracha)"
+msgstr "Molho de pimenta (ex.: sriracha)"
 
 #: src/ingredients.inc:65
 msgid "Chocolate"
@@ -3215,7 +3214,7 @@ msgstr "Queijo gouda"
 
 #: src/ingredients.inc:128
 msgid "Goulash spices"
-msgstr "especiarias de Goulash"
+msgstr "Especiarias de Goulash"
 
 #: src/ingredients.inc:129
 msgid "Guanciale cubes"
@@ -3423,7 +3422,7 @@ msgstr "Noz"
 
 #: src/ingredients.inc:180
 msgid "Nutmeg"
-msgstr "noz-moscada"
+msgstr "Noz-moscada"
 
 #: src/ingredients.inc:181
 msgid "Nutritional yeast"
@@ -4853,7 +4852,7 @@ msgstr "sem Folhas de manjericão tailandês"
 
 #: src/no-ingredients.inc:253
 msgid "no Thai chillies"
-msgstr "Sem Pimentas thai"
+msgstr "sem pimentas Thai"
 
 #: src/no-ingredients.inc:254
 msgid "no Thai fish sauce"
@@ -4978,67 +4977,3 @@ msgstr "sem Zinfandel"
 #: src/no-ingredients.inc:284
 msgid "no Zuccini"
 msgstr "sem Abobrinha italiana"
-
-#~ msgid "celery"
-#~ msgstr "aipo"
-
-#~ msgid "Sachet levure"
-#~ msgstr "sachê de levedura"
-
-#~ msgid "no celery"
-#~ msgstr "sem Aipo"
-
-#~ msgid "no Sachet levure"
-#~ msgstr "sem Sachê de levedura"
-
-#~ msgid "Serves"
-#~ msgstr "Porções"
-
-#~ msgid "Ser_ves"
-#~ msgstr "Po_rções"
-
-#~ msgid "C_ooking Time"
-#~ msgstr "Tempo de c_ozimento"
-
-#~ msgid "_Cuisine"
-#~ msgstr "_Cozinha"
-
-# É referente ao grau de ardência de pratos com pimenta. Não encontrei uma tradução exata neste contexto, então usei ardência, já que picância parece ser um neologismo.. mas são encontradas as duas formas para tratar do assunto --Enrico
-#~ msgid "S_piciness"
-#~ msgstr "A_rdência"
-
-#~ msgid "Name Your Recipe"
-#~ msgstr "Nomeie sua receita"
-
-#~ msgid "Serves:"
-#~ msgstr "Porções:"
-
-#~ msgid "Dough"
-#~ msgstr "Massa"
-
-#~ msgid "Toppings"
-#~ msgstr "Toppings"
-
-#~ msgid "Contains dairy products"
-#~ msgstr "Contém produtos lácteos"
-
-#~ msgid "Contains Gluten"
-#~ msgstr "Contém glúten"
-
-#~ msgid "Apply"
-#~ msgstr "Aplicar"
-
-#~ msgid "_Close"
-#~ msgstr "_Fechar"
-
-#~ msgid "My Chef Information"
-#~ msgstr "Minhas informações de chef"
-
-#~ msgid "My own Recipes"
-#~ msgstr "Minhas próprias receitas"
-
-#~ msgid "Report Issue"
-#~ msgstr "Relatar um problema"
-
-#~ msgid "_My Chef Information"
-#~ msgstr "_Minhas informações como chef"
