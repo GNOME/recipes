@@ -1,0 +1,5054 @@
+# Chinese (Taiwan) translation for recipes.
+# Copyright (C) 2017 recipes's COPYRIGHT HOLDER
+# This file is distributed under the same license as the recipes package.
+# moderato930 <moderato930@hotmail.com>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: recipes master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-02 04:20+0000\n"
+"PO-Revision-Date: 2018-08-13 16:54+0800\n"
+"Last-Translator: \n"
+"Language-Team: Chinese (Taiwan) <chinese-l10n@googlegroups.com>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.1.1\n"
+
+#: data/org.gnome.Recipes.desktop.in:3
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
+#: src/gr-window.ui:530 src/gr-about-dialog.c:907 src/gr-window.c:391
+#: src/gr-window.c:1098
+msgid "Recipes"
+msgstr "食譜"
+
+#: data/org.gnome.Recipes.desktop.in:4
+msgid "GNOME cooks unite!"
+msgstr ""
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: data/org.gnome.Recipes.desktop.in:7
+msgid "org.gnome.Recipes"
+msgstr "org.gnome.Recipes"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:911
+msgid "GNOME loves to cook"
+msgstr "GNOME 熱愛烹調"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:9
+msgid ""
+"Recipes is an easy-to-use application that will help you to discover what to "
+"cook today, tomorrow, the rest of the week and for your special occasions."
+msgstr ""
+"Recipes 是個易用的應用程式；他幫您發掘今天、明天、和這禮拜要煮什麼菜並讓您發"
+"掘專屬的飲食習慣。"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:13
+msgid ""
+"Recipes comes with a collection of recipes that have been collected by GNOME "
+"contributors from all over the world. It also lets you store your own "
+"recipes and share them with your friends."
+msgstr ""
+"Recipes 提供許多來自許多全世界GNOME 貢獻者提供的食譜，並且也讓您儲存自己的食"
+"譜並將它們分享給你的朋友們。"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:18
+msgid "The major features of Recipes include:"
+msgstr "Recipes 的主要特色包含："
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:22
+msgid "Add and edit your own recipes"
+msgstr "新增和編輯您個人的食譜"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:23
+msgid "Share recipes with your friends"
+msgstr "與朋友分享食譜"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:24
+msgid "Export and print shopping lists"
+msgstr "匯出並列印購物單"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:25
+msgid "Adjust quantities based on the number of servings"
+msgstr "依據供餐量調整食材數量"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:26
+msgid "Mark recipes to cook later or add them to your favorites"
+msgstr "標示即將使用之食譜或新增至您的最愛"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:27
+msgid "Add notes to recipes"
+msgstr "在食譜新增註解"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:28
+msgid "Hands-free cooking instruction mode"
+msgstr "不須用手模式的烹調指南"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:34
+msgid "Initial screen for the application"
+msgstr "應用程式的起始界面"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:38
+msgid "The cuisines page"
+msgstr "料理頁面"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:42
+msgid "A shopping list"
+msgstr "購物單"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:46
+msgid "Cooking a recipe"
+msgstr "烹調料理"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:50
+msgid "Editing a recipe"
+msgstr "編輯食譜"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:54
+msgid "An individual recipe"
+msgstr "個人食譜"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:58
+msgid "An individual cuisine"
+msgstr "個人料理"
+
+#: data/org.gnome.Recipes.gschema.xml:25
+msgid "The user ID of the current user"
+msgstr "目前使用者的使用者 ID"
+
+#: data/org.gnome.Recipes.gschema.xml:26
+msgid "The user ID of the current user."
+msgstr "目前使用者的使用者 ID。"
+
+#: data/org.gnome.Recipes.gschema.xml:32
+msgid "The number of times cooking mode has been presented"
+msgstr "烹調時間顯示"
+
+#: data/org.gnome.Recipes.gschema.xml:33
+msgid "The number of times cooking mode has been presented."
+msgstr "烹調時間顯示"
+
+#: data/org.gnome.Recipes.gschema.xml:39
+msgid "The timestamp of the last change to the favorites list"
+msgstr "最近對最愛列表改動之時間的時間戳"
+
+#: data/org.gnome.Recipes.gschema.xml:40
+msgid ""
+"The timestamp of the last time an item was added to or removed from the "
+"favorites list."
+msgstr "最近一次增加或移除最愛列表項目之時間的時間戳"
+
+#: data/org.gnome.Recipes.gschema.xml:47
+msgid "The list of favorites"
+msgstr "最愛清單"
+
+#: data/org.gnome.Recipes.gschema.xml:48
+msgid "The list of favorites. Each entry in the list is the ID of a recipe."
+msgstr "最愛列表。每個列表中的項目都是食譜的 ID。"
+
+#: data/org.gnome.Recipes.gschema.xml:54
+msgid "The timestamp of the last change to the shopping list"
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:55
+msgid ""
+"The timestamp of the last time an item was added to or removed from the "
+"shopping list."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:62
+msgid "The shopping list"
+msgstr "採買清單"
+
+#: data/org.gnome.Recipes.gschema.xml:63
+msgid ""
+"The shopping list. Each entry in the dictionary maps the ID of a recipe to a "
+"serving count."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:70
+msgid "Ingredients that were removed from the shopping list"
+msgstr "從採買單移除的食材"
+
+#: data/org.gnome.Recipes.gschema.xml:71
+msgid "The names of ingredients that were removed from the shopping list."
+msgstr "從採買單移除的食材名稱"
+
+#: data/org.gnome.Recipes.gschema.xml:77
+msgid "The list of recipes to be exported"
+msgstr "將匯出的食譜清單"
+
+#: data/org.gnome.Recipes.gschema.xml:78
+msgid ""
+"The list of recipes to be exported. Each entry in the list is the ID of a "
+"recipe."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:84
+msgid "The setting for which unit temperatures should be displayed in."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:85
+msgid ""
+"The setting for which unit temperatures should be displayed in. Default is "
+"'locale', which means to use the LC_MEASUREMENT category of the current "
+"locale to decide."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:92
+msgid "By which key to sort lists."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:93
+msgid "The setting determines which key is used to sort lists of recipes by."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:99
+msgid "Whether the surprise dialog should be shown."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:100
+msgid ""
+"The setting determines whether the surprise dialog should be shown on "
+"startup."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:106
+msgid "The setting for which unit volumes should be displayed in."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:107
+msgid ""
+"The setting for which unit volumes should be displayed in. Default is "
+"'locale',"
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:113
+msgid "The setting for which unit weights should be displayed in."
+msgstr ""
+
+#: data/org.gnome.Recipes.gschema.xml:114
+msgid ""
+"The setting for which unit weights should be displayed in. Default is "
+"'locale',"
+msgstr ""
+
+#: src/chef-conflict-dialog.ui:10
+msgid "Same Chef"
+msgstr "同廚師"
+
+#: src/chef-conflict-dialog.ui:16
+msgid "Different Chef"
+msgstr "不同廚師"
+
+#: src/chef-conflict-dialog.ui:30
+msgid "Existing Chef"
+msgstr "現存廚師"
+
+#: src/chef-conflict-dialog.ui:43
+msgid "Imported Chef"
+msgstr ""
+
+#: src/chef-conflict-dialog.ui:57 src/chef-conflict-dialog.ui:69
+msgid "Short Name:"
+msgstr "短名："
+
+#: src/chef-conflict-dialog.ui:80 src/chef-conflict-dialog.ui:92
+#: src/recipe-conflict-dialog.ui:38
+msgid "Name:"
+msgstr "名稱："
+
+#: src/chef-conflict-dialog.ui:103 src/chef-conflict-dialog.ui:115
+msgid "Description:"
+msgstr "描述："
+
+#: src/chef-conflict-dialog.ui:126 src/chef-conflict-dialog.ui:138
+msgid "Picture:"
+msgstr "圖片："
+
+#: src/gr-chef-dialog.ui:4 src/gr-window.c:1185
+msgid "Chef Information"
+msgstr "廚師資訊："
+
+#: src/gr-chef-dialog.ui:10 src/gr-window.c:1283
+msgid "_Cancel"
+msgstr "取消(_C)"
+
+#: src/gr-chef-dialog.ui:20 src/gr-window.ui:130
+msgid "_Save"
+msgstr "儲存(_S)"
+
+#: src/gr-chef-dialog.ui:97
+msgid ""
+"This information may be shared with other users if you share your recipes."
+msgstr ""
+
+#: src/gr-chef-dialog.ui:119
+msgid "Other Chef"
+msgstr "其他廚師"
+
+#: src/gr-chef-dialog.ui:132
+msgid "Name…"
+msgstr "名稱："
+
+#: src/gr-chef-dialog.ui:143
+msgid "Short Name…"
+msgstr ""
+
+#: src/gr-cooking-page.ui:75
+msgid "Show"
+msgstr ""
+
+#: src/gr-cooking-page.ui:158
+msgid "Done"
+msgstr "完成"
+
+#: src/gr-cooking-page.ui:185
+msgid "Stop Cooking?"
+msgstr "取消烹調？"
+
+#: src/gr-cooking-page.ui:194
+msgid "Some timers are still running."
+msgstr "還剩一點時間"
+
+#: src/gr-cooking-page.ui:200
+msgid ""
+"Recipes can keep the timers running\n"
+"even if you leave cooking mode now."
+msgstr ""
+"Recipes 可繼續計時\n"
+"即使您現在離開烹煮模式。"
+
+#: src/gr-cooking-page.ui:212
+msgid "Keep Cooking"
+msgstr "繼續烹調"
+
+#: src/gr-cooking-page.ui:219
+msgid "Stop Timers"
+msgstr "停止計時"
+
+#: src/gr-cooking-page.ui:226
+msgid "Continue Timers"
+msgstr "繼續計時"
+
+#: src/gr-cooking-page.ui:255
+msgid "Controls"
+msgstr "控制"
+
+#: src/gr-cooking-page.ui:281
+msgid ""
+"To advance to the next step, press any key on the\n"
+"keyboard."
+msgstr "若要下一步，請按鍵盤任意鍵。"
+
+#: src/gr-cooking-page.ui:304
+msgid "To go back to the previous step, doubletap any key."
+msgstr "若要回上一步，請按鍵盤兩次鍵。"
+
+#: src/gr-cooking-page.ui:326
+msgid ""
+"Alternatively, you can use the cursor keys to\n"
+"quickly seek within the directions."
+msgstr ""
+
+#: src/gr-cooking-page.ui:350
+msgid "To exit the process, press the Escape key."
+msgstr ""
+
+#: src/gr-cooking-view.ui:64
+msgid "Time is up!"
+msgstr "時間到！"
+
+#: src/gr-cuisine-page.ui:77 src/gr-list-page.ui:111 src/gr-search-page.ui:29
+#: src/gr-list-page.c:514
+msgid "No recipes found"
+msgstr "未發現食譜"
+
+#: src/gr-cuisine-page.ui:90
+msgid "There are no recipes for this cuisine."
+msgstr "此料理無食譜。"
+
+#: src/gr-cuisines-page.ui:8
+msgid "Cuisines page"
+msgstr "料理頁面"
+
+#: src/gr-cuisines-page.ui:28
+msgid "World Cuisines"
+msgstr "世界料理"
+
+#: src/gr-cuisines-page.ui:124
+msgid "Seasonal"
+msgstr "季節性"
+
+#: src/gr-details-page.ui:105
+msgid "Contains garlic"
+msgstr "含大蒜"
+
+#: src/gr-details-page.ui:112
+msgid ""
+"Contains dairy products. Please always double-check the ingredients if you "
+"are serving a person with gluten or dairy intolerance."
+msgstr "含乳製品。若您將供餐給麩質不耐症或乳品不耐症的人，請再確認食材。"
+
+#: src/gr-details-page.ui:119
+msgid ""
+"Contains Gluten. Please always double-check the ingredients if you are "
+"serving a person with gluten or dairy intolerance."
+msgstr "含麩質。若您將供餐給麩質不耐症或乳品不耐症的人，請再確認食材。"
+
+#: src/gr-details-page.ui:126 src/gr-details-page.c:537
+msgid "Spicy"
+msgstr "辣"
+
+#: src/gr-details-page.ui:146
+msgid "_Buy Ingredients"
+msgstr ""
+
+#: src/gr-details-page.ui:164 src/gr-edit-page.ui:315
+msgid "_Yield"
+msgstr ""
+
+#: src/gr-details-page.ui:218
+msgid "Preparation Time"
+msgstr "準備時間"
+
+#: src/gr-details-page.ui:248
+msgid "Cooking Time"
+msgstr "烹調時間"
+
+#: src/gr-details-page.ui:278
+msgid "Cuisine"
+msgstr "料理"
+
+#: src/gr-details-page.ui:308 src/gr-query-editor.ui:46
+msgid "Meal"
+msgstr "餐點"
+
+#: src/gr-details-page.ui:338
+msgid "Season"
+msgstr "季節"
+
+#: src/gr-details-page.ui:399
+msgid "Note"
+msgstr ""
+
+#: src/gr-details-page.ui:429 src/gr-recipe-formatter.c:123
+#: src/gr-recipe-printer.c:302
+msgid "Directions"
+msgstr "指南"
+
+#: src/gr-details-page.ui:489
+msgid "_Notes"
+msgstr ""
+
+#: src/gr-details-page.ui:499 src/gr-shopping-page.ui:125
+msgid "_Edit"
+msgstr "編輯(_E)"
+
+#: src/gr-details-page.ui:508
+msgid "_Delete"
+msgstr "刪除(_D)"
+
+#: src/gr-details-page.ui:519 src/gr-shopping-page.ui:143
+#: src/recipe-export-dialog.ui:21
+msgid "_Share"
+msgstr "分享(_S)"
+
+#: src/gr-details-page.ui:531 src/gr-shopping-page.ui:154
+msgid "_Print"
+msgstr "列印(_P)"
+
+#: src/gr-details-page.ui:542
+msgid "Add to favorites"
+msgstr "新增至最愛"
+
+#: src/gr-edit-page.ui:35 src/gr-edit-page.ui:769 src/menus.ui:66
+msgid "Edit"
+msgstr "編輯"
+
+#: src/gr-edit-page.ui:112
+msgid "Add an image"
+msgstr "新增圖片"
+
+#: src/gr-edit-page.ui:138 src/gr-edit-page.ui:164
+msgid "Rotate image"
+msgstr "旋轉圖片"
+
+#: src/gr-edit-page.ui:190
+msgid "Default image"
+msgstr "預設圖片"
+
+#: src/gr-edit-page.ui:216
+msgid "Remove image"
+msgstr "移除圖片"
+
+#: src/gr-edit-page.ui:249
+msgid "Add List"
+msgstr "加入清單"
+
+#: src/gr-edit-page.ui:267
+msgid "Details"
+msgstr "詳細資料"
+
+#: src/gr-edit-page.ui:284 src/gr-edit-page.c:1656
+msgid "_Name"
+msgstr "名稱(_N)"
+
+#: src/gr-edit-page.ui:345
+msgid "_Preparation Time"
+msgstr "準備時間(_P)"
+
+#: src/gr-edit-page.ui:371 src/gr-edit-page.ui:419
+msgid "Less than 15 minutes"
+msgstr "少於15分"
+
+#: src/gr-edit-page.ui:372 src/gr-edit-page.ui:420
+msgid "15 to 30 minutes"
+msgstr "15分到30分"
+
+#: src/gr-edit-page.ui:373 src/gr-edit-page.ui:421
+msgid "30 to 45 minutes"
+msgstr "30分到45分"
+
+#: src/gr-edit-page.ui:374 src/gr-edit-page.ui:422
+msgid "45 minutes to an hour"
+msgstr "45分到1小時"
+
+#: src/gr-edit-page.ui:375 src/gr-edit-page.ui:423
+msgid "More than an hour"
+msgstr "超過1小時"
+
+#: src/gr-edit-page.ui:393
+msgid "_Cooking Time"
+msgstr "烹調時間(_C)"
+
+#: src/gr-edit-page.ui:441
+msgid "C_uisine"
+msgstr "料理(_U)"
+
+#: src/gr-edit-page.ui:477
+msgid "_Meal"
+msgstr "餐點(_M)"
+
+#: src/gr-edit-page.ui:513
+msgid "S_eason"
+msgstr ""
+
+#: src/gr-edit-page.ui:549
+msgid "_Spiciness"
+msgstr "辣度(_S)"
+
+#: src/gr-edit-page.ui:569 src/gr-spice-row.c:127
+msgid "Mild"
+msgstr "微辣"
+
+#: src/gr-edit-page.ui:570
+msgid "Somewhat spicy"
+msgstr "小辣"
+
+#: src/gr-edit-page.ui:571
+msgid "Hot"
+msgstr "辣"
+
+#: src/gr-edit-page.ui:572 src/gr-details-page.c:532 src/gr-spice-row.c:142
+msgid "Very spicy"
+msgstr "大辣"
+
+#: src/gr-edit-page.ui:585
+msgid "_Description"
+msgstr "描述(_D)"
+
+#: src/gr-edit-page.ui:644 src/gr-diet-row.c:102
+msgid "Gluten-free"
+msgstr "無麩質"
+
+#: src/gr-edit-page.ui:651 src/gr-diet-row.c:105
+msgid "Nut-free"
+msgstr "無堅果"
+
+#: src/gr-edit-page.ui:658 src/gr-diet-row.c:108
+msgid "Vegan"
+msgstr ""
+
+#: src/gr-edit-page.ui:665 src/gr-diet-row.c:111
+msgid "Vegetarian"
+msgstr ""
+
+#: src/gr-edit-page.ui:672 src/gr-diet-row.c:114
+msgid "Milk-free"
+msgstr "無奶"
+
+#: src/gr-edit-page.ui:679 src/gr-diet-row.c:117
+msgid "Halal"
+msgstr ""
+
+#: src/gr-edit-page.ui:708
+msgid "Di_rections"
+msgstr "指南(_R)"
+
+#: src/gr-edit-page.ui:776
+msgid "Preview"
+msgstr "預覽"
+
+#: src/gr-edit-page.ui:796
+msgid "Add Step"
+msgstr "新增步驟"
+
+#: src/gr-edit-page.ui:804
+msgid "Add Image"
+msgstr "新增圖像"
+
+#: src/gr-edit-page.ui:812
+msgid "Add Timer"
+msgstr "增加計時器時間"
+
+#: src/gr-edit-page.ui:820
+msgid "Add Temperature"
+msgstr "提高溫度"
+
+#: src/gr-edit-page.ui:916
+msgid "Title…"
+msgstr "標題…"
+
+#: src/gr-edit-page.ui:924 src/gr-edit-page.ui:995
+msgid "Add"
+msgstr "加入"
+
+#: src/gr-edit-page.ui:1014
+msgid "Syntax"
+msgstr ""
+
+#: src/gr-edit-page.ui:1029
+msgid "Use paragraphs to break directions into steps (2 newlines)."
+msgstr "將不同步驟分段（第二行）"
+
+#: src/gr-edit-page.ui:1042
+msgid "You can provide an image or a time counter in each step."
+msgstr "你可於每一步驟提供圖片或所需時間。"
+
+#: src/gr-edit-page.ui:1054
+msgid "Timer"
+msgstr "計時器"
+
+#: src/gr-edit-page.ui:1076
+msgid "Image"
+msgstr "圖片"
+
+#: src/gr-edit-page.ui:1098
+msgid "Temperature"
+msgstr "溫度"
+
+#: src/gr-ingredients-viewer-row.ui:52
+msgid "Amount"
+msgstr ""
+
+#: src/gr-ingredients-viewer-row.ui:92
+msgid "Ingredient"
+msgstr "材料"
+
+#: src/gr-ingredients-viewer-row.ui:169
+msgid "Use a number, followed by an (optional) unit."
+msgstr ""
+
+#: src/gr-ingredients-viewer-row.ui:180
+msgid "Examples: 1 kg, 2 1/2 pounds, 250 ml, 6"
+msgstr ""
+
+#: src/gr-ingredients-viewer.ui:13 src/gr-query-editor.ui:235
+#: src/gr-edit-page.c:1511 src/gr-recipe-formatter.c:104
+#: src/gr-recipe-printer.c:253
+msgid "Ingredients"
+msgstr "材料"
+
+#: src/gr-ingredients-viewer.ui:33
+msgid "Name of the List"
+msgstr "清單名稱"
+
+#: src/gr-ingredients-viewer.ui:43 src/gr-shopping-tile.ui:137
+msgid "Remove"
+msgstr "移除"
+
+#: src/gr-ingredients-viewer.ui:86
+msgid "Add more ingredients"
+msgstr "加入更多材料"
+
+#: src/gr-list-page.ui:124
+msgid "There are no recipes here yet."
+msgstr "目前無有食譜。"
+
+#: src/gr-query-editor.ui:66 src/gr-query-editor.c:495
+#: src/gr-query-editor.c:684
+msgid "Any meal"
+msgstr "任何餐"
+
+#: src/gr-query-editor.ui:109
+msgid "Spiciness"
+msgstr "辣度"
+
+#: src/gr-query-editor.ui:129 src/gr-query-editor.c:562
+#: src/gr-query-editor.c:713
+msgid "Any spiciness"
+msgstr "任何辣度"
+
+#: src/gr-query-editor.ui:172
+msgid "Dietary restrictions"
+msgstr "飲食限制"
+
+#: src/gr-query-editor.ui:192 src/gr-query-editor.c:406
+#: src/gr-query-editor.c:742
+msgid "No restrictions"
+msgstr "無飲食限制"
+
+#. FIXME: repopulate
+#: src/gr-query-editor.ui:255 src/gr-query-editor.c:337
+#: src/gr-query-editor.c:771
+msgid "Anything"
+msgstr ""
+
+#: src/gr-query-editor.ui:283
+msgid "Search…"
+msgstr "搜尋…"
+
+#: src/gr-recipes-page.ui:8
+msgid "Recipes page"
+msgstr "食譜頁面"
+
+#: src/gr-recipes-page.ui:27
+msgid "Today"
+msgstr "今天"
+
+#: src/gr-recipes-page.ui:103
+msgid "Editor’s Picks"
+msgstr ""
+
+#: src/gr-recipes-page.ui:129
+msgid "Categories"
+msgstr "目錄"
+
+#: src/gr-recipes-page.ui:226
+msgid "Featured GNOME Chefs"
+msgstr ""
+
+#: src/gr-recipe-tile.ui:58
+msgid "Contributed recipe"
+msgstr "貢獻食譜"
+
+#: src/gr-search-page.ui:42
+msgid "Try a different search"
+msgstr "試試不同搜尋"
+
+#: src/gr-shopping-page.ui:40
+msgid "Buy ingredients"
+msgstr "購買材料"
+
+#: src/gr-shopping-page.ui:93
+msgid "No shopping necessary!"
+msgstr "不須採買！"
+
+#: src/gr-shopping-page.ui:132
+msgid "_Clear List"
+msgstr ""
+
+#: src/gr-shopping-page.ui:188
+msgid "Nothing to add"
+msgstr ""
+
+#: src/gr-shopping-tile.ui:101
+msgid "Yield"
+msgstr ""
+
+#: src/gr-time-widget.ui:31
+msgid "Start"
+msgstr "開始"
+
+#: src/gr-time-widget.ui:60
+msgid "Pause"
+msgstr "暫停"
+
+#: src/gr-time-widget.ui:69
+msgid "Continue"
+msgstr "繼續"
+
+#: src/gr-time-widget.ui:82
+msgid "Reset"
+msgstr "重設"
+
+#: src/gr-window.ui:23
+msgid "_New Recipe"
+msgstr "新食譜(_N)"
+
+#: src/gr-window.ui:40
+msgid "Go back"
+msgstr "返回"
+
+#: src/gr-window.ui:97 src/gr-window.ui:198
+msgid "Search"
+msgstr "搜尋"
+
+#: src/gr-window.ui:116
+msgid "_Start Cooking"
+msgstr "開始烹調(_S)"
+
+#: src/gr-window.ui:144
+msgid "_Done Shopping"
+msgstr "完成採買(_D)"
+
+#: src/gr-window.ui:258
+msgid "All ingredients marked as stocked!"
+msgstr ""
+
+#: src/gr-window.ui:268
+msgid "_Undo"
+msgstr "復原(_U)"
+
+#: src/gr-window.ui:317
+msgid "Ingredients to buy added."
+msgstr "加入愈購買材料"
+
+#: src/gr-window.ui:327
+msgid "View Shopping List"
+msgstr "看購物單"
+
+#: src/gr-window.ui:384
+msgid "Undo"
+msgstr "復原"
+
+#: src/gr-window.ui:444
+msgid "Send Update"
+msgstr "上傳更新"
+
+#: src/gr-window.ui:492
+msgid "Shopping List has been exported to Todoist"
+msgstr "食譜已匯出到 Todoist"
+
+#: src/gr-window.ui:569 src/gr-window.c:398
+msgid "Cuisines"
+msgstr "料理"
+
+#: src/gr-window.ui:622
+msgid "Name"
+msgstr "名稱"
+
+#: src/gr-window.ui:630
+msgid "Recency"
+msgstr ""
+
+#: src/menus.ui:6 src/menus.ui:48
+msgid "_Import"
+msgstr "匯入(_I)"
+
+#: src/menus.ui:11 src/menus.ui:53
+msgid "_Export All"
+msgstr "匯出全部(_E)"
+
+#: src/menus.ui:16
+msgid "_Chef Information"
+msgstr "廚師資料(_C)"
+
+#: src/menus.ui:22 src/menus.ui:93
+msgid "_What’s New"
+msgstr ""
+
+#: src/menus.ui:26
+msgid "_Help"
+msgstr "幫助(_H)"
+
+#: src/menus.ui:30
+msgid "_About"
+msgstr "關於(_A)"
+
+#: src/menus.ui:34 src/menus.ui:97
+msgid "_Report Issue"
+msgstr ""
+
+#: src/menus.ui:38
+msgid "_Quit"
+msgstr "退出(_Q)"
+
+#: src/menus.ui:45
+msgid "File"
+msgstr "檔案"
+
+#: src/menus.ui:60
+msgid "Chef Information…"
+msgstr "廚師資料"
+
+#: src/menus.ui:69
+msgid "Copy"
+msgstr "複製"
+
+#: src/menus.ui:73
+msgid "Paste"
+msgstr "貼上"
+
+#: src/menus.ui:79
+msgid "Find…"
+msgstr "尋找…"
+
+#: src/menus.ui:86
+msgid "Help"
+msgstr "幫助"
+
+#: src/menus.ui:89
+msgid "Recipes _Help"
+msgstr "幫助(_H)"
+
+#: src/recipe-conflict-dialog.ui:10 src/shopping-list-exporter-dialog.ui:21
+#: src/gr-chef-dialog.c:163 src/gr-image-viewer.c:627
+#: src/gr-recipe-exporter.c:172 src/gr-shopping-list-exporter.c:698
+#: src/gr-window.c:1219
+msgid "Cancel"
+msgstr "取消"
+
+#: src/recipe-conflict-dialog.ui:18
+msgid "Rename"
+msgstr "重新命名"
+
+#: src/recipe-conflict-dialog.ui:28
+msgid "A recipe with this name already exists."
+msgstr "已存在此名稱的食譜。"
+
+#: src/recipe-export-dialog.ui:14
+msgid "_Add More"
+msgstr ""
+
+#: src/recipe-export-dialog.ui:56
+msgid "Share with a friend"
+msgstr "與友人分享"
+
+#: src/recipe-export-dialog.ui:63
+msgid "Contribute to the Recipes project"
+msgstr ""
+
+#: src/recipe-surprise.ui:28
+msgid "GNOME turns 20 !"
+msgstr ""
+
+#: src/recipe-surprise.ui:52
+msgid ""
+"YEARS\n"
+"STRONG"
+msgstr ""
+
+#: src/recipe-surprise.ui:68
+msgid ""
+"Recipes is a present to GNOME for its 20th birthday. We invite the GNOME "
+"community all over the world to share recipes and enjoy a good meal together."
+msgstr ""
+
+#: src/recipe-surprise.ui:79
+msgid "Let’s Party"
+msgstr ""
+
+#: src/recipe-whats-new-dialog.ui:8
+msgid "What’s New in Recipes"
+msgstr ""
+
+#: src/shopping-list-exporter-dialog.ui:13 src/gr-shopping-list-exporter.c:278
+msgid "Export Ingredients"
+msgstr "匯出材料"
+
+#: src/shopping-list-exporter-dialog.ui:55
+msgid "Export"
+msgstr "匯出"
+
+#: src/shopping-list-exporter-dialog.ui:101
+msgid "Email"
+msgstr ""
+
+#: src/shopping-list-exporter-dialog.ui:136
+#: src/shopping-list-exporter-dialog.ui:201
+msgid "Todoist"
+msgstr ""
+
+#: src/shopping-list-exporter-dialog.ui:152
+msgid "Add service"
+msgstr "增加服務"
+
+#: src/gr-about-dialog.c:132
+msgid "Learn more about Builder"
+msgstr ""
+
+#: src/gr-about-dialog.c:244 src/gr-about-dialog.c:327
+#: src/gr-about-dialog.c:329 src/gr-about-dialog.c:331
+#: src/gr-about-dialog.c:333 src/gr-about-dialog.c:335
+#: src/gr-about-dialog.c:337 src/gr-about-dialog.c:339
+#: src/gr-about-dialog.c:341 src/gr-about-dialog.c:343
+msgid "Unknown"
+msgstr ""
+
+#: src/gr-about-dialog.c:433
+msgid "Flatpak"
+msgstr ""
+
+#: src/gr-about-dialog.c:436
+msgctxt "Flatpak metadata"
+msgid "Version"
+msgstr ""
+
+#: src/gr-about-dialog.c:439
+msgid "Application"
+msgstr ""
+
+#: src/gr-about-dialog.c:442 src/gr-about-dialog.c:451
+msgctxt "Flatpak metadata"
+msgid "ID"
+msgstr ""
+
+#: src/gr-about-dialog.c:443 src/gr-about-dialog.c:452
+msgctxt "Flatpak metadata"
+msgid "Architecture"
+msgstr ""
+
+#: src/gr-about-dialog.c:444 src/gr-about-dialog.c:453
+msgctxt "Flatpak metadata"
+msgid "Branch"
+msgstr ""
+
+#: src/gr-about-dialog.c:445 src/gr-about-dialog.c:454
+msgctxt "Flatpak metadata"
+msgid "Commit"
+msgstr ""
+
+#: src/gr-about-dialog.c:448
+msgid "Runtime"
+msgstr ""
+
+#: src/gr-about-dialog.c:457 src/gr-about-dialog.c:521
+msgid "Bundled libraries"
+msgstr ""
+
+#: src/gr-about-dialog.c:487
+msgid "OS"
+msgstr "作業系統"
+
+#: src/gr-about-dialog.c:490
+msgctxt "OS metadata"
+msgid "Name"
+msgstr ""
+
+#: src/gr-about-dialog.c:492
+msgctxt "OS metadata"
+msgid "Type"
+msgstr ""
+
+#: src/gr-about-dialog.c:495 src/gr-about-dialog.c:497
+msgctxt "OS metadata"
+msgid "Desktop"
+msgstr ""
+
+#: src/gr-about-dialog.c:500
+msgid "System libraries"
+msgstr ""
+
+#: src/gr-about-dialog.c:820 src/gr-about-dialog.c:847
+msgid "System"
+msgstr ""
+
+#: src/gr-about-dialog.c:914
+msgid "translator-credits"
+msgstr "感謝翻譯"
+
+#: src/gr-about-dialog.c:917
+msgid "Learn more about Recipes"
+msgstr ""
+
+#: src/gr-about-dialog.c:924
+msgid "Recipes by"
+msgstr ""
+
+#: src/gr-account.c:111
+#, c-format
+msgid "Got an error from Account portal"
+msgstr ""
+
+#: src/gr-account.c:162
+msgid ""
+"Allow your personal information to be included with recipes you share with "
+"your friends."
+msgstr "允許在分享給朋友的食譜加入您的個人資訊"
+
+#: src/gr-app.c:209
+#, c-format
+msgid "Supported categories: %s\n"
+msgstr ""
+
+#: src/gr-app.c:441
+msgid "Print the version and exit"
+msgstr ""
+
+#: src/gr-app.c:445
+msgid "Turn on verbose logging"
+msgstr ""
+
+#: src/gr-app.c:449
+msgid "Show a category"
+msgstr ""
+
+#: src/gr-chef-dialog.c:159 src/gr-image-viewer.c:623
+msgid "Select an Image"
+msgstr "選擇圖像"
+
+#: src/gr-chef-dialog.c:162 src/gr-image-viewer.c:626 src/gr-window.c:1218
+msgid "Open"
+msgstr "開啟"
+
+#: src/gr-chef-dialog.c:167 src/gr-image-viewer.c:631
+msgid "Image files"
+msgstr "圖片檔"
+
+#: src/gr-chef-dialog.c:423
+msgid "New Chef"
+msgstr "新廚師"
+
+#: src/gr-cooking-page.c:249
+msgid "Cooking"
+msgstr "烹調中"
+
+#: src/gr-cooking-view.c:157
+#, c-format
+msgid "Step %d/%d"
+msgstr "步驟 %d/%d"
+
+#: src/gr-cooking-view.c:163
+#, c-format
+msgid "Step %d"
+msgstr "步驟%d"
+
+#: src/gr-cooking-view.c:273
+msgid "GNOME Recipes"
+msgstr ""
+
+#: src/gr-cooking-view.c:393
+msgid "A cooking timer has expired"
+msgstr ""
+
+#: src/gr-cooking-view.c:411 src/gr-cooking-view.c:427
+#, c-format
+msgid "Timer for “%s” has expired."
+msgstr ""
+
+#: src/gr-cooking-view.c:425
+msgid "Timer is up!"
+msgstr "時間到"
+
+#: src/gr-cuisine.c:45
+msgid "American"
+msgstr "美國"
+
+#: src/gr-cuisine.c:46
+msgid "Chinese"
+msgstr "中華"
+
+#: src/gr-cuisine.c:47
+msgid "Indian"
+msgstr "印度"
+
+#: src/gr-cuisine.c:48
+msgid "Italian"
+msgstr "義大利"
+
+#: src/gr-cuisine.c:49
+msgid "French"
+msgstr "法國"
+
+#: src/gr-cuisine.c:50
+msgid "Greek"
+msgstr "希臘"
+
+#: src/gr-cuisine.c:51
+msgid "Mediterranean"
+msgstr "地中海"
+
+#: src/gr-cuisine.c:52
+msgid "Mexican"
+msgstr "墨西哥"
+
+#: src/gr-cuisine.c:53
+msgid "Nordic"
+msgstr "北歐"
+
+#: src/gr-cuisine.c:54
+msgid "Turkish"
+msgstr "土耳其"
+
+#: src/gr-cuisine.c:58
+msgid "American Cuisine"
+msgstr "美國料理"
+
+#: src/gr-cuisine.c:59
+msgid "Chinese Cuisine"
+msgstr "中華料理"
+
+#: src/gr-cuisine.c:60
+msgid "Indian Cuisine"
+msgstr "印度料理"
+
+#: src/gr-cuisine.c:61
+msgid "Italian Cuisine"
+msgstr "義大利料理"
+
+#: src/gr-cuisine.c:62
+msgid "French Cuisine"
+msgstr "法國料理"
+
+#: src/gr-cuisine.c:63
+msgid "Greek Cuisine"
+msgstr "希臘料理"
+
+#: src/gr-cuisine.c:64
+msgid "Mediterranean Cuisine"
+msgstr "地中海料理"
+
+#: src/gr-cuisine.c:65
+msgid "Mexican Cuisine"
+msgstr "墨西哥料理"
+
+#: src/gr-cuisine.c:66
+msgid "Nordic Cuisine"
+msgstr "北歐料理"
+
+#: src/gr-cuisine.c:67
+msgid "Turkish Cuisine"
+msgstr "土耳其料理"
+
+#: src/gr-cuisine.c:71
+msgid ""
+"The cuisine of the United States reflects its history. The European "
+"colonization of the Americas yielded the introduction of a number of "
+"ingredients and cooking styles to the latter. The various styles continued "
+"expanding well into the 19th and 20th centuries, proportional to the influx "
+"of immigrants from many foreign nations; such influx developed a rich "
+"diversity in food preparation throughout the country."
+msgstr ""
+
+#: src/gr-cuisine.c:76
+msgid ""
+"Chinese cuisine includes styles originating from the diverse regions of "
+"China, as well as from Chinese people in other parts of the world including "
+"most Asian nations. The history of Chinese cuisine in China stretches back "
+"for thousands of years and has changed from period to period and in each "
+"region according to climate, imperial fashions, and local preferences. Over "
+"time, techniques and ingredients from the cuisines of other cultures were "
+"integrated into the cuisine of the Chinese people due both to imperial "
+"expansion and from the trade with nearby regions in pre-modern times, and "
+"from Europe and the New World in the modern period."
+msgstr ""
+
+#: src/gr-cuisine.c:84
+msgid ""
+"Indian cuisine encompasses a wide variety of regional and traditional "
+"cuisines native to India. Given the range of diversity in soil type, "
+"climate, culture, ethnic group and occupations, these cuisines vary "
+"significantly from each other and use locally available spices, herbs, "
+"vegetables and fruits. Indian food is also heavily influenced by religious "
+"and cultural choices and traditions. There has also been Middle Eastern and "
+"Central Asian influence on North Indian cuisine from the years of Mughal "
+"rule. Indian cuisine has been and is still evolving, as a result of the "
+"nation’s cultural interactions with other societies."
+msgstr ""
+
+#: src/gr-cuisine.c:92
+msgid ""
+"Italian cuisine is characterized by its simplicity, with many dishes having "
+"only four to eight ingredients. Italian cooks rely chiefly on the quality of "
+"the ingredients rather than on elaborate preparation. Ingredients and dishes "
+"vary by region. Many dishes that were once regional, however, have "
+"proliferated with variations throughout the country."
+msgstr ""
+
+#: src/gr-cuisine.c:96
+msgid ""
+"French cuisine was codified in the 20th century by Auguste Escoffier to "
+"become the modern haute cuisine; Escoffier, however, left out much of the "
+"local culinary character to be found in the regions of France and was "
+"considered difficult to execute by home cooks. Gastro-tourism and the Guide "
+"Michelin helped to acquaint people with the rich bourgeois and peasant "
+"cuisine of the French countryside starting in the 20th century. Gascon "
+"cuisine has also had great influence over the cuisine in the southwest of "
+"France. Many dishes that were once regional have proliferated in variations "
+"across the country."
+msgstr ""
+
+#: src/gr-cuisine.c:103
+msgid ""
+"Contemporary Greek cookery makes wide use of vegetables, olive oil, grains, "
+"fish, wine, and meat (white and red, including lamb, poultry, rabbit and "
+"pork). Other important ingredients include olives, cheese, eggplant "
+"(aubergine), zucchini (courgette), lemon juice, vegetables, herbs, bread and "
+"yoghurt. The most commonly used grain is wheat; barley is also used. Common "
+"dessert ingredients include nuts, honey, fruits, and filo pastry."
+msgstr ""
+
+#: src/gr-cuisine.c:108
+msgid ""
+"Mediterranean cuisine has a lot to offer, and is legendary for being very "
+"healthy too. Expect to see olives, yoghurt and garlic."
+msgstr ""
+
+#: src/gr-cuisine.c:109
+msgid ""
+"Mexican cuisine is primarily a fusion of indigenous Mesoamerican cooking "
+"with European, especially Spanish, elements added after the Spanish conquest "
+"of the Aztec Empire in the 16th century. The staples are native foods, such "
+"as corn, beans, avocados, tomatoes, and chili peppers, along with rice, "
+"which was brought by the Spanish. Europeans introduced a large number of "
+"other foods, the most important of which were meats from domesticated "
+"animals (beef, pork, chicken, goat, and sheep), dairy products (especially "
+"cheese), and various herbs and spices."
+msgstr ""
+
+#: src/gr-cuisine.c:116
+msgid ""
+"Cooking in Denmark has always been inspired by foreign and continental "
+"practises and the use of imported tropical spices like cinnamon, cardamom, "
+"nutmeg and black pepper can be traced to the Danish cuisine of the Middle "
+"Ages and some even to the Vikings."
+msgstr ""
+
+#: src/gr-cuisine.c:117
+msgid ""
+"You can find a great variety of mouth watering dishes in Turkish cuisine, "
+"which is mostly the heritage of Ottoman cuisine. It is the mixture and "
+"refinement of Central Asian, Middle Eastern and Balkan cuisines. Therefore "
+"it is impossible to fit Turkish cuisine into a short list."
+msgstr ""
+
+#: src/gr-details-page.c:193 src/gr-edit-page.c:936
+msgid "serving"
+msgstr ""
+
+#: src/gr-details-page.c:193 src/gr-edit-page.c:937
+#: src/gr-recipe-importer.c:504 src/gr-recipe-store.c:410
+#: src/gr-shopping-tile.c:110
+msgid "servings"
+msgstr ""
+
+#: src/gr-details-page.c:367
+msgid "Could not find this recipe."
+msgstr "無法找到此食譜"
+
+#: src/gr-details-page.c:576
+#, c-format
+msgid "Timer: %s"
+msgstr "計時器：%s"
+
+#: src/gr-details-page.c:583
+#, c-format
+msgid "Image %d"
+msgstr "圖片%d"
+
+#: src/gr-details-page.c:724 src/gr-edit-page.c:1597
+#, c-format
+msgid "Recipe by %s"
+msgstr "%s的食譜"
+
+#: src/gr-diet.c:34
+msgid "Gluten-free recipes"
+msgstr "不含麩質的食譜"
+
+#: src/gr-diet.c:37
+msgid "Nut-free recipes"
+msgstr ""
+
+#: src/gr-diet.c:40
+msgid "Vegan recipes"
+msgstr "素食食譜"
+
+#: src/gr-diet.c:43
+msgid "Vegetarian recipes"
+msgstr "蔬食食譜"
+
+#: src/gr-diet.c:46
+msgid "Milk-free recipes"
+msgstr "無奶食譜"
+
+#: src/gr-diet.c:49
+msgid "Halal recipes"
+msgstr "清真食譜"
+
+#: src/gr-diet.c:52 src/gr-diet.c:84
+msgid "Other dietary restrictions"
+msgstr "其他飲食限制"
+
+#: src/gr-diet.c:66
+msgid ""
+"A gluten-free diet is a diet that excludes gluten, a protein composite found "
+"in wheat, barley, rye, and all their species and hybrids (such as spelt, "
+"kamut, and triticale). The inclusion of oats in a gluten-free diet remains "
+"controversial. Avenin present in oats may also be toxic for coeliac people; "
+"its toxicity depends on the cultivar consumed. Furthermore, oats are "
+"frequently cross-contaminated with cereals containing gluten.\n"
+"<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free\">Learn more…</"
+"a>"
+msgstr ""
+
+#: src/gr-diet.c:69
+msgid ""
+"A tree nut allergy is a hypersensitivity to dietary substances from tree "
+"nuts and edible tree seeds causing an overreaction of the immune system "
+"which may lead to severe physical symptoms. Tree nuts include, but are not "
+"limited to, almonds, Brazil nuts, cashews, chestnuts, filberts/hazelnuts, "
+"macadamia nuts, pecans, pistachios, pine nuts, shea nuts and walnuts.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">Learn more…</a>"
+msgstr ""
+
+#: src/gr-diet.c:72
+msgid ""
+"Veganism is both the practice of abstaining from the use of animal products, "
+"particularly in diet, and an associated philosophy that rejects the "
+"commodity status of animals.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Veganism\">Learn more…</a>"
+msgstr ""
+
+#: src/gr-diet.c:75
+msgid ""
+"Vegetarian cuisine is based on food that meets vegetarian standards by not "
+"including meat and animal tissue products (such as gelatin or animal-derived "
+"rennet). For lacto-ovo vegetarianism (the most common type of vegetarianism "
+"in the Western world), eggs and dairy products such as milk and cheese are "
+"permitted. For lacto vegetarianism, the earliest known type of vegetarianism "
+"(recorded in India), dairy products such as milk and cheese are permitted.\n"
+"The strictest forms of vegetarianism are veganism and fruitarianism, which "
+"exclude all animal products, including dairy products as well as honey, and "
+"even some refined sugars if filtered and whitened with bone char.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Vegetarianism\">Learn more…</a>"
+msgstr ""
+
+#: src/gr-diet.c:78
+msgid ""
+"Lactose intolerance is a condition in which people have symptoms due to the "
+"decreased ability to digest lactose, a sugar found in milk products. Those "
+"affected vary in the amount of lactose they can tolerate before symptoms "
+"develop. Symptoms may include abdominal pain, bloating, diarrhea, gas, and "
+"nausea. These typically start between half and two hours after drinking "
+"milk. Severity depends on the amount a person eats or drinks. It does not "
+"cause damage to the gastrointestinal tract.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Learn more…</a>"
+msgstr "乳糖不耐症狀是指"
+
+#: src/gr-diet.c:81
+msgid "Halal meat is prepared according to Islamic traditions"
+msgstr ""
+
+#: src/gr-edit-page.c:600
+msgid "hour"
+msgstr "時"
+
+#: src/gr-edit-page.c:601
+msgid "hours"
+msgstr "時"
+
+#: src/gr-edit-page.c:602
+msgctxt "hour abbreviation"
+msgid "h"
+msgstr "h"
+
+#: src/gr-edit-page.c:606
+msgid "minute"
+msgstr "分鐘"
+
+#: src/gr-edit-page.c:607
+msgid "minutes"
+msgstr "分鐘"
+
+#: src/gr-edit-page.c:608
+msgctxt "minute abbreviation"
+msgid "min"
+msgstr "min"
+
+#: src/gr-edit-page.c:609
+msgctxt "minute abbreviation"
+msgid "m"
+msgstr "m"
+
+#: src/gr-edit-page.c:613
+msgid "second"
+msgstr "秒"
+
+#: src/gr-edit-page.c:614
+msgid "seconds"
+msgstr "秒"
+
+#: src/gr-edit-page.c:615
+msgctxt "second abbreviation"
+msgid "sec"
+msgstr "sec"
+
+#: src/gr-edit-page.c:616
+msgctxt "second abbreviation"
+msgid "s"
+msgstr "s"
+
+#: src/gr-edit-page.c:901
+msgid "Recipe Author"
+msgstr "食譜作者"
+
+#: src/gr-edit-page.c:940
+msgid "loaf"
+msgstr ""
+
+#: src/gr-edit-page.c:941
+msgid "loafs"
+msgstr ""
+
+#: src/gr-edit-page.c:944
+msgid "ounce"
+msgstr "盎司"
+
+#: src/gr-edit-page.c:945
+msgid "ounces"
+msgstr "盎司"
+
+#: src/gr-edit-page.c:1547
+msgid "_Name Your Recipe"
+msgstr "命名您的食譜(_N)"
+
+#: src/gr-edit-page.c:1734 src/gr-edit-page.c:1796 src/gr-recipe-store.c:1333
+#, c-format
+msgid "You need to provide a name for the recipe"
+msgstr "您必須為食譜提供名稱"
+
+#: src/gr-edit-page.c:1752
+#, c-format
+msgid "Some ingredients need correction"
+msgstr "部份材料需要修正"
+
+#: src/gr-gourmet-format.c:174
+#, c-format
+msgid "Not a Gourmet XML document"
+msgstr ""
+
+#: src/gr-ingredients-viewer-row.c:159
+msgid "Amount…"
+msgstr ""
+
+#: src/gr-ingredients-viewer-row.c:174
+msgid "Ingredient…"
+msgstr "材料…"
+
+#: src/gr-list-page.c:310
+msgid "Gluten-free Recipes"
+msgstr ""
+
+#: src/gr-list-page.c:312
+msgid "Nut-free Recipes"
+msgstr ""
+
+#: src/gr-list-page.c:314
+msgid "Vegan Recipes"
+msgstr "素食食譜"
+
+#: src/gr-list-page.c:316
+msgid "Vegetarian Recipes"
+msgstr "蔬食食譜"
+
+#: src/gr-list-page.c:318
+msgid "Milk-free Recipes"
+msgstr "無奶食譜"
+
+#: src/gr-list-page.c:320
+msgid "Halal Recipes"
+msgstr "清真食譜"
+
+#: src/gr-list-page.c:322
+msgid "Other Dietary Restrictions"
+msgstr "其他飲食限制"
+
+#: src/gr-list-page.c:367
+#, c-format
+msgid "No %s found"
+msgstr ""
+
+#: src/gr-list-page.c:370 src/gr-list-page.c:439 src/gr-list-page.c:472
+msgid "You could add one using the “New Recipe” button."
+msgstr ""
+
+#: src/gr-list-page.c:428
+#, c-format
+msgid "Recipes by %s"
+msgstr "%s的食譜"
+
+#: src/gr-list-page.c:435
+#, c-format
+msgid "No recipes by chef %s found"
+msgstr "未找到廚師%s的食譜"
+
+#: src/gr-list-page.c:441 src/gr-list-page.c:515 src/gr-list-page.c:542
+#: src/gr-list-page.c:577
+msgid "Sorry about this."
+msgstr ""
+
+#: src/gr-list-page.c:469
+#, c-format
+msgid "No recipes for %s found"
+msgstr ""
+
+#: src/gr-list-page.c:493
+msgid "No favorite recipes found"
+msgstr "未找到最愛食譜"
+
+#: src/gr-list-page.c:494
+msgid "Use the ♥ button to mark recipes as favorites."
+msgstr "使用 ♥ 鈕標示最愛食譜。"
+
+#: src/gr-list-page.c:541
+msgid "No new recipes"
+msgstr "無新食譜"
+
+#: src/gr-list-page.c:576
+msgid "No imported recipes found"
+msgstr "未發現已匯入之食譜"
+
+#: src/gr-meal.c:45
+msgid "Main Course"
+msgstr "主菜"
+
+#: src/gr-meal.c:46
+msgid "Snacks"
+msgstr "甜點"
+
+#: src/gr-meal.c:47
+msgid "Breakfast"
+msgstr "早餐"
+
+#: src/gr-meal.c:48
+msgid "Side Dishes"
+msgstr "副菜"
+
+#: src/gr-meal.c:49
+msgid "Desserts"
+msgstr "點心"
+
+#: src/gr-meal.c:50
+msgid "Cake and Baking"
+msgstr "蛋糕和烘焙品"
+
+#: src/gr-meal.c:51
+msgid "Drinks and Cocktails"
+msgstr "飲料和雞尾酒"
+
+#: src/gr-meal.c:52
+msgid "Pizza"
+msgstr "披薩"
+
+#: src/gr-meal.c:53
+msgid "Pasta"
+msgstr ""
+
+#: src/gr-meal.c:54
+msgid "Salad"
+msgstr ""
+
+#: src/gr-meal.c:55
+msgid "Other"
+msgstr "其他"
+
+#: src/gr-number.c:148 src/gr-number.c:217 src/gr-number.c:226
+#, c-format
+msgid "Could not parse %s as a fraction"
+msgstr ""
+
+#: src/gr-number.c:251
+#, c-format
+msgid "Could not parse %s as a integer"
+msgstr ""
+
+#: src/gr-number.c:273
+#, c-format
+msgid "Could not parse %s as a float"
+msgstr ""
+
+#: src/gr-number.c:322
+#, c-format
+msgid "Could not parse %s as a number"
+msgstr ""
+
+#: src/gr-recipe-exporter.c:168
+msgid "Save the exported recipe"
+msgstr "儲存已匯出食譜"
+
+#: src/gr-recipe-exporter.c:171 src/gr-shopping-list-exporter.c:697
+msgid "Save"
+msgstr "儲存"
+
+#: src/gr-recipe-exporter.c:206
+msgid "Recipe contribution"
+msgstr "供餐食譜"
+
+#: src/gr-recipe-exporter.c:207
+msgid "Please accept my attached recipe contribution."
+msgstr ""
+
+#: src/gr-recipe-exporter.c:217
+msgid "Try this recipe"
+msgstr "嘗試這項食譜。"
+
+#: src/gr-recipe-exporter.c:218
+msgid ""
+"Hi,\n"
+"\n"
+"you should try this recipe."
+msgstr ""
+"您好，\n"
+"\n"
+"您應嘗試這些食譜。"
+
+#: src/gr-recipe-exporter.c:221
+msgid "Try these recipes"
+msgstr "嘗試這些食譜。"
+
+#: src/gr-recipe-exporter.c:222
+msgid ""
+"Hi,\n"
+"\n"
+"you should try these recipes."
+msgstr ""
+"您好，\n"
+"\n"
+"您可嘗試這些食譜。"
+
+#: src/gr-recipe-exporter.c:225
+msgid "(The attached file can be imported into GNOME Recipes.)"
+msgstr "（附帶檔案可匯入為GNOME 食譜。）"
+
+#: src/gr-recipe-exporter.c:437
+#, c-format
+msgid "This build does not support exporting"
+msgstr ""
+
+#: src/gr-recipe-exporter.c:520
+#, c-format
+msgid ""
+"Error while exporting:\n"
+"%s"
+msgstr ""
+"匯出時時發生錯誤：\n"
+"%s"
+
+#: src/gr-recipe-exporter.c:617
+#, c-format
+msgid "%d recipe selected for sharing"
+msgid_plural "%d recipes selected for sharing"
+msgstr[0] ""
+
+#: src/gr-recipe-exporter.c:649
+msgid ""
+"Some of the selected recipes are included\n"
+"with GNOME Recipes. You should only contribute\n"
+"your own recipes."
+msgstr ""
+
+#: src/gr-recipe-formatter.c:88 src/gr-recipe-printer.c:164
+msgid "Author:"
+msgstr "作者："
+
+#: src/gr-recipe-formatter.c:89 src/gr-recipe-printer.c:165
+msgid "Preparation:"
+msgstr "備料："
+
+#: src/gr-recipe-formatter.c:90 src/gr-recipe-printer.c:166
+msgid "Cooking:"
+msgstr "烹調中："
+
+#: src/gr-recipe-formatter.c:93 src/gr-recipe-printer.c:168
+msgid "Yield:"
+msgstr ""
+
+#: src/gr-recipe-importer.c:238
+#, c-format
+msgid ""
+"Error while importing recipe:\n"
+"%s"
+msgstr ""
+
+#: src/gr-recipe-importer.c:518
+#, c-format
+msgid "Failed to load recipe: Couldn’t parse Created key"
+msgstr ""
+
+#: src/gr-recipe-importer.c:529
+#, c-format
+msgid "Failed to load recipe: Couldn’t parse Modified key"
+msgstr ""
+
+#: src/gr-recipe-importer.c:809
+#, c-format
+msgid "No chef information found"
+msgstr "找不到廚師資訊"
+
+#: src/gr-recipe-importer.c:839
+#, c-format
+msgid "This build does not support importing"
+msgstr ""
+
+#: src/gr-recipe-printer.c:173
+msgid "Cuisine:"
+msgstr "料理："
+
+#: src/gr-recipe-printer.c:177
+msgid "Meal:"
+msgstr "餐點："
+
+#: src/gr-recipe-printer.c:181
+msgid "Season:"
+msgstr "季節："
+
+#: src/gr-recipe-printer.c:229
+msgid "Notes"
+msgstr ""
+
+#: src/gr-recipe-printer.c:472 src/gr-shopping-list-printer.c:297
+msgid "Error printing file:"
+msgstr ""
+
+#: src/gr-recipe-printer.c:473 src/gr-shopping-list-printer.c:298
+msgid "No details"
+msgstr "無細節"
+
+#: src/gr-recipes-page.c:221 src/gr-window.c:1383
+msgid "My Recipes"
+msgstr "我的食譜"
+
+#: src/gr-recipes-page.c:222
+msgid "Favorites"
+msgstr "最愛"
+
+#: src/gr-recipes-page.c:223 src/gr-window.c:1331
+msgid "All Recipes"
+msgstr "所有食譜"
+
+#: src/gr-recipes-page.c:224 src/gr-window.c:1340
+msgid "New Recipes"
+msgstr "新食譜"
+
+#: src/gr-recipes-page.c:273
+msgid "Last edited:"
+msgstr "上次編輯"
+
+#: src/gr-recipes-page.c:372
+#, c-format
+msgid "Buy ingredients: <b>%s</b>"
+msgstr ""
+
+#: src/gr-recipes-page.c:374
+#, c-format
+msgid "Buy ingredients: <b>%s and %s</b>"
+msgstr ""
+
+#: src/gr-recipes-page.c:376
+#, c-format
+msgid "Buy ingredients: <b>%s, %s and %d other</b>"
+msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
+msgstr[0] ""
+
+#: src/gr-recipe-store.c:1338
+#, c-format
+msgid ""
+"A recipe with this name and author (%s) already exists.\n"
+"Please choose a different name"
+msgstr ""
+"一個相同名字與作者 (%s) 的食譜已經存在，\n"
+"請選用不同的名字。"
+
+#: src/gr-recipe-store.c:1367
+#, c-format
+msgid "You need to provide an ID for the recipe"
+msgstr "您必須為食譜提供名稱"
+
+#: src/gr-recipe-store.c:1373
+#, c-format
+msgid "A recipe with this ID already exists"
+msgstr "已存在此名稱的食譜"
+
+#: src/gr-recipe-store.c:1542
+#, c-format
+msgid "You need to provide an ID"
+msgstr "您必須提供名稱"
+
+#: src/gr-recipe-store.c:1548
+#, c-format
+msgid "Sorry, this ID is taken"
+msgstr "抱歉，此名稱已使用"
+
+#: src/gr-recipe-store.c:1575
+#, c-format
+msgid "You need to provide an ID for the chef"
+msgstr "您必須為廚師提供名稱"
+
+#: src/gr-recipe-store.c:1581
+#, c-format
+msgid "A chef with this ID already exists"
+msgstr "已存在此名稱的廚師"
+
+#: src/gr-recipe-tile.c:99 src/gr-shopping-tile.c:108
+#, c-format
+msgid "by %s"
+msgstr ""
+
+#: src/gr-recipe-tile.c:99 src/gr-shopping-tile.c:108
+msgid "Anonymous"
+msgstr "匿名"
+
+#: src/gr-season.c:41
+msgid "Thanksgiving"
+msgstr "感恩節"
+
+#: src/gr-season.c:42
+msgid "Christmas"
+msgstr "聖誕節"
+
+#: src/gr-season.c:43
+msgid "New Year’s"
+msgstr ""
+
+#: src/gr-season.c:44
+msgid "Spring"
+msgstr "春季"
+
+#: src/gr-season.c:45
+msgid "Summer"
+msgstr "夏季"
+
+#: src/gr-season.c:46
+msgid "Fall"
+msgstr "秋季"
+
+#: src/gr-season.c:47
+msgid "Winter"
+msgstr "冬季"
+
+#: src/gr-shopping-list-exporter.c:270
+msgid "Add Account"
+msgstr ""
+
+#: src/gr-shopping-list-exporter.c:476 src/gr-shopping-list-exporter.c:566
+msgid "Shopping List from Recipes"
+msgstr "食譜購物清單"
+
+#: src/gr-shopping-list-exporter.c:694
+msgid "Save the shopping list"
+msgstr "儲存採買單"
+
+#: src/gr-shopping-list-exporter.c:724 src/gr-shopping-list-formatter.c:42
+#: src/gr-shopping-list-printer.c:135
+msgid "Shopping List"
+msgstr "購物單"
+
+#: src/gr-shopping-list-formatter.c:44
+msgid "For the following recipes:"
+msgstr ""
+
+#: src/gr-shopping-list-printer.c:144
+msgid "For the following recipes"
+msgstr ""
+
+#: src/gr-shopping-list-printer.c:161
+msgid "Items"
+msgstr "項目："
+
+#: src/gr-shopping-page.c:103
+#, c-format
+msgid "%d ingredient marked for purchase"
+msgid_plural "%d ingredients marked for purchase"
+msgstr[0] ""
+
+#: src/gr-shopping-page.c:122
+#, c-format
+msgid "Buy Ingredients (%d recipe)"
+msgid_plural "Buy Ingredients (%d recipes)"
+msgstr[0] "購買材料（%d 食譜）"
+
+#: src/gr-shopping-page.c:127
+#, c-format
+msgid "%d Recipe marked for preparation"
+msgid_plural "%d Recipes marked for preparation"
+msgstr[0] ""
+
+#: src/gr-spice-row.c:131
+msgid "Mild or somewhat spicy"
+msgstr "微辣"
+
+#: src/gr-spice-row.c:133
+msgid "At least somewhat spicy"
+msgstr "小辣"
+
+#: src/gr-spice-row.c:137
+msgid "At most hot"
+msgstr "中辣"
+
+#: src/gr-spice-row.c:139
+msgid "Hot or very spicy"
+msgstr "大辣"
+
+#: src/gr-unit.c:46
+msgctxt "unit abbreviation"
+msgid "g"
+msgstr "g"
+
+#: src/gr-unit.c:46
+msgctxt "unit name"
+msgid "gram"
+msgstr "克"
+
+#: src/gr-unit.c:46
+msgctxt "unit plural"
+msgid "grams"
+msgstr "克"
+
+#: src/gr-unit.c:47
+msgctxt "unit abbreviation"
+msgid "kg"
+msgstr "kg"
+
+#: src/gr-unit.c:47
+msgctxt "unit name"
+msgid "kilogram"
+msgstr "公斤"
+
+#: src/gr-unit.c:47
+msgctxt "unit plural"
+msgid "kilograms"
+msgstr "公斤"
+
+#: src/gr-unit.c:48
+msgctxt "unit abbreviation"
+msgid "lb"
+msgstr "lb"
+
+#: src/gr-unit.c:48
+msgctxt "unit name"
+msgid "pound"
+msgstr "磅"
+
+#: src/gr-unit.c:48
+msgctxt "unit plural"
+msgid "pounds"
+msgstr "磅"
+
+#: src/gr-unit.c:49
+msgctxt "unit abbreviation"
+msgid "oz"
+msgstr "oz"
+
+#: src/gr-unit.c:49
+msgctxt "unit name"
+msgid "ounce"
+msgstr "盎司"
+
+#: src/gr-unit.c:49
+msgctxt "unit plural"
+msgid "ounces"
+msgstr "盎司"
+
+#: src/gr-unit.c:50
+msgctxt "unit abbreviation"
+msgid "l"
+msgstr "l"
+
+#: src/gr-unit.c:50
+msgctxt "unit name"
+msgid "liter"
+msgstr "升"
+
+#: src/gr-unit.c:50
+msgctxt "unit plural"
+msgid "liters"
+msgstr "升"
+
+#: src/gr-unit.c:51
+msgctxt "unit abbreviation"
+msgid "dl"
+msgstr "dl"
+
+#: src/gr-unit.c:51
+msgctxt "unit name"
+msgid "deciliter"
+msgstr "公合（分升）"
+
+#: src/gr-unit.c:51
+msgctxt "unit plural"
+msgid "deciliters"
+msgstr "公合（分升）"
+
+#: src/gr-unit.c:52
+msgctxt "unit abbreviation"
+msgid "ml"
+msgstr "ml"
+
+#: src/gr-unit.c:52
+msgctxt "unit name"
+msgid "milliliter"
+msgstr "毫升"
+
+#: src/gr-unit.c:52
+msgctxt "unit plural"
+msgid "milliliters"
+msgstr "毫升"
+
+#: src/gr-unit.c:53 src/gr-unit.c:54
+msgctxt "unit abbreviation"
+msgid "fl oz"
+msgstr "fl oz"
+
+#: src/gr-unit.c:53 src/gr-unit.c:54
+msgctxt "unit name"
+msgid "fluid ounce"
+msgstr ""
+
+#: src/gr-unit.c:53 src/gr-unit.c:54
+msgctxt "unit plural"
+msgid "fluid ounces"
+msgstr ""
+
+#: src/gr-unit.c:55
+msgctxt "unit abbreviation"
+msgid "pt"
+msgstr "pt"
+
+#: src/gr-unit.c:55
+msgctxt "unit name"
+msgid "pint"
+msgstr "品脫"
+
+#: src/gr-unit.c:55
+msgctxt "unit plural"
+msgid "pints"
+msgstr "品脫"
+
+#: src/gr-unit.c:56
+msgctxt "unit abbreviation"
+msgid "qt"
+msgstr "qt"
+
+#: src/gr-unit.c:56
+msgctxt "unit name"
+msgid "quart"
+msgstr "垮脫"
+
+#: src/gr-unit.c:56
+msgctxt "unit plural"
+msgid "quarts"
+msgstr "垮脫"
+
+#: src/gr-unit.c:57
+msgctxt "unit abbreviation"
+msgid "gal"
+msgstr "gal"
+
+#: src/gr-unit.c:57
+msgctxt "unit name"
+msgid "gallon"
+msgstr "加侖"
+
+#: src/gr-unit.c:57
+msgctxt "unit plural"
+msgid "gallons"
+msgstr "加侖"
+
+#: src/gr-unit.c:58
+msgctxt "unit abbreviation"
+msgid "cup"
+msgstr "cup"
+
+#: src/gr-unit.c:58
+msgctxt "unit name"
+msgid "cup"
+msgstr "杯"
+
+#: src/gr-unit.c:58
+msgctxt "unit plural"
+msgid "cups"
+msgstr ""
+
+#: src/gr-unit.c:59
+msgctxt "unit abbreviation"
+msgid "tbsp"
+msgstr "tbsp"
+
+#: src/gr-unit.c:59
+msgctxt "unit name"
+msgid "tablespoon"
+msgstr "湯匙"
+
+#: src/gr-unit.c:59
+msgctxt "unit plural"
+msgid "tablespoons"
+msgstr "湯匙"
+
+#: src/gr-unit.c:60
+msgctxt "unit abbreviation"
+msgid "tsp"
+msgstr "tsp"
+
+#: src/gr-unit.c:60
+msgctxt "unit name"
+msgid "teaspoon"
+msgstr "茶匙"
+
+#: src/gr-unit.c:60
+msgctxt "unit plural"
+msgid "teaspoons"
+msgstr "茶匙"
+
+#: src/gr-unit.c:61
+msgctxt "unit abbreviation"
+msgid "box"
+msgstr "box"
+
+#: src/gr-unit.c:61
+msgctxt "unit name"
+msgid "box"
+msgstr "盒"
+
+#: src/gr-unit.c:61
+msgctxt "unit plural"
+msgid "boxes"
+msgstr ""
+
+#: src/gr-unit.c:62
+msgctxt "unit abbreviation"
+msgid "pkg"
+msgstr "pkg"
+
+#: src/gr-unit.c:62
+msgctxt "unit name"
+msgid "package"
+msgstr "包"
+
+#: src/gr-unit.c:62
+msgctxt "unit plural"
+msgid "packages"
+msgstr "包"
+
+#: src/gr-unit.c:63
+msgctxt "unit abbreviation"
+msgid "glass"
+msgstr ""
+
+#: src/gr-unit.c:63
+msgctxt "unit name"
+msgid "glass"
+msgstr ""
+
+#: src/gr-unit.c:63
+msgctxt "unit plural"
+msgid "glasses"
+msgstr ""
+
+#: src/gr-unit.c:64
+msgctxt "unit abbreviation"
+msgid "mm"
+msgstr "mm"
+
+#: src/gr-unit.c:64
+msgctxt "unit name"
+msgid "millimeter"
+msgstr "毫升"
+
+#: src/gr-unit.c:64
+msgctxt "unit plural"
+msgid "millimeters"
+msgstr "毫升"
+
+#: src/gr-unit.c:65
+msgctxt "unit abbreviation"
+msgid "cm"
+msgstr "cm"
+
+#: src/gr-unit.c:65
+msgctxt "unit name"
+msgid "centimeter"
+msgstr ""
+
+#: src/gr-unit.c:65
+msgctxt "unit plural"
+msgid "centimeters"
+msgstr ""
+
+#: src/gr-unit.c:66
+msgctxt "unit abbreviation"
+msgid "m"
+msgstr "m"
+
+#: src/gr-unit.c:66
+msgctxt "unit name"
+msgid "meter"
+msgstr ""
+
+#: src/gr-unit.c:66
+msgctxt "unit plural"
+msgid "meters"
+msgstr ""
+
+#: src/gr-unit.c:67
+msgctxt "unit abbreviation"
+msgid "st"
+msgstr "st"
+
+#: src/gr-unit.c:67
+msgctxt "unit name"
+msgid "stone"
+msgstr ""
+
+#: src/gr-unit.c:67
+msgctxt "unit plural"
+msgid "stone"
+msgstr ""
+
+#: src/gr-unit.c:68
+msgctxt "unit abbreviation"
+msgid "pinch"
+msgstr ""
+
+#: src/gr-unit.c:68
+msgctxt "unit name"
+msgid "pinch"
+msgstr ""
+
+#: src/gr-unit.c:68
+msgctxt "unit plural"
+msgid "pinches"
+msgstr ""
+
+#: src/gr-unit.c:69
+msgctxt "unit abbreviation"
+msgid "bunch"
+msgstr ""
+
+#: src/gr-unit.c:69
+msgctxt "unit name"
+msgid "bunch"
+msgstr ""
+
+#: src/gr-unit.c:69
+msgctxt "unit plural"
+msgid "bunches"
+msgstr ""
+
+#: src/gr-unit.c:167
+#, c-format
+msgid "I don’t know this unit: %s"
+msgstr ""
+
+#: src/gr-utils.c:334
+#, c-format
+msgid "more than a year ago"
+msgstr "超過一年前"
+
+#: src/gr-utils.c:337 src/gr-utils.c:341
+#, c-format
+msgid "%d month ago"
+msgid_plural "%d months ago"
+msgstr[0] "%d月前"
+
+#: src/gr-utils.c:345
+#, c-format
+msgid "%d day ago"
+msgid_plural "%d days ago"
+msgstr[0] "%d 天前"
+
+#: src/gr-utils.c:348
+#, c-format
+msgid "just now"
+msgstr "現在"
+
+#: src/gr-utils.c:350
+#, c-format
+msgid "10 minutes ago"
+msgstr "10分鐘前"
+
+#: src/gr-utils.c:352
+#, c-format
+msgid "half an hour ago"
+msgstr "半小時前"
+
+#: src/gr-utils.c:356
+#, c-format
+msgid "%d hour ago"
+msgid_plural "%d hours ago"
+msgstr[0] "%d 小時前"
+
+#: src/gr-utils.c:362
+msgid "some time ago"
+msgstr "一段時間"
+
+#: src/gr-utils.c:385
+msgid "Could not connect to the session bus from inside the Flatpak sandbox."
+msgstr ""
+
+#: src/gr-utils.c:386
+msgid "Certain functionality will not be available."
+msgstr ""
+
+#: src/gr-utils.c:406
+msgid ""
+"Missing the desktop portal needed to open files from inside a Flatpak "
+"sandbox."
+msgstr ""
+
+#: src/gr-utils.c:408
+msgid ""
+"Missing the desktop portal needed to print from inside a Flatpak sandbox."
+msgstr ""
+
+#: src/gr-utils.c:410
+msgid ""
+"Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
+msgstr ""
+
+#: src/gr-utils.c:414
+msgid ""
+"Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
+msgstr "請於您的系統安裝 xdg-desktop-portal 和 xdg-desktop-portal-gtk"
+
+#: src/gr-window.c:256
+msgid "Add a New Recipe"
+msgstr "建立新食譜"
+
+#: src/gr-window.c:537
+#, c-format
+msgid ""
+"The “%s” recipe has unsaved changes.\n"
+"Close the window anyway?"
+msgstr ""
+"食譜「%s」有未儲存的變更。\n"
+"仍要關閉視窗？"
+
+#: src/gr-window.c:540
+msgid ""
+"The new recipe has not been saved.\n"
+"Close the window anyway?"
+msgstr "新食譜已儲存。是否要關閉視窗？"
+
+#: src/gr-window.c:664
+#, c-format
+msgid "Recipe “%s” deleted"
+msgstr "已刪除%s食譜"
+
+#: src/gr-window.c:714
+#, c-format
+msgid "You updated your contributed “%s” recipe. Send an update?"
+msgstr ""
+
+#: src/gr-window.c:855
+msgid "Ready to Cook!"
+msgstr "開始烹調！"
+
+#: src/gr-window.c:937
+msgid "Sorted by Name"
+msgstr "以名字排序"
+
+#: src/gr-window.c:942
+msgid "Sorted by Recency"
+msgstr "以日期排序"
+
+#: src/gr-window.c:1139
+msgid "Imported Recipes"
+msgstr "匯入食譜"
+
+#: src/gr-window.c:1215
+msgid "Select a recipe file"
+msgstr ""
+
+#: src/gr-window.c:1241
+#, c-format
+msgid "Recipes have been exported to “%s”"
+msgstr "食譜以匯出成「%s」"
+
+#: src/gr-window.c:1279
+msgid "Select a file"
+msgstr "選擇檔案"
+
+#: src/gr-window.c:1282
+msgid "_Export"
+msgstr "匯出(_E)"
+
+#: src/gr-window.c:1312
+#, c-format
+msgid "Chefs: %s"
+msgstr "廚師：%s"
+
+#: src/gr-window.c:1322
+msgid "Favorite Recipes"
+msgstr "最愛食譜"
+
+#: src/gr-window.c:1370
+msgid "Buy Ingredients"
+msgstr "購買材料"
+
+#. TRANSLATORS: %s gets replaced by a version number
+#: src/gr-window.c:1514
+#, c-format
+msgid "Recipes %s"
+msgstr ""
+
+#. TRANSLATORS: %s gets replaced by a date
+#: src/gr-window.c:1531
+#, c-format
+msgid "Released: %s"
+msgstr ""
+
+#: src/gr-window.c:1534
+#, c-format
+msgid "Unreleased"
+msgstr ""
+
+#: src/ingredients.inc:1
+msgid "Almond"
+msgstr "杏仁"
+
+#: src/ingredients.inc:2
+msgid "Amaretti"
+msgstr ""
+
+#: src/ingredients.inc:3
+msgid "Anchovies"
+msgstr ""
+
+#: src/ingredients.inc:4
+msgid "Apple"
+msgstr "蘋果"
+
+#: src/ingredients.inc:5
+msgid "Apple Vinegar"
+msgstr "蘋果醋"
+
+#: src/ingredients.inc:6
+msgid "Apricot"
+msgstr ""
+
+#: src/ingredients.inc:7
+msgid "Artichoke"
+msgstr ""
+
+#: src/ingredients.inc:8
+msgid "Asparagus"
+msgstr "蘆筍"
+
+#: src/ingredients.inc:9
+msgid "Aubergine"
+msgstr "茄子"
+
+#: src/ingredients.inc:10
+msgid "Baby Spinach"
+msgstr ""
+
+#: src/ingredients.inc:11
+msgid "Bacon"
+msgstr "培根"
+
+#: src/ingredients.inc:12
+msgid "Bagel"
+msgstr "貝果"
+
+#: src/ingredients.inc:13
+msgid "Baked beans"
+msgstr "豆子"
+
+#: src/ingredients.inc:14
+msgid "Baking powder"
+msgstr "烘焙粉"
+
+#: src/ingredients.inc:15
+msgid "Banana"
+msgstr "香蕉"
+
+#: src/ingredients.inc:16
+msgid "Basil"
+msgstr "羅勒"
+
+#: src/ingredients.inc:17
+msgid "Basmati rice"
+msgstr ""
+
+#: src/ingredients.inc:18
+msgid "Bay leaf"
+msgstr ""
+
+#: src/ingredients.inc:19
+msgid "Beans"
+msgstr ""
+
+#: src/ingredients.inc:20
+msgid "Bean sprouts"
+msgstr ""
+
+#: src/ingredients.inc:21
+msgid "Beef"
+msgstr ""
+
+#: src/ingredients.inc:22
+msgid "Beef mince"
+msgstr ""
+
+#: src/ingredients.inc:23
+msgid "Beef sausage"
+msgstr "牛肉醬"
+
+#: src/ingredients.inc:24
+msgid "Beef (sirloin)"
+msgstr ""
+
+#: src/ingredients.inc:25
+msgid "Beef stock"
+msgstr ""
+
+#: src/ingredients.inc:26
+msgid "Beetroot"
+msgstr ""
+
+#: src/ingredients.inc:27
+msgid "Bell pepper"
+msgstr "燈籠椒"
+
+#: src/ingredients.inc:28
+msgid "Bell Pepper (green)"
+msgstr ""
+
+#: src/ingredients.inc:29
+msgid "Berry"
+msgstr ""
+
+#: src/ingredients.inc:30
+msgid "Bilberry"
+msgstr ""
+
+#: src/ingredients.inc:31
+msgid "Biscotti"
+msgstr ""
+
+#: src/ingredients.inc:32
+msgid "Black cardamom pod"
+msgstr ""
+
+#: src/ingredients.inc:33
+msgid "Black peppercorns"
+msgstr ""
+
+#: src/ingredients.inc:34
+msgid "Blueberry"
+msgstr ""
+
+#: src/ingredients.inc:35
+msgid "Bourbon whiskey"
+msgstr ""
+
+#: src/ingredients.inc:36
+msgid "Breadcrumbs"
+msgstr ""
+
+#: src/ingredients.inc:37
+msgid "Brewer's yeast"
+msgstr ""
+
+#: src/ingredients.inc:38
+msgid "Broad beans"
+msgstr "蠶豆"
+
+#: src/ingredients.inc:39
+msgid "Broth"
+msgstr ""
+
+#: src/ingredients.inc:40
+#, fuzzy
+#| msgid "no Sugar"
+msgid "Brown sugar"
+msgstr "無糖"
+
+#: src/ingredients.inc:41
+msgid "Butter"
+msgstr "奶油"
+
+#: src/ingredients.inc:42
+#, fuzzy
+#| msgid "Butter"
+msgid "Butter, melted"
+msgstr "奶油"
+
+#: src/ingredients.inc:43
+msgid "Button mushroom"
+msgstr ""
+
+#: src/ingredients.inc:44
+msgid "Cabbage"
+msgstr ""
+
+#: src/ingredients.inc:45
+msgid "Cake flour"
+msgstr ""
+
+#: src/ingredients.inc:46
+#, fuzzy
+#| msgid "Baked beans"
+msgid "Canellini beans"
+msgstr "豆子"
+
+#: src/ingredients.inc:47
+msgid "Canned black beans, rinsed"
+msgstr ""
+
+#: src/ingredients.inc:48
+msgid "Canned chopped tomatoes"
+msgstr ""
+
+#: src/ingredients.inc:49
+msgid "Carrot"
+msgstr "胡蘿蔔"
+
+#: src/ingredients.inc:50
+msgid "Cashews, lightly toasted"
+msgstr ""
+
+#: src/ingredients.inc:51
+msgid "Caster sugar"
+msgstr ""
+
+#: src/ingredients.inc:52
+msgid "Celery"
+msgstr ""
+
+#: src/ingredients.inc:53
+msgid "Champignons"
+msgstr ""
+
+#: src/ingredients.inc:54
+msgid "Cheese"
+msgstr "起士"
+
+#: src/ingredients.inc:55
+#, fuzzy
+#| msgid "Chinese Cuisine"
+msgid "Cheese slices"
+msgstr "中華料理"
+
+#: src/ingredients.inc:56
+msgid "Cherries, pitted"
+msgstr ""
+
+#: src/ingredients.inc:57
+msgid "Cherry tomatoes, halved"
+msgstr ""
+
+#: src/ingredients.inc:58
+#, fuzzy
+#| msgid "Linseeds"
+msgid "Chia seeds"
+msgstr "亞麻子"
+
+#: src/ingredients.inc:59
+msgid "Chicken breasts, large"
+msgstr ""
+
+#: src/ingredients.inc:60
+msgid "Chicken livers"
+msgstr ""
+
+#: src/ingredients.inc:61
+msgid "chicken stock"
+msgstr ""
+
+#: src/ingredients.inc:62
+msgid "Chili flakes"
+msgstr ""
+
+#: src/ingredients.inc:63
+#, fuzzy
+#| msgid "Cocoa powder"
+msgid "Chili powder"
+msgstr "可可粉"
+
+#: src/ingredients.inc:64
+msgid "Chili sauce (e.g. sriracha)"
+msgstr ""
+
+#: src/ingredients.inc:65
+msgid "Chocolate"
+msgstr ""
+
+#: src/ingredients.inc:66
+msgid "Chocolate frosting"
+msgstr ""
+
+#: src/ingredients.inc:67
+msgid "Chorizo"
+msgstr ""
+
+#: src/ingredients.inc:68
+msgid "Ciboulette"
+msgstr ""
+
+#: src/ingredients.inc:69
+msgid "Cilantro"
+msgstr ""
+
+#: src/ingredients.inc:70
+#, fuzzy
+#| msgid "Controls"
+msgid "Cilantro leaves"
+msgstr "控制"
+
+#: src/ingredients.inc:71
+msgid "Cinnamon"
+msgstr ""
+
+#: src/ingredients.inc:72
+msgid "Cinnamon sticks"
+msgstr ""
+
+#: src/ingredients.inc:73
+msgid "Cloves"
+msgstr ""
+
+#: src/ingredients.inc:74
+#, fuzzy
+#| msgid "Cocoa powder"
+msgid "Cocoa butter"
+msgstr "可可粉"
+
+#: src/ingredients.inc:75
+msgid "Cocoa powder"
+msgstr "可可粉"
+
+#: src/ingredients.inc:76
+msgid "Coconut milk"
+msgstr ""
+
+#: src/ingredients.inc:77
+msgid "Coconut oil"
+msgstr ""
+
+#: src/ingredients.inc:78
+#, fuzzy
+#| msgid "Cocoa powder"
+msgid "Coconut water"
+msgstr "可可粉"
+
+#: src/ingredients.inc:79
+#, fuzzy
+#| msgid "no Water"
+msgid "Cold water"
+msgstr "無水"
+
+#: src/ingredients.inc:80
+msgid "cooked beef"
+msgstr ""
+
+#: src/ingredients.inc:81
+msgid "Coriander"
+msgstr ""
+
+#: src/ingredients.inc:82
+#, fuzzy
+#| msgid "no Linseeds"
+msgid "Coriandre seeds"
+msgstr "無亞麻子"
+
+#: src/ingredients.inc:83
+msgid "Couscous"
+msgstr ""
+
+#: src/ingredients.inc:84
+msgid "Cracked pepper"
+msgstr ""
+
+#: src/ingredients.inc:85
+msgid "Cream"
+msgstr ""
+
+#: src/ingredients.inc:86
+#, fuzzy
+#| msgid "Cheese"
+msgid "Cream cheese"
+msgstr "起士"
+
+#: src/ingredients.inc:87
+msgid "Crushed red pepper flakes"
+msgstr ""
+
+#: src/ingredients.inc:88
+msgid "Cucumber"
+msgstr ""
+
+#: src/ingredients.inc:89
+msgid "Cucumber (large)"
+msgstr ""
+
+#: src/ingredients.inc:90
+msgid "Cumin"
+msgstr ""
+
+#: src/ingredients.inc:91
+#, fuzzy
+#| msgid "Pumpkin seeds"
+msgid "Cumin seeds"
+msgstr "南瓜子"
+
+#: src/ingredients.inc:92
+msgid "Dark Jamaican rum"
+msgstr ""
+
+#: src/ingredients.inc:93
+msgid "Date"
+msgstr "日期"
+
+#: src/ingredients.inc:94
+msgid "Dill"
+msgstr ""
+
+#: src/ingredients.inc:95
+msgid "Double cream"
+msgstr ""
+
+#: src/ingredients.inc:96
+msgid "Dried anchovies"
+msgstr ""
+
+#: src/ingredients.inc:97
+msgid "Dried chillies"
+msgstr ""
+
+#: src/ingredients.inc:98
+msgid "Dry or fresh cilantro"
+msgstr ""
+
+#: src/ingredients.inc:99
+msgid "Dry yeast"
+msgstr ""
+
+#: src/ingredients.inc:100
+msgid "Durum wheat semolina"
+msgstr ""
+
+#: src/ingredients.inc:101
+msgid "Earth Balance vegan buttery stick"
+msgstr ""
+
+#: src/ingredients.inc:102
+msgid "Egg"
+msgstr "蛋"
+
+#: src/ingredients.inc:103
+msgid "Egg yolks"
+msgstr ""
+
+#: src/ingredients.inc:104
+msgid "Fenugreek seeds"
+msgstr ""
+
+#: src/ingredients.inc:105
+msgid "Fig"
+msgstr "無花果"
+
+#: src/ingredients.inc:106
+msgid "Finely chopped cilantro"
+msgstr ""
+
+#: src/ingredients.inc:107
+msgid "Finely chopped onions"
+msgstr ""
+
+#: src/ingredients.inc:108
+msgid "Finely chopped thai chillies or green chillis"
+msgstr ""
+
+#: src/ingredients.inc:109
+msgid "Finely chopped tomato"
+msgstr ""
+
+#: src/ingredients.inc:110
+msgid "Fish"
+msgstr ""
+
+#: src/ingredients.inc:111
+#, fuzzy
+#| msgid "Pizza sauce"
+msgid "Fish sauce"
+msgstr "披薩醬"
+
+#: src/ingredients.inc:112
+msgid "Flour"
+msgstr "麵粉"
+
+#: src/ingredients.inc:113
+msgid "Flour (all-purpose)"
+msgstr ""
+
+#: src/ingredients.inc:114
+msgid "Flour (Tipo 00)"
+msgstr ""
+
+#: src/ingredients.inc:115
+msgid "Fresh rosemary"
+msgstr ""
+
+#: src/ingredients.inc:116
+msgid "Fresh tagliatelle"
+msgstr ""
+
+#: src/ingredients.inc:117
+msgid "Garam masala"
+msgstr ""
+
+#: src/ingredients.inc:118
+msgid "Garlic"
+msgstr "大蒜"
+
+#: src/ingredients.inc:119
+#, fuzzy
+#| msgid "Garlic"
+msgid "Garlic cloves"
+msgstr "大蒜"
+
+#: src/ingredients.inc:120
+#, fuzzy
+#| msgid "Baking powder"
+msgid "Garlic powder"
+msgstr "烘焙粉"
+
+#: src/ingredients.inc:121
+msgid "Ginger"
+msgstr ""
+
+#: src/ingredients.inc:122
+msgid "Ginger, freshly grated"
+msgstr ""
+
+#: src/ingredients.inc:123
+#, fuzzy
+#| msgid "no Turmeric, ground"
+msgid "Ginger ground"
+msgstr "無薑黃(粉末)"
+
+#: src/ingredients.inc:124
+#, fuzzy
+#| msgid "no Cheese"
+msgid "Goat cheese"
+msgstr "無起士"
+
+#: src/ingredients.inc:125
+msgid "Golden caster sugar"
+msgstr ""
+
+#: src/ingredients.inc:126
+msgid "Good, dry red wine"
+msgstr ""
+
+#: src/ingredients.inc:127
+#, fuzzy
+#| msgid "no Cheese"
+msgid "Gouda cheese"
+msgstr "無起士"
+
+#: src/ingredients.inc:128
+msgid "Goulash spices"
+msgstr ""
+
+#: src/ingredients.inc:129
+msgid "Guanciale cubes"
+msgstr ""
+
+#: src/ingredients.inc:130
+msgid "Long pasta, e.g. spaghetti"
+msgstr ""
+
+#: src/ingredients.inc:131
+msgid "Parmesan cheese"
+msgstr ""
+
+#: src/ingredients.inc:132
+msgid "Grapes"
+msgstr ""
+
+#: src/ingredients.inc:133
+msgid "Grated French Emmental"
+msgstr ""
+
+#: src/ingredients.inc:134
+#, fuzzy
+#| msgid "no Apple"
+msgid "Green Apple"
+msgstr "無蘋果"
+
+#: src/ingredients.inc:135
+#, fuzzy
+#| msgid "no Pepper"
+msgid "Green Bell Pepper"
+msgstr "無胡椒"
+
+#: src/ingredients.inc:136
+msgid "Green Cabbage"
+msgstr ""
+
+#: src/ingredients.inc:137
+msgid "Green olive"
+msgstr ""
+
+#: src/ingredients.inc:138
+#, fuzzy
+#| msgid "no Onion"
+msgid "Green onions"
+msgstr "無洋蔥"
+
+#: src/ingredients.inc:139
+msgid "green onions, chopped"
+msgstr ""
+
+#: src/ingredients.inc:140
+msgid "Ground beef"
+msgstr ""
+
+#: src/ingredients.inc:141
+msgid "Ground coriander (optional)"
+msgstr ""
+
+#: src/ingredients.inc:142
+msgid "Ground cumin"
+msgstr ""
+
+#: src/ingredients.inc:143
+msgid "Ground fennel"
+msgstr ""
+
+#: src/ingredients.inc:144
+#, fuzzy
+#| msgid "no Pepper"
+msgid "Ground pepper"
+msgstr "無胡椒"
+
+#: src/ingredients.inc:145
+msgid "Ham"
+msgstr ""
+
+#: src/ingredients.inc:146
+msgid "Hazelnuts"
+msgstr ""
+
+#: src/ingredients.inc:147
+msgid "Hazelnuts milk"
+msgstr ""
+
+#: src/ingredients.inc:148
+#, fuzzy
+#| msgid "Soy sauce"
+msgid "Hoisin sauce"
+msgstr "醬油"
+
+#: src/ingredients.inc:149
+msgid "Honey"
+msgstr "蜂蜜"
+
+#: src/ingredients.inc:150
+msgid "Horseradish"
+msgstr ""
+
+#: src/ingredients.inc:151
+#, fuzzy
+#| msgid "no Mayonnaise"
+msgid "Japanese mayonaisse"
+msgstr "無美乃滋"
+
+#: src/ingredients.inc:152
+msgid "Juniper berries"
+msgstr ""
+
+#: src/ingredients.inc:153
+msgid "Kale"
+msgstr ""
+
+#: src/ingredients.inc:154
+msgid "Ketchup"
+msgstr ""
+
+#: src/ingredients.inc:155
+msgid "Kiwis"
+msgstr ""
+
+#: src/ingredients.inc:156
+msgid "Lamb"
+msgstr ""
+
+#: src/ingredients.inc:157
+msgid "Lardons"
+msgstr ""
+
+#: src/ingredients.inc:158
+msgid "Lard or oil"
+msgstr ""
+
+#: src/ingredients.inc:159
+msgid "Lemon"
+msgstr "檸檬"
+
+#: src/ingredients.inc:160
+#, fuzzy
+#| msgid "Lemon"
+msgid "Lemon juice"
+msgstr "檸檬"
+
+#: src/ingredients.inc:161
+msgid "Lemon (untreated)"
+msgstr ""
+
+#: src/ingredients.inc:162
+msgid "Lettuce"
+msgstr ""
+
+#: src/ingredients.inc:163
+msgid "Light muscovado sugar"
+msgstr ""
+
+#: src/ingredients.inc:164
+msgid "Lime"
+msgstr ""
+
+#: src/ingredients.inc:165
+msgid "Lime juice"
+msgstr ""
+
+#: src/ingredients.inc:166
+msgid "Linseeds"
+msgstr "亞麻子"
+
+#: src/ingredients.inc:167
+#, fuzzy
+#| msgid "no Orange"
+msgid "Mandarin Oranges"
+msgstr "無柳橙"
+
+#: src/ingredients.inc:168
+#, fuzzy
+#| msgid "Tangerine"
+msgid "Margarine"
+msgstr "橘子"
+
+#: src/ingredients.inc:169
+msgid "Mayonnaise"
+msgstr "美乃滋"
+
+#: src/ingredients.inc:170
+msgid "Meat"
+msgstr ""
+
+#: src/ingredients.inc:171
+msgid "Meat and bones"
+msgstr ""
+
+#: src/ingredients.inc:172
+msgid "Milk"
+msgstr "奶"
+
+#: src/ingredients.inc:173
+msgid "Mixed berries"
+msgstr ""
+
+#: src/ingredients.inc:174
+msgid "Mixed frozen bell peppers"
+msgstr ""
+
+#: src/ingredients.inc:175
+msgid "Mori-nu organic silken tofu (firm)"
+msgstr ""
+
+#: src/ingredients.inc:176
+msgid "Mushrooms"
+msgstr ""
+
+#: src/ingredients.inc:177
+msgid "Mustard"
+msgstr "芥末"
+
+#: src/ingredients.inc:178
+#, fuzzy
+#| msgid "Mustard"
+msgid "Mustard seeds"
+msgstr "芥末"
+
+#: src/ingredients.inc:179
+msgid "Nut"
+msgstr ""
+
+#: src/ingredients.inc:180
+msgid "Nutmeg"
+msgstr ""
+
+#: src/ingredients.inc:181
+msgid "Nutritional yeast"
+msgstr ""
+
+#: src/ingredients.inc:182
+msgid "Oatmeal"
+msgstr "燕麥"
+
+#: src/ingredients.inc:183
+msgid "Oil"
+msgstr "油"
+
+#: src/ingredients.inc:184
+#, fuzzy
+#| msgid "no Pizza sauce"
+msgid "Okonomiyaki sauce"
+msgstr "無比薩醬"
+
+#: src/ingredients.inc:185
+msgid "Olive oil"
+msgstr ""
+
+#: src/ingredients.inc:186
+msgid "Olive oil, extra-virgin"
+msgstr ""
+
+#: src/ingredients.inc:187
+msgid "Olives, pitted"
+msgstr ""
+
+#: src/ingredients.inc:188
+msgid "Onion"
+msgstr "洋蔥"
+
+#: src/ingredients.inc:189
+#, fuzzy
+#| msgid "Baking powder"
+msgid "Onion powder"
+msgstr "烘焙粉"
+
+#: src/ingredients.inc:190
+msgid "Orange"
+msgstr "柳橙"
+
+#: src/ingredients.inc:191
+msgid "Oregano"
+msgstr ""
+
+#: src/ingredients.inc:192
+msgid "Pancetta"
+msgstr ""
+
+#: src/ingredients.inc:193
+msgid "Pandan leaves"
+msgstr ""
+
+#: src/ingredients.inc:194
+msgid "Paprika"
+msgstr ""
+
+#: src/ingredients.inc:195
+msgid "Parmesan cheese, grated"
+msgstr ""
+
+#: src/ingredients.inc:196
+msgid "Parsley"
+msgstr "歐洲芹"
+
+#: src/ingredients.inc:197
+msgid "Peach"
+msgstr ""
+
+#: src/ingredients.inc:198
+msgid "Peperoni"
+msgstr ""
+
+#: src/ingredients.inc:199
+msgid "Pepper"
+msgstr "胡椒"
+
+#: src/ingredients.inc:200
+msgid "Peppers"
+msgstr "辣椒"
+
+#: src/ingredients.inc:201
+msgid "Pickles"
+msgstr ""
+
+#: src/ingredients.inc:202
+msgid "Pineapple"
+msgstr ""
+
+#: src/ingredients.inc:203
+msgid "Pizza sauce"
+msgstr "披薩醬"
+
+#: src/ingredients.inc:204
+#, fuzzy
+#| msgid "Main Course"
+msgid "Plain flour"
+msgstr "主菜"
+
+#: src/ingredients.inc:205
+msgid "Pomegranate"
+msgstr ""
+
+#: src/ingredients.inc:206
+msgid "Pomegranate juice"
+msgstr ""
+
+#: src/ingredients.inc:207
+msgid "Pork fat"
+msgstr ""
+
+#: src/ingredients.inc:208
+msgid "Pork loin"
+msgstr ""
+
+#: src/ingredients.inc:209
+msgid "Potato"
+msgstr "馬鈴薯"
+
+#: src/ingredients.inc:210
+msgid "Powdered sugar"
+msgstr ""
+
+#: src/ingredients.inc:211
+msgid "Pumpkin seeds"
+msgstr "南瓜子"
+
+#: src/ingredients.inc:212
+msgid "Quinoa"
+msgstr ""
+
+#: src/ingredients.inc:213
+msgid "Radish"
+msgstr ""
+
+#: src/ingredients.inc:214
+#, fuzzy
+#| msgid "Cuisines"
+msgid "Raisins"
+msgstr "料理"
+
+#: src/ingredients.inc:215
+msgid "Red bell pepper"
+msgstr ""
+
+#: src/ingredients.inc:216
+msgid "Red onion"
+msgstr ""
+
+#: src/ingredients.inc:217
+#, fuzzy
+#| msgid "Pepper"
+msgid "Red Pepper"
+msgstr "胡椒"
+
+#: src/ingredients.inc:218
+msgid "Red wine"
+msgstr ""
+
+#: src/ingredients.inc:219
+msgid "Rice"
+msgstr ""
+
+#: src/ingredients.inc:220
+msgid "Rice, cooked"
+msgstr ""
+
+#: src/ingredients.inc:221
+msgid "Rice vermicelli noodles"
+msgstr ""
+
+#: src/ingredients.inc:222
+#, fuzzy
+#| msgid "no Sugar"
+msgid "Rock sugar"
+msgstr "無糖"
+
+#: src/ingredients.inc:223
+msgid "Rolled oats"
+msgstr ""
+
+#: src/ingredients.inc:224
+msgid "Rosemary"
+msgstr ""
+
+#: src/ingredients.inc:225
+msgid "Rosé wine"
+msgstr ""
+
+#: src/ingredients.inc:226
+msgid "Saffron"
+msgstr ""
+
+#: src/ingredients.inc:227
+msgid "Sage"
+msgstr ""
+
+#: src/ingredients.inc:228
+#, fuzzy
+#| msgid "Almond"
+msgid "Salmon"
+msgstr "杏仁"
+
+#: src/ingredients.inc:229
+msgid "Salt"
+msgstr "鹽"
+
+#: src/ingredients.inc:230
+msgid "Salt and pepper"
+msgstr ""
+
+#: src/ingredients.inc:231
+msgid "Saucebinder"
+msgstr ""
+
+#: src/ingredients.inc:232
+msgid "Scallions"
+msgstr ""
+
+#: src/ingredients.inc:233
+msgid "Sea salt"
+msgstr ""
+
+#: src/ingredients.inc:234
+msgid "Semi-skimmed milk"
+msgstr ""
+
+#: src/ingredients.inc:235
+msgid "Sesame oil"
+msgstr ""
+
+#: src/ingredients.inc:236
+msgid "Sesame seeds"
+msgstr ""
+
+#: src/ingredients.inc:237
+msgid "Shallots"
+msgstr ""
+
+#: src/ingredients.inc:238
+msgid "Shrimps"
+msgstr ""
+
+#: src/ingredients.inc:239
+msgid "Slivered almonds, toasted"
+msgstr ""
+
+#: src/ingredients.inc:240
+msgid "Sour cream"
+msgstr ""
+
+#: src/ingredients.inc:241
+msgid "Soy sauce"
+msgstr "醬油"
+
+#: src/ingredients.inc:242
+msgid "Spinach"
+msgstr ""
+
+#: src/ingredients.inc:243
+#, fuzzy
+#| msgid "Spring"
+msgid "Spring onion"
+msgstr "春季"
+
+#: src/ingredients.inc:244
+msgid "Squash"
+msgstr ""
+
+#: src/ingredients.inc:245
+msgid "Star anise"
+msgstr ""
+
+#: src/ingredients.inc:246
+msgid "Strawberry"
+msgstr ""
+
+#: src/ingredients.inc:247
+msgid "Sugar"
+msgstr "糖"
+
+#: src/ingredients.inc:248
+msgid "Sunflower seeds"
+msgstr "向日葵子"
+
+#: src/ingredients.inc:249
+msgid "Sweet potatoes"
+msgstr ""
+
+#: src/ingredients.inc:250
+msgid "Tamarind paste"
+msgstr ""
+
+#: src/ingredients.inc:251
+msgid "Tangerine"
+msgstr "橘子"
+
+#: src/ingredients.inc:252
+msgid "Thai basil leaves"
+msgstr ""
+
+#: src/ingredients.inc:253
+msgid "Thai chillies"
+msgstr ""
+
+#: src/ingredients.inc:254
+msgid "Thai fish sauce"
+msgstr ""
+
+#: src/ingredients.inc:255
+msgid "Thyme"
+msgstr ""
+
+#: src/ingredients.inc:256
+msgid "Tinned pineapple rings"
+msgstr ""
+
+#: src/ingredients.inc:257
+msgid "Tofu"
+msgstr "豆腐"
+
+#: src/ingredients.inc:258
+msgid "Tomato"
+msgstr "蕃茄"
+
+#: src/ingredients.inc:259
+#, fuzzy
+#| msgid "Tomato"
+msgid "Tomato paste"
+msgstr "蕃茄"
+
+#: src/ingredients.inc:260
+#, fuzzy
+#| msgid "Soy sauce"
+msgid "Tomato sauce"
+msgstr "醬油"
+
+#: src/ingredients.inc:261
+#, fuzzy
+#| msgid "Turmeric, ground"
+msgid "Tumeric ground"
+msgstr "薑黃粉"
+
+#: src/ingredients.inc:262
+msgid "Tuna fish"
+msgstr ""
+
+#: src/ingredients.inc:263
+msgid "Unsalted butter"
+msgstr ""
+
+#: src/ingredients.inc:264
+#, fuzzy
+#| msgid "no Baking powder"
+msgid "Vanilla baking powder"
+msgstr "無烘焙粉"
+
+#: src/ingredients.inc:265
+msgid "Vanilla extract"
+msgstr ""
+
+#: src/ingredients.inc:266
+msgid "Vanilla powdered sugar, for dusting"
+msgstr ""
+
+#: src/ingredients.inc:267
+msgid "Vanilla pudding"
+msgstr ""
+
+#: src/ingredients.inc:268
+msgid "Vanilla sugar"
+msgstr ""
+
+#: src/ingredients.inc:269
+msgid "Vegetable oil"
+msgstr ""
+
+#: src/ingredients.inc:270
+msgid "Vinegar"
+msgstr "醋"
+
+#: src/ingredients.inc:271
+msgid "Water"
+msgstr "水"
+
+#: src/ingredients.inc:272
+msgid "Wheat flour"
+msgstr ""
+
+#: src/ingredients.inc:273
+msgid "White fish"
+msgstr ""
+
+#: src/ingredients.inc:274
+msgid "White onion"
+msgstr ""
+
+#: src/ingredients.inc:275
+msgid "White wine"
+msgstr ""
+
+#: src/ingredients.inc:276
+msgid "Whole chicken"
+msgstr ""
+
+#: src/ingredients.inc:277
+msgid "Wine"
+msgstr "酒"
+
+#: src/ingredients.inc:278
+msgid "Worcestershire sauce"
+msgstr ""
+
+#: src/ingredients.inc:279
+msgid "Yeast"
+msgstr "酵母"
+
+#: src/ingredients.inc:280
+msgid "Yellow bell pepper"
+msgstr ""
+
+#: src/ingredients.inc:281
+msgid "Yoghurt"
+msgstr "優格"
+
+#: src/ingredients.inc:282
+msgid "Zest of 1 lemon (organic)"
+msgstr ""
+
+#: src/ingredients.inc:283
+msgid "Zinfandel"
+msgstr ""
+
+#: src/ingredients.inc:284
+msgid "Zuccini"
+msgstr ""
+
+#: src/no-ingredients.inc:1
+msgid "no Almond"
+msgstr "無杏仁"
+
+#: src/no-ingredients.inc:2
+msgid "no Amaretti"
+msgstr ""
+
+#: src/no-ingredients.inc:3
+msgid "no Anchovies"
+msgstr ""
+
+#: src/no-ingredients.inc:4
+msgid "no Apple"
+msgstr "無蘋果"
+
+#: src/no-ingredients.inc:5
+#, fuzzy
+#| msgid "no Vinegar"
+msgid "no Apple Vinegar"
+msgstr "無醋"
+
+#: src/no-ingredients.inc:6
+msgid "no Apricot"
+msgstr ""
+
+#: src/no-ingredients.inc:7
+msgid "no Artichoke"
+msgstr ""
+
+#: src/no-ingredients.inc:8
+msgid "no Asparagus"
+msgstr "無蘆筍"
+
+#: src/no-ingredients.inc:9
+msgid "no Aubergine"
+msgstr "無茄子"
+
+#: src/no-ingredients.inc:10
+msgid "no Baby Spinach"
+msgstr ""
+
+#: src/no-ingredients.inc:11
+msgid "no Bacon"
+msgstr "無培根肉"
+
+#: src/no-ingredients.inc:12
+msgid "no Bagel"
+msgstr "無貝果"
+
+# 無烘焙過的咖啡豆
+#: src/no-ingredients.inc:13
+msgid "no Baked beans"
+msgstr ""
+
+#: src/no-ingredients.inc:14
+msgid "no Baking powder"
+msgstr "無烘焙粉"
+
+#: src/no-ingredients.inc:15
+msgid "no Banana"
+msgstr "無香蕉"
+
+#: src/no-ingredients.inc:16
+msgid "no Basil"
+msgstr ""
+
+#: src/no-ingredients.inc:17
+msgid "no Basmati rice"
+msgstr ""
+
+#: src/no-ingredients.inc:18
+msgid "no Bay leaf"
+msgstr ""
+
+#: src/no-ingredients.inc:19
+msgid "no Beans"
+msgstr "無豆子"
+
+#: src/no-ingredients.inc:20
+#, fuzzy
+#| msgid "no Beans"
+msgid "no Bean sprouts"
+msgstr "無豆子"
+
+#: src/no-ingredients.inc:21
+#, fuzzy
+#| msgid "no Beans"
+msgid "no Beef"
+msgstr "無豆子"
+
+#: src/no-ingredients.inc:22
+msgid "no Beef mince"
+msgstr ""
+
+#: src/no-ingredients.inc:23
+msgid "no Beef sausage"
+msgstr "無牛肉醬"
+
+#: src/no-ingredients.inc:24
+msgid "no Beef (sirloin)"
+msgstr ""
+
+#: src/no-ingredients.inc:25
+msgid "no Beef stock"
+msgstr ""
+
+#: src/no-ingredients.inc:26
+msgid "no Beetroot"
+msgstr ""
+
+#: src/no-ingredients.inc:27
+#, fuzzy
+#| msgid "no Pepper"
+msgid "no Bell pepper"
+msgstr "無胡椒"
+
+#: src/no-ingredients.inc:28
+msgid "no Bell Pepper (green)"
+msgstr ""
+
+#: src/no-ingredients.inc:29
+msgid "no Berry"
+msgstr ""
+
+#: src/no-ingredients.inc:30
+msgid "no Bilberry"
+msgstr ""
+
+#: src/no-ingredients.inc:31
+msgid "no Biscotti"
+msgstr ""
+
+#: src/no-ingredients.inc:32
+msgid "no Black cardamom pod"
+msgstr ""
+
+#: src/no-ingredients.inc:33
+#, fuzzy
+#| msgid "no Peppers"
+msgid "no Black peppercorns"
+msgstr "無辣椒"
+
+#: src/no-ingredients.inc:34
+#, fuzzy
+#| msgid "no Butter"
+msgid "no Blueberry"
+msgstr "無奶油"
+
+#: src/no-ingredients.inc:35
+msgid "no Bourbon whiskey"
+msgstr ""
+
+#: src/no-ingredients.inc:36
+#, fuzzy
+#| msgid "no Beans"
+msgid "no Breadcrumbs"
+msgstr "無豆子"
+
+#: src/no-ingredients.inc:37
+msgid "no Brewer's yeast"
+msgstr ""
+
+#: src/no-ingredients.inc:38
+#, fuzzy
+#| msgid "no Beans"
+msgid "no Broad beans"
+msgstr "無豆子"
+
+#: src/no-ingredients.inc:39
+#, fuzzy
+#| msgid "no Bacon"
+msgid "no Broth"
+msgstr "無培根肉"
+
+#: src/no-ingredients.inc:40
+#, fuzzy
+#| msgid "no Vanilla sugar"
+msgid "no Brown sugar"
+msgstr "無糖醋"
+
+#: src/no-ingredients.inc:41
+msgid "no Butter"
+msgstr "無奶油"
+
+#: src/no-ingredients.inc:42
+#, fuzzy
+#| msgid "no Butter"
+msgid "no Butter, melted"
+msgstr "無奶油"
+
+#: src/no-ingredients.inc:43
+msgid "no Button mushroom"
+msgstr ""
+
+#: src/no-ingredients.inc:44
+msgid "no Cabbage"
+msgstr ""
+
+#: src/no-ingredients.inc:45
+#, fuzzy
+#| msgid "no Flour"
+msgid "no Cake flour"
+msgstr "無麵粉"
+
+#: src/no-ingredients.inc:46
+msgid "no Canellini beans"
+msgstr ""
+
+#: src/no-ingredients.inc:47
+msgid "no Canned black beans, rinsed"
+msgstr ""
+
+#: src/no-ingredients.inc:48
+msgid "no Canned chopped tomatoes"
+msgstr ""
+
+#: src/no-ingredients.inc:49
+msgid "no Carrot"
+msgstr "無胡蘿蔔"
+
+#: src/no-ingredients.inc:50
+msgid "no Cashews, lightly toasted"
+msgstr ""
+
+#: src/no-ingredients.inc:51
+#, fuzzy
+#| msgid "no Vanilla sugar"
+msgid "no Caster sugar"
+msgstr "無糖醋"
+
+#: src/no-ingredients.inc:52
+#, fuzzy
+#| msgid "no Cheese"
+msgid "no Celery"
+msgstr "無起士"
+
+#: src/no-ingredients.inc:53
+msgid "no Champignons"
+msgstr ""
+
+#: src/no-ingredients.inc:54
+msgid "no Cheese"
+msgstr "無起士"
+
+#: src/no-ingredients.inc:55
+#, fuzzy
+#| msgid "no Cheese"
+msgid "no Cheese slices"
+msgstr "無起士"
+
+#: src/no-ingredients.inc:56
+msgid "no Cherries, pitted"
+msgstr ""
+
+#: src/no-ingredients.inc:57
+msgid "no Cherry tomatoes, halved"
+msgstr ""
+
+#: src/no-ingredients.inc:58
+#, fuzzy
+#| msgid "no Linseeds"
+msgid "no Chia seeds"
+msgstr "無亞麻子"
+
+#: src/no-ingredients.inc:59
+msgid "no Chicken breasts, large"
+msgstr ""
+
+#: src/no-ingredients.inc:60
+#, fuzzy
+#| msgid "no Cheese"
+msgid "no Chicken livers"
+msgstr "無起士"
+
+#: src/no-ingredients.inc:61
+msgid "no chicken stock"
+msgstr ""
+
+#: src/no-ingredients.inc:62
+msgid "no Chili flakes"
+msgstr ""
+
+#: src/no-ingredients.inc:63
+#, fuzzy
+#| msgid "no Cocoa powder"
+msgid "no Chili powder"
+msgstr "無可可粉"
+
+#: src/no-ingredients.inc:64
+msgid "no Chili sauce (e.g. sriracha)"
+msgstr ""
+
+#: src/no-ingredients.inc:65
+#, fuzzy
+#| msgid "no Cocoa powder"
+msgid "no Chocolate"
+msgstr "無可可粉"
+
+#: src/no-ingredients.inc:66
+msgid "no Chocolate frosting"
+msgstr ""
+
+#: src/no-ingredients.inc:67
+#, fuzzy
+#| msgid "no Carrot"
+msgid "no Chorizo"
+msgstr "無胡蘿蔔"
+
+#: src/no-ingredients.inc:68
+msgid "no Ciboulette"
+msgstr ""
+
+#: src/no-ingredients.inc:69
+msgid "no Cilantro"
+msgstr ""
+
+#: src/no-ingredients.inc:70
+msgid "no Cilantro leaves"
+msgstr ""
+
+#: src/no-ingredients.inc:71
+#, fuzzy
+#| msgid "no Carrot"
+msgid "no Cinnamon"
+msgstr "無胡蘿蔔"
+
+#: src/no-ingredients.inc:72
+msgid "no Cinnamon sticks"
+msgstr ""
+
+#: src/no-ingredients.inc:73
+#, fuzzy
+#| msgid "no Cheese"
+msgid "no Cloves"
+msgstr "無起士"
+
+#: src/no-ingredients.inc:74
+#, fuzzy
+#| msgid "no Cocoa powder"
+msgid "no Cocoa butter"
+msgstr "無可可粉"
+
+#: src/no-ingredients.inc:75
+msgid "no Cocoa powder"
+msgstr "無可可粉"
+
+#: src/no-ingredients.inc:76
+msgid "no Coconut milk"
+msgstr ""
+
+#: src/no-ingredients.inc:77
+#, fuzzy
+#| msgid "no Cocoa powder"
+msgid "no Coconut oil"
+msgstr "無可可粉"
+
+#: src/no-ingredients.inc:78
+#, fuzzy
+#| msgid "no Cocoa powder"
+msgid "no Coconut water"
+msgstr "無可可粉"
+
+#: src/no-ingredients.inc:79
+#, fuzzy
+#| msgid "no Water"
+msgid "no Cold water"
+msgstr "無水"
+
+#: src/no-ingredients.inc:80
+msgid "no cooked beef"
+msgstr ""
+
+#: src/no-ingredients.inc:81
+#, fuzzy
+#| msgid "no Cocoa powder"
+msgid "no Coriander"
+msgstr "無可可粉"
+
+#: src/no-ingredients.inc:82
+#, fuzzy
+#| msgid "no Linseeds"
+msgid "no Coriandre seeds"
+msgstr "無亞麻子"
+
+#: src/no-ingredients.inc:83
+msgid "no Couscous"
+msgstr ""
+
+#: src/no-ingredients.inc:84
+#, fuzzy
+#| msgid "no Pepper"
+msgid "no Cracked pepper"
+msgstr "無胡椒"
+
+#: src/no-ingredients.inc:85
+msgid "no Cream"
+msgstr ""
+
+#: src/no-ingredients.inc:86
+#, fuzzy
+#| msgid "no Cheese"
+msgid "no Cream cheese"
+msgstr "無起士"
+
+#: src/no-ingredients.inc:87
+msgid "no Crushed red pepper flakes"
+msgstr ""
+
+#: src/no-ingredients.inc:88
+msgid "no Cucumber"
+msgstr ""
+
+#: src/no-ingredients.inc:89
+msgid "no Cucumber (large)"
+msgstr ""
+
+#: src/no-ingredients.inc:90
+msgid "no Cumin"
+msgstr ""
+
+#: src/no-ingredients.inc:91
+#, fuzzy
+#| msgid "no Pumpkin seeds"
+msgid "no Cumin seeds"
+msgstr "無南瓜子"
+
+#: src/no-ingredients.inc:92
+msgid "no Dark Jamaican rum"
+msgstr ""
+
+#: src/no-ingredients.inc:93
+msgid "no Date"
+msgstr ""
+
+#: src/no-ingredients.inc:94
+msgid "no Dill"
+msgstr ""
+
+#: src/no-ingredients.inc:95
+msgid "no Double cream"
+msgstr ""
+
+#: src/no-ingredients.inc:96
+msgid "no Dried anchovies"
+msgstr ""
+
+#: src/no-ingredients.inc:97
+msgid "no Dried chillies"
+msgstr ""
+
+#: src/no-ingredients.inc:98
+msgid "no Dry or fresh cilantro"
+msgstr ""
+
+#: src/no-ingredients.inc:99
+#, fuzzy
+#| msgid "no Yeast"
+msgid "no Dry yeast"
+msgstr "無酵母"
+
+#: src/no-ingredients.inc:100
+msgid "no Durum wheat semolina"
+msgstr ""
+
+#: src/no-ingredients.inc:101
+msgid "no Earth Balance vegan buttery stick"
+msgstr ""
+
+#: src/no-ingredients.inc:102
+msgid "no Egg"
+msgstr "無蛋"
+
+#: src/no-ingredients.inc:103
+#, fuzzy
+#| msgid "no Egg"
+msgid "no Egg yolks"
+msgstr "無蛋"
+
+#: src/no-ingredients.inc:104
+#, fuzzy
+#| msgid "no Pumpkin seeds"
+msgid "no Fenugreek seeds"
+msgstr "無南瓜子"
+
+#: src/no-ingredients.inc:105
+msgid "no Fig"
+msgstr "無無花果"
+
+#: src/no-ingredients.inc:106
+msgid "no Finely chopped cilantro"
+msgstr ""
+
+#: src/no-ingredients.inc:107
+msgid "no Finely chopped onions"
+msgstr ""
+
+#: src/no-ingredients.inc:108
+msgid "no Finely chopped thai chillies or green chillis"
+msgstr ""
+
+#: src/no-ingredients.inc:109
+msgid "no Finely chopped tomato"
+msgstr ""
+
+#: src/no-ingredients.inc:110
+#, fuzzy
+#| msgid "no Fig"
+msgid "no Fish"
+msgstr "無無花果"
+
+#: src/no-ingredients.inc:111
+#, fuzzy
+#| msgid "no Pizza sauce"
+msgid "no Fish sauce"
+msgstr "無比薩醬"
+
+#: src/no-ingredients.inc:112
+msgid "no Flour"
+msgstr "無麵粉"
+
+#: src/no-ingredients.inc:113
+msgid "no Flour (all-purpose)"
+msgstr ""
+
+#: src/no-ingredients.inc:114
+#, fuzzy
+#| msgid "no Flour"
+msgid "no Flour (Tipo 00)"
+msgstr "無麵粉"
+
+#: src/no-ingredients.inc:115
+msgid "no Fresh rosemary"
+msgstr ""
+
+#: src/no-ingredients.inc:116
+msgid "no Fresh tagliatelle"
+msgstr ""
+
+#: src/no-ingredients.inc:117
+msgid "no Garam masala"
+msgstr ""
+
+#: src/no-ingredients.inc:118
+msgid "no Garlic"
+msgstr "無大蒜"
+
+#: src/no-ingredients.inc:119
+#, fuzzy
+#| msgid "no Garlic"
+msgid "no Garlic cloves"
+msgstr "無大蒜"
+
+#: src/no-ingredients.inc:120
+#, fuzzy
+#| msgid "no Baking powder"
+msgid "no Garlic powder"
+msgstr "無烘焙粉"
+
+#: src/no-ingredients.inc:121
+#, fuzzy
+#| msgid "no Tangerine"
+msgid "no Ginger"
+msgstr "無橘子"
+
+#: src/no-ingredients.inc:122
+msgid "no Ginger, freshly grated"
+msgstr ""
+
+#: src/no-ingredients.inc:123
+#, fuzzy
+#| msgid "no Turmeric, ground"
+msgid "no Ginger ground"
+msgstr "無薑黃(粉末)"
+
+#: src/no-ingredients.inc:124
+#, fuzzy
+#| msgid "no Cheese"
+msgid "no Goat cheese"
+msgstr "無起士"
+
+#: src/no-ingredients.inc:125
+msgid "no Golden caster sugar"
+msgstr ""
+
+#: src/no-ingredients.inc:126
+msgid "no Good, dry red wine"
+msgstr ""
+
+#: src/no-ingredients.inc:127
+#, fuzzy
+#| msgid "no Cheese"
+msgid "no Gouda cheese"
+msgstr "無起士"
+
+#: src/no-ingredients.inc:128
+msgid "no Goulash spices"
+msgstr ""
+
+#: src/no-ingredients.inc:129
+msgid "no Guanciale cubes"
+msgstr ""
+
+#: src/no-ingredients.inc:130
+msgid "no Long pasta, e.g. spaghetti"
+msgstr ""
+
+#: src/no-ingredients.inc:131
+msgid "no Parmesan cheese"
+msgstr ""
+
+#: src/no-ingredients.inc:132
+msgid "no Grapes"
+msgstr ""
+
+#: src/no-ingredients.inc:133
+msgid "no Grated French Emmental"
+msgstr ""
+
+#: src/no-ingredients.inc:134
+#, fuzzy
+#| msgid "no Apple"
+msgid "no Green Apple"
+msgstr "無蘋果"
+
+#: src/no-ingredients.inc:135
+#, fuzzy
+#| msgid "no Pepper"
+msgid "no Green Bell Pepper"
+msgstr "無胡椒"
+
+#: src/no-ingredients.inc:136
+msgid "no Green Cabbage"
+msgstr ""
+
+#: src/no-ingredients.inc:137
+#, fuzzy
+#| msgid "no Garlic"
+msgid "no Green olive"
+msgstr "無大蒜"
+
+#: src/no-ingredients.inc:138
+#, fuzzy
+#| msgid "no Onion"
+msgid "no Green onions"
+msgstr "無洋蔥"
+
+#: src/no-ingredients.inc:139
+msgid "no green onions, chopped"
+msgstr ""
+
+#: src/no-ingredients.inc:140
+msgid "no Ground beef"
+msgstr ""
+
+#: src/no-ingredients.inc:141
+msgid "no Ground coriander (optional)"
+msgstr ""
+
+#: src/no-ingredients.inc:142
+msgid "no Ground cumin"
+msgstr ""
+
+#: src/no-ingredients.inc:143
+msgid "no Ground fennel"
+msgstr ""
+
+#: src/no-ingredients.inc:144
+#, fuzzy
+#| msgid "no Pepper"
+msgid "no Ground pepper"
+msgstr "無胡椒"
+
+#: src/no-ingredients.inc:145
+msgid "no Ham"
+msgstr ""
+
+#: src/no-ingredients.inc:146
+msgid "no Hazelnuts"
+msgstr ""
+
+#: src/no-ingredients.inc:147
+msgid "no Hazelnuts milk"
+msgstr ""
+
+#: src/no-ingredients.inc:148
+#, fuzzy
+#| msgid "no Soy sauce"
+msgid "no Hoisin sauce"
+msgstr "無醬油"
+
+#: src/no-ingredients.inc:149
+msgid "no Honey"
+msgstr "無蜂蜜"
+
+#: src/no-ingredients.inc:150
+msgid "no Horseradish"
+msgstr ""
+
+#: src/no-ingredients.inc:151
+#, fuzzy
+#| msgid "no Mayonnaise"
+msgid "no Japanese mayonaisse"
+msgstr "無美乃滋"
+
+#: src/no-ingredients.inc:152
+msgid "no Juniper berries"
+msgstr ""
+
+#: src/no-ingredients.inc:153
+msgid "no Kale"
+msgstr ""
+
+#: src/no-ingredients.inc:154
+msgid "no Ketchup"
+msgstr ""
+
+#: src/no-ingredients.inc:155
+msgid "no Kiwis"
+msgstr ""
+
+#: src/no-ingredients.inc:156
+#, fuzzy
+#| msgid "no Lemon"
+msgid "no Lamb"
+msgstr "無檸檬"
+
+#: src/no-ingredients.inc:157
+#, fuzzy
+#| msgid "no Lemon"
+msgid "no Lardons"
+msgstr "無檸檬"
+
+#: src/no-ingredients.inc:158
+msgid "no Lard or oil"
+msgstr ""
+
+#: src/no-ingredients.inc:159
+msgid "no Lemon"
+msgstr "無檸檬"
+
+#: src/no-ingredients.inc:160
+#, fuzzy
+#| msgid "no Lemon"
+msgid "no Lemon juice"
+msgstr "無檸檬"
+
+#: src/no-ingredients.inc:161
+msgid "no Lemon (untreated)"
+msgstr ""
+
+#: src/no-ingredients.inc:162
+msgid "no Lettuce"
+msgstr ""
+
+#: src/no-ingredients.inc:163
+msgid "no Light muscovado sugar"
+msgstr ""
+
+#: src/no-ingredients.inc:164
+#, fuzzy
+#| msgid "no Linseeds"
+msgid "no Lime"
+msgstr "無亞麻子"
+
+#: src/no-ingredients.inc:165
+msgid "no Lime juice"
+msgstr ""
+
+#: src/no-ingredients.inc:166
+msgid "no Linseeds"
+msgstr "無亞麻子"
+
+#: src/no-ingredients.inc:167
+#, fuzzy
+#| msgid "no Orange"
+msgid "no Mandarin Oranges"
+msgstr "無柳橙"
+
+#: src/no-ingredients.inc:168
+#, fuzzy
+#| msgid "no Tangerine"
+msgid "no Margarine"
+msgstr "無橘子"
+
+#: src/no-ingredients.inc:169
+msgid "no Mayonnaise"
+msgstr "無美乃滋"
+
+#: src/no-ingredients.inc:170
+msgid "no Meat"
+msgstr ""
+
+#: src/no-ingredients.inc:171
+msgid "no Meat and bones"
+msgstr ""
+
+#: src/no-ingredients.inc:172
+msgid "no Milk"
+msgstr "無奶"
+
+#: src/no-ingredients.inc:173
+msgid "no Mixed berries"
+msgstr ""
+
+#: src/no-ingredients.inc:174
+msgid "no Mixed frozen bell peppers"
+msgstr ""
+
+#: src/no-ingredients.inc:175
+msgid "no Mori-nu organic silken tofu (firm)"
+msgstr ""
+
+#: src/no-ingredients.inc:176
+#, fuzzy
+#| msgid "no Mustard"
+msgid "no Mushrooms"
+msgstr "無芥末"
+
+#: src/no-ingredients.inc:177
+msgid "no Mustard"
+msgstr "無芥末"
+
+#: src/no-ingredients.inc:178
+#, fuzzy
+#| msgid "no Mustard"
+msgid "no Mustard seeds"
+msgstr "無芥末"
+
+#: src/no-ingredients.inc:179
+msgid "no Nut"
+msgstr ""
+
+#: src/no-ingredients.inc:180
+msgid "no Nutmeg"
+msgstr ""
+
+#: src/no-ingredients.inc:181
+msgid "no Nutritional yeast"
+msgstr ""
+
+#: src/no-ingredients.inc:182
+msgid "no Oatmeal"
+msgstr "無燕麥"
+
+#: src/no-ingredients.inc:183
+msgid "no Oil"
+msgstr "無油"
+
+#: src/no-ingredients.inc:184
+#, fuzzy
+#| msgid "no Soy sauce"
+msgid "no Okonomiyaki sauce"
+msgstr "無醬油"
+
+#: src/no-ingredients.inc:185
+#, fuzzy
+#| msgid "no Oil"
+msgid "no Olive oil"
+msgstr "無油"
+
+#: src/no-ingredients.inc:186
+msgid "no Olive oil, extra-virgin"
+msgstr ""
+
+#: src/no-ingredients.inc:187
+msgid "no Olives, pitted"
+msgstr ""
+
+#: src/no-ingredients.inc:188
+msgid "no Onion"
+msgstr "無洋蔥"
+
+#: src/no-ingredients.inc:189
+#, fuzzy
+#| msgid "no Baking powder"
+msgid "no Onion powder"
+msgstr "無烘焙粉"
+
+#: src/no-ingredients.inc:190
+msgid "no Orange"
+msgstr "無柳橙"
+
+#: src/no-ingredients.inc:191
+#, fuzzy
+#| msgid "no Orange"
+msgid "no Oregano"
+msgstr "無柳橙"
+
+#: src/no-ingredients.inc:192
+#, fuzzy
+#| msgid "no Potato"
+msgid "no Pancetta"
+msgstr "無馬鈴薯"
+
+#: src/no-ingredients.inc:193
+msgid "no Pandan leaves"
+msgstr ""
+
+#: src/no-ingredients.inc:194
+#, fuzzy
+#| msgid "no Pepper"
+msgid "no Paprika"
+msgstr "無胡椒"
+
+#: src/no-ingredients.inc:195
+msgid "no Parmesan cheese, grated"
+msgstr ""
+
+#: src/no-ingredients.inc:196
+msgid "no Parsley"
+msgstr ""
+
+#: src/no-ingredients.inc:197
+msgid "no Peach"
+msgstr ""
+
+#: src/no-ingredients.inc:198
+msgid "no Peperoni"
+msgstr ""
+
+#: src/no-ingredients.inc:199
+msgid "no Pepper"
+msgstr "無胡椒"
+
+#: src/no-ingredients.inc:200
+msgid "no Peppers"
+msgstr "無辣椒"
+
+#: src/no-ingredients.inc:201
+#, fuzzy
+#| msgid "no Peppers"
+msgid "no Pickles"
+msgstr "無辣椒"
+
+#: src/no-ingredients.inc:202
+#, fuzzy
+#| msgid "no Pepper"
+msgid "no Pineapple"
+msgstr "無胡椒"
+
+#: src/no-ingredients.inc:203
+msgid "no Pizza sauce"
+msgstr "無比薩醬"
+
+#: src/no-ingredients.inc:204
+#, fuzzy
+#| msgid "no Flour"
+msgid "no Plain flour"
+msgstr "無麵粉"
+
+#: src/no-ingredients.inc:205
+#, fuzzy
+#| msgid "no Potato"
+msgid "no Pomegranate"
+msgstr "無馬鈴薯"
+
+#: src/no-ingredients.inc:206
+msgid "no Pomegranate juice"
+msgstr ""
+
+#: src/no-ingredients.inc:207
+#, fuzzy
+#| msgid "no Potato"
+msgid "no Pork fat"
+msgstr "無馬鈴薯"
+
+#: src/no-ingredients.inc:208
+msgid "no Pork loin"
+msgstr ""
+
+#: src/no-ingredients.inc:209
+msgid "no Potato"
+msgstr "無馬鈴薯"
+
+#: src/no-ingredients.inc:210
+msgid "no Powdered sugar"
+msgstr ""
+
+#: src/no-ingredients.inc:211
+msgid "no Pumpkin seeds"
+msgstr "無南瓜子"
+
+#: src/no-ingredients.inc:212
+msgid "no Quinoa"
+msgstr ""
+
+#: src/no-ingredients.inc:213
+msgid "no Radish"
+msgstr ""
+
+#: src/no-ingredients.inc:214
+msgid "no Raisins"
+msgstr ""
+
+#: src/no-ingredients.inc:215
+msgid "no Red bell pepper"
+msgstr ""
+
+#: src/no-ingredients.inc:216
+#, fuzzy
+#| msgid "no Onion"
+msgid "no Red onion"
+msgstr "無洋蔥"
+
+#: src/no-ingredients.inc:217
+#, fuzzy
+#| msgid "no Pepper"
+msgid "no Red Pepper"
+msgstr "無胡椒"
+
+#: src/no-ingredients.inc:218
+msgid "no Red wine"
+msgstr ""
+
+#: src/no-ingredients.inc:219
+msgid "no Rice"
+msgstr ""
+
+#: src/no-ingredients.inc:220
+msgid "no Rice, cooked"
+msgstr ""
+
+#: src/no-ingredients.inc:221
+msgid "no Rice vermicelli noodles"
+msgstr ""
+
+#: src/no-ingredients.inc:222
+#, fuzzy
+#| msgid "no Sugar"
+msgid "no Rock sugar"
+msgstr "無糖"
+
+#: src/no-ingredients.inc:223
+msgid "no Rolled oats"
+msgstr ""
+
+#: src/no-ingredients.inc:224
+msgid "no Rosemary"
+msgstr ""
+
+#: src/no-ingredients.inc:225
+msgid "no Rosé wine"
+msgstr ""
+
+#: src/no-ingredients.inc:226
+#, fuzzy
+#| msgid "no Sugar"
+msgid "no Saffron"
+msgstr "無糖"
+
+#: src/no-ingredients.inc:227
+#, fuzzy
+#| msgid "no Salt"
+msgid "no Sage"
+msgstr "無鹽"
+
+#: src/no-ingredients.inc:228
+#, fuzzy
+#| msgid "no Almond"
+msgid "no Salmon"
+msgstr "無杏仁"
+
+#: src/no-ingredients.inc:229
+msgid "no Salt"
+msgstr "無鹽"
+
+#: src/no-ingredients.inc:230
+msgid "no Salt and pepper"
+msgstr ""
+
+#: src/no-ingredients.inc:231
+#, fuzzy
+#| msgid "no Soy sauce"
+msgid "no Saucebinder"
+msgstr "無醬油"
+
+#: src/no-ingredients.inc:232
+#, fuzzy
+#| msgid "no Salt"
+msgid "no Scallions"
+msgstr "無鹽"
+
+#: src/no-ingredients.inc:233
+#, fuzzy
+#| msgid "no Salt"
+msgid "no Sea salt"
+msgstr "無鹽"
+
+#: src/no-ingredients.inc:234
+msgid "no Semi-skimmed milk"
+msgstr ""
+
+#: src/no-ingredients.inc:235
+#, fuzzy
+#| msgid "no Salt"
+msgid "no Sesame oil"
+msgstr "無鹽"
+
+#: src/no-ingredients.inc:236
+#, fuzzy
+#| msgid "no Sunflower seeds"
+msgid "no Sesame seeds"
+msgstr "無向日葵子"
+
+#: src/no-ingredients.inc:237
+#, fuzzy
+#| msgid "no Salt"
+msgid "no Shallots"
+msgstr "無鹽"
+
+#: src/no-ingredients.inc:238
+msgid "no Shrimps"
+msgstr ""
+
+#: src/no-ingredients.inc:239
+msgid "no Slivered almonds, toasted"
+msgstr ""
+
+#: src/no-ingredients.inc:240
+#, fuzzy
+#| msgid "no Soy sauce"
+msgid "no Sour cream"
+msgstr "無醬油"
+
+#: src/no-ingredients.inc:241
+msgid "no Soy sauce"
+msgstr "無醬油"
+
+#: src/no-ingredients.inc:242
+msgid "no Spinach"
+msgstr ""
+
+#: src/no-ingredients.inc:243
+#, fuzzy
+#| msgid "no Onion"
+msgid "no Spring onion"
+msgstr "無洋蔥"
+
+#: src/no-ingredients.inc:244
+msgid "no Squash"
+msgstr ""
+
+#: src/no-ingredients.inc:245
+msgid "no Star anise"
+msgstr ""
+
+#: src/no-ingredients.inc:246
+msgid "no Strawberry"
+msgstr ""
+
+#: src/no-ingredients.inc:247
+msgid "no Sugar"
+msgstr "無糖"
+
+#: src/no-ingredients.inc:248
+msgid "no Sunflower seeds"
+msgstr "無向日葵子"
+
+#: src/no-ingredients.inc:249
+#, fuzzy
+#| msgid "no Potato"
+msgid "no Sweet potatoes"
+msgstr "無馬鈴薯"
+
+#: src/no-ingredients.inc:250
+#, fuzzy
+#| msgid "no Tangerine"
+msgid "no Tamarind paste"
+msgstr "無橘子"
+
+#: src/no-ingredients.inc:251
+msgid "no Tangerine"
+msgstr "無橘子"
+
+#: src/no-ingredients.inc:252
+msgid "no Thai basil leaves"
+msgstr ""
+
+#: src/no-ingredients.inc:253
+msgid "no Thai chillies"
+msgstr ""
+
+#: src/no-ingredients.inc:254
+#, fuzzy
+#| msgid "no Pizza sauce"
+msgid "no Thai fish sauce"
+msgstr "無比薩醬"
+
+#: src/no-ingredients.inc:255
+msgid "no Thyme"
+msgstr ""
+
+#: src/no-ingredients.inc:256
+msgid "no Tinned pineapple rings"
+msgstr ""
+
+#: src/no-ingredients.inc:257
+msgid "no Tofu"
+msgstr "無豆腐"
+
+#: src/no-ingredients.inc:258
+msgid "no Tomato"
+msgstr "無蕃茄"
+
+#: src/no-ingredients.inc:259
+#, fuzzy
+#| msgid "no Tomato"
+msgid "no Tomato paste"
+msgstr "無蕃茄"
+
+#: src/no-ingredients.inc:260
+#, fuzzy
+#| msgid "no Tomato"
+msgid "no Tomato sauce"
+msgstr "無蕃茄"
+
+#: src/no-ingredients.inc:261
+#, fuzzy
+#| msgid "no Turmeric, ground"
+msgid "no Tumeric ground"
+msgstr "無薑黃(粉末)"
+
+#: src/no-ingredients.inc:262
+msgid "no Tuna fish"
+msgstr ""
+
+#: src/no-ingredients.inc:263
+msgid "no Unsalted butter"
+msgstr ""
+
+#: src/no-ingredients.inc:264
+#, fuzzy
+#| msgid "no Baking powder"
+msgid "no Vanilla baking powder"
+msgstr "無烘焙粉"
+
+#: src/no-ingredients.inc:265
+#, fuzzy
+#| msgid "no Vanilla sugar"
+msgid "no Vanilla extract"
+msgstr "無糖醋"
+
+#: src/no-ingredients.inc:266
+msgid "no Vanilla powdered sugar, for dusting"
+msgstr ""
+
+#: src/no-ingredients.inc:267
+msgid "no Vanilla pudding"
+msgstr ""
+
+#: src/no-ingredients.inc:268
+msgid "no Vanilla sugar"
+msgstr "無糖醋"
+
+#: src/no-ingredients.inc:269
+msgid "no Vegetable oil"
+msgstr ""
+
+#: src/no-ingredients.inc:270
+msgid "no Vinegar"
+msgstr "無醋"
+
+#: src/no-ingredients.inc:271
+msgid "no Water"
+msgstr "無水"
+
+#: src/no-ingredients.inc:272
+#, fuzzy
+#| msgid "no Flour"
+msgid "no Wheat flour"
+msgstr "無麵粉"
+
+#: src/no-ingredients.inc:273
+msgid "no White fish"
+msgstr ""
+
+#: src/no-ingredients.inc:274
+#, fuzzy
+#| msgid "no Onion"
+msgid "no White onion"
+msgstr "無洋蔥"
+
+#: src/no-ingredients.inc:275
+msgid "no White wine"
+msgstr ""
+
+#: src/no-ingredients.inc:276
+msgid "no Whole chicken"
+msgstr ""
+
+# 無酒
+#: src/no-ingredients.inc:277
+msgid "no Wine"
+msgstr ""
+
+#: src/no-ingredients.inc:278
+msgid "no Worcestershire sauce"
+msgstr ""
+
+#: src/no-ingredients.inc:279
+msgid "no Yeast"
+msgstr "無酵母"
+
+#: src/no-ingredients.inc:280
+msgid "no Yellow bell pepper"
+msgstr ""
+
+#: src/no-ingredients.inc:281
+msgid "no Yoghurt"
+msgstr "無優格"
+
+#: src/no-ingredients.inc:282
+msgid "no Zest of 1 lemon (organic)"
+msgstr ""
+
+#: src/no-ingredients.inc:283
+msgid "no Zinfandel"
+msgstr ""
+
+#: src/no-ingredients.inc:284
+msgid "no Zuccini"
+msgstr ""
+
+#~ msgid "Serves"
+#~ msgstr "供餐量"
+
+#~ msgid "_Cuisine"
+#~ msgstr ""
+#~ "料理(_C\n"
+#~ ")"
+
+#~ msgid "Name Your Recipe"
+#~ msgstr "命名您的食譜"
+
+#~ msgid "Serves:"
+#~ msgstr "供餐量："
