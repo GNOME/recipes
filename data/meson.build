@@ -44,16 +44,14 @@ install_data('org.gnome.Recipes-mime.xml',
 install_data('org.gnome.Recipes-search-provider.ini',
              install_dir: join_paths([datadir, 'gnome-shell/search-providers']))
 
-i18n.merge_file('desktop-file',
-                type: 'desktop',
+i18n.merge_file(type: 'desktop',
                 output: 'org.gnome.Recipes.desktop',
                 input: files('org.gnome.Recipes.desktop.in'),
                 po_dir: po_dir,
                 install: true,
                 install_dir: join_paths([datadir,'applications']))
 
-i18n.merge_file('appdata',
-                 type: 'xml',
+i18n.merge_file( type: 'xml',
                  output: 'org.gnome.Recipes.appdata.xml',
                  input: files('appdata/org.gnome.Recipes.appdata.xml.in'),
                  po_dir: po_dir,
