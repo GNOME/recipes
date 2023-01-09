@@ -5,20 +5,23 @@
 #
 # Julien Hardelin <jhardlin@orange.fr>, 2018.
 # Alexandre Franke <afranke@gnome.org>, 2019.
+# julien <jhardlin@orange.fr>, 2021.
+# Charles Monzat <charles.monzat@free.fr>, 2021.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-21 07:14+0000\n"
-"PO-Revision-Date: 2019-10-11 23:02+0200\n"
-"Last-Translator: julien <jhardlin@orange.fr>\n"
-"Language-Team: French <français <gnomefr@traduc.org>>\n"
-"Language: fr_FR\n"
+"POT-Creation-Date: 2020-06-23 04:28+0000\n"
+"PO-Revision-Date: 2021-04-03 14:07+0200\n"
+"Last-Translator: Charles Monzat <charles.monzat@free.fr>\n"
+"Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Gtranslator 3.38.0\n"
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
@@ -178,8 +181,8 @@ msgid ""
 "The shopping list. Each entry in the dictionary maps the ID of a recipe to a "
 "serving count."
 msgstr ""
-"Liste de courses. Chaque entrée relie un identifiant de recette à un décompte "
-"de services."
+"Liste de courses. Chaque entrée relie un identifiant de recette à un "
+"décompte de services."
 
 #: data/org.gnome.Recipes.gschema.xml:70
 msgid "Ingredients that were removed from the shopping list"
@@ -428,8 +431,11 @@ msgstr ""
 "cuisinez pour des personnes sensibles au gluten ou aux produits laitiers."
 
 #: src/gr-details-page.ui:119
+#| msgid ""
+#| "Contains Gluten. Please always double-check the ingredients if you are "
+#| "serving a person with gluten or dairy intolerance."
 msgid ""
-"Contains Gluten. Please always double-check the ingredients if you are "
+"Contains gluten. Please always double-check the ingredients if you are "
 "serving a person with gluten or dairy intolerance."
 msgstr ""
 "Contient du gluten. Vérifiez toujours les ingrédients, si vous cuisinez pour "
@@ -1124,15 +1130,15 @@ msgstr ""
 msgid "Supported categories: %s\n"
 msgstr "Catégories prises en charge : %s\n"
 
-#: src/gr-app.c:441
+#: src/gr-app.c:443
 msgid "Print the version and exit"
 msgstr "Imprimer la version et sortir"
 
-#: src/gr-app.c:445
+#: src/gr-app.c:447
 msgid "Turn on verbose logging"
 msgstr "Activer les rapports détaillés"
 
-#: src/gr-app.c:449
+#: src/gr-app.c:451
 msgid "Show a category"
 msgstr "Afficher une catégorie"
 
@@ -1504,13 +1510,12 @@ msgid ""
 "a>"
 msgstr ""
 "Un régime sans gluten est un régime qui exclut le gluten, une protéine "
-"trouvée dans le blé, l’orge, le seigle et toutes leurs espèces et "
-"hybrides (comme l’épeautre, le kamut et le triticale). L’incorporation "
-"d’avoine dans des régimes sans gluten reste controversée. L’avénine "
-"présente dans l’avoine peut être également toxique pour les personnes "
-"atteinte de la maladie cœliaque ; sa toxicité dépend du cultivar consommé. "
-"Par ailleurs, l’avoine est fréquemment contaminée avec des céréales "
-"contenant du gluten.\n"
+"trouvée dans le blé, l’orge, le seigle et toutes leurs espèces et hybrides "
+"(comme l’épeautre, le kamut et le triticale). L’incorporation d’avoine dans "
+"des régimes sans gluten reste controversée. L’avénine présente dans l’avoine "
+"peut être également toxique pour les personnes atteinte de la maladie "
+"cœliaque ; sa toxicité dépend du cultivar consommé. Par ailleurs, l’avoine "
+"est fréquemment contaminée avec des céréales contenant du gluten.\n"
 "<a href=\"https://fr.wikipedia.org/wiki/R%C3%A9gime_sans_gluten\">Découvrir "
 "plus …</a>"
 
@@ -1672,7 +1677,7 @@ msgstr "onces"
 msgid "_Name Your Recipe"
 msgstr "_Nommez la recette"
 
-#: src/gr-edit-page.c:1734 src/gr-edit-page.c:1796 src/gr-recipe-store.c:1333
+#: src/gr-edit-page.c:1734 src/gr-edit-page.c:1796 src/gr-recipe-store.c:1330
 #, c-format
 msgid "You need to provide a name for the recipe"
 msgstr "Vous devez fournir un nom pour la recette"
@@ -2020,7 +2025,7 @@ msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
 msgstr[0] "Acheter ingrédients : <b>%s, %s et %d autre</b>"
 msgstr[1] "Acheter ingrédients : <b>%s, %s et %d autres</b>"
 
-#: src/gr-recipe-store.c:1338
+#: src/gr-recipe-store.c:1335
 #, c-format
 msgid ""
 "A recipe with this name and author (%s) already exists.\n"
@@ -2029,32 +2034,32 @@ msgstr ""
 "Une recette avec ce nom et cet auteur(%s) existe déjà.\n"
 "Choisissez un nom différent."
 
-#: src/gr-recipe-store.c:1367
+#: src/gr-recipe-store.c:1364
 #, c-format
 msgid "You need to provide an ID for the recipe"
 msgstr "Vous devez fournir un identifiant pour votre recette"
 
-#: src/gr-recipe-store.c:1373
+#: src/gr-recipe-store.c:1370
 #, c-format
 msgid "A recipe with this ID already exists"
 msgstr "Une recette avec cet identifiant existe déjà"
 
-#: src/gr-recipe-store.c:1542
+#: src/gr-recipe-store.c:1539
 #, c-format
 msgid "You need to provide an ID"
 msgstr "Vous devez fournir un identifiant"
 
-#: src/gr-recipe-store.c:1548
+#: src/gr-recipe-store.c:1545
 #, c-format
 msgid "Sorry, this ID is taken"
 msgstr "Désolé, cet identifiant est déjà utilisé"
 
-#: src/gr-recipe-store.c:1575
+#: src/gr-recipe-store.c:1572
 #, c-format
 msgid "You need to provide an ID for the chef"
 msgstr "Vous devez fournir un identifiant pour le chef"
 
-#: src/gr-recipe-store.c:1581
+#: src/gr-recipe-store.c:1578
 #, c-format
 msgid "A chef with this ID already exists"
 msgstr "Un chef avec cet identifiant existe déjà"
@@ -2557,16 +2562,29 @@ msgstr[1] "il y a %d heures"
 msgid "some time ago"
 msgstr "il y a quelque temps"
 
-#: src/gr-utils.c:385
+#: src/gr-utils.c:386
 msgid "Could not connect to the session bus from inside the Flatpak sandbox."
 msgstr ""
 "Impossible me connecter au bus de session depuis le bac à sable Flatpak."
 
-#: src/gr-utils.c:386
+#: src/gr-utils.c:387
 msgid "Certain functionality will not be available."
 msgstr "Certaines fonctionnalités ne seront pas disponibles."
 
-#: src/gr-utils.c:406
+#: src/gr-utils.c:400
+#, c-format
+msgid ""
+"Could not create D-Bus proxy for org.freedesktop.portal.Desktop interface %s"
+msgstr ""
+"Impossible de créer un proxy D-Bus pour l’interface org.freedesktop.portal."
+"Desktop %s"
+
+#: src/gr-utils.c:401
+#, c-format
+msgid "Error: %s"
+msgstr "Erreur : %s"
+
+#: src/gr-utils.c:412
 msgid ""
 "Missing the desktop portal needed to open files from inside a Flatpak "
 "sandbox."
@@ -2574,21 +2592,21 @@ msgstr ""
 "Il manque le portail de bureau nécessaire à l’ouverture de fichiers depuis "
 "un bac à sable Flatpak."
 
-#: src/gr-utils.c:408
+#: src/gr-utils.c:414
 msgid ""
 "Missing the desktop portal needed to print from inside a Flatpak sandbox."
 msgstr ""
 "Il manque le portail de bureau nécessaire à l’impression depuis un bac à "
 "sable Flatpak."
 
-#: src/gr-utils.c:410
+#: src/gr-utils.c:416
 msgid ""
 "Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
 msgstr ""
 "Il manque le portail de bureau nécessaire à l’ouverture d’URL depuis un bac "
 "à sable Flatpak."
 
-#: src/gr-utils.c:414
+#: src/gr-utils.c:420
 msgid ""
 "Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
 msgstr ""
