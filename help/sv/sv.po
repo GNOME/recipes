@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: recipes master\n"
-"POT-Creation-Date: 2020-12-20 16:41+0000\n"
-"PO-Revision-Date: 2021-01-17 12:48+0100\n"
+"POT-Creation-Date: 2022-07-29 07:23+0000\n"
+"PO-Revision-Date: 2022-09-01 15:40+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -105,8 +105,8 @@ msgid ""
 "<gui>Milk-free</gui>: Select for recipes that do not include dairy products, "
 "such as milk or cheese."
 msgstr ""
-"<gui>Mjölkfri</gui>: Välj för recept som inte innehåller mejeriprodukter, så "
-"som mjölk eller ost."
+"<gui>Mjölkfri</gui>: Välj för recept som inte innehåller mejeriprodukter som "
+"mjölk eller ost."
 
 #. (itstool) path: item/p
 #: C/add-recipe-description.page:43
@@ -526,9 +526,9 @@ msgid ""
 "span></media>"
 msgstr ""
 "Tryck på knappen <gui>Standardbild</gui> för att göra en bild till "
-"standardbild för receptet: <media type=\"image\" mime=\"image/png\" src="
-"\"images/star.png\" its:translate=\"yes\"><span its:translate=\"yes"
-"\">Standardbild </span></media>"
+"standardbild för receptet: <media type=\"image\" mime=\"image/png\" "
+"src=\"images/star.png\" its:translate=\"yes\"><span its:"
+"translate=\"yes\">Standardbild </span></media>"
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -571,7 +571,7 @@ msgid ""
 "list for the cake and an ingredient list for the frosting. To create a list:"
 msgstr ""
 "Du kan lägga till ingredienserna och skapa listor för receptet. Listor "
-"används för recept som har olika delar, så som en tårta som har en "
+"används för recept som har olika delar, som en tårta som har en "
 "ingredienslista för själva tårtan och en för glasyren. För att skapa en "
 "lista:"
 
@@ -598,8 +598,8 @@ msgid ""
 "Enter the name of the list, such as cake, in the <gui>Name of the List</gui> "
 "text box."
 msgstr ""
-"Skriv in namnet på listan, så som tårta, i textrutan <gui>Namn på listan</"
-"gui>."
+"Skriv in namnet på listan, exempelvis tårta, i textrutan <gui>Namn på "
+"listan</gui>."
 
 #. (itstool) path: item/p
 #: C/add-recipe-ingredients.page:37
@@ -1065,10 +1065,10 @@ msgstr ""
 #. (itstool) path: section/p
 #: C/find-recipe.page:27
 msgid ""
-"Press the search button <media type=\"image\" mime=\"image/png\" src="
-"\"images/search.png\" its:translate=\"yes\"> <span its:translate=\"yes"
-"\">Search</span></media> and enter your search query. The search results can "
-"include:"
+"Press the search button <media type=\"image\" mime=\"image/png\" "
+"src=\"images/search.png\" its:translate=\"yes\"> <span its:"
+"translate=\"yes\">Search</span></media> and enter your search query. The "
+"search results can include:"
 msgstr ""
 "Tryck på sökknappen <media type=\"image\" mime=\"image/png\" src=\"images/"
 "search.png\" its:translate=\"yes\"> <span its:translate=\"yes\">Sök</span></"
@@ -1168,7 +1168,7 @@ msgid ""
 "When you create a recipe, you can select if a recipe is in a category, such "
 "as vegan or nut free. To search by category:"
 msgstr ""
-"När du skapar ett recept kan du välja om det hör till en kategori, så som "
+"När du skapar ett recept kan du välja om det hör till en kategori, som "
 "vegetariskt eller nötfritt. För att söka efter kategori:"
 
 #. (itstool) path: item/p
@@ -1181,14 +1181,15 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/find-recipe.page:86
 msgid ""
-"You can also expand the Categories list by pressing the down icon<media type="
-"\"image\" mime=\"image/png\" src=\"images/down.png\" its:translate=\"yes\"> "
-"<span its:translate=\"yes\">Down</span></media> to show all Categories."
+"You can also expand the Categories list by pressing the down icon<media "
+"type=\"image\" mime=\"image/png\" src=\"images/down.png\" its:"
+"translate=\"yes\"> <span its:translate=\"yes\">Down</span></media> to show "
+"all Categories."
 msgstr ""
 "Du kan också expandera kategorilistan genom att trycka på nedåtikonen <media "
-"type=\"image\" mime=\"image/png\" src=\"images/down.png\" its:translate=\"yes"
-"\"> <span its:translate=\"yes\">Nedåt</span></media> för att visa alla "
-"kategorier."
+"type=\"image\" mime=\"image/png\" src=\"images/down.png\" its:"
+"translate=\"yes\"> <span its:translate=\"yes\">Nedåt</span></media> för att "
+"visa alla kategorier."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:93
@@ -1296,11 +1297,11 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/find-recipe.page:144
 msgid ""
-"In the top menu bar of <app>Recipes</app>, press the <gui style=\"button"
-"\">Cuisines</gui> button."
+"In the top menu bar of <app>Recipes</app>, press the <gui "
+"style=\"button\">Cuisines</gui> button."
 msgstr ""
-"I menyraden högst upp i <app>Recept</app>, tryck på knappen <gui style="
-"\"button\">Matkulturer</gui>."
+"I menyraden högst upp i <app>Recept</app>, tryck på knappen <gui "
+"style=\"button\">Matkulturer</gui>."
 
 #. (itstool) path: item/p
 #: C/find-recipe.page:148
@@ -1355,7 +1356,7 @@ msgid ""
 "occasions."
 msgstr ""
 "<app>Recept</app> är ett lättanvänt program som hjälper dig med vad du ska "
-"laga för mat idag, imorgon, resten av veckan och för speciella tillfällen."
+"laga för mat i dag, i morgon, resten av veckan och för speciella tillfällen."
 
 #. (itstool) path: section/title
 #: C/index.page:28
@@ -1485,12 +1486,12 @@ msgstr "external ref='images/love.png' md5='2ae9287b28d11513d16239afc00147b7'"
 #. (itstool) path: item/p
 #: C/notes.page:54
 msgid ""
-"Press the <gui>Add to Favorites</gui> <media type=\"image\" mime=\"image/png"
-"\" src=\"images/love.png\" its:translate=\"yes\"> <span its:translate=\"yes"
-"\">Add to Favorites</span></media> button."
+"Press the <gui>Add to Favorites</gui> <media type=\"image\" mime=\"image/"
+"png\" src=\"images/love.png\" its:translate=\"yes\"> <span its:"
+"translate=\"yes\">Add to Favorites</span></media> button."
 msgstr ""
-"Tryck på knappen <gui>Lägg till i favoriter</gui> <media type=\"image\" mime="
-"\"image/png\" src=\"images/love.png\" its:translate=\"yes\"> <span its:"
+"Tryck på knappen <gui>Lägg till i favoriter</gui> <media type=\"image\" "
+"mime=\"image/png\" src=\"images/love.png\" its:translate=\"yes\"> <span its:"
 "translate=\"yes\">Lägg till i favoriter</span></media>."
 
 #. (itstool) path: section/p
@@ -1542,8 +1543,8 @@ msgid ""
 "You must use an email application to share recipes. Web based email, like "
 "Gmail or Yahoo!, will not work to share recipes."
 msgstr ""
-"Du måste använda ett e-postprogram för att dela recept. Webbaserad e-post, "
-"så som Gmail eller Yahoo! kommer inte att fungera för att dela recept."
+"Du måste använda ett e-postprogram för att dela recept. Webbaserad e-post "
+"såsom Gmail eller Yahoo! kommer inte att fungera för att dela recept."
 
 #. (itstool) path: item/p
 #: C/share.page:44
@@ -1624,8 +1625,8 @@ msgid ""
 "gui> to send the file to printer."
 msgstr ""
 "Du kan förhandsgranska filen med <gui style=\"button\">Förhandsvisa</gui>, "
-"och då du är nöjd med inställningarna kan du klicka <gui style=\"button"
-"\">Skriv ut</gui> för att sända filen till skrivaren."
+"och då du är nöjd med inställningarna kan du klicka <gui "
+"style=\"button\">Skriv ut</gui> för att sända filen till skrivaren."
 
 #. (itstool) path: info/desc
 #: C/shop.page:8
@@ -1688,7 +1689,7 @@ msgid ""
 msgstr ""
 "När du är klar med att lägga till i inköpslistan, tryck på knappen <gui>Visa "
 "inköpslista</gui> eller gå tillbaka till huvudfönstret för <app>Recept</app> "
-"och klicka på raden <gui>Köp ingredienser</gui> i sektionen <gui>Idag</gui>."
+"och klicka på raden <gui>Köp ingredienser</gui> i sektionen <gui>I dag</gui>."
 
 #. (itstool) path: page/p
 #: C/shop.page:47
@@ -1767,9 +1768,10 @@ msgid ""
 "png\" its:translate=\"yes\"> <span its:translate=\"yes\">Trash</span></"
 "media> button and the ingredient is removed from the shopping list."
 msgstr ""
-"Tryck på knappen Papperskorg <media type=\"image\" mime=\"image/png\" src="
-"\"images/trash.png\" its:translate=\"yes\"> <span its:translate=\"yes"
-"\">Papperskorg</span></media> så tas ingrediensen bort från inköpslistan."
+"Tryck på knappen Papperskorg <media type=\"image\" mime=\"image/png\" "
+"src=\"images/trash.png\" its:translate=\"yes\"> <span its:"
+"translate=\"yes\">Papperskorg</span></media> så tas ingrediensen bort från "
+"inköpslistan."
 
 #. (itstool) path: section/p
 #: C/shop.page:93
