@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-23 04:28+0000\n"
-"PO-Revision-Date: 2021-09-06 10:53+0200\n"
-"Last-Translator: Marek Černocký <marek@manet.cz>\n"
+"POT-Creation-Date: 2022-07-29 07:22+0000\n"
+"PO-Revision-Date: 2024-01-21 21:42+0100\n"
+"Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.Recipes.desktop.in:3
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
@@ -29,11 +29,6 @@ msgstr "Recepty"
 #: data/org.gnome.Recipes.desktop.in:4
 msgid "GNOME cooks unite!"
 msgstr "Kuchaři z celého GNOME, spojte se!"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Recipes.desktop.in:7
-msgid "org.gnome.Recipes"
-msgstr "org.gnome.Recipes"
 
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:911
 msgid "GNOME loves to cook"
@@ -116,6 +111,10 @@ msgstr "Jednotlivý recept"
 #: data/appdata/org.gnome.Recipes.appdata.xml.in:58
 msgid "An individual cuisine"
 msgstr "Jednotlivá kuchyně"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:483
+msgid "Matthias Clasen and others"
+msgstr "Matthias Clasen a další"
 
 #: data/org.gnome.Recipes.gschema.xml:25
 msgid "The user ID of the current user"
@@ -2547,8 +2546,8 @@ msgstr "Některá funkcionalita není k dispozici."
 msgid ""
 "Could not create D-Bus proxy for org.freedesktop.portal.Desktop interface %s"
 msgstr ""
-"Nezdařilo se vytvořit D-Bus proxy pro rozhraní org.freedesktop.portal.Desktop "
-"%s"
+"Nezdařilo se vytvořit D-Bus proxy pro rozhraní org.freedesktop.portal."
+"Desktop %s"
 
 #: src/gr-utils.c:401
 #, c-format
@@ -4950,3 +4949,6 @@ msgstr "bez vína Zinfandel"
 #: src/no-ingredients.inc:284
 msgid "no Zuccini"
 msgstr "bez cuket"
+
+#~ msgid "org.gnome.Recipes"
+#~ msgstr "org.gnome.Recipes"
