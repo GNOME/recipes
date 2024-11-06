@@ -36,13 +36,14 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/AbiWord/enchant/releases/download/v2.2.3/enchant-2.2.3.tar.gz",
+                    "url": "https://github.com/rrthomas/enchant/releases/download/v2.2.3/enchant-2.2.3.tar.gz",
                     "sha256": "abd8e915675cff54c0d4da5029d95c528362266557c61c7149d53fa069b8076d"
                 }
             ]
         },
         {
             "name": "gspell",
+            "buildsystem": "meson",
             "sources": [
                     {
                         "type": "git",
@@ -52,11 +53,26 @@
         },
         {
             "name": "gnome-autoar",
+            "buildsystem": "meson",
             "sources": [
                     {
                         "type": "git",
                         "url": "https://gitlab.gnome.org/GNOME/gnome-autoar.git"
                     }
+            ]
+        },
+        {
+            "name": "libsoup-2.4",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dtests=false"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/libsoup/2.74/libsoup-2.74.3.tar.xz",
+                    "sha256": "e4b77c41cfc4c8c5a035fcdc320c7bc6cfb75ef7c5a034153df1413fa1d92f13"
+                }
             ]
         },
         {
@@ -71,12 +87,17 @@
         },
         {
             "name": "gnome-online-accounts",
-            "config-opts" : [ "--disable-Werror" ],
+            "config-opts": [
+                "--disable-telepathy",
+                "--disable-documentation",
+                "--disable-backend"
+            ],
             "sources": [
-                    {
-                        "type": "git",
-                        "url": "https://gitlab.gnome.org/GNOME/gnome-online-accounts.git"
-                    }
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gnome-online-accounts/3.38/gnome-online-accounts-3.38.1.tar.xz",
+                    "sha256": "e18889d67806da84d1261bfed1cf61d2baec131d2d0d0a92f83ff33d4649358e"
+                }
             ]
         },
         {
