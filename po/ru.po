@@ -1,0 +1,4964 @@
+# Russian translation for recipes.
+# Copyright (C) 2025 recipes's COPYRIGHT HOLDER
+# This file is distributed under the same license as the recipes package.
+# Fraxinus_Acer <yasson2008@ya.ru>,  2025.
+# Fraxinus Acer <>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: recipes master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-11 06:47+0000\n"
+"PO-Revision-Date: 2025-08-12 20:40+0300\n"
+"Last-Translator: Fraxinus Acer\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.6\n"
+
+#: data/org.gnome.Recipes.desktop.in:3
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:6 src/gr-window.ui:14
+#: src/gr-window.ui:530 src/gr-about-dialog.c:907 src/gr-window.c:391
+#: src/gr-window.c:1098
+msgid "Recipes"
+msgstr "Рецепты"
+
+#: data/org.gnome.Recipes.desktop.in:4
+msgid "GNOME cooks unite!"
+msgstr "Повара GNOME, объединяйтесь!"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:7 src/gr-about-dialog.c:911
+msgid "GNOME loves to cook"
+msgstr "GNOME обожает готовить"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:9
+msgid ""
+"Recipes is an easy-to-use application that will help you to discover what to "
+"cook today, tomorrow, the rest of the week and for your special occasions."
+msgstr ""
+"\"Рецепты\" - это простое в использовании приложение, которое поможет вам "
+"узнать, что приготовить сегодня, завтра, до конца недели и для особых "
+"случаев."
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:13
+msgid ""
+"Recipes comes with a collection of recipes that have been collected by GNOME "
+"contributors from all over the world. It also lets you store your own "
+"recipes and share them with your friends."
+msgstr ""
+"В приложении Рецепты представлена коллекция рецептов, собранных авторами "
+"GNOME со всего мира. Приложение также позволяет сохранять ваши собственные "
+"рецепты и делиться ими с друзьями."
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:18
+msgid "The major features of Recipes include:"
+msgstr "К основным особенностям рецептов относятся:"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:22
+msgid "Add and edit your own recipes"
+msgstr "Добавляйте и редактируйте свои собственные рецепты"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:23
+msgid "Share recipes with your friends"
+msgstr "Делитесь рецептами со своими друзьями"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:24
+msgid "Export and print shopping lists"
+msgstr "Экспортировать и напечатать список покупок"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:25
+msgid "Adjust quantities based on the number of servings"
+msgstr "Отрегулируйте количество в зависимости от количества порций"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:26
+msgid "Mark recipes to cook later or add them to your favorites"
+msgstr ""
+"Отмечайте рецепты, чтобы приготовить их позже, или добавляйте их в избранное"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:27
+msgid "Add notes to recipes"
+msgstr "Добавить заметки к рецептам"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:28
+msgid "Hands-free cooking instruction mode"
+msgstr "Режим приготовления со свободными руками"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:34
+msgid "Initial screen for the application"
+msgstr "Начальный экран для приложения"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:38
+msgid "The cuisines page"
+msgstr "Страница кухонь"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:42
+msgid "A shopping list"
+msgstr "Лист покупок"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:46
+msgid "Cooking a recipe"
+msgstr "Приготовление рецепта"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:50
+msgid "Editing a recipe"
+msgstr "Редактирование рецепта"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:54
+msgid "An individual recipe"
+msgstr "Индивидуальный рецепт"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:58
+msgid "An individual cuisine"
+msgstr "Отдельные кухни"
+
+#: data/appdata/org.gnome.Recipes.appdata.xml.in:483
+msgid "Matthias Clasen and others"
+msgstr "Matthias Clasen and others"
+
+#: data/org.gnome.Recipes.gschema.xml:25
+msgid "The user ID of the current user"
+msgstr "ID текущего пользователя"
+
+#: data/org.gnome.Recipes.gschema.xml:26
+msgid "The user ID of the current user."
+msgstr "ID текущего пользователя."
+
+#: data/org.gnome.Recipes.gschema.xml:32
+msgid "The number of times cooking mode has been presented"
+msgstr "Количество раз включался режим приготовления"
+
+#: data/org.gnome.Recipes.gschema.xml:33
+msgid "The number of times cooking mode has been presented."
+msgstr "Количество раз включался режим приготовления."
+
+#: data/org.gnome.Recipes.gschema.xml:39
+msgid "The timestamp of the last change to the favorites list"
+msgstr "Временная метка последнего изменения в списке покупок"
+
+#: data/org.gnome.Recipes.gschema.xml:40
+msgid ""
+"The timestamp of the last time an item was added to or removed from the "
+"favorites list."
+msgstr ""
+"Временная метка последнего добавления элемента в список избранного или его "
+"удаления из него."
+
+#: data/org.gnome.Recipes.gschema.xml:47
+msgid "The list of favorites"
+msgstr "Список избранного"
+
+#: data/org.gnome.Recipes.gschema.xml:48
+msgid "The list of favorites. Each entry in the list is the ID of a recipe."
+msgstr "Список избранного. Каждая запись в списке является ID рецепта."
+
+#: data/org.gnome.Recipes.gschema.xml:54
+msgid "The timestamp of the last change to the shopping list"
+msgstr "Временная метка последнего изменения в списке покупок"
+
+#: data/org.gnome.Recipes.gschema.xml:55
+msgid ""
+"The timestamp of the last time an item was added to or removed from the "
+"shopping list."
+msgstr ""
+"Временная метка последнего добавления товара в список покупок или его "
+"удаления из него."
+
+#: data/org.gnome.Recipes.gschema.xml:62
+msgid "The shopping list"
+msgstr "Этот лист покупок"
+
+#: data/org.gnome.Recipes.gschema.xml:63
+msgid ""
+"The shopping list. Each entry in the dictionary maps the ID of a recipe to a "
+"serving count."
+msgstr ""
+"Список покупок. Каждая запись в словаре сопоставляет ID рецепта с "
+"количеством порций."
+
+#: data/org.gnome.Recipes.gschema.xml:70
+msgid "Ingredients that were removed from the shopping list"
+msgstr "Ингредиенты, которые были удалены из списка покупок"
+
+#: data/org.gnome.Recipes.gschema.xml:71
+msgid "The names of ingredients that were removed from the shopping list."
+msgstr "Названия ингредиентов, которые были удалены из списка покупок."
+
+#: data/org.gnome.Recipes.gschema.xml:77
+msgid "The list of recipes to be exported"
+msgstr "Список рецептов для экспорта"
+
+#: data/org.gnome.Recipes.gschema.xml:78
+msgid ""
+"The list of recipes to be exported. Each entry in the list is the ID of a "
+"recipe."
+msgstr ""
+"Список рецептов для экспорта. Каждая запись в списке является ID рецепта."
+
+#: data/org.gnome.Recipes.gschema.xml:84
+msgid "The setting for which unit temperatures should be displayed in."
+msgstr ""
+"Настройка, при которой должна отображаться температура в единице измерения."
+
+#: data/org.gnome.Recipes.gschema.xml:85
+msgid ""
+"The setting for which unit temperatures should be displayed in. Default is "
+"'locale', which means to use the LC_MEASUREMENT category of the current "
+"locale to decide."
+msgstr ""
+"Настройка, в которой должны отображаться значения температуры в единицах "
+"измерения. По умолчанию используется локаль, что означает использование "
+"категории LC_MEASUREMENT для выбора текущего языкового стандарта."
+
+#: data/org.gnome.Recipes.gschema.xml:92
+msgid "By which key to sort lists."
+msgstr "По какому ключу сортировать списки."
+
+#: data/org.gnome.Recipes.gschema.xml:93
+msgid "The setting determines which key is used to sort lists of recipes by."
+msgstr ""
+"Эта настройка определяет, по какому ключу будет производиться сортировка "
+"списков рецептов."
+
+#: data/org.gnome.Recipes.gschema.xml:99
+msgid "Whether the surprise dialog should be shown."
+msgstr "Следует ли показывать диалоговое окно \"Сюрприз\"."
+
+#: data/org.gnome.Recipes.gschema.xml:100
+msgid ""
+"The setting determines whether the surprise dialog should be shown on "
+"startup."
+msgstr ""
+"Эта настройка определяет, должно ли отображаться диалоговое окно \"Сюрприз\" "
+"при запуске."
+
+#: data/org.gnome.Recipes.gschema.xml:106
+msgid "The setting for which unit volumes should be displayed in."
+msgstr "Настройка, при которой должны отображаться объёмы единиц измерения."
+
+#: data/org.gnome.Recipes.gschema.xml:107
+msgid ""
+"The setting for which unit volumes should be displayed in. Default is "
+"'locale',"
+msgstr ""
+"Настройка, в которой должны отображаться объёмы единиц измерения. По "
+"умолчанию используется \"локаль\","
+
+#: data/org.gnome.Recipes.gschema.xml:113
+msgid "The setting for which unit weights should be displayed in."
+msgstr "Настройка, при которой должны отображаться веса единиц измерения."
+
+#: data/org.gnome.Recipes.gschema.xml:114
+msgid ""
+"The setting for which unit weights should be displayed in. Default is "
+"'locale',"
+msgstr ""
+"Настройка, для которого должны отображаться веса единиц измерения. По "
+"умолчанию используется \"locale\","
+
+#: src/chef-conflict-dialog.ui:10
+msgid "Same Chef"
+msgstr "Тот же шеф"
+
+#: src/chef-conflict-dialog.ui:16
+msgid "Different Chef"
+msgstr "Другой Шеф"
+
+#: src/chef-conflict-dialog.ui:30
+msgid "Existing Chef"
+msgstr "Действующий шеф-повар"
+
+#: src/chef-conflict-dialog.ui:43
+msgid "Imported Chef"
+msgstr "Импортированный шеф"
+
+#: src/chef-conflict-dialog.ui:57 src/chef-conflict-dialog.ui:69
+msgid "Short Name:"
+msgstr "Краткое название:"
+
+#: src/chef-conflict-dialog.ui:80 src/chef-conflict-dialog.ui:92
+#: src/recipe-conflict-dialog.ui:38
+msgid "Name:"
+msgstr "Название:"
+
+#: src/chef-conflict-dialog.ui:103 src/chef-conflict-dialog.ui:115
+msgid "Description:"
+msgstr "Описание:"
+
+#: src/chef-conflict-dialog.ui:126 src/chef-conflict-dialog.ui:138
+msgid "Picture:"
+msgstr "Изображение:"
+
+#: src/gr-chef-dialog.ui:4 src/gr-window.c:1185
+msgid "Chef Information"
+msgstr "Информация о шефе"
+
+#: src/gr-chef-dialog.ui:10 src/gr-window.c:1283
+msgid "_Cancel"
+msgstr "От_мена"
+
+#: src/gr-chef-dialog.ui:20 src/gr-window.ui:130
+msgid "_Save"
+msgstr "Сохр_анить"
+
+#: src/gr-chef-dialog.ui:97
+msgid ""
+"This information may be shared with other users if you share your recipes."
+msgstr ""
+"Эта информация может быть передана другим пользователям, если вы поделитесь "
+"своими рецептами."
+
+#: src/gr-chef-dialog.ui:119
+msgid "Other Chef"
+msgstr "Другие шефы"
+
+#: src/gr-chef-dialog.ui:132
+msgid "Name…"
+msgstr "Имя…"
+
+#: src/gr-chef-dialog.ui:143
+msgid "Short Name…"
+msgstr "Краткое название…"
+
+#: src/gr-cooking-page.ui:75
+msgid "Show"
+msgstr "Показать"
+
+#: src/gr-cooking-page.ui:158
+msgid "Done"
+msgstr "Готово"
+
+#: src/gr-cooking-page.ui:185
+msgid "Stop Cooking?"
+msgstr "Остановить готовку?"
+
+#: src/gr-cooking-page.ui:194
+msgid "Some timers are still running."
+msgstr "Некоторые таймеры все ещё запущены."
+
+#: src/gr-cooking-page.ui:200
+msgid ""
+"Recipes can keep the timers running\n"
+"even if you leave cooking mode now."
+msgstr ""
+"Таймеры для приготовления рецептов будут работать\n"
+", даже если вы сейчас выйдете из режима приготовления."
+
+#: src/gr-cooking-page.ui:212
+msgid "Keep Cooking"
+msgstr "Начать готовку"
+
+#: src/gr-cooking-page.ui:219
+msgid "Stop Timers"
+msgstr "Остановить таймеры"
+
+#: src/gr-cooking-page.ui:226
+msgid "Continue Timers"
+msgstr "Продолжить таймеры"
+
+#: src/gr-cooking-page.ui:255
+msgid "Controls"
+msgstr "Управление"
+
+#: src/gr-cooking-page.ui:281
+msgid ""
+"To advance to the next step, press any key on the\n"
+"keyboard."
+msgstr ""
+"Чтобы перейти к следующему шагу, нажмите любую клавишу на\n"
+"клавиатуре."
+
+#: src/gr-cooking-page.ui:304
+msgid "To go back to the previous step, doubletap any key."
+msgstr "Чтобы вернуться к предыдущему шагу, дважды нажмите любую клавишу."
+
+#: src/gr-cooking-page.ui:326
+msgid ""
+"Alternatively, you can use the cursor keys to\n"
+"quickly seek within the directions."
+msgstr ""
+"Кроме того, вы можете использовать клавиши управления курсором для\n"
+"быстрого поиска в нужных направлениях."
+
+#: src/gr-cooking-page.ui:350
+msgid "To exit the process, press the Escape key."
+msgstr "Чтобы выйти из процесса, нажмите клавишу Escape."
+
+#: src/gr-cooking-view.ui:64
+msgid "Time is up!"
+msgstr "Время вышло!"
+
+#: src/gr-cuisine-page.ui:77 src/gr-list-page.ui:111 src/gr-search-page.ui:29
+#: src/gr-list-page.c:514
+msgid "No recipes found"
+msgstr "Рецепты не найдены"
+
+#: src/gr-cuisine-page.ui:90
+msgid "There are no recipes for this cuisine."
+msgstr "Рецептов приготовления этой кухни не существует."
+
+#: src/gr-cuisines-page.ui:8
+msgid "Cuisines page"
+msgstr "Страница кухонь"
+
+#: src/gr-cuisines-page.ui:28
+msgid "World Cuisines"
+msgstr "Кухни мира"
+
+#: src/gr-cuisines-page.ui:124
+msgid "Seasonal"
+msgstr "Сезонные"
+
+#: src/gr-details-page.ui:105
+msgid "Contains garlic"
+msgstr "Содержит чеснок"
+
+#: src/gr-details-page.ui:112
+msgid ""
+"Contains dairy products. Please always double-check the ingredients if you "
+"are serving a person with gluten or dairy intolerance."
+msgstr ""
+"Содержит молочные продукты. Пожалуйста, всегда перепроверяйте ингредиенты, "
+"если вы готовите для человека с непереносимостью глютена или молочных "
+"продуктов."
+
+#: src/gr-details-page.ui:119
+msgid ""
+"Contains gluten. Please always double-check the ingredients if you are "
+"serving a person with gluten or dairy intolerance."
+msgstr ""
+"Содержит глютен. Пожалуйста, всегда перепроверяйте ингредиенты, если вы "
+"готовите для человека с непереносимостью глютена или молочных продуктов."
+
+#: src/gr-details-page.ui:126 src/gr-details-page.c:537
+msgid "Spicy"
+msgstr "Острый"
+
+#: src/gr-details-page.ui:146
+msgid "_Buy Ingredients"
+msgstr "Купить _ингредиенты"
+
+#: src/gr-details-page.ui:164 src/gr-edit-page.ui:315
+msgid "_Yield"
+msgstr "_Подача"
+
+#: src/gr-details-page.ui:218
+msgid "Preparation Time"
+msgstr "Время подготовки"
+
+#: src/gr-details-page.ui:248
+msgid "Cooking Time"
+msgstr "Время готовки"
+
+#: src/gr-details-page.ui:278
+msgid "Cuisine"
+msgstr "Кухня"
+
+#: src/gr-details-page.ui:308 src/gr-query-editor.ui:46
+msgid "Meal"
+msgstr "Блюдо"
+
+#: src/gr-details-page.ui:338
+msgid "Season"
+msgstr "Сезон"
+
+#: src/gr-details-page.ui:399
+msgid "Note"
+msgstr "Заметка"
+
+#: src/gr-details-page.ui:429 src/gr-recipe-formatter.c:123
+#: src/gr-recipe-printer.c:302
+msgid "Directions"
+msgstr "Указания"
+
+#: src/gr-details-page.ui:489
+msgid "_Notes"
+msgstr "Заме_тки"
+
+#: src/gr-details-page.ui:499 src/gr-shopping-page.ui:125
+msgid "_Edit"
+msgstr "Р_едактировать"
+
+#: src/gr-details-page.ui:508
+msgid "_Delete"
+msgstr "_Удалить"
+
+#: src/gr-details-page.ui:519 src/gr-shopping-page.ui:143
+#: src/recipe-export-dialog.ui:21
+msgid "_Share"
+msgstr "Поделитьс_я"
+
+#: src/gr-details-page.ui:531 src/gr-shopping-page.ui:154
+msgid "_Print"
+msgstr "_Печать"
+
+#: src/gr-details-page.ui:542
+msgid "Add to favorites"
+msgstr "Добавить в избранное"
+
+#: src/gr-edit-page.ui:35 src/gr-edit-page.ui:769 src/menus.ui:66
+msgid "Edit"
+msgstr "Редактировать"
+
+#: src/gr-edit-page.ui:112
+msgid "Add an image"
+msgstr "Добавить изображение"
+
+#: src/gr-edit-page.ui:138 src/gr-edit-page.ui:164
+msgid "Rotate image"
+msgstr "Повернуть изображение"
+
+#: src/gr-edit-page.ui:190
+msgid "Default image"
+msgstr "Изображение по-умолчанию"
+
+#: src/gr-edit-page.ui:216
+msgid "Remove image"
+msgstr "Удалить изображение"
+
+#: src/gr-edit-page.ui:249
+msgid "Add List"
+msgstr "Добавить лист"
+
+#: src/gr-edit-page.ui:267
+msgid "Details"
+msgstr "Подробности"
+
+#: src/gr-edit-page.ui:284 src/gr-edit-page.c:1656
+msgid "_Name"
+msgstr "Назван_ие"
+
+#: src/gr-edit-page.ui:345
+msgid "_Preparation Time"
+msgstr "Время по_дготовки"
+
+#: src/gr-edit-page.ui:371 src/gr-edit-page.ui:419
+msgid "Less than 15 minutes"
+msgstr "Менее 15 минут"
+
+#: src/gr-edit-page.ui:372 src/gr-edit-page.ui:420
+msgid "15 to 30 minutes"
+msgstr "15 - 30 минут"
+
+#: src/gr-edit-page.ui:373 src/gr-edit-page.ui:421
+msgid "30 to 45 minutes"
+msgstr "30 - 45 минут"
+
+#: src/gr-edit-page.ui:374 src/gr-edit-page.ui:422
+msgid "45 minutes to an hour"
+msgstr "от 45 минут до часа"
+
+#: src/gr-edit-page.ui:375 src/gr-edit-page.ui:423
+msgid "More than an hour"
+msgstr "Более часа"
+
+#: src/gr-edit-page.ui:393
+msgid "_Cooking Time"
+msgstr "_Время готовки"
+
+#: src/gr-edit-page.ui:441
+msgid "C_uisine"
+msgstr "Кух_ня"
+
+#: src/gr-edit-page.ui:477
+msgid "_Meal"
+msgstr "_Блюдо"
+
+#: src/gr-edit-page.ui:513
+msgid "S_eason"
+msgstr "_Сезон"
+
+#: src/gr-edit-page.ui:549
+msgid "_Spiciness"
+msgstr "Острот_а"
+
+#: src/gr-edit-page.ui:569 src/gr-spice-row.c:127
+msgid "Mild"
+msgstr "Обычный"
+
+#: src/gr-edit-page.ui:570
+msgid "Somewhat spicy"
+msgstr "Немного пикантный"
+
+#: src/gr-edit-page.ui:571
+msgid "Hot"
+msgstr "Острый"
+
+#: src/gr-edit-page.ui:572 src/gr-details-page.c:532 src/gr-spice-row.c:142
+msgid "Very spicy"
+msgstr "Очень острый"
+
+#: src/gr-edit-page.ui:585
+msgid "_Description"
+msgstr "Опис_ание"
+
+#: src/gr-edit-page.ui:644 src/gr-diet-row.c:102
+msgid "Gluten-free"
+msgstr "Без глютена"
+
+#: src/gr-edit-page.ui:651 src/gr-diet-row.c:105
+msgid "Nut-free"
+msgstr "Без орехов"
+
+#: src/gr-edit-page.ui:658 src/gr-diet-row.c:108
+msgid "Vegan"
+msgstr "Веганский"
+
+#: src/gr-edit-page.ui:665 src/gr-diet-row.c:111
+msgid "Vegetarian"
+msgstr "Вегетарианский"
+
+#: src/gr-edit-page.ui:672 src/gr-diet-row.c:114
+msgid "Milk-free"
+msgstr "Без молока"
+
+#: src/gr-edit-page.ui:679 src/gr-diet-row.c:117
+msgid "Halal"
+msgstr "Халяльный"
+
+#: src/gr-edit-page.ui:708
+msgid "Di_rections"
+msgstr "На_правления"
+
+#: src/gr-edit-page.ui:776
+msgid "Preview"
+msgstr "Предпросмотр"
+
+#: src/gr-edit-page.ui:796
+msgid "Add Step"
+msgstr "Добавить шаг"
+
+#: src/gr-edit-page.ui:804
+msgid "Add Image"
+msgstr "Добавить изображение"
+
+#: src/gr-edit-page.ui:812
+msgid "Add Timer"
+msgstr "Добавить таймер"
+
+#: src/gr-edit-page.ui:820
+msgid "Add Temperature"
+msgstr "Добавить температуру"
+
+#: src/gr-edit-page.ui:916
+msgid "Title…"
+msgstr "Название…"
+
+#: src/gr-edit-page.ui:924 src/gr-edit-page.ui:995
+msgid "Add"
+msgstr "Добавить"
+
+#: src/gr-edit-page.ui:1014
+msgid "Syntax"
+msgstr "Оформление"
+
+#: src/gr-edit-page.ui:1029
+msgid "Use paragraphs to break directions into steps (2 newlines)."
+msgstr "Используйте абзац, чтобы разбить указания на шаги (2 новые строки)."
+
+#: src/gr-edit-page.ui:1042
+msgid "You can provide an image or a time counter in each step."
+msgstr "На каждом шаге вы можете указать изображение или счётчик времени."
+
+#: src/gr-edit-page.ui:1054
+msgid "Timer"
+msgstr "Таймер"
+
+#: src/gr-edit-page.ui:1076
+msgid "Image"
+msgstr "Изображение"
+
+#: src/gr-edit-page.ui:1098
+msgid "Temperature"
+msgstr "Температура"
+
+#: src/gr-ingredients-viewer-row.ui:52
+msgid "Amount"
+msgstr "Сумма"
+
+#: src/gr-ingredients-viewer-row.ui:92
+msgid "Ingredient"
+msgstr "Ингредиент"
+
+#: src/gr-ingredients-viewer-row.ui:169
+msgid "Use a number, followed by an (optional) unit."
+msgstr ""
+"Используйте число, за которым следует (необязательная) единица измерения."
+
+#: src/gr-ingredients-viewer-row.ui:180
+msgid "Examples: 1 kg, 2 1/2 pounds, 250 ml, 6"
+msgstr "Примеры: 1 кг, 2 1/2 фунта, 250 мл, 6"
+
+#: src/gr-ingredients-viewer.ui:13 src/gr-query-editor.ui:235
+#: src/gr-edit-page.c:1511 src/gr-recipe-formatter.c:104
+#: src/gr-recipe-printer.c:253
+msgid "Ingredients"
+msgstr "Ингредиенты"
+
+#: src/gr-ingredients-viewer.ui:33
+msgid "Name of the List"
+msgstr "Название в списке"
+
+#: src/gr-ingredients-viewer.ui:43 src/gr-shopping-tile.ui:137
+msgid "Remove"
+msgstr "Удалить"
+
+#: src/gr-ingredients-viewer.ui:86
+msgid "Add more ingredients"
+msgstr "Добавить больше ингридиентов"
+
+#: src/gr-list-page.ui:124
+msgid "There are no recipes here yet."
+msgstr "Здесь пока нет рецептов."
+
+#: src/gr-query-editor.ui:66 src/gr-query-editor.c:495
+#: src/gr-query-editor.c:684
+msgid "Any meal"
+msgstr "Любое блюдо"
+
+#: src/gr-query-editor.ui:109
+msgid "Spiciness"
+msgstr "Острота"
+
+#: src/gr-query-editor.ui:129 src/gr-query-editor.c:562
+#: src/gr-query-editor.c:713
+msgid "Any spiciness"
+msgstr "Любая острота"
+
+#: src/gr-query-editor.ui:172
+msgid "Dietary restrictions"
+msgstr "Диетические ограничения"
+
+#: src/gr-query-editor.ui:192 src/gr-query-editor.c:406
+#: src/gr-query-editor.c:742
+msgid "No restrictions"
+msgstr "Никаких ограничений"
+
+#. FIXME: repopulate
+#: src/gr-query-editor.ui:255 src/gr-query-editor.c:337
+#: src/gr-query-editor.c:771
+msgid "Anything"
+msgstr "Что-нибудь"
+
+#: src/gr-query-editor.ui:283
+msgid "Search…"
+msgstr "Поиск…"
+
+#: src/gr-recipes-page.ui:8
+msgid "Recipes page"
+msgstr "Страница рецептов"
+
+#: src/gr-recipes-page.ui:27
+msgid "Today"
+msgstr "Сегодня"
+
+#: src/gr-recipes-page.ui:103
+msgid "Editor’s Picks"
+msgstr "Выбор редакторов"
+
+#: src/gr-recipes-page.ui:129
+msgid "Categories"
+msgstr "Категории"
+
+#: src/gr-recipes-page.ui:226
+msgid "Featured GNOME Chefs"
+msgstr "Шефы рекомендуемые GNOME"
+
+#: src/gr-recipe-tile.ui:58
+msgid "Contributed recipe"
+msgstr "Предложенный рецепт"
+
+#: src/gr-search-page.ui:42
+msgid "Try a different search"
+msgstr "Попробуйте другой поиск"
+
+#: src/gr-shopping-page.ui:40
+msgid "Buy ingredients"
+msgstr "Купить ингридиенты"
+
+#: src/gr-shopping-page.ui:93
+msgid "No shopping necessary!"
+msgstr "Никаких покупок не нужно!"
+
+#: src/gr-shopping-page.ui:132
+msgid "_Clear List"
+msgstr "Очи_стить Лист"
+
+#: src/gr-shopping-page.ui:188
+msgid "Nothing to add"
+msgstr "Нечего добавить"
+
+#: src/gr-shopping-tile.ui:101
+msgid "Yield"
+msgstr "Подача"
+
+#: src/gr-time-widget.ui:31
+msgid "Start"
+msgstr "Старт"
+
+#: src/gr-time-widget.ui:60
+msgid "Pause"
+msgstr "Пауза"
+
+#: src/gr-time-widget.ui:69
+msgid "Continue"
+msgstr "Продолжить"
+
+#: src/gr-time-widget.ui:82
+msgid "Reset"
+msgstr "Сбросить"
+
+#: src/gr-window.ui:23
+msgid "_New Recipe"
+msgstr "Новый рецеп_т"
+
+#: src/gr-window.ui:40
+msgid "Go back"
+msgstr "Назад"
+
+#: src/gr-window.ui:97 src/gr-window.ui:198
+msgid "Search"
+msgstr "Поиск"
+
+#: src/gr-window.ui:116
+msgid "_Start Cooking"
+msgstr "Начать гото_вку"
+
+#: src/gr-window.ui:144
+msgid "_Done Shopping"
+msgstr "З_акончить покупки"
+
+#: src/gr-window.ui:258
+msgid "All ingredients marked as stocked!"
+msgstr "Все ингредиенты помечены как готовые к употреблению!"
+
+#: src/gr-window.ui:268
+msgid "_Undo"
+msgstr "_Назад"
+
+#: src/gr-window.ui:317
+msgid "Ingredients to buy added."
+msgstr "Ингредиенты для покупки добавлены."
+
+#: src/gr-window.ui:327
+msgid "View Shopping List"
+msgstr "Показать Лист покупок"
+
+#: src/gr-window.ui:384
+msgid "Undo"
+msgstr "Назад"
+
+#: src/gr-window.ui:444
+msgid "Send Update"
+msgstr "Отправить обновление"
+
+#: src/gr-window.ui:492
+msgid "Shopping List has been exported to Todoist"
+msgstr "Лист покупок был экспортирован в Todoist"
+
+#: src/gr-window.ui:569 src/gr-window.c:398
+msgid "Cuisines"
+msgstr "Кухни"
+
+#: src/gr-window.ui:622
+msgid "Name"
+msgstr "Название"
+
+#: src/gr-window.ui:630
+msgid "Recency"
+msgstr "Новизна"
+
+#: src/menus.ui:6 src/menus.ui:48
+msgid "_Import"
+msgstr "Имп_ортировать"
+
+#: src/menus.ui:11 src/menus.ui:53
+msgid "_Export All"
+msgstr "Э_кспортировать всё"
+
+#: src/menus.ui:16
+msgid "_Chef Information"
+msgstr "Информация о _шефе"
+
+#: src/menus.ui:22 src/menus.ui:93
+msgid "_What’s New"
+msgstr "_Что нового"
+
+#: src/menus.ui:26
+msgid "_Help"
+msgstr "Сп_равка"
+
+#: src/menus.ui:30
+msgid "_About"
+msgstr "_О приложении"
+
+#: src/menus.ui:34 src/menus.ui:97
+msgid "_Report Issue"
+msgstr "Сообщить о _проблеме"
+
+#: src/menus.ui:38
+msgid "_Quit"
+msgstr "В_ыход"
+
+#: src/menus.ui:45
+msgid "File"
+msgstr "Файл"
+
+#: src/menus.ui:60
+msgid "Chef Information…"
+msgstr "Информация о шефе…"
+
+#: src/menus.ui:69
+msgid "Copy"
+msgstr "Копировать"
+
+#: src/menus.ui:73
+msgid "Paste"
+msgstr "Вставить"
+
+#: src/menus.ui:79
+msgid "Find…"
+msgstr "Найти…"
+
+#: src/menus.ui:86
+msgid "Help"
+msgstr "Справка"
+
+#: src/menus.ui:89
+msgid "Recipes _Help"
+msgstr "Рецепты Сп_равка"
+
+#: src/recipe-conflict-dialog.ui:10 src/shopping-list-exporter-dialog.ui:21
+#: src/gr-chef-dialog.c:163 src/gr-image-viewer.c:627
+#: src/gr-recipe-exporter.c:172 src/gr-shopping-list-exporter.c:698
+#: src/gr-window.c:1219
+msgid "Cancel"
+msgstr "Отмена"
+
+#: src/recipe-conflict-dialog.ui:18
+msgid "Rename"
+msgstr "Переименовать"
+
+#: src/recipe-conflict-dialog.ui:28
+msgid "A recipe with this name already exists."
+msgstr "Рецепт с таким названием уже существует."
+
+#: src/recipe-export-dialog.ui:14
+msgid "_Add More"
+msgstr "Доба_вить больше"
+
+#: src/recipe-export-dialog.ui:56
+msgid "Share with a friend"
+msgstr "Поделиться с друзьями"
+
+#: src/recipe-export-dialog.ui:63
+msgid "Contribute to the Recipes project"
+msgstr "Внесите свой вклад в проект \"Рецепты\""
+
+#: src/recipe-surprise.ui:28
+msgid "GNOME turns 20 !"
+msgstr "GNOME исполняется 20 лет!"
+
+#: src/recipe-surprise.ui:52
+msgid ""
+"YEARS\n"
+"STRONG"
+msgstr ""
+"ГОДЫ\n"
+"ВЫДЕРЖКИ"
+
+#: src/recipe-surprise.ui:68
+msgid ""
+"Recipes is a present to GNOME for its 20th birthday. We invite the GNOME "
+"community all over the world to share recipes and enjoy a good meal together."
+msgstr ""
+"\"Рецепты\" - это подарок GNOME к его 20-летию. Мы приглашаем сообщество "
+"GNOME по всему миру поделиться рецептами и вместе вкусно поесть."
+
+#: src/recipe-surprise.ui:79
+msgid "Let’s Party"
+msgstr "Давайте веселиться"
+
+#: src/recipe-whats-new-dialog.ui:8
+msgid "What’s New in Recipes"
+msgstr "Что нового в Рецептах"
+
+#: src/shopping-list-exporter-dialog.ui:13 src/gr-shopping-list-exporter.c:278
+msgid "Export Ingredients"
+msgstr "Экспортировать ингредиенты"
+
+#: src/shopping-list-exporter-dialog.ui:55
+msgid "Export"
+msgstr "Экспертироватья"
+
+#: src/shopping-list-exporter-dialog.ui:101
+msgid "Email"
+msgstr "Почта"
+
+#: src/shopping-list-exporter-dialog.ui:136
+#: src/shopping-list-exporter-dialog.ui:201
+msgid "Todoist"
+msgstr "Todoist"
+
+#: src/shopping-list-exporter-dialog.ui:152
+msgid "Add service"
+msgstr "Добавить сервис"
+
+#: src/gr-about-dialog.c:132
+msgid "Learn more about Builder"
+msgstr "Узнать подробнее о Сборщике"
+
+#: src/gr-about-dialog.c:244 src/gr-about-dialog.c:327
+#: src/gr-about-dialog.c:329 src/gr-about-dialog.c:331
+#: src/gr-about-dialog.c:333 src/gr-about-dialog.c:335
+#: src/gr-about-dialog.c:337 src/gr-about-dialog.c:339
+#: src/gr-about-dialog.c:341 src/gr-about-dialog.c:343
+msgid "Unknown"
+msgstr "Неизвестно"
+
+#: src/gr-about-dialog.c:433
+msgid "Flatpak"
+msgstr "Flatpak"
+
+#: src/gr-about-dialog.c:436
+msgctxt "Flatpak metadata"
+msgid "Version"
+msgstr "Версия"
+
+#: src/gr-about-dialog.c:439
+msgid "Application"
+msgstr "Приложение"
+
+#: src/gr-about-dialog.c:442 src/gr-about-dialog.c:451
+msgctxt "Flatpak metadata"
+msgid "ID"
+msgstr "ID"
+
+#: src/gr-about-dialog.c:443 src/gr-about-dialog.c:452
+msgctxt "Flatpak metadata"
+msgid "Architecture"
+msgstr "Архитектура"
+
+#: src/gr-about-dialog.c:444 src/gr-about-dialog.c:453
+msgctxt "Flatpak metadata"
+msgid "Branch"
+msgstr "Ветвь"
+
+#: src/gr-about-dialog.c:445 src/gr-about-dialog.c:454
+msgctxt "Flatpak metadata"
+msgid "Commit"
+msgstr "Фиксация"
+
+#: src/gr-about-dialog.c:448
+msgid "Runtime"
+msgstr "Среда"
+
+#: src/gr-about-dialog.c:457 src/gr-about-dialog.c:521
+msgid "Bundled libraries"
+msgstr "Связанные библиотеки"
+
+#: src/gr-about-dialog.c:487
+msgid "OS"
+msgstr "ОС"
+
+#: src/gr-about-dialog.c:490
+msgctxt "OS metadata"
+msgid "Name"
+msgstr "Название"
+
+#: src/gr-about-dialog.c:492
+msgctxt "OS metadata"
+msgid "Type"
+msgstr "Тип"
+
+#: src/gr-about-dialog.c:495 src/gr-about-dialog.c:497
+msgctxt "OS metadata"
+msgid "Desktop"
+msgstr "Рабочий стол"
+
+#: src/gr-about-dialog.c:500
+msgid "System libraries"
+msgstr "Системные бибилиотеки"
+
+#: src/gr-about-dialog.c:820 src/gr-about-dialog.c:847
+msgid "System"
+msgstr "Система"
+
+#: src/gr-about-dialog.c:914
+msgid "translator-credits"
+msgstr "Fraxinus Acer"
+
+#: src/gr-about-dialog.c:917
+msgid "Learn more about Recipes"
+msgstr "Узнать подробнее о Рецептах"
+
+#: src/gr-about-dialog.c:924
+msgid "Recipes by"
+msgstr "Рецепты от"
+
+#: src/gr-account.c:111
+#, c-format
+msgid "Got an error from Account portal"
+msgstr "Получено сообщение об ошибке на портале учётных записей"
+
+#: src/gr-account.c:162
+msgid ""
+"Allow your personal information to be included with recipes you share with "
+"your friends."
+msgstr ""
+"Разрешите включать вашу личную информацию в рецепты, которыми вы делитесь со "
+"своими друзьями."
+
+#: src/gr-app.c:209
+#, c-format
+msgid "Supported categories: %s\n"
+msgstr "Поддерживаемые категории: %s\n"
+
+#: src/gr-app.c:443
+msgid "Print the version and exit"
+msgstr "Распечатайте версию и закройте"
+
+#: src/gr-app.c:447
+msgid "Turn on verbose logging"
+msgstr "Включите подробное ведение журнала"
+
+#: src/gr-app.c:451
+msgid "Show a category"
+msgstr "Показать категорию"
+
+#: src/gr-chef-dialog.c:159 src/gr-image-viewer.c:623
+msgid "Select an Image"
+msgstr "Выберите Изображение"
+
+#: src/gr-chef-dialog.c:162 src/gr-image-viewer.c:626 src/gr-window.c:1218
+msgid "Open"
+msgstr "Открыть"
+
+#: src/gr-chef-dialog.c:167 src/gr-image-viewer.c:631
+msgid "Image files"
+msgstr "Файлы изображений"
+
+#: src/gr-chef-dialog.c:423
+msgid "New Chef"
+msgstr "Новый шеф"
+
+#: src/gr-cooking-page.c:249
+msgid "Cooking"
+msgstr "Готовка"
+
+#: src/gr-cooking-view.c:157
+#, c-format
+msgid "Step %d/%d"
+msgstr "Шаг %d/%d"
+
+#: src/gr-cooking-view.c:163
+#, c-format
+msgid "Step %d"
+msgstr "Шаг %d"
+
+#: src/gr-cooking-view.c:273
+msgid "GNOME Recipes"
+msgstr "Рецепты GNOME"
+
+#: src/gr-cooking-view.c:393
+msgid "A cooking timer has expired"
+msgstr "Истёк срок действия таймера готовки"
+
+#: src/gr-cooking-view.c:411 src/gr-cooking-view.c:427
+#, c-format
+msgid "Timer for “%s” has expired."
+msgstr "Таймер для \"%s\" закончился."
+
+#: src/gr-cooking-view.c:425
+msgid "Timer is up!"
+msgstr "Время вышло!"
+
+#: src/gr-cuisine.c:45
+msgid "American"
+msgstr "Американская"
+
+#: src/gr-cuisine.c:46
+msgid "Chinese"
+msgstr "Китайская"
+
+#: src/gr-cuisine.c:47
+msgid "Indian"
+msgstr "Индийская"
+
+#: src/gr-cuisine.c:48
+msgid "Italian"
+msgstr "Итальянская"
+
+#: src/gr-cuisine.c:49
+msgid "French"
+msgstr "Французская"
+
+#: src/gr-cuisine.c:50
+msgid "Greek"
+msgstr "Греческая"
+
+#: src/gr-cuisine.c:51
+msgid "Mediterranean"
+msgstr "Средиземноморская"
+
+#: src/gr-cuisine.c:52
+msgid "Mexican"
+msgstr "Мексиканская"
+
+#: src/gr-cuisine.c:53
+msgid "Nordic"
+msgstr "Скандинавская"
+
+#: src/gr-cuisine.c:54
+msgid "Turkish"
+msgstr "Турецкая"
+
+#: src/gr-cuisine.c:58
+msgid "American Cuisine"
+msgstr "Американская кухня"
+
+#: src/gr-cuisine.c:59
+msgid "Chinese Cuisine"
+msgstr "Китайская кухня"
+
+#: src/gr-cuisine.c:60
+msgid "Indian Cuisine"
+msgstr "Индийская кухня"
+
+#: src/gr-cuisine.c:61
+msgid "Italian Cuisine"
+msgstr "Итальянская кухня"
+
+#: src/gr-cuisine.c:62
+msgid "French Cuisine"
+msgstr "Французская кухня"
+
+#: src/gr-cuisine.c:63
+msgid "Greek Cuisine"
+msgstr "Греческая кухня"
+
+#: src/gr-cuisine.c:64
+msgid "Mediterranean Cuisine"
+msgstr "Средиземноморская  кухня"
+
+#: src/gr-cuisine.c:65
+msgid "Mexican Cuisine"
+msgstr "Мексиканская кухня"
+
+#: src/gr-cuisine.c:66
+msgid "Nordic Cuisine"
+msgstr "Скандинавская кухня"
+
+#: src/gr-cuisine.c:67
+msgid "Turkish Cuisine"
+msgstr "Турецкая кухня"
+
+#: src/gr-cuisine.c:71
+msgid ""
+"The cuisine of the United States reflects its history. The European "
+"colonization of the Americas yielded the introduction of a number of "
+"ingredients and cooking styles to the latter. The various styles continued "
+"expanding well into the 19th and 20th centuries, proportional to the influx "
+"of immigrants from many foreign nations; such influx developed a rich "
+"diversity in food preparation throughout the country."
+msgstr ""
+"Кухня Соединенных Штатов отражает их историю. Европейская колонизация "
+"Северной и Южной Америки привела к появлению в этой стране ряда ингредиентов "
+"и стилей приготовления. Различные стили продолжали расширяться и в 19-м, и в "
+"20-м веках, пропорционально притоку иммигрантов из многих зарубежных стран; "
+"такой приток привёл к богатому разнообразию в приготовлении блюд по всей "
+"стране."
+
+#: src/gr-cuisine.c:76
+msgid ""
+"Chinese cuisine includes styles originating from the diverse regions of "
+"China, as well as from Chinese people in other parts of the world including "
+"most Asian nations. The history of Chinese cuisine in China stretches back "
+"for thousands of years and has changed from period to period and in each "
+"region according to climate, imperial fashions, and local preferences. Over "
+"time, techniques and ingredients from the cuisines of other cultures were "
+"integrated into the cuisine of the Chinese people due both to imperial "
+"expansion and from the trade with nearby regions in pre-modern times, and "
+"from Europe and the New World in the modern period."
+msgstr ""
+"Китайская кухня включает в себя стили, происходящие из различных регионов "
+"Китая, а также от китайцев из других частей света, включая большинство "
+"азиатских стран. История китайской кухни в Китае насчитывает тысячи лет и "
+"менялась от периода к периоду и в каждом регионе в зависимости от климата, "
+"императорской моды и местных предпочтений. Со временем приемы и ингредиенты "
+"из кухонь других культур были интегрированы в кухню китайского народа как в "
+"результате имперской экспансии, так и в результате торговли с близлежащими "
+"регионами в досовременные времена, а также из Европы и Нового Света в "
+"современный период."
+
+#: src/gr-cuisine.c:84
+msgid ""
+"Indian cuisine encompasses a wide variety of regional and traditional "
+"cuisines native to India. Given the range of diversity in soil type, "
+"climate, culture, ethnic group and occupations, these cuisines vary "
+"significantly from each other and use locally available spices, herbs, "
+"vegetables and fruits. Indian food is also heavily influenced by religious "
+"and cultural choices and traditions. There has also been Middle Eastern and "
+"Central Asian influence on North Indian cuisine from the years of Mughal "
+"rule. Indian cuisine has been and is still evolving, as a result of the "
+"nation’s cultural interactions with other societies."
+msgstr ""
+"Индийская кухня включает в себя широкий спектр региональных и традиционных "
+"блюд, характерных для Индии. Учитывая разнообразие типов почв, климата, "
+"культуры, этнических групп и профессий, эти кухни значительно отличаются "
+"друг от друга и используют местные специи, травы, овощи и фрукты. Индийская "
+"кухня также находится под сильным влиянием религиозных и культурных "
+"предпочтений и традиций. Со времен правления Великих Моголов на "
+"североиндийскую кухню также оказало влияние ближневосточное и "
+"центральноазиатское направление. Индийская кухня развивалась и продолжает "
+"развиваться в результате культурного взаимодействия нации с другими "
+"обществами."
+
+#: src/gr-cuisine.c:92
+msgid ""
+"Italian cuisine is characterized by its simplicity, with many dishes having "
+"only four to eight ingredients. Italian cooks rely chiefly on the quality of "
+"the ingredients rather than on elaborate preparation. Ingredients and dishes "
+"vary by region. Many dishes that were once regional, however, have "
+"proliferated with variations throughout the country."
+msgstr ""
+"Итальянская кухня отличается простотой, многие блюда состоят всего из "
+"четырех-восьми ингредиентов. Итальянские повара в основном делают ставку на "
+"качество ингредиентов, а не на тщательное приготовление. Ингредиенты и блюда "
+"различаются в зависимости от региона. Однако многие блюда, которые когда-то "
+"были региональными, получили широкое распространение по всей стране с "
+"различными вариациями."
+
+#: src/gr-cuisine.c:96
+msgid ""
+"French cuisine was codified in the 20th century by Auguste Escoffier to "
+"become the modern haute cuisine; Escoffier, however, left out much of the "
+"local culinary character to be found in the regions of France and was "
+"considered difficult to execute by home cooks. Gastro-tourism and the Guide "
+"Michelin helped to acquaint people with the rich bourgeois and peasant "
+"cuisine of the French countryside starting in the 20th century. Gascon "
+"cuisine has also had great influence over the cuisine in the southwest of "
+"France. Many dishes that were once regional have proliferated in variations "
+"across the country."
+msgstr ""
+"Французская кухня была систематизирована в 20 веке Огюстом Эскофье и "
+"превратилась в современную высокую кухню; однако Эскофье не учёл многих "
+"особенностей местной кулинарии, которые можно найти в регионах Франции, и "
+"домашние повара сочли ее трудной в приготовлении. Гастрономический туризм и "
+"путеводитель Мишлен помогли познакомить людей с богатой буржуазной и "
+"крестьянской кухней французской сельской местности, начиная с 20-го века. "
+"Гасконская кухня также оказала большое влияние на кухню юго-запада Франции. "
+"Многие блюда, которые когда-то были региональными, получили широкое "
+"распространение в различных вариациях по всей стране."
+
+#: src/gr-cuisine.c:103
+msgid ""
+"Contemporary Greek cookery makes wide use of vegetables, olive oil, grains, "
+"fish, wine, and meat (white and red, including lamb, poultry, rabbit and "
+"pork). Other important ingredients include olives, cheese, eggplant "
+"(aubergine), zucchini (courgette), lemon juice, vegetables, herbs, bread and "
+"yoghurt. The most commonly used grain is wheat; barley is also used. Common "
+"dessert ingredients include nuts, honey, fruits, and filo pastry."
+msgstr ""
+"В современной греческой кулинарии широко используются овощи, оливковое "
+"масло, зерновые, рыба, вино и мясо (белое и красное, включая баранину, "
+"птицу, кролика и свинину). Другие важные ингредиенты включают оливки, сыр, "
+"баклажаны (aubergine), цуккини (courgette), лимонный сок, овощи, зелень, "
+"хлеб и йогурт. Чаще всего используется пшеница, также используется ячмень. "
+"Обычные ингредиенты для десерта включают орехи, мед, фрукты и печенье фило."
+
+#: src/gr-cuisine.c:108
+msgid ""
+"Mediterranean cuisine has a lot to offer, and is legendary for being very "
+"healthy too. Expect to see olives, yoghurt and garlic."
+msgstr ""
+"Средиземноморская кухня богата разнообразием блюд и славится тем, что она "
+"очень полезна для здоровья. Приготовьте оливки, йогурт и чеснок."
+
+#: src/gr-cuisine.c:109
+msgid ""
+"Mexican cuisine is primarily a fusion of indigenous Mesoamerican cooking "
+"with European, especially Spanish, elements added after the Spanish conquest "
+"of the Aztec Empire in the 16th century. The staples are native foods, such "
+"as corn, beans, avocados, tomatoes, and chili peppers, along with rice, "
+"which was brought by the Spanish. Europeans introduced a large number of "
+"other foods, the most important of which were meats from domesticated "
+"animals (beef, pork, chicken, goat, and sheep), dairy products (especially "
+"cheese), and various herbs and spices."
+msgstr ""
+"Мексиканская кухня - это прежде всего сплав местной мезоамериканской кухни с "
+"европейскими, особенно испанскими, элементами, добавленными после испанского "
+"завоевания империи ацтеков в 16 веке. Основными продуктами питания являются "
+"местные продукты, такие как кукуруза, фасоль, авокадо, помидоры и перец "
+"чили, а также рис, который привезли испанцы. Европейцы представили большое "
+"количество других продуктов питания, наиболее важными из которых были мясо "
+"домашних животных (говядина, свинина, курица, козлятина и овцы), молочные "
+"продукты (особенно сыр), а также различные травы и специи."
+
+#: src/gr-cuisine.c:116
+msgid ""
+"Cooking in Denmark has always been inspired by foreign and continental "
+"practises and the use of imported tropical spices like cinnamon, cardamom, "
+"nutmeg and black pepper can be traced to the Danish cuisine of the Middle "
+"Ages and some even to the Vikings."
+msgstr ""
+"Датская кухня всегда вдохновлялась зарубежными и континентальными "
+"традициями, а использование импортных тропических специй, таких как корица, "
+"кардамон, мускатный орех и чёрный перец, восходит к датской кухне "
+"средневековья, а некоторые блюда даже викингов."
+
+#: src/gr-cuisine.c:117
+msgid ""
+"You can find a great variety of mouth watering dishes in Turkish cuisine, "
+"which is mostly the heritage of Ottoman cuisine. It is the mixture and "
+"refinement of Central Asian, Middle Eastern and Balkan cuisines. Therefore "
+"it is impossible to fit Turkish cuisine into a short list."
+msgstr ""
+"В турецкой кухне, которая по большей части является наследием османской "
+"кухни, вы можете найти множество аппетитных блюд. Это смесь и утонченность "
+"среднеазиатской, ближневосточной и балканской кухонь. Поэтому невозможно "
+"уместить турецкую кухню в короткий список."
+
+#: src/gr-details-page.c:193 src/gr-edit-page.c:936
+msgid "serving"
+msgstr "порция"
+
+#: src/gr-details-page.c:193 src/gr-edit-page.c:937
+#: src/gr-recipe-importer.c:504 src/gr-recipe-store.c:410
+#: src/gr-shopping-tile.c:110
+msgid "servings"
+msgstr "порции"
+
+#: src/gr-details-page.c:367
+msgid "Could not find this recipe."
+msgstr "Не смогли найти этот рецепт."
+
+#: src/gr-details-page.c:576
+#, c-format
+msgid "Timer: %s"
+msgstr "Таймер: %s"
+
+#: src/gr-details-page.c:583
+#, c-format
+msgid "Image %d"
+msgstr "Изображение %d"
+
+#: src/gr-details-page.c:724 src/gr-edit-page.c:1597
+#, c-format
+msgid "Recipe by %s"
+msgstr "Рецепт от %s"
+
+#: src/gr-diet.c:34
+msgid "Gluten-free recipes"
+msgstr "Рецепты без глютена"
+
+#: src/gr-diet.c:37
+msgid "Nut-free recipes"
+msgstr "Рецепты без орехов"
+
+#: src/gr-diet.c:40
+msgid "Vegan recipes"
+msgstr "Веганские рецепты"
+
+#: src/gr-diet.c:43
+msgid "Vegetarian recipes"
+msgstr "Вегетарианские рецепты"
+
+#: src/gr-diet.c:46
+msgid "Milk-free recipes"
+msgstr "Рецепты без молока"
+
+#: src/gr-diet.c:49
+msgid "Halal recipes"
+msgstr "Халяльные рецепты"
+
+#: src/gr-diet.c:52 src/gr-diet.c:84
+msgid "Other dietary restrictions"
+msgstr "Другие диетические ограничения"
+
+#: src/gr-diet.c:66
+msgid ""
+"A gluten-free diet is a diet that excludes gluten, a protein composite found "
+"in wheat, barley, rye, and all their species and hybrids (such as spelt, "
+"kamut, and triticale). The inclusion of oats in a gluten-free diet remains "
+"controversial. Avenin present in oats may also be toxic for coeliac people; "
+"its toxicity depends on the cultivar consumed. Furthermore, oats are "
+"frequently cross-contaminated with cereals containing gluten.\n"
+"<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free\">Learn more…</"
+"a>"
+msgstr ""
+"Безглютеновая диета - это диета, которая исключает глютен, белковый "
+"комплекс, содержащийся в пшенице, ячмене, ржи и всех их видах и гибридах "
+"(таких как полба, камут и тритикале). Вопрос о включении овса в "
+"безглютеновую диету остается спорным. Глютен, содержащийся в овсе, также "
+"может быть токсичным для людей, страдающих целиакией; его токсичность "
+"зависит от сорта, который употребляется в пищу. Кроме того, в овсе часто "
+"встречаются злаки, содержащие глютен.\n"
+"<a href=\"https://en.wikibooks.org/wiki/Cookbook:Gluten-Free\">Узнать (на "
+"английском языке)…</a>"
+
+#: src/gr-diet.c:69
+msgid ""
+"A tree nut allergy is a hypersensitivity to dietary substances from tree "
+"nuts and edible tree seeds causing an overreaction of the immune system "
+"which may lead to severe physical symptoms. Tree nuts include, but are not "
+"limited to, almonds, Brazil nuts, cashews, chestnuts, filberts/hazelnuts, "
+"macadamia nuts, pecans, pistachios, pine nuts, shea nuts and walnuts.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">Learn more…</a>"
+msgstr ""
+"Аллергия на древесные орехи - это повышенная чувствительность к пищевым "
+"веществам, содержащимся в древесных орехах и семенах съедобных деревьев, "
+"вызывающая чрезмерную реакцию иммунной системы, которая может привести к "
+"серьезным физическим симптомам. К лесным орехам относятся, но не "
+"ограничиваются ими, миндаль, бразильские орехи, кешью, каштаны, фундук, "
+"орехи макадамия, пекан, фисташки, кедровые орехи, орехи ши и грецкие орехи.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Tree_nut_allergy\">Узнать (на "
+"английском языке)…</a>"
+
+#: src/gr-diet.c:72
+msgid ""
+"Veganism is both the practice of abstaining from the use of animal products, "
+"particularly in diet, and an associated philosophy that rejects the "
+"commodity status of animals.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Veganism\">Learn more…</a>"
+msgstr ""
+"Веганство - это одновременно и практика воздержания от употребления "
+"продуктов животного происхождения, особенно в диетическом питании, и "
+"связанная с этим философия, отвергающая товарный статус животных.\n"
+"<a href=\"https://ru.wikipedia.org/wiki/Веганство\">Узнать подробнее…</a>"
+
+#: src/gr-diet.c:75
+msgid ""
+"Vegetarian cuisine is based on food that meets vegetarian standards by not "
+"including meat and animal tissue products (such as gelatin or animal-derived "
+"rennet). For lacto-ovo vegetarianism (the most common type of vegetarianism "
+"in the Western world), eggs and dairy products such as milk and cheese are "
+"permitted. For lacto vegetarianism, the earliest known type of vegetarianism "
+"(recorded in India), dairy products such as milk and cheese are permitted.\n"
+"The strictest forms of vegetarianism are veganism and fruitarianism, which "
+"exclude all animal products, including dairy products as well as honey, and "
+"even some refined sugars if filtered and whitened with bone char.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Vegetarianism\">Learn more…</a>"
+msgstr ""
+"Вегетарианская кухня основана на продуктах, которые соответствуют "
+"вегетарианским стандартам и не включают мясо и продукты из тканей животного "
+"происхождения (такие как желатин или сычужный фермент животного "
+"происхождения). При лакто-ово-вегетарианстве (наиболее распространённом виде "
+"вегетарианства в западном мире) разрешены яйца и молочные продукты, такие "
+"как молоко и сыр. При лакто-вегетарианстве, самом раннем известном виде "
+"вегетарианства (зарегистрированном в Индии), разрешены молочные продукты, "
+"такие как молоко и сыр.\n"
+"Самыми строгими формами вегетарианства являются веганство и фрукторианство, "
+"которые исключают все продукты животного происхождения, включая молочные "
+"продукты, а также мед и даже некоторые виды рафинированного сахара, если они "
+"отфильтрованы и обуглены.\n"
+"<a href=\"https://ru.wikipedia.org/wiki/Вегетарианство\">Узнать подробнее…</"
+"a>"
+
+#: src/gr-diet.c:78
+msgid ""
+"Lactose intolerance is a condition in which people have symptoms due to the "
+"decreased ability to digest lactose, a sugar found in milk products. Those "
+"affected vary in the amount of lactose they can tolerate before symptoms "
+"develop. Symptoms may include abdominal pain, bloating, diarrhea, gas, and "
+"nausea. These typically start between half and two hours after drinking "
+"milk. Severity depends on the amount a person eats or drinks. It does not "
+"cause damage to the gastrointestinal tract.\n"
+"<a href=\"https://en.wikipedia.org/wiki/Lactose_intolerance\">Learn more…</a>"
+msgstr ""
+"Непереносимость лактозы - это состояние, при котором у людей возникают "
+"симптомы, связанные со снижением способности переваривать лактозу, сахар, "
+"содержащийся в молочных продуктах. У людей, страдающих непереносимостью "
+"лактозы, различается количество лактозы, которое они могут переносить до "
+"появления симптомов. Симптомы могут включать боль в животе, вздутие живота, "
+"диарею, газы и тошноту. Обычно они начинаются через полтора-два часа после "
+"употребления молока. Степень тяжести зависит от количества съеденного или "
+"выпитого человеком молока. Это не приводит к повреждению желудочно-кишечного "
+"тракта.\n"
+"<a href=\"https://ru.wikipedia.org/wiki/Непереносимость_лактозы\">Узнать "
+"подробнее…</a>"
+
+#: src/gr-diet.c:81
+msgid "Halal meat is prepared according to Islamic traditions"
+msgstr "Халяльное мясо готовится в соответствии с исламскими традициями"
+
+#: src/gr-edit-page.c:600
+msgid "hour"
+msgstr "час"
+
+#: src/gr-edit-page.c:601
+msgid "hours"
+msgstr "часы"
+
+#: src/gr-edit-page.c:602
+msgctxt "hour abbreviation"
+msgid "h"
+msgstr "ч"
+
+#: src/gr-edit-page.c:606
+msgid "minute"
+msgstr "минута"
+
+#: src/gr-edit-page.c:607
+msgid "minutes"
+msgstr "минут"
+
+#: src/gr-edit-page.c:608
+msgctxt "minute abbreviation"
+msgid "min"
+msgstr "мин"
+
+#: src/gr-edit-page.c:609
+msgctxt "minute abbreviation"
+msgid "m"
+msgstr "м"
+
+#: src/gr-edit-page.c:613
+msgid "second"
+msgstr "секунда"
+
+#: src/gr-edit-page.c:614
+msgid "seconds"
+msgstr "секунды"
+
+#: src/gr-edit-page.c:615
+msgctxt "second abbreviation"
+msgid "sec"
+msgstr "сек"
+
+#: src/gr-edit-page.c:616
+msgctxt "second abbreviation"
+msgid "s"
+msgstr "с"
+
+#: src/gr-edit-page.c:901
+msgid "Recipe Author"
+msgstr "Автор рецепта"
+
+#: src/gr-edit-page.c:940
+msgid "loaf"
+msgstr "хлеб"
+
+#: src/gr-edit-page.c:941
+msgid "loafs"
+msgstr "хлеба"
+
+#: src/gr-edit-page.c:944
+msgid "ounce"
+msgstr "униции"
+
+#: src/gr-edit-page.c:945
+msgid "ounces"
+msgstr "униции"
+
+#: src/gr-edit-page.c:1547
+msgid "_Name Your Recipe"
+msgstr "Назван_ие вашего рецепта"
+
+#: src/gr-edit-page.c:1734 src/gr-edit-page.c:1796 src/gr-recipe-store.c:1330
+#, c-format
+msgid "You need to provide a name for the recipe"
+msgstr "Вам необходимо указать название рецепта"
+
+#: src/gr-edit-page.c:1752
+#, c-format
+msgid "Some ingredients need correction"
+msgstr "Некоторые ингредиенты нуждаются в корректировке"
+
+#: src/gr-gourmet-format.c:174
+#, c-format
+msgid "Not a Gourmet XML document"
+msgstr "Это Gourmet XML документ"
+
+#: src/gr-ingredients-viewer-row.c:159
+msgid "Amount…"
+msgstr "Сумма…"
+
+#: src/gr-ingredients-viewer-row.c:174
+msgid "Ingredient…"
+msgstr "Ингредиент…"
+
+#: src/gr-list-page.c:310
+msgid "Gluten-free Recipes"
+msgstr "Рецепты без глютена"
+
+#: src/gr-list-page.c:312
+msgid "Nut-free Recipes"
+msgstr "Рецепты без орехов"
+
+#: src/gr-list-page.c:314
+msgid "Vegan Recipes"
+msgstr "Веганские рецепты"
+
+#: src/gr-list-page.c:316
+msgid "Vegetarian Recipes"
+msgstr "Вегетарианские рецепты"
+
+#: src/gr-list-page.c:318
+msgid "Milk-free Recipes"
+msgstr "Рецепты без молока"
+
+#: src/gr-list-page.c:320
+msgid "Halal Recipes"
+msgstr "Халяльные рецепты"
+
+#: src/gr-list-page.c:322
+msgid "Other Dietary Restrictions"
+msgstr "Другие диетические ограничения"
+
+#: src/gr-list-page.c:367
+#, c-format
+msgid "No %s found"
+msgstr "Не найдено %s"
+
+#: src/gr-list-page.c:370 src/gr-list-page.c:439 src/gr-list-page.c:472
+msgid "You could add one using the “New Recipe” button."
+msgstr "Вы можете добавить его, нажав на кнопку “Новый рецепт”."
+
+#: src/gr-list-page.c:428
+#, c-format
+msgid "Recipes by %s"
+msgstr "Рецепты от %s"
+
+#: src/gr-list-page.c:435
+#, c-format
+msgid "No recipes by chef %s found"
+msgstr "Рецепты от шефа %s не найдены"
+
+#: src/gr-list-page.c:441 src/gr-list-page.c:515 src/gr-list-page.c:542
+#: src/gr-list-page.c:577
+msgid "Sorry about this."
+msgstr "Извините за это."
+
+#: src/gr-list-page.c:469
+#, c-format
+msgid "No recipes for %s found"
+msgstr "Рецепты для %s не найдены"
+
+#: src/gr-list-page.c:493
+msgid "No favorite recipes found"
+msgstr "Избранные рецепты не найдены"
+
+#: src/gr-list-page.c:494
+msgid "Use the ♥ button to mark recipes as favorites."
+msgstr "Используйте кнопку ♥ для добавления рецепта в избранное."
+
+#: src/gr-list-page.c:541
+msgid "No new recipes"
+msgstr "Нет новых рецептов"
+
+#: src/gr-list-page.c:576
+msgid "No imported recipes found"
+msgstr "Импортированных рецептов не найдено"
+
+#: src/gr-meal.c:45
+msgid "Main Course"
+msgstr "Основное блюдо"
+
+#: src/gr-meal.c:46
+msgid "Snacks"
+msgstr "Закуски"
+
+#: src/gr-meal.c:47
+msgid "Breakfast"
+msgstr "Завтрак"
+
+#: src/gr-meal.c:48
+msgid "Side Dishes"
+msgstr "Гарниры"
+
+#: src/gr-meal.c:49
+msgid "Desserts"
+msgstr "Десерты"
+
+#: src/gr-meal.c:50
+msgid "Cake and Baking"
+msgstr "Выпечка и торты"
+
+#: src/gr-meal.c:51
+msgid "Drinks and Cocktails"
+msgstr "Напитки и коктейли"
+
+#: src/gr-meal.c:52
+msgid "Pizza"
+msgstr "Пицца"
+
+#: src/gr-meal.c:53
+msgid "Pasta"
+msgstr "Паста"
+
+#: src/gr-meal.c:54
+msgid "Salad"
+msgstr "Салат"
+
+#: src/gr-meal.c:55
+msgid "Other"
+msgstr "Другое"
+
+#: src/gr-number.c:148 src/gr-number.c:217 src/gr-number.c:226
+#, c-format
+msgid "Could not parse %s as a fraction"
+msgstr "Не удалось разобрать %s как дробь"
+
+#: src/gr-number.c:251
+#, c-format
+msgid "Could not parse %s as a integer"
+msgstr "Не удалось разобрать %s как целое число"
+
+#: src/gr-number.c:273
+#, c-format
+msgid "Could not parse %s as a float"
+msgstr "Не удалось разобрать %s как значение с плавающей запятой"
+
+#: src/gr-number.c:322
+#, c-format
+msgid "Could not parse %s as a number"
+msgstr "Не удалось разобрать %s как число"
+
+#: src/gr-recipe-exporter.c:168
+msgid "Save the exported recipe"
+msgstr "Сохранить экспортированный рецепт"
+
+#: src/gr-recipe-exporter.c:171 src/gr-shopping-list-exporter.c:697
+msgid "Save"
+msgstr "Сохранить"
+
+#: src/gr-recipe-exporter.c:206
+msgid "Recipe contribution"
+msgstr "Вклад в Рецепты"
+
+#: src/gr-recipe-exporter.c:207
+msgid "Please accept my attached recipe contribution."
+msgstr "Пожалуйста, примите мой вклад в виде прилагаемого рецепта."
+
+#: src/gr-recipe-exporter.c:217
+msgid "Try this recipe"
+msgstr "Попробуйте этот рецепт"
+
+#: src/gr-recipe-exporter.c:218
+msgid ""
+"Hi,\n"
+"\n"
+"you should try this recipe."
+msgstr ""
+"Привет,\n"
+"\n"
+"вам стоит попробовать этот рецепт."
+
+#: src/gr-recipe-exporter.c:221
+msgid "Try these recipes"
+msgstr "Попробуйте эти рецепты"
+
+#: src/gr-recipe-exporter.c:222
+msgid ""
+"Hi,\n"
+"\n"
+"you should try these recipes."
+msgstr ""
+"Привет,\n"
+"\n"
+"вам стоит попробовать эти рецепты."
+
+#: src/gr-recipe-exporter.c:225
+msgid "(The attached file can be imported into GNOME Recipes.)"
+msgstr "(Прикрепленный файл можно импортировать в GNOME Recipes.)"
+
+#: src/gr-recipe-exporter.c:437
+#, c-format
+msgid "This build does not support exporting"
+msgstr "Эта сборка не поддерживает экспорт"
+
+#: src/gr-recipe-exporter.c:520
+#, c-format
+msgid ""
+"Error while exporting:\n"
+"%s"
+msgstr ""
+"Ошибка при экспорте:\n"
+"%s"
+
+#: src/gr-recipe-exporter.c:617
+#, c-format
+msgid "%d recipe selected for sharing"
+msgid_plural "%d recipes selected for sharing"
+msgstr[0] "%d рецепт выбран, чтобы поделиться"
+msgstr[1] "%d рецепта выбрано, чтобы поделиться"
+msgstr[2] "%d рецептов выбрано, чтобы поделиться"
+
+#: src/gr-recipe-exporter.c:649
+msgid ""
+"Some of the selected recipes are included\n"
+"with GNOME Recipes. You should only contribute\n"
+"your own recipes."
+msgstr ""
+"Некоторые из отобранных рецептов включены\n"
+"в приложение GNOME Recipes. Вы можете добавлять только\n"
+"свои собственные рецепты."
+
+#: src/gr-recipe-formatter.c:88 src/gr-recipe-printer.c:164
+msgid "Author:"
+msgstr "Автор:"
+
+#: src/gr-recipe-formatter.c:89 src/gr-recipe-printer.c:165
+msgid "Preparation:"
+msgstr "Подготовка:"
+
+#: src/gr-recipe-formatter.c:90 src/gr-recipe-printer.c:166
+msgid "Cooking:"
+msgstr "Готовка:"
+
+#: src/gr-recipe-formatter.c:93 src/gr-recipe-printer.c:168
+msgid "Yield:"
+msgstr "Подача:"
+
+#: src/gr-recipe-importer.c:238
+#, c-format
+msgid ""
+"Error while importing recipe:\n"
+"%s"
+msgstr ""
+"Ошибка при импорте рецепта:\n"
+"%s"
+
+#: src/gr-recipe-importer.c:518
+#, c-format
+msgid "Failed to load recipe: Couldn’t parse Created key"
+msgstr "Загрузка рецепта неудачна: не удалось разобрать созданный ключ"
+
+#: src/gr-recipe-importer.c:529
+#, c-format
+msgid "Failed to load recipe: Couldn’t parse Modified key"
+msgstr "Не удалось загрузить рецепт: не удалось разобрать изменённый ключ"
+
+#: src/gr-recipe-importer.c:809
+#, c-format
+msgid "No chef information found"
+msgstr "_Информация о шефе не найдена"
+
+#: src/gr-recipe-importer.c:839
+#, c-format
+msgid "This build does not support importing"
+msgstr "Эта сборка не поддерживает импорт"
+
+#: src/gr-recipe-printer.c:173
+msgid "Cuisine:"
+msgstr "Кухня:"
+
+#: src/gr-recipe-printer.c:177
+msgid "Meal:"
+msgstr "Блюдо:"
+
+#: src/gr-recipe-printer.c:181
+msgid "Season:"
+msgstr "Сезон:"
+
+#: src/gr-recipe-printer.c:229
+msgid "Notes"
+msgstr "Заметки"
+
+#: src/gr-recipe-printer.c:472 src/gr-shopping-list-printer.c:297
+msgid "Error printing file:"
+msgstr "Ошибка при печати файла:"
+
+#: src/gr-recipe-printer.c:473 src/gr-shopping-list-printer.c:298
+msgid "No details"
+msgstr "Нет подробностей"
+
+#: src/gr-recipes-page.c:221 src/gr-window.c:1383
+msgid "My Recipes"
+msgstr "Мои рецепты"
+
+#: src/gr-recipes-page.c:222
+msgid "Favorites"
+msgstr "Избранное"
+
+#: src/gr-recipes-page.c:223 src/gr-window.c:1331
+msgid "All Recipes"
+msgstr "Все рецепты"
+
+#: src/gr-recipes-page.c:224 src/gr-window.c:1340
+msgid "New Recipes"
+msgstr "Новые рецепты"
+
+#: src/gr-recipes-page.c:273
+msgid "Last edited:"
+msgstr "Последнее редактирование:"
+
+#: src/gr-recipes-page.c:372
+#, c-format
+msgid "Buy ingredients: <b>%s</b>"
+msgstr "Купить ингредиенты: <b>%s</b>"
+
+#: src/gr-recipes-page.c:374
+#, c-format
+msgid "Buy ingredients: <b>%s and %s</b>"
+msgstr "Купить ингредиенты: <b>%s и %s</b>"
+
+#: src/gr-recipes-page.c:376
+#, c-format
+msgid "Buy ingredients: <b>%s, %s and %d other</b>"
+msgid_plural "Buy ingredients: <b>%s, %s and %d others</b>"
+msgstr[0] "Купить ингредиенты: <b>%s, %s и %d прочие</b>"
+msgstr[1] "Купить ингредиенты: <b>%s, %s и %d прочие</b>"
+msgstr[2] "Купить ингредиенты: <b>%s, %s и %d прочие</b>"
+
+#: src/gr-recipe-store.c:1335
+#, c-format
+msgid ""
+"A recipe with this name and author (%s) already exists.\n"
+"Please choose a different name"
+msgstr ""
+"Рецепт с таким названием и автором (%s) уже существует.\n"
+"Пожалуйста, выберите другое название"
+
+#: src/gr-recipe-store.c:1364
+#, c-format
+msgid "You need to provide an ID for the recipe"
+msgstr "Вам необходимо указать ID рецепта"
+
+#: src/gr-recipe-store.c:1370
+#, c-format
+msgid "A recipe with this ID already exists"
+msgstr "Рецепт с таким ID уже существует"
+
+#: src/gr-recipe-store.c:1539
+#, c-format
+msgid "You need to provide an ID"
+msgstr "Вам необходимо предоставить ID"
+
+#: src/gr-recipe-store.c:1545
+#, c-format
+msgid "Sorry, this ID is taken"
+msgstr "Извините, этот ID взят"
+
+#: src/gr-recipe-store.c:1572
+#, c-format
+msgid "You need to provide an ID for the chef"
+msgstr "Вам необходимо предоставить ID шеф-повара"
+
+#: src/gr-recipe-store.c:1578
+#, c-format
+msgid "A chef with this ID already exists"
+msgstr "Шеф-повар с таким ID уже существует"
+
+#: src/gr-recipe-tile.c:99 src/gr-shopping-tile.c:108
+#, c-format
+msgid "by %s"
+msgstr "от %s"
+
+#: src/gr-recipe-tile.c:99 src/gr-shopping-tile.c:108
+msgid "Anonymous"
+msgstr "Безликий"
+
+#: src/gr-season.c:41
+msgid "Thanksgiving"
+msgstr "День благодарения"
+
+#: src/gr-season.c:42
+msgid "Christmas"
+msgstr "Рождество"
+
+#: src/gr-season.c:43
+msgid "New Year’s"
+msgstr "Новый год"
+
+#: src/gr-season.c:44
+msgid "Spring"
+msgstr "Весна"
+
+#: src/gr-season.c:45
+msgid "Summer"
+msgstr "Лето"
+
+#: src/gr-season.c:46
+msgid "Fall"
+msgstr "Осень"
+
+#: src/gr-season.c:47
+msgid "Winter"
+msgstr "Зима"
+
+#: src/gr-shopping-list-exporter.c:270
+msgid "Add Account"
+msgstr "Добавить аккаунт"
+
+#: src/gr-shopping-list-exporter.c:476 src/gr-shopping-list-exporter.c:566
+msgid "Shopping List from Recipes"
+msgstr "Список покупок от Рецептов"
+
+#: src/gr-shopping-list-exporter.c:694
+msgid "Save the shopping list"
+msgstr "Сохранить лист покупок"
+
+#: src/gr-shopping-list-exporter.c:724 src/gr-shopping-list-formatter.c:42
+#: src/gr-shopping-list-printer.c:135
+msgid "Shopping List"
+msgstr "Лист покупок"
+
+#: src/gr-shopping-list-formatter.c:44
+msgid "For the following recipes:"
+msgstr "Для следующих рецептов:"
+
+#: src/gr-shopping-list-printer.c:144
+msgid "For the following recipes"
+msgstr "Для следующих рецептов"
+
+#: src/gr-shopping-list-printer.c:161
+msgid "Items"
+msgstr "Предметы"
+
+#: src/gr-shopping-page.c:103
+#, c-format
+msgid "%d ingredient marked for purchase"
+msgid_plural "%d ingredients marked for purchase"
+msgstr[0] "%d ингредиент, отмечен для покупки"
+msgstr[1] "%d ингредиента, отмечено для покупки"
+msgstr[2] "%d ингредиентов, отмечено для покупки"
+
+#: src/gr-shopping-page.c:122
+#, c-format
+msgid "Buy Ingredients (%d recipe)"
+msgid_plural "Buy Ingredients (%d recipes)"
+msgstr[0] "Купить ингредиенты (%d рецепта)"
+msgstr[1] "Купить ингредиенты (%d рецептов)"
+msgstr[2] "Купить ингредиенты (%d рецептов)"
+
+#: src/gr-shopping-page.c:127
+#, c-format
+msgid "%d Recipe marked for preparation"
+msgid_plural "%d Recipes marked for preparation"
+msgstr[0] "%d Рецепт отмечен для приготовления"
+msgstr[1] "%d Рецепта отмечено для приготовления"
+msgstr[2] "%d Рецептов отмечено для приготовления"
+
+#: src/gr-spice-row.c:131
+msgid "Mild or somewhat spicy"
+msgstr "Мягкий или немного острый"
+
+#: src/gr-spice-row.c:133
+msgid "At least somewhat spicy"
+msgstr "По крайней мере, немного пикантный"
+
+#: src/gr-spice-row.c:137
+msgid "At most hot"
+msgstr "Достаточно острый"
+
+#: src/gr-spice-row.c:139
+msgid "Hot or very spicy"
+msgstr "Острый или очень острый"
+
+#: src/gr-unit.c:46
+msgctxt "unit abbreviation"
+msgid "g"
+msgstr "г"
+
+#: src/gr-unit.c:46
+msgctxt "unit name"
+msgid "gram"
+msgstr "грамм"
+
+#: src/gr-unit.c:46
+msgctxt "unit plural"
+msgid "grams"
+msgstr "граммы"
+
+#: src/gr-unit.c:47
+msgctxt "unit abbreviation"
+msgid "kg"
+msgstr "кг"
+
+#: src/gr-unit.c:47
+msgctxt "unit name"
+msgid "kilogram"
+msgstr "килограмм"
+
+#: src/gr-unit.c:47
+msgctxt "unit plural"
+msgid "kilograms"
+msgstr "килограммы"
+
+#: src/gr-unit.c:48
+msgctxt "unit abbreviation"
+msgid "lb"
+msgstr "фнт"
+
+#: src/gr-unit.c:48
+msgctxt "unit name"
+msgid "pound"
+msgstr "фунт"
+
+#: src/gr-unit.c:48
+msgctxt "unit plural"
+msgid "pounds"
+msgstr "фунты"
+
+#: src/gr-unit.c:49
+msgctxt "unit abbreviation"
+msgid "oz"
+msgstr "унц"
+
+#: src/gr-unit.c:49
+msgctxt "unit name"
+msgid "ounce"
+msgstr "униции"
+
+#: src/gr-unit.c:49
+msgctxt "unit plural"
+msgid "ounces"
+msgstr "униции"
+
+#: src/gr-unit.c:50
+msgctxt "unit abbreviation"
+msgid "l"
+msgstr "л"
+
+#: src/gr-unit.c:50
+msgctxt "unit name"
+msgid "liter"
+msgstr "литр"
+
+#: src/gr-unit.c:50
+msgctxt "unit plural"
+msgid "liters"
+msgstr "литры"
+
+#: src/gr-unit.c:51
+msgctxt "unit abbreviation"
+msgid "dl"
+msgstr "дл"
+
+#: src/gr-unit.c:51
+msgctxt "unit name"
+msgid "deciliter"
+msgstr "децилитр (100 мл)"
+
+#: src/gr-unit.c:51
+msgctxt "unit plural"
+msgid "deciliters"
+msgstr "децилитр"
+
+#: src/gr-unit.c:52
+msgctxt "unit abbreviation"
+msgid "ml"
+msgstr "мл"
+
+#: src/gr-unit.c:52
+msgctxt "unit name"
+msgid "milliliter"
+msgstr "милилитр"
+
+#: src/gr-unit.c:52
+msgctxt "unit plural"
+msgid "milliliters"
+msgstr "милилитры"
+
+#: src/gr-unit.c:53 src/gr-unit.c:54
+msgctxt "unit abbreviation"
+msgid "fl oz"
+msgstr "ждк унц"
+
+#: src/gr-unit.c:53 src/gr-unit.c:54
+msgctxt "unit name"
+msgid "fluid ounce"
+msgstr "жидкая унция"
+
+#: src/gr-unit.c:53 src/gr-unit.c:54
+msgctxt "unit plural"
+msgid "fluid ounces"
+msgstr "жидкая унция"
+
+#: src/gr-unit.c:55
+msgctxt "unit abbreviation"
+msgid "pt"
+msgstr "пнт"
+
+#: src/gr-unit.c:55
+msgctxt "unit name"
+msgid "pint"
+msgstr "пинта"
+
+#: src/gr-unit.c:55
+msgctxt "unit plural"
+msgid "pints"
+msgstr "пинты"
+
+#: src/gr-unit.c:56
+msgctxt "unit abbreviation"
+msgid "qt"
+msgstr "кврт"
+
+#: src/gr-unit.c:56
+msgctxt "unit name"
+msgid "quart"
+msgstr "кварта"
+
+#: src/gr-unit.c:56
+msgctxt "unit plural"
+msgid "quarts"
+msgstr "кварты"
+
+#: src/gr-unit.c:57
+msgctxt "unit abbreviation"
+msgid "gal"
+msgstr "гал"
+
+#: src/gr-unit.c:57
+msgctxt "unit name"
+msgid "gallon"
+msgstr "галлон"
+
+#: src/gr-unit.c:57
+msgctxt "unit plural"
+msgid "gallons"
+msgstr "галлоны"
+
+#: src/gr-unit.c:58
+msgctxt "unit abbreviation"
+msgid "cup"
+msgstr "чашка"
+
+#: src/gr-unit.c:58
+msgctxt "unit name"
+msgid "cup"
+msgstr "чашка"
+
+#: src/gr-unit.c:58
+msgctxt "unit plural"
+msgid "cups"
+msgstr "чашки"
+
+#: src/gr-unit.c:59
+msgctxt "unit abbreviation"
+msgid "tbsp"
+msgstr "ст. лжк (15 мл)"
+
+#: src/gr-unit.c:59
+msgctxt "unit name"
+msgid "tablespoon"
+msgstr "столовая ложка"
+
+#: src/gr-unit.c:59
+msgctxt "unit plural"
+msgid "tablespoons"
+msgstr "столовые ложки"
+
+#: src/gr-unit.c:60
+msgctxt "unit abbreviation"
+msgid "tsp"
+msgstr "чн лжк"
+
+#: src/gr-unit.c:60
+msgctxt "unit name"
+msgid "teaspoon"
+msgstr "чайная ложка"
+
+#: src/gr-unit.c:60
+msgctxt "unit plural"
+msgid "teaspoons"
+msgstr "чайные ложки"
+
+#: src/gr-unit.c:61
+msgctxt "unit abbreviation"
+msgid "box"
+msgstr "упаковка"
+
+#: src/gr-unit.c:61
+msgctxt "unit name"
+msgid "box"
+msgstr "упаковка"
+
+#: src/gr-unit.c:61
+msgctxt "unit plural"
+msgid "boxes"
+msgstr "упаковок"
+
+#: src/gr-unit.c:62
+msgctxt "unit abbreviation"
+msgid "pkg"
+msgstr "пкт"
+
+#: src/gr-unit.c:62
+msgctxt "unit name"
+msgid "package"
+msgstr "пакет"
+
+#: src/gr-unit.c:62
+msgctxt "unit plural"
+msgid "packages"
+msgstr "пакетов"
+
+#: src/gr-unit.c:63
+msgctxt "unit abbreviation"
+msgid "glass"
+msgstr "стакан"
+
+#: src/gr-unit.c:63
+msgctxt "unit name"
+msgid "glass"
+msgstr "стакан"
+
+#: src/gr-unit.c:63
+msgctxt "unit plural"
+msgid "glasses"
+msgstr "стаканы"
+
+#: src/gr-unit.c:64
+msgctxt "unit abbreviation"
+msgid "mm"
+msgstr "мм"
+
+#: src/gr-unit.c:64
+msgctxt "unit name"
+msgid "millimeter"
+msgstr "милиметр"
+
+#: src/gr-unit.c:64
+msgctxt "unit plural"
+msgid "millimeters"
+msgstr "милиметры"
+
+#: src/gr-unit.c:65
+msgctxt "unit abbreviation"
+msgid "cm"
+msgstr "см"
+
+#: src/gr-unit.c:65
+msgctxt "unit name"
+msgid "centimeter"
+msgstr "сантиметр"
+
+#: src/gr-unit.c:65
+msgctxt "unit plural"
+msgid "centimeters"
+msgstr "сантиметры"
+
+#: src/gr-unit.c:66
+msgctxt "unit abbreviation"
+msgid "m"
+msgstr "м"
+
+#: src/gr-unit.c:66
+msgctxt "unit name"
+msgid "meter"
+msgstr "метр"
+
+#: src/gr-unit.c:66
+msgctxt "unit plural"
+msgid "meters"
+msgstr "метры"
+
+#: src/gr-unit.c:67
+msgctxt "unit abbreviation"
+msgid "st"
+msgstr "стн"
+
+#: src/gr-unit.c:67
+msgctxt "unit name"
+msgid "stone"
+msgstr "стоун"
+
+#: src/gr-unit.c:67
+msgctxt "unit plural"
+msgid "stone"
+msgstr "стоун"
+
+#: src/gr-unit.c:68
+msgctxt "unit abbreviation"
+msgid "pinch"
+msgstr "щепотка"
+
+#: src/gr-unit.c:68
+msgctxt "unit name"
+msgid "pinch"
+msgstr "щепотка"
+
+#: src/gr-unit.c:68
+msgctxt "unit plural"
+msgid "pinches"
+msgstr "щепотки"
+
+#: src/gr-unit.c:69
+msgctxt "unit abbreviation"
+msgid "bunch"
+msgstr "горсть"
+
+#: src/gr-unit.c:69
+msgctxt "unit name"
+msgid "bunch"
+msgstr "горсть"
+
+#: src/gr-unit.c:69
+msgctxt "unit plural"
+msgid "bunches"
+msgstr "горсти"
+
+#: src/gr-unit.c:167
+#, c-format
+msgid "I don’t know this unit: %s"
+msgstr "Я не знаю эту единицу измерения: %s"
+
+#: src/gr-utils.c:334
+#, c-format
+msgid "more than a year ago"
+msgstr "более года назад"
+
+#: src/gr-utils.c:337 src/gr-utils.c:341
+#, c-format
+msgid "%d month ago"
+msgid_plural "%d months ago"
+msgstr[0] "%d месяц назад"
+msgstr[1] "%d месяца назад"
+msgstr[2] "%d месяцев назад"
+
+#: src/gr-utils.c:345
+#, c-format
+msgid "%d day ago"
+msgid_plural "%d days ago"
+msgstr[0] "%d день назад"
+msgstr[1] "%d дня назад"
+msgstr[2] "%d дней назад"
+
+#: src/gr-utils.c:348
+#, c-format
+msgid "just now"
+msgstr "прямо сейчас"
+
+#: src/gr-utils.c:350
+#, c-format
+msgid "10 minutes ago"
+msgstr "10 минут назад"
+
+#: src/gr-utils.c:352
+#, c-format
+msgid "half an hour ago"
+msgstr "полчаса назад"
+
+#: src/gr-utils.c:356
+#, c-format
+msgid "%d hour ago"
+msgid_plural "%d hours ago"
+msgstr[0] "%d час назад"
+msgstr[1] "%d часа назад"
+msgstr[2] "%d часов назад"
+
+#: src/gr-utils.c:362
+msgid "some time ago"
+msgstr "некоторое время назад"
+
+#: src/gr-utils.c:386
+msgid "Could not connect to the session bus from inside the Flatpak sandbox."
+msgstr "Не удалось подключиться к шине сеансов из программной среды Flatpak."
+
+#: src/gr-utils.c:387
+msgid "Certain functionality will not be available."
+msgstr "Некоторые функции будут недоступны."
+
+#: src/gr-utils.c:400
+#, c-format
+msgid ""
+"Could not create D-Bus proxy for org.freedesktop.portal.Desktop interface %s"
+msgstr ""
+"Не могу создать прокси D-Bus для интерфейса org.freedesktop.portal. "
+"Интерфейс рабочего стола %s"
+
+#: src/gr-utils.c:401
+#, c-format
+msgid "Error: %s"
+msgstr "Ошибка: %s"
+
+#: src/gr-utils.c:412
+msgid ""
+"Missing the desktop portal needed to open files from inside a Flatpak "
+"sandbox."
+msgstr ""
+"Отсутствует desktop portal необходимый для открытия файлов внутри песочницы "
+"Flatpak."
+
+#: src/gr-utils.c:414
+msgid ""
+"Missing the desktop portal needed to print from inside a Flatpak sandbox."
+msgstr ""
+"Отсутствует desktop portal, необходимый для печати из песочницы Flatpack."
+
+#: src/gr-utils.c:416
+msgid ""
+"Missing the desktop portal needed to open URLs from inside a Flatpak sandbox."
+msgstr ""
+"Отсутствует desktop portal, необходимый для открытия URL-адресов из "
+"песочницы Flatpack."
+
+#: src/gr-utils.c:420
+msgid ""
+"Please install xdg-desktop-portal and xdg-desktop-portal-gtk on your system"
+msgstr ""
+"Пожалуйста установите xdg-desktop-portal и xdg-desktop-portal-gtk в вашу "
+"систему"
+
+#: src/gr-window.c:256
+msgid "Add a New Recipe"
+msgstr "Добавить новый рецепт"
+
+#: src/gr-window.c:537
+#, c-format
+msgid ""
+"The “%s” recipe has unsaved changes.\n"
+"Close the window anyway?"
+msgstr ""
+"В рецепте “%s” есть несохраненные изменения.\n"
+"Все равно закрыть окно?"
+
+#: src/gr-window.c:540
+msgid ""
+"The new recipe has not been saved.\n"
+"Close the window anyway?"
+msgstr ""
+"Новый рецепт не был сохранён.\n"
+"Закрыть окно в любом случае?"
+
+#: src/gr-window.c:664
+#, c-format
+msgid "Recipe “%s” deleted"
+msgstr "Рецепт \"%s\" удалён"
+
+#: src/gr-window.c:714
+#, c-format
+msgid "You updated your contributed “%s” recipe. Send an update?"
+msgstr "Вы обновили свой авторский рецепт “%s”. Отправить обновление?"
+
+#: src/gr-window.c:855
+msgid "Ready to Cook!"
+msgstr "Готово к приготовлению!"
+
+#: src/gr-window.c:937
+msgid "Sorted by Name"
+msgstr "Отсортировано по названию"
+
+#: src/gr-window.c:942
+msgid "Sorted by Recency"
+msgstr "Отсортировано по новизне"
+
+#: src/gr-window.c:1139
+msgid "Imported Recipes"
+msgstr "Импортированные рецепты"
+
+#: src/gr-window.c:1215
+msgid "Select a recipe file"
+msgstr "Выберете файл рецепта"
+
+#: src/gr-window.c:1241
+#, c-format
+msgid "Recipes have been exported to “%s”"
+msgstr "Рецепты были экспортированы в “%s”"
+
+#: src/gr-window.c:1279
+msgid "Select a file"
+msgstr "Выберите файл"
+
+#: src/gr-window.c:1282
+msgid "_Export"
+msgstr "Э_кспортировать"
+
+#: src/gr-window.c:1312
+#, c-format
+msgid "Chefs: %s"
+msgstr "Шеф: %s"
+
+#: src/gr-window.c:1322
+msgid "Favorite Recipes"
+msgstr "Избранные рецепты"
+
+#: src/gr-window.c:1370
+msgid "Buy Ingredients"
+msgstr "Купить ингридиенты"
+
+#. TRANSLATORS: %s gets replaced by a version number
+#: src/gr-window.c:1514
+#, c-format
+msgid "Recipes %s"
+msgstr "Рецепты %s"
+
+#. TRANSLATORS: %s gets replaced by a date
+#: src/gr-window.c:1531
+#, c-format
+msgid "Released: %s"
+msgstr "Выпущен: %s"
+
+#: src/gr-window.c:1534
+#, c-format
+msgid "Unreleased"
+msgstr "Неизданный"
+
+#: src/ingredients.inc:1
+msgid "Almond"
+msgstr "Миндаль"
+
+#: src/ingredients.inc:2
+msgid "Amaretti"
+msgstr "Амаретти (горьковатый миндальный бисквит)"
+
+#: src/ingredients.inc:3
+msgid "Anchovies"
+msgstr "Анчоусы"
+
+#: src/ingredients.inc:4
+msgid "Apple"
+msgstr "Яблоко"
+
+#: src/ingredients.inc:5
+msgid "Apple Vinegar"
+msgstr "Яблочный уксус"
+
+#: src/ingredients.inc:6
+msgid "Apricot"
+msgstr "Абрикос"
+
+#: src/ingredients.inc:7
+msgid "Artichoke"
+msgstr "Артишок"
+
+#: src/ingredients.inc:8
+msgid "Asparagus"
+msgstr "Спаржа"
+
+#: src/ingredients.inc:9
+msgid "Aubergine"
+msgstr "Баклажан"
+
+#: src/ingredients.inc:10
+msgid "Baby Spinach"
+msgstr "Молодой шпинат"
+
+#: src/ingredients.inc:11
+msgid "Bacon"
+msgstr "Бекон"
+
+#: src/ingredients.inc:12
+msgid "Bagel"
+msgstr "\"Бейгл\"/рогалик"
+
+#: src/ingredients.inc:13
+msgid "Baked beans"
+msgstr "Консервированная фасоль"
+
+#: src/ingredients.inc:14
+msgid "Baking powder"
+msgstr "Разрыхлитель"
+
+#: src/ingredients.inc:15
+msgid "Banana"
+msgstr "Банан"
+
+#: src/ingredients.inc:16
+msgid "Basil"
+msgstr "Базилик"
+
+#: src/ingredients.inc:17
+msgid "Basmati rice"
+msgstr "Рис басмати"
+
+#: src/ingredients.inc:18
+msgid "Bay leaf"
+msgstr "Лавровый лист"
+
+#: src/ingredients.inc:19
+msgid "Beans"
+msgstr "Бобы"
+
+#: src/ingredients.inc:20
+msgid "Bean sprouts"
+msgstr "Пророщенная фасоль/бобы"
+
+#: src/ingredients.inc:21
+msgid "Beef"
+msgstr "Говядина"
+
+#: src/ingredients.inc:22
+msgid "Beef mince"
+msgstr "Говяжий фарш"
+
+#: src/ingredients.inc:23
+msgid "Beef sausage"
+msgstr "Говяжья колбаса(сосиска)"
+
+#: src/ingredients.inc:24
+msgid "Beef (sirloin)"
+msgstr "Говядина (вырезка)"
+
+#: src/ingredients.inc:25
+msgid "Beef stock"
+msgstr "Говяжий бульон"
+
+#: src/ingredients.inc:26
+msgid "Beetroot"
+msgstr "Свекла"
+
+#: src/ingredients.inc:27
+msgid "Bell pepper"
+msgstr "Сладкий перец"
+
+#: src/ingredients.inc:28
+msgid "Bell Pepper (green)"
+msgstr "Сладкий перец (зелёный)"
+
+#: src/ingredients.inc:29
+msgid "Berry"
+msgstr "Ягоды"
+
+#: src/ingredients.inc:30
+msgid "Bilberry"
+msgstr "Голубика"
+
+#: src/ingredients.inc:31
+msgid "Biscotti"
+msgstr "\"Бискотти\""
+
+#: src/ingredients.inc:32
+msgid "Black cardamom pod"
+msgstr "Стручок чёрного кардамона"
+
+#: src/ingredients.inc:33
+msgid "Black peppercorns"
+msgstr "Чёрный перец горошком"
+
+#: src/ingredients.inc:34
+msgid "Blueberry"
+msgstr "Черника"
+
+#: src/ingredients.inc:35
+msgid "Bourbon whiskey"
+msgstr "\"Бурбон-виски\""
+
+#: src/ingredients.inc:36
+msgid "Breadcrumbs"
+msgstr "Панировочные сухари"
+
+#: src/ingredients.inc:37
+msgid "Brewer's yeast"
+msgstr "Пивные дрожжи"
+
+#: src/ingredients.inc:38
+msgid "Broad beans"
+msgstr "Зелёных бобов"
+
+#: src/ingredients.inc:39
+msgid "Broth"
+msgstr "Бульон"
+
+#: src/ingredients.inc:40
+msgid "Brown sugar"
+msgstr "\"Тростниковый\" сахар"
+
+#: src/ingredients.inc:41
+msgid "Butter"
+msgstr "Сливочное масло"
+
+#: src/ingredients.inc:42
+msgid "Butter, melted"
+msgstr "Растопленное сливочное масло"
+
+#: src/ingredients.inc:43
+msgid "Button mushroom"
+msgstr "Шляпки грибов"
+
+#: src/ingredients.inc:44
+msgid "Cabbage"
+msgstr "Капуста"
+
+#: src/ingredients.inc:45
+msgid "Cake flour"
+msgstr "Кондитерская мука"
+
+#: src/ingredients.inc:46
+msgid "Canellini beans"
+msgstr "Белая фасоль"
+
+#: src/ingredients.inc:47
+msgid "Canned black beans, rinsed"
+msgstr "Консервированная чёрная фасоль, промытая"
+
+#: src/ingredients.inc:48
+msgid "Canned chopped tomatoes"
+msgstr "Консервированные нарезанные помидоры"
+
+#: src/ingredients.inc:49
+msgid "Carrot"
+msgstr "Морковка"
+
+#: src/ingredients.inc:50
+msgid "Cashews, lightly toasted"
+msgstr "Кешью, слегка поджаренные"
+
+#: src/ingredients.inc:51
+msgid "Caster sugar"
+msgstr "Сахарная пудра"
+
+#: src/ingredients.inc:52
+msgid "Celery"
+msgstr "Сельдерей"
+
+#: src/ingredients.inc:53
+msgid "Champignons"
+msgstr "Шампиньоны"
+
+#: src/ingredients.inc:54
+msgid "Cheese"
+msgstr "Сыр"
+
+#: src/ingredients.inc:55
+msgid "Cheese slices"
+msgstr "Ломтики сыра"
+
+#: src/ingredients.inc:56
+msgid "Cherries, pitted"
+msgstr "Вишня, без косточек"
+
+#: src/ingredients.inc:57
+msgid "Cherry tomatoes, halved"
+msgstr "Помидоры черри, половинки"
+
+#: src/ingredients.inc:58
+msgid "Chia seeds"
+msgstr "Семена чиа"
+
+#: src/ingredients.inc:59
+msgid "Chicken breasts, large"
+msgstr "Куриные грудки, большие"
+
+#: src/ingredients.inc:60
+msgid "Chicken livers"
+msgstr "Куриная печень"
+
+#: src/ingredients.inc:61
+msgid "chicken stock"
+msgstr "куриный бульон"
+
+#: src/ingredients.inc:62
+msgid "Chili flakes"
+msgstr "Чили, хлопья(нити)"
+
+#: src/ingredients.inc:63
+msgid "Chili powder"
+msgstr "Молотый перец чили"
+
+#: src/ingredients.inc:64
+msgid "Chili sauce (e.g. sriracha)"
+msgstr "Соус чили (например, шрирача)"
+
+#: src/ingredients.inc:65
+msgid "Chocolate"
+msgstr "Шоколад"
+
+#: src/ingredients.inc:66
+msgid "Chocolate frosting"
+msgstr "Шоколадная глазурь"
+
+#: src/ingredients.inc:67
+msgid "Chorizo"
+msgstr "\"Чоризо\""
+
+#: src/ingredients.inc:68
+msgid "Ciboulette"
+msgstr "Шнитт-лук"
+
+#: src/ingredients.inc:69
+msgid "Cilantro"
+msgstr "Кинза"
+
+#: src/ingredients.inc:70
+msgid "Cilantro leaves"
+msgstr "Листья кинзы"
+
+#: src/ingredients.inc:71
+msgid "Cinnamon"
+msgstr "Корица"
+
+#: src/ingredients.inc:72
+msgid "Cinnamon sticks"
+msgstr "Корица (палочки)"
+
+#: src/ingredients.inc:73
+msgid "Cloves"
+msgstr "Гвоздика (гвоздичное дерево)"
+
+#: src/ingredients.inc:74
+msgid "Cocoa butter"
+msgstr "Какао-масло"
+
+#: src/ingredients.inc:75
+msgid "Cocoa powder"
+msgstr "Какао-порошок"
+
+#: src/ingredients.inc:76
+msgid "Coconut milk"
+msgstr "Кокосовое молоко"
+
+#: src/ingredients.inc:77
+msgid "Coconut oil"
+msgstr "Кокосовое масло"
+
+#: src/ingredients.inc:78
+msgid "Coconut water"
+msgstr "Кокосовая вода"
+
+#: src/ingredients.inc:79
+msgid "Cold water"
+msgstr "Холодная вода"
+
+#: src/ingredients.inc:80
+msgid "cooked beef"
+msgstr "варёная говядина"
+
+#: src/ingredients.inc:81
+msgid "Coriander"
+msgstr "Кориандр"
+
+#: src/ingredients.inc:82
+msgid "Coriandre seeds"
+msgstr "Семена кориандра"
+
+#: src/ingredients.inc:83
+msgid "Couscous"
+msgstr "Кускус"
+
+#: src/ingredients.inc:84
+msgid "Cracked pepper"
+msgstr "Толчёный перец"
+
+#: src/ingredients.inc:85
+msgid "Cream"
+msgstr "Сливки"
+
+#: src/ingredients.inc:86
+msgid "Cream cheese"
+msgstr "Сливочного сыра"
+
+#: src/ingredients.inc:87
+msgid "Crushed red pepper flakes"
+msgstr "Измельчённые хлопья красного перца"
+
+#: src/ingredients.inc:88
+msgid "Cucumber"
+msgstr "Огурец"
+
+#: src/ingredients.inc:89
+msgid "Cucumber (large)"
+msgstr "Огурец (большой)"
+
+#: src/ingredients.inc:90
+msgid "Cumin"
+msgstr "Кумин"
+
+#: src/ingredients.inc:91
+msgid "Cumin seeds"
+msgstr "Семена кумина"
+
+#: src/ingredients.inc:92
+msgid "Dark Jamaican rum"
+msgstr "Тёмный Ямайский ром"
+
+#: src/ingredients.inc:93
+msgid "Date"
+msgstr "Финик"
+
+#: src/ingredients.inc:94
+msgid "Dill"
+msgstr "Укроп"
+
+#: src/ingredients.inc:95
+msgid "Double cream"
+msgstr "Сливки для взбивания (48%)"
+
+#: src/ingredients.inc:96
+msgid "Dried anchovies"
+msgstr "Сушёные анчоусы"
+
+#: src/ingredients.inc:97
+msgid "Dried chillies"
+msgstr "Сушёный перец чили"
+
+#: src/ingredients.inc:98
+msgid "Dry or fresh cilantro"
+msgstr "Сухая или свежая кинза"
+
+#: src/ingredients.inc:99
+msgid "Dry yeast"
+msgstr "Сухие дрожжи"
+
+#: src/ingredients.inc:100
+msgid "Durum wheat semolina"
+msgstr "Манная крупа"
+
+#: src/ingredients.inc:101
+msgid "Earth Balance vegan buttery stick"
+msgstr "Веганская маслянистая палочка Earth Balance"
+
+#: src/ingredients.inc:102
+msgid "Egg"
+msgstr "Яйцо"
+
+#: src/ingredients.inc:103
+msgid "Egg yolks"
+msgstr "Яичные желтки"
+
+#: src/ingredients.inc:104
+msgid "Fenugreek seeds"
+msgstr "Семена пажитника"
+
+#: src/ingredients.inc:105
+msgid "Fig"
+msgstr "Инжир"
+
+#: src/ingredients.inc:106
+msgid "Finely chopped cilantro"
+msgstr "Мелко нарезанный помидор"
+
+#: src/ingredients.inc:107
+msgid "Finely chopped onions"
+msgstr "Мелко нарезанный лук"
+
+#: src/ingredients.inc:108
+msgid "Finely chopped thai chillies or green chillis"
+msgstr "Мелко нарезанный тайский перец чили или зелёный перец чили"
+
+#: src/ingredients.inc:109
+msgid "Finely chopped tomato"
+msgstr "Мелко нарезанный помидор"
+
+#: src/ingredients.inc:110
+msgid "Fish"
+msgstr "Рыба"
+
+#: src/ingredients.inc:111
+msgid "Fish sauce"
+msgstr "Рыбный соус"
+
+#: src/ingredients.inc:112
+msgid "Flour"
+msgstr "Мука"
+
+#: src/ingredients.inc:113
+msgid "Flour (all-purpose)"
+msgstr "Мука (универсальная)"
+
+#: src/ingredients.inc:114
+msgid "Flour (Tipo 00)"
+msgstr "Мука (мелкого помола)"
+
+#: src/ingredients.inc:115
+msgid "Fresh rosemary"
+msgstr "Свежий розмарин"
+
+#: src/ingredients.inc:116
+msgid "Fresh tagliatelle"
+msgstr "Сырая домашняя лапша (тальятелле)"
+
+#: src/ingredients.inc:117
+msgid "Garam masala"
+msgstr "Гарам масала"
+
+#: src/ingredients.inc:118
+msgid "Garlic"
+msgstr "Чеснок"
+
+#: src/ingredients.inc:119
+msgid "Garlic cloves"
+msgstr "Зубчики чеснока"
+
+#: src/ingredients.inc:120
+msgid "Garlic powder"
+msgstr "Чесночный порошок"
+
+#: src/ingredients.inc:121
+msgid "Ginger"
+msgstr "Имбирь"
+
+#: src/ingredients.inc:122
+msgid "Ginger, freshly grated"
+msgstr "Имбирь, свеженатёртый"
+
+#: src/ingredients.inc:123
+msgid "Ginger ground"
+msgstr "Корень имбиря"
+
+#: src/ingredients.inc:124
+msgid "Goat cheese"
+msgstr "Козий сыр"
+
+#: src/ingredients.inc:125
+msgid "Golden caster sugar"
+msgstr "Сахарная пудра"
+
+#: src/ingredients.inc:126
+msgid "Good, dry red wine"
+msgstr "Хорошее красное сухое вино"
+
+#: src/ingredients.inc:127
+msgid "Gouda cheese"
+msgstr "Сыр Гауда"
+
+#: src/ingredients.inc:128
+msgid "Goulash spices"
+msgstr "Специи для гуляша"
+
+#: src/ingredients.inc:129
+msgid "Guanciale cubes"
+msgstr "Сыровяленая свиная щековина кубиками"
+
+#: src/ingredients.inc:130
+msgid "Long pasta, e.g. spaghetti"
+msgstr "Длинные макароны, например, спагетти"
+
+#: src/ingredients.inc:131
+msgid "Parmesan cheese"
+msgstr "Сыр Пармезан"
+
+#: src/ingredients.inc:132
+msgid "Grapes"
+msgstr "Виноград"
+
+#: src/ingredients.inc:133
+msgid "Grated French Emmental"
+msgstr "Натёртый Французский эмменталь"
+
+#: src/ingredients.inc:134
+msgid "Green Apple"
+msgstr "Зелёное яблоко"
+
+#: src/ingredients.inc:135
+msgid "Green Bell Pepper"
+msgstr "Зелёный сладкий перец"
+
+#: src/ingredients.inc:136
+msgid "Green Cabbage"
+msgstr "Белокочанная капуста"
+
+#: src/ingredients.inc:137
+msgid "Green olive"
+msgstr "Зелёные оливки"
+
+#: src/ingredients.inc:138
+msgid "Green onions"
+msgstr "Зелёный лук"
+
+#: src/ingredients.inc:139
+msgid "green onions, chopped"
+msgstr "мелко нарезанный зелёный лук"
+
+#: src/ingredients.inc:140
+msgid "Ground beef"
+msgstr "Говяжий фарш"
+
+#: src/ingredients.inc:141
+msgid "Ground coriander (optional)"
+msgstr "Молотый кориандр (по желанию)"
+
+#: src/ingredients.inc:142
+msgid "Ground cumin"
+msgstr "Молотый \"кумин/тмин\""
+
+#: src/ingredients.inc:143
+msgid "Ground fennel"
+msgstr "Молотый фенхель"
+
+#: src/ingredients.inc:144
+msgid "Ground pepper"
+msgstr "Молотый перец"
+
+#: src/ingredients.inc:145
+msgid "Ham"
+msgstr "Ветчина"
+
+#: src/ingredients.inc:146
+msgid "Hazelnuts"
+msgstr "Фундук"
+
+#: src/ingredients.inc:147
+msgid "Hazelnuts milk"
+msgstr "Ореховое молоко"
+
+#: src/ingredients.inc:148
+msgid "Hoisin sauce"
+msgstr "Соус Хойсин"
+
+#: src/ingredients.inc:149
+msgid "Honey"
+msgstr "Мёд"
+
+#: src/ingredients.inc:150
+msgid "Horseradish"
+msgstr "Хрен"
+
+#: src/ingredients.inc:151
+msgid "Japanese mayonaisse"
+msgstr "Японский майонез"
+
+#: src/ingredients.inc:152
+msgid "Juniper berries"
+msgstr "Ягоды можжевельника"
+
+#: src/ingredients.inc:153
+msgid "Kale"
+msgstr "Салат Кейл"
+
+#: src/ingredients.inc:154
+msgid "Ketchup"
+msgstr "Кетчуп"
+
+#: src/ingredients.inc:155
+msgid "Kiwis"
+msgstr "Киви"
+
+#: src/ingredients.inc:156
+msgid "Lamb"
+msgstr "\"Баранина/Ягнятина\""
+
+#: src/ingredients.inc:157
+msgid "Lardons"
+msgstr "Шпик"
+
+#: src/ingredients.inc:158
+msgid "Lard or oil"
+msgstr "Топлёное сало или растительное масло"
+
+#: src/ingredients.inc:159
+msgid "Lemon"
+msgstr "Лимон"
+
+#: src/ingredients.inc:160
+msgid "Lemon juice"
+msgstr "Лимонный сок"
+
+#: src/ingredients.inc:161
+msgid "Lemon (untreated)"
+msgstr "Лимон (неочищенный)"
+
+#: src/ingredients.inc:162
+msgid "Lettuce"
+msgstr "Листья салата"
+
+#: src/ingredients.inc:163
+msgid "Light muscovado sugar"
+msgstr "Светлый неочищенный тростниковый сахар"
+
+#: src/ingredients.inc:164
+msgid "Lime"
+msgstr "Лайм"
+
+#: src/ingredients.inc:165
+msgid "Lime juice"
+msgstr "Лаймовый сок"
+
+#: src/ingredients.inc:166
+msgid "Linseeds"
+msgstr "Семена льна"
+
+#: src/ingredients.inc:167
+msgid "Mandarin Oranges"
+msgstr "Мандарин"
+
+#: src/ingredients.inc:168
+msgid "Margarine"
+msgstr "Маргарин"
+
+#: src/ingredients.inc:169
+msgid "Mayonnaise"
+msgstr "Майонез"
+
+#: src/ingredients.inc:170
+msgid "Meat"
+msgstr "Мясо"
+
+#: src/ingredients.inc:171
+msgid "Meat and bones"
+msgstr "Мясо и кости"
+
+#: src/ingredients.inc:172
+msgid "Milk"
+msgstr "Молоко"
+
+#: src/ingredients.inc:173
+msgid "Mixed berries"
+msgstr "Смесь ягод"
+
+#: src/ingredients.inc:174
+msgid "Mixed frozen bell peppers"
+msgstr "Замороженная смесь сладких перцев"
+
+#: src/ingredients.inc:175
+msgid "Mori-nu organic silken tofu (firm)"
+msgstr "Mori-nu мягкий органический тофу (фирменный)"
+
+#: src/ingredients.inc:176
+msgid "Mushrooms"
+msgstr "Грибы"
+
+#: src/ingredients.inc:177
+msgid "Mustard"
+msgstr "Горчица"
+
+#: src/ingredients.inc:178
+msgid "Mustard seeds"
+msgstr "Семена горчицы"
+
+#: src/ingredients.inc:179
+msgid "Nut"
+msgstr "Орехи"
+
+#: src/ingredients.inc:180
+msgid "Nutmeg"
+msgstr "Мускатный орех"
+
+#: src/ingredients.inc:181
+msgid "Nutritional yeast"
+msgstr "Пищевые дрожжи"
+
+#: src/ingredients.inc:182
+msgid "Oatmeal"
+msgstr "Овсянка"
+
+#: src/ingredients.inc:183
+msgid "Oil"
+msgstr "Растительное масло"
+
+#: src/ingredients.inc:184
+msgid "Okonomiyaki sauce"
+msgstr "Соус Окономияки"
+
+#: src/ingredients.inc:185
+msgid "Olive oil"
+msgstr "Оливковое масло"
+
+#: src/ingredients.inc:186
+msgid "Olive oil, extra-virgin"
+msgstr "Оливковое масло первого отжима"
+
+#: src/ingredients.inc:187
+msgid "Olives, pitted"
+msgstr "Оливки без косточек"
+
+#: src/ingredients.inc:188
+msgid "Onion"
+msgstr "Лук"
+
+#: src/ingredients.inc:189
+msgid "Onion powder"
+msgstr "Луковый порошок"
+
+#: src/ingredients.inc:190
+msgid "Orange"
+msgstr "Апельсин"
+
+#: src/ingredients.inc:191
+msgid "Oregano"
+msgstr "Орегано"
+
+#: src/ingredients.inc:192
+msgid "Pancetta"
+msgstr "Грудинка"
+
+#: src/ingredients.inc:193
+msgid "Pandan leaves"
+msgstr "Листья пандана"
+
+#: src/ingredients.inc:194
+msgid "Paprika"
+msgstr "Паприка"
+
+#: src/ingredients.inc:195
+msgid "Parmesan cheese, grated"
+msgstr "Сыр Пармезан, тёртый"
+
+#: src/ingredients.inc:196
+msgid "Parsley"
+msgstr "Петрушка"
+
+#: src/ingredients.inc:197
+msgid "Peach"
+msgstr "Персик"
+
+#: src/ingredients.inc:198
+msgid "Peperoni"
+msgstr "\"Пеперони\""
+
+#: src/ingredients.inc:199
+msgid "Pepper"
+msgstr "Перец"
+
+#: src/ingredients.inc:200
+msgid "Peppers"
+msgstr "Перец"
+
+#: src/ingredients.inc:201
+msgid "Pickles"
+msgstr "Соленья (маринад)"
+
+#: src/ingredients.inc:202
+msgid "Pineapple"
+msgstr "Ананас"
+
+#: src/ingredients.inc:203
+msgid "Pizza sauce"
+msgstr "Соус для пиццы"
+
+#: src/ingredients.inc:204
+msgid "Plain flour"
+msgstr "Хлебопекарная мука"
+
+#: src/ingredients.inc:205
+msgid "Pomegranate"
+msgstr "Гранат"
+
+#: src/ingredients.inc:206
+msgid "Pomegranate juice"
+msgstr "Гранатовый сок"
+
+#: src/ingredients.inc:207
+msgid "Pork fat"
+msgstr "Смалец (Свиной жир)"
+
+#: src/ingredients.inc:208
+msgid "Pork loin"
+msgstr "Свиная корейка"
+
+#: src/ingredients.inc:209
+msgid "Potato"
+msgstr "Картофель"
+
+#: src/ingredients.inc:210
+msgid "Powdered sugar"
+msgstr "Сахар-песок"
+
+#: src/ingredients.inc:211
+msgid "Pumpkin seeds"
+msgstr "Семена тыквы"
+
+#: src/ingredients.inc:212
+msgid "Quinoa"
+msgstr "Киноа"
+
+#: src/ingredients.inc:213
+msgid "Radish"
+msgstr "Редис"
+
+#: src/ingredients.inc:214
+msgid "Raisins"
+msgstr "Изюм"
+
+#: src/ingredients.inc:215
+msgid "Red bell pepper"
+msgstr "Красный сладкий перец"
+
+#: src/ingredients.inc:216
+msgid "Red onion"
+msgstr "Красный лук"
+
+#: src/ingredients.inc:217
+msgid "Red Pepper"
+msgstr "Красный перец"
+
+#: src/ingredients.inc:218
+msgid "Red wine"
+msgstr "Красное вино"
+
+#: src/ingredients.inc:219
+msgid "Rice"
+msgstr "Рис"
+
+#: src/ingredients.inc:220
+msgid "Rice, cooked"
+msgstr "Рис, приготовленный"
+
+#: src/ingredients.inc:221
+msgid "Rice vermicelli noodles"
+msgstr "Рисовой лапши"
+
+#: src/ingredients.inc:222
+msgid "Rock sugar"
+msgstr "Кусковой сахар"
+
+#: src/ingredients.inc:223
+msgid "Rolled oats"
+msgstr "Овсяные хлопья"
+
+#: src/ingredients.inc:224
+msgid "Rosemary"
+msgstr "Розмарин"
+
+#: src/ingredients.inc:225
+msgid "Rosé wine"
+msgstr "Розовое вино"
+
+#: src/ingredients.inc:226
+msgid "Saffron"
+msgstr "Шафран"
+
+#: src/ingredients.inc:227
+msgid "Sage"
+msgstr "Шалфей/Сальвия"
+
+#: src/ingredients.inc:228
+msgid "Salmon"
+msgstr "Лосось/Сёмга"
+
+#: src/ingredients.inc:229
+msgid "Salt"
+msgstr "Соль"
+
+#: src/ingredients.inc:230
+msgid "Salt and pepper"
+msgstr "Соль и перец"
+
+#: src/ingredients.inc:231
+msgid "Saucebinder"
+msgstr "\"Готовый соус для подливки\""
+
+#: src/ingredients.inc:232
+msgid "Scallions"
+msgstr "Зелёный лук-шалот"
+
+#: src/ingredients.inc:233
+msgid "Sea salt"
+msgstr "Морская соль"
+
+#: src/ingredients.inc:234
+msgid "Semi-skimmed milk"
+msgstr "Полуобезжиренное молоко"
+
+#: src/ingredients.inc:235
+msgid "Sesame oil"
+msgstr "Кунжутное масло"
+
+#: src/ingredients.inc:236
+msgid "Sesame seeds"
+msgstr "Семена кунжута"
+
+#: src/ingredients.inc:237
+msgid "Shallots"
+msgstr "Лук шаллот"
+
+#: src/ingredients.inc:238
+msgid "Shrimps"
+msgstr "Креветки"
+
+#: src/ingredients.inc:239
+msgid "Slivered almonds, toasted"
+msgstr "Измельчённый миндаль, поджаренный"
+
+#: src/ingredients.inc:240
+msgid "Sour cream"
+msgstr "Сметана"
+
+#: src/ingredients.inc:241
+msgid "Soy sauce"
+msgstr "Соевый соус"
+
+#: src/ingredients.inc:242
+msgid "Spinach"
+msgstr "Шпинат"
+
+#: src/ingredients.inc:243
+msgid "Spring onion"
+msgstr "Зелёный лук (лук-батун)"
+
+#: src/ingredients.inc:244
+msgid "Squash"
+msgstr "Тыква (большая/столовая)"
+
+#: src/ingredients.inc:245
+msgid "Star anise"
+msgstr "Звездчатый анис"
+
+#: src/ingredients.inc:246
+msgid "Strawberry"
+msgstr "Клубника"
+
+#: src/ingredients.inc:247
+msgid "Sugar"
+msgstr "Сахар"
+
+#: src/ingredients.inc:248
+msgid "Sunflower seeds"
+msgstr "Семена подсолнуха"
+
+#: src/ingredients.inc:249
+msgid "Sweet potatoes"
+msgstr "Сладкий картофель (батат(?))"
+
+#: src/ingredients.inc:250
+msgid "Tamarind paste"
+msgstr "Паста тамаринда индийского"
+
+#: src/ingredients.inc:251
+msgid "Tangerine"
+msgstr "Мандарин"
+
+#: src/ingredients.inc:252
+msgid "Thai basil leaves"
+msgstr "Тайский базилик (хорапка)"
+
+#: src/ingredients.inc:253
+msgid "Thai chillies"
+msgstr "Тайский перец чили"
+
+#: src/ingredients.inc:254
+msgid "Thai fish sauce"
+msgstr "Тайский рыбный соус"
+
+#: src/ingredients.inc:255
+msgid "Thyme"
+msgstr "Тимьян/Чабрец"
+
+#: src/ingredients.inc:256
+msgid "Tinned pineapple rings"
+msgstr "Консервированные кольца ананаса"
+
+#: src/ingredients.inc:257
+msgid "Tofu"
+msgstr "Тофу"
+
+#: src/ingredients.inc:258
+msgid "Tomato"
+msgstr "Помидор"
+
+#: src/ingredients.inc:259
+msgid "Tomato paste"
+msgstr "Томатная паста"
+
+#: src/ingredients.inc:260
+msgid "Tomato sauce"
+msgstr "Соус из помидоров"
+
+#: src/ingredients.inc:261
+msgid "Tumeric ground"
+msgstr "Куркума (турмерик), клубни"
+
+#: src/ingredients.inc:262
+msgid "Tuna fish"
+msgstr "Тунец"
+
+#: src/ingredients.inc:263
+msgid "Unsalted butter"
+msgstr "Не солёное сливочное масло"
+
+#: src/ingredients.inc:264
+msgid "Vanilla baking powder"
+msgstr "Ванильный разрыхлитель"
+
+#: src/ingredients.inc:265
+msgid "Vanilla extract"
+msgstr "Экстракт ванили"
+
+#: src/ingredients.inc:266
+msgid "Vanilla powdered sugar, for dusting"
+msgstr "Ванильная сахарная пудра для посыпки"
+
+#: src/ingredients.inc:267
+msgid "Vanilla pudding"
+msgstr "Ванильный пудинг"
+
+#: src/ingredients.inc:268
+msgid "Vanilla sugar"
+msgstr "Ванильный сахар"
+
+#: src/ingredients.inc:269
+msgid "Vegetable oil"
+msgstr "Растительное масло"
+
+#: src/ingredients.inc:270
+msgid "Vinegar"
+msgstr "Уксус"
+
+#: src/ingredients.inc:271
+msgid "Water"
+msgstr "Вода"
+
+#: src/ingredients.inc:272
+msgid "Wheat flour"
+msgstr "Пшеничная мука"
+
+#: src/ingredients.inc:273
+msgid "White fish"
+msgstr "Белая рыба"
+
+#: src/ingredients.inc:274
+msgid "White onion"
+msgstr "Белый лук"
+
+#: src/ingredients.inc:275
+msgid "White wine"
+msgstr "Белое вино"
+
+#: src/ingredients.inc:276
+msgid "Whole chicken"
+msgstr "Целая курица"
+
+#: src/ingredients.inc:277
+msgid "Wine"
+msgstr "Вино"
+
+#: src/ingredients.inc:278
+msgid "Worcestershire sauce"
+msgstr "Вустерширский соус"
+
+#: src/ingredients.inc:279
+msgid "Yeast"
+msgstr "Дрожжи"
+
+#: src/ingredients.inc:280
+msgid "Yellow bell pepper"
+msgstr "Жёлтый сладкий перец"
+
+#: src/ingredients.inc:281
+msgid "Yoghurt"
+msgstr "Йогурт"
+
+#: src/ingredients.inc:282
+msgid "Zest of 1 lemon (organic)"
+msgstr "Цедра 1 лимона (натуральная)"
+
+#: src/ingredients.inc:283
+msgid "Zinfandel"
+msgstr "Виноград цинфандель"
+
+#: src/ingredients.inc:284
+msgid "Zuccini"
+msgstr "Кабачок цукини"
+
+#: src/no-ingredients.inc:1
+msgid "no Almond"
+msgstr "без миндаля"
+
+#: src/no-ingredients.inc:2
+msgid "no Amaretti"
+msgstr "без амаретти (горьковатый миндальный бисквит)"
+
+#: src/no-ingredients.inc:3
+msgid "no Anchovies"
+msgstr "без анчоусов"
+
+#: src/no-ingredients.inc:4
+msgid "no Apple"
+msgstr "без яблок"
+
+#: src/no-ingredients.inc:5
+msgid "no Apple Vinegar"
+msgstr "без яблочного уксуса"
+
+#: src/no-ingredients.inc:6
+msgid "no Apricot"
+msgstr "без абрикосов"
+
+#: src/no-ingredients.inc:7
+msgid "no Artichoke"
+msgstr "без артишока"
+
+#: src/no-ingredients.inc:8
+msgid "no Asparagus"
+msgstr "без спаржи"
+
+#: src/no-ingredients.inc:9
+msgid "no Aubergine"
+msgstr "без баклажанов"
+
+#: src/no-ingredients.inc:10
+msgid "no Baby Spinach"
+msgstr "без молодого шпината"
+
+#: src/no-ingredients.inc:11
+msgid "no Bacon"
+msgstr "без бекона"
+
+#: src/no-ingredients.inc:12
+msgid "no Bagel"
+msgstr "без \"бейгла\"/рогалика"
+
+#: src/no-ingredients.inc:13
+msgid "no Baked beans"
+msgstr "без консервированной фасоли"
+
+#: src/no-ingredients.inc:14
+msgid "no Baking powder"
+msgstr "без разрыхлителя"
+
+#: src/no-ingredients.inc:15
+msgid "no Banana"
+msgstr "без банана"
+
+#: src/no-ingredients.inc:16
+msgid "no Basil"
+msgstr "без базилика"
+
+#: src/no-ingredients.inc:17
+msgid "no Basmati rice"
+msgstr "без риса басмати"
+
+#: src/no-ingredients.inc:18
+msgid "no Bay leaf"
+msgstr "без лаврового листа"
+
+#: src/no-ingredients.inc:19
+msgid "no Beans"
+msgstr "без бобов"
+
+#: src/no-ingredients.inc:20
+msgid "no Bean sprouts"
+msgstr "без пророщенных фасоли/бобов"
+
+#: src/no-ingredients.inc:21
+msgid "no Beef"
+msgstr "без говядины"
+
+#: src/no-ingredients.inc:22
+msgid "no Beef mince"
+msgstr "без говядины (рубленная)"
+
+#: src/no-ingredients.inc:23
+msgid "no Beef sausage"
+msgstr "без говяжьей колбасы (сосиски)"
+
+#: src/no-ingredients.inc:24
+msgid "no Beef (sirloin)"
+msgstr "без говядины (вырезка)"
+
+#: src/no-ingredients.inc:25
+msgid "no Beef stock"
+msgstr "без говяжьего бульона"
+
+#: src/no-ingredients.inc:26
+msgid "no Beetroot"
+msgstr "без свёклы"
+
+#: src/no-ingredients.inc:27
+msgid "no Bell pepper"
+msgstr "без сладкого перца"
+
+#: src/no-ingredients.inc:28
+msgid "no Bell Pepper (green)"
+msgstr "без сладкого перца (зелёного)"
+
+#: src/no-ingredients.inc:29
+msgid "no Berry"
+msgstr "без ягод"
+
+#: src/no-ingredients.inc:30
+msgid "no Bilberry"
+msgstr "без голубики"
+
+#: src/no-ingredients.inc:31
+msgid "no Biscotti"
+msgstr "без \"бискотти\""
+
+#: src/no-ingredients.inc:32
+msgid "no Black cardamom pod"
+msgstr "без стручок чёрного кардамона"
+
+#: src/no-ingredients.inc:33
+msgid "no Black peppercorns"
+msgstr "без чёрного перца горошком"
+
+#: src/no-ingredients.inc:34
+msgid "no Blueberry"
+msgstr "без черники"
+
+#: src/no-ingredients.inc:35
+msgid "no Bourbon whiskey"
+msgstr "без \"бурбон-виски\""
+
+#: src/no-ingredients.inc:36
+msgid "no Breadcrumbs"
+msgstr "без панировочных сухарей"
+
+#: src/no-ingredients.inc:37
+msgid "no Brewer's yeast"
+msgstr "без пивных дрожжей"
+
+#: src/no-ingredients.inc:38
+msgid "no Broad beans"
+msgstr "без зелёных бобов"
+
+#: src/no-ingredients.inc:39
+msgid "no Broth"
+msgstr "без бульона"
+
+#: src/no-ingredients.inc:40
+msgid "no Brown sugar"
+msgstr "без \"тростникового\" сахара"
+
+#: src/no-ingredients.inc:41
+msgid "no Butter"
+msgstr "без сливочного масла"
+
+#: src/no-ingredients.inc:42
+msgid "no Butter, melted"
+msgstr "без растопленного сливочного масла"
+
+#: src/no-ingredients.inc:43
+msgid "no Button mushroom"
+msgstr "без шляпок грибов"
+
+#: src/no-ingredients.inc:44
+msgid "no Cabbage"
+msgstr "без капусты"
+
+#: src/no-ingredients.inc:45
+msgid "no Cake flour"
+msgstr "без кондитерской муки"
+
+#: src/no-ingredients.inc:46
+msgid "no Canellini beans"
+msgstr "без белой фасоли"
+
+#: src/no-ingredients.inc:47
+msgid "no Canned black beans, rinsed"
+msgstr "без промытой консервированной чёрной фасоли"
+
+#: src/no-ingredients.inc:48
+msgid "no Canned chopped tomatoes"
+msgstr "без консервированных нарезанных помидоров"
+
+#: src/no-ingredients.inc:49
+msgid "no Carrot"
+msgstr "без морковки"
+
+#: src/no-ingredients.inc:50
+msgid "no Cashews, lightly toasted"
+msgstr "без кешью, слегка поджаренных"
+
+#: src/no-ingredients.inc:51
+msgid "no Caster sugar"
+msgstr "без сахарной пудры"
+
+#: src/no-ingredients.inc:52
+msgid "no Celery"
+msgstr "без сельдерея"
+
+#: src/no-ingredients.inc:53
+msgid "no Champignons"
+msgstr "без шампиньонов"
+
+#: src/no-ingredients.inc:54
+msgid "no Cheese"
+msgstr "без сыра"
+
+#: src/no-ingredients.inc:55
+msgid "no Cheese slices"
+msgstr "без ломтиков сыра"
+
+#: src/no-ingredients.inc:56
+msgid "no Cherries, pitted"
+msgstr "без вишня, без косточек"
+
+#: src/no-ingredients.inc:57
+msgid "no Cherry tomatoes, halved"
+msgstr "без половинок помидоров черри"
+
+#: src/no-ingredients.inc:58
+msgid "no Chia seeds"
+msgstr "без семян чиа"
+
+#: src/no-ingredients.inc:59
+msgid "no Chicken breasts, large"
+msgstr "без больших куриных грудок"
+
+#: src/no-ingredients.inc:60
+msgid "no Chicken livers"
+msgstr "без куриной печени"
+
+#: src/no-ingredients.inc:61
+msgid "no chicken stock"
+msgstr "без куриного бульона"
+
+#: src/no-ingredients.inc:62
+msgid "no Chili flakes"
+msgstr "без чили, хлопьями/нитями"
+
+#: src/no-ingredients.inc:63
+msgid "no Chili powder"
+msgstr "без молотого перца чили"
+
+#: src/no-ingredients.inc:64
+msgid "no Chili sauce (e.g. sriracha)"
+msgstr "без соуса чили (например, шрирача)"
+
+#: src/no-ingredients.inc:65
+msgid "no Chocolate"
+msgstr "без шоколада"
+
+#: src/no-ingredients.inc:66
+msgid "no Chocolate frosting"
+msgstr "без шоколадной глазури"
+
+#: src/no-ingredients.inc:67
+msgid "no Chorizo"
+msgstr "без \"чоризо\""
+
+#: src/no-ingredients.inc:68
+msgid "no Ciboulette"
+msgstr "без шнитт-лука"
+
+#: src/no-ingredients.inc:69
+msgid "no Cilantro"
+msgstr "без кинзы"
+
+#: src/no-ingredients.inc:70
+msgid "no Cilantro leaves"
+msgstr "без листьев кинзы"
+
+#: src/no-ingredients.inc:71
+msgid "no Cinnamon"
+msgstr "без корицы"
+
+#: src/no-ingredients.inc:72
+msgid "no Cinnamon sticks"
+msgstr "без корицы (палочками)"
+
+#: src/no-ingredients.inc:73
+msgid "no Cloves"
+msgstr "без гвоздики (гвоздичное дерево)"
+
+#: src/no-ingredients.inc:74
+msgid "no Cocoa butter"
+msgstr "без какао-масло"
+
+#: src/no-ingredients.inc:75
+msgid "no Cocoa powder"
+msgstr "без какао-порошка"
+
+#: src/no-ingredients.inc:76
+msgid "no Coconut milk"
+msgstr "без кокосового молока"
+
+#: src/no-ingredients.inc:77
+msgid "no Coconut oil"
+msgstr "без кокосового масла"
+
+#: src/no-ingredients.inc:78
+msgid "no Coconut water"
+msgstr "без кокосовой воды"
+
+#: src/no-ingredients.inc:79
+msgid "no Cold water"
+msgstr "без холодной воды"
+
+#: src/no-ingredients.inc:80
+msgid "no cooked beef"
+msgstr "без варёной говядины"
+
+#: src/no-ingredients.inc:81
+msgid "no Coriander"
+msgstr "без кориандра"
+
+#: src/no-ingredients.inc:82
+msgid "no Coriandre seeds"
+msgstr "без семян кориандра"
+
+#: src/no-ingredients.inc:83
+msgid "no Couscous"
+msgstr "без кускуса"
+
+#: src/no-ingredients.inc:84
+msgid "no Cracked pepper"
+msgstr "без толчёного перца"
+
+#: src/no-ingredients.inc:85
+msgid "no Cream"
+msgstr "без сливок"
+
+#: src/no-ingredients.inc:86
+msgid "no Cream cheese"
+msgstr "без сливочного сыра"
+
+#: src/no-ingredients.inc:87
+msgid "no Crushed red pepper flakes"
+msgstr "без измельчённых хлопьев красного перца"
+
+#: src/no-ingredients.inc:88
+msgid "no Cucumber"
+msgstr "без огурца"
+
+#: src/no-ingredients.inc:89
+msgid "no Cucumber (large)"
+msgstr "без огурца (большого)"
+
+#: src/no-ingredients.inc:90
+msgid "no Cumin"
+msgstr "без кумина"
+
+#: src/no-ingredients.inc:91
+msgid "no Cumin seeds"
+msgstr "без семян кумина"
+
+#: src/no-ingredients.inc:92
+msgid "no Dark Jamaican rum"
+msgstr "без тёмного ямайского рома"
+
+#: src/no-ingredients.inc:93
+msgid "no Date"
+msgstr "без фиников"
+
+#: src/no-ingredients.inc:94
+msgid "no Dill"
+msgstr "без укропа"
+
+#: src/no-ingredients.inc:95
+msgid "no Double cream"
+msgstr "без сливок для взбивания (48%)"
+
+#: src/no-ingredients.inc:96
+msgid "no Dried anchovies"
+msgstr "без сушёных анчоусов"
+
+#: src/no-ingredients.inc:97
+msgid "no Dried chillies"
+msgstr "без сушёного перца чили"
+
+#: src/no-ingredients.inc:98
+msgid "no Dry or fresh cilantro"
+msgstr "без сухая или свежая кинза"
+
+#: src/no-ingredients.inc:99
+msgid "no Dry yeast"
+msgstr "без сухих дрожжей"
+
+#: src/no-ingredients.inc:100
+msgid "no Durum wheat semolina"
+msgstr "без манной крупы"
+
+#: src/no-ingredients.inc:101
+msgid "no Earth Balance vegan buttery stick"
+msgstr "без веганской маслянистой палочки \"Earth Balance\""
+
+#: src/no-ingredients.inc:102
+msgid "no Egg"
+msgstr "без яиц"
+
+#: src/no-ingredients.inc:103
+msgid "no Egg yolks"
+msgstr "без яичных желтков"
+
+#: src/no-ingredients.inc:104
+msgid "no Fenugreek seeds"
+msgstr "без семян пажитника"
+
+#: src/no-ingredients.inc:105
+msgid "no Fig"
+msgstr "без инжира"
+
+#: src/no-ingredients.inc:106
+msgid "no Finely chopped cilantro"
+msgstr "без мелко нарезанной кинзы"
+
+#: src/no-ingredients.inc:107
+msgid "no Finely chopped onions"
+msgstr "без мелко нарезанного лука"
+
+#: src/no-ingredients.inc:108
+msgid "no Finely chopped thai chillies or green chillis"
+msgstr "без мелко нарезанного тайского перца чили или зелёного перца чили"
+
+#: src/no-ingredients.inc:109
+msgid "no Finely chopped tomato"
+msgstr "без мелко нарезанных помидоров"
+
+#: src/no-ingredients.inc:110
+msgid "no Fish"
+msgstr "без рыбы"
+
+#: src/no-ingredients.inc:111
+msgid "no Fish sauce"
+msgstr "без рыбного соуса"
+
+#: src/no-ingredients.inc:112
+msgid "no Flour"
+msgstr "без муки"
+
+#: src/no-ingredients.inc:113
+msgid "no Flour (all-purpose)"
+msgstr "без муки (универсальная)"
+
+#: src/no-ingredients.inc:114
+msgid "no Flour (Tipo 00)"
+msgstr "без муки (мелкого помола)"
+
+#: src/no-ingredients.inc:115
+msgid "no Fresh rosemary"
+msgstr "без свежего розмарина"
+
+#: src/no-ingredients.inc:116
+msgid "no Fresh tagliatelle"
+msgstr "без сырой домашней лапши (тальятелле)"
+
+#: src/no-ingredients.inc:117
+msgid "no Garam masala"
+msgstr "без гарам масалы"
+
+#: src/no-ingredients.inc:118
+msgid "no Garlic"
+msgstr "без чеснока"
+
+#: src/no-ingredients.inc:119
+msgid "no Garlic cloves"
+msgstr "без зубчиков чеснока"
+
+#: src/no-ingredients.inc:120
+msgid "no Garlic powder"
+msgstr "без чесночного порошка"
+
+#: src/no-ingredients.inc:121
+msgid "no Ginger"
+msgstr "без имбиря"
+
+#: src/no-ingredients.inc:122
+msgid "no Ginger, freshly grated"
+msgstr "без имбиря, свеженатёртого"
+
+#: src/no-ingredients.inc:123
+msgid "no Ginger ground"
+msgstr "без корня имбиря"
+
+#: src/no-ingredients.inc:124
+msgid "no Goat cheese"
+msgstr "без козьего сыра"
+
+#: src/no-ingredients.inc:125
+msgid "no Golden caster sugar"
+msgstr "без \"тростниковой\" сахарной пудры"
+
+#: src/no-ingredients.inc:126
+msgid "no Good, dry red wine"
+msgstr "без хорошего красного сухого вина"
+
+#: src/no-ingredients.inc:127
+msgid "no Gouda cheese"
+msgstr "без сыра гауда"
+
+#: src/no-ingredients.inc:128
+msgid "no Goulash spices"
+msgstr "без специй для гуляша"
+
+#: src/no-ingredients.inc:129
+msgid "no Guanciale cubes"
+msgstr "без сыровяленой свиной щековины кубиками"
+
+#: src/no-ingredients.inc:130
+msgid "no Long pasta, e.g. spaghetti"
+msgstr "без длинных макарон, например, спагетти"
+
+#: src/no-ingredients.inc:131
+msgid "no Parmesan cheese"
+msgstr "без сыра пармезан"
+
+#: src/no-ingredients.inc:132
+msgid "no Grapes"
+msgstr "без винограда"
+
+#: src/no-ingredients.inc:133
+msgid "no Grated French Emmental"
+msgstr "без натёртого французского эмменталя"
+
+#: src/no-ingredients.inc:134
+msgid "no Green Apple"
+msgstr "без зелёных яблок"
+
+#: src/no-ingredients.inc:135
+msgid "no Green Bell Pepper"
+msgstr "без зелёного сладкого перца"
+
+#: src/no-ingredients.inc:136
+msgid "no Green Cabbage"
+msgstr "без белокочанной капусты"
+
+#: src/no-ingredients.inc:137
+msgid "no Green olive"
+msgstr "без зелёных оливок"
+
+#: src/no-ingredients.inc:138
+msgid "no Green onions"
+msgstr "без зелёного лука"
+
+#: src/no-ingredients.inc:139
+msgid "no green onions, chopped"
+msgstr "без мелко нарезанного зелёного лука"
+
+#: src/no-ingredients.inc:140
+msgid "no Ground beef"
+msgstr "без говяжьего фарша"
+
+#: src/no-ingredients.inc:141
+msgid "no Ground coriander (optional)"
+msgstr "без молотого кориандра (по желанию)"
+
+#: src/no-ingredients.inc:142
+msgid "no Ground cumin"
+msgstr "без молотого \"кумина/тмина\""
+
+#: src/no-ingredients.inc:143
+msgid "no Ground fennel"
+msgstr "без молотого фенхеля"
+
+#: src/no-ingredients.inc:144
+msgid "no Ground pepper"
+msgstr "без молотого перца"
+
+#: src/no-ingredients.inc:145
+msgid "no Ham"
+msgstr "без ветчины"
+
+#: src/no-ingredients.inc:146
+msgid "no Hazelnuts"
+msgstr "без фундука"
+
+#: src/no-ingredients.inc:147
+msgid "no Hazelnuts milk"
+msgstr "без орехового молоко"
+
+#: src/no-ingredients.inc:148
+msgid "no Hoisin sauce"
+msgstr "без соуса Хойсин"
+
+#: src/no-ingredients.inc:149
+msgid "no Honey"
+msgstr "без мёда"
+
+#: src/no-ingredients.inc:150
+msgid "no Horseradish"
+msgstr "без хрена"
+
+#: src/no-ingredients.inc:151
+msgid "no Japanese mayonaisse"
+msgstr "без японского майонеза"
+
+#: src/no-ingredients.inc:152
+msgid "no Juniper berries"
+msgstr "без ягод можжевельника"
+
+#: src/no-ingredients.inc:153
+msgid "no Kale"
+msgstr "без салат кейл"
+
+#: src/no-ingredients.inc:154
+msgid "no Ketchup"
+msgstr "без кетчупа"
+
+#: src/no-ingredients.inc:155
+msgid "no Kiwis"
+msgstr "без киви"
+
+#: src/no-ingredients.inc:156
+msgid "no Lamb"
+msgstr "без баранины/ягнятины"
+
+#: src/no-ingredients.inc:157
+msgid "no Lardons"
+msgstr "без шпика"
+
+#: src/no-ingredients.inc:158
+msgid "no Lard or oil"
+msgstr "без топлёного сала или растительного масла"
+
+#: src/no-ingredients.inc:159
+msgid "no Lemon"
+msgstr "без лимона"
+
+#: src/no-ingredients.inc:160
+msgid "no Lemon juice"
+msgstr "без лимонного сока"
+
+#: src/no-ingredients.inc:161
+msgid "no Lemon (untreated)"
+msgstr "без лимона (неочищенного)"
+
+#: src/no-ingredients.inc:162
+msgid "no Lettuce"
+msgstr "без листьев салата"
+
+#: src/no-ingredients.inc:163
+msgid "no Light muscovado sugar"
+msgstr "без светлого неочищенного тростникового сахар"
+
+#: src/no-ingredients.inc:164
+msgid "no Lime"
+msgstr "без лайма"
+
+#: src/no-ingredients.inc:165
+msgid "no Lime juice"
+msgstr "без лаймового сока"
+
+#: src/no-ingredients.inc:166
+msgid "no Linseeds"
+msgstr "без семян льна"
+
+#: src/no-ingredients.inc:167
+msgid "no Mandarin Oranges"
+msgstr "без мандарина"
+
+#: src/no-ingredients.inc:168
+msgid "no Margarine"
+msgstr "без маргарина"
+
+#: src/no-ingredients.inc:169
+msgid "no Mayonnaise"
+msgstr "без майонеза"
+
+#: src/no-ingredients.inc:170
+msgid "no Meat"
+msgstr "без мяса"
+
+#: src/no-ingredients.inc:171
+msgid "no Meat and bones"
+msgstr "без мяса и костей"
+
+#: src/no-ingredients.inc:172
+msgid "no Milk"
+msgstr "без молока"
+
+#: src/no-ingredients.inc:173
+msgid "no Mixed berries"
+msgstr "без смеси ягод"
+
+#: src/no-ingredients.inc:174
+msgid "no Mixed frozen bell peppers"
+msgstr "без замороженной смеси сладких перцев"
+
+#: src/no-ingredients.inc:175
+msgid "no Mori-nu organic silken tofu (firm)"
+msgstr "без фирменного \"Mori-nu мягкого органического тофу\""
+
+#: src/no-ingredients.inc:176
+msgid "no Mushrooms"
+msgstr "без грибов"
+
+#: src/no-ingredients.inc:177
+msgid "no Mustard"
+msgstr "без горчицы"
+
+#: src/no-ingredients.inc:178
+msgid "no Mustard seeds"
+msgstr "без семян горчицы"
+
+#: src/no-ingredients.inc:179
+msgid "no Nut"
+msgstr "без орехов"
+
+#: src/no-ingredients.inc:180
+msgid "no Nutmeg"
+msgstr "без мускатного ореха"
+
+#: src/no-ingredients.inc:181
+msgid "no Nutritional yeast"
+msgstr "без пищевых дрожжей"
+
+#: src/no-ingredients.inc:182
+msgid "no Oatmeal"
+msgstr "без овсянки"
+
+#: src/no-ingredients.inc:183
+msgid "no Oil"
+msgstr "без масла"
+
+#: src/no-ingredients.inc:184
+msgid "no Okonomiyaki sauce"
+msgstr "без соуса Окономияки"
+
+#: src/no-ingredients.inc:185
+msgid "no Olive oil"
+msgstr "без оливкового масла"
+
+#: src/no-ingredients.inc:186
+msgid "no Olive oil, extra-virgin"
+msgstr "без оливкового масла первого отжима"
+
+#: src/no-ingredients.inc:187
+msgid "no Olives, pitted"
+msgstr "без оливок без косточек"
+
+#: src/no-ingredients.inc:188
+msgid "no Onion"
+msgstr "без лука"
+
+#: src/no-ingredients.inc:189
+msgid "no Onion powder"
+msgstr "без лукового порошка"
+
+#: src/no-ingredients.inc:190
+msgid "no Orange"
+msgstr "без апельсина"
+
+#: src/no-ingredients.inc:191
+msgid "no Oregano"
+msgstr "без орегано"
+
+#: src/no-ingredients.inc:192
+msgid "no Pancetta"
+msgstr "без грудинки"
+
+#: src/no-ingredients.inc:193
+msgid "no Pandan leaves"
+msgstr "без листьев пандана"
+
+#: src/no-ingredients.inc:194
+msgid "no Paprika"
+msgstr "без паприки"
+
+#: src/no-ingredients.inc:195
+msgid "no Parmesan cheese, grated"
+msgstr "без тёртого сыра пармезан"
+
+#: src/no-ingredients.inc:196
+msgid "no Parsley"
+msgstr "без петрушки"
+
+#: src/no-ingredients.inc:197
+msgid "no Peach"
+msgstr "без персиков"
+
+#: src/no-ingredients.inc:198
+msgid "no Peperoni"
+msgstr "без \"пеперони\""
+
+#: src/no-ingredients.inc:199
+msgid "no Pepper"
+msgstr "без перца"
+
+#: src/no-ingredients.inc:200
+msgid "no Peppers"
+msgstr "без перцев"
+
+#: src/no-ingredients.inc:201
+msgid "no Pickles"
+msgstr "без соленьев (маринада)"
+
+#: src/no-ingredients.inc:202
+msgid "no Pineapple"
+msgstr "без ананаса"
+
+#: src/no-ingredients.inc:203
+msgid "no Pizza sauce"
+msgstr "без соуса для пиццы"
+
+#: src/no-ingredients.inc:204
+msgid "no Plain flour"
+msgstr "без хлебопекарной муки"
+
+#: src/no-ingredients.inc:205
+msgid "no Pomegranate"
+msgstr "без граната"
+
+#: src/no-ingredients.inc:206
+msgid "no Pomegranate juice"
+msgstr "без гранатового сока"
+
+#: src/no-ingredients.inc:207
+msgid "no Pork fat"
+msgstr "без смальца (свиного жира)"
+
+#: src/no-ingredients.inc:208
+msgid "no Pork loin"
+msgstr "без свиной корейки"
+
+#: src/no-ingredients.inc:209
+msgid "no Potato"
+msgstr "без картофеля"
+
+#: src/no-ingredients.inc:210
+msgid "no Powdered sugar"
+msgstr "без сахара-песка"
+
+#: src/no-ingredients.inc:211
+msgid "no Pumpkin seeds"
+msgstr "без семян тыквы"
+
+#: src/no-ingredients.inc:212
+msgid "no Quinoa"
+msgstr "без киноа"
+
+#: src/no-ingredients.inc:213
+msgid "no Radish"
+msgstr "без редиса"
+
+#: src/no-ingredients.inc:214
+msgid "no Raisins"
+msgstr "без изюма"
+
+#: src/no-ingredients.inc:215
+msgid "no Red bell pepper"
+msgstr "без красного сладкого перца"
+
+#: src/no-ingredients.inc:216
+msgid "no Red onion"
+msgstr "без красного лука"
+
+#: src/no-ingredients.inc:217
+msgid "no Red Pepper"
+msgstr "без красного перца"
+
+#: src/no-ingredients.inc:218
+msgid "no Red wine"
+msgstr "без красного вина"
+
+#: src/no-ingredients.inc:219
+msgid "no Rice"
+msgstr "без риса"
+
+#: src/no-ingredients.inc:220
+msgid "no Rice, cooked"
+msgstr "без приготовленного риса"
+
+#: src/no-ingredients.inc:221
+msgid "no Rice vermicelli noodles"
+msgstr "без рисовой лапши"
+
+#: src/no-ingredients.inc:222
+msgid "no Rock sugar"
+msgstr "без кускового сахара"
+
+#: src/no-ingredients.inc:223
+msgid "no Rolled oats"
+msgstr "без овсяных хлопьев"
+
+#: src/no-ingredients.inc:224
+msgid "no Rosemary"
+msgstr "без розмарина"
+
+#: src/no-ingredients.inc:225
+msgid "no Rosé wine"
+msgstr "без розового вина"
+
+#: src/no-ingredients.inc:226
+msgid "no Saffron"
+msgstr "без шафрана"
+
+#: src/no-ingredients.inc:227
+msgid "no Sage"
+msgstr "без шалфея/сальвии"
+
+#: src/no-ingredients.inc:228
+msgid "no Salmon"
+msgstr "без лосося/сёмги"
+
+#: src/no-ingredients.inc:229
+msgid "no Salt"
+msgstr "без соли"
+
+#: src/no-ingredients.inc:230
+msgid "no Salt and pepper"
+msgstr "без соли и перца"
+
+#: src/no-ingredients.inc:231
+msgid "no Saucebinder"
+msgstr "без \"готового соуса для подливки\""
+
+#: src/no-ingredients.inc:232
+msgid "no Scallions"
+msgstr "без зелёного лука-шалота"
+
+#: src/no-ingredients.inc:233
+msgid "no Sea salt"
+msgstr "без морской соли"
+
+#: src/no-ingredients.inc:234
+msgid "no Semi-skimmed milk"
+msgstr "без полуобезжиренного молока"
+
+#: src/no-ingredients.inc:235
+msgid "no Sesame oil"
+msgstr "без кунжутного масла"
+
+#: src/no-ingredients.inc:236
+msgid "no Sesame seeds"
+msgstr "без семян кунжута"
+
+#: src/no-ingredients.inc:237
+msgid "no Shallots"
+msgstr "без лука шаллота"
+
+#: src/no-ingredients.inc:238
+msgid "no Shrimps"
+msgstr "без креветок"
+
+#: src/no-ingredients.inc:239
+msgid "no Slivered almonds, toasted"
+msgstr "без измельчённого миндаля, поджаренного"
+
+#: src/no-ingredients.inc:240
+msgid "no Sour cream"
+msgstr "без сметаны"
+
+#: src/no-ingredients.inc:241
+msgid "no Soy sauce"
+msgstr "без соевого соуса"
+
+#: src/no-ingredients.inc:242
+msgid "no Spinach"
+msgstr "без шпината"
+
+#: src/no-ingredients.inc:243
+msgid "no Spring onion"
+msgstr "без зелёного лука (лук-батун)"
+
+#: src/no-ingredients.inc:244
+msgid "no Squash"
+msgstr "без тыквы (большая/столовая)"
+
+#: src/no-ingredients.inc:245
+msgid "no Star anise"
+msgstr "без звёздчатого аниса"
+
+#: src/no-ingredients.inc:246
+msgid "no Strawberry"
+msgstr "без клубники"
+
+#: src/no-ingredients.inc:247
+msgid "no Sugar"
+msgstr "без сахара"
+
+#: src/no-ingredients.inc:248
+msgid "no Sunflower seeds"
+msgstr "без семян подсолнуха"
+
+#: src/no-ingredients.inc:249
+msgid "no Sweet potatoes"
+msgstr "без сладкого картофеля (батата(?))"
+
+#: src/no-ingredients.inc:250
+msgid "no Tamarind paste"
+msgstr "без пасты тамаринда индийского"
+
+#: src/no-ingredients.inc:251
+msgid "no Tangerine"
+msgstr "без мандарина"
+
+#: src/no-ingredients.inc:252
+msgid "no Thai basil leaves"
+msgstr "без тайского базилика (хорапка)"
+
+#: src/no-ingredients.inc:253
+msgid "no Thai chillies"
+msgstr "без тайского перца чили"
+
+#: src/no-ingredients.inc:254
+msgid "no Thai fish sauce"
+msgstr "без тайского рыбного соуса"
+
+#: src/no-ingredients.inc:255
+msgid "no Thyme"
+msgstr "без тимьяна/чабреца"
+
+#: src/no-ingredients.inc:256
+msgid "no Tinned pineapple rings"
+msgstr "без консервированных колец ананаса"
+
+#: src/no-ingredients.inc:257
+msgid "no Tofu"
+msgstr "без тофу"
+
+#: src/no-ingredients.inc:258
+msgid "no Tomato"
+msgstr "без помидоров"
+
+#: src/no-ingredients.inc:259
+msgid "no Tomato paste"
+msgstr "без томатной пасты"
+
+#: src/no-ingredients.inc:260
+msgid "no Tomato sauce"
+msgstr "без соуса из помидоров"
+
+#: src/no-ingredients.inc:261
+msgid "no Tumeric ground"
+msgstr "без куркумы (турмерика), клубни"
+
+#: src/no-ingredients.inc:262
+msgid "no Tuna fish"
+msgstr "без тунца"
+
+#: src/no-ingredients.inc:263
+msgid "no Unsalted butter"
+msgstr "без не солёного сливочного масла"
+
+#: src/no-ingredients.inc:264
+msgid "no Vanilla baking powder"
+msgstr "без ванильного разрыхлителя"
+
+#: src/no-ingredients.inc:265
+msgid "no Vanilla extract"
+msgstr "без экстракта ванили"
+
+#: src/no-ingredients.inc:266
+msgid "no Vanilla powdered sugar, for dusting"
+msgstr "без ванильной сахарной пудры для посыпки"
+
+#: src/no-ingredients.inc:267
+msgid "no Vanilla pudding"
+msgstr "без ванильного пудинга"
+
+#: src/no-ingredients.inc:268
+msgid "no Vanilla sugar"
+msgstr "без ванильного сахара"
+
+#: src/no-ingredients.inc:269
+msgid "no Vegetable oil"
+msgstr "без растительного масло"
+
+#: src/no-ingredients.inc:270
+msgid "no Vinegar"
+msgstr "без уксуса"
+
+#: src/no-ingredients.inc:271
+msgid "no Water"
+msgstr "без воды"
+
+#: src/no-ingredients.inc:272
+msgid "no Wheat flour"
+msgstr "без пшеничной муки"
+
+#: src/no-ingredients.inc:273
+msgid "no White fish"
+msgstr "без белой рыбы"
+
+#: src/no-ingredients.inc:274
+msgid "no White onion"
+msgstr "без белого лука"
+
+#: src/no-ingredients.inc:275
+msgid "no White wine"
+msgstr "без белого вина"
+
+#: src/no-ingredients.inc:276
+msgid "no Whole chicken"
+msgstr "без целой курицы"
+
+#: src/no-ingredients.inc:277
+msgid "no Wine"
+msgstr "без вина"
+
+#: src/no-ingredients.inc:278
+msgid "no Worcestershire sauce"
+msgstr "без вустерширского соуса"
+
+#: src/no-ingredients.inc:279
+msgid "no Yeast"
+msgstr "без дрожжей"
+
+#: src/no-ingredients.inc:280
+msgid "no Yellow bell pepper"
+msgstr "без жёлтого сладкого перца"
+
+#: src/no-ingredients.inc:281
+msgid "no Yoghurt"
+msgstr "без йогурта"
+
+#: src/no-ingredients.inc:282
+msgid "no Zest of 1 lemon (organic)"
+msgstr "без цедры 1 лимона (натуральная)"
+
+#: src/no-ingredients.inc:283
+msgid "no Zinfandel"
+msgstr "без винограда цинфандель"
+
+#: src/no-ingredients.inc:284
+msgid "no Zuccini"
+msgstr "без кабачков цукини"
