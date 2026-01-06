@@ -151,7 +151,7 @@ msgstr "Η χρονική σήμανση της τελευταίας αλλαγ�
 msgid ""
 "The timestamp of the last time an item was added to or removed from the "
 "shopping list."
-msgstr ""
+msgstr "Η χρονική σήμανση της τελευταίας φοράς που ένα στοιχείο προστέθηκε ή αφαιρέθηκε από τη λίστα αγορών."
 
 #: data/org.gnome.Recipes.gschema.xml:62
 msgid "The shopping list"
@@ -161,7 +161,7 @@ msgstr "Η λίστα αγορών"
 msgid ""
 "The shopping list. Each entry in the dictionary maps the ID of a recipe to a "
 "serving count."
-msgstr ""
+msgstr "Η λίστα αγορών. Κάθε καταχώριση στο λεξικό αντιστοιχεί το αναγνωριστικό μιας συνταγής σε έναν αριθμό μερίδων."
 
 #: data/org.gnome.Recipes.gschema.xml:70
 msgid "Ingredients that were removed from the shopping list"
@@ -179,7 +179,7 @@ msgstr "Η λίστα των συνταγών προς εξαγωγή"
 msgid ""
 "The list of recipes to be exported. Each entry in the list is the ID of a "
 "recipe."
-msgstr ""
+msgstr "Η λίστα των συνταγών προς εξαγωγή. Κάθε καταχώριση στη λίστα είναι το αναγνωριστικό μιας συνταγής."
 
 #: data/org.gnome.Recipes.gschema.xml:84
 msgid "The setting for which unit temperatures should be displayed in."
@@ -190,7 +190,7 @@ msgid ""
 "The setting for which unit temperatures should be displayed in. Default is "
 "'locale', which means to use the LC_MEASUREMENT category of the current "
 "locale to decide."
-msgstr ""
+msgstr "Η ρύθμιση για τη μονάδα μέτρησης θερμοκρασίας στην οποία θα εμφανίζονται. Η προεπιλογή είναι 'locale', που σημαίνει χρήση της κατηγορίας LC_MEASUREMENT του τρέχοντος locale για απόφαση."
 
 #: data/org.gnome.Recipes.gschema.xml:92
 msgid "By which key to sort lists."
@@ -208,7 +208,7 @@ msgstr "Εάν θα εμφανίζεται ο διάλογος έκπληξης.
 msgid ""
 "The setting determines whether the surprise dialog should be shown on "
 "startup."
-msgstr ""
+msgstr "Η ρύθμιση καθορίζει εάν ο διάλογος έκπληξης θα εμφανίζεται κατά την εκκίνηση."
 
 #: data/org.gnome.Recipes.gschema.xml:106
 msgid "The setting for which unit volumes should be displayed in."
@@ -218,7 +218,7 @@ msgstr "Η ρύθμιση για τη μονάδα όγκου στην οποί�
 msgid ""
 "The setting for which unit volumes should be displayed in. Default is "
 "'locale',"
-msgstr ""
+msgstr "Η ρύθμιση για τη μονάδα μέτρησης όγκου στην οποία θα εμφανίζονται. Η προεπιλογή είναι 'locale',"
 
 #: data/org.gnome.Recipes.gschema.xml:113
 msgid "The setting for which unit weights should be displayed in."
@@ -228,7 +228,7 @@ msgstr "Η ρύθμιση για τη μονάδα βάρους στην οπο�
 msgid ""
 "The setting for which unit weights should be displayed in. Default is "
 "'locale',"
-msgstr ""
+msgstr "Η ρύθμιση για τη μονάδα μέτρησης βάρους στην οποία θα εμφανίζονται. Η προεπιλογή είναι 'locale',"
 
 #: src/chef-conflict-dialog.ui:10
 msgid "Same Chef"
